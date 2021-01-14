@@ -73,16 +73,10 @@ This will prompt [Commitizen](https://www.npmjs.com/package/commitizen) to build
 #### How to create a new package
 
 ```shell
-yarn lerna create customer-ui-<name>
+make new-package
 ```
 
-This will result in a new package being added to the `packages/` subdirectory. New packages should be setup with the following scripts:
-
-* "test" to run automated tests, all packages have access to [Jest](https://jestjs.io/). Jest configuration will be required at the package level.
-* "build" the build command which should result in the output being written to the `dist/` directory.
-* "clean" to clean up pre-build i.e. remove `dist/`.
-
-Where possible Typescript should be favoured of JavaScript. Typescript can be configured at the package level.
+This will prompt for a package name and description and will create a boilerplate Typescript package under the packages directory with the required script commands.
 
 #### How to add a shared dependency
 
