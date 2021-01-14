@@ -12,4 +12,3 @@ pids
 .yarn-integrity
 package-lock.json
 .vscode
-.husky
