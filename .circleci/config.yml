@@ -9,8 +9,8 @@ jobs:
   install_dependencies:
     executor: main
     steps:
+      - checkout
       - restore_cache:
-          name: Restore Yarn package cache
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
@@ -24,24 +24,40 @@ jobs:
   lint:
     executor: main
     steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Run linter
           command: make lint
   test:
     executor: main
     steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Run automated tests
           command: make test
   build:
     executor: main
     steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Build
           command: make build
   publish:
     executor: main
     steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Publish
           command: make publish
