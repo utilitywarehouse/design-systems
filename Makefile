@@ -4,14 +4,17 @@ install:
 install-ci:
 	yarn --immutable
 
+clean:
+	yarn lerna run clean
+
 build:
 	yarn lerna run build
 
 lint:
-	yarn lerna run lint
+	yarn run lint
 
 lint-fix:
-	yarn lerna run lint:fix
+	yarn run lint:fix
 
 test:
 	yarn lerna run test
@@ -20,4 +23,5 @@ commit:
 	yarn cz
 
 publish:
-	yarn lerna exec --concurrency 1 -- yarn --no-install semantic-release -e semantic-release-monorepo
+	echo "TODO"
+	# yarn lerna exec --concurrency 1 -- yarn --no-install semantic-release -e semantic-release-monorepo
