@@ -29,6 +29,9 @@ const getPackage = async () => {
     name = await askQuestion("Enter the name of your new package directory: (e.g. customer-ui-package)");
     isValidName = validatePackageName(name);
     if (!isValidName) console.log(`${name} is already taken, please choose another package name.`);
+
+    isValidName = Boolean(name.match(/^customer-ui(-[a-z]+){1,}$/));
+    if (!isValidName) console.log("Package name must begin with \"customer-ui-\"");
   }
 
   const description = await askQuestion("Enter a description of your new package: (defaults to \"\")");
