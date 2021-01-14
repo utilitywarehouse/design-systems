@@ -1,0 +1,21 @@
+{
+  "name": "@utilitywarehouse/{{package.name}}",
+  "version": "0.1.0",
+  "description": "{{package.description}}",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf dist/",
+    "build": "yarn run clean && tsc",
+    "watch": "yarn run build -- --watch",
+    "test": "jest"
+  },
+  "license": "ISC",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ]
+}
