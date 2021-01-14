@@ -1,0 +1,20 @@
+{
+  "name": "@utilitywarehouse/customer-ui-material",
+  "version": "0.1.0",
+  "description": "Material UI component library adapted for Utility Warehouse customer UI",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "echo \"build\" && exit 0",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
+    "@material-ui/core": "^5.0.0-alpha.22"
+  }
+}

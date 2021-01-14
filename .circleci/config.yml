@@ -1,0 +1,114 @@
+version: 2.1
+
+executors:
+  main:
+    docker:
+      - image: circleci/node:14.04-browsers
+
+jobs:
+  install_dependencies:
+    executor: main
+    steps:
+      - restore_cache:
+          name: Restore Yarn package cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: make install-ci
+      - save_cache:
+          name: Save Yarn package cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+  lint:
+    executor: main
+    steps:
+      - run:
+          name: Run linter
+          command: make lint
+  test:
+    executor: main
+    steps:
+      - run:
+          name: Run automated tests
+          command: make test
+  build:
+    executor: main
+    steps:
+      - run:
+          name: Build
+          command: make build
+  publish:
+    executor: main
+    steps:
+      - run:
+          name: Publish
+          command: make publish
+
+workflows:
+  development:
+    jobs:
+      - install_dependencies:
+          filters:
+            branches:
+              ignore:
+                - master
+      - lint:
+          filters:
+            branches:
+              ignore:
+                - master
+          requires:
+            - install_dependencies
+      - test:
+          filters:
+            branches:
+              ignore:
+                - master
+          requires:
+            - install_dependencies
+      - build:
+          filters:
+            branches:
+              ignore:
+                - master
+          requires:
+            - lint
+            - test
+  production:
+    jobs:
+      - install_dependencies:
+          filters:
+            branches:
+              only:
+                - master
+      - lint:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - install_dependencies
+      - test:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - install_dependencies
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - lint
+            - test
+      - publish:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - build
