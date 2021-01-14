@@ -19,6 +19,9 @@ lint-fix:
 test:
 	yarn lerna run test
 
+new-package:
+	node ./scripts/new-package.js
+
 commit:
 	yarn cz
 

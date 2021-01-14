@@ -8,6 +8,7 @@
     "@typescript-eslint/eslint-plugin": "^4.13.0",
     "@typescript-eslint/parser": "^4.13.0",
     "commitizen": "^4.2.2",
+    "copy": "^0.3.2",
     "eslint": "^7.17.0",
     "eslint-plugin-react": "^7.22.0",
     "husky": "^5.0.6",
