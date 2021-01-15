@@ -4,7 +4,8 @@ This monorepo contains all the packages used for Customer UI. See [individual pa
 
 ## Packages
 
-* [@utilitywarehouse/customer-ui-material](packages/customer-ui-material)
+* [@utilitywarehouse/customer-ui-design-tokens](packages/design-tokens)
+* [@utilitywarehouse/customer-ui-material](packages/material)
 
 ## Working with this monorepo
 
