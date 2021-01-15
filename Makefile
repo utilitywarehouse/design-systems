@@ -26,5 +26,4 @@ commit:
 	yarn cz
 
 publish:
-	echo "TODO"
-	# yarn lerna exec --concurrency 1 -- yarn --no-install semantic-release -e semantic-release-monorepo
+	./node_modules/.bin/lerna exec --concurrency 1 -- yarn semantic-release -e semantic-release-monorepo
