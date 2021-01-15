@@ -64,60 +64,15 @@ jobs:
 
 workflows:
   development:
-    jobs:
+    main:
       - install_dependencies:
-          filters:
-            branches:
-              ignore:
-                - master
       - lint:
-          filters:
-            branches:
-              ignore:
-                - master
           requires:
             - install_dependencies
       - test:
-          filters:
-            branches:
-              ignore:
-                - master
           requires:
             - install_dependencies
       - build:
-          filters:
-            branches:
-              ignore:
-                - master
-          requires:
-            - lint
-            - test
-  production:
-    jobs:
-      - install_dependencies:
-          filters:
-            branches:
-              only:
-                - master
-      - lint:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - install_dependencies
-      - test:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - install_dependencies
-      - build:
-          filters:
-            branches:
-              only:
-                - master
           requires:
             - lint
             - test
@@ -126,5 +81,6 @@ workflows:
             branches:
               only:
                 - master
+                - alpha
           requires:
             - build
