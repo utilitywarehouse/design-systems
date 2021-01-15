@@ -1,0 +1,21 @@
+{
+  "name": "@utilitywarehouse/customer-ui-design-tokens",
+  "version": "0.1.0",
+  "description": "Design Tokens for the UW Customer brand",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf dist/",
+    "build": "yarn run clean && tsc",
+    "watch": "yarn run build -- --watch",
+    "test": "jest"
+  },
+  "license": "ISC",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ]
+}
