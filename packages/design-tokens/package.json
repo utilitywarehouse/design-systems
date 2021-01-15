@@ -1,7 +1,7 @@
 {
-  "name": "@utilitywarehouse/customer-ui-base",
+  "name": "@utilitywarehouse/customer-ui-design-tokens",
   "version": "0.1.0",
-  "description": "",
+  "description": "Design Tokens for the UW Customer brand",
   "main": "dist/index.js",
   "scripts": {
     "clean": "rm -rf dist/",
