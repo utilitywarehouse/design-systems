@@ -1,5 +1,4 @@
 import { colors, Colors } from "./colors";
-import { brand, Brand } from "./brand";
 import { typography, Typography } from "./typography";
 import {
   breakpoints,
@@ -8,19 +7,18 @@ import {
   MediaQueries,
 } from "./breakpoints";
 
-const px = (value: string | number) => `${value}px`;
+interface Brand {
+  colors: Colors;
+  typography: Typography;
+  breakpoints: Breakpoints;
+  mediaQueries: MediaQueries;
+}
 
-export {
+const brand: Brand = {
   colors,
-  Colors,
-  brand,
-  Brand,
   typography,
-  Typography,
   breakpoints,
-  Breakpoints,
   mediaQueries,
-  MediaQueries,
-  px,
 };
-export default brand;
+
+export { brand, Brand };
