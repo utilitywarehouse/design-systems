@@ -68,6 +68,9 @@ jobs:
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
+          name: Install dependencies
+          command: make install-ci
+      - run:
           name: Publish
           command: make publish
 
