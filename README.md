@@ -48,7 +48,15 @@ make lint-fix
 
 ### Committing to the repository
 
-We are using [Commitizen](https://www.npmjs.com/package/commitizen) to assist with automated versioning when releasing packages. This requires git commit messages to follow the [Angular JS commit message guidelines](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits). Luckily the Commitizen CLI tool makes this easy for us. When attempting to commit using the `git commit` command the `pre-commit-message` git hook will prompt Commitizen to run. From there you can select the appropriate options and input the relevant information. These commit messages are then used to determine versions when releasing packages as well as for generating changelogs.
+All commit messages for Customer UI are used to automate releases, in order for this to function correctly we are using [@commitlint/config-conventional](https://www.npmjs.com/package/@commitlint/config-conventional) to enforce structured commit messages.
+
+To assist with the commit message structure you can run the following command:
+
+```shell
+make commit
+```
+
+This will prompt [Commitizen](https://www.npmjs.com/package/commitizen) to build the commit message through their interactive CLI. Alternatively commit messages can be created manually through any git tool you might be familiar with and will be rejected through the git hook should they be invalid.
 
 ### Tools
 
