@@ -27,10 +27,9 @@
     "postinstall": "husky install",
     "prepublishOnly": "pinst --enable",
     "postpublish": "pinst --disable",
-    "lint": "eslint .",
+    "lint": "eslint . && prettier --check .",
     "lint:fix": "eslint --fix .",
-    "format": "prettier --write .",
-    "format:ci": "prettier --list-different ."
+    "format": "prettier --write ."
   },
   "workspaces": [
     "packages/*"

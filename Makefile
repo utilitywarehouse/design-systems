@@ -15,6 +15,7 @@ lint:
 
 lint-fix:
 	yarn run lint:fix
+	yarn run format
 
 test:
 	yarn lerna run test
