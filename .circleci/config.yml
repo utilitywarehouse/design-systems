@@ -60,7 +60,7 @@ jobs:
       - run:
           name: Build
           command: make build
-  build-and-publish:
+  build_and_publish:
     executor: main
     steps:
       - checkout
@@ -96,7 +96,7 @@ workflows:
           requires:
             - lint
             - test
-      - build-and-publish:
+      - build_and_publish:
           filters:
             branches:
               only:
