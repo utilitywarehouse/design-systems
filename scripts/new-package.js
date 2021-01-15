@@ -26,12 +26,12 @@ const validatePackageName = (name) => {
 const getPackage = async () => {
   let isValidName, name;
   while (!isValidName) {
-    name = await askQuestion("Enter the name of your new package directory: (e.g. customer-ui-package)");
+    name = await askQuestion("Enter the name of your new package directory: (e.g. my-new-package)");
     isValidName = validatePackageName(name);
     if (!isValidName) console.log(`${name} is already taken, please choose another package name.`);
 
-    isValidName = Boolean(name.match(/^customer-ui(-[a-z]+){1,}$/));
-    if (!isValidName) console.log("Package name must begin with \"customer-ui-\"");
+    isValidName = Boolean(name.match(/^[a-z]{1,}(-[a-z]+){0,}$/));
+    if (!isValidName) console.log("Package name must only contain a-z and hyphen characters, e.g. my-new-package");
   }
 
   const description = await askQuestion("Enter a description of your new package: (defaults to \"\")");

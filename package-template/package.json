@@ -1,5 +1,5 @@
 {
-  "name": "@utilitywarehouse/{{package.name}}",
+  "name": "@utilitywarehouse/customer-ui-{{package.name}}",
   "version": "0.1.0",
   "description": "{{package.description}}",
   "main": "dist/index.js",
