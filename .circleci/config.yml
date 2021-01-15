@@ -63,9 +63,9 @@ jobs:
           command: make publish
 
 workflows:
-  development:
-    main:
-      - install_dependencies:
+  main:
+    jobs:
+      - install_dependencies
       - lint:
           requires:
             - install_dependencies
