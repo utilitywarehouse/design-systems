@@ -1,3 +1,3 @@
 export interface UIModule {
-  getValue: (key: string) => string
+  getValue: (key: string) => string;
 }
