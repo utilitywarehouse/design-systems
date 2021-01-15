@@ -60,7 +60,7 @@ jobs:
       - run:
           name: Build
           command: make build
-  publish:
+  build-and-publish:
     executor: main
     steps:
       - checkout
@@ -70,6 +70,9 @@ jobs:
       - run:
           name: Install dependencies
           command: make install-ci
+      - run:
+          name: Build
+          command: make build
       - run:
           name: Publish
           command: make publish
@@ -85,10 +88,15 @@ workflows:
           requires:
             - install_dependencies
       - build:
+          filters:
+            branches:
+              ignore:
+                - master
+                - alpha
           requires:
             - lint
             - test
-      - publish:
+      - build-and-publish:
           filters:
             branches:
               only:
