@@ -1,10 +1,10 @@
 module.exports = {
-  "globals": {
-    "require": true,
-    "process": true,
-    "__dirname": true,
+  globals: {
+    require: true,
+    process: true,
+    __dirname: true,
   },
-  "rules": {
+  rules: {
     "@typescript-eslint/no-var-requires": "off",
   },
 };

@@ -4,22 +4,22 @@ This monorepo contains all the packages used for Customer UI. See [individual pa
 
 ## Packages
 
-* [@utilitywarehouse/customer-ui-design-tokens](packages/design-tokens)
-* [@utilitywarehouse/customer-ui-material](packages/material)
+- [@utilitywarehouse/customer-ui-design-tokens](packages/design-tokens)
+- [@utilitywarehouse/customer-ui-material](packages/material)
 
 ## Working with this monorepo
 
 This monorepo makes use of [Lerna](https://lerna.js.org/) to manage our multiple packages, alongside yarn workspaces to assist with dependency management. For a full list of tools and what they do see the [tools](#tools) section of this documentation
 
-* [Getting started](#getting-started)
-* [Running tests](#running-tests)
-* [Running linter](#running-linter)
-* [Committing to the repository](#committing-to-the-repository)
-* [Tools](#tools)
-* [Common actions and commands](#common-actions-and-commands)
-   * [How to create a new package](#how-to-create-a-new-package)
-   * [How to add a shared dependency](#how-to-add-a-shared-dependency)
-   * [Publishing changes](#publishing-changes)
+- [Getting started](#getting-started)
+- [Running tests](#running-tests)
+- [Running linter](#running-linter)
+- [Committing to the repository](#committing-to-the-repository)
+- [Tools](#tools)
+- [Common actions and commands](#common-actions-and-commands)
+  - [How to create a new package](#how-to-create-a-new-package)
+  - [How to add a shared dependency](#how-to-add-a-shared-dependency)
+  - [Publishing changes](#publishing-changes)
 
 ### Getting started
 
