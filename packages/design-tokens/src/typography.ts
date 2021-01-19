@@ -51,20 +51,20 @@ const typography = {
         small: px(16),
       },
     },
-    tablet: {
-      headings: {
-        h1: px(40),
-        h2: px(28),
-        h3: px(18),
-        h4: px(14),
-        h5: px(12),
-      },
-      body: {
-        p: px(18),
-        label: px(15),
-        small: px(12),
-      },
-    },
+tablet: {
+  headings: {
+    h1: px(52),
+    h2: px(32),
+    h3: px(24),
+    h4: px(16),
+    h5: px(12),
+  },
+  body: {
+    p: px(18),
+    label: px(15),
+    small: px(12),
+  },
+},
     mobile: {
       headings: {
         h1: px(40),
