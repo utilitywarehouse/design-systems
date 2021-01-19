@@ -1,4 +1,4 @@
-import { px } from ".";
+import { px } from "./helpers";
 
 const bps = [320, 768, 1024, 1440]; // Sketch defaults
 const mq = bps.map((bp) => `@media (min-width: ${bp}px)`);

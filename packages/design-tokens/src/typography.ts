@@ -1,4 +1,4 @@
-import { px } from ".";
+import { px } from "./helpers";
 
 const fonts = {
   primary: "Aeonik, sans-serif",

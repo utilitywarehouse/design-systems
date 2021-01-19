@@ -8,8 +8,6 @@ import {
   MediaQueries,
 } from "./breakpoints";
 
-const px = (value: string | number) => `${value}px`;
-
 export {
   colors,
   Colors,
@@ -21,6 +19,8 @@ export {
   Breakpoints,
   mediaQueries,
   MediaQueries,
-  px,
 };
+
+export * as helpers from "./helpers";
+
 export default brand;
