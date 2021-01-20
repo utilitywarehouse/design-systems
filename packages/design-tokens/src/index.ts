@@ -1,4 +1,4 @@
-import { colors, Colors } from "./colors";
+import { colors, Colors, palette, Palette } from "./colors";
 import { brand, Brand } from "./brand";
 import { typography, Typography } from "./typography";
 import {
@@ -11,6 +11,8 @@ import {
 export {
   colors,
   Colors,
+  palette,
+  Palette,
   brand,
   Brand,
   typography,
