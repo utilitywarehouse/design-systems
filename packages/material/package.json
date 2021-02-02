@@ -34,6 +34,6 @@
     "@storybook/react": "^6.1.15",
     "babel-loader": "^8.2.2",
     "paths.macro": "^3.0.1",
-    "@utilitywarehouse/customer-ui-fonts": "^0.1.0"
+    "@utilitywarehouse/customer-ui-fonts": "file:../fonts"
   }
 }
