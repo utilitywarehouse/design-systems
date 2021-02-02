@@ -1,0 +1,20 @@
+{
+  "name": "@utilitywarehouse/customer-ui-fonts",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "echo \"nothing to clean\"",
+    "build": "echo \"nothing to build\"",
+    "watch": "echo \"nothing to watch\"",
+    "test": "echo \"nothing to test\""
+  },
+  "license": "ISC",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "files": [
+    "./*.woff2",
+    "./*.scss"
+  ]
+}
