@@ -39,9 +39,9 @@ import "@utilitywarehouse/customer-ui-fonts/fonts.scss";
 ### Font files
 
 ```shell
-node_modules/@utilitywarehouse/customer-ui-fonts/Aeonik.ttf
-node_modules/@utilitywarehouse/customer-ui-fonts/Aeonik.woff
-node_modules/@utilitywarehouse/customer-ui-fonts/Aeonik.woff2
+node_modules/@utilitywarehouse/customer-ui-fonts/Aeonik-Bold.ttf
+node_modules/@utilitywarehouse/customer-ui-fonts/Aeonik-Bold.woff
+node_modules/@utilitywarehouse/customer-ui-fonts/Aeonik-Bold.woff2
 node_modules/@utilitywarehouse/customer-ui-fonts/Work-Sans.ttf
 node_modules/@utilitywarehouse/customer-ui-fonts/Work-Sans.woff
 node_modules/@utilitywarehouse/customer-ui-fonts/Work-Sans.woff2
