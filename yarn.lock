@@ -3718,8 +3718,10 @@
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-design-tokens/-/customer-ui-design-tokens-1.0.0-alpha.4.tgz#4b57d4f1efdf9cf009c65b12e9320f83d18b4652"
   integrity sha512-Ih0b12QY+97B24XVuCJUmL2j4tnNoif0xFwtm7T/SFdp5zYbLcAfflape5PHKcp8UfNP8kDKqzolUuuyRXa/Xw==
 
-"@utilitywarehouse/customer-ui-fonts@file:packages/fonts":
-  version "0.1.0"
+"@utilitywarehouse/customer-ui-fonts@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-fonts/-/customer-ui-fonts-1.0.0-alpha.1.tgz#bb57f8149b4fa16da0147670acd4352693024e5d"
+  integrity sha512-UKt3KKaUe41pu6aY9bKFd/ZCB53kmF44v2ZvD0BrdB3Jt9CI8y7jayCmIb2bp+rk3Sfu6js7hbY74QWRwV7SFg==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
