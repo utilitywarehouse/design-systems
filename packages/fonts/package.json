@@ -1,0 +1,25 @@
+{
+  "name": "@utilitywarehouse/customer-ui-fonts",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -f fonts.css*",
+    "build": "yarn clean && sass fonts.scss fonts.css",
+    "watch": "yarn build -- --watch",
+    "test": "echo \"nothing to test\""
+  },
+  "license": "ISC",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "files": [
+    "./*.ttf",
+    "./*.woff*",
+    "./*.scss",
+    "./*.css*"
+  ],
+  "devDependencies": {
+    "sass": "^1.32.6"
+  }
+}
