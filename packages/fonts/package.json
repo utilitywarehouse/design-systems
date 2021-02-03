@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "echo \"nothing to clean\"",
-    "build": "echo \"nothing to build\"",
-    "watch": "echo \"nothing to watch\"",
+    "clean": "rm fonts.css*",
+    "build": "yarn clean && sass fonts.scss fonts.css",
+    "watch": "yarn build -- --watch",
     "test": "echo \"nothing to test\""
   },
   "license": "ISC",
@@ -14,7 +14,12 @@
     "access": "restricted"
   },
   "files": [
-    "./*.woff2",
-    "./*.scss"
-  ]
+    "./*.ttf",
+    "./*.woff*",
+    "./*.scss",
+    "./*.css*"
+  ],
+  "devDependencies": {
+    "sass": "^1.32.6"
+  }
 }
