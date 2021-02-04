@@ -59,20 +59,27 @@ const getBaseTip = async () => {
 
 const hasPackageChanged = async ({ relativePath }) => {
   const branch = process.env.CIRCLE_BRANCH;
+  console.log({ branch, GIT_BRANCHES_TO_ALWAYS_RUN_ON, relativePath });
   if (GIT_BRANCHES_TO_ALWAYS_RUN_ON.includes(branch)) {
     return true;
   }
 
+  console.log({
+    CIRCLE_PR_NUMBER: process.env.CIRCLE_PR_NUMBER,
+    relativePath,
+  });
   // When a PR has yet to be created
   if (!process.env.CIRCLE_PR_NUMBER) return false;
   const hash = process.env.CIRCLE_SHA1;
   const baseTip = await getBaseTip();
   const commitFiles = await getCommitFiles(hash, baseTip);
+  console.log({ hash, relativePath, commitFiles, baseTip });
   while (commitFiles.length > 0) {
     const file = commitFiles.shift();
     if (file.substring(0, relativePath.length) === relativePath) return true;
   }
 
+  console.log("no matches", { relativePath });
   return false;
 };
 
@@ -114,7 +121,7 @@ const getPackages = () => {
 
 const preflightCheck = () => {
   if (process.env.CI !== "true") {
-    throw new Error("the deployment preview script should only be run on CI");
+    throw new Error("the package changed script should only be run on CI");
   }
 };
 
@@ -141,14 +148,14 @@ const run = async () => {
 
     const packagesToRun = await getPackagesToRun();
     if (packagesToRun.length === 0) {
-      console.log("No previews to deploy");
+      console.log("No changes made");
     } else {
       const packagePaths = packagesToRun
         .map(({ relativePath, name }) => `- ${relativePath} (${name})`)
         .join("\n");
 
       console.log(
-        `Running preview deployments for the following packages:\n\n${packagePaths}\n`
+        `Running on change scripts for the following packages:\n\n${packagePaths}\n`
       );
     }
 
