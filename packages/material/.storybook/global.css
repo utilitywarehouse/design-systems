@@ -1,0 +1,13 @@
+@import "~@utilitywarehouse/customer-ui-fonts/fonts.scss";
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  position: relative;
+  padding: 1rem;
+  box-sizing: border-box;
+}

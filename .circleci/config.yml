@@ -14,6 +14,9 @@ jobs:
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
+          name: Authenticate with registry
+          command: printf "@utilitywarehouse:registry=https://registry.npmjs.org/\n//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/project/.npmrc
+      - run:
           name: Install dependencies
           command: make install-ci
       - save_cache:
@@ -21,10 +24,19 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+      - save_cache:
+          name: Save registry authentication cache
+          key: registry-authentication
+          paths:
+            - ~/project/.npmrc
+
   lint:
     executor: main
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - registry-authentication
       - restore_cache:
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
@@ -40,6 +52,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
+            - registry-authentication
+      - restore_cache:
+          keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
@@ -53,6 +68,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
+            - registry-authentication
+      - restore_cache:
+          keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
@@ -64,6 +82,9 @@ jobs:
     executor: main
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - registry-authentication
       - restore_cache:
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}

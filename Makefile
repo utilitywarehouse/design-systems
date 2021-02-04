@@ -28,3 +28,6 @@ commit:
 
 publish:
 	./node_modules/.bin/lerna exec --concurrency 1 -- yarn semantic-release -e semantic-release-monorepo
+
+material-storybook:
+	make -C packages/material storybook
