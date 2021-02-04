@@ -24,6 +24,13 @@ const GIT_BRANCHES_TO_ALWAYS_RUN_ON = ["alpha", "master"];
 
 const gitCommandCache = {};
 
+/**
+ * Execute a git command and return the stdout
+ *
+ * @param {Array}  args Array of arguments
+ * @param {Object} options Optional options object passed to execa
+ * @returns {Promise<string>} Promise resolving to stdout of executed git command
+ */
 const git = async (args, options = {}) => {
   const cacheKey = JSON.stringify({ args, options });
   if (gitCommandCache[cacheKey]) return gitCommandCache[cacheKey];
@@ -32,6 +39,12 @@ const git = async (args, options = {}) => {
   return stdout;
 };
 
+/**
+ * Get files changed since tip of base branch
+ *
+ * @param {string} hash current commit hash
+ * @param {string} base tip of base branch for PR's commit hash
+ */
 const getCommitFiles = async (hash, base) => {
   const files = await git([
     "diff-tree",
@@ -44,6 +57,11 @@ const getCommitFiles = async (hash, base) => {
   return files.split("\n");
 };
 
+/**
+ * Get the base tip from GitHub for the PR
+ *
+ * @returns {Promise<string>} Promise resolving to the base tip sha1 commit hash
+ */
 const getBaseTip = async () => {
   const pr = await octokit.request(
     "GET /repos/{owner}/{repo}/pulls/{pull_number}",
@@ -57,6 +75,15 @@ const getBaseTip = async () => {
   return pr.data.base.sha;
 };
 
+/**
+ * Detects if a package has changed since the tip of the base
+ * branch for PR's or is included in the GIT_BRANCHES_TO_ALWAYS_RUN_ON
+ * list of branches
+ *
+ * @param {Package} package
+ * @param {string} package.relativePath
+ * @returns {Promise<boolean>}
+ */
 const hasPackageChanged = async ({ relativePath }) => {
   const branch = process.env.CIRCLE_BRANCH;
   console.log({ branch, GIT_BRANCHES_TO_ALWAYS_RUN_ON, relativePath });
@@ -83,6 +110,11 @@ const hasPackageChanged = async ({ relativePath }) => {
   return false;
 };
 
+/**
+ * Gets list of all packages in the monorepo
+ *
+ * @returns {Package[]}
+ */
 const getPackages = () => {
   const packagesDirectory = path.join(monorepoRoot, "packages");
   const packageDirectories = fs
@@ -119,12 +151,24 @@ const getPackages = () => {
   });
 };
 
+/**
+ * Ensures the script can be run by checking CI environment
+ *
+ * @throws  {Error} when unable to run
+ * @returns {void}
+ */
 const preflightCheck = () => {
   if (process.env.CI !== "true") {
     throw new Error("the package changed script should only be run on CI");
   }
 };
 
+/**
+ * Fetches a list of packages to run the `ci-package-changed`
+ * script for
+ *
+ * @returns {Promise<Package[]>} Array of packages
+ */
 const getPackagesToRun = async () => {
   const packages = await getPackages();
   const packagesToRun = await Promise.all(
@@ -137,6 +181,11 @@ const getPackagesToRun = async () => {
   return packagesToRun.filter((package) => Boolean(package));
 };
 
+/**
+ * Entry function to process the script
+ *
+ * @returns {Promise<void>}
+ */
 const run = async () => {
   try {
     try {
@@ -159,36 +208,30 @@ const run = async () => {
       );
     }
 
-    const output = await Promise.all(
-      packagesToRun.map(({ name }) => {
-        return execa("npx", [
-          "lerna",
-          "run",
-          "ci-package-changed",
-          "--scope",
-          name,
-        ]);
-      })
-    );
+    while (packagesToRun.length > 0) {
+      const { relativePath, name } = packagesToRun.shift();
+      console.log(
+        `Running on change scripts for: - ${relativePath} (${name})\n\n`
+      );
 
-    let err;
-    while (output.length > 0) {
-      const { stderr, stdout, exitCode } = output.shift();
+      const { exitCode } = await execa(
+        "npx",
+        ["lerna", "run", "ci-package-changed", "--scope", name],
+        {
+          stdout: process.stdout,
+          stderr: process.stderr,
+        }
+      );
+
       if (exitCode > 0) {
-        err = true;
-        console.error(stderr);
+        process.exit(1);
       }
-
-      console.log(stdout);
     }
 
-    if (err) {
-      process.exit(1);
-    } else {
-      process.exit(0);
-    }
+    process.exit(0);
   } catch (error) {
     console.error(error);
+    process.exit(1);
   }
 };
 

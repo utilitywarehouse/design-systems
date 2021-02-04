@@ -10,8 +10,7 @@
     "test:coverage": "yarn test --coverage",
     "serve:coverage": "open coverage/lcov-report/index.html",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o storybook-build",
-    "build-storybook-docs": "build-storybook -o storybook-docs",
+    "build-storybook": "build-storybook -o storybook",
     "ci-package-changed": "./scripts/deployment-preview.sh"
   },
   "author": "",

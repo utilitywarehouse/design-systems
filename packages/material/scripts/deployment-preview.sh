@@ -1,15 +1,17 @@
 #!/bin/bash
-yarn build-storybook
-yarn build-storybook-docs
 
+# Build storybook static site
+yarn build-storybook
+
+# Variables used to build subdomain for surge.sh
 ORGANISATION_SUBDOMAIN=uw
 PROJECT_SUBDOMAIN=customer-ui-material
 TLD=surge.sh
 
 # Surge domains
-STORYBOOK_PR_URL="pull-$(echo $PR_NUMBER).$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
-STORYBOOK_ALPHA_URL="alpha.$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
-STORYBOOK_MASTER_URL="$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
+STORYBOOK_PR_URL="pull-$(echo $PR_NUMBER).storybook.$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
+STORYBOOK_ALPHA_URL="alpha.storybook.$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
+STORYBOOK_MASTER_URL="storybook.$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
 STORYBOOK_URL=$STORYBOOK_PR_URL
 
 if [ "$CIRCLE_BRANCH" == "alpha" ]
@@ -24,9 +26,11 @@ then
   exit 0
 fi
 
-npx surge ./storybook-build $STORYBOOK_URL --token $SURGE_SH_TOKEN
+# Deploy storybook to surge static site
+npx surge ./storybook $STORYBOOK_URL --token $SURGE_SH_TOKEN
 
 if [ "$STORYBOOK_PR_URL" == "$STORYBOOK_URL" ]
 then
+  # If running from active PR, comment on the PR with the URL for the storybook deployment
   STORYBOOK_URL="http://$STORYBOOK_URL" node ./scripts/deployment-preview-comment-on-pr.js
 fi
