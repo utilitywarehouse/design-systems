@@ -7,6 +7,8 @@
     "clean": "rm -rf dist/",
     "build": "yarn run clean && tsc",
     "test": "jest",
+    "test:coverage": "yarn test --coverage",
+    "serve:coverage": "open coverage/lcov-report/index.html",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -28,14 +30,19 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.12.10",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
     "@storybook/addon-actions": "^6.1.15",
     "@storybook/addon-essentials": "^6.1.15",
     "@storybook/addon-links": "^6.1.15",
     "@storybook/react": "^6.1.15",
+    "@types/enzyme": "^3.10.8",
+    "@types/react-dom": "^17.0.0",
+    "@utilitywarehouse/customer-ui-fonts": "^1.0.0-alpha.1",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "babel-loader": "^8.2.2",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.1",
     "paths.macro": "^3.0.1",
-    "@utilitywarehouse/customer-ui-fonts": "^1.0.0-alpha.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
