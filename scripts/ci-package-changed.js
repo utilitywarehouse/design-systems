@@ -63,6 +63,8 @@ const hasPackageChanged = async ({ relativePath }) => {
     return true;
   }
 
+  // When a PR has yet to be created
+  if (!process.env.CIRCLE_PR_NUMBER) return false;
   const hash = process.env.CIRCLE_SHA1;
   const baseTip = await getBaseTip();
   const commitFiles = await getCommitFiles(hash, baseTip);
