@@ -27,16 +27,6 @@ const git = async (args, options = {}) => {
   return stdout;
 };
 
-const getCurrentGitBranch = async () => {
-  const branch = await git(["branch", "--show-current"]);
-  return branch;
-};
-
-const getLatestCommitHash = async () => {
-  const hash = await git(["log", "-n1", "--format=format:%H"]);
-  return hash;
-};
-
 const getCommitFiles = async (hash) => {
   const files = await git([
     "diff-tree",
@@ -50,12 +40,12 @@ const getCommitFiles = async (hash) => {
 };
 
 const hasPackageChanged = async ({ relativePath }) => {
-  const branch = await getCurrentGitBranch();
+  const branch = process.env.CIRCLE_BRANCH;
   if (GIT_BRANCHES_TO_ALWAYS_RUN_ON.includes(branch)) {
     return true;
   }
 
-  const hash = await getLatestCommitHash();
+  const hash = process.env.CIRCLE_SHA1;
   const commitFiles = await getCommitFiles(hash);
   while (commitFiles.length > 0) {
     const file = commitFiles.shift();
