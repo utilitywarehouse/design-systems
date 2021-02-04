@@ -86,27 +86,20 @@ const getBaseTip = async () => {
  */
 const hasPackageChanged = async ({ relativePath }) => {
   const branch = process.env.CIRCLE_BRANCH;
-  console.log({ branch, GIT_BRANCHES_TO_ALWAYS_RUN_ON, relativePath });
   if (GIT_BRANCHES_TO_ALWAYS_RUN_ON.includes(branch)) {
     return true;
   }
 
-  console.log({
-    PR_NUMBER: process.env.PR_NUMBER,
-    relativePath,
-  });
   // When a PR has yet to be created
   if (!process.env.PR_NUMBER) return false;
   const hash = process.env.CIRCLE_SHA1;
   const baseTip = await getBaseTip();
   const commitFiles = await getCommitFiles(hash, baseTip);
-  console.log({ hash, relativePath, commitFiles, baseTip });
   while (commitFiles.length > 0) {
     const file = commitFiles.shift();
     if (file.substring(0, relativePath.length) === relativePath) return true;
   }
 
-  console.log("no matches", { relativePath });
   return false;
 };
 
