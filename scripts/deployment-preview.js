@@ -120,12 +120,11 @@ const run = async () => {
     console.log("No previews to deploy");
   } else {
     const packagePaths = packagesToRun
-      .map(({ relativePath }) => relativePath)
-      .split("\n")
-      .map((path) => `- ${path}`);
+      .map(({ relativePath, name }) => `- ${relativePath} (${name})`)
+      .join("\n");
 
     console.log(
-      `Running preview deployments for the following packages:\n${packagePaths}`
+      `Running preview deployments for the following packages:\n\n${packagePaths}\n`
     );
   }
 
@@ -143,8 +142,8 @@ const run = async () => {
 
   let err;
   while (output.length > 0) {
-    const { stderr, stdout } = output.shift();
-    if (stderr) {
+    const { stderr, stdout, exitCode } = output.shift();
+    if (exitCode > 0) {
       err = true;
       console.error(stderr);
     }
