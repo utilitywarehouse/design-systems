@@ -1,2 +1,5 @@
 dist/
 coverage/
+packages/material/scripts
+packages/material/storybook-build
+packages/material/storybook-docs
