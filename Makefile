@@ -31,3 +31,6 @@ publish:
 
 material-storybook:
 	make -C packages/material storybook
+
+deployment-preview:
+	node ./scripts/deployment-preview.js
