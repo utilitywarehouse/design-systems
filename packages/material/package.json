@@ -11,7 +11,7 @@
     "serve:coverage": "open coverage/lcov-report/index.html",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "deployment-preview": "node ./scripts/deployment-preview.js"
+    "ci-package-changed": "node ./scripts/deployment-preview.js"
   },
   "author": "",
   "license": "ISC",

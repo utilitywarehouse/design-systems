@@ -2,6 +2,18 @@ const execa = require("execa");
 const path = require("path");
 const fs = require("fs");
 
+/**
+ * This script finds any packages which have changed on the current git branch
+ * and runs the packages "ci-package-changed" npm script.
+ *
+ * For branches included in GIT_BRANCHES_TO_ALWAYS_RUN_ON, each packages
+ * "ci-package-changed" npm script will be run.
+ *
+ * The idea behind this is to allow for packages to run scripts in CI when the
+ * package has been changed. For example to add deployment previews to PR's, or
+ * to deploy documentation etc.
+ */
+
 const monorepoRoot = path.resolve(__dirname, "..");
 const GIT_BRANCHES_TO_ALWAYS_RUN_ON = ["alpha", "master"];
 
@@ -133,7 +145,7 @@ const run = async () => {
       return execa("npx", [
         "lerna",
         "run",
-        "deployment-preview",
+        "ci-package-changed",
         "--scope",
         name,
       ]);

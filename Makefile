@@ -32,5 +32,5 @@ publish:
 material-storybook:
 	make -C packages/material storybook
 
-deployment-preview:
-	node ./scripts/deployment-preview.js
+ci-package-changed:
+	node ./scripts/ci-package-changed.js
