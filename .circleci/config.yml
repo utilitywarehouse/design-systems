@@ -24,7 +24,7 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-            - ~/repo/.npmrc
+            - ~/project/.npmrc
   lint:
     executor: main
     steps:
