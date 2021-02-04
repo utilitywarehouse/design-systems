@@ -71,6 +71,7 @@
     "dist",
     "node_modules",
     "**/*.test.ts",
-    "stories"
+    "stories",
+    "jest",
   ]
 }

@@ -14,8 +14,11 @@ export const DarkModeContext = React.createContext<DarkModeContextValue>({
   setDarkMode: () => undefined,
 });
 
+DarkModeContext.displayName = "DarkModeContext";
+
 export interface DarkModeProviderProps {
   defaultValue?: "on" | "off";
+  value?: "on" | "off";
   useSystemColorScheme?: boolean;
   children?: React.ReactNode;
 }
@@ -27,6 +30,7 @@ enum DarkModeSource {
 
 const DarkModeProvider: React.FunctionComponent<DarkModeProviderProps> = ({
   defaultValue = "off",
+  value,
   useSystemColorScheme = true,
   children,
 }) => {
@@ -59,6 +63,16 @@ const DarkModeProvider: React.FunctionComponent<DarkModeProviderProps> = ({
         break;
     }
   };
+
+  React.useEffect(() => {
+    if (source === DarkModeSource.NOT_SET && value) {
+      if (enabled && value === "off") {
+        setEnabled(false);
+      } else if (!enabled && value === "on") {
+        setEnabled(true);
+      }
+    }
+  }, [enabled, source, value, useSystemColorScheme]);
 
   return (
     <DarkModeContext.Provider

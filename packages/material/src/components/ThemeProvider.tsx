@@ -1,7 +1,8 @@
 import React from "react";
 import MUIThemeProvider from "@material-ui/core/styles/ThemeProvider";
 import { DefaultTheme } from "@material-ui/styles";
-import { getDefaultMUITheme } from "../lib/theme";
+import { getTheme } from "../lib/theme";
+import { DarkModeContext } from "./DarkModeProvider";
 
 export interface ThemeProviderProps<Theme = DefaultTheme> {
   children?: React.ReactNode;
@@ -12,12 +13,13 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = ({
   theme,
   children,
 }) => {
-  const resolveTheme = () => {
+  const { darkModeEnabled } = React.useContext(DarkModeContext);
+  const muiTheme = React.useMemo(() => {
     if (theme) return theme;
-    return getDefaultMUITheme();
-  };
+    return getTheme(darkModeEnabled);
+  }, [theme, darkModeEnabled]);
 
-  return <MUIThemeProvider theme={resolveTheme()}>{children}</MUIThemeProvider>;
+  return <MUIThemeProvider theme={muiTheme}>{children}</MUIThemeProvider>;
 };
 
 export default ThemeProvider;

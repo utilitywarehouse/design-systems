@@ -92,39 +92,39 @@ export default Button;
 
 export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ({
   spacing,
-  designTokens,
   palette,
+  breakpoints,
 }) => ({
   MuiButton: {
     styleOverrides: {
       root: {
-        "text-transform": "none",
-        "font-family": "Work-Sans",
-        "font-weight": "600",
+        textTransform: "none",
+        fontFamily: "Work-Sans",
+        fontWeight: 600,
         height: spacing(4),
         padding: `0 ${spacing(2)}`,
-        "border-radius": spacing(2),
-        "font-size": spacing(2),
-        "letter-spacing": 0,
-        "line-height": "1",
+        borderRadius: spacing(2),
+        fontSize: spacing(2),
+        letterSpacing: 0,
+        lineHeight: "1",
         ":disabled": {
           opacity: 0.3,
           cursor: "not-allowed",
         },
-        [designTokens.mediaQueries.desktop]: {
+        [breakpoints.up("xl")]: {
           height: spacing(5),
-          "font-size": spacing(2.25),
-          "border-radius": spacing(2.5),
+          fontSize: spacing(2.25),
+          borderRadius: spacing(2.5),
           padding: `0 ${spacing(3)}`,
         },
       },
       sizeLarge: {
         height: spacing(6),
         padding: `0 ${spacing(3)}`,
-        "border-radius": spacing(3),
-        [designTokens.mediaQueries.desktop]: {
+        borderRadius: spacing(3),
+        [breakpoints.up("xl")]: {
           height: spacing(7),
-          "border-radius": spacing(3.5),
+          borderRadius: spacing(3.5),
           padding: `0 ${spacing(4)}`,
         },
       },
@@ -193,7 +193,7 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ({
             position: "relative",
           },
           " .customer-ui-bottom-border": {
-            "border-bottom": `${spacing(0.25)} solid ${palette.primary.main}`,
+            borderBottom: `${spacing(0.25)} solid ${palette.primary.main}`,
             width: "104%",
             position: "absolute",
             display: "block",

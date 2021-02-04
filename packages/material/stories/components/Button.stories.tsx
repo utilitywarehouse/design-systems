@@ -40,6 +40,14 @@ const bindTemplate = (params) => {
   return Template;
 };
 
-export const Light = bindTemplate({ backgroundColor: BackgroundColor.level3 });
+export const Primary = bindTemplate({
+  backgroundColor: BackgroundColor.level3,
+});
 
-export const Dark = bindTemplate({ backgroundColor: BackgroundColor.level1 });
+Primary.storyName = "Primary";
+
+export const Secondary = bindTemplate({
+  backgroundColor: BackgroundColor.level1,
+});
+
+Secondary.storyName = "Secondary";

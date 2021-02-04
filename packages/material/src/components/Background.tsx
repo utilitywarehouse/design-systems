@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, BoxProps } from "../../src";
 import { designTokens } from "../lib/theme";
+import { DarkModeContext } from "./DarkModeProvider";
 
 export enum BackgroundColor {
   level0 = "level0",
@@ -24,18 +25,26 @@ const Background: React.FunctionComponent<BoxProps & BackgroundProps> = ({
   children,
   backgroundColor,
   ...props
-}) => (
-  <BackgroundContext.Provider value={{ backgroundColor }}>
-    <Box
-      {...props}
-      sx={{
-        ...props.sx,
-        backgroundColor: designTokens.colors.backdrops.light[backgroundColor],
-      }}
-    >
-      {children}
-    </Box>
-  </BackgroundContext.Provider>
-);
+}) => {
+  const { darkModeEnabled } = React.useContext(DarkModeContext);
+  const backgroundColorStyle = React.useMemo(() => {
+    if (darkModeEnabled) return designTokens.colors.backdrops.dark.base;
+    return designTokens.colors.backdrops.light[backgroundColor];
+  }, [backgroundColor, darkModeEnabled]);
+
+  return (
+    <BackgroundContext.Provider value={{ backgroundColor }}>
+      <Box
+        {...props}
+        sx={{
+          ...props.sx,
+          backgroundColor: backgroundColorStyle,
+        }}
+      >
+        {children}
+      </Box>
+    </BackgroundContext.Provider>
+  );
+};
 
 export default Background;
