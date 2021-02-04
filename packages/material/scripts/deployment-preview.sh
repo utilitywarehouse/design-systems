@@ -33,7 +33,6 @@ then
   # If running from active PR, comment on the PR with the URL for the storybook deployment
   STORYBOOK_URL="http://$STORYBOOK_URL" node ./scripts/deployment-preview-comment-on-pr.js
 else
-then
   # Deploy storybook to surge static site on commit hash
   npx surge ./storybook $STORYBOOK_SHA_URL --token $SURGE_SH_TOKEN
 fi
