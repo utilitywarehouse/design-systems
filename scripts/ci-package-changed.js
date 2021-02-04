@@ -1,11 +1,6 @@
 const execa = require("execa");
 const path = require("path");
 const fs = require("fs");
-const { Octokit } = require("@octokit/core");
-
-const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN,
-});
 
 /**
  * This script finds any packages which have changed on the current git branch
@@ -63,16 +58,8 @@ const getCommitFiles = async (hash, base) => {
  * @returns {Promise<string>} Promise resolving to the base tip sha1 commit hash
  */
 const getBaseTip = async () => {
-  const pr = await octokit.request(
-    "GET /repos/{owner}/{repo}/pulls/{pull_number}",
-    {
-      owner: process.env.CIRCLE_PROJECT_USERNAME,
-      repo: process.env.CIRCLE_PROJECT_REPONAME,
-      pull_number: process.env.PR_NUMBER,
-    }
-  );
-
-  return pr.data.base.sha;
+  const hash = await git(["merge-base", "--fork-point", "alpha"]);
+  return hash;
 };
 
 /**
@@ -90,8 +77,6 @@ const hasPackageChanged = async ({ relativePath }) => {
     return true;
   }
 
-  // When a PR has yet to be created
-  if (!process.env.PR_NUMBER) return false;
   const hash = process.env.CIRCLE_SHA1;
   const baseTip = await getBaseTip();
   const commitFiles = await getCommitFiles(hash, baseTip);
