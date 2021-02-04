@@ -13,3 +13,4 @@ pids
 package-lock.json
 .vscode
 dist/
+.npmrc
