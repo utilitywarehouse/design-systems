@@ -1,6 +1,11 @@
 const execa = require("execa");
 const path = require("path");
 const fs = require("fs");
+const { Octokit } = require("@octokit/core");
+
+const octokit = new Octokit({
+  auth: process.env.GITHUB_TOKEN,
+});
 
 /**
  * This script finds any packages which have changed on the current git branch
@@ -27,16 +32,29 @@ const git = async (args, options = {}) => {
   return stdout;
 };
 
-const getCommitFiles = async (hash) => {
+const getCommitFiles = async (hash, base) => {
   const files = await git([
     "diff-tree",
     "--no-commit-id",
     "--name-only",
     "-r",
-    hash,
+    `${hash}..${base}`,
   ]);
 
   return files.split("\n");
+};
+
+const getBaseTip = async () => {
+  const pr = await octokit.request(
+    "GET /repos/{owner}/{repo}/pulls/{pull_number}",
+    {
+      owner: process.env.CIRCLE_PROJECT_USERNAME,
+      repo: process.env.CIRCLE_PROJECT_REPONAME,
+      pull_number: process.env.CIRCLE_PR_NUMBER,
+    }
+  );
+
+  return pr.data.base.sha;
 };
 
 const hasPackageChanged = async ({ relativePath }) => {
@@ -46,7 +64,8 @@ const hasPackageChanged = async ({ relativePath }) => {
   }
 
   const hash = process.env.CIRCLE_SHA1;
-  const commitFiles = await getCommitFiles(hash);
+  const baseTip = await getBaseTip();
+  const commitFiles = await getCommitFiles(hash, baseTip);
   while (commitFiles.length > 0) {
     const file = commitFiles.shift();
     if (file.substring(0, relativePath.length) === relativePath) return true;
