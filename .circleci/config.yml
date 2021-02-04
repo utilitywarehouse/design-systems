@@ -76,6 +76,9 @@ jobs:
           name: Install dependencies
           command: make install-ci
       - run:
+          name: Export PR number
+          command: export PR_NUMBER=$(node ./scripts/get-pr-number.js)
+      - run:
           name: On packages changed
           command: make ci-package-changed
   build:

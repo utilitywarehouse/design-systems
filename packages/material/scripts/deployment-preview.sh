@@ -7,7 +7,7 @@ PROJECT_SUBDOMAIN=customer-ui-material
 TLD=surge.sh
 
 # Surge domains
-STORYBOOK_PR_URL="pull-$(echo $CIRCLE_PR_NUMBER).$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
+STORYBOOK_PR_URL="pull-$(echo $PR_NUMBER).$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
 STORYBOOK_ALPHA_URL="alpha.$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
 STORYBOOK_MASTER_URL="$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
 STORYBOOK_URL=$STORYBOOK_PR_URL
@@ -18,7 +18,7 @@ then
 elif [ "$CIRCLE_BRANCH" == "master" ]
 then
   STORYBOOK_URL=$STORYBOOK_MASTER_URL
-elif [ "$CIRCLE_PR_NUMBER" == "" ]
+elif [ "$PR_NUMBER" == "" ]
 then
   echo "No pull request to deploy preview for"
   exit 0

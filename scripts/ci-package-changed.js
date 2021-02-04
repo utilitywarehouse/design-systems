@@ -50,7 +50,7 @@ const getBaseTip = async () => {
     {
       owner: process.env.CIRCLE_PROJECT_USERNAME,
       repo: process.env.CIRCLE_PROJECT_REPONAME,
-      pull_number: process.env.CIRCLE_PR_NUMBER,
+      pull_number: process.env.PR_NUMBER,
     }
   );
 
@@ -65,11 +65,11 @@ const hasPackageChanged = async ({ relativePath }) => {
   }
 
   console.log({
-    CIRCLE_PR_NUMBER: process.env.CIRCLE_PR_NUMBER,
+    PR_NUMBER: process.env.PR_NUMBER,
     relativePath,
   });
   // When a PR has yet to be created
-  if (!process.env.CIRCLE_PR_NUMBER) return false;
+  if (!process.env.PR_NUMBER) return false;
   const hash = process.env.CIRCLE_SHA1;
   const baseTip = await getBaseTip();
   const commitFiles = await getCommitFiles(hash, baseTip);
