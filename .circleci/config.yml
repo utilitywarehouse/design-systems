@@ -125,7 +125,7 @@ workflows:
           requires:
             - install_dependencies
       - packages-changed:
-          required:
+          requires:
             - install_dependencies
       - build:
           filters:
