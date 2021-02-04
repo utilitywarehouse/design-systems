@@ -24,11 +24,19 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+      - save_cache:
+          name: Save registry authentication cache
+          key: registry-authentication
+          paths:
             - ~/project/.npmrc
+
   lint:
     executor: main
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - registry-authentication
       - restore_cache:
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
@@ -44,6 +52,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
+            - registry-authentication
+      - restore_cache:
+          keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
@@ -57,6 +68,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
+            - registry-authentication
+      - restore_cache:
+          keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
@@ -68,6 +82,9 @@ jobs:
     executor: main
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - registry-authentication
       - restore_cache:
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
