@@ -111,52 +111,56 @@ const getPackagesToRun = async () => {
 
 const run = async () => {
   try {
-    preflightCheck();
-  } catch (error) {
-    console.error(error.message);
-    process.exit(1);
-  }
-
-  const packagesToRun = await getPackagesToRun();
-  if (packagesToRun.length === 0) {
-    console.log("No previews to deploy");
-  } else {
-    const packagePaths = packagesToRun
-      .map(({ relativePath, name }) => `- ${relativePath} (${name})`)
-      .join("\n");
-
-    console.log(
-      `Running preview deployments for the following packages:\n\n${packagePaths}\n`
-    );
-  }
-
-  const output = await Promise.all(
-    packagesToRun.map(({ name }) => {
-      return execa("npx", [
-        "lerna",
-        "run",
-        "ci-package-changed",
-        "--scope",
-        name,
-      ]);
-    })
-  );
-
-  let err;
-  while (output.length > 0) {
-    const { stderr, stdout, exitCode } = output.shift();
-    if (exitCode > 0) {
-      err = true;
-      console.error(stderr);
+    try {
+      preflightCheck();
+    } catch (error) {
+      console.error(error.message);
+      process.exit(1);
     }
 
-    console.log(stdout);
-  }
+    const packagesToRun = await getPackagesToRun();
+    if (packagesToRun.length === 0) {
+      console.log("No previews to deploy");
+    } else {
+      const packagePaths = packagesToRun
+        .map(({ relativePath, name }) => `- ${relativePath} (${name})`)
+        .join("\n");
 
-  if (err) {
-    process.exit(1);
-  } else {
-    process.exit(0);
+      console.log(
+        `Running preview deployments for the following packages:\n\n${packagePaths}\n`
+      );
+    }
+
+    const output = await Promise.all(
+      packagesToRun.map(({ name }) => {
+        return execa("npx", [
+          "lerna",
+          "run",
+          "ci-package-changed",
+          "--scope",
+          name,
+        ]);
+      })
+    );
+
+    let err;
+    while (output.length > 0) {
+      const { stderr, stdout, exitCode } = output.shift();
+      if (exitCode > 0) {
+        err = true;
+        console.error(stderr);
+      }
+
+      console.log(stdout);
+    }
+
+    if (err) {
+      process.exit(1);
+    } else {
+      process.exit(0);
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
 
