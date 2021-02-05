@@ -31,3 +31,6 @@ publish:
 
 material-storybook:
 	make -C packages/material storybook
+
+ci-package-changed:
+	node ./scripts/ci-package-changed.js

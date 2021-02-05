@@ -62,6 +62,24 @@ jobs:
       - run:
           name: Run automated tests
           command: make test
+  packages-changed:
+    executor: main
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - registry-authentication
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: make install-ci
+      - run:
+          name: On packages changed
+          command: |
+            export PR_NUMBER=$(node ./scripts/get-pr-number.js)
+            make ci-package-changed
   build:
     executor: main
     steps:
@@ -106,6 +124,9 @@ workflows:
           requires:
             - install_dependencies
       - test:
+          requires:
+            - install_dependencies
+      - packages-changed:
           requires:
             - install_dependencies
       - build:
