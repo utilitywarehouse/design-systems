@@ -15,10 +15,10 @@
     "access": "restricted"
   },
   "files": [
-    "./*.ttf",
-    "./*.woff*",
-    "./*.scss",
-    "./*.css*"
+    "*.ttf",
+    "*.woff*",
+    "*.scss",
+    "*.css*"
   ],
   "devDependencies": {
     "sass": "^1.32.6"
