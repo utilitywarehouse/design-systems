@@ -62,7 +62,6 @@ export { buttonClasses } from "@material-ui/core/Button";
 export * from "@material-ui/core/Button/buttonClasses";
 export type {
   ButtonPropsVariantOverrides,
-  ButtonVariantDefaults as MuiButtonVariantDefaults,
   ButtonTypeMap,
   ExtendButton,
   ButtonProps as MUIButtonProps,
@@ -411,4 +410,4 @@ export * from "@material-ui/core/useAutocomplete";
 export { default as GlobalStyles } from "@material-ui/core/GlobalStyles";
 export * from "@material-ui/core/GlobalStyles";
 
-export { StylesProvider } from "@material-ui/styled-engine";
+export { StyledEngineProvider } from "@material-ui/styled-engine";
