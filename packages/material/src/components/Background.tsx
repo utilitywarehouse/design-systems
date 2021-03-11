@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, BoxProps } from "../../src";
+import { Box, BoxProps } from "../";
 import { designTokens } from "../lib/theme";
 import { DarkModeContext } from "./DarkModeProvider";
 
