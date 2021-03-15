@@ -16,6 +16,8 @@ export {
   MuiThemeProvider,
   createGenerateClassName,
   jssPreset,
+  ServerStyleSheets,
+  StylesProvider,
 } from "@material-ui/core/styles";
 
 export type {
@@ -49,8 +51,6 @@ export type {
   CreateMUIStyled,
   ComponentCreator,
   StyledProps,
-  ServerStyleSheets,
-  StylesProvider,
   ComponentsProps,
   ComponentsVariants,
   ComponentsOverrides,
