@@ -20,8 +20,6 @@ const fontWeights = {
   },
 };
 
-// const fontSizes = [0, 12, 13, 14, 15, 16, 18, 20, 28, 33, 40, 64]
-
 const typography = {
   fonts: {
     ...fonts,
@@ -77,6 +75,50 @@ const typography = {
         p: px(16),
         label: px(14),
         small: px(12),
+      },
+    },
+  },
+  lineHeight: {
+    desktop: {
+      headings: {
+        h1: 1.125,
+        h2: 1.125,
+        h3: 1.121,
+        h4: 1.15,
+        h5: 1.125,
+      },
+      body: {
+        p: 1.6,
+        label: 1.615,
+        small: 1.625,
+      },
+    },
+    tablet: {
+      headings: {
+        h1: 1.115,
+        h2: 1.125,
+        h3: 1.125,
+        h4: 1.125,
+        h5: 1.167,
+      },
+      body: {
+        p: 1.611,
+        label: 1.733,
+        small: 1.667,
+      },
+    },
+    mobile: {
+      headings: {
+        h1: 1.125,
+        h2: 1.143,
+        h3: 1.111,
+        h4: 1.143,
+        h5: 1.167,
+      },
+      body: {
+        p: 1.625,
+        label: 1.643,
+        small: 1.583,
       },
     },
   },
