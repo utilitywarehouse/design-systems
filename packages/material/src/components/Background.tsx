@@ -16,12 +16,12 @@ export const BackgroundContext = React.createContext({
 
 export const BackgroundConsumer = BackgroundContext.Consumer;
 
-export interface BackgroundProps {
+export interface BackgroundProps extends BoxProps {
   children?: React.ReactNode;
   backgroundColor: BackgroundColor;
 }
 
-const Background: React.FunctionComponent<BoxProps & BackgroundProps> = ({
+const Background: React.FunctionComponent<BackgroundProps> = ({
   children,
   backgroundColor,
   ...props
