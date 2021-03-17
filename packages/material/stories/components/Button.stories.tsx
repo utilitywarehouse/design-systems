@@ -25,10 +25,9 @@ export default {
 
 const bindTemplate = (params) => {
   const Template: Story<ButtonProps> = (args) => {
-    const Background = withBackground(
-      withCenterAlignment(Fragment),
-      params.backgroundColor
-    );
+    const Background = withBackground(withCenterAlignment(Fragment), {
+      backgroundColor: params.backgroundColor,
+    });
 
     return (
       <Background>
