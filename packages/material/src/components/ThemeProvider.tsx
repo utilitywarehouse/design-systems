@@ -15,6 +15,7 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = ({
     return getTheme(darkModeEnabled);
   }, [darkModeEnabled]);
 
+  console.log({ muiTheme });
   return <MUIThemeProvider theme={muiTheme}>{children}</MUIThemeProvider>;
 };
 

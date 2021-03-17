@@ -117,95 +117,95 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ({
           borderRadius: spacing(2.5),
           padding: `0 ${spacing(3)}`,
         },
-      },
-      sizeLarge: {
-        height: spacing(6),
-        padding: `0 ${spacing(3)}`,
-        borderRadius: spacing(3),
-        [breakpoints.up("xl")]: {
-          height: spacing(7),
-          borderRadius: spacing(3.5),
-          padding: `0 ${spacing(4)}`,
+        "&.MuiButton-sizeLarge": {
+          height: spacing(6),
+          padding: `0 ${spacing(3)}`,
+          borderRadius: spacing(3),
+          [breakpoints.up("xl")]: {
+            height: spacing(7),
+            borderRadius: spacing(3.5),
+            padding: `0 ${spacing(4)}`,
+          },
         },
-      },
-      containedSecondary: {
-        backgroundColor: palette.primary.main,
-        color: palette.primary.contrastText,
-        ":hover": {
-          backgroundColor: palette.primary.light,
-        },
-        ":disabled": {
+        "&.MuiButton-containedSecondary": {
           backgroundColor: palette.primary.main,
           color: palette.primary.contrastText,
+          ":hover": {
+            backgroundColor: palette.primary.light,
+          },
+          ":disabled": {
+            backgroundColor: palette.primary.main,
+            color: palette.primary.contrastText,
+          },
         },
-      },
-      containedPrimary: {
-        backgroundColor: palette.primary.main,
-        color: palette.primary.contrastText,
-        ":hover": {
-          backgroundColor: palette.primary.light,
-        },
-        ":disabled": {
+        "&.MuiButton-containedPrimary": {
           backgroundColor: palette.primary.main,
           color: palette.primary.contrastText,
+          ":hover": {
+            backgroundColor: palette.primary.light,
+          },
+          ":disabled": {
+            backgroundColor: palette.primary.main,
+            color: palette.primary.contrastText,
+          },
         },
-      },
-      outlinedPrimary: {
-        backgroundColor: "transparent",
-        color: palette.secondary.contrastText,
-        border: `${spacing(0.25)} solid ${palette.primary.main}`,
-        ":hover": {
-          border: `${spacing(0.25)} solid ${palette.secondary.contrastText}`,
-        },
-        ":disabled": {
+        "&.MuiButton-outlinedPrimary": {
           backgroundColor: "transparent",
           color: palette.secondary.contrastText,
           border: `${spacing(0.25)} solid ${palette.primary.main}`,
+          ":hover": {
+            border: `${spacing(0.25)} solid ${palette.secondary.contrastText}`,
+          },
+          ":disabled": {
+            backgroundColor: "transparent",
+            color: palette.secondary.contrastText,
+            border: `${spacing(0.25)} solid ${palette.primary.main}`,
+          },
         },
-      },
-      outlinedSecondary: {
-        backgroundColor: "transparent",
-        color: palette.primary.contrastText,
-        border: `${spacing(0.25)} solid ${palette.primary.main}`,
-        ":hover": {
-          border: `${spacing(0.25)} solid ${palette.primary.contrastText}`,
-        },
-        ":disabled": {
+        "&.MuiButton-outlinedSecondary": {
           backgroundColor: "transparent",
           color: palette.primary.contrastText,
           border: `${spacing(0.25)} solid ${palette.primary.main}`,
-        },
-      },
-      text: {
-        transition: "opacity 0.25s ease-out",
-        ":hover": {
-          background: "transparent",
-          opacity: 0.5,
-        },
-        ":focus": {
-          opacity: 0.5,
-        },
-        ":disabled": {
-          transition: "none",
-        },
-        "&.customer-ui-tertiary": {
-          "> span.MuiButton-label": {
-            position: "relative",
+          ":hover": {
+            border: `${spacing(0.25)} solid ${palette.primary.contrastText}`,
           },
-          " .customer-ui-bottom-border": {
-            borderBottom: `${spacing(0.25)} solid ${palette.primary.main}`,
-            width: "104%",
-            position: "absolute",
-            display: "block",
-            bottom: spacing(-0.75),
+          ":disabled": {
+            backgroundColor: "transparent",
+            color: palette.primary.contrastText,
+            border: `${spacing(0.25)} solid ${palette.primary.main}`,
           },
         },
-      },
-      textPrimary: {
-        color: palette.secondary.contrastText,
-      },
-      textSecondary: {
-        color: palette.primary.contrastText,
+        "&.MuiButton-text": {
+          transition: "opacity 0.25s ease-out",
+          ":hover": {
+            background: "transparent",
+            opacity: 0.5,
+          },
+          ":focus": {
+            opacity: 0.5,
+          },
+          ":disabled": {
+            transition: "none",
+          },
+          "&.customer-ui-tertiary": {
+            "> span.MuiButton-label": {
+              position: "relative",
+            },
+            " .customer-ui-bottom-border": {
+              borderBottom: `${spacing(0.25)} solid ${palette.primary.main}`,
+              width: "104%",
+              position: "absolute",
+              display: "block",
+              bottom: spacing(-0.75),
+            },
+          },
+        },
+        "&.MuiButton-textPrimary": {
+          color: palette.secondary.contrastText,
+        },
+        "&.MuiButton-textSecondary": {
+          color: palette.primary.contrastText,
+        },
       },
     },
   },
