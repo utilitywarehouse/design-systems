@@ -3,7 +3,7 @@ import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import { Button, ButtonProps } from "./Button";
-import { withBackground, BackgroundColor } from "../../src";
+import { withBackground } from "../../src";
 import withCenterAlignment from "../hocs/withCenterAlignment";
 
 export default {
@@ -27,7 +27,7 @@ const bindTemplate = (params) => {
   const Template: Story<ButtonProps> = (args) => {
     const Background = withBackground(
       withCenterAlignment(Fragment),
-      params.backgroundColor
+      params.level
     );
 
     return (
@@ -41,13 +41,13 @@ const bindTemplate = (params) => {
 };
 
 export const Primary = bindTemplate({
-  backgroundColor: BackgroundColor.level3,
+  level: "level3",
 });
 
 Primary.storyName = "Primary";
 
 export const Secondary = bindTemplate({
-  backgroundColor: BackgroundColor.level1,
+  level: "level1",
 });
 
 Secondary.storyName = "Secondary";

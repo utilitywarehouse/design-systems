@@ -1,0 +1,25 @@
+{
+  "name": "@utilitywarehouse/customer-ui-theme",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf dist/",
+    "build": "yarn run clean && tsc",
+    "watch": "yarn run build -- --watch",
+    "test": "jest",
+    "ci-package-changed": "exit 0"
+  },
+  "license": "ISC",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {
+    "@utilitywarehouse/customer-ui-design-tokens": "0.1.0",
+    "hex-to-rgba": "^2.0.1"
+  }
+}
