@@ -6,14 +6,14 @@ import { Breakpoint } from "./breakpoint";
 
 export const TYPOGRAPHY_KEY = "typography";
 
-export interface TypographyStyles {
+export interface TypographyStylesNonColor {
   fontFamily: string;
   fontWeight: number;
   fontSize: number;
   lineHeight: number;
 }
 
-export type TypographyVariants =
+export type TypographyVariant =
   | "h1"
   | "h2"
   | "h3"
@@ -26,7 +26,7 @@ export type TypographyVariants =
 export type TypographyColor = "default" | "success" | "error";
 
 export type Typography = {
-  [key in TypographyVariants]: TypographyStyles;
+  [key in TypographyVariant]: TypographyStylesNonColor;
 };
 
 export type TypographyGroup = {

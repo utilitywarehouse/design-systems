@@ -2,10 +2,10 @@ import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import hexToRgba from "hex-to-rgba";
 import { BackdropLevel } from "./backdrop";
 import { BUTTON_KEY } from "./button";
-import { ButtonVariant, ButtonState, ButtonColors } from "./button/types";
+import { ButtonVariant, ButtonState, ButtonStylesColor } from "./button/types";
 import { ColorScheme } from "./colorScheme";
 import {
-  TypographyVariants,
+  TypographyVariant,
   TypographyColor,
   TYPOGRAPHY_KEY,
 } from "./typography";
@@ -13,11 +13,11 @@ import {
 export interface Palette {
   [BUTTON_KEY]: {
     [key in ButtonVariant]: {
-      [key in ButtonState]: ButtonColors;
+      [key in ButtonState]: ButtonStylesColor;
     };
   };
   [TYPOGRAPHY_KEY]: {
-    [key in TypographyVariants]: {
+    [key in TypographyVariant]: {
       [key in TypographyColor]: string;
     };
   };

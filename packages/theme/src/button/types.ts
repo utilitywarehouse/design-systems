@@ -1,6 +1,6 @@
 import { Breakpoint } from "../breakpoint";
 
-export interface ButtonStyles {
+export interface ButtonStylesNonColor {
   height: number | string;
   paddingTop: number;
   paddingBottom: number;
@@ -26,7 +26,7 @@ export interface ButtonStyles {
   transition: string;
 }
 
-export interface ButtonColors {
+export interface ButtonStylesColor {
   color: string;
   backgroundColor: string;
   borderColor: string;
@@ -39,7 +39,7 @@ export type ButtonSize = "regular" | "large";
 export type ButtonState = "idle" | "active" | "disabled";
 
 export type Button = {
-  [key in ButtonState]: ButtonStyles;
+  [key in ButtonState]: ButtonStylesNonColor;
 };
 
 export type ButtonGroup = {
