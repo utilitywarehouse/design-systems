@@ -3,9 +3,9 @@ import {
   fonts,
   fontWeights,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { ButtonStyles } from "./types";
+import { ButtonStylesNonColor } from "./types";
 
-export const desktopPrimaryLargeIdle: ButtonStyles = {
+export const desktopPrimaryLargeIdle: ButtonStylesNonColor = {
   height: spacingBase * 7,
   paddingTop: 0,
   paddingBottom: 0,
@@ -31,16 +31,16 @@ export const desktopPrimaryLargeIdle: ButtonStyles = {
   transition: "",
 };
 
-export const desktopPrimaryLargeActive: ButtonStyles = {
+export const desktopPrimaryLargeActive: ButtonStylesNonColor = {
   ...desktopPrimaryLargeIdle,
 };
 
-export const desktopPrimaryLargeDisabled: ButtonStyles = {
+export const desktopPrimaryLargeDisabled: ButtonStylesNonColor = {
   ...desktopPrimaryLargeIdle,
   opacity: 0.3,
 };
 
-export const desktopPrimaryRegularIdle: ButtonStyles = {
+export const desktopPrimaryRegularIdle: ButtonStylesNonColor = {
   ...desktopPrimaryLargeIdle,
   height: spacingBase * 5,
   paddingLeft: spacingBase * 3,
@@ -51,16 +51,16 @@ export const desktopPrimaryRegularIdle: ButtonStyles = {
   borderBottomRightRadius: spacingBase * (5 / 2),
 };
 
-export const desktopPrimaryRegularActive: ButtonStyles = {
+export const desktopPrimaryRegularActive: ButtonStylesNonColor = {
   ...desktopPrimaryRegularIdle,
 };
 
-export const desktopPrimaryRegularDisabled: ButtonStyles = {
+export const desktopPrimaryRegularDisabled: ButtonStylesNonColor = {
   ...desktopPrimaryRegularIdle,
   opacity: 0.3,
 };
 
-export const desktopSecondaryLargeIdle: ButtonStyles = {
+export const desktopSecondaryLargeIdle: ButtonStylesNonColor = {
   ...desktopPrimaryLargeIdle,
   borderTopWidth: 2,
   borderBottomWidth: 2,
@@ -68,16 +68,16 @@ export const desktopSecondaryLargeIdle: ButtonStyles = {
   borderRightWidth: 2,
 };
 
-export const desktopSecondaryLargeActive: ButtonStyles = {
+export const desktopSecondaryLargeActive: ButtonStylesNonColor = {
   ...desktopSecondaryLargeIdle,
 };
 
-export const desktopSecondaryLargeDisabled: ButtonStyles = {
+export const desktopSecondaryLargeDisabled: ButtonStylesNonColor = {
   ...desktopSecondaryLargeIdle,
   opacity: 0.3,
 };
 
-export const desktopSecondaryRegularIdle: ButtonStyles = {
+export const desktopSecondaryRegularIdle: ButtonStylesNonColor = {
   ...desktopSecondaryLargeIdle,
   height: spacingBase * 5,
   paddingLeft: spacingBase * 3,
@@ -88,16 +88,16 @@ export const desktopSecondaryRegularIdle: ButtonStyles = {
   borderBottomRightRadius: spacingBase * (5 / 2),
 };
 
-export const desktopSecondaryRegularActive: ButtonStyles = {
+export const desktopSecondaryRegularActive: ButtonStylesNonColor = {
   ...desktopSecondaryRegularIdle,
 };
 
-export const desktopSecondaryRegularDisabled: ButtonStyles = {
+export const desktopSecondaryRegularDisabled: ButtonStylesNonColor = {
   ...desktopSecondaryRegularIdle,
   opacity: 0.3,
 };
 
-export const desktopTertiaryLargeIdle: ButtonStyles = {
+export const desktopTertiaryLargeIdle: ButtonStylesNonColor = {
   ...desktopPrimaryLargeIdle,
   height: "auto",
   paddingTop: 0,
@@ -115,26 +115,26 @@ export const desktopTertiaryLargeIdle: ButtonStyles = {
   lineHeight: 1.333,
 };
 
-export const desktopTertiaryLargeActive: ButtonStyles = {
+export const desktopTertiaryLargeActive: ButtonStylesNonColor = {
   ...desktopTertiaryLargeIdle,
   opacity: 0.5,
 };
 
-export const desktopTertiaryLargeDisabled: ButtonStyles = {
+export const desktopTertiaryLargeDisabled: ButtonStylesNonColor = {
   ...desktopTertiaryLargeIdle,
   opacity: 0.3,
 };
 
-export const desktopTertiaryRegularIdle: ButtonStyles = {
+export const desktopTertiaryRegularIdle: ButtonStylesNonColor = {
   ...desktopTertiaryLargeIdle,
 };
 
-export const desktopTertiaryRegularActive: ButtonStyles = {
+export const desktopTertiaryRegularActive: ButtonStylesNonColor = {
   ...desktopTertiaryRegularIdle,
   opacity: 0.5,
 };
 
-export const desktopTertiaryRegularDisabled: ButtonStyles = {
+export const desktopTertiaryRegularDisabled: ButtonStylesNonColor = {
   ...desktopTertiaryRegularIdle,
   opacity: 0.3,
 };

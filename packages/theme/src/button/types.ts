@@ -38,14 +38,28 @@ export type ButtonSize = "regular" | "large";
 
 export type ButtonState = "idle" | "active" | "disabled";
 
-export type Button = {
-  [key in ButtonState]: ButtonStylesNonColor;
+export type ButtonPalette = {
+  [key in ButtonVariant]: {
+    [key in ButtonState]: ButtonStylesColor;
+  };
 };
 
-export type ButtonGroup = {
+export type CommonButtonStyles = {
   [key in Breakpoint]: {
     [key in ButtonVariant]: {
-      [key in ButtonSize]: Button;
+      [key in ButtonSize]: {
+        [key in ButtonState]: ButtonStylesNonColor;
+      };
+    };
+  };
+};
+
+export type ButtonStyles = {
+  [key in Breakpoint]: {
+    [key in ButtonVariant]: {
+      [key in ButtonSize]: {
+        [key in ButtonState]: ButtonStylesNonColor & ButtonStylesColor;
+      };
     };
   };
 };

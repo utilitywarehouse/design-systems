@@ -3,9 +3,9 @@ import {
   fonts,
   fontWeights,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { ButtonStyles } from "./types";
+import { ButtonStylesNonColor } from "./types";
 
-export const mobilePrimaryLargeIdle: ButtonStyles = {
+export const mobilePrimaryLargeIdle: ButtonStylesNonColor = {
   height: spacingBase * 6,
   paddingTop: 0,
   paddingBottom: 0,
@@ -31,16 +31,16 @@ export const mobilePrimaryLargeIdle: ButtonStyles = {
   transition: "",
 };
 
-export const mobilePrimaryLargeActive: ButtonStyles = {
+export const mobilePrimaryLargeActive: ButtonStylesNonColor = {
   ...mobilePrimaryLargeIdle,
 };
 
-export const mobilePrimaryLargeDisabled: ButtonStyles = {
+export const mobilePrimaryLargeDisabled: ButtonStylesNonColor = {
   ...mobilePrimaryLargeIdle,
   opacity: 0.3,
 };
 
-export const mobilePrimaryRegularIdle: ButtonStyles = {
+export const mobilePrimaryRegularIdle: ButtonStylesNonColor = {
   ...mobilePrimaryLargeIdle,
   height: spacingBase * 4,
   paddingLeft: spacingBase * 2,
@@ -51,16 +51,16 @@ export const mobilePrimaryRegularIdle: ButtonStyles = {
   borderBottomRightRadius: spacingBase * (4 / 2),
 };
 
-export const mobilePrimaryRegularActive: ButtonStyles = {
+export const mobilePrimaryRegularActive: ButtonStylesNonColor = {
   ...mobilePrimaryRegularIdle,
 };
 
-export const mobilePrimaryRegularDisabled: ButtonStyles = {
+export const mobilePrimaryRegularDisabled: ButtonStylesNonColor = {
   ...mobilePrimaryRegularIdle,
   opacity: 0.3,
 };
 
-export const mobileSecondaryLargeIdle: ButtonStyles = {
+export const mobileSecondaryLargeIdle: ButtonStylesNonColor = {
   ...mobilePrimaryLargeIdle,
   borderTopWidth: 2,
   borderBottomWidth: 2,
@@ -68,16 +68,16 @@ export const mobileSecondaryLargeIdle: ButtonStyles = {
   borderRightWidth: 2,
 };
 
-export const mobileSecondaryLargeActive: ButtonStyles = {
+export const mobileSecondaryLargeActive: ButtonStylesNonColor = {
   ...mobileSecondaryLargeIdle,
 };
 
-export const mobileSecondaryLargeDisabled: ButtonStyles = {
+export const mobileSecondaryLargeDisabled: ButtonStylesNonColor = {
   ...mobileSecondaryLargeIdle,
   opacity: 0.3,
 };
 
-export const mobileSecondaryRegularIdle: ButtonStyles = {
+export const mobileSecondaryRegularIdle: ButtonStylesNonColor = {
   ...mobileSecondaryLargeIdle,
   height: spacingBase * 4,
   paddingLeft: spacingBase * 2,
@@ -88,16 +88,16 @@ export const mobileSecondaryRegularIdle: ButtonStyles = {
   borderBottomRightRadius: spacingBase * (4 / 2),
 };
 
-export const mobileSecondaryRegularActive: ButtonStyles = {
+export const mobileSecondaryRegularActive: ButtonStylesNonColor = {
   ...mobileSecondaryRegularIdle,
 };
 
-export const mobileSecondaryRegularDisabled: ButtonStyles = {
+export const mobileSecondaryRegularDisabled: ButtonStylesNonColor = {
   ...mobileSecondaryRegularIdle,
   opacity: 0.3,
 };
 
-export const mobileTertiaryLargeIdle: ButtonStyles = {
+export const mobileTertiaryLargeIdle: ButtonStylesNonColor = {
   ...mobilePrimaryLargeIdle,
   height: "auto",
   paddingTop: 0,
@@ -115,26 +115,26 @@ export const mobileTertiaryLargeIdle: ButtonStyles = {
   lineHeight: 1.333,
 };
 
-export const mobileTertiaryLargeActive: ButtonStyles = {
+export const mobileTertiaryLargeActive: ButtonStylesNonColor = {
   ...mobileTertiaryLargeIdle,
   opacity: 0.5,
 };
 
-export const mobileTertiaryLargeDisabled: ButtonStyles = {
+export const mobileTertiaryLargeDisabled: ButtonStylesNonColor = {
   ...mobileTertiaryLargeIdle,
   opacity: 0.3,
 };
 
-export const mobileTertiaryRegularIdle: ButtonStyles = {
+export const mobileTertiaryRegularIdle: ButtonStylesNonColor = {
   ...mobileTertiaryLargeIdle,
 };
 
-export const mobileTertiaryRegularActive: ButtonStyles = {
+export const mobileTertiaryRegularActive: ButtonStylesNonColor = {
   ...mobileTertiaryRegularIdle,
   opacity: 0.5,
 };
 
-export const mobileTertiaryRegularDisabled: ButtonStyles = {
+export const mobileTertiaryRegularDisabled: ButtonStylesNonColor = {
   ...mobileTertiaryRegularIdle,
   opacity: 0.3,
 };

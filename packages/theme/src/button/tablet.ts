@@ -3,9 +3,9 @@ import {
   fonts,
   fontWeights,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { ButtonStyles } from "./types";
+import { ButtonStylesNonColor } from "./types";
 
-export const tabletPrimaryLargeIdle: ButtonStyles = {
+export const tabletPrimaryLargeIdle: ButtonStylesNonColor = {
   height: spacingBase * 6,
   paddingTop: 0,
   paddingBottom: 0,
@@ -31,16 +31,16 @@ export const tabletPrimaryLargeIdle: ButtonStyles = {
   transition: "",
 };
 
-export const tabletPrimaryLargeActive: ButtonStyles = {
+export const tabletPrimaryLargeActive: ButtonStylesNonColor = {
   ...tabletPrimaryLargeIdle,
 };
 
-export const tabletPrimaryLargeDisabled: ButtonStyles = {
+export const tabletPrimaryLargeDisabled: ButtonStylesNonColor = {
   ...tabletPrimaryLargeIdle,
   opacity: 0.3,
 };
 
-export const tabletPrimaryRegularIdle: ButtonStyles = {
+export const tabletPrimaryRegularIdle: ButtonStylesNonColor = {
   ...tabletPrimaryLargeIdle,
   height: spacingBase * 4,
   paddingLeft: spacingBase * 2,
@@ -51,16 +51,16 @@ export const tabletPrimaryRegularIdle: ButtonStyles = {
   borderBottomRightRadius: spacingBase * (4 / 2),
 };
 
-export const tabletPrimaryRegularActive: ButtonStyles = {
+export const tabletPrimaryRegularActive: ButtonStylesNonColor = {
   ...tabletPrimaryRegularIdle,
 };
 
-export const tabletPrimaryRegularDisabled: ButtonStyles = {
+export const tabletPrimaryRegularDisabled: ButtonStylesNonColor = {
   ...tabletPrimaryRegularIdle,
   opacity: 0.3,
 };
 
-export const tabletSecondaryLargeIdle: ButtonStyles = {
+export const tabletSecondaryLargeIdle: ButtonStylesNonColor = {
   ...tabletPrimaryLargeIdle,
   borderTopWidth: 2,
   borderBottomWidth: 2,
@@ -68,16 +68,16 @@ export const tabletSecondaryLargeIdle: ButtonStyles = {
   borderRightWidth: 2,
 };
 
-export const tabletSecondaryLargeActive: ButtonStyles = {
+export const tabletSecondaryLargeActive: ButtonStylesNonColor = {
   ...tabletSecondaryLargeIdle,
 };
 
-export const tabletSecondaryLargeDisabled: ButtonStyles = {
+export const tabletSecondaryLargeDisabled: ButtonStylesNonColor = {
   ...tabletSecondaryLargeIdle,
   opacity: 0.3,
 };
 
-export const tabletSecondaryRegularIdle: ButtonStyles = {
+export const tabletSecondaryRegularIdle: ButtonStylesNonColor = {
   ...tabletSecondaryLargeIdle,
   height: spacingBase * 4,
   paddingLeft: spacingBase * 2,
@@ -88,16 +88,16 @@ export const tabletSecondaryRegularIdle: ButtonStyles = {
   borderBottomRightRadius: spacingBase * (4 / 2),
 };
 
-export const tabletSecondaryRegularActive: ButtonStyles = {
+export const tabletSecondaryRegularActive: ButtonStylesNonColor = {
   ...tabletSecondaryRegularIdle,
 };
 
-export const tabletSecondaryRegularDisabled: ButtonStyles = {
+export const tabletSecondaryRegularDisabled: ButtonStylesNonColor = {
   ...tabletSecondaryRegularIdle,
   opacity: 0.3,
 };
 
-export const tabletTertiaryLargeIdle: ButtonStyles = {
+export const tabletTertiaryLargeIdle: ButtonStylesNonColor = {
   ...tabletPrimaryLargeIdle,
   height: "auto",
   paddingTop: 0,
@@ -115,26 +115,26 @@ export const tabletTertiaryLargeIdle: ButtonStyles = {
   lineHeight: 1.333,
 };
 
-export const tabletTertiaryLargeActive: ButtonStyles = {
+export const tabletTertiaryLargeActive: ButtonStylesNonColor = {
   ...tabletTertiaryLargeIdle,
   opacity: 0.5,
 };
 
-export const tabletTertiaryLargeDisabled: ButtonStyles = {
+export const tabletTertiaryLargeDisabled: ButtonStylesNonColor = {
   ...tabletTertiaryLargeIdle,
   opacity: 0.3,
 };
 
-export const tabletTertiaryRegularIdle: ButtonStyles = {
+export const tabletTertiaryRegularIdle: ButtonStylesNonColor = {
   ...tabletTertiaryLargeIdle,
 };
 
-export const tabletTertiaryRegularActive: ButtonStyles = {
+export const tabletTertiaryRegularActive: ButtonStylesNonColor = {
   ...tabletTertiaryRegularIdle,
   opacity: 0.5,
 };
 
-export const tabletTertiaryRegularDisabled: ButtonStyles = {
+export const tabletTertiaryRegularDisabled: ButtonStylesNonColor = {
   ...tabletTertiaryRegularIdle,
   opacity: 0.3,
 };
