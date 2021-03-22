@@ -1,14 +1,13 @@
-import { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
-import Background from "../components/Background";
+import Background, { BackgroundColor } from "../components/Background";
 
 function withBackground<P>(
   Component: React.FunctionComponent<P>,
-  level: BackdropLevel
+  backgroundColor: BackgroundColor
 ): React.FunctionComponent<P> {
   const WithBackground: React.FunctionComponent<P> = (props) => (
     <Background
-      level={level}
+      backgroundColor={backgroundColor}
       sx={{
         padding: "20px",
       }}

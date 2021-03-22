@@ -3,7 +3,7 @@ import "./global.css";
 import { themes } from "@storybook/theming";
 import { useDarkMode } from "storybook-dark-mode";
 import DarkModeProvider from "../src/components/DarkModeProvider";
-import { backdropGroup } from "@utilitywarehouse/customer-ui-theme";
+import { designTokens } from "../src/lib/theme";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -11,7 +11,7 @@ export const parameters = {
   darkMode: {
     dark: {
       ...themes.dark,
-      appContentBg: backdropGroup.dark.level0,
+      appContentBg: designTokens.colors.backdrops.dark.base,
     },
   },
 };

@@ -1,42 +1,44 @@
 import React from "react";
-import {
-  BackdropLevel,
-  backdropGroup,
-} from "@utilitywarehouse/customer-ui-theme";
-import { Box, BoxProps } from "@material-ui/core";
+import { Box, BoxProps } from "../";
+import { designTokens } from "../lib/theme";
 import { DarkModeContext } from "./DarkModeProvider";
 
-export const BackgroundContext = React.createContext<{
-  backdropLevel: BackdropLevel;
-}>({
-  backdropLevel: "level2",
+export enum BackgroundColor {
+  level0 = "level0",
+  level1 = "level1",
+  level2 = "level2",
+  level3 = "level3",
+}
+
+export const BackgroundContext = React.createContext({
+  backgroundColor: BackgroundColor.level2,
 });
 
 export const BackgroundConsumer = BackgroundContext.Consumer;
 
 export interface BackgroundProps {
   children?: React.ReactNode;
-  level: BackdropLevel;
+  backgroundColor: BackgroundColor;
 }
 
 const Background: React.FunctionComponent<BoxProps & BackgroundProps> = ({
   children,
-  level,
+  backgroundColor,
   ...props
 }) => {
   const { darkModeEnabled } = React.useContext(DarkModeContext);
-  const backdrop = React.useMemo(() => {
-    if (darkModeEnabled) return backdropGroup.dark;
-    return backdropGroup.light;
-  }, [level, darkModeEnabled]);
+  const backgroundColorStyle = React.useMemo(() => {
+    if (darkModeEnabled) return designTokens.colors.backdrops.dark.base;
+    return designTokens.colors.backdrops.light[backgroundColor];
+  }, [backgroundColor, darkModeEnabled]);
 
   return (
-    <BackgroundContext.Provider value={{ backdropLevel: level }}>
+    <BackgroundContext.Provider value={{ backgroundColor }}>
       <Box
         {...props}
         sx={{
           ...props.sx,
-          backgroundColor: backdrop[level],
+          backgroundColor: backgroundColorStyle,
         }}
       >
         {children}
