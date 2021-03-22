@@ -1,7 +1,7 @@
 const breakpoints = {
-  mobile: 320,
+  mobile: 375,
   tablet: 768,
-  desktop: 1024,
+  desktop: 1366,
 };
 
 type Breakpoints = typeof breakpoints;
