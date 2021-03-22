@@ -7,7 +7,7 @@
     "clean": "rm -rf dist/",
     "build": "yarn run clean && tsc",
     "watch": "yarn run build -- --watch",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "ci-package-changed": "exit 0"
   },
   "license": "ISC",
