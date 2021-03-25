@@ -1,15 +1,19 @@
-import { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
+import {
+  BackdropLevel,
+  Theme,
+  getTheme,
+} from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
 import { Box, BoxProps, MuiThemeProvider } from "../";
 import { DarkModeContext } from "./DarkModeProvider";
 import { ThemeContext } from "./ThemeProvider";
 
 interface BackgroundContextValue {
-  backgroundColor: BackdropLevel;
+  theme: Theme;
 }
 
 export const BackgroundContext = React.createContext<BackgroundContextValue>({
-  backgroundColor: "level2",
+  theme: getTheme("light", "level3"),
 });
 
 export const BackgroundConsumer = BackgroundContext.Consumer;
@@ -41,7 +45,7 @@ const Background: React.FunctionComponent<BackgroundProps> = ({
 
   return (
     <MuiThemeProvider theme={muiTheme}>
-      <BackgroundContext.Provider value={{ backgroundColor }}>
+      <BackgroundContext.Provider value={{ theme: customerUITheme }}>
         <Box
           {...props}
           sx={{

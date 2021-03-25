@@ -54,7 +54,6 @@ declare module "@material-ui/core/Typography" {
 export interface TypographyProps
   extends React.ComponentPropsWithoutRef<"span"> {
   state?: TypographyState;
-  className?: string;
   variant?: OverridableStringUnion<
     TypographyVariantDefaults,
     TypographyPropsVariantOverrides
