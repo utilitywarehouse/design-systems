@@ -6,6 +6,7 @@ This monorepo contains all the packages used for Customer UI. See [individual pa
 
 - [@utilitywarehouse/customer-ui-design-tokens](packages/design-tokens)
 - [@utilitywarehouse/customer-ui-fonts](packages/fonts)
+- [@utilitywarehouse/customer-ui-theme](packages/theme)
 - [@utilitywarehouse/customer-ui-material](packages/material)
 
 ## Working with this monorepo
