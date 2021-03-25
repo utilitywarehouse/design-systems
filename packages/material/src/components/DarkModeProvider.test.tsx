@@ -25,8 +25,8 @@ describe("DarkModeProvider", () => {
   let wrapper: Wrapper;
   function getWrapper(propOverrides: DarkModeProviderProps = {}): Wrapper {
     const props: DarkModeProviderProps = { ...propOverrides };
-    if (!props.children) {
-      props.children = (
+    return mount<typeof DarkModeProvider>(
+      <DarkModeProvider {...props}>
         <DarkModeConsumer>
           {({ darkModeEnabled, setDarkMode, darkModeEnabledSystemValue }) => (
             <TestComponent
@@ -36,10 +36,8 @@ describe("DarkModeProvider", () => {
             />
           )}
         </DarkModeConsumer>
-      );
-    }
-
-    return mount<typeof DarkModeProvider>(<DarkModeProvider {...props} />);
+      </DarkModeProvider>
+    );
   }
 
   const getTestComponent = (wrapper: Wrapper) =>
