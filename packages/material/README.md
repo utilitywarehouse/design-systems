@@ -79,3 +79,28 @@ Theming is also based on the [Background](docs/components/Background) component.
 * [Typography](docs/components/Typography)
 
 If the component you are looking for isn't listed above, provided it exists in Material UI you can import it `import { Component } from "@utilitywarehouse/customer-ui-material"`. Or contribute to Customer UI and help improve the package for others.
+
+## Contributing
+
+### Creating a new component
+
+When creating a new component try and follow the patterns set out in [Material UI](https://next.material-ui.com/), this means we can leverage their documentation and general feel for the library.
+
+To add a new component you will most likely need to create the component in the [theme package](../theme). This will let you define the style of the component. In some cases the component may already exist in the theme package.
+
+It can be beneficial to develop the theme alongside the component, keep in mind you will need to deploy the theme on a separate PR prior to releasing the component in material to do this.
+
+Once the theme is ready go ahead and create the component in `src/components`. If you are overriding or extending a Material UI component don't forget to update the export in the relevant `src/material` file by prefixing the exports you are overwriting with `Mui`. This allows for consumers to still have access to the underlying Material UI library.
+
+### Concepts
+
+The main thing to consider is the style overrides for the component. This should be done at a global level. You can do this by exporting a `getComponentThemeConfiguration` function, see other components for reference. You then need to update `src/components/index.ts` to include the newly exported `getComponentThemeConfiguration` function for your component. This will then be consumed by the theme in `src/lib/theme.ts`. From there define your component and its props.
+
+### New component checklist
+
+* Updated existing Material UI component export by prefixing `Mui` on overwritten exports
+* Overwritten styles at a global level using `getComponentThemeConfiguration` within the component file
+* Included the call to `getComponentThemeConfiguration` in `src/components/index.ts` for your new component
+* Added automated tests for your component
+* Added documentation for your new component and updated the `README.md` in the material package to reference this documentation at `docs/components/`
+* Added your component to Storybook in `storybook/components/`
