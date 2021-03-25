@@ -2,7 +2,7 @@ import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { TypographyPalette } from "./types";
 import { ColorScheme, BackdropLevel } from "../types";
 
-const lightModeLevel0 = {
+const lightModeLevel0: TypographyPalette = {
   h1: {
     default: {
       color: colors.white,
@@ -81,6 +81,50 @@ const lightModeLevel0 = {
     },
   },
   label: {
+    default: {
+      color: colors.white,
+    },
+    success: {
+      color: colors.apple,
+    },
+    error: {
+      color: colors.rose,
+    },
+  },
+  headline: {
+    default: {
+      color: colors.white,
+    },
+    success: {
+      color: colors.apple,
+    },
+    error: {
+      color: colors.rose,
+    },
+  },
+  subheading: {
+    default: {
+      color: colors.white,
+    },
+    success: {
+      color: colors.apple,
+    },
+    error: {
+      color: colors.rose,
+    },
+  },
+  footnote: {
+    default: {
+      color: colors.white,
+    },
+    success: {
+      color: colors.apple,
+    },
+    error: {
+      color: colors.rose,
+    },
+  },
+  caption: {
     default: {
       color: colors.white,
     },
@@ -95,7 +139,7 @@ const lightModeLevel0 = {
 
 const lightModeLevel1 = lightModeLevel0;
 
-const lightModeLevel2 = {
+const lightModeLevel2: TypographyPalette = {
   h1: {
     default: {
       color: colors.purple,
@@ -184,9 +228,54 @@ const lightModeLevel2 = {
       color: colors.maroonFlush,
     },
   },
+  headline: {
+    default: {
+      color: colors.midnight,
+    },
+    success: {
+      color: colors.jewel,
+    },
+    error: {
+      color: colors.maroonFlush,
+    },
+  },
+  subheading: {
+    default: {
+      color: colors.midnight,
+    },
+    success: {
+      color: colors.jewel,
+    },
+    error: {
+      color: colors.maroonFlush,
+    },
+  },
+  footnote: {
+    default: {
+      color: colors.midnight,
+    },
+    success: {
+      color: colors.jewel,
+    },
+    error: {
+      color: colors.maroonFlush,
+    },
+  },
+  caption: {
+    default: {
+      color: colors.midnight,
+    },
+    success: {
+      color: colors.jewel,
+    },
+    error: {
+      color: colors.maroonFlush,
+    },
+  },
 };
 
 const lightModeLevel3 = lightModeLevel2;
+const lightModeLevel4 = lightModeLevel3;
 
 const palettes = {
   light: {
@@ -194,12 +283,14 @@ const palettes = {
     level1: lightModeLevel1,
     level2: lightModeLevel2,
     level3: lightModeLevel3,
+    level4: lightModeLevel4,
   },
   dark: {
     level0: lightModeLevel0,
     level1: lightModeLevel1,
     level2: lightModeLevel2,
     level3: lightModeLevel3,
+    level4: lightModeLevel4,
   },
 };
 

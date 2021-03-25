@@ -3,8 +3,12 @@ import { getButtonStyles } from "./button";
 import { getTypographyStyles } from "./typography";
 import { getBackdropStyles } from "./backdrop";
 import spacing from "./spacing";
+import { breakpoints } from "./breakpoint";
+import { getPalette } from "./palette";
 
-export * from "./typography";
+export * from "./types";
+export * from "./button/types";
+export * from "./typography/types";
 
 export const getTheme = (
   colorScheme: ColorScheme,
@@ -19,5 +23,7 @@ export const getTheme = (
     spacing,
     colorScheme,
     backdropLevel,
+    breakpoints,
+    palette: getPalette(colorScheme, backdropLevel),
   };
 };

@@ -1,57 +1,67 @@
-import {
-  fonts,
-  fontWeights,
-} from "@utilitywarehouse/customer-ui-design-tokens";
+import { fontWeights } from "@utilitywarehouse/customer-ui-design-tokens";
 import { CommonTypographyStyles } from "./types";
+import {
+  commonHeadingStyles,
+  commonBodyStyles,
+  commonHeadlineStyles,
+  commonSubheadingStyles,
+  commonFootnoteStyles,
+  commonCaptionStyles,
+} from "./common";
 
 const desktop: CommonTypographyStyles = {
   h1: {
-    fontFamily: fonts.primary,
-    fontWeight: fontWeights.primary,
+    ...commonHeadingStyles,
     fontSize: 64,
     lineHeight: 1.125,
   },
   h2: {
-    fontFamily: fonts.primary,
-    fontWeight: fontWeights.primary,
+    ...commonHeadingStyles,
     fontSize: 40,
     lineHeight: 1.125,
   },
   h3: {
-    fontFamily: fonts.primary,
-    fontWeight: fontWeights.primary,
+    ...commonHeadingStyles,
     fontSize: 33,
     lineHeight: 1.121,
   },
   h4: {
-    fontFamily: fonts.primary,
-    fontWeight: fontWeights.primary,
+    ...commonHeadingStyles,
     fontSize: 20,
     lineHeight: 1.15,
   },
   h5: {
-    fontFamily: fonts.primary,
-    fontWeight: fontWeights.primary,
+    ...commonHeadingStyles,
     fontSize: 16,
     lineHeight: 1.125,
   },
   body: {
-    fontFamily: fonts.secondary,
-    fontWeight: fontWeights.secondary.regular,
+    ...commonBodyStyles,
     fontSize: 20,
     lineHeight: 1.6,
   },
   bodySmall: {
-    fontFamily: fonts.secondary,
-    fontWeight: fontWeights.secondary.regular,
+    ...commonBodyStyles,
     fontSize: 16,
     lineHeight: 1.615,
   },
   label: {
-    fontFamily: fonts.secondary,
+    ...commonBodyStyles,
     fontWeight: fontWeights.secondary.semibold,
     fontSize: 13,
     lineHeight: 1.625,
+  },
+  headline: {
+    ...commonHeadlineStyles,
+  },
+  subheading: {
+    ...commonSubheadingStyles,
+  },
+  footnote: {
+    ...commonFootnoteStyles,
+  },
+  caption: {
+    ...commonCaptionStyles,
   },
 };
 
