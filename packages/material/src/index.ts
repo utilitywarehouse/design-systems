@@ -3,8 +3,12 @@ export * from "./material/core";
 export { default as Background } from "./components/Background";
 export * from "./components/Background";
 
-export { default as Button } from "./components/Button";
-export * from "./components/Button";
+export { default as Button, ButtonProps } from "./components/Button";
+
+export {
+  default as Typography,
+  TypographyProps,
+} from "./components/Typography";
 
 export { default as DarkModeProvider } from "./components/DarkModeProvider";
 export * from "./components/DarkModeProvider";

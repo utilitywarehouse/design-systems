@@ -2,8 +2,8 @@ import React from "react";
 import "./global.css";
 import { themes } from "@storybook/theming";
 import { useDarkMode } from "storybook-dark-mode";
-import DarkModeProvider from "../src/components/DarkModeProvider";
-import { designTokens } from "../src/lib/theme";
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { ThemeProvider, DarkModeProvider } from "../src";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -11,8 +11,11 @@ export const parameters = {
   darkMode: {
     dark: {
       ...themes.dark,
-      appContentBg: designTokens.colors.backdrops.dark.base,
+      appContentBg: "#000000",
     },
+  },
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
   },
 };
 
@@ -24,7 +27,9 @@ export const decorators = [
         useSystemColorScheme={false}
         value={mode ? "on" : "off"}
       >
-        <Story />
+        <ThemeProvider>
+          <Story />
+        </ThemeProvider>
       </DarkModeProvider>
     );
   },

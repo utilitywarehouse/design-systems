@@ -6,6 +6,9 @@ module.exports = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
+    "@storybook/addon-controls",
     "storybook-dark-mode/register",
+    "@storybook/preset-scss",
+    "@storybook/addon-viewport",
   ],
 };
