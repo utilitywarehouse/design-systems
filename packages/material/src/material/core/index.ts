@@ -386,8 +386,14 @@ export * from "@material-ui/core/Toolbar";
 export { default as Tooltip } from "@material-ui/core/Tooltip";
 export * from "@material-ui/core/Tooltip";
 
-export { default as Typography } from "@material-ui/core/Typography";
-export * from "@material-ui/core/Typography";
+export { default as MuiTypography } from "@material-ui/core/Typography";
+export {
+  TypographyPropsVariantOverrides,
+  TypographyVariantDefaults,
+  TypographyTypeMap,
+  TypographyProps as MuiTypographyProps,
+  TypographyClassKey,
+} from "@material-ui/core/Typography";
 
 export { default as Unstable_TrapFocus } from "@material-ui/core/Unstable_TrapFocus";
 export * from "@material-ui/core/Unstable_TrapFocus";
