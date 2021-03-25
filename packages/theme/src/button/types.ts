@@ -1,4 +1,4 @@
-import { Breakpoint } from "../breakpoint";
+import { Breakpoint } from "../types";
 
 export interface ButtonStylesNonColor {
   height: number | string;
@@ -21,9 +21,11 @@ export interface ButtonStylesNonColor {
   fontWeight: number;
   fontSize: number;
   lineHeight: number;
+  textTransform: string;
 
   opacity: number;
   transition: string;
+  transitionProperty: string;
 }
 
 export interface ButtonStylesColor {

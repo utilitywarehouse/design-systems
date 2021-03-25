@@ -136,6 +136,62 @@ export const getTypographyStyles = (
           ...typographyPalette.label.error,
         },
       },
+      headline: {
+        default: {
+          ...commonTypographyStyles.desktop.headline,
+          ...typographyPalette.headline.default,
+        },
+        success: {
+          ...commonTypographyStyles.desktop.headline,
+          ...typographyPalette.headline.success,
+        },
+        error: {
+          ...commonTypographyStyles.desktop.headline,
+          ...typographyPalette.headline.error,
+        },
+      },
+      subheading: {
+        default: {
+          ...commonTypographyStyles.desktop.subheading,
+          ...typographyPalette.subheading.default,
+        },
+        success: {
+          ...commonTypographyStyles.desktop.subheading,
+          ...typographyPalette.subheading.success,
+        },
+        error: {
+          ...commonTypographyStyles.desktop.subheading,
+          ...typographyPalette.subheading.error,
+        },
+      },
+      caption: {
+        default: {
+          ...commonTypographyStyles.desktop.caption,
+          ...typographyPalette.caption.default,
+        },
+        success: {
+          ...commonTypographyStyles.desktop.caption,
+          ...typographyPalette.caption.success,
+        },
+        error: {
+          ...commonTypographyStyles.desktop.caption,
+          ...typographyPalette.caption.error,
+        },
+      },
+      footnote: {
+        default: {
+          ...commonTypographyStyles.desktop.footnote,
+          ...typographyPalette.footnote.default,
+        },
+        success: {
+          ...commonTypographyStyles.desktop.footnote,
+          ...typographyPalette.footnote.success,
+        },
+        error: {
+          ...commonTypographyStyles.desktop.footnote,
+          ...typographyPalette.footnote.error,
+        },
+      },
     },
     tablet: {
       h1: {
@@ -250,6 +306,62 @@ export const getTypographyStyles = (
           ...typographyPalette.label.error,
         },
       },
+      headline: {
+        default: {
+          ...commonTypographyStyles.tablet.headline,
+          ...typographyPalette.headline.default,
+        },
+        success: {
+          ...commonTypographyStyles.tablet.headline,
+          ...typographyPalette.headline.success,
+        },
+        error: {
+          ...commonTypographyStyles.tablet.headline,
+          ...typographyPalette.headline.error,
+        },
+      },
+      subheading: {
+        default: {
+          ...commonTypographyStyles.tablet.subheading,
+          ...typographyPalette.subheading.default,
+        },
+        success: {
+          ...commonTypographyStyles.tablet.subheading,
+          ...typographyPalette.subheading.success,
+        },
+        error: {
+          ...commonTypographyStyles.tablet.subheading,
+          ...typographyPalette.subheading.error,
+        },
+      },
+      caption: {
+        default: {
+          ...commonTypographyStyles.tablet.caption,
+          ...typographyPalette.caption.default,
+        },
+        success: {
+          ...commonTypographyStyles.tablet.caption,
+          ...typographyPalette.caption.success,
+        },
+        error: {
+          ...commonTypographyStyles.tablet.caption,
+          ...typographyPalette.caption.error,
+        },
+      },
+      footnote: {
+        default: {
+          ...commonTypographyStyles.tablet.footnote,
+          ...typographyPalette.footnote.default,
+        },
+        success: {
+          ...commonTypographyStyles.tablet.footnote,
+          ...typographyPalette.footnote.success,
+        },
+        error: {
+          ...commonTypographyStyles.tablet.footnote,
+          ...typographyPalette.footnote.error,
+        },
+      },
     },
     mobile: {
       h1: {
@@ -362,6 +474,62 @@ export const getTypographyStyles = (
         error: {
           ...commonTypographyStyles.mobile.label,
           ...typographyPalette.label.error,
+        },
+      },
+      headline: {
+        default: {
+          ...commonTypographyStyles.mobile.headline,
+          ...typographyPalette.headline.default,
+        },
+        success: {
+          ...commonTypographyStyles.mobile.headline,
+          ...typographyPalette.headline.success,
+        },
+        error: {
+          ...commonTypographyStyles.mobile.headline,
+          ...typographyPalette.headline.error,
+        },
+      },
+      subheading: {
+        default: {
+          ...commonTypographyStyles.mobile.subheading,
+          ...typographyPalette.subheading.default,
+        },
+        success: {
+          ...commonTypographyStyles.mobile.subheading,
+          ...typographyPalette.subheading.success,
+        },
+        error: {
+          ...commonTypographyStyles.mobile.subheading,
+          ...typographyPalette.subheading.error,
+        },
+      },
+      caption: {
+        default: {
+          ...commonTypographyStyles.mobile.caption,
+          ...typographyPalette.caption.default,
+        },
+        success: {
+          ...commonTypographyStyles.mobile.caption,
+          ...typographyPalette.caption.success,
+        },
+        error: {
+          ...commonTypographyStyles.mobile.caption,
+          ...typographyPalette.caption.error,
+        },
+      },
+      footnote: {
+        default: {
+          ...commonTypographyStyles.mobile.footnote,
+          ...typographyPalette.footnote.default,
+        },
+        success: {
+          ...commonTypographyStyles.mobile.footnote,
+          ...typographyPalette.footnote.success,
+        },
+        error: {
+          ...commonTypographyStyles.mobile.footnote,
+          ...typographyPalette.footnote.error,
         },
       },
     },

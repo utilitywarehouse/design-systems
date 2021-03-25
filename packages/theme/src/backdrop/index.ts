@@ -11,9 +11,12 @@ const backdrops: Backdrops = {
       backgroundColor: colors.purple,
     },
     level2: {
-      backgroundColor: colors.lightTint,
+      backgroundColor: colors.midTint,
     },
     level3: {
+      backgroundColor: colors.lightTint,
+    },
+    level4: {
       backgroundColor: colors.white,
     },
   },
@@ -28,6 +31,9 @@ const backdrops: Backdrops = {
       backgroundColor: colors.codGray,
     },
     level3: {
+      backgroundColor: colors.codGray,
+    },
+    level4: {
       backgroundColor: colors.codGray,
     },
   },

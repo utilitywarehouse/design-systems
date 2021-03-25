@@ -1,8 +1,7 @@
 import * as designTokens from "@utilitywarehouse/customer-ui-design-tokens";
+import { Breakpoints } from "./types";
 
-export type Breakpoint = "desktop" | "tablet" | "mobile";
-
-export const breakpoints: { [key in Breakpoint]: number } = {
+export const breakpoints: Breakpoints = {
   desktop: designTokens.breakpoints.desktop,
   tablet: designTokens.breakpoints.tablet,
   mobile: designTokens.breakpoints.mobile,

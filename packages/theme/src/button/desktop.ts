@@ -1,11 +1,13 @@
-import {
-  spacingBase,
-  fonts,
-  fontWeights,
-} from "@utilitywarehouse/customer-ui-design-tokens";
+import { spacingBase } from "@utilitywarehouse/customer-ui-design-tokens";
 import { ButtonStylesNonColor } from "./types";
+import {
+  commonDisabledStyles,
+  commonIdleStyles,
+  commonActiveStyles,
+} from "./common";
 
 export const desktopPrimaryLargeIdle: ButtonStylesNonColor = {
+  ...(commonIdleStyles as ButtonStylesNonColor),
   height: spacingBase * 7,
   paddingTop: 0,
   paddingBottom: 0,
@@ -22,22 +24,18 @@ export const desktopPrimaryLargeIdle: ButtonStylesNonColor = {
   borderBottomLeftRadius: spacingBase * (7 / 2),
   borderBottomRightRadius: spacingBase * (7 / 2),
 
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.semibold,
   fontSize: 18,
   lineHeight: 1,
-
-  opacity: 1,
-  transition: "",
 };
 
 export const desktopPrimaryLargeActive: ButtonStylesNonColor = {
   ...desktopPrimaryLargeIdle,
+  ...commonActiveStyles,
 };
 
 export const desktopPrimaryLargeDisabled: ButtonStylesNonColor = {
   ...desktopPrimaryLargeIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };
 
 export const desktopPrimaryRegularIdle: ButtonStylesNonColor = {
@@ -53,11 +51,12 @@ export const desktopPrimaryRegularIdle: ButtonStylesNonColor = {
 
 export const desktopPrimaryRegularActive: ButtonStylesNonColor = {
   ...desktopPrimaryRegularIdle,
+  ...commonActiveStyles,
 };
 
 export const desktopPrimaryRegularDisabled: ButtonStylesNonColor = {
   ...desktopPrimaryRegularIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };
 
 export const desktopSecondaryLargeIdle: ButtonStylesNonColor = {
@@ -70,11 +69,12 @@ export const desktopSecondaryLargeIdle: ButtonStylesNonColor = {
 
 export const desktopSecondaryLargeActive: ButtonStylesNonColor = {
   ...desktopSecondaryLargeIdle,
+  ...commonActiveStyles,
 };
 
 export const desktopSecondaryLargeDisabled: ButtonStylesNonColor = {
   ...desktopSecondaryLargeIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };
 
 export const desktopSecondaryRegularIdle: ButtonStylesNonColor = {
@@ -90,11 +90,12 @@ export const desktopSecondaryRegularIdle: ButtonStylesNonColor = {
 
 export const desktopSecondaryRegularActive: ButtonStylesNonColor = {
   ...desktopSecondaryRegularIdle,
+  ...commonActiveStyles,
 };
 
 export const desktopSecondaryRegularDisabled: ButtonStylesNonColor = {
   ...desktopSecondaryRegularIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };
 
 export const desktopTertiaryLargeIdle: ButtonStylesNonColor = {
@@ -117,12 +118,13 @@ export const desktopTertiaryLargeIdle: ButtonStylesNonColor = {
 
 export const desktopTertiaryLargeActive: ButtonStylesNonColor = {
   ...desktopTertiaryLargeIdle,
+  ...commonActiveStyles,
   opacity: 0.5,
 };
 
 export const desktopTertiaryLargeDisabled: ButtonStylesNonColor = {
   ...desktopTertiaryLargeIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };
 
 export const desktopTertiaryRegularIdle: ButtonStylesNonColor = {
@@ -131,10 +133,11 @@ export const desktopTertiaryRegularIdle: ButtonStylesNonColor = {
 
 export const desktopTertiaryRegularActive: ButtonStylesNonColor = {
   ...desktopTertiaryRegularIdle,
+  ...commonActiveStyles,
   opacity: 0.5,
 };
 
 export const desktopTertiaryRegularDisabled: ButtonStylesNonColor = {
   ...desktopTertiaryRegularIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };

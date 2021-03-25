@@ -1,11 +1,13 @@
-import {
-  spacingBase,
-  fonts,
-  fontWeights,
-} from "@utilitywarehouse/customer-ui-design-tokens";
+import { spacingBase } from "@utilitywarehouse/customer-ui-design-tokens";
 import { ButtonStylesNonColor } from "./types";
+import {
+  commonDisabledStyles,
+  commonIdleStyles,
+  commonActiveStyles,
+} from "./common";
 
 export const mobilePrimaryLargeIdle: ButtonStylesNonColor = {
+  ...(commonIdleStyles as ButtonStylesNonColor),
   height: spacingBase * 6,
   paddingTop: 0,
   paddingBottom: 0,
@@ -22,22 +24,18 @@ export const mobilePrimaryLargeIdle: ButtonStylesNonColor = {
   borderBottomLeftRadius: spacingBase * (6 / 2),
   borderBottomRightRadius: spacingBase * (6 / 2),
 
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.semibold,
   fontSize: 16,
   lineHeight: 1,
-
-  opacity: 1,
-  transition: "",
 };
 
 export const mobilePrimaryLargeActive: ButtonStylesNonColor = {
   ...mobilePrimaryLargeIdle,
+  ...commonActiveStyles,
 };
 
 export const mobilePrimaryLargeDisabled: ButtonStylesNonColor = {
   ...mobilePrimaryLargeIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };
 
 export const mobilePrimaryRegularIdle: ButtonStylesNonColor = {
@@ -53,11 +51,12 @@ export const mobilePrimaryRegularIdle: ButtonStylesNonColor = {
 
 export const mobilePrimaryRegularActive: ButtonStylesNonColor = {
   ...mobilePrimaryRegularIdle,
+  ...commonActiveStyles,
 };
 
 export const mobilePrimaryRegularDisabled: ButtonStylesNonColor = {
   ...mobilePrimaryRegularIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };
 
 export const mobileSecondaryLargeIdle: ButtonStylesNonColor = {
@@ -70,11 +69,12 @@ export const mobileSecondaryLargeIdle: ButtonStylesNonColor = {
 
 export const mobileSecondaryLargeActive: ButtonStylesNonColor = {
   ...mobileSecondaryLargeIdle,
+  ...commonActiveStyles,
 };
 
 export const mobileSecondaryLargeDisabled: ButtonStylesNonColor = {
   ...mobileSecondaryLargeIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };
 
 export const mobileSecondaryRegularIdle: ButtonStylesNonColor = {
@@ -90,11 +90,12 @@ export const mobileSecondaryRegularIdle: ButtonStylesNonColor = {
 
 export const mobileSecondaryRegularActive: ButtonStylesNonColor = {
   ...mobileSecondaryRegularIdle,
+  ...commonActiveStyles,
 };
 
 export const mobileSecondaryRegularDisabled: ButtonStylesNonColor = {
   ...mobileSecondaryRegularIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };
 
 export const mobileTertiaryLargeIdle: ButtonStylesNonColor = {
@@ -117,12 +118,13 @@ export const mobileTertiaryLargeIdle: ButtonStylesNonColor = {
 
 export const mobileTertiaryLargeActive: ButtonStylesNonColor = {
   ...mobileTertiaryLargeIdle,
+  ...commonActiveStyles,
   opacity: 0.5,
 };
 
 export const mobileTertiaryLargeDisabled: ButtonStylesNonColor = {
   ...mobileTertiaryLargeIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };
 
 export const mobileTertiaryRegularIdle: ButtonStylesNonColor = {
@@ -131,10 +133,11 @@ export const mobileTertiaryRegularIdle: ButtonStylesNonColor = {
 
 export const mobileTertiaryRegularActive: ButtonStylesNonColor = {
   ...mobileTertiaryRegularIdle,
+  ...commonActiveStyles,
   opacity: 0.5,
 };
 
 export const mobileTertiaryRegularDisabled: ButtonStylesNonColor = {
   ...mobileTertiaryRegularIdle,
-  opacity: 0.3,
+  ...commonDisabledStyles,
 };

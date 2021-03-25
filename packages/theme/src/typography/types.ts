@@ -1,4 +1,4 @@
-import { Breakpoint } from "../breakpoint";
+import { Breakpoint } from "../types";
 
 export interface TypographyStylesNonColor {
   fontFamily: string;
@@ -19,7 +19,11 @@ export type TypographyVariant =
   | "h5"
   | "body"
   | "bodySmall"
-  | "label";
+  | "label"
+  | "headline"
+  | "subheading"
+  | "footnote"
+  | "caption";
 
 export type TypographyState = "default" | "success" | "error";
 
