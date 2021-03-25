@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import { Button, ButtonProps } from "./Button";
-import { withBackground, BackgroundColor } from "../../src";
-import withCenterAlignment from "../hocs/withCenterAlignment";
+import { Background, BackgroundProps, Box, BoxProps } from "../../src";
+import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
 
 export default {
   title: `${base}Buttons`,
@@ -15,6 +15,11 @@ export default {
         type: "text",
       },
     },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+    },
   },
   args: {
     size: "regular",
@@ -23,30 +28,54 @@ export default {
   },
 } as Meta;
 
-const bindTemplate = (params) => {
-  const Template: Story<ButtonProps> = (args) => {
-    const Background = withBackground(withCenterAlignment(Fragment), {
-      backgroundColor: params.backgroundColor,
-    });
-
-    return (
-      <Background>
-        <Button {...args} />
-      </Background>
-    );
+const bindTemplate = () => {
+  const backgroundProps: Partial<BackgroundProps> = {
+    paddingTop: 6,
+    paddingBottom: 6,
+    paddingLeft: 3,
+    paddingRight: 3,
+    display: "flex",
+    flexDirection: "column",
   };
+
+  const boxProps: BoxProps = {
+    display: "flex",
+    justifyContent: "center",
+  };
+
+  const Template: Story<ButtonProps> = (args) => (
+    <HorizontalDisplayContainer>
+      <Background backgroundColor="level0" {...backgroundProps}>
+        <Box {...boxProps}>
+          <Button {...args} />
+        </Box>
+      </Background>
+      <Background backgroundColor="level1" {...backgroundProps}>
+        <Box {...boxProps}>
+          <Button {...args} />
+        </Box>
+      </Background>
+      <Background backgroundColor="level2" {...backgroundProps}>
+        <Box {...boxProps}>
+          <Button {...args} />
+        </Box>
+      </Background>
+      <Background backgroundColor="level3" {...backgroundProps}>
+        <Box {...boxProps}>
+          <Button {...args} />
+        </Box>
+      </Background>
+      <Background backgroundColor="level4" {...backgroundProps}>
+        <Box {...boxProps}>
+          <Button {...args} />
+        </Box>
+      </Background>
+    </HorizontalDisplayContainer>
+  );
 
   return Template;
 };
 
-export const Primary = bindTemplate({
-  backgroundColor: BackgroundColor.level3,
-});
+export const Main = bindTemplate();
 
-Primary.storyName = "Primary";
-
-export const Secondary = bindTemplate({
-  backgroundColor: BackgroundColor.level1,
-});
-
-Secondary.storyName = "Secondary";
+Main.storyName = "Button";
