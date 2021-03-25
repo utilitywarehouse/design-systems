@@ -7,17 +7,17 @@ import { ButtonSize, ButtonVariant } from "@utilitywarehouse/customer-ui-theme";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
-  size: "regular" | "large";
+  size?: "regular" | "large";
   variant?: "contained" | "outlined" | "tertiary";
-  fullWidth: boolean;
-  href: string;
+  fullWidth?: boolean;
+  href?: string;
 }
 
 const Button: React.FunctionComponent<ButtonProps> = ({
-  size,
+  size = "regular",
   children,
   variant = "contained",
-  fullWidth,
+  fullWidth = false,
   href,
   ...props
 }) => {

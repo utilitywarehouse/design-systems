@@ -5,3 +5,4 @@ packages/fonts/*.css.map
 coverage/
 packages/material/scripts
 packages/material/storybook
+*.md
