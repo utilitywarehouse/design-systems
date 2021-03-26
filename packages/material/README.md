@@ -75,6 +75,7 @@ Theming is also based on the [Background](docs/components/Background) component.
 * [Background](docs/components/Background)
 * [BackgroundContext](docs/components/BackgroundContext)
 * [Button](docs/components/Button)
+* [Container](docs/components/Container)
 * [DarkModeProvider](docs/components/DarkModeProvider)
 * [Grid](docs/components/Grid)
 * [ThemeProvider](docs/components/ThemeProvider)
