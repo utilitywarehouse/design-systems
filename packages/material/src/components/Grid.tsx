@@ -199,8 +199,44 @@ const Grid: React.FunctionComponent<GridProps> = ({
     isTablet,
   ]);
 
+  React.useEffect(() => {
+    if (!container && !item) {
+      console.warn(
+        "Warning: Customer UI <Grid /> component expects at least 'container' or 'item' to be true. Setting both to false will result in rendering nothing."
+      );
+    }
+  }, [container, item]);
+
+  React.useEffect(() => {
+    if (!container) {
+      return;
+    }
+
+    React.Children.forEach(children, (child) => {
+      if (
+        typeof child === "object" &&
+        (child as any).type !== Grid &&
+        (child as any).props?.item !== true
+      ) {
+        console.log({ child });
+        const componentDisplayName = (child as any).type?.displayName;
+        throw new Error(
+          `Error: Only Grid item components should be rendered as direct descendants of Grid containers
+
+Got ${
+            componentDisplayName
+              ? `<${componentDisplayName} />`
+              : "unknown component"
+          } instead.
+`
+        );
+      }
+    });
+  }, [children, container]);
+
   const classes = useStyles(styleProps);
   const divClassName = container ? "container" : "item";
+
   if (container) {
     return (
       <GridContext.Provider value={styleProps}>
