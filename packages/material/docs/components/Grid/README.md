@@ -8,30 +8,38 @@ The interface for the grid is a simplified version of it's Material UI counterpa
 
 ```TypeScript
 import React from "react";
-import { Grid } from "@utilitywarehouse/customer-ui-material";
+import { Grid, GridSpacer } from "@utilitywarehouse/customer-ui-material";
 
 const MyPage: React.FunctionalComponent = () => (
-  <Grid container>
-    // Full width grid item at desktop, tablet and mobile
-    <Grid item desktop={12} tablet={8} mobile={4}>
-      ...
-    </Grid>
-    <Grid item desktop={8} tablet={4} mobile={4}>
-      // Render a secondary grid, switching the layout to column and column-reverse
-      // respectively for tablet and mobile breakpoints
-      <Grid container direction={{ tablet: "column", mobile: "column-reverse" }}>
-        // Defaults to auto layout which consumes an entire row
-        <Grid item>
-        </Grid>
-        <Grid item desktop={6} tablet={2} mobile={2}>
-          ...
-        </Grid>
-        <Grid item desktop={6} tablet={2} mobile={2}>
-          ...
+  <>
+    <Grid container>
+      // Full width grid item at desktop, tablet and mobile
+      <Grid item desktop={12} tablet={8} mobile={4}>
+        ...
+      </Grid>
+      <Grid item desktop={8} tablet={4} mobile={4}>
+        // Render a secondary grid, switching the layout to column and column-reverse
+        // respectively for tablet and mobile breakpoints
+        <Grid container direction={{ tablet: "column", mobile: "column-reverse" }}>
+          // Defaults to auto layout which consumes an entire row
+          <Grid item>
+          </Grid>
+          <Grid item desktop={6} tablet={2} mobile={2}>
+            ...
+          </Grid>
+          <Grid item desktop={6} tablet={2} mobile={2}>
+            ...
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
-  </Grid>
+    <GridSpacer />
+    <Grid container>
+      <Grid item>
+        ...
+      </Grid>
+    </Grid>
+  </>
 );
 
 ```

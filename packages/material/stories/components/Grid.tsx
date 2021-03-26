@@ -1,1 +1,1 @@
-export { Grid, GridProps } from "../../src";
+export { Grid, GridProps, GridSpacer } from "../../src";

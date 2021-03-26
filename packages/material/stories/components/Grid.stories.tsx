@@ -3,7 +3,7 @@ import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import { Background, Box, Typography } from "../../src";
-import { Grid, GridProps } from "./Grid";
+import { Grid, GridProps, GridSpacer } from "./Grid";
 import { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
 
 export default {
@@ -45,29 +45,28 @@ const bindTemplate = () => {
             {getBox("Billing")}
           </Grid>
         </Grid>
-        <Box paddingTop={3}>
-          <Grid
-            container
-            direction={{ mobile: "column-reverse", tablet: "column-reverse" }}
-          >
-            <Grid item desktop={8} mobile={4}>
-              <Grid container>
-                <Grid item desktop={3} tablet={2} mobile={2}>
-                  {getBox("Quick link 1", "80px", "level0")}
-                </Grid>
-                <Grid item desktop={3} tablet={2} mobile={2}>
-                  {getBox("Quick link 2", "80px", "level0")}
-                </Grid>
-                <Grid item desktop={3} tablet={2} mobile={2}>
-                  {getBox("Quick link 3", "80px", "level0")}
-                </Grid>
+        <GridSpacer />
+        <Grid
+          container
+          direction={{ mobile: "column-reverse", tablet: "column-reverse" }}
+        >
+          <Grid item desktop={8} mobile={4}>
+            <Grid container>
+              <Grid item desktop={3} tablet={2} mobile={2}>
+                {getBox("Quick link 1", "80px", "level0")}
+              </Grid>
+              <Grid item desktop={3} tablet={2} mobile={2}>
+                {getBox("Quick link 2", "80px", "level0")}
+              </Grid>
+              <Grid item desktop={3} tablet={2} mobile={2}>
+                {getBox("Quick link 3", "80px", "level0")}
               </Grid>
             </Grid>
-            <Grid item desktop={4} mobile={4}>
-              {getBox("Recommended for you")}
-            </Grid>
           </Grid>
-        </Box>
+          <Grid item desktop={4} mobile={4}>
+            {getBox("Recommended for you")}
+          </Grid>
+        </Grid>
       </Background>
     );
   };

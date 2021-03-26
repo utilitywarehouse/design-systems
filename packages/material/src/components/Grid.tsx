@@ -2,7 +2,7 @@ import React from "react";
 import { GridDirection, GridWrap } from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { Breakpoint } from "@utilitywarehouse/customer-ui-theme";
-import { useMediaQuery, useTheme } from "../";
+import { useMediaQuery, useTheme, Box } from "../";
 import { MuiTheme } from "../lib/theme";
 
 type GridContextValue = StyleProps;
@@ -29,6 +29,12 @@ const defaultGridContextValue: GridContextValue = {
 const GridContext = React.createContext<GridContextValue>(
   defaultGridContextValue
 );
+
+enum GutterSize {
+  mobile = 2,
+  tablet = 3,
+  desktop = 3,
+}
 
 enum MaxColumns {
   mobile = 4,
@@ -88,12 +94,12 @@ const useStyles = makeStyles<MuiTheme, StyleProps>((theme: MuiTheme) => ({
     }
 
     const styles = {
-      width: `calc(100% + ${theme.spacing(3)})`,
+      width: `calc(100% + ${theme.spacing(GutterSize[props.breakpoint])})`,
       display: "flex",
       boxSizing: "border-box",
       flexDirection: props.direction[props.breakpoint],
       flexWrap: props.wrap[props.breakpoint],
-      margin: theme.spacing(-1.5),
+      margin: theme.spacing(GutterSize[props.breakpoint] * -1),
     };
 
     return styles;
@@ -111,7 +117,7 @@ const useStyles = makeStyles<MuiTheme, StyleProps>((theme: MuiTheme) => ({
     const styles: Record<string, string | number> = {
       width: "100%",
       boxSizing: "border-box",
-      padding: theme.spacing(1.5),
+      padding: theme.spacing(GutterSize[props.breakpoint] / 2),
       flex: size,
     };
 
@@ -256,3 +262,18 @@ Got ${
 };
 
 export default Grid;
+
+export const GridSpacer: React.FunctionComponent = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("mobile"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("mobile", "tablet"));
+  const breakpoint = React.useMemo<Breakpoint>(() => {
+    return (isMobile
+      ? "mobile"
+      : isTablet
+      ? "tablet"
+      : "desktop") as Breakpoint;
+  }, [isMobile, isTablet]);
+
+  return <Box paddingBottom={GutterSize[breakpoint]} />;
+};
