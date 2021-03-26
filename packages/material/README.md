@@ -11,6 +11,7 @@ Where possible this package will adhere to the same interfaces in Material UI, m
 * [Getting started](#getting-started)
 * [Theming](#theming)
 * [Components reference](#components-reference)
+* [Hooks reference](#hooks-reference)
 * [Contributing](#contributing)
 
 ## Storybook
@@ -80,6 +81,10 @@ Theming is also based on the [Background](docs/components/Background) component.
 * [Typography](docs/components/Typography)
 
 If the component you are looking for isn't listed above, provided it exists in Material UI you can import it `import { Component } from "@utilitywarehouse/customer-ui-material"`. Or contribute to Customer UI and help improve the package for others.
+
+## Hooks reference
+
+* [useDeviceSize](docs/hooks/useDeviceSize)
 
 ## Contributing
 
