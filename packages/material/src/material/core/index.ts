@@ -51,7 +51,6 @@ export * from "@material-ui/core/BottomNavigation";
 export { default as BottomNavigationAction } from "@material-ui/core/BottomNavigationAction";
 export * from "@material-ui/core/BottomNavigationAction";
 
-export { default as Box } from "@material-ui/core/Box";
 export * from "@material-ui/core/Box";
 
 export { default as Breadcrumbs } from "@material-ui/core/Breadcrumbs";
@@ -158,8 +157,19 @@ export * from "@material-ui/core/FormHelperText";
 export { default as FormLabel } from "@material-ui/core/FormLabel";
 export * from "@material-ui/core/FormLabel";
 
-export { default as Grid } from "@material-ui/core/Grid";
-export * from "@material-ui/core/Grid";
+export {
+  default as MuiGrid,
+  GridProps as MuiGridProps,
+  GridDirection,
+  GridSpacing,
+  GridWrap,
+  GridSize,
+  GridClassKey,
+  GridTypeMap,
+  gridClasses,
+  GridClasses,
+  getGridUtilityClass,
+} from "@material-ui/core/Grid";
 
 export { default as Grow } from "@material-ui/core/Grow";
 export * from "@material-ui/core/Grow";

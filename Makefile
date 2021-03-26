@@ -30,7 +30,7 @@ publish:
 	./node_modules/.bin/lerna exec --concurrency 1 -- yarn semantic-release -e semantic-release-monorepo
 
 material-storybook:
-	make -C packages/material storybook
+	make -B -C packages/material storybook
 
 ci-package-changed:
 	node ./scripts/ci-package-changed.js

@@ -3,7 +3,11 @@ export * from "./material/core";
 export { default as Background } from "./components/Background";
 export * from "./components/Background";
 
+export { default as Box } from "./components/Box";
+
 export { default as Button, ButtonProps } from "./components/Button";
+
+export { default as Grid, GridProps, GridSpacer } from "./components/Grid";
 
 export {
   default as Typography,
