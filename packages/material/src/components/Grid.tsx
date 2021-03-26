@@ -2,8 +2,9 @@ import React from "react";
 import { GridDirection, GridWrap } from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { Breakpoint } from "@utilitywarehouse/customer-ui-theme";
-import { useMediaQuery, useTheme, Box } from "../";
+import { Box } from "../";
 import { MuiTheme } from "../lib/theme";
+import useDeviceSize from "../hooks/useDeviceSize";
 
 type GridContextValue = StyleProps;
 
@@ -145,9 +146,7 @@ const Grid: React.FunctionComponent<GridProps> = ({
   wrap,
   children,
 }) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("mobile"));
-  const isTablet = useMediaQuery(theme.breakpoints.between("mobile", "tablet"));
+  const deviceSize = useDeviceSize();
   const containerStyleProps = React.useContext(GridContext);
 
   const resolvedDirection = React.useMemo<Direction>(() => {
@@ -187,11 +186,7 @@ const Grid: React.FunctionComponent<GridProps> = ({
       item,
       direction: resolvedDirection,
       wrap: resolvedWrap,
-      breakpoint: (isMobile
-        ? "mobile"
-        : isTablet
-        ? "tablet"
-        : "desktop") as Breakpoint,
+      breakpoint: deviceSize,
     };
   }, [
     mobile,
@@ -201,8 +196,7 @@ const Grid: React.FunctionComponent<GridProps> = ({
     item,
     resolvedDirection,
     resolvedWrap,
-    isMobile,
-    isTablet,
+    deviceSize,
   ]);
 
   React.useEffect(() => {
@@ -264,16 +258,6 @@ Got ${
 export default Grid;
 
 export const GridSpacer: React.FunctionComponent = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("mobile"));
-  const isTablet = useMediaQuery(theme.breakpoints.between("mobile", "tablet"));
-  const breakpoint = React.useMemo<Breakpoint>(() => {
-    return (isMobile
-      ? "mobile"
-      : isTablet
-      ? "tablet"
-      : "desktop") as Breakpoint;
-  }, [isMobile, isTablet]);
-
-  return <Box paddingBottom={GutterSize[breakpoint]} />;
+  const deviceSize = useDeviceSize();
+  return <Box paddingBottom={GutterSize[deviceSize]} />;
 };
