@@ -21,3 +21,5 @@ export { default as ThemeProvider } from "./components/ThemeProvider";
 export * from "./components/ThemeProvider";
 
 export { default as withBackground } from "./hocs/withBackground";
+
+export { default as useDeviceSize } from "./hooks/useDeviceSize";
