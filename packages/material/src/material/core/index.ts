@@ -106,7 +106,7 @@ export * from "@material-ui/core/ClickAwayListener";
 export { default as Collapse } from "@material-ui/core/Collapse";
 export * from "@material-ui/core/Collapse";
 
-export { default as Container } from "@material-ui/core/Container";
+export { default as MuiContainer } from "@material-ui/core/Container";
 export * from "@material-ui/core/Container";
 
 export { default as CssBaseline } from "@material-ui/core/CssBaseline";

@@ -7,6 +7,8 @@ export { default as Box } from "./components/Box";
 
 export { default as Button, ButtonProps } from "./components/Button";
 
+export { default as Container } from "./components/Container";
+
 export { default as Grid, GridProps, GridSpacer } from "./components/Grid";
 
 export {
