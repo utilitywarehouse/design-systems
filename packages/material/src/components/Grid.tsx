@@ -215,10 +215,13 @@ const Grid: React.FunctionComponent<GridProps> = ({
     React.Children.forEach(children, (child) => {
       if (
         typeof child === "object" &&
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (child as any).type !== Grid &&
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (child as any).props?.item !== true
       ) {
         console.log({ child });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const componentDisplayName = (child as any).type?.displayName;
         throw new Error(
           `Error: Only Grid item components should be rendered as direct descendants of Grid containers
