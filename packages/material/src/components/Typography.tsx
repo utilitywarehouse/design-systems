@@ -145,6 +145,12 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
           "&.MuiTypography-stateSuccess": {
             ...resolveStyles("body", "success"),
           },
+          "&.MuiTypography-inherit": {
+            fontSize: "inherit",
+            fontFamily: "inherit",
+            fontWeight: "inherit",
+            lineHeight: "inherit",
+          },
           "&.MuiTypography-h1": {
             ...resolveStyles("h1", "default"),
             "&.MuiTypography-stateError": {

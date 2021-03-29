@@ -11,6 +11,8 @@ export { default as Container } from "./components/Container";
 
 export { default as Grid, GridProps, GridSpacer } from "./components/Grid";
 
+export { default as Link, LinkProps } from "./components/Link";
+
 export {
   default as Typography,
   TypographyProps,

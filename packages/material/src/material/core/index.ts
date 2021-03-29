@@ -207,8 +207,16 @@ export * from "@material-ui/core/InputLabel";
 export { default as LinearProgress } from "@material-ui/core/LinearProgress";
 export * from "@material-ui/core/LinearProgress";
 
-export { default as Link } from "@material-ui/core/Link";
-export * from "@material-ui/core/Link";
+export { default as MuiLink } from "@material-ui/core/Link";
+export {
+  linkClasses,
+  LinkProps as MuiLinkProps,
+  LinkTypeMap,
+  LinkClassKey,
+  LinkBaseProps,
+  LinkClasses,
+  getLinkUtilityClass,
+} from "@material-ui/core/Link";
 
 export { default as List } from "@material-ui/core/List";
 export * from "@material-ui/core/List";
