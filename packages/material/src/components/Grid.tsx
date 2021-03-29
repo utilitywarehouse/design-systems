@@ -103,7 +103,7 @@ const useStyles = makeStyles<MuiTheme, StyleProps>((theme: MuiTheme) => ({
       boxSizing: "border-box",
       flexDirection: props.direction[props.breakpoint],
       flexWrap: props.wrap[props.breakpoint],
-      margin: theme.spacing(gutterSize[props.breakpoint] * -1),
+      margin: theme.spacing(gutterSize[props.breakpoint] * -0.5),
     };
 
     return styles;
