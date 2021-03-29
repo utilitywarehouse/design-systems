@@ -90,7 +90,6 @@ const toPercentage = (n: number) => `${n * 100}%`;
 const useStyles = makeStyles<MuiTheme, StyleProps>((theme: MuiTheme) => ({
   root: {
     width: "100%",
-    overflow: "hidden",
   },
   container: (props) => {
     if (!props.container) {
