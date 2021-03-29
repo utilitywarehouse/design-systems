@@ -1,7 +1,10 @@
 import React from "react";
 import { GridDirection, GridWrap } from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import { Breakpoint } from "@utilitywarehouse/customer-ui-theme";
+import {
+  Breakpoint,
+  gridConfiguration,
+} from "@utilitywarehouse/customer-ui-theme";
 import { Box } from "../";
 import { MuiTheme } from "../lib/theme";
 import useDeviceSize from "../hooks/useDeviceSize";
@@ -31,17 +34,17 @@ const GridContext = React.createContext<GridContextValue>(
   defaultGridContextValue
 );
 
-enum GutterSize {
-  mobile = 2,
-  tablet = 3,
-  desktop = 3,
-}
+const gutterSize = {
+  mobile: gridConfiguration.mobile.gutterSize,
+  tablet: gridConfiguration.tablet.gutterSize,
+  desktop: gridConfiguration.desktop.gutterSize,
+};
 
-enum MaxColumns {
-  mobile = 4,
-  tablet = 8,
-  desktop = 12,
-}
+const maxColumns = {
+  mobile: gridConfiguration.mobile.columns,
+  tablet: gridConfiguration.tablet.columns,
+  desktop: gridConfiguration.desktop.columns,
+};
 
 type GridSizeAuto = "auto";
 type MobileGridSize = GridSizeAuto | 1 | 2 | 3 | 4;
@@ -95,12 +98,12 @@ const useStyles = makeStyles<MuiTheme, StyleProps>((theme: MuiTheme) => ({
     }
 
     const styles = {
-      width: `calc(100% + ${theme.spacing(GutterSize[props.breakpoint])})`,
+      width: `calc(100% + ${theme.spacing(gutterSize[props.breakpoint])})`,
       display: "flex",
       boxSizing: "border-box",
       flexDirection: props.direction[props.breakpoint],
       flexWrap: props.wrap[props.breakpoint],
-      margin: theme.spacing(GutterSize[props.breakpoint] * -1),
+      margin: theme.spacing(gutterSize[props.breakpoint] * -1),
     };
 
     return styles;
@@ -118,7 +121,7 @@ const useStyles = makeStyles<MuiTheme, StyleProps>((theme: MuiTheme) => ({
     const styles: Record<string, string | number> = {
       width: "100%",
       boxSizing: "border-box",
-      padding: theme.spacing(GutterSize[props.breakpoint] / 2),
+      padding: theme.spacing(gutterSize[props.breakpoint] / 2),
       flex: size,
     };
 
@@ -127,9 +130,9 @@ const useStyles = makeStyles<MuiTheme, StyleProps>((theme: MuiTheme) => ({
       : "column";
 
     if (layout === "row" && props[props.breakpoint] !== "auto") {
-      styles.flexBasis = toPercentage(size / MaxColumns[props.breakpoint]);
-      styles.maxWidth = toPercentage(size / MaxColumns[props.breakpoint]);
-      styles.width = toPercentage(size / MaxColumns[props.breakpoint]);
+      styles.flexBasis = toPercentage(size / maxColumns[props.breakpoint]);
+      styles.maxWidth = toPercentage(size / maxColumns[props.breakpoint]);
+      styles.width = toPercentage(size / maxColumns[props.breakpoint]);
     }
 
     return styles;
@@ -259,5 +262,5 @@ export default Grid;
 
 export const GridSpacer: React.FunctionComponent = () => {
   const deviceSize = useDeviceSize();
-  return <Box paddingBottom={GutterSize[deviceSize]} />;
+  return <Box paddingBottom={gutterSize[deviceSize]} />;
 };
