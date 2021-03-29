@@ -1,0 +1,20 @@
+{
+  "name": "@utilitywarehouse/customer-ui-icons",
+  "version": "0.1.0",
+  "description": "Customer UI icons",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "echo \"nothing to clean\"",
+    "build": "echo \"nothing to build\"",
+    "watch": "echo \"nothing to watch\"",
+    "test": "echo \"nothing to test\"",
+    "ci-package-changed": "exit 0"
+  },
+  "license": "ISC",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "files": [
+    "*.svg"
+  ]
+}
