@@ -1,5 +1,6 @@
 import { BackdropStyles } from "./backdrop";
 import { ButtonStyles } from "./button";
+import { GridConfiguration } from "./grid";
 import { LinkStyles } from "./link";
 import { TypographyStyles } from "./typography";
 
@@ -52,6 +53,7 @@ export interface Theme {
   components: {
     backdrop: BackdropStyles;
     button: ButtonStyles;
+    grid: GridConfiguration;
     link: LinkStyles;
     typography: TypographyStyles;
   };
