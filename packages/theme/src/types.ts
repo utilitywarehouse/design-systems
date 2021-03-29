@@ -1,5 +1,6 @@
 import { BackdropStyles } from "./backdrop";
 import { ButtonStyles } from "./button";
+import { LinkStyles } from "./link";
 import { TypographyStyles } from "./typography";
 
 export type Breakpoint = "desktop" | "tablet" | "mobile";
@@ -51,6 +52,7 @@ export interface Theme {
   components: {
     backdrop: BackdropStyles;
     button: ButtonStyles;
+    link: LinkStyles;
     typography: TypographyStyles;
   };
   spacing: Spacing;
