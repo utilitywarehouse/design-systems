@@ -60,6 +60,7 @@ export interface TypographyProps
   >;
   gutterBottom?: boolean;
   paragraph?: boolean;
+  component?: React.ElementType;
 }
 
 const Typography: React.FunctionComponent<TypographyProps> = ({
