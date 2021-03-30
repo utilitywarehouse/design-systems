@@ -15,6 +15,6 @@
     "access": "restricted"
   },
   "files": [
-    "*.svg"
+    "24x24/*"
   ]
 }
