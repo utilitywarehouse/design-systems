@@ -1,7 +1,7 @@
 import React from "react";
-import { Box } from "..";
+import { Box, BoxProps } from "..";
 
-export interface IconProps {
+export interface IconProps extends BoxProps {
   size?: number | "inherit";
   color?: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -11,6 +11,7 @@ const Icon: React.FunctionComponent<IconProps> = ({
   size = "inherit",
   color = "inherit",
   icon,
+  ...props
 }) => {
   const Icon = icon;
   const fontSize = React.useMemo(() => {
@@ -22,7 +23,7 @@ const Icon: React.FunctionComponent<IconProps> = ({
   }, [size]);
 
   return (
-    <Box fontSize={fontSize}>
+    <Box {...props} fontSize={fontSize}>
       <Icon fill={color} />
     </Box>
   );
