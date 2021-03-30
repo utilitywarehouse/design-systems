@@ -4009,10 +4009,10 @@
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-design-tokens/-/customer-ui-design-tokens-1.0.0-alpha.7.tgz#198d3d0aaadbce9ed04d96d921fc2ad1def93155"
   integrity sha512-kGrZyQ8gFu1QsRpwXbenRco1R6C4ZiH9m/5uCgeDKQGIY862DJ7E4sUmq5NRnIt1qlYXZ9aAHiSiWDSWz4hFGA==
 
-"@utilitywarehouse/customer-ui-fonts@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-fonts/-/customer-ui-fonts-1.0.0-alpha.1.tgz#bb57f8149b4fa16da0147670acd4352693024e5d"
-  integrity sha512-UKt3KKaUe41pu6aY9bKFd/ZCB53kmF44v2ZvD0BrdB3Jt9CI8y7jayCmIb2bp+rk3Sfu6js7hbY74QWRwV7SFg==
+"@utilitywarehouse/customer-ui-fonts@^1.0.0-alpha.3":
+  version "1.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-fonts/-/customer-ui-fonts-1.0.0-alpha.3.tgz#f79a3b70d5ad0ebb4523a3bb5e70d505da353613"
+  integrity sha512-C7fJGz4zA5QnG3xDh+GfRXouIadXy8QMBhZAotFBumRtPykkAEYjZZZvaJCLSVIUnQLlX+nbaQ/kFJkWhzJK4g==
 
 "@utilitywarehouse/customer-ui-theme@1.0.0-alpha.4":
   version "1.0.0-alpha.4"
