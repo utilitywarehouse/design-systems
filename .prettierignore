@@ -5,4 +5,5 @@ packages/fonts/*.css.map
 coverage/
 packages/material/scripts
 packages/material/storybook
+packages/react-icons/src
 *.md
