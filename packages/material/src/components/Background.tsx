@@ -4,9 +4,8 @@ import {
   getTheme,
 } from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
-import { Box, BoxProps, MuiThemeProvider } from "../";
-import { DarkModeContext } from "./DarkModeProvider";
-import { ThemeContext } from "./ThemeProvider";
+import { Box, BoxProps } from "../";
+import BackgroundProvider from "./BackgroundProvider";
 
 interface BackgroundContextValue {
   theme: Theme;
@@ -23,41 +22,37 @@ export interface BackgroundProps extends BoxProps {
   backgroundColor: BackdropLevel;
 }
 
-const Background: React.FunctionComponent<BackgroundProps> = ({
+const BackgroundInner: React.FunctionComponent<BackgroundProps> = ({
   children,
   backgroundColor,
   ...props
 }) => {
-  const { getCustomerUITheme, getMuiTheme } = React.useContext(ThemeContext);
-  const { darkModeEnabled } = React.useContext(DarkModeContext);
-
-  const customerUITheme = React.useMemo(() => {
-    return getCustomerUITheme(backgroundColor);
-  }, [getCustomerUITheme, darkModeEnabled, backgroundColor]);
+  const { theme } = React.useContext(BackgroundContext);
 
   const backgroundColorStyle = React.useMemo(() => {
-    return customerUITheme.components.backdrop.backgroundColor;
-  }, [backgroundColor, customerUITheme]);
-
-  const muiTheme = React.useMemo(() => {
-    return getMuiTheme(backgroundColor);
-  }, [getMuiTheme, darkModeEnabled, backgroundColor]);
+    return theme.components.backdrop.backgroundColor;
+  }, [backgroundColor, theme]);
 
   return (
-    <MuiThemeProvider theme={muiTheme}>
-      <BackgroundContext.Provider value={{ theme: customerUITheme }}>
-        <Box
-          {...props}
-          sx={{
-            ...props.sx,
-            backgroundColor: backgroundColorStyle,
-          }}
-        >
-          {children}
-        </Box>
-      </BackgroundContext.Provider>
-    </MuiThemeProvider>
+    <Box
+      {...props}
+      sx={{
+        ...props.sx,
+        backgroundColor: backgroundColorStyle,
+      }}
+    >
+      {children}
+    </Box>
   );
 };
+
+const Background: React.FunctionComponent<BackgroundProps> = ({
+  backgroundColor,
+  ...props
+}) => (
+  <BackgroundProvider backgroundColor={backgroundColor}>
+    <BackgroundInner {...props} backgroundColor={backgroundColor} />
+  </BackgroundProvider>
+);
 
 export default Background;
