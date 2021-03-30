@@ -13,8 +13,7 @@
 
 @font-face {
   font-family: "Work Sans";
-  src: url("./Work-Sans.woff2"), url("./Work-Sans.woff") format("woff"),
-    url("./Work-Sans.ttf") format("ttf");
+  src: url("./Work-Sans.woff2");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
@@ -24,9 +23,8 @@
 }
 
 @font-face {
-  font-family: "Work Sans SemiBold";
-  src: url("./Work-Sans.woff2"), url("./Work-Sans.woff") format("woff"),
-    url("./Work-Sans.ttf") format("ttf");
+  font-family: "Work Sans";
+  src: url("./Work-Sans.woff2");
   font-weight: 600;
   font-display: swap;
   font-style: normal;
