@@ -2,10 +2,10 @@
   "name": "@utilitywarehouse/customer-ui-react-icons",
   "version": "0.1.0",
   "description": "React icons based on the icons svgs",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist/",
-    "build": "node ./scripts/build.js && yarn run clean && tsc",
+    "clean": "rm -rf src/ 48x48/ 24x24/",
+    "build": "yarn run clean && node ./scripts/build.js && tsc",
     "watch": "echo \"Nothing to watch\"",
     "test": "echo \"Nothing to test\"",
     "ci-package-changed": "exit 0"
@@ -19,11 +19,10 @@
     "@svgr/cli": "^5.5.0",
     "@utilitywarehouse/customer-ui-icons": "^1.0.0-alpha.3",
     "mkdirp": "^1.0.4",
-    "rimraf": "^3.0.2",
     "uuid": "^8.3.2"
   },
   "files": [
-    "dist",
+    "24x24",
     "src"
   ]
 }

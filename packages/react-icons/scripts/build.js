@@ -1,10 +1,8 @@
-const typescript = require("typescript");
 const uuid = require("uuid").v4;
 const svgr = require("@svgr/core").default;
 const fs = require("fs");
 const path = require("path");
 const mkdirp = require("mkdirp");
-const rimraf = require("rimraf");
 
 const distPath = path.resolve(__dirname, "..", "src");
 
@@ -97,7 +95,6 @@ const createIcon = (icon) => {
   const code = svgr.sync(
     cleanSVG(rawIcon),
     {
-      icon: true,
       typescript: true,
       prettier: true,
       svgo: true,
@@ -123,49 +120,7 @@ const createIcons = (icons) => {
   });
 };
 
-const getExportNodes = (icons) => {
-  const { factory } = typescript;
-  return icons.map((icon) => {
-    return factory.createExportDeclaration(
-      undefined,
-      undefined,
-      false,
-      factory.createNamedExports([
-        factory.createExportSpecifier(
-          factory.createIdentifier("default"),
-          factory.createIdentifier(icon.iconName)
-        ),
-      ]),
-      factory.createStringLiteral(`./${icon.subdirectory}/${icon.iconName}`)
-    );
-  });
-};
-
-const generateIndex = (icons) => {
-  const indexFile = path.resolve(distPath, "index.ts");
-  const nodes = [...getExportNodes(icons)];
-  const nodeArray = typescript.factory.createNodeArray(nodes, true);
-  const printer = typescript.createPrinter({
-    newLine: typescript.NewLineKind.LineFeed,
-    removeComments: false,
-  });
-  const source = typescript.createSourceFile(
-    indexFile,
-    "",
-    typescript.ScriptTarget.ES2019
-  );
-
-  const output = printer.printList(
-    typescript.ListFormat.MultiLine,
-    nodeArray,
-    source
-  );
-
-  fs.writeFileSync(indexFile, output, { encoding: "utf8" });
-};
-
 const setupDist = () => {
-  rimraf.sync(distPath);
   mkdirp.sync(distPath);
   iconSubdirectories.forEach((iconSubdirectory) => {
     mkdirp.sync(path.join(distPath, iconSubdirectory));
@@ -176,7 +131,6 @@ const main = () => {
   setupDist();
   const icons = discoverIcons();
   createIcons(icons);
-  generateIndex(icons);
 };
 
 main();

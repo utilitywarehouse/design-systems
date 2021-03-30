@@ -6,4 +6,5 @@ coverage/
 packages/material/scripts
 packages/material/storybook
 packages/react-icons/src
+packages/react-icons/24x24
 *.md
