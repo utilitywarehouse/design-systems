@@ -97,7 +97,6 @@ const createIcon = (icon) => {
   const code = svgr.sync(
     cleanSVG(rawIcon),
     {
-      icon: true,
       typescript: true,
       prettier: true,
       svgo: true,
