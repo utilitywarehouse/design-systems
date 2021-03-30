@@ -1,53 +1,27 @@
 import React from "react";
 import { MuiTheme } from "../lib/theme";
-import { useDeviceSize, makeStyles } from "..";
-import { BackgroundContext } from "./Background";
+import { makeStyles, Theme } from "..";
 
-interface StyleProps {
-  maxWidth: number;
-  offset: number;
-}
-
-const useStyles = makeStyles<MuiTheme, StyleProps>(() => ({
-  root: {
-    display: "block",
-    width: "100%",
-    margin: "0 auto",
-    maxWidth: (props) => `${props.offset * 2 + props.maxWidth}px`,
-  },
+const useStyles = makeStyles<MuiTheme>((theme: Theme) => ({
   container: {
     display: "block",
     width: "100%",
-    padding: (props) => `0 ${props.offset}px`,
+    padding: `0 ${theme.spacing(2)}`,
     margin: "0 auto",
     boxSizing: "border-box",
-    maxWidth: (props) => `${props.maxWidth}px`,
+    maxWidth: `calc(343px + ${theme.spacing(4)})`,
+    [theme.breakpoints.up("tablet")]: {
+      maxWidth: `calc(720px + ${theme.spacing(6)})`,
+      padding: `0 ${theme.spacing(3)}`,
+    },
+    [theme.breakpoints.up("desktop")]: {
+      maxWidth: `calc(1021px + ${theme.spacing(6)})`,
+    },
   },
 }));
 
 const Container: React.FC = ({ children }) => {
-  const { theme } = React.useContext(BackgroundContext);
-  const deviceSize = useDeviceSize();
-  let maxWidth: number;
-  let offset: number;
-  switch (deviceSize) {
-    case "mobile":
-      maxWidth = 343;
-      offset = theme.spacing(2);
-      break;
-
-    case "tablet":
-      maxWidth = 720;
-      offset = theme.spacing(3);
-      break;
-
-    case "desktop":
-      maxWidth = 1021;
-      offset = theme.spacing(3);
-      break;
-  }
-
-  const classes = useStyles({ maxWidth, offset });
+  const classes = useStyles();
   return <div className={classes.container}>{children}</div>;
 };
 
