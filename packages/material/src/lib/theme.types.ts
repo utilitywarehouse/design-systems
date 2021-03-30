@@ -1,17 +1,10 @@
-import { Breakpoints } from "@material-ui/core/styles/createBreakpoints";
-import { Palette } from "@material-ui/core/styles/createPalette";
-
+import { Theme as MuiTheme } from "@material-ui/core/styles/createMuiTheme";
+import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 import { Components } from "@material-ui/core/styles/components";
 
 export type Spacing = (n: number) => string;
 
-interface GetComponentThemeConfigurationParams {
-  breakpoints: Breakpoints;
-  spacing: Spacing;
-  palette: Palette;
-  darkModeEnabled: boolean;
-}
-
 export type GetComponentThemeConfiguration = (
-  params: GetComponentThemeConfigurationParams
+  theme: CustomerUITheme,
+  muiTheme: MuiTheme
 ) => Components;

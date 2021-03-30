@@ -1,17 +1,12 @@
 import React from "react";
-import Background, { BackgroundColor } from "../components/Background";
+import Background, { BackgroundProps } from "../components/Background";
 
 function withBackground<P>(
   Component: React.FunctionComponent<P>,
-  backgroundColor: BackgroundColor
+  backgroundProps: BackgroundProps
 ): React.FunctionComponent<P> {
   const WithBackground: React.FunctionComponent<P> = (props) => (
-    <Background
-      backgroundColor={backgroundColor}
-      sx={{
-        padding: "20px",
-      }}
-    >
+    <Background {...backgroundProps}>
       <Component {...props} />
     </Background>
   );

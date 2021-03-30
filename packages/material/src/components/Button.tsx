@@ -2,211 +2,139 @@ import React from "react";
 import MuiButton, {
   ButtonProps as MuiButtonProps,
 } from "@material-ui/core/Button";
-import { SxProps } from "@material-ui/system";
-import { BackgroundContext, BackgroundColor } from "./Background";
-import { Theme } from "../material/core/styles";
+import { CSSProperties } from "@material-ui/core/styles/withStyles";
+import { ButtonSize, ButtonVariant } from "@utilitywarehouse/customer-ui-theme";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
 
-export type ButtonVariantDefaults =
-  | "contained"
-  | "outlined"
-  | "tertiary"
-  | "nav";
-
-export type ButtonSize = "regular" | "large";
-
-interface Props {
-  variant?: ButtonVariantDefaults;
-  children: React.ReactNode;
-  disabled?: boolean;
-  endIcon?: React.ReactNode;
+export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+  size?: "regular" | "large";
+  variant?: "contained" | "outlined" | "tertiary";
   fullWidth?: boolean;
   href?: string;
-  size?: ButtonSize;
-  startIcon?: React.ReactNode;
-  sx?: SxProps<Theme>;
 }
 
-export type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & Props;
-
-const defaultMuiButtonProps: MuiButtonProps = {
-  disableElevation: true,
-};
-
 const Button: React.FunctionComponent<ButtonProps> = ({
-  variant = "contained",
   size = "regular",
+  children,
+  variant = "contained",
+  fullWidth = false,
+  href,
   ...props
 }) => {
-  const { backgroundColor } = React.useContext(BackgroundContext);
-  const buttonProps = { ...defaultMuiButtonProps, ...props } as MuiButtonProps;
-  switch (variant) {
-    case "contained":
-      buttonProps.variant = "contained";
-      break;
+  const muiButtonProps: MuiButtonProps = {
+    color: "primary",
+    disableElevation: true,
+    fullWidth,
+    href,
+  };
 
-    case "outlined":
-      buttonProps.variant = "outlined";
-      break;
-
-    case "tertiary":
-      buttonProps.variant = "text";
-      buttonProps.className = "customer-ui-tertiary";
-      buttonProps.disableRipple = true;
-      buttonProps.children = (
-        <>
-          {buttonProps.children}
-          <span className="customer-ui-bottom-border" />
-        </>
-      );
-      break;
-
-    case "nav":
-      buttonProps.variant = "text";
-      buttonProps.disableRipple = true;
+  if (variant === "tertiary") {
+    muiButtonProps.variant = "text";
+  } else {
+    muiButtonProps.variant = variant;
   }
 
-  switch (size) {
-    case "regular":
-      buttonProps.size = "medium";
-      break;
-
-    default:
-      buttonProps.size = size;
+  if (size === "regular") {
+    muiButtonProps.size = "medium";
+  } else {
+    muiButtonProps.size = "large";
   }
 
-  switch (backgroundColor) {
-    case BackgroundColor.level0:
-    case BackgroundColor.level1:
-      buttonProps.color = "primary";
-      break;
-
-    default:
-      buttonProps.color = "secondary";
-  }
-
-  return <MuiButton {...buttonProps} />;
+  return (
+    <MuiButton {...(props as MuiButtonProps)} {...muiButtonProps}>
+      {children}
+    </MuiButton>
+  );
 };
 
 export default Button;
 
-export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ({
-  spacing,
-  palette,
-  breakpoints,
-}) => ({
-  MuiButton: {
-    styleOverrides: {
-      root: {
-        textTransform: "none",
-        fontFamily: "Work-Sans",
-        fontWeight: 600,
-        height: spacing(4),
-        padding: `0 ${spacing(2)}`,
-        borderRadius: spacing(2),
-        fontSize: spacing(2),
-        letterSpacing: 0,
-        lineHeight: "1",
-        ":disabled": {
-          opacity: 0.3,
-          cursor: "not-allowed",
+export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
+  theme,
+  muiTheme
+) => {
+  const resolveStyles = (
+    variant: ButtonVariant,
+    size: ButtonSize
+  ): CSSProperties => {
+    return {
+      ...theme.components.button.mobile[variant][size].idle,
+      [muiTheme.breakpoints.up("tablet")]: {
+        ...theme.components.button.tablet[variant][size].idle,
+      },
+      [muiTheme.breakpoints.up("desktop")]: {
+        ...theme.components.button.desktop[variant][size].idle,
+      },
+      "&:hover": {
+        ...theme.components.button.mobile[variant][size].active,
+        [muiTheme.breakpoints.up("tablet")]: {
+          ...theme.components.button.tablet[variant][size].active,
         },
-        [breakpoints.up("xl")]: {
-          height: spacing(5),
-          fontSize: spacing(2.25),
-          borderRadius: spacing(2.5),
-          padding: `0 ${spacing(3)}`,
+        [muiTheme.breakpoints.up("desktop")]: {
+          ...theme.components.button.desktop[variant][size].active,
         },
       },
-      sizeLarge: {
-        height: spacing(6),
-        padding: `0 ${spacing(3)}`,
-        borderRadius: spacing(3),
-        [breakpoints.up("xl")]: {
-          height: spacing(7),
-          borderRadius: spacing(3.5),
-          padding: `0 ${spacing(4)}`,
+      "&:disabled": {
+        ...theme.components.button.mobile[variant][size].disabled,
+        [muiTheme.breakpoints.up("tablet")]: {
+          ...theme.components.button.tablet[variant][size].disabled,
+        },
+        [muiTheme.breakpoints.up("desktop")]: {
+          ...theme.components.button.desktop[variant][size].disabled,
         },
       },
-      containedSecondary: {
-        backgroundColor: palette.primary.main,
-        color: palette.primary.contrastText,
-        ":hover": {
-          backgroundColor: palette.primary.light,
-        },
-        ":disabled": {
-          backgroundColor: palette.primary.main,
-          color: palette.primary.contrastText,
-        },
-      },
-      containedPrimary: {
-        backgroundColor: palette.primary.main,
-        color: palette.primary.contrastText,
-        ":hover": {
-          backgroundColor: palette.primary.light,
-        },
-        ":disabled": {
-          backgroundColor: palette.primary.main,
-          color: palette.primary.contrastText,
-        },
-      },
-      outlinedPrimary: {
-        backgroundColor: "transparent",
-        color: palette.secondary.contrastText,
-        border: `${spacing(0.25)} solid ${palette.primary.main}`,
-        ":hover": {
-          border: `${spacing(0.25)} solid ${palette.secondary.contrastText}`,
-        },
-        ":disabled": {
-          backgroundColor: "transparent",
-          color: palette.secondary.contrastText,
-          border: `${spacing(0.25)} solid ${palette.primary.main}`,
-        },
-      },
-      outlinedSecondary: {
-        backgroundColor: "transparent",
-        color: palette.primary.contrastText,
-        border: `${spacing(0.25)} solid ${palette.primary.main}`,
-        ":hover": {
-          border: `${spacing(0.25)} solid ${palette.primary.contrastText}`,
-        },
-        ":disabled": {
-          backgroundColor: "transparent",
-          color: palette.primary.contrastText,
-          border: `${spacing(0.25)} solid ${palette.primary.main}`,
-        },
-      },
-      text: {
-        transition: "opacity 0.25s ease-out",
-        ":hover": {
-          background: "transparent",
-          opacity: 0.5,
-        },
-        ":focus": {
-          opacity: 0.5,
-        },
-        ":disabled": {
-          transition: "none",
-        },
-        "&.customer-ui-tertiary": {
-          "> span.MuiButton-label": {
-            position: "relative",
+    } as CSSProperties;
+  };
+
+  return {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          ...resolveStyles("primary", "regular"),
+          "&.MuiButton-containedSecondary": {
+            ...resolveStyles("primary", "regular"),
+            "&.MuiButton-sizeLarge": {
+              ...resolveStyles("primary", "large"),
+            },
           },
-          " .customer-ui-bottom-border": {
-            borderBottom: `${spacing(0.25)} solid ${palette.primary.main}`,
-            width: "104%",
-            position: "absolute",
-            display: "block",
-            bottom: spacing(-0.75),
+          "&.MuiButton-containedPrimary": {
+            ...resolveStyles("primary", "regular"),
+            "&.MuiButton-sizeLarge": {
+              ...resolveStyles("primary", "large"),
+            },
+          },
+          "&.MuiButton-outlinedPrimary": {
+            ...resolveStyles("secondary", "regular"),
+            "&.MuiButton-sizeLarge": {
+              ...resolveStyles("secondary", "large"),
+            },
+          },
+          "&.MuiButton-outlinedSecondary": {
+            ...resolveStyles("secondary", "regular"),
+            "&.MuiButton-sizeLarge": {
+              ...resolveStyles("secondary", "large"),
+            },
+          },
+          "&.MuiButton-text": {
+            ...resolveStyles("tertiary", "regular"),
+            "&.MuiButton-sizeLarge": {
+              ...resolveStyles("tertiary", "large"),
+            },
+          },
+          "&.MuiButton-textPrimary": {
+            ...resolveStyles("tertiary", "regular"),
+            "&.MuiButton-sizeLarge": {
+              ...resolveStyles("tertiary", "large"),
+            },
+          },
+          "&.MuiButton-textSecondary": {
+            ...resolveStyles("tertiary", "regular"),
+            "&.MuiButton-sizeLarge": {
+              ...resolveStyles("tertiary", "large"),
+            },
           },
         },
-      },
-      textPrimary: {
-        color: palette.secondary.contrastText,
-      },
-      textSecondary: {
-        color: palette.primary.contrastText,
       },
     },
-  },
-});
+  };
+};

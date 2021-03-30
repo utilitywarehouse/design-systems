@@ -51,7 +51,6 @@ export * from "@material-ui/core/BottomNavigation";
 export { default as BottomNavigationAction } from "@material-ui/core/BottomNavigationAction";
 export * from "@material-ui/core/BottomNavigationAction";
 
-export { default as Box } from "@material-ui/core/Box";
 export * from "@material-ui/core/Box";
 
 export { default as Breadcrumbs } from "@material-ui/core/Breadcrumbs";
@@ -107,7 +106,7 @@ export * from "@material-ui/core/ClickAwayListener";
 export { default as Collapse } from "@material-ui/core/Collapse";
 export * from "@material-ui/core/Collapse";
 
-export { default as Container } from "@material-ui/core/Container";
+export { default as MuiContainer } from "@material-ui/core/Container";
 export * from "@material-ui/core/Container";
 
 export { default as CssBaseline } from "@material-ui/core/CssBaseline";
@@ -158,8 +157,19 @@ export * from "@material-ui/core/FormHelperText";
 export { default as FormLabel } from "@material-ui/core/FormLabel";
 export * from "@material-ui/core/FormLabel";
 
-export { default as Grid } from "@material-ui/core/Grid";
-export * from "@material-ui/core/Grid";
+export {
+  default as MuiGrid,
+  GridProps as MuiGridProps,
+  GridDirection,
+  GridSpacing,
+  GridWrap,
+  GridSize,
+  GridClassKey,
+  GridTypeMap,
+  gridClasses,
+  GridClasses,
+  getGridUtilityClass,
+} from "@material-ui/core/Grid";
 
 export { default as Grow } from "@material-ui/core/Grow";
 export * from "@material-ui/core/Grow";
@@ -197,8 +207,16 @@ export * from "@material-ui/core/InputLabel";
 export { default as LinearProgress } from "@material-ui/core/LinearProgress";
 export * from "@material-ui/core/LinearProgress";
 
-export { default as Link } from "@material-ui/core/Link";
-export * from "@material-ui/core/Link";
+export { default as MuiLink } from "@material-ui/core/Link";
+export {
+  linkClasses,
+  LinkProps as MuiLinkProps,
+  LinkTypeMap,
+  LinkClassKey,
+  LinkBaseProps,
+  LinkClasses,
+  getLinkUtilityClass,
+} from "@material-ui/core/Link";
 
 export { default as List } from "@material-ui/core/List";
 export * from "@material-ui/core/List";
@@ -386,8 +404,14 @@ export * from "@material-ui/core/Toolbar";
 export { default as Tooltip } from "@material-ui/core/Tooltip";
 export * from "@material-ui/core/Tooltip";
 
-export { default as Typography } from "@material-ui/core/Typography";
-export * from "@material-ui/core/Typography";
+export { default as MuiTypography } from "@material-ui/core/Typography";
+export {
+  TypographyPropsVariantOverrides,
+  TypographyVariantDefaults,
+  TypographyTypeMap,
+  TypographyProps as MuiTypographyProps,
+  TypographyClassKey,
+} from "@material-ui/core/Typography";
 
 export { default as Unstable_TrapFocus } from "@material-ui/core/Unstable_TrapFocus";
 export * from "@material-ui/core/Unstable_TrapFocus";
