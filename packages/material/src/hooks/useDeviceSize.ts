@@ -3,15 +3,16 @@ import { useTheme, useMediaQuery, Breakpoint } from "../";
 
 const useDeviceSize = (): Breakpoint => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("mobile"));
-  const isTablet = useMediaQuery(theme.breakpoints.between("mobile", "tablet"));
+  const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
+  const isTablet = useMediaQuery(theme.breakpoints.up("tablet"));
+
   const breakpoint = React.useMemo<Breakpoint>(() => {
-    return (isMobile
-      ? "mobile"
+    return (isDesktop
+      ? "desktop"
       : isTablet
       ? "tablet"
-      : "desktop") as Breakpoint;
-  }, [isMobile, isTablet]);
+      : "mobile") as Breakpoint;
+  }, [isDesktop, isTablet]);
 
   return breakpoint;
 };

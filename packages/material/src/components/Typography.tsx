@@ -122,11 +122,14 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   ): CSSProperties => {
     return {
       ...theme.components.typography.mobile[variant][state],
+      fill: theme.components.typography.mobile[variant][state].color,
       [muiTheme.breakpoints.up("tablet")]: {
         ...theme.components.typography.tablet[variant][state],
+        fill: theme.components.typography.tablet[variant][state].color,
       },
       [muiTheme.breakpoints.up("desktop")]: {
         ...theme.components.typography.desktop[variant][state],
+        fill: theme.components.typography.desktop[variant][state].color,
       },
     } as CSSProperties;
   };

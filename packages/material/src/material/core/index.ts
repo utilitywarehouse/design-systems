@@ -177,8 +177,15 @@ export * from "@material-ui/core/Grow";
 export { default as Hidden } from "@material-ui/core/Hidden";
 export * from "@material-ui/core/Hidden";
 
-export { default as Icon } from "@material-ui/core/Icon";
-export * from "@material-ui/core/Icon";
+export { default as MuiIcon } from "@material-ui/core/Icon";
+export {
+  IconTypeMap,
+  IconClassKey,
+  IconProps as MuiIconProps,
+  IconClasses,
+  getIconUtilityClass,
+  iconClasses,
+} from "@material-ui/core/Icon";
 
 export { default as IconButton } from "@material-ui/core/IconButton";
 export * from "@material-ui/core/IconButton";
