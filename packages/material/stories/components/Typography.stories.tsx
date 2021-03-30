@@ -19,6 +19,11 @@ export default {
         disable: true,
       },
     },
+    component: {
+      control: {
+        disable: true,
+      },
+    },
   },
   args: {
     children: "The quick brown fox jumped over the lazy dog.",
