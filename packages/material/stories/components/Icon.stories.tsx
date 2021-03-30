@@ -1,7 +1,12 @@
 import React from "react";
 import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
-import * as icons from "@utilitywarehouse/customer-ui-react-icons";
+
+import Dropdown from "@utilitywarehouse/customer-ui-react-icons/24x24/Dropdown";
+import Login from "@utilitywarehouse/customer-ui-react-icons/24x24/Login";
+import Logout from "@utilitywarehouse/customer-ui-react-icons/24x24/Logout";
+import Settings from "@utilitywarehouse/customer-ui-react-icons/24x24/Settings";
+import UserOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/UserOutlined";
 
 import { Icon, IconProps } from "./Icon";
 import {
@@ -12,6 +17,10 @@ import {
   Typography,
 } from "../../src";
 import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
+
+const icons = {
+  "24x24": [Dropdown, Login, Logout, Settings, UserOutlined],
+};
 
 export default {
   title: `${base}Icons`,
@@ -27,16 +36,12 @@ export default {
         disable: true,
       },
     },
-    size: {
-      control: {
-        type: "select",
-        options: ["inherit", 12, 14, 16, 18, 20, 24, 28, 32, 40, 48, 60, 72],
-      },
-    },
   },
 } as Meta;
 
-const bindTemplate = () => {
+const bindTemplate = (
+  icons: React.ComponentType<React.SVGProps<SVGSVGElement>>[]
+) => {
   const backgroundProps: Partial<BackgroundProps> = {
     paddingTop: 6,
     paddingBottom: 6,
@@ -51,16 +56,15 @@ const bindTemplate = () => {
     justifyContent: "center",
   };
 
-  const iconKeys = Object.keys(icons);
   const getIcons = (args) => (
     <Box display="flex" flexWrap="wrap" width="100%">
-      {iconKeys.map((icon, index) => (
-        <Box key={index} padding={1} flex="1" textAlign="center">
+      {icons.map((icon) => (
+        <Box key={icon.name} padding={1} flex="1" textAlign="center">
           <Typography>
-            <Icon key={index} {...args} icon={icons[icon]} />
+            <Icon {...args} icon={icon} />
           </Typography>
           <Box paddingTop={0.5}>
-            <Typography>{icons[icon].name}</Typography>
+            <Typography>{icon.name}</Typography>
           </Box>
         </Box>
       ))}
@@ -90,5 +94,5 @@ const bindTemplate = () => {
   return Template;
 };
 
-export const Icons = bindTemplate();
-Icons.storyName = "Icons";
+export const RegularSize = bindTemplate(icons["24x24"]);
+RegularSize.storyName = "24x24";
