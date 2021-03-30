@@ -4,4 +4,4 @@ A collection of customer UI svg icons. Each icon consists of a single colour whi
 
 ## Adding icons
 
-When adding icons make sure the fill colour of the icon is inherited from the fill property on the `<svg />` tag. This allows for overriding the fill colour at the top level of the SVG in consuming libraries. Also make sure to remove all `id` attributes. Any internal references should be expanded, for example `<use />` pointing to an `id` should instead be replaced with the path/shape it is referencing. This ensures no namespace conflicts when outputting the SVG to the DOM.
+When adding icons make sure the fill colour of the icon is inherited from the fill property on the `<svg />` tag. This allows for overriding the fill colour at the top level of the SVG in consuming libraries.
