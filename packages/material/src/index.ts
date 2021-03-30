@@ -3,6 +3,9 @@ export * from "./material/core";
 export { default as Background } from "./components/Background";
 export * from "./components/Background";
 
+export { default as BackgroundProvider } from "./components/BackgroundProvider";
+export * from "./components/BackgroundProvider";
+
 export { default as Box } from "./components/Box";
 
 export { default as Button, ButtonProps } from "./components/Button";
