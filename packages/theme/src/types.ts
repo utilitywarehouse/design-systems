@@ -1,6 +1,8 @@
 import { BackdropStyles } from "./backdrop";
 import { ButtonStyles } from "./button";
+import { CardStyles } from "./card";
 import { GridConfiguration } from "./grid";
+import { InteractiveCardStyles } from "./interactiveCard";
 import { LinkStyles } from "./link";
 import { MenuStyles } from "./menu";
 import { MenuItemStyles } from "./menuItem";
@@ -55,7 +57,9 @@ export interface Theme {
   components: {
     backdrop: BackdropStyles;
     button: ButtonStyles;
+    card: CardStyles;
     grid: GridConfiguration;
+    interactiveCard: InteractiveCardStyles;
     link: LinkStyles;
     menu: MenuStyles;
     menuItem: MenuItemStyles;
