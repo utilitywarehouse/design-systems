@@ -7,6 +7,7 @@ import {
   commonSubheadingStyles,
   commonFootnoteStyles,
   commonCaptionStyles,
+  commonInteractiveStyles,
 } from "./common";
 
 const tablet: CommonTypographyStyles = {
@@ -62,6 +63,9 @@ const tablet: CommonTypographyStyles = {
   },
   caption: {
     ...commonCaptionStyles,
+  },
+  interactive: {
+    ...commonInteractiveStyles,
   },
 };
 
