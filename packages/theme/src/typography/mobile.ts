@@ -7,6 +7,7 @@ import {
   commonCaptionStyles,
   commonFootnoteStyles,
   commonHeadlineStyles,
+  commonInteractiveStyles,
 } from "./common";
 
 const mobile: CommonTypographyStyles = {
@@ -62,6 +63,9 @@ const mobile: CommonTypographyStyles = {
   },
   caption: {
     ...commonCaptionStyles,
+  },
+  interactive: {
+    ...commonInteractiveStyles,
   },
 };
 

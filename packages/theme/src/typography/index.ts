@@ -192,6 +192,20 @@ export const getTypographyStyles = (
           ...typographyPalette.footnote.error,
         },
       },
+      interactive: {
+        default: {
+          ...commonTypographyStyles.desktop.interactive,
+          ...typographyPalette.interactive.default,
+        },
+        success: {
+          ...commonTypographyStyles.desktop.interactive,
+          ...typographyPalette.interactive.success,
+        },
+        error: {
+          ...commonTypographyStyles.desktop.interactive,
+          ...typographyPalette.interactive.error,
+        },
+      },
     },
     tablet: {
       h1: {
@@ -362,6 +376,20 @@ export const getTypographyStyles = (
           ...typographyPalette.footnote.error,
         },
       },
+      interactive: {
+        default: {
+          ...commonTypographyStyles.tablet.interactive,
+          ...typographyPalette.interactive.default,
+        },
+        success: {
+          ...commonTypographyStyles.tablet.interactive,
+          ...typographyPalette.interactive.success,
+        },
+        error: {
+          ...commonTypographyStyles.tablet.interactive,
+          ...typographyPalette.interactive.error,
+        },
+      },
     },
     mobile: {
       h1: {
@@ -530,6 +558,20 @@ export const getTypographyStyles = (
         error: {
           ...commonTypographyStyles.mobile.footnote,
           ...typographyPalette.footnote.error,
+        },
+      },
+      interactive: {
+        default: {
+          ...commonTypographyStyles.mobile.interactive,
+          ...typographyPalette.interactive.default,
+        },
+        success: {
+          ...commonTypographyStyles.mobile.interactive,
+          ...typographyPalette.interactive.success,
+        },
+        error: {
+          ...commonTypographyStyles.mobile.interactive,
+          ...typographyPalette.interactive.error,
         },
       },
     },

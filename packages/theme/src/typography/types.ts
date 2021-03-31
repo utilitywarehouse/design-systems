@@ -23,7 +23,8 @@ export type TypographyVariant =
   | "headline"
   | "subheading"
   | "footnote"
-  | "caption";
+  | "caption"
+  | "interactive";
 
 export type TypographyState = "default" | "success" | "error";
 

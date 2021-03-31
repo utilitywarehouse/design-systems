@@ -41,3 +41,10 @@ export const commonCaptionStyles: TypographyStylesNonColor = {
   fontSize: 12,
   lineHeight: 1.5,
 } as TypographyStylesNonColor;
+
+export const commonInteractiveStyles: TypographyStylesNonColor = {
+  fontFamily: fonts.secondary,
+  fontWeight: fontWeights.secondary.semibold,
+  fontSize: 18,
+  lineHeight: 1.333,
+} as TypographyStylesNonColor;
