@@ -246,11 +246,17 @@ export * from "@material-ui/core/ListItemText";
 export { default as ListSubheader } from "@material-ui/core/ListSubheader";
 export * from "@material-ui/core/ListSubheader";
 
-export { default as Menu } from "@material-ui/core/Menu";
+export { default as MuiMenu } from "@material-ui/core/Menu";
 export * from "@material-ui/core/Menu";
 
-export { default as MenuItem } from "@material-ui/core/MenuItem";
-export * from "@material-ui/core/MenuItem";
+export { default as MuiMenuItem } from "@material-ui/core/MenuItem";
+export {
+  MenuItemProps as MuiMenuItemProps,
+  MenuItemClassKey,
+  MenuItemTypeMap,
+  getMenuItemUtilityClass,
+  menuItemClasses,
+} from "@material-ui/core/MenuItem";
 
 export { default as MenuList } from "@material-ui/core/MenuList";
 export * from "@material-ui/core/MenuList";
