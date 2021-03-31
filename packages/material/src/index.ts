@@ -18,6 +18,10 @@ export { default as Icon, IconProps } from "./components/Icon";
 
 export { default as Link, LinkProps } from "./components/Link";
 
+export { default as Menu } from "./components/Menu";
+
+export { default as MenuItem, MenuItemProps } from "./components/MenuItem";
+
 export {
   default as Typography,
   TypographyProps,

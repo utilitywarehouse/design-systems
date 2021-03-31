@@ -81,6 +81,7 @@ Theming is also based on the [Background](docs/components/Background) component.
 * [Grid](docs/components/Grid)
 * [Icon](docs/components/Icon)
 * [Link](docs/components/Link)
+* [MenuItem](docs/components/MenuItem)
 * [ThemeProvider](docs/components/ThemeProvider)
 * [Typography](docs/components/Typography)
 
