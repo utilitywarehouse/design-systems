@@ -19,6 +19,7 @@ declare module "@material-ui/core/styles" {
     headline: React.CSSProperties;
     subheading: React.CSSProperties;
     footnote: React.CSSProperties;
+    interactive: React.CSSProperties;
   }
 
   // allow configuration using `createMuiTheme`
@@ -29,6 +30,7 @@ declare module "@material-ui/core/styles" {
     headline?: React.CSSProperties;
     subheading?: React.CSSProperties;
     footnote?: React.CSSProperties;
+    interactive?: React.CSSProperties;
   }
 }
 
@@ -41,6 +43,7 @@ declare module "@material-ui/core/Typography" {
     headline: true;
     subheading: true;
     footnote: true;
+    interactive: true;
     h6: false;
     body1: false;
     body2: false;
@@ -106,6 +109,7 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
         subheading: "p",
         caption: "caption",
         footnote: "p",
+        interactive: "span",
       }}
     />
   );
@@ -252,6 +256,15 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             },
             "&.MuiTypography-stateSuccess": {
               ...resolveStyles("footnote", "success"),
+            },
+          },
+          "&.MuiTypography-interactive": {
+            ...resolveStyles("interactive", "default"),
+            "&.MuiTypography-stateError": {
+              ...resolveStyles("interactive", "error"),
+            },
+            "&.MuiTypography-stateSuccess": {
+              ...resolveStyles("interactive", "success"),
             },
           },
         },

@@ -46,6 +46,9 @@ import { Typography } from "@utilitywarehouse/customer-ui-material";
 // Caption
 <Typography variant="caption">caption</Typography>
 
+// Interactive
+<Typography variant="interactive">interactive</Typography>
+
 ```
 
 ## API reference
