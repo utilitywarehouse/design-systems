@@ -115,3 +115,6 @@ Caption.storyName = "caption";
 
 export const Footnote = bindTemplate({ variant: "footnote" });
 Footnote.storyName = "footnote";
+
+export const Interactive = bindTemplate({ variant: "interactive" });
+Interactive.storyName = "interactive";
