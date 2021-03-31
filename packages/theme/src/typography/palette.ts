@@ -135,6 +135,17 @@ const lightModeLevel0: TypographyPalette = {
       color: colors.rose,
     },
   },
+  interactive: {
+    default: {
+      color: colors.white,
+    },
+    success: {
+      color: colors.apple,
+    },
+    error: {
+      color: colors.rose,
+    },
+  },
 };
 
 const lightModeLevel1 = lightModeLevel0;
@@ -262,6 +273,17 @@ const lightModeLevel2: TypographyPalette = {
     },
   },
   caption: {
+    default: {
+      color: colors.midnight,
+    },
+    success: {
+      color: colors.jewel,
+    },
+    error: {
+      color: colors.maroonFlush,
+    },
+  },
+  interactive: {
     default: {
       color: colors.midnight,
     },
