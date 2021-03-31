@@ -2,6 +2,8 @@ import { BackdropStyles } from "./backdrop";
 import { ButtonStyles } from "./button";
 import { GridConfiguration } from "./grid";
 import { LinkStyles } from "./link";
+import { MenuStyles } from "./menu";
+import { MenuItemStyles } from "./menuItem";
 import { TypographyStyles } from "./typography";
 
 export type Breakpoint = "desktop" | "tablet" | "mobile";
@@ -55,6 +57,8 @@ export interface Theme {
     button: ButtonStyles;
     grid: GridConfiguration;
     link: LinkStyles;
+    menu: MenuStyles;
+    menuItem: MenuItemStyles;
     typography: TypographyStyles;
   };
   spacing: Spacing;
