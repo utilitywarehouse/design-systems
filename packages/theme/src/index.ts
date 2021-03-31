@@ -4,6 +4,8 @@ import { getLinkStyles } from "./link";
 import { getTypographyStyles } from "./typography";
 import { getBackdropStyles } from "./backdrop";
 import gridConfiguration from "./grid";
+import { getMenuStyles } from "./menu";
+import { getMenuItemStyles } from "./menuItem";
 import spacing from "./spacing";
 import { breakpoints } from "./breakpoint";
 import { getPalette } from "./palette";
@@ -26,6 +28,8 @@ export const getTheme = (
       button: getButtonStyles(colorScheme, backdropLevel),
       grid: gridConfiguration,
       link: getLinkStyles(colorScheme, backdropLevel),
+      menu: getMenuStyles(colorScheme, backdropLevel),
+      menuItem: getMenuItemStyles(colorScheme, backdropLevel),
       typography: getTypographyStyles(colorScheme, backdropLevel),
     },
     spacing,
