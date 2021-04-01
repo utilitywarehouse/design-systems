@@ -24,5 +24,7 @@ import { InteractiveCard } from "@utilitywarehous/customer-ui-material";
 | `backgroundColor` | Enum{`level0`, `level1`, `level2`, `level3`, `level4`} | no | The background color variant of the card. The default value is resolved based on the background context of where the card is being placed. |
 | `Background` | React.ComponentType | no | An optional component to use as the background of the card which is placed on top of the card, underneath the content. E.g for placing full background images onto the card which will not be contained to the cards content area. |
 | `display` | CSS display | no | Defaults to `block` |
+| `size` | Enum{`small`, `regular`, `large`} | no | Defaults to `regular`, defines the padding style of the card |
+| `variant` | Enum{`primary`, `secondary`} | no | Defaults to `primary`, defines the hover colour behaviour |
 
 The `InteractiveCard` component inherits all the props you'd expect from the HTML button element.

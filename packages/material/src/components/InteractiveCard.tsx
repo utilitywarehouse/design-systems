@@ -1,6 +1,8 @@
 import {
   BackdropLevel,
   Theme as CustomerUITheme,
+  InteractiveCardSize,
+  InteractiveCardVariant,
 } from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
 import {
@@ -19,11 +21,15 @@ export interface InteractiveCardProps
   Background?: React.ComponentType;
   backgroundColor?: BackdropLevel;
   display?: BoxProps["display"];
+  size?: InteractiveCardSize;
+  variant?: InteractiveCardVariant;
 }
 
 interface StyleProps {
   theme: CustomerUITheme;
   rootHoverClass: string;
+  size: InteractiveCardSize;
+  variant: InteractiveCardVariant;
 }
 
 const useRootHoverStyles = makeStyles(() => ({
@@ -31,104 +37,137 @@ const useRootHoverStyles = makeStyles(() => ({
 }));
 
 const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
-  root: (props) => ({
+  root: ({ size, variant, ...props }) => ({
     backgroundColor:
-      props.theme.components.interactiveCard.mobile.idle.backgroundColor,
+      props.theme.components.interactiveCard.mobile[variant][size].idle
+        .backgroundColor,
     borderRadius:
-      props.theme.components.interactiveCard.mobile.idle.borderRadius,
+      props.theme.components.interactiveCard.mobile[variant][size].idle
+        .borderRadius,
     [theme.breakpoints.up("tablet")]: {
       backgroundColor:
-        props.theme.components.interactiveCard.tablet.idle.backgroundColor,
+        props.theme.components.interactiveCard.tablet[variant][size].idle
+          .backgroundColor,
       borderRadius:
-        props.theme.components.interactiveCard.tablet.idle.borderRadius,
+        props.theme.components.interactiveCard.tablet[variant][size].idle
+          .borderRadius,
     },
     [theme.breakpoints.up("desktop")]: {
       backgroundColor:
-        props.theme.components.interactiveCard.desktop.idle.backgroundColor,
+        props.theme.components.interactiveCard.desktop[variant][size].idle
+          .backgroundColor,
       borderRadius:
-        props.theme.components.interactiveCard.desktop.idle.borderRadius,
+        props.theme.components.interactiveCard.desktop[variant][size].idle
+          .borderRadius,
     },
     [`& .${props.rootHoverClass}`]: {
       backgroundColor:
-        props.theme.components.interactiveCard.mobile.idle.backgroundColor,
-      transition: props.theme.components.interactiveCard.mobile.idle.transition,
+        props.theme.components.interactiveCard.mobile[variant][size].idle
+          .backgroundColor,
+      transition:
+        props.theme.components.interactiveCard.mobile[variant][size].idle
+          .transition,
       transitionProperty:
-        props.theme.components.interactiveCard.mobile.idle.transitionProperty,
+        props.theme.components.interactiveCard.mobile[variant][size].idle
+          .transitionProperty,
       [theme.breakpoints.up("tablet")]: {
         backgroundColor:
-          props.theme.components.interactiveCard.tablet.idle.backgroundColor,
+          props.theme.components.interactiveCard.tablet[variant][size].idle
+            .backgroundColor,
         transition:
-          props.theme.components.interactiveCard.tablet.idle.transition,
+          props.theme.components.interactiveCard.tablet[variant][size].idle
+            .transition,
         transitionProperty:
-          props.theme.components.interactiveCard.tablet.idle.transitionProperty,
+          props.theme.components.interactiveCard.tablet[variant][size].idle
+            .transitionProperty,
       },
       [theme.breakpoints.up("desktop")]: {
         backgroundColor:
-          props.theme.components.interactiveCard.desktop.idle.backgroundColor,
+          props.theme.components.interactiveCard.desktop[variant][size].idle
+            .backgroundColor,
         transition:
-          props.theme.components.interactiveCard.desktop.idle.transition,
+          props.theme.components.interactiveCard.desktop[variant][size].idle
+            .transition,
         transitionProperty:
-          props.theme.components.interactiveCard.desktop.idle
+          props.theme.components.interactiveCard.desktop[variant][size].idle
             .transitionProperty,
       },
     },
     "&:hover": {
       borderRadius:
-        props.theme.components.interactiveCard.mobile.active.borderRadius,
+        props.theme.components.interactiveCard.mobile[variant][size].active
+          .borderRadius,
       [theme.breakpoints.up("tablet")]: {
         borderRadius:
-          props.theme.components.interactiveCard.tablet.active.borderRadius,
+          props.theme.components.interactiveCard.tablet[variant][size].active
+            .borderRadius,
       },
       [theme.breakpoints.up("desktop")]: {
         borderRadius:
-          props.theme.components.interactiveCard.desktop.active.borderRadius,
+          props.theme.components.interactiveCard.desktop[variant][size].active
+            .borderRadius,
       },
       [`& .${props.rootHoverClass}`]: {
         transition:
-          props.theme.components.interactiveCard.mobile.active.transition,
+          props.theme.components.interactiveCard.mobile[variant][size].active
+            .transition,
         transitionProperty:
-          props.theme.components.interactiveCard.mobile.active
+          props.theme.components.interactiveCard.mobile[variant][size].active
             .transitionProperty,
         backgroundColor:
-          props.theme.components.interactiveCard.mobile.active.backgroundColor,
+          props.theme.components.interactiveCard.mobile[variant][size].active
+            .backgroundColor,
         [theme.breakpoints.up("tablet")]: {
-          backgroundColor:
-            props.theme.components.interactiveCard.tablet.active
-              .backgroundColor,
           transition:
-            props.theme.components.interactiveCard.tablet.active.transition,
+            props.theme.components.interactiveCard.tablet[variant][size].active
+              .transition,
           transitionProperty:
-            props.theme.components.interactiveCard.tablet.active
+            props.theme.components.interactiveCard.tablet[variant][size].active
               .transitionProperty,
+          backgroundColor:
+            props.theme.components.interactiveCard.tablet[variant][size].active
+              .backgroundColor,
         },
         [theme.breakpoints.up("desktop")]: {
-          backgroundColor:
-            props.theme.components.interactiveCard.desktop.active
-              .backgroundColor,
           transition:
-            props.theme.components.interactiveCard.desktop.active.transition,
+            props.theme.components.interactiveCard.desktop[variant][size].active
+              .transition,
           transitionProperty:
-            props.theme.components.interactiveCard.desktop.active
+            props.theme.components.interactiveCard.desktop[variant][size].active
               .transitionProperty,
+          backgroundColor:
+            props.theme.components.interactiveCard.desktop[variant][size].active
+              .backgroundColor,
         },
       },
     },
   }),
-  container: (props) => ({
-    padding: props.theme.components.interactiveCard.mobile.idle.padding,
+  container: ({ size, variant, ...props }) => ({
+    padding:
+      props.theme.components.interactiveCard.mobile[variant][size].idle.padding,
     [theme.breakpoints.up("tablet")]: {
-      padding: props.theme.components.interactiveCard.tablet.idle.padding,
+      padding:
+        props.theme.components.interactiveCard.tablet[variant][size].idle
+          .padding,
     },
     [theme.breakpoints.up("desktop")]: {
-      padding: props.theme.components.interactiveCard.desktop.idle.padding,
+      padding:
+        props.theme.components.interactiveCard.desktop[variant][size].idle
+          .padding,
     },
     "&:hover": {
-      padding: props.theme.components.interactiveCard.mobile.active.padding,
+      padding:
+        props.theme.components.interactiveCard.mobile[variant][size].active
+          .padding,
       [theme.breakpoints.up("tablet")]: {
-        padding: props.theme.components.interactiveCard.tablet.active.padding,
+        padding:
+          props.theme.components.interactiveCard.tablet[variant][size].active
+            .padding,
       },
       [theme.breakpoints.up("desktop")]: {
-        padding: props.theme.components.interactiveCard.desktop.active.padding,
+        padding:
+          props.theme.components.interactiveCard.desktop[variant][size].active
+            .padding,
       },
     },
   }),
@@ -140,11 +179,19 @@ const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   backgroundColor,
   display,
+  variant = "primary",
+  size = "regular",
   ...props
 }) => {
   const { theme } = React.useContext(BackgroundContext);
   const { rootHover: rootHoverClass } = useRootHoverStyles();
-  const classes = useStyles({ theme, rootHoverClass });
+  const classes = useStyles({
+    theme,
+    rootHoverClass: `a${rootHoverClass}`,
+    variant,
+    size,
+  });
+
   return (
     <Box
       className={classes.root}
@@ -153,7 +200,7 @@ const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = 
       display={display}
     >
       <Box
-        className={rootHoverClass}
+        className={`a${rootHoverClass}`}
         position="absolute"
         left="0"
         top="0"
