@@ -35,7 +35,7 @@ const getIconsRootDirectory = () => {
 };
 
 const iconsRootDirectory = getIconsRootDirectory();
-const iconSubdirectories = ["24x24"];
+const iconSubdirectories = ["24x24", "48x48"];
 
 const getIconName = (iconPath) => {
   const filename = path.basename(iconPath, ".svg");
