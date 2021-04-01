@@ -4,7 +4,7 @@ import { commonIdleStyles } from "./common";
 
 export const desktopPrimarySmallIdle: InteractiveCardStylesNonColor = {
   ...(commonIdleStyles as InteractiveCardStylesNonColor),
-  padding: `${spacingBase}px`,
+  padding: `${spacingBase}px ${spacingBase * 2}px`,
   borderRadius: `${spacingBase}px`,
 };
 
