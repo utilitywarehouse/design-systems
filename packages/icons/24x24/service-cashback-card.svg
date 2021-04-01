@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="customer-ui__icon" width="24px" height="24px" stroke="#000000" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Cashback card</title>
+    <defs>
+        <path d="M34,19 L0,19 L0,24.1 C0,25.15 0.85,26 1.9,26 L36.1,26 C37.15,26 38,25.15 38,24.1 L38,1.9 C38,0.85 37.15,0 36.1,0 L1.9,0 C0.85,0 0,0.85 0,1.9 L0,15" id="path-2"></path>
+    </defs>
+    <g id="Icon-/-48px-/-Cashback-card" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Cashback_Card">
+            <g id="Combined-shape">
+                <g transform="translate(5.000000, 11.000000)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Path" stroke="inherit" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-2"></use>
+                </g>
+            </g>
+            <rect id="Colour" stroke="none" x="0" y="0" width="48" height="48"></rect>
+        </g>
+    </g>
+</svg>
