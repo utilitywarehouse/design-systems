@@ -37,6 +37,9 @@ const useRootHoverStyles = makeStyles(() => ({
 }));
 
 const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
+  buttonBase: {
+    width: "100%",
+  },
   root: ({ size, variant, ...props }) => ({
     width: "100%",
     backgroundColor:
@@ -208,7 +211,7 @@ const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = 
         right="0"
         bottom="0"
       />
-      <ButtonBase {...props}>
+      <ButtonBase className={classes.buttonBase} {...props}>
         <Box position="relative" overflow="hidden">
           {Background && (
             <Box position="absolute" left="0" top="0" right="0" bottom="0">
