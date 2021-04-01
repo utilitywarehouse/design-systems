@@ -66,6 +66,7 @@ const tablet: CommonTypographyStyles = {
   },
   interactive: {
     ...commonInteractiveStyles,
+    fontSize: 16,
   },
 };
 

@@ -66,6 +66,7 @@ const mobile: CommonTypographyStyles = {
   },
   interactive: {
     ...commonInteractiveStyles,
+    fontSize: 14,
   },
 };
 
