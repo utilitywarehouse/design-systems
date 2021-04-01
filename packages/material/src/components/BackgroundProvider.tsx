@@ -7,7 +7,7 @@ import {
   ThemeContext,
 } from "..";
 
-interface BackgroundProviderProps {
+export interface BackgroundProviderProps {
   backgroundColor: BackdropLevel;
 }
 
