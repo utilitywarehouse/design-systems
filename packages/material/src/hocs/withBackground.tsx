@@ -1,14 +1,22 @@
 import React from "react";
-import Background, { BackgroundProps } from "../components/Background";
+import { BackgroundProvider, BackgroundProviderProps } from "..";
 
-function withBackground<P>(
-  Component: React.FunctionComponent<P>,
-  backgroundProps: BackgroundProps
+interface WithBackgroundProps {
+  backgroundColor?: BackgroundProviderProps["backgroundColor"];
+}
+
+function withBackground<P extends WithBackgroundProps>(
+  Component: React.ComponentType<P>,
+  defaultBackgroundColor?: WithBackgroundProps["backgroundColor"]
 ): React.FunctionComponent<P> {
   const WithBackground: React.FunctionComponent<P> = (props) => (
-    <Background {...backgroundProps}>
+    <BackgroundProvider
+      backgroundColor={
+        props.backgroundColor ?? defaultBackgroundColor ?? "level3"
+      }
+    >
       <Component {...props} />
-    </Background>
+    </BackgroundProvider>
   );
 
   return WithBackground;

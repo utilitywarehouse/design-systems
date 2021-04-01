@@ -6,12 +6,12 @@ import React from "react";
 import {
   MuiMenuItem,
   MuiMenuItemProps,
-  BackgroundProvider,
   makeStyles,
   Theme,
   Typography,
+  BackgroundContext,
 } from "..";
-import { BackgroundContext } from "./Background";
+import withBackground from "../hocs/withBackground";
 
 export interface MenuItemProps extends MuiMenuItemProps {
   backgroundColor?: BackdropLevel;
@@ -33,10 +33,13 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
   }),
 }));
 
-const MenuItemInner: React.FunctionComponent<MuiMenuItemProps> = (props) => {
+const MenuItem: React.FunctionComponent<MenuItemProps> = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  backgroundColor,
+  ...props
+}) => {
   const { theme } = React.useContext(BackgroundContext);
   const classes = useStyles({ theme });
-
   return (
     <MuiMenuItem
       {...props}
@@ -50,13 +53,4 @@ const MenuItemInner: React.FunctionComponent<MuiMenuItemProps> = (props) => {
   );
 };
 
-const MenuItem: React.FunctionComponent<MenuItemProps> = ({
-  backgroundColor = "level4",
-  ...props
-}) => (
-  <BackgroundProvider backgroundColor={backgroundColor}>
-    <MenuItemInner {...props} />
-  </BackgroundProvider>
-);
-
-export default MenuItem;
+export default withBackground<MenuItemProps>(MenuItem, "level4");
