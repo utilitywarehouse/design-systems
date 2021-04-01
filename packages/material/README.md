@@ -39,22 +39,18 @@ yarn add @utilitywarehouse/customer-ui-material
 
 ```TypeScript
 import React from "react";
-import { DarkModeProvider, ThemeProvider } from "@utilitywarehouse/customer-ui-material";
+import { UIProvider } from "@utilitywarehouse/customer-ui-material";
 import MyApplication from "./MyApplication";
 
 /**
- * This is the most basic implementation using dark mode, the providers
- * should be rendered at the root of your application.
- * 
- * Note that the DarkModeProvider is optional and the colour scheme will
- * default to "light".
+ * This will result in the required context providers being
+ * rendered by a single provider component in the correct
+ * order.
  */
 const App: React.FC = () => (
-  <DarkModeProvider>
-    <ThemeProvider>
-      <MyApplication />
-    </ThemeProvider>
-  </DarkModeProvider>
+  <UIProvider>
+    <MyApplication />
+  </UIProvider>
 );
 
 ```
@@ -86,6 +82,7 @@ Theming is also based on the [Background](docs/components/Background) component.
 * [MenuItem](docs/components/MenuItem)
 * [ThemeProvider](docs/components/ThemeProvider)
 * [Typography](docs/components/Typography)
+* [UIProvider](docs/components/UIProvider)
 
 If the component you are looking for isn't listed above, provided it exists in Material UI you can import it `import { Component } from "@utilitywarehouse/customer-ui-material"`. Or contribute to Customer UI and help improve the package for others.
 

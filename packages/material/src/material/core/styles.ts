@@ -17,7 +17,7 @@ export {
   createGenerateClassName,
   jssPreset,
   ServerStyleSheets,
-  StylesProvider,
+  StylesProvider as MuiStylesProvider,
 } from "@material-ui/core/styles";
 
 export type {
