@@ -3,6 +3,7 @@ import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import Bill from "@utilitywarehouse/customer-ui-react-icons/24x24/Bill";
+import ChevronRight from "@utilitywarehouse/customer-ui-react-icons/24x24/ChevronRight";
 import Dropdown from "@utilitywarehouse/customer-ui-react-icons/24x24/Dropdown";
 import Email from "@utilitywarehouse/customer-ui-react-icons/24x24/Email";
 import Login from "@utilitywarehouse/customer-ui-react-icons/24x24/Login";
@@ -33,6 +34,7 @@ import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
 const icons = {
   "24x24": [
     Bill,
+    ChevronRight,
     Dropdown,
     Email,
     Login,
