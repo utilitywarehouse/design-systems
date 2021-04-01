@@ -20,6 +20,7 @@ declare module "@material-ui/core/styles" {
     subheading: React.CSSProperties;
     footnote: React.CSSProperties;
     interactive: React.CSSProperties;
+    inherit: React.CSSProperties;
   }
 
   // allow configuration using `createMuiTheme`
@@ -31,6 +32,7 @@ declare module "@material-ui/core/styles" {
     subheading?: React.CSSProperties;
     footnote?: React.CSSProperties;
     interactive?: React.CSSProperties;
+    inherit?: React.CSSProperties;
   }
 }
 
@@ -44,6 +46,7 @@ declare module "@material-ui/core/Typography" {
     subheading: true;
     footnote: true;
     interactive: true;
+    inherit: true;
     h6: false;
     body1: false;
     body2: false;
@@ -158,6 +161,7 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             fontFamily: "inherit",
             fontWeight: "inherit",
             lineHeight: "inherit",
+            color: "inherit",
           },
           "&.MuiTypography-h1": {
             ...resolveStyles("h1", "default"),

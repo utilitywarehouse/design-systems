@@ -73,7 +73,7 @@ export * from "@material-ui/core/ButtonBase";
 export { default as ButtonGroup } from "@material-ui/core/ButtonGroup";
 export * from "@material-ui/core/ButtonGroup";
 
-export { default as Card } from "@material-ui/core/Card";
+export { default as MuiCard } from "@material-ui/core/Card";
 export * from "@material-ui/core/Card";
 
 export { default as CardActionArea } from "@material-ui/core/CardActionArea";
