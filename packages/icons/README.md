@@ -5,3 +5,5 @@ A collection of customer UI svg icons. Each icon consists of a single colour whi
 ## Adding icons
 
 When adding icons make sure the fill colour of the icon is inherited from the fill property on the `<svg />` tag. This allows for overriding the fill colour at the top level of the SVG in consuming libraries.
+
+Ensure icon file names are lowercase containing only alpha characters and hyphens.

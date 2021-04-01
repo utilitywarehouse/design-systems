@@ -16,7 +16,7 @@ const Icon: React.FunctionComponent<IconProps> = ({
   const Icon = icon;
   return (
     <Box {...props}>
-      <Icon {...iconProps} fill={color} />
+      <Icon {...iconProps} fill={color} stroke={color} />
     </Box>
   );
 };
