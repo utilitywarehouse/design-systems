@@ -13,9 +13,14 @@ import { breakpoints } from "./breakpoint";
 import { getPalette } from "./palette";
 
 export * from "./types";
+export * from "./backdrop/types";
 export * from "./button/types";
+export * from "./card/types";
 export * from "./grid/types";
+export * from "./interactiveCard/types";
 export * from "./link/types";
+export * from "./menu/types";
+export * from "./menuItem/types";
 export * from "./typography/types";
 
 export { default as gridConfiguration } from "./grid";

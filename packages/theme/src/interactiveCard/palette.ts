@@ -4,56 +4,116 @@ import { TinyColor } from "@ctrl/tinycolor";
 import { ColorScheme, BackdropLevel } from "../types";
 
 const lightModeLevel0 = {
-  idle: {
-    backgroundColor: colors.midnight,
+  primary: {
+    idle: {
+      backgroundColor: colors.midnight,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.white).setAlpha(0.1).toString(),
+    },
   },
-  active: {
-    backgroundColor: new TinyColor(colors.white).setAlpha(0.1).toString(),
+  secondary: {
+    idle: {
+      backgroundColor: colors.midnight,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.white).setAlpha(0.1).toString(),
+    },
   },
 };
 
 const lightModeLevel1 = {
-  idle: {
-    backgroundColor: colors.purple,
+  primary: {
+    idle: {
+      backgroundColor: colors.purple,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.white).setAlpha(0.1).toRgbString(),
+    },
   },
-  active: {
-    backgroundColor: new TinyColor(colors.white).setAlpha(0.1).toRgbString(),
+  secondary: {
+    idle: {
+      backgroundColor: colors.purple,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.white).setAlpha(0.1).toRgbString(),
+    },
   },
 };
 
 const lightModeLevel2 = {
-  idle: {
-    backgroundColor: colors.midTint,
+  primary: {
+    idle: {
+      backgroundColor: colors.midTint,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+    },
   },
-  active: {
-    backgroundColor: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+  secondary: {
+    idle: {
+      backgroundColor: colors.midTint,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+    },
   },
 };
 
 const lightModeLevel3 = {
-  idle: {
-    backgroundColor: colors.lightTint,
+  primary: {
+    idle: {
+      backgroundColor: colors.lightTint,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+    },
   },
-  active: {
-    backgroundColor: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+  secondary: {
+    idle: {
+      backgroundColor: colors.lightTint,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+    },
   },
 };
 
 const lightModeLevel4 = {
-  idle: {
-    backgroundColor: colors.white,
+  primary: {
+    idle: {
+      backgroundColor: colors.white,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+    },
   },
-  active: {
-    backgroundColor: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+  secondary: {
+    idle: {
+      backgroundColor: colors.white,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+    },
   },
 };
 
 const darkModeLevel0 = {
-  idle: {
-    backgroundColor: colors.codGray,
+  primary: {
+    idle: {
+      backgroundColor: colors.codGray,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.white).setAlpha(0.1).toString(),
+    },
   },
-  active: {
-    backgroundColor: new TinyColor(colors.white).setAlpha(0.1).toString(),
+  secondary: {
+    idle: {
+      backgroundColor: colors.codGray,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.white).setAlpha(0.1).toString(),
+    },
   },
 };
 
