@@ -4,6 +4,7 @@ import { Story, Meta } from "@storybook/react";
 
 import Bill from "@utilitywarehouse/customer-ui-react-icons/24x24/Bill";
 import Dropdown from "@utilitywarehouse/customer-ui-react-icons/24x24/Dropdown";
+import Email from "@utilitywarehouse/customer-ui-react-icons/24x24/Email";
 import Login from "@utilitywarehouse/customer-ui-react-icons/24x24/Login";
 import Logout from "@utilitywarehouse/customer-ui-react-icons/24x24/Logout";
 import Settings from "@utilitywarehouse/customer-ui-react-icons/24x24/Settings";
