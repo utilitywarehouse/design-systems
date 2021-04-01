@@ -10,6 +10,7 @@ import {
   makeStyles,
   Theme,
   BackgroundContext,
+  BoxProps,
 } from "..";
 import withBackground from "../hocs/withBackground";
 
@@ -17,6 +18,7 @@ export interface InteractiveCardProps
   extends React.ComponentPropsWithoutRef<"button"> {
   Background?: React.ComponentType;
   backgroundColor?: BackdropLevel;
+  display?: BoxProps["display"];
 }
 
 interface StyleProps {
@@ -137,13 +139,19 @@ const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = 
   Background,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   backgroundColor,
+  display,
   ...props
 }) => {
   const { theme } = React.useContext(BackgroundContext);
   const { rootHover: rootHoverClass } = useRootHoverStyles();
   const classes = useStyles({ theme, rootHoverClass });
   return (
-    <Box className={classes.root} overflow="hidden" position="relative">
+    <Box
+      className={classes.root}
+      overflow="hidden"
+      position="relative"
+      display={display}
+    >
       <Box
         className={rootHoverClass}
         position="absolute"
