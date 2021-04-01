@@ -13,7 +13,7 @@ const StylesProvider: React.FunctionComponent<StylesProviderProps> = (
   }>();
 
   const getRandomString = () =>
-    Math.round((Math.random() + 1) * 1e8).toString(16);
+    Math.round((Math.random() + 1) * 1e16).toString(16);
 
   const getGenerateClassName = (): GenerateId => {
     return createGenerateClassName({
@@ -34,7 +34,6 @@ const StylesProvider: React.FunctionComponent<StylesProviderProps> = (
 
   return (
     <MuiStylesProvider
-      injectFirst
       generateClassName={generateClassName.generateClassName}
       {...props}
     />
