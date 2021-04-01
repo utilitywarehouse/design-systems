@@ -30,8 +30,14 @@ export {
 export { default as DarkModeProvider } from "./components/DarkModeProvider";
 export * from "./components/DarkModeProvider";
 
+export { default as StylesProvider } from "./components/StylesProvider";
+export * from "./components/StylesProvider";
+
 export { default as ThemeProvider } from "./components/ThemeProvider";
 export * from "./components/ThemeProvider";
+
+export { default as UIProvider } from "./components/UIProvider";
+export * from "./components/UIProvider";
 
 export { default as withBackground } from "./hocs/withBackground";
 
