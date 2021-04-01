@@ -38,6 +38,7 @@ const useRootHoverStyles = makeStyles(() => ({
 
 const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   root: ({ size, variant, ...props }) => ({
+    width: "100%",
     backgroundColor:
       props.theme.components.interactiveCard.mobile[variant][size].idle
         .backgroundColor,
