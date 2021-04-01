@@ -13,7 +13,7 @@ const StylesProvider: React.FunctionComponent<StylesProviderProps> = (
   }>();
 
   const getRandomString = () =>
-    ((Math.random() * 1e8) ^ (Math.random() * 10)).toString(16);
+    Math.round((Math.random() + 1) * 1e8).toString(16);
 
   const getGenerateClassName = (): GenerateId => {
     return createGenerateClassName({
