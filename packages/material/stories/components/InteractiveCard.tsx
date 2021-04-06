@@ -1,1 +1,2 @@
-export { InteractiveCard, InteractiveCardProps } from "../../src";
+export { InteractiveCard } from "../../src";
+export type { InteractiveCardProps } from "../../src";

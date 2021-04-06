@@ -1,1 +1,2 @@
-export { Menu, MenuProps, MenuItem } from "../../src";
+export { Menu, MenuItem } from "../../src";
+export type { MenuProps } from "../../src";
