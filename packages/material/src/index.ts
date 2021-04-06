@@ -25,6 +25,9 @@ export type { GridProps } from "./components/Grid";
 export { default as Icon } from "./components/Icon";
 export type { IconProps } from "./components/Icon";
 
+export { default as Hidden } from "./components/Hidden";
+export type { HiddenProps } from "./components/Hidden";
+
 export { default as InteractiveCard } from "./components/InteractiveCard";
 export type { InteractiveCardProps } from "./components/InteractiveCard";
 
