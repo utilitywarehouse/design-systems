@@ -11,6 +11,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   variant?: "contained" | "outlined" | "tertiary";
   fullWidth?: boolean;
   href?: string;
+  target?: string;
 }
 
 const Button: React.FunctionComponent<ButtonProps> = ({
