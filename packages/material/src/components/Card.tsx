@@ -5,9 +5,11 @@ import {
 import React from "react";
 import { BackgroundContext, Box, makeStyles, Theme } from "..";
 import withBackground from "../hocs/withBackground";
+import clsx from "clsx";
 
 interface CardProps {
   backgroundColor?: BackdropLevel;
+  className?: string;
 }
 
 interface StyleProps {
@@ -40,13 +42,12 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
 
 const CardComponent: React.FunctionComponent<CardProps> = ({
   children,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  backgroundColor,
+  className,
 }) => {
   const { theme } = React.useContext(BackgroundContext);
   const classes = useStyles({ theme });
   return (
-    <Box className={classes.root}>
+    <Box className={clsx(classes.root, className)}>
       <Box className={classes.container}>{children}</Box>
     </Box>
   );

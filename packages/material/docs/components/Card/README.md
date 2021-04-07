@@ -22,3 +22,4 @@ import { Card } from "@utilitywarehous/customer-ui-material";
 | Prop name | Type | Required | Description |
 | --------- | ---- |:--------:| ----------- |
 | `backgroundColor` | Enum{`level0`, `level1`, `level2`, `level3`, `level4`} | no | The background color variant of the card. The default value is resolved based on the background context of where the card is being placed. |
+|`className`| string| no| This is to specify the CSS class, which will be combined with the default CSS class value.
