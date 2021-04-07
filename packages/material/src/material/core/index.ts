@@ -177,7 +177,7 @@ export { default as Grow } from "@material-ui/core/Grow";
 export * from "@material-ui/core/Grow";
 
 export { default as MuiHidden } from "@material-ui/core/Hidden";
-export { HiddenProps as MuiHiddenProps } from "@material-ui/core/Hidden";
+export type { HiddenProps as MuiHiddenProps } from "@material-ui/core/Hidden";
 
 export { default as MuiIcon } from "@material-ui/core/Icon";
 export { getIconUtilityClass, iconClasses } from "@material-ui/core/Icon";
