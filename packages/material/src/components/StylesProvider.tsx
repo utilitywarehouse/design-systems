@@ -3,7 +3,7 @@ import { StylesProviderProps } from "@material-ui/styles";
 import { GenerateId } from "jss";
 import { MuiStylesProvider, createGenerateClassName } from "..";
 
-export { StylesProviderProps } from "@material-ui/styles";
+export type { StylesProviderProps } from "@material-ui/styles";
 
 const StylesProvider: React.FunctionComponent<StylesProviderProps> = (
   props

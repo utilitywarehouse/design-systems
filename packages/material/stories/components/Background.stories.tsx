@@ -4,7 +4,8 @@ import { Story, Meta } from "@storybook/react";
 import { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
 
 import { DarkModeContext, Box, Typography } from "../../src";
-import { Background, BackgroundProps } from "./Background";
+import { Background } from "./Background";
+import type { BackgroundProps } from "./Background";
 import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
 
 export default {

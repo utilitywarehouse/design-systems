@@ -6,8 +6,8 @@ import { getComponentThemeConfiguration } from "../components";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 import { BreakpointsOptions } from "@material-ui/core/styles/createBreakpoints";
 
-export { Theme as MuiTheme } from "@material-ui/core/styles/createMuiTheme";
-export { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
+export type { Theme as MuiTheme } from "@material-ui/core/styles/createMuiTheme";
+export type { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 
 declare module "@material-ui/core/styles" {
   interface BreakpointOverrides {

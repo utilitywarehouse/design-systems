@@ -159,6 +159,10 @@ export * from "@material-ui/core/FormLabel";
 
 export {
   default as MuiGrid,
+  gridClasses,
+  getGridUtilityClass,
+} from "@material-ui/core/Grid";
+export type {
   GridProps as MuiGridProps,
   GridDirection,
   GridSpacing,
@@ -166,25 +170,22 @@ export {
   GridSize,
   GridClassKey,
   GridTypeMap,
-  gridClasses,
   GridClasses,
-  getGridUtilityClass,
 } from "@material-ui/core/Grid";
 
 export { default as Grow } from "@material-ui/core/Grow";
 export * from "@material-ui/core/Grow";
 
-export { default as Hidden } from "@material-ui/core/Hidden";
-export * from "@material-ui/core/Hidden";
+export { default as MuiHidden } from "@material-ui/core/Hidden";
+export { HiddenProps as MuiHiddenProps } from "@material-ui/core/Hidden";
 
 export { default as MuiIcon } from "@material-ui/core/Icon";
-export {
+export { getIconUtilityClass, iconClasses } from "@material-ui/core/Icon";
+export type {
   IconTypeMap,
   IconClassKey,
   IconProps as MuiIconProps,
   IconClasses,
-  getIconUtilityClass,
-  iconClasses,
 } from "@material-ui/core/Icon";
 
 export { default as IconButton } from "@material-ui/core/IconButton";
@@ -215,14 +216,13 @@ export { default as LinearProgress } from "@material-ui/core/LinearProgress";
 export * from "@material-ui/core/LinearProgress";
 
 export { default as MuiLink } from "@material-ui/core/Link";
-export {
-  linkClasses,
+export { linkClasses, getLinkUtilityClass } from "@material-ui/core/Link";
+export type {
   LinkProps as MuiLinkProps,
   LinkTypeMap,
   LinkClassKey,
   LinkBaseProps,
   LinkClasses,
-  getLinkUtilityClass,
 } from "@material-ui/core/Link";
 
 export { default as List } from "@material-ui/core/List";
@@ -251,11 +251,13 @@ export * from "@material-ui/core/Menu";
 
 export { default as MuiMenuItem } from "@material-ui/core/MenuItem";
 export {
+  getMenuItemUtilityClass,
+  menuItemClasses,
+} from "@material-ui/core/MenuItem";
+export type {
   MenuItemProps as MuiMenuItemProps,
   MenuItemClassKey,
   MenuItemTypeMap,
-  getMenuItemUtilityClass,
-  menuItemClasses,
 } from "@material-ui/core/MenuItem";
 
 export { default as MenuList } from "@material-ui/core/MenuList";
@@ -418,7 +420,7 @@ export { default as Tooltip } from "@material-ui/core/Tooltip";
 export * from "@material-ui/core/Tooltip";
 
 export { default as MuiTypography } from "@material-ui/core/Typography";
-export {
+export type {
   TypographyPropsVariantOverrides,
   TypographyVariantDefaults,
   TypographyTypeMap,
