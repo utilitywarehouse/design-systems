@@ -30,12 +30,16 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   },
 }));
 
-const MenuContent: React.FunctionComponent<MenuProps> = (props) => {
+const MenuContent: React.ForwardRefRenderFunction<HTMLDivElement, MenuProps> = (
+  props,
+  ref
+) => {
   const { theme } = React.useContext(BackgroundContext);
   const classes = useStyles({ theme });
   return (
     <MuiMenu
       {...props}
+      ref={ref}
       classes={{
         paper: classes.paper,
         list: classes.list,
@@ -44,15 +48,20 @@ const MenuContent: React.FunctionComponent<MenuProps> = (props) => {
   );
 };
 
-const Menu: React.FunctionComponent<MenuProps> = (props) => {
+const MenuContentWithRef = React.forwardRef(MenuContent);
+
+const Menu: React.ForwardRefRenderFunction<HTMLDivElement, MenuProps> = (
+  props,
+  ref
+) => {
   return (
     <BackgroundProvider backgroundColor="level4">
-      <MenuContent {...props} />
+      <MenuContentWithRef ref={ref} {...props} />
     </BackgroundProvider>
   );
 };
 
-export default Menu;
+export default React.forwardRef(Menu);
 
 export const getComponentThemeConfiguration: GetComponentThemeConfiguration = () => {
   return {

@@ -177,16 +177,22 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   }),
 }));
 
-const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = ({
-  children,
-  Background,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  backgroundColor,
-  display,
-  variant = "primary",
-  size = "regular",
-  ...props
-}) => {
+const InteractiveCardComponent: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  InteractiveCardProps
+> = (
+  {
+    children,
+    Background,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    backgroundColor,
+    display,
+    variant = "primary",
+    size = "regular",
+    ...props
+  },
+  ref
+) => {
   const { theme } = React.useContext(BackgroundContext);
   const { rootHover: rootHoverClass } = useRootHoverStyles();
   const classes = useStyles({
@@ -202,6 +208,7 @@ const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = 
       overflow="hidden"
       position="relative"
       display={display}
+      ref={ref}
     >
       <Box
         className={`a${rootHoverClass}`}
@@ -229,14 +236,15 @@ const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = 
   );
 };
 
-const InteractiveCardWithBackground = withBackground(
-  InteractiveCardComponent,
-  "level4"
-);
+const InteractiveCardWithBackground = withBackground<
+  InteractiveCardProps,
+  HTMLDivElement
+>(React.forwardRef(InteractiveCardComponent), "level4");
 
-const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
-  props
-) => {
+const InteractiveCard: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  InteractiveCardProps
+> = (props, ref) => {
   const { theme } = React.useContext(BackgroundContext);
   const backdropLevel = theme.backdropLevel;
   const backgroundColor = React.useMemo(() => {
@@ -256,8 +264,9 @@ const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
     <InteractiveCardWithBackground
       backgroundColor={backgroundColor}
       {...props}
+      ref={ref}
     />
   );
 };
 
-export default InteractiveCard;
+export default React.forwardRef(InteractiveCard);

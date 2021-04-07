@@ -33,16 +33,20 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
   }),
 }));
 
-const MenuItem: React.FunctionComponent<MenuItemProps> = ({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  backgroundColor,
-  ...props
-}) => {
+const MenuItem: React.ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (
+  {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    backgroundColor,
+    ...props
+  },
+  ref
+) => {
   const { theme } = React.useContext(BackgroundContext);
   const classes = useStyles({ theme });
   return (
     <MuiMenuItem
       {...props}
+      ref={ref}
       classes={{
         ...props?.classes,
         root: `${classes.root} ${props?.classes?.root ?? ""}`,
@@ -53,4 +57,7 @@ const MenuItem: React.FunctionComponent<MenuItemProps> = ({
   );
 };
 
-export default withBackground<MenuItemProps>(MenuItem, "level4");
+export default withBackground<MenuItemProps, HTMLLIElement>(
+  React.forwardRef(MenuItem),
+  "level4"
+);
