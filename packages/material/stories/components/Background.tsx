@@ -1,1 +1,2 @@
-export { Background, BackgroundProps } from "../../src";
+export { Background } from "../../src";
+export type { BackgroundProps } from "../../src";

@@ -1,1 +1,2 @@
-export { Button, ButtonProps } from "../../src";
+export { Button } from "../../src";
+export type { ButtonProps } from "../../src";

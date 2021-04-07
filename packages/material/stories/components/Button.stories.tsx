@@ -2,8 +2,10 @@ import React from "react";
 import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
-import { Button, ButtonProps } from "./Button";
-import { Background, BackgroundProps, Box, BoxProps } from "../../src";
+import { Button } from "./Button";
+import type { ButtonProps } from "./Button";
+import { Background, Box } from "../../src";
+import type { BackgroundProps, BoxProps } from "../../src";
 import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
 
 export default {

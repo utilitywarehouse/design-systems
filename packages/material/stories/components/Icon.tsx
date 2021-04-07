@@ -1,1 +1,2 @@
-export { Icon, IconProps } from "../../src";
+export { Icon } from "../../src";
+export type { IconProps } from "../../src";
