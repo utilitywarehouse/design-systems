@@ -3,13 +3,13 @@ import {
   Theme as CustomerUITheme,
 } from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
-import { BackgroundContext, Box, makeStyles, Theme } from "..";
+import { BackgroundContext, Box, BoxProps, makeStyles, Theme } from "..";
 import withBackground from "../hocs/withBackground";
+import clsx from "clsx";
 
-interface CardProps {
+interface CardProps extends BoxProps {
   backgroundColor?: BackdropLevel;
 }
-
 interface StyleProps {
   theme: CustomerUITheme;
 }
@@ -40,13 +40,13 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
 
 const CardComponent: React.FunctionComponent<CardProps> = ({
   children,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  backgroundColor,
+  className,
+  ...props
 }) => {
   const { theme } = React.useContext(BackgroundContext);
   const classes = useStyles({ theme });
   return (
-    <Box className={classes.root}>
+    <Box className={clsx(classes.root, className)} {...props}>
       <Box className={classes.container}>{children}</Box>
     </Box>
   );
