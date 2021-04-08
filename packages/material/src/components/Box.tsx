@@ -1,5 +1,7 @@
 import React from "react";
-import MuiBox, { BoxProps } from "@material-ui/core/Box";
+import MuiBox, { BoxProps as MuiBoxProps } from "@material-ui/core/Box";
+
+export type BoxProps = Omit<MuiBoxProps, "ref">;
 
 const Box: React.ForwardRefRenderFunction<HTMLDivElement, BoxProps> = (
   props,

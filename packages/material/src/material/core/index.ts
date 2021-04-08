@@ -51,7 +51,10 @@ export * from "@material-ui/core/BottomNavigation";
 export { default as BottomNavigationAction } from "@material-ui/core/BottomNavigationAction";
 export * from "@material-ui/core/BottomNavigationAction";
 
-export * from "@material-ui/core/Box";
+export type {
+  BoxTypeMap,
+  BoxProps as MuiBoxProps,
+} from "@material-ui/core/Box";
 
 export { default as Breadcrumbs } from "@material-ui/core/Breadcrumbs";
 export * from "@material-ui/core/Breadcrumbs";
