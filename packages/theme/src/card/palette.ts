@@ -3,27 +3,69 @@ import { CardPalette } from "./types";
 import { ColorScheme, BackdropLevel } from "../types";
 
 const lightModeLevel0 = {
-  backgroundColor: colors.midnight,
+  opaque: {
+    backgroundColor: colors.midnight,
+    borderColor: colors.midnight,
+  },
+  transparent: {
+    borderColor: colors.white,
+    backgroundColor: "transparent",
+  },
 };
 
 const lightModeLevel1 = {
-  backgroundColor: colors.purple,
+  opaque: {
+    backgroundColor: colors.purple,
+    borderColor: colors.purple,
+  },
+  transparent: {
+    borderColor: colors.white,
+    backgroundColor: "transparent",
+  },
 };
 
 const lightModeLevel2 = {
-  backgroundColor: colors.midTint,
+  opaque: {
+    backgroundColor: colors.midTint,
+    borderColor: colors.midTint,
+  },
+  transparent: {
+    borderColor: colors.midnight,
+    backgroundColor: "transparent",
+  },
 };
 
 const lightModeLevel3 = {
-  backgroundColor: colors.lightTint,
+  opaque: {
+    backgroundColor: colors.lightTint,
+    borderColor: colors.lightTint,
+  },
+  transparent: {
+    borderColor: colors.purple,
+    backgroundColor: "transparent",
+  },
 };
 
 const lightModeLevel4 = {
-  backgroundColor: colors.white,
+  opaque: {
+    backgroundColor: colors.white,
+    borderColor: colors.white,
+  },
+  transparent: {
+    borderColor: colors.purple,
+    backgroundColor: "transparent",
+  },
 };
 
 const darkModeLevel0 = {
-  backgroundColor: colors.codGray,
+  opaque: {
+    backgroundColor: colors.codGray,
+    borderColor: colors.codGray,
+  },
+  transparent: {
+    borderColor: colors.white,
+    backgroundColor: "transparent",
+  },
 };
 
 const darkModeLevel1 = darkModeLevel0;
