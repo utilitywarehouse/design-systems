@@ -15,6 +15,7 @@ import {
   BoxProps,
 } from "..";
 import withBackground from "../hocs/withBackground";
+import { clsx } from "../utils";
 
 export interface InteractiveCardProps
   extends React.ComponentPropsWithoutRef<"button"> {
@@ -23,6 +24,7 @@ export interface InteractiveCardProps
   display?: BoxProps["display"];
   size?: InteractiveCardSize;
   variant?: InteractiveCardVariant;
+  containerProps?: BoxProps;
 }
 
 interface StyleProps {
@@ -189,6 +191,7 @@ const InteractiveCardComponent: React.ForwardRefRenderFunction<
     display,
     variant = "primary",
     size = "regular",
+    containerProps,
     ...props
   },
   ref
@@ -204,10 +207,10 @@ const InteractiveCardComponent: React.ForwardRefRenderFunction<
 
   return (
     <Box
-      className={classes.root}
+      {...containerProps}
+      className={clsx(classes.root, containerProps?.className)}
       overflow="hidden"
       position="relative"
-      display={display}
       ref={ref}
     >
       <Box
