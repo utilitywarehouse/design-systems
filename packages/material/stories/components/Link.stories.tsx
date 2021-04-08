@@ -27,6 +27,7 @@ const typographyVariants: { [key in TypographyProps["variant"]]: boolean } = {
   small: true,
   inherit: false,
   footnote: true,
+  interactive: true,
 };
 
 const linkTypographyVariants = Object.keys(typographyVariants).filter(
