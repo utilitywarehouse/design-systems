@@ -7,18 +7,16 @@ export interface IconProps extends BoxProps {
   iconProps?: React.SVGProps<SVGSVGElement>;
 }
 
-const Icon: React.FunctionComponent<IconProps> = ({
-  color = "inherit",
-  icon,
-  iconProps = {},
-  ...props
-}) => {
+const Icon: React.ForwardRefRenderFunction<HTMLDivElement, IconProps> = (
+  { color = "inherit", icon, iconProps = {}, ...props },
+  ref
+) => {
   const Icon = icon;
   return (
-    <Box {...props}>
+    <Box {...props} component="span" ref={ref}>
       <Icon {...iconProps} fill={color} stroke={color} />
     </Box>
   );
 };
 
-export default Icon;
+export default React.forwardRef(Icon);
