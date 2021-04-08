@@ -21,7 +21,6 @@ export interface InteractiveCardProps
   extends React.ComponentPropsWithoutRef<"button"> {
   Background?: React.ComponentType;
   backgroundColor?: BackdropLevel;
-  display?: BoxProps["display"];
   size?: InteractiveCardSize;
   variant?: InteractiveCardVariant;
   containerProps?: BoxProps;
@@ -188,7 +187,6 @@ const InteractiveCardComponent: React.ForwardRefRenderFunction<
     Background,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     backgroundColor,
-    display,
     variant = "primary",
     size = "regular",
     containerProps,
