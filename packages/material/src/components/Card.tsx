@@ -16,24 +16,12 @@ interface StyleProps {
 
 const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   root: (props) => ({
-    backgroundColor: props.theme.components.card.mobile.backgroundColor,
-    borderRadius: props.theme.components.card.mobile.borderRadius,
+    ...props.theme.components.card.mobile,
     [theme.breakpoints.up("tablet")]: {
-      backgroundColor: props.theme.components.card.tablet.backgroundColor,
-      borderRadius: props.theme.components.card.tablet.borderRadius,
+      ...props.theme.components.card.tablet,
     },
     [theme.breakpoints.up("desktop")]: {
-      backgroundColor: props.theme.components.card.desktop.backgroundColor,
-      borderRadius: props.theme.components.card.desktop.borderRadius,
-    },
-  }),
-  container: (props) => ({
-    padding: props.theme.components.card.mobile.padding,
-    [theme.breakpoints.up("tablet")]: {
-      padding: props.theme.components.card.tablet.padding,
-    },
-    [theme.breakpoints.up("desktop")]: {
-      padding: props.theme.components.card.desktop.padding,
+      ...props.theme.components.card.desktop,
     },
   }),
 }));
@@ -47,7 +35,7 @@ const CardComponent: React.FunctionComponent<CardProps> = ({
   const classes = useStyles({ theme });
   return (
     <Box className={clsx(classes.root, className)} {...props}>
-      <Box className={classes.container}>{children}</Box>
+      {children}
     </Box>
   );
 };
