@@ -56,7 +56,7 @@ const Menu: React.ForwardRefRenderFunction<HTMLDivElement, MenuProps> = (
 ) => {
   return (
     <BackgroundProvider backgroundColor="level4">
-      <MenuContentWithRef ref={ref} {...props} />
+      <MenuContentWithRef {...props} ref={ref} />
     </BackgroundProvider>
   );
 };
