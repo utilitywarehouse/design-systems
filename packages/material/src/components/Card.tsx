@@ -33,7 +33,7 @@ const CardComponent: React.ForwardRefRenderFunction<
   const { theme } = React.useContext(BackgroundContext);
   const classes = useStyles({ theme });
   return (
-    <Box className={clsx(classes.root, className)} {...props}>
+    <Box className={clsx(classes.root, className)} {...props} ref={ref}>
       {children}
     </Box>
   );
