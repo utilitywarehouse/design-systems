@@ -10,21 +10,44 @@ export const getCardStyles = (
   backdrop: BackdropLevel
 ): CardStyles => {
   const cardPalette = getCardPalette(colorScheme, backdrop);
+  const commonStyles = {
+    padding: `${spacingBase * 3}px`,
+    borderRadius: `${spacingBase * 1.75}px`,
+    borderWidth: `${spacingBase * 0.25}px`,
+    borderStyle: "solid",
+  };
+
   return {
-    desktop: {
-      padding: `${spacingBase * 3}px`,
-      borderRadius: `${spacingBase * 2}px`,
-      ...cardPalette,
+    transparent: {
+      desktop: {
+        ...commonStyles,
+        ...cardPalette.transparent,
+        borderStyle: "dashed",
+      },
+      tablet: {
+        ...commonStyles,
+        ...cardPalette.transparent,
+        borderStyle: "dashed",
+      },
+      mobile: {
+        ...commonStyles,
+        ...cardPalette.transparent,
+        borderStyle: "dashed",
+      },
     },
-    tablet: {
-      padding: `${spacingBase * 3}px`,
-      borderRadius: `${spacingBase * 2}px`,
-      ...cardPalette,
-    },
-    mobile: {
-      padding: `${spacingBase * 3}px`,
-      borderRadius: `${spacingBase * 2}px`,
-      ...cardPalette,
+    opaque: {
+      desktop: {
+        ...commonStyles,
+        ...cardPalette.opaque,
+      },
+      tablet: {
+        ...commonStyles,
+        ...cardPalette.opaque,
+      },
+      mobile: {
+        ...commonStyles,
+        ...cardPalette.opaque,
+      },
     },
   };
 };
