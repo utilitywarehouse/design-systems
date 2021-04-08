@@ -14,14 +14,17 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   target?: string;
 }
 
-const Button: React.FunctionComponent<ButtonProps> = ({
-  size = "regular",
-  children,
-  variant = "contained",
-  fullWidth = false,
-  href,
-  ...props
-}) => {
+const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
+  {
+    size = "regular",
+    children,
+    variant = "contained",
+    fullWidth = false,
+    href,
+    ...props
+  },
+  ref
+) => {
   const muiButtonProps: MuiButtonProps = {
     color: "primary",
     disableElevation: true,
@@ -42,13 +45,13 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   }
 
   return (
-    <MuiButton {...(props as MuiButtonProps)} {...muiButtonProps}>
+    <MuiButton {...(props as MuiButtonProps)} {...muiButtonProps} ref={ref}>
       {children}
     </MuiButton>
   );
 };
 
-export default Button;
+export default React.forwardRef(Button);
 
 export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   theme,

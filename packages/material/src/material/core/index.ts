@@ -51,7 +51,10 @@ export * from "@material-ui/core/BottomNavigation";
 export { default as BottomNavigationAction } from "@material-ui/core/BottomNavigationAction";
 export * from "@material-ui/core/BottomNavigationAction";
 
-export * from "@material-ui/core/Box";
+export type {
+  BoxTypeMap,
+  BoxProps as MuiBoxProps,
+} from "@material-ui/core/Box";
 
 export { default as Breadcrumbs } from "@material-ui/core/Breadcrumbs";
 export * from "@material-ui/core/Breadcrumbs";
@@ -177,7 +180,7 @@ export { default as Grow } from "@material-ui/core/Grow";
 export * from "@material-ui/core/Grow";
 
 export { default as MuiHidden } from "@material-ui/core/Hidden";
-export { HiddenProps as MuiHiddenProps } from "@material-ui/core/Hidden";
+export type { HiddenProps as MuiHiddenProps } from "@material-ui/core/Hidden";
 
 export { default as MuiIcon } from "@material-ui/core/Icon";
 export { getIconUtilityClass, iconClasses } from "@material-ui/core/Icon";

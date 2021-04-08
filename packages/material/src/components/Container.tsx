@@ -20,9 +20,19 @@ const useStyles = makeStyles<MuiTheme>((theme: Theme) => ({
   },
 }));
 
-const Container: React.FC = ({ children }) => {
+// eslint-disable-next-line @typescript-eslint/ban-types
+type ContainerProps = React.PropsWithChildren<{}>;
+
+const Container: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  ContainerProps
+> = ({ children }, ref) => {
   const classes = useStyles();
-  return <div className={classes.container}>{children}</div>;
+  return (
+    <div ref={ref} className={classes.container}>
+      {children}
+    </div>
+  );
 };
 
-export default Container;
+export default React.forwardRef(Container);

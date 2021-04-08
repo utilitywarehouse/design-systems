@@ -18,15 +18,13 @@ export const BackgroundContext = React.createContext<BackgroundContextValue>({
 export const BackgroundConsumer = BackgroundContext.Consumer;
 
 export interface BackgroundProps extends BoxProps {
-  children?: React.ReactNode;
   backgroundColor: BackdropLevel;
 }
 
-const BackgroundInner: React.FunctionComponent<BackgroundProps> = ({
-  children,
-  backgroundColor,
-  ...props
-}) => {
+const BackgroundInner: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  BackgroundProps
+> = ({ children, backgroundColor, ...props }, ref) => {
   const { theme } = React.useContext(BackgroundContext);
 
   const backgroundColorStyle = React.useMemo(() => {
@@ -40,19 +38,26 @@ const BackgroundInner: React.FunctionComponent<BackgroundProps> = ({
         ...props.sx,
         backgroundColor: backgroundColorStyle,
       }}
+      ref={ref}
     >
       {children}
     </Box>
   );
 };
 
-const Background: React.FunctionComponent<BackgroundProps> = ({
-  backgroundColor,
-  ...props
-}) => (
+const BackgroundInnerWithRef = React.forwardRef(BackgroundInner);
+
+const Background: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  BackgroundProps
+> = ({ backgroundColor, ...props }, ref) => (
   <BackgroundProvider backgroundColor={backgroundColor}>
-    <BackgroundInner {...props} backgroundColor={backgroundColor} />
+    <BackgroundInnerWithRef
+      {...props}
+      backgroundColor={backgroundColor}
+      ref={ref}
+    />
   </BackgroundProvider>
 );
 
-export default Background;
+export default React.forwardRef(Background);

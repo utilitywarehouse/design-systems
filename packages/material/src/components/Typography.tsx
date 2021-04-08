@@ -69,13 +69,19 @@ export interface TypographyProps
   component?: React.ElementType;
 }
 
-const Typography: React.FunctionComponent<TypographyProps> = ({
-  state = "default",
-  variant = "default",
-  gutterBottom = false,
-  paragraph = false,
-  ...props
-}) => {
+const Typography: React.ForwardRefRenderFunction<
+  HTMLElement,
+  TypographyProps
+> = (
+  {
+    state = "default",
+    variant = "default",
+    gutterBottom = false,
+    paragraph = false,
+    ...props
+  },
+  ref
+) => {
   const classNames = (props.className ?? "").split(" ");
   switch (state) {
     case "success":
@@ -114,11 +120,12 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
         footnote: "p",
         interactive: "span",
       }}
+      ref={ref}
     />
   );
 };
 
-export default Typography;
+export default React.forwardRef(Typography);
 
 export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   theme,

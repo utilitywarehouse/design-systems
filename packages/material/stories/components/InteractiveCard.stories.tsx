@@ -30,6 +30,10 @@ const bindTemplate = () => {
   const boxProps: BoxProps = {
     display: "flex",
     justifyContent: "center",
+    margin: "0 auto",
+    width: "100%",
+    padding: "0 16px",
+    maxWidth: "400px",
   };
 
   const getInteractiveCard = (args) => {

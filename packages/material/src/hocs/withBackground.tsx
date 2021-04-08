@@ -5,21 +5,26 @@ interface WithBackgroundProps {
   backgroundColor?: BackgroundProviderProps["backgroundColor"];
 }
 
-function withBackground<P extends WithBackgroundProps>(
+function withBackground<P extends WithBackgroundProps, RefType extends Element>(
   Component: React.ComponentType<P>,
   defaultBackgroundColor?: WithBackgroundProps["backgroundColor"]
-): React.FunctionComponent<P> {
-  const WithBackground: React.FunctionComponent<P> = (props) => (
+): React.ForwardRefExoticComponent<
+  React.PropsWithoutRef<P> & React.RefAttributes<RefType>
+> {
+  const WithBackground: React.ForwardRefRenderFunction<RefType, P> = (
+    props,
+    ref
+  ) => (
     <BackgroundProvider
       backgroundColor={
         props.backgroundColor ?? defaultBackgroundColor ?? "level3"
       }
     >
-      <Component {...props} />
+      <Component {...props} ref={ref} />
     </BackgroundProvider>
   );
 
-  return WithBackground;
+  return React.forwardRef(WithBackground);
 }
 
 export default withBackground;

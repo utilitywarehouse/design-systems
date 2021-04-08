@@ -1,8 +1,11 @@
 import React from "react";
-import MuiBox, { BoxProps } from "@material-ui/core/Box";
+import MuiBox, { BoxProps as MuiBoxProps } from "@material-ui/core/Box";
 
-const Box: React.FunctionComponent<BoxProps> = (props) => (
-  <MuiBox {...props} boxSizing="border-box" />
-);
+export type BoxProps = Omit<MuiBoxProps, "ref">;
 
-export default Box;
+const Box: React.ForwardRefRenderFunction<HTMLDivElement, BoxProps> = (
+  props,
+  ref
+) => <MuiBox {...props} boxSizing="border-box" ref={ref} />;
+
+export default React.forwardRef(Box);

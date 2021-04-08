@@ -26,23 +26,28 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   }),
 }));
 
-const CardComponent: React.FunctionComponent<CardProps> = ({
-  children,
-  className,
-  ...props
-}) => {
+const CardComponent: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  CardProps
+> = ({ children, className, ...props }, ref) => {
   const { theme } = React.useContext(BackgroundContext);
   const classes = useStyles({ theme });
   return (
-    <Box className={clsx(classes.root, className)} {...props}>
+    <Box className={clsx(classes.root, className)} {...props} ref={ref}>
       {children}
     </Box>
   );
 };
 
-const CardWithBackground = withBackground(CardComponent, "level4");
+const CardWithBackground = withBackground(
+  React.forwardRef(CardComponent),
+  "level4"
+);
 
-const Card: React.FunctionComponent<CardProps> = (props) => {
+const Card: React.ForwardRefRenderFunction<HTMLDivElement, CardProps> = (
+  props,
+  ref
+) => {
   const { theme } = React.useContext(BackgroundContext);
   const backdropLevel = theme.backdropLevel;
   const backgroundColor = React.useMemo(() => {
@@ -58,7 +63,13 @@ const Card: React.FunctionComponent<CardProps> = (props) => {
     }
   }, [backdropLevel]);
 
-  return <CardWithBackground backgroundColor={backgroundColor} {...props} />;
+  return (
+    <CardWithBackground
+      backgroundColor={backgroundColor}
+      {...props}
+      ref={ref}
+    />
+  );
 };
 
-export default Card;
+export default React.forwardRef(Card);

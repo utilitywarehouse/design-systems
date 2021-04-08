@@ -1,1 +1,2 @@
-export { Hidden, HiddenProps } from "../../src";
+export { Hidden } from "../../src";
+export type { HiddenProps } from "../../src";
