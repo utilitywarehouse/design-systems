@@ -4,17 +4,23 @@ import { Story, Meta } from "@storybook/react";
 
 import Bill from "@utilitywarehouse/customer-ui-react-icons/24x24/Bill";
 import ChevronRight from "@utilitywarehouse/customer-ui-react-icons/24x24/ChevronRight";
+import Close from "@utilitywarehouse/customer-ui-react-icons/24x24/Close";
 import Dropdown from "@utilitywarehouse/customer-ui-react-icons/24x24/Dropdown";
 import Email from "@utilitywarehouse/customer-ui-react-icons/24x24/Email";
 import Login from "@utilitywarehouse/customer-ui-react-icons/24x24/Login";
 import Logout from "@utilitywarehouse/customer-ui-react-icons/24x24/Logout";
-import Settings from "@utilitywarehouse/customer-ui-react-icons/24x24/Settings";
-import UserOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/UserOutlined";
 import ServiceBroadband from "@utilitywarehouse/customer-ui-react-icons/24x24/ServiceBroadband";
 import ServiceCashbackCard from "@utilitywarehouse/customer-ui-react-icons/24x24/ServiceCashbackCard";
 import ServiceEnergy from "@utilitywarehouse/customer-ui-react-icons/24x24/ServiceEnergy";
 import ServiceInsurance from "@utilitywarehouse/customer-ui-react-icons/24x24/ServiceInsurance";
 import ServiceMobile from "@utilitywarehouse/customer-ui-react-icons/24x24/ServiceMobile";
+import Settings from "@utilitywarehouse/customer-ui-react-icons/24x24/Settings";
+import UserOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/UserOutlined";
+
+import Avatar from "@utilitywarehouse/customer-ui-react-icons/48x48/Avatar";
+import BillGreen from "@utilitywarehouse/customer-ui-react-icons/48x48/BillGreen";
+import ShoppingTrolley from "@utilitywarehouse/customer-ui-react-icons/48x48/ShoppingTrolley";
+import Wallet from "@utilitywarehouse/customer-ui-react-icons/48x48/Wallet";
 import ServiceBroadbandLarge from "@utilitywarehouse/customer-ui-react-icons/48x48/ServiceBroadband";
 import ServiceCashbackCardLarge from "@utilitywarehouse/customer-ui-react-icons/48x48/ServiceCashbackCard";
 import ServiceEnergyLarge from "@utilitywarehouse/customer-ui-react-icons/48x48/ServiceEnergy";
@@ -34,6 +40,7 @@ import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
 const icons = {
   "24x24": [
     Bill,
+    Close,
     ChevronRight,
     Dropdown,
     Email,
@@ -48,6 +55,10 @@ const icons = {
     ServiceMobile,
   ],
   "48x48": [
+    Avatar,
+    BillGreen,
+    ShoppingTrolley,
+    Wallet,
     ServiceBroadbandLarge,
     ServiceCashbackCardLarge,
     ServiceEnergyLarge,
