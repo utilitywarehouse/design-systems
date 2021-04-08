@@ -17,14 +17,32 @@ import {
 import withBackground from "../hocs/withBackground";
 import { clsx } from "../utils";
 
-export interface InteractiveCardProps
-  extends React.ComponentPropsWithoutRef<"button"> {
+interface BaseInteractiveCardProps {
   Background?: React.ComponentType;
   backgroundColor?: BackdropLevel;
   size?: InteractiveCardSize;
   variant?: InteractiveCardVariant;
   containerProps?: BoxProps;
 }
+
+interface ForwardedRefProps<T extends HTMLElement> {
+  forwardedRef?: React.Ref<T>;
+}
+
+type InteractiveCardButtonProps = BaseInteractiveCardProps &
+  Omit<
+    React.ComponentPropsWithoutRef<"button">,
+    keyof BaseInteractiveCardProps
+  > &
+  ForwardedRefProps<HTMLButtonElement>;
+
+type InteractiveCardAnchorProps = BaseInteractiveCardProps &
+  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseInteractiveCardProps> &
+  ForwardedRefProps<HTMLAnchorElement> & { href: string };
+
+export type InteractiveCardProps =
+  | InteractiveCardButtonProps
+  | InteractiveCardAnchorProps;
 
 interface StyleProps {
   theme: CustomerUITheme;
@@ -178,22 +196,17 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   }),
 }));
 
-const InteractiveCardComponent: React.ForwardRefRenderFunction<
-  HTMLDivElement,
-  InteractiveCardProps
-> = (
-  {
-    children,
-    Background,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    backgroundColor,
-    variant = "primary",
-    size = "regular",
-    containerProps,
-    ...props
-  },
-  ref
-) => {
+const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = ({
+  children,
+  Background,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  backgroundColor,
+  variant = "primary",
+  size = "regular",
+  containerProps,
+  forwardedRef,
+  ...props
+}) => {
   const { theme } = React.useContext(BackgroundContext);
   const { rootHover: rootHoverClass } = useRootHoverStyles();
   const classes = useStyles({
@@ -203,13 +216,14 @@ const InteractiveCardComponent: React.ForwardRefRenderFunction<
     size,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const href = (props as any).href as string | undefined;
   return (
     <Box
       {...containerProps}
       className={clsx(classes.root, containerProps?.className)}
       overflow="hidden"
       position="relative"
-      ref={ref}
     >
       <Box
         className={`a${rootHoverClass}`}
@@ -219,7 +233,13 @@ const InteractiveCardComponent: React.ForwardRefRenderFunction<
         right="0"
         bottom="0"
       />
-      <ButtonBase className={classes.buttonBase} {...props}>
+      <ButtonBase
+        {...props}
+        component={href ? "a" : "button"}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={(forwardedRef as unknown) as any}
+        className={clsx(classes.buttonBase, props.className)}
+      >
         <Box position="relative" overflow="hidden">
           {Background && (
             <Box position="absolute" left="0" top="0" right="0" bottom="0">
@@ -240,7 +260,7 @@ const InteractiveCardComponent: React.ForwardRefRenderFunction<
 const InteractiveCardWithBackground = withBackground<
   InteractiveCardProps,
   HTMLDivElement
->(React.forwardRef(InteractiveCardComponent), "level4");
+>(InteractiveCardComponent, "level4");
 
 const InteractiveCard: React.ForwardRefRenderFunction<
   HTMLDivElement,
