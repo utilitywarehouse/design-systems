@@ -40,7 +40,7 @@ type InteractiveCardAnchorProps = BaseInteractiveCardProps &
   Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseInteractiveCardProps> &
   ForwardedRefProps<HTMLAnchorElement> & { href: string };
 
-type InteractiveCardProps =
+export type InteractiveCardProps =
   | InteractiveCardButtonProps
   | InteractiveCardAnchorProps;
 
