@@ -7,11 +7,10 @@ export interface LinkProps extends React.ComponentPropsWithoutRef<"a"> {
   variant?: "default" | "active" | "secondary";
 }
 
-const Link: React.FunctionComponent<LinkProps> = ({
-  variant = "default",
-  children,
-  ...props
-}) => {
+const Link: React.ForwardRefRenderFunction<HTMLAnchorElement, LinkProps> = (
+  { variant = "default", children, ...props },
+  ref
+) => {
   const className = (props.className ?? "").split(" ");
   const variantCapitalized = variant[0]
     .toUpperCase()
@@ -24,13 +23,14 @@ const Link: React.FunctionComponent<LinkProps> = ({
       underline="none"
       className={className.join(" ")}
       {...props}
+      ref={ref}
     >
       {children}
     </MuiLink>
   );
 };
 
-export default Link;
+export default React.forwardRef(Link);
 
 export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   theme,
