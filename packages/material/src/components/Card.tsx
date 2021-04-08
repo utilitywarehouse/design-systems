@@ -26,8 +26,6 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
       backgroundColor: props.theme.components.card.desktop.backgroundColor,
       borderRadius: props.theme.components.card.desktop.borderRadius,
     },
-  }),
-  container: (props) => ({
     padding: props.theme.components.card.mobile.padding,
     [theme.breakpoints.up("tablet")]: {
       padding: props.theme.components.card.tablet.padding,
@@ -47,7 +45,7 @@ const CardComponent: React.FunctionComponent<CardProps> = ({
   const classes = useStyles({ theme });
   return (
     <Box className={clsx(classes.root, className)} {...props}>
-      <Box className={classes.container}>{children}</Box>
+      {children}
     </Box>
   );
 };
