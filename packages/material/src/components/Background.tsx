@@ -18,7 +18,6 @@ export const BackgroundContext = React.createContext<BackgroundContextValue>({
 export const BackgroundConsumer = BackgroundContext.Consumer;
 
 export interface BackgroundProps extends BoxProps {
-  children?: React.ReactNode;
   backgroundColor: BackdropLevel;
 }
 
