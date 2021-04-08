@@ -76,8 +76,16 @@ export * from "@material-ui/core/ButtonBase";
 export { default as ButtonGroup } from "@material-ui/core/ButtonGroup";
 export * from "@material-ui/core/ButtonGroup";
 
-export { default as MuiCard } from "@material-ui/core/Card";
-export * from "@material-ui/core/Card";
+export {
+  default as MuiCard,
+  cardClasses,
+  getCardUtilityClass,
+} from "@material-ui/core/Card";
+export type {
+  CardProps as MuiCardProps,
+  CardClassKey,
+  CardClasses,
+} from "@material-ui/core/Card";
 
 export { default as CardActionArea } from "@material-ui/core/CardActionArea";
 export * from "@material-ui/core/CardActionArea";

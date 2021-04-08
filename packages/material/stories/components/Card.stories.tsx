@@ -2,7 +2,7 @@ import React from "react";
 import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
-import { Card } from "./Card";
+import { Card, CardProps } from "./Card";
 import {
   Background,
   BackgroundProps,
@@ -18,7 +18,7 @@ export default {
   component: Card,
 } as Meta;
 
-const bindTemplate = () => {
+const bindTemplate = (props: Partial<CardProps>) => {
   const backgroundProps: Partial<BackgroundProps> = {
     paddingTop: 6,
     paddingBottom: 6,
@@ -40,7 +40,7 @@ const bindTemplate = () => {
 
     return (
       <Box maxWidth="400px">
-        <Card>
+        <Card {...props}>
           <Typography variant="h3" paragraph>
             Card title
           </Typography>
@@ -88,5 +88,8 @@ const bindTemplate = () => {
   return Template;
 };
 
-export const CardExamples = bindTemplate();
-CardExamples.storyName = "Card";
+export const OpaqueCard = bindTemplate({ variant: "opaque" });
+OpaqueCard.storyName = "Default (opaque)";
+
+export const TransparentCard = bindTemplate({ variant: "transparent" });
+TransparentCard.storyName = "Transparent";
