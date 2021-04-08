@@ -14,11 +14,12 @@ interface BaseButtonProps {
 
 type ButtonPropsButtonElement = BaseButtonProps &
   Omit<React.ComponentPropsWithoutRef<"button">, keyof BaseButtonProps> & {
-    forwardedRef: React.Ref<HTMLButtonElement>;
+    forwardedRef?: React.Ref<HTMLButtonElement>;
   };
 type ButtonPropsAnchorElement = BaseButtonProps &
-  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseButtonProps> & {
-    forwardedRef: React.Ref<HTMLAnchorElement>;
+  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseButtonProps | "href"> & {
+    forwardedRef?: React.Ref<HTMLAnchorElement>;
+    href: string;
   };
 
 export type ButtonProps = ButtonPropsButtonElement | ButtonPropsAnchorElement;
