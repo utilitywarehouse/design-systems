@@ -6,30 +6,36 @@ import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { ButtonSize, ButtonVariant } from "@utilitywarehouse/customer-ui-theme";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
 
-export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+interface BaseButtonProps {
   size?: "regular" | "large";
   variant?: "contained" | "outlined" | "tertiary";
   fullWidth?: boolean;
-  href?: string;
-  target?: string;
 }
 
-const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
-  {
-    size = "regular",
-    children,
-    variant = "contained",
-    fullWidth = false,
-    href,
-    ...props
-  },
-  ref
-) => {
+type ButtonPropsButtonElement = BaseButtonProps &
+  Omit<React.ComponentPropsWithoutRef<"button">, keyof BaseButtonProps> & {
+    forwardedRef?: React.Ref<HTMLButtonElement>;
+  };
+type ButtonPropsAnchorElement = BaseButtonProps &
+  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseButtonProps | "href"> & {
+    forwardedRef?: React.Ref<HTMLAnchorElement>;
+    href: string;
+  };
+
+export type ButtonProps = ButtonPropsButtonElement | ButtonPropsAnchorElement;
+
+const Button: React.FunctionComponent<ButtonProps> = ({
+  size = "regular",
+  children,
+  variant = "contained",
+  fullWidth = false,
+  forwardedRef,
+  ...props
+}) => {
   const muiButtonProps: MuiButtonProps = {
     color: "primary",
     disableElevation: true,
     fullWidth,
-    href,
   };
 
   if (variant === "tertiary") {
@@ -45,13 +51,18 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
   }
 
   return (
-    <MuiButton {...(props as MuiButtonProps)} {...muiButtonProps} ref={ref}>
+    <MuiButton
+      {...(props as Partial<MuiButtonProps>)}
+      {...muiButtonProps}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={(forwardedRef as unknown) as any}
+    >
       {children}
     </MuiButton>
   );
 };
 
-export default React.forwardRef(Button);
+export default Button;
 
 export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   theme,
