@@ -1,6 +1,6 @@
 import React from "react";
-import { CacheProvider, EmotionCache } from "@emotion/react";
-import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
+import createCache, { Options as CreateCacheOptions } from "@emotion/cache";
 import {
   StylesProvider,
   StylesProviderProps,
@@ -13,18 +13,20 @@ import { getRandomString } from "../lib/random";
 export interface UIProviderProps {
   styleProviderProps?: StylesProviderProps;
   darkModeProviderProps?: DarkModeProviderProps;
-  cacheProviderProps?: React.ProviderProps<EmotionCache>;
+  emotionCacheOptions?: CreateCacheOptions;
 }
 
 const UIProvider: React.FunctionComponent<UIProviderProps> = ({
   styleProviderProps,
   darkModeProviderProps,
-  cacheProviderProps,
+  emotionCacheOptions,
   children,
 }) => (
   <CacheProvider
-    value={createCache({ key: getRandomString("css") })}
-    {...cacheProviderProps}
+    value={createCache({
+      key: getRandomString(),
+      ...emotionCacheOptions,
+    })}
   >
     <StylesProvider {...styleProviderProps}>
       <DarkModeProvider {...darkModeProviderProps}>

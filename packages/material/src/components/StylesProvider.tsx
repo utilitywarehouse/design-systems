@@ -16,8 +16,8 @@ const StylesProvider: React.FunctionComponent<StylesProviderProps> = (
   const getGenerateClassName = (): GenerateId => {
     return createGenerateClassName({
       disableGlobal: true,
-      productionPrefix: getRandomString("prod"),
-      seed: getRandomString("seed"),
+      productionPrefix: getRandomString(),
+      seed: getRandomString(),
     });
   };
 
