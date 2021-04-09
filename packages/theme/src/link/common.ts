@@ -22,11 +22,13 @@ export const commonDefaultHoverStyles: Partial<LinkStylesNonColor> = {
 
 export const commonActiveIdleStyles: Partial<LinkStylesNonColor> = {
   ...commonStyles,
+  textDecoration: "none",
 };
 
 export const commonActiveHoverStyles: Partial<LinkStylesNonColor> = {
   ...commonStyles,
   opacity: 0.5,
+  textDecoration: "none",
 };
 
 export const commonSecondaryIdleStyles: Partial<LinkStylesNonColor> = {
@@ -36,5 +38,5 @@ export const commonSecondaryIdleStyles: Partial<LinkStylesNonColor> = {
 
 export const commonSecondaryHoverStyles: Partial<LinkStylesNonColor> = {
   ...commonStyles,
-  opacity: 0.5,
+  textDecoration: "none",
 };

@@ -1,4 +1,5 @@
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
+import { TinyColor } from "@ctrl/tinycolor";
 import { LinkPalette } from "./types";
 import { ColorScheme, BackdropLevel } from "../types";
 
@@ -29,7 +30,7 @@ const lightModeLevel0 = {
       textDecorationColor: colors.cyan,
     },
     hover: {
-      color: colors.white,
+      color: colors.cyan,
       textDecorationColor: colors.cyan,
     },
   },
@@ -64,7 +65,7 @@ const lightModeLevel2 = {
       textDecorationColor: colors.cyan,
     },
     hover: {
-      color: colors.cyan,
+      color: new TinyColor(colors.cyan).setAlpha(0.5).toRgbString(),
       textDecorationColor: colors.cyan,
     },
   },
