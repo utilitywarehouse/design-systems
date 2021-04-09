@@ -2,6 +2,7 @@ import React from "react";
 import { StylesProviderProps } from "@material-ui/styles";
 import { GenerateId } from "jss";
 import { MuiStylesProvider, createGenerateClassName } from "..";
+import { getRandomString } from "../lib/random";
 
 export type { StylesProviderProps } from "@material-ui/styles";
 
@@ -12,14 +13,11 @@ const StylesProvider: React.FunctionComponent<StylesProviderProps> = (
     generateClassName: GenerateId;
   }>();
 
-  const getRandomString = () =>
-    Math.round((Math.random() + 1) * 1e16).toString(16);
-
   const getGenerateClassName = (): GenerateId => {
     return createGenerateClassName({
       disableGlobal: true,
-      productionPrefix: getRandomString(),
-      seed: getRandomString(),
+      productionPrefix: getRandomString("prod"),
+      seed: getRandomString("seed"),
     });
   };
 
