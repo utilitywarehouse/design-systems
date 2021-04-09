@@ -34,6 +34,16 @@ const linkTypographyVariants = Object.keys(typographyVariants).filter(
   (variant) => typographyVariants[variant]
 );
 
+const linkVariantsInUse: { [key in LinkProps["variant"]]: boolean } = {
+  default: true,
+  active: true,
+  secondary: true,
+};
+
+const linkVariants = Object.keys(linkVariantsInUse).filter(
+  (variant) => linkVariantsInUse[variant]
+);
+
 export default {
   title: `${base}Links`,
   component: Link,
@@ -49,10 +59,17 @@ export default {
         options: linkTypographyVariants,
       },
     },
+    variant: {
+      control: {
+        type: "radio",
+        options: linkVariants,
+      },
+    },
   },
   args: {
     children: "Link",
     typographyVariant: "default",
+    variant: "default",
   },
 } as Meta;
 
