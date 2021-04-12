@@ -240,7 +240,12 @@ const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = 
         ref={(forwardedRef as unknown) as any}
         className={clsx(classes.buttonBase, props.className)}
       >
-        <Box position="relative" overflow="hidden">
+        <Box
+          position="relative"
+          overflow="hidden"
+          minHeight="100%"
+          minWidth="100%"
+        >
           {Background && (
             <Box position="absolute" left="0" top="0" right="0" bottom="0">
               <Background />
