@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg fill="#000000" class="customer-ui__icon" width="48px" height="48px" xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 48 48">
+<svg fill="#000000" class="customer-ui__icon" width="48px" height="48px" stroke-width="0"
+  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
   <switch>
     <g>
       <path fill="inherit"
