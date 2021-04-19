@@ -21,6 +21,7 @@ import UserOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/UserOu
 
 import Avatar from "@utilitywarehouse/customer-ui-react-icons/48x48/Avatar";
 import BillGreen from "@utilitywarehouse/customer-ui-react-icons/48x48/BillGreen";
+import Information from "@utilitywarehouse/customer-ui-react-icons/48x48/Information";
 import ShoppingTrolley from "@utilitywarehouse/customer-ui-react-icons/48x48/ShoppingTrolley";
 import Wallet from "@utilitywarehouse/customer-ui-react-icons/48x48/Wallet";
 import ServiceBroadbandLarge from "@utilitywarehouse/customer-ui-react-icons/48x48/ServiceBroadband";
@@ -61,6 +62,7 @@ const icons = {
   "48x48": [
     Avatar,
     BillGreen,
+    Information,
     ShoppingTrolley,
     Wallet,
     ServiceBroadbandLarge,
