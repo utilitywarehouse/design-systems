@@ -4145,10 +4145,10 @@
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-icons/-/customer-ui-icons-1.0.0-alpha.14.tgz#c59f30e84edd562b59094cc5030cf2c84f4e120b"
   integrity sha512-6UBTdCwrvDpD8B5LQZwDiK5Zbvn/qI8H2U6JxZHwZubGLgx8Q6gQqMX8c2lTvSe5CUi5VUeZWwvCGZXwYM/NHA==
 
-"@utilitywarehouse/customer-ui-react-icons@1.0.0-alpha.10":
-  version "1.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-react-icons/-/customer-ui-react-icons-1.0.0-alpha.10.tgz#fefa321f7f839cba21d9527f6935bd4b36c267d8"
-  integrity sha512-dazVt93ziuzT/nO2+nvJqYk5l1UWqA4Qah9qiLDFjKtGXUs+lqM1/lcI8HFs9qDXo9by6y9E8o1uMRW8whdnCw==
+"@utilitywarehouse/customer-ui-react-icons@^1.0.0-alpha.11":
+  version "1.0.0-alpha.11"
+  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-react-icons/-/customer-ui-react-icons-1.0.0-alpha.11.tgz#8d9208358a437ee846fdb44ae1332ead111223a1"
+  integrity sha512-pTwq0eusbr1wN6WjC+r/JV5q5Dm4EjQCGRXV7hqitnSOz1yirG/F5kazmjTJyg12txCy5oPd+ZxEDGqbnBOi6g==
 
 "@utilitywarehouse/customer-ui-theme@1.0.0-alpha.12":
   version "1.0.0-alpha.12"

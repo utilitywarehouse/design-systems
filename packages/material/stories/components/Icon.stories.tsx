@@ -3,10 +3,12 @@ import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import Bill from "@utilitywarehouse/customer-ui-react-icons/24x24/Bill";
+import ChevronLeft from "@utilitywarehouse/customer-ui-react-icons/24x24/ChevronLeft";
 import ChevronRight from "@utilitywarehouse/customer-ui-react-icons/24x24/ChevronRight";
 import Close from "@utilitywarehouse/customer-ui-react-icons/24x24/Close";
 import Dropdown from "@utilitywarehouse/customer-ui-react-icons/24x24/Dropdown";
 import Email from "@utilitywarehouse/customer-ui-react-icons/24x24/Email";
+import Edit from "@utilitywarehouse/customer-ui-react-icons/24x24/Edit";
 import Login from "@utilitywarehouse/customer-ui-react-icons/24x24/Login";
 import Logout from "@utilitywarehouse/customer-ui-react-icons/24x24/Logout";
 import ServiceBroadband from "@utilitywarehouse/customer-ui-react-icons/24x24/ServiceBroadband";
@@ -41,8 +43,10 @@ const icons = {
   "24x24": [
     Bill,
     Close,
+    ChevronLeft,
     ChevronRight,
     Dropdown,
+    Edit,
     Email,
     Login,
     Logout,
