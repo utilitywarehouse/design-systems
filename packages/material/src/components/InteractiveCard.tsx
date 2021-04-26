@@ -83,39 +83,6 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
         props.theme.components.interactiveCard.desktop[variant][size].idle
           .borderRadius,
     },
-    [`& .${props.rootHoverClass}`]: {
-      backgroundColor:
-        props.theme.components.interactiveCard.mobile[variant][size].idle
-          .backgroundColor,
-      transition:
-        props.theme.components.interactiveCard.mobile[variant][size].idle
-          .transition,
-      transitionProperty:
-        props.theme.components.interactiveCard.mobile[variant][size].idle
-          .transitionProperty,
-      [theme.breakpoints.up("tablet")]: {
-        backgroundColor:
-          props.theme.components.interactiveCard.tablet[variant][size].idle
-            .backgroundColor,
-        transition:
-          props.theme.components.interactiveCard.tablet[variant][size].idle
-            .transition,
-        transitionProperty:
-          props.theme.components.interactiveCard.tablet[variant][size].idle
-            .transitionProperty,
-      },
-      [theme.breakpoints.up("desktop")]: {
-        backgroundColor:
-          props.theme.components.interactiveCard.desktop[variant][size].idle
-            .backgroundColor,
-        transition:
-          props.theme.components.interactiveCard.desktop[variant][size].idle
-            .transition,
-        transitionProperty:
-          props.theme.components.interactiveCard.desktop[variant][size].idle
-            .transitionProperty,
-      },
-    },
     "&:hover": {
       borderRadius:
         props.theme.components.interactiveCard.mobile[variant][size].active
