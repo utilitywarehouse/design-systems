@@ -19,7 +19,7 @@
     "src"
   ],
   "dependencies": {
-    "@utilitywarehouse/customer-ui-design-tokens": "1.0.0-alpha.8",
+    "@utilitywarehouse/customer-ui-design-tokens": "1.0.0-alpha.9",
     "@ctrl/tinycolor": "^3.4.0"
   }
 }

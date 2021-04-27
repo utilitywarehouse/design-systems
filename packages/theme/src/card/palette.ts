@@ -48,6 +48,17 @@ const lightModeLevel3 = {
 
 const lightModeLevel4 = {
   opaque: {
+    backgroundColor: colors.whiteOwl,
+    borderColor: colors.whiteOwl,
+  },
+  transparent: {
+    borderColor: colors.purple,
+    backgroundColor: "transparent",
+  },
+};
+
+const lightModeLevel5 = {
+  opaque: {
     backgroundColor: colors.white,
     borderColor: colors.white,
   },
@@ -72,6 +83,7 @@ const darkModeLevel1 = darkModeLevel0;
 const darkModeLevel2 = darkModeLevel1;
 const darkModeLevel3 = darkModeLevel2;
 const darkModeLevel4 = darkModeLevel3;
+const darkModeLevel5 = darkModeLevel4;
 
 const palettes = {
   light: {
@@ -80,6 +92,7 @@ const palettes = {
     level2: lightModeLevel2,
     level3: lightModeLevel3,
     level4: lightModeLevel4,
+    level5: lightModeLevel5,
   },
   dark: {
     level0: darkModeLevel0,
@@ -87,6 +100,7 @@ const palettes = {
     level2: darkModeLevel2,
     level3: darkModeLevel3,
     level4: darkModeLevel4,
+    level5: darkModeLevel5,
   },
 };
 

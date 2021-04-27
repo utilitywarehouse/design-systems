@@ -35,6 +35,7 @@ const lightModeLevel1 = lightModeLevel0;
 const lightModeLevel2 = lightModeLevel0;
 const lightModeLevel3 = lightModeLevel0;
 const lightModeLevel4 = lightModeLevel0;
+const lightModeLevel5 = lightModeLevel0;
 
 const darkModeLevel0: Palette = lightModeLevel0;
 
@@ -42,6 +43,7 @@ const darkModeLevel1 = darkModeLevel0;
 const darkModeLevel2 = darkModeLevel0;
 const darkModeLevel3 = darkModeLevel0;
 const darkModeLevel4 = darkModeLevel0;
+const darkModeLevel5 = darkModeLevel0;
 
 const palettes = {
   light: {
@@ -50,6 +52,7 @@ const palettes = {
     level2: lightModeLevel2,
     level3: lightModeLevel3,
     level4: lightModeLevel4,
+    level5: lightModeLevel5,
   },
   dark: {
     level0: darkModeLevel0,
@@ -57,6 +60,7 @@ const palettes = {
     level2: darkModeLevel2,
     level3: darkModeLevel3,
     level4: darkModeLevel4,
+    level5: darkModeLevel5,
   },
 };
 

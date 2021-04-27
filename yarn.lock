@@ -4135,6 +4135,11 @@
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-design-tokens/-/customer-ui-design-tokens-1.0.0-alpha.8.tgz#f5887e47cbb050b00c453dfb372fc1801884e39e"
   integrity sha512-0puwdwNNH3hqEcbae6FGtXO7H/VBClBWXcyqKq6frWh7uStjYTPzgDLvQpSHaVKsoNWzdGVooNcXhwdWF+fUEg==
 
+"@utilitywarehouse/customer-ui-design-tokens@1.0.0-alpha.9":
+  version "1.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-design-tokens/-/customer-ui-design-tokens-1.0.0-alpha.9.tgz#485959d67f5af667c1b41dbed204c74b71e25c18"
+  integrity sha512-Z2WsyC0x2+Z/pecCh892W376xoyHHJS8LbrtfpLkHVgFv8d+FeyB9oyMrO7r2Uw5SHtFzzPa0FA6J1gSO0/WeQ==
+
 "@utilitywarehouse/customer-ui-fonts@^1.0.0-alpha.3":
   version "1.0.0-alpha.3"
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-fonts/-/customer-ui-fonts-1.0.0-alpha.3.tgz#f79a3b70d5ad0ebb4523a3bb5e70d505da353613"
@@ -4146,9 +4151,9 @@
   integrity sha512-0Dve11P0d1uk4QmFGPEsE7/yxztWUhgfKpKkXBV+6AXsb4HeSQ881Od46smZnoYB4hZ0LStSPRKeLahw7ZMiUg==
 
 "@utilitywarehouse/customer-ui-react-icons@^1.0.0-alpha.13":
-  version "1.0.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-react-icons/-/customer-ui-react-icons-1.0.0-alpha.13.tgz#ad2ec7741fce72b6d80c789df9eb63fe79075bd4"
-  integrity sha512-4vwhiZp5l6LCkRBX9kQnMkSXFjdGVTmCGnEYn1f/QqZWwwrufdo3066sG+Zw5SulSIiu8c392gdfxOmSStyoPQ==
+  version "1.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-react-icons/-/customer-ui-react-icons-1.0.0-alpha.15.tgz#279ac99b362c66a8ef63258ddb09877495bcbe11"
+  integrity sha512-wQXVRH3lAMKDQFgZi5Qp+DNcQ5iIcnn+OD0trsgAzB6vj7BcqhI8tXDebeO968C6kHhnIFM2eJ+NNiimex9D+A==
 
 "@utilitywarehouse/customer-ui-theme@1.0.0-alpha.12":
   version "1.0.0-alpha.12"

@@ -82,6 +82,25 @@ const lightModeLevel3 = {
 const lightModeLevel4 = {
   primary: {
     idle: {
+      backgroundColor: colors.whiteOwl,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+    },
+  },
+  secondary: {
+    idle: {
+      backgroundColor: colors.whiteOwl,
+    },
+    active: {
+      backgroundColor: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+    },
+  },
+};
+
+const lightModeLevel5 = {
+  primary: {
+    idle: {
       backgroundColor: colors.white,
     },
     active: {
@@ -121,6 +140,7 @@ const darkModeLevel1 = darkModeLevel0;
 const darkModeLevel2 = darkModeLevel1;
 const darkModeLevel3 = darkModeLevel2;
 const darkModeLevel4 = darkModeLevel3;
+const darkModeLevel5 = darkModeLevel4;
 
 const palettes = {
   light: {
@@ -129,6 +149,7 @@ const palettes = {
     level2: lightModeLevel2,
     level3: lightModeLevel3,
     level4: lightModeLevel4,
+    level5: lightModeLevel5,
   },
   dark: {
     level0: darkModeLevel0,
@@ -136,6 +157,7 @@ const palettes = {
     level2: darkModeLevel2,
     level3: darkModeLevel3,
     level4: darkModeLevel4,
+    level5: darkModeLevel5,
   },
 };
 

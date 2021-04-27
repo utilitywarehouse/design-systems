@@ -17,6 +17,9 @@ const backdrops: Backdrops = {
       backgroundColor: colors.lightTint,
     },
     level4: {
+      backgroundColor: colors.whiteOwl,
+    },
+    level5: {
       backgroundColor: colors.white,
     },
   },
@@ -34,6 +37,9 @@ const backdrops: Backdrops = {
       backgroundColor: colors.codGray,
     },
     level4: {
+      backgroundColor: colors.codGray,
+    },
+    level5: {
       backgroundColor: colors.codGray,
     },
   },

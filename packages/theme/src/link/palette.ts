@@ -73,6 +73,7 @@ const lightModeLevel2 = {
 
 const lightModeLevel3 = lightModeLevel2;
 const lightModeLevel4 = lightModeLevel3;
+const lightModeLevel5 = lightModeLevel4;
 
 const palettes = {
   light: {
@@ -81,6 +82,7 @@ const palettes = {
     level2: lightModeLevel2,
     level3: lightModeLevel3,
     level4: lightModeLevel4,
+    level5: lightModeLevel5,
   },
   dark: {
     level0: lightModeLevel0,
@@ -88,6 +90,7 @@ const palettes = {
     level2: lightModeLevel2,
     level3: lightModeLevel3,
     level4: lightModeLevel4,
+    level5: lightModeLevel5,
   },
 };
 
