@@ -15,6 +15,7 @@ const colors = {
   purple: "#550091",
   rose: "#f25192",
   white: "#ffffff",
+  whiteOwl: "#f4f3f6",
   transparent: "transparent",
 };
 
