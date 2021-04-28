@@ -27,7 +27,6 @@ export const commonActiveIdleStyles: Partial<LinkStylesNonColor> = {
 
 export const commonActiveHoverStyles: Partial<LinkStylesNonColor> = {
   ...commonStyles,
-  opacity: 0.5,
   textDecoration: "none",
 };
 
