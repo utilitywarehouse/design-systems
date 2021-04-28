@@ -17,7 +17,7 @@ function withBackground<P extends WithBackgroundProps, RefType extends Element>(
   ) => (
     <BackgroundProvider
       backgroundColor={
-        props.backgroundColor ?? defaultBackgroundColor ?? "level3"
+        props.backgroundColor ?? defaultBackgroundColor ?? "level4"
       }
     >
       <Component {...props} ref={ref} />

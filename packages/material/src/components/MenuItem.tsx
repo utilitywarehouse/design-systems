@@ -59,5 +59,5 @@ const MenuItem: React.ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (
 
 export default withBackground<MenuItemProps, HTMLLIElement>(
   React.forwardRef(MenuItem),
-  "level4"
+  "level5"
 );
