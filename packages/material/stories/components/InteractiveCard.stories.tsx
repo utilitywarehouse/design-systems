@@ -66,6 +66,9 @@ const bindTemplate = () => {
         <Background backgroundColor="level4" {...backgroundProps}>
           <Box {...boxProps}>{getInteractiveCard(args)}</Box>
         </Background>
+        <Background backgroundColor="level5" {...backgroundProps}>
+          <Box {...boxProps}>{getInteractiveCard(args)}</Box>
+        </Background>
       </HorizontalDisplayContainer>
     );
   };

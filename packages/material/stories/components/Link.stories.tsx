@@ -138,6 +138,9 @@ const bindTemplate = (params: TemplateParams) => {
         <Background backgroundColor="level4" {...backgroundProps}>
           <Box {...boxProps}>{linkFetcher(args)}</Box>
         </Background>
+        <Background backgroundColor="level5" {...backgroundProps}>
+          <Box {...boxProps}>{linkFetcher(args)}</Box>
+        </Background>
       </HorizontalDisplayContainer>
     );
   };

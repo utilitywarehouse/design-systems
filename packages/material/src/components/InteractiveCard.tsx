@@ -246,9 +246,10 @@ const InteractiveCard: React.ForwardRefRenderFunction<
       case "level1":
       case "level2":
       case "level3":
-        return "level4";
-
       case "level4":
+        return "level5";
+
+      case "level5":
         return "level1";
     }
   }, [backdropLevel]);

@@ -72,6 +72,11 @@ const bindTemplate = () => {
           <Button {...args} />
         </Box>
       </Background>
+      <Background backgroundColor="level5" {...backgroundProps}>
+        <Box {...boxProps}>
+          <Button {...args} />
+        </Box>
+      </Background>
     </HorizontalDisplayContainer>
   );
 

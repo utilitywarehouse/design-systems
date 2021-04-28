@@ -74,6 +74,11 @@ const bindTemplate = (
           <Typography {...args} {...params} />
         </Box>
       </Background>
+      <Background backgroundColor="level5" {...backgroundProps}>
+        <Box {...boxProps}>
+          <Typography {...args} {...params} />
+        </Box>
+      </Background>
     </HorizontalDisplayContainer>
   );
 

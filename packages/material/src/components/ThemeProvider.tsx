@@ -13,6 +13,7 @@ const backdropLevels: BackdropLevel[] = [
   "level2",
   "level3",
   "level4",
+  "level5",
 ];
 
 interface Theme {

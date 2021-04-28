@@ -155,6 +155,9 @@ const bindTemplate = (
       <Background backgroundColor="level4" {...backgroundProps}>
         <Box {...boxProps}>{getIcons(args)}</Box>
       </Background>
+      <Background backgroundColor="level5" {...backgroundProps}>
+        <Box {...boxProps}>{getIcons(args)}</Box>
+      </Background>
     </HorizontalDisplayContainer>
   );
 

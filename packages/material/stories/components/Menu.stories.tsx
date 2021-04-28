@@ -84,6 +84,9 @@ const bindTemplate = () => {
         <Background backgroundColor="level4" {...backgroundProps}>
           <Box {...boxProps}>{getMenu(args)}</Box>
         </Background>
+        <Background backgroundColor="level5" {...backgroundProps}>
+          <Box {...boxProps}>{getMenu(args)}</Box>
+        </Background>
       </HorizontalDisplayContainer>
     );
   };

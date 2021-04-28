@@ -4130,11 +4130,6 @@
     "@typescript-eslint/types" "4.14.2"
     eslint-visitor-keys "^2.0.0"
 
-"@utilitywarehouse/customer-ui-design-tokens@1.0.0-alpha.8":
-  version "1.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-design-tokens/-/customer-ui-design-tokens-1.0.0-alpha.8.tgz#f5887e47cbb050b00c453dfb372fc1801884e39e"
-  integrity sha512-0puwdwNNH3hqEcbae6FGtXO7H/VBClBWXcyqKq6frWh7uStjYTPzgDLvQpSHaVKsoNWzdGVooNcXhwdWF+fUEg==
-
 "@utilitywarehouse/customer-ui-design-tokens@1.0.0-alpha.9":
   version "1.0.0-alpha.9"
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-design-tokens/-/customer-ui-design-tokens-1.0.0-alpha.9.tgz#485959d67f5af667c1b41dbed204c74b71e25c18"
@@ -4155,13 +4150,13 @@
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-react-icons/-/customer-ui-react-icons-1.0.0-alpha.15.tgz#279ac99b362c66a8ef63258ddb09877495bcbe11"
   integrity sha512-wQXVRH3lAMKDQFgZi5Qp+DNcQ5iIcnn+OD0trsgAzB6vj7BcqhI8tXDebeO968C6kHhnIFM2eJ+NNiimex9D+A==
 
-"@utilitywarehouse/customer-ui-theme@1.0.0-alpha.12":
-  version "1.0.0-alpha.12"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-theme/-/customer-ui-theme-1.0.0-alpha.12.tgz#39897c115bebace0716dc52efefe63459abae75d"
-  integrity sha512-9U4PVbavLLhPdvQiJc82W/uYD6zCvwPhOzaUkWjCBgwZK3Lhwlcvw8NAeet8WIX0J4kn+vAmmb8Wh+NM61nUXw==
+"@utilitywarehouse/customer-ui-theme@1.0.0-alpha.13":
+  version "1.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-theme/-/customer-ui-theme-1.0.0-alpha.13.tgz#335f6cbd7b464fc56e52b3105bb004cdff69e2ae"
+  integrity sha512-G74rFRBDxymSFEp2/BNKDLreH38sFEf+ldoR9TXfQDV6exT+bdTpKO3h6DqS8MffICoQWd0Fsd+n6uK4I+RG+w==
   dependencies:
     "@ctrl/tinycolor" "^3.4.0"
-    "@utilitywarehouse/customer-ui-design-tokens" "1.0.0-alpha.8"
+    "@utilitywarehouse/customer-ui-design-tokens" "1.0.0-alpha.9"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"

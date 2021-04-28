@@ -81,6 +81,9 @@ const bindTemplate = (props: Partial<CardProps>) => {
         <Background backgroundColor="level4" {...backgroundProps}>
           <Box {...boxProps}>{getCard()}</Box>
         </Background>
+        <Background backgroundColor="level5" {...backgroundProps}>
+          <Box {...boxProps}>{getCard()}</Box>
+        </Background>
       </HorizontalDisplayContainer>
     );
   };
