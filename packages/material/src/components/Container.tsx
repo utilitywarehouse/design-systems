@@ -1,6 +1,8 @@
 import React from "react";
 import { MuiTheme } from "../lib/theme";
-import { makeStyles, Theme } from "..";
+import { BoxProps, makeStyles, Theme } from "..";
+import { Box } from "@material-ui/core";
+import { clsx } from "../utils";
 
 const useStyles = makeStyles<MuiTheme>((theme: Theme) => ({
   container: {
@@ -20,18 +22,18 @@ const useStyles = makeStyles<MuiTheme>((theme: Theme) => ({
   },
 }));
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-type ContainerProps = React.PropsWithChildren<{}>;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface ContainerProps extends BoxProps {}
 
 const Container: React.ForwardRefRenderFunction<
   HTMLDivElement,
   ContainerProps
-> = ({ children }, ref) => {
+> = ({ children, className, ...props }, ref) => {
   const classes = useStyles();
   return (
-    <div ref={ref} className={classes.container}>
+    <Box ref={ref} className={clsx(classes.container, className)} {...props}>
       {children}
-    </div>
+    </Box>
   );
 };
 
