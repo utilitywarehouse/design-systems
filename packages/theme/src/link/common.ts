@@ -20,6 +20,12 @@ export const commonDefaultHoverStyles: Partial<LinkStylesNonColor> = {
   opacity: 0.5,
 };
 
+export const commonDefaultDisabledStyles: Partial<LinkStylesNonColor> = {
+  ...commonStyles,
+  opacity: 0.15,
+  cursor: "not-allowed",
+};
+
 export const commonActiveIdleStyles: Partial<LinkStylesNonColor> = {
   ...commonStyles,
   textDecoration: "none",
@@ -30,6 +36,13 @@ export const commonActiveHoverStyles: Partial<LinkStylesNonColor> = {
   textDecoration: "none",
 };
 
+export const commonActiveDisabledStyles: Partial<LinkStylesNonColor> = {
+  ...commonStyles,
+  textDecoration: "none",
+  opacity: 0.15,
+  cursor: "not-allowed",
+};
+
 export const commonSecondaryIdleStyles: Partial<LinkStylesNonColor> = {
   ...commonStyles,
   textDecoration: "none",
@@ -38,4 +51,11 @@ export const commonSecondaryIdleStyles: Partial<LinkStylesNonColor> = {
 export const commonSecondaryHoverStyles: Partial<LinkStylesNonColor> = {
   ...commonStyles,
   textDecoration: "none",
+};
+
+export const commonSecondaryDisabledStyles: Partial<LinkStylesNonColor> = {
+  ...commonStyles,
+  textDecoration: "none",
+  opacity: 0.15,
+  cursor: "not-allowed",
 };

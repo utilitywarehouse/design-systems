@@ -17,7 +17,7 @@ export interface LinkStylesColor {
 
 export type LinkVariants = "default" | "active" | "secondary";
 
-export type LinkState = "idle" | "hover";
+export type LinkState = "idle" | "hover" | "disabled";
 
 export type LinkPalette = {
   [key in LinkVariants]: {

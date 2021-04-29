@@ -13,6 +13,10 @@ const lightModeLevel0 = {
       color: colors.white,
       textDecorationColor: colors.cyan,
     },
+    disabled: {
+      color: colors.white,
+      textDecorationColor: colors.cyan,
+    },
   },
   active: {
     idle: {
@@ -20,6 +24,10 @@ const lightModeLevel0 = {
       textDecorationColor: colors.cyan,
     },
     hover: {
+      color: colors.cyan,
+      textDecorationColor: colors.cyan,
+    },
+    disabled: {
       color: colors.cyan,
       textDecorationColor: colors.cyan,
     },
@@ -31,6 +39,10 @@ const lightModeLevel0 = {
     },
     hover: {
       color: colors.cyan,
+      textDecorationColor: colors.cyan,
+    },
+    disabled: {
+      color: colors.white,
       textDecorationColor: colors.cyan,
     },
   },
@@ -48,6 +60,10 @@ const lightModeLevel2 = {
       color: colors.midnight,
       textDecorationColor: colors.cyan,
     },
+    disabled: {
+      color: colors.midnight,
+      textDecorationColor: colors.cyan,
+    },
   },
   active: {
     idle: {
@@ -55,6 +71,10 @@ const lightModeLevel2 = {
       textDecorationColor: colors.cyan,
     },
     hover: {
+      color: colors.cyan,
+      textDecorationColor: colors.cyan,
+    },
+    disabled: {
       color: colors.cyan,
       textDecorationColor: colors.cyan,
     },
@@ -66,6 +86,10 @@ const lightModeLevel2 = {
     },
     hover: {
       color: new TinyColor(colors.cyan).setAlpha(0.5).toRgbString(),
+      textDecorationColor: colors.cyan,
+    },
+    disabled: {
+      color: colors.cyan,
       textDecorationColor: colors.cyan,
     },
   },

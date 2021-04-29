@@ -7,6 +7,9 @@ import {
   desktopActiveHover,
   desktopSecondaryIdle,
   desktopSecondaryHover,
+  desktopDefaultDisabled,
+  desktopActiveDisabled,
+  desktopSecondaryDisabled,
 } from "./desktop";
 import {
   mobileDefaultIdle,
@@ -15,6 +18,9 @@ import {
   mobileActiveHover,
   mobileSecondaryIdle,
   mobileSecondaryHover,
+  mobileDefaultDisabled,
+  mobileActiveDisabled,
+  mobileSecondaryDisabled,
 } from "./mobile";
 import {
   tabletDefaultIdle,
@@ -23,6 +29,9 @@ import {
   tabletActiveHover,
   tabletSecondaryIdle,
   tabletSecondaryHover,
+  tabletDefaultDisabled,
+  tabletActiveDisabled,
+  tabletSecondaryDisabled,
 } from "./tablet";
 import { CommonLinkStyles, LinkStyles } from "./types";
 
@@ -31,42 +40,51 @@ const getCommonLinkStyles = (): CommonLinkStyles => ({
     default: {
       idle: desktopDefaultIdle,
       hover: desktopDefaultHover,
+      disabled: desktopDefaultDisabled,
     },
     active: {
       idle: desktopActiveIdle,
       hover: desktopActiveHover,
+      disabled: desktopActiveDisabled,
     },
     secondary: {
       idle: desktopSecondaryIdle,
       hover: desktopSecondaryHover,
+      disabled: desktopSecondaryDisabled,
     },
   },
   tablet: {
     default: {
       idle: tabletDefaultIdle,
       hover: tabletDefaultHover,
+      disabled: tabletDefaultDisabled,
     },
     active: {
       idle: tabletActiveIdle,
       hover: tabletActiveHover,
+      disabled: tabletActiveDisabled,
     },
     secondary: {
       idle: tabletSecondaryIdle,
       hover: tabletSecondaryHover,
+      disabled: tabletSecondaryDisabled,
     },
   },
   mobile: {
     default: {
       idle: mobileDefaultIdle,
       hover: mobileDefaultHover,
+      disabled: mobileDefaultDisabled,
     },
     active: {
       idle: mobileActiveIdle,
       hover: mobileActiveHover,
+      disabled: mobileActiveDisabled,
     },
     secondary: {
       idle: mobileSecondaryIdle,
       hover: mobileSecondaryHover,
+      disabled: mobileSecondaryDisabled,
     },
   },
 });
@@ -90,6 +108,10 @@ export const getLinkStyles = (
           ...commonLinkStyles.desktop.default.hover,
           ...linkPalette.default.hover,
         },
+        disabled: {
+          ...commonLinkStyles.desktop.default.disabled,
+          ...linkPalette.default.disabled,
+        },
       },
       active: {
         idle: {
@@ -100,6 +122,10 @@ export const getLinkStyles = (
           ...commonLinkStyles.desktop.active.hover,
           ...linkPalette.active.hover,
         },
+        disabled: {
+          ...commonLinkStyles.desktop.active.disabled,
+          ...linkPalette.active.disabled,
+        },
       },
       secondary: {
         idle: {
@@ -109,6 +135,10 @@ export const getLinkStyles = (
         hover: {
           ...commonLinkStyles.desktop.secondary.hover,
           ...linkPalette.secondary.hover,
+        },
+        disabled: {
+          ...commonLinkStyles.desktop.secondary.disabled,
+          ...linkPalette.secondary.disabled,
         },
       },
     },
@@ -122,6 +152,10 @@ export const getLinkStyles = (
           ...commonLinkStyles.tablet.default.hover,
           ...linkPalette.default.hover,
         },
+        disabled: {
+          ...commonLinkStyles.tablet.default.disabled,
+          ...linkPalette.default.disabled,
+        },
       },
       active: {
         idle: {
@@ -132,6 +166,10 @@ export const getLinkStyles = (
           ...commonLinkStyles.tablet.active.hover,
           ...linkPalette.active.hover,
         },
+        disabled: {
+          ...commonLinkStyles.tablet.active.disabled,
+          ...linkPalette.active.disabled,
+        },
       },
       secondary: {
         idle: {
@@ -141,6 +179,10 @@ export const getLinkStyles = (
         hover: {
           ...commonLinkStyles.tablet.secondary.hover,
           ...linkPalette.secondary.hover,
+        },
+        disabled: {
+          ...commonLinkStyles.tablet.secondary.disabled,
+          ...linkPalette.secondary.disabled,
         },
       },
     },
@@ -154,6 +196,10 @@ export const getLinkStyles = (
           ...commonLinkStyles.mobile.default.hover,
           ...linkPalette.default.hover,
         },
+        disabled: {
+          ...commonLinkStyles.mobile.default.disabled,
+          ...linkPalette.default.disabled,
+        },
       },
       active: {
         idle: {
@@ -164,6 +210,10 @@ export const getLinkStyles = (
           ...commonLinkStyles.mobile.active.hover,
           ...linkPalette.active.hover,
         },
+        disabled: {
+          ...commonLinkStyles.mobile.active.disabled,
+          ...linkPalette.active.disabled,
+        },
       },
       secondary: {
         idle: {
@@ -173,6 +223,10 @@ export const getLinkStyles = (
         hover: {
           ...commonLinkStyles.mobile.secondary.hover,
           ...linkPalette.secondary.hover,
+        },
+        disabled: {
+          ...commonLinkStyles.mobile.secondary.disabled,
+          ...linkPalette.secondary.disabled,
         },
       },
     },
