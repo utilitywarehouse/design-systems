@@ -65,6 +65,11 @@ export default {
         options: linkVariants,
       },
     },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+    },
   },
   args: {
     children: "Link",
