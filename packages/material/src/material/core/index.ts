@@ -258,7 +258,12 @@ export { default as ListSubheader } from "@material-ui/core/ListSubheader";
 export * from "@material-ui/core/ListSubheader";
 
 export { default as MuiMenu } from "@material-ui/core/Menu";
-export * from "@material-ui/core/Menu";
+export { menuClasses, getMenuUtilityClass } from "@material-ui/core/Menu";
+export type {
+  MenuProps as MuiMenuProps,
+  MenuClassKey,
+  MenuClasses,
+} from "@material-ui/core/Menu";
 
 export { default as MuiMenuItem } from "@material-ui/core/MenuItem";
 export {

@@ -36,7 +36,7 @@ export type { InteractiveCardProps } from "./components/InteractiveCard";
 export { default as Link } from "./components/Link";
 export type { LinkProps } from "./components/Link";
 
-export { default as Menu } from "./components/Menu";
+export { default as Menu, MenuProps } from "./components/Menu";
 
 export { default as MenuItem } from "./components/MenuItem";
 export type { MenuItemProps } from "./components/MenuItem";
