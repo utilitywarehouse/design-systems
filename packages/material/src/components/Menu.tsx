@@ -14,7 +14,7 @@ interface StyleProps {
   theme: CustomerUITheme;
 }
 
-interface MenuProps extends MuiMenuProps {
+export interface MenuProps extends MuiMenuProps {
   forwardedRef?: React.Ref<HTMLDivElement>;
 }
 
