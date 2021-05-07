@@ -2,7 +2,7 @@ import React from "react";
 import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 import {
   MuiMenu,
-  MenuProps,
+  MuiMenuProps,
   BackgroundProvider,
   makeStyles,
   Theme,
@@ -12,6 +12,10 @@ import { GetComponentThemeConfiguration } from "../lib/theme.types";
 
 interface StyleProps {
   theme: CustomerUITheme;
+}
+
+interface MenuProps extends MuiMenuProps {
+  forwardedRef?: React.Ref<HTMLDivElement>;
 }
 
 const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
@@ -30,16 +34,16 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   },
 }));
 
-const MenuContent: React.ForwardRefRenderFunction<HTMLDivElement, MenuProps> = (
-  props,
-  ref
-) => {
+const MenuContent: React.FunctionComponent<MenuProps> = ({
+  forwardedRef,
+  ...props
+}) => {
   const { theme } = React.useContext(BackgroundContext);
   const classes = useStyles({ theme });
   return (
     <MuiMenu
       {...props}
-      ref={ref}
+      ref={forwardedRef}
       classes={{
         paper: classes.paper,
         list: classes.list,
@@ -48,20 +52,15 @@ const MenuContent: React.ForwardRefRenderFunction<HTMLDivElement, MenuProps> = (
   );
 };
 
-const MenuContentWithRef = React.forwardRef(MenuContent);
-
-const Menu: React.ForwardRefRenderFunction<HTMLDivElement, MenuProps> = (
-  props,
-  ref
-) => {
+const Menu: React.FunctionComponent<MenuProps> = (props) => {
   return (
     <BackgroundProvider backgroundColor="level5">
-      <MenuContentWithRef {...props} ref={ref} />
+      <MenuContent {...props} />
     </BackgroundProvider>
   );
 };
 
-export default React.forwardRef(Menu);
+export default Menu;
 
 export const getComponentThemeConfiguration: GetComponentThemeConfiguration = () => {
   return {
