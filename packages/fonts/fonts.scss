@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Aeonik Bold";
+  font-family: "Aeonik";
   src: url("./Aeonik-Bold.woff2") format("woff2"),
     url("./Aeonik-Bold.woff") format("woff"),
     url("./Aeonik-Bold.ttf") format("ttf");
@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: "Work Sans";
-  src: url("./Work-Sans.woff2");
+  src: url("./WorkSans-Regular.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Work Sans";
-  src: url("./Work-Sans.woff2");
+  src: url("./WorkSans-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-display: swap;
   font-style: normal;
