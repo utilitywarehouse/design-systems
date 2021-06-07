@@ -453,9 +453,6 @@ export * from "@material-ui/core/useMediaQuery";
 export { default as useScrollTrigger } from "@material-ui/core/useScrollTrigger";
 export * from "@material-ui/core/useScrollTrigger";
 
-export { default as withWidth } from "@material-ui/core/withWidth";
-export * from "@material-ui/core/withWidth";
-
 export { default as Zoom } from "@material-ui/core/Zoom";
 export * from "@material-ui/core/Zoom";
 
