@@ -1,12 +1,12 @@
-import createMuiTheme, {
+import createTheme, {
   Theme as MuiTheme,
-} from "@material-ui/core/styles/createMuiTheme";
+} from "@material-ui/core/styles/createTheme";
 import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 import { getComponentThemeConfiguration } from "../components";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 import { BreakpointsOptions } from "@material-ui/core/styles/createBreakpoints";
 
-export type { Theme as MuiTheme } from "@material-ui/core/styles/createMuiTheme";
+export type { Theme as MuiTheme } from "@material-ui/core/styles/createTheme";
 export type { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 
 declare module "@material-ui/core/styles" {
@@ -53,7 +53,7 @@ const getPalette = (theme: CustomerUITheme): PaletteOptions => ({
 });
 
 export const buildTheme = (theme: CustomerUITheme): MuiTheme => {
-  const muiTheme = createMuiTheme({
+  const muiTheme = createTheme({
     breakpoints: getBreakpoints(theme),
     spacing: theme.spacing,
     palette: getPalette(theme),

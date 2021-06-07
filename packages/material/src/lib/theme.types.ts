@@ -1,4 +1,4 @@
-import { Theme as MuiTheme } from "@material-ui/core/styles/createMuiTheme";
+import { Theme as MuiTheme } from "@material-ui/core/styles/createTheme";
 import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 import { Components } from "@material-ui/core/styles/components";
 

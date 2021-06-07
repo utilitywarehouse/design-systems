@@ -1,5 +1,5 @@
 export {
-  createMuiTheme,
+  createTheme,
   unstable_createMuiStrictModeTheme,
   adaptV4Theme,
   createStyles,

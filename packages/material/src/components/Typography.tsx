@@ -23,7 +23,7 @@ declare module "@material-ui/core/styles" {
     inherit: React.CSSProperties;
   }
 
-  // allow configuration using `createMuiTheme`
+  // allow configuration using material-ui's `createTheme`
   interface TypographyVariantsOptions {
     default?: React.CSSProperties;
     small?: React.CSSProperties;
