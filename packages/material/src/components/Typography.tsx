@@ -4,7 +4,7 @@ import MuiTypography, {
   TypographyPropsVariantOverrides,
 } from "@material-ui/core/Typography";
 import { OverridableStringUnion } from "@material-ui/types";
-import { CSSProperties } from "@material-ui/core/styles/withStyles";
+import { CSSProperties } from "@material-ui/styles/withStyles";
 import {
   TypographyState,
   TypographyVariant,
