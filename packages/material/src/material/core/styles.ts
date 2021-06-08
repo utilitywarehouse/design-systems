@@ -8,7 +8,7 @@ export {
   easing,
   useTheme,
   unstable_useThemeProps,
-  experimentalStyled,
+  styled,
   ThemeProvider as MuiThemeProvider,
 } from "@material-ui/core/styles";
 
@@ -18,7 +18,6 @@ export {
   createGenerateClassName,
   jssPreset,
   makeStyles,
-  styled,
   withStyles,
   withTheme,
 } from "@material-ui/styles";
