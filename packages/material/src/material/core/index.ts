@@ -348,6 +348,9 @@ export * from "@material-ui/core/SpeedDialAction";
 export { default as SpeedDialIcon } from "@material-ui/core/SpeedDialIcon";
 export * from "@material-ui/core/SpeedDialIcon";
 
+export { default as Stack } from "@material-ui/core/Stack";
+export * from "@material-ui/core/Stack";
+
 export { default as Step } from "@material-ui/core/Step";
 export * from "@material-ui/core/Step";
 
