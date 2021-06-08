@@ -242,6 +242,9 @@ export * from "@material-ui/core/ListItem";
 export { default as ListItemAvatar } from "@material-ui/core/ListItemAvatar";
 export * from "@material-ui/core/ListItemAvatar";
 
+export { default as ListItemButton } from "@material-ui/core/ListItemButton";
+export * from "@material-ui/core/ListItemButton";
+
 export { default as ListItemIcon } from "@material-ui/core/ListItemIcon";
 export * from "@material-ui/core/ListItemIcon";
 
