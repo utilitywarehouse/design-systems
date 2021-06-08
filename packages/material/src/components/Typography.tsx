@@ -1,8 +1,8 @@
 import React from "react";
 import MuiTypography, {
-  TypographyVariantDefaults,
   TypographyPropsVariantOverrides,
 } from "@material-ui/core/Typography";
+import { Variant } from "@material-ui/core/styles/createTypography";
 import { OverridableStringUnion } from "@material-ui/types";
 import { CSSProperties } from "@material-ui/styles/withStyles";
 import {
@@ -61,7 +61,7 @@ export interface TypographyProps
   extends React.ComponentPropsWithoutRef<"span"> {
   state?: TypographyState;
   variant?: OverridableStringUnion<
-    TypographyVariantDefaults,
+    Variant | "inherit",
     TypographyPropsVariantOverrides
   >;
   gutterBottom?: boolean;

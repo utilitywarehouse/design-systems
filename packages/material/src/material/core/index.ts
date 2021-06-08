@@ -435,11 +435,11 @@ export * from "@material-ui/core/Tooltip";
 export { default as MuiTypography } from "@material-ui/core/Typography";
 export type {
   TypographyPropsVariantOverrides,
-  TypographyVariantDefaults,
   TypographyTypeMap,
   TypographyProps as MuiTypographyProps,
   TypographyClassKey,
 } from "@material-ui/core/Typography";
+export type { Variant } from "@material-ui/core/styles/createTypography";
 
 export { default as Unstable_TrapFocus } from "@material-ui/core/Unstable_TrapFocus";
 export * from "@material-ui/core/Unstable_TrapFocus";
