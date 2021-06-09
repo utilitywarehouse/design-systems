@@ -22,7 +22,8 @@
     "@ctrl/tinycolor": "^3.3.2",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
-    "@material-ui/core": "5.0.0-alpha.28",
+    "@material-ui/core": "5.0.0-alpha.36",
+    "@material-ui/styles": "5.0.0-alpha.35",
     "@utilitywarehouse/customer-ui-theme": "1.0.0-alpha.15"
   },
   "files": [

@@ -187,9 +187,6 @@ export type {
 export { default as Grow } from "@material-ui/core/Grow";
 export * from "@material-ui/core/Grow";
 
-export { default as MuiHidden } from "@material-ui/core/Hidden";
-export type { HiddenProps as MuiHiddenProps } from "@material-ui/core/Hidden";
-
 export { default as MuiIcon } from "@material-ui/core/Icon";
 export { getIconUtilityClass, iconClasses } from "@material-ui/core/Icon";
 export type {
@@ -244,6 +241,9 @@ export * from "@material-ui/core/ListItem";
 
 export { default as ListItemAvatar } from "@material-ui/core/ListItemAvatar";
 export * from "@material-ui/core/ListItemAvatar";
+
+export { default as ListItemButton } from "@material-ui/core/ListItemButton";
+export * from "@material-ui/core/ListItemButton";
 
 export { default as ListItemIcon } from "@material-ui/core/ListItemIcon";
 export * from "@material-ui/core/ListItemIcon";
@@ -351,6 +351,9 @@ export * from "@material-ui/core/SpeedDialAction";
 export { default as SpeedDialIcon } from "@material-ui/core/SpeedDialIcon";
 export * from "@material-ui/core/SpeedDialIcon";
 
+export { default as Stack } from "@material-ui/core/Stack";
+export * from "@material-ui/core/Stack";
+
 export { default as Step } from "@material-ui/core/Step";
 export * from "@material-ui/core/Step";
 
@@ -438,11 +441,11 @@ export * from "@material-ui/core/Tooltip";
 export { default as MuiTypography } from "@material-ui/core/Typography";
 export type {
   TypographyPropsVariantOverrides,
-  TypographyVariantDefaults,
   TypographyTypeMap,
   TypographyProps as MuiTypographyProps,
   TypographyClassKey,
 } from "@material-ui/core/Typography";
+export type { Variant } from "@material-ui/core/styles/createTypography";
 
 export { default as Unstable_TrapFocus } from "@material-ui/core/Unstable_TrapFocus";
 export * from "@material-ui/core/Unstable_TrapFocus";
@@ -452,9 +455,6 @@ export * from "@material-ui/core/useMediaQuery";
 
 export { default as useScrollTrigger } from "@material-ui/core/useScrollTrigger";
 export * from "@material-ui/core/useScrollTrigger";
-
-export { default as withWidth } from "@material-ui/core/withWidth";
-export * from "@material-ui/core/withWidth";
 
 export { default as Zoom } from "@material-ui/core/Zoom";
 export * from "@material-ui/core/Zoom";

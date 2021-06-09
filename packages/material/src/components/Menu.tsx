@@ -70,7 +70,6 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
           horizontal: "left",
           vertical: "bottom",
         },
-        getContentAnchorEl: null,
       },
     },
   };

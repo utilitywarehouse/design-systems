@@ -2,7 +2,7 @@ import React from "react";
 import MuiButton, {
   ButtonProps as MuiButtonProps,
 } from "@material-ui/core/Button";
-import { CSSProperties } from "@material-ui/core/styles/withStyles";
+import { CSSProperties } from "@material-ui/styles/withStyles";
 import { ButtonSize, ButtonVariant } from "@utilitywarehouse/customer-ui-theme";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
 

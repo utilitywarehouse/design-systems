@@ -1,10 +1,10 @@
 import React from "react";
 import MuiTypography, {
-  TypographyVariantDefaults,
   TypographyPropsVariantOverrides,
 } from "@material-ui/core/Typography";
+import { Variant } from "@material-ui/core/styles/createTypography";
 import { OverridableStringUnion } from "@material-ui/types";
-import { CSSProperties } from "@material-ui/core/styles/withStyles";
+import { CSSProperties } from "@material-ui/styles/withStyles";
 import {
   TypographyState,
   TypographyVariant,
@@ -23,7 +23,7 @@ declare module "@material-ui/core/styles" {
     inherit: React.CSSProperties;
   }
 
-  // allow configuration using `createMuiTheme`
+  // allow configuration using material-ui's `createTheme`
   interface TypographyVariantsOptions {
     default?: React.CSSProperties;
     small?: React.CSSProperties;
@@ -61,7 +61,7 @@ export interface TypographyProps
   extends React.ComponentPropsWithoutRef<"span"> {
   state?: TypographyState;
   variant?: OverridableStringUnion<
-    TypographyVariantDefaults,
+    Variant | "inherit",
     TypographyPropsVariantOverrides
   >;
   gutterBottom?: boolean;
