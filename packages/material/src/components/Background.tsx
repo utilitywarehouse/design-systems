@@ -15,6 +15,14 @@ export const BackgroundContext = React.createContext<BackgroundContextValue>({
   theme: getTheme("light", "level3"),
 });
 
+export const useBackground = (): BackgroundContextValue => {
+  const context = React.useContext(BackgroundContext);
+  if (context === undefined) {
+    throw new Error(`useBackground must be used within the BackgroundProvider`);
+  }
+  return context;
+};
+
 export const BackgroundConsumer = BackgroundContext.Consumer;
 
 export interface BackgroundProps extends BoxProps {

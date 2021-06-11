@@ -4,6 +4,7 @@ export {
   default as Background,
   BackgroundContext,
   BackgroundConsumer,
+  useBackground,
 } from "./components/Background";
 export type { BackgroundProps } from "./components/Background";
 
