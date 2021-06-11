@@ -1,4 +1,4 @@
-import { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
+import { BackdropLevel, Theme } from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
 import {
   BackgroundContext,
@@ -33,6 +33,11 @@ const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({
       </BackgroundContext.Provider>
     </MuiThemeProvider>
   );
+};
+
+export const useTheme = (): Theme => {
+  const { theme } = React.useContext(BackgroundContext);
+  return theme;
 };
 
 export default BackgroundProvider;
