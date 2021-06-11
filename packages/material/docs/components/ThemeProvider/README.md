@@ -1,11 +1,11 @@
 # ThemeProvider
 
-The `ThemeProvider` manages the compilation of themes from the [theme package](../../../../theme). The themes can then be fetched via the `ThemeContext` React context.
+The `ThemeProvider` manages the compilation of themes from the [theme package](../../../../theme). The themes can then be fetched via the `useTheme` React hook.
 
 ## Usage
 
 ```TypeScript
-import { ThemeProvider, ThemeContext } from "@utilitywarehouse/customer-ui-material";
+import { ThemeProvider, useTheme } from "@utilitywarehouse/customer-ui-material";
 
 ...
 
@@ -20,7 +20,7 @@ const {
   getCustomerUITheme,
   // For fetching a customer MUI theme
   getMuiTheme,
-} = React.useContext(ThemeProvider);
+} = useTheme();
 
 ```
 

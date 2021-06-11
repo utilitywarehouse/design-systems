@@ -60,6 +60,7 @@ export type { StylesProviderProps } from "./components/StylesProvider";
 export {
   default as ThemeProvider,
   ThemeContext,
+  useTheme,
 } from "./components/ThemeProvider";
 export type { ThemeProviderProps } from "./components/ThemeProvider";
 

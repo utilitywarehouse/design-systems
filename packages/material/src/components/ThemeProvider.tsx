@@ -84,4 +84,12 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = ({
   );
 };
 
+export const useTheme = (): ThemeContextValue => {
+  const context = React.useContext(ThemeContext);
+  if (context === undefined) {
+    throw new Error(`useTheme must be used within the ThemeProvider`);
+  }
+  return context;
+};
+
 export default ThemeProvider;
