@@ -5,7 +5,7 @@ The `ThemeProvider` manages the compilation of themes from the [theme package](.
 ## Usage
 
 ```TypeScript
-import { ThemeProvider, useTheme } from "@utilitywarehouse/customer-ui-material";
+import { ThemeProvider, ThemeContext } from "@utilitywarehouse/customer-ui-material";
 
 ...
 
@@ -20,7 +20,7 @@ const {
   getCustomerUITheme,
   // For fetching a customer MUI theme
   getMuiTheme,
-} = useTheme();
+} = React.useContext(ThemeContext);
 
 ```
 
