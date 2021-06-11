@@ -6,7 +6,7 @@ export {
   responsiveFontSizes,
   duration,
   easing,
-  useTheme,
+  useTheme as useMuiTheme,
   unstable_useThemeProps,
   styled,
   ThemeProvider as MuiThemeProvider,
