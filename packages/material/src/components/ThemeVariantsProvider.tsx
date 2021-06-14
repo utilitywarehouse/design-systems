@@ -23,7 +23,7 @@ interface Theme {
 
 type Themes = Record<BackdropLevel, Theme>;
 
-interface ThemeContextValue {
+interface ThemeVariantsContextValue {
   getCustomerUITheme: (level: BackdropLevel) => CustomerUITheme;
   getMuiTheme: (level: BackdropLevel) => MuiTheme;
 }
@@ -42,16 +42,18 @@ const getThemes = (colorScheme: ColorScheme): Themes => {
   return themes as Themes;
 };
 
-export const ThemeContext = React.createContext<ThemeContextValue>({
-  getCustomerUITheme: () => ({} as CustomerUITheme),
-  getMuiTheme: () => ({} as MuiTheme),
-});
+export const ThemeVariantsContext = React.createContext<ThemeVariantsContextValue>(
+  {
+    getCustomerUITheme: () => ({} as CustomerUITheme),
+    getMuiTheme: () => ({} as MuiTheme),
+  }
+);
 
-export interface ThemeProviderProps {
+export interface ThemeVariantsProviderProps {
   children?: React.ReactNode;
 }
 
-const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = ({
+const ThemeVariantsProvider: React.FunctionComponent<ThemeVariantsProviderProps> = ({
   children,
 }) => {
   const { darkModeEnabled } = React.useContext(DarkModeContext);
@@ -78,10 +80,10 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = ({
   );
 
   return (
-    <ThemeContext.Provider value={{ getCustomerUITheme, getMuiTheme }}>
+    <ThemeVariantsContext.Provider value={{ getCustomerUITheme, getMuiTheme }}>
       {children}
-    </ThemeContext.Provider>
+    </ThemeVariantsContext.Provider>
   );
 };
 
-export default ThemeProvider;
+export default ThemeVariantsProvider;

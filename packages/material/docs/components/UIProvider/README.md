@@ -4,7 +4,7 @@ The `UIProvider` component pulls together the various context providers which co
 
 * StylesProvider - Uses the internal `StylesProvider` component which is a wrapper to the [Material UI StylesProvider](https://next.material-ui.com/styles/api/#stylesprovider) component, but sets some default props.
 * DarkModeProvider - See [docs on the DarkModeProvider](../DarkModeProvider) for more context.
-* ThemeProvider - See [docs on the ThemeProvider](../ThemeProvider) for more context.
+* ThemeVariantsProvider - This is a private internal provider which manages the compilation of themes from the [theme package](../../../../theme).
 
 ## Usage
 
