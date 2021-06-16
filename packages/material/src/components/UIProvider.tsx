@@ -4,11 +4,11 @@ import createCache, { Options as CreateCacheOptions } from "@emotion/cache";
 import {
   StylesProvider,
   StylesProviderProps,
-  ThemeProvider,
   DarkModeProvider,
   DarkModeProviderProps,
 } from "..";
 import { getRandomString } from "../lib/random";
+import ThemeVariantsProvider from "./ThemeVariantsProvider";
 
 export interface UIProviderProps {
   styleProviderProps?: StylesProviderProps;
@@ -30,7 +30,7 @@ const UIProvider: React.FunctionComponent<UIProviderProps> = ({
   >
     <StylesProvider {...styleProviderProps}>
       <DarkModeProvider {...darkModeProviderProps}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeVariantsProvider>{children}</ThemeVariantsProvider>
       </DarkModeProvider>
     </StylesProvider>
   </CacheProvider>

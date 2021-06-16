@@ -7,7 +7,10 @@ export {
 } from "./components/Background";
 export type { BackgroundProps } from "./components/Background";
 
-export { default as BackgroundProvider } from "./components/BackgroundProvider";
+export {
+  default as BackgroundProvider,
+  useTheme,
+} from "./components/BackgroundProvider";
 export type { BackgroundProviderProps } from "./components/BackgroundProvider";
 
 export { default as Box } from "./components/Box";
@@ -56,12 +59,6 @@ export type {
 
 export { default as StylesProvider } from "./components/StylesProvider";
 export type { StylesProviderProps } from "./components/StylesProvider";
-
-export {
-  default as ThemeProvider,
-  ThemeContext,
-} from "./components/ThemeProvider";
-export type { ThemeProviderProps } from "./components/ThemeProvider";
 
 export { default as UIProvider } from "./components/UIProvider";
 export type { UIProviderProps } from "./components/UIProvider";

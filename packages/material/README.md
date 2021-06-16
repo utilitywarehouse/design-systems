@@ -81,7 +81,6 @@ Theming is also based on the [Background](docs/components/Background) component.
 * [InteractiveCard](docs/components/InteractiveCard)
 * [Link](docs/components/Link)
 * [MenuItem](docs/components/MenuItem)
-* [ThemeProvider](docs/components/ThemeProvider)
 * [Typography](docs/components/Typography)
 * [UIProvider](docs/components/UIProvider)
 
