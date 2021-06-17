@@ -37,6 +37,14 @@ yarn add @utilitywarehouse/customer-ui-material
 
 ## Getting started
 
+Start by wrapping your application with the `UIProvider` component. This renders
+the necessary context providers, in the correct order, which contribute to the
+state of the UI.
+
+It's important to note that the `UIProvider` does not include the Material UI
+`ThemeProvider` used to theme components. This is done by the
+`BackgroundProvider` rendered by the `Background` component.
+
 ```TypeScript
 import React from "react";
 import { UIProvider } from "@utilitywarehouse/customer-ui-material";
@@ -55,16 +63,65 @@ const App: React.FC = () => (
 
 ```
 
+The following providers are rendered by the `UIProvider`.
+
+- **StylesProvider** - Uses the internal `StylesProvider` component which is a
+  wrapper around the [Material UI StylesProvider](https://next.material-ui.com/styles/api/#stylesprovider)
+  component, and sets some default props.
+- **DarkModeProvider** - Manages switching between dark and light mode. *Note
+  that dark mode is not yet supported.*
+- **ThemeVariantsProvider** - This is an internal provider which manages the
+  compilation of themes from the [theme package](../theme).
+
 ## Theming
 
-Themes are all managed internally with the UI library. There are two types of themes available:
+Theming is based on the [`Background`](docs/components/Background) component.
+This means theme management can be handled internally to the material package.
 
-* Customer UI theme, the theme object exported from [the theme package](../theme).
-* Material UI theme, the [Material UI theme](https://next.material-ui.com/customization/default-theme/#main-content).
+The `Background` component renders a [Background context](docs/components/BackgroundContext),
+giving components rendered further down the tree access to the Customer UI theme
+resolved by this `Background` component.
+
+Within the `Background` component, the Customer UI theme can be fetched via the
+`useTheme` hook. Additionally, the Material UI theme used by components can be
+fetched via the `useMuiTheme` hook.
+
+```TypeScript
+import { Background, useTheme, useMuiTheme } from "@utilitywarehouse/customer-ui-material";
+
+const MyApplication: React.FC = () => (
+  <Background backgroundColor="level0">
+    <Main />
+  </Background>
+);
+
+const Main: React.FC = () => {
+  // Customer UI Theme object from the closest Background component
+  const theme = useTheme();
+  const muiTheme = useMuiTheme();
+
+  return (
+    ...
+  );
+};
+```
+
+The `Background` component provides the necessary context to render Customer UI
+components with the expected brand styles.  A `Background` component isn't
+strictly required, the default behaviour is to use the theme on the `level3`
+background for light mode.  However to ensure the application behaves as
+expected you should use a `Background` component.  You can have multiple
+`Background` components within your app to render different background styles.
+The Customer UI components will then render their styles appropriately depending
+on the background color level, without needing to specify this at the individual
+component level.
+
+Themes are all managed internally with the UI library. There are two themes available:
+
+* Customer UI theme, the theme object exported from [the theme package](../theme), accessed via the `useTheme` hook.
+* Material UI theme, the [Material UI theme](https://next.material-ui.com/customization/default-theme/#main-content) accessed via the `useMuiTheme` hook.
 
 The Customer UI theme is a more complete theme when it comes to application design, where as the Material UI theme is applied internally to the Material theme providers.
-
-Theming is also based on the [Background](docs/components/Background) component. This allows theme management to be handled internally to the material package. The theme can be fetched via the [background context](docs/components/BackgroundContext), which will give components rendered further down the tree access to the Customer UI theme resolved by the background component.
 
 ## Components reference
 
@@ -101,6 +158,12 @@ To add a new component you will most likely need to create the component in the 
 It can be beneficial to develop the theme alongside the component, keep in mind you will need to deploy the theme on a separate PR prior to releasing the component in material to do this.
 
 Once the theme is ready go ahead and create the component in `src/components`. If you are overriding or extending a Material UI component don't forget to update the export in the relevant `src/material` file by prefixing the exports you are overwriting with `Mui`. This allows for consumers to still have access to the underlying Material UI library.
+
+When using Storybook to develop a new component, you will need to wrap the
+component in a `Background` component, within your story, in order to have the
+theme styles applied. It is preferable to present the component within each
+`backgroundColor` level, so as to visualise it within each possible background
+context.
 
 ### Concepts
 
