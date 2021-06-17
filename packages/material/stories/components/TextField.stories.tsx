@@ -20,10 +20,16 @@ export default {
         type: "boolean",
       },
     },
+    success: {
+      control: {
+        type: "boolean",
+      },
+    },
   },
   args: {
-    disabled: true,
+    disabled: false,
     error: false,
+    success: false,
   },
 } as Meta;
 

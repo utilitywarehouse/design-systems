@@ -3,10 +3,30 @@ import FilledInput, { FilledInputProps } from "@material-ui/core/FilledInput";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
 import { colors, fonts } from "@utilitywarehouse/customer-ui-design-tokens";
 
-export type TextFieldProps = Omit<FilledInputProps, "hiddenLabel">;
+export interface TextFieldProps
+  extends Omit<FilledInputProps, "hiddenLabel" | "sx"> {
+  success?: boolean;
+}
 
 const TextField = (props: TextFieldProps): JSX.Element => {
-  return <FilledInput {...props} />;
+  const { success, ...rest } = props;
+
+  const successStyles = {
+    borderColor: colors.jewel,
+    transition: "border 120ms ease-out",
+    ":before": {
+      borderColor: colors.jewel,
+    },
+    ":hover": {
+      "&:not(.Mui-disabled)": {
+        "&:before": {
+          borderColor: colors.jewel,
+        },
+      },
+    },
+  };
+
+  return <FilledInput {...rest} sx={success ? successStyles : {}} />;
 };
 
 export default TextField;
@@ -30,12 +50,19 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
           transition: "border 120ms ease-out",
           ":hover": {
             backgroundColor: colors.white,
+            "&:not(.Mui-disabled)": {
+              "&:before": {
+                borderBottom: `2px solid ${colors.blueRibbon}`,
+              },
+            },
           },
           "&:before": {
             borderBottom: `2px solid ${colors.purple}`,
+            transition: "border 120ms ease-out",
           },
           "&:after": {
             borderBottom: `2px solid ${colors.blueRibbon}`,
+            transition: "border 120ms ease-out",
           },
           "&.Mui-focused": {
             backgroundColor: colors.white,
@@ -62,15 +89,6 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
           paddingBottom: 17,
           paddingLeft: 12,
           fontFamily: fonts.secondary,
-        },
-        underline: {
-          "&:hover": {
-            "&:not(.Mui-disabled)": {
-              "&:before": {
-                borderBottom: `2px solid ${colors.blueRibbon}`,
-              },
-            },
-          },
         },
       },
     },
