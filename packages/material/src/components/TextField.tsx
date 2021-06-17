@@ -6,7 +6,7 @@ import { colors, fonts } from "@utilitywarehouse/customer-ui-design-tokens";
 export type TextFieldProps = Omit<FilledInputProps, "hiddenLabel">;
 
 const TextField = (props: TextFieldProps): JSX.Element => {
-  return <FilledInput hiddenLabel {...props} />;
+  return <FilledInput {...props} />;
 };
 
 export default TextField;
@@ -14,7 +14,9 @@ export default TextField;
 export const getComponentThemeConfiguration: GetComponentThemeConfiguration = () => {
   return {
     MuiFilledInput: {
-      defaultProps: {},
+      defaultProps: {
+        hiddenLabel: true,
+      },
       styleOverrides: {
         root: {
           backgroundColor: colors.white,
