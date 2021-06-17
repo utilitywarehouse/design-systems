@@ -1,33 +1,39 @@
-import React from "react";
 import FilledInput, { FilledInputProps } from "@material-ui/core/FilledInput";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
 import { colors, fonts } from "@utilitywarehouse/customer-ui-design-tokens";
+import { styled } from "../material/core";
 
 export interface TextFieldProps
   extends Omit<FilledInputProps, "hiddenLabel" | "sx"> {
   success?: boolean;
 }
 
-const TextField = (props: TextFieldProps): JSX.Element => {
-  const { success, ...rest } = props;
-
-  const successStyles = {
-    borderColor: colors.jewel,
-    transition: "border 120ms ease-out",
-    ":before": {
-      borderColor: colors.jewel,
-    },
-    ":hover": {
-      "&:not(.Mui-disabled)": {
-        "&:before": {
+const TextField = styled(FilledInput, {
+  shouldForwardProp: (prop) => prop !== "success",
+})<TextFieldProps>(({ success, error }) => ({
+  ...(success && !error
+    ? {
+        borderColor: colors.jewel,
+        transition: "border 120ms ease-out",
+        ":before": {
           borderColor: colors.jewel,
         },
-      },
-    },
-  };
-
-  return <FilledInput {...rest} sx={success ? successStyles : {}} />;
-};
+        ":hover": {
+          "&:not(.Mui-disabled)": {
+            "&:before": {
+              borderColor: colors.jewel,
+            },
+          },
+        },
+        "&.Mui-focused": {
+          borderColor: colors.jewel,
+        },
+        "&:after": {
+          borderColor: colors.jewel,
+        },
+      }
+    : {}),
+}));
 
 export default TextField;
 
@@ -57,11 +63,13 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
             },
           },
           "&:before": {
-            borderBottom: `2px solid ${colors.purple}`,
+            borderBottom: "2px solid ",
+            borderColor: colors.purple,
             transition: "border 120ms ease-out",
           },
           "&:after": {
-            borderBottom: `2px solid ${colors.blueRibbon}`,
+            borderBottom: "2px solid ",
+            borderColor: colors.blueRibbon,
             transition: "border 120ms ease-out",
           },
           "&.Mui-focused": {
@@ -70,15 +78,15 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
           },
           "&.Mui-disabled": {
             "&:before": {
-              borderBottom: `2px solid ${colors.whiteOwl}`,
+              borderColor: colors.whiteOwl,
             },
           },
           "&.Mui-error": {
             "&.Mui-focused": {
               borderColor: colors.maroonFlush,
             },
-            "&:before": {
-              borderBottom: `2px solid ${colors.maroonFlush}`,
+            "&:after": {
+              borderColor: colors.maroonFlush,
             },
           },
         },
