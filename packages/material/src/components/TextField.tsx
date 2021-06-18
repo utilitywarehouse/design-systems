@@ -1,14 +1,20 @@
+import React from "react";
 import FilledInput, { FilledInputProps } from "@material-ui/core/FilledInput";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
-import { colors, fonts } from "@utilitywarehouse/customer-ui-design-tokens";
-import { styled } from "../material/core";
+import {
+  colors,
+  fonts,
+  fontWeights,
+} from "@utilitywarehouse/customer-ui-design-tokens";
+import { FormControl, InputLabel, styled } from "../material/core";
 
-export interface TextFieldProps
-  extends Omit<FilledInputProps, "hiddenLabel" | "sx"> {
+export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
   success?: boolean;
+  label?: React.ReactNode;
+  labelId?: string;
 }
 
-const TextField = styled(FilledInput, {
+const TextFieldInput = styled(FilledInput, {
   shouldForwardProp: (prop) => prop !== "success",
 })<TextFieldProps>(({ success, error }) => ({
   ...(success && !error
@@ -35,6 +41,32 @@ const TextField = styled(FilledInput, {
     : {}),
 }));
 
+const TextFieldLabel = styled(InputLabel)(({ theme }) => ({
+  position: "relative",
+  transform: "none",
+  fontWeight: fontWeights.secondary.semibold,
+  fontSize: "0.875rem",
+  color: colors.midnight,
+  paddingBottom: theme.spacing(0.5),
+}));
+
+const TextField = (props: TextFieldProps): JSX.Element => {
+  const { label, labelId, ...rest } = props;
+
+  if (!label) {
+    return <TextFieldInput {...rest} />;
+  }
+
+  return (
+    <FormControl>
+      <TextFieldLabel shrink id={labelId} htmlFor={props.id}>
+        {label}
+      </TextFieldLabel>
+      <TextFieldInput {...rest} />
+    </FormControl>
+  );
+};
+
 export default TextField;
 
 export const getComponentThemeConfiguration: GetComponentThemeConfiguration = () => {
@@ -47,8 +79,8 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
         root: {
           backgroundColor: colors.white,
           borderRadius: 0,
-          borderTopLeftRadius: 8,
-          borderTopRightRadius: 8,
+          borderTopLeftRadius: 16,
+          borderTopRightRadius: 16,
           borderStyle: "solid",
           borderWidth: 2,
           borderBottom: 0,

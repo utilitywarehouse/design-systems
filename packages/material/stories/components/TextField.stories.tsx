@@ -25,11 +25,23 @@ export default {
         type: "boolean",
       },
     },
+    label: {
+      control: {
+        type: "text",
+      },
+    },
+    id: {
+      control: {
+        type: "text",
+      },
+    },
   },
   args: {
     disabled: false,
     error: false,
     success: false,
+    label: "Label",
+    id: "customer-ui-textfield-input",
   },
 } as Meta;
 
