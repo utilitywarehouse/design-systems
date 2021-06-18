@@ -6,12 +6,19 @@ import {
   fonts,
   fontWeights,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { FormControl, InputLabel, styled } from "../material/core";
+import {
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  styled,
+} from "../material/core";
 
 export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
   success?: boolean;
   label?: React.ReactNode;
   labelId?: string;
+  helperText?: React.ReactNode;
+  helperTextId?: string;
 }
 
 const TextFieldInput = styled(FilledInput, {
@@ -48,23 +55,48 @@ const TextFieldLabel = styled(InputLabel)(({ theme }) => ({
   fontSize: "0.875rem",
   color: colors.midnight,
   paddingBottom: theme.spacing(0.5),
+  "&.Mui-error": {
+    color: colors.midnight,
+  },
+}));
+
+const TextFieldHelperText = styled(FormHelperText)(({ theme }) => ({
+  fontWeight: fontWeights.secondary.regular,
+  fontSize: "0.75rem",
+  color: colors.midnight,
+  margin: 0,
+  paddingTop: theme.spacing(0.5),
+  "&.Mui-error": {
+    color: colors.maroonFlush,
+  },
 }));
 
 const TextField = (props: TextFieldProps): JSX.Element => {
-  const { label, labelId, ...rest } = props;
+  const { label, labelId, helperText, helperTextId, ...rest } = props;
+  const { error, disabled } = rest;
+  const formControlProps = { error, disabled };
 
-  if (!label) {
-    return <TextFieldInput {...rest} />;
+  if (label || helperText) {
+    return (
+      <FormControl {...formControlProps}>
+        {label ? (
+          <TextFieldLabel shrink id={labelId} htmlFor={props.id}>
+            {label}
+          </TextFieldLabel>
+        ) : null}
+
+        <TextFieldInput {...rest} aria-describedby={helperTextId} />
+
+        {helperText ? (
+          <TextFieldHelperText id={helperTextId}>
+            {helperText}
+          </TextFieldHelperText>
+        ) : null}
+      </FormControl>
+    );
   }
 
-  return (
-    <FormControl>
-      <TextFieldLabel shrink id={labelId} htmlFor={props.id}>
-        {label}
-      </TextFieldLabel>
-      <TextFieldInput {...rest} />
-    </FormControl>
-  );
+  return <TextFieldInput {...rest} />;
 };
 
 export default TextField;

@@ -25,12 +25,27 @@ export default {
         type: "boolean",
       },
     },
+    id: {
+      control: {
+        type: "text",
+      },
+    },
     label: {
       control: {
         type: "text",
       },
     },
-    id: {
+    labelId: {
+      control: {
+        type: "text",
+      },
+    },
+    helperText: {
+      control: {
+        type: "text",
+      },
+    },
+    helperTextId: {
       control: {
         type: "text",
       },
@@ -40,8 +55,11 @@ export default {
     disabled: false,
     error: false,
     success: false,
-    label: "Label",
     id: "customer-ui-textfield-input",
+    label: "Label",
+    labelId: "customer-ui-textfield-label",
+    helperText: "Helper text",
+    helperTextId: "customer-ui-textfield-helpertext",
   },
 } as Meta;
 
