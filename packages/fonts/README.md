@@ -5,13 +5,13 @@ Installation
 npm
 
 ```shell
-npm i --save @utilitywarehouse/customer-ui-fonts
+npm i --save @utilitywarehouse/customer-ui-fonts@alpha
 ```
 
 yarn
 
 ```shell
-yarn add @utilitywarehouse/customer-ui-fonts
+yarn add @utilitywarehouse/customer-ui-fonts@alpha
 ```
 
 ## Usage
