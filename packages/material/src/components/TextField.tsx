@@ -51,8 +51,9 @@ const TextFieldInput = styled(FilledInput, {
 const TextFieldLabel = styled(InputLabel)(({ theme }) => ({
   position: "relative",
   transform: "none",
+  fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.semibold,
-  fontSize: "0.875rem",
+  fontSize: "1rem",
   color: colors.midnight,
   paddingBottom: theme.spacing(0.5),
   "&.Mui-error": {
@@ -61,8 +62,9 @@ const TextFieldLabel = styled(InputLabel)(({ theme }) => ({
 }));
 
 const TextFieldHelperText = styled(FormHelperText)(({ theme }) => ({
+  fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.regular,
-  fontSize: "0.75rem",
+  fontSize: "0.875rem",
   color: colors.midnight,
   margin: 0,
   paddingTop: theme.spacing(0.5),
@@ -101,68 +103,69 @@ const TextField = (props: TextFieldProps): JSX.Element => {
 
 export default TextField;
 
-export const getComponentThemeConfiguration: GetComponentThemeConfiguration = () => {
-  return {
-    MuiFilledInput: {
-      defaultProps: {
-        hiddenLabel: true,
-      },
-      styleOverrides: {
-        root: {
-          backgroundColor: colors.white,
-          borderRadius: 0,
-          borderTopLeftRadius: 16,
-          borderTopRightRadius: 16,
-          borderStyle: "solid",
-          borderWidth: 2,
-          borderBottom: 0,
-          borderColor: colors.lightTint,
-          transition: "border 120ms ease-out",
-          ":hover": {
+export const getComponentThemeConfiguration: GetComponentThemeConfiguration =
+  () => {
+    return {
+      MuiFilledInput: {
+        defaultProps: {
+          hiddenLabel: true,
+        },
+        styleOverrides: {
+          root: {
             backgroundColor: colors.white,
-            "&:not(.Mui-disabled)": {
+            borderRadius: 0,
+            borderTopLeftRadius: 16,
+            borderTopRightRadius: 16,
+            borderStyle: "solid",
+            borderWidth: 2,
+            borderBottom: 0,
+            borderColor: colors.lightTint,
+            transition: "border 120ms ease-out",
+            ":hover": {
+              backgroundColor: colors.white,
+              "&:not(.Mui-disabled)": {
+                "&:before": {
+                  borderBottom: `2px solid ${colors.blueRibbon}`,
+                },
+              },
+            },
+            "&:before": {
+              borderBottom: "2px solid ",
+              borderColor: colors.purple,
+              transition: "border 120ms ease-out",
+            },
+            "&:after": {
+              borderBottom: "2px solid ",
+              borderColor: colors.blueRibbon,
+              transition: "border 120ms ease-out",
+            },
+            "&.Mui-focused": {
+              backgroundColor: colors.white,
+              borderColor: colors.blueRibbon,
+            },
+            "&.Mui-disabled": {
               "&:before": {
-                borderBottom: `2px solid ${colors.blueRibbon}`,
+                borderColor: colors.whiteOwl,
+              },
+            },
+            "&.Mui-error": {
+              "&.Mui-focused": {
+                borderColor: colors.maroonFlush,
+              },
+              "&:after": {
+                borderColor: colors.maroonFlush,
               },
             },
           },
-          "&:before": {
-            borderBottom: "2px solid ",
-            borderColor: colors.purple,
-            transition: "border 120ms ease-out",
+          input: {
+            height: 27, // + padding = 60px
+            paddingTop: 16,
+            paddingRight: 12,
+            paddingBottom: 17,
+            paddingLeft: 12,
+            fontFamily: fonts.secondary,
           },
-          "&:after": {
-            borderBottom: "2px solid ",
-            borderColor: colors.blueRibbon,
-            transition: "border 120ms ease-out",
-          },
-          "&.Mui-focused": {
-            backgroundColor: colors.white,
-            borderColor: colors.blueRibbon,
-          },
-          "&.Mui-disabled": {
-            "&:before": {
-              borderColor: colors.whiteOwl,
-            },
-          },
-          "&.Mui-error": {
-            "&.Mui-focused": {
-              borderColor: colors.maroonFlush,
-            },
-            "&:after": {
-              borderColor: colors.maroonFlush,
-            },
-          },
-        },
-        input: {
-          height: 27, // + padding = 60px
-          paddingTop: 16,
-          paddingRight: 12,
-          paddingBottom: 17,
-          paddingLeft: 12,
-          fontFamily: fonts.secondary,
         },
       },
-    },
+    };
   };
-};
