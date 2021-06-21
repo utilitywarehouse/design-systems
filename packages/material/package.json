@@ -42,7 +42,7 @@
     "@storybook/theming": "^6.1.16",
     "@types/enzyme": "^3.10.8",
     "@types/react-dom": "^17.0.0",
-    "@utilitywarehouse/customer-ui-fonts": "^1.0.0-alpha.3",
+    "@utilitywarehouse/customer-ui-fonts": "^1.0.0-alpha.4",
     "@utilitywarehouse/customer-ui-react-icons": "^1.0.0-alpha.13",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "babel-loader": "^8.2.2",
