@@ -26,8 +26,10 @@ const TextFieldInput = styled(FilledInput, {
 })<TextFieldProps>(({ success, error }) => ({
   ...(success && !error
     ? {
-        borderColor: colors.jewel,
         transition: "border 120ms ease-out",
+        "&:not(.Mui-disabled)": {
+          borderColor: colors.jewel,
+        },
         ":before": {
           borderColor: colors.jewel,
         },
@@ -155,13 +157,18 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration =
                 borderBottomStyle: "solid",
                 borderColor: colors.midTint,
               },
+              "&:after": {
+                borderColor: colors.midTint,
+              },
             },
             "&.Mui-error": {
               "&.Mui-focused": {
                 borderColor: colors.maroonFlush,
               },
-              "&:after": {
-                borderColor: colors.maroonFlush,
+              "&:not(.Mui-disabled)": {
+                "&:after": {
+                  borderColor: colors.maroonFlush,
+                },
               },
             },
           },
