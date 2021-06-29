@@ -60,6 +60,7 @@ export default {
     labelId: "customer-ui-textfield-label",
     helperText: "Helper text",
     helperTextId: "customer-ui-textfield-helpertext",
+    placeholder: "Placeholder",
   },
 } as Meta;
 

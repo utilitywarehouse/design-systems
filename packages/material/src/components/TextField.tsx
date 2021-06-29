@@ -167,11 +167,13 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration =
           },
           input: {
             height: 27, // + padding = 60px
-            paddingTop: 16,
-            paddingRight: 12,
+            padding: 16,
             paddingBottom: 17,
-            paddingLeft: 12,
             fontFamily: fonts.secondary,
+            fontSize: "1.125rem",
+            "::placeholder": {
+              fontSize: "inherit",
+            },
           },
         },
       },
