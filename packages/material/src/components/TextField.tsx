@@ -59,6 +59,9 @@ const TextFieldLabel = styled(InputLabel)(({ theme }) => ({
   "&.Mui-error": {
     color: colors.midnight,
   },
+  "&.Mui-disabled": {
+    color: colors.midTint,
+  },
 }));
 
 const TextFieldHelperText = styled(FormHelperText)(({ theme }) => ({
@@ -70,6 +73,9 @@ const TextFieldHelperText = styled(FormHelperText)(({ theme }) => ({
   paddingTop: theme.spacing(0.5),
   "&.Mui-error": {
     color: colors.maroonFlush,
+  },
+  "&.Mui-disabled": {
+    color: colors.midTint,
   },
 }));
 
@@ -144,8 +150,10 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration =
               borderColor: colors.blueRibbon,
             },
             "&.Mui-disabled": {
+              backgroundColor: colors.lightTint,
               "&:before": {
-                borderColor: colors.whiteOwl,
+                borderBottomStyle: "solid",
+                borderColor: colors.midTint,
               },
             },
             "&.Mui-error": {
