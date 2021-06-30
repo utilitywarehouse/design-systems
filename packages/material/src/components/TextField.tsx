@@ -111,78 +111,77 @@ const TextField = (props: TextFieldProps): JSX.Element => {
 
 export default TextField;
 
-export const getComponentThemeConfiguration: GetComponentThemeConfiguration =
-  () => {
-    return {
-      MuiFilledInput: {
-        defaultProps: {
-          hiddenLabel: true,
-        },
-        styleOverrides: {
-          root: {
+export const getComponentThemeConfiguration: GetComponentThemeConfiguration = () => {
+  return {
+    MuiFilledInput: {
+      defaultProps: {
+        hiddenLabel: true,
+      },
+      styleOverrides: {
+        root: {
+          backgroundColor: colors.white,
+          borderRadius: 0,
+          borderTopLeftRadius: 16,
+          borderTopRightRadius: 16,
+          borderStyle: "solid",
+          borderWidth: 2,
+          borderBottom: 0,
+          borderColor: colors.lightTint,
+          transition: "border 120ms ease-out",
+          ":hover": {
             backgroundColor: colors.white,
-            borderRadius: 0,
-            borderTopLeftRadius: 16,
-            borderTopRightRadius: 16,
-            borderStyle: "solid",
-            borderWidth: 2,
-            borderBottom: 0,
-            borderColor: colors.lightTint,
-            transition: "border 120ms ease-out",
-            ":hover": {
-              backgroundColor: colors.white,
-              "&:not(.Mui-disabled)": {
-                "&:before": {
-                  borderBottom: `2px solid ${colors.blueRibbon}`,
-                },
-              },
-            },
-            "&:before": {
-              borderBottom: "2px solid ",
-              borderColor: colors.purple,
-              transition: "border 120ms ease-out",
-            },
-            "&:after": {
-              borderBottom: "2px solid ",
-              borderColor: colors.blueRibbon,
-              transition: "border 120ms ease-out",
-            },
-            "&.Mui-focused": {
-              backgroundColor: colors.white,
-              borderColor: colors.blueRibbon,
-            },
-            "&.Mui-disabled": {
-              backgroundColor: colors.lightTint,
+            "&:not(.Mui-disabled)": {
               "&:before": {
-                borderBottomStyle: "solid",
-                borderColor: colors.midTint,
-              },
-              "&:after": {
-                borderColor: colors.midTint,
-              },
-            },
-            "&.Mui-error": {
-              "&.Mui-focused": {
-                borderColor: colors.maroonFlush,
-              },
-              "&:not(.Mui-disabled)": {
-                "&:after": {
-                  borderColor: colors.maroonFlush,
-                },
+                borderBottom: `2px solid ${colors.blueRibbon}`,
               },
             },
           },
-          input: {
-            height: 27, // + padding = 60px
-            padding: 16,
-            paddingBottom: 17,
-            fontFamily: fonts.secondary,
-            fontSize: "1.125rem",
-            "::placeholder": {
-              fontSize: "inherit",
+          "&:before": {
+            borderBottom: "2px solid ",
+            borderColor: colors.purple,
+            transition: "border 120ms ease-out",
+          },
+          "&:after": {
+            borderBottom: "2px solid ",
+            borderColor: colors.blueRibbon,
+            transition: "border 120ms ease-out",
+          },
+          "&.Mui-focused": {
+            backgroundColor: colors.white,
+            borderColor: colors.blueRibbon,
+          },
+          "&.Mui-disabled": {
+            backgroundColor: colors.lightTint,
+            "&:before": {
+              borderBottomStyle: "solid",
+              borderColor: colors.midTint,
             },
+            "&:after": {
+              borderColor: colors.midTint,
+            },
+          },
+          "&.Mui-error": {
+            "&.Mui-focused": {
+              borderColor: colors.maroonFlush,
+            },
+            "&:not(.Mui-disabled)": {
+              "&:after": {
+                borderColor: colors.maroonFlush,
+              },
+            },
+          },
+        },
+        input: {
+          height: 27, // + padding = 60px
+          padding: 16,
+          paddingBottom: 17,
+          fontFamily: fonts.secondary,
+          fontSize: "1.125rem",
+          "::placeholder": {
+            fontSize: "inherit",
           },
         },
       },
-    };
+    },
   };
+};
