@@ -15,9 +15,6 @@ export {
 } from "./components/BackgroundProvider";
 export type { BackgroundProviderProps } from "./components/BackgroundProvider";
 
-export { default as Box } from "./components/Box";
-export type { BoxProps } from "./components/Box";
-
 export { default as Button } from "./components/Button";
 export type { ButtonProps } from "./components/Button";
 
