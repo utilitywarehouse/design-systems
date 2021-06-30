@@ -23,22 +23,17 @@ interface BaseInteractiveCardProps {
   size?: InteractiveCardSize;
   variant?: InteractiveCardVariant;
   containerProps?: BoxProps;
-}
-
-interface ForwardedRefProps<T extends HTMLElement> {
-  forwardedRef?: React.Ref<T>;
+  forwardedRef?: React.Ref<unknown>;
 }
 
 type InteractiveCardButtonProps = BaseInteractiveCardProps &
   Omit<
     React.ComponentPropsWithoutRef<"button">,
     keyof BaseInteractiveCardProps
-  > &
-  ForwardedRefProps<HTMLButtonElement>;
+  >;
 
 type InteractiveCardAnchorProps = BaseInteractiveCardProps &
-  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseInteractiveCardProps> &
-  ForwardedRefProps<HTMLAnchorElement> & { href: string };
+  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseInteractiveCardProps>;
 
 export type InteractiveCardProps =
   | InteractiveCardButtonProps
@@ -229,15 +224,14 @@ const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = 
   );
 };
 
-const InteractiveCardWithBackground = withBackground<
-  InteractiveCardProps,
-  HTMLDivElement
->(InteractiveCardComponent, "level4");
+const InteractiveCardWithBackground = withBackground<InteractiveCardProps>(
+  InteractiveCardComponent,
+  "level4"
+);
 
-const InteractiveCard: React.ForwardRefRenderFunction<
-  HTMLDivElement,
-  InteractiveCardProps
-> = (props, ref) => {
+const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
+  props
+) => {
   const { theme } = React.useContext(BackgroundContext);
   const backdropLevel = theme.backdropLevel;
   const backgroundColor = React.useMemo(() => {
@@ -258,9 +252,8 @@ const InteractiveCard: React.ForwardRefRenderFunction<
     <InteractiveCardWithBackground
       backgroundColor={backgroundColor}
       {...props}
-      ref={ref}
     />
   );
 };
 
-export default React.forwardRef(InteractiveCard);
+export default InteractiveCard;
