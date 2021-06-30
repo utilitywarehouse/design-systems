@@ -67,21 +67,17 @@ export interface TypographyProps
   gutterBottom?: boolean;
   paragraph?: boolean;
   component?: React.ElementType;
+  forwardedRef?: React.Ref<unknown>;
 }
 
-const Typography: React.ForwardRefRenderFunction<
-  HTMLElement,
-  TypographyProps
-> = (
-  {
-    state = "default",
-    variant = "default",
-    gutterBottom = false,
-    paragraph = false,
-    ...props
-  },
-  ref
-) => {
+const Typography: React.FunctionComponent<TypographyProps> = ({
+  state = "default",
+  variant = "default",
+  gutterBottom = false,
+  paragraph = false,
+  forwardedRef,
+  ...props
+}) => {
   const classNames = (props.className ?? "").split(" ");
   switch (state) {
     case "success":
@@ -120,12 +116,13 @@ const Typography: React.ForwardRefRenderFunction<
         footnote: "p",
         interactive: "span",
       }}
-      ref={ref}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={(forwardedRef as unknown) as any}
     />
   );
 };
 
-export default React.forwardRef(Typography);
+export default Typography;
 
 export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   theme,
