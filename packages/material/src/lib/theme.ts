@@ -1,3 +1,4 @@
+import "../types/BreakpointOverrides";
 import createTheme, {
   Theme as MuiTheme,
 } from "@material-ui/core/styles/createTheme";
@@ -7,19 +8,6 @@ import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 
 export type { Theme as MuiTheme } from "@material-ui/core/styles/createTheme";
 export type { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
-
-declare module "@material-ui/core/styles" {
-  interface BreakpointOverrides {
-    xs: false; // removes the `xs` breakpoint
-    sm: false; // removes the `sm` breakpoint
-    md: false; // removes the `md` breakpoint
-    lg: false; // removes the `lg` breakpoint
-    xl: false; // removes the `xl` breakpoint
-    tablet: true; // adds the `tablet` breakpoint
-    mobile: true; // adds the `mobile` breakpoint
-    desktop: true; // adds the `desktop` breakpoint
-  }
-}
 
 const getBreakpoints = (theme: CustomerUITheme) => ({
   values: theme.breakpoints,
