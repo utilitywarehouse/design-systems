@@ -1,3 +1,5 @@
+import "./types/BreakpointOverrides";
+
 export * from "./material/core";
 
 export {
