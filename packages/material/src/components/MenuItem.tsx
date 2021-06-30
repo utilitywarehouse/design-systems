@@ -15,6 +15,7 @@ import withBackground from "../hocs/withBackground";
 
 export interface MenuItemProps extends MuiMenuItemProps {
   backgroundColor?: BackdropLevel;
+  forwardedRef?: React.Ref<HTMLLIElement>;
 }
 
 interface StyleProps {
@@ -33,20 +34,18 @@ const useStyles = makeStyles<Theme, StyleProps>((theme) => ({
   }),
 }));
 
-const MenuItem: React.ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (
-  {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    backgroundColor,
-    ...props
-  },
-  ref
-) => {
+const MenuItem: React.FunctionComponent<MenuItemProps> = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  backgroundColor,
+  forwardedRef,
+  ...props
+}) => {
   const { theme } = React.useContext(BackgroundContext);
   const classes = useStyles({ theme });
   return (
     <MuiMenuItem
       {...props}
-      ref={ref}
+      ref={forwardedRef}
       classes={{
         ...props?.classes,
         root: `${classes.root} ${props?.classes?.root ?? ""}`,
@@ -57,7 +56,4 @@ const MenuItem: React.ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (
   );
 };
 
-export default withBackground<MenuItemProps, HTMLLIElement>(
-  React.forwardRef(MenuItem),
-  "level5"
-);
+export default withBackground<MenuItemProps>(MenuItem, "level5");
