@@ -23,7 +23,7 @@ const useStyles = makeStyles<MuiTheme>((theme: Theme) => ({
 }));
 
 interface ContainerProps extends BoxProps {
-  forwardedRef: React.Ref<unknown>;
+  forwardedRef?: React.Ref<unknown>;
 }
 
 const Container: React.FunctionComponent<ContainerProps> = ({
