@@ -10,6 +10,7 @@ import clsx from "clsx";
 
 export interface CardProps extends BoxProps {
   variant?: CardVariant;
+  forwardedRef?: React.Ref<HTMLDivElement>;
 }
 
 interface InternalCardProps extends CardProps {
@@ -41,30 +42,31 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
   }),
 }));
 
-const CardComponent: React.ForwardRefRenderFunction<
-  HTMLDivElement,
-  InternalCardProps
-> = ({ children, className, variant, ...props }, ref) => {
+const CardComponent: React.FunctionComponent<InternalCardProps> = ({
+  children,
+  className,
+  variant,
+  forwardedRef,
+  ...props
+}) => {
   const { theme } = React.useContext(BackgroundContext);
   const classes = useStyles({ theme });
   const rootClass = variant === "transparent" ? "rootTransparent" : "root";
 
   return (
-    <Box className={clsx(classes[rootClass], className)} {...props} ref={ref}>
+    <Box
+      className={clsx(classes[rootClass], className)}
+      {...props}
+      ref={forwardedRef}
+    >
       {children}
     </Box>
   );
 };
 
-const CardWithBackground = withBackground(
-  React.forwardRef(CardComponent),
-  "level4"
-);
+const CardWithBackground = withBackground(CardComponent, "level4");
 
-const Card: React.ForwardRefRenderFunction<HTMLDivElement, CardProps> = (
-  props,
-  ref
-) => {
+const Card: React.FunctionComponent<CardProps> = (props) => {
   const { theme } = React.useContext(BackgroundContext);
   const backdropLevel = theme.backdropLevel;
   const backgroundColor = React.useMemo(() => {
@@ -85,13 +87,7 @@ const Card: React.ForwardRefRenderFunction<HTMLDivElement, CardProps> = (
     }
   }, [backdropLevel]);
 
-  return (
-    <CardWithBackground
-      backgroundColor={backgroundColor}
-      {...props}
-      ref={ref}
-    />
-  );
+  return <CardWithBackground backgroundColor={backgroundColor} {...props} />;
 };
 
-export default React.forwardRef(Card);
+export default Card;

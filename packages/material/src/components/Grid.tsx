@@ -72,6 +72,7 @@ export type GridProps = React.PropsWithChildren<{
   mobile?: MobileGridSize;
   tablet?: TabletGridSize;
   desktop?: DesktopGridSize;
+  forwardedRef?: React.Ref<HTMLDivElement>;
 }>;
 
 type StyleProps = {
@@ -138,19 +139,17 @@ const useStyles = makeStyles<MuiTheme, StyleProps>((theme: MuiTheme) => ({
   },
 }));
 
-const Grid: React.ForwardRefRenderFunction<HTMLDivElement, GridProps> = (
-  {
-    mobile = "auto",
-    tablet = "auto",
-    desktop = "auto",
-    container = false,
-    item = false,
-    direction,
-    wrap,
-    children,
-  },
-  ref
-) => {
+const Grid: React.FunctionComponent<GridProps> = ({
+  mobile = "auto",
+  tablet = "auto",
+  desktop = "auto",
+  container = false,
+  item = false,
+  direction,
+  wrap,
+  children,
+  forwardedRef,
+}) => {
   const deviceSize = useDeviceSize();
   const containerStyleProps = React.useContext(GridContext);
 
@@ -248,14 +247,14 @@ Got ${
   if (container) {
     return (
       <GridContext.Provider value={styleProps}>
-        <div ref={ref} className={classes.root}>
+        <div ref={forwardedRef} className={classes.root}>
           <div className={classes[divClassName]}>{children}</div>
         </div>
       </GridContext.Provider>
     );
   } else if (item) {
     return (
-      <div ref={ref} className={classes[divClassName]}>
+      <div ref={forwardedRef} className={classes[divClassName]}>
         {children}
       </div>
     );
@@ -264,14 +263,15 @@ Got ${
   }
 };
 
-export default React.forwardRef(Grid);
+export default Grid;
 
-const GridSpacerWithRef: React.ForwardRefRenderFunction<HTMLDivElement> = (
-  _,
-  ref
-) => {
+export interface GridSpacerProps {
+  forwardedRef?: React.Ref<unknown>;
+}
+
+export const GridSpacer: React.FunctionComponent<GridSpacerProps> = ({
+  forwardedRef,
+}) => {
   const deviceSize = useDeviceSize();
-  return <Box ref={ref} paddingBottom={gutterSize[deviceSize]} />;
+  return <Box ref={forwardedRef} paddingBottom={gutterSize[deviceSize]} />;
 };
-
-export const GridSpacer = React.forwardRef(GridSpacerWithRef);
