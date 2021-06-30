@@ -22,19 +22,26 @@ const useStyles = makeStyles<MuiTheme>((theme: Theme) => ({
   },
 }));
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface ContainerProps extends BoxProps {}
+interface ContainerProps extends BoxProps {
+  forwardedRef: React.Ref<unknown>;
+}
 
-const Container: React.ForwardRefRenderFunction<
-  HTMLDivElement,
-  ContainerProps
-> = ({ children, className, ...props }, ref) => {
+const Container: React.FunctionComponent<ContainerProps> = ({
+  children,
+  className,
+  forwardedRef,
+  ...props
+}) => {
   const classes = useStyles();
   return (
-    <Box ref={ref} className={clsx(classes.container, className)} {...props}>
+    <Box
+      ref={forwardedRef}
+      className={clsx(classes.container, className)}
+      {...props}
+    >
       {children}
     </Box>
   );
 };
 
-export default React.forwardRef(Container);
+export default Container;
