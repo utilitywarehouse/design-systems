@@ -1,3 +1,4 @@
+import "../types/BreakpointOverrides";
 import React from "react";
 import { useMuiTheme, useMediaQuery, Breakpoint } from "../";
 
