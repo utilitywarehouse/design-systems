@@ -7,19 +7,18 @@ import { clsx } from "../utils";
 export interface LinkProps extends React.ComponentPropsWithoutRef<"a"> {
   variant?: "default" | "active" | "secondary";
   disabled?: boolean;
+  forwardedRef?: React.Ref<HTMLAnchorElement>;
 }
 
-const Link: React.ForwardRefRenderFunction<HTMLAnchorElement, LinkProps> = (
-  {
-    variant = "default",
-    disabled = false,
-    children,
-    onClick,
-    className,
-    ...props
-  },
-  ref
-) => {
+const Link: React.FunctionComponent<LinkProps> = ({
+  variant = "default",
+  disabled = false,
+  children,
+  onClick,
+  className,
+  forwardedRef,
+  ...props
+}) => {
   const _className = React.useMemo(() => {
     const variantCapitalized = variant[0]
       .toUpperCase()
@@ -52,14 +51,14 @@ const Link: React.ForwardRefRenderFunction<HTMLAnchorElement, LinkProps> = (
       className={_className}
       onClick={_onClick}
       {...props}
-      ref={ref}
+      ref={forwardedRef}
     >
       {children}
     </MuiLink>
   );
 };
 
-export default React.forwardRef(Link);
+export default Link;
 
 export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   theme,
