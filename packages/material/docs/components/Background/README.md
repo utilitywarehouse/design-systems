@@ -20,5 +20,6 @@ import { Background } from "@utilitywarehouse/customer-ui-material";
 | Prop name | Type | Required | Description |
 | --------- | ---- |:--------:| ----------- |
 | `backgroundColor` | Enum{`level0`, `level1`, `level2`, `level3`, `level4`} | yes | The backdrop level to apply |
+| `forwardedRef` | React.Ref<HTMLDivElement> | no | The ref to forward to the DOM element |
 
 See [Box](https://next.material-ui.com/components/box/#main-content) documentation for additional props.

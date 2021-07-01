@@ -62,6 +62,7 @@ Although you can pass container props to a grid item, they will be ignored and v
 
 | Prop name | Type | Required | Container or item | Description |
 | --------- | ---- |:--------:| ----------------- | ----------- |
+| `forwardedRef` | React.Ref<HTMLDivElement> | no | The ref to forward to the DOM element |
 | `container` | Boolean | no | container | Sets the grid component to act as a container |
 | `item` | Boolean | no | item | Sets the grid component to act as an item |
 | `direction` | Object | no | container | Sets the flex direction to apply to the grid containers items at particular breakpoints |

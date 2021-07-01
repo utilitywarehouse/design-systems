@@ -22,5 +22,6 @@ import { Card } from "@utilitywarehous/customer-ui-material";
 | Prop name | Type | Required | Description |
 | --------- | ---- |:--------:| ----------- |
 | `backgroundColor` | Enum{`level0`, `level1`, `level2`, `level3`, `level4`} | no | The background color variant of the card. The default value is resolved based on the background context of where the card is being placed. |
+| `forwardedRef` | React.Ref<HTMLDivElement> | no | The ref to forward to the DOM element |
 
 See [Box](https://next.material-ui.com/components/box/#main-content) documentation for additional props.

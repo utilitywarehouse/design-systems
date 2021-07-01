@@ -14,3 +14,11 @@ import { Container } from "@utilitywarehouse/customer-ui-material";
 </Container>
 
 ```
+
+## API reference
+
+| Prop name | Type | Required | Description |
+| --------- | ---- |:--------:| ----------- |
+| `forwardedRef` | React.Ref<unknown> | no | The ref to forward to the DOM element |
+
+See [Box](https://next.material-ui.com/components/box/#main-content) documentation for additional props.

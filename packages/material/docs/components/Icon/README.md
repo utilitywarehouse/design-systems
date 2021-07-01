@@ -27,5 +27,6 @@ import Dropdown from "@utilitywarehouse/customer-ui-react-icons/24x24/Dropdown";
 | `icon` | React.ComponentType<React.SVGProps<SVGSVGElement>> | yes | The icon component to render |
 | `color` | string | no | The colour of the icon, defaults to `inherit` |
 | `iconProps` | React.SVGProps<SVGSVGElement> | no | Props to forward to the SVG icon component |
+| `forwardedRef` | React.Ref<unknown> | no | The ref to forward to the DOM element |
 
 The icon component inherits the props from the [Box component](../Box).

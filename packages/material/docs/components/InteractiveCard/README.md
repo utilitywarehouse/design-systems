@@ -26,6 +26,6 @@ import { InteractiveCard } from "@utilitywarehous/customer-ui-material";
 | `size` | Enum{`small`, `regular`, `large`} | no | Defaults to `regular`, defines the padding style of the card |
 | `variant` | Enum{`primary`, `secondary`} | no | Defaults to `primary`, defines the hover colour behaviour |
 | `containerProps` | BoxProps | no | See [Box component props](https://next.material-ui.com/components/box/#main-content) |
-| `forwardedRef` | React.Ref<HTMLButtonElement> | React.Ref<HTMLAnchorElement> | no | The ref to forward to the root DOM element. Use `HTMLAnchorElement` when specifying a `href` prop, otherwise use `HTMLButtonElement` |
+| `forwardedRef` | React.Ref<HTMLButtonElement>, React.Ref<HTMLAnchorElement> | no | The ref to forward to the root DOM element. Use `HTMLAnchorElement` when specifying a `href` prop, otherwise use `HTMLButtonElement` |
 
 The interactive card component can either take the shape of a `<button />` or `<a />` tag depending on the props it is passed. By passing a `href` prop the result will be `<a />` otherwise a button is output.

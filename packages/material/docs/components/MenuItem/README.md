@@ -21,5 +21,6 @@ import { Menu, MenuItem } from "@utilitywarehouse/customer-ui-material";
 | Prop name | Type | Required | Description |
 | --------- | ---- |:--------:| ----------- |
 | `backgroundColor` | Enum{`level0`, `level1`, `level2`, `level3`, `level4`} | no | The background colour to apply to the menu item, defaults to `level4` |
+| `forwardedRef` | React.Ref<HTMLLIElement> | no | The ref to forward to the DOM element |
 
 The `MenuItem` component inherits all the props from the [Material UI MenuItem component](https://next.material-ui.com/api/menu-item/).
