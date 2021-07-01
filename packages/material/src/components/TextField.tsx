@@ -50,36 +50,34 @@ const TextFieldInput = styled(FilledInput, {
     : {}),
 }));
 
-const TextFieldLabel = styled(InputLabel)(({ theme }) => ({
+const TextFieldLabel = styled(InputLabel)({
   position: "relative",
   transform: "none",
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.semibold,
-  fontSize: "1rem",
+  fontFamily: fonts.primary,
+  fontWeight: fontWeights.primary,
+  fontSize: "0.875rem",
   color: colors.midnight,
-  paddingBottom: theme.spacing(0.5),
   "&.Mui-error": {
     color: colors.midnight,
   },
   "&.Mui-disabled": {
-    color: colors.midTint,
+    color: `${colors.midnight}40`,
   },
-}));
+});
 
-const TextFieldHelperText = styled(FormHelperText)(({ theme }) => ({
+const TextFieldHelperText = styled(FormHelperText)({
   fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.regular,
-  fontSize: "0.875rem",
+  fontSize: "0.8125rem",
   color: colors.midnight,
   margin: 0,
-  paddingTop: theme.spacing(0.5),
   "&.Mui-error": {
     color: colors.maroonFlush,
   },
   "&.Mui-disabled": {
-    color: colors.midTint,
+    color: colors.midnight,
   },
-}));
+});
 
 const TextField = (props: TextFieldProps): JSX.Element => {
   const { label, labelId, helperText, helperTextId, ...rest } = props;
@@ -119,6 +117,7 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
       },
       styleOverrides: {
         root: {
+          height: 58,
           backgroundColor: colors.white,
           borderRadius: 0,
           borderTopLeftRadius: 16,
@@ -126,7 +125,7 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
           borderStyle: "solid",
           borderWidth: 2,
           borderBottom: 0,
-          borderColor: colors.lightTint,
+          borderColor: `${colors.midnight}10`,
           transition: "border 120ms ease-out",
           ":hover": {
             backgroundColor: colors.white,
@@ -151,13 +150,14 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
             borderColor: colors.blueRibbon,
           },
           "&.Mui-disabled": {
-            backgroundColor: colors.lightTint,
+            backgroundColor: `${colors.midnight}05`,
+            borderColor: "transparent",
             "&:before": {
               borderBottomStyle: "solid",
-              borderColor: colors.midTint,
+              borderColor: `${colors.purple}05`,
             },
             "&:after": {
-              borderColor: colors.midTint,
+              borderColor: `${colors.purple}05`,
             },
           },
           "&.Mui-error": {
@@ -172,13 +172,17 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
           },
         },
         input: {
-          height: 27, // + padding = 60px
-          padding: 16,
-          paddingBottom: 17,
+          paddingTop: 0,
+          paddingRight: 16,
+          paddingBottom: 2, // vertically align the input text
+          paddingLeft: 16,
           fontFamily: fonts.secondary,
           fontSize: "1.125rem",
+          fontWeight: fontWeights.secondary.regular,
+          color: colors.midnight,
           "::placeholder": {
-            fontSize: "inherit",
+            font: "inherit",
+            opacity: 0.4,
           },
         },
       },
