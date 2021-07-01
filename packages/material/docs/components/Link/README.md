@@ -29,5 +29,6 @@ import { Link, Typography } from "@utilitywarehouse/customer-ui-material";
 | Prop name | Type | Required | Description |
 | --------- | ---- |:--------:| ----------- |
 | `variant` | Enum{`default`, `active`, `secondary`} | no | The link variant, defaults to `default` |
+| `forwardedRef` | React.Ref<HTMLAnchorElement> | no | The ref to forward to the DOM element |
 
 The link component inherits all the props you'd expect from the HTML anchor element.

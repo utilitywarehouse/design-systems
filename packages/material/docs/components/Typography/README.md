@@ -60,5 +60,6 @@ import { Typography } from "@utilitywarehouse/customer-ui-material";
 | `paragraph` | Boolean | no | See [Material UI docs](https://next.material-ui.com/api/typography/#props), defaults to `false` |
 | `variant` | Enum{String} | no | See the examples above for full list of variants |
 | `component` | React.ElementType | no | See [Material UI docs](https://next.material-ui.com/api/typography/#props), defaults to `span` |
+| `forwardedRef` | React.Ref<unknown> | no | The ref to forward to the DOM element |
 
 The typography component inherits props from the HTML span element.
