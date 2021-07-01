@@ -4,12 +4,18 @@ import { Story, Meta } from "@storybook/react";
 
 import { TextField } from "./TextField";
 import type { TextFieldProps } from "./TextField";
-import { Background, Box } from "../../src";
+import { Background, BackgroundProps } from "../../src";
 
 export default {
   title: `${base}TextField`,
   component: TextField,
   argTypes: {
+    backgroundColor: {
+      control: {
+        type: "radio",
+        options: ["level3", "level4", "level5"],
+      },
+    },
     disabled: {
       control: {
         type: "boolean",
@@ -45,13 +51,14 @@ export default {
         type: "text",
       },
     },
-    helperTextId: {
+    helpertextid: {
       control: {
         type: "text",
       },
     },
   },
   args: {
+    backgroundColor: "level5",
     disabled: false,
     error: false,
     success: false,
@@ -64,18 +71,24 @@ export default {
   },
 } as Meta;
 
-export const Template: Story<TextFieldProps> = (args) => (
-  <Box
-    sx={{
-      display: "grid",
-      placeItems: "center",
-      padding: 8,
-    }}
-  >
-    <Background backgroundColor="level5">
-      <TextField {...args} sx={{ width: 300 }} />
-    </Background>
-  </Box>
-);
+interface StoryProps extends TextFieldProps {
+  backgroundColor: BackgroundProps["backgroundColor"];
+}
 
-Template.storyName = "TextField";
+export const TextfieldStory: Story<StoryProps> = (args) => {
+  const { backgroundColor, ...rest } = args;
+  return (
+    <Background
+      backgroundColor={backgroundColor}
+      sx={{
+        padding: 6,
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <TextField {...rest} />
+    </Background>
+  );
+};
+
+TextfieldStory.storyName = "TextField";
