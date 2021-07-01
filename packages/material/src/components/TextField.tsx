@@ -12,6 +12,8 @@ import {
   InputLabel,
   styled,
 } from "../material/core";
+import { useTheme } from "..";
+import assert from "assert";
 
 export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
   success?: boolean;
@@ -83,6 +85,16 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const { label, labelId, helperText, helperTextId, ...rest } = props;
   const { error, disabled } = rest;
   const formControlProps = { error, disabled };
+  const { backdropLevel } = useTheme();
+
+  // only allow use on white, light tint & cod grey backgrounds
+  const validBackgroundLevels = ["level3", "level4", "level5"];
+  assert(
+    validBackgroundLevels.includes(backdropLevel),
+    `Invalid background color: '${backdropLevel}'. Should be one of [${validBackgroundLevels
+      .map((l) => `'${l}'`)
+      .join(", ")}]`
+  );
 
   if (label || helperText) {
     return (
