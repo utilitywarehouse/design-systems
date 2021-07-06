@@ -5,6 +5,7 @@ import {
   colors,
   fonts,
   fontWeights,
+  spacingBase,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import {
   FormControl,
@@ -14,6 +15,8 @@ import {
 } from "../material/core";
 import { useTheme } from "..";
 import assert from "assert";
+import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
+import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
 
 export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
   success?: boolean;
@@ -23,34 +26,61 @@ export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
   helperTextId?: string;
 }
 
-const TextFieldInput = styled(FilledInput, {
-  shouldForwardProp: (prop) => prop !== "success",
-})<TextFieldProps>(({ success, error }) => ({
-  ...(success && !error
-    ? {
-        transition: "border 120ms ease-out",
-        "&:not(.Mui-disabled)": {
-          borderColor: colors.jewel,
-        },
-        ":before": {
-          borderColor: colors.jewel,
-        },
-        ":hover": {
+const SuccessIcon = styled(SuccessOutlined)({ fill: colors.jewel });
+const WarningIcon = styled(WarningOutlined)({ fill: colors.maroonFlush });
+
+const InputWrapper = styled("div")({
+  position: "relative",
+});
+
+const InputStatusIconWrapper = styled("div")({
+  width: 24,
+  height: 24,
+  position: "absolute",
+  right: spacingBase * 2,
+  top: "calc(50% - 12px)",
+});
+
+const InputWithStatusIcon: React.FunctionComponent<TextFieldProps> = ({
+  success,
+  ...props
+}) => (
+  <InputWrapper>
+    <FilledInput {...props} />
+    <InputStatusIconWrapper>
+      {props.error ? <WarningIcon /> : success ? <SuccessIcon /> : null}
+    </InputStatusIconWrapper>
+  </InputWrapper>
+);
+
+const TextFieldInput = styled(InputWithStatusIcon)<TextFieldProps>(
+  ({ success, error }) => ({
+    ...(success && !error
+      ? {
+          transition: "border 120ms ease-out",
           "&:not(.Mui-disabled)": {
-            "&:before": {
-              borderColor: colors.jewel,
+            borderColor: colors.jewel,
+          },
+          ":before": {
+            borderColor: colors.jewel,
+          },
+          ":hover": {
+            "&:not(.Mui-disabled)": {
+              "&:before": {
+                borderColor: colors.jewel,
+              },
             },
           },
-        },
-        "&.Mui-focused": {
-          borderColor: colors.jewel,
-        },
-        "&:after": {
-          borderColor: colors.jewel,
-        },
-      }
-    : {}),
-}));
+          "&.Mui-focused": {
+            borderColor: colors.jewel,
+          },
+          "&:after": {
+            borderColor: colors.jewel,
+          },
+        }
+      : {}),
+  })
+);
 
 const TextFieldLabel = styled(InputLabel)({
   position: "relative",
