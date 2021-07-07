@@ -5,7 +5,6 @@ import {
   colors,
   fonts,
   fontWeights,
-  spacingBase,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import {
   FormControl,
@@ -19,6 +18,7 @@ import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/Suc
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
 
 export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
+  width?: number;
   success?: boolean;
   label?: React.ReactNode;
   labelId?: string;
@@ -29,29 +29,23 @@ export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
 const SuccessIcon = styled(SuccessOutlined)({ fill: colors.jewel });
 const WarningIcon = styled(WarningOutlined)({ fill: colors.maroonFlush });
 
-const InputWrapper = styled("div")({
-  position: "relative",
-});
-
-const InputStatusIconWrapper = styled("div")({
-  width: 24,
-  height: 24,
-  position: "absolute",
-  right: spacingBase * 2,
-  top: "calc(50% - 12px)",
-});
-
 const InputWithStatusIcon: React.FunctionComponent<TextFieldProps> = ({
   success,
+  width,
   ...props
-}) => (
-  <InputWrapper>
-    <FilledInput {...props} />
-    <InputStatusIconWrapper>
-      {props.error ? <WarningIcon /> : success ? <SuccessIcon /> : null}
-    </InputStatusIconWrapper>
-  </InputWrapper>
-);
+}) => {
+  const shouldShowTheIcon = !props.disabled;
+  return (
+    <FilledInput
+      style={{ width }}
+      endAdornment={
+        shouldShowTheIcon &&
+        (props.error ? <WarningIcon /> : success ? <SuccessIcon /> : null)
+      }
+      {...props}
+    />
+  );
+};
 
 const TextFieldInput = styled(InputWithStatusIcon)<TextFieldProps>(
   ({ success, error }) => ({
@@ -59,10 +53,10 @@ const TextFieldInput = styled(InputWithStatusIcon)<TextFieldProps>(
       ? {
           transition: "border 120ms ease-out",
           "&:not(.Mui-disabled)": {
-            borderColor: colors.jewel,
+            borderBottomColor: colors.jewel,
           },
           ":before": {
-            borderColor: colors.jewel,
+            borderBottomColor: colors.jewel,
           },
           ":hover": {
             "&:not(.Mui-disabled)": {
