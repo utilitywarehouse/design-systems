@@ -31,6 +31,11 @@ export default {
         type: "boolean",
       },
     },
+    width: {
+      control: {
+        type: "number",
+      },
+    },
     id: {
       control: {
         type: "text",

@@ -31,7 +31,7 @@ const WarningIcon = styled(WarningOutlined)({ fill: colors.maroonFlush });
 
 const InputWithStatusIcon: React.FunctionComponent<TextFieldProps> = ({
   success,
-  width,
+  width = 336,
   ...props
 }) => {
   const shouldShowTheIcon = !props.disabled;
@@ -105,6 +105,10 @@ const TextFieldHelperText = styled(FormHelperText)({
   },
 });
 
+const Wrapper = styled(FormControl)(({ theme }) => ({
+  marginBottom: theme.spacing(3),
+}));
+
 const TextField = (props: TextFieldProps): JSX.Element => {
   const { label, labelId, helperText, helperTextId, ...rest } = props;
   const { error, disabled } = rest;
@@ -120,27 +124,21 @@ const TextField = (props: TextFieldProps): JSX.Element => {
       .join(", ")}]`
   );
 
-  if (label || helperText) {
-    return (
-      <FormControl {...formControlProps}>
-        {label ? (
-          <TextFieldLabel shrink id={labelId} htmlFor={props.id}>
-            {label}
-          </TextFieldLabel>
-        ) : null}
+  return (
+    <Wrapper {...formControlProps}>
+      {label ? (
+        <TextFieldLabel shrink id={labelId} htmlFor={props.id}>
+          {label}
+        </TextFieldLabel>
+      ) : null}
 
-        <TextFieldInput {...rest} aria-describedby={helperTextId} />
+      <TextFieldInput {...rest} aria-describedby={helperTextId} />
 
-        {helperText ? (
-          <TextFieldHelperText id={helperTextId}>
-            {helperText}
-          </TextFieldHelperText>
-        ) : null}
-      </FormControl>
-    );
-  }
-
-  return <TextFieldInput {...rest} />;
+      <TextFieldHelperText filled={!!helperText} id={helperTextId}>
+        {helperText}
+      </TextFieldHelperText>
+    </Wrapper>
+  );
 };
 
 export default TextField;
