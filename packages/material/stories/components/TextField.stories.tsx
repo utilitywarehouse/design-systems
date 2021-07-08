@@ -2,9 +2,15 @@ import React from "react";
 import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
-import { TextField } from "./TextField";
+import { TextField, TextFieldStatus } from "./TextField";
 import type { TextFieldProps } from "./TextField";
 import { Background, BackgroundProps } from "../../src";
+
+const status = {
+  Nic: "0",
+  Success: TextFieldStatus.SUCCESS,
+  Error: TextFieldStatus.ERROR,
+};
 
 export default {
   title: `${base}TextField`,
@@ -12,28 +18,23 @@ export default {
   argTypes: {
     backgroundColor: {
       control: {
-        type: "radio",
+        type: "inline-radio",
         options: ["level3", "level4", "level5"],
+      },
+    },
+    status: {
+      control: {
+        type: "inline-radio",
+        options: {
+          Default: "",
+          Success: TextFieldStatus.SUCCESS,
+          Error: TextFieldStatus.ERROR,
+        },
       },
     },
     disabled: {
       control: {
         type: "boolean",
-      },
-    },
-    error: {
-      control: {
-        type: "boolean",
-      },
-    },
-    success: {
-      control: {
-        type: "boolean",
-      },
-    },
-    width: {
-      control: {
-        type: "number",
       },
     },
     id: {
@@ -46,9 +47,14 @@ export default {
         type: "text",
       },
     },
-    labelId: {
+    labelProps: {
       control: {
-        type: "text",
+        type: "object",
+        id: {
+          control: {
+            type: "text",
+          },
+        },
       },
     },
     helperText: {
@@ -56,22 +62,26 @@ export default {
         type: "text",
       },
     },
-    helpertextid: {
+    helperTextProps: {
       control: {
-        type: "text",
+        type: "object",
+        id: {
+          control: {
+            type: "text",
+          },
+        },
       },
     },
   },
   args: {
     backgroundColor: "level5",
     disabled: false,
-    error: false,
-    success: false,
+    status: "",
     id: "customer-ui-textfield-input",
     label: "Label",
-    labelId: "customer-ui-textfield-label",
+    labelProps: { id: "customer-ui-textfield-label" },
     helperText: "Helper text",
-    helperTextId: "customer-ui-textfield-helpertext",
+    helperTextProps: { id: "customer-ui-textfield-helpertext" },
     placeholder: "Placeholder",
   },
 } as Meta;

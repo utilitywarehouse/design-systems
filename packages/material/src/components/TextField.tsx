@@ -17,9 +17,23 @@ import assert from "assert";
 import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
 
+export enum TextFieldStatusType {
+  SUCCESS,
+  ERROR,
+}
+
+export const TextFieldStatus = {
+  SUCCESS: TextFieldStatusType.SUCCESS,
+  ERROR: TextFieldStatusType.ERROR,
+};
+
+const isSuccessStatus = (status?: TextFieldStatusType): boolean =>
+  TextFieldStatusType.SUCCESS === status;
+const isErrorStatus = (status?: TextFieldStatusType): boolean =>
+  TextFieldStatusType.ERROR === status;
+
 export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
-  width?: number | string;
-  success?: boolean;
+  status?: TextFieldStatusType;
   label?: React.ReactNode;
   labelProps?: {
     id: string;
@@ -34,17 +48,19 @@ const SuccessIcon = styled(SuccessOutlined)({ fill: colors.jewel });
 const WarningIcon = styled(WarningOutlined)({ fill: colors.maroonFlush });
 
 const InputWithStatusIcon: React.FunctionComponent<TextFieldProps> = ({
-  success,
-  width = 336,
+  status,
   ...props
 }) => {
   const shouldShowTheIcon = !props.disabled;
   return (
     <FilledInput
-      sx={{ width }}
       endAdornment={
         shouldShowTheIcon &&
-        (props.error ? <WarningIcon /> : success ? <SuccessIcon /> : null)
+        (isErrorStatus(status) ? (
+          <WarningIcon />
+        ) : isSuccessStatus(status) ? (
+          <SuccessIcon />
+        ) : null)
       }
       {...props}
     />
@@ -52,8 +68,8 @@ const InputWithStatusIcon: React.FunctionComponent<TextFieldProps> = ({
 };
 
 const TextFieldInput = styled(InputWithStatusIcon)<TextFieldProps>(
-  ({ success, error }) => ({
-    ...(success && !error
+  ({ status }) => ({
+    ...(isSuccessStatus(status) && !isErrorStatus(status)
       ? {
           transition: "border 120ms ease-out",
           "&:not(.Mui-disabled)": {
@@ -115,8 +131,8 @@ const Wrapper = styled(FormControl)(({ theme }) => ({
 
 const TextField = (props: TextFieldProps): JSX.Element => {
   const { label, labelProps, helperText, helperTextProps, ...rest } = props;
-  const { error, disabled } = rest;
-  const formControlProps = { error, disabled };
+  const { status, disabled } = rest;
+  const formControlProps = { error: isErrorStatus(status), disabled };
   const { backdropLevel } = useTheme();
 
   // only allow use on white, light tint & cod grey backgrounds
@@ -129,14 +145,18 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   );
 
   return (
-    <Wrapper {...formControlProps}>
+    <Wrapper fullWidth={true} {...formControlProps}>
       {label ? (
         <TextFieldLabel shrink id={labelProps?.id} htmlFor={props.id}>
           {label}
         </TextFieldLabel>
       ) : null}
 
-      <TextFieldInput {...rest} aria-describedby={helperTextProps?.id} />
+      <TextFieldInput
+        {...rest}
+        error={isErrorStatus(status)}
+        aria-describedby={helperTextProps?.id}
+      />
 
       <TextFieldHelperText filled={!!helperText} id={helperTextProps?.id}>
         {helperText}
