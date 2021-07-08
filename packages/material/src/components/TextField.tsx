@@ -18,12 +18,16 @@ import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/Suc
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
 
 export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
-  width?: number;
+  width?: number | string;
   success?: boolean;
   label?: React.ReactNode;
-  labelId?: string;
+  labelProps?: {
+    id: string;
+  };
   helperText?: React.ReactNode;
-  helperTextId?: string;
+  helperTextProps?: {
+    id: string;
+  };
 }
 
 const SuccessIcon = styled(SuccessOutlined)({ fill: colors.jewel });
@@ -37,7 +41,7 @@ const InputWithStatusIcon: React.FunctionComponent<TextFieldProps> = ({
   const shouldShowTheIcon = !props.disabled;
   return (
     <FilledInput
-      style={{ width }}
+      sx={{ width }}
       endAdornment={
         shouldShowTheIcon &&
         (props.error ? <WarningIcon /> : success ? <SuccessIcon /> : null)
@@ -110,7 +114,7 @@ const Wrapper = styled(FormControl)(({ theme }) => ({
 }));
 
 const TextField = (props: TextFieldProps): JSX.Element => {
-  const { label, labelId, helperText, helperTextId, ...rest } = props;
+  const { label, labelProps, helperText, helperTextProps, ...rest } = props;
   const { error, disabled } = rest;
   const formControlProps = { error, disabled };
   const { backdropLevel } = useTheme();
@@ -127,14 +131,14 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   return (
     <Wrapper {...formControlProps}>
       {label ? (
-        <TextFieldLabel shrink id={labelId} htmlFor={props.id}>
+        <TextFieldLabel shrink id={labelProps?.id} htmlFor={props.id}>
           {label}
         </TextFieldLabel>
       ) : null}
 
-      <TextFieldInput {...rest} aria-describedby={helperTextId} />
+      <TextFieldInput {...rest} aria-describedby={helperTextProps?.id} />
 
-      <TextFieldHelperText filled={!!helperText} id={helperTextId}>
+      <TextFieldHelperText filled={!!helperText} id={helperTextProps?.id}>
         {helperText}
       </TextFieldHelperText>
     </Wrapper>
