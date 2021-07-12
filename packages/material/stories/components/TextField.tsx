@@ -1,2 +1,2 @@
-export { TextField, TextFieldStatus } from "../../src";
+export { TextField } from "../../src";
 export type { TextFieldProps } from "../../src";

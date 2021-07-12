@@ -17,23 +17,11 @@ import assert from "assert";
 import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
 
-export enum TextFieldStatusType {
-  SUCCESS,
-  ERROR,
-}
-
-export const TextFieldStatus = {
-  SUCCESS: TextFieldStatusType.SUCCESS,
-  ERROR: TextFieldStatusType.ERROR,
-};
-
-const isSuccessStatus = (status?: TextFieldStatusType): boolean =>
-  TextFieldStatusType.SUCCESS === status;
-const isErrorStatus = (status?: TextFieldStatusType): boolean =>
-  TextFieldStatusType.ERROR === status;
+const isSuccessStatus = (status?: string): boolean => "success" === status;
+const isErrorStatus = (status?: string): boolean => "error" === status;
 
 export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
-  status?: TextFieldStatusType;
+  status?: "success" | "error";
   label?: React.ReactNode;
   labelProps?: {
     id: string;
@@ -71,7 +59,6 @@ const TextFieldInput = styled(InputWithStatusIcon)<TextFieldProps>(
   ({ status }) => ({
     ...(isSuccessStatus(status) && !isErrorStatus(status)
       ? {
-          transition: "border 120ms ease-out",
           "&:not(.Mui-disabled)": {
             borderBottomColor: colors.jewel,
           },
@@ -186,6 +173,7 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
           borderColor: `${colors.midnight}10`,
           transition: "border 120ms ease-out",
           ":hover": {
+            transition: "border 120ms ease-out",
             backgroundColor: colors.white,
             "&:not(.Mui-disabled)": {
               "&:before": {

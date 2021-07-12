@@ -43,7 +43,7 @@ export { default as Menu, MenuProps } from "./components/Menu";
 export { default as MenuItem } from "./components/MenuItem";
 export type { MenuItemProps } from "./components/MenuItem";
 
-export { default as TextField, TextFieldStatus } from "./components/TextField";
+export { default as TextField } from "./components/TextField";
 export type { TextFieldProps } from "./components/TextField";
 
 export { default as Typography } from "./components/Typography";

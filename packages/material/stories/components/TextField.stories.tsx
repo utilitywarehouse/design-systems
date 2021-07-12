@@ -2,15 +2,9 @@ import React from "react";
 import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
-import { TextField, TextFieldStatus } from "./TextField";
+import { TextField } from "./TextField";
 import type { TextFieldProps } from "./TextField";
 import { Background, BackgroundProps } from "../../src";
-
-const status = {
-  Nic: "0",
-  Success: TextFieldStatus.SUCCESS,
-  Error: TextFieldStatus.ERROR,
-};
 
 export default {
   title: `${base}TextField`,
@@ -27,8 +21,8 @@ export default {
         type: "inline-radio",
         options: {
           Default: "",
-          Success: TextFieldStatus.SUCCESS,
-          Error: TextFieldStatus.ERROR,
+          Success: "success",
+          Error: "error",
         },
       },
     },
