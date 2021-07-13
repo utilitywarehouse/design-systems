@@ -6,6 +6,7 @@ import { InteractiveCardStyles } from "./interactiveCard";
 import { LinkStyles } from "./link";
 import { MenuStyles } from "./menu";
 import { MenuItemStyles } from "./menuItem";
+import { TextFieldStyles } from "./textField/types";
 import { TypographyStyles } from "./typography";
 
 export type Breakpoint = "desktop" | "tablet" | "mobile";
@@ -64,6 +65,7 @@ export interface Theme {
     link: LinkStyles;
     menu: MenuStyles;
     menuItem: MenuItemStyles;
+    textField: TextFieldStyles;
     typography: TypographyStyles;
   };
   spacing: Spacing;
