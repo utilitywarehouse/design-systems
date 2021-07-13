@@ -11,6 +11,7 @@ import { getMenuItemStyles } from "./menuItem";
 import spacing from "./spacing";
 import { breakpoints } from "./breakpoint";
 import { getPalette } from "./palette";
+import { getTextFieldStyles } from "./textField";
 
 export * from "./types";
 export * from "./backdrop/types";
@@ -21,6 +22,7 @@ export * from "./interactiveCard/types";
 export * from "./link/types";
 export * from "./menu/types";
 export * from "./menuItem/types";
+export * from "./textField/types";
 export * from "./typography/types";
 
 export { default as gridConfiguration } from "./grid";
@@ -39,6 +41,7 @@ export const getTheme = (
       link: getLinkStyles(colorScheme, backdropLevel),
       menu: getMenuStyles(colorScheme, backdropLevel),
       menuItem: getMenuItemStyles(colorScheme, backdropLevel),
+      textField: getTextFieldStyles(colorScheme, backdropLevel),
       typography: getTypographyStyles(colorScheme, backdropLevel),
     },
     spacing,
