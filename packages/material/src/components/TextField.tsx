@@ -1,11 +1,7 @@
 import React from "react";
 import FilledInput, { FilledInputProps } from "@material-ui/core/FilledInput";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
-import {
-  colors,
-  fonts,
-  fontWeights,
-} from "@utilitywarehouse/customer-ui-design-tokens";
+import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import {
   FormControl,
   FormHelperText,
@@ -35,13 +31,18 @@ export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
 const SuccessIcon = styled(SuccessOutlined)({ fill: colors.jewel });
 const WarningIcon = styled(WarningOutlined)({ fill: colors.maroonFlush });
 
-const InputWithStatusIcon: React.FunctionComponent<TextFieldProps> = ({
+const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
   status,
   ...props
 }) => {
   const shouldShowTheIcon = !props.disabled;
   return (
     <FilledInput
+      className={
+        !props.disabled && isSuccessStatus(status) && !isErrorStatus(status)
+          ? "successState"
+          : undefined
+      }
       endAdornment={
         shouldShowTheIcon &&
         (isErrorStatus(status) ? (
@@ -55,71 +56,13 @@ const InputWithStatusIcon: React.FunctionComponent<TextFieldProps> = ({
   );
 };
 
-const TextFieldInput = styled(InputWithStatusIcon)<TextFieldProps>(
-  ({ status }) => ({
-    ...(isSuccessStatus(status) && !isErrorStatus(status)
-      ? {
-          "&:not(.Mui-disabled)": {
-            borderBottomColor: colors.jewel,
-          },
-          ":before": {
-            borderBottomColor: colors.jewel,
-          },
-          ":hover": {
-            "&:not(.Mui-disabled)": {
-              "&:before": {
-                borderColor: colors.jewel,
-              },
-            },
-          },
-          "&.Mui-focused": {
-            borderColor: colors.jewel,
-          },
-          "&:after": {
-            borderColor: colors.jewel,
-          },
-        }
-      : {}),
-  })
-);
-
-const TextFieldLabel = styled(InputLabel)({
-  position: "relative",
-  transform: "none",
-  fontFamily: fonts.primary,
-  fontWeight: fontWeights.primary,
-  fontSize: "0.875rem",
-  color: colors.midnight,
-  "&.Mui-error": {
-    color: colors.midnight,
-  },
-  "&.Mui-disabled": {
-    color: `${colors.midnight}40`,
-  },
-});
-
-const TextFieldHelperText = styled(FormHelperText)({
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.regular,
-  fontSize: "0.8125rem",
-  color: colors.midnight,
-  margin: 0,
-  "&.Mui-error": {
-    color: colors.maroonFlush,
-  },
-  "&.Mui-disabled": {
-    color: colors.midnight,
-  },
-});
-
-const Wrapper = styled(FormControl)(({ theme }) => ({
-  marginBottom: theme.spacing(3),
-}));
-
 const TextField = (props: TextFieldProps): JSX.Element => {
   const { label, labelProps, helperText, helperTextProps, ...rest } = props;
   const { status, disabled } = rest;
-  const formControlProps = { error: isErrorStatus(status), disabled };
+  const hasErrorStatus = !disabled && isErrorStatus(status);
+  const hasSuccessStatus =
+    !disabled && isSuccessStatus(status) && !hasErrorStatus;
+  const formControlProps = { error: hasErrorStatus, disabled };
   const { backdropLevel } = useTheme();
 
   // only allow use on white, light tint & cod grey backgrounds
@@ -132,104 +75,475 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   );
 
   return (
-    <Wrapper fullWidth={true} {...formControlProps}>
+    <FormControl fullWidth={true} {...formControlProps}>
       {label ? (
-        <TextFieldLabel shrink id={labelProps?.id} htmlFor={props.id}>
+        <InputLabel
+          shrink
+          id={labelProps?.id}
+          htmlFor={props.id}
+          className={hasSuccessStatus ? "successState" : undefined}
+        >
           {label}
-        </TextFieldLabel>
+        </InputLabel>
       ) : null}
 
       <TextFieldInput
         {...rest}
-        error={isErrorStatus(status)}
+        error={hasErrorStatus}
         aria-describedby={helperTextProps?.id}
       />
 
-      <TextFieldHelperText filled={!!helperText} id={helperTextProps?.id}>
+      <FormHelperText
+        filled={!!helperText}
+        id={helperTextProps?.id}
+        className={hasSuccessStatus ? "successState" : undefined}
+      >
         {helperText}
-      </TextFieldHelperText>
-    </Wrapper>
+      </FormHelperText>
+    </FormControl>
   );
 };
 
 export default TextField;
 
-export const getComponentThemeConfiguration: GetComponentThemeConfiguration = () => {
+export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
+  theme,
+  muiTheme
+) => {
+  console.log(theme.components.textField.mobile.default, "kurde theme");
   return {
+    MuiFormControl: {
+      styleOverrides: {
+        root: {
+          marginBottom:
+            theme.components.textField.mobile.default.idle.input.marginBottom,
+          [muiTheme.breakpoints.up("tablet")]: {
+            marginBottom:
+              theme.components.textField.tablet.default.idle.input.marginBottom,
+          },
+          [muiTheme.breakpoints.up("desktop")]: {
+            marginBottom:
+              theme.components.textField.desktop.default.idle.input
+                .marginBottom,
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          ...theme.components.textField.mobile.default.idle.label,
+          position: "relative",
+          transform: "none",
+          [muiTheme.breakpoints.up("tablet")]: {
+            ...theme.components.textField.tablet.default.idle.label,
+            position: "relative",
+            transform: "none",
+          },
+          [muiTheme.breakpoints.up("desktop")]: {
+            ...theme.components.textField.desktop.default.idle.label,
+            position: "relative",
+            transform: "none",
+          },
+          "&.Mui-error": {
+            ...theme.components.textField.mobile.error.idle.label,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...theme.components.textField.tablet.error.idle.label,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...theme.components.textField.desktop.error.idle.label,
+            },
+          },
+          "&.successState": {
+            ...theme.components.textField.mobile.success.idle.label,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...theme.components.textField.tablet.success.idle.label,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...theme.components.textField.desktop.success.idle.label,
+            },
+          },
+          "&.Mui-disabled": {
+            ...theme.components.textField.mobile.disabled.idle.label,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...theme.components.textField.tablet.disabled.idle.label,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...theme.components.textField.desktop.disabled.idle.label,
+            },
+          },
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          ...theme.components.textField.mobile.default.idle.helperText,
+          [muiTheme.breakpoints.up("tablet")]: {
+            ...theme.components.textField.tablet.default.idle.helperText,
+          },
+          [muiTheme.breakpoints.up("desktop")]: {
+            ...theme.components.textField.desktop.default.idle.helperText,
+          },
+          "&.Mui-error": {
+            ...theme.components.textField.mobile.error.idle.helperText,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...theme.components.textField.tablet.error.idle.helperText,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...theme.components.textField.desktop.error.idle.helperText,
+            },
+          },
+          "&.successState": {
+            ...theme.components.textField.mobile.success.idle.helperText,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...theme.components.textField.tablet.success.idle.helperText,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...theme.components.textField.desktop.success.idle.helperText,
+            },
+          },
+          "&.Mui-disabled": {
+            ...theme.components.textField.mobile.disabled.idle.helperText,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...theme.components.textField.tablet.disabled.idle.helperText,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...theme.components.textField.desktop.disabled.idle.helperText,
+            },
+          },
+        },
+      },
+    },
     MuiFilledInput: {
       defaultProps: {
         hiddenLabel: true,
       },
       styleOverrides: {
         root: {
-          height: 58,
-          backgroundColor: colors.white,
-          borderRadius: 0,
-          borderTopLeftRadius: 16,
-          borderTopRightRadius: 16,
-          borderStyle: "solid",
-          borderWidth: 2,
+          ...theme.components.textField.mobile.default.idle.input,
           borderBottom: 0,
-          borderColor: `${colors.midnight}10`,
-          transition: "border 120ms ease-out",
+          [muiTheme.breakpoints.up("tablet")]: {
+            ...theme.components.textField.tablet.default.idle.input,
+            borderBottom: 0,
+          },
+          [muiTheme.breakpoints.up("desktop")]: {
+            ...theme.components.textField.desktop.default.idle.input,
+            borderBottom: 0,
+          },
           ":hover": {
-            transition: "border 120ms ease-out",
-            backgroundColor: colors.white,
+            backgroundColor:
+              theme.components.textField.mobile.default.hover.input
+                .backgroundColor,
+            [muiTheme.breakpoints.up("tablet")]: {
+              backgroundColor:
+                theme.components.textField.tablet.default.hover.input
+                  .backgroundColor,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              backgroundColor:
+                theme.components.textField.desktop.default.hover.input
+                  .backgroundColor,
+            },
             "&:not(.Mui-disabled)": {
               "&:before": {
-                borderBottom: `2px solid ${colors.blueRibbon}`,
+                transition:
+                  theme.components.textField.mobile.default.hover.input
+                    .transition,
+                borderWidth:
+                  theme.components.textField.mobile.default.hover.input
+                    .borderWidth,
+                borderBottomColor:
+                  theme.components.textField.mobile.default.hover.input
+                    .borderBottomColor,
+                [muiTheme.breakpoints.up("tablet")]: {
+                  transition:
+                    theme.components.textField.tablet.default.hover.input
+                      .transition,
+                  borderWidth:
+                    theme.components.textField.tablet.default.hover.input
+                      .borderWidth,
+                  borderBottomColor:
+                    theme.components.textField.tablet.default.hover.input
+                      .borderBottomColor,
+                },
+                [muiTheme.breakpoints.up("desktop")]: {
+                  transition:
+                    theme.components.textField.desktop.default.hover.input
+                      .transition,
+                  borderWidth:
+                    theme.components.textField.desktop.default.hover.input
+                      .borderWidth,
+                  borderBottomColor:
+                    theme.components.textField.desktop.default.hover.input
+                      .borderBottomColor,
+                },
               },
             },
           },
           "&:before": {
-            borderBottom: "2px solid ",
-            borderColor: colors.purple,
-            transition: "border 120ms ease-out",
+            borderWidth:
+              theme.components.textField.mobile.default.idle.input.borderWidth,
+            borderColor:
+              theme.components.textField.mobile.default.idle.input
+                .borderBottomColor,
+            transition:
+              theme.components.textField.mobile.default.idle.input.transition,
+            [muiTheme.breakpoints.up("tablet")]: {
+              borderWidth:
+                theme.components.textField.tablet.default.idle.input
+                  .borderWidth,
+              borderColor:
+                theme.components.textField.tablet.default.idle.input
+                  .borderBottomColor,
+              transition:
+                theme.components.textField.tablet.default.idle.input.transition,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              borderWidth:
+                theme.components.textField.desktop.default.idle.input
+                  .borderWidth,
+              borderColor:
+                theme.components.textField.desktop.default.idle.input
+                  .borderBottomColor,
+              transition:
+                theme.components.textField.desktop.default.idle.input
+                  .transition,
+            },
           },
           "&:after": {
-            borderBottom: "2px solid ",
-            borderColor: colors.blueRibbon,
-            transition: "border 120ms ease-out",
+            borderWidth:
+              theme.components.textField.mobile.default.hover.input.borderWidth,
+            borderColor:
+              theme.components.textField.mobile.default.hover.input
+                .borderBottomColor,
+            transition:
+              theme.components.textField.mobile.default.hover.input.transition,
+            [muiTheme.breakpoints.up("tablet")]: {
+              borderWidth:
+                theme.components.textField.tablet.default.hover.input
+                  .borderWidth,
+              borderColor:
+                theme.components.textField.tablet.default.hover.input
+                  .borderBottomColor,
+              transition:
+                theme.components.textField.tablet.default.hover.input
+                  .transition,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              borderWidth:
+                theme.components.textField.desktop.default.hover.input
+                  .borderWidth,
+              borderColor:
+                theme.components.textField.desktop.default.hover.input
+                  .borderBottomColor,
+              transition:
+                theme.components.textField.desktop.default.hover.input
+                  .transition,
+            },
           },
           "&.Mui-focused": {
-            backgroundColor: colors.white,
-            borderColor: colors.blueRibbon,
+            backgroundColor:
+              theme.components.textField.mobile.default.focus.input
+                .backgroundColor,
+            borderColor:
+              theme.components.textField.mobile.default.focus.input.borderColor,
+            [muiTheme.breakpoints.up("tablet")]: {
+              backgroundColor:
+                theme.components.textField.tablet.default.focus.input
+                  .backgroundColor,
+              borderColor:
+                theme.components.textField.tablet.default.focus.input
+                  .borderColor,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              backgroundColor:
+                theme.components.textField.desktop.default.focus.input
+                  .backgroundColor,
+              borderColor:
+                theme.components.textField.desktop.default.focus.input
+                  .borderColor,
+            },
           },
           "&.Mui-disabled": {
-            backgroundColor: `${colors.midnight}05`,
-            borderColor: "transparent",
+            backgroundColor:
+              theme.components.textField.mobile.disabled.idle.input
+                .backgroundColor,
+            borderColor:
+              theme.components.textField.mobile.disabled.idle.input.borderColor,
+            [muiTheme.breakpoints.up("tablet")]: {
+              backgroundColor:
+                theme.components.textField.tablet.disabled.idle.input
+                  .backgroundColor,
+              borderColor:
+                theme.components.textField.tablet.disabled.idle.input
+                  .borderColor,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              backgroundColor:
+                theme.components.textField.desktop.disabled.idle.input
+                  .backgroundColor,
+              borderColor:
+                theme.components.textField.desktop.disabled.idle.input
+                  .borderColor,
+            },
             "&:before": {
-              borderBottomStyle: "solid",
-              borderColor: `${colors.purple}05`,
+              borderColor:
+                theme.components.textField.mobile.disabled.idle.input
+                  .borderBottomColor,
+              borderBottomStyle:
+                theme.components.textField.mobile.disabled.idle.input
+                  .borderStyle,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderColor:
+                  theme.components.textField.tablet.disabled.idle.input
+                    .borderBottomColor,
+                borderBottomStyle:
+                  theme.components.textField.tablet.disabled.idle.input
+                    .borderStyle,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderColor:
+                  theme.components.textField.desktop.disabled.idle.input
+                    .borderBottomColor,
+                borderBottomStyle:
+                  theme.components.textField.desktop.disabled.idle.input
+                    .borderStyle,
+              },
             },
             "&:after": {
-              borderColor: `${colors.purple}05`,
+              borderColor:
+                theme.components.textField.mobile.disabled.idle.input
+                  .borderBottomColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderColor:
+                  theme.components.textField.tablet.disabled.idle.input
+                    .borderBottomColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderColor:
+                  theme.components.textField.desktop.disabled.idle.input
+                    .borderBottomColor,
+              },
             },
           },
           "&.Mui-error": {
             "&.Mui-focused": {
-              borderColor: colors.maroonFlush,
+              borderColor:
+                theme.components.textField.mobile.error.focus.input.borderColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderColor:
+                  theme.components.textField.tablet.error.focus.input
+                    .borderColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderColor:
+                  theme.components.textField.desktop.error.focus.input
+                    .borderColor,
+              },
             },
             "&:not(.Mui-disabled)": {
               "&:after": {
-                borderColor: colors.maroonFlush,
+                borderColor:
+                  theme.components.textField.mobile.error.idle.input
+                    .borderBottomColor,
+                [muiTheme.breakpoints.up("tablet")]: {
+                  borderColor:
+                    theme.components.textField.tablet.error.idle.input
+                      .borderBottomColor,
+                },
+                [muiTheme.breakpoints.up("desktop")]: {
+                  borderColor:
+                    theme.components.textField.desktop.error.idle.input
+                      .borderBottomColor,
+                },
+              },
+            },
+          },
+          "&.successState": {
+            ":before": {
+              borderBottomColor:
+                theme.components.textField.mobile.success.idle.input
+                  .borderBottomColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderBottomColor:
+                  theme.components.textField.tablet.success.idle.input
+                    .borderBottomColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderBottomColor:
+                  theme.components.textField.desktop.success.idle.input
+                    .borderBottomColor,
+              },
+            },
+            "&:after": {
+              borderBottomColor:
+                theme.components.textField.mobile.success.hover.input
+                  .borderBottomColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderBottomColor:
+                  theme.components.textField.tablet.success.hover.input
+                    .borderBottomColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderBottomColor:
+                  theme.components.textField.desktop.success.hover.input
+                    .borderBottomColor,
+              },
+            },
+            ":hover": {
+              "&:not(.Mui-disabled)": {
+                "&:before": {
+                  borderColor:
+                    theme.components.textField.mobile.success.hover.input
+                      .borderBottomColor,
+                  [muiTheme.breakpoints.up("tablet")]: {
+                    borderColor:
+                      theme.components.textField.tablet.success.hover.input
+                        .borderBottomColor,
+                  },
+                  [muiTheme.breakpoints.up("desktop")]: {
+                    borderColor:
+                      theme.components.textField.desktop.success.hover.input
+                        .borderBottomColor,
+                  },
+                },
+              },
+            },
+            "&.Mui-focused": {
+              borderColor:
+                theme.components.textField.mobile.success.focus.input
+                  .borderBottomColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderColor:
+                  theme.components.textField.tablet.success.focus.input
+                    .borderBottomColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderColor:
+                  theme.components.textField.desktop.success.focus.input
+                    .borderBottomColor,
+              },
+            },
+            "&:not(.Mui-disabled)": {
+              borderBottomColor:
+                theme.components.textField.mobile.success.idle.input
+                  .borderBottomColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderBottomColor:
+                  theme.components.textField.tablet.success.idle.input
+                    .borderBottomColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderBottomColor:
+                  theme.components.textField.desktop.success.idle.input
+                    .borderBottomColor,
               },
             },
           },
         },
         input: {
-          paddingTop: 0,
-          paddingRight: 16,
-          paddingBottom: 2, // vertically align the input text
-          paddingLeft: 16,
-          fontFamily: fonts.secondary,
-          fontSize: "1.125rem",
-          fontWeight: fontWeights.secondary.regular,
-          color: colors.midnight,
-          "::placeholder": {
-            font: "inherit",
-            opacity: 0.4,
-          },
+          padding: 0,
         },
       },
     },
