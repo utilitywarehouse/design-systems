@@ -24,8 +24,7 @@
     "@emotion/styled": "^11.0.0",
     "@material-ui/core": "5.0.0-alpha.36",
     "@material-ui/styles": "5.0.0-alpha.35",
-    "@utilitywarehouse/customer-ui-theme": "1.0.0-alpha.16",
-    "assert": "^2.0.0"
+    "@utilitywarehouse/customer-ui-theme": "1.0.0-alpha.16"
   },
   "files": [
     "dist",

@@ -9,7 +9,6 @@ import {
   styled,
 } from "../material/core";
 import { useTheme } from "..";
-import assert from "assert";
 import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
 
@@ -39,9 +38,9 @@ const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
   return (
     <FilledInput
       className={
-        !props.disabled && isSuccessStatus(status) && !isErrorStatus(status)
-          ? "successState"
-          : undefined
+        !props.disabled && isSuccessStatus(status)
+          ? `${props.className} successState`
+          : props.className
       }
       endAdornment={
         shouldShowTheIcon &&
@@ -49,7 +48,9 @@ const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
           <WarningIcon />
         ) : isSuccessStatus(status) ? (
           <SuccessIcon />
-        ) : null)
+        ) : (
+          props.endAdornment
+        ))
       }
       {...props}
     />
@@ -63,16 +64,20 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const hasSuccessStatus =
     !disabled && isSuccessStatus(status) && !hasErrorStatus;
   const formControlProps = { error: hasErrorStatus, disabled };
-  const { backdropLevel } = useTheme();
+  const { backdropLevel, colorScheme } = useTheme();
 
   // only allow use on white, light tint & cod grey backgrounds
   const validBackgroundLevels = ["level3", "level4", "level5"];
-  assert(
-    validBackgroundLevels.includes(backdropLevel),
-    `Invalid background color: '${backdropLevel}'. Should be one of [${validBackgroundLevels
-      .map((l) => `'${l}'`)
-      .join(", ")}]`
-  );
+  if (
+    colorScheme === "light" &&
+    !validBackgroundLevels.includes(backdropLevel)
+  ) {
+    console.warn(
+      `Invalid background color: '${backdropLevel}'. Should be one of [${validBackgroundLevels
+        .map((l) => `'${l}'`)
+        .join(", ")}]`
+    );
+  }
 
   return (
     <FormControl fullWidth={true} {...formControlProps}>
@@ -110,21 +115,20 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   theme,
   muiTheme
 ) => {
-  console.log(theme.components.textField.mobile.default, "kurde theme");
+  const mobileTheme = theme.components.textField.mobile;
+  const tabletTheme = theme.components.textField.tablet;
+  const desktopTheme = theme.components.textField.desktop;
+
   return {
     MuiFormControl: {
       styleOverrides: {
         root: {
-          marginBottom:
-            theme.components.textField.mobile.default.idle.input.marginBottom,
+          marginBottom: mobileTheme.default.idle.input.marginBottom,
           [muiTheme.breakpoints.up("tablet")]: {
-            marginBottom:
-              theme.components.textField.tablet.default.idle.input.marginBottom,
+            marginBottom: tabletTheme.default.idle.input.marginBottom,
           },
           [muiTheme.breakpoints.up("desktop")]: {
-            marginBottom:
-              theme.components.textField.desktop.default.idle.input
-                .marginBottom,
+            marginBottom: desktopTheme.default.idle.input.marginBottom,
           },
         },
       },
@@ -132,44 +136,44 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          ...theme.components.textField.mobile.default.idle.label,
+          ...mobileTheme.default.idle.label,
           position: "relative",
           transform: "none",
           [muiTheme.breakpoints.up("tablet")]: {
-            ...theme.components.textField.tablet.default.idle.label,
+            ...tabletTheme.default.idle.label,
             position: "relative",
             transform: "none",
           },
           [muiTheme.breakpoints.up("desktop")]: {
-            ...theme.components.textField.desktop.default.idle.label,
+            ...desktopTheme.default.idle.label,
             position: "relative",
             transform: "none",
           },
           "&.Mui-error": {
-            ...theme.components.textField.mobile.error.idle.label,
+            ...mobileTheme.error.idle.label,
             [muiTheme.breakpoints.up("tablet")]: {
-              ...theme.components.textField.tablet.error.idle.label,
+              ...tabletTheme.error.idle.label,
             },
             [muiTheme.breakpoints.up("desktop")]: {
-              ...theme.components.textField.desktop.error.idle.label,
+              ...desktopTheme.error.idle.label,
             },
           },
           "&.successState": {
-            ...theme.components.textField.mobile.success.idle.label,
+            ...mobileTheme.success.idle.label,
             [muiTheme.breakpoints.up("tablet")]: {
-              ...theme.components.textField.tablet.success.idle.label,
+              ...tabletTheme.success.idle.label,
             },
             [muiTheme.breakpoints.up("desktop")]: {
-              ...theme.components.textField.desktop.success.idle.label,
+              ...desktopTheme.success.idle.label,
             },
           },
           "&.Mui-disabled": {
-            ...theme.components.textField.mobile.disabled.idle.label,
+            ...mobileTheme.disabled.idle.label,
             [muiTheme.breakpoints.up("tablet")]: {
-              ...theme.components.textField.tablet.disabled.idle.label,
+              ...tabletTheme.disabled.idle.label,
             },
             [muiTheme.breakpoints.up("desktop")]: {
-              ...theme.components.textField.desktop.disabled.idle.label,
+              ...desktopTheme.disabled.idle.label,
             },
           },
         },
@@ -178,38 +182,38 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
     MuiFormHelperText: {
       styleOverrides: {
         root: {
-          ...theme.components.textField.mobile.default.idle.helperText,
+          ...mobileTheme.default.idle.helperText,
           [muiTheme.breakpoints.up("tablet")]: {
-            ...theme.components.textField.tablet.default.idle.helperText,
+            ...tabletTheme.default.idle.helperText,
           },
           [muiTheme.breakpoints.up("desktop")]: {
-            ...theme.components.textField.desktop.default.idle.helperText,
+            ...desktopTheme.default.idle.helperText,
           },
           "&.Mui-error": {
-            ...theme.components.textField.mobile.error.idle.helperText,
+            ...mobileTheme.error.idle.helperText,
             [muiTheme.breakpoints.up("tablet")]: {
-              ...theme.components.textField.tablet.error.idle.helperText,
+              ...tabletTheme.error.idle.helperText,
             },
             [muiTheme.breakpoints.up("desktop")]: {
-              ...theme.components.textField.desktop.error.idle.helperText,
+              ...desktopTheme.error.idle.helperText,
             },
           },
           "&.successState": {
-            ...theme.components.textField.mobile.success.idle.helperText,
+            ...mobileTheme.success.idle.helperText,
             [muiTheme.breakpoints.up("tablet")]: {
-              ...theme.components.textField.tablet.success.idle.helperText,
+              ...tabletTheme.success.idle.helperText,
             },
             [muiTheme.breakpoints.up("desktop")]: {
-              ...theme.components.textField.desktop.success.idle.helperText,
+              ...desktopTheme.success.idle.helperText,
             },
           },
           "&.Mui-disabled": {
-            ...theme.components.textField.mobile.disabled.idle.helperText,
+            ...mobileTheme.disabled.idle.helperText,
             [muiTheme.breakpoints.up("tablet")]: {
-              ...theme.components.textField.tablet.disabled.idle.helperText,
+              ...tabletTheme.disabled.idle.helperText,
             },
             [muiTheme.breakpoints.up("desktop")]: {
-              ...theme.components.textField.desktop.disabled.idle.helperText,
+              ...desktopTheme.disabled.idle.helperText,
             },
           },
         },
@@ -221,241 +225,138 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
       },
       styleOverrides: {
         root: {
-          ...theme.components.textField.mobile.default.idle.input,
+          ...mobileTheme.default.idle.input,
           borderBottom: 0,
           [muiTheme.breakpoints.up("tablet")]: {
-            ...theme.components.textField.tablet.default.idle.input,
+            ...tabletTheme.default.idle.input,
             borderBottom: 0,
           },
           [muiTheme.breakpoints.up("desktop")]: {
-            ...theme.components.textField.desktop.default.idle.input,
+            ...desktopTheme.default.idle.input,
             borderBottom: 0,
           },
           ":hover": {
-            backgroundColor:
-              theme.components.textField.mobile.default.hover.input
-                .backgroundColor,
+            backgroundColor: mobileTheme.default.hover.input.backgroundColor,
             [muiTheme.breakpoints.up("tablet")]: {
-              backgroundColor:
-                theme.components.textField.tablet.default.hover.input
-                  .backgroundColor,
+              backgroundColor: tabletTheme.default.hover.input.backgroundColor,
             },
             [muiTheme.breakpoints.up("desktop")]: {
-              backgroundColor:
-                theme.components.textField.desktop.default.hover.input
-                  .backgroundColor,
+              backgroundColor: desktopTheme.default.hover.input.backgroundColor,
             },
             "&:not(.Mui-disabled)": {
               "&:before": {
-                transition:
-                  theme.components.textField.mobile.default.hover.input
-                    .transition,
-                borderWidth:
-                  theme.components.textField.mobile.default.hover.input
-                    .borderWidth,
+                transition: mobileTheme.default.hover.input.transition,
+                borderWidth: mobileTheme.default.hover.input.borderWidth,
                 borderBottomColor:
-                  theme.components.textField.mobile.default.hover.input
-                    .borderBottomColor,
+                  mobileTheme.default.hover.input.borderBottomColor,
                 [muiTheme.breakpoints.up("tablet")]: {
-                  transition:
-                    theme.components.textField.tablet.default.hover.input
-                      .transition,
-                  borderWidth:
-                    theme.components.textField.tablet.default.hover.input
-                      .borderWidth,
+                  transition: tabletTheme.default.hover.input.transition,
+                  borderWidth: tabletTheme.default.hover.input.borderWidth,
                   borderBottomColor:
-                    theme.components.textField.tablet.default.hover.input
-                      .borderBottomColor,
+                    tabletTheme.default.hover.input.borderBottomColor,
                 },
                 [muiTheme.breakpoints.up("desktop")]: {
-                  transition:
-                    theme.components.textField.desktop.default.hover.input
-                      .transition,
-                  borderWidth:
-                    theme.components.textField.desktop.default.hover.input
-                      .borderWidth,
+                  transition: desktopTheme.default.hover.input.transition,
+                  borderWidth: desktopTheme.default.hover.input.borderWidth,
                   borderBottomColor:
-                    theme.components.textField.desktop.default.hover.input
-                      .borderBottomColor,
+                    desktopTheme.default.hover.input.borderBottomColor,
                 },
               },
             },
           },
           "&:before": {
-            borderWidth:
-              theme.components.textField.mobile.default.idle.input.borderWidth,
-            borderColor:
-              theme.components.textField.mobile.default.idle.input
-                .borderBottomColor,
-            transition:
-              theme.components.textField.mobile.default.idle.input.transition,
+            borderWidth: mobileTheme.default.idle.input.borderWidth,
+            borderColor: mobileTheme.default.idle.input.borderBottomColor,
+            transition: mobileTheme.default.idle.input.transition,
             [muiTheme.breakpoints.up("tablet")]: {
-              borderWidth:
-                theme.components.textField.tablet.default.idle.input
-                  .borderWidth,
-              borderColor:
-                theme.components.textField.tablet.default.idle.input
-                  .borderBottomColor,
-              transition:
-                theme.components.textField.tablet.default.idle.input.transition,
+              borderWidth: tabletTheme.default.idle.input.borderWidth,
+              borderColor: tabletTheme.default.idle.input.borderBottomColor,
+              transition: tabletTheme.default.idle.input.transition,
             },
             [muiTheme.breakpoints.up("desktop")]: {
-              borderWidth:
-                theme.components.textField.desktop.default.idle.input
-                  .borderWidth,
-              borderColor:
-                theme.components.textField.desktop.default.idle.input
-                  .borderBottomColor,
-              transition:
-                theme.components.textField.desktop.default.idle.input
-                  .transition,
+              borderWidth: desktopTheme.default.idle.input.borderWidth,
+              borderColor: desktopTheme.default.idle.input.borderBottomColor,
+              transition: desktopTheme.default.idle.input.transition,
             },
           },
           "&:after": {
-            borderWidth:
-              theme.components.textField.mobile.default.hover.input.borderWidth,
-            borderColor:
-              theme.components.textField.mobile.default.hover.input
-                .borderBottomColor,
-            transition:
-              theme.components.textField.mobile.default.hover.input.transition,
+            borderWidth: mobileTheme.default.hover.input.borderWidth,
+            borderColor: mobileTheme.default.hover.input.borderBottomColor,
+            transition: mobileTheme.default.hover.input.transition,
             [muiTheme.breakpoints.up("tablet")]: {
-              borderWidth:
-                theme.components.textField.tablet.default.hover.input
-                  .borderWidth,
-              borderColor:
-                theme.components.textField.tablet.default.hover.input
-                  .borderBottomColor,
-              transition:
-                theme.components.textField.tablet.default.hover.input
-                  .transition,
+              borderWidth: tabletTheme.default.hover.input.borderWidth,
+              borderColor: tabletTheme.default.hover.input.borderBottomColor,
+              transition: tabletTheme.default.hover.input.transition,
             },
             [muiTheme.breakpoints.up("desktop")]: {
-              borderWidth:
-                theme.components.textField.desktop.default.hover.input
-                  .borderWidth,
-              borderColor:
-                theme.components.textField.desktop.default.hover.input
-                  .borderBottomColor,
-              transition:
-                theme.components.textField.desktop.default.hover.input
-                  .transition,
+              borderWidth: desktopTheme.default.hover.input.borderWidth,
+              borderColor: desktopTheme.default.hover.input.borderBottomColor,
+              transition: desktopTheme.default.hover.input.transition,
             },
           },
           "&.Mui-focused": {
-            backgroundColor:
-              theme.components.textField.mobile.default.focus.input
-                .backgroundColor,
-            borderColor:
-              theme.components.textField.mobile.default.focus.input.borderColor,
+            backgroundColor: mobileTheme.default.focus.input.backgroundColor,
+            borderColor: mobileTheme.default.focus.input.borderColor,
             [muiTheme.breakpoints.up("tablet")]: {
-              backgroundColor:
-                theme.components.textField.tablet.default.focus.input
-                  .backgroundColor,
-              borderColor:
-                theme.components.textField.tablet.default.focus.input
-                  .borderColor,
+              backgroundColor: tabletTheme.default.focus.input.backgroundColor,
+              borderColor: tabletTheme.default.focus.input.borderColor,
             },
             [muiTheme.breakpoints.up("desktop")]: {
-              backgroundColor:
-                theme.components.textField.desktop.default.focus.input
-                  .backgroundColor,
-              borderColor:
-                theme.components.textField.desktop.default.focus.input
-                  .borderColor,
+              backgroundColor: desktopTheme.default.focus.input.backgroundColor,
+              borderColor: desktopTheme.default.focus.input.borderColor,
             },
           },
           "&.Mui-disabled": {
-            backgroundColor:
-              theme.components.textField.mobile.disabled.idle.input
-                .backgroundColor,
-            borderColor:
-              theme.components.textField.mobile.disabled.idle.input.borderColor,
+            backgroundColor: mobileTheme.disabled.idle.input.backgroundColor,
+            borderColor: mobileTheme.disabled.idle.input.borderColor,
             [muiTheme.breakpoints.up("tablet")]: {
-              backgroundColor:
-                theme.components.textField.tablet.disabled.idle.input
-                  .backgroundColor,
-              borderColor:
-                theme.components.textField.tablet.disabled.idle.input
-                  .borderColor,
+              backgroundColor: tabletTheme.disabled.idle.input.backgroundColor,
+              borderColor: tabletTheme.disabled.idle.input.borderColor,
             },
             [muiTheme.breakpoints.up("desktop")]: {
-              backgroundColor:
-                theme.components.textField.desktop.disabled.idle.input
-                  .backgroundColor,
-              borderColor:
-                theme.components.textField.desktop.disabled.idle.input
-                  .borderColor,
+              backgroundColor: desktopTheme.disabled.idle.input.backgroundColor,
+              borderColor: desktopTheme.disabled.idle.input.borderColor,
             },
             "&:before": {
-              borderColor:
-                theme.components.textField.mobile.disabled.idle.input
-                  .borderBottomColor,
-              borderBottomStyle:
-                theme.components.textField.mobile.disabled.idle.input
-                  .borderStyle,
+              borderColor: mobileTheme.disabled.idle.input.borderBottomColor,
+              borderBottomStyle: mobileTheme.disabled.idle.input.borderStyle,
               [muiTheme.breakpoints.up("tablet")]: {
-                borderColor:
-                  theme.components.textField.tablet.disabled.idle.input
-                    .borderBottomColor,
-                borderBottomStyle:
-                  theme.components.textField.tablet.disabled.idle.input
-                    .borderStyle,
+                borderColor: tabletTheme.disabled.idle.input.borderBottomColor,
+                borderBottomStyle: tabletTheme.disabled.idle.input.borderStyle,
               },
               [muiTheme.breakpoints.up("desktop")]: {
-                borderColor:
-                  theme.components.textField.desktop.disabled.idle.input
-                    .borderBottomColor,
-                borderBottomStyle:
-                  theme.components.textField.desktop.disabled.idle.input
-                    .borderStyle,
+                borderColor: desktopTheme.disabled.idle.input.borderBottomColor,
+                borderBottomStyle: desktopTheme.disabled.idle.input.borderStyle,
               },
             },
             "&:after": {
-              borderColor:
-                theme.components.textField.mobile.disabled.idle.input
-                  .borderBottomColor,
+              borderColor: mobileTheme.disabled.idle.input.borderBottomColor,
               [muiTheme.breakpoints.up("tablet")]: {
-                borderColor:
-                  theme.components.textField.tablet.disabled.idle.input
-                    .borderBottomColor,
+                borderColor: tabletTheme.disabled.idle.input.borderBottomColor,
               },
               [muiTheme.breakpoints.up("desktop")]: {
-                borderColor:
-                  theme.components.textField.desktop.disabled.idle.input
-                    .borderBottomColor,
+                borderColor: desktopTheme.disabled.idle.input.borderBottomColor,
               },
             },
           },
           "&.Mui-error": {
             "&.Mui-focused": {
-              borderColor:
-                theme.components.textField.mobile.error.focus.input.borderColor,
+              borderColor: mobileTheme.error.focus.input.borderColor,
               [muiTheme.breakpoints.up("tablet")]: {
-                borderColor:
-                  theme.components.textField.tablet.error.focus.input
-                    .borderColor,
+                borderColor: tabletTheme.error.focus.input.borderColor,
               },
               [muiTheme.breakpoints.up("desktop")]: {
-                borderColor:
-                  theme.components.textField.desktop.error.focus.input
-                    .borderColor,
+                borderColor: desktopTheme.error.focus.input.borderColor,
               },
             },
             "&:not(.Mui-disabled)": {
               "&:after": {
-                borderColor:
-                  theme.components.textField.mobile.error.idle.input
-                    .borderBottomColor,
+                borderColor: mobileTheme.error.idle.input.borderBottomColor,
                 [muiTheme.breakpoints.up("tablet")]: {
-                  borderColor:
-                    theme.components.textField.tablet.error.idle.input
-                      .borderBottomColor,
+                  borderColor: tabletTheme.error.idle.input.borderBottomColor,
                 },
                 [muiTheme.breakpoints.up("desktop")]: {
-                  borderColor:
-                    theme.components.textField.desktop.error.idle.input
-                      .borderBottomColor,
+                  borderColor: desktopTheme.error.idle.input.borderBottomColor,
                 },
               },
             },
@@ -463,81 +364,63 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
           "&.successState": {
             ":before": {
               borderBottomColor:
-                theme.components.textField.mobile.success.idle.input
-                  .borderBottomColor,
+                mobileTheme.success.idle.input.borderBottomColor,
               [muiTheme.breakpoints.up("tablet")]: {
                 borderBottomColor:
-                  theme.components.textField.tablet.success.idle.input
-                    .borderBottomColor,
+                  tabletTheme.success.idle.input.borderBottomColor,
               },
               [muiTheme.breakpoints.up("desktop")]: {
                 borderBottomColor:
-                  theme.components.textField.desktop.success.idle.input
-                    .borderBottomColor,
+                  desktopTheme.success.idle.input.borderBottomColor,
               },
             },
             "&:after": {
               borderBottomColor:
-                theme.components.textField.mobile.success.hover.input
-                  .borderBottomColor,
+                mobileTheme.success.hover.input.borderBottomColor,
               [muiTheme.breakpoints.up("tablet")]: {
                 borderBottomColor:
-                  theme.components.textField.tablet.success.hover.input
-                    .borderBottomColor,
+                  tabletTheme.success.hover.input.borderBottomColor,
               },
               [muiTheme.breakpoints.up("desktop")]: {
                 borderBottomColor:
-                  theme.components.textField.desktop.success.hover.input
-                    .borderBottomColor,
+                  desktopTheme.success.hover.input.borderBottomColor,
               },
             },
             ":hover": {
               "&:not(.Mui-disabled)": {
                 "&:before": {
                   borderColor:
-                    theme.components.textField.mobile.success.hover.input
-                      .borderBottomColor,
+                    mobileTheme.success.hover.input.borderBottomColor,
                   [muiTheme.breakpoints.up("tablet")]: {
                     borderColor:
-                      theme.components.textField.tablet.success.hover.input
-                        .borderBottomColor,
+                      tabletTheme.success.hover.input.borderBottomColor,
                   },
                   [muiTheme.breakpoints.up("desktop")]: {
                     borderColor:
-                      theme.components.textField.desktop.success.hover.input
-                        .borderBottomColor,
+                      desktopTheme.success.hover.input.borderBottomColor,
                   },
                 },
               },
             },
             "&.Mui-focused": {
-              borderColor:
-                theme.components.textField.mobile.success.focus.input
-                  .borderBottomColor,
+              borderColor: mobileTheme.success.focus.input.borderBottomColor,
               [muiTheme.breakpoints.up("tablet")]: {
-                borderColor:
-                  theme.components.textField.tablet.success.focus.input
-                    .borderBottomColor,
+                borderColor: tabletTheme.success.focus.input.borderBottomColor,
               },
               [muiTheme.breakpoints.up("desktop")]: {
-                borderColor:
-                  theme.components.textField.desktop.success.focus.input
-                    .borderBottomColor,
+                borderColor: desktopTheme.success.focus.input.borderBottomColor,
               },
             },
             "&:not(.Mui-disabled)": {
               borderBottomColor:
-                theme.components.textField.mobile.success.idle.input
-                  .borderBottomColor,
+                mobileTheme.success.idle.input.borderBottomColor,
               [muiTheme.breakpoints.up("tablet")]: {
                 borderBottomColor:
-                  theme.components.textField.tablet.success.idle.input
-                    .borderBottomColor,
+                  tabletTheme.success.idle.input.borderBottomColor,
               },
               [muiTheme.breakpoints.up("desktop")]: {
                 borderBottomColor:
-                  theme.components.textField.desktop.success.idle.input
-                    .borderBottomColor,
+                  desktopTheme.success.idle.input.borderBottomColor,
               },
             },
           },
