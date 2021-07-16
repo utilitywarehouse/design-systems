@@ -7,6 +7,7 @@ import {
   FormHelperText,
   InputLabel,
   styled,
+  Box,
 } from "../material/core";
 import { useTheme } from "..";
 import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
@@ -32,6 +33,7 @@ const WarningIcon = styled(WarningOutlined)({ fill: colors.maroonFlush });
 
 const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
   status,
+  endAdornment,
   ...props
 }) => {
   const shouldShowTheIcon = !props.disabled;
@@ -43,14 +45,22 @@ const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
           : props.className
       }
       endAdornment={
-        shouldShowTheIcon &&
-        (isErrorStatus(status) ? (
-          <WarningIcon />
-        ) : isSuccessStatus(status) ? (
-          <SuccessIcon />
-        ) : (
-          props.endAdornment
-        ))
+        <>
+          {shouldShowTheIcon && isErrorStatus(status) ? (
+            <Box display="flex">
+              <WarningIcon />
+            </Box>
+          ) : isSuccessStatus(status) ? (
+            <Box display="flex">
+              <SuccessIcon />
+            </Box>
+          ) : null}
+          {endAdornment ? (
+            <Box display="flex" ml={0.5}>
+              {endAdornment}
+            </Box>
+          ) : null}
+        </>
       }
       {...props}
     />
