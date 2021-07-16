@@ -77,13 +77,10 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const { backdropLevel, colorScheme } = useTheme();
 
   // only allow use on white, light tint & cod grey backgrounds
-  const validBackgroundLevels = ["level3", "level4", "level5"];
-  if (
-    colorScheme === "light" &&
-    !validBackgroundLevels.includes(backdropLevel)
-  ) {
+  const validBackdropLevels = ["level3", "level4", "level5"];
+  if (colorScheme === "light" && !validBackdropLevels.includes(backdropLevel)) {
     console.warn(
-      `Invalid background color: '${backdropLevel}'. Should be one of [${validBackgroundLevels
+      `Invalid backdrop level for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackdropLevels
         .map((l) => `'${l}'`)
         .join(", ")}]`
     );
