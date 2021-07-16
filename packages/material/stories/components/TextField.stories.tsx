@@ -13,7 +13,7 @@ export default {
     backgroundColor: {
       control: {
         type: "inline-radio",
-        options: ["level3", "level4", "level5"],
+        options: ["level0", "level1", "level2", "level3", "level4", "level5"],
       },
     },
     status: {

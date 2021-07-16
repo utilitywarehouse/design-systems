@@ -1,19 +1,15 @@
 import React from "react";
 import FilledInput, { FilledInputProps } from "@material-ui/core/FilledInput";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
-import {
-  colors,
-  fonts,
-  fontWeights,
-} from "@utilitywarehouse/customer-ui-design-tokens";
+import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import {
   FormControl,
   FormHelperText,
   InputLabel,
   styled,
+  Box,
 } from "../material/core";
 import { useTheme } from "..";
-import assert from "assert";
 import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
 
@@ -35,201 +31,409 @@ export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
 const SuccessIcon = styled(SuccessOutlined)({ fill: colors.jewel });
 const WarningIcon = styled(WarningOutlined)({ fill: colors.maroonFlush });
 
-const InputWithStatusIcon: React.FunctionComponent<TextFieldProps> = ({
+const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
   status,
+  endAdornment,
   ...props
 }) => {
   const shouldShowTheIcon = !props.disabled;
   return (
     <FilledInput
+      className={
+        !props.disabled && isSuccessStatus(status)
+          ? `${props.className} successState`
+          : props.className
+      }
       endAdornment={
-        shouldShowTheIcon &&
-        (isErrorStatus(status) ? (
-          <WarningIcon />
-        ) : isSuccessStatus(status) ? (
-          <SuccessIcon />
-        ) : null)
+        <>
+          {shouldShowTheIcon && isErrorStatus(status) ? (
+            <Box display="flex">
+              <WarningIcon />
+            </Box>
+          ) : isSuccessStatus(status) ? (
+            <Box display="flex">
+              <SuccessIcon />
+            </Box>
+          ) : null}
+          {endAdornment ? (
+            <Box display="flex" ml={0.5}>
+              {endAdornment}
+            </Box>
+          ) : null}
+        </>
       }
       {...props}
     />
   );
 };
 
-const TextFieldInput = styled(InputWithStatusIcon)<TextFieldProps>(
-  ({ status }) => ({
-    ...(isSuccessStatus(status) && !isErrorStatus(status)
-      ? {
-          "&:not(.Mui-disabled)": {
-            borderBottomColor: colors.jewel,
-          },
-          ":before": {
-            borderBottomColor: colors.jewel,
-          },
-          ":hover": {
-            "&:not(.Mui-disabled)": {
-              "&:before": {
-                borderColor: colors.jewel,
-              },
-            },
-          },
-          "&.Mui-focused": {
-            borderColor: colors.jewel,
-          },
-          "&:after": {
-            borderColor: colors.jewel,
-          },
-        }
-      : {}),
-  })
-);
-
-const TextFieldLabel = styled(InputLabel)({
-  position: "relative",
-  transform: "none",
-  fontFamily: fonts.primary,
-  fontWeight: fontWeights.primary,
-  fontSize: "0.875rem",
-  color: colors.midnight,
-  "&.Mui-error": {
-    color: colors.midnight,
-  },
-  "&.Mui-disabled": {
-    color: `${colors.midnight}40`,
-  },
-});
-
-const TextFieldHelperText = styled(FormHelperText)({
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.regular,
-  fontSize: "0.8125rem",
-  color: colors.midnight,
-  margin: 0,
-  "&.Mui-error": {
-    color: colors.maroonFlush,
-  },
-  "&.Mui-disabled": {
-    color: colors.midnight,
-  },
-});
-
-const Wrapper = styled(FormControl)(({ theme }) => ({
-  marginBottom: theme.spacing(3),
-}));
-
 const TextField = (props: TextFieldProps): JSX.Element => {
   const { label, labelProps, helperText, helperTextProps, ...rest } = props;
   const { status, disabled } = rest;
-  const formControlProps = { error: isErrorStatus(status), disabled };
-  const { backdropLevel } = useTheme();
+  const hasErrorStatus = !disabled && isErrorStatus(status);
+  const hasSuccessStatus =
+    !disabled && isSuccessStatus(status) && !hasErrorStatus;
+  const formControlProps = { error: hasErrorStatus, disabled };
+  const { backdropLevel, colorScheme } = useTheme();
 
   // only allow use on white, light tint & cod grey backgrounds
-  const validBackgroundLevels = ["level3", "level4", "level5"];
-  assert(
-    validBackgroundLevels.includes(backdropLevel),
-    `Invalid background color: '${backdropLevel}'. Should be one of [${validBackgroundLevels
-      .map((l) => `'${l}'`)
-      .join(", ")}]`
-  );
+  const validBackdropLevels = ["level3", "level4", "level5"];
+  if (colorScheme === "light" && !validBackdropLevels.includes(backdropLevel)) {
+    console.warn(
+      `Invalid backdrop level for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackdropLevels
+        .map((l) => `'${l}'`)
+        .join(", ")}]`
+    );
+  }
 
   return (
-    <Wrapper fullWidth={true} {...formControlProps}>
+    <FormControl fullWidth={true} {...formControlProps}>
       {label ? (
-        <TextFieldLabel shrink id={labelProps?.id} htmlFor={props.id}>
+        <InputLabel
+          shrink
+          id={labelProps?.id}
+          htmlFor={props.id}
+          className={hasSuccessStatus ? "successState" : undefined}
+        >
           {label}
-        </TextFieldLabel>
+        </InputLabel>
       ) : null}
 
       <TextFieldInput
         {...rest}
-        error={isErrorStatus(status)}
+        error={hasErrorStatus}
         aria-describedby={helperTextProps?.id}
       />
 
-      <TextFieldHelperText filled={!!helperText} id={helperTextProps?.id}>
+      <FormHelperText
+        filled={!!helperText}
+        id={helperTextProps?.id}
+        className={hasSuccessStatus ? "successState" : undefined}
+      >
         {helperText}
-      </TextFieldHelperText>
-    </Wrapper>
+      </FormHelperText>
+    </FormControl>
   );
 };
 
 export default TextField;
 
-export const getComponentThemeConfiguration: GetComponentThemeConfiguration = () => {
+export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
+  theme,
+  muiTheme
+) => {
+  const mobileTheme = theme.components.textField.mobile;
+  const tabletTheme = theme.components.textField.tablet;
+  const desktopTheme = theme.components.textField.desktop;
+
   return {
+    MuiFormControl: {
+      styleOverrides: {
+        root: {
+          marginBottom: mobileTheme.default.idle.input.marginBottom,
+          [muiTheme.breakpoints.up("tablet")]: {
+            marginBottom: tabletTheme.default.idle.input.marginBottom,
+          },
+          [muiTheme.breakpoints.up("desktop")]: {
+            marginBottom: desktopTheme.default.idle.input.marginBottom,
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          ...mobileTheme.default.idle.label,
+          position: "relative",
+          transform: "none",
+          [muiTheme.breakpoints.up("tablet")]: {
+            ...tabletTheme.default.idle.label,
+            position: "relative",
+            transform: "none",
+          },
+          [muiTheme.breakpoints.up("desktop")]: {
+            ...desktopTheme.default.idle.label,
+            position: "relative",
+            transform: "none",
+          },
+          "&.Mui-error": {
+            ...mobileTheme.error.idle.label,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...tabletTheme.error.idle.label,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...desktopTheme.error.idle.label,
+            },
+          },
+          "&.successState": {
+            ...mobileTheme.success.idle.label,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...tabletTheme.success.idle.label,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...desktopTheme.success.idle.label,
+            },
+          },
+          "&.Mui-disabled": {
+            ...mobileTheme.disabled.idle.label,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...tabletTheme.disabled.idle.label,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...desktopTheme.disabled.idle.label,
+            },
+          },
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          ...mobileTheme.default.idle.helperText,
+          [muiTheme.breakpoints.up("tablet")]: {
+            ...tabletTheme.default.idle.helperText,
+          },
+          [muiTheme.breakpoints.up("desktop")]: {
+            ...desktopTheme.default.idle.helperText,
+          },
+          "&.Mui-error": {
+            ...mobileTheme.error.idle.helperText,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...tabletTheme.error.idle.helperText,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...desktopTheme.error.idle.helperText,
+            },
+          },
+          "&.successState": {
+            ...mobileTheme.success.idle.helperText,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...tabletTheme.success.idle.helperText,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...desktopTheme.success.idle.helperText,
+            },
+          },
+          "&.Mui-disabled": {
+            ...mobileTheme.disabled.idle.helperText,
+            [muiTheme.breakpoints.up("tablet")]: {
+              ...tabletTheme.disabled.idle.helperText,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              ...desktopTheme.disabled.idle.helperText,
+            },
+          },
+        },
+      },
+    },
     MuiFilledInput: {
       defaultProps: {
         hiddenLabel: true,
       },
       styleOverrides: {
         root: {
-          height: 58,
-          backgroundColor: colors.white,
-          borderRadius: 0,
-          borderTopLeftRadius: 16,
-          borderTopRightRadius: 16,
-          borderStyle: "solid",
-          borderWidth: 2,
+          ...mobileTheme.default.idle.input,
           borderBottom: 0,
-          borderColor: `${colors.midnight}10`,
-          transition: "border 120ms ease-out",
+          [muiTheme.breakpoints.up("tablet")]: {
+            ...tabletTheme.default.idle.input,
+            borderBottom: 0,
+          },
+          [muiTheme.breakpoints.up("desktop")]: {
+            ...desktopTheme.default.idle.input,
+            borderBottom: 0,
+          },
           ":hover": {
-            transition: "border 120ms ease-out",
-            backgroundColor: colors.white,
+            backgroundColor: mobileTheme.default.hover.input.backgroundColor,
+            [muiTheme.breakpoints.up("tablet")]: {
+              backgroundColor: tabletTheme.default.hover.input.backgroundColor,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              backgroundColor: desktopTheme.default.hover.input.backgroundColor,
+            },
             "&:not(.Mui-disabled)": {
               "&:before": {
-                borderBottom: `2px solid ${colors.blueRibbon}`,
+                transition: mobileTheme.default.hover.input.transition,
+                borderWidth: mobileTheme.default.hover.input.borderWidth,
+                borderBottomColor:
+                  mobileTheme.default.hover.input.borderBottomColor,
+                [muiTheme.breakpoints.up("tablet")]: {
+                  transition: tabletTheme.default.hover.input.transition,
+                  borderWidth: tabletTheme.default.hover.input.borderWidth,
+                  borderBottomColor:
+                    tabletTheme.default.hover.input.borderBottomColor,
+                },
+                [muiTheme.breakpoints.up("desktop")]: {
+                  transition: desktopTheme.default.hover.input.transition,
+                  borderWidth: desktopTheme.default.hover.input.borderWidth,
+                  borderBottomColor:
+                    desktopTheme.default.hover.input.borderBottomColor,
+                },
               },
             },
           },
           "&:before": {
-            borderBottom: "2px solid ",
-            borderColor: colors.purple,
-            transition: "border 120ms ease-out",
+            borderWidth: mobileTheme.default.idle.input.borderWidth,
+            borderColor: mobileTheme.default.idle.input.borderBottomColor,
+            transition: mobileTheme.default.idle.input.transition,
+            [muiTheme.breakpoints.up("tablet")]: {
+              borderWidth: tabletTheme.default.idle.input.borderWidth,
+              borderColor: tabletTheme.default.idle.input.borderBottomColor,
+              transition: tabletTheme.default.idle.input.transition,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              borderWidth: desktopTheme.default.idle.input.borderWidth,
+              borderColor: desktopTheme.default.idle.input.borderBottomColor,
+              transition: desktopTheme.default.idle.input.transition,
+            },
           },
           "&:after": {
-            borderBottom: "2px solid ",
-            borderColor: colors.blueRibbon,
-            transition: "border 120ms ease-out",
+            borderWidth: mobileTheme.default.hover.input.borderWidth,
+            borderColor: mobileTheme.default.hover.input.borderBottomColor,
+            transition: mobileTheme.default.hover.input.transition,
+            [muiTheme.breakpoints.up("tablet")]: {
+              borderWidth: tabletTheme.default.hover.input.borderWidth,
+              borderColor: tabletTheme.default.hover.input.borderBottomColor,
+              transition: tabletTheme.default.hover.input.transition,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              borderWidth: desktopTheme.default.hover.input.borderWidth,
+              borderColor: desktopTheme.default.hover.input.borderBottomColor,
+              transition: desktopTheme.default.hover.input.transition,
+            },
           },
           "&.Mui-focused": {
-            backgroundColor: colors.white,
-            borderColor: colors.blueRibbon,
+            backgroundColor: mobileTheme.default.focus.input.backgroundColor,
+            borderColor: mobileTheme.default.focus.input.borderColor,
+            [muiTheme.breakpoints.up("tablet")]: {
+              backgroundColor: tabletTheme.default.focus.input.backgroundColor,
+              borderColor: tabletTheme.default.focus.input.borderColor,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              backgroundColor: desktopTheme.default.focus.input.backgroundColor,
+              borderColor: desktopTheme.default.focus.input.borderColor,
+            },
           },
           "&.Mui-disabled": {
-            backgroundColor: `${colors.midnight}05`,
-            borderColor: "transparent",
+            backgroundColor: mobileTheme.disabled.idle.input.backgroundColor,
+            borderColor: mobileTheme.disabled.idle.input.borderColor,
+            [muiTheme.breakpoints.up("tablet")]: {
+              backgroundColor: tabletTheme.disabled.idle.input.backgroundColor,
+              borderColor: tabletTheme.disabled.idle.input.borderColor,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              backgroundColor: desktopTheme.disabled.idle.input.backgroundColor,
+              borderColor: desktopTheme.disabled.idle.input.borderColor,
+            },
             "&:before": {
-              borderBottomStyle: "solid",
-              borderColor: `${colors.purple}05`,
+              borderColor: mobileTheme.disabled.idle.input.borderBottomColor,
+              borderBottomStyle: mobileTheme.disabled.idle.input.borderStyle,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderColor: tabletTheme.disabled.idle.input.borderBottomColor,
+                borderBottomStyle: tabletTheme.disabled.idle.input.borderStyle,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderColor: desktopTheme.disabled.idle.input.borderBottomColor,
+                borderBottomStyle: desktopTheme.disabled.idle.input.borderStyle,
+              },
             },
             "&:after": {
-              borderColor: `${colors.purple}05`,
+              borderColor: mobileTheme.disabled.idle.input.borderBottomColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderColor: tabletTheme.disabled.idle.input.borderBottomColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderColor: desktopTheme.disabled.idle.input.borderBottomColor,
+              },
             },
           },
           "&.Mui-error": {
             "&.Mui-focused": {
-              borderColor: colors.maroonFlush,
+              borderColor: mobileTheme.error.focus.input.borderColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderColor: tabletTheme.error.focus.input.borderColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderColor: desktopTheme.error.focus.input.borderColor,
+              },
             },
             "&:not(.Mui-disabled)": {
               "&:after": {
-                borderColor: colors.maroonFlush,
+                borderColor: mobileTheme.error.idle.input.borderBottomColor,
+                [muiTheme.breakpoints.up("tablet")]: {
+                  borderColor: tabletTheme.error.idle.input.borderBottomColor,
+                },
+                [muiTheme.breakpoints.up("desktop")]: {
+                  borderColor: desktopTheme.error.idle.input.borderBottomColor,
+                },
+              },
+            },
+          },
+          "&.successState": {
+            ":before": {
+              borderBottomColor:
+                mobileTheme.success.idle.input.borderBottomColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderBottomColor:
+                  tabletTheme.success.idle.input.borderBottomColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderBottomColor:
+                  desktopTheme.success.idle.input.borderBottomColor,
+              },
+            },
+            "&:after": {
+              borderBottomColor:
+                mobileTheme.success.hover.input.borderBottomColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderBottomColor:
+                  tabletTheme.success.hover.input.borderBottomColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderBottomColor:
+                  desktopTheme.success.hover.input.borderBottomColor,
+              },
+            },
+            ":hover": {
+              "&:not(.Mui-disabled)": {
+                "&:before": {
+                  borderColor:
+                    mobileTheme.success.hover.input.borderBottomColor,
+                  [muiTheme.breakpoints.up("tablet")]: {
+                    borderColor:
+                      tabletTheme.success.hover.input.borderBottomColor,
+                  },
+                  [muiTheme.breakpoints.up("desktop")]: {
+                    borderColor:
+                      desktopTheme.success.hover.input.borderBottomColor,
+                  },
+                },
+              },
+            },
+            "&.Mui-focused": {
+              borderColor: mobileTheme.success.focus.input.borderBottomColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderColor: tabletTheme.success.focus.input.borderBottomColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderColor: desktopTheme.success.focus.input.borderBottomColor,
+              },
+            },
+            "&:not(.Mui-disabled)": {
+              borderBottomColor:
+                mobileTheme.success.idle.input.borderBottomColor,
+              [muiTheme.breakpoints.up("tablet")]: {
+                borderBottomColor:
+                  tabletTheme.success.idle.input.borderBottomColor,
+              },
+              [muiTheme.breakpoints.up("desktop")]: {
+                borderBottomColor:
+                  desktopTheme.success.idle.input.borderBottomColor,
               },
             },
           },
         },
         input: {
-          paddingTop: 0,
-          paddingRight: 16,
-          paddingBottom: 2, // vertically align the input text
-          paddingLeft: 16,
-          fontFamily: fonts.secondary,
-          fontSize: "1.125rem",
-          fontWeight: fontWeights.secondary.regular,
-          color: colors.midnight,
-          "::placeholder": {
-            font: "inherit",
-            opacity: 0.4,
-          },
+          padding: 0,
         },
       },
     },

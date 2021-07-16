@@ -16,4 +16,5 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   ...getMenuComponentThemeConfiguration(theme, muiTheme),
   ...getTextFieldComponentThemeConfiguration(theme, muiTheme),
   ...getTypographyComponentThemeConfiguration(theme, muiTheme),
+  ...getTextFieldComponentThemeConfiguration(theme, muiTheme),
 });
