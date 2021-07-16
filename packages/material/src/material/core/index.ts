@@ -418,7 +418,7 @@ export * from "@material-ui/core/Tabs";
 export { default as TabScrollButton } from "@material-ui/core/TabScrollButton";
 export * from "@material-ui/core/TabScrollButton";
 
-export { default as TextField } from "@material-ui/core/TextField";
+export { default as MuiTextField } from "@material-ui/core/TextField";
 export * from "@material-ui/core/TextField";
 
 export { default as TextareaAutosize } from "@material-ui/core/TextareaAutosize";
