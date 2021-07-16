@@ -1,7 +1,10 @@
 import React from "react";
 import FilledInput, { FilledInputProps } from "@material-ui/core/FilledInput";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
-import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
+import {
+  colors,
+  spacingBase,
+} from "@utilitywarehouse/customer-ui-design-tokens";
 import {
   FormControl,
   FormHelperText,
@@ -30,6 +33,10 @@ export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
 
 const SuccessIcon = styled(SuccessOutlined)({ fill: colors.jewel });
 const WarningIcon = styled(WarningOutlined)({ fill: colors.maroonFlush });
+const IconContainer = styled(Box)({
+  display: "flex",
+  marginLeft: 0.5 * spacingBase,
+});
 
 const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
   status,
@@ -47,19 +54,15 @@ const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
       endAdornment={
         <>
           {shouldShowTheIcon && isErrorStatus(status) ? (
-            <Box display="flex">
+            <IconContainer>
               <WarningIcon />
-            </Box>
+            </IconContainer>
           ) : isSuccessStatus(status) ? (
-            <Box display="flex">
+            <IconContainer>
               <SuccessIcon />
-            </Box>
+            </IconContainer>
           ) : null}
-          {endAdornment ? (
-            <Box display="flex" ml={0.5}>
-              {endAdornment}
-            </Box>
-          ) : null}
+          {endAdornment ? <IconContainer>{endAdornment}</IconContainer> : null}
         </>
       }
       {...props}
@@ -105,13 +108,14 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         aria-describedby={helperTextProps?.id}
       />
 
-      <FormHelperText
-        filled={!!helperText}
-        id={helperTextProps?.id}
-        className={hasSuccessStatus ? "successState" : undefined}
-      >
-        {helperText}
-      </FormHelperText>
+      {helperText ? (
+        <FormHelperText
+          id={helperTextProps?.id}
+          className={hasSuccessStatus ? "successState" : undefined}
+        >
+          {helperText}
+        </FormHelperText>
+      ) : null}
     </FormControl>
   );
 };
