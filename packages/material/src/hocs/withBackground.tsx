@@ -1,7 +1,7 @@
 import React from "react";
 import { BackgroundProvider, BackgroundProviderProps } from "..";
 
-export interface WithBackgroundProps {
+interface WithBackgroundProps {
   backgroundColor?: BackgroundProviderProps["backgroundColor"];
   forwardedRef?: React.Ref<unknown>;
 }

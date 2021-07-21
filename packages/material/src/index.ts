@@ -65,9 +65,6 @@ export type { StylesProviderProps } from "./components/StylesProvider";
 export { default as UIProvider } from "./components/UIProvider";
 export type { UIProviderProps } from "./components/UIProvider";
 
-export {
-  default as withBackground,
-  WithBackgroundProps,
-} from "./hocs/withBackground";
+export { default as withBackground } from "./hocs/withBackground";
 
 export { default as useDeviceSize } from "./hooks/useDeviceSize";
