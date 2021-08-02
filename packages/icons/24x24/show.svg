@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="16px" viewBox="0 0 20 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon / 24px / Show</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.458824 0 0 0 0 0.654902 0 0 0 0 0.992157 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Library" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Typography-Copy" transform="translate(-773.000000, -468.000000)">
+            <g id="Iconography" transform="translate(171.000000, 280.000000)">
+                <g id="Group-3" transform="translate(0.000000, 88.000000)">
+                    <g id="Group" transform="translate(600.000000, 96.000000)">
+                        <rect id="BASE" x="0" y="0" width="24" height="24"></rect>
+                        <g filter="url(#filter-1)" id="24px_icons_show" stroke-linecap="round" stroke-linejoin="round">
+                            <g transform="translate(3.000000, 5.000000)">
+                                <path d="M18,6.77 L18,6.77 C18,6.77 15.75,0 9,0 C2.25,0 0,6.77 0,6.77 L0,6.77 C0,6.77 2.25,13.5400358 9,13.5400358 C11.8680799,13.5480822 14.5682773,12.1886981 16.27,9.88" id="Path" stroke="#75A7FD" stroke-width="2"></path>
+                                <path d="M9,3.71 C7.28791728,3.71 5.9,5.09791728 5.9,6.81 C5.9,8.52208272 7.28791728,9.91 9,9.91 C10.7120827,9.91 12.1,8.52208272 12.1,6.81 C12.1,5.98782888 11.7733938,5.19933175 11.192031,4.61796898 C10.6106682,4.03660621 9.82217112,3.71 9,3.71 Z" id="Path" stroke="#75A7FD" stroke-width="2"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
