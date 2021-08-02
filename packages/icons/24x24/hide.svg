@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon / 24px / Hide</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.458824 0 0 0 0 0.654902 0 0 0 0 0.992157 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Library" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Typography-Copy" transform="translate(-813.000000, -466.000000)">
+            <g id="Iconography" transform="translate(171.000000, 280.000000)">
+                <g id="Group-3" transform="translate(0.000000, 88.000000)">
+                    <g id="Group" transform="translate(640.000000, 96.000000)">
+                        <rect id="BASE" x="0" y="0" width="24" height="24"></rect>
+                        <g filter="url(#filter-1)" id="24px_icons_hide" stroke-linecap="round" stroke-linejoin="round">
+                            <g transform="translate(3.000000, 3.000000)">
+                                <path d="M18,9.11 L18,9.11 C18,9.11 15.75,2.34 9,2.34 C2.25,2.34 0,9.11 0,9.11 L0,9.11 C0,9.11 2.25,15.8800358 9,15.8800358 C11.8680799,15.8880822 14.5682773,14.5286981 16.27,12.22" id="Path" stroke="#75A7FD" stroke-width="2"></path>
+                                <path d="M9,6.05 C7.28791728,6.05 5.9,7.43791728 5.9,9.15 C5.9,10.8620827 7.28791728,12.25 9,12.25 C10.7120827,12.25 12.1,10.8620827 12.1,9.15 C12.1,8.32782888 11.7733938,7.53933175 11.192031,6.95796898 C10.6106682,6.37660621 9.82217112,6.05 9,6.05 Z" id="Path" stroke="#75A7FD" stroke-width="2"></path>
+                                <line x1="14.45" y1="17.94" x2="3.55" y2="0" id="Path" stroke="#75A7FD" stroke-width="2"></line>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
