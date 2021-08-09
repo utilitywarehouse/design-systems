@@ -1,0 +1,14 @@
+<svg width="24" height="24" class="customer-ui__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Information</title>
+  <defs>
+    <path d="M12 9.009a1 1 0 01.993.883l.007.117v6.012a.98.98 0 00.865.973l.125.006a1 1 0 01.137 1.992l-.148.008a2.98 2.98 0 01-2.974-2.804L11 16.02l-.001-5.013h-.996a1 1 0 01-.993-.883l-.007-.116a1 1 0 01.884-.994l.116-.006H12zM12 5a1 1 0 110 2 1 1 0 010-2z" id="a"/>
+  </defs>
+  <g stroke="none" stroke-width="1" fill="inherit" fill-rule="evenodd">
+    <path fill="none" d="M0 0h24v24H0z"/>
+    <mask id="b" fill="#fff">
+      <use xlink:href="#a"/>
+    </mask>
+    <use fill="inherit" fill-rule="nonzero" xlink:href="#a"/>
+    <path fill="inherit" mask="url(#b)" d="M0 0h24v24H0z"/>
+  </g>
+</svg>
