@@ -8,7 +8,7 @@
     <mask id="b" fill="#fff">
       <use xlink:href="#a"/>
     </mask>
-    <use fill="#1E0A46" fill-rule="nonzero" xlink:href="#a"/>
-    <path fill="#1E0A46" mask="url(#b)" d="M0 0h24v24H0z"/>
+    <use fill="inherit" fill-rule="nonzero" xlink:href="#a"/>
+    <path fill="inherit" mask="url(#b)" d="M0 0h24v24H0z"/>
   </g>
 </svg>
