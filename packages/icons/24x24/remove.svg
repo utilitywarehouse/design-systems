@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icons /  24x24 / Remove</title>
-    <defs>
-        <path d="M17.9498731,10.9999994 C18.5021578,10.9997247 18.9500963,11.4472165 18.9503722,11.9995012 C18.9506276,12.512337 18.5647982,12.9352008 18.0674884,12.993214 L17.9508707,12.9999994 L6.00049878,13.0049638 C5.44821409,13.0052383 5.00027559,12.5577465 4.99999911,12.0054618 C4.99974433,11.492626 5.38557366,11.0697622 5.88288347,11.011749 L5.99950122,11.0049631 L17.9498731,10.9999994 Z" id="path-1"></path>
-    </defs>
-    <g id="Icons-/--24x24-/-Remove" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="base" fill-opacity="0" fill="#FFFFFF" x="0" y="0" width="24" height="24"></rect>
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <use id="Remove" fill="#1E0A46" fill-rule="nonzero" xlink:href="#path-1"></use>
-        <rect id="Color" fill="#1E0A46" mask="url(#mask-2)" x="0" y="0" width="24" height="24"></rect>
-    </g>
+<svg width="24" height="24" class="customer-ui__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Remove</title>
+  <defs>
+    <path d="M17.95 11a1 1 0 01.117 1.993l-.116.007L6 13.005a1 1 0 01-.118-1.993L6 11.005 17.95 11z" id="a"/>
+  </defs>
+  <g stroke="none" stroke-width="1" fill="inherit" fill-rule="evenodd">
+    <path fill="none" d="M0 0h24v24H0z"/>
+    <mask id="b" fill="#fff">
+      <use xlink:href="#a"/>
+    </mask>
+    <use fill="#1E0A46" fill-rule="nonzero" xlink:href="#a"/>
+    <path fill="#1E0A46" mask="url(#b)" d="M0 0h24v24H0z"/>
+  </g>
 </svg>
