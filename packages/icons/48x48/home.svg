@@ -1,0 +1,13 @@
+<svg width="48" height="48" class="customer-ui__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Home</title>
+  <defs>
+    <path d="M22.068 5.706a3 3 0 013.709-.123l.155.122L32 10.815v-1.43a2 2 0 011.85-1.994l.15-.006h4a2 2 0 011.995 1.851l.005.15v8.166l3.288 2.768c.406.342.658.83.704 1.354l.008.176v18.174a2 2 0 01-1.85 1.994l-.15.006H30a2 2 0 01-1.995-1.851l-.005-.15V26.983h-8v13.042a2 2 0 01-1.85 1.994l-.15.006H5a1 1 0 01-.117-1.994L5 40.024h13V26.982a2 2 0 011.85-1.995l.15-.005h8a2 2 0 011.995 1.85l.005.15v13.042h12V21.85l-3.644-3.068a1 1 0 01-.348-.64L38 18.018V9.385h-4v3.58a1 1 0 01-1.553.833l-.091-.069-7.712-6.494a1 1 0 00-1.182-.078l-.106.078L6 21.85v15.162a1 1 0 01-1.993.117L4 37.012V21.85a2 2 0 01.582-1.41l.13-.12L22.068 5.706z" id="a"/>
+  </defs>
+  <g stroke="none" stroke-width="1" fill="inherit" fill-rule="evenodd">
+    <path fill="none" d="M0 0h48v48H0z"/>
+    <mask id="b" fill="#fff">
+      <use xlink:href="#a"/>
+    </mask>
+    <path fill="inherit" mask="url(#b)" d="M0 0h48v48H0z"/>
+  </g>
+</svg>
