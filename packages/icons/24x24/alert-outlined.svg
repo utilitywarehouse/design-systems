@@ -1,0 +1,5 @@
+<svg width="24px" height="24px" viewBox="0 0 24 24" class="customer-ui__icon" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+  <path fill="none" d="M0 0h24v24H0z"/>
+  <path d="M7.293 7.293c.355-.355.924-.39 1.32-.083l.094.083L12 10.585l3.293-3.292a.998.998 0 011.706.708c0 .222-.074.437-.209.612l-.083.094L13.415 12l3.292 3.293.083.094a1 1 0 01-1.403 1.403l-.094-.083L12 13.415l-3.293 3.292a.998.998 0 01-1.706-.708c0-.222.074-.437.209-.612l.083-.094L10.585 12 7.293 8.707l-.083-.094a1.003 1.003 0 01.083-1.32z" fill="inherit" fill-rule="nonzero"/>
+  <path d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0zm0 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" fill-rule="nonzero"/>
+</svg>
