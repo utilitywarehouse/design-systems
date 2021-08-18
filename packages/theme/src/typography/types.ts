@@ -12,15 +12,19 @@ export interface TypographyStylesColor {
 }
 
 export type TypographyVariant =
-  | "displayHeading"
   | "h1"
   | "h2"
   | "h3"
   | "h4"
-  | "subtitle"
+  | "h5"
   | "body"
-  | "legalNote"
-  | "caption";
+  | "bodySmall"
+  | "label"
+  | "headline"
+  | "subheading"
+  | "footnote"
+  | "caption"
+  | "interactive";
 
 export type TypographyState = "default" | "success" | "error";
 

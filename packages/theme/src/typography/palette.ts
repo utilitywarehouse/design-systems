@@ -3,17 +3,6 @@ import { TypographyPalette } from "./types";
 import { ColorScheme, BackdropLevel } from "../types";
 
 const lightModeLevel0: TypographyPalette = {
-  displayHeading: {
-    default: {
-      color: colors.white,
-    },
-    success: {
-      color: colors.apple,
-    },
-    error: {
-      color: colors.rose,
-    },
-  },
   h1: {
     default: {
       color: colors.white,
@@ -58,7 +47,7 @@ const lightModeLevel0: TypographyPalette = {
       color: colors.rose,
     },
   },
-  subtitle: {
+  h5: {
     default: {
       color: colors.white,
     },
@@ -80,7 +69,51 @@ const lightModeLevel0: TypographyPalette = {
       color: colors.rose,
     },
   },
-  legalNote: {
+  bodySmall: {
+    default: {
+      color: colors.white,
+    },
+    success: {
+      color: colors.apple,
+    },
+    error: {
+      color: colors.rose,
+    },
+  },
+  label: {
+    default: {
+      color: colors.white,
+    },
+    success: {
+      color: colors.apple,
+    },
+    error: {
+      color: colors.rose,
+    },
+  },
+  headline: {
+    default: {
+      color: colors.white,
+    },
+    success: {
+      color: colors.apple,
+    },
+    error: {
+      color: colors.rose,
+    },
+  },
+  subheading: {
+    default: {
+      color: colors.white,
+    },
+    success: {
+      color: colors.apple,
+    },
+    error: {
+      color: colors.rose,
+    },
+  },
+  footnote: {
     default: {
       color: colors.white,
     },
@@ -92,6 +125,17 @@ const lightModeLevel0: TypographyPalette = {
     },
   },
   caption: {
+    default: {
+      color: colors.white,
+    },
+    success: {
+      color: colors.apple,
+    },
+    error: {
+      color: colors.rose,
+    },
+  },
+  interactive: {
     default: {
       color: colors.white,
     },
@@ -107,17 +151,6 @@ const lightModeLevel0: TypographyPalette = {
 const lightModeLevel1 = lightModeLevel0;
 
 const lightModeLevel2: TypographyPalette = {
-  displayHeading: {
-    default: {
-      color: colors.purple,
-    },
-    success: {
-      color: colors.jewel,
-    },
-    error: {
-      color: colors.maroonFlush,
-    },
-  },
   h1: {
     default: {
       color: colors.purple,
@@ -162,9 +195,9 @@ const lightModeLevel2: TypographyPalette = {
       color: colors.maroonFlush,
     },
   },
-  subtitle: {
+  h5: {
     default: {
-      color: colors.midnight,
+      color: colors.purple,
     },
     success: {
       color: colors.jewel,
@@ -184,7 +217,51 @@ const lightModeLevel2: TypographyPalette = {
       color: colors.maroonFlush,
     },
   },
-  legalNote: {
+  bodySmall: {
+    default: {
+      color: colors.midnight,
+    },
+    success: {
+      color: colors.jewel,
+    },
+    error: {
+      color: colors.maroonFlush,
+    },
+  },
+  label: {
+    default: {
+      color: colors.midnight,
+    },
+    success: {
+      color: colors.jewel,
+    },
+    error: {
+      color: colors.maroonFlush,
+    },
+  },
+  headline: {
+    default: {
+      color: colors.midnight,
+    },
+    success: {
+      color: colors.jewel,
+    },
+    error: {
+      color: colors.maroonFlush,
+    },
+  },
+  subheading: {
+    default: {
+      color: colors.midnight,
+    },
+    success: {
+      color: colors.jewel,
+    },
+    error: {
+      color: colors.maroonFlush,
+    },
+  },
+  footnote: {
     default: {
       color: colors.midnight,
     },
@@ -196,6 +273,17 @@ const lightModeLevel2: TypographyPalette = {
     },
   },
   caption: {
+    default: {
+      color: colors.midnight,
+    },
+    success: {
+      color: colors.jewel,
+    },
+    error: {
+      color: colors.maroonFlush,
+    },
+  },
+  interactive: {
     default: {
       color: colors.midnight,
     },
