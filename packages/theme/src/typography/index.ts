@@ -24,6 +24,20 @@ export const getTypographyStyles = (
   const typographyPalette = getTypographyPalette(colorScheme, backdrop);
   return {
     desktop: {
+      displayHeading: {
+        default: {
+          ...commonTypographyStyles.desktop.displayHeading,
+          ...typographyPalette.displayHeading.default,
+        },
+        success: {
+          ...commonTypographyStyles.desktop.displayHeading,
+          ...typographyPalette.displayHeading.success,
+        },
+        error: {
+          ...commonTypographyStyles.desktop.displayHeading,
+          ...typographyPalette.displayHeading.error,
+        },
+      },
       h1: {
         default: {
           ...commonTypographyStyles.desktop.h1,
@@ -80,18 +94,18 @@ export const getTypographyStyles = (
           ...typographyPalette.h4.error,
         },
       },
-      h5: {
+      subtitle: {
         default: {
-          ...commonTypographyStyles.desktop.h5,
-          ...typographyPalette.h5.default,
+          ...commonTypographyStyles.desktop.subtitle,
+          ...typographyPalette.subtitle.default,
         },
         success: {
-          ...commonTypographyStyles.desktop.h5,
-          ...typographyPalette.h5.success,
+          ...commonTypographyStyles.desktop.subtitle,
+          ...typographyPalette.subtitle.success,
         },
         error: {
-          ...commonTypographyStyles.desktop.h5,
-          ...typographyPalette.h5.error,
+          ...commonTypographyStyles.desktop.subtitle,
+          ...typographyPalette.subtitle.error,
         },
       },
       body: {
@@ -108,60 +122,18 @@ export const getTypographyStyles = (
           ...typographyPalette.body.error,
         },
       },
-      bodySmall: {
+      legalNote: {
         default: {
-          ...commonTypographyStyles.desktop.bodySmall,
-          ...typographyPalette.bodySmall.default,
+          ...commonTypographyStyles.desktop.legalNote,
+          ...typographyPalette.legalNote.default,
         },
         success: {
-          ...commonTypographyStyles.desktop.bodySmall,
-          ...typographyPalette.bodySmall.success,
+          ...commonTypographyStyles.desktop.legalNote,
+          ...typographyPalette.legalNote.success,
         },
         error: {
-          ...commonTypographyStyles.desktop.bodySmall,
-          ...typographyPalette.bodySmall.error,
-        },
-      },
-      label: {
-        default: {
-          ...commonTypographyStyles.desktop.label,
-          ...typographyPalette.label.default,
-        },
-        success: {
-          ...commonTypographyStyles.desktop.label,
-          ...typographyPalette.label.success,
-        },
-        error: {
-          ...commonTypographyStyles.desktop.label,
-          ...typographyPalette.label.error,
-        },
-      },
-      headline: {
-        default: {
-          ...commonTypographyStyles.desktop.headline,
-          ...typographyPalette.headline.default,
-        },
-        success: {
-          ...commonTypographyStyles.desktop.headline,
-          ...typographyPalette.headline.success,
-        },
-        error: {
-          ...commonTypographyStyles.desktop.headline,
-          ...typographyPalette.headline.error,
-        },
-      },
-      subheading: {
-        default: {
-          ...commonTypographyStyles.desktop.subheading,
-          ...typographyPalette.subheading.default,
-        },
-        success: {
-          ...commonTypographyStyles.desktop.subheading,
-          ...typographyPalette.subheading.success,
-        },
-        error: {
-          ...commonTypographyStyles.desktop.subheading,
-          ...typographyPalette.subheading.error,
+          ...commonTypographyStyles.desktop.legalNote,
+          ...typographyPalette.legalNote.error,
         },
       },
       caption: {
@@ -176,38 +148,24 @@ export const getTypographyStyles = (
         error: {
           ...commonTypographyStyles.desktop.caption,
           ...typographyPalette.caption.error,
-        },
-      },
-      footnote: {
-        default: {
-          ...commonTypographyStyles.desktop.footnote,
-          ...typographyPalette.footnote.default,
-        },
-        success: {
-          ...commonTypographyStyles.desktop.footnote,
-          ...typographyPalette.footnote.success,
-        },
-        error: {
-          ...commonTypographyStyles.desktop.footnote,
-          ...typographyPalette.footnote.error,
-        },
-      },
-      interactive: {
-        default: {
-          ...commonTypographyStyles.desktop.interactive,
-          ...typographyPalette.interactive.default,
-        },
-        success: {
-          ...commonTypographyStyles.desktop.interactive,
-          ...typographyPalette.interactive.success,
-        },
-        error: {
-          ...commonTypographyStyles.desktop.interactive,
-          ...typographyPalette.interactive.error,
         },
       },
     },
     tablet: {
+      displayHeading: {
+        default: {
+          ...commonTypographyStyles.tablet.displayHeading,
+          ...typographyPalette.displayHeading.default,
+        },
+        success: {
+          ...commonTypographyStyles.tablet.displayHeading,
+          ...typographyPalette.displayHeading.success,
+        },
+        error: {
+          ...commonTypographyStyles.tablet.displayHeading,
+          ...typographyPalette.displayHeading.error,
+        },
+      },
       h1: {
         default: {
           ...commonTypographyStyles.tablet.h1,
@@ -264,18 +222,18 @@ export const getTypographyStyles = (
           ...typographyPalette.h4.error,
         },
       },
-      h5: {
+      subtitle: {
         default: {
-          ...commonTypographyStyles.tablet.h5,
-          ...typographyPalette.h5.default,
+          ...commonTypographyStyles.tablet.subtitle,
+          ...typographyPalette.subtitle.default,
         },
         success: {
-          ...commonTypographyStyles.tablet.h5,
-          ...typographyPalette.h5.success,
+          ...commonTypographyStyles.tablet.subtitle,
+          ...typographyPalette.subtitle.success,
         },
         error: {
-          ...commonTypographyStyles.tablet.h5,
-          ...typographyPalette.h5.error,
+          ...commonTypographyStyles.tablet.subtitle,
+          ...typographyPalette.subtitle.error,
         },
       },
       body: {
@@ -292,60 +250,18 @@ export const getTypographyStyles = (
           ...typographyPalette.body.error,
         },
       },
-      bodySmall: {
+      legalNote: {
         default: {
-          ...commonTypographyStyles.tablet.bodySmall,
-          ...typographyPalette.bodySmall.default,
+          ...commonTypographyStyles.tablet.legalNote,
+          ...typographyPalette.legalNote.default,
         },
         success: {
-          ...commonTypographyStyles.tablet.bodySmall,
-          ...typographyPalette.bodySmall.success,
+          ...commonTypographyStyles.tablet.legalNote,
+          ...typographyPalette.legalNote.success,
         },
         error: {
-          ...commonTypographyStyles.tablet.bodySmall,
-          ...typographyPalette.bodySmall.error,
-        },
-      },
-      label: {
-        default: {
-          ...commonTypographyStyles.tablet.label,
-          ...typographyPalette.label.default,
-        },
-        success: {
-          ...commonTypographyStyles.tablet.label,
-          ...typographyPalette.label.success,
-        },
-        error: {
-          ...commonTypographyStyles.tablet.label,
-          ...typographyPalette.label.error,
-        },
-      },
-      headline: {
-        default: {
-          ...commonTypographyStyles.tablet.headline,
-          ...typographyPalette.headline.default,
-        },
-        success: {
-          ...commonTypographyStyles.tablet.headline,
-          ...typographyPalette.headline.success,
-        },
-        error: {
-          ...commonTypographyStyles.tablet.headline,
-          ...typographyPalette.headline.error,
-        },
-      },
-      subheading: {
-        default: {
-          ...commonTypographyStyles.tablet.subheading,
-          ...typographyPalette.subheading.default,
-        },
-        success: {
-          ...commonTypographyStyles.tablet.subheading,
-          ...typographyPalette.subheading.success,
-        },
-        error: {
-          ...commonTypographyStyles.tablet.subheading,
-          ...typographyPalette.subheading.error,
+          ...commonTypographyStyles.tablet.legalNote,
+          ...typographyPalette.legalNote.error,
         },
       },
       caption: {
@@ -360,38 +276,24 @@ export const getTypographyStyles = (
         error: {
           ...commonTypographyStyles.tablet.caption,
           ...typographyPalette.caption.error,
-        },
-      },
-      footnote: {
-        default: {
-          ...commonTypographyStyles.tablet.footnote,
-          ...typographyPalette.footnote.default,
-        },
-        success: {
-          ...commonTypographyStyles.tablet.footnote,
-          ...typographyPalette.footnote.success,
-        },
-        error: {
-          ...commonTypographyStyles.tablet.footnote,
-          ...typographyPalette.footnote.error,
-        },
-      },
-      interactive: {
-        default: {
-          ...commonTypographyStyles.tablet.interactive,
-          ...typographyPalette.interactive.default,
-        },
-        success: {
-          ...commonTypographyStyles.tablet.interactive,
-          ...typographyPalette.interactive.success,
-        },
-        error: {
-          ...commonTypographyStyles.tablet.interactive,
-          ...typographyPalette.interactive.error,
         },
       },
     },
     mobile: {
+      displayHeading: {
+        default: {
+          ...commonTypographyStyles.mobile.displayHeading,
+          ...typographyPalette.displayHeading.default,
+        },
+        success: {
+          ...commonTypographyStyles.mobile.displayHeading,
+          ...typographyPalette.displayHeading.success,
+        },
+        error: {
+          ...commonTypographyStyles.mobile.displayHeading,
+          ...typographyPalette.displayHeading.error,
+        },
+      },
       h1: {
         default: {
           ...commonTypographyStyles.mobile.h1,
@@ -448,18 +350,18 @@ export const getTypographyStyles = (
           ...typographyPalette.h4.error,
         },
       },
-      h5: {
+      subtitle: {
         default: {
-          ...commonTypographyStyles.mobile.h5,
-          ...typographyPalette.h5.default,
+          ...commonTypographyStyles.mobile.subtitle,
+          ...typographyPalette.subtitle.default,
         },
         success: {
-          ...commonTypographyStyles.mobile.h5,
-          ...typographyPalette.h5.success,
+          ...commonTypographyStyles.mobile.subtitle,
+          ...typographyPalette.subtitle.success,
         },
         error: {
-          ...commonTypographyStyles.mobile.h5,
-          ...typographyPalette.h5.error,
+          ...commonTypographyStyles.mobile.subtitle,
+          ...typographyPalette.subtitle.error,
         },
       },
       body: {
@@ -476,60 +378,18 @@ export const getTypographyStyles = (
           ...typographyPalette.body.error,
         },
       },
-      bodySmall: {
+      legalNote: {
         default: {
-          ...commonTypographyStyles.mobile.bodySmall,
-          ...typographyPalette.bodySmall.default,
+          ...commonTypographyStyles.mobile.legalNote,
+          ...typographyPalette.legalNote.default,
         },
         success: {
-          ...commonTypographyStyles.mobile.bodySmall,
-          ...typographyPalette.bodySmall.success,
+          ...commonTypographyStyles.mobile.legalNote,
+          ...typographyPalette.legalNote.success,
         },
         error: {
-          ...commonTypographyStyles.mobile.bodySmall,
-          ...typographyPalette.bodySmall.error,
-        },
-      },
-      label: {
-        default: {
-          ...commonTypographyStyles.mobile.label,
-          ...typographyPalette.label.default,
-        },
-        success: {
-          ...commonTypographyStyles.mobile.label,
-          ...typographyPalette.label.success,
-        },
-        error: {
-          ...commonTypographyStyles.mobile.label,
-          ...typographyPalette.label.error,
-        },
-      },
-      headline: {
-        default: {
-          ...commonTypographyStyles.mobile.headline,
-          ...typographyPalette.headline.default,
-        },
-        success: {
-          ...commonTypographyStyles.mobile.headline,
-          ...typographyPalette.headline.success,
-        },
-        error: {
-          ...commonTypographyStyles.mobile.headline,
-          ...typographyPalette.headline.error,
-        },
-      },
-      subheading: {
-        default: {
-          ...commonTypographyStyles.mobile.subheading,
-          ...typographyPalette.subheading.default,
-        },
-        success: {
-          ...commonTypographyStyles.mobile.subheading,
-          ...typographyPalette.subheading.success,
-        },
-        error: {
-          ...commonTypographyStyles.mobile.subheading,
-          ...typographyPalette.subheading.error,
+          ...commonTypographyStyles.mobile.legalNote,
+          ...typographyPalette.legalNote.error,
         },
       },
       caption: {
@@ -544,34 +404,6 @@ export const getTypographyStyles = (
         error: {
           ...commonTypographyStyles.mobile.caption,
           ...typographyPalette.caption.error,
-        },
-      },
-      footnote: {
-        default: {
-          ...commonTypographyStyles.mobile.footnote,
-          ...typographyPalette.footnote.default,
-        },
-        success: {
-          ...commonTypographyStyles.mobile.footnote,
-          ...typographyPalette.footnote.success,
-        },
-        error: {
-          ...commonTypographyStyles.mobile.footnote,
-          ...typographyPalette.footnote.error,
-        },
-      },
-      interactive: {
-        default: {
-          ...commonTypographyStyles.mobile.interactive,
-          ...typographyPalette.interactive.default,
-        },
-        success: {
-          ...commonTypographyStyles.mobile.interactive,
-          ...typographyPalette.interactive.success,
-        },
-        error: {
-          ...commonTypographyStyles.mobile.interactive,
-          ...typographyPalette.interactive.error,
         },
       },
     },
