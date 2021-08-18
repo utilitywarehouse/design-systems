@@ -1,72 +1,51 @@
-import { fontWeights } from "@utilitywarehouse/customer-ui-design-tokens";
 import { CommonTypographyStyles } from "./types";
-import {
-  commonHeadingStyles,
-  commonBodyStyles,
-  commonHeadlineStyles,
-  commonSubheadingStyles,
-  commonFootnoteStyles,
-  commonCaptionStyles,
-  commonInteractiveStyles,
-} from "./common";
+import { commonHeadingStyles, commonBodyStyles } from "./common";
 
 const tablet: CommonTypographyStyles = {
+  displayHeading: {
+    ...commonHeadingStyles,
+    fontSize: 42,
+    lineHeight: 1,
+  },
   h1: {
     ...commonHeadingStyles,
-    fontSize: 52,
-    lineHeight: 1.115,
+    fontSize: 32,
+    lineHeight: 1.2,
   },
   h2: {
     ...commonHeadingStyles,
-    fontSize: 32,
-    lineHeight: 1.125,
+    fontSize: 28,
+    lineHeight: 1.5,
   },
   h3: {
     ...commonHeadingStyles,
-    fontSize: 24,
-    lineHeight: 1.125,
+    fontSize: 22,
+    lineHeight: 1.5,
   },
   h4: {
     ...commonHeadingStyles,
-    fontSize: 16,
-    lineHeight: 1.125,
+    fontSize: 18,
+    lineHeight: 1.5,
   },
-  h5: {
-    ...commonHeadingStyles,
-    fontSize: 12,
-    lineHeight: 1.167,
+  subtitle: {
+    ...commonBodyStyles,
+    fontSize: 18,
+    lineHeight: 1.5,
   },
   body: {
     ...commonBodyStyles,
-    fontSize: 18,
-    lineHeight: 1.611,
+    fontSize: 16,
+    lineHeight: 1.5,
   },
-  bodySmall: {
+  legalNote: {
     ...commonBodyStyles,
-    fontSize: 15,
-    lineHeight: 1.733,
-  },
-  label: {
-    ...commonBodyStyles,
-    fontWeight: fontWeights.secondary.semibold,
-    fontSize: 12,
-    lineHeight: 1.667,
-  },
-  headline: {
-    ...commonHeadlineStyles,
-  },
-  subheading: {
-    ...commonSubheadingStyles,
-  },
-  footnote: {
-    ...commonFootnoteStyles,
+    fontSize: 14,
+    lineHeight: 1.5,
   },
   caption: {
-    ...commonCaptionStyles,
-  },
-  interactive: {
-    ...commonInteractiveStyles,
-    fontSize: 16,
+    ...commonBodyStyles,
+    fontSize: 12,
+    lineHeight: 2,
   },
 };
 

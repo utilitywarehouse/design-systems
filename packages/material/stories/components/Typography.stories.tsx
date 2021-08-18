@@ -85,6 +85,9 @@ const bindTemplate = (
   return Template;
 };
 
+export const DisplayHeading = bindTemplate({ variant: "displayHeading" });
+DisplayHeading.storyName = "display heading";
+
 export const H1 = bindTemplate({ variant: "h1" });
 H1.storyName = "h1";
 
@@ -97,29 +100,14 @@ H3.storyName = "h3";
 export const H4 = bindTemplate({ variant: "h4" });
 H4.storyName = "h4";
 
-export const H5 = bindTemplate({ variant: "h5" });
-H5.storyName = "h5";
-
-export const Headline = bindTemplate({ variant: "headline" });
-Headline.storyName = "headline";
-
-export const Subheading = bindTemplate({ variant: "subheading" });
-Subheading.storyName = "subheading";
+export const Subtitle = bindTemplate({ variant: "subtitle" });
+Subtitle.storyName = "subtitle";
 
 export const Body = bindTemplate({ variant: "default" });
 Body.storyName = "body";
 
-export const SmallBody = bindTemplate({ variant: "small" });
-SmallBody.storyName = "small body";
-
-export const Label = bindTemplate({ variant: "label" });
-Label.storyName = "label";
+export const LegalNote = bindTemplate({ variant: "legalNote" });
+LegalNote.storyName = "legalNote";
 
 export const Caption = bindTemplate({ variant: "caption" });
 Caption.storyName = "caption";
-
-export const Footnote = bindTemplate({ variant: "footnote" });
-Footnote.storyName = "footnote";
-
-export const Interactive = bindTemplate({ variant: "interactive" });
-Interactive.storyName = "interactive";
