@@ -14,25 +14,21 @@ import { GetComponentThemeConfiguration } from "../lib/theme.types";
 declare module "@material-ui/core/styles" {
   interface TypographyVariants {
     default: React.CSSProperties;
-    small: React.CSSProperties;
-    label: React.CSSProperties;
-    headline: React.CSSProperties;
-    subheading: React.CSSProperties;
-    footnote: React.CSSProperties;
-    interactive: React.CSSProperties;
-    inherit: React.CSSProperties;
+    displayHeading: React.CSSProperties;
+    subtitle: React.CSSProperties;
+    body: React.CSSProperties;
+    legalNote: React.CSSProperties;
+    caption: React.CSSProperties;
   }
 
   // allow configuration using material-ui's `createTheme`
   interface TypographyVariantsOptions {
     default?: React.CSSProperties;
-    small?: React.CSSProperties;
-    label?: React.CSSProperties;
-    headline?: React.CSSProperties;
-    subheading?: React.CSSProperties;
-    footnote?: React.CSSProperties;
-    interactive?: React.CSSProperties;
-    inherit?: React.CSSProperties;
+    displayHeading?: React.CSSProperties;
+    subtitle?: React.CSSProperties;
+    body?: React.CSSProperties;
+    legalNote?: React.CSSProperties;
+    caption?: React.CSSProperties;
   }
 }
 
@@ -40,13 +36,11 @@ declare module "@material-ui/core/styles" {
 declare module "@material-ui/core/Typography" {
   interface TypographyPropsVariantOverrides {
     default: true;
-    small: true;
-    label: true;
-    headline: true;
-    subheading: true;
-    footnote: true;
-    interactive: true;
-    inherit: true;
+    displayHeading: true;
+    subtitle: true;
+    body: true;
+    legalNote: true;
+    caption: true;
     h6: false;
     body1: false;
     body2: false;
@@ -101,20 +95,16 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
       gutterBottom={gutterBottom}
       paragraph={paragraph}
       variantMapping={{
+        displayHeading: "h1",
         h1: "h1",
         h2: "h2",
         h3: "h3",
         h4: "h4",
         h5: "h5",
-        default: "p",
-        small: "p",
-        inherit: "p",
-        label: "label",
-        headline: "p",
-        subheading: "p",
+        subtitle: "p",
+        body: "p",
+        legalNote: "p",
         caption: "caption",
-        footnote: "p",
-        interactive: "span",
       }}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={(forwardedRef as unknown) as any}
@@ -170,6 +160,15 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             lineHeight: "inherit",
             color: "inherit",
           },
+          "&.MuiTypography-displayHeading": {
+            ...resolveStyles("displayHeading", "default"),
+            "&.MuiTypography-stateError": {
+              ...resolveStyles("displayHeading", "error"),
+            },
+            "&.MuiTypography-stateSuccess": {
+              ...resolveStyles("displayHeading", "success"),
+            },
+          },
           "&.MuiTypography-h1": {
             ...resolveStyles("h1", "default"),
             "&.MuiTypography-stateError": {
@@ -206,49 +205,31 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
               ...resolveStyles("h4", "success"),
             },
           },
-          "&.MuiTypography-h5": {
-            ...resolveStyles("h5", "default"),
+          "&.MuiTypography-subtitle": {
+            ...resolveStyles("subtitle", "default"),
             "&.MuiTypography-stateError": {
-              ...resolveStyles("h5", "error"),
+              ...resolveStyles("subtitle", "error"),
             },
             "&.MuiTypography-stateSuccess": {
-              ...resolveStyles("h5", "success"),
+              ...resolveStyles("subtitle", "success"),
             },
           },
-          "&.MuiTypography-small": {
-            ...resolveStyles("bodySmall", "default"),
+          "&.MuiTypography-body": {
+            ...resolveStyles("body", "default"),
             "&.MuiTypography-stateError": {
-              ...resolveStyles("bodySmall", "error"),
+              ...resolveStyles("body", "error"),
             },
             "&.MuiTypography-stateSuccess": {
-              ...resolveStyles("bodySmall", "success"),
+              ...resolveStyles("body", "success"),
             },
           },
-          "&.MuiTypography-label": {
-            ...resolveStyles("label", "default"),
+          "&.MuiTypography-legalNote": {
+            ...resolveStyles("legalNote", "default"),
             "&.MuiTypography-stateError": {
-              ...resolveStyles("label", "error"),
+              ...resolveStyles("legalNote", "error"),
             },
             "&.MuiTypography-stateSuccess": {
-              ...resolveStyles("label", "success"),
-            },
-          },
-          "&.MuiTypography-headline": {
-            ...resolveStyles("headline", "default"),
-            "&.MuiTypography-stateError": {
-              ...resolveStyles("headline", "error"),
-            },
-            "&.MuiTypography-stateSuccess": {
-              ...resolveStyles("headline", "success"),
-            },
-          },
-          "&.MuiTypography-subheading": {
-            ...resolveStyles("subheading", "default"),
-            "&.MuiTypography-stateError": {
-              ...resolveStyles("subheading", "error"),
-            },
-            "&.MuiTypography-stateSuccess": {
-              ...resolveStyles("subheading", "success"),
+              ...resolveStyles("legalNote", "success"),
             },
           },
           "&.MuiTypography-caption": {
@@ -258,24 +239,6 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             },
             "&.MuiTypography-stateSuccess": {
               ...resolveStyles("caption", "success"),
-            },
-          },
-          "&.MuiTypography-footnote": {
-            ...resolveStyles("footnote", "default"),
-            "&.MuiTypography-stateError": {
-              ...resolveStyles("footnote", "error"),
-            },
-            "&.MuiTypography-stateSuccess": {
-              ...resolveStyles("footnote", "success"),
-            },
-          },
-          "&.MuiTypography-interactive": {
-            ...resolveStyles("interactive", "default"),
-            "&.MuiTypography-stateError": {
-              ...resolveStyles("interactive", "error"),
-            },
-            "&.MuiTypography-stateSuccess": {
-              ...resolveStyles("interactive", "success"),
             },
           },
         },

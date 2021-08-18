@@ -214,9 +214,7 @@ const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = 
             </Box>
           )}
           <Box className={classes.container} zIndex={1} position="relative">
-            <Typography variant="interactive" component="div">
-              {children}
-            </Typography>
+            <Typography component="div">{children}</Typography>
           </Box>
         </Box>
       </ButtonBase>
