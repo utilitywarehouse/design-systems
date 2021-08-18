@@ -13,38 +13,3 @@ export const commonBodyStyles: TypographyStylesNonColor = {
   fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.regular,
 } as TypographyStylesNonColor;
-
-export const commonHeadlineStyles: TypographyStylesNonColor = {
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.semibold,
-  fontSize: 16,
-  lineHeight: 1.5,
-} as TypographyStylesNonColor;
-
-export const commonSubheadingStyles: TypographyStylesNonColor = {
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.regular,
-  fontSize: 15,
-  lineHeight: 1.467,
-} as TypographyStylesNonColor;
-
-export const commonFootnoteStyles: TypographyStylesNonColor = {
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.regular,
-  fontSize: 13,
-  lineHeight: 1.538,
-} as TypographyStylesNonColor;
-
-export const commonCaptionStyles: TypographyStylesNonColor = {
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.regular,
-  fontSize: 12,
-  lineHeight: 1.5,
-} as TypographyStylesNonColor;
-
-export const commonInteractiveStyles: TypographyStylesNonColor = {
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.semibold,
-  fontSize: 18,
-  lineHeight: 1.333,
-} as TypographyStylesNonColor;
