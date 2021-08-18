@@ -4153,20 +4153,20 @@
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-fonts/-/customer-ui-fonts-1.0.0-alpha.4.tgz#6deac8cfddb8e18b074e7fc4085cd911077ee63e"
   integrity sha512-x/Wli3RX4F28QUhdD6ANIQjxIkg7mCmB2OsPJj34WfXd59G0oQDWToKheDJ9nPWt5yUEoFMgSR8ISeygDJj8ig==
 
-"@utilitywarehouse/customer-ui-icons@1.0.0-alpha.23":
-  version "1.0.0-alpha.23"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-icons/-/customer-ui-icons-1.0.0-alpha.23.tgz#a205a8d08821ea6b88b5872ef8ccab3fe9d5e3ec"
-  integrity sha512-5OnE9VYML+2bXwWYeQ6ZxLhHlq6s4uSvRd+0PyeZmKcGzGjWarCG/9kug/9Tf3ebrQBJ0f9kCnT1+6P/ig9Wyg==
+"@utilitywarehouse/customer-ui-icons@1.0.0-alpha.28":
+  version "1.0.0-alpha.28"
+  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-icons/-/customer-ui-icons-1.0.0-alpha.28.tgz#ee873a9ce63503bf53ba71d2a14d704496d9d7d1"
+  integrity sha512-L6/pc3NHB6ipzWHfBujLiWdJcDdWFFZq8kGznNlqdLCD1R0wqGsn9XC7dNxZyUr3j9xW7OTy3aDCWcUiyHpV2Q==
 
 "@utilitywarehouse/customer-ui-react-icons@^1.0.0-alpha.13":
   version "1.0.0-alpha.20"
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-react-icons/-/customer-ui-react-icons-1.0.0-alpha.20.tgz#e6d6c34b8681a6ff59c1b7d93573a2ad7a73658f"
   integrity sha512-ZBIwkHADUwjWctGGYFqO5ayXVi/8dUOqCrmw/F43bbUejmcYBOilVNpInRavO8fN7DXbWJQCRfBsZHhGdzPrZw==
 
-"@utilitywarehouse/customer-ui-theme@1.0.0-alpha.16":
-  version "1.0.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-theme/-/customer-ui-theme-1.0.0-alpha.16.tgz#0462c456929be803be6d1e9e45e17cd0030d1fe2"
-  integrity sha512-Gu0NXFt7bSoKQVNCu4bZsce7O1BJ82EWV6ObS6PkTbyEaEMhBkcAo0J6ZTBkqKy8NWCnCZWJQqgXDF4PgIddtA==
+"@utilitywarehouse/customer-ui-theme@1.0.0-alpha.17":
+  version "1.0.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-theme/-/customer-ui-theme-1.0.0-alpha.17.tgz#5dfa31351573afe3171d118671fd94d37b3c222f"
+  integrity sha512-WAPrn/XzDq6I6mr3B3f9pDj1GcpSVb24nsbWyTuGPKKO8XjVp7FCD8dEtcrAqxFBcCWtzG+PpWdTe1LiV5TQmA==
   dependencies:
     "@ctrl/tinycolor" "^3.4.0"
     "@utilitywarehouse/customer-ui-design-tokens" "1.0.0-alpha.9"
