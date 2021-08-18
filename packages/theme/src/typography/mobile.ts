@@ -1,72 +1,51 @@
-import { fontWeights } from "@utilitywarehouse/customer-ui-design-tokens";
 import { CommonTypographyStyles } from "./types";
-import {
-  commonHeadingStyles,
-  commonBodyStyles,
-  commonSubheadingStyles,
-  commonCaptionStyles,
-  commonFootnoteStyles,
-  commonHeadlineStyles,
-  commonInteractiveStyles,
-} from "./common";
+import { commonHeadingStyles, commonBodyStyles } from "./common";
 
 const mobile: CommonTypographyStyles = {
+  displayHeading: {
+    ...commonHeadingStyles,
+    fontSize: 42,
+    lineHeight: 1,
+  },
   h1: {
     ...commonHeadingStyles,
-    fontSize: 40,
-    lineHeight: 1.125,
+    fontSize: 32,
+    lineHeight: 1.2,
   },
   h2: {
     ...commonHeadingStyles,
     fontSize: 28,
-    lineHeight: 1.143,
+    lineHeight: 1.5,
   },
   h3: {
     ...commonHeadingStyles,
-    fontSize: 18,
-    lineHeight: 1.111,
+    fontSize: 22,
+    lineHeight: 1.5,
   },
   h4: {
     ...commonHeadingStyles,
-    fontSize: 14,
-    lineHeight: 1.143,
+    fontSize: 18,
+    lineHeight: 1.5,
   },
-  h5: {
-    ...commonHeadingStyles,
-    fontSize: 12,
-    lineHeight: 1.167,
+  subtitle: {
+    ...commonBodyStyles,
+    fontSize: 18,
+    lineHeight: 1.5,
   },
   body: {
     ...commonBodyStyles,
     fontSize: 16,
-    lineHeight: 1.625,
+    lineHeight: 1.5,
   },
-  bodySmall: {
+  legalNote: {
     ...commonBodyStyles,
     fontSize: 14,
-    lineHeight: 1.643,
-  },
-  label: {
-    ...commonBodyStyles,
-    fontWeight: fontWeights.secondary.semibold,
-    fontSize: 12,
-    lineHeight: 1.583,
-  },
-  headline: {
-    ...commonHeadlineStyles,
-  },
-  subheading: {
-    ...commonSubheadingStyles,
-  },
-  footnote: {
-    ...commonFootnoteStyles,
+    lineHeight: 1.5,
   },
   caption: {
-    ...commonCaptionStyles,
-  },
-  interactive: {
-    ...commonInteractiveStyles,
-    fontSize: 14,
+    ...commonBodyStyles,
+    fontSize: 12,
+    lineHeight: 2,
   },
 };
 
