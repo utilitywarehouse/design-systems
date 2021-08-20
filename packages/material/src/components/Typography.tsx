@@ -6,7 +6,7 @@ import { Variant } from "@material-ui/core/styles/createTypography";
 import { OverridableStringUnion } from "@material-ui/types";
 import { CSSProperties } from "@material-ui/styles/withStyles";
 import {
-  TypographyState,
+  TypographyColor,
   TypographyVariant,
 } from "@utilitywarehouse/customer-ui-theme";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
@@ -53,7 +53,7 @@ declare module "@material-ui/core/Typography" {
 
 export interface TypographyProps
   extends React.ComponentPropsWithoutRef<"span"> {
-  state?: TypographyState;
+  state?: TypographyColor;
   variant?: OverridableStringUnion<
     Variant | "inherit",
     TypographyPropsVariantOverrides
@@ -65,8 +65,8 @@ export interface TypographyProps
 }
 
 const Typography: React.FunctionComponent<TypographyProps> = ({
-  state = "default",
-  variant = "default",
+  state = "primary",
+  variant = "body",
   gutterBottom = false,
   paragraph = false,
   forwardedRef,
@@ -82,8 +82,12 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
       classNames.unshift(`MuiTypography-stateError`);
       break;
 
-    case "default":
-      classNames.unshift(`MuiTypography-stateDefault`);
+    case "primary":
+      classNames.unshift(`MuiTypography-statePrimary`);
+      break;
+
+    case "secondary":
+      classNames.unshift(`MuiTypography-stateSecondary`);
       break;
   }
 
@@ -120,7 +124,7 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
 ) => {
   const resolveStyles = (
     variant: TypographyVariant,
-    state: TypographyState
+    state: TypographyColor
   ): CSSProperties => {
     return {
       ...theme.components.typography.mobile[variant][state],
@@ -142,11 +146,14 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   return {
     MuiTypography: {
       defaultProps: {
-        variant: "default",
+        variant: "body",
       },
       styleOverrides: {
         root: {
-          ...resolveStyles("body", "default"),
+          ...resolveStyles("body", "primary"),
+          "&.MuiTypography-stateSecondary": {
+            ...resolveStyles("body", "secondary"),
+          },
           "&.MuiTypography-stateError": {
             ...resolveStyles("body", "error"),
           },
@@ -161,7 +168,10 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             color: "inherit",
           },
           "&.MuiTypography-displayHeading": {
-            ...resolveStyles("displayHeading", "default"),
+            ...resolveStyles("displayHeading", "primary"),
+            "&.MuiTypography-stateSecondary": {
+              ...resolveStyles("displayHeading", "secondary"),
+            },
             "&.MuiTypography-stateError": {
               ...resolveStyles("displayHeading", "error"),
             },
@@ -170,7 +180,10 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             },
           },
           "&.MuiTypography-h1": {
-            ...resolveStyles("h1", "default"),
+            ...resolveStyles("h1", "primary"),
+            "&.MuiTypography-stateSecondary": {
+              ...resolveStyles("h1", "secondary"),
+            },
             "&.MuiTypography-stateError": {
               ...resolveStyles("h1", "error"),
             },
@@ -179,7 +192,10 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             },
           },
           "&.MuiTypography-h2": {
-            ...resolveStyles("h2", "default"),
+            ...resolveStyles("h2", "primary"),
+            "&.MuiTypography-stateSecondary": {
+              ...resolveStyles("h2", "secondary"),
+            },
             "&.MuiTypography-stateError": {
               ...resolveStyles("h2", "error"),
             },
@@ -188,7 +204,10 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             },
           },
           "&.MuiTypography-h3": {
-            ...resolveStyles("h3", "default"),
+            ...resolveStyles("h3", "primary"),
+            "&.MuiTypography-stateSecondary": {
+              ...resolveStyles("h3", "secondary"),
+            },
             "&.MuiTypography-stateError": {
               ...resolveStyles("h3", "error"),
             },
@@ -197,7 +216,10 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             },
           },
           "&.MuiTypography-h4": {
-            ...resolveStyles("h4", "default"),
+            ...resolveStyles("h4", "primary"),
+            "&.MuiTypography-stateSecondary": {
+              ...resolveStyles("h4", "secondary"),
+            },
             "&.MuiTypography-stateError": {
               ...resolveStyles("h4", "error"),
             },
@@ -206,7 +228,10 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             },
           },
           "&.MuiTypography-subtitle": {
-            ...resolveStyles("subtitle", "default"),
+            ...resolveStyles("subtitle", "primary"),
+            "&.MuiTypography-stateSecondary": {
+              ...resolveStyles("subtitle", "secondary"),
+            },
             "&.MuiTypography-stateError": {
               ...resolveStyles("subtitle", "error"),
             },
@@ -215,7 +240,10 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             },
           },
           "&.MuiTypography-body": {
-            ...resolveStyles("body", "default"),
+            ...resolveStyles("body", "primary"),
+            "&.MuiTypography-stateSecondary": {
+              ...resolveStyles("body", "secondary"),
+            },
             "&.MuiTypography-stateError": {
               ...resolveStyles("body", "error"),
             },
@@ -224,7 +252,10 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             },
           },
           "&.MuiTypography-legalNote": {
-            ...resolveStyles("legalNote", "default"),
+            ...resolveStyles("legalNote", "primary"),
+            "&.MuiTypography-stateSecondary": {
+              ...resolveStyles("legalNote", "secondary"),
+            },
             "&.MuiTypography-stateError": {
               ...resolveStyles("legalNote", "error"),
             },
@@ -233,7 +264,10 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             },
           },
           "&.MuiTypography-caption": {
-            ...resolveStyles("caption", "default"),
+            ...resolveStyles("caption", "primary"),
+            "&.MuiTypography-stateSecondary": {
+              ...resolveStyles("caption", "secondary"),
+            },
             "&.MuiTypography-stateError": {
               ...resolveStyles("caption", "error"),
             },
