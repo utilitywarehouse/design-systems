@@ -22,11 +22,11 @@ export type TypographyVariant =
   | "legalNote"
   | "caption";
 
-export type TypographyState = "default" | "success" | "error";
+export type TypographyColor = "primary" | "secondary" | "success" | "error";
 
 export type TypographyPalette = {
   [key in TypographyVariant]: {
-    [key in TypographyState]: TypographyStylesColor;
+    [key in TypographyColor]: TypographyStylesColor;
   };
 };
 
@@ -41,7 +41,7 @@ export type CommonTypographyStylesWithBreakpoint = {
 export type TypographyStyles = {
   [key in Breakpoint]: {
     [key in TypographyVariant]: {
-      [key in TypographyState]: TypographyStylesNonColor &
+      [key in TypographyColor]: TypographyStylesNonColor &
         TypographyStylesColor;
     };
   };

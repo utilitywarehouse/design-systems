@@ -4,7 +4,10 @@ import { ColorScheme, BackdropLevel } from "../types";
 
 const lightModeLevel0: TypographyPalette = {
   displayHeading: {
-    default: {
+    primary: {
+      color: colors.white,
+    },
+    secondary: {
       color: colors.white,
     },
     success: {
@@ -15,7 +18,10 @@ const lightModeLevel0: TypographyPalette = {
     },
   },
   h1: {
-    default: {
+    primary: {
+      color: colors.white,
+    },
+    secondary: {
       color: colors.white,
     },
     success: {
@@ -26,7 +32,10 @@ const lightModeLevel0: TypographyPalette = {
     },
   },
   h2: {
-    default: {
+    primary: {
+      color: colors.white,
+    },
+    secondary: {
       color: colors.white,
     },
     success: {
@@ -37,7 +46,10 @@ const lightModeLevel0: TypographyPalette = {
     },
   },
   h3: {
-    default: {
+    primary: {
+      color: colors.white,
+    },
+    secondary: {
       color: colors.white,
     },
     success: {
@@ -48,7 +60,10 @@ const lightModeLevel0: TypographyPalette = {
     },
   },
   h4: {
-    default: {
+    primary: {
+      color: colors.white,
+    },
+    secondary: {
       color: colors.white,
     },
     success: {
@@ -59,7 +74,10 @@ const lightModeLevel0: TypographyPalette = {
     },
   },
   subtitle: {
-    default: {
+    primary: {
+      color: colors.white,
+    },
+    secondary: {
       color: colors.white,
     },
     success: {
@@ -70,7 +88,10 @@ const lightModeLevel0: TypographyPalette = {
     },
   },
   body: {
-    default: {
+    primary: {
+      color: colors.white,
+    },
+    secondary: {
       color: colors.white,
     },
     success: {
@@ -81,7 +102,10 @@ const lightModeLevel0: TypographyPalette = {
     },
   },
   legalNote: {
-    default: {
+    primary: {
+      color: colors.white,
+    },
+    secondary: {
       color: colors.white,
     },
     success: {
@@ -92,7 +116,10 @@ const lightModeLevel0: TypographyPalette = {
     },
   },
   caption: {
-    default: {
+    primary: {
+      color: colors.white,
+    },
+    secondary: {
       color: colors.white,
     },
     success: {
@@ -108,8 +135,11 @@ const lightModeLevel1 = lightModeLevel0;
 
 const lightModeLevel2: TypographyPalette = {
   displayHeading: {
-    default: {
+    primary: {
       color: colors.purple,
+    },
+    secondary: {
+      color: colors.midnight,
     },
     success: {
       color: colors.jewel,
@@ -119,8 +149,11 @@ const lightModeLevel2: TypographyPalette = {
     },
   },
   h1: {
-    default: {
+    primary: {
       color: colors.purple,
+    },
+    secondary: {
+      color: colors.midnight,
     },
     success: {
       color: colors.jewel,
@@ -130,8 +163,11 @@ const lightModeLevel2: TypographyPalette = {
     },
   },
   h2: {
-    default: {
+    primary: {
       color: colors.purple,
+    },
+    secondary: {
+      color: colors.midnight,
     },
     success: {
       color: colors.jewel,
@@ -141,8 +177,11 @@ const lightModeLevel2: TypographyPalette = {
     },
   },
   h3: {
-    default: {
+    primary: {
       color: colors.purple,
+    },
+    secondary: {
+      color: colors.midnight,
     },
     success: {
       color: colors.jewel,
@@ -152,8 +191,11 @@ const lightModeLevel2: TypographyPalette = {
     },
   },
   h4: {
-    default: {
+    primary: {
       color: colors.purple,
+    },
+    secondary: {
+      color: colors.midnight,
     },
     success: {
       color: colors.jewel,
@@ -163,7 +205,10 @@ const lightModeLevel2: TypographyPalette = {
     },
   },
   subtitle: {
-    default: {
+    primary: {
+      color: colors.midnight,
+    },
+    secondary: {
       color: colors.midnight,
     },
     success: {
@@ -174,7 +219,10 @@ const lightModeLevel2: TypographyPalette = {
     },
   },
   body: {
-    default: {
+    primary: {
+      color: colors.midnight,
+    },
+    secondary: {
       color: colors.midnight,
     },
     success: {
@@ -185,7 +233,10 @@ const lightModeLevel2: TypographyPalette = {
     },
   },
   legalNote: {
-    default: {
+    primary: {
+      color: colors.midnight,
+    },
+    secondary: {
       color: colors.midnight,
     },
     success: {
@@ -196,7 +247,10 @@ const lightModeLevel2: TypographyPalette = {
     },
   },
   caption: {
-    default: {
+    primary: {
+      color: colors.midnight,
+    },
+    secondary: {
       color: colors.midnight,
     },
     success: {
