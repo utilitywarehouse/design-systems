@@ -1,3 +1,4 @@
+./.vscode/
 tsconfig.json
 dist/
 packages/fonts/*.css
