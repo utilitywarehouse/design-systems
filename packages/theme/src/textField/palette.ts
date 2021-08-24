@@ -9,7 +9,7 @@ const lightModeLevel0: TextFieldPalette = {
       input: {
         color: colors.midnight,
         backgroundColor: colors.white,
-        borderColor: `${colors.midnight}10`,
+        borderColor: `${colors.midnight}1A`,
         borderBottomColor: colors.purple,
       },
       label: {
