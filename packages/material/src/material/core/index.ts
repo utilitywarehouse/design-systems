@@ -57,14 +57,14 @@ export * from "@material-ui/core/Box";
 export { default as Breadcrumbs } from "@material-ui/core/Breadcrumbs";
 export * from "@material-ui/core/Breadcrumbs";
 
-export { default as MUIButton } from "@material-ui/core/Button";
+export { default as MuiButton } from "@material-ui/core/Button";
 export { buttonClasses } from "@material-ui/core/Button";
 export * from "@material-ui/core/Button/buttonClasses";
 export type {
   ButtonPropsVariantOverrides,
   ButtonTypeMap,
   ExtendButton,
-  ButtonProps as MUIButtonProps,
+  ButtonProps as MuiButtonProps,
   ButtonClassKey,
 } from "@material-ui/core/Button";
 
