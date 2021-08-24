@@ -6,7 +6,7 @@ import { Variant } from "@material-ui/core/styles/createTypography";
 import { OverridableStringUnion } from "@material-ui/types";
 import { CSSProperties } from "@material-ui/styles/withStyles";
 import {
-  TypographyState,
+  TypographyColor,
   TypographyVariant,
 } from "@utilitywarehouse/customer-ui-theme";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
@@ -53,7 +53,7 @@ declare module "@material-ui/core/Typography" {
 
 export interface TypographyProps
   extends React.ComponentPropsWithoutRef<"span"> {
-  state?: TypographyState;
+  color?: TypographyColor;
   variant?: OverridableStringUnion<
     Variant | "inherit",
     TypographyPropsVariantOverrides
@@ -65,25 +65,29 @@ export interface TypographyProps
 }
 
 const Typography: React.FunctionComponent<TypographyProps> = ({
-  state = "default",
-  variant = "default",
+  color = "primary",
+  variant = "body",
   gutterBottom = false,
   paragraph = false,
   forwardedRef,
   ...props
 }) => {
   const classNames = (props.className ?? "").split(" ");
-  switch (state) {
+  switch (color) {
     case "success":
-      classNames.unshift(`MuiTypography-stateSuccess`);
+      classNames.unshift(`MuiTypography-colorSuccess`);
       break;
 
     case "error":
-      classNames.unshift(`MuiTypography-stateError`);
+      classNames.unshift(`MuiTypography-colorError`);
       break;
 
-    case "default":
-      classNames.unshift(`MuiTypography-stateDefault`);
+    case "primary":
+      classNames.unshift(`MuiTypography-colorPrimary`);
+      break;
+
+    case "secondary":
+      classNames.unshift(`MuiTypography-colorSecondary`);
       break;
   }
 
@@ -120,21 +124,21 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
 ) => {
   const resolveStyles = (
     variant: TypographyVariant,
-    state: TypographyState
+    color: TypographyColor
   ): CSSProperties => {
     return {
-      ...theme.components.typography.mobile[variant][state],
-      fill: theme.components.typography.mobile[variant][state].color,
-      stroke: theme.components.typography.mobile[variant][state].color,
+      ...theme.components.typography.mobile[variant][color],
+      fill: theme.components.typography.mobile[variant][color].color,
+      stroke: theme.components.typography.mobile[variant][color].color,
       [muiTheme.breakpoints.up("tablet")]: {
-        ...theme.components.typography.tablet[variant][state],
-        fill: theme.components.typography.tablet[variant][state].color,
-        stroke: theme.components.typography.tablet[variant][state].color,
+        ...theme.components.typography.tablet[variant][color],
+        fill: theme.components.typography.tablet[variant][color].color,
+        stroke: theme.components.typography.tablet[variant][color].color,
       },
       [muiTheme.breakpoints.up("desktop")]: {
-        ...theme.components.typography.desktop[variant][state],
-        fill: theme.components.typography.desktop[variant][state].color,
-        stroke: theme.components.typography.desktop[variant][state].color,
+        ...theme.components.typography.desktop[variant][color],
+        fill: theme.components.typography.desktop[variant][color].color,
+        stroke: theme.components.typography.desktop[variant][color].color,
       },
     } as CSSProperties;
   };
@@ -142,15 +146,18 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   return {
     MuiTypography: {
       defaultProps: {
-        variant: "default",
+        variant: "body",
       },
       styleOverrides: {
         root: {
-          ...resolveStyles("body", "default"),
-          "&.MuiTypography-stateError": {
+          ...resolveStyles("body", "primary"),
+          "&.MuiTypography-colorSecondary": {
+            ...resolveStyles("body", "secondary"),
+          },
+          "&.MuiTypography-colorError": {
             ...resolveStyles("body", "error"),
           },
-          "&.MuiTypography-stateSuccess": {
+          "&.MuiTypography-colorSuccess": {
             ...resolveStyles("body", "success"),
           },
           "&.MuiTypography-inherit": {
@@ -161,83 +168,110 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             color: "inherit",
           },
           "&.MuiTypography-displayHeading": {
-            ...resolveStyles("displayHeading", "default"),
-            "&.MuiTypography-stateError": {
+            ...resolveStyles("displayHeading", "primary"),
+            "&.MuiTypography-colorSecondary": {
+              ...resolveStyles("displayHeading", "secondary"),
+            },
+            "&.MuiTypography-colorError": {
               ...resolveStyles("displayHeading", "error"),
             },
-            "&.MuiTypography-stateSuccess": {
+            "&.MuiTypography-colorSuccess": {
               ...resolveStyles("displayHeading", "success"),
             },
           },
           "&.MuiTypography-h1": {
-            ...resolveStyles("h1", "default"),
-            "&.MuiTypography-stateError": {
+            ...resolveStyles("h1", "primary"),
+            "&.MuiTypography-colorSecondary": {
+              ...resolveStyles("h1", "secondary"),
+            },
+            "&.MuiTypography-colorError": {
               ...resolveStyles("h1", "error"),
             },
-            "&.MuiTypography-stateSuccess": {
+            "&.MuiTypography-colorSuccess": {
               ...resolveStyles("h1", "success"),
             },
           },
           "&.MuiTypography-h2": {
-            ...resolveStyles("h2", "default"),
-            "&.MuiTypography-stateError": {
+            ...resolveStyles("h2", "primary"),
+            "&.MuiTypography-colorSecondary": {
+              ...resolveStyles("h2", "secondary"),
+            },
+            "&.MuiTypography-colorError": {
               ...resolveStyles("h2", "error"),
             },
-            "&.MuiTypography-stateSuccess": {
+            "&.MuiTypography-colorSuccess": {
               ...resolveStyles("h2", "success"),
             },
           },
           "&.MuiTypography-h3": {
-            ...resolveStyles("h3", "default"),
-            "&.MuiTypography-stateError": {
+            ...resolveStyles("h3", "primary"),
+            "&.MuiTypography-colorSecondary": {
+              ...resolveStyles("h3", "secondary"),
+            },
+            "&.MuiTypography-colorError": {
               ...resolveStyles("h3", "error"),
             },
-            "&.MuiTypography-stateSuccess": {
+            "&.MuiTypography-colorSuccess": {
               ...resolveStyles("h3", "success"),
             },
           },
           "&.MuiTypography-h4": {
-            ...resolveStyles("h4", "default"),
-            "&.MuiTypography-stateError": {
+            ...resolveStyles("h4", "primary"),
+            "&.MuiTypography-colorSecondary": {
+              ...resolveStyles("h4", "secondary"),
+            },
+            "&.MuiTypography-colorError": {
               ...resolveStyles("h4", "error"),
             },
-            "&.MuiTypography-stateSuccess": {
+            "&.MuiTypography-colorSuccess": {
               ...resolveStyles("h4", "success"),
             },
           },
           "&.MuiTypography-subtitle": {
-            ...resolveStyles("subtitle", "default"),
-            "&.MuiTypography-stateError": {
+            ...resolveStyles("subtitle", "primary"),
+            "&.MuiTypography-colorSecondary": {
+              ...resolveStyles("subtitle", "secondary"),
+            },
+            "&.MuiTypography-colorError": {
               ...resolveStyles("subtitle", "error"),
             },
-            "&.MuiTypography-stateSuccess": {
+            "&.MuiTypography-colorSuccess": {
               ...resolveStyles("subtitle", "success"),
             },
           },
           "&.MuiTypography-body": {
-            ...resolveStyles("body", "default"),
-            "&.MuiTypography-stateError": {
+            ...resolveStyles("body", "primary"),
+            "&.MuiTypography-colorSecondary": {
+              ...resolveStyles("body", "secondary"),
+            },
+            "&.MuiTypography-colorError": {
               ...resolveStyles("body", "error"),
             },
-            "&.MuiTypography-stateSuccess": {
+            "&.MuiTypography-colorSuccess": {
               ...resolveStyles("body", "success"),
             },
           },
           "&.MuiTypography-legalNote": {
-            ...resolveStyles("legalNote", "default"),
-            "&.MuiTypography-stateError": {
+            ...resolveStyles("legalNote", "primary"),
+            "&.MuiTypography-colorSecondary": {
+              ...resolveStyles("legalNote", "secondary"),
+            },
+            "&.MuiTypography-colorError": {
               ...resolveStyles("legalNote", "error"),
             },
-            "&.MuiTypography-stateSuccess": {
+            "&.MuiTypography-colorSuccess": {
               ...resolveStyles("legalNote", "success"),
             },
           },
           "&.MuiTypography-caption": {
-            ...resolveStyles("caption", "default"),
-            "&.MuiTypography-stateError": {
+            ...resolveStyles("caption", "primary"),
+            "&.MuiTypography-colorSecondary": {
+              ...resolveStyles("caption", "secondary"),
+            },
+            "&.MuiTypography-colorError": {
               ...resolveStyles("caption", "error"),
             },
-            "&.MuiTypography-stateSuccess": {
+            "&.MuiTypography-colorSuccess": {
               ...resolveStyles("caption", "success"),
             },
           },

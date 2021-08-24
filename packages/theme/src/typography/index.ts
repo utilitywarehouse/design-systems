@@ -25,9 +25,13 @@ export const getTypographyStyles = (
   return {
     desktop: {
       displayHeading: {
-        default: {
+        primary: {
           ...commonTypographyStyles.desktop.displayHeading,
-          ...typographyPalette.displayHeading.default,
+          ...typographyPalette.displayHeading.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.desktop.displayHeading,
+          ...typographyPalette.displayHeading.secondary,
         },
         success: {
           ...commonTypographyStyles.desktop.displayHeading,
@@ -39,9 +43,13 @@ export const getTypographyStyles = (
         },
       },
       h1: {
-        default: {
+        primary: {
           ...commonTypographyStyles.desktop.h1,
-          ...typographyPalette.h1.default,
+          ...typographyPalette.h1.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.desktop.h1,
+          ...typographyPalette.h1.secondary,
         },
         success: {
           ...commonTypographyStyles.desktop.h1,
@@ -53,9 +61,13 @@ export const getTypographyStyles = (
         },
       },
       h2: {
-        default: {
+        primary: {
           ...commonTypographyStyles.desktop.h2,
-          ...typographyPalette.h2.default,
+          ...typographyPalette.h2.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.desktop.h2,
+          ...typographyPalette.h2.secondary,
         },
         success: {
           ...commonTypographyStyles.desktop.h2,
@@ -67,9 +79,13 @@ export const getTypographyStyles = (
         },
       },
       h3: {
-        default: {
+        primary: {
           ...commonTypographyStyles.desktop.h3,
-          ...typographyPalette.h3.default,
+          ...typographyPalette.h3.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.desktop.h3,
+          ...typographyPalette.h3.secondary,
         },
         success: {
           ...commonTypographyStyles.desktop.h3,
@@ -81,9 +97,13 @@ export const getTypographyStyles = (
         },
       },
       h4: {
-        default: {
+        primary: {
           ...commonTypographyStyles.desktop.h4,
-          ...typographyPalette.h4.default,
+          ...typographyPalette.h4.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.desktop.h4,
+          ...typographyPalette.h4.secondary,
         },
         success: {
           ...commonTypographyStyles.desktop.h4,
@@ -95,9 +115,13 @@ export const getTypographyStyles = (
         },
       },
       subtitle: {
-        default: {
+        primary: {
           ...commonTypographyStyles.desktop.subtitle,
-          ...typographyPalette.subtitle.default,
+          ...typographyPalette.subtitle.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.desktop.subtitle,
+          ...typographyPalette.subtitle.secondary,
         },
         success: {
           ...commonTypographyStyles.desktop.subtitle,
@@ -109,9 +133,13 @@ export const getTypographyStyles = (
         },
       },
       body: {
-        default: {
+        primary: {
           ...commonTypographyStyles.desktop.body,
-          ...typographyPalette.body.default,
+          ...typographyPalette.body.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.desktop.body,
+          ...typographyPalette.body.secondary,
         },
         success: {
           ...commonTypographyStyles.desktop.body,
@@ -123,9 +151,13 @@ export const getTypographyStyles = (
         },
       },
       legalNote: {
-        default: {
+        primary: {
           ...commonTypographyStyles.desktop.legalNote,
-          ...typographyPalette.legalNote.default,
+          ...typographyPalette.legalNote.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.desktop.legalNote,
+          ...typographyPalette.legalNote.secondary,
         },
         success: {
           ...commonTypographyStyles.desktop.legalNote,
@@ -137,9 +169,13 @@ export const getTypographyStyles = (
         },
       },
       caption: {
-        default: {
+        primary: {
           ...commonTypographyStyles.desktop.caption,
-          ...typographyPalette.caption.default,
+          ...typographyPalette.caption.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.desktop.caption,
+          ...typographyPalette.caption.secondary,
         },
         success: {
           ...commonTypographyStyles.desktop.caption,
@@ -153,9 +189,13 @@ export const getTypographyStyles = (
     },
     tablet: {
       displayHeading: {
-        default: {
+        primary: {
           ...commonTypographyStyles.tablet.displayHeading,
-          ...typographyPalette.displayHeading.default,
+          ...typographyPalette.displayHeading.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.tablet.displayHeading,
+          ...typographyPalette.displayHeading.secondary,
         },
         success: {
           ...commonTypographyStyles.tablet.displayHeading,
@@ -167,9 +207,13 @@ export const getTypographyStyles = (
         },
       },
       h1: {
-        default: {
+        primary: {
           ...commonTypographyStyles.tablet.h1,
-          ...typographyPalette.h1.default,
+          ...typographyPalette.h1.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.tablet.h1,
+          ...typographyPalette.h1.secondary,
         },
         success: {
           ...commonTypographyStyles.tablet.h1,
@@ -181,9 +225,13 @@ export const getTypographyStyles = (
         },
       },
       h2: {
-        default: {
+        primary: {
           ...commonTypographyStyles.tablet.h2,
-          ...typographyPalette.h2.default,
+          ...typographyPalette.h2.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.tablet.h2,
+          ...typographyPalette.h2.secondary,
         },
         success: {
           ...commonTypographyStyles.tablet.h2,
@@ -195,9 +243,13 @@ export const getTypographyStyles = (
         },
       },
       h3: {
-        default: {
+        primary: {
           ...commonTypographyStyles.tablet.h3,
-          ...typographyPalette.h3.default,
+          ...typographyPalette.h3.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.tablet.h3,
+          ...typographyPalette.h3.secondary,
         },
         success: {
           ...commonTypographyStyles.tablet.h3,
@@ -209,9 +261,13 @@ export const getTypographyStyles = (
         },
       },
       h4: {
-        default: {
+        primary: {
           ...commonTypographyStyles.tablet.h4,
-          ...typographyPalette.h4.default,
+          ...typographyPalette.h4.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.tablet.h4,
+          ...typographyPalette.h4.secondary,
         },
         success: {
           ...commonTypographyStyles.tablet.h4,
@@ -223,9 +279,13 @@ export const getTypographyStyles = (
         },
       },
       subtitle: {
-        default: {
+        primary: {
           ...commonTypographyStyles.tablet.subtitle,
-          ...typographyPalette.subtitle.default,
+          ...typographyPalette.subtitle.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.tablet.subtitle,
+          ...typographyPalette.subtitle.secondary,
         },
         success: {
           ...commonTypographyStyles.tablet.subtitle,
@@ -237,9 +297,13 @@ export const getTypographyStyles = (
         },
       },
       body: {
-        default: {
+        primary: {
           ...commonTypographyStyles.tablet.body,
-          ...typographyPalette.body.default,
+          ...typographyPalette.body.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.tablet.body,
+          ...typographyPalette.body.secondary,
         },
         success: {
           ...commonTypographyStyles.tablet.body,
@@ -251,9 +315,13 @@ export const getTypographyStyles = (
         },
       },
       legalNote: {
-        default: {
+        primary: {
           ...commonTypographyStyles.tablet.legalNote,
-          ...typographyPalette.legalNote.default,
+          ...typographyPalette.legalNote.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.tablet.legalNote,
+          ...typographyPalette.legalNote.secondary,
         },
         success: {
           ...commonTypographyStyles.tablet.legalNote,
@@ -265,9 +333,13 @@ export const getTypographyStyles = (
         },
       },
       caption: {
-        default: {
+        primary: {
           ...commonTypographyStyles.tablet.caption,
-          ...typographyPalette.caption.default,
+          ...typographyPalette.caption.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.tablet.caption,
+          ...typographyPalette.caption.secondary,
         },
         success: {
           ...commonTypographyStyles.tablet.caption,
@@ -281,9 +353,13 @@ export const getTypographyStyles = (
     },
     mobile: {
       displayHeading: {
-        default: {
+        primary: {
           ...commonTypographyStyles.mobile.displayHeading,
-          ...typographyPalette.displayHeading.default,
+          ...typographyPalette.displayHeading.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.mobile.displayHeading,
+          ...typographyPalette.displayHeading.secondary,
         },
         success: {
           ...commonTypographyStyles.mobile.displayHeading,
@@ -295,9 +371,13 @@ export const getTypographyStyles = (
         },
       },
       h1: {
-        default: {
+        primary: {
           ...commonTypographyStyles.mobile.h1,
-          ...typographyPalette.h1.default,
+          ...typographyPalette.h1.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.mobile.h1,
+          ...typographyPalette.h1.secondary,
         },
         success: {
           ...commonTypographyStyles.mobile.h1,
@@ -309,9 +389,13 @@ export const getTypographyStyles = (
         },
       },
       h2: {
-        default: {
+        primary: {
           ...commonTypographyStyles.mobile.h2,
-          ...typographyPalette.h2.default,
+          ...typographyPalette.h2.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.mobile.h2,
+          ...typographyPalette.h2.secondary,
         },
         success: {
           ...commonTypographyStyles.mobile.h2,
@@ -323,9 +407,13 @@ export const getTypographyStyles = (
         },
       },
       h3: {
-        default: {
+        primary: {
           ...commonTypographyStyles.mobile.h3,
-          ...typographyPalette.h3.default,
+          ...typographyPalette.h3.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.mobile.h3,
+          ...typographyPalette.h3.secondary,
         },
         success: {
           ...commonTypographyStyles.mobile.h3,
@@ -337,9 +425,13 @@ export const getTypographyStyles = (
         },
       },
       h4: {
-        default: {
+        primary: {
           ...commonTypographyStyles.mobile.h4,
-          ...typographyPalette.h4.default,
+          ...typographyPalette.h4.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.mobile.h4,
+          ...typographyPalette.h4.secondary,
         },
         success: {
           ...commonTypographyStyles.mobile.h4,
@@ -351,9 +443,13 @@ export const getTypographyStyles = (
         },
       },
       subtitle: {
-        default: {
+        primary: {
           ...commonTypographyStyles.mobile.subtitle,
-          ...typographyPalette.subtitle.default,
+          ...typographyPalette.subtitle.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.mobile.subtitle,
+          ...typographyPalette.subtitle.secondary,
         },
         success: {
           ...commonTypographyStyles.mobile.subtitle,
@@ -365,9 +461,13 @@ export const getTypographyStyles = (
         },
       },
       body: {
-        default: {
+        primary: {
           ...commonTypographyStyles.mobile.body,
-          ...typographyPalette.body.default,
+          ...typographyPalette.body.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.mobile.body,
+          ...typographyPalette.body.secondary,
         },
         success: {
           ...commonTypographyStyles.mobile.body,
@@ -379,9 +479,13 @@ export const getTypographyStyles = (
         },
       },
       legalNote: {
-        default: {
+        primary: {
           ...commonTypographyStyles.mobile.legalNote,
-          ...typographyPalette.legalNote.default,
+          ...typographyPalette.legalNote.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.mobile.legalNote,
+          ...typographyPalette.legalNote.secondary,
         },
         success: {
           ...commonTypographyStyles.mobile.legalNote,
@@ -393,9 +497,13 @@ export const getTypographyStyles = (
         },
       },
       caption: {
-        default: {
+        primary: {
           ...commonTypographyStyles.mobile.caption,
-          ...typographyPalette.caption.default,
+          ...typographyPalette.caption.primary,
+        },
+        secondary: {
+          ...commonTypographyStyles.mobile.caption,
+          ...typographyPalette.caption.secondary,
         },
         success: {
           ...commonTypographyStyles.mobile.caption,

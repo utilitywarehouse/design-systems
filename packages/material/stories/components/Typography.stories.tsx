@@ -103,7 +103,7 @@ H4.storyName = "h4";
 export const Subtitle = bindTemplate({ variant: "subtitle" });
 Subtitle.storyName = "subtitle";
 
-export const Body = bindTemplate({ variant: "default" });
+export const Body = bindTemplate({ variant: "body" });
 Body.storyName = "body";
 
 export const LegalNote = bindTemplate({ variant: "legalNote" });
