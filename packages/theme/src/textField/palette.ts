@@ -1,6 +1,7 @@
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { TextFieldPalette } from "./types";
 import { ColorScheme, BackdropLevel } from "../types";
+import { getHexOpacity } from "../utils";
 
 const lightModeLevel0: TextFieldPalette = {
   default: {
@@ -9,7 +10,7 @@ const lightModeLevel0: TextFieldPalette = {
       input: {
         color: colors.midnight,
         backgroundColor: colors.white,
-        borderColor: `${colors.midnight}1A`,
+        borderColor: `${colors.midnight}${getHexOpacity(0.1)}`,
         borderBottomColor: colors.purple,
       },
       label: {
@@ -24,7 +25,7 @@ const lightModeLevel0: TextFieldPalette = {
       input: {
         color: colors.midnight,
         backgroundColor: colors.white,
-        borderColor: `${colors.midnight}1A`,
+        borderColor: `${colors.midnight}${getHexOpacity(0.1)}`,
         borderBottomColor: colors.blueRibbon,
       },
       label: {
