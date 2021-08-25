@@ -35,6 +35,21 @@ npm i --save @utilitywarehouse/customer-ui-material
 yarn add @utilitywarehouse/customer-ui-material
 ```
 
+## Versioning
+
+It is advisable to pin the version of this library in your project's
+package.json file. The Customer Design System these components are based on is
+still in flux and there can be breaking changes between alpha versions.
+
+```json
+"dependencies": {
+  // specify the version of the library you want
+  "@utilitywarehouse/customer-ui-material": "1.0.0-alpha.62",
+  // otherwise you may unexpectedly install a more recent version that has breaking changes
+  "@utilitywarehouse/customer-ui-material": "^1.0.0-alpha.62",
+}
+```
+
 ## Getting started
 
 Start by wrapping your application with the `UIProvider` component. This renders
