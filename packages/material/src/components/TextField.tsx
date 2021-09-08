@@ -29,7 +29,8 @@ export enum Classes {
 const isSuccessStatus = (status?: Status): boolean => status === Status.SUCCESS;
 const isErrorStatus = (status?: Status): boolean => status === Status.ERROR;
 
-export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
+export interface TextFieldProps
+  extends Omit<FilledInputProps, "hiddenLabel" | "error"> {
   status?: Status;
   label?: React.ReactNode;
   labelProps?: {
@@ -132,7 +133,6 @@ const TextField = (props: TextFieldProps): JSX.Element => {
       <TextFieldInput
         {...rest}
         multiline={multiline}
-        error={hasErrorStatus}
         aria-describedby={helperTextProps?.id}
       />
 
