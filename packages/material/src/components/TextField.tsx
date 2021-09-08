@@ -19,7 +19,8 @@ import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/War
 const isSuccessStatus = (status?: string): boolean => "success" === status;
 const isErrorStatus = (status?: string): boolean => "error" === status;
 
-export interface TextFieldProps extends Omit<FilledInputProps, "hiddenLabel"> {
+export interface TextFieldProps
+  extends Omit<FilledInputProps, "hiddenLabel" | "error"> {
   status?: "success" | "error";
   label?: React.ReactNode;
   labelProps?: {
@@ -102,11 +103,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
         </InputLabel>
       ) : null}
 
-      <TextFieldInput
-        {...rest}
-        error={hasErrorStatus}
-        aria-describedby={helperTextProps?.id}
-      />
+      <TextFieldInput {...rest} aria-describedby={helperTextProps?.id} />
 
       {helperText ? (
         <FormHelperText
