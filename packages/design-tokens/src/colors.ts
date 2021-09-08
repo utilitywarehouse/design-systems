@@ -11,6 +11,7 @@ const colors = {
   maroonFlush: "#ce2261",
   midnight: "#1e0a46",
   midTint: "#c4a5db",
+  darkTint: "#905AB9",
   pink: "#f495f9",
   purple: "#550091",
   rose: "#f25192",
