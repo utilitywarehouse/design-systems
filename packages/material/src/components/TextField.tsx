@@ -16,22 +16,17 @@ import { useTheme } from "..";
 import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
 
-export enum Status {
-  SUCCESS = "success",
-  ERROR = "error",
-}
-
 export enum Classes {
   SUCCESS_STATE = "successState",
   MULTILINE = "multiline",
 }
 
-const isSuccessStatus = (status?: Status): boolean => status === Status.SUCCESS;
-const isErrorStatus = (status?: Status): boolean => status === Status.ERROR;
+const isSuccessStatus = (status?: string): boolean => status === "success";
+const isErrorStatus = (status?: string): boolean => status === "error";
 
 export interface TextFieldProps
   extends Omit<FilledInputProps, "hiddenLabel" | "error"> {
-  status?: Status;
+  status?: "success" | "error";
   label?: React.ReactNode;
   labelProps?: {
     id: string;
