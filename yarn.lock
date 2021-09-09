@@ -4143,6 +4143,11 @@
     "@typescript-eslint/types" "4.14.2"
     eslint-visitor-keys "^2.0.0"
 
+"@utilitywarehouse/customer-ui-design-tokens@1.0.0-alpha.10":
+  version "1.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-design-tokens/-/customer-ui-design-tokens-1.0.0-alpha.10.tgz#0271de374cd9db8a12b2ac972f1876b15194b72b"
+  integrity sha512-duqxUrYXQHExE7q2S30R6M5Fv0ZupXLQEYLamnFARq77F8tqCq0yorUGY3xOGQBb6j+oSAzgCklXOWNMbHkysQ==
+
 "@utilitywarehouse/customer-ui-design-tokens@1.0.0-alpha.9":
   version "1.0.0-alpha.9"
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-design-tokens/-/customer-ui-design-tokens-1.0.0-alpha.9.tgz#485959d67f5af667c1b41dbed204c74b71e25c18"

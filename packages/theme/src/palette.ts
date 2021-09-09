@@ -22,6 +22,24 @@ const lightModeLevel0: Palette = {
     success: colors.jewel,
     focus: colors.blueRibbon,
   },
+  backdrops: {
+    light: {
+      level0: colors.midnight,
+      level1: colors.darkTint,
+      level2: colors.midTint,
+      level3: colors.lightTint,
+      level4: colors.whiteOwl,
+      level5: colors.white,
+    },
+    dark: {
+      level0: colors.codGray,
+      level1: colors.codGray,
+      level2: colors.codGray,
+      level3: colors.codGray,
+      level4: colors.codGray,
+      level5: colors.codGray,
+    },
+  },
   services: {
     gas: colors.cyan,
     electricity: colors.apple,
