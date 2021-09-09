@@ -16,8 +16,13 @@ import { useTheme } from "..";
 import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
 
-const isSuccessStatus = (status?: string): boolean => "success" === status;
-const isErrorStatus = (status?: string): boolean => "error" === status;
+export enum Classes {
+  SUCCESS_STATE = "successState",
+  MULTILINE = "multiline",
+}
+
+const isSuccessStatus = (status?: string): boolean => status === "success";
+const isErrorStatus = (status?: string): boolean => status === "error";
 
 export interface TextFieldProps
   extends Omit<FilledInputProps, "hiddenLabel" | "error"> {
@@ -30,6 +35,7 @@ export interface TextFieldProps
   helperTextProps?: {
     id: string;
   };
+  multiline: boolean;
 }
 
 const SuccessIcon = styled(SuccessOutlined)({ fill: colors.jewel });
@@ -45,13 +51,22 @@ const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
   ...props
 }) => {
   const shouldShowTheIcon = !props.disabled;
+  const getClassName = () => {
+    const classes = [props.className];
+
+    if (!props.disabled && isSuccessStatus(status)) {
+      classes.push(Classes.SUCCESS_STATE);
+    }
+
+    if (props.multiline) {
+      classes.push(Classes.MULTILINE);
+    }
+
+    return classes.join(" ");
+  };
   return (
     <FilledInput
-      className={
-        !props.disabled && isSuccessStatus(status)
-          ? `${props.className} successState`
-          : props.className
-      }
+      className={getClassName()}
       endAdornment={
         <>
           {shouldShowTheIcon && isErrorStatus(status) ? (
@@ -72,7 +87,14 @@ const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
 };
 
 const TextField = (props: TextFieldProps): JSX.Element => {
-  const { label, labelProps, helperText, helperTextProps, ...rest } = props;
+  const {
+    label,
+    labelProps,
+    helperText,
+    helperTextProps,
+    multiline,
+    ...rest
+  } = props;
   const { status, disabled } = rest;
   const hasErrorStatus = !disabled && isErrorStatus(status);
   const hasSuccessStatus =
@@ -97,18 +119,22 @@ const TextField = (props: TextFieldProps): JSX.Element => {
           shrink
           id={labelProps?.id}
           htmlFor={props.id}
-          className={hasSuccessStatus ? "successState" : undefined}
+          className={hasSuccessStatus ? Classes.SUCCESS_STATE : undefined}
         >
           {label}
         </InputLabel>
       ) : null}
 
-      <TextFieldInput {...rest} aria-describedby={helperTextProps?.id} />
+      <TextFieldInput
+        {...rest}
+        multiline={multiline}
+        aria-describedby={helperTextProps?.id}
+      />
 
       {helperText ? (
         <FormHelperText
           id={helperTextProps?.id}
-          className={hasSuccessStatus ? "successState" : undefined}
+          className={hasSuccessStatus ? Classes.SUCCESS_STATE : undefined}
         >
           {helperText}
         </FormHelperText>
@@ -166,7 +192,7 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
               ...desktopTheme.error.idle.label,
             },
           },
-          "&.successState": {
+          [`&.${Classes.SUCCESS_STATE}`]: {
             ...mobileTheme.success.idle.label,
             [muiTheme.breakpoints.up("tablet")]: {
               ...tabletTheme.success.idle.label,
@@ -206,7 +232,7 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
               ...desktopTheme.error.idle.helperText,
             },
           },
-          "&.successState": {
+          [`&.${Classes.SUCCESS_STATE}`]: {
             ...mobileTheme.success.idle.helperText,
             [muiTheme.breakpoints.up("tablet")]: {
               ...tabletTheme.success.idle.helperText,
@@ -369,7 +395,7 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
               },
             },
           },
-          "&.successState": {
+          [`&.${Classes.SUCCESS_STATE}`]: {
             ":before": {
               borderBottomColor:
                 mobileTheme.success.idle.input.borderBottomColor,
@@ -430,6 +456,21 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
                 borderBottomColor:
                   desktopTheme.success.idle.input.borderBottomColor,
               },
+            },
+          },
+          [`&.${Classes.MULTILINE}`]: {
+            // padding values differ slightly from non-multiline since a `textarea` is rendered rather than an `input`.
+            paddingTop: 16,
+            paddingBottom: 15,
+
+            // height is overridden to allow the input to expand with any number of lines
+            height: "auto",
+            minHeight: mobileTheme.default.idle.input.height,
+            [muiTheme.breakpoints.up("tablet")]: {
+              minHeight: tabletTheme.default.idle.input.height,
+            },
+            [muiTheme.breakpoints.up("desktop")]: {
+              minHeight: desktopTheme.default.idle.input.height,
             },
           },
         },
