@@ -1,6 +1,6 @@
 # Typography
 
-Any text based components should utilise the `Typography` component. The Typography component behaves in a similar way to the [Material UI Typography](https://next.material-ui.com/components/typography/#main-content) component. The main differences are the variants which can be used alongside the addition of the concept of `state` within the component to recolour text based on its "state".
+Any text based components should utilise the `Typography` component. The Typography component behaves in a similar way to the [Material UI Typography](https://next.material-ui.com/components/typography/#main-content) component. The main differences are the variants which can be used alongside the addition of the concept of `state` within the component to recolour text based on its "state". Please [refer to the DSM](https://utilitywarehouse.invisionapp.com/dsm/utilitywarehouse/web-beta/nav/5fa7cb708c012000183622c4/folder/5f9ad52d250db165d5041785?mode=preview) to see the Typography foundations.
 
 ## Usage
 
@@ -26,28 +26,23 @@ import { Typography } from "@utilitywarehouse/customer-ui-material";
 
 // Default, body
 <Typography variant="default">body</Typography>
+<Typography variant="body">body</Typography>
 <Typography>body</Typography>
 
-// Smaller body text
-<Typography variant="small">small body</Typography>
+// Display Heading
+<Typography variant="displayHeading">display heading</Typography>
 
-// label
-<Typography variant="label">label</Typography>
-
-// Headline
-<Typography variant="headline">headline</Typography>
-
-// Subheading
-<Typography variant="subheading">subheading</Typography>
-
-// Footnote
-<Typography variant="footnote">footnote</Typography>
+// Subtitle
+<Typography variant="subtitle">subtitle</Typography>
 
 // Caption
 <Typography variant="caption">caption</Typography>
 
-// Interactive
-<Typography variant="interactive">interactive</Typography>
+// Legal Note
+<Typography variant="legalNote">legal note</Typography>
+
+// Inherit styles
+<Typography variant="inherit">inherit</Typography>
 
 ```
 
