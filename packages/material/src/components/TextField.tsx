@@ -460,6 +460,8 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
           },
           [`&.${Classes.MULTILINE}`]: {
             height: "auto",
+            paddingTop: 16,
+            paddingBottom: 15,
             minHeight: mobileTheme.default.idle.input.height,
             [muiTheme.breakpoints.up("tablet")]: {
               minHeight: tabletTheme.default.idle.input.height,
