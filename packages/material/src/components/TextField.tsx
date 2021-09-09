@@ -35,7 +35,7 @@ export interface TextFieldProps
   helperTextProps?: {
     id: string;
   };
-  multiline: boolean;
+  multiline?: boolean;
 }
 
 const SuccessIcon = styled(SuccessOutlined)({ fill: colors.jewel });
