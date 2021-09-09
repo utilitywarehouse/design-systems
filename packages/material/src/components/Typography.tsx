@@ -32,7 +32,6 @@ declare module "@material-ui/core/styles" {
   }
 }
 
-// Update the Typography's variant prop options
 declare module "@material-ui/core/Typography" {
   interface TypographyPropsVariantOverrides {
     default: true;
