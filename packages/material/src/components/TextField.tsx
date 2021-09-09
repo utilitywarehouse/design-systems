@@ -459,9 +459,12 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
             },
           },
           [`&.${Classes.MULTILINE}`]: {
-            height: "auto",
+            // padding values differ slightly from non-multiline since a `textarea` is rendered rather than an `input`.
             paddingTop: 16,
             paddingBottom: 15,
+
+            // height is overridden to allow the input to expand with any number of lines
+            height: "auto",
             minHeight: mobileTheme.default.idle.input.height,
             [muiTheme.breakpoints.up("tablet")]: {
               minHeight: tabletTheme.default.idle.input.height,
