@@ -19,15 +19,13 @@ const typographyVariants: { [key in TypographyProps["variant"]]: boolean } = {
   h3: true,
   h4: true,
   h5: true,
-  headline: true,
-  subheading: true,
   default: true,
+  displayHeading: true,
+  subtitle: true,
+  body: true,
+  legalNote: true,
   caption: true,
-  label: true,
-  small: true,
   inherit: false,
-  footnote: true,
-  interactive: true,
 };
 
 const linkTypographyVariants = Object.keys(typographyVariants).filter(
