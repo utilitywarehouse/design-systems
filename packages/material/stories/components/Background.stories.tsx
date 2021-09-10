@@ -76,7 +76,7 @@ Level0.storyName = "level0";
 
 export const Level1 = bindTemplate({
   backgroundColor: "level1",
-  title: "Level 1 Background (Purple)",
+  title: "Level 1 Background (Dark Tint)",
 });
 Level1.storyName = "level1";
 
