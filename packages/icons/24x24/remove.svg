@@ -1,14 +1,4 @@
 <svg width="24" height="24" class="customer-ui__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Remove</title>
-  <defs>
-    <path d="M17.95 11a1 1 0 01.117 1.993l-.116.007L6 13.005a1 1 0 01-.118-1.993L6 11.005 17.95 11z" id="a"/>
-  </defs>
-  <g stroke="none" stroke-width="1" fill="inherit" fill-rule="evenodd">
-    <path fill="none" d="M0 0h24v24H0z"/>
-    <mask id="b" fill="#fff">
-      <use xlink:href="#a"/>
-    </mask>
-    <use fill="inherit" fill-rule="nonzero" xlink:href="#a"/>
-    <path fill="inherit" mask="url(#b)" d="M0 0h24v24H0z"/>
-  </g>
+  <path d="M17.95 11a1 1 0 01.117 1.993l-.116.007L6 13.005a1 1 0 01-.118-1.993L6 11.005 17.95 11z" fill="inherit" />
 </svg>

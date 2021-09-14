@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg class="customer-ui__icon" width="48px" height="48px" stroke="#000000" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg class="customer-ui__icon" width="48" height="48" viewBox="0 0 48 48" fill="#000000" xmlns="http://www.w3.org/2000/svg">
     <title>Cashback card</title>
-    <defs>
-        <path d="M34,19 L0,19 L0,24.1 C0,25.15 0.85,26 1.9,26 L36.1,26 C37.15,26 38,25.15 38,24.1 L38,1.9 C38,0.85 37.15,0 36.1,0 L1.9,0 C0.85,0 0,0.85 0,1.9 L0,15" id="path-2"></path>
-    </defs>
-    <g id="Icon-/-48px-/-Cashback-card" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Cashback_Card">
-            <g id="Combined-shape">
-                <g transform="translate(5.000000, 11.000000)">
-                    <mask id="mask-3" fill="white">
-                        <use xlink:href="#path-2"></use>
-                    </mask>
-                    <use id="Path" stroke="inherit" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-2"></use>
-                </g>
-            </g>
-            <rect id="Colour" stroke="none" x="0" y="0" width="48" height="48"></rect>
-        </g>
-    </g>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M4 12.9C4 11.2977 5.29772 10 6.9 10H41.1C42.7023 10 44 11.2977 44 12.9V35.1C44 36.7023 42.7023 38 41.1 38H6.9C5.29772 38 4 36.7023 4 35.1V30C4 29.4477 4.44772 29 5 29H39C39.5523 29 40 29.4477 40 30C40 30.5523 39.5523 31 39 31H6V35.1C6 35.5977 6.40228 36 6.9 36H41.1C41.5977 36 42 35.5977 42 35.1V12.9C42 12.4023 41.5977 12 41.1 12H6.9C6.40228 12 6 12.4023 6 12.9V26C6 26.5523 5.55228 27 5 27C4.44772 27 4 26.5523 4 26V12.9Z" fill="inherit" />
 </svg>
