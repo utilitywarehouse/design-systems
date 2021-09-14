@@ -1,14 +1,4 @@
 <svg width="24" height="24" class="customer-ui__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Add</title>
-  <defs>
-    <path d="M12 5a1 1 0 01.993.883L13 6v5.001L17.95 11a1 1 0 01.117 1.993l-.116.007-4.951.001V18a1 1 0 01-1.993.117L11 18v-4.998l-5 .003a1 1 0 01-.117-1.993L6 11.005l5-.003V6a1 1 0 011-1z" id="a"/>
-  </defs>
-  <g stroke="none" stroke-width="1" fill="inherit" fill-rule="evenodd">
-    <path fill="none" d="M0 0h24v24H0z"/>
-    <mask id="b" fill="#fff">
-      <use xlink:href="#a"/>
-    </mask>
-    <use fill="inherit" fill-rule="nonzero" xlink:href="#a"/>
-    <path fill="inherit" mask="url(#b)" d="M0 0h24v24H0z"/>
-  </g>
+  <title>Add</title>
+  <path d="M12 5a1 1 0 01.993.883L13 6v5.001L17.95 11a1 1 0 01.117 1.993l-.116.007-4.951.001V18a1 1 0 01-1.993.117L11 18v-4.998l-5 .003a1 1 0 01-.117-1.993L6 11.005l5-.003V6a1 1 0 011-1z" fill="inherit" />
 </svg>
