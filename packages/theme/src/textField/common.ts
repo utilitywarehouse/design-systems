@@ -25,8 +25,8 @@ const commonStyles = {
     transition: `border ${duration}ms ${easingFunction}`,
   },
   label: {
-    fontFamily: fonts.primary,
-    fontWeight: fontWeights.primary,
+    fontFamily: fonts.secondary,
+    fontWeight: fontWeights.secondary.semibold,
     fontSize: "0.875rem",
     marginBottom: spacing(1),
   },
