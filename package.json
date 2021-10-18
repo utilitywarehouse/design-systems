@@ -21,6 +21,7 @@
     "lerna": "^3.22.1",
     "pinst": "^2.1.1",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "semantic-release": "^17.3.2",
     "semantic-release-monorepo": "^7.0.4",
     "surge": "^0.21.7",
@@ -33,7 +34,8 @@
     "postpublish": "pinst --disable",
     "lint": "eslint . && prettier --check .",
     "lint:fix": "eslint --fix .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "clean": "lerna clean && rimraf node_modules"
   },
   "workspaces": [
     "packages/*"
