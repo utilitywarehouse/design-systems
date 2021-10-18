@@ -1,10 +1,10 @@
 import React from "react";
-import { StylesProviderProps } from "@material-ui/styles";
+import { StylesProviderProps } from "@mui/styles";
 import { GenerateId } from "jss";
 import { MuiStylesProvider, createGenerateClassName } from "..";
 import { getRandomString } from "../lib/random";
 
-export type { StylesProviderProps } from "@material-ui/styles";
+export type { StylesProviderProps } from "@mui/styles";
 
 const StylesProvider: React.FunctionComponent<StylesProviderProps> = (
   props

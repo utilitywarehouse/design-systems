@@ -1,176 +1,172 @@
-export type {
-  StyledComponentProps,
-  PaletteMode,
-  Color,
-} from "@material-ui/core";
+export type { StyledComponentProps, PaletteMode, Color } from "@mui/material";
 
-export * as colors from "@material-ui/core/colors";
-export * from "@material-ui/core/utils";
+export * as colors from "@mui/material/colors";
+export * from "@mui/material/utils";
 
 export * from "./styles";
 
-export { default as Accordion } from "@material-ui/core/Accordion";
-export * from "@material-ui/core/Accordion";
+export { default as Accordion } from "@mui/material/Accordion";
+export * from "@mui/material/Accordion";
 
-export { default as AccordionActions } from "@material-ui/core/AccordionActions";
-export * from "@material-ui/core/AccordionActions";
+export { default as AccordionActions } from "@mui/material/AccordionActions";
+export * from "@mui/material/AccordionActions";
 
-export { default as AccordionDetails } from "@material-ui/core/AccordionDetails";
-export * from "@material-ui/core/AccordionDetails";
+export { default as AccordionDetails } from "@mui/material/AccordionDetails";
+export * from "@mui/material/AccordionDetails";
 
-export { default as AccordionSummary } from "@material-ui/core/AccordionSummary";
-export * from "@material-ui/core/AccordionSummary";
+export { default as AccordionSummary } from "@mui/material/AccordionSummary";
+export * from "@mui/material/AccordionSummary";
 
-export { default as Alert } from "@material-ui/core/Alert";
-export * from "@material-ui/core/Alert";
+export { default as Alert } from "@mui/material/Alert";
+export * from "@mui/material/Alert";
 
-export { default as AlertTitle } from "@material-ui/core/AlertTitle";
-export * from "@material-ui/core/AlertTitle";
+export { default as AlertTitle } from "@mui/material/AlertTitle";
+export * from "@mui/material/AlertTitle";
 
-export { default as AppBar } from "@material-ui/core/AppBar";
-export * from "@material-ui/core/AppBar";
+export { default as AppBar } from "@mui/material/AppBar";
+export * from "@mui/material/AppBar";
 
-export { default as Autocomplete } from "@material-ui/core/Autocomplete";
-export * from "@material-ui/core/Autocomplete";
+export { default as Autocomplete } from "@mui/material/Autocomplete";
+export * from "@mui/material/Autocomplete";
 
-export { default as Avatar } from "@material-ui/core/Avatar";
-export * from "@material-ui/core/Avatar";
+export { default as Avatar } from "@mui/material/Avatar";
+export * from "@mui/material/Avatar";
 
-export { default as AvatarGroup } from "@material-ui/core/AvatarGroup";
-export * from "@material-ui/core/AvatarGroup";
+export { default as AvatarGroup } from "@mui/material/AvatarGroup";
+export * from "@mui/material/AvatarGroup";
 
-export { default as Backdrop } from "@material-ui/core/Backdrop";
-export * from "@material-ui/core/Backdrop";
+export { default as Backdrop } from "@mui/material/Backdrop";
+export * from "@mui/material/Backdrop";
 
-export { default as Badge } from "@material-ui/core/Badge";
-export * from "@material-ui/core/Badge";
+export { default as Badge } from "@mui/material/Badge";
+export * from "@mui/material/Badge";
 
-export { default as BottomNavigation } from "@material-ui/core/BottomNavigation";
-export * from "@material-ui/core/BottomNavigation";
+export { default as BottomNavigation } from "@mui/material/BottomNavigation";
+export * from "@mui/material/BottomNavigation";
 
-export { default as BottomNavigationAction } from "@material-ui/core/BottomNavigationAction";
-export * from "@material-ui/core/BottomNavigationAction";
+export { default as BottomNavigationAction } from "@mui/material/BottomNavigationAction";
+export * from "@mui/material/BottomNavigationAction";
 
-export { default as Box } from "@material-ui/core/Box";
-export * from "@material-ui/core/Box";
+export { default as Box } from "@mui/material/Box";
+export * from "@mui/material/Box";
 
-export { default as Breadcrumbs } from "@material-ui/core/Breadcrumbs";
-export * from "@material-ui/core/Breadcrumbs";
+export { default as Breadcrumbs } from "@mui/material/Breadcrumbs";
+export * from "@mui/material/Breadcrumbs";
 
-export { default as MuiButton } from "@material-ui/core/Button";
-export { buttonClasses } from "@material-ui/core/Button";
-export * from "@material-ui/core/Button/buttonClasses";
+export { default as MuiButton } from "@mui/material/Button";
+export { buttonClasses } from "@mui/material/Button";
+export * from "@mui/material/Button/buttonClasses";
 export type {
   ButtonPropsVariantOverrides,
   ButtonTypeMap,
   ExtendButton,
   ButtonProps as MuiButtonProps,
   ButtonClassKey,
-} from "@material-ui/core/Button";
+} from "@mui/material/Button";
 
-export { default as ButtonBase } from "@material-ui/core/ButtonBase";
-export * from "@material-ui/core/ButtonBase";
+export { default as ButtonBase } from "@mui/material/ButtonBase";
+export * from "@mui/material/ButtonBase";
 
-export { default as ButtonGroup } from "@material-ui/core/ButtonGroup";
-export * from "@material-ui/core/ButtonGroup";
+export { default as ButtonGroup } from "@mui/material/ButtonGroup";
+export * from "@mui/material/ButtonGroup";
 
 export {
   default as MuiCard,
   cardClasses,
   getCardUtilityClass,
-} from "@material-ui/core/Card";
+} from "@mui/material/Card";
 export type {
   CardProps as MuiCardProps,
   CardClassKey,
   CardClasses,
-} from "@material-ui/core/Card";
+} from "@mui/material/Card";
 
-export { default as CardActionArea } from "@material-ui/core/CardActionArea";
-export * from "@material-ui/core/CardActionArea";
+export { default as CardActionArea } from "@mui/material/CardActionArea";
+export * from "@mui/material/CardActionArea";
 
-export { default as CardActions } from "@material-ui/core/CardActions";
-export * from "@material-ui/core/CardActions";
+export { default as CardActions } from "@mui/material/CardActions";
+export * from "@mui/material/CardActions";
 
-export { default as CardContent } from "@material-ui/core/CardContent";
-export * from "@material-ui/core/CardContent";
+export { default as CardContent } from "@mui/material/CardContent";
+export * from "@mui/material/CardContent";
 
-export { default as CardHeader } from "@material-ui/core/CardHeader";
-export * from "@material-ui/core/CardHeader";
+export { default as CardHeader } from "@mui/material/CardHeader";
+export * from "@mui/material/CardHeader";
 
-export { default as CardMedia } from "@material-ui/core/CardMedia";
-export * from "@material-ui/core/CardMedia";
+export { default as CardMedia } from "@mui/material/CardMedia";
+export * from "@mui/material/CardMedia";
 
-export { default as Checkbox } from "@material-ui/core/Checkbox";
-export * from "@material-ui/core/Checkbox";
+export { default as Checkbox } from "@mui/material/Checkbox";
+export * from "@mui/material/Checkbox";
 
-export { default as Chip } from "@material-ui/core/Chip";
-export * from "@material-ui/core/Chip";
+export { default as Chip } from "@mui/material/Chip";
+export * from "@mui/material/Chip";
 
-export { default as CircularProgress } from "@material-ui/core/CircularProgress";
-export * from "@material-ui/core/CircularProgress";
+export { default as CircularProgress } from "@mui/material/CircularProgress";
+export * from "@mui/material/CircularProgress";
 
-export { default as ClickAwayListener } from "@material-ui/core/ClickAwayListener";
-export * from "@material-ui/core/ClickAwayListener";
+export { default as ClickAwayListener } from "@mui/material/ClickAwayListener";
+export * from "@mui/material/ClickAwayListener";
 
-export { default as Collapse } from "@material-ui/core/Collapse";
-export * from "@material-ui/core/Collapse";
+export { default as Collapse } from "@mui/material/Collapse";
+export * from "@mui/material/Collapse";
 
-export { default as MuiContainer } from "@material-ui/core/Container";
-export * from "@material-ui/core/Container";
+export { default as MuiContainer } from "@mui/material/Container";
+export * from "@mui/material/Container";
 
-export { default as CssBaseline } from "@material-ui/core/CssBaseline";
-export * from "@material-ui/core/CssBaseline";
+export { default as CssBaseline } from "@mui/material/CssBaseline";
+export * from "@mui/material/CssBaseline";
 
-export { default as Dialog } from "@material-ui/core/Dialog";
-export * from "@material-ui/core/Dialog";
+export { default as Dialog } from "@mui/material/Dialog";
+export * from "@mui/material/Dialog";
 
-export { default as DialogActions } from "@material-ui/core/DialogActions";
-export * from "@material-ui/core/DialogActions";
+export { default as DialogActions } from "@mui/material/DialogActions";
+export * from "@mui/material/DialogActions";
 
-export { default as DialogContent } from "@material-ui/core/DialogContent";
-export * from "@material-ui/core/DialogContent";
+export { default as DialogContent } from "@mui/material/DialogContent";
+export * from "@mui/material/DialogContent";
 
-export { default as DialogContentText } from "@material-ui/core/DialogContentText";
-export * from "@material-ui/core/DialogContentText";
+export { default as DialogContentText } from "@mui/material/DialogContentText";
+export * from "@mui/material/DialogContentText";
 
-export { default as DialogTitle } from "@material-ui/core/DialogTitle";
-export * from "@material-ui/core/DialogTitle";
+export { default as DialogTitle } from "@mui/material/DialogTitle";
+export * from "@mui/material/DialogTitle";
 
-export { default as Divider } from "@material-ui/core/Divider";
-export * from "@material-ui/core/Divider";
+export { default as Divider } from "@mui/material/Divider";
+export * from "@mui/material/Divider";
 
-export { default as Drawer } from "@material-ui/core/Drawer";
-export * from "@material-ui/core/Drawer";
+export { default as Drawer } from "@mui/material/Drawer";
+export * from "@mui/material/Drawer";
 
-export { default as Fab } from "@material-ui/core/Fab";
-export * from "@material-ui/core/Fab";
+export { default as Fab } from "@mui/material/Fab";
+export * from "@mui/material/Fab";
 
-export { default as Fade } from "@material-ui/core/Fade";
-export * from "@material-ui/core/Fade";
+export { default as Fade } from "@mui/material/Fade";
+export * from "@mui/material/Fade";
 
-export { default as FilledInput } from "@material-ui/core/FilledInput";
-export * from "@material-ui/core/FilledInput";
+export { default as FilledInput } from "@mui/material/FilledInput";
+export * from "@mui/material/FilledInput";
 
-export { default as FormControl } from "@material-ui/core/FormControl";
-export * from "@material-ui/core/FormControl";
+export { default as FormControl } from "@mui/material/FormControl";
+export * from "@mui/material/FormControl";
 
-export { default as FormControlLabel } from "@material-ui/core/FormControlLabel";
-export * from "@material-ui/core/FormControlLabel";
+export { default as FormControlLabel } from "@mui/material/FormControlLabel";
+export * from "@mui/material/FormControlLabel";
 
-export { default as FormGroup } from "@material-ui/core/FormGroup";
-export * from "@material-ui/core/FormGroup";
+export { default as FormGroup } from "@mui/material/FormGroup";
+export * from "@mui/material/FormGroup";
 
-export { default as FormHelperText } from "@material-ui/core/FormHelperText";
-export * from "@material-ui/core/FormHelperText";
+export { default as FormHelperText } from "@mui/material/FormHelperText";
+export * from "@mui/material/FormHelperText";
 
-export { default as FormLabel } from "@material-ui/core/FormLabel";
-export * from "@material-ui/core/FormLabel";
+export { default as FormLabel } from "@mui/material/FormLabel";
+export * from "@mui/material/FormLabel";
 
 export {
   default as MuiGrid,
   gridClasses,
   getGridUtilityClass,
-} from "@material-ui/core/Grid";
+} from "@mui/material/Grid";
 export type {
   GridProps as MuiGridProps,
   GridDirection,
@@ -180,287 +176,287 @@ export type {
   GridClassKey,
   GridTypeMap,
   GridClasses,
-} from "@material-ui/core/Grid";
+} from "@mui/material/Grid";
 
-export { default as Grow } from "@material-ui/core/Grow";
-export * from "@material-ui/core/Grow";
+export { default as Grow } from "@mui/material/Grow";
+export * from "@mui/material/Grow";
 
-export { default as MuiIcon } from "@material-ui/core/Icon";
-export { getIconUtilityClass, iconClasses } from "@material-ui/core/Icon";
+export { default as MuiIcon } from "@mui/material/Icon";
+export { getIconUtilityClass, iconClasses } from "@mui/material/Icon";
 export type {
   IconTypeMap,
   IconClassKey,
   IconProps as MuiIconProps,
   IconClasses,
-} from "@material-ui/core/Icon";
+} from "@mui/material/Icon";
 
-export { default as IconButton } from "@material-ui/core/IconButton";
-export * from "@material-ui/core/IconButton";
+export { default as IconButton } from "@mui/material/IconButton";
+export * from "@mui/material/IconButton";
 
-export { default as ImageList } from "@material-ui/core/ImageList";
-export * from "@material-ui/core/ImageList";
+export { default as ImageList } from "@mui/material/ImageList";
+export * from "@mui/material/ImageList";
 
-export { default as ImageListItem } from "@material-ui/core/ImageListItem";
-export * from "@material-ui/core/ImageListItem";
+export { default as ImageListItem } from "@mui/material/ImageListItem";
+export * from "@mui/material/ImageListItem";
 
-export { default as ImageListItemBar } from "@material-ui/core/ImageListItemBar";
-export * from "@material-ui/core/ImageListItemBar";
+export { default as ImageListItemBar } from "@mui/material/ImageListItemBar";
+export * from "@mui/material/ImageListItemBar";
 
-export { default as Input } from "@material-ui/core/Input";
-export * from "@material-ui/core/Input";
+export { default as Input } from "@mui/material/Input";
+export * from "@mui/material/Input";
 
-export { default as InputAdornment } from "@material-ui/core/InputAdornment";
-export * from "@material-ui/core/InputAdornment";
+export { default as InputAdornment } from "@mui/material/InputAdornment";
+export * from "@mui/material/InputAdornment";
 
-export { default as InputBase } from "@material-ui/core/InputBase";
-export * from "@material-ui/core/InputBase";
+export { default as InputBase } from "@mui/material/InputBase";
+export * from "@mui/material/InputBase";
 
-export { default as InputLabel } from "@material-ui/core/InputLabel";
-export * from "@material-ui/core/InputLabel";
+export { default as InputLabel } from "@mui/material/InputLabel";
+export * from "@mui/material/InputLabel";
 
-export { default as LinearProgress } from "@material-ui/core/LinearProgress";
-export * from "@material-ui/core/LinearProgress";
+export { default as LinearProgress } from "@mui/material/LinearProgress";
+export * from "@mui/material/LinearProgress";
 
-export { default as MuiLink } from "@material-ui/core/Link";
-export { linkClasses, getLinkUtilityClass } from "@material-ui/core/Link";
+export { default as MuiLink } from "@mui/material/Link";
+export { linkClasses, getLinkUtilityClass } from "@mui/material/Link";
 export type {
   LinkProps as MuiLinkProps,
   LinkTypeMap,
   LinkClassKey,
   LinkBaseProps,
   LinkClasses,
-} from "@material-ui/core/Link";
+} from "@mui/material/Link";
 
-export { default as List } from "@material-ui/core/List";
-export * from "@material-ui/core/List";
+export { default as List } from "@mui/material/List";
+export * from "@mui/material/List";
 
-export { default as ListItem } from "@material-ui/core/ListItem";
-export * from "@material-ui/core/ListItem";
+export { default as ListItem } from "@mui/material/ListItem";
+export * from "@mui/material/ListItem";
 
-export { default as ListItemAvatar } from "@material-ui/core/ListItemAvatar";
-export * from "@material-ui/core/ListItemAvatar";
+export { default as ListItemAvatar } from "@mui/material/ListItemAvatar";
+export * from "@mui/material/ListItemAvatar";
 
-export { default as ListItemButton } from "@material-ui/core/ListItemButton";
-export * from "@material-ui/core/ListItemButton";
+export { default as ListItemButton } from "@mui/material/ListItemButton";
+export * from "@mui/material/ListItemButton";
 
-export { default as ListItemIcon } from "@material-ui/core/ListItemIcon";
-export * from "@material-ui/core/ListItemIcon";
+export { default as ListItemIcon } from "@mui/material/ListItemIcon";
+export * from "@mui/material/ListItemIcon";
 
-export { default as ListItemSecondaryAction } from "@material-ui/core/ListItemSecondaryAction";
-export * from "@material-ui/core/ListItemSecondaryAction";
+export { default as ListItemSecondaryAction } from "@mui/material/ListItemSecondaryAction";
+export * from "@mui/material/ListItemSecondaryAction";
 
-export { default as ListItemText } from "@material-ui/core/ListItemText";
-export * from "@material-ui/core/ListItemText";
+export { default as ListItemText } from "@mui/material/ListItemText";
+export * from "@mui/material/ListItemText";
 
-export { default as ListSubheader } from "@material-ui/core/ListSubheader";
-export * from "@material-ui/core/ListSubheader";
+export { default as ListSubheader } from "@mui/material/ListSubheader";
+export * from "@mui/material/ListSubheader";
 
-export { default as MuiMenu } from "@material-ui/core/Menu";
-export { menuClasses, getMenuUtilityClass } from "@material-ui/core/Menu";
+export { default as MuiMenu } from "@mui/material/Menu";
+export { menuClasses, getMenuUtilityClass } from "@mui/material/Menu";
 export type {
   MenuProps as MuiMenuProps,
   MenuClassKey,
   MenuClasses,
-} from "@material-ui/core/Menu";
+} from "@mui/material/Menu";
 
-export { default as MuiMenuItem } from "@material-ui/core/MenuItem";
+export { default as MuiMenuItem } from "@mui/material/MenuItem";
 export {
   getMenuItemUtilityClass,
   menuItemClasses,
-} from "@material-ui/core/MenuItem";
+} from "@mui/material/MenuItem";
 export type {
   MenuItemProps as MuiMenuItemProps,
   MenuItemClassKey,
   MenuItemTypeMap,
-} from "@material-ui/core/MenuItem";
+} from "@mui/material/MenuItem";
 
-export { default as MenuList } from "@material-ui/core/MenuList";
-export * from "@material-ui/core/MenuList";
+export { default as MenuList } from "@mui/material/MenuList";
+export * from "@mui/material/MenuList";
 
-export { default as MobileStepper } from "@material-ui/core/MobileStepper";
-export * from "@material-ui/core/MobileStepper";
+export { default as MobileStepper } from "@mui/material/MobileStepper";
+export * from "@mui/material/MobileStepper";
 
-export { default as Modal } from "@material-ui/core/Modal";
-export * from "@material-ui/core/Modal";
+export { default as Modal } from "@mui/material/Modal";
+export * from "@mui/material/Modal";
 
-export { default as NativeSelect } from "@material-ui/core/NativeSelect";
-export * from "@material-ui/core/NativeSelect";
+export { default as NativeSelect } from "@mui/material/NativeSelect";
+export * from "@mui/material/NativeSelect";
 
-export { default as NoSsr } from "@material-ui/core/NoSsr";
-export * from "@material-ui/core/NoSsr";
+export { default as NoSsr } from "@mui/material/NoSsr";
+export * from "@mui/material/NoSsr";
 
-export { default as OutlinedInput } from "@material-ui/core/OutlinedInput";
-export * from "@material-ui/core/OutlinedInput";
+export { default as OutlinedInput } from "@mui/material/OutlinedInput";
+export * from "@mui/material/OutlinedInput";
 
-export { default as Pagination } from "@material-ui/core/Pagination";
-export * from "@material-ui/core/Pagination";
+export { default as Pagination } from "@mui/material/Pagination";
+export * from "@mui/material/Pagination";
 
-export { default as PaginationItem } from "@material-ui/core/PaginationItem";
-export * from "@material-ui/core/PaginationItem";
+export { default as PaginationItem } from "@mui/material/PaginationItem";
+export * from "@mui/material/PaginationItem";
 
-export { default as Paper } from "@material-ui/core/Paper";
-export * from "@material-ui/core/Paper";
+export { default as Paper } from "@mui/material/Paper";
+export * from "@mui/material/Paper";
 
-export { default as Popover } from "@material-ui/core/Popover";
-export * from "@material-ui/core/Popover";
+export { default as Popover } from "@mui/material/Popover";
+export * from "@mui/material/Popover";
 
-export { default as Popper } from "@material-ui/core/Popper";
-export * from "@material-ui/core/Popper";
+export { default as Popper } from "@mui/material/Popper";
+export * from "@mui/material/Popper";
 
-export { default as Portal } from "@material-ui/core/Portal";
-export * from "@material-ui/core/Portal";
+export { default as Portal } from "@mui/material/Portal";
+export * from "@mui/material/Portal";
 
-export { default as Radio } from "@material-ui/core/Radio";
-export * from "@material-ui/core/Radio";
+export { default as Radio } from "@mui/material/Radio";
+export * from "@mui/material/Radio";
 
-export { default as RadioGroup } from "@material-ui/core/RadioGroup";
-export * from "@material-ui/core/RadioGroup";
+export { default as RadioGroup } from "@mui/material/RadioGroup";
+export * from "@mui/material/RadioGroup";
 
-export { default as Rating } from "@material-ui/core/Rating";
-export * from "@material-ui/core/Rating";
+export { default as Rating } from "@mui/material/Rating";
+export * from "@mui/material/Rating";
 
-export { default as ScopedCssBaseline } from "@material-ui/core/ScopedCssBaseline";
-export * from "@material-ui/core/ScopedCssBaseline";
+export { default as ScopedCssBaseline } from "@mui/material/ScopedCssBaseline";
+export * from "@mui/material/ScopedCssBaseline";
 
-export { default as Select } from "@material-ui/core/Select";
-export * from "@material-ui/core/Select";
+export { default as Select } from "@mui/material/Select";
+export * from "@mui/material/Select";
 
-export { default as Skeleton } from "@material-ui/core/Skeleton";
-export * from "@material-ui/core/Skeleton";
+export { default as Skeleton } from "@mui/material/Skeleton";
+export * from "@mui/material/Skeleton";
 
-export { default as Slide } from "@material-ui/core/Slide";
-export * from "@material-ui/core/Slide";
+export { default as Slide } from "@mui/material/Slide";
+export * from "@mui/material/Slide";
 
-export { default as Slider } from "@material-ui/core/Slider";
-export * from "@material-ui/core/Slider";
+export { default as Slider } from "@mui/material/Slider";
+export * from "@mui/material/Slider";
 
-export { default as Snackbar } from "@material-ui/core/Snackbar";
-export * from "@material-ui/core/Snackbar";
+export { default as Snackbar } from "@mui/material/Snackbar";
+export * from "@mui/material/Snackbar";
 
-export { default as SnackbarContent } from "@material-ui/core/SnackbarContent";
-export * from "@material-ui/core/SnackbarContent";
+export { default as SnackbarContent } from "@mui/material/SnackbarContent";
+export * from "@mui/material/SnackbarContent";
 
-export { default as SpeedDial } from "@material-ui/core/SpeedDial";
-export * from "@material-ui/core/SpeedDial";
+export { default as SpeedDial } from "@mui/material/SpeedDial";
+export * from "@mui/material/SpeedDial";
 
-export { default as SpeedDialAction } from "@material-ui/core/SpeedDialAction";
-export * from "@material-ui/core/SpeedDialAction";
+export { default as SpeedDialAction } from "@mui/material/SpeedDialAction";
+export * from "@mui/material/SpeedDialAction";
 
-export { default as SpeedDialIcon } from "@material-ui/core/SpeedDialIcon";
-export * from "@material-ui/core/SpeedDialIcon";
+export { default as SpeedDialIcon } from "@mui/material/SpeedDialIcon";
+export * from "@mui/material/SpeedDialIcon";
 
-export { default as Stack } from "@material-ui/core/Stack";
-export * from "@material-ui/core/Stack";
+export { default as Stack } from "@mui/material/Stack";
+export * from "@mui/material/Stack";
 
-export { default as Step } from "@material-ui/core/Step";
-export * from "@material-ui/core/Step";
+export { default as Step } from "@mui/material/Step";
+export * from "@mui/material/Step";
 
-export { default as StepButton } from "@material-ui/core/StepButton";
-export * from "@material-ui/core/StepButton";
+export { default as StepButton } from "@mui/material/StepButton";
+export * from "@mui/material/StepButton";
 
-export { default as StepConnector } from "@material-ui/core/StepConnector";
-export * from "@material-ui/core/StepConnector";
+export { default as StepConnector } from "@mui/material/StepConnector";
+export * from "@mui/material/StepConnector";
 
-export { default as StepContent } from "@material-ui/core/StepContent";
-export * from "@material-ui/core/StepContent";
+export { default as StepContent } from "@mui/material/StepContent";
+export * from "@mui/material/StepContent";
 
-export { default as StepIcon } from "@material-ui/core/StepIcon";
-export * from "@material-ui/core/StepIcon";
+export { default as StepIcon } from "@mui/material/StepIcon";
+export * from "@mui/material/StepIcon";
 
-export { default as StepLabel } from "@material-ui/core/StepLabel";
-export * from "@material-ui/core/StepLabel";
+export { default as StepLabel } from "@mui/material/StepLabel";
+export * from "@mui/material/StepLabel";
 
-export { default as Stepper } from "@material-ui/core/Stepper";
-export * from "@material-ui/core/Stepper";
+export { default as Stepper } from "@mui/material/Stepper";
+export * from "@mui/material/Stepper";
 
-export { default as SvgIcon } from "@material-ui/core/SvgIcon";
-export * from "@material-ui/core/SvgIcon";
+export { default as SvgIcon } from "@mui/material/SvgIcon";
+export * from "@mui/material/SvgIcon";
 
-export { default as SwipeableDrawer } from "@material-ui/core/SwipeableDrawer";
-export * from "@material-ui/core/SwipeableDrawer";
+export { default as SwipeableDrawer } from "@mui/material/SwipeableDrawer";
+export * from "@mui/material/SwipeableDrawer";
 
-export { default as Switch } from "@material-ui/core/Switch";
-export * from "@material-ui/core/Switch";
+export { default as Switch } from "@mui/material/Switch";
+export * from "@mui/material/Switch";
 
-export { default as Tab } from "@material-ui/core/Tab";
-export * from "@material-ui/core/Tab";
+export { default as Tab } from "@mui/material/Tab";
+export * from "@mui/material/Tab";
 
-export { default as Table } from "@material-ui/core/Table";
-export * from "@material-ui/core/Table";
+export { default as Table } from "@mui/material/Table";
+export * from "@mui/material/Table";
 
-export { default as TableBody } from "@material-ui/core/TableBody";
-export * from "@material-ui/core/TableBody";
+export { default as TableBody } from "@mui/material/TableBody";
+export * from "@mui/material/TableBody";
 
-export { default as TableCell } from "@material-ui/core/TableCell";
-export * from "@material-ui/core/TableCell";
+export { default as TableCell } from "@mui/material/TableCell";
+export * from "@mui/material/TableCell";
 
-export { default as TableContainer } from "@material-ui/core/TableContainer";
-export * from "@material-ui/core/TableContainer";
+export { default as TableContainer } from "@mui/material/TableContainer";
+export * from "@mui/material/TableContainer";
 
-export { default as TableFooter } from "@material-ui/core/TableFooter";
-export * from "@material-ui/core/TableFooter";
+export { default as TableFooter } from "@mui/material/TableFooter";
+export * from "@mui/material/TableFooter";
 
-export { default as TableHead } from "@material-ui/core/TableHead";
-export * from "@material-ui/core/TableHead";
+export { default as TableHead } from "@mui/material/TableHead";
+export * from "@mui/material/TableHead";
 
-export { default as TablePagination } from "@material-ui/core/TablePagination";
-export * from "@material-ui/core/TablePagination";
+export { default as TablePagination } from "@mui/material/TablePagination";
+export * from "@mui/material/TablePagination";
 
-export { default as TableRow } from "@material-ui/core/TableRow";
-export * from "@material-ui/core/TableRow";
+export { default as TableRow } from "@mui/material/TableRow";
+export * from "@mui/material/TableRow";
 
-export { default as TableSortLabel } from "@material-ui/core/TableSortLabel";
-export * from "@material-ui/core/TableSortLabel";
+export { default as TableSortLabel } from "@mui/material/TableSortLabel";
+export * from "@mui/material/TableSortLabel";
 
-export { default as Tabs } from "@material-ui/core/Tabs";
-export * from "@material-ui/core/Tabs";
+export { default as Tabs } from "@mui/material/Tabs";
+export * from "@mui/material/Tabs";
 
-export { default as TabScrollButton } from "@material-ui/core/TabScrollButton";
-export * from "@material-ui/core/TabScrollButton";
+export { default as TabScrollButton } from "@mui/material/TabScrollButton";
+export * from "@mui/material/TabScrollButton";
 
-export { default as MuiTextField } from "@material-ui/core/TextField";
-export * from "@material-ui/core/TextField";
+export { default as MuiTextField } from "@mui/material/TextField";
+export * from "@mui/material/TextField";
 
-export { default as TextareaAutosize } from "@material-ui/core/TextareaAutosize";
-export * from "@material-ui/core/TextareaAutosize";
+export { default as TextareaAutosize } from "@mui/material/TextareaAutosize";
+export * from "@mui/material/TextareaAutosize";
 
-export { default as ToggleButton } from "@material-ui/core/ToggleButton";
-export * from "@material-ui/core/ToggleButton";
+export { default as ToggleButton } from "@mui/material/ToggleButton";
+export * from "@mui/material/ToggleButton";
 
-export { default as ToggleButtonGroup } from "@material-ui/core/ToggleButtonGroup";
-export * from "@material-ui/core/ToggleButtonGroup";
+export { default as ToggleButtonGroup } from "@mui/material/ToggleButtonGroup";
+export * from "@mui/material/ToggleButtonGroup";
 
-export { default as Toolbar } from "@material-ui/core/Toolbar";
-export * from "@material-ui/core/Toolbar";
+export { default as Toolbar } from "@mui/material/Toolbar";
+export * from "@mui/material/Toolbar";
 
-export { default as Tooltip } from "@material-ui/core/Tooltip";
-export * from "@material-ui/core/Tooltip";
+export { default as Tooltip } from "@mui/material/Tooltip";
+export * from "@mui/material/Tooltip";
 
-export { default as MuiTypography } from "@material-ui/core/Typography";
+export { default as MuiTypography } from "@mui/material/Typography";
 export type {
   TypographyPropsVariantOverrides,
   TypographyTypeMap,
   TypographyProps as MuiTypographyProps,
   TypographyClassKey,
-} from "@material-ui/core/Typography";
-export type { Variant } from "@material-ui/core/styles/createTypography";
+} from "@mui/material/Typography";
+export type { Variant } from "@mui/material/styles/createTypography";
 
-export { default as Unstable_TrapFocus } from "@material-ui/core/Unstable_TrapFocus";
-export * from "@material-ui/core/Unstable_TrapFocus";
+export { default as Unstable_TrapFocus } from "@mui/material/Unstable_TrapFocus";
+export * from "@mui/material/Unstable_TrapFocus";
 
-export { default as useMediaQuery } from "@material-ui/core/useMediaQuery";
-export * from "@material-ui/core/useMediaQuery";
+export { default as useMediaQuery } from "@mui/material/useMediaQuery";
+export * from "@mui/material/useMediaQuery";
 
-export { default as useScrollTrigger } from "@material-ui/core/useScrollTrigger";
-export * from "@material-ui/core/useScrollTrigger";
+export { default as useScrollTrigger } from "@mui/material/useScrollTrigger";
+export * from "@mui/material/useScrollTrigger";
 
-export { default as Zoom } from "@material-ui/core/Zoom";
-export * from "@material-ui/core/Zoom";
+export { default as Zoom } from "@mui/material/Zoom";
+export * from "@mui/material/Zoom";
 
-export { default as useAutocomplete } from "@material-ui/core/useAutocomplete";
-export * from "@material-ui/core/useAutocomplete";
+export { default as useAutocomplete } from "@mui/material/useAutocomplete";
+export * from "@mui/material/useAutocomplete";
 
-export { default as GlobalStyles } from "@material-ui/core/GlobalStyles";
-export * from "@material-ui/core/GlobalStyles";
+export { default as GlobalStyles } from "@mui/material/GlobalStyles";
+export * from "@mui/material/GlobalStyles";
 
-export { StyledEngineProvider } from "@material-ui/styled-engine";
+export { StyledEngineProvider } from "@mui/styled-engine";

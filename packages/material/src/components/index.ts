@@ -1,4 +1,4 @@
-import { Theme as MuiTheme } from "@material-ui/core/styles/createTheme";
+import { Theme as MuiTheme } from "@mui/material/styles";
 import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 import { getComponentThemeConfiguration as getButtonComponentThemeConfiguration } from "./Button";
 import { getComponentThemeConfiguration as getLinkComponentThemeConfiguration } from "./Link";

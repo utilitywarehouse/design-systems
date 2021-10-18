@@ -1,5 +1,5 @@
 import React from "react";
-import FilledInput, { FilledInputProps } from "@material-ui/core/FilledInput";
+import FilledInput, { FilledInputProps } from "@mui/material/FilledInput";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
 import {
   colors,

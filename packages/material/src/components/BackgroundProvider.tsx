@@ -1,6 +1,11 @@
 import { BackdropLevel, Theme } from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
-import { BackgroundContext, DarkModeContext, MuiThemeProvider } from "..";
+import {
+  BackgroundContext,
+  DarkModeContext,
+  MuiThemeProvider,
+  StyledEngineProvider,
+} from "..";
 import { ThemeVariantsContext } from "./ThemeVariantsProvider";
 
 export interface BackgroundProviderProps {
@@ -25,11 +30,13 @@ const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({
   }, [getMuiTheme, darkModeEnabled, backgroundColor]);
 
   return (
-    <MuiThemeProvider theme={muiTheme}>
-      <BackgroundContext.Provider value={{ theme: customerUITheme }}>
-        {children}
-      </BackgroundContext.Provider>
-    </MuiThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <MuiThemeProvider theme={muiTheme}>
+        <BackgroundContext.Provider value={{ theme: customerUITheme }}>
+          {children}
+        </BackgroundContext.Provider>
+      </MuiThemeProvider>
+    </StyledEngineProvider>
   );
 };
 

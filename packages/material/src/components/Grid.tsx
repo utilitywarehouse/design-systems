@@ -1,6 +1,6 @@
 import React from "react";
-import { GridDirection, GridWrap } from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/styles";
+import { GridDirection, GridWrap } from "@mui/material/Grid";
+import { makeStyles } from "@mui/styles";
 import {
   Breakpoint,
   gridConfiguration,
