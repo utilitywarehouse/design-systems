@@ -32,6 +32,7 @@ const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({
 
   return (
     <StyledEngineProvider injectFirst>
+      {/* https://github.com/mui-org/material-ui/issues/24282 */}
       <EmotionThemeProvider theme={muiTheme}>
         <MuiThemeProvider theme={muiTheme}>
           <BackgroundContext.Provider value={{ theme: customerUITheme }}>
