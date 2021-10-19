@@ -4202,10 +4202,10 @@
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-fonts/-/customer-ui-fonts-1.0.0-alpha.4.tgz#6deac8cfddb8e18b074e7fc4085cd911077ee63e"
   integrity sha512-x/Wli3RX4F28QUhdD6ANIQjxIkg7mCmB2OsPJj34WfXd59G0oQDWToKheDJ9nPWt5yUEoFMgSR8ISeygDJj8ig==
 
-"@utilitywarehouse/customer-ui-icons@1.0.0-alpha.32":
-  version "1.0.0-alpha.32"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-icons/-/customer-ui-icons-1.0.0-alpha.32.tgz#508442316bfe0cecee984a1bc493f2f1ca39773b"
-  integrity sha512-d5H2cxULXVRE2WP78x+Ucly85puyMge2AyYMlXn0AE2na3Yj++tsUPnXpvlzsT8S06tKDRVsgk4NuCnT+DQMyA==
+"@utilitywarehouse/customer-ui-icons@1.0.0-alpha.33":
+  version "1.0.0-alpha.33"
+  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-icons/-/customer-ui-icons-1.0.0-alpha.33.tgz#64363978ceb877b450ba6ed7672bb7f3c8d5868d"
+  integrity sha512-dPcebd9ywHg7SXvTICS9XBQmRK6K8CDN7+xM3wDwVBdOJVbe6h0BxaXExg7ONMeYHBHFE1IzYE79Mmwm6I+duw==
 
 "@utilitywarehouse/customer-ui-react-icons@^1.0.0-alpha.13":
   version "1.0.0-alpha.20"
@@ -5826,9 +5826,9 @@ camelcase@^6.0.0, camelcase@^6.2.0:
   integrity sha512-c7wVvbw3f37nuobQNtgsgG9POC9qMbNuMQmTCqZv23b6MIz0fcYpBiOlv9gEN/hdLdnZTDQhg6e9Dq5M1vKvfg==
 
 caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001173:
-  version "1.0.30001179"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001179.tgz#b0803883b4471a6c62066fb1752756f8afc699c8"
-  integrity sha512-blMmO0QQujuUWZKyVrD1msR4WNDAqb/UPO1Sw2WWsQ7deoM5bJiicKnWJ1Y0NS/aGINSnKPIWBMw5luX+NDUCA==
+  version "1.0.30001269"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001269.tgz"
+  integrity sha512-UOy8okEVs48MyHYgV+RdW1Oiudl1H6KolybD6ZquD0VcrPSgj25omXO1S7rDydjpqaISCwA8Pyx+jUQKZwWO5w==
 
 capture-exit@^2.0.0:
   version "2.0.0"
