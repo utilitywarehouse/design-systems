@@ -1,11 +1,10 @@
 import React from "react";
-import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import { Background, Container, Box, Typography } from "../src";
 
 export default {
-  title: `${base}Container`,
+  title: "Container",
   component: Container,
 } as Meta;
 

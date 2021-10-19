@@ -1,13 +1,12 @@
 import React from "react";
-import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
-import { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
+import type { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
 
 import { Background, Box, Typography } from "../src";
 import type { BackgroundProps } from "../src";
 
 export default {
-  title: `${base}Backgrounds`,
+  title: "Background",
   component: Background,
   argTypes: {
     backgroundColor: {

@@ -1,5 +1,4 @@
 import React from "react";
-import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import Bill from "@utilitywarehouse/customer-ui-react-icons/24x24/Bill";
@@ -74,7 +73,7 @@ const icons = {
 };
 
 export default {
-  title: `${base}Icons`,
+  title: "Icons",
   component: Icon,
   argTypes: {
     icon: {

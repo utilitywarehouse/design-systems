@@ -1,12 +1,11 @@
 import React from "react";
-import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import type { TextFieldProps } from "../src";
 import { Background, TextField, BackgroundProps } from "../src";
 
 export default {
-  title: `${base}TextField`,
+  title: "TextField",
   component: TextField,
   argTypes: {
     backgroundColor: {

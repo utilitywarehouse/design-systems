@@ -1,5 +1,4 @@
 import React from "react";
-import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import type { MenuProps } from "../src";
@@ -14,7 +13,7 @@ import {
 } from "../src";
 
 export default {
-  title: `${base}Menu`,
+  title: "Menu",
   component: Menu,
 } as Meta;
 

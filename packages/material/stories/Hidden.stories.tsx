@@ -1,12 +1,11 @@
 import React from "react";
-import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import { Background, Hidden, Box, Typography } from "../src";
 import type { HiddenProps } from "../src";
 
 export default {
-  title: `${base}Hidden`,
+  title: "Hidden",
   component: Hidden,
   argTypes: {
     children: {

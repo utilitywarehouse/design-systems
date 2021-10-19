@@ -1,12 +1,12 @@
 import React from "react";
-import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
-import { Background, Button, Box, BackgroundProps, BoxProps } from "../src";
+import { Background, Button, Box } from "../src";
 import type { ButtonProps } from "../src";
+import { backgroundLevels } from "./utils";
 
 export default {
-  title: `${base}Buttons`,
+  title: "Button",
   component: Button,
   argTypes: {
     children: {
@@ -28,52 +28,31 @@ export default {
 } as Meta;
 
 const bindTemplate = () => {
-  const backgroundProps: Partial<BackgroundProps> = {
-    paddingTop: 6,
-    paddingBottom: 6,
-    paddingLeft: 3,
-    paddingRight: 3,
-    display: "flex",
-    flexDirection: "column",
-  };
-
-  const boxProps: BoxProps = {
-    display: "flex",
-    justifyContent: "center",
-  };
-
   const Template: Story<ButtonProps> = (args) => (
     <Box>
-      <Background backgroundColor="level0" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Button {...args} />
-        </Box>
-      </Background>
-      <Background backgroundColor="level1" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Button {...args} />
-        </Box>
-      </Background>
-      <Background backgroundColor="level2" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Button {...args} />
-        </Box>
-      </Background>
-      <Background backgroundColor="level3" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Button {...args} />
-        </Box>
-      </Background>
-      <Background backgroundColor="level4" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Button {...args} />
-        </Box>
-      </Background>
-      <Background backgroundColor="level5" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Button {...args} />
-        </Box>
-      </Background>
+      {backgroundLevels.map((level) => (
+        <Background
+          key={level}
+          backgroundColor={level}
+          sx={{
+            paddingTop: 6,
+            paddingBottom: 6,
+            paddingLeft: 3,
+            paddingRight: 3,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Button {...args} />
+          </Box>
+        </Background>
+      ))}
     </Box>
   );
 

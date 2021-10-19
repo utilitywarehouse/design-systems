@@ -1,5 +1,4 @@
 import React from "react";
-import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import type { InteractiveCardProps } from "../src";
@@ -13,7 +12,7 @@ import {
 } from "../src";
 
 export default {
-  title: `${base}InteractiveCard`,
+  title: "InteractiveCard",
   component: InteractiveCard,
 } as Meta;
 

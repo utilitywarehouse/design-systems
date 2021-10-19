@@ -1,11 +1,10 @@
 import React from "react";
-import base from "paths.macro";
 import { Meta, Story } from "@storybook/react";
 import { Background, Typography, BackgroundProps, Box, BoxProps } from "../src";
 import type { TypographyProps } from "../src";
 
 export default {
-  title: `${base}Typography`,
+  title: "Typography",
   component: Typography,
   argTypes: {
     children: {

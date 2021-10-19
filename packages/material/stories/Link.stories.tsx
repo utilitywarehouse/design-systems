@@ -1,16 +1,12 @@
 import React from "react";
-import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
 import type { LinkProps, TypographyProps } from "../src";
-import {
-  Background,
-  Link,
-  BackgroundProps,
-  Box,
-  BoxProps,
-  Typography,
-} from "../src";
+import { Background, Link, BackgroundProps, Box, Typography } from "../src";
+import type {
+  BackdropLevel,
+  TypographyVariant,
+} from "@utilitywarehouse/customer-ui-theme";
 
 const typographyVariants: { [key in TypographyProps["variant"]]: boolean } = {
   h1: true,
@@ -41,7 +37,7 @@ const linkVariants = Object.keys(linkVariantsInUse).filter(
 );
 
 export default {
-  title: `${base}Links`,
+  title: "Link",
   component: Link,
   argTypes: {
     children: {
@@ -68,7 +64,7 @@ export default {
     },
   },
   args: {
-    children: "Link",
+    children: "link",
     typographyVariant: "default",
     variant: "default",
   },
@@ -88,60 +84,45 @@ const bindTemplate = (params: TemplateParams) => {
     flexDirection: "column",
   };
 
-  const boxProps: BoxProps = {
-    display: "flex",
-    justifyContent: "center",
-  };
-
   const onClick = (e: React.MouseEvent) => {
     e.preventDefault();
   };
 
-  const getInlineLink = (args) => {
-    const typographyVariant = args.typographyVariant;
-    const linkArgs = { ...args };
-    delete linkArgs.typographyVariant;
-    return (
-      <Typography variant={typographyVariant}>
-        This is an inline link <Link href="#" {...linkArgs} onClick={onClick} />
-        .
-      </Typography>
-    );
-  };
-
-  const getBlockLink = (args) => {
-    const typographyVariant = args.typographyVariant;
-    const linkArgs = { ...args };
-    delete linkArgs.typographyVariant;
-    return (
-      <Typography variant={typographyVariant}>
-        <Link href="#" {...linkArgs} onClick={onClick} />
-      </Typography>
-    );
-  };
-
-  const Template: Story<LinkProps> = (args) => {
-    const linkFetcher = params.inline ? getInlineLink : getBlockLink;
+  const Template: Story<
+    LinkProps & { typographyVariant: TypographyVariant }
+  > = (args) => {
+    const { typographyVariant, ...rest } = args;
     return (
       <Box>
-        <Background backgroundColor="level0" {...backgroundProps}>
-          <Box {...boxProps}>{linkFetcher(args)}</Box>
-        </Background>
-        <Background backgroundColor="level1" {...backgroundProps}>
-          <Box {...boxProps}>{linkFetcher(args)}</Box>
-        </Background>
-        <Background backgroundColor="level2" {...backgroundProps}>
-          <Box {...boxProps}>{linkFetcher(args)}</Box>
-        </Background>
-        <Background backgroundColor="level3" {...backgroundProps}>
-          <Box {...boxProps}>{linkFetcher(args)}</Box>
-        </Background>
-        <Background backgroundColor="level4" {...backgroundProps}>
-          <Box {...boxProps}>{linkFetcher(args)}</Box>
-        </Background>
-        <Background backgroundColor="level5" {...backgroundProps}>
-          <Box {...boxProps}>{linkFetcher(args)}</Box>
-        </Background>
+        {[0, 1, 2, 3, 4, 5]
+          .map((level) => `level${level}` as BackdropLevel)
+          .map((level) => (
+            <Background
+              key={level}
+              backgroundColor={level}
+              {...backgroundProps}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                {params.inline ? (
+                  <Typography variant={typographyVariant}>
+                    This is an inline{" "}
+                    <Link href="#" {...rest} onClick={onClick} />.
+                  </Typography>
+                ) : (
+                  <Typography variant={typographyVariant}>
+                    <Link href="#" {...rest} onClick={onClick}>
+                      Link
+                    </Link>
+                  </Typography>
+                )}
+              </Box>
+            </Background>
+          ))}
       </Box>
     );
   };
