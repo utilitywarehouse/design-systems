@@ -2,23 +2,21 @@ import React from "react";
 import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
-import { Link, LinkProps } from "./Link";
-import { TypographyProps } from "./Typography";
+import type { LinkProps, TypographyProps } from "../src";
 import {
   Background,
+  Link,
   BackgroundProps,
   Box,
   BoxProps,
   Typography,
-} from "../../src";
-import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
+} from "../src";
 
 const typographyVariants: { [key in TypographyProps["variant"]]: boolean } = {
   h1: true,
   h2: true,
   h3: true,
   h4: true,
-  h5: true,
   default: true,
   displayHeading: true,
   subtitle: true,
@@ -125,7 +123,7 @@ const bindTemplate = (params: TemplateParams) => {
   const Template: Story<LinkProps> = (args) => {
     const linkFetcher = params.inline ? getInlineLink : getBlockLink;
     return (
-      <HorizontalDisplayContainer>
+      <Box>
         <Background backgroundColor="level0" {...backgroundProps}>
           <Box {...boxProps}>{linkFetcher(args)}</Box>
         </Background>
@@ -144,7 +142,7 @@ const bindTemplate = (params: TemplateParams) => {
         <Background backgroundColor="level5" {...backgroundProps}>
           <Box {...boxProps}>{linkFetcher(args)}</Box>
         </Background>
-      </HorizontalDisplayContainer>
+      </Box>
     );
   };
 

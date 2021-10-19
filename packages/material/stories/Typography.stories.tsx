@@ -1,9 +1,8 @@
 import React from "react";
 import base from "paths.macro";
 import { Meta, Story } from "@storybook/react";
-import { Typography, TypographyProps } from "./Typography";
-import { Background, BackgroundProps, Box, BoxProps } from "../../src";
-import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
+import { Background, Typography, BackgroundProps, Box, BoxProps } from "../src";
+import type { TypographyProps } from "../src";
 
 export default {
   title: `${base}Typography`,
@@ -48,7 +47,7 @@ const bindTemplate = (
   };
 
   const Template: Story<TypographyProps> = (args) => (
-    <HorizontalDisplayContainer>
+    <Box>
       <Background backgroundColor="level0" {...backgroundProps}>
         <Box {...boxProps}>
           <Typography {...args} {...params} />
@@ -79,7 +78,7 @@ const bindTemplate = (
           <Typography {...args} {...params} />
         </Box>
       </Background>
-    </HorizontalDisplayContainer>
+    </Box>
   );
 
   return Template;

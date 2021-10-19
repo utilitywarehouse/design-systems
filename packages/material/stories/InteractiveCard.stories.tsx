@@ -2,15 +2,15 @@ import React from "react";
 import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
-import { InteractiveCard, InteractiveCardProps } from "./InteractiveCard";
+import type { InteractiveCardProps } from "../src";
 import {
-  Background,
+  InteractiveCard,
   BackgroundProps,
   Box,
   BoxProps,
   Typography,
-} from "../../src";
-import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
+  Background,
+} from "../src";
 
 export default {
   title: `${base}InteractiveCard`,
@@ -36,7 +36,7 @@ const bindTemplate = () => {
     maxWidth: "400px",
   };
 
-  const getInteractiveCard = (args) => {
+  const getInteractiveCard = (args: InteractiveCardProps) => {
     const onClick = (e: React.MouseEvent) => {
       e.preventDefault();
     };
@@ -50,7 +50,7 @@ const bindTemplate = () => {
 
   const Template: Story<InteractiveCardProps> = (args) => {
     return (
-      <HorizontalDisplayContainer>
+      <Box>
         <Background backgroundColor="level0" {...backgroundProps}>
           <Box {...boxProps}>{getInteractiveCard(args)}</Box>
         </Background>
@@ -69,7 +69,7 @@ const bindTemplate = () => {
         <Background backgroundColor="level5" {...backgroundProps}>
           <Box {...boxProps}>{getInteractiveCard(args)}</Box>
         </Background>
-      </HorizontalDisplayContainer>
+      </Box>
     );
   };
 

@@ -3,10 +3,8 @@ import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 import { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
 
-import { DarkModeContext, Box, Typography } from "../../src";
-import { Background } from "./Background";
-import type { BackgroundProps } from "./Background";
-import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
+import { Background, Box, Typography } from "../src";
+import type { BackgroundProps } from "../src";
 
 export default {
   title: `${base}Backgrounds`,
@@ -27,41 +25,33 @@ interface TemplateParams {
 
 const bindTemplate = (params: TemplateParams) => {
   const Template: Story<BackgroundProps> = (args) => {
-    const { darkModeEnabled } = React.useContext(DarkModeContext);
-    const borderColor = React.useMemo(() => {
-      return darkModeEnabled ? "#ffffff" : "#000000";
-    }, [darkModeEnabled]);
-
     return (
-      <HorizontalDisplayContainer>
-        <Box padding={3}>
-          <Background
-            {...args}
-            backgroundColor={params.backgroundColor}
+      <Box padding={3}>
+        <Background
+          {...args}
+          backgroundColor={params.backgroundColor}
+          width="100%"
+          height="300px"
+          borderRadius="16px"
+        >
+          <Box
+            display="flex"
             width="100%"
-            height="300px"
-            border={`4px solid ${borderColor}`}
-            borderRadius="16px"
+            height="100%"
+            justifyContent="center"
           >
             <Box
               display="flex"
               width="100%"
-              height="100%"
               justifyContent="center"
+              flexDirection="column"
+              textAlign="center"
             >
-              <Box
-                display="flex"
-                width="100%"
-                justifyContent="center"
-                flexDirection="column"
-                textAlign="center"
-              >
-                <Typography variant="h2">{params.title}</Typography>
-              </Box>
+              <Typography variant="h2">{params.title}</Typography>
             </Box>
-          </Background>
-        </Box>
-      </HorizontalDisplayContainer>
+          </Box>
+        </Background>
+      </Box>
     );
   };
 

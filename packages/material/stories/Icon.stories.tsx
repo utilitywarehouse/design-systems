@@ -30,15 +30,15 @@ import ServiceEnergyLarge from "@utilitywarehouse/customer-ui-react-icons/48x48/
 import ServiceInsuranceLarge from "@utilitywarehouse/customer-ui-react-icons/48x48/ServiceInsurance";
 import ServiceMobileLarge from "@utilitywarehouse/customer-ui-react-icons/48x48/ServiceMobile";
 
-import { Icon, IconProps } from "./Icon";
 import {
   Background,
   BackgroundProps,
   Box,
   BoxProps,
   Typography,
-} from "../../src";
-import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
+  Icon,
+} from "../src";
+import type { IconProps } from "../src";
 
 const icons = {
   "24x24": [
@@ -139,7 +139,7 @@ const bindTemplate = (
   );
 
   const Template: Story<IconProps> = (args) => (
-    <HorizontalDisplayContainer>
+    <Box>
       <Background backgroundColor="level0" {...backgroundProps}>
         <Box {...boxProps}>{getIcons(args)}</Box>
       </Background>
@@ -158,7 +158,7 @@ const bindTemplate = (
       <Background backgroundColor="level5" {...backgroundProps}>
         <Box {...boxProps}>{getIcons(args)}</Box>
       </Background>
-    </HorizontalDisplayContainer>
+    </Box>
   );
 
   return Template;

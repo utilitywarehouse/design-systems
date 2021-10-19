@@ -2,16 +2,16 @@ import React from "react";
 import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
-import { Card, CardProps } from "./Card";
+import type { CardProps } from "../src";
 import {
   Background,
+  Card,
   BackgroundProps,
   Box,
   BoxProps,
   Button,
   Typography,
-} from "../../src";
-import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
+} from "../src";
 
 export default {
   title: `${base}Card`,
@@ -65,7 +65,7 @@ const bindTemplate = (props: Partial<CardProps>) => {
 
   const Template: Story = () => {
     return (
-      <HorizontalDisplayContainer>
+      <Box>
         <Background backgroundColor="level0" {...backgroundProps}>
           <Box {...boxProps}>{getCard()}</Box>
         </Background>
@@ -84,7 +84,7 @@ const bindTemplate = (props: Partial<CardProps>) => {
         <Background backgroundColor="level5" {...backgroundProps}>
           <Box {...boxProps}>{getCard()}</Box>
         </Background>
-      </HorizontalDisplayContainer>
+      </Box>
     );
   };
 

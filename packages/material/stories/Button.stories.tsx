@@ -2,11 +2,8 @@ import React from "react";
 import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
-import { Button } from "./Button";
-import type { ButtonProps } from "./Button";
-import { Background, Box } from "../../src";
-import type { BackgroundProps, BoxProps } from "../../src";
-import HorizontalDisplayContainer from "../utils/HorizontalDisplayContainer";
+import { Background, Button, Box, BackgroundProps, BoxProps } from "../src";
+import type { ButtonProps } from "../src";
 
 export default {
   title: `${base}Buttons`,
@@ -46,7 +43,7 @@ const bindTemplate = () => {
   };
 
   const Template: Story<ButtonProps> = (args) => (
-    <HorizontalDisplayContainer>
+    <Box>
       <Background backgroundColor="level0" {...backgroundProps}>
         <Box {...boxProps}>
           <Button {...args} />
@@ -77,7 +74,7 @@ const bindTemplate = () => {
           <Button {...args} />
         </Box>
       </Background>
-    </HorizontalDisplayContainer>
+    </Box>
   );
 
   return Template;
