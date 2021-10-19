@@ -6,7 +6,6 @@
   "scripts": {
     "clean": "rimraf dist/",
     "build": "yarn run clean && tsc",
-    "test": "jest",
     "test:coverage": "yarn test --coverage",
     "serve:coverage": "open coverage/lcov-report/index.html",
     "storybook": "start-storybook -p 6006",
