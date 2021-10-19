@@ -7,6 +7,7 @@ import {
   StyledEngineProvider,
 } from "..";
 import { ThemeVariantsContext } from "./ThemeVariantsProvider";
+import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
 
 export interface BackgroundProviderProps {
   backgroundColor: BackdropLevel;
@@ -31,11 +32,13 @@ const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({
 
   return (
     <StyledEngineProvider injectFirst>
-      <MuiThemeProvider theme={muiTheme}>
-        <BackgroundContext.Provider value={{ theme: customerUITheme }}>
-          {children}
-        </BackgroundContext.Provider>
-      </MuiThemeProvider>
+      <EmotionThemeProvider theme={muiTheme}>
+        <MuiThemeProvider theme={muiTheme}>
+          <BackgroundContext.Provider value={{ theme: customerUITheme }}>
+            {children}
+          </BackgroundContext.Provider>
+        </MuiThemeProvider>
+      </EmotionThemeProvider>
     </StyledEngineProvider>
   );
 };

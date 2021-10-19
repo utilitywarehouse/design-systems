@@ -39,6 +39,7 @@ declare module "@mui/material/Typography" {
     body: true;
     legalNote: true;
     caption: true;
+    h5: false;
     h6: false;
     body1: false;
     body2: false;
@@ -102,7 +103,6 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
         h2: "h2",
         h3: "h3",
         h4: "h4",
-        h5: "h5",
         subtitle: "p",
         body: "p",
         legalNote: "p",
