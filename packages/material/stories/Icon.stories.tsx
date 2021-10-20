@@ -73,7 +73,7 @@ const icons = {
 };
 
 export default {
-  title: "Icons",
+  title: "Foundations/Iconography",
   component: Icon,
   argTypes: {
     icon: {

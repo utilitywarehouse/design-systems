@@ -3,7 +3,7 @@ import "./global.css";
 import { themes } from "@storybook/theming";
 import { useDarkMode } from "storybook-dark-mode";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
-import { UIProvider } from "../src";
+import { UIProvider, Background } from "../src";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -29,7 +29,9 @@ export const decorators = [
           value: mode ? "on" : "off",
         }}
       >
-        <Story />
+        <Background backgroundColor="level5">
+          <Story />
+        </Background>
       </UIProvider>
     );
   },

@@ -1,10 +1,11 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
-import { Background, Typography, BackgroundProps, Box, BoxProps } from "../src";
+import { Typography } from "../src";
 import type { TypographyProps } from "../src";
+import { BackgroundStack } from "./utils";
 
 export default {
-  title: "Typography",
+  title: "Foundations/Typography",
   component: Typography,
   argTypes: {
     children: {
@@ -12,12 +13,12 @@ export default {
         type: "text",
       },
     },
-    variant: {
+    component: {
       control: {
-        disable: true,
+        type: "text",
       },
     },
-    component: {
+    variant: {
       control: {
         disable: true,
       },
@@ -28,84 +29,44 @@ export default {
   },
 } as Meta;
 
-const bindTemplate = (
-  params: Partial<TypographyProps>
-): Story<TypographyProps> => {
-  const backgroundProps: Partial<BackgroundProps> = {
-    paddingTop: 6,
-    paddingBottom: 6,
-    paddingLeft: 3,
-    paddingRight: 3,
-    display: "flex",
-    flexDirection: "column",
-  };
+const Template: Story<TypographyProps> = (args) => (
+  <BackgroundStack>
+    <Typography {...args} />
+  </BackgroundStack>
+);
 
-  const boxProps: BoxProps = {
-    display: "flex",
-    justifyContent: "center",
-  };
+export const DisplayHeading = Template.bind({});
+DisplayHeading.storyName = "Display heading";
+DisplayHeading.args = { variant: "displayHeading", component: "h1" };
 
-  const Template: Story<TypographyProps> = (args) => (
-    <Box>
-      <Background backgroundColor="level0" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Typography {...args} {...params} />
-        </Box>
-      </Background>
-      <Background backgroundColor="level1" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Typography {...args} {...params} />
-        </Box>
-      </Background>
-      <Background backgroundColor="level2" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Typography {...args} {...params} />
-        </Box>
-      </Background>
-      <Background backgroundColor="level3" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Typography {...args} {...params} />
-        </Box>
-      </Background>
-      <Background backgroundColor="level4" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Typography {...args} {...params} />
-        </Box>
-      </Background>
-      <Background backgroundColor="level5" {...backgroundProps}>
-        <Box {...boxProps}>
-          <Typography {...args} {...params} />
-        </Box>
-      </Background>
-    </Box>
-  );
+export const h1 = Template.bind({});
+h1.storyName = "h1";
+h1.args = { variant: "h1", component: "h1" };
 
-  return Template;
-};
+export const h2 = Template.bind({});
+h2.storyName = "h2";
+h2.args = { variant: "h2", component: "h2" };
 
-export const DisplayHeading = bindTemplate({ variant: "displayHeading" });
-DisplayHeading.storyName = "display heading";
+export const h3 = Template.bind({});
+h3.storyName = "h3";
+h3.args = { variant: "h3", component: "h3" };
 
-export const H1 = bindTemplate({ variant: "h1" });
-H1.storyName = "h1";
+export const h4 = Template.bind({});
+h4.storyName = "h4";
+h4.args = { variant: "h4", component: "h4" };
 
-export const H2 = bindTemplate({ variant: "h2" });
-H2.storyName = "h2";
+export const Subtitle = Template.bind({});
+Subtitle.storyName = "Subtitle";
+Subtitle.args = { variant: "subtitle", component: "h2" };
 
-export const H3 = bindTemplate({ variant: "h3" });
-H3.storyName = "h3";
+export const Body = Template.bind({});
+Body.storyName = "Body";
+Body.args = { variant: "body", component: "paragraph" };
 
-export const H4 = bindTemplate({ variant: "h4" });
-H4.storyName = "h4";
+export const LegalNote = Template.bind({});
+LegalNote.storyName = "Legal Note";
+LegalNote.args = { variant: "legalNote", component: "span" };
 
-export const Subtitle = bindTemplate({ variant: "subtitle" });
-Subtitle.storyName = "subtitle";
-
-export const Body = bindTemplate({ variant: "body" });
-Body.storyName = "body";
-
-export const LegalNote = bindTemplate({ variant: "legalNote" });
-LegalNote.storyName = "legalNote";
-
-export const Caption = bindTemplate({ variant: "caption" });
-Caption.storyName = "caption";
+export const Caption = Template.bind({});
+Caption.storyName = "Caption";
+Caption.args = { variant: "caption", component: "span" };

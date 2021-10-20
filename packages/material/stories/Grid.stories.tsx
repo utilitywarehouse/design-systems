@@ -6,7 +6,7 @@ import type { GridProps } from "../src";
 import { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
 
 export default {
-  title: "Grid",
+  title: "Layout/Grid",
   component: Grid,
 } as Meta;
 

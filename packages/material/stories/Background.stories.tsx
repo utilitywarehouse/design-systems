@@ -1,12 +1,11 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import type { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
 
 import { Background, Box, Typography } from "../src";
 import type { BackgroundProps } from "../src";
 
 export default {
-  title: "Background",
+  title: "Layout/Background",
   component: Background,
   argTypes: {
     backgroundColor: {
@@ -17,78 +16,65 @@ export default {
   },
 } as Meta;
 
-interface TemplateParams {
-  backgroundColor: BackdropLevel;
-  title: string;
-}
-
-const bindTemplate = (params: TemplateParams) => {
-  const Template: Story<BackgroundProps> = (args) => {
-    return (
-      <Box padding={3}>
-        <Background
-          {...args}
-          backgroundColor={params.backgroundColor}
-          width="100%"
-          height="300px"
-          borderRadius="16px"
-        >
-          <Box
-            display="flex"
-            width="100%"
-            height="100%"
-            justifyContent="center"
-          >
-            <Box
-              display="flex"
-              width="100%"
-              justifyContent="center"
-              flexDirection="column"
-              textAlign="center"
-            >
-              <Typography variant="h2">{params.title}</Typography>
-            </Box>
-          </Box>
-        </Background>
-      </Box>
-    );
-  };
-
-  return Template;
+const Template: Story<BackgroundProps> = (props) => {
+  const { title, ...rest } = props;
+  return (
+    <Box padding={3}>
+      <Background
+        {...rest}
+        sx={{
+          width: "100%",
+          height: 300,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 4,
+        }}
+      >
+        <Typography variant="h2">{title}</Typography>
+      </Background>
+    </Box>
+  );
 };
 
-export const Level0 = bindTemplate({
+export const Level0 = Template.bind({});
+Level0.storyName = "level0 (Midnight)";
+Level0.args = {
   backgroundColor: "level0",
-  title: "Level 0 Background (Mid Night)",
-});
-Level0.storyName = "level0";
+  title: "Level 0 Background (Midnight)",
+};
 
-export const Level1 = bindTemplate({
+export const Level1 = Template.bind({});
+Level1.storyName = "level1 (Dark Tint)";
+Level1.args = {
   backgroundColor: "level1",
   title: "Level 1 Background (Dark Tint)",
-});
-Level1.storyName = "level1";
+};
 
-export const Level2 = bindTemplate({
+export const Level2 = Template.bind({});
+Level2.storyName = "level2 (Mid Tint)";
+Level2.args = {
   backgroundColor: "level2",
   title: "Level 2 Background (Mid Tint)",
-});
-Level2.storyName = "level2";
+};
 
-export const Level3 = bindTemplate({
+export const Level3 = Template.bind({});
+Level3.storyName = "level3 (Light Tint)";
+Level3.args = {
   backgroundColor: "level3",
   title: "Level 3 Background (Light Tint)",
-});
-Level3.storyName = "level3";
+};
 
-export const Level4 = bindTemplate({
+export const Level4 = Template.bind({});
+Level4.storyName = "level4 (White Owl)";
+Level4.args = {
   backgroundColor: "level4",
   title: "Level 4 Background (White Owl)",
-});
-Level4.storyName = "level4";
+};
 
-export const Level5 = bindTemplate({
+export const Level5 = Template.bind({});
+Level5.storyName = "level5 (White)";
+Level5.args = {
   backgroundColor: "level5",
   title: "Level 5 Background (White)",
-});
-Level5.storyName = "level5";
+};

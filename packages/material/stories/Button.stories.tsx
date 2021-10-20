@@ -1,12 +1,12 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Background, Button, Box } from "../src";
+import { Button } from "../src";
 import type { ButtonProps } from "../src";
-import { backgroundLevels } from "./utils";
+import { BackgroundStack } from "./utils";
 
 export default {
-  title: "Button",
+  title: "Components/Button",
   component: Button,
   argTypes: {
     children: {
@@ -27,38 +27,9 @@ export default {
   },
 } as Meta;
 
-const bindTemplate = () => {
-  const Template: Story<ButtonProps> = (args) => (
-    <Box>
-      {backgroundLevels.map((level) => (
-        <Background
-          key={level}
-          backgroundColor={level}
-          sx={{
-            paddingTop: 6,
-            paddingBottom: 6,
-            paddingLeft: 3,
-            paddingRight: 3,
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Button {...args} />
-          </Box>
-        </Background>
-      ))}
-    </Box>
-  );
-
-  return Template;
-};
-
-export const Main = bindTemplate();
-
-Main.storyName = "Button";
+export const ButtonStory: Story<ButtonProps> = (args) => (
+  <BackgroundStack>
+    <Button {...args} />
+  </BackgroundStack>
+);
+ButtonStory.storyName = "Button";

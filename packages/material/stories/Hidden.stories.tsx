@@ -1,11 +1,11 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Background, Hidden, Box, Typography } from "../src";
+import { Background, Hidden, Box, Typography, Stack } from "../src";
 import type { HiddenProps } from "../src";
 
 export default {
-  title: "Hidden",
+  title: "Layout/Hidden",
   component: Hidden,
   argTypes: {
     children: {
@@ -22,39 +22,25 @@ export default {
   },
 } as Meta;
 
-const bindTemplate = () => {
-  const Template: Story<HiddenProps> = (args) => {
-    return (
-      <Background backgroundColor="level4" paddingTop={2} paddingBottom={2}>
-        <Box paddingX={2} paddingBottom={4}>
-          <Typography>
-            Try changing the props in the controls panel as well as the
-            responsive views in the toolbar above to hide the content below.
-          </Typography>
-        </Box>
-        <Hidden {...args}>
-          <Background
-            backgroundColor="level1"
-            width="100%"
-            height="200px"
-            textAlign="center"
-          >
-            <Box
-              flexDirection="column"
-              display="flex"
-              height="100%"
-              justifyContent="center"
-            >
-              <Typography>Hide me 👀</Typography>
-            </Box>
-          </Background>
-        </Hidden>
-      </Background>
-    );
-  };
+export const HiddenStory: Story<HiddenProps> = (args) => {
+  return (
+    <Stack spacing={4} sx={{ padding: 4 }}>
+      <Typography>
+        Try changing the props in the controls panel as well as the responsive
+        views in the toolbar above to hide the content below.
+      </Typography>
 
-  return Template;
+      <Hidden {...args}>
+        <Background
+          backgroundColor="level1"
+          sx={{
+            width: "100%",
+            height: 200,
+          }}
+        />
+      </Hidden>
+    </Stack>
+  );
 };
 
-export const HiddenStory = bindTemplate();
 HiddenStory.storyName = "Hidden";
