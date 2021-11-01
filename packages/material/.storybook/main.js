@@ -11,4 +11,10 @@ module.exports = {
     "@storybook/preset-scss",
     "@storybook/addon-viewport",
   ],
+  webpackFinal(config) {
+    delete config.resolve.alias["emotion-theming"];
+    delete config.resolve.alias["@emotion/styled"];
+    delete config.resolve.alias["@emotion/core"];
+    return config;
+  },
 };
