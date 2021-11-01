@@ -7,7 +7,6 @@ import {
   StyledEngineProvider,
 } from "..";
 import { ThemeVariantsContext } from "./ThemeVariantsProvider";
-import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
 
 export interface BackgroundProviderProps {
   backgroundColor: BackdropLevel;
@@ -32,14 +31,11 @@ const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({
 
   return (
     <StyledEngineProvider injectFirst>
-      {/* https://github.com/mui-org/material-ui/issues/24282 */}
-      <EmotionThemeProvider theme={muiTheme}>
-        <MuiThemeProvider theme={muiTheme}>
-          <BackgroundContext.Provider value={{ theme: customerUITheme }}>
-            {children}
-          </BackgroundContext.Provider>
-        </MuiThemeProvider>
-      </EmotionThemeProvider>
+      <MuiThemeProvider theme={muiTheme}>
+        <BackgroundContext.Provider value={{ theme: customerUITheme }}>
+          {children}
+        </BackgroundContext.Provider>
+      </MuiThemeProvider>
     </StyledEngineProvider>
   );
 };
