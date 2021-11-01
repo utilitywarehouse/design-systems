@@ -1,19 +1,17 @@
 import React from "react";
-import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
-import { TextField } from "./TextField";
-import type { TextFieldProps } from "./TextField";
-import { Background, BackgroundProps } from "../../src";
+import type { TextFieldProps } from "../src";
+import { Background, TextField, BackgroundProps } from "../src";
 
 export default {
-  title: `${base}TextField`,
+  title: "Components/TextField",
   component: TextField,
   argTypes: {
     backgroundColor: {
       control: {
         type: "inline-radio",
-        options: ["level0", "level1", "level2", "level3", "level4", "level5"],
+        options: ["level3", "level4", "level5"],
       },
     },
     status: {

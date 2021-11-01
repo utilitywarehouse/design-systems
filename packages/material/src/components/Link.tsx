@@ -1,6 +1,6 @@
 import React from "react";
-import { CSSProperties } from "@material-ui/styles/withStyles";
-import MuiLink from "@material-ui/core/Link";
+import { CSSProperties } from "@mui/styles/withStyles";
+import MuiLink from "@mui/material/Link";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
 import { clsx } from "../utils";
 

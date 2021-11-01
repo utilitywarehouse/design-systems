@@ -1,17 +1,16 @@
 import React from "react";
 import MuiTypography, {
   TypographyPropsVariantOverrides,
-} from "@material-ui/core/Typography";
-import { Variant } from "@material-ui/core/styles/createTypography";
-import { OverridableStringUnion } from "@material-ui/types";
-import { CSSProperties } from "@material-ui/styles/withStyles";
+} from "@mui/material/Typography";
+import { OverridableStringUnion } from "@mui/types";
+import { CSSProperties } from "@mui/styles/withStyles";
 import {
   TypographyColor,
   TypographyVariant,
 } from "@utilitywarehouse/customer-ui-theme";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
 
-declare module "@material-ui/core/styles" {
+declare module "@mui/material/styles" {
   interface TypographyVariants {
     default: React.CSSProperties;
     displayHeading: React.CSSProperties;
@@ -32,7 +31,7 @@ declare module "@material-ui/core/styles" {
   }
 }
 
-declare module "@material-ui/core/Typography" {
+declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     default: true;
     displayHeading: true;
@@ -40,6 +39,7 @@ declare module "@material-ui/core/Typography" {
     body: true;
     legalNote: true;
     caption: true;
+    h5: false;
     h6: false;
     body1: false;
     body2: false;
@@ -54,7 +54,7 @@ export interface TypographyProps
   extends React.ComponentPropsWithoutRef<"span"> {
   color?: TypographyColor;
   variant?: OverridableStringUnion<
-    Variant | "inherit",
+    TypographyVariant | "inherit",
     TypographyPropsVariantOverrides
   >;
   gutterBottom?: boolean;
@@ -103,7 +103,6 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
         h2: "h2",
         h3: "h3",
         h4: "h4",
-        h5: "h5",
         subtitle: "p",
         body: "p",
         legalNote: "p",

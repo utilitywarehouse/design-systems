@@ -1,16 +1,14 @@
 export {
   createTheme,
-  unstable_createMuiStrictModeTheme,
   adaptV4Theme,
   createStyles,
   responsiveFontSizes,
   duration,
   easing,
   useTheme as useMuiTheme,
-  unstable_useThemeProps,
   styled,
   ThemeProvider as MuiThemeProvider,
-} from "@material-ui/core/styles";
+} from "@mui/material/styles";
 
 export {
   ServerStyleSheets,
@@ -20,7 +18,7 @@ export {
   makeStyles,
   withStyles,
   withTheme,
-} from "@material-ui/styles";
+} from "@mui/styles";
 
 export type {
   ComponentCreator,
@@ -31,7 +29,7 @@ export type {
   ThemeProviderProps as MuiThemeProviderProps,
   WithStyles,
   WithTheme,
-} from "@material-ui/styles";
+} from "@mui/styles";
 
 export type {
   Breakpoint,
@@ -46,7 +44,6 @@ export type {
   ComponentsPropsList,
   Duration,
   Easing,
-  ThemeOptions,
   Theme,
   Transitions,
   TransitionsOptions,
@@ -59,7 +56,4 @@ export type {
   ComponentsProps,
   ComponentsVariants,
   ComponentsOverrides,
-} from "@material-ui/core/styles";
-
-export * from "@material-ui/core/styles/colorManipulator";
-export * from "@material-ui/core/styles/useThemeProps";
+} from "@mui/material/styles";

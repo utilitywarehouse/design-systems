@@ -1,12 +1,14 @@
 import "../types/BreakpointOverrides";
-import createTheme, {
+import {
+  adaptV4Theme,
+  createTheme,
   Theme as MuiTheme,
-} from "@material-ui/core/styles/createTheme";
+  PaletteOptions,
+} from "@mui/material/styles";
 import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 import { getComponentThemeConfiguration } from "../components";
-import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 
-export type { Theme as MuiTheme } from "@material-ui/core/styles/createTheme";
+export type { Theme as MuiTheme } from "@mui/material/styles/createTheme";
 export type { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 
 const getBreakpoints = (theme: CustomerUITheme) => ({
@@ -40,11 +42,13 @@ const getPalette = (theme: CustomerUITheme): PaletteOptions => ({
 });
 
 export const buildTheme = (theme: CustomerUITheme): MuiTheme => {
-  const muiTheme = createTheme({
-    breakpoints: getBreakpoints(theme),
-    spacing: theme.spacing,
-    palette: getPalette(theme),
-  });
+  const muiTheme = createTheme(
+    adaptV4Theme({
+      breakpoints: getBreakpoints(theme),
+      spacing: theme.spacing,
+      palette: getPalette(theme),
+    })
+  );
 
   muiTheme.components = getComponentThemeConfiguration(theme, muiTheme);
   return muiTheme;

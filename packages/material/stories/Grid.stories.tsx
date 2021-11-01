@@ -1,13 +1,12 @@
 import React from "react";
-import base from "paths.macro";
 import { Story, Meta } from "@storybook/react";
 
-import { Background, Box, Typography } from "../../src";
-import { Grid, GridProps, GridSpacer } from "./Grid";
+import { Background, Box, Typography, Grid, GridSpacer } from "../src";
+import type { GridProps } from "../src";
 import { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
 
 export default {
-  title: `${base}Grids`,
+  title: "Layout/Grid",
   component: Grid,
 } as Meta;
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { MuiTheme } from "../lib/theme";
 import { BoxProps, makeStyles, Theme } from "..";
-import { Box } from "@material-ui/core";
+import { Box } from "@mui/material";
 import { clsx } from "../utils";
 
 const useStyles = makeStyles<MuiTheme>((theme: Theme) => ({
