@@ -8,7 +8,7 @@ import {
 
 export const desktopPrimaryLargeIdle: ButtonStylesNonColor = {
   ...(commonIdleStyles as ButtonStylesNonColor),
-  height: spacingBase * 7,
+  height: "48px",
   paddingTop: 0,
   paddingBottom: 0,
   paddingLeft: spacingBase * 4,

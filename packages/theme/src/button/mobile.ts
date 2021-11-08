@@ -8,7 +8,7 @@ import {
 
 export const mobilePrimaryLargeIdle: ButtonStylesNonColor = {
   ...(commonIdleStyles as ButtonStylesNonColor),
-  height: spacingBase * 6,
+  height: "48px",
   paddingTop: 0,
   paddingBottom: 0,
   paddingLeft: spacingBase * 3,
