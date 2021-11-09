@@ -37,7 +37,7 @@ export interface ButtonStylesColor {
 
 export type ButtonVariant = "primary" | "secondary" | "tertiary";
 
-export type ButtonSize = "medium" | "large";
+export type ButtonSize = "small" | "medium" | "large";
 
 export type ButtonState = "default" | "hover" | "disabled";
 
