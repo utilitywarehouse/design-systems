@@ -5,6 +5,7 @@ import {
   fonts,
   fontWeights,
   helpers,
+  spacingBase,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { duration, easingFunction } from "../transitions";
 
@@ -21,18 +22,24 @@ const baseButtonStyles: Partial<ButtonStylesNonColor> = {
   opacity: 1,
   paddingTop: 0,
   paddingBottom: 0,
-  paddingLeft: "32px",
-  paddingRight: "32px",
+  paddingLeft: px(spacingBase * 4), // 32px
+  paddingRight: px(spacingBase * 4), // 32px
   borderStyle: "solid",
   borderWidth: 0,
-  borderRadius: "32px",
+  borderRadius: px(spacingBase * 4), // 32px
   fontSize: 18,
   lineHeight: 1,
 } as ButtonStylesNonColor;
 const disabledButtonStyles: Partial<ButtonStylesNonColor> = { opacity: 0.5 };
-const smallButtonStyles: Partial<ButtonStylesNonColor> = { height: px(32) };
-const mediumButtonStyles: Partial<ButtonStylesNonColor> = { height: px(40) };
-const largeButtonStyles: Partial<ButtonStylesNonColor> = { height: px(48) };
+const smallButtonStyles: Partial<ButtonStylesNonColor> = {
+  height: px(spacingBase * 4), // 32px
+};
+const mediumButtonStyles: Partial<ButtonStylesNonColor> = {
+  height: px(spacingBase * 5), // 40px
+};
+const largeButtonStyles: Partial<ButtonStylesNonColor> = {
+  height: px(spacingBase * 6), // 48px
+};
 
 const primarySmallDefault: ButtonStylesNonColor = {
   ...(baseButtonStyles as ButtonStylesNonColor),
