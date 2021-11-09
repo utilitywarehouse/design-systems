@@ -12,7 +12,7 @@ const transitionStyles = {
   transitionProperty: "background-color, border-color, color, opacity",
 };
 
-const commonButtonStyles: Partial<ButtonStylesNonColor> = {
+const baseButtonStyles: Partial<ButtonStylesNonColor> = {
   ...transitionStyles,
   fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.semibold,
@@ -29,52 +29,55 @@ const commonButtonStyles: Partial<ButtonStylesNonColor> = {
   lineHeight: 1,
 };
 
-const commonDisabledStyles: Partial<ButtonStylesNonColor> = {
-  opacity: 0.5,
+const disabledButtonStyles: Partial<ButtonStylesNonColor> = { opacity: 0.5 };
+
+const mediumButtonStyles: Partial<ButtonStylesNonColor> = { height: "40px" };
+
+const largeButtonStyles: Partial<ButtonStylesNonColor> = { height: "48px" };
+
+const primaryMediumDefault: ButtonStylesNonColor = {
+  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...mediumButtonStyles,
 };
 
-const primaryRegularDefault: ButtonStylesNonColor = {
-  ...(commonButtonStyles as ButtonStylesNonColor),
-  height: "40px",
-};
-
-const primaryRegularDisabled: ButtonStylesNonColor = {
-  ...primaryRegularDefault,
-  ...commonDisabledStyles,
+const primaryMediumDisabled: ButtonStylesNonColor = {
+  ...primaryMediumDefault,
+  ...disabledButtonStyles,
 };
 
 const primaryLargeDefault: ButtonStylesNonColor = {
-  ...(commonButtonStyles as ButtonStylesNonColor),
-  height: "48px",
+  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...largeButtonStyles,
 };
 
 const primaryLargeDisabled: ButtonStylesNonColor = {
   ...primaryLargeDefault,
-  ...commonDisabledStyles,
+  ...disabledButtonStyles,
 };
 
-const secondaryRegularDefault: ButtonStylesNonColor = {
-  ...(commonButtonStyles as ButtonStylesNonColor),
-  height: "40px",
+const secondaryMediumDefault: ButtonStylesNonColor = {
+  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...mediumButtonStyles,
 };
 
-const secondaryRegularDisabled: ButtonStylesNonColor = {
-  ...secondaryRegularDefault,
-  ...commonDisabledStyles,
+const secondaryMediumDisabled: ButtonStylesNonColor = {
+  ...secondaryMediumDefault,
+  ...disabledButtonStyles,
 };
 
 const secondaryLargeDefault: ButtonStylesNonColor = {
-  ...(commonButtonStyles as ButtonStylesNonColor),
+  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...largeButtonStyles,
   borderWidth: "2px",
 };
 
 const secondaryLargeDisabled: ButtonStylesNonColor = {
   ...secondaryLargeDefault,
-  ...commonDisabledStyles,
+  ...disabledButtonStyles,
 };
 
-const tertiaryRegularDefault: ButtonStylesNonColor = {
-  ...(commonButtonStyles as ButtonStylesNonColor),
+const tertiaryMediumDefault: ButtonStylesNonColor = {
+  ...(baseButtonStyles as ButtonStylesNonColor),
   height: "auto",
   padding: 0,
   paddingBottom: 2,
@@ -84,18 +87,18 @@ const tertiaryRegularDefault: ButtonStylesNonColor = {
   lineHeight: 1.333,
 };
 
-const tertiaryRegularHover: ButtonStylesNonColor = {
-  ...tertiaryRegularDefault,
+const tertiaryMediumHover: ButtonStylesNonColor = {
+  ...tertiaryMediumDefault,
   opacity: 0.5,
 };
 
-const tertiaryRegularDisabled: ButtonStylesNonColor = {
-  ...tertiaryRegularDefault,
-  ...commonDisabledStyles,
+const tertiaryMediumDisabled: ButtonStylesNonColor = {
+  ...tertiaryMediumDefault,
+  ...disabledButtonStyles,
 };
 
 const tertiaryLargeDefault: ButtonStylesNonColor = {
-  ...tertiaryRegularDefault,
+  ...tertiaryMediumDefault,
 };
 
 const tertiaryLargeHover: ButtonStylesNonColor = {
@@ -105,7 +108,7 @@ const tertiaryLargeHover: ButtonStylesNonColor = {
 
 const tertiaryLargeDisabled: ButtonStylesNonColor = {
   ...tertiaryLargeDefault,
-  ...commonDisabledStyles,
+  ...disabledButtonStyles,
 };
 
 export { ButtonStyles } from "./types";
@@ -131,17 +134,17 @@ export const getButtonStyles = (
           ...buttonPalette.primary.disabled,
         },
       },
-      regular: {
+      medium: {
         default: {
-          ...primaryRegularDefault,
+          ...primaryMediumDefault,
           ...buttonPalette.primary.default,
         },
         hover: {
-          ...primaryRegularDefault,
+          ...primaryMediumDefault,
           ...buttonPalette.primary.hover,
         },
         disabled: {
-          ...primaryRegularDisabled,
+          ...primaryMediumDisabled,
           ...buttonPalette.primary.disabled,
         },
       },
@@ -161,17 +164,17 @@ export const getButtonStyles = (
           ...buttonPalette.secondary.disabled,
         },
       },
-      regular: {
+      medium: {
         default: {
-          ...secondaryRegularDefault,
+          ...secondaryMediumDefault,
           ...buttonPalette.secondary.default,
         },
         hover: {
-          ...secondaryRegularDefault,
+          ...secondaryMediumDefault,
           ...buttonPalette.secondary.hover,
         },
         disabled: {
-          ...secondaryRegularDisabled,
+          ...secondaryMediumDisabled,
           ...buttonPalette.secondary.disabled,
         },
       },
@@ -191,17 +194,17 @@ export const getButtonStyles = (
           ...buttonPalette.tertiary.disabled,
         },
       },
-      regular: {
+      medium: {
         default: {
-          ...tertiaryRegularDefault,
+          ...tertiaryMediumDefault,
           ...buttonPalette.tertiary.default,
         },
         hover: {
-          ...tertiaryRegularHover,
+          ...tertiaryMediumHover,
           ...buttonPalette.tertiary.hover,
         },
         disabled: {
-          ...tertiaryRegularDisabled,
+          ...tertiaryMediumDisabled,
           ...buttonPalette.tertiary.disabled,
         },
       },
