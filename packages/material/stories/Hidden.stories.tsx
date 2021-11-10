@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Background, Hidden, Box, Typography, Stack } from "../src";
+import { Background, Hidden, Typography, Stack } from "../src";
 import type { HiddenProps } from "../src";
 
 export default {
