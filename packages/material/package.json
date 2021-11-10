@@ -10,7 +10,16 @@
     "serve:coverage": "open coverage/lcov-report/index.html",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o storybook --loglevel warn",
-    "ci-package-changed": "./scripts/deployment-preview.sh"
+    "ci-package-changed": "./scripts/deployment-preview.sh",
+    "format": "prettier --write \"./{src,stories}/**/*.{ts,tsx,js}\"",
+    "lint": "eslint ./{src,stories} --fix --ext .ts,.tsx,.js",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*": [
+      "yarn lint",
+      "yarn format"
+    ]
   },
   "author": "",
   "license": "ISC",
