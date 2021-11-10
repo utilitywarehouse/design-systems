@@ -2,7 +2,12 @@ import "../types/BreakpointOverrides";
 import React from "react";
 import { useMuiTheme, useMediaQuery, Breakpoint } from "../";
 
-const useDeviceSize = (): Breakpoint => {
+const useDeviceSize = (): {
+  deviceSize: Breakpoint;
+  isMobile: boolean;
+  isTablet: boolean;
+  isDesktop: boolean;
+} => {
   const theme = useMuiTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
   const isTablet = useMediaQuery(theme.breakpoints.up("tablet"));
@@ -12,7 +17,12 @@ const useDeviceSize = (): Breakpoint => {
     return device as Breakpoint;
   }, [isDesktop, isTablet]);
 
-  return breakpoint;
+  return {
+    deviceSize: breakpoint,
+    isMobile: breakpoint === "mobile",
+    isTablet: breakpoint === "tablet",
+    isDesktop: breakpoint === "desktop",
+  };
 };
 
 export default useDeviceSize;

@@ -9,7 +9,11 @@ import { useDeviceSize } from "@utilitywarehouse/customer-ui-material";
 
 ...
 
-// mobile, tablet or desktop
-const deviceSize = useDeviceSize();
+const {
+  deviceSize, // "mobile", "tablet" or "desktop"
+  isMobile, // boolean
+  isTablet, // boolean
+  isDesktop, // boolean
+} = useDeviceSize();
 
 ```
