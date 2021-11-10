@@ -150,7 +150,7 @@ const Grid: React.FunctionComponent<GridProps> = ({
   children,
   forwardedRef,
 }) => {
-  const deviceSize = useDeviceSize();
+  const { deviceSize } = useDeviceSize();
   const containerStyleProps = React.useContext(GridContext);
 
   const resolvedDirection = React.useMemo<Direction>(() => {
@@ -272,6 +272,6 @@ export interface GridSpacerProps {
 export const GridSpacer: React.FunctionComponent<GridSpacerProps> = ({
   forwardedRef,
 }) => {
-  const deviceSize = useDeviceSize();
+  const { deviceSize } = useDeviceSize();
   return <Box ref={forwardedRef} paddingBottom={gutterSize[deviceSize]} />;
 };

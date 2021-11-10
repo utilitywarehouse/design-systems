@@ -76,7 +76,7 @@ const Hidden: React.FunctionComponent<HiddenProps> = ({
   only,
   children,
 }) => {
-  const deviceSize = useDeviceSize();
+  const { deviceSize } = useDeviceSize();
   const isHidden = React.useMemo(() => {
     let hidden = false;
     const props: Record<string, boolean | undefined> = {
