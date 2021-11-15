@@ -1,183 +1,127 @@
 import { ColorScheme, BackdropLevel } from "../types";
 import { getButtonPalette } from "./palette";
+import { ButtonStyles, ButtonStylesNonColor } from "./types";
 import {
-  desktopPrimaryLargeIdle,
-  desktopPrimaryLargeActive,
-  desktopPrimaryLargeDisabled,
-  desktopPrimaryRegularIdle,
-  desktopPrimaryRegularActive,
-  desktopPrimaryRegularDisabled,
-  desktopSecondaryLargeIdle,
-  desktopSecondaryLargeActive,
-  desktopSecondaryLargeDisabled,
-  desktopSecondaryRegularIdle,
-  desktopSecondaryRegularActive,
-  desktopSecondaryRegularDisabled,
-  desktopTertiaryLargeActive,
-  desktopTertiaryLargeDisabled,
-  desktopTertiaryLargeIdle,
-  desktopTertiaryRegularActive,
-  desktopTertiaryRegularDisabled,
-  desktopTertiaryRegularIdle,
-} from "./desktop";
-import {
-  mobilePrimaryLargeIdle,
-  mobilePrimaryLargeActive,
-  mobilePrimaryLargeDisabled,
-  mobilePrimaryRegularIdle,
-  mobilePrimaryRegularActive,
-  mobilePrimaryRegularDisabled,
-  mobileSecondaryLargeIdle,
-  mobileSecondaryLargeActive,
-  mobileSecondaryLargeDisabled,
-  mobileSecondaryRegularIdle,
-  mobileSecondaryRegularActive,
-  mobileSecondaryRegularDisabled,
-  mobileTertiaryLargeActive,
-  mobileTertiaryLargeDisabled,
-  mobileTertiaryLargeIdle,
-  mobileTertiaryRegularActive,
-  mobileTertiaryRegularDisabled,
-  mobileTertiaryRegularIdle,
-} from "./mobile";
-import {
-  tabletPrimaryLargeIdle,
-  tabletPrimaryLargeActive,
-  tabletPrimaryLargeDisabled,
-  tabletPrimaryRegularIdle,
-  tabletPrimaryRegularActive,
-  tabletPrimaryRegularDisabled,
-  tabletSecondaryLargeIdle,
-  tabletSecondaryLargeActive,
-  tabletSecondaryLargeDisabled,
-  tabletSecondaryRegularIdle,
-  tabletSecondaryRegularActive,
-  tabletSecondaryRegularDisabled,
-  tabletTertiaryLargeActive,
-  tabletTertiaryLargeDisabled,
-  tabletTertiaryLargeIdle,
-  tabletTertiaryRegularActive,
-  tabletTertiaryRegularDisabled,
-  tabletTertiaryRegularIdle,
-} from "./tablet";
-import { CommonButtonStyles, ButtonStyles } from "./types";
+  fonts,
+  fontWeights,
+  helpers,
+  spacingBase,
+} from "@utilitywarehouse/customer-ui-design-tokens";
+import { duration, easingFunction } from "../transitions";
 
-const getCommonButtonStyles = (): CommonButtonStyles => ({
-  desktop: {
-    primary: {
-      large: {
-        idle: desktopPrimaryLargeIdle,
-        active: desktopPrimaryLargeActive,
-        disabled: desktopPrimaryLargeDisabled,
-      },
-      regular: {
-        idle: desktopPrimaryRegularIdle,
-        active: desktopPrimaryRegularActive,
-        disabled: desktopPrimaryRegularDisabled,
-      },
-    },
-    secondary: {
-      large: {
-        idle: desktopSecondaryLargeIdle,
-        active: desktopSecondaryLargeActive,
-        disabled: desktopSecondaryLargeDisabled,
-      },
-      regular: {
-        idle: desktopSecondaryRegularIdle,
-        active: desktopSecondaryRegularActive,
-        disabled: desktopSecondaryRegularDisabled,
-      },
-    },
-    tertiary: {
-      large: {
-        idle: desktopTertiaryLargeIdle,
-        active: desktopTertiaryLargeActive,
-        disabled: desktopTertiaryLargeDisabled,
-      },
-      regular: {
-        idle: desktopTertiaryRegularIdle,
-        active: desktopTertiaryRegularActive,
-        disabled: desktopTertiaryRegularDisabled,
-      },
-    },
-  },
-  tablet: {
-    primary: {
-      large: {
-        idle: tabletPrimaryLargeIdle,
-        active: tabletPrimaryLargeActive,
-        disabled: tabletPrimaryLargeDisabled,
-      },
-      regular: {
-        idle: tabletPrimaryRegularIdle,
-        active: tabletPrimaryRegularActive,
-        disabled: tabletPrimaryRegularDisabled,
-      },
-    },
-    secondary: {
-      large: {
-        idle: tabletSecondaryLargeIdle,
-        active: tabletSecondaryLargeActive,
-        disabled: tabletSecondaryLargeDisabled,
-      },
-      regular: {
-        idle: tabletSecondaryRegularIdle,
-        active: tabletSecondaryRegularActive,
-        disabled: tabletSecondaryRegularDisabled,
-      },
-    },
-    tertiary: {
-      large: {
-        idle: tabletTertiaryLargeIdle,
-        active: tabletTertiaryLargeActive,
-        disabled: tabletTertiaryLargeDisabled,
-      },
-      regular: {
-        idle: tabletTertiaryRegularIdle,
-        active: tabletTertiaryRegularActive,
-        disabled: tabletTertiaryRegularDisabled,
-      },
-    },
-  },
-  mobile: {
-    primary: {
-      large: {
-        idle: mobilePrimaryLargeIdle,
-        active: mobilePrimaryLargeActive,
-        disabled: mobilePrimaryLargeDisabled,
-      },
-      regular: {
-        idle: mobilePrimaryRegularIdle,
-        active: mobilePrimaryRegularActive,
-        disabled: mobilePrimaryRegularDisabled,
-      },
-    },
-    secondary: {
-      large: {
-        idle: mobileSecondaryLargeIdle,
-        active: mobileSecondaryLargeActive,
-        disabled: mobileSecondaryLargeDisabled,
-      },
-      regular: {
-        idle: mobileSecondaryRegularIdle,
-        active: mobileSecondaryRegularActive,
-        disabled: mobileSecondaryRegularDisabled,
-      },
-    },
-    tertiary: {
-      large: {
-        idle: mobileTertiaryLargeIdle,
-        active: mobileTertiaryLargeActive,
-        disabled: mobileTertiaryLargeDisabled,
-      },
-      regular: {
-        idle: mobileTertiaryRegularIdle,
-        active: mobileTertiaryRegularActive,
-        disabled: mobileTertiaryRegularDisabled,
-      },
-    },
-  },
-});
+const { px } = helpers;
+const transitionStyles = {
+  transition: `all ${duration}ms ${easingFunction}`,
+  transitionProperty: "background-color, border-color, color, opacity",
+};
+const baseButtonStyles: Partial<ButtonStylesNonColor> = {
+  ...transitionStyles,
+  fontFamily: fonts.secondary,
+  fontWeight: fontWeights.secondary.semibold,
+  textTransform: "none",
+  opacity: 1,
+  paddingTop: 0,
+  paddingBottom: 0,
+  paddingLeft: px(spacingBase * 4), // 32px
+  paddingRight: px(spacingBase * 4), // 32px
+  borderStyle: "solid",
+  borderWidth: 0,
+  borderRadius: px(spacingBase * 4), // 32px
+  fontSize: 18,
+  lineHeight: 1,
+} as ButtonStylesNonColor;
+const disabledButtonStyles: Partial<ButtonStylesNonColor> = { opacity: 0.5 };
+const smallButtonStyles: Partial<ButtonStylesNonColor> = {
+  height: px(spacingBase * 4), // 32px
+};
+const mediumButtonStyles: Partial<ButtonStylesNonColor> = {
+  height: px(spacingBase * 5), // 40px
+};
+const largeButtonStyles: Partial<ButtonStylesNonColor> = {
+  height: px(spacingBase * 6), // 48px
+};
+
+const primarySmallDefault: ButtonStylesNonColor = {
+  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...smallButtonStyles,
+};
+
+const primarySmallDisabled: ButtonStylesNonColor = {
+  ...primarySmallDefault,
+  ...disabledButtonStyles,
+};
+
+const primaryMediumDefault: ButtonStylesNonColor = {
+  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...mediumButtonStyles,
+};
+
+const primaryMediumDisabled: ButtonStylesNonColor = {
+  ...primaryMediumDefault,
+  ...disabledButtonStyles,
+};
+
+const primaryLargeDefault: ButtonStylesNonColor = {
+  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...largeButtonStyles,
+};
+
+const primaryLargeDisabled: ButtonStylesNonColor = {
+  ...primaryLargeDefault,
+  ...disabledButtonStyles,
+};
+
+const secondarySmallDefault: ButtonStylesNonColor = {
+  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...smallButtonStyles,
+};
+
+const secondarySmallDisabled: ButtonStylesNonColor = {
+  ...secondarySmallDefault,
+  ...disabledButtonStyles,
+};
+
+const secondaryMediumDefault: ButtonStylesNonColor = {
+  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...mediumButtonStyles,
+};
+
+const secondaryMediumDisabled: ButtonStylesNonColor = {
+  ...secondaryMediumDefault,
+  ...disabledButtonStyles,
+};
+
+const secondaryLargeDefault: ButtonStylesNonColor = {
+  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...largeButtonStyles,
+  borderWidth: "2px",
+};
+
+const secondaryLargeDisabled: ButtonStylesNonColor = {
+  ...secondaryLargeDefault,
+  ...disabledButtonStyles,
+};
+
+const tertiaryDefault: ButtonStylesNonColor = {
+  ...(baseButtonStyles as ButtonStylesNonColor),
+  height: "auto",
+  padding: 0,
+  paddingBottom: 2,
+  borderWidth: 0,
+  borderBottomWidth: 2,
+  borderRadius: 0,
+  lineHeight: 1.333,
+};
+
+const tertiaryHover: ButtonStylesNonColor = {
+  ...tertiaryDefault,
+  opacity: 0.5,
+};
+
+const tertiaryDisabled: ButtonStylesNonColor = {
+  ...tertiaryDefault,
+  ...disabledButtonStyles,
+};
 
 export { ButtonStyles } from "./types";
 
@@ -185,283 +129,57 @@ export const getButtonStyles = (
   colorScheme: ColorScheme,
   backdrop: BackdropLevel
 ): ButtonStyles => {
-  const commonButtonStyles = getCommonButtonStyles();
-  const buttonPalette = getButtonPalette(colorScheme, backdrop);
+  const palette = getButtonPalette(colorScheme, backdrop);
   return {
-    desktop: {
-      primary: {
-        large: {
-          idle: {
-            ...commonButtonStyles.desktop.primary.large.idle,
-            ...buttonPalette.primary.idle,
-          },
-          active: {
-            ...commonButtonStyles.desktop.primary.large.active,
-            ...buttonPalette.primary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.desktop.primary.large.disabled,
-            ...buttonPalette.primary.disabled,
-          },
-        },
-        regular: {
-          idle: {
-            ...commonButtonStyles.desktop.primary.regular.idle,
-            ...buttonPalette.primary.idle,
-          },
-          active: {
-            ...commonButtonStyles.desktop.primary.regular.active,
-            ...buttonPalette.primary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.desktop.primary.regular.disabled,
-            ...buttonPalette.primary.disabled,
-          },
-        },
+    primary: {
+      large: {
+        default: { ...primaryLargeDefault, ...palette.primary.default },
+        hover: { ...primaryLargeDefault, ...palette.primary.hover },
+        disabled: { ...primaryLargeDisabled, ...palette.primary.disabled },
       },
-      secondary: {
-        large: {
-          idle: {
-            ...commonButtonStyles.desktop.secondary.large.idle,
-            ...buttonPalette.secondary.idle,
-          },
-          active: {
-            ...commonButtonStyles.desktop.secondary.large.active,
-            ...buttonPalette.secondary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.desktop.secondary.large.disabled,
-            ...buttonPalette.secondary.disabled,
-          },
-        },
-        regular: {
-          idle: {
-            ...commonButtonStyles.desktop.secondary.regular.idle,
-            ...buttonPalette.secondary.idle,
-          },
-          active: {
-            ...commonButtonStyles.desktop.secondary.regular.active,
-            ...buttonPalette.secondary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.desktop.secondary.regular.disabled,
-            ...buttonPalette.secondary.disabled,
-          },
-        },
+      medium: {
+        default: { ...primaryMediumDefault, ...palette.primary.default },
+        hover: { ...primaryMediumDefault, ...palette.primary.hover },
+        disabled: { ...primaryMediumDisabled, ...palette.primary.disabled },
       },
-      tertiary: {
-        large: {
-          idle: {
-            ...commonButtonStyles.desktop.tertiary.large.idle,
-            ...buttonPalette.tertiary.idle,
-          },
-          active: {
-            ...commonButtonStyles.desktop.tertiary.large.active,
-            ...buttonPalette.tertiary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.desktop.tertiary.large.disabled,
-            ...buttonPalette.tertiary.disabled,
-          },
-        },
-        regular: {
-          idle: {
-            ...commonButtonStyles.desktop.tertiary.regular.idle,
-            ...buttonPalette.tertiary.idle,
-          },
-          active: {
-            ...commonButtonStyles.desktop.tertiary.regular.active,
-            ...buttonPalette.tertiary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.desktop.tertiary.regular.disabled,
-            ...buttonPalette.tertiary.disabled,
-          },
-        },
+      small: {
+        default: { ...primarySmallDefault, ...palette.primary.default },
+        hover: { ...primarySmallDefault, ...palette.primary.hover },
+        disabled: { ...primarySmallDisabled, ...palette.primary.disabled },
       },
     },
-    tablet: {
-      primary: {
-        large: {
-          idle: {
-            ...commonButtonStyles.tablet.primary.large.idle,
-            ...buttonPalette.primary.idle,
-          },
-          active: {
-            ...commonButtonStyles.tablet.primary.large.active,
-            ...buttonPalette.primary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.tablet.primary.large.disabled,
-            ...buttonPalette.primary.disabled,
-          },
-        },
-        regular: {
-          idle: {
-            ...commonButtonStyles.tablet.primary.regular.idle,
-            ...buttonPalette.primary.idle,
-          },
-          active: {
-            ...commonButtonStyles.tablet.primary.regular.active,
-            ...buttonPalette.primary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.tablet.primary.regular.disabled,
-            ...buttonPalette.primary.disabled,
-          },
-        },
+    secondary: {
+      large: {
+        default: { ...secondaryLargeDefault, ...palette.secondary.default },
+        hover: { ...secondaryLargeDefault, ...palette.secondary.hover },
+        disabled: { ...secondaryLargeDisabled, ...palette.secondary.disabled },
       },
-      secondary: {
-        large: {
-          idle: {
-            ...commonButtonStyles.tablet.secondary.large.idle,
-            ...buttonPalette.secondary.idle,
-          },
-          active: {
-            ...commonButtonStyles.tablet.secondary.large.active,
-            ...buttonPalette.secondary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.tablet.secondary.large.disabled,
-            ...buttonPalette.secondary.disabled,
-          },
-        },
-        regular: {
-          idle: {
-            ...commonButtonStyles.tablet.secondary.regular.idle,
-            ...buttonPalette.secondary.idle,
-          },
-          active: {
-            ...commonButtonStyles.tablet.secondary.regular.active,
-            ...buttonPalette.secondary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.tablet.secondary.regular.disabled,
-            ...buttonPalette.secondary.disabled,
-          },
-        },
+      medium: {
+        default: { ...secondaryMediumDefault, ...palette.secondary.default },
+        hover: { ...secondaryMediumDefault, ...palette.secondary.hover },
+        disabled: { ...secondaryMediumDisabled, ...palette.secondary.disabled },
       },
-      tertiary: {
-        large: {
-          idle: {
-            ...commonButtonStyles.tablet.tertiary.large.idle,
-            ...buttonPalette.tertiary.idle,
-          },
-          active: {
-            ...commonButtonStyles.tablet.tertiary.large.active,
-            ...buttonPalette.tertiary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.tablet.tertiary.large.disabled,
-            ...buttonPalette.tertiary.disabled,
-          },
-        },
-        regular: {
-          idle: {
-            ...commonButtonStyles.tablet.tertiary.regular.idle,
-            ...buttonPalette.tertiary.idle,
-          },
-          active: {
-            ...commonButtonStyles.tablet.tertiary.regular.active,
-            ...buttonPalette.tertiary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.tablet.tertiary.regular.disabled,
-            ...buttonPalette.tertiary.disabled,
-          },
-        },
+      small: {
+        default: { ...secondarySmallDefault, ...palette.secondary.default },
+        hover: { ...secondarySmallDefault, ...palette.secondary.hover },
+        disabled: { ...secondarySmallDisabled, ...palette.secondary.disabled },
       },
     },
-    mobile: {
-      primary: {
-        large: {
-          idle: {
-            ...commonButtonStyles.mobile.primary.large.idle,
-            ...buttonPalette.primary.idle,
-          },
-          active: {
-            ...commonButtonStyles.mobile.primary.large.active,
-            ...buttonPalette.primary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.mobile.primary.large.disabled,
-            ...buttonPalette.primary.disabled,
-          },
-        },
-        regular: {
-          idle: {
-            ...commonButtonStyles.mobile.primary.regular.idle,
-            ...buttonPalette.primary.idle,
-          },
-          active: {
-            ...commonButtonStyles.mobile.primary.regular.active,
-            ...buttonPalette.primary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.mobile.primary.regular.disabled,
-            ...buttonPalette.primary.disabled,
-          },
-        },
+    tertiary: {
+      large: {
+        default: { ...tertiaryDefault, ...palette.tertiary.default },
+        hover: { ...tertiaryHover, ...palette.tertiary.hover },
+        disabled: { ...tertiaryDisabled, ...palette.tertiary.disabled },
       },
-      secondary: {
-        large: {
-          idle: {
-            ...commonButtonStyles.mobile.secondary.large.idle,
-            ...buttonPalette.secondary.idle,
-          },
-          active: {
-            ...commonButtonStyles.mobile.secondary.large.active,
-            ...buttonPalette.secondary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.mobile.secondary.large.disabled,
-            ...buttonPalette.secondary.disabled,
-          },
-        },
-        regular: {
-          idle: {
-            ...commonButtonStyles.mobile.secondary.regular.idle,
-            ...buttonPalette.secondary.idle,
-          },
-          active: {
-            ...commonButtonStyles.mobile.secondary.regular.active,
-            ...buttonPalette.secondary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.mobile.secondary.regular.disabled,
-            ...buttonPalette.secondary.disabled,
-          },
-        },
+      medium: {
+        default: { ...tertiaryDefault, ...palette.tertiary.default },
+        hover: { ...tertiaryHover, ...palette.tertiary.hover },
+        disabled: { ...tertiaryDisabled, ...palette.tertiary.disabled },
       },
-      tertiary: {
-        large: {
-          idle: {
-            ...commonButtonStyles.mobile.tertiary.large.idle,
-            ...buttonPalette.tertiary.idle,
-          },
-          active: {
-            ...commonButtonStyles.mobile.tertiary.large.active,
-            ...buttonPalette.tertiary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.mobile.tertiary.large.disabled,
-            ...buttonPalette.tertiary.disabled,
-          },
-        },
-        regular: {
-          idle: {
-            ...commonButtonStyles.mobile.tertiary.regular.idle,
-            ...buttonPalette.tertiary.idle,
-          },
-          active: {
-            ...commonButtonStyles.mobile.tertiary.regular.active,
-            ...buttonPalette.tertiary.active,
-          },
-          disabled: {
-            ...commonButtonStyles.mobile.tertiary.regular.disabled,
-            ...buttonPalette.tertiary.disabled,
-          },
-        },
+      small: {
+        default: { ...tertiaryDefault, ...palette.tertiary.default },
+        hover: { ...tertiaryHover, ...palette.tertiary.hover },
+        disabled: { ...tertiaryDisabled, ...palette.tertiary.disabled },
       },
     },
   };

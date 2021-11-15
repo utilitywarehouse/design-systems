@@ -1,18 +1,17 @@
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
-import { TinyColor } from "@ctrl/tinycolor";
 import { ButtonPalette } from "./types";
 import { ColorScheme, BackdropLevel } from "../types";
 
 const lightModeLevel0 = {
   primary: {
-    idle: {
+    default: {
       color: colors.midnight,
       backgroundColor: colors.cyan,
       borderColor: colors.transparent,
     },
-    active: {
+    hover: {
       color: colors.midnight,
-      backgroundColor: new TinyColor(colors.cyan).lighten(15).toHexString(),
+      backgroundColor: "#accafd", // this background color replaces using opacity, but is not yet documented by UX
       borderColor: colors.transparent,
     },
     disabled: {
@@ -22,12 +21,12 @@ const lightModeLevel0 = {
     },
   },
   secondary: {
-    idle: {
+    default: {
       color: colors.white,
       backgroundColor: colors.transparent,
       borderColor: colors.cyan,
     },
-    active: {
+    hover: {
       color: colors.white,
       backgroundColor: colors.transparent,
       borderColor: colors.white,
@@ -39,12 +38,12 @@ const lightModeLevel0 = {
     },
   },
   tertiary: {
-    idle: {
+    default: {
       color: colors.white,
       backgroundColor: colors.transparent,
       borderColor: colors.cyan,
     },
-    active: {
+    hover: {
       color: colors.white,
       backgroundColor: colors.transparent,
       borderColor: colors.cyan,
@@ -57,17 +56,15 @@ const lightModeLevel0 = {
   },
 };
 
-const lightModeLevel1 = lightModeLevel0;
-
 const lightModeLevel2 = {
   ...lightModeLevel0,
   secondary: {
-    idle: {
-      ...lightModeLevel0.secondary.idle,
+    default: {
+      ...lightModeLevel0.secondary.default,
       color: colors.midnight,
     },
-    active: {
-      ...lightModeLevel0.secondary.active,
+    hover: {
+      ...lightModeLevel0.secondary.hover,
       color: colors.midnight,
       borderColor: colors.midnight,
     },
@@ -77,46 +74,31 @@ const lightModeLevel2 = {
     },
   },
   tertiary: {
-    idle: {
+    default: {
+      ...lightModeLevel0.tertiary.default,
       color: colors.midnight,
-      backgroundColor: colors.transparent,
-      borderColor: colors.cyan,
     },
-    active: {
+    hover: {
+      ...lightModeLevel0.tertiary.hover,
       color: colors.midnight,
-      backgroundColor: colors.transparent,
-      borderColor: colors.cyan,
     },
     disabled: {
+      ...lightModeLevel0.tertiary.disabled,
       color: colors.midnight,
-      backgroundColor: colors.transparent,
-      borderColor: colors.cyan,
     },
   },
 };
 
-const lightModeLevel3 = lightModeLevel2;
-const lightModeLevel4 = lightModeLevel3;
-const lightModeLevel5 = lightModeLevel4;
-
-const palettes = {
-  light: {
-    level0: lightModeLevel0,
-    level1: lightModeLevel1,
-    level2: lightModeLevel2,
-    level3: lightModeLevel3,
-    level4: lightModeLevel4,
-    level5: lightModeLevel5,
-  },
-  dark: {
-    level0: lightModeLevel0,
-    level1: lightModeLevel1,
-    level2: lightModeLevel2,
-    level3: lightModeLevel3,
-    level4: lightModeLevel4,
-    level5: lightModeLevel5,
-  },
+const light = {
+  level0: lightModeLevel0,
+  level1: lightModeLevel0,
+  level2: lightModeLevel2,
+  level3: lightModeLevel2,
+  level4: lightModeLevel2,
+  level5: lightModeLevel2,
 };
+
+const palettes = { light, dark: light };
 
 export const getButtonPalette = (
   colorScheme: ColorScheme,
