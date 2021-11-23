@@ -2,6 +2,10 @@
 
 This monorepo contains all the packages used for Customer UI. See [individual packages](#packages) for more info.
 
+## Current state of Customer UI
+
+⚠️  The main `customer-ui-material` library of React components is in an unsupported *alpha* versioning state, and every release should be considered a breaking change. 
+
 ## Packages
 
 - [@utilitywarehouse/customer-ui-design-tokens](packages/design-tokens)
