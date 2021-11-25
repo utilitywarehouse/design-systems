@@ -71,8 +71,13 @@ const primaryLargeDisabled: ButtonStylesNonColor = {
   ...disabledButtonStyles,
 };
 
-const secondarySmallDefault: ButtonStylesNonColor = {
+const secondaryButtonStyles: ButtonStylesNonColor = {
   ...(baseButtonStyles as ButtonStylesNonColor),
+  borderWidth: "2px",
+};
+
+const secondarySmallDefault: ButtonStylesNonColor = {
+  ...secondaryButtonStyles,
   ...smallButtonStyles,
 };
 
@@ -82,7 +87,7 @@ const secondarySmallDisabled: ButtonStylesNonColor = {
 };
 
 const secondaryMediumDefault: ButtonStylesNonColor = {
-  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...secondaryButtonStyles,
   ...mediumButtonStyles,
 };
 
@@ -92,9 +97,8 @@ const secondaryMediumDisabled: ButtonStylesNonColor = {
 };
 
 const secondaryLargeDefault: ButtonStylesNonColor = {
-  ...(baseButtonStyles as ButtonStylesNonColor),
+  ...secondaryButtonStyles,
   ...largeButtonStyles,
-  borderWidth: "2px",
 };
 
 const secondaryLargeDisabled: ButtonStylesNonColor = {
