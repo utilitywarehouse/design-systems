@@ -7,11 +7,11 @@ const StyledBox = styled(Box)(({ theme }) => ({
   display: "block",
   width: "100%",
   paddingY: 0,
-  paddingX: 2,
+  paddingX: theme.spacing(2),
   margin: "0 auto",
   maxWidth: `calc(343px + ${theme.spacing(4)})`,
   [theme.breakpoints.up("tablet")]: {
-    paddingX: 3,
+    paddingX: theme.spacing(3),
     maxWidth: `calc(720px + ${theme.spacing(6)})`,
   },
   [theme.breakpoints.up("desktop")]: {
