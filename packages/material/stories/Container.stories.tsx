@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Background, Container, Typography } from "../src";
+import { Container, Box } from "../src";
 
 export default {
   title: "Layout/Container",
@@ -11,19 +11,7 @@ export default {
 export const ContainerStory: Story = () => {
   return (
     <Container>
-      <Background
-        backgroundColor="level1"
-        sx={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Typography>
-          The container centers your content horizontally.
-        </Typography>
-      </Background>
+      <Box sx={{ backgroundColor: "secondary.light", height: "100vh" }} />
     </Container>
   );
 };
