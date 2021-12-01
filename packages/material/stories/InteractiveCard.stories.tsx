@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import type { InteractiveCardProps } from "../src";
+import { Box, InteractiveCardProps } from "../src";
 import { InteractiveCard, Typography } from "../src";
 import { BackgroundStack } from "./utils";
 
@@ -15,11 +15,18 @@ export const InteractiveCardStory: Story<InteractiveCardProps> = (args) => {
     <BackgroundStack>
       <InteractiveCard
         {...args}
-        onClick={(e: React.MouseEvent) => {
-          e.preventDefault();
-        }}
+        onClick={(e: React.MouseEvent) => e.preventDefault()}
+        containerProps={{ sx: { width: 500 } }}
       >
-        <Typography variant="inherit">An interactive card</Typography>
+        <Box
+          sx={{
+            height: 200,
+            display: "grid",
+            placeItems: "center",
+          }}
+        >
+          <Typography component="span">An interactive card</Typography>
+        </Box>
       </InteractiveCard>
     </BackgroundStack>
   );

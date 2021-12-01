@@ -5,17 +5,9 @@ import {
   InteractiveCardVariant,
 } from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
-import {
-  ButtonBase,
-  Box,
-  Typography,
-  makeStyles,
-  Theme,
-  BackgroundContext,
-  BoxProps,
-} from "..";
-import withBackground from "../hocs/withBackground";
-import { clsx } from "../utils";
+import { ButtonBase, Box, Typography, BackgroundContext, BoxProps } from "..";
+import BackgroundProvider from "./BackgroundProvider";
+import { styled } from "@mui/material/styles";
 
 interface BaseInteractiveCardProps {
   Background?: React.ComponentType;
@@ -39,124 +31,127 @@ export type InteractiveCardProps =
   | InteractiveCardButtonProps
   | InteractiveCardAnchorProps;
 
-interface StyleProps {
-  theme: CustomerUITheme;
-  rootHoverClass: string;
+interface StyledProps {
+  customerUITheme: CustomerUITheme;
   size: InteractiveCardSize;
   variant: InteractiveCardVariant;
 }
 
-const useRootHoverStyles = makeStyles(() => ({
-  rootHover: {},
-}));
+const PREFIX = "InteractiveCard";
+const classes = { rootHover: `${PREFIX}-rootHover` };
 
-const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
-  buttonBase: {
+const StyledRoot = styled(Box)<StyledProps>(
+  ({ theme, customerUITheme, size, variant }) => ({
     width: "100%",
-  },
-  root: ({ size, variant, ...props }) => ({
-    width: "100%",
+    overflow: "hidden",
+    position: "relative",
     backgroundColor:
-      props.theme.components.interactiveCard.mobile[variant][size].idle
+      customerUITheme.components.interactiveCard.mobile[variant][size].idle
         .backgroundColor,
     borderRadius:
-      props.theme.components.interactiveCard.mobile[variant][size].idle
+      customerUITheme.components.interactiveCard.mobile[variant][size].idle
         .borderRadius,
     [theme.breakpoints.up("tablet")]: {
       backgroundColor:
-        props.theme.components.interactiveCard.tablet[variant][size].idle
+        customerUITheme.components.interactiveCard.tablet[variant][size].idle
           .backgroundColor,
       borderRadius:
-        props.theme.components.interactiveCard.tablet[variant][size].idle
+        customerUITheme.components.interactiveCard.tablet[variant][size].idle
           .borderRadius,
     },
     [theme.breakpoints.up("desktop")]: {
       backgroundColor:
-        props.theme.components.interactiveCard.desktop[variant][size].idle
+        customerUITheme.components.interactiveCard.desktop[variant][size].idle
           .backgroundColor,
       borderRadius:
-        props.theme.components.interactiveCard.desktop[variant][size].idle
+        customerUITheme.components.interactiveCard.desktop[variant][size].idle
           .borderRadius,
     },
     "&:hover": {
       borderRadius:
-        props.theme.components.interactiveCard.mobile[variant][size].active
+        customerUITheme.components.interactiveCard.mobile[variant][size].active
           .borderRadius,
       [theme.breakpoints.up("tablet")]: {
         borderRadius:
-          props.theme.components.interactiveCard.tablet[variant][size].active
-            .borderRadius,
+          customerUITheme.components.interactiveCard.tablet[variant][size]
+            .active.borderRadius,
       },
       [theme.breakpoints.up("desktop")]: {
         borderRadius:
-          props.theme.components.interactiveCard.desktop[variant][size].active
-            .borderRadius,
+          customerUITheme.components.interactiveCard.desktop[variant][size]
+            .active.borderRadius,
       },
-      [`& .${props.rootHoverClass}`]: {
+      [`& .${classes.rootHover}`]: {
         transition:
-          props.theme.components.interactiveCard.mobile[variant][size].active
-            .transition,
+          customerUITheme.components.interactiveCard.mobile[variant][size]
+            .active.transition,
         transitionProperty:
-          props.theme.components.interactiveCard.mobile[variant][size].active
-            .transitionProperty,
+          customerUITheme.components.interactiveCard.mobile[variant][size]
+            .active.transitionProperty,
         backgroundColor:
-          props.theme.components.interactiveCard.mobile[variant][size].active
-            .backgroundColor,
+          customerUITheme.components.interactiveCard.mobile[variant][size]
+            .active.backgroundColor,
         [theme.breakpoints.up("tablet")]: {
           transition:
-            props.theme.components.interactiveCard.tablet[variant][size].active
-              .transition,
+            customerUITheme.components.interactiveCard.tablet[variant][size]
+              .active.transition,
           transitionProperty:
-            props.theme.components.interactiveCard.tablet[variant][size].active
-              .transitionProperty,
+            customerUITheme.components.interactiveCard.tablet[variant][size]
+              .active.transitionProperty,
           backgroundColor:
-            props.theme.components.interactiveCard.tablet[variant][size].active
-              .backgroundColor,
+            customerUITheme.components.interactiveCard.tablet[variant][size]
+              .active.backgroundColor,
         },
         [theme.breakpoints.up("desktop")]: {
           transition:
-            props.theme.components.interactiveCard.desktop[variant][size].active
-              .transition,
+            customerUITheme.components.interactiveCard.desktop[variant][size]
+              .active.transition,
           transitionProperty:
-            props.theme.components.interactiveCard.desktop[variant][size].active
-              .transitionProperty,
+            customerUITheme.components.interactiveCard.desktop[variant][size]
+              .active.transitionProperty,
           backgroundColor:
-            props.theme.components.interactiveCard.desktop[variant][size].active
-              .backgroundColor,
+            customerUITheme.components.interactiveCard.desktop[variant][size]
+              .active.backgroundColor,
         },
       },
     },
-  }),
-  container: ({ size, variant, ...props }) => ({
+  })
+);
+
+const StyledWrapper = styled(Box)<StyledProps>(
+  ({ theme, customerUITheme, size, variant }) => ({
+    zIndex: 1,
+    position: "relative",
     padding:
-      props.theme.components.interactiveCard.mobile[variant][size].idle.padding,
+      customerUITheme.components.interactiveCard.mobile[variant][size].idle
+        .padding,
     [theme.breakpoints.up("tablet")]: {
       padding:
-        props.theme.components.interactiveCard.tablet[variant][size].idle
+        customerUITheme.components.interactiveCard.tablet[variant][size].idle
           .padding,
     },
     [theme.breakpoints.up("desktop")]: {
       padding:
-        props.theme.components.interactiveCard.desktop[variant][size].idle
+        customerUITheme.components.interactiveCard.desktop[variant][size].idle
           .padding,
     },
     "&:hover": {
       padding:
-        props.theme.components.interactiveCard.mobile[variant][size].active
+        customerUITheme.components.interactiveCard.mobile[variant][size].active
           .padding,
       [theme.breakpoints.up("tablet")]: {
         padding:
-          props.theme.components.interactiveCard.tablet[variant][size].active
-            .padding,
+          customerUITheme.components.interactiveCard.tablet[variant][size]
+            .active.padding,
       },
       [theme.breakpoints.up("desktop")]: {
         padding:
-          props.theme.components.interactiveCard.desktop[variant][size].active
-            .padding,
+          customerUITheme.components.interactiveCard.desktop[variant][size]
+            .active.padding,
       },
     },
-  }),
-}));
+  })
+);
 
 const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = ({
   children,
@@ -170,62 +165,65 @@ const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = 
   ...props
 }) => {
   const { theme } = React.useContext(BackgroundContext);
-  const { rootHover: rootHoverClass } = useRootHoverStyles();
-  const classes = useStyles({
-    theme,
-    rootHoverClass: `a${rootHoverClass}`,
-    variant,
-    size,
-  });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const href = (props as any).href as string | undefined;
   return (
-    <Box
+    <StyledRoot
+      customerUITheme={theme}
+      size={size}
+      variant={variant}
       {...containerProps}
-      className={clsx(classes.root, containerProps?.className)}
-      overflow="hidden"
-      position="relative"
     >
       <Box
-        className={`a${rootHoverClass}`}
-        position="absolute"
-        left="0"
-        top="0"
-        right="0"
-        bottom="0"
+        className={classes.rootHover}
+        sx={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+        }}
       />
       <ButtonBase
         {...props}
+        disableRipple={true}
         component={href ? "a" : "button"}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={(forwardedRef as unknown) as any}
-        className={clsx(classes.buttonBase, props.className)}
+        sx={{
+          width: "100%",
+        }}
       >
         <Box
-          position="relative"
-          overflow="hidden"
-          minHeight="100%"
-          minWidth="100%"
+          sx={{
+            position: "relative",
+            overflow: "hidden",
+            minHeight: "100%",
+            minWidth: "100%",
+          }}
         >
           {Background && (
-            <Box position="absolute" left="0" top="0" right="0" bottom="0">
+            <Box
+              sx={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                right: 0,
+                bottom: 0,
+              }}
+            >
               <Background />
             </Box>
           )}
-          <Box className={classes.container} zIndex={1} position="relative">
+          <StyledWrapper customerUITheme={theme} size={size} variant={variant}>
             <Typography component="div">{children}</Typography>
-          </Box>
+          </StyledWrapper>
         </Box>
       </ButtonBase>
-    </Box>
+    </StyledRoot>
   );
 };
-
-const InteractiveCardWithBackground = withBackground<InteractiveCardProps>(
-  InteractiveCardComponent,
-  "level4"
-);
 
 const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
   props
@@ -247,10 +245,9 @@ const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
   }, [backdropLevel]);
 
   return (
-    <InteractiveCardWithBackground
-      backgroundColor={backgroundColor}
-      {...props}
-    />
+    <BackgroundProvider backgroundColor={backgroundColor}>
+      <InteractiveCardComponent {...props} />
+    </BackgroundProvider>
   );
 };
 
