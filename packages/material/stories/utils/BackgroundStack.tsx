@@ -16,6 +16,7 @@ const BackgroundStack: React.FC = ({ children }) => {
             display: "flex",
             justifyContent: "center",
             paddingY: 6,
+            paddingX: 4,
           }}
         >
           {children}
