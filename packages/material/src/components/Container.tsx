@@ -1,24 +1,21 @@
 import React from "react";
-import { MuiTheme } from "../lib/theme";
-import { BoxProps, makeStyles, Theme } from "..";
-import { Box } from "@mui/material";
-import { clsx } from "../utils";
+import { styled } from "@mui/material/styles";
+import Box, { BoxProps } from "@mui/material/Box";
 
-const useStyles = makeStyles<MuiTheme>((theme: Theme) => ({
-  container: {
-    display: "block",
-    width: "100%",
-    padding: `0 ${theme.spacing(2)}`,
-    margin: "0 auto",
-    boxSizing: "border-box",
-    maxWidth: `calc(343px + ${theme.spacing(4)})`,
-    [theme.breakpoints.up("tablet")]: {
-      maxWidth: `calc(720px + ${theme.spacing(6)})`,
-      padding: `0 ${theme.spacing(3)}`,
-    },
-    [theme.breakpoints.up("desktop")]: {
-      maxWidth: `calc(1021px + ${theme.spacing(6)})`,
-    },
+const StyledBox = styled(Box)(({ theme }) => ({
+  boxSizing: "border-box",
+  display: "block",
+  width: "100%",
+  paddingY: 0,
+  paddingX: theme.spacing(2),
+  margin: "0 auto",
+  maxWidth: `calc(343px + ${theme.spacing(4)})`,
+  [theme.breakpoints.up("tablet")]: {
+    paddingX: theme.spacing(3),
+    maxWidth: `calc(720px + ${theme.spacing(6)})`,
+  },
+  [theme.breakpoints.up("desktop")]: {
+    maxWidth: `calc(1021px + ${theme.spacing(6)})`,
   },
 }));
 
@@ -26,21 +23,15 @@ interface ContainerProps extends BoxProps {
   forwardedRef?: React.Ref<unknown>;
 }
 
-const Container: React.FunctionComponent<ContainerProps> = ({
+const Container: React.FC<ContainerProps> = ({
   children,
-  className,
   forwardedRef,
   ...props
 }) => {
-  const classes = useStyles();
   return (
-    <Box
-      ref={forwardedRef}
-      className={clsx(classes.container, className)}
-      {...props}
-    >
+    <StyledBox ref={forwardedRef} {...props}>
       {children}
-    </Box>
+    </StyledBox>
   );
 };
 
