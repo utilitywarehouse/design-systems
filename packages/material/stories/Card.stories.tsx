@@ -1,46 +1,55 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { CardProps, Stack } from "../src";
+import { Box, CardProps, Stack } from "../src";
 import { Card, Button, Typography } from "../src";
 import { BackgroundStack } from "./utils";
 
 export default {
   title: "Layout/Card",
   component: Card,
+  argTypes: { variant: { table: { disable: true } } },
 } as Meta;
 
-const Template: Story<CardProps> = (args) => {
+export const CardStory: Story<CardProps> = (args) => {
   return (
     <BackgroundStack>
-      <Card {...args} sx={{ maxWidth: 400 }}>
-        <Stack spacing={4}>
-          <Stack spacing={2}>
-            <Typography variant="h3">Card title</Typography>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </Typography>
-          </Stack>
-          <Button
-            size="large"
-            fullWidth
-            variant="contained"
-            onClick={(e: React.MouseEvent) => {
-              e.preventDefault();
-            }}
+      <Stack direction="row" spacing={8}>
+        {(["opaque", "transparent"] as const).map((variant) => (
+          <Card
+            {...args}
+            key={variant}
+            variant={variant}
+            sx={{ maxWidth: 500 }}
           >
-            Click me
-          </Button>
-        </Stack>
-      </Card>
+            <Stack spacing={5}>
+              <Stack spacing={3}>
+                <Typography
+                  variant="h3"
+                  style={{ textTransform: "capitalize" }}
+                >
+                  {variant} card component
+                </Typography>
+                <Typography>
+                  Cards are surfaces that display content and actions on a
+                  single topic. They should be easy to scan for relevant and
+                  actionable information.
+                </Typography>
+              </Stack>
+              <Box>
+                <Button
+                  variant="outlined"
+                  onClick={(e: React.MouseEvent) => e.preventDefault()}
+                >
+                  Learn more
+                </Button>
+              </Box>
+            </Stack>
+          </Card>
+        ))}
+      </Stack>
     </BackgroundStack>
   );
 };
 
-export const OpaqueCard = Template.bind({});
-OpaqueCard.storyName = "Default (opaque)";
-
-export const TransparentCard = Template.bind({});
-TransparentCard.storyName = "Transparent";
-TransparentCard.args = { variant: "transparent" };
+CardStory.storyName = "Card";
