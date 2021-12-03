@@ -1,12 +1,10 @@
 import React from "react";
 import { GridDirection, GridWrap } from "@mui/material/Grid";
-import { makeStyles } from "@mui/styles";
 import {
   Breakpoint,
   gridConfiguration,
 } from "@utilitywarehouse/customer-ui-theme";
-import { Box } from "../";
-import { MuiTheme } from "../lib/theme";
+import { Box, styled } from "../";
 import useDeviceSize from "../hooks/useDeviceSize";
 
 type GridContextValue = StyleProps;
@@ -48,7 +46,6 @@ const maxColumns = {
 
 type GridSizeAuto = "auto";
 type MobileGridSize = GridSizeAuto | 1 | 2 | 3 | 4;
-
 type TabletGridSize = MobileGridSize | 5 | 6 | 7 | 8;
 type DesktopGridSize = TabletGridSize | 9 | 10 | 11 | 12;
 
@@ -88,56 +85,63 @@ type StyleProps = {
 
 const toPercentage = (n: number) => `${n * 100}%`;
 
-const useStyles = makeStyles<MuiTheme, StyleProps>((theme: MuiTheme) => ({
-  root: {
-    width: "100%",
-  },
-  container: (props) => {
-    if (!props.container) {
-      return {};
-    }
+interface StyledGridContainerProps {
+  direction: Direction;
+  wrap: Wrap;
+  breakpoint: Breakpoint;
+}
 
-    const styles = {
-      width: `calc(100% + ${theme.spacing(gutterSize[props.breakpoint])})`,
-      display: "flex",
-      boxSizing: "border-box",
-      flexDirection: props.direction[props.breakpoint],
-      flexWrap: props.wrap[props.breakpoint],
-      margin: theme.spacing(gutterSize[props.breakpoint] * -0.5),
-    };
-
-    return styles;
-  },
-  item: (props) => {
-    if (props.container) {
-      return {};
-    }
-
-    const size =
-      props[props.breakpoint] === "auto"
-        ? 1
-        : (props[props.breakpoint] as number);
-
-    const styles: Record<string, string | number> = {
-      width: "100%",
-      boxSizing: "border-box",
-      padding: theme.spacing(gutterSize[props.breakpoint] / 2),
-      flex: size,
-    };
-
-    const layout = props.direction[props.breakpoint].match(/^row/)
-      ? "row"
-      : "column";
-
-    if (layout === "row" && props[props.breakpoint] !== "auto") {
-      styles.flexBasis = toPercentage(size / maxColumns[props.breakpoint]);
-      styles.maxWidth = toPercentage(size / maxColumns[props.breakpoint]);
-      styles.width = toPercentage(size / maxColumns[props.breakpoint]);
-    }
-
-    return styles;
-  },
+const StyledGridContainer = styled(Box, {
+  shouldForwardProp: (prop) =>
+    prop !== "direction" && prop !== "wrap" && prop !== "breakpoint",
+})<StyledGridContainerProps>(({ theme, direction, wrap, breakpoint }) => ({
+  width: `calc(100% + ${theme.spacing(gutterSize[breakpoint])})`,
+  display: "flex",
+  boxSizing: "border-box",
+  flexDirection: direction[breakpoint],
+  flexWrap: wrap[breakpoint],
+  margin: theme.spacing(gutterSize[breakpoint] * -0.5),
 }));
+
+interface StyledGridItemProps {
+  direction: Direction;
+  breakpoint: Breakpoint;
+  deviceSizes: {
+    mobile?: MobileGridSize;
+    tablet?: TabletGridSize;
+    desktop?: DesktopGridSize;
+  };
+}
+
+const StyledGridItem = styled(Box, {
+  shouldForwardProp: (prop) =>
+    prop !== "direction" &&
+    prop !== "wrap" &&
+    prop !== "breakpoint" &&
+    prop !== "deviceSizes",
+})<StyledGridItemProps>(({ theme, direction, breakpoint, deviceSizes }) => {
+  const size =
+    deviceSizes[breakpoint] === "auto"
+      ? 1
+      : (deviceSizes[breakpoint] as number);
+
+  const styles: Record<string, string | number> = {
+    width: "100%",
+    boxSizing: "border-box",
+    padding: theme.spacing(gutterSize[breakpoint] / 2),
+    flex: size,
+  };
+
+  const layout = direction[breakpoint].match(/^row/) ? "row" : "column";
+
+  if (layout === "row" && deviceSizes[breakpoint] !== "auto") {
+    styles.flexBasis = toPercentage(size / maxColumns[breakpoint]);
+    styles.maxWidth = toPercentage(size / maxColumns[breakpoint]);
+    styles.width = toPercentage(size / maxColumns[breakpoint]);
+  }
+
+  return styles;
+});
 
 const Grid: React.FunctionComponent<GridProps> = ({
   mobile = "auto",
@@ -224,7 +228,6 @@ const Grid: React.FunctionComponent<GridProps> = ({
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (child as any).props?.item !== true
       ) {
-        console.log({ child });
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const componentDisplayName = (child as any).type?.displayName;
         throw new Error(
@@ -241,22 +244,34 @@ Got ${
     });
   }, [children, container]);
 
-  const classes = useStyles(styleProps);
-  const divClassName = container ? "container" : "item";
-
   if (container) {
     return (
       <GridContext.Provider value={styleProps}>
-        <div ref={forwardedRef} className={classes.root}>
-          <div className={classes[divClassName]}>{children}</div>
-        </div>
+        <Box ref={forwardedRef} sx={{ width: "100%" }}>
+          <StyledGridContainer
+            direction={styleProps.direction}
+            wrap={styleProps.wrap}
+            breakpoint={styleProps.breakpoint}
+          >
+            {children}
+          </StyledGridContainer>
+        </Box>
       </GridContext.Provider>
     );
   } else if (item) {
     return (
-      <div ref={forwardedRef} className={classes[divClassName]}>
+      <StyledGridItem
+        ref={forwardedRef}
+        direction={styleProps.direction}
+        breakpoint={styleProps.breakpoint}
+        deviceSizes={{
+          mobile: styleProps.mobile,
+          tablet: styleProps.tablet,
+          desktop: styleProps.desktop,
+        }}
+      >
         {children}
-      </div>
+      </StyledGridItem>
     );
   } else {
     return null;
