@@ -1,70 +1,52 @@
 import {
-  BackdropLevel,
   Theme as CustomerUITheme,
   CardVariant,
 } from "@utilitywarehouse/customer-ui-theme";
+import { styled } from "@mui/material/styles";
 import React from "react";
-import { BackgroundContext, Box, BoxProps, makeStyles, Theme } from "..";
-import withBackground from "../hocs/withBackground";
-import clsx from "clsx";
+import { BackgroundContext, Box, BoxProps } from "..";
+import BackgroundProvider from "./BackgroundProvider";
+
+interface StyledCardProps {
+  customerUITheme: CustomerUITheme;
+  variant: CardVariant;
+}
+
+const StyledCard = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "customerUITheme" && prop !== "variant",
+})<StyledCardProps>(({ theme, customerUITheme, variant }) => ({
+  ...customerUITheme.components.card[variant].mobile,
+  [theme.breakpoints.up("tablet")]: {
+    ...customerUITheme.components.card[variant].tablet,
+  },
+  [theme.breakpoints.up("desktop")]: {
+    ...customerUITheme.components.card[variant].desktop,
+  },
+}));
 
 export interface CardProps extends BoxProps {
   variant?: CardVariant;
   forwardedRef?: React.Ref<HTMLDivElement>;
 }
 
-interface InternalCardProps extends CardProps {
-  backgroundColor?: BackdropLevel;
-}
-
-interface StyleProps {
-  theme: CustomerUITheme;
-}
-
-const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
-  root: (props) => ({
-    ...props.theme.components.card.opaque.mobile,
-    [theme.breakpoints.up("tablet")]: {
-      ...props.theme.components.card.opaque.tablet,
-    },
-    [theme.breakpoints.up("desktop")]: {
-      ...props.theme.components.card.opaque.desktop,
-    },
-  }),
-  rootTransparent: (props) => ({
-    ...props.theme.components.card.transparent.mobile,
-    [theme.breakpoints.up("tablet")]: {
-      ...props.theme.components.card.transparent.tablet,
-    },
-    [theme.breakpoints.up("desktop")]: {
-      ...props.theme.components.card.transparent.desktop,
-    },
-  }),
-}));
-
-const CardComponent: React.FunctionComponent<InternalCardProps> = ({
+const CardComponent: React.FC<CardProps> = ({
   children,
-  className,
-  variant,
+  variant = "opaque",
   forwardedRef,
   ...props
 }) => {
   const { theme } = React.useContext(BackgroundContext);
-  const classes = useStyles({ theme });
-  const rootClass = variant === "transparent" ? "rootTransparent" : "root";
-
   return (
-    <Box
-      className={clsx(classes[rootClass], className)}
+    <StyledCard
       {...props}
+      variant={variant}
+      customerUITheme={theme}
       ref={forwardedRef}
     >
       {children}
-    </Box>
+    </StyledCard>
   );
 };
-
-const CardWithBackground = withBackground(CardComponent, "level4");
 
 const Card: React.FunctionComponent<CardProps> = (props) => {
   const { theme } = React.useContext(BackgroundContext);
@@ -87,7 +69,11 @@ const Card: React.FunctionComponent<CardProps> = (props) => {
     }
   }, [backdropLevel]);
 
-  return <CardWithBackground backgroundColor={backgroundColor} {...props} />;
+  return (
+    <BackgroundProvider backgroundColor={backgroundColor}>
+      <CardComponent {...props} />
+    </BackgroundProvider>
+  );
 };
 
 export default Card;
