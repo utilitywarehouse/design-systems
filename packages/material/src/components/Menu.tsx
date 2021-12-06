@@ -1,55 +1,21 @@
 import React from "react";
-import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
-import {
-  MuiMenu,
-  MuiMenuProps,
-  BackgroundProvider,
-  makeStyles,
-  Theme,
-  BackgroundContext,
-} from "..";
+import { styled } from "@mui/material/styles";
+import { MuiMenu, MuiMenuProps, BackgroundProvider } from "..";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
-
-interface StyleProps {
-  theme: CustomerUITheme;
-}
 
 export interface MenuProps extends MuiMenuProps {
   forwardedRef?: React.Ref<HTMLDivElement>;
 }
 
-const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
-  paper: (props) => ({
-    transform: `translateY(${theme.spacing(1)}) !important`,
-    ...props.theme.components.menu.mobile,
-    [theme.breakpoints.up("tablet")]: {
-      ...props.theme.components.menu.tablet,
-    },
-    [theme.breakpoints.up("desktop")]: {
-      ...props.theme.components.menu.desktop,
-    },
-  }),
-  list: {
-    padding: 0,
-  },
+const StyledMenu = styled(MuiMenu)(({ theme }) => ({
+  transform: `translateY(${theme.spacing(1)})`,
 }));
 
 const MenuContent: React.FunctionComponent<MenuProps> = ({
   forwardedRef,
   ...props
 }) => {
-  const { theme } = React.useContext(BackgroundContext);
-  const classes = useStyles({ theme });
-  return (
-    <MuiMenu
-      {...props}
-      ref={forwardedRef}
-      classes={{
-        paper: classes.paper,
-        list: classes.list,
-      }}
-    />
-  );
+  return <StyledMenu {...props} ref={forwardedRef} />;
 };
 
 const Menu: React.FunctionComponent<MenuProps> = (props) => {
@@ -60,9 +26,10 @@ const Menu: React.FunctionComponent<MenuProps> = (props) => {
   );
 };
 
-export default Menu;
-
-export const getComponentThemeConfiguration: GetComponentThemeConfiguration = () => {
+export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
+  theme,
+  muiTheme
+) => {
   return {
     MuiMenu: {
       defaultProps: {
@@ -71,6 +38,22 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = ()
           vertical: "bottom",
         },
       },
+      styleOverrides: {
+        paper: {
+          ...theme.components.menu.mobile,
+          [muiTheme.breakpoints.up("tablet")]: {
+            ...theme.components.menu.tablet,
+          },
+          [muiTheme.breakpoints.up("desktop")]: {
+            ...theme.components.menu.desktop,
+          },
+        },
+        list: {
+          padding: 0,
+        },
+      },
     },
   };
 };
+
+export default Menu;

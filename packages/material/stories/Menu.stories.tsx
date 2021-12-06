@@ -41,9 +41,7 @@ export const MenuStory: Story = () => {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem backgroundColor="level3" onClick={handleClose}>
-            Profile
-          </MenuItem>
+          <MenuItem onClick={handleClose}>Profile</MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
           <MenuItem onClick={handleClose}>Logout</MenuItem>
         </Menu>
