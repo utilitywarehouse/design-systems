@@ -31,7 +31,7 @@ export type InteractiveCardProps =
   | InteractiveCardButtonProps
   | InteractiveCardAnchorProps;
 
-interface StyledProps {
+interface StyledRootProps {
   customerUITheme: CustomerUITheme;
   size: InteractiveCardSize;
   variant: InteractiveCardVariant;
@@ -40,85 +40,86 @@ interface StyledProps {
 const PREFIX = "InteractiveCard";
 const classes = { rootHover: `${PREFIX}-rootHover` };
 
-const StyledRoot = styled(Box)<StyledProps>(
-  ({ theme, customerUITheme, size, variant }) => ({
-    width: "100%",
-    overflow: "hidden",
-    position: "relative",
+const StyledRoot = styled(Box, {
+  shouldForwardProp: (prop) =>
+    prop !== "customerUITheme" && prop !== "size" && prop !== "variant",
+})<StyledRootProps>(({ theme, customerUITheme, size, variant }) => ({
+  width: "100%",
+  overflow: "hidden",
+  position: "relative",
+  backgroundColor:
+    customerUITheme.components.interactiveCard.mobile[variant][size].idle
+      .backgroundColor,
+  borderRadius:
+    customerUITheme.components.interactiveCard.mobile[variant][size].idle
+      .borderRadius,
+  [theme.breakpoints.up("tablet")]: {
     backgroundColor:
-      customerUITheme.components.interactiveCard.mobile[variant][size].idle
+      customerUITheme.components.interactiveCard.tablet[variant][size].idle
         .backgroundColor,
     borderRadius:
-      customerUITheme.components.interactiveCard.mobile[variant][size].idle
+      customerUITheme.components.interactiveCard.tablet[variant][size].idle
+        .borderRadius,
+  },
+  [theme.breakpoints.up("desktop")]: {
+    backgroundColor:
+      customerUITheme.components.interactiveCard.desktop[variant][size].idle
+        .backgroundColor,
+    borderRadius:
+      customerUITheme.components.interactiveCard.desktop[variant][size].idle
+        .borderRadius,
+  },
+  "&:hover": {
+    borderRadius:
+      customerUITheme.components.interactiveCard.mobile[variant][size].active
         .borderRadius,
     [theme.breakpoints.up("tablet")]: {
-      backgroundColor:
-        customerUITheme.components.interactiveCard.tablet[variant][size].idle
-          .backgroundColor,
       borderRadius:
-        customerUITheme.components.interactiveCard.tablet[variant][size].idle
+        customerUITheme.components.interactiveCard.tablet[variant][size].active
           .borderRadius,
     },
     [theme.breakpoints.up("desktop")]: {
-      backgroundColor:
-        customerUITheme.components.interactiveCard.desktop[variant][size].idle
-          .backgroundColor,
       borderRadius:
-        customerUITheme.components.interactiveCard.desktop[variant][size].idle
+        customerUITheme.components.interactiveCard.desktop[variant][size].active
           .borderRadius,
     },
-    "&:hover": {
-      borderRadius:
+    [`& .${classes.rootHover}`]: {
+      transition:
         customerUITheme.components.interactiveCard.mobile[variant][size].active
-          .borderRadius,
+          .transition,
+      transitionProperty:
+        customerUITheme.components.interactiveCard.mobile[variant][size].active
+          .transitionProperty,
+      backgroundColor:
+        customerUITheme.components.interactiveCard.mobile[variant][size].active
+          .backgroundColor,
       [theme.breakpoints.up("tablet")]: {
-        borderRadius:
-          customerUITheme.components.interactiveCard.tablet[variant][size]
-            .active.borderRadius,
-      },
-      [theme.breakpoints.up("desktop")]: {
-        borderRadius:
-          customerUITheme.components.interactiveCard.desktop[variant][size]
-            .active.borderRadius,
-      },
-      [`& .${classes.rootHover}`]: {
         transition:
-          customerUITheme.components.interactiveCard.mobile[variant][size]
+          customerUITheme.components.interactiveCard.tablet[variant][size]
             .active.transition,
         transitionProperty:
-          customerUITheme.components.interactiveCard.mobile[variant][size]
+          customerUITheme.components.interactiveCard.tablet[variant][size]
             .active.transitionProperty,
         backgroundColor:
-          customerUITheme.components.interactiveCard.mobile[variant][size]
+          customerUITheme.components.interactiveCard.tablet[variant][size]
             .active.backgroundColor,
-        [theme.breakpoints.up("tablet")]: {
-          transition:
-            customerUITheme.components.interactiveCard.tablet[variant][size]
-              .active.transition,
-          transitionProperty:
-            customerUITheme.components.interactiveCard.tablet[variant][size]
-              .active.transitionProperty,
-          backgroundColor:
-            customerUITheme.components.interactiveCard.tablet[variant][size]
-              .active.backgroundColor,
-        },
-        [theme.breakpoints.up("desktop")]: {
-          transition:
-            customerUITheme.components.interactiveCard.desktop[variant][size]
-              .active.transition,
-          transitionProperty:
-            customerUITheme.components.interactiveCard.desktop[variant][size]
-              .active.transitionProperty,
-          backgroundColor:
-            customerUITheme.components.interactiveCard.desktop[variant][size]
-              .active.backgroundColor,
-        },
+      },
+      [theme.breakpoints.up("desktop")]: {
+        transition:
+          customerUITheme.components.interactiveCard.desktop[variant][size]
+            .active.transition,
+        transitionProperty:
+          customerUITheme.components.interactiveCard.desktop[variant][size]
+            .active.transitionProperty,
+        backgroundColor:
+          customerUITheme.components.interactiveCard.desktop[variant][size]
+            .active.backgroundColor,
       },
     },
-  })
-);
+  },
+}));
 
-const StyledWrapper = styled(Box)<StyledProps>(
+const StyledWrapper = styled(Box)<StyledRootProps>(
   ({ theme, customerUITheme, size, variant }) => ({
     zIndex: 1,
     position: "relative",
