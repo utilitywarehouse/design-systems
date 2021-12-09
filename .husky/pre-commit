@@ -1,4 +1,7 @@
 #!/bin/sh
 . "$(dirname $0)/_/husky.sh"
 
-lerna run precommit --stream
+# This executes the precommit script for each package (if it exists). Execution
+# is limited to only those packages with modified files. Concurrent execution
+# is disabled because it can cause problems during git add (see okonet/lint-staged#225)
+yarn lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents
