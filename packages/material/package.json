@@ -16,7 +16,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*": [
+    "*.{ts,tsx,js}": [
       "yarn lint",
       "yarn format"
     ]

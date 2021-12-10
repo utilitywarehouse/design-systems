@@ -17,7 +17,6 @@ Where possible this package will adhere to the same interfaces in Material UI, m
 ## Storybook
 
 * [Alpha alpha.storybook.customer-ui-material-uw.surge.sh](http://alpha.storybook.customer-ui-material-uw.surge.sh/)
-* [Main storybook.customer-ui-material-uw.surge.sh](http://storybook.customer-ui-material-uw.surge.sh/)
 
 On individual PRs which modify the material package, storybook deployment previews will be deployed per commit and commented back to the PR. You can also run storybook locally by running:
 

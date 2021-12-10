@@ -1,6 +1,10 @@
 {
   "name": "root",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/utilitywarehouse/customer-ui"
+  },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
@@ -30,17 +34,24 @@
     "typescript": "^4.1.3"
   },
   "scripts": {
+    "build": "lerna run build",
+    "install:ci": "yarn install --immutable",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --enable",
     "postpublish": "pinst --disable",
-    "lint": "eslint . && prettier --check .",
-    "lint:fix": "eslint --fix .",
-    "format": "prettier --write .",
+    "lint": "eslint . && yarn format",
+    "lint:fix": "eslint --fix . && yarn format:fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "clean": "lerna clean && rimraf node_modules",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "yarn cz",
+    "new-package": "node ./scripts/new-package.js",
+    "ci-package-changed": "node ./scripts/ci-package-changed.js",
+    "publish": "./node_modules/.bin/lerna exec --concurrency 1 -- yarn semantic-release -e semantic-release-monorepo",
+    "storybook:material": "lerna run storybook --scope @utilitywarehouse/customer-ui-material --stream"
   },
   "workspaces": [
     "packages/*"
-  ],
-  "dependencies": {}
+  ]
 }

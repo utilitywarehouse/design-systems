@@ -18,7 +18,7 @@ jobs:
           command: printf "@utilitywarehouse:registry=https://registry.npmjs.org/\n//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/project/.npmrc
       - run:
           name: Install dependencies
-          command: make install-ci
+          command: yarn install:ci
       - save_cache:
           name: Save Yarn package cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
@@ -42,26 +42,10 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
-          command: make install-ci
+          command: yarn install:ci
       - run:
           name: Run linter
-          command: make lint
-  test:
-    executor: main
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - registry-authentication
-      - restore_cache:
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install dependencies
-          command: make install-ci
-      - run:
-          name: Run automated tests
-          command: make test
+          command: yarn lint
   packages-changed:
     executor: main
     steps:
@@ -74,12 +58,12 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
-          command: make install-ci
+          command: yarn install:ci
       - run:
           name: On packages changed
           command: |
             export PR_NUMBER=$(node ./scripts/get-pr-number.js)
-            make ci-package-changed
+            yarn ci-package-changed
   build:
     executor: main
     steps:
@@ -92,10 +76,10 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
-          command: make install-ci
+          command: yarn install:ci
       - run:
           name: Build
-          command: make build
+          command: yarn build
   build-and-publish:
     executor: main
     steps:
@@ -108,22 +92,19 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
-          command: make install-ci
+          command: yarn install:ci
       - run:
           name: Build
-          command: make build
+          command: yarn build
       - run:
           name: Publish
-          command: make publish
+          command: yarn publish
 
 workflows:
   main:
     jobs:
       - install_dependencies
       - lint:
-          requires:
-            - install_dependencies
-      - test:
           requires:
             - install_dependencies
       - packages-changed:
@@ -133,17 +114,13 @@ workflows:
           filters:
             branches:
               ignore:
-                - master
                 - alpha
           requires:
             - lint
-            - test
       - build-and-publish:
           filters:
             branches:
               only:
-                - master
                 - alpha
           requires:
             - lint
-            - test
