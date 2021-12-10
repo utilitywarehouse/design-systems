@@ -15,7 +15,7 @@ const fs = require("fs");
  */
 
 const monorepoRoot = path.resolve(__dirname, "..");
-const GIT_BRANCHES_TO_ALWAYS_RUN_ON = ["alpha", "master"];
+const GIT_BRANCHES_TO_ALWAYS_RUN_ON = ["alpha"];
 
 const gitCommandCache = {};
 

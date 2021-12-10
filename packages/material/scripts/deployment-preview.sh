@@ -14,15 +14,11 @@ COMMIT_HASH="$(echo $CIRCLE_SHA1 | cut -c1-7)"
 # Surge domains
 STORYBOOK_SHA_URL="$(echo $COMMIT_HASH).storybook.$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
 STORYBOOK_ALPHA_URL="alpha.storybook.$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
-STORYBOOK_MASTER_URL="storybook.$(echo $PROJECT_SUBDOMAIN)-$(echo $ORGANISATION_SUBDOMAIN).$TLD"
 STORYBOOK_URL=$STORYBOOK_SHA_URL
 
 if [ "$CIRCLE_BRANCH" == "alpha" ]
 then
   STORYBOOK_URL=$STORYBOOK_ALPHA_URL
-elif [ "$CIRCLE_BRANCH" == "master" ]
-then
-  STORYBOOK_URL=$STORYBOOK_MASTER_URL
 fi
 
 # Deploy storybook to surge static site
