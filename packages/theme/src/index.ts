@@ -31,6 +31,7 @@ export const getTheme = (
   colorScheme: ColorScheme,
   backdropLevel: BackdropLevel
 ): Theme => {
+  const palette = getPalette(colorScheme, backdropLevel);
   return {
     components: {
       backdrop: getBackdropStyles(colorScheme, backdropLevel),
@@ -48,6 +49,6 @@ export const getTheme = (
     colorScheme,
     backdropLevel,
     breakpoints,
-    palette: getPalette(colorScheme, backdropLevel),
+    palette,
   };
 };
