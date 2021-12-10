@@ -1,22 +1,21 @@
+import { Breakpoint } from "../types";
+
 export interface ButtonStylesNonColor {
   height: number | string;
-  padding?: number | string;
-  paddingTop?: number | string;
-  paddingBottom?: number | string;
-  paddingLeft?: number | string;
-  paddingRight?: number | string;
+  paddingTop: number;
+  paddingBottom: number;
+  paddingLeft: number;
+  paddingRight: number;
 
   borderStyle: string;
-  borderWidth?: number | string;
-  borderTopWidth?: number | string;
-  borderBottomWidth?: number | string;
-  borderLeftWidth?: number | string;
-  borderRightWidth?: number | string;
-  borderRadius?: number | string;
-  borderTopLeftRadius?: number | string;
-  borderTopRightRadius?: number | string;
-  borderBottomLeftRadius?: number | string;
-  borderBottomRightRadius?: number | string;
+  borderTopWidth: number;
+  borderBottomWidth: number;
+  borderLeftWidth: number;
+  borderRightWidth: number;
+  borderTopLeftRadius: number;
+  borderTopRightRadius: number;
+  borderBottomLeftRadius: number;
+  borderBottomRightRadius: number;
 
   fontFamily: string;
   fontWeight: number;
@@ -37,9 +36,9 @@ export interface ButtonStylesColor {
 
 export type ButtonVariant = "primary" | "secondary" | "tertiary";
 
-export type ButtonSize = "small" | "medium" | "large";
+export type ButtonSize = "regular" | "large";
 
-export type ButtonState = "default" | "hover" | "disabled";
+export type ButtonState = "idle" | "active" | "disabled";
 
 export type ButtonPalette = {
   [key in ButtonVariant]: {
@@ -48,17 +47,21 @@ export type ButtonPalette = {
 };
 
 export type CommonButtonStyles = {
-  [key in ButtonVariant]: {
-    [key in ButtonSize]: {
-      [key in ButtonState]: ButtonStylesNonColor;
+  [key in Breakpoint]: {
+    [key in ButtonVariant]: {
+      [key in ButtonSize]: {
+        [key in ButtonState]: ButtonStylesNonColor;
+      };
     };
   };
 };
 
 export type ButtonStyles = {
-  [key in ButtonVariant]: {
-    [key in ButtonSize]: {
-      [key in ButtonState]: ButtonStylesNonColor & ButtonStylesColor;
+  [key in Breakpoint]: {
+    [key in ButtonVariant]: {
+      [key in ButtonSize]: {
+        [key in ButtonState]: ButtonStylesNonColor & ButtonStylesColor;
+      };
     };
   };
 };
