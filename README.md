@@ -54,7 +54,9 @@ yarn lint:fix
 
 ### Committing to the repository
 
-We use [@commitlint/config-conventional](https://www.npmjs.com/package/@commitlint/config-conventional) to enforce structured commit messages.
+We use
+[@commitlint/config-conventional](https://www.npmjs.com/package/@commitlint/config-conventional)
+to enforce structured commit messages.
 
 To assist with the commit message structure you can run the following command:
 
@@ -112,7 +114,8 @@ will then be published to npm, tagged in git and the changelog updated.
 
 ### CI
 
-CI is the orchestrator of this monorepo, automating where possible every step to deployment.
+CI is the orchestrator of this monorepo, automating where possible every step to
+deployment.
 
 #### Deployments
 

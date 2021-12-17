@@ -58,7 +58,7 @@ const getCommitFiles = async (hash, base) => {
  * @returns {Promise<string>} Promise resolving to the base tip sha1 commit hash
  */
 const getBaseTip = async () => {
-  const hash = await git(["merge-base", "--fork-point", "alpha"]);
+  const hash = await git(["merge-base", "--fork-point", "v1.0.0"]);
   return hash;
 };
 
