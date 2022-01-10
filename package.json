@@ -45,11 +45,16 @@
     "prepare": "husky install",
     "commit": "yarn cz",
     "new-package": "node ./scripts/new-package.js",
-    "publish": "echo \"set up publishing\"",
     "storybook:start": "lerna run storybook:start --scope @utilitywarehouse/customer-ui-material --stream",
-    "storybook:deploy": "echo \"set up storybook deployment\""
+    "storybook:deploy": "echo \"set up storybook deployment\"",
+    "changeset": "changeset",
+    "release": "yarn build && changeset publish"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@changesets/changelog-github": "^0.4.2",
+    "@changesets/cli": "^2.19.0"
+  }
 }

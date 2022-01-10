@@ -77,8 +77,14 @@ can be created manually, and will be validated with a git hook.
 1. [Commitizen](https://www.npmjs.com/package/commitizen), a tool used to enforce commit message formatting
 1. [husky](https://typicode.github.io/husky/#/), a tool making it easier to manage and create git hooks
 1. [pinst](https://github.com/typicode/pinst), works alongside husky to ensure `postinstall` doesn't run for published packages
+1. [changesets](https://github.com/changesets/changesets), handles versioning, publishing and changelog creation.
 
 ### Common actions and commands
+
+#### Contributing
+
+Please read our [contribution guide](CONTRIBUTING.md) for contributing changes
+to Customer UI.
 
 #### How to create a new package
 
@@ -104,24 +110,21 @@ there on packages within `packages/` have access to this dependency.
 
 #### Publishing changes
 
-All changes are published through [CircleCI](https://circleci.com/) on the
-`alpha` branch. All development should take place on branches from `alpha` then
-submit a PR to merge back to `alpha`.
+All changes are published through [Github Actions](https://github.com/features/actions) on the
+`main` branch. All development should take place on branches from `main` then
+submit a PR to merge back to `main`.
 
-CI will detect what packages need to be updated and what the new version should
-be based on commit messages since the last release for each package. The release
-will then be published to npm, tagged in git and the changelog updated.
+[Changesets](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md)
+will be added as changes are contributed. When changes are merged to `main` the
+release workflow will run which will open, and keep updated, a Version Pull
+Request containing all changes. When this is merged to `main` all packages will
+be versioned, published to npm and changelogs will be generated based on the
+changesets.
 
 ### CI
 
 CI is the orchestrator of this monorepo, automating where possible every step to
 deployment.
-
-#### Deployments
-
-Deployments occur on the following branches:
-
-- `alpha` - alpha releases.
 
 #### Environment variables
 
