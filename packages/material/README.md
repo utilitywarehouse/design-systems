@@ -17,6 +17,7 @@ retrieve the original MUI Button component.
 * [Installation](#installation)
 * [Getting started](#getting-started)
 * [Theming](#theming)
+* [Migration to v1](#migration-from-alpha-pre-release-to-v1)
 * [Components reference](#components-reference)
 * [Hooks reference](#hooks-reference)
 * [Styling](#styling)
@@ -42,21 +43,6 @@ npm i --save @utilitywarehouse/customer-ui-material
 
 # yarn
 yarn add @utilitywarehouse/customer-ui-material
-```
-
-## Versioning
-
-It is advisable to pin the version of this library in your project's
-package.json file. The Customer Design System these components are based on is
-still in flux and there can be breaking changes between alpha versions.
-
-```json
-"dependencies": {
-  // specify the version of the library you want
-  "@utilitywarehouse/customer-ui-material": "1.0.0-alpha.62",
-  // otherwise you may unexpectedly install a more recent version that has breaking changes
-  "@utilitywarehouse/customer-ui-material": "^1.0.0-alpha.62",
-}
 ```
 
 ## Getting started
@@ -144,6 +130,148 @@ different areas of your application.
 The Customer UI components will then render their styles appropriately depending
 on the background color level, without needing to specify this at the individual
 component level.
+
+## Migration from alpha pre-release to v1
+
+This guide covers all pre-release `alpha` releases from `alpha.54` and after.
+If you run into any problems migrating from an earlier version please open an
+issue.
+
+There may be some minor inconsistencies not documented here, but these are the
+major changes to watch out for. Please open an issue or PR if you find something
+worth documenting for others, thankyou!
+
+### `useDeviceSize` hook
+
+> from *alpha.75* and below
+
+- The return value from the `useDeviceSize` hook was changed to return more
+  detailed information.
+
+```diff
+- const deviceSize = useDeviceSize();
++ const {
++   deviceSize, // "mobile", "tablet" or "desktop"
++   isMobile, // boolean
++   isTablet, // boolean
++   isDesktop, // boolean
++ } = useDeviceSize();
+```
+
+### `Typography` component props
+
+> from *alpha.64* and below
+
+- Update variants.
+
+```diff
++ displayHeading
+h1
+h2
+h3
+h4
+- h5
+- headline
+- subheading
+body
+- small
+- label
+caption
+- footnote
+- interactive
+- inherit
++ subtitle
++ legalNote
+```
+
+While some variants have the same name as before, they may not necessarily be
+the same.
+There is not a 1 to 1 replacement of old to new variants, so some discretion
+from devs and collaboration with Design/UX will need to happen to ensure UI's
+are kept consistent.
+The following table is not exhaustive, showing only changes in desktop font
+size, however it should give an indication of which variant to choose when
+updating Typography components.
+
+**Desktop font size comparison**
+
+|variant|old font size(px)|new font size(px)|
+|-|:-:|:-:|
+|displayHeading|-|64|
+|h1|64|42|
+|h2|40|32|
+|h3|33|24|
+|h4|20|20|
+|h5|16|-|
+|headline|16|-|
+|subheading|15|-|
+|body|20|16|
+|small|16|-|
+|label|13|-|
+|caption|12|12|
+|footnote|13|-|
+|interactive|18|-|
+|subtitle|-|20|
+|legalNote|-|14|
+
+For a full breakdown of Customer UI typography please see the [Figma files](https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=38%3A884).
+
+> from *alpha.66* and below
+
+- Rename `state` prop `color`.
+
+```diff
+- <Typography state="secondary">
++ <Typography color="secondary">
+```
+
+- Rename `default` color (previously `state` prop) to `primary`.
+
+```diff
+- <Typography state="default">
++ <Typography color="primary">
+```
+
+- Rename `default` variant to `body`.
+
+```diff
+- <Typography variant="default">
++ <Typography variant="body">
+```
+
+### `useTheme` hook
+
+> from *alpha.57* and below
+
+- Rename `useTheme` to `useMuiTheme`.
+- `useTheme` now returns the Customer UI theme object.
+
+```diff
+import { useTheme, useMuiTheme } from "@utilitywarehouse/customer-ui-material";
+
+...
+
+- // Material UI Theme object
+- const theme = useTheme()
++ // Customer UI Theme object from the closest Background component
++ const theme = useTheme()
++ // Material UI Theme object
++ const theme = useMuiTheme()
+```
+
+### `Menu` component
+
+> from *alpha.54* and below
+
+- Rename `ref` to `forwardedRef`
+
+### Removed components
+
+> from *alpha.56* and below
+
+- Remove `MuiHidden`
+- Remove `withWidth`
+- Remove `experimentalStyled`
 
 ## Components reference
 
