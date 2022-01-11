@@ -1,5 +1,7 @@
 # Material
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9ebc6bc5-b823-48e2-920c-785763e897d6/deploy-status)](https://app.netlify.com/sites/uw-customer-ui-material-storybook/deploys)
+
 Customer UI React components standing on the shoulders of the [MUI Material](https://mui.com/) library.
 
 Many Customer UI components reflect those in MUI, and so most of the
@@ -25,11 +27,14 @@ retrieve the original MUI Button component.
 
 ## Storybook
 
-* [Alpha Storybook](http://alpha.storybook.customer-ui-material-uw.surge.sh/)
+Storybook is available at
+[uw-customer-ui-material-storybook](https://uw-customer-ui-material-storybook.netlify.app/),
+this is deployed from the `main` branch.
 
-On individual PRs which modify the material package, storybook deployment
-previews will be deployed per commit and commented back to the PR. You can also
-run storybook locally by running:
+Deployment Previews will be available on all PRs that make changes to the
+`material` package.
+
+Run storybook locally:
 
 ```console
 yarn storybook:start

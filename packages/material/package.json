@@ -14,7 +14,7 @@
     "format:ci": "prettier --list-different \"./{src,stories}/**/*.{ts,tsx,js}\"",
     "precommit": "lint-staged",
     "storybook:start": "start-storybook -p 6006",
-    "storybook:build": "build-storybook -o storybook --loglevel warn"
+    "storybook:build": "build-storybook -o storybook-build"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [

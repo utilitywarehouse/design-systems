@@ -136,18 +136,4 @@ deployment.
 | GIT_COMMITTER_EMAIL | string | Email associated with deployment commits and tags.                                                                             |
 | GIT_COMMITTER_NAME  | string | Name associated with deployment commits and tags.                                                                              |
 | NPM_TOKEN           | string | Read/Write token used to install private dependencies and publish packages.                                                    |
-| SURGE_SH_TOKEN      | string | Used to deploy static sites to [surge.sh](https://surge.sh). Used for deploying documentation and deployment previews on PR's. |
 
-#### Running tasks only on packages which have changed
-
-Sometimes you only want to run certain tasks in CI scoped to a particular
-package when that package has changed. For example deploying preview URLs for
-documentation, or updating test coverage. This can be achieved by adding your
-script to the packages `ci-package-changed` script in `package.json`.
-
-This script will be triggered on CI on a main branch such as `alpha`, regardless
-of whether or not any changes have been made to the package. Or they will run on
-any other branch assuming the branch will be merged to `alpha` and when the
-package has been modified in some way on that branch. An example of what can be
-achieved through this script can be seen in the
-[@utilitywarehouse/customer-ui-material](packages/material) package.

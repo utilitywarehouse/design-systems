@@ -1,0 +1,4 @@
+[build]
+  base = "packages/material"
+  publish = "storybook-build"
+  command = "yarn storybook:build"
