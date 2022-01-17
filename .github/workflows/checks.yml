@@ -20,11 +20,5 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    - name: Lint
-      run: yarn lint:ci
-
-    - name: Format
-      run: yarn format:ci
-
-    - name: Build
-      run: yarn build
+    - run: yarn lint:ci
+    - run: yarn build
