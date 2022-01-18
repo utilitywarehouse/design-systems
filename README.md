@@ -121,19 +121,3 @@ Request containing all changes. When this is merged to `main` all packages will
 be versioned, published to npm and changelogs will be generated based on the
 changesets.
 
-### CI
-
-CI is the orchestrator of this monorepo, automating where possible every step to
-deployment.
-
-#### Environment variables
-
-| NAME                | TYPE   | PURPOSE                                                                                                                        |
-| ------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| GITHUB_TOKEN        | string | Used during deployments to push tags and commits. Also used to comment on PR's. This is a GitHub personal access token.        |
-| GIT_AUTHOR_EMAIL    | string | Email associated with deployment commits and tags.                                                                             |
-| GIT_AUTHOR_NAME     | string | Name associated with deployment commits and tags.                                                                              |
-| GIT_COMMITTER_EMAIL | string | Email associated with deployment commits and tags.                                                                             |
-| GIT_COMMITTER_NAME  | string | Name associated with deployment commits and tags.                                                                              |
-| NPM_TOKEN           | string | Read/Write token used to install private dependencies and publish packages.                                                    |
-
