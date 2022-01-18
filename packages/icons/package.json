@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/customer-ui-icons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Customer UI icons",
   "main": "dist/index.js",
   "license": "ISC",
