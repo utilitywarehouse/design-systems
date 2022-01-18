@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/customer-ui-design-tokens",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Design Tokens for the UW Customer brand",
   "main": "dist/index.js",
   "scripts": {
