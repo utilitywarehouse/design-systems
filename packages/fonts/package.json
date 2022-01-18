@@ -6,9 +6,7 @@
   "scripts": {
     "clean": "rm -f fonts.css*",
     "build": "yarn clean && sass fonts.scss fonts.css",
-    "watch": "yarn build -- --watch",
-    "test": "echo \"nothing to test\"",
-    "ci-package-changed": "exit 0"
+    "watch": "yarn build -- --watch"
   },
   "license": "ISC",
   "publishConfig": {

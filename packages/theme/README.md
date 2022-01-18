@@ -8,8 +8,8 @@ The theme package should inherently be the source of truth when conforming to th
 
 One of the main goals within the theme package is to perform as much theme related logic in a single location. As a lot of the components within our design system are dependent on the background context we decided to make the background levels a first class citizen within the theme package. What this means is we can generate full theme structures for the following variants:
 
-* Colour scheme; light or dark mode
-* Backdrop level; from the [backdrops section](https://utilitywarehouse.invisionapp.com/dsm/utilitywarehouse/design-system/folder/colors/5dc2c340ef4827a55ced9ce3) within our DSM.
+- Colour scheme; light or dark mode
+- Backdrop level; from the [backdrops section](https://utilitywarehouse.invisionapp.com/dsm/utilitywarehouse/design-system/folder/colors/5dc2c340ef4827a55ced9ce3) within our DSM.
 
 ## Installation
 

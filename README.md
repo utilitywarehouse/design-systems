@@ -2,10 +2,6 @@
 
 This monorepo contains all the packages used for Customer UI. See [individual packages](#packages) for more info.
 
-## Current state of Customer UI
-
-⚠️  The main `customer-ui-material` library of React components is in an unsupported *alpha* versioning state, and every release should be considered a breaking change. 
-
 ## Packages
 
 - [@utilitywarehouse/customer-ui-design-tokens](packages/design-tokens)
@@ -17,7 +13,10 @@ This monorepo contains all the packages used for Customer UI. See [individual pa
 
 ## Working with this monorepo
 
-This monorepo makes use of [Lerna](https://lerna.js.org/) to manage our multiple packages, alongside yarn workspaces to assist with dependency management. For a full list of tools and what they do see the [tools](#tools) section of this documentation
+This monorepo makes use of [Lerna](https://lerna.js.org/) to manage our multiple
+packages, alongside yarn workspaces to assist with dependency management. For a
+full list of tools and what they do see the [tools](#tools) section of this
+documentation
 
 - [Getting started](#getting-started)
 - [Running tests](#running-tests)
@@ -37,88 +36,95 @@ This monorepo makes use of [Lerna](https://lerna.js.org/) to manage our multiple
 
 Install dependencies
 
-```shell
-make install
+```console
+yarn
 ```
 
-### Running tests
+### Lint & format
 
-```shell
-make test
-```
-
-### Running linter
-
-```shell
-make lint
+```console
+yarn lint
 ```
 
 And automatically attempting to fix linter errors/warnings
 
-```shell
-make lint-fix
+```console
+yarn lint:fix
 ```
 
 ### Committing to the repository
 
-All commit messages for Customer UI are used to automate releases, in order for this to function correctly we are using [@commitlint/config-conventional](https://www.npmjs.com/package/@commitlint/config-conventional) to enforce structured commit messages.
+We use
+[@commitlint/config-conventional](https://www.npmjs.com/package/@commitlint/config-conventional)
+to enforce structured commit messages.
 
 To assist with the commit message structure you can run the following command:
 
-```shell
-make commit
+```console
+yarn commit
 ```
 
-This will prompt [Commitizen](https://www.npmjs.com/package/commitizen) to build the commit message through their interactive CLI. Alternatively commit messages can be created manually through any git tool you might be familiar with and will be rejected through the git hook should they be invalid.
+This will prompt [Commitizen](https://www.npmjs.com/package/commitizen) to build
+the commit message through their interactive CLI. Alternatively commit messages
+can be created manually, and will be validated with a git hook.
 
 ### Tools
 
 1. [Lerna](https://lerna.js.org/), a tool for managing JavaScript projects with multiple packages
 1. [Yarn](https://yarnpkg.com/), dependency management
 1. [ESLint](https://eslint.org/), JavaScript linter used to fix problems in our code as well as enforcing code style rules
-1. [Commitizen](https://www.npmjs.com/package/commitizen), a tool used to enforce commit message formatting. This helps us automate versioning when publishing packages
+1. [Prettier](https://prettier.io/), opinionated code formatter
+1. [Commitizen](https://www.npmjs.com/package/commitizen), a tool used to enforce commit message formatting
 1. [husky](https://typicode.github.io/husky/#/), a tool making it easier to manage and create git hooks
-1. [pinst](https://github.com/typicode/pinst), works alongside husky to ensure postinstall doesn't run for published packages
-1. [semantic-release-monorepo](https://github.com/pmowrer/semantic-release-monorepo), [semantic-release](https://github.com/semantic-release/semantic-release), but for monorepos. See [CI deployments](#deployments) for more context.
+1. [pinst](https://github.com/typicode/pinst), works alongside husky to ensure `postinstall` doesn't run for published packages
+1. [changesets](https://github.com/changesets/changesets), handles versioning, publishing and changelog creation.
 
 ### Common actions and commands
+
+#### Contributing
+
+Please read our [contribution guide](CONTRIBUTING.md) for contributing changes
+to Customer UI.
 
 #### How to create a new package
 
 ```shell
-make new-package
+yarn new-package
 ```
 
-This will prompt for a package name and description and will create a boilerplate Typescript package under the packages directory with the required script commands.
+This will prompt for a package name and description and will create a
+boilerplate Typescript package under the packages directory with the required
+script commands.
 
 #### How to add a shared dependency
 
-Commonly dev dependencies may be used across all packages, in which case adding this dependency to the root can make it cleaner to manage.
+Commonly dev dependencies may be used across all packages, in which case adding
+this dependency to the root can make it cleaner to manage.
 
 ```shell
 yarn add --dev -W <package>
 ```
 
-The `-W` flag specifies the package to be installed in the workspace root. From there on packages within `packages/` have access to this dependency.
+The `-W` flag specifies the package to be installed in the workspace root. From
+there on packages within `packages/` have access to this dependency.
 
 #### Publishing changes
 
-All changes are published through [CircleCI](https://circleci.com/) on the `master` branch. All development should take place on branches from `master` then submit a PR to merge back to `master`.
+All changes are published through [Github Actions](https://github.com/features/actions) on the
+`main` branch. All development should take place on branches from `main` then
+submit a PR to merge back to `main`.
 
-CI will detect what packages need to be updated and what the new version should be based on commit messages since the last release for each package. The release will then be published to npm, tagged in git and the changelog updated.
+[Changesets](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md)
+will be added as changes are contributed. When changes are merged to `main` the
+release workflow will run which will open, and keep updated, a Version Pull
+Request containing all changes. When this is merged to `main` all packages will
+be versioned, published to npm and changelogs will be generated based on the
+changesets.
 
 ### CI
 
-CI is the orchestrator of this monorepo, automating where possible every step to deployment.
-
-#### Deployments
-
-Deployments occur on the following branches:
-
-- `alpha` - alpha releases.
-- `master` - full releases.
-
-Deployments are managed through [semantic-release-monorepo](https://github.com/pmowrer/semantic-release-monorepo) to automate the release process, based on commit messages to determine the semantic version for the release. This removes complexity around the release process and limits the potential for human error.
+CI is the orchestrator of this monorepo, automating where possible every step to
+deployment.
 
 #### Environment variables
 
@@ -130,10 +136,4 @@ Deployments are managed through [semantic-release-monorepo](https://github.com/p
 | GIT_COMMITTER_EMAIL | string | Email associated with deployment commits and tags.                                                                             |
 | GIT_COMMITTER_NAME  | string | Name associated with deployment commits and tags.                                                                              |
 | NPM_TOKEN           | string | Read/Write token used to install private dependencies and publish packages.                                                    |
-| SURGE_SH_TOKEN      | string | Used to deploy static sites to [surge.sh](https://surge.sh). Used for deploying documentation and deployment previews on PR's. |
 
-#### Running tasks only on packages which have changed
-
-Sometimes you only want to run certain tasks in CI scoped to a particular package when that package has changed. For example deploying preview URLs for documentation, or updating test coverage. This can be achieved by adding your script to the packages `ci-package-changed` script in `package.json`.
-
-This script will be triggered on CI on a main branch such as `alpha` or `master` regardless of whether or not any changes have been made to the package. Or they will run on any other branch assuming the branch will be merged to `alpha` and when the package has been modified in some way on that branch. An example of what can be achieved through this script can be seen in the [@utilitywarehouse/customer-ui-material](packages/material) package.

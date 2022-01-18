@@ -1,22 +1,23 @@
 {
   "name": "@utilitywarehouse/customer-ui-material",
   "version": "0.1.0",
-  "description": "Material UI component library adapted for Utility Warehouse customer UI",
+  "description": "UW Customer UI component library, built upon MUI Material",
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist/",
     "build": "yarn run clean && tsc",
     "test:coverage": "yarn test --coverage",
     "serve:coverage": "open coverage/lcov-report/index.html",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o storybook --loglevel warn",
-    "ci-package-changed": "./scripts/deployment-preview.sh",
+    "lint": "eslint --fix --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",
+    "lint:ci": "eslint --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",
     "format": "prettier --write \"./{src,stories}/**/*.{ts,tsx,js}\"",
-    "lint": "eslint ./{src,stories} --fix --ext .ts,.tsx,.js",
-    "precommit": "lint-staged"
+    "format:ci": "prettier --list-different \"./{src,stories}/**/*.{ts,tsx,js}\"",
+    "precommit": "lint-staged",
+    "storybook:start": "start-storybook -p 6006",
+    "storybook:build": "build-storybook -o storybook-build"
   },
   "lint-staged": {
-    "*": [
+    "*.{ts,tsx,js}": [
       "yarn lint",
       "yarn format"
     ]

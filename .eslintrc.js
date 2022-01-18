@@ -33,4 +33,12 @@ module.exports = {
       version: "detect",
     },
   },
+  overrides: [
+    {
+      files: ["packages/react-icons/**/*.tsx"],
+      rules: {
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+      },
+    },
+  ],
 };

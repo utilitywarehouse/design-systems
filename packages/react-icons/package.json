@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf src/ 48x48/ 24x24/",
-    "build": "yarn run clean && node ./scripts/build.js && tsc",
-    "watch": "echo \"Nothing to watch\"",
-    "test": "echo \"Nothing to test\"",
-    "ci-package-changed": "exit 0"
+    "build": "yarn run clean && node ./scripts/build.js && tsc"
   },
   "license": "ISC",
   "publishConfig": {

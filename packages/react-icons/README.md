@@ -15,4 +15,7 @@ import Dropdown from "@utilitywarehouse/customer-ui-react-icons/24x24/Dropdown";
 
 ## Adding new icons
 
-When new icons are added to [@utilitywarehouse/customer-ui-icons](../icons) this package will need to be published. To do this bump the version on the `@utilitywarehouse/customer-ui-icons`. CI will then rebuild the package and deploy the changes based on the semantic commit.
+When new icons are added to [@utilitywarehouse/customer-ui-icons](../icons) this
+package will need to be published. To do this bump the version on the
+`@utilitywarehouse/customer-ui-icons`. CI will then rebuild the package and
+deploy the changes based on the semantic commit.

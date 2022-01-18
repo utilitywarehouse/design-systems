@@ -7,10 +7,10 @@
     "clean": "rm -rf dist/",
     "build": "yarn run clean && tsc",
     "watch": "yarn run build -- --watch",
-    "test": "jest --passWithNoTests",
-    "ci-package-changed": "exit 0",
     "format": "prettier --write \"./src/**/*.ts\"",
     "lint": "eslint ./src --fix --ext .ts",
+    "format:ci": "prettier --list-different \"./src/**/*.ts\"",
+    "lint:ci": "eslint ./src --ext .ts",
     "precommit": "lint-staged"
   },
   "lint-staged": {
