@@ -2,7 +2,7 @@
 "@utilitywarehouse/customer-ui-material": major
 ---
 
----
+
 
 [Release v1.0.0](https://github.com/utilitywarehouse/customer-ui/pull/266)
 
