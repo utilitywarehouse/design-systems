@@ -4717,33 +4717,10 @@
     "@typescript-eslint/types" "4.14.2"
     eslint-visitor-keys "^2.0.0"
 
-"@utilitywarehouse/customer-ui-design-tokens@1.0.0-alpha.10":
-  version "1.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-design-tokens/-/customer-ui-design-tokens-1.0.0-alpha.10.tgz#0271de374cd9db8a12b2ac972f1876b15194b72b"
-  integrity sha512-duqxUrYXQHExE7q2S30R6M5Fv0ZupXLQEYLamnFARq77F8tqCq0yorUGY3xOGQBb6j+oSAzgCklXOWNMbHkysQ==
-
-"@utilitywarehouse/customer-ui-fonts@^1.0.0-alpha.4":
-  version "1.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-fonts/-/customer-ui-fonts-1.0.0-alpha.4.tgz#6deac8cfddb8e18b074e7fc4085cd911077ee63e"
-  integrity sha512-x/Wli3RX4F28QUhdD6ANIQjxIkg7mCmB2OsPJj34WfXd59G0oQDWToKheDJ9nPWt5yUEoFMgSR8ISeygDJj8ig==
-
 "@utilitywarehouse/customer-ui-icons@1.0.0-alpha.36":
   version "1.0.0-alpha.36"
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-icons/-/customer-ui-icons-1.0.0-alpha.36.tgz#8ea832a1c1142dab44c27f6471d59b747249bcd1"
   integrity sha512-zmITqHvwuVt9zkXTE7pmmh6GsQcKkUuggz/BAmBHcG9r3kfIaknnNYHbG0FOgCCWBFEAKhXyZN2y6+8YYzDbGw==
-
-"@utilitywarehouse/customer-ui-react-icons@^1.0.0-alpha.13":
-  version "1.0.0-alpha.32"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-react-icons/-/customer-ui-react-icons-1.0.0-alpha.32.tgz#a46adddfe9da10d7b9d2a33b6c4cae83ac3bc28f"
-  integrity sha512-5gN6fYuon5+3iRz74P1xleCLyqAwcOzFfU/hj2yfBQTjhFsVgQqc0At+c8rwsmiaatkseYfRiWQE5pYecDRyXQ==
-
-"@utilitywarehouse/customer-ui-theme@1.0.0-alpha.21":
-  version "1.0.0-alpha.21"
-  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-theme/-/customer-ui-theme-1.0.0-alpha.21.tgz#2cb9923a343ccc5e4f7e14782a34050cdaa37ae3"
-  integrity sha512-WevCUFBbhk+T5I9b0DGd5pld7kj72fQr2/F3svxD74Ci/JuLVdiG7//P1xnrCQa7NvsrcSlhG1oniOurUR5fDg==
-  dependencies:
-    "@ctrl/tinycolor" "^3.4.0"
-    "@utilitywarehouse/customer-ui-design-tokens" "1.0.0-alpha.10"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"

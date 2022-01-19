@@ -33,9 +33,9 @@
     "@emotion/styled": "^11.3.0",
     "@mui/material": "^5.0.4",
     "@mui/styles": "^5.0.1",
-    "@utilitywarehouse/customer-ui-theme": "1.0.0-alpha.21",
-    "@utilitywarehouse/customer-ui-fonts": "^1.0.0-alpha.4",
-    "@utilitywarehouse/customer-ui-react-icons": "^1.0.0-alpha.13"
+    "@utilitywarehouse/customer-ui-theme": "^1.0.0",
+    "@utilitywarehouse/customer-ui-fonts": "^1.0.1",
+    "@utilitywarehouse/customer-ui-react-icons": "^1.0.0"
   },
   "files": [
     "dist",
