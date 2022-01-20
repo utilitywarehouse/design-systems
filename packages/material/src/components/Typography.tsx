@@ -109,7 +109,7 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
         caption: "caption",
       }}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={(forwardedRef as unknown) as any}
+      ref={forwardedRef as unknown as any}
     />
   );
 };

@@ -24,32 +24,25 @@ const deviceSizeOneOf = (
   oneOf: DeviceSize[]
 ): boolean => oneOf.includes(deviceSize);
 
-const isHiddenMobile = (
-  params: Record<string, boolean>,
-  deviceSize: DeviceSize
-) => () => params.mobile && deviceSizeOneOf(deviceSize, ["mobile"]);
+const isHiddenMobile =
+  (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
+    params.mobile && deviceSizeOneOf(deviceSize, ["mobile"]);
 
-const isHiddenTablet = (
-  params: Record<string, boolean>,
-  deviceSize: DeviceSize
-) => () => params.tablet && deviceSizeOneOf(deviceSize, ["tablet"]);
+const isHiddenTablet =
+  (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
+    params.tablet && deviceSizeOneOf(deviceSize, ["tablet"]);
 
-const isHiddenDesktop = (
-  params: Record<string, boolean>,
-  deviceSize: DeviceSize
-) => () => params.desktop && deviceSizeOneOf(deviceSize, ["desktop"]);
+const isHiddenDesktop =
+  (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
+    params.desktop && deviceSizeOneOf(deviceSize, ["desktop"]);
 
-const isHiddenTabletUp = (
-  params: Record<string, boolean>,
-  deviceSize: DeviceSize
-) => () =>
-  params.tabletUp && deviceSizeOneOf(deviceSize, ["tablet", "desktop"]);
+const isHiddenTabletUp =
+  (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
+    params.tabletUp && deviceSizeOneOf(deviceSize, ["tablet", "desktop"]);
 
-const isHiddenTabletDown = (
-  params: Record<string, boolean>,
-  deviceSize: DeviceSize
-) => () =>
-  params.tabletDown && deviceSizeOneOf(deviceSize, ["mobile", "tablet"]);
+const isHiddenTabletDown =
+  (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
+    params.tabletDown && deviceSizeOneOf(deviceSize, ["mobile", "tablet"]);
 
 const isHiddenOnly = (only: Only, deviceSize: DeviceSize) => (): boolean => {
   if (typeof only === "string") {

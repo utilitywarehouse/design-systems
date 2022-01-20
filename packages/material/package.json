@@ -18,8 +18,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
-      "yarn lint",
-      "yarn format"
+      "yarn format",
+      "yarn lint"
     ]
   },
   "author": "",
