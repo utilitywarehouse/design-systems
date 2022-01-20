@@ -6,6 +6,8 @@
     "url": "https://github.com/utilitywarehouse/customer-ui"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.2",
+    "@changesets/cli": "^2.19.0",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@octokit/core": "^3.2.5",
@@ -51,8 +53,5 @@
   "workspaces": [
     "packages/*"
   ],
-  "dependencies": {
-    "@changesets/changelog-github": "^0.4.2",
-    "@changesets/cli": "^2.19.0"
-  }
+  "dependencies": {}
 }

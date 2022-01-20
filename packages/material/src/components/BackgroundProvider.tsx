@@ -16,9 +16,8 @@ const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({
   backgroundColor,
   children,
 }) => {
-  const { getCustomerUITheme, getMuiTheme } = React.useContext(
-    ThemeVariantsContext
-  );
+  const { getCustomerUITheme, getMuiTheme } =
+    React.useContext(ThemeVariantsContext);
   const { darkModeEnabled } = React.useContext(DarkModeContext);
 
   const customerUITheme = React.useMemo(() => {

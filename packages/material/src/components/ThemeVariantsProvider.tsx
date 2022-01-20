@@ -42,20 +42,19 @@ const getThemes = (colorScheme: ColorScheme): Themes => {
   return themes as Themes;
 };
 
-export const ThemeVariantsContext = React.createContext<ThemeVariantsContextValue>(
-  {
+export const ThemeVariantsContext =
+  React.createContext<ThemeVariantsContextValue>({
     getCustomerUITheme: () => ({} as CustomerUITheme),
     getMuiTheme: () => ({} as MuiTheme),
-  }
-);
+  });
 
 export interface ThemeVariantsProviderProps {
   children?: React.ReactNode;
 }
 
-const ThemeVariantsProvider: React.FunctionComponent<ThemeVariantsProviderProps> = ({
-  children,
-}) => {
+const ThemeVariantsProvider: React.FunctionComponent<
+  ThemeVariantsProviderProps
+> = ({ children }) => {
   const { darkModeEnabled } = React.useContext(DarkModeContext);
   const colorScheme = React.useMemo(() => {
     return darkModeEnabled ? "dark" : "light";

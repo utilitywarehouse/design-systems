@@ -53,7 +53,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
       {...(props as Partial<MuiButtonProps>)}
       {...muiButtonProps}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={(forwardedRef as unknown) as any}
+      ref={forwardedRef as unknown as any}
     >
       {children}
     </MuiButton>

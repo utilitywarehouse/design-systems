@@ -87,14 +87,8 @@ const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
 };
 
 const TextField = (props: TextFieldProps): JSX.Element => {
-  const {
-    label,
-    labelProps,
-    helperText,
-    helperTextProps,
-    multiline,
-    ...rest
-  } = props;
+  const { label, labelProps, helperText, helperTextProps, multiline, ...rest } =
+    props;
   const { status, disabled } = rest;
   const hasErrorStatus = !disabled && isErrorStatus(status);
   const hasSuccessStatus =

@@ -154,7 +154,9 @@ const StyledWrapper = styled(Box)<StyledRootProps>(
   })
 );
 
-const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = ({
+const InteractiveCardComponent: React.FunctionComponent<
+  InteractiveCardProps
+> = ({
   children,
   Background,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -191,7 +193,7 @@ const InteractiveCardComponent: React.FunctionComponent<InteractiveCardProps> = 
         disableRipple={true}
         component={href ? "a" : "button"}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={(forwardedRef as unknown) as any}
+        ref={forwardedRef as unknown as any}
         sx={{
           width: "100%",
         }}
