@@ -8,7 +8,7 @@ const backdrops: Backdrops = {
       backgroundColor: colors.midnight,
     },
     level1: {
-      backgroundColor: colors.darkTint,
+      backgroundColor: colors.purple,
     },
     level2: {
       backgroundColor: colors.midTint,
