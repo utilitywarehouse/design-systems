@@ -4474,6 +4474,14 @@
   resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-icons/-/customer-ui-icons-1.0.0-alpha.36.tgz#8ea832a1c1142dab44c27f6471d59b747249bcd1"
   integrity sha512-zmITqHvwuVt9zkXTE7pmmh6GsQcKkUuggz/BAmBHcG9r3kfIaknnNYHbG0FOgCCWBFEAKhXyZN2y6+8YYzDbGw==
 
+"@utilitywarehouse/customer-ui-theme@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@utilitywarehouse/customer-ui-theme/-/customer-ui-theme-1.0.1.tgz#f1c19ff49aac60608f5627fe83fdad9c4f32d4f7"
+  integrity sha512-ktyYcHBBprmGzJQ9WDtEYjbS5ik2AYfo5BPsKw0w3bZydPdUW9riC1w3N+/AdUMfs37w92hzbTYp/yi15I7aAg==
+  dependencies:
+    "@ctrl/tinycolor" "^3.4.0"
+    "@utilitywarehouse/customer-ui-design-tokens" "^1.0.1"
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"

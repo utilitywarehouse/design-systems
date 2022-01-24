@@ -45,10 +45,10 @@ Level0.args = {
 };
 
 export const Level1 = Template.bind({});
-Level1.storyName = "level1 (Dark Tint)";
+Level1.storyName = "level1 (Purple)";
 Level1.args = {
   backgroundColor: "level1",
-  title: "Level 1 Background (Dark Tint)",
+  title: "Level 1 Background (Purple)",
 };
 
 export const Level2 = Template.bind({});
