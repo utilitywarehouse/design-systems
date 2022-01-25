@@ -146,6 +146,16 @@ There may be some minor inconsistencies not documented here, but these are the
 major changes to watch out for. Please open an issue or PR if you find something
 worth documenting for others, thankyou!
 
+### Known issues
+
+- #339 There is an unresolved JSS type mismatch. This is only an issue if the
+  `makeStyles` styling API is still used in your application. Please see the
+  mentioned issue for recommendations on how best to deal with this.
+
+### Example migrations
+
+- [dex-my-account #510](https://github.com/utilitywarehouse/dex-my-account/pull/510)
+
 ### `useDeviceSize` hook
 
 > from *alpha.75* and below
