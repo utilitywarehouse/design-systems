@@ -146,11 +146,30 @@ There may be some minor inconsistencies not documented here, but these are the
 major changes to watch out for. Please open an issue or PR if you find something
 worth documenting for others, thankyou!
 
+### Known issues
+
+- #339 There is an unresolved JSS type mismatch. This is only an issue if the
+  `makeStyles` styling API is still used in your application. Please see the
+  mentioned issue for recommendations on how best to deal with this.
+
+### Example migrations
+
+- [dex-my-account #510](https://github.com/utilitywarehouse/dex-my-account/pull/510)
+
+### `Background` level 1 backgroundColor
+
+> from *alpha.72* to *v1.0.1*
+
+- #335 Between versions `v1.0.0-alpha.72` and `v1.0.1` the level 1
+  backgroundColor for the `Background` component was `darkTint` instead of
+  purple. This doesn't change the API contract but you should double check there
+  are no unexpected colour changes when upgrading
+
 ### `useDeviceSize` hook
 
 > from *alpha.75* and below
 
-- The return value from the `useDeviceSize` hook was changed to return more
+- #222 The return value from the `useDeviceSize` hook was changed to return more
   detailed information.
 
 ```diff
