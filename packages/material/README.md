@@ -156,11 +156,20 @@ worth documenting for others, thankyou!
 
 - [dex-my-account #510](https://github.com/utilitywarehouse/dex-my-account/pull/510)
 
+### `Background` level 1 backgroundColor
+
+> from *alpha.72* to *v1.0.1*
+
+- #335 Between versions `v1.0.0-alpha.72` and `v1.0.1` the level 1
+  backgroundColor for the `Background` component was `darkTint` instead of
+  purple. This doesn't change the API contract but you should double check there
+  are no unexpected colour changes when upgrading
+
 ### `useDeviceSize` hook
 
 > from *alpha.75* and below
 
-- The return value from the `useDeviceSize` hook was changed to return more
+- #222 The return value from the `useDeviceSize` hook was changed to return more
   detailed information.
 
 ```diff
