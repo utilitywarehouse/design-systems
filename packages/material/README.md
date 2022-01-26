@@ -37,16 +37,14 @@ Deployment Previews will be available on all PRs that make changes to the
 Run storybook locally:
 
 ```console
-yarn storybook:start
+pnpm storybook:start
 ```
 
 ## Installation
 
 ```console
-# npm
 npm i --save @utilitywarehouse/customer-ui-material
-
-# yarn
+# or
 yarn add @utilitywarehouse/customer-ui-material
 ```
 

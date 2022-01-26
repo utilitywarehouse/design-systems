@@ -4,9 +4,9 @@
   "description": "Design Tokens for the UW Customer brand",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rm -rf dist/",
-    "build": "yarn run clean && tsc",
-    "watch": "yarn run build -- --watch",
+    "clean": "rimraf dist/",
+    "build": "pnpm clean && tsc",
+    "watch": "pnpm build -- --watch",
     "format": "prettier --write \"./src/**/*.ts\"",
     "lint": "eslint ./src --fix --ext .ts",
     "format:ci": "prettier --list-different \"./src/**/*.ts\"",
@@ -14,9 +14,9 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*": [
-      "yarn lint",
-      "yarn format"
+    "*.ts": [
+      "pnpm format",
+      "pnpm lint"
     ]
   },
   "license": "ISC",

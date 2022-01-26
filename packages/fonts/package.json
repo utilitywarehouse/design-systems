@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -f fonts.css*",
-    "build": "yarn clean && sass fonts.scss fonts.css",
-    "watch": "yarn build -- --watch"
+    "clean:deps": "rimraf node_modules",
+    "build": "pnpm clean && sass fonts.scss fonts.css",
+    "watch": "pnpm build -- --watch"
   },
   "license": "ISC",
   "publishConfig": {

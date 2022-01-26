@@ -4,21 +4,23 @@ on: [push]
 jobs:
   checks:
     name: Code Checks
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 6
+
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
       with:
         node-version: '16.x'
         registry-url: 'https://registry.npmjs.org'
-        cache: 'yarn'
-        cache-dependency-path: |
-          package.json
-          'packages/**/package.json'
+        cache: 'pnpm'
 
-    - run: yarn install:ci
+    - run: pnpm install
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    - run: yarn lint:ci
-    - run: yarn build
+    - run: pnpm lint:ci
+    - run: pnpm build

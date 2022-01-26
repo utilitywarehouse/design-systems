@@ -2,15 +2,9 @@
 
 Installation
 
-npm
-
-```shell
+```console
 npm i --save @utilitywarehouse/customer-ui-fonts@alpha
-```
-
-yarn
-
-```shell
+// or
 yarn add @utilitywarehouse/customer-ui-fonts@alpha
 ```
 

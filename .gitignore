@@ -11,6 +11,7 @@ pids
 *.pid.lock
 .yarn-integrity
 package-lock.json
+yarn.lock
 .vscode
 dist/
 .npmrc

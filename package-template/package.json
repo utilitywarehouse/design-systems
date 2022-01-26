@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "scripts": {
     "clean": "rm -rf dist/",
-    "build": "yarn run clean && tsc",
-    "watch": "yarn run build -- --watch",
-    "test": "jest",
-    "ci-package-changed": "exit 0"
+    "clean:deps": "rimraf node_modules",
+    "build": "pnpm clean && tsc",
+    "watch": "pnpm build -- --watch",
+    "test": "jest"
   },
   "license": "ISC",
   "publishConfig": {

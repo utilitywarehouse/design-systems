@@ -11,12 +11,7 @@ This monorepo contains all the packages used for Customer UI. See [individual pa
 - [@utilitywarehouse/customer-ui-theme](packages/theme)
 - [@utilitywarehouse/customer-ui-material](packages/material)
 
-## Working with this monorepo
-
-This monorepo makes use of [Lerna](https://lerna.js.org/) to manage our multiple
-packages, alongside yarn workspaces to assist with dependency management. For a
-full list of tools and what they do see the [tools](#tools) section of this
-documentation
+## Contents
 
 - [Getting started](#getting-started)
 - [Running tests](#running-tests)
@@ -34,22 +29,31 @@ documentation
 
 ### Getting started
 
+Run setup. This will install [pnpm](https://pnpm.io/), which we use to manage
+this monorepo.
+
+```console
+npm setup
+# or
+yarn setup
+```
+
 Install dependencies
 
 ```console
-yarn
+pnpm install
 ```
 
 ### Lint & format
 
 ```console
-yarn lint
+pnpm lint
 ```
 
 And automatically attempting to fix linter errors/warnings
 
 ```console
-yarn lint:fix
+pnpm lint:fix
 ```
 
 ### Committing to the repository
@@ -61,7 +65,7 @@ to enforce structured commit messages.
 To assist with the commit message structure you can run the following command:
 
 ```console
-yarn commit
+pnpm commit
 ```
 
 This will prompt [Commitizen](https://www.npmjs.com/package/commitizen) to build
@@ -70,14 +74,13 @@ can be created manually, and will be validated with a git hook.
 
 ### Tools
 
-1. [Lerna](https://lerna.js.org/), a tool for managing JavaScript projects with multiple packages
-1. [Yarn](https://yarnpkg.com/), dependency management
+1. [pnpm](https://pnpm.io/), fast, disk space efficient package manager
+1. [changesets](https://github.com/changesets/changesets), handles versioning, publishing and changelog generation.
 1. [ESLint](https://eslint.org/), JavaScript linter used to fix problems in our code as well as enforcing code style rules
 1. [Prettier](https://prettier.io/), opinionated code formatter
 1. [Commitizen](https://www.npmjs.com/package/commitizen), a tool used to enforce commit message formatting
 1. [husky](https://typicode.github.io/husky/#/), a tool making it easier to manage and create git hooks
 1. [pinst](https://github.com/typicode/pinst), works alongside husky to ensure `postinstall` doesn't run for published packages
-1. [changesets](https://github.com/changesets/changesets), handles versioning, publishing and changelog creation.
 
 ### Common actions and commands
 
@@ -86,27 +89,15 @@ can be created manually, and will be validated with a git hook.
 Please read our [contribution guide](CONTRIBUTING.md) for contributing changes
 to Customer UI.
 
-#### How to create a new package
+#### Creating a new package
 
 ```shell
-yarn new-package
+pnpm new-package
 ```
 
 This will prompt for a package name and description and will create a
 boilerplate Typescript package under the packages directory with the required
 script commands.
-
-#### How to add a shared dependency
-
-Commonly dev dependencies may be used across all packages, in which case adding
-this dependency to the root can make it cleaner to manage.
-
-```shell
-yarn add --dev -W <package>
-```
-
-The `-W` flag specifies the package to be installed in the workspace root. From
-there on packages within `packages/` have access to this dependency.
 
 #### Publishing changes
 

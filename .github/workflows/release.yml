@@ -1,9 +1,11 @@
 name: Release
-
 on:
   push:
     branches:
       - main
+env:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
 
 jobs:
   release:
@@ -20,19 +22,27 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-          cache: 'yarn'
-          cache-dependency-path: |
-            package.json
-            'packages/**/package.json'
+          cache: 'pnpm'
 
-      - run: yarn install:ci
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6
+
+      - name: setup pnpm config
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+
+      - run: pnpm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create Release Pull Request or Publish to npm
         uses: changesets/action@v1
         with:
-          publish: yarn release
+          version: pnpm ci:version
+          commit: "chore: update versions"
+          title: "chore: update versions"
+          publish: pnpm ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

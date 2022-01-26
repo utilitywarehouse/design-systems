@@ -1,4 +1,7 @@
 [build]
   base = "packages/material"
   publish = "storybook-build"
-  command = "yarn storybook:build"
+  command = "npm run storybook:build"
+
+  [build.environment]
+    NPM_FLAGS = "--version"

@@ -5,8 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "clean": "rm -rf dist/",
-    "build": "yarn run clean && tsc",
-    "watch": "yarn run build -- --watch",
+    "clean:deps": "rimraf node_modules",
+    "build": "pnpm clean && tsc",
+    "watch": "pnpm build -- --watch",
     "format": "prettier --write \"./src/**/*.{ts,js}\"",
     "lint": "eslint ./src --fix --ext .ts,.js",
     "format:ci": "prettier --list-different \"./src/**/*.{ts,js}\"",
@@ -15,7 +16,7 @@
   },
   "lint-staged": {
     "src/*.ts": [
-      "yarn lint"
+      "pnpm lint"
     ]
   },
   "license": "ISC",
@@ -27,7 +28,7 @@
     "src"
   ],
   "dependencies": {
-    "@utilitywarehouse/customer-ui-design-tokens": "^1.0.1",
+    "@utilitywarehouse/customer-ui-design-tokens": "1.0.1",
     "@ctrl/tinycolor": "^3.4.0"
   }
 }

@@ -6,8 +6,8 @@ base and the documentation.
 
 ## Environment
 
-- Ensure you have the latest version of Node and Yarn.
-- Run `yarn` to install all needed dev dependencies.
+- Ensure you have run `npm setup` or `yarn setup` so you have [pnpm](https://pnpm.io/) installed.
+- Run `pnpm install` to install all dependencies.
 
 ## Making Changes
 
@@ -19,14 +19,14 @@ Pull requests are encouraged. If you want to add a feature or fix a bug:
 1. Make your changes, and ensure they are formatted by
    [Prettier](https://prettier.io), a pre-commit hook will ensure linting &
    formatting checks pass
-1. Create a changeset by running `yarn changeset`. [More info](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md).
+1. Create a changeset by running `pnpm changeset`. [More info](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md).
 1. Push your branch and open a PR 🚀
 
 ## Changesets
 
 Customer UI uses [changesets](https://github.com/changesets/changesets) for
 versioning, publishing and automating changelogs. This means that you need to
-add a changeset by running `yarn changeset`, you will then be prompted to select
+add a changeset by running `pnpm changeset`, you will then be prompted to select
 which package(s) to include in the changeset, and then a bump type from `major`,
 `minor` or `patch`, and finally you will need to add a message to be included in
 the next release and associated changelog.
