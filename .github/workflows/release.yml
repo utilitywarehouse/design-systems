@@ -26,12 +26,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
 
+      - name: setup npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
       - name: setup pnpm config
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
-
-      - run: pnpm install
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: install dependencies
 
       - name: Create Release Pull Request or Publish to npm
         uses: changesets/action@v1
