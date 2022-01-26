@@ -12,22 +12,19 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6
       - uses: actions/checkout@v2
         with:
           # This makes Actions fetch all Git history so that Changesets can
           # generate changelogs with the correct commits
           fetch-depth: 0
-
       - uses: actions/setup-node@v2
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 6
 
       - name: setup pnpm config
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
