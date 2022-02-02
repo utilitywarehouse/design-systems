@@ -30,8 +30,8 @@ jobs:
         uses: changesets/action@v1
         with:
           version: pnpm ci:version
-          commit: "chore: version packages [skip netlify]"
-          title: "Version Packages"
+          commit: "chore: version packages"
+          title: "Version Packages [skip netlify]"
           publish: pnpm ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
