@@ -18,4 +18,3 @@ dist/
 coverage
 storybook
 storybook-build
-.pnpm-store/
