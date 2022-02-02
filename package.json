@@ -33,7 +33,7 @@
   },
   "scripts": {
     "install:ci": "pnpm i --frozen-lockfile --ignore-scripts",
-    "setup": "npm i -g pnpm@latest",
+    "setup": "npm i -g pnpm@6",
     "build": "pnpm run build -r --stream",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
@@ -48,7 +48,7 @@
     "new-package": "node ./scripts/new-package.js",
     "storybook:start": "pnpm storybook:start -r --filter *material",
     "changeset": "changeset",
-    "ci:version": "changeset version",
+    "ci:version": "changeset version && pnpm install --lockfile-only",
     "ci:publish": "pnpm build && changeset publish"
   },
   "workspaces": [
