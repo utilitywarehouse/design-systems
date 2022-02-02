@@ -2,6 +2,8 @@ import "./types/BreakpointOverrides";
 
 export * from "./material/core";
 
+export type { BackdropLevel, ColorScheme } from "./types";
+
 export {
   default as Background,
   BackgroundContext,
@@ -19,7 +21,7 @@ export { default as Button } from "./components/Button";
 export type { ButtonProps } from "./components/Button";
 
 export { default as Card } from "./components/Card";
-export type { CardProps } from "./components/Card";
+export type { CardProps, CardVariant } from "./components/Card";
 
 export { default as Container } from "./components/Container";
 

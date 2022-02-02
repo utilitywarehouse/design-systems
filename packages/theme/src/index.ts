@@ -3,7 +3,6 @@ import { getButtonStyles } from "./button";
 import { getLinkStyles } from "./link";
 import { getTypographyStyles } from "./typography";
 import { getBackdropStyles } from "./backdrop";
-import { getCardStyles } from "./card";
 import gridConfiguration from "./grid";
 import { getInteractiveCardStyles } from "./interactiveCard";
 import { getMenuStyles } from "./menu";
@@ -16,7 +15,6 @@ import { getTextFieldStyles } from "./textField";
 export * from "./types";
 export * from "./backdrop/types";
 export * from "./button/types";
-export * from "./card/types";
 export * from "./grid/types";
 export * from "./interactiveCard/types";
 export * from "./link/types";
@@ -36,7 +34,6 @@ export const getTheme = (
     components: {
       backdrop: getBackdropStyles(colorScheme, backdropLevel),
       button: getButtonStyles(colorScheme, backdropLevel),
-      card: getCardStyles(colorScheme, backdropLevel),
       interactiveCard: getInteractiveCardStyles(colorScheme, backdropLevel),
       grid: gridConfiguration,
       link: getLinkStyles(colorScheme, backdropLevel),
