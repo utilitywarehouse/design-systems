@@ -48,7 +48,7 @@
     "new-package": "node ./scripts/new-package.js",
     "storybook:start": "pnpm storybook:start -r --filter *material",
     "changeset": "changeset",
-    "ci:version": "changeset version && pnpm install --lockfile-only",
+    "ci:version": "changeset version && pnpm install:ci",
     "ci:publish": "pnpm build && changeset publish"
   },
   "workspaces": [
