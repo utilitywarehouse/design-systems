@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/customer-ui-react-icons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React icons based on the icons svgs",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "devDependencies": {
     "@svgr/core": "^5.5.0",
     "@svgr/cli": "^5.5.0",
-    "@utilitywarehouse/customer-ui-icons": "1.0.1",
+    "@utilitywarehouse/customer-ui-icons": "1.0.2",
     "mkdirp": "^1.0.4",
     "uuid": "^8.3.2"
   },

@@ -91,8 +91,8 @@ importers:
       '@types/react-dom': ^17.0.0
       '@utilitywarehouse/customer-ui-design-tokens': ^1.0.1
       '@utilitywarehouse/customer-ui-fonts': ^1.0.1
-      '@utilitywarehouse/customer-ui-react-icons': ^1.0.0
-      '@utilitywarehouse/customer-ui-theme': ^1.0.1
+      '@utilitywarehouse/customer-ui-react-icons': ^1.0.1
+      '@utilitywarehouse/customer-ui-theme': ^1.1.0
       '@wojtekmaj/enzyme-adapter-react-17': ^0.4.1
       babel-loader: ^8.2.2
       css-loader: ^5.2.0
@@ -146,7 +146,7 @@ importers:
     specifiers:
       '@svgr/cli': ^5.5.0
       '@svgr/core': ^5.5.0
-      '@utilitywarehouse/customer-ui-icons': 1.0.1
+      '@utilitywarehouse/customer-ui-icons': 1.0.2
       mkdirp: ^1.0.4
       uuid: ^8.3.2
     devDependencies:
