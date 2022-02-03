@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-theme
 
+## 1.1.0
+
+### Minor Changes
+
+- [#350](https://github.com/utilitywarehouse/customer-ui/pull/350) [`102db82`](https://github.com/utilitywarehouse/customer-ui/commit/102db82f38482e8389c82518d534aa9e68be0b42) Thanks [@robphoenix](https://github.com/robphoenix)! - Move `Card` styles from the `theme` package to the component. Part of the deprecation of the `theme` package #254
+
 ## 1.0.1
 
 ### Patch Changes
