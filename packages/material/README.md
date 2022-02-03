@@ -146,9 +146,8 @@ worth documenting for others, thankyou!
 
 ### Known issues
 
-- #339 There is an unresolved JSS type mismatch. This is only an issue if the
-  `makeStyles` styling API is still used in your application. Please see the
-  mentioned issue for recommendations on how best to deal with this.
+- #339 There is a JSS type mismatch when upgrading to `v1.0.0`. This is resolved
+  by installing JSS as a dev dependency in your app package; `yarn add -D jss`.
 
 ### Example migrations
 
