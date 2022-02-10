@@ -1,10 +1,6 @@
 # Design tokens
 
-The design tokens package contains a set of low level design tokens associated
-with the [Customer UI design system](https://utilitywarehouse.invisionapp.com/dsm/utilitywarehouse/design-system).
-
-The design tokens package isn't intended to be consumed directly, but is a low
-level layer for the other packages in the Customer UI namespace.
+Design tokens associated with the [Customer UI Design System](https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=38%3A885).
 
 ## Installation
 
