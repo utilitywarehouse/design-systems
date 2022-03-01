@@ -4,21 +4,13 @@
 
 Customer UI React components standing on the shoulders of the [MUI Material](https://mui.com/) library.
 
-Many Customer UI components reflect those in MUI, and so most of the
-documentation on [MUI Material](https://mui.com/) will also be relevant for this
-package. However this should not be relied upon and there are a number of
-components whose structure, behaviour and API design may be different to the
-underlying MUI component or entirely different from a component of the same name
-in MUI. When this is the case, the original MUI components will still be
-available with a `Mui` prefix on the export. For example `MuiButton` will
-retrieve the original MUI Button component.
-
 ## Contents
 
 * [Storybook](#storybook)
 * [Installation](#installation)
 * [Getting started](#getting-started)
 * [Theming](#theming)
+* [Mui Components](#mui-components)
 * [Migration to v1](#migration-from-alpha-pre-release-to-v1)
 * [Components reference](#components-reference)
 * [Hooks reference](#hooks-reference)
@@ -133,6 +125,24 @@ different areas of your application.
 The Customer UI components will then render their styles appropriately depending
 on the background color level, without needing to specify this at the individual
 component level.
+
+## Mui Components
+
+Many Customer UI components reflect those in MUI, and so most of the
+documentation on [MUI Material](https://mui.com/) will also be relevant for this
+package. However this should not be relied upon and there are a number of
+components whose structure, behaviour and API design may be different to the
+underlying MUI component or entirely different from a component of the same name
+in MUI. When this is the case, the original MUI components will still be
+available with a `Mui` prefix on the export. For example `MuiButton` will
+retrieve the original MUI Button component.
+
+This means that you shouldn't need to directly install `@mui/material`,
+`@mui/styled-engine` or `@mui/styles` as a separate dependency. If there is
+something you need from these packages that Customer UI is not exporting please
+raise an issue. Also, note that you may experience problems if you do separately
+install any of the aforementioned `@mui` packages with a different version to
+what is being used by Customer UI.
 
 ## Migration from alpha pre-release to v1
 
