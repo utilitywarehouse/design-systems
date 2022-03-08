@@ -7,11 +7,12 @@ import {
 import { LinkProps as MuiLinkProps } from "@mui/material/Link";
 import { styled } from "@mui/material/styles";
 
-export type TextLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> &
-  Pick<
-    MuiLinkProps,
-    "children" | "classes" | "sx" | "TypographyClasses" | "variant" | "ref"
-  >;
+export interface TextLinkProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    Pick<
+      MuiLinkProps,
+      "children" | "classes" | "sx" | "TypographyClasses" | "variant" | "ref"
+    > {}
 
 const StyledTextLink = styled(MuiLink)({
   transition: `all ${transitions.duration}ms ${transitions.easingFunction}`,
@@ -29,7 +30,7 @@ const StyledTextLink = styled(MuiLink)({
 });
 
 const TextLink: React.FunctionComponent<TextLinkProps> = (props) => {
-  const { variant = "inherit" } = props;
+  const { variant = "body" } = props;
   return <StyledTextLink {...props} underline="none" variant={variant} />;
 };
 
