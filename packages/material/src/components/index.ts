@@ -2,6 +2,7 @@ import { Theme as MuiTheme } from "@mui/material/styles";
 import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 import { getComponentThemeConfiguration as getButtonComponentThemeConfiguration } from "./Button";
 import { getComponentThemeConfiguration as getLinkComponentThemeConfiguration } from "./Link";
+import { getComponentThemeConfiguration as getTextLinkComponentThemeConfiguration } from "./TextLink";
 import { getComponentThemeConfiguration as getMenuComponentThemeConfiguration } from "./Menu";
 import { getComponentThemeConfiguration as getMenuItemComponentThemeConfiguration } from "./MenuItem";
 import { getComponentThemeConfiguration as getTextFieldComponentThemeConfiguration } from "./TextField";
@@ -14,6 +15,7 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
 ) => ({
   ...getButtonComponentThemeConfiguration(theme, muiTheme),
   ...getLinkComponentThemeConfiguration(theme, muiTheme),
+  ...getTextLinkComponentThemeConfiguration(theme, muiTheme),
   ...getMenuComponentThemeConfiguration(theme, muiTheme),
   ...getMenuItemComponentThemeConfiguration(theme, muiTheme),
   ...getTextFieldComponentThemeConfiguration(theme, muiTheme),
