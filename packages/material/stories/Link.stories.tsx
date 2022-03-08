@@ -1,42 +1,58 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { TextLinkProps, Stack, TypographyProps } from "../src";
-import { TextLink, Typography } from "../src";
+import { LinkProps, Stack, TypographyProps } from "../src";
+import { Link, Typography } from "../src";
+import type { TypographyVariant } from "@utilitywarehouse/customer-ui-theme";
 import { BackgroundStack } from "./utils";
 
-const variants = [
-  "inherit",
-  "displayHeading",
-  "h1",
-  "h2",
-  "h3",
-  "h4",
-  "subtitle",
-  "body",
-  "legalNote",
-  "caption",
-] as const;
+const typographyVariants: { [key in TypographyProps["variant"]]: boolean } = {
+  h1: true,
+  h2: true,
+  h3: true,
+  h4: true,
+  default: true,
+  displayHeading: true,
+  subtitle: true,
+  body: true,
+  legalNote: true,
+  caption: true,
+  inherit: false,
+};
+
+const linkTypographyVariants = Object.keys(typographyVariants).filter(
+  (variant) => typographyVariants[variant]
+);
+
+const linkVariantsInUse: { [key in LinkProps["variant"]]: boolean } = {
+  default: true,
+  active: true,
+  secondary: true,
+};
+
+const linkVariants = Object.keys(linkVariantsInUse).filter(
+  (variant) => linkVariantsInUse[variant]
+);
 
 export default {
   title: "Components/Links",
-  component: TextLink,
+  component: Link,
   argTypes: {
     children: {
       control: {
         type: "text",
       },
     },
+    typographyVariant: {
+      control: {
+        type: "select",
+        options: linkTypographyVariants,
+      },
+    },
     variant: {
       control: {
         type: "radio",
-        options: variants,
-      },
-    },
-    typographyWrapperVariant: {
-      control: {
-        type: "radio",
-        options: variants.filter((v) => v !== "inherit"),
+        options: linkVariants,
       },
     },
     disabled: {
@@ -46,29 +62,33 @@ export default {
     },
   },
   args: {
-    children: "text link",
-    variant: "inherit",
-    typographyWrapperVariant: "body",
+    children: "link",
+    typographyVariant: "default",
+    variant: "default",
   },
 } as Meta;
 
-export const TextLinkStory: Story<
-  TextLinkProps & { typographyWrapperVariant: TypographyProps["variant"] }
+export const LinkStory: Story<
+  LinkProps & { typographyVariant: TypographyVariant }
 > = (args) => {
+  const { typographyVariant, ...rest } = args;
+  const onClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+  };
   return (
     <BackgroundStack>
       <Stack spacing={2}>
-        <Typography variant="body">
-          <TextLink href="#" {...args} />
+        <Typography variant={typographyVariant}>
+          <Link href="#" {...rest} onClick={onClick}>
+            Link
+          </Link>
         </Typography>
-        <Typography variant={args.typographyWrapperVariant}>
-          This is a <TextLink href="#" {...args} variant="inherit" /> used
-          within a sentence, inheriting typography styles from the surrounding{" "}
-          {args.typographyWrapperVariant} component.
+        <Typography variant={typographyVariant}>
+          This is an inline <Link href="#" {...rest} onClick={onClick} />.
         </Typography>
       </Stack>
     </BackgroundStack>
   );
 };
 
-TextLinkStory.storyName = "TextLink";
+LinkStory.storyName = "Link (deprecated)";
