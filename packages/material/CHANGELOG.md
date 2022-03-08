@@ -1,5 +1,18 @@
 # @utilitywarehouse/customer-ui-material
 
+## 1.0.3
+
+### Patch Changes
+
+- [#363](https://github.com/utilitywarehouse/customer-ui/pull/363) [`6c35336`](https://github.com/utilitywarehouse/customer-ui/commit/6c35336128d21792d0e0ab10a34489f31146d1c2) Thanks [@robphoenix](https://github.com/robphoenix)! - This change bumps the @mui deps to the latest versions.
+
+  This is being done now due to an issue raised where Customer UI styles were not being applied to all components.
+  This was due to mismatches between @mui dependencies in an application using Customer UI and separately installed versions of the same @mui packages used in Customer UI.
+
+- Updated dependencies [[`268e60b`](https://github.com/utilitywarehouse/customer-ui/commit/268e60b09d85c1d08d64bf85d538c8119bdda812)]:
+  - @utilitywarehouse/customer-ui-design-tokens@1.0.2
+  - @utilitywarehouse/customer-ui-theme@1.1.1
+
 ## 1.0.2
 
 ### Patch Changes
