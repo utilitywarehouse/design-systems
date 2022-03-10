@@ -8,6 +8,9 @@ export interface LinkProps extends React.ComponentPropsWithoutRef<"a"> {
   forwardedRef?: React.Ref<HTMLAnchorElement>;
 }
 
+/**
+ * @deprecated in v2. Use `TextLink` or `NavLink` components
+ */
 const Link: React.FunctionComponent<LinkProps> = ({
   variant = "default",
   disabled = false,
