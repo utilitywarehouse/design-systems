@@ -1,10 +1,9 @@
 import React from "react";
-import MuiLink from "@mui/material/Link";
+import MuiLink, { LinkProps as MuiLinkProps } from "@mui/material/Link";
 import {
   colors,
   transitions,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { LinkProps as MuiLinkProps } from "@mui/material/Link";
 import { styled } from "@mui/material/styles";
 
 export interface TextLinkProps
