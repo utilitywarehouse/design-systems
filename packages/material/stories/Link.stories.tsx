@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import type { LinkProps, TypographyProps } from "../src";
+import { LinkProps, Stack, TypographyProps } from "../src";
 import { Link, Typography } from "../src";
 import type { TypographyVariant } from "@utilitywarehouse/customer-ui-theme";
 import { BackgroundStack } from "./utils";
@@ -35,7 +35,7 @@ const linkVariants = Object.keys(linkVariantsInUse).filter(
 );
 
 export default {
-  title: "Components/Link",
+  title: "Components/Links",
   component: Link,
   argTypes: {
     children: {
@@ -77,31 +77,18 @@ export const LinkStory: Story<
   };
   return (
     <BackgroundStack>
-      <Typography variant={typographyVariant}>
-        <Link href="#" {...rest} onClick={onClick}>
-          Link
-        </Link>
-      </Typography>
+      <Stack spacing={2}>
+        <Typography variant={typographyVariant}>
+          <Link href="#" {...rest} onClick={onClick}>
+            Link
+          </Link>
+        </Typography>
+        <Typography variant={typographyVariant}>
+          This is an inline <Link href="#" {...rest} onClick={onClick} />.
+        </Typography>
+      </Stack>
     </BackgroundStack>
   );
 };
 
-LinkStory.storyName = "Basic Link";
-
-export const InlineLinkStory: Story<
-  LinkProps & { typographyVariant: TypographyVariant }
-> = (args) => {
-  const { typographyVariant, ...rest } = args;
-  const onClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-  };
-  return (
-    <BackgroundStack>
-      <Typography variant={typographyVariant}>
-        This is an inline <Link href="#" {...rest} onClick={onClick} />.
-      </Typography>
-    </BackgroundStack>
-  );
-};
-
-InlineLinkStory.storyName = "Inline Link";
+LinkStory.storyName = "Link (deprecated)";

@@ -37,32 +37,11 @@ const Template: Story<BackgroundProps> = (props) => {
   );
 };
 
-export const Level0 = Template.bind({});
-Level0.storyName = "level0 (Midnight)";
-Level0.args = {
-  backgroundColor: "level0",
-  title: "Level 0 Background (Midnight)",
-};
-
-export const Level1 = Template.bind({});
-Level1.storyName = "level1 (Purple)";
-Level1.args = {
-  backgroundColor: "level1",
-  title: "Level 1 Background (Purple)",
-};
-
-export const Level2 = Template.bind({});
-Level2.storyName = "level2 (Mid Tint)";
-Level2.args = {
-  backgroundColor: "level2",
-  title: "Level 2 Background (Mid Tint)",
-};
-
-export const Level3 = Template.bind({});
-Level3.storyName = "level3 (Light Tint)";
-Level3.args = {
-  backgroundColor: "level3",
-  title: "Level 3 Background (Light Tint)",
+export const Level5 = Template.bind({});
+Level5.storyName = "level5 (White)";
+Level5.args = {
+  backgroundColor: "level5",
+  title: "Level 5 Background (White)",
 };
 
 export const Level4 = Template.bind({});
@@ -72,9 +51,30 @@ Level4.args = {
   title: "Level 4 Background (White Owl)",
 };
 
-export const Level5 = Template.bind({});
-Level5.storyName = "level5 (White)";
-Level5.args = {
-  backgroundColor: "level5",
-  title: "Level 5 Background (White)",
+export const Level3 = Template.bind({});
+Level3.storyName = "level3 (Light Tint)";
+Level3.args = {
+  backgroundColor: "level3",
+  title: "Level 3 Background (Light Tint)",
+};
+
+export const Level2 = Template.bind({});
+Level2.storyName = "level2 (Mid Tint)";
+Level2.args = {
+  backgroundColor: "level2",
+  title: "Level 2 Background (Mid Tint)",
+};
+
+export const Level1 = Template.bind({});
+Level1.storyName = "level1 (Purple)";
+Level1.args = {
+  backgroundColor: "level1",
+  title: "Level 1 Background (Purple)",
+};
+
+export const Level0 = Template.bind({});
+Level0.storyName = "level0 (Midnight)";
+Level0.args = {
+  backgroundColor: "level0",
+  title: "Level 0 Background (Midnight)",
 };

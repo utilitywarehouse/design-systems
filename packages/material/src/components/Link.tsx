@@ -1,8 +1,6 @@
 import React from "react";
-import { CSSProperties } from "@mui/styles/withStyles";
-import MuiLink from "@mui/material/Link";
-import { GetComponentThemeConfiguration } from "../lib/theme.types";
-import { clsx } from "../utils";
+import TextLink from "./TextLink";
+import NavLink from "./NavLink";
 
 export interface LinkProps extends React.ComponentPropsWithoutRef<"a"> {
   variant?: "default" | "active" | "secondary";
@@ -10,154 +8,32 @@ export interface LinkProps extends React.ComponentPropsWithoutRef<"a"> {
   forwardedRef?: React.Ref<HTMLAnchorElement>;
 }
 
+/**
+ * @deprecated in v2. Use `TextLink` or `NavLink` components
+ */
 const Link: React.FunctionComponent<LinkProps> = ({
   variant = "default",
   disabled = false,
-  children,
   onClick,
-  className,
   forwardedRef,
   ...props
 }) => {
-  const _className = React.useMemo(() => {
-    const variantCapitalized = variant[0]
-      .toUpperCase()
-      .concat(variant.substring(1));
-    return clsx(
-      `MuiLink-variant${variantCapitalized}`,
-      className,
-      disabled && "MuiLink-disabled"
-    );
-  }, [variant, disabled, className]);
-
-  const _onClick = React.useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-      if (disabled) {
-        e.preventDefault();
-        return;
-      }
-
-      if (onClick) {
-        onClick(e);
-      }
-    },
-    [onClick, disabled]
+  console.warn(
+    "[UW Customer UI]: The Link component will be deprecated in v2, please use the TextLink and NavLink components"
   );
-
+  if (variant === "default") {
+    return <TextLink {...props} variant="inherit" />;
+  }
   return (
-    <MuiLink
-      variant="inherit"
-      underline="none"
-      className={_className}
-      onClick={_onClick}
+    <NavLink
       {...props}
+      variant="inherit"
+      active={variant === "active"}
+      disabled={disabled}
+      onClick={onClick}
       ref={forwardedRef}
-    >
-      {children}
-    </MuiLink>
+    />
   );
 };
 
 export default Link;
-
-export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
-  theme,
-  muiTheme
-) => {
-  const resolveStyles = (): CSSProperties => {
-    return {
-      ...theme.components.link.mobile.default.idle,
-      fontSize: "inherit",
-      fontFamily: "inherit",
-      fontWeight: "inherit",
-      [muiTheme.breakpoints.up("tablet")]: {
-        ...theme.components.link.tablet.default.idle,
-      },
-      [muiTheme.breakpoints.up("desktop")]: {
-        ...theme.components.link.desktop.default.idle,
-      },
-      "&:hover": {
-        ...theme.components.link.mobile.default.hover,
-        [muiTheme.breakpoints.up("tablet")]: {
-          ...theme.components.link.tablet.default.hover,
-        },
-        [muiTheme.breakpoints.up("desktop")]: {
-          ...theme.components.link.desktop.default.hover,
-        },
-      },
-      "&.MuiLink-disabled": {
-        ...theme.components.link.mobile.default.disabled,
-        [muiTheme.breakpoints.up("tablet")]: {
-          ...theme.components.link.tablet.default.disabled,
-        },
-        [muiTheme.breakpoints.up("desktop")]: {
-          ...theme.components.link.desktop.default.disabled,
-        },
-      },
-      "&.MuiLink-variantActive": {
-        ...theme.components.link.mobile.active.idle,
-        [muiTheme.breakpoints.up("tablet")]: {
-          ...theme.components.link.tablet.active.idle,
-        },
-        [muiTheme.breakpoints.up("desktop")]: {
-          ...theme.components.link.desktop.active.idle,
-        },
-        "&:hover": {
-          ...theme.components.link.mobile.active.hover,
-          [muiTheme.breakpoints.up("tablet")]: {
-            ...theme.components.link.tablet.active.hover,
-          },
-          [muiTheme.breakpoints.up("desktop")]: {
-            ...theme.components.link.desktop.active.hover,
-          },
-        },
-        "&.MuiLink-disabled": {
-          ...theme.components.link.mobile.active.disabled,
-          [muiTheme.breakpoints.up("tablet")]: {
-            ...theme.components.link.tablet.active.disabled,
-          },
-          [muiTheme.breakpoints.up("desktop")]: {
-            ...theme.components.link.desktop.active.disabled,
-          },
-        },
-      },
-      "&.MuiLink-variantSecondary": {
-        ...theme.components.link.mobile.secondary.idle,
-        [muiTheme.breakpoints.up("tablet")]: {
-          ...theme.components.link.tablet.secondary.idle,
-        },
-        [muiTheme.breakpoints.up("desktop")]: {
-          ...theme.components.link.desktop.secondary.idle,
-        },
-        "&:hover": {
-          ...theme.components.link.mobile.secondary.hover,
-          [muiTheme.breakpoints.up("tablet")]: {
-            ...theme.components.link.tablet.secondary.hover,
-          },
-          [muiTheme.breakpoints.up("desktop")]: {
-            ...theme.components.link.desktop.secondary.hover,
-          },
-        },
-        "&.MuiLink-disabled": {
-          ...theme.components.link.mobile.secondary.disabled,
-          [muiTheme.breakpoints.up("tablet")]: {
-            ...theme.components.link.tablet.secondary.disabled,
-          },
-          [muiTheme.breakpoints.up("desktop")]: {
-            ...theme.components.link.desktop.secondary.disabled,
-          },
-        },
-      },
-    } as CSSProperties;
-  };
-
-  return {
-    MuiLink: {
-      styleOverrides: {
-        root: {
-          ...resolveStyles(),
-        },
-      },
-    },
-  };
-};

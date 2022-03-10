@@ -2,7 +2,6 @@ import { BackdropStyles } from "./backdrop";
 import { ButtonStyles } from "./button";
 import { GridConfiguration } from "./grid";
 import { InteractiveCardStyles } from "./interactiveCard";
-import { LinkStyles } from "./link";
 import { MenuStyles } from "./menu";
 import { MenuItemStyles } from "./menuItem";
 import { TextFieldStyles } from "./textField/types";
@@ -78,7 +77,6 @@ export interface Theme {
     button: ButtonStyles;
     grid: GridConfiguration;
     interactiveCard: InteractiveCardStyles;
-    link: LinkStyles;
     menu: MenuStyles;
     menuItem: MenuItemStyles;
     textField: TextFieldStyles;
