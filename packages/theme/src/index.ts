@@ -1,7 +1,6 @@
 import { Theme, BackdropLevel, ColorScheme } from "./types";
 import { getButtonStyles } from "./button";
 import { getTypographyStyles } from "./typography";
-import { getBackdropStyles } from "./backdrop";
 import gridConfiguration from "./grid";
 import { getInteractiveCardStyles } from "./interactiveCard";
 import { getMenuStyles } from "./menu";
@@ -12,7 +11,6 @@ import { getPalette } from "./palette";
 import { getTextFieldStyles } from "./textField";
 
 export * from "./types";
-export * from "./backdrop/types";
 export * from "./button/types";
 export * from "./grid/types";
 export * from "./interactiveCard/types";
@@ -30,7 +28,6 @@ export const getTheme = (
   const palette = getPalette(colorScheme, backdropLevel);
   return {
     components: {
-      backdrop: getBackdropStyles(colorScheme, backdropLevel),
       button: getButtonStyles(colorScheme, backdropLevel),
       interactiveCard: getInteractiveCardStyles(colorScheme, backdropLevel),
       grid: gridConfiguration,

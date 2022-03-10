@@ -1,11 +1,8 @@
-import {
-  BackdropLevel,
-  Theme,
-  getTheme,
-} from "@utilitywarehouse/customer-ui-theme";
+import { Theme, getTheme } from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
-import { Box, BoxProps } from "../";
-import BackgroundProvider from "./BackgroundProvider";
+import { BackdropLevel, Box, BoxProps } from "../";
+import BackgroundProvider, { useTheme } from "./BackgroundProvider";
+import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 
 interface BackgroundContextValue {
   theme: Theme;
@@ -28,11 +25,20 @@ const BackgroundInner: React.FunctionComponent<BackgroundProps> = ({
   backgroundColor,
   ...props
 }) => {
-  const { theme } = React.useContext(BackgroundContext);
+  const { colorScheme, backdropLevel } = useTheme();
+  const backgroundPalette = {
+    level0: colors.midnight,
+    level1: colors.purple,
+    level2: colors.midTint,
+    level3: colors.lightTint,
+    level4: colors.whiteOwl,
+    level5: colors.white,
+  };
 
   const backgroundColorStyle = React.useMemo(() => {
-    return theme.components.backdrop.backgroundColor;
-  }, [backgroundColor, theme]);
+    if (colorScheme === "dark") return colors.codGray;
+    return backgroundPalette[backdropLevel];
+  }, [backgroundColor, colorScheme, backdropLevel]);
 
   return (
     <Box

@@ -1,4 +1,3 @@
-import { BackdropStyles } from "./backdrop";
 import { ButtonStyles } from "./button";
 import { GridConfiguration } from "./grid";
 import { InteractiveCardStyles } from "./interactiveCard";
@@ -73,7 +72,6 @@ export interface Palette {
 
 export interface Theme {
   components: {
-    backdrop: BackdropStyles;
     button: ButtonStyles;
     grid: GridConfiguration;
     interactiveCard: InteractiveCardStyles;
