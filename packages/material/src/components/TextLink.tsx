@@ -29,6 +29,9 @@ const StyledTextLink = styled(MuiLink)({
   },
 });
 
-const TextLink: React.FunctionComponent<TextLinkProps> = ({ variant = "body", ...props }) => <StyledTextLink {...props} underline="none" variant={variant} />;
+const TextLink: React.FunctionComponent<TextLinkProps> = ({
+  variant = "body",
+  ...props
+}) => <StyledTextLink {...props} underline="none" variant={variant} />;
 
 export default TextLink;

@@ -54,8 +54,13 @@ const StyledNavLink = styled(MuiLink, {
   };
 });
 
-const NavLink: React.FunctionComponent<NavLinkProps> = ({ variant = "body", onClick, active, disabled, ...rest }) => {
-
+const NavLink: React.FunctionComponent<NavLinkProps> = ({
+  variant = "body",
+  onClick,
+  active,
+  disabled,
+  ...rest
+}) => {
   const handleClick = React.useCallback(
     (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
       if (disabled || active) {
