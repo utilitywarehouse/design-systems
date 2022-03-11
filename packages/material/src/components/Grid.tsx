@@ -1,13 +1,31 @@
 import React from "react";
 import { GridDirection, GridWrap } from "@mui/material/Grid";
-import {
-  Breakpoint,
-  gridConfiguration,
-} from "@utilitywarehouse/customer-ui-theme";
-import { Box, styled } from "../";
+import { Box, Breakpoint, styled } from "../";
 import useDeviceSize from "../hooks/useDeviceSize";
 
 type GridContextValue = StyleProps;
+
+type GridConfiguration = {
+  [key in Breakpoint]: {
+    gutterSize: number;
+    columns: number;
+  };
+};
+
+const gridConfiguration: GridConfiguration = {
+  desktop: {
+    gutterSize: 3,
+    columns: 12,
+  },
+  tablet: {
+    gutterSize: 3,
+    columns: 8,
+  },
+  mobile: {
+    gutterSize: 2,
+    columns: 4,
+  },
+};
 
 const defaultGridContextValue: GridContextValue = {
   container: true,

@@ -7,3 +7,5 @@ export type BackdropLevel =
   | "level5";
 
 export type ColorScheme = "light" | "dark";
+
+export type Breakpoint = "desktop" | "tablet" | "mobile";

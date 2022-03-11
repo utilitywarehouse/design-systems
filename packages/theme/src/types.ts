@@ -1,5 +1,4 @@
 import { ButtonStyles } from "./button";
-import { GridConfiguration } from "./grid";
 import { InteractiveCardStyles } from "./interactiveCard";
 import { MenuStyles } from "./menu";
 import { MenuItemStyles } from "./menuItem";
@@ -73,7 +72,6 @@ export interface Palette {
 export interface Theme {
   components: {
     button: ButtonStyles;
-    grid: GridConfiguration;
     interactiveCard: InteractiveCardStyles;
     menu: MenuStyles;
     menuItem: MenuItemStyles;
