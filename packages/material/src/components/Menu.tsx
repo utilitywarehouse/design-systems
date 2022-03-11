@@ -1,7 +1,14 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { MuiMenu, MuiMenuProps, BackgroundProvider } from "..";
-import { GetComponentThemeConfiguration } from "../lib/theme.types";
+import {
+  MuiMenu,
+  MuiMenuProps,
+  BackgroundProvider,
+  MuiMenuItem,
+  MuiMenuItemProps,
+  Typography,
+} from "..";
+import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 
 export interface MenuProps extends MuiMenuProps {
   forwardedRef?: React.Ref<HTMLDivElement>;
@@ -9,51 +16,49 @@ export interface MenuProps extends MuiMenuProps {
 
 const StyledMenu = styled(MuiMenu)(({ theme }) => ({
   transform: `translateY(${theme.spacing(1)})`,
+  "& .MuiPaper-root": {
+    borderColor: colors.cyan,
+    borderRadius: theme.spacing(1),
+    borderStyle: "solid",
+    borderWidth: "2px",
+    padding: "0",
+    boxShadow: "none",
+    "& .MuiMenu-list": {
+      padding: 0,
+    },
+  },
 }));
 
-const MenuContent: React.FunctionComponent<MenuProps> = ({
+const Menu: React.FunctionComponent<MenuProps> = ({
   forwardedRef,
+  anchorOrigin = {
+    horizontal: "left",
+    vertical: "bottom",
+  },
   ...props
 }) => {
-  return <StyledMenu {...props} ref={forwardedRef} />;
-};
-
-const Menu: React.FunctionComponent<MenuProps> = (props) => {
   return (
     <BackgroundProvider backgroundColor="level5">
-      <MenuContent {...props} />
+      <StyledMenu {...props} ref={forwardedRef} anchorOrigin={anchorOrigin} />
     </BackgroundProvider>
   );
 };
 
-export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
-  theme,
-  muiTheme
-) => {
-  return {
-    MuiMenu: {
-      defaultProps: {
-        anchorOrigin: {
-          horizontal: "left",
-          vertical: "bottom",
-        },
-      },
-      styleOverrides: {
-        paper: {
-          ...theme.components.menu.mobile,
-          [muiTheme.breakpoints.up("tablet")]: {
-            ...theme.components.menu.tablet,
-          },
-          [muiTheme.breakpoints.up("desktop")]: {
-            ...theme.components.menu.desktop,
-          },
-        },
-        list: {
-          padding: 0,
-        },
-      },
-    },
-  };
-};
+export interface MenuItemProps extends MuiMenuItemProps {
+  forwardedRef?: React.Ref<HTMLLIElement>;
+}
+
+const StyledMenuItem = styled(MuiMenuItem)(({ theme }) => ({
+  padding: theme.spacing(2),
+}));
+
+export const MenuItem: React.FC<MenuItemProps> = ({
+  forwardedRef,
+  ...props
+}) => (
+  <StyledMenuItem {...props} ref={forwardedRef}>
+    <Typography component="span">{props.children}</Typography>
+  </StyledMenuItem>
+);
 
 export default Menu;

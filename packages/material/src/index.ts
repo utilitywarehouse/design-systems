@@ -44,10 +44,8 @@ export type { TextLinkProps } from "./components/TextLink";
 export { default as NavLink } from "./components/NavLink";
 export type { NavLinkProps } from "./components/NavLink";
 
-export { default as Menu, MenuProps } from "./components/Menu";
-
-export { default as MenuItem } from "./components/MenuItem";
-export type { MenuItemProps } from "./components/MenuItem";
+export { default as Menu, MenuItem } from "./components/Menu";
+export type { MenuProps, MenuItemProps } from "./components/Menu";
 
 export { default as TextField } from "./components/TextField";
 export type { TextFieldProps } from "./components/TextField";

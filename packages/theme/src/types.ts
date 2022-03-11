@@ -1,6 +1,4 @@
 import { ButtonStyles } from "./button";
-import { MenuStyles } from "./menu";
-import { MenuItemStyles } from "./menuItem";
 import { TextFieldStyles } from "./textField/types";
 import { TypographyStyles } from "./typography";
 
@@ -71,8 +69,6 @@ export interface Palette {
 export interface Theme {
   components: {
     button: ButtonStyles;
-    menu: MenuStyles;
-    menuItem: MenuItemStyles;
     textField: TextFieldStyles;
     typography: TypographyStyles;
   };

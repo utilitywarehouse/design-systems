@@ -1,8 +1,6 @@
 import { Theme as MuiTheme } from "@mui/material/styles";
 import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 import { getComponentThemeConfiguration as getButtonComponentThemeConfiguration } from "./Button";
-import { getComponentThemeConfiguration as getMenuComponentThemeConfiguration } from "./Menu";
-import { getComponentThemeConfiguration as getMenuItemComponentThemeConfiguration } from "./MenuItem";
 import { getComponentThemeConfiguration as getTextFieldComponentThemeConfiguration } from "./TextField";
 import { getComponentThemeConfiguration as getTypographyComponentThemeConfiguration } from "./Typography";
 import { GetComponentThemeConfiguration } from "../lib/theme.types";
@@ -12,9 +10,6 @@ export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
   muiTheme: MuiTheme
 ) => ({
   ...getButtonComponentThemeConfiguration(theme, muiTheme),
-  ...getMenuComponentThemeConfiguration(theme, muiTheme),
-  ...getMenuItemComponentThemeConfiguration(theme, muiTheme),
   ...getTextFieldComponentThemeConfiguration(theme, muiTheme),
   ...getTypographyComponentThemeConfiguration(theme, muiTheme),
-  ...getTextFieldComponentThemeConfiguration(theme, muiTheme),
 });

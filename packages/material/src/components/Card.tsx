@@ -2,11 +2,7 @@ import { styled } from "@mui/material/styles";
 import React from "react";
 import { BackdropLevel, Box, BoxProps, ColorScheme } from "..";
 import BackgroundProvider, { useTheme } from "./BackgroundProvider";
-import {
-  spacingBase,
-  helpers,
-  colors,
-} from "@utilitywarehouse/customer-ui-design-tokens";
+import { helpers, colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { isBrandBackdropLevel, isDarkColorScheme } from "../utils";
 
 const { px } = helpers;
@@ -29,6 +25,8 @@ const getCardPalette = (
     },
   };
 
+  // TODO: ensure this naming convention follows what is decided for Backdrop &
+  // Design Token naming
   const neutralBackdropLevelPalette = {
     opaque: {
       backgroundColor: colors.white,
@@ -40,6 +38,8 @@ const getCardPalette = (
     },
   };
 
+  // TODO: ensure this naming convention follows what is decided for Backdrop &
+  // Design Token naming
   const brandBackdropLevelPalette = {
     opaque: {
       backgroundColor: colors.purple,
@@ -71,12 +71,12 @@ interface StyledCardProps {
 const StyledCard = styled(Box, {
   shouldForwardProp: (prop) =>
     prop !== "colorScheme" && prop !== "variant" && prop !== "backdropLevel",
-})<StyledCardProps>(({ backdropLevel, colorScheme, variant }) => {
+})<StyledCardProps>(({ theme, backdropLevel, colorScheme, variant }) => {
   const palette = getCardPalette(colorScheme, backdropLevel, variant);
   return {
     ...palette,
-    padding: px(spacingBase * 3), // 24px
-    borderRadius: px(8 * 1.75), // 14px
+    padding: theme.spacing(3), // 24px
+    borderRadius: px(14),
     borderWidth: px(2),
     borderStyle: variant === "transparent" ? "dashed" : "solid",
   };
