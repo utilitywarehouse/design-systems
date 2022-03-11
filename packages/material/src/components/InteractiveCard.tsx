@@ -1,21 +1,37 @@
-import {
-  BackdropLevel,
-  Theme as CustomerUITheme,
-  InteractiveCardSize,
-  InteractiveCardVariant,
-} from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
-import { ButtonBase, Box, Typography, BackgroundContext, BoxProps } from "..";
-import BackgroundProvider from "./BackgroundProvider";
+import {
+  ButtonBase,
+  Box,
+  Typography,
+  BackgroundContext,
+  BoxProps,
+  BackdropLevel,
+} from "..";
+import BackgroundProvider, { useTheme } from "./BackgroundProvider";
 import { styled } from "@mui/material/styles";
+import {
+  helpers,
+  transitions,
+  colors,
+} from "@utilitywarehouse/customer-ui-design-tokens";
+import { TinyColor } from "@ctrl/tinycolor";
+
+const { px } = helpers;
+
+export type InteractiveCardSize = "small" | "regular" | "large";
+
+export type InteractiveCardVariant = "primary" | "secondary";
 
 interface BaseInteractiveCardProps {
   Background?: React.ComponentType;
   backgroundColor?: BackdropLevel;
   size?: InteractiveCardSize;
-  variant?: InteractiveCardVariant;
   containerProps?: BoxProps;
   forwardedRef?: React.Ref<unknown>;
+  /**
+   * @deprecated in v2. This prop has no effect on the component
+   */
+  variant?: InteractiveCardVariant;
 }
 
 type InteractiveCardButtonProps = BaseInteractiveCardProps &
@@ -32,152 +48,109 @@ export type InteractiveCardProps =
   | InteractiveCardAnchorProps;
 
 interface StyledRootProps {
-  customerUITheme: CustomerUITheme;
   size: InteractiveCardSize;
-  variant: InteractiveCardVariant;
+  backdropLevel: BackdropLevel;
 }
 
 const PREFIX = "InteractiveCard";
 const classes = { rootHover: `${PREFIX}-rootHover` };
 
 const StyledRoot = styled(Box, {
-  shouldForwardProp: (prop) =>
-    prop !== "customerUITheme" && prop !== "size" && prop !== "variant",
-})<StyledRootProps>(({ theme, customerUITheme, size, variant }) => ({
-  width: "100%",
-  overflow: "hidden",
-  position: "relative",
-  backgroundColor:
-    customerUITheme.components.interactiveCard.mobile[variant][size].idle
-      .backgroundColor,
-  borderRadius:
-    customerUITheme.components.interactiveCard.mobile[variant][size].idle
-      .borderRadius,
-  [theme.breakpoints.up("tablet")]: {
-    backgroundColor:
-      customerUITheme.components.interactiveCard.tablet[variant][size].idle
-        .backgroundColor,
-    borderRadius:
-      customerUITheme.components.interactiveCard.tablet[variant][size].idle
-        .borderRadius,
-  },
-  [theme.breakpoints.up("desktop")]: {
-    backgroundColor:
-      customerUITheme.components.interactiveCard.desktop[variant][size].idle
-        .backgroundColor,
-    borderRadius:
-      customerUITheme.components.interactiveCard.desktop[variant][size].idle
-        .borderRadius,
-  },
-  "&:hover": {
-    borderRadius:
-      customerUITheme.components.interactiveCard.mobile[variant][size].active
-        .borderRadius,
-    [theme.breakpoints.up("tablet")]: {
-      borderRadius:
-        customerUITheme.components.interactiveCard.tablet[variant][size].active
-          .borderRadius,
+  shouldForwardProp: (prop) => prop !== "size" && prop !== "backdropLevel",
+})<StyledRootProps>(({ size, backdropLevel }) => {
+  const interactiveCardPalette = {
+    level0: {
+      default: colors.midnight,
+      hover: new TinyColor(colors.white).setAlpha(0.1).toString(),
     },
-    [theme.breakpoints.up("desktop")]: {
-      borderRadius:
-        customerUITheme.components.interactiveCard.desktop[variant][size].active
-          .borderRadius,
+    level1: {
+      default: colors.purple,
+      hover: new TinyColor(colors.white).setAlpha(0.1).toString(),
     },
-    [`& .${classes.rootHover}`]: {
-      transition:
-        customerUITheme.components.interactiveCard.mobile[variant][size].active
-          .transition,
-      transitionProperty:
-        customerUITheme.components.interactiveCard.mobile[variant][size].active
-          .transitionProperty,
-      backgroundColor:
-        customerUITheme.components.interactiveCard.mobile[variant][size].active
-          .backgroundColor,
-      [theme.breakpoints.up("tablet")]: {
-        transition:
-          customerUITheme.components.interactiveCard.tablet[variant][size]
-            .active.transition,
-        transitionProperty:
-          customerUITheme.components.interactiveCard.tablet[variant][size]
-            .active.transitionProperty,
-        backgroundColor:
-          customerUITheme.components.interactiveCard.tablet[variant][size]
-            .active.backgroundColor,
-      },
-      [theme.breakpoints.up("desktop")]: {
-        transition:
-          customerUITheme.components.interactiveCard.desktop[variant][size]
-            .active.transition,
-        transitionProperty:
-          customerUITheme.components.interactiveCard.desktop[variant][size]
-            .active.transitionProperty,
-        backgroundColor:
-          customerUITheme.components.interactiveCard.desktop[variant][size]
-            .active.backgroundColor,
-      },
+    level2: {
+      default: colors.midTint,
+      hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
-  },
-}));
+    level3: {
+      default: colors.lightTint,
+      hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+    },
+    level4: {
+      default: colors.whiteOwl,
+      hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+    },
+    level5: {
+      default: colors.white,
+      hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
+    },
+  };
+  const backgroundColor = interactiveCardPalette[backdropLevel].default;
+  console.log({ backgroundColor });
 
-const StyledWrapper = styled(Box)<StyledRootProps>(
-  ({ theme, customerUITheme, size, variant }) => ({
+  return {
+    width: "100%",
+    overflow: "hidden",
+    position: "relative",
+    borderRadius: size === "small" ? px(8) : px(16),
+    transition: `all ${transitions.duration}ms ${transitions.easingFunction}`,
+    transitionProperty: "background-color",
+    backgroundColor: interactiveCardPalette[backdropLevel].default,
+    "&:hover": {
+      [`& .${classes.rootHover}`]: {
+        backgroundColor: interactiveCardPalette[backdropLevel].hover,
+      },
+    },
+  };
+});
+
+const StyledWrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "size",
+})<{ size: InteractiveCardSize }>(({ theme, size }) => {
+  const paddingX = {
+    desktop: { small: 2, regular: 2, large: 2 },
+    tablet: { small: 2, regular: 2, large: 3 },
+    mobile: { small: 2, regular: 2, large: 3 },
+  };
+  const paddingY = size === "small" ? theme.spacing(1) : theme.spacing(2);
+
+  return {
     zIndex: 1,
     position: "relative",
-    padding:
-      customerUITheme.components.interactiveCard.mobile[variant][size].idle
-        .padding,
+    paddingLeft: theme.spacing(paddingX.mobile[size]),
+    paddingRight: theme.spacing(paddingX.mobile[size]),
+    paddingTop: paddingY,
+    paddingBottom: paddingY,
     [theme.breakpoints.up("tablet")]: {
-      padding:
-        customerUITheme.components.interactiveCard.tablet[variant][size].idle
-          .padding,
+      paddingLeft: theme.spacing(paddingX.tablet[size]),
+      paddingRight: theme.spacing(paddingX.tablet[size]),
     },
     [theme.breakpoints.up("desktop")]: {
-      padding:
-        customerUITheme.components.interactiveCard.desktop[variant][size].idle
-          .padding,
+      paddingLeft: theme.spacing(paddingX.desktop[size]),
+      paddingRight: theme.spacing(paddingX.desktop[size]),
     },
-    "&:hover": {
-      padding:
-        customerUITheme.components.interactiveCard.mobile[variant][size].active
-          .padding,
-      [theme.breakpoints.up("tablet")]: {
-        padding:
-          customerUITheme.components.interactiveCard.tablet[variant][size]
-            .active.padding,
-      },
-      [theme.breakpoints.up("desktop")]: {
-        padding:
-          customerUITheme.components.interactiveCard.desktop[variant][size]
-            .active.padding,
-      },
-    },
-  })
-);
+  };
+});
 
 const InteractiveCardComponent: React.FunctionComponent<
   InteractiveCardProps
 > = ({
   children,
   Background,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  backgroundColor,
-  variant = "primary",
   size = "regular",
   containerProps,
   forwardedRef,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  backgroundColor,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  variant,
   ...props
 }) => {
-  const { theme } = React.useContext(BackgroundContext);
-
+  const { backdropLevel } = useTheme();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const href = (props as any).href as string | undefined;
+
   return (
-    <StyledRoot
-      customerUITheme={theme}
-      size={size}
-      variant={variant}
-      {...containerProps}
-    >
+    <StyledRoot size={size} backdropLevel={backdropLevel} {...containerProps}>
       <Box
         className={classes.rootHover}
         sx={{
@@ -219,7 +192,7 @@ const InteractiveCardComponent: React.FunctionComponent<
               <Background />
             </Box>
           )}
-          <StyledWrapper customerUITheme={theme} size={size} variant={variant}>
+          <StyledWrapper size={size}>
             <Typography component="div">{children}</Typography>
           </StyledWrapper>
         </Box>

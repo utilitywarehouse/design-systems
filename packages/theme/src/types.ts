@@ -1,5 +1,4 @@
 import { ButtonStyles } from "./button";
-import { InteractiveCardStyles } from "./interactiveCard";
 import { MenuStyles } from "./menu";
 import { MenuItemStyles } from "./menuItem";
 import { TextFieldStyles } from "./textField/types";
@@ -72,7 +71,6 @@ export interface Palette {
 export interface Theme {
   components: {
     button: ButtonStyles;
-    interactiveCard: InteractiveCardStyles;
     menu: MenuStyles;
     menuItem: MenuItemStyles;
     textField: TextFieldStyles;

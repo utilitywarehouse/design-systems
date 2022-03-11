@@ -30,7 +30,7 @@
     "access": "restricted"
   },
   "dependencies": {
-    "@ctrl/tinycolor": "^3.3.2",
+    "@ctrl/tinycolor": "^3.4.0",
     "@emotion/cache": "^11.7.1",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",

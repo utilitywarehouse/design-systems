@@ -3,6 +3,7 @@ import React from "react";
 import { BackdropLevel, Box, BoxProps } from "../";
 import BackgroundProvider, { useTheme } from "./BackgroundProvider";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
+import { isDarkColorScheme } from "../utils";
 
 interface BackgroundContextValue {
   theme: Theme;
@@ -36,7 +37,7 @@ const BackgroundInner: React.FunctionComponent<BackgroundProps> = ({
   };
 
   const backgroundColorStyle = React.useMemo(() => {
-    if (colorScheme === "dark") return colors.codGray;
+    if (isDarkColorScheme(colorScheme)) return colors.codGray;
     return backgroundPalette[backdropLevel];
   }, [backgroundColor, colorScheme, backdropLevel]);
 

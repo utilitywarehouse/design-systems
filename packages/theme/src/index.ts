@@ -1,7 +1,6 @@
 import { Theme, BackdropLevel, ColorScheme } from "./types";
 import { getButtonStyles } from "./button";
 import { getTypographyStyles } from "./typography";
-import { getInteractiveCardStyles } from "./interactiveCard";
 import { getMenuStyles } from "./menu";
 import { getMenuItemStyles } from "./menuItem";
 import spacing from "./spacing";
@@ -11,7 +10,6 @@ import { getTextFieldStyles } from "./textField";
 
 export * from "./types";
 export * from "./button/types";
-export * from "./interactiveCard/types";
 export * from "./menu/types";
 export * from "./menuItem/types";
 export * from "./textField/types";
@@ -25,7 +23,6 @@ export const getTheme = (
   return {
     components: {
       button: getButtonStyles(colorScheme, backdropLevel),
-      interactiveCard: getInteractiveCardStyles(colorScheme, backdropLevel),
       menu: getMenuStyles(colorScheme, backdropLevel),
       menuItem: getMenuItemStyles(colorScheme, backdropLevel),
       textField: getTextFieldStyles(colorScheme, backdropLevel),
