@@ -39,8 +39,6 @@ export type { InteractiveCardProps } from "./components/InteractiveCard";
 
 export { default as Link } from "./components/Link";
 export type { LinkProps } from "./components/Link";
-export { default as TextLink } from "./components/TextLink";
-export type { TextLinkProps } from "./components/TextLink";
 export { default as NavLink } from "./components/NavLink";
 export type { NavLinkProps } from "./components/NavLink";
 

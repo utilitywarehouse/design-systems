@@ -91,4 +91,4 @@ export const LinkStory: Story<
   );
 };
 
-LinkStory.storyName = "Link (deprecated)";
+LinkStory.storyName = "Link";
