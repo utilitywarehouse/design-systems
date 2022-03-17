@@ -1,6 +1,5 @@
 import { ButtonStyles } from "./button";
 import { TextFieldStyles } from "./textField/types";
-import { TypographyStyles } from "./typography";
 
 export type Breakpoint = "desktop" | "tablet" | "mobile";
 
@@ -70,7 +69,6 @@ export interface Theme {
   components: {
     button: ButtonStyles;
     textField: TextFieldStyles;
-    typography: TypographyStyles;
   };
   spacing: Spacing;
   colorScheme: ColorScheme;

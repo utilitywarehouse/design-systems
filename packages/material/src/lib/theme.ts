@@ -1,12 +1,12 @@
 import "../types/BreakpointOverrides";
 import {
-  adaptV4Theme,
   createTheme,
   Theme as MuiTheme,
   PaletteOptions,
 } from "@mui/material/styles";
 import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 import { getComponentThemeConfiguration } from "../components";
+import { getTypographyConfiguration } from "../components/Typography";
 
 export type { Theme as MuiTheme } from "@mui/material/styles/createTheme";
 export type { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
@@ -42,14 +42,28 @@ const getPalette = (theme: CustomerUITheme): PaletteOptions => ({
 });
 
 export const buildTheme = (theme: CustomerUITheme): MuiTheme => {
-  const muiTheme = createTheme(
-    adaptV4Theme({
-      breakpoints: getBreakpoints(theme),
-      spacing: theme.spacing,
-      palette: getPalette(theme),
-    })
-  );
+  const muiTheme = createTheme({
+    breakpoints: getBreakpoints(theme),
+    spacing: theme.spacing,
+    palette: getPalette(theme),
+    typography: {
+      htmlFontSize: 16,
+    },
+  });
+
+  const typographyConfiguration = getTypographyConfiguration(muiTheme);
+
+  muiTheme.typography.displayHeading = typographyConfiguration.displayHeading;
+  muiTheme.typography.h1 = typographyConfiguration.h1;
+  muiTheme.typography.h2 = typographyConfiguration.h2;
+  muiTheme.typography.h3 = typographyConfiguration.h3;
+  muiTheme.typography.h4 = typographyConfiguration.h4;
+  muiTheme.typography.subtitle = typographyConfiguration.subtitle;
+  muiTheme.typography.body = typographyConfiguration.body;
+  muiTheme.typography.legalNote = typographyConfiguration.legalNote;
+  muiTheme.typography.caption = typographyConfiguration.caption;
 
   muiTheme.components = getComponentThemeConfiguration(theme, muiTheme);
+
   return muiTheme;
 };

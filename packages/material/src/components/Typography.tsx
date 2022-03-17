@@ -3,12 +3,16 @@ import MuiTypography, {
   TypographyPropsVariantOverrides,
 } from "@mui/material/Typography";
 import { OverridableStringUnion } from "@mui/types";
-import { CSSProperties } from "@mui/styles/withStyles";
 import {
-  TypographyColor,
-  TypographyVariant,
-} from "@utilitywarehouse/customer-ui-theme";
-import { GetComponentThemeConfiguration } from "../lib/theme.types";
+  colors,
+  fonts,
+  fontWeights,
+} from "@utilitywarehouse/customer-ui-design-tokens";
+import { BackdropLevel } from "../types";
+import { isBrandBackdropLevel } from "../utils";
+import { useTheme } from "./BackgroundProvider";
+import { Theme, styled } from "@mui/material/styles";
+import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
@@ -52,9 +56,18 @@ declare module "@mui/material/Typography" {
 
 export interface TypographyProps
   extends React.ComponentPropsWithoutRef<"span"> {
-  color?: TypographyColor;
+  color?: "primary" | "secondary" | "success" | "error";
   variant?: OverridableStringUnion<
-    TypographyVariant | "inherit",
+    | "displayHeading"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "subtitle"
+    | "body"
+    | "legalNote"
+    | "caption"
+    | "inherit",
     TypographyPropsVariantOverrides
   >;
   gutterBottom?: boolean;
@@ -62,6 +75,53 @@ export interface TypographyProps
   component?: React.ElementType;
   forwardedRef?: React.Ref<unknown>;
 }
+
+const defaultTypographyPalette = {
+  primary: { heading: colors.purple, body: colors.midnight },
+  secondary: colors.midnight,
+  success: colors.jewel,
+  error: colors.maroonFlush,
+};
+const inverseTypographyPalette = {
+  primary: colors.white,
+  secondary: colors.white,
+  success: colors.apple,
+  error: colors.rose,
+};
+const headingVariants = ["displayHeading", "h1", "h2", "h3", "h4"];
+
+const getTypographyPalette = (
+  backdropLevel: BackdropLevel,
+  variant: TypographyProps["variant"] = "body",
+  color: TypographyProps["color"] = "primary"
+) => {
+  if (variant === "default") return "body";
+  if (variant === "inherit") return "inherit";
+
+  if (isBrandBackdropLevel(backdropLevel)) {
+    return inverseTypographyPalette[color];
+  }
+
+  if (color === "primary") {
+    return headingVariants.includes(variant)
+      ? defaultTypographyPalette.primary.heading
+      : defaultTypographyPalette.primary.body;
+  }
+  return defaultTypographyPalette[color];
+};
+
+interface StyledTypographyProps {
+  backdropLevel: BackdropLevel;
+  variant: TypographyProps["variant"];
+  color: TypographyProps["color"];
+}
+
+const StyledTypography = styled(MuiTypography, {
+  shouldForwardProp: (prop) => prop !== "color" && prop !== "backdropLevel",
+})<StyledTypographyProps>(({ backdropLevel, color, variant }) => {
+  const typographyColor = getTypographyPalette(backdropLevel, variant, color);
+  return { color: typographyColor };
+});
 
 const Typography: React.FunctionComponent<TypographyProps> = ({
   color = "primary",
@@ -71,29 +131,13 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
   forwardedRef,
   ...props
 }) => {
-  const classNames = (props.className ?? "").split(" ");
-  switch (color) {
-    case "success":
-      classNames.unshift(`MuiTypography-colorSuccess`);
-      break;
-
-    case "error":
-      classNames.unshift(`MuiTypography-colorError`);
-      break;
-
-    case "primary":
-      classNames.unshift(`MuiTypography-colorPrimary`);
-      break;
-
-    case "secondary":
-      classNames.unshift(`MuiTypography-colorSecondary`);
-      break;
-  }
+  const { backdropLevel } = useTheme();
 
   return (
-    <MuiTypography
+    <StyledTypography
       {...props}
-      className={classNames.join(" ")}
+      backdropLevel={backdropLevel}
+      color={color}
       variant={variant}
       gutterBottom={gutterBottom}
       paragraph={paragraph}
@@ -116,165 +160,92 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
 
 export default Typography;
 
-export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
-  theme,
-  muiTheme
-) => {
-  const resolveStyles = (
-    variant: TypographyVariant,
-    color: TypographyColor
-  ): CSSProperties => {
-    return {
-      ...theme.components.typography.mobile[variant][color],
-      fill: theme.components.typography.mobile[variant][color].color,
-      stroke: theme.components.typography.mobile[variant][color].color,
-      [muiTheme.breakpoints.up("tablet")]: {
-        ...theme.components.typography.tablet[variant][color],
-        fill: theme.components.typography.tablet[variant][color].color,
-        stroke: theme.components.typography.tablet[variant][color].color,
-      },
-      [muiTheme.breakpoints.up("desktop")]: {
-        ...theme.components.typography.desktop[variant][color],
-        fill: theme.components.typography.desktop[variant][color].color,
-        stroke: theme.components.typography.desktop[variant][color].color,
-      },
-    } as CSSProperties;
-  };
-
+export const getTypographyConfiguration = (
+  theme: Theme
+): {
+  displayHeading: TypographyStyleOptions;
+  h1: TypographyStyleOptions;
+  h2: TypographyStyleOptions;
+  h3: TypographyStyleOptions;
+  h4: TypographyStyleOptions;
+  subtitle: TypographyStyleOptions;
+  body: TypographyStyleOptions;
+  legalNote: TypographyStyleOptions;
+  caption: TypographyStyleOptions;
+} => {
   return {
-    MuiTypography: {
-      defaultProps: {
-        variant: "body",
+    displayHeading: {
+      fontFamily: fonts.primary,
+      fontWeight: fontWeights.primary,
+      fontSize: theme.typography.pxToRem(42),
+      lineHeight: 1,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(64),
       },
-      styleOverrides: {
-        root: {
-          ...resolveStyles("body", "primary"),
-          "&.MuiTypography-colorSecondary": {
-            ...resolveStyles("body", "secondary"),
-          },
-          "&.MuiTypography-colorError": {
-            ...resolveStyles("body", "error"),
-          },
-          "&.MuiTypography-colorSuccess": {
-            ...resolveStyles("body", "success"),
-          },
-          "&.MuiTypography-inherit": {
-            fontSize: "inherit",
-            fontFamily: "inherit",
-            fontWeight: "inherit",
-            lineHeight: "inherit",
-            color: "inherit",
-          },
-          "&.MuiTypography-displayHeading": {
-            ...resolveStyles("displayHeading", "primary"),
-            "&.MuiTypography-colorSecondary": {
-              ...resolveStyles("displayHeading", "secondary"),
-            },
-            "&.MuiTypography-colorError": {
-              ...resolveStyles("displayHeading", "error"),
-            },
-            "&.MuiTypography-colorSuccess": {
-              ...resolveStyles("displayHeading", "success"),
-            },
-          },
-          "&.MuiTypography-h1": {
-            ...resolveStyles("h1", "primary"),
-            "&.MuiTypography-colorSecondary": {
-              ...resolveStyles("h1", "secondary"),
-            },
-            "&.MuiTypography-colorError": {
-              ...resolveStyles("h1", "error"),
-            },
-            "&.MuiTypography-colorSuccess": {
-              ...resolveStyles("h1", "success"),
-            },
-          },
-          "&.MuiTypography-h2": {
-            ...resolveStyles("h2", "primary"),
-            "&.MuiTypography-colorSecondary": {
-              ...resolveStyles("h2", "secondary"),
-            },
-            "&.MuiTypography-colorError": {
-              ...resolveStyles("h2", "error"),
-            },
-            "&.MuiTypography-colorSuccess": {
-              ...resolveStyles("h2", "success"),
-            },
-          },
-          "&.MuiTypography-h3": {
-            ...resolveStyles("h3", "primary"),
-            "&.MuiTypography-colorSecondary": {
-              ...resolveStyles("h3", "secondary"),
-            },
-            "&.MuiTypography-colorError": {
-              ...resolveStyles("h3", "error"),
-            },
-            "&.MuiTypography-colorSuccess": {
-              ...resolveStyles("h3", "success"),
-            },
-          },
-          "&.MuiTypography-h4": {
-            ...resolveStyles("h4", "primary"),
-            "&.MuiTypography-colorSecondary": {
-              ...resolveStyles("h4", "secondary"),
-            },
-            "&.MuiTypography-colorError": {
-              ...resolveStyles("h4", "error"),
-            },
-            "&.MuiTypography-colorSuccess": {
-              ...resolveStyles("h4", "success"),
-            },
-          },
-          "&.MuiTypography-subtitle": {
-            ...resolveStyles("subtitle", "primary"),
-            "&.MuiTypography-colorSecondary": {
-              ...resolveStyles("subtitle", "secondary"),
-            },
-            "&.MuiTypography-colorError": {
-              ...resolveStyles("subtitle", "error"),
-            },
-            "&.MuiTypography-colorSuccess": {
-              ...resolveStyles("subtitle", "success"),
-            },
-          },
-          "&.MuiTypography-body": {
-            ...resolveStyles("body", "primary"),
-            "&.MuiTypography-colorSecondary": {
-              ...resolveStyles("body", "secondary"),
-            },
-            "&.MuiTypography-colorError": {
-              ...resolveStyles("body", "error"),
-            },
-            "&.MuiTypography-colorSuccess": {
-              ...resolveStyles("body", "success"),
-            },
-          },
-          "&.MuiTypography-legalNote": {
-            ...resolveStyles("legalNote", "primary"),
-            "&.MuiTypography-colorSecondary": {
-              ...resolveStyles("legalNote", "secondary"),
-            },
-            "&.MuiTypography-colorError": {
-              ...resolveStyles("legalNote", "error"),
-            },
-            "&.MuiTypography-colorSuccess": {
-              ...resolveStyles("legalNote", "success"),
-            },
-          },
-          "&.MuiTypography-caption": {
-            ...resolveStyles("caption", "primary"),
-            "&.MuiTypography-colorSecondary": {
-              ...resolveStyles("caption", "secondary"),
-            },
-            "&.MuiTypography-colorError": {
-              ...resolveStyles("caption", "error"),
-            },
-            "&.MuiTypography-colorSuccess": {
-              ...resolveStyles("caption", "success"),
-            },
-          },
-        },
+    },
+    h1: {
+      fontFamily: fonts.primary,
+      fontWeight: fontWeights.primary,
+      fontSize: theme.typography.pxToRem(32),
+      lineHeight: 1.2,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(42),
       },
+    },
+    h2: {
+      fontFamily: fonts.primary,
+      fontWeight: fontWeights.primary,
+      fontSize: theme.typography.pxToRem(28),
+      lineHeight: 1.5,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(32),
+        lineHeight: 1.2,
+      },
+    },
+    h3: {
+      fontFamily: fonts.primary,
+      fontWeight: fontWeights.primary,
+      fontSize: theme.typography.pxToRem(22),
+      lineHeight: 1.5,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(24),
+      },
+    },
+    h4: {
+      fontFamily: fonts.primary,
+      fontWeight: fontWeights.primary,
+      fontSize: theme.typography.pxToRem(18),
+      lineHeight: 1.5,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(20),
+      },
+    },
+    subtitle: {
+      fontFamily: fonts.secondary,
+      fontWeight: fontWeights.secondary.regular,
+      fontSize: theme.typography.pxToRem(18),
+      lineHeight: 1.5,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(20),
+      },
+    },
+    body: {
+      fontFamily: fonts.secondary,
+      fontWeight: fontWeights.secondary.regular,
+      fontSize: theme.typography.pxToRem(16),
+      lineHeight: 1.5,
+    },
+    legalNote: {
+      fontFamily: fonts.secondary,
+      fontWeight: fontWeights.secondary.regular,
+      fontSize: theme.typography.pxToRem(14),
+      lineHeight: 1.5,
+    },
+    caption: {
+      fontFamily: fonts.secondary,
+      fontWeight: fontWeights.secondary.regular,
+      fontSize: theme.typography.pxToRem(12),
+      lineHeight: 2,
     },
   };
 };
