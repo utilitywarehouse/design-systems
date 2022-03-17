@@ -44,7 +44,7 @@ const StyledNavLink = styled(MuiLink, {
       : {};
 
   return {
-    transition: `all ${transitions.duration}ms ${transitions.easingFunction}`,
+    transition: `${transitions.duration}ms ${transitions.easingFunction}`,
     transitionProperty: "text-decoration, color, opacity",
     opacity: 1,
     cursor: "pointer",

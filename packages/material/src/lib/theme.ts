@@ -6,6 +6,7 @@ import {
 } from "@mui/material/styles";
 import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 import { getComponentThemeConfiguration } from "../components";
+import { getTextFieldTheme } from "../components/TextField";
 import { getTypographyConfiguration } from "../components/Typography";
 
 export type { Theme as MuiTheme } from "@mui/material/styles/createTheme";
@@ -64,6 +65,10 @@ export const buildTheme = (theme: CustomerUITheme): MuiTheme => {
   muiTheme.typography.caption = typographyConfiguration.caption;
 
   muiTheme.components = getComponentThemeConfiguration(theme, muiTheme);
+  muiTheme.components = {
+    ...muiTheme.components,
+    ...getTextFieldTheme(muiTheme),
+  };
 
   return muiTheme;
 };

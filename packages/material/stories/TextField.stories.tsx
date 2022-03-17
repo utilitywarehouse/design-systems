@@ -1,26 +1,20 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import type { TextFieldProps } from "../src";
-import { Background, TextField, BackgroundProps } from "../src";
+import { BackdropLevel, Box, TextFieldProps } from "../src";
+import { Background, TextField } from "../src";
 
 export default {
   title: "Components/TextField",
   component: TextField,
   argTypes: {
-    backgroundColor: {
-      control: {
-        type: "inline-radio",
-        options: ["level3", "level4", "level5"],
-      },
-    },
     status: {
       control: {
-        type: "inline-radio",
+        type: "radio",
         options: {
-          Default: "",
-          Success: "success",
-          Error: "error",
+          default: "",
+          success: "success",
+          error: "error",
         },
       },
     },
@@ -39,62 +33,44 @@ export default {
         type: "text",
       },
     },
-    labelProps: {
-      control: {
-        type: "object",
-        id: {
-          control: {
-            type: "text",
-          },
-        },
-      },
-    },
     helperText: {
       control: {
         type: "text",
       },
     },
-    helperTextProps: {
-      control: {
-        type: "object",
-        id: {
-          control: {
-            type: "text",
-          },
-        },
-      },
-    },
   },
   args: {
-    backgroundColor: "level5",
-    disabled: false,
     status: "",
-    id: "customer-ui-textfield-input",
+    disabled: false,
+    multiline: false,
     label: "Label",
-    labelProps: { id: "customer-ui-textfield-label" },
     helperText: "Helper text",
-    helperTextProps: { id: "customer-ui-textfield-helpertext" },
     placeholder: "Placeholder",
   },
 } as Meta;
 
-interface StoryProps extends TextFieldProps {
-  backgroundColor: BackgroundProps["backgroundColor"];
-}
-
-export const TextfieldStory: Story<StoryProps> = (args) => {
-  const { backgroundColor, ...rest } = args;
+export const TextfieldStory: Story<TextFieldProps> = (args) => {
+  const { ...rest } = args;
+  const backgroundLevels = [5, 4, 3].map(
+    (level) => `level${level}` as BackdropLevel
+  );
   return (
-    <Background
-      backgroundColor={backgroundColor}
-      sx={{
-        padding: 6,
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <TextField {...rest} />
-    </Background>
+    <Box>
+      {backgroundLevels.map((level) => (
+        <Background
+          key={level}
+          backgroundColor={level}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            paddingY: 6,
+            paddingX: 4,
+          }}
+        >
+          <TextField {...rest} />
+        </Background>
+      ))}
+    </Box>
   );
 };
 
