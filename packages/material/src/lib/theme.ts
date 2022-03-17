@@ -1,52 +1,37 @@
 import "../types/BreakpointOverrides";
-import {
-  createTheme,
-  Theme as MuiTheme,
-  PaletteOptions,
-} from "@mui/material/styles";
+import { createTheme, Theme as MuiTheme } from "@mui/material/styles";
 import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 import { getComponentThemeConfiguration } from "../components";
 import { getTextFieldTheme } from "../components/TextField";
 import { getTypographyConfiguration } from "../components/Typography";
+import {
+  breakpoints,
+  colors,
+  spacingBase,
+} from "@utilitywarehouse/customer-ui-design-tokens";
 
 export type { Theme as MuiTheme } from "@mui/material/styles/createTheme";
 export type { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 
-const getBreakpoints = (theme: CustomerUITheme) => ({
-  values: theme.breakpoints,
-});
-
-const getPalette = (theme: CustomerUITheme): PaletteOptions => ({
-  mode: theme.colorScheme,
-  common: {
-    black: theme.palette.common.black,
-    white: theme.palette.common.white,
-  },
-  primary: {
-    main: theme.palette.brand.primary,
-  },
-  secondary: {
-    main: theme.palette.brand.action,
-  },
-  error: {
-    main: theme.palette.messaging.alert,
-  },
-  warning: {
-    main: theme.palette.messaging.warning,
-  },
-  info: {
-    main: theme.palette.messaging.info,
-  },
-  success: {
-    main: theme.palette.messaging.success,
-  },
-});
-
 export const buildTheme = (theme: CustomerUITheme): MuiTheme => {
   const muiTheme = createTheme({
-    breakpoints: getBreakpoints(theme),
-    spacing: theme.spacing,
-    palette: getPalette(theme),
+    breakpoints: {
+      values: {
+        desktop: breakpoints.desktop,
+        tablet: breakpoints.tablet,
+        mobile: breakpoints.mobile,
+      },
+    },
+    spacing: (multiplier: number) => multiplier * spacingBase,
+    palette: {
+      common: { black: colors.black, white: colors.white },
+      primary: { main: colors.purple },
+      secondary: { main: colors.cyan },
+      error: { main: colors.rose },
+      warning: { main: colors.gold },
+      info: { main: colors.midnight },
+      success: { main: colors.apple },
+    },
     typography: {
       htmlFontSize: 16,
     },
