@@ -30,7 +30,7 @@ jobs:
         uses: changesets/action@v1
         with:
           version: pnpm ci:version
-          commit: "chore: version packages"
+          commit: "version packages"
           title: "Version Packages [skip netlify]"
           publish: pnpm ci:publish
         env:
