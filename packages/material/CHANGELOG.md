@@ -1,5 +1,34 @@
 # @utilitywarehouse/customer-ui-material
 
+## 1.0.4
+
+### Patch Changes
+
+- [#377](https://github.com/utilitywarehouse/customer-ui/pull/377) [`e8b0797`](https://github.com/utilitywarehouse/customer-ui/commit/e8b07970382ba8521a5d96cb193a512b59377210) Thanks [@robphoenix](https://github.com/robphoenix)! - introduce only `NavLink` component
+
+  After discussion, it is felt that best approach would be to introduce only the
+  `NavLink` component, and in a future major release use the `TextLink` component
+  but with the name `Link`, effectively introducing breaking changes to the
+  `Link` component.
+
+* [#369](https://github.com/utilitywarehouse/customer-ui/pull/369) [`50f101d`](https://github.com/utilitywarehouse/customer-ui/commit/50f101d7bd62bf83f6ecdff35c4cc7c8fa04b40d) Thanks [@robphoenix](https://github.com/robphoenix)! - Move Background component styles from theme package to component
+
+- [#372](https://github.com/utilitywarehouse/customer-ui/pull/372) [`872007a`](https://github.com/utilitywarehouse/customer-ui/commit/872007aabf7604182966a825674571fe9fb705ae) Thanks [@robphoenix](https://github.com/robphoenix)! - Move InteractiveCard styles from theme package to component
+
+* [#371](https://github.com/utilitywarehouse/customer-ui/pull/371) [`7b75136`](https://github.com/utilitywarehouse/customer-ui/commit/7b751364dcd929e5a64ecf6f81b41a0f3a28aa3c) Thanks [@robphoenix](https://github.com/robphoenix)! - Move Grid configuration from theme package to component
+
+- [#373](https://github.com/utilitywarehouse/customer-ui/pull/373) [`f75d0f1`](https://github.com/utilitywarehouse/customer-ui/commit/f75d0f11870de4491a1d105c301cf192701ff19b) Thanks [@robphoenix](https://github.com/robphoenix)! - Move Menu styling from theme package to components
+
+* [#380](https://github.com/utilitywarehouse/customer-ui/pull/380) [`01ef6a1`](https://github.com/utilitywarehouse/customer-ui/commit/01ef6a1d71a9178b0f76972e1830ef0dd53a3637) Thanks [@robphoenix](https://github.com/robphoenix)! - use tokens instead of the theme package when creating the mui theme
+
+- [#378](https://github.com/utilitywarehouse/customer-ui/pull/378) [`78c417e`](https://github.com/utilitywarehouse/customer-ui/commit/78c417e35fc0e6727217389354c8351f4b307648) Thanks [@robphoenix](https://github.com/robphoenix)! - Move `Textfield` styles from theme package to component
+
+* [#367](https://github.com/utilitywarehouse/customer-ui/pull/367) [`c97aa51`](https://github.com/utilitywarehouse/customer-ui/commit/c97aa519052816d6818b1f055a2669c1d5814436) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `TextLink` & `NavLink` components to replace `Link` component, with a deprecation warning.
+
+* Updated dependencies [[`ec8c4ae`](https://github.com/utilitywarehouse/customer-ui/commit/ec8c4ae8447adc127f4eb3a643c936f2f937f7ff), [`50f101d`](https://github.com/utilitywarehouse/customer-ui/commit/50f101d7bd62bf83f6ecdff35c4cc7c8fa04b40d), [`872007a`](https://github.com/utilitywarehouse/customer-ui/commit/872007aabf7604182966a825674571fe9fb705ae), [`7b75136`](https://github.com/utilitywarehouse/customer-ui/commit/7b751364dcd929e5a64ecf6f81b41a0f3a28aa3c), [`f75d0f1`](https://github.com/utilitywarehouse/customer-ui/commit/f75d0f11870de4491a1d105c301cf192701ff19b), [`c97aa51`](https://github.com/utilitywarehouse/customer-ui/commit/c97aa519052816d6818b1f055a2669c1d5814436), [`78c417e`](https://github.com/utilitywarehouse/customer-ui/commit/78c417e35fc0e6727217389354c8351f4b307648)]:
+  - @utilitywarehouse/customer-ui-design-tokens@1.0.3
+  - @utilitywarehouse/customer-ui-theme@1.1.2
+
 ## 1.0.3
 
 ### Patch Changes
