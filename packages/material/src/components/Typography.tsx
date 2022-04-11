@@ -1,6 +1,7 @@
 import React from "react";
 import MuiTypography, {
   TypographyPropsVariantOverrides,
+  TypographyProps as MuiTypographyProps,
 } from "@mui/material/Typography";
 import { OverridableStringUnion } from "@mui/types";
 import {
@@ -19,7 +20,6 @@ import {
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
-    default: CSSProperties;
     displayHeading: CSSProperties;
     subtitle: CSSProperties;
     body: CSSProperties;
@@ -29,7 +29,6 @@ declare module "@mui/material/styles" {
 
   // allow configuration using material-ui's `createTheme`
   interface TypographyVariantsOptions {
-    default?: CSSProperties;
     displayHeading?: CSSProperties;
     subtitle?: CSSProperties;
     body?: CSSProperties;
@@ -40,7 +39,6 @@ declare module "@mui/material/styles" {
 
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
-    default: true;
     displayHeading: true;
     subtitle: true;
     body: true;
@@ -58,7 +56,17 @@ declare module "@mui/material/Typography" {
 }
 
 export interface TypographyProps
-  extends React.ComponentPropsWithoutRef<"span"> {
+  extends Pick<
+    MuiTypographyProps,
+    | "sx"
+    | "gutterBottom"
+    | "paragraph"
+    | "align"
+    | "classes"
+    | "noWrap"
+    | "textTransform"
+    | "letterSpacing"
+  > {
   color?: "primary" | "secondary" | "success" | "error";
   variant?: OverridableStringUnion<
     | "displayHeading"
@@ -73,10 +81,9 @@ export interface TypographyProps
     | "inherit",
     TypographyPropsVariantOverrides
   >;
-  gutterBottom?: boolean;
-  paragraph?: boolean;
   component?: React.ElementType;
   forwardedRef?: React.Ref<unknown>;
+  fontWeight?: "regular" | "semibold";
 }
 
 const defaultTypographyPalette = {
@@ -98,8 +105,15 @@ const getTypographyPalette = (
   variant: TypographyProps["variant"] = "body",
   color: TypographyProps["color"] = "primary"
 ) => {
-  if (variant === "default") return "body";
   if (variant === "inherit") return "inherit";
+
+  if (headingVariants.includes(variant)) {
+    if (color === "success" || color === "error") {
+      return isBrandBackdropLevel(backdropLevel)
+        ? inverseTypographyPalette.primary
+        : defaultTypographyPalette.primary.heading;
+    }
+  }
 
   if (isBrandBackdropLevel(backdropLevel)) {
     return inverseTypographyPalette[color];
@@ -117,24 +131,45 @@ interface StyledTypographyProps {
   backdropLevel: BackdropLevel;
   variant: TypographyProps["variant"];
   color: TypographyProps["color"];
+  fontWeight: TypographyProps["fontWeight"];
 }
 
 const StyledTypography = styled(MuiTypography, {
-  shouldForwardProp: (prop) => prop !== "color" && prop !== "backdropLevel",
-})<StyledTypographyProps>(({ backdropLevel, color, variant }) => {
-  const typographyColor = getTypographyPalette(backdropLevel, variant, color);
-  return { color: typographyColor };
-});
+  shouldForwardProp: (prop) =>
+    prop !== "color" && prop !== "backdropLevel" && prop !== "fontWeight",
+})<StyledTypographyProps>(
+  ({ backdropLevel, color, variant = "body", fontWeight = "regular" }) => {
+    const weight = headingVariants.includes(variant)
+      ? fontWeights.primary
+      : fontWeights.secondary[fontWeight as "regular" | "semibold"];
+
+    const typographyColor = getTypographyPalette(backdropLevel, variant, color);
+    return { fontWeight: weight, color: typographyColor };
+  }
+);
 
 const Typography: React.FunctionComponent<TypographyProps> = ({
   color = "primary",
   variant = "body",
   gutterBottom = false,
   paragraph = false,
+  fontWeight = "regular",
   forwardedRef,
   ...props
 }) => {
   const { backdropLevel } = useTheme();
+
+  const variantMapping = {
+    displayHeading: "h1",
+    h1: "h1",
+    h2: "h2",
+    h3: "h3",
+    h4: "h4",
+    subtitle: "p",
+    body: "p",
+    legalNote: "p",
+    caption: "caption",
+  };
 
   return (
     <StyledTypography
@@ -144,17 +179,8 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
       variant={variant}
       gutterBottom={gutterBottom}
       paragraph={paragraph}
-      variantMapping={{
-        displayHeading: "h1",
-        h1: "h1",
-        h2: "h2",
-        h3: "h3",
-        h4: "h4",
-        subtitle: "p",
-        body: "p",
-        legalNote: "p",
-        caption: "caption",
-      }}
+      fontWeight={fontWeight}
+      variantMapping={variantMapping}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={forwardedRef as unknown as any}
     />
