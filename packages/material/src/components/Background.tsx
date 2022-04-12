@@ -15,7 +15,8 @@ export const BackgroundContext = React.createContext<BackgroundContextValue>({
 
 export const BackgroundConsumer = BackgroundContext.Consumer;
 
-export interface BackgroundProps extends BoxProps {
+export interface BackgroundProps
+  extends Pick<BoxProps, "ref" | "sx" | "component" | "classes"> {
   backgroundColor: BackdropLevel;
   forwardedRef?: React.Ref<HTMLDivElement>;
 }

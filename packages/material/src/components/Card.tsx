@@ -82,7 +82,8 @@ const StyledCard = styled(Box, {
   };
 });
 
-export interface CardProps extends BoxProps {
+export interface CardProps
+  extends Pick<BoxProps, "ref" | "sx" | "component" | "classes"> {
   variant?: CardVariant;
   forwardedRef?: React.Ref<HTMLDivElement>;
 }

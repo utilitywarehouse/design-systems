@@ -42,6 +42,6 @@ export const decorators = [
           <Story />
         </Background>
       </UIProvider>
-    );
-  },
-];
+    )
+  }
+]

@@ -28,10 +28,6 @@ interface BaseInteractiveCardProps {
   size?: InteractiveCardSize;
   containerProps?: BoxProps;
   forwardedRef?: React.Ref<unknown>;
-  /**
-   * @deprecated in v2. This prop has no effect on the component
-   */
-  variant?: InteractiveCardVariant;
 }
 
 type InteractiveCardButtonProps = BaseInteractiveCardProps &
@@ -141,8 +137,6 @@ const InteractiveCardComponent: React.FunctionComponent<
   forwardedRef,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   backgroundColor,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  variant,
   ...props
 }) => {
   const { backdropLevel } = useTheme();

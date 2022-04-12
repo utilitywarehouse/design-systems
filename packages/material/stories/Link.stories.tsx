@@ -10,7 +10,6 @@ const typographyVariants: { [key in TypographyProps["variant"]]: boolean } = {
   h2: true,
   h3: true,
   h4: true,
-  default: true,
   displayHeading: true,
   subtitle: true,
   body: true,
