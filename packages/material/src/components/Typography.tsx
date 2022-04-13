@@ -174,7 +174,7 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
   return (
     <StyledTypography
       {...props}
-      backdropLevel={backdropLevel}
+      backdropLevel={backdropLevel as BackdropLevel}
       color={color}
       variant={variant}
       gutterBottom={gutterBottom}

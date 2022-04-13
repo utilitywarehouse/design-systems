@@ -11,7 +11,7 @@ export default {
     backgroundColor: {
       control: {
         type: "radio",
-        otions: ["level5", "level4", "level3", "level2", "level1", "level0"],
+        options: ["level5", "level4", "level3", "level1", "level0"],
       },
     },
   },
@@ -25,7 +25,6 @@ export const BackgroundStory: Story<BackgroundProps> = (props) => {
     level5: "Level 5 (White)",
     level4: "Level 4 (White Owl)",
     level3: "Level 3 (Light Tint)",
-    level2: "Level 2 (Mid Tint)",
     level1: "Level 1 (Purple)",
     level0: "Level 0 (Midnight)",
   };

@@ -5,7 +5,6 @@ export type Breakpoints = { [key in Breakpoint]: number };
 export type BackdropLevel =
   | "level0"
   | "level1"
-  | "level2"
   | "level3"
   | "level4"
   | "level5";
@@ -39,7 +38,6 @@ export interface Palette {
     light: {
       level0: string;
       level1: string;
-      level2: string;
       level3: string;
       level4: string;
       level5: string;
@@ -47,7 +45,6 @@ export interface Palette {
     dark: {
       level0: string;
       level1: string;
-      level2: string;
       level3: string;
       level4: string;
       level5: string;

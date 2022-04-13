@@ -92,11 +92,12 @@ const Card: React.FunctionComponent<CardProps> = (props) => {
   const { variant = "opaque", forwardedRef, ...rest } = props;
   const { backdropLevel, colorScheme } = useTheme();
 
-  const backgroundColor = React.useMemo(() => {
+  const backgroundColor: BackdropLevel = React.useMemo(() => {
     if (variant === "transparent") {
-      return backdropLevel;
+      return backdropLevel as BackdropLevel;
     }
-    return backdropLevel === "level5" ? "level1" : "level5";
+    const color = backdropLevel === "level5" ? "level1" : "level5";
+    return color as BackdropLevel;
   }, [backdropLevel]);
 
   return (

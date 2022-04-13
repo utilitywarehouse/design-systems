@@ -63,10 +63,6 @@ const StyledRoot = styled(Box, {
       default: colors.purple,
       hover: new TinyColor(colors.white).setAlpha(0.1).toString(),
     },
-    level2: {
-      default: colors.midTint,
-      hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
-    },
     level3: {
       default: colors.lightTint,
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
@@ -80,8 +76,6 @@ const StyledRoot = styled(Box, {
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
   };
-  const backgroundColor = interactiveCardPalette[backdropLevel].default;
-  console.log({ backgroundColor });
 
   return {
     width: "100%",
@@ -144,7 +138,11 @@ const InteractiveCardComponent: React.FunctionComponent<
   const href = (props as any).href as string | undefined;
 
   return (
-    <StyledRoot size={size} backdropLevel={backdropLevel} {...containerProps}>
+    <StyledRoot
+      size={size}
+      backdropLevel={backdropLevel as BackdropLevel}
+      {...containerProps}
+    >
       <Box
         className={classes.rootHover}
         sx={{
@@ -204,7 +202,6 @@ const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
     switch (backdropLevel) {
       case "level0":
       case "level1":
-      case "level2":
       case "level3":
       case "level4":
         return "level5";
@@ -215,7 +212,7 @@ const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
   }, [backdropLevel]);
 
   return (
-    <BackgroundProvider backgroundColor={backgroundColor}>
+    <BackgroundProvider backgroundColor={backgroundColor as BackdropLevel}>
       <InteractiveCardComponent {...props} />
     </BackgroundProvider>
   );

@@ -7,7 +7,6 @@ import { BackdropLevel, ColorScheme } from "..";
 const backdropLevels: BackdropLevel[] = [
   "level0",
   "level1",
-  "level2",
   "level3",
   "level4",
   "level5",

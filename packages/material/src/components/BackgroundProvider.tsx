@@ -1,6 +1,7 @@
-import { BackdropLevel, Theme } from "@utilitywarehouse/customer-ui-theme";
+import { Theme } from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
 import {
+  BackdropLevel,
   BackgroundContext,
   DarkModeContext,
   MuiThemeProvider,

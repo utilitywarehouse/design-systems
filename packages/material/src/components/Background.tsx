@@ -31,7 +31,6 @@ const BackgroundInner: React.FunctionComponent<BackgroundProps> = ({
   const backgroundPalette = {
     level0: colors.midnight,
     level1: colors.purple,
-    level2: colors.midTint,
     level3: colors.lightTint,
     level4: colors.whiteOwl,
     level5: colors.white,
@@ -39,7 +38,7 @@ const BackgroundInner: React.FunctionComponent<BackgroundProps> = ({
 
   const backgroundColorStyle = React.useMemo(() => {
     if (isDarkColorScheme(colorScheme)) return colors.codGray;
-    return backgroundPalette[backdropLevel];
+    return backgroundPalette[backdropLevel as BackdropLevel];
   }, [backgroundColor, colorScheme, backdropLevel]);
 
   return (
