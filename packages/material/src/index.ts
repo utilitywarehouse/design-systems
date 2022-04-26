@@ -25,7 +25,7 @@ export type { CardProps, CardVariant } from "./components/Card";
 
 export { default as Container } from "./components/Container";
 
-export { default as Grid, GridSpacer } from "./components/Grid";
+export { default as Grid } from "./components/Grid";
 export type { GridProps } from "./components/Grid";
 
 export { default as Icon } from "./components/Icon";

@@ -1,77 +1,71 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Background, Box, Typography, Grid, GridSpacer } from "../src";
+import { Background, Typography, Grid } from "../src";
 import type { GridProps } from "../src";
-import { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
 
 export default {
   title: "Layout/Grid",
   component: Grid,
 } as Meta;
 
-const getBox = (
-  text: string,
-  height?: string,
-  backgroundColor?: BackdropLevel
-) => (
+const LargeContent: React.FC = (props) => (
   <Background
-    backgroundColor={backgroundColor ?? "level1"}
-    width="100%"
-    height={height ?? "200px"}
-    textAlign="center"
+    backgroundColor="level1"
+    sx={{ height: 200, display: "grid", placeItems: "center" }}
   >
-    <Box
-      flexDirection="column"
-      display="flex"
-      height="100%"
-      justifyContent="center"
-    >
-      <Typography>{text}</Typography>
-    </Box>
+    <Typography {...props} component="span" textTransform="capitalize" />
   </Background>
 );
 
-const bindTemplate = () => {
-  const Template: Story<GridProps> = () => {
-    return (
-      <Background backgroundColor="level4" padding={3}>
-        <Grid container>
-          <Grid item desktop={8} mobile={4}>
-            {getBox("Account actions")}
-          </Grid>
-          <Grid item desktop={4} mobile={4}>
-            {getBox("Billing")}
-          </Grid>
-        </Grid>
-        <GridSpacer />
+const SmallContent: React.FC = (props) => (
+  <Background
+    backgroundColor="level0"
+    sx={{ height: 80, display: "grid", placeItems: "center" }}
+  >
+    <Typography {...props} component="span" textTransform="capitalize" />
+  </Background>
+);
+
+export const GridStory: Story<GridProps> = () => (
+  <Background backgroundColor="level4" sx={{ padding: 3 }}>
+    <Grid container>
+      <Grid item mobile={4} desktop={8}>
+        <LargeContent>account actions</LargeContent>
+      </Grid>
+      <Grid item mobile={4} desktop={4}>
+        <LargeContent>billing</LargeContent>
+      </Grid>
+      <Grid item mobile={4} tablet={8} desktop={12}>
         <Grid
           container
-          direction={{ mobile: "column-reverse", tablet: "column-reverse" }}
+          spacing={3}
+          direction={{
+            mobile: "column-reverse",
+            tablet: "column-reverse",
+            desktop: "row",
+          }}
         >
-          <Grid item desktop={8} mobile={4}>
-            <Grid container>
-              <Grid item desktop={3} tablet={2} mobile={2}>
-                {getBox("Quick link 1", "80px", "level0")}
+          <Grid item mobile={4} tablet={4} desktop={8}>
+            <Grid container spacing={3}>
+              <Grid item mobile={2} tablet={2} desktop={3}>
+                <SmallContent>quick link 1</SmallContent>
               </Grid>
-              <Grid item desktop={3} tablet={2} mobile={2}>
-                {getBox("Quick link 2", "80px", "level0")}
+              <Grid item mobile={2} tablet={2} desktop={3}>
+                <SmallContent>quick link 2</SmallContent>
               </Grid>
-              <Grid item desktop={3} tablet={2} mobile={2}>
-                {getBox("Quick link 3", "80px", "level0")}
+              <Grid item mobile={2} tablet={2} desktop={3}>
+                <SmallContent>quick link 3</SmallContent>
               </Grid>
             </Grid>
           </Grid>
-          <Grid item desktop={4} mobile={4}>
-            {getBox("Recommended for you")}
+          <Grid item mobile={4} tablet={8} desktop={4}>
+            <LargeContent>recommended for you</LargeContent>
           </Grid>
         </Grid>
-      </Background>
-    );
-  };
+      </Grid>
+    </Grid>
+  </Background>
+);
 
-  return Template;
-};
-
-export const GridExample = bindTemplate();
-GridExample.storyName = "Grid";
+GridStory.storyName = "Grid";
