@@ -1,7 +1,8 @@
 import React from "react";
 import { Box, BoxProps } from "..";
 
-export interface IconProps extends BoxProps {
+export interface IconProps
+  extends Pick<BoxProps, "ref" | "sx" | "component" | "classes"> {
   color?: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   iconProps?: React.SVGProps<SVGSVGElement>;
@@ -15,10 +16,10 @@ const Icon: React.FunctionComponent<IconProps> = ({
   forwardedRef,
   ...props
 }) => {
-  const Icon = icon;
+  const IconComponent = icon;
   return (
     <Box {...props} component="span" ref={forwardedRef}>
-      <Icon {...iconProps} fill={color} stroke={color} />
+      <IconComponent {...iconProps} fill={color} />
     </Box>
   );
 };
