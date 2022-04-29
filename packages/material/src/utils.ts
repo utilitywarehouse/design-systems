@@ -17,6 +17,11 @@ export const isBrandBackdropLevel = (backdropLevel: BackdropLevel): boolean => {
   return brandBackdropLevels.includes(backdropLevel);
 };
 
+export const isHeadingVariant = (variant: string): boolean => {
+  const headingVariants = ["displayHeading", "h1", "h2", "h3", "h4"];
+  return headingVariants.includes(variant);
+};
+
 // get the hexadecimal value for an opacity value, primarily for use with CSS colour hex values
 // ie. to have the midnight colour with 10% opacity:
 // backgroundColor: `${colors.midnight}${getHexOpacity(0.1)}`

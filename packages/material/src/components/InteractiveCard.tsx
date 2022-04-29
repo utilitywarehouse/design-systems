@@ -15,6 +15,7 @@ import {
   colors,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { TinyColor } from "@ctrl/tinycolor";
+import { customerUiPrefix } from "../utils";
 
 const { px } = helpers;
 
@@ -48,7 +49,7 @@ interface StyledRootProps {
   backdropLevel: BackdropLevel;
 }
 
-const PREFIX = "InteractiveCard";
+const PREFIX = `${customerUiPrefix}-InteractiveCard`;
 const classes = { rootHover: `${PREFIX}-rootHover` };
 
 const StyledRoot = styled(Box, {

@@ -2,19 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 
 import { NavLink, NavLinkProps } from "../src";
-import { BackgroundStack } from "./utils";
-
-const variants = [
-  "displayHeading",
-  "h1",
-  "h2",
-  "h3",
-  "h4",
-  "subtitle",
-  "body",
-  "legalNote",
-  "caption",
-] as const;
+import { BackgroundStack, typographyVariants } from "./utils";
 
 export default {
   title: "Components/Links",
@@ -28,7 +16,7 @@ export default {
     variant: {
       control: {
         type: "radio",
-        options: variants,
+        options: typographyVariants,
       },
     },
     active: {
@@ -43,10 +31,11 @@ export default {
     },
   },
   args: {
-    children: "Nav link",
+    children: "navigation link",
     variant: "body",
     disabled: false,
     active: false,
+    textTransform: "capitalize",
   },
 } as Meta;
 

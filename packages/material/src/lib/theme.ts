@@ -1,8 +1,8 @@
 import "../types/BreakpointOverrides";
 import { createTheme, Theme as MuiTheme } from "@mui/material/styles";
 import { getTextFieldTheme } from "../components/TextField";
-import { getTypographyConfiguration } from "../components/Typography";
 import { getButtonTheme } from "../components/Button";
+import { getTypographyTheme } from "../components/Typography";
 import {
   breakpoints,
   colors,
@@ -36,20 +36,9 @@ export const buildTheme = (): MuiTheme => {
     },
   });
 
-  const typographyConfiguration = getTypographyConfiguration(muiTheme);
-
-  muiTheme.typography.displayHeading = typographyConfiguration.displayHeading;
-  muiTheme.typography.h1 = typographyConfiguration.h1;
-  muiTheme.typography.h2 = typographyConfiguration.h2;
-  muiTheme.typography.h3 = typographyConfiguration.h3;
-  muiTheme.typography.h4 = typographyConfiguration.h4;
-  muiTheme.typography.subtitle = typographyConfiguration.subtitle;
-  muiTheme.typography.body = typographyConfiguration.body;
-  muiTheme.typography.legalNote = typographyConfiguration.legalNote;
-  muiTheme.typography.caption = typographyConfiguration.caption;
-
   muiTheme.components = {
     ...muiTheme.components,
+    ...getTypographyTheme(muiTheme),
     ...getTextFieldTheme(muiTheme),
     ...getButtonTheme(muiTheme),
   };

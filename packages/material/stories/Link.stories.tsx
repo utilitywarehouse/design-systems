@@ -3,34 +3,7 @@ import { Story, Meta } from "@storybook/react";
 
 import { LinkProps, Stack, TypographyProps } from "../src";
 import { Link, Typography } from "../src";
-import { BackgroundStack } from "./utils";
-
-const typographyVariants: { [key in TypographyProps["variant"]]: boolean } = {
-  h1: true,
-  h2: true,
-  h3: true,
-  h4: true,
-  displayHeading: true,
-  subtitle: true,
-  body: true,
-  legalNote: true,
-  caption: true,
-  inherit: false,
-};
-
-const linkTypographyVariants = Object.keys(typographyVariants).filter(
-  (variant) => typographyVariants[variant]
-);
-
-const linkVariantsInUse: { [key in LinkProps["variant"]]: boolean } = {
-  default: true,
-  active: true,
-  secondary: true,
-};
-
-const linkVariants = Object.keys(linkVariantsInUse).filter(
-  (variant) => linkVariantsInUse[variant]
-);
+import { BackgroundStack, typographyVariants } from "./utils";
 
 export default {
   title: "Components/Links",
@@ -43,27 +16,22 @@ export default {
     },
     typographyVariant: {
       control: {
-        type: "select",
-        options: linkTypographyVariants,
+        type: "radio",
+        options: typographyVariants,
       },
     },
     variant: {
       control: {
         type: "radio",
-        options: linkVariants,
-      },
-    },
-    disabled: {
-      control: {
-        type: "boolean",
+        options: typographyVariants,
       },
     },
   },
   args: {
     children: "link",
     typographyVariant: "body",
-    variant: "default",
-    disabled: false,
+    variant: "body",
+    textTransform: "capitalize",
   },
 } as Meta;
 
@@ -71,19 +39,18 @@ export const LinkStory: Story<
   LinkProps & { typographyVariant: TypographyProps["variant"] }
 > = (args) => {
   const { typographyVariant, ...rest } = args;
-  const onClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-  };
   return (
     <BackgroundStack>
       <Stack spacing={2}>
         <Typography variant={typographyVariant}>
-          <Link href="#" {...rest} onClick={onClick}>
-            Link
-          </Link>
+          <Link href="#" {...rest} />
         </Typography>
         <Typography variant={typographyVariant}>
-          This is an inline <Link href="#" {...rest} onClick={onClick} />.
+          This is an inline{" "}
+          <Link href="#" {...rest} variant="inherit">
+            link
+          </Link>
+          .
         </Typography>
       </Stack>
     </BackgroundStack>

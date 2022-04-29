@@ -16,10 +16,10 @@ import {
 import { useTheme } from "..";
 import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
-import { getHexOpacity } from "../utils";
+import { customerUiPrefix, getHexOpacity } from "../utils";
 import { Theme, Components } from "@mui/material/styles";
 
-const PREFIX = "TextField";
+const PREFIX = `${customerUiPrefix}-TextField`;
 const classes = {
   success: `${PREFIX}-success`,
   multiline: `${PREFIX}-multiline`,
@@ -145,7 +145,7 @@ export const getTextFieldTheme = (theme: Theme): Components => {
           marginBottom: theme.spacing(1),
           color: colors.midnight,
           "&.Mui-disabled": {
-            color: `${colors.midnight}40`, // TODO: update to codGray70
+            color: colors.codGray70,
           },
           "&.Mui-error": {
             color: colors.midnight,

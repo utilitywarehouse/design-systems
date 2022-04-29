@@ -1,5 +1,7 @@
 import React from "react";
 import MuiLink, { LinkProps as MuiLinkProps } from "@mui/material/Link";
+import { useTheme } from "..";
+import { isBrandBackdropLevel, isHeadingVariant } from "../utils";
 import {
   colors,
   transitions,
@@ -8,22 +10,58 @@ import { styled } from "@mui/material/styles";
 import { useTheme } from "..";
 import { isBrandBackdropLevel } from "../utils";
 
-export interface NavLinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    Pick<
-      MuiLinkProps,
-      "children" | "classes" | "sx" | "TypographyClasses" | "variant" | "ref"
-    > {
+const BaseLink = styled(MuiLink)(({ variant = "body" }) => {
+  const { backdropLevel } = useTheme();
+  const getLinkColor = () => {
+    if (variant === "inherit") {
+      return variant;
+    }
+    if (isBrandBackdropLevel(backdropLevel)) {
+      return colors.white;
+    }
+    if (isHeadingVariant(variant)) {
+      return colors.purple;
+    }
+    return colors.midnight;
+  };
+
+  return {
+    transition: `${transitions.duration}ms ${transitions.easingFunction}`,
+    transitionProperty: "text-decoration, color, opacity",
+    opacity: 1,
+    cursor: "pointer",
+    ...(variant === "inherit" && { textTransform: "inherit" }),
+    "&.MuiLink-root": {
+      color: getLinkColor(),
+    },
+  };
+});
+
+const StyledLink = styled(BaseLink)({
+  textDecoration: "underline",
+  textDecorationThickness: 2,
+  textUnderlineOffset: 4,
+  textDecorationColor: colors.cyan,
+  "&:hover": {
+    opacity: 0.5,
+  },
+});
+
+type LinkProps = Omit<MuiLinkProps, "color" | "underline">;
+
+const Link: React.FunctionComponent<LinkProps> = ({
+  variant = "body",
+  ...props
+}) => <StyledLink {...props} underline="none" variant={variant} />;
+
+interface NavLinkProps extends LinkProps {
   active?: boolean;
   disabled?: boolean;
 }
 
-interface StyledNavLinkProps {
-  active?: boolean;
-  disabled?: boolean;
-}
+type StyledNavLinkProps = Pick<NavLinkProps, "active" | "disabled">;
 
-const StyledNavLink = styled(MuiLink, {
+const StyledNavLink = styled(BaseLink, {
   shouldForwardProp: (prop) => prop !== "active" && prop !== "disabled",
 })<StyledNavLinkProps>(({ active, disabled }) => {
   const { backdropLevel } = useTheme();
@@ -47,11 +85,6 @@ const StyledNavLink = styled(MuiLink, {
     : {};
 
   return {
-    transition: `${transitions.duration}ms ${transitions.easingFunction}`,
-    transitionProperty: "text-decoration, color, opacity",
-    opacity: 1,
-    cursor: "pointer",
-    textTransform: "inherit",
     textDecoration: "none",
     "&.MuiLink-root": {
       color,
@@ -68,7 +101,7 @@ const NavLink: React.FunctionComponent<NavLinkProps> = ({
   onClick,
   active,
   disabled,
-  ...rest
+  ...props
 }) => {
   const handleClick = React.useCallback(
     (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -86,7 +119,7 @@ const NavLink: React.FunctionComponent<NavLinkProps> = ({
 
   return (
     <StyledNavLink
-      {...rest}
+      {...props}
       underline="none"
       variant={variant}
       onClick={handleClick}
@@ -96,4 +129,5 @@ const NavLink: React.FunctionComponent<NavLinkProps> = ({
   );
 };
 
-export default NavLink;
+export default Link;
+export { NavLink, LinkProps, NavLinkProps };

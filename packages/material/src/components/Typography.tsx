@@ -1,22 +1,17 @@
 import React from "react";
 import MuiTypography, {
-  TypographyPropsVariantOverrides,
   TypographyProps as MuiTypographyProps,
 } from "@mui/material/Typography";
-import { OverridableStringUnion } from "@mui/types";
 import {
   colors,
   fonts,
   fontWeights,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { BackdropLevel } from "../types";
-import { isBrandBackdropLevel } from "../utils";
+import {} from "@mui/material/styles/createTypography";
 import { useTheme } from "./BackgroundProvider";
-import { Theme, styled } from "@mui/material/styles";
-import {
-  CSSProperties,
-  TypographyStyleOptions,
-} from "@mui/material/styles/createTypography";
+import { CSSProperties } from "@mui/material/styles/createTypography";
+import { customerUiPrefix, isBrandBackdropLevel } from "../utils";
+import { Theme, Components } from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
@@ -55,6 +50,16 @@ declare module "@mui/material/Typography" {
   }
 }
 
+const PREFIX = `${customerUiPrefix}-Typography`;
+const classes = {
+  primary: `${PREFIX}-primary`,
+  secondary: `${PREFIX}-secondary`,
+  success: `${PREFIX}-success`,
+  error: `${PREFIX}-error`,
+  inverse: `${PREFIX}-inverse`,
+  semibold: `${PREFIX}-semibold`,
+};
+
 export interface TypographyProps
   extends Pick<
     MuiTypographyProps,
@@ -63,96 +68,21 @@ export interface TypographyProps
     | "paragraph"
     | "align"
     | "classes"
+    | "className"
     | "noWrap"
     | "textTransform"
     | "letterSpacing"
   > {
   color?: "primary" | "secondary" | "success" | "error";
-  variant?: OverridableStringUnion<
-    | "displayHeading"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "subtitle"
-    | "body"
-    | "legalNote"
-    | "caption"
-    | "inherit",
-    TypographyPropsVariantOverrides
-  >;
+  variant?: MuiTypographyProps["variant"];
   component?: React.ElementType;
   forwardedRef?: React.Ref<unknown>;
   fontWeight?: "regular" | "semibold";
 }
 
-const defaultTypographyPalette = {
-  primary: { heading: colors.purple, body: colors.midnight },
-  secondary: colors.midnight,
-  success: colors.jewel,
-  error: colors.maroonFlush,
-};
-const inverseTypographyPalette = {
-  primary: colors.white,
-  secondary: colors.white,
-  success: colors.apple,
-  error: colors.rose,
-};
-const headingVariants = ["displayHeading", "h1", "h2", "h3", "h4"];
-
-const getTypographyPalette = (
-  backdropLevel: BackdropLevel,
-  variant: TypographyProps["variant"] = "body",
-  color: TypographyProps["color"] = "primary"
-) => {
-  if (variant === "inherit") return "inherit";
-
-  if (headingVariants.includes(variant)) {
-    if (color === "success" || color === "error") {
-      return isBrandBackdropLevel(backdropLevel)
-        ? inverseTypographyPalette.primary
-        : defaultTypographyPalette.primary.heading;
-    }
-  }
-
-  if (isBrandBackdropLevel(backdropLevel)) {
-    return inverseTypographyPalette[color];
-  }
-
-  if (color === "primary") {
-    return headingVariants.includes(variant)
-      ? defaultTypographyPalette.primary.heading
-      : defaultTypographyPalette.primary.body;
-  }
-  return defaultTypographyPalette[color];
-};
-
-interface StyledTypographyProps {
-  backdropLevel: BackdropLevel;
-  variant: TypographyProps["variant"];
-  color: TypographyProps["color"];
-  fontWeight: TypographyProps["fontWeight"];
-}
-
-const StyledTypography = styled(MuiTypography, {
-  shouldForwardProp: (prop) =>
-    prop !== "color" && prop !== "backdropLevel" && prop !== "fontWeight",
-})<StyledTypographyProps>(
-  ({ backdropLevel, color, variant = "body", fontWeight = "regular" }) => {
-    const weight = headingVariants.includes(variant)
-      ? fontWeights.primary
-      : fontWeights.secondary[fontWeight as "regular" | "semibold"];
-
-    const typographyColor = getTypographyPalette(backdropLevel, variant, color);
-    return { fontWeight: weight, color: typographyColor };
-  }
-);
-
 const Typography: React.FunctionComponent<TypographyProps> = ({
   color = "primary",
   variant = "body",
-  gutterBottom = false,
-  paragraph = false,
   fontWeight = "regular",
   forwardedRef,
   ...props
@@ -171,16 +101,26 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
     caption: "caption",
   };
 
+  const getClassName = () => {
+    const classNames = [classes[color]];
+    if (props.className) {
+      classNames.push(props.className);
+    }
+    if (isBrandBackdropLevel(backdropLevel)) {
+      classNames.push(classes.inverse);
+    }
+    if (fontWeight === "semibold") {
+      classNames.push(classes.semibold);
+    }
+    return classNames.join(" ");
+  };
+
   return (
-    <StyledTypography
+    <MuiTypography
       {...props}
-      backdropLevel={backdropLevel as BackdropLevel}
-      color={color}
       variant={variant}
-      gutterBottom={gutterBottom}
-      paragraph={paragraph}
-      fontWeight={fontWeight}
       variantMapping={variantMapping}
+      className={getClassName()}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={forwardedRef as unknown as any}
     />
@@ -189,92 +129,117 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
 
 export default Typography;
 
-export const getTypographyConfiguration = (
-  theme: Theme
-): {
-  displayHeading: TypographyStyleOptions;
-  h1: TypographyStyleOptions;
-  h2: TypographyStyleOptions;
-  h3: TypographyStyleOptions;
-  h4: TypographyStyleOptions;
-  subtitle: TypographyStyleOptions;
-  body: TypographyStyleOptions;
-  legalNote: TypographyStyleOptions;
-  caption: TypographyStyleOptions;
-} => {
-  return {
-    displayHeading: {
-      fontFamily: fonts.primary,
-      fontWeight: fontWeights.primary,
-      fontSize: theme.typography.pxToRem(42),
-      lineHeight: 1,
-      [theme.breakpoints.up("desktop")]: {
-        fontSize: theme.typography.pxToRem(64),
-      },
+export const getTypographyTheme = (theme: Theme): Components => {
+  const headingStyles = {
+    color: colors.purple,
+    [`&.${classes.secondary}`]: {
+      color: colors.midnight,
     },
-    h1: {
-      fontFamily: fonts.primary,
-      fontWeight: fontWeights.primary,
-      fontSize: theme.typography.pxToRem(32),
-      lineHeight: 1.2,
-      [theme.breakpoints.up("desktop")]: {
-        fontSize: theme.typography.pxToRem(42),
-      },
-    },
-    h2: {
-      fontFamily: fonts.primary,
-      fontWeight: fontWeights.primary,
-      fontSize: theme.typography.pxToRem(28),
-      lineHeight: 1.5,
-      [theme.breakpoints.up("desktop")]: {
-        fontSize: theme.typography.pxToRem(32),
-        lineHeight: 1.2,
-      },
-    },
-    h3: {
-      fontFamily: fonts.primary,
-      fontWeight: fontWeights.primary,
-      fontSize: theme.typography.pxToRem(22),
-      lineHeight: 1.5,
-      [theme.breakpoints.up("desktop")]: {
-        fontSize: theme.typography.pxToRem(24),
-      },
-    },
-    h4: {
-      fontFamily: fonts.primary,
-      fontWeight: fontWeights.primary,
-      fontSize: theme.typography.pxToRem(18),
-      lineHeight: 1.5,
-      [theme.breakpoints.up("desktop")]: {
-        fontSize: theme.typography.pxToRem(20),
-      },
-    },
-    subtitle: {
-      fontFamily: fonts.secondary,
-      fontWeight: fontWeights.secondary.regular,
-      fontSize: theme.typography.pxToRem(18),
-      lineHeight: 1.5,
-      [theme.breakpoints.up("desktop")]: {
-        fontSize: theme.typography.pxToRem(20),
-      },
-    },
-    body: {
-      fontFamily: fonts.secondary,
-      fontWeight: fontWeights.secondary.regular,
-      fontSize: theme.typography.pxToRem(16),
-      lineHeight: 1.5,
-    },
-    legalNote: {
-      fontFamily: fonts.secondary,
-      fontWeight: fontWeights.secondary.regular,
-      fontSize: theme.typography.pxToRem(14),
-      lineHeight: 1.5,
-    },
-    caption: {
-      fontFamily: fonts.secondary,
-      fontWeight: fontWeights.secondary.regular,
-      fontSize: theme.typography.pxToRem(12),
-      lineHeight: 2,
+    [`&.${classes.inverse}`]: {
+      color: colors.white,
     },
   };
+  const bodyStyles = {
+    color: colors.midnight,
+    [`&.${classes.semibold}`]: {
+      fontWeight: fontWeights.secondary.semibold,
+    },
+    [`&.${classes.inverse}`]: {
+      color: colors.white,
+    },
+    [`&.${classes.success}`]: {
+      color: colors.jewel,
+    },
+    [`&.${classes.success}.${classes.inverse}`]: {
+      color: colors.apple,
+    },
+    [`&.${classes.error}`]: {
+      color: colors.maroonFlush,
+    },
+    [`&.${classes.error}.${classes.inverse}`]: {
+      color: colors.rose,
+    },
+  };
+
+  const muiTypography = {
+    MuiTypography: {
+      styleOverrides: {
+        displayHeading: {
+          fontFamily: fonts.primary,
+          fontSize: theme.typography.pxToRem(42),
+          lineHeight: 1,
+          ...headingStyles,
+          [theme.breakpoints.up("desktop")]: {
+            fontSize: theme.typography.pxToRem(64),
+          },
+        },
+        h1: {
+          fontFamily: fonts.primary,
+          fontSize: theme.typography.pxToRem(32),
+          lineHeight: 1.2,
+          ...headingStyles,
+          [theme.breakpoints.up("desktop")]: {
+            fontSize: theme.typography.pxToRem(42),
+          },
+        },
+        h2: {
+          fontFamily: fonts.primary,
+          fontSize: theme.typography.pxToRem(28),
+          lineHeight: 1.5,
+          ...headingStyles,
+          [theme.breakpoints.up("desktop")]: {
+            fontSize: theme.typography.pxToRem(32),
+            lineHeight: 1.2,
+          },
+        },
+        h3: {
+          fontFamily: fonts.primary,
+          fontSize: theme.typography.pxToRem(22),
+          lineHeight: 1.5,
+          ...headingStyles,
+          [theme.breakpoints.up("desktop")]: {
+            fontSize: theme.typography.pxToRem(24),
+          },
+        },
+        h4: {
+          fontFamily: fonts.primary,
+          fontSize: theme.typography.pxToRem(18),
+          lineHeight: 1.5,
+          ...headingStyles,
+          [theme.breakpoints.up("desktop")]: {
+            fontSize: theme.typography.pxToRem(20),
+          },
+        },
+        body: {
+          fontFamily: fonts.secondary,
+          fontSize: theme.typography.pxToRem(16),
+          lineHeight: 1.5,
+          ...bodyStyles,
+        },
+        subtitle: {
+          fontFamily: fonts.secondary,
+          fontSize: theme.typography.pxToRem(18),
+          lineHeight: 1.5,
+          ...bodyStyles,
+          [theme.breakpoints.up("desktop")]: {
+            fontSize: theme.typography.pxToRem(20),
+          },
+        },
+        legalNote: {
+          fontFamily: fonts.secondary,
+          fontSize: theme.typography.pxToRem(14),
+          lineHeight: 1.5,
+          ...bodyStyles,
+        },
+        caption: {
+          fontFamily: fonts.secondary,
+          fontSize: theme.typography.pxToRem(12),
+          lineHeight: 2,
+          ...bodyStyles,
+        },
+      },
+    },
+  };
+
+  return muiTypography as Components;
 };
