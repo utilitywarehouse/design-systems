@@ -192,9 +192,34 @@ worth documenting for others, thankyou!
 
 ### `Typography` component props
 
+> from *alpha.66* and below
+
+- Rename `state` prop `color`.
+
+```diff
+- <Typography state="secondary">
++ <Typography color="secondary">
+```
+
+- Rename `default` color (previously `state` prop) to `primary`.
+
+```diff
+- <Typography state="default">
++ <Typography color="primary">
+```
+
+- Rename `default` variant to `body`.
+
+```diff
+- <Typography variant="default">
++ <Typography variant="body">
+```
+
+### `Typography` component variants
+
 > from *alpha.64* and below
 
-- Update variants.
+Style changes made in [this commit](https://github.com/utilitywarehouse/customer-ui/commit/09897591a33be7aa8bebc93c99e9ef4dbf95f1a9)
 
 ```diff
 + displayHeading
@@ -221,55 +246,32 @@ the same.
 There is not a 1 to 1 replacement of old to new variants, so some discretion
 from devs and collaboration with Design/UX will need to happen to ensure UI's
 are kept consistent.
-The following table is not exhaustive, showing only changes in desktop font
-size, however it should give an indication of which variant to choose when
-updating Typography components.
 
-**Desktop font size comparison**
+> View the previous `Typography` variants in [this old storybook](https://86ace4d.storybook.customer-ui-material-uw.surge.sh/?path=/story/stories-components-typography--h-1).
 
-|variant|old font size(px)|new font size(px)|
-|-|:-:|:-:|
-|displayHeading|-|64|
-|h1|64|42|
-|h2|40|32|
-|h3|33|24|
-|h4|20|20|
-|h5|16|-|
-|headline|16|-|
-|subheading|15|-|
-|body|20|16|
-|small|16|-|
-|label|13|-|
-|caption|12|12|
-|footnote|13|-|
-|interactive|18|-|
-|subtitle|-|20|
-|legalNote|-|14|
+|variant|old desktop font size(px)|new desktop font size(px)|old mobile font size(px)|new mobile font size(px)|
+|-|:-:|:-:|:-:|:-:|
+| :heavy_plus_sign: `displayHeading`|-|64|-|42|
+| `h1`|64|42|40|32|
+| `h2`|40|32|28|28|
+| `h3`|33|24|18|22|
+| `h4`|20|20|14|18|
+| :heavy_minus_sign: `h5` |16|-|12|-|
+| :heavy_minus_sign: `headline`|16|-|16|-|
+| :heavy_minus_sign: `subheading`|15|-|15|-|
+| `body`|20|16|16|16|
+| :heavy_minus_sign: `small`|16|-|14|-|
+| :heavy_minus_sign: `label`|13|-|12|-|
+| `caption`|12|12|12|12|
+| :heavy_minus_sign: `footnote`|13|-|13|-|
+| :heavy_minus_sign: `interactive`|18|-|18|-|
+| :heavy_plus_sign: `subtitle`|-|20|-|18|
+| :heavy_plus_sign: `legalNote`|-|14|-14|
+
+:heavy_plus_sign: New variant
+:heavy_minus_sign: Removed variant
 
 For a full breakdown of Customer UI typography please see the [Figma files](https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=38%3A884).
-
-> from *alpha.66* and below
-
-- Rename `state` prop `color`.
-
-```diff
-- <Typography state="secondary">
-+ <Typography color="secondary">
-```
-
-- Rename `default` color (previously `state` prop) to `primary`.
-
-```diff
-- <Typography state="default">
-+ <Typography color="primary">
-```
-
-- Rename `default` variant to `body`.
-
-```diff
-- <Typography variant="default">
-+ <Typography variant="body">
-```
 
 ### `useTheme` hook
 
