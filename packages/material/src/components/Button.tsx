@@ -1,8 +1,22 @@
 import React from "react";
 import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button";
-import { CSSProperties } from "@mui/styles/withStyles";
-import { ButtonSize, ButtonVariant } from "@utilitywarehouse/customer-ui-theme";
-import { GetComponentThemeConfiguration } from "../lib/theme.types";
+import { Theme, Components } from "@mui/material/styles";
+import {
+  transitions,
+  spacingBase,
+  fonts,
+  fontWeights,
+  colors,
+} from "@utilitywarehouse/customer-ui-design-tokens";
+import { useTheme } from "./BackgroundProvider";
+import { BackdropLevel } from "../types";
+import { customerUiPrefix, isBrandBackdropLevel } from "../utils";
+import { TinyColor } from "@ctrl/tinycolor";
+
+const PREFIX = `${customerUiPrefix}-Button`;
+const classes = {
+  inverse: `${PREFIX}-inverse`,
+};
 
 interface BaseButtonProps {
   size?: "regular" | "large";
@@ -28,12 +42,24 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   variant = "contained",
   fullWidth = false,
   forwardedRef,
+  className,
   ...props
 }) => {
+  const { backdropLevel } = useTheme();
+
+  const getClassName = () => {
+    const classNames = [className];
+    if (isBrandBackdropLevel(backdropLevel as BackdropLevel)) {
+      classNames.push(classes.inverse);
+    }
+    return classNames.join(" ");
+  };
+
   const muiButtonProps: MuiButtonProps = {
     color: "primary",
     disableElevation: true,
     fullWidth,
+    className: getClassName(),
   };
 
   if (variant === "tertiary") {
@@ -62,88 +88,102 @@ const Button: React.FunctionComponent<ButtonProps> = ({
 
 export default Button;
 
-export const getComponentThemeConfiguration: GetComponentThemeConfiguration = (
-  theme,
-  muiTheme
-) => {
-  const resolveStyles = (
-    variant: ButtonVariant,
-    size: ButtonSize
-  ): CSSProperties => {
-    return {
-      ...theme.components.button.mobile[variant][size].idle,
-      [muiTheme.breakpoints.up("tablet")]: {
-        ...theme.components.button.tablet[variant][size].idle,
-      },
-      [muiTheme.breakpoints.up("desktop")]: {
-        ...theme.components.button.desktop[variant][size].idle,
-      },
-      "&:hover": {
-        ...theme.components.button.mobile[variant][size].active,
-        [muiTheme.breakpoints.up("tablet")]: {
-          ...theme.components.button.tablet[variant][size].active,
-        },
-        [muiTheme.breakpoints.up("desktop")]: {
-          ...theme.components.button.desktop[variant][size].active,
-        },
-      },
-      "&:disabled": {
-        ...theme.components.button.mobile[variant][size].disabled,
-        [muiTheme.breakpoints.up("tablet")]: {
-          ...theme.components.button.tablet[variant][size].disabled,
-        },
-        [muiTheme.breakpoints.up("desktop")]: {
-          ...theme.components.button.desktop[variant][size].disabled,
-        },
-      },
-    } as CSSProperties;
-  };
-
+export const getButtonTheme = (theme: Theme): Components => {
   return {
     MuiButton: {
       styleOverrides: {
         root: {
-          ...resolveStyles("primary", "regular"),
-          "&.MuiButton-containedSecondary": {
-            ...resolveStyles("primary", "regular"),
-            "&.MuiButton-sizeLarge": {
-              ...resolveStyles("primary", "large"),
-            },
+          transition: `${transitions.duration}ms ${transitions.easingFunction}`,
+          transitionProperty: "background-color, border-color, color, opacity",
+          fontFamily: fonts.secondary,
+          fontWeight: fontWeights.secondary.semibold,
+          fontSize: 16,
+          lineHeight: 1,
+          textTransform: "none",
+          borderStyle: "solid",
+          paddingTop: 0,
+          paddingBottom: 0,
+          height: spacingBase * 4,
+          paddingLeft: spacingBase * 2,
+          paddingRight: spacingBase * 2,
+          borderRadius: spacingBase * (4 / 2),
+          [theme.breakpoints.up("tablet")]: {
+            fontSize: 18,
           },
+          "&:disabled": {
+            opacity: 0.5,
+          },
+          // contained
           "&.MuiButton-containedPrimary": {
-            ...resolveStyles("primary", "regular"),
-            "&.MuiButton-sizeLarge": {
-              ...resolveStyles("primary", "large"),
+            color: colors.midnight,
+            backgroundColor: colors.cyan,
+            borderColor: colors.transparent,
+            opacity: 1,
+            borderTopWidth: 0,
+            borderBottomWidth: 0,
+            borderLeftWidth: 0,
+            borderRightWidth: 0,
+            "&:hover": {
+              backgroundColor: new TinyColor(colors.cyan)
+                .lighten(15)
+                .toHexString(),
             },
           },
+          // outlined
           "&.MuiButton-outlinedPrimary": {
-            ...resolveStyles("secondary", "regular"),
-            "&.MuiButton-sizeLarge": {
-              ...resolveStyles("secondary", "large"),
+            backgroundColor: colors.transparent,
+            borderColor: colors.cyan,
+            color: colors.midnight,
+            borderWidth: 2,
+            "&:hover": {
+              borderColor: colors.midnight,
+            },
+            [`&.${classes.inverse}`]: {
+              color: colors.white,
+              "&:hover": {
+                borderColor: colors.white,
+              },
             },
           },
-          "&.MuiButton-outlinedSecondary": {
-            ...resolveStyles("secondary", "regular"),
+          // contained & outlined
+          "&.MuiButton-containedPrimary,&.MuiButton-outlinedPrimary": {
+            [theme.breakpoints.up("desktop")]: {
+              height: spacingBase * 5,
+              paddingLeft: spacingBase * 3,
+              paddingRight: spacingBase * 3,
+              borderRadius: spacingBase * (5 / 2),
+            },
             "&.MuiButton-sizeLarge": {
-              ...resolveStyles("secondary", "large"),
+              height: spacingBase * 6,
+              paddingLeft: spacingBase * 3,
+              paddingRight: spacingBase * 3,
+              borderRadius: spacingBase * (6 / 2),
+              [theme.breakpoints.up("desktop")]: {
+                height: spacingBase * 7,
+                paddingLeft: spacingBase * 4,
+                paddingRight: spacingBase * 4,
+                borderRadius: spacingBase * (7 / 2),
+              },
             },
           },
+          // tertiary
           "&.MuiButton-text": {
-            ...resolveStyles("tertiary", "regular"),
-            "&.MuiButton-sizeLarge": {
-              ...resolveStyles("tertiary", "large"),
+            color: colors.midnight,
+            backgroundColor: colors.transparent,
+            borderColor: colors.cyan,
+            height: "auto",
+            paddingBottom: 2,
+            paddingLeft: 0,
+            paddingRight: 0,
+            borderWidth: 0,
+            borderBottomWidth: 2,
+            borderRadius: 0,
+            lineHeight: 1.333,
+            "&:hover": {
+              opacity: 0.5,
             },
-          },
-          "&.MuiButton-textPrimary": {
-            ...resolveStyles("tertiary", "regular"),
-            "&.MuiButton-sizeLarge": {
-              ...resolveStyles("tertiary", "large"),
-            },
-          },
-          "&.MuiButton-textSecondary": {
-            ...resolveStyles("tertiary", "regular"),
-            "&.MuiButton-sizeLarge": {
-              ...resolveStyles("tertiary", "large"),
+            [`&.${classes.inverse}`]: {
+              color: colors.white,
             },
           },
         },

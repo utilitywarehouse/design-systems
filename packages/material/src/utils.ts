@@ -1,5 +1,7 @@
 import { BackdropLevel, ColorScheme } from "./types";
 
+export const customerUiPrefix = "uw-cui";
+
 export const isDarkColorScheme = (colorScheme: ColorScheme): boolean =>
   colorScheme === "dark";
 

@@ -1,9 +1,8 @@
 import "../types/BreakpointOverrides";
 import { createTheme, Theme as MuiTheme } from "@mui/material/styles";
-import { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
-import { getComponentThemeConfiguration } from "../components";
 import { getTextFieldTheme } from "../components/TextField";
 import { getTypographyConfiguration } from "../components/Typography";
+import { getButtonTheme } from "../components/Button";
 import {
   breakpoints,
   colors,
@@ -13,7 +12,7 @@ import {
 export type { Theme as MuiTheme } from "@mui/material/styles/createTheme";
 export type { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 
-export const buildTheme = (theme: CustomerUITheme): MuiTheme => {
+export const buildTheme = (): MuiTheme => {
   const muiTheme = createTheme({
     breakpoints: {
       values: {
@@ -49,10 +48,10 @@ export const buildTheme = (theme: CustomerUITheme): MuiTheme => {
   muiTheme.typography.legalNote = typographyConfiguration.legalNote;
   muiTheme.typography.caption = typographyConfiguration.caption;
 
-  muiTheme.components = getComponentThemeConfiguration(theme, muiTheme);
   muiTheme.components = {
     ...muiTheme.components,
     ...getTextFieldTheme(muiTheme),
+    ...getButtonTheme(muiTheme),
   };
 
   return muiTheme;

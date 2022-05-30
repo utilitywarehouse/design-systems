@@ -33,8 +33,8 @@ export default {
     size: "regular",
     variant: "contained",
     children: "Button",
-    fullWidth: false,
     disabled: false,
+    fullWidth: false,
   },
 } as Meta;
 

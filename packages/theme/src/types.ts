@@ -1,5 +1,3 @@
-import { ButtonStyles } from "./button";
-
 export type Breakpoint = "desktop" | "tablet" | "mobile";
 
 export type Breakpoints = { [key in Breakpoint]: number };
@@ -65,9 +63,6 @@ export interface Palette {
 }
 
 export interface Theme {
-  components: {
-    button: ButtonStyles;
-  };
   spacing: Spacing;
   colorScheme: ColorScheme;
   backdropLevel: BackdropLevel;

@@ -1,11 +1,8 @@
 import React from "react";
-import {
-  getTheme,
-  BackdropLevel,
-  ColorScheme,
-} from "@utilitywarehouse/customer-ui-theme";
+import { getTheme } from "@utilitywarehouse/customer-ui-theme";
 import { MuiTheme, CustomerUITheme, buildTheme } from "../lib/theme";
 import { DarkModeContext } from "./DarkModeProvider";
+import { BackdropLevel, ColorScheme } from "..";
 
 const backdropLevels: BackdropLevel[] = [
   "level0",
@@ -30,9 +27,9 @@ interface ThemeVariantsContextValue {
 
 const getThemes = (colorScheme: ColorScheme): Themes => {
   const themes: Partial<Themes> = {};
-  backdropLevels.forEach((level) => {
+  backdropLevels.forEach((level: BackdropLevel) => {
     const customerUITheme = getTheme(colorScheme, level);
-    const muiTheme = buildTheme(customerUITheme);
+    const muiTheme = buildTheme();
     themes[level] = {
       customerUITheme,
       muiTheme,
