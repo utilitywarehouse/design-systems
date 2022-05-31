@@ -4,9 +4,10 @@
   "description": "UW Customer UI component library, built upon MUI Material",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rimraf dist/",
+    "clean:dist": "rimraf dist/",
     "clean:deps": "rimraf node_modules",
-    "build": "pnpm clean && tsc",
+    "clean": "pnpm clean:dist && pnpm clean:deps",
+    "build": "pnpm clean:dist && tsc",
     "test:coverage": "pnpm test --coverage",
     "serve:coverage": "open coverage/lcov-report/index.html",
     "lint": "eslint --fix --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",

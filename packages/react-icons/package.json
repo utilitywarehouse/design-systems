@@ -4,9 +4,10 @@
   "description": "React icons based on the icons svgs",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf src/ 48x48/ 24x24/",
+    "clean:dist": "rimraf src/ 48x48/ 24x24/",
     "clean:deps": "rimraf node_modules",
-    "build": "pnpm clean && node ./scripts/build.js && tsc"
+    "clean": "pnpm clean:dist && pnpm clean:deps",
+    "build": "pnpm clean:dist && node ./scripts/build.js && tsc"
   },
   "license": "ISC",
   "publishConfig": {
