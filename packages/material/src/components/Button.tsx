@@ -18,7 +18,7 @@ const classes = {
   inverse: `${PREFIX}-inverse`,
 };
 
-interface BaseButtonProps {
+interface BaseButtonProps extends Pick<MuiButtonProps, "sx" | "classes"> {
   size?: "regular" | "large";
   variant?: "contained" | "outlined" | "tertiary";
   fullWidth?: boolean;

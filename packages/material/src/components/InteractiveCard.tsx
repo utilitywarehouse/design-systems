@@ -23,7 +23,7 @@ export type InteractiveCardSize = "small" | "regular" | "large";
 
 export type InteractiveCardVariant = "primary" | "secondary";
 
-interface BaseInteractiveCardProps {
+interface BaseInteractiveCardProps extends Pick<BoxProps, "sx"> {
   Background?: React.ComponentType;
   backgroundColor?: BackdropLevel;
   size?: InteractiveCardSize;
