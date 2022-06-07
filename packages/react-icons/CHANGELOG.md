@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-react-icons
 
+## 1.0.2
+
+### Patch Changes
+
+- [#415](https://github.com/utilitywarehouse/customer-ui/pull/415) [`b42e8dd`](https://github.com/utilitywarehouse/customer-ui/commit/b42e8dd6c4ed106fc775f2b5e32547ac7eecf64d) Thanks [@robphoenix](https://github.com/robphoenix)! - Added 24x24 Bill Protector, Income Protector and Question Mark icons
+
 ## 1.0.1
 
 ### Patch Changes
