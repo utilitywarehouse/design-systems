@@ -10,7 +10,6 @@ For more information about how this fits into the wider UI landscape, please hav
 - [@utilitywarehouse/customer-ui-fonts](packages/fonts)
 - [@utilitywarehouse/customer-ui-icons](packages/icons)
 - [@utilitywarehouse/customer-ui-react-icons](packages/react-icons)
-- [@utilitywarehouse/customer-ui-theme](packages/theme)
 - [@utilitywarehouse/customer-ui-material](packages/material)
 
 ## Getting started
