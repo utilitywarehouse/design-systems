@@ -1,6 +1,5 @@
 import * as React from "react";
-import type { BackdropLevel } from "@utilitywarehouse/customer-ui-theme";
-import { Background, Box } from "../../src";
+import { BackdropLevel, Background, Box } from "../../src";
 
 const BackgroundStack: React.FC = ({ children }) => {
   const backgroundLevels = [5, 4, 3, 2, 1, 0].map(
