@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-icons
 
+## 1.0.3
+
+### Patch Changes
+
+- [#413](https://github.com/utilitywarehouse/customer-ui/pull/413) [`86de40b`](https://github.com/utilitywarehouse/customer-ui/commit/86de40b668c29a171d6bf3aa1ec5af66518b9f34) Thanks [@jordmccord](https://github.com/jordmccord)! - Added 24x24 Bill Protector, Income Protector and Question Mark icons
+
 ## 1.0.2
 
 ### Patch Changes
