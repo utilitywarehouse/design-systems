@@ -1,16 +1,17 @@
 import { styled } from "@mui/material/styles";
 import React from "react";
-import { BackdropLevel, Box, BoxProps, ColorScheme } from "..";
-import BackgroundProvider, { useTheme } from "./BackgroundProvider";
+import { BackdropLevel, Box, BoxProps } from "..";
 import { helpers, colors } from "@utilitywarehouse/customer-ui-design-tokens";
-import { isBrandBackdropLevel, isDarkColorScheme } from "../utils";
+import { isBrandBackdropLevel } from "../utils";
+import { useDarkMode } from "./DarkModeProvider";
+import { BackgroundProvider, useBackground } from "./Background";
 
 const { px } = helpers;
 
 export type CardVariant = "transparent" | "opaque";
 
 const getCardPalette = (
-  colorScheme: ColorScheme,
+  darkModeEnabled: boolean,
   backdropLevel: BackdropLevel,
   variant: CardVariant
 ) => {
@@ -51,7 +52,7 @@ const getCardPalette = (
     },
   };
 
-  if (isDarkColorScheme(colorScheme)) {
+  if (darkModeEnabled) {
     return darkModePalette[variant];
   }
 
@@ -65,14 +66,13 @@ const getCardPalette = (
 interface StyledCardProps {
   variant: CardVariant;
   backdropLevel: BackdropLevel;
-  colorScheme: ColorScheme;
 }
 
 const StyledCard = styled(Box, {
-  shouldForwardProp: (prop) =>
-    prop !== "colorScheme" && prop !== "variant" && prop !== "backdropLevel",
-})<StyledCardProps>(({ theme, backdropLevel, colorScheme, variant }) => {
-  const palette = getCardPalette(colorScheme, backdropLevel, variant);
+  shouldForwardProp: (prop) => prop !== "variant" && prop !== "backdropLevel",
+})<StyledCardProps>(({ theme, backdropLevel, variant }) => {
+  const { darkModeEnabled } = useDarkMode();
+  const palette = getCardPalette(darkModeEnabled, backdropLevel, variant);
   return {
     ...palette,
     padding: theme.spacing(3), // 24px
@@ -90,7 +90,7 @@ export interface CardProps
 
 const Card: React.FunctionComponent<CardProps> = (props) => {
   const { variant = "opaque", forwardedRef, ...rest } = props;
-  const { backdropLevel, colorScheme } = useTheme();
+  const { backdropLevel } = useBackground();
 
   const backgroundColor: BackdropLevel = React.useMemo(() => {
     if (variant === "transparent") {
@@ -107,7 +107,6 @@ const Card: React.FunctionComponent<CardProps> = (props) => {
         variant={variant}
         ref={forwardedRef}
         backdropLevel={backgroundColor}
-        colorScheme={colorScheme}
       />
     </BackgroundProvider>
   );

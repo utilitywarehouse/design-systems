@@ -10,7 +10,6 @@ import {
 } from "@utilitywarehouse/customer-ui-design-tokens";
 
 export type { Theme as MuiTheme } from "@mui/material/styles/createTheme";
-export type { Theme as CustomerUITheme } from "@utilitywarehouse/customer-ui-theme";
 
 export const buildTheme = (): MuiTheme => {
   const muiTheme = createTheme({

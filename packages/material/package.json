@@ -42,7 +42,6 @@
     "@utilitywarehouse/customer-ui-design-tokens": "^1.0.3",
     "@utilitywarehouse/customer-ui-fonts": "^1.0.1",
     "@utilitywarehouse/customer-ui-react-icons": "^1.0.2",
-    "@utilitywarehouse/customer-ui-theme": "^1.1.2",
     "jss": "^10.9.0"
   },
   "devDependencies": {

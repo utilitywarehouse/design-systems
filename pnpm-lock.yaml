@@ -100,7 +100,6 @@ importers:
       '@utilitywarehouse/customer-ui-design-tokens': link:../design-tokens
       '@utilitywarehouse/customer-ui-fonts': link:../fonts
       '@utilitywarehouse/customer-ui-react-icons': link:../react-icons
-      '@utilitywarehouse/customer-ui-theme': link:../theme
       jss: 10.9.0
     devDependencies:
       '@babel/core': 7.16.12
@@ -133,14 +132,6 @@ importers:
       '@utilitywarehouse/customer-ui-icons': link:../icons
       mkdirp: 1.0.4
       uuid: 8.3.2
-
-  packages/theme:
-    specifiers:
-      '@ctrl/tinycolor': ^3.4.0
-      '@utilitywarehouse/customer-ui-design-tokens': 1.0.3
-    dependencies:
-      '@ctrl/tinycolor': 3.4.0
-      '@utilitywarehouse/customer-ui-design-tokens': link:../design-tokens
 
 packages:
 

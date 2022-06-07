@@ -16,6 +16,14 @@ export const DarkModeContext = React.createContext<DarkModeContextValue>({
 
 DarkModeContext.displayName = "DarkModeContext";
 
+const useDarkMode = (): DarkModeContextValue => {
+  const context: DarkModeContextValue = React.useContext(DarkModeContext);
+  if (context === undefined) {
+    throw new Error(`useDarkMode must be used within the UIProvider`);
+  }
+  return context;
+};
+
 export interface DarkModeProviderProps {
   defaultValue?: "on" | "off";
   value?: "on" | "off";
@@ -87,4 +95,5 @@ const DarkModeProvider: React.FunctionComponent<DarkModeProviderProps> = ({
 };
 
 export default DarkModeProvider;
-export const DarkModeConsumer = DarkModeContext.Consumer;
+const DarkModeConsumer = DarkModeContext.Consumer;
+export { DarkModeConsumer, useDarkMode };

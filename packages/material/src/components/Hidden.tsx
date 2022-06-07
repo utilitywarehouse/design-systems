@@ -1,6 +1,6 @@
 import React from "react";
-import { Breakpoint } from "@utilitywarehouse/customer-ui-theme";
 import useDeviceSize from "../hooks/useDeviceSize";
+import { Breakpoint } from "../types";
 
 type DeviceSize = Breakpoint;
 type Only = DeviceSize | DeviceSize[];

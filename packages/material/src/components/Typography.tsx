@@ -12,6 +12,7 @@ import { useTheme } from "./BackgroundProvider";
 import { CSSProperties } from "@mui/material/styles/createTypography";
 import { customerUiPrefix, isBrandBackdropLevel } from "../utils";
 import { Theme, Components } from "@mui/material/styles";
+import { useBackground } from "./Background";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
@@ -87,7 +88,7 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
   forwardedRef,
   ...props
 }) => {
-  const { backdropLevel } = useTheme();
+  const { backdropLevel } = useBackground();
 
   const variantMapping = {
     displayHeading: "h1",

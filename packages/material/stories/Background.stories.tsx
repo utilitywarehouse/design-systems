@@ -20,7 +20,7 @@ export default {
   },
 } as Meta;
 
-export const BackgroundStory: Story<BackgroundProps> = (props) => {
+export const BackgroundStory: Story<BackgroundProps> = (args) => {
   const colorNames = {
     level5: "Level 5 (White)",
     level4: "Level 4 (White Owl)",
@@ -31,7 +31,7 @@ export const BackgroundStory: Story<BackgroundProps> = (props) => {
   return (
     <Box padding={3}>
       <Background
-        {...props}
+        {...args}
         sx={{
           width: "100%",
           height: 300,
@@ -42,7 +42,7 @@ export const BackgroundStory: Story<BackgroundProps> = (props) => {
         }}
       >
         <Typography variant="h2">
-          Background {colorNames[props.backgroundColor]}
+          Background {colorNames[args.backgroundColor]}
         </Typography>
       </Background>
     </Box>

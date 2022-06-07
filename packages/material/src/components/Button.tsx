@@ -8,10 +8,10 @@ import {
   fontWeights,
   colors,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { useTheme } from "./BackgroundProvider";
 import { BackdropLevel } from "../types";
 import { customerUiPrefix, isBrandBackdropLevel } from "../utils";
 import { TinyColor } from "@ctrl/tinycolor";
+import { useBackground } from "./Background";
 
 const PREFIX = `${customerUiPrefix}-Button`;
 const classes = {
@@ -45,7 +45,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   className,
   ...props
 }) => {
-  const { backdropLevel } = useTheme();
+  const { backdropLevel } = useBackground();
 
   const getClassName = () => {
     const classNames = [className];

@@ -2,20 +2,17 @@ import "./types/BreakpointOverrides";
 
 export * from "./material/core";
 
-export type { BackdropLevel, ColorScheme } from "./types";
+export type { BackdropLevel } from "./types";
 
 export {
   default as Background,
-  BackgroundContext,
-  BackgroundConsumer,
+  useBackground,
+  BackgroundProvider,
 } from "./components/Background";
-export type { BackgroundProps } from "./components/Background";
-
-export {
-  default as BackgroundProvider,
-  useTheme,
-} from "./components/BackgroundProvider";
-export type { BackgroundProviderProps } from "./components/BackgroundProvider";
+export type {
+  BackgroundProps,
+  BackgroundProviderProps,
+} from "./components/Background";
 
 export { default as Button } from "./components/Button";
 export type { ButtonProps } from "./components/Button";

@@ -1,5 +1,8 @@
 import React from "react";
-import { BackgroundProvider, BackgroundProviderProps } from "..";
+import {
+  BackgroundProvider,
+  BackgroundProviderProps,
+} from "../components/Background";
 
 export interface WithBackgroundProps {
   backgroundColor?: BackgroundProviderProps["backgroundColor"];
@@ -13,7 +16,7 @@ function withBackground<P extends WithBackgroundProps>(
   const WithBackground: React.FunctionComponent<P> = (props) => (
     <BackgroundProvider
       backgroundColor={
-        props.backgroundColor ?? defaultBackgroundColor ?? "level4"
+        props.backgroundColor ?? defaultBackgroundColor ?? "level5"
       }
     >
       <Component {...props} ref={props.forwardedRef} />

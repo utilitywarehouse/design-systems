@@ -8,7 +8,6 @@ import {
   DarkModeProviderProps,
 } from "..";
 import { getRandomString } from "../lib/random";
-import ThemeVariantsProvider from "./ThemeVariantsProvider";
 
 export interface UIProviderProps {
   styleProviderProps?: StylesProviderProps;
@@ -29,9 +28,7 @@ const UIProvider: React.FunctionComponent<UIProviderProps> = ({
     })}
   >
     <StylesProvider {...styleProviderProps}>
-      <DarkModeProvider {...darkModeProviderProps}>
-        <ThemeVariantsProvider>{children}</ThemeVariantsProvider>
-      </DarkModeProvider>
+      <DarkModeProvider {...darkModeProviderProps}>{children}</DarkModeProvider>
     </StylesProvider>
   </CacheProvider>
 );

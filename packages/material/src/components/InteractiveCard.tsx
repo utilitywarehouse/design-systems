@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  ButtonBase,
-  Box,
-  Typography,
-  BackgroundContext,
-  BoxProps,
-  BackdropLevel,
-} from "..";
-import BackgroundProvider, { useTheme } from "./BackgroundProvider";
+import { ButtonBase, Box, Typography, BoxProps, BackdropLevel } from "..";
 import { styled } from "@mui/material/styles";
 import {
   helpers,
@@ -16,6 +8,7 @@ import {
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { TinyColor } from "@ctrl/tinycolor";
 import { customerUiPrefix } from "../utils";
+import { BackgroundProvider, useBackground } from "./Background";
 
 const { px } = helpers;
 
@@ -134,7 +127,7 @@ const InteractiveCardComponent: React.FunctionComponent<
   backgroundColor,
   ...props
 }) => {
-  const { backdropLevel } = useTheme();
+  const { backdropLevel } = useBackground();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const href = (props as any).href as string | undefined;
 
@@ -197,8 +190,7 @@ const InteractiveCardComponent: React.FunctionComponent<
 const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
   props
 ) => {
-  const { theme } = React.useContext(BackgroundContext);
-  const backdropLevel = theme.backdropLevel;
+  const { backdropLevel } = useBackground();
   const backgroundColor = React.useMemo(() => {
     switch (backdropLevel) {
       case "level0":

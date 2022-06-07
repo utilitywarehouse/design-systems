@@ -1,67 +1,93 @@
-import { Theme, getTheme } from "@utilitywarehouse/customer-ui-theme";
 import React from "react";
 import { BackdropLevel, Box, BoxProps } from "../";
-import BackgroundProvider, { useTheme } from "./BackgroundProvider";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
-import { isDarkColorScheme } from "../utils";
+import { buildTheme } from "../lib/theme";
+import { MuiThemeProvider, StyledEngineProvider } from "..";
+import { styled } from "@mui/material/styles";
 
 interface BackgroundContextValue {
-  theme: Theme;
+  backdropLevel: BackdropLevel;
 }
 
-export const BackgroundContext = React.createContext<BackgroundContextValue>({
-  theme: getTheme("light", "level3"),
+const defaultBackgroundLevel: BackdropLevel = "level5"; // white
+
+const BackgroundContext = React.createContext<BackgroundContextValue>({
+  backdropLevel: defaultBackgroundLevel,
 });
 
-export const BackgroundConsumer = BackgroundContext.Consumer;
+const useBackground = (): BackgroundContextValue => {
+  const context: BackgroundContextValue = React.useContext(BackgroundContext);
+  if (context === undefined) {
+    throw new Error(
+      `useBackground must be used within the Background component`
+    );
+  }
+  return context;
+};
 
-export interface BackgroundProps
-  extends Pick<BoxProps, "ref" | "sx" | "component" | "classes"> {
-  backgroundColor: BackdropLevel;
-  forwardedRef?: React.Ref<HTMLDivElement>;
+interface BackgroundProviderProps {
+  backgroundColor?: BackdropLevel;
 }
 
-const BackgroundInner: React.FunctionComponent<BackgroundProps> = ({
+const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({
+  backgroundColor = defaultBackgroundLevel,
   children,
-  forwardedRef,
-  backgroundColor,
-  ...props
 }) => {
-  const { colorScheme, backdropLevel } = useTheme();
-  const backgroundPalette = {
+  const muiTheme = buildTheme();
+
+  return (
+    <StyledEngineProvider injectFirst>
+      <MuiThemeProvider theme={muiTheme}>
+        <BackgroundContext.Provider value={{ backdropLevel: backgroundColor }}>
+          {children}
+        </BackgroundContext.Provider>
+      </MuiThemeProvider>
+    </StyledEngineProvider>
+  );
+};
+
+interface StyledBackgroundProps {
+  backdropLevel: BackdropLevel;
+}
+
+const StyledBackground = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "backdropLevel",
+})<StyledBackgroundProps>(({ backdropLevel }) => {
+  const palette = {
     level0: colors.midnight,
     level1: colors.purple,
     level3: colors.lightTint,
     level4: colors.whiteOwl,
     level5: colors.white,
   };
+  const backgroundColor = palette[backdropLevel];
+  return {
+    backgroundColor,
+  };
+});
 
-  const backgroundColorStyle = React.useMemo(() => {
-    if (isDarkColorScheme(colorScheme)) return colors.codGray;
-    return backgroundPalette[backdropLevel as BackdropLevel];
-  }, [backgroundColor, colorScheme, backdropLevel]);
+interface BackgroundProps
+  extends Pick<BoxProps, "ref" | "sx" | "component" | "classes">,
+    BackgroundProviderProps {
+  forwardedRef?: React.Ref<HTMLDivElement>;
+}
 
+const Background: React.FC<BackgroundProps> = ({
+  forwardedRef,
+  backgroundColor = defaultBackgroundLevel,
+  ...props
+}) => {
   return (
-    <Box
-      {...props}
-      sx={{
-        ...props.sx,
-        backgroundColor: backgroundColorStyle,
-      }}
-      ref={forwardedRef}
-    >
-      {children}
-    </Box>
+    <BackgroundProvider backgroundColor={backgroundColor}>
+      <StyledBackground
+        {...props}
+        ref={forwardedRef}
+        backdropLevel={backgroundColor}
+      />
+    </BackgroundProvider>
   );
 };
 
-const Background: React.FunctionComponent<BackgroundProps> = ({
-  backgroundColor,
-  ...props
-}) => (
-  <BackgroundProvider backgroundColor={backgroundColor}>
-    <BackgroundInner {...props} backgroundColor={backgroundColor} />
-  </BackgroundProvider>
-);
-
 export default Background;
+export { useBackground, BackgroundProvider };
+export type { BackgroundProps, BackgroundProviderProps };

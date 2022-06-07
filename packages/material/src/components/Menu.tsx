@@ -1,14 +1,9 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import {
-  MuiMenu,
-  MuiMenuProps,
-  BackgroundProvider,
-  MuiMenuItem,
-  MuiMenuItemProps,
-  Typography,
-} from "..";
+import { MuiMenu, MuiMenuProps, MuiMenuItem, MuiMenuItemProps } from "..";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
+import Typography from "./Typography";
+import BackgroundProvider from "./Background";
 
 export interface MenuProps extends MuiMenuProps {
   forwardedRef?: React.Ref<HTMLDivElement>;

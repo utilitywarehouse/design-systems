@@ -1,17 +1,15 @@
 import React from "react";
 import MuiLink, { LinkProps as MuiLinkProps } from "@mui/material/Link";
-import { useTheme } from "..";
 import { isBrandBackdropLevel, isHeadingVariant } from "../utils";
 import {
   colors,
   transitions,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { styled } from "@mui/material/styles";
-import { useTheme } from "..";
-import { isBrandBackdropLevel } from "../utils";
+import { useBackground } from "./Background";
 
 const BaseLink = styled(MuiLink)(({ variant = "body" }) => {
-  const { backdropLevel } = useTheme();
+  const { backdropLevel } = useBackground();
   const getLinkColor = () => {
     if (variant === "inherit") {
       return variant;
@@ -64,17 +62,6 @@ type StyledNavLinkProps = Pick<NavLinkProps, "active" | "disabled">;
 const StyledNavLink = styled(BaseLink, {
   shouldForwardProp: (prop) => prop !== "active" && prop !== "disabled",
 })<StyledNavLinkProps>(({ active, disabled }) => {
-  const { backdropLevel } = useTheme();
-  const getLinkColor = () => {
-    if (!disabled && active) {
-      return colors.cyan;
-    }
-    if (isBrandBackdropLevel(backdropLevel)) {
-      return colors.white;
-    }
-    return colors.midnight;
-  };
-  const color = getLinkColor();
   const disabledStyles = disabled
     ? {
         transition: "none",
@@ -84,14 +71,21 @@ const StyledNavLink = styled(BaseLink, {
       }
     : {};
 
+  const activeStyles =
+    !disabled && active
+      ? {
+          "&.MuiLink-root": {
+            color: colors.cyan,
+          },
+        }
+      : {};
+
   return {
     textDecoration: "none",
-    "&.MuiLink-root": {
-      color,
-    },
     "&:hover": {
       color: colors.cyan,
     },
+    ...activeStyles,
     ...disabledStyles,
   };
 });
