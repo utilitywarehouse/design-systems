@@ -112,3 +112,7 @@ Request containing all changes. When this is merged to `main` all packages will
 be versioned, published to npm and changelogs will be generated based on the
 changesets.
 
+**PLEASE NOTE** When adding icons, you must ensure your changeset bumps both the
+`icons` and the `react-icons` packages. Please see the `react-icons` README for
+more details.
+
