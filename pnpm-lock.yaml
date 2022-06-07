@@ -82,7 +82,6 @@ importers:
       '@utilitywarehouse/customer-ui-design-tokens': ^1.0.3
       '@utilitywarehouse/customer-ui-fonts': ^1.0.1
       '@utilitywarehouse/customer-ui-react-icons': ^1.0.2
-      '@utilitywarehouse/customer-ui-theme': ^1.1.2
       babel-loader: ^8.2.2
       css-loader: ^5.2.0
       jss: ^10.9.0
@@ -5199,7 +5198,6 @@ packages:
 
   /bindings/1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
-    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -7383,7 +7381,6 @@ packages:
 
   /file-uri-to-path/1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -10231,7 +10228,6 @@ packages:
 
   /nan/2.15.0:
     resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==}
-    requiresBuild: true
     dev: true
     optional: true
 
