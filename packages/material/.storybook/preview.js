@@ -1,34 +1,43 @@
 import React from "react";
 import "./global.css";
-import { themes } from "@storybook/theming";
-import { useDarkMode } from "storybook-dark-mode";
-import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { UIProvider, Background } from "../src";
+import {
+  breakpoints,
+  helpers,
+} from "@utilitywarehouse/customer-ui-design-tokens";
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+
+const { px } = helpers;
+
+const customerUiViewports = {
+  mobile: {
+    name: "Customer UI mobile",
+    styles: {
+      width: px(breakpoints.tablet),
+      height: "100vh",
+    },
+  },
+  desktop: {
+    name: "Customer UI desktop",
+    styles: {
+      width: px(breakpoints.desktop),
+      height: "100vh",
+    },
+  },
+  ...INITIAL_VIEWPORTS,
+};
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
-  layout: "fullscreen",
-  darkMode: {
-    dark: {
-      ...themes.dark,
-      appContentBg: "#000000",
-    },
-  },
   viewport: {
-    viewports: INITIAL_VIEWPORTS,
+    viewports: customerUiViewports,
   },
 };
 
 export const decorators = [
   (Story) => {
-    const mode = useDarkMode();
     return (
-      <UIProvider
-        darkModeProviderProps={{
-          useSystemColorScheme: false,
-          value: mode ? "on" : "off",
-        }}
-      >
+      <UIProvider>
         <Background backgroundColor="level5">
           <Story />
         </Background>
