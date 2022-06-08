@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-material
 
+## 1.0.5
+
+### Patch Changes
+
+- [#420](https://github.com/utilitywarehouse/customer-ui/pull/420) [`bb30483`](https://github.com/utilitywarehouse/customer-ui/commit/bb30483aee49d9e1a44e08dcd988b44fc8a1d6fa) Thanks [@robphoenix](https://github.com/robphoenix)! - pin mui versions to try and avoid dependency mismatch issues
+
 ## 1.0.4
 
 ### Patch Changes
