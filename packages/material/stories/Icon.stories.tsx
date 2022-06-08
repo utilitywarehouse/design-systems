@@ -39,7 +39,7 @@ export const IconStory: Story<IconStoryProps> = (args) => {
   const icon = allIcons.find((icon) => icon.name === args.icon);
   return (
     <BackgroundStack>
-      <Icon icon={icon} sx={{ fill: args.color }} />
+      <Icon {...args} icon={icon} />
     </BackgroundStack>
   );
 };
