@@ -3,7 +3,6 @@ import { Story, Meta } from "@storybook/react";
 
 import { LinkProps, Stack, TypographyProps } from "../src";
 import { Link, Typography } from "../src";
-import type { TypographyVariant } from "@utilitywarehouse/customer-ui-theme";
 import { BackgroundStack } from "./utils";
 
 const typographyVariants: { [key in TypographyProps["variant"]]: boolean } = {
@@ -63,13 +62,14 @@ export default {
   },
   args: {
     children: "link",
-    typographyVariant: "default",
+    typographyVariant: "body",
     variant: "default",
+    disabled: false,
   },
 } as Meta;
 
 export const LinkStory: Story<
-  LinkProps & { typographyVariant: TypographyVariant }
+  LinkProps & { typographyVariant: TypographyProps["variant"] }
 > = (args) => {
   const { typographyVariant, ...rest } = args;
   const onClick = (e: React.MouseEvent) => {

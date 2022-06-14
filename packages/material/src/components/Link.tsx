@@ -6,6 +6,8 @@ import {
   transitions,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { styled } from "@mui/material/styles";
+import { useTheme } from "..";
+import { isBrandBackdropLevel } from "../utils";
 
 interface TextLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -14,25 +16,34 @@ interface TextLinkProps
       "children" | "classes" | "sx" | "TypographyClasses" | "variant" | "ref"
     > {}
 
-const StyledTextLink = styled(MuiLink)({
-  transition: `all ${transitions.duration}ms ${transitions.easingFunction}`,
-  transitionProperty: "text-decoration, color, opacity",
-  textDecoration: "underline",
-  opacity: 1,
-  textDecorationThickness: 2,
-  textUnderlineOffset: 4,
-  cursor: "pointer",
-  textTransform: "inherit",
-  textDecorationColor: colors.cyan,
-  "&:hover": {
-    opacity: 0.5,
-  },
+const StyledTextLink = styled(MuiLink)(() => {
+  const { backdropLevel } = useTheme();
+  const color = isBrandBackdropLevel(backdropLevel)
+    ? colors.white
+    : colors.midnight;
+
+  return {
+    transition: `all ${transitions.duration}ms ${transitions.easingFunction}`,
+    transitionProperty: "text-decoration, color, opacity",
+    textDecoration: "underline",
+    opacity: 1,
+    textDecorationThickness: 2,
+    textUnderlineOffset: 4,
+    cursor: "pointer",
+    textTransform: "inherit",
+    textDecorationColor: colors.cyan,
+    "&.MuiLink-root": {
+      color,
+    },
+    "&:hover": {
+      opacity: 0.5,
+    },
+  };
 });
 
-const TextLink: React.FunctionComponent<TextLinkProps> = ({
-  variant = "body",
-  ...props
-}) => <StyledTextLink {...props} underline="none" variant={variant} />;
+const TextLink: React.FunctionComponent<TextLinkProps> = (props) => (
+  <StyledTextLink {...props} underline="none" />
+);
 
 export interface LinkProps extends React.ComponentPropsWithoutRef<"a"> {
   variant?: "default" | "active" | "secondary";

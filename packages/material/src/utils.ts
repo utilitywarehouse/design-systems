@@ -2,6 +2,11 @@ import { BackdropLevel, ColorScheme } from "./types";
 
 export const customerUiPrefix = "uw-cui";
 
+export const isHeadingVariant = (variant: string): boolean => {
+  const headingVariants = ["displayHeading", "h1", "h2", "h3", "h4"];
+  return headingVariants.includes(variant);
+};
+
 export const isDarkColorScheme = (colorScheme: ColorScheme): boolean =>
   colorScheme === "dark";
 

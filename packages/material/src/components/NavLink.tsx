@@ -5,6 +5,8 @@ import {
   transitions,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { styled } from "@mui/material/styles";
+import { useTheme } from "..";
+import { isBrandBackdropLevel } from "../utils";
 
 export interface NavLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -22,9 +24,19 @@ interface StyledNavLinkProps {
 }
 
 const StyledNavLink = styled(MuiLink, {
-  shouldForwardProp: (prop) =>
-    prop !== "active" && prop !== "disabled" && prop !== "backdropLevel",
+  shouldForwardProp: (prop) => prop !== "active" && prop !== "disabled",
 })<StyledNavLinkProps>(({ active, disabled }) => {
+  const { backdropLevel } = useTheme();
+  const getLinkColor = () => {
+    if (!disabled && active) {
+      return colors.cyan;
+    }
+    if (isBrandBackdropLevel(backdropLevel)) {
+      return colors.white;
+    }
+    return colors.midnight;
+  };
+  const color = getLinkColor();
   const disabledStyles = disabled
     ? {
         transition: "none",
@@ -34,15 +46,6 @@ const StyledNavLink = styled(MuiLink, {
       }
     : {};
 
-  const activeStyles =
-    !disabled && active
-      ? {
-          "&.MuiLink-root": {
-            color: colors.cyan,
-          },
-        }
-      : {};
-
   return {
     transition: `${transitions.duration}ms ${transitions.easingFunction}`,
     transitionProperty: "text-decoration, color, opacity",
@@ -50,10 +53,12 @@ const StyledNavLink = styled(MuiLink, {
     cursor: "pointer",
     textTransform: "inherit",
     textDecoration: "none",
+    "&.MuiLink-root": {
+      color,
+    },
     "&:hover": {
       color: colors.cyan,
     },
-    ...activeStyles,
     ...disabledStyles,
   };
 });
