@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-material
 
+## 1.0.5
+
+### Patch Changes
+
+- [#424](https://github.com/utilitywarehouse/customer-ui/pull/424) [`faf5af9`](https://github.com/utilitywarehouse/customer-ui/commit/faf5af918afea9e927aac500e4d1faf2f4c75d36) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Link colours when on inverse background colours
+
 ## 1.0.4
 
 ### Patch Changes
