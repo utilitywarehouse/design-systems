@@ -59,8 +59,8 @@ export type {
 export { default as StylesProvider } from "./components/StylesProvider";
 export type { StylesProviderProps } from "./components/StylesProvider";
 
-export { default as UIProvider } from "./components/UIProvider";
-export type { UIProviderProps } from "./components/UIProvider";
+export { default as CustomerUIProvider } from "./components/CustomerUIProvider";
+export type { CustomerUIProviderProps } from "./components/CustomerUIProvider";
 
 export { default as withBackground } from "./hocs/withBackground";
 export type { WithBackgroundProps } from "./hocs/withBackground";

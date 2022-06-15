@@ -1,8 +1,6 @@
 import React from "react";
 import { BackdropLevel, Box, BoxProps } from "../";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
-import { buildTheme } from "../lib/theme";
-import { MuiThemeProvider, StyledEngineProvider } from "..";
 import { styled } from "@mui/material/styles";
 
 interface BackgroundContextValue {
@@ -33,16 +31,10 @@ const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({
   backgroundColor = defaultBackgroundLevel,
   children,
 }) => {
-  const muiTheme = buildTheme();
-
   return (
-    <StyledEngineProvider injectFirst>
-      <MuiThemeProvider theme={muiTheme}>
-        <BackgroundContext.Provider value={{ backdropLevel: backgroundColor }}>
-          {children}
-        </BackgroundContext.Provider>
-      </MuiThemeProvider>
-    </StyledEngineProvider>
+    <BackgroundContext.Provider value={{ backdropLevel: backgroundColor }}>
+      {children}
+    </BackgroundContext.Provider>
   );
 };
 

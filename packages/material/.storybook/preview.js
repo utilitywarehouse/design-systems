@@ -1,11 +1,11 @@
 import React from "react";
 import "./global.css";
-import { UIProvider, Background } from "../src";
 import {
   breakpoints,
   helpers,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { CustomerUIProvider } from "../src";
 
 const { px } = helpers;
 
@@ -35,13 +35,9 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story) => {
-    return (
-      <UIProvider>
-        <Background backgroundColor="level5">
-          <Story />
-        </Background>
-      </UIProvider>
-    );
-  },
+  (Story) => (
+    <CustomerUIProvider>
+      <Story />
+    </CustomerUIProvider>
+  ),
 ];

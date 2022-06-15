@@ -42,89 +42,43 @@ yarn add @utilitywarehouse/customer-ui-material
 
 ## Getting started
 
-Start by wrapping your application with the `UIProvider` component. This renders
-the necessary context providers, in the correct order, which contribute to the
-state of the UI.
-
-It's important to note that the `UIProvider` does not include the MUI
-`ThemeProvider` used to theme components. This is done by the
-`BackgroundProvider` rendered by the `Background` component.
+Start by wrapping your application with the `CustomerUIProvider` component. This
+will provide the necessary theming for the Customer UI components.
 
 ```tsx
 import * as React from "react";
-import { UIProvider } from "@utilitywarehouse/customer-ui-material";
-import Content from "./Content";
+import { CustomerUIProvider } from "@utilitywarehouse/customer-ui-material";
+import App from "./App";
 
-/**
- * This will result in the required context providers being
- * rendered by a single provider component in the correct
- * order.
- */
 const App: React.FC = () => (
-  <UIProvider>
-    <Content />
-  </UIProvider>
+  <CustomerUIProvider>
+    <App />
+  </CustomerUIProvider>
 );
 
 ```
 
-The following providers are rendered by the `UIProvider`.
+The following providers are rendered by the `CustomerUIProvider`.
 
-- **StylesProvider** - Uses the internal `StylesProvider` component which is a
-  wrapper around the [MUI StylesProvider](https://mui.com/styles/api/#stylesprovider)
+- **StylesProvider** - This is a wrapper around the [MUI StylesProvider](https://mui.com/styles/api/#stylesprovider)
   component, and sets some default props. This provider relates to MUI's
   previous styling solution `JSS`, is currently retained only to support
   applications that consume this library and use `makeStyles` for styling.
   *Note that this option is [being deprecated](https://github.com/utilitywarehouse/customer-ui/issues/247).*
-
 - **DarkModeProvider** - Manages switching between dark and light mode. *Note
   that dark mode is not yet supported.*
-- **ThemeVariantsProvider** - This is an internal provider which manages the
-  compilation of themes from the [theme package](../theme).
+- **MuiThemeProvider** - Provides the mui theme needed for styling components.
 
-## Theming
 
-Theming is handled by the [`Background`](docs/components/Background) component,
-which renders a [Background context](docs/components/BackgroundContext),
-giving components rendered further down the tree access to the Customer UI
-theme.
-
-Within the `Background` component, the Customer UI theme can be fetched via the
-`useTheme` hook. Additionally, the MUI theme used by components can be
+Within the `CustomerUIProvider` component the mui theme used by components can be
 fetched via the `useMuiTheme` hook.
 
 ```tsx
-import { Background, useTheme, useMuiTheme } from "@utilitywarehouse/customer-ui-material";
+import { useMuiTheme } from "@utilitywarehouse/customer-ui-material";
 
-const App: React.FC = () => (
-  <Background backgroundColor="level0">
-    <Main />
-  </Background>
-);
-
-const Main: React.FC = () => {
-  // Customer UI Theme object from the closest Background component
-  const theme = useTheme();
-  const muiTheme = useMuiTheme();
-
-  return (
-    ...
-  );
-};
+...
+const muiTheme = useMuiTheme();
 ```
-
-The Customer UI theme is a more complete theme when it comes to application design, where as the MUI theme is applied internally to the Material theme providers.
-
-The `Background` component provides the necessary context to render Customer UI
-components with the expected brand styles. A `Background` component isn't
-strictly required, the default behaviour is to use the theme on the `level3`
-background for light mode. However to ensure the application behaves as
-expected you should use a `Background` component.  You can have multiple
-`Background` components within your app to render different background styles in
-different areas of your application.
-The Customer UI components will then render their styles appropriately depending
-on the background color level, without needing to specify this at the individual
-component level.
 
 ## Mui Components
 
