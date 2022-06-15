@@ -39,7 +39,7 @@ export const buildTheme = (): MuiTheme => {
     ...muiTheme.components,
     ...getTypographyTheme(muiTheme),
     ...getTextFieldTheme(muiTheme),
-    ...getButtonTheme(muiTheme),
+    ...getButtonTheme(),
   };
 
   return muiTheme;

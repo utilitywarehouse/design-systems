@@ -1,12 +1,12 @@
 import React from "react";
 import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button";
-import { Theme, Components } from "@mui/material/styles";
+import { Components } from "@mui/material/styles";
 import {
   transitions,
-  spacingBase,
   fonts,
   fontWeights,
   colors,
+  helpers,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { BackdropLevel } from "../types";
 import { customerUiPrefix, isBrandBackdropLevel } from "../utils";
@@ -16,10 +16,13 @@ import { useBackground } from "./Background";
 const PREFIX = `${customerUiPrefix}-Button`;
 const classes = {
   inverse: `${PREFIX}-inverse`,
+  small: `${PREFIX}-small`,
+  medium: `${PREFIX}-medium`,
+  large: `${PREFIX}-large`,
 };
 
 interface BaseButtonProps extends Pick<MuiButtonProps, "sx" | "classes"> {
-  size?: "regular" | "large";
+  size?: "small" | "medium" | "large";
   variant?: "contained" | "outlined" | "tertiary";
   fullWidth?: boolean;
 }
@@ -37,7 +40,7 @@ type ButtonPropsAnchorElement = BaseButtonProps &
 export type ButtonProps = ButtonPropsButtonElement | ButtonPropsAnchorElement;
 
 const Button: React.FunctionComponent<ButtonProps> = ({
-  size = "regular",
+  size = "medium",
   children,
   variant = "contained",
   fullWidth = false,
@@ -48,7 +51,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   const { backdropLevel } = useBackground();
 
   const getClassName = () => {
-    const classNames = [className];
+    const classNames = [className, classes[size]];
     if (isBrandBackdropLevel(backdropLevel as BackdropLevel)) {
       classNames.push(classes.inverse);
     }
@@ -68,12 +71,6 @@ const Button: React.FunctionComponent<ButtonProps> = ({
     muiButtonProps.variant = variant;
   }
 
-  if (size === "regular") {
-    muiButtonProps.size = "medium";
-  } else {
-    muiButtonProps.size = "large";
-  }
-
   return (
     <MuiButton
       {...(props as Partial<MuiButtonProps>)}
@@ -88,7 +85,9 @@ const Button: React.FunctionComponent<ButtonProps> = ({
 
 export default Button;
 
-export const getButtonTheme = (theme: Theme): Components => {
+export const getButtonTheme = (): Components => {
+  const { px } = helpers;
+  const borderWidth = 2;
   return {
     MuiButton: {
       styleOverrides: {
@@ -97,72 +96,58 @@ export const getButtonTheme = (theme: Theme): Components => {
           transitionProperty: "background-color, border-color, color, opacity",
           fontFamily: fonts.secondary,
           fontWeight: fontWeights.secondary.semibold,
-          fontSize: 16,
+          fontSize: 18,
           lineHeight: 1,
           textTransform: "none",
-          borderStyle: "solid",
+          opacity: 1,
           paddingTop: 0,
           paddingBottom: 0,
-          height: spacingBase * 4,
-          paddingLeft: spacingBase * 2,
-          paddingRight: spacingBase * 2,
-          borderRadius: spacingBase * (4 / 2),
-          [theme.breakpoints.up("tablet")]: {
-            fontSize: 18,
-          },
+          paddingLeft: px(32 - borderWidth * 2),
+          paddingRight: px(32 - borderWidth * 2),
+          borderStyle: "solid",
+          borderRadius: px(32),
+          borderWidth,
           "&:disabled": {
             opacity: 0.5,
           },
-          // contained
+          // size
+          [`&.${classes.small}`]: {
+            height: px(32),
+          },
+          [`&.${classes.medium}`]: {
+            height: px(40),
+          },
+          [`&.${classes.large}`]: {
+            height: px(48),
+          },
+          // variant: contained
           "&.MuiButton-containedPrimary": {
             color: colors.midnight,
             backgroundColor: colors.cyan,
             borderColor: colors.transparent,
-            opacity: 1,
-            borderTopWidth: 0,
-            borderBottomWidth: 0,
-            borderLeftWidth: 0,
-            borderRightWidth: 0,
             "&:hover": {
               backgroundColor: new TinyColor(colors.cyan)
                 .lighten(15)
                 .toHexString(),
             },
           },
-          // outlined
+          // variant: outlined
           "&.MuiButton-outlinedPrimary": {
+            color: colors.midnight,
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
-            color: colors.midnight,
-            borderWidth: 2,
             "&:hover": {
               borderColor: colors.midnight,
+              borderWidth,
+            },
+            "&:disabled": {
+              opacity: 0.5,
+              borderWidth,
             },
             [`&.${classes.inverse}`]: {
               color: colors.white,
               "&:hover": {
                 borderColor: colors.white,
-              },
-            },
-          },
-          // contained & outlined
-          "&.MuiButton-containedPrimary,&.MuiButton-outlinedPrimary": {
-            [theme.breakpoints.up("desktop")]: {
-              height: spacingBase * 5,
-              paddingLeft: spacingBase * 3,
-              paddingRight: spacingBase * 3,
-              borderRadius: spacingBase * (5 / 2),
-            },
-            "&.MuiButton-sizeLarge": {
-              height: spacingBase * 6,
-              paddingLeft: spacingBase * 3,
-              paddingRight: spacingBase * 3,
-              borderRadius: spacingBase * (6 / 2),
-              [theme.breakpoints.up("desktop")]: {
-                height: spacingBase * 7,
-                paddingLeft: spacingBase * 4,
-                paddingRight: spacingBase * 4,
-                borderRadius: spacingBase * (7 / 2),
               },
             },
           },
