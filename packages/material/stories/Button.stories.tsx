@@ -6,7 +6,7 @@ import type { ButtonProps } from "../src";
 import { BackgroundStack } from "./utils";
 
 const sizes = ["small", "medium", "large"] as const;
-const variants = ["contained", "outlined", "tertiary"] as const;
+const variants = ["primary", "secondary", "tertiary"] as const;
 
 export default {
   title: "Components/Button",
@@ -31,7 +31,7 @@ export default {
   },
   args: {
     size: "medium",
-    variant: "contained",
+    variant: "primary",
     children: "Button",
     disabled: false,
     fullWidth: false,

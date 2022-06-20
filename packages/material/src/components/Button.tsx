@@ -15,6 +15,9 @@ import { useBackground } from "./Background";
 
 const PREFIX = `${customerUiPrefix}-Button`;
 const classes = {
+  primary: `${PREFIX}-primary`,
+  secondary: `${PREFIX}-secondary`,
+  tertiary: `${PREFIX}-tertiary`,
   inverse: `${PREFIX}-inverse`,
   small: `${PREFIX}-small`,
   medium: `${PREFIX}-medium`,
@@ -23,7 +26,7 @@ const classes = {
 
 interface BaseButtonProps extends Pick<MuiButtonProps, "sx" | "classes"> {
   size?: "small" | "medium" | "large";
-  variant?: "contained" | "outlined" | "tertiary";
+  variant?: "primary" | "secondary" | "tertiary";
   fullWidth?: boolean;
 }
 
@@ -42,7 +45,7 @@ export type ButtonProps = ButtonPropsButtonElement | ButtonPropsAnchorElement;
 const Button: React.FunctionComponent<ButtonProps> = ({
   size = "medium",
   children,
-  variant = "contained",
+  variant = "primary",
   fullWidth = false,
   forwardedRef,
   className,
@@ -51,29 +54,31 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   const { backdropLevel } = useBackground();
 
   const getClassName = () => {
-    const classNames = [className, classes[size]];
+    const classNames = [classes[variant], classes[size]];
+    if (className) {
+      classNames.push(className);
+    }
     if (isBrandBackdropLevel(backdropLevel as BackdropLevel)) {
       classNames.push(classes.inverse);
     }
     return classNames.join(" ");
   };
 
+  const muiVariants = {
+    primary: "contained",
+    secondary: "outlined",
+    tertiary: "text",
+  };
+
   const muiButtonProps: MuiButtonProps = {
-    color: "primary",
-    disableElevation: true,
+    ...(props as Partial<MuiButtonProps>),
     fullWidth,
+    variant: muiVariants[variant] as MuiButtonProps["variant"],
     className: getClassName(),
   };
 
-  if (variant === "tertiary") {
-    muiButtonProps.variant = "text";
-  } else {
-    muiButtonProps.variant = variant;
-  }
-
   return (
     <MuiButton
-      {...(props as Partial<MuiButtonProps>)}
       {...muiButtonProps}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={forwardedRef as unknown as any}
@@ -90,6 +95,9 @@ export const getButtonTheme = (): Components => {
   const borderWidth = 2;
   return {
     MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+      },
       styleOverrides: {
         root: {
           transition: `${transitions.duration}ms ${transitions.easingFunction}`,
@@ -107,6 +115,7 @@ export const getButtonTheme = (): Components => {
           borderStyle: "solid",
           borderRadius: px(32),
           borderWidth,
+          color: colors.midnight,
           "&:disabled": {
             opacity: 0.5,
           },
@@ -120,9 +129,7 @@ export const getButtonTheme = (): Components => {
           [`&.${classes.large}`]: {
             height: px(48),
           },
-          // variant: contained
-          "&.MuiButton-containedPrimary": {
-            color: colors.midnight,
+          [`&.${classes.primary}`]: {
             backgroundColor: colors.cyan,
             borderColor: colors.transparent,
             "&:hover": {
@@ -131,9 +138,7 @@ export const getButtonTheme = (): Components => {
                 .toHexString(),
             },
           },
-          // variant: outlined
-          "&.MuiButton-outlinedPrimary": {
-            color: colors.midnight,
+          [`&.${classes.secondary}`]: {
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
             "&:hover": {
@@ -151,9 +156,7 @@ export const getButtonTheme = (): Components => {
               },
             },
           },
-          // tertiary
-          "&.MuiButton-text": {
-            color: colors.midnight,
+          [`&.${classes.tertiary}`]: {
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
             height: "auto",
