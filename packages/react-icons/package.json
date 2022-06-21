@@ -14,8 +14,10 @@
     "access": "restricted"
   },
   "devDependencies": {
-    "@svgr/core": "^5.5.0",
     "@svgr/cli": "^5.5.0",
+    "@svgr/core": "^5.5.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "@utilitywarehouse/customer-ui-icons": "1.0.3",
     "mkdirp": "^1.0.4",
     "uuid": "^8.3.2"
