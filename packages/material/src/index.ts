@@ -31,6 +31,9 @@ export type { IconProps } from "./components/Icon";
 export { default as Hidden } from "./components/Hidden";
 export type { HiddenProps } from "./components/Hidden";
 
+export { default as Spacer } from "./components/Spacer";
+export type { SpacerProps } from "./components/Spacer";
+
 export { default as InteractiveCard } from "./components/InteractiveCard";
 export type { InteractiveCardProps } from "./components/InteractiveCard";
 
