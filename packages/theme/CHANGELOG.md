@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-theme
 
+## 1.1.3
+
+### Patch Changes
+
+- [#441](https://github.com/utilitywarehouse/customer-ui/pull/441) [`fd343c2`](https://github.com/utilitywarehouse/customer-ui/commit/fd343c2cef3403d766e427c93741bad40e3f739b) Thanks [@robphoenix](https://github.com/robphoenix)! - Just need to check the release & publish process
+
 ## 1.1.2
 
 ### Patch Changes
