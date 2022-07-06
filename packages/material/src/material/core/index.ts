@@ -53,9 +53,11 @@ export * from "@mui/material/Box";
 export { default as Breadcrumbs } from "@mui/material/Breadcrumbs";
 export * from "@mui/material/Breadcrumbs";
 
-export { default as MuiButton } from "@mui/material/Button";
-export { buttonClasses } from "@mui/material/Button";
-export * from "@mui/material/Button/buttonClasses";
+export {
+  default as MuiButton,
+  buttonClasses,
+  getButtonUtilityClass,
+} from "@mui/material/Button";
 export type {
   ButtonPropsVariantOverrides,
   ButtonTypeMap,

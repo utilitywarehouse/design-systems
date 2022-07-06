@@ -12,26 +12,29 @@ import { BackdropLevel } from "../types";
 import { isBrandBackdropLevel } from "../utils";
 import { useTheme } from "./BackgroundProvider";
 import { Theme, styled } from "@mui/material/styles";
-import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
+import {
+  CSSProperties,
+  TypographyStyleOptions,
+} from "@mui/material/styles/createTypography";
 
 declare module "@mui/material/styles" {
   interface TypographyVariants {
-    default: React.CSSProperties;
-    displayHeading: React.CSSProperties;
-    subtitle: React.CSSProperties;
-    body: React.CSSProperties;
-    legalNote: React.CSSProperties;
-    caption: React.CSSProperties;
+    default: CSSProperties;
+    displayHeading: CSSProperties;
+    subtitle: CSSProperties;
+    body: CSSProperties;
+    legalNote: CSSProperties;
+    caption: CSSProperties;
   }
 
   // allow configuration using material-ui's `createTheme`
   interface TypographyVariantsOptions {
-    default?: React.CSSProperties;
-    displayHeading?: React.CSSProperties;
-    subtitle?: React.CSSProperties;
-    body?: React.CSSProperties;
-    legalNote?: React.CSSProperties;
-    caption?: React.CSSProperties;
+    default?: CSSProperties;
+    displayHeading?: CSSProperties;
+    subtitle?: CSSProperties;
+    body?: CSSProperties;
+    legalNote?: CSSProperties;
+    caption?: CSSProperties;
   }
 }
 

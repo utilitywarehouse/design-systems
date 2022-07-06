@@ -7,7 +7,7 @@
     "clean:dist": "rimraf dist/",
     "clean:deps": "rimraf node_modules",
     "clean": "pnpm clean:dist && pnpm clean:deps",
-    "build": "pnpm clean:dist && tsc",
+    "build": "pnpm clean:dist && tsc --build ./tsconfig.build.json",
     "test:coverage": "pnpm test --coverage",
     "serve:coverage": "open coverage/lcov-report/index.html",
     "lint": "eslint --fix --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",
@@ -28,26 +28,23 @@
   "author": "",
   "license": "ISC",
   "publishConfig": {
-    "access": "restricted"
+    "access": "restricted",
+    "directory": "dist"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.4.0",
     "@emotion/cache": "^11.7.1",
-    "@emotion/react": "^11.8.1",
+    "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@mui/material": "^5.4.4",
-    "@mui/styled-engine": "^5.4.4",
-    "@mui/styles": "^5.4.4",
+    "@mui/material": "^5.8.7",
+    "@mui/styled-engine": "^5.8.7",
+    "@mui/styles": "^5.8.7",
     "@utilitywarehouse/customer-ui-design-tokens": "^1.0.3",
     "@utilitywarehouse/customer-ui-fonts": "^1.0.1",
     "@utilitywarehouse/customer-ui-react-icons": "^1.0.2",
     "@utilitywarehouse/customer-ui-theme": "^1.1.2",
     "jss": "^10.9.0"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@storybook/addon-essentials": "^6.4.21",
@@ -55,7 +52,6 @@
     "@storybook/addons": "^6.4.21",
     "@storybook/react": "^6.4.21",
     "@storybook/theming": "^6.4.21",
-    "@types/react-dom": "^17.0.0",
     "@types/react": "^17.0.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.0",

@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES6",
+    "noEmit": false,
+    "outDir": "dist",
+    "sourceMap": true,
+    "jsx": "react-jsx",
+    "declaration": true,
+    "declarationMap": true
+  },
+  "exclude": [
+    "**/*.stories.*",
+    "**/*.spec.*",
+    "**/*.test.*",
+    "**/__mocks__",
+    "**/__tests__",
+    "**/*jest*",
+    "**/storybook",
+    "**/tests",
+    "**/setupTests.ts"
+  ],
+  "include": ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"]
+}
