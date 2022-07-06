@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-material
 
+## 1.0.7
+
+### Patch Changes
+
+- [#439](https://github.com/utilitywarehouse/customer-ui/pull/439) [`9d4c0ad`](https://github.com/utilitywarehouse/customer-ui/commit/9d4c0ad275880eb459959d577bf37ff93d74c6ec) Thanks [@robphoenix](https://github.com/robphoenix)! - update mui deps & fix build for SSR apps
+
 ## 1.0.6
 
 ### Patch Changes
