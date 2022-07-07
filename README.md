@@ -1,17 +1,17 @@
-# Customer UI
+# Customer Web UI
 
 This monorepo contains all the packages used for Customer UI. See [individual packages](#packages) for more info.
 
-For more information about how this fits into the wider UI landscape, please have a look at [the wiki](https://wiki.prod.uw.systems/en/Technology/ui-development)(requires VPN connection).
+For more information about how this fits into the wider UI landscape, please have a look at [the wiki](https://wiki.prod.uw.systems/en/Technology/ui-development) (requires VPN connection).
 
 ## Packages
 
-- [@utilitywarehouse/customer-ui-design-tokens](packages/design-tokens)
-- [@utilitywarehouse/customer-ui-fonts](packages/fonts)
-- [@utilitywarehouse/customer-ui-icons](packages/icons)
-- [@utilitywarehouse/customer-ui-react-icons](packages/react-icons)
-- [@utilitywarehouse/customer-ui-theme](packages/theme)
-- [@utilitywarehouse/customer-ui-material](packages/material)
+- [@utilitywarehouse/customer-web-ui-design-tokens](packages/design-tokens)
+- [@utilitywarehouse/customer-web-ui-fonts](packages/fonts)
+- [@utilitywarehouse/customer-web-ui-icons](packages/icons)
+- [@utilitywarehouse/customer-web-ui-react-icons](packages/react-icons)
+- [@utilitywarehouse/customer-web-ui-theme](packages/theme)
+- [@utilitywarehouse/customer-web-ui-material](packages/material)
 
 ## Contents
 
