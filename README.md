@@ -6,12 +6,12 @@ For more information about how this fits into the wider UI landscape, please hav
 
 ## Packages
 
-- [@utilitywarehouse/customer-web-ui-design-tokens](packages/design-tokens)
-- [@utilitywarehouse/customer-web-ui-fonts](packages/fonts)
-- [@utilitywarehouse/customer-web-ui-icons](packages/icons)
-- [@utilitywarehouse/customer-web-ui-react-icons](packages/react-icons)
-- [@utilitywarehouse/customer-web-ui-theme](packages/theme)
-- [@utilitywarehouse/customer-web-ui-material](packages/material)
+- [@utilitywarehouse/customer-ui-design-tokens](packages/design-tokens)
+- [@utilitywarehouse/customer-ui-fonts](packages/fonts)
+- [@utilitywarehouse/customer-ui-icons](packages/icons)
+- [@utilitywarehouse/customer-ui-react-icons](packages/react-icons)
+- [@utilitywarehouse/customer-ui-theme](packages/theme)
+- [@utilitywarehouse/customer-ui-material](packages/material)
 
 ## Contents
 
