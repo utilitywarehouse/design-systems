@@ -2,6 +2,8 @@
 
 This monorepo contains all the packages used for Customer UI. See [individual packages](#packages) for more info.
 
+For more information about how this fits into the wider UI landscape, please have a look at [the wiki](https://wiki.prod.uw.systems/en/Technology/ui-development)(requires VPN connection).
+
 ## Packages
 
 - [@utilitywarehouse/customer-ui-design-tokens](packages/design-tokens)
