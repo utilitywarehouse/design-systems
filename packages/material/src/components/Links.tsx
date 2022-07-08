@@ -124,4 +124,5 @@ const NavLink: React.FunctionComponent<NavLinkProps> = ({
 };
 
 export default Link;
-export { NavLink, LinkProps, NavLinkProps };
+export { NavLink };
+export type { LinkProps, NavLinkProps };

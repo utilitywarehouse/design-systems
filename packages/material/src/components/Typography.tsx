@@ -7,8 +7,6 @@ import {
   fonts,
   fontWeights,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import {} from "@mui/material/styles/createTypography";
-import { useTheme } from "./BackgroundProvider";
 import { CSSProperties } from "@mui/material/styles/createTypography";
 import { customerUiPrefix, isBrandBackdropLevel } from "../utils";
 import { Theme, Components } from "@mui/material/styles";
@@ -132,6 +130,7 @@ export default Typography;
 
 export const getTypographyTheme = (theme: Theme): Components => {
   const headingStyles = {
+    fontFamily: fonts.primary,
     color: colors.purple,
     [`&.${classes.secondary}`]: {
       color: colors.midnight,
@@ -141,6 +140,7 @@ export const getTypographyTheme = (theme: Theme): Components => {
     },
   };
   const bodyStyles = {
+    fontFamily: fonts.secondary,
     color: colors.midnight,
     [`&.${classes.semibold}`]: {
       fontWeight: fontWeights.secondary.semibold,
@@ -166,77 +166,68 @@ export const getTypographyTheme = (theme: Theme): Components => {
     MuiTypography: {
       styleOverrides: {
         displayHeading: {
-          fontFamily: fonts.primary,
+          ...headingStyles,
           fontSize: theme.typography.pxToRem(42),
           lineHeight: 1,
-          ...headingStyles,
           [theme.breakpoints.up("desktop")]: {
             fontSize: theme.typography.pxToRem(64),
           },
         },
         h1: {
-          fontFamily: fonts.primary,
+          ...headingStyles,
           fontSize: theme.typography.pxToRem(32),
           lineHeight: 1.2,
-          ...headingStyles,
           [theme.breakpoints.up("desktop")]: {
             fontSize: theme.typography.pxToRem(42),
           },
         },
         h2: {
-          fontFamily: fonts.primary,
+          ...headingStyles,
           fontSize: theme.typography.pxToRem(28),
           lineHeight: 1.5,
-          ...headingStyles,
           [theme.breakpoints.up("desktop")]: {
             fontSize: theme.typography.pxToRem(32),
             lineHeight: 1.2,
           },
         },
         h3: {
-          fontFamily: fonts.primary,
+          ...headingStyles,
           fontSize: theme.typography.pxToRem(22),
           lineHeight: 1.5,
-          ...headingStyles,
           [theme.breakpoints.up("desktop")]: {
             fontSize: theme.typography.pxToRem(24),
           },
         },
         h4: {
-          fontFamily: fonts.primary,
+          ...headingStyles,
           fontSize: theme.typography.pxToRem(18),
           lineHeight: 1.5,
-          ...headingStyles,
           [theme.breakpoints.up("desktop")]: {
             fontSize: theme.typography.pxToRem(20),
           },
         },
         body: {
-          fontFamily: fonts.secondary,
+          ...bodyStyles,
           fontSize: theme.typography.pxToRem(16),
           lineHeight: 1.5,
-          ...bodyStyles,
         },
         subtitle: {
-          fontFamily: fonts.secondary,
+          ...bodyStyles,
           fontSize: theme.typography.pxToRem(18),
           lineHeight: 1.5,
-          ...bodyStyles,
           [theme.breakpoints.up("desktop")]: {
             fontSize: theme.typography.pxToRem(20),
           },
         },
         legalNote: {
-          fontFamily: fonts.secondary,
+          ...bodyStyles,
           fontSize: theme.typography.pxToRem(14),
           lineHeight: 1.5,
-          ...bodyStyles,
         },
         caption: {
-          fontFamily: fonts.secondary,
+          ...bodyStyles,
           fontSize: theme.typography.pxToRem(12),
           lineHeight: 2,
-          ...bodyStyles,
         },
       },
     },
