@@ -40,7 +40,6 @@
     "lint": "pnpm lint -r --stream",
     "lint:ci": "pnpm lint:ci -r --stream",
     "clean": "pnpm run clean -r --stream && rimraf node_modules",
-    "clean:deps": "pnpm run clean:deps -r --stream && rimraf node_modules",
     "new-package": "node ./scripts/new-package.js",
     "storybook:start": "pnpm storybook:start -r --filter *material",
     "changeset": "changeset",

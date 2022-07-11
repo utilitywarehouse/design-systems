@@ -4,10 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "clean:dist": "rm -rf dist/",
-    "clean:deps": "rimraf node_modules",
-    "clean": "pnpm clean:dist && pnpm clean:deps",
-    "build": "pnpm clean:dist && tsc",
+    "clean": "rimraf node_modules",
+    "build": "rm -rf dist/ && tsc",
     "watch": "pnpm build -- --watch",
     "format": "prettier --write \"./src/**/*.{ts,js}\"",
     "lint": "eslint ./src --fix --ext .ts,.js",

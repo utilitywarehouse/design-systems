@@ -4,8 +4,7 @@
   "description": "Design Tokens for the UW Customer brand",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rimraf dist/",
-    "build": "pnpm clean && tsc",
+    "build": "rimraf dist/ && tsc",
     "watch": "pnpm build -- --watch",
     "format": "prettier --write \"./src/**/*.ts\"",
     "lint": "eslint ./src --fix --ext .ts",
