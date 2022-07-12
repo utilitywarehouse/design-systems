@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf node_modules",
-    "build": "rimraf dist/ && tsc",
+    "build": "rimraf dist/ && tsc --build ./tsconfig.build.json",
     "test:coverage": "pnpm test --coverage",
     "serve:coverage": "open coverage/lcov-report/index.html",
     "lint": "eslint --fix --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",
@@ -26,8 +26,7 @@
   "author": "",
   "license": "ISC",
   "publishConfig": {
-    "access": "restricted",
-    "directory": "dist"
+    "access": "restricted"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.4.0",
@@ -58,7 +57,6 @@
     "style-loader": "^2.0.0"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ]
 }
