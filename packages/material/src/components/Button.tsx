@@ -110,9 +110,6 @@ export const getButtonTheme = (theme: Theme): Components => {
           [theme.breakpoints.up("tablet")]: {
             fontSize: 18,
           },
-          "&:disabled": {
-            opacity: 0.5,
-          },
           // contained
           "&.MuiButton-containedPrimary": {
             color: colors.midnight,
@@ -186,6 +183,12 @@ export const getButtonTheme = (theme: Theme): Components => {
               color: colors.white,
             },
           },
+          "&.MuiButton-containedPrimary,&.MuiButton-outlinedPrimary,&.MuiButton-text":
+            {
+              "&:disabled": {
+                opacity: 0.5,
+              },
+            },
         },
       },
     },
