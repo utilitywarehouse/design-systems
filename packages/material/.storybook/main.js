@@ -6,5 +6,9 @@ module.exports = {
   addons: ["@storybook/addon-essentials", "@storybook/addon-viewport"],
   features: {
     emotionAlias: false,
+    storyStoreV7: true,
+  },
+  core: {
+    disableTelemetry: true,
   },
 };
