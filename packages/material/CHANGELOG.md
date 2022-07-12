@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-material
 
+## 1.0.8
+
+### Patch Changes
+
+- [#446](https://github.com/utilitywarehouse/customer-web-ui/pull/446) [`ec85c67`](https://github.com/utilitywarehouse/customer-web-ui/commit/ec85c674fc4f05a2dd414319b29536c3a7cc107a) Thanks [@robphoenix](https://github.com/robphoenix)! - fix Button disabled styles
+
 ## 1.0.7
 
 ### Patch Changes
