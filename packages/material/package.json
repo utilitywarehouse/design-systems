@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf node_modules",
-    "build": "rimraf dist/ && tsc --build ./tsconfig.build.json",
+    "build": "rimraf dist/ && tsc",
     "test:coverage": "pnpm test --coverage",
     "serve:coverage": "open coverage/lcov-report/index.html",
     "lint": "eslint --fix --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",
@@ -58,6 +58,7 @@
     "style-loader": "^2.0.0"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ]
 }
