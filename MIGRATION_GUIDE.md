@@ -20,6 +20,13 @@ issue.
 - When used with version *alpha.28* or later of the `react-icons` package, the
   color of the `Icon` component needs to be set with the `sx` styling prop
   rather than the `color` prop. This is detailed below.
+- When installing v1 non-alpha versions of `customer-ui-material` there can
+  sometimes be multiple different versions of `@mui/material` installed, which
+  can lead to missing CSS styles. To avoid this please add `@mui/material` to
+  your package.json with the exact same version number (including any `^` if
+  there is one) as is in the package.json of the version of
+  `customer-ui-material` you are using. This is annoying, we know, and are
+  looking into how best to resolve this issue.
 
 ### Example migrations
 
