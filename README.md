@@ -6,3 +6,7 @@ across both customer and partner products, with the possibility that there
 could also be even more low-level themeable components that could be used in
 internal applications as well.
 
+## Decision Records
+
+Significant technical decisions should be recorded in the [decisions](/decisions) folder.
+
