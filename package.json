@@ -30,7 +30,7 @@
   },
   "scripts": {
     "install:ci": "pnpm i --frozen-lockfile --ignore-scripts",
-    "setup": "npm i -g pnpm@6",
+    "setup": "corepack enable && corepack prepare pnpm@7.5.2 --activate",
     "build": "pnpm run build -r --stream",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",

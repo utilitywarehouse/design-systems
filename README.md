@@ -20,10 +20,10 @@ have a look at [the wiki](https://wiki.prod.uw.systems/en/Technology/ui-developm
 Run setup. This will install [pnpm](https://pnpm.io/), which we use to manage
 this monorepo.
 
+**Make sure you're using node v16.10+ before running the below commands**
+
 ```console
-npm setup
-# or
-yarn setup
+npm run setup
 ```
 
 Install dependencies
