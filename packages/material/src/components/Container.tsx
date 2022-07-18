@@ -6,12 +6,11 @@ const StyledBox = styled(Box)(({ theme }) => ({
   boxSizing: "border-box",
   display: "block",
   width: "100%",
-  paddingY: 0,
-  paddingX: theme.spacing(2),
+  padding: `0 ${theme.spacing(2)}`,
   margin: "0 auto",
   maxWidth: `calc(343px + ${theme.spacing(4)})`,
   [theme.breakpoints.up("tablet")]: {
-    paddingX: theme.spacing(3),
+    padding: `0 ${theme.spacing(3)}`,
     maxWidth: `calc(720px + ${theme.spacing(6)})`,
   },
   [theme.breakpoints.up("desktop")]: {
