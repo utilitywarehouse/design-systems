@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-material
 
+## 1.0.9
+
+### Patch Changes
+
+- [#455](https://github.com/utilitywarehouse/customer-web-ui/pull/455) [`a361f7d`](https://github.com/utilitywarehouse/customer-web-ui/commit/a361f7d9afe4ee488f8f3e95251413718c92f093) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixed padding syntax issue on Container component
+
 ## 1.0.8
 
 ### Patch Changes
