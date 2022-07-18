@@ -73,6 +73,7 @@ importers:
       '@mui/material': ^5.8.7
       '@mui/styled-engine': ^5.8.7
       '@mui/styles': ^5.8.7
+      '@mui/types': ^7.1.4
       '@storybook/addon-essentials': ^6.5.9
       '@storybook/addon-viewport': ^6.5.9
       '@storybook/addons': ^6.5.9
@@ -104,6 +105,7 @@ importers:
       jss: 10.9.0
     devDependencies:
       '@babel/core': 7.16.12
+      '@mui/types': 7.1.4_@types+react@17.0.38
       '@storybook/addon-essentials': 6.5.9_5m2fib3ezxvrdbkridzpbwc55a
       '@storybook/addon-viewport': 6.5.9_sfoxds7t5ydpegc3knd667wn6m
       '@storybook/addons': 6.5.9_sfoxds7t5ydpegc3knd667wn6m
@@ -3628,7 +3630,6 @@ packages:
         optional: true
     dependencies:
       '@types/react': 17.0.38
-    dev: false
 
   /@mui/utils/5.8.6_react@17.0.2:
     resolution: {integrity: sha512-QM2Sd1xZo2jOt2Vz5Rmro+pi2FLJyiv4+OjxkUwXR3oUM65KSMAMLl/KNYU55s3W3DLRFP5MVwE4FhAbHseHAg==}
