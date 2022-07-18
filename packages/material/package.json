@@ -1,13 +1,11 @@
 {
   "name": "@utilitywarehouse/customer-ui-material",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "UW Customer UI component library, built upon MUI Material",
   "main": "dist/index.js",
   "scripts": {
-    "clean:dist": "rimraf dist/",
-    "clean:deps": "rimraf node_modules",
-    "clean": "pnpm clean:dist && pnpm clean:deps",
-    "build": "pnpm clean:dist && tsc --build ./tsconfig.build.json",
+    "clean": "rimraf node_modules",
+    "build": "rimraf dist/ && tsc --build ./tsconfig.build.json",
     "test:coverage": "pnpm test --coverage",
     "serve:coverage": "open coverage/lcov-report/index.html",
     "lint": "eslint --fix --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",
@@ -28,8 +26,7 @@
   "author": "",
   "license": "ISC",
   "publishConfig": {
-    "access": "restricted",
-    "directory": "dist"
+    "access": "restricted"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.4.0",
@@ -46,11 +43,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
-    "@storybook/addon-essentials": "^6.4.21",
-    "@storybook/addon-viewport": "^6.4.21",
-    "@storybook/addons": "^6.4.21",
-    "@storybook/react": "^6.4.21",
-    "@storybook/theming": "^6.4.21",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-viewport": "^6.5.9",
+    "@storybook/addons": "^6.5.9",
+    "@storybook/react": "^6.5.9",
+    "@storybook/theming": "^6.5.9",
     "@types/react": "^17.0.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.0",

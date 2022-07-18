@@ -45,7 +45,12 @@ const Icons: React.FC<IconsProps> = (props) => {
                 key={icon.name}
                 onClick={() => {
                   copyToClipboard(
-                    `import { ${icon.name} } from "@utilitywarehouse/customer-ui-react-icons/${iconSet}/${icon.name}"`
+                    `import ${icon.name.replace(
+                      "Icon", // Not all icons have the Icon suffix, so in order to have some consistency, we'll remove it from those that do and add it to all icon names
+                      ""
+                    )}Icon from "@utilitywarehouse/customer-ui-react-icons/${iconSet}/${
+                      icon.name
+                    }"`
                   );
                   setCopied(true);
                 }}
@@ -59,7 +64,9 @@ const Icons: React.FC<IconsProps> = (props) => {
                 >
                   <Stack spacing={2} alignItems="center">
                     <IconComponent fill={colors.midnight} />
-                    <Typography component="span">{icon.name}</Typography>
+                    <Typography component="span">
+                      {icon.name.replace("Icon", "")}
+                    </Typography>
                   </Stack>
                 </Tooltip>
               </InteractiveCard>

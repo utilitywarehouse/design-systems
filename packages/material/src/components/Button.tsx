@@ -174,6 +174,12 @@ export const getButtonTheme = (): Components => {
               color: colors.white,
             },
           },
+          "&.MuiButton-containedPrimary,&.MuiButton-outlinedPrimary,&.MuiButton-text":
+            {
+              "&:disabled": {
+                opacity: 0.5,
+              },
+            },
         },
       },
     },

@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean:dist": "rimraf fonts.css*",
-    "clean:deps": "rimraf node_modules",
-    "clean": "pnpm clean:dist && pnpm clean:deps",
-    "build": "pnpm clean:dist && sass fonts.scss fonts.css",
+    "clean": "rimraf node_modules",
+    "build": "rimraf fonts.css* && sass fonts.scss fonts.css",
     "watch": "pnpm build -- --watch"
   },
   "license": "ISC",
