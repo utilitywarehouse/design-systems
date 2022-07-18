@@ -5,7 +5,7 @@ import {
   helpers,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
-import { CustomerUIProvider } from "../src";
+import { ThemeProvider } from "../src";
 
 const { px } = helpers;
 
@@ -36,8 +36,8 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <CustomerUIProvider>
+    <ThemeProvider>
       <Story />
-    </CustomerUIProvider>
+    </ThemeProvider>
   ),
 ];

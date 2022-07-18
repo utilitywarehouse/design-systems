@@ -4,6 +4,9 @@ export * from "./material/core";
 
 export type { BackdropLevel } from "./types";
 
+export { theme } from "./lib/theme";
+export type { Theme } from "@mui/material/styles/createTheme";
+
 export {
   default as Background,
   useBackground,
@@ -52,8 +55,8 @@ export type { TypographyProps } from "./components/Typography";
 export { default as StylesProvider } from "./components/StylesProvider";
 export type { StylesProviderProps } from "./components/StylesProvider";
 
-export { default as CustomerUIProvider } from "./components/CustomerUIProvider";
-export type { CustomerUIProviderProps } from "./components/CustomerUIProvider";
+export { default as ThemeProvider } from "./components/ThemeProvider";
+export type { ThemeProviderProps } from "./components/ThemeProvider";
 
 export { default as withBackground } from "./hocs/withBackground";
 export type { WithBackgroundProps } from "./hocs/withBackground";

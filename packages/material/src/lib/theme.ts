@@ -9,8 +9,6 @@ import {
   spacingBase,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 
-export type { Theme as MuiTheme } from "@mui/material/styles/createTheme";
-
 export const buildTheme = (): MuiTheme => {
   const muiTheme = createTheme({
     breakpoints: {
@@ -44,3 +42,5 @@ export const buildTheme = (): MuiTheme => {
 
   return muiTheme;
 };
+
+export const theme = buildTheme();
