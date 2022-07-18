@@ -110,8 +110,8 @@ export const getButtonTheme = (): Components => {
           opacity: 1,
           paddingTop: 0,
           paddingBottom: 0,
-          paddingLeft: px(32 - borderWidth * 2),
-          paddingRight: px(32 - borderWidth * 2),
+          paddingLeft: px(32 - borderWidth),
+          paddingRight: px(32 - borderWidth),
           borderStyle: "solid",
           borderRadius: px(32),
           borderWidth,
@@ -131,7 +131,9 @@ export const getButtonTheme = (): Components => {
           },
           [`&.${classes.primary}`]: {
             backgroundColor: colors.cyan,
-            borderColor: colors.transparent,
+            border: "none",
+            paddingLeft: px(32),
+            paddingRight: px(32),
             "&:hover": {
               backgroundColor: new TinyColor(colors.cyan)
                 .lighten(15)
