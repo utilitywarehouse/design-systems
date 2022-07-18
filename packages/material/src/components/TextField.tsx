@@ -18,7 +18,6 @@ import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/War
 import { customerUiPrefix, getHexOpacity } from "../utils";
 import { Theme, Components } from "@mui/material/styles";
 import { useBackground } from "./Background";
-import { useDarkMode } from "./DarkModeProvider";
 
 const PREFIX = `${customerUiPrefix}-TextField`;
 const classes = {
@@ -96,11 +95,10 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const hasErrorStatus = !disabled && isErrorStatus(status);
   const formControlProps = { error: hasErrorStatus, disabled };
   const { backdropLevel } = useBackground();
-  const { darkModeEnabled } = useDarkMode();
 
   // should only be used on white, light tint & cod grey backgrounds
   const validBackdropLevels = ["level3", "level4", "level5"];
-  if (!darkModeEnabled && !validBackdropLevels.includes(backdropLevel)) {
+  if (!validBackdropLevels.includes(backdropLevel)) {
     console.warn(
       `Invalid backdrop level for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackdropLevels
         .map((l) => `'${l}'`)

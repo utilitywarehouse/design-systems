@@ -62,8 +62,6 @@ The following providers are rendered by the `CustomerUIProvider`.
   previous styling solution `JSS`, is currently retained only to support
   applications that consume this library and use `makeStyles` for styling.
   *Note that this option is [being deprecated](https://github.com/utilitywarehouse/customer-ui/issues/247).*
-- **DarkModeProvider** - Manages switching between dark and light mode. *Note
-  that dark mode is not yet supported.*
 - **MuiThemeProvider** - Provides the mui theme needed for styling components.
 
 

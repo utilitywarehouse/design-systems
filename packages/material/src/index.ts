@@ -49,16 +49,6 @@ export type { TextFieldProps } from "./components/TextField";
 export { default as Typography } from "./components/Typography";
 export type { TypographyProps } from "./components/Typography";
 
-export {
-  default as DarkModeProvider,
-  DarkModeContext,
-  DarkModeConsumer,
-} from "./components/DarkModeProvider";
-export type {
-  DarkModeContextValue,
-  DarkModeProviderProps,
-} from "./components/DarkModeProvider";
-
 export { default as StylesProvider } from "./components/StylesProvider";
 export type { StylesProviderProps } from "./components/StylesProvider";
 
