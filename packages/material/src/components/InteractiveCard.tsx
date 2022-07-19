@@ -84,9 +84,7 @@ const StyledRoot = styled(Box, {
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
   };
-  const backgroundColor = interactiveCardPalette[backdropLevel].default;
-  console.log({ backgroundColor });
-
+ 
   return {
     width: "100%",
     overflow: "hidden",
