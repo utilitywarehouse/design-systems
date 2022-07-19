@@ -48,9 +48,9 @@ import { ThemeProvider } from "@utilitywarehouse/customer-ui-material";
 import App from "./App";
 
 const App: React.FC = () => (
-  <CustomerUIProvider>
+  <ThemeProvider>
     <App />
-  </CustomerUIProvider>
+  </ThemeProvider>
 );
 
 ```
