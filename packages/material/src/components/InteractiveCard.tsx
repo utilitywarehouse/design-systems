@@ -84,7 +84,7 @@ const StyledRoot = styled(Box, {
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
   };
- 
+
   return {
     width: "100%",
     overflow: "hidden",
