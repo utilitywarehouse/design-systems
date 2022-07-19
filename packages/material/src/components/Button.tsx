@@ -14,7 +14,7 @@ import { TinyColor } from "@ctrl/tinycolor";
 import { useBackground } from "./Background";
 
 const PREFIX = `${customerUiPrefix}-Button`;
-const classes = {
+export const buttonClasses = {
   primary: `${PREFIX}-primary`,
   secondary: `${PREFIX}-secondary`,
   tertiary: `${PREFIX}-tertiary`,
@@ -54,12 +54,12 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   const { backdropLevel } = useBackground();
 
   const getClassName = () => {
-    const classNames = [classes[variant], classes[size]];
+    const classNames = [buttonClasses[variant], buttonClasses[size]];
     if (className) {
       classNames.push(className);
     }
     if (isBrandBackdropLevel(backdropLevel as BackdropLevel)) {
-      classNames.push(classes.inverse);
+      classNames.push(buttonClasses.inverse);
     }
     return classNames.join(" ");
   };
@@ -120,16 +120,16 @@ export const getButtonTheme = (): Components => {
             opacity: 0.5,
           },
           // size
-          [`&.${classes.small}`]: {
+          [`&.${buttonClasses.small}`]: {
             height: px(32),
           },
-          [`&.${classes.medium}`]: {
+          [`&.${buttonClasses.medium}`]: {
             height: px(40),
           },
-          [`&.${classes.large}`]: {
+          [`&.${buttonClasses.large}`]: {
             height: px(48),
           },
-          [`&.${classes.primary}`]: {
+          [`&.${buttonClasses.primary}`]: {
             backgroundColor: colors.cyan,
             border: "none",
             paddingLeft: px(32),
@@ -140,7 +140,7 @@ export const getButtonTheme = (): Components => {
                 .toHexString(),
             },
           },
-          [`&.${classes.secondary}`]: {
+          [`&.${buttonClasses.secondary}`]: {
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
             "&:hover": {
@@ -151,14 +151,14 @@ export const getButtonTheme = (): Components => {
               opacity: 0.5,
               borderWidth,
             },
-            [`&.${classes.inverse}`]: {
+            [`&.${buttonClasses.inverse}`]: {
               color: colors.white,
               "&:hover": {
                 borderColor: colors.white,
               },
             },
           },
-          [`&.${classes.tertiary}`]: {
+          [`&.${buttonClasses.tertiary}`]: {
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
             height: "auto",
@@ -172,7 +172,7 @@ export const getButtonTheme = (): Components => {
             "&:hover": {
               opacity: 0.5,
             },
-            [`&.${classes.inverse}`]: {
+            [`&.${buttonClasses.inverse}`]: {
               color: colors.white,
             },
           },

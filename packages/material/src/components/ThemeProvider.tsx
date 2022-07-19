@@ -21,6 +21,7 @@ const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = ({
   children,
 }) => {
   const themeWithOverrides = merge(defaultTheme, theme) as Theme;
+  console.log({ theme, themeWithOverrides });
   return (
     <CacheProvider
       value={createCache({
