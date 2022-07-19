@@ -5,7 +5,7 @@ import {
   helpers,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
-import { ThemeProvider, Theme, buttonClasses } from "../src";
+import { ThemeProvider } from "../src";
 
 const { px } = helpers;
 
@@ -34,23 +34,9 @@ export const parameters = {
   },
 };
 
-const altTheme: Theme = {
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          [`&.${buttonClasses.primary}`]: {
-            border: "2px solid hotpink",
-          },
-        },
-      },
-    },
-  },
-};
-
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={altTheme}>
+    <ThemeProvider>
       <Story />
     </ThemeProvider>
   ),
