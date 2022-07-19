@@ -15,10 +15,14 @@
     "**/*.test.*",
     "**/__mocks__",
     "**/__tests__",
-    "**/*jest*",
     "**/storybook",
     "**/tests",
     "**/setupTests.ts"
   ],
-  "include": ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"]
+  "include": [
+    "./src/**/*.js",
+    "./src/**/*.jsx",
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ]
 }

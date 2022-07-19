@@ -5,7 +5,6 @@ module.exports = {
   },
   globals: {
     module: "readonly",
-    jest: "readonly",
   },
   extends: [
     "eslint:recommended",
@@ -22,7 +21,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint", "jest"],
+  plugins: ["react", "@typescript-eslint"],
   rules: {
     "react/prop-types": "off",
     "no-empty-function": "off",
