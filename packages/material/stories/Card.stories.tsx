@@ -20,31 +20,21 @@ export const CardStory: Story<CardProps> = (args) => {
             {...args}
             key={variant}
             variant={variant}
-            sx={{ maxWidth: 500 }}
+            sx={{ maxWidth: 500, height: "fit-content" }}
           >
-            <Stack spacing={5}>
-              <Stack spacing={3}>
-                <Typography
-                  variant="h3"
-                  style={{ textTransform: "capitalize" }}
-                >
-                  {variant} card component
-                </Typography>
-                <Typography>
-                  Cards are surfaces that display content and actions on a
-                  single topic. They should be easy to scan for relevant and
-                  actionable information.
-                </Typography>
-              </Stack>
-              <Box>
-                <Button
-                  variant="outlined"
-                  onClick={(e: React.MouseEvent) => e.preventDefault()}
-                >
-                  Learn more
-                </Button>
-              </Box>
+            <Stack spacing={3}>
+              <Typography variant="h3" textTransform="capitalize">
+                {variant} card component
+              </Typography>
+              <Typography>
+                Cards are surfaces that display content and actions on a single
+                topic. They should be easy to scan for relevant and actionable
+                information.
+              </Typography>
             </Stack>
+            <Box sx={{ marginTop: 4 }}>
+              <Button variant="secondary">Learn more</Button>
+            </Box>
           </Card>
         ))}
       </Stack>
