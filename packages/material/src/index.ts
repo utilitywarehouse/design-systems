@@ -65,7 +65,4 @@ export type { StylesProviderProps } from "./components/StylesProvider";
 export { default as CustomerUIProvider } from "./components/CustomerUIProvider";
 export type { CustomerUIProviderProps } from "./components/CustomerUIProvider";
 
-export { default as withBackground } from "./hocs/withBackground";
-export type { WithBackgroundProps } from "./hocs/withBackground";
-
 export { default as useDeviceSize } from "./hooks/useDeviceSize";
