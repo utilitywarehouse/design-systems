@@ -24,7 +24,7 @@
   "scripts": {
     "install:ci": "pnpm i --frozen-lockfile --ignore-scripts",
     "setup": "corepack enable && corepack prepare pnpm@7.5.2 --activate",
-    "build": "pnpm run build -r --stream",
+    "build": "pnpm -r --stream run build",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
     "prepublishOnly": "pinst --enable",
@@ -32,11 +32,11 @@
     "format": "pnpm -r --stream format",
     "lint": "pnpm -r --stream lint",
     "lint:ci": "pnpm -r --stream lint:ci",
-    "clean": "pnpm run clean -r --stream && rimraf node_modules",
+    "clean": "pnpm -r --stream run clean && rimraf node_modules",
     "new-package": "node ./scripts/new-package.js",
-    "storybook:start": "pnpm storybook:start -r --filter *material",
+    "storybook:start": "pnpm -r --filter *material storybook:start",
     "changeset": "changeset",
-    "ci:version": "changeset version && pnpm i --no-frozen-lockfile --ignore-scripts",
+    "ci:version": "changeset version && pnpm --no-frozen-lockfile --ignore-scripts install",
     "ci:publish": "pnpm build && changeset publish"
   },
   "workspaces": [
