@@ -3,29 +3,13 @@ import React from "react";
 import { BackdropLevel, Box, BoxProps } from "..";
 import { helpers, colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { isBrandBackdropLevel } from "../utils";
-import { useDarkMode } from "./DarkModeProvider";
 import { BackgroundProvider, useBackground } from "./Background";
 
 const { px } = helpers;
 
 export type CardVariant = "transparent" | "opaque";
 
-const getCardPalette = (
-  darkModeEnabled: boolean,
-  backdropLevel: BackdropLevel,
-  variant: CardVariant
-) => {
-  const darkModePalette = {
-    opaque: {
-      backgroundColor: colors.codGray,
-      borderColor: colors.codGray,
-    },
-    transparent: {
-      borderColor: colors.white,
-      backgroundColor: "transparent",
-    },
-  };
-
+const getCardPalette = (backdropLevel: BackdropLevel, variant: CardVariant) => {
   // TODO: ensure this naming convention follows what is decided for Backdrop &
   // Design Token naming
   const neutralBackdropLevelPalette = {
@@ -52,10 +36,6 @@ const getCardPalette = (
     },
   };
 
-  if (darkModeEnabled) {
-    return darkModePalette[variant];
-  }
-
   if (isBrandBackdropLevel(backdropLevel)) {
     return brandBackdropLevelPalette[variant];
   }
@@ -71,8 +51,7 @@ interface StyledCardProps {
 const StyledCard = styled(Box, {
   shouldForwardProp: (prop) => prop !== "variant" && prop !== "backdropLevel",
 })<StyledCardProps>(({ theme, backdropLevel, variant }) => {
-  const { darkModeEnabled } = useDarkMode();
-  const palette = getCardPalette(darkModeEnabled, backdropLevel, variant);
+  const palette = getCardPalette(backdropLevel, variant);
   return {
     ...palette,
     padding: theme.spacing(3), // 24px
