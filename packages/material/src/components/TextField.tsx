@@ -20,7 +20,7 @@ import { Theme, Components } from "@mui/material/styles";
 import { useBackground } from "./Background";
 
 const PREFIX = `${customerUiPrefix}-TextField`;
-const classes = {
+export const textfieldClasses = {
   success: `${PREFIX}-success`,
   multiline: `${PREFIX}-multiline`,
 };
@@ -58,10 +58,10 @@ const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
   const getClassName = () => {
     const classNames = [props.className];
     if (!props.disabled && isSuccessStatus(status)) {
-      classNames.push(classes.success);
+      classNames.push(textfieldClasses.success);
     }
     if (props.multiline) {
-      classNames.push(classes.multiline);
+      classNames.push(textfieldClasses.multiline);
     }
     return classNames.join(" ");
   };
@@ -240,7 +240,7 @@ export const getTextFieldTheme = (theme: Theme): Components => {
               },
             },
           },
-          [`&.${classes.success}`]: {
+          [`&.${textfieldClasses.success}`]: {
             ":before": {
               borderBottomColor: colors.jewel,
             },
@@ -261,7 +261,7 @@ export const getTextFieldTheme = (theme: Theme): Components => {
               borderBottomColor: colors.jewel,
             },
           },
-          [`&.${classes.multiline}`]: {
+          [`&.${textfieldClasses.multiline}`]: {
             // padding values differ slightly from non-multiline since a `textarea` is rendered rather than an `input`.
             paddingTop: 15,
             paddingBottom: 14,

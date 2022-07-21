@@ -50,7 +50,7 @@ declare module "@mui/material/Typography" {
 }
 
 const PREFIX = `${customerUiPrefix}-Typography`;
-const classes = {
+export const typographyClasses = {
   primary: `${PREFIX}-primary`,
   secondary: `${PREFIX}-secondary`,
   success: `${PREFIX}-success`,
@@ -101,15 +101,15 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
   };
 
   const getClassName = () => {
-    const classNames = [classes[color]];
+    const classNames = [typographyClasses[color]];
     if (props.className) {
       classNames.push(props.className);
     }
     if (isBrandBackdropLevel(backdropLevel)) {
-      classNames.push(classes.inverse);
+      classNames.push(typographyClasses.inverse);
     }
     if (fontWeight === "semibold") {
-      classNames.push(classes.semibold);
+      classNames.push(typographyClasses.semibold);
     }
     return classNames.join(" ");
   };
@@ -132,32 +132,32 @@ export const getTypographyTheme = (theme: Theme): Components => {
   const headingStyles = {
     fontFamily: fonts.primary,
     color: colors.purple,
-    [`&.${classes.secondary}`]: {
+    [`&.${typographyClasses.secondary}`]: {
       color: colors.midnight,
     },
-    [`&.${classes.inverse}`]: {
+    [`&.${typographyClasses.inverse}`]: {
       color: colors.white,
     },
   };
   const bodyStyles = {
     fontFamily: fonts.secondary,
     color: colors.midnight,
-    [`&.${classes.semibold}`]: {
+    [`&.${typographyClasses.semibold}`]: {
       fontWeight: fontWeights.secondary.semibold,
     },
-    [`&.${classes.inverse}`]: {
+    [`&.${typographyClasses.inverse}`]: {
       color: colors.white,
     },
-    [`&.${classes.success}`]: {
+    [`&.${typographyClasses.success}`]: {
       color: colors.jewel,
     },
-    [`&.${classes.success}.${classes.inverse}`]: {
+    [`&.${typographyClasses.success}.${typographyClasses.inverse}`]: {
       color: colors.apple,
     },
-    [`&.${classes.error}`]: {
+    [`&.${typographyClasses.error}`]: {
       color: colors.maroonFlush,
     },
-    [`&.${classes.error}.${classes.inverse}`]: {
+    [`&.${typographyClasses.error}.${typographyClasses.inverse}`]: {
       color: colors.rose,
     },
   };

@@ -10,7 +10,7 @@ Customer UI React components standing on the shoulders of the [MUI Material](htt
 * [Installation](#installation)
 * [Getting started](#getting-started)
 * [Theming](#theming)
-* [Mui Components](#mui-components)
+* [MUI Components](#mui-components)
 * [Styling](#styling)
 * [Contributing](#contributing)
 
@@ -39,23 +39,23 @@ yarn add @utilitywarehouse/customer-ui-material
 
 ## Getting started
 
-Start by wrapping your application with the `CustomerUIProvider` component. This
+Start by wrapping your application with the `ThemeProvider` component. This
 will provide the necessary theming for the Customer UI components.
 
 ```tsx
 import * as React from "react";
-import { CustomerUIProvider } from "@utilitywarehouse/customer-ui-material";
+import { ThemeProvider } from "@utilitywarehouse/customer-ui-material";
 import App from "./App";
 
 const App: React.FC = () => (
-  <CustomerUIProvider>
+  <ThemeProvider>
     <App />
-  </CustomerUIProvider>
+  </ThemeProvider>
 );
 
 ```
 
-The following providers are rendered by the `CustomerUIProvider`.
+The following providers are rendered by the `ThemeProvider`.
 
 - **StylesProvider** - This is a wrapper around the [MUI StylesProvider](https://mui.com/styles/api/#stylesprovider)
   component, and sets some default props. This provider relates to MUI's
@@ -65,7 +65,7 @@ The following providers are rendered by the `CustomerUIProvider`.
 - **MuiThemeProvider** - Provides the mui theme needed for styling components.
 
 
-Within the `CustomerUIProvider` component the mui theme used by components can be
+Within the `ThemeProvider` component the mui theme used by components can be
 fetched via the `useMuiTheme` hook.
 
 ```tsx
@@ -75,20 +75,38 @@ import { useMuiTheme } from "@utilitywarehouse/customer-ui-material";
 const muiTheme = useMuiTheme();
 ```
 
-The Customer UI theme is a more complete theme when it comes to application
-design, where as the MUI theme is applied internally to the Material theme
-providers.
+If you need to, you can pass in a custom theme to the `ThemeProvider`.
 
-The `Background` component provides the necessary context to render Customer UI
-components with the expected brand styles. A `Background` component isn't
-strictly required, the default behaviour is to use the theme on the `level3`
-background for light mode. However to ensure the application behaves as
-expected you should use a `Background` component.  You can have multiple
-`Background` components within your app to render different background styles in
-different areas of your application.
-The Customer UI components will then render their styles appropriately depending
-on the background color level, without needing to specify this at the individual
-component level.
+```tsx
+import {
+ThemeProvider,
+Theme,
+theme as defaultTheme,
+buttonClasses,
+} from "@utilitywarehouse/customer-ui-material"
+
+[...]
+
+const theme: Theme = {
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          [`&.${buttonClasses.primary}`]: {
+            border: "2px solid hotpink",
+          },
+        },
+      },
+    },
+  },
+};
+
+return (
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>
+)
+```
 
 ## MUI Components
 

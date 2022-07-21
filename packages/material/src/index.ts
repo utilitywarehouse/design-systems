@@ -4,6 +4,9 @@ export * from "./material/core";
 
 export type { BackdropLevel } from "./types";
 
+export { theme } from "./lib/theme";
+export type { Theme } from "@mui/material/styles/createTheme";
+
 export {
   default as Background,
   useBackground,
@@ -14,7 +17,7 @@ export type {
   BackgroundProviderProps,
 } from "./components/Background";
 
-export { default as Button } from "./components/Button";
+export { default as Button, buttonClasses } from "./components/Button";
 export type { ButtonProps } from "./components/Button";
 
 export { default as Card } from "./components/Card";
@@ -34,7 +37,10 @@ export type { HiddenProps } from "./components/Hidden";
 export { default as Spacer } from "./components/Spacer";
 export type { SpacerProps } from "./components/Spacer";
 
-export { default as InteractiveCard } from "./components/InteractiveCard";
+export {
+  default as InteractiveCard,
+  interactiveCardClasses,
+} from "./components/InteractiveCard";
 export type { InteractiveCardProps } from "./components/InteractiveCard";
 
 export { default as Link, NavLink } from "./components/Links";
@@ -43,17 +49,20 @@ export type { LinkProps, NavLinkProps } from "./components/Links";
 export { default as Menu, MenuItem } from "./components/Menu";
 export type { MenuProps, MenuItemProps } from "./components/Menu";
 
-export { default as TextField } from "./components/TextField";
+export { default as TextField, textfieldClasses } from "./components/TextField";
 export type { TextFieldProps } from "./components/TextField";
 
-export { default as Typography } from "./components/Typography";
+export {
+  default as Typography,
+  typographyClasses,
+} from "./components/Typography";
 export type { TypographyProps } from "./components/Typography";
 
 export { default as StylesProvider } from "./components/StylesProvider";
 export type { StylesProviderProps } from "./components/StylesProvider";
 
-export { default as CustomerUIProvider } from "./components/CustomerUIProvider";
-export type { CustomerUIProviderProps } from "./components/CustomerUIProvider";
+export { default as ThemeProvider } from "./components/ThemeProvider";
+export type { ThemeProviderProps } from "./components/ThemeProvider";
 
 export { default as withBackground } from "./hocs/withBackground";
 export type { WithBackgroundProps } from "./hocs/withBackground";

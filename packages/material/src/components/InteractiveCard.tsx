@@ -43,7 +43,7 @@ interface StyledRootProps {
 }
 
 const PREFIX = `${customerUiPrefix}-InteractiveCard`;
-const classes = { rootHover: `${PREFIX}-rootHover` };
+export const interactiveCardClasses = { rootHover: `${PREFIX}-rootHover` };
 
 const StyledRoot = styled(Box, {
   shouldForwardProp: (prop) => prop !== "size" && prop !== "backdropLevel",
@@ -80,7 +80,7 @@ const StyledRoot = styled(Box, {
     transitionProperty: "background-color",
     backgroundColor: interactiveCardPalette[backdropLevel].default,
     "&:hover": {
-      [`& .${classes.rootHover}`]: {
+      [`& .${interactiveCardClasses.rootHover}`]: {
         backgroundColor: interactiveCardPalette[backdropLevel].hover,
       },
     },
@@ -138,7 +138,7 @@ const InteractiveCardComponent: React.FunctionComponent<
       {...containerProps}
     >
       <Box
-        className={classes.rootHover}
+        className={interactiveCardClasses.rootHover}
         sx={{
           position: "absolute",
           left: 0,
