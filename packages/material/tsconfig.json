@@ -23,7 +23,6 @@
     "dist",
     "node_modules",
     "**/*.test.ts",
-    "stories",
-    "jest"
+    "stories"
   ]
 }
