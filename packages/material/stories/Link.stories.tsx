@@ -1,8 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { LinkProps, Stack, TypographyProps } from "../src";
-import { Link, Typography } from "../src";
+import { Link, Typography, LinkProps, Stack, TypographyProps } from "../src";
 import { BackgroundStack } from "./utils";
 
 const typographyVariants: { [key in TypographyProps["variant"]]: boolean } = {
@@ -72,19 +71,17 @@ export const LinkStory: Story<
   LinkProps & { typographyVariant: TypographyProps["variant"] }
 > = (args) => {
   const { typographyVariant, ...rest } = args;
-  const onClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-  };
+
   return (
     <BackgroundStack>
       <Stack spacing={2}>
         <Typography variant={typographyVariant}>
-          <Link href="#" {...rest} onClick={onClick}>
+          <Link href="#" {...rest}>
             Link
           </Link>
         </Typography>
         <Typography variant={typographyVariant}>
-          This is an inline <Link href="#" {...rest} onClick={onClick} />.
+          This is an inline <Link href="#" {...rest} />.
         </Typography>
       </Stack>
     </BackgroundStack>
