@@ -54,7 +54,6 @@ export interface LinkProps extends React.ComponentPropsWithoutRef<"a"> {
 const Link: React.FunctionComponent<LinkProps> = ({
   variant = "default",
   disabled = false,
-  onClick,
   forwardedRef,
   ...props
 }) => {
@@ -67,7 +66,6 @@ const Link: React.FunctionComponent<LinkProps> = ({
       variant="inherit"
       active={variant === "active"}
       disabled={disabled}
-      onClick={onClick}
       ref={forwardedRef}
     />
   );
