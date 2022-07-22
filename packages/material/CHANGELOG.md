@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-material
 
+## 1.0.10
+
+### Patch Changes
+
+- [#464](https://github.com/utilitywarehouse/customer-web-ui/pull/464) [`f9aa029`](https://github.com/utilitywarehouse/customer-web-ui/commit/f9aa02916b6c80c467d14f4663f5bdcfea32aaa1) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Link component onClick
+
 ## 1.0.9
 
 ### Patch Changes

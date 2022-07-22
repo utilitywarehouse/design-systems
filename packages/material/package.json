@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/customer-ui-material",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "UW Customer UI component library, built upon MUI Material",
   "main": "dist/index.js",
   "scripts": {
