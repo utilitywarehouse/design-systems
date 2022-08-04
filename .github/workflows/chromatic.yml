@@ -23,13 +23,14 @@ jobs:
     - run: pnpm install
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - run: pnpm build
 
     - name: Publish to Chromatic
       uses: chromaui/action@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-        buildScriptName: 'storybook:build'
+        buildScriptName: 'chromatic'
         workingDir: 'packages/material'
         exitOnceUploaded: true
         exitZeroOnChanges: true
