@@ -73,3 +73,6 @@ export const ButtonCustomStory: Story<ButtonProps> = (args) => (
   </BackgroundStack>
 );
 ButtonCustomStory.storyName = "Custom";
+ButtonCustomStory.parameters = {
+  chromatic: { disableSnapshot: true },
+};

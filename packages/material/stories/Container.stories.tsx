@@ -16,3 +16,6 @@ export const ContainerStory: Story = () => {
   );
 };
 ContainerStory.storyName = "Container";
+ContainerStory.parameters = {
+  chromatic: { disableSnapshot: true },
+};

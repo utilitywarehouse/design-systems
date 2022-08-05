@@ -51,3 +51,6 @@ export const BackgroundStory: Story<BackgroundProps> = (props) => {
 };
 
 BackgroundStory.storyName = "Background";
+BackgroundStory.parameters = {
+  chromatic: { disableSnapshot: true },
+};

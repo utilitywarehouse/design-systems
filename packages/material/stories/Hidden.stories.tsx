@@ -44,3 +44,6 @@ export const HiddenStory: Story<HiddenProps> = (args) => {
 };
 
 HiddenStory.storyName = "Hidden";
+HiddenStory.parameters = {
+  chromatic: { disableSnapshot: true },
+};
