@@ -30,7 +30,6 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-        buildScriptName: 'chromatic'
         workingDir: 'packages/material'
         exitOnceUploaded: true
         exitZeroOnChanges: true
