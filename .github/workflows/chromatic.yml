@@ -67,8 +67,8 @@ jobs:
 
           Latest Commit: ${{ github.event.pull_request.head.sha }}
 
-          <span aria-hidden="true">😎</span> Storybook: https://${{ github.head_ref }}--62ed07023003c44cf0881325.chromatic.com/
-          <span aria-hidden="true">🔍</span> Chromatic Library: https://www.chromatic.com/library?appId=62ed07023003c44cf0881325&branch=${{ github.head_ref }}
+          <span aria-hidden="true">😎</span> Storybook Preview: https://${{ github.head_ref }}--62ed07023003c44cf0881325.chromatic.com/
+          <span aria-hidden="true">🔍</span> Chromatic Review: https://www.chromatic.com/pullrequest?appId=62ed07023003c44cf0881325&number=${{ github.event.pull_request.number }}
 
         edit-mode: replace
 
