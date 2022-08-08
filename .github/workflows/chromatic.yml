@@ -65,7 +65,7 @@ jobs:
         body: |
           ### UI Checks for Pull Request ${{ github.event.pull_request.number }}
 
-          Latest Commit: ${{ github.head.sha }}
+          Latest Commit: ${{ github.event.pull_request.head.sha }}
           Storybook: https://${{ github.head_ref }}--62ed07023003c44cf0881325.chromatic.com/
           Chromatic Library: https://www.chromatic.com/library?appId=62ed07023003c44cf0881325&branch=${{ github.head_ref }}
 
