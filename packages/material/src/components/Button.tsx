@@ -22,6 +22,7 @@ interface BaseButtonProps {
   size?: "regular" | "large";
   variant?: "contained" | "outlined" | "tertiary";
   fullWidth?: boolean;
+  children?: React.ReactNode;
 }
 
 type ButtonPropsButtonElement = BaseButtonProps &

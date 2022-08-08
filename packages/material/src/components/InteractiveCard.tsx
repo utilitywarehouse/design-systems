@@ -28,6 +28,7 @@ interface BaseInteractiveCardProps {
   size?: InteractiveCardSize;
   containerProps?: BoxProps;
   forwardedRef?: React.Ref<unknown>;
+  children?: React.ReactNode;
   /**
    * @deprecated in v2. This prop has no effect on the component
    */

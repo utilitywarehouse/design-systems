@@ -14,6 +14,7 @@ export interface UIProviderProps {
   styleProviderProps?: StylesProviderProps;
   darkModeProviderProps?: DarkModeProviderProps;
   emotionCacheOptions?: CreateCacheOptions;
+  children?: React.ReactNode;
 }
 
 const UIProvider: React.FunctionComponent<UIProviderProps> = ({
