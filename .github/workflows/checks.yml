@@ -1,7 +1,5 @@
 name: Code Checks
-on:
-  pull_request:
-    types: [ opened, synchronize, reopened ]
+on: [push]
 
 jobs:
   checks:

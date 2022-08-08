@@ -1,4 +1,4 @@
-name: Customer UI Storybook
+name: Chromatic and Storybook
 on:
   push:
     branches:
@@ -54,7 +54,7 @@ jobs:
       with:
         issue-number: ${{ github.event.pull_request.number }}
         comment-author: 'github-actions[bot]'
-        body-includes: UI Checks for Pull Request
+        body-includes: Deploy Preview for Pull Request
 
     - name: Create Deploy Preview Comment
       if: ${{ github.event_name }} !== pull_request
@@ -68,7 +68,7 @@ jobs:
           Latest Commit: ${{ github.event.pull_request.head.sha }}
 
           <span aria-hidden="true">😎</span> Storybook Preview: https://${{ github.head_ref }}--62ed07023003c44cf0881325.chromatic.com/
-          <span aria-hidden="true">🔍</span> Chromatic Review: https://www.chromatic.com/pullrequest?appId=62ed07023003c44cf0881325&number=${{ github.event.pull_request.number }}
+          <span aria-hidden="true">🔍</span> Chromatic UI Review: https://www.chromatic.com/pullrequest?appId=62ed07023003c44cf0881325&number=${{ github.event.pull_request.number }}
 
         edit-mode: replace
 
