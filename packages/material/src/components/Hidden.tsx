@@ -12,6 +12,7 @@ export interface HiddenProps {
   tabletUp?: boolean;
   tabletDown?: boolean;
   only?: Only;
+  children?: React.ReactNode;
 }
 
 type BooleanCallbackCheck = (

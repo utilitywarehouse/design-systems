@@ -10,6 +10,7 @@ import { ThemeVariantsContext } from "./ThemeVariantsProvider";
 
 export interface BackgroundProviderProps {
   backgroundColor: BackdropLevel;
+  children?: React.ReactNode;
 }
 
 const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({

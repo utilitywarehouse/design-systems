@@ -20,6 +20,7 @@ export interface DarkModeProviderProps {
   defaultValue?: "on" | "off";
   value?: "on" | "off";
   useSystemColorScheme?: boolean;
+  children?: React.ReactNode;
 }
 
 enum DarkModeSource {
