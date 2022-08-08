@@ -8,8 +8,8 @@ on:
       - 'packages/material/**'
   pull_request:
     types: [ opened, synchronize, reopened ]
-    # paths:
-    #   - 'packages/material/**'
+    paths:
+      - 'packages/material/**'
 
 jobs:
   chromatic-deployment:
