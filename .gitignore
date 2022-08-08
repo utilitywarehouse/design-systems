@@ -19,3 +19,5 @@ coverage
 storybook
 storybook-build
 storybook-static
+**/.turbo
+!.turbo/config.json
