@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-material
 
+## 1.0.11
+
+### Patch Changes
+
+- [#467](https://github.com/utilitywarehouse/customer-web-ui/pull/467) [`9375cb6`](https://github.com/utilitywarehouse/customer-web-ui/commit/9375cb64e47d58a02fc9e87cce3163818f22a77e) Thanks [@treborb](https://github.com/treborb)! - Explicitly set "children" prop on React components to comply with changes to React.FunctionComponent in React v18
+
 ## 1.0.10
 
 ### Patch Changes
