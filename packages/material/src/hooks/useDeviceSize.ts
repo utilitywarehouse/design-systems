@@ -1,5 +1,7 @@
 import React from "react";
-import { useMuiTheme, useMediaQuery, Breakpoint } from "../";
+import { Breakpoint } from "../types";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme as useMuiTheme } from "@mui/material/styles";
 
 const useDeviceSize = (): {
   deviceSize: Breakpoint;
