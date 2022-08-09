@@ -15,6 +15,30 @@ jobs:
   chromatic-deployment:
     runs-on: ubuntu-latest
     steps:
+
+    # We only want to create a deploy preview comment if this is a PR
+    - name: Find Deploy Preview Comment
+      if: ${{ github.event_name }} === pull_request
+      uses: peter-evans/find-comment@v2
+      id: fc
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: Deploy Preview for Pull Request
+
+    - name: Create Deploy Preview Started Comment
+      if: ${{ github.event_name }} === pull_request
+      uses: peter-evans/create-or-update-comment@v2
+      with:
+        comment-id: ${{ steps.fc.outputs.comment-id }}
+        issue-number: ${{ github.event.pull_request.number }}
+        body: |
+          ### <span aria-hidden="true">✅</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }} *processing...*
+
+          Latest Commit: ${{ github.event.pull_request.head.sha }}
+
+        edit-mode: replace
+
     - uses: pnpm/action-setup@v2
       with:
         version: 7
@@ -41,18 +65,8 @@ jobs:
         exitOnceUploaded: true
         exitZeroOnChanges: true
 
-    # We only want to create a deploy preview comment if this is a PR
-    - name: Find Deploy Preview Comment
-      if: ${{ github.event_name }} !== pull_request
-      uses: peter-evans/find-comment@v2
-      id: fc
-      with:
-        issue-number: ${{ github.event.pull_request.number }}
-        comment-author: 'github-actions[bot]'
-        body-includes: Deploy Preview for Pull Request
-
-    - name: Create Deploy Preview Comment
-      if: ${{ github.event_name }} !== pull_request
+    - name: Create Deploy Preview Ready Comment
+      if: ${{ github.event_name }} === pull_request
       uses: peter-evans/create-or-update-comment@v2
       with:
         comment-id: ${{ steps.fc.outputs.comment-id }}
