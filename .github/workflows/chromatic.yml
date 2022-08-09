@@ -41,11 +41,6 @@ jobs:
         exitOnceUploaded: true
         exitZeroOnChanges: true
 
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-
     # We only want to create a deploy preview comment if this is a PR
     - name: Find Deploy Preview Comment
       if: ${{ github.event_name }} !== pull_request
