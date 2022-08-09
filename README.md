@@ -53,6 +53,8 @@ versions.
 
 1. [pnpm](https://pnpm.io/), fast, disk space efficient package manager
 1. [changesets](https://github.com/changesets/changesets), handles versioning, publishing and changelog generation.
+1. [Chromatic](https://www.chromatic.com/) is used for Storybook hosting,
+   Deploy Previews on PRs and visual reregression testing.
 1. [ESLint](https://eslint.org/), JavaScript linter used to fix problems in our code as well as enforcing code style rules
 1. [Prettier](https://prettier.io/), opinionated code formatter
 1. [husky](https://typicode.github.io/husky/#/), a tool making it easier to manage and create git hooks
