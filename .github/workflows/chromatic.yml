@@ -33,7 +33,7 @@ jobs:
         comment-id: ${{ steps.fc.outputs.comment-id }}
         issue-number: ${{ github.event.pull_request.number }}
         body: |
-          ### <span aria-hidden="true">✅</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }} *processing...*
+          ### <span aria-hidden="true">⏳</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }} *processing...*
 
           Latest Commit: ${{ github.event.pull_request.head.sha }}
 
@@ -72,7 +72,7 @@ jobs:
         comment-id: ${{ steps.fc.outputs.comment-id }}
         issue-number: ${{ github.event.pull_request.number }}
         body: |
-          ### <span aria-hidden="true">✅</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }}
+          ### <span aria-hidden="true">🚀</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }} ready!
 
           Latest Commit: ${{ github.event.pull_request.head.sha }}
 
