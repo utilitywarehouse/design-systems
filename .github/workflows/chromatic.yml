@@ -1,0 +1,93 @@
+name: Chromatic and Storybook
+on:
+  push:
+    branches:
+    - main
+    - v2
+    paths:
+      - 'packages/material/**'
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    paths:
+      - 'packages/material/**'
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Find Deploy Preview Comment
+      if: ${{ github.event_name }} === pull_request
+      uses: peter-evans/find-comment@v2
+      id: fc-started
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: Deploy Preview
+
+    - name: Create Deploy Preview Started Comment
+      if: ${{ github.event_name }} === pull_request
+      uses: peter-evans/create-or-update-comment@v2
+      with:
+        comment-id: ${{ steps.fc-started.outputs.comment-id }}
+        issue-number: ${{ github.event.pull_request.number }}
+        body: |
+          ### <span aria-hidden="true">⏳</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }} *processing...*
+
+          Latest Commit: ${{ github.event.pull_request.head.sha }}
+
+        edit-mode: replace
+
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 7
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+        registry-url: 'https://registry.npmjs.org'
+        cache: 'pnpm'
+
+    - run: pnpm install
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - run: pnpm build
+
+    - name: Publish to Chromatic
+      uses: chromaui/action@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        workingDir: 'packages/material'
+        exitOnceUploaded: true
+        exitZeroOnChanges: true
+
+    - name: Find Deploy Preview Comment
+      if: ${{ github.event_name }} === pull_request
+      uses: peter-evans/find-comment@v2
+      id: fc-ready
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: Deploy Preview
+
+    - name: Create Deploy Preview Ready Comment
+      if: ${{ github.event_name }} === pull_request
+      uses: peter-evans/create-or-update-comment@v2
+      with:
+        comment-id: ${{ steps.fc-ready.outputs.comment-id }}
+        issue-number: ${{ github.event.pull_request.number }}
+        body: |
+          ### <span aria-hidden="true">🚀</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }} ready!
+
+          Latest Commit: ${{ github.event.pull_request.head.sha }}
+
+          <span aria-hidden="true">😎</span> Storybook Preview: https://${{ github.head_ref }}--62ed07023003c44cf0881325.chromatic.com/
+          <span aria-hidden="true">🔍</span> Chromatic UI Review: https://www.chromatic.com/pullrequest?appId=62ed07023003c44cf0881325&number=${{ github.event.pull_request.number }}
+
+        edit-mode: replace
+
+
+
