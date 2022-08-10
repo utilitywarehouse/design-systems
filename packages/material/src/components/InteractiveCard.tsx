@@ -22,6 +22,11 @@ interface BaseInteractiveCardProps extends Pick<BoxProps, "sx"> {
   size?: InteractiveCardSize;
   containerProps?: BoxProps;
   forwardedRef?: React.Ref<unknown>;
+  children?: React.ReactNode;
+  /**
+   * @deprecated in v2. This prop has no effect on the component
+   */
+  variant?: InteractiveCardVariant;
 }
 
 type InteractiveCardButtonProps = BaseInteractiveCardProps &

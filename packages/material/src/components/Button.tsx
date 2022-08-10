@@ -28,6 +28,7 @@ interface BaseButtonProps extends Pick<MuiButtonProps, "sx" | "classes"> {
   size?: "small" | "medium" | "large";
   variant?: "primary" | "secondary" | "tertiary";
   fullWidth?: boolean;
+  children?: React.ReactNode;
 }
 
 type ButtonPropsButtonElement = BaseButtonProps &
