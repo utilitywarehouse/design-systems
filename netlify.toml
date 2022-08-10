@@ -1,7 +1,0 @@
-[build]
-  base = "packages/material"
-  publish = "storybook-build"
-  command = "npm run storybook:ci"
-
-  [build.environment]
-    NPM_FLAGS = "--version"

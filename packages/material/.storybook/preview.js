@@ -32,6 +32,7 @@ export const parameters = {
   viewport: {
     viewports: customerUiViewports,
   },
+  chromatic: { disableSnapshot: false },
 };
 
 export const decorators = [

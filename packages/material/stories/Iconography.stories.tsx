@@ -141,6 +141,9 @@ Icons24Story.args = {
   width: "24",
   height: "24",
 };
+Icons24Story.parameters = {
+  chromatic: { disableSnapshot: true },
+};
 
 export const Icons48Story: Story<IconsCustomStoryProps> = (args) => {
   const IconComponent = icons["48x48"].find((icon) => icon.name === args.icon);
@@ -187,4 +190,7 @@ Icons48Story.args = {
   fill: colors.midnight,
   width: "48",
   height: "48",
+};
+Icons48Story.parameters = {
+  chromatic: { disableSnapshot: true },
 };
