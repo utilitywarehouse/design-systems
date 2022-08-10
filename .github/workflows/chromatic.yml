@@ -15,7 +15,7 @@ jobs:
     steps:
 
     - name: Find Deploy Preview Comment
-      if: ${{ github.event_name }} == 'pull_request'
+      if: ${{ github.event_name }} != 'push'
       uses: peter-evans/find-comment@v2
       id: fc-started
       with:
@@ -24,7 +24,7 @@ jobs:
         body-includes: Deploy Preview
 
     - name: Create Deploy Preview Started Comment
-      if: ${{ github.event_name }} == 'pull_request'
+      if: ${{ github.event_name }} != 'push'
       uses: peter-evans/create-or-update-comment@v2
       with:
         comment-id: ${{ steps.fc-started.outputs.comment-id }}
@@ -63,7 +63,7 @@ jobs:
         exitZeroOnChanges: true
 
     - name: Find Deploy Preview Comment
-      if: ${{ github.event_name }} == 'pull_request'
+      if: ${{ github.event_name }} != 'push'
       uses: peter-evans/find-comment@v2
       id: fc-ready
       with:
@@ -72,7 +72,7 @@ jobs:
         body-includes: Deploy Preview
 
     - name: Create Deploy Preview Ready Comment
-      if: ${{ github.event_name }} == 'pull_request'
+      if: ${{ github.event_name }} != 'push'
       uses: peter-evans/create-or-update-comment@v2
       with:
         comment-id: ${{ steps.fc-ready.outputs.comment-id }}
