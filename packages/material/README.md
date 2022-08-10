@@ -1,7 +1,5 @@
 # Material
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9ebc6bc5-b823-48e2-920c-785763e897d6/deploy-status)](https://app.netlify.com/sites/uw-customer-ui-material-storybook/deploys?branch=main)
-
 Customer UI React components standing on the shoulders of the [MUI Material](https://mui.com/) library.
 
 ## Contents
