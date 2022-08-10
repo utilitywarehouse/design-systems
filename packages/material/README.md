@@ -13,28 +13,28 @@ Customer UI React components standing on the shoulders of the [MUI Material](htt
 * [MUI Components](#mui-components)
 * [Styling](#styling)
 * [Contributing](#contributing)
-
-## Storybook
-
-Storybook is available at
-[uw-customer-ui-material-storybook](https://uw-customer-ui-material-storybook.netlify.app/),
-this is deployed from the `main` branch.
-
-Deployment Previews will be available on all PRs that make changes to the
-`material` package.
-
-Run storybook locally:
-
-```console
-pnpm storybook:start
-```
-
 ## Installation
 
 ```console
 npm i --save @utilitywarehouse/customer-ui-material
 # or
 yarn add @utilitywarehouse/customer-ui-material
+```
+
+## Storybook
+
+A hosted Storybook is available
+[via Chromatic](https://main--62ed07023003c44cf0881325.chromatic.com/),
+deployed from the `main` branch.
+
+Deployment Previews will be available on all PRs that make changes to the
+`material` package.
+
+Run storybook locally, from the root directory:
+
+```console
+pnpm build
+pnpm storybook:start
 ```
 
 ## Getting started
