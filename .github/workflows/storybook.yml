@@ -1,8 +1,9 @@
 name: Release
-on:
-  push:
-    # tags:
-    #   - '*'
+on: [push]
+# on:
+#   push:
+#     tags:
+#       - '*'
 
 jobs:
   release:
@@ -28,7 +29,7 @@ jobs:
 
       - name: Build & Push Docker Image
         run: |
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} ${{ secrets.DOCKER_REGISTRY }}
-          docker build . -t ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook:release --build-arg NPM_TOKEN=${{ secrets.NPM_TOKEN }}
-          docker push -a ${{ secrets.DOCKER_REGISTRY}}/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} registry.uw.systems
+          docker build . -t registry.uw.systems/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook:release --build-arg NPM_TOKEN=${{ secrets.NPM_TOKEN }}
+          docker push -a registry.uw.systems/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook
 
