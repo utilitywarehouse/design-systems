@@ -21,6 +21,7 @@ jobs:
     - run: pnpm install
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - run: pnpm build
     - name: Build Storybook
       run: cd packages/material && pnpm storybook:build
     - name: Build & Push Docker Image
