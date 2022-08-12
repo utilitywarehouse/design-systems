@@ -1,13 +1,11 @@
-name: Release
-on: [push]
+name: Deploy Storybook
+on: push
 # on:
 #   push:
 #     tags:
 #       - '*'
-
 jobs:
-  release:
-    name: Release
+  Deploy-Storybook:
     runs-on: ubuntu-latest
     steps:
       - uses: pnpm/action-setup@v2
