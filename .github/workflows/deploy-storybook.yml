@@ -1,5 +1,9 @@
 name: Deploy Storybook
 on: push
+# on:
+#   push:
+#     tags:
+#       - '*'
 jobs:
   deploy:
     name: Deploy Storybook
@@ -24,4 +28,3 @@ jobs:
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} registry.uw.systems
         docker build . -t registry.uw.systems/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook:release --build-arg NPM_TOKEN=${{ secrets.NPM_TOKEN }}
         docker push -a registry.uw.systems/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook
-
