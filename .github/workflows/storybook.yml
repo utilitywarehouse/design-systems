@@ -1,0 +1,34 @@
+name: Release
+on:
+  push:
+    # tags:
+    #   - '*'
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
+
+      - name: Setup npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build Storybook
+        run: cd packages/material && pnpm storybook:build
+
+      - name: Build & Push Docker Image
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} ${{ secrets.DOCKER_REGISTRY }}
+          docker build . -t ${{ secrets.DOCKER_REGISTRY }}/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook:release --build-arg NPM_TOKEN=${{ secrets.NPM_TOKEN }}
+          docker push -a ${{ secrets.DOCKER_REGISTRY}}/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook
+
