@@ -6,7 +6,7 @@ WORKDIR /opt/cwui-storybook
 
 ADD ./packages/material/storybook-build ./build
 
-RUN npm install -g serve
+RUN yarn global add --ignore-optional serve
 
-ENTRYPOINT ["serve", "/opt/cwui-storybook/build"]
+ENTRYPOINT ["serve", "/opt/telecom-ui-storybook/build"]
 
