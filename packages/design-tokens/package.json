@@ -4,17 +4,14 @@
   "description": "Design Tokens for the UW Customer brand",
   "main": "dist/index.js",
   "scripts": {
+    "clean": "rimraf node_modules && rimraf dist",
     "build": "rimraf dist/ && tsc",
-    "watch": "pnpm build -- --watch",
-    "format": "prettier --write \"./src/**/*.ts\"",
-    "lint": "eslint ./src --fix --ext .ts",
-    "format:ci": "prettier --list-different \"./src/**/*.ts\"",
-    "lint:ci": "eslint ./src --ext .ts",
+    "lint:fix": "TIMING=1 eslint ./src --fix --ext .ts",
+    "lint": "TIMING=1 eslint ./src --ext .ts",
     "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.ts": [
-      "pnpm format",
       "pnpm lint"
     ]
   },

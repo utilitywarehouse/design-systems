@@ -1,7 +1,5 @@
 # Material
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9ebc6bc5-b823-48e2-920c-785763e897d6/deploy-status)](https://app.netlify.com/sites/uw-customer-ui-material-storybook/deploys?branch=main)
-
 Customer UI React components standing on the shoulders of the [MUI Material](https://mui.com/) library.
 
 ## Contents
@@ -23,12 +21,9 @@ yarn add @utilitywarehouse/customer-ui-material
 
 ## Storybook
 
-A hosted Storybook is available
-[via Chromatic](https://main--62ed07023003c44cf0881325.chromatic.com/),
-deployed from the `main` branch.
-
-Deployment Previews will be available on all PRs that make changes to the
-`material` package.
+Storybook, based on the most recent release is available at
+[cwui-storybook.dev.merit.uw.systems](https://cwui-storybook.dev.merit.uw.systems/).
+This requires access via the VPN.
 
 Run storybook locally, from the root directory:
 
