@@ -32,7 +32,7 @@
     "postpublish": "pinst --disable",
     "lint": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint",
     "lint:fix": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint:fix",
-    "clean": "pnpm run clean && rimraf node_modules",
+    "clean": "pnpm -r clean && rimraf node_modules",
     "storybook:start": "pnpm -r --filter *material storybook:start",
     "changeset": "changeset",
     "ci:version": "changeset version && pnpm run install:ci",
