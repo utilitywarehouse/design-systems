@@ -26,23 +26,44 @@ this monorepo.
 npm run setup
 ```
 
-Install dependencies
+### Install dependencies
+
+This will install all dependencies across all packages.
 
 ```console
 pnpm install
 ```
 
-Linting and Formatting
+### Linting
+
+This will run ESLint & prettier across all packages, and take advantage of turborepo's caching.
 
 ```console
 pnpm lint
 ```
 
-And automatically attempting to fix linter errors/warnings
+To fix linting & formatting issues, run:
 
 ```console
 pnpm lint:fix
 ```
+
+To run lint & build with turborepo:
+
+```console
+pnpm run checks
+```
+
+### Remote Caching
+
+We're using Turborepo for our build workflows, which gives you out-of-the-box
+local caching. We also have a remote caching server set up which enables our CI
+process to take advantage of this local caching. To set your workspace up for
+remote caching you will need to export a `TURBO_TOKEN` environment variable.
+This token is available via 1Password, and to avoid having to temporarily export
+it over and over again you will need to set up your bash or zsh files in a way
+that doesn't commit this token to version control. For help with this please
+reach out in the [Slack channel](https://utilitywarehouse.slack.com/archives/C01CFKS9GUE).
 
 ## Migration
 
@@ -51,24 +72,27 @@ versions.
 
 ## Tools
 
-1. [pnpm](https://pnpm.io/), fast, disk space efficient package manager
+1. [pnpm](https://pnpm.io/), fast, disk space efficient package manager.
+1. [turborepo](https://turborepo.org/) runs npm scripts and build processes, including remote caching.
 1. [changesets](https://github.com/changesets/changesets), handles versioning, publishing and changelog generation.
-1. [Chromatic](https://www.chromatic.com/) is used for Storybook hosting,
-   Deploy Previews on PRs and visual reregression testing.
-1. [ESLint](https://eslint.org/), JavaScript linter used to fix problems in our code as well as enforcing code style rules
-1. [Prettier](https://prettier.io/), opinionated code formatter
-1. [husky](https://typicode.github.io/husky/#/), a tool making it easier to manage and create git hooks
-1. [pinst](https://github.com/typicode/pinst), works alongside husky to ensure `postinstall` doesn't run for published packages
-1. [linear](https://linear.app/utilitywarehouse/team/CWUI/all) for issue tracking
+1. [chromatic](https://www.chromatic.com/) is used for visual regression testing.
+1. [ESLint](https://eslint.org/), JavaScript linter used to fix problems in our code as well as enforcing code style rules.
+1. [prettier](https://prettier.io/), opinionated code formatter.
+1. [Github Actions](https://github.com/utilitywarehouse/customer-web-ui/actions) runs our CI workflows.
+1. [linear](https://linear.app/utilitywarehouse/team/CWUI/all) for issue tracking.
+1. [husky](https://typicode.github.io/husky/#/), a tool making it easier to manage and create git hooks.
+1. [pinst](https://github.com/typicode/pinst), works alongside husky to ensure `postinstall` doesn't run for published packages.
 
 ## Contributing
 
 Please read our [contribution guide](CONTRIBUTING.md) for contributing changes
 to Customer UI.
 
-### Raising Issues
+### Issues
 
-Please feel free to open issues here, however we are using [linear](https://linear.app/utilitywarehouse/team/CWUI/all) for issue tracking, so it may be moved there after being evaluated.
+Please feel free to open issues here, however we are using
+[linear](https://linear.app/utilitywarehouse/team/CWUI/all) for issue tracking,
+so it may be moved there after being evaluated.
 
 ## Publishing
 

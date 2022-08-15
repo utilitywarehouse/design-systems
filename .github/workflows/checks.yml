@@ -4,6 +4,8 @@ jobs:
   checks:
     name: Code Checks
     runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
     steps:
     - uses: pnpm/action-setup@v2
       with:
@@ -17,5 +19,4 @@ jobs:
     - run: pnpm install
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - run: pnpm lint:ci
-    - run: pnpm build
+    - run: pnpm run checks
