@@ -11,7 +11,7 @@ RUN npm run storybook:ci
 FROM node:lts-alpine as runner
 RUN mkdir -p /opt/cwui-material
 WORKDIR /opt/cwui-material
-RUN npm install -g serve
+RUN npm install -g http-server
 COPY --from=builder /opt/cwui-material/storybook-build ./build
-ENTRYPOINT ["serve", "/opt/cwui-material/build"]
+ENTRYPOINT ["http-server", "-p", "3000", "/opt/cwui-material/build"]
 
