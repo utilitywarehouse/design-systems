@@ -11,7 +11,7 @@ jobs:
     steps:
 
     - name: Find Deploy Preview Comment
-      if: github.event_name === pull_request
+      if: github.event_name == pull_request
       uses: peter-evans/find-comment@v2
       id: fc-started
       with:
@@ -20,7 +20,7 @@ jobs:
         body-includes: Deploy Preview
 
     - name: Create Deploy Preview Started Comment
-      if: github.event_name === pull_request
+      if: github.event_name == pull_request
       uses: peter-evans/create-or-update-comment@v2
       with:
         comment-id: ${{ steps.fc-started.outputs.comment-id }}
@@ -40,7 +40,7 @@ jobs:
       # env:
       #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - uses: jakejarvis/s3-sync-action@master
-      if: github.event_name === pull_request
+      if: github.event_name == pull_request
       with:
         args: --delete
       env:
@@ -52,7 +52,7 @@ jobs:
         DEST_DIR: ${{ github.event.pull_request.number }}
 
     - name: Find Deploy Preview Comment
-      if: github.event_name === pull_request
+      if: github.event_name == pull_request
       uses: peter-evans/find-comment@v2
       id: fc-ready
       with:
@@ -61,7 +61,7 @@ jobs:
         body-includes: Deploy Preview
 
     - name: Create Deploy Preview Ready Comment
-      if: ${{ github.event_name }} === pull_request
+      if: ${{ github.event_name }} == pull_request
       uses: peter-evans/create-or-update-comment@v2
       with:
         comment-id: ${{ steps.fc-ready.outputs.comment-id }}
