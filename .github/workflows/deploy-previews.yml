@@ -25,7 +25,8 @@ jobs:
         issue-number: ${{ github.event.pull_request.number }}
         body: |
           ### <span aria-hidden="true">⏳</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }} *processing...*
-          Latest Commit: ${{ github.event.pull_request.head.sha }}
+
+          <span aria-hidden="true">🏷️</span> Latest Commit: ${{ github.event.pull_request.head.sha }}
         edit-mode: replace
 
     - uses: actions/checkout@v2
@@ -76,8 +77,8 @@ jobs:
         issue-number: ${{ github.event.pull_request.number }}
         body: |
           ### <span aria-hidden="true">🚀</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }} ready!
-          Latest Commit: ${{ github.event.pull_request.head.sha }}
 
+          <span aria-hidden="true">🏷️</span> Latest Commit: ${{ github.event.pull_request.head.sha }}
           <span aria-hidden="true">😎</span> Storybook Preview: http://${{ secrets.AWS_S3_BUCKET }}.s3-website-eu-west-1.amazonaws.com/${{ github.event.pull_request.number }}
         edit-mode: replace
 
