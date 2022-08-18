@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Find Deploy Preview Comment
-      if: github.event_name == 'pull_request'
       uses: peter-evans/find-comment@v2
       id: fc-started
       with:
@@ -18,7 +17,6 @@ jobs:
         comment-author: 'github-actions[bot]'
         body-includes: Deploy Preview
     - name: Create Deploy Preview Started Comment
-      if: github.event_name == 'pull_request'
       uses: peter-evans/create-or-update-comment@v2
       with:
         comment-id: ${{ steps.fc-started.outputs.comment-id }}
@@ -48,7 +46,6 @@ jobs:
       run: pnpm storybook:build
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@v0.5.1
-      if: github.event_name == 'pull_request'
       with:
         args: --delete
       env:
@@ -60,7 +57,6 @@ jobs:
         DEST_DIR: ${{ github.event.pull_request.number }}
 
     - name: Find Deploy Preview Comment
-      if: github.event_name == 'pull_request'
       uses: peter-evans/find-comment@v2
       id: fc-ready
       with:
@@ -69,7 +65,6 @@ jobs:
         body-includes: Deploy Preview
 
     - name: Create Deploy Preview Ready Comment
-      if: github.event_name == 'pull_request'
       uses: peter-evans/create-or-update-comment@v2
       with:
         comment-id: ${{ steps.fc-ready.outputs.comment-id }}
