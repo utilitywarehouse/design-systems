@@ -9,7 +9,6 @@ jobs:
   deploy-preview:
     runs-on: ubuntu-latest
     steps:
-
     - name: Find Deploy Preview Comment
       if: github.event_name == 'pull_request'
       uses: peter-evans/find-comment@v2
@@ -18,7 +17,6 @@ jobs:
         issue-number: ${{ github.event.pull_request.number }}
         comment-author: 'github-actions[bot]'
         body-includes: Deploy Preview
-
     - name: Create Deploy Preview Started Comment
       if: github.event_name == 'pull_request'
       uses: peter-evans/create-or-update-comment@v2
@@ -34,9 +32,16 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: '16.x'
-    - run: cd packages/material && npm run storybook:ci
-      # env:
-      #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        registry-url: 'https://registry.npmjs.org'
+        cache: 'pnpm'
+    - name: Setup npmrc
+      run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+    - name: Install dependencies
+      run: pnpm install
+    - name: Build Packages
+      run: pnpm build
+    - name: Build Storybook
+      run: pnpm storybook:build
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@v0.5.1
       if: github.event_name == 'pull_request'
@@ -47,7 +52,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-west-1'
-        SOURCE_DIR: 'storybook-build'
+        SOURCE_DIR: 'packages/material/storybook-build'
         DEST_DIR: ${{ github.event.pull_request.number }}
 
     - name: Find Deploy Preview Comment

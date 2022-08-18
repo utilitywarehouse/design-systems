@@ -1,6 +1,5 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "baseBranch": "origin/main",
   "pipeline": {
     "build": {
       "outputs": ["dist/**"],
@@ -14,6 +13,12 @@
     },
     "clean": {
       "cache": false
+    },
+    "storybook:ci": {
+      "outputs": ["storybook-build/**"]
+    },
+    "storybook:build": {
+      "outputs": ["storybook-build/**"]
     }
   }
 }

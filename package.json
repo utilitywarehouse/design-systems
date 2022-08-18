@@ -34,6 +34,8 @@
     "lint:fix": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint:fix",
     "clean": "pnpm -r --stream clean && rimraf node_modules",
     "storybook:start": "pnpm -r --filter *material storybook:start",
+    "storybook:ci": "TURBO_TOKEN=${TURBO_TOKEN} turbo run storybook:ci --filter=*material",
+    "storybook:build": "TURBO_TOKEN=${TURBO_TOKEN} turbo run storybook:build --filter=*material",
     "changeset": "changeset",
     "ci:version": "changeset version && pnpm run install:ci",
     "ci:publish": "pnpm run build && changeset publish",
