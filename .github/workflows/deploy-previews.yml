@@ -28,7 +28,13 @@ jobs:
 
           <span aria-hidden="true">🏷️</span> Latest Commit: ${{ github.event.pull_request.head.sha }}
         edit-mode: replace
-
+    - uses: chrnorm/deployment-action@v2
+      name: Create GitHub deployment
+      id: deployment
+      with:
+        token: '${{ github.token }}'
+        environment-url: http://${{ secrets.AWS_S3_BUCKET }}.s3-website-eu-west-1.amazonaws.com/${{ github.event.pull_request.number }}
+        environment: development
     - uses: actions/checkout@v2
     - name: Setup pnpm
       uses: pnpm/action-setup@v2
@@ -82,3 +88,20 @@ jobs:
           <span aria-hidden="true">😎</span> Storybook Preview: http://${{ secrets.AWS_S3_BUCKET }}.s3-website-eu-west-1.amazonaws.com/${{ github.event.pull_request.number }}
         edit-mode: replace
 
+    - name: Update deployment status (success)
+      if: success()
+      uses: chrnorm/deployment-status@v2
+      with:
+        token: '${{ github.token }}'
+        environment-url: ${{ steps.deployment.outputs.environment_url }}
+        deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+        state: 'success'
+
+    - name: Update deployment status (failure)
+      if: failure()
+      uses: chrnorm/deployment-status@v2
+      with:
+        token: '${{ github.token }}'
+        environment-url: ${{ steps.deployment.outputs.environment_url }}
+        deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+        state: 'failure'
