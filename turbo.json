@@ -14,11 +14,8 @@
     "clean": {
       "cache": false
     },
-    "storybook:ci": {
-      "outputs": ["storybook-build/**"]
-    },
     "storybook:build": {
-      "outputs": ["storybook-build/**"]
+      "outputs": ["packages/material/storybook-build/**"]
     }
   }
 }
