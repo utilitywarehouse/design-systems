@@ -34,7 +34,7 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: '16.x'
-    - run: npm run storybook:ci
+    - run: cd packages/material && npm run storybook:ci
       # env:
       #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - uses: jakejarvis/s3-sync-action@master
