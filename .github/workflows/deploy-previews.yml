@@ -37,7 +37,8 @@ jobs:
     - run: cd packages/material && npm run storybook:ci
       # env:
       #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - uses: jakejarvis/s3-sync-action@master
+    - name: Deploy to S3
+      uses: jakejarvis/s3-sync-action@v0.5.1
       if: github.event_name == 'pull_request'
       with:
         args: --delete

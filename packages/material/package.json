@@ -11,7 +11,7 @@
     "precommit": "lint-staged",
     "storybook:start": "start-storybook -p 6006",
     "storybook:build": "build-storybook -o storybook-build",
-    "storybook:ci": "npm install && build-storybook -o storybook-build"
+    "storybook:ci": "npm install --ignore-scripts && build-storybook -o storybook-build"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
