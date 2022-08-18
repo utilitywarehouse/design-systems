@@ -1,0 +1,75 @@
+name: Deploy Preview
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    # paths:
+    #   - 'packages/material/**'
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Find Deploy Preview Comment
+      if: github.event_name === pull_request
+      uses: peter-evans/find-comment@v2
+      id: fc-started
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: Deploy Preview
+
+    - name: Create Deploy Preview Started Comment
+      if: github.event_name === pull_request
+      uses: peter-evans/create-or-update-comment@v2
+      with:
+        comment-id: ${{ steps.fc-started.outputs.comment-id }}
+        issue-number: ${{ github.event.pull_request.number }}
+        body: |
+          ### <span aria-hidden="true">⏳</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }} *processing...*
+          Latest Commit: ${{ github.event.pull_request.head.sha }}
+        edit-mode: replace
+
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+        registry-url: 'https://registry.npmjs.org'
+        cache: 'npm'
+    - run: npm run storybook:ci
+      # env:
+      #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - uses: jakejarvis/s3-sync-action@master
+      if: github.event_name === pull_request
+      with:
+        args: --delete
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: 'us-west-1'
+        SOURCE_DIR: 'storybook-build'
+        DEST_DIR: ${{ github.event.pull_request.number }}
+
+    - name: Find Deploy Preview Comment
+      if: github.event_name === pull_request
+      uses: peter-evans/find-comment@v2
+      id: fc-ready
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: Deploy Preview
+
+    - name: Create Deploy Preview Ready Comment
+      if: ${{ github.event_name }} === pull_request
+      uses: peter-evans/create-or-update-comment@v2
+      with:
+        comment-id: ${{ steps.fc-ready.outputs.comment-id }}
+        issue-number: ${{ github.event.pull_request.number }}
+        body: |
+          ### <span aria-hidden="true">🚀</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }} ready!
+          Latest Commit: ${{ github.event.pull_request.head.sha }}
+
+          <span aria-hidden="true">😎</span> Storybook Preview: http://${{ secrets.AWS_S3_BUCKET }}.s3-website-eu-west-1.amazonaws.com/${{ github.event.pull_request.number }}
+        edit-mode: replace
+
