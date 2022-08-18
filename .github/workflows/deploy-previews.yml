@@ -29,6 +29,10 @@ jobs:
         edit-mode: replace
 
     - uses: actions/checkout@v2
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 7
     - uses: actions/setup-node@v2
       with:
         node-version: '16.x'
@@ -36,10 +40,6 @@ jobs:
         cache: 'pnpm'
     - name: Setup npmrc
       run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v2
-      with:
-        version: 7
     - name: Install dependencies
       run: pnpm install
     - name: Build Packages
