@@ -21,9 +21,13 @@ yarn add @utilitywarehouse/customer-ui-material
 
 ## Storybook
 
-Storybook, based on the most recent release is available at
+### Release Version
+
+Storybook, based on the most recent release, is available at
 [cwui-storybook.dev.merit.uw.systems](https://cwui-storybook.dev.merit.uw.systems/).
 This requires access via the VPN.
+
+### Local Version
 
 Run storybook locally, from the root directory:
 
@@ -31,6 +35,15 @@ Run storybook locally, from the root directory:
 pnpm build
 pnpm storybook:start
 ```
+
+### Deploy Previews
+
+There are deploy previews on each PR, with a URL like this:
+`http://uw-telecom-storybooks-dev.s3-website-eu-west-1.amazonaws.com/{PR number}`.
+
+These are provisioned on AWS S3 via
+[this terraform config](https://github.com/utilitywarehouse/terraform/blob/master/aws/dev/telecom/cwui-storybook.tf),
+and will be removed when the PR gets merged (hopefully).
 
 ## Getting started
 
