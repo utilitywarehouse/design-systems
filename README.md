@@ -82,6 +82,7 @@ versions.
 1. [linear](https://linear.app/utilitywarehouse/team/CWUI/all) for issue tracking.
 1. [husky](https://typicode.github.io/husky/#/), a tool making it easier to manage and create git hooks.
 1. [pinst](https://github.com/typicode/pinst), works alongside husky to ensure `postinstall` doesn't run for published packages.
+1. [compressed-size-action](https://github.com/preactjs/compressed-size-action) reports changes in compressed file sizes on PRs.
 
 ## Contributing
 
