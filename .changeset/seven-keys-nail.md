@@ -1,5 +1,5 @@
 ---
-"@utilitywarehouse/customer-ui-material": patch
+"@utilitywarehouse/customer-ui-material": major
 ---
 
-Move deps that have caused problems due to mismatches to peer
+Move MUI dependencies to peer and export only layout & styling from MUI
