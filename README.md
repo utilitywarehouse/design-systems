@@ -1,12 +1,18 @@
 # UW Web UI
 
-Hopefully this will become a collection of components, and maybe other things,
-for building UW web applications. The idea is that these components will be used
-across both customer and partner products, with the possibility that there
-could also be even more low-level themeable components that could be used in
-internal applications as well.
+A home for shared tools and libraries for building UW web applications.
 
 ## Decision Records
 
-Significant technical decisions should be recorded in the [decisions](/decisions) folder.
+Significant technical decisions should be recorded in the
+[decisions](/decisions) folder.
 
+## Getting Involved
+
+If you have any questions, want to find out more, or would like to get involved
+in the discussions around this project, please come say hi in the
+[`#proj-uw-web-ui`](https://utilitywarehouse.slack.com/archives/C03N4L8V05T) Slack
+channel.
+
+To track current work please see the project [Roadmap](/ROADMAP.md) and
+[linear board](https://linear.app/utilitywarehouse/team/WUI/all).
