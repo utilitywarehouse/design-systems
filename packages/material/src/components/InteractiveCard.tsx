@@ -54,23 +54,23 @@ const StyledRoot = styled(Box, {
   shouldForwardProp: (prop) => prop !== "size" && prop !== "backdropLevel",
 })<StyledRootProps>(({ size, backdropLevel }) => {
   const interactiveCardPalette = {
-    level0: {
+    midnight: {
       default: colors.midnight,
       hover: new TinyColor(colors.white).setAlpha(0.1).toString(),
     },
-    level1: {
+    purple: {
       default: colors.purple,
       hover: new TinyColor(colors.white).setAlpha(0.1).toString(),
     },
-    level3: {
+    lightTint: {
       default: colors.lightTint,
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
-    level4: {
+    whiteOwl: {
       default: colors.whiteOwl,
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
-    level5: {
+    white: {
       default: colors.white,
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
@@ -198,14 +198,14 @@ const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
   const { backdropLevel } = useBackground();
   const backgroundColor = React.useMemo(() => {
     switch (backdropLevel) {
-      case "level0":
-      case "level1":
-      case "level3":
-      case "level4":
-        return "level5";
+      case "midnight":
+      case "purple":
+      case "lightTint":
+      case "whiteOwl":
+        return "white";
 
-      case "level5":
-        return "level1";
+      case "white":
+        return "purple";
     }
   }, [backdropLevel]);
 

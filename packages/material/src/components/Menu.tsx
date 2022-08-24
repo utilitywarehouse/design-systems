@@ -33,7 +33,7 @@ const Menu: React.FunctionComponent<MenuProps> = ({
   ...props
 }) => {
   return (
-    <BackgroundProvider backgroundColor="level5">
+    <BackgroundProvider backgroundColor="white">
       <StyledMenu {...props} ref={forwardedRef} anchorOrigin={anchorOrigin} />
     </BackgroundProvider>
   );

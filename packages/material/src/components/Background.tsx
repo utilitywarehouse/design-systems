@@ -7,7 +7,7 @@ interface BackgroundContextValue {
   backdropLevel: BackdropLevel;
 }
 
-const defaultBackgroundLevel: BackdropLevel = "level5"; // white
+const defaultBackgroundLevel: BackdropLevel = "white"; // white
 
 const BackgroundContext = React.createContext<BackgroundContextValue>({
   backdropLevel: defaultBackgroundLevel,
@@ -46,11 +46,11 @@ const StyledBackground = styled(Box, {
   shouldForwardProp: (prop) => prop !== "backdropLevel",
 })<StyledBackgroundProps>(({ backdropLevel }) => {
   const palette = {
-    level0: colors.midnight,
-    level1: colors.purple,
-    level3: colors.lightTint,
-    level4: colors.whiteOwl,
-    level5: colors.white,
+    midnight: colors.midnight,
+    purple: colors.purple,
+    lightTint: colors.lightTint,
+    whiteOwl: colors.whiteOwl,
+    white: colors.white,
   };
   const backgroundColor = palette[backdropLevel];
   return {

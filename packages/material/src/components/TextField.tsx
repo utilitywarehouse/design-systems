@@ -97,7 +97,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const { backdropLevel } = useBackground();
 
   // should only be used on white, light tint & cod grey backgrounds
-  const validBackdropLevels = ["level3", "level4", "level5"];
+  const validBackdropLevels = ["lightTint", "whiteOwl", "white"];
   if (!validBackdropLevels.includes(backdropLevel)) {
     console.warn(
       `Invalid backdrop level for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackdropLevels

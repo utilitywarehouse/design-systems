@@ -75,7 +75,7 @@ const Card: React.FunctionComponent<CardProps> = (props) => {
     if (variant === "transparent") {
       return backdropLevel as BackdropLevel;
     }
-    const color = backdropLevel === "level5" ? "level1" : "level5";
+    const color = backdropLevel === "white" ? "purple" : "white";
     return color as BackdropLevel;
   }, [backdropLevel]);
 
