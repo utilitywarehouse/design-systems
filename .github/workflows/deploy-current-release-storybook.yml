@@ -1,11 +1,12 @@
-name: Deploy Storybook
+name: Deploy Current Release Storybook
 on:
   push:
     tags:
-      - '*'
+      - '@utilitywarehouse/customer-ui-material@*'
+
 jobs:
   deploy:
-    name: Deploy Storybook
+    name: Deploy Current Release Storybook
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
