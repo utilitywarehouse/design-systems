@@ -8,8 +8,6 @@ export type { BoxProps } from "./components/Box";
 
 // @mui/material exports
 export { styled } from "@mui/material/styles";
-export type { StackProps } from "@mui/material/Stack";
-export { default as Stack } from "@mui/material/Stack";
 
 export {
   default as Background,
