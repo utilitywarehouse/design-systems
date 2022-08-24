@@ -8,7 +8,6 @@ import {
   colors,
   helpers,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { BackgroundColor } from "../types";
 import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
 import { TinyColor } from "@ctrl/tinycolor";
 import { useBackground } from "./Background";
@@ -59,7 +58,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
     if (className) {
       classNames.push(className);
     }
-    if (isBrandBackgroundColor(backgroundColor as BackgroundColor)) {
+    if (isBrandBackgroundColor(backgroundColor)) {
       classNames.push(buttonClasses.inverse);
     }
     return classNames.join(" ");

@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonBase, Box, Typography, BoxProps, BackgroundColor } from "..";
+import { ButtonBase, Box, Typography, BoxProps } from "..";
 import { styled } from "@mui/material/styles";
 import {
   helpers,
@@ -8,7 +8,11 @@ import {
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { TinyColor } from "@ctrl/tinycolor";
 import { customerUiPrefix } from "../utils";
-import { BackgroundProvider, useBackground } from "./Background";
+import {
+  BackgroundColor,
+  BackgroundProvider,
+  useBackground,
+} from "./Background";
 
 const { px } = helpers;
 
@@ -136,7 +140,7 @@ const InteractiveCardComponent: React.FunctionComponent<
   return (
     <StyledRoot
       size={size}
-      backgroundColor={backgroundColor as BackgroundColor}
+      backgroundColor={backgroundColor}
       {...containerProps}
     >
       <Box
@@ -197,9 +201,7 @@ const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
     backgroundColor === "white" ? "purple" : "white";
 
   return (
-    <BackgroundProvider
-      backgroundColor={interactiveCardBackgroundColor as BackgroundColor}
-    >
+    <BackgroundProvider backgroundColor={interactiveCardBackgroundColor}>
       <InteractiveCardComponent {...props} />
     </BackgroundProvider>
   );

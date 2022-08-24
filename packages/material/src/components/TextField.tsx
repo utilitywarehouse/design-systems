@@ -100,7 +100,7 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const validBackgroundColors = ["lightTint", "whiteOwl", "white"];
   if (!validBackgroundColors.includes(backgroundColor)) {
     console.warn(
-      `Invalid backdrop level for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackgroundColors
+      `Invalid background color for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackgroundColors
         .map((l) => `'${l}'`)
         .join(", ")}]`
     );

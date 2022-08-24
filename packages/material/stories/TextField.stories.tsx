@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { BackgroundColor, Box, TextFieldProps } from "../src";
+import { Box, TextFieldProps } from "../src";
 import { Background, TextField } from "../src";
 
 export default {
@@ -51,15 +51,13 @@ export default {
 
 export const TextfieldStory: Story<TextFieldProps> = (args) => {
   const { ...rest } = args;
-  const backgroundLevels = [5, 4, 3].map(
-    (level) => `level${level}` as BackgroundColor
-  );
+  const backgroundColors = ["white", "whiteOwl", "lightTint"] as const;
   return (
     <Box>
-      {backgroundLevels.map((level) => (
+      {backgroundColors.map((c) => (
         <Background
-          key={level}
-          backgroundColor={level}
+          key={c}
+          backgroundColor={c}
           sx={{
             display: "flex",
             justifyContent: "center",

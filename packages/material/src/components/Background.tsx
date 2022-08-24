@@ -1,16 +1,23 @@
 import React from "react";
-import { BackgroundColor, Box, BoxProps } from "../";
+import { Box, BoxProps } from "../";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { styled } from "@mui/material/styles";
+
+export type BackgroundColor =
+  | "midnight"
+  | "purple"
+  | "lightTint"
+  | "whiteOwl"
+  | "white";
 
 interface BackgroundContextValue {
   backgroundColor: BackgroundColor;
 }
 
-const defaultBackgroundLevel: BackgroundColor = "white";
+const defaultBackgroundColor = "white";
 
 const BackgroundContext = React.createContext<BackgroundContextValue>({
-  backgroundColor: defaultBackgroundLevel,
+  backgroundColor: defaultBackgroundColor,
 });
 
 const useBackground = (): BackgroundContextValue => {
@@ -28,11 +35,11 @@ interface BackgroundProviderProps {
 }
 
 const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({
-  backgroundColor = defaultBackgroundLevel,
+  backgroundColor = defaultBackgroundColor,
   children,
 }) => {
   return (
-    <BackgroundContext.Provider value={{ backgroundColor: backgroundColor }}>
+    <BackgroundContext.Provider value={{ backgroundColor }}>
       {children}
     </BackgroundContext.Provider>
   );
@@ -56,7 +63,7 @@ interface BackgroundProps
 
 const Background: React.FC<BackgroundProps> = ({
   forwardedRef,
-  backgroundColor = defaultBackgroundLevel,
+  backgroundColor = defaultBackgroundColor,
   ...props
 }) => {
   return (
