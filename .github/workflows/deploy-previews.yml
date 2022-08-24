@@ -54,7 +54,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-west-1'
         SOURCE_DIR: 'packages/material/storybook-build'
-        DEST_DIR: ${{ github.event.pull_request.number }}
+        DEST_DIR: deploy-preview-${{ github.event.pull_request.number }}
 
     - name: Find Deploy Preview Comment
       uses: peter-evans/find-comment@v2
@@ -73,5 +73,5 @@ jobs:
           ### <span aria-hidden="true">🚀</span> Deploy Preview for Pull Request ${{ github.event.pull_request.number }} ready!
 
           <span aria-hidden="true">🏷️</span> Latest Commit: ${{ github.event.pull_request.head.sha }}
-          <span aria-hidden="true">😎</span> Storybook Preview: http://${{ secrets.AWS_S3_BUCKET }}.s3-website-eu-west-1.amazonaws.com/${{ github.event.pull_request.number }}
+          <span aria-hidden="true">😎</span> Storybook Preview: http://${{ secrets.AWS_S3_BUCKET }}.s3-website-eu-west-1.amazonaws.com/deploy-preview-${{ github.event.pull_request.number }}
         edit-mode: replace
