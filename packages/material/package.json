@@ -10,8 +10,7 @@
     "lint": "TIMING=1 eslint --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",
     "precommit": "lint-staged",
     "storybook:start": "start-storybook -p 6006",
-    "storybook:build": "build-storybook -o storybook-build",
-    "storybook:ci": "npm install && build-storybook -o storybook-build"
+    "storybook:build": "build-storybook -o storybook-build"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
