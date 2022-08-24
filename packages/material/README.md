@@ -39,11 +39,11 @@ pnpm storybook:start
 ### Deploy Previews
 
 There are deploy previews on each PR, with a URL like this:
-`http://uw-telecom-storybooks-dev.s3-website-eu-west-1.amazonaws.com/{PR number}`.
+`http://uw-telecom-storybooks-dev.s3-website-eu-west-1.amazonaws.com/deploy-preview-{PR number}`.
 
 These are provisioned on AWS S3 via
 [this terraform config](https://github.com/utilitywarehouse/terraform/blob/master/aws/dev/telecom/cwui-storybook.tf),
-and will be removed when the PR gets merged (hopefully).
+and will be removed when the PR gets merged.
 
 ## Getting started
 
