@@ -2,7 +2,7 @@ import "./types/BreakpointOverrides";
 
 export * from "./material/core";
 
-export type { BackdropLevel } from "./types";
+export type { BackgroundColor } from "./types";
 
 export { theme } from "./lib/theme";
 export type { Theme } from "@mui/material/styles/createTheme";

@@ -1,6 +1,6 @@
 import React from "react";
 import MuiLink, { LinkProps as MuiLinkProps } from "@mui/material/Link";
-import { isBrandBackdropLevel, isHeadingVariant } from "../utils";
+import { isBrandBackgroundColor, isHeadingVariant } from "../utils";
 import {
   colors,
   transitions,
@@ -9,12 +9,12 @@ import { styled } from "@mui/material/styles";
 import { useBackground } from "./Background";
 
 const BaseLink = styled(MuiLink)(({ variant = "body" }) => {
-  const { backdropLevel } = useBackground();
+  const { backgroundColor } = useBackground();
   const getLinkColor = () => {
     if (variant === "inherit") {
       return variant;
     }
-    if (isBrandBackdropLevel(backdropLevel)) {
+    if (isBrandBackgroundColor(backgroundColor)) {
       return colors.white;
     }
     if (isHeadingVariant(variant)) {

@@ -8,8 +8,8 @@ import {
   colors,
   helpers,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { BackdropLevel } from "../types";
-import { customerUiPrefix, isBrandBackdropLevel } from "../utils";
+import { BackgroundColor } from "../types";
+import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
 import { TinyColor } from "@ctrl/tinycolor";
 import { useBackground } from "./Background";
 
@@ -52,14 +52,14 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   className,
   ...props
 }) => {
-  const { backdropLevel } = useBackground();
+  const { backgroundColor } = useBackground();
 
   const getClassName = () => {
     const classNames = [buttonClasses[variant], buttonClasses[size]];
     if (className) {
       classNames.push(className);
     }
-    if (isBrandBackdropLevel(backdropLevel as BackdropLevel)) {
+    if (isBrandBackgroundColor(backgroundColor as BackgroundColor)) {
       classNames.push(buttonClasses.inverse);
     }
     return classNames.join(" ");

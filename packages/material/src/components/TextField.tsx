@@ -94,13 +94,13 @@ const TextField = (props: TextFieldProps): JSX.Element => {
   const { status, disabled } = rest;
   const hasErrorStatus = !disabled && isErrorStatus(status);
   const formControlProps = { error: hasErrorStatus, disabled };
-  const { backdropLevel } = useBackground();
+  const { backgroundColor } = useBackground();
 
   // should only be used on white, light tint & cod grey backgrounds
-  const validBackdropLevels = ["lightTint", "whiteOwl", "white"];
-  if (!validBackdropLevels.includes(backdropLevel)) {
+  const validBackgroundColors = ["lightTint", "whiteOwl", "white"];
+  if (!validBackgroundColors.includes(backgroundColor)) {
     console.warn(
-      `Invalid backdrop level for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackdropLevels
+      `Invalid backdrop level for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackgroundColors
         .map((l) => `'${l}'`)
         .join(", ")}]`
     );

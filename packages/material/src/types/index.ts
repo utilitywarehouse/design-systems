@@ -1,4 +1,4 @@
-export type BackdropLevel =
+export type BackgroundColor =
   | "midnight"
   | "purple"
   | "lightTint"

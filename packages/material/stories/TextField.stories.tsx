@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { BackdropLevel, Box, TextFieldProps } from "../src";
+import { BackgroundColor, Box, TextFieldProps } from "../src";
 import { Background, TextField } from "../src";
 
 export default {
@@ -52,7 +52,7 @@ export default {
 export const TextfieldStory: Story<TextFieldProps> = (args) => {
   const { ...rest } = args;
   const backgroundLevels = [5, 4, 3].map(
-    (level) => `level${level}` as BackdropLevel
+    (level) => `level${level}` as BackgroundColor
   );
   return (
     <Box>

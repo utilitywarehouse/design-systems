@@ -1,18 +1,21 @@
 import { styled } from "@mui/material/styles";
 import React from "react";
-import { BackdropLevel, Box, BoxProps } from "..";
+import { BackgroundColor, Box, BoxProps } from "..";
 import { helpers, colors } from "@utilitywarehouse/customer-ui-design-tokens";
-import { isBrandBackdropLevel } from "../utils";
+import { isBrandBackgroundColor } from "../utils";
 import { BackgroundProvider, useBackground } from "./Background";
 
 const { px } = helpers;
 
 export type CardVariant = "transparent" | "opaque";
 
-const getCardPalette = (backdropLevel: BackdropLevel, variant: CardVariant) => {
+const getCardPalette = (
+  backgroundColor: BackgroundColor,
+  variant: CardVariant
+) => {
   // TODO: ensure this naming convention follows what is decided for Backdrop &
   // Design Token naming
-  const neutralBackdropLevelPalette = {
+  const neutralBackgroundColorPalette = {
     opaque: {
       backgroundColor: colors.white,
       borderColor: colors.white,
@@ -25,7 +28,7 @@ const getCardPalette = (backdropLevel: BackdropLevel, variant: CardVariant) => {
 
   // TODO: ensure this naming convention follows what is decided for Backdrop &
   // Design Token naming
-  const brandBackdropLevelPalette = {
+  const brandBackgroundColorPalette = {
     opaque: {
       backgroundColor: colors.purple,
       borderColor: colors.purple,
@@ -36,22 +39,22 @@ const getCardPalette = (backdropLevel: BackdropLevel, variant: CardVariant) => {
     },
   };
 
-  if (isBrandBackdropLevel(backdropLevel)) {
-    return brandBackdropLevelPalette[variant];
+  if (isBrandBackgroundColor(backgroundColor)) {
+    return brandBackgroundColorPalette[variant];
   }
 
-  return neutralBackdropLevelPalette[variant];
+  return neutralBackgroundColorPalette[variant];
 };
 
 interface StyledCardProps {
   variant: CardVariant;
-  backdropLevel: BackdropLevel;
+  backgroundColor: BackgroundColor;
 }
 
 const StyledCard = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "variant" && prop !== "backdropLevel",
-})<StyledCardProps>(({ theme, backdropLevel, variant }) => {
-  const palette = getCardPalette(backdropLevel, variant);
+  shouldForwardProp: (prop) => prop !== "variant" && prop !== "backgroundColor",
+})<StyledCardProps>(({ theme, backgroundColor, variant }) => {
+  const palette = getCardPalette(backgroundColor, variant);
   return {
     ...palette,
     padding: theme.spacing(3), // 24px
@@ -69,23 +72,22 @@ export interface CardProps
 
 const Card: React.FunctionComponent<CardProps> = (props) => {
   const { variant = "opaque", forwardedRef, ...rest } = props;
-  const { backdropLevel } = useBackground();
+  const { backgroundColor } = useBackground();
 
-  const backgroundColor: BackdropLevel = React.useMemo(() => {
-    if (variant === "transparent") {
-      return backdropLevel as BackdropLevel;
-    }
-    const color = backdropLevel === "white" ? "purple" : "white";
-    return color as BackdropLevel;
-  }, [backdropLevel]);
+  const cardBackgroundColor =
+    variant === "transparent"
+      ? backgroundColor
+      : backgroundColor === "white"
+      ? "purple"
+      : "white";
 
   return (
-    <BackgroundProvider backgroundColor={backgroundColor}>
+    <BackgroundProvider backgroundColor={cardBackgroundColor}>
       <StyledCard
         {...rest}
         variant={variant}
         ref={forwardedRef}
-        backdropLevel={backgroundColor}
+        backgroundColor={cardBackgroundColor}
       />
     </BackgroundProvider>
   );
