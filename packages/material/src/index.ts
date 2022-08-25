@@ -3,11 +3,11 @@ export * from "./material/core";
 export { theme } from "./theme";
 export type { Theme } from "@mui/material/styles/createTheme";
 
-export { default as Box } from "./components/Box";
-export type { BoxProps } from "./components/Box";
-
 // @mui/material exports
 export { styled } from "@mui/material/styles";
+
+export { default as Box } from "./components/Box";
+export type { BoxProps } from "./components/Box";
 
 export {
   default as Background,
