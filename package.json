@@ -35,7 +35,7 @@
     "storybook:start": "pnpm -r --filter *material storybook:start",
     "storybook:build": "TURBO_TOKEN=${TURBO_TOKEN} turbo run storybook:build",
     "changeset": "changeset",
-    "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
+    "ci:version": "changeset version && pnpm install",
     "ci:publish": "pnpm run build && changeset publish",
     "checks": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint build"
   },
