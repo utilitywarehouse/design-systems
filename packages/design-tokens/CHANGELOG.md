@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-design-tokens
 
+## 1.0.4
+
+### Patch Changes
+
+- [#480](https://github.com/utilitywarehouse/customer-web-ui/pull/480) [`3c3b307`](https://github.com/utilitywarehouse/customer-web-ui/commit/3c3b307e218de21acf6d301602f34d7d422bfca2) Thanks [@robphoenix](https://github.com/robphoenix)! - Adds new colours to support the `destructive` Button variant
+
 ## 1.0.3
 
 ### Patch Changes
