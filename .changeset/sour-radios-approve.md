@@ -2,13 +2,13 @@
 "@utilitywarehouse/customer-ui-material": major
 ---
 
-This changeset replaces the Background components backgroundColor `levels` naming
-convention with the colour names. While there were conversations around finding
-a semantic naming conventions, these have stalled and would benefit from a wider
-approach that considers all colour usage and intent, across components and
-designs. This change was felt to be the lowest impact interim solution as it
-requires no changes to UX designs or conventions, and provides a simple clarity
-when translating designs to code.
+This changeset replaces the Background components backgroundColor `levels`
+naming convention with the colour names. While there were conversations around
+establishing a semantic naming convention, these have stalled and would benefit
+from a wider approach that considers all colour usage and intent, across
+components and designs. This change was felt to be the lowest impact interim
+solution as it requires no changes to UX designs or conventions, and provides a
+simple clarity when translating designs to code.
 
 When updating to this change the `backgroundColor` prop on the `Background` &
 `BackgroundProvider` components will need to be changed:
