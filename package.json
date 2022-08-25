@@ -23,7 +23,6 @@
     "typescript": "^4.1.3"
   },
   "scripts": {
-    "install:ci": "pnpm --ignore-scripts install",
     "setup": "corepack enable && corepack prepare pnpm@7.5.2 --activate",
     "build": "TURBO_TOKEN=${TURBO_TOKEN} turbo run build",
     "preinstall": "npx only-allow pnpm",
@@ -36,7 +35,7 @@
     "storybook:start": "pnpm -r --filter *material storybook:start",
     "storybook:build": "TURBO_TOKEN=${TURBO_TOKEN} turbo run storybook:build",
     "changeset": "changeset",
-    "ci:version": "changeset version && pnpm run install",
+    "ci:version": "changeset version && pnpm install",
     "ci:publish": "pnpm run build && changeset publish",
     "checks": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint build"
   },
