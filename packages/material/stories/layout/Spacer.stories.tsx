@@ -1,17 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import {
-  Spacer,
-  Box,
-  Card,
-  SpacerProps,
-  Stack,
-  Typography,
-  Icon,
-} from "../../src";
+import { Spacer, Box, Card, SpacerProps, Typography, Icon } from "../../src";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { icons } from "../utils";
+import Stack from "@mui/material/Stack";
 
 export default {
   title: "Layout/Spacer",

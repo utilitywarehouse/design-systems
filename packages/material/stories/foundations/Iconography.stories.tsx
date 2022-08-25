@@ -1,16 +1,11 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import {
-  Box,
-  Stack,
-  Typography,
-  Background,
-  InteractiveCard,
-  Tooltip,
-} from "../../src";
+import { Box, Typography, Background, InteractiveCard } from "../../src";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { icons } from "../utils";
+import Stack from "@mui/material/Stack";
+import Tooltip from "@mui/material/Tooltip";
 
 export default {
   title: "Foundations/Iconography",

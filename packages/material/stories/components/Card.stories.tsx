@@ -1,9 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Box, CardProps, Stack } from "../../src";
-import { Card, Button, Typography } from "../../src";
+import { Box, CardProps, Card, Button, Typography } from "../../src";
 import { BackgroundStack } from "../utils";
+import Stack from "@mui/material/Stack";
 
 export default {
   title: "Components/Card",

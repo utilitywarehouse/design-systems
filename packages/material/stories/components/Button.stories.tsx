@@ -1,9 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Button, Stack } from "../../src";
+import { Button } from "../../src";
 import type { ButtonProps } from "../../src";
 import { BackgroundStack } from "../utils";
+import Stack from "@mui/material/Stack";
 
 const sizes = ["small", "medium", "large"] as const;
 const variants = ["primary", "secondary", "tertiary"] as const;

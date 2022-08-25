@@ -18,7 +18,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-interface ContainerProps extends BoxProps {
+export interface ContainerProps extends BoxProps {
   forwardedRef?: React.Ref<unknown>;
 }
 

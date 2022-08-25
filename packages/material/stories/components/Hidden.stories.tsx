@@ -1,8 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Background, Hidden, Typography, Stack } from "../../src";
+import { Background, Hidden, Typography } from "../../src";
 import type { HiddenProps } from "../../src";
+import Stack from "@mui/material/Stack";
 
 export default {
   title: "Components/Hidden",

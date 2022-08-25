@@ -1,8 +1,9 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
-import { Stack, Typography } from "../../src";
+import { Typography } from "../../src";
 import type { TypographyProps } from "../../src";
 import { BackgroundStack } from "../utils";
+import Stack from "@mui/material/Stack";
 
 const variants = [
   "displayHeading",
