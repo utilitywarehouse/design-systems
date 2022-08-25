@@ -5,6 +5,9 @@ export * from "./material/core";
 export { theme } from "./lib/theme";
 export type { Theme } from "@mui/material/styles/createTheme";
 
+export { default as Box } from "./components/Box";
+export type { BoxProps } from "./components/Box";
+
 export {
   default as Background,
   useBackground,

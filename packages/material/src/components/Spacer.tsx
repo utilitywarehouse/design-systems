@@ -1,5 +1,5 @@
 import { styled, Theme } from "@mui/material/styles";
-import Box, { BoxProps } from "@mui/material/Box";
+import Box, { BoxProps } from "./Box";
 
 export interface SpacerProps
   extends Pick<BoxProps, "ref" | "sx" | "component" | "classes"> {

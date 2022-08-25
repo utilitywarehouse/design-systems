@@ -1,5 +1,4 @@
 import React from "react";
-import { ButtonBase, Box, Typography, BoxProps } from "..";
 import { styled } from "@mui/material/styles";
 import {
   helpers,
@@ -13,6 +12,9 @@ import {
   BackgroundProvider,
   useBackground,
 } from "./Background";
+import Box, { BoxProps } from "./Box";
+import ButtonBase from "@mui/material/ButtonBase";
+import Typography from "./Typography";
 
 const { px } = helpers;
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, BoxProps } from "..";
+import Box, { BoxProps } from "./Box";
 
 export interface IconProps
   extends Pick<BoxProps, "ref" | "sx" | "component" | "classes"> {

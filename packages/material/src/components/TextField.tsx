@@ -11,13 +11,13 @@ import {
   FormHelperText,
   InputLabel,
   styled,
-  Box,
 } from "../material/core";
 import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
 import { customerUiPrefix, getHexOpacity } from "../utils";
 import { Theme, Components } from "@mui/material/styles";
 import { useBackground } from "./Background";
+import Box from "./Box";
 
 const PREFIX = `${customerUiPrefix}-TextField`;
 export const textfieldClasses = {
