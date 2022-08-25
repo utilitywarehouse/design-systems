@@ -1,5 +1,12 @@
 # @utilitywarehouse/customer-ui-theme
 
+## 1.1.4
+
+### Patch Changes
+
+- Updated dependencies [[`3c3b307`](https://github.com/utilitywarehouse/customer-web-ui/commit/3c3b307e218de21acf6d301602f34d7d422bfca2)]:
+  - @utilitywarehouse/customer-ui-design-tokens@1.0.4
+
 ## 1.1.3
 
 ### Patch Changes
