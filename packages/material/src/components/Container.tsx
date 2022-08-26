@@ -22,11 +22,17 @@ interface ContainerProps extends BoxProps {
   forwardedRef?: React.Ref<unknown>;
 }
 
+/**
+ * @deprecated in v2. This component will be removed in v3.
+ */
 const Container: React.FC<ContainerProps> = ({
   children,
   forwardedRef,
   ...props
 }) => {
+  console.warn(
+    "Container component is deprecated in v2 and will be removed in v3"
+  );
   return (
     <StyledBox ref={forwardedRef} {...props}>
       {children}
