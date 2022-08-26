@@ -1,7 +1,7 @@
 import React from "react";
 import MuiBox, { BoxProps } from "@mui/material/Box";
 
-const Box: typeof MuiBox = React.forwardRef<unknown, BoxProps>(function Box(
+const Box: typeof MuiBox = React.forwardRef<HTMLElement, BoxProps>(function Box(
   props,
   ref
 ) {
