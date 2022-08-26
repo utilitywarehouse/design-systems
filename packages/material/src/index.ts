@@ -5,6 +5,16 @@ export type { Theme } from "@mui/material/styles/createTheme";
 
 // @mui/material exports
 export { styled } from "@mui/material/styles";
+import { makeStyles as muiMakeStyles } from "@mui/styles";
+/**
+ * @deprecated in v2. This will be removed in v3, please migrate to the sx & styled utilities.
+ */
+export const makeStyles: typeof muiMakeStyles = (...args) => {
+  console.warn(
+    "makeStyles is deprecated in v2, and will be removed in v3. Please migrate to the sx and styled utilities."
+  );
+  return muiMakeStyles(...args);
+};
 
 export { default as Box } from "./components/Box";
 export type { BoxProps } from "./components/Box";
