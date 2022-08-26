@@ -61,6 +61,11 @@ const hiddenChecksCallbacks: Record<string, BooleanCallbackCheck> = {
   tabletDown: isHiddenTabletDown,
 };
 
+/**
+ * @deprecated in v2. This component is deprecated because its functionality
+ * can be created with the sx prop or the useMediaQuery hook. See
+ * https://mui.com/material-ui/migration/v5-component-changes/#hidden
+ */
 const Hidden: React.FunctionComponent<HiddenProps> = ({
   mobile,
   tablet,
@@ -70,6 +75,9 @@ const Hidden: React.FunctionComponent<HiddenProps> = ({
   only,
   children,
 }) => {
+  console.warn(
+    `Hidden component is deprecated in v2 and will be removed in v3. This component is deprecated because its functionality can be created with the sx prop or the useMediaQuery hook. See https://mui.com/material-ui/migration/v5-component-changes/#hidden`
+  );
   const { deviceSize } = useDeviceSize();
   const isHidden = React.useMemo(() => {
     let hidden = false;
