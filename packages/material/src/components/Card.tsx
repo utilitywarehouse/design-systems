@@ -17,8 +17,6 @@ const getCardPalette = (
   backgroundColor: BackgroundColor,
   variant: CardVariant
 ) => {
-  // TODO: ensure this naming convention follows what is decided for Backdrop &
-  // Design Token naming
   const neutralBackgroundColorPalette = {
     opaque: {
       backgroundColor: colors.white,
@@ -30,8 +28,6 @@ const getCardPalette = (
     },
   };
 
-  // TODO: ensure this naming convention follows what is decided for Backdrop &
-  // Design Token naming
   const brandBackgroundColorPalette = {
     opaque: {
       backgroundColor: colors.purple,
