@@ -1,4 +1,4 @@
-import { BackdropLevel } from "./types";
+import { BackgroundProps } from "./components/Background";
 
 export const customerUiPrefix = "uw-cui";
 
@@ -7,11 +7,12 @@ export const isHeadingVariant = (variant: string): boolean => {
   return headingVariants.includes(variant);
 };
 
-// TODO: ensure the name of this function ends up inline with any design token naming for Backdrops
-// because I don't think `brand` is going to be the signifier for darker backgrounds.
-export const isBrandBackdropLevel = (backdropLevel: BackdropLevel): boolean => {
-  const brandBackdropLevels = ["level0", "level1"];
-  return brandBackdropLevels.includes(backdropLevel);
+export const isBrandBackgroundColor = (
+  backgroundColor: BackgroundProps["backgroundColor"]
+): boolean => {
+  if (!backgroundColor) return false;
+  const brandBackgroundColors = ["midnight", "purple"];
+  return brandBackgroundColors.includes(backgroundColor);
 };
 
 // get the hexadecimal value for an opacity value, primarily for use with CSS colour hex values

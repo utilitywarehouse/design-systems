@@ -32,7 +32,7 @@ export const HiddenStory: Story<HiddenProps> = (args) => {
 
       <Hidden {...args}>
         <Background
-          backgroundColor="level1"
+          backgroundColor="purple"
           sx={{
             width: "100%",
             height: 200,

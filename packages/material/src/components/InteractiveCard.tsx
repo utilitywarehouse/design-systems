@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonBase, Box, Typography, BoxProps, BackdropLevel } from "..";
+import { ButtonBase, Box, Typography, BoxProps } from "..";
 import { styled } from "@mui/material/styles";
 import {
   helpers,
@@ -8,7 +8,11 @@ import {
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { TinyColor } from "@ctrl/tinycolor";
 import { customerUiPrefix } from "../utils";
-import { BackgroundProvider, useBackground } from "./Background";
+import {
+  BackgroundColor,
+  BackgroundProvider,
+  useBackground,
+} from "./Background";
 
 const { px } = helpers;
 
@@ -18,7 +22,6 @@ export type InteractiveCardVariant = "primary" | "secondary";
 
 interface BaseInteractiveCardProps extends Pick<BoxProps, "sx"> {
   Background?: React.ComponentType;
-  backgroundColor?: BackdropLevel;
   size?: InteractiveCardSize;
   containerProps?: BoxProps;
   forwardedRef?: React.Ref<unknown>;
@@ -44,33 +47,33 @@ export type InteractiveCardProps =
 
 interface StyledRootProps {
   size: InteractiveCardSize;
-  backdropLevel: BackdropLevel;
+  backgroundColor: BackgroundColor;
 }
 
 const PREFIX = `${customerUiPrefix}-InteractiveCard`;
 export const interactiveCardClasses = { rootHover: `${PREFIX}-rootHover` };
 
 const StyledRoot = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "size" && prop !== "backdropLevel",
-})<StyledRootProps>(({ size, backdropLevel }) => {
+  shouldForwardProp: (prop) => prop !== "size" && prop !== "backgroundColor",
+})<StyledRootProps>(({ size, backgroundColor }) => {
   const interactiveCardPalette = {
-    level0: {
+    midnight: {
       default: colors.midnight,
       hover: new TinyColor(colors.white).setAlpha(0.1).toString(),
     },
-    level1: {
+    purple: {
       default: colors.purple,
       hover: new TinyColor(colors.white).setAlpha(0.1).toString(),
     },
-    level3: {
+    lightTint: {
       default: colors.lightTint,
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
-    level4: {
+    whiteOwl: {
       default: colors.whiteOwl,
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
-    level5: {
+    white: {
       default: colors.white,
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
@@ -83,10 +86,10 @@ const StyledRoot = styled(Box, {
     borderRadius: size === "small" ? px(8) : px(16),
     transition: `all ${transitions.duration}ms ${transitions.easingFunction}`,
     transitionProperty: "background-color",
-    backgroundColor: interactiveCardPalette[backdropLevel].default,
+    backgroundColor: interactiveCardPalette[backgroundColor].default,
     "&:hover": {
       [`& .${interactiveCardClasses.rootHover}`]: {
-        backgroundColor: interactiveCardPalette[backdropLevel].hover,
+        backgroundColor: interactiveCardPalette[backgroundColor].hover,
       },
     },
   };
@@ -128,18 +131,16 @@ const InteractiveCardComponent: React.FunctionComponent<
   size = "regular",
   containerProps,
   forwardedRef,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  backgroundColor,
   ...props
 }) => {
-  const { backdropLevel } = useBackground();
+  const { backgroundColor } = useBackground();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const href = (props as any).href as string | undefined;
 
   return (
     <StyledRoot
       size={size}
-      backdropLevel={backdropLevel as BackdropLevel}
+      backgroundColor={backgroundColor}
       {...containerProps}
     >
       <Box
@@ -195,22 +196,12 @@ const InteractiveCardComponent: React.FunctionComponent<
 const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
   props
 ) => {
-  const { backdropLevel } = useBackground();
-  const backgroundColor = React.useMemo(() => {
-    switch (backdropLevel) {
-      case "level0":
-      case "level1":
-      case "level3":
-      case "level4":
-        return "level5";
-
-      case "level5":
-        return "level1";
-    }
-  }, [backdropLevel]);
+  const { backgroundColor } = useBackground();
+  const interactiveCardBackgroundColor =
+    backgroundColor === "white" ? "purple" : "white";
 
   return (
-    <BackgroundProvider backgroundColor={backgroundColor as BackdropLevel}>
+    <BackgroundProvider backgroundColor={interactiveCardBackgroundColor}>
       <InteractiveCardComponent {...props} />
     </BackgroundProvider>
   );

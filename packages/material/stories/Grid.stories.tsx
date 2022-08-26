@@ -11,7 +11,7 @@ export default {
 
 const LargeContent: React.FC = (props) => (
   <Background
-    backgroundColor="level1"
+    backgroundColor="purple"
     sx={{ height: 200, display: "grid", placeItems: "center" }}
   >
     <Typography {...props} component="span" textTransform="capitalize" />
@@ -20,7 +20,7 @@ const LargeContent: React.FC = (props) => (
 
 const SmallContent: React.FC = (props) => (
   <Background
-    backgroundColor="level0"
+    backgroundColor="midnight"
     sx={{ height: 80, display: "grid", placeItems: "center" }}
   >
     <Typography {...props} component="span" textTransform="capitalize" />
@@ -28,7 +28,7 @@ const SmallContent: React.FC = (props) => (
 );
 
 export const GridStory: Story<GridProps> = () => (
-  <Background backgroundColor="level4" sx={{ padding: 3 }}>
+  <Background backgroundColor="whiteOwl" sx={{ padding: 3 }}>
     <Grid container>
       <Grid item mobile={4} desktop={8}>
         <LargeContent>account actions</LargeContent>

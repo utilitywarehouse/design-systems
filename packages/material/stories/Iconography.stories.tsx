@@ -79,7 +79,7 @@ const Icons: React.FC<IconsProps> = (props) => {
 };
 
 export const IconsStory: Story = () => (
-  <Background backgroundColor="level4" sx={{ padding: 6 }}>
+  <Background backgroundColor="whiteOwl" sx={{ padding: 6 }}>
     <Stack spacing={4}>
       <Icons iconSet="24x24" />
       <Icons iconSet="48x48" />

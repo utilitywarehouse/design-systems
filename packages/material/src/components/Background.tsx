@@ -1,16 +1,23 @@
 import React from "react";
-import { BackdropLevel, Box, BoxProps } from "../";
+import { Box, BoxProps } from "../";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { styled } from "@mui/material/styles";
 
+export type BackgroundColor =
+  | "midnight"
+  | "purple"
+  | "lightTint"
+  | "whiteOwl"
+  | "white";
+
 interface BackgroundContextValue {
-  backdropLevel: BackdropLevel;
+  backgroundColor: BackgroundColor;
 }
 
-const defaultBackgroundLevel: BackdropLevel = "level5"; // white
+const defaultBackgroundColor = "white";
 
 const BackgroundContext = React.createContext<BackgroundContextValue>({
-  backdropLevel: defaultBackgroundLevel,
+  backgroundColor: defaultBackgroundColor,
 });
 
 const useBackground = (): BackgroundContextValue => {
@@ -24,39 +31,29 @@ const useBackground = (): BackgroundContextValue => {
 };
 
 interface BackgroundProviderProps {
-  backgroundColor?: BackdropLevel;
+  backgroundColor?: BackgroundColor;
 }
 
 const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({
-  backgroundColor = defaultBackgroundLevel,
+  backgroundColor = defaultBackgroundColor,
   children,
 }) => {
   return (
-    <BackgroundContext.Provider value={{ backdropLevel: backgroundColor }}>
+    <BackgroundContext.Provider value={{ backgroundColor }}>
       {children}
     </BackgroundContext.Provider>
   );
 };
 
 interface StyledBackgroundProps {
-  backdropLevel: BackdropLevel;
+  backgroundColor: BackgroundColor;
 }
 
 const StyledBackground = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "backdropLevel",
-})<StyledBackgroundProps>(({ backdropLevel }) => {
-  const palette = {
-    level0: colors.midnight,
-    level1: colors.purple,
-    level3: colors.lightTint,
-    level4: colors.whiteOwl,
-    level5: colors.white,
-  };
-  const backgroundColor = palette[backdropLevel];
-  return {
-    backgroundColor,
-  };
-});
+  shouldForwardProp: (prop) => prop !== "backgroundColor",
+})<StyledBackgroundProps>(({ backgroundColor }) => ({
+  backgroundColor: colors[backgroundColor],
+}));
 
 interface BackgroundProps
   extends Pick<BoxProps, "ref" | "sx" | "component" | "classes">,
@@ -66,7 +63,7 @@ interface BackgroundProps
 
 const Background: React.FC<BackgroundProps> = ({
   forwardedRef,
-  backgroundColor = defaultBackgroundLevel,
+  backgroundColor = defaultBackgroundColor,
   ...props
 }) => {
   return (
@@ -74,7 +71,7 @@ const Background: React.FC<BackgroundProps> = ({
       <StyledBackground
         {...props}
         ref={forwardedRef}
-        backdropLevel={backgroundColor}
+        backgroundColor={backgroundColor}
       />
     </BackgroundProvider>
   );

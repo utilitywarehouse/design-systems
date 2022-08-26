@@ -11,23 +11,16 @@ export default {
     backgroundColor: {
       control: {
         type: "radio",
-        options: ["level5", "level4", "level3", "level1", "level0"],
+        options: ["white", "whiteOwl", "lightTint", "purple", "midnight"],
       },
     },
   },
   args: {
-    backgroundColor: "level5",
+    backgroundColor: "white",
   },
 } as Meta;
 
 export const BackgroundStory: Story<BackgroundProps> = (args) => {
-  const colorNames = {
-    level5: "Level 5 (White)",
-    level4: "Level 4 (White Owl)",
-    level3: "Level 3 (Light Tint)",
-    level1: "Level 1 (Purple)",
-    level0: "Level 0 (Midnight)",
-  };
   return (
     <Box padding={3}>
       <Background
@@ -41,8 +34,8 @@ export const BackgroundStory: Story<BackgroundProps> = (args) => {
           borderRadius: 4,
         }}
       >
-        <Typography variant="h2">
-          Background {colorNames[args.backgroundColor]}
+        <Typography variant="h2" textTransform="capitalize">
+          {args.backgroundColor}
         </Typography>
       </Background>
     </Box>

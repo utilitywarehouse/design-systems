@@ -8,7 +8,7 @@ import {
   fontWeights,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { CSSProperties } from "@mui/material/styles/createTypography";
-import { customerUiPrefix, isBrandBackdropLevel } from "../utils";
+import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
 import { Theme, Components } from "@mui/material/styles";
 import { useBackground } from "./Background";
 
@@ -86,7 +86,7 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
   forwardedRef,
   ...props
 }) => {
-  const { backdropLevel } = useBackground();
+  const { backgroundColor } = useBackground();
 
   const variantMapping = {
     displayHeading: "h1",
@@ -105,7 +105,7 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
     if (props.className) {
       classNames.push(props.className);
     }
-    if (isBrandBackdropLevel(backdropLevel)) {
+    if (isBrandBackgroundColor(backgroundColor)) {
       classNames.push(typographyClasses.inverse);
     }
     if (fontWeight === "semibold") {
