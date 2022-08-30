@@ -1,8 +1,8 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
 
-import { Menu, MenuItem, Box, Button } from "../src";
-import { BackgroundStack } from "./utils";
+import { Menu, MenuItem, Box, Button } from "../../src";
+import { BackgroundStack } from "../utils";
 
 export default {
   title: "Components/Menu",

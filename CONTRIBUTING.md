@@ -1,13 +1,47 @@
 # Contributing
 
-Thank you for your interest in contributing to Customer UI! This project is made
-possible by contributors like you, and we welcome any contributions to the code
-base and the documentation.
+Thank you for your interest in contributing to Customer Web UI!
+This project is made possible by contributors like you, and we welcome any
+contributions to the codebase and documentation.
 
-## Environment
+## Getting Started
 
-- Ensure you have run `npm setup` or `yarn setup` so you have [pnpm](https://pnpm.io/) installed.
-- Run `pnpm install` to install all dependencies.
+Run setup in the root of the repo. This will install [pnpm](https://pnpm.io/),
+which we use to manage this monorepo.
+
+**Make sure you're using node v16.10+ before running the below commands**
+
+```console
+npm run setup
+```
+
+Next, install install dependencies across all packages, and build the local
+packages.
+
+```console
+pnpm install
+pnpm build
+```
+
+### Linting
+
+This will run ESLint & prettier across all packages, and take advantage of turborepo's caching.
+
+```console
+pnpm lint
+```
+
+To fix linting & formatting issues, run:
+
+```console
+pnpm lint:fix
+```
+
+To run lint & build with turborepo:
+
+```console
+pnpm run checks
+```
 
 ## Making Changes
 
@@ -34,3 +68,14 @@ the next release and associated changelog.
 Not all changes require changesets, so Pull Requests are not blocked if missing
 a changeset, however you may be asked to add one, or one may be added for your
 change.
+
+## Remote Caching
+
+We're using Turborepo for our build workflows, which gives you out-of-the-box
+local caching. We also have a remote caching server set up which enables our CI
+process to take advantage of this local caching. To set your workspace up for
+remote caching you will need to export a `TURBO_TOKEN` environment variable.
+This token is available via 1Password, and to avoid having to temporarily export
+it over and over again you will need to set up your bash or zsh files in a way
+that doesn't commit this token to version control. For help with this please
+reach out in the [Slack channel](https://utilitywarehouse.slack.com/archives/C01CFKS9GUE).

@@ -1,12 +1,12 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Box, InteractiveCardProps } from "../src";
-import { InteractiveCard, Typography } from "../src";
-import { BackgroundStack } from "./utils";
+import { Box, InteractiveCardProps } from "../../src";
+import { InteractiveCard, Typography } from "../../src";
+import { BackgroundStack } from "../utils";
 
 export default {
-  title: "Layout/InteractiveCard",
+  title: "Components/InteractiveCard",
   component: InteractiveCard,
 } as Meta;
 

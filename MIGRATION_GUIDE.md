@@ -118,27 +118,24 @@ are kept consistent.
 
 > View the previous `Typography` variants in [this old storybook](https://86ace4d.storybook.customer-ui-material-uw.surge.sh/?path=/story/stories-components-typography--h-1).
 
-|variant|old desktop font size(px)|new desktop font size(px)|old mobile font size(px)|new mobile font size(px)|
-|-|:-:|:-:|:-:|:-:|
-| :heavy_plus_sign: `displayHeading`|-|64|-|42|
-| `h1`|64|42|40|32|
-| `h2`|40|32|28|28|
-| `h3`|33|24|18|22|
-| `h4`|20|20|14|18|
-| :heavy_minus_sign: `h5` |16|-|12|-|
-| :heavy_minus_sign: `headline`|16|-|16|-|
-| :heavy_minus_sign: `subheading`|15|-|15|-|
-| `body`|20|16|16|16|
-| :heavy_minus_sign: `small`|16|-|14|-|
-| :heavy_minus_sign: `label`|13|-|12|-|
-| `caption`|12|12|12|12|
-| :heavy_minus_sign: `footnote`|13|-|13|-|
-| :heavy_minus_sign: `interactive`|18|-|18|-|
-| :heavy_plus_sign: `subtitle`|-|20|-|18|
-| :heavy_plus_sign: `legalNote`|-|14|-14|
-
-:heavy_plus_sign: New variant
-:heavy_minus_sign: Removed variant
+|variant|status|old desktop font size(px)|new desktop font size(px)|old mobile font size(px)|new mobile font size(px)|
+|-|:-:|:-:|:-:|:-:|:-:|
+|`displayHeading`|NEW|-|64|-|42|
+|`h1`|UPDATED|64|42|40|32|
+|`h2`|UPDATED|40|32|28|28|
+|`h3`|UPDATED|33|24|18|22|
+|`h4`|UPDATED|20|20|14|18|
+|`h5`|REMOVED|16|-|12|-|
+|`headline`|REMOVED|16|-|16|-|
+|`subheading`|REMOVED|15|-|15|-|
+|`body`|UPDATED|20|16|16|16|
+|`small`|REMOVED|16|-|14|-|
+|`label`|REMOVED|13|-|12|-|
+|`caption`|UNCHANGED|12|12|12|12|
+|`footnote`|REMOVED|13|-|13|-|
+|`interactive`|REMOVED|18|-|18|-|
+|`subtitle`|NEW|-|20|-|18|
+|`legalNote`|NEW|-|14|-14|
 
 For a full breakdown of Customer UI typography please see the [Figma files](https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=38%3A884).
 

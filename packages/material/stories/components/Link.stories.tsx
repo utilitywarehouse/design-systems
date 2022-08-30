@@ -1,10 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { LinkProps, Stack } from "../src";
-import { Link, Typography } from "../src";
-import { BackgroundStack, typographyVariants } from "./utils";
-import type { TypographyProps } from "../src";
+import { LinkProps, Stack } from "../../src";
+import { Link, Typography } from "../../src";
+import { BackgroundStack, typographyVariants } from "../utils";
+import type { TypographyProps } from "../../src";
 
 export default {
   title: "Components/Links",

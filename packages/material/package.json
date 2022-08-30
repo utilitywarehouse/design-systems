@@ -6,8 +6,8 @@
   "scripts": {
     "clean": "rimraf node_modules && rimraf dist",
     "build": "rimraf dist/ && tsc --build ./tsconfig.build.json",
-    "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",
-    "lint": "TIMING=1 eslint --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",
+    "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\" \"./stories/**\"",
+    "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\" \"./stories/**\"",
     "precommit": "lint-staged",
     "storybook:start": "start-storybook -p 6006",
     "storybook:build": "build-storybook -o storybook-build",

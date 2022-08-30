@@ -8,9 +8,9 @@ import {
   Background,
   InteractiveCard,
   Tooltip,
-} from "../src";
+} from "../../src";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
-import { icons } from "./utils";
+import { icons } from "../utils";
 
 export default {
   title: "Foundations/Iconography",

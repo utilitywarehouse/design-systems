@@ -1,11 +1,11 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Background, Box, Typography } from "../src";
-import type { BackgroundProps } from "../src";
+import { Background, Box, Typography } from "../../src";
+import type { BackgroundProps } from "../../src";
 
 export default {
-  title: "Layout/Background",
+  title: "Components/Background",
   component: Background,
   argTypes: {
     backgroundColor: {
