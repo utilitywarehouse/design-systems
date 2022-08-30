@@ -1,12 +1,12 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Box, CardProps, Stack } from "../src";
-import { Card, Button, Typography } from "../src";
-import { BackgroundStack } from "./utils";
+import { Box, CardProps, Stack } from "../../src";
+import { Card, Button, Typography } from "../../src";
+import { BackgroundStack } from "../utils";
 
 export default {
-  title: "Layout/Card",
+  title: "Components/Card",
   component: Card,
   argTypes: { variant: { table: { disable: true } } },
 } as Meta;

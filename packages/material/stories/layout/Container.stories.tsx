@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Container, Box } from "../src";
+import { Container, Box } from "../../src";
 
 export default {
   title: "Layout/Container",

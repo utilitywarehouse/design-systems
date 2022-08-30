@@ -1,8 +1,8 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { NavLink, NavLinkProps } from "../src";
-import { BackgroundStack, typographyVariants } from "./utils";
+import { NavLink, NavLinkProps } from "../../src";
+import { BackgroundStack, typographyVariants } from "../utils";
 
 export default {
   title: "Components/Links",

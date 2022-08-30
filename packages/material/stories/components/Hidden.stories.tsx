@@ -1,11 +1,11 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Background, Hidden, Typography, Stack } from "../src";
-import type { HiddenProps } from "../src";
+import { Background, Hidden, Typography, Stack } from "../../src";
+import type { HiddenProps } from "../../src";
 
 export default {
-  title: "Layout/Hidden",
+  title: "Components/Hidden",
   component: Hidden,
   argTypes: {
     children: {

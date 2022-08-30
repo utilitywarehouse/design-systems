@@ -1,10 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Icon } from "../src";
-import type { IconProps } from "../src";
+import { Icon } from "../../src";
+import type { IconProps } from "../../src";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
-import { BackgroundStack, icons } from "./utils";
+import { BackgroundStack, icons } from "../utils";
 
 const allIcons = [...icons["24x24"], ...icons["48x48"]];
 

@@ -1,8 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Box, TextFieldProps } from "../src";
-import { Background, TextField } from "../src";
+import { Box, TextFieldProps, Background, TextField } from "../../src";
 
 export default {
   title: "Components/TextField",
