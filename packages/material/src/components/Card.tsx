@@ -66,6 +66,9 @@ const StyledCard = styled(Box, {
 
 export interface CardProps
   extends Pick<BoxProps, "ref" | "sx" | "component" | "classes"> {
+  /**
+   * @deprecated in v2. The variant prop will be removed in v3 and the opaque variant will be the default.
+   */
   variant?: CardVariant;
   forwardedRef?: React.Ref<HTMLDivElement>;
 }
@@ -73,6 +76,12 @@ export interface CardProps
 const Card: React.FunctionComponent<CardProps> = (props) => {
   const { variant = "opaque", forwardedRef, ...rest } = props;
   const { backgroundColor } = useBackground();
+
+  if (variant === "transparent") {
+    console.warn(
+      "The variant prop is deprecated in v2 and will be removed in v3. The opaque variant will be the default."
+    );
+  }
 
   const cardBackgroundColor =
     variant === "transparent"
