@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button";
 import { Components } from "@mui/material/styles";
 import {
