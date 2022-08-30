@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { styled } from "@mui/material/styles";
 import Box, { BoxProps } from "./Box";
@@ -30,14 +30,12 @@ const useBackground = (): BackgroundContextValue => {
   return context;
 };
 
-interface BackgroundProviderProps {
-  backgroundColor?: BackgroundColor;
+interface BackgroundProviderProps extends BackgroundContextValue {
+  children?: React.ReactNode;
 }
 
-const BackgroundProvider: React.FunctionComponent<BackgroundProviderProps> = ({
-  backgroundColor = defaultBackgroundColor,
-  children,
-}) => {
+const BackgroundProvider = (props: BackgroundProviderProps): JSX.Element => {
+  const { backgroundColor = defaultBackgroundColor, children } = props;
   return (
     <BackgroundContext.Provider value={{ backgroundColor }}>
       {children}
@@ -56,26 +54,40 @@ const StyledBackground = styled(Box, {
 }));
 
 interface BackgroundProps
-  extends Pick<BoxProps, "ref" | "sx" | "component" | "classes">,
+  extends Pick<BoxProps, "sx" | "component" | "classes">,
     BackgroundProviderProps {
+  /**
+   * @deprecated in v2. The forwardedRef prop will be removed in v3.
+   */
   forwardedRef?: React.Ref<HTMLDivElement>;
 }
 
-const Background: React.FC<BackgroundProps> = ({
-  forwardedRef,
-  backgroundColor = defaultBackgroundColor,
-  ...props
-}) => {
-  return (
-    <BackgroundProvider backgroundColor={backgroundColor}>
-      <StyledBackground
-        {...props}
-        ref={forwardedRef}
-        backgroundColor={backgroundColor}
-      />
-    </BackgroundProvider>
-  );
-};
+const Background = React.forwardRef<HTMLDivElement, BackgroundProps>(
+  function Background(props, ref) {
+    const {
+      backgroundColor = defaultBackgroundColor,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      forwardedRef,
+      ...rest
+    } = props;
+
+    if (forwardedRef) {
+      console.warn(
+        "The forwardedRef prop on the Background component is deprecated in v2 and will be removed in v3. Please use ref instead."
+      );
+    }
+
+    return (
+      <BackgroundProvider backgroundColor={backgroundColor}>
+        <StyledBackground
+          {...rest}
+          ref={ref || forwardedRef}
+          backgroundColor={backgroundColor}
+        />
+      </BackgroundProvider>
+    );
+  }
+);
 
 export default Background;
 export { useBackground, BackgroundProvider };
