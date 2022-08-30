@@ -55,33 +55,17 @@ const StyledBackground = styled(Box, {
 
 interface BackgroundProps
   extends Pick<BoxProps, "sx" | "component" | "classes">,
-    BackgroundProviderProps {
-  /**
-   * @deprecated in v2. The forwardedRef prop will be removed in v3.
-   */
-  forwardedRef?: React.Ref<HTMLDivElement>;
-}
+    BackgroundProviderProps {}
 
 const Background = React.forwardRef<HTMLDivElement, BackgroundProps>(
   function Background(props, ref) {
-    const {
-      backgroundColor = defaultBackgroundColor,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      forwardedRef,
-      ...rest
-    } = props;
-
-    if (forwardedRef) {
-      console.warn(
-        "The forwardedRef prop on the Background component is deprecated in v2 and will be removed in v3. Please use ref instead."
-      );
-    }
+    const { backgroundColor = defaultBackgroundColor, ...rest } = props;
 
     return (
       <BackgroundProvider backgroundColor={backgroundColor}>
         <StyledBackground
           {...rest}
-          ref={ref || forwardedRef}
+          ref={ref}
           backgroundColor={backgroundColor}
         />
       </BackgroundProvider>
