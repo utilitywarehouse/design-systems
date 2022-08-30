@@ -68,7 +68,7 @@ importers:
       '@storybook/react': ^6.5.9
       '@storybook/theming': ^6.5.9
       '@types/lodash.merge': ^4.6.7
-      '@types/react': ^17.0.0
+      '@types/react': ^17.0.0 || ^18.0.0
       '@utilitywarehouse/customer-ui-design-tokens': ^1.0.3
       '@utilitywarehouse/customer-ui-fonts': ^1.0.1
       '@utilitywarehouse/customer-ui-react-icons': ^1.0.2
@@ -77,8 +77,8 @@ importers:
       css-loader: ^5.2.0
       jss: ^10.9.0
       lodash.merge: ^4.6.2
-      react: ^17.0.0
-      react-dom: ^17.0.0
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
       style-loader: ^2.0.0
     dependencies:
       '@ctrl/tinycolor': 3.4.1
