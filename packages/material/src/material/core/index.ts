@@ -47,9 +47,6 @@ export * from "@mui/material/BottomNavigation";
 export { default as BottomNavigationAction } from "@mui/material/BottomNavigationAction";
 export * from "@mui/material/BottomNavigationAction";
 
-export { default as Box } from "@mui/material/Box";
-export * from "@mui/material/Box";
-
 export { default as Breadcrumbs } from "@mui/material/Breadcrumbs";
 export * from "@mui/material/Breadcrumbs";
 

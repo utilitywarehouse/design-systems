@@ -22,7 +22,7 @@ export default {
 
 export const BackgroundStory: Story<BackgroundProps> = (args) => {
   return (
-    <Box padding={3}>
+    <Box sx={{ padding: 3 }}>
       <Background
         {...args}
         sx={{

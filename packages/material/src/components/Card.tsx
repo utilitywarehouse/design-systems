@@ -1,9 +1,13 @@
 import { styled } from "@mui/material/styles";
 import React from "react";
-import { BackgroundColor, Box, BoxProps } from "..";
 import { helpers, colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { isBrandBackgroundColor } from "../utils";
-import { BackgroundProvider, useBackground } from "./Background";
+import {
+  BackgroundColor,
+  BackgroundProvider,
+  useBackground,
+} from "./Background";
+import Box, { BoxProps } from "./Box";
 
 const { px } = helpers;
 
@@ -13,8 +17,6 @@ const getCardPalette = (
   backgroundColor: BackgroundColor,
   variant: CardVariant
 ) => {
-  // TODO: ensure this naming convention follows what is decided for Backdrop &
-  // Design Token naming
   const neutralBackgroundColorPalette = {
     opaque: {
       backgroundColor: colors.white,
@@ -26,8 +28,6 @@ const getCardPalette = (
     },
   };
 
-  // TODO: ensure this naming convention follows what is decided for Backdrop &
-  // Design Token naming
   const brandBackgroundColorPalette = {
     opaque: {
       backgroundColor: colors.purple,

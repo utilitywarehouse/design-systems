@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import Box, { BoxProps } from "@mui/material/Box";
+import Box, { BoxProps } from "./Box";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   boxSizing: "border-box",

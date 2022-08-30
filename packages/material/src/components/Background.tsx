@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, BoxProps } from "../";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { styled } from "@mui/material/styles";
+import Box, { BoxProps } from "./Box";
 
 export type BackgroundColor =
   | "midnight"
