@@ -30,8 +30,9 @@ const useBackground = (): BackgroundContextValue => {
   return context;
 };
 
-interface BackgroundProviderProps extends BackgroundContextValue {
+interface BackgroundProviderProps {
   children?: React.ReactNode;
+  backgroundColor?: BackgroundColor;
 }
 
 const BackgroundProvider = (props: BackgroundProviderProps): JSX.Element => {
@@ -55,17 +56,32 @@ const StyledBackground = styled(Box, {
 
 interface BackgroundProps
   extends Pick<BoxProps, "sx" | "component" | "classes">,
-    BackgroundProviderProps {}
+    BackgroundProviderProps {
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<HTMLDivElement>;
+}
 
 const Background = React.forwardRef<HTMLDivElement, BackgroundProps>(
   function Background(props, ref) {
-    const { backgroundColor = defaultBackgroundColor, ...rest } = props;
+    const {
+      backgroundColor = defaultBackgroundColor,
+      forwardedRef,
+      ...rest
+    } = props;
+
+    if (forwardedRef !== undefined) {
+      console.warn(
+        "forwardedRef on the Background component is deprecated in v2 and will be removed in v3. Please use ref instead."
+      );
+    }
 
     return (
       <BackgroundProvider backgroundColor={backgroundColor}>
         <StyledBackground
           {...rest}
-          ref={ref}
+          ref={forwardedRef === undefined ? ref : forwardedRef}
           backgroundColor={backgroundColor}
         />
       </BackgroundProvider>
