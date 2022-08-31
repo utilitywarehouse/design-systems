@@ -220,7 +220,9 @@ const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
   }, [backdropLevel]);
 
   return (
-    <BackgroundProvider backgroundColor={backgroundColor}>
+    <BackgroundProvider
+      backgroundColor={props.backgroundColor || backgroundColor}
+    >
       <InteractiveCardComponent {...props} />
     </BackgroundProvider>
   );
