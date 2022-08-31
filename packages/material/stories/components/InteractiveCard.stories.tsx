@@ -1,35 +1,75 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { Box, InteractiveCardProps } from "../../src";
-import { InteractiveCard, Typography } from "../../src";
+import type { InteractiveCardProps } from "../../src";
+import { Stack, InteractiveCard, Typography } from "../../src";
 import { BackgroundStack } from "../utils";
+
+const sizes = ["small", "regular", "large"] as const;
 
 export default {
   title: "Components/InteractiveCard",
   component: InteractiveCard,
+  argTypes: {
+    forwardedRef: { table: { disable: true } },
+    variant: { table: { disable: true } },
+    sx: { table: { disable: true } },
+    containerProps: { table: { disable: true } },
+    Background: { table: { disable: true } },
+  },
+  args: {
+    size: "regular",
+  },
 } as Meta;
 
-export const InteractiveCardStory: Story<InteractiveCardProps> = (args) => {
+export const InteractiveCardKitchenSinkStory: Story<
+  InteractiveCardProps
+> = () => {
+  return (
+    <BackgroundStack>
+      <Stack direction="row" spacing={2} alignItems="center">
+        {sizes.map((size) => (
+          <InteractiveCard
+            key={size}
+            size={size}
+            onClick={(e: React.MouseEvent) => e.preventDefault()}
+            containerProps={{ sx: { width: "fit-content" } }}
+          >
+            <Typography component="span" textTransform="capitalize">
+              {size} interactive card
+            </Typography>
+          </InteractiveCard>
+        ))}
+      </Stack>
+    </BackgroundStack>
+  );
+};
+
+InteractiveCardKitchenSinkStory.storyName = "Kitchen Sink";
+InteractiveCardKitchenSinkStory.argTypes = {
+  backgroundColor: { table: { disable: true } },
+  size: { table: { disable: true } },
+};
+
+export const InteractiveCardCustomStory: Story<InteractiveCardProps> = (
+  args
+) => {
   return (
     <BackgroundStack>
       <InteractiveCard
         {...args}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
-        containerProps={{ sx: { width: 500 } }}
+        containerProps={{ sx: { width: "fit-content" } }}
       >
-        <Box
-          sx={{
-            height: 200,
-            display: "grid",
-            placeItems: "center",
-          }}
-        >
-          <Typography component="span">An interactive card</Typography>
-        </Box>
+        <Typography component="span" textTransform="capitalize">
+          interactive card
+        </Typography>
       </InteractiveCard>
     </BackgroundStack>
   );
 };
 
-InteractiveCardStory.storyName = "InteractiveCard";
+InteractiveCardCustomStory.storyName = "Custom";
+InteractiveCardCustomStory.parameters = {
+  chromatic: { disableSnapshot: true },
+};
