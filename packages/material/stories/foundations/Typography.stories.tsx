@@ -23,6 +23,7 @@ export default {
   title: "Foundations/Typography",
   component: Typography,
   argTypes: {
+    forwardedRef: { table: { disable: true } },
     children: {
       control: {
         type: "text",

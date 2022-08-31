@@ -8,6 +8,7 @@ export default {
   title: "Components/Links",
   components: NavLink,
   argTypes: {
+    forwardedRef: { table: { disable: true } },
     children: {
       control: {
         type: "text",

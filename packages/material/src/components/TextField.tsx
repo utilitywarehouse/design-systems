@@ -47,79 +47,89 @@ const IconContainer = styled(Box)(({ theme }) => ({
   marginLeft: theme.spacing(0.5),
 }));
 
-const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
-  status,
-  endAdornment,
-  className,
-  ...props
-}) => {
-  const showIcon = !props.disabled;
-  const classNames = clsx({
-    [textfieldClasses.success]: !props.disabled && isSuccessStatus(status),
-    [textfieldClasses.multiline]: !!props.multiline,
-    className: !!className,
-  });
+const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(
+  function TextFieldInput({ status, endAdornment, className, ...props }, ref) {
+    const showIcon = !props.disabled;
+    const classNames = clsx({
+      [textfieldClasses.success]: !props.disabled && isSuccessStatus(status),
+      [textfieldClasses.multiline]: !!props.multiline,
+      className: !!className,
+    });
 
-  return (
-    <FilledInput
-      className={classNames}
-      endAdornment={
-        <>
-          {showIcon && isErrorStatus(status) ? (
-            <IconContainer>
-              <WarningIcon />
-            </IconContainer>
-          ) : isSuccessStatus(status) ? (
-            <IconContainer>
-              <SuccessIcon />
-            </IconContainer>
-          ) : null}
-          {endAdornment ? <IconContainer>{endAdornment}</IconContainer> : null}
-        </>
-      }
-      {...props}
-    />
-  );
-};
-
-const TextField = (props: TextFieldProps): JSX.Element => {
-  const { label, labelProps, helperText, helperTextProps, multiline, ...rest } =
-    props;
-  const { status, disabled } = rest;
-  const hasErrorStatus = !disabled && isErrorStatus(status);
-  const formControlProps = { error: hasErrorStatus, disabled };
-  const { backgroundColor } = useBackground();
-
-  // should only be used on white, light tint & cod grey backgrounds
-  const validBackgroundColors = ["lightTint", "whiteOwl", "white"];
-  if (!validBackgroundColors.includes(backgroundColor)) {
-    console.warn(
-      `Invalid background color for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackgroundColors
-        .map((l) => `'${l}'`)
-        .join(", ")}]`
+    return (
+      <FilledInput
+        ref={ref}
+        className={classNames}
+        endAdornment={
+          <>
+            {showIcon && isErrorStatus(status) ? (
+              <IconContainer>
+                <WarningIcon />
+              </IconContainer>
+            ) : isSuccessStatus(status) ? (
+              <IconContainer>
+                <SuccessIcon />
+              </IconContainer>
+            ) : null}
+            {endAdornment ? (
+              <IconContainer>{endAdornment}</IconContainer>
+            ) : null}
+          </>
+        }
+        {...props}
+      />
     );
   }
+);
 
-  return (
-    <FormControl fullWidth={true} {...formControlProps}>
-      {label ? (
-        <InputLabel shrink id={labelProps?.id} htmlFor={props.id}>
-          {label}
-        </InputLabel>
-      ) : null}
+const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
+  function TextField(props, ref) {
+    const {
+      label,
+      labelProps,
+      helperText,
+      helperTextProps,
+      multiline,
+      ...rest
+    } = props;
+    const { status, disabled } = rest;
+    const hasErrorStatus = !disabled && isErrorStatus(status);
+    const formControlProps = { error: hasErrorStatus, disabled };
+    const { backgroundColor } = useBackground();
 
-      <TextFieldInput
-        {...rest}
-        multiline={multiline}
-        aria-describedby={helperTextProps?.id}
-      />
+    // should only be used on white, light tint & cod grey backgrounds
+    const validBackgroundColors = ["lightTint", "whiteOwl", "white"];
+    if (!validBackgroundColors.includes(backgroundColor)) {
+      console.warn(
+        `Invalid background color for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackgroundColors
+          .map((l) => `'${l}'`)
+          .join(", ")}]`
+      );
+    }
 
-      {helperText ? (
-        <FormHelperText id={helperTextProps?.id}>{helperText}</FormHelperText>
-      ) : null}
-    </FormControl>
-  );
-};
+    return (
+      <FormControl fullWidth={true} {...formControlProps}>
+        {label ? (
+          <InputLabel shrink id={labelProps?.id} htmlFor={props.id}>
+            {label}
+          </InputLabel>
+        ) : null}
+
+        <TextFieldInput
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ref={ref as unknown as any}
+          {...rest}
+          multiline={multiline}
+          aria-describedby={helperTextProps?.id}
+        />
+
+        {helperText ? (
+          <FormHelperText id={helperTextProps?.id}>{helperText}</FormHelperText>
+        ) : null}
+      </FormControl>
+    );
+  }
+);
 
 export default TextField;
 

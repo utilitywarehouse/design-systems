@@ -136,6 +136,11 @@ const InteractiveCardComponent: React.FunctionComponent<
   forwardedRef,
   ...props
 }) => {
+  if (forwardedRef !== undefined) {
+    console.warn(
+      "forwardedRef on the InteractiveCard component is deprecated in v2 and will be removed in v3. Please use ref instead."
+    );
+  }
   const { backgroundColor } = useBackground();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const href = (props as any).href as string | undefined;

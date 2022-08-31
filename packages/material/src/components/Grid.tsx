@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import MuiGrid, { GridProps as MuiGridProps } from "@mui/material/Grid";
 import { BoxProps } from "./Box";
 
@@ -21,7 +21,7 @@ const Grid: typeof MuiGrid = React.forwardRef<HTMLDivElement, GridProps>(
         />
       );
     }
-    return <MuiGrid columns={columns} {...props} />;
+    return <MuiGrid ref={ref} columns={columns} {...props} />;
   }
 );
 

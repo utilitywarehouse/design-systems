@@ -47,10 +47,14 @@ const StyledLink = styled(BaseLink)({
 
 type LinkProps = Omit<MuiLinkProps, "color" | "underline">;
 
-const Link: React.FunctionComponent<LinkProps> = ({
-  variant = "body",
-  ...props
-}) => <StyledLink {...props} underline="none" variant={variant} />;
+const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link(
+  props,
+  ref
+) {
+  return <StyledLink ref={ref} {...props} underline="none" />;
+});
+
+Link.defaultProps = { variant: "body" };
 
 interface NavLinkProps extends LinkProps {
   active?: boolean;
@@ -90,38 +94,36 @@ const StyledNavLink = styled(BaseLink, {
   };
 });
 
-const NavLink: React.FunctionComponent<NavLinkProps> = ({
-  variant = "body",
-  onClick,
-  active,
-  disabled,
-  ...props
-}) => {
-  const handleClick = React.useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-      if (disabled || active) {
-        e.preventDefault();
-        return;
-      }
+const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
+  function NavLink({ onClick, active, disabled, ...props }, ref) {
+    const handleClick = React.useCallback(
+      (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        if (disabled || active) {
+          e.preventDefault();
+          return;
+        }
 
-      if (onClick) {
-        onClick(e);
-      }
-    },
-    [onClick, disabled, active]
-  );
+        if (onClick) {
+          onClick(e);
+        }
+      },
+      [onClick, disabled, active]
+    );
 
-  return (
-    <StyledNavLink
-      {...props}
-      underline="none"
-      variant={variant}
-      onClick={handleClick}
-      active={active}
-      disabled={disabled}
-    />
-  );
-};
+    return (
+      <StyledNavLink
+        ref={ref}
+        {...props}
+        underline="none"
+        onClick={handleClick}
+        active={active}
+        disabled={disabled}
+      />
+    );
+  }
+);
+
+NavLink.defaultProps = { variant: "body" };
 
 export default Link;
 export { NavLink };

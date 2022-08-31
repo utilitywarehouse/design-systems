@@ -81,7 +81,7 @@ const Background = React.forwardRef<HTMLDivElement, BackgroundProps>(
       <BackgroundProvider backgroundColor={backgroundColor}>
         <StyledBackground
           {...rest}
-          ref={forwardedRef === undefined ? ref : forwardedRef}
+          ref={forwardedRef || ref}
           backgroundColor={backgroundColor}
         />
       </BackgroundProvider>

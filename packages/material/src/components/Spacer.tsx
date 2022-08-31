@@ -1,8 +1,9 @@
+import * as React from "react";
 import { styled, Theme } from "@mui/material/styles";
 import Box, { BoxProps } from "./Box";
 
 export interface SpacerProps
-  extends Pick<BoxProps, "ref" | "sx" | "component" | "classes"> {
+  extends Pick<BoxProps, "sx" | "component" | "classes" | "children"> {
   axis?: "horizontal" | "vertical";
   size?: number;
   space?:
@@ -18,26 +19,17 @@ export interface SpacerProps
 }
 
 function getSpaceSize(space: SpacerProps["space"], size: number): number {
-  switch (space) {
-    case "xxs":
-      return 0.5;
-    case "base":
-      return 1;
-    case "small":
-      return 2;
-    case "regular":
-      return 3;
-    case "medium":
-      return 4;
-    case "large":
-      return 6;
-    case "xl":
-      return 8;
-    case "xxl":
-      return 12;
-    default:
-      return size;
-  }
+  const spaceValues = {
+    xxs: 0.5,
+    base: 1,
+    small: 2,
+    regular: 3,
+    medium: 4,
+    large: 6,
+    xl: 8,
+    xxl: 12,
+  };
+  return space ? spaceValues[space] : size;
 }
 
 function getHeight({
@@ -58,15 +50,20 @@ function getWidth({
   return axis === "vertical" ? 1 : theme.spacing(getSpaceSize(space, size));
 }
 
-const Spacer: React.FunctionComponent<SpacerProps> = styled(Box)<SpacerProps>(
-  (props) => ({
-    display: props.inline ? "inline-block" : "block",
-    width: getWidth(props),
-    minWidth: getWidth(props),
-    height: getHeight(props),
-    minHeight: getHeight(props),
-  })
-);
+const StyledRoot = styled(Box)<SpacerProps>((props) => ({
+  display: props.inline ? "inline-block" : "block",
+  width: getWidth(props),
+  minWidth: getWidth(props),
+  height: getHeight(props),
+  minHeight: getHeight(props),
+}));
+
+const Spacer = React.forwardRef<HTMLDivElement, SpacerProps>(function Spacer(
+  props,
+  ref
+) {
+  return <StyledRoot ref={ref} {...props} />;
+});
 
 Spacer.defaultProps = {
   axis: "horizontal",

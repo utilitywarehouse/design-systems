@@ -12,6 +12,7 @@ export default {
   title: "Components/Icon",
   component: Icon,
   argTypes: {
+    forwardedRef: { table: { disable: true } },
     icon: {
       control: {
         type: "select",

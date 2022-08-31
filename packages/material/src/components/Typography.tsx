@@ -35,22 +35,38 @@ export interface TypographyProps
     | "noWrap"
     | "textTransform"
     | "letterSpacing"
+    | "children"
   > {
   color?: "primary" | "secondary" | "success" | "error";
   variant?: MuiTypographyProps["variant"];
   component?: React.ElementType;
-  forwardedRef?: React.Ref<unknown>;
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<HTMLHtmlElement | HTMLParagraphElement>;
   fontWeight?: "regular" | "semibold";
 }
 
-const Typography: React.FunctionComponent<TypographyProps> = ({
-  color = "primary",
-  variant = "body",
-  fontWeight = "regular",
-  forwardedRef,
-  className,
-  ...props
-}) => {
+const Typography = React.forwardRef<
+  HTMLHtmlElement | HTMLParagraphElement,
+  TypographyProps
+>(function Typography(
+  {
+    color = "primary",
+    variant = "body",
+    fontWeight = "regular",
+    forwardedRef,
+    className,
+    ...props
+  },
+  ref
+) {
+  if (forwardedRef !== undefined) {
+    console.warn(
+      "forwardedRef on the Typography component is deprecated in v2 and will be removed in v3. Please use ref instead."
+    );
+  }
+
   const { backgroundColor } = useBackground();
 
   const variantMapping = {
@@ -73,15 +89,14 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
 
   return (
     <MuiTypography
-      {...props}
       variant={variant}
+      {...props}
       variantMapping={variantMapping}
       className={classNames}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={forwardedRef as unknown as any}
+      ref={forwardedRef || ref}
     />
   );
-};
+});
 
 export default Typography;
 
