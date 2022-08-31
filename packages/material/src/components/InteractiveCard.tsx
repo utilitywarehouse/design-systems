@@ -24,6 +24,7 @@ export type InteractiveCardVariant = "primary" | "secondary";
 
 interface BaseInteractiveCardProps extends Pick<BoxProps, "sx"> {
   Background?: React.ComponentType;
+  backgroundColor?: BackgroundColor;
   size?: InteractiveCardSize;
   containerProps?: BoxProps;
   forwardedRef?: React.Ref<unknown>;
@@ -200,10 +201,14 @@ const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
 ) => {
   const { backgroundColor } = useBackground();
   const interactiveCardBackgroundColor =
-    props.backgroundColor || backgroundColor === "white" ? "purple" : "white";
+    backgroundColor === "white" ? "purple" : "white";
+
+  console.log({ backgroundColor, props, interactiveCardBackgroundColor });
 
   return (
-    <BackgroundProvider backgroundColor={interactiveCardBackgroundColor}>
+    <BackgroundProvider
+      backgroundColor={props.backgroundColor || interactiveCardBackgroundColor}
+    >
       <InteractiveCardComponent {...props} />
     </BackgroundProvider>
   );
