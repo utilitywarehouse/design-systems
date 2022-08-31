@@ -200,7 +200,7 @@ const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
 ) => {
   const { backgroundColor } = useBackground();
   const interactiveCardBackgroundColor =
-    backgroundColor === "white" ? "purple" : "white";
+    props.backgroundColor || backgroundColor === "white" ? "purple" : "white";
 
   return (
     <BackgroundProvider backgroundColor={interactiveCardBackgroundColor}>

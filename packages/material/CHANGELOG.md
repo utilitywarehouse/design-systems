@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-material
 
+## 1.0.12
+
+### Patch Changes
+
+- [#491](https://github.com/utilitywarehouse/customer-web-ui/pull/491) [`a4318d4`](https://github.com/utilitywarehouse/customer-web-ui/commit/a4318d4a91111ece15cb574af8de560748433fea) Thanks [@gosiamermon](https://github.com/gosiamermon)! - Fix the background color in active state of InteractiveCard component
+
 ## 1.0.11
 
 ### Patch Changes
