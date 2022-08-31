@@ -1,6 +1,6 @@
 import { BackgroundProps } from "./components/Background";
 
-export const customerUiPrefix = "uw-cui";
+export const customerUiPrefix = "uw-cwui";
 
 export const isHeadingVariant = (variant: string): boolean => {
   const headingVariants = ["displayHeading", "h1", "h2", "h3", "h4"];
