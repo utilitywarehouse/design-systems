@@ -13,10 +13,10 @@ Customer UI React components standing on the shoulders of the [MUI Material](htt
 
 ## Installation
 
+Install the library and it's peer dependencies.
+
 ```console
-npm i --save @utilitywarehouse/customer-ui-material
-# or
-yarn add @utilitywarehouse/customer-ui-material
+yarn add @utilitywarehouse/customer-ui-material @mui/material @emotion/react @emotion/styled
 ```
 
 ## Storybook
@@ -44,6 +44,10 @@ There are deploy previews on each PR, with a URL like this:
 These are provisioned on AWS S3 via
 [this terraform config](https://github.com/utilitywarehouse/terraform/blob/master/aws/dev/telecom/cwui-storybook.tf),
 and will be removed when the PR gets merged.
+
+### Fonts
+
+You will also need to install the necessary [fonts](../fonts).
 
 ## Getting started
 

@@ -1,7 +1,14 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { MuiMenu, MuiMenuProps, MuiMenuItem, MuiMenuItemProps } from "..";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
+import {
+  type MenuProps as MuiMenuProps,
+  default as MuiMenu,
+} from "@mui/material/Menu";
+import {
+  type MenuItemProps as MuiMenuItemProps,
+  default as MuiMenuItem,
+} from "@mui/material/MenuItem";
 import Typography from "./Typography";
 import BackgroundProvider from "./Background";
 

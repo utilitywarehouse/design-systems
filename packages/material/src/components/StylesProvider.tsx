@@ -1,7 +1,10 @@
 import React from "react";
-import { StylesProviderProps } from "@mui/styles";
+import {
+  createGenerateClassName,
+  StylesProviderProps,
+  StylesProvider as MuiStylesProvider,
+} from "@mui/styles";
 import { GenerateId } from "jss";
-import { MuiStylesProvider, createGenerateClassName } from "..";
 import { getRandomString } from "../utils";
 
 export type { StylesProviderProps } from "@mui/styles";

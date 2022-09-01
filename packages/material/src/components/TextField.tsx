@@ -6,18 +6,15 @@ import {
   fontWeights,
   transitions,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import {
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  styled,
-} from "../material/core";
 import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
 import { customerUiPrefix, getHexOpacity } from "../utils";
-import { Theme, Components } from "@mui/material/styles";
 import { useBackground } from "./Background";
 import Box from "./Box";
+import { Theme, Components, styled } from "@mui/material/styles";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import FormHelperText from "@mui/material/FormHelperText";
 
 const PREFIX = `${customerUiPrefix}-TextField`;
 export const textfieldClasses = {
