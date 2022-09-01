@@ -2,11 +2,11 @@ import React from "react";
 import { CacheProvider } from "@emotion/react";
 import createCache, { Options as CreateCacheOptions } from "@emotion/cache";
 import { StylesProvider, StylesProviderProps } from "..";
-import { getRandomString } from "../lib/random";
+import { getRandomString } from "../utils";
 import { StyledEngineProvider } from "@mui/styled-engine";
 import { ThemeProvider as MuiThemeProvider, Theme } from "@mui/material/styles";
 import merge from "lodash.merge";
-import { theme as defaultTheme } from "../lib/theme";
+import { theme as defaultTheme } from "../theme";
 
 export interface ThemeProviderProps {
   styleProviderProps?: StylesProviderProps;

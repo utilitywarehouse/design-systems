@@ -1,8 +1,8 @@
 import "../types/BreakpointOverrides";
 import { createTheme, Theme as MuiTheme } from "@mui/material/styles";
-import { getTextFieldTheme } from "../components/TextField";
-import { getButtonTheme } from "../components/Button";
-import { getTypographyTheme } from "../components/Typography";
+import { getTextFieldTheme } from "./components/TextField";
+import { getButtonTheme } from "./components/Button";
+import { getTypographyTheme } from "./components/Typography";
 import {
   breakpoints,
   colors,

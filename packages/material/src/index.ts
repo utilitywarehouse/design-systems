@@ -2,7 +2,7 @@ import "./types/BreakpointOverrides";
 
 export * from "./material/core";
 
-export { theme } from "./lib/theme";
+export { theme } from "./theme";
 export type { Theme } from "@mui/material/styles/createTheme";
 
 export { default as Box } from "./components/Box";
