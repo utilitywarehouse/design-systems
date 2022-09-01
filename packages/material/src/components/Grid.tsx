@@ -9,12 +9,17 @@ export interface GridProps extends MuiGridProps {
   component?: BoxProps["component"];
 }
 
-const Grid: React.FC<GridProps> = ({
-  columns = DEFAULT_COLUMNS,
-  spacing = DEFAULT_SPACING,
-  ...props
-}) => {
-  return <MuiGrid columns={columns} spacing={spacing} {...props} />;
+const Grid: React.FC<GridProps> = ({ columns = DEFAULT_COLUMNS, ...props }) => {
+  if (props.container) {
+    return (
+      <MuiGrid
+        columns={columns}
+        spacing={props.spacing || DEFAULT_SPACING}
+        {...props}
+      />
+    );
+  }
+  return <MuiGrid columns={columns} {...props} />;
 };
 
 export default Grid;
