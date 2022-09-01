@@ -15,10 +15,20 @@ export {
   StylesProvider as MuiStylesProvider,
   createGenerateClassName,
   jssPreset,
-  makeStyles,
   withStyles,
   withTheme,
 } from "@mui/styles";
+
+import { makeStyles as muiMakeStyles } from "@mui/styles";
+/**
+ * @deprecated in v2. This will be removed in v3, please migrate to the sx & styled utilities.
+ */
+export const makeStyles: typeof muiMakeStyles = (...args) => {
+  console.warn(
+    "makeStyles is deprecated in v2, and will be removed in v3. Please migrate to the sx and styled utilities."
+  );
+  return muiMakeStyles(...args);
+};
 
 export type {
   ComponentCreator,
