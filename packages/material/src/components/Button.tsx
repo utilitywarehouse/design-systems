@@ -106,6 +106,7 @@ export const getButtonTheme = (): Components => {
           fontWeight: fontWeights.secondary.semibold,
           fontSize: 18,
           lineHeight: 1,
+          letterSpacing: "0.02857em",
           textTransform: "none",
           opacity: 1,
           paddingTop: 0,

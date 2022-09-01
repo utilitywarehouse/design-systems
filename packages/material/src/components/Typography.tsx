@@ -7,47 +7,10 @@ import {
   fonts,
   fontWeights,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { CSSProperties } from "@mui/material/styles/createTypography";
 import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
 import { Theme, Components } from "@mui/material/styles";
 import { useBackground } from "./Background";
-
-declare module "@mui/material/styles" {
-  interface TypographyVariants {
-    displayHeading: CSSProperties;
-    subtitle: CSSProperties;
-    body: CSSProperties;
-    legalNote: CSSProperties;
-    caption: CSSProperties;
-  }
-
-  // allow configuration using material-ui's `createTheme`
-  interface TypographyVariantsOptions {
-    displayHeading?: CSSProperties;
-    subtitle?: CSSProperties;
-    body?: CSSProperties;
-    legalNote?: CSSProperties;
-    caption?: CSSProperties;
-  }
-}
-
-declare module "@mui/material/Typography" {
-  interface TypographyPropsVariantOverrides {
-    displayHeading: true;
-    subtitle: true;
-    body: true;
-    legalNote: true;
-    caption: true;
-    h5: false;
-    h6: false;
-    body1: false;
-    body2: false;
-    button: false;
-    overline: false;
-    subtitle1: false;
-    subtitle2: false;
-  }
-}
+import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 
 const PREFIX = `${customerUiPrefix}-Typography`;
 export const typographyClasses = {
@@ -97,7 +60,7 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
     subtitle: "p",
     body: "p",
     legalNote: "p",
-    caption: "caption",
+    caption: "span",
   };
 
   const getClassName = () => {
@@ -128,7 +91,19 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
 
 export default Typography;
 
-export const getTypographyTheme = (theme: Theme): Components => {
+export const getTypographyConfiguration = (
+  theme: Theme
+): {
+  displayHeading: TypographyStyleOptions;
+  h1: TypographyStyleOptions;
+  h2: TypographyStyleOptions;
+  h3: TypographyStyleOptions;
+  h4: TypographyStyleOptions;
+  subtitle: TypographyStyleOptions;
+  body: TypographyStyleOptions;
+  legalNote: TypographyStyleOptions;
+  caption: TypographyStyleOptions;
+} => {
   const headingStyles = {
     fontFamily: fonts.primary,
     color: colors.purple,
@@ -162,76 +137,70 @@ export const getTypographyTheme = (theme: Theme): Components => {
     },
   };
 
-  const muiTypography = {
-    MuiTypography: {
-      styleOverrides: {
-        displayHeading: {
-          ...headingStyles,
-          fontSize: theme.typography.pxToRem(42),
-          lineHeight: 1,
-          [theme.breakpoints.up("desktop")]: {
-            fontSize: theme.typography.pxToRem(64),
-          },
-        },
-        h1: {
-          ...headingStyles,
-          fontSize: theme.typography.pxToRem(32),
-          lineHeight: 1.2,
-          [theme.breakpoints.up("desktop")]: {
-            fontSize: theme.typography.pxToRem(42),
-          },
-        },
-        h2: {
-          ...headingStyles,
-          fontSize: theme.typography.pxToRem(28),
-          lineHeight: 1.5,
-          [theme.breakpoints.up("desktop")]: {
-            fontSize: theme.typography.pxToRem(32),
-            lineHeight: 1.2,
-          },
-        },
-        h3: {
-          ...headingStyles,
-          fontSize: theme.typography.pxToRem(22),
-          lineHeight: 1.5,
-          [theme.breakpoints.up("desktop")]: {
-            fontSize: theme.typography.pxToRem(24),
-          },
-        },
-        h4: {
-          ...headingStyles,
-          fontSize: theme.typography.pxToRem(18),
-          lineHeight: 1.5,
-          [theme.breakpoints.up("desktop")]: {
-            fontSize: theme.typography.pxToRem(20),
-          },
-        },
-        body: {
-          ...bodyStyles,
-          fontSize: theme.typography.pxToRem(16),
-          lineHeight: 1.5,
-        },
-        subtitle: {
-          ...bodyStyles,
-          fontSize: theme.typography.pxToRem(18),
-          lineHeight: 1.5,
-          [theme.breakpoints.up("desktop")]: {
-            fontSize: theme.typography.pxToRem(20),
-          },
-        },
-        legalNote: {
-          ...bodyStyles,
-          fontSize: theme.typography.pxToRem(14),
-          lineHeight: 1.5,
-        },
-        caption: {
-          ...bodyStyles,
-          fontSize: theme.typography.pxToRem(12),
-          lineHeight: 2,
-        },
+  return {
+    displayHeading: {
+      ...headingStyles,
+      fontSize: theme.typography.pxToRem(42),
+      lineHeight: 1,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(64),
       },
     },
+    h1: {
+      ...headingStyles,
+      fontSize: theme.typography.pxToRem(32),
+      lineHeight: 1.2,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(42),
+      },
+    },
+    h2: {
+      ...headingStyles,
+      fontSize: theme.typography.pxToRem(28),
+      lineHeight: 1.5,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(32),
+        lineHeight: 1.2,
+      },
+    },
+    h3: {
+      ...headingStyles,
+      fontSize: theme.typography.pxToRem(22),
+      lineHeight: 1.5,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(24),
+      },
+    },
+    h4: {
+      ...headingStyles,
+      fontSize: theme.typography.pxToRem(18),
+      lineHeight: 1.5,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(20),
+      },
+    },
+    body: {
+      ...bodyStyles,
+      fontSize: theme.typography.pxToRem(16),
+      lineHeight: 1.5,
+    },
+    subtitle: {
+      ...bodyStyles,
+      fontSize: theme.typography.pxToRem(18),
+      lineHeight: 1.5,
+      [theme.breakpoints.up("desktop")]: {
+        fontSize: theme.typography.pxToRem(20),
+      },
+    },
+    legalNote: {
+      ...bodyStyles,
+      fontSize: theme.typography.pxToRem(14),
+      lineHeight: 1.5,
+    },
+    caption: {
+      ...bodyStyles,
+      fontSize: theme.typography.pxToRem(12),
+      lineHeight: 2,
+    },
   };
-
-  return muiTypography as Components;
 };
