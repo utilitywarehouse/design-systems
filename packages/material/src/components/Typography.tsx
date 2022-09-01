@@ -8,7 +8,7 @@ import {
   fontWeights,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
-import { Theme, Components } from "@mui/material/styles";
+import { Theme } from "@mui/material/styles";
 import { useBackground } from "./Background";
 import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 
