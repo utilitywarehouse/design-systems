@@ -1,5 +1,3 @@
-import "./types/BreakpointOverrides";
-
 export * from "./material/core";
 
 export { theme } from "./theme";
