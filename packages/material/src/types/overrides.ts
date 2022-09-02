@@ -46,3 +46,5 @@ declare module "@mui/material/Typography" {
     subtitle2: false;
   }
 }
+
+export {};

@@ -1,3 +1,5 @@
+import "./types/overrides";
+
 export { theme } from "./theme";
 export type { Theme } from "@mui/material/styles/createTheme";
 

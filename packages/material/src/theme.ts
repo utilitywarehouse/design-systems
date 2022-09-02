@@ -9,6 +9,7 @@ import {
   fonts,
   fontWeights,
 } from "@utilitywarehouse/customer-ui-design-tokens";
+import "./types/overrides";
 
 export const buildTheme = (): MuiTheme => {
   const muiTheme = createTheme({
