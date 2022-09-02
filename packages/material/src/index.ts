@@ -4,7 +4,7 @@ export { theme } from "./theme";
 export type { Theme } from "@mui/material/styles/createTheme";
 
 // @mui/material exports
-export { styled } from "@mui/material/styles";
+export { styled, useTheme } from "@mui/material/styles";
 import { makeStyles as muiMakeStyles } from "@mui/styles";
 /**
  * @deprecated in v2. This will be removed in v3, please migrate to the sx & styled utilities.
