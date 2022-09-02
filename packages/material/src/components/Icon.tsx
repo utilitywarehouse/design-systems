@@ -2,7 +2,7 @@ import * as React from "react";
 import Box, { BoxProps } from "./Box";
 
 export interface IconProps
-  extends Pick<BoxProps, "ref" | "sx" | "component" | "classes"> {
+  extends Pick<BoxProps, "sx" | "component" | "classes"> {
   color?: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   iconProps?: React.SVGProps<SVGSVGElement>;
@@ -12,7 +12,9 @@ export interface IconProps
   forwardedRef?: React.Ref<unknown>;
 }
 
-const Icon = React.forwardRef<SVGElement, IconProps>(function Icon(
+// We currently aren't able to pass the ref down to the SVG element so we pass
+// it to a wrapper instead
+const Icon = React.forwardRef<HTMLSpanElement, IconProps>(function Icon(
   { color = "inherit", icon, iconProps = {}, forwardedRef, ...props },
   ref
 ) {
@@ -24,7 +26,7 @@ const Icon = React.forwardRef<SVGElement, IconProps>(function Icon(
 
   const IconComponent = icon;
   return (
-    <Box {...props} component="span" ref={forwardedRef || ref}>
+    <Box ref={forwardedRef || ref} component="span" {...props}>
       <IconComponent {...iconProps} fill={color} />
     </Box>
   );

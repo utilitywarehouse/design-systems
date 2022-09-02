@@ -12,7 +12,7 @@ import {
 import Typography from "./Typography";
 import BackgroundProvider from "./Background";
 
-export interface MenuProps extends MuiMenuProps {
+export interface MenuProps extends Omit<MuiMenuProps, "ref"> {
   /**
    * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
    */

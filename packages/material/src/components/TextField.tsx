@@ -27,7 +27,7 @@ const isSuccessStatus = (status?: string): boolean => status === "success";
 const isErrorStatus = (status?: string): boolean => status === "error";
 
 export interface TextFieldProps
-  extends Omit<FilledInputProps, "hiddenLabel" | "error"> {
+  extends Omit<FilledInputProps, "ref" | "hiddenLabel" | "error"> {
   status?: "success" | "error";
   label?: React.ReactNode;
   labelProps?: {

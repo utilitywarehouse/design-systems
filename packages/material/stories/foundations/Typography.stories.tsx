@@ -78,17 +78,19 @@ export default {
   },
 } as Meta;
 
-export const TypographyKitchenSinkStory: Story<TypographyProps> = (args) => (
-  <BackgroundStack>
-    <Stack spacing={2}>
-      {variants.map((v) => (
-        <Stack key={v} spacing={4} direction="row">
-          <Typography {...args} variant={v} />
-        </Stack>
-      ))}
-    </Stack>
-  </BackgroundStack>
-);
+export const TypographyKitchenSinkStory: Story<TypographyProps> = (args) => {
+  return (
+    <BackgroundStack>
+      <Stack spacing={2}>
+        {variants.map((v) => (
+          <Stack key={v} spacing={4} direction="row">
+            <Typography {...args} variant={v} />
+          </Stack>
+        ))}
+      </Stack>
+    </BackgroundStack>
+  );
+};
 TypographyKitchenSinkStory.storyName = "Kitchen Sink";
 TypographyKitchenSinkStory.argTypes = {
   variant: { table: { disable: true } },
