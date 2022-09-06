@@ -24,48 +24,115 @@ export const buttonClasses = {
   large: `${PREFIX}-large`,
 };
 
-interface BaseButtonProps extends Pick<MuiButtonProps, "sx" | "classes"> {
+interface BaseButtonProps
+  extends Pick<MuiButtonProps, "sx" | "classes" | "href"> {
   size?: "small" | "medium" | "large";
   variant?: "primary" | "secondary" | "tertiary";
   fullWidth?: boolean;
   children?: React.ReactNode;
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<HTMLButtonElement>;
 }
 
-type ButtonPropsButtonElement = BaseButtonProps &
-  Omit<React.ComponentPropsWithoutRef<"button">, keyof BaseButtonProps> & {
-    forwardedRef?: React.Ref<HTMLButtonElement>;
-  };
-type ButtonPropsAnchorElement = BaseButtonProps &
-  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseButtonProps | "href"> & {
-    forwardedRef?: React.Ref<HTMLAnchorElement>;
-    href: string;
-  };
+type ButtonElementProps = BaseButtonProps &
+  Omit<React.ComponentPropsWithoutRef<"button">, keyof BaseButtonProps>;
 
-export type ButtonProps = ButtonPropsButtonElement | ButtonPropsAnchorElement;
+type AnchorElementProps = BaseButtonProps &
+  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseButtonProps>;
 
-const Button: React.FunctionComponent<ButtonProps> = ({
-  size = "medium",
-  variant = "primary",
-  forwardedRef,
-  className,
-  ...props
-}) => {
-  const { backgroundColor } = useBackground();
+// <<<<<<< HEAD
+// const Button: React.FunctionComponent<ButtonProps> = ({
+//   size = "medium",
+//   variant = "primary",
+//   forwardedRef,
+//   className,
+//   ...props
+// }) => {
+//   const { backgroundColor } = useBackground();
+// ||||||| parent of 2770ed94a (add ref to button component)
+// const Button: React.FunctionComponent<ButtonProps> = ({
+//   size = "medium",
+//   children,
+//   variant = "primary",
+//   fullWidth = false,
+//   forwardedRef,
+//   className,
+//   ...props
+// }) => {
+//   const { backgroundColor } = useBackground();
+// =======
+export type ButtonProps = ButtonElementProps | AnchorElementProps;
 
-  const classNames = clsx(buttonClasses[variant], buttonClasses[size], {
-    [buttonClasses.inverse]: isBrandBackgroundColor(backgroundColor),
-    className: !!className,
-  });
+// <<<<<<< HEAD
+//   const classNames = clsx(buttonClasses[variant], buttonClasses[size], {
+//     [buttonClasses.inverse]: isBrandBackgroundColor(backgroundColor),
+//     className: !!className,
+//   });
+// ||||||| parent of 2770ed94a (add ref to button component)
+//   const getClassName = () => {
+//     const classNames = [buttonClasses[variant], buttonClasses[size]];
+//     if (className) {
+//       classNames.push(className);
+//     }
+//     if (isBrandBackgroundColor(backgroundColor)) {
+//       classNames.push(buttonClasses.inverse);
+//     }
+//     return classNames.join(" ");
+//   };
+//
+//   const muiVariants = {
+//     primary: "contained",
+//     secondary: "outlined",
+//     tertiary: "text",
+//   };
+//
+//   const muiButtonProps: MuiButtonProps = {
+//     ...(props as Partial<MuiButtonProps>),
+//     fullWidth,
+//     variant: muiVariants[variant] as MuiButtonProps["variant"],
+//     className: getClassName(),
+//   };
+// =======
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      size = "medium",
+      children,
+      variant = "primary",
+      fullWidth = false,
+      forwardedRef,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    if (forwardedRef !== undefined) {
+      console.warn(
+        "forwardedRef on the Button component is deprecated in v2 and will be removed in v3. Please use ref instead."
+      );
+    }
 
-  return (
-    <MuiButton
-      {...(props as Partial<MuiButtonProps>)}
-      className={classNames}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={forwardedRef as unknown as any}
-    />
-  );
-};
+    const { backgroundColor } = useBackground();
+
+    const classNames = clsx(buttonClasses[variant], buttonClasses[size], {
+      [buttonClasses.inverse]: isBrandBackgroundColor(backgroundColor),
+      className: !!className,
+    });
+
+    return (
+      <MuiButton
+        {...(props as Partial<MuiButtonProps>)}
+        className={classNames}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref={forwardedRef || ref}
+      />
+    );
+  }
+);
+
+Button.displayName = "Button";
 
 export default Button;
 
