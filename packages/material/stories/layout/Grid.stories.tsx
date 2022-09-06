@@ -1,6 +1,5 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import { useTheme } from "@mui/material/styles";
 
 import { Background, Typography, Grid } from "../../src";
 import type { GridProps } from "../../src";

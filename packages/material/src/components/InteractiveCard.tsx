@@ -27,8 +27,12 @@ interface BaseInteractiveCardProps extends Pick<BoxProps, "sx"> {
   backgroundColor?: BackgroundColor;
   size?: InteractiveCardSize;
   containerProps?: BoxProps;
-  forwardedRef?: React.Ref<unknown>;
   children?: React.ReactNode;
+  href?: string;
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<HTMLButtonElement>;
   /**
    * @deprecated in v2. This prop has no effect on the component
    */
@@ -50,15 +54,16 @@ export type InteractiveCardProps =
 
 interface StyledRootProps {
   size: InteractiveCardSize;
-  backgroundColor: BackgroundColor;
 }
 
 const PREFIX = `${customerUiPrefix}-InteractiveCard`;
 export const interactiveCardClasses = { rootHover: `${PREFIX}-rootHover` };
 
 const StyledRoot = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "size" && prop !== "backgroundColor",
-})<StyledRootProps>(({ size, backgroundColor }) => {
+  shouldForwardProp: (prop) => prop !== "size",
+})<StyledRootProps>(({ size }) => {
+  const { backgroundColor } = useBackground();
+
   const interactiveCardPalette = {
     midnight: {
       default: colors.midnight,
@@ -126,84 +131,78 @@ const StyledWrapper = styled(Box, {
   };
 });
 
-const InteractiveCardComponent: React.FunctionComponent<
+const InteractiveCardComponent = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  Omit<InteractiveCardProps, "forwardedRef">
+>(
+  (
+    { children, Background, size = "regular", containerProps, href, ...props },
+    ref
+  ) => {
+    const component = href ? "a" : "button";
+
+    return (
+      <StyledRoot size={size} {...containerProps}>
+        <Box
+          className={interactiveCardClasses.rootHover}
+          sx={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+          }}
+        />
+        <ButtonBase
+          {...props}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          component={component as any}
+          ref={ref}
+          disableRipple={true}
+          sx={{ width: "100%" }}
+        >
+          <Box
+            sx={{
+              position: "relative",
+              overflow: "hidden",
+              minHeight: "100%",
+              minWidth: "100%",
+            }}
+          >
+            {Background && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  right: 0,
+                  bottom: 0,
+                }}
+              >
+                <Background />
+              </Box>
+            )}
+            <StyledWrapper size={size}>
+              <Typography component="div">{children}</Typography>
+            </StyledWrapper>
+          </Box>
+        </ButtonBase>
+      </StyledRoot>
+    );
+  }
+);
+
+InteractiveCardComponent.displayName = "InteractiveCardComponent";
+
+const InteractiveCard = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
   InteractiveCardProps
-> = ({
-  children,
-  Background,
-  size = "regular",
-  containerProps,
-  forwardedRef,
-  ...props
-}) => {
+>(({ forwardedRef, ...props }, ref) => {
   if (forwardedRef !== undefined) {
     console.warn(
       "forwardedRef on the InteractiveCard component is deprecated in v2 and will be removed in v3. Please use ref instead."
     );
   }
-  const { backgroundColor } = useBackground();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const href = (props as any).href as string | undefined;
-
-  return (
-    <StyledRoot
-      size={size}
-      backgroundColor={backgroundColor}
-      {...containerProps}
-    >
-      <Box
-        className={interactiveCardClasses.rootHover}
-        sx={{
-          position: "absolute",
-          left: 0,
-          top: 0,
-          right: 0,
-          bottom: 0,
-        }}
-      />
-      <ButtonBase
-        {...props}
-        disableRipple={true}
-        component={href ? "a" : "button"}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={forwardedRef as unknown as any}
-        sx={{
-          width: "100%",
-        }}
-      >
-        <Box
-          sx={{
-            position: "relative",
-            overflow: "hidden",
-            minHeight: "100%",
-            minWidth: "100%",
-          }}
-        >
-          {Background && (
-            <Box
-              sx={{
-                position: "absolute",
-                left: 0,
-                top: 0,
-                right: 0,
-                bottom: 0,
-              }}
-            >
-              <Background />
-            </Box>
-          )}
-          <StyledWrapper size={size}>
-            <Typography component="div">{children}</Typography>
-          </StyledWrapper>
-        </Box>
-      </ButtonBase>
-    </StyledRoot>
-  );
-};
-
-const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
-  props
-) => {
   const { backgroundColor } = useBackground();
   const interactiveCardBackgroundColor =
     backgroundColor === "white" ? "purple" : "white";
@@ -212,9 +211,11 @@ const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
     <BackgroundProvider
       backgroundColor={props.backgroundColor || interactiveCardBackgroundColor}
     >
-      <InteractiveCardComponent {...props} />
+      <InteractiveCardComponent ref={forwardedRef || ref} {...props} />
     </BackgroundProvider>
   );
-};
+});
+
+InteractiveCard.displayName = "InteractiveCard";
 
 export default InteractiveCard;
