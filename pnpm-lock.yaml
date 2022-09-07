@@ -74,6 +74,7 @@ importers:
       '@utilitywarehouse/customer-ui-react-icons': ^1.0.2
       babel-loader: ^8.2.2
       chromatic: ^6.7.3
+      clsx: ^1.2.1
       css-loader: ^5.2.0
       jss: ^10.9.0
       lodash.merge: ^4.6.2
@@ -87,6 +88,7 @@ importers:
       '@mui/styles': 5.10.2_skqlhrap4das3cz5b6iqdn2lqi
       '@utilitywarehouse/customer-ui-design-tokens': link:../design-tokens
       '@utilitywarehouse/customer-ui-react-icons': link:../react-icons
+      clsx: 1.2.1
       jss: 10.9.2
       lodash.merge: 4.6.2
     devDependencies:
