@@ -42,70 +42,11 @@ type ButtonElementProps = BaseButtonProps &
 type AnchorElementProps = BaseButtonProps &
   Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseButtonProps>;
 
-// <<<<<<< HEAD
-// const Button: React.FunctionComponent<ButtonProps> = ({
-//   size = "medium",
-//   variant = "primary",
-//   forwardedRef,
-//   className,
-//   ...props
-// }) => {
-//   const { backgroundColor } = useBackground();
-// ||||||| parent of 2770ed94a (add ref to button component)
-// const Button: React.FunctionComponent<ButtonProps> = ({
-//   size = "medium",
-//   children,
-//   variant = "primary",
-//   fullWidth = false,
-//   forwardedRef,
-//   className,
-//   ...props
-// }) => {
-//   const { backgroundColor } = useBackground();
-// =======
 export type ButtonProps = ButtonElementProps | AnchorElementProps;
 
-// <<<<<<< HEAD
-//   const classNames = clsx(buttonClasses[variant], buttonClasses[size], {
-//     [buttonClasses.inverse]: isBrandBackgroundColor(backgroundColor),
-//     className: !!className,
-//   });
-// ||||||| parent of 2770ed94a (add ref to button component)
-//   const getClassName = () => {
-//     const classNames = [buttonClasses[variant], buttonClasses[size]];
-//     if (className) {
-//       classNames.push(className);
-//     }
-//     if (isBrandBackgroundColor(backgroundColor)) {
-//       classNames.push(buttonClasses.inverse);
-//     }
-//     return classNames.join(" ");
-//   };
-//
-//   const muiVariants = {
-//     primary: "contained",
-//     secondary: "outlined",
-//     tertiary: "text",
-//   };
-//
-//   const muiButtonProps: MuiButtonProps = {
-//     ...(props as Partial<MuiButtonProps>),
-//     fullWidth,
-//     variant: muiVariants[variant] as MuiButtonProps["variant"],
-//     className: getClassName(),
-//   };
-// =======
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    {
-      size = "medium",
-      children,
-      variant = "primary",
-      fullWidth = false,
-      forwardedRef,
-      className,
-      ...props
-    },
+    { size = "medium", variant = "primary", forwardedRef, className, ...props },
     ref
   ) => {
     if (forwardedRef !== undefined) {
