@@ -93,8 +93,8 @@ const Typography = React.forwardRef<
 
     return (
       <MuiTypography
-        variant={variant}
         {...props}
+        variant={variant}
         variantMapping={variantMapping}
         className={classNames}
         ref={forwardedRef || ref}
