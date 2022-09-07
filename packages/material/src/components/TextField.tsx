@@ -48,7 +48,7 @@ const IconContainer = styled(Box)(({ theme }) => ({
 }));
 
 const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(
-  function TextFieldInput({ status, endAdornment, className, ...props }, ref) {
+  ({ status, endAdornment, className, ...props }, ref) => {
     const showIcon = !props.disabled;
     const classNames = clsx({
       [textfieldClasses.success]: !props.disabled && isSuccessStatus(status),
@@ -82,8 +82,10 @@ const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(
   }
 );
 
+TextFieldInput.displayName = "TextFieldInput";
+
 const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
-  function TextField(props, ref) {
+  (props, ref) => {
     const {
       label,
       labelProps,
@@ -130,6 +132,8 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     );
   }
 );
+
+TextField.displayName = "TextField";
 
 export default TextField;
 

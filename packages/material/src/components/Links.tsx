@@ -47,14 +47,12 @@ const StyledLink = styled(BaseLink)({
 
 type LinkProps = Omit<MuiLinkProps, "color" | "underline">;
 
-const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link(
-  props,
-  ref
-) {
+const Link = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
   return <StyledLink ref={ref} {...props} underline="none" />;
 });
 
 Link.defaultProps = { variant: "body" };
+Link.displayName = "Link";
 
 interface NavLinkProps extends LinkProps {
   active?: boolean;
@@ -95,7 +93,7 @@ const StyledNavLink = styled(BaseLink, {
 });
 
 const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
-  function NavLink({ onClick, active, disabled, ...props }, ref) {
+  ({ onClick, active, disabled, ...props }, ref) => {
     const handleClick = React.useCallback(
       (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         if (disabled || active) {
@@ -124,6 +122,7 @@ const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
 );
 
 NavLink.defaultProps = { variant: "body" };
+NavLink.displayName = "NavLink";
 
 export default Link;
 export { NavLink };

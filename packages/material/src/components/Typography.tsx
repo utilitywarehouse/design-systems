@@ -50,53 +50,57 @@ export interface TypographyProps
 const Typography = React.forwardRef<
   HTMLHtmlElement | HTMLParagraphElement,
   TypographyProps
->(function Typography(
-  {
-    color = "primary",
-    variant = "body",
-    fontWeight = "regular",
-    forwardedRef,
-    className,
-    ...props
-  },
-  ref
-) {
-  if (forwardedRef !== undefined) {
-    console.warn(
-      "forwardedRef on the Typography component is deprecated in v2 and will be removed in v3. Please use ref instead."
+>(
+  (
+    {
+      color = "primary",
+      variant = "body",
+      fontWeight = "regular",
+      forwardedRef,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    if (forwardedRef !== undefined) {
+      console.warn(
+        "forwardedRef on the Typography component is deprecated in v2 and will be removed in v3. Please use ref instead."
+      );
+    }
+
+    const { backgroundColor } = useBackground();
+
+    const variantMapping = {
+      displayHeading: "h1",
+      h1: "h1",
+      h2: "h2",
+      h3: "h3",
+      h4: "h4",
+      subtitle: "p",
+      body: "p",
+      legalNote: "p",
+      caption: "span",
+    };
+
+    const classNames = clsx(typographyClasses[color], {
+      [typographyClasses.inverse]: isBrandBackgroundColor(backgroundColor),
+      [typographyClasses.semibold]: fontWeight === "semibold",
+      className: !!className,
+    });
+
+    return (
+      <MuiTypography
+        variant={variant}
+        {...props}
+        variantMapping={variantMapping}
+        className={classNames}
+        ref={forwardedRef || ref}
+      />
     );
   }
+);
 
-  const { backgroundColor } = useBackground();
-
-  const variantMapping = {
-    displayHeading: "h1",
-    h1: "h1",
-    h2: "h2",
-    h3: "h3",
-    h4: "h4",
-    subtitle: "p",
-    body: "p",
-    legalNote: "p",
-    caption: "span",
-  };
-
-  const classNames = clsx(typographyClasses[color], {
-    [typographyClasses.inverse]: isBrandBackgroundColor(backgroundColor),
-    [typographyClasses.semibold]: fontWeight === "semibold",
-    className: !!className,
-  });
-
-  return (
-    <MuiTypography
-      variant={variant}
-      {...props}
-      variantMapping={variantMapping}
-      className={classNames}
-      ref={forwardedRef || ref}
-    />
-  );
-});
+Typography.displayName = "Typography";
 
 export default Typography;
 

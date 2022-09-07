@@ -57,7 +57,7 @@ const StyledCard = styled(Box, {
   const palette = getCardPalette(backgroundColor, variant);
   return {
     ...palette,
-    padding: theme.spacing(3), // 24px
+    padding: theme.spacing(3),
     borderRadius: px(14),
     borderWidth: px(2),
     borderStyle: variant === "transparent" ? "dashed" : "solid",
@@ -65,41 +65,54 @@ const StyledCard = styled(Box, {
 });
 
 export interface CardProps
-  extends Pick<BoxProps, "ref" | "sx" | "component" | "classes"> {
+  extends Pick<BoxProps, "sx" | "component" | "classes"> {
+  children?: React.ReactNode;
   /**
    * @deprecated in v2. The variant prop will be removed in v3 and the opaque variant will be the default.
    */
   variant?: CardVariant;
-  forwardedRef?: React.Ref<HTMLDivElement>;
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<HTMLElement>;
 }
 
-const Card: React.FunctionComponent<CardProps> = (props) => {
-  const { variant = "opaque", forwardedRef, ...rest } = props;
-  const { backgroundColor } = useBackground();
+const Card = React.forwardRef<HTMLElement, CardProps>(
+  ({ variant = "opaque", forwardedRef, ...props }, ref) => {
+    const { backgroundColor } = useBackground();
 
-  if (variant === "transparent") {
-    console.warn(
-      "The variant prop is deprecated in v2 and will be removed in v3. The opaque variant will be the default."
+    if (variant === "transparent") {
+      console.warn(
+        "The variant prop on the Card component is deprecated in v2 and will be removed in v3. The opaque variant will be the default."
+      );
+    }
+
+    if (forwardedRef !== undefined) {
+      console.warn(
+        "forwardedRef on the Card component is deprecated in v2 and will be removed in v3. Please use ref instead."
+      );
+    }
+
+    const cardBackgroundColor =
+      variant === "transparent"
+        ? backgroundColor
+        : backgroundColor === "white"
+        ? "purple"
+        : "white";
+
+    return (
+      <BackgroundProvider backgroundColor={cardBackgroundColor}>
+        <StyledCard
+          {...props}
+          variant={variant}
+          ref={forwardedRef || ref}
+          backgroundColor={cardBackgroundColor}
+        />
+      </BackgroundProvider>
     );
   }
+);
 
-  const cardBackgroundColor =
-    variant === "transparent"
-      ? backgroundColor
-      : backgroundColor === "white"
-      ? "purple"
-      : "white";
-
-  return (
-    <BackgroundProvider backgroundColor={cardBackgroundColor}>
-      <StyledCard
-        {...rest}
-        variant={variant}
-        ref={forwardedRef}
-        backgroundColor={cardBackgroundColor}
-      />
-    </BackgroundProvider>
-  );
-};
+Card.displayName = "Card";
 
 export default Card;

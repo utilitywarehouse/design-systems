@@ -58,13 +58,11 @@ const StyledRoot = styled(Box)<SpacerProps>((props) => ({
   minHeight: getHeight(props),
 }));
 
-const Spacer = React.forwardRef<HTMLDivElement, SpacerProps>(function Spacer(
-  props,
-  ref
-) {
+const Spacer = React.forwardRef<HTMLDivElement, SpacerProps>((props, ref) => {
   return <StyledRoot ref={ref} {...props} />;
 });
 
+Spacer.displayName = "Spacer";
 Spacer.defaultProps = {
   axis: "horizontal",
   size: 1,

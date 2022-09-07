@@ -60,10 +60,10 @@ interface BackgroundProps
   /**
    * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
    */
-  forwardedRef?: React.Ref<HTMLDivElement>;
+  forwardedRef?: React.Ref<HTMLElement>;
 }
 
-const Background = React.forwardRef<HTMLDivElement, BackgroundProps>(
+const Background = React.forwardRef<HTMLElement, BackgroundProps>(
   function Background(props, ref) {
     const {
       backgroundColor = defaultBackgroundColor,
