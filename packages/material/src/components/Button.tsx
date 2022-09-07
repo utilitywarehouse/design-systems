@@ -11,6 +11,7 @@ import {
 import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
 import { TinyColor } from "@ctrl/tinycolor";
 import { useBackground } from "./Background";
+import { clsx } from "clsx";
 
 const PREFIX = `${customerUiPrefix}-Button`;
 export const buttonClasses = {
@@ -44,47 +45,25 @@ export type ButtonProps = ButtonPropsButtonElement | ButtonPropsAnchorElement;
 
 const Button: React.FunctionComponent<ButtonProps> = ({
   size = "medium",
-  children,
   variant = "primary",
-  fullWidth = false,
   forwardedRef,
   className,
   ...props
 }) => {
   const { backgroundColor } = useBackground();
 
-  const getClassName = () => {
-    const classNames = [buttonClasses[variant], buttonClasses[size]];
-    if (className) {
-      classNames.push(className);
-    }
-    if (isBrandBackgroundColor(backgroundColor)) {
-      classNames.push(buttonClasses.inverse);
-    }
-    return classNames.join(" ");
-  };
-
-  const muiVariants = {
-    primary: "contained",
-    secondary: "outlined",
-    tertiary: "text",
-  };
-
-  const muiButtonProps: MuiButtonProps = {
-    ...(props as Partial<MuiButtonProps>),
-    fullWidth,
-    variant: muiVariants[variant] as MuiButtonProps["variant"],
-    className: getClassName(),
-  };
+  const classNames = clsx(buttonClasses[variant], buttonClasses[size], {
+    [buttonClasses.inverse]: isBrandBackgroundColor(backgroundColor),
+    className: !!className,
+  });
 
   return (
     <MuiButton
-      {...muiButtonProps}
+      {...(props as Partial<MuiButtonProps>)}
+      className={classNames}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={forwardedRef as unknown as any}
-    >
-      {children}
-    </MuiButton>
+    />
   );
 };
 
@@ -131,6 +110,7 @@ export const getButtonTheme = (): Components => {
             height: px(48),
           },
           [`&.${buttonClasses.primary}`]: {
+            color: colors.midnight,
             backgroundColor: colors.cyan,
             border: "none",
             paddingLeft: px(32),
@@ -142,6 +122,7 @@ export const getButtonTheme = (): Components => {
             },
           },
           [`&.${buttonClasses.secondary}`]: {
+            color: colors.midnight,
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
             "&:hover": {
@@ -160,6 +141,7 @@ export const getButtonTheme = (): Components => {
             },
           },
           [`&.${buttonClasses.tertiary}`]: {
+            color: colors.midnight,
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
             height: "auto",
@@ -177,10 +159,15 @@ export const getButtonTheme = (): Components => {
               color: colors.white,
             },
           },
-          "&.MuiButton-containedPrimary,&.MuiButton-outlinedPrimary,&.MuiButton-text":
+          [`&.${buttonClasses.primary},&.${buttonClasses.secondary},&.${buttonClasses.tertiary}`]:
             {
               "&:disabled": {
                 opacity: 0.5,
+              },
+              [`&.${buttonClasses.inverse}`]: {
+                "&:disabled": {
+                  opacity: 0.6,
+                },
               },
             },
         },
