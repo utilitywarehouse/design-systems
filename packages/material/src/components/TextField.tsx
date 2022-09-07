@@ -15,6 +15,7 @@ import { Theme, Components, styled } from "@mui/material/styles";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import FormHelperText from "@mui/material/FormHelperText";
+import { clsx } from "clsx";
 
 const PREFIX = `${customerUiPrefix}-TextField`;
 export const textfieldClasses = {
@@ -49,23 +50,19 @@ const IconContainer = styled(Box)(({ theme }) => ({
 const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
   status,
   endAdornment,
+  className,
   ...props
 }) => {
   const showIcon = !props.disabled;
-  const getClassName = () => {
-    const classNames = [props.className];
-    if (!props.disabled && isSuccessStatus(status)) {
-      classNames.push(textfieldClasses.success);
-    }
-    if (props.multiline) {
-      classNames.push(textfieldClasses.multiline);
-    }
-    return classNames.join(" ");
-  };
+  const classNames = clsx({
+    [textfieldClasses.success]: !props.disabled && isSuccessStatus(status),
+    [textfieldClasses.multiline]: !!props.multiline,
+    className: !!className,
+  });
 
   return (
     <FilledInput
-      className={getClassName()}
+      className={classNames}
       endAdornment={
         <>
           {showIcon && isErrorStatus(status) ? (

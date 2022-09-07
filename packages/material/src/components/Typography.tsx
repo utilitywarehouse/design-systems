@@ -11,6 +11,7 @@ import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
 import { Theme } from "@mui/material/styles";
 import { useBackground } from "./Background";
 import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
+import { clsx } from "clsx";
 
 const PREFIX = `${customerUiPrefix}-Typography`;
 export const typographyClasses = {
@@ -47,6 +48,7 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
   variant = "body",
   fontWeight = "regular",
   forwardedRef,
+  className,
   ...props
 }) => {
   const { backgroundColor } = useBackground();
@@ -63,26 +65,18 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
     caption: "span",
   };
 
-  const getClassName = () => {
-    const classNames = [typographyClasses[color]];
-    if (props.className) {
-      classNames.push(props.className);
-    }
-    if (isBrandBackgroundColor(backgroundColor)) {
-      classNames.push(typographyClasses.inverse);
-    }
-    if (fontWeight === "semibold") {
-      classNames.push(typographyClasses.semibold);
-    }
-    return classNames.join(" ");
-  };
+  const classNames = clsx(typographyClasses[color], {
+    [typographyClasses.inverse]: isBrandBackgroundColor(backgroundColor),
+    [typographyClasses.semibold]: fontWeight === "semibold",
+    className: !!className,
+  });
 
   return (
     <MuiTypography
       {...props}
       variant={variant}
       variantMapping={variantMapping}
-      className={getClassName()}
+      className={classNames}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={forwardedRef as unknown as any}
     />
