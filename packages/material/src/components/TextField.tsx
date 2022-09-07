@@ -85,16 +85,11 @@ const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(
 TextFieldInput.displayName = "TextFieldInput";
 
 const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
-  (props, ref) => {
-    const {
-      label,
-      labelProps,
-      helperText,
-      helperTextProps,
-      multiline,
-      ...rest
-    } = props;
-    const { status, disabled } = rest;
+  (
+    { label, labelProps, helperText, helperTextProps, multiline, ...props },
+    ref
+  ) => {
+    const { status, disabled } = props;
     const hasErrorStatus = !disabled && isErrorStatus(status);
     const formControlProps = { error: hasErrorStatus, disabled };
     const { backgroundColor } = useBackground();
@@ -118,9 +113,8 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         ) : null}
 
         <TextFieldInput
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ref={ref as unknown as any}
-          {...rest}
+          ref={ref}
+          {...props}
           multiline={multiline}
           aria-describedby={helperTextProps?.id}
         />
