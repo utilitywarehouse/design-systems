@@ -12,6 +12,7 @@ import { Theme } from "@mui/material/styles";
 import { useBackground } from "./Background";
 import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 import { clsx } from "clsx";
+import { BoxProps } from "./Box";
 
 const PREFIX = `${customerUiPrefix}-Typography`;
 export const typographyClasses = {
@@ -39,16 +40,18 @@ export interface TypographyProps
   > {
   color?: "primary" | "secondary" | "success" | "error";
   variant?: MuiTypographyProps["variant"];
-  component?: React.ElementType;
+  component?: BoxProps["component"];
   /**
    * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
    */
-  forwardedRef?: React.Ref<HTMLHtmlElement | HTMLParagraphElement>;
+  forwardedRef?: React.Ref<
+    HTMLElement | HTMLSpanElement | HTMLParagraphElement
+  >;
   fontWeight?: "regular" | "semibold";
 }
 
 const Typography = React.forwardRef<
-  HTMLHtmlElement | HTMLParagraphElement,
+  HTMLElement | HTMLSpanElement | HTMLParagraphElement,
   TypographyProps
 >(
   (

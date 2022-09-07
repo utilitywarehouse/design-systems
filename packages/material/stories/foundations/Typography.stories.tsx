@@ -62,9 +62,6 @@ export default {
         type: "text",
       },
     },
-    forwardedRef: {
-      table: { disable: true },
-    },
   },
   args: {
     children: "hamburgefons",

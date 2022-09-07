@@ -64,7 +64,7 @@ interface BackgroundProps
 }
 
 const Background = React.forwardRef<HTMLElement, BackgroundProps>(
-  function Background(props, ref) {
+  (props, ref) => {
     const {
       backgroundColor = defaultBackgroundColor,
       forwardedRef,
@@ -88,6 +88,8 @@ const Background = React.forwardRef<HTMLElement, BackgroundProps>(
     );
   }
 );
+
+Background.displayName = "Background";
 
 export default Background;
 export { useBackground, BackgroundProvider };
