@@ -19,7 +19,7 @@ export type BoxProps<
   P = {}
 > = OverrideProps<TypeMap<P, D>, D>;
 
-const Box = React.forwardRef<HTMLElement, BoxProps>(function Box(
+const Box = React.forwardRef<HTMLDivElement, BoxProps>(function Box(
   { sx, component, children, className, ...systemProps },
   ref
 ) {
