@@ -8,6 +8,8 @@ import {
   useBackground,
 } from "./Background";
 import Box, { BoxProps } from "./Box";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { BoxTypeMap } from "@mui/material/Box";
 
 const { px } = helpers;
 
@@ -77,42 +79,41 @@ export interface CardProps
   forwardedRef?: React.Ref<HTMLElement>;
 }
 
-const Card = React.forwardRef<HTMLElement, CardProps>(
-  ({ variant = "opaque", forwardedRef, ...props }, ref) => {
-    const { backgroundColor } = useBackground();
+const Card = React.forwardRef(function Card(
+  { variant = "opaque", forwardedRef, ...props },
+  ref
+) {
+  const { backgroundColor } = useBackground();
 
-    if (variant === "transparent") {
-      console.warn(
-        "The variant prop on the Card component is deprecated in v2 and will be removed in v3. The opaque variant will be the default."
-      );
-    }
-
-    if (forwardedRef !== undefined) {
-      console.warn(
-        "forwardedRef on the Card component is deprecated in v2 and will be removed in v3. Please use ref instead."
-      );
-    }
-
-    const cardBackgroundColor =
-      variant === "transparent"
-        ? backgroundColor
-        : backgroundColor === "white"
-        ? "purple"
-        : "white";
-
-    return (
-      <BackgroundProvider backgroundColor={cardBackgroundColor}>
-        <StyledCard
-          {...props}
-          variant={variant}
-          ref={forwardedRef || ref}
-          backgroundColor={cardBackgroundColor}
-        />
-      </BackgroundProvider>
+  if (variant === "transparent") {
+    console.warn(
+      "The variant prop on the Card component is deprecated in v2 and will be removed in v3. The opaque variant will be the default."
     );
   }
-);
 
-Card.displayName = "Card";
+  if (forwardedRef !== undefined) {
+    console.warn(
+      "forwardedRef on the Card component is deprecated in v2 and will be removed in v3. Please use ref instead."
+    );
+  }
+
+  const cardBackgroundColor =
+    variant === "transparent"
+      ? backgroundColor
+      : backgroundColor === "white"
+      ? "purple"
+      : "white";
+
+  return (
+    <BackgroundProvider backgroundColor={cardBackgroundColor}>
+      <StyledCard
+        {...props}
+        variant={variant}
+        ref={forwardedRef || ref}
+        backgroundColor={cardBackgroundColor}
+      />
+    </BackgroundProvider>
+  );
+}) as OverridableComponent<BoxTypeMap<CardProps>>;
 
 export default Card;
