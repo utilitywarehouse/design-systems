@@ -1,23 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import * as React from "react";
-import MuiGrid, { GridTypeMap } from "@mui/material/Grid";
-import {
-  OverridableComponent,
-  OverrideProps,
-} from "@mui/material/OverridableComponent";
-
-type TypeMap<
-  P = {},
-  D extends React.ElementType = GridTypeMap["defaultComponent"]
-> = {
-  props: GridTypeMap<P, D>["props"];
-  defaultComponent: D;
-};
-
-export type GridProps<
-  D extends React.ElementType = TypeMap["defaultComponent"],
-  P = {}
-> = OverrideProps<TypeMap<P, D>, D>;
+import MuiGrid, { GridTypeMap, GridProps } from "@mui/material/Grid";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 const DEFAULT_COLUMNS = { mobile: 4, tablet: 8, desktop: 12 };
 const DEFAULT_SPACING = { mobile: 2, tablet: 3, desktop: 3 };
@@ -37,6 +20,7 @@ export const Grid = React.forwardRef(function Grid(
     );
   }
   return <MuiGrid ref={ref} columns={columns} {...props} />;
-}) as OverridableComponent<TypeMap>;
+}) as OverridableComponent<GridTypeMap>;
 
+export type { GridProps };
 export default Grid;
