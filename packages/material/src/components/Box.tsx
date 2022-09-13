@@ -1,25 +1,8 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import * as React from "react";
-import MuiBox, { BoxTypeMap } from "@mui/material/Box";
-import {
-  OverridableComponent,
-  OverrideProps,
-} from "@mui/material/OverridableComponent";
+import MuiBox, { BoxTypeMap, BoxProps } from "@mui/material/Box";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
-type TypeMap<
-  P = {},
-  D extends React.ElementType = BoxTypeMap["defaultComponent"]
-> = {
-  props: BoxTypeMap<P, D>["props"];
-  defaultComponent: D;
-};
-
-export type BoxProps<
-  D extends React.ElementType = TypeMap["defaultComponent"],
-  P = {}
-> = OverrideProps<TypeMap<P, D>, D>;
-
-const Box = React.forwardRef<HTMLDivElement, BoxProps>(function Box(
+const Box = React.forwardRef(function Box(
   { sx, component, children, className, ...systemProps },
   ref
 ) {
@@ -30,6 +13,7 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(function Box(
     );
   }
   return <MuiBox ref={ref} {...systemProps} {...props} />;
-}) as OverridableComponent<TypeMap>;
+}) as OverridableComponent<BoxTypeMap>;
 
+export type { BoxProps };
 export default Box;
