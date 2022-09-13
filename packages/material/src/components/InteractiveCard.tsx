@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/ban-types */
+import * as React from "react";
 import { styled } from "@mui/material/styles";
 import {
   helpers,
@@ -15,6 +16,12 @@ import {
 import Box, { BoxProps } from "./Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import Typography from "./Typography";
+import { OverrideProps } from "@mui/material/OverridableComponent";
+import {
+  ButtonProps as MuiButtonProps,
+  ButtonTypeMap as MuiButtonTypeMap,
+  ExtendButton,
+} from "@mui/material/Button";
 
 const { px } = helpers;
 
@@ -22,7 +29,10 @@ export type InteractiveCardSize = "small" | "regular" | "large";
 
 export type InteractiveCardVariant = "primary" | "secondary";
 
-interface BaseInteractiveCardProps extends Pick<BoxProps, "sx"> {
+interface CustomInteractiveCardProps<
+  P = {},
+  D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
+> extends Pick<MuiButtonProps<D, P>, "sx"> {
   Background?: React.ComponentType;
   backgroundColor?: BackgroundColor;
   size?: InteractiveCardSize;
@@ -39,18 +49,18 @@ interface BaseInteractiveCardProps extends Pick<BoxProps, "sx"> {
   variant?: InteractiveCardVariant;
 }
 
-type InteractiveCardButtonProps = BaseInteractiveCardProps &
-  Omit<
-    React.ComponentPropsWithoutRef<"button">,
-    keyof BaseInteractiveCardProps
-  >;
+type InteractiveCardTypeMap<
+  P = {},
+  D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
+> = {
+  props: CustomInteractiveCardProps<P, D>;
+  defaultComponent: D;
+};
 
-type InteractiveCardAnchorProps = BaseInteractiveCardProps &
-  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseInteractiveCardProps>;
-
-export type InteractiveCardProps =
-  | InteractiveCardButtonProps
-  | InteractiveCardAnchorProps;
+export type ButtonProps<
+  D extends React.ElementType = InteractiveCardTypeMap["defaultComponent"],
+  P = {}
+> = OverrideProps<InteractiveCardTypeMap<P, D>, D>;
 
 interface StyledRootProps {
   size: InteractiveCardSize;
@@ -131,14 +141,11 @@ const StyledWrapper = styled(Box, {
   };
 });
 
-const InteractiveCardComponent = React.forwardRef<
-  HTMLButtonElement | HTMLAnchorElement,
-  Omit<InteractiveCardProps, "forwardedRef">
->(
-  (
+const InteractiveCardComponent = React.forwardRef(
+  function InteractiveCardComponent(
     { children, Background, size = "regular", containerProps, href, ...props },
     ref
-  ) => {
+  ) {
     const component = href ? "a" : "button";
 
     return (
@@ -190,14 +197,12 @@ const InteractiveCardComponent = React.forwardRef<
       </StyledRoot>
     );
   }
-);
+) as ExtendButton<InteractiveCardTypeMap>;
 
-InteractiveCardComponent.displayName = "InteractiveCardComponent";
-
-const InteractiveCard = React.forwardRef<
-  HTMLButtonElement | HTMLAnchorElement,
-  InteractiveCardProps
->(({ forwardedRef, ...props }, ref) => {
+const InteractiveCard = React.forwardRef(function InteractiveCard(
+  { forwardedRef, ...props },
+  ref
+) {
   if (forwardedRef !== undefined) {
     console.warn(
       "forwardedRef on the InteractiveCard component is deprecated in v2 and will be removed in v3. Please use ref instead."
@@ -214,8 +219,6 @@ const InteractiveCard = React.forwardRef<
       <InteractiveCardComponent ref={forwardedRef || ref} {...props} />
     </BackgroundProvider>
   );
-});
-
-InteractiveCard.displayName = "InteractiveCard";
+}) as ExtendButton<InteractiveCardTypeMap>;
 
 export default InteractiveCard;
