@@ -22,7 +22,7 @@ const BackgroundContext = React.createContext<BackgroundContextValue>({
   backgroundColor: defaultBackgroundColor,
 });
 
-const useBackground = (): BackgroundContextValue => {
+export const useBackground = (): BackgroundContextValue => {
   const context: BackgroundContextValue = React.useContext(BackgroundContext);
   if (context === undefined) {
     throw new Error(
@@ -32,12 +32,14 @@ const useBackground = (): BackgroundContextValue => {
   return context;
 };
 
-interface BackgroundProviderProps {
+export interface BackgroundProviderProps {
   children?: React.ReactNode;
   backgroundColor?: BackgroundColor;
 }
 
-const BackgroundProvider = (props: BackgroundProviderProps): JSX.Element => {
+export const BackgroundProvider = (
+  props: BackgroundProviderProps
+): JSX.Element => {
   const { backgroundColor = defaultBackgroundColor, children } = props;
   return (
     <BackgroundContext.Provider value={{ backgroundColor }}>
@@ -56,13 +58,21 @@ const StyledBackground = styled(Box, {
   backgroundColor: colors[backgroundColor],
 }));
 
-interface BackgroundProps
+export interface BackgroundProps
   extends Pick<BoxProps, "sx" | "component" | "classes">,
     BackgroundProviderProps {
   /**
    * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
    */
   forwardedRef?: React.Ref<HTMLElement>;
+}
+
+export interface BackgroundTypeMap<
+  P = {},
+  D extends React.ElementType = "div"
+> {
+  props: P & BackgroundProps;
+  defaultComponent: D;
 }
 
 const Background = React.forwardRef(function Background(props, ref) {
@@ -87,8 +97,6 @@ const Background = React.forwardRef(function Background(props, ref) {
       />
     </BackgroundProvider>
   );
-}) as OverridableComponent<BoxTypeMap<BackgroundProps>>;
+}) as OverridableComponent<BackgroundTypeMap>;
 
 export default Background;
-export { useBackground, BackgroundProvider };
-export type { BackgroundProps, BackgroundProviderProps };

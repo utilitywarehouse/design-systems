@@ -7,6 +7,7 @@ import {
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { styled } from "@mui/material/styles";
 import { useBackground } from "./Background";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 const BaseLink = styled(MuiLink)(({ variant = "body" }) => {
   const { backgroundColor } = useBackground();
@@ -45,18 +46,28 @@ const StyledLink = styled(BaseLink)({
   },
 });
 
-type LinkProps = Omit<MuiLinkProps, "color" | "underline">;
+export type LinkProps = Omit<MuiLinkProps, "color" | "underline">;
 
-const Link = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
-  return <StyledLink ref={ref} {...props} underline="none" />;
-});
+export interface LinkTypeMap<P = {}, D extends React.ElementType = "a"> {
+  props: P & LinkProps;
+  defaultComponent: D;
+}
 
-Link.defaultProps = { variant: "body" };
-Link.displayName = "Link";
+const Link = React.forwardRef(function Link(
+  { variant = "body", ...props },
+  ref
+) {
+  return <StyledLink ref={ref} variant={variant} {...props} underline="none" />;
+}) as OverridableComponent<LinkTypeMap>;
 
-interface NavLinkProps extends LinkProps {
+export interface NavLinkProps extends LinkProps {
   active?: boolean;
   disabled?: boolean;
+}
+
+export interface NavLinkTypeMap<P = {}, D extends React.ElementType = "a"> {
+  props: P & NavLinkProps;
+  defaultComponent: D;
 }
 
 type StyledNavLinkProps = Pick<NavLinkProps, "active" | "disabled">;
@@ -92,38 +103,35 @@ const StyledNavLink = styled(BaseLink, {
   };
 });
 
-const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
-  ({ onClick, active, disabled, ...props }, ref) => {
-    const handleClick = React.useCallback(
-      (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        if (disabled || active) {
-          e.preventDefault();
-          return;
-        }
+export const NavLink = React.forwardRef(function NavLink(
+  { onClick, active, disabled, variant = "body", ...props },
+  ref
+) {
+  const handleClick = React.useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+      if (disabled || active) {
+        e.preventDefault();
+        return;
+      }
 
-        if (onClick) {
-          onClick(e);
-        }
-      },
-      [onClick, disabled, active]
-    );
+      if (onClick) {
+        onClick(e);
+      }
+    },
+    [onClick, disabled, active]
+  );
 
-    return (
-      <StyledNavLink
-        ref={ref}
-        {...props}
-        underline="none"
-        onClick={handleClick}
-        active={active}
-        disabled={disabled}
-      />
-    );
-  }
-);
-
-NavLink.defaultProps = { variant: "body" };
-NavLink.displayName = "NavLink";
+  return (
+    <StyledNavLink
+      ref={ref}
+      variant={variant}
+      underline="none"
+      onClick={handleClick}
+      active={active}
+      disabled={disabled}
+      {...props}
+    />
+  );
+}) as OverridableComponent<NavLinkTypeMap>;
 
 export default Link;
-export { NavLink };
-export type { LinkProps, NavLinkProps };

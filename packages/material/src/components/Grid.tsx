@@ -1,9 +1,14 @@
 import * as React from "react";
-import MuiGrid, { GridTypeMap, GridProps } from "@mui/material/Grid";
+import MuiGrid, { GridProps } from "@mui/material/Grid";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 const DEFAULT_COLUMNS = { mobile: 4, tablet: 8, desktop: 12 };
 const DEFAULT_SPACING = { mobile: 2, tablet: 3, desktop: 3 };
+
+export interface GridTypeMap<P = {}, D extends React.ElementType = "div"> {
+  props: P & GridProps;
+  defaultComponent: D;
+}
 
 export const Grid = React.forwardRef(function Grid(
   { columns = DEFAULT_COLUMNS, ...props },

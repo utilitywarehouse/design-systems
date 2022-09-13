@@ -79,6 +79,11 @@ export interface CardProps
   forwardedRef?: React.Ref<HTMLElement>;
 }
 
+export interface CardTypeMap<P = {}, D extends React.ElementType = "div"> {
+  props: P & CardProps;
+  defaultComponent: D;
+}
+
 const Card = React.forwardRef(function Card(
   { variant = "opaque", forwardedRef, ...props },
   ref
@@ -114,6 +119,6 @@ const Card = React.forwardRef(function Card(
       />
     </BackgroundProvider>
   );
-}) as OverridableComponent<BoxTypeMap<CardProps>>;
+}) as OverridableComponent<CardTypeMap>;
 
 export default Card;

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import {
