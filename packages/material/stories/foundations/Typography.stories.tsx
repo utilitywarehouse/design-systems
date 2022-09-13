@@ -104,9 +104,11 @@ TypographyKitchenSinkStory.args = {
   fontWeight: "regular",
 };
 
-export const TypographyCustomStory: Story<TypographyProps> = (args) => (
-  <BackgroundStack>
-    <Typography {...args} />
-  </BackgroundStack>
-);
+export const TypographyCustomStory: Story<TypographyProps> = (args) => {
+  return (
+    <BackgroundStack>
+      <Typography {...args} />
+    </BackgroundStack>
+  );
+};
 TypographyCustomStory.storyName = "Custom";

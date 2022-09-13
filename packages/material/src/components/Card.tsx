@@ -78,7 +78,7 @@ export interface CardProps
   forwardedRef?: React.Ref<HTMLElement>;
 }
 
-export interface CardTypeMap<P = {}, D extends React.ElementType = "div"> {
+interface CardTypeMap<P = {}, D extends React.ElementType = "div"> {
   props: P & CardProps;
   defaultComponent: D;
 }

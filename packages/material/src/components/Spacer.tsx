@@ -1,6 +1,7 @@
 import * as React from "react";
 import { styled, Theme } from "@mui/material/styles";
 import Box, { BoxProps } from "./Box";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 export interface SpacerProps
   extends Pick<BoxProps, "sx" | "component" | "classes" | "children"> {
@@ -58,15 +59,24 @@ const StyledRoot = styled(Box)<SpacerProps>((props) => ({
   minHeight: getHeight(props),
 }));
 
-const Spacer = React.forwardRef<HTMLDivElement, SpacerProps>((props, ref) => {
-  return <StyledRoot ref={ref} {...props} />;
-});
+interface SpacerTypeMap<P = {}, D extends React.ElementType = "div"> {
+  props: P & SpacerProps;
+  defaultComponent: D;
+}
 
-Spacer.displayName = "Spacer";
-Spacer.defaultProps = {
-  axis: "horizontal",
-  size: 1,
-  component: "span",
-};
+const Spacer = React.forwardRef(function Spacer(
+  { axis = "horizontal", size = 1, component = "span", ...props },
+  ref
+) {
+  return (
+    <StyledRoot
+      ref={ref}
+      axis={axis}
+      size={size}
+      component={component}
+      {...props}
+    />
+  );
+}) as OverridableComponent<SpacerTypeMap>;
 
 export default Spacer;

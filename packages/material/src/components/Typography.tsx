@@ -13,6 +13,7 @@ import { useBackground } from "./Background";
 import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 import { clsx } from "clsx";
 import { BoxProps } from "./Box";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 const PREFIX = `${customerUiPrefix}-Typography`;
 export const typographyClasses = {
@@ -50,60 +51,58 @@ export interface TypographyProps
   fontWeight?: "regular" | "semibold";
 }
 
-const Typography = React.forwardRef<
-  HTMLElement | HTMLSpanElement | HTMLParagraphElement,
-  TypographyProps
->(
-  (
-    {
-      color = "primary",
-      variant = "body",
-      fontWeight = "regular",
-      forwardedRef,
-      className,
-      ...props
-    },
-    ref
-  ) => {
-    if (forwardedRef !== undefined) {
-      console.warn(
-        "forwardedRef on the Typography component is deprecated in v2 and will be removed in v3. Please use ref instead."
-      );
-    }
+interface TypographyTypeMap<P = {}, D extends React.ElementType = "p"> {
+  props: P & TypographyProps;
+  defaultComponent: D;
+}
 
-    const { backgroundColor } = useBackground();
-
-    const variantMapping = {
-      displayHeading: "h1",
-      h1: "h1",
-      h2: "h2",
-      h3: "h3",
-      h4: "h4",
-      subtitle: "p",
-      body: "p",
-      legalNote: "p",
-      caption: "span",
-    };
-
-    const classNames = clsx(typographyClasses[color], {
-      [typographyClasses.inverse]: isBrandBackgroundColor(backgroundColor),
-      [typographyClasses.semibold]: fontWeight === "semibold",
-      className: !!className,
-    });
-
-    return (
-      <MuiTypography
-        {...props}
-        variant={variant}
-        variantMapping={variantMapping}
-        className={classNames}
-        ref={forwardedRef || ref}
-      />
+const Typography = React.forwardRef(function Typography(
+  {
+    color = "primary",
+    variant = "body",
+    fontWeight = "regular",
+    forwardedRef,
+    className,
+    ...props
+  },
+  ref
+) {
+  if (forwardedRef !== undefined) {
+    console.warn(
+      "forwardedRef on the Typography component is deprecated in v2 and will be removed in v3. Please use ref instead."
     );
   }
-);
 
-Typography.displayName = "Typography";
+  const { backgroundColor } = useBackground();
+
+  const variantMapping = {
+    displayHeading: "h1",
+    h1: "h1",
+    h2: "h2",
+    h3: "h3",
+    h4: "h4",
+    subtitle: "p",
+    body: "p",
+    legalNote: "p",
+    caption: "span",
+  };
+
+  const classNames = clsx(typographyClasses[color], {
+    [typographyClasses.inverse]: isBrandBackgroundColor(backgroundColor),
+    [typographyClasses.semibold]: fontWeight === "semibold",
+    className: !!className,
+  });
+
+  return (
+    <MuiTypography
+      {...props}
+      variant={variant}
+      variantMapping={variantMapping}
+      className={classNames}
+      ref={forwardedRef || ref}
+    />
+  );
+}) as OverridableComponent<TypographyTypeMap>;
 
 export default Typography;
 

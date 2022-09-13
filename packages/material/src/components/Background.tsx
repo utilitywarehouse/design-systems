@@ -66,10 +66,7 @@ export interface BackgroundProps
   forwardedRef?: React.Ref<HTMLElement>;
 }
 
-export interface BackgroundTypeMap<
-  P = {},
-  D extends React.ElementType = "div"
-> {
+interface BackgroundTypeMap<P = {}, D extends React.ElementType = "div"> {
   props: P & BackgroundProps;
   defaultComponent: D;
 }
