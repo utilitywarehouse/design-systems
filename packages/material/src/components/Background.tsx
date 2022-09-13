@@ -3,7 +3,6 @@ import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { styled } from "@mui/material/styles";
 import Box, { BoxProps } from "./Box";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
-import { BoxTypeMap } from "@mui/material/Box";
 
 export type BackgroundColor =
   | "midnight"

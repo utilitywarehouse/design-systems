@@ -28,7 +28,7 @@ export type InteractiveCardSize = "small" | "regular" | "large";
 
 export type InteractiveCardVariant = "primary" | "secondary";
 
-interface CustomInteractiveCardProps<
+export interface InteractiveCardProps<
   P = {},
   D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
 > extends Pick<MuiButtonProps<D, P>, "sx"> {
@@ -52,7 +52,7 @@ type InteractiveCardTypeMap<
   P = {},
   D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
 > = {
-  props: CustomInteractiveCardProps<P, D>;
+  props: InteractiveCardProps<P, D>;
   defaultComponent: D;
 };
 

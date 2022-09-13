@@ -9,7 +9,6 @@ import {
 } from "./Background";
 import Box, { BoxProps } from "./Box";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
-import { BoxTypeMap } from "@mui/material/Box";
 
 const { px } = helpers;
 
