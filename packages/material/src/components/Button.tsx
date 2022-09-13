@@ -35,7 +35,7 @@ interface CustomButtonProps<
   D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
 > extends Pick<
     MuiButtonProps<D, P>,
-    "sx" | "classes" | "fullWidth" | "children"
+    "sx" | "classes" | "fullWidth" | "children" | "href"
   > {
   size?: "small" | "medium" | "large";
   variant?: "primary" | "secondary" | "tertiary";
@@ -43,10 +43,6 @@ interface CustomButtonProps<
    * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
    */
   forwardedRef?: React.Ref<HTMLButtonElement>;
-  /**
-   * @deprecated in v2. href is deprecated in v2, and will be removed in v3.
-   */
-  href?: MuiButtonProps["href"];
 }
 
 type ButtonTypeMap<
