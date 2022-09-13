@@ -13,11 +13,10 @@ import {
   colors,
   helpers,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { customerUiPrefix, forwardRef, isBrandBackgroundColor } from "../utils";
+import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
 import { TinyColor } from "@ctrl/tinycolor";
 import { useBackground } from "./Background";
 import { clsx } from "clsx";
-import { ButtonBaseTypeMap } from "@mui/material/ButtonBase";
 import { OverrideProps } from "@mui/material/OverridableComponent";
 
 const PREFIX = `${customerUiPrefix}-Button`;
@@ -31,46 +30,30 @@ export const buttonClasses = {
   large: `${PREFIX}-large`,
 };
 
-interface CustomButtonProps {
+interface CustomButtonProps<
+  P = {},
+  D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
+> extends Pick<
+    MuiButtonProps<D, P>,
+    "sx" | "classes" | "fullWidth" | "children"
+  > {
   size?: "small" | "medium" | "large";
   variant?: "primary" | "secondary" | "tertiary";
-  fullWidth?: boolean;
-  children?: React.ReactNode;
   /**
    * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
    */
   forwardedRef?: React.Ref<HTMLButtonElement>;
+  /**
+   * @deprecated in v2. href is deprecated in v2, and will be removed in v3.
+   */
+  href?: MuiButtonProps["href"];
 }
 
-export type ButtonIconProps<
-  P = {},
-  D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
-> =
-  | (Pick<MuiButtonTypeMap<P, D>["props"], "startIcon"> & { endIcon?: never })
-  | (Pick<MuiButtonTypeMap<P, D>["props"], "endIcon"> & { startIcon?: never });
-
-export type VariantProps =
-  | { variant?: "tertiary"; fullWidth?: never }
-  | { variant?: "primary" | "secondary"; fullWidth?: boolean };
-
-export type BaseProps<
-  P = {},
-  D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
-> = Omit<
-  ButtonBaseTypeMap["props"] & MuiButtonTypeMap<P, D>["props"],
-  "classes" | "color" | "disableElevation" | "endIcon" | "startIcon" | "variant"
->;
-
-export type ButtonTypeMapProps<
-  P = {},
-  D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
-> = BaseProps<P, D> & ButtonIconProps<P, D> & VariantProps & CustomButtonProps;
-
-export type ButtonTypeMap<
+type ButtonTypeMap<
   P = {},
   D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
 > = {
-  props: ButtonTypeMapProps<P, D>;
+  props: CustomButtonProps<P, D>;
   defaultComponent: D;
 };
 
@@ -79,27 +62,7 @@ export type ButtonProps<
   P = {}
 > = OverrideProps<ButtonTypeMap<P, D>, D>;
 
-// interface BaseButtonProps
-//   extends Pick<MuiButtonProps, "sx" | "classes" | "href"> {
-//   size?: "small" | "medium" | "large";
-//   variant?: "primary" | "secondary" | "tertiary";
-//   fullWidth?: boolean;
-//   children?: React.ReactNode;
-//   /**
-//    * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
-//    */
-//   forwardedRef?: React.Ref<HTMLButtonElement>;
-// }
-//
-// type ButtonElementProps = BaseButtonProps &
-//   Omit<React.ComponentPropsWithoutRef<"button">, keyof BaseButtonProps>;
-//
-// type AnchorElementProps = BaseButtonProps &
-//   Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseButtonProps>;
-//
-// export type ButtonProps = ButtonElementProps | AnchorElementProps;
-
-const Button = forwardRef<ButtonProps, "button">(function Button(
+const Button = React.forwardRef(function Button(
   { size = "medium", variant = "primary", forwardedRef, className, ...props },
   ref
 ) {
@@ -123,7 +86,8 @@ const Button = forwardRef<ButtonProps, "button">(function Button(
       ref={ref}
     />
   );
-});
+}) as ExtendButton<ButtonTypeMap>;
+
 export default Button;
 
 export const getButtonTheme = (): Components => {
