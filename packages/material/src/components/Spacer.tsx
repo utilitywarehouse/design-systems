@@ -74,11 +74,6 @@ const StyledRoot = styled(Box)<CustomProps>((props) => ({
   minHeight: getHeight(props),
 }));
 
-interface SpacerTypeMap<P = {}, D extends React.ElementType = "div"> {
-  props: P & CustomProps;
-  defaultComponent: D;
-}
-
 const Spacer = React.forwardRef(function Spacer(
   { axis = "horizontal", size = 1, component = "span", ...props },
   ref
@@ -92,6 +87,6 @@ const Spacer = React.forwardRef(function Spacer(
       {...props}
     />
   );
-}) as OverridableComponent<SpacerTypeMap>;
+}) as OverridableComponent<TypeMap>;
 
 export default Spacer;
