@@ -39,6 +39,7 @@
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
     "@mui/material": "^5.8.7",
+    "@mui/system": "^5.10.5",
     "@mui/types": "^7.1.4",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-viewport": "^6.5.9",

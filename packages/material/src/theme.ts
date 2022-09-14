@@ -72,3 +72,4 @@ export const buildTheme = (): MuiTheme => {
 };
 
 export const theme = buildTheme();
+export type Theme = typeof theme;

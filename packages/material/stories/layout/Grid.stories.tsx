@@ -1,8 +1,8 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-
-import { Background, Typography, Grid } from "../../src";
-import type { GridProps } from "../../src";
+import Grid, { GridProps } from "../../src/components/Grid";
+import Background from "../../src/components/Background";
+import Typography from "../../src/components/Typography";
 
 export default {
   title: "Layout/Grid",
