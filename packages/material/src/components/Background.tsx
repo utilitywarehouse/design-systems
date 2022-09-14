@@ -2,7 +2,10 @@ import * as React from "react";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
 import { styled } from "@mui/material/styles";
 import Box, { BoxProps } from "./Box";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import {
+  OverridableComponent,
+  OverrideProps,
+} from "@mui/material/OverridableComponent";
 
 export type BackgroundColor =
   | "midnight"
@@ -57,8 +60,10 @@ const StyledBackground = styled(Box, {
   backgroundColor: colors[backgroundColor],
 }));
 
-export interface BackgroundProps
-  extends Pick<BoxProps, "sx" | "component" | "classes">,
+type defaultComponent = "div";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+  extends Pick<BoxProps<D, P>, "sx" | "component" | "classes">,
     BackgroundProviderProps {
   /**
    * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
@@ -66,10 +71,15 @@ export interface BackgroundProps
   forwardedRef?: React.Ref<HTMLElement>;
 }
 
-interface BackgroundTypeMap<P = {}, D extends React.ElementType = "div"> {
-  props: P & BackgroundProps;
+interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+  props: CustomProps<D, P>;
   defaultComponent: D;
 }
+
+export type BackgroundProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<TypeMap<D, P>, D>;
 
 const Background = React.forwardRef(function Background(
   { backgroundColor = defaultBackgroundColor, forwardedRef, ...props },
@@ -90,6 +100,6 @@ const Background = React.forwardRef(function Background(
       />
     </BackgroundProvider>
   );
-}) as OverridableComponent<BackgroundTypeMap>;
+}) as OverridableComponent<TypeMap>;
 
 export default Background;

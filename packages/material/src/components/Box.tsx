@@ -1,8 +1,5 @@
 import * as React from "react";
-import MuiBox, {
-  BoxProps,
-  BoxTypeMap as MuiBoxTypeMap,
-} from "@mui/material/Box";
+import MuiBox, { BoxProps, BoxTypeMap } from "@mui/material/Box";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 const Box = React.forwardRef(function Box(
@@ -16,7 +13,7 @@ const Box = React.forwardRef(function Box(
     );
   }
   return <MuiBox ref={ref} {...systemProps} {...props} />;
-}) as OverridableComponent<MuiBoxTypeMap>;
+}) as OverridableComponent<BoxTypeMap>;
 
-export type { BoxProps };
+export type { BoxProps, BoxTypeMap };
 export default Box;

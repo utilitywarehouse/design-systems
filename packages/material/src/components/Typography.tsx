@@ -13,7 +13,10 @@ import { useBackground } from "./Background";
 import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 import { clsx } from "clsx";
 import { BoxProps } from "./Box";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import {
+  OverridableComponent,
+  OverrideProps,
+} from "@mui/material/OverridableComponent";
 
 const PREFIX = `${customerUiPrefix}-Typography`;
 export const typographyClasses = {
@@ -25,9 +28,11 @@ export const typographyClasses = {
   semibold: `${PREFIX}-semibold`,
 };
 
-export interface TypographyProps
+type defaultComponent = "p";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
   extends Pick<
-    MuiTypographyProps,
+    MuiTypographyProps<D, P>,
     | "sx"
     | "gutterBottom"
     | "paragraph"
@@ -51,10 +56,15 @@ export interface TypographyProps
   fontWeight?: "regular" | "semibold";
 }
 
-interface TypographyTypeMap<P = {}, D extends React.ElementType = "p"> {
-  props: P & TypographyProps;
+interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+  props: CustomProps<D, P>;
   defaultComponent: D;
 }
+
+export type TypographyProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<TypeMap<D, P>, D>;
 
 const Typography = React.forwardRef(function Typography(
   {
@@ -102,7 +112,7 @@ const Typography = React.forwardRef(function Typography(
       ref={forwardedRef || ref}
     />
   );
-}) as OverridableComponent<TypographyTypeMap>;
+}) as OverridableComponent<TypeMap>;
 
 export default Typography;
 

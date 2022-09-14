@@ -7,7 +7,10 @@ import {
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { styled } from "@mui/material/styles";
 import { useBackground } from "./Background";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import {
+  OverridableComponent,
+  OverrideProps,
+} from "@mui/material/OverridableComponent";
 
 const BaseLink = styled(MuiLink)(({ variant = "body" }) => {
   const { backgroundColor } = useBackground();
@@ -46,12 +49,22 @@ const StyledLink = styled(BaseLink)({
   },
 });
 
-export type LinkProps = Omit<MuiLinkProps, "color" | "underline">;
+type defaultComponent = "a";
 
-export interface LinkTypeMap<P = {}, D extends React.ElementType = "a"> {
-  props: P & LinkProps;
+export type CustomLinkProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = Omit<MuiLinkProps<D, P>, "color" | "underline">;
+
+interface LinkTypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+  props: CustomLinkProps<D, P>;
   defaultComponent: D;
 }
+
+export type LinkProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<LinkTypeMap<D, P>, D>;
 
 const Link = React.forwardRef(function Link(
   { variant = "body", ...props },
@@ -60,17 +73,28 @@ const Link = React.forwardRef(function Link(
   return <StyledLink ref={ref} variant={variant} {...props} underline="none" />;
 }) as OverridableComponent<LinkTypeMap>;
 
-export interface NavLinkProps extends LinkProps {
+export type CustomNavLinkProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = LinkProps<D, P> & {
   active?: boolean;
   disabled?: boolean;
-}
+};
 
-export interface NavLinkTypeMap<P = {}, D extends React.ElementType = "a"> {
-  props: P & NavLinkProps;
+interface NavLinkTypeMap<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> {
+  props: CustomNavLinkProps<D, P>;
   defaultComponent: D;
 }
 
-type StyledNavLinkProps = Pick<NavLinkProps, "active" | "disabled">;
+export type NavLinkProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<NavLinkTypeMap<D, P>, D>;
+
+type StyledNavLinkProps = Pick<CustomNavLinkProps, "active" | "disabled">;
 
 const StyledNavLink = styled(BaseLink, {
   shouldForwardProp: (prop) => prop !== "active" && prop !== "disabled",

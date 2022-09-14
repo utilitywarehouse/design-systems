@@ -18,20 +18,18 @@ import Typography from "./Typography";
 import { OverrideProps } from "@mui/material/OverridableComponent";
 import {
   ButtonProps as MuiButtonProps,
-  ButtonTypeMap as MuiButtonTypeMap,
   ExtendButton,
 } from "@mui/material/Button";
 
 const { px } = helpers;
 
 export type InteractiveCardSize = "small" | "regular" | "large";
-
 export type InteractiveCardVariant = "primary" | "secondary";
 
-interface CustomInteractiveCardProps<
-  D extends React.ElementType = MuiButtonTypeMap["defaultComponent"],
-  P = {}
-> extends Pick<MuiButtonProps<D, P>, "sx"> {
+type defaultComponent = "button";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+  extends Pick<MuiButtonProps<D, P>, "sx"> {
   Background?: React.ComponentType;
   backgroundColor?: BackgroundColor;
   size?: InteractiveCardSize;
@@ -48,18 +46,15 @@ interface CustomInteractiveCardProps<
   variant?: InteractiveCardVariant;
 }
 
-type InteractiveCardTypeMap<
-  P = {},
-  D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
-> = {
-  props: CustomInteractiveCardProps<P, D>;
+interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+  props: CustomProps<D, P>;
   defaultComponent: D;
-};
+}
 
 export type InteractiveCardProps<
-  D extends React.ElementType = InteractiveCardTypeMap["defaultComponent"],
+  D extends React.ElementType = defaultComponent,
   P = {}
-> = OverrideProps<InteractiveCardTypeMap<P, D>, D>;
+> = OverrideProps<TypeMap<D, P>, D>;
 
 interface StyledRootProps {
   size: InteractiveCardSize;
@@ -196,7 +191,7 @@ const InteractiveCardComponent = React.forwardRef(
       </StyledRoot>
     );
   }
-) as ExtendButton<InteractiveCardTypeMap>;
+) as ExtendButton<TypeMap>;
 
 const InteractiveCard = React.forwardRef(function InteractiveCard(
   { forwardedRef, ...props },
@@ -218,6 +213,6 @@ const InteractiveCard = React.forwardRef(function InteractiveCard(
       <InteractiveCardComponent ref={forwardedRef || ref} {...props} />
     </BackgroundProvider>
   );
-}) as ExtendButton<InteractiveCardTypeMap>;
+}) as ExtendButton<TypeMap>;
 
 export default InteractiveCard;

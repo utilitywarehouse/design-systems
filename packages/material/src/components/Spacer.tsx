@@ -1,10 +1,15 @@
 import * as React from "react";
 import { styled, Theme } from "@mui/material/styles";
 import Box, { BoxProps } from "./Box";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import {
+  OverridableComponent,
+  OverrideProps,
+} from "@mui/material/OverridableComponent";
 
-export interface SpacerProps
-  extends Pick<BoxProps, "sx" | "component" | "classes" | "children"> {
+type defaultComponent = "span";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+  extends Pick<BoxProps<D, P>, "sx" | "component" | "classes" | "children"> {
   axis?: "horizontal" | "vertical";
   size?: number;
   space?:
@@ -19,7 +24,17 @@ export interface SpacerProps
   inline?: boolean;
 }
 
-function getSpaceSize(space: SpacerProps["space"], size: number): number {
+interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+  props: CustomProps<D, P>;
+  defaultComponent: D;
+}
+
+export type SpacerProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<TypeMap<D, P>, D>;
+
+function getSpaceSize(space: CustomProps["space"], size: number): number {
   const spaceValues = {
     xxs: 0.5,
     base: 1,
@@ -38,7 +53,7 @@ function getHeight({
   size = 1,
   space,
   theme,
-}: SpacerProps & { theme: Theme }) {
+}: CustomProps & { theme: Theme }) {
   return axis === "horizontal" ? 1 : theme.spacing(getSpaceSize(space, size));
 }
 
@@ -47,11 +62,11 @@ function getWidth({
   size = 1,
   space,
   theme,
-}: SpacerProps & { theme: Theme }) {
+}: CustomProps & { theme: Theme }) {
   return axis === "vertical" ? 1 : theme.spacing(getSpaceSize(space, size));
 }
 
-const StyledRoot = styled(Box)<SpacerProps>((props) => ({
+const StyledRoot = styled(Box)<CustomProps>((props) => ({
   display: props.inline ? "inline-block" : "block",
   width: getWidth(props),
   minWidth: getWidth(props),
@@ -60,7 +75,7 @@ const StyledRoot = styled(Box)<SpacerProps>((props) => ({
 }));
 
 interface SpacerTypeMap<P = {}, D extends React.ElementType = "div"> {
-  props: P & SpacerProps;
+  props: P & CustomProps;
   defaultComponent: D;
 }
 

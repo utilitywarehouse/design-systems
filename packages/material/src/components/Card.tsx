@@ -8,7 +8,10 @@ import {
   useBackground,
 } from "./Background";
 import Box, { BoxProps } from "./Box";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import {
+  OverridableComponent,
+  OverrideProps,
+} from "@mui/material/OverridableComponent";
 
 const { px } = helpers;
 
@@ -65,8 +68,10 @@ const StyledCard = styled(Box, {
   };
 });
 
-export interface CardProps
-  extends Pick<BoxProps, "sx" | "component" | "classes"> {
+type defaultComponent = "div";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+  extends Pick<BoxProps<D, P>, "sx" | "component" | "classes"> {
   children?: React.ReactNode;
   /**
    * @deprecated in v2. The variant prop will be removed in v3 and the opaque variant will be the default.
@@ -78,10 +83,15 @@ export interface CardProps
   forwardedRef?: React.Ref<HTMLElement>;
 }
 
-interface CardTypeMap<P = {}, D extends React.ElementType = "div"> {
-  props: P & CardProps;
+interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+  props: CustomProps<D, P>;
   defaultComponent: D;
 }
+
+export type CardProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<TypeMap<D, P>, D>;
 
 const Card = React.forwardRef(function Card(
   { variant = "opaque", forwardedRef, ...props },
@@ -118,6 +128,6 @@ const Card = React.forwardRef(function Card(
       />
     </BackgroundProvider>
   );
-}) as OverridableComponent<CardTypeMap>;
+}) as OverridableComponent<TypeMap>;
 
 export default Card;

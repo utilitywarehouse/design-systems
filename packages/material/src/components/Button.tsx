@@ -1,7 +1,6 @@
 import * as React from "react";
 import MuiButton, {
   ButtonProps as MuiButtonProps,
-  ButtonTypeMap as MuiButtonTypeMap,
   ExtendButton,
 } from "@mui/material/Button";
 import { Components } from "@mui/material/styles";
@@ -29,10 +28,10 @@ export const buttonClasses = {
   large: `${PREFIX}-large`,
 };
 
-interface CustomButtonProps<
-  P = {},
-  D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
-> extends Pick<
+type defaultComponent = "button";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+  extends Pick<
     MuiButtonProps<D, P>,
     "sx" | "classes" | "fullWidth" | "children" | "href"
   > {
@@ -44,18 +43,15 @@ interface CustomButtonProps<
   forwardedRef?: React.Ref<HTMLButtonElement>;
 }
 
-type ButtonTypeMap<
-  P = {},
-  D extends React.ElementType = MuiButtonTypeMap["defaultComponent"]
-> = {
-  props: CustomButtonProps<P, D>;
+type TypeMap<P = {}, D extends React.ElementType = defaultComponent> = {
+  props: CustomProps<D, P>;
   defaultComponent: D;
 };
 
 export type ButtonProps<
-  D extends React.ElementType = ButtonTypeMap["defaultComponent"],
+  D extends React.ElementType = defaultComponent,
   P = {}
-> = OverrideProps<ButtonTypeMap<P, D>, D>;
+> = OverrideProps<TypeMap<P, D>, D>;
 
 const Button = React.forwardRef(function Button(
   { size = "medium", variant = "primary", forwardedRef, className, ...props },
@@ -81,7 +77,7 @@ const Button = React.forwardRef(function Button(
       ref={forwardedRef || ref}
     />
   );
-}) as ExtendButton<ButtonTypeMap>;
+}) as ExtendButton<TypeMap>;
 
 export default Button;
 
