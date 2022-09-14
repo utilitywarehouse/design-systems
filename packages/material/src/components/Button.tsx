@@ -78,7 +78,7 @@ const Button = React.forwardRef(function Button(
     <MuiButton
       {...(props as Partial<MuiButtonProps>)}
       className={classNames}
-      ref={ref}
+      ref={forwardedRef || ref}
     />
   );
 }) as ExtendButton<ButtonTypeMap>;

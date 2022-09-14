@@ -5,13 +5,6 @@ import MuiBox, {
 } from "@mui/material/Box";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 
-// NOTE: replace MuiBoxTypeMap with this when the system props have been removed
-//
-// export interface BoxTypeMap<P = {}, D extends React.ElementType = "div"> {
-//   props: P & Pick<BoxProps, "sx" | "children" | "component">;
-//   defaultComponent: D;
-// }
-
 const Box = React.forwardRef(function Box(
   { sx, component, children, className, ...systemProps },
   ref

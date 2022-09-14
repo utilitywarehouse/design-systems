@@ -71,13 +71,10 @@ interface BackgroundTypeMap<P = {}, D extends React.ElementType = "div"> {
   defaultComponent: D;
 }
 
-const Background = React.forwardRef(function Background(props, ref) {
-  const {
-    backgroundColor = defaultBackgroundColor,
-    forwardedRef,
-    ...rest
-  } = props;
-
+const Background = React.forwardRef(function Background(
+  { backgroundColor = defaultBackgroundColor, forwardedRef, ...props },
+  ref
+) {
   if (forwardedRef !== undefined) {
     console.warn(
       "forwardedRef on the Background component is deprecated in v2 and will be removed in v3. Please use ref instead."
@@ -87,7 +84,7 @@ const Background = React.forwardRef(function Background(props, ref) {
   return (
     <BackgroundProvider backgroundColor={backgroundColor}>
       <StyledBackground
-        {...rest}
+        {...props}
         ref={forwardedRef || ref}
         backgroundColor={backgroundColor}
       />
