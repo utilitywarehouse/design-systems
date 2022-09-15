@@ -7,6 +7,83 @@ There may be some minor inconsistencies not documented here, but these are the
 major changes to watch out for. Please open an issue or PR if you find something
 worth documenting for others, thankyou!
 
+## v1 to v2
+
+### Update Theme Hooks
+
+- `useMuiTheme` hook has been removed.
+- `useTheme` now returns the MUI theme and not the legacy Customer UI theme.
+- The Customer UI theme has been removed and is no longer available.
+- The `backdropLevel` value has been renamed to `backgroundColor` and is now
+  available through the new `useBackground` hook.
+- The unsupported dark mode implementation has been removed and so the
+  `colorScheme` value is no longer available.
+
+```diff
+- import { useTheme, useMuiTheme } from '@utilitywarehouse/customer-ui-material';
++ import { useTheme, useBackground } from '@utilitywarehouse/customer-ui-material';
+[...]
+- const { backdropLevel, colorScheme } = useTheme();
+- const theme = useMuiTheme();
++ const theme = useTheme();
++ const { backgroundColor } = useBackground();
+```
+
+### Replace System Props with `sx`
+
+Moving forward `sx` is the preferred styling solution and should be used instead
+of the system props. The system props have been deprecated across all components
+and in some cases already removed. All components now expose the `sx` prop for
+styling.
+
+```diff
+  <Component
+-   margin={2}
+-   padding={4}
++   sx={{
++     margin: 2,
++     padding: 4,
++   }}
+  />
+```
+
+The following components no longer support the system props:
+- `Icon`
+- `Background`
+- `Card`
+
+### Update Grid component
+
+The `Grid` component is now based on the Mui `Grid` component and is no longer a
+custom implementation. This may affect your expectations for how the component
+works, so please visually check it is working as expected.
+
+The `GridSpacer` component has been removed, and should be replaced with the new
+`Spacer` component.
+
+### New Spacer component
+
+v2 introduces a new `Spacer` component. You can replace any local
+implementations with this.
+
+### Update Root Provider
+
+The root provider has been renamed.
+
+```diff
+- <UIProvider>
++ <ThemeProvider>
+    <App />
++ </ThemeProvider>
+- </UIProvider>
+```
+
+The underlying MUI `ThemeProvider` has been moved into this renamed root
+provider, from the `Background` component.
+
+It is also now possible to pass a `theme` object to the `ThemeProvider`, that will
+then be merged with the existing theme.
+
 ## Pre-release alpha versions to v1
 
 This guide covers all pre-release `alpha` releases from `alpha.54` and after.
