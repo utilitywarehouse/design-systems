@@ -7,6 +7,9 @@ There may be some minor inconsistencies not documented here, but these are the
 major changes to watch out for. Please open an issue or PR if you find something
 worth documenting for others, thankyou!
 
+- [v1 to v2](#v1-to-v2)
+- [Pre-release alpha versions to v1](#pre-release-alpha-versions-to-v1)
+
 ## v1 to v2
 
 ### Update Theme Hooks
