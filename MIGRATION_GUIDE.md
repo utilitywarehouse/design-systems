@@ -8,9 +8,74 @@ major changes to watch out for. Please open an issue or PR if you find something
 worth documenting for others, thankyou!
 
 - [v1 to v2](#v1-to-v2)
+  - [MUI and emotion dependencies](#mui-and-emotion-dependencies)
+  - [Update Root Provider](#update-root-provider)
+  - [Update Theme Hooks](#update-theme-hooks)
+  - [makeStyles Styling](#makestyles-styling-method)
+  - [Replace System Props with `sx`](#replace-system-props-with-sx)
+  - [withBackground HOC](#withbackground-hoc)
+  - [Background Colour Level Naming](#background-colour-level-naming)
+  - [Button Component](#button-component)
+  - [Typography Component](#typography-component)
+  - [Link Component](#link-component)
+  - [Grid Component](#grid-component)
+  - [Spacer Component](#spacer-component)
 - [Pre-release alpha versions to v1](#pre-release-alpha-versions-to-v1)
 
 ## v1 to v2
+
+### MUI and emotion dependencies
+
+The underlying MUI & emotion packages this library is built upon have been moved
+from being direct dependencies to peer dependencies, and we are now only
+exporting the bare essentials from MUI. This has been done for the
+following reasons;
+
+- fix historic dependency mismatch issues
+- reduce bundle size
+- provide greater insight into what components are specific to CWUI and what are
+  stock MUI
+- give us greater ownership over the custom components and their documentation
+  and indicate that docs for stock MUI components should be sourced from MUI
+  themselves, while providing docs & guidelines for our custom CWUI components
+- avoid breaking API changes, and a major version release, when we move a
+  component from stock MUI to custom CWUI as they will be imported from
+  different libraries.
+- no need to maintain a long list of components, hooks, functions, types etc.
+  that are being exported from MUI
+
+This means that the MUI & emotion packages need to be installed when installing
+this library and any MUI components or methods not specifically a part of
+Customer Web UI need to be updated as imports from MUI.
+
+```console
+yarn add @utilitywarehouse/customer-ui-material @mui/material @emotion/react @emotion/styled
+```
+
+```diff
+- import { Alert, Avatar, Badge } from "@utilitywarehouse/customer-ui-material"
++ import Alert from "@mui/material/Alert"
++ import Avatar from "@mui/material/Avatar"
++ import Badge from "@mui/material/Badge"
+```
+
+### Update Root Provider
+
+The root provider has been renamed.
+
+```diff
+- <UIProvider>
++ <ThemeProvider>
+    <App />
++ </ThemeProvider>
+- </UIProvider>
+```
+
+The underlying MUI `ThemeProvider` has been moved into this renamed root
+provider, from the `Background` component.
+
+It is also now possible to pass a `theme` object to the `ThemeProvider`, that will
+then be merged with the existing theme.
 
 ### Update Theme Hooks
 
@@ -31,6 +96,13 @@ worth documenting for others, thankyou!
 + const theme = useTheme();
 + const { backgroundColor } = useBackground();
 ```
+
+### `makeStyles` styling method
+
+The `makeStyles` method of styling is now officially deprecated and will be
+removed in the next major release. Please replace any instances of `makeStyles`
+with either the `styled` or `sx` methods of styling. For more details on this
+please see the [guide to styling](https://github.com/utilitywarehouse/customer-web-ui/blob/main/packages/material/README.md#styling).
 
 ### Replace System Props with `sx`
 
@@ -55,7 +127,137 @@ The following components no longer support the system props:
 - `Background`
 - `Card`
 
-### Update Grid component
+### `withBackground` HOC
+
+The `withBackground` higher order component has been removed, please wrap your
+components with a `Background` component instead.
+
+```diff
+  const Component = () => (
++   <Background>
+      [...]
++   </Background>
+  )
+
+- export default withBackground(Component)
++ export default Component
+```
+
+### Background Colour Level Naming
+
+The options for the `backgroundColor` prop on the `Background` component have
+been updated and renamed. The `level2`/`midTint` colour has been removed and
+the `levels` naming convention has been replaced with the colour names.
+
+While there were conversations around establishing a semantic naming convention,
+these have stalled and would benefit from a wider approach that considers all
+colour usage and intent, across components and designs. This change was felt to
+be the lowest impact interim solution as it requires no changes to UX designs or
+conventions, and provides a simple clarity when translating designs to code.
+
+When updating to this change the `backgroundColor` prop on the `Background` &
+`BackgroundProvider` components will need to be changed:
+
+```diff
+  <Background
+-  backgroundColor="level5"
++  backgroundColor="white"
+  >
+```
+
+According to the following:
+
+```
+level5 -> white
+level4 -> whiteOwl
+level3 -> lightTint
+level2 -> purple
+level1 -> midnight
+```
+
+You should also be aware that when using `useBackground`, the `backgroundColor`
+value that is returned will also now be one of the colour names rather than a
+level name.
+
+The type of this value has also been renamed from `BackdropLevel` to
+`BackgroundColor`, and all instances of `backdropLevel` have similarly been
+renamed.
+
+### `Button` Component
+
+#### Sizing
+
+There are now 3 static sizes available on the `Button` component: `small`,
+`medium` and `large`.
+
+The `regular` size has been renamed to `small`, with a new `medium` size added.
+
+```diff
+  <Button
+-  size="regular"
++  size="small"
+  />
+```
+
+The horizontal padding has been increased to *32px* on all sizes, and the font
+size has also been updated from *16px* to *18px*.
+
+The responsive sizing has been removed, so the button will remain the same size
+no matter what the viewport width. Please check and update any buttons that need
+to be different sizes on desktop and mobile.
+
+#### Variants
+
+The button variants have been updated to reflect the design variant naming
+rather than MUI variant naming.
+
+    - `contained` -> `primary`
+    - `outlined`  -> `secondary`
+
+To update, please rename your button variants.
+
+```diff
+  <Button
+-  variant="contained"
++  variant="primary"
+  />
+```
+
+```diff
+  <Button
+-  variant="outlined"
++  variant="secondary"
+  />
+```
+
+### `Typography` Component
+
+- The `default` variant has been removed as it was unused and undocumented.
+- The `success` and `error` colours now only affect non-heading variants.
+- A number of font styling props have been added: `fontWeight`, `letterSpacing`,
+  `textTransform` & `align`.
+- The `sx` prop is also now available for any custom styling.
+
+To update your code:
+
+- ensure you are not expecting the `default` Typography variant anywhere
+- check you are not using `error` or `success` colours in heading variants.
+- you can also update any hacky ways of styling your typography to using the new
+  props or the `sx` prop.
+
+### `Link` Component
+
+The `active` & `secondary` variants have been removed from the `Link` component,
+if you wish to use these you need to use the `NavLink` component instead. The
+`variant` prop now mimics the variants of the `Typography` component, otherwise
+the `Link` will inherit any wrapping `Typography` component styles.
+
+```diff
+- <Link variant={isCurrentPage ? 'active' : 'secondary'} href={'/services'}>Services</Link>
++ <NavLink active={!!isCurrentPage} href={'/services'}>Services</NavLink>
+```
+
+### `Grid` component
 
 The `Grid` component is now based on the Mui `Grid` component and is no longer a
 custom implementation. This may affect your expectations for how the component
@@ -64,28 +266,10 @@ works, so please visually check it is working as expected.
 The `GridSpacer` component has been removed, and should be replaced with the new
 `Spacer` component.
 
-### New Spacer component
+### `Spacer` component
 
 v2 introduces a new `Spacer` component. You can replace any local
 implementations with this.
-
-### Update Root Provider
-
-The root provider has been renamed.
-
-```diff
-- <UIProvider>
-+ <ThemeProvider>
-    <App />
-+ </ThemeProvider>
-- </UIProvider>
-```
-
-The underlying MUI `ThemeProvider` has been moved into this renamed root
-provider, from the `Background` component.
-
-It is also now possible to pass a `theme` object to the `ThemeProvider`, that will
-then be merged with the existing theme.
 
 ## Pre-release alpha versions to v1
 
