@@ -28,7 +28,7 @@ export const typographyClasses = {
   semibold: `${PREFIX}-semibold`,
 };
 
-type defaultComponent = "p";
+type defaultComponent = "span";
 
 interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
   extends Pick<
@@ -46,7 +46,6 @@ interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
   > {
   color?: "primary" | "secondary" | "success" | "error";
   variant?: MuiTypographyProps["variant"];
-  component?: BoxProps["component"];
   /**
    * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
    */
