@@ -10,6 +10,7 @@ export default {
   title: "Components/Links",
   component: Link,
   argTypes: {
+    forwardedRef: { table: { disable: true } },
     children: {
       control: {
         type: "text",

@@ -23,6 +23,7 @@ export default {
   title: "Foundations/Typography",
   component: Typography,
   argTypes: {
+    forwardedRef: { table: { disable: true } },
     children: {
       control: {
         type: "text",
@@ -61,9 +62,6 @@ export default {
         type: "text",
       },
     },
-    forwardedRef: {
-      table: { disable: true },
-    },
   },
   args: {
     children: "hamburgefons",
@@ -77,17 +75,19 @@ export default {
   },
 } as Meta;
 
-export const TypographyKitchenSinkStory: Story<TypographyProps> = (args) => (
-  <BackgroundStack>
-    <Stack spacing={2}>
-      {variants.map((v) => (
-        <Stack key={v} spacing={4} direction="row">
-          <Typography {...args} variant={v} />
-        </Stack>
-      ))}
-    </Stack>
-  </BackgroundStack>
-);
+export const TypographyKitchenSinkStory: Story<TypographyProps> = (args) => {
+  return (
+    <BackgroundStack>
+      <Stack spacing={2}>
+        {variants.map((v) => (
+          <Stack key={v} spacing={4} direction="row">
+            <Typography {...args} variant={v} />
+          </Stack>
+        ))}
+      </Stack>
+    </BackgroundStack>
+  );
+};
 TypographyKitchenSinkStory.storyName = "Kitchen Sink";
 TypographyKitchenSinkStory.argTypes = {
   variant: { table: { disable: true } },
@@ -104,9 +104,11 @@ TypographyKitchenSinkStory.args = {
   fontWeight: "regular",
 };
 
-export const TypographyCustomStory: Story<TypographyProps> = (args) => (
-  <BackgroundStack>
-    <Typography {...args} />
-  </BackgroundStack>
-);
+export const TypographyCustomStory: Story<TypographyProps> = (args) => {
+  return (
+    <BackgroundStack>
+      <Typography {...args} />
+    </BackgroundStack>
+  );
+};
 TypographyCustomStory.storyName = "Custom";

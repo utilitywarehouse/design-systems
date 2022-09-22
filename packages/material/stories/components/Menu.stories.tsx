@@ -7,6 +7,9 @@ import { BackgroundStack } from "../utils";
 export default {
   title: "Components/Menu",
   component: Menu,
+  argTypes: {
+    forwardedRef: { table: { disable: true } },
+  },
 } as Meta;
 
 export const MenuStory: Story = () => {

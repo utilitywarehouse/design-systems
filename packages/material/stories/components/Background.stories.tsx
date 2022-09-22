@@ -8,12 +8,15 @@ export default {
   title: "Components/Background",
   component: Background,
   argTypes: {
+    forwardedRef: { table: { disable: true } },
+    sx: { table: { disable: true } },
     backgroundColor: {
       control: {
         type: "radio",
         options: ["white", "whiteOwl", "lightTint", "purple", "midnight"],
       },
     },
+    component: { control: { type: "text" } },
   },
   args: {
     backgroundColor: "white",

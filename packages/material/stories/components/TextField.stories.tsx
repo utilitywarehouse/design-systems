@@ -7,6 +7,7 @@ export default {
   title: "Components/TextField",
   component: TextField,
   argTypes: {
+    forwardedRef: { table: { disable: true } },
     status: {
       control: {
         type: "radio",

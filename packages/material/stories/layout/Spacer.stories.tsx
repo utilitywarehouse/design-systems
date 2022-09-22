@@ -9,6 +9,7 @@ import Stack from "@mui/material/Stack";
 export default {
   title: "Layout/Spacer",
   argTypes: {
+    forwardedRef: { table: { disable: true } },
     axis: {
       control: {
         type: "radio",

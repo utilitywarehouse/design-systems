@@ -12,6 +12,11 @@ import { Theme } from "@mui/material/styles";
 import { useBackground } from "./Background";
 import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 import { clsx } from "clsx";
+import { BoxProps } from "./Box";
+import {
+  OverridableComponent,
+  OverrideProps,
+} from "@mui/material/OverridableComponent";
 
 const PREFIX = `${customerUiPrefix}-Typography`;
 export const typographyClasses = {
@@ -23,9 +28,11 @@ export const typographyClasses = {
   semibold: `${PREFIX}-semibold`,
 };
 
-export interface TypographyProps
+type defaultComponent = "span";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
   extends Pick<
-    MuiTypographyProps,
+    MuiTypographyProps<D, P>,
     | "sx"
     | "gutterBottom"
     | "paragraph"
@@ -35,22 +42,46 @@ export interface TypographyProps
     | "noWrap"
     | "textTransform"
     | "letterSpacing"
+    | "children"
   > {
   color?: "primary" | "secondary" | "success" | "error";
   variant?: MuiTypographyProps["variant"];
-  component?: React.ElementType;
-  forwardedRef?: React.Ref<unknown>;
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<
+    HTMLElement | HTMLSpanElement | HTMLParagraphElement
+  >;
   fontWeight?: "regular" | "semibold";
 }
 
-const Typography: React.FunctionComponent<TypographyProps> = ({
-  color = "primary",
-  variant = "body",
-  fontWeight = "regular",
-  forwardedRef,
-  className,
-  ...props
-}) => {
+interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+  props: CustomProps<D, P>;
+  defaultComponent: D;
+}
+
+export type TypographyProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<TypeMap<D, P>, D>;
+
+const Typography = React.forwardRef(function Typography(
+  {
+    color = "primary",
+    variant = "body",
+    fontWeight = "regular",
+    forwardedRef,
+    className,
+    ...props
+  },
+  ref
+) {
+  if (forwardedRef !== undefined) {
+    console.warn(
+      "forwardedRef on the Typography component is deprecated in v2 and will be removed in v3. Please use ref instead."
+    );
+  }
+
   const { backgroundColor } = useBackground();
 
   const variantMapping = {
@@ -77,11 +108,10 @@ const Typography: React.FunctionComponent<TypographyProps> = ({
       variant={variant}
       variantMapping={variantMapping}
       className={classNames}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={forwardedRef as unknown as any}
+      ref={forwardedRef || ref}
     />
   );
-};
+}) as OverridableComponent<TypeMap>;
 
 export default Typography;
 

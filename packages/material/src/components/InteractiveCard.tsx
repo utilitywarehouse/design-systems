@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { styled } from "@mui/material/styles";
 import {
   helpers,
@@ -15,50 +15,59 @@ import {
 import Box, { BoxProps } from "./Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import Typography from "./Typography";
+import { OverrideProps } from "@mui/material/OverridableComponent";
+import {
+  ButtonProps as MuiButtonProps,
+  ExtendButton,
+} from "@mui/material/Button";
 
 const { px } = helpers;
 
 export type InteractiveCardSize = "small" | "regular" | "large";
-
 export type InteractiveCardVariant = "primary" | "secondary";
 
-interface BaseInteractiveCardProps extends Pick<BoxProps, "sx"> {
+type defaultComponent = "button";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+  extends Pick<MuiButtonProps<D, P>, "sx"> {
   Background?: React.ComponentType;
   backgroundColor?: BackgroundColor;
   size?: InteractiveCardSize;
   containerProps?: BoxProps;
-  forwardedRef?: React.Ref<unknown>;
   children?: React.ReactNode;
+  href?: string;
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<HTMLButtonElement>;
   /**
    * @deprecated in v2. This prop has no effect on the component
    */
   variant?: InteractiveCardVariant;
 }
 
-type InteractiveCardButtonProps = BaseInteractiveCardProps &
-  Omit<
-    React.ComponentPropsWithoutRef<"button">,
-    keyof BaseInteractiveCardProps
-  >;
+interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+  props: CustomProps<D, P>;
+  defaultComponent: D;
+}
 
-type InteractiveCardAnchorProps = BaseInteractiveCardProps &
-  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseInteractiveCardProps>;
-
-export type InteractiveCardProps =
-  | InteractiveCardButtonProps
-  | InteractiveCardAnchorProps;
+export type InteractiveCardProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<TypeMap<D, P>, D>;
 
 interface StyledRootProps {
   size: InteractiveCardSize;
-  backgroundColor: BackgroundColor;
 }
 
 const PREFIX = `${customerUiPrefix}-InteractiveCard`;
 export const interactiveCardClasses = { rootHover: `${PREFIX}-rootHover` };
 
 const StyledRoot = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "size" && prop !== "backgroundColor",
-})<StyledRootProps>(({ size, backgroundColor }) => {
+  shouldForwardProp: (prop) => prop !== "size",
+})<StyledRootProps>(({ size }) => {
+  const { backgroundColor } = useBackground();
+
   const interactiveCardPalette = {
     midnight: {
       default: colors.midnight,
@@ -126,79 +135,73 @@ const StyledWrapper = styled(Box, {
   };
 });
 
-const InteractiveCardComponent: React.FunctionComponent<
-  InteractiveCardProps
-> = ({
-  children,
-  Background,
-  size = "regular",
-  containerProps,
-  forwardedRef,
-  ...props
-}) => {
-  const { backgroundColor } = useBackground();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const href = (props as any).href as string | undefined;
+const InteractiveCardComponent = React.forwardRef(
+  function InteractiveCardComponent(
+    { children, Background, size = "regular", containerProps, href, ...props },
+    ref
+  ) {
+    const component = href ? "a" : "button";
 
-  return (
-    <StyledRoot
-      size={size}
-      backgroundColor={backgroundColor}
-      {...containerProps}
-    >
-      <Box
-        className={interactiveCardClasses.rootHover}
-        sx={{
-          position: "absolute",
-          left: 0,
-          top: 0,
-          right: 0,
-          bottom: 0,
-        }}
-      />
-      <ButtonBase
-        {...props}
-        disableRipple={true}
-        component={href ? "a" : "button"}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={forwardedRef as unknown as any}
-        sx={{
-          width: "100%",
-        }}
-      >
+    return (
+      <StyledRoot size={size} {...containerProps}>
         <Box
+          className={interactiveCardClasses.rootHover}
           sx={{
-            position: "relative",
-            overflow: "hidden",
-            minHeight: "100%",
-            minWidth: "100%",
+            position: "absolute",
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
           }}
+        />
+        <ButtonBase
+          {...props}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          component={component as any}
+          ref={ref}
+          disableRipple={true}
+          sx={{ width: "100%" }}
         >
-          {Background && (
-            <Box
-              sx={{
-                position: "absolute",
-                left: 0,
-                top: 0,
-                right: 0,
-                bottom: 0,
-              }}
-            >
-              <Background />
-            </Box>
-          )}
-          <StyledWrapper size={size}>
-            <Typography component="div">{children}</Typography>
-          </StyledWrapper>
-        </Box>
-      </ButtonBase>
-    </StyledRoot>
-  );
-};
+          <Box
+            sx={{
+              position: "relative",
+              overflow: "hidden",
+              minHeight: "100%",
+              minWidth: "100%",
+            }}
+          >
+            {Background && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  right: 0,
+                  bottom: 0,
+                }}
+              >
+                <Background />
+              </Box>
+            )}
+            <StyledWrapper size={size}>
+              <Typography component="div">{children}</Typography>
+            </StyledWrapper>
+          </Box>
+        </ButtonBase>
+      </StyledRoot>
+    );
+  }
+) as ExtendButton<TypeMap>;
 
-const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
-  props
-) => {
+const InteractiveCard = React.forwardRef(function InteractiveCard(
+  { forwardedRef, ...props },
+  ref
+) {
+  if (forwardedRef !== undefined) {
+    console.warn(
+      "forwardedRef on the InteractiveCard component is deprecated in v2 and will be removed in v3. Please use ref instead."
+    );
+  }
   const { backgroundColor } = useBackground();
   const interactiveCardBackgroundColor =
     backgroundColor === "white" ? "purple" : "white";
@@ -207,9 +210,9 @@ const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
     <BackgroundProvider
       backgroundColor={props.backgroundColor || interactiveCardBackgroundColor}
     >
-      <InteractiveCardComponent {...props} />
+      <InteractiveCardComponent ref={forwardedRef || ref} {...props} />
     </BackgroundProvider>
   );
-};
+}) as ExtendButton<TypeMap>;
 
 export default InteractiveCard;

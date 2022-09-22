@@ -26,18 +26,12 @@ module.exports = {
     "react/prop-types": "off",
     "no-empty-function": "off",
     "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/ban-types": "off",
   },
   settings: {
     react: {
       version: "detect",
     },
   },
-  overrides: [
-    {
-      files: ["packages/react-icons/**/*.tsx"],
-      rules: {
-        "@typescript-eslint/explicit-module-boundary-types": "off",
-      },
-    },
-  ],
 };

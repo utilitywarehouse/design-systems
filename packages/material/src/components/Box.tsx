@@ -1,15 +1,19 @@
-import React from "react";
-import MuiBox, { BoxProps } from "@mui/material/Box";
+import * as React from "react";
+import MuiBox, { BoxProps, BoxTypeMap } from "@mui/material/Box";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
-const Box: typeof MuiBox = React.forwardRef<HTMLElement, BoxProps>(function Box(
-  props,
+const Box = React.forwardRef(function Box(
+  { sx, component, children, className, ...systemProps },
   ref
 ) {
-  console.warn(
-    `The Box system properties, used for styling, are deprecated in v2, and will be removed in v3. Please migrate to using the sx and styled utilities instead.`
-  );
-  return <MuiBox ref={ref} {...props} />;
-}) as typeof MuiBox;
+  const props = { sx, component, children, className };
+  if (Object.keys(systemProps).length > 0) {
+    console.warn(
+      `The Box system properties, used for styling, are deprecated in v2, and will be removed in v3. Please migrate to using the sx and styled utilities instead.`
+    );
+  }
+  return <MuiBox ref={ref} {...systemProps} {...props} />;
+}) as OverridableComponent<BoxTypeMap>;
 
+export type { BoxProps, BoxTypeMap };
 export default Box;
-export type { BoxProps };

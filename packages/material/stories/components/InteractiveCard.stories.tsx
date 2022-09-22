@@ -2,8 +2,9 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 
 import type { InteractiveCardProps } from "../../src";
-import { Stack, InteractiveCard, Typography } from "../../src";
+import { InteractiveCard, Typography } from "../../src";
 import { BackgroundStack } from "../utils";
+import Stack from "@mui/material/Stack";
 
 const sizes = ["small", "regular", "large"] as const;
 

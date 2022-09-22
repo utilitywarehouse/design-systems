@@ -1,5 +1,8 @@
-import React from "react";
-import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button";
+import * as React from "react";
+import MuiButton, {
+  ButtonProps as MuiButtonProps,
+  ExtendButton,
+} from "@mui/material/Button";
 import { Components } from "@mui/material/styles";
 import {
   transitions,
@@ -12,6 +15,7 @@ import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
 import { TinyColor } from "@ctrl/tinycolor";
 import { useBackground } from "./Background";
 import { clsx } from "clsx";
+import { OverrideProps } from "@mui/material/OverridableComponent";
 
 const PREFIX = `${customerUiPrefix}-Button`;
 export const buttonClasses = {
@@ -24,32 +28,41 @@ export const buttonClasses = {
   large: `${PREFIX}-large`,
 };
 
-interface BaseButtonProps extends Pick<MuiButtonProps, "sx" | "classes"> {
+type defaultComponent = "button";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+  extends Pick<
+    MuiButtonProps<D, P>,
+    "sx" | "classes" | "fullWidth" | "children" | "href"
+  > {
   size?: "small" | "medium" | "large";
   variant?: "primary" | "secondary" | "tertiary";
-  fullWidth?: boolean;
-  children?: React.ReactNode;
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<HTMLButtonElement>;
 }
 
-type ButtonPropsButtonElement = BaseButtonProps &
-  Omit<React.ComponentPropsWithoutRef<"button">, keyof BaseButtonProps> & {
-    forwardedRef?: React.Ref<HTMLButtonElement>;
-  };
-type ButtonPropsAnchorElement = BaseButtonProps &
-  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseButtonProps | "href"> & {
-    forwardedRef?: React.Ref<HTMLAnchorElement>;
-    href: string;
-  };
+type TypeMap<P = {}, D extends React.ElementType = defaultComponent> = {
+  props: CustomProps<D, P>;
+  defaultComponent: D;
+};
 
-export type ButtonProps = ButtonPropsButtonElement | ButtonPropsAnchorElement;
+export type ButtonProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<TypeMap<P, D>, D>;
 
-const Button: React.FunctionComponent<ButtonProps> = ({
-  size = "medium",
-  variant = "primary",
-  forwardedRef,
-  className,
-  ...props
-}) => {
+const Button = React.forwardRef(function Button(
+  { size = "medium", variant = "primary", forwardedRef, className, ...props },
+  ref
+) {
+  if (forwardedRef !== undefined) {
+    console.warn(
+      "forwardedRef on the Button component is deprecated in v2 and will be removed in v3. Please use ref instead."
+    );
+  }
+
   const { backgroundColor } = useBackground();
 
   const classNames = clsx(buttonClasses[variant], buttonClasses[size], {
@@ -61,11 +74,10 @@ const Button: React.FunctionComponent<ButtonProps> = ({
     <MuiButton
       {...(props as Partial<MuiButtonProps>)}
       className={classNames}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={forwardedRef as unknown as any}
+      ref={forwardedRef || ref}
     />
   );
-};
+}) as ExtendButton<TypeMap>;
 
 export default Button;
 
