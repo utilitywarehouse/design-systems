@@ -1,5 +1,8 @@
 import React from "react";
-import MuiLink, { LinkProps as MuiLinkProps } from "@mui/material/Link";
+import MuiLink, {
+  LinkProps as MuiLinkProps,
+  LinkTypeMap as MuiLinkTypeMap,
+} from "@mui/material/Link";
 import { isBrandBackgroundColor, isHeadingVariant } from "../utils";
 import {
   colors,
@@ -54,7 +57,7 @@ type defaultComponent = "a";
 export type CustomLinkProps<
   D extends React.ElementType = defaultComponent,
   P = {}
-> = Omit<MuiLinkProps<D, P>, "color" | "underline">;
+> = Omit<MuiLinkTypeMap<P, D>["props"], "color" | "underline">;
 
 interface LinkTypeMap<D extends React.ElementType = defaultComponent, P = {}> {
   props: CustomLinkProps<D, P>;
@@ -76,7 +79,7 @@ const Link = React.forwardRef(function Link(
 export type CustomNavLinkProps<
   D extends React.ElementType = defaultComponent,
   P = {}
-> = LinkProps<D, P> & {
+> = CustomLinkProps<D, P> & {
   active?: boolean;
   disabled?: boolean;
 };
