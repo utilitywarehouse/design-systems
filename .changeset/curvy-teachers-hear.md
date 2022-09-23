@@ -2,17 +2,17 @@
 "@utilitywarehouse/customer-ui-material": major
 ---
 
-This change deprecates and removes the `theme` package as it is no longer
-providing styling for components. As a result of this the Background context
-has changed; it no longer provides a theme and now only provides the
-`backgroundLevel` for the `Background` component.
+This change deprecates and removes the `theme` package as it no longer provides
+styling for components. As a result of this the Background context no longer
+provides a theme and now only instead provides the  current `backgroundColor`
+from the nearest `Background` component.
 
-To update you will need to replace the removed `useTheme` hook with the new
-`useBackground` & `useDarkMode` hooks. The mui theme is still available through
-the `useMuiTheme` hook.
+The `useTheme` hook now returns the MUI theme, with the `backgroundColor`
+available from the `useBackground` hook. The incomplete dark mode implementation
+has been removed, so the `colorScheme` value is no longer available.
 
 ```diff
 - const { backdropLevel, colorScheme } = useTheme();
-+ const { backdropLevel } = useBackground();
-+ const { darkModeEnabled } = useDarkMode();
++ const theme = useTheme();
++ const { backgroundColor } = useBackground();
 ```

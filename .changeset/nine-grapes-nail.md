@@ -2,4 +2,5 @@
 "@utilitywarehouse/customer-ui-material": major
 ---
 
-deprecate the makeStyles styling method
+Deprecate the `makeStyles` styling method. Please use the `sx` prop or the
+`styled` utility.

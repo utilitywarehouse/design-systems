@@ -2,7 +2,8 @@
 "@utilitywarehouse/customer-ui-material": major
 ---
 
-This change updates the button variants to reflect the design variant naming rather than mui variant naming.
+This change updates the button variants to reflect the design variant naming
+rather than mui variant naming.
 
     - `contained` -> `primary`
     - `outlined` -> `secondary`
