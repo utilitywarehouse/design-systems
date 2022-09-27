@@ -1,5 +1,242 @@
 # @utilitywarehouse/customer-ui-material
 
+## 2.0.0
+
+### Major Changes
+
+- [#401](https://github.com/utilitywarehouse/customer-web-ui/pull/401) [`039ff0f`](https://github.com/utilitywarehouse/customer-web-ui/commit/039ff0f6766d87941c3a2bf3d91f85be09ec1418) Thanks [@robphoenix](https://github.com/robphoenix)! - This change deprecates and removes the `theme` package as it no longer provides
+  styling for components. As a result of this the Background context no longer
+  provides a theme and now only instead provides the current `backgroundColor`
+  from the nearest `Background` component.
+
+  The `useTheme` hook now returns the MUI theme, with the `backgroundColor`
+  available from the `useBackground` hook. The incomplete dark mode implementation
+  has been removed, so the `colorScheme` value is no longer available.
+
+  ```diff
+  - const { backdropLevel, colorScheme } = useTheme();
+  + const theme = useTheme();
+  + const { backgroundColor } = useBackground();
+  ```
+
+* [#401](https://github.com/utilitywarehouse/customer-web-ui/pull/401) [`5079eb1`](https://github.com/utilitywarehouse/customer-web-ui/commit/5079eb163e37a3381668254a31d68ce6130075d6) Thanks [@robphoenix](https://github.com/robphoenix)! - This change updates the `Grid` component to be a convenience wrapper around the
+  MUI `Grid` component rather than a custom component.
+
+  The custom `Grid` component was introduced by developers who are no longer
+  involved with Customer UI and so their reasoning for it is not fully
+  understood. I believe it is because it is not currently possible to easily use
+  custom breakpoints with the MUI `Grid` component
+  ([mui/material-ui/issues/26369](https://github.com/mui/material-ui/issues/26369)),
+  and possibly to include some Customer UI specific defaults.
+
+  However the component has gained a really negative reputation for having an
+  overly complicated implementation, lacking in functionality, being buggy and
+  essentially not fit for purpose. Therefore this change replaces the custom `Grid`
+  with the MUI `Grid` but with some convenience defaults and a workaround to use
+  our custom breakpoints.
+
+  This changes the expected props and the behaviour of the current `Grid`
+  component, so layouts that use it may have to be refactored. This change also
+  removes the `GridSpacer` component, as it is rendered unnecessary by these
+  changes and we will soon be introducing a more generic Spacer component.
+
+  Also add missing `component` prop to `Grid`.
+  https://github.com/mui/material-ui/issues/29191
+
+- [#458](https://github.com/utilitywarehouse/customer-web-ui/pull/458) [`39f0265`](https://github.com/utilitywarehouse/customer-web-ui/commit/39f02659fb6c2cace0301f510805e9cd8e6b8425) Thanks [@robphoenix](https://github.com/robphoenix)! - This change renames the root provider to `ThemeProvider`, so as to better
+  describe it's usage and to bring it in line with current styling library
+  conventions.
+
+  At the same time it adds a `theme` prop that will accept a partial theme and
+  merge it with the default theme.
+
+  ```diff
+  - <UIProvider>
+  + <ThemeProvider>
+      <App />
+  - </UIProvider>
+  + </ThemeProvider>
+  ```
+
+* [#401](https://github.com/utilitywarehouse/customer-web-ui/pull/401) [`dcbaec8`](https://github.com/utilitywarehouse/customer-web-ui/commit/dcbaec8887dbb7ee08c6cb33b0034eb517a21f27) Thanks [@robphoenix](https://github.com/robphoenix)! - The `variant` prop on the InteractiveCard does nothing, so it is being removed.
+  Devs should ensure they are not using it.
+
+- [#462](https://github.com/utilitywarehouse/customer-web-ui/pull/462) [`38f5c5d`](https://github.com/utilitywarehouse/customer-web-ui/commit/38f5c5d1fe15b7ebc9cdb6386bbe4d7a4190de23) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove `withBackground` hoc. Please wrap your components with a Background
+  component instead.
+
+* [#483](https://github.com/utilitywarehouse/customer-web-ui/pull/483) [`9db2157`](https://github.com/utilitywarehouse/customer-web-ui/commit/9db215770c84da48414c023788c530ff4411ebb7) Thanks [@robphoenix](https://github.com/robphoenix)! - Deprecate the `makeStyles` styling method. Please use the `sx` prop or the
+  `styled` utility.
+
+- [#401](https://github.com/utilitywarehouse/customer-web-ui/pull/401) [`54c520e`](https://github.com/utilitywarehouse/customer-web-ui/commit/54c520eb7295e2d7705b094ee721d512c23e36fd) Thanks [@robphoenix](https://github.com/robphoenix)! - There are now 3 static sizes available on the `Button` component: `small`,
+  `medium` and `large`.
+
+  The `regular` size has been renamed to `small`, with a new `medium` size added.
+
+  ```diff
+    <Button
+  -  size="regular"
+  +  size="small"
+    />
+  ```
+
+  The horizontal padding has been increased to _32px_ on all sizes, and the font
+  size has also been updated from _16px_ to _18px_.
+
+  The responsive sizing has been removed, so the button will remain the same size
+  no matter what the viewport width. Please check and update any buttons that need
+  to be different sizes on desktop and mobile.
+
+* [#449](https://github.com/utilitywarehouse/customer-web-ui/pull/449) [`daa2b98`](https://github.com/utilitywarehouse/customer-web-ui/commit/daa2b98d0b26ab1266bf3f96c280abaefc9eccc9) Thanks [@robphoenix](https://github.com/robphoenix)! - This change moves MUI dependencies to peer and export only bare essentials from MUI.
+
+  - fix historic dependency mismatch issues
+  - reduce bundle size
+  - provide greater insight into what components are specific to CWUI and what are
+    stock MUI
+  - give us greater ownership over the custom components and their documentation
+    and indicate that docs for stock MUI components should be sourced from MUI
+    themselves, while providing docs & guidelines for our custom CWUI components
+  - avoid breaking API changes, and a major version release, when we move a
+    component from stock MUI to custom CWUI as they will be imported from
+    different libraries.
+  - no need to maintain a long list of components, hooks, functions, types etc.
+    that are being exported from MUI
+
+  To update, please re-install CWUI along with it's peer dependencies, as
+  described in the README, and update any relevant imports.
+
+- [#401](https://github.com/utilitywarehouse/customer-web-ui/pull/401) [`89ccdc3`](https://github.com/utilitywarehouse/customer-web-ui/commit/89ccdc36d0a7c2ac7f87c8f6a4f094b5ca9cb371) Thanks [@robphoenix](https://github.com/robphoenix)! - Updates to the `Typography` component and `TypographyProps`.
+
+  Breaking changes included in this change;
+
+  - remove `default` variant because it is unused and undocumented
+  - restrict `success` and `error` colours to non-heading variants, they should
+    only be used for secondary text variants.
+
+  Other changes included in this change
+
+  - add `fontWeight` prop and other standard typography props (`letterSpacing`,
+    `textTransform` & `align`). These are commonly used and so should be more
+    easily accessible for devs.
+  - include `sx` prop for custom styling.
+
+  To update your code you will need to
+
+  - ensure you are not expecting the `default` Typography variant anywhere
+  - check you are not using `error` or `success` colours in heading variants.
+  - you can also update any hacky ways of styling your typography to using the new
+    props or the `sx` prop.
+
+* [#401](https://github.com/utilitywarehouse/customer-web-ui/pull/401) [`8f61cbb`](https://github.com/utilitywarehouse/customer-web-ui/commit/8f61cbbc36f83b42274d890c4c066efd4950847f) Thanks [@robphoenix](https://github.com/robphoenix)! - This change updates the Link component to be visually and behaviourally
+  different from the NavLink component. This is a breaking change and consumers
+  should ensure they are using the appropriate link for their UI.
+
+  The `active` & `secondary` variants have been removed from the `Link` component,
+  if you wish to use these you need to use the `NavLink` component instead. The
+  `variant` prop now mimics the variants of the `Typography` component, otherwise
+  the `Link` will inherit any wrapping `Typography` component styles.
+
+  ```diff
+  - <Link variant={isCurrentPage ? 'active' : 'secondary'} href={'/services'}>Services</Link>
+  + <NavLink active={!!isCurrentPage} href={'/services'}>Services</NavLink>
+  ```
+
+- [#479](https://github.com/utilitywarehouse/customer-web-ui/pull/479) [`be49e67`](https://github.com/utilitywarehouse/customer-web-ui/commit/be49e67790ac8a4c90da14cdc92a3dba1ec1b0fb) Thanks [@robphoenix](https://github.com/robphoenix)! - This changeset replaces the Background components backgroundColor `levels`
+  naming convention with the colour names. While there were conversations around
+  establishing a semantic naming convention, these have stalled and would benefit
+  from a wider approach that considers all colour usage and intent, across
+  components and designs. This change was felt to be the lowest impact interim
+  solution as it requires no changes to UX designs or conventions, and provides a
+  simple clarity when translating designs to code.
+
+  When updating to this change the `backgroundColor` prop on the `Background` &
+  `BackgroundProvider` components will need to be changed:
+
+  ```diff
+    <Background
+  -  backgroundColor="level5"
+  +  backgroundColor="white"
+    >
+  ```
+
+  According to the following:
+
+  ```
+  level5 -> white
+  level4 -> whiteOwl
+  level3 -> lightTint
+  level2 -> purple
+  level1 -> midnight
+  ```
+
+  You should also be aware that when using `useBackground`, the `backgroundColor`
+  value that is returned will also now be one of the colour names rather than a
+  level name.
+
+  The type of this value has also been renamed from `BackdropLevel` to
+  `BackgroundColor`, and all instances of `backdropLevel` have similarly been
+  renamed.
+
+* [#401](https://github.com/utilitywarehouse/customer-web-ui/pull/401) [`22adfc2`](https://github.com/utilitywarehouse/customer-web-ui/commit/22adfc2c1cfec6eb475a07ff51196f976a4fe7de) Thanks [@robphoenix](https://github.com/robphoenix)! - This change updates the button variants to reflect the design variant naming
+  rather than mui variant naming.
+
+      - `contained` -> `primary`
+      - `outlined` -> `secondary`
+
+  To update, please rename your button variants.
+
+  ```diff
+    <Button
+  -  variant="contained"
+  +  variant="primary"
+    />
+  ```
+
+  ```diff
+    <Button
+  -  variant="outlined"
+  +  variant="secondary"
+    />
+  ```
+
+- [#401](https://github.com/utilitywarehouse/customer-web-ui/pull/401) [`6525005`](https://github.com/utilitywarehouse/customer-web-ui/commit/6525005965d70690a42f4f54d3e6dc892fc743b8) Thanks [@robphoenix](https://github.com/robphoenix)! - This change removes the level2 (mid tint) background color. It is no longer a
+  valid background color for this component and so should not be used.
+
+  Developers should remove any use of it and check with UX if they need to
+  replace any midTint backgrounds.
+
+### Minor Changes
+
+- [#401](https://github.com/utilitywarehouse/customer-web-ui/pull/401) [`40c8ab8`](https://github.com/utilitywarehouse/customer-web-ui/commit/40c8ab864efa7c3faff533f2c9296c4ac839043b) Thanks [@robphoenix](https://github.com/robphoenix)! - The MUI system props used for styling are being deprecated or in some cases have
+  already been removed. This focuses the styling options for components on a
+  consistent API, settling on the `sx` prop and `styled` utility, in line with
+  other components in Customer Web UI and also adds some future proofing. To
+  update, developers will need to move any custom styling into an sx prop. Any
+  components that did not previously expose the `sx` prop will now have it
+  available for styling.
+
+  Components affected:
+
+  - Icon
+  - Background
+  - Card
+
+### Patch Changes
+
+- [#401](https://github.com/utilitywarehouse/customer-web-ui/pull/401) [`2c0c9d2`](https://github.com/utilitywarehouse/customer-web-ui/commit/2c0c9d20dc3bbfaf909d0f60d9aa3338cb385273) Thanks [@robphoenix](https://github.com/robphoenix)! - - Add spacer component (#346)
+
+* [#489](https://github.com/utilitywarehouse/customer-web-ui/pull/489) [`d088da6`](https://github.com/utilitywarehouse/customer-web-ui/commit/d088da67877da7c99269c5d920d5649cea88b73f) Thanks [@robphoenix](https://github.com/robphoenix)! - This change deprecates the `forwardedRef` prop on components in favour of using
+  `React.forwardRef`. The `forwardedRef` prop will be removed in the next major
+  release.
+
+  To prepare for this please update any refs you have.
+
+  ```diff
+  - forwardedRef={el}
+  + ref={el}
+  ```
+
+- [#401](https://github.com/utilitywarehouse/customer-web-ui/pull/401) [`a162a80`](https://github.com/utilitywarehouse/customer-web-ui/commit/a162a80182bedf98042b648c095ea885ee725e64) Thanks [@robphoenix](https://github.com/robphoenix)! - Fixed padding syntax issue on Container component
+
 ## 1.0.12
 
 ### Patch Changes
