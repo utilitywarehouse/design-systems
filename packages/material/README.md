@@ -8,15 +8,15 @@ Customer UI React components standing on the shoulders of the [MUI Material](htt
 * [Installation](#installation)
 * [Getting started](#getting-started)
 * [Theming](#theming)
-* [Mui Components](#mui-components)
+* [MUI Components](#mui-components)
 * [Styling](#styling)
-* [Contributing](#contributing)
+
 ## Installation
 
+Install the library and it's peer dependencies.
+
 ```console
-npm i --save @utilitywarehouse/customer-ui-material
-# or
-yarn add @utilitywarehouse/customer-ui-material
+yarn add @utilitywarehouse/customer-ui-material @mui/material @emotion/react @emotion/styled
 ```
 
 ## Storybook
@@ -45,93 +45,80 @@ These are provisioned on AWS S3 via
 [this terraform config](https://github.com/utilitywarehouse/terraform/blob/master/aws/dev/telecom/cwui-storybook.tf),
 and will be removed when the PR gets merged.
 
+### Fonts
+
+You will also need to install the necessary [fonts](../fonts).
+
 ## Getting started
 
-Start by wrapping your application with the `UIProvider` component. This renders
-the necessary context providers, in the correct order, which contribute to the
-state of the UI.
-
-It's important to note that the `UIProvider` does not include the MUI
-`ThemeProvider` used to theme components. This is done by the
-`BackgroundProvider` rendered by the `Background` component.
+Start by wrapping your application with the `ThemeProvider` component. This
+will provide the necessary theming for the Customer UI components.
 
 ```tsx
 import * as React from "react";
-import { UIProvider } from "@utilitywarehouse/customer-ui-material";
-import Content from "./Content";
+import { ThemeProvider } from "@utilitywarehouse/customer-ui-material";
+import App from "./App";
 
-/**
- * This will result in the required context providers being
- * rendered by a single provider component in the correct
- * order.
- */
 const App: React.FC = () => (
-  <UIProvider>
-    <Content />
-  </UIProvider>
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
 );
 
 ```
 
-The following providers are rendered by the `UIProvider`.
+The following providers are rendered by the `ThemeProvider`.
 
-- **StylesProvider** - Uses the internal `StylesProvider` component which is a
-  wrapper around the [MUI StylesProvider](https://mui.com/styles/api/#stylesprovider)
+- **StylesProvider** - This is a wrapper around the [MUI StylesProvider](https://mui.com/styles/api/#stylesprovider)
   component, and sets some default props. This provider relates to MUI's
   previous styling solution `JSS`, is currently retained only to support
   applications that consume this library and use `makeStyles` for styling.
   *Note that this option is [being deprecated](https://github.com/utilitywarehouse/customer-ui/issues/247).*
+- **MuiThemeProvider** - Provides the mui theme needed for styling components.
 
-- **DarkModeProvider** - Manages switching between dark and light mode. *Note
-  that dark mode is not yet supported.*
-- **ThemeVariantsProvider** - This is an internal provider which manages the
-  compilation of themes from the [theme package](../theme).
 
-## Theming
-
-Theming is handled by the [`Background`](docs/components/Background) component,
-which renders a [Background context](docs/components/BackgroundContext),
-giving components rendered further down the tree access to the Customer UI
-theme.
-
-Within the `Background` component, the Customer UI theme can be fetched via the
-`useTheme` hook. Additionally, the MUI theme used by components can be
+Within the `ThemeProvider` component the mui theme used by components can be
 fetched via the `useMuiTheme` hook.
 
 ```tsx
-import { Background, useTheme, useMuiTheme } from "@utilitywarehouse/customer-ui-material";
+import { useMuiTheme } from "@utilitywarehouse/customer-ui-material";
 
-const App: React.FC = () => (
-  <Background backgroundColor="level0">
-    <Main />
-  </Background>
-);
-
-const Main: React.FC = () => {
-  // Customer UI Theme object from the closest Background component
-  const theme = useTheme();
-  const muiTheme = useMuiTheme();
-
-  return (
-    ...
-  );
-};
+...
+const muiTheme = useMuiTheme();
 ```
 
-The Customer UI theme is a more complete theme when it comes to application
-design, where as the MUI theme is applied internally to the Material theme
-providers.
+If you need to, you can pass in a custom theme to the `ThemeProvider`.
 
-The `Background` component provides the necessary context to render Customer UI
-components with the expected brand styles. A `Background` component isn't
-strictly required, the default behaviour is to use the theme on the `level3`
-background for light mode. However to ensure the application behaves as
-expected you should use a `Background` component.  You can have multiple
-`Background` components within your app to render different background styles in
-different areas of your application.
-The Customer UI components will then render their styles appropriately depending
-on the background color level, without needing to specify this at the individual
-component level.
+```tsx
+import {
+ThemeProvider,
+Theme,
+theme as defaultTheme,
+buttonClasses,
+} from "@utilitywarehouse/customer-ui-material"
+
+[...]
+
+const theme: Theme = {
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          [`&.${buttonClasses.primary}`]: {
+            border: "2px solid hotpink",
+          },
+        },
+      },
+    },
+  },
+};
+
+return (
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>
+)
+```
 
 ## MUI Components
 
@@ -242,51 +229,3 @@ You can read more about the `sx` prop in the MUI docs.
 * [One-off customization](https://mui.com/customization/how-to-customize/#1-one-off-customization)
 * [The sx prop](https://mui.com/system/basics/#the-sx-prop)
 
-## Contributing
-
-### Creating a new component
-
-When creating a new component try and follow the patterns set out in
-[MUI](https://mui.com/), this means we can leverage their
-documentation and general feel for the library.
-
-To add a new component you will most likely need to create the component in the
-[theme package](../theme). This will let you define the style of the component.
-In some cases the component may already exist in the theme package.
-
-It can be beneficial to develop the theme alongside the component, keep in mind
-you will need to deploy the theme on a separate PR prior to releasing the
-component in material to do this.
-
-Once the theme is ready, go ahead and create the component in `src/components`.
-If you are overriding or extending a MUI component don't forget to update the
-export in the relevant `src/material` file by prefixing the exports you are
-overwriting with `Mui`. This allows for consumers to still have access to the
-underlying Material UI library.
-
-When using Storybook to develop a new component, you will need to wrap the
-component in a `Background` component, within your story, in order to have the
-theme styles applied. It is preferable to present the component within each
-`backgroundColor` level, so as to visualise it within each possible background
-context. You can use the
-[`BackgroundStack`](./stories/utils/BackgroundStack.tsx) component for this if
-you wish.
-
-### Concepts
-
-The main thing to consider is the style overrides for the component. This should
-be done at a global level. You can do this by exporting a
-`getComponentThemeConfiguration` function, see other components for reference.
-You then need to update `src/components/index.ts` to include the newly exported
-`getComponentThemeConfiguration` function for your component. This will then be
-consumed by the theme in `src/lib/theme.ts`. From there define your component
-and its props.
-
-### New component checklist
-
-* Updated existing MUI component export by prefixing `Mui` on overwritten exports
-* Overwritten styles at a global level using `getComponentThemeConfiguration` within the component file
-* Included the call to `getComponentThemeConfiguration` in `src/components/index.ts` for your new component
-* Added automated tests for your component
-* Added documentation for your new component and updated the `README.md` in the material package to reference this documentation at `docs/components/`
-* Added your component to Storybook in `storybook/components/`

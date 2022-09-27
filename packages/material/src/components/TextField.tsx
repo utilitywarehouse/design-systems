@@ -6,21 +6,19 @@ import {
   fontWeights,
   transitions,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import {
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  styled,
-  Box,
-} from "../material/core";
-import { useTheme } from "..";
 import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
 import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
-import { getHexOpacity } from "../utils";
-import { Theme, Components } from "@mui/material/styles";
+import { customerUiPrefix, getHexOpacity } from "../utils";
+import { useBackground } from "./Background";
+import Box from "./Box";
+import { Theme, Components, styled } from "@mui/material/styles";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import { clsx } from "clsx";
 
-const PREFIX = "TextField";
-const classes = {
+const PREFIX = `${customerUiPrefix}-TextField`;
+export const textfieldClasses = {
   success: `${PREFIX}-success`,
   multiline: `${PREFIX}-multiline`,
 };
@@ -29,7 +27,7 @@ const isSuccessStatus = (status?: string): boolean => status === "success";
 const isErrorStatus = (status?: string): boolean => status === "error";
 
 export interface TextFieldProps
-  extends Omit<FilledInputProps, "hiddenLabel" | "error"> {
+  extends Omit<FilledInputProps, "ref" | "hiddenLabel" | "error"> {
   status?: "success" | "error";
   label?: React.ReactNode;
   labelProps?: {
@@ -49,83 +47,83 @@ const IconContainer = styled(Box)(({ theme }) => ({
   marginLeft: theme.spacing(0.5),
 }));
 
-const TextFieldInput: React.FunctionComponent<TextFieldProps> = ({
-  status,
-  endAdornment,
-  ...props
-}) => {
-  const showIcon = !props.disabled;
-  const getClassName = () => {
-    const classNames = [props.className];
-    if (!props.disabled && isSuccessStatus(status)) {
-      classNames.push(classes.success);
-    }
-    if (props.multiline) {
-      classNames.push(classes.multiline);
-    }
-    return classNames.join(" ");
-  };
+const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(
+  function TextfieldInput({ status, endAdornment, className, ...props }, ref) {
+    const showIcon = !props.disabled;
+    const classNames = clsx({
+      [textfieldClasses.success]: !props.disabled && isSuccessStatus(status),
+      [textfieldClasses.multiline]: !!props.multiline,
+      className: !!className,
+    });
 
-  return (
-    <FilledInput
-      className={getClassName()}
-      endAdornment={
-        <>
-          {showIcon && isErrorStatus(status) ? (
-            <IconContainer>
-              <WarningIcon />
-            </IconContainer>
-          ) : isSuccessStatus(status) ? (
-            <IconContainer>
-              <SuccessIcon />
-            </IconContainer>
-          ) : null}
-          {endAdornment ? <IconContainer>{endAdornment}</IconContainer> : null}
-        </>
-      }
-      {...props}
-    />
-  );
-};
-
-const TextField = (props: TextFieldProps): JSX.Element => {
-  const { label, labelProps, helperText, helperTextProps, multiline, ...rest } =
-    props;
-  const { status, disabled } = rest;
-  const hasErrorStatus = !disabled && isErrorStatus(status);
-  const formControlProps = { error: hasErrorStatus, disabled };
-  const { backdropLevel, colorScheme } = useTheme();
-
-  // should only be used on white, light tint & cod grey backgrounds
-  const validBackdropLevels = ["level3", "level4", "level5"];
-  if (colorScheme === "light" && !validBackdropLevels.includes(backdropLevel)) {
-    console.warn(
-      `Invalid backdrop level for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackdropLevels
-        .map((l) => `'${l}'`)
-        .join(", ")}]`
+    return (
+      <FilledInput
+        ref={ref}
+        className={classNames}
+        endAdornment={
+          <>
+            {showIcon && isErrorStatus(status) ? (
+              <IconContainer>
+                <WarningIcon />
+              </IconContainer>
+            ) : isSuccessStatus(status) ? (
+              <IconContainer>
+                <SuccessIcon />
+              </IconContainer>
+            ) : null}
+            {endAdornment ? (
+              <IconContainer>{endAdornment}</IconContainer>
+            ) : null}
+          </>
+        }
+        {...props}
+      />
     );
   }
+);
 
-  return (
-    <FormControl fullWidth={true} {...formControlProps}>
-      {label ? (
-        <InputLabel shrink id={labelProps?.id} htmlFor={props.id}>
-          {label}
-        </InputLabel>
-      ) : null}
+const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
+  function Textfield(
+    { label, labelProps, helperText, helperTextProps, multiline, ...props },
+    ref
+  ) {
+    const { status, disabled } = props;
+    const hasErrorStatus = !disabled && isErrorStatus(status);
+    const formControlProps = { error: hasErrorStatus, disabled };
+    const { backgroundColor } = useBackground();
 
-      <TextFieldInput
-        {...rest}
-        multiline={multiline}
-        aria-describedby={helperTextProps?.id}
-      />
+    // should only be used on white, light tint & cod grey backgrounds
+    const validBackgroundColors = ["lightTint", "whiteOwl", "white"];
+    if (!validBackgroundColors.includes(backgroundColor)) {
+      console.warn(
+        `Invalid background color for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackgroundColors
+          .map((l) => `'${l}'`)
+          .join(", ")}]`
+      );
+    }
 
-      {helperText ? (
-        <FormHelperText id={helperTextProps?.id}>{helperText}</FormHelperText>
-      ) : null}
-    </FormControl>
-  );
-};
+    return (
+      <FormControl fullWidth={true} {...formControlProps}>
+        {label ? (
+          <InputLabel shrink id={labelProps?.id} htmlFor={props.id}>
+            {label}
+          </InputLabel>
+        ) : null}
+
+        <TextFieldInput
+          ref={ref}
+          {...props}
+          multiline={multiline}
+          aria-describedby={helperTextProps?.id}
+        />
+
+        {helperText ? (
+          <FormHelperText id={helperTextProps?.id}>{helperText}</FormHelperText>
+        ) : null}
+      </FormControl>
+    );
+  }
+);
 
 export default TextField;
 
@@ -145,7 +143,7 @@ export const getTextFieldTheme = (theme: Theme): Components => {
           marginBottom: theme.spacing(1),
           color: colors.midnight,
           "&.Mui-disabled": {
-            color: `${colors.midnight}40`, // TODO: update to codGray70
+            color: colors.codGray70,
           },
           "&.Mui-error": {
             color: colors.midnight,
@@ -240,7 +238,7 @@ export const getTextFieldTheme = (theme: Theme): Components => {
               },
             },
           },
-          [`&.${classes.success}`]: {
+          [`&.${textfieldClasses.success}`]: {
             ":before": {
               borderBottomColor: colors.jewel,
             },
@@ -261,7 +259,7 @@ export const getTextFieldTheme = (theme: Theme): Components => {
               borderBottomColor: colors.jewel,
             },
           },
-          [`&.${classes.multiline}`]: {
+          [`&.${textfieldClasses.multiline}`]: {
             // padding values differ slightly from non-multiline since a `textarea` is rendered rather than an `input`.
             paddingTop: 15,
             paddingBottom: 14,

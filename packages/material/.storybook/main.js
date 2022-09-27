@@ -1,9 +1,15 @@
 module.exports = {
-  stories: [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+  stories: ["../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
+  addons: [
+    "@storybook/addon-essentials",
+    "@storybook/addon-viewport",
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        transcludeMarkdown: true,
+      },
+    },
   ],
-  addons: ["@storybook/addon-essentials", "@storybook/addon-viewport"],
   features: {
     emotionAlias: false,
     storyStoreV7: true,
@@ -12,3 +18,4 @@ module.exports = {
     disableTelemetry: true,
   },
 };
+

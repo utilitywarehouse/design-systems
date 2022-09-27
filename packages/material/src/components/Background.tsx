@@ -1,67 +1,105 @@
-import { Theme, getTheme } from "@utilitywarehouse/customer-ui-theme";
-import React from "react";
-import { BackdropLevel, Box, BoxProps } from "../";
-import BackgroundProvider, { useTheme } from "./BackgroundProvider";
+import * as React from "react";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
-import { isDarkColorScheme } from "../utils";
+import { styled } from "@mui/material/styles";
+import Box, { BoxProps } from "./Box";
+import {
+  OverridableComponent,
+  OverrideProps,
+} from "@mui/material/OverridableComponent";
+
+export type BackgroundColor =
+  | "midnight"
+  | "purple"
+  | "lightTint"
+  | "whiteOwl"
+  | "white";
+
+const defaultBackgroundColor = "white";
 
 interface BackgroundContextValue {
-  theme: Theme;
+  backgroundColor: BackgroundColor;
 }
 
-export const BackgroundContext = React.createContext<BackgroundContextValue>({
-  theme: getTheme("light", "level3"),
+const BackgroundContext = React.createContext<BackgroundContextValue>({
+  backgroundColor: defaultBackgroundColor,
 });
 
-export const BackgroundConsumer = BackgroundContext.Consumer;
+export const useBackground = (): BackgroundContextValue => {
+  const context: BackgroundContextValue = React.useContext(BackgroundContext);
+  if (context === undefined) {
+    throw new Error(
+      `useBackground must be used within the Background component`
+    );
+  }
+  return context;
+};
 
-export interface BackgroundProps extends BoxProps {
-  backgroundColor: BackdropLevel;
-  forwardedRef?: React.Ref<HTMLDivElement>;
+export interface BackgroundProviderProps {
+  children?: React.ReactNode;
+  backgroundColor?: BackgroundColor;
 }
 
-const BackgroundInner: React.FunctionComponent<BackgroundProps> = ({
-  children,
-  forwardedRef,
-  backgroundColor,
-  ...props
-}) => {
-  const { colorScheme, backdropLevel } = useTheme();
-  const backgroundPalette = {
-    level0: colors.midnight,
-    level1: colors.purple,
-    level2: colors.midTint,
-    level3: colors.lightTint,
-    level4: colors.whiteOwl,
-    level5: colors.white,
-  };
-
-  const backgroundColorStyle = React.useMemo(() => {
-    if (isDarkColorScheme(colorScheme)) return colors.codGray;
-    return backgroundPalette[backdropLevel];
-  }, [backgroundColor, colorScheme, backdropLevel]);
-
+export const BackgroundProvider = (
+  props: BackgroundProviderProps
+): JSX.Element => {
+  const { backgroundColor = defaultBackgroundColor, children } = props;
   return (
-    <Box
-      {...props}
-      sx={{
-        ...props.sx,
-        backgroundColor: backgroundColorStyle,
-      }}
-      ref={forwardedRef}
-    >
+    <BackgroundContext.Provider value={{ backgroundColor }}>
       {children}
-    </Box>
+    </BackgroundContext.Provider>
   );
 };
 
-const Background: React.FunctionComponent<BackgroundProps> = ({
-  backgroundColor,
-  ...props
-}) => (
-  <BackgroundProvider backgroundColor={backgroundColor}>
-    <BackgroundInner {...props} backgroundColor={backgroundColor} />
-  </BackgroundProvider>
-);
+interface StyledBackgroundProps {
+  backgroundColor: BackgroundColor;
+}
+
+const StyledBackground = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "backgroundColor",
+})<StyledBackgroundProps>(({ backgroundColor }) => ({
+  backgroundColor: colors[backgroundColor],
+}));
+
+type defaultComponent = "div";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+  extends Pick<BoxProps<D, P>, "sx" | "component" | "classes">,
+    BackgroundProviderProps {
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<HTMLElement>;
+}
+
+interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+  props: CustomProps<D, P>;
+  defaultComponent: D;
+}
+
+export type BackgroundProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<TypeMap<D, P>, D>;
+
+const Background = React.forwardRef(function Background(
+  { backgroundColor = defaultBackgroundColor, forwardedRef, ...props },
+  ref
+) {
+  if (forwardedRef !== undefined) {
+    console.warn(
+      "forwardedRef on the Background component is deprecated in v2 and will be removed in v3. Please use ref instead."
+    );
+  }
+
+  return (
+    <BackgroundProvider backgroundColor={backgroundColor}>
+      <StyledBackground
+        {...props}
+        ref={forwardedRef || ref}
+        backgroundColor={backgroundColor}
+      />
+    </BackgroundProvider>
+  );
+}) as OverridableComponent<TypeMap>;
 
 export default Background;

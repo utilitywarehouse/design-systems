@@ -1,33 +1,27 @@
+import * as React from "react";
 import { styled } from "@mui/material/styles";
-import React from "react";
-import { BackdropLevel, Box, BoxProps, ColorScheme } from "..";
-import BackgroundProvider, { useTheme } from "./BackgroundProvider";
 import { helpers, colors } from "@utilitywarehouse/customer-ui-design-tokens";
-import { isBrandBackdropLevel, isDarkColorScheme } from "../utils";
+import { isBrandBackgroundColor } from "../utils";
+import {
+  BackgroundColor,
+  BackgroundProvider,
+  useBackground,
+} from "./Background";
+import Box, { BoxProps } from "./Box";
+import {
+  OverridableComponent,
+  OverrideProps,
+} from "@mui/material/OverridableComponent";
 
 const { px } = helpers;
 
 export type CardVariant = "transparent" | "opaque";
 
 const getCardPalette = (
-  colorScheme: ColorScheme,
-  backdropLevel: BackdropLevel,
+  backgroundColor: BackgroundColor,
   variant: CardVariant
 ) => {
-  const darkModePalette = {
-    opaque: {
-      backgroundColor: colors.codGray,
-      borderColor: colors.codGray,
-    },
-    transparent: {
-      borderColor: colors.white,
-      backgroundColor: "transparent",
-    },
-  };
-
-  // TODO: ensure this naming convention follows what is decided for Backdrop &
-  // Design Token naming
-  const neutralBackdropLevelPalette = {
+  const neutralBackgroundColorPalette = {
     opaque: {
       backgroundColor: colors.white,
       borderColor: colors.white,
@@ -38,9 +32,7 @@ const getCardPalette = (
     },
   };
 
-  // TODO: ensure this naming convention follows what is decided for Backdrop &
-  // Design Token naming
-  const brandBackdropLevelPalette = {
+  const brandBackgroundColorPalette = {
     opaque: {
       backgroundColor: colors.purple,
       borderColor: colors.purple,
@@ -51,64 +43,91 @@ const getCardPalette = (
     },
   };
 
-  if (isDarkColorScheme(colorScheme)) {
-    return darkModePalette[variant];
+  if (isBrandBackgroundColor(backgroundColor)) {
+    return brandBackgroundColorPalette[variant];
   }
 
-  if (isBrandBackdropLevel(backdropLevel)) {
-    return brandBackdropLevelPalette[variant];
-  }
-
-  return neutralBackdropLevelPalette[variant];
+  return neutralBackgroundColorPalette[variant];
 };
 
 interface StyledCardProps {
   variant: CardVariant;
-  backdropLevel: BackdropLevel;
-  colorScheme: ColorScheme;
+  backgroundColor: BackgroundColor;
 }
 
 const StyledCard = styled(Box, {
-  shouldForwardProp: (prop) =>
-    prop !== "colorScheme" && prop !== "variant" && prop !== "backdropLevel",
-})<StyledCardProps>(({ theme, backdropLevel, colorScheme, variant }) => {
-  const palette = getCardPalette(colorScheme, backdropLevel, variant);
+  shouldForwardProp: (prop) => prop !== "variant" && prop !== "backgroundColor",
+})<StyledCardProps>(({ theme, backgroundColor, variant }) => {
+  const palette = getCardPalette(backgroundColor, variant);
   return {
     ...palette,
-    padding: theme.spacing(3), // 24px
+    padding: theme.spacing(3),
     borderRadius: px(14),
     borderWidth: px(2),
     borderStyle: variant === "transparent" ? "dashed" : "solid",
   };
 });
 
-export interface CardProps extends BoxProps {
+type defaultComponent = "div";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+  extends Pick<BoxProps<D, P>, "sx" | "component" | "classes"> {
+  children?: React.ReactNode;
+  /**
+   * @deprecated in v2. The variant prop will be removed in v3 and the opaque variant will be the default.
+   */
   variant?: CardVariant;
-  forwardedRef?: React.Ref<HTMLDivElement>;
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<HTMLElement>;
 }
 
-const Card: React.FunctionComponent<CardProps> = (props) => {
-  const { variant = "opaque", forwardedRef, ...rest } = props;
-  const { backdropLevel, colorScheme } = useTheme();
+interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+  props: CustomProps<D, P>;
+  defaultComponent: D;
+}
 
-  const backgroundColor = React.useMemo(() => {
-    if (variant === "transparent") {
-      return backdropLevel;
-    }
-    return backdropLevel === "level5" ? "level1" : "level5";
-  }, [backdropLevel]);
+export type CardProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<TypeMap<D, P>, D>;
+
+const Card = React.forwardRef(function Card(
+  { variant = "opaque", forwardedRef, ...props },
+  ref
+) {
+  const { backgroundColor } = useBackground();
+
+  if (variant === "transparent") {
+    console.warn(
+      "The variant prop on the Card component is deprecated in v2 and will be removed in v3. The opaque variant will be the default."
+    );
+  }
+
+  if (forwardedRef !== undefined) {
+    console.warn(
+      "forwardedRef on the Card component is deprecated in v2 and will be removed in v3. Please use ref instead."
+    );
+  }
+
+  const cardBackgroundColor =
+    variant === "transparent"
+      ? backgroundColor
+      : backgroundColor === "white"
+      ? "purple"
+      : "white";
 
   return (
-    <BackgroundProvider backgroundColor={backgroundColor}>
+    <BackgroundProvider backgroundColor={cardBackgroundColor}>
       <StyledCard
-        {...rest}
+        {...props}
         variant={variant}
-        ref={forwardedRef}
-        backdropLevel={backgroundColor}
-        colorScheme={colorScheme}
+        ref={forwardedRef || ref}
+        backgroundColor={cardBackgroundColor}
       />
     </BackgroundProvider>
   );
-};
+}) as OverridableComponent<TypeMap>;
 
 export default Card;

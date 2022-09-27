@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import Box, { BoxProps } from "@mui/material/Box";
+import Box, { BoxProps } from "./Box";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   boxSizing: "border-box",
@@ -18,15 +18,21 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-interface ContainerProps extends BoxProps {
+export interface ContainerProps extends BoxProps {
   forwardedRef?: React.Ref<unknown>;
 }
 
+/**
+ * @deprecated in v2. This component will be removed in v3.
+ */
 const Container: React.FC<ContainerProps> = ({
   children,
   forwardedRef,
   ...props
 }) => {
+  console.warn(
+    "Container component is deprecated in v2 and will be removed in v3"
+  );
   return (
     <StyledBox ref={forwardedRef} {...props}>
       {children}

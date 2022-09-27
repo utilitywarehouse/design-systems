@@ -6,8 +6,8 @@
   "scripts": {
     "clean": "rimraf node_modules && rimraf dist",
     "build": "rimraf dist/ && tsc --build ./tsconfig.build.json",
-    "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",
-    "lint": "TIMING=1 eslint --ext .ts,.tsx,.js \"./src/**\" \"./stories/**\"",
+    "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\" \"./stories/**\"",
+    "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\" \"./stories/**\"",
     "precommit": "lint-staged",
     "storybook:start": "start-storybook -p 6006",
     "storybook:build": "build-storybook -o storybook-build",
@@ -26,32 +26,42 @@
   "dependencies": {
     "@ctrl/tinycolor": "^3.4.0",
     "@emotion/cache": "^11.7.1",
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
-    "@mui/material": "^5.8.7",
     "@mui/styled-engine": "^5.8.7",
     "@mui/styles": "^5.8.7",
     "@utilitywarehouse/customer-ui-design-tokens": "^1.0.3",
-    "@utilitywarehouse/customer-ui-fonts": "^1.0.1",
     "@utilitywarehouse/customer-ui-react-icons": "^1.0.2",
-    "@utilitywarehouse/customer-ui-theme": "^1.1.2",
-    "jss": "^10.9.0"
+    "clsx": "^1.2.1",
+    "jss": "^10.9.0",
+    "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/material": "^5.10.5",
+    "@mui/system": "^5.10.5",
     "@mui/types": "^7.1.4",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-viewport": "^6.5.9",
     "@storybook/addons": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@storybook/theming": "^6.5.9",
-    "@types/react": "^17.0.0",
+    "@types/lodash.merge": "^4.6.7",
+    "@types/react": "^17.0.0 || ^18.0.0",
+    "@utilitywarehouse/customer-ui-fonts": "^1.0.1",
     "babel-loader": "^8.2.2",
     "chromatic": "^6.7.3",
     "css-loader": "^5.2.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
     "style-loader": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/material": "^5.10.5",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "files": [
     "dist"

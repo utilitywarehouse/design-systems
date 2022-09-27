@@ -12,7 +12,6 @@
   },
   "lint-staged": {
     "*.ts": [
-      "pnpm format",
       "pnpm lint"
     ]
   },

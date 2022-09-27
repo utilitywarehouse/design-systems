@@ -1,20 +1,18 @@
-import { BackdropLevel, ColorScheme } from "./types";
+import { BackgroundProps } from "./components/Background";
 
-export const customerUiPrefix = "uw-cui";
+export const customerUiPrefix = "uw-cwui";
 
 export const isHeadingVariant = (variant: string): boolean => {
   const headingVariants = ["displayHeading", "h1", "h2", "h3", "h4"];
   return headingVariants.includes(variant);
 };
 
-export const isDarkColorScheme = (colorScheme: ColorScheme): boolean =>
-  colorScheme === "dark";
-
-// TODO: ensure the name of this function ends up inline with any design token naming for Backdrops
-// because I don't think `brand` is going to be the signifier for darker backgrounds.
-export const isBrandBackdropLevel = (backdropLevel: BackdropLevel): boolean => {
-  const brandBackdropLevels = ["level0", "level1"];
-  return brandBackdropLevels.includes(backdropLevel);
+export const isBrandBackgroundColor = (
+  backgroundColor: BackgroundProps["backgroundColor"]
+): boolean => {
+  if (!backgroundColor) return false;
+  const brandBackgroundColors = ["midnight", "purple"];
+  return brandBackgroundColors.includes(backgroundColor);
 };
 
 // get the hexadecimal value for an opacity value, primarily for use with CSS colour hex values
@@ -28,4 +26,26 @@ export const getHexOpacity = (opacity: number): string => {
   }
 
   return Math.round(255 * opacity).toString(16);
+};
+
+export interface GetRandomStringOptions {
+  prefix?: string;
+  length?: number;
+}
+
+type GetRandomString = (options?: GetRandomStringOptions) => string;
+
+export const getRandomString: GetRandomString = ({
+  prefix,
+  length = 16,
+} = {}): string => {
+  const characters = new Array(26)
+    .fill(null)
+    .map((_, index) => String.fromCharCode(index + 97));
+
+  const randomStringArray = new Array(length)
+    .fill(null)
+    .map(() => characters[Math.floor(Math.random() * characters.length)]);
+
+  return `${prefix ?? ""}${randomStringArray.join("")}`;
 };

@@ -1,16 +1,21 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import {
-  MuiMenu,
-  MuiMenuProps,
-  BackgroundProvider,
-  MuiMenuItem,
-  MuiMenuItemProps,
-  Typography,
-} from "..";
 import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
+import {
+  type MenuProps as MuiMenuProps,
+  default as MuiMenu,
+} from "@mui/material/Menu";
+import {
+  type MenuItemProps as MuiMenuItemProps,
+  default as MuiMenuItem,
+} from "@mui/material/MenuItem";
+import Typography from "./Typography";
+import BackgroundProvider from "./Background";
 
-export interface MenuProps extends MuiMenuProps {
+export interface MenuProps extends Omit<MuiMenuProps, "ref"> {
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
   forwardedRef?: React.Ref<HTMLDivElement>;
 }
 
@@ -29,22 +34,33 @@ const StyledMenu = styled(MuiMenu)(({ theme }) => ({
   },
 }));
 
-const Menu: React.FunctionComponent<MenuProps> = ({
-  forwardedRef,
-  anchorOrigin = {
+const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
+  ({ forwardedRef, ...props }, ref) => {
+    if (forwardedRef !== undefined) {
+      console.warn(
+        "forwardedRef on the Menu component is deprecated in v2 and will be removed in v3. Please use ref instead."
+      );
+    }
+    return (
+      <BackgroundProvider backgroundColor="white">
+        <StyledMenu {...props} ref={forwardedRef || ref} />
+      </BackgroundProvider>
+    );
+  }
+);
+
+Menu.displayName = "Menu";
+Menu.defaultProps = {
+  anchorOrigin: {
     horizontal: "left",
     vertical: "bottom",
   },
-  ...props
-}) => {
-  return (
-    <BackgroundProvider backgroundColor="level5">
-      <StyledMenu {...props} ref={forwardedRef} anchorOrigin={anchorOrigin} />
-    </BackgroundProvider>
-  );
 };
 
 export interface MenuItemProps extends MuiMenuItemProps {
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
   forwardedRef?: React.Ref<HTMLLIElement>;
 }
 
@@ -52,13 +68,21 @@ const StyledMenuItem = styled(MuiMenuItem)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-export const MenuItem: React.FC<MenuItemProps> = ({
-  forwardedRef,
-  ...props
-}) => (
-  <StyledMenuItem {...props} ref={forwardedRef}>
-    <Typography component="span">{props.children}</Typography>
-  </StyledMenuItem>
+export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>(
+  ({ forwardedRef, ...props }, ref) => {
+    if (forwardedRef !== undefined) {
+      console.warn(
+        "forwardedRef on the MenuItem component is deprecated in v2 and will be removed in v3. Please use ref instead."
+      );
+    }
+    return (
+      <StyledMenuItem {...props} ref={forwardedRef || ref}>
+        <Typography component="span">{props.children}</Typography>
+      </StyledMenuItem>
+    );
+  }
 );
+
+MenuItem.displayName = "MenuItem";
 
 export default Menu;

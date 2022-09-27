@@ -1,13 +1,4 @@
-import React from "react";
-import {
-  ButtonBase,
-  Box,
-  Typography,
-  BackgroundContext,
-  BoxProps,
-  BackdropLevel,
-} from "..";
-import BackgroundProvider, { useTheme } from "./BackgroundProvider";
+import * as React from "react";
 import { styled } from "@mui/material/styles";
 import {
   helpers,
@@ -15,72 +6,86 @@ import {
   colors,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { TinyColor } from "@ctrl/tinycolor";
+import { customerUiPrefix } from "../utils";
+import {
+  BackgroundColor,
+  BackgroundProvider,
+  useBackground,
+} from "./Background";
+import Box, { BoxProps } from "./Box";
+import ButtonBase from "@mui/material/ButtonBase";
+import Typography from "./Typography";
+import { OverrideProps } from "@mui/material/OverridableComponent";
+import {
+  ButtonProps as MuiButtonProps,
+  ExtendButton,
+} from "@mui/material/Button";
 
 const { px } = helpers;
 
 export type InteractiveCardSize = "small" | "regular" | "large";
-
 export type InteractiveCardVariant = "primary" | "secondary";
 
-interface BaseInteractiveCardProps {
+type defaultComponent = "button";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+  extends Pick<MuiButtonProps<D, P>, "sx"> {
   Background?: React.ComponentType;
-  backgroundColor?: BackdropLevel;
+  backgroundColor?: BackgroundColor;
   size?: InteractiveCardSize;
   containerProps?: BoxProps;
-  forwardedRef?: React.Ref<unknown>;
   children?: React.ReactNode;
+  href?: string;
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<HTMLButtonElement>;
   /**
    * @deprecated in v2. This prop has no effect on the component
    */
   variant?: InteractiveCardVariant;
 }
 
-type InteractiveCardButtonProps = BaseInteractiveCardProps &
-  Omit<
-    React.ComponentPropsWithoutRef<"button">,
-    keyof BaseInteractiveCardProps
-  >;
+interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+  props: CustomProps<D, P>;
+  defaultComponent: D;
+}
 
-type InteractiveCardAnchorProps = BaseInteractiveCardProps &
-  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseInteractiveCardProps>;
-
-export type InteractiveCardProps =
-  | InteractiveCardButtonProps
-  | InteractiveCardAnchorProps;
+export type InteractiveCardProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<TypeMap<D, P>, D>;
 
 interface StyledRootProps {
   size: InteractiveCardSize;
-  backdropLevel: BackdropLevel;
 }
 
-const PREFIX = "InteractiveCard";
-const classes = { rootHover: `${PREFIX}-rootHover` };
+const PREFIX = `${customerUiPrefix}-InteractiveCard`;
+export const interactiveCardClasses = { rootHover: `${PREFIX}-rootHover` };
 
 const StyledRoot = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "size" && prop !== "backdropLevel",
-})<StyledRootProps>(({ size, backdropLevel }) => {
+  shouldForwardProp: (prop) => prop !== "size",
+})<StyledRootProps>(({ size }) => {
+  const { backgroundColor } = useBackground();
+
   const interactiveCardPalette = {
-    level0: {
+    midnight: {
       default: colors.midnight,
       hover: new TinyColor(colors.white).setAlpha(0.1).toString(),
     },
-    level1: {
+    purple: {
       default: colors.purple,
       hover: new TinyColor(colors.white).setAlpha(0.1).toString(),
     },
-    level2: {
-      default: colors.midTint,
-      hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
-    },
-    level3: {
+    lightTint: {
       default: colors.lightTint,
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
-    level4: {
+    whiteOwl: {
       default: colors.whiteOwl,
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
-    level5: {
+    white: {
       default: colors.white,
       hover: new TinyColor(colors.midnight).setAlpha(0.1).toString(),
     },
@@ -93,10 +98,10 @@ const StyledRoot = styled(Box, {
     borderRadius: size === "small" ? px(8) : px(16),
     transition: `all ${transitions.duration}ms ${transitions.easingFunction}`,
     transitionProperty: "background-color",
-    backgroundColor: interactiveCardPalette[backdropLevel].default,
+    backgroundColor: interactiveCardPalette[backgroundColor].default,
     "&:hover": {
-      [`& .${classes.rootHover}`]: {
-        backgroundColor: interactiveCardPalette[backdropLevel].hover,
+      [`& .${interactiveCardClasses.rootHover}`]: {
+        backgroundColor: interactiveCardPalette[backgroundColor].hover,
       },
     },
   };
@@ -130,102 +135,84 @@ const StyledWrapper = styled(Box, {
   };
 });
 
-const InteractiveCardComponent: React.FunctionComponent<
-  InteractiveCardProps
-> = ({
-  children,
-  Background,
-  size = "regular",
-  containerProps,
-  forwardedRef,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  backgroundColor,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  variant,
-  ...props
-}) => {
-  const { backdropLevel } = useTheme();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const href = (props as any).href as string | undefined;
+const InteractiveCardComponent = React.forwardRef(
+  function InteractiveCardComponent(
+    { children, Background, size = "regular", containerProps, href, ...props },
+    ref
+  ) {
+    const component = href ? "a" : "button";
 
-  return (
-    <StyledRoot size={size} backdropLevel={backdropLevel} {...containerProps}>
-      <Box
-        className={classes.rootHover}
-        sx={{
-          position: "absolute",
-          left: 0,
-          top: 0,
-          right: 0,
-          bottom: 0,
-        }}
-      />
-      <ButtonBase
-        {...props}
-        disableRipple={true}
-        component={href ? "a" : "button"}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={forwardedRef as unknown as any}
-        sx={{
-          width: "100%",
-        }}
-      >
+    return (
+      <StyledRoot size={size} {...containerProps}>
         <Box
+          className={interactiveCardClasses.rootHover}
           sx={{
-            position: "relative",
-            overflow: "hidden",
-            minHeight: "100%",
-            minWidth: "100%",
+            position: "absolute",
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
           }}
+        />
+        <ButtonBase
+          {...props}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          component={component as any}
+          ref={ref}
+          disableRipple={true}
+          sx={{ width: "100%" }}
         >
-          {Background && (
-            <Box
-              sx={{
-                position: "absolute",
-                left: 0,
-                top: 0,
-                right: 0,
-                bottom: 0,
-              }}
-            >
-              <Background />
-            </Box>
-          )}
-          <StyledWrapper size={size}>
-            <Typography component="div">{children}</Typography>
-          </StyledWrapper>
-        </Box>
-      </ButtonBase>
-    </StyledRoot>
-  );
-};
+          <Box
+            sx={{
+              position: "relative",
+              overflow: "hidden",
+              minHeight: "100%",
+              minWidth: "100%",
+            }}
+          >
+            {Background && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  right: 0,
+                  bottom: 0,
+                }}
+              >
+                <Background />
+              </Box>
+            )}
+            <StyledWrapper size={size}>
+              <Typography component="div">{children}</Typography>
+            </StyledWrapper>
+          </Box>
+        </ButtonBase>
+      </StyledRoot>
+    );
+  }
+) as ExtendButton<TypeMap>;
 
-const InteractiveCard: React.FunctionComponent<InteractiveCardProps> = (
-  props
-) => {
-  const { theme } = React.useContext(BackgroundContext);
-  const backdropLevel = theme.backdropLevel;
-  const backgroundColor = React.useMemo(() => {
-    switch (backdropLevel) {
-      case "level0":
-      case "level1":
-      case "level2":
-      case "level3":
-      case "level4":
-        return "level5";
-
-      case "level5":
-        return "level1";
-    }
-  }, [backdropLevel]);
+const InteractiveCard = React.forwardRef(function InteractiveCard(
+  { forwardedRef, ...props },
+  ref
+) {
+  if (forwardedRef !== undefined) {
+    console.warn(
+      "forwardedRef on the InteractiveCard component is deprecated in v2 and will be removed in v3. Please use ref instead."
+    );
+  }
+  const { backgroundColor } = useBackground();
+  const interactiveCardBackgroundColor =
+    backgroundColor === "white" ? "purple" : "white";
 
   return (
     <BackgroundProvider
-      backgroundColor={props.backgroundColor || backgroundColor}
+      backgroundColor={props.backgroundColor || interactiveCardBackgroundColor}
     >
-      <InteractiveCardComponent {...props} />
+      <InteractiveCardComponent ref={forwardedRef || ref} {...props} />
     </BackgroundProvider>
   );
-};
+}) as ExtendButton<TypeMap>;
 
 export default InteractiveCard;

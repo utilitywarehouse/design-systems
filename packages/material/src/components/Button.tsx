@@ -1,171 +1,158 @@
-import React from "react";
-import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button";
-import { Theme, Components } from "@mui/material/styles";
+import * as React from "react";
+import MuiButton, {
+  ButtonProps as MuiButtonProps,
+  ExtendButton,
+} from "@mui/material/Button";
+import { Components } from "@mui/material/styles";
 import {
   transitions,
-  spacingBase,
   fonts,
   fontWeights,
   colors,
+  helpers,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { useTheme } from "./BackgroundProvider";
-import { BackdropLevel } from "../types";
-import { customerUiPrefix, isBrandBackdropLevel } from "../utils";
+import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
 import { TinyColor } from "@ctrl/tinycolor";
+import { useBackground } from "./Background";
+import { clsx } from "clsx";
+import { OverrideProps } from "@mui/material/OverridableComponent";
 
 const PREFIX = `${customerUiPrefix}-Button`;
-const classes = {
+export const buttonClasses = {
+  primary: `${PREFIX}-primary`,
+  secondary: `${PREFIX}-secondary`,
+  tertiary: `${PREFIX}-tertiary`,
   inverse: `${PREFIX}-inverse`,
+  small: `${PREFIX}-small`,
+  medium: `${PREFIX}-medium`,
+  large: `${PREFIX}-large`,
 };
 
-interface BaseButtonProps {
-  size?: "regular" | "large";
-  variant?: "contained" | "outlined" | "tertiary";
-  fullWidth?: boolean;
-  children?: React.ReactNode;
+type defaultComponent = "button";
+
+interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+  extends Pick<
+    MuiButtonProps<D, P>,
+    "sx" | "classes" | "fullWidth" | "children" | "href"
+  > {
+  size?: "small" | "medium" | "large";
+  variant?: "primary" | "secondary" | "tertiary";
+  /**
+   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
+   */
+  forwardedRef?: React.Ref<HTMLButtonElement>;
 }
 
-type ButtonPropsButtonElement = BaseButtonProps &
-  Omit<React.ComponentPropsWithoutRef<"button">, keyof BaseButtonProps> & {
-    forwardedRef?: React.Ref<HTMLButtonElement>;
-  };
-type ButtonPropsAnchorElement = BaseButtonProps &
-  Omit<React.ComponentPropsWithoutRef<"a">, keyof BaseButtonProps | "href"> & {
-    forwardedRef?: React.Ref<HTMLAnchorElement>;
-    href: string;
-  };
+type TypeMap<P = {}, D extends React.ElementType = defaultComponent> = {
+  props: CustomProps<D, P>;
+  defaultComponent: D;
+};
 
-export type ButtonProps = ButtonPropsButtonElement | ButtonPropsAnchorElement;
+export type ButtonProps<
+  D extends React.ElementType = defaultComponent,
+  P = {}
+> = OverrideProps<TypeMap<P, D>, D>;
 
-const Button: React.FunctionComponent<ButtonProps> = ({
-  size = "regular",
-  children,
-  variant = "contained",
-  fullWidth = false,
-  forwardedRef,
-  className,
-  ...props
-}) => {
-  const { backdropLevel } = useTheme();
-
-  const getClassName = () => {
-    const classNames = [className];
-    if (isBrandBackdropLevel(backdropLevel as BackdropLevel)) {
-      classNames.push(classes.inverse);
-    }
-    return classNames.join(" ");
-  };
-
-  const muiButtonProps: MuiButtonProps = {
-    color: "primary",
-    disableElevation: true,
-    fullWidth,
-    className: getClassName(),
-  };
-
-  if (variant === "tertiary") {
-    muiButtonProps.variant = "text";
-  } else {
-    muiButtonProps.variant = variant;
+const Button = React.forwardRef(function Button(
+  { size = "medium", variant = "primary", forwardedRef, className, ...props },
+  ref
+) {
+  if (forwardedRef !== undefined) {
+    console.warn(
+      "forwardedRef on the Button component is deprecated in v2 and will be removed in v3. Please use ref instead."
+    );
   }
 
-  if (size === "regular") {
-    muiButtonProps.size = "medium";
-  } else {
-    muiButtonProps.size = "large";
-  }
+  const { backgroundColor } = useBackground();
+
+  const classNames = clsx(buttonClasses[variant], buttonClasses[size], {
+    [buttonClasses.inverse]: isBrandBackgroundColor(backgroundColor),
+    className: !!className,
+  });
 
   return (
     <MuiButton
       {...(props as Partial<MuiButtonProps>)}
-      {...muiButtonProps}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={forwardedRef as unknown as any}
-    >
-      {children}
-    </MuiButton>
+      className={classNames}
+      ref={forwardedRef || ref}
+    />
   );
-};
+}) as ExtendButton<TypeMap>;
 
 export default Button;
 
-export const getButtonTheme = (theme: Theme): Components => {
+export const getButtonTheme = (): Components => {
+  const { px } = helpers;
+  const borderWidth = 2;
   return {
     MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+      },
       styleOverrides: {
         root: {
           transition: `${transitions.duration}ms ${transitions.easingFunction}`,
           transitionProperty: "background-color, border-color, color, opacity",
           fontFamily: fonts.secondary,
           fontWeight: fontWeights.secondary.semibold,
-          fontSize: 16,
+          fontSize: 18,
           lineHeight: 1,
+          letterSpacing: "0.02857em",
           textTransform: "none",
-          borderStyle: "solid",
+          opacity: 1,
           paddingTop: 0,
           paddingBottom: 0,
-          height: spacingBase * 4,
-          paddingLeft: spacingBase * 2,
-          paddingRight: spacingBase * 2,
-          borderRadius: spacingBase * (4 / 2),
-          [theme.breakpoints.up("tablet")]: {
-            fontSize: 18,
+          paddingLeft: px(32 - borderWidth),
+          paddingRight: px(32 - borderWidth),
+          borderStyle: "solid",
+          borderRadius: px(32),
+          borderWidth,
+          color: colors.midnight,
+          "&:disabled": {
+            opacity: 0.5,
           },
-          // contained
-          "&.MuiButton-containedPrimary": {
+          // size
+          [`&.${buttonClasses.small}`]: {
+            height: px(32),
+          },
+          [`&.${buttonClasses.medium}`]: {
+            height: px(40),
+          },
+          [`&.${buttonClasses.large}`]: {
+            height: px(48),
+          },
+          [`&.${buttonClasses.primary}`]: {
             color: colors.midnight,
             backgroundColor: colors.cyan,
-            borderColor: colors.transparent,
-            opacity: 1,
-            borderTopWidth: 0,
-            borderBottomWidth: 0,
-            borderLeftWidth: 0,
-            borderRightWidth: 0,
+            border: "none",
+            paddingLeft: px(32),
+            paddingRight: px(32),
             "&:hover": {
               backgroundColor: new TinyColor(colors.cyan)
                 .lighten(15)
                 .toHexString(),
             },
           },
-          // outlined
-          "&.MuiButton-outlinedPrimary": {
+          [`&.${buttonClasses.secondary}`]: {
+            color: colors.midnight,
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
-            color: colors.midnight,
-            borderWidth: 2,
             "&:hover": {
               borderColor: colors.midnight,
+              borderWidth,
             },
-            [`&.${classes.inverse}`]: {
+            "&:disabled": {
+              opacity: 0.5,
+              borderWidth,
+            },
+            [`&.${buttonClasses.inverse}`]: {
               color: colors.white,
               "&:hover": {
                 borderColor: colors.white,
               },
             },
           },
-          // contained & outlined
-          "&.MuiButton-containedPrimary,&.MuiButton-outlinedPrimary": {
-            [theme.breakpoints.up("desktop")]: {
-              height: spacingBase * 5,
-              paddingLeft: spacingBase * 3,
-              paddingRight: spacingBase * 3,
-              borderRadius: spacingBase * (5 / 2),
-            },
-            "&.MuiButton-sizeLarge": {
-              height: spacingBase * 6,
-              paddingLeft: spacingBase * 3,
-              paddingRight: spacingBase * 3,
-              borderRadius: spacingBase * (6 / 2),
-              [theme.breakpoints.up("desktop")]: {
-                height: spacingBase * 7,
-                paddingLeft: spacingBase * 4,
-                paddingRight: spacingBase * 4,
-                borderRadius: spacingBase * (7 / 2),
-              },
-            },
-          },
-          // tertiary
-          "&.MuiButton-text": {
+          [`&.${buttonClasses.tertiary}`]: {
             color: colors.midnight,
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
@@ -180,14 +167,19 @@ export const getButtonTheme = (theme: Theme): Components => {
             "&:hover": {
               opacity: 0.5,
             },
-            [`&.${classes.inverse}`]: {
+            [`&.${buttonClasses.inverse}`]: {
               color: colors.white,
             },
           },
-          "&.MuiButton-containedPrimary,&.MuiButton-outlinedPrimary,&.MuiButton-text":
+          [`&.${buttonClasses.primary},&.${buttonClasses.secondary},&.${buttonClasses.tertiary}`]:
             {
               "&:disabled": {
                 opacity: 0.5,
+              },
+              [`&.${buttonClasses.inverse}`]: {
+                "&:disabled": {
+                  opacity: 0.6,
+                },
               },
             },
         },

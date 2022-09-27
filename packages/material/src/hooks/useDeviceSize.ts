@@ -1,6 +1,7 @@
-import "../types/BreakpointOverrides";
 import React from "react";
-import { useMuiTheme, useMediaQuery, Breakpoint } from "../";
+import { Breakpoint } from "../types";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 const useDeviceSize = (): {
   deviceSize: Breakpoint;
@@ -8,7 +9,7 @@ const useDeviceSize = (): {
   isTablet: boolean;
   isDesktop: boolean;
 } => {
-  const theme = useMuiTheme();
+  const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
   const isTablet = useMediaQuery(theme.breakpoints.up("tablet"));
 
