@@ -53,10 +53,17 @@ yarn add @utilitywarehouse/customer-ui-material @mui/material @emotion/react @em
 ```
 
 ```diff
-- import { Alert, Avatar, Badge } from "@utilitywarehouse/customer-ui-material"
-+ import Alert from "@mui/material/Alert"
-+ import Avatar from "@mui/material/Avatar"
-+ import Badge from "@mui/material/Badge"
+- import {
+-   Divider,
+-   Stack,
+-   IconButton,
+-   Dialog,
+-   FormControlLabel,
+-   Checkbox
+- } from "@utilitywarehouse/customer-ui-material"
++ import Divider from "@mui/material/Divider"
++ import Stack from "@mui/material/Stack"
++ [...]
 ```
 
 ### Update Root Provider
