@@ -1,8 +1,6 @@
-# Migration Guide
+# Material Migration Guide
 
-This guide should cover any significant changes between major versions, across
-all packages.
-
+This guide should cover any significant changes between major versions.
 There may be some minor inconsistencies not documented here, but these are the
 major changes to watch out for. Please open an issue or PR if you find something
 worth documenting for others, thankyou!

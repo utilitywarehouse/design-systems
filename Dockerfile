@@ -4,8 +4,6 @@ WORKDIR /opt/cwui-material
 ADD ./packages/material .
 ARG NPM_TOKEN
 RUN printf "@utilitywarehouse:registry=https://registry.npmjs.org/\n//registry.npmjs.org/:_authToken=${NPM_TOKEN}\n" >> /root/.npmrc
-RUN echo $NPM_TOKEN
-RUN cat ~/.npmrc
 RUN npm run storybook:ci
 
 FROM node:lts-alpine as runner
