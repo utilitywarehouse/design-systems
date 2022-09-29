@@ -10,8 +10,7 @@
     "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\" \"./stories/**\"",
     "precommit": "lint-staged",
     "storybook:start": "start-storybook -p 6006",
-    "storybook:build": "build-storybook -o storybook-build",
-    "storybook:ci": "npm install --ignore-scripts && build-storybook -o storybook-build"
+    "storybook:build": "build-storybook -o storybook-build"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
@@ -26,8 +25,8 @@
   "dependencies": {
     "@ctrl/tinycolor": "^3.4.0",
     "@emotion/cache": "^11.7.1",
-    "@mui/styled-engine": "^5.8.7",
-    "@mui/styles": "^5.8.7",
+    "@mui/styled-engine": "^5.10.2",
+    "@mui/styles": "^5.10.2",
     "@utilitywarehouse/customer-ui-design-tokens": "^1.0.3",
     "@utilitywarehouse/customer-ui-react-icons": "^1.0.2",
     "clsx": "^1.2.1",
