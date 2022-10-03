@@ -1,7 +1,6 @@
 const fonts = {
   primary: "Aeonik, Arial, sans-serif",
   secondary: "Work Sans, Arial, sans-serif",
-  data: "Roboto Mono, monospace",
 };
 
 const fontWeights = {
