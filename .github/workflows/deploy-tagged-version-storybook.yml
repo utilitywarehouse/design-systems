@@ -1,8 +1,9 @@
 name: Deploy Tagged Version of Storybook
 on:
-  push:
-    tags:
-      - '@utilitywarehouse/customer-ui-material@*'
+  release:
+    types: [published]
+    paths:
+      - 'packages/material/**'
 
 jobs:
   deploy-preview:

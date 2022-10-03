@@ -1,8 +1,9 @@
 name: Deploy Current Release Storybook
 on:
-  push:
-    tags:
-      - '@utilitywarehouse/customer-ui-material@*'
+  release:
+    types: [published]
+    paths:
+      - 'packages/material/**'
 
 jobs:
   deploy:
