@@ -1,3 +1,4 @@
+name: Delete Merged Deploy Review
 on:
   pull_request:
     types:
