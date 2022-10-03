@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-material
 
+## 2.0.1
+
+### Patch Changes
+
+- [#500](https://github.com/utilitywarehouse/customer-web-ui/pull/500) [`43599e2`](https://github.com/utilitywarehouse/customer-web-ui/commit/43599e299712b7ac2a9679100a21c013762aa618) Thanks [@robphoenix](https://github.com/robphoenix)! - Add children prop to ThemeProviderProps
+
 ## 2.0.0
 
 ### Major Changes
