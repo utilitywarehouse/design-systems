@@ -47,7 +47,12 @@ and will be removed when the PR gets merged.
 
 ### Fonts
 
-You will also need to install the necessary [fonts](../fonts).
+You will also need to install the [UW UI Fonts](https://github.com/utilitywarehouse/uw-ui/tree/main/packages/fonts)
+package to be able to access the Aeonik & Work Sans fonts used.
+
+```console
+yarn add @utilitywarehouse/uw-ui-fonts
+```
 
 ## Getting started
 

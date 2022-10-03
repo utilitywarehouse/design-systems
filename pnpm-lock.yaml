@@ -42,12 +42,6 @@ importers:
   packages/design-tokens:
     specifiers: {}
 
-  packages/fonts:
-    specifiers:
-      sass: ^1.32.6
-    devDependencies:
-      sass: 1.54.5
-
   packages/icons:
     specifiers: {}
 
@@ -71,8 +65,8 @@ importers:
       '@types/lodash.merge': ^4.6.7
       '@types/react': ^17.0.0 || ^18.0.0
       '@utilitywarehouse/customer-ui-design-tokens': ^1.0.3
-      '@utilitywarehouse/customer-ui-fonts': ^1.0.1
       '@utilitywarehouse/customer-ui-react-icons': ^1.0.2
+      '@utilitywarehouse/uw-ui-fonts': ^0.0.2
       babel-loader: ^8.2.2
       chromatic: ^6.7.3
       clsx: ^1.2.1
@@ -106,7 +100,7 @@ importers:
       '@storybook/theming': 6.5.10_sfoxds7t5ydpegc3knd667wn6m
       '@types/lodash.merge': 4.6.7
       '@types/react': 17.0.48
-      '@utilitywarehouse/customer-ui-fonts': link:../fonts
+      '@utilitywarehouse/uw-ui-fonts': 0.0.2
       babel-loader: 8.2.5_tb6moc662p5idmcg3l5ipbhpta
       chromatic: 6.7.4
       css-loader: 5.2.7_webpack@5.74.0
@@ -4078,6 +4072,10 @@ packages:
       eslint-visitor-keys: 2.1.0
     dev: true
 
+  /@utilitywarehouse/uw-ui-fonts/0.0.2:
+    resolution: {integrity: sha512-OV6/j2p4Fw7XpPz08x+CTzky8stpAP5ngTDHCjUx9td7LEKEkfKtRReW+sfw0DVKLU04tFwKCLvrHukdrCdw9g==}
+    dev: true
+
   /@webassemblyjs/ast/1.11.1:
     resolution: {integrity: sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw==}
     dependencies:
@@ -7730,10 +7728,6 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
-  /immutable/4.1.0:
-    resolution: {integrity: sha512-oNkuqVTA8jqG1Q6c+UglTOD1xhC1BtjKI7XkCXRkZHrN5m18/XsnUp8Q89GkQO/z+0WjonSvl0FLhDYftp46nQ==}
-    dev: true
-
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -10767,16 +10761,6 @@ packages:
       walker: 1.0.8
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /sass/1.54.5:
-    resolution: {integrity: sha512-p7DTOzxkUPa/63FU0R3KApkRHwcVZYC0PLnLm5iyZACyp15qSi32x7zVUhRdABAATmkALqgGrjCJAcWvobmhHw==}
-    engines: {node: '>=12.0.0'}
-    hasBin: true
-    dependencies:
-      chokidar: 3.5.3
-      immutable: 4.1.0
-      source-map-js: 1.0.2
     dev: true
 
   /sax/1.2.4:

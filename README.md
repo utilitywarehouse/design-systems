@@ -9,7 +9,6 @@ have a look at [the wiki](https://wiki.prod.uw.systems/en/Technology/ui-developm
 ## Packages
 
 - [@utilitywarehouse/customer-ui-design-tokens](packages/design-tokens)
-- [@utilitywarehouse/customer-ui-fonts](packages/fonts)
 - [@utilitywarehouse/customer-ui-icons](packages/icons)
 - [@utilitywarehouse/customer-ui-react-icons](packages/react-icons)
 - [@utilitywarehouse/customer-ui-material](packages/material)
