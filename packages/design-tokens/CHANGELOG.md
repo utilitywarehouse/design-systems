@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-design-tokens
 
+## 1.0.5
+
+### Patch Changes
+
+- [#499](https://github.com/utilitywarehouse/customer-web-ui/pull/499) [`eced2c5`](https://github.com/utilitywarehouse/customer-web-ui/commit/eced2c5002709893b98224f40a6f9af2da55a677) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove unused font family
+
 ## 1.0.4
 
 ### Patch Changes
