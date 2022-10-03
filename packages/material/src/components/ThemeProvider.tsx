@@ -12,14 +12,15 @@ export interface ThemeProviderProps {
   styleProviderProps?: StylesProviderProps;
   emotionCacheOptions?: CreateCacheOptions;
   theme?: Partial<Theme>;
+  children?: React.ReactNode;
 }
 
-const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = ({
+const ThemeProvider = ({
   styleProviderProps,
   emotionCacheOptions,
   theme,
   children,
-}) => {
+}: ThemeProviderProps) => {
   const themeWithOverrides = merge(defaultTheme, theme) as Theme;
   return (
     <CacheProvider
