@@ -1,9 +1,8 @@
 name: Deploy Current Release Storybook
 on:
-  release:
-    types: [published]
-    paths:
-      - 'packages/material/**'
+  push:
+    tags:
+      - '*'
 
 jobs:
   deploy:
