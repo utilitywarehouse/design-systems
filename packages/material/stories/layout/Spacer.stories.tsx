@@ -49,7 +49,7 @@ export const SpacerStory: Story<SpacerProps> = (args) => {
       }}
     >
       <Box component="span" sx={sx} />
-      <Spacer {...args} />
+      <Spacer {...args} size={{ mobile: 2, tablet: 4, desktop: 8 }} />
       <Box component="span" sx={sx} />
     </Box>
   );
