@@ -29,10 +29,22 @@ export default {
         type: "boolean",
       },
     },
+    variant: {
+      control: {
+        type: "radio",
+        options: [...variants, "tertiary"],
+      },
+    },
+    size: {
+      control: {
+        type: "radio",
+        options: sizes,
+      },
+    },
   },
   args: {
-    size: "medium",
     variant: "primary",
+    size: "medium",
     disabled: false,
     fullWidth: false,
   },
