@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, Theme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Box, { BoxProps } from "./Box";
 import {
   OverridableComponent,
@@ -11,16 +11,7 @@ type defaultComponent = "span";
 interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
   extends Pick<BoxProps<D, P>, "sx" | "component" | "classes" | "children"> {
   axis?: "horizontal" | "vertical";
-  size?: number;
-  space?:
-    | "xxs"
-    | "base"
-    | "small"
-    | "regular"
-    | "medium"
-    | "large"
-    | "xl"
-    | "xxl";
+  size: number;
   inline?: boolean;
 }
 
@@ -34,45 +25,20 @@ export type SpacerProps<
   P = {}
 > = OverrideProps<TypeMap<D, P>, D>;
 
-function getSpaceSize(space: CustomProps["space"], size: number): number {
-  const spaceValues = {
-    xxs: 0.5,
-    base: 1,
-    small: 2,
-    regular: 3,
-    medium: 4,
-    large: 6,
-    xl: 8,
-    xxl: 12,
+const StyledRoot = styled(Box, {
+  shouldForwardProp: (prop) =>
+    prop !== "axis" && prop !== "size" && prop !== "inline",
+})<CustomProps>(({ theme, axis, size, inline }) => {
+  const width = axis === "vertical" ? 1 : theme.spacing(size);
+  const height = axis === "horizontal" ? 1 : theme.spacing(size);
+  return {
+    display: inline ? "inline-block" : "block",
+    width,
+    minWidth: width,
+    height,
+    minHeight: height,
   };
-  return space ? spaceValues[space] : size;
-}
-
-function getHeight({
-  axis,
-  size = 1,
-  space,
-  theme,
-}: CustomProps & { theme: Theme }) {
-  return axis === "horizontal" ? 1 : theme.spacing(getSpaceSize(space, size));
-}
-
-function getWidth({
-  axis,
-  size = 1,
-  space,
-  theme,
-}: CustomProps & { theme: Theme }) {
-  return axis === "vertical" ? 1 : theme.spacing(getSpaceSize(space, size));
-}
-
-const StyledRoot = styled(Box)<CustomProps>((props) => ({
-  display: props.inline ? "inline-block" : "block",
-  width: getWidth(props),
-  minWidth: getWidth(props),
-  height: getHeight(props),
-  minHeight: getHeight(props),
-}));
+});
 
 const Spacer = React.forwardRef(function Spacer(
   { axis = "horizontal", size = 1, component = "span", ...props },
