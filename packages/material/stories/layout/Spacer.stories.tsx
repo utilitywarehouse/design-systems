@@ -33,23 +33,26 @@ export default {
 } as Meta;
 
 export const SpacerStory: Story<SpacerProps> = (args) => {
+  const isVertical = args.axis === "vertical";
   const sx = {
-    paddingY: 4,
-    paddingX: 8,
+    width: isVertical ? 400 : 100,
+    height: isVertical ? 100 : 400,
     backgroundColor: colors.purple,
+    border: `1px solid ${colors.purple}`,
+    borderRadius: "8px",
   };
   return (
     <Box
       sx={{
         padding: 4,
         display: "flex",
-        flexDirection: "column",
+        flexDirection: isVertical ? "column" : "row",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
       <Box component="span" sx={sx} />
-      <Spacer {...args} size={{ mobile: 2, tablet: 4, desktop: 8 }} />
+      <Spacer {...args} />
       <Box component="span" sx={sx} />
     </Box>
   );

@@ -1,19 +1,21 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import Box, { BoxProps } from "./Box";
 import {
   OverridableComponent,
   OverrideProps,
 } from "@mui/material/OverridableComponent";
 import { ResponsiveStyleValue } from "@mui/system/styleFunctionSx";
-import { resolveBreakpointValues } from "@mui/system/breakpoints";
+import { helpers } from "@utilitywarehouse/customer-ui-design-tokens";
+
+const { px } = helpers;
 
 type defaultComponent = "span";
 
 interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
   extends Pick<BoxProps<D, P>, "sx" | "component" | "classes" | "children"> {
   axis?: "horizontal" | "vertical";
-  size: ResponsiveStyleValue<string>;
+  size: ResponsiveStyleValue<number>;
   inline?: boolean;
 }
 
@@ -26,22 +28,6 @@ export type SpacerProps<
   D extends React.ElementType = defaultComponent,
   P = {}
 > = OverrideProps<TypeMap<D, P>, D>;
-
-const StyledRoot = styled(Box, {
-  shouldForwardProp: (prop) =>
-    prop !== "axis" && prop !== "size" && prop !== "inline",
-})<CustomProps>(({ theme, axis, size, inline }) => {
-  const width = axis === "vertical" ? 1 : theme.spacing(size);
-  const height = axis === "horizontal" ? 1 : theme.spacing(size);
-
-  return {
-    display: inline ? "inline-block" : "block",
-    width,
-    minWidth: width,
-    height,
-    minHeight: height,
-  };
-});
 
 const Spacer = React.forwardRef(function Spacer(
   {
@@ -56,36 +42,28 @@ const Spacer = React.forwardRef(function Spacer(
 ) {
   const theme = useTheme();
 
-  const getWidth = () => {
-    if (axis === "vertical") {
-      return 1;
-    }
+  const getSize = () => {
     if (Array.isArray(size)) {
-      return size.map((s: number) => theme.spacing(s));
+      return size.map((s) => theme.spacing(s as number));
     }
     if (typeof size === "object") {
       return Object.keys(theme.breakpoints.values).reduce(
-        (acc: { [key: string]: string }, breakpoint: number) => {
+        (acc: { [key: string]: string }, breakpoint: string) => {
           if (size[breakpoint] !== null) {
-            acc[breakpoint] = theme.spacing(size[breakpoint]);
-            return acc;
+            acc[breakpoint] = theme.spacing(size[breakpoint] as number);
           }
+          return acc;
         },
         {}
       );
     }
+    return theme.spacing(size);
   };
 
-  const width = axis === "vertical" ? 1 : getWidth();
-  const height = axis === "horizontal" ? 1 : theme.spacing(size);
+  const width = axis === "vertical" ? px(1) : getSize();
+  const height = axis === "horizontal" ? px(1) : getSize();
+
   return (
-    // <StyledRoot
-    //   ref={ref}
-    //   axis={axis}
-    //   size={size}
-    //   component={component}
-    //   {...props}
-    // />
     <Box
       ref={ref}
       component={component}
