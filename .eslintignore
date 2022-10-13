@@ -1,0 +1,8 @@
+dist/
+coverage/
+packages/react/storybook*
+/node_modules/*
+.eslintrc.js
+./.vscode/
+tsconfig.json
+*.md
