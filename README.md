@@ -3,8 +3,7 @@
 This monorepo contains packages for building Customer web applications.
 
 For more information about how this fits into the wider UI landscape, please
-have a look at [the wiki](https://wiki.prod.uw.systems/en/Technology/ui-development)
-(requires VPN connection).
+have a look at [the wiki](https://wiki.uw.systems/).
 
 ## Packages
 
