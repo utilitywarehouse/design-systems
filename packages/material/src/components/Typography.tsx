@@ -12,7 +12,6 @@ import { Theme } from "@mui/material/styles";
 import { useBackground } from "./Background";
 import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 import { clsx } from "clsx";
-import { BoxProps } from "./Box";
 import {
   OverridableComponent,
   OverrideProps,
