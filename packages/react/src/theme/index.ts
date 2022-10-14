@@ -6,6 +6,7 @@ import {
   fonts,
   fontWeights,
 } from '@utilitywarehouse/customer-ui-design-tokens';
+import { cssBaselineThemeOverrides } from '../components/CssBaseline';
 import { getTypographyConfiguration } from '../components/Typography';
 
 export const theme: MuiTheme = createTheme({
@@ -24,7 +25,6 @@ export const theme: MuiTheme = createTheme({
   },
   typography: {
     htmlFontSize: 16,
-    body1: undefined,
     body2: undefined,
     button: undefined,
     h5: undefined,
@@ -32,6 +32,9 @@ export const theme: MuiTheme = createTheme({
     overline: undefined,
     subtitle1: undefined,
     subtitle2: undefined,
+  },
+  components: {
+    ...cssBaselineThemeOverrides,
   },
 });
 
@@ -46,16 +49,8 @@ theme.typography = {
   fontWeightLight: fontWeights.data,
   fontWeightMedium: fontWeights.secondary.semibold,
   fontWeightRegular: fontWeights.secondary.regular,
+  body1: typographyConfiguration.body,
   ...typographyConfiguration,
-};
-
-const typographyTheme = {
-  MuiTypography: { styleOverrides: typographyConfiguration },
-};
-
-theme.components = {
-  ...theme.components,
-  ...typographyTheme,
 };
 
 export type Theme = typeof theme;

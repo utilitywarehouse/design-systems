@@ -71,6 +71,7 @@ importers:
     dependencies:
       '@utilitywarehouse/customer-ui-design-tokens': 1.0.5
       '@utilitywarehouse/customer-ui-react-icons': 1.0.2
+      '@utilitywarehouse/uw-ui-fonts': 0.0.3
       clsx: 1.2.1
       lodash.merge: 4.6.2
     devDependencies:
@@ -87,7 +88,6 @@ importers:
       '@storybook/theming': 6.5.12_biqbaboplfbrettd7655fr4n2y
       '@types/lodash.merge': 4.6.7
       '@types/react': 18.0.21
-      '@utilitywarehouse/uw-ui-fonts': 0.0.3
       babel-loader: 8.2.5_wfdvla2jorjoj23kkavho2upde
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -3918,7 +3918,7 @@ packages:
 
   /@utilitywarehouse/uw-ui-fonts/0.0.3:
     resolution: {integrity: sha512-C9Scw8dzyjpJYvM/ADjSstNGYO5dNhaPKalibu38Hw1/YPEhhMzGopXaLgRZhS4iCdTOTyHS/uOQLE4zq9YZDA==}
-    dev: true
+    dev: false
 
   /@webassemblyjs/ast/1.11.1:
     resolution: {integrity: sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw==}
