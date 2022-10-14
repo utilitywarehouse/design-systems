@@ -19,9 +19,9 @@ export const typographyClasses = {
   semibold: `${PREFIX}-semibold`,
 };
 
-type DefaultComponent = 'span';
+type DefaultComponent = 'p';
 
-const variantMapping = {
+export const variantMapping: { [key: string]: string } = {
   displayHeading: 'h1',
   h1: 'h1',
   h2: 'h2',

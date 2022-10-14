@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
 import { backgroundColors } from '../../types';
 import { Background, BackgroundProps } from '../Background';
-import Typography, { TypographyProps } from './Typography';
+import Typography, { TypographyProps, variantMapping } from './Typography';
 
 const variants = [
   'displayHeading',
@@ -73,7 +73,6 @@ export default {
     backgroundColor: 'white',
     children: 'hamburgefons',
     variant: 'displayHeading',
-    component: 'span',
     color: 'primary',
     fontWeight: 'regular',
     textTransform: 'capitalize',
@@ -94,7 +93,11 @@ export const TypographyKitchenSinkStory: Story<
       <Stack spacing={2}>
         {variants.map((v) => (
           <Stack key={v} spacing={4} direction="row">
-            <Typography {...args} variant={v} />
+            <Typography
+              {...args}
+              variant={v}
+              component={variantMapping[v] as React.ElementType<any>}
+            />
           </Stack>
         ))}
       </Stack>
