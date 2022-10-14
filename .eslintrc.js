@@ -7,10 +7,9 @@ module.exports = {
     module: 'readonly',
   },
   extends: [
-    'airbnb',
-    'airbnb/hooks',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
     'airbnb-typescript',
-    'plugin:prettier/recommended',
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
@@ -22,18 +21,10 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['react', '@typescript-eslint', 'jsx-a11y'],
+  plugins: ['react', '@typescript-eslint/eslint-plugin', 'jsx-a11y', 'prettier', 'react-hooks'],
   rules: {
-    'arrow-body-style': ['error', 'as-needed'],
-    'arrow-parens': ['error', 'as-needed'],
-    curly: [2, 'all'],
-    'react/require-default-props': 'off',
-    'react/function-component-definition': [
-      2,
-      { namedComponents: ['function-declaration', 'arrow-function'] },
-    ],
+    'import/no-extraneous-dependencies': 'off',
   },
-
   settings: {
     react: {
       version: 'detect',
