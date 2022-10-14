@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { breakpoints, helpers } from '@utilitywarehouse/customer-ui-design-tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { ThemeProvider } from '../src';
+import { ThemeProvider } from '../src/components/ThemeProvider';
 import '@utilitywarehouse/uw-ui-fonts';
 
 const { px } = helpers;
