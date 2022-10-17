@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import { styled } from '@mui/material/styles';
-import { Box, BoxProps } from '../Box';
+import Box, { BoxProps } from './Box';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { BackgroundColor, NeutralBackgroundColor, BrandBackgroundColor } from '../../types';
+import { BackgroundColor, NeutralBackgroundColor, BrandBackgroundColor } from '../types';
 
 const DefaultBackgroundColor: BackgroundColor = 'white' as BackgroundColor;
 
