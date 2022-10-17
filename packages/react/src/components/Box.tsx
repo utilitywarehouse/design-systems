@@ -1,7 +1,7 @@
 import * as React from 'react';
 import MuiBox, { BoxProps as MuiBoxProps } from '@mui/material/Box';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { SystemProps } from '../../types';
+import { SystemProps } from '../types';
 
 type DefaultComponent = 'span';
 

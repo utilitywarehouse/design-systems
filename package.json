@@ -21,7 +21,6 @@
     "husky": "^6.0.0",
     "lint-staged": "^11.2.6",
     "prettier": "^2.2.1",
-    "rimraf": "^3.0.2",
     "turbo": "^1.3.1",
     "typescript": "^4.8.3"
   },
@@ -32,16 +31,17 @@
     "prepare": "husky install",
     "lint": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint",
     "lint:fix": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint:fix",
-    "clean": "pnpm -r --stream clean && rimraf node_modules",
-    "storybook:start": "pnpm -r --filter *uw-web-ui storybook:start",
-    "storybook:build": "TURBO_TOKEN=${TURBO_TOKEN} turbo run storybook:build",
+    "clean": "pnpm -r --stream clean && rm -rf node_modules",
+    "storybook": "TURBO_TOKEN=${TURBO_TOKEN} turbo run build && pnpm -r --filter *storybook storybook",
+    "dev": "TURBO_TOKEN=${TURBO_TOKEN} turbo run dev --no-cache --parallel --continue",
     "changeset": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
     "ci:publish": "pnpm run build && changeset publish",
     "checks": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint build"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "dependencies": {
     "pnpm": "^7.13.4"
