@@ -2,15 +2,14 @@
   "name": "@utilitywarehouse/uw-web-ui",
   "version": "0.0.1",
   "description": "UW Web UI components",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
     "build": "rm -rf dist/ && tsc --build ./tsconfig.json",
     "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "precommit": "lint-staged",
-    "storybook:start": "start-storybook -p 6006",
-    "storybook:build": "build-storybook -o storybook-build"
+    "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
@@ -30,26 +29,20 @@
     "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.5",
     "@mui/system": "^5.10.5",
     "@mui/types": "^7.1.4",
-    "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/addon-viewport": "^6.5.9",
-    "@storybook/addons": "^6.5.9",
-    "@storybook/react": "^6.5.9",
-    "@storybook/theming": "^6.5.9",
     "@types/lodash.merge": "^4.6.7",
     "@types/react": "^17.0.0 || ^18.0.0",
-    "babel-loader": "^8.2.2",
     "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0"
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "tsup": "^6.2.3"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.5",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"

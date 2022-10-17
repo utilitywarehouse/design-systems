@@ -2,12 +2,12 @@ import React from 'react';
 import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Theme } from '@mui/material/styles';
-import { useBackground } from '../Background';
+import { useBackground } from './Background';
 import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
 import { clsx } from 'clsx';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { globalClassPrefix, isBrandBackgroundColor } from '../../utils';
-import { BoxProps } from '../Box';
+import { globalClassPrefix, isBrandBackgroundColor } from '../utils';
+import { BoxProps } from './Box';
 
 const PREFIX = `${globalClassPrefix}-typography`;
 export const typographyClasses = {

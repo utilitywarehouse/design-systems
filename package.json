@@ -32,15 +32,15 @@
     "lint": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint",
     "lint:fix": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint:fix",
     "clean": "pnpm -r --stream clean && rm -rf node_modules",
-    "storybook:start": "pnpm -r --filter *uw-web-ui storybook:start",
-    "storybook:build": "TURBO_TOKEN=${TURBO_TOKEN} turbo run storybook:build",
+    "dev": "TURBO_TOKEN=${TURBO_TOKEN} turbo run dev --no-cache --parallel --continue",
     "changeset": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
     "ci:publish": "pnpm run build && changeset publish",
     "checks": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint build"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "dependencies": {
     "pnpm": "^7.13.4"
