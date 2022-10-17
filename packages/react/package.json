@@ -4,8 +4,8 @@
   "description": "UW Web UI components",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rimraf node_modules && rimraf dist",
-    "build": "rimraf dist/ && tsc --build ./tsconfig.json",
+    "clean": "rm -rf node_modules && rm -rf dist",
+    "build": "rm -rf dist/ && tsc --build ./tsconfig.json",
     "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "precommit": "lint-staged",
