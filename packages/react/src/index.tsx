@@ -1,3 +1,5 @@
+import './types/overrides';
+
 export { default as Box } from './components/Box';
 export type { BoxProps } from './components/Box';
 export { default as Background } from './components/Background';
