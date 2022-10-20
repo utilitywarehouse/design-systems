@@ -21,8 +21,11 @@
     "clean": {
       "cache": false
     },
-    "storybook:build": {
-      "outputs": ["packages/material/storybook-build/**"]
+    "build:storybook": {
+      "outputs": ["packages/material/storybook-static/**"]
+    },
+    "build:docs": {
+      "outputs": ["packages/material/storybook-static/**"]
     }
   }
 }
