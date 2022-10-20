@@ -27,6 +27,7 @@
   "scripts": {
     "setup": "corepack enable && corepack prepare pnpm@7.13.4 --activate",
     "build": "TURBO_TOKEN=${TURBO_TOKEN} turbo run build",
+    "build:docs": "TURBO_TOKEN=${TURBO_TOKEN} turbo run build:docs",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
     "lint": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint",
