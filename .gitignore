@@ -15,7 +15,6 @@ yarn.lock
 .vscode
 dist/
 coverage
-storybook-build
 storybook-static
-**/.turbo
+.turbo/*
 !.turbo/config.json
