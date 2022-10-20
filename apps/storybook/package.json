@@ -1,0 +1,37 @@
+{
+  "name": "uw-web-ui-storybook",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build:docs": "build-storybook --docs",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf storybook-static",
+    "storybook": "start-storybook -p 6006",
+    "dev": "start-storybook -p 6006",
+    "lint:fix": "eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.10",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.5",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-viewport": "^6.5.9",
+    "@storybook/addons": "^6.5.9",
+    "@storybook/builder-webpack4": "^6.5.12",
+    "@storybook/manager-webpack4": "^6.5.12",
+    "@storybook/react": "^6.5.12",
+    "@storybook/theming": "^6.5.9",
+    "@utilitywarehouse/customer-ui-design-tokens": "^1.0.3",
+    "@utilitywarehouse/uw-web-ui": "workspace:^0.0.1",
+    "babel-loader": "^8.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/testing-library": "0.0.13"
+  }
+}
