@@ -26,7 +26,7 @@ jobs:
     - run: pnpm install
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - run: pnpm run build:docs
+    - run: pnpm run build
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4

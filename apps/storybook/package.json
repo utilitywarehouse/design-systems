@@ -6,7 +6,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf storybook-static",
     "dev": "start-storybook -p 6006",
     "lint:fix": "eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
-    "build:docs": "build-storybook --docs",
+    "build": "build-storybook --docs",
     "build:storybook": "build-storybook"
   },
   "dependencies": {
