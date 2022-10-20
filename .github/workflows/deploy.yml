@@ -1,0 +1,19 @@
+name: Deploy Storybook
+on:
+workflow_run:
+  workflows: [Release]
+  branches: [main]
+  types:
+    - completed
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Deploy New Release Storybook
+        if: steps.changesets.outputs.published == 'true'
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} registry.uw.systems
+          docker build . -t registry.uw.systems/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook:release --build-arg NPM_TOKEN=${{ secrets.NPM_TOKEN }}
+          docker push -a registry.uw.systems/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook
