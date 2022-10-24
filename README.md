@@ -14,8 +14,11 @@ have a look at [the wiki](https://wiki.uw.systems/).
 
 ## Contributing
 
-Please read our [contribution guide](CONTRIBUTING.md) for getting involved with
-Customer Web UI.
+There is a [Contribution Model](https://www.figma.com/file/r3YqK5imGU2AiwxvwOuZs2/Customer-Web-UI-Contribution-Model?node-id=0%3A1)
+that outlines the process for adding new components or updating existing ones.
+Please have a look at it if you're interested in doing this.
+There is also a [contribution guide](CONTRIBUTING.md) for getting how to get
+started contributing to Customer Web UI.
 
 ### Issues
 
