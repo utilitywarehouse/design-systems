@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Story, Meta } from "@storybook/react";
 import Grid, { GridProps } from "../../src/components/Grid";
 import Background from "../../src/components/Background";

@@ -1,8 +1,5 @@
 import React from "react";
-import MuiLink, {
-  LinkProps as MuiLinkProps,
-  LinkTypeMap as MuiLinkTypeMap,
-} from "@mui/material/Link";
+import MuiLink, { LinkTypeMap as MuiLinkTypeMap } from "@mui/material/Link";
 import { isBrandBackgroundColor, isHeadingVariant } from "../utils";
 import {
   colors,
