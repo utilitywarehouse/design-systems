@@ -1,5 +1,18 @@
 # @utilitywarehouse/customer-ui-material
 
+## 2.0.2
+
+### Patch Changes
+
+- [#506](https://github.com/utilitywarehouse/customer-web-ui/pull/506) [`75e70fa`](https://github.com/utilitywarehouse/customer-web-ui/commit/75e70fa54872479c090d08dbdc90571659076e26) Thanks [@robphoenix](https://github.com/robphoenix)! - This changeset adds the Stack component.
+
+  In the process of adding this layout component, the Spacer layout component was
+  updated. The `space` prop has been removed, as it is not reflected in the other
+  layout components and spacing is under review in UX. Spacer has also been
+  updated to accept responsive size values, again to better reflect what is
+  possible with the other layout components. It is now possible to pass an array
+  or object of responsive values to the size prop, ie. `size={{ mobile: 2, tablet: 4, desktop: 8 }}`.
+
 ## 2.0.1
 
 ### Patch Changes
