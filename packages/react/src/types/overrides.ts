@@ -1,3 +1,4 @@
+import { TypographyOptions } from '@mui/material/styles/createTypography';
 import * as React from 'react';
 
 declare module '@mui/material/styles' {
@@ -26,6 +27,10 @@ declare module '@mui/material/styles' {
     body?: React.CSSProperties;
     legalNote?: React.CSSProperties;
     caption?: React.CSSProperties;
+  }
+
+  interface Theme {
+    typography: TypographyOptions;
   }
 }
 

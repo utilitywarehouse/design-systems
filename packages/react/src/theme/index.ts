@@ -23,16 +23,6 @@ export const theme: MuiTheme = createTheme({
     info: { main: colors.midnight },
     success: { main: colors.apple },
   },
-  typography: {
-    htmlFontSize: 16,
-    body2: undefined,
-    button: undefined,
-    h5: undefined,
-    h6: undefined,
-    overline: undefined,
-    subtitle1: undefined,
-    subtitle2: undefined,
-  },
   components: {
     ...cssBaselineThemeOverrides,
   },
@@ -40,8 +30,12 @@ export const theme: MuiTheme = createTheme({
 
 const typographyConfiguration = getTypographyConfiguration(theme);
 
+// do this better
+const { body1, body2, button, ...rest } = theme.typography;
+console.log({ body1, body2, button });
+
 theme.typography = {
-  ...theme.typography,
+  ...rest,
   fontSize: 16,
   htmlFontSize: 16,
   fontFamily: fonts.secondary,
@@ -49,8 +43,9 @@ theme.typography = {
   fontWeightLight: fontWeights.data,
   fontWeightMedium: fontWeights.secondary.semibold,
   fontWeightRegular: fontWeights.secondary.regular,
-  body1: typographyConfiguration.body,
   ...typographyConfiguration,
 };
+
+console.log({ theme });
 
 export type Theme = typeof theme;
