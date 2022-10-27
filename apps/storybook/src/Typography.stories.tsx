@@ -23,7 +23,7 @@ const variants = [
 const colors = ['primary', 'secondary', 'success', 'error'] as const;
 
 export default {
-  title: 'Foundations/Typography',
+  title: 'Components/Typography',
   component: Typography,
   argTypes: {
     forwardedRef: { table: { disable: true } },
