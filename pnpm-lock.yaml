@@ -60,6 +60,8 @@ importers:
       '@storybook/react': ^6.5.12
       '@storybook/testing-library': 0.0.13
       '@storybook/theming': ^6.5.9
+      '@types/react': ^17.0.0 || ^18.0.0
+      '@types/react-dom': ^18.0.6
       '@utilitywarehouse/customer-ui-design-tokens': ^1.0.3
       '@utilitywarehouse/uw-web-ui': workspace:^0.0.1
       babel-loader: ^8.2.5
@@ -78,6 +80,8 @@ importers:
       '@storybook/manager-webpack4': 6.5.12_yalvw3r2waubxycyb7k7qsruca
       '@storybook/react': 6.5.12_pvabgnqf3d2dv4bicicpuaxmw4
       '@storybook/theming': 6.5.12_biqbaboplfbrettd7655fr4n2y
+      '@types/react': 18.0.21
+      '@types/react-dom': 18.0.6
       '@utilitywarehouse/customer-ui-design-tokens': 1.0.5
       '@utilitywarehouse/uw-web-ui': link:../../packages/react
       babel-loader: 8.2.5_wfdvla2jorjoj23kkavho2upde
@@ -3787,6 +3791,12 @@ packages:
 
   /@types/qs/6.9.7:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
+
+  /@types/react-dom/18.0.6:
+    resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
+    dependencies:
+      '@types/react': 18.0.21
+    dev: false
 
   /@types/react-is/17.0.3:
     resolution: {integrity: sha512-aBTIWg1emtu95bLTLx0cpkxwGW3ueZv71nE2YFBpL8k/z5czEW8yYpOo8Dp+UUAFAtKwNaOsh/ioSeQnWlZcfw==}
