@@ -101,7 +101,7 @@ importers:
       '@mui/types': ^7.1.4
       '@mui/utils': ^5.10.9
       '@types/react': ^17.0.0 || ^18.0.0
-      '@utilitywarehouse/customer-ui-design-tokens': ^1.0.3
+      '@utilitywarehouse/customer-ui-design-tokens': ^2.0.0
       '@utilitywarehouse/customer-ui-react-icons': ^1.0.2
       '@utilitywarehouse/uw-ui-fonts': ^0.0.3
       clsx: ^1.2.1
@@ -110,7 +110,7 @@ importers:
       tsup: ^6.2.3
     dependencies:
       '@mui/utils': 5.10.9_react@18.2.0
-      '@utilitywarehouse/customer-ui-design-tokens': 1.0.5
+      '@utilitywarehouse/customer-ui-design-tokens': 2.0.0
       '@utilitywarehouse/customer-ui-react-icons': 1.0.2
       '@utilitywarehouse/uw-ui-fonts': 0.0.3
       clsx: 1.2.1
@@ -3999,6 +3999,10 @@ packages:
 
   /@utilitywarehouse/customer-ui-design-tokens/1.0.5:
     resolution: {integrity: sha512-WiS5K3a3SnJDZ13da52hsqmpQPSC1/fC8bcgrqjeVbyA6WfYtrwv484VdkFNdabi3MZMypUCs1XuD/KE+CgnKQ==}
+    dev: false
+
+  /@utilitywarehouse/customer-ui-design-tokens/2.0.0:
+    resolution: {integrity: sha512-Vhl1Q/hLACFdvebnHg5qjgHkX7Vgpzy7DKdN7LsXkVcE3sShR2FDUmWTLSHKH//Bs2EMLnzosajR7im00NLXZg==}
     dev: false
 
   /@utilitywarehouse/customer-ui-react-icons/1.0.2:

@@ -1,4 +1,5 @@
-import { TypographyOptions } from '@mui/material/styles/createTypography';
+import { TypographyOptions, TypographyUtils } from '@mui/material/styles/createTypography';
+import { Fonts, FontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import * as React from 'react';
 
 declare module '@mui/material/styles' {
@@ -29,8 +30,22 @@ declare module '@mui/material/styles' {
     caption?: React.CSSProperties;
   }
 
+  interface CustomTypogaphy
+    extends TypographyUtils,
+      Omit<
+        TypographyOptions,
+        | 'fontFamily'
+        | 'fontWeightBold'
+        | 'fontWeightLight'
+        | 'fontWeightMedium'
+        | 'fontWeightRegular'
+      > {
+    fontFamily: Fonts;
+    fontWeights: FontWeights;
+  }
+
   interface Theme {
-    typography: TypographyOptions;
+    typography: CustomTypogaphy;
   }
 }
 
