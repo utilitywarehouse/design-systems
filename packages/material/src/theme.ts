@@ -51,7 +51,7 @@ export const buildTheme = (): MuiTheme => {
     htmlFontSize: 16,
     fontFamily: fonts.secondary,
     fontWeightBold: fontWeights.primary,
-    fontWeightLight: fontWeights.data,
+    fontWeightLight: fontWeights.secondary.regular,
     fontWeightMedium: fontWeights.secondary.semibold,
     fontWeightRegular: fontWeights.secondary.regular,
     ...typographyConfiguration,

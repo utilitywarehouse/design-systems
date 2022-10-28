@@ -6,9 +6,7 @@ import {
   OverrideProps,
 } from "@mui/material/OverridableComponent";
 import { ResponsiveStyleValue } from "@mui/system/styleFunctionSx";
-import { helpers } from "@utilitywarehouse/customer-ui-design-tokens";
-
-const { px } = helpers;
+import { px } from "../utils";
 
 type defaultComponent = "span";
 

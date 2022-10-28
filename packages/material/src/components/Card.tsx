@@ -1,7 +1,7 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
-import { helpers, colors } from "@utilitywarehouse/customer-ui-design-tokens";
-import { isBrandBackgroundColor } from "../utils";
+import { colors } from "@utilitywarehouse/customer-ui-design-tokens";
+import { isBrandBackgroundColor, px } from "../utils";
 import {
   BackgroundColor,
   BackgroundProvider,
@@ -12,8 +12,6 @@ import {
   OverridableComponent,
   OverrideProps,
 } from "@mui/material/OverridableComponent";
-
-const { px } = helpers;
 
 export type CardVariant = "transparent" | "opaque";
 

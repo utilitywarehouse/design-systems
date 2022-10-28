@@ -1,13 +1,9 @@
 import React from "react";
 import "./global.css";
-import {
-  breakpoints,
-  helpers,
-} from "@utilitywarehouse/customer-ui-design-tokens";
+import { breakpoints } from "@utilitywarehouse/customer-ui-design-tokens";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { ThemeProvider } from "../src";
-
-const { px } = helpers;
+import { px } from "../src/utils";
 
 const customerUiViewports = {
   mobile: {
