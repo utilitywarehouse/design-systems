@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@mui/utils": "^5.10.9",
-    "@utilitywarehouse/customer-ui-design-tokens": "^1.0.3",
+    "@utilitywarehouse/customer-ui-design-tokens": "^2.0.0",
     "@utilitywarehouse/customer-ui-react-icons": "^1.0.2",
     "@utilitywarehouse/uw-ui-fonts": "^0.0.3",
     "clsx": "^1.2.1"

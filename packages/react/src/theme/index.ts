@@ -30,22 +30,15 @@ export const theme: MuiTheme = createTheme({
 
 const typographyConfiguration = getTypographyConfiguration(theme);
 
-// do this better
-const { body1, body2, button, ...rest } = theme.typography;
-console.log({ body1, body2, button });
+const { pxToRem } = theme.typography;
 
 theme.typography = {
-  ...rest,
+  pxToRem,
   fontSize: 16,
   htmlFontSize: 16,
-  fontFamily: fonts.secondary,
-  fontWeightBold: fontWeights.primary,
-  fontWeightLight: fontWeights.data,
-  fontWeightMedium: fontWeights.secondary.semibold,
-  fontWeightRegular: fontWeights.secondary.regular,
+  fontFamily: fonts,
+  fontWeights,
   ...typographyConfiguration,
 };
-
-console.log({ theme });
 
 export type Theme = typeof theme;
