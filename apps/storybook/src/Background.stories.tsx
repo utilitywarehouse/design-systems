@@ -36,7 +36,12 @@ export const BackgroundStory: Story<BackgroundProps> = (args) => {
           borderRadius: 4,
         }}
       >
-        <Typography variant="h2" component="span" textTransform="capitalize">
+        <Typography
+          variant="h2"
+          component="span"
+          textTransform="capitalize"
+          sx={{ backgroundColor: 'colors.apple' }}
+        >
           {args.backgroundColor}
         </Typography>
       </Background>

@@ -10,26 +10,12 @@ import { cssBaselineThemeOverrides } from '../components/CssBaseline';
 import { getTypographyConfiguration } from '../components/Typography';
 
 export const theme: MuiTheme = createTheme({
-  breakpoints: {
-    values: breakpoints,
-  },
+  breakpoints: { values: breakpoints },
   spacing: (multiplier: number) => multiplier * spacingBase,
-  palette: {
-    common: { black: colors.black, white: colors.white },
-    primary: { main: colors.purple },
-    secondary: { main: colors.cyan },
-    error: { main: colors.rose },
-    warning: { main: colors.gold },
-    info: { main: colors.midnight },
-    success: { main: colors.apple },
-  },
-  components: {
-    ...cssBaselineThemeOverrides,
-  },
+  components: { ...cssBaselineThemeOverrides },
 });
 
 const typographyConfiguration = getTypographyConfiguration(theme);
-
 const { pxToRem } = theme.typography;
 
 theme.typography = {
@@ -40,5 +26,14 @@ theme.typography = {
   fontWeights,
   ...typographyConfiguration,
 };
+
+theme.palette = {
+  colors,
+  text: { primary: colors.midnight, secondary: colors.purple },
+  background: { default: colors.white },
+  common: { white: colors.white, black: colors.black },
+};
+
+console.log({ theme });
 
 export type Theme = typeof theme;
