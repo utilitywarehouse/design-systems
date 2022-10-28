@@ -1,7 +1,24 @@
 export { colors, Colors } from "./colors";
-export { fontWeights, FontWeights, fonts, Fonts } from "./typography";
-export { breakpoints, Breakpoints } from "./breakpoints";
-export { base as spacingBase } from "./spacing";
-export { transitions, Transitions } from "./transitions";
 
-export * as helpers from "./helpers";
+export const fonts = {
+  primary: "Aeonik, Arial, sans-serif",
+  secondary: "Work Sans, Arial, sans-serif",
+};
+export const fontWeights = {
+  primary: 700,
+  secondary: {
+    semibold: 600,
+    regular: 400,
+  },
+};
+export type Fonts = typeof fonts;
+export type FontWeights = typeof fontWeights;
+
+const breakpoints = { mobile: 0, tablet: 768, desktop: 1366 };
+export type Breakpoints = typeof breakpoints;
+
+export const transitions = { duration: 120, easingFunction: "ease-out" };
+export type Transitions = typeof transitions;
+
+export const spacingBase = 8;
+export const px = (value: string | number): string => `${value}px`;
