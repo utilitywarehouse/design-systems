@@ -1,5 +1,14 @@
 # @utilitywarehouse/customer-ui-material
 
+## 2.0.3
+
+### Patch Changes
+
+- [#509](https://github.com/utilitywarehouse/customer-web-ui/pull/509) [`9548d35`](https://github.com/utilitywarehouse/customer-web-ui/commit/9548d3547a67ef5d40c37bb4210aafa1b7d15e2b) Thanks [@robphoenix](https://github.com/robphoenix)! - Export px util
+
+- Updated dependencies [[`a15d4a6`](https://github.com/utilitywarehouse/customer-web-ui/commit/a15d4a6015c28d5741066bcdb994ca5f78c0166a)]:
+  - @utilitywarehouse/customer-ui-design-tokens@2.0.0
+
 ## 2.0.2
 
 ### Patch Changes

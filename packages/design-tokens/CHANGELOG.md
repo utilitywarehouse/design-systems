@@ -1,5 +1,16 @@
 # @utilitywarehouse/customer-ui-design-tokens
 
+## 2.0.0
+
+### Major Changes
+
+- [#509](https://github.com/utilitywarehouse/customer-web-ui/pull/509) [`a15d4a6`](https://github.com/utilitywarehouse/customer-web-ui/commit/a15d4a6015c28d5741066bcdb994ca5f78c0166a) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove data font-weight & helpers.
+
+  ```diff
+  - import { helpers } from '@utilitywarehouse/customer-ui-design-tokens'
+  + import { px } from '@utilitywarehouse/customer-ui-material'
+  ```
+
 ## 1.0.5
 
 ### Patch Changes
