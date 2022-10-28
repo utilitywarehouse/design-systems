@@ -14,11 +14,10 @@ export const fontWeights = {
 export type Fonts = typeof fonts;
 export type FontWeights = typeof fontWeights;
 
-const breakpoints = { mobile: 0, tablet: 768, desktop: 1366 };
+export const breakpoints = { mobile: 0, tablet: 768, desktop: 1366 };
 export type Breakpoints = typeof breakpoints;
 
 export const transitions = { duration: 120, easingFunction: "ease-out" };
 export type Transitions = typeof transitions;
 
 export const spacingBase = 8;
-export const px = (value: string | number): string => `${value}px`;

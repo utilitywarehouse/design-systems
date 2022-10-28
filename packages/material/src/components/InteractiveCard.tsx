@@ -1,12 +1,11 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import {
-  helpers,
   transitions,
   colors,
 } from "@utilitywarehouse/customer-ui-design-tokens";
 import { TinyColor } from "@ctrl/tinycolor";
-import { customerUiPrefix } from "../utils";
+import { customerUiPrefix, px } from "../utils";
 import {
   BackgroundColor,
   BackgroundProvider,
@@ -20,8 +19,6 @@ import {
   ButtonProps as MuiButtonProps,
   ExtendButton,
 } from "@mui/material/Button";
-
-const { px } = helpers;
 
 export type InteractiveCardSize = "small" | "regular" | "large";
 export type InteractiveCardVariant = "primary" | "secondary";

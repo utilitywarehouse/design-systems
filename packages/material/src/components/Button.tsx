@@ -9,9 +9,8 @@ import {
   fonts,
   fontWeights,
   colors,
-  helpers,
 } from "@utilitywarehouse/customer-ui-design-tokens";
-import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
+import { customerUiPrefix, isBrandBackgroundColor, px } from "../utils";
 import { TinyColor } from "@ctrl/tinycolor";
 import { useBackground } from "./Background";
 import { clsx } from "clsx";
@@ -82,7 +81,6 @@ const Button = React.forwardRef(function Button(
 export default Button;
 
 export const getButtonTheme = (): Components => {
-  const { px } = helpers;
   const borderWidth = 2;
   return {
     MuiButton: {

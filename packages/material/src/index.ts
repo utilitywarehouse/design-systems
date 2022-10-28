@@ -1,6 +1,8 @@
 import "./types/overrides";
 
-export { theme, type Theme } from "./theme";
+export { theme } from "./theme";
+export type { Theme } from "./theme";
+export { px } from "./utils";
 
 // @mui/material exports
 export { styled, useTheme } from "@mui/material/styles";
