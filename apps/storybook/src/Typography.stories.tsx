@@ -23,7 +23,7 @@ const variants = [
 const colors = ['primary', 'secondary', 'success', 'error'] as const;
 
 export default {
-  title: 'Foundations/Typography',
+  title: 'Components/Typography',
   component: Typography,
   argTypes: {
     forwardedRef: { table: { disable: true } },
@@ -51,8 +51,7 @@ export default {
     },
     fontWeight: {
       control: {
-        type: 'radio',
-        options: ['regular', 'semibold'],
+        type: 'boolean',
       },
     },
     backgroundColor: {
@@ -78,7 +77,7 @@ export default {
     children: 'hamburgefons',
     variant: 'displayHeading',
     color: 'primary',
-    fontWeight: 'regular',
+    bold: false,
     textTransform: 'capitalize',
     gutterBottom: false,
     paragraph: false,
@@ -121,7 +120,6 @@ TypographyKitchenSinkStory.argTypes = {
 };
 TypographyKitchenSinkStory.args = {
   color: 'primary',
-  fontWeight: 'regular',
 };
 
 export const TypographyCustomStory: Story<

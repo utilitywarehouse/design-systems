@@ -1,0 +1,10 @@
+# Migration Guide
+
+## From Customer Web UI v2
+
+### Typography
+
+The `component` and `variant` props are now both required. In an effort to
+improve accessibility, forcing users to choose the underlying element will
+hopefully lead to a more semantic approach. Removing the default variant should
+also improve clarity around what style the component is rendering.

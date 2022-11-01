@@ -1,7 +1,9 @@
-import { type BackgroundColor, brandBackgroundColors } from '../types';
+import { type BackgroundColor, inverseBackgroundColors } from '../types';
 
 export const globalClassPrefix = 'uw-web-ui';
 
-export const isBrandBackgroundColor = (backgroundColor: BackgroundColor): boolean => {
-  return (brandBackgroundColors as ReadonlyArray<string>).includes(backgroundColor);
+export const px = (value: string | number): string => `${value}px`;
+
+export const isInverseBackgroundColor = (backgroundColor: BackgroundColor): boolean => {
+  return (inverseBackgroundColors as ReadonlyArray<string>).includes(backgroundColor);
 };

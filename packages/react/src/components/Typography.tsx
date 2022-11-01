@@ -6,7 +6,7 @@ import { useBackground } from './Background';
 import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
 import { clsx } from 'clsx';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { globalClassPrefix, isBrandBackgroundColor } from '../utils';
+import { globalClassPrefix, isInverseBackgroundColor } from '../utils';
 import { BoxProps } from './Box';
 
 const PREFIX = `${globalClassPrefix}-typography`;
@@ -16,7 +16,7 @@ export const typographyClasses = {
   success: `${PREFIX}-success`,
   error: `${PREFIX}-error`,
   inverse: `${PREFIX}-inverse`,
-  semibold: `${PREFIX}-semibold`,
+  bold: `${PREFIX}-bold`,
 };
 
 type DefaultComponent = 'p';
@@ -49,7 +49,7 @@ interface CustomProps<D extends React.ElementType = DefaultComponent, P = {}>
   > {
   color?: 'primary' | 'secondary' | 'success' | 'error';
   component: BoxProps['component'];
-  fontWeight?: 'regular' | 'semibold';
+  bold?: boolean;
   variant: MuiTypographyProps['variant'];
 }
 
@@ -64,14 +64,14 @@ export type TypographyProps<D extends React.ElementType = DefaultComponent, P = 
 >;
 
 const Typography = React.forwardRef(function Typography(
-  { color = 'primary', fontWeight = 'regular', className, ...props },
+  { color = 'primary', bold = false, className, ...props },
   ref
 ) {
   const { backgroundColor } = useBackground();
 
   const classNames = clsx(typographyClasses[color], {
-    [typographyClasses.inverse]: isBrandBackgroundColor(backgroundColor),
-    [typographyClasses.semibold]: fontWeight === 'semibold',
+    [typographyClasses.inverse]: isInverseBackgroundColor(backgroundColor),
+    [typographyClasses.bold]: !!bold,
     className: !!className,
   });
 
@@ -108,7 +108,8 @@ export const getTypographyConfiguration = (
   const bodyStyles = {
     fontFamily: fonts.secondary,
     color: colors.midnight,
-    [`&.${typographyClasses.semibold}`]: {
+    fontWeight: fontWeights.secondary.regular,
+    [`&.${typographyClasses.bold}`]: {
       fontWeight: fontWeights.secondary.semibold,
     },
     [`&.${typographyClasses.inverse}`]: {
