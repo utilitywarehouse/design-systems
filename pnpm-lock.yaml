@@ -64,8 +64,8 @@ importers:
       '@storybook/theming': ^6.5.9
       '@types/lodash.merge': ^4.6.7
       '@types/react': ^17.0.0 || ^18.0.0
-      '@utilitywarehouse/customer-ui-design-tokens': ^2.0.0
-      '@utilitywarehouse/customer-ui-react-icons': ^1.0.2
+      '@utilitywarehouse/customer-ui-design-tokens': 2.0.1
+      '@utilitywarehouse/customer-ui-react-icons': 1.0.2
       '@utilitywarehouse/uw-ui-fonts': ^0.0.2
       babel-loader: ^8.2.2
       chromatic: ^6.7.3
@@ -81,8 +81,6 @@ importers:
       '@emotion/cache': 11.10.3
       '@mui/styled-engine': 5.10.2_2av45khroaevmcc27aulpaf2sy
       '@mui/styles': 5.10.2_skqlhrap4das3cz5b6iqdn2lqi
-      '@utilitywarehouse/customer-ui-design-tokens': link:../design-tokens
-      '@utilitywarehouse/customer-ui-react-icons': link:../react-icons
       clsx: 1.2.1
       jss: 10.9.2
       lodash.merge: 4.6.2
@@ -100,6 +98,8 @@ importers:
       '@storybook/theming': 6.5.10_sfoxds7t5ydpegc3knd667wn6m
       '@types/lodash.merge': 4.6.7
       '@types/react': 17.0.48
+      '@utilitywarehouse/customer-ui-design-tokens': link:../design-tokens
+      '@utilitywarehouse/customer-ui-react-icons': link:../react-icons
       '@utilitywarehouse/uw-ui-fonts': 0.0.2
       babel-loader: 8.2.5_tb6moc662p5idmcg3l5ipbhpta
       chromatic: 6.7.4
