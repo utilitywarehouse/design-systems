@@ -10,5 +10,13 @@ export type { TypographyProps } from './components/Typography';
 
 export { default as CssBaseline } from '@mui/material/CssBaseline';
 
-export { neutralBackgroundColors, brandBackgroundColors, backgroundColors } from './types';
-export type { NeutralBackgroundColor, BrandBackgroundColor, BackgroundColor } from './types';
+export {
+  neutralBackgroundColors,
+  inverseBackgroundColors as brandBackgroundColors,
+  backgroundColors,
+} from './types';
+export type {
+  NeutralBackgroundColor,
+  InverseBackgroundColor as BrandBackgroundColor,
+  BackgroundColor,
+} from './types';
