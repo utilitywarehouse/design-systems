@@ -20,4 +20,12 @@ export type Breakpoints = typeof breakpoints;
 export const transitions = { duration: 120, easingFunction: "ease-out" };
 export type Transitions = typeof transitions;
 
+export const borderRadius = {
+  xsmall: "4px",
+  small: "8px",
+  medium: "16px",
+  large: "32px",
+};
+export type BorderRadius = typeof borderRadius;
+
 export const spacingBase = 8;
