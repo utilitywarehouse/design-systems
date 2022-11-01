@@ -17,8 +17,7 @@ export const theme: MuiTheme = createTheme({
 
 const typographyConfiguration = getTypographyConfiguration(theme);
 const { pxToRem } = theme.typography;
-
-theme.typography = {
+const customTypography = {
   pxToRem,
   fontSize: 16,
   htmlFontSize: 16,
@@ -26,14 +25,47 @@ theme.typography = {
   fontWeights,
   ...typographyConfiguration,
 };
-
-theme.palette = {
-  colors,
-  text: { primary: colors.midnight, secondary: colors.purple },
-  background: { default: colors.white },
-  common: { white: colors.white, black: colors.black },
+export const customPalette = {
+  color: colors,
+  text: {
+    heading: {
+      primary: colors.purple,
+      secondary: colors.midnight,
+      inverse: colors.white,
+    },
+    body: {
+      primary: colors.midnight,
+      inverse: colors.white,
+      success: { default: colors.jewel, inverse: colors.apple },
+      error: { default: colors.maroonFlush, inverse: colors.rose },
+    },
+  },
+  background: {
+    default: colors.white,
+    white: colors.white,
+    whiteOwl: colors.whiteOwl,
+    lightTint: colors.lightTint,
+    purple: colors.purple,
+    midnight: colors.midnight,
+  },
+  common: { white: colors.white, black: colors.black, disabled: colors.codGray20 },
+  brand: { primary: colors.purple, action: colors.cyan40, line: colors.pink },
+  messaging: {
+    alert: colors.rose,
+    info: colors.midnight,
+    success: colors.apple,
+    warning: colors.gold,
+  },
+  services: {
+    gas: colors.cyan40,
+    electricity: colors.apple,
+    insurance: colors.rose,
+    mobile: colors.gold,
+    landline: colors.grape,
+  },
 };
 
-console.log({ theme });
+theme.typography = customTypography;
+theme.palette = customPalette;
 
 export type Theme = typeof theme;
