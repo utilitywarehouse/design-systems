@@ -1,7 +1,7 @@
-import { PaletteOptions } from '@mui/material/styles/createPalette';
 import { TypographyOptions, TypographyUtils } from '@mui/material/styles/createTypography';
-import { Colors, Fonts, FontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
+import { Fonts, FontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import * as React from 'react';
+import { customPalette } from '../theme';
 
 interface CustomTypogaphy
   extends TypographyUtils,
@@ -13,9 +13,7 @@ interface CustomTypogaphy
   fontWeights: FontWeights;
 }
 
-interface CustomPalette extends Pick<PaletteOptions, 'text' | 'background' | 'common'> {
-  colors: Colors;
-}
+type CustomPalette = typeof customPalette;
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
