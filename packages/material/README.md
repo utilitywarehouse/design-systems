@@ -13,10 +13,12 @@ Customer UI React components standing on the shoulders of the [MUI Material](htt
 
 ## Installation
 
-Install the library and it's peer dependencies.
+Install the library and it's peer dependencies:
+`@utilitywarehouse/customer-ui-design-tokens`, `@mui/material`, `@emotion/react`
+& `@emotion/styled`.
 
 ```console
-yarn add @utilitywarehouse/customer-ui-material @mui/material @emotion/react @emotion/styled
+yarn add @utilitywarehouse/customer-ui-material @utilitywarehouse/customer-ui-design-tokens @mui/material @emotion/react @emotion/styled
 ```
 
 ## Storybook
