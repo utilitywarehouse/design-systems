@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-design-tokens
 
+## 2.0.1
+
+### Patch Changes
+
+- [#511](https://github.com/utilitywarehouse/customer-web-ui/pull/511) [`8382b5f`](https://github.com/utilitywarehouse/customer-web-ui/commit/8382b5fbe618db10d43ece911b94dc56d2cde900) Thanks [@robphoenix](https://github.com/robphoenix)! - fix lightTint color value and add borderRadius tokens
+
 ## 2.0.0
 
 ### Major Changes
