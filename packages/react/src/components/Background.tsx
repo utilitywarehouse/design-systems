@@ -3,12 +3,12 @@ import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import { styled } from '@mui/material/styles';
 import Box, { BoxProps } from './Box';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { BackgroundColor, NeutralBackgroundColor, BrandBackgroundColor } from '../types';
+import { BackgroundColor, NeutralBackgroundColor, InverseBackgroundColor } from '../types';
 
 const DefaultBackgroundColor: BackgroundColor = 'white' as BackgroundColor;
 
 interface BackgroundContextValue {
-  backgroundColor: NeutralBackgroundColor | BrandBackgroundColor;
+  backgroundColor: NeutralBackgroundColor | InverseBackgroundColor;
 }
 
 const BackgroundContext = React.createContext<BackgroundContextValue>({

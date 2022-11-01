@@ -6,7 +6,7 @@ import { useBackground } from './Background';
 import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
 import { clsx } from 'clsx';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { globalClassPrefix, isBrandBackgroundColor } from '../utils';
+import { globalClassPrefix, isInverseBackgroundColor } from '../utils';
 import { BoxProps } from './Box';
 
 const PREFIX = `${globalClassPrefix}-typography`;
@@ -70,7 +70,7 @@ const Typography = React.forwardRef(function Typography(
   const { backgroundColor } = useBackground();
 
   const classNames = clsx(typographyClasses[color], {
-    [typographyClasses.inverse]: isBrandBackgroundColor(backgroundColor),
+    [typographyClasses.inverse]: isInverseBackgroundColor(backgroundColor),
     [typographyClasses.bold]: !!bold,
     className: !!className,
   });
