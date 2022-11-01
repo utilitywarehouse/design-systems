@@ -25,7 +25,7 @@ const colors = {
   gold: "#ffd76f",
   grape: "#a66de8",
   jewel: "#1b7d47",
-  lightTint: "#f5f0f8",
+  lightTint: "#ebe0f2",
   maroonFlush: "#ce2261",
   maroon10: "#F7DBE6",
   midTint: "#c4a5db",
