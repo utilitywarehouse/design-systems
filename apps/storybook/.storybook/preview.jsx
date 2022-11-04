@@ -1,22 +1,21 @@
 import * as React from 'react';
-import { breakpoints, helpers } from '@utilitywarehouse/customer-ui-design-tokens';
+import { breakpoints } from '@utilitywarehouse/customer-ui-design-tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { ThemeProvider } from '@utilitywarehouse/uw-web-ui';
-
-const { px } = helpers;
+import { ThemeProvider } from '@utilitywarehouse/uw-web-ui-react';
+import '@utilitywarehouse/uw-ui-fonts';
 
 const customerUiViewports = {
   mobile: {
     name: 'Customer UI mobile',
     styles: {
-      width: px(breakpoints.tablet),
+      width: `${breakpoints.tablet}px`,
       height: '100vh',
     },
   },
   desktop: {
     name: 'Customer UI desktop',
     styles: {
-      width: px(breakpoints.desktop),
+      width: `${breakpoints.desktop}px`,
       height: '100vh',
     },
   },

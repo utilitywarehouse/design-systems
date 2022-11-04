@@ -5,8 +5,8 @@ import {
   Typography,
   variantMapping,
   Background,
-} from '@utilitywarehouse/uw-web-ui';
-import type { BackgroundProps, TypographyProps } from '@utilitywarehouse/uw-web-ui';
+} from '@utilitywarehouse/uw-web-ui-react';
+import type { BackgroundProps, TypographyProps } from '@utilitywarehouse/uw-web-ui-react';
 
 const variants = [
   'displayHeading',

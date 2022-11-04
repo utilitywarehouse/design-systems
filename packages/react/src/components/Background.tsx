@@ -25,7 +25,7 @@ export const useBackground = (): BackgroundContextValue => {
 
 export interface BackgroundProviderProps {
   children?: React.ReactNode;
-  backgroundColor?: BackgroundContextValue['backgroundColor'];
+  backgroundColor: BackgroundContextValue['backgroundColor'];
 }
 
 export const BackgroundProvider = (props: BackgroundProviderProps): JSX.Element => {
