@@ -1,21 +1,15 @@
-import * as React from "react";
-import MuiStack, { StackTypeMap as MuiStackTypeMap } from "@mui/material/Stack";
-import {
-  OverridableComponent,
-  OverrideProps,
-} from "@mui/material/OverridableComponent";
-import { SystemProps } from "../types";
+import * as React from 'react';
+import MuiStack, { StackTypeMap as MuiStackTypeMap } from '@mui/material/Stack';
+import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
+import { SystemProps } from '../types';
 
-interface TypeMap<
-  D extends React.ElementType = MuiStackTypeMap["defaultComponent"],
-  P = {}
-> {
-  props: Omit<MuiStackTypeMap<P, D>["props"], SystemProps>;
+interface TypeMap<D extends React.ElementType = MuiStackTypeMap['defaultComponent'], P = {}> {
+  props: Omit<MuiStackTypeMap<P, D>['props'], SystemProps>;
   defaultComponent: D;
 }
 
 export type StackProps<
-  D extends React.ElementType = TypeMap["defaultComponent"],
+  D extends React.ElementType = TypeMap['defaultComponent'],
   P = {}
 > = OverrideProps<TypeMap<D, P>, D>;
 

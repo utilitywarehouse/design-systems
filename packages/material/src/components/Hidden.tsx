@@ -1,6 +1,6 @@
-import React from "react";
-import useDeviceSize from "../hooks/useDeviceSize";
-import { Breakpoint } from "../types";
+import React from 'react';
+import useDeviceSize from '../hooks/useDeviceSize';
+import { Breakpoint } from '../types';
 
 type DeviceSize = Breakpoint;
 type Only = DeviceSize | DeviceSize[];
@@ -20,33 +20,26 @@ type BooleanCallbackCheck = (
   deviceSize: DeviceSize
 ) => () => boolean;
 
-const deviceSizeOneOf = (
-  deviceSize: DeviceSize,
-  oneOf: DeviceSize[]
-): boolean => oneOf.includes(deviceSize);
+const deviceSizeOneOf = (deviceSize: DeviceSize, oneOf: DeviceSize[]): boolean =>
+  oneOf.includes(deviceSize);
 
-const isHiddenMobile =
-  (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
-    params.mobile && deviceSizeOneOf(deviceSize, ["mobile"]);
+const isHiddenMobile = (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
+  params.mobile && deviceSizeOneOf(deviceSize, ['mobile']);
 
-const isHiddenTablet =
-  (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
-    params.tablet && deviceSizeOneOf(deviceSize, ["tablet"]);
+const isHiddenTablet = (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
+  params.tablet && deviceSizeOneOf(deviceSize, ['tablet']);
 
-const isHiddenDesktop =
-  (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
-    params.desktop && deviceSizeOneOf(deviceSize, ["desktop"]);
+const isHiddenDesktop = (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
+  params.desktop && deviceSizeOneOf(deviceSize, ['desktop']);
 
-const isHiddenTabletUp =
-  (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
-    params.tabletUp && deviceSizeOneOf(deviceSize, ["tablet", "desktop"]);
+const isHiddenTabletUp = (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
+  params.tabletUp && deviceSizeOneOf(deviceSize, ['tablet', 'desktop']);
 
-const isHiddenTabletDown =
-  (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
-    params.tabletDown && deviceSizeOneOf(deviceSize, ["mobile", "tablet"]);
+const isHiddenTabletDown = (params: Record<string, boolean>, deviceSize: DeviceSize) => () =>
+  params.tabletDown && deviceSizeOneOf(deviceSize, ['mobile', 'tablet']);
 
 const isHiddenOnly = (only: Only, deviceSize: DeviceSize) => (): boolean => {
-  if (typeof only === "string") {
+  if (typeof only === 'string') {
     return only === deviceSize;
   } else {
     return deviceSizeOneOf(deviceSize, only);
@@ -90,7 +83,7 @@ const Hidden: React.FunctionComponent<HiddenProps> = ({
     };
 
     const hiddenChecksStack = Object.keys(hiddenChecksCallbacks)
-      .map((key) => {
+      .map(key => {
         if (props[key] === undefined) {
           return null;
         } else {
@@ -98,7 +91,7 @@ const Hidden: React.FunctionComponent<HiddenProps> = ({
           return hiddenChecksCallbacks[key]({ [key]: value }, deviceSize);
         }
       })
-      .filter((callback) => Boolean(callback));
+      .filter(callback => Boolean(callback));
 
     if (only) {
       hiddenChecksStack.push(isHiddenOnly(only, deviceSize));

@@ -1,15 +1,15 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react";
+import React from 'react';
+import { Story, Meta } from '@storybook/react';
 
-import type { InteractiveCardProps } from "../../src";
-import { InteractiveCard, Typography } from "../../src";
-import { BackgroundStack } from "../utils";
-import Stack from "@mui/material/Stack";
+import type { InteractiveCardProps } from '../../src';
+import { InteractiveCard, Typography } from '../../src';
+import { BackgroundStack } from '../utils';
+import Stack from '@mui/material/Stack';
 
-const sizes = ["small", "regular", "large"] as const;
+const sizes = ['small', 'regular', 'large'] as const;
 
 export default {
-  title: "Components/InteractiveCard",
+  title: 'Components/InteractiveCard',
   component: InteractiveCard,
   argTypes: {
     forwardedRef: { table: { disable: true } },
@@ -19,24 +19,22 @@ export default {
     Background: { table: { disable: true } },
   },
   args: {
-    size: "regular",
+    size: 'regular',
   },
 } as Meta;
 
-export const InteractiveCardKitchenSinkStory: Story<
-  InteractiveCardProps
-> = () => {
+export const InteractiveCardKitchenSinkStory: Story<InteractiveCardProps> = () => {
   return (
     <BackgroundStack>
-      <Stack direction="row" spacing={2} alignItems="center">
-        {sizes.map((size) => (
+      <Stack direction='row' spacing={2} alignItems='center'>
+        {sizes.map(size => (
           <InteractiveCard
             key={size}
             size={size}
             onClick={(e: React.MouseEvent) => e.preventDefault()}
-            containerProps={{ sx: { width: "fit-content" } }}
+            containerProps={{ sx: { width: 'fit-content' } }}
           >
-            <Typography component="span" textTransform="capitalize">
+            <Typography component='span' textTransform='capitalize'>
               {size} interactive card
             </Typography>
           </InteractiveCard>
@@ -46,23 +44,21 @@ export const InteractiveCardKitchenSinkStory: Story<
   );
 };
 
-InteractiveCardKitchenSinkStory.storyName = "Kitchen Sink";
+InteractiveCardKitchenSinkStory.storyName = 'Kitchen Sink';
 InteractiveCardKitchenSinkStory.argTypes = {
   backgroundColor: { table: { disable: true } },
   size: { table: { disable: true } },
 };
 
-export const InteractiveCardCustomStory: Story<InteractiveCardProps> = (
-  args
-) => {
+export const InteractiveCardCustomStory: Story<InteractiveCardProps> = args => {
   return (
     <BackgroundStack>
       <InteractiveCard
         {...args}
         onClick={(e: React.MouseEvent) => e.preventDefault()}
-        containerProps={{ sx: { width: "fit-content" } }}
+        containerProps={{ sx: { width: 'fit-content' } }}
       >
-        <Typography component="span" textTransform="capitalize">
+        <Typography component='span' textTransform='capitalize'>
           interactive card
         </Typography>
       </InteractiveCard>
@@ -70,7 +66,7 @@ export const InteractiveCardCustomStory: Story<InteractiveCardProps> = (
   );
 };
 
-InteractiveCardCustomStory.storyName = "Custom";
+InteractiveCardCustomStory.storyName = 'Custom';
 InteractiveCardCustomStory.parameters = {
   chromatic: { disableSnapshot: true },
 };

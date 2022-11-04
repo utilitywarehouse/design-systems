@@ -1,15 +1,15 @@
-import { createTheme, Theme as MuiTheme } from "@mui/material/styles";
-import { getTextFieldTheme } from "./components/TextField";
-import { getButtonTheme } from "./components/Button";
-import { getTypographyConfiguration } from "./components/Typography";
+import { createTheme, Theme as MuiTheme } from '@mui/material/styles';
+import { getTextFieldTheme } from './components/TextField';
+import { getButtonTheme } from './components/Button';
+import { getTypographyConfiguration } from './components/Typography';
 import {
   breakpoints,
   colors,
   spacingBase,
   fonts,
   fontWeights,
-} from "@utilitywarehouse/customer-ui-design-tokens";
-import "./types/overrides";
+} from '@utilitywarehouse/customer-ui-design-tokens';
+import './types/overrides';
 
 export const buildTheme = (): MuiTheme => {
   const muiTheme = createTheme({

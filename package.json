@@ -10,6 +10,7 @@
     "@changesets/cli": "^2.23.1",
     "@typescript-eslint/eslint-plugin": "^4.13.0",
     "@typescript-eslint/parser": "^4.13.0",
+    "@utilitywarehouse/prettier-config": "^0.0.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.4.1",
@@ -44,5 +45,6 @@
   ],
   "dependencies": {
     "pnpm": "^7.5.2"
-  }
+  },
+  "prettier": "@utilitywarehouse/prettier-config"
 }

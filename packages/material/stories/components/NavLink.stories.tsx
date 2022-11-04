@@ -1,51 +1,51 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react";
+import React from 'react';
+import { Story, Meta } from '@storybook/react';
 
-import { NavLink, NavLinkProps } from "../../src";
-import { BackgroundStack, typographyVariants } from "../utils";
+import { NavLink, NavLinkProps } from '../../src';
+import { BackgroundStack, typographyVariants } from '../utils';
 
 export default {
-  title: "Components/Links",
+  title: 'Components/Links',
   components: NavLink,
   argTypes: {
     forwardedRef: { table: { disable: true } },
     children: {
       control: {
-        type: "text",
+        type: 'text',
       },
     },
     variant: {
       control: {
-        type: "radio",
+        type: 'radio',
         options: typographyVariants,
       },
     },
     active: {
       control: {
-        type: "boolean",
+        type: 'boolean',
       },
     },
     disabled: {
       control: {
-        type: "boolean",
+        type: 'boolean',
       },
     },
   },
   args: {
-    children: "navigation link",
-    variant: "body",
+    children: 'navigation link',
+    variant: 'body',
     disabled: false,
     active: false,
-    textTransform: "capitalize",
+    textTransform: 'capitalize',
   },
 } as Meta;
 
-export const NavLinkStory: Story<NavLinkProps> = (args) => {
+export const NavLinkStory: Story<NavLinkProps> = args => {
   return (
     <BackgroundStack>
-      <NavLink href="#" {...args} />
+      <NavLink href='#' {...args} />
     </BackgroundStack>
   );
 };
 
-NavLinkStory.storyName = "NavLink";
+NavLinkStory.storyName = 'NavLink';
