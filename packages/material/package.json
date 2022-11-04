@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/customer-ui-material",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "UW Customer UI component library, built upon MUI Material",
   "main": "dist/index.js",
   "scripts": {
@@ -46,7 +46,7 @@
     "@types/lodash.merge": "^4.6.7",
     "@types/react": "^17.0.0 || ^18.0.0",
     "@utilitywarehouse/uw-ui-fonts": "^0.0.2",
-    "@utilitywarehouse/customer-ui-design-tokens": "2.0.1",
+    "@utilitywarehouse/customer-ui-design-tokens": "2.0.2",
     "@utilitywarehouse/customer-ui-react-icons": "1.0.2",
     "babel-loader": "^8.2.2",
     "chromatic": "^6.7.3",
@@ -59,7 +59,7 @@
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
     "@mui/material": "^5.10.5",
-    "@utilitywarehouse/customer-ui-design-tokens": "2.0.1",
+    "@utilitywarehouse/customer-ui-design-tokens": "2.0.2",
     "@utilitywarehouse/customer-ui-react-icons": "1.0.2",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
