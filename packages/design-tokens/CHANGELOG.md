@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-design-tokens
 
+## 2.0.2
+
+### Patch Changes
+
+- [#513](https://github.com/utilitywarehouse/customer-web-ui/pull/513) [`94335d4`](https://github.com/utilitywarehouse/customer-web-ui/commit/94335d47674674d77632e05d1b9f946e007748c3) Thanks [@robphoenix](https://github.com/robphoenix)! - do not include `src` directory in bundle
+
 ## 2.0.1
 
 ### Patch Changes

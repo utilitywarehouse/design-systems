@@ -1,5 +1,12 @@
 # @utilitywarehouse/customer-ui-material
 
+## 2.0.4
+
+### Patch Changes
+
+- Updated dependencies [[`94335d4`](https://github.com/utilitywarehouse/customer-web-ui/commit/94335d47674674d77632e05d1b9f946e007748c3)]:
+  - @utilitywarehouse/customer-ui-design-tokens@2.0.2
+
 ## 2.0.3
 
 ### Patch Changes
