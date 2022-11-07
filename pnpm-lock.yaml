@@ -8,6 +8,7 @@ importers:
       '@changesets/cli': ^2.23.1
       '@typescript-eslint/eslint-plugin': ^5.40.0
       '@typescript-eslint/parser': ^5.40.0
+      '@utilitywarehouse/prettier-config': ^0.0.2
       eslint: ^8.25.0
       eslint-config-airbnb-typescript: ^17.0.0
       eslint-config-prettier: ^8.5.0
@@ -29,6 +30,7 @@ importers:
       '@changesets/cli': 2.25.0
       '@typescript-eslint/eslint-plugin': 5.40.0_25sstg4uu2sk4pm7xcyzuov7xq
       '@typescript-eslint/parser': 5.40.0_z4bbprzjrhnsfa24uvmcbu7f5q
+      '@utilitywarehouse/prettier-config': 0.0.2
       eslint: 8.25.0
       eslint-config-airbnb-typescript: 17.0.0_wpek5gzc66ktps2dsxbyiwvp54
       eslint-config-prettier: 8.5.0_eslint@8.25.0
@@ -4168,6 +4170,10 @@ packages:
 
   /@utilitywarehouse/customer-ui-react-icons/1.0.2:
     resolution: {integrity: sha512-5FhG0aZl3lrxM8S6bmnWU6k9uP07nhLa0sRczFX09KYKuf/M/Q3pWKWWzHXURMbJ80H6cY2F9HDDsR4XRL7C1Q==}
+    dev: true
+
+  /@utilitywarehouse/prettier-config/0.0.2:
+    resolution: {integrity: sha512-8ZJvfTn/5IuU6WvdFkQEqjXEsFR3iU4BvsP525IV7dPFZMU4v5nhzOQlEuXDcsB1VPvflfMLiky6l9QzNsDpqA==}
     dev: true
 
   /@utilitywarehouse/uw-ui-fonts/0.0.3:
