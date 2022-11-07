@@ -1,19 +1,19 @@
-import { BackgroundProps } from "./components/Background";
+import { BackgroundProps } from './components/Background';
 
-export const customerUiPrefix = "uw-cwui";
+export const customerUiPrefix = 'uw-cwui';
 
 export const px = (value: string | number): string => `${value}px`;
 
 export const isHeadingVariant = (variant: string): boolean => {
-  const headingVariants = ["displayHeading", "h1", "h2", "h3", "h4"];
+  const headingVariants = ['displayHeading', 'h1', 'h2', 'h3', 'h4'];
   return headingVariants.includes(variant);
 };
 
 export const isBrandBackgroundColor = (
-  backgroundColor: BackgroundProps["backgroundColor"]
+  backgroundColor: BackgroundProps['backgroundColor']
 ): boolean => {
   if (!backgroundColor) return false;
-  const brandBackgroundColors = ["midnight", "purple"];
+  const brandBackgroundColors = ['midnight', 'purple'];
   return brandBackgroundColors.includes(backgroundColor);
 };
 
@@ -37,17 +37,12 @@ export interface GetRandomStringOptions {
 
 type GetRandomString = (options?: GetRandomStringOptions) => string;
 
-export const getRandomString: GetRandomString = ({
-  prefix,
-  length = 16,
-} = {}): string => {
-  const characters = new Array(26)
-    .fill(null)
-    .map((_, index) => String.fromCharCode(index + 97));
+export const getRandomString: GetRandomString = ({ prefix, length = 16 } = {}): string => {
+  const characters = new Array(26).fill(null).map((_, index) => String.fromCharCode(index + 97));
 
   const randomStringArray = new Array(length)
     .fill(null)
     .map(() => characters[Math.floor(Math.random() * characters.length)]);
 
-  return `${prefix ?? ""}${randomStringArray.join("")}`;
+  return `${prefix ?? ''}${randomStringArray.join('')}`;
 };

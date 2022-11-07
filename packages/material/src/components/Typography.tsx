@@ -1,21 +1,12 @@
-import React from "react";
-import MuiTypography, {
-  TypographyProps as MuiTypographyProps,
-} from "@mui/material/Typography";
-import {
-  colors,
-  fonts,
-  fontWeights,
-} from "@utilitywarehouse/customer-ui-design-tokens";
-import { customerUiPrefix, isBrandBackgroundColor } from "../utils";
-import { Theme } from "@mui/material/styles";
-import { useBackground } from "./Background";
-import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
-import { clsx } from "clsx";
-import {
-  OverridableComponent,
-  OverrideProps,
-} from "@mui/material/OverridableComponent";
+import React from 'react';
+import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
+import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
+import { customerUiPrefix, isBrandBackgroundColor } from '../utils';
+import { Theme } from '@mui/material/styles';
+import { useBackground } from './Background';
+import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
+import { clsx } from 'clsx';
+import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 
 const PREFIX = `${customerUiPrefix}-Typography`;
 export const typographyClasses = {
@@ -27,31 +18,29 @@ export const typographyClasses = {
   semibold: `${PREFIX}-semibold`,
 };
 
-type defaultComponent = "span";
+type defaultComponent = 'span';
 
 interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
   extends Pick<
     MuiTypographyProps<D, P>,
-    | "sx"
-    | "gutterBottom"
-    | "paragraph"
-    | "align"
-    | "classes"
-    | "className"
-    | "noWrap"
-    | "textTransform"
-    | "letterSpacing"
-    | "children"
+    | 'sx'
+    | 'gutterBottom'
+    | 'paragraph'
+    | 'align'
+    | 'classes'
+    | 'className'
+    | 'noWrap'
+    | 'textTransform'
+    | 'letterSpacing'
+    | 'children'
   > {
-  color?: "primary" | "secondary" | "success" | "error";
-  variant?: MuiTypographyProps["variant"];
+  color?: 'primary' | 'secondary' | 'success' | 'error';
+  variant?: MuiTypographyProps['variant'];
   /**
    * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
    */
-  forwardedRef?: React.Ref<
-    HTMLElement | HTMLSpanElement | HTMLParagraphElement
-  >;
-  fontWeight?: "regular" | "semibold";
+  forwardedRef?: React.Ref<HTMLElement | HTMLSpanElement | HTMLParagraphElement>;
+  fontWeight?: 'regular' | 'semibold';
 }
 
 interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
@@ -59,16 +48,16 @@ interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
   defaultComponent: D;
 }
 
-export type TypographyProps<
-  D extends React.ElementType = defaultComponent,
-  P = {}
-> = OverrideProps<TypeMap<D, P>, D>;
+export type TypographyProps<D extends React.ElementType = defaultComponent, P = {}> = OverrideProps<
+  TypeMap<D, P>,
+  D
+>;
 
 const Typography = React.forwardRef(function Typography(
   {
-    color = "primary",
-    variant = "body",
-    fontWeight = "regular",
+    color = 'primary',
+    variant = 'body',
+    fontWeight = 'regular',
     forwardedRef,
     className,
     ...props
@@ -77,27 +66,27 @@ const Typography = React.forwardRef(function Typography(
 ) {
   if (forwardedRef !== undefined) {
     console.warn(
-      "forwardedRef on the Typography component is deprecated in v2 and will be removed in v3. Please use ref instead."
+      'forwardedRef on the Typography component is deprecated in v2 and will be removed in v3. Please use ref instead.'
     );
   }
 
   const { backgroundColor } = useBackground();
 
   const variantMapping = {
-    displayHeading: "h1",
-    h1: "h1",
-    h2: "h2",
-    h3: "h3",
-    h4: "h4",
-    subtitle: "p",
-    body: "p",
-    legalNote: "p",
-    caption: "span",
+    displayHeading: 'h1',
+    h1: 'h1',
+    h2: 'h2',
+    h3: 'h3',
+    h4: 'h4',
+    subtitle: 'p',
+    body: 'p',
+    legalNote: 'p',
+    caption: 'span',
   };
 
   const classNames = clsx(typographyClasses[color], {
     [typographyClasses.inverse]: isBrandBackgroundColor(backgroundColor),
-    [typographyClasses.semibold]: fontWeight === "semibold",
+    [typographyClasses.semibold]: fontWeight === 'semibold',
     className: !!className,
   });
 
@@ -165,7 +154,7 @@ export const getTypographyConfiguration = (
       ...headingStyles,
       fontSize: theme.typography.pxToRem(42),
       lineHeight: 1,
-      [theme.breakpoints.up("desktop")]: {
+      [theme.breakpoints.up('desktop')]: {
         fontSize: theme.typography.pxToRem(64),
       },
     },
@@ -173,7 +162,7 @@ export const getTypographyConfiguration = (
       ...headingStyles,
       fontSize: theme.typography.pxToRem(32),
       lineHeight: 1.2,
-      [theme.breakpoints.up("desktop")]: {
+      [theme.breakpoints.up('desktop')]: {
         fontSize: theme.typography.pxToRem(42),
       },
     },
@@ -181,7 +170,7 @@ export const getTypographyConfiguration = (
       ...headingStyles,
       fontSize: theme.typography.pxToRem(28),
       lineHeight: 1.5,
-      [theme.breakpoints.up("desktop")]: {
+      [theme.breakpoints.up('desktop')]: {
         fontSize: theme.typography.pxToRem(32),
         lineHeight: 1.2,
       },
@@ -190,7 +179,7 @@ export const getTypographyConfiguration = (
       ...headingStyles,
       fontSize: theme.typography.pxToRem(22),
       lineHeight: 1.5,
-      [theme.breakpoints.up("desktop")]: {
+      [theme.breakpoints.up('desktop')]: {
         fontSize: theme.typography.pxToRem(24),
       },
     },
@@ -198,7 +187,7 @@ export const getTypographyConfiguration = (
       ...headingStyles,
       fontSize: theme.typography.pxToRem(18),
       lineHeight: 1.5,
-      [theme.breakpoints.up("desktop")]: {
+      [theme.breakpoints.up('desktop')]: {
         fontSize: theme.typography.pxToRem(20),
       },
     },
@@ -211,7 +200,7 @@ export const getTypographyConfiguration = (
       ...bodyStyles,
       fontSize: theme.typography.pxToRem(18),
       lineHeight: 1.5,
-      [theme.breakpoints.up("desktop")]: {
+      [theme.breakpoints.up('desktop')]: {
         fontSize: theme.typography.pxToRem(20),
       },
     },

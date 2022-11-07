@@ -1,6 +1,6 @@
-import * as React from "react";
-import MuiBox, { BoxProps, BoxTypeMap } from "@mui/material/Box";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import * as React from 'react';
+import MuiBox, { BoxProps, BoxTypeMap } from '@mui/material/Box';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 const Box = React.forwardRef(function Box(
   { sx, component, children, className, ...systemProps },

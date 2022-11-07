@@ -1,11 +1,11 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
 
-import { Menu, MenuItem, Box, Button } from "../../src";
-import { BackgroundStack } from "../utils";
+import { Menu, MenuItem, Box, Button } from '../../src';
+import { BackgroundStack } from '../utils';
 
 export default {
-  title: "Components/Menu",
+  title: 'Components/Menu',
   component: Menu,
   argTypes: {
     forwardedRef: { table: { disable: true } },
@@ -26,22 +26,22 @@ export const MenuStory: Story = () => {
     <BackgroundStack>
       <Box>
         <Button
-          id="basic-button"
-          aria-controls="basic-menu"
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
+          id='basic-button'
+          aria-controls='basic-menu'
+          aria-haspopup='true'
+          aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}
-          variant="tertiary"
+          variant='tertiary'
         >
           Dashboard
         </Button>
         <Menu
-          id="basic-menu"
+          id='basic-menu'
           anchorEl={anchorEl}
           open={open}
           onClose={handleClose}
           MenuListProps={{
-            "aria-labelledby": "basic-button",
+            'aria-labelledby': 'basic-button',
           }}
         >
           <MenuItem onClick={handleClose}>Profile</MenuItem>
@@ -52,4 +52,4 @@ export const MenuStory: Story = () => {
     </BackgroundStack>
   );
 };
-MenuStory.storyName = "Menu";
+MenuStory.storyName = 'Menu';

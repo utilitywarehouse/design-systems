@@ -8,6 +8,7 @@ importers:
       '@changesets/cli': ^2.23.1
       '@typescript-eslint/eslint-plugin': ^4.13.0
       '@typescript-eslint/parser': ^4.13.0
+      '@utilitywarehouse/prettier-config': ^0.0.2
       eslint: ^7.32.0
       eslint-config-prettier: ^7.2.0
       eslint-plugin-prettier: ^3.4.1
@@ -27,6 +28,7 @@ importers:
       '@changesets/cli': 2.24.3
       '@typescript-eslint/eslint-plugin': 4.33.0_qkm6m2dvh7633pj2jigehwm774
       '@typescript-eslint/parser': 4.33.0_dyxdave6dwjbccc5dgiifcmuza
+      '@utilitywarehouse/prettier-config': 0.0.2
       eslint: 7.32.0
       eslint-config-prettier: 7.2.0_eslint@7.32.0
       eslint-plugin-prettier: 3.4.1_krfuiecpk3xclvkrlwn2dh4uea
@@ -4070,6 +4072,10 @@ packages:
     dependencies:
       '@typescript-eslint/types': 4.33.0
       eslint-visitor-keys: 2.1.0
+    dev: true
+
+  /@utilitywarehouse/prettier-config/0.0.2:
+    resolution: {integrity: sha512-8ZJvfTn/5IuU6WvdFkQEqjXEsFR3iU4BvsP525IV7dPFZMU4v5nhzOQlEuXDcsB1VPvflfMLiky6l9QzNsDpqA==}
     dev: true
 
   /@utilitywarehouse/uw-ui-fonts/0.0.2:

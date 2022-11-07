@@ -1,17 +1,15 @@
-import React from "react";
+import React from 'react';
 import {
   createGenerateClassName,
   StylesProviderProps,
   StylesProvider as MuiStylesProvider,
-} from "@mui/styles";
-import { GenerateId } from "jss";
-import { getRandomString } from "../utils";
+} from '@mui/styles';
+import { GenerateId } from 'jss';
+import { getRandomString } from '../utils';
 
-export type { StylesProviderProps } from "@mui/styles";
+export type { StylesProviderProps } from '@mui/styles';
 
-const StylesProvider: React.FunctionComponent<StylesProviderProps> = (
-  props
-) => {
+const StylesProvider: React.FunctionComponent<StylesProviderProps> = props => {
   const [generateClassName, setGenerateClassName] = React.useState<{
     generateClassName: GenerateId;
   }>();
@@ -33,12 +31,7 @@ const StylesProvider: React.FunctionComponent<StylesProviderProps> = (
     return null;
   }
 
-  return (
-    <MuiStylesProvider
-      generateClassName={generateClassName.generateClassName}
-      {...props}
-    />
-  );
+  return <MuiStylesProvider generateClassName={generateClassName.generateClassName} {...props} />;
 };
 
 export default StylesProvider;

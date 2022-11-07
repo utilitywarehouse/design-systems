@@ -1,66 +1,66 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react";
+import React from 'react';
+import { Story, Meta } from '@storybook/react';
 
-import { Box, TextFieldProps, Background, TextField } from "../../src";
+import { Box, TextFieldProps, Background, TextField } from '../../src';
 
 export default {
-  title: "Components/TextField",
+  title: 'Components/TextField',
   component: TextField,
   argTypes: {
     forwardedRef: { table: { disable: true } },
     status: {
       control: {
-        type: "radio",
+        type: 'radio',
         options: {
-          default: "",
-          success: "success",
-          error: "error",
+          default: '',
+          success: 'success',
+          error: 'error',
         },
       },
     },
     disabled: {
       control: {
-        type: "boolean",
+        type: 'boolean',
       },
     },
     id: {
       control: {
-        type: "text",
+        type: 'text',
       },
     },
     label: {
       control: {
-        type: "text",
+        type: 'text',
       },
     },
     helperText: {
       control: {
-        type: "text",
+        type: 'text',
       },
     },
   },
   args: {
-    status: "",
+    status: '',
     disabled: false,
     multiline: false,
-    label: "Label",
-    helperText: "Helper text",
-    placeholder: "Placeholder",
+    label: 'Label',
+    helperText: 'Helper text',
+    placeholder: 'Placeholder',
   },
 } as Meta;
 
-export const TextfieldStory: Story<TextFieldProps> = (args) => {
+export const TextfieldStory: Story<TextFieldProps> = args => {
   const { ...rest } = args;
-  const backgroundColors = ["white", "whiteOwl", "lightTint"] as const;
+  const backgroundColors = ['white', 'whiteOwl', 'lightTint'] as const;
   return (
     <Box>
-      {backgroundColors.map((c) => (
+      {backgroundColors.map(c => (
         <Background
           key={c}
           backgroundColor={c}
           sx={{
-            display: "flex",
-            justifyContent: "center",
+            display: 'flex',
+            justifyContent: 'center',
             paddingY: 6,
             paddingX: 4,
           }}
@@ -72,4 +72,4 @@ export const TextfieldStory: Story<TextFieldProps> = (args) => {
   );
 };
 
-TextfieldStory.storyName = "TextField";
+TextfieldStory.storyName = 'TextField';

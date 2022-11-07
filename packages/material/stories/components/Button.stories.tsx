@@ -1,50 +1,50 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react";
+import React from 'react';
+import { Story, Meta } from '@storybook/react';
 
-import { Button } from "../../src";
-import type { ButtonProps } from "../../src";
-import { BackgroundStack } from "../utils";
-import Stack from "@mui/material/Stack";
+import { Button } from '../../src';
+import type { ButtonProps } from '../../src';
+import { BackgroundStack } from '../utils';
+import Stack from '@mui/material/Stack';
 
-const sizes = ["small", "medium", "large"] as const;
-const variants = ["primary", "secondary"] as const;
+const sizes = ['small', 'medium', 'large'] as const;
+const variants = ['primary', 'secondary'] as const;
 
 export default {
-  title: "Components/Button",
+  title: 'Components/Button',
   component: Button,
   argTypes: {
     forwardedRef: { table: { disable: true } },
     children: {
       control: {
-        type: "text",
+        type: 'text',
       },
     },
     href: {
       control: {
-        type: "text",
+        type: 'text',
       },
     },
     disabled: {
       control: {
-        type: "boolean",
+        type: 'boolean',
       },
     },
     variant: {
       control: {
-        type: "radio",
-        options: [...variants, "tertiary"],
+        type: 'radio',
+        options: [...variants, 'tertiary'],
       },
     },
     size: {
       control: {
-        type: "radio",
+        type: 'radio',
         options: sizes,
       },
     },
   },
   args: {
-    variant: "primary",
-    size: "medium",
+    variant: 'primary',
+    size: 'medium',
     disabled: false,
     fullWidth: false,
   },
@@ -53,26 +53,21 @@ export default {
 export const ButtonKitchenSinkStory: Story<ButtonProps> = () => (
   <BackgroundStack>
     <Stack spacing={4}>
-      {variants.map((variant) => (
-        <Stack key={variant} direction="row" spacing={2} alignItems="center">
+      {variants.map(variant => (
+        <Stack key={variant} direction='row' spacing={2} alignItems='center'>
           <>
-            {sizes.map((size) => (
-              <Button
-                key={size}
-                size={size}
-                variant={variant}
-                sx={{ textTransform: "capitalize" }}
-              >
+            {sizes.map(size => (
+              <Button key={size} size={size} variant={variant} sx={{ textTransform: 'capitalize' }}>
                 Button
               </Button>
             ))}
-            {sizes.map((size) => (
+            {sizes.map(size => (
               <Button
                 key={size}
                 size={size}
                 variant={variant}
                 disabled={true}
-                sx={{ textTransform: "capitalize" }}
+                sx={{ textTransform: 'capitalize' }}
               >
                 button
               </Button>
@@ -80,22 +75,18 @@ export const ButtonKitchenSinkStory: Story<ButtonProps> = () => (
           </>
         </Stack>
       ))}
-      <Stack direction="row" spacing={2} alignItems="center">
-        <Button variant="tertiary" sx={{ textTransform: "capitalize" }}>
+      <Stack direction='row' spacing={2} alignItems='center'>
+        <Button variant='tertiary' sx={{ textTransform: 'capitalize' }}>
           button
         </Button>
-        <Button
-          variant="tertiary"
-          disabled={true}
-          sx={{ textTransform: "capitalize" }}
-        >
+        <Button variant='tertiary' disabled={true} sx={{ textTransform: 'capitalize' }}>
           button
         </Button>
       </Stack>
     </Stack>
   </BackgroundStack>
 );
-ButtonKitchenSinkStory.storyName = "Kitchen Sink";
+ButtonKitchenSinkStory.storyName = 'Kitchen Sink';
 ButtonKitchenSinkStory.argTypes = {
   variant: { table: { disable: true } },
   size: { table: { disable: true } },
@@ -107,14 +98,14 @@ ButtonKitchenSinkStory.argTypes = {
   children: { table: { disable: true } },
 };
 
-export const ButtonCustomStory: Story<ButtonProps> = (args) => (
+export const ButtonCustomStory: Story<ButtonProps> = args => (
   <BackgroundStack>
     <Button {...args}>
       {args.children ? args.children : `${args.size} ${args.variant} button`}
     </Button>
   </BackgroundStack>
 );
-ButtonCustomStory.storyName = "Custom";
+ButtonCustomStory.storyName = 'Custom';
 ButtonCustomStory.argTypes = {
   classes: { table: { disable: true } },
   sx: { table: { disable: true } },

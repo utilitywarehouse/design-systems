@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface BreakpointOverrides {
     xs: false;
     sm: false;
@@ -29,7 +29,7 @@ declare module "@mui/material/styles" {
   }
 }
 
-declare module "@mui/material/Typography" {
+declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     displayHeading: true;
     subtitle: true;

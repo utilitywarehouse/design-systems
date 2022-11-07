@@ -1,21 +1,21 @@
-import React from "react";
-import FilledInput, { FilledInputProps } from "@mui/material/FilledInput";
+import React from 'react';
+import FilledInput, { FilledInputProps } from '@mui/material/FilledInput';
 import {
   colors,
   fonts,
   fontWeights,
   transitions,
-} from "@utilitywarehouse/customer-ui-design-tokens";
-import SuccessOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined";
-import WarningOutlined from "@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined";
-import { customerUiPrefix, getHexOpacity } from "../utils";
-import { useBackground } from "./Background";
-import Box from "./Box";
-import { Theme, Components, styled } from "@mui/material/styles";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import FormHelperText from "@mui/material/FormHelperText";
-import { clsx } from "clsx";
+} from '@utilitywarehouse/customer-ui-design-tokens';
+import SuccessOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined';
+import WarningOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined';
+import { customerUiPrefix, getHexOpacity } from '../utils';
+import { useBackground } from './Background';
+import Box from './Box';
+import { Theme, Components, styled } from '@mui/material/styles';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import FormHelperText from '@mui/material/FormHelperText';
+import { clsx } from 'clsx';
 
 const PREFIX = `${customerUiPrefix}-TextField`;
 export const textfieldClasses = {
@@ -23,12 +23,11 @@ export const textfieldClasses = {
   multiline: `${PREFIX}-multiline`,
 };
 
-const isSuccessStatus = (status?: string): boolean => status === "success";
-const isErrorStatus = (status?: string): boolean => status === "error";
+const isSuccessStatus = (status?: string): boolean => status === 'success';
+const isErrorStatus = (status?: string): boolean => status === 'error';
 
-export interface TextFieldProps
-  extends Omit<FilledInputProps, "ref" | "hiddenLabel" | "error"> {
-  status?: "success" | "error";
+export interface TextFieldProps extends Omit<FilledInputProps, 'ref' | 'hiddenLabel' | 'error'> {
+  status?: 'success' | 'error';
   label?: React.ReactNode;
   labelProps?: {
     id: string;
@@ -43,87 +42,82 @@ export interface TextFieldProps
 const SuccessIcon = styled(SuccessOutlined)({ fill: colors.jewel });
 const WarningIcon = styled(WarningOutlined)({ fill: colors.maroonFlush });
 const IconContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
+  display: 'flex',
   marginLeft: theme.spacing(0.5),
 }));
 
-const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(
-  function TextfieldInput({ status, endAdornment, className, ...props }, ref) {
-    const showIcon = !props.disabled;
-    const classNames = clsx({
-      [textfieldClasses.success]: !props.disabled && isSuccessStatus(status),
-      [textfieldClasses.multiline]: !!props.multiline,
-      className: !!className,
-    });
+const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(function TextfieldInput(
+  { status, endAdornment, className, ...props },
+  ref
+) {
+  const showIcon = !props.disabled;
+  const classNames = clsx({
+    [textfieldClasses.success]: !props.disabled && isSuccessStatus(status),
+    [textfieldClasses.multiline]: !!props.multiline,
+    className: !!className,
+  });
 
-    return (
-      <FilledInput
+  return (
+    <FilledInput
+      ref={ref}
+      className={classNames}
+      endAdornment={
+        <>
+          {showIcon && isErrorStatus(status) ? (
+            <IconContainer>
+              <WarningIcon />
+            </IconContainer>
+          ) : isSuccessStatus(status) ? (
+            <IconContainer>
+              <SuccessIcon />
+            </IconContainer>
+          ) : null}
+          {endAdornment ? <IconContainer>{endAdornment}</IconContainer> : null}
+        </>
+      }
+      {...props}
+    />
+  );
+});
+
+const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfield(
+  { label, labelProps, helperText, helperTextProps, multiline, ...props },
+  ref
+) {
+  const { status, disabled } = props;
+  const hasErrorStatus = !disabled && isErrorStatus(status);
+  const formControlProps = { error: hasErrorStatus, disabled };
+  const { backgroundColor } = useBackground();
+
+  // should only be used on white, light tint & cod grey backgrounds
+  const validBackgroundColors = ['lightTint', 'whiteOwl', 'white'];
+  if (!validBackgroundColors.includes(backgroundColor)) {
+    console.warn(
+      `Invalid background color for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackgroundColors
+        .map(l => `'${l}'`)
+        .join(', ')}]`
+    );
+  }
+
+  return (
+    <FormControl fullWidth={true} {...formControlProps}>
+      {label ? (
+        <InputLabel shrink id={labelProps?.id} htmlFor={props.id}>
+          {label}
+        </InputLabel>
+      ) : null}
+
+      <TextFieldInput
         ref={ref}
-        className={classNames}
-        endAdornment={
-          <>
-            {showIcon && isErrorStatus(status) ? (
-              <IconContainer>
-                <WarningIcon />
-              </IconContainer>
-            ) : isSuccessStatus(status) ? (
-              <IconContainer>
-                <SuccessIcon />
-              </IconContainer>
-            ) : null}
-            {endAdornment ? (
-              <IconContainer>{endAdornment}</IconContainer>
-            ) : null}
-          </>
-        }
         {...props}
+        multiline={multiline}
+        aria-describedby={helperTextProps?.id}
       />
-    );
-  }
-);
 
-const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
-  function Textfield(
-    { label, labelProps, helperText, helperTextProps, multiline, ...props },
-    ref
-  ) {
-    const { status, disabled } = props;
-    const hasErrorStatus = !disabled && isErrorStatus(status);
-    const formControlProps = { error: hasErrorStatus, disabled };
-    const { backgroundColor } = useBackground();
-
-    // should only be used on white, light tint & cod grey backgrounds
-    const validBackgroundColors = ["lightTint", "whiteOwl", "white"];
-    if (!validBackgroundColors.includes(backgroundColor)) {
-      console.warn(
-        `Invalid background color for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackgroundColors
-          .map((l) => `'${l}'`)
-          .join(", ")}]`
-      );
-    }
-
-    return (
-      <FormControl fullWidth={true} {...formControlProps}>
-        {label ? (
-          <InputLabel shrink id={labelProps?.id} htmlFor={props.id}>
-            {label}
-          </InputLabel>
-        ) : null}
-
-        <TextFieldInput
-          ref={ref}
-          {...props}
-          multiline={multiline}
-          aria-describedby={helperTextProps?.id}
-        />
-
-        {helperText ? (
-          <FormHelperText id={helperTextProps?.id}>{helperText}</FormHelperText>
-        ) : null}
-      </FormControl>
-    );
-  }
-);
+      {helperText ? <FormHelperText id={helperTextProps?.id}>{helperText}</FormHelperText> : null}
+    </FormControl>
+  );
+});
 
 export default TextField;
 
@@ -133,19 +127,19 @@ export const getTextFieldTheme = (theme: Theme): Components => {
       styleOverrides: {
         root: {
           transition: `${transitions.duration}ms ${transitions.easingFunction}`,
-          transitionProperty: "color",
-          position: "relative",
-          transform: "none",
+          transitionProperty: 'color',
+          position: 'relative',
+          transform: 'none',
           fontFamily: fonts.secondary,
           fontWeight: fontWeights.secondary.semibold,
           fontSize: theme.typography.pxToRem(16),
           lineHeight: 1,
           marginBottom: theme.spacing(1),
           color: colors.midnight,
-          "&.Mui-disabled": {
+          '&.Mui-disabled': {
             color: colors.codGray70,
           },
-          "&.Mui-error": {
+          '&.Mui-error': {
             color: colors.midnight,
           },
         },
@@ -160,7 +154,7 @@ export const getTextFieldTheme = (theme: Theme): Components => {
           margin: 0,
           marginTop: theme.spacing(1),
           color: colors.midnight,
-          "&.Mui-error": {
+          '&.Mui-error': {
             color: colors.maroonFlush,
           },
         },
@@ -179,7 +173,7 @@ export const getTextFieldTheme = (theme: Theme): Components => {
           borderRadius: 0,
           borderTopLeftRadius: 16,
           borderTopRightRadius: 16,
-          borderStyle: "solid",
+          borderStyle: 'solid',
           paddingLeft: theme.spacing(2),
           paddingRight: theme.spacing(2),
           borderBottom: 0,
@@ -189,73 +183,73 @@ export const getTextFieldTheme = (theme: Theme): Components => {
           borderBottomColor: colors.purple,
           borderWidth: 2,
           transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
-          ":hover": {
+          ':hover': {
             backgroundColor: colors.white,
             borderBottomColor: colors.blueRibbon,
-            "&:not(.Mui-disabled)": {
-              "&:before": {
+            '&:not(.Mui-disabled)': {
+              '&:before': {
                 borderWidth: 2,
                 transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
                 borderBottomColor: colors.blueRibbon,
               },
             },
           },
-          "&:before": {
+          '&:before': {
             borderColor: colors.purple,
             borderWidth: 2,
             transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
           },
-          "&:after": {
+          '&:after': {
             borderColor: colors.blueRibbon,
             borderWidth: 2,
             transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
           },
-          "&.Mui-focused": {
+          '&.Mui-focused': {
             backgroundColor: colors.white,
             borderColor: colors.blueRibbon,
           },
-          "&.Mui-disabled": {
+          '&.Mui-disabled': {
             color: colors.midnight,
             backgroundColor: `${colors.midnight}05`,
-            borderColor: "transparent",
+            borderColor: 'transparent',
             borderBottomColor: `${colors.purple}05`,
             transition: `all ${transitions.duration}ms ${transitions.easingFunction}`,
-            "&:before": {
+            '&:before': {
               borderColor: `${colors.purple}05`,
-              borderBottomStyle: "solid",
+              borderBottomStyle: 'solid',
             },
-            "&:after": {
+            '&:after': {
               borderColor: `${colors.purple}05`,
             },
           },
-          "&.Mui-error": {
-            "&.Mui-focused": {
+          '&.Mui-error': {
+            '&.Mui-focused': {
               borderColor: colors.maroonFlush,
             },
-            "&:not(.Mui-disabled)": {
-              "&:after": {
+            '&:not(.Mui-disabled)': {
+              '&:after': {
                 borderColor: colors.maroonFlush,
               },
             },
           },
           [`&.${textfieldClasses.success}`]: {
-            ":before": {
+            ':before': {
               borderBottomColor: colors.jewel,
             },
-            "&:after": {
+            '&:after': {
               borderBottomColor: colors.jewel,
             },
-            ":hover": {
-              "&:not(.Mui-disabled)": {
-                "&:before": {
+            ':hover': {
+              '&:not(.Mui-disabled)': {
+                '&:before': {
                   borderColor: colors.jewel,
                 },
               },
             },
-            "&.Mui-focused": {
+            '&.Mui-focused': {
               borderColor: colors.jewel,
             },
-            "&:not(.Mui-disabled)": {
+            '&:not(.Mui-disabled)': {
               borderBottomColor: colors.jewel,
             },
           },
@@ -264,7 +258,7 @@ export const getTextFieldTheme = (theme: Theme): Components => {
             paddingTop: 15,
             paddingBottom: 14,
             // height is overridden to allow the input to expand with any number of lines
-            height: "auto",
+            height: 'auto',
             minHeight: 58,
           },
         },
