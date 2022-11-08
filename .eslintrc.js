@@ -24,6 +24,12 @@ module.exports = {
   plugins: ['react', '@typescript-eslint/eslint-plugin', 'jsx-a11y', 'prettier', 'react-hooks'],
   rules: {
     'import/no-extraneous-dependencies': 'off',
+    'no-cond-assign': 'error',
+    'no-constant-condition': 'error',
+    'no-unreachable': 'error',
+    'no-unused-expressions': 'error',
+    'no-constant-binary-expression': 'error',
+    'no-sequences': 'error',
   },
   settings: {
     react: {
