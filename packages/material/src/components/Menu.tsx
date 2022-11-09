@@ -38,7 +38,7 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>(({ forwardedRef, ...pro
     );
   }
   return (
-    <BackgroundProvider backgroundColor='white'>
+    <BackgroundProvider backgroundColor="white">
       <StyledMenu {...props} ref={forwardedRef || ref} />
     </BackgroundProvider>
   );
@@ -72,7 +72,7 @@ export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>(
     }
     return (
       <StyledMenuItem {...props} ref={forwardedRef || ref}>
-        <Typography component='span'>{props.children}</Typography>
+        <Typography component="span">{props.children}</Typography>
       </StyledMenuItem>
     );
   }

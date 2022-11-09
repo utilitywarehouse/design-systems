@@ -37,7 +37,7 @@ export const BackgroundStory: Story<BackgroundProps> = args => {
           borderRadius: 4,
         }}
       >
-        <Typography variant='h2' textTransform='capitalize'>
+        <Typography variant="h2" textTransform="capitalize">
           {args.backgroundColor}
         </Typography>
       </Background>

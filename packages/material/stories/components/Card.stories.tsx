@@ -20,7 +20,7 @@ export const CardStory: Story<CardProps> = args => {
     <BackgroundStack>
       <Card {...args} sx={{ maxWidth: 500, height: 'fit-content' }}>
         <Stack spacing={3}>
-          <Typography variant='h3' textTransform='capitalize'>
+          <Typography variant="h3" textTransform="capitalize">
             card component
           </Typography>
           <Typography>
@@ -29,7 +29,7 @@ export const CardStory: Story<CardProps> = args => {
           </Typography>
         </Stack>
         <Box sx={{ marginTop: 4 }}>
-          <Button variant='secondary'>Learn more</Button>
+          <Button variant="secondary">Learn more</Button>
         </Box>
       </Card>
     </BackgroundStack>

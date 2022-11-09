@@ -61,7 +61,7 @@ export type LinkProps<D extends React.ElementType = defaultComponent, P = {}> = 
 >;
 
 const Link = React.forwardRef(function Link({ variant = 'body', ...props }, ref) {
-  return <StyledLink ref={ref} variant={variant} {...props} underline='none' />;
+  return <StyledLink ref={ref} variant={variant} {...props} underline="none" />;
 }) as OverridableComponent<LinkTypeMap>;
 
 export type CustomNavLinkProps<
@@ -137,7 +137,7 @@ export const NavLink = React.forwardRef(function NavLink(
     <StyledNavLink
       ref={ref}
       variant={variant}
-      underline='none'
+      underline="none"
       onClick={handleClick}
       active={active}
       disabled={disabled}

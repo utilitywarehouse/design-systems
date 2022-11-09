@@ -80,7 +80,7 @@ export const TypographyKitchenSinkStory: Story<TypographyProps> = args => {
     <BackgroundStack>
       <Stack spacing={2}>
         {variants.map(v => (
-          <Stack key={v} spacing={4} direction='row'>
+          <Stack key={v} spacing={4} direction="row">
             <Typography {...args} variant={v} />
           </Stack>
         ))}

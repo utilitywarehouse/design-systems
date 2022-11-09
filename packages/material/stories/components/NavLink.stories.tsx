@@ -43,7 +43,7 @@ export default {
 export const NavLinkStory: Story<NavLinkProps> = args => {
   return (
     <BackgroundStack>
-      <NavLink href='#' {...args} />
+      <NavLink href="#" {...args} />
     </BackgroundStack>
   );
 };

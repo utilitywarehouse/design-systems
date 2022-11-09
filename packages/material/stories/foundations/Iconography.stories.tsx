@@ -24,7 +24,7 @@ const Icons: React.FC<IconsProps> = props => {
 
   return (
     <Stack spacing={2}>
-      <Typography variant='h2'>{iconSet}</Typography>
+      <Typography variant="h2">{iconSet}</Typography>
       <Box
         sx={{
           display: 'grid',
@@ -48,15 +48,15 @@ const Icons: React.FC<IconsProps> = props => {
               }}
             >
               <Tooltip
-                placement='top'
+                placement="top"
                 title={copied ? 'Copied!' : 'Click to copy import'}
                 TransitionProps={{
                   onExited: () => setCopied(false),
                 }}
               >
-                <Stack spacing={2} alignItems='center'>
+                <Stack spacing={2} alignItems="center">
                   <IconComponent fill={colors.midnight} />
-                  <Typography component='span'>{icon.name.replace('Icon', '')}</Typography>
+                  <Typography component="span">{icon.name.replace('Icon', '')}</Typography>
                 </Stack>
               </Tooltip>
             </InteractiveCard>
@@ -68,10 +68,10 @@ const Icons: React.FC<IconsProps> = props => {
 };
 
 export const IconsStory: Story = () => (
-  <Background backgroundColor='whiteOwl' sx={{ padding: 6 }}>
+  <Background backgroundColor="whiteOwl" sx={{ padding: 6 }}>
     <Stack spacing={4}>
-      <Icons iconSet='24x24' />
-      <Icons iconSet='48x48' />
+      <Icons iconSet="24x24" />
+      <Icons iconSet="48x48" />
     </Stack>
   </Background>
 );

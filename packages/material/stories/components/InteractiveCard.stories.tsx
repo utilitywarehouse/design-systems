@@ -26,7 +26,7 @@ export default {
 export const InteractiveCardKitchenSinkStory: Story<InteractiveCardProps> = () => {
   return (
     <BackgroundStack>
-      <Stack direction='row' spacing={2} alignItems='center'>
+      <Stack direction="row" spacing={2} alignItems="center">
         {sizes.map(size => (
           <InteractiveCard
             key={size}
@@ -34,7 +34,7 @@ export const InteractiveCardKitchenSinkStory: Story<InteractiveCardProps> = () =
             onClick={(e: React.MouseEvent) => e.preventDefault()}
             containerProps={{ sx: { width: 'fit-content' } }}
           >
-            <Typography component='span' textTransform='capitalize'>
+            <Typography component="span" textTransform="capitalize">
               {size} interactive card
             </Typography>
           </InteractiveCard>
@@ -58,7 +58,7 @@ export const InteractiveCardCustomStory: Story<InteractiveCardProps> = args => {
         onClick={(e: React.MouseEvent) => e.preventDefault()}
         containerProps={{ sx: { width: 'fit-content' } }}
       >
-        <Typography component='span' textTransform='capitalize'>
+        <Typography component="span" textTransform="capitalize">
           interactive card
         </Typography>
       </InteractiveCard>

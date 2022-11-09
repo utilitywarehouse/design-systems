@@ -170,7 +170,7 @@ const InteractiveCardComponent = React.forwardRef(function InteractiveCardCompon
             </Box>
           )}
           <StyledWrapper size={size}>
-            <Typography component='div'>{children}</Typography>
+            <Typography component="div">{children}</Typography>
           </StyledWrapper>
         </Box>
       </ButtonBase>

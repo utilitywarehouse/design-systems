@@ -51,9 +51,9 @@ export const SpacerStory: Story<SpacerProps> = args => {
         alignItems: 'center',
       }}
     >
-      <Box component='span' sx={sx} />
+      <Box component="span" sx={sx} />
       <Spacer {...args} />
-      <Box component='span' sx={sx} />
+      <Box component="span" sx={sx} />
     </Box>
   );
 };

@@ -54,7 +54,7 @@ export const ButtonKitchenSinkStory: Story<ButtonProps> = () => (
   <BackgroundStack>
     <Stack spacing={4}>
       {variants.map(variant => (
-        <Stack key={variant} direction='row' spacing={2} alignItems='center'>
+        <Stack key={variant} direction="row" spacing={2} alignItems="center">
           <>
             {sizes.map(size => (
               <Button key={size} size={size} variant={variant} sx={{ textTransform: 'capitalize' }}>
@@ -75,11 +75,11 @@ export const ButtonKitchenSinkStory: Story<ButtonProps> = () => (
           </>
         </Stack>
       ))}
-      <Stack direction='row' spacing={2} alignItems='center'>
-        <Button variant='tertiary' sx={{ textTransform: 'capitalize' }}>
+      <Stack direction="row" spacing={2} alignItems="center">
+        <Button variant="tertiary" sx={{ textTransform: 'capitalize' }}>
           button
         </Button>
-        <Button variant='tertiary' disabled={true} sx={{ textTransform: 'capitalize' }}>
+        <Button variant="tertiary" disabled={true} sx={{ textTransform: 'capitalize' }}>
           button
         </Button>
       </Stack>

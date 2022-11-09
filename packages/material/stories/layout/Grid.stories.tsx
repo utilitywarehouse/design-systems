@@ -10,20 +10,20 @@ export default {
 } as Meta;
 
 const LargeContent: React.FC = props => (
-  <Background backgroundColor='purple' sx={{ height: 200, display: 'grid', placeItems: 'center' }}>
-    <Typography {...props} component='span' textTransform='capitalize' />
+  <Background backgroundColor="purple" sx={{ height: 200, display: 'grid', placeItems: 'center' }}>
+    <Typography {...props} component="span" textTransform="capitalize" />
   </Background>
 );
 
 const SmallContent: React.FC = props => (
-  <Background backgroundColor='midnight' sx={{ height: 80, display: 'grid', placeItems: 'center' }}>
-    <Typography {...props} component='span' textTransform='capitalize' />
+  <Background backgroundColor="midnight" sx={{ height: 80, display: 'grid', placeItems: 'center' }}>
+    <Typography {...props} component="span" textTransform="capitalize" />
   </Background>
 );
 
 export const GridStory: Story<GridProps> = () => {
   return (
-    <Background backgroundColor='whiteOwl' sx={{ padding: 3 }}>
+    <Background backgroundColor="whiteOwl" sx={{ padding: 3 }}>
       <Grid container>
         <Grid item mobile={4} desktop={8}>
           <LargeContent>account actions</LargeContent>

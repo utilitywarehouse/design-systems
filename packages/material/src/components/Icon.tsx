@@ -25,7 +25,7 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(function Icon(
 
   const IconComponent = icon;
   return (
-    <Box ref={forwardedRef || ref} component='span' {...props}>
+    <Box ref={forwardedRef || ref} component="span" {...props}>
       <IconComponent {...iconProps} fill={color} />
     </Box>
   );

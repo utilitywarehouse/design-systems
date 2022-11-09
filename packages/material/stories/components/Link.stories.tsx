@@ -45,11 +45,11 @@ export const LinkStory: Story<
     <BackgroundStack>
       <Stack spacing={2}>
         <Typography variant={typographyVariant}>
-          <Link href='#' {...rest} />
+          <Link href="#" {...rest} />
         </Typography>
         <Typography variant={typographyVariant}>
           This is an inline{' '}
-          <Link href='#' {...rest} variant='inherit'>
+          <Link href="#" {...rest} variant="inherit">
             link
           </Link>
           .
