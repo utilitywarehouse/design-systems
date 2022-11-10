@@ -64,7 +64,6 @@ importers:
       '@storybook/addons': ^6.5.9
       '@storybook/react': ^6.5.9
       '@storybook/theming': ^6.5.9
-      '@types/lodash.merge': ^4.6.7
       '@types/react': ^17.0.0 || ^18.0.0
       '@utilitywarehouse/customer-ui-design-tokens': 2.0.2
       '@utilitywarehouse/customer-ui-react-icons': 1.0.2
@@ -74,7 +73,6 @@ importers:
       clsx: ^1.2.1
       css-loader: ^5.2.0
       jss: ^10.9.0
-      lodash.merge: ^4.6.2
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
       style-loader: ^2.0.0
@@ -85,7 +83,6 @@ importers:
       '@mui/styles': 5.10.2_skqlhrap4das3cz5b6iqdn2lqi
       clsx: 1.2.1
       jss: 10.9.2
-      lodash.merge: 4.6.2
     devDependencies:
       '@babel/core': 7.18.13
       '@emotion/react': 11.10.0_u65opluo5sjgh3eblfliq6jsnm
@@ -98,7 +95,6 @@ importers:
       '@storybook/addons': 6.5.10_sfoxds7t5ydpegc3knd667wn6m
       '@storybook/react': 6.5.10_cj7jo2wdqnlzahroqwpzjapuh4
       '@storybook/theming': 6.5.10_sfoxds7t5ydpegc3knd667wn6m
-      '@types/lodash.merge': 4.6.7
       '@types/react': 17.0.48
       '@utilitywarehouse/customer-ui-design-tokens': link:../design-tokens
       '@utilitywarehouse/customer-ui-react-icons': link:../react-icons
@@ -3811,12 +3807,6 @@ packages:
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
-    dev: true
-
-  /@types/lodash.merge/4.6.7:
-    resolution: {integrity: sha512-OwxUJ9E50gw3LnAefSHJPHaBLGEKmQBQ7CZe/xflHkyy/wH2zVyEIAKReHvVrrn7zKdF58p16We9kMfh7v0RRQ==}
-    dependencies:
-      '@types/lodash': 4.14.184
     dev: true
 
   /@types/lodash/4.14.184:
@@ -8664,6 +8654,7 @@ packages:
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+    dev: true
 
   /lodash.startcase/4.4.0:
     resolution: {integrity: sha512-+WKqsK294HMSc2jEbNgpHpd0JfIBhp7rEV4aqXWqFr6AlXov+SlcgB1Fv01y2kGe3Gc8nMW7VA0SrGuSkRfIEg==}
