@@ -1,5 +1,11 @@
 # @utilitywarehouse/customer-ui-material
 
+## 2.0.5
+
+### Patch Changes
+
+- [`d14305e`](https://github.com/utilitywarehouse/customer-web-ui/commit/d14305e185fd74174c3131a76b54755a513d5fb0) Thanks [@robphoenix](https://github.com/robphoenix)! - remove theme prop from ThemeProvider as this needs deeper consideration
+
 ## 2.0.4
 
 ### Patch Changes
