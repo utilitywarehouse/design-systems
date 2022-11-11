@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import { styled } from '@mui/material/styles';
-import Box, { BoxProps } from './Box';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { BackgroundColor, NeutralBackgroundColor, InverseBackgroundColor } from '../types';
+import Box, { BoxProps } from '../Box';
 
 const DefaultBackgroundColor: BackgroundColor = 'white' as BackgroundColor;
 
@@ -40,7 +40,7 @@ interface StyledBackgroundProps {
 }
 
 const StyledBackground = styled(Box, {
-  shouldForwardProp: (prop) => prop !== 'backgroundColor',
+  shouldForwardProp: prop => prop !== 'backgroundColor',
 })<StyledBackgroundProps>(({ backgroundColor }) => ({
   backgroundColor: colors[backgroundColor],
 }));
