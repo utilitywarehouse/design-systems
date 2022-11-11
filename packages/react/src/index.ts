@@ -12,6 +12,9 @@ export * from './Background';
 export { default as Grid } from './Grid';
 export * from './Grid';
 
+export { default as Stack } from './Stack';
+export * from './Stack';
+
 export { default as ThemeProvider } from './ThemeProvider';
 export * from './ThemeProvider';
 
