@@ -20,7 +20,6 @@ interface Props {
   color?: Color;
   selected: boolean;
   disabled?: boolean;
-  minWidth?: number;
 }
 
 const StyledFormControlLabel = styled(FormControlLabel)(() => ({
@@ -45,20 +44,22 @@ const StyledRadio = styled(Radio)<{ disabled: boolean }>(({ disabled }) => ({
 }));
 
 const StyledBox = styled(Box, {
-  shouldForwardProp: (prop) =>
-    prop !== "selected" && prop !== "disabled" && prop !== "minWidth",
-})<{ selected: boolean; disabled: boolean; minWidth: number }>(
-  ({ theme, selected, disabled, minWidth }) => {
+  shouldForwardProp: (prop) => prop !== "selected" && prop !== "disabled",
+})<{ selected: boolean; disabled: boolean }>(
+  ({ theme, selected, disabled }) => {
     const baseStyle = {
+      // display: "inline-flex",
       display: "flex",
-      height: "100%",
-      minWidth,
+      // flexGrow: 1,
+      // minWidth: "auto",
+      height: 56,
       borderRadius: theme.spacing(1),
       borderWidth: "2px",
       borderColor: selected ? colors.cyan : colors.codGray20,
       borderStyle: "solid",
       cursor: "pointer",
       backgroundColor: colors.white,
+      margin: 16,
     };
 
     return disabled
