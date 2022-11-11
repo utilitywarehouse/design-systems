@@ -28,7 +28,7 @@ const StyledLabel = styled(Typography, {
 
 const StyledRadio = styled(Radio)<{ disabled: boolean }>(({ disabled }) => ({
   '#radioBox:hover &': {
-    color: disabled ? '' : '#ACCAFD',
+    color: disabled ? '' : colors.cyan30,
   },
 }));
 
@@ -55,12 +55,12 @@ const StyledBox = styled(Box, {
     : {
         ...baseStyle,
         '&:hover': {
-          background: '#E9F1FF',
-          borderColor: '#ACCAFD',
+          background: colors.cyan10,
+          borderColor: colors.cyan30,
         },
         '&:focus': {
-          background: '#D3E3FE',
-          borderColor: '#75A7FD',
+          background: colors.cyan20,
+          borderColor: colors.cyan40,
         },
       };
 });
