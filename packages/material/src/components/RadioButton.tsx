@@ -48,10 +48,7 @@ const StyledBox = styled(Box, {
 })<{ selected: boolean; disabled: boolean }>(
   ({ theme, selected, disabled }) => {
     const baseStyle = {
-      // display: "inline-flex",
       display: "flex",
-      // flexGrow: 1,
-      // minWidth: "auto",
       height: 56,
       borderRadius: theme.spacing(1),
       borderWidth: "2px",
