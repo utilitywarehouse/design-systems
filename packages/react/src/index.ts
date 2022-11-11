@@ -12,6 +12,9 @@ export * from './Background';
 export { default as Grid } from './Grid';
 export * from './Grid';
 
+export { default as Spacer } from './Spacer';
+export * from './Spacer';
+
 export { default as ThemeProvider } from './ThemeProvider';
 export * from './ThemeProvider';
 
