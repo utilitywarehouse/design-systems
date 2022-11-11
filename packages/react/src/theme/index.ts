@@ -6,16 +6,16 @@ import {
   fonts,
   fontWeights,
 } from '@utilitywarehouse/customer-ui-design-tokens';
-import { cssBaselineThemeOverrides } from '../components/CssBaseline';
-import { getTypographyConfiguration } from '../components/Typography';
+import { getTypographyThemeOverrides } from '../Typography';
+import { cssBaselineThemeOverrides } from './overrides';
 
-export const theme: MuiTheme = createTheme({
+const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
   spacing: (multiplier: number) => multiplier * spacingBase,
   components: { ...cssBaselineThemeOverrides },
 });
 
-const typographyConfiguration = getTypographyConfiguration(theme);
+const typographyConfiguration = getTypographyThemeOverrides(theme);
 const { pxToRem } = theme.typography;
 const customTypography = {
   pxToRem,
@@ -68,4 +68,5 @@ export const customPalette = {
 theme.typography = customTypography;
 theme.palette = customPalette;
 
+export default theme;
 export type Theme = typeof theme;

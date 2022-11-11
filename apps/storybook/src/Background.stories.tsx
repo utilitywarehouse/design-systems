@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { backgroundColors, Box, Typography, Background } from '@utilitywarehouse/uw-web-ui-react';
+import { backgroundColors, Typography, Background, Box } from '@utilitywarehouse/uw-web-ui-react';
 import type { BackgroundProps } from '@utilitywarehouse/uw-web-ui-react';
 import { colors, borderRadius } from '@utilitywarehouse/customer-ui-design-tokens';
 
@@ -23,9 +23,8 @@ export default {
   },
 } as Meta;
 
-export const BackgroundStory: Story<BackgroundProps> = (args) => {
+export const BackgroundStory: Story<BackgroundProps> = args => {
   const hexValue = colors[args.backgroundColor];
-  console.log({ hexValue });
   return (
     <Box sx={{ padding: 3 }}>
       <Background
