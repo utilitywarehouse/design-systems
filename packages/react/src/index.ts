@@ -9,6 +9,9 @@ export * from './Box';
 export { default as Background } from './Background';
 export * from './Background';
 
+export { default as Grid } from './Grid';
+export * from './Grid';
+
 export { default as ThemeProvider } from './ThemeProvider';
 export * from './ThemeProvider';
 
