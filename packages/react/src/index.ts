@@ -15,6 +15,9 @@ export * from './Grid';
 export { default as Stack } from './Stack';
 export * from './Stack';
 
+export { default as Spacer } from './Spacer';
+export * from './Spacer';
+
 export { default as ThemeProvider } from './ThemeProvider';
 export * from './ThemeProvider';
 
