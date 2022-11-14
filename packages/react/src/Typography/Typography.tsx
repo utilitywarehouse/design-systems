@@ -78,7 +78,7 @@ const Typography = React.forwardRef(function Typography(
       variantMapping={variantMapping}
       className={classNames}
       ref={ref}
-      // sx={{ border: '1px solid red' }}
+      sx={{ border: '1px solid red' }}
     />
   );
 }) as OverridableComponent<TypeMap>;

@@ -26,14 +26,14 @@ module.exports = {
       optimizeDeps: {
         include: ['@utilitywarehouse/uw-web-ui-react'],
       },
-      // resolve: {
-      //   alias: [
-      //     {
-      //       find: '@utilitywarehouse/uw-web-ui-react',
-      //       replacement: path.resolve(__dirname, '../../../packages/react'),
-      //     },
-      //   ],
-      // },
+      resolve: {
+        alias: [
+          {
+            find: '@utilitywarehouse/uw-web-ui-react',
+            replacement: path.resolve(__dirname, '../../../packages/react'),
+          },
+        ],
+      },
     };
   },
 };
