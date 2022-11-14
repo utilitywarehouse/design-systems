@@ -73,7 +73,13 @@ const Typography = React.forwardRef(function Typography(
   });
 
   return (
-    <MuiTypography {...props} variantMapping={variantMapping} className={classNames} ref={ref} />
+    <MuiTypography
+      {...props}
+      variantMapping={variantMapping}
+      className={classNames}
+      ref={ref}
+      // sx={{ border: '1px solid red' }}
+    />
   );
 }) as OverridableComponent<TypeMap>;
 
