@@ -56,7 +56,6 @@ importers:
       '@storybook/addon-viewport': ^6.5.9
       '@storybook/addons': ^6.5.9
       '@storybook/builder-vite': ^0.2.5
-      '@storybook/builder-webpack4': ^6.5.12
       '@storybook/manager-webpack4': ^6.5.12
       '@storybook/react': ^6.5.12
       '@storybook/theming': ^6.5.9
@@ -65,31 +64,31 @@ importers:
       '@utilitywarehouse/customer-ui-design-tokens': ^2.0.2
       '@utilitywarehouse/customer-ui-react-icons': ^1.0.2
       '@utilitywarehouse/uw-ui-fonts': ^0.0.3
-      '@utilitywarehouse/uw-web-ui-react': '*'
+      '@utilitywarehouse/uw-web-ui-react': workspace:^0.0.1
       babel-loader: ^8.2.5
       react: ^18.2.0
       react-dom: ^18.2.0
       vite: ^3.2.3
+    dependencies:
+      '@utilitywarehouse/uw-web-ui-react': link:../../packages/react
     devDependencies:
       '@babel/core': 7.19.3
       '@mui/material': 5.10.9_rj7ozvcq3uehdlnj3cbwzbi5ce
       '@storybook/addon-actions': 6.5.12_biqbaboplfbrettd7655fr4n2y
-      '@storybook/addon-essentials': 6.5.12_oywth5iy6vxtia2ky72rtyzbvy
+      '@storybook/addon-essentials': 6.5.12_nkldqzjl4yu6f3xjvvc6lagjly
       '@storybook/addon-interactions': 6.5.12_cyg7izcphdxcvyxuol3su4tfhm
       '@storybook/addon-links': 6.5.12_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-viewport': 6.5.12_biqbaboplfbrettd7655fr4n2y
       '@storybook/addons': 6.5.12_biqbaboplfbrettd7655fr4n2y
       '@storybook/builder-vite': 0.2.5_e3sy4iojt4asiwlyn2w62le4rq
-      '@storybook/builder-webpack4': 6.5.12_nxn7gct75iti6blefcpxp3qchy
       '@storybook/manager-webpack4': 6.5.12_nxn7gct75iti6blefcpxp3qchy
-      '@storybook/react': 6.5.12_ghnowv26mseiq2orld4z32ud5y
+      '@storybook/react': 6.5.12_w6vpvbqh45pops3db5kzavmzfm
       '@storybook/theming': 6.5.12_biqbaboplfbrettd7655fr4n2y
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
       '@utilitywarehouse/customer-ui-design-tokens': 2.0.2
       '@utilitywarehouse/customer-ui-react-icons': 1.0.2
       '@utilitywarehouse/uw-ui-fonts': 0.0.3
-      '@utilitywarehouse/uw-web-ui-react': link:../../packages/react
       babel-loader: 8.2.5_wfdvla2jorjoj23kkavho2upde
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -2873,7 +2872,7 @@ packages:
       - webpack-command
     dev: true
 
-  /@storybook/addon-essentials/6.5.12_oywth5iy6vxtia2ky72rtyzbvy:
+  /@storybook/addon-essentials/6.5.12_nkldqzjl4yu6f3xjvvc6lagjly:
     resolution: {integrity: sha512-4AAV0/mQPSk3V0Pie1NIqqgBgScUc0VtBEXDm8BgPeuDNVhPEupnaZgVt+I3GkzzPPo6JjdCsp2L11f3bBSEjw==}
     peerDependencies:
       '@babel/core': ^7.9.6
@@ -2941,7 +2940,6 @@ packages:
       '@storybook/addon-viewport': 6.5.12_biqbaboplfbrettd7655fr4n2y
       '@storybook/addons': 6.5.12_biqbaboplfbrettd7655fr4n2y
       '@storybook/api': 6.5.12_biqbaboplfbrettd7655fr4n2y
-      '@storybook/builder-webpack4': 6.5.12_nxn7gct75iti6blefcpxp3qchy
       '@storybook/core-common': 6.5.12_nxn7gct75iti6blefcpxp3qchy
       '@storybook/node-logger': 6.5.12
       core-js: 3.25.5
@@ -3853,7 +3851,7 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/react/6.5.12_ghnowv26mseiq2orld4z32ud5y:
+  /@storybook/react/6.5.12_w6vpvbqh45pops3db5kzavmzfm:
     resolution: {integrity: sha512-1tG8EdSfp+OZAKAWPT2UrexF4o007jEMwQFFXw1atIQrQOADzSnZ7lTYJ08o5TyJwksswtr18tH3oJJ9sG3KPw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -3886,7 +3884,6 @@ packages:
       '@babel/preset-react': 7.18.6_@babel+core@7.19.3
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.8_metx475lqcp4j5c75za4zf7xbi
       '@storybook/addons': 6.5.12_biqbaboplfbrettd7655fr4n2y
-      '@storybook/builder-webpack4': 6.5.12_nxn7gct75iti6blefcpxp3qchy
       '@storybook/client-logger': 6.5.12
       '@storybook/core': 6.5.12_hriufidp6z33b4ejfothpwexwy
       '@storybook/core-common': 6.5.12_nxn7gct75iti6blefcpxp3qchy
