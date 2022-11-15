@@ -3,7 +3,7 @@ import { Theme } from '@mui/material/styles';
 import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
 import { typographyClasses } from './Typography';
 
-export const getTypographyThemeOverrides = (
+export const typographyThemeOverrides = (
   theme: Theme
 ): {
   displayHeading: TypographyStyleOptions;
