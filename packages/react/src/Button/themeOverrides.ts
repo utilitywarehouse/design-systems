@@ -6,7 +6,7 @@ import {
   colors,
 } from '@utilitywarehouse/customer-ui-design-tokens';
 import { px } from '../utils';
-import { buttonClasses } from './Button';
+import { buttonDataAttributes } from './Button';
 
 export const buttonThemeOverrides = (): Components => {
   const borderWidth = 2;
@@ -37,17 +37,22 @@ export const buttonThemeOverrides = (): Components => {
           '&:disabled': {
             opacity: 0.5,
           },
+          [`&[data-${buttonDataAttributes.inverse}=true]`]: {
+            '&:disabled': {
+              opacity: 0.6,
+            },
+          },
           // size
-          [`&.${buttonClasses.small}`]: {
+          '&[data-size=small]': {
             height: px(32),
           },
-          [`&.${buttonClasses.medium}`]: {
+          '&[data-size=medium]': {
             height: px(40),
           },
-          [`&.${buttonClasses.large}`]: {
+          '&[data-size=large]': {
             height: px(48),
           },
-          [`&.${buttonClasses.primary}`]: {
+          '&[data-variant=primary]': {
             color: colors.midnight,
             backgroundColor: colors.cyan,
             border: 'none',
@@ -57,7 +62,7 @@ export const buttonThemeOverrides = (): Components => {
               backgroundColor: colors.cyan30,
             },
           },
-          [`&.${buttonClasses.secondary}`]: {
+          '&[data-variant=secondary]': {
             color: colors.midnight,
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
@@ -69,14 +74,14 @@ export const buttonThemeOverrides = (): Components => {
               opacity: 0.5,
               borderWidth,
             },
-            [`&.${buttonClasses.inverse}`]: {
+            [`&[data-${buttonDataAttributes.inverse}=true]`]: {
               color: colors.white,
               '&:hover': {
                 borderColor: colors.white,
               },
             },
           },
-          [`&.${buttonClasses.tertiary}`]: {
+          '&[data-variant=tertiary]': {
             color: colors.midnight,
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
@@ -91,18 +96,8 @@ export const buttonThemeOverrides = (): Components => {
             '&:hover': {
               opacity: 0.5,
             },
-            [`&.${buttonClasses.inverse}`]: {
+            [`&[data-${buttonDataAttributes.inverse}=true]`]: {
               color: colors.white,
-            },
-          },
-          [`&.${buttonClasses.primary},&.${buttonClasses.secondary},&.${buttonClasses.tertiary}`]: {
-            '&:disabled': {
-              opacity: 0.5,
-            },
-            [`&.${buttonClasses.inverse}`]: {
-              '&:disabled': {
-                opacity: 0.6,
-              },
             },
           },
         },
