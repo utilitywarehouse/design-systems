@@ -1,20 +1,8 @@
 import * as React from 'react';
 import MuiButton, { ButtonProps as MuiButtonProps, ExtendButton } from '@mui/material/Button';
-import { globalClassPrefix, isInverseBackgroundColor } from '../utils';
-import { clsx } from 'clsx';
+import { isInverseBackgroundColor } from '../utils';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 import { useBackground } from '../Background';
-
-const PREFIX = `${globalClassPrefix}-Button`;
-export const buttonClasses = {
-  primary: `${PREFIX}-primary`,
-  secondary: `${PREFIX}-secondary`,
-  tertiary: `${PREFIX}-tertiary`,
-  inverse: `${PREFIX}-inverse`,
-  small: `${PREFIX}-small`,
-  medium: `${PREFIX}-medium`,
-  large: `${PREFIX}-large`,
-};
 
 type DefaultComponent = 'button';
 
@@ -34,18 +22,34 @@ export type ButtonProps<D extends React.ElementType = DefaultComponent, P = {}> 
   D
 >;
 
+export const buttonDataAttributes = {
+  variant: 'variant',
+  size: 'size',
+  inverse: 'on-inverse-background',
+};
+
 const Button = React.forwardRef(function Button(
   { size = 'medium', variant = 'primary', className, ...props },
   ref
 ) {
   const { backgroundColor } = useBackground();
 
-  const classNames = clsx(buttonClasses[variant], buttonClasses[size], {
-    [buttonClasses.inverse]: isInverseBackgroundColor(backgroundColor),
-    className: !!className,
-  });
+  const inverse = isInverseBackgroundColor(backgroundColor);
 
-  return <MuiButton {...(props as Partial<MuiButtonProps>)} className={classNames} ref={ref} />;
+  const dataAttributeProps = {
+    [`data-${buttonDataAttributes.variant}`]: variant,
+    [`data-${buttonDataAttributes.size}`]: size,
+    [`data-${buttonDataAttributes.inverse}`]: inverse,
+  };
+
+  return (
+    <MuiButton
+      {...(props as Partial<MuiButtonProps>)}
+      className={className}
+      ref={ref}
+      {...dataAttributeProps}
+    />
+  );
 }) as ExtendButton<TypeMap>;
 
 export default Button;
