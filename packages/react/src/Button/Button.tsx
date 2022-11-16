@@ -3,6 +3,7 @@ import MuiButton, { ButtonProps as MuiButtonProps, ExtendButton } from '@mui/mat
 import { isInverseBackgroundColor } from '../utils';
 import { OverrideProps } from '@mui/material/OverridableComponent';
 import { useBackground } from '../Background';
+import { TypographyProps } from '@mui/system';
 
 type DefaultComponent = 'button';
 
@@ -10,6 +11,7 @@ interface CustomProps<D extends React.ElementType = DefaultComponent, P = {}>
   extends Pick<MuiButtonProps<D, P>, 'sx' | 'classes' | 'fullWidth' | 'children' | 'href'> {
   size?: 'small' | 'medium' | 'large';
   variant?: 'primary' | 'secondary' | 'tertiary';
+  textTransform?: TypographyProps['textTransform'];
 }
 
 type TypeMap<P = {}, D extends React.ElementType = DefaultComponent> = {
