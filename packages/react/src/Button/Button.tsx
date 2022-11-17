@@ -25,7 +25,7 @@ export type ButtonProps<D extends React.ElementType = DefaultComponent, P = {}> 
 >;
 
 const Button = React.forwardRef(function Button(
-  { size = 'medium', variant = 'primary', className, ...props },
+  { size = 'medium', variant = 'primary', textTransform, sx, className, ...props },
   ref
 ) {
   const { backgroundColor } = useBackground();
@@ -44,6 +44,10 @@ const Button = React.forwardRef(function Button(
       className={className}
       ref={ref}
       {...dataAttributeProps}
+      sx={{
+        textTransform,
+        ...sx,
+      }}
     />
   );
 }) as ExtendButton<TypeMap>;
