@@ -16,6 +16,7 @@ export const buttonThemeOverrides = (): Components => {
       },
       styleOverrides: {
         root: {
+          display: 'inline-block', // otherwise `first-letter` does not work
           transition: `${transitions.duration}ms ${transitions.easingFunction}`,
           transitionProperty: 'background-color, border-color, color, opacity',
           fontFamily: fonts.secondary,
@@ -35,6 +36,12 @@ export const buttonThemeOverrides = (): Components => {
           color: colors.midnight,
           '&:disabled': {
             opacity: 0.5,
+          },
+          '&:first-letter': {
+            textTransform: 'uppercase',
+          },
+          [`&[data-${dataAttributes.disableCapitalizeFirstLetter}=true]::first-letter`]: {
+            textTransform: 'none',
           },
           [`&[data-${dataAttributes.inverse}=true]`]: {
             '&:disabled': {

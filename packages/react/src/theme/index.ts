@@ -8,7 +8,7 @@ import {
 } from '@utilitywarehouse/customer-ui-design-tokens';
 import { typographyThemeOverrides } from '../Typography';
 import { buttonThemeOverrides } from '../Button';
-import { cssBaselineThemeOverrides } from './overrides';
+import { cssBaselineThemeOverrides } from './cssBaselineThemeOverrides';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
