@@ -24,6 +24,9 @@ export * from './Stack';
 export { default as Spacer } from './Spacer';
 export * from './Spacer';
 
+export { default as TextLink } from './TextLink';
+export * from './TextLink';
+
 export { default as ThemeProvider } from './ThemeProvider';
 export * from './ThemeProvider';
 
