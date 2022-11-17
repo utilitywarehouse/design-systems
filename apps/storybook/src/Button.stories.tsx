@@ -5,6 +5,7 @@ import BackgroundStack from './BackgroundStack';
 
 const sizes = ['small', 'medium', 'large'] as const;
 const variants = ['primary', 'secondary'] as const;
+const textTransforms = ['capitalize', 'uppercase', 'lowercase', 'none'] as const;
 
 export default {
   title: 'Components/Button',
@@ -38,12 +39,19 @@ export default {
         options: sizes,
       },
     },
+    textTransform: {
+      control: {
+        type: 'radio',
+        options: textTransforms,
+      },
+    },
   },
   args: {
     variant: 'primary',
     size: 'medium',
     disabled: false,
     fullWidth: false,
+    textTransform: 'capitalize',
   },
 } as Meta;
 
@@ -55,7 +63,7 @@ export const ButtonKitchenSinkStory: Story<ButtonProps> = () => (
           <>
             {sizes.map(size => (
               <Button key={size} size={size} variant={variant} textTransform="capitalize">
-                Button
+                button
               </Button>
             ))}
             {sizes.map(size => (
@@ -93,15 +101,18 @@ ButtonKitchenSinkStory.argTypes = {
   classes: { table: { disable: true } },
   sx: { table: { disable: true } },
   children: { table: { disable: true } },
+  textTransform: { table: { disable: true } },
 };
 
-export const ButtonCustomStory: Story<ButtonProps> = args => (
-  <BackgroundStack>
-    <Button {...args}>
-      {args.children ? args.children : `${args.size} ${args.variant} button`}
-    </Button>
-  </BackgroundStack>
-);
+export const ButtonCustomStory: Story<ButtonProps> = args => {
+  return (
+    <BackgroundStack>
+      <Button {...args}>
+        {args.children ? args.children : `${args.size} ${args.variant} button`}
+      </Button>
+    </BackgroundStack>
+  );
+};
 ButtonCustomStory.storyName = 'Custom';
 ButtonCustomStory.argTypes = {
   classes: { table: { disable: true } },
