@@ -1,7 +1,7 @@
 import { Background, Box } from '@utilitywarehouse/uw-web-ui-react';
 import * as React from 'react';
 
-const BackgroundStack: React.FC<React.PropsWithChildren<unknown>> = ({ children }) => {
+const BackgroundStack = (props: { children: React.ReactNode }) => {
   const backgroundColors = ['white', 'whiteOwl', 'lightTint', 'purple', 'midnight'] as const;
   return (
     <Box>
@@ -14,9 +14,8 @@ const BackgroundStack: React.FC<React.PropsWithChildren<unknown>> = ({ children 
             justifyContent: 'center',
             padding: 4,
           }}
-        >
-          {children}
-        </Background>
+          {...props}
+        />
       ))}
     </Box>
   );

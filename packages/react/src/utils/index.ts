@@ -12,4 +12,5 @@ export const dataAttributes = {
   variant: 'variant',
   size: 'size',
   inverse: 'on-inverse-background',
+  disableCapitalizeFirstLetter: 'disable-capitalize-first-letter',
 };

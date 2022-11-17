@@ -5,7 +5,6 @@ import BackgroundStack from './BackgroundStack';
 
 const sizes = ['small', 'medium', 'large'] as const;
 const variants = ['primary', 'secondary'] as const;
-const textTransforms = ['capitalize', 'uppercase', 'lowercase', 'none'] as const;
 
 export default {
   title: 'Components/Button',
@@ -39,19 +38,13 @@ export default {
         options: sizes,
       },
     },
-    textTransform: {
-      control: {
-        type: 'radio',
-        options: textTransforms,
-      },
-    },
   },
   args: {
     variant: 'primary',
     size: 'medium',
     disabled: false,
     fullWidth: false,
-    textTransform: 'capitalize',
+    disableCapitalizeFirstLetter: false,
   },
 } as Meta;
 
@@ -62,18 +55,12 @@ export const ButtonKitchenSinkStory: Story<ButtonProps> = () => (
         <Stack key={variant} direction="row" spacing={2} alignItems="center">
           <>
             {sizes.map(size => (
-              <Button key={size} size={size} variant={variant} textTransform="capitalize">
+              <Button key={size} size={size} variant={variant}>
                 button
               </Button>
             ))}
             {sizes.map(size => (
-              <Button
-                key={size}
-                size={size}
-                variant={variant}
-                disabled={true}
-                textTransform="capitalize"
-              >
+              <Button key={size} size={size} variant={variant} disabled={true}>
                 button
               </Button>
             ))}
@@ -81,10 +68,8 @@ export const ButtonKitchenSinkStory: Story<ButtonProps> = () => (
         </Stack>
       ))}
       <Stack direction="row" spacing={2} alignItems="center">
-        <Button variant="tertiary" textTransform="capitalize">
-          button
-        </Button>
-        <Button variant="tertiary" disabled={true} textTransform="capitalize">
+        <Button variant="tertiary">button</Button>
+        <Button variant="tertiary" disabled={true}>
           button
         </Button>
       </Stack>
@@ -101,7 +86,7 @@ ButtonKitchenSinkStory.argTypes = {
   classes: { table: { disable: true } },
   sx: { table: { disable: true } },
   children: { table: { disable: true } },
-  textTransform: { table: { disable: true } },
+  disableCapitalizeFirstLetter: { table: { disable: true } },
 };
 
 export const ButtonCustomStory: Story<ButtonProps> = args => {
