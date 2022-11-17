@@ -9,6 +9,9 @@ export * from './Box';
 export { default as Background } from './Background';
 export * from './Background';
 
+export { default as Button } from './Button';
+export * from './Button';
+
 export { default as Grid } from './Grid';
 export * from './Grid';
 
@@ -24,5 +27,4 @@ export * from './ThemeProvider';
 export { default as Typography } from './Typography';
 export * from './Typography';
 
-export { neutralBackgroundColors, inverseBackgroundColors, backgroundColors } from './types';
-export type { NeutralBackgroundColor, InverseBackgroundColor, BackgroundColor } from './types';
+export * from './types';

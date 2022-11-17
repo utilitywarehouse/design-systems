@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf storybook-static",
-    "dev": "start-storybook --quiet",
+    "dev": "start-storybook --quiet -p 6006",
     "lint:fix": "eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "build:storybook": "build-storybook"
   },
