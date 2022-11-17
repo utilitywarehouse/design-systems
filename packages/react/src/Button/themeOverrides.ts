@@ -5,8 +5,7 @@ import {
   fontWeights,
   colors,
 } from '@utilitywarehouse/customer-ui-design-tokens';
-import { px } from '../utils';
-import { buttonDataAttributes } from './Button';
+import { dataAttributes, px } from '../utils';
 
 export const buttonThemeOverrides = (): Components => {
   const borderWidth = 2;
@@ -37,22 +36,22 @@ export const buttonThemeOverrides = (): Components => {
           '&:disabled': {
             opacity: 0.5,
           },
-          [`&[data-${buttonDataAttributes.inverse}=true]`]: {
+          [`&[data-${dataAttributes.inverse}=true]`]: {
             '&:disabled': {
               opacity: 0.6,
             },
           },
           // size
-          '&[data-size=small]': {
+          [`&[data-${dataAttributes.size}=small]`]: {
             height: px(32),
           },
-          '&[data-size=medium]': {
+          [`&[data-${dataAttributes.size}=medium]`]: {
             height: px(40),
           },
-          '&[data-size=large]': {
+          [`&[data-${dataAttributes.size}=large]`]: {
             height: px(48),
           },
-          '&[data-variant=primary]': {
+          [`&[data-${dataAttributes.variant}=primary]`]: {
             color: colors.midnight,
             backgroundColor: colors.cyan,
             border: 'none',
@@ -62,7 +61,7 @@ export const buttonThemeOverrides = (): Components => {
               backgroundColor: colors.cyan30,
             },
           },
-          '&[data-variant=secondary]': {
+          [`&[data-${dataAttributes.variant}=secondary]`]: {
             color: colors.midnight,
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
@@ -74,14 +73,14 @@ export const buttonThemeOverrides = (): Components => {
               opacity: 0.5,
               borderWidth,
             },
-            [`&[data-${buttonDataAttributes.inverse}=true]`]: {
+            [`&[data-${dataAttributes.inverse}=true]`]: {
               color: colors.white,
               '&:hover': {
                 borderColor: colors.white,
               },
             },
           },
-          '&[data-variant=tertiary]': {
+          [`&[data-${dataAttributes.variant}=tertiary]`]: {
             color: colors.midnight,
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
@@ -96,7 +95,7 @@ export const buttonThemeOverrides = (): Components => {
             '&:hover': {
               opacity: 0.5,
             },
-            [`&[data-${buttonDataAttributes.inverse}=true]`]: {
+            [`&[data-${dataAttributes.inverse}=true]`]: {
               color: colors.white,
             },
           },
