@@ -12,12 +12,6 @@ import { useBackground } from '../Background';
 import { dataAttributes } from '../utils';
 import type { ReactNode, AllHTMLAttributes } from 'react';
 
-const PREFIX = `remove-TextField`;
-export const textfieldClasses = {
-  success: `${PREFIX}-success`,
-  multiline: `${PREFIX}-multiline`,
-};
-
 const isSuccessStatus = (status?: string): boolean => status === 'success';
 const isErrorStatus = (status?: string): boolean => status === 'error';
 
@@ -25,20 +19,21 @@ type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 export interface TextFieldProps
   extends Omit<
     FilledInputProps,
-    | 'ref'
-    | 'hiddenLabel'
-    | 'error'
     | 'color'
-    | 'id'
     | 'components'
     | 'componentsProps'
     | 'disableUnderline'
+    | 'error'
+    | 'fullWidth'
+    | 'hiddenLabel'
+    | 'id'
     | 'inputComponent'
     | 'inputProps'
     | 'inputRef'
     | 'margin'
-    | 'slots'
+    | 'ref'
     | 'slotProps'
+    | 'slots'
   > {
   id: NonNullable<FormElementProps['id']>;
   // TODO: add guidelines regarding labels to docs - https://github.com/seek-oss/braid-design-system/pull/979
