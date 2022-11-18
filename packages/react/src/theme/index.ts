@@ -8,13 +8,19 @@ import {
 } from '@utilitywarehouse/customer-ui-design-tokens';
 import { typographyThemeOverrides } from '../Typography';
 import { buttonThemeOverrides } from '../Button';
-import { cssBaselineThemeOverrides } from './cssBaselineThemeOverrides';
+import { textFieldThemeOverrides } from '../TextField';
+import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
   spacing: (multiplier: number) => multiplier * spacingBase,
   components: { ...cssBaselineThemeOverrides, ...buttonThemeOverrides() },
 });
+
+theme.components = {
+  ...theme.components,
+  ...textFieldThemeOverrides(theme),
+};
 
 const typographyConfiguration = typographyThemeOverrides(theme);
 const { pxToRem } = theme.typography;

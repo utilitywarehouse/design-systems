@@ -101,14 +101,12 @@ importers:
       '@types/react': ^17.0.0 || ^18.0.0
       '@utilitywarehouse/customer-ui-design-tokens': ^2.0.2
       '@utilitywarehouse/customer-ui-react-icons': ^1.0.2
-      clsx: ^1.2.1
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
       tsup: ^6.2.3
     dependencies:
       '@emotion/react': 11.10.4_bjroym7kxlcs2vvwnej4p3gzwu
       '@emotion/styled': 11.10.4_ogudqqhlstsi7uge4lir7ff3ty
-      clsx: 1.2.1
     devDependencies:
       '@mui/material': 5.10.9_ikcgkdnp4bn3rgptamntbhbo7e
       '@mui/system': 5.10.9_h33l6npc22g7vcra72cibfsrvm
@@ -5617,6 +5615,7 @@ packages:
   /clsx/1.2.1:
     resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
     engines: {node: '>=6'}
+    dev: true
 
   /collapse-white-space/1.0.6:
     resolution: {integrity: sha512-jEovNnrhMuqyCcjfEJA56v0Xq8SkIoPKDyaHahwo3POf4qcSXqMYuwNcOTzp74vTsR9Tn08z4MxWqAhcekogkQ==}

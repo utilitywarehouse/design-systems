@@ -23,4 +23,5 @@ export const dataAttributes = {
   size: 'size',
   inverse: 'on-inverse-background',
   disableCapitalizeFirstLetter: 'disable-capitalize-first-letter',
+  multiline: 'multiline',
 };

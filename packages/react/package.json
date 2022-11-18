@@ -23,8 +23,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "clsx": "^1.2.1"
+    "@emotion/styled": "^11.10.4"
   },
   "devDependencies": {
     "@mui/material": "^5.10.5",
