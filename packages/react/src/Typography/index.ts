@@ -1,3 +1,3 @@
 export { default, variantMapping } from './Typography';
 export type { TypographyProps } from './Typography';
-export { typographyThemeOverrides } from './themeOverrides';
+export { typographyThemeOverrides } from './Typography.theme';

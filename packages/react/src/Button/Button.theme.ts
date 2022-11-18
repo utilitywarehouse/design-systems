@@ -9,6 +9,7 @@ import { dataAttributes, px } from '../utils';
 
 export const buttonThemeOverrides = (): Components => {
   const borderWidth = 2;
+  const { disableCapitalizeFirstLetter, inverse, size, variant } = dataAttributes;
   return {
     MuiButton: {
       defaultProps: {
@@ -40,25 +41,25 @@ export const buttonThemeOverrides = (): Components => {
           '&:first-letter': {
             textTransform: 'uppercase',
           },
-          [`&[data-${dataAttributes.disableCapitalizeFirstLetter}=true]::first-letter`]: {
+          [`&[data-${disableCapitalizeFirstLetter}=true]::first-letter`]: {
             textTransform: 'none',
           },
-          [`&[data-${dataAttributes.inverse}=true]`]: {
+          [`&[data-${inverse}=true]`]: {
             '&:disabled': {
               opacity: 0.6,
             },
           },
           // size
-          [`&[data-${dataAttributes.size}=small]`]: {
+          [`&[data-${size}=small]`]: {
             height: px(32),
           },
-          [`&[data-${dataAttributes.size}=medium]`]: {
+          [`&[data-${size}=medium]`]: {
             height: px(40),
           },
-          [`&[data-${dataAttributes.size}=large]`]: {
+          [`&[data-${size}=large]`]: {
             height: px(48),
           },
-          [`&[data-${dataAttributes.variant}=primary]`]: {
+          [`&[data-${variant}=primary]`]: {
             color: colors.midnight,
             backgroundColor: colors.cyan,
             border: 'none',
@@ -68,7 +69,7 @@ export const buttonThemeOverrides = (): Components => {
               backgroundColor: colors.cyan30,
             },
           },
-          [`&[data-${dataAttributes.variant}=secondary]`]: {
+          [`&[data-${variant}=secondary]`]: {
             color: colors.midnight,
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
@@ -80,14 +81,14 @@ export const buttonThemeOverrides = (): Components => {
               opacity: 0.5,
               borderWidth,
             },
-            [`&[data-${dataAttributes.inverse}=true]`]: {
+            [`&[data-${inverse}=true]`]: {
               color: colors.white,
               '&:hover': {
                 borderColor: colors.white,
               },
             },
           },
-          [`&[data-${dataAttributes.variant}=tertiary]`]: {
+          [`&[data-${variant}=tertiary]`]: {
             color: colors.midnight,
             backgroundColor: colors.transparent,
             borderColor: colors.cyan,
@@ -102,7 +103,7 @@ export const buttonThemeOverrides = (): Components => {
             '&:hover': {
               opacity: 0.5,
             },
-            [`&[data-${dataAttributes.inverse}=true]`]: {
+            [`&[data-${inverse}=true]`]: {
               color: colors.white,
             },
           },

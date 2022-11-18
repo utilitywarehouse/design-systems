@@ -1,20 +1,9 @@
 import React from 'react';
 import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
-import { clsx } from 'clsx';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { globalClassPrefix, isInverseBackgroundColor } from '../utils';
+import { dataAttributes, isInverseBackgroundColor } from '../utils';
 import { BoxProps } from '../Box';
 import { useBackground } from '../Background';
-
-const PREFIX = `${globalClassPrefix}-typography`;
-export const typographyClasses = {
-  primary: `${PREFIX}-primary`,
-  secondary: `${PREFIX}-secondary`,
-  success: `${PREFIX}-success`,
-  error: `${PREFIX}-error`,
-  inverse: `${PREFIX}-inverse`,
-  bold: `${PREFIX}-bold`,
-};
 
 type DefaultComponent = 'p';
 
@@ -65,15 +54,22 @@ const Typography = React.forwardRef(function Typography(
   ref
 ) {
   const { backgroundColor } = useBackground();
+  const inverse = isInverseBackgroundColor(backgroundColor);
 
-  const classNames = clsx(typographyClasses[color], {
-    [typographyClasses.inverse]: isInverseBackgroundColor(backgroundColor),
-    [typographyClasses.bold]: !!bold,
-    className: !!className,
-  });
+  const dataAttributeProps = {
+    [`data-${dataAttributes[color]}`]: true,
+    [`data-${dataAttributes.inverse}`]: inverse,
+    [`data-${dataAttributes.bold}`]: bold,
+  };
 
   return (
-    <MuiTypography {...props} variantMapping={variantMapping} className={classNames} ref={ref} />
+    <MuiTypography
+      {...props}
+      variantMapping={variantMapping}
+      className={className}
+      ref={ref}
+      {...dataAttributeProps}
+    />
   );
 }) as OverridableComponent<TypeMap>;
 
