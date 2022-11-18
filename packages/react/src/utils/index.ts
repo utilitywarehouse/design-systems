@@ -8,6 +8,11 @@ export const isInverseBackgroundColor = (backgroundColor: BackgroundColor): bool
   return (inverseBackgroundColors as ReadonlyArray<string>).includes(backgroundColor);
 };
 
+export const isHeadingVariant = (variant: string): boolean => {
+  const headingVariants = ['displayHeading', 'h1', 'h2', 'h3', 'h4'];
+  return headingVariants.includes(variant);
+};
+
 export const dataAttributes = {
   variant: 'variant',
   size: 'size',

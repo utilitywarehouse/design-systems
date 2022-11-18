@@ -15,11 +15,17 @@ export * from './Button';
 export { default as Grid } from './Grid';
 export * from './Grid';
 
+export { default as Link } from './Link';
+export * from './Link';
+
 export { default as Stack } from './Stack';
 export * from './Stack';
 
 export { default as Spacer } from './Spacer';
 export * from './Spacer';
+
+export { default as TextLink } from './TextLink';
+export * from './TextLink';
 
 export { default as ThemeProvider } from './ThemeProvider';
 export * from './ThemeProvider';
