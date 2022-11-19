@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg class="customer-ui__icon" width="24px" height="24px" fill="#000000" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Cashback card</title>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 6.45C1.5 5.37272 2.37272 4.5 3.45 4.5H20.55C21.6273 4.5 22.5 5.37271 22.5 6.45V17.55C22.5 18.6273 21.6273 19.5 20.55 19.5H3.45C2.37272 19.5 1.5 18.6273 1.5 17.55V15C1.5 14.4477 1.94772 14 2.5 14H19.5C20.0523 14 20.5 14.4477 20.5 15C20.5 15.5523 20.0523 16 19.5 16H3.5V17.5H20.5V15V6.5H3.5V13C3.5 13.5523 3.05228 14 2.5 14C1.94772 14 1.5 13.5523 1.5 13V6.45Z" fill="inherit" />
-</svg>
