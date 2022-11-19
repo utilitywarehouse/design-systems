@@ -1,10 +1,10 @@
 module.exports = {
-  stories: ["../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
+  stories: ['../src/**/*.stories.@(ts|tsx|mdx)'],
   addons: [
-    "@storybook/addon-essentials",
-    "@storybook/addon-viewport",
+    '@storybook/addon-essentials',
+    '@storybook/addon-viewport',
     {
-      name: "@storybook/addon-docs",
+      name: '@storybook/addon-docs',
       options: {
         transcludeMarkdown: true,
       },
@@ -18,4 +18,3 @@ module.exports = {
     disableTelemetry: true,
   },
 };
-

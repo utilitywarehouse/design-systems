@@ -1,9 +1,9 @@
 import { addons } from "@storybook/addons";
 import { create } from "@storybook/theming";
-import { version } from "../package.json";
+import { version } from "../../../packages/react/package.json";
 
 const theme = create({
-  brandTitle: `Customer Web UI v${version}`,
+  brandTitle: `UW Web UI v${version}`,
 });
 
 addons.setConfig({
