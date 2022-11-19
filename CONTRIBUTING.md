@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in contributing to Customer Web UI!
+Thank you for your interest in contributing to UW Web UI!
 This project is made possible by contributors like you, and we welcome any
 contributions to the codebase and documentation.
 
@@ -78,4 +78,4 @@ remote caching you will need to export a `TURBO_TOKEN` environment variable.
 This token is available via 1Password, and to avoid having to temporarily export
 it over and over again you will need to set up your bash or zsh files in a way
 that doesn't commit this token to version control. For help with this please
-reach out in the [Slack channel](https://utilitywarehouse.slack.com/archives/C01CFKS9GUE).
+reach out in the `#proj-uw-web-ui` Slack channel.
