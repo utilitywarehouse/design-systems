@@ -2,7 +2,7 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "outputs": ["dist/**"],
+      "outputs": ["dist/**", "storybook-static/**"],
       "dependsOn": ["^build"]
     },
     "checks": {
@@ -15,11 +15,17 @@
     "lint:fix": {
       "outputs": []
     },
+    "dev": {
+      "cache": false
+    },
     "clean": {
       "cache": false
     },
-    "storybook:build": {
-      "outputs": ["packages/material/storybook-build/**"]
+    "build:storybook": {
+      "outputs": ["packages/react/storybook-static/**"]
+    },
+    "build:docs": {
+      "outputs": ["packages/react/storybook-static/**"]
     }
   }
 }
