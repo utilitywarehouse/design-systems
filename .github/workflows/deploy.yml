@@ -1,19 +1,35 @@
 name: Deploy Storybook
 on:
-workflow_run:
-  workflows: [Release]
-  branches: [main]
-  types:
-    - completed
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
 
 jobs:
-  release:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
     steps:
-      - name: Deploy New Release Storybook
-        if: steps.changesets.outputs.published == 'true'
-        run: |
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} registry.uw.systems
-          docker build . -t registry.uw.systems/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook:release --build-arg NPM_TOKEN=${{ secrets.NPM_TOKEN }}
-          docker push -a registry.uw.systems/${{ secrets.DOCKER_REPOSITORY_NAMESPACE }}/cwui-storybook
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 7
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+        registry-url: 'https://registry.npmjs.org'
+        cache: 'pnpm'
+    - run: pnpm install
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - run: pnpm run build
+    - run: cd apps/storybook && pnpm run build:storybook
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: apps/storybook/storybook-static
