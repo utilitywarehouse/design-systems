@@ -1,7 +1,4 @@
 import { createTheme, Theme as MuiTheme } from '@mui/material/styles';
-import { getTextFieldTheme } from './components/TextField';
-import { getButtonTheme } from './components/Button';
-import { getTypographyConfiguration } from './components/Typography';
 import {
   breakpoints,
   colors,
@@ -9,67 +6,76 @@ import {
   fonts,
   fontWeights,
 } from '@utilitywarehouse/customer-ui-design-tokens';
-import './types/overrides';
+import { typographyThemeOverrides } from '../Typography';
+import { buttonThemeOverrides } from '../Button';
+import { cssBaselineThemeOverrides } from './cssBaselineThemeOverrides';
 
-export const buildTheme = (): MuiTheme => {
-  const muiTheme = createTheme({
-    breakpoints: {
-      values: {
-        desktop: breakpoints.desktop,
-        tablet: breakpoints.tablet,
-        mobile: breakpoints.mobile,
+const theme: MuiTheme = createTheme({
+  breakpoints: { values: breakpoints },
+  spacing: (multiplier: number) => multiplier * spacingBase,
+  components: { ...cssBaselineThemeOverrides, ...buttonThemeOverrides() },
+});
+
+const typographyConfiguration = typographyThemeOverrides(theme);
+const { pxToRem } = theme.typography;
+const customTypography = {
+  pxToRem,
+  fontSize: 16,
+  htmlFontSize: 16,
+  fontFamily: fonts,
+  fontWeights,
+  ...typographyConfiguration,
+};
+export const customPalette = {
+  color: {
+    ...colors,
+    text: {
+      primary: colors.midnight, // TODO: remove when refactor Button
+      heading: {
+        primary: colors.purple,
+        secondary: colors.midnight,
+        inverse: colors.white,
+      },
+      body: {
+        primary: colors.midnight,
+        inverse: colors.white,
+        success: { default: colors.jewel, inverse: colors.apple },
+        error: { default: colors.maroonFlush, inverse: colors.rose },
       },
     },
-    spacing: (multiplier: number) => multiplier * spacingBase,
-    palette: {
-      common: { black: colors.black, white: colors.white },
-      primary: { main: colors.purple },
-      secondary: { main: colors.cyan },
-      error: { main: colors.rose },
-      warning: { main: colors.gold },
-      info: { main: colors.midnight },
-      success: { main: colors.apple },
+    background: {
+      default: colors.white,
+      white: colors.white,
+      whiteOwl: colors.whiteOwl,
+      lightTint: colors.lightTint,
+      purple: colors.purple,
+      midnight: colors.midnight,
     },
-    typography: {
-      htmlFontSize: 16,
-      body1: undefined,
-      body2: undefined,
-      button: undefined,
-      h5: undefined,
-      h6: undefined,
-      overline: undefined,
-      subtitle1: undefined,
-      subtitle2: undefined,
+    common: { white: colors.white, black: colors.black, disabled: colors.codGray20 },
+    brand: { primary: colors.purple, action: colors.cyan40, line: colors.pink },
+    messaging: {
+      alert: colors.rose,
+      info: colors.midnight,
+      success: colors.apple,
+      warning: colors.gold,
     },
-  });
-
-  const typographyConfiguration = getTypographyConfiguration(muiTheme);
-
-  muiTheme.typography = {
-    ...muiTheme.typography,
-    fontSize: 16,
-    htmlFontSize: 16,
-    fontFamily: fonts.secondary,
-    fontWeightBold: fontWeights.primary,
-    fontWeightLight: fontWeights.secondary.regular,
-    fontWeightMedium: fontWeights.secondary.semibold,
-    fontWeightRegular: fontWeights.secondary.regular,
-    ...typographyConfiguration,
-  };
-
-  const typographyTheme = {
-    MuiTypography: { styleOverrides: typographyConfiguration },
-  };
-
-  muiTheme.components = {
-    ...muiTheme.components,
-    ...typographyTheme,
-    ...getTextFieldTheme(muiTheme),
-    ...getButtonTheme(),
-  };
-
-  return muiTheme;
+    services: {
+      gas: colors.cyan40,
+      electricity: colors.apple,
+      insurance: colors.rose,
+      mobile: colors.gold,
+      landline: colors.grape,
+    },
+  },
 };
 
-export const theme = buildTheme();
+theme.typography = customTypography;
+theme.palette = {
+  // TODO: we have to do this because the mui/material Button component relies on certain palette properties.
+  // I'm guessing we can remove this when we refactor to use the unstyled mui/base Button
+  ...theme.palette,
+  ...customPalette,
+};
+
+export default theme;
 export type Theme = typeof theme;
