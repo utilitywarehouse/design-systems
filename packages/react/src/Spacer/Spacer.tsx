@@ -1,25 +1,25 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
-import Box, { BoxProps } from './Box';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx';
 import { px } from '../utils';
+import Box, { BoxProps } from '../Box';
 
-type defaultComponent = 'span';
+type DefaultComponent = 'span';
 
-interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
+interface CustomProps<D extends React.ElementType = DefaultComponent, P = {}>
   extends Pick<BoxProps<D, P>, 'sx' | 'component' | 'classes' | 'children'> {
   axis?: 'horizontal' | 'vertical';
   size: ResponsiveStyleValue<number>;
   inline?: boolean;
 }
 
-interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+interface TypeMap<D extends React.ElementType = DefaultComponent, P = {}> {
   props: CustomProps<D, P>;
   defaultComponent: D;
 }
 
-export type SpacerProps<D extends React.ElementType = defaultComponent, P = {}> = OverrideProps<
+export type SpacerProps<D extends React.ElementType = DefaultComponent, P = {}> = OverrideProps<
   TypeMap<D, P>,
   D
 >;

@@ -1,36 +1,18 @@
-import React from 'react';
-import { CacheProvider } from '@emotion/react';
-import createCache, { Options as CreateCacheOptions } from '@emotion/cache';
-import { StylesProvider, StylesProviderProps } from '..';
-import { getRandomString } from '../utils';
-import { StyledEngineProvider } from '@mui/styled-engine';
+import * as React from 'react';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-import { theme } from '../theme';
+import theme from '../theme';
+import CssBaseline from '@mui/material/CssBaseline';
 
 export interface ThemeProviderProps {
-  styleProviderProps?: StylesProviderProps;
-  emotionCacheOptions?: CreateCacheOptions;
   children?: React.ReactNode;
 }
 
-const ThemeProvider = ({
-  styleProviderProps,
-  emotionCacheOptions,
-  children,
-}: ThemeProviderProps) => {
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
   return (
-    <CacheProvider
-      value={createCache({
-        key: getRandomString(),
-        ...emotionCacheOptions,
-      })}
-    >
-      <StylesProvider {...styleProviderProps}>
-        <StyledEngineProvider injectFirst>
-          <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
-        </StyledEngineProvider>
-      </StylesProvider>
-    </CacheProvider>
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </MuiThemeProvider>
   );
 };
 

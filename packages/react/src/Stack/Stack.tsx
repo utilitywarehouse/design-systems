@@ -3,8 +3,17 @@ import MuiStack, { StackTypeMap as MuiStackTypeMap } from '@mui/material/Stack';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { SystemProps } from '../types';
 
-interface TypeMap<D extends React.ElementType = MuiStackTypeMap['defaultComponent'], P = {}> {
-  props: Omit<MuiStackTypeMap<P, D>['props'], SystemProps>;
+type DefaultComponent = 'div';
+
+type CustomSystemProps = Omit<SystemProps, 'alignItems'>;
+
+type CustomProps<D extends React.ElementType = DefaultComponent, P = {}> = Omit<
+  MuiStackTypeMap<P, D>['props'],
+  keyof CustomSystemProps
+>;
+
+interface TypeMap<D extends React.ElementType = DefaultComponent, P = {}> {
+  props: CustomProps<D, P>;
   defaultComponent: D;
 }
 

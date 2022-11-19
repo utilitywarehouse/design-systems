@@ -1,19 +1,18 @@
 import * as React from 'react';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import { styled } from '@mui/material/styles';
-import Box, { BoxProps } from './Box';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
+import { BackgroundColor, NeutralBackgroundColor, InverseBackgroundColor } from '../types';
+import Box, { BoxProps } from '../Box';
 
-export type BackgroundColor = 'midnight' | 'purple' | 'lightTint' | 'whiteOwl' | 'white';
-
-const defaultBackgroundColor = 'white';
+const DefaultBackgroundColor: BackgroundColor = 'white' as BackgroundColor;
 
 interface BackgroundContextValue {
-  backgroundColor: BackgroundColor;
+  backgroundColor: NeutralBackgroundColor | InverseBackgroundColor;
 }
 
 const BackgroundContext = React.createContext<BackgroundContextValue>({
-  backgroundColor: defaultBackgroundColor,
+  backgroundColor: DefaultBackgroundColor,
 });
 
 export const useBackground = (): BackgroundContextValue => {
@@ -26,18 +25,18 @@ export const useBackground = (): BackgroundContextValue => {
 
 export interface BackgroundProviderProps {
   children?: React.ReactNode;
-  backgroundColor?: BackgroundColor;
+  backgroundColor: BackgroundContextValue['backgroundColor'];
 }
 
 export const BackgroundProvider = (props: BackgroundProviderProps): JSX.Element => {
-  const { backgroundColor = defaultBackgroundColor, children } = props;
+  const { backgroundColor = DefaultBackgroundColor, children } = props;
   return (
     <BackgroundContext.Provider value={{ backgroundColor }}>{children}</BackgroundContext.Provider>
   );
 };
 
 interface StyledBackgroundProps {
-  backgroundColor: BackgroundColor;
+  backgroundColor: BackgroundContextValue['backgroundColor'];
 }
 
 const StyledBackground = styled(Box, {
@@ -46,40 +45,31 @@ const StyledBackground = styled(Box, {
   backgroundColor: colors[backgroundColor],
 }));
 
-type defaultComponent = 'div';
+type DefaultComponent = 'div';
 
-interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
-  extends Pick<BoxProps<D, P>, 'sx' | 'component' | 'classes'>,
-    BackgroundProviderProps {
-  /**
-   * @deprecated in v2. forwardedRef is deprecated in v2, and will be removed in v3.
-   */
-  forwardedRef?: React.Ref<HTMLElement>;
-}
+type CustomProps<D extends React.ElementType = DefaultComponent, P = {}> = Pick<
+  BoxProps<D, P>,
+  'sx' | 'component' | 'classes'
+> &
+  BackgroundProviderProps;
 
-interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
+interface TypeMap<D extends React.ElementType = DefaultComponent, P = {}> {
   props: CustomProps<D, P>;
   defaultComponent: D;
 }
 
-export type BackgroundProps<D extends React.ElementType = defaultComponent, P = {}> = OverrideProps<
+export type BackgroundProps<D extends React.ElementType = DefaultComponent, P = {}> = OverrideProps<
   TypeMap<D, P>,
   D
 >;
 
 const Background = React.forwardRef(function Background(
-  { backgroundColor = defaultBackgroundColor, forwardedRef, ...props },
+  { backgroundColor = DefaultBackgroundColor, ...props },
   ref
 ) {
-  if (forwardedRef !== undefined) {
-    console.warn(
-      'forwardedRef on the Background component is deprecated in v2 and will be removed in v3. Please use ref instead.'
-    );
-  }
-
   return (
     <BackgroundProvider backgroundColor={backgroundColor}>
-      <StyledBackground {...props} ref={forwardedRef || ref} backgroundColor={backgroundColor} />
+      <StyledBackground {...props} ref={ref} backgroundColor={backgroundColor} />
     </BackgroundProvider>
   );
 }) as OverridableComponent<TypeMap>;
