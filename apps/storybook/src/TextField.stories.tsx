@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Background, TextField, TextFieldProps } from '@utilitywarehouse/uw-web-ui-react';
+import { Background, TextField, TextFieldProps } from 'uw-web-ui';
 
 export default {
   title: 'Components/TextField',

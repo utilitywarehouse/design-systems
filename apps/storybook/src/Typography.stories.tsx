@@ -1,12 +1,7 @@
 import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
-import {
-  backgroundColors,
-  Typography,
-  variantMapping,
-  Background,
-} from '@utilitywarehouse/uw-web-ui-react';
-import type { BackgroundProps, TypographyProps } from '@utilitywarehouse/uw-web-ui-react';
+import { backgroundColors, Typography, variantMapping, Background } from 'uw-web-ui';
+import type { BackgroundProps, TypographyProps } from 'uw-web-ui';
 
 const variants = [
   'displayHeading',
@@ -94,7 +89,7 @@ export const TypographyKitchenSinkStory: Story<
       sx={{ display: 'flex', justifyContent: 'center', padding: 4 }}
     >
       <Stack spacing={2}>
-        {variants.map((v) => (
+        {variants.map(v => (
           <Stack key={v} spacing={4} direction="row">
             <Typography
               {...args}

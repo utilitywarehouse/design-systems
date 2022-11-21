@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Grid, GridProps, Background, Typography } from '@utilitywarehouse/uw-web-ui-react';
+import { Grid, GridProps, Background, Typography } from 'uw-web-ui';
 
 export default {
   title: 'Components/Grid',

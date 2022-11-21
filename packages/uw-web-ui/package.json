@@ -1,5 +1,5 @@
 {
-  "name": "@utilitywarehouse/uw-web-ui-react",
+  "name": "@utilitywarehouse/uw-web-ui",
   "version": "0.0.1",
   "description": "UW Web UI components",
   "main": "./dist/index.js",

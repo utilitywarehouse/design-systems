@@ -64,10 +64,10 @@ importers:
       '@utilitywarehouse/customer-ui-design-tokens': ^2.0.2
       '@utilitywarehouse/customer-ui-react-icons': ^1.0.2
       '@utilitywarehouse/uw-ui-fonts': ^0.0.3
-      '@utilitywarehouse/uw-web-ui-react': workspace:^0.0.1
       babel-loader: ^8.2.5
       react: ^18.2.0
       react-dom: ^18.2.0
+      uw-web-ui: workspace:@utilitywarehouse/uw-web-ui@*
     devDependencies:
       '@babel/core': 7.20.2
       '@mui/material': 5.10.14_2zx2umvpluuhvlq44va5bta2da
@@ -86,12 +86,12 @@ importers:
       '@utilitywarehouse/customer-ui-design-tokens': 2.0.2
       '@utilitywarehouse/customer-ui-react-icons': 1.0.2
       '@utilitywarehouse/uw-ui-fonts': 0.0.3
-      '@utilitywarehouse/uw-web-ui-react': link:../../packages/react
       babel-loader: 8.3.0_npabyccmuonwo2rku4k53xo3hi
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      uw-web-ui: link:../../packages/uw-web-ui
 
-  packages/react:
+  packages/uw-web-ui:
     specifiers:
       '@emotion/react': ^11.10.4
       '@emotion/styled': ^11.10.4

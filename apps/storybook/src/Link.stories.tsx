@@ -1,11 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import {
-  Stack,
-  Typography,
-  TypographyProps,
-  Link,
-  LinkProps,
-} from '@utilitywarehouse/uw-web-ui-react';
+import { Stack, Typography, TypographyProps, Link, LinkProps } from 'uw-web-ui';
 import BackgroundStack from './BackgroundStack';
 
 const typographyVariants = [

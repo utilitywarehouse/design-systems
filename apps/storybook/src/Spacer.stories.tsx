@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react';
 
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
-import { Box, Spacer, SpacerProps } from '@utilitywarehouse/uw-web-ui-react';
+import { Box, Spacer, SpacerProps } from 'uw-web-ui';
 
 export default {
   title: 'Components/Spacer',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { breakpoints } from '@utilitywarehouse/customer-ui-design-tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { ThemeProvider } from '@utilitywarehouse/uw-web-ui-react';
+import { ThemeProvider } from 'uw-web-ui';
 import '@utilitywarehouse/uw-ui-fonts';
 
 const customerUiViewports = {
@@ -31,7 +31,7 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story) => (
+  Story => (
     <ThemeProvider>
       <Story />
     </ThemeProvider>

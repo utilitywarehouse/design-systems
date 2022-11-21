@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
-import { backgroundColors, Typography, Background, Box } from '@utilitywarehouse/uw-web-ui-react';
-import type { BackgroundProps } from '@utilitywarehouse/uw-web-ui-react';
+import { backgroundColors, Typography, Background, Box } from 'uw-web-ui';
+import type { BackgroundProps } from 'uw-web-ui';
 import { colors, borderRadius } from '@utilitywarehouse/customer-ui-design-tokens';
 
 export default {

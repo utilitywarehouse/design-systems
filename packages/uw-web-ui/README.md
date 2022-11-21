@@ -12,18 +12,10 @@ React component library for building UW Web UIs.
 
 ## Installation
 
-This library has a number of peer dependencies:
-
-- "@mui/material"
-- "@utilitywarehouse/customer-ui-design-tokens"
-- "@utilitywarehouse/customer-ui-react-icons"
-- "react"
-- "react-dom"
-
 Assuming you already have React installed, to get started install the library and it's peer dependencies.
 
 ```console
-yarn add @utilitywarehouse/uw-web-ui-react @mui/material @utilitywarehouse/customer-ui-design-tokens @utilitywarehouse/customer-ui-react-icons
+yarn add @utilitywarehouse/uw-web-ui @mui/material
 ```
 
 ### Fonts
@@ -40,7 +32,7 @@ yarn add @utilitywarehouse/uw-ui-fonts
 Start by wrapping your application with the `ThemeProvider` component.
 ```tsx
 import * as React from "react";
-import { ThemeProvider } from "@utilitywarehouse/uw-web-ui-react";
+import { ThemeProvider } from "@utilitywarehouse/uw-web-ui";
 import App from "./App";
 
 const App: React.FC = () => (
