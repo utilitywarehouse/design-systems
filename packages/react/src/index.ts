@@ -43,3 +43,6 @@ export { default as Typography } from './Typography';
 export * from './Typography';
 
 export * from './types';
+
+export * from '@utilitywarehouse/customer-ui-react-icons';
+export * from '@utilitywarehouse/customer-ui-design-tokens';

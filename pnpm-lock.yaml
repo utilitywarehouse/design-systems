@@ -107,13 +107,13 @@ importers:
     dependencies:
       '@emotion/react': 11.10.5_cuziicjcvwawlf5iuhzacuhqcy
       '@emotion/styled': 11.10.5_hmjty4frusbltjhl3xd7udcm2y
+      '@utilitywarehouse/customer-ui-design-tokens': 2.0.2
+      '@utilitywarehouse/customer-ui-react-icons': 1.0.2
     devDependencies:
       '@mui/material': 5.10.14_thp4wrxo45nyllusrnt46mid4u
       '@mui/system': 5.10.14_v64nlmo6pkqfmpmxge6otzlg54
       '@mui/types': 7.2.1_@types+react@18.0.25
       '@types/react': 18.0.25
-      '@utilitywarehouse/customer-ui-design-tokens': 2.0.2
-      '@utilitywarehouse/customer-ui-react-icons': 1.0.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       tsup: 6.5.0
@@ -4168,11 +4168,9 @@ packages:
 
   /@utilitywarehouse/customer-ui-design-tokens/2.0.2:
     resolution: {integrity: sha512-flHsGnVZ8hUaxVbAX2exjsYvic2lnQSOa40Gkn9kW0SYHFgicMJcE4tewnwLsZ++tl9U+N8vG3J2RHhlIEaZiw==}
-    dev: true
 
   /@utilitywarehouse/customer-ui-react-icons/1.0.2:
     resolution: {integrity: sha512-5FhG0aZl3lrxM8S6bmnWU6k9uP07nhLa0sRczFX09KYKuf/M/Q3pWKWWzHXURMbJ80H6cY2F9HDDsR4XRL7C1Q==}
-    dev: true
 
   /@utilitywarehouse/prettier-config/0.1.0:
     resolution: {integrity: sha512-zeT73g8qhCKd/O0hBB5jYMpzlR8qBmNFrk3pVz8j4NgyjcNUuSNVgxYipLav3hgsgr2YxunUY/YDaoPKhWJzGg==}
