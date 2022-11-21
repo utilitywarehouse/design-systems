@@ -1,20 +1,20 @@
 import React from 'react';
+import type { ElementType } from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { Box, Typography, Background, InteractiveCard } from '../../src';
-import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
-import { icons } from '../utils';
+import { Typography, Box, Background } from '@utilitywarehouse/uw-web-ui-react';
 import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
+import { icons } from './icons';
 
 export default {
-  title: 'Foundations/Iconography',
+  title: 'Iconography',
   components: [...icons['24x24'], ...icons['48x48']],
   args: {},
 } as Meta;
 
 interface IconsProps {
-  iconSet: string;
+  iconSet: '24x24' | '48x48';
 }
 
 const Icons: React.FC<IconsProps> = props => {
@@ -35,7 +35,7 @@ const Icons: React.FC<IconsProps> = props => {
         {icons[iconSet].map((icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element) => {
           const IconComponent = icon;
           return (
-            <InteractiveCard
+            <Box
               key={icon.name}
               onClick={() => {
                 copyToClipboard(
@@ -55,11 +55,11 @@ const Icons: React.FC<IconsProps> = props => {
                 }}
               >
                 <Stack spacing={2} alignItems="center">
-                  <IconComponent fill={colors.midnight} />
+                  <IconComponent fill="midnight" />
                   <Typography component="span">{icon.name.replace('Icon', '')}</Typography>
                 </Stack>
               </Tooltip>
-            </InteractiveCard>
+            </Box>
           );
         })}
       </Box>
@@ -85,7 +85,7 @@ interface IconsCustomStoryProps {
 }
 
 export const Icons24Story: Story<IconsCustomStoryProps> = args => {
-  const IconComponent = icons['24x24'].find(icon => icon.name === args.icon);
+  const IconComponent = icons['24x24'].find(icon => icon.name === args.icon) as ElementType;
 
   return (
     <Box
@@ -107,12 +107,12 @@ Icons24Story.argTypes = {
       options: icons['24x24'].map(icon => icon.name),
     },
   },
-  fill: {
-    control: {
-      type: 'select',
-      options: colors,
-    },
-  },
+  // fill: {
+  //   control: {
+  //     type: 'select',
+  //     options: colors,
+  //   },
+  // },
   width: {
     control: {
       type: 'text',
@@ -126,7 +126,7 @@ Icons24Story.argTypes = {
 };
 Icons24Story.args = {
   icon: icons['24x24'][0].name,
-  fill: colors.midnight,
+  fill: 'midnight',
   width: '24',
   height: '24',
 };
@@ -135,7 +135,7 @@ Icons24Story.parameters = {
 };
 
 export const Icons48Story: Story<IconsCustomStoryProps> = args => {
-  const IconComponent = icons['48x48'].find(icon => icon.name === args.icon);
+  const IconComponent = icons['48x48'].find(icon => icon.name === args.icon) as ElementType;
 
   return (
     <Box
@@ -157,12 +157,12 @@ Icons48Story.argTypes = {
       options: icons['48x48'].map(icon => icon.name),
     },
   },
-  fill: {
-    control: {
-      type: 'select',
-      options: colors,
-    },
-  },
+  // fill: {
+  //   control: {
+  //     type: 'select',
+  //     options: colors,
+  //   },
+  // },
   width: {
     control: {
       type: 'text',
@@ -176,7 +176,7 @@ Icons48Story.argTypes = {
 };
 Icons48Story.args = {
   icon: icons['48x48'][0].name,
-  fill: colors.midnight,
+  fill: 'midnight',
   width: '48',
   height: '48',
 };

@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import { Menu, MenuItem, Box, Button } from '../../src';
-import { BackgroundStack } from '../utils';
+import { Box, Button, Menu, MenuItem } from '@utilitywarehouse/uw-web-ui-react';
+import BackgroundStack from './BackgroundStack';
 
 export default {
   title: 'Components/Menu',
