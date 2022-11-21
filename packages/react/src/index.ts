@@ -27,6 +27,9 @@ export * from './Stack';
 export { default as Spacer } from './Spacer';
 export * from './Spacer';
 
+export { default as TextField } from './TextField';
+export * from './TextField';
+
 export { default as TextLink } from './TextLink';
 export * from './TextLink';
 
