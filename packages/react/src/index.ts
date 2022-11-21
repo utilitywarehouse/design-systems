@@ -15,6 +15,9 @@ export * from './Button';
 export { default as Grid } from './Grid';
 export * from './Grid';
 
+export { default as Icon } from './Icon';
+export * from './Icon';
+
 export { default as Link } from './Link';
 export * from './Link';
 

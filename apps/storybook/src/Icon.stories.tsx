@@ -1,10 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
-
-import { Icon } from '../../src';
-import type { IconProps } from '../../src';
-import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
-import { BackgroundStack, icons } from '../utils';
+import { icons } from './icons';
+import { Icon, IconProps } from '@utilitywarehouse/uw-web-ui-react';
+import BackgroundStack from './BackgroundStack';
 
 const allIcons = [...icons['24x24'], ...icons['48x48']];
 
@@ -19,16 +17,16 @@ export default {
         options: allIcons.map(icon => icon.name),
       },
     },
-    color: {
-      control: {
-        type: 'select',
-        options: colors,
-      },
-    },
+    // color: {
+    //   control: {
+    //     type: 'select',
+    //     options: colors,
+    //   },
+    // },
   },
   args: {
     icon: allIcons[0].name,
-    color: colors.midnight,
+    color: 'midnight',
   },
 } as Meta;
 
@@ -37,7 +35,7 @@ interface IconStoryProps extends Omit<IconProps, 'icon'> {
 }
 
 export const IconStory: Story<IconStoryProps> = args => {
-  const icon = allIcons.find(icon => icon.name === args.icon);
+  const icon = allIcons.find(i => i.name === args.icon);
   return (
     <BackgroundStack>
       <Icon {...args} icon={icon} />
