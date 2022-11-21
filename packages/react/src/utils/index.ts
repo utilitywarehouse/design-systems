@@ -14,6 +14,11 @@ export const isHeadingVariant = (variant: string): boolean => {
 };
 
 export const dataAttributes = {
+  primary: 'primary',
+  secondary: 'secondary',
+  success: 'success',
+  error: 'error',
+  bold: 'text-bold',
   variant: 'variant',
   size: 'size',
   inverse: 'on-inverse-background',

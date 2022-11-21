@@ -1,7 +1,7 @@
 import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Theme } from '@mui/material/styles';
 import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
-import { typographyClasses } from './Typography';
+import { dataAttributes } from '../utils';
 
 export const typographyThemeOverrides = (
   theme: Theme
@@ -16,13 +16,14 @@ export const typographyThemeOverrides = (
   legalNote: TypographyStyleOptions;
   caption: TypographyStyleOptions;
 } => {
+  const { secondary, inverse, bold, success, error } = dataAttributes;
   const headingStyles = {
     fontFamily: fonts.primary,
     color: colors.purple,
-    [`&.${typographyClasses.secondary}`]: {
+    [`&[data-${secondary}=true]`]: {
       color: colors.midnight,
     },
-    [`&.${typographyClasses.inverse}`]: {
+    [`&[data-${inverse}=true]`]: {
       color: colors.white,
     },
   };
@@ -30,22 +31,22 @@ export const typographyThemeOverrides = (
     fontFamily: fonts.secondary,
     color: colors.midnight,
     fontWeight: fontWeights.secondary.regular,
-    [`&.${typographyClasses.bold}`]: {
+    [`&[data-${bold}=true]`]: {
       fontWeight: fontWeights.secondary.semibold,
     },
-    [`&.${typographyClasses.inverse}`]: {
+    [`&[data-${inverse}=true]`]: {
       color: colors.white,
     },
-    [`&.${typographyClasses.success}`]: {
+    [`&[data-${success}=true]`]: {
       color: colors.jewel,
     },
-    [`&.${typographyClasses.success}.${typographyClasses.inverse}`]: {
+    [`&[data-${success}=true][data-${inverse}=true]`]: {
       color: colors.apple,
     },
-    [`&.${typographyClasses.error}`]: {
+    [`&[data-${error}=true]`]: {
       color: colors.maroonFlush,
     },
-    [`&.${typographyClasses.error}.${typographyClasses.inverse}`]: {
+    [`&[data-${error}=true][data-${inverse}=true]`]: {
       color: colors.rose,
     },
   };
