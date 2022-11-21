@@ -6,6 +6,7 @@ import { Typography, Box, Background } from '@utilitywarehouse/uw-web-ui-react';
 import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import { icons } from './icons';
+import { colors, transitions } from '@utilitywarehouse/customer-ui-design-tokens';
 
 export default {
   title: 'Iconography',
@@ -24,7 +25,14 @@ const Icons: React.FC<IconsProps> = props => {
 
   return (
     <Stack spacing={2}>
-      <Typography variant="h2">{iconSet}</Typography>
+      <Stack spacing={1}>
+        <Typography component="span" variant="h2">
+          {iconSet}
+        </Typography>
+        <Typography component="span" variant="subtitle">
+          Click on icon card to copy import statement
+        </Typography>
+      </Stack>
       <Box
         sx={{
           display: 'grid',
@@ -35,8 +43,20 @@ const Icons: React.FC<IconsProps> = props => {
         {icons[iconSet].map((icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element) => {
           const IconComponent = icon;
           return (
-            <Box
+            <Background
               key={icon.name}
+              backgroundColor="white"
+              sx={{
+                transition: `${transitions.duration}ms ${transitions.easingFunction}`,
+                transitionProperty: 'border-color',
+                paddingY: 3,
+                border: `2px solid ${colors.white}`,
+                borderRadius: 3,
+                cursor: 'pointer',
+                ':hover': {
+                  borderColor: colors.pink,
+                },
+              }}
               onClick={() => {
                 copyToClipboard(
                   `import ${icon.name.replace(
@@ -48,18 +68,24 @@ const Icons: React.FC<IconsProps> = props => {
               }}
             >
               <Tooltip
-                placement="top"
-                title={copied ? 'Copied!' : 'Click to copy import'}
+                placement="bottom"
+                title={
+                  <Typography component="span" variant="caption" sx={{ color: colors.white }}>
+                    {copied ? 'Copied!' : 'Click to copy import'}
+                  </Typography>
+                }
                 TransitionProps={{
                   onExited: () => setCopied(false),
                 }}
               >
                 <Stack spacing={2} alignItems="center">
                   <IconComponent fill="midnight" />
-                  <Typography component="span">{icon.name.replace('Icon', '')}</Typography>
+                  <Typography variant="body" component="span">
+                    {icon.name.replace('Icon', '')}
+                  </Typography>
                 </Stack>
               </Tooltip>
-            </Box>
+            </Background>
           );
         })}
       </Box>
@@ -107,12 +133,12 @@ Icons24Story.argTypes = {
       options: icons['24x24'].map(icon => icon.name),
     },
   },
-  // fill: {
-  //   control: {
-  //     type: 'select',
-  //     options: colors,
-  //   },
-  // },
+  fill: {
+    control: {
+      type: 'select',
+      options: colors,
+    },
+  },
   width: {
     control: {
       type: 'text',
@@ -157,12 +183,12 @@ Icons48Story.argTypes = {
       options: icons['48x48'].map(icon => icon.name),
     },
   },
-  // fill: {
-  //   control: {
-  //     type: 'select',
-  //     options: colors,
-  //   },
-  // },
+  fill: {
+    control: {
+      type: 'select',
+      options: colors,
+    },
+  },
   width: {
     control: {
       type: 'text',

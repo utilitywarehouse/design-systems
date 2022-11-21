@@ -21,6 +21,9 @@ export * from './Icon';
 export { default as Link } from './Link';
 export * from './Link';
 
+export { default as Menu } from './Menu';
+export * from './Menu';
+
 export { default as Stack } from './Stack';
 export * from './Stack';
 
