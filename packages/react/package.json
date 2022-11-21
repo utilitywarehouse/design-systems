@@ -1,16 +1,15 @@
 {
-  "name": "@utilitywarehouse/customer-ui-material",
-  "version": "2.0.5",
-  "description": "UW Customer UI component library, built upon MUI Material",
-  "main": "dist/index.js",
+  "name": "@utilitywarehouse/uw-web-ui-react",
+  "version": "0.0.1",
+  "description": "UW Web UI components",
+  "main": "./dist/index.js",
   "scripts": {
-    "clean": "rimraf node_modules && rimraf dist",
-    "build": "rimraf dist/ && tsc --build ./tsconfig.build.json",
-    "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\" \"./stories/**\"",
-    "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\" \"./stories/**\"",
+    "clean": "rm -rf node_modules && rm -rf dist",
+    "build": "rm -rf dist/ && tsc --build ./tsconfig.json",
+    "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
+    "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "precommit": "lint-staged",
-    "storybook:start": "start-storybook -p 6006",
-    "storybook:build": "build-storybook -o storybook-build"
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
@@ -18,47 +17,30 @@
     ]
   },
   "author": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "publishConfig": {
     "access": "restricted"
   },
   "dependencies": {
-    "@ctrl/tinycolor": "^3.4.0",
-    "@emotion/cache": "^11.7.1",
-    "@mui/styled-engine": "^5.10.2",
-    "@mui/styles": "^5.10.2",
-    "clsx": "^1.2.1",
-    "jss": "^10.9.0"
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "clsx": "^1.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
     "@mui/material": "^5.10.5",
     "@mui/system": "^5.10.5",
     "@mui/types": "^7.1.4",
-    "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/addon-viewport": "^6.5.9",
-    "@storybook/addons": "^6.5.9",
-    "@storybook/react": "^6.5.9",
-    "@storybook/theming": "^6.5.9",
     "@types/react": "^17.0.0 || ^18.0.0",
-    "@utilitywarehouse/uw-ui-fonts": "^0.0.2",
-    "@utilitywarehouse/customer-ui-design-tokens": "2.0.2",
-    "@utilitywarehouse/customer-ui-react-icons": "1.0.2",
-    "babel-loader": "^8.2.2",
-    "chromatic": "^6.7.3",
-    "css-loader": "^5.2.0",
+    "@utilitywarehouse/customer-ui-design-tokens": "^2.0.2",
+    "@utilitywarehouse/customer-ui-react-icons": "^1.0.2",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
-    "style-loader": "^2.0.0"
+    "tsup": "^6.2.3"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
     "@mui/material": "^5.10.5",
-    "@utilitywarehouse/customer-ui-design-tokens": "2.0.2",
-    "@utilitywarehouse/customer-ui-react-icons": "1.0.2",
+    "@utilitywarehouse/customer-ui-design-tokens": "^2.0.2",
+    "@utilitywarehouse/customer-ui-react-icons": "^1.0.2",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
   },
