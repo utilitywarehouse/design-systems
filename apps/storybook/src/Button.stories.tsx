@@ -38,6 +38,18 @@ export default {
         options: sizes,
       },
     },
+    variant: {
+      control: {
+        type: 'radio',
+        options: [...variants, 'tertiary'],
+      },
+    },
+    size: {
+      control: {
+        type: 'radio',
+        options: sizes,
+      },
+    },
   },
   args: {
     variant: 'primary',
