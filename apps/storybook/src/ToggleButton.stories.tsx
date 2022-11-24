@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import { ToggleButtonGroup, ToggleButton } from '../../src';
-import { BackgroundStack } from '../utils';
+import BackgroundStack from './BackgroundStack';
+import { ToggleButton, ToggleButtonGroup } from 'uw-web-ui';
 
 export default {
   title: 'Components/ToggleButton',

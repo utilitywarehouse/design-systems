@@ -1,59 +1,54 @@
-import React from 'react';
+import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import MuiToggleButton, {
   ToggleButtonProps as MuiToggleButtonProps,
 } from '@mui/material/ToggleButton';
 import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
-import { useBackground } from './Background';
-import { customerUiPrefix, isBrandBackgroundColor } from '../utils';
-import clsx from 'clsx';
-import { px } from '../utils';
+import { dataAttributes, isInverseBackgroundColor, px } from '../utils';
+import { useBackground } from '../Background';
 
-const PREFIX = `${customerUiPrefix}-ToggleButton`;
-
-const toggleButtonClasses = {
-  inverse: `${PREFIX}-inverse`,
-};
-
-const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => ({
-  border: 0,
-  padding: `${theme.spacing(0.5)} ${theme.spacing(3)}`,
-  borderRadius: px(32),
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.semibold,
-  fontSize: 16,
-  lineHeight: 1.5,
-  color: colors.midnight,
-  '&:focus, &:active': {
-    backgroundColor: colors.cyan50,
-  },
-  '&:hover': {
-    backgroundColor: colors.cyan20,
-  },
-  '&:disabled': {
-    color: colors.codGray70,
-    border: 'none',
-  },
-  '&.Mui-selected, &.Mui-selected:hover': {
-    backgroundColor: colors.cyan,
-    '&:disabled': {
-      backgroundColor: colors.codGray20,
+const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
+  const { inverse } = dataAttributes;
+  return {
+    border: 0,
+    padding: `${theme.spacing(0.5)} ${theme.spacing(3)}`,
+    borderRadius: px(32),
+    fontFamily: fonts.secondary,
+    fontWeight: fontWeights.secondary.semibold,
+    fontSize: 16,
+    lineHeight: 1.5,
+    color: colors.midnight,
+    '&:focus, &:active': {
+      backgroundColor: colors.cyan50,
     },
-  },
-  [`&.${toggleButtonClasses.inverse}`]: {
-    color: colors.white,
-    '&:disabled': {
-      color: colors.codGray40,
+    '&:hover': {
+      backgroundColor: colors.cyan20,
     },
-    '&.Mui-selected, &:hover, &:focus, &:active': {
-      color: colors.midnight,
+    '&:disabled': {
+      color: colors.codGray70,
+      border: 'none',
+    },
+    '&.Mui-selected, &.Mui-selected:hover': {
+      backgroundColor: colors.cyan,
       '&:disabled': {
-        color: colors.codGray80,
-        backgroundColor: colors.codGray30,
+        backgroundColor: colors.codGray20,
       },
     },
-  },
-}));
+    [`&[data-${inverse}=true]`]: {
+      color: colors.white,
+      '&:disabled': {
+        color: colors.codGray40,
+      },
+      '&.Mui-selected, &:hover, &:focus, &:active': {
+        color: colors.midnight,
+        '&:disabled': {
+          color: colors.codGray80,
+          backgroundColor: colors.codGray30,
+        },
+      },
+    },
+  };
+});
 
 export type ToggleButtonProps = Pick<
   MuiToggleButtonProps,
@@ -74,10 +69,11 @@ const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(func
   ref
 ) {
   const { backgroundColor } = useBackground();
+  const inverse = isInverseBackgroundColor(backgroundColor);
 
-  const classNames = clsx(className, {
-    [toggleButtonClasses.inverse]: isBrandBackgroundColor(backgroundColor),
-  });
+  const dataAttributeProps = {
+    [`data-${dataAttributes.inverse}`]: inverse,
+  };
 
   return (
     <StyledMuiToggleButton
@@ -86,7 +82,8 @@ const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(func
       disableRipple
       disableFocusRipple
       {...props}
-      className={classNames}
+      className={className}
+      {...dataAttributeProps}
     >
       {children}
     </StyledMuiToggleButton>

@@ -39,6 +39,9 @@ export * from './TextLink';
 export { default as ThemeProvider } from './ThemeProvider';
 export * from './ThemeProvider';
 
+export { default as ToggleButton } from './ToggleButton';
+export * from './ToggleButton';
+
 export { default as Typography } from './Typography';
 export * from './Typography';
 
