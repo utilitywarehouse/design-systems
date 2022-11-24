@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { dataAttributes, isInverseBackgroundColor } from '../utils';
