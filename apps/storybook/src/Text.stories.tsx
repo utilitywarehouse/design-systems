@@ -2,6 +2,7 @@ import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
 import { backgroundColors, Text, Background } from 'uw-web-ui';
 import type { BackgroundProps, TextProps } from 'uw-web-ui';
+import BackgroundStack from './BackgroundStack';
 
 const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
@@ -65,40 +66,43 @@ export default {
   },
 } as Meta;
 
-// export const TextKitchenSinkStory: Story<
-//   TextProps & { backgroundColor: BackgroundProps['backgroundColor'] }
-// > = ({ backgroundColor, ...args }) => {
-//   return (
-//     <Background
-//       backgroundColor={backgroundColor}
-//       sx={{ display: 'flex', justifyContent: 'center', padding: 4 }}
-//     >
-//       <Stack spacing={2}>
-//         {variants.map(v => (
-//           <Stack key={v} spacing={4} direction="row">
-//             <Text {...args} variant={v} />
-//           </Stack>
-//         ))}
-//       </Stack>
-//     </Background>
-//   );
-// };
-// TextKitchenSinkStory.storyName = 'Kitchen Sink';
-// TextKitchenSinkStory.argTypes = {
-//   variant: { table: { disable: true } },
-//   gutterBottom: { table: { disable: true } },
-//   paragraph: { table: { disable: true } },
-//   component: { table: { disable: true } },
-//   classes: { table: { disable: true } },
-//   sx: { table: { disable: true } },
-//   align: { table: { disable: true } },
-//   noWrap: { table: { disable: true } },
-// };
-// TextKitchenSinkStory.args = {
-//   color: 'primary',
-// };
+export const TextKitchenSinkStory: Story<
+  TextProps & { backgroundColor: BackgroundProps['backgroundColor'] }
+> = ({ backgroundColor, ...args }) => {
+  return (
+    <BackgroundStack>
+      <Stack spacing={4} direction="row">
+        {variants.map(v => (
+          <Stack key={v} spacing={2}>
+            {colors.map(c => (
+              <Text key={`${v}${c}`} {...args} variant={v} color={c} />
+            ))}
+          </Stack>
+        ))}
+      </Stack>
+    </BackgroundStack>
+  );
+};
+TextKitchenSinkStory.storyName = 'Kitchen Sink';
+TextKitchenSinkStory.argTypes = {
+  variant: { table: { disable: true } },
+  gutterBottom: { table: { disable: true } },
+  paragraph: { table: { disable: true } },
+  component: { table: { disable: true } },
+  classes: { table: { disable: true } },
+  sx: { table: { disable: true } },
+  align: { table: { disable: true } },
+  noWrap: { table: { disable: true } },
+  color: { table: { disable: true } },
+  backgroundColor: { table: { disable: true } },
+  textTransform: { table: { disable: true } },
+  letterSpacing: { table: { disable: true } },
+};
+TextKitchenSinkStory.args = {
+  color: 'primary',
+};
 
-export const TextStory: Story<
+export const TextCustomStory: Story<
   TextProps & { backgroundColor: BackgroundProps['backgroundColor'] }
 > = ({ backgroundColor, ...args }) => {
   return (
@@ -110,4 +114,4 @@ export const TextStory: Story<
     </Background>
   );
 };
-TextStory.storyName = 'Text';
+TextCustomStory.storyName = 'Custom';
