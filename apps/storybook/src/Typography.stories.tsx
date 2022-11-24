@@ -125,7 +125,7 @@ export const TypographyCustomStory: Story<
       backgroundColor={backgroundColor}
       sx={{ display: 'flex', justifyContent: 'center', padding: 4 }}
     >
-      <Typography {...args} />
+      <Typography {...args} component="span" />
     </Background>
   );
 };
