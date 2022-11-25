@@ -1,28 +1,27 @@
 import * as React from 'react';
-import { FC } from 'react';
-import { RadioGroup as RadioGroupMui, styled } from '@mui/material';
-import { RadioGroupProps } from '@mui/material/RadioGroup/RadioGroup';
+import { RadioGroup as MuiRadioGroup } from '@mui/material';
+import { RadioGroupProps as MuiRadioGroupProps } from '@mui/material/RadioGroup/RadioGroup';
 import { useDeviceSize } from '../index';
+import Stack, { StackProps } from './Stack';
 
-interface Props extends RadioGroupProps {
+interface Props extends MuiRadioGroupProps {
   inline?: boolean;
-  children: React.ReactNode;
+  spacing?: StackProps['spacing'];
 }
 
-const StyledRadioGroup = styled(RadioGroupMui, {
-  shouldForwardProp: prop => prop !== 'inline',
-})<{ inline: boolean }>(({ inline }) => ({
-  display: 'flex',
-  justifyContent: 'flex-start',
-  flexDirection: inline ? 'row' : 'column',
-}));
-
-const RadioGroup: FC<Props> = ({ inline = true, children, ...props }: Props) => {
+const RadioGroup: ({ inline, children, spacing, ...props }: Props) => JSX.Element = ({
+  inline = true,
+  children,
+  spacing,
+  ...props
+}: Props) => {
   const { isMobile } = useDeviceSize();
   return (
-    <StyledRadioGroup {...props} inline={!isMobile && inline}>
-      {children}
-    </StyledRadioGroup>
+    <MuiRadioGroup {...props}>
+      <Stack direction={!isMobile && inline ? 'row' : 'column'} spacing={spacing || 2}>
+        {children}
+      </Stack>
+    </MuiRadioGroup>
   );
 };
 export default RadioGroup;

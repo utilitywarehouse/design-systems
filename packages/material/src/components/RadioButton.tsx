@@ -1,59 +1,61 @@
 import * as React from 'react';
-import { FC, ReactElement } from 'react';
-import { colors, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
-import { Box, FormControlLabel, Radio, styled, Typography } from '@mui/material';
-import { Color } from '../types';
+import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import {
+  FormControlLabel,
+  FormControlLabelProps,
+  Radio,
+  RadioProps,
+  styled,
+  useRadioGroup,
+} from '@mui/material';
+import Typography from './Typography';
+import Background from './Background';
 
-interface Props {
-  label: string | ReactElement;
-  handleClick?: () => void;
-  value: string;
-  color?: Color;
-  selected: boolean;
-  disabled?: boolean;
+export interface RadioButtonProps
+  extends Pick<
+    RadioProps,
+    'onChange' | 'value' | 'checked' | 'disabled' | 'id' | 'name' | 'required' | 'sx' | 'color'
+  > {
+  label: FormControlLabelProps['label'];
 }
 
 const StyledFormControlLabel = styled(FormControlLabel)(() => ({
   width: '100%',
+  height: 24,
   margin: 0,
 }));
 
-const StyledLabel = styled(Typography, {
-  shouldForwardProp: prop => prop !== 'selected' && prop !== 'disabled',
-})<{ selected: boolean; disabled: boolean }>(({ selected, disabled }) => ({
-  fontWeight: selected ? fontWeights.secondary.semibold : fontWeights.secondary.regular,
-  padding: '16.5px 16px 16.5px 0px',
-  color: disabled ? colors.codGray40 : '',
-}));
-
 const StyledRadio = styled(Radio)<{ disabled: boolean }>(({ disabled }) => ({
+  color: colors.codGray20,
+  height: 24,
+  width: 24,
+  marginRight: 8,
   '#radioBox:hover &': {
     color: disabled ? '' : colors.cyan30,
   },
 }));
 
-const StyledBox = styled(Box, {
-  shouldForwardProp: prop => prop !== 'selected' && prop !== 'disabled',
-})<{ selected: boolean; disabled: boolean }>(({ theme, selected, disabled }) => {
+const StyledBox = styled(Background, {
+  shouldForwardProp: prop => prop !== 'checked' && prop !== 'disabled',
+})<{ checked: boolean | undefined; disabled: boolean }>(({ theme, checked, disabled }) => {
   const baseStyle = {
+    maxHeight: 24,
     display: 'flex',
-    height: 56,
+    padding: 16,
     borderRadius: theme.spacing(1),
     borderWidth: '2px',
-    borderColor: selected ? colors.cyan : colors.codGray20,
+    borderColor: `${checked && !disabled ? colors.cyan : colors.codGray20}`,
     borderStyle: 'solid',
-    cursor: 'pointer',
     backgroundColor: colors.white,
-    margin: 16,
   };
 
   return disabled
     ? {
         ...baseStyle,
-        borderColor: 'transparent',
       }
     : {
         ...baseStyle,
+        cursor: 'pointer',
         '&:hover': {
           background: colors.cyan10,
           borderColor: colors.cyan30,
@@ -65,23 +67,45 @@ const StyledBox = styled(Box, {
       };
 });
 
-const RadioButton: FC<Props> = ({
+const RadioButton: ({ label, value, checked, disabled }: RadioButtonProps) => JSX.Element = ({
   label,
   value,
-  color = 'secondary',
-  selected,
+  checked,
   disabled = false,
-}: Props) => (
-  <StyledBox id="radioBox" selected={selected} disabled={disabled}>
-    <StyledFormControlLabel
-      value={value}
-      control={<StyledRadio color={color} checked={selected} disableRipple disabled={disabled} />}
-      label={
-        <StyledLabel selected={selected} disabled={disabled} variant="subtitle">
-          {label}
-        </StyledLabel>
-      }
-    />
-  </StyledBox>
-);
+  ...props
+}: RadioButtonProps) => {
+  const radioGroup = useRadioGroup();
+
+  if (radioGroup) {
+    checked = radioGroup.value === value;
+  }
+
+  return (
+    <StyledBox id="radioBox" checked={checked} disabled={disabled}>
+      <StyledFormControlLabel
+        disableTypography={disabled}
+        value={value}
+        control={
+          <StyledRadio
+            {...props}
+            color="secondary"
+            checked={checked}
+            disableRipple
+            disabled={disabled}
+          />
+        }
+        label={
+          <Typography
+            variant="body"
+            component="span"
+            fontWeight={checked ? 'semibold' : 'regular'}
+            sx={disabled ? { color: colors.codGray40 } : {}}
+          >
+            {label}
+          </Typography>
+        }
+      />
+    </StyledBox>
+  );
+};
 export default RadioButton;
