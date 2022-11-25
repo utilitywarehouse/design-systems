@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/react';
+import { Story, Meta, ArgTypes } from '@storybook/react';
 import { Stack, Typography, TextLink } from 'uw-web-ui';
 import type { TypographyProps, TextLinkProps } from 'uw-web-ui';
 import BackgroundStack from './BackgroundStack';
@@ -52,7 +52,25 @@ export default {
   },
 } as Meta;
 
-export const TextLinkStory: Story<
+export const TextLinkStandaloneStory: Story<
+  TextLinkProps & { typographyVariant: TypographyProps['variant'] }
+> = args => {
+  return (
+    <BackgroundStack>
+      <Stack spacing={2}>
+        <TextLink href="#" {...args} />
+      </Stack>
+    </BackgroundStack>
+  );
+};
+
+TextLinkStandaloneStory.storyName = 'Standalone';
+TextLinkStandaloneStory.argTypes = {
+  typographyVariant: { table: { disable: true } },
+  sx: { table: { disable: true } },
+};
+
+export const TextLinkInlineStory: Story<
   TextLinkProps & { typographyVariant: TypographyProps['variant'] }
 > = args => {
   const { typographyVariant, ...rest } = args;
@@ -60,11 +78,8 @@ export const TextLinkStory: Story<
     <BackgroundStack>
       <Stack spacing={2}>
         <Typography component="span" variant={typographyVariant}>
-          <TextLink href="#" {...rest} />
-        </Typography>
-        <Typography component="span" variant={typographyVariant}>
           This is an inline{' '}
-          <TextLink href="#" {...rest} variant="inherit">
+          <TextLink href="#" {...rest}>
             link
           </TextLink>
           .
@@ -74,4 +89,13 @@ export const TextLinkStory: Story<
   );
 };
 
-TextLinkStory.storyName = 'TextLink';
+TextLinkInlineStory.storyName = 'Inline';
+TextLinkInlineStory.args = {
+  textTransform: 'none',
+  variant: undefined,
+} as TextLinkProps;
+TextLinkInlineStory.argTypes = {
+  variant: { table: { disable: true } },
+  sx: { table: { disable: true } },
+  textTransform: { table: { disable: true } },
+} as ArgTypes<TextLinkProps>;

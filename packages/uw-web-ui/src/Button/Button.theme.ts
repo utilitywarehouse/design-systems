@@ -44,7 +44,7 @@ export const buttonThemeOverrides = (): Components => {
           [`&[data-${disableCapitalizeFirstLetter}=true]::first-letter`]: {
             textTransform: 'none',
           },
-          [`&[data-${inverse}=true]`]: {
+          [`[data-${inverse}=true] &`]: {
             '&:disabled': {
               opacity: 0.6,
             },
@@ -81,7 +81,7 @@ export const buttonThemeOverrides = (): Components => {
               opacity: 0.5,
               borderWidth,
             },
-            [`&[data-${inverse}=true]`]: {
+            [`[data-${inverse}=true] &`]: {
               color: colors.white,
               '&:hover': {
                 borderColor: colors.white,
@@ -103,7 +103,7 @@ export const buttonThemeOverrides = (): Components => {
             '&:hover': {
               opacity: 0.5,
             },
-            [`&[data-${inverse}=true]`]: {
+            [`[data-${inverse}=true] &`]: {
               color: colors.white,
             },
           },

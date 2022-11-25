@@ -1,8 +1,7 @@
 import * as React from 'react';
 import MuiButton, { ButtonProps as MuiButtonProps, ExtendButton } from '@mui/material/Button';
-import { dataAttributes, isInverseBackgroundColor } from '../utils';
+import { dataAttributes } from '../utils';
 import { OverrideProps } from '@mui/material/OverridableComponent';
-import { useBackground } from '../Background';
 
 type DefaultComponent = 'button';
 
@@ -27,14 +26,9 @@ const Button = React.forwardRef(function Button(
   { size = 'medium', variant = 'primary', disableCapitalizeFirstLetter, className, ...props },
   ref
 ) {
-  const { backgroundColor } = useBackground();
-
-  const inverse = isInverseBackgroundColor(backgroundColor);
-
   const dataAttributeProps = {
     [`data-${dataAttributes.variant}`]: variant,
     [`data-${dataAttributes.size}`]: size,
-    [`data-${dataAttributes.inverse}`]: inverse,
     [`data-${dataAttributes.disableCapitalizeFirstLetter}`]: disableCapitalizeFirstLetter,
   };
 

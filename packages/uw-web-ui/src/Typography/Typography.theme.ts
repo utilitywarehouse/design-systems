@@ -23,7 +23,7 @@ export const typographyThemeOverrides = (
     [`&[data-${secondary}=true]`]: {
       color: colors.midnight,
     },
-    [`&[data-${inverse}=true]`]: {
+    [`[data-${inverse}=true] &`]: {
       color: colors.white,
     },
   };
@@ -34,20 +34,20 @@ export const typographyThemeOverrides = (
     [`&[data-${bold}=true]`]: {
       fontWeight: fontWeights.secondary.semibold,
     },
-    [`&[data-${inverse}=true]`]: {
+    [`[data-${inverse}=true] &`]: {
       color: colors.white,
     },
     [`&[data-${success}=true]`]: {
       color: colors.jewel,
-    },
-    [`&[data-${success}=true][data-${inverse}=true]`]: {
-      color: colors.apple,
+      [`[data-${inverse}=true] &`]: {
+        color: colors.apple,
+      },
     },
     [`&[data-${error}=true]`]: {
       color: colors.maroonFlush,
-    },
-    [`&[data-${error}=true][data-${inverse}=true]`]: {
-      color: colors.rose,
+      [`[data-${inverse}=true] &`]: {
+        color: colors.rose,
+      },
     },
   };
 
