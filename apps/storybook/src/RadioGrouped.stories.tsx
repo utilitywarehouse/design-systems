@@ -4,6 +4,7 @@ import { BackgroundStack } from '../utils';
 import RadioButton from '../../src/components/RadioButton';
 import RadioGroup from '../../src/components/RadioGroup';
 import { Box, styled, Typography } from '@mui/material';
+import { useDeviceSize } from '../../src';
 
 enum RadioValues {
   YES = 'Yes',
@@ -34,23 +35,26 @@ export default {
 } as Meta;
 
 const StyledBox = styled(Box, {
-  shouldForwardProp: prop => prop !== 'inline',
-})<{ inline: boolean }>(({ inline }) => ({
+  shouldForwardProp: prop => prop !== 'inline' && prop !== 'isMobile',
+})<{ inline: boolean; isMobile: boolean }>(({ inline, isMobile }) => ({
   display: 'inline-flex',
   width: '100%',
   justifyContent: 'center',
   alignItems: inline ? 'center' : 'start',
+  flexDirection: isMobile ? 'column' : 'row',
 }));
 
 const StyledHeader = styled(Typography)(() => ({
-  marginRight: 12,
+  margin: '12px 12px 12px 0px',
 }));
 
 export const RadioGroupedStory: Story = args => {
+  const { isMobile } = useDeviceSize();
+
   return (
     <BackgroundStack>
       <Box>
-        <StyledBox inline={args.inline} sx={{ marginBottom: '24px' }}>
+        <StyledBox inline={args.inline} sx={{ marginBottom: '24px' }} isMobile={isMobile}>
           <StyledHeader>Enabled Group</StyledHeader>
           <RadioGroup inline={args.inline}>
             <RadioButton label="Yes" value={RadioValues.YES} color="secondary" />
@@ -58,7 +62,7 @@ export const RadioGroupedStory: Story = args => {
             <RadioButton label="Maybe" value={RadioValues.MAYBE} color="secondary" />
           </RadioGroup>
         </StyledBox>
-        <StyledBox inline={args.inline}>
+        <StyledBox inline={args.inline} isMobile={isMobile}>
           <StyledHeader>Disabled Group</StyledHeader>
           <RadioGroup inline={args.inline} value={args['disabled check']}>
             <RadioButton label="Yes" value={RadioValues.YES} color="secondary" disabled />
