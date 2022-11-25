@@ -4,54 +4,18 @@ import { styled } from '@mui/material/styles';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { BackgroundColor, NeutralBackgroundColor, InverseBackgroundColor } from '../types';
 import Box, { BoxProps } from '../Box';
+import { dataAttributes, isInverseBackgroundColor } from '../utils';
 
 const DefaultBackgroundColor: BackgroundColor = 'white' as BackgroundColor;
-
-interface BackgroundContextValue {
-  backgroundColor: NeutralBackgroundColor | InverseBackgroundColor;
-}
-
-const BackgroundContext = React.createContext<BackgroundContextValue>({
-  backgroundColor: DefaultBackgroundColor,
-});
-
-export const useBackground = (): BackgroundContextValue => {
-  const context: BackgroundContextValue = React.useContext(BackgroundContext);
-  if (context === undefined) {
-    throw new Error(`useBackground must be used within the Background component`);
-  }
-  return context;
-};
-
-export interface BackgroundProviderProps {
-  children?: React.ReactNode;
-  backgroundColor: BackgroundContextValue['backgroundColor'];
-}
-
-export const BackgroundProvider = (props: BackgroundProviderProps): JSX.Element => {
-  const { backgroundColor = DefaultBackgroundColor, children } = props;
-  return (
-    <BackgroundContext.Provider value={{ backgroundColor }}>{children}</BackgroundContext.Provider>
-  );
-};
-
-interface StyledBackgroundProps {
-  backgroundColor: BackgroundContextValue['backgroundColor'];
-}
-
-const StyledBackground = styled(Box, {
-  shouldForwardProp: prop => prop !== 'backgroundColor',
-})<StyledBackgroundProps>(({ backgroundColor }) => ({
-  backgroundColor: colors[backgroundColor],
-}));
 
 type DefaultComponent = 'div';
 
 type CustomProps<D extends React.ElementType = DefaultComponent, P = {}> = Pick<
   BoxProps<D, P>,
   'sx' | 'component' | 'classes'
-> &
-  BackgroundProviderProps;
+> & {
+  backgroundColor: NeutralBackgroundColor | InverseBackgroundColor;
+};
 
 interface TypeMap<D extends React.ElementType = DefaultComponent, P = {}> {
   props: CustomProps<D, P>;
@@ -63,14 +27,31 @@ export type BackgroundProps<D extends React.ElementType = DefaultComponent, P = 
   D
 >;
 
+interface StyledBackgroundProps {
+  backgroundColor: CustomProps['backgroundColor'];
+}
+
+const StyledBackground = styled(Box, {
+  shouldForwardProp: prop => prop !== 'backgroundColor',
+})<StyledBackgroundProps>(({ backgroundColor }) => ({
+  backgroundColor: colors[backgroundColor],
+}));
+
 const Background = React.forwardRef(function Background(
   { backgroundColor = DefaultBackgroundColor, ...props },
   ref
 ) {
+  const inverse = isInverseBackgroundColor(backgroundColor);
+  const dataAttributeProps = {
+    [`data-${dataAttributes.inverse}`]: inverse,
+  };
   return (
-    <BackgroundProvider backgroundColor={backgroundColor}>
-      <StyledBackground {...props} ref={ref} backgroundColor={backgroundColor} />
-    </BackgroundProvider>
+    <StyledBackground
+      {...props}
+      ref={ref}
+      backgroundColor={backgroundColor}
+      {...dataAttributeProps}
+    />
   );
 }) as OverridableComponent<TypeMap>;
 

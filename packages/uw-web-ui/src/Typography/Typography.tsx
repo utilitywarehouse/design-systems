@@ -1,9 +1,8 @@
 import * as React from 'react';
 import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { dataAttributes, isInverseBackgroundColor } from '../utils';
+import { dataAttributes } from '../utils';
 import { BoxProps } from '../Box';
-import { useBackground } from '../Background';
 
 type DefaultComponent = 'p';
 
@@ -53,12 +52,8 @@ const Typography = React.forwardRef(function Typography(
   { color = 'primary', bold = false, className, ...props },
   ref
 ) {
-  const { backgroundColor } = useBackground();
-  const inverse = isInverseBackgroundColor(backgroundColor);
-
   const dataAttributeProps = {
     [`data-${dataAttributes[color]}`]: true,
-    [`data-${dataAttributes.inverse}`]: inverse,
     [`data-${dataAttributes.bold}`]: bold,
   };
 
