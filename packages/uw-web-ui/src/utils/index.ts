@@ -21,7 +21,8 @@ export const dataAttributes = {
   bold: 'text-bold',
   variant: 'variant',
   size: 'size',
-  inverse: 'on-inverse-background',
+  inverse: 'inverse-background',
   disableCapitalizeFirstLetter: 'disable-capitalize-first-letter',
   multiline: 'multiline',
+  heading:'heading'
 };

@@ -8,7 +8,6 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Box from '../Box';
-import { useBackground } from '../Background';
 import { dataAttributes } from '../utils';
 import type { ReactNode, AllHTMLAttributes } from 'react';
 
@@ -94,18 +93,6 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Te
   const { status = 'neutral', disabled } = props;
   const hasErrorStatus = !disabled && isErrorStatus(status);
   const formControlProps = { error: hasErrorStatus, disabled };
-  const { backgroundColor } = useBackground();
-
-  // should only be used on white, light tint & cod grey backgrounds
-  const validBackgroundColors = ['lightTint', 'whiteOwl', 'white'];
-  if (!validBackgroundColors.includes(backgroundColor)) {
-    console.warn(
-      `Invalid background color for the TextField component. The TextField component should only be used on the following backdrop levels [${validBackgroundColors
-        .map(l => `'${l}'`)
-        .join(', ')}]`
-    );
-  }
-
   const ariaDescribedBy = props['aria-describedby'] || `${props.id}-helper-text`;
   const ariaLabelledBy = !!label ? labelId : props['aria-labelledby'];
 

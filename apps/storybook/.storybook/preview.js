@@ -28,6 +28,7 @@ export const parameters = {
     viewports: customerUiViewports,
   },
   chromatic: { disableSnapshot: false },
+  layout: 'fullscreen',
 };
 
 export const decorators = [
