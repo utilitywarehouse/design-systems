@@ -25,14 +25,11 @@ const StyledFormControlLabel = styled(FormControlLabel)(() => ({
   margin: 0,
 }));
 
-const StyledRadio = styled(Radio)<{ disabled: boolean }>(({ disabled }) => ({
+const StyledRadio = styled(Radio)(() => ({
   color: colors.codGray20,
   height: 24,
   width: 24,
   marginRight: 8,
-  '#radioBox:hover &': {
-    color: disabled ? '' : colors.cyan30,
-  },
 }));
 
 const StyledBox = styled(Background, {
@@ -57,6 +54,9 @@ const StyledBox = styled(Background, {
         ...baseStyle,
         cursor: 'pointer',
         '&:hover': {
+          '.MuiRadio-root': {
+            color: colors.cyan30,
+          },
           background: colors.cyan10,
           borderColor: colors.cyan30,
         },
@@ -81,7 +81,7 @@ const RadioButton: ({ label, value, checked, disabled }: RadioButtonProps) => JS
   }
 
   return (
-    <StyledBox id="radioBox" checked={checked} disabled={disabled}>
+    <StyledBox checked={checked} disabled={disabled}>
       <StyledFormControlLabel
         disableTypography={disabled}
         value={value}
