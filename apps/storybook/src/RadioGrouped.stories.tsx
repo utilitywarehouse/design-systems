@@ -40,7 +40,7 @@ const StyledBox = styled(Box, {
   display: 'inline-flex',
   width: '100%',
   justifyContent: 'center',
-  alignItems: inline ? 'center' : 'start',
+  alignItems: 'center',
   flexDirection: isMobile ? 'column' : 'row',
 }));
 
@@ -56,7 +56,21 @@ export const RadioGroupedStory: Story = args => {
       <Box>
         <StyledBox inline={args.inline} sx={{ marginBottom: '24px' }} isMobile={isMobile}>
           <StyledHeader>Enabled Group</StyledHeader>
-          <RadioGroup direction={args.inline ? 'row' : 'column'}>
+          <RadioGroup
+            direction={
+              args.inline
+                ? {
+                    mobile: 'column',
+                    tablet: 'row',
+                    desktop: 'row',
+                  }
+                : {
+                    mobile: 'column',
+                    tablet: 'column',
+                    desktop: 'column',
+                  }
+            }
+          >
             <RadioButton label="Yes" value={RadioValues.YES} color="secondary" />
             <RadioButton label="No" value={RadioValues.NO} color="secondary" />
             <RadioButton label="Maybe" value={RadioValues.MAYBE} color="secondary" />
@@ -64,7 +78,22 @@ export const RadioGroupedStory: Story = args => {
         </StyledBox>
         <StyledBox inline={args.inline} isMobile={isMobile}>
           <StyledHeader>Disabled Group</StyledHeader>
-          <RadioGroup direction={args.inline ? 'row' : 'column'} value={args['disabled check']}>
+          <RadioGroup
+            direction={
+              args.inline
+                ? {
+                    mobile: 'column',
+                    tablet: 'row',
+                    desktop: 'row',
+                  }
+                : {
+                    mobile: 'column',
+                    tablet: 'column',
+                    desktop: 'column',
+                  }
+            }
+            value={args['disabled check']}
+          >
             <RadioButton label="Yes" value={RadioValues.YES} color="secondary" disabled />
             <RadioButton label="No" value={RadioValues.NO} color="secondary" disabled />
             <RadioButton label="Maybe" value={RadioValues.MAYBE} color="secondary" disabled />
