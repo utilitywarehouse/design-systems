@@ -4,21 +4,21 @@ import { RadioGroupProps as MuiRadioGroupProps } from '@mui/material/RadioGroup/
 import { useDeviceSize } from '../index';
 import Stack, { StackProps } from './Stack';
 
-interface Props extends MuiRadioGroupProps {
-  inline?: boolean;
+export interface RadioGroupProps extends MuiRadioGroupProps {
+  direction?: StackProps['direction'];
   spacing?: StackProps['spacing'];
 }
 
-const RadioGroup: ({ inline, children, spacing, ...props }: Props) => JSX.Element = ({
-  inline = true,
+const RadioGroup: ({ direction, children, spacing, ...props }: RadioGroupProps) => JSX.Element = ({
+  direction = 'row',
   children,
   spacing,
   ...props
-}: Props) => {
+}: RadioGroupProps) => {
   const { isMobile } = useDeviceSize();
   return (
     <MuiRadioGroup {...props}>
-      <Stack direction={!isMobile && inline ? 'row' : 'column'} spacing={spacing || 2}>
+      <Stack direction={!isMobile ? direction : 'column'} spacing={spacing || 2}>
         {children}
       </Stack>
     </MuiRadioGroup>

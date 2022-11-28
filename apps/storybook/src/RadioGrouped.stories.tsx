@@ -56,7 +56,7 @@ export const RadioGroupedStory: Story = args => {
       <Box>
         <StyledBox inline={args.inline} sx={{ marginBottom: '24px' }} isMobile={isMobile}>
           <StyledHeader>Enabled Group</StyledHeader>
-          <RadioGroup inline={args.inline}>
+          <RadioGroup direction={args.inline ? 'row' : 'column'}>
             <RadioButton label="Yes" value={RadioValues.YES} color="secondary" />
             <RadioButton label="No" value={RadioValues.NO} color="secondary" />
             <RadioButton label="Maybe" value={RadioValues.MAYBE} color="secondary" />
@@ -64,7 +64,7 @@ export const RadioGroupedStory: Story = args => {
         </StyledBox>
         <StyledBox inline={args.inline} isMobile={isMobile}>
           <StyledHeader>Disabled Group</StyledHeader>
-          <RadioGroup inline={args.inline} value={args['disabled check']}>
+          <RadioGroup direction={args.inline ? 'row' : 'column'} value={args['disabled check']}>
             <RadioButton label="Yes" value={RadioValues.YES} color="secondary" disabled />
             <RadioButton label="No" value={RadioValues.NO} color="secondary" disabled />
             <RadioButton label="Maybe" value={RadioValues.MAYBE} color="secondary" disabled />
