@@ -5,12 +5,13 @@ import {
   FormControlLabelProps,
   Radio,
   RadioProps,
+  useRadioGroup as useMuiRadioGroup,
   styled,
-  useRadioGroup,
 } from '@mui/material';
-import Typography from './Typography';
+import Typography, { TypographyProps } from './Typography';
 import Background from './Background';
 import { px } from '../utils';
+import { RadioGroupContext } from './RadioGroup';
 
 export interface RadioButtonProps
   extends Pick<
@@ -18,10 +19,10 @@ export interface RadioButtonProps
     'onChange' | 'value' | 'checked' | 'disabled' | 'id' | 'name' | 'required' | 'sx'
   > {
   label: FormControlLabelProps['label'];
+  hideTile?: boolean;
 }
 
 const StyledFormControlLabel = styled(FormControlLabel)({
-  width: '100%',
   margin: 0,
 });
 
@@ -32,9 +33,30 @@ const StyledRadio = styled(Radio)(({ theme }) => ({
   paddingLeft: theme.spacing(2),
 }));
 
+const StyledLabel = styled(Typography, {
+  shouldForwardProp: prop => prop !== 'disabled',
+})<TypographyProps & { disabled: boolean; hideTile: RadioButtonProps['hideTile'] }>(
+  ({ children, disabled, hideTile, theme }) => ({
+    padding: hideTile ? 0 : theme.spacing(2),
+    paddingLeft: 0,
+    color: disabled ? colors.codGray40 : undefined,
+    // Note: this is to account for the layout shift when
+    // transitioning between semibold and regular fontweights.
+    '&::after': {
+      display: 'block',
+      content: `"${children}"`,
+      fontWeight: fontWeights.secondary.semibold,
+      height: '1px',
+      color: 'transparent',
+      overflow: 'hidden',
+      visibility: 'hidden',
+    },
+  })
+);
+
 const StyledBox = styled(Background, {
   shouldForwardProp: prop => prop !== 'checked' && prop !== 'disabled',
-})<{ checked: boolean | undefined; disabled: boolean }>(({ theme, checked, disabled }) => {
+})<{ checked?: boolean; disabled: boolean }>(({ theme, checked, disabled }) => {
   const baseStyle = {
     borderRadius: theme.spacing(1),
     borderWidth: px(2),
@@ -65,57 +87,63 @@ const StyledBox = styled(Background, {
 });
 
 const RadioButton = React.forwardRef<HTMLInputElement, RadioButtonProps>(function RadioButton(
-  { label, value, checked, disabled = false, ...props },
+  { label, value, checked, disabled, hideTile, ...props },
   ref
 ) {
-  const radioGroup = useRadioGroup();
+  const muiRadioGroup = useMuiRadioGroup();
+  if (muiRadioGroup) {
+    checked = muiRadioGroup.value === value;
+  }
 
-  if (radioGroup) {
-    checked = radioGroup.value === value;
+  const radioGroup = React.useContext(RadioGroupContext);
+  // the value on the RadioButton should override the context value
+  if (hideTile === undefined && radioGroup?.hideTile !== undefined) {
+    hideTile = radioGroup.hideTile;
+  }
+  if (disabled === undefined && radioGroup?.disabled !== undefined) {
+    disabled = radioGroup.disabled;
+  }
+  if (disabled) {
+    checked = false;
+  }
+
+  const RadioButtonInner = (
+    <StyledFormControlLabel
+      disableTypography
+      value={value}
+      control={
+        <StyledRadio
+          {...props}
+          color="secondary"
+          checked={checked}
+          disableRipple
+          disabled={disabled}
+          inputRef={ref}
+        />
+      }
+      label={
+        <StyledLabel
+          hideTile={hideTile}
+          variant="body"
+          component="span"
+          fontWeight={checked ? 'semibold' : 'regular'}
+          disabled={!!disabled}
+        >
+          {label}
+        </StyledLabel>
+      }
+    />
+  );
+
+  if (hideTile) {
+    return RadioButtonInner;
   }
 
   return (
-    <StyledBox checked={checked} disabled={disabled}>
-      <StyledFormControlLabel
-        disableTypography
-        value={value}
-        control={
-          <StyledRadio
-            {...props}
-            color="secondary"
-            checked={checked}
-            disableRipple
-            disabled={disabled}
-            inputRef={ref}
-          />
-        }
-        label={
-          <Typography
-            variant="body"
-            component="span"
-            fontWeight={checked ? 'semibold' : 'regular'}
-            sx={{
-              padding: 2,
-              paddingLeft: 0,
-              color: disabled ? colors.codGray40 : undefined,
-              // Note: this is to account for the layout shift when
-              // transitioning between semibold and regular fontweights.
-              '&::after': {
-                display: 'block',
-                content: `"${label}"`,
-                fontWeight: fontWeights.secondary.semibold,
-                height: '1px',
-                color: 'transparent',
-                overflow: 'hidden',
-                visibility: 'hidden',
-              },
-            }}
-          >
-            {label}
-          </Typography>
-        }
-      />
+    <StyledBox checked={checked} disabled={!!disabled}>
+      {RadioButtonInner}
     </StyledBox>
   );
 });
+
 export default RadioButton;

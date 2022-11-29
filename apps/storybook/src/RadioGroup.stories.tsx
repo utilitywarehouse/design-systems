@@ -16,6 +16,7 @@ export default {
     defaultValue: 'one',
     direction: 'column',
     spacing: 2,
+    hideTile: false,
   },
 } as Meta;
 
