@@ -41,6 +41,7 @@ import Settings from '@utilitywarehouse/customer-ui-react-icons/24x24/Settings';
 import Show from '@utilitywarehouse/customer-ui-react-icons/24x24/Show';
 import SuccessOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined';
 import Tick from '@utilitywarehouse/customer-ui-react-icons/24x24/Tick';
+import TickAlt from '@utilitywarehouse/customer-ui-react-icons/24x24/TickAlt';
 import Up from '@utilitywarehouse/customer-ui-react-icons/24x24/Up';
 import UserOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/UserOutlined';
 import WarningOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined';
@@ -117,6 +118,7 @@ export const icons = {
     Show,
     SuccessOutlined,
     Tick,
+    TickAlt,
     Up,
     UserOutlined,
     WarningOutlined,
