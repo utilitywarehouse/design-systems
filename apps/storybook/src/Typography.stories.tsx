@@ -90,13 +90,11 @@ export const TypographyKitchenSinkStory: Story<
     >
       <Stack spacing={2}>
         {variants.map(v => (
-          <Stack key={v} spacing={4} direction="row">
-            <Typography
-              {...args}
-              variant={v}
-              component={variantMapping[v] as React.ElementType<any>}
-            />
-          </Stack>
+          <Typography
+            {...args}
+            variant={v}
+            component={variantMapping[v] as React.ElementType<any>}
+          />
         ))}
       </Stack>
     </Background>
