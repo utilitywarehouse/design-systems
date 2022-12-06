@@ -78,4 +78,4 @@ remote caching you will need to export a `TURBO_TOKEN` environment variable.
 This token is available via 1Password, and to avoid having to temporarily export
 it over and over again you will need to set up your bash or zsh files in a way
 that doesn't commit this token to version control. For help with this please
-reach out in the `#proj-uw-web-ui` Slack channel.
+reach out in the `#proj-web-ui` Slack channel.

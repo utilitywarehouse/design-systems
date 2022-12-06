@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Background, TextField, TextFieldProps } from 'uw-web-ui';
+import { Background, TextField, TextFieldProps } from '@utilitywarehouse/web-ui';
 
 export default {
   title: 'Components/TextField',
@@ -45,7 +45,7 @@ export default {
     label: 'Label',
     helperText: 'Helper text',
     placeholder: 'Placeholder',
-    id: 'uw-web-ui-textfield-example',
+    id: 'web-ui-textfield-example',
   },
 } as Meta;
 

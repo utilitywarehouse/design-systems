@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
-import { backgroundColors, Text, Background } from 'uw-web-ui';
-import type { BackgroundProps, TextProps } from 'uw-web-ui';
+import { backgroundColors, Text, Background } from '@utilitywarehouse/web-ui';
+import type { BackgroundProps, TextProps } from '@utilitywarehouse/web-ui';
 import BackgroundStack from './BackgroundStack';
 
 const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import { Box, Button, Menu, MenuItem } from 'uw-web-ui';
+import { Box, Button, Menu, MenuItem } from '@utilitywarehouse/web-ui';
 import BackgroundStack from './BackgroundStack';
 
 export default {

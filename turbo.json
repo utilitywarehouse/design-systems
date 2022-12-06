@@ -22,10 +22,10 @@
       "cache": false
     },
     "build:storybook": {
-      "outputs": ["packages/uw-web-ui/storybook-static/**"]
+      "outputs": ["packages/web-ui/storybook-static/**"]
     },
     "build:docs": {
-      "outputs": ["packages/uw-web-ui/storybook-static/**"]
+      "outputs": ["packages/web-ui/storybook-static/**"]
     }
   }
 }

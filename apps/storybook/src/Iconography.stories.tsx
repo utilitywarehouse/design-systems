@@ -2,7 +2,7 @@ import React from 'react';
 import type { ElementType } from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { Typography, Box, Background } from 'uw-web-ui';
+import { Typography, Box, Background } from '@utilitywarehouse/web-ui';
 import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import { icons } from './icons';
