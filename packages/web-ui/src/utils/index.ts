@@ -1,7 +1,5 @@
 import { type BackgroundColor, inverseBackgroundColors } from '../types';
 
-export const globalClassPrefix = 'uw-web-ui';
-
 export const px = (value: string | number): string => `${value}px`;
 
 export const isInverseBackgroundColor = (backgroundColor: BackgroundColor): boolean => {
@@ -24,5 +22,5 @@ export const dataAttributes = {
   inverse: 'inverse-background',
   disableCapitalizeFirstLetter: 'disable-capitalize-first-letter',
   multiline: 'multiline',
-  heading:'heading'
+  heading: 'heading',
 };

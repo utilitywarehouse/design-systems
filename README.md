@@ -1,4 +1,4 @@
-# UW Web UI
+# Web UI
 
 Shared tools and libraries for building UW web applications.
 
@@ -6,7 +6,7 @@ Shared tools and libraries for building UW web applications.
 
 If you have any questions, want to find out more, or would like to get involved
 in the discussions around this project, please come say hi in the
-[`#proj-uw-web-ui`](https://utilitywarehouse.slack.com/archives/C03N4L8V05T) Slack
+[`#proj-web-ui`](https://utilitywarehouse.slack.com/archives/C03N4L8V05T) Slack
 channel.
 
 ## Contributing
@@ -17,7 +17,7 @@ UW Web UI.
 ### Issues
 
 Please feel free to open issues here, however we are using
-[linear](https://linear.app/utilitywarehouse/team/WUI/all) for issue tracking,
+[linear](https://linear.app/utilitywarehouse/team/UWUI/all) for issue tracking,
 so it may be moved there after being evaluated.
 
 ## Publishing

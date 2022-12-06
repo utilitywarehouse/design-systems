@@ -2,7 +2,7 @@ import { Story, Meta } from '@storybook/react';
 
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import Divider from '@mui/material/Divider';
-import { Background, Box, Stack, StackProps, Typography } from 'uw-web-ui';
+import { Background, Box, Stack, StackProps, Typography } from '@utilitywarehouse/web-ui';
 
 export default {
   title: 'Components/Stack',

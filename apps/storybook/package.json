@@ -26,9 +26,11 @@
     "@utilitywarehouse/customer-ui-design-tokens": "^2.0.2",
     "@utilitywarehouse/customer-ui-react-icons": "^1.0.2",
     "@utilitywarehouse/uw-ui-fonts": "^0.0.3",
-    "uw-web-ui": "workspace:@utilitywarehouse/uw-web-ui@*",
     "babel-loader": "^8.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@utilitywarehouse/web-ui": "workspace:^0.0.1"
   }
 }

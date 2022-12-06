@@ -1,4 +1,4 @@
-import { Background, Box } from 'uw-web-ui';
+import { Background, Box } from '@utilitywarehouse/web-ui';
 import * as React from 'react';
 
 const BackgroundStack = (props: { children: React.ReactNode }) => {

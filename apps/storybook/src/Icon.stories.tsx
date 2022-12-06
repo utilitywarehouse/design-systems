@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { icons } from './icons';
-import { Icon, IconProps } from 'uw-web-ui';
+import { Icon, IconProps } from '@utilitywarehouse/web-ui';
 import BackgroundStack from './BackgroundStack';
 
 const allIcons = [...icons['24x24'], ...icons['48x48']];

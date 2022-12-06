@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
-import { backgroundColors, Typography, variantMapping, Background } from 'uw-web-ui';
-import type { BackgroundProps, TypographyProps } from 'uw-web-ui';
+import { backgroundColors, Typography, variantMapping, Background } from '@utilitywarehouse/web-ui';
+import type { BackgroundProps, TypographyProps } from '@utilitywarehouse/web-ui';
 
 const variants = [
   'displayHeading',

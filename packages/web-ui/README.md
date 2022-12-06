@@ -15,7 +15,7 @@ React component library for building UW Web UIs.
 Assuming you already have React installed, to get started install the library and it's peer dependencies.
 
 ```console
-yarn add @utilitywarehouse/uw-web-ui @mui/material
+yarn add @utilitywarehouse/web-ui @mui/material
 ```
 
 ### Fonts
@@ -32,7 +32,7 @@ yarn add @utilitywarehouse/uw-ui-fonts
 Start by wrapping your application with the `ThemeProvider` component.
 ```tsx
 import * as React from "react";
-import { ThemeProvider } from "@utilitywarehouse/uw-web-ui";
+import { ThemeProvider } from "@utilitywarehouse/web-ui";
 import App from "./App";
 
 const App: React.FC = () => (

@@ -1,7 +1,7 @@
 {
-  "name": "@utilitywarehouse/uw-web-ui",
+  "name": "@utilitywarehouse/web-ui",
   "version": "0.0.1",
-  "description": "UW Web UI components",
+  "description": "React components for building UW UIs",
   "main": "./dist/index.js",
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
