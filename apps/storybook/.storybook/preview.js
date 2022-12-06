@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { breakpoints } from '@utilitywarehouse/customer-ui-design-tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { ThemeProvider } from 'uw-web-ui';
+import { ThemeProvider } from '@utilitywarehouse/web-ui';
 import '@utilitywarehouse/uw-ui-fonts';
 
 const customerUiViewports = {
