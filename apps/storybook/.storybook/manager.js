@@ -1,9 +1,9 @@
 import { addons } from '@storybook/addons';
 import { create } from '@storybook/theming';
-import { version } from '../../../packages/uw-web-ui/package.json';
+import { version } from '../../../packages/web-ui/package.json';
 
 const theme = create({
-  brandTitle: `UW Web UI v${version}`,
+  brandTitle: `Web UI v${version}`,
 });
 
 addons.setConfig({
