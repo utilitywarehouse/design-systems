@@ -21,20 +21,19 @@ export const typographyClasses = {
 
 type defaultComponent = 'p';
 
-interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
-  extends Pick<
-    MuiTypographyProps<D, P>,
-    | 'sx'
-    | 'gutterBottom'
-    | 'paragraph'
-    | 'align'
-    | 'classes'
-    | 'className'
-    | 'noWrap'
-    | 'textTransform'
-    | 'letterSpacing'
-    | 'children'
-  > {
+type CustomProps<D extends React.ElementType = defaultComponent, P = {}> = Pick<
+  MuiTypographyProps<D, P>,
+  | 'sx'
+  | 'gutterBottom'
+  | 'paragraph'
+  | 'align'
+  | 'classes'
+  | 'className'
+  | 'noWrap'
+  | 'textTransform'
+  | 'letterSpacing'
+  | 'children'
+> & {
   color?: 'primary' | 'secondary' | 'success' | 'error';
   variant?: MuiTypographyProps['variant'];
   /**
@@ -43,7 +42,7 @@ interface CustomProps<D extends React.ElementType = defaultComponent, P = {}>
   forwardedRef?: React.Ref<HTMLElement | HTMLSpanElement | HTMLParagraphElement>;
   fontWeight?: 'regular' | 'semibold';
   component?: BoxProps['component'];
-}
+};
 
 interface TypeMap<D extends React.ElementType = defaultComponent, P = {}> {
   props: CustomProps<D, P>;
