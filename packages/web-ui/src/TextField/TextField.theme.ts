@@ -41,6 +41,7 @@ export const textFieldThemeOverrides = (theme: Theme): Components => {
           fontFamily: fonts.secondary,
           fontWeight: fontWeights.secondary.regular,
           fontSize: theme.typography.pxToRem(13),
+          lineHeight: theme.typography.pxToRem(16),
           margin: 0,
           marginTop: theme.spacing(1),
           color: colors.midnight,
