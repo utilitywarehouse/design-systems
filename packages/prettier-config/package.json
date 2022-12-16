@@ -1,19 +1,11 @@
 {
   "name": "@utilitywarehouse/prettier-config",
   "version": "0.0.1",
-  "description": "Prettier config for UW UI projects",
+  "description": "Prettier config for UW projects",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/utilitywarehouse/uw-ui.git"
+    "url": "git+https://github.com/utilitywarehouse/design-system.git"
   },
-  "author": "Rob Phoenix",
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/utilitywarehouse/uw-ui/issues"
-  },
-  "homepage": "https://github.com/utilitywarehouse/uw-ui/packages/prettier-config#readme"
+  "license": "UNLICENSED"
 }
