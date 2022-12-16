@@ -1,0 +1,11 @@
+{
+  "name": "@utilitywarehouse/prettier-config",
+  "version": "0.0.1",
+  "description": "Prettier config for UW projects",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utilitywarehouse/design-system.git"
+  },
+  "license": "UNLICENSED"
+}
