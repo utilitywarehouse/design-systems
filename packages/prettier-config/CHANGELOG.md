@@ -1,5 +1,11 @@
 # @utilitywarehouse/prettier-config
 
+## 0.1.1
+
+### Patch Changes
+
+- [`09b9778`](https://github.com/utilitywarehouse/design-system/commit/09b9778d5de76ece0c2f3c4438d16c87354d6e5b) Thanks [@robphoenix](https://github.com/robphoenix)! - publish from new repo
+
 ## 0.1.0
 
 ### Minor Changes
