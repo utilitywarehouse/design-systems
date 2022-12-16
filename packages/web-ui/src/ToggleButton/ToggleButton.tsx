@@ -4,8 +4,7 @@ import MuiToggleButton, {
   ToggleButtonProps as MuiToggleButtonProps,
 } from '@mui/material/ToggleButton';
 import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
-import { dataAttributes, isInverseBackgroundColor, px } from '../utils';
-import { useBackground } from '../Background';
+import { dataAttributes, px } from '../utils';
 
 const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
   const { inverse } = dataAttributes;
@@ -34,7 +33,7 @@ const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
         backgroundColor: colors.codGray20,
       },
     },
-    [`&[data-${inverse}=true]`]: {
+    [`&[data-${inverse}=true] &`]: {
       color: colors.white,
       '&:disabled': {
         color: colors.codGray40,
@@ -68,13 +67,6 @@ const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(func
   { children, className, ...props },
   ref
 ) {
-  const { backgroundColor } = useBackground();
-  const inverse = isInverseBackgroundColor(backgroundColor);
-
-  const dataAttributeProps = {
-    [`data-${dataAttributes.inverse}`]: inverse,
-  };
-
   return (
     <StyledMuiToggleButton
       ref={ref}
@@ -83,7 +75,6 @@ const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(func
       disableFocusRipple
       {...props}
       className={className}
-      {...dataAttributeProps}
     >
       {children}
     </StyledMuiToggleButton>

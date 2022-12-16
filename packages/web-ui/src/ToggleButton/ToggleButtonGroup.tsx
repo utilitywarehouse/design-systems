@@ -4,15 +4,14 @@ import MuiToggleButtonGroup, {
   ToggleButtonGroupProps as MuiToggleButtonGroupProps,
 } from '@mui/material/ToggleButtonGroup';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
-import { dataAttributes, isInverseBackgroundColor, px } from '../utils';
-import { useBackground } from '../Background';
+import { dataAttributes, px } from '../utils';
 
 const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme, disabled }) => {
   const { inverse } = dataAttributes;
   return {
     border: `2px solid ${disabled ? colors.codGray20 : colors.cyan}`,
     borderRadius: px(32),
-    [`&[data-${inverse}=true]`]: {
+    [`[data-${inverse}=true] &`]: {
       '&:disabled': {
         borderColor: colors.codGray40,
       },
@@ -41,21 +40,13 @@ export type ToggleButtonGroupProps = Pick<
 
 const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGroupProps>(
   function ToggleButtonGroup({ children, disabled, className, ...props }, ref) {
-    const { backgroundColor } = useBackground();
-    const inverse = isInverseBackgroundColor(backgroundColor);
-
-    const dataAttributeProps = {
-      [`data-${dataAttributes.inverse}`]: inverse,
-    };
-
     return (
       <StyledMuiToggleButtonGroup
         ref={ref}
         className={className}
         disabled={disabled}
-        exclusive={true}
+        exclusive
         {...props}
-        {...dataAttributeProps}
       >
         {children}
       </StyledMuiToggleButtonGroup>
