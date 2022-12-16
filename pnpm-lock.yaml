@@ -30,7 +30,7 @@ importers:
       '@changesets/cli': 2.25.2
       '@typescript-eslint/eslint-plugin': 5.43.0_nqj4bdx4ekws7aecttskpih4py
       '@typescript-eslint/parser': 5.43.0_hsf322ms6xhhd4b5ne6lb74y4a
-      '@utilitywarehouse/prettier-config': 0.1.0
+      '@utilitywarehouse/prettier-config': link:packages/prettier-config
       eslint: 8.28.0
       eslint-config-airbnb-typescript: 17.0.0_ry2w5422ohatqbzq6ftydtuvky
       eslint-config-prettier: 8.5.0_eslint@8.28.0
@@ -91,6 +91,9 @@ importers:
       babel-loader: 8.3.0_npabyccmuonwo2rku4k53xo3hi
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+
+  packages/prettier-config:
+    specifiers: {}
 
   packages/web-ui:
     specifiers:
@@ -4181,10 +4184,6 @@ packages:
   /@utilitywarehouse/fontsource/0.0.5:
     resolution: {integrity: sha512-g+/X7s/p+Xa4z6tv1JVxM5y0yNPLJxCA4LbkXwQ6Eq7Rq9cLrP8YW/ttkWcSbSC1BtgKhDKheiW0UAD5gNAwBg==}
     dev: false
-
-  /@utilitywarehouse/prettier-config/0.1.0:
-    resolution: {integrity: sha512-zeT73g8qhCKd/O0hBB5jYMpzlR8qBmNFrk3pVz8j4NgyjcNUuSNVgxYipLav3hgsgr2YxunUY/YDaoPKhWJzGg==}
-    dev: true
 
   /@webassemblyjs/ast/1.11.1:
     resolution: {integrity: sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw==}
