@@ -61,7 +61,6 @@ const RadioLabel = ({ disabled, checked, sx, children, ...props }: RadioLabelPro
       sx={{
         color: disabled ? colors.codGray40 : undefined,
         fontWeight: checked ? fontWeights.secondary.semibold : fontWeights.secondary.regular,
-        height: 24, // without explicitly setting this the height defaults to 25px, and I don't know why
         cursor: 'pointer',
         // Note: this is to account for the layout shift when
         // transitioning between semibold and regular fontweights.
@@ -165,7 +164,11 @@ const RadioButton = React.forwardRef<HTMLInputElement, RadioButtonProps>(functio
         htmlFor={id}
         checked={checked}
         textTransform={textTransform}
-        sx={{ padding: 2, paddingLeft: 0 }}
+        sx={{
+          height: 56, // includes 32px padding, without this the height is 25px and I don't know why
+          padding: 2,
+          paddingLeft: 0,
+        }}
       >
         {label}
       </RadioLabel>

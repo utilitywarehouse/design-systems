@@ -25,7 +25,7 @@ export const SelectionTileBackground = ({
   const baseStyles = {
     display: 'inline-flex',
     alignItems: 'center',
-    borderRadius: 1,
+    borderRadius: 2,
     borderWidth: px(2),
     borderStyle: 'solid',
     borderColor: colors.codGray20,
@@ -45,6 +45,7 @@ export const SelectionTileBackground = ({
           },
         },
       };
+
   return <Background backgroundColor="white" sx={{ ...styles, ...sx }} {...props} />;
 };
 
@@ -107,6 +108,7 @@ const SelectionTile = React.forwardRef<HTMLInputElement, SelectionTileProps>(fun
           disabled={!!disabled}
           checked={checked}
           htmlFor={id}
+          textTransform={textTransform}
           sx={{ padding: 2 }}
         >
           {label}

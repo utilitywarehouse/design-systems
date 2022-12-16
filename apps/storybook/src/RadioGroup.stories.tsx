@@ -57,7 +57,7 @@ export const RadioGroupWithSelectionTileStory: Story<
 > = ({ values, ...props }) => {
   return (
     <Box sx={{ padding: 4 }}>
-      <RadioGroup {...props} direction="row" name="radio-group-with-selection-tiles">
+      <RadioGroup {...props} name="radio-group-with-selection-tiles">
         {values.map(v => (
           <SelectionTile key={v} label={v} value={v} />
         ))}
@@ -65,8 +65,8 @@ export const RadioGroupWithSelectionTileStory: Story<
     </Box>
   );
 };
-
 RadioGroupWithSelectionTileStory.storyName = 'with SelectionTile';
+RadioGroupWithSelectionTileStory.args = { direction: 'row' };
 RadioGroupWithSelectionTileStory.argTypes = {
   basic: { table: { disable: true } },
 };
