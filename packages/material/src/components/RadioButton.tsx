@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import {
   FormControlLabel,
   FormControlLabelProps,
@@ -10,38 +10,35 @@ import {
 } from '@mui/material';
 import Typography from './Typography';
 import Background from './Background';
+import { px } from '../utils';
 
 export interface RadioButtonProps
   extends Pick<
     RadioProps,
-    'onChange' | 'value' | 'checked' | 'disabled' | 'id' | 'name' | 'required' | 'sx' | 'color'
+    'onChange' | 'value' | 'checked' | 'disabled' | 'id' | 'name' | 'required' | 'sx'
   > {
   label: FormControlLabelProps['label'];
 }
 
-const StyledFormControlLabel = styled(FormControlLabel)(() => ({
+const StyledFormControlLabel = styled(FormControlLabel)({
   width: '100%',
-  height: 24,
   margin: 0,
-}));
+});
 
-const StyledRadio = styled(Radio)(() => ({
+const StyledRadio = styled(Radio)(({ theme }) => ({
   color: colors.codGray20,
-  height: 24,
-  width: 24,
-  marginRight: 8,
+  padding: 0,
+  marginRight: theme.spacing(1),
+  paddingLeft: theme.spacing(2),
 }));
 
 const StyledBox = styled(Background, {
   shouldForwardProp: prop => prop !== 'checked' && prop !== 'disabled',
 })<{ checked: boolean | undefined; disabled: boolean }>(({ theme, checked, disabled }) => {
   const baseStyle = {
-    maxHeight: 24,
-    display: 'flex',
-    padding: 16,
     borderRadius: theme.spacing(1),
-    borderWidth: '2px',
-    borderColor: `${checked && !disabled ? colors.cyan : colors.codGray20}`,
+    borderWidth: px(2),
+    borderColor: checked && !disabled ? colors.cyan : colors.codGray20,
     borderStyle: 'solid',
     backgroundColor: colors.white,
   };
@@ -67,13 +64,10 @@ const StyledBox = styled(Background, {
       };
 });
 
-const RadioButton: ({ label, value, checked, disabled }: RadioButtonProps) => JSX.Element = ({
-  label,
-  value,
-  checked,
-  disabled = false,
-  ...props
-}: RadioButtonProps) => {
+const RadioButton = React.forwardRef<HTMLInputElement, RadioButtonProps>(function RadioButton(
+  { label, value, checked, disabled = false, ...props },
+  ref
+) {
   const radioGroup = useRadioGroup();
 
   if (radioGroup) {
@@ -83,7 +77,7 @@ const RadioButton: ({ label, value, checked, disabled }: RadioButtonProps) => JS
   return (
     <StyledBox checked={checked} disabled={disabled}>
       <StyledFormControlLabel
-        disableTypography={disabled}
+        disableTypography
         value={value}
         control={
           <StyledRadio
@@ -92,6 +86,7 @@ const RadioButton: ({ label, value, checked, disabled }: RadioButtonProps) => JS
             checked={checked}
             disableRipple
             disabled={disabled}
+            inputRef={ref}
           />
         }
         label={
@@ -99,7 +94,22 @@ const RadioButton: ({ label, value, checked, disabled }: RadioButtonProps) => JS
             variant="body"
             component="span"
             fontWeight={checked ? 'semibold' : 'regular'}
-            sx={disabled ? { color: colors.codGray40 } : {}}
+            sx={{
+              padding: 2,
+              paddingLeft: 0,
+              color: disabled ? colors.codGray40 : undefined,
+              // Note: this is to account for the layout shift when
+              // transitioning between semibold and regular fontweights.
+              '&::after': {
+                display: 'block',
+                content: `"${label}"`,
+                fontWeight: fontWeights.secondary.semibold,
+                height: '1px',
+                color: 'transparent',
+                overflow: 'hidden',
+                visibility: 'hidden',
+              },
+            }}
           >
             {label}
           </Typography>
@@ -107,5 +117,5 @@ const RadioButton: ({ label, value, checked, disabled }: RadioButtonProps) => JS
       />
     </StyledBox>
   );
-};
+});
 export default RadioButton;

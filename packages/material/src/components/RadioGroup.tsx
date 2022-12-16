@@ -3,17 +3,13 @@ import { RadioGroup as MuiRadioGroup } from '@mui/material';
 import { RadioGroupProps as MuiRadioGroupProps } from '@mui/material/RadioGroup/RadioGroup';
 import Stack, { StackProps } from './Stack';
 
-export interface RadioGroupProps extends MuiRadioGroupProps {
+export interface RadioGroupProps extends Omit<MuiRadioGroupProps, 'row'> {
   direction?: StackProps['direction'];
   spacing?: StackProps['spacing'];
 }
 
 const RadioGroup: ({ direction, children, spacing, ...props }: RadioGroupProps) => JSX.Element = ({
-  direction = {
-    mobile: 'column',
-    tablet: 'row',
-    desktop: 'row',
-  },
+  direction = 'column',
   children,
   spacing = 2,
   ...props
