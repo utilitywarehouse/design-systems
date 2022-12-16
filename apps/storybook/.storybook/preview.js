@@ -2,7 +2,7 @@ import * as React from 'react';
 import { breakpoints } from '@utilitywarehouse/customer-ui-design-tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { ThemeProvider } from '@utilitywarehouse/web-ui';
-import '@utilitywarehouse/uw-ui-fonts';
+import '@utilitywarehouse/fontsource';
 
 const customerUiViewports = {
   mobile: {
