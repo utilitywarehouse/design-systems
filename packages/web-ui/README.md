@@ -21,10 +21,10 @@ yarn add @utilitywarehouse/web-ui @mui/material
 ### Fonts
 
 You will also need to include the **Aeonik** and **Work Sans** fonts. The
-easiest way to do this is to use the `uw-ui-fonts` package.
+easiest way to do this is to use the `@utilitywarehouse/fontsource` package.
 
 ```console
-yarn add @utilitywarehouse/uw-ui-fonts
+yarn add @utilitywarehouse/fontsource
 ```
 
 ## Getting started

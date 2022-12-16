@@ -1,18 +1,18 @@
-# Web UI
+# UW Design System
 
-Shared tools and libraries for building UW web applications.
+Shared tools and libraries for building UW applications.
 
-## Getting Involved
+## Prettier config
 
-If you have any questions, want to find out more, or would like to get involved
-in the discussions around this project, please come say hi in the
-[`#proj-web-ui`](https://utilitywarehouse.slack.com/archives/C03N4L8V05T) Slack
-channel.
+A UW standard config for Prettier code formatting.
+
+## Web UI
+
+A set of UW React components.
 
 ## Contributing
 
-Please read our [contribution guide](CONTRIBUTING.md) for getting involved with
-UW Web UI.
+Please read our [contribution guide](CONTRIBUTING.md).
 
 ### Issues
 
