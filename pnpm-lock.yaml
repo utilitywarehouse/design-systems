@@ -63,11 +63,13 @@ importers:
       '@types/react-dom': ^18.0.6
       '@utilitywarehouse/customer-ui-design-tokens': ^2.0.2
       '@utilitywarehouse/customer-ui-react-icons': ^1.1.0
-      '@utilitywarehouse/uw-ui-fonts': ^0.0.3
+      '@utilitywarehouse/fontsource': ^0.0.5
       '@utilitywarehouse/web-ui': workspace:^0.0.1
       babel-loader: ^8.2.5
       react: ^18.2.0
       react-dom: ^18.2.0
+    dependencies:
+      '@utilitywarehouse/fontsource': 0.0.5
     devDependencies:
       '@babel/core': 7.20.2
       '@mui/material': 5.10.14_2zx2umvpluuhvlq44va5bta2da
@@ -85,7 +87,6 @@ importers:
       '@types/react-dom': 18.0.9
       '@utilitywarehouse/customer-ui-design-tokens': 2.0.2
       '@utilitywarehouse/customer-ui-react-icons': 1.1.0
-      '@utilitywarehouse/uw-ui-fonts': 0.0.3
       '@utilitywarehouse/web-ui': link:../../packages/web-ui
       babel-loader: 8.3.0_npabyccmuonwo2rku4k53xo3hi
       react: 18.2.0
@@ -4177,12 +4178,12 @@ packages:
     resolution: {integrity: sha512-766iDHmpXHl96D3TtSjQC8C5YrTAb63erIbSSpzmLQWapk2rEF4iNVB2LBpP08W/5Ck5uDmEnR2l08hPokSAEw==}
     dev: true
 
+  /@utilitywarehouse/fontsource/0.0.5:
+    resolution: {integrity: sha512-g+/X7s/p+Xa4z6tv1JVxM5y0yNPLJxCA4LbkXwQ6Eq7Rq9cLrP8YW/ttkWcSbSC1BtgKhDKheiW0UAD5gNAwBg==}
+    dev: false
+
   /@utilitywarehouse/prettier-config/0.1.0:
     resolution: {integrity: sha512-zeT73g8qhCKd/O0hBB5jYMpzlR8qBmNFrk3pVz8j4NgyjcNUuSNVgxYipLav3hgsgr2YxunUY/YDaoPKhWJzGg==}
-    dev: true
-
-  /@utilitywarehouse/uw-ui-fonts/0.0.3:
-    resolution: {integrity: sha512-C9Scw8dzyjpJYvM/ADjSstNGYO5dNhaPKalibu38Hw1/YPEhhMzGopXaLgRZhS4iCdTOTyHS/uOQLE4zq9YZDA==}
     dev: true
 
   /@webassemblyjs/ast/1.11.1:
