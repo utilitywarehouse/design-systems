@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
-import SelectionTile, { SelectionTileProps } from '../../src/components/SelectionTile';
-import RadioGroup from '../../src/components/RadioGroup';
+import { RadioGroup, SelectionTile, SelectionTileProps } from '@utilitywarehouse/web-ui';
 
 export default {
   title: 'Components/SelectionTile',

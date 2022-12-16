@@ -4,9 +4,9 @@ import {
   RadioGroupProps as MuiRadioGroupProps,
   useTheme,
 } from '@mui/material';
-import Stack, { StackProps } from './Stack';
-import Box from './Box';
-import { TypographyProps } from './Typography';
+import { TypographyProps } from '../Typography';
+import Stack, { StackProps } from '../Stack';
+import Box from '../Box';
 
 export interface RadioGroupContextValues {
   basic?: boolean;

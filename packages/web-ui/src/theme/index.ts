@@ -11,6 +11,7 @@ import { buttonThemeOverrides } from '../Button';
 import { textFieldThemeOverrides } from '../TextField';
 import { textLinkThemeOverrides } from '../TextLink';
 import { menuThemeOverrides } from '../Menu';
+import { radioGroupThemeOverrides } from '../RadioGroup';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 
 const theme: MuiTheme = createTheme({
@@ -21,6 +22,7 @@ const theme: MuiTheme = createTheme({
 theme.components = {
   ...theme.components,
   ...cssBaselineThemeOverrides,
+  ...radioGroupThemeOverrides,
   ...buttonThemeOverrides(),
   ...textLinkThemeOverrides(),
   ...textFieldThemeOverrides(theme),

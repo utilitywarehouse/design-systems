@@ -1,16 +1,20 @@
 import * as React from 'react';
 import { Meta, Story } from '@storybook/react';
-import RadioButton from '../../src/components/Radio';
-import { SelectionTileProps } from '../../src/components/SelectionTile';
-import RadioGroup, { RadioGroupProps } from '../../src/components/RadioGroup';
-import Box from '../../src/components/Box';
 import ServiceEnergyIcon from '@utilitywarehouse/customer-ui-react-icons/24x24/ServiceEnergy';
 import ServiceInsuranceIcon from '@utilitywarehouse/customer-ui-react-icons/24x24/ServiceInsurance';
 import ServiceMobileIcon from '@utilitywarehouse/customer-ui-react-icons/24x24/ServiceMobile';
 import ServiceBroadbandIcon from '@utilitywarehouse/customer-ui-react-icons/24x24/ServiceBroadband';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
-import Stack from '../../src/components/Stack';
-import * as SelectionTile from '../../src/components/SelectionTile';
+import {
+  Box,
+  RadioButton,
+  RadioGroup,
+  RadioGroupProps,
+  RadioLabel,
+  SelectionTile,
+  SelectionTileProps,
+  Stack,
+} from '@utilitywarehouse/web-ui';
 
 export default {
   title: 'Components/RadioGroup',
@@ -55,7 +59,7 @@ export const RadioGroupWithSelectionTileStory: Story<
     <Box sx={{ padding: 4 }}>
       <RadioGroup {...props} direction="row" name="radio-group-with-selection-tiles">
         {values.map(v => (
-          <SelectionTile.Tile key={v} label={v} value={v} />
+          <SelectionTile key={v} label={v} value={v} />
         ))}
       </RadioGroup>
     </Box>
@@ -81,16 +85,16 @@ const CustomSelectionTile = ({
       direction="column"
       sx={{ alignItems: 'center', cursor: 'pointer' }}
     >
-      <SelectionTile.Root
+      <SelectionTile
         value={value}
         checked={checked}
         sx={{ height: 92, width: 92, display: 'grid', placeItems: 'center' }}
       >
         {children}
-      </SelectionTile.Root>
-      <SelectionTile.Label component="span" checked={checked}>
+      </SelectionTile>
+      <RadioLabel component="span" checked={checked}>
         {label}
-      </SelectionTile.Label>
+      </RadioLabel>
     </Stack>
   );
 };

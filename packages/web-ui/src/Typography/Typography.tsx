@@ -18,7 +18,7 @@ export const variantMapping: { [key: string]: string } = {
   caption: 'span',
 };
 
-interface CustomProps<D extends React.ElementType = DefaultComponent, P = {}>
+export interface CustomProps<D extends React.ElementType = DefaultComponent, P = {}>
   extends Pick<
     MuiTypographyProps<D, P>,
     | 'align'
