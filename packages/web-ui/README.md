@@ -1,4 +1,4 @@
-# React
+# Web UI
 
 React component library for building UW Web UIs.
 
@@ -30,6 +30,7 @@ yarn add @utilitywarehouse/fontsource
 ## Getting started
 
 Start by wrapping your application with the `ThemeProvider` component.
+
 ```tsx
 import * as React from "react";
 import { ThemeProvider } from "@utilitywarehouse/web-ui";
