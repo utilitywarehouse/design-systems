@@ -59,6 +59,7 @@ const RadioLabel = ({ disabled, checked, sx, children, ...props }: RadioLabelPro
       variant="body"
       {...props}
       sx={{
+        boxSizing: 'content-box',
         color: disabled ? colors.codGray40 : undefined,
         fontWeight: checked ? fontWeights.secondary.semibold : fontWeights.secondary.regular,
         cursor: 'pointer',
