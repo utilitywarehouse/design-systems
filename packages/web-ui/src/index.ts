@@ -24,9 +24,6 @@ export * from './Link';
 export { default as Menu } from './Menu';
 export * from './Menu';
 
-export { default as RadioGroup } from './RadioGroup';
-export * from './RadioGroup';
-
 export { default as Stack } from './Stack';
 export * from './Stack';
 
