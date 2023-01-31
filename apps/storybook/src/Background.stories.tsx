@@ -9,7 +9,7 @@ export default {
   argTypes: {
     forwardedRef: { table: { disable: true } },
     sx: { table: { disable: true } },
-    backgroundColor: {
+    background: {
       control: {
         type: 'radio',
         options: backgroundColors,
@@ -18,13 +18,13 @@ export default {
     component: { control: { type: 'text' } },
   },
   args: {
-    backgroundColor: 'white',
+    background: 'white',
     component: 'div',
   },
 } as Meta;
 
 export const BackgroundStory: Story<BackgroundProps> = args => {
-  const hexValue = colors[args.backgroundColor];
+  const hexValue = colors[args.background];
   return (
     <Box sx={{ padding: 3 }}>
       <Background
@@ -39,7 +39,7 @@ export const BackgroundStory: Story<BackgroundProps> = args => {
         }}
       >
         <Typography variant="h2" component="span">
-          {args.backgroundColor} ({hexValue})
+          {args.background} ({hexValue})
         </Typography>
       </Background>
     </Box>

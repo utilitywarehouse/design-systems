@@ -1,34 +1,21 @@
-import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
-import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx';
 import { px } from '../utils';
-import Box, { BoxProps } from '../Box';
+import MuiBox, { BoxProps as MuiBoxProps } from '@mui/material/Box';
 
-type DefaultComponent = 'span';
-
-interface CustomProps<D extends React.ElementType = DefaultComponent, P = {}>
-  extends Pick<BoxProps<D, P>, 'sx' | 'component' | 'classes' | 'children'> {
+export interface SpacerProps extends MuiBoxProps {
+  /**
+   * The direction of the Spacer axis
+   */
   axis?: 'horizontal' | 'vertical';
   size: ResponsiveStyleValue<number>;
   inline?: boolean;
 }
 
-interface TypeMap<D extends React.ElementType = DefaultComponent, P = {}> {
-  props: CustomProps<D, P>;
-  defaultComponent: D;
-}
-
-export type SpacerProps<D extends React.ElementType = DefaultComponent, P = {}> = OverrideProps<
-  TypeMap<D, P>,
-  D
->;
-
-const Spacer = React.forwardRef(function Spacer(
-  { axis = 'horizontal', size = 1, component = 'span', inline = false, sx, ...props },
-  ref
-) {
+function Spacer(props: SpacerProps) {
+  const { axis = 'vertical', size = 1, component, inline = false, sx, ...rest } = props;
   const theme = useTheme();
+  const defaultElement = inline ? 'span' : 'div';
 
   const getSize = () => {
     if (Array.isArray(size)) {
@@ -52,9 +39,8 @@ const Spacer = React.forwardRef(function Spacer(
   const height = axis === 'horizontal' ? px(1) : getSize();
 
   return (
-    <Box
-      ref={ref}
-      component={component}
+    <MuiBox
+      component={component || defaultElement}
       sx={{
         display: inline ? 'inline-block' : 'block',
         width,
@@ -63,9 +49,9 @@ const Spacer = React.forwardRef(function Spacer(
         minHeight: height,
         ...sx,
       }}
-      {...props}
+      {...rest}
     />
   );
-}) as OverridableComponent<TypeMap>;
+}
 
 export default Spacer;

@@ -1,27 +1,30 @@
-import * as React from 'react';
 import MuiBox, { BoxProps as MuiBoxProps } from '@mui/material/Box';
-import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { SystemProps } from '../types';
+import { NeutralBackgroundColor, InverseBackgroundColor } from '../types';
+import { dataAttributes, isInverseBackgroundColor } from '../utils';
+import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 
-type DefaultComponent = 'span';
-
-type CustomProps<D extends React.ElementType = DefaultComponent, P = {}> = Omit<
-  MuiBoxProps<D, P>,
-  SystemProps
->;
-
-interface TypeMap<D extends React.ElementType = DefaultComponent, P = {}> {
-  props: CustomProps<D, P>;
-  defaultComponent: D;
+export interface BoxProps extends Omit<MuiBoxProps, 'background'> {
+  background?: NeutralBackgroundColor | InverseBackgroundColor;
 }
 
-export type BoxProps<D extends React.ElementType = DefaultComponent, P = {}> = OverrideProps<
-  TypeMap<D, P>,
-  D
->;
+const Box = (props: BoxProps) => {
+  const { background, sx, ...rest } = props;
+  const inverse = background ? isInverseBackgroundColor(background) : false;
+  const dataAttributeProps = {
+    [`data-${dataAttributes.inverse}`]: inverse,
+  };
+  const backgroundColor = background ? colors[background] : 'transparent';
 
-const Box = React.forwardRef(function Box(props, ref) {
-  return <MuiBox ref={ref} {...props} />;
-}) as OverridableComponent<TypeMap>;
+  return (
+    <MuiBox
+      {...rest}
+      {...dataAttributeProps}
+      sx={{
+        backgroundColor,
+        ...sx,
+      }}
+    />
+  );
+};
 
 export default Box;
