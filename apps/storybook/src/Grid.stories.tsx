@@ -1,27 +1,27 @@
 import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Grid, GridProps, Background, Typography } from '@utilitywarehouse/web-ui';
+import { Grid, GridProps, Box, Typography } from '@utilitywarehouse/web-ui';
 
 export default {
-  title: 'Components/Grid',
+  title: 'Layout/Grid',
   component: Grid,
 } as Meta;
 
 const LargeContent = (props: { children: React.ReactNode }) => (
-  <Background backgroundColor="purple" sx={{ height: 200, display: 'grid', placeItems: 'center' }}>
+  <Box background="purple" height={200} display="grid" sx={{ placeItems: 'center' }}>
     <Typography {...props} variant="body" component="span" textTransform="capitalize" />
-  </Background>
+  </Box>
 );
 
 const SmallContent = (props: { children: React.ReactNode }) => (
-  <Background backgroundColor="midnight" sx={{ height: 80, display: 'grid', placeItems: 'center' }}>
+  <Box background="midnight" height={80} display="grid" sx={{ placeItems: 'center' }}>
     <Typography {...props} variant="body" component="span" textTransform="capitalize" />
-  </Background>
+  </Box>
 );
 
 export const GridStory: Story<GridProps> = () => {
   return (
-    <Background backgroundColor="whiteOwl" sx={{ padding: 3 }}>
+    <Box background="whiteOwl" padding={3}>
       <Grid container>
         <Grid item mobile={4} desktop={8}>
           <LargeContent>account actions</LargeContent>
@@ -58,7 +58,7 @@ export const GridStory: Story<GridProps> = () => {
           </Grid>
         </Grid>
       </Grid>
-    </Background>
+    </Box>
   );
 };
 

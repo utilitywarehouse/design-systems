@@ -4,7 +4,8 @@ import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Box, Spacer, SpacerProps } from '@utilitywarehouse/web-ui';
 
 export default {
-  title: 'Components/Spacer',
+  title: 'Layout/Spacer',
+  component: Spacer,
   argTypes: {
     forwardedRef: { table: { disable: true } },
     axis: {
@@ -24,11 +25,6 @@ export default {
       },
     },
   },
-  args: {
-    size: 1,
-    axis: 'vertical',
-    inline: false,
-  },
 } as Meta;
 
 export const SpacerStory: Story<SpacerProps> = args => {
@@ -36,25 +32,26 @@ export const SpacerStory: Story<SpacerProps> = args => {
   const sx = {
     width: isVertical ? 400 : 100,
     height: isVertical ? 100 : 400,
-    backgroundColor: colors.purple,
     border: `1px solid ${colors.purple}`,
     borderRadius: '8px',
   };
+  const el = <Box {...sx} background="purple" />;
   return (
     <Box
-      sx={{
-        padding: 4,
-        display: 'flex',
-        flexDirection: isVertical ? 'column' : 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+      padding={4}
+      display="flex"
+      flexDirection={isVertical ? 'column' : 'row'}
+      justifyContent="center"
+      alignItems="center"
     >
-      <Box component="span" sx={sx} />
+      {el}
       <Spacer {...args} />
-      <Box component="span" sx={sx} />
+      {el}
     </Box>
   );
 };
 
 SpacerStory.storyName = 'Spacer';
+SpacerStory.args = {
+  axis: 'vertical',
+};
