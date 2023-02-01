@@ -1,6 +1,5 @@
-import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Background, TextField, TextFieldProps } from '@utilitywarehouse/web-ui';
+import { Box, TextField, TextFieldProps } from '@utilitywarehouse/web-ui';
 
 export default {
   title: 'Components/TextField',
@@ -51,17 +50,9 @@ export default {
 
 export const TextfieldStory: Story<TextFieldProps> = args => {
   return (
-    <Background
-      backgroundColor="white"
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        paddingY: 6,
-        paddingX: 4,
-      }}
-    >
+    <Box background="white" display="flex" justifyContent="center" px={6} py={4}>
       <TextField {...args} />
-    </Background>
+    </Box>
   );
 };
 

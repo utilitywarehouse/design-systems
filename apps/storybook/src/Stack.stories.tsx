@@ -2,10 +2,10 @@ import { Story, Meta } from '@storybook/react';
 
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import Divider from '@mui/material/Divider';
-import { Background, Box, Stack, StackProps, Typography } from '@utilitywarehouse/web-ui';
+import { Box, Stack, StackProps, Typography } from '@utilitywarehouse/web-ui';
 
 export default {
-  title: 'Components/Stack',
+  title: 'Layout/Stack',
   component: Stack,
   argTypes: {
     spacing: {
@@ -55,21 +55,21 @@ export const StackStory: Story<StackProps> = args => {
   return (
     <Box sx={{ padding: 1 }}>
       <Stack {...args}>
-        <Background backgroundColor="purple" sx={{ ...sx, paddingX: 2, paddingY: 4 }}>
+        <Box background="purple" px={2} py={4} {...sx}>
           <Typography component="span" variant="body">
             Item 1
           </Typography>
-        </Background>
-        <Background backgroundColor="purple" sx={{ ...sx, paddingX: 6, paddingY: 8 }}>
+        </Box>
+        <Box background="purple" px={6} py={8} {...sx}>
           <Typography component="span" variant="body">
             Item 2
           </Typography>
-        </Background>
-        <Background backgroundColor="purple" sx={{ ...sx, paddingX: 12, paddingY: 16 }}>
+        </Box>
+        <Box background="purple" px={12} py={16} {...sx}>
           <Typography component="span" variant="body">
             Item 3
           </Typography>
-        </Background>
+        </Box>
       </Stack>
     </Box>
   );
@@ -83,7 +83,7 @@ export const StackWithDividerStory: Story<StackProps> = args => {
     borderRadius: '8px',
   };
   return (
-    <Box sx={{ padding: 1 }}>
+    <Box padding={1}>
       <Stack
         {...args}
         divider={
@@ -93,21 +93,21 @@ export const StackWithDividerStory: Story<StackProps> = args => {
           />
         }
       >
-        <Background backgroundColor="purple" sx={{ ...sx, paddingX: 2, paddingY: 4 }}>
+        <Box background="purple" px={2} py={4} {...sx}>
           <Typography component="span" variant="body">
             Item 1
           </Typography>
-        </Background>
-        <Background backgroundColor="purple" sx={{ ...sx, paddingX: 6, paddingY: 8 }}>
+        </Box>
+        <Box background="purple" px={6} py={8} {...sx}>
           <Typography component="span" variant="body">
             Item 2
           </Typography>
-        </Background>
-        <Background backgroundColor="purple" sx={{ ...sx, paddingX: 12, paddingY: 16 }}>
+        </Box>
+        <Box background="purple" px={12} py={16} {...sx}>
           <Typography component="span" variant="body">
             Item 3
           </Typography>
-        </Background>
+        </Box>
       </Stack>
     </Box>
   );

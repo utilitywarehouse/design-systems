@@ -1,23 +1,21 @@
-import { Background, Box } from '@utilitywarehouse/web-ui';
+import { Stack, Box } from '@utilitywarehouse/web-ui';
 import * as React from 'react';
 
 const BackgroundStack = (props: { children: React.ReactNode }) => {
   const backgroundColors = ['white', 'whiteOwl', 'lightTint', 'purple', 'midnight'] as const;
   return (
-    <Box>
+    <Stack spacing={0}>
       {backgroundColors.map(level => (
-        <Background
+        <Box
           key={level}
-          backgroundColor={level}
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            padding: 4,
-          }}
+          background={level}
+          display="flex"
+          justifyContent="center"
+          padding={4}
           {...props}
         />
       ))}
-    </Box>
+    </Stack>
   );
 };
 

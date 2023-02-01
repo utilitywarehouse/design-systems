@@ -27,8 +27,8 @@ export const parameters = {
   viewport: {
     viewports: customerUiViewports,
   },
-  chromatic: { disableSnapshot: false },
   layout: 'fullscreen',
+  controls: { expanded: true },
 };
 
 export const decorators = [

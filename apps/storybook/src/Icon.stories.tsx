@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { icons } from './icons';
 import { Icon, IconProps } from '@utilitywarehouse/web-ui';
@@ -17,12 +16,6 @@ export default {
         options: allIcons.map(icon => icon.name),
       },
     },
-    // color: {
-    //   control: {
-    //     type: 'select',
-    //     options: colors,
-    //   },
-    // },
   },
   args: {
     icon: allIcons[0].name,

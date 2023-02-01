@@ -2,7 +2,7 @@ import React from 'react';
 import type { ElementType } from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { Typography, Box, Background } from '@utilitywarehouse/web-ui';
+import { Typography, Box } from '@utilitywarehouse/web-ui';
 import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import { icons } from './icons';
@@ -43,16 +43,16 @@ const Icons: React.FC<IconsProps> = props => {
         {icons[iconSet].map((icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element) => {
           const IconComponent = icon;
           return (
-            <Background
+            <Box
               key={icon.name}
-              backgroundColor="white"
+              background="white"
+              paddingY={3}
+              borderRadius={3}
               sx={{
+                cursor: 'pointer',
                 transition: `${transitions.duration}ms ${transitions.easingFunction}`,
                 transitionProperty: 'border-color',
-                paddingY: 3,
                 border: `2px solid ${colors.white}`,
-                borderRadius: 3,
-                cursor: 'pointer',
                 ':hover': {
                   borderColor: colors.pink,
                 },
@@ -85,7 +85,7 @@ const Icons: React.FC<IconsProps> = props => {
                   </Typography>
                 </Stack>
               </Tooltip>
-            </Background>
+            </Box>
           );
         })}
       </Box>
@@ -94,12 +94,12 @@ const Icons: React.FC<IconsProps> = props => {
 };
 
 export const IconsStory: Story = () => (
-  <Background backgroundColor="whiteOwl" sx={{ padding: 6 }}>
+  <Box background="whiteOwl" padding={6}>
     <Stack spacing={4}>
       <Icons iconSet="24x24" />
       <Icons iconSet="48x48" />
     </Stack>
-  </Background>
+  </Box>
 );
 IconsStory.storyName = 'Kitchen Sink';
 
@@ -114,13 +114,7 @@ export const Icons24Story: Story<IconsCustomStoryProps> = args => {
   const IconComponent = icons['24x24'].find(icon => icon.name === args.icon) as ElementType;
 
   return (
-    <Box
-      sx={{
-        padding: 6,
-        display: 'grid',
-        placeItems: 'center',
-      }}
-    >
+    <Box padding={6} display="grid" sx={{ placeItems: 'center' }}>
       <IconComponent fill={args.fill} width={args.width} height={args.height} />
     </Box>
   );
@@ -164,13 +158,7 @@ export const Icons48Story: Story<IconsCustomStoryProps> = args => {
   const IconComponent = icons['48x48'].find(icon => icon.name === args.icon) as ElementType;
 
   return (
-    <Box
-      sx={{
-        padding: 6,
-        display: 'grid',
-        placeItems: 'center',
-      }}
-    >
+    <Box padding={6} display="grid" sx={{ placeItems: 'center' }}>
       <IconComponent fill={args.fill} width={args.width} height={args.height} />
     </Box>
   );
@@ -205,7 +193,4 @@ Icons48Story.args = {
   fill: 'midnight',
   width: '48',
   height: '48',
-};
-Icons48Story.parameters = {
-  chromatic: { disableSnapshot: true },
 };
