@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
-import { backgroundColors, Text, Background } from '@utilitywarehouse/web-ui';
+import { backgroundColors, Text, Box } from '@utilitywarehouse/web-ui';
 import type { BackgroundProps, TextProps } from '@utilitywarehouse/web-ui';
 import BackgroundStack from './BackgroundStack';
 
@@ -106,12 +106,9 @@ export const TextCustomStory: Story<
   TextProps & { backgroundColor: BackgroundProps['backgroundColor'] }
 > = ({ backgroundColor, ...args }) => {
   return (
-    <Background
-      backgroundColor={backgroundColor}
-      sx={{ display: 'flex', justifyContent: 'center', padding: 4 }}
-    >
+    <Box background={backgroundColor} display="flex" justifyContent="center" padding={4}>
       <Text {...args} component="span" />
-    </Background>
+    </Box>
   );
 };
 TextCustomStory.storyName = 'Custom';

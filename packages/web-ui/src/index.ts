@@ -6,9 +6,6 @@ export type { Theme } from './theme';
 export { default as Box } from './Box';
 export * from './Box';
 
-export { default as Background } from './Background';
-export * from './Background';
-
 export { default as Button } from './Button';
 export * from './Button';
 

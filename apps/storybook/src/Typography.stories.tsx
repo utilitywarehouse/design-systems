@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
-import { backgroundColors, Typography, variantMapping, Background } from '@utilitywarehouse/web-ui';
+import { backgroundColors, Typography, variantMapping, Box } from '@utilitywarehouse/web-ui';
 import type { BackgroundProps, TypographyProps } from '@utilitywarehouse/web-ui';
 
 const variants = [
@@ -84,10 +84,7 @@ export const TypographyKitchenSinkStory: Story<
   TypographyProps & { backgroundColor: BackgroundProps['backgroundColor'] }
 > = ({ backgroundColor, ...args }) => {
   return (
-    <Background
-      backgroundColor={backgroundColor}
-      sx={{ display: 'flex', justifyContent: 'center', padding: 4 }}
-    >
+    <Box background={backgroundColor} display="flex" justifyContent="center" padding={4}>
       <Stack spacing={2}>
         {variants.map(v => (
           <Typography
@@ -97,7 +94,7 @@ export const TypographyKitchenSinkStory: Story<
           />
         ))}
       </Stack>
-    </Background>
+    </Box>
   );
 };
 TypographyKitchenSinkStory.storyName = 'Kitchen Sink';
@@ -119,12 +116,9 @@ export const TypographyCustomStory: Story<
   TypographyProps & { backgroundColor: BackgroundProps['backgroundColor'] }
 > = ({ backgroundColor, ...args }) => {
   return (
-    <Background
-      backgroundColor={backgroundColor}
-      sx={{ display: 'flex', justifyContent: 'center', padding: 4 }}
-    >
+    <Box background={backgroundColor} display="flex" justifyContent="center" padding={4}>
       <Typography {...args} />
-    </Background>
+    </Box>
   );
 };
 TypographyCustomStory.storyName = 'Custom';

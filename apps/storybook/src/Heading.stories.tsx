@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
-import { backgroundColors, Heading, Background, variantMapping } from '@utilitywarehouse/web-ui';
+import { backgroundColors, Heading, Box, variantMapping } from '@utilitywarehouse/web-ui';
 import type { BackgroundProps, HeadingProps } from '@utilitywarehouse/web-ui';
 import BackgroundStack from './BackgroundStack';
 
@@ -112,12 +112,9 @@ export const HeadingCustomStory: Story<
   HeadingProps & { backgroundColor: BackgroundProps['backgroundColor'] }
 > = ({ backgroundColor, ...args }) => {
   return (
-    <Background
-      backgroundColor={backgroundColor}
-      sx={{ display: 'flex', justifyContent: 'center', padding: 4 }}
-    >
+    <Box background={backgroundColor} display="flex" justifyContent="center" padding={4}>
       <Heading {...args} component="span" />
-    </Background>
+    </Box>
   );
 };
 HeadingCustomStory.storyName = 'Custom';
