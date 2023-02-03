@@ -1,30 +1,41 @@
-import * as React from 'react';
-import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import type { TypographyProps } from './Typography';
-import Typography from './Typography';
+import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
+import { dataAttributes } from '../utils';
+import { BoxProps } from '../Box';
 
-type DefaultComponent = 'p';
-
-type CustomProps<D extends React.ElementType = DefaultComponent, P = {}> = Omit<
-  TypographyProps<D, P>,
-  'variant' | 'fontWeight' | 'color'
-> & {
-  variant: 'subtitle' | 'body' | 'legalNote' | 'caption';
-  color?: 'primary' | 'success' | 'error';
+export const variantMapping: { [key: string]: string } = {
+  subtitle: 'p', // span?
+  body: 'p', // span?
+  legalNote: 'p', // span?
+  caption: 'span',
 };
 
-interface TypeMap<D extends React.ElementType = DefaultComponent, P = {}> {
-  props: CustomProps<D, P>;
-  defaultComponent: D;
+export interface TextProps
+  extends Pick<
+    MuiTypographyProps,
+    | 'align'
+    | 'children'
+    | 'className'
+    | 'classes'
+    | 'gutterBottom'
+    | 'letterSpacing'
+    | 'noWrap'
+    | 'paragraph'
+    | 'sx'
+    | 'textTransform'
+  > {
+  color?: 'primary' | 'secondary' | 'success' | 'error';
+  component: BoxProps['component'];
+  bold?: boolean;
+  variant: 'subtitle' | 'body' | 'legalNote' | 'caption';
 }
 
-export type TextProps<D extends React.ElementType = DefaultComponent, P = {}> = OverrideProps<
-  TypeMap<D, P>,
-  D
->;
+function Text({ color = 'primary', bold = false, ...props }: TextProps) {
+  const dataAttributeProps = {
+    [`data-${dataAttributes[color]}`]: true,
+    [`data-${dataAttributes.bold}`]: bold,
+  };
 
-const Text = React.forwardRef(function Text(props, ref) {
-  return <Typography ref={ref} {...props} />;
-}) as OverridableComponent<TypeMap>;
+  return <MuiTypography {...props} variantMapping={variantMapping} {...dataAttributeProps} />;
+}
 
 export default Text;

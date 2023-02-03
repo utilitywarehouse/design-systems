@@ -24,11 +24,9 @@ const customerUiViewports = {
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
-  viewport: {
-    viewports: customerUiViewports,
-  },
+  viewport: { viewports: customerUiViewports },
   layout: 'fullscreen',
-  controls: { expanded: true },
+  // controls: { expanded: false },
 };
 
 export const decorators = [

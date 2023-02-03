@@ -1,7 +1,7 @@
 import './types/overrides';
 
-export { default as theme, styled } from './theme';
-export type { Theme } from './theme';
+export { default as theme } from './theme';
+export * from './theme';
 
 export { default as Box } from './Box';
 export * from './Box';
