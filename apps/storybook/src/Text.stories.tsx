@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
 import { backgroundColors, Text, Box } from '@utilitywarehouse/web-ui';
-import type { BackgroundProps, TextProps } from '@utilitywarehouse/web-ui';
+import type { BoxProps, TextProps } from '@utilitywarehouse/web-ui';
 import BackgroundStack from './BackgroundStack';
 
 const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
@@ -54,7 +54,7 @@ export default {
     },
   },
   args: {
-    backgroundColor: 'white',
+    background: 'white',
     children: 'hamburgefons',
     variant: 'body',
     color: 'primary',
@@ -66,9 +66,10 @@ export default {
   },
 } as Meta;
 
-export const TextKitchenSinkStory: Story<
-  TextProps & { backgroundColor: BackgroundProps['backgroundColor'] }
-> = ({ backgroundColor, ...args }) => {
+export const TextKitchenSinkStory: Story<TextProps & { background: BoxProps['background'] }> = ({
+  background,
+  ...args
+}) => {
   return (
     <BackgroundStack>
       <Stack spacing={4} direction="row">
@@ -94,7 +95,7 @@ TextKitchenSinkStory.argTypes = {
   align: { table: { disable: true } },
   noWrap: { table: { disable: true } },
   color: { table: { disable: true } },
-  backgroundColor: { table: { disable: true } },
+  background: { table: { disable: true } },
   textTransform: { table: { disable: true } },
   letterSpacing: { table: { disable: true } },
 };
@@ -102,11 +103,12 @@ TextKitchenSinkStory.args = {
   color: 'primary',
 };
 
-export const TextCustomStory: Story<
-  TextProps & { backgroundColor: BackgroundProps['backgroundColor'] }
-> = ({ backgroundColor, ...args }) => {
+export const TextCustomStory: Story<TextProps & { background: BoxProps['background'] }> = ({
+  background,
+  ...args
+}) => {
   return (
-    <Box background={backgroundColor} display="flex" justifyContent="center" padding={4}>
+    <Box background={background} display="flex" justifyContent="center" padding={4}>
       <Text {...args} component="span" />
     </Box>
   );

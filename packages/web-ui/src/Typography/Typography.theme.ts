@@ -3,6 +3,41 @@ import { Theme } from '@mui/material/styles';
 import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
 import { dataAttributes } from '../utils';
 
+const { secondary, inverse, bold, success, error } = dataAttributes;
+export const headingStyles = {
+  fontFamily: fonts.primary,
+  color: colors.purple,
+  [`&[data-${secondary}=true]`]: {
+    color: colors.midnight,
+  },
+  [`[data-${inverse}=true] &`]: {
+    color: colors.white,
+  },
+};
+export const bodyStyles = {
+  fontFamily: fonts.secondary,
+  color: colors.midnight,
+  fontWeight: fontWeights.secondary.regular,
+  [`&[data-${bold}=true]`]: {
+    fontWeight: fontWeights.secondary.semibold,
+  },
+  [`[data-${inverse}=true] &`]: {
+    color: colors.white,
+  },
+  [`&[data-${success}=true]`]: {
+    color: colors.jewel,
+    [`[data-${inverse}=true] &`]: {
+      color: colors.apple,
+    },
+  },
+  [`&[data-${error}=true]`]: {
+    color: colors.maroonFlush,
+    [`[data-${inverse}=true] &`]: {
+      color: colors.rose,
+    },
+  },
+};
+
 export const typographyThemeOverrides = (
   theme: Theme
 ): {
@@ -16,41 +51,6 @@ export const typographyThemeOverrides = (
   legalNote: TypographyStyleOptions;
   caption: TypographyStyleOptions;
 } => {
-  const { secondary, inverse, bold, success, error } = dataAttributes;
-  const headingStyles = {
-    fontFamily: fonts.primary,
-    color: colors.purple,
-    [`&[data-${secondary}=true]`]: {
-      color: colors.midnight,
-    },
-    [`[data-${inverse}=true] &`]: {
-      color: colors.white,
-    },
-  };
-  const bodyStyles = {
-    fontFamily: fonts.secondary,
-    color: colors.midnight,
-    fontWeight: fontWeights.secondary.regular,
-    [`&[data-${bold}=true]`]: {
-      fontWeight: fontWeights.secondary.semibold,
-    },
-    [`[data-${inverse}=true] &`]: {
-      color: colors.white,
-    },
-    [`&[data-${success}=true]`]: {
-      color: colors.jewel,
-      [`[data-${inverse}=true] &`]: {
-        color: colors.apple,
-      },
-    },
-    [`&[data-${error}=true]`]: {
-      color: colors.maroonFlush,
-      [`[data-${inverse}=true] &`]: {
-        color: colors.rose,
-      },
-    },
-  };
-
   return {
     displayHeading: {
       ...headingStyles,

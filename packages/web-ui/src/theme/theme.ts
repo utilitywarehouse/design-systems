@@ -86,5 +86,7 @@ theme.palette = {
   ...customPalette,
 };
 
+console.log({ theme });
+
 export default theme;
 export type Theme = typeof theme;

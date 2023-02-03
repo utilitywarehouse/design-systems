@@ -1,30 +1,41 @@
-import * as React from 'react';
-import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import type { TypographyProps } from './Typography';
-import Typography from './Typography';
+import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
+import { dataAttributes } from '../utils';
+import { BoxProps } from '../Box';
 
-type DefaultComponent = 'h2';
-
-type CustomProps<D extends React.ElementType = DefaultComponent, P = {}> = Omit<
-  TypographyProps<D, P>,
-  'variant' | 'fontWeight' | 'color' | 'bold'
-> & {
-  variant: 'displayHeading' | 'h1' | 'h2' | 'h3' | 'h4';
-  color?: 'primary' | 'secondary';
+export const variantMapping: { [key: string]: string } = {
+  displayHeading: 'h1',
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
 };
 
-interface TypeMap<D extends React.ElementType = DefaultComponent, P = {}> {
-  props: CustomProps<D, P>;
-  defaultComponent: D;
+export interface HeadingProps
+  extends Pick<
+    MuiTypographyProps,
+    | 'align'
+    | 'children'
+    | 'className'
+    | 'classes'
+    | 'gutterBottom'
+    | 'letterSpacing'
+    | 'noWrap'
+    | 'paragraph'
+    | 'sx'
+    | 'textTransform'
+    | 'ref'
+  > {
+  color?: 'primary' | 'secondary';
+  component: BoxProps['component'];
+  variant: 'displayHeading' | 'h1' | 'h2' | 'h3' | 'h4';
 }
 
-export type HeadingProps<D extends React.ElementType = DefaultComponent, P = {}> = OverrideProps<
-  TypeMap<D, P>,
-  D
->;
+function Heading({ color = 'primary', ...props }: HeadingProps) {
+  const dataAttributeProps = {
+    [`data-${dataAttributes[color]}`]: true,
+  };
 
-const Heading = React.forwardRef(function Heading(props, ref) {
-  return <Typography ref={ref} {...props} />;
-}) as OverridableComponent<TypeMap>;
+  return <MuiTypography {...props} variantMapping={variantMapping} {...dataAttributeProps} />;
+}
 
 export default Heading;
