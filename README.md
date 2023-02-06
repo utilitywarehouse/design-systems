@@ -1,4 +1,4 @@
-# UW Design System
+# UW Design Systems
 
 [![Code Checks](https://github.com/utilitywarehouse/design-systems/actions/workflows/checks.yml/badge.svg)](https://github.com/utilitywarehouse/design-systems/actions/workflows/checks.yml) [![Release](https://github.com/utilitywarehouse/design-systems/actions/workflows/release.yml/badge.svg)](https://github.com/utilitywarehouse/design-systems/actions/workflows/release.yml)
 
@@ -34,3 +34,25 @@ release workflow will run which will open, and keep updated, a Version Pull
 Request containing all changes. When this is merged to `main` all packages will
 be versioned, published to npm and changelogs will be generated based on the
 changesets.
+
+## Local development
+
+You can use storybook to develop UW Web UI components locally. To get started,
+clone this repo and run the following command in the root directory.
+
+```console
+npm run setup
+```
+
+This will get `pnpm` set up.
+
+You can then install all the necessary dependencies, build the packages, and run
+the Storybook app and the Web UI library in watch mode. As before, run these
+commands in the root directory.
+
+```console
+pnpm install
+pnpm build
+pnpm dev
+```
+
