@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { icons } from './icons';
 import { Icon, IconProps } from '@utilitywarehouse/web-ui';

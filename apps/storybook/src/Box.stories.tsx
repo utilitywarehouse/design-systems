@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { backgroundColors, Box, BoxProps, Heading } from '@utilitywarehouse/web-ui';
+import { backgroundColors, Box, BoxProps, Heading, styled } from '@utilitywarehouse/web-ui';
 import { colors, borderRadius } from '@utilitywarehouse/customer-ui-design-tokens';
 
 export default {
