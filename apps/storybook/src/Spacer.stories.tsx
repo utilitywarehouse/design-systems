@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';

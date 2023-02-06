@@ -7,7 +7,7 @@ export interface BoxProps extends Omit<MuiBoxProps, 'background'> {
   background?: NeutralBackgroundColor | InverseBackgroundColor;
 }
 
-const Box = (props: BoxProps) => {
+const Box: React.FC<BoxProps> = props => {
   const { background, sx, ...rest } = props;
   const inverse = background ? isInverseBackgroundColor(background) : false;
   const dataAttributeProps = {

@@ -1,7 +1,8 @@
+import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
-import { backgroundColors, Heading, Box, variantMapping } from '@utilitywarehouse/web-ui';
-import type { BackgroundProps, HeadingProps } from '@utilitywarehouse/web-ui';
+import { backgroundColors, Heading, Box, BoxProps } from '@utilitywarehouse/web-ui';
+import type { HeadingProps } from '@utilitywarehouse/web-ui';
 import BackgroundStack from './BackgroundStack';
 
 const variants = ['displayHeading', 'h1', 'h2', 'h3', 'h4'] as const;
@@ -67,7 +68,7 @@ export default {
 } as Meta;
 
 export const HeadingKitchenSinkStory: Story<
-  HeadingProps & { backgroundColor: BackgroundProps['backgroundColor'] }
+  HeadingProps & { backgroundColor: BoxProps['background'] }
 > = ({ backgroundColor, ...args }) => {
   return (
     <BackgroundStack>
@@ -75,13 +76,7 @@ export const HeadingKitchenSinkStory: Story<
         {variants.map(v => (
           <Stack key={v} spacing={2}>
             {colors.map(c => (
-              <Heading
-                key={`${v}${c}`}
-                {...args}
-                variant={v}
-                component={variantMapping[v] as React.ElementType<any>}
-                color={c}
-              />
+              <Heading key={`${v}${c}`} {...args} variant={v} color={c} />
             ))}
           </Stack>
         ))}
@@ -109,7 +104,7 @@ HeadingKitchenSinkStory.args = {
 };
 
 export const HeadingCustomStory: Story<
-  HeadingProps & { backgroundColor: BackgroundProps['backgroundColor'] }
+  HeadingProps & { backgroundColor: BoxProps['background'] }
 > = ({ backgroundColor, ...args }) => {
   return (
     <Box background={backgroundColor} display="flex" justifyContent="center" padding={4}>
