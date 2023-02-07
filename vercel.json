@@ -1,5 +1,5 @@
 {
   "installCommand": "pnpm install",
-  "buildCommand": "NODE_OPTIONS=--openssl-legacy-provider pnpm storybook:build",
+  "buildCommand": "NODE_OPTIONS=--openssl-legacy-provider pnpm run build:storybook",
   "outputDirectory": "packages/web-ui/storybook-static"
 }
