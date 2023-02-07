@@ -23,9 +23,6 @@
     },
     "build:storybook": {
       "outputs": ["packages/web-ui/storybook-static/**"]
-    },
-    "build:docs": {
-      "outputs": ["packages/web-ui/storybook-static/**"]
     }
   }
 }
