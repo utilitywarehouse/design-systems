@@ -4,6 +4,10 @@ import { dataAttributes, isInverseBackgroundColor } from '../utils';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 
 export interface BoxProps extends Omit<MuiBoxProps, 'background'> {
+  /**
+   * Set to one of the predefined background colours. If not set background will remain 'transparent'.
+   * @default transparent
+   */
   background?: NeutralBackgroundColor | InverseBackgroundColor;
 }
 

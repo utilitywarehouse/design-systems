@@ -1,0 +1,59 @@
+import {ArgsTable, Meta, Canvas } from '@storybook/blocks';
+import * as BoxStories from './Box.stories';
+import Box from './Box.tsx'
+import {Text} from '../Typography'
+import ThemeProvider from '../ThemeProvider'
+
+<Meta of={BoxStories} />
+
+# Box
+
+Box is a low-level primitive, which supports theme-aware styling props, and can
+be used for building any styled element.
+
+* [Semantic HTML](#semantic-html)
+* [Background](#background)
+* [Props](#props)
+
+## Semantic HTML
+
+By default Box renders a div element, this can be customised using the
+`component` prop.
+
+```tsx
+<Box component="span">
+  ...
+</Box>
+```
+
+## Background
+
+Additionally to the system properties, Box supports pre-defined backgrounds
+that provide visual context to child components. This means that components
+will change colours depending on the parent background.
+
+```tsx
+<Box background="lightTint">
+  <Text variant="body" component="span">Dark text on neutral background</Text>
+</Box>
+
+<Box background="purple">
+  <Text variant="body" component="span">Light text on inverse background</Text>
+</Box>
+```
+
+<Canvas withSource="closed">
+<ThemeProvider>
+<Box background="lightTint" padding={4}>
+  <Text variant="body" component="span">Dark text on neutral background</Text>
+</Box>
+<Box background="purple" padding={4}>
+  <Text variant="body" component="span">Light text on inverse background</Text>
+</Box>
+</ThemeProvider>
+</Canvas>
+
+## Props
+
+<ArgsTable of={BoxStories.meta} />
+
