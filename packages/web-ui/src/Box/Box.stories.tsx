@@ -2,7 +2,7 @@ import { backgroundColors } from '../types';
 import Typography from '../Typography';
 import Box from './Box';
 import type { Meta, StoryObj } from '@storybook/react';
-import { colors, borderRadius } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta: Meta<typeof Box> = {
