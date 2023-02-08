@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "include": ["."],
-  "exclude": ["dist", "build", "node_modules", "storybook-static"],
+  "exclude": ["dist", "build", "node_modules", "storybook-static", "**/*.stories.*"],
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src"

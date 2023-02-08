@@ -3,9 +3,12 @@
   "version": "0.0.1",
   "description": "React components for building UW UIs",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
-    "build": "rm -rf dist/ && tsc --build ./tsconfig.json",
+    "build": "rm -rf dist && tsup",
     "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "precommit": "lint-staged",
@@ -57,5 +60,23 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "treeshake": true,
+    "sourcemap": true,
+    "minify": true,
+    "clean": true,
+    "dts": true,
+    "splitting": false,
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "external": [
+      "react"
+    ]
+  }
 }
