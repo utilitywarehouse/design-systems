@@ -76,7 +76,9 @@
       "esm"
     ],
     "external": [
-      "react"
-    ]
+      "react",
+      "*.stories.*"
+    ],
+    "tsconfig": "./tsconfig.build.json"
   }
 }
