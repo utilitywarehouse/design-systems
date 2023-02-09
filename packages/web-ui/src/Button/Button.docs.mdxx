@@ -1,0 +1,26 @@
+import {ArgsTable,Story, Meta, Canvas } from '@storybook/blocks';
+import * as Stories from './Button.stories';
+import Button from './Button.tsx'
+import ThemeProvider from '../ThemeProvider'
+
+<Meta of={Stories} />
+
+# Button
+
+Button ...
+
+* [Semantic HTML](#semantic-html)
+* [Props](#props)
+
+## Semantic HTML
+
+```tsx
+<Button href="/">
+  ...
+</Button>
+```
+
+## Props
+
+
+<ArgsTable story="Icon Button" />

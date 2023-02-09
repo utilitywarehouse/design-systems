@@ -7,8 +7,20 @@ type DefaultComponent = 'button';
 
 interface CustomProps<D extends React.ElementType = DefaultComponent, P = {}>
   extends Pick<MuiButtonProps<D, P>, 'sx' | 'classes' | 'fullWidth' | 'children' | 'href'> {
+  /**
+   * Specify the size of the Button
+   * @default medium
+   */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * Specify the variant of the Button
+   * @default primary
+   */
   variant?: 'primary' | 'secondary' | 'tertiary';
+  /**
+   * By default the button label will have only the first letter capitalized.
+   * You can use this prop to override this behaviour.
+   */
   disableCapitalizeFirstLetter?: boolean;
 }
 
@@ -23,7 +35,13 @@ export type ButtonProps<D extends React.ElementType = DefaultComponent, P = {}> 
 >;
 
 const Button = React.forwardRef(function Button(
-  { size = 'medium', variant = 'primary', disableCapitalizeFirstLetter, className, ...props },
+  {
+    size = 'medium',
+    variant = 'primary',
+    disableCapitalizeFirstLetter,
+    className,
+    ...props
+  }: ButtonProps,
   ref
 ) {
   const dataAttributeProps = {

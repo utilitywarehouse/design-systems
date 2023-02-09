@@ -34,7 +34,7 @@
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "clean": "pnpm -r --stream clean && rm -rf node_modules",
-    "dev": "turbo run dev --no-cache --parallel --continue",
+    "dev": "pnpm -r --stream dev",
     "changeset": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
     "ci:publish": "pnpm run build && changeset publish",

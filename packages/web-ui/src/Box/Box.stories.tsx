@@ -1,13 +1,25 @@
 import { backgroundColors } from '../types';
 import Typography from '../Typography';
-import Box from './Box';
+import { Box } from '../../dist';
 import type { Meta, StoryObj } from '@storybook/react';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import { Title, ArgsTable, Description } from '@storybook/blocks';
 
-// More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta: Meta<typeof Box> = {
   title: 'Components / Box',
   component: Box,
+  tags: ['autodocs'],
+  // parameters: {
+  //   docs: {
+  //     page: () => (
+  //       <>
+  //         <Title />
+  //         <Description />
+  //         <ArgsTable />
+  //       </>
+  //     ),
+  //   },
+  // },
   decorators: [
     Story => (
       <Box padding={4}>

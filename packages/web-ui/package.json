@@ -38,6 +38,7 @@
     "@mui/material": "^5.10.5",
     "@mui/system": "^5.10.5",
     "@mui/types": "^7.1.4",
+    "@storybook/addon-docs": "^6.5.16",
     "@storybook/addon-essentials": "^7.0.0-beta.43",
     "@storybook/addon-interactions": "^7.0.0-beta.43",
     "@storybook/addon-links": "^7.0.0-beta.43",
