@@ -27,18 +27,18 @@
   },
   "scripts": {
     "setup": "corepack enable && corepack prepare pnpm@7.13.4 --activate",
-    "build": "TURBO_TOKEN=${TURBO_TOKEN} turbo run build",
-    "build:storybook": "TURBO_TOKEN=${TURBO_TOKEN} turbo run build:storybook",
+    "build": "turbo run build",
+    "build:storybook": "turbo run build:storybook",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
-    "lint": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint",
-    "lint:fix": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint:fix",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
     "clean": "pnpm -r --stream clean && rm -rf node_modules",
     "dev": "turbo run dev --no-cache --parallel --continue",
     "changeset": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
     "ci:publish": "pnpm run build && changeset publish",
-    "checks": "TURBO_TOKEN=${TURBO_TOKEN} turbo run lint build"
+    "checks": "turbo run lint build"
   },
   "workspaces": [
     "packages/*",
