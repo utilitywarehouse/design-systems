@@ -1,19 +1,15 @@
+import { forwardRef } from 'react';
 import { useTheme } from '@mui/material/styles';
-import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx';
 import { px } from '../utils';
-import MuiBox, { BoxProps as MuiBoxProps } from '@mui/material/Box';
+import MuiBox from '@mui/material/Box';
 
-export interface SpacerProps extends MuiBoxProps {
-  /**
-   * The direction of the Spacer axis
-   */
-  axis?: 'horizontal' | 'vertical';
-  size: ResponsiveStyleValue<number>;
-  inline?: boolean;
-}
+import type { OverridableComponent } from '@mui/material/OverridableComponent';
+import type { SpacerTypeMap } from './Spacer.types';
 
-function Spacer(props: SpacerProps) {
-  const { axis = 'vertical', size = 1, component, inline = false, sx, ...rest } = props;
+const Spacer = forwardRef(function Spacer(
+  { axis = 'vertical', size = 1, component, inline = false, sx, ...props },
+  ref
+) {
   const theme = useTheme();
   const defaultElement = inline ? 'span' : 'div';
 
@@ -40,6 +36,7 @@ function Spacer(props: SpacerProps) {
 
   return (
     <MuiBox
+      ref={ref}
       component={component || defaultElement}
       sx={{
         display: inline ? 'inline-block' : 'block',
@@ -49,9 +46,9 @@ function Spacer(props: SpacerProps) {
         minHeight: height,
         ...sx,
       }}
-      {...rest}
+      {...props}
     />
   );
-}
+}) as OverridableComponent<SpacerTypeMap>;
 
 export default Spacer;

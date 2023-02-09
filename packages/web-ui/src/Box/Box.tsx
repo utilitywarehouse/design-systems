@@ -2,8 +2,9 @@ import { forwardRef } from 'react';
 import MuiBox from '@mui/material/Box';
 import { dataAttributes, isInverseBackgroundColor } from '../utils';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+
 import type { OverridableComponent } from '@mui/material/OverridableComponent';
-import { BoxTypeMap } from './Box.types';
+import type { BoxTypeMap } from './Box.types';
 
 /**
  * Box is a low-level primitive, which supports theme-aware styling props, and can
