@@ -28,7 +28,6 @@ module.exports = {
     'no-constant-condition': 'error',
     'no-unreachable': 'error',
     'no-unused-expressions': 'error',
-    'no-constant-binary-expression': 'error',
     'no-sequences': 'error',
   },
   settings: {
