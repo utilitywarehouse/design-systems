@@ -1,30 +1,9 @@
 import { forwardRef } from 'react';
-import type { ElementType } from 'react';
-import MuiBox, { BoxProps as MuiBoxProps } from '@mui/material/Box';
-import { NeutralBackgroundColor, InverseBackgroundColor } from '../types';
+import MuiBox from '@mui/material/Box';
 import { dataAttributes, isInverseBackgroundColor } from '../utils';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
-import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-
-type DefaultComponent = 'div';
-
-type CustomProps<D extends ElementType = DefaultComponent, P = {}> = {
-  /**
-   * Changes the background colour, and provides context to child elements
-   * that need to change colour accordingly
-   */
-  background?: NeutralBackgroundColor | InverseBackgroundColor;
-} & Omit<MuiBoxProps<D, P>, 'background'>;
-
-interface TypeMap<D extends ElementType = DefaultComponent, P = {}> {
-  props: CustomProps<D, P>;
-  defaultComponent: D;
-}
-
-export type BoxProps<D extends ElementType = DefaultComponent, P = {}> = OverrideProps<
-  TypeMap<D, P>,
-  D
->;
+import type { OverridableComponent } from '@mui/material/OverridableComponent';
+import { BoxTypeMap } from './Box.types';
 
 /**
  * Box is a low-level primitive, which supports theme-aware styling props, and can
@@ -56,26 +35,6 @@ const Box = forwardRef(function Box({ background, sx, ...props }, ref) {
       }}
     />
   );
-}) as OverridableComponent<TypeMap>;
-
-// const Box = (props: BoxProps) => {
-//   const { background, sx, ...rest } = props;
-//   const inverse = background ? isInverseBackgroundColor(background) : false;
-//   const dataAttributeProps = {
-//     [`data-${dataAttributes.inverse}`]: inverse,
-//   };
-//   const backgroundColor = background ? colors[background] : 'transparent';
-//
-//   return (
-//     <MuiBox
-//       {...rest}
-//       {...dataAttributeProps}
-//       sx={{
-//         backgroundColor,
-//         ...sx,
-//       }}
-//     />
-//   );
-// };
+}) as OverridableComponent<BoxTypeMap>;
 
 export default Box;
