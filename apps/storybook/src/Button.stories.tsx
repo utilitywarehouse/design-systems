@@ -1,7 +1,6 @@
-import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { Stack, Button, ButtonProps } from '@utilitywarehouse/web-ui';
-import BackgroundStack from './BackgroundStack';
+import { BackgroundStack } from './utils';
 
 const sizes = ['small', 'medium', 'large'] as const;
 const variants = ['primary', 'secondary'] as const;

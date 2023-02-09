@@ -1,7 +1,7 @@
 import { Story, Meta, ArgTypes } from '@storybook/react';
 import { Stack, Typography, TextLink } from '@utilitywarehouse/web-ui';
 import type { TypographyProps, TextLinkProps } from '@utilitywarehouse/web-ui';
-import BackgroundStack from './BackgroundStack';
+import { BackgroundStack } from './utils';
 
 const typographyVariants = [
   'displayHeading',

@@ -1,6 +1,12 @@
 import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
-import { backgroundColors, Typography, variantMapping, Box } from '@utilitywarehouse/web-ui';
+import {
+  backgroundColors,
+  Typography,
+  variantMapping,
+  Box,
+  BoxProps,
+} from '@utilitywarehouse/web-ui';
 import type { BackgroundProps, TypographyProps } from '@utilitywarehouse/web-ui';
 
 const variants = [
@@ -113,12 +119,13 @@ TypographyKitchenSinkStory.args = {
 };
 
 export const TypographyCustomStory: Story<
-  TypographyProps & { backgroundColor: BackgroundProps['backgroundColor'] }
-> = ({ backgroundColor, ...args }) => {
+  TypographyProps & { background: BoxProps['background'] }
+> = ({ background, ...args }) => {
   return (
-    <Box background={backgroundColor} display="flex" justifyContent="center" padding={4}>
+    <Box background={background} display="flex" justifyContent="center" padding={4}>
       <Typography {...args} />
     </Box>
   );
 };
 TypographyCustomStory.storyName = 'Custom';
+TypographyCustomStory.args = { component: 'span' };

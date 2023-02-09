@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
 import { backgroundColors, Heading, Box, variantMapping } from '@utilitywarehouse/web-ui';
 import type { BackgroundProps, HeadingProps } from '@utilitywarehouse/web-ui';
-import BackgroundStack from './BackgroundStack';
+import { BackgroundStack } from './utils';
 
 const variants = ['displayHeading', 'h1', 'h2', 'h3', 'h4'] as const;
 

@@ -1,6 +1,5 @@
 import { Story, Meta } from '@storybook/react';
 import { Stack, Typography, TypographyProps, Link, LinkProps } from '@utilitywarehouse/web-ui';
-import BackgroundStack from './BackgroundStack';
 
 const typographyVariants = [
   'displayHeading',
@@ -56,20 +55,18 @@ export const LinkStory: Story<
 > = args => {
   const { typographyVariant, ...rest } = args;
   return (
-    <BackgroundStack>
-      <Stack spacing={2}>
-        <Typography component="span" variant={typographyVariant}>
-          <Link href="#" {...rest} />
-        </Typography>
-        <Typography component="span" variant={typographyVariant}>
-          This is an inline{' '}
-          <Link href="#" {...rest} variant="inherit">
-            link
-          </Link>
-          .
-        </Typography>
-      </Stack>
-    </BackgroundStack>
+    <Stack spacing={2}>
+      <Typography component="span" variant={typographyVariant}>
+        <Link href="#" {...rest} />
+      </Typography>
+      <Typography component="span" variant={typographyVariant}>
+        This is an inline{' '}
+        <Link href="#" {...rest} variant="inherit">
+          link
+        </Link>
+        .
+      </Typography>
+    </Stack>
   );
 };
 

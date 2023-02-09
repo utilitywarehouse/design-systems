@@ -19,7 +19,7 @@ export default {
 } as Meta;
 
 export const BoxStory: Story<BoxProps> = args => {
-  const hexValue = args.background ? colors[args.background] : '';
+  const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
   return (
     <Box
       {...args}
