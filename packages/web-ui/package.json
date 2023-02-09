@@ -9,7 +9,7 @@
     "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "precommit": "lint-staged",
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react"
+    "dev": "tsc --watch"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
