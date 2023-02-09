@@ -16,10 +16,6 @@ export default {
     },
     component: { control: { type: 'text' } },
   },
-  args: {
-    background: 'white',
-    component: 'div',
-  },
 } as Meta;
 
 export const BoxStory: Story<BoxProps> = args => {
@@ -43,3 +39,7 @@ export const BoxStory: Story<BoxProps> = args => {
 };
 
 BoxStory.storyName = 'Box';
+BoxStory.args = {
+  background: 'white',
+  component: 'div',
+};
