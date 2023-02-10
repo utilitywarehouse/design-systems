@@ -20,7 +20,7 @@ export default {
 } as ComponentMeta<typeof Box>;
 
 export const BoxStory: ComponentStory<typeof Box> = (args: BoxProps) => {
-  const hexValue = args.background ? colors[args.background] : '';
+  const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
   return (
     <Box
       {...args}
