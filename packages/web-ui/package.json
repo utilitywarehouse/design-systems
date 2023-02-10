@@ -12,7 +12,7 @@
     "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "precommit": "lint-staged",
-    "dev": "storybook dev -p 6006",
+    "dev": "storybook dev --quiet -p 6006",
     "build:storybook": "storybook build --quiet"
   },
   "lint-staged": {

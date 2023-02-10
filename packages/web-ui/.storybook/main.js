@@ -14,6 +14,10 @@ const config = {
     defaultName: 'Documentation',
     autodocs: 'tag',
   },
+  typescript: {
+    reactDocgenTypescriptOptions: {
+      tsconfigPath: './tsconfig.json',
+    },
+  },
 };
 export default config;
-

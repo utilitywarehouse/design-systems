@@ -4,28 +4,32 @@ import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 
 import * as React from 'react';
 import MuiBox, { BoxProps as MuiBoxProps } from '@mui/material/Box';
-import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 
-type DefaultComponent = 'div';
-
-type CustomProps<D extends React.ElementType = DefaultComponent, P = {}> = {
+export type BoxProps<C extends React.ElementType = 'div'> = Omit<
+  MuiBoxProps<C, { component?: C }>,
+  'background'
+> & {
+  /**
+   * Change the brand background colour.
+   * @default transparent
+   *
+   */
   background?: NeutralBackgroundColor | InverseBackgroundColor;
-} & MuiBoxProps<D, P>;
-
-interface TypeMap<D extends React.ElementType = DefaultComponent, P = {}> {
-  props: CustomProps<D, P>;
-  defaultComponent: D;
-}
-
-export type BoxProps<D extends React.ElementType = DefaultComponent, P = {}> = OverrideProps<
-  TypeMap<D, P>,
-  D
->;
+};
 
 /**
- * This is a Box description
+ * Box is a low-level primitive, which supports theme-aware styling props, and can
+ * be used for building any styled element.
+ *
+ * By default Box renders a div element, this can be customised using the
+ * `component` prop.
+ *
+ * Additionally to the system properties, Box supports pre-defined backgrounds,
+ * via the `background` prop that provide visual context to child components.
+ * This means that components will change foreground colour depending on the
+ * parent background colour.
  */
-const Box = React.forwardRef(function Box({ background, sx, ...props }, ref) {
+function Box<C extends React.ElementType>({ background, sx, ...props }: BoxProps<C>) {
   const inverse = background ? isInverseBackgroundColor(background) : false;
   const dataAttributeProps = {
     [`data-${dataAttributes.inverse}`]: inverse,
@@ -33,7 +37,6 @@ const Box = React.forwardRef(function Box({ background, sx, ...props }, ref) {
   const backgroundColor = background ? colors[background] : 'transparent';
   return (
     <MuiBox
-      ref={ref}
       {...props}
       {...dataAttributeProps}
       sx={{
@@ -42,6 +45,6 @@ const Box = React.forwardRef(function Box({ background, sx, ...props }, ref) {
       }}
     />
   );
-}) as OverridableComponent<TypeMap>;
+}
 
 export default Box;
