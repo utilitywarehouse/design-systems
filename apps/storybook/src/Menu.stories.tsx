@@ -22,7 +22,7 @@ export const MenuStory: Story = () => {
   };
 
   return (
-    <Box>
+    <Box padding={4}>
       <Button
         id="basic-button"
         aria-controls="basic-menu"

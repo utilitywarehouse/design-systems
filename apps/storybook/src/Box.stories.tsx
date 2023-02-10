@@ -1,5 +1,5 @@
-import { Story, Meta } from '@storybook/react';
-import { backgroundColors, Typography, Box, BoxProps } from '@utilitywarehouse/web-ui';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { backgroundColors, Box, BoxProps, Typography } from '@utilitywarehouse/web-ui';
 import { colors, borderRadius } from '@utilitywarehouse/customer-ui-design-tokens';
 
 export default {
@@ -16,9 +16,9 @@ export default {
     },
     component: { control: { type: 'text' } },
   },
-} as Meta;
+} as ComponentMeta<typeof Box>;
 
-export const BoxStory: Story<BoxProps> = args => {
+export const BoxStory: ComponentStory<typeof Box> = (args: BoxProps) => {
   const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
   return (
     <Box
