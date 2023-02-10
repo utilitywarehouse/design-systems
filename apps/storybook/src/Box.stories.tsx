@@ -1,5 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { backgroundColors, Box, BoxProps, Typography } from '@utilitywarehouse/web-ui';
+import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import { backgroundColors, Box, Heading } from '@utilitywarehouse/web-ui';
+import type { BoxProps } from '@utilitywarehouse/web-ui';
 import { colors, borderRadius } from '@utilitywarehouse/customer-ui-design-tokens';
 
 export default {
@@ -19,7 +20,7 @@ export default {
 } as ComponentMeta<typeof Box>;
 
 export const BoxStory: ComponentStory<typeof Box> = (args: BoxProps) => {
-  const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
+  const hexValue = args.background ? colors[args.background] : '';
   return (
     <Box
       {...args}
@@ -31,9 +32,9 @@ export const BoxStory: ComponentStory<typeof Box> = (args: BoxProps) => {
       borderRadius={borderRadius.medium}
       padding={3}
     >
-      <Typography variant="h2" component="span">
+      <Heading variant="h2" component="span">
         {args.background} ({hexValue})
-      </Typography>
+      </Heading>
     </Box>
   );
 };

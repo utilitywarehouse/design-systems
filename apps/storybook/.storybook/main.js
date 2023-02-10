@@ -17,4 +17,9 @@ module.exports = {
   core: {
     disableTelemetry: true,
   },
+  // typescript: {
+  //   reactDocgenTypescriptOptions: {
+  //     tsconfigPath: './tsconfig.base.json',
+  //   },
+  // },
 };
