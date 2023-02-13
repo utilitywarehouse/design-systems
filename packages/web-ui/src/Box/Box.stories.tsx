@@ -22,8 +22,7 @@ const meta: Meta<typeof Box> = {
 export default meta;
 type Story = StoryObj<typeof Box>;
 
-export const Primary: Story = {
-  name: 'Workshop',
+export const Workshop: Story = {
   render: args => {
     const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
     return (

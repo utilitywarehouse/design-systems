@@ -1,15 +1,31 @@
-import { forwardRef } from 'react';
+import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import { px } from '../utils';
 import MuiBox from '@mui/material/Box';
 
-import type { OverridableComponent } from '@mui/material/OverridableComponent';
-import type { SpacerTypeMap } from './Spacer.types';
+import type { BoxProps as MuiBoxProps } from '@mui/material/Box';
+import type { ResponsiveStyleValue } from '@mui/system/styleFunctionSx';
 
-const Spacer = forwardRef(function Spacer(
-  { axis = 'vertical', size = 1, component, inline = false, sx, ...props },
-  ref
-) {
+export type SpacerProps<C extends React.ElementType = 'div'> = MuiBoxProps<C, { component?: C }> & {
+  /**
+   * The direction of the Spacer axis
+   */
+  axis?: 'horizontal' | 'vertical';
+  size: ResponsiveStyleValue<number>;
+  inline?: boolean;
+};
+
+/**
+ * Spacer description
+ */
+function Spacer<C extends React.ElementType>({
+  axis = 'vertical',
+  size = 1,
+  component,
+  inline = false,
+  sx,
+  ...props
+}: SpacerProps<C>) {
   const theme = useTheme();
   const defaultElement = inline ? 'span' : 'div';
 
@@ -36,7 +52,6 @@ const Spacer = forwardRef(function Spacer(
 
   return (
     <MuiBox
-      ref={ref}
       component={component || defaultElement}
       sx={{
         display: inline ? 'inline-block' : 'block',
@@ -49,6 +64,6 @@ const Spacer = forwardRef(function Spacer(
       {...props}
     />
   );
-}) as OverridableComponent<SpacerTypeMap>;
+}
 
 export default Spacer;
