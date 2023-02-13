@@ -24,7 +24,7 @@ export type BoxProps<C extends React.ElementType = 'div'> = Omit<
  * This means that components will change foreground colour depending on the
  * parent background colour.
  */
-export function Box<C extends React.ElementType>(props: BoxProps<C>) {
+function Box<C extends React.ElementType>(props: BoxProps) {
   const { background, sx, ...rest } = props;
   const inverse = background ? isInverseBackgroundColor(background) : false;
   const dataAttributeProps = {

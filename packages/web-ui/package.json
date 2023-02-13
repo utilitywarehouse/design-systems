@@ -9,7 +9,9 @@
     "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
     "precommit": "lint-staged",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook --quiet -p 6006",
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
@@ -34,7 +36,17 @@
     "@types/react": "^17.0.0 || ^18.0.0",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
-    "tsup": "^6.2.3"
+    "tsup": "^6.2.3",
+    "@storybook/react": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
+    "@storybook/builder-webpack4": "^6.5.16",
+    "@storybook/manager-webpack4": "^6.5.16",
+    "@babel/core": "^7.20.12",
+    "babel-loader": "^8.3.0"
   },
   "peerDependencies": {
     "@mui/material": "^5.10.5",
