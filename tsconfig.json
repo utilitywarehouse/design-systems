@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "lib": ["DOM", "ESNext"],
-    "jsx": "react-jsx",
+    "jsx": "react",
     "allowJs": true,
     "noEmit": false,
     "allowSyntheticDefaultImports": true,

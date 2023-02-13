@@ -1,3 +1,4 @@
+import * as React from 'react';
 import MuiBox from '@mui/material/Box';
 import { dataAttributes, isInverseBackgroundColor } from '../utils';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
@@ -5,10 +6,7 @@ import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import type { BoxProps as MuiBoxProps } from '@mui/material/Box';
 import type { NeutralBackgroundColor, InverseBackgroundColor } from '../types';
 
-export type BoxProps<C extends React.ElementType = 'div'> = Omit<
-  MuiBoxProps<C, { component?: C }>,
-  'background'
-> & {
+export type BoxProps<C extends React.ElementType = 'div'> = MuiBoxProps<C, { component?: C }> & {
   background?: NeutralBackgroundColor | InverseBackgroundColor;
 };
 
@@ -24,7 +22,7 @@ export type BoxProps<C extends React.ElementType = 'div'> = Omit<
  * This means that components will change foreground colour depending on the
  * parent background colour.
  */
-function Box<C extends React.ElementType>(props: BoxProps) {
+function Box<C extends React.ElementType>(props: BoxProps<C>) {
   const { background, sx, ...rest } = props;
   const inverse = background ? isInverseBackgroundColor(background) : false;
   const dataAttributeProps = {
