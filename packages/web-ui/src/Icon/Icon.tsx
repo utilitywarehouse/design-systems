@@ -1,8 +1,9 @@
 import * as React from 'react';
-import MuiBox, { BoxProps as MuiBoxProps } from '@mui/material/Box';
+import Box, { BoxProps } from '../Box';
 import { colors, Colors } from '@utilitywarehouse/customer-ui-design-tokens';
 
-export interface IconProps extends Pick<MuiBoxProps, 'sx' | 'component' | 'classes'> {
+export interface IconProps<C extends React.ElementType = 'span'>
+  extends Pick<BoxProps<C>, 'sx' | 'component' | 'classes'> {
   color?: keyof Colors;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   iconProps?: React.SVGProps<SVGSVGElement>;
@@ -16,9 +17,9 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(function Icon(
 ) {
   const IconComponent = icon;
   return (
-    <MuiBox ref={ref} component={component} {...props}>
+    <Box ref={ref} component={component} {...props}>
       <IconComponent {...iconProps} fill={!!color ? colors[color] : 'inherit'} />
-    </MuiBox>
+    </Box>
   );
 });
 

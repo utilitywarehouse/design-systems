@@ -2,7 +2,6 @@ import * as React from 'react';
 import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { dataAttributes } from '../utils';
-import { BoxProps } from '../Box';
 
 type DefaultComponent = 'p';
 
@@ -33,7 +32,6 @@ export interface CustomProps<D extends React.ElementType = DefaultComponent, P =
     | 'textTransform'
   > {
   color?: 'primary' | 'secondary' | 'success' | 'error';
-  component: BoxProps['component'];
   bold?: boolean;
   variant: MuiTypographyProps['variant'];
 }
