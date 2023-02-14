@@ -8,7 +8,6 @@ import { Text } from '../Typography';
 export type MenuItemProps<C extends React.ElementType = 'li'> = MuiMenuItemProps<C>;
 
 function MenuItem<C extends React.ElementType>({ children, ...props }: MenuItemProps<C>) {
-  // const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>(function MenuItem(props, ref) {
   return (
     <MuiMenuItem {...props}>
       <Text component="span" variant="body">
