@@ -3,16 +3,20 @@ import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx';
 import { px } from '../utils';
 import MuiBox, { BoxProps as MuiBoxProps } from '@mui/material/Box';
 
-export interface SpacerProps extends MuiBoxProps {
-  /**
-   * The direction of the Spacer axis
-   */
-  axis?: 'horizontal' | 'vertical';
-  size: ResponsiveStyleValue<number>;
-  inline?: boolean;
-}
+export type SpacerProps<C extends React.ElementType = 'div'> = MuiBoxProps<
+  C,
+  {
+    component?: C;
+    /**
+     * The direction of the Spacer axis
+     */
+    axis?: 'horizontal' | 'vertical';
+    size: ResponsiveStyleValue<number>;
+    inline?: boolean;
+  }
+>;
 
-function Spacer(props: SpacerProps) {
+function Spacer<C extends React.ElementType>(props: SpacerProps<C>) {
   const { axis = 'vertical', size = 1, component, inline = false, sx, ...rest } = props;
   const theme = useTheme();
   const defaultElement = inline ? 'span' : 'div';
