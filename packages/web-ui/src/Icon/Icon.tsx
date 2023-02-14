@@ -2,7 +2,8 @@ import * as React from 'react';
 import Box, { BoxProps } from '../Box';
 import { colors, Colors } from '@utilitywarehouse/customer-ui-design-tokens';
 
-export interface IconProps extends Pick<BoxProps, 'sx' | 'component' | 'classes'> {
+export interface IconProps<C extends React.ElementType = 'span'>
+  extends Pick<BoxProps<C>, 'sx' | 'component' | 'classes'> {
   color?: keyof Colors;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   iconProps?: React.SVGProps<SVGSVGElement>;

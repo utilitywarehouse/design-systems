@@ -3,18 +3,19 @@ import {
   type MenuItemProps as MuiMenuItemProps,
   default as MuiMenuItem,
 } from '@mui/material/MenuItem';
-import Typography from '../Typography';
+import { Text } from '../Typography';
 
-export interface MenuItemProps extends MuiMenuItemProps {}
+export type MenuItemProps<C extends React.ElementType = 'li'> = MuiMenuItemProps<C>;
 
-const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>(function MenuItem(props, ref) {
+function MenuItem<C extends React.ElementType>({ children, ...props }: MenuItemProps<C>) {
+  // const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>(function MenuItem(props, ref) {
   return (
-    <MuiMenuItem {...props} ref={ref}>
-      <Typography component="span" variant="body">
-        {props.children}
-      </Typography>
+    <MuiMenuItem {...props}>
+      <Text component="span" variant="body">
+        {children}
+      </Text>
     </MuiMenuItem>
   );
-});
+}
 
 export default MenuItem;

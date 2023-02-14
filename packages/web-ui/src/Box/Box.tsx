@@ -3,11 +3,12 @@ import { NeutralBackgroundColor, InverseBackgroundColor } from '../types';
 import { dataAttributes, isInverseBackgroundColor } from '../utils';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 
-export interface BoxProps extends Omit<MuiBoxProps, 'background'> {
-  background?: NeutralBackgroundColor | InverseBackgroundColor;
-}
+export type BoxProps<C extends React.ElementType = 'div', P = {}> = MuiBoxProps<
+  C,
+  { component?: C; background?: NeutralBackgroundColor | InverseBackgroundColor } & P
+>;
 
-const Box = (props: BoxProps) => {
+function Box<C extends React.ElementType, P>(props: BoxProps<C, P>) {
   const { background, sx, ...rest } = props;
   const inverse = background ? isInverseBackgroundColor(background) : false;
   const dataAttributeProps = {
@@ -25,6 +26,6 @@ const Box = (props: BoxProps) => {
       }}
     />
   );
-};
+}
 
 export default Box;
