@@ -6,9 +6,13 @@ import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import type { BoxProps as MuiBoxProps } from '@mui/material/Box';
 import type { NeutralBackgroundColor, InverseBackgroundColor } from '../types';
 
-export type BoxProps<C extends React.ElementType = 'div'> = MuiBoxProps<C, { component?: C }> & {
-  background?: NeutralBackgroundColor | InverseBackgroundColor;
-};
+export type BoxProps<C extends React.ElementType = 'div'> = MuiBoxProps<
+  C,
+  {
+    component?: C;
+    background?: NeutralBackgroundColor | InverseBackgroundColor;
+  }
+>;
 
 /**
  * Box is a low-level primitive, which supports theme-aware styling props, and can

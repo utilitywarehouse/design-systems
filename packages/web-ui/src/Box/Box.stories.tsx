@@ -11,10 +11,8 @@ const meta: Meta<typeof Box> = {
   tags: ['autodocs'],
   argTypes: {
     background: {
-      control: {
-        type: 'radio',
-        options: backgroundColors,
-      },
+      options: backgroundColors,
+      control: { type: 'radio' },
     },
   },
 };
