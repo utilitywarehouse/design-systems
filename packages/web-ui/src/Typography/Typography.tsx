@@ -33,7 +33,7 @@ export interface CustomProps<D extends React.ElementType = DefaultComponent, P =
     | 'textTransform'
   > {
   color?: 'primary' | 'secondary' | 'success' | 'error';
-  component: BoxProps['component'];
+  component: BoxProps['component']; // TODO: remove this
   bold?: boolean;
   variant: MuiTypographyProps['variant'];
 }

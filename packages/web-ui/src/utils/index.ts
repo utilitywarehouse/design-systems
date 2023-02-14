@@ -11,7 +11,7 @@ export const isHeadingVariant = (variant: string): boolean => {
   return headingVariants.includes(variant);
 };
 
-export const dataAttributes = {
+export const dataAttributes: { [key: string]: string } = {
   primary: 'primary',
   secondary: 'secondary',
   success: 'success',
