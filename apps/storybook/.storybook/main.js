@@ -17,4 +17,12 @@ module.exports = {
   core: {
     disableTelemetry: true,
   },
+  webpackFinal: async (config, { configType }) => {
+    config.module.rules.push({
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    });
+    return config;
+  },
 };
