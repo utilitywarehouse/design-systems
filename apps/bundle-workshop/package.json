@@ -10,10 +10,13 @@
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
+    "@mui/material": "^5.10.5",
     "@next/font": "13.1.6",
     "@types/node": "18.13.0",
     "@types/react": "^17.0.0 || ^18.0.0",
     "@types/react-dom": "^18.0.6",
+    "@utilitywarehouse/fontsource": "^0.0.5",
+    "@utilitywarehouse/web-ui": "workspace:^0.0.1",
     "eslint": "^8.25.0",
     "eslint-config-next": "13.1.6",
     "next": "13.1.6",
