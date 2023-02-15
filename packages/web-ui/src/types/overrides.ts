@@ -3,7 +3,7 @@ import { Fonts, FontWeights } from '@utilitywarehouse/customer-ui-design-tokens'
 import * as React from 'react';
 import { customPalette } from '../theme';
 
-interface CustomTypogaphy
+interface CustomTypography
   extends TypographyUtils,
     Omit<
       TypographyOptions,
@@ -44,7 +44,7 @@ declare module '@mui/material/styles' {
   }
 
   interface Theme {
-    typography: CustomTypogaphy;
+    typography: CustomTypography;
     palette: CustomPalette;
   }
 }
@@ -66,5 +66,3 @@ declare module '@mui/material/Typography' {
     subtitle2: false;
   }
 }
-
-export {};
