@@ -3,7 +3,7 @@ import { Fonts, FontWeights } from '@utilitywarehouse/customer-ui-design-tokens'
 import * as React from 'react';
 import { customPalette } from '../theme';
 
-export interface CustomTypography
+interface CustomTypography
   extends TypographyUtils,
     Omit<
       TypographyOptions,
@@ -13,10 +13,10 @@ export interface CustomTypography
   fontWeights: FontWeights;
 }
 
-export type CustomPalette = typeof customPalette;
+type CustomPalette = typeof customPalette;
 
 declare module '@mui/material/styles' {
-  export interface BreakpointOverrides {
+  interface BreakpointOverrides {
     xs: false;
     sm: false;
     md: false;
@@ -27,7 +27,7 @@ declare module '@mui/material/styles' {
     desktop: true;
   }
 
-  export interface TypographyVariants {
+  interface TypographyVariants {
     displayHeading: React.CSSProperties;
     subtitle: React.CSSProperties;
     body: React.CSSProperties;
@@ -35,7 +35,7 @@ declare module '@mui/material/styles' {
     caption: React.CSSProperties;
   }
 
-  export interface TypographyVariantsOptions {
+  interface TypographyVariantsOptions {
     displayHeading?: React.CSSProperties;
     subtitle?: React.CSSProperties;
     body?: React.CSSProperties;
@@ -43,14 +43,14 @@ declare module '@mui/material/styles' {
     caption?: React.CSSProperties;
   }
 
-  export interface Theme {
+  interface Theme {
     typography: CustomTypography;
     palette: CustomPalette;
   }
 }
 
 declare module '@mui/material/Typography' {
-  export interface TypographyPropsVariantOverrides {
+  interface TypographyPropsVariantOverrides {
     displayHeading: true;
     subtitle: true;
     body: true;

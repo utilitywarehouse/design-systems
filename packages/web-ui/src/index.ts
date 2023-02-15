@@ -1,4 +1,4 @@
-export * as Overrides from './types/overrides';
+import './types/overrides';
 
 export { default as theme, styled } from './theme';
 export type { Theme } from './theme';
