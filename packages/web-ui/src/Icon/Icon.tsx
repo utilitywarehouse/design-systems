@@ -1,17 +1,12 @@
-import * as React from 'react';
-import Box, { BoxProps } from '../Box';
-import { colors, Colors } from '@utilitywarehouse/customer-ui-design-tokens';
-
-export interface IconProps<C extends React.ElementType = 'span'>
-  extends Pick<BoxProps<C>, 'sx' | 'component' | 'classes'> {
-  color?: keyof Colors;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  iconProps?: React.SVGProps<SVGSVGElement>;
-}
+import Box from '../Box';
+import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { forwardRef } from 'react';
+import { IconTypeMap } from './Icon.types';
 
 // We currently aren't able to pass the ref down to the SVG element, due to the
 // implementation in the react-icons package so we pass it to a wrapper instead
-const Icon = React.forwardRef<HTMLSpanElement, IconProps>(function Icon(
+const Icon = forwardRef(function Icon(
   { color, icon, iconProps = {}, component = 'span', ...props },
   ref
 ) {
@@ -21,6 +16,6 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(function Icon(
       <IconComponent {...iconProps} fill={!!color ? colors[color] : 'inherit'} />
     </Box>
   );
-});
+}) as OverridableComponent<IconTypeMap>;
 
 export default Icon;
