@@ -25,6 +25,9 @@ type TypographyProps<
  */
 
 interface CustomTextProps {
+  /**
+   * Applies the theme typography styles.
+   */
   variant: 'subtitle' | 'body' | 'legalNote' | 'caption';
   color?: 'primary' | 'success' | 'error';
 }
