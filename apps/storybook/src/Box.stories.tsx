@@ -22,22 +22,25 @@ export default {
   },
 } as Meta;
 
-export const BoxStory: Story<BoxProps> = args => {
-  const hexValue = args.background ? colors[args.background] : '';
+export const BoxStory: Story<BoxProps> = ({ background, ...args }) => {
+  const hexValue = background ? (colors as { [key: string]: string })[background] : '';
   return (
-    <Box
-      {...args}
-      width="100%"
-      height={300}
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      borderRadius={borderRadius.medium}
-      padding={3}
-    >
-      <Typography variant="h2" component="span">
-        {args.background} ({hexValue})
-      </Typography>
+    <Box padding={4}>
+      <Box
+        {...args}
+        background={background}
+        width="100%"
+        height={300}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        borderRadius={borderRadius.medium}
+        padding={3}
+      >
+        <Typography variant="h2" component="span">
+          {background} ({hexValue})
+        </Typography>
+      </Box>
     </Box>
   );
 };
