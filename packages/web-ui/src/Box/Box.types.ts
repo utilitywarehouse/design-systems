@@ -5,6 +5,9 @@ import type { OverrideProps } from '@mui/material/OverridableComponent';
 type DefaultBoxComponent = 'div';
 
 interface CustomBoxProps {
+  /**
+   * sets the Background colour
+   */
   background?: NeutralBackgroundColor | InverseBackgroundColor;
 }
 

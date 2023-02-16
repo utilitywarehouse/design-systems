@@ -38,3 +38,4 @@ const Box = forwardRef(function Box({ background, sx, ...props }, ref) {
 }) as OverridableComponent<BoxTypeMap>;
 
 export default Box;
+export { Box };
