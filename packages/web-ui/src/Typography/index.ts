@@ -1,7 +1,16 @@
-export { default, variantMapping } from './Typography';
-export type { TypographyProps } from './Typography';
+export { default, textVariantMapping, headingVariantMapping, Text, Heading } from './Typography';
 export { typographyThemeOverrides } from './Typography.theme';
-export { default as Text } from './Text';
-export type { TextProps } from './Text';
-export { default as Heading } from './Heading';
-export type { HeadingProps } from './Heading';
+export type {
+  DefaultTypographyComponent,
+  CustomTypographyProps,
+  TypographyTypeMap,
+  TypographyProps,
+  DefaultTextComponent,
+  CustomTextProps,
+  TextTypeMap,
+  TextProps,
+  DefaultHeadingComponent,
+  CustomHeadingProps,
+  HeadingTypeMap,
+  HeadingProps,
+} from './Typography.types';

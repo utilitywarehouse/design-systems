@@ -1,9 +1,10 @@
-import MuiStack, { StackProps as MuiStackProps } from '@mui/material/Stack';
+import MuiStack from '@mui/material/Stack';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { forwardRef } from 'react';
+import { StackTypeMap } from './Stack.types';
 
-export type StackProps<C extends React.ElementType = 'div'> = MuiStackProps<C, { component?: C }>;
-
-function Stack<C extends React.ElementType>(props: StackProps<C>) {
-  return <MuiStack {...props} />;
-}
+const Stack = forwardRef(function Stack(props, ref) {
+  return <MuiStack ref={ref} {...props} />;
+}) as OverridableComponent<StackTypeMap>;
 
 export default Stack;

@@ -1,7 +1,13 @@
 import Stack from '@mui/material/Stack';
 import { Meta, Story } from '@storybook/react';
-import { backgroundColors, Typography, variantMapping, Box } from '@utilitywarehouse/web-ui';
-import type { BackgroundProps, TypographyProps } from '@utilitywarehouse/web-ui';
+import {
+  backgroundColors,
+  Typography,
+  textVariantMapping,
+  headingVariantMapping,
+  Box,
+} from '@utilitywarehouse/web-ui';
+import type { BoxProps, TypographyProps } from '@utilitywarehouse/web-ui';
 
 const variants = [
   'displayHeading',
@@ -70,7 +76,7 @@ export default {
   args: {
     backgroundColor: 'white',
     children: 'hamburgefons',
-    variant: 'displayHeading',
+    variant: 'h2',
     color: 'primary',
     bold: false,
     textTransform: 'capitalize',
@@ -81,10 +87,11 @@ export default {
 } as Meta;
 
 export const TypographyKitchenSinkStory: Story<
-  TypographyProps & { backgroundColor: BackgroundProps['backgroundColor'] }
-> = ({ backgroundColor, ...args }) => {
+  TypographyProps & { background: BoxProps['background'] }
+> = ({ background, ...args }) => {
+  const variantMapping = { ...textVariantMapping, ...headingVariantMapping };
   return (
-    <Box background={backgroundColor} display="flex" justifyContent="center" padding={4}>
+    <Box background={background} display="flex" justifyContent="center" padding={4}>
       <Stack spacing={2}>
         {variants.map(v => (
           <Typography
@@ -113,10 +120,10 @@ TypographyKitchenSinkStory.args = {
 };
 
 export const TypographyCustomStory: Story<
-  TypographyProps & { backgroundColor: BackgroundProps['backgroundColor'] }
-> = ({ backgroundColor, ...args }) => {
+  TypographyProps & { background: BoxProps['background'] }
+> = ({ background, ...args }) => {
   return (
-    <Box background={backgroundColor} display="flex" justifyContent="center" padding={4}>
+    <Box background={background} display="flex" justifyContent="center" padding={4}>
       <Typography {...args} />
     </Box>
   );

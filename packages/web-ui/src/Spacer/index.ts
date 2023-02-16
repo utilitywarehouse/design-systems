@@ -1,2 +1,7 @@
 export { default } from './Spacer';
-export type { SpacerProps } from './Spacer';
+export type {
+  DefaultSpacerComponent,
+  CustomSpacerProps,
+  SpacerTypeMap,
+  SpacerProps,
+} from './Spacer.types';
