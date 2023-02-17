@@ -68,6 +68,7 @@ importers:
       '@types/react': ^17.0.0 || ^18.0.0
       '@utilitywarehouse/customer-ui-design-tokens': ^2.0.2
       '@utilitywarehouse/customer-ui-react-icons': ^1.0.2
+      '@utilitywarehouse/fontsource': ^0.0.5
       prop-types: ^15.8.1
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
@@ -92,6 +93,7 @@ importers:
       '@storybook/react-webpack5': 7.0.0-beta.49_be6cb7b9e0ddf3c7bfe4a273070cf252
       '@storybook/testing-library': 0.0.14-next.1
       '@types/react': 18.0.25
+      '@utilitywarehouse/fontsource': 0.0.5
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -4058,6 +4060,10 @@ packages:
   /@utilitywarehouse/customer-ui-react-icons/1.0.2:
     resolution: {integrity: sha512-5FhG0aZl3lrxM8S6bmnWU6k9uP07nhLa0sRczFX09KYKuf/M/Q3pWKWWzHXURMbJ80H6cY2F9HDDsR4XRL7C1Q==}
     dev: false
+
+  /@utilitywarehouse/fontsource/0.0.5:
+    resolution: {integrity: sha512-g+/X7s/p+Xa4z6tv1JVxM5y0yNPLJxCA4LbkXwQ6Eq7Rq9cLrP8YW/ttkWcSbSC1BtgKhDKheiW0UAD5gNAwBg==}
+    dev: true
 
   /@webassemblyjs/ast/1.11.1:
     resolution: {integrity: sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw==}
