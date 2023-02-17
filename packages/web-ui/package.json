@@ -6,9 +6,11 @@
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
     "build": "rm -rf dist/ && tsc --build ./tsconfig.json",
-    "lint:fix": "TIMING=1 eslint --fix --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
-    "lint": "TIMING=1 eslint --ext .ts,.tsx,.js --ignore-pattern *.mdx \"./src/**\"",
-    "precommit": "lint-staged"
+    "lint:fix": "TIMING=1 eslint --fix --ext ts,tsx src",
+    "lint": "TIMING=1 eslint --ext ts,tsx src",
+    "precommit": "lint-staged",
+    "dev": "storybook dev --quiet -p 6006",
+    "build:storybook": "storybook build --quiet"
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
@@ -27,12 +29,24 @@
     "@utilitywarehouse/customer-ui-react-icons": "^1.0.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
     "@mui/material": "^5.10.5",
     "@mui/system": "^5.10.5",
     "@mui/types": "^7.1.4",
+    "@storybook/addon-essentials": "^7.0.0-beta.49",
+    "@storybook/addon-interactions": "^7.0.0-beta.49",
+    "@storybook/addon-links": "^7.0.0-beta.49",
+    "@storybook/blocks": "^7.0.0-beta.49",
+    "@storybook/react": "^7.0.0-beta.49",
+    "@storybook/react-webpack5": "^7.0.0-beta.49",
+    "@storybook/testing-library": "^0.0.14-next.1",
     "@types/react": "^17.0.0 || ^18.0.0",
+    "prop-types": "^15.8.1",
     "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0"
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "storybook": "^7.0.0-beta.49"
   },
   "peerDependencies": {
     "@mui/material": "^5.10.5",
