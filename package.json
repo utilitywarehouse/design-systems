@@ -41,8 +41,7 @@
     "checks": "turbo run lint build"
   },
   "workspaces": [
-    "packages/*",
-    "apps/*"
+    "packages/*"
   ],
   "dependencies": {
     "pnpm": "^7.13.4"
