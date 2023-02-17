@@ -22,13 +22,17 @@ const customerUiViewports = {
   ...INITIAL_VIEWPORTS,
 };
 
+import '@utilitywarehouse/fontsource';
+import ThemeProvider from '../src/ThemeProvider';
+
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  backgrounds: {
+    default: 'light',
+  },
   viewport: {
     viewports: customerUiViewports,
   },
-  layout: 'fullscreen',
-  controls: { expanded: false },
+  actions: { argTypesRegex: '^on[A-Z].*' },
 };
 
 export const decorators = [
@@ -38,4 +42,3 @@ export const decorators = [
     </ThemeProvider>
   ),
 ];
-

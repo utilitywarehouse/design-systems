@@ -1,48 +1,43 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+import Box from './Box';
 import { colors, borderRadius } from '@utilitywarehouse/customer-ui-design-tokens';
 import { backgroundColors } from '../types';
-import Typography from '../Typography';
-import { Box } from './Box';
+import { Heading } from '../Typography';
 
-const meta: ComponentMeta<typeof Box> = {
+const meta: Meta<typeof Box> = {
   title: 'Components/Box',
   component: Box,
+  tags: ['autodocs'],
   argTypes: {
     background: {
-      control: {
-        type: 'radio',
-        options: backgroundColors,
-      },
+      options: backgroundColors,
+      control: { type: 'radio' },
     },
-    component: { control: { type: 'text' } },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Box>;
+
+export const Workshop: Story = {
+  render: args => {
+    const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
+    return (
+      <Box {...args}>
+        <Heading component="span" variant="h2">
+          {args.background} ({hexValue})
+        </Heading>
+      </Box>
+    );
   },
   args: {
-    background: 'white',
     component: 'div',
-    width: '100%',
+    children: '',
+    background: 'white',
     height: 300,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: borderRadius.medium,
-    padding: 3,
   },
 };
-
-export default meta;
-type Story = ComponentStory<typeof Box>;
-
-export const BoxStory: Story = args => {
-  const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
-  return (
-    <Box padding={4}>
-      <Box {...args}>
-        <Typography variant="h2" component="span">
-          {args.background} ({hexValue})
-        </Typography>
-      </Box>
-    </Box>
-  );
-};
-
-BoxStory.storyName = 'Box';

@@ -1,17 +1,10 @@
 {
   "extends": "../../tsconfig.json",
-  "include": [
-    "."
-  ],
-  "exclude": [
-    "dist",
-    "build",
-    "node_modules"
-  ],
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules", "storybook-static"],
   "compilerOptions": {
-    "module": "ES2020",
-    "target": "ES2020",
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "preserveSymlinks": true
   }
 }

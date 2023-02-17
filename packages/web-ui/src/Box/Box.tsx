@@ -3,7 +3,14 @@ import { dataAttributes, isInverseBackgroundColor } from '../utils';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { forwardRef } from 'react';
-import { BoxTypeMap } from './Box.types';
+import { BoxProps, BoxTypeMap } from './Box.types';
+
+// interface BoxProps extends MuiBoxProps {
+//   /**
+//    * sets the Background colour
+//    */
+//   background?: NeutralBackgroundColor | InverseBackgroundColor;
+// }
 
 /**
  * Box is a low-level primitive, which supports theme-aware styling props, and can
@@ -17,7 +24,7 @@ import { BoxTypeMap } from './Box.types';
  * This means that components will change foreground colour depending on the
  * parent background colour.
  */
-const Box = forwardRef(function Box({ background, sx, ...props }, ref) {
+const Box = forwardRef(function Box({ background, sx, ...props }: BoxProps, ref) {
   const inverse = background ? isInverseBackgroundColor(background) : false;
   const dataAttributeProps = {
     [`data-${dataAttributes.inverse}`]: inverse,
@@ -38,4 +45,3 @@ const Box = forwardRef(function Box({ background, sx, ...props }, ref) {
 }) as OverridableComponent<BoxTypeMap>;
 
 export default Box;
-export { Box };

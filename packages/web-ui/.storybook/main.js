@@ -1,27 +1,18 @@
-module.exports = {
-  stories: ['../src/**/*.stories.@(ts|tsx|mdx)'],
+/** @type { import('@storybook/react-webpack5').StorybookConfig } */
+const config = {
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@storybook/addon-viewport',
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        transcludeMarkdown: true,
-      },
-    },
   ],
-  framework: '@storybook/react',
-  features: {
-    emotionAlias: false,
-    storyStoreV7: true,
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
   },
-  core: {
-    disableTelemetry: true,
-  },
-  typescript: {
-    // also valid 'react-docgen-typescript' | false
-    // reactDocgen: 'react-docgen',
+  docs: {
+    defaultName: 'Documentation',
+    autodocs: 'tag',
   },
 };
+export default config;
