@@ -22,7 +22,7 @@
       "cache": false
     },
     "build:storybook": {
-      "outputs": ["apps/storybook/storybook-static/**"]
+      "outputs": ["packages/web-ui/storybook-static/**"]
     }
   }
 }
