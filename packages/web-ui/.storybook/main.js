@@ -14,15 +14,5 @@ const config = {
     defaultName: 'Documentation',
     autodocs: 'tag',
   },
-  typescript: {
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      compilerOptions: {
-        allowSyntheticDefaultImports: false,
-        esModuleInterop: false,
-      },
-    },
-  },
 };
 export default config;
-

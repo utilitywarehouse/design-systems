@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Box from './Box';
 import { colors, borderRadius } from '@utilitywarehouse/customer-ui-design-tokens';
 import { backgroundColors } from '../types';
-import { Heading } from '../Typography';
+import { Heading, Text } from '../Typography';
+import Stack from '../Stack';
 
 const meta: Meta<typeof Box> = {
   title: 'Components/Box',
@@ -19,7 +20,7 @@ export default meta;
 type Story = StoryObj<typeof Box>;
 
 export const BoxStory: Story = {
-  name: 'Box',
+  name: 'Workshop',
   render: args => {
     const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
     return (
@@ -40,4 +41,38 @@ export const BoxStory: Story = {
     alignItems: 'center',
     borderRadius: borderRadius.medium,
   },
+};
+
+export const BoxBackgroundStory = {
+  name: 'Backgrounds',
+  argTypes: { background: { table: { disable: true } } },
+  render: () => (
+    <Stack spacing={0}>
+      <Box background="white" padding={4}>
+        <Text variant="body" component="span">
+          Text on neutral background
+        </Text>
+      </Box>
+      <Box background="whiteOwl" padding={4}>
+        <Text variant="body" component="span">
+          Text on neutral background
+        </Text>
+      </Box>
+      <Box background="lightTint" padding={4}>
+        <Text variant="body" component="span">
+          Text on neutral background
+        </Text>
+      </Box>
+      <Box background="purple" padding={4}>
+        <Text variant="body" component="span">
+          Text on inverse background
+        </Text>
+      </Box>
+      <Box background="midnight" padding={4}>
+        <Text variant="body" component="span">
+          Text on inverse background
+        </Text>
+      </Box>
+    </Stack>
+  ),
 };
