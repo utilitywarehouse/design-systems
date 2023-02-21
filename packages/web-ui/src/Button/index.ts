@@ -4,5 +4,5 @@ export type {
   CustomButtonProps,
   ButtonTypeMap,
   ButtonProps,
-} from './Button.types';
+} from './Button';
 export { buttonThemeOverrides } from './Button.theme';

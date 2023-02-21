@@ -19,15 +19,19 @@ const meta: Meta<typeof Box> = {
 export default meta;
 type Story = StoryObj<typeof Box>;
 
-export const BoxStory: Story = {
+export const BoxWorkshop: Story = {
   name: 'Workshop',
   render: args => {
     const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
     return (
       <Box {...args}>
-        <Heading component="h2" variant="h2">
-          {args.background} ({hexValue})
-        </Heading>
+        {args.children ? (
+          args.children
+        ) : (
+          <Heading component="h2" variant="h2">
+            {args.background} ({hexValue})
+          </Heading>
+        )}
       </Box>
     );
   },
