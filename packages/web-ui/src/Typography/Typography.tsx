@@ -9,7 +9,7 @@ import Text, { TextProps, textVariantMapping } from '../Text';
 type DefaultTypographyComponent = 'p';
 
 interface CustomTypographyProps {
-  color?: 'primary' | 'secondary' | 'success' | 'error';
+  color?: 'primary' | 'secondary' | 'success' | 'error' | string;
   variant: MuiTypographyProps['variant'];
   component?: React.ElementType;
 }
@@ -50,7 +50,7 @@ const Typography = forwardRef(function Typography(
       />
     );
   }
-  return <MuiTypography ref={ref} {...props} />;
+  return <MuiTypography ref={ref} color={color} component={component} {...props} />;
 }) as OverridableComponent<TypographyTypeMap>;
 
 export default Typography;
