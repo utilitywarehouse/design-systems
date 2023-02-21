@@ -1,9 +1,8 @@
 import { forwardRef } from 'react';
-import MuiTypography from '@mui/material/Typography';
+import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { dataAttributes } from '../utils';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
-import { TypographyProps } from '../Typography';
 
 type DefaultHeadingComponent = 'h2';
 
@@ -22,8 +21,7 @@ interface CustomHeadingProps {
 }
 
 interface HeadingTypeMap<D extends React.ElementType = DefaultHeadingComponent, P = {}> {
-  props: Omit<TypographyProps<D, P>, 'variant' | 'fontWeight' | 'color' | 'bold'> &
-    CustomHeadingProps;
+  props: Omit<MuiTypographyProps<D, P>, 'variant' | 'fontWeight' | 'color'> & CustomHeadingProps;
   defaultComponent: D;
 }
 

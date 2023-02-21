@@ -1,22 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
-import Heading, { HeadingProps, headingVariantMapping } from './Heading';
+import Text, { TextProps, textVariantMapping } from './Text';
 import Box from '../Box';
 import { backgroundColors } from '../types';
 
-const variants = Object.keys(headingVariantMapping);
-const colors = ['primary', 'secondary'] as const;
+const variants = Object.keys(textVariantMapping);
+const colors = ['primary', 'success', 'error'] as const;
 
-const meta: Meta<typeof Heading> = {
-  title: 'Components/Heading',
-  component: Heading,
+const meta: Meta<typeof Text> = {
+  title: 'Components/Text',
+  component: Text,
 };
 
 export default meta;
-type Story = StoryObj<typeof Heading>;
+type Story = StoryObj<typeof Text>;
 
-export const HeadingKitchenSink: Story = {
+export const TextKitchenSink: Story = {
   name: 'Kitchen Sink',
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+  },
   render: () => {
     return (
       <Stack spacing={0}>
@@ -26,14 +29,14 @@ export const HeadingKitchenSink: Story = {
               {variants.map(v => (
                 <Stack key={v} spacing={2}>
                   {colors.map(c => (
-                    <Heading
+                    <Text
                       key={`${v}${c}`}
-                      variant={v as HeadingProps['variant']}
-                      component={headingVariantMapping[v] as React.ElementType<any>}
+                      component="span"
+                      variant={v as TextProps['variant']}
                       color={c}
                     >
                       Hamburgefons
-                    </Heading>
+                    </Text>
                   ))}
                 </Stack>
               ))}
@@ -45,14 +48,14 @@ export const HeadingKitchenSink: Story = {
   },
 };
 
-export const HeadingWorkshop: Story = {
+export const TextWorkshop: Story = {
   name: 'Workshop',
   render: args => {
     return (
       <Stack spacing={0}>
         {backgroundColors.map(bg => (
           <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-            <Heading {...args} />
+            <Text {...args} />
           </Box>
         ))}
       </Stack>
@@ -95,9 +98,10 @@ export const HeadingWorkshop: Story = {
   },
   args: {
     children: 'hamburgefons',
-    variant: 'h2',
+    variant: 'body',
     component: 'h2',
     color: 'primary',
+    bold: false,
     textTransform: 'capitalize',
     gutterBottom: false,
     paragraph: false,
