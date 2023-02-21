@@ -15,8 +15,7 @@ const meta: Meta<typeof Heading> = {
 export default meta;
 type Story = StoryObj<typeof Heading>;
 
-export const HeadingKitchenSink: Story = {
-  name: 'Kitchen Sink',
+export const KitchenSink: Story = {
   render: () => {
     return (
       <Stack spacing={0}>
@@ -45,8 +44,7 @@ export const HeadingKitchenSink: Story = {
   },
 };
 
-export const HeadingWorkshop: Story = {
-  name: 'Workshop',
+export const Workshop: Story = {
   render: args => {
     return (
       <Stack spacing={0}>

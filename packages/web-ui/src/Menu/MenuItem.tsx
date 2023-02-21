@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import MuiMenuItem from '@mui/material/MenuItem';
-import { Text } from '../Typography';
+import Text from '../Text';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { MenuItemTypeMap } from './MenuItem.types';
 

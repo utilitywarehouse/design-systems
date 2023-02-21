@@ -15,8 +15,7 @@ const meta: Meta<typeof Text> = {
 export default meta;
 type Story = StoryObj<typeof Text>;
 
-export const TextKitchenSink: Story = {
-  name: 'Kitchen Sink',
+export const KitchenSink: Story = {
   parameters: {
     controls: { hideNoControlsWarning: true },
   },
@@ -48,8 +47,7 @@ export const TextKitchenSink: Story = {
   },
 };
 
-export const TextWorkshop: Story = {
-  name: 'Workshop',
+export const Workshop: Story = {
   render: args => {
     return (
       <Stack spacing={0}>

@@ -9,8 +9,7 @@ const meta: Meta<typeof Typography> = {
 export default meta;
 type Story = StoryObj<typeof Typography>;
 
-export const TypographyWorkshop: Story = {
-  name: 'Workshop',
+export const Workshop: Story = {
   argTypes: {
     color: {
       control: {

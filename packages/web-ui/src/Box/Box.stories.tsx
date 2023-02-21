@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { colors, borderRadius } from '@utilitywarehouse/customer-ui-design-tokens';
 import { backgroundColors } from '../types';
-import { Text } from '../Typography';
+import Text from '../Text';
 import Stack from '../Stack';
 import Heading from '../Heading';
 import Box from './Box';
@@ -20,8 +20,7 @@ const meta: Meta<typeof Box> = {
 export default meta;
 type Story = StoryObj<typeof Box>;
 
-export const BoxWorkshop: Story = {
-  name: 'Workshop',
+export const Workshop: Story = {
   render: args => {
     const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
     return (
@@ -48,8 +47,7 @@ export const BoxWorkshop: Story = {
   },
 };
 
-export const BoxBackgroundStory = {
-  name: 'Backgrounds',
+export const Backgrounds = {
   argTypes: { background: { table: { disable: true } } },
   render: () => (
     <Stack spacing={0}>
