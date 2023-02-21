@@ -1,0 +1,22 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import Grid from './Grid.tsx';
+import * as Stories from './Grid.stories';
+
+<Meta of={Stories} />
+
+# Grid
+
+A responsive layout grid adapts to screen size and orientation, ensuring consistency across layouts.
+
+## How it works
+
+The grid system is implemented with the Grid component:
+
+- It uses CSS's Flexible Box module for high flexibility.
+- There are two types of layout: containers and items.
+- Item widths are set in percentages, so they're always fluid and sized relative to their parent element.
+- Items have padding to create the spacing between individual items.
+- There are five grid breakpoints: xs, sm, md, lg, and xl.
+- Integer values can be given to each breakpoint, indicating how many of the 12 available columns are occupied by the component when the viewport width satisfies the breakpoint constraints.
+
+> If you are new to or unfamiliar with flexbox, we encourage you to read this [CSS-Tricks flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) guide.
