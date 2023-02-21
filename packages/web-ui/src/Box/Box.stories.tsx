@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Box from './Box';
 import { colors, borderRadius } from '@utilitywarehouse/customer-ui-design-tokens';
 import { backgroundColors } from '../types';
-import { Heading, Text } from '../Typography';
+import { Text } from '../Typography';
 import Stack from '../Stack';
+import Heading from '../Heading';
+import Box from './Box';
 
 const meta: Meta<typeof Box> = {
   title: 'Components/Box',

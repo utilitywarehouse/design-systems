@@ -2,13 +2,12 @@ import { forwardRef } from 'react';
 import MuiTypography from '@mui/material/Typography';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { dataAttributes } from '../utils';
-import {
-  HeadingProps,
-  HeadingTypeMap,
-  TextProps,
-  TextTypeMap,
-  TypographyTypeMap,
-} from './Typography.types';
+import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
+import type { OverrideProps } from '@mui/material/OverridableComponent';
+import Heading, { HeadingProps, headingVariantMapping } from '../Heading';
+
+type DefaultTypographyComponent = 'p';
+type DefaultTextComponent = 'span';
 
 export const textVariantMapping: Record<string, string> = {
   subtitle: 'p',
@@ -16,13 +15,40 @@ export const textVariantMapping: Record<string, string> = {
   legalNote: 'p',
   caption: 'span',
 };
-export const headingVariantMapping: Record<string, string> = {
-  displayHeading: 'h1',
-  h1: 'h1',
-  h2: 'h2',
-  h3: 'h3',
-  h4: 'h4',
-};
+
+interface CustomTypographyProps {
+  color?: 'primary' | 'secondary' | 'success' | 'error';
+  bold?: boolean;
+  variant: MuiTypographyProps['variant'];
+}
+
+interface TypographyTypeMap<D extends React.ElementType = DefaultTypographyComponent, P = {}> {
+  props: MuiTypographyProps<D, P> & CustomTypographyProps;
+  defaultComponent: D;
+}
+
+type TypographyProps<
+  D extends React.ElementType = DefaultTypographyComponent,
+  P = {}
+> = OverrideProps<TypographyTypeMap<D, P>, D>;
+
+interface CustomTextProps {
+  /**
+   * Applies the theme typography styles.
+   */
+  variant: 'subtitle' | 'body' | 'legalNote' | 'caption';
+  color?: 'primary' | 'success' | 'error';
+}
+
+interface TextTypeMap<D extends React.ElementType = DefaultTextComponent, P = {}> {
+  props: Omit<TypographyProps<D, P>, 'variant' | 'fontWeight' | 'color'> & CustomTextProps;
+  defaultComponent: D;
+}
+
+type TextProps<D extends React.ElementType = DefaultTextComponent, P = {}> = OverrideProps<
+  TextTypeMap<D, P>,
+  D
+>;
 
 const Text = forwardRef(function Text({ color = 'primary', bold = false, ...props }, ref) {
   const dataAttributeProps = {
@@ -39,20 +65,6 @@ const Text = forwardRef(function Text({ color = 'primary', bold = false, ...prop
   );
 }) as OverridableComponent<TextTypeMap>;
 
-const Heading = forwardRef(function Heading({ color = 'primary', ...props }, ref) {
-  const dataAttributeProps = {
-    [`data-${dataAttributes[color]}`]: true,
-  };
-  return (
-    <MuiTypography
-      ref={ref}
-      variantMapping={headingVariantMapping}
-      {...props}
-      {...dataAttributeProps}
-    />
-  );
-}) as OverridableComponent<HeadingTypeMap>;
-
 const Typography = forwardRef(function Typography(
   { color = 'primary', bold = false, variant, ...props },
   ref
@@ -61,22 +73,35 @@ const Typography = forwardRef(function Typography(
     return (
       <Text
         ref={ref}
-        color={color as TextProps['color']}
         bold={bold}
+        color={color as TextProps['color']}
         variant={variant as TextProps['variant']}
         {...props}
       />
     );
   }
-  return (
-    <Heading
-      ref={ref}
-      color={color as HeadingProps['color']}
-      variant={variant as HeadingProps['variant']}
-      {...props}
-    />
-  );
+  if (variant && Object.keys(headingVariantMapping).includes(variant)) {
+    return (
+      <Heading
+        ref={ref}
+        color={color as HeadingProps['color']}
+        variant={variant as HeadingProps['variant']}
+        {...props}
+      />
+    );
+  }
+  return <MuiTypography ref={ref} {...props} />;
 }) as OverridableComponent<TypographyTypeMap>;
 
 export default Typography;
-export { Text, Heading };
+export { Text };
+export type {
+  DefaultTypographyComponent,
+  CustomTypographyProps,
+  TypographyTypeMap,
+  TypographyProps,
+  DefaultTextComponent,
+  CustomTextProps,
+  TextTypeMap,
+  TextProps,
+};

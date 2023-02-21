@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Box from '../Box';
 import Stack from '../Stack';
+import { backgroundColors } from '../types';
 import Button from './Button';
 
 const sizes = ['small', 'medium', 'large'] as const;
@@ -17,11 +18,10 @@ type Story = StoryObj<typeof Button>;
 export const ButtonKitchenSink: Story = {
   name: 'Kitchen Sink',
   render: () => {
-    const backgroundColors = ['white', 'whiteOwl', 'lightTint', 'purple', 'midnight'] as const;
     return (
       <Stack spacing={0}>
-        {backgroundColors.map(c => (
-          <Box key={c} background={c} display="flex" justifyContent="center" padding={4}>
+        {backgroundColors.map(bg => (
+          <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
             <Stack spacing={4}>
               {variants.map(variant => (
                 <Stack key={variant} direction="row" spacing={2} alignItems="center">
@@ -56,11 +56,10 @@ export const ButtonKitchenSink: Story = {
 export const ButtonWorkshop: Story = {
   name: 'Workshop',
   render: args => {
-    const backgroundColors = ['white', 'whiteOwl', 'lightTint', 'purple', 'midnight'] as const;
     return (
       <Stack spacing={0}>
-        {backgroundColors.map(c => (
-          <Box key={c} background={c} display="flex" justifyContent="center" padding={4}>
+        {backgroundColors.map(bg => (
+          <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
             <Button {...args}>
               {args.children ? args.children : `${args.size} ${args.variant} button`}
             </Button>

@@ -35,6 +35,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  parameters: { layout: 'centered' },
 };
 
 export const decorators = [
