@@ -6,11 +6,12 @@ import {
   fonts,
   fontWeights,
 } from '@utilitywarehouse/customer-ui-design-tokens';
-import { typographyThemeOverrides } from '../Typography';
 import { buttonThemeOverrides } from '../Button';
 import { textFieldThemeOverrides } from '../TextField';
 import { textLinkThemeOverrides } from '../TextLink';
 import { menuThemeOverrides } from '../Menu';
+import { textThemeOverrides } from '../Text';
+import { headingThemeOverrides } from '../Heading';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 
 const theme: MuiTheme = createTheme({
@@ -27,7 +28,8 @@ theme.components = {
   ...menuThemeOverrides(theme),
 };
 
-const typographyConfiguration = typographyThemeOverrides(theme);
+const textConfiguration = textThemeOverrides(theme);
+const headingConfiguration = headingThemeOverrides(theme);
 const { pxToRem } = theme.typography;
 const customTypography = {
   pxToRem,
@@ -35,7 +37,8 @@ const customTypography = {
   htmlFontSize: 16,
   fontFamily: fonts,
   fontWeights,
-  ...typographyConfiguration,
+  ...textConfiguration,
+  ...headingConfiguration,
 };
 export const customPalette = {
   ...colors,

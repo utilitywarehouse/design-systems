@@ -1,9 +1,9 @@
-import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors, fonts } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Theme } from '@mui/material/styles';
 import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
 import { dataAttributes } from '../utils';
 
-export const typographyThemeOverrides = (
+export const headingThemeOverrides = (
   theme: Theme
 ): {
   displayHeading: TypographyStyleOptions;
@@ -11,12 +11,8 @@ export const typographyThemeOverrides = (
   h2: TypographyStyleOptions;
   h3: TypographyStyleOptions;
   h4: TypographyStyleOptions;
-  subtitle: TypographyStyleOptions;
-  body: TypographyStyleOptions;
-  legalNote: TypographyStyleOptions;
-  caption: TypographyStyleOptions;
 } => {
-  const { secondary, inverse, bold, success, error } = dataAttributes;
+  const { secondary, inverse } = dataAttributes;
   const headingStyles = {
     fontFamily: fonts.primary,
     color: colors.purple,
@@ -27,30 +23,6 @@ export const typographyThemeOverrides = (
       color: colors.white,
     },
   };
-  const bodyStyles = {
-    fontFamily: fonts.secondary,
-    color: colors.midnight,
-    fontWeight: fontWeights.secondary.regular,
-    [`&[data-${bold}=true]`]: {
-      fontWeight: fontWeights.secondary.semibold,
-    },
-    [`[data-${inverse}=true] &`]: {
-      color: colors.white,
-    },
-    [`&[data-${success}=true]`]: {
-      color: colors.jewel,
-      [`[data-${inverse}=true] &`]: {
-        color: colors.apple,
-      },
-    },
-    [`&[data-${error}=true]`]: {
-      color: colors.maroonFlush,
-      [`[data-${inverse}=true] &`]: {
-        color: colors.rose,
-      },
-    },
-  };
-
   return {
     displayHeading: {
       ...headingStyles,
@@ -92,29 +64,6 @@ export const typographyThemeOverrides = (
       [theme.breakpoints.up('desktop')]: {
         fontSize: theme.typography.pxToRem(20),
       },
-    },
-    body: {
-      ...bodyStyles,
-      fontSize: theme.typography.pxToRem(16),
-      lineHeight: 1.5,
-    },
-    subtitle: {
-      ...bodyStyles,
-      fontSize: theme.typography.pxToRem(18),
-      lineHeight: 1.5,
-      [theme.breakpoints.up('desktop')]: {
-        fontSize: theme.typography.pxToRem(20),
-      },
-    },
-    legalNote: {
-      ...bodyStyles,
-      fontSize: theme.typography.pxToRem(14),
-      lineHeight: 1.5,
-    },
-    caption: {
-      ...bodyStyles,
-      fontSize: theme.typography.pxToRem(12),
-      lineHeight: 2,
     },
   };
 };

@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
-import MuiTypography from '@mui/material/Typography';
+import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { dataAttributes } from '../utils';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
-import { TypographyProps } from '../Typography';
+import type { SystemProps } from '../types';
 
 type DefaultTextComponent = 'span';
 
@@ -19,13 +19,14 @@ interface CustomTextProps {
    * Applies the theme typography styles.
    */
   variant: 'subtitle' | 'body' | 'legalNote' | 'caption';
+  component: React.ElementType;
   color?: 'primary' | 'success' | 'error';
   bold?: boolean;
-  component: React.ElementType;
+  textTransform?: MuiTypographyProps['textTransform'];
 }
 
 interface TextTypeMap<D extends React.ElementType = DefaultTextComponent, P = {}> {
-  props: Omit<TypographyProps<D, P>, 'variant' | 'fontWeight' | 'color'> & CustomTextProps;
+  props: Omit<MuiTypographyProps<D, P>, 'variant' | SystemProps> & CustomTextProps;
   defaultComponent: D;
 }
 

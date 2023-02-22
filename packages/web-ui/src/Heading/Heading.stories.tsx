@@ -79,11 +79,6 @@ export const Workshop: Story = {
         type: 'radio',
       },
     },
-    letterSpacing: {
-      control: {
-        type: 'text',
-      },
-    },
     textTransform: {
       options: ['capitalize', 'uppercase', 'lowercase', 'none'],
       control: {

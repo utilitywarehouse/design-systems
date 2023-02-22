@@ -3,6 +3,7 @@ import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/mater
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { dataAttributes } from '../utils';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
+import type { SystemProps } from '../types';
 
 type DefaultHeadingComponent = 'h2';
 
@@ -16,12 +17,13 @@ export const headingVariantMapping: Record<string, string> = {
 
 interface CustomHeadingProps {
   variant: 'displayHeading' | 'h1' | 'h2' | 'h3' | 'h4';
-  color?: 'primary' | 'secondary';
   component: React.ElementType;
+  color?: 'primary' | 'secondary';
+  textTransform?: MuiTypographyProps['textTransform'];
 }
 
 interface HeadingTypeMap<D extends React.ElementType = DefaultHeadingComponent, P = {}> {
-  props: Omit<MuiTypographyProps<D, P>, 'variant' | 'fontWeight' | 'color'> & CustomHeadingProps;
+  props: Omit<MuiTypographyProps<D, P>, 'variant' | SystemProps> & CustomHeadingProps;
   defaultComponent: D;
 }
 
