@@ -1,6 +1,8 @@
-import { Meta, Canvas, Story } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/blocks';
 import Button from './Button.tsx';
 import * as Stories from './Button.stories';
+
+{console.log({Stories})}
 
 <Meta of={Stories} />
 
@@ -19,17 +21,35 @@ You are still able to use the `onClick` prop, for example to track the usage of 
 
 ## Variants
 
-<Canvas>
-  <Story name="Variants" />
-</Canvas>
+<Canvas
+  of={Stories.ButtonVariants}
+  source={{
+    code: `
+<Stack spacing={3} direction="row">
+  <Button variant="primary">primary</Button>
+  <Button variant="secondary">secondary</Button>
+  <Button variant="tertiary">tertiary</Button>
+</Stack>
+    `,
+  }}
+/>
 
 ## Sizes
 
 The tertiary Button has only one size and is not affected by the `size` prop.
 
-<Canvas>
-  <Story name="Sizes" />
-</Canvas>
+<Canvas
+  of={Stories.ButtonSizes}
+  source={{
+    code: `
+<Stack spacing={3} direction="row">
+  <Button size="small">small</Button>
+  <Button size="medium">medium</Button>
+  <Button size="large">large</Button>
+</Stack>
+    `,
+  }}
+/>
 
 ## Capitalization
 

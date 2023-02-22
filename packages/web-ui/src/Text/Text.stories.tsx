@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
 import Text, { TextProps, textVariantMapping } from './Text';
-import Box from '../Box';
-import { backgroundColors } from '../types';
+import { Backgrounds } from '../storybook-utils';
 
 const variants = Object.keys(textVariantMapping);
 const colors = ['primary', 'success', 'error'] as const;
@@ -21,28 +20,24 @@ export const KitchenSink: Story = {
   },
   render: () => {
     return (
-      <Stack spacing={0}>
-        {backgroundColors.map(bg => (
-          <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-            <Stack spacing={4} direction="row">
-              {variants.map(v => (
-                <Stack key={v} spacing={2}>
-                  {colors.map(c => (
-                    <Text
-                      key={`${v}${c}`}
-                      component="span"
-                      variant={v as TextProps['variant']}
-                      color={c}
-                    >
-                      Hamburgefons
-                    </Text>
-                  ))}
-                </Stack>
+      <Backgrounds>
+        <Stack spacing={4} direction="row">
+          {variants.map(v => (
+            <Stack key={v} spacing={2}>
+              {colors.map(c => (
+                <Text
+                  key={`${v}${c}`}
+                  component="span"
+                  variant={v as TextProps['variant']}
+                  color={c}
+                >
+                  Hamburgefons
+                </Text>
               ))}
             </Stack>
-          </Box>
-        ))}
-      </Stack>
+          ))}
+        </Stack>
+      </Backgrounds>
     );
   },
 };
@@ -50,13 +45,9 @@ export const KitchenSink: Story = {
 export const Workshop: Story = {
   render: args => {
     return (
-      <Stack spacing={0}>
-        {backgroundColors.map(bg => (
-          <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-            <Text {...args} />
-          </Box>
-        ))}
-      </Stack>
+      <Backgrounds>
+        <Text {...args} />
+      </Backgrounds>
     );
   },
   argTypes: {

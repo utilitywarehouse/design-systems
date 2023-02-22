@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Box from '../Box';
 import Stack from '../Stack';
-import { backgroundColors } from '../types';
+import { Backgrounds } from '../storybook-utils';
 import Button from './Button';
 
 const sizes = ['small', 'medium', 'large'] as const;
@@ -19,36 +18,32 @@ export const ButtonKitchenSink: Story = {
   name: 'Kitchen Sink',
   render: () => {
     return (
-      <Stack spacing={0}>
-        {backgroundColors.map(bg => (
-          <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-            <Stack spacing={4}>
-              {variants.map(variant => (
-                <Stack key={variant} direction="row" spacing={2} alignItems="center">
-                  <>
-                    {sizes.map(size => (
-                      <Button key={size} size={size} variant={variant}>
-                        button
-                      </Button>
-                    ))}
-                    {sizes.map(size => (
-                      <Button key={size} size={size} variant={variant} disabled={true}>
-                        button
-                      </Button>
-                    ))}
-                  </>
-                </Stack>
-              ))}
-              <Stack direction="row" spacing={2} alignItems="center">
-                <Button variant="tertiary">button</Button>
-                <Button variant="tertiary" disabled={true}>
-                  button
-                </Button>
-              </Stack>
+      <Backgrounds>
+        <Stack spacing={4}>
+          {variants.map(variant => (
+            <Stack key={variant} direction="row" spacing={2} alignItems="center">
+              <>
+                {sizes.map(size => (
+                  <Button key={size} size={size} variant={variant}>
+                    button
+                  </Button>
+                ))}
+                {sizes.map(size => (
+                  <Button key={size} size={size} variant={variant} disabled={true}>
+                    button
+                  </Button>
+                ))}
+              </>
             </Stack>
-          </Box>
-        ))}
-      </Stack>
+          ))}
+          <Stack direction="row" spacing={2} alignItems="center">
+            <Button variant="tertiary">button</Button>
+            <Button variant="tertiary" disabled={true}>
+              button
+            </Button>
+          </Stack>
+        </Stack>
+      </Backgrounds>
     );
   },
 };
@@ -57,15 +52,11 @@ export const ButtonWorkshop: Story = {
   name: 'Workshop',
   render: args => {
     return (
-      <Stack spacing={0}>
-        {backgroundColors.map(bg => (
-          <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-            <Button {...args}>
-              {args.children ? args.children : `${args.size} ${args.variant} button`}
-            </Button>
-          </Box>
-        ))}
-      </Stack>
+      <Backgrounds>
+        <Button {...args}>
+          {args.children ? args.children : `${args.size} ${args.variant} button`}
+        </Button>
+      </Backgrounds>
     );
   },
   argTypes: {
