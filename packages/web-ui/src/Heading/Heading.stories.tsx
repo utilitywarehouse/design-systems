@@ -3,6 +3,7 @@ import Stack from '@mui/material/Stack';
 import Heading, { HeadingProps, headingVariantMapping } from './Heading';
 import Box from '../Box';
 import { backgroundColors } from '../types';
+import { Backgrounds } from '../storybook-utils';
 
 const variants = Object.keys(headingVariantMapping);
 const colors = ['primary', 'secondary'] as const;
@@ -18,28 +19,24 @@ type Story = StoryObj<typeof Heading>;
 export const KitchenSink: Story = {
   render: () => {
     return (
-      <Stack spacing={0}>
-        {backgroundColors.map(bg => (
-          <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-            <Stack spacing={4} direction="row">
-              {variants.map(v => (
-                <Stack key={v} spacing={2}>
-                  {colors.map(c => (
-                    <Heading
-                      key={`${v}${c}`}
-                      variant={v as HeadingProps['variant']}
-                      component={headingVariantMapping[v] as React.ElementType<any>}
-                      color={c}
-                    >
-                      Hamburgefons
-                    </Heading>
-                  ))}
-                </Stack>
+      <Backgrounds>
+        <Stack spacing={4} direction="row">
+          {variants.map(v => (
+            <Stack key={v} spacing={2}>
+              {colors.map(c => (
+                <Heading
+                  key={`${v}${c}`}
+                  variant={v as HeadingProps['variant']}
+                  component={headingVariantMapping[v] as React.ElementType<any>}
+                  color={c}
+                >
+                  Hamburgefons
+                </Heading>
               ))}
             </Stack>
-          </Box>
-        ))}
-      </Stack>
+          ))}
+        </Stack>
+      </Backgrounds>
     );
   },
 };

@@ -1,5 +1,4 @@
-import { Meta, Canvas, Story } from '@storybook/blocks';
-import Box from './Box.tsx';
+import { Meta, Canvas } from '@storybook/blocks';
 import * as Stories from './Box.stories';
 
 <Meta of={Stories} />
@@ -14,7 +13,7 @@ be used for building any styled element.
 By default Box renders a `div` element, this can be customised using the
 `component` prop.
 
-```tsx
+```tsx dark
 <Box component="span">...</Box>
 ```
 
@@ -24,6 +23,37 @@ Additionally to the system properties, Box supports pre-defined backgrounds
 that provide visual context to child components. This means that components
 will change foreground colour depending on the parent background colour.
 
-<Canvas>
-  <Story name="Backgrounds" />
-</Canvas>
+<Canvas
+  of={Stories.Backgrounds}
+  source={{
+    code: `
+<Stack spacing={0}>
+  <Box background="white" padding={2}>
+    <Text variant="body" component="span">
+      Text on neutral background
+    </Text>
+  </Box>
+  <Box background="whiteOwl" padding={2}>
+    <Text variant="body" component="span">
+      Text on neutral background
+    </Text>
+  </Box>
+  <Box background="lightTint" padding={2}>
+    <Text variant="body" component="span">
+      Text on neutral background
+    </Text>
+  </Box>
+  <Box background="purple" padding={2}>
+    <Text variant="body" component="span">
+      Text on inverse background
+    </Text>
+  </Box>
+  <Box background="midnight" padding={2}>
+    <Text variant="body" component="span">
+      Text on inverse background
+    </Text>
+  </Box>
+</Stack>
+    `,
+  }}
+/>

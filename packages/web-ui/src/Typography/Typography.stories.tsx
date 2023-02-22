@@ -10,6 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Typography>;
 
 export const Workshop: Story = {
+  parameters: { layout: 'centered' },
   argTypes: {
     color: {
       control: {

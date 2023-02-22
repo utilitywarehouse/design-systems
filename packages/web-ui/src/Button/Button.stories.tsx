@@ -106,6 +106,7 @@ export const ButtonWorkshop: Story = {
 
 export const ButtonVariants: Story = {
   name: 'Variants',
+  parameters: { layout: 'centered' },
   render: () => {
     return (
       <Stack spacing={3} direction="row">
@@ -119,6 +120,7 @@ export const ButtonVariants: Story = {
 
 export const ButtonSizes: Story = {
   name: 'Sizes',
+  parameters: { layout: 'centered' },
   render: () => {
     return (
       <Stack spacing={3} direction="row">

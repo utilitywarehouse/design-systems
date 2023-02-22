@@ -51,27 +51,27 @@ export const Backgrounds = {
   argTypes: { background: { table: { disable: true } } },
   render: () => (
     <Stack spacing={0}>
-      <Box background="white" padding={4}>
+      <Box background="white" padding={2}>
         <Text variant="body" component="span">
           Text on neutral background
         </Text>
       </Box>
-      <Box background="whiteOwl" padding={4}>
+      <Box background="whiteOwl" padding={2}>
         <Text variant="body" component="span">
           Text on neutral background
         </Text>
       </Box>
-      <Box background="lightTint" padding={4}>
+      <Box background="lightTint" padding={2}>
         <Text variant="body" component="span">
           Text on neutral background
         </Text>
       </Box>
-      <Box background="purple" padding={4}>
+      <Box background="purple" padding={2}>
         <Text variant="body" component="span">
           Text on inverse background
         </Text>
       </Box>
-      <Box background="midnight" padding={4}>
+      <Box background="midnight" padding={2}>
         <Text variant="body" component="span">
           Text on inverse background
         </Text>

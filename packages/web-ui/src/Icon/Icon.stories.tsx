@@ -21,6 +21,7 @@ type Story = StoryObj<typeof Icon>;
 
 export const Workshop: Story = {
   name: 'Workshop',
+  parameters: { layout: 'centered' },
   // @ts-ignore
   render: ({ icon, color, width, height }) => {
     // @ts-ignore
