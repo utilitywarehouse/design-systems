@@ -1,2 +1,2 @@
 export { default } from './Stack';
-export type { DefaultStackComponent, StackTypeMap, StackProps } from './Stack.types';
+export type { DefaultStackComponent, StackTypeMap, StackProps } from './Stack';
