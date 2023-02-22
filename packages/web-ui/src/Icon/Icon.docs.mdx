@@ -1,0 +1,68 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import Icon from './Icon.tsx';
+import * as Stories from './Icon.stories';
+
+<Meta of={Stories} />
+
+# Icon
+
+Icon will render the given icon.
+
+```tsx
+import { Icon } from '@utilitywarehouse/web-ui';
+import SuccessOutlinedIcon from '@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined';
+
+const MyIcon = () => {
+  return <Icon icon={SuccessOutlinedIcon} color="jewel" iconProps={{ width: 32, height: 32 }} />;
+};
+```
+
+There is a [known issue](https://linear.app/utilitywarehouse/issue/UWDS-270/fix-icon-component)
+with the Icon component, so you may be interested in an alternative approach.
+
+## Alternatives
+
+You can always render the imported icon itself. The difference is that we
+currently aren't able to pass the ref down to the SVG element, due to the
+implementation in the react-icons package so in the Icon component we pass it
+to a wrapper instead. The Icon component is also aware of the theme colors.
+
+```tsx
+import SuccessOutlinedIcon from '@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined';
+import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+
+const MyIcon = () => {
+  return <SuccessOutlinedIcon fill={colors.jewel} width={32} height={32} />;
+};
+```
+
+```html
+<!-- rendered HTML with Web UI Icon component -->
+<span class="MuiBox-root css-1rm7u2e">
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    class="customer-ui__icon"
+    fill="#1b7d47"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+    <title>Outline of a checkmark inside a circle</title>
+    [...]
+  </svg>
+</span>
+<!-- rendered HTML with just React Icons component -->
+<svg
+  width="32"
+  height="32"
+  viewBox="0 0 24 24"
+  class="customer-ui__icon"
+  fill="#1b7d47"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <title>Outline of a checkmark inside a circle</title>
+  [...]
+</svg>
+```
