@@ -27,9 +27,7 @@ type BoxProps<D extends React.ElementType = DefaultBoxComponent, P = {}> = Overr
 
 const Box = forwardRef(function BaseBox({ background, sx, ...props }, ref) {
   const inverse = background ? isInverseBackgroundColor(background) : false;
-  const dataAttributeProps = {
-    [`data-${dataAttributes.inverse}`]: inverse,
-  };
+  const dataAttributeProps = inverse ? { [`data-${dataAttributes.inverse}`]: true } : {};
   const backgroundColor = background ? colors[background] : 'transparent';
 
   return (
