@@ -32,7 +32,11 @@ const Icon = forwardRef(function Icon(
   const IconComponent = icon;
   return (
     <Box ref={ref} component={component} {...props}>
-      <IconComponent {...iconProps} fill={!!color ? colors[color] : 'inherit'} />
+      <IconComponent
+        style={{ verticalAlign: 'top' }}
+        fill={!!color ? colors[color] : 'inherit'}
+        {...iconProps}
+      />
     </Box>
   );
 }) as OverridableComponent<IconTypeMap>;

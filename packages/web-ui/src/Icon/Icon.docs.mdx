@@ -6,7 +6,7 @@ import * as Stories from './Icon.stories';
 
 # Icon
 
-Icon will render the given icon.
+Icon will render the given icon, and takes a color value from the [color design tokens](https://github.com/utilitywarehouse/customer-web-ui/blob/main/packages/design-tokens/src/colors.ts).
 
 ```tsx
 import { Icon } from '@utilitywarehouse/web-ui';
@@ -17,15 +17,13 @@ const MyIcon = () => {
 };
 ```
 
-There is a [known issue](https://linear.app/utilitywarehouse/issue/UWDS-270/fix-icon-component)
-with the Icon component, so you may be interested in an alternative approach.
-
 ## Alternatives
 
 You can always render the imported icon itself. The difference is that we
 currently aren't able to pass the ref down to the SVG element, due to the
 implementation in the react-icons package so in the Icon component we pass it
-to a wrapper instead. The Icon component is also aware of the theme colors.
+to a wrapper instead. You will also need to pass a color value to the `fill` prop
+to change the icon color.
 
 ```tsx
 import SuccessOutlinedIcon from '@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined';
