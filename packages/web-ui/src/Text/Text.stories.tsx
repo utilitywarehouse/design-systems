@@ -15,9 +15,7 @@ export default meta;
 type Story = StoryObj<typeof Text>;
 
 export const KitchenSink: Story = {
-  parameters: {
-    controls: { hideNoControlsWarning: true },
-  },
+  parameters: { controls: { hideNoControlsWarning: true } },
   render: () => {
     return (
       <Backgrounds>
@@ -71,11 +69,6 @@ export const Workshop: Story = {
       options: colors,
       control: {
         type: 'radio',
-      },
-    },
-    letterSpacing: {
-      control: {
-        type: 'text',
       },
     },
     textTransform: {
