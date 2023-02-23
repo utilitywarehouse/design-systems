@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '../Stack';
 import { Backgrounds } from '../storybook-utils';
 import Button from './Button';
+import { withDesign } from 'storybook-addon-designs';
 
 const sizes = ['small', 'medium', 'large'] as const;
 const variants = ['primary', 'secondary'] as const;
@@ -9,6 +10,7 @@ const variants = ['primary', 'secondary'] as const;
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
+  decorators: [withDesign],
 };
 
 export default meta;
@@ -16,6 +18,12 @@ type Story = StoryObj<typeof Button>;
 
 export const ButtonKitchenSink: Story = {
   name: 'Kitchen Sink',
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=6%3A139&t=nzEeo2X7lGLW2Y93-1',
+    },
+  },
   render: () => {
     return (
       <Backgrounds>
