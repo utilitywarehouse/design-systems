@@ -5,4 +5,4 @@ packages/react/storybook*
 .eslintrc.js
 ./.vscode/
 tsconfig.json
-*.md
+*.md*

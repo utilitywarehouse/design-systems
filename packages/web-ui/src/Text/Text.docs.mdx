@@ -1,0 +1,20 @@
+import { Meta } from '@storybook/blocks';
+import * as Stories from './Text.stories';
+
+<Meta of={Stories} />
+
+# Text
+
+Text renders the secondary UW font, Work Sans, to be used for body copy.
+
+The system props are not available on the Text component, if you need custom typography then use the [Typography](?path=/docs/components-typography--documentation) component.
+If necessary you can use `sx` as an escape hatch for one-off custom styling.
+
+## Alternatives
+
+- [Heading](?path=/docs/components-heading--documentation) - For heading-level text
+- [Typography](?path=/docs/components-typography--documentation) - For custom typography
+
+## Semantic HTML
+
+The `component` prop is required for this component, encouraging you to consider the correct semantic element.

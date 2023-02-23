@@ -1,0 +1,30 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import * as Stories from './Spacer.stories';
+
+<Meta of={Stories} />
+
+# Spacer
+
+Box is a layout primitive, loosely based on [Let's Bring Spacer GIFs Back!](https://www.joshwcomeau.com/react/modern-spacer-gif/)
+by Josh Comeau.
+This component, adds an extra node to the DOM, so should be used sparingly, for
+more significant layout concerns please use Stack or Grid.
+
+<Canvas
+  of={Stories.Workshop}
+  source={{
+    code: `
+<Box
+  padding={4}
+  display="flex"
+  flexDirection={isVertical ? 'column' : 'row'}
+  justifyContent="center"
+  alignItems="center"
+>
+  <Box background="purple" />
+  <Spacer axis='vertical' size={2} />
+  <Box background="purple" />
+</Box>
+    `,
+  }}
+/>
