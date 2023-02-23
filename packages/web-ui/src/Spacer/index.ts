@@ -4,4 +4,4 @@ export type {
   CustomSpacerProps,
   SpacerTypeMap,
   SpacerProps,
-} from './Spacer.types';
+} from './Spacer';
