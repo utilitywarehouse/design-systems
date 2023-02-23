@@ -25,7 +25,7 @@ type BoxProps<D extends React.ElementType = DefaultBoxComponent, P = {}> = Overr
   D
 >;
 
-const Box = forwardRef(function BaseBox({ background, sx, ...props }, ref) {
+export const Box = forwardRef(function Box({ background, sx, ...props }, ref) {
   const inverse = background ? isInverseBackgroundColor(background) : false;
   const dataAttributeProps = inverse ? { [`data-${dataAttributes.inverse}`]: true } : {};
   const backgroundColor = background ? colors[background] : 'transparent';
@@ -43,5 +43,4 @@ const Box = forwardRef(function BaseBox({ background, sx, ...props }, ref) {
   );
 }) as OverridableComponent<BoxTypeMap>;
 
-export default Box;
 export type { CustomBoxProps, DefaultBoxComponent, BoxTypeMap, BoxProps };

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import Box from '../Box';
+import { Box } from '../Box';
 import Button from '../Button';
 import { Backgrounds } from '../storybook-utils';
 import Menu from './Menu';

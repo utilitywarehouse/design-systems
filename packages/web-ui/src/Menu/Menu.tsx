@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import MuiMenu, { type MenuProps as MuiMenuProps } from '@mui/material/Menu';
-import Box from '../Box';
+import { Box } from '../Box';
 
 export interface MenuProps extends Omit<MuiMenuProps, 'ref'> {}
 

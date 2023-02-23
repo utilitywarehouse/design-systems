@@ -5,7 +5,7 @@ import Icon, { IconProps } from './Icon';
 import Stack from '../Stack';
 import Heading from '../Heading';
 import Text from '../Text';
-import Box from '../Box';
+import { Box } from '../Box';
 import { borderRadius, colors, transitions } from '@utilitywarehouse/customer-ui-design-tokens';
 import Tooltip from '@mui/material/Tooltip';
 

@@ -3,7 +3,6 @@ import './types/overrides';
 export { default as theme, styled } from './theme';
 export type { Theme } from './theme';
 
-export { default as Box } from './Box';
 export * from './Box';
 
 export { default as Button } from './Button';

@@ -1,4 +1,4 @@
-import Box from '../Box';
+import { Box } from '../Box';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import { forwardRef } from 'react';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';

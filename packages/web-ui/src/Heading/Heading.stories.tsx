@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
 import Heading, { HeadingProps, headingVariantMapping } from './Heading';
-import Box from '../Box';
+import { Box } from '../Box';
 import { backgroundColors } from '../types';
 import { Backgrounds } from '../storybook-utils';
 

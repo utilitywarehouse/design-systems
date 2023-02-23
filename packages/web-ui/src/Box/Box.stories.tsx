@@ -4,17 +4,11 @@ import { backgroundColors } from '../types';
 import Text from '../Text';
 import Stack from '../Stack';
 import Heading from '../Heading';
-import Box from './Box';
+import { Box } from './Box';
 
 const meta: Meta<typeof Box> = {
   title: 'Components/Box',
   component: Box,
-  argTypes: {
-    background: {
-      options: backgroundColors,
-      control: { type: 'radio' },
-    },
-  },
 };
 
 export default meta;
@@ -35,6 +29,12 @@ export const Workshop: Story = {
       </Box>
     );
   },
+  argTypes: {
+    background: {
+      options: backgroundColors,
+      control: { type: 'radio' },
+    },
+  },
   args: {
     component: 'div',
     children: '',
@@ -48,7 +48,6 @@ export const Workshop: Story = {
 };
 
 export const Backgrounds = {
-  argTypes: { background: { table: { disable: true } } },
   render: () => (
     <Stack spacing={0}>
       <Box background="white" padding={2}>

@@ -1,4 +1,4 @@
-import Box from '../Box';
+import { Box } from '../Box';
 import Stack from '../Stack';
 import { backgroundColors } from '../types';
 
