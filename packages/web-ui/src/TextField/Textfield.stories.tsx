@@ -56,7 +56,7 @@ export const Workshop: Story = {
     multiline: false,
     label: 'Label',
     helperText: 'Helper text',
-    placeholder: 'Placeholder',
+    placeholder: '',
     id: 'web-ui-textfield-example',
   },
 };

@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '../Stack';
 import { Backgrounds } from '../storybook-utils';
 import Button from './Button';
-import { withDesign } from 'storybook-addon-designs';
 
 const sizes = ['small', 'medium', 'large'] as const;
 const variants = ['primary', 'secondary'] as const;
@@ -10,7 +9,6 @@ const variants = ['primary', 'secondary'] as const;
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
-  decorators: [withDesign],
 };
 
 export default meta;
