@@ -1,4 +1,4 @@
-export { default } from './Typography';
+export { Typography } from './Typography';
 export type {
   DefaultTypographyComponent,
   CustomTypographyProps,

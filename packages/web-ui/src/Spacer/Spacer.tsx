@@ -7,9 +7,9 @@ import type { BoxProps as MuiBoxProps } from '@mui/material/Box';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import type { ResponsiveStyleValue } from '@mui/system/styleFunctionSx';
 
-type DefaultSpacerComponent = 'div';
+export type DefaultSpacerComponent = 'div';
 
-interface CustomSpacerProps {
+export interface CustomSpacerProps {
   /**
    * The direction of the Spacer axis
    */
@@ -18,17 +18,17 @@ interface CustomSpacerProps {
   inline?: boolean;
 }
 
-interface SpacerTypeMap<D extends React.ElementType = DefaultSpacerComponent, P = {}> {
+export interface SpacerTypeMap<D extends React.ElementType = DefaultSpacerComponent, P = {}> {
   props: MuiBoxProps<D, P> & CustomSpacerProps;
   defaultComponent: D;
 }
 
-type SpacerProps<D extends React.ElementType = DefaultSpacerComponent, P = {}> = OverrideProps<
-  SpacerTypeMap<D, P>,
-  D
->;
+export type SpacerProps<
+  D extends React.ElementType = DefaultSpacerComponent,
+  P = {}
+> = OverrideProps<SpacerTypeMap<D, P>, D>;
 
-const Spacer = forwardRef(function Spacer(
+export const Spacer = forwardRef(function Spacer(
   { axis = 'vertical', size = 1, component, inline = false, sx, ...props },
   ref
 ) {
@@ -72,6 +72,3 @@ const Spacer = forwardRef(function Spacer(
     />
   );
 }) as OverridableComponent<SpacerTypeMap>;
-
-export default Spacer;
-export type { DefaultSpacerComponent, CustomSpacerProps, SpacerTypeMap, SpacerProps };

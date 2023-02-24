@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import Box from '../Box';
-import Button from '../Button';
+import { Box } from '../Box';
+import { Button } from '../Button';
 import { Backgrounds } from '../storybook-utils';
-import Menu from './Menu';
-import MenuItem from './MenuItem';
+import { Menu } from './Menu';
+import { MenuItem } from './MenuItem';
 
 const meta: Meta<typeof Menu> = {
   title: 'Components/Menu',

@@ -1,4 +1,4 @@
-export { default } from './Spacer';
+export { Spacer } from './Spacer';
 export type {
   DefaultSpacerComponent,
   CustomSpacerProps,

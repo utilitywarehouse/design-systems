@@ -1,5 +1,5 @@
-import Box from '../Box';
-import Stack from '../Stack';
+import { Box } from '../Box';
+import { Stack } from '../Stack';
 import { backgroundColors } from '../types';
 
 interface BackgroundsProps {
