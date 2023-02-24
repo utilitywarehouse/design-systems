@@ -1,5 +1,4 @@
-import { Meta, Canvas, Story } from '@storybook/blocks';
-import Grid from './Grid.tsx';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './Grid.stories';
 
 <Meta of={Stories} />
@@ -21,6 +20,8 @@ The grid system is implemented with the Grid component:
 
 > If you are new to or unfamiliar with flexbox, we encourage you to read this [CSS-Tricks flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) guide.
 
-<Canvas>
-  <Story name="Grid" />
-</Canvas>
+<Canvas of={Stories.GridStory} />
+
+## Props
+
+<ArgTypes of={Stories} />

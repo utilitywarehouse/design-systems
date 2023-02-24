@@ -5,7 +5,7 @@ import { dataAttributes } from '../utils';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import type { SystemProps } from '../types';
 
-type DefaultTextComponent = 'span';
+export type DefaultTextComponent = 'span';
 
 export const textVariantMapping: Record<string, string> = {
   subtitle: 'p',
@@ -14,7 +14,7 @@ export const textVariantMapping: Record<string, string> = {
   caption: 'span',
 };
 
-interface CustomTextProps {
+export interface CustomTextProps {
   /**
    * Applies the theme typography styles.
    */
@@ -25,17 +25,17 @@ interface CustomTextProps {
   textTransform?: MuiTypographyProps['textTransform'];
 }
 
-interface TextTypeMap<D extends React.ElementType = DefaultTextComponent, P = {}> {
+export interface TextTypeMap<D extends React.ElementType = DefaultTextComponent, P = {}> {
   props: Omit<MuiTypographyProps<D, P>, 'variant' | SystemProps> & CustomTextProps;
   defaultComponent: D;
 }
 
-type TextProps<D extends React.ElementType = DefaultTextComponent, P = {}> = OverrideProps<
+export type TextProps<D extends React.ElementType = DefaultTextComponent, P = {}> = OverrideProps<
   TextTypeMap<D, P>,
   D
 >;
 
-const Text = forwardRef(function Text({ color = 'primary', bold = false, ...props }, ref) {
+export const Text = forwardRef(function Text({ color = 'primary', bold = false, ...props }, ref) {
   const dataAttributeProps = {
     [`data-${dataAttributes[color]}`]: true,
     [`data-${dataAttributes.bold}`]: bold,
@@ -49,6 +49,3 @@ const Text = forwardRef(function Text({ color = 'primary', bold = false, ...prop
     />
   );
 }) as OverridableComponent<TextTypeMap>;
-
-export default Text;
-export type { DefaultTextComponent, CustomTextProps, TextTypeMap, TextProps };

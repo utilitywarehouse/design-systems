@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Stack from '../Stack';
+import { Stack } from '../Stack';
 import { Backgrounds } from '../storybook-utils';
-import Button from './Button';
+import { Button } from './Button';
 
 const sizes = ['small', 'medium', 'large'] as const;
 const variants = ['primary', 'secondary'] as const;

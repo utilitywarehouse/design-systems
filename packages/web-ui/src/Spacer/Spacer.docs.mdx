@@ -1,11 +1,11 @@
-import { Meta, Canvas } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './Spacer.stories';
 
 <Meta of={Stories} />
 
 # Spacer
 
-Box is a layout primitive, loosely based on [Let's Bring Spacer GIFs Back!](https://www.joshwcomeau.com/react/modern-spacer-gif/)
+Spacer is a layout primitive, loosely based on [Let's Bring Spacer GIFs Back!](https://www.joshwcomeau.com/react/modern-spacer-gif/)
 by Josh Comeau.
 This component, adds an extra node to the DOM, so should be used sparingly, for
 more significant layout concerns please use Stack or Grid.
@@ -28,3 +28,7 @@ more significant layout concerns please use Stack or Grid.
     `,
   }}
 />
+
+## Props
+
+<ArgTypes of={Stories} />

@@ -3,28 +3,31 @@ import MuiTypography from '@mui/material/Typography';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
-import Heading, { HeadingProps, headingVariantMapping } from '../Heading';
-import Text, { TextProps, textVariantMapping } from '../Text';
+import { Heading, HeadingProps, headingVariantMapping } from '../Heading';
+import { Text, TextProps, textVariantMapping } from '../Text';
 
-type DefaultTypographyComponent = 'p';
+export type DefaultTypographyComponent = 'p';
 
-interface CustomTypographyProps {
+export interface CustomTypographyProps {
   color?: 'primary' | 'secondary' | 'success' | 'error' | string;
   variant: MuiTypographyProps['variant'];
   component?: React.ElementType;
 }
 
-interface TypographyTypeMap<D extends React.ElementType = DefaultTypographyComponent, P = {}> {
+export interface TypographyTypeMap<
+  D extends React.ElementType = DefaultTypographyComponent,
+  P = {}
+> {
   props: MuiTypographyProps<D, P> & CustomTypographyProps;
   defaultComponent: D;
 }
 
-type TypographyProps<
+export type TypographyProps<
   D extends React.ElementType = DefaultTypographyComponent,
   P = {}
 > = OverrideProps<TypographyTypeMap<D, P>, D>;
 
-const Typography = forwardRef(function Typography(
+export const Typography = forwardRef(function Typography(
   { color = 'primary', variant, component = 'p', ...props },
   ref
 ) {
@@ -52,11 +55,3 @@ const Typography = forwardRef(function Typography(
   }
   return <MuiTypography ref={ref} color={color} component={component} {...props} />;
 }) as OverridableComponent<TypographyTypeMap>;
-
-export default Typography;
-export type {
-  DefaultTypographyComponent,
-  CustomTypographyProps,
-  TypographyTypeMap,
-  TypographyProps,
-};

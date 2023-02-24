@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
-import Text, { TextProps, textVariantMapping } from './Text';
+import { Text, TextProps, textVariantMapping } from './Text';
 import { Backgrounds } from '../storybook-utils';
 
 const variants = Object.keys(textVariantMapping);
@@ -88,5 +88,28 @@ export const Workshop: Story = {
     gutterBottom: false,
     paragraph: false,
     noWrap: false,
+  },
+};
+
+export const TextVariants: Story = {
+  name: 'Variants',
+  parameters: { layout: 'centered' },
+  render: () => {
+    return (
+      <Stack spacing={1}>
+        <Text component="span" variant="subtitle">
+          subtitle
+        </Text>
+        <Text component="span" variant="body">
+          body
+        </Text>
+        <Text component="span" variant="legalNote">
+          legalNote
+        </Text>
+        <Text component="span" variant="caption">
+          caption
+        </Text>
+      </Stack>
+    );
   },
 };

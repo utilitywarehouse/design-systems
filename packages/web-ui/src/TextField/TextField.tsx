@@ -7,7 +7,7 @@ import { styled } from '@mui/material/styles';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
-import Box from '../Box';
+import { Box } from '../Box';
 import { dataAttributes } from '../utils';
 import type { ReactNode, AllHTMLAttributes } from 'react';
 
@@ -15,6 +15,7 @@ const isSuccessStatus = (status?: string): boolean => status === 'success';
 const isErrorStatus = (status?: string): boolean => status === 'error';
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
+
 export interface TextFieldProps
   extends Omit<
     FilledInputProps,
@@ -86,7 +87,7 @@ const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(functi
   );
 });
 
-const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfield(
+export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfield(
   { label, labelId, helperText, ...props },
   ref
 ) {
@@ -116,5 +117,3 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Te
     </FormControl>
   );
 });
-
-export default TextField;

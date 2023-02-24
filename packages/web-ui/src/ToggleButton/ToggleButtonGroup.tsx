@@ -38,7 +38,7 @@ export type ToggleButtonGroupProps = Pick<
   'children' | 'classes' | 'disabled' | 'fullWidth' | 'onChange' | 'sx' | 'value' | 'className'
 >;
 
-const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGroupProps>(
+export const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGroupProps>(
   function ToggleButtonGroup({ children, disabled, className, ...props }, ref) {
     return (
       <StyledMuiToggleButtonGroup
@@ -53,5 +53,3 @@ const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGroupProp
     );
   }
 );
-
-export default ToggleButtonGroup;

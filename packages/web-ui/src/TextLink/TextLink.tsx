@@ -9,7 +9,7 @@ export interface TextLinkProps
   textTransform?: MuiTypographyProps['textTransform'];
 }
 
-const TextLink = React.forwardRef<HTMLAnchorElement, TextLinkProps>(function Link(
+export const TextLink = React.forwardRef<HTMLAnchorElement, TextLinkProps>(function Link(
   { variant = 'inherit', ...props },
   ref
 ) {
@@ -21,5 +21,3 @@ const TextLink = React.forwardRef<HTMLAnchorElement, TextLinkProps>(function Lin
     <MuiLink ref={ref} variant={variant} {...props} underline="none" {...dataAttributeProps} />
   );
 });
-
-export default TextLink;

@@ -141,11 +141,11 @@ packages:
       '@babel/parser': 7.20.15
       '@babel/template': 7.20.7
       '@babel/traverse': 7.20.13
-      '@babel/types': 7.20.7
+      '@babel/types': 7.21.2
       convert-source-map: 1.9.0
       debug: 4.3.4
       gensync: 1.0.0-beta.2
-      json5: 2.2.1
+      json5: 2.2.3
       lodash: 4.17.21
       resolve: 1.22.1
       semver: 5.7.1
@@ -3908,7 +3908,7 @@ packages:
       '@babel/generator': 7.20.14
       '@babel/parser': 7.20.15
       '@babel/preset-env': 7.20.2_@babel+core@7.20.2
-      '@babel/types': 7.20.7
+      '@babel/types': 7.21.2
       '@mdx-js/mdx': 1.6.22
       '@types/lodash': 4.14.191
       js-string-escape: 1.0.1

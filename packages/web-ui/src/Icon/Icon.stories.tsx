@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { icons } from '../storybook-utils';
-import Icon, { IconProps } from './Icon';
-import Stack from '../Stack';
-import Heading from '../Heading';
-import Text from '../Text';
-import Box from '../Box';
+import { Icon } from './Icon';
+import type { IconProps } from './Icon';
+import { Stack } from '../Stack';
+import { Heading } from '../Heading';
+import { Text } from '../Text';
+import { Box } from '../Box';
 import { borderRadius, colors, transitions } from '@utilitywarehouse/customer-ui-design-tokens';
 import Tooltip from '@mui/material/Tooltip';
 
