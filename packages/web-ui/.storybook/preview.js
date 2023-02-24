@@ -1,37 +1,23 @@
 import '@utilitywarehouse/fontsource';
-import ThemeProvider from '../src/ThemeProvider';
+import { ThemeProvider } from '../src/ThemeProvider';
 import { breakpoints } from '@utilitywarehouse/customer-ui-design-tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { MDXProvider } from '@mdx-js/react';
 import { DocsContainer as StorybookDocsContainer } from '@storybook/blocks';
-import Heading from '../src/Heading';
-import Text from '../src/Text';
+import { Heading } from '../src/Heading';
+import { Text } from '../src/Text';
 
-const H1 = props => (
-  <Heading component="h1" variant="h1" color="secondary" gutterBottom {...props} />
-);
-const H2 = props => (
-  <Heading component="h2" variant="h2" color="secondary" gutterBottom {...props} />
-);
-const H3 = props => (
-  <Heading component="h3" variant="h3" color="secondary" gutterBottom {...props} />
-);
-const H4 = props => (
-  <Heading component="h4" variant="h4" color="secondary" gutterBottom {...props} />
-);
-const Paragraph = props => <Text paragraph component="p" variant="body" {...props} />;
+const components = {
+  h1: props => <Heading component="h1" variant="h1" color="secondary" gutterBottom {...props} />,
+  h2: props => <Heading component="h2" variant="h2" color="secondary" gutterBottom {...props} />,
+  h3: props => <Heading component="h3" variant="h3" color="secondary" gutterBottom {...props} />,
+  h4: props => <Heading component="h4" variant="h4" color="secondary" gutterBottom {...props} />,
+  p: props => <Text paragraph component="p" variant="body" {...props} />,
+};
 
 export const DocsContainer = props => (
   <ThemeProvider>
-    <MDXProvider
-      components={{
-        h1: H1,
-        h2: H2,
-        h3: H3,
-        h4: H4,
-        p: Paragraph,
-      }}
-    >
+    <MDXProvider components={components}>
       <StorybookDocsContainer {...props} />
     </MDXProvider>
   </ThemeProvider>

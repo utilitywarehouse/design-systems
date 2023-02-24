@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Box } from '../Box';
-import Stack from '../Stack';
-import Text from '../Text';
+import { Stack } from '../Stack';
+import { Text } from '../Text';
 import Divider from '@mui/material/Divider';
 
 const meta: Meta<typeof Stack> = {

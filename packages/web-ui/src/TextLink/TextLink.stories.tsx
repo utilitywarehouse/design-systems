@@ -1,9 +1,9 @@
-import TextLink from './TextLink';
+import { TextLink } from './TextLink';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Backgrounds } from '../storybook-utils';
-import Text, { TextProps, textVariantMapping } from '../Text';
+import { Text, TextProps, textVariantMapping } from '../Text';
 import { headingVariantMapping } from '../Heading';
-import Stack from '../Stack';
+import { Stack } from '../Stack';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Components/TextLink',
@@ -18,7 +18,6 @@ const variants = [...textVariants, ...Object.keys(headingVariantMapping)];
 
 export const Workshop: Story = {
   render: args => {
-
     return (
       <Backgrounds>
         <TextLink href="#" {...args} />

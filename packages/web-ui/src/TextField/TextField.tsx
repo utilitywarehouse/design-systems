@@ -87,7 +87,7 @@ const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(functi
   );
 });
 
-const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfield(
+export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfield(
   { label, labelId, helperText, ...props },
   ref
 ) {
@@ -117,5 +117,3 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Te
     </FormControl>
   );
 });
-
-export default TextField;

@@ -7,7 +7,7 @@ export interface ThemeProviderProps {
   children?: React.ReactNode;
 }
 
-const ThemeProvider = ({ children }: ThemeProviderProps) => {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
@@ -15,5 +15,3 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     </MuiThemeProvider>
   );
 };
-
-export default ThemeProvider;

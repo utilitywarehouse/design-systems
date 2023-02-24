@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
-import Heading, { HeadingProps, headingVariantMapping } from './Heading';
+import { Heading, HeadingProps, headingVariantMapping } from './Heading';
 import { Box } from '../Box';
 import { backgroundColors } from '../types';
 import { Backgrounds } from '../storybook-utils';
@@ -92,5 +92,31 @@ export const Workshop: Story = {
     gutterBottom: false,
     paragraph: false,
     noWrap: false,
+  },
+};
+
+export const HeadingVariants: Story = {
+  name: 'Variants',
+  parameters: { layout: 'centered' },
+  render: () => {
+    return (
+      <Stack spacing={1}>
+        <Heading component="h1" variant="displayHeading">
+          displayHeading
+        </Heading>
+        <Heading component="h1" variant="h1">
+          h1
+        </Heading>
+        <Heading component="h2" variant="h2">
+          h2
+        </Heading>
+        <Heading component="h3" variant="h3">
+          h3
+        </Heading>
+        <Heading component="h4" variant="h4">
+          h4
+        </Heading>
+      </Stack>
+    );
   },
 };

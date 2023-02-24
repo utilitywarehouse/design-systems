@@ -63,22 +63,19 @@ export type ToggleButtonProps = Pick<
   | 'sx'
 >;
 
-const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(function ToggleButton(
-  { children, className, ...props },
-  ref
-) {
-  return (
-    <StyledMuiToggleButton
-      ref={ref}
-      disableTouchRipple
-      disableRipple
-      disableFocusRipple
-      {...props}
-      className={className}
-    >
-      {children}
-    </StyledMuiToggleButton>
-  );
-});
-
-export default ToggleButton;
+export const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(
+  function ToggleButton({ children, className, ...props }, ref) {
+    return (
+      <StyledMuiToggleButton
+        ref={ref}
+        disableTouchRipple
+        disableRipple
+        disableFocusRipple
+        {...props}
+        className={className}
+      >
+        {children}
+      </StyledMuiToggleButton>
+    );
+  }
+);
