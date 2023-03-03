@@ -1,20 +1,23 @@
-import { forwardRef } from 'react';
-import type { AllHTMLAttributes } from 'react';
-import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import { forwardRef, useContext } from 'react';
+import type { RefObject } from 'react';
+import { colors } from '@utilitywarehouse/design-tokens';
 import { styled } from '../theme';
 import { Box } from '../Box';
+import { useRadio } from 'react-aria';
+import type { AriaRadioProps } from 'react-aria';
+import { RadioContext } from './RadioGroup';
 
-type InputElementProps = AllHTMLAttributes<HTMLInputElement>;
-export interface RadioProps {
-  onChange: NonNullable<InputElementProps['onChange']>;
-  value?: InputElementProps['value'];
-  name?: InputElementProps['name'];
-  'aria-describedby'?: InputElementProps['aria-describedby'];
-  'aria-labelledby'?: InputElementProps['aria-labelledby'];
-  'aria-label'?: InputElementProps['aria-label'];
-  disabled?: InputElementProps['disabled'];
-  checked: NonNullable<InputElementProps['checked']>;
-}
+// type InputElementProps = AllHTMLAttributes<HTMLInputElement>;
+// export interface RadioProps {
+//   onChange: NonNullable<InputElementProps['onChange']>;
+//   value?: InputElementProps['value'];
+//   name?: InputElementProps['name'];
+//   'aria-describedby'?: InputElementProps['aria-describedby'];
+//   'aria-labelledby'?: InputElementProps['aria-labelledby'];
+//   'aria-label'?: InputElementProps['aria-label'];
+//   disabled?: InputElementProps['disabled'];
+//   checked: NonNullable<InputElementProps['checked']>;
+// }
 
 const StyledRadio = styled('input')(() => {
   return {
@@ -53,8 +56,10 @@ const StyledRadio = styled('input')(() => {
   };
 });
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(props, ref) {
-  const { checked, disabled } = props;
+export const RadioButton = forwardRef<HTMLInputElement, AriaRadioProps>(function Radio(props, ref) {
+  let state = useContext(RadioContext);
+  let { inputProps } = useRadio(props, state, ref as RefObject<HTMLInputElement>);
+  const { checked, disabled } = inputProps;
   return (
     <Box
       component="span"
@@ -79,7 +84,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(pro
         },
       }}
     >
-      <StyledRadio type="radio" name="radio" ref={ref} {...props} />
+      <StyledRadio type="radio" name="radio" ref={ref} {...inputProps} />
       <Box
         component="span"
         sx={{
