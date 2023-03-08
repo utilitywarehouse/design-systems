@@ -1,25 +1,19 @@
-import { forwardRef, useContext } from 'react';
+import { InputHTMLAttributes, forwardRef, useContext, useState } from 'react';
 import type { RefObject } from 'react';
 import { colors } from '@utilitywarehouse/design-tokens';
 import { styled } from '../theme';
-import { Box } from '../Box';
-import { useRadio } from 'react-aria';
+import { Box, BoxProps } from '@mui/material';
+import { useFocusWithin, useRadio, useLabel } from 'react-aria';
 import type { AriaRadioProps } from 'react-aria';
 import { RadioContext } from './RadioGroup';
 
-// type InputElementProps = AllHTMLAttributes<HTMLInputElement>;
-// export interface RadioProps {
-//   onChange: NonNullable<InputElementProps['onChange']>;
-//   value?: InputElementProps['value'];
-//   name?: InputElementProps['name'];
-//   'aria-describedby'?: InputElementProps['aria-describedby'];
-//   'aria-labelledby'?: InputElementProps['aria-labelledby'];
-//   'aria-label'?: InputElementProps['aria-label'];
-//   disabled?: InputElementProps['disabled'];
-//   checked: NonNullable<InputElementProps['checked']>;
-// }
+type InputElementProps = InputHTMLAttributes<HTMLInputElement>;
+export interface RadioButtonProps extends Omit<AriaRadioProps, 'isDisabled'> {
+  disabled?: InputElementProps['disabled'];
+  sx?: BoxProps['sx'];
+}
 
-const StyledRadio = styled('input')(() => {
+const RadioInput = styled('input')(() => {
   return {
     appearance: 'none',
     backgroundColor: 'transparent',
@@ -56,49 +50,73 @@ const StyledRadio = styled('input')(() => {
   };
 });
 
-export const RadioButton = forwardRef<HTMLInputElement, AriaRadioProps>(function Radio(props, ref) {
-  let state = useContext(RadioContext);
-  let { inputProps } = useRadio(props, state, ref as RefObject<HTMLInputElement>);
-  const { checked, disabled } = inputProps;
+export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(function RadioButton(
+  { sx, children, ...props },
+  ref
+) {
+  let [isFocusWithin, setFocusWithin] = useState(false);
+  const state = useContext(RadioContext);
+  const { focusWithinProps } = useFocusWithin({
+    isDisabled: props.disabled,
+    onFocusWithinChange: fw => setFocusWithin(fw),
+  });
+
+  const { inputProps, isSelected, isDisabled } = useRadio(
+    { ...props, isDisabled: props.disabled },
+    state,
+    ref as RefObject<HTMLInputElement>
+  );
+  const { labelProps, fieldProps } = useLabel({ label: children });
+
+  const getOuterRingColor = () => {
+    if (isDisabled) return colors.codGray10;
+    if (isSelected || isFocusWithin) return colors.cyan40;
+    return colors.codGray20;
+  };
+  const outerRingColor = getOuterRingColor();
   return (
-    <Box
-      component="span"
-      sx={{
-        position: 'relative',
-        cursor: 'pointer',
-        width: 40,
-        height: 40,
-        borderRadius: '50%',
-        color: disabled ? colors.codGray10 : checked ? colors.cyan40 : colors.codGray20,
-        '&:hover': {
-          backgroundColor: disabled ? 'transparent' : colors.cyan10,
-          color: disabled ? colors.codGray10 : colors.cyan30,
-        },
-        '&:focus-within': {
-          backgroundColor: colors.cyan20,
-          color: colors.cyan40,
-          '&:hover': {
-            backgroundColor: colors.cyan10,
-            color: colors.cyan30,
-          },
-        },
-      }}
-    >
-      <StyledRadio type="radio" name="radio" ref={ref} {...inputProps} />
+    <Box {...focusWithinProps} display="flex" alignItems="center" sx={{ cursor: 'pointer', ...sx }}>
       <Box
         component="span"
+        position="relative"
+        width={40}
+        height={40}
+        borderRadius="50%"
+        color={outerRingColor}
+        bgcolor={isFocusWithin ? colors.cyan20 : undefined}
         sx={{
-          position: 'absolute',
-          top: 8,
-          left: 8,
-          backgroundColor: colors.white,
-          height: 24,
-          width: 24,
-          border: '2px solid',
-          borderColor: 'currentColor',
-          borderRadius: '50%',
+          '&:hover': {
+            backgroundColor: isDisabled ? 'transparent' : colors.cyan10,
+            color: isDisabled ? colors.codGray10 : colors.cyan30,
+          },
         }}
-      />
+      >
+        <RadioInput ref={ref} {...fieldProps} {...inputProps} />
+        <Box
+          component="span"
+          position="absolute"
+          top={8}
+          left={8}
+          bgcolor={colors.white}
+          height={24}
+          width={24}
+          border="2px solid"
+          borderColor="currentColor"
+          borderRadius="50%"
+        />
+      </Box>
+      <Box // FieldLabel
+        {...labelProps}
+        component="label"
+        color={isDisabled ? colors.codGray40 : colors.midnight}
+        fontFamily="fontFamily.secondary"
+        fontWeight="fontWeights.secondary.regular"
+        fontSize="1rem"
+        lineHeight="2rem"
+        sx={{ cursor: 'pointer' }}
+      >
+        {children}
+      </Box>
     </Box>
   );
 });

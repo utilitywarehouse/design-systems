@@ -31,7 +31,7 @@ export type TypographyProps<
 > = OverrideProps<TypographyTypeMap<D, P>, D>;
 
 export const Typography = forwardRef(function Typography(
-  { color, variant, component = 'p', ...props },
+  { color, variant, component, ...props },
   ref
 ) {
   const isLegacyTextVariant = variant && Object.keys(textVariantMapping).includes(variant);
@@ -59,7 +59,7 @@ export const Typography = forwardRef(function Typography(
       <Text
         ref={ref}
         variant={variant as TextProps['variant']}
-        component={component}
+        component={component || 'p'}
         {...props}
         {...dataAttributeProps}
       />
@@ -80,7 +80,7 @@ export const Typography = forwardRef(function Typography(
       <Heading
         ref={ref}
         variant={variant as HeadingProps['variant']}
-        component={component}
+        component={component || 'h2'}
         {...props}
         {...dataAttributeProps}
       />
@@ -91,7 +91,7 @@ export const Typography = forwardRef(function Typography(
     <MuiTypography
       ref={ref}
       color={color || colorsCommon.brandMidnight}
-      component={component}
+      component={component || 'p'}
       {...props}
     />
   );

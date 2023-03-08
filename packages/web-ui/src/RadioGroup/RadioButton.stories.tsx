@@ -4,7 +4,7 @@ import { RadioButton } from './RadioButton';
 import { RadioGroup } from './RadioGroup';
 
 const meta: Meta<typeof RadioButton> = {
-  title: 'Components/RadioInput',
+  title: 'Components/RadioButton',
   component: RadioButton,
 };
 
@@ -12,16 +12,26 @@ export default meta;
 type Story = StoryObj<typeof RadioButton>;
 
 export const Workshop: Story = {
-  render: () => {
+  render: args => {
     return (
       <RadioGroup label="Favorite pet" defaultValue="dogs">
         <Stack spacing={2}>
-          <RadioButton value="dogs">Dogs</RadioButton>
-          <RadioButton value="cats">Cats</RadioButton>
+          <RadioButton {...args} value="dogs">
+            Dogs
+          </RadioButton>
+          <RadioButton {...args} value="cats">
+            Cats
+          </RadioButton>
         </Stack>
       </RadioGroup>
     );
   },
-  argTypes: {},
-  args: {},
+  argTypes: {
+    disabled: {
+      control: { type: 'boolean' },
+    },
+  },
+  args: {
+    disabled: false,
+  },
 };
