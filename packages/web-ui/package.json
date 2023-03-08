@@ -8,14 +8,8 @@
     "build": "rm -rf dist/ && tsc --build ./tsconfig.build.json",
     "lint:fix": "TIMING=1 eslint --fix --ext ts,tsx src",
     "lint": "TIMING=1 eslint --ext ts,tsx src",
-    "precommit": "lint-staged",
     "dev": "storybook dev --quiet -p 6006",
     "build:storybook": "storybook build --quiet"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js}": [
-      "pnpm lint"
-    ]
   },
   "author": "",
   "license": "UNLICENSED",
