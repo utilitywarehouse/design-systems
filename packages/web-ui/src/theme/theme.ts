@@ -89,5 +89,5 @@ theme.palette = {
   ...customPalette,
 };
 
-export default theme;
+export { theme };
 export type Theme = typeof theme;
