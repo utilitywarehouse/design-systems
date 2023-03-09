@@ -1,5 +1,5 @@
 import { createStyled } from '@mui/system';
-import { default as defaultTheme } from './theme';
+import { theme as defaultTheme } from './theme';
 
 const styled = createStyled({ defaultTheme });
 
