@@ -2,7 +2,7 @@ import { InputHTMLAttributes, forwardRef, useContext, useState } from 'react';
 import type { RefObject } from 'react';
 import { colors } from '@utilitywarehouse/design-tokens';
 import { styled } from '../theme';
-import { Box, BoxProps } from '@mui/material';
+import { Box, BoxProps } from '../Box';
 import { useFocusWithin, useRadio, useLabel } from 'react-aria';
 import type { AriaRadioProps } from 'react-aria';
 import { RadioContext } from './RadioGroup';
