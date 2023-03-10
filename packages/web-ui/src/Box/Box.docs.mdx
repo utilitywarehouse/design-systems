@@ -58,6 +58,28 @@ will change foreground colour depending on the parent background colour.
   }}
 />
 
+## Custom Components
+
+Box can be used to build custom components.
+
+<Canvas
+  of={Stories.CustomComponent}
+  source={{
+    code: `
+type Props = BoxProps<'a', { additionalProp: string }>;
+
+const CustomAnchor = ({ onClick, href, additionalProp, ...props }: Props) => {
+  const ref = useRef<HTMLButtonElement>(null);
+  return (
+    <Box component="a" onClick={onClick} href={href} ref={ref} {...props}>
+      Additional Prop: {additionalProp}
+    </Box>
+  );
+};
+`,
+  }}
+/>
+
 ## Props
 
 <ArgTypes of={Stories} />

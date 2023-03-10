@@ -16,10 +16,10 @@ export interface CustomBoxProps {
   background?: NeutralBackgroundColor | InverseBackgroundColor;
 }
 
-export type BoxProps<D extends React.ElementType<any> = DefaultBoxComponent> = OverrideProps<
-  MuiBoxTypeMap<CustomBoxProps, D, Theme>,
-  D
->;
+export type BoxProps<
+  D extends React.ElementType<any> = DefaultBoxComponent,
+  P = {}
+> = OverrideProps<MuiBoxTypeMap<CustomBoxProps & P, D, Theme>, D>;
 
 export const Box = forwardRef(function Box({ background, ...props }, ref) {
   const inverse = background ? isInverseBackgroundColor(background) : false;
