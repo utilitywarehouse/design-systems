@@ -4,7 +4,8 @@ import { backgroundColors } from '../types';
 import { Text } from '../Text';
 import { Stack } from '../Stack';
 import { Heading } from '../Heading';
-import { Box } from './Box';
+import { Box, BoxProps } from './Box';
+import { useRef } from 'react';
 
 const meta: Meta<typeof Box> = {
   title: 'Components/Box',
@@ -77,4 +78,22 @@ export const Backgrounds = {
       </Box>
     </Stack>
   ),
+};
+
+type Props = BoxProps<'a', { additionalProp: string }>;
+export const CustomComponent = {
+  render: (args: Props) => {
+    const CustomAnchor = ({ onClick, href, additionalProp, ...props }: Props) => {
+      const ref = useRef<HTMLButtonElement>(null);
+      return (
+        <Box component="a" onClick={onClick} href={href} ref={ref} {...props}>
+          Additional Prop: {additionalProp}
+        </Box>
+      );
+    };
+    return <CustomAnchor {...args} />;
+  },
+  args: {
+    additionalProp: 'I am the additional prop :)',
+  },
 };
