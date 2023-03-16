@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { RadioItem } from './RadioItem';
 import { RadioGroup } from './RadioGroup';
+import { Box } from '../Box';
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'Components/RadioGroup',
@@ -19,10 +20,19 @@ export const Workshop: Story = {
   },
   render: args => {
     return (
-      <RadioGroup label="Favorite pet" defaultValue="dogs" {...args}>
-        <RadioItem value="dogs">Dogs</RadioItem>
-        <RadioItem value="cats">Cats</RadioItem>
-      </RadioGroup>
+      <Box background="white" padding={12} display="flex" justifyContent="center">
+        <RadioGroup label="Label" helperText="RadioGroup helper text" {...args}>
+          <RadioItem value="1" helperText="One helper text">
+            One
+          </RadioItem>
+          <RadioItem value="2" helperText="Two helper text">
+            Two
+          </RadioItem>
+          <RadioItem value="3" helperText="Three helper text">
+            Three
+          </RadioItem>
+        </RadioGroup>
+      </Box>
     );
   },
   argTypes: {
@@ -30,8 +40,14 @@ export const Workshop: Story = {
       options: ['column', 'row'],
       control: { type: 'radio' },
     },
+    validationState: {
+      options: [undefined, 'valid', 'invalid'],
+      control: { type: 'radio' },
+    },
   },
-  // args: {
-  //   disabled: false,
-  // },
+  args: {
+    errorMessage: 'There is an error',
+    validationState: undefined,
+    //   disabled: false,
+  },
 };

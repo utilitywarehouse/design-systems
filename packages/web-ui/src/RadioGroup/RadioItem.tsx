@@ -1,16 +1,19 @@
 import { InputHTMLAttributes, forwardRef, useContext, useState } from 'react';
-import type { RefObject } from 'react';
-import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import type { RefObject, ReactNode } from 'react';
+import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Box, BoxProps } from '../Box';
 import { useFocusWithin, useRadio, useLabel } from 'react-aria';
 import type { AriaRadioProps } from 'react-aria';
 import { RadioContext } from './RadioGroup';
 import styled from '@emotion/styled';
+import { Stack } from '../Stack';
 
 type InputElementProps = InputHTMLAttributes<HTMLInputElement>;
-export interface RadioButtonProps extends Omit<AriaRadioProps, 'isDisabled'> {
+export interface RadioItemProps extends Omit<AriaRadioProps, 'isDisabled'> {
   disabled?: InputElementProps['disabled'];
   sx?: BoxProps['sx'];
+  helperText?: ReactNode;
+  helperTextId?: string;
 }
 
 const RadioInput = styled('input')(() => {
@@ -50,8 +53,8 @@ const RadioInput = styled('input')(() => {
   };
 });
 
-export const RadioItem = forwardRef<HTMLInputElement, RadioButtonProps>(
-  ({ sx, children, ...props }, ref) => {
+export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
+  ({ sx, children, helperText, helperTextId, ...props }, ref) => {
     let [isFocusWithin, setFocusWithin] = useState(false);
     const state = useContext(RadioContext);
     const { focusWithinProps } = useFocusWithin({
@@ -60,7 +63,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioButtonProps>(
     });
 
     const { inputProps, isSelected, isDisabled } = useRadio(
-      { ...props, isDisabled: props.disabled },
+      { ...props, children, isDisabled: props.disabled },
       state,
       ref as RefObject<HTMLInputElement>
     );
@@ -75,17 +78,15 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioButtonProps>(
     return (
       <Box
         {...focusWithinProps}
-        component="span"
         display="flex"
-        alignItems="center"
-        marginLeft={-1}
+        alignItems="flex-start"
         sx={{ cursor: 'pointer', ...sx }}
       >
         <Box
-          component="span"
           position="relative"
           width={40}
           height={40}
+          marginLeft={-1}
           borderRadius="50%"
           color={outerRingColor}
           bgcolor={isFocusWithin ? colors.cyan20 : undefined}
@@ -97,6 +98,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioButtonProps>(
           }}
         >
           <RadioInput ref={ref} {...fieldProps} {...inputProps} />
+
           <Box
             component="span"
             position="absolute"
@@ -110,18 +112,36 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioButtonProps>(
             borderRadius="50%"
           />
         </Box>
-        <Box // FieldLabel
-          {...labelProps}
-          component="label"
-          color={isDisabled ? colors.codGray40 : colors.midnight}
-          fontFamily="fontFamily.secondary"
-          fontWeight="fontWeights.secondary.regular"
-          fontSize="1rem"
-          lineHeight="2rem"
-          sx={{ cursor: 'pointer' }}
-        >
-          {children}
-        </Box>
+        <Stack>
+          <Box height={40} width={40} display="flex" alignItems="center">
+            <Box // FieldLabel
+              {...labelProps}
+              component="label"
+              color={isDisabled ? colors.codGray40 : colors.midnight}
+              fontFamily="fontFamily.secondary"
+              fontWeight="fontWeights.secondary.regular"
+              fontSize="1rem"
+              lineHeight="2rem"
+              sx={{ cursor: 'pointer' }}
+            >
+              {children}
+            </Box>
+          </Box>
+          {helperText ? (
+            <Box
+              id={inputProps['aria-describedby']}
+              component="span"
+              color={colors.midnight}
+              fontFamily={fonts.secondary}
+              fontWeight={fontWeights.secondary.regular}
+              fontSize={`${13 / 16}rem`}
+              lineHeight="1rem"
+              sx={{ cursor: 'auto' }}
+            >
+              {helperText}
+            </Box>
+          ) : null}
+        </Stack>
       </Box>
     );
   }
