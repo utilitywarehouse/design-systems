@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, forwardRef, useContext, useState } from 'react';
+import { forwardRef, useContext, useState } from 'react';
 import type { RefObject, ReactNode } from 'react';
 import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Box, BoxProps } from '../Box';
@@ -8,9 +8,8 @@ import { RadioContext } from './RadioGroup';
 import styled from '@emotion/styled';
 import { Stack } from '../Stack';
 
-type InputElementProps = InputHTMLAttributes<HTMLInputElement>;
 export interface RadioItemProps extends Omit<AriaRadioProps, 'isDisabled'> {
-  disabled?: InputElementProps['disabled'];
+  disabled?: AriaRadioProps['isDisabled'];
   sx?: BoxProps['sx'];
   helperText?: ReactNode;
   helperTextId?: string;
@@ -47,7 +46,7 @@ const RadioInput = styled('input')(() => {
       transform: 'scale(1)',
     },
     '&:disabled': {
-      cursor: 'default',
+      cursor: 'auto',
       color: colors.codGray10,
     },
   };
@@ -113,7 +112,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
           />
         </Box>
         <Stack>
-          <Box height={40} width={40} display="flex" alignItems="center">
+          <Box height={40} display="flex" alignItems="center">
             <Box // FieldLabel
               {...labelProps}
               component="label"
@@ -122,7 +121,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
               fontWeight="fontWeights.secondary.regular"
               fontSize="1rem"
               lineHeight="2rem"
-              sx={{ cursor: 'pointer' }}
+              sx={{ cursor: isDisabled ? 'auto' : 'pointer' }}
             >
               {children}
             </Box>
@@ -131,7 +130,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
             <Box
               id={inputProps['aria-describedby']}
               component="span"
-              color={colors.midnight}
+              color={isDisabled ? colors.codGray40 : colors.midnight}
               fontFamily={fonts.secondary}
               fontWeight={fontWeights.secondary.regular}
               fontSize={`${13 / 16}rem`}

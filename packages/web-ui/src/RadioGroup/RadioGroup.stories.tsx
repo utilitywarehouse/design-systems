@@ -21,7 +21,7 @@ export const Workshop: Story = {
   render: args => {
     return (
       <Box background="white" padding={12} display="flex" justifyContent="center">
-        <RadioGroup label="Label" helperText="RadioGroup helper text" {...args}>
+        <RadioGroup {...args}>
           <RadioItem value="1" helperText="One helper text">
             One
           </RadioItem>
@@ -44,10 +44,19 @@ export const Workshop: Story = {
       options: [undefined, 'valid', 'invalid'],
       control: { type: 'radio' },
     },
+    defaultValue: { control: { type: 'text' } },
+    helperText: { control: { type: 'text' } },
+    label: { control: { type: 'text' } },
+    errorMessage: { control: { type: 'text' } },
+    disabled: { control: { type: 'boolean' } },
+    isReadOnly: { control: { type: 'boolean' } },
   },
   args: {
+    defaultValue: '1',
     errorMessage: 'There is an error',
     validationState: undefined,
-    //   disabled: false,
+    disabled: false,
+    label: 'Label',
+    helperText: 'Helper text',
   },
 };

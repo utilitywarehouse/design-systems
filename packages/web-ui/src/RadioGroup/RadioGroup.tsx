@@ -4,28 +4,44 @@ import { createContext } from 'react';
 import type { ReactNode } from 'react';
 import type { AriaRadioGroupProps } from 'react-aria';
 import type { RadioGroupState } from 'react-stately';
-import { Box } from '../Box';
+import { Box, BoxProps } from '../Box';
 import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Stack } from '@mui/system';
 
 export const RadioContext = createContext<RadioGroupState>({} as RadioGroupState);
 
-export interface RadioGroupProps extends Omit<AriaRadioGroupProps, 'description'> {
+export interface RadioGroupProps
+  extends Omit<AriaRadioGroupProps, 'description' | 'orientation' | 'isDisabled'> {
+  disabled?: AriaRadioGroupProps['isDisabled'];
   children: ReactNode;
   direction?: 'column' | 'row';
   helperText?: AriaRadioGroupProps['description'];
+  sx?: BoxProps['sx'];
 }
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  let { children, direction = 'column', label, helperText, errorMessage, validationState } = props;
-  let state = useRadioGroupState(props);
+  let {
+    children,
+    direction = 'column',
+    label,
+    helperText,
+    errorMessage,
+    validationState,
+    sx,
+    disabled,
+  } = props;
+  const orientationMap: { [key: string]: AriaRadioGroupProps['orientation'] } = {
+    column: 'vertical',
+    row: 'horizontal',
+  };
+  let state = useRadioGroupState({ ...props, isDisabled: disabled });
   let { radioGroupProps, labelProps, descriptionProps, errorMessageProps } = useRadioGroup(
-    props,
+    { ...props, orientation: orientationMap[direction] },
     state
   );
 
   return (
-    <Box component="fieldset" border={0} margin={0} padding={0} {...radioGroupProps}>
+    <Box component="fieldset" border={0} margin={0} padding={0} {...radioGroupProps} sx={sx}>
       <Stack spacing={2}>
         <Stack spacing={1}>
           <Box
