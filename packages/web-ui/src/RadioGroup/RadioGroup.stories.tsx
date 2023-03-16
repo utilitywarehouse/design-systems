@@ -25,11 +25,12 @@ export const Workshop: Story = {
       </RadioGroup>
     );
   },
-  // argTypes: {
-  //   disabled: {
-  //     control: { type: 'boolean' },
-  //   },
-  // },
+  argTypes: {
+    direction: {
+      options: ['column', 'row'],
+      control: { type: 'radio' },
+    },
+  },
   // args: {
   //   disabled: false,
   // },

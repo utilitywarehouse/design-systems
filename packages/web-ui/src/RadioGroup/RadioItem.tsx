@@ -1,11 +1,11 @@
 import { InputHTMLAttributes, forwardRef, useContext, useState } from 'react';
 import type { RefObject } from 'react';
 import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
-import { styled } from '../theme';
 import { Box, BoxProps } from '../Box';
 import { useFocusWithin, useRadio, useLabel } from 'react-aria';
 import type { AriaRadioProps } from 'react-aria';
 import { RadioContext } from './RadioGroup';
+import styled from '@emotion/styled';
 
 type InputElementProps = InputHTMLAttributes<HTMLInputElement>;
 export interface RadioButtonProps extends Omit<AriaRadioProps, 'isDisabled'> {
@@ -75,8 +75,10 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioButtonProps>(
     return (
       <Box
         {...focusWithinProps}
+        component="span"
         display="flex"
         alignItems="center"
+        marginLeft={-1}
         sx={{ cursor: 'pointer', ...sx }}
       >
         <Box
