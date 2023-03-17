@@ -7,6 +7,7 @@ import type { RadioGroupState } from 'react-stately';
 import { Box, BoxProps } from '../Box';
 import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Stack } from '@mui/system';
+import { HelperText } from '../HelperText';
 
 export const RadioContext = createContext<RadioGroupState>({} as RadioGroupState);
 
@@ -61,18 +62,9 @@ export const RadioGroup = (props: RadioGroupProps) => {
           </RadioContext.Provider>
         </Stack>
         {helperText && !(errorMessage && validationState === 'invalid') ? (
-          <Box
-            {...descriptionProps}
-            component="span"
-            color={colors.midnight}
-            fontFamily={fonts.secondary}
-            fontWeight={fontWeights.secondary.regular}
-            fontSize={`${13 / 16}rem`}
-            lineHeight="1rem"
-            sx={{ cursor: 'auto' }}
-          >
+          <HelperText {...descriptionProps} disabled={disabled}>
             {helperText}
-          </Box>
+          </HelperText>
         ) : null}
         {errorMessage && validationState === 'invalid' ? (
           <Box

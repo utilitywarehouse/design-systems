@@ -7,6 +7,9 @@ import type { AriaRadioProps } from 'react-aria';
 import { RadioContext } from './RadioGroup';
 import styled from '@emotion/styled';
 import { Stack } from '../Stack';
+import { FieldLabel } from '../FieldLabel';
+import { pxToRem } from '../utils';
+import { HelperText } from '../HelperText';
 
 export interface RadioItemProps extends Omit<AriaRadioProps, 'isDisabled'> {
   disabled?: AriaRadioProps['isDisabled'];
@@ -113,32 +116,14 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
         </Box>
         <Stack>
           <Box height={40} display="flex" alignItems="center">
-            <Box // FieldLabel
-              {...labelProps}
-              component="label"
-              color={isDisabled ? colors.codGray40 : colors.midnight}
-              fontFamily="fontFamily.secondary"
-              fontWeight="fontWeights.secondary.regular"
-              fontSize="1rem"
-              lineHeight="2rem"
-              sx={{ cursor: isDisabled ? 'auto' : 'pointer' }}
-            >
+            <FieldLabel {...labelProps} disabled={isDisabled}>
               {children}
-            </Box>
+            </FieldLabel>
           </Box>
           {helperText ? (
-            <Box
-              id={inputProps['aria-describedby']}
-              component="span"
-              color={isDisabled ? colors.codGray40 : colors.midnight}
-              fontFamily={fonts.secondary}
-              fontWeight={fontWeights.secondary.regular}
-              fontSize={`${13 / 16}rem`}
-              lineHeight="1rem"
-              sx={{ cursor: 'auto' }}
-            >
+            <HelperText id={inputProps['aria-describedby']} disabled={isDisabled}>
               {helperText}
-            </Box>
+            </HelperText>
           ) : null}
         </Stack>
       </Box>
