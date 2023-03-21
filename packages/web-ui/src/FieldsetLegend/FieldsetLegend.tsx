@@ -1,10 +1,10 @@
 import { forwardRef } from 'react';
-import type { ReactNode, LabelHTMLAttributes } from 'react';
+import type { ReactNode, HTMLAttributes } from 'react';
 import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';
 
-export interface FieldsetLegendProps extends LabelHTMLAttributes<HTMLLegendElement> {
+export interface FieldsetLegendProps extends HTMLAttributes<HTMLLegendElement> {
   children: ReactNode;
   disabled?: boolean;
   sx?: BoxProps['sx'];
