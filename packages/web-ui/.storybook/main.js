@@ -19,5 +19,8 @@ const config = {
     defaultName: 'Documentation',
     autodocs: 'tag',
   },
+  typescript: {
+    reactDocgenTypescriptOptions: {},
+  },
 };
 export default config;
