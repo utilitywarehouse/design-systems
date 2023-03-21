@@ -2,7 +2,6 @@ import { createTheme, Theme as MuiTheme } from '@mui/material/styles';
 import {
   breakpoints,
   colors,
-  spacingBase,
   fonts,
   fontWeights,
 } from '@utilitywarehouse/customer-ui-design-tokens';
@@ -13,33 +12,30 @@ import { menuThemeOverrides } from '../Menu';
 import { textThemeOverrides } from '../Text';
 import { headingThemeOverrides } from '../Heading';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
+import { fontSize, htmlFontSize, pxToRem, spacing } from '../utils';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
-  spacing: (multiplier: number) => multiplier * spacingBase,
+  spacing,
+  components: {
+    ...cssBaselineThemeOverrides,
+    ...buttonThemeOverrides,
+    ...textLinkThemeOverrides,
+    ...textFieldThemeOverrides,
+    ...menuThemeOverrides,
+  },
 });
 
-theme.components = {
-  ...theme.components,
-  ...cssBaselineThemeOverrides,
-  ...buttonThemeOverrides(),
-  ...textLinkThemeOverrides(),
-  ...textFieldThemeOverrides(theme),
-  ...menuThemeOverrides(theme),
-};
-
-const textConfiguration = textThemeOverrides(theme);
-const headingConfiguration = headingThemeOverrides(theme);
-const { pxToRem } = theme.typography;
-const customTypography = {
+theme.typography = {
   pxToRem,
-  fontSize: 16,
-  htmlFontSize: 16,
+  fontSize,
+  htmlFontSize,
   fontFamily: fonts,
   fontWeights,
-  ...textConfiguration,
-  ...headingConfiguration,
+  ...textThemeOverrides,
+  ...headingThemeOverrides,
 };
+
 export const customPalette = {
   ...colors,
   text: {
@@ -81,7 +77,6 @@ export const customPalette = {
   },
 };
 
-theme.typography = customTypography;
 theme.palette = {
   // TODO: we have to do this because the mui/material Button component relies on certain palette properties.
   // I'm guessing we can remove this when we refactor to use the unstyled mui/base Button
