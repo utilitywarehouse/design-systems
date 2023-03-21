@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 import type { AriaRadioGroupProps } from 'react-aria';
 import type { RadioGroupState } from 'react-stately';
 import { Box, BoxProps } from '../Box';
-import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
+import { fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Stack } from '@mui/system';
 import { HelperText } from '../HelperText';
 

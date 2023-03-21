@@ -1,2 +1,2 @@
 export { FieldLabel } from './FieldLabel';
-export type { HelperTextProps } from './FieldLabel';
+export type { FieldLabelProps } from './FieldLabel';

@@ -1,6 +1,6 @@
 import { forwardRef, useContext, useState } from 'react';
 import type { RefObject, ReactNode } from 'react';
-import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Box, BoxProps } from '../Box';
 import { useFocusWithin, useRadio, useLabel } from 'react-aria';
 import type { AriaRadioProps } from 'react-aria';
@@ -8,7 +8,6 @@ import { RadioContext } from './RadioGroup';
 import styled from '@emotion/styled';
 import { Stack } from '../Stack';
 import { FieldLabel } from '../FieldLabel';
-import { pxToRem } from '../utils';
 import { HelperText } from '../HelperText';
 
 export interface RadioItemProps extends Omit<AriaRadioProps, 'isDisabled'> {
