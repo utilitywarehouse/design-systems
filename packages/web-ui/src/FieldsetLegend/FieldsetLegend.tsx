@@ -4,28 +4,27 @@ import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design
 import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';
 
-export interface FieldLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+export interface FieldsetLegendProps extends LabelHTMLAttributes<HTMLLegendElement> {
   children: ReactNode;
   disabled?: boolean;
   sx?: BoxProps['sx'];
 }
 
-export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabelProps>(
-  ({ disabled, sx, ...props }, ref) => {
+export const FieldsetLegend = forwardRef<HTMLLegendElement, FieldsetLegendProps>(
+  ({ disabled, ...props }, ref) => {
     return (
       <Box
         ref={ref}
-        component="label"
+        component="legend"
         color={disabled ? colors.codGray40 : colors.midnight}
         fontFamily={fonts.secondary}
-        fontWeight={fontWeights.secondary.regular}
+        fontWeight={fontWeights.secondary.semibold}
         fontSize={pxToRem(16)}
-        lineHeight={pxToRem(24)}
-        sx={{ cursor: disabled ? 'auto' : 'pointer', ...sx }}
+        lineHeight={pxToRem(16)}
         {...props}
       />
     );
   }
 );
 
-FieldLabel.displayName = 'FieldLabel';
+FieldsetLegend.displayName = 'FieldsetLegend';

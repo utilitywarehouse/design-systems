@@ -8,6 +8,8 @@ import { Box, BoxProps } from '../Box';
 import { fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
 import { Stack } from '@mui/system';
 import { HelperText } from '../HelperText';
+import { FieldsetLegend } from '../FieldsetLegend';
+import { pxToRem } from '../utils';
 
 export const RadioContext = createContext<RadioGroupState>({} as RadioGroupState);
 
@@ -45,16 +47,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
     <Box component="fieldset" border={0} margin={0} padding={0} {...radioGroupProps} sx={sx}>
       <Stack spacing={2}>
         <Stack spacing={1}>
-          <Box
-            component="legend"
-            fontFamily={fonts.secondary}
-            fontWeight={fontWeights.secondary.semibold}
-            fontSize="1rem"
-            lineHeight="1rem"
-            {...labelProps}
-          >
-            {label}
-          </Box>
+          <FieldsetLegend {...labelProps}>{label}</FieldsetLegend>
           <RadioContext.Provider value={state}>
             <Stack spacing={1} direction={direction}>
               {children}
@@ -73,8 +66,8 @@ export const RadioGroup = (props: RadioGroupProps) => {
             color="#CE2261" // maroon60
             fontFamily={fonts.secondary}
             fontWeight={fontWeights.secondary.regular}
-            fontSize={`${13 / 16}rem`}
-            lineHeight="1rem"
+            fontSize={pxToRem(13)}
+            lineHeight={pxToRem(16)}
             sx={{ cursor: 'auto' }}
           >
             {errorMessage}
