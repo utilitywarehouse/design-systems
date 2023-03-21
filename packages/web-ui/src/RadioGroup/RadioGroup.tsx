@@ -21,7 +21,7 @@ export interface RadioGroupProps
 }
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  let {
+  const {
     children,
     direction = 'column',
     label,
@@ -35,8 +35,8 @@ export const RadioGroup = (props: RadioGroupProps) => {
     column: 'vertical',
     row: 'horizontal',
   };
-  let state = useRadioGroupState({ ...props, isDisabled: disabled });
-  let { radioGroupProps, labelProps, descriptionProps, errorMessageProps } = useRadioGroup(
+  const state = useRadioGroupState({ ...props, isDisabled: disabled });
+  const { radioGroupProps, labelProps, descriptionProps, errorMessageProps } = useRadioGroup(
     { ...props, orientation: orientationMap[direction] },
     state
   );
