@@ -47,7 +47,9 @@ export const RadioGroup = (props: RadioGroupProps) => {
 
   return (
     <Fieldset {...radioGroupProps} sx={sx}>
-      <FieldsetLegend {...labelProps}>{label}</FieldsetLegend>
+      <FieldsetLegend disabled={disabled} {...labelProps}>
+        {label}
+      </FieldsetLegend>
       <RadioContext.Provider value={state}>
         <Stack spacing={2} direction={direction}>
           {children}
