@@ -14,7 +14,7 @@ export const RadioItemStory: Story = {
   name: 'RadioItem',
   render: args => {
     return (
-      <Box background="white" padding={12} display="flex" justifyContent="center">
+      <Box background="white" padding={4}>
         <RadioItem {...args} />
       </Box>
     );

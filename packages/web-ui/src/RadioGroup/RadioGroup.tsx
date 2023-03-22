@@ -4,22 +4,24 @@ import { createContext } from 'react';
 import type { ReactNode } from 'react';
 import type { AriaRadioGroupProps } from 'react-aria';
 import type { RadioGroupState } from 'react-stately';
-import { Box, BoxProps } from '../Box';
-import { fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
-import { Stack } from '@mui/system';
-import { HelperText } from '../HelperText';
-import { FieldsetLegend } from '../FieldsetLegend';
-import { pxToRem } from '../utils';
+import { BoxProps } from '../Box';
+import { FormHelperText } from '../FormHelperText';
+import { Fieldset, FieldsetLegend } from '../Fieldset';
+import { Stack } from '../Stack';
 
 export const RadioContext = createContext<RadioGroupState>({} as RadioGroupState);
 
 export interface RadioGroupProps
-  extends Omit<AriaRadioGroupProps, 'description' | 'orientation' | 'isDisabled'> {
+  extends Omit<
+    AriaRadioGroupProps,
+    'description' | 'orientation' | 'isDisabled' | 'validationState'
+  > {
   disabled?: AriaRadioGroupProps['isDisabled'];
   children: ReactNode;
   direction?: 'column' | 'row';
   helperText?: AriaRadioGroupProps['description'];
   sx?: BoxProps['sx'];
+  error?: boolean;
 }
 
 export const RadioGroup = (props: RadioGroupProps) => {
@@ -29,7 +31,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
     label,
     helperText,
     errorMessage,
-    validationState,
+    error,
     sx,
     disabled,
   } = props;
@@ -44,36 +46,24 @@ export const RadioGroup = (props: RadioGroupProps) => {
   );
 
   return (
-    <Box component="fieldset" border={0} margin={0} padding={0} {...radioGroupProps} sx={sx}>
-      <Stack spacing={2}>
-        <Stack spacing={1}>
-          <FieldsetLegend {...labelProps}>{label}</FieldsetLegend>
-          <RadioContext.Provider value={state}>
-            <Stack spacing={1} direction={direction}>
-              {children}
-            </Stack>
-          </RadioContext.Provider>
+    <Fieldset {...radioGroupProps} sx={sx}>
+      <FieldsetLegend {...labelProps}>{label}</FieldsetLegend>
+      <RadioContext.Provider value={state}>
+        <Stack spacing={2} direction={direction}>
+          {children}
         </Stack>
-        {helperText && !(errorMessage && validationState === 'invalid') ? (
-          <HelperText {...descriptionProps} disabled={disabled}>
-            {helperText}
-          </HelperText>
-        ) : null}
-        {errorMessage && validationState === 'invalid' ? (
-          <Box
-            {...errorMessageProps}
-            component="span"
-            color="#CE2261" // maroon60
-            fontFamily={fonts.secondary}
-            fontWeight={fontWeights.secondary.regular}
-            fontSize={pxToRem(13)}
-            lineHeight={pxToRem(16)}
-            sx={{ cursor: 'auto' }}
-          >
-            {errorMessage}
-          </Box>
-        ) : null}
-      </Stack>
-    </Box>
+      </RadioContext.Provider>
+
+      {helperText && !error ? (
+        <FormHelperText {...descriptionProps} disabled={disabled}>
+          {helperText}
+        </FormHelperText>
+      ) : null}
+      {errorMessage && error ? (
+        <FormHelperText {...errorMessageProps} disabled={disabled} error={error}>
+          {errorMessage}
+        </FormHelperText>
+      ) : null}
+    </Fieldset>
   );
 };

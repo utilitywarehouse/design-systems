@@ -11,17 +11,56 @@ const meta: Meta<typeof RadioGroup> = {
 export default meta;
 type Story = StoryObj<typeof RadioGroup>;
 
+const argTypes = {
+  direction: {
+    options: ['column', 'row'],
+    control: { type: 'radio' },
+  },
+  error: { control: { type: 'boolean' } },
+  defaultValue: { control: { type: 'text' } },
+  helperText: { control: { type: 'text' } },
+  label: { control: { type: 'text' } },
+  errorMessage: { control: { type: 'text' } },
+  disabled: { control: { type: 'boolean' } },
+  isReadOnly: { control: { type: 'boolean' } },
+};
+const args = {
+  defaultValue: '1',
+  errorMessage: 'There is an error',
+  disabled: false,
+  error: false,
+  label: 'Label',
+  helperText: 'RadioGroup Helper text',
+};
+
 export const Workshop: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/HPzggfc5IHQRZp2q2xQMiH/Design-System-%5BPreliminary-Work%5D?node-id=12-659&t=9l2avF7liTN710K2-0',
+      url: 'https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=902-9379&t=XTterR22jM1rC0Xr-0',
     },
   },
-  render: args => {
+  render: a => {
     return (
-      <Box background="white" padding={12} display="flex" justifyContent="center">
-        <RadioGroup {...args}>
+      <Box background="white" padding={4}>
+        <RadioGroup {...a}>
+          <RadioItem value="1">One</RadioItem>
+          <RadioItem value="2">Two</RadioItem>
+          <RadioItem value="3">Three</RadioItem>
+        </RadioGroup>
+      </Box>
+    );
+  },
+  argTypes,
+  args,
+};
+
+export const WithRadioItemHelperText: Story = {
+  name: 'With RadioItem HelperText',
+  render: a => {
+    return (
+      <Box background="white" padding={4}>
+        <RadioGroup {...a}>
           <RadioItem value="1" helperText="One helper text">
             One
           </RadioItem>
@@ -35,28 +74,6 @@ export const Workshop: Story = {
       </Box>
     );
   },
-  argTypes: {
-    direction: {
-      options: ['column', 'row'],
-      control: { type: 'radio' },
-    },
-    validationState: {
-      options: [undefined, 'valid', 'invalid'],
-      control: { type: 'radio' },
-    },
-    defaultValue: { control: { type: 'text' } },
-    helperText: { control: { type: 'text' } },
-    label: { control: { type: 'text' } },
-    errorMessage: { control: { type: 'text' } },
-    disabled: { control: { type: 'boolean' } },
-    isReadOnly: { control: { type: 'boolean' } },
-  },
-  args: {
-    defaultValue: '1',
-    errorMessage: 'There is an error',
-    validationState: undefined,
-    disabled: false,
-    label: 'Label',
-    helperText: 'Helper text',
-  },
+  argTypes,
+  args,
 };

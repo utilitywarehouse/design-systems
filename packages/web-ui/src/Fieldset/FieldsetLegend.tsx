@@ -16,6 +16,7 @@ export const FieldsetLegend = forwardRef<HTMLLegendElement, FieldsetLegendProps>
       <Box
         ref={ref}
         component="legend"
+        padding={0} // reset
         color={disabled ? colors.codGray40 : colors.midnight}
         fontFamily={fonts.secondary}
         fontWeight={fontWeights.secondary.semibold}

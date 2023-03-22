@@ -4,30 +4,36 @@ import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design
 import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';
 
-export interface HelperTextProps extends HTMLAttributes<HTMLSpanElement> {
+export interface FormHelperTextProps extends HTMLAttributes<HTMLSpanElement> {
   children: ReactNode;
   disabled?: boolean;
   sx?: BoxProps['sx'];
+  error?: boolean;
 }
 
-export const HelperText = forwardRef<HTMLSpanElement, HelperTextProps>(
-  ({ disabled, children, sx, ...props }, ref) => {
+export const FormHelperText = forwardRef<HTMLSpanElement, FormHelperTextProps>(
+  ({ disabled, error, sx, ...props }, ref) => {
+    const maroon60 = '#CE2261';
+    const getColor = () => {
+      if (disabled) return colors.codGray40;
+      if (error) return maroon60;
+      return colors.midnight;
+    };
+    const color = getColor();
     return (
       <Box
         ref={ref}
         component="span"
-        color={disabled ? colors.codGray40 : colors.midnight}
+        color={color}
         fontFamily={fonts.secondary}
         fontWeight={fontWeights.secondary.regular}
         fontSize={pxToRem(13)}
         lineHeight={pxToRem(16)}
         sx={{ cursor: 'auto', ...sx }}
         {...props}
-      >
-        {children}
-      </Box>
+      />
     );
   }
 );
 
-HelperText.displayName = 'HelperText';
+FormHelperText.displayName = 'FormHelperText';
