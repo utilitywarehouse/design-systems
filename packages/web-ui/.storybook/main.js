@@ -22,5 +22,6 @@ const config = {
   typescript: {
     reactDocgenTypescriptOptions: {},
   },
+  staticDirs: ['static'],
 };
 export default config;
