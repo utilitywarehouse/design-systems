@@ -4,6 +4,7 @@ import { version } from '../package.json';
 
 const theme = create({
   brandTitle: `UW Web UI v${version}`,
+  brandImage: 'monogram.svg',
 });
 
 addons.setConfig({
