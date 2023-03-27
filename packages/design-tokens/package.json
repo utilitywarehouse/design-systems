@@ -1,0 +1,19 @@
+{
+  "name": "@utilitywarehouse/design-tokens",
+  "version": "0.0.1",
+  "description": "Design Tokens for the UW brand",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf node_modules && rm -rf dist",
+    "build": "rm -rf dist/ && tsc",
+    "lint:fix": "TIMING=1 eslint ./src --fix --ext .ts",
+    "lint": "TIMING=1 eslint ./src --ext .ts"
+  },
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "files": [
+    "dist"
+  ]
+}
