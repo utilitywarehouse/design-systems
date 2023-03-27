@@ -14,7 +14,12 @@ export const fontWeights = {
 export type Fonts = typeof fonts;
 export type FontWeights = typeof fontWeights;
 
-export const breakpoints = { mobile: 0, tablet: 768, desktop: 1366 };
+export const breakpoints = {
+  // px
+  mobile: 360,
+  tablet: 744,
+  desktop: 1096,
+};
 export type Breakpoints = typeof breakpoints;
 
 export const transitions = { duration: 120, easingFunction: 'ease-out' };
