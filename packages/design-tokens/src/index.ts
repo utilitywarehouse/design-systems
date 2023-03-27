@@ -1,4 +1,4 @@
-export { colors, Colors } from './colors';
+export * from './colors';
 
 export const fonts = {
   primary: 'Aeonik, Arial, sans-serif',
