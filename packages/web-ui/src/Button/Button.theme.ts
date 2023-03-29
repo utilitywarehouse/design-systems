@@ -1,9 +1,4 @@
-import {
-  transitions,
-  fonts,
-  fontWeights,
-  colors,
-} from '@utilitywarehouse/customer-ui-design-tokens';
+import { transitions, fonts, fontWeights, colors } from '@utilitywarehouse/design-tokens';
 import { dataAttributes, px } from '../utils';
 import { Components } from '@mui/material/styles';
 

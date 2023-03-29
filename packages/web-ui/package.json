@@ -19,8 +19,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@utilitywarehouse/customer-ui-design-tokens": "^2.0.2",
-    "@utilitywarehouse/customer-ui-react-icons": "^1.1.0"
+    "@utilitywarehouse/customer-ui-react-icons": "^1.1.0",
+    "@utilitywarehouse/design-tokens": "workspace:*"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",

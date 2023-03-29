@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import MuiToggleButton, {
   ToggleButtonProps as MuiToggleButtonProps,
 } from '@mui/material/ToggleButton';
-import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors, fonts, fontWeights } from '@utilitywarehouse/design-tokens';
 import { dataAttributes, px } from '../utils';
 
 const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {

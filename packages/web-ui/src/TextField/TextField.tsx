@@ -1,6 +1,6 @@
 import * as React from 'react';
 import FilledInput, { FilledInputProps } from '@mui/material/FilledInput';
-import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors } from '@utilitywarehouse/design-tokens';
 import SuccessOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined';
 import WarningOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined';
 import { styled } from '@mui/material/styles';

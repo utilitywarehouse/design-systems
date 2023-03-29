@@ -1,5 +1,5 @@
 import { Components } from '@mui/material/styles';
-import { fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
+import { fontWeights } from '@utilitywarehouse/design-tokens';
 
 /* https://github.com/hankchizljaw/modern-css-reset/blob/master/src/reset.css */
 export const cssBaselineThemeOverrides: Components = {

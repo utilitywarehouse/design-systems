@@ -1,6 +1,6 @@
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { dataAttributes, isInverseBackgroundColor } from '../utils';
-import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors } from '@utilitywarehouse/design-tokens';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { forwardRef } from 'react';
 import type { NeutralBackgroundColor, InverseBackgroundColor } from '../types';

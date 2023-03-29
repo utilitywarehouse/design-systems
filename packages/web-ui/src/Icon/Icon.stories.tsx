@@ -7,7 +7,7 @@ import { Stack } from '../Stack';
 import { Heading } from '../Heading';
 import { Text } from '../Text';
 import { Box } from '../Box';
-import { borderRadius, colors, transitions } from '@utilitywarehouse/customer-ui-design-tokens';
+import { borderRadius, colors, transitions } from '@utilitywarehouse/design-tokens';
 import Tooltip from '@mui/material/Tooltip';
 
 const allIcons = [...icons['24x24'], ...icons['48x48']];

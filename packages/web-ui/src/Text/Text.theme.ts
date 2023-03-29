@@ -1,4 +1,4 @@
-import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors, fonts, fontWeights } from '@utilitywarehouse/design-tokens';
 import { dataAttributes, mediaQueries, pxToRem } from '../utils';
 
 const { inverse, bold, success, error } = dataAttributes;
