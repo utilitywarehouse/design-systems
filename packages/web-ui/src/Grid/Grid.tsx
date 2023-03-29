@@ -3,7 +3,7 @@ import type { OverridableComponent, OverrideProps } from '@mui/material/Overrida
 import { forwardRef } from 'react';
 import type { GridProps as MuiGridProps, RegularBreakpoints } from '@mui/material/Grid';
 
-const DEFAULT_COLUMNS = { mobile: 4, tablet: 8, desktop: 12 };
+const DEFAULT_COLUMNS = { mobile: 1, tablet: 8, desktop: 12 };
 const DEFAULT_SPACING = { mobile: 2, tablet: 3, desktop: 3 };
 
 export type DefaultGridComponent = 'div';
@@ -28,7 +28,8 @@ export interface CustomGridProps {
 }
 
 export interface GridTypeMap<D extends React.ElementType = DefaultGridComponent, P = {}> {
-  props: CustomGridProps & Omit<MuiGridProps<D, P>, 'xs' | 'sm' | 'lg' | 'md' | 'xl'>;
+  props: CustomGridProps &
+    Omit<MuiGridProps<D, P>, 'xs' | 'sm' | 'lg' | 'md' | 'xl' | 'columns' | 'spacing'>;
   defaultComponent: D;
 }
 
@@ -37,11 +38,9 @@ export type GridProps<D extends React.ElementType = DefaultGridComponent, P = {}
   D
 >;
 
-export const Grid = forwardRef(function Grid({ columns = DEFAULT_COLUMNS, ...props }, ref) {
+export const Grid = forwardRef(function Grid({ mobile = 1, ...props }, ref) {
   if (props.container) {
-    return (
-      <MuiGrid ref={ref} columns={columns} spacing={props.spacing || DEFAULT_SPACING} {...props} />
-    );
+    return <MuiGrid ref={ref} columns={DEFAULT_COLUMNS} spacing={DEFAULT_SPACING} {...props} />;
   }
-  return <MuiGrid ref={ref} columns={columns} {...props} />;
+  return <MuiGrid ref={ref} columns={DEFAULT_COLUMNS} mobile={mobile} {...props} />;
 }) as OverridableComponent<GridTypeMap>;

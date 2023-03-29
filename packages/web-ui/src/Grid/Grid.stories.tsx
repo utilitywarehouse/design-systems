@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Grid } from './Grid';
 import { Box } from '../Box';
 import { Text } from '../Text';
+import { Container } from '../Container/Container';
 
 const meta: Meta<typeof Grid> = {
   title: 'Components/Grid',
@@ -39,7 +40,6 @@ export const GridStory: Story = {
           <Grid item mobile={4} tablet={8} desktop={12}>
             <Grid
               container
-              spacing={3}
               direction={{
                 mobile: 'column-reverse',
                 tablet: 'column-reverse',
@@ -47,7 +47,7 @@ export const GridStory: Story = {
               }}
             >
               <Grid item mobile={4} tablet={4} desktop={8}>
-                <Grid container spacing={3}>
+                <Grid container>
                   <Grid item mobile={2} tablet={2} desktop={3}>
                     <SmallContent>quick link 1</SmallContent>
                   </Grid>
@@ -66,6 +66,38 @@ export const GridStory: Story = {
           </Grid>
         </Grid>
       </Box>
+    );
+  },
+};
+
+const Item = () => (
+  <Grid item tablet={1}>
+    <Box background="lightTint" height="100vh" />
+  </Grid>
+);
+
+export const GridLayout: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  render: () => {
+    return (
+      <Container sx={{ border: '1px solid red' }}>
+        <Grid container>
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+        </Grid>
+      </Container>
     );
   },
 };
