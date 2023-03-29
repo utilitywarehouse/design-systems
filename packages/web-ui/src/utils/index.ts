@@ -3,12 +3,9 @@ import { type BackgroundColor, inverseBackgroundColors } from '../types';
 
 export const px = (value: string | number): string => `${value}px`;
 
-// The default font size for UW applications
-export const fontSize = 16; // px
 // 16px is the default font-size used by browsers.
 export const htmlFontSize = 16; // px
-const coef = fontSize / 14;
-export const pxToRem = (size: number) => `${(size / htmlFontSize) * coef}rem`;
+export const pxToRem = (size: number) => `${size / htmlFontSize}rem`;
 
 export const spacing = (multiplier: number) => multiplier * spacingBase;
 
