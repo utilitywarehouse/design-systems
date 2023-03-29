@@ -1,9 +1,9 @@
 import { Box } from '../Box';
-import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors } from '@utilitywarehouse/design-tokens';
 import { forwardRef } from 'react';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import type { BoxProps } from '../Box';
-import type { Colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import type { Colors } from '@utilitywarehouse/design-tokens';
 
 export type DefaultIconComponent = 'span';
 

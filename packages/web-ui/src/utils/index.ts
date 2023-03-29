@@ -1,4 +1,4 @@
-import { breakpoints, spacingBase } from '@utilitywarehouse/customer-ui-design-tokens';
+import { breakpoints, spacingBase } from '@utilitywarehouse/design-tokens';
 import { type BackgroundColor, inverseBackgroundColors } from '../types';
 
 export const px = (value: string | number): string => `${value}px`;

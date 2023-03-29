@@ -1,10 +1,5 @@
 import { createTheme, Theme as MuiTheme } from '@mui/material/styles';
-import {
-  breakpoints,
-  colors,
-  fonts,
-  fontWeights,
-} from '@utilitywarehouse/customer-ui-design-tokens';
+import { breakpoints, colors, fonts, fontWeights } from '@utilitywarehouse/design-tokens';
 import { buttonThemeOverrides } from '../Button';
 import { textFieldThemeOverrides } from '../TextField';
 import { textLinkThemeOverrides } from '../TextLink';

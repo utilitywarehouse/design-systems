@@ -1,6 +1,6 @@
 import '@utilitywarehouse/fontsource';
 import { ThemeProvider } from '../src/ThemeProvider';
-import { breakpoints } from '@utilitywarehouse/customer-ui-design-tokens';
+import { breakpoints } from '@utilitywarehouse/design-tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { MDXProvider } from '@mdx-js/react';
 import { DocsContainer as StorybookDocsContainer } from '@storybook/blocks';
@@ -25,14 +25,21 @@ export const DocsContainer = props => (
 
 const customerUiViewports = {
   mobile: {
-    name: 'Customer UI mobile',
+    name: 'Web UI mobile',
+    styles: {
+      width: `${breakpoints.mobile}px`,
+      height: '100vh',
+    },
+  },
+  tablet: {
+    name: 'Web UI tablet',
     styles: {
       width: `${breakpoints.tablet}px`,
       height: '100vh',
     },
   },
   desktop: {
-    name: 'Customer UI desktop',
+    name: 'Web UI desktop',
     styles: {
       width: `${breakpoints.desktop}px`,
       height: '100vh',

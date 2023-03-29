@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import MuiToggleButtonGroup, {
   ToggleButtonGroupProps as MuiToggleButtonGroupProps,
 } from '@mui/material/ToggleButtonGroup';
-import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors } from '@utilitywarehouse/design-tokens';
 import { dataAttributes, px } from '../utils';
 
 const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme, disabled }) => {

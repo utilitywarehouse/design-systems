@@ -1,5 +1,5 @@
 import { Components } from '@mui/material/styles';
-import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors } from '@utilitywarehouse/design-tokens';
 import { spacing } from '../utils';
 
 export const menuThemeOverrides: Components = {

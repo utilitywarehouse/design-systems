@@ -1,5 +1,5 @@
 import { TypographyOptions, TypographyUtils } from '@mui/material/styles/createTypography';
-import { Fonts, FontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
+import { Fonts, FontWeights } from '@utilitywarehouse/design-tokens';
 import * as React from 'react';
 import { customPalette } from '../theme';
 

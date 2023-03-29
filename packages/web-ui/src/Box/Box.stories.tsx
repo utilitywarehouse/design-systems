@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { colors, borderRadius } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors, borderRadius } from '@utilitywarehouse/design-tokens';
 import { backgroundColors } from '../types';
 import { Text } from '../Text';
 import { Stack } from '../Stack';
