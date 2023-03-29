@@ -12,7 +12,7 @@ import { menuThemeOverrides } from '../Menu';
 import { textThemeOverrides } from '../Text';
 import { headingThemeOverrides } from '../Heading';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
-import { fontSize, htmlFontSize, pxToRem, spacing } from '../utils';
+import { htmlFontSize, pxToRem, spacing } from '../utils';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
@@ -28,7 +28,7 @@ const theme: MuiTheme = createTheme({
 
 theme.typography = {
   pxToRem,
-  fontSize,
+  fontSize: htmlFontSize,
   htmlFontSize,
   fontFamily: fonts,
   fontWeights,
