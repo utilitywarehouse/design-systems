@@ -1,1 +1,1 @@
-declare module '@utilitywarehouse/customer-ui-react-icons';
+declare module '@utilitywarehouse/customer-ui-react-icons' {}
