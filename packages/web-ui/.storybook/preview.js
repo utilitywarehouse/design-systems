@@ -45,6 +45,13 @@ const customerUiViewports = {
       height: '100vh',
     },
   },
+  wide: {
+    name: 'Web UI wide',
+    styles: {
+      width: `${breakpoints.wide}px`,
+      height: '100vh',
+    },
+  },
   ...INITIAL_VIEWPORTS,
 };
 

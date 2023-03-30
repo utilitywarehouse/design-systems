@@ -22,9 +22,10 @@ declare module '@mui/material/styles' {
     md: false;
     lg: false;
     xl: false;
-    tablet: true;
     mobile: true;
+    tablet: true;
     desktop: true;
+    wide: true;
   }
 
   interface TypographyVariants {
