@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/web-ui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React components for building UW UIs",
   "main": "./dist/index.js",
   "scripts": {
