@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
-    "build": "rm -rf dist/ && tsc --build ./tsconfig.build.json",
+    "build": "tsup",
     "lint:fix": "TIMING=1 eslint --fix --ext ts,tsx src",
     "lint": "TIMING=1 eslint --ext ts,tsx src",
     "dev": "storybook dev --quiet -p 6006",
@@ -41,7 +41,8 @@
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "storybook": "^7.0.0-rc.6",
-    "storybook-addon-designs": "beta"
+    "storybook-addon-designs": "beta",
+    "tsup": "^6.7.0"
   },
   "peerDependencies": {
     "@mui/material": "^5.11.14",
