@@ -1,5 +1,23 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.3
+
+### Patch Changes
+
+- [#39](https://github.com/utilitywarehouse/design-systems/pull/39) [`9482e06`](https://github.com/utilitywarehouse/design-systems/commit/9482e06b14080d8fa063191570e3d8b10f12a00b) Thanks [@robphoenix](https://github.com/robphoenix)! - This change updates the breakpoints.
+
+  - mobile: 0px (no change)
+  - tablet: 768px -> 740px
+  - desktop: 1366px -> 992px
+  - wide: 1200px (new)
+
+- [#40](https://github.com/utilitywarehouse/design-systems/pull/40) [`3d2b382`](https://github.com/utilitywarehouse/design-systems/commit/3d2b382cfa55b66110820c819fde1608cde87409) Thanks [@robphoenix](https://github.com/robphoenix)! - This change hopefully fixes ESM/Next.js usage
+
+- [#37](https://github.com/utilitywarehouse/design-systems/pull/37) [`626ced7`](https://github.com/utilitywarehouse/design-systems/commit/626ced70afaee20e1cd6152c20ac7a8f46bdecb5) Thanks [@robphoenix](https://github.com/robphoenix)! - This change exports the `Text` and `Heading` components, which were unintenionally removed from the root index file
+
+- Updated dependencies [[`9482e06`](https://github.com/utilitywarehouse/design-systems/commit/9482e06b14080d8fa063191570e3d8b10f12a00b)]:
+  - @utilitywarehouse/design-tokens@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes
