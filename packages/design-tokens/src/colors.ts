@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   apple: '#62dd99',
   black: '#000000',
   blueRibbon: '#1d60fe',
@@ -39,7 +39,4 @@ const colors = {
   whiteOwl: '#f4f3f6',
 };
 
-type Colors = typeof colors;
-
-export { colors };
-export type { Colors };
+export type Colors = typeof colors;
