@@ -3,6 +3,9 @@
   "version": "0.0.5",
   "description": "React components for building UW UIs",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
     "build": "tsup",

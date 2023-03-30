@@ -14,6 +14,7 @@ export default defineConfig([
     splitting: false,
     outDir: 'dist',
     format: ['cjs', 'esm'] as Array<Format>,
+    target: 'es2020',
     external: ['react', '*.stories.*'],
     // index files must NOT be bundled!
     // it acts as a map towards bundled components
