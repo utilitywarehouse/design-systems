@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/design-tokens",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Design Tokens for the UW brand",
   "main": "dist/index.js",
   "scripts": {
