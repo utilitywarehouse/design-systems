@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.4
+
+### Patch Changes
+
+- [#41](https://github.com/utilitywarehouse/design-systems/pull/41) [`a6e41c2`](https://github.com/utilitywarehouse/design-systems/commit/a6e41c2dee1a9c8485c9ae912c560859f7b687c1) Thanks [@robphoenix](https://github.com/robphoenix)! - revert change to esm
+
 ## 0.0.3
 
 ### Patch Changes
