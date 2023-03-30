@@ -1,5 +1,11 @@
 # @utilitywarehouse/design-tokens
 
+## 0.0.4
+
+### Patch Changes
+
+- [#43](https://github.com/utilitywarehouse/design-systems/pull/43) [`1f3a80d`](https://github.com/utilitywarehouse/design-systems/commit/1f3a80dc7d66db4d62569fe121af64fb2768e4de) Thanks [@robphoenix](https://github.com/robphoenix)! - release as commonjs
+
 ## 0.0.3
 
 ### Patch Changes
