@@ -1,5 +1,11 @@
 # @utilitywarehouse/design-tokens
 
+## 0.0.5
+
+### Patch Changes
+
+- [#45](https://github.com/utilitywarehouse/design-systems/pull/45) [`172cb27`](https://github.com/utilitywarehouse/design-systems/commit/172cb27e78d3edfcca8094b30d23c5cf570c3f1a) Thanks [@robphoenix](https://github.com/robphoenix)! - Use tsup for bundling
+
 ## 0.0.4
 
 ### Patch Changes
