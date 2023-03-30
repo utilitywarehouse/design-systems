@@ -3,7 +3,6 @@
   "version": "0.0.3",
   "description": "React components for building UW UIs",
   "main": "./dist/index.js",
-  "type": "module",
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
     "build": "rm -rf dist/ && tsc --build ./tsconfig.build.json",
