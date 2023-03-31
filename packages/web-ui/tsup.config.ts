@@ -7,16 +7,14 @@ export default defineConfig([
     // index files to allow named imports
     entry: ['./src/**/*.ts?(x)', '!src/**/*.stories.*'],
     tsconfig: path.join(__dirname, './tsconfig.build.json'),
-    sourcemap: true,
-    splitting: true,
-    clean: true, // clean up the dist folder
-    dts: true, // generate dts files
     format: ['cjs', 'esm'], // generate cjs and esm files
-    minify: true,
-    bundle: true,
-    skipNodeModulesBundle: true,
-    entryPoints: ['src/index.ts'],
     target: 'es2020',
-    outDir: 'dist',
+    minify: true,
+    clean: true,
+    dts: true,
+    // index files must NOT be bundled!
+    // it acts as a map towards bundled components
+    // but never rebundles them
+    bundle: false,
   },
 ]);
