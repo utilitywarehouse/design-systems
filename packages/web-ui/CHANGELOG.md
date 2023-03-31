@@ -1,5 +1,14 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.7
+
+### Patch Changes
+
+- [#47](https://github.com/utilitywarehouse/design-systems/pull/47) [`48ec86f`](https://github.com/utilitywarehouse/design-systems/commit/48ec86f08243cf004146442a7dddb48e95628a82) Thanks [@robphoenix](https://github.com/robphoenix)! - Update bundler settings for esm
+
+- Updated dependencies [[`48ec86f`](https://github.com/utilitywarehouse/design-systems/commit/48ec86f08243cf004146442a7dddb48e95628a82)]:
+  - @utilitywarehouse/design-tokens@0.0.6
+
 ## 0.0.6
 
 ### Patch Changes
