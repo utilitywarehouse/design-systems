@@ -66,6 +66,7 @@ importers:
       '@storybook/react': ^7.0.0-rc.6
       '@storybook/react-webpack5': ^7.0.0-rc.6
       '@storybook/testing-library': ^0.0.14-next.1
+      '@types/node': ^18.15.11
       '@types/react': ^17.0.0 || ^18.0.0
       '@utilitywarehouse/customer-ui-react-icons': ^1.1.0
       '@utilitywarehouse/design-tokens': workspace:*
@@ -73,7 +74,6 @@ importers:
       prop-types: ^15.8.1
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
-      rimraf: ^4.4.1
       storybook: ^7.0.0-rc.6
       storybook-addon-designs: beta
       tsup: ^6.7.0
@@ -96,12 +96,12 @@ importers:
       '@storybook/react': 7.0.0-rc.7_grokbpfbuuosdhrkscgthnz2vm
       '@storybook/react-webpack5': 7.0.0-rc.7_h5qhx7ly75h7hqyoiddtyzfmle
       '@storybook/testing-library': 0.0.14-next.1
+      '@types/node': 18.15.11
       '@types/react': 18.0.25
       '@utilitywarehouse/fontsource': 0.0.5
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      rimraf: 4.4.1
       storybook: 7.0.0-rc.7
       storybook-addon-designs: 7.0.0-beta.2_scjwle34v2vtv4r2rcszulfqk4
 
@@ -9225,16 +9225,6 @@ packages:
       once: 1.4.0
     dev: true
 
-  /glob/9.3.2:
-    resolution: {integrity: sha512-BTv/JhKXFEHsErMte/AnfiSv8yYOLLiyH2lTg8vn02O21zWFgHPTfxtgn1QRe7NRgggUhC8hacR2Re94svHqeA==}
-    engines: {node: '>=16 || 14 >=14.17'}
-    dependencies:
-      fs.realpath: 1.0.0
-      minimatch: 7.4.3
-      minipass: 4.2.5
-      path-scurry: 1.6.3
-    dev: true
-
   /global/4.4.0:
     resolution: {integrity: sha512-wv/LAoHdRE3BeTGz53FAamhGlPLhlssK45usmGFThIi4XqnBmjKQ16u+RNbP7WvigRZDxUsM0J3gcQ5yicaL0w==}
     dependencies:
@@ -10634,11 +10624,6 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lru-cache/7.18.3:
-    resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
-    engines: {node: '>=12'}
-    dev: true
-
   /lz-string/1.4.4:
     resolution: {integrity: sha512-0ckx7ZHRPqb0oUm8zNr+90mtf9DQB60H1wMCjBtfi62Kl3a7JbHob6gA2bC+xRvZoOL+1hzUK8jeuEIQE8svEQ==}
     hasBin: true
@@ -10901,13 +10886,6 @@ packages:
 
   /minimatch/5.1.6:
     resolution: {integrity: sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==}
-    engines: {node: '>=10'}
-    dependencies:
-      brace-expansion: 2.0.1
-    dev: true
-
-  /minimatch/7.4.3:
-    resolution: {integrity: sha512-5UB4yYusDtkRPbRiy1cqZ1IpGNcJCGlEMG17RKzPddpyiPKoCdwohbED8g4QXT0ewCt8LTkQXuljsUfQ3FKM4A==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
@@ -11554,14 +11532,6 @@ packages:
 
   /path-parse/1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
-
-  /path-scurry/1.6.3:
-    resolution: {integrity: sha512-RAmB+n30SlN+HnNx6EbcpoDy9nwdpcGPnEKrJnu6GZoDWBdIjo1UQMVtW2ybtC7LC2oKLcMq8y5g8WnKLiod9g==}
-    engines: {node: '>=16 || 14 >=14.17'}
-    dependencies:
-      lru-cache: 7.18.3
-      minipass: 4.2.5
-    dev: true
 
   /path-to-regexp/0.1.7:
     resolution: {integrity: sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ==}
@@ -12441,14 +12411,6 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
-    dev: true
-
-  /rimraf/4.4.1:
-    resolution: {integrity: sha512-Gk8NlF062+T9CqNGn6h4tls3k6T1+/nXdOcSZVikNVtlRdYpA7wRJJMoXmuvOnLW844rPjdQ7JgXCYM6PPC/og==}
-    engines: {node: '>=14'}
-    hasBin: true
-    dependencies:
-      glob: 9.3.2
     dev: true
 
   /ripemd160/2.0.2:
