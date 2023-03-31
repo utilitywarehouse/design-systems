@@ -2,9 +2,10 @@
   "name": "@utilitywarehouse/design-tokens",
   "version": "0.0.5",
   "description": "Design Tokens for the UW brand",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
