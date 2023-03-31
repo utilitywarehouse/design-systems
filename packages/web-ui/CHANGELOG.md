@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.8
+
+### Patch Changes
+
+- [#49](https://github.com/utilitywarehouse/design-systems/pull/49) [`128a6f6`](https://github.com/utilitywarehouse/design-systems/commit/128a6f695f8c6a8421867c85d02c9bd4ce685970) Thanks [@robphoenix](https://github.com/robphoenix)! - Attempt to fix bundling
+
 ## 0.0.7
 
 ### Patch Changes
