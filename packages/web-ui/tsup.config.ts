@@ -18,10 +18,5 @@ export default defineConfig([
     entryPoints: ['src/index.ts'],
     target: 'es2020',
     outDir: 'dist',
-    outExtension({ format }) {
-      return {
-        js: format === 'esm' ? '.js' : `.${format}`,
-      };
-    },
   },
 ]);
