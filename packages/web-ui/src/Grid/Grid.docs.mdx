@@ -1,26 +1,59 @@
 import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './Grid.stories';
+import { DEFAULT_COLUMNS, DEFAULT_SPACING } from './Grid';
+import { Box } from '../Box';
+import { Stack } from '../Stack';
+import { Text } from '../Text';
+import { Divider } from '@mui/material';
+import { spacingBase, breakpoints } from '@utilitywarehouse/design-tokens';
 
 <Meta of={Stories} />
 
 # Grid
 
-A responsive layout grid adapts to screen size and orientation, ensuring consistency across layouts.
+A responsive layout grid adapts to screen size and orientation, ensuring
+consistency across layouts.
 
-## How it works
-
-The grid system is implemented with the Grid component:
-
-- It uses CSS's Flexible Box module for high flexibility.
-- There are two types of layout: containers and items.
-- Item widths are set in percentages, so they're always fluid and sized relative to their parent element.
-- Items have padding to create the spacing between individual items.
-- There are five grid breakpoints: xs, sm, md, lg, and xl.
-- Integer values can be given to each breakpoint, indicating how many of the 12 available columns are occupied by the component when the viewport width satisfies the breakpoint constraints.
-
-> If you are new to or unfamiliar with flexbox, we encourage you to read this [CSS-Tricks flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) guide.
+This component is mostly based on the one from the '@mui/material' package, the
+differences are documented below. Please
+[check the MUI site for further documentation](https://mui.com/material-ui/react-grid/).
 
 <Canvas of={Stories.GridStory} />
+
+## Breakpoint Props
+
+Instead of the stock MUI breakpoint prop names, the Web UI grid has props which
+reflect our custom breakpoint names: {Object.keys(breakpoints).join(', ')}
+
+## Default Columns
+
+<Stack spacing={1} component="ul" padding={0} margin={0} width={200} divider={<Divider />}>
+  {Object.keys(DEFAULT_COLUMNS).map(c => (
+    <Box component="li" display="flex" justifyContent="space-between">
+      <Text variant="body" component="span">
+        {c}
+      </Text>
+      <Text variant="body" component="span">
+        {DEFAULT_COLUMNS[c]}
+      </Text>
+    </Box>
+  ))}
+</Stack>
+
+## Default Spacing
+
+<Stack spacing={1} component="ul" padding={0} margin={0} width={200} divider={<Divider />}>
+  {Object.keys(DEFAULT_SPACING).map(s => (
+    <Box component="li" display="flex" justifyContent="space-between">
+      <Text variant="body" component="span">
+        {s}
+      </Text>
+      <Text variant="body" component="span">
+        {DEFAULT_SPACING[s] * spacingBase}px
+      </Text>
+    </Box>
+  ))}
+</Stack>
 
 ## Props
 

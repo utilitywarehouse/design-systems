@@ -3,28 +3,16 @@ import type { OverridableComponent, OverrideProps } from '@mui/material/Overrida
 import { forwardRef } from 'react';
 import type { GridProps as MuiGridProps, RegularBreakpoints } from '@mui/material/Grid';
 
-const DEFAULT_COLUMNS = { mobile: 4, tablet: 8, desktop: 12 };
-const DEFAULT_SPACING = { mobile: 2, tablet: 3, desktop: 3 };
+export const DEFAULT_COLUMNS = { mobile: 4, tablet: 8, desktop: 12, wide: 12 };
+export const DEFAULT_SPACING = { mobile: 2, tablet: 3, desktop: 3, wide: 3 };
 
 export type DefaultGridComponent = 'div';
 
 export interface CustomGridProps {
-  /**
-   * If a number, it sets the number of columns the grid item uses.
-   * It can't be greater than the total number of columns of the container (12 by default).
-   *
-   * If 'auto', the grid item's width matches its content.
-   *
-   * If false, the prop is ignored.
-   *
-   * If true, the grid item's width grows to use the space available in the grid container.
-   *
-   * The value is applied for the `md` breakpoint and wider screens if not overridden.
-   * @default false
-   */
-  mobile?: boolean | 'auto' | number;
+  mobile?: RegularBreakpoints['xs'];
   tablet?: RegularBreakpoints['md'];
   desktop?: RegularBreakpoints['lg'];
+  wide?: RegularBreakpoints['xl'];
 }
 
 export interface GridTypeMap<D extends React.ElementType = DefaultGridComponent, P = {}> {

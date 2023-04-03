@@ -27,7 +27,7 @@ const customerUiViewports = {
   mobile: {
     name: 'Web UI mobile',
     styles: {
-      width: `${breakpoints.mobile}px`,
+      width: `${breakpoints.tablet / 2}px`,
       height: '100vh',
     },
   },
