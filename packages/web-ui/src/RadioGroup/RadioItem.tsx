@@ -1,6 +1,6 @@
 import { forwardRef, useContext, useState } from 'react';
 import type { RefObject, ReactNode } from 'react';
-import { colors } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors } from '@utilitywarehouse/design-tokens';
 import { Box, BoxProps } from '../Box';
 import { useFocusWithin, useRadio, useLabel } from 'react-aria';
 import type { AriaRadioProps } from 'react-aria';

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import type { ReactNode, LabelHTMLAttributes } from 'react';
-import { colors, fonts, fontWeights } from '@utilitywarehouse/customer-ui-design-tokens';
+import { colors, fonts, fontWeights } from '@utilitywarehouse/design-tokens';
 import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';
 
