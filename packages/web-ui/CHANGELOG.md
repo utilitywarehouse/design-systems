@@ -1,5 +1,62 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.8
+
+### Patch Changes
+
+- [#49](https://github.com/utilitywarehouse/design-systems/pull/49) [`128a6f6`](https://github.com/utilitywarehouse/design-systems/commit/128a6f695f8c6a8421867c85d02c9bd4ce685970) Thanks [@robphoenix](https://github.com/robphoenix)! - Attempt to fix bundling
+
+## 0.0.7
+
+### Patch Changes
+
+- [#47](https://github.com/utilitywarehouse/design-systems/pull/47) [`48ec86f`](https://github.com/utilitywarehouse/design-systems/commit/48ec86f08243cf004146442a7dddb48e95628a82) Thanks [@robphoenix](https://github.com/robphoenix)! - Update bundler settings for esm
+
+- Updated dependencies [[`48ec86f`](https://github.com/utilitywarehouse/design-systems/commit/48ec86f08243cf004146442a7dddb48e95628a82)]:
+  - @utilitywarehouse/design-tokens@0.0.6
+
+## 0.0.6
+
+### Patch Changes
+
+- [#45](https://github.com/utilitywarehouse/design-systems/pull/45) [`172cb27`](https://github.com/utilitywarehouse/design-systems/commit/172cb27e78d3edfcca8094b30d23c5cf570c3f1a) Thanks [@robphoenix](https://github.com/robphoenix)! - Use tsup for bundling
+
+- Updated dependencies [[`172cb27`](https://github.com/utilitywarehouse/design-systems/commit/172cb27e78d3edfcca8094b30d23c5cf570c3f1a)]:
+  - @utilitywarehouse/design-tokens@0.0.5
+
+## 0.0.5
+
+### Patch Changes
+
+- [#43](https://github.com/utilitywarehouse/design-systems/pull/43) [`1f3a80d`](https://github.com/utilitywarehouse/design-systems/commit/1f3a80dc7d66db4d62569fe121af64fb2768e4de) Thanks [@robphoenix](https://github.com/robphoenix)! - release as commonjs
+
+- Updated dependencies [[`1f3a80d`](https://github.com/utilitywarehouse/design-systems/commit/1f3a80dc7d66db4d62569fe121af64fb2768e4de)]:
+  - @utilitywarehouse/design-tokens@0.0.4
+
+## 0.0.4
+
+### Patch Changes
+
+- [#41](https://github.com/utilitywarehouse/design-systems/pull/41) [`a6e41c2`](https://github.com/utilitywarehouse/design-systems/commit/a6e41c2dee1a9c8485c9ae912c560859f7b687c1) Thanks [@robphoenix](https://github.com/robphoenix)! - revert change to esm
+
+## 0.0.3
+
+### Patch Changes
+
+- [#39](https://github.com/utilitywarehouse/design-systems/pull/39) [`9482e06`](https://github.com/utilitywarehouse/design-systems/commit/9482e06b14080d8fa063191570e3d8b10f12a00b) Thanks [@robphoenix](https://github.com/robphoenix)! - This change updates the breakpoints.
+
+  - mobile: 0px (no change)
+  - tablet: 768px -> 740px
+  - desktop: 1366px -> 992px
+  - wide: 1200px (new)
+
+- [#40](https://github.com/utilitywarehouse/design-systems/pull/40) [`3d2b382`](https://github.com/utilitywarehouse/design-systems/commit/3d2b382cfa55b66110820c819fde1608cde87409) Thanks [@robphoenix](https://github.com/robphoenix)! - This change hopefully fixes ESM/Next.js usage
+
+- [#37](https://github.com/utilitywarehouse/design-systems/pull/37) [`626ced7`](https://github.com/utilitywarehouse/design-systems/commit/626ced70afaee20e1cd6152c20ac7a8f46bdecb5) Thanks [@robphoenix](https://github.com/robphoenix)! - This change exports the `Text` and `Heading` components, which were unintenionally removed from the root index file
+
+- Updated dependencies [[`9482e06`](https://github.com/utilitywarehouse/design-systems/commit/9482e06b14080d8fa063191570e3d8b10f12a00b)]:
+  - @utilitywarehouse/design-tokens@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes
