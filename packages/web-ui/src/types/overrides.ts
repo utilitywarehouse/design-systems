@@ -1,3 +1,4 @@
+import { Palette as MuiPalette } from '@mui/material/styles/createPalette';
 import { TypographyOptions, TypographyUtils } from '@mui/material/styles/createTypography';
 import { Fonts, FontWeights } from '@utilitywarehouse/design-tokens';
 import * as React from 'react';
@@ -14,6 +15,7 @@ interface CustomTypography
 }
 
 type CustomPalette = typeof customPalette;
+interface Palette extends Omit<MuiPalette, 'text' | 'common' | 'background'>, CustomPalette {}
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
@@ -46,7 +48,7 @@ declare module '@mui/material/styles' {
 
   interface Theme {
     typography: CustomTypography;
-    palette: CustomPalette;
+    palette: Palette;
   }
 }
 

@@ -3,13 +3,13 @@ import FilledInput, { FilledInputProps } from '@mui/material/FilledInput';
 import { colors } from '@utilitywarehouse/design-tokens';
 import SuccessOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined';
 import WarningOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined';
-import { styled } from '@mui/material/styles';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import { Box } from '../Box';
 import { dataAttributes } from '../utils';
 import type { ReactNode, AllHTMLAttributes } from 'react';
+import { styled } from '../theme';
 
 const isSuccessStatus = (status?: string): boolean => status === 'success';
 const isErrorStatus = (status?: string): boolean => status === 'error';
