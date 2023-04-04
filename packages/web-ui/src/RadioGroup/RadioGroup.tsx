@@ -20,6 +20,7 @@ export interface RadioGroupProps
   disabled?: AriaRadioGroupProps['isDisabled'];
   children: ReactNode;
   direction?: 'column' | 'row';
+  /** Helper text for the field. Provides a hint such as specific requirements for what to choose. */
   helperText?: AriaRadioGroupProps['description'];
   sx?: BoxProps['sx'];
   error?: boolean;
@@ -43,9 +44,18 @@ export const RadioGroup = (props: RadioGroupProps) => {
     column: 'vertical',
     row: 'horizontal',
   };
-  const state = useRadioGroupState({ ...props, isDisabled: disabled });
+  const validationState = error ? 'invalid' : 'valid';
+  const state = useRadioGroupState({
+    ...props,
+    validationState,
+    isDisabled: disabled,
+  });
   const { radioGroupProps, labelProps, descriptionProps, errorMessageProps } = useRadioGroup(
-    { ...props, orientation: orientationMap[direction] },
+    {
+      ...props,
+      orientation: orientationMap[direction],
+      validationState,
+    },
     state
   );
 
@@ -59,14 +69,13 @@ export const RadioGroup = (props: RadioGroupProps) => {
           {children}
         </Stack>
       </RadioContext.Provider>
-
       {helperText ? (
         <FormHelperText {...descriptionProps} disabled={disabled}>
           {helperText}
         </FormHelperText>
       ) : null}
       {errorMessage && error ? (
-        <FormHelperText {...errorMessageProps} disabled={disabled} error={error}>
+        <FormHelperText {...errorMessageProps} error>
           {errorMessage}
         </FormHelperText>
       ) : null}

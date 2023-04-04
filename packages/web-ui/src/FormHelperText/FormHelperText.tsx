@@ -15,8 +15,8 @@ export const FormHelperText = forwardRef<HTMLSpanElement, FormHelperTextProps>(
   ({ disabled, error, sx, ...props }, ref) => {
     const maroon60 = '#CE2261';
     const getColor = () => {
-      if (disabled) return colors.codGray40;
       if (error) return maroon60;
+      if (disabled) return colors.codGray40;
       return colors.midnight;
     };
     const color = getColor();
