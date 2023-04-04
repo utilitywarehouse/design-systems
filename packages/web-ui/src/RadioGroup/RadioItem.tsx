@@ -56,6 +56,9 @@ const RadioInput = styled('input')(() => {
   };
 });
 
+/**
+ * The `RadioItem` should be used within a `RadioGroup` component.
+ */
 export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
   ({ sx, children, helperText, helperTextId, ...props }, ref) => {
     const state = useContext(RadioContext);

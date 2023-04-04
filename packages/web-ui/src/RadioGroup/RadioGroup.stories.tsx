@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { RadioItem } from './RadioItem';
 import { RadioGroup } from './RadioGroup';
 import { Box } from '../Box';
+import { useState } from 'react';
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'Components/RadioGroup',
@@ -24,7 +25,7 @@ const argTypes = {
   disabled: { control: { type: 'boolean' } },
   isReadOnly: { control: { type: 'boolean' } },
 };
-const args = {
+const sharedArgs = {
   defaultValue: '1',
   errorMessage: 'There is an error',
   disabled: false,
@@ -40,10 +41,10 @@ export const Workshop: Story = {
       url: 'https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=902-9379&t=XTterR22jM1rC0Xr-0',
     },
   },
-  render: a => {
+  render: args => {
     return (
       <Box background="white" padding={4}>
-        <RadioGroup {...a}>
+        <RadioGroup {...args}>
           <RadioItem value="1">One</RadioItem>
           <RadioItem value="2">Two</RadioItem>
           <RadioItem value="3">Three</RadioItem>
@@ -52,15 +53,15 @@ export const Workshop: Story = {
     );
   },
   argTypes,
-  args,
+  args: sharedArgs,
 };
 
 export const WithRadioItemHelperText: Story = {
   name: 'With RadioItem HelperText',
-  render: a => {
+  render: args => {
     return (
       <Box background="white" padding={4}>
-        <RadioGroup {...a}>
+        <RadioGroup {...args}>
           <RadioItem value="1" helperText="One helper text">
             One
           </RadioItem>
@@ -75,5 +76,33 @@ export const WithRadioItemHelperText: Story = {
     );
   },
   argTypes,
-  args,
+  args: sharedArgs,
+};
+
+export const Controlled: Story = {
+  render: args => {
+    const [selected, setSelected] = useState('');
+
+    return (
+      <Box background="white" padding={4}>
+        <RadioGroup
+          {...args}
+          value={selected}
+          onChange={setSelected}
+          helperText={`The selected value is: ${selected}`}
+        >
+          <RadioItem value="1">One</RadioItem>
+          <RadioItem value="2">Two</RadioItem>
+          <RadioItem value="3">Three</RadioItem>
+        </RadioGroup>
+      </Box>
+    );
+  },
+  argTypes,
+  args: {
+    errorMessage: 'There is an error',
+    disabled: false,
+    error: false,
+    label: 'Controlled Radio Group',
+  },
 };

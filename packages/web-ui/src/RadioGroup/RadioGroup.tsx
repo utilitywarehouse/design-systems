@@ -24,6 +24,9 @@ export interface RadioGroupProps
   error?: boolean;
 }
 
+/**
+ * The Radio Group allows the user to select one option from a set.
+ */
 export const RadioGroup = (props: RadioGroupProps) => {
   const {
     children,
