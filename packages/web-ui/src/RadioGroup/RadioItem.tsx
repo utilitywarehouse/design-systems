@@ -19,9 +19,12 @@ export interface RadioItemProps extends Omit<AriaRadioProps, 'isDisabled'> {
 
 const RadioInput = styled('input')(() => {
   return {
+    // Visually hidden styles
+    // https://moderncss.dev/pure-css-custom-styled-radio-buttons/
     appearance: 'none',
     backgroundColor: 'transparent',
     margin: 0,
+
     cursor: 'pointer',
     outline: 'none',
     position: 'absolute',
