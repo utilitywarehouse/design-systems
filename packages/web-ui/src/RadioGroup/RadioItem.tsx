@@ -14,7 +14,6 @@ export interface RadioItemProps extends Omit<AriaRadioProps, 'isDisabled'> {
   disabled?: AriaRadioProps['isDisabled'];
   sx?: BoxProps['sx'];
   helperText?: ReactNode;
-  helperTextId?: string;
 }
 
 const RadioInput = styled('input')(() => {
@@ -60,11 +59,11 @@ const RadioInput = styled('input')(() => {
  * The `RadioItem` should be used within a `RadioGroup` component.
  */
 export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
-  ({ sx, children, helperText, helperTextId, ...props }, ref) => {
+  ({ sx, children, helperText, disabled, ...props }, ref) => {
     const state = useContext(RadioContext);
     const { isFocusVisible, focusProps } = useFocusRing({ within: true });
     const { inputProps, isSelected, isDisabled } = useRadio(
-      { ...props, children, isDisabled: props.disabled },
+      { ...props, children, isDisabled: disabled },
       state,
       ref as RefObject<HTMLInputElement>
     );

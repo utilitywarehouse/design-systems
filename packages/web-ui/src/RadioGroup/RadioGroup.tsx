@@ -16,6 +16,7 @@ export interface RadioGroupProps
     AriaRadioGroupProps,
     'description' | 'orientation' | 'isDisabled' | 'validationState'
   > {
+  /** Disable the entire RadioGroup */
   disabled?: AriaRadioGroupProps['isDisabled'];
   children: ReactNode;
   direction?: 'column' | 'row';
