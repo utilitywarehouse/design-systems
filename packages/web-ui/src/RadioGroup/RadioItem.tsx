@@ -67,7 +67,10 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
       state,
       ref as RefObject<HTMLInputElement>
     );
-    const { labelProps, fieldProps } = useLabel({ label: children });
+    const { labelProps, fieldProps } = useLabel({
+      'aria-label': props['aria-label'],
+      label: children,
+    });
 
     const getOuterRingColor = () => {
       if (isDisabled) return colors.codGray10;
