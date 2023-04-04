@@ -60,7 +60,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
         </Stack>
       </RadioContext.Provider>
 
-      {helperText && !error ? (
+      {helperText ? (
         <FormHelperText {...descriptionProps} disabled={disabled}>
           {helperText}
         </FormHelperText>
