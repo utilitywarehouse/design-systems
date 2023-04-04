@@ -1,8 +1,8 @@
-import { forwardRef, useContext, useState } from 'react';
+import { forwardRef, useContext } from 'react';
 import type { RefObject, ReactNode } from 'react';
 import { colors } from '@utilitywarehouse/design-tokens';
 import { Box, BoxProps } from '../Box';
-import { useFocusWithin, useRadio, useLabel } from 'react-aria';
+import { useFocusRing, useRadio, useLabel } from 'react-aria';
 import type { AriaRadioProps } from 'react-aria';
 import { RadioContext } from './RadioGroup';
 import styled from '@emotion/styled';
@@ -58,13 +58,8 @@ const RadioInput = styled('input')(() => {
 
 export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
   ({ sx, children, helperText, helperTextId, ...props }, ref) => {
-    let [isFocusWithin, setFocusWithin] = useState(false);
     const state = useContext(RadioContext);
-    const { focusWithinProps } = useFocusWithin({
-      isDisabled: props.disabled,
-      onFocusWithinChange: fw => setFocusWithin(fw),
-    });
-
+    const { isFocusVisible, focusProps } = useFocusRing({ within: true });
     const { inputProps, isSelected, isDisabled } = useRadio(
       { ...props, children, isDisabled: props.disabled },
       state,
@@ -74,17 +69,13 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
 
     const getOuterRingColor = () => {
       if (isDisabled) return colors.codGray10;
-      if (isSelected || isFocusWithin) return colors.cyan40;
+      if (isSelected || isFocusVisible) return colors.cyan40;
       return colors.codGray20;
     };
     const outerRingColor = getOuterRingColor();
+
     return (
-      <Box
-        {...focusWithinProps}
-        display="flex"
-        alignItems="flex-start"
-        sx={{ cursor: 'pointer', ...sx }}
-      >
+      <Box {...focusProps} display="flex" alignItems="flex-start" sx={{ cursor: 'pointer', ...sx }}>
         <Box
           position="relative"
           width={40}
@@ -94,7 +85,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
           marginBottom={helperText ? 0 : -1}
           borderRadius="50%"
           color={outerRingColor}
-          bgcolor={isFocusWithin ? colors.cyan20 : undefined}
+          bgcolor={isFocusVisible ? colors.cyan20 : undefined}
           sx={{
             '&:hover': {
               backgroundColor: isDisabled ? 'transparent' : colors.cyan10,
