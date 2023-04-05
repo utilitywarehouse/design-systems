@@ -2,9 +2,9 @@ import { forwardRef, useContext } from 'react';
 import type { RefObject, ReactNode } from 'react';
 import { colors } from '@utilitywarehouse/design-tokens';
 import { Box, BoxProps } from '../Box';
-import { useFocusRing, useRadio, useLabel } from 'react-aria';
+import { useFocusRing, useRadio, useLabel, useId } from 'react-aria';
 import type { AriaRadioProps } from 'react-aria';
-import { RadioContext } from './RadioGroup';
+import { RadioGroupContext } from './RadioGroup';
 import styled from '@emotion/styled';
 import { Stack } from '../Stack';
 import { FieldLabel } from '../FieldLabel';
@@ -60,7 +60,7 @@ const RadioInput = styled('input')(() => {
  */
 export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
   ({ sx, children, helperText, disabled, ...props }, ref) => {
-    const state = useContext(RadioContext);
+    const state = useContext(RadioGroupContext);
     const { isFocusVisible, focusProps } = useFocusRing({ within: true });
     const { inputProps, isSelected, isDisabled } = useRadio(
       { ...props, children, isDisabled: disabled },
@@ -71,6 +71,8 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
       'aria-label': props['aria-label'],
       label: children,
     });
+    const helperTextId = useId();
+    const descriptionId = helperText ? helperTextId : inputProps['aria-describedby'];
 
     const getOuterRingColor = () => {
       if (isDisabled) return colors.codGray10;
@@ -98,7 +100,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
             },
           }}
         >
-          <RadioInput ref={ref} {...fieldProps} {...inputProps} />
+          <RadioInput ref={ref} {...fieldProps} {...inputProps} aria-describedby={descriptionId} />
 
           <Box
             component="span"
@@ -120,7 +122,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
             </FieldLabel>
           </Box>
           {helperText ? (
-            <FormHelperText id={inputProps['aria-describedby']} disabled={isDisabled}>
+            <FormHelperText id={helperTextId} disabled={isDisabled}>
               {helperText}
             </FormHelperText>
           ) : null}
