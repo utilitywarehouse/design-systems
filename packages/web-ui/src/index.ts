@@ -8,6 +8,7 @@ export * from './Background';
 export * from './Box';
 export * from './Button';
 export * from './FieldLabel';
+export * from './FormHelperText';
 export * from './Grid';
 export * from './Heading';
 export * from './Icon';
