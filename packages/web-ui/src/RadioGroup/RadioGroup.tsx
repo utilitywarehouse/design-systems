@@ -60,7 +60,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
   );
 
   return (
-    <Fieldset {...radioGroupProps} sx={sx}>
+    <Fieldset {...radioGroupProps} aria-errormessage={errorMessageProps.id} sx={sx}>
       <FieldsetLegend disabled={disabled} {...labelProps}>
         {label}
       </FieldsetLegend>
