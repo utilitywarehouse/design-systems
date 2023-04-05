@@ -31,7 +31,7 @@ const sharedArgs = {
   disabled: false,
   error: false,
   label: 'Label',
-  helperText: 'RadioGroup Helper text',
+  helperText: 'RadioGroup helper text',
 };
 
 export const Workshop: Story = {
@@ -105,4 +105,20 @@ export const Controlled: Story = {
     error: false,
     label: 'Controlled Radio Group',
   },
+};
+
+export const ShowingError: Story = {
+  render: args => {
+    return (
+      <Box background="white" padding={4}>
+        <RadioGroup {...args}>
+          <RadioItem value="1">One</RadioItem>
+          <RadioItem value="2">Two</RadioItem>
+          <RadioItem value="3">Three</RadioItem>
+        </RadioGroup>
+      </Box>
+    );
+  },
+  argTypes,
+  args: { ...sharedArgs, error: true, errorMessage: 'RadioGroup error message' },
 };

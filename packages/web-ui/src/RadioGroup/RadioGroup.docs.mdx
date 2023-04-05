@@ -1,15 +1,23 @@
 import { Meta, Description, Canvas, ArgTypes } from '@storybook/blocks';
 import * as RadioGroupStories from './RadioGroup.stories';
 import * as RadioItemStories from './RadioItem.stories';
+import { Stack } from '../Stack';
+import { Box } from '../Box';
+import { Text } from '../Text';
+import { Divider } from '@mui/material';
 
 <Meta of={RadioGroupStories} />
 
 # RadioGroup
 
+- [Accessibility](#accessibility)
+  - [Keyboard interactions](#keyboard-interactions)
+- [Show error](#show-error)
 - [Controlled](#controlled)
-- [Props](#props)
+- [Props](#radiogroup-props)
 - [RadioItem](#radioitem)
-  - [Props](#props)
+  - [Accessibility](#radioitem-accessibility)
+  - [Props](#radioitem-props)
 
 <Description of={RadioGroupStories} />
 
@@ -33,6 +41,77 @@ import * as RadioItemStories from './RadioItem.stories';
   }}
 />
 
+## Accessibility
+
+Follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) for radio groups not contained in a toolbar.
+
+> **NOTE**
+> The initial focus behaviour when using `Shift+Tab` to move focus into the
+> radio group, if none of the radio buttons are selected, reflects the native
+> browser behaviour, rather than that described in the WAI-ARIA pattern, as it
+> focuses the last radio button in the group, rather than the first.
+
+The necessary aria props, such as `aria-labelledby`, `aria-describedby` and
+`aria-errormessage` are handled internally, however you can pass these and
+other aria props, such as `aria-label`, to the `RadioGroup` and `RadioItem`
+components yourself if you need to.
+
+### Keyboard interactions
+
+<Stack spacing={1} divider={<Divider />}>
+  <Box display="flex" alignItems="baseline">
+    <Box width={300}>
+      <Text component="span" variant="legalNote">
+        {'Key'}
+      </Text>
+    </Box>
+    <Text component="span" variant="legalNote">
+      {'Description'}
+    </Text>
+  </Box>
+  {[
+    {
+      key: 'Tab',
+      description:
+        'Moves focus to either the checked radio item or the first radio item in the group.',
+    },
+    {
+      key: 'Shift+Tab',
+      description:
+        'Moves focus to either the checked radio item or the last radio item in the group.',
+    },
+    {
+      key: 'Space',
+      description: 'When focus is on an unchecked radio item, checks it.',
+    },
+    {
+      key: 'Arrow Down / Arrow Right',
+      description: 'Moves focus and checks the next radio item in the group.',
+    },
+    {
+      key: 'Arrow Up / Arrow Left',
+      description: 'Moves focus and checks the previous radio item in the group.',
+    },
+  ].map(kbi => (
+    <Box display="flex" alignItems="baseline">
+      <Box width={300}>
+        <kbd>{kbi.key}</kbd>
+      </Box>
+      <Text component="span" variant="body">
+        {kbi.description}
+      </Text>
+    </Box>
+  ))}
+</Stack>
+
+## Show error
+
+In general, radio buttons should have a value selected by default. If this is
+not the case, you can display an error if no value is selected when the form is
+submitted.
+
+<Canvas of={RadioGroupStories.ShowingError} sourceState="none" />
+
 ## Controlled
 
 A controlled value can be provided using the value prop, which accepts a value
@@ -40,30 +119,24 @@ corresponding with the value prop of each `RadioItem`. The onChange event is fir
 when the user selects a `RadioItem`.
 
 <Canvas of={RadioGroupStories.Controlled} sourceState="shown"
-
 source={{
-language:'tsx',
-format:false,
 code: `
 const [selected, setSelected] = useState('')
 
 [...]
 
-return (
-  <RadioGroup
-    value={selected}
-    onChange={setSelected}
-    helperText={'The selected value is: ' + selected}
-  >
-    <RadioItem value="1">One</RadioItem>
-    <RadioItem value="2">Two</RadioItem>
-    <RadioItem value="3">Three</RadioItem>
-  </RadioGroup>
-  )
-};
+<RadioGroup
+  value={selected}
+  onChange={setSelected}
+  helperText={'The selected value is: ' + selected}
+>
+  <RadioItem value="1">One</RadioItem>
+  <RadioItem value="2">Two</RadioItem>
+  <RadioItem value="3">Three</RadioItem>
+</RadioGroup>
 `, }} />
 
-## Props
+## RadioGroup props
 
 <ArgTypes of={RadioGroupStories} />
 
@@ -71,6 +144,12 @@ return (
 
 <Description of={RadioItemStories} />
 
-### Props
+### RadioItem accessibility
+
+The `RadioItem` is, by default, appropriately labelled using it's children, if
+you do not provide children, you must specify an `aria-label` for
+accessibility.
+
+### RadioItem props
 
 <ArgTypes of={RadioItemStories} />

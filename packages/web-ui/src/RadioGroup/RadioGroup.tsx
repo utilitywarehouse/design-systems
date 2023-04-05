@@ -27,7 +27,8 @@ export interface RadioGroupProps
 }
 
 /**
- * The Radio Group allows the user to select one option from a set.
+ * The RadioGroup provides an accessible way to group and control a set of
+ * RadioItem components, allowing the user to select one option from a set.
  */
 export const RadioGroup = (props: RadioGroupProps) => {
   const {
