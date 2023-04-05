@@ -1,12 +1,4 @@
 ./.vscode/
 tsconfig.json
 dist/
-packages/fonts/*.css
-packages/fonts/*.css.map
-coverage/
-packages/material/scripts
-packages/material/storybook
-packages/react-icons/src
-packages/react-icons/24x24
-packages/react-icons/48x48
 *.md
