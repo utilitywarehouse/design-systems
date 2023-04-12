@@ -1,5 +1,13 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.9
+
+### Patch Changes
+
+- [#51](https://github.com/utilitywarehouse/design-systems/pull/51) [`15b67d9`](https://github.com/utilitywarehouse/design-systems/commit/15b67d9338770b69b4d84f22d9db8bc85939e264) Thanks [@robphoenix](https://github.com/robphoenix)! - This change fixes the types to better reflect the Theme palette
+
+- [#52](https://github.com/utilitywarehouse/design-systems/pull/52) [`7249246`](https://github.com/utilitywarehouse/design-systems/commit/7249246ffb3f51c500acf35d258291102abd4242) Thanks [@robphoenix](https://github.com/robphoenix)! - This change includes the `wide` breakpoint on the Grid component.
+
 ## 0.0.8
 
 ### Patch Changes
