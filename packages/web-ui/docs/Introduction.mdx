@@ -16,17 +16,7 @@ React component library for building UW Web UIs.
 
 Current version: v{version}
 
-## Getting Started
-
-### Contents
-
-- [Installation](#installation)
-- [Getting started](#getting-started)
-- [Theming](#theming)
-- [MUI Components](#mui-components)
-- [Styling](#styling)
-
-### Installation
+## Installation
 
 Assuming you already have React installed, to get started install the library and it's peer dependencies.
 
@@ -34,7 +24,7 @@ Assuming you already have React installed, to get started install the library an
 yarn add @utilitywarehouse/web-ui @mui/material
 ```
 
-#### Fonts
+## Fonts
 
 You will also need to include the **Aeonik** and **Work Sans** fonts. The
 easiest way to do this is to use the `@utilitywarehouse/fontsource` package.
@@ -43,7 +33,7 @@ easiest way to do this is to use the `@utilitywarehouse/fontsource` package.
 yarn add @utilitywarehouse/fontsource
 ```
 
-### ThemeProvider
+## Theming
 
 Start by wrapping your application with the `ThemeProvider` component.
 
@@ -58,3 +48,7 @@ const App: React.FC = () => (
   </ThemeProvider>
 );
 ```
+
+## Dark Mode
+
+It should be noted that there is no intention to support dark mode for web.
