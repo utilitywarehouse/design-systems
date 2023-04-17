@@ -4,11 +4,13 @@
 
 Shared tools and libraries for building UW applications.
 
-## Prettier config
+## Packages
+
+### Prettier config
 
 A UW standard config for Prettier code formatting.
 
-## Web UI
+### Web UI
 
 A set of UW React components.
 
