@@ -20,6 +20,7 @@ const argTypes = {
   error: { control: { type: 'boolean' } },
   defaultValue: { control: { type: 'text' } },
   helperText: { control: { type: 'text' } },
+  helperTextPosition: { options: ['top', 'bottom'], control: { type: 'radio' } },
   label: { control: { type: 'text' } },
   errorMessage: { control: { type: 'text' } },
   disabled: { control: { type: 'boolean' } },
@@ -38,7 +39,8 @@ export const Workshop: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=902-9379&t=XTterR22jM1rC0Xr-0',
+      url:
+        'https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=902-9379&t=XTterR22jM1rC0Xr-0',
     },
   },
   render: args => {

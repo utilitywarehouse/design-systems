@@ -22,6 +22,11 @@ export interface RadioGroupProps
   direction?: 'column' | 'row';
   /** Helper text for the field. Provides a hint such as specific requirements for what to choose. */
   helperText?: AriaRadioGroupProps['description'];
+  /**
+   * Position of the helper text.
+   * @default 'top'
+   */
+  helperTextPosition?: 'top' | 'bottom';
   sx?: BoxProps['sx'];
   error?: boolean;
 }
@@ -36,6 +41,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
     direction = 'column',
     label,
     helperText,
+    helperTextPosition = 'top',
     errorMessage,
     error,
     sx,
@@ -60,21 +66,24 @@ export const RadioGroup = (props: RadioGroupProps) => {
     state
   );
 
+  const HelperText = () => (
+    <FormHelperText {...descriptionProps} disabled={disabled}>
+      {helperText}
+    </FormHelperText>
+  );
+
   return (
     <Fieldset {...radioGroupProps} aria-errormessage={errorMessageProps.id} sx={sx}>
       <FieldsetLegend disabled={disabled} {...labelProps}>
         {label}
       </FieldsetLegend>
+      {helperText && helperTextPosition === 'top' ? <HelperText /> : null}
       <RadioGroupContext.Provider value={state}>
         <Stack spacing={2} direction={direction}>
           {children}
         </Stack>
       </RadioGroupContext.Provider>
-      {helperText ? (
-        <FormHelperText {...descriptionProps} disabled={disabled}>
-          {helperText}
-        </FormHelperText>
-      ) : null}
+      {helperText && helperTextPosition === 'bottom' ? <HelperText /> : null}
       {errorMessage && error ? (
         <FormHelperText {...errorMessageProps} error>
           {errorMessage}
