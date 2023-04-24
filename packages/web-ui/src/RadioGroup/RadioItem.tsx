@@ -10,6 +10,12 @@ import { Stack } from '../Stack';
 import { FieldLabel } from '../FieldLabel';
 import { FormHelperText } from '../FormHelperText';
 
+const colorPond = {
+  codGray500: 'hsl(0, 0%, 53%)',
+  cyan200: 'hsl(216, 93%, 82%)',
+  cyan400: 'hsl(218, 97%, 73%)',
+};
+
 export interface RadioItemProps extends Omit<AriaRadioProps, 'isDisabled'> {
   disabled?: AriaRadioProps['isDisabled'];
   sx?: BoxProps['sx'];
@@ -35,7 +41,7 @@ const RadioInput = styled('input')(() => {
     borderRadius: '50%',
     display: 'grid',
     placeContent: 'center',
-    color: colors.cyan40,
+    color: colorPond.cyan400,
     '&:before': {
       content: '""',
       width: 14,
@@ -76,8 +82,8 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
 
     const getOuterRingColor = () => {
       if (isDisabled) return colors.codGray10;
-      if (isSelected || isFocusVisible) return colors.cyan40;
-      return colors.codGray20;
+      if (isSelected || isFocusVisible) return colorPond.cyan400;
+      return colorPond.codGray500;
     };
     const outerRingColor = getOuterRingColor();
 
@@ -96,7 +102,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
           sx={{
             '&:hover': {
               backgroundColor: isDisabled ? 'transparent' : colors.cyan10,
-              color: isDisabled ? colors.codGray10 : colors.cyan30,
+              color: isDisabled ? colors.codGray10 : 'hotpink',
             },
           }}
         >
