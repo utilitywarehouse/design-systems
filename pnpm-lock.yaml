@@ -57,7 +57,7 @@ importers:
         specifier: ^5.0.2
         version: 5.0.2
 
-  packages/colours:
+  packages/colour-system:
     devDependencies:
       fs-extra:
         specifier: ^11.1.1
