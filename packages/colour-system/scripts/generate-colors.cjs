@@ -3,6 +3,7 @@ const _ = require('lodash');
 const tinycolor = require('tinycolor2');
 const fs = require('fs-extra');
 const path = require('path');
+const { render } = require('ejs');
 
 const figmaConfig = {
   baseUrl: 'https://api.figma.com',
@@ -24,27 +25,31 @@ async function getStyles() {
     );
   }
 
-  return data.meta.styles.reduce((styles, style) => {
-    const { name, description, node_id, created_at, updated_at } = style;
-    const [colourMode, colour, step] = name.split('/');
+  return data.meta.styles
+    .filter(s => !s.name.toLowerCase().includes('white')) // temporary
+    .filter(s => !s.name.toLowerCase().includes('midnight')) // temporary
+    .reduce((styles, style) => {
+      const { name, description, node_id, created_at, updated_at } = style;
+      const [colourMode, colour, step] = name.split('/');
 
-    const mode = colourMode.toLowerCase();
-    const scale = _.lowerFirst(colour);
-    const colourName = _.lowerFirst(`${colour}${step}`);
+      const mode = colourMode.toLowerCase();
+      const scale = _.lowerFirst(colour);
+      const colourName = _.lowerFirst(`${colour}${step}`);
+      const colourDescription = `${description}`.replace(/[\n\r]+/g, ' ');
 
-    styles[node_id] = {
-      id: node_id,
-      mode,
-      scale,
-      step,
-      name: colourName,
-      description,
-      created_at,
-      updated_at,
-    };
+      styles[node_id] = {
+        id: node_id,
+        mode,
+        scale,
+        step,
+        name: colourName,
+        description: colourDescription,
+        created_at,
+        updated_at,
+      };
 
-    return styles;
-  }, {});
+      return styles;
+    }, {});
 }
 
 /**
@@ -99,14 +104,46 @@ async function getColours(styles) {
   }, {});
 }
 
-async function generateColoursFile(colours) {
+async function generateColoursFiles(colours) {
   await fs.outputFile(
-    path.resolve(__dirname, '..', 'src', 'colours.json'),
+    path.resolve(__dirname, '..', 'raw', 'colours.json'),
     JSON.stringify(colours, null, 2),
     {
       encoding: 'utf8',
     }
   );
+
+  Object.keys(colours).forEach(async colourMode => {
+    const colorScales = Object.keys(colours[colourMode]);
+    // generate color mode index files
+    const colorModeIndexTemplateSrc = await fs.readFileSync(
+      path.resolve(__dirname, '../templates', 'color-mode-index.ts.ejs'),
+      { encoding: 'utf8' }
+    );
+    const colorModeIndexRendered = render(colorModeIndexTemplateSrc, {
+      colorScales,
+    });
+    await fs.outputFile(
+      path.resolve(__dirname, '../src', colourMode, 'index.ts'),
+      colorModeIndexRendered
+    );
+
+    // generate colour scales
+    colorScales.forEach(async colourScale => {
+      const colorScalesTemplateSrc = await fs.readFileSync(
+        path.resolve(__dirname, '../templates', 'color-scale.ts.ejs'),
+        { encoding: 'utf8' }
+      );
+      const colorScaleRendered = render(colorScalesTemplateSrc, {
+        colors: Object.values(colours[colourMode][colourScale]),
+        color: colourScale,
+      });
+      await fs.outputFile(
+        path.resolve(__dirname, '../src', colourMode, `${colourScale}.ts`),
+        colorScaleRendered
+      );
+    });
+  });
 }
 
 async function main() {
@@ -115,7 +152,7 @@ async function main() {
   console.log('getting colours');
   const colours = await getColours(styles);
   console.log('generating colours file');
-  await generateColoursFile(colours);
+  await generateColoursFiles(colours);
 }
 
 main()

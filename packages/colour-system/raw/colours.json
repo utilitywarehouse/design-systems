@@ -7,7 +7,7 @@
         "scale": "purple",
         "step": "50",
         "name": "purple50",
-        "description": "Use it for backgrounds. \n\nUse it for text that goes on top of Purple 500,  Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 500,  Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
         "created_at": "2023-04-17T16:15:24.490Z",
         "updated_at": "2023-04-18T15:03:52.418Z",
         "value": "#140218"
@@ -18,7 +18,7 @@
         "scale": "purple",
         "step": "75",
         "name": "purple75",
-        "description": "Use it for backgrounds. \n\nUse it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
         "created_at": "2023-04-17T16:15:24.444Z",
         "updated_at": "2023-04-18T15:03:52.408Z",
         "value": "#1c0128"
@@ -29,7 +29,7 @@
         "scale": "purple",
         "step": "100",
         "name": "purple100",
-        "description": "Use it for backgrounds. \n\nUse it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
         "created_at": "2023-04-17T16:15:24.461Z",
         "updated_at": "2023-04-18T15:03:52.435Z",
         "value": "#26013c"
@@ -40,7 +40,7 @@
         "scale": "purple",
         "step": "200",
         "name": "purple200",
-        "description": "Use it for backgrounds. \n\nUse it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
         "created_at": "2023-04-17T16:15:24.455Z",
         "updated_at": "2023-04-18T15:03:52.473Z",
         "value": "#400066"
@@ -51,7 +51,7 @@
         "scale": "purple",
         "step": "300",
         "name": "purple300",
-        "description": "This is Brand Purple.\n\nBackground colour\n\nUse it only as a foreground against Purple 800, Purple 900, and Purple 1000.",
+        "description": "This is Brand Purple. Background colour Use it only as a foreground against Purple 800, Purple 900, and Purple 1000.",
         "created_at": "2023-04-17T16:15:24.478Z",
         "updated_at": "2023-04-26T15:41:26.066Z",
         "value": "#550091"
@@ -84,7 +84,7 @@
         "scale": "purple",
         "step": "600",
         "name": "purple600",
-        "description": "Use it as a foreground against  Purple 50, Purple 100,  CodGray 25, CodGray 50, CodGray 75 and CodGray 100\n\nUse it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 150.\n",
+        "description": "Use it as a foreground against  Purple 50, Purple 100,  CodGray 25, CodGray 50, CodGray 75 and CodGray 100 Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 150. ",
         "created_at": "2023-04-17T16:15:24.450Z",
         "updated_at": "2023-04-18T15:03:52.451Z",
         "value": "#c777df"
@@ -95,7 +95,7 @@
         "scale": "purple",
         "step": "700",
         "name": "purple700",
-        "description": "Use it as a foreground against  Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 200\n\nUse it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150 and CodGray 200.\n",
+        "description": "Use it as a foreground against  Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 200 Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150 and CodGray 200. ",
         "created_at": "2023-04-17T16:15:24.484Z",
         "updated_at": "2023-04-18T15:03:52.413Z",
         "value": "#d192d9"
@@ -106,7 +106,7 @@
         "scale": "purple",
         "step": "800",
         "name": "purple800",
-        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200 and CodGray 300.\n\nUse it for large text, borders, and graphic elements against  Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400.\n",
+        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200 and CodGray 300. Use it for large text, borders, and graphic elements against  Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400. ",
         "created_at": "2023-04-17T16:15:24.466Z",
         "updated_at": "2023-04-18T15:03:52.440Z",
         "value": "#ddbde7"
@@ -117,7 +117,7 @@
         "scale": "purple",
         "step": "900",
         "name": "purple900",
-        "description": "Use it as a foreground against Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200,  CodGray 300 and CodGray 400.\n\nUse it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400.\n\n",
+        "description": "Use it as a foreground against Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200,  CodGray 300 and CodGray 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400. ",
         "created_at": "2023-04-17T16:15:24.497Z",
         "updated_at": "2023-04-18T15:03:52.467Z",
         "value": "#ede0f2"
@@ -141,7 +141,7 @@
         "scale": "gold",
         "step": "50",
         "name": "gold50",
-        "description": "For backgrounds mostly.\n\nUse as a background with any foreground using Gold 500, Gold 700 and Gold 900.",
+        "description": "For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900.",
         "created_at": "2023-03-30T17:02:23.452Z",
         "updated_at": "2023-04-04T11:57:39.777Z",
         "value": "#2e1103"
@@ -152,7 +152,7 @@
         "scale": "gold",
         "step": "100",
         "name": "gold100",
-        "description": "For backgrounds mostly.\n\nUse as a background with any foreground using Gold 500, Gold 700 and Gold 900.\n\nIt passes AA with large text, borders and icons against combined with Gold 400.",
+        "description": "For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900. It passes AA with large text, borders and icons against combined with Gold 400.",
         "created_at": "2023-03-30T17:02:23.516Z",
         "updated_at": "2023-04-04T11:57:39.799Z",
         "value": "#52210c"
@@ -163,7 +163,7 @@
         "scale": "gold",
         "step": "300",
         "name": "gold300",
-        "description": "Use it as a background\n\nIt passes AA against Gold 900\n\nIt passes AA on large text and icons against Gold 700",
+        "description": "Use it as a background It passes AA against Gold 900 It passes AA on large text and icons against Gold 700",
         "created_at": "2023-03-30T17:02:23.465Z",
         "updated_at": "2023-04-04T11:57:39.805Z",
         "value": "#925317"
@@ -174,7 +174,7 @@
         "scale": "gold",
         "step": "400",
         "name": "gold400",
-        "description": "Use it as a background\n\nIt passes AA as a foreground against Gold 50\n\nIt passes AA with large text, borders and icons against Gold 100",
+        "description": "Use it as a background It passes AA as a foreground against Gold 50 It passes AA with large text, borders and icons against Gold 100",
         "created_at": "2023-03-30T17:02:23.493Z",
         "updated_at": "2023-03-30T17:02:23.493Z",
         "value": "#cd7d04"
@@ -185,7 +185,7 @@
         "scale": "gold",
         "step": "500",
         "name": "gold500",
-        "description": "It passes AA as a foreground against Gold 50, Gold 100, CodGray 50, CodGray 75, CodGray 100 and CodGray 150, CodGray 200 and CodGray 300.\n\nUse it for borders, icons, and large text against Gold 50, Gold 100, Gold 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100 and CodGray 150.",
+        "description": "It passes AA as a foreground against Gold 50, Gold 100, CodGray 50, CodGray 75, CodGray 100 and CodGray 150, CodGray 200 and CodGray 300. Use it for borders, icons, and large text against Gold 50, Gold 100, Gold 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100 and CodGray 150.",
         "created_at": "2023-03-30T17:02:23.510Z",
         "updated_at": "2023-04-04T11:57:39.769Z",
         "value": "#f7b51d"
@@ -196,7 +196,7 @@
         "scale": "gold",
         "step": "700",
         "name": "gold700",
-        "description": "This is Brand Gold. \n\nFor any foreground, it passes AA against Gold 50, Gold 100, CodGray 50, CodGray 75, CodGray 100, CodGray 150, CodGray 200, CodGray 300, and CodGray 400. \n\nUse it for borders, icons, and large text against Gold 50, Gold 100, Gold 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150, CodGray 300, CodGray 400, and CodGray 500.",
+        "description": "This is Brand Gold.  For any foreground, it passes AA against Gold 50, Gold 100, CodGray 50, CodGray 75, CodGray 100, CodGray 150, CodGray 200, CodGray 300, and CodGray 400.  Use it for borders, icons, and large text against Gold 50, Gold 100, Gold 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150, CodGray 300, CodGray 400, and CodGray 500.",
         "created_at": "2023-03-30T17:02:23.521Z",
         "updated_at": "2023-04-26T15:41:26.059Z",
         "value": "#ffd76f"
@@ -207,7 +207,7 @@
         "scale": "gold",
         "step": "900",
         "name": "gold900",
-        "description": "For any foreground, it passes AA against Gold 50, Gold 100, Gold 300, CodGray 50, CodGray 75, CodGray 100, CodGray 150, CodGray 200, CodGray 300, and CodGray 400. \n",
+        "description": "For any foreground, it passes AA against Gold 50, Gold 100, Gold 300, CodGray 50, CodGray 75, CodGray 100, CodGray 150, CodGray 200, CodGray 300, and CodGray 400.  ",
         "created_at": "2023-03-30T17:02:23.528Z",
         "updated_at": "2023-04-04T11:57:39.786Z",
         "value": "#fff6e0"
@@ -220,7 +220,7 @@
         "scale": "pink",
         "step": "50",
         "name": "pink50",
-        "description": "Use it for backgrounds. \n\nUse it for text that goes on top of Pink 700 and up to CodGray 300.",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Pink 700 and up to CodGray 300.",
         "created_at": "2023-04-26T16:20:00.997Z",
         "updated_at": "2023-04-26T16:20:00.997Z",
         "value": "#2c0a2e"
@@ -231,7 +231,7 @@
         "scale": "pink",
         "step": "100",
         "name": "pink100",
-        "description": "Use it for backgrounds. \n\nUse it for text that goes on top of Pink 700, Pink 900 and Pink 950.",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Pink 700, Pink 900 and Pink 950.",
         "created_at": "2023-04-26T16:20:00.990Z",
         "updated_at": "2023-04-26T16:20:00.990Z",
         "value": "#48104b"
@@ -253,7 +253,7 @@
         "scale": "pink",
         "step": "500",
         "name": "pink500",
-        "description": "Use it for borders, icons, and large text against Pink 50, Pink 100, CodGray 25, CodGray 50, CodGray 75, CodGray 100 and CodGray 150.\n\nUse it as a background color with white as the foreground color.",
+        "description": "Use it for borders, icons, and large text against Pink 50, Pink 100, CodGray 25, CodGray 50, CodGray 75, CodGray 100 and CodGray 150. Use it as a background color with white as the foreground color.",
         "created_at": "2023-04-26T16:20:00.976Z",
         "updated_at": "2023-04-26T16:20:00.976Z",
         "value": "#c933d1"
@@ -264,7 +264,7 @@
         "scale": "pink",
         "step": "700",
         "name": "pink700",
-        "description": "AKA Brand Pink\n\nUse it as a foreground against Pink 50, Pink 100, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 150.\n\nUse it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150 and CodGray 200.",
+        "description": "AKA Brand Pink Use it as a foreground against Pink 50, Pink 100, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 150. Use it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150 and CodGray 200.",
         "created_at": "2023-04-26T16:20:00.984Z",
         "updated_at": "2023-04-26T16:20:00.984Z",
         "value": "#f495f9"
@@ -275,7 +275,7 @@
         "scale": "pink",
         "step": "900",
         "name": "pink900",
-        "description": "Use it as a foreground against Pink 50, Pink 100, Pink 300 CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200, and  CodGray 300.\n\nUse it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 200, Pink 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400.",
+        "description": "Use it as a foreground against Pink 50, Pink 100, Pink 300 CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200, and  CodGray 300. Use it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 200, Pink 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400.",
         "created_at": "2023-04-26T16:20:01.016Z",
         "updated_at": "2023-04-26T16:20:01.016Z",
         "value": "#fccff9"
@@ -286,10 +286,177 @@
         "scale": "pink",
         "step": "950",
         "name": "pink950",
-        "description": "Use it as a foreground against Pink 50, Pink 100, Pink 300 CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200, and  CodGray 300.\n\nUse it for large text, borders, and graphic elements against Pink 50, Pink 100, Pink 200, Pink 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400.",
+        "description": "Use it as a foreground against Pink 50, Pink 100, Pink 300 CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200, and  CodGray 300. Use it for large text, borders, and graphic elements against Pink 50, Pink 100, Pink 200, Pink 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400.",
         "created_at": "2023-04-26T16:20:01.010Z",
         "updated_at": "2023-04-26T16:30:27.528Z",
         "value": "#fde6fb"
+      }
+    },
+    "grey": {
+      "grey25": {
+        "id": "39:945",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "25",
+        "name": "grey25",
+        "description": "This is to use instead of using pure black.",
+        "created_at": "2023-03-30T09:06:40.995Z",
+        "updated_at": "2023-04-27T13:23:42.986Z",
+        "value": "#050505"
+      },
+      "grey50": {
+        "id": "6:262",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "50",
+        "name": "grey50",
+        "description": "This is to use instead of using pure black.",
+        "created_at": "2023-03-27T16:21:22.324Z",
+        "updated_at": "2023-04-27T13:23:42.874Z",
+        "value": "#0b0b0b"
+      },
+      "grey75": {
+        "id": "6:263",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "75",
+        "name": "grey75",
+        "description": "This colour is to be used instead of 111111 - Background-00",
+        "created_at": "2023-03-27T16:21:22.336Z",
+        "updated_at": "2023-04-27T13:23:42.956Z",
+        "value": "#121212"
+      },
+      "grey100": {
+        "id": "8:264",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "100",
+        "name": "grey100",
+        "description": "To use instead of Background-01",
+        "created_at": "2023-03-27T16:21:22.331Z",
+        "updated_at": "2023-04-27T13:23:43.000Z",
+        "value": "#1d1d1d"
+      },
+      "grey150": {
+        "id": "8:265",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "150",
+        "name": "grey150",
+        "description": "To be used instead of Background-03",
+        "created_at": "2023-03-27T16:21:22.341Z",
+        "updated_at": "2023-04-27T13:23:42.840Z",
+        "value": "#242424"
+      },
+      "grey175": {
+        "id": "9:266",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "175",
+        "name": "grey175",
+        "description": "to replace Background-06 2B2B2B",
+        "created_at": "2023-03-27T17:50:59.521Z",
+        "updated_at": "2023-04-27T13:23:42.968Z",
+        "value": "#2c2c2c"
+      },
+      "grey200": {
+        "id": "9:267",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "200",
+        "name": "grey200",
+        "description": "To use in the context of Background-12",
+        "created_at": "2023-03-27T17:50:59.396Z",
+        "updated_at": "2023-04-27T13:23:42.897Z",
+        "value": "#323232"
+      },
+      "grey300": {
+        "id": "9:268",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "300",
+        "name": "grey300",
+        "description": "AKA as 16",
+        "created_at": "2023-03-27T17:50:59.346Z",
+        "updated_at": "2023-04-27T13:23:42.880Z",
+        "value": "#414141"
+      },
+      "grey400": {
+        "id": "9:269",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "400",
+        "name": "grey400",
+        "description": "",
+        "created_at": "2023-03-27T17:50:59.415Z",
+        "updated_at": "2023-04-27T13:23:42.892Z",
+        "value": "#585858"
+      },
+      "grey500": {
+        "id": "9:270",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "500",
+        "name": "grey500",
+        "description": "",
+        "created_at": "2023-03-27T17:50:59.423Z",
+        "updated_at": "2023-04-27T13:23:42.943Z",
+        "value": "#707070"
+      },
+      "grey600": {
+        "id": "9:271",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "600",
+        "name": "grey600",
+        "description": "AKA subdued text",
+        "created_at": "2023-03-27T17:50:59.538Z",
+        "updated_at": "2023-04-27T13:23:42.855Z",
+        "value": "#b8b8b8"
+      },
+      "grey700": {
+        "id": "9:272",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "700",
+        "name": "grey700",
+        "description": "AKA placeholder text",
+        "created_at": "2023-03-27T17:50:59.377Z",
+        "updated_at": "2023-04-27T13:23:42.868Z",
+        "value": "#c1c1c1"
+      },
+      "grey800": {
+        "id": "9:273",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "800",
+        "name": "grey800",
+        "description": "Replaces E7E7E7. AKA regular text",
+        "created_at": "2023-03-27T17:50:59.504Z",
+        "updated_at": "2023-04-27T13:23:43.013Z",
+        "value": "#e3e3e3"
+      },
+      "grey900": {
+        "id": "9:274",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "900",
+        "name": "grey900",
+        "description": "To replace F7F7F7",
+        "created_at": "2023-03-27T17:50:59.443Z",
+        "updated_at": "2023-04-27T13:23:42.962Z",
+        "value": "#f0f0f0"
+      },
+      "grey1000": {
+        "id": "9:275",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "1000",
+        "name": "grey1000",
+        "description": "AKA Highlight text",
+        "created_at": "2023-03-27T17:50:59.433Z",
+        "updated_at": "2023-04-27T13:23:42.848Z",
+        "value": "#fafafa"
       }
     },
     "cyan": {
@@ -365,7 +532,7 @@
         "scale": "cyan",
         "step": "500",
         "name": "cyan500",
-        "description": "Use it for large text, borders, and graphic elements against Cyan 50, CodGray 25,  CodGray 50 and CodGray 75. \n\nAlso, use it as a background color with white borders or graphic foreground elements.",
+        "description": "Use it for large text, borders, and graphic elements against Cyan 50, CodGray 25,  CodGray 50 and CodGray 75.  Also, use it as a background color with white borders or graphic foreground elements.",
         "created_at": "2023-03-31T14:58:46.957Z",
         "updated_at": "2023-04-04T17:41:18.078Z",
         "value": "#0658e5"
@@ -376,7 +543,7 @@
         "scale": "cyan",
         "step": "600",
         "name": "cyan600",
-        "description": "Use it for any foreground against Cyan 50, Cyan 75, Cyan 100, Cyan 200, CodGray 25, CodGray 50,  CodGray 75, CodGray 100, CodGray 150, and CodGray 175. \n\nUse it for large text, borders, and graphic elements against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Cyan 300, CodGray 25, CodGray 50,  CodGray 75, CodGray 100, CodGray 150, CodGray 175 and CodGray 200. \n\nAdditionally, use it as a background color with white borders or graphic foreground elements.",
+        "description": "Use it for any foreground against Cyan 50, Cyan 75, Cyan 100, Cyan 200, CodGray 25, CodGray 50,  CodGray 75, CodGray 100, CodGray 150, and CodGray 175.  Use it for large text, borders, and graphic elements against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Cyan 300, CodGray 25, CodGray 50,  CodGray 75, CodGray 100, CodGray 150, CodGray 175 and CodGray 200.  Additionally, use it as a background color with white borders or graphic foreground elements.",
         "created_at": "2023-03-31T14:58:46.962Z",
         "updated_at": "2023-04-04T17:41:18.089Z",
         "value": "#5692fb"
@@ -387,7 +554,7 @@
         "scale": "cyan",
         "step": "700",
         "name": "cyan700",
-        "description": "It passes AA as a foreground against cyan 50, cyan 75, cyan 100, cyan 200, cyan 300\n\nIt passes AA when used in border, icons and large text against cyan 400",
+        "description": "It passes AA as a foreground against cyan 50, cyan 75, cyan 100, cyan 200, cyan 300 It passes AA when used in border, icons and large text against cyan 400",
         "created_at": "2023-03-31T14:58:46.922Z",
         "updated_at": "2023-03-31T14:58:46.922Z",
         "value": "#75a7fd"
@@ -398,7 +565,7 @@
         "scale": "cyan",
         "step": "800",
         "name": "cyan800",
-        "description": "It passes AA as a foreground against cyan 50, cyan 75, cyan 100, cyan 200, cyan 300, cyan 400\n\nIt passes AA when used in border, icons and large text against cyan 500\n",
+        "description": "It passes AA as a foreground against cyan 50, cyan 75, cyan 100, cyan 200, cyan 300, cyan 400 It passes AA when used in border, icons and large text against cyan 500 ",
         "created_at": "2023-03-31T14:58:46.966Z",
         "updated_at": "2023-03-31T14:58:46.966Z",
         "value": "#a6c8fc"
@@ -409,7 +576,7 @@
         "scale": "cyan",
         "step": "900",
         "name": "cyan900",
-        "description": "It passes AA as a foreground against cyan 50, cyan 75, cyan 100, cyan 200, cyan 300, cyan 400, cyan 500\n",
+        "description": "It passes AA as a foreground against cyan 50, cyan 75, cyan 100, cyan 200, cyan 300, cyan 400, cyan 500 ",
         "created_at": "2023-03-31T14:58:46.971Z",
         "updated_at": "2023-03-31T14:58:46.971Z",
         "value": "#dbeaff"
@@ -420,177 +587,10 @@
         "scale": "cyan",
         "step": "1000",
         "name": "cyan1000",
-        "description": "It passes AA as a foreground against cyan 50, cyan 75, cyan 100, cyan 200, cyan 300, cyan 400, cyan 500\n",
+        "description": "It passes AA as a foreground against cyan 50, cyan 75, cyan 100, cyan 200, cyan 300, cyan 400, cyan 500 ",
         "created_at": "2023-03-31T14:58:46.937Z",
         "updated_at": "2023-03-31T14:58:46.937Z",
         "value": "#ecf4fe"
-      }
-    },
-    "codGray": {
-      "codGray25": {
-        "id": "39:945",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "25",
-        "name": "codGray25",
-        "description": "This is to use instead of using pure black.",
-        "created_at": "2023-03-30T09:06:40.995Z",
-        "updated_at": "2023-03-30T09:06:40.995Z",
-        "value": "#050505"
-      },
-      "codGray50": {
-        "id": "6:262",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "50",
-        "name": "codGray50",
-        "description": "This is to use instead of using pure black.",
-        "created_at": "2023-03-27T16:21:22.324Z",
-        "updated_at": "2023-03-27T16:21:22.324Z",
-        "value": "#0b0b0b"
-      },
-      "codGray75": {
-        "id": "6:263",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "75",
-        "name": "codGray75",
-        "description": "This colour is to be used instead of 111111 - Background-00",
-        "created_at": "2023-03-27T16:21:22.336Z",
-        "updated_at": "2023-03-27T16:21:22.336Z",
-        "value": "#121212"
-      },
-      "codGray100": {
-        "id": "8:264",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "100",
-        "name": "codGray100",
-        "description": "To use instead of Background-01",
-        "created_at": "2023-03-27T16:21:22.331Z",
-        "updated_at": "2023-03-27T16:21:22.331Z",
-        "value": "#1d1d1d"
-      },
-      "codGray150": {
-        "id": "8:265",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "150",
-        "name": "codGray150",
-        "description": "To be used instead of Background-03",
-        "created_at": "2023-03-27T16:21:22.341Z",
-        "updated_at": "2023-03-27T16:21:22.341Z",
-        "value": "#242424"
-      },
-      "codGray175": {
-        "id": "9:266",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "175",
-        "name": "codGray175",
-        "description": "to replace Background-06 2B2B2B",
-        "created_at": "2023-03-27T17:50:59.521Z",
-        "updated_at": "2023-03-27T17:50:59.521Z",
-        "value": "#2c2c2c"
-      },
-      "codGray200": {
-        "id": "9:267",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "200",
-        "name": "codGray200",
-        "description": "To use in the context of Background-12",
-        "created_at": "2023-03-27T17:50:59.396Z",
-        "updated_at": "2023-03-27T17:50:59.396Z",
-        "value": "#323232"
-      },
-      "codGray300": {
-        "id": "9:268",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "300",
-        "name": "codGray300",
-        "description": "AKA as 16",
-        "created_at": "2023-03-27T17:50:59.346Z",
-        "updated_at": "2023-03-27T17:50:59.346Z",
-        "value": "#414141"
-      },
-      "codGray400": {
-        "id": "9:269",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "400",
-        "name": "codGray400",
-        "description": "",
-        "created_at": "2023-03-27T17:50:59.415Z",
-        "updated_at": "2023-03-27T17:50:59.415Z",
-        "value": "#585858"
-      },
-      "codGray500": {
-        "id": "9:270",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "500",
-        "name": "codGray500",
-        "description": "",
-        "created_at": "2023-03-27T17:50:59.423Z",
-        "updated_at": "2023-03-27T17:50:59.423Z",
-        "value": "#707070"
-      },
-      "codGray600": {
-        "id": "9:271",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "600",
-        "name": "codGray600",
-        "description": "AKA subdued text",
-        "created_at": "2023-03-27T17:50:59.538Z",
-        "updated_at": "2023-03-27T17:50:59.538Z",
-        "value": "#b8b8b8"
-      },
-      "codGray700": {
-        "id": "9:272",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "700",
-        "name": "codGray700",
-        "description": "AKA placeholder text",
-        "created_at": "2023-03-27T17:50:59.377Z",
-        "updated_at": "2023-03-27T17:50:59.377Z",
-        "value": "#c1c1c1"
-      },
-      "codGray800": {
-        "id": "9:273",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "800",
-        "name": "codGray800",
-        "description": "Replaces E7E7E7. AKA regular text",
-        "created_at": "2023-03-27T17:50:59.504Z",
-        "updated_at": "2023-03-27T17:50:59.504Z",
-        "value": "#e3e3e3"
-      },
-      "codGray900": {
-        "id": "9:274",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "900",
-        "name": "codGray900",
-        "description": "To replace F7F7F7",
-        "created_at": "2023-03-27T17:50:59.443Z",
-        "updated_at": "2023-03-27T17:50:59.443Z",
-        "value": "#f0f0f0"
-      },
-      "codGray1000": {
-        "id": "9:275",
-        "mode": "dark",
-        "scale": "codGray",
-        "step": "1000",
-        "name": "codGray1000",
-        "description": "AKA Highlight text",
-        "created_at": "2023-03-27T17:50:59.433Z",
-        "updated_at": "2023-03-27T17:50:59.433Z",
-        "value": "#fafafa"
       }
     },
     "red": {
@@ -644,7 +644,7 @@
         "scale": "red",
         "step": "500",
         "name": "red500",
-        "description": "Use it for borders, icons, and large text against Red 50, Red 100, CodGray 25, CodGray 50, CodGray 75, CodGray 100 and CodGray 150.\n\nUse it as any type of foreground with CodGray 25, CodGray 50, CodGray 75 and 100.",
+        "description": "Use it for borders, icons, and large text against Red 50, Red 100, CodGray 25, CodGray 50, CodGray 75, CodGray 100 and CodGray 150. Use it as any type of foreground with CodGray 25, CodGray 50, CodGray 75 and 100.",
         "created_at": "2023-03-28T09:59:05.775Z",
         "updated_at": "2023-04-04T11:39:35.542Z",
         "value": "#f24550"
@@ -655,7 +655,7 @@
         "scale": "red",
         "step": "700",
         "name": "red700",
-        "description": "Use it for borders, icons, and large text against Red 50, Red 100, CodGray 25, CodGray 50, CodGray 75, CodGray 100 and CodGray 150.\n\nUse it as any type of foreground combined with CodGray 25, CodGray 50, CodGray 75, CodGray 100,  CodGray 150, CodGray 175 and CodGray 200.",
+        "description": "Use it for borders, icons, and large text against Red 50, Red 100, CodGray 25, CodGray 50, CodGray 75, CodGray 100 and CodGray 150. Use it as any type of foreground combined with CodGray 25, CodGray 50, CodGray 75, CodGray 100,  CodGray 150, CodGray 175 and CodGray 200.",
         "created_at": "2023-03-28T09:59:05.822Z",
         "updated_at": "2023-04-04T11:39:35.548Z",
         "value": "#f58e92"
@@ -734,7 +734,7 @@
         "scale": "green",
         "step": "500",
         "name": "green500",
-        "description": "Use it for any foreground against Green 50, Green 100, CodGray 25, CodGray 50,  CodGray 75, CodGray 100, CodGray 150, and CodGray 175. \n\nUse it for large text, borders, and graphic elements against Green 50, Green 100, Green 300, CodGray 25, CodGray 50,  CodGray 75, CodGray 100, CodGray 150, CodGray 175 and CodGray 200. \n\nAdditionally, use it as a background color with white borders or graphic foreground elements.",
+        "description": "Use it for any foreground against Green 50, Green 100, CodGray 25, CodGray 50,  CodGray 75, CodGray 100, CodGray 150, and CodGray 175.  Use it for large text, borders, and graphic elements against Green 50, Green 100, Green 300, CodGray 25, CodGray 50,  CodGray 75, CodGray 100, CodGray 150, CodGray 175 and CodGray 200.  Additionally, use it as a background color with white borders or graphic foreground elements.",
         "created_at": "2023-03-29T16:17:22.778Z",
         "updated_at": "2023-04-04T17:41:18.084Z",
         "value": "#55ce8b"
@@ -771,7 +771,7 @@
         "scale": "purple",
         "step": "50",
         "name": "purple50",
-        "description": "Use it for backgrounds. \n\nUse it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
         "created_at": "2023-04-17T15:29:55.283Z",
         "updated_at": "2023-04-18T15:03:52.484Z",
         "value": "#fbf6fd"
@@ -793,7 +793,7 @@
         "scale": "purple",
         "step": "100",
         "name": "purple100",
-        "description": "Use it for backgrounds. \n\nUse it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
         "created_at": "2023-04-17T15:29:55.273Z",
         "updated_at": "2023-04-18T15:03:52.478Z",
         "value": "#ede0f2"
@@ -804,7 +804,7 @@
         "scale": "purple",
         "step": "200",
         "name": "purple200",
-        "description": "Use it for backgrounds. \n\nUse it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
         "created_at": "2023-04-17T15:29:55.269Z",
         "updated_at": "2023-04-18T15:03:52.430Z",
         "value": "#e2c7eb"
@@ -826,7 +826,7 @@
         "scale": "purple",
         "step": "400",
         "name": "purple400",
-        "description": "Use it for borders or large text against Purple 800, Purple 900, and Purple 1000. \n\nFor any other foreground elements, use it only against Purple 900 and Purple 1000.",
+        "description": "Use it for borders or large text against Purple 800, Purple 900, and Purple 1000.  For any other foreground elements, use it only against Purple 900 and Purple 1000.",
         "created_at": "2023-04-17T15:29:55.302Z",
         "updated_at": "2023-04-18T15:03:52.446Z",
         "value": "#c777df"
@@ -837,7 +837,7 @@
         "scale": "purple",
         "step": "500",
         "name": "purple500",
-        "description": "Use it for borders, icons, and large text against white, Purple 50, Purple 100, CodGray 25, CodGray 50, CodGray 75, and CodGray 100.\n\nUse it as a background color with white as the foreground color.",
+        "description": "Use it for borders, icons, and large text against white, Purple 50, Purple 100, CodGray 25, CodGray 50, CodGray 75, and CodGray 100. Use it as a background color with white as the foreground color.",
         "created_at": "2023-04-17T15:29:55.258Z",
         "updated_at": "2023-04-17T15:29:55.258Z",
         "value": "#af4dd5"
@@ -848,7 +848,7 @@
         "scale": "purple",
         "step": "600",
         "name": "purple600",
-        "description": "Use it as a foreground against white and Purple 50, Purple 100,  CodGray 25, CodGray 50, CodGray 75 and CodGray 100\n\nUse it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 150.\n\nUse it as a background color combined with a white foreground.\n",
+        "description": "Use it as a foreground against white and Purple 50, Purple 100,  CodGray 25, CodGray 50, CodGray 75 and CodGray 100 Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 150. Use it as a background color combined with a white foreground. ",
         "created_at": "2023-04-17T15:29:55.308Z",
         "updated_at": "2023-04-17T15:29:55.308Z",
         "value": "#931cce"
@@ -859,7 +859,7 @@
         "scale": "purple",
         "step": "700",
         "name": "purple700",
-        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 200\n\nUse it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150 and CodGray 200.\n\nUse it as a background color combined with a white foreground.\n",
+        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 200 Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150 and CodGray 200. Use it as a background color combined with a white foreground. ",
         "created_at": "2023-04-17T15:29:55.288Z",
         "updated_at": "2023-04-17T15:29:55.288Z",
         "value": "#7209ae"
@@ -870,7 +870,7 @@
         "scale": "purple",
         "step": "800",
         "name": "purple800",
-        "description": "This is Brand Purple.\n\nUse it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200 and CodGray 300.\n\nUse it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400.\n\nUse it as a background color combined with a white foreground.\n",
+        "description": "This is Brand Purple. Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200 and CodGray 300. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400. Use it as a background color combined with a white foreground. ",
         "created_at": "2023-04-17T15:29:55.297Z",
         "updated_at": "2023-04-26T15:41:26.072Z",
         "value": "#550091"
@@ -881,7 +881,7 @@
         "scale": "purple",
         "step": "900",
         "name": "purple900",
-        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 400,  CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200,  CodGray 300 and CodGray 400.\n\nUse it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400.\n\nUse it as a background color combined with a white foreground.\n",
+        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 400,  CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200,  CodGray 300 and CodGray 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400. Use it as a background color combined with a white foreground. ",
         "created_at": "2023-04-17T15:29:55.292Z",
         "updated_at": "2023-04-26T15:35:12.274Z",
         "value": "#400066"
@@ -892,7 +892,7 @@
         "scale": "purple",
         "step": "1000",
         "name": "purple1000",
-        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200,  CodGray 300 and CodGray 400.\n\nUse it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300, CodGray 400 and CodGray 500.\n\nUse it as a background color combined with a white foreground.\n",
+        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200,  CodGray 300 and CodGray 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300, CodGray 400 and CodGray 500. Use it as a background color combined with a white foreground. ",
         "created_at": "2023-04-17T15:29:55.313Z",
         "updated_at": "2023-04-17T15:29:55.313Z",
         "value": "#1c0128"
@@ -927,7 +927,7 @@
         "scale": "gold",
         "step": "200",
         "name": "gold200",
-        "description": "It can be used as a background \n\nIt passes AA against Gold 700 and Gold 900",
+        "description": "It can be used as a background  It passes AA against Gold 700 and Gold 900",
         "created_at": "2023-03-30T17:02:23.499Z",
         "updated_at": "2023-03-30T17:02:23.499Z",
         "value": "#ffe6a8"
@@ -938,7 +938,7 @@
         "scale": "gold",
         "step": "300",
         "name": "gold300",
-        "description": "This is Brand Gold. \n\nUse it as a background\nIt doesn't pass contrast against white\n\nIt passes AA against Gold 700 and Gold 900",
+        "description": "This is Brand Gold.  Use it as a background It doesn't pass contrast against white It passes AA against Gold 700 and Gold 900",
         "created_at": "2023-03-30T17:02:23.476Z",
         "updated_at": "2023-04-26T15:41:26.078Z",
         "value": "#ffd76f"
@@ -949,7 +949,7 @@
         "scale": "gold",
         "step": "500",
         "name": "gold500",
-        "description": "Use it for large text, borders, and graphic elements against white, Gold 50, CodGray 25, CodGray 50 and CodGray 75.\n\nUse it as a background color with white large text (24px), borders, or icons.",
+        "description": "Use it for large text, borders, and graphic elements against white, Gold 50, CodGray 25, CodGray 50 and CodGray 75. Use it as a background color with white large text (24px), borders, or icons.",
         "created_at": "2023-03-30T17:02:23.481Z",
         "updated_at": "2023-04-04T17:41:18.072Z",
         "value": "#c77800"
@@ -960,7 +960,7 @@
         "scale": "gold",
         "step": "700",
         "name": "gold700",
-        "description": "Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200.\n\nUse it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200 and Gold 300\n",
+        "description": "Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200 and Gold 300 ",
         "created_at": "2023-03-30T17:02:23.505Z",
         "updated_at": "2023-03-30T17:02:23.505Z",
         "value": "#925317"
@@ -971,7 +971,7 @@
         "scale": "gold",
         "step": "900",
         "name": "gold900",
-        "description": "Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200.\n\nUse it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200,  Gold 300 and Gold 500",
+        "description": "Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200,  Gold 300 and Gold 500",
         "created_at": "2023-03-30T17:02:23.459Z",
         "updated_at": "2023-03-30T17:02:23.459Z",
         "value": "#52210c"
@@ -984,7 +984,7 @@
         "scale": "cyan",
         "step": "50",
         "name": "cyan50",
-        "description": "This colour is for backgrounds only. \n\nReplaces former Cyan-10 and Cyan-50 usage",
+        "description": "This colour is for backgrounds only.  Replaces former Cyan-10 and Cyan-50 usage",
         "created_at": "2023-03-28T17:39:15.533Z",
         "updated_at": "2023-03-30T12:22:01.328Z",
         "value": "#ecf4fe"
@@ -995,7 +995,7 @@
         "scale": "cyan",
         "step": "75",
         "name": "cyan75",
-        "description": "This colour is for backgrounds only. \n\nThis replaces the former Cyan-50. ",
+        "description": "This colour is for backgrounds only.  This replaces the former Cyan-50. ",
         "created_at": "2023-03-28T17:39:15.575Z",
         "updated_at": "2023-03-30T12:22:01.408Z",
         "value": "#e5f1ff"
@@ -1050,7 +1050,7 @@
         "scale": "cyan",
         "step": "500",
         "name": "cyan500",
-        "description": "Use it for large text, borders, and graphic elements against white, Cyan 50, CodGray 25, and CodGray 50.\n\nUse it as a background color with white borders or graphic foreground elements.",
+        "description": "Use it for large text, borders, and graphic elements against white, Cyan 50, CodGray 25, and CodGray 50. Use it as a background color with white borders or graphic foreground elements.",
         "created_at": "2023-03-28T17:39:15.519Z",
         "updated_at": "2023-04-04T09:37:45.348Z",
         "value": "#4789fa"
@@ -1061,7 +1061,7 @@
         "scale": "cyan",
         "step": "600",
         "name": "cyan600",
-        "description": "Use it for large text, borders, and graphic elements against white and Cyan 50, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 150.\n\nUse it as a background color combined with a white foreground.\n\nThis color should replace some of the former Blue Ribbon usage.",
+        "description": "Use it for large text, borders, and graphic elements against white and Cyan 50, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 150. Use it as a background color combined with a white foreground. This color should replace some of the former Blue Ribbon usage.",
         "created_at": "2023-03-28T17:39:15.527Z",
         "updated_at": "2023-04-04T09:37:45.318Z",
         "value": "#0550d1"
@@ -1162,7 +1162,7 @@
         "scale": "red",
         "step": "500",
         "name": "red500",
-        "description": "Use it for borders, icons, and large text against white, Red 50, Red 100, CodGray 25, CodGray 50, CodGray 75, and CodGray 100.\n\nUse it as a background color with white as the foreground color.",
+        "description": "Use it for borders, icons, and large text against white, Red 50, Red 100, CodGray 25, CodGray 50, CodGray 75, and CodGray 100. Use it as a background color with white as the foreground color.",
         "created_at": "2023-03-28T09:59:05.757Z",
         "updated_at": "2023-04-04T09:37:45.334Z",
         "value": "#df2a38"
@@ -1230,7 +1230,7 @@
         "scale": "green",
         "step": "200",
         "name": "green200",
-        "description": "Background\n",
+        "description": "Background ",
         "created_at": "2023-03-29T16:17:22.792Z",
         "updated_at": "2023-03-31T15:23:30.118Z",
         "value": "#bdead0"
@@ -1252,7 +1252,7 @@
         "scale": "green",
         "step": "500",
         "name": "green500",
-        "description": "Use it for borders, icons, and large text against white, Green 50, CodGray 25, and CodGray 50.\n\nUse it as a background color with white large text (24px), borders, or icons.\n",
+        "description": "Use it for borders, icons, and large text against white, Green 50, CodGray 25, and CodGray 50. Use it as a background color with white large text (24px), borders, or icons. ",
         "created_at": "2023-03-29T16:17:22.759Z",
         "updated_at": "2023-04-04T09:37:45.355Z",
         "value": "#31a063"
@@ -1263,7 +1263,7 @@
         "scale": "green",
         "step": "700",
         "name": "green700",
-        "description": "For text, icons and border against white green 50 and green 100\n\nFor text, icons and border against white green 50, green 100 and green 200, CodGray 25, CodGray 50",
+        "description": "For text, icons and border against white green 50 and green 100 For text, icons and border against white green 50, green 100 and green 200, CodGray 25, CodGray 50",
         "created_at": "2023-03-29T16:17:22.817Z",
         "updated_at": "2023-03-31T15:23:30.125Z",
         "value": "#21693f"
@@ -1274,7 +1274,7 @@
         "scale": "green",
         "step": "900",
         "name": "green900",
-        "description": "For foreground against white, green 50, codGray 50, codGray 100, green 100, green 200 and green 300\n\nFor text, icons and border against green 50, green 100, green 200 and green 300",
+        "description": "For foreground against white, green 50, codGray 50, codGray 100, green 100, green 200 and green 300 For text, icons and border against green 50, green 100, green 200 and green 300",
         "created_at": "2023-03-29T16:17:22.822Z",
         "updated_at": "2023-03-31T15:23:30.138Z",
         "value": "#003d1e"
@@ -1287,7 +1287,7 @@
         "scale": "pink",
         "step": "50",
         "name": "pink50",
-        "description": "Use it for backgrounds. \n\nUse it for text that goes on top of Pink 700 and the darker shades of codGray. ",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Pink 700 and the darker shades of codGray. ",
         "created_at": "2023-04-26T15:35:12.221Z",
         "updated_at": "2023-04-26T16:20:01.038Z",
         "value": "#fde6fb"
@@ -1298,7 +1298,7 @@
         "scale": "pink",
         "step": "100",
         "name": "pink100",
-        "description": "Use it for backgrounds. \n\nUse it for text that goes on top of Pink 700 and Pink 900.",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Pink 700 and Pink 900.",
         "created_at": "2023-04-26T15:35:12.236Z",
         "updated_at": "2023-04-26T15:35:12.236Z",
         "value": "#fccff9"
@@ -1320,7 +1320,7 @@
         "scale": "pink",
         "step": "300",
         "name": "pink300",
-        "description": "AKA Brand Pink\n\nYou can use it as a foreground colour for Non-interactive design elements only.",
+        "description": "AKA Brand Pink You can use it as a foreground colour for Non-interactive design elements only.",
         "created_at": "2023-04-26T15:35:12.249Z",
         "updated_at": "2023-04-26T15:35:12.249Z",
         "value": "#f495f9"
@@ -1331,7 +1331,7 @@
         "scale": "pink",
         "step": "500",
         "name": "pink500",
-        "description": "Use it for borders, icons, and large text against white, Pink 50, Pink 100, CodGray 25, CodGray 50, CodGray 75, CodGray 100 and CodGray 150.\n\nUse it as a background color with white as the foreground color.",
+        "description": "Use it for borders, icons, and large text against white, Pink 50, Pink 100, CodGray 25, CodGray 50, CodGray 75, CodGray 100 and CodGray 150. Use it as a background color with white as the foreground color.",
         "created_at": "2023-04-26T15:35:12.256Z",
         "updated_at": "2023-04-26T15:35:12.256Z",
         "value": "#c933d1"
@@ -1342,7 +1342,7 @@
         "scale": "pink",
         "step": "700",
         "name": "pink700",
-        "description": "Use it as a foreground against white and Pink 50, Pink 100, Pink 200, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 150.\n\nUse it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 200, Pink 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150 and CodGray 200.\n\nUse it as a background color combined with a white foreground.\n",
+        "description": "Use it as a foreground against white and Pink 50, Pink 100, Pink 200, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 150. Use it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 200, Pink 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150 and CodGray 200. Use it as a background color combined with a white foreground. ",
         "created_at": "2023-04-26T15:35:12.263Z",
         "updated_at": "2023-04-26T16:20:01.031Z",
         "value": "#8f248f"
@@ -1353,205 +1353,177 @@
         "scale": "pink",
         "step": "900",
         "name": "pink900",
-        "description": "Use it as a foreground against white and Pink 50, Pink 100, Pink 200, Pink 300 CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200, and  CodGray 300.\n\nUse it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 200, Pink 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400.\n\nUse it as a background color combined with a white foreground.\n",
+        "description": "Use it as a foreground against white and Pink 50, Pink 100, Pink 200, Pink 300 CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 200, and  CodGray 300. Use it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 200, Pink 300, CodGray 25, CodGray 50, CodGray 75, CodGray 100, CodGray 150  CodGray 200, CodGray 300 and CodGray 400. Use it as a background color combined with a white foreground. ",
         "created_at": "2023-04-26T15:35:12.229Z",
         "updated_at": "2023-04-26T15:35:12.229Z",
         "value": "#48104b"
       }
     },
-    "codGray": {
-      "codGray25": {
+    "grey": {
+      "grey25": {
         "id": "39:946",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "25",
-        "name": "codGray25",
+        "name": "grey25",
         "description": "",
         "created_at": "2023-03-30T09:06:41.006Z",
-        "updated_at": "2023-03-30T12:22:01.478Z",
+        "updated_at": "2023-04-27T13:23:42.950Z",
         "value": "#fafafa"
       },
-      "codGray50": {
+      "grey50": {
         "id": "9:277",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "50",
-        "name": "codGray50",
+        "name": "grey50",
         "description": "Replaces F7F7F7 Cod-Gray-05",
         "created_at": "2023-03-27T17:50:59.460Z",
-        "updated_at": "2023-03-30T12:22:01.520Z",
+        "updated_at": "2023-04-27T13:23:43.019Z",
         "value": "#f5f5f5"
       },
-      "codGray75": {
+      "grey75": {
         "id": "9:278",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "75",
-        "name": "codGray75",
+        "name": "grey75",
         "description": "Replaces F7F7F7 usage in some backgrounds ",
         "created_at": "2023-03-27T17:50:59.556Z",
-        "updated_at": "2023-03-30T12:22:01.418Z",
+        "updated_at": "2023-04-27T13:23:42.920Z",
         "value": "#f0f0f0"
       },
-      "codGray100": {
+      "grey100": {
         "id": "9:279",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "100",
-        "name": "codGray100",
+        "name": "grey100",
         "description": "This replaces E7E7E7 and Charcoal 200",
         "created_at": "2023-03-27T17:50:59.478Z",
-        "updated_at": "2023-03-30T12:22:01.501Z",
+        "updated_at": "2023-04-27T13:23:42.993Z",
         "value": "#e3e3e3"
       },
-      "codGray150": {
+      "grey150": {
         "id": "10:280",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "150",
-        "name": "codGray150",
+        "name": "grey150",
         "description": "",
         "created_at": "2023-03-27T17:50:59.406Z",
-        "updated_at": "2023-03-30T12:22:01.437Z",
+        "updated_at": "2023-04-27T13:23:42.932Z",
         "value": "#d8d8d8"
       },
-      "codGray175": {
+      "grey175": {
         "id": "10:281",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "175",
-        "name": "codGray175",
+        "name": "grey175",
         "description": "Replaces Cod-Gray-20",
         "created_at": "2023-03-27T17:50:59.357Z",
-        "updated_at": "2023-03-30T12:22:01.473Z",
+        "updated_at": "2023-04-27T13:23:42.938Z",
         "value": "#cccccc"
       },
-      "codGray200": {
+      "grey200": {
         "id": "10:282",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "200",
-        "name": "codGray200",
+        "name": "grey200",
         "description": "Replaces Cod-Gray-20",
         "created_at": "2023-03-27T17:50:59.367Z",
-        "updated_at": "2023-03-30T12:22:01.404Z",
+        "updated_at": "2023-04-27T13:23:42.909Z",
         "value": "#c1c1c1"
       },
-      "codGray300": {
+      "grey300": {
         "id": "10:283",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "300",
-        "name": "codGray300",
+        "name": "grey300",
         "description": "Replaces Cod-Gray-30",
         "created_at": "2023-03-27T17:50:59.487Z",
-        "updated_at": "2023-03-30T12:22:01.413Z",
+        "updated_at": "2023-04-27T13:23:42.914Z",
         "value": "#b8b8b8"
       },
-      "codGray400": {
+      "grey400": {
         "id": "10:284",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "400",
-        "name": "codGray400",
+        "name": "grey400",
         "description": "Replaces Cod-Gray-40",
         "created_at": "2023-03-27T17:50:59.530Z",
-        "updated_at": "2023-03-30T12:22:01.510Z",
+        "updated_at": "2023-04-27T13:23:43.007Z",
         "value": "#a0a0a0"
       },
-      "codGray500": {
+      "grey500": {
         "id": "10:285",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "500",
-        "name": "codGray500",
+        "name": "grey500",
         "description": "Replaces Cod-Gray-50",
         "created_at": "2023-03-27T17:50:59.496Z",
-        "updated_at": "2023-03-30T12:22:01.380Z",
+        "updated_at": "2023-04-27T13:23:42.886Z",
         "value": "#888888"
       },
-      "codGray600": {
+      "grey600": {
         "id": "10:286",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "600",
-        "name": "codGray600",
+        "name": "grey600",
         "description": "Replaces Cod-Gray-60",
         "created_at": "2023-03-27T17:50:59.512Z",
-        "updated_at": "2023-03-30T12:22:01.487Z",
+        "updated_at": "2023-04-27T13:23:42.974Z",
         "value": "#707070"
       },
-      "codGray700": {
+      "grey700": {
         "id": "10:287",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "700",
-        "name": "codGray700",
+        "name": "grey700",
         "description": "Replaces Cod-Gray-70",
         "created_at": "2023-03-27T17:50:59.451Z",
-        "updated_at": "2023-03-30T12:22:01.399Z",
+        "updated_at": "2023-04-27T13:23:42.903Z",
         "value": "#585858"
       },
-      "codGray800": {
+      "grey800": {
         "id": "10:290",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "800",
-        "name": "codGray800",
+        "name": "grey800",
         "description": "Replaces Cod-Gray-80",
         "created_at": "2023-03-27T17:50:59.386Z",
-        "updated_at": "2023-03-30T12:22:01.336Z",
+        "updated_at": "2023-04-27T13:23:42.862Z",
         "value": "#414141"
       },
-      "codGray900": {
+      "grey900": {
         "id": "10:291",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "900",
-        "name": "codGray900",
+        "name": "grey900",
         "description": "Replaces 292929 Cod-Gray-90",
         "created_at": "2023-03-27T17:50:59.547Z",
-        "updated_at": "2023-03-30T12:22:01.427Z",
+        "updated_at": "2023-04-27T13:23:42.926Z",
         "value": "#242424"
       },
-      "codGray1000": {
+      "grey1000": {
         "id": "10:292",
         "mode": "light",
-        "scale": "codGray",
+        "scale": "grey",
         "step": "1000",
-        "name": "codGray1000",
+        "name": "grey1000",
         "description": "Replaces 111111",
         "created_at": "2023-03-27T17:50:59.469Z",
-        "updated_at": "2023-03-30T12:22:01.491Z",
+        "updated_at": "2023-04-27T13:23:42.980Z",
         "value": "#121212"
-      }
-    }
-  },
-  "midnight": {
-    "": {
-      "undefinedundefined": {
-        "id": "240:492",
-        "mode": "midnight",
-        "scale": "",
-        "name": "undefinedundefined",
-        "description": "White can be utilised in any theme as a background or foreground color. ",
-        "created_at": "2023-04-25T14:46:26.458Z",
-        "updated_at": "2023-04-25T15:53:53.028Z",
-        "value": "#1e0a46"
-      }
-    }
-  },
-  "white": {
-    "": {
-      "undefinedundefined": {
-        "id": "240:491",
-        "mode": "white",
-        "scale": "",
-        "name": "undefinedundefined",
-        "description": "White can be utilised in any theme as a background, border, or foreground color. ",
-        "created_at": "2023-04-25T14:46:26.451Z",
-        "updated_at": "2023-04-25T15:53:53.035Z",
-        "value": "#ffffff"
       }
     }
   }
