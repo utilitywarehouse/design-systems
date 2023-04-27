@@ -57,7 +57,7 @@ importers:
         specifier: ^5.0.2
         version: 5.0.2
 
-  packages/design-tokens:
+  packages/colours:
     devDependencies:
       fs-extra:
         specifier: ^11.1.1
@@ -68,6 +68,12 @@ importers:
       tinycolor2:
         specifier: ^1.6.0
         version: 1.6.0
+      tsup:
+        specifier: ^6.7.0
+        version: 6.7.0(postcss@8.4.21)(typescript@5.0.2)
+
+  packages/design-tokens:
+    devDependencies:
       tsup:
         specifier: ^6.7.0
         version: 6.7.0(postcss@8.4.21)(typescript@5.0.2)
@@ -4044,7 +4050,7 @@ packages:
       '@storybook/csf-plugin': 7.0.0-rc.7
       '@storybook/csf-tools': 7.0.0-rc.7
       '@storybook/global': 5.0.0
-      '@storybook/mdx2-csf': 1.0.0-next.8
+      '@storybook/mdx2-csf': 1.1.0-next.0
       '@storybook/node-logger': 7.0.0-rc.7
       '@storybook/postinstall': 7.0.0-rc.7
       '@storybook/preview-api': 7.0.0-rc.7
@@ -4925,8 +4931,8 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/mdx2-csf@1.0.0-next.8:
-    resolution: {integrity: sha512-t2O5s/HHTH5evZVHgVtCWTZgMZ/CaqDu3xVGgjVbKeTvpPAbi0Waab5SSX8T9PG5jNDei/x+jpAVCcNMOHoWzg==}
+  /@storybook/mdx2-csf@1.1.0-next.0:
+    resolution: {integrity: sha512-DeXEULA683XaoNJpAwqJU4lKnpCAACdIiSDqCuAfKzhHYAv11snQ8VjPrtR1I0WcWG4ATi+TawT1dWFnsYhhAQ==}
     dev: true
 
   /@storybook/node-logger@6.5.16:

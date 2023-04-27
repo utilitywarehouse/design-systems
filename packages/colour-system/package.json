@@ -1,7 +1,7 @@
 {
-  "name": "@utilitywarehouse/design-tokens",
-  "version": "0.0.6",
-  "description": "Design Tokens for the UW brand",
+  "name": "@utilitywarehouse/colour-system",
+  "version": "0.0.1",
+  "description": "UW Colour System",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -9,6 +9,8 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
+    "clean:src": "rm -rf src",
+    "generate": "pnpm clean:src && node ./scripts/generate-colors.cjs",
     "build": "tsup",
     "lint:fix": "TIMING=1 eslint ./src --fix --ext .ts",
     "lint": "TIMING=1 eslint ./src --ext .ts"
@@ -21,6 +23,9 @@
     "dist"
   ],
   "devDependencies": {
+    "fs-extra": "^11.1.1",
+    "lodash": "^4.17.21",
+    "tinycolor2": "^1.6.0",
     "tsup": "^6.7.0"
   }
 }
