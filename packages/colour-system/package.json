@@ -10,10 +10,7 @@
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
     "clean:src": "rm -rf src",
-    "generate": "pnpm clean:src && node ./scripts/generate-colors.cjs",
-    "build": "tsup",
-    "lint:fix": "TIMING=1 eslint ./src --fix --ext .ts",
-    "lint": "TIMING=1 eslint ./src --ext .ts"
+    "generate": "pnpm clean:src && node ./scripts/generate-colors.cjs"
   },
   "license": "UNLICENSED",
   "publishConfig": {
