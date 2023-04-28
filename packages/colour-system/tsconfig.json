@@ -1,9 +1,18 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": [ "." ],
-  "exclude": [ "dist", "node_modules" ],
   "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": "src"
-  }
+    "outDir": ".",
+    "declarationDir": "types",
+    "module": "esnext",
+    "target": "ES2019",
+    "lib": ["esnext"],
+    "declaration": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "isolatedModules": true
+  },
+  "include": ["./src"],
+  "exclude": [ "dist", "node_modules", "scripts", "templates", "raw" ]
 }

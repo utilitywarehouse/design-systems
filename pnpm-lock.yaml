@@ -59,6 +59,9 @@ importers:
 
   packages/colour-system:
     devDependencies:
+      '@rollup/plugin-typescript':
+        specifier: ^8.2.1
+        version: 8.2.1(rollup@2.48.0)(tslib@2.4.1)(typescript@5.0.2)
       ejs:
         specifier: ^3.1.9
         version: 3.1.9
@@ -68,12 +71,12 @@ importers:
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
+      rollup:
+        specifier: ^2.48.0
+        version: 2.48.0
       tinycolor2:
         specifier: ^1.6.0
         version: 1.6.0
-      tsup:
-        specifier: ^6.7.0
-        version: 6.7.0(postcss@8.4.21)(typescript@5.0.2)
 
   packages/design-tokens:
     devDependencies:
@@ -91,9 +94,6 @@ importers:
       '@emotion/styled':
         specifier: ^11.10.6
         version: 11.10.6(@emotion/react@11.10.6)(@types/react@18.0.25)(react@18.2.0)
-      '@utilitywarehouse/colour-system':
-        specifier: workspace:*
-        version: link:../colour-system
       '@utilitywarehouse/customer-ui-react-icons':
         specifier: ^1.1.0
         version: 1.1.0
@@ -3893,6 +3893,33 @@ packages:
     resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
     dev: true
 
+  /@rollup/plugin-typescript@8.2.1(rollup@2.48.0)(tslib@2.4.1)(typescript@5.0.2):
+    resolution: {integrity: sha512-Qd2E1pleDR4bwyFxqbjt4eJf+wB0UKVMLc7/BAFDGVdAXQMCsD4DUv5/7/ww47BZCYxWtJqe1Lo0KVNswBJlRw==}
+    engines: {node: '>=8.0.0'}
+    peerDependencies:
+      rollup: ^2.14.0
+      tslib: '*'
+      typescript: '>=3.7.0'
+    dependencies:
+      '@rollup/pluginutils': 3.1.0(rollup@2.48.0)
+      resolve: 1.22.1
+      rollup: 2.48.0
+      tslib: 2.4.1
+      typescript: 5.0.2
+    dev: true
+
+  /@rollup/pluginutils@3.1.0(rollup@2.48.0):
+    resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
+    engines: {node: '>= 8.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0
+    dependencies:
+      '@types/estree': 0.0.39
+      estree-walker: 1.0.1
+      picomatch: 2.3.1
+      rollup: 2.48.0
+    dev: true
+
   /@sinclair/typebox@0.25.23:
     resolution: {integrity: sha512-VEB8ygeP42CFLWyAJhN5OklpxUliqdNEUcXb4xZ/CINqtYGTjL5ukluKdKzQ0iWdUxyQ7B0539PAUhHKrCNWSQ==}
     dev: true
@@ -5454,6 +5481,10 @@ packages:
     dependencies:
       '@types/estree': 0.0.51
       '@types/json-schema': 7.0.11
+    dev: true
+
+  /@types/estree@0.0.39:
+    resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
     dev: true
 
   /@types/estree@0.0.51:
@@ -8584,6 +8615,10 @@ packages:
       c8: 7.13.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /estree-walker@1.0.1:
+    resolution: {integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==}
     dev: true
 
   /esutils@2.0.3:
@@ -12558,6 +12593,14 @@ packages:
     dependencies:
       hash-base: 3.1.0
       inherits: 2.0.4
+    dev: true
+
+  /rollup@2.48.0:
+    resolution: {integrity: sha512-wl9ZSSSsi5579oscSDYSzGn092tCS076YB+TQrzsGuSfYyJeep8eEWj0eaRjuC5McuMNmcnR8icBqiE/FWNB1A==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /rollup@3.20.2:
