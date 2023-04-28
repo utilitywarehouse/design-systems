@@ -1,0 +1,31 @@
+{
+  "name": "@utilitywarehouse/colour-system",
+  "version": "0.0.1",
+  "description": "UW Colour System",
+  "main": "index.js",
+  "module": "index.mjs",
+  "types": "types/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf node_modules && rm -rf dist",
+    "clean:src": "rm -rf raw && rm -rf src",
+    "build": "rollup -c",
+    "copy-files": "cp ./templates/lib-index.ts.ejs ./src/index.ts",
+    "generate": "pnpm clean:src && node ./scripts/generate-colors.cjs && pnpm copy-files",
+    "lint:fix": "TIMING=1 eslint --fix --ext ts src",
+    "lint": "TIMING=1 eslint --ext ts src",
+    "format": "prettier --write --parser=typescript \"src/**/*.ts*\""
+  },
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.2.1",
+    "ejs": "^3.1.9",
+    "fs-extra": "^11.1.1",
+    "lodash": "^4.17.21",
+    "rollup": "^2.48.0",
+    "tinycolor2": "^1.6.0"
+  }
+}
