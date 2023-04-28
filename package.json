@@ -20,13 +20,14 @@
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.2.1",
-    "turbo": "^1.3.1",
+    "turbo": "^1.9.3",
     "typescript": "^5.0.2"
   },
   "scripts": {
     "setup": "corepack enable && corepack prepare pnpm@8.2.0 --activate",
     "build": "turbo run build",
     "build:storybook": "turbo run --no-cache build:storybook",
+    "generate": "turbo run generate && turbo run format",
     "preinstall": "npx only-allow pnpm",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
