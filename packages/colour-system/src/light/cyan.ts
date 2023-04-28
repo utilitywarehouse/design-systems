@@ -10,9 +10,9 @@ export const cyan200 = '#a6c8fc';
 export const cyan300 = '#8fbaff';
 /** This is Brand Cyan */
 export const cyan400 = '#75a7fd';
-/** Use it for large text, borders, and graphic elements against white, Cyan 50, CodGray 25, and CodGray 50. Use it as a background color with white borders or graphic foreground elements. */
+/** Use it for large text, borders, and graphic elements against white, Cyan 50, Grey 25, and Grey 50. Use it as a background color with white borders or graphic foreground elements. */
 export const cyan500 = '#4789fa';
-/** Use it for large text, borders, and graphic elements against white and Cyan 50, CodGray 25, CodGray 50, CodGray 75, CodGray 100, and CodGray 150. Use it as a background color combined with a white foreground. This color should replace some of the former Blue Ribbon usage. */
+/** Use it for large text, borders, and graphic elements against white and Cyan 50, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150. Use it as a background color combined with a white foreground. This color should replace some of the former Blue Ribbon usage. */
 export const cyan600 = '#0550d1';
 /**  */
 export const cyan700 = '#003a9e';

@@ -27,6 +27,7 @@
     "setup": "corepack enable && corepack prepare pnpm@8.2.0 --activate",
     "build": "turbo run build",
     "build:storybook": "turbo run --no-cache build:storybook",
+    "generate": "turbo run generate && turbo run format",
     "preinstall": "npx only-allow pnpm",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",

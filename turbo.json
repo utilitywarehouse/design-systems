@@ -5,9 +5,16 @@
       "outputs": ["dist/**", "storybook-static/**"],
       "dependsOn": ["^build"]
     },
+    "@utilitywarehouse/colour-system#build": {
+      "outputs": ["types/**", "index.js", "index.mjs"],
+      "dependsOn": ["^build"]
+    },
     "checks": {
       "outputs": ["dist/**"],
       "dependsOn": ["^build", "^lint"]
+    },
+    "format": {
+      "outputs": ["src/**", "raw/**"]
     },
     "lint": {
       "outputs": []
@@ -19,6 +26,9 @@
       "cache": false
     },
     "clean": {
+      "cache": false
+    },
+    "generate": {
       "cache": false
     },
     "build:storybook": {

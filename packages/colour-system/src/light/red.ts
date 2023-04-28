@@ -6,9 +6,9 @@ export const red100 = '#ffd8d9';
 export const red200 = '#ffb3b4';
 /**  */
 export const red300 = '#f58e92';
-/** Use it for borders, icons, and large text against white, Red 50, Red 100, CodGray 25, CodGray 50, CodGray 75, and CodGray 100. Use it as a background color with white as the foreground color. */
+/** Use it for borders, icons, and large text against white, Red 50, Red 100, Grey 25, Grey 50, Grey 75, and Grey 100. Use it as a background color with white as the foreground color. */
 export const red500 = '#df2a38';
-/** For text. It passes AA up to codGray 100 */
+/** For text. It passes AA up to Grey 100 */
 export const red600 = '#c31d2a';
 /**  */
 export const red700 = '#891e27';
