@@ -21,8 +21,16 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['react', '@typescript-eslint/eslint-plugin', 'jsx-a11y', 'prettier', 'react-hooks'],
+  plugins: [
+    'react',
+    '@typescript-eslint/eslint-plugin',
+    'jsx-a11y',
+    'prettier',
+    'react-hooks',
+    'react-refresh',
+  ],
   rules: {
+    'react-refresh/only-export-components': 'warn',
     'import/no-extraneous-dependencies': 'off',
     'no-cond-assign': 'error',
     'no-constant-condition': 'error',
