@@ -12,9 +12,7 @@
     "build": "tsup",
     "ts-types": "tsc",
     "lint:fix": "TIMING=1 eslint --fix --ext ts,tsx src",
-    "lint": "TIMING=1 eslint --ext ts,tsx src",
-    "dev": "storybook dev --quiet -p 6006",
-    "build:storybook": "storybook build --quiet"
+    "lint": "TIMING=1 eslint --ext ts,tsx src"
   },
   "author": "",
   "license": "UNLICENSED",

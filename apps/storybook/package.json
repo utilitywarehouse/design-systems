@@ -1,0 +1,36 @@
+{
+  "name": "design-systems-storybook",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "storybook dev --quiet -p 6006",
+    "build:storybook": "storybook build --quiet"
+  },
+  "dependencies": {
+    "@mui/material": "^5.12.1",
+    "@utilitywarehouse/design-tokens": "workspace:^",
+    "@utilitywarehouse/fontsource": "^0.0.5",
+    "@utilitywarehouse/web-ui": "workspace:^",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@mdx-js/react": "^2.3.0",
+    "@storybook/addon-essentials": "^7.0.4",
+    "@storybook/addon-links": "^7.0.4",
+    "@storybook/addon-viewport": "^7.0.7",
+    "@storybook/addons": "^7.0.5",
+    "@storybook/blocks": "^7.0.4",
+    "@storybook/react": "^7.0.4",
+    "@storybook/react-webpack5": "^7.0.0-rc.6",
+    "@storybook/testing-library": "^0.0.14-next.2",
+    "@storybook/theming": "^7.0.5",
+    "@types/ejs": "^3.1.2",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "prop-types": "^15.8.1",
+    "storybook": "^7.0.4",
+    "storybook-addon-designs": "beta",
+    "typescript": "^4.9.3"
+  }
+}
