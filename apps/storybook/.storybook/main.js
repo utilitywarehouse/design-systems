@@ -1,17 +1,31 @@
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    // '../../../packages/web-ui/docs/**/*.mdx',
+    // '../../../packages/web-ui/src/**/*.mdx',
+    '../../../packages/web-ui/src/**/*.stories.@(js|jsx|ts|tsx)',
+  ],
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        actions: false,
+      },
+    },
+    'storybook-addon-designs',
   ],
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
   },
   docs: {
+    defaultName: 'Documentation',
     autodocs: 'tag',
   },
+  typescript: {
+    reactDocgenTypescriptOptions: {},
+  },
+  staticDirs: ['static'],
 };
 export default config;
