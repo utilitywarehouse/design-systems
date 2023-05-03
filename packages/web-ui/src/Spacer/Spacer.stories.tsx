@@ -4,7 +4,7 @@ import { Box } from '../Box';
 import { Spacer } from './Spacer';
 
 const meta: Meta<typeof Spacer> = {
-  title: 'Components/Spacer',
+  title: 'Web UI / Components / Spacer',
   component: Spacer,
 };
 

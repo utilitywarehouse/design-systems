@@ -5,7 +5,7 @@ import { Box } from '../Box';
 import { Text } from '../Text';
 
 const meta: Meta<typeof Grid> = {
-  title: 'Components/Grid',
+  title: 'Web UI / Components / Grid',
   component: Grid,
 };
 

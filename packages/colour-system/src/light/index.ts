@@ -6,3 +6,4 @@ export * from './grey';
 export * from './apple';
 export * from './cyan';
 export * from './green';
+export * from './grape';

@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+import { version } from '../../../colour-system/package.json';
+
+<Meta title="Colour System / Introduction" />
+
+# UW Colour System
+
+Colour scales for building UW Web UIs.
+
+Current version: v{version}
+
+## Installation
+
+```console
+yarn add @utilitywarehouse/colour-system
+```
+
+## Usage
+
+The colour system package exports 2 _color_ objects, `colors` is the default
+colour scales for light mode, and `colorsDark` is colour scales for dark mode,
+used in native mobile applications.
+
+```tsx
+import { colors, colorsDark} from '@utilitywarehouse/colour-system'
+
+[...]
+
+<Box color={isDarkMode ? colors.grey500 : colorsDark.grey500}>
+```

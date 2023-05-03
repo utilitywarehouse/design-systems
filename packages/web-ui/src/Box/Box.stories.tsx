@@ -8,7 +8,7 @@ import { Box, BoxProps } from './Box';
 import { useRef } from 'react';
 
 const meta: Meta<typeof Box> = {
-  title: 'Components/Box',
+  title: 'Web UI / Components / Box',
   component: Box,
 };
 

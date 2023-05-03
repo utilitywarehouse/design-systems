@@ -6,7 +6,7 @@ import { Text } from '../Text';
 import Divider from '@mui/material/Divider';
 
 const meta: Meta<typeof Stack> = {
-  title: 'Components/Stack',
+  title: 'Web UI / Components / Stack',
   component: Stack,
 };
 

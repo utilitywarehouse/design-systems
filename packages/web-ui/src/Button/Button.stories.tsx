@@ -7,7 +7,7 @@ const sizes = ['small', 'medium', 'large'] as const;
 const variants = ['primary', 'secondary'] as const;
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: 'Web UI / Components / Button',
   component: Button,
 };
 

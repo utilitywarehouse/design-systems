@@ -6,7 +6,7 @@ import { headingVariantMapping } from '../Heading';
 import { Stack } from '../Stack';
 
 const meta: Meta<typeof TextLink> = {
-  title: 'Components/TextLink',
+  title: 'Web UI / Components / TextLink',
   component: TextLink,
 };
 

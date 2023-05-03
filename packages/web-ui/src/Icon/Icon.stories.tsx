@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 const allIcons = [...icons['24x24'], ...icons['48x48']];
 
 const meta: Meta<typeof Icon> = {
-  title: 'Components/Icon',
+  title: 'Web UI / Components / Icon',
   component: Icon,
 };
 
