@@ -813,9 +813,9 @@
         "scale": "apple",
         "step": "700",
         "name": "apple700",
-        "description": "Use if for any foreground Apple 50, Grey 25, Grey  50, Grey 75, Grey 100 and Grey 150. Use it for large text, borders, and graphic elements against Apple 50, Apple  200, Grey 25, Grey  50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400.",
+        "description": "Use if for any foreground Apple 100, Grey 25, Grey  50, Grey 75, Grey 100 and Grey 150. Use it for large text, borders, and graphic elements against Apple 100, Apple  200, Grey 25, Grey  50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400.",
         "created_at": "2023-04-28T13:12:22.779Z",
-        "updated_at": "2023-04-28T13:12:22.779Z",
+        "updated_at": "2023-05-02T15:36:02.664Z",
         "value": "#96e6b7"
       },
       "apple800": {
@@ -824,21 +824,100 @@
         "scale": "apple",
         "step": "800",
         "name": "apple800",
-        "description": "Use it as a foreground against white and Apple 50, Apple 200,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Apple 50, Apple 200,  Grey  25, Grey  50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400.",
+        "description": "Use it as a foreground against white and Apple 100, Apple 200,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Apple 100, Apple 200,  Grey  25, Grey  50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400.",
         "created_at": "2023-04-28T13:12:22.792Z",
-        "updated_at": "2023-04-28T13:12:22.792Z",
+        "updated_at": "2023-05-02T15:36:02.647Z",
         "value": "#c1f0d3"
       },
-      "apple900": {
+      "apple950": {
         "id": "309:888",
         "mode": "dark",
         "scale": "apple",
-        "step": "900",
-        "name": "apple900",
+        "step": "950",
+        "name": "apple950",
         "description": "Use it as a foreground against white and Apple 50, Apple 200,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300, Grey 400 and Grey 500. Use it for large text, borders, and graphic elements against white and Apple 50, Apple 200,  Grey  25, Grey  50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400.",
         "created_at": "2023-04-28T13:12:22.785Z",
-        "updated_at": "2023-04-28T13:12:22.785Z",
+        "updated_at": "2023-05-02T15:36:02.656Z",
         "value": "#e5f9ed"
+      }
+    },
+    "grape": {
+      "grape100": {
+        "id": "338:1049",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "100",
+        "name": "grape100",
+        "description": "For backgrounds mostly. Foregrounds that can be used against this color range from Grape 700 and up. It passes AA with large text, borders and icons against combined with Grape 500.",
+        "created_at": "2023-05-02T15:36:02.527Z",
+        "updated_at": "2023-05-02T15:36:02.527Z",
+        "value": "#240444"
+      },
+      "grape200": {
+        "id": "338:1050",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "200",
+        "name": "grape200",
+        "description": "For backgrounds mostly. Foregrounds that can be used against this color range from Grape 700 and up. It passes AA with large text, borders and icons against combined with Grape 500.",
+        "created_at": "2023-05-02T15:36:02.570Z",
+        "updated_at": "2023-05-02T15:36:02.570Z",
+        "value": "#2d025e"
+      },
+      "grape500": {
+        "id": "338:1052",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "500",
+        "name": "grape500",
+        "description": "Use this color only for borders, large text, and icons against a background of Grape 100, Grape 200, or any Grey shade in the range of 50 to 150.",
+        "created_at": "2023-05-02T15:36:02.545Z",
+        "updated_at": "2023-05-02T15:36:02.545Z",
+        "value": "#7b39c6"
+      },
+      "grape600": {
+        "id": "338:1053",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "600",
+        "name": "grape600",
+        "description": "Brand Grape. Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 100. Use this color only for borders, large text, and icons against a background of Grape 100, Grape 200, or any Grey shade in the range of 50 to 150.",
+        "created_at": "2023-05-02T15:36:02.577Z",
+        "updated_at": "2023-05-02T15:36:02.577Z",
+        "value": "#a66de8"
+      },
+      "grape700": {
+        "id": "338:1054",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "700",
+        "name": "grape700",
+        "description": "Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 200.",
+        "created_at": "2023-05-02T15:36:02.593Z",
+        "updated_at": "2023-05-02T15:36:02.593Z",
+        "value": "#bc92ed"
+      },
+      "grape800": {
+        "id": "338:1055",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "800",
+        "name": "grape800",
+        "description": "Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 300.",
+        "created_at": "2023-05-02T15:36:02.608Z",
+        "updated_at": "2023-05-02T15:36:02.608Z",
+        "value": "#d4baf3"
+      },
+      "grape950": {
+        "id": "338:1056",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "950",
+        "name": "grape950",
+        "description": "Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 300.",
+        "created_at": "2023-05-02T15:36:02.601Z",
+        "updated_at": "2023-05-02T15:36:02.601Z",
+        "value": "#f1e6fb"
       }
     }
   },
@@ -1287,9 +1366,9 @@
         "scale": "grey",
         "step": "175",
         "name": "grey175",
-        "description": "Replaces Cod-Gray-20",
+        "description": "Replaces Cod-Gray-10",
         "created_at": "2023-03-27T17:50:59.357Z",
-        "updated_at": "2023-04-27T13:23:42.938Z",
+        "updated_at": "2023-05-02T15:36:02.673Z",
         "value": "#cccccc"
       },
       "grey200": {
@@ -1432,9 +1511,9 @@
         "scale": "apple",
         "step": "400",
         "name": "apple400",
-        "description": "This is Brand Apple You can use it as a foreground colour for Non-interactive design elements only.",
+        "description": "This is Brand Apple. You can use it as a foreground colour for Non-interactive design elements only.",
         "created_at": "2023-04-27T17:00:01.423Z",
-        "updated_at": "2023-04-27T17:00:01.423Z",
+        "updated_at": "2023-05-02T15:36:02.682Z",
         "value": "#62dd99"
       },
       "apple700": {
@@ -1682,6 +1761,74 @@
         "created_at": "2023-03-29T16:17:22.822Z",
         "updated_at": "2023-04-27T17:38:50.096Z",
         "value": "#003d1e"
+      }
+    },
+    "grape": {
+      "grape50": {
+        "id": "323:1036",
+        "mode": "light",
+        "scale": "grape",
+        "step": "50",
+        "name": "grape50",
+        "description": "It replaces Grape-50. Use it for backgrounds.  Use it for text that goes on Grape 800, and the darker shades of Grey. ",
+        "created_at": "2023-05-02T15:36:02.585Z",
+        "updated_at": "2023-05-02T15:36:02.585Z",
+        "value": "#f1e6fb"
+      },
+      "grape100": {
+        "id": "326:1037",
+        "mode": "light",
+        "scale": "grape",
+        "step": "100",
+        "name": "grape100",
+        "description": "It replaces Grape-100. Use it for backgrounds.  Use it for text that goes on Grape 800, and the darker shades of Grey. ",
+        "created_at": "2023-05-02T15:36:02.615Z",
+        "updated_at": "2023-05-02T15:36:02.615Z",
+        "value": "#e4d3f8"
+      },
+      "grape200": {
+        "id": "327:1038",
+        "mode": "light",
+        "scale": "grape",
+        "step": "200",
+        "name": "grape200",
+        "description": "Replaces Grape-100.  Use it for backgrounds.  Use it for text that goes on Grape 800, and the darker shades of Grey. ",
+        "created_at": "2023-05-02T15:36:02.536Z",
+        "updated_at": "2023-05-02T15:36:02.536Z",
+        "value": "#d4baf3"
+      },
+      "grape300": {
+        "id": "327:1039",
+        "mode": "light",
+        "scale": "grape",
+        "step": "300",
+        "name": "grape300",
+        "description": "Replaces Grape-200",
+        "created_at": "2023-05-02T15:36:02.554Z",
+        "updated_at": "2023-05-02T15:36:02.554Z",
+        "value": "#bc92ed"
+      },
+      "grape400": {
+        "id": "327:1040",
+        "mode": "light",
+        "scale": "grape",
+        "step": "400",
+        "name": "grape400",
+        "description": "This replaces Brand Grape.  This color doesn't pass AA as a foreground against any background color.  Use this color only on borders, large text, and icons against a white background. ",
+        "created_at": "2023-05-02T15:36:02.563Z",
+        "updated_at": "2023-05-02T15:36:02.563Z",
+        "value": "#a66de8"
+      },
+      "grape800": {
+        "id": "327:1041",
+        "mode": "light",
+        "scale": "grape",
+        "step": "800",
+        "name": "grape800",
+        "description": "",
+        "created_at": "2023-05-02T15:36:02.518Z",
+        "updated_at": "2023-05-02T15:36:02.518Z",
+        "value": "#2c094e"
       }
     }
   }

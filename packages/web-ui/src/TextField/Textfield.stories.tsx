@@ -3,7 +3,7 @@ import { Box } from '../Box';
 import { TextField } from './TextField';
 
 const meta: Meta<typeof TextField> = {
-  title: 'Components/TextField',
+  title: 'Web UI / Components / TextField',
   component: TextField,
 };
 

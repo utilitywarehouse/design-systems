@@ -8,7 +8,7 @@ export const grey75 = '#f0f0f0';
 export const grey100 = '#e3e3e3';
 /**  */
 export const grey150 = '#d8d8d8';
-/** Replaces Cod-Gray-20 */
+/** Replaces Cod-Gray-10 */
 export const grey175 = '#cccccc';
 /** Replaces Cod-Gray-20 */
 export const grey200 = '#c1c1c1';

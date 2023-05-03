@@ -7,7 +7,7 @@ import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
 
 const meta: Meta<typeof Menu> = {
-  title: 'Components/Menu',
+  title: 'Web UI / Components / Menu',
   component: Menu,
 };
 

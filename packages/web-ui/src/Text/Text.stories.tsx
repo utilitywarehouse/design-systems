@@ -7,7 +7,7 @@ const variants = Object.keys(textVariantMapping);
 const colors = ['primary', 'success', 'error'] as const;
 
 const meta: Meta<typeof Text> = {
-  title: 'Components/Text',
+  title: 'Web UI / Components / Text',
   component: Text,
 };
 

@@ -9,7 +9,7 @@ const variants = Object.keys(headingVariantMapping);
 const colors = ['primary', 'secondary'] as const;
 
 const meta: Meta<typeof Heading> = {
-  title: 'Components/Heading',
+  title: 'Web UI / Components / Heading',
   component: Heading,
 };
 
