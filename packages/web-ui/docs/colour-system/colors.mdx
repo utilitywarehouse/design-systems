@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/blocks';
+import { colors } from '@utilitywarehouse/colour-system';
+import { Box, Stack, Text, Heading } from '../../src';
+import { light } from '../../../colour-system/raw/colours.json';
+
+<Meta title="Colour System / Colors" />
+
+# Colors
+
+<Stack spacing={4} component="ul" padding={0} margin={0} >
+  {Object.keys(light).map(scale => (
+    <Stack key={scale} spacing={2} >
+      <Box component="h2" textTransform="capitalize">
+        {scale}
+      </Box>
+
+      <Stack spacing={2}  component="ul" padding={0} margin={0}  >
+      {Object.keys(light[scale]).map((colour)=> {
+      const {name, description, value} = light[scale][colour]
+      return(
+      <Box key={colour} display='flex' justifyContent='space-between' alignItems='center' >
+      <Box width={100} height={100} bgcolor={value}></Box>
+      <Box flex={1} display='flex' justifyContent='center'>
+          <Text component='span' variant='body' bold >
+          {name}
+          </Text>
+      </Box>
+
+      <Text component='span' variant='body' flex={4}>
+      {description}
+      </Text>
+
+      </Box>
+      ) })}
+      </Stack>
+
+    </Stack>
+
+))}
+
+</Stack>
