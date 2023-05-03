@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.10
+
+### Patch Changes
+
+- [#57](https://github.com/utilitywarehouse/design-systems/pull/57) [`eee4fb7`](https://github.com/utilitywarehouse/design-systems/commit/eee4fb743cfa077a1a62dbe39a368c3f09289af1) Thanks [@robphoenix](https://github.com/robphoenix)! - Add Grape colour scale
+
 ## 0.0.9
 
 ### Patch Changes
