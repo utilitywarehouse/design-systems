@@ -1,6 +1,7 @@
 import './types/overrides';
 
-export * from './theme';
+export { theme } from './theme';
+export type { Theme } from './theme';
 export * from './Box';
 export * from './Button';
 export * from './Grid';

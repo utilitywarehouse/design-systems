@@ -12,14 +12,15 @@ import { htmlFontSize, pxToRem, spacing } from '../utils';
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
   spacing,
-  components: {
-    ...cssBaselineThemeOverrides,
-    ...buttonThemeOverrides,
-    ...textLinkThemeOverrides,
-    ...textFieldThemeOverrides,
-    ...menuThemeOverrides,
-  },
 });
+
+// const componentThemes = {
+//   ...cssBaselineThemeOverrides,
+//   ...buttonThemeOverrides,
+//   ...textLinkThemeOverrides,
+//   ...textFieldThemeOverrides,
+//   ...menuThemeOverrides,
+// };
 
 theme.typography = {
   pxToRem,
@@ -79,5 +80,8 @@ theme.palette = {
   ...customPalette,
 };
 
-export { theme };
+// because circular dependencies with the `styled` function
+const { components, ...rest } = theme as any;
+
+export { theme, rest as themeWithoutComponents };
 export type Theme = typeof theme;
