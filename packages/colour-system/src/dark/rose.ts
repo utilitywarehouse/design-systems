@@ -11,3 +11,5 @@ export const rose600 = '#f25192';
 export const rose700 = '#f586b1';
 /** Replaces Rose-100. */
 export const rose800 = '#f9b6d0';
+/** It replaces Rose-50 */
+export const rose950 = '#fde2ec';

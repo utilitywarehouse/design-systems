@@ -986,6 +986,17 @@
         "created_at": "2023-05-03T15:52:13.666Z",
         "updated_at": "2023-05-03T15:52:13.666Z",
         "value": "#f9b6d0"
+      },
+      "rose950": {
+        "id": "352:1147",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "950",
+        "name": "rose950",
+        "description": "It replaces Rose-50",
+        "created_at": "2023-05-03T15:52:13.598Z",
+        "updated_at": "2023-05-04T13:32:56.202Z",
+        "value": "#fde2ec"
       }
     }
   },
@@ -1987,17 +1998,6 @@
         "created_at": "2023-05-03T15:52:13.606Z",
         "updated_at": "2023-05-03T15:52:13.606Z",
         "value": "#4a1125"
-      },
-      "rose950": {
-        "id": "352:1147",
-        "mode": "light",
-        "scale": "rose",
-        "step": "950",
-        "name": "rose950",
-        "description": "It replaces Rose-50",
-        "created_at": "2023-05-03T15:52:13.598Z",
-        "updated_at": "2023-05-03T15:52:13.598Z",
-        "value": "#fde2ec"
       }
     }
   },

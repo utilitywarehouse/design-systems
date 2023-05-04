@@ -13,5 +13,3 @@ export const rose500 = '#ed176c';
 export const rose700 = '#9f1446';
 /** Use is as any foreground against Rose 100, Rose 200, Rose 300, Rose 400 or any Grey shade in the range of 25 to 300. */
 export const rose800 = '#4a1125';
-/** It replaces Rose-50 */
-export const rose950 = '#fde2ec';
