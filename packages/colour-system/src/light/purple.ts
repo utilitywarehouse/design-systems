@@ -1,3 +1,4 @@
+// Hey, don't edit this file directly, it's been magically generated.
 /** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds. */
 export const purple50 = '#fbf6fd';
 /** Use it for text that goes on top of  Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
@@ -16,7 +17,7 @@ export const purple500 = '#af4dd5';
 export const purple600 = '#931cce';
 /** Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 200 Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150 and Grey 200. Use it as a background color combined with a white foreground.  */
 export const purple700 = '#7209ae';
-/** This is Brand Purple. Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground.  */
+/** This is Brand Purple - 550091. Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground.  */
 export const purple800 = '#550091';
 /** Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200,  Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground.  */
 export const purple900 = '#400066';

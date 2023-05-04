@@ -1,3 +1,4 @@
+// Hey, don't edit this file directly, it's been magically generated.
 /** Use it for backgrounds.  */
 export const red50 = '#ffebeb';
 /** Use it for backgrounds.  */

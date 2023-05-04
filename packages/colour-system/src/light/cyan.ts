@@ -1,3 +1,4 @@
+// Hey, don't edit this file directly, it's been magically generated.
 /** This colour is for backgrounds only.  Replaces former Cyan-10 and Cyan-50 usage */
 export const cyan50 = '#ecf4fe';
 /** This colour is for backgrounds only.  This replaces the former Cyan-50.  */

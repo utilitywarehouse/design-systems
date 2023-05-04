@@ -11,6 +11,8 @@ const figmaConfig = {
   headers: new Headers({ 'X-Figma-Token': process.env.FIGMA_ACCESS_TOKEN }),
 };
 
+const ORPHAN_STYLES_MODE = 'common';
+
 /**
  * Gets the UW Colour System figma styles.
  */
@@ -25,31 +27,45 @@ async function getStyles() {
     );
   }
 
-  return data.meta.styles
-    .filter(s => !s.name.toLowerCase().includes('white')) // temporary
-    .filter(s => !s.name.toLowerCase().includes('midnight')) // temporary
-    .reduce((styles, style) => {
-      const { name, description, node_id, created_at, updated_at } = style;
-      const [colourMode, colour, step] = name.split('/');
+  return data.meta.styles.reduce((styles, style) => {
+    const { name, description, node_id, created_at, updated_at } = style;
+    const colourDescription = `${description}`.replace(/[\n\r]+/g, ' ');
 
-      const mode = colourMode.toLowerCase();
-      const scale = _.lowerFirst(colour);
-      const colourName = _.lowerFirst(`${colour}${step}`);
-      const colourDescription = `${description}`.replace(/[\n\r]+/g, ' ');
-
+    // We have some orphan colours that need to be dealt with differently
+    // In Figma, colour names use '/' to separate them into colours modes & colour scales: `{mode}/{scale}/{step}`
+    // ie. `Light/Purple/400`
+    if (!name.toLowerCase().includes('/')) {
       styles[node_id] = {
         id: node_id,
-        mode,
-        scale,
-        step,
-        name: colourName,
+        mode: ORPHAN_STYLES_MODE,
+        scale: 'brand',
+        step: undefined,
+        name: `brand${name}`,
         description: colourDescription,
         created_at,
         updated_at,
       };
-
       return styles;
-    }, {});
+    }
+    const [colourMode, colour, step] = name.split('/');
+
+    const mode = colourMode.toLowerCase();
+    const scale = _.lowerFirst(colour);
+    const colourName = _.lowerFirst(`${colour}${step}`);
+
+    styles[node_id] = {
+      id: node_id,
+      mode,
+      scale,
+      step,
+      name: colourName,
+      description: colourDescription,
+      created_at,
+      updated_at,
+    };
+
+    return styles;
+  }, {});
 }
 
 /**
@@ -80,25 +96,28 @@ async function getColours(styles) {
       styles[nodeData.document.id].value = hex;
     });
 
-  // rebuild the object into light/dark mode, then colour scales
+  // rebuild the object into light/dark mode colour scales, and common colours
   // ie. { light: { cyan: { cyan100: { ... }}}, dark: { cyan: { cyan100: { ... }}}}
   return Object.values(styles).reduce((colours, style) => {
-    colours[style.mode] = { ...colours[style.mode] };
-    colours[style.mode][style.scale] = {
-      ...colours[style.mode][style.scale],
-      [style.name]: style,
-    };
+    if (style.mode === ORPHAN_STYLES_MODE) {
+      colours.common = { ...colours.common, [style.name]: style };
+    } else {
+      colours[style.mode] = { ...colours[style.mode] };
+      colours[style.mode][style.scale] = {
+        ...colours[style.mode][style.scale],
+        [style.name]: style,
+      };
+      // sort by colour name
+      const unordered = colours[style.mode][style.scale];
+      const ordered = Object.keys(unordered)
+        .sort((a, b) => Number(unordered[a].step) - Number(unordered[b].step))
+        .reduce((obj, key) => {
+          obj[key] = unordered[key];
+          return obj;
+        }, {});
 
-    // sort by colour name
-    const unordered = colours[style.mode][style.scale];
-    const ordered = Object.keys(unordered)
-      .sort((a, b) => Number(unordered[a].step) - Number(unordered[b].step))
-      .reduce((obj, key) => {
-        obj[key] = unordered[key];
-        return obj;
-      }, {});
-
-    colours[style.mode][style.scale] = ordered;
+      colours[style.mode][style.scale] = ordered;
+    }
 
     return colours;
   }, {});
@@ -108,20 +127,35 @@ async function generateColoursFiles(colours) {
   await fs.outputFile(
     path.resolve(__dirname, '..', 'raw', 'colours.json'),
     JSON.stringify(colours, null, 2),
-    {
-      encoding: 'utf8',
-    }
+    { encoding: 'utf8' }
   );
 
   Object.keys(colours).forEach(async colourMode => {
-    const colorScales = Object.keys(colours[colourMode]);
+    // generate common colours
+    if (colourMode === ORPHAN_STYLES_MODE) {
+      const commonColorsIndexTemplateSrc = await fs.readFileSync(
+        path.resolve(__dirname, '../templates', 'common-index.ts.ejs'),
+        { encoding: 'utf8' }
+      );
+      const commonColorsIndexRendered = render(commonColorsIndexTemplateSrc, {
+        colors: Object.values(colours[ORPHAN_STYLES_MODE]),
+      });
+      await fs.outputFile(
+        path.resolve(__dirname, '../src', ORPHAN_STYLES_MODE, 'index.ts'),
+        commonColorsIndexRendered
+      );
+      return;
+    }
+
+    // generate colour mode colours
+    const colorModes = Object.keys(colours[colourMode]);
     // generate color mode index files
     const colorModeIndexTemplateSrc = await fs.readFileSync(
       path.resolve(__dirname, '../templates', 'color-mode-index.ts.ejs'),
       { encoding: 'utf8' }
     );
     const colorModeIndexRendered = render(colorModeIndexTemplateSrc, {
-      colorScales,
+      colorModes,
     });
     await fs.outputFile(
       path.resolve(__dirname, '../src', colourMode, 'index.ts'),
@@ -129,14 +163,13 @@ async function generateColoursFiles(colours) {
     );
 
     // generate colour scales
-    colorScales.forEach(async colourScale => {
+    colorModes.forEach(async colourScale => {
       const colorScalesTemplateSrc = await fs.readFileSync(
         path.resolve(__dirname, '../templates', 'color-scale.ts.ejs'),
         { encoding: 'utf8' }
       );
       const colorScaleRendered = render(colorScalesTemplateSrc, {
         colors: Object.values(colours[colourMode][colourScale]),
-        color: colourScale,
       });
       await fs.outputFile(
         path.resolve(__dirname, '../src', colourMode, `${colourScale}.ts`),
