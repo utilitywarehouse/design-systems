@@ -4,7 +4,7 @@ export const pink50 = '#fde6fb';
 export const pink100 = '#fccff9';
 /**  */
 export const pink200 = '#f9bdfa';
-/** AKA Brand Pink You can use it as a foreground colour for Non-interactive design elements only. */
+/** This is Brand Pink - F495F9 You can use it as a foreground colour for Non-interactive design elements only. */
 export const pink300 = '#f495f9';
 /** Use it for borders, icons, and large text against white, Pink 50, Pink 100, Grey 25, Grey 50, Grey 75, Grey 100 and Grey 150. Use it as a background color with white as the foreground color. */
 export const pink500 = '#c933d1';

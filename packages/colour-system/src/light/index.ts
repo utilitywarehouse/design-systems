@@ -7,3 +7,4 @@ export * from './apple';
 export * from './cyan';
 export * from './green';
 export * from './grape';
+export * from './rose';
