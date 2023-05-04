@@ -1,3 +1,4 @@
+// Hey, don't edit this file directly, it's been magically generated.
 /** Use it for backgrounds.  Use it for text that goes on top of Pink 700 and the darker shades of Grey.  */
 export const pink50 = '#fde6fb';
 /** Use it for backgrounds.  Use it for text that goes on top of Pink 700 and Pink 900. */

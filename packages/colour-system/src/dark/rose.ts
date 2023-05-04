@@ -1,3 +1,4 @@
+// Hey, don't edit this file directly, it's been magically generated.
 /** Use it for backgrounds.  Use it for text that goes on Rose 600, Rose 700, Rose 800, Rose 950, and the lighter shades of Grey.  */
 export const rose100 = '#45081e';
 /** Use it for backgrounds.  Use it for text that goes on Rose 700, Rose 800, Rose 950, and the lighter shades of Grey.  */

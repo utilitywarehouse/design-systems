@@ -1,3 +1,4 @@
+// Hey, don't edit this file directly, it's been magically generated.
 /** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds. */
 export const purple50 = '#fbf6fd';
 /** Use it for text that goes on top of  Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */

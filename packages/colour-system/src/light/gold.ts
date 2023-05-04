@@ -1,3 +1,4 @@
+// Hey, don't edit this file directly, it's been magically generated.
 /** For backgrounds */
 export const gold50 = '#fef9e6';
 /** For backgrounds */

@@ -1,3 +1,4 @@
+// Hey, don't edit this file directly, it's been magically generated.
 /** It replaces Rose-50 Use it for backgrounds.  Use it for text that goes on Rose 700, Rose 800, and the darker shades of Grey.  */
 export const rose50 = '#fde2ec';
 /** Replaces Rose-100. Use it for backgrounds.  Use it for text that goes on Rose 700, Rose 800, and the darker shades of Grey.  */
