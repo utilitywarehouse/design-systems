@@ -919,6 +919,85 @@
         "updated_at": "2023-05-02T15:36:02.601Z",
         "value": "#f1e6fb"
       }
+    },
+    "rose": {
+      "rose100": {
+        "id": "352:1140",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "100",
+        "name": "rose100",
+        "description": "Use it for backgrounds.  Use it for text that goes on Rose 600, Rose 700, Rose 800, Rose 950, and the lighter shades of Grey. ",
+        "created_at": "2023-05-03T15:52:13.613Z",
+        "updated_at": "2023-05-03T15:52:13.613Z",
+        "value": "#45081e"
+      },
+      "rose200": {
+        "id": "352:1141",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "200",
+        "name": "rose200",
+        "description": "Use it for backgrounds.  Use it for text that goes on Rose 700, Rose 800, Rose 950, and the lighter shades of Grey. ",
+        "created_at": "2023-05-03T15:52:13.694Z",
+        "updated_at": "2023-05-03T15:52:13.694Z",
+        "value": "#710e32"
+      },
+      "rose500": {
+        "id": "352:1142",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "500",
+        "name": "rose500",
+        "description": "Use it for borders, icons, and large text against Rose 100, Rose 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150.",
+        "created_at": "2023-05-03T15:52:13.680Z",
+        "updated_at": "2023-05-03T15:52:13.680Z",
+        "value": "#e34584"
+      },
+      "rose600": {
+        "id": "352:1143",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "600",
+        "name": "rose600",
+        "description": "This is Brand Rose - F25192 Use it for borders, icons, and large text against Rose 100, Rose 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150.",
+        "created_at": "2023-05-03T15:52:13.620Z",
+        "updated_at": "2023-05-03T15:52:13.620Z",
+        "value": "#f25192"
+      },
+      "rose700": {
+        "id": "352:1144",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "700",
+        "name": "rose700",
+        "description": "Replaces Rose-200.",
+        "created_at": "2023-05-03T15:52:13.626Z",
+        "updated_at": "2023-05-03T15:52:13.626Z",
+        "value": "#f586b1"
+      },
+      "rose800": {
+        "id": "352:1146",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "800",
+        "name": "rose800",
+        "description": "Replaces Rose-100.",
+        "created_at": "2023-05-03T15:52:13.666Z",
+        "updated_at": "2023-05-03T15:52:13.666Z",
+        "value": "#f9b6d0"
+      },
+      "rose950": {
+        "id": "352:1147",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "950",
+        "name": "rose950",
+        "description": "It replaces Rose-50",
+        "created_at": "2023-05-03T15:52:13.598Z",
+        "updated_at": "2023-05-04T13:32:56.202Z",
+        "value": "#fde2ec"
+      }
     }
   },
   "light": {
@@ -1028,9 +1107,9 @@
         "scale": "purple",
         "step": "800",
         "name": "purple800",
-        "description": "This is Brand Purple. Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground. ",
+        "description": "This is Brand Purple - 550091. Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground. ",
         "created_at": "2023-04-17T15:29:55.297Z",
-        "updated_at": "2023-04-27T17:38:49.929Z",
+        "updated_at": "2023-05-03T15:52:13.753Z",
         "value": "#550091"
       },
       "purple900": {
@@ -1265,9 +1344,9 @@
         "scale": "pink",
         "step": "300",
         "name": "pink300",
-        "description": "AKA Brand Pink You can use it as a foreground colour for Non-interactive design elements only.",
+        "description": "This is Brand Pink - F495F9 You can use it as a foreground colour for Non-interactive design elements only.",
         "created_at": "2023-04-26T15:35:12.249Z",
-        "updated_at": "2023-04-26T15:35:12.249Z",
+        "updated_at": "2023-05-03T15:52:13.767Z",
         "value": "#f495f9"
       },
       "pink500": {
@@ -1511,9 +1590,9 @@
         "scale": "apple",
         "step": "400",
         "name": "apple400",
-        "description": "This is Brand Apple. You can use it as a foreground colour for Non-interactive design elements only.",
+        "description": "This is Brand Apple - 62DD99. You can use it as a foreground colour for Non-interactive design elements only.",
         "created_at": "2023-04-27T17:00:01.423Z",
-        "updated_at": "2023-05-02T15:36:02.682Z",
+        "updated_at": "2023-05-03T15:52:13.761Z",
         "value": "#62dd99"
       },
       "apple700": {
@@ -1814,10 +1893,21 @@
         "scale": "grape",
         "step": "400",
         "name": "grape400",
-        "description": "This replaces Brand Grape.  This color doesn't pass AA as a foreground against any background color.  Use this color only on borders, large text, and icons against a white background. ",
+        "description": "This is Brand Grape - A66DE8 This color doesn't pass AA as a foreground against any background color.  Use this color only on borders, large text, and icons against a white background. ",
         "created_at": "2023-05-02T15:36:02.563Z",
-        "updated_at": "2023-05-02T15:36:02.563Z",
+        "updated_at": "2023-05-03T15:52:13.745Z",
         "value": "#a66de8"
+      },
+      "grape500": {
+        "id": "352:1137",
+        "mode": "light",
+        "scale": "grape",
+        "step": "500",
+        "name": "grape500",
+        "description": "Use for any foreground against Grape 50, Grape 100, , Grey 25, Grey 50, Grey 75, and Grey 100. Use it for borders, icons, and large text against white, Grape 50, Grape 100, Grape 200, Grey 25, Grey 50, Grey 75, Grey 100 and Grey 150. Use it as a background color with white as the foreground color.",
+        "created_at": "2023-05-03T15:52:13.686Z",
+        "updated_at": "2023-05-03T15:52:13.686Z",
+        "value": "#7b39c6"
       },
       "grape800": {
         "id": "327:1041",
@@ -1830,6 +1920,107 @@
         "updated_at": "2023-05-02T15:36:02.518Z",
         "value": "#2c094e"
       }
+    },
+    "rose": {
+      "rose50": {
+        "id": "351:1132",
+        "mode": "light",
+        "scale": "rose",
+        "step": "50",
+        "name": "rose50",
+        "description": "It replaces Rose-50 Use it for backgrounds.  Use it for text that goes on Rose 700, Rose 800, and the darker shades of Grey. ",
+        "created_at": "2023-05-03T15:52:13.638Z",
+        "updated_at": "2023-05-03T15:52:13.638Z",
+        "value": "#fde2ec"
+      },
+      "rose200": {
+        "id": "351:1133",
+        "mode": "light",
+        "scale": "rose",
+        "step": "200",
+        "name": "rose200",
+        "description": "Replaces Rose-100. Use it for backgrounds.  Use it for text that goes on Rose 700, Rose 800, and the darker shades of Grey. ",
+        "created_at": "2023-05-03T15:52:13.651Z",
+        "updated_at": "2023-05-03T15:52:13.651Z",
+        "value": "#f9b6d0"
+      },
+      "rose300": {
+        "id": "351:1134",
+        "mode": "light",
+        "scale": "rose",
+        "step": "300",
+        "name": "rose300",
+        "description": "Replaces Rose-200.",
+        "created_at": "2023-05-03T15:52:13.659Z",
+        "updated_at": "2023-05-03T15:52:13.659Z",
+        "value": "#f586b1"
+      },
+      "rose400": {
+        "id": "351:1135",
+        "mode": "light",
+        "scale": "rose",
+        "step": "400",
+        "name": "rose400",
+        "description": "This is Brand Rose - F25192 This color doesn't pass AA as a foreground against any background color.  Use this color only on borders, large text, and icons against a white background. ",
+        "created_at": "2023-05-03T15:52:13.644Z",
+        "updated_at": "2023-05-03T15:52:13.644Z",
+        "value": "#f25192"
+      },
+      "rose500": {
+        "id": "352:1136",
+        "mode": "light",
+        "scale": "rose",
+        "step": "500",
+        "name": "rose500",
+        "description": "Use it for borders, icons, and large text against white, Rose 50, Grey 25, Grey 50, Grey 75 and Grey 100.",
+        "created_at": "2023-05-03T15:52:13.632Z",
+        "updated_at": "2023-05-03T15:52:13.632Z",
+        "value": "#ed176c"
+      },
+      "rose700": {
+        "id": "352:1138",
+        "mode": "light",
+        "scale": "rose",
+        "step": "700",
+        "name": "rose700",
+        "description": "Use is as any foreground against Rose 100, Rose 200  or any Grey shade in the range of 25 to 150. Use it for borders, icons, and large text against white, Rose 50, Rose 200, Rose 300, or any Grey shade in the range of 25 to 200. Use it as a background color with white as the foreground color.",
+        "created_at": "2023-05-03T15:52:13.673Z",
+        "updated_at": "2023-05-03T15:52:13.673Z",
+        "value": "#9f1446"
+      },
+      "rose800": {
+        "id": "352:1139",
+        "mode": "light",
+        "scale": "rose",
+        "step": "800",
+        "name": "rose800",
+        "description": "Use is as any foreground against Rose 100, Rose 200, Rose 300, Rose 400 or any Grey shade in the range of 25 to 300.",
+        "created_at": "2023-05-03T15:52:13.606Z",
+        "updated_at": "2023-05-03T15:52:13.606Z",
+        "value": "#4a1125"
+      }
+    }
+  },
+  "common": {
+    "brandMidnight": {
+      "id": "240:492",
+      "mode": "common",
+      "scale": "brand",
+      "name": "brandMidnight",
+      "description": "White can be utilised in any theme as a background or foreground color. ",
+      "created_at": "2023-04-25T14:46:26.458Z",
+      "updated_at": "2023-04-25T15:53:53.028Z",
+      "value": "#1e0a46"
+    },
+    "brandWhite": {
+      "id": "240:491",
+      "mode": "common",
+      "scale": "brand",
+      "name": "brandWhite",
+      "description": "White can be utilised in any theme as a background, border, or foreground color. ",
+      "created_at": "2023-04-25T14:46:26.451Z",
+      "updated_at": "2023-04-25T15:53:53.035Z",
+      "value": "#ffffff"
     }
   }
 }

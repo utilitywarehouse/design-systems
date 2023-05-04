@@ -1,3 +1,4 @@
+// Hey, don't edit this file directly, it's been magically generated.
 /** For backgrounds */
 export const green50 = '#eefcf3';
 /** For backgrounds */

@@ -1,6 +1,6 @@
 /src/
+/lib/
 /scripts/
-/raw/
 /templates/
 /.turbo/
 .gitignore
