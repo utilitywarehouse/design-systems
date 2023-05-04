@@ -38,9 +38,9 @@ async function getStyles() {
       styles[node_id] = {
         id: node_id,
         mode: ORPHAN_STYLES_MODE,
-        scale: undefined,
+        scale: 'brand',
         step: undefined,
-        name: name.toLowerCase(),
+        name: `brand${name}`,
         description: colourDescription,
         created_at,
         updated_at,
@@ -134,7 +134,7 @@ async function generateColoursFiles(colours) {
     // generate common colours
     if (colourMode === ORPHAN_STYLES_MODE) {
       const commonColorsIndexTemplateSrc = await fs.readFileSync(
-        path.resolve(__dirname, '../templates', 'color-scale.ts.ejs'),
+        path.resolve(__dirname, '../templates', 'common-index.ts.ejs'),
         { encoding: 'utf8' }
       );
       const commonColorsIndexRendered = render(commonColorsIndexTemplateSrc, {
