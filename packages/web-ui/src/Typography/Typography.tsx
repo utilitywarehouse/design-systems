@@ -35,7 +35,7 @@ export const Typography = forwardRef(function Typography(
   if (variant && Object.keys(textVariantMapping).includes(variant)) {
     const colorMapping: { [key: string]: string } = {
       primary: colorsCommon.brandMidnight,
-      success: 'green', // TODO: use a system colour
+      success: colors.green900,
       error: colors.red600,
     };
     return (
