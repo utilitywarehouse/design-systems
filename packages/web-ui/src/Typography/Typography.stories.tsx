@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { headingVariantMapping } from '../Heading';
 import { Backgrounds } from '../storybook-utils';
+import { headingVariantMapping } from '../Heading';
 import { textVariantMapping } from '../Text';
 import { Typography } from './Typography';
 
@@ -21,6 +21,12 @@ export const Workshop: Story = {
     color: {
       control: {
         type: 'text',
+      },
+    },
+    variant: {
+      options: [undefined, ...headingVariants, ...textVariants],
+      control: {
+        type: 'radio',
       },
     },
     letterSpacing: {
