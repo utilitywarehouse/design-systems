@@ -30,7 +30,7 @@ export interface CustomTextProps {
    * Set the text color. It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
    * @default colorsCommon.brandMidnight
    */
-  color?: string;
+  color?: string | 'primary' | 'success' | 'error';
   /**
    * Set the font-weight to semibold.
    * @default false
