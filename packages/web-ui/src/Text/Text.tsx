@@ -38,7 +38,7 @@ export type TextProps<D extends React.ElementType = DefaultTextComponent, P = {}
 >;
 
 export const Text = forwardRef(function Text(
-  { color = colorsCommon.brandMidnight, variant, bold = false, ...props },
+  { color = colorsCommon.brandMidnight, variant = 'body', bold = false, ...props },
   ref
 ) {
   const lineHeightMapping = { body: 1.5, subtitle: 1.5, legalNote: 1.5, caption: 2 };

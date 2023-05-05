@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { headingVariantMapping } from '../Heading';
 import { textVariantMapping } from '../Text';
 import { Typography } from './Typography';
@@ -15,7 +16,6 @@ export default meta;
 type Story = StoryObj<typeof Typography>;
 
 export const Workshop: Story = {
-  parameters: { layout: 'centered' },
   argTypes: {
     color: {
       control: {
@@ -43,8 +43,7 @@ export const Workshop: Story = {
   args: {
     children: 'hamburgefons',
     component: 'span',
-    fontFamily: 'fontFamily.secondary',
-    color: 'text.body.success.default',
+    color: colorsCommon.brandPrimaryPurple,
     textTransform: 'capitalize',
     padding: 0,
     margin: 0,

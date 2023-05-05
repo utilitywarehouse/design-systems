@@ -4,7 +4,6 @@ import { buttonThemeOverrides } from '../Button';
 import { textFieldThemeOverrides } from '../TextField';
 import { textLinkThemeOverrides } from '../TextLink';
 import { menuThemeOverrides } from '../Menu';
-import { headingThemeOverrides } from '../Heading';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 import { htmlFontSize, pxToRem, spacing } from '../utils';
 
@@ -26,7 +25,6 @@ theme.typography = {
   htmlFontSize,
   fontFamily: fonts,
   fontWeights,
-  ...headingThemeOverrides,
 };
 
 export const customPalette = {
@@ -77,5 +75,6 @@ theme.palette = {
   ...customPalette,
 };
 
+console.log(theme);
 export { theme };
 export type Theme = typeof theme;

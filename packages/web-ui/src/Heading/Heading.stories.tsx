@@ -4,9 +4,9 @@ import { Heading, HeadingProps, headingVariantMapping } from './Heading';
 import { Box } from '../Box';
 import { backgroundColors } from '../types';
 import { Backgrounds } from '../storybook-utils';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const variants = Object.keys(headingVariantMapping);
-const colors = ['primary', 'secondary'] as const;
 
 const meta: Meta<typeof Heading> = {
   title: 'Web UI / Components / Heading',
@@ -19,38 +19,29 @@ type Story = StoryObj<typeof Heading>;
 export const KitchenSink: Story = {
   render: () => {
     return (
-      <Backgrounds>
-        <Stack spacing={4} direction="row">
-          {variants.map(v => (
-            <Stack key={v} spacing={2}>
-              {colors.map(c => (
-                <Heading
-                  key={`${v}${c}`}
-                  variant={v as HeadingProps['variant']}
-                  component={headingVariantMapping[v] as React.ElementType<any>}
-                  color={c}
-                >
-                  Hamburgefons
-                </Heading>
-              ))}
-            </Stack>
-          ))}
-        </Stack>
-      </Backgrounds>
+      <Stack spacing={4}>
+        {variants.map(v => (
+          <Heading
+            key={v}
+            variant={v as HeadingProps['variant']}
+            component={headingVariantMapping[v] as React.ElementType<any>}
+          >
+            Hamburgefons
+          </Heading>
+        ))}
+      </Stack>
     );
   },
 };
 
 export const Workshop: Story = {
-  render: args => {
+  render: ({ color = 'brandPrimaryPurple', ...args }) => {
     return (
-      <Stack spacing={0}>
-        {backgroundColors.map(bg => (
-          <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-            <Heading {...args} />
-          </Box>
-        ))}
-      </Stack>
+      <Heading
+        // @ts-ignore
+        color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
+        {...args}
+      />
     );
   },
   argTypes: {
@@ -71,9 +62,9 @@ export const Workshop: Story = {
       },
     },
     color: {
-      options: colors,
+      options: [...Object.keys(colorsCommon), ...Object.keys(colors)],
       control: {
-        type: 'radio',
+        type: 'select',
       },
     },
     textTransform: {
@@ -87,7 +78,7 @@ export const Workshop: Story = {
     children: 'hamburgefons',
     variant: 'h2',
     component: 'h2',
-    color: 'primary',
+    color: undefined,
     textTransform: 'capitalize',
     gutterBottom: false,
     paragraph: false,
@@ -97,7 +88,6 @@ export const Workshop: Story = {
 
 export const HeadingVariants: Story = {
   name: 'Variants',
-  parameters: { layout: 'centered' },
   render: () => {
     return (
       <Stack spacing={1}>

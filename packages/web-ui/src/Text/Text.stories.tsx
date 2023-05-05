@@ -83,7 +83,6 @@ export const Workshop: Story = {
 
 export const TextVariants: Story = {
   name: 'Variants',
-  parameters: { layout: 'centered' },
   render: () => {
     return (
       <Stack spacing={1}>

@@ -5,11 +5,12 @@ import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typogr
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import { Heading, HeadingProps, headingVariantMapping } from '../Heading';
 import { Text, TextProps, textVariantMapping } from '../Text';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 export type DefaultTypographyComponent = 'p';
 
 export interface CustomTypographyProps {
-  color?: 'primary' | 'secondary' | 'success' | 'error' | string;
+  color?: string;
   variant: MuiTypographyProps['variant'];
   component?: React.ElementType;
 }
@@ -28,14 +29,19 @@ export type TypographyProps<
 > = OverrideProps<TypographyTypeMap<D, P>, D>;
 
 export const Typography = forwardRef(function Typography(
-  { color = 'primary', variant, component = 'p', ...props },
+  { color = colorsCommon.brandMidnight, variant, component = 'p', ...props },
   ref
 ) {
   if (variant && Object.keys(textVariantMapping).includes(variant)) {
+    const colorMapping: { [key: string]: string } = {
+      primary: colorsCommon.brandMidnight,
+      success: 'green', // TODO: use a system colour
+      error: colors.red600,
+    };
     return (
       <Text
         ref={ref}
-        color={color as TextProps['color']}
+        color={colorMapping[color]}
         variant={variant as TextProps['variant']}
         component={component}
         {...props}
@@ -43,10 +49,14 @@ export const Typography = forwardRef(function Typography(
     );
   }
   if (variant && Object.keys(headingVariantMapping).includes(variant)) {
+    const colorMapping: { [key: string]: string } = {
+      primary: colorsCommon.brandPrimaryPurple,
+      secondary: colorsCommon.brandMidnight,
+    };
     return (
       <Heading
         ref={ref}
-        color={color as HeadingProps['color']}
+        color={colorMapping[color]}
         variant={variant as HeadingProps['variant']}
         component={component}
         {...props}

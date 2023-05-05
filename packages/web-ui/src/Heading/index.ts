@@ -1,5 +1,4 @@
 export { Heading, headingVariantMapping } from './Heading';
-export { headingThemeOverrides } from './Heading.theme';
 export type {
   DefaultHeadingComponent,
   CustomHeadingProps,
