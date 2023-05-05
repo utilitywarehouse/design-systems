@@ -4,7 +4,6 @@ import { buttonThemeOverrides } from '../Button';
 import { textFieldThemeOverrides } from '../TextField';
 import { textLinkThemeOverrides } from '../TextLink';
 import { menuThemeOverrides } from '../Menu';
-import { textThemeOverrides } from '../Text';
 import { headingThemeOverrides } from '../Heading';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 import { htmlFontSize, pxToRem, spacing } from '../utils';
@@ -27,7 +26,6 @@ theme.typography = {
   htmlFontSize,
   fontFamily: fonts,
   fontWeights,
-  ...textThemeOverrides,
   ...headingThemeOverrides,
 };
 
