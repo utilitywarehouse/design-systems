@@ -5,8 +5,8 @@ import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typogr
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import { Heading, HeadingProps, headingVariantMapping } from '../Heading';
 import { Text, TextProps, textVariantMapping } from '../Text';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { dataAttributes } from '../utils';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 export type DefaultTypographyComponent = 'p';
 
@@ -31,7 +31,7 @@ export type TypographyProps<
 > = OverrideProps<TypographyTypeMap<D, P>, D>;
 
 export const Typography = forwardRef(function Typography(
-  { color, variant, component = 'p', ...props },
+  { color = colorsCommon.brandMidnight, variant, component = 'p', ...props },
   ref
 ) {
   const isLegacyTextVariant = variant && Object.keys(textVariantMapping).includes(variant);

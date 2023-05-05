@@ -44,6 +44,7 @@ export const Workshop: Story = {
   args: {
     children: 'hamburgefons',
     component: 'span',
+<<<<<<< HEAD
     color: colorsCommon.brandPrimaryPurple,
     textTransform: 'capitalize',
   },
@@ -76,6 +77,8 @@ export const LegacyVariants: Story = {
     component: 'span',
     variant: 'displayHeading',
     color: 'primary',
+    fontFamily: 'fontFamily.secondary',
+    color: colorsCommon.brandPrimaryPurple,
     textTransform: 'capitalize',
   },
 };
