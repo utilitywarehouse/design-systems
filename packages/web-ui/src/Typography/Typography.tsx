@@ -5,7 +5,8 @@ import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typogr
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import { Heading, HeadingProps, headingVariantMapping } from '../Heading';
 import { Text, TextProps, textVariantMapping } from '../Text';
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { colors } from '@utilitywarehouse/design-tokens';
 
 export type DefaultTypographyComponent = 'p';
 
@@ -35,7 +36,7 @@ export const Typography = forwardRef(function Typography(
   if (variant && Object.keys(textVariantMapping).includes(variant)) {
     const colorMapping: { [key: string]: string } = {
       primary: colorsCommon.brandMidnight,
-      success: colors.green900,
+      success: colors.green700,
       error: colors.red600,
     };
     return (
