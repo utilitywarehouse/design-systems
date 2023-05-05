@@ -6,13 +6,17 @@ Shared tools and libraries for building UW applications.
 
 ## Packages
 
-### Prettier config
-
-A UW standard config for Prettier code formatting.
-
 ### Web UI
 
 A set of UW React components.
+
+### Colour System
+
+Colours for building UW UIs.
+
+### Prettier Config
+
+A UW standard config for Prettier code formatting.
 
 ## Contributing
 
