@@ -3,9 +3,8 @@ import { breakpoints, colors, fonts, fontWeights } from '@utilitywarehouse/desig
 import { buttonThemeOverrides } from '../Button';
 import { textFieldThemeOverrides } from '../TextField';
 import { textLinkThemeOverrides } from '../TextLink';
+import { typographyThemeOverrides } from '../Typography';
 import { menuThemeOverrides } from '../Menu';
-import { textThemeOverrides } from '../Text';
-import { headingThemeOverrides } from '../Heading';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 import { htmlFontSize, pxToRem, spacing } from '../utils';
 
@@ -18,6 +17,9 @@ const theme: MuiTheme = createTheme({
     ...textLinkThemeOverrides,
     ...textFieldThemeOverrides,
     ...menuThemeOverrides,
+    MuiTypography: {
+      styleOverrides: typographyThemeOverrides,
+    },
   },
 });
 
@@ -27,8 +29,6 @@ theme.typography = {
   htmlFontSize,
   fontFamily: fonts,
   fontWeights,
-  ...textThemeOverrides,
-  ...headingThemeOverrides,
 };
 
 export const customPalette = {
@@ -46,14 +46,6 @@ export const customPalette = {
       success: { default: colors.jewel, inverse: colors.apple },
       error: { default: colors.maroonFlush, inverse: colors.rose },
     },
-  },
-  background: {
-    default: colors.white,
-    white: colors.white,
-    whiteOwl: colors.whiteOwl,
-    lightTint: colors.lightTint,
-    purple: colors.purple,
-    midnight: colors.midnight,
   },
   common: { white: colors.white, black: colors.black, disabled: colors.codGray20 },
   brand: { primary: colors.purple, action: colors.cyan40, line: colors.pink },
@@ -79,5 +71,6 @@ theme.palette = {
   ...customPalette,
 };
 
+console.log(theme);
 export { theme };
 export type Theme = typeof theme;

@@ -12,8 +12,8 @@ export const menuThemeOverrides: Components = {
     },
     styleOverrides: {
       root: {
-        transform: `translateY(${spacing(1)})`,
         '& .MuiPaper-root': {
+          marginTop: spacing(1),
           borderColor: colors.cyan,
           borderRadius: spacing(1),
           borderStyle: 'solid',

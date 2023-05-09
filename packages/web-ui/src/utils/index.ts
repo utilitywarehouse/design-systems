@@ -27,11 +27,11 @@ export const isHeadingVariant = (variant: string): boolean => {
 };
 
 export const dataAttributes = {
+  legacy: 'legacy-cwui',
   primary: 'primary',
   secondary: 'secondary',
   success: 'success',
   error: 'error',
-  bold: 'text-bold',
   variant: 'variant',
   size: 'size',
   inverse: 'inverse-background',

@@ -1,25 +1,42 @@
-import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
 import * as Stories from './Text.stories';
 
 <Meta of={Stories} />
 
 # Text
 
-Text renders the secondary UW font, Work Sans, to be used for body copy.
+<Description />
+
+## Variants
+
+<Canvas of={Stories.TextVariants} />
+
+## Semantic HTML
+
+The `component` prop is required for this component, encouraging you to consider the correct semantic element.
+
+## Color
+
+You can pass any valid string color to the `Text` component. It is recommended
+you use the `@utilitywarehouse/colour-system` package, and pass color values
+from that into the component. The default color is `colorsCommon.brandMidnight`
+from this package.
+
+```tsx
+import { colorsCommon } from '@utilitywarehouse/colour-system'
+
+<Text color={colorsCommon.brandPrimaryPurple}>{...}</Text>
+```
+
+## Styles
 
 The system props are not available on the Text component, if you need custom typography then use the [Typography](?path=/docs/components-typography--documentation) component.
 If necessary you can use `sx` as an escape hatch for one-off custom styling.
-
-<Canvas of={Stories.TextVariants} />
 
 ## Alternatives
 
 - [Heading](?path=/docs/components-heading--documentation) - For heading-level text
 - [Typography](?path=/docs/components-typography--documentation) - For custom typography
-
-## Semantic HTML
-
-The `component` prop is required for this component, encouraging you to consider the correct semantic element.
 
 ## Props
 
