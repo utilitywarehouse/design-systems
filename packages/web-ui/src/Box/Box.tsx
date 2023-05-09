@@ -6,10 +6,12 @@ import MuiBox from '@mui/material/Box';
 
 export type DefaultBoxComponent = 'div';
 
+export interface CustomBoxProps {}
+
 export type BoxProps<
   D extends React.ElementType<any> = DefaultBoxComponent,
   P = {}
-> = OverrideProps<MuiBoxTypeMap<P, D, Theme>, D>;
+> = OverrideProps<MuiBoxTypeMap<CustomBoxProps & P, D, Theme>, D>;
 
 /**
  * Box is a low-level primitive, which supports theme-aware styling props, and can
@@ -17,4 +19,4 @@ export type BoxProps<
  */
 export const Box = forwardRef(function Box(props, ref) {
   return <MuiBox ref={ref} {...props} />;
-}) as OverridableComponent<MuiBoxTypeMap<BoxProps, DefaultBoxComponent, Theme>>;
+}) as OverridableComponent<MuiBoxTypeMap<CustomBoxProps, DefaultBoxComponent, Theme>>;
