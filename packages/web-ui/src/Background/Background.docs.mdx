@@ -1,0 +1,64 @@
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import * as Stories from './Background.stories';
+
+<Meta of={Stories} />
+
+# Background
+
+> This component is deprecated and will be removed in the next major version (`v1`).
+
+<Description />
+
+## Semantic HTML
+
+By default `Background` renders a `div` element, this can be customised using the
+`component` prop.
+
+```tsx dark
+<Background component="span">...</Box>
+```
+
+## Background colours
+
+Additionally to the system properties, Background supports pre-defined background colours
+that provide visual context to child components. This means that components
+will change foreground colour depending on the parent background colour.
+
+<Canvas
+  of={Stories.Backgrounds}
+  source={{
+    code: `
+<Stack spacing={0}>
+  <Box background="white" padding={2}>
+    <Text variant="body" component="span">
+      Text on neutral background
+    </Text>
+  </Box>
+  <Box background="whiteOwl" padding={2}>
+    <Text variant="body" component="span">
+      Text on neutral background
+    </Text>
+  </Box>
+  <Box background="lightTint" padding={2}>
+    <Text variant="body" component="span">
+      Text on neutral background
+    </Text>
+  </Box>
+  <Box background="purple" padding={2}>
+    <Text variant="body" component="span">
+      Text on inverse background
+    </Text>
+  </Box>
+  <Box background="midnight" padding={2}>
+    <Text variant="body" component="span">
+      Text on inverse background
+    </Text>
+  </Box>
+</Stack>
+    `,
+  }}
+/>
+
+## Props
+
+<ArgTypes of={Stories} />

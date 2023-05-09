@@ -1,6 +1,9 @@
 import './types/overrides';
 
 export * from './theme';
+export * from './types';
+
+export * from './Background';
 export * from './Box';
 export * from './Button';
 export * from './Grid';
@@ -16,4 +19,3 @@ export * from './TextLink';
 export * from './ThemeProvider';
 export * from './ToggleButton';
 export * from './Typography';
-export * from './types';
