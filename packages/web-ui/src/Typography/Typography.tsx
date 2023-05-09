@@ -31,7 +31,7 @@ export type TypographyProps<
 > = OverrideProps<TypographyTypeMap<D, P>, D>;
 
 export const Typography = forwardRef(function Typography(
-  { color = colorsCommon.brandMidnight, variant, component = 'p', ...props },
+  { color, variant, component = 'p', ...props },
   ref
 ) {
   const isLegacyTextVariant = variant && Object.keys(textVariantMapping).includes(variant);

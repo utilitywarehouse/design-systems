@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { Backgrounds } from '../storybook-utils';
+import { Backgrounds, Backgrounds } from '../storybook-utils';
 import { headingVariantMapping } from '../Heading';
 import { textVariantMapping } from '../Text';
 import { Typography } from './Typography';
@@ -23,12 +23,6 @@ export const Workshop: Story = {
         type: 'text',
       },
     },
-    variant: {
-      options: [undefined, ...headingVariants, ...textVariants],
-      control: {
-        type: 'radio',
-      },
-    },
     letterSpacing: {
       control: {
         type: 'text',
@@ -44,7 +38,6 @@ export const Workshop: Story = {
   args: {
     children: 'hamburgefons',
     component: 'span',
-<<<<<<< HEAD
     color: colorsCommon.brandPrimaryPurple,
     textTransform: 'capitalize',
   },
@@ -77,8 +70,6 @@ export const LegacyVariants: Story = {
     component: 'span',
     variant: 'displayHeading',
     color: 'primary',
-    fontFamily: 'fontFamily.secondary',
-    color: colorsCommon.brandPrimaryPurple,
     textTransform: 'capitalize',
   },
 };

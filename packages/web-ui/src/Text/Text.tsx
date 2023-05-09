@@ -35,6 +35,10 @@ export interface CustomTextProps {
    * Set the font-weight to semibold.
    * @default false
    */
+  /**
+   * Set the font-weight to semibold.
+   * @default false
+   */
   bold?: boolean;
   /**
    * Set the text-transform property on the component.
