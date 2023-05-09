@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.12
+
+### Patch Changes
+
+- [#65](https://github.com/utilitywarehouse/design-systems/pull/65) [`766fb1b`](https://github.com/utilitywarehouse/design-systems/commit/766fb1bc3c0795b8423011dce30c4a83113c4bdb) Thanks [@robphoenix](https://github.com/robphoenix)! - This change fixes the updated Box types
+
 ## 0.0.11
 
 ### Patch Changes
