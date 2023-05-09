@@ -34,13 +34,17 @@ export const Typography = forwardRef(function Typography(
   { color, variant, component = 'p', ...props },
   ref
 ) {
-  const isLegacyColor = ['primary', 'secondary', 'success', 'error'].includes(color as string);
+  const isLegacyTextVariant = variant && Object.keys(textVariantMapping).includes(variant);
+  const isLegacyHeadingVariant = variant && Object.keys(headingVariantMapping).includes(variant);
+  const isLegacyColor = [undefined, 'primary', 'secondary', 'success', 'error'].includes(
+    color as string
+  );
   const getLegacyColor = (textColor: string) => {
     if (textColor === undefined) return 'primary';
     if (isLegacyColor) return textColor;
     return 'primary';
   };
-  if (variant && Object.keys(textVariantMapping).includes(variant)) {
+  if (isLegacyTextVariant) {
     console.warn(
       'The Typography variant prop is deprecated, please use the Text component instead'
     );
@@ -61,7 +65,7 @@ export const Typography = forwardRef(function Typography(
       />
     );
   }
-  if (variant && Object.keys(headingVariantMapping).includes(variant)) {
+  if (isLegacyHeadingVariant) {
     console.warn(
       'The Typography variant prop is deprecated, please use the Heading component instead'
     );
