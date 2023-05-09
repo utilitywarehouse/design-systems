@@ -1,12 +1,11 @@
-import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
 import * as Stories from './Box.stories';
 
 <Meta of={Stories} />
 
 # Box
 
-Box is a low-level primitive, which supports theme-aware styling props, and can
-be used for building any styled element.
+<Description/>
 
 ## Semantic HTML
 
@@ -16,47 +15,6 @@ By default Box renders a `div` element, this can be customised using the
 ```tsx dark
 <Box component="span">...</Box>
 ```
-
-## Backgrounds
-
-Additionally to the system properties, Box supports pre-defined backgrounds
-that provide visual context to child components. This means that components
-will change foreground colour depending on the parent background colour.
-
-<Canvas
-  of={Stories.Backgrounds}
-  source={{
-    code: `
-<Stack spacing={0}>
-  <Box background="white" padding={2}>
-    <Text variant="body" component="span">
-      Text on neutral background
-    </Text>
-  </Box>
-  <Box background="whiteOwl" padding={2}>
-    <Text variant="body" component="span">
-      Text on neutral background
-    </Text>
-  </Box>
-  <Box background="lightTint" padding={2}>
-    <Text variant="body" component="span">
-      Text on neutral background
-    </Text>
-  </Box>
-  <Box background="purple" padding={2}>
-    <Text variant="body" component="span">
-      Text on inverse background
-    </Text>
-  </Box>
-  <Box background="midnight" padding={2}>
-    <Text variant="body" component="span">
-      Text on inverse background
-    </Text>
-  </Box>
-</Stack>
-    `,
-  }}
-/>
 
 ## Custom Components
 
