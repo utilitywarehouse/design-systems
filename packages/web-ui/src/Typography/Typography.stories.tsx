@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { headingVariantMapping } from '../Heading';
+import { Backgrounds } from '../storybook-utils';
 import { textVariantMapping } from '../Text';
 import { Typography } from './Typography';
 
@@ -22,12 +23,6 @@ export const Workshop: Story = {
         type: 'text',
       },
     },
-    variant: {
-      options: [undefined, ...headingVariants, ...textVariants],
-      control: {
-        type: 'radio',
-      },
-    },
     letterSpacing: {
       control: {
         type: 'text',
@@ -45,8 +40,36 @@ export const Workshop: Story = {
     component: 'span',
     color: colorsCommon.brandPrimaryPurple,
     textTransform: 'capitalize',
-    padding: 0,
-    margin: 0,
-    variant: undefined,
+  },
+};
+
+export const LegacyVariants: Story = {
+  name: 'Deprecated Legacy Variants',
+  render: args => (
+    <Backgrounds>
+      <Typography {...args} />
+    </Backgrounds>
+  ),
+  argTypes: {
+    variant: {
+      options: [...headingVariants, ...textVariants],
+      control: {
+        type: 'radio',
+      },
+    },
+    color: { options: ['primary', 'secondary', 'success', 'error'], control: { type: 'radio' } },
+    textTransform: {
+      options: ['capitalize', 'uppercase', 'lowercase', 'none'],
+      control: {
+        type: 'radio',
+      },
+    },
+  },
+  args: {
+    children: 'hamburgefons',
+    component: 'span',
+    variant: 'displayHeading',
+    color: 'primary',
+    textTransform: 'capitalize',
   },
 };

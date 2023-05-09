@@ -67,6 +67,9 @@ export const Workshop: Story = {
         type: 'radio',
       },
     },
+    gutterBottom: { control: { type: 'boolean' } },
+    paragraph: { control: { type: 'boolean' } },
+    noWrap: { control: { type: 'boolean' } },
   },
   args: {
     children: 'hamburgefons',

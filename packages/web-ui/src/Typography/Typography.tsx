@@ -5,13 +5,15 @@ import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typogr
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import { Heading, HeadingProps, headingVariantMapping } from '../Heading';
 import { Text, TextProps, textVariantMapping } from '../Text';
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { dataAttributes } from '../utils';
 
 export type DefaultTypographyComponent = 'p';
 
 export interface CustomTypographyProps {
-  color?: string;
-  variant: MuiTypographyProps['variant'];
+  color?: string | 'primary' | 'secondary' | 'success' | 'error';
+  /** @deprecated */
+  variant?: MuiTypographyProps['variant'];
   component?: React.ElementType;
 }
 
@@ -29,39 +31,64 @@ export type TypographyProps<
 > = OverrideProps<TypographyTypeMap<D, P>, D>;
 
 export const Typography = forwardRef(function Typography(
-  { color = colorsCommon.brandMidnight, variant, component = 'p', ...props },
+  { color, variant, component = 'p', ...props },
   ref
 ) {
+  const isLegacyColor = ['primary', 'secondary', 'success', 'error'].includes(color as string);
+  const getLegacyColor = (textColor: string) => {
+    if (textColor === undefined) return 'primary';
+    if (isLegacyColor) return textColor;
+    return 'primary';
+  };
   if (variant && Object.keys(textVariantMapping).includes(variant)) {
-    const colorMapping: { [key: string]: string } = {
-      primary: colorsCommon.brandMidnight,
-      success: colors.green700,
-      error: colors.red600,
-    };
+    console.warn(
+      'The Typography variant prop is deprecated, please use the Text component instead'
+    );
+    const dataAttributeProps = isLegacyColor
+      ? {
+          [`data-${dataAttributes.legacy}`]: true,
+          // @ts-ignore
+          [`data-${dataAttributes[getLegacyColor(color)]}`]: true,
+        }
+      : {};
     return (
       <Text
         ref={ref}
-        color={colorMapping[color]}
         variant={variant as TextProps['variant']}
         component={component}
         {...props}
+        {...dataAttributeProps}
       />
     );
   }
   if (variant && Object.keys(headingVariantMapping).includes(variant)) {
-    const colorMapping: { [key: string]: string } = {
-      primary: colorsCommon.brandPrimaryPurple,
-      secondary: colorsCommon.brandMidnight,
-    };
+    console.warn(
+      'The Typography variant prop is deprecated, please use the Heading component instead'
+    );
+    const dataAttributeProps = isLegacyColor
+      ? {
+          [`data-${dataAttributes.legacy}`]: true,
+          // @ts-ignore
+          [`data-${dataAttributes[getLegacyColor(color)]}`]: true,
+        }
+      : {};
     return (
       <Heading
         ref={ref}
-        color={colorMapping[color]}
         variant={variant as HeadingProps['variant']}
         component={component}
         {...props}
+        {...dataAttributeProps}
       />
     );
   }
-  return <MuiTypography ref={ref} color={color} component={component} {...props} />;
+
+  return (
+    <MuiTypography
+      ref={ref}
+      color={color || colorsCommon.brandMidnight}
+      component={component}
+      {...props}
+    />
+  );
 }) as OverridableComponent<TypographyTypeMap>;
