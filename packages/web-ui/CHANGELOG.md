@@ -1,5 +1,15 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.11
+
+### Patch Changes
+
+- [#62](https://github.com/utilitywarehouse/design-systems/pull/62) [`5ec71f8`](https://github.com/utilitywarehouse/design-systems/commit/5ec71f88f6c36cbdb79788e44f30af617c12f841) Thanks [@robphoenix](https://github.com/robphoenix)! - This changes the way color is handled by the `Text` and `Heading` components. As a result of the newly introduced `colour-system` library, these components, and `Typography`, will accept a `string` value, ideally from the `colour-system` library. Until we get more solid semantic understanding of how colours are used, we will support this more open approach to typography colours.
+  This change also preempts the deprecation, and future removal, of the background colour context that enables typography components to change their colour based on the parent background colour. Because of this, the `Text` and `Heading` components will not support this functionality. If they need to be used on a darker brand background, the appropriate text color should be passed in to the `color` prop.
+  The `Typography` component continues to be backwards compatible with `customer-ui-material`.
+
+- [#63](https://github.com/utilitywarehouse/design-systems/pull/63) [`4e22179`](https://github.com/utilitywarehouse/design-systems/commit/4e22179124d5dcc9c3ab543b848b23b350ec37ec) Thanks [@robphoenix](https://github.com/robphoenix)! - To make the transition smoother from `customer-ui-material`, and to better support the removal of the background colour context, this change adds back the legacy `Background` component, and removes the functionality from `Box`, so that we don't have to make any breaking changes with that component, and can deprecate the Background component and remove in the next major release.
+
 ## 0.0.10
 
 ### Patch Changes
