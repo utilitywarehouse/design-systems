@@ -1,4 +1,4 @@
-import { Box } from '../Box';
+import { Background } from '../Background';
 import { Stack } from '../Stack';
 import { backgroundColors } from '../types';
 
@@ -9,7 +9,14 @@ interface BackgroundsProps {
 const Backgrounds = (props: BackgroundsProps) => (
   <Stack spacing={0}>
     {backgroundColors.map(bg => (
-      <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4} {...props} />
+      <Background
+        key={bg}
+        background={bg}
+        display="flex"
+        justifyContent="center"
+        padding={4}
+        {...props}
+      />
     ))}
   </Stack>
 );
