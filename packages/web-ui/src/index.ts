@@ -3,8 +3,8 @@ import './types/overrides';
 export * from './theme';
 export * from './types';
 
-export * from './Box';
 export * from './Background';
+export * from './Box';
 export * from './Button';
 export * from './Grid';
 export * from './Heading';
