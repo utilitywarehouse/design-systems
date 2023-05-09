@@ -5,8 +5,8 @@ import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typogr
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import { Heading, HeadingProps, headingVariantMapping } from '../Heading';
 import { Text, TextProps, textVariantMapping } from '../Text';
-import { dataAttributes } from '../utils';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { dataAttributes } from '../utils';
 
 export type DefaultTypographyComponent = 'p';
 

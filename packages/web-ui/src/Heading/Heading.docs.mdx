@@ -33,21 +33,6 @@ import { colorsCommon } from '@utilitywarehouse/colour-system'
 The system props are not available on the Heading component, if you need custom typography then use the [Typography](?path=/docs/components-typography--documentation) component.
 If necessary you can use `sx` as an escape hatch for one-off custom styling.
 
-<Canvas of={Stories.HeadingVariants} />
-
-## Color
-
-You can pass any valid string color to the `Heading` component. It is recommended
-you use the `@utilitywarehouse/colour-system` package, and pass color values
-from that into the component. The default color is `colorsCommon.brandPrimaryPurple`
-from this package.
-
-```tsx
-import { colorsCommon } from '@utilitywarehouse/colour-system'
-
-<Heading color={colorsCommon.brandMidnight}>{...}</Heading>
-```
-
 ## Alternatives
 
 - [Text](?path=/docs/components-text--documentation) - For body text

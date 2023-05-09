@@ -7,7 +7,6 @@ import { typographyThemeOverrides } from '../Typography';
 import { menuThemeOverrides } from '../Menu';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 import { htmlFontSize, pxToRem, spacing } from '../utils';
-import { colorsCommon, colors as colorsSystem } from '@utilitywarehouse/colour-system';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
@@ -34,8 +33,6 @@ theme.typography = {
 
 export const customPalette = {
   ...colors,
-  primary: { main: colorsCommon.brandPrimaryPurple },
-  secondary: { main: colorsSystem.cyan400 },
   text: {
     primary: colors.midnight, // TODO: remove when refactor Button
     heading: {
@@ -74,6 +71,5 @@ theme.palette = {
   ...customPalette,
 };
 
-console.log(theme);
 export { theme };
 export type Theme = typeof theme;

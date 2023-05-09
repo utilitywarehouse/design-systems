@@ -31,7 +31,7 @@ export interface CustomHeadingProps {
    * Set the text color. It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
    * @default colorsCommon.brandPrimaryPurple
    */
-  color?: string | 'primary' | 'secondary';
+  color?: string;
   /**
    * Set the text-transform property on the component.
    */
