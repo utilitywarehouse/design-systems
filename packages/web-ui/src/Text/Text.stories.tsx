@@ -67,6 +67,7 @@ export const Workshop: Story = {
         type: 'radio',
       },
     },
+    bold: { control: { type: 'boolean' } },
     gutterBottom: { control: { type: 'boolean' } },
     paragraph: { control: { type: 'boolean' } },
     noWrap: { control: { type: 'boolean' } },

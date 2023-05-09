@@ -52,6 +52,9 @@ export type TextProps<D extends React.ElementType = DefaultTextComponent, P = {}
   D
 >;
 
+/**
+ * Text renders the secondary UW font, Work Sans, to be used for body copy.
+ */
 export const Text = forwardRef(function Text(
   { color = colorsCommon.brandMidnight, variant = 'body', bold = false, ...props },
   ref
