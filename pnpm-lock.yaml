@@ -94,6 +94,9 @@ importers:
       '@emotion/styled':
         specifier: ^11.10.6
         version: 11.10.6(@emotion/react@11.10.6)(@types/react@18.0.25)(react@18.2.0)
+      '@utilitywarehouse/colour-system':
+        specifier: workspace:^
+        version: link:../colour-system
       '@utilitywarehouse/customer-ui-react-icons':
         specifier: ^1.1.0
         version: 1.1.0
@@ -143,9 +146,6 @@ importers:
       '@types/react':
         specifier: ^17.0.0 || ^18.0.0
         version: 18.0.25
-      '@utilitywarehouse/colour-system':
-        specifier: workspace:^
-        version: link:../colour-system
       '@utilitywarehouse/fontsource':
         specifier: ^0.0.5
         version: 0.0.5

@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
 import { Text, TextProps, textVariantMapping } from './Text';
-import { Backgrounds } from '../storybook-utils';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const variants = Object.keys(textVariantMapping);
-const colors = ['primary', 'success', 'error'] as const;
 
 const meta: Meta<typeof Text> = {
   title: 'Web UI / Components / Text',
@@ -18,34 +17,25 @@ export const KitchenSink: Story = {
   parameters: { controls: { hideNoControlsWarning: true } },
   render: () => {
     return (
-      <Backgrounds>
-        <Stack spacing={4} direction="row">
-          {variants.map(v => (
-            <Stack key={v} spacing={2}>
-              {colors.map(c => (
-                <Text
-                  key={`${v}${c}`}
-                  component="span"
-                  variant={v as TextProps['variant']}
-                  color={c}
-                >
-                  Hamburgefons
-                </Text>
-              ))}
-            </Stack>
-          ))}
-        </Stack>
-      </Backgrounds>
+      <Stack spacing={4}>
+        {variants.map(v => (
+          <Text key={v} component="span" variant={v as TextProps['variant']}>
+            Hamburgefons
+          </Text>
+        ))}
+      </Stack>
     );
   },
 };
 
 export const Workshop: Story = {
-  render: args => {
+  render: ({ color = 'brandMidnight', ...args }) => {
     return (
-      <Backgrounds>
-        <Text {...args} />
-      </Backgrounds>
+      <Text
+        // @ts-ignore
+        color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
+        {...args}
+      />
     );
   },
   argTypes: {
@@ -66,9 +56,9 @@ export const Workshop: Story = {
       },
     },
     color: {
-      options: colors,
+      options: [...Object.keys(colorsCommon), ...Object.keys(colors)],
       control: {
-        type: 'radio',
+        type: 'select',
       },
     },
     textTransform: {
@@ -77,12 +67,16 @@ export const Workshop: Story = {
         type: 'radio',
       },
     },
+    bold: { control: { type: 'boolean' } },
+    gutterBottom: { control: { type: 'boolean' } },
+    paragraph: { control: { type: 'boolean' } },
+    noWrap: { control: { type: 'boolean' } },
   },
   args: {
     children: 'hamburgefons',
     variant: 'body',
-    component: 'h2',
-    color: 'primary',
+    component: 'span',
+    color: undefined,
     bold: false,
     textTransform: 'capitalize',
     gutterBottom: false,
@@ -93,7 +87,6 @@ export const Workshop: Story = {
 
 export const TextVariants: Story = {
   name: 'Variants',
-  parameters: { layout: 'centered' },
   render: () => {
     return (
       <Stack spacing={1}>

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { colors, borderRadius } from '@utilitywarehouse/design-tokens';
 import { backgroundColors } from '../types';
-import { Text } from '../Text';
+import { Typography } from '../Typography';
 import { Stack } from '../Stack';
 import { Heading } from '../Heading';
 import { Box, BoxProps } from './Box';
@@ -52,29 +52,29 @@ export const Backgrounds = {
   render: () => (
     <Stack spacing={0}>
       <Box background="white" padding={2}>
-        <Text variant="body" component="span">
-          Text on neutral background
-        </Text>
+        <Typography variant="body" component="span">
+          Typography on neutral background
+        </Typography>
       </Box>
       <Box background="whiteOwl" padding={2}>
-        <Text variant="body" component="span">
-          Text on neutral background
-        </Text>
+        <Typography variant="body" component="span">
+          Typography on neutral background
+        </Typography>
       </Box>
       <Box background="lightTint" padding={2}>
-        <Text variant="body" component="span">
-          Text on neutral background
-        </Text>
+        <Typography variant="body" component="span">
+          Typography on neutral background
+        </Typography>
       </Box>
       <Box background="purple" padding={2}>
-        <Text variant="body" component="span">
-          Text on inverse background
-        </Text>
+        <Typography variant="body" component="span">
+          Typography on inverse background
+        </Typography>
       </Box>
       <Box background="midnight" padding={2}>
-        <Text variant="body" component="span">
-          Text on inverse background
-        </Text>
+        <Typography variant="body" component="span">
+          Typography on inverse background
+        </Typography>
       </Box>
     </Stack>
   ),
