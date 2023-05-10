@@ -11,5 +11,7 @@ export const gold400 = '#cd7d04';
 export const gold500 = '#f7b51d';
 /** This is Brand Gold.  For any foreground, it passes AA against Gold 50, Gold 100, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300, and Grey 400.  Use it for borders, icons, and large text against Gold 50, Gold 100, Gold 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 300, Grey 400, and Grey 500. */
 export const gold700 = '#ffd76f';
+/**  */
+export const gold800 = '#ffe6a8';
 /** For any foreground, it passes AA against Gold 50, Gold 100, Gold 300, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300, and Grey 400.  */
 export const gold900 = '#fff6e0';
