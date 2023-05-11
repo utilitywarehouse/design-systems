@@ -1,5 +1,6 @@
 import { Components } from '@mui/material/styles';
-import { colors, transitions } from '@utilitywarehouse/design-tokens';
+import { colors } from '@utilitywarehouse/design-tokens';
+import { transitions } from '../tokens';
 import { dataAttributes } from '../utils';
 
 const { inverse, heading } = dataAttributes;

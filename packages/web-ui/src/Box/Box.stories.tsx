@@ -1,11 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { colors, borderRadius } from '@utilitywarehouse/design-tokens';
-import { backgroundColors } from '../types';
-import { Typography } from '../Typography';
-import { Stack } from '../Stack';
-import { Heading } from '../Heading';
 import { Box, BoxProps } from './Box';
 import { useRef } from 'react';
+import { fonts } from '../tokens';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof Box> = {
   title: 'Web UI / Components / Box',
@@ -17,67 +14,21 @@ type Story = StoryObj<typeof Box>;
 
 export const Workshop: Story = {
   render: args => {
-    const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
-    return (
-      <Box {...args}>
-        {args.children ? (
-          args.children
-        ) : (
-          <Heading component="h2" variant="h2">
-            {args.background} ({hexValue})
-          </Heading>
-        )}
-      </Box>
-    );
-  },
-  argTypes: {
-    background: {
-      options: backgroundColors,
-      control: { type: 'radio' },
-    },
+    return <Box {...args} />;
   },
   args: {
     component: 'div',
-    children: '',
-    background: 'white',
+    children: 'box',
     height: 300,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: borderRadius.medium,
+    border: `8px solid ${colorsCommon.brandPrimaryPurple}`,
+    borderRadius: '16px',
+    margin: 2,
+    fontFamily: fonts.secondary,
+    textTransform: 'capitalize',
   },
-};
-
-export const Backgrounds = {
-  render: () => (
-    <Stack spacing={0}>
-      <Box background="white" padding={2}>
-        <Typography variant="body" component="span">
-          Typography on neutral background
-        </Typography>
-      </Box>
-      <Box background="whiteOwl" padding={2}>
-        <Typography variant="body" component="span">
-          Typography on neutral background
-        </Typography>
-      </Box>
-      <Box background="lightTint" padding={2}>
-        <Typography variant="body" component="span">
-          Typography on neutral background
-        </Typography>
-      </Box>
-      <Box background="purple" padding={2}>
-        <Typography variant="body" component="span">
-          Typography on inverse background
-        </Typography>
-      </Box>
-      <Box background="midnight" padding={2}>
-        <Typography variant="body" component="span">
-          Typography on inverse background
-        </Typography>
-      </Box>
-    </Stack>
-  ),
 };
 
 type Props = BoxProps<'a', { additionalProp: string }>;

@@ -5,7 +5,7 @@ import { pxToRem } from '../utils';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import type { SystemProps } from '../types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { fonts, fontWeights } from '@utilitywarehouse/design-tokens';
+import { fonts, fontWeights } from '../tokens';
 
 export type DefaultTextComponent = 'span';
 

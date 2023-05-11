@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { colors, borderRadius } from '@utilitywarehouse/design-tokens';
 import { backgroundColors } from '../types';
 import { Typography } from '../Typography';
 import { Stack } from '../Stack';
 import { Heading } from '../Heading';
-import { Background } from './Background';
+import { Background, backgroundColorsMapping } from './Background';
 
 const meta: Meta<typeof Background> = {
   title: 'Web UI / Components / Background',
@@ -16,7 +15,7 @@ type Story = StoryObj<typeof Background>;
 
 export const Workshop: Story = {
   render: args => {
-    const hexValue = args.background ? (colors as { [key: string]: string })[args.background] : '';
+    const hexValue = args.background ? backgroundColorsMapping[args.background] : '';
     return (
       <Background {...args}>
         {args.children ? (
@@ -43,7 +42,7 @@ export const Workshop: Story = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: borderRadius.medium,
+    borderRadius: '16px',
   },
 };
 

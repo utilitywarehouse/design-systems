@@ -1,5 +1,5 @@
 import { createTheme, Theme as MuiTheme } from '@mui/material/styles';
-import { breakpoints, colors, fonts, fontWeights } from '@utilitywarehouse/design-tokens';
+import { colors } from '@utilitywarehouse/design-tokens';
 import { buttonThemeOverrides } from '../Button';
 import { textFieldThemeOverrides } from '../TextField';
 import { textLinkThemeOverrides } from '../TextLink';
@@ -7,6 +7,7 @@ import { typographyThemeOverrides } from '../Typography';
 import { menuThemeOverrides } from '../Menu';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 import { htmlFontSize, pxToRem, spacing } from '../utils';
+import { breakpoints, fonts, fontWeights } from '../tokens';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },

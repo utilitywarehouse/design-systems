@@ -7,8 +7,9 @@ import { Stack } from '../Stack';
 import { Heading } from '../Heading';
 import { Text } from '../Text';
 import { Box } from '../Box';
-import { borderRadius, colors, transitions } from '@utilitywarehouse/design-tokens';
+import { colors } from '@utilitywarehouse/design-tokens';
 import Tooltip from '@mui/material/Tooltip';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 const allIcons = [...icons['24x24'], ...icons['48x48']];
 
@@ -29,7 +30,7 @@ export const Workshop: Story = {
     const selected: IconProps['icon'] = allIcons.find(i => i.name === `${icon}`);
     const iconProps = !!height && !!width ? { width, height } : {};
     return (
-      <Box background="white" padding={4} width="fit-content" borderRadius={borderRadius.medium}>
+      <Box bgcolor={colorsCommon.brandWhite} padding={4} width="fit-content" borderRadius="16px">
         <Icon color={color} icon={selected} iconProps={iconProps} />
       </Box>
     );

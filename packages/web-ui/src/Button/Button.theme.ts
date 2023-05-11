@@ -1,6 +1,7 @@
-import { transitions, fonts, fontWeights, colors } from '@utilitywarehouse/design-tokens';
+import { colors } from '@utilitywarehouse/design-tokens';
 import { dataAttributes, px } from '../utils';
 import { Components } from '@mui/material/styles';
+import { fonts, fontWeights, transitions } from '../tokens';
 
 const borderWidth = 2;
 const { disableCapitalizeFirstLetter, inverse, size, variant } = dataAttributes;

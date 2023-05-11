@@ -1,4 +1,5 @@
-import { colors, fonts, fontWeights, transitions } from '@utilitywarehouse/design-tokens';
+import { colors } from '@utilitywarehouse/design-tokens';
+import { fonts, fontWeights, transitions } from '../tokens';
 import { Components } from '@mui/material/styles';
 import { dataAttributes, pxToRem, spacing } from '../utils';
 
