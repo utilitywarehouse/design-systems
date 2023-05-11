@@ -3,17 +3,17 @@ import { styled } from '@mui/material/styles';
 import MuiToggleButtonGroup, {
   ToggleButtonGroupProps as MuiToggleButtonGroupProps,
 } from '@mui/material/ToggleButtonGroup';
-import { colors } from '@utilitywarehouse/design-tokens';
 import { dataAttributes, px } from '../utils';
+import { colors } from '@utilitywarehouse/colour-system';
 
 const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme, disabled }) => {
   const { inverse } = dataAttributes;
   return {
-    border: `2px solid ${disabled ? colors.codGray20 : colors.cyan}`,
+    border: `2px solid ${disabled ? colors.grey200 : colors.cyan400}`,
     borderRadius: px(32),
     [`[data-${inverse}=true] &`]: {
       '&:disabled': {
-        borderColor: colors.codGray40,
+        borderColor: colors.grey400,
       },
     },
     '.MuiToggleButtonGroup-grouped': {

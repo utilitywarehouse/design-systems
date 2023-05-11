@@ -1,6 +1,5 @@
 import * as React from 'react';
 import FilledInput, { FilledInputProps } from '@mui/material/FilledInput';
-import { colors } from '@utilitywarehouse/design-tokens';
 import SuccessOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined';
 import WarningOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined';
 import FormControl from '@mui/material/FormControl';
@@ -10,6 +9,7 @@ import { Box } from '../Box';
 import { dataAttributes } from '../utils';
 import type { ReactNode, AllHTMLAttributes } from 'react';
 import { styled } from '../theme';
+import { colors } from '@utilitywarehouse/colour-system';
 
 const isSuccessStatus = (status?: string): boolean => status === 'success';
 const isErrorStatus = (status?: string): boolean => status === 'error';
@@ -47,8 +47,8 @@ export interface TextFieldProps
   multiline?: boolean;
 }
 
-const SuccessIcon = styled(SuccessOutlined)({ fill: colors.jewel });
-const WarningIcon = styled(WarningOutlined)({ fill: colors.maroonFlush });
+const SuccessIcon = styled(SuccessOutlined)({ fill: colors.green700 });
+const WarningIcon = styled(WarningOutlined)({ fill: colors.red600 });
 const IconContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   marginLeft: theme.spacing(0.5),
