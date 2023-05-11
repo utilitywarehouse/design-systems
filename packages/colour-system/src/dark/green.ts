@@ -11,5 +11,7 @@ export const green400 = '#34a868';
 export const green500 = '#55ce8b';
 /** For text and borders */
 export const green700 = '#90dab2';
+/**  */
+export const green800 = '#bae8cf';
 /** For text */
 export const green900 = '#e3faeb';

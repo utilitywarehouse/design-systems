@@ -201,6 +201,17 @@
         "updated_at": "2023-04-27T17:38:49.801Z",
         "value": "#ffd76f"
       },
+      "gold800": {
+        "id": "395:1255",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "800",
+        "name": "gold800",
+        "description": "",
+        "created_at": "2023-05-09T16:08:41.025Z",
+        "updated_at": "2023-05-09T16:08:41.025Z",
+        "value": "#ffe6a8"
+      },
       "gold900": {
         "id": "64:435",
         "mode": "dark",
@@ -750,6 +761,17 @@
         "updated_at": "2023-03-29T16:17:22.769Z",
         "value": "#90dab2"
       },
+      "green800": {
+        "id": "391:1242",
+        "mode": "dark",
+        "scale": "green",
+        "step": "800",
+        "name": "green800",
+        "description": "",
+        "created_at": "2023-05-09T12:58:22.194Z",
+        "updated_at": "2023-05-09T12:58:22.194Z",
+        "value": "#bae8cf"
+      },
       "green900": {
         "id": "34:925",
         "mode": "dark",
@@ -1191,6 +1213,17 @@
         "updated_at": "2023-04-27T17:38:49.830Z",
         "value": "#c77800"
       },
+      "gold600": {
+        "id": "392:1249",
+        "mode": "light",
+        "scale": "gold",
+        "step": "600",
+        "name": "gold600",
+        "description": "Use it for large text, borders, and graphic elements against white, Gold 50, Gold 100,  Grey 25, Grey 50 and Grey 75. Use it as a background color with white large text (24px), borders, or icons.",
+        "created_at": "2023-05-09T13:25:07.328Z",
+        "updated_at": "2023-05-09T13:25:07.328Z",
+        "value": "#ac6406"
+      },
       "gold700": {
         "id": "64:427",
         "mode": "light",
@@ -1199,8 +1232,8 @@
         "name": "gold700",
         "description": "Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200 and Gold 300 ",
         "created_at": "2023-03-30T17:02:23.505Z",
-        "updated_at": "2023-03-30T17:02:23.505Z",
-        "value": "#925317"
+        "updated_at": "2023-05-09T13:25:07.340Z",
+        "value": "#894e16"
       },
       "gold900": {
         "id": "64:428",
@@ -1818,6 +1851,17 @@
         "created_at": "2023-03-29T16:17:22.759Z",
         "updated_at": "2023-04-27T17:38:50.083Z",
         "value": "#31a063"
+      },
+      "green600": {
+        "id": "391:1241",
+        "mode": "light",
+        "scale": "green",
+        "step": "600",
+        "name": "green600",
+        "description": "For text, icons and border against white, Green 50 and Green 100 For text, icons and border against white Green 50, Green 100 and Green 200, Grey 25, Grey 50 and Grey 100. For backgrounds with a white foreground. ",
+        "created_at": "2023-05-09T12:58:22.200Z",
+        "updated_at": "2023-05-09T12:58:22.200Z",
+        "value": "#297f50"
       },
       "green700": {
         "id": "34:933",

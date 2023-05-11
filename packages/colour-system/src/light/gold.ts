@@ -9,7 +9,9 @@ export const gold200 = '#ffe6a8';
 export const gold300 = '#ffd76f';
 /** Use it for large text, borders, and graphic elements against white, Gold 50, Grey 25, Grey 50 and Grey 75. Use it as a background color with white large text (24px), borders, or icons. */
 export const gold500 = '#c77800';
+/** Use it for large text, borders, and graphic elements against white, Gold 50, Gold 100,  Grey 25, Grey 50 and Grey 75. Use it as a background color with white large text (24px), borders, or icons. */
+export const gold600 = '#ac6406';
 /** Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200 and Gold 300  */
-export const gold700 = '#925317';
+export const gold700 = '#894e16';
 /** Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200,  Gold 300 and Gold 500 */
 export const gold900 = '#52210c';
