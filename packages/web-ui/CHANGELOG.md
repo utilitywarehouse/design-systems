@@ -1,5 +1,12 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.13
+
+### Patch Changes
+
+- Updated dependencies [[`a9acfd8`](https://github.com/utilitywarehouse/design-systems/commit/a9acfd8e899f21e11eb45178749be94ad6c2349b)]:
+  - @utilitywarehouse/colour-system@0.0.5
+
 ## 0.0.12
 
 ### Patch Changes
