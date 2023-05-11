@@ -1,11 +1,8 @@
 import { forwardRef } from 'react';
 import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import { pxToRem } from '../utils';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import type { SystemProps } from '../types';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { fonts } from '../tokens';
 
 export type DefaultHeadingComponent = 'h2';
 
