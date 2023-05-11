@@ -1,5 +1,4 @@
-import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { colors } from '@utilitywarehouse/design-tokens';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
 import { dataAttributes, mediaQueries, pxToRem } from '../utils';
 
@@ -18,15 +17,15 @@ const legacyTextStyles = {
     },
   },
   [`&[data-${legacy}=true][data-${success}=true]`]: {
-    color: colors.jewel,
+    color: colors.green700,
     [`[data-${inverse}=true] &`]: {
-      color: colors.apple,
+      color: colors.apple400,
     },
   },
   [`&[data-${legacy}=true][data-${error}=true]`]: {
-    color: colors.maroonFlush,
+    color: colors.red600,
     [`[data-${inverse}=true] &`]: {
-      color: colors.rose,
+      color: colors.rose400,
     },
   },
 };
