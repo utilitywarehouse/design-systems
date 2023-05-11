@@ -1,5 +1,29 @@
 # @utilitywarehouse/colour-system
 
+## 0.0.5
+
+### Patch Changes
+
+- [#67](https://github.com/utilitywarehouse/design-systems/pull/67) [`a9acfd8`](https://github.com/utilitywarehouse/design-systems/commit/a9acfd8e899f21e11eb45178749be94ad6c2349b) Thanks [@robphoenix](https://github.com/robphoenix)! - This change updates the colour scales.
+
+  ## Dark mode
+
+  ### New colours:
+
+  - `gold800`
+  - `green800`
+
+  ## Light mode
+
+  ### New colours:
+
+  - `gold600`
+  - `green600`
+
+  ### Updated colours:
+
+  - `gold700`
+
 ## 0.0.4
 
 ### Patch Changes
