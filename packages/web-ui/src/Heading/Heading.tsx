@@ -51,26 +51,12 @@ export type HeadingProps<
 /**
  * Heading renders the primary UW font, to be used for heading-level typography.
  */
-export const Heading = forwardRef(function Heading(
-  { color = colorsCommon.brandPrimaryPurple, variant = 'h2', ...props },
-  ref
-) {
-  const lineHeightMapping = { displayHeading: 1, h1: 1.2, h2: 1.5, h3: 2, h4: 1.5 };
-  const fontSizeMapping = {
-    displayHeading: { mobile: pxToRem(42), desktop: pxToRem(64) },
-    h1: { mobile: pxToRem(32), desktop: pxToRem(42) },
-    h2: { mobile: pxToRem(28), desktop: pxToRem(32) },
-    h3: { mobile: pxToRem(22), desktop: pxToRem(24) },
-    h4: { mobile: pxToRem(18), desktop: pxToRem(20) },
-  };
+export const Heading = forwardRef(function Heading({ color, variant = 'h2', ...props }, ref) {
   return (
     <MuiTypography
       ref={ref}
       variantMapping={headingVariantMapping}
       variant={variant}
-      fontFamily={fonts.primary}
-      fontSize={fontSizeMapping[variant]}
-      lineHeight={lineHeightMapping[variant]}
       color={color}
       {...props}
     />

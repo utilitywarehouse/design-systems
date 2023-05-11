@@ -1,13 +1,13 @@
 import { createTheme, Theme as MuiTheme } from '@mui/material/styles';
-import { colors } from '@utilitywarehouse/design-tokens';
 import { buttonThemeOverrides } from '../Button';
 import { textFieldThemeOverrides } from '../TextField';
 import { textLinkThemeOverrides } from '../TextLink';
-import { typographyThemeOverrides } from '../Typography';
+import { typographyThemeOverrides, baseTypographyTheme } from '../Typography';
 import { menuThemeOverrides } from '../Menu';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 import { htmlFontSize, pxToRem, spacing } from '../utils';
 import { breakpoints, fonts, fontWeights } from '../tokens';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
@@ -30,38 +30,14 @@ theme.typography = {
   htmlFontSize,
   fontFamily: fonts,
   fontWeights,
+  ...baseTypographyTheme,
 };
 
 export const customPalette = {
-  ...colors,
+  colorsCommon,
+  colors,
   text: {
-    primary: colors.midnight, // TODO: remove when refactor Button
-    heading: {
-      primary: colors.purple,
-      secondary: colors.midnight,
-      inverse: colors.white,
-    },
-    body: {
-      primary: colors.midnight,
-      inverse: colors.white,
-      success: { default: colors.jewel, inverse: colors.apple },
-      error: { default: colors.maroonFlush, inverse: colors.rose },
-    },
-  },
-  common: { white: colors.white, black: colors.black, disabled: colors.codGray20 },
-  brand: { primary: colors.purple, action: colors.cyan40, line: colors.pink },
-  messaging: {
-    alert: colors.rose,
-    info: colors.midnight,
-    success: colors.apple,
-    warning: colors.gold,
-  },
-  services: {
-    gas: colors.cyan40,
-    electricity: colors.apple,
-    insurance: colors.rose,
-    mobile: colors.gold,
-    landline: colors.grape,
+    primary: colorsCommon.brandMidnight, // TODO: remove when refactor Button
   },
 };
 
@@ -71,6 +47,22 @@ theme.palette = {
   ...theme.palette,
   ...customPalette,
 };
+
+const DEV =
+  typeof window !== 'undefined' &&
+  (!process.env.NODE_ENV || process.env.NODE_ENV === 'development');
+window.theme = theme;
+if (DEV) {
+  console.log(
+    `%c
+░█▒█░█░░▒█░░░█░░▒█▒██▀░██▄░░░█▒█░█
+░▀▄█░▀▄▀▄▀▒░░▀▄▀▄▀░█▄▄▒█▄█▒░░▀▄█░█
+
+Tip: you can access the documentation \`theme\` object directly in the console.
+`,
+    `font-family:monospace;color:${colorsCommon.brandPrimaryPurple};font-size:16px;`
+  );
+}
 
 export { theme };
 export type Theme = typeof theme;
