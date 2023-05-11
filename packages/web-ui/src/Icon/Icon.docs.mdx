@@ -6,6 +6,9 @@ import * as Stories from './Icon.stories';
 
 # Icon
 
+> The `Icon` component is currently configured to work specifically with the
+> legacy `customer-ui-react-icons` & `customer-ui-design-tokens` packages.
+
 Icon will render the given icon, and takes a color value from the [color design tokens](https://github.com/utilitywarehouse/customer-web-ui/blob/main/packages/design-tokens/src/colors.ts).
 
 ```tsx
@@ -18,6 +21,9 @@ const MyIcon = () => {
 ```
 
 ## Alternatives
+
+> We recommend using the `@utilitywarehouse/react-icons` package.
+> You should only use this component if you have to use an icon from the `customer-ui-react-icons` library.
 
 You can always render the imported icon itself. The difference is that we
 currently aren't able to pass the ref down to the SVG element, due to the
