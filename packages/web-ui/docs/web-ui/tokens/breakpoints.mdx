@@ -7,11 +7,11 @@ import { Divider } from '@mui/material';
 
 # Breakpoints
 
-<Stack spacing={1} component="ul" padding={0} margin={0} width={200} divider={<Divider />}>
+<Stack spacing={1} width={400} divider={<Divider />}>
   {Object.keys(breakpoints).map(bp => (
-    <Box component="li" display="flex" justifyContent="space-between">
+    <Box display="flex" justifyContent="space-between">
       <Text variant="body" component="span">
-        {bp}
+        {`breakpoints.${bp}`}
       </Text>
       <Text variant="body" component="span">
         {breakpoints[bp]}px
