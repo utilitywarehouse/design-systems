@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { colors } from '@utilitywarehouse/design-tokens';
 import { Box } from '../Box';
 import { Stack } from '../Stack';
 import { Text } from '../Text';
 import Divider from '@mui/material/Divider';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof Stack> = {
   title: 'Web UI / Components / Stack',
@@ -16,7 +16,8 @@ type Story = StoryObj<typeof Stack>;
 export const Workshop: Story = {
   render: args => {
     const sx = {
-      border: `1px solid ${colors.purple}`,
+      backgroundColor: colorsCommon.brandPrimaryPurple,
+      border: `1px solid ${colorsCommon.brandPrimaryPurple}`,
       borderRadius: '8px',
     };
     return (
@@ -32,18 +33,18 @@ export const Workshop: Story = {
             ) : null
           }
         >
-          <Box background="purple" px={2} py={4} {...sx}>
-            <Text component="span" variant="body">
+          <Box px={2} py={4} {...sx}>
+            <Text component="span" variant="body" color={colorsCommon.brandWhite}>
               Item 1
             </Text>
           </Box>
-          <Box background="purple" px={6} py={8} {...sx}>
-            <Text component="span" variant="body">
+          <Box px={6} py={8} {...sx}>
+            <Text component="span" variant="body" color={colorsCommon.brandWhite}>
               Item 2
             </Text>
           </Box>
-          <Box background="purple" px={12} py={16} {...sx}>
-            <Text component="span" variant="body">
+          <Box px={12} py={16} {...sx}>
+            <Text component="span" variant="body" color={colorsCommon.brandWhite}>
               Item 3
             </Text>
           </Box>
