@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Grid } from './Grid';
 import { Box } from '../Box';
 import { Text } from '../Text';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof Grid> = {
   title: 'Web UI / Components / Grid',
@@ -13,14 +14,36 @@ export default meta;
 type Story = StoryObj<typeof Box>;
 
 const LargeContent = (props: { children: React.ReactNode }) => (
-  <Box background="purple" height={200} display="grid" sx={{ placeItems: 'center' }}>
-    <Text {...props} variant="body" component="span" textTransform="capitalize" />
+  <Box
+    bgcolor={colorsCommon.brandPrimaryPurple}
+    height={200}
+    display="grid"
+    sx={{ placeItems: 'center' }}
+  >
+    <Text
+      {...props}
+      variant="body"
+      component="span"
+      color={colorsCommon.brandWhite}
+      textTransform="capitalize"
+    />
   </Box>
 );
 
 const SmallContent = (props: { children: React.ReactNode }) => (
-  <Box background="midnight" height={80} display="grid" sx={{ placeItems: 'center' }}>
-    <Text {...props} variant="body" component="span" textTransform="capitalize" />
+  <Box
+    bgcolor={colorsCommon.brandMidnight}
+    height={80}
+    display="grid"
+    sx={{ placeItems: 'center' }}
+  >
+    <Text
+      {...props}
+      variant="body"
+      component="span"
+      color={colorsCommon.brandWhite}
+      textTransform="capitalize"
+    />
   </Box>
 );
 
@@ -28,7 +51,7 @@ export const GridStory: Story = {
   name: 'Grid',
   render: () => {
     return (
-      <Box background="whiteOwl" padding={3}>
+      <Box bgcolor={colors.grey75} padding={3}>
         <Grid container>
           <Grid item mobile={4} desktop={8}>
             <LargeContent>account actions</LargeContent>
