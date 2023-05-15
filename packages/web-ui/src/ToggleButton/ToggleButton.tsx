@@ -25,7 +25,7 @@ const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
       backgroundColor: colors.cyan100,
     },
     '&:disabled': {
-      color: colors.grey700,
+      color: colors.grey800,
       border: 'none',
     },
     '&.Mui-selected, &.Mui-selected:hover': {

@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { useState } from 'react';
+import { Box } from '../Box';
 import { ToggleButton } from './ToggleButton';
 import { ToggleButtonGroup } from './ToggleButtonGroup';
 
@@ -12,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof ToggleButtonGroup>;
 
 export const Workshop: Story = {
-  parameters: { layout: 'centered' },
+  parameters: { layout: 'fullscreen' },
   render: args => {
     const [option, setOption] = useState<string | null>('option-1');
 
@@ -23,11 +25,13 @@ export const Workshop: Story = {
     };
 
     return (
-      <ToggleButtonGroup {...args} value={option} onChange={handleOption}>
-        <ToggleButton value="option-1">Option 1</ToggleButton>
-        <ToggleButton value="option-2">Option 2</ToggleButton>
-        <ToggleButton value="option-3">Option 3</ToggleButton>
-      </ToggleButtonGroup>
+      <Box bgcolor={colorsCommon.brandWhite} display="flex" justifyContent="center" padding={6}>
+        <ToggleButtonGroup {...args} value={option} onChange={handleOption}>
+          <ToggleButton value="option-1">Option 1</ToggleButton>
+          <ToggleButton value="option-2">Option 2</ToggleButton>
+          <ToggleButton value="option-3">Option 3</ToggleButton>
+        </ToggleButtonGroup>
+      </Box>
     );
   },
   argTypes: {
