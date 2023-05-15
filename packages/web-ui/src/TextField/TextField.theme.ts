@@ -97,7 +97,7 @@ export const textFieldThemeOverrides: Components = {
         },
         '&.Mui-disabled': {
           color: colorsCommon.brandMidnight,
-          backgroundColor: colors.grey25,
+          backgroundColor: colors.grey50,
           borderColor: colors.grey100,
           borderBottomColor: colors.grey600,
           transition: `all ${transitions.duration}ms ${transitions.easingFunction}`,
