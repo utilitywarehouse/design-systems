@@ -121,23 +121,23 @@ export const textFieldThemeOverrides: Components = {
         },
         [`&[data-${success}=true]`]: {
           ':before': {
-            borderBottomColor: colors.green700,
+            borderBottomColor: colors.green600,
           },
           '&:after': {
-            borderBottomColor: colors.green700,
+            borderBottomColor: colors.green600,
           },
           ':hover': {
             '&:not(.Mui-disabled)': {
               '&:before': {
-                borderColor: colors.green700,
+                borderColor: colors.green600,
               },
             },
           },
           '&.Mui-focused': {
-            borderColor: colors.green700,
+            borderColor: colors.green600,
           },
           '&:not(.Mui-disabled)': {
-            borderBottomColor: colors.green700,
+            borderBottomColor: colors.green600,
           },
         },
         [`&[data-${multiline}=true]`]: {

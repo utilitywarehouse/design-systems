@@ -47,7 +47,7 @@ export interface TextFieldProps
   multiline?: boolean;
 }
 
-const SuccessIcon = styled(SuccessOutlined)({ fill: colors.green700 });
+const SuccessIcon = styled(SuccessOutlined)({ fill: colors.green600 });
 const WarningIcon = styled(WarningOutlined)({ fill: colors.red600 });
 const IconContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
