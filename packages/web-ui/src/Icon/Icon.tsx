@@ -1,14 +1,13 @@
 import { Box } from '../Box';
-import { colors } from '@utilitywarehouse/design-tokens';
 import { forwardRef } from 'react';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import type { BoxProps } from '../Box';
-import type { Colors } from '@utilitywarehouse/design-tokens';
+import { legacyColors } from './legacy-colors';
 
 export type DefaultIconComponent = 'span';
 
 export interface CustomIconProps {
-  color?: keyof Colors;
+  color?: keyof typeof legacyColors;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   iconProps?: React.SVGProps<SVGSVGElement>;
 }
@@ -34,7 +33,7 @@ export const Icon = forwardRef(function Icon(
     <Box ref={ref} component={component} {...props}>
       <IconComponent
         style={{ verticalAlign: 'top' }}
-        fill={!!color ? colors[color] : 'inherit'}
+        fill={!!color ? legacyColors[color] : 'inherit'}
         {...iconProps}
       />
     </Box>

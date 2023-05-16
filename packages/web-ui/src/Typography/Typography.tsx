@@ -12,7 +12,7 @@ export type DefaultTypographyComponent = 'p';
 
 export interface CustomTypographyProps {
   color?: string | 'primary' | 'secondary' | 'success' | 'error';
-  /** @deprecated */
+  /** @deprecated The variant prop is deprecated and will be removed in v1 */
   variant?: MuiTypographyProps['variant'];
   component?: React.ElementType;
 }

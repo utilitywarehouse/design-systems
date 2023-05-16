@@ -3,8 +3,9 @@ import { styled } from '@mui/material/styles';
 import MuiToggleButton, {
   ToggleButtonProps as MuiToggleButtonProps,
 } from '@mui/material/ToggleButton';
-import { colors, fonts, fontWeights } from '@utilitywarehouse/design-tokens';
+import { fonts, fontWeights } from '../tokens';
 import { dataAttributes, px } from '../utils';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
   const { inverse } = dataAttributes;
@@ -16,33 +17,33 @@ const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
     fontWeight: fontWeights.secondary.semibold,
     fontSize: 16,
     lineHeight: 1.5,
-    color: colors.midnight,
+    color: colorsCommon.brandMidnight,
     '&:focus, &:active': {
-      backgroundColor: colors.cyan50,
+      backgroundColor: colors.cyan500,
     },
     '&:hover': {
-      backgroundColor: colors.cyan20,
+      backgroundColor: colors.cyan100,
     },
     '&:disabled': {
-      color: colors.codGray70,
+      color: colors.grey800,
       border: 'none',
     },
     '&.Mui-selected, &.Mui-selected:hover': {
-      backgroundColor: colors.cyan,
+      backgroundColor: colors.cyan400,
       '&:disabled': {
-        backgroundColor: colors.codGray20,
+        backgroundColor: colors.grey200,
       },
     },
     [`[data-${inverse}=true] &`]: {
-      color: colors.white,
+      color: colorsCommon.brandWhite,
       '&:disabled': {
-        color: colors.codGray40,
+        color: colors.grey400,
       },
       '&.Mui-selected, &:hover, &:focus, &:active': {
-        color: colors.midnight,
+        color: colorsCommon.brandMidnight,
         '&:disabled': {
-          color: colors.codGray80,
-          backgroundColor: colors.codGray30,
+          color: colors.grey800,
+          backgroundColor: colors.grey300,
         },
       },
     },

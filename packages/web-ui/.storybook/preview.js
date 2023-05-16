@@ -1,6 +1,6 @@
 import '@utilitywarehouse/fontsource';
 import { ThemeProvider } from '../src/ThemeProvider';
-import { breakpoints } from '@utilitywarehouse/design-tokens';
+import { breakpoints } from '../src/tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { MDXProvider } from '@mdx-js/react';
 import { DocsContainer as StorybookDocsContainer } from '@storybook/blocks';

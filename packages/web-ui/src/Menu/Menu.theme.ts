@@ -1,6 +1,6 @@
 import { Components } from '@mui/material/styles';
-import { colors } from '@utilitywarehouse/design-tokens';
 import { spacing } from '../utils';
+import { colors } from '@utilitywarehouse/colour-system';
 
 export const menuThemeOverrides: Components = {
   MuiMenu: {
@@ -14,7 +14,7 @@ export const menuThemeOverrides: Components = {
       root: {
         '& .MuiPaper-root': {
           marginTop: spacing(1),
-          borderColor: colors.cyan,
+          borderColor: colors.cyan400,
           borderRadius: spacing(1),
           borderStyle: 'solid',
           borderWidth: '2px',

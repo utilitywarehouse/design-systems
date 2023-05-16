@@ -1,11 +1,18 @@
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { dataAttributes, isInverseBackgroundColor } from '../utils';
-import { colors } from '@utilitywarehouse/design-tokens';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { forwardRef } from 'react';
 import type { NeutralBackgroundColor, InverseBackgroundColor } from '../types';
 import type { Theme } from '../theme';
 import MuiBox from '@mui/material/Box';
+
+export const backgroundColorsMapping: { [key: string]: string } = {
+  white: '#ffffff',
+  whiteOwl: '#f4f3f6',
+  lightTint: '#ebe0f2',
+  purple: '#550091',
+  midnight: '#1e0a46',
+};
 
 export type DefaultBackgroundComponent = 'div';
 
@@ -37,7 +44,7 @@ export const Background = forwardRef(function Background({ background, ...props 
   return (
     <MuiBox
       ref={ref}
-      bgcolor={background && colors[background]}
+      bgcolor={background && backgroundColorsMapping[background]}
       {...dataAttributeProps}
       {...props}
     />
