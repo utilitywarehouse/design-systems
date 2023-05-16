@@ -27,8 +27,7 @@
     "@utilitywarehouse/colour-system": "workspace:^",
     "@utilitywarehouse/customer-ui-react-icons": "^1.1.0",
     "react-aria": "^3.23.1",
-    "react-stately": "^3.21.0",
-    "tsup": "^6.7.0"
+    "react-stately": "^3.21.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",

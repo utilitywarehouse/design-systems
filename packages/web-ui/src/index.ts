@@ -8,6 +8,8 @@ export * from './Background';
 export * from './Box';
 export * from './Button';
 export * from './FieldLabel';
+export * from './Fieldset';
+export * from './FieldsetLegend';
 export * from './FormHelperText';
 export * from './Grid';
 export * from './Heading';
