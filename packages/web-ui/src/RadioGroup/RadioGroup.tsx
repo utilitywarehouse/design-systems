@@ -6,7 +6,8 @@ import type { AriaRadioGroupProps } from 'react-aria';
 import type { RadioGroupState } from 'react-stately';
 import { BoxProps } from '../Box';
 import { FormHelperText } from '../FormHelperText';
-import { Fieldset, FieldsetLegend } from '../Fieldset';
+import { Fieldset } from '../Fieldset';
+import { FieldsetLegend } from '../FieldsetLegend';
 import { Stack } from '../Stack';
 
 export type RadioGroupContextValue = RadioGroupState & { hasGroupHelperText: boolean };
