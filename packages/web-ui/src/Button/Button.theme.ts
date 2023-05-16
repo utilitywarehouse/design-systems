@@ -1,6 +1,7 @@
-import { transitions, fonts, fontWeights, colors } from '@utilitywarehouse/design-tokens';
 import { dataAttributes, px } from '../utils';
 import { Components } from '@mui/material/styles';
+import { fonts, fontWeights, transitions } from '../tokens';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const borderWidth = 2;
 const { disableCapitalizeFirstLetter, inverse, size, variant } = dataAttributes;
@@ -29,7 +30,7 @@ export const buttonThemeOverrides: Partial<Components> = {
         borderStyle: 'solid',
         borderRadius: px(32),
         borderWidth,
-        color: colors.midnight,
+        color: colorsCommon.brandMidnight,
         '&:disabled': {
           opacity: 0.5,
         },
@@ -55,21 +56,21 @@ export const buttonThemeOverrides: Partial<Components> = {
           height: px(48),
         },
         [`&[data-${variant}=primary]`]: {
-          color: colors.midnight,
-          backgroundColor: colors.cyan,
+          color: colorsCommon.brandMidnight,
+          backgroundColor: colors.cyan400,
           border: 'none',
           paddingLeft: px(32),
           paddingRight: px(32),
           '&:hover': {
-            backgroundColor: colors.cyan30,
+            backgroundColor: colors.cyan200,
           },
         },
         [`&[data-${variant}=secondary]`]: {
-          color: colors.midnight,
-          backgroundColor: colors.transparent,
-          borderColor: colors.cyan,
+          color: colorsCommon.brandMidnight,
+          backgroundColor: 'transparent',
+          borderColor: colors.cyan400,
           '&:hover': {
-            borderColor: colors.midnight,
+            borderColor: colorsCommon.brandMidnight,
             borderWidth,
           },
           '&:disabled': {
@@ -77,16 +78,16 @@ export const buttonThemeOverrides: Partial<Components> = {
             borderWidth,
           },
           [`[data-${inverse}=true] &`]: {
-            color: colors.white,
+            color: colorsCommon.brandWhite,
             '&:hover': {
-              borderColor: colors.white,
+              borderColor: colorsCommon.brandWhite,
             },
           },
         },
         [`&[data-${variant}=tertiary]`]: {
-          color: colors.midnight,
-          backgroundColor: colors.transparent,
-          borderColor: colors.cyan,
+          color: colorsCommon.brandMidnight,
+          backgroundColor: 'transparent',
+          borderColor: colors.cyan400,
           height: 'auto',
           paddingBottom: 2,
           paddingLeft: 0,
@@ -99,7 +100,7 @@ export const buttonThemeOverrides: Partial<Components> = {
             opacity: 0.5,
           },
           [`[data-${inverse}=true] &`]: {
-            color: colors.white,
+            color: colorsCommon.brandWhite,
           },
         },
       },

@@ -1,11 +1,9 @@
 import { forwardRef } from 'react';
 import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import { pxToRem } from '../utils';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import type { SystemProps } from '../types';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { fonts, fontWeights } from '@utilitywarehouse/design-tokens';
+import { fontWeights } from '../tokens';
 
 export type DefaultTextComponent = 'span';
 
@@ -56,26 +54,16 @@ export type TextProps<D extends React.ElementType = DefaultTextComponent, P = {}
  * Text renders the secondary UW font, Work Sans, to be used for body copy.
  */
 export const Text = forwardRef(function Text(
-  { color = colorsCommon.brandMidnight, variant = 'body', bold = false, ...props },
+  { color, variant = 'body', bold = false, ...props },
   ref
 ) {
-  const lineHeightMapping = { body: 1.5, subtitle: 1.5, legalNote: 1.5, caption: 2 };
-  const fontSizeMapping = {
-    body: pxToRem(16),
-    subtitle: { mobile: pxToRem(18), desktop: pxToRem(20) },
-    legalNote: pxToRem(14),
-    caption: pxToRem(12),
-  };
   return (
     <MuiTypography
       ref={ref}
       variantMapping={textVariantMapping}
       variant={variant}
       color={color}
-      fontFamily={fonts.secondary}
-      fontSize={fontSizeMapping[variant]}
-      fontWeight={fontWeights.secondary[bold ? 'semibold' : 'regular']}
-      lineHeight={lineHeightMapping[variant]}
+      fontWeight={bold ? fontWeights.secondary.semibold : undefined}
       {...props}
     />
   );

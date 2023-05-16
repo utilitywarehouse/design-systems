@@ -1,5 +1,5 @@
 export { Typography } from './Typography';
-export { typographyThemeOverrides } from './Typography.theme';
+export { typographyThemeOverrides, baseTypographyTheme } from './Typography.theme';
 export type {
   DefaultTypographyComponent,
   CustomTypographyProps,

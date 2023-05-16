@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
 import { TextField } from './TextField';
 
@@ -11,9 +12,10 @@ export default meta;
 type Story = StoryObj<typeof TextField>;
 
 export const Workshop: Story = {
+  parameters: { layout: 'fullscreen' },
   render: args => {
     return (
-      <Box background="white" display="flex" justifyContent="center" px={6} py={4}>
+      <Box bgcolor={colorsCommon.brandWhite} display="flex" justifyContent="center" padding={6}>
         <TextField {...args} />
       </Box>
     );

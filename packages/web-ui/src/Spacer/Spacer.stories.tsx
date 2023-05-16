@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { colors } from '@utilitywarehouse/design-tokens';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
 import { Spacer } from './Spacer';
 
@@ -15,12 +15,12 @@ export const Workshop: Story = {
   render: args => {
     const isVertical = args.axis === 'vertical';
     const sx = {
+      backgroundColor: colorsCommon.brandPrimaryPurple,
       width: isVertical ? 400 : 100,
       height: isVertical ? 100 : 400,
-      border: `1px solid ${colors.purple}`,
+      border: `1px solid ${colorsCommon.brandPrimaryPurple}`,
       borderRadius: '8px',
     };
-    const el = <Box {...sx} background="purple" />;
     return (
       <Box
         padding={4}
@@ -29,9 +29,9 @@ export const Workshop: Story = {
         justifyContent="center"
         alignItems="center"
       >
-        {el}
+        <Box {...sx} />
         <Spacer {...args} />
-        {el}
+        <Box {...sx} />
       </Box>
     );
   },

@@ -1,4 +1,5 @@
-import { colors, fonts, fontWeights, transitions } from '@utilitywarehouse/design-tokens';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { fonts, fontWeights, transitions } from '../tokens';
 import { Components } from '@mui/material/styles';
 import { dataAttributes, pxToRem, spacing } from '../utils';
 
@@ -17,15 +18,15 @@ export const textFieldThemeOverrides: Components = {
         fontSize: pxToRem(16),
         lineHeight: 1,
         marginBottom: spacing(1),
-        color: colors.midnight,
+        color: colorsCommon.brandMidnight,
         '&.Mui-focused': {
-          color: colors.midnight,
+          color: colorsCommon.brandMidnight,
         },
         '&.Mui-disabled': {
-          color: colors.codGray70,
+          color: colors.grey700,
         },
         '&.Mui-error': {
-          color: colors.midnight,
+          color: colorsCommon.brandMidnight,
         },
       },
     },
@@ -39,9 +40,9 @@ export const textFieldThemeOverrides: Components = {
         lineHeight: pxToRem(16),
         margin: 0,
         marginTop: spacing(1),
-        color: colors.midnight,
+        color: colorsCommon.brandMidnight,
         '&.Mui-error': {
-          color: colors.maroonFlush,
+          color: colors.red600,
         },
       },
     },
@@ -63,80 +64,80 @@ export const textFieldThemeOverrides: Components = {
         paddingLeft: spacing(2),
         paddingRight: spacing(2),
         borderBottom: 0,
-        color: colors.midnight,
-        backgroundColor: colors.white,
-        borderColor: colors.codGray10,
-        borderBottomColor: colors.purple,
+        color: colorsCommon.brandMidnight,
+        backgroundColor: colorsCommon.brandWhite,
+        borderColor: colors.grey100,
+        borderBottomColor: colorsCommon.brandPrimaryPurple,
         borderWidth: 2,
         transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
         ':hover': {
-          backgroundColor: colors.white,
-          borderBottomColor: colors.blueRibbon,
+          backgroundColor: colorsCommon.brandWhite,
+          borderBottomColor: colors.cyan600,
           '&:not(.Mui-disabled)': {
             '&:before': {
               borderWidth: 2,
               transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
-              borderBottomColor: colors.blueRibbon,
+              borderBottomColor: colors.cyan600,
             },
           },
         },
         '&:before': {
-          borderColor: colors.purple,
+          borderColor: colorsCommon.brandPrimaryPurple,
           borderWidth: 2,
           transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
         },
         '&:after': {
-          borderColor: colors.blueRibbon,
+          borderColor: colors.cyan600,
           borderWidth: 2,
           transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
         },
         '&.Mui-focused': {
-          backgroundColor: colors.white,
-          borderColor: colors.blueRibbon,
+          backgroundColor: colorsCommon.brandWhite,
+          borderColor: colors.cyan600,
         },
         '&.Mui-disabled': {
-          color: colors.midnight,
-          backgroundColor: '#F3F2F5', // TODO: this colour is not documented in figma UI Foundation Library
-          borderColor: colors.codGray10,
-          borderBottomColor: colors.codGray60,
+          color: colorsCommon.brandMidnight,
+          backgroundColor: colors.grey50,
+          borderColor: colors.grey100,
+          borderBottomColor: colors.grey600,
           transition: `all ${transitions.duration}ms ${transitions.easingFunction}`,
           '&:before': {
-            borderColor: colors.codGray60,
+            borderColor: colors.grey600,
             borderBottomStyle: 'solid',
           },
           '&:after': {
-            borderColor: colors.codGray60,
+            borderColor: colors.grey600,
           },
         },
         '&.Mui-error': {
           '&.Mui-focused': {
-            borderColor: colors.maroonFlush,
+            borderColor: colors.red600,
           },
           '&:not(.Mui-disabled)': {
             '&:after': {
-              borderColor: colors.maroonFlush,
+              borderColor: colors.red600,
             },
           },
         },
         [`&[data-${success}=true]`]: {
           ':before': {
-            borderBottomColor: colors.jewel,
+            borderBottomColor: colors.green600,
           },
           '&:after': {
-            borderBottomColor: colors.jewel,
+            borderBottomColor: colors.green600,
           },
           ':hover': {
             '&:not(.Mui-disabled)': {
               '&:before': {
-                borderColor: colors.jewel,
+                borderColor: colors.green600,
               },
             },
           },
           '&.Mui-focused': {
-            borderColor: colors.jewel,
+            borderColor: colors.green600,
           },
           '&:not(.Mui-disabled)': {
-            borderBottomColor: colors.jewel,
+            borderBottomColor: colors.green600,
           },
         },
         [`&[data-${multiline}=true]`]: {
