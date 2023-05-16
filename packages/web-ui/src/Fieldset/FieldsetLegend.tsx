@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import type { ReactNode, HTMLAttributes } from 'react';
-import { colors, fonts, fontWeights } from '@utilitywarehouse/design-tokens';
+import { fonts, fontWeights } from '../tokens';
+import { colors } from '@utilitywarehouse/colour-system';
 import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';
 
@@ -17,7 +18,7 @@ export const FieldsetLegend = forwardRef<HTMLLegendElement, FieldsetLegendProps>
         ref={ref}
         component="legend"
         padding={0} // reset
-        color={disabled ? colors.codGray40 : colors.midnight}
+        color={disabled ? colors.grey400 : colors.grey1000}
         fontFamily={fonts.secondary}
         fontWeight={fontWeights.secondary.semibold}
         fontSize={pxToRem(16)}

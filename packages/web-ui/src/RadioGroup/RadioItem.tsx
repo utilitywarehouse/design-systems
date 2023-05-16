@@ -1,6 +1,5 @@
 import { forwardRef, useContext } from 'react';
 import type { RefObject, ReactNode } from 'react';
-import { colors } from '@utilitywarehouse/design-tokens';
 import { Box, BoxProps } from '../Box';
 import { useFocusRing, useRadio, useLabel, useId } from 'react-aria';
 import type { AriaRadioProps } from 'react-aria';
@@ -9,12 +8,8 @@ import styled from '@emotion/styled';
 import { Stack } from '../Stack';
 import { FieldLabel } from '../FieldLabel';
 import { FormHelperText } from '../FormHelperText';
-
-const colorPond = {
-  codGray500: 'hsl(0, 0%, 53%)',
-  cyan200: 'hsl(216, 93%, 82%)',
-  cyan400: 'hsl(218, 97%, 73%)',
-};
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { transition } from '../tokens';
 
 export interface RadioItemProps extends Omit<AriaRadioProps, 'isDisabled'> {
   disabled?: AriaRadioProps['isDisabled'];
@@ -41,7 +36,7 @@ const RadioInput = styled('input')(() => {
     borderRadius: '50%',
     display: 'grid',
     placeContent: 'center',
-    color: colorPond.cyan400,
+    color: colors.cyan400,
     '&:before': {
       content: '""',
       width: 14,
@@ -56,7 +51,7 @@ const RadioInput = styled('input')(() => {
     },
     '&:disabled': {
       cursor: 'auto',
-      color: colors.codGray10,
+      color: colors.grey300,
     },
   };
 });
@@ -66,7 +61,8 @@ const RadioInput = styled('input')(() => {
  */
 export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
   ({ sx, children, helperText, disabled, ...props }, ref) => {
-    const state = useContext(RadioGroupContext);
+    const { hasGroupHelperText, ...state } = useContext(RadioGroupContext);
+
     const { isFocusVisible, focusProps } = useFocusRing({ within: true });
     const { inputProps, isSelected, isDisabled } = useRadio(
       { ...props, children, isDisabled: disabled },
@@ -81,9 +77,9 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
     const descriptionId = helperText ? helperTextId : inputProps['aria-describedby'];
 
     const getOuterRingColor = () => {
-      if (isDisabled) return colors.codGray10;
-      if (isSelected || isFocusVisible) return colorPond.cyan400;
-      return colorPond.codGray500;
+      if (isDisabled) return colors.grey300;
+      if (isSelected || isFocusVisible) return colors.cyan400;
+      return colors.grey500;
     };
     const outerRingColor = getOuterRingColor();
 
@@ -98,11 +94,13 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
           marginBottom={helperText ? 0 : -1}
           borderRadius="50%"
           color={outerRingColor}
-          bgcolor={isFocusVisible ? colors.cyan20 : undefined}
+          bgcolor={isFocusVisible ? colors.cyan75 : undefined}
           sx={{
+            transition,
+            transitionProperty: 'background-color, color',
             '&:hover': {
-              backgroundColor: isDisabled ? 'transparent' : colors.cyan10,
-              color: isDisabled ? colors.codGray10 : 'hotpink',
+              backgroundColor: isDisabled ? 'transparent' : colors.cyan100,
+              color: isDisabled ? colors.grey300 : colors.cyan400,
             },
           }}
         >
@@ -113,7 +111,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
             position="absolute"
             top={8}
             left={8}
-            bgcolor={colors.white}
+            bgcolor={colorsCommon.brandWhite}
             height={24}
             width={24}
             border="2px solid"
@@ -127,7 +125,7 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
               {children}
             </FieldLabel>
           </Box>
-          {helperText ? (
+          {!hasGroupHelperText && helperText ? (
             <FormHelperText id={helperTextId} disabled={isDisabled}>
               {helperText}
             </FormHelperText>

@@ -5,7 +5,7 @@ import { RadioGroup } from './RadioGroup';
 import { Stack } from '../Stack';
 
 const meta: Meta<typeof RadioItem> = {
-  title: 'Components/RadioGroup',
+  title: 'Web UI / Components / RadioGroup',
   component: RadioItem,
 };
 
@@ -16,7 +16,7 @@ export const RadioItemStory: Story = {
   name: 'RadioItem',
   render: args => {
     return (
-      <Box background="white" padding={4}>
+      <Box bgcolor="white" padding={4}>
         <Stack spacing={4}>
           <RadioGroup value="2" label="Unchecked RadioItem">
             <RadioItem {...args} />

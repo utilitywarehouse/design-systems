@@ -5,7 +5,7 @@ import { Box } from '../Box';
 import { useState } from 'react';
 
 const meta: Meta<typeof RadioGroup> = {
-  title: 'Components/RadioGroup',
+  title: 'Web UI / Components / RadioGroup',
   component: RadioGroup,
 };
 
@@ -31,21 +31,20 @@ const sharedArgs = {
   errorMessage: 'There is an error',
   disabled: false,
   error: false,
-  label: 'Label',
-  helperText: 'RadioGroup helper text',
+  label: 'Radio group',
+  helperText: 'Helper text',
 };
 
 export const Workshop: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url:
-        'https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=902-9379&t=XTterR22jM1rC0Xr-0',
+      url: 'https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=902-9379&t=XTterR22jM1rC0Xr-0',
     },
   },
   render: args => {
     return (
-      <Box background="white" padding={4}>
+      <Box bgcolor="white" padding={4}>
         <RadioGroup {...args}>
           <RadioItem value="1">One</RadioItem>
           <RadioItem value="2">Two</RadioItem>
@@ -62,7 +61,7 @@ export const WithRadioItemHelperText: Story = {
   name: 'With RadioItem HelperText',
   render: args => {
     return (
-      <Box background="white" padding={4}>
+      <Box bgcolor="white" padding={4}>
         <RadioGroup {...args}>
           <RadioItem value="1" helperText="One helper text">
             One
@@ -78,7 +77,12 @@ export const WithRadioItemHelperText: Story = {
     );
   },
   argTypes,
-  args: sharedArgs,
+  args: {
+    defaultValue: '1',
+    disabled: false,
+    error: false,
+    label: 'Radio group',
+  },
 };
 
 export const Controlled: Story = {
@@ -86,7 +90,7 @@ export const Controlled: Story = {
     const [selected, setSelected] = useState('');
 
     return (
-      <Box background="white" padding={4}>
+      <Box bcolor="white" padding={4}>
         <RadioGroup
           {...args}
           value={selected}
@@ -112,7 +116,7 @@ export const Controlled: Story = {
 export const ShowingError: Story = {
   render: args => {
     return (
-      <Box background="white" padding={4}>
+      <Box bcolor="white" padding={4}>
         <RadioGroup {...args}>
           <RadioItem value="1">One</RadioItem>
           <RadioItem value="2">Two</RadioItem>

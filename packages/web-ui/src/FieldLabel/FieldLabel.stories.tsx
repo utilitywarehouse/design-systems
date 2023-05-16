@@ -3,7 +3,7 @@ import { FieldLabel } from './FieldLabel';
 import { Box } from '../Box';
 
 const meta: Meta<typeof FieldLabel> = {
-  title: 'Components/FieldLabel',
+  title: 'Web UI / Components / FieldLabel',
   component: FieldLabel,
 };
 
@@ -13,7 +13,7 @@ type Story = StoryObj<typeof FieldLabel>;
 export const Workshop: Story = {
   render: args => {
     return (
-      <Box background="white" padding={4}>
+      <Box bgcolor="white" padding={4}>
         <FieldLabel {...args} />
       </Box>
     );

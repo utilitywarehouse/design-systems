@@ -1,8 +1,9 @@
 import { forwardRef } from 'react';
 import type { ReactNode, LabelHTMLAttributes } from 'react';
-import { colors, fonts, fontWeights } from '@utilitywarehouse/design-tokens';
 import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';
+import { fonts, fontWeights } from '../tokens';
+import { colors } from '@utilitywarehouse/colour-system';
 
 export interface FieldLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   children: ReactNode;
@@ -16,7 +17,7 @@ export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabelProps>(
       <Box
         ref={ref}
         component="label"
-        color={disabled ? colors.codGray40 : colors.midnight}
+        color={disabled ? colors.grey400 : colors.grey1000}
         fontFamily={fonts.secondary}
         fontWeight={fontWeights.secondary.regular}
         fontSize={pxToRem(16)}

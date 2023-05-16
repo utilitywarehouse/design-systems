@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import type { ReactNode, HTMLAttributes } from 'react';
-import { colors, fonts, fontWeights } from '@utilitywarehouse/design-tokens';
+import { fonts, fontWeights } from '../tokens';
+import { colors } from '@utilitywarehouse/colour-system';
 import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';
 
@@ -13,11 +14,10 @@ export interface FormHelperTextProps extends HTMLAttributes<HTMLSpanElement> {
 
 export const FormHelperText = forwardRef<HTMLSpanElement, FormHelperTextProps>(
   ({ disabled, error, sx, ...props }, ref) => {
-    const maroon60 = '#CE2261';
     const getColor = () => {
-      if (error) return maroon60;
-      if (disabled) return colors.codGray40;
-      return colors.midnight;
+      if (error) return colors.red600;
+      if (disabled) return colors.grey400;
+      return colors.grey800;
     };
     const color = getColor();
     return (

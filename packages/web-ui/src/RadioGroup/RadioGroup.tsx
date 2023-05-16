@@ -9,7 +9,10 @@ import { FormHelperText } from '../FormHelperText';
 import { Fieldset, FieldsetLegend } from '../Fieldset';
 import { Stack } from '../Stack';
 
-export const RadioGroupContext = createContext<RadioGroupState>({} as RadioGroupState);
+export type RadioGroupContextValue = RadioGroupState & { hasGroupHelperText: boolean };
+export const RadioGroupContext = createContext<RadioGroupContextValue>({
+  hasGroupHelperText: false,
+} as RadioGroupContextValue);
 
 export interface RadioGroupProps
   extends Omit<
@@ -78,7 +81,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
         {label}
       </FieldsetLegend>
       {helperText && helperTextPosition === 'top' ? <HelperText /> : null}
-      <RadioGroupContext.Provider value={state}>
+      <RadioGroupContext.Provider value={{ ...state, hasGroupHelperText: !!helperText }}>
         <Stack spacing={2} direction={direction}>
           {children}
         </Stack>

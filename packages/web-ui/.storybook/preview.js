@@ -10,12 +10,10 @@ import { Box } from '../src/Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 const components = {
-  h1: props => <Heading component="h1" variant="h1" color="secondary" gutterBottom {...props} />,
-  h2: props => (
-    <Heading component="h2" variant="h2" color="secondary" gutterBottom marginTop={2} {...props} />
-  ),
-  h3: props => <Heading component="h3" variant="h3" color="secondary" gutterBottom {...props} />,
-  h4: props => <Heading component="h4" variant="h4" color="secondary" gutterBottom {...props} />,
+  h1: props => <Heading component="h1" variant="h1" gutterBottom {...props} />,
+  h2: props => <Heading component="h2" variant="h2" gutterBottom marginTop={2} {...props} />,
+  h3: props => <Heading component="h3" variant="h3" gutterBottom {...props} />,
+  h4: props => <Heading component="h4" variant="h4" gutterBottom {...props} />,
   p: props => <Text paragraph component="p" variant="body" {...props} />,
 };
 
