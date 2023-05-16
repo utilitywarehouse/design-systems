@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.14
+
+### Patch Changes
+
+- [#69](https://github.com/utilitywarehouse/design-systems/pull/69) [`b756f92`](https://github.com/utilitywarehouse/design-systems/commit/b756f928dbaad2e6c7517629134019cc3b34d9f9) Thanks [@robphoenix](https://github.com/robphoenix)! - This change removes the dependency on the design-tokens package.
+
 ## 0.0.13
 
 ### Patch Changes
