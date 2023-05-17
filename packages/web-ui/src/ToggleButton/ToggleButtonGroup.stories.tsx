@@ -25,13 +25,11 @@ export const Workshop: Story = {
     };
 
     return (
-      <Box bgcolor={colorsCommon.brandWhite} display="flex" justifyContent="center" padding={6}>
-        <ToggleButtonGroup {...args} value={option} onChange={handleOption}>
-          <ToggleButton value="option-1">Option 1</ToggleButton>
-          <ToggleButton value="option-2">Option 2</ToggleButton>
-          <ToggleButton value="option-3">Option 3</ToggleButton>
-        </ToggleButtonGroup>
-      </Box>
+      <ToggleButtonGroup {...args} value={option} onChange={handleOption}>
+        <ToggleButton value="option-1">Option 1</ToggleButton>
+        <ToggleButton value="option-2">Option 2</ToggleButton>
+        <ToggleButton value="option-3">Option 3</ToggleButton>
+      </ToggleButtonGroup>
     );
   },
   argTypes: {
