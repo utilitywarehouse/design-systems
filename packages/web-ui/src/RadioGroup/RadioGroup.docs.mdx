@@ -12,12 +12,13 @@ import { Divider } from '@mui/material';
 
 - [Accessibility](#accessibility)
   - [Keyboard interactions](#keyboard-interactions)
-- [Show error](#show-error)
+- [Helper text](#helper-text)
+- [Error message](#error-message)
 - [Controlled](#controlled)
-- [Props](#radiogroup-props)
+- [RadioGroup props](#radiogroup-props)
 - [RadioItem](#radioitem)
-  - [Accessibility](#radioitem-accessibility)
-  - [Props](#radioitem-props)
+  - [RadioItem accessibility](#radioitem-accessibility)
+  - [RadioItem props](#radioitem-props)
 
 <Description of={RadioGroupStories} />
 
@@ -104,7 +105,16 @@ components yourself if you need to.
   ))}
 </Stack>
 
-## Show error
+## Helper text
+
+The Radio group can display a secondary message as a helper text. This can be
+either above or below the group's radio items. While the radio items can also
+display a helper text, these will not be displayed if the radio group has a
+helper text.
+
+<Canvas of={RadioGroupStories.WithRadioItemHelperText} />
+
+## Error message
 
 In general, radio buttons should have a value selected by default. If this is
 not the case, you can display an error if no value is selected when the form is

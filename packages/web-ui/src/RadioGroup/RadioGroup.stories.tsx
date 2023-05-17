@@ -31,7 +31,7 @@ const sharedArgs = {
   errorMessage: 'There is an error',
   disabled: false,
   error: false,
-  label: 'Radio group',
+  label: 'Radio group label',
   helperText: 'Helper text',
 };
 
@@ -44,13 +44,11 @@ export const Workshop: Story = {
   },
   render: args => {
     return (
-      <Box bgcolor="white" padding={4}>
-        <RadioGroup {...args}>
-          <RadioItem value="1">One</RadioItem>
-          <RadioItem value="2">Two</RadioItem>
-          <RadioItem value="3">Three</RadioItem>
-        </RadioGroup>
-      </Box>
+      <RadioGroup {...args}>
+        <RadioItem value="1">One</RadioItem>
+        <RadioItem value="2">Two</RadioItem>
+        <RadioItem value="3">Three</RadioItem>
+      </RadioGroup>
     );
   },
   argTypes,
@@ -61,19 +59,17 @@ export const WithRadioItemHelperText: Story = {
   name: 'With RadioItem HelperText',
   render: args => {
     return (
-      <Box bgcolor="white" padding={4}>
-        <RadioGroup {...args}>
-          <RadioItem value="1" helperText="One helper text">
-            One
-          </RadioItem>
-          <RadioItem value="2" helperText="Two helper text">
-            Two
-          </RadioItem>
-          <RadioItem value="3" helperText="Three helper text">
-            Three
-          </RadioItem>
-        </RadioGroup>
-      </Box>
+      <RadioGroup {...args}>
+        <RadioItem value="1" helperText="One helper text">
+          One
+        </RadioItem>
+        <RadioItem value="2" helperText="Two helper text">
+          Two
+        </RadioItem>
+        <RadioItem value="3" helperText="Three helper text">
+          Three
+        </RadioItem>
+      </RadioGroup>
     );
   },
   argTypes,
@@ -90,18 +86,16 @@ export const Controlled: Story = {
     const [selected, setSelected] = useState('');
 
     return (
-      <Box bcolor="white" padding={4}>
-        <RadioGroup
-          {...args}
-          value={selected}
-          onChange={setSelected}
-          helperText={`The selected value is: ${selected}`}
-        >
-          <RadioItem value="1">One</RadioItem>
-          <RadioItem value="2">Two</RadioItem>
-          <RadioItem value="3">Three</RadioItem>
-        </RadioGroup>
-      </Box>
+      <RadioGroup
+        {...args}
+        value={selected}
+        onChange={setSelected}
+        helperText={`The selected value is: ${selected}`}
+      >
+        <RadioItem value="1">One</RadioItem>
+        <RadioItem value="2">Two</RadioItem>
+        <RadioItem value="3">Three</RadioItem>
+      </RadioGroup>
     );
   },
   argTypes,
@@ -114,17 +108,16 @@ export const Controlled: Story = {
 };
 
 export const ShowingError: Story = {
+  name: 'Error message',
   render: args => {
     return (
-      <Box bcolor="white" padding={4}>
-        <RadioGroup {...args}>
-          <RadioItem value="1">One</RadioItem>
-          <RadioItem value="2">Two</RadioItem>
-          <RadioItem value="3">Three</RadioItem>
-        </RadioGroup>
-      </Box>
+      <RadioGroup {...args}>
+        <RadioItem value="1">One</RadioItem>
+        <RadioItem value="2">Two</RadioItem>
+        <RadioItem value="3">Three</RadioItem>
+      </RadioGroup>
     );
   },
   argTypes,
-  args: { ...sharedArgs, error: true, errorMessage: 'RadioGroup error message' },
+  args: { ...sharedArgs, error: true, errorMessage: 'Radio group error message' },
 };

@@ -5,7 +5,6 @@ import { useFocusRing, useRadio, useLabel, useId } from 'react-aria';
 import type { AriaRadioProps } from 'react-aria';
 import { RadioGroupContext } from './RadioGroup';
 import styled from '@emotion/styled';
-import { Stack } from '../Stack';
 import { FieldLabel } from '../FieldLabel';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
@@ -119,18 +118,20 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
             borderRadius="50%"
           />
         </Box>
-        <Stack>
-          <Box height={24} display="flex" alignItems="center">
-            <FieldLabel {...labelProps} disabled={isDisabled}>
-              {children}
-            </FieldLabel>
-          </Box>
+        <Box>
+          {children ? (
+            <Box height={24} display="flex" alignItems="center">
+              <FieldLabel {...labelProps} disabled={isDisabled}>
+                {children}
+              </FieldLabel>
+            </Box>
+          ) : null}
           {!hasGroupHelperText && helperText ? (
             <FormHelperText id={helperTextId} disabled={isDisabled}>
               {helperText}
             </FormHelperText>
           ) : null}
-        </Stack>
+        </Box>
       </Box>
     );
   }

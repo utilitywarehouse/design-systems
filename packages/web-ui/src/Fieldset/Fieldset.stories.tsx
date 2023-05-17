@@ -17,16 +17,14 @@ type Story = StoryObj<typeof Fieldset>;
 export const Workshop: Story = {
   render: args => {
     return (
-      <Box bgcolor="white" padding={4}>
-        <Fieldset {...args}>
-          <FieldsetLegend>Fieldset legend</FieldsetLegend>
-          <Box bgcolor={colors.grey75} padding={6}>
-            <Text component="p" variant="body">
-              A form input, such as a RadioGroup
-            </Text>
-          </Box>
-        </Fieldset>
-      </Box>
+      <Fieldset {...args}>
+        <FieldsetLegend>Fieldset legend</FieldsetLegend>
+        <Box bgcolor={colors.grey75} padding={6}>
+          <Text component="p" variant="body">
+            A form input, such as a RadioGroup
+          </Text>
+        </Box>
+      </Fieldset>
     );
   },
 };

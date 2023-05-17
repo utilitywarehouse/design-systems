@@ -3,6 +3,7 @@ import { RadioItem } from './RadioItem';
 import { Box } from '../Box';
 import { RadioGroup } from './RadioGroup';
 import { Stack } from '../Stack';
+import { Text, TextProps } from '../Text';
 
 const meta: Meta<typeof RadioItem> = {
   title: 'Web UI / Components / RadioGroup',
@@ -40,5 +41,26 @@ export const RadioItemStory: Story = {
     disabled: false,
     children: 'Label',
     helperText: 'Helper text',
+  },
+};
+
+export const WithCustomRadioItemLabel: Story = {
+  name: 'Custom RadioItem label',
+  render: () => {
+    const CustomLabel = (props: { children: TextProps['children'] }) => (
+      <Text {...props} variant="subtitle" component="span" bold />
+    );
+    return (
+      <Box bgcolor="white" padding={4}>
+        <RadioGroup defaultValue="1" label="Radio group label">
+          <RadioItem value="1">
+            <CustomLabel>One</CustomLabel>
+          </RadioItem>
+          <RadioItem value="2">
+            <CustomLabel>Two</CustomLabel>
+          </RadioItem>
+        </RadioGroup>
+      </Box>
+    );
   },
 };
