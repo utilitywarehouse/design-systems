@@ -4,56 +4,17 @@ import { Box, BoxProps } from '../Box';
 import { useFocusRing, useRadio, useLabel, useId } from 'react-aria';
 import type { AriaRadioProps } from 'react-aria';
 import { RadioGroupContext } from './RadioGroup';
-import styled from '@emotion/styled';
 import { FieldLabel } from '../FieldLabel';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { transition } from '../tokens';
+import { RadioInput } from './Radio';
 
 export interface RadioItemProps extends Omit<AriaRadioProps, 'isDisabled'> {
   disabled?: AriaRadioProps['isDisabled'];
   sx?: BoxProps['sx'];
   helperText?: ReactNode;
 }
-
-const RadioInput = styled('input')(() => {
-  return {
-    // Visually hidden styles
-    // https://moderncss.dev/pure-css-custom-styled-radio-buttons/
-    appearance: 'none',
-    backgroundColor: 'transparent',
-    margin: 0,
-
-    cursor: 'pointer',
-    outline: 'none',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    zIndex: 1,
-    width: '100%',
-    height: '100%',
-    borderRadius: '50%',
-    display: 'grid',
-    placeContent: 'center',
-    color: colors.cyan400,
-    '&:before': {
-      content: '""',
-      width: 14,
-      height: 14,
-      borderRadius: '50%',
-      transform: 'scale(0)',
-      transition: 'transform 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-      boxShadow: `inset 1em 1em currentColor`,
-    },
-    '&:checked:before': {
-      transform: 'scale(1)',
-    },
-    '&:disabled': {
-      cursor: 'auto',
-      color: colors.grey300,
-    },
-  };
-});
 
 /**
  * The `RadioItem` should be used within a `RadioGroup` component.
@@ -83,7 +44,12 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
     const outerRingColor = getOuterRingColor();
 
     return (
-      <Box {...focusProps} display="flex" alignItems="flex-start" sx={{ cursor: 'pointer', ...sx }}>
+      <Box
+        {...focusProps}
+        display="flex"
+        alignItems="flex-start"
+        sx={{ cursor: isDisabled ? undefined : 'pointer', ...sx }}
+      >
         <Box
           position="relative"
           width={40}
@@ -99,12 +65,11 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
             transitionProperty: 'background-color, color',
             '&:hover': {
               backgroundColor: isDisabled ? 'transparent' : colors.cyan100,
-              color: isDisabled ? colors.grey300 : colors.cyan400,
+              color: isDisabled ? colors.grey300 : isSelected ? colors.cyan200 : colors.cyan500,
             },
           }}
         >
           <RadioInput ref={ref} {...fieldProps} {...inputProps} aria-describedby={descriptionId} />
-
           <Box
             component="span"
             position="absolute"
