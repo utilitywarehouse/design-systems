@@ -2,7 +2,7 @@ import { createTheme, Theme as MuiTheme } from '@mui/material/styles';
 import { buttonThemeOverrides } from '../Button';
 import { textFieldThemeOverrides } from '../TextField';
 import { textLinkThemeOverrides } from '../TextLink';
-import { typographyThemeOverrides, baseTypographyTheme } from '../Typography';
+import { legacyTypographyThemeOverrides, baseTypographyTheme } from '../Typography';
 import { menuThemeOverrides } from '../Menu';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 import { htmlFontSize, pxToRem, spacing } from '../utils';
@@ -19,7 +19,7 @@ const theme: MuiTheme = createTheme({
     ...textFieldThemeOverrides,
     ...menuThemeOverrides,
     MuiTypography: {
-      styleOverrides: typographyThemeOverrides,
+      styleOverrides: legacyTypographyThemeOverrides,
     },
   },
 });
