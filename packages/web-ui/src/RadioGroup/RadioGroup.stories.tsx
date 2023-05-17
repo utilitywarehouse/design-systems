@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { RadioItem } from './RadioItem';
+import { RadioTile } from './RadioTile';
 import { RadioGroup } from './RadioGroup';
-import { Box } from '../Box';
+import { Stack } from '../Stack';
 import { useState } from 'react';
 
 const meta: Meta<typeof RadioGroup> = {
@@ -44,11 +45,18 @@ export const Workshop: Story = {
   },
   render: args => {
     return (
-      <RadioGroup {...args}>
-        <RadioItem value="1">One</RadioItem>
-        <RadioItem value="2">Two</RadioItem>
-        <RadioItem value="3">Three</RadioItem>
-      </RadioGroup>
+      <Stack spacing={8}>
+        <RadioGroup {...args} helperText="RadioGroup with RadioItem">
+          <RadioItem value="1">One</RadioItem>
+          <RadioItem value="2">Two</RadioItem>
+          <RadioItem value="3">Three</RadioItem>
+        </RadioGroup>
+        <RadioGroup {...args} helperText="RadioGroup with RadioTile">
+          <RadioTile value="1">One</RadioTile>
+          <RadioTile value="2">Two</RadioTile>
+          <RadioTile value="3">Three</RadioTile>
+        </RadioGroup>
+      </Stack>
     );
   },
   argTypes,
@@ -59,17 +67,30 @@ export const WithRadioItemHelperText: Story = {
   name: 'With RadioItem HelperText',
   render: args => {
     return (
-      <RadioGroup {...args}>
-        <RadioItem value="1" helperText="One helper text">
-          One
-        </RadioItem>
-        <RadioItem value="2" helperText="Two helper text">
-          Two
-        </RadioItem>
-        <RadioItem value="3" helperText="Three helper text">
-          Three
-        </RadioItem>
-      </RadioGroup>
+      <Stack spacing={8}>
+        <RadioGroup {...args}>
+          <RadioItem value="1" helperText="One helper text">
+            One
+          </RadioItem>
+          <RadioItem value="2" helperText="Two helper text">
+            Two
+          </RadioItem>
+          <RadioItem value="3" helperText="Three helper text">
+            Three
+          </RadioItem>
+        </RadioGroup>
+        <RadioGroup {...args}>
+          <RadioTile value="1" helperText="One helper text">
+            One
+          </RadioTile>
+          <RadioTile value="2" helperText="Two helper text">
+            Two
+          </RadioTile>
+          <RadioTile value="3" helperText="Three helper text">
+            Three
+          </RadioTile>
+        </RadioGroup>
+      </Stack>
     );
   },
   argTypes,

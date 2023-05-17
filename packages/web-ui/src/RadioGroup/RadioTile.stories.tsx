@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { RadioTile } from './RadioTile';
-import { Box } from '../Box';
 import { RadioGroup } from './RadioGroup';
 import { Stack } from '../Stack';
-import { Text, TextProps } from '../Text';
 
 const meta: Meta<typeof RadioTile> = {
   title: 'Web UI / Components / RadioGroup',
@@ -17,19 +15,39 @@ export const RadioTileStory: Story = {
   name: 'RadioTile',
   render: args => {
     return (
-      <Box bgcolor="white" padding={4}>
-        <Stack spacing={4}>
-          <RadioGroup value="2" label="Unchecked RadioItem">
-            <RadioTile {...args} />
-          </RadioGroup>
+      <Stack spacing={4}>
+        <RadioGroup value="2" label="Unchecked RadioItem">
+          <RadioTile {...args} />
+        </RadioGroup>
 
-          <RadioGroup defaultValue={args.value} disabled={args.disabled} label="Tile">
-            <RadioTile {...args} />
-            <RadioTile value="2">Two</RadioTile>
-            <RadioTile value="3">Three</RadioTile>
-          </RadioGroup>
-        </Stack>
-      </Box>
+        <RadioGroup defaultValue={args.value} label="Checked RadioItem">
+          <RadioTile {...args} />
+        </RadioGroup>
+      </Stack>
+    );
+  },
+  argTypes: {
+    value: { control: { type: 'text' } },
+    helperText: { control: { type: 'text' } },
+    children: { control: { type: 'text' } },
+    disabled: { control: { type: 'boolean' } },
+  },
+  args: {
+    value: '1',
+    disabled: false,
+    children: 'One',
+  },
+};
+
+export const RadioTileStoryWithOneLongLabel: Story = {
+  name: 'RadioTile with one long label',
+  render: args => {
+    return (
+      <RadioGroup value="2" label="Radio group">
+        <RadioTile value="1">One</RadioTile>
+        <RadioTile value="2">Twit Twoooooooooooooo</RadioTile>
+        <RadioTile value="3">Three</RadioTile>
+      </RadioGroup>
     );
   },
   argTypes: {

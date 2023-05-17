@@ -1,5 +1,16 @@
 import { colors } from '@utilitywarehouse/colour-system';
 import { styled } from '../theme';
+import type { ReactNode } from 'react';
+import { BoxProps } from '../Box';
+import type { AriaRadioProps } from 'react-aria';
+
+export interface RadioItemProps extends Omit<AriaRadioProps, 'isDisabled'> {
+  disabled?: AriaRadioProps['isDisabled'];
+  sx?: BoxProps['sx'];
+  helperText?: ReactNode;
+}
+
+export interface RadioTileProps extends RadioItemProps {}
 
 /**
  * RadioInput is an internal component used in the RadioItem & RadioTile

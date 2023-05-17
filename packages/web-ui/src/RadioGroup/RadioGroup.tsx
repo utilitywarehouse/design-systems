@@ -83,7 +83,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
       </FieldsetLegend>
       {helperText && helperTextPosition === 'top' ? <HelperText /> : null}
       <RadioGroupContext.Provider value={{ ...state, hasGroupHelperText: !!helperText }}>
-        <Stack spacing={2} direction={direction}>
+        <Stack spacing={2} direction={direction} width="fit-content">
           {children}
         </Stack>
       </RadioGroupContext.Provider>

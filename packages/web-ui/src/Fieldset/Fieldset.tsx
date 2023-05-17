@@ -11,15 +11,7 @@ export interface FieldsetProps extends FieldsetHTMLAttributes<HTMLFieldSetElemen
 export const Fieldset = forwardRef<HTMLLegendElement, FieldsetProps>(
   ({ children, ...props }, ref) => {
     return (
-      <Box
-        ref={ref}
-        component="fieldset"
-        width="fit-content"
-        border={0}
-        margin={0}
-        padding={0}
-        {...props}
-      >
+      <Box ref={ref} component="fieldset" border={0} margin={0} padding={0} {...props}>
         <Stack spacing={2}>{children}</Stack>
       </Box>
     );

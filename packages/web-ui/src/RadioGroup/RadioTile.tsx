@@ -1,20 +1,13 @@
 import { forwardRef, useContext } from 'react';
-import type { RefObject, ReactNode } from 'react';
-import { Box, BoxProps } from '../Box';
+import type { RefObject } from 'react';
+import { Box } from '../Box';
 import { useFocusRing, useRadio, useLabel, useId } from 'react-aria';
-import type { AriaRadioProps } from 'react-aria';
 import { RadioGroupContext } from './RadioGroup';
 import { FieldLabel } from '../FieldLabel';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { transition } from '../tokens';
-import { RadioInput } from './Radio';
-
-export interface RadioTileProps extends Omit<AriaRadioProps, 'isDisabled'> {
-  disabled?: AriaRadioProps['isDisabled'];
-  sx?: BoxProps['sx'];
-  helperText?: ReactNode;
-}
+import { RadioInput, RadioTileProps } from './Radio';
 
 /**
  * The `RadioTile` should be used within a `RadioGroup` component.

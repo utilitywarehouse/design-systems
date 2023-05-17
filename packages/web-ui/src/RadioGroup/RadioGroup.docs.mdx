@@ -1,6 +1,7 @@
 import { Meta, Description, Canvas, ArgTypes } from '@storybook/blocks';
 import * as RadioGroupStories from './RadioGroup.stories';
 import * as RadioItemStories from './RadioItem.stories';
+import * as RadioTileStories from './RadioTile.stories';
 import { Stack } from '../Stack';
 import { Box } from '../Box';
 import { Text } from '../Text';
@@ -161,5 +162,19 @@ you do not provide children, you must specify an `aria-label` for
 accessibility.
 
 ### RadioItem props
+
+<ArgTypes of={RadioItemStories} />
+
+## RadioTile
+
+<Description of={RadioTileStories} />
+
+### RadioTile accessibility
+
+The `RadioTile` is, by default, appropriately labelled using it's children, if
+you do not provide children, you must specify an `aria-label` for
+accessibility.
+
+### RadioTile props
 
 <ArgTypes of={RadioItemStories} />
