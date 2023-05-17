@@ -6,6 +6,8 @@ import { MDXProvider } from '@mdx-js/react';
 import { DocsContainer as StorybookDocsContainer } from '@storybook/blocks';
 import { Heading } from '../src/Heading';
 import { Text } from '../src/Text';
+import { Box } from '../src/Box';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 const components = {
   h1: props => <Heading component="h1" variant="h1" color="secondary" gutterBottom {...props} />,
@@ -59,6 +61,12 @@ const preview = {
   parameters: {
     backgrounds: {
       default: 'light',
+      values: [
+        {
+          name: 'light',
+          value: colorsCommon.brandWhite,
+        },
+      ],
     },
     viewport: {
       viewports: customerUiViewports,
@@ -77,7 +85,9 @@ const preview = {
   decorators: [
     Story => (
       <ThemeProvider>
-        <Story />
+        <Box padding={4}>
+          <Story />
+        </Box>
       </ThemeProvider>
     ),
   ],

@@ -12,14 +12,6 @@ export default meta;
 type Story = StoryObj<typeof TextField>;
 
 export const Workshop: Story = {
-  parameters: { layout: 'fullscreen' },
-  render: args => {
-    return (
-      <Box bgcolor={colorsCommon.brandWhite} display="flex" justifyContent="center" padding={6}>
-        <TextField {...args} />
-      </Box>
-    );
-  },
   argTypes: {
     status: {
       options: {
