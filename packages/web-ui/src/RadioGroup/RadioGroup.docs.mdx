@@ -123,6 +123,20 @@ submitted.
 
 <Canvas of={RadioGroupStories.ShowingError} sourceState="none" />
 
+## Width
+
+The width of the `RadioGroup` should be set by the parent layout, however it is
+possible to independently set the width of the children using `contentWidth`
+prop. This property is most useful when using the `RadioGroup` with the
+`RadioTile` component.
+
+By default it will set the width of the children to fit their content, however
+you can set it to a specific width, or to `100%` to take up the full width of
+the `RadioGroup`.
+
+This is a responsive property, so you are able to set different widths for
+different breakpoints.
+
 ## Controlled
 
 A controlled value can be provided using the value prop, which accepts a value

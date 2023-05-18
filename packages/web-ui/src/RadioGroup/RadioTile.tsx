@@ -37,6 +37,7 @@ export const RadioTile = forwardRef<HTMLInputElement, RadioTileProps>(
         borderColor={isDisabled ? colors.grey300 : isFocusVisible ? colors.cyan400 : colors.grey400}
         borderRadius="8px"
         padding={2}
+        flex={1}
         display="flex"
         color={
           isDisabled

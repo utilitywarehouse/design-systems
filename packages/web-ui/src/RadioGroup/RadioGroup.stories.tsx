@@ -26,14 +26,16 @@ const argTypes = {
   errorMessage: { control: { type: 'text' } },
   disabled: { control: { type: 'boolean' } },
   isReadOnly: { control: { type: 'boolean' } },
+  contentWidth: { control: { type: 'text' } },
 };
 const sharedArgs = {
-  defaultValue: '1',
-  errorMessage: 'There is an error',
-  disabled: false,
-  error: false,
   label: 'Radio group label',
   helperText: 'Helper text',
+  defaultValue: '1',
+  contentWidth: undefined,
+  disabled: false,
+  error: false,
+  errorMessage: 'There is an error',
 };
 
 export const Workshop: Story = {

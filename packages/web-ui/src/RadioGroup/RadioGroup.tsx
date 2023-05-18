@@ -33,6 +33,8 @@ export interface RadioGroupProps
   helperTextPosition?: 'top' | 'bottom';
   sx?: BoxProps['sx'];
   error?: boolean;
+  /** Set the width of the RadioGroup children, separate to the width of the entire RadioGroup. */
+  contentWidth?: BoxProps['width'];
 }
 
 /**
@@ -50,6 +52,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
     error,
     sx,
     disabled,
+    contentWidth = 'fit-content',
   } = props;
   const orientationMap: { [key: string]: AriaRadioGroupProps['orientation'] } = {
     column: 'vertical',
@@ -83,7 +86,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
       </FieldsetLegend>
       {helperText && helperTextPosition === 'top' ? <HelperText /> : null}
       <RadioGroupContext.Provider value={{ ...state, hasGroupHelperText: !!helperText }}>
-        <Stack spacing={2} direction={direction} width="fit-content">
+        <Stack spacing={2} direction={direction} minWidth="fit-content" width={contentWidth}>
           {children}
         </Stack>
       </RadioGroupContext.Provider>
