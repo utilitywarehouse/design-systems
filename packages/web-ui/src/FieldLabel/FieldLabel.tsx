@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import type { ReactNode, LabelHTMLAttributes } from 'react';
 import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';

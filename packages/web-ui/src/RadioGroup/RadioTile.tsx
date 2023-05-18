@@ -7,7 +7,9 @@ import { FieldLabel } from '../FieldLabel';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { transition } from '../tokens';
-import { RadioInput, RadioTileProps } from './Radio';
+import { RadioInput, RadioItemProps } from './RadioItem';
+
+export interface RadioTileProps extends RadioItemProps {}
 
 /**
  * The `RadioTile` should be used within a `RadioGroup` component.

@@ -41,7 +41,7 @@ export const RadioTileStory: Story = {
 
 export const RadioTileStoryWithOneLongLabel: Story = {
   name: 'RadioTile with one long label',
-  render: args => {
+  render: () => {
     return (
       <RadioGroup value="2" label="Radio group">
         <RadioTile value="1">One</RadioTile>
