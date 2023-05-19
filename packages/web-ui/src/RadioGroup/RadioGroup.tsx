@@ -4,11 +4,12 @@ import { createContext } from 'react';
 import type { ReactNode } from 'react';
 import type { AriaRadioGroupProps } from 'react-aria';
 import type { RadioGroupState } from 'react-stately';
-import { BoxProps } from '../Box';
+import { Box, BoxProps } from '../Box';
 import { FormHelperText } from '../FormHelperText';
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
-import { Stack } from '../Stack';
+import { Stack, StackProps } from '../Stack';
+import { breakpoints } from '../tokens';
 
 export type RadioGroupContextValue = RadioGroupState & { hasGroupHelperText: boolean };
 export const RadioGroupContext = createContext<RadioGroupContextValue>({
@@ -35,6 +36,8 @@ export interface RadioGroupProps
   error?: boolean;
   /** Set the width of the RadioGroup children, separate to the width of the entire RadioGroup. */
   contentWidth?: BoxProps['width'];
+  /** Display the RadioGRoup contents in a set number of columns */
+  columns?: StackProps['spacing'];
 }
 
 /**
@@ -53,6 +56,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
     sx,
     disabled,
     contentWidth = 'fit-content',
+    columns,
   } = props;
   const orientationMap: { [key: string]: AriaRadioGroupProps['orientation'] } = {
     column: 'vertical',
@@ -73,6 +77,25 @@ export const RadioGroup = (props: RadioGroupProps) => {
     state
   );
 
+  const convert = (c: string) => `repeat(${c}, minmax(10px, 1fr))`;
+  const getColumns = () => {
+    if (Array.isArray(columns)) {
+      return columns.map(s => convert(s as string));
+    }
+    if (typeof columns === 'object') {
+      return Object.keys(breakpoints).reduce(
+        (acc: { [key: string]: string }, breakpoint: string) => {
+          if (columns[breakpoint] !== null) {
+            acc[breakpoint] = convert(columns[breakpoint] as string);
+          }
+          return acc;
+        },
+        {}
+      );
+    }
+    return convert(columns as string);
+  };
+
   const HelperText = () => (
     <FormHelperText {...descriptionProps} disabled={disabled}>
       {helperText}
@@ -86,9 +109,21 @@ export const RadioGroup = (props: RadioGroupProps) => {
       </FieldsetLegend>
       {helperText && helperTextPosition === 'top' ? <HelperText /> : null}
       <RadioGroupContext.Provider value={{ ...state, hasGroupHelperText: !!helperText }}>
-        <Stack spacing={2} direction={direction} minWidth="fit-content" width={contentWidth}>
-          {children}
-        </Stack>
+        {!!columns ? (
+          <Box
+            display="grid"
+            gap={2}
+            gridTemplateColumns={getColumns()}
+            minWidth="fit-content"
+            width={contentWidth}
+          >
+            {children}
+          </Box>
+        ) : (
+          <Stack spacing={2} direction={direction} minWidth="fit-content" width={contentWidth}>
+            {children}
+          </Stack>
+        )}
       </RadioGroupContext.Provider>
       {helperText && helperTextPosition === 'bottom' ? <HelperText /> : null}
       {errorMessage && error ? (

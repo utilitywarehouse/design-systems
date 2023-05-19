@@ -11,7 +11,7 @@ import type { AriaRadioProps } from 'react-aria';
 import { styled } from '../theme';
 
 /**
- * RadioInput is an internal component used in the RadioItem & RadioTile
+ * RadioInput is an internal component used in the Radio & RadioTile
  * components. It is not intended for public use.
  *
  * The RadioInput renders the HTML `input` element, but visually hiding it.
@@ -61,16 +61,16 @@ export const RadioInput: any = styled('input')(() => {
   };
 });
 
-export interface RadioItemProps extends Omit<AriaRadioProps, 'isDisabled'> {
+export interface RadioProps extends Omit<AriaRadioProps, 'isDisabled'> {
   disabled?: AriaRadioProps['isDisabled'];
   sx?: BoxProps['sx'];
   helperText?: ReactNode;
 }
 
 /**
- * The `RadioItem` should be used within a `RadioGroup` component.
+ * The `Radio` should be used within a `RadioGroup` component.
  */
-export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ sx, children, helperText, disabled, ...props }, ref) => {
     const { hasGroupHelperText, ...state } = useContext(RadioGroupContext);
 
@@ -98,7 +98,6 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
       <Box
         {...focusProps}
         display="flex"
-        alignItems="flex-start"
         sx={{ cursor: isDisabled ? undefined : 'pointer', ...sx }}
       >
         <Box
@@ -153,4 +152,4 @@ export const RadioItem = forwardRef<HTMLInputElement, RadioItemProps>(
   }
 );
 
-RadioItem.displayName = 'RadioItem';
+Radio.displayName = 'Radio';

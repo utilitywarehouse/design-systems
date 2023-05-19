@@ -1,6 +1,6 @@
 import { Meta, Description, Canvas, ArgTypes } from '@storybook/blocks';
 import * as RadioGroupStories from './RadioGroup.stories';
-import * as RadioItemStories from './RadioItem.stories';
+import * as RadioStories from './Radio.stories';
 import * as RadioTileStories from './RadioTile.stories';
 import { Stack } from '../Stack';
 import { Box } from '../Box';
@@ -16,11 +16,12 @@ import { Divider } from '@mui/material';
 - [Helper text](#helper-text)
 - [Error message](#error-message)
 - [Width](#width)
+- [Columns](#columns)
 - [Controlled](#controlled)
 - [RadioGroup props](#radiogroup-props)
-- [RadioItem](#radioitem)
-  - [RadioItem accessibility](#radioitem-accessibility)
-  - [RadioItem props](#radioitem-props)
+- [Radio](#radio)
+  - [Radio accessibility](#radio-accessibility)
+  - [Radio props](#radio-props)
 - [RadioTile](#radiotile)
   - [RadioTile accessibility](#radiotile-accessibility)
   - [RadioTile props](#radiotile-props)
@@ -33,15 +34,15 @@ import { Divider } from '@mui/material';
   source={{
     code: `
 <RadioGroup defaultValue={1} label="Label" helperText="RadioGroup Helper text">
-  <RadioItem value="1" helperText="One helper text">
+  <Radio value="1" helperText="One helper text">
     One
-  </RadioItem>
-  <RadioItem value="2" helperText="Two helper text">
+  </Radio>
+  <Radio value="2" helperText="Two helper text">
     Two
-  </RadioItem>
-  <RadioItem value="3" helperText="Three helper text">
+  </Radio>
+  <Radio value="3" helperText="Three helper text">
     Three
-  </RadioItem>
+  </Radio>
 </RadioGroup>
 `,
   }}
@@ -59,7 +60,7 @@ Follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patte
 
 The necessary aria props, such as `aria-labelledby`, `aria-describedby` and
 `aria-errormessage` are handled internally, however you can pass these and
-other aria props, such as `aria-label`, to the `RadioGroup` and `RadioItem`
+other aria props, such as `aria-label`, to the `RadioGroup` and `Radio`
 components yourself if you need to.
 
 ### Keyboard interactions
@@ -117,7 +118,7 @@ either above or below the group's radio items. While the radio items can also
 display a helper text, these will not be displayed if the radio group has a
 helper text.
 
-<Canvas of={RadioGroupStories.WithRadioItemHelperText} />
+<Canvas of={RadioGroupStories.WithRadioHelperText} />
 
 ## Error message
 
@@ -141,11 +142,19 @@ the `RadioGroup`.
 This is a responsive property, so you are able to set different widths for
 different breakpoints.
 
+## Columns
+
+You can use the `columns` prop to display the RadioGroup's child elements in
+columns rather than a flat column or row, by setting the number of columns you
+need.
+
+<Canvas of={RadioGroupStories.Columns} />
+
 ## Controlled
 
 A controlled value can be provided using the value prop, which accepts a value
-corresponding with the value prop of each `RadioItem`. The onChange event is fired
-when the user selects a `RadioItem`.
+corresponding with the value prop of each `Radio`. The onChange event is fired
+when the user selects a `Radio`.
 
 <Canvas of={RadioGroupStories.Controlled} sourceState="shown"
 source={{
@@ -159,9 +168,9 @@ const [selected, setSelected] = useState('')
   onChange={setSelected}
   helperText={'The selected value is: ' + selected}
 >
-  <RadioItem value="1">One</RadioItem>
-  <RadioItem value="2">Two</RadioItem>
-  <RadioItem value="3">Three</RadioItem>
+  <Radio value="1">One</Radio>
+  <Radio value="2">Two</Radio>
+  <Radio value="3">Three</Radio>
 </RadioGroup>
 `, }} />
 
@@ -169,19 +178,19 @@ const [selected, setSelected] = useState('')
 
 <ArgTypes of={RadioGroupStories} />
 
-## RadioItem
+## Radio
 
-<Description of={RadioItemStories} />
+<Description of={RadioStories} />
 
-### RadioItem accessibility
+### Radio accessibility
 
-The `RadioItem` is, by default, appropriately labelled using it's children, if
+The `Radio` is, by default, appropriately labelled using it's children, if
 you do not provide children, you must specify an `aria-label` for
 accessibility.
 
-### RadioItem props
+### Radio props
 
-<ArgTypes of={RadioItemStories} />
+<ArgTypes of={RadioStories} />
 
 ## RadioTile
 
@@ -195,4 +204,4 @@ accessibility.
 
 ### RadioTile props
 
-<ArgTypes of={RadioItemStories} />
+<ArgTypes of={RadioStories} />

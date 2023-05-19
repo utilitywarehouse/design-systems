@@ -7,9 +7,9 @@ import { FieldLabel } from '../FieldLabel';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { transition } from '../tokens';
-import { RadioInput, RadioItemProps } from './RadioItem';
+import { RadioInput, RadioProps } from './Radio';
 
-export interface RadioTileProps extends RadioItemProps {}
+export interface RadioTileProps extends RadioProps {}
 
 /**
  * The `RadioTile` should be used within a `RadioGroup` component.
@@ -64,7 +64,7 @@ export const RadioTile = forwardRef<HTMLInputElement, RadioTileProps>(
           ...sx,
         }}
       >
-        <Box width={24} height={24} marginRight={1}>
+        <Box width={24} height={24}>
           <Box
             position="relative"
             marginBottom={helperText ? 0 : -1}
@@ -95,20 +95,20 @@ export const RadioTile = forwardRef<HTMLInputElement, RadioTileProps>(
             />
           </Box>
         </Box>
-        <Box>
-          {children ? (
+        {children ? (
+          <Box marginLeft={1}>
             <Box height={24} display="flex" alignItems="center">
               <FieldLabel component="span" {...labelProps} disabled={isDisabled}>
                 {children}
               </FieldLabel>
             </Box>
-          ) : null}
-          {!hasGroupHelperText && helperText ? (
-            <FormHelperText id={helperTextId} disabled={isDisabled}>
-              {helperText}
-            </FormHelperText>
-          ) : null}
-        </Box>
+            {!hasGroupHelperText && helperText ? (
+              <FormHelperText id={helperTextId} disabled={isDisabled}>
+                {helperText}
+              </FormHelperText>
+            ) : null}
+          </Box>
+        ) : null}
       </Box>
     );
   }

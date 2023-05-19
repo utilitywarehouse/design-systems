@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { RadioItem } from './RadioItem';
+import { Radio } from './Radio';
 import { RadioTile } from './RadioTile';
 import { RadioGroup } from './RadioGroup';
 import { Stack } from '../Stack';
@@ -27,6 +27,7 @@ const argTypes = {
   disabled: { control: { type: 'boolean' } },
   isReadOnly: { control: { type: 'boolean' } },
   contentWidth: { control: { type: 'text' } },
+  columns: { control: { type: 'number' } },
 };
 const sharedArgs = {
   label: 'Radio group label',
@@ -39,6 +40,7 @@ const sharedArgs = {
 };
 
 export const Workshop: Story = {
+  name: 'RadioGroup',
   parameters: {
     design: {
       type: 'figma',
@@ -48,10 +50,10 @@ export const Workshop: Story = {
   render: args => {
     return (
       <Stack spacing={8}>
-        <RadioGroup {...args} helperText="RadioGroup with RadioItem">
-          <RadioItem value="1">One</RadioItem>
-          <RadioItem value="2">Two</RadioItem>
-          <RadioItem value="3">Three</RadioItem>
+        <RadioGroup {...args} helperText="RadioGroup with Radio">
+          <Radio value="1">One</Radio>
+          <Radio value="2">Two</Radio>
+          <Radio value="3">Three</Radio>
         </RadioGroup>
         <RadioGroup {...args} helperText="RadioGroup with RadioTile">
           <RadioTile value="1">One</RadioTile>
@@ -65,21 +67,21 @@ export const Workshop: Story = {
   args: sharedArgs,
 };
 
-export const WithRadioItemHelperText: Story = {
-  name: 'With RadioItem HelperText',
+export const WithRadioHelperText: Story = {
+  name: 'With Radio HelperText',
   render: args => {
     return (
       <Stack spacing={8}>
         <RadioGroup {...args}>
-          <RadioItem value="1" helperText="One helper text">
+          <Radio value="1" helperText="One helper text">
             One
-          </RadioItem>
-          <RadioItem value="2" helperText="Two helper text">
+          </Radio>
+          <Radio value="2" helperText="Two helper text">
             Two
-          </RadioItem>
-          <RadioItem value="3" helperText="Three helper text">
+          </Radio>
+          <Radio value="3" helperText="Three helper text">
             Three
-          </RadioItem>
+          </Radio>
         </RadioGroup>
         <RadioGroup {...args}>
           <RadioTile value="1" helperText="One helper text">
@@ -115,9 +117,9 @@ export const Controlled: Story = {
         onChange={setSelected}
         helperText={`The selected value is: ${selected}`}
       >
-        <RadioItem value="1">One</RadioItem>
-        <RadioItem value="2">Two</RadioItem>
-        <RadioItem value="3">Three</RadioItem>
+        <Radio value="1">One</Radio>
+        <Radio value="2">Two</Radio>
+        <Radio value="3">Three</Radio>
       </RadioGroup>
     );
   },
@@ -135,12 +137,30 @@ export const ShowingError: Story = {
   render: args => {
     return (
       <RadioGroup {...args}>
-        <RadioItem value="1">One</RadioItem>
-        <RadioItem value="2">Two</RadioItem>
-        <RadioItem value="3">Three</RadioItem>
+        <Radio value="1">One</Radio>
+        <Radio value="2">Two</Radio>
+        <Radio value="3">Three</Radio>
       </RadioGroup>
     );
   },
   argTypes,
   args: { ...sharedArgs, error: true, errorMessage: 'Radio group error message' },
+};
+
+export const Columns: Story = {
+  name: 'RadioGroup columns',
+  render: args => {
+    return (
+      <RadioGroup {...args} label="RadioGroup with columns">
+        <RadioTile value="1">One</RadioTile>
+        <RadioTile value="2">Two</RadioTile>
+        <RadioTile value="3">Three</RadioTile>
+        <RadioTile value="4">Four</RadioTile>
+        <RadioTile value="5">Five</RadioTile>
+        <RadioTile value="6">Six</RadioTile>
+      </RadioGroup>
+    );
+  },
+  argTypes,
+  args: { columns: 2, ...sharedArgs },
 };

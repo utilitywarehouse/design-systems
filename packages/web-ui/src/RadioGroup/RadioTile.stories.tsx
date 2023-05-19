@@ -16,11 +16,11 @@ export const RadioTileStory: Story = {
   render: args => {
     return (
       <Stack spacing={4}>
-        <RadioGroup value="2" label="Unchecked RadioItem">
+        <RadioGroup value="2" label="Unchecked RadioTile">
           <RadioTile {...args} />
         </RadioGroup>
 
-        <RadioGroup defaultValue={args.value} label="Checked RadioItem">
+        <RadioGroup defaultValue={args.value} label="Checked RadioTile">
           <RadioTile {...args} />
         </RadioGroup>
       </Stack>

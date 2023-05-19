@@ -1,30 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { RadioItem } from './RadioItem';
+import { Radio } from './Radio';
 import { Box } from '../Box';
 import { RadioGroup } from './RadioGroup';
 import { Stack } from '../Stack';
 import { Text, TextProps } from '../Text';
 
-const meta: Meta<typeof RadioItem> = {
+const meta: Meta<typeof Radio> = {
   title: 'Web UI / Components / RadioGroup',
-  component: RadioItem,
+  component: Radio,
 };
 
 export default meta;
-type Story = StoryObj<typeof RadioItem>;
+type Story = StoryObj<typeof Radio>;
 
-export const RadioItemStory: Story = {
-  name: 'RadioItem',
+export const RadioStory: Story = {
+  name: 'Radio',
   render: args => {
     return (
       <Box bgcolor="white" padding={4}>
         <Stack spacing={4}>
-          <RadioGroup value="2" label="Unchecked RadioItem">
-            <RadioItem {...args} />
+          <RadioGroup value="2" label="Unchecked Radio">
+            <Radio {...args} />
           </RadioGroup>
 
-          <RadioGroup defaultValue={args.value} label="Checked RadioItem">
-            <RadioItem {...args} />
+          <RadioGroup defaultValue={args.value} label="Checked Radio">
+            <Radio {...args} />
           </RadioGroup>
         </Stack>
       </Box>
@@ -44,8 +44,8 @@ export const RadioItemStory: Story = {
   },
 };
 
-export const WithCustomRadioItemLabel: Story = {
-  name: 'Custom RadioItem label',
+export const WithCustomRadio: Story = {
+  name: 'Custom Radio label',
   render: () => {
     const CustomLabel = (props: { children: TextProps['children'] }) => (
       <Text {...props} variant="subtitle" component="span" bold />
@@ -53,12 +53,12 @@ export const WithCustomRadioItemLabel: Story = {
     return (
       <Box bgcolor="white" padding={4}>
         <RadioGroup defaultValue="1" label="Radio group label">
-          <RadioItem value="1">
+          <Radio value="1">
             <CustomLabel>One</CustomLabel>
-          </RadioItem>
-          <RadioItem value="2">
+          </Radio>
+          <Radio value="2">
             <CustomLabel>Two</CustomLabel>
-          </RadioItem>
+          </Radio>
         </RadioGroup>
       </Box>
     );
