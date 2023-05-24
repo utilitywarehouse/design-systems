@@ -5,7 +5,10 @@
 This change adds the following components to the library:
 
 - `RadioGroup`
-- `RadioItem`
+- `Radio`
+- `RadioTile`
+- `Fieldset`
+- `FieldsetLegend`
 - `FieldLabel`
 - `FormHelperText`
 
