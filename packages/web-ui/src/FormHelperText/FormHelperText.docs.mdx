@@ -1,0 +1,21 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as Stories from './FormHelperText.stories';
+
+<Meta of={Stories} />
+
+# FormHelperText
+
+<Canvas
+  of={Stories.Workshop}
+  source={{
+    code: `
+<FormHelperText>
+  Label
+</FormHelperText>
+`,
+  }}
+/>
+
+## Props
+
+<ArgTypes of={Stories} />

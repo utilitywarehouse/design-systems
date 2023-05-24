@@ -24,6 +24,7 @@ export const breakpoints = {
 export type Breakpoints = typeof breakpoints;
 
 export const transitions = { duration: 120, easingFunction: 'ease-out' };
+export const transition = `${transitions.duration}ms ${transitions.easingFunction}`;
 export type Transitions = typeof transitions;
 
 export const spacingBase = 8;

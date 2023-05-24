@@ -12,13 +12,13 @@ export interface CustomIconProps {
   iconProps?: React.SVGProps<SVGSVGElement>;
 }
 
-export interface IconTypeMap<D extends React.ElementType = DefaultIconComponent, P = {}> {
-  props: Pick<BoxProps<D, P>, 'sx' | 'component' | 'classes'> & CustomIconProps;
+export interface IconTypeMap<D extends React.ElementType = DefaultIconComponent> {
+  props: Pick<BoxProps<D>, 'sx' | 'component' | 'classes'> & CustomIconProps;
   defaultComponent: D;
 }
 
-export type IconProps<D extends React.ElementType = DefaultIconComponent, P = {}> = OverrideProps<
-  IconTypeMap<D, P>,
+export type IconProps<D extends React.ElementType = DefaultIconComponent> = OverrideProps<
+  IconTypeMap<D>,
   D
 >;
 
