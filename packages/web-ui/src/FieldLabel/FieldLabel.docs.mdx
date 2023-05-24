@@ -1,0 +1,21 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as Stories from './FieldLabel.stories';
+
+<Meta of={Stories} />
+
+# FieldLabel
+
+<Canvas
+  of={Stories.Workshop}
+  source={{
+    code: `
+<FieldLabel>
+  Label
+</FieldLabel>
+`,
+  }}
+/>
+
+## Props
+
+<ArgTypes of={Stories} />
