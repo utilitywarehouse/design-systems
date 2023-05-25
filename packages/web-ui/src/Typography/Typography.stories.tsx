@@ -2,8 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { headingVariantMapping } from '../Heading';
 import { Backgrounds } from '../storybook-utils';
-import { textVariantMapping } from '../Text';
-import { Typography } from './Typography';
+import { textVariantMapping, Typography } from './Typography';
 
 const textVariants = Object.keys(textVariantMapping);
 const headingVariants = Object.keys(headingVariantMapping);
