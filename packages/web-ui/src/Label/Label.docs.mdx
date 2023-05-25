@@ -1,17 +1,20 @@
 import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
-import * as Stories from './FieldLabel.stories';
+import * as Stories from './Label.stories';
 
 <Meta of={Stories} />
 
-# FieldLabel
+# Label
+
+> This component is only required when building a custom field that isn’t
+> provided by UW Web UI.
 
 <Canvas
   of={Stories.Workshop}
   source={{
     code: `
-<FieldLabel>
+<Label>
   Label
-</FieldLabel>
+</Label>
 `,
   }}
 />

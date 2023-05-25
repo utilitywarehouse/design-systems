@@ -3,7 +3,7 @@ import type { RefObject } from 'react';
 import { Box } from '../Box';
 import { useFocusRing, useRadio, useLabel, useId } from 'react-aria';
 import { RadioGroupContext } from './RadioGroup';
-import { FieldLabel } from '../FieldLabel';
+import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { transition } from '../tokens';
@@ -98,9 +98,9 @@ export const RadioTile = forwardRef<HTMLInputElement, RadioTileProps>(
         {children ? (
           <Box marginLeft={1}>
             <Box height={24} display="flex" alignItems="center">
-              <FieldLabel component="span" {...labelProps} disabled={isDisabled}>
+              <Label component="span" {...labelProps} disabled={isDisabled} nested>
                 {children}
-              </FieldLabel>
+              </Label>
             </Box>
             {!hasGroupHelperText && helperText ? (
               <FormHelperText id={helperTextId} disabled={isDisabled}>

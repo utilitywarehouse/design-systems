@@ -7,7 +7,7 @@ export * from './types';
 export * from './Background';
 export * from './Box';
 export * from './Button';
-export * from './FieldLabel';
+export * from './Label';
 export * from './Fieldset';
 export * from './FieldsetLegend';
 export * from './FormHelperText';

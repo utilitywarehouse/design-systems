@@ -3,7 +3,7 @@ import type { RefObject, ReactNode } from 'react';
 import { Box, BoxProps } from '../Box';
 import { useFocusRing, useRadio, useLabel, useId } from 'react-aria';
 import { RadioGroupContext } from './RadioGroup';
-import { FieldLabel } from '../FieldLabel';
+import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { transition } from '../tokens';
@@ -136,9 +136,9 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <Box>
           {children ? (
             <Box height={24} display="flex" alignItems="center">
-              <FieldLabel {...labelProps} disabled={isDisabled}>
+              <Label {...labelProps} disabled={isDisabled} nested>
                 {children}
-              </FieldLabel>
+              </Label>
             </Box>
           ) : null}
           {!hasGroupHelperText && helperText ? (
