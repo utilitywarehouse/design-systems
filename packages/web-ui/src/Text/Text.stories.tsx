@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
-import { Text, TextProps, textVariantMapping } from './Text';
+import { Text } from './Text';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-
-const variants = Object.keys(textVariantMapping);
 
 const meta: Meta<typeof Text> = {
   title: 'Web UI / Components / Text',
@@ -13,14 +11,16 @@ const meta: Meta<typeof Text> = {
 export default meta;
 type Story = StoryObj<typeof Text>;
 
+const sizes = ['lg', 'md', 'sm', 'xs'] as const;
+
 export const KitchenSink: Story = {
   parameters: { controls: { hideNoControlsWarning: true } },
   render: () => {
     return (
-      <Stack spacing={4}>
-        {variants.map(v => (
-          <Text key={v} component="span" variant={v as TextProps['variant']}>
-            Hamburgefons
+      <Stack spacing={1}>
+        {sizes.map(size => (
+          <Text key={size} size={size}>
+            Text size {size}
           </Text>
         ))}
       </Stack>
@@ -49,8 +49,8 @@ export const Workshop: Story = {
         type: 'text',
       },
     },
-    variant: {
-      options: variants,
+    size: {
+      options: sizes,
       control: {
         type: 'radio',
       },
@@ -68,40 +68,28 @@ export const Workshop: Story = {
       },
     },
     bold: { control: { type: 'boolean' } },
-    gutterBottom: { control: { type: 'boolean' } },
-    paragraph: { control: { type: 'boolean' } },
+    align: { control: { type: 'text' } },
     noWrap: { control: { type: 'boolean' } },
   },
   args: {
     children: 'hamburgefons',
-    variant: 'body',
+    size: 'md',
     component: 'span',
     color: undefined,
     bold: false,
     textTransform: 'capitalize',
-    gutterBottom: false,
-    paragraph: false,
-    noWrap: false,
   },
 };
 
-export const TextVariants: Story = {
-  name: 'Variants',
+export const TextSizes: Story = {
+  name: 'Sizes',
   render: () => {
     return (
       <Stack spacing={1}>
-        <Text component="span" variant="subtitle">
-          subtitle
-        </Text>
-        <Text component="span" variant="body">
-          body
-        </Text>
-        <Text component="span" variant="legalNote">
-          legalNote
-        </Text>
-        <Text component="span" variant="caption">
-          caption
-        </Text>
+        <Text size="lg">hamburgefons (lg)</Text>
+        <Text size="md">hamburgefons (md)</Text>
+        <Text size="sm">hamburgefons (sm)</Text>
+        <Text size="xs">hamburgefons (xs)</Text>
       </Stack>
     );
   },

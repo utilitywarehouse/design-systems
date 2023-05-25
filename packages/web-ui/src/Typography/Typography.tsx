@@ -4,9 +4,16 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import { Heading, HeadingProps, headingVariantMapping } from '../Heading';
-import { Text, TextProps, textVariantMapping } from '../Text';
+import { Text, TextProps } from '../Text';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { dataAttributes } from '../utils';
+
+export const textVariantMapping: Record<string, string> = {
+  subtitle: 'p',
+  body: 'p',
+  legalNote: 'p',
+  caption: 'span',
+};
 
 export type DefaultTypographyComponent = 'p';
 
