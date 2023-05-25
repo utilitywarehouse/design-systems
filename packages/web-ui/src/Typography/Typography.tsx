@@ -62,10 +62,16 @@ export const Typography = forwardRef(function Typography(
           [`data-${dataAttributes[getLegacyColor(color)]}`]: true,
         }
       : {};
+
+    const variantSizeMapping: { [key: string]: TextProps['size'] } = {
+      caption: 'xs',
+      legalNote: 'sm',
+      body: 'md',
+      subtitle: 'lg',
+    };
     return (
       <Text
-        ref={ref}
-        variant={variant as TextProps['variant']}
+        size={variantSizeMapping[variant]}
         component={component || 'p'}
         {...props}
         {...dataAttributeProps}

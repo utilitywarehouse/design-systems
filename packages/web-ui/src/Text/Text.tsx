@@ -29,7 +29,7 @@ export type TextProps = Pick<BoxProps, 'sx' | 'component' | 'children'> &
 export const Text = ({
   color = colorsCommon.brandMidnight,
   bold = false,
-  component = 'span',
+  component = 'p',
   size = 'md',
   align,
   noWrap,
