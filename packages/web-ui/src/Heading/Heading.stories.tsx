@@ -16,7 +16,7 @@ const sizes = ['xl', 'lg', 'md', 'sm', 'xs'] as const;
 export const KitchenSink: Story = {
   render: () => {
     return (
-      <Stack spacing={4}>
+      <Stack spacing={1}>
         {sizes.map(size => (
           <Heading key={size} size={size}>
             Heading size {size}
