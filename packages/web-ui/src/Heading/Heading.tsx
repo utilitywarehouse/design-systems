@@ -3,59 +3,92 @@ import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/mater
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import type { SystemProps } from '../types';
+import { Box, BoxProps } from '../Box';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { fonts, fontWeights } from '../tokens';
+import { pxToRem } from '../utils';
 
-export type DefaultHeadingComponent = 'h2';
-
-export const headingVariantMapping: Record<string, string> = {
-  displayHeading: 'h1',
-  h1: 'h1',
-  h2: 'h2',
-  h3: 'h3',
-  h4: 'h4',
-};
-
-export interface CustomHeadingProps {
-  /**
-   * Applies the theme typography styles.
-   * @default h2
-   */
-  variant: 'displayHeading' | 'h1' | 'h2' | 'h3' | 'h4';
-  /**
-   * The component used for the root node. Either a string to use a HTML element or a component.
-   */
-  component: React.ElementType;
-  /**
-   * Set the text color. It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
-   * @default colorsCommon.brandPrimaryPurple
-   */
-  color?: string;
-  /**
-   * Set the text-transform property on the component.
-   */
-  textTransform?: MuiTypographyProps['textTransform'];
-}
-
-export interface HeadingTypeMap<D extends React.ElementType = DefaultHeadingComponent, P = {}> {
-  props: CustomHeadingProps & Omit<MuiTypographyProps<D, P>, 'variant' | SystemProps>;
-  defaultComponent: D;
-}
-
-export type HeadingProps<
-  D extends React.ElementType = DefaultHeadingComponent,
-  P = {}
-> = OverrideProps<HeadingTypeMap<D, P>, D>;
+export type HeadingProps = Pick<BoxProps, 'sx' | 'component' | 'children'> &
+  Pick<MuiTypographyProps, 'textTransform' | 'align' | 'noWrap'> & {
+    /**
+     * Applies the typography size styles.
+     * @default md
+     */
+    size?: 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+    /**
+     * Set the text color. It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
+     * @default colorsCommon.brandPrimaryPurple
+     */
+    color?: string;
+  };
 
 /**
  * Heading renders the primary UW font, to be used for heading-level typography.
  */
-export const Heading = forwardRef(function Heading({ color, variant = 'h2', ...props }, ref) {
+export const Heading = ({
+  color = colorsCommon.brandPrimaryPurple,
+  component = 'h2',
+  size = 'md',
+  align,
+  noWrap,
+  sx,
+  ...props
+}: HeadingProps) => {
+  const fontFamily = fonts.primary;
+  const fontWeight = fontWeights.primary;
+  const fontSizes = {
+    xs: {
+      mobile: pxToRem(18),
+      desktop: pxToRem(20),
+    },
+    sm: {
+      mobile: pxToRem(22),
+      desktop: pxToRem(24),
+    },
+    md: {
+      mobile: pxToRem(28),
+      desktop: pxToRem(32),
+    },
+    lg: {
+      mobile: pxToRem(32),
+      desktop: pxToRem(42),
+    },
+    xl: {
+      mobile: pxToRem(42),
+      desktop: pxToRem(64),
+    },
+  };
+  const lineHeights = {
+    xs: 1.5,
+    sm: 1.5,
+    md: {
+      mobile: 1.2,
+      desktop: 1.5,
+    },
+    lg: 1.2,
+    xl: 1,
+  };
+
+  const noWrapStyles = {
+    ...sx,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  };
+
   return (
-    <MuiTypography
-      ref={ref}
-      variantMapping={headingVariantMapping}
-      variant={variant}
+    <Box
       color={color}
+      component={component}
+      fontFamily={fontFamily}
+      fontSize={fontSizes[size]}
+      fontWeight={fontWeight}
+      lineHeight={lineHeights[size]}
+      textAlign={align}
+      sx={noWrap ? noWrapStyles : sx}
       {...props}
     />
   );
-}) as OverridableComponent<HeadingTypeMap>;
+};
+
+Heading.displayName = 'Heading';

@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
-import { Heading, HeadingProps, headingVariantMapping } from './Heading';
+import { Heading, HeadingProps } from './Heading';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-
-const variants = Object.keys(headingVariantMapping);
 
 const meta: Meta<typeof Heading> = {
   title: 'Web UI / Components / Heading',
@@ -13,17 +11,15 @@ const meta: Meta<typeof Heading> = {
 export default meta;
 type Story = StoryObj<typeof Heading>;
 
+const sizes = ['xl', 'lg', 'md', 'sm', 'xs'] as const;
+
 export const KitchenSink: Story = {
   render: () => {
     return (
       <Stack spacing={4}>
-        {variants.map(v => (
-          <Heading
-            key={v}
-            variant={v as HeadingProps['variant']}
-            component={headingVariantMapping[v] as React.ElementType<any>}
-          >
-            Hamburgefons
+        {sizes.map(size => (
+          <Heading key={size} size={size}>
+            Heading size {size}
           </Heading>
         ))}
       </Stack>
@@ -52,8 +48,8 @@ export const Workshop: Story = {
         type: 'text',
       },
     },
-    variant: {
-      options: variants,
+    size: {
+      options: sizes,
       control: {
         type: 'radio',
       },
@@ -73,36 +69,24 @@ export const Workshop: Story = {
   },
   args: {
     children: 'hamburgefons',
-    variant: 'h2',
+    size: 'md',
     component: 'h2',
     color: undefined,
     textTransform: 'capitalize',
-    gutterBottom: false,
-    paragraph: false,
     noWrap: false,
   },
 };
 
 export const HeadingVariants: Story = {
-  name: 'Variants',
+  name: 'Sizes',
   render: () => {
     return (
       <Stack spacing={1}>
-        <Heading component="h1" variant="displayHeading">
-          displayHeading
-        </Heading>
-        <Heading component="h1" variant="h1">
-          h1
-        </Heading>
-        <Heading component="h2" variant="h2">
-          h2
-        </Heading>
-        <Heading component="h3" variant="h3">
-          h3
-        </Heading>
-        <Heading component="h4" variant="h4">
-          h4
-        </Heading>
+        <Heading size="xl">hamburgefons (xl)</Heading>
+        <Heading size="lg">hamburgefons (lg)</Heading>
+        <Heading size="md">hamburgefons (md)</Heading>
+        <Heading size="sm">hamburgefons (sm)</Heading>
+        <Heading size="xs">hamburgefons (xs)</Heading>
       </Stack>
     );
   },
