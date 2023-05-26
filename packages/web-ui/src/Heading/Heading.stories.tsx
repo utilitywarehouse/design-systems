@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
-import { Heading, HeadingProps } from './Heading';
+import { Heading } from './Heading';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof Heading> = {
