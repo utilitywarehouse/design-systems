@@ -3,8 +3,6 @@ import MuiTypography from '@mui/material/Typography';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
-import { Heading, HeadingProps } from '../Heading';
-import { Text, TextProps } from '../Text';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { dataAttributes } from '../utils';
 
