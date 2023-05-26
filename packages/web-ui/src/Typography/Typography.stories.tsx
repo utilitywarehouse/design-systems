@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { headingVariantMapping } from '../Heading';
 import { Backgrounds } from '../storybook-utils';
-import { textVariantMapping, Typography } from './Typography';
+import { headingVariantMapping, textVariantMapping, Typography } from './Typography';
 
 const textVariants = Object.keys(textVariantMapping);
 const headingVariants = Object.keys(headingVariantMapping);
@@ -44,6 +43,7 @@ export const Workshop: Story = {
 
 export const LegacyVariants: Story = {
   name: 'Deprecated Legacy Variants',
+  parameters: { layout: 'fullscreen' },
   render: args => (
     <Backgrounds>
       <Typography {...args} />
