@@ -77,7 +77,7 @@ export const Workshop: Story = {
   },
 };
 
-export const HeadingVariants: Story = {
+export const HeadingSizes: Story = {
   name: 'Sizes',
   render: () => {
     return (
