@@ -2,7 +2,7 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
 import { dataAttributes, mediaQueries, pxToRem } from '../utils';
 
-const { legacy, secondary, inverse, success, error } = dataAttributes;
+const { legacy, primary, secondary, inverse, success, error } = dataAttributes;
 
 const baseTextStyles = {
   fontFamily: fonts.secondary,
@@ -11,6 +11,9 @@ const baseTextStyles = {
 };
 
 const legacyTextStyles = {
+  [`&[data-${legacy}=true][data-${primary}=true]`]: {
+    color: colorsCommon.brandMidnight,
+  },
   [`[data-${inverse}=true] &`]: {
     [`&[data-${legacy}=true]`]: {
       color: colorsCommon.brandWhite,
@@ -36,8 +39,14 @@ const baseHeadingStyles = {
 };
 
 const legacyHeadingStyles = {
+  [`&[data-${legacy}=true][data-${primary}=true]`]: {
+    color: colorsCommon.brandPrimaryPurple,
+  },
   [`&[data-${legacy}=true][data-${secondary}=true]`]: {
     color: colorsCommon.brandMidnight,
+  },
+  [`&[data-${legacy}=true][data-${error}=true]`]: {
+    color: colorsCommon.brandPrimaryPurple,
   },
   [`[data-${inverse}=true] &`]: {
     [`&[data-${legacy}=true]`]: {
