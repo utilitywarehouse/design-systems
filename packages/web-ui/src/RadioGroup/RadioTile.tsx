@@ -36,7 +36,7 @@ export const RadioTile = forwardRef<HTMLInputElement, RadioTileProps>(
         component="label"
         {...focusProps}
         border="2px solid"
-        borderColor={isDisabled ? colors.grey300 : isFocusVisible ? colors.cyan400 : colors.grey400}
+        borderColor={isDisabled ? colors.grey300 : isFocusVisible ? colors.cyan500 : colors.grey400}
         borderRadius="8px"
         padding={2}
         flex={1}
@@ -45,7 +45,7 @@ export const RadioTile = forwardRef<HTMLInputElement, RadioTileProps>(
           isDisabled
             ? colors.grey300
             : isSelected || isFocusVisible
-            ? colors.cyan400
+            ? colors.cyan500
             : colors.grey500
         }
         bgcolor={isFocusVisible ? colors.cyan100 : colorsCommon.brandWhite}
@@ -57,8 +57,8 @@ export const RadioTile = forwardRef<HTMLInputElement, RadioTileProps>(
             isDisabled || isFocusVisible
               ? {}
               : {
-                  color: isSelected ? colors.cyan200 : colors.cyan500,
-                  borderColor: colors.cyan200,
+                  color: colors.cyan500,
+                  borderColor: colors.cyan500,
                   backgroundColor: colors.cyan75,
                 },
           ...sx,

@@ -41,7 +41,7 @@ export const RadioInput: any = styled('input')(() => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: colors.cyan400,
+    color: colors.cyan500,
     '&:before': {
       content: '""',
       width: 14,
@@ -89,7 +89,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
     const getOuterRingColor = () => {
       if (isDisabled) return colors.grey300;
-      if (isSelected || isFocusVisible) return colors.cyan400;
+      if (isSelected || isFocusVisible) return colors.cyan500;
       return colors.grey500;
     };
     const outerRingColor = getOuterRingColor();
@@ -109,13 +109,17 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           marginBottom={helperText ? 0 : -1}
           borderRadius="50%"
           color={outerRingColor}
-          bgcolor={isFocusVisible ? colors.cyan75 : undefined}
+          bgcolor={isFocusVisible ? colors.cyan100 : undefined}
           sx={{
             transition,
             transitionProperty: 'background-color, color',
             '&:hover': {
-              backgroundColor: isDisabled ? 'transparent' : colors.cyan100,
-              color: isDisabled ? colors.grey300 : isSelected ? colors.cyan200 : colors.cyan500,
+              backgroundColor: isDisabled
+                ? 'transparent'
+                : isFocusVisible
+                ? colors.cyan100
+                : colors.cyan75,
+              color: isDisabled ? colors.grey300 : colors.cyan500,
             },
           }}
         >
