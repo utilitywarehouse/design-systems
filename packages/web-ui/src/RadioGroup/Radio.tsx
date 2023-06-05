@@ -20,8 +20,6 @@ import { styled } from '../theme';
  * It then renders the internal filled circle shown when the radio is checked,
  * as well as the larger containing circle to support hover & focus styles.
  */
-// export const RadioInput = props => <Box component="input" />;
-
 export const RadioInput: any = styled('input')(() => {
   return {
     // visually hidden styles
