@@ -1,4 +1,5 @@
 import '@utilitywarehouse/fontsource';
+import { useEffect } from 'react';
 import { ThemeProvider } from '../src/ThemeProvider';
 import { breakpoints } from '../src/tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
@@ -8,6 +9,7 @@ import { Heading } from '../src/Heading';
 import { Text } from '../src/Text';
 import { Box } from '../src/Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { theme } from '../src/theme';
 
 const components = {
   h1: props => <Heading component="h1" variant="h1" gutterBottom {...props} />,
@@ -83,13 +85,32 @@ const preview = {
     },
   },
   decorators: [
-    Story => (
-      <ThemeProvider>
-        <Box padding={4}>
-          <Story />
-        </Box>
-      </ThemeProvider>
-    ),
+    Story => {
+      useEffect(() => {
+        if (typeof window !== 'undefined') {
+          console.log(
+            `%c
+░█▒█░█░░▒█░░░█░░▒█▒██▀░██▄░░░█▒█░█
+░▀▄█░▀▄▀▄▀▒░░▀▄▀▄▀░█▄▄▒█▄█▒░░▀▄█░█
+
+Tip: you can access the documentation \`theme\` object directly in the console.
+`,
+            `font-family:monospace;color:${colorsCommon.brandPrimaryPurple};font-size:16px;`
+          );
+          // Expose the theme as a global variable so people can play with it.
+          window.theme = theme;
+          console.log(window.theme);
+        }
+      }, [theme]);
+
+      return (
+        <ThemeProvider>
+          <Box padding={4}>
+            <Story />
+          </Box>
+        </ThemeProvider>
+      );
+    },
   ],
 };
 

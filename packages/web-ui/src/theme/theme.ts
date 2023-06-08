@@ -48,21 +48,5 @@ theme.palette = {
   ...customPalette,
 };
 
-const DEV =
-  typeof window !== 'undefined' &&
-  (!process.env.NODE_ENV || process.env.NODE_ENV === 'development');
-window.theme = theme;
-if (DEV) {
-  console.log(
-    `%c
-░█▒█░█░░▒█░░░█░░▒█▒██▀░██▄░░░█▒█░█
-░▀▄█░▀▄▀▄▀▒░░▀▄▀▄▀░█▄▄▒█▄█▒░░▀▄█░█
-
-Tip: you can access the documentation \`theme\` object directly in the console.
-`,
-    `font-family:monospace;color:${colorsCommon.brandPrimaryPurple};font-size:16px;`
-  );
-}
-
 export { theme };
 export type Theme = typeof theme;
