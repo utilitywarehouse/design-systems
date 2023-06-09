@@ -1,9 +1,9 @@
 // Hey, don't edit this file directly, it's been magically generated.
 /** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds. */
 export const purple50 = '#fbf6fd';
-/** Use it for text that goes on top of  Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
+/** This color replaces the use cases of lightTint. Use it for text that goes on top of  Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
 export const purple75 = '#f5eef9';
-/** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
+/** This color replaces the use cases of lightTint. Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
 export const purple100 = '#ede0f2';
 /** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
 export const purple200 = '#e2c7eb';
