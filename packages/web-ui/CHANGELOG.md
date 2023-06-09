@@ -1,5 +1,12 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.16
+
+### Patch Changes
+
+- [#77](https://github.com/utilitywarehouse/design-systems/pull/77) [`9cf662e`](https://github.com/utilitywarehouse/design-systems/commit/9cf662e5d71727840c3e8d4f8dba26db75d333bc) Thanks [@robphoenix](https://github.com/robphoenix)! - This change exports the hooks `useMediaQuery` & `useDeviceSize` to more easily
+  build responsive designs.
+
 ## 0.0.15
 
 ### Patch Changes
