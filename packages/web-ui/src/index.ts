@@ -1,9 +1,10 @@
 import './types/overrides';
 
+export { useMediaQuery } from '@mui/material';
+
 export * from './theme';
 export * from './tokens';
 export * from './types';
-export * from './hooks';
 /* components */
 export * from './Background';
 export * from './Box';
