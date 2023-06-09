@@ -1041,9 +1041,9 @@
         "scale": "purple",
         "step": "75",
         "name": "purple75",
-        "description": "Use it for text that goes on top of  Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
+        "description": "This color replaces the use cases of lightTint. Use it for text that goes on top of  Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
         "created_at": "2023-04-17T15:29:55.278Z",
-        "updated_at": "2023-04-18T15:03:52.402Z",
+        "updated_at": "2023-06-08T08:59:03.525Z",
         "value": "#f5eef9"
       },
       "purple100": {
@@ -1052,9 +1052,9 @@
         "scale": "purple",
         "step": "100",
         "name": "purple100",
-        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
+        "description": "This color replaces the use cases of lightTint. Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
         "created_at": "2023-04-17T15:29:55.273Z",
-        "updated_at": "2023-04-18T15:03:52.478Z",
+        "updated_at": "2023-06-08T08:59:03.536Z",
         "value": "#ede0f2"
       },
       "purple200": {
