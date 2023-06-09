@@ -3,7 +3,8 @@ import './types/overrides';
 export * from './theme';
 export * from './tokens';
 export * from './types';
-
+export * from './hooks';
+/* components */
 export * from './Background';
 export * from './Box';
 export * from './Button';
