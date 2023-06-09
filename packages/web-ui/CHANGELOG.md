@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.17
+
+### Patch Changes
+
+- [#79](https://github.com/utilitywarehouse/design-systems/pull/79) [`57d443c`](https://github.com/utilitywarehouse/design-systems/commit/57d443c95f3595860f09ee3d00ebca746c688cb5) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove confusing `useDeviceSize` hook, use `useMediaQuery` instead.
+
 ## 0.0.16
 
 ### Patch Changes
