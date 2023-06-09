@@ -8,18 +8,3 @@ import * as Stories from './hooks.stories';
 ## useMediaQuery
 
 This hook is directly export from `@mui/material`, please see [their documentation](https://mui.com/material-ui/react-use-media-query/).
-
-## useDeviceSize
-
-This hook is a convenience wrapper around `useMediaQuery`. It returns the
-`deviceSize` as one of `"mobile"`, `"tablet"`, `"desktop"` or `"wide"`, as well
-as the boolean values `isMobile`, `isTablet`, `isDesktop`, `isWide` which will
-return `true` depending on the viewport width.
-
-```tsx
-import { useDeviceSize } from '@utilitywarehouse/web-ui';
-
-const { deviceSize, isMobile, isTablet, isDesktop, isWide } = useDeviceSize();
-```
-
-<Canvas of={Stories.Workshop} sourceState="none" />
