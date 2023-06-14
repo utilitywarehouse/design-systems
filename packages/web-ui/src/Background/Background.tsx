@@ -20,7 +20,7 @@ export interface CustomBackgroundProps {
   /**
    * Set the background colour according to predefined theme
    */
-  background?: NeutralBackgroundColor | InverseBackgroundColor;
+  backgroundColor?: NeutralBackgroundColor | InverseBackgroundColor;
 }
 
 export type BackgroundProps<
@@ -34,17 +34,17 @@ export type BackgroundProps<
  * will change foreground colour depending on the parent background colour.
  * @deprecated
  */
-export const Background = forwardRef(function Background({ background, ...props }, ref) {
+export const Background = forwardRef(function Background({ backgroundColor, ...props }, ref) {
   console.warn(
     'The Background component is deprecated and will be removed in v1, please use Box instead.'
   );
-  const inverse = background ? isInverseBackgroundColor(background) : false;
+  const inverse = backgroundColor ? isInverseBackgroundColor(backgroundColor) : false;
   const dataAttributeProps = inverse ? { [`data-${dataAttributes.inverse}`]: true } : {};
 
   return (
     <MuiBox
       ref={ref}
-      bgcolor={background && backgroundColorsMapping[background]}
+      bgcolor={backgroundColor && backgroundColorsMapping[backgroundColor]}
       {...dataAttributeProps}
       {...props}
     />
