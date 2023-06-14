@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.19
+
+### Patch Changes
+
+- [`46dc943`](https://github.com/utilitywarehouse/design-systems/commit/46dc943deaaf1092a041846581a44e24827c51c2) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Background prop name
+
 ## 0.0.18
 
 ### Patch Changes
