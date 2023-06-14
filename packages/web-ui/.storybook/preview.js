@@ -9,7 +9,7 @@ import { Heading } from '../src/Heading';
 import { Text } from '../src/Text';
 import { Box } from '../src/Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { theme } from '../src/theme';
+import { useTheme } from '../src/theme';
 
 const components = {
   h1: props => <Heading component="h1" variant="h1" gutterBottom {...props} />,
@@ -59,6 +59,27 @@ const customerUiViewports = {
   ...INITIAL_VIEWPORTS,
 };
 
+const StoriesContainer = props => {
+  // TODO: get this working!
+  // const theme = useTheme();
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     console.log(
+  //       `%c
+  //   ░█▒█░█░░▒█░░░█░░▒█▒██▀░██▄░░░█▒█░█
+  //   ░▀▄█░▀▄▀▄▀▒░░▀▄▀▄▀░█▄▄▒█▄█▒░░▀▄█░█
+  //
+  //   Tip: you can access the documentation \`theme\` object directly in the console.
+  //   `,
+  //       `font-family:monospace;color:${colorsCommon.brandPrimaryPurple};font-size:16px;`
+  //     );
+  //     // Expose the theme as a global variable so people can play with it.
+  //     window.theme = theme;
+  //   }
+  // }, [theme]);
+  return <Box padding={4} {...props} />;
+};
+
 const preview = {
   parameters: {
     backgrounds: {
@@ -86,28 +107,11 @@ const preview = {
   },
   decorators: [
     Story => {
-      useEffect(() => {
-        if (typeof window !== 'undefined') {
-          console.log(
-            `%c
-░█▒█░█░░▒█░░░█░░▒█▒██▀░██▄░░░█▒█░█
-░▀▄█░▀▄▀▄▀▒░░▀▄▀▄▀░█▄▄▒█▄█▒░░▀▄█░█
-
-Tip: you can access the documentation \`theme\` object directly in the console.
-`,
-            `font-family:monospace;color:${colorsCommon.brandPrimaryPurple};font-size:16px;`
-          );
-          // Expose the theme as a global variable so people can play with it.
-          window.theme = theme;
-          console.log(window.theme);
-        }
-      }, [theme]);
-
       return (
         <ThemeProvider>
-          <Box padding={4}>
+          <StoriesContainer>
             <Story />
-          </Box>
+          </StoriesContainer>
         </ThemeProvider>
       );
     },
