@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.18
+
+### Patch Changes
+
+- [#81](https://github.com/utilitywarehouse/design-systems/pull/81) [`fb7a87c`](https://github.com/utilitywarehouse/design-systems/commit/fb7a87cf297498cb1631bbd015516158b9a25b71) Thanks [@robphoenix](https://github.com/robphoenix)! - This change sets the default theme for useMediaQuery
+
 ## 0.0.17
 
 ### Patch Changes
