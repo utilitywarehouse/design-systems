@@ -15,21 +15,21 @@ type Story = StoryObj<typeof Background>;
 
 export const Workshop: Story = {
   render: args => {
-    const hexValue = args.background ? backgroundColorsMapping[args.background] : '';
+    const hexValue = args.backgroundColor ? backgroundColorsMapping[args.backgroundColor] : '';
     return (
       <Background {...args}>
         {args.children ? (
           args.children
         ) : (
           <Heading component="h2" variant="h2">
-            {args.background} ({hexValue})
+            {args.backgroundColor} ({hexValue})
           </Heading>
         )}
       </Background>
     );
   },
   argTypes: {
-    background: {
+    backgroundColor: {
       options: backgroundColors,
       control: { type: 'radio' },
     },
@@ -37,7 +37,7 @@ export const Workshop: Story = {
   args: {
     component: 'div',
     children: '',
-    background: 'white',
+    backgroundColor: 'white',
     height: 300,
     display: 'flex',
     justifyContent: 'center',
@@ -50,27 +50,27 @@ export const Backgrounds = {
   name: 'Background colours',
   render: () => (
     <Stack spacing={0}>
-      <Background background="white" padding={2}>
+      <Background backgroundColor="white" padding={2}>
         <Typography variant="body" component="span">
           Typography on neutral background
         </Typography>
       </Background>
-      <Background background="whiteOwl" padding={2}>
+      <Background backgroundColor="whiteOwl" padding={2}>
         <Typography variant="body" component="span">
           Typography on neutral background
         </Typography>
       </Background>
-      <Background background="lightTint" padding={2}>
+      <Background backgroundColor="lightTint" padding={2}>
         <Typography variant="body" component="span">
           Typography on neutral background
         </Typography>
       </Background>
-      <Background background="purple" padding={2}>
+      <Background backgroundColor="purple" padding={2}>
         <Typography variant="body" component="span">
           Typography on inverse background
         </Typography>
       </Background>
-      <Background background="midnight" padding={2}>
+      <Background backgroundColor="midnight" padding={2}>
         <Typography variant="body" component="span">
           Typography on inverse background
         </Typography>

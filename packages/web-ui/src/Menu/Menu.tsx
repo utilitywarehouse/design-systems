@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import MuiMenu, { type MenuProps as MuiMenuProps } from '@mui/material/Menu';
-import { Background } from '../Background';
+import { Box } from '../Box';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 export interface MenuProps extends Omit<MuiMenuProps, 'ref'> {}
 
@@ -10,7 +11,7 @@ export const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu(
 ) {
   return (
     <MuiMenu ref={ref} {...props}>
-      <Background background="white">{children}</Background>
+      <Box bgcolor={colorsCommon.brandWhite}>{children}</Box>
     </MuiMenu>
   );
 });
