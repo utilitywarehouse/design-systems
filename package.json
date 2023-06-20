@@ -24,7 +24,7 @@
     "typescript": "^5.0.2"
   },
   "scripts": {
-    "setup": "corepack enable && corepack prepare pnpm@8.2.0 --activate",
+    "setup": "corepack enable && corepack prepare pnpm@8.6.3 --activate",
     "build": "turbo run build",
     "build:storybook": "turbo run --no-cache build:storybook",
     "generate": "turbo run generate && turbo run format",
@@ -42,7 +42,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "pnpm": "^8.2.0"
+    "pnpm": "^8.6.3"
   },
   "prettier": "@utilitywarehouse/prettier-config"
 }
