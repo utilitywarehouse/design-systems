@@ -1,3 +1,8 @@
+import { classNamePrefix } from '../src/utils';
+import { unstable_ClassNameGenerator as ClassNameGenerator } from '@mui/material/className';
+
+ClassNameGenerator.configure(componentName => componentName.replace('Mui', classNamePrefix));
+
 import '@utilitywarehouse/fontsource';
 import { ThemeProvider } from '../src/ThemeProvider';
 import { breakpoints } from '../src/tokens';
