@@ -1,7 +1,7 @@
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights, transitions } from '../tokens';
 import { Components } from '@mui/material/styles';
-import { dataAttributes, pxToRem, spacing } from '../utils';
+import { classNamePrefix, dataAttributes, pxToRem, spacing } from '../utils';
 
 const { success, multiline } = dataAttributes;
 
@@ -19,13 +19,13 @@ export const textFieldThemeOverrides: Components = {
         lineHeight: 1,
         marginBottom: spacing(1),
         color: colorsCommon.brandMidnight,
-        '&.Mui-focused': {
+        [`&.${classNamePrefix}-focused`]: {
           color: colorsCommon.brandMidnight,
         },
-        '&.Mui-disabled': {
+        [`&.${classNamePrefix}-disabled`]: {
           color: colors.grey700,
         },
-        '&.Mui-error': {
+        [`&.${classNamePrefix}-error`]: {
           color: colorsCommon.brandMidnight,
         },
       },
@@ -41,7 +41,7 @@ export const textFieldThemeOverrides: Components = {
         margin: 0,
         marginTop: spacing(1),
         color: colorsCommon.brandMidnight,
-        '&.Mui-error': {
+        [`&.${classNamePrefix}-error`]: {
           color: colors.red600,
         },
       },
@@ -73,7 +73,7 @@ export const textFieldThemeOverrides: Components = {
         ':hover': {
           backgroundColor: colorsCommon.brandWhite,
           borderBottomColor: colors.cyan600,
-          '&:not(.Mui-disabled)': {
+          [`&:not(.${classNamePrefix}-disabled)`]: {
             '&:before': {
               borderWidth: 2,
               transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
@@ -91,11 +91,11 @@ export const textFieldThemeOverrides: Components = {
           borderWidth: 2,
           transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
         },
-        '&.Mui-focused': {
+        [`&.${classNamePrefix}-focused`]: {
           backgroundColor: colorsCommon.brandWhite,
           borderColor: colors.cyan600,
         },
-        '&.Mui-disabled': {
+        [`&.${classNamePrefix}-disabled`]: {
           color: colorsCommon.brandMidnight,
           backgroundColor: colors.grey50,
           borderColor: colors.grey100,
@@ -109,11 +109,11 @@ export const textFieldThemeOverrides: Components = {
             borderColor: colors.grey600,
           },
         },
-        '&.Mui-error': {
-          '&.Mui-focused': {
+        [`&.${classNamePrefix}-error`]: {
+          [`&.${classNamePrefix}-focused`]: {
             borderColor: colors.red600,
           },
-          '&:not(.Mui-disabled)': {
+          [`&:not(.${classNamePrefix}-disabled)`]: {
             '&:after': {
               borderColor: colors.red600,
             },
@@ -127,16 +127,16 @@ export const textFieldThemeOverrides: Components = {
             borderBottomColor: colors.green600,
           },
           ':hover': {
-            '&:not(.Mui-disabled)': {
+            [`&:not(.${classNamePrefix}-disabled)`]: {
               '&:before': {
                 borderColor: colors.green600,
               },
             },
           },
-          '&.Mui-focused': {
+          [`&.${classNamePrefix}-focused`]: {
             borderColor: colors.green600,
           },
-          '&:not(.Mui-disabled)': {
+          [`&:not(.${classNamePrefix}-disabled)`]: {
             borderBottomColor: colors.green600,
           },
         },

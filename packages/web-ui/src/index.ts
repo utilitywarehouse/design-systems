@@ -1,3 +1,7 @@
+import { classNamePrefix } from './utils';
+import { unstable_ClassNameGenerator as ClassNameGenerator } from '@mui/material/className';
+
+ClassNameGenerator.configure(componentName => componentName.replace('Mui', classNamePrefix));
 import './types/overrides';
 
 export * from './theme';

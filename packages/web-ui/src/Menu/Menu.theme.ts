@@ -1,5 +1,5 @@
 import { Components } from '@mui/material/styles';
-import { spacing } from '../utils';
+import { classNamePrefix, spacing } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 
 export const menuThemeOverrides: Components = {
@@ -12,7 +12,7 @@ export const menuThemeOverrides: Components = {
     },
     styleOverrides: {
       root: {
-        '& .MuiPaper-root': {
+        [`& .${classNamePrefix}Paper-root`]: {
           marginTop: spacing(1),
           borderColor: colors.cyan400,
           borderRadius: spacing(1),
@@ -20,7 +20,7 @@ export const menuThemeOverrides: Components = {
           borderWidth: '2px',
           padding: '0',
           boxShadow: 'none',
-          '& .MuiMenu-list': {
+          [`& .${classNamePrefix}Menu-list`]: {
             padding: 0,
           },
         },
