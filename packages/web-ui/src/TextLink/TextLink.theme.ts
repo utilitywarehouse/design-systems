@@ -1,7 +1,7 @@
 import { Components } from '@mui/material/styles';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { transitions } from '../tokens';
-import { dataAttributes } from '../utils';
+import { classNamePrefix, dataAttributes } from '../utils';
 
 const { inverse, bgcolorBrand, heading } = dataAttributes;
 
@@ -31,7 +31,7 @@ export const textLinkThemeOverrides: Partial<Components> = {
         [`[data-${inverse}=true] &`]: {
           color: colorsCommon.brandWhite,
         },
-        '&.MuiTypography-inherit': {
+        [`&.${classNamePrefix}Typography-inherit`]: {
           color: 'inherit',
           textTransform: 'inherit',
         },
