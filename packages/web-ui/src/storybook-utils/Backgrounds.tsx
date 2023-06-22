@@ -11,7 +11,7 @@ const Backgrounds = (props: BackgroundsProps) => (
     {backgroundColors.map(bg => (
       <Background
         key={bg}
-        background={bg}
+        backgroundColor={bg}
         display="flex"
         justifyContent="center"
         padding={4}
