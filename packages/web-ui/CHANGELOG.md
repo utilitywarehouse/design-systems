@@ -1,5 +1,16 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.20
+
+### Patch Changes
+
+- [#85](https://github.com/utilitywarehouse/design-systems/pull/85) [`4cbe199`](https://github.com/utilitywarehouse/design-systems/commit/4cbe199106e2c89f80aebb18caf31525668901d3) Thanks [@robphoenix](https://github.com/robphoenix)! - This reinstates the contextual colours for the following components, when wrapped in a `Box` with `backgroundColor` set to either `colorsCommon.brandPrimaryPurple` or `colorsCommon.brandMidnight`:
+
+  - `Text`
+  - `Heading`
+  - `Button`
+  - `TextLink`
+
 ## 0.0.19
 
 ### Patch Changes
