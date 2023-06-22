@@ -140,7 +140,7 @@ export const ButtonSizes: Story = {
 };
 
 export const ButtonLegacyColour: Story = {
-  name: 'On legacy Background component',
+  name: 'On legacy Background',
   parameters: {
     layout: 'fullscreen',
     design: {

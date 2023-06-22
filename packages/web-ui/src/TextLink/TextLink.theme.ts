@@ -3,7 +3,7 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { transitions } from '../tokens';
 import { dataAttributes } from '../utils';
 
-const { inverse, heading } = dataAttributes;
+const { inverse, bgcolorBrand, heading } = dataAttributes;
 
 export const textLinkThemeOverrides: Partial<Components> = {
   MuiLink: {
@@ -24,6 +24,10 @@ export const textLinkThemeOverrides: Partial<Components> = {
         [`&[data-${heading}=true]`]: {
           color: colorsCommon.brandPrimaryPurple,
         },
+        [`[data-${bgcolorBrand}=true] &`]: {
+          color: colorsCommon.brandWhite,
+        },
+        // TODO: remove when `Background` removed.
         [`[data-${inverse}=true] &`]: {
           color: colorsCommon.brandWhite,
         },
