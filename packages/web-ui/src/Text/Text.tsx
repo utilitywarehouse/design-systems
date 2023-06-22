@@ -11,7 +11,8 @@ export type TextProps = {
    */
   variant?: 'subtitle' | 'body' | 'legalNote' | 'caption';
   /**
-   * Sets the text color. It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
+   * Sets the text color.
+   * It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
    * @default colorsCommon.brandMidnight
    */
   color?: string;

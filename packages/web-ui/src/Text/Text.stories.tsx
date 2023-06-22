@@ -20,7 +20,7 @@ export const KitchenSink: Story = {
       <Stack spacing={1}>
         {variants.map(variant => (
           <Text key={variant} variant={variant}>
-            Text variant {variant}
+            Text variant: {variant}
           </Text>
         ))}
       </Stack>

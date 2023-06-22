@@ -4,19 +4,20 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
 import { pxToRem } from '../utils';
 
-export type HeadingProps = Pick<BoxProps, 'sx' | 'component' | 'children'> &
-  Pick<MuiTypographyProps, 'textTransform' | 'align' | 'noWrap'> & {
-    /**
-     * Applies the typography size styles.
-     * @default md
-     */
-    size?: 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-    /**
-     * Set the text color. It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
-     * @default colorsCommon.brandPrimaryPurple
-     */
-    color?: string;
-  };
+export type HeadingProps = {
+  /**
+   * Applies the heading font styles.
+   * @default h2
+   */
+  variant?: 'displayHeading' | 'h1' | 'h2' | 'h3' | 'h4';
+  /**
+   * Sets the heading color.
+   * It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
+   * @default colorsCommon.brandPrimaryPurple
+   */
+  color?: string;
+} & Pick<BoxProps, 'sx' | 'component' | 'children'> &
+  Pick<MuiTypographyProps, 'textTransform' | 'align' | 'noWrap'>;
 
 /**
  * Heading renders the primary UW font, to be used for heading-level typography.
@@ -24,7 +25,7 @@ export type HeadingProps = Pick<BoxProps, 'sx' | 'component' | 'children'> &
 export const Heading = ({
   color = colorsCommon.brandPrimaryPurple,
   component = 'h2',
-  size = 'md',
+  variant = 'h2',
   align,
   noWrap,
   sx,
@@ -33,36 +34,36 @@ export const Heading = ({
   const fontFamily = fonts.primary;
   const fontWeight = fontWeights.primary;
   const fontSizes = {
-    xs: {
+    h4: {
       mobile: pxToRem(18),
       desktop: pxToRem(20),
     },
-    sm: {
+    h3: {
       mobile: pxToRem(22),
       desktop: pxToRem(24),
     },
-    md: {
+    h2: {
       mobile: pxToRem(28),
       desktop: pxToRem(32),
     },
-    lg: {
+    h1: {
       mobile: pxToRem(32),
       desktop: pxToRem(42),
     },
-    xl: {
+    displayHeading: {
       mobile: pxToRem(42),
       desktop: pxToRem(64),
     },
   };
   const lineHeights = {
-    xs: 1.5,
-    sm: 1.5,
-    md: {
+    h4: 1.5,
+    h3: 1.5,
+    h2: {
       mobile: 1.2,
       desktop: 1.5,
     },
-    lg: 1.2,
-    xl: 1,
+    h1: 1.2,
+    displayHeading: 1.2,
   };
 
   const noWrapStyles = {
@@ -77,9 +78,9 @@ export const Heading = ({
       color={color}
       component={component}
       fontFamily={fontFamily}
-      fontSize={fontSizes[size]}
+      fontSize={fontSizes[variant]}
       fontWeight={fontWeight}
-      lineHeight={lineHeights[size]}
+      lineHeight={lineHeights[variant]}
       textAlign={align}
       sx={noWrap ? noWrapStyles : sx}
       {...props}

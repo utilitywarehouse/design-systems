@@ -11,15 +11,15 @@ const meta: Meta<typeof Heading> = {
 export default meta;
 type Story = StoryObj<typeof Heading>;
 
-const sizes = ['xl', 'lg', 'md', 'sm', 'xs'] as const;
+const variants = ['displayHeading', 'h1', 'h2', 'h3', 'h4'] as const;
 
 export const KitchenSink: Story = {
   render: () => {
     return (
       <Stack spacing={1}>
-        {sizes.map(size => (
-          <Heading key={size} size={size}>
-            Heading size {size}
+        {variants.map(variant => (
+          <Heading key={variant} variant={variant}>
+            Heading variant: {variant}
           </Heading>
         ))}
       </Stack>
@@ -48,8 +48,8 @@ export const Workshop: Story = {
         type: 'text',
       },
     },
-    size: {
-      options: sizes,
+    variant: {
+      options: variants,
       control: {
         type: 'radio',
       },
@@ -69,24 +69,25 @@ export const Workshop: Story = {
   },
   args: {
     children: 'hamburgefons',
-    size: 'md',
+    variant: 'h2',
     component: 'h2',
     color: undefined,
     textTransform: 'capitalize',
-    noWrap: false,
   },
 };
 
-export const HeadingSizes: Story = {
-  name: 'Sizes',
+export const HeadingVariants: Story = {
+  name: 'Variants',
   render: () => {
     return (
       <Stack spacing={1}>
-        <Heading size="xl">hamburgefons (xl)</Heading>
-        <Heading size="lg">hamburgefons (lg)</Heading>
-        <Heading size="md">hamburgefons (md)</Heading>
-        <Heading size="sm">hamburgefons (sm)</Heading>
-        <Heading size="xs">hamburgefons (xs)</Heading>
+        <Heading variant="displayHeading" noWrap>
+          hamburgefons (displayHeading)
+        </Heading>
+        <Heading variant="h1">hamburgefons (h1)</Heading>
+        <Heading variant="h2">hamburgefons (h2)</Heading>
+        <Heading variant="h3">hamburgefons (h3)</Heading>
+        <Heading variant="h4">hamburgefons (h4)</Heading>
       </Stack>
     );
   },
