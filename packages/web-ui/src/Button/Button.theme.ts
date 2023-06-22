@@ -4,7 +4,7 @@ import { fonts, fontWeights, transitions } from '../tokens';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const borderWidth = 2;
-const { disableCapitalizeFirstLetter, inverse, size, variant } = dataAttributes;
+const { disableCapitalizeFirstLetter, inverse, bgcolorBrand, size, variant } = dataAttributes;
 
 export const buttonThemeOverrides: Partial<Components> = {
   MuiButton: {
@@ -40,6 +40,12 @@ export const buttonThemeOverrides: Partial<Components> = {
         [`&[data-${disableCapitalizeFirstLetter}=true]::first-letter`]: {
           textTransform: 'none',
         },
+        [`[data-${bgcolorBrand}=true] &`]: {
+          '&:disabled': {
+            opacity: 0.6,
+          },
+        },
+        // TODO: remove when `Background` removed.
         [`[data-${inverse}=true] &`]: {
           '&:disabled': {
             opacity: 0.6,
@@ -77,6 +83,13 @@ export const buttonThemeOverrides: Partial<Components> = {
             opacity: 0.5,
             borderWidth,
           },
+          [`[data-${bgcolorBrand}=true] &`]: {
+            color: colorsCommon.brandWhite,
+            '&:hover': {
+              borderColor: colorsCommon.brandWhite,
+            },
+          },
+          // TODO: remove when `Background` removed.
           [`[data-${inverse}=true] &`]: {
             color: colorsCommon.brandWhite,
             '&:hover': {
@@ -99,6 +112,10 @@ export const buttonThemeOverrides: Partial<Components> = {
           '&:hover': {
             opacity: 0.5,
           },
+          [`[data-${bgcolorBrand}=true] &`]: {
+            color: colorsCommon.brandWhite,
+          },
+          // TODO: remove when `Background` removed.
           [`[data-${inverse}=true] &`]: {
             color: colorsCommon.brandWhite,
           },

@@ -11,10 +11,6 @@ import * as Stories from './Heading.stories';
 
 <Canvas of={Stories.HeadingVariants} />
 
-## Semantic HTML
-
-The `component` prop is required for this component, encouraging you to consider the correct semantic element.
-
 ## Color
 
 You can pass any valid string color to the `Heading` component. It is recommended
@@ -27,6 +23,15 @@ import { colorsCommon } from '@utilitywarehouse/colour-system'
 
 <Heading color={colorsCommon.brandMidnight}>{...}</Heading>
 ```
+
+### Contextual colour
+
+When inside a `Box` component that specifies a `backgroundColor` which is the
+value of either `colorsCommon.brandMidnight` or
+`colorsCommon.brandPrimaryPurple`, the `Heading` color will be set to
+`colorsCommon.brandWhite`. This will be overridden by the `color` prop.
+
+<Canvas of={Stories.HeadingColour} />
 
 ## Styles
 

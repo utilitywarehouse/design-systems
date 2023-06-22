@@ -1,61 +1,102 @@
-import { forwardRef } from 'react';
-import MuiTypography, { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
-import type { OverrideProps } from '@mui/material/OverridableComponent';
-import type { SystemProps } from '../types';
+import { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
+import { Box, BoxProps } from '../Box';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { fonts, fontWeights } from '../tokens';
+import { dataAttributes, pxToRem } from '../utils';
 
-export type DefaultHeadingComponent = 'h2';
-
-export const headingVariantMapping: Record<string, string> = {
-  displayHeading: 'h1',
-  h1: 'h1',
-  h2: 'h2',
-  h3: 'h3',
-  h4: 'h4',
-};
-
-export interface CustomHeadingProps {
+export type HeadingProps = {
   /**
-   * Applies the theme typography styles.
+   * Applies the heading font styles.
    * @default h2
    */
-  variant: 'displayHeading' | 'h1' | 'h2' | 'h3' | 'h4';
+  variant?: 'displayHeading' | 'h1' | 'h2' | 'h3' | 'h4';
   /**
-   * The component used for the root node. Either a string to use a HTML element or a component.
-   */
-  component: React.ElementType;
-  /**
-   * Set the text color. It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
+   * Sets the heading color.
+   * It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
    * @default colorsCommon.brandPrimaryPurple
    */
   color?: string;
-  /**
-   * Set the text-transform property on the component.
-   */
-  textTransform?: MuiTypographyProps['textTransform'];
-}
-
-export interface HeadingTypeMap<D extends React.ElementType = DefaultHeadingComponent, P = {}> {
-  props: CustomHeadingProps & Omit<MuiTypographyProps<D, P>, 'variant' | SystemProps>;
-  defaultComponent: D;
-}
-
-export type HeadingProps<
-  D extends React.ElementType = DefaultHeadingComponent,
-  P = {}
-> = OverrideProps<HeadingTypeMap<D, P>, D>;
+} & Pick<BoxProps, 'sx' | 'component' | 'children'> &
+  Pick<MuiTypographyProps, 'textTransform' | 'align' | 'noWrap'>;
 
 /**
  * Heading renders the primary UW font, to be used for heading-level typography.
  */
-export const Heading = forwardRef(function Heading({ color, variant = 'h2', ...props }, ref) {
+export const Heading = ({
+  color,
+  component = 'h2',
+  variant = 'h2',
+  align,
+  noWrap,
+  sx,
+  ...props
+}: HeadingProps) => {
+  const fontFamily = fonts.primary;
+  const fontWeight = fontWeights.primary;
+  const fontSizes = {
+    h4: {
+      mobile: pxToRem(18),
+      desktop: pxToRem(20),
+    },
+    h3: {
+      mobile: pxToRem(22),
+      desktop: pxToRem(24),
+    },
+    h2: {
+      mobile: pxToRem(28),
+      desktop: pxToRem(32),
+    },
+    h1: {
+      mobile: pxToRem(32),
+      desktop: pxToRem(42),
+    },
+    displayHeading: {
+      mobile: pxToRem(42),
+      desktop: pxToRem(64),
+    },
+  };
+  const lineHeights = {
+    h4: 1.5,
+    h3: 1.5,
+    h2: {
+      mobile: 1.2,
+      desktop: 1.5,
+    },
+    h1: 1.2,
+    displayHeading: 1.2,
+  };
+
+  const colorStyles = {
+    [`[data-${dataAttributes.bgcolorBrand}=true] &`]: {
+      color: color || colorsCommon.brandWhite,
+    },
+  };
+
+  const baseStyles = {
+    ...sx,
+    ...colorStyles,
+  };
+
+  const noWrapStyles = {
+    ...baseStyles,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  };
+
   return (
-    <MuiTypography
-      ref={ref}
-      variantMapping={headingVariantMapping}
-      variant={variant}
-      color={color}
+    <Box
+      color={color || colorsCommon.brandPrimaryPurple}
+      component={component}
+      fontFamily={fontFamily}
+      fontSize={fontSizes[variant]}
+      fontWeight={fontWeight}
+      lineHeight={lineHeights[variant]}
+      textAlign={align}
+      sx={noWrap ? noWrapStyles : baseStyles}
       {...props}
     />
   );
-}) as OverridableComponent<HeadingTypeMap>;
+};
+
+Heading.displayName = 'Heading';

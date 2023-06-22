@@ -1,2 +1,2 @@
-export { Text, textVariantMapping } from './Text';
-export type { DefaultTextComponent, CustomTextProps, TextTypeMap, TextProps } from './Text';
+export { Text } from './Text';
+export type { TextProps } from './Text';

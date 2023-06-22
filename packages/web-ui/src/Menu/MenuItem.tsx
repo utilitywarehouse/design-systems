@@ -19,9 +19,7 @@ export type MenuItemProps<
 export const MenuItem = forwardRef(function MenuItem({ children, ...props }, ref) {
   return (
     <MuiMenuItem ref={ref} {...props}>
-      <Text component="span" variant="body">
-        {children}
-      </Text>
+      <Text variant="body">{children}</Text>
     </MuiMenuItem>
   );
 }) as OverridableComponent<MenuItemTypeMap>;
