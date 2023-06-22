@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
-import { Text, TextProps, textVariantMapping } from './Text';
+import { Text } from './Text';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-
-const variants = Object.keys(textVariantMapping);
+import { Box } from '../Box';
 
 const meta: Meta<typeof Text> = {
   title: 'Web UI / Components / Text',
@@ -13,14 +12,16 @@ const meta: Meta<typeof Text> = {
 export default meta;
 type Story = StoryObj<typeof Text>;
 
+const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
+
 export const KitchenSink: Story = {
   parameters: { controls: { hideNoControlsWarning: true } },
   render: () => {
     return (
-      <Stack spacing={4}>
-        {variants.map(v => (
-          <Text key={v} component="span" variant={v as TextProps['variant']}>
-            Hamburgefons
+      <Stack spacing={1}>
+        {variants.map(variant => (
+          <Text key={variant} variant={variant}>
+            Text variant: {variant}
           </Text>
         ))}
       </Stack>
@@ -68,20 +69,16 @@ export const Workshop: Story = {
       },
     },
     bold: { control: { type: 'boolean' } },
-    gutterBottom: { control: { type: 'boolean' } },
-    paragraph: { control: { type: 'boolean' } },
+    align: { control: { type: 'text' } },
     noWrap: { control: { type: 'boolean' } },
   },
   args: {
     children: 'hamburgefons',
     variant: 'body',
-    component: 'span',
+    component: 'p',
     color: undefined,
     bold: false,
     textTransform: 'capitalize',
-    gutterBottom: false,
-    paragraph: false,
-    noWrap: false,
   },
 };
 
@@ -90,18 +87,34 @@ export const TextVariants: Story = {
   render: () => {
     return (
       <Stack spacing={1}>
-        <Text component="span" variant="subtitle">
-          subtitle
-        </Text>
-        <Text component="span" variant="body">
-          body
-        </Text>
-        <Text component="span" variant="legalNote">
-          legalNote
-        </Text>
-        <Text component="span" variant="caption">
-          caption
-        </Text>
+        <Text variant="subtitle">hamburgefons (subtitle)</Text>
+        <Text variant="body">hamburgefons (body)</Text>
+        <Text variant="legalNote">hamburgefons (legalNote)</Text>
+        <Text variant="caption">hamburgefons (caption)</Text>
+      </Stack>
+    );
+  },
+};
+
+export const TextColour: Story = {
+  name: 'Contextual Colour',
+  render: () => {
+    return (
+      <Stack>
+        <Box padding={2}>
+          <Text variant="subtitle">text</Text>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandPrimaryPurple}>
+          <Text variant="subtitle">text on brandPrimaryPurple background</Text>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+          <Text variant="subtitle">text on brandMidnight background</Text>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+          <Text variant="subtitle" color={colorsCommon.brandPink}>
+            text on brandMidnight background with custom color
+          </Text>
+        </Box>
       </Stack>
     );
   },

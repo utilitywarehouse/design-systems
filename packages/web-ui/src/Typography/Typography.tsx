@@ -3,10 +3,22 @@ import MuiTypography from '@mui/material/Typography';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
-import { Heading, HeadingProps, headingVariantMapping } from '../Heading';
-import { Text, TextProps, textVariantMapping } from '../Text';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { dataAttributes } from '../utils';
+
+export const textVariantMapping: Record<string, string> = {
+  subtitle: 'p',
+  body: 'p',
+  legalNote: 'p',
+  caption: 'span',
+};
+export const headingVariantMapping: Record<string, string> = {
+  displayHeading: 'h1',
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+};
 
 export type DefaultTypographyComponent = 'p';
 
@@ -48,50 +60,67 @@ export const Typography = forwardRef(function Typography(
     console.warn(
       'The Typography variant prop is deprecated, please use the Text component instead'
     );
-    const dataAttributeProps = isLegacyColor
-      ? {
-          [`data-${dataAttributes.legacy}`]: true,
-          // @ts-ignore
-          [`data-${dataAttributes[getLegacyColor(color)]}`]: true,
-        }
-      : {};
-    return (
-      <Text
-        ref={ref}
-        variant={variant as TextProps['variant']}
-        component={component || 'p'}
-        {...props}
-        {...dataAttributeProps}
-      />
-    );
   }
+  const dataAttributeProps = isLegacyColor
+    ? {
+        [`data-${dataAttributes.legacy}`]: true,
+        // @ts-ignore
+        [`data-${dataAttributes[getLegacyColor(color)]}`]: true,
+      }
+    : {};
+
+  //   const variantSizeMapping: { [key: string]: TextProps['size'] } = {
+  //     caption: 'xs',
+  //     legalNote: 'sm',
+  //     body: 'md',
+  //     subtitle: 'lg',
+  //   };
+  //   return (
+  //     <Text
+  //       size={variantSizeMapping[variant]}
+  //       component={component || 'p'}
+  //       {...props}
+  //       {...dataAttributeProps}
+  //     />
+  //   );
+  // }
   if (isLegacyHeadingVariant) {
     console.warn(
       'The Typography variant prop is deprecated, please use the Heading component instead'
     );
-    const dataAttributeProps = isLegacyColor
-      ? {
-          [`data-${dataAttributes.legacy}`]: true,
-          // @ts-ignore
-          [`data-${dataAttributes[getLegacyColor(color)]}`]: true,
-        }
-      : {};
-    return (
-      <Heading
-        ref={ref}
-        variant={variant as HeadingProps['variant']}
-        component={component || 'h2'}
-        {...props}
-        {...dataAttributeProps}
-      />
-    );
   }
+  //   const dataAttributeProps = isLegacyColor
+  //     ? {
+  //         [`data-${dataAttributes.legacy}`]: true,
+  //         // @ts-ignore
+  //         [`data-${dataAttributes[getLegacyColor(color)]}`]: true,
+  //       }
+  //     : {};
+  //   const variantSizeMapping: { [key: string]: HeadingProps['size'] } = {
+  //     h4: 'xs',
+  //     h3: 'sm',
+  //     h2: 'md',
+  //     h1: 'lg',
+  //     displayHeading: 'xl',
+  //   };
+  //   return (
+  //     <Heading
+  //       ref={ref}
+  //       size={variantSizeMapping[variant]}
+  //       component={component || 'h2'}
+  //       {...props}
+  //       {...dataAttributeProps}
+  //     />
+  //   );
+  // }
 
   return (
     <MuiTypography
       ref={ref}
       color={color || colorsCommon.brandMidnight}
       component={component || 'p'}
+      variant={variant}
+      {...dataAttributeProps}
       {...props}
     />
   );

@@ -51,6 +51,15 @@ The tertiary Button has only one size and is not affected by the `size` prop.
   }}
 />
 
+## Contextual color
+
+When inside a `Box` component that specifies a `backgroundColor` which is the
+value of either `colorsCommon.brandMidnight` or
+`colorsCommon.brandPrimaryPurple`, the `Button` colors will be slightly different.
+
+This is also the case when rendered inside the deprecated `Background`
+component with a `backgroundColor` of either `purple` or `midnight`.
+
 ## Capitalization
 
 By default Button will render the label with only the first word capitalized. If you need to render text with different capitalization you can first set the `disableCapitalizeFirstLetter` prop to `true`.

@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
-import { Heading, HeadingProps, headingVariantMapping } from './Heading';
+import { Heading } from './Heading';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-
-const variants = Object.keys(headingVariantMapping);
+import { Box } from '../Box';
 
 const meta: Meta<typeof Heading> = {
   title: 'Web UI / Components / Heading',
@@ -13,17 +12,15 @@ const meta: Meta<typeof Heading> = {
 export default meta;
 type Story = StoryObj<typeof Heading>;
 
+const variants = ['displayHeading', 'h1', 'h2', 'h3', 'h4'] as const;
+
 export const KitchenSink: Story = {
   render: () => {
     return (
-      <Stack spacing={4}>
-        {variants.map(v => (
-          <Heading
-            key={v}
-            variant={v as HeadingProps['variant']}
-            component={headingVariantMapping[v] as React.ElementType<any>}
-          >
-            Hamburgefons
+      <Stack spacing={1}>
+        {variants.map(variant => (
+          <Heading key={variant} variant={variant}>
+            Heading variant: {variant}
           </Heading>
         ))}
       </Stack>
@@ -77,9 +74,6 @@ export const Workshop: Story = {
     component: 'h2',
     color: undefined,
     textTransform: 'capitalize',
-    gutterBottom: false,
-    paragraph: false,
-    noWrap: false,
   },
 };
 
@@ -88,21 +82,37 @@ export const HeadingVariants: Story = {
   render: () => {
     return (
       <Stack spacing={1}>
-        <Heading component="h1" variant="displayHeading">
-          displayHeading
+        <Heading variant="displayHeading" noWrap>
+          hamburgefons (displayHeading)
         </Heading>
-        <Heading component="h1" variant="h1">
-          h1
-        </Heading>
-        <Heading component="h2" variant="h2">
-          h2
-        </Heading>
-        <Heading component="h3" variant="h3">
-          h3
-        </Heading>
-        <Heading component="h4" variant="h4">
-          h4
-        </Heading>
+        <Heading variant="h1">hamburgefons (h1)</Heading>
+        <Heading variant="h2">hamburgefons (h2)</Heading>
+        <Heading variant="h3">hamburgefons (h3)</Heading>
+        <Heading variant="h4">hamburgefons (h4)</Heading>
+      </Stack>
+    );
+  },
+};
+
+export const HeadingColour: Story = {
+  name: 'Contextual Colour',
+  render: () => {
+    return (
+      <Stack>
+        <Box padding={2}>
+          <Heading variant="h2">heading</Heading>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandPrimaryPurple}>
+          <Heading variant="h2">heading on brandPrimaryPurple background</Heading>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+          <Heading variant="h2">heading on brandMidnight background</Heading>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+          <Heading variant="h2" color={colorsCommon.brandPink}>
+            heading on brandMidnight background with custom color
+          </Heading>
+        </Box>
       </Stack>
     );
   },

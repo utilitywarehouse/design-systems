@@ -11,11 +11,7 @@ import * as Stories from './Text.stories';
 
 <Canvas of={Stories.TextVariants} />
 
-## Semantic HTML
-
-The `component` prop is required for this component, encouraging you to consider the correct semantic element.
-
-## Color
+## Colour
 
 You can pass any valid string color to the `Text` component. It is recommended
 you use the `@utilitywarehouse/colour-system` package, and pass color values
@@ -27,6 +23,15 @@ import { colorsCommon } from '@utilitywarehouse/colour-system'
 
 <Text color={colorsCommon.brandPrimaryPurple}>{...}</Text>
 ```
+
+### Contextual colour
+
+When inside a `Box` component that specifies a `backgroundColor` which is the
+value of either `colorsCommon.brandMidnight` or
+`colorsCommon.brandPrimaryPurple`, the `Text` color will be set to
+`colorsCommon.brandWhite`. This will be overridden by the `color` prop.
+
+<Canvas of={Stories.TextColour} />
 
 ## Styles
 

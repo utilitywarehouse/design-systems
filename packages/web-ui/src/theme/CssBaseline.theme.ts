@@ -6,6 +6,11 @@ export const cssBaselineThemeOverrides: Components = {
   MuiCssBaseline: {
     styleOverrides: {
       /* https://github.com/hankchizljaw/modern-css-reset/issues/30 */
+      /* Remove default margin */
+      'body, h1, h2, h3, h4, p, figure, blockquote, dl, dd': {
+        margin: 0,
+      },
+      /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
       "ul[role='list'], ol[role='list']": {
         margin: 0,
         padding: 0,

@@ -1,9 +1,11 @@
 import { TextLink } from './TextLink';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Backgrounds } from '../storybook-utils';
-import { Text, TextProps, textVariantMapping } from '../Text';
-import { headingVariantMapping } from '../Heading';
+import { Text, TextProps } from '../Text';
 import { Stack } from '../Stack';
+import { headingVariantMapping, textVariantMapping, Typography } from '../Typography/Typography';
+import { Box } from '../Box';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Components / TextLink',
@@ -19,9 +21,15 @@ const variants = [...textVariants, ...Object.keys(headingVariantMapping)];
 export const Workshop: Story = {
   render: args => {
     return (
-      <Backgrounds>
-        <TextLink href="#" {...args} />
-      </Backgrounds>
+      <Stack>
+        {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
+          bg => (
+            <Box key={bg} backgroundColor={bg} display="flex" justifyContent="center" padding={4}>
+              <TextLink href="#" {...args} />
+            </Box>
+          )
+        )}
+      </Stack>
     );
   },
   argTypes: {
@@ -54,12 +62,42 @@ export const InlineTextLink: Story = {
   name: 'Inline TextLink',
   render: () => {
     return (
+      <Stack>
+        {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
+          bg => (
+            <Box key={bg} backgroundColor={bg} display="flex" justifyContent="center" padding={4}>
+              <Stack spacing={2}>
+                {textVariants.map(v => (
+                  <Text component="span" variant={v as TextProps['variant']}>
+                    This is a <TextLink href="#">text link</TextLink>, wrapped in a {v} Text
+                    component.
+                  </Text>
+                ))}
+              </Stack>
+            </Box>
+          )
+        )}
+      </Stack>
+    );
+  },
+};
+
+export const TextLinkColor: Story = {
+  name: 'On legacy Background',
+  render: () => {
+    return (
       <Backgrounds>
-        <Stack spacing={2}>
+        <Stack spacing={4}>
           {textVariants.map(v => (
-            <Text component="span" variant={v as TextProps['variant']}>
-              This is a <TextLink href="#">text link</TextLink>, wrapped in a {v} Text component.
-            </Text>
+            <Stack spacing={1}>
+              <TextLink href="#" variant={v as TextProps['variant']}>
+                {v} text link
+              </TextLink>
+              <Typography component="span" variant={v as TextProps['variant']}>
+                This is a <TextLink href="#">text link</TextLink>, wrapped in a {v} Typography
+                component.
+              </Typography>
+            </Stack>
           ))}
         </Stack>
       </Backgrounds>
