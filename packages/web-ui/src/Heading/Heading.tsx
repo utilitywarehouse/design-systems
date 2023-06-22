@@ -2,7 +2,7 @@ import { TypographyProps as MuiTypographyProps } from '@mui/material/Typography'
 import { Box, BoxProps } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
-import { pxToRem } from '../utils';
+import { dataAttributes, pxToRem } from '../utils';
 
 export type HeadingProps = {
   /**
@@ -23,7 +23,7 @@ export type HeadingProps = {
  * Heading renders the primary UW font, to be used for heading-level typography.
  */
 export const Heading = ({
-  color = colorsCommon.brandPrimaryPurple,
+  color,
   component = 'h2',
   variant = 'h2',
   align,
@@ -66,8 +66,19 @@ export const Heading = ({
     displayHeading: 1.2,
   };
 
-  const noWrapStyles = {
+  const colorStyles = {
+    [`[data-${dataAttributes.bgcolorBrand}=true] &`]: {
+      color: color || colorsCommon.brandWhite,
+    },
+  };
+
+  const baseStyles = {
     ...sx,
+    ...colorStyles,
+  };
+
+  const noWrapStyles = {
+    ...baseStyles,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
@@ -75,14 +86,14 @@ export const Heading = ({
 
   return (
     <Box
-      color={color}
+      color={color || colorsCommon.brandPrimaryPurple}
       component={component}
       fontFamily={fontFamily}
       fontSize={fontSizes[variant]}
       fontWeight={fontWeight}
       lineHeight={lineHeights[variant]}
       textAlign={align}
-      sx={noWrap ? noWrapStyles : sx}
+      sx={noWrap ? noWrapStyles : baseStyles}
       {...props}
     />
   );

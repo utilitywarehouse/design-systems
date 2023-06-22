@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
 import { Heading } from './Heading';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { Box } from '../Box';
 
 const meta: Meta<typeof Heading> = {
   title: 'Web UI / Components / Heading',
@@ -88,6 +89,30 @@ export const HeadingVariants: Story = {
         <Heading variant="h2">hamburgefons (h2)</Heading>
         <Heading variant="h3">hamburgefons (h3)</Heading>
         <Heading variant="h4">hamburgefons (h4)</Heading>
+      </Stack>
+    );
+  },
+};
+
+export const HeadingColour: Story = {
+  name: 'Contextual Colour',
+  render: () => {
+    return (
+      <Stack>
+        <Box padding={2}>
+          <Heading variant="h2">heading</Heading>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandPrimaryPurple}>
+          <Heading variant="h2">heading on brandPrimaryPurple background</Heading>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+          <Heading variant="h2">heading on brandMidnight background</Heading>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+          <Heading variant="h2" color={colorsCommon.brandPink}>
+            heading on brandMidnight background with custom color
+          </Heading>
+        </Box>
       </Stack>
     );
   },

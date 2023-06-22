@@ -24,6 +24,15 @@ import { colorsCommon } from '@utilitywarehouse/colour-system'
 <Heading color={colorsCommon.brandMidnight}>{...}</Heading>
 ```
 
+### Contextual colour
+
+When inside a `Box` component that specifies a `backgroundColor` which is the
+value of either `colorsCommon.brandMidnight` or
+`colorsCommon.brandPrimaryPurple`, the `Heading` color will be set to
+`colorsCommon.brandWhite`. This will be overridden by the `color` prop.
+
+<Canvas of={Stories.HeadingColour} />
+
 ## Styles
 
 The system props are not available on the Heading component, if you need custom typography then use the [Typography](?path=/docs/components-typography--documentation) component.
