@@ -11,16 +11,16 @@ const meta: Meta<typeof Text> = {
 export default meta;
 type Story = StoryObj<typeof Text>;
 
-const sizes = ['lg', 'md', 'sm', 'xs'] as const;
+const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
 export const KitchenSink: Story = {
   parameters: { controls: { hideNoControlsWarning: true } },
   render: () => {
     return (
       <Stack spacing={1}>
-        {sizes.map(size => (
-          <Text key={size} size={size}>
-            Text size {size}
+        {variants.map(variant => (
+          <Text key={variant} variant={variant}>
+            Text variant {variant}
           </Text>
         ))}
       </Stack>
@@ -49,8 +49,8 @@ export const Workshop: Story = {
         type: 'text',
       },
     },
-    size: {
-      options: sizes,
+    variant: {
+      options: variants,
       control: {
         type: 'radio',
       },
@@ -73,23 +73,23 @@ export const Workshop: Story = {
   },
   args: {
     children: 'hamburgefons',
-    size: 'md',
-    component: 'span',
+    variant: 'body',
+    component: 'p',
     color: undefined,
     bold: false,
     textTransform: 'capitalize',
   },
 };
 
-export const TextSizes: Story = {
-  name: 'Sizes',
+export const TextVariants: Story = {
+  name: 'Variants',
   render: () => {
     return (
       <Stack spacing={1}>
-        <Text size="lg">hamburgefons (lg)</Text>
-        <Text size="md">hamburgefons (md)</Text>
-        <Text size="sm">hamburgefons (sm)</Text>
-        <Text size="xs">hamburgefons (xs)</Text>
+        <Text variant="subtitle">hamburgefons (subtitle)</Text>
+        <Text variant="body">hamburgefons (body)</Text>
+        <Text variant="legalNote">hamburgefons (legalNote)</Text>
+        <Text variant="caption">hamburgefons (caption)</Text>
       </Stack>
     );
   },
