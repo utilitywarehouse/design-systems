@@ -3,6 +3,7 @@ import { Box, BoxProps } from './Box';
 import { useRef } from 'react';
 import { fonts } from '../tokens';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { Text } from '../Text';
 
 const meta: Meta<typeof Box> = {
   title: 'Web UI / Components / Box',
@@ -13,8 +14,12 @@ export default meta;
 type Story = StoryObj<typeof Box>;
 
 export const Workshop: Story = {
-  render: args => {
-    return <Box {...args} />;
+  render: ({ children, ...args }) => {
+    return (
+      <Box {...args}>
+        <Text>{children}</Text>
+      </Box>
+    );
   },
   args: {
     component: 'div',

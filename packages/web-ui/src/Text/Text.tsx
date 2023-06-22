@@ -2,7 +2,7 @@ import { TypographyProps as MuiTypographyProps } from '@mui/material/Typography'
 import { fonts, fontWeights } from '../tokens';
 import { Box, BoxProps } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { pxToRem } from '../utils';
+import { dataAttributes, pxToRem } from '../utils';
 
 export type TextProps = {
   /**
@@ -28,7 +28,7 @@ export type TextProps = {
  * Text renders the secondary UW font, Work Sans, to be used for body copy.
  */
 export const Text = ({
-  color = colorsCommon.brandMidnight,
+  color,
   bold = false,
   component = 'p',
   variant = 'body',
@@ -49,8 +49,19 @@ export const Text = ({
     },
   };
 
-  const noWrapStyles = {
+  const colorStyles = {
+    [`[data-${dataAttributes.bgcolorBrand}=true] &`]: {
+      color: color || colorsCommon.brandWhite,
+    },
+  };
+
+  const baseStyles = {
     ...sx,
+    ...colorStyles,
+  };
+
+  const noWrapStyles = {
+    ...baseStyles,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
@@ -58,14 +69,14 @@ export const Text = ({
 
   return (
     <Box
-      color={color}
+      color={color || colorsCommon.brandMidnight}
       component={component}
       fontFamily={fontFamily}
       fontSize={fontSizes[variant]}
       fontWeight={fontWeight}
       lineHeight={variant === 'caption' ? 2 : 1.5}
       textAlign={align}
-      sx={noWrap ? noWrapStyles : sx}
+      sx={noWrap ? noWrapStyles : baseStyles}
       {...props}
     />
   );

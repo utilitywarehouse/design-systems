@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Stack from '@mui/material/Stack';
 import { Text } from './Text';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { Box } from '../Box';
 
 const meta: Meta<typeof Text> = {
   title: 'Web UI / Components / Text',
@@ -90,6 +91,30 @@ export const TextVariants: Story = {
         <Text variant="body">hamburgefons (body)</Text>
         <Text variant="legalNote">hamburgefons (legalNote)</Text>
         <Text variant="caption">hamburgefons (caption)</Text>
+      </Stack>
+    );
+  },
+};
+
+export const TextColour: Story = {
+  name: 'Contextual Colour',
+  render: () => {
+    return (
+      <Stack>
+        <Box padding={2}>
+          <Text variant="subtitle">text</Text>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandPrimaryPurple}>
+          <Text variant="subtitle">text on brandPrimaryPurple background</Text>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+          <Text variant="subtitle">text on brandMidnight background</Text>
+        </Box>
+        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+          <Text variant="subtitle" color={colorsCommon.brandPink}>
+            text on brandMidnight background with custom color
+          </Text>
+        </Box>
       </Stack>
     );
   },
