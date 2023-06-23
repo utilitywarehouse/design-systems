@@ -40,12 +40,12 @@ export const buttonThemeOverrides: Partial<Components> = {
         [`&[data-${disableCapitalizeFirstLetter}=true]::first-letter`]: {
           textTransform: 'none',
         },
-        [`[data-${bgcolorBrand}=true] &`]: {
+        [`&[data-${bgcolorBrand}=true]`]: {
           '&:disabled': {
             opacity: 0.6,
           },
         },
-        // TODO: remove when `Background` removed.
+        // TODO: remove when `Background` component removed.
         [`[data-${inverse}=true] &`]: {
           '&:disabled': {
             opacity: 0.6,
@@ -83,13 +83,13 @@ export const buttonThemeOverrides: Partial<Components> = {
             opacity: 0.5,
             borderWidth,
           },
-          [`[data-${bgcolorBrand}=true] &`]: {
+          [`&[data-${bgcolorBrand}=true]`]: {
             color: colorsCommon.brandWhite,
             '&:hover': {
               borderColor: colorsCommon.brandWhite,
             },
           },
-          // TODO: remove when `Background` removed.
+          // TODO: remove when `Background` component removed.
           [`[data-${inverse}=true] &`]: {
             color: colorsCommon.brandWhite,
             '&:hover': {
@@ -112,10 +112,10 @@ export const buttonThemeOverrides: Partial<Components> = {
           '&:hover': {
             opacity: 0.5,
           },
-          [`[data-${bgcolorBrand}=true] &`]: {
+          [`&[data-${bgcolorBrand}=true]`]: {
             color: colorsCommon.brandWhite,
           },
-          // TODO: remove when `Background` removed.
+          // TODO: remove when `Background` component removed.
           [`[data-${inverse}=true] &`]: {
             color: colorsCommon.brandWhite,
           },

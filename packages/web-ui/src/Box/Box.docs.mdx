@@ -5,7 +5,7 @@ import * as Stories from './Box.stories';
 
 # Box
 
-<Description/>
+<Description />
 
 ## Semantic HTML
 
@@ -15,6 +15,14 @@ By default Box renders a `div` element, this can be customised using the
 ```tsx dark
 <Box component="span">...</Box>
 ```
+
+## Contextual background colours
+
+There are 2 background colour props; `bgcolor` & `background`. The `background`
+prop is significant in that, when used, it provides contextual information for
+child components. This information helps to distinguish when the 2 brand
+colours, `purple` and `midnight` are used as background colours, so that child
+components can render their foreground colour appropriately.
 
 ## Custom Components
 
@@ -27,15 +35,15 @@ Box can be used to build custom components.
 type Props = BoxProps<'a', { additionalProp: string }>;
 
 const CustomAnchor = ({ onClick, href, additionalProp, ...props }: Props) => {
-  const ref = useRef<HTMLButtonElement>(null);
-  return (
-    <Box component="a" onClick={onClick} href={href} ref={ref} {...props}>
-      Additional Prop: {additionalProp}
-    </Box>
-  );
+const ref = useRef<HTMLButtonElement>(null);
+return (
+<Box component="a" onClick={onClick} href={href} ref={ref} {...props}>
+Additional Prop: {additionalProp}
+</Box>
+);
 };
 `,
-  }}
+}}
 />
 
 ## Props

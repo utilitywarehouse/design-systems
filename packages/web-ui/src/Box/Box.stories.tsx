@@ -4,8 +4,6 @@ import { useRef } from 'react';
 import { fonts } from '../tokens';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Text } from '../Text';
-import { Background } from '../Background';
-import { Typography } from '../Typography';
 
 const meta: Meta<typeof Box> = {
   title: 'Web UI / Components / Box',
@@ -41,9 +39,9 @@ export const Workshop: Story = {
 export const NestedBoxes: Story = {
   render: ({ children, ...args }) => {
     return (
-      <Box {...args} backgroundColor={colorsCommon.brandMidnight}>
+      <Box {...args} background={colorsCommon.brandMidnight}>
         <Text>This text should be white</Text>
-        <Box backgroundColor={colorsCommon.brandWhite} padding={4} margin={4}>
+        <Box background={colorsCommon.brandWhite} padding={4} margin={4}>
           <Text>This text should be midnight</Text>
         </Box>
       </Box>
@@ -60,7 +58,6 @@ export const NestedBoxes: Story = {
     textTransform: 'capitalize',
   },
 };
-
 
 type Props = BoxProps<'a', { additionalProp: string }>;
 export const CustomComponent = {

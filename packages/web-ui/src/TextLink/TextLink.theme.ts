@@ -24,10 +24,10 @@ export const textLinkThemeOverrides: Partial<Components> = {
         [`&[data-${heading}=true]`]: {
           color: colorsCommon.brandPrimaryPurple,
         },
-        [`[data-${bgcolorBrand}=true] &`]: {
+        [`&[data-${bgcolorBrand}=true]`]: {
           color: colorsCommon.brandWhite,
         },
-        // TODO: remove when `Background` removed.
+        // TODO: remove when `Background` component removed.
         [`[data-${inverse}=true] &`]: {
           color: colorsCommon.brandWhite,
         },

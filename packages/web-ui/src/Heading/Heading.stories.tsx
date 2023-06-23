@@ -102,13 +102,13 @@ export const HeadingColour: Story = {
         <Box padding={2}>
           <Heading variant="h2">heading</Heading>
         </Box>
-        <Box padding={2} backgroundColor={colorsCommon.brandPrimaryPurple}>
+        <Box padding={2} background={colorsCommon.brandPrimaryPurple}>
           <Heading variant="h2">heading on brandPrimaryPurple background</Heading>
         </Box>
-        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+        <Box padding={2} background={colorsCommon.brandMidnight}>
           <Heading variant="h2">heading on brandMidnight background</Heading>
         </Box>
-        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+        <Box padding={2} background={colorsCommon.brandMidnight}>
           <Heading variant="h2" color={colorsCommon.brandPink}>
             heading on brandMidnight background with custom color
           </Heading>

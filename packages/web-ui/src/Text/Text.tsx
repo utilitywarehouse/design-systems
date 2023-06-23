@@ -1,8 +1,8 @@
 import { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import { fonts, fontWeights } from '../tokens';
-import { Box, BoxProps } from '../Box';
+import { Box, BoxProps, useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { dataAttributes, pxToRem } from '../utils';
+import { pxToRem } from '../utils';
 
 export type TextProps = {
   /**
@@ -49,34 +49,26 @@ export const Text = ({
     },
   };
 
-  const colorStyles = {
-    [`[data-${dataAttributes.bgcolorBrand}=true] &`]: {
-      color: color || colorsCommon.brandWhite,
-    },
-  };
-
-  const baseStyles = {
-    ...sx,
-    ...colorStyles,
-  };
-
   const noWrapStyles = {
-    ...baseStyles,
+    ...sx,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
   };
 
+  const { isBrandBackground } = useBackground();
+  const defaultColor = isBrandBackground ? colorsCommon.brandWhite : colorsCommon.brandMidnight;
+
   return (
     <Box
-      color={color || colorsCommon.brandMidnight}
+      color={color || defaultColor}
       component={component}
       fontFamily={fontFamily}
       fontSize={fontSizes[variant]}
       fontWeight={fontWeight}
       lineHeight={variant === 'caption' ? 2 : 1.5}
       textAlign={align}
-      sx={noWrap ? noWrapStyles : baseStyles}
+      sx={noWrap ? noWrapStyles : sx}
       {...props}
     />
   );

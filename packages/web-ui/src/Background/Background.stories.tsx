@@ -4,6 +4,7 @@ import { Typography } from '../Typography';
 import { Stack } from '../Stack';
 import { Heading } from '../Heading';
 import { Background, backgroundColorsMapping } from './Background';
+import { fonts } from '../tokens';
 
 const meta: Meta<typeof Background> = {
   title: 'Web UI / Components / Background',

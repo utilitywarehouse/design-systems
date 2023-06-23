@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import MuiButton, { ButtonProps as MuiButtonProps, ExtendButton } from '@mui/material/Button';
 import { dataAttributes } from '../utils';
 import type { OverrideProps } from '@mui/material/OverridableComponent';
+import { useBackground } from '../Box';
 
 export type DefaultButtonComponent = 'button';
 
@@ -26,11 +27,12 @@ export const Button = forwardRef(function Button(
   { size = 'medium', variant = 'primary', disableCapitalizeFirstLetter, ...props },
   ref
 ) {
+  const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
     [`data-${dataAttributes.variant}`]: variant,
     [`data-${dataAttributes.size}`]: size,
     [`data-${dataAttributes.disableCapitalizeFirstLetter}`]: disableCapitalizeFirstLetter,
+    [`data-${dataAttributes.bgcolorBrand}`]: isBrandBackground,
   };
-
   return <MuiButton {...(props as Partial<MuiButtonProps>)} ref={ref} {...dataAttributeProps} />;
 }) as ExtendButton<ButtonTypeMap>;
