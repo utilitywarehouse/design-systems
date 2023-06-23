@@ -78,3 +78,26 @@ export const Backgrounds = {
     </Stack>
   ),
 };
+
+export const NestedBackgrounds: Story = {
+  render: ({ children, ...args }) => {
+    return (
+      <Background {...args} backgroundColor="midnight">
+        <Typography>This text should be white</Typography>
+        <Background backgroundColor="white" padding={4} margin={4}>
+          <Typography>This text should be midnight</Typography>
+        </Background>
+      </Background>
+    );
+  },
+  args: {
+    component: 'div',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 2,
+    padding: 4,
+    fontFamily: fonts.secondary,
+    textTransform: 'capitalize',
+  },
+};
