@@ -35,15 +35,15 @@ Box can be used to build custom components.
 type Props = BoxProps<'a', { additionalProp: string }>;
 
 const CustomAnchor = ({ onClick, href, additionalProp, ...props }: Props) => {
-const ref = useRef<HTMLButtonElement>(null);
-return (
-<Box component="a" onClick={onClick} href={href} ref={ref} {...props}>
-Additional Prop: {additionalProp}
-</Box>
-);
+  const ref = useRef<HTMLButtonElement>(null);
+  return (
+    <Box component="a" onClick={onClick} href={href} ref={ref} {...props}>
+      Additional Prop: {additionalProp}
+    </Box>
+  );
 };
 `,
-}}
+  }}
 />
 
 ## Props
