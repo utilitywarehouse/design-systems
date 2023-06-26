@@ -7,6 +7,9 @@ import { useBackground } from '../Box';
 export interface TextLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
     Pick<MuiLinkProps, 'children' | 'classes' | 'sx' | 'variant'> {
+  /**
+   * Sets textTransform: capitalize | lowercase | uppercase.
+   */
   textTransform?: MuiTypographyProps['textTransform'];
 }
 
