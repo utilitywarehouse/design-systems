@@ -36,6 +36,29 @@ export const Workshop: Story = {
   },
 };
 
+export const NestedBoxes: Story = {
+  render: ({ children, ...args }) => {
+    return (
+      <Box {...args} background={colorsCommon.brandMidnight}>
+        <Text>This text should be white</Text>
+        <Box background={colorsCommon.brandWhite} padding={4} margin={4}>
+          <Text>This text should be midnight</Text>
+        </Box>
+      </Box>
+    );
+  },
+  args: {
+    component: 'div',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 2,
+    padding: 4,
+    fontFamily: fonts.secondary,
+    textTransform: 'capitalize',
+  },
+};
+
 type Props = BoxProps<'a', { additionalProp: string }>;
 export const CustomComponent = {
   render: (args: Props) => {

@@ -1,8 +1,8 @@
 import { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
-import { Box, BoxProps } from '../Box';
+import { Box, BoxProps, useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
-import { dataAttributes, pxToRem } from '../utils';
+import { pxToRem } from '../utils';
 
 export type HeadingProps = {
   /**
@@ -66,34 +66,28 @@ export const Heading = ({
     displayHeading: 1.2,
   };
 
-  const colorStyles = {
-    [`[data-${dataAttributes.bgcolorBrand}=true] &`]: {
-      color: color || colorsCommon.brandWhite,
-    },
-  };
-
-  const baseStyles = {
-    ...sx,
-    ...colorStyles,
-  };
-
   const noWrapStyles = {
-    ...baseStyles,
+    ...sx,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
   };
 
+  const { isBrandBackground } = useBackground();
+  const defaultColor = isBrandBackground
+    ? colorsCommon.brandWhite
+    : colorsCommon.brandPrimaryPurple;
+
   return (
     <Box
-      color={color || colorsCommon.brandPrimaryPurple}
+      color={color || defaultColor}
       component={component}
       fontFamily={fontFamily}
       fontSize={fontSizes[variant]}
       fontWeight={fontWeight}
       lineHeight={lineHeights[variant]}
       textAlign={align}
-      sx={noWrap ? noWrapStyles : baseStyles}
+      sx={noWrap ? noWrapStyles : sx}
       {...props}
     />
   );

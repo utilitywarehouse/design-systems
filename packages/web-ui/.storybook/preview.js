@@ -1,5 +1,4 @@
 import '@utilitywarehouse/fontsource';
-import { useEffect } from 'react';
 import { ThemeProvider } from '../src/ThemeProvider';
 import { breakpoints } from '../src/tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
@@ -9,7 +8,6 @@ import { Heading } from '../src/Heading';
 import { Text } from '../src/Text';
 import { Box } from '../src/Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { useTheme } from '../src/theme';
 
 const components = {
   h1: props => <Heading component="h1" variant="h1" gutterBottom {...props} />,

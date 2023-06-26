@@ -1,2 +1,2 @@
-export { Box } from './Box';
+export { Box, useBackground } from './Box';
 export type { DefaultBoxComponent, BoxProps } from './Box';
