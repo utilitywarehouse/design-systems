@@ -14,7 +14,7 @@ export interface TextLinkProps
  * TextLink is for non button type links.
  * It adds the data-heading attribute as true if variant is one of the following:
  * 'displayHeading', 'h1', 'h2', 'h3', 'h4'.
- * It adds the data-bg-color-brand attributes as true if nested in a Box component where
+ * It adds the data-bg-color-brand attribute as true if nested in a Box component where
  * background = isBrandBackground.
  */
 
