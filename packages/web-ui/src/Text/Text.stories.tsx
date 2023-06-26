@@ -104,13 +104,13 @@ export const TextColour: Story = {
         <Box padding={2}>
           <Text variant="subtitle">text</Text>
         </Box>
-        <Box padding={2} backgroundColor={colorsCommon.brandPrimaryPurple}>
+        <Box padding={2} background={colorsCommon.brandPrimaryPurple}>
           <Text variant="subtitle">text on brandPrimaryPurple background</Text>
         </Box>
-        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+        <Box padding={2} background={colorsCommon.brandMidnight}>
           <Text variant="subtitle">text on brandMidnight background</Text>
         </Box>
-        <Box padding={2} backgroundColor={colorsCommon.brandMidnight}>
+        <Box padding={2} background={colorsCommon.brandMidnight}>
           <Text variant="subtitle" color={colorsCommon.brandPink}>
             text on brandMidnight background with custom color
           </Text>

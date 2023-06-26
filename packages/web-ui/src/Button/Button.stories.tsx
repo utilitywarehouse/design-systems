@@ -30,7 +30,7 @@ export const ButtonKitchenSink: Story = {
       <Stack>
         {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
           bg => (
-            <Box key={bg} backgroundColor={bg} display="flex" justifyContent="center" padding={4}>
+            <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
               <Stack spacing={4}>
                 {variants.map(variant => (
                   <Stack key={variant} direction="row" spacing={2} alignItems="center">

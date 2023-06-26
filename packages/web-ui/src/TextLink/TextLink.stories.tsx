@@ -24,7 +24,7 @@ export const Workshop: Story = {
       <Stack>
         {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
           bg => (
-            <Box key={bg} backgroundColor={bg} display="flex" justifyContent="center" padding={4}>
+            <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
               <TextLink href="#" {...args} />
             </Box>
           )
@@ -65,7 +65,7 @@ export const InlineTextLink: Story = {
       <Stack>
         {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
           bg => (
-            <Box key={bg} backgroundColor={bg} display="flex" justifyContent="center" padding={4}>
+            <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
               <Stack spacing={2}>
                 {textVariants.map(v => (
                   <Text component="span" variant={v as TextProps['variant']}>
