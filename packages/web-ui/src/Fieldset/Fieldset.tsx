@@ -4,8 +4,9 @@ import { Box, BoxProps } from '../Box';
 import { Stack } from '../Stack';
 
 export interface FieldsetProps extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
-  children: ReactNode;
-  sx?: BoxProps['sx'];
+    /** Sets the fieldset content */
+    children: ReactNode;
+    sx?: BoxProps['sx'];
 }
 
 export const Fieldset = forwardRef<HTMLLegendElement, FieldsetProps>(
