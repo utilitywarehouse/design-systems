@@ -1,5 +1,13 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.22
+
+### Patch Changes
+
+- [#93](https://github.com/utilitywarehouse/design-systems/pull/93) [`211b6d1`](https://github.com/utilitywarehouse/design-systems/commit/211b6d1a1679e610d9a42dc63a125183020b7cf2) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove default Button capitalization.
+
+  This was implemented based on an incorrect assumption that screen readers would read out capital letters differently, and it actually breaks the visual layout of the button when an href is added.
+
 ## 0.0.21
 
 ### Patch Changes
