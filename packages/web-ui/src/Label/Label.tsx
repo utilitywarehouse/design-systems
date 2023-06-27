@@ -25,6 +25,12 @@ export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   sx?: BoxProps['sx'];
 }
 
+/**
+ * > This component is only required when building a custom field that isn’t
+ * > provided by UW Web UI.
+ *
+ * The Label component is used for labelling form elements, such as radio inputs.
+ **/
 export const Label = ({ disabled, nested, sx, component = 'label', ...props }: LabelProps) => {
   return (
     <Box
