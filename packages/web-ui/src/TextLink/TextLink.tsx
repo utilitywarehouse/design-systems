@@ -8,15 +8,19 @@ export interface TextLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
     Pick<MuiLinkProps, 'children' | 'classes' | 'sx' | 'variant'> {
   /**
-   * Sets textTransform: capitalize | lowercase | uppercase | none.
+   * Sets text-transform property on the TextLink contents.
+   * @type capitalize | lowercase | uppercase | none
    */
   textTransform?: MuiTypographyProps['textTransform'];
 }
 
 /**
  * TextLink is for non button type links.
+ *
+ * The text colour will be set to `colorsCommon.brandWhite` when rendered
+ * inside a `Box` component, with the `background` property set to either
+ * `colorsCommon.brandPrimaryPurple` or `colorsCommon.brandMidnight`.
  */
-
 export const TextLink = React.forwardRef<HTMLAnchorElement, TextLinkProps>(function Link(
   { variant = 'inherit', ...props },
   ref
