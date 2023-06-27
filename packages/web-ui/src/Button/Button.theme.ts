@@ -33,9 +33,6 @@ export const buttonThemeOverrides: Partial<Components> = {
         '&:disabled': {
           opacity: 0.5,
         },
-        '&:first-letter': {
-          textTransform: 'uppercase',
-        },
         [`&[data-${bgcolorBrand}=true]`]: {
           '&:disabled': {
             opacity: 0.6,
