@@ -8,17 +8,13 @@ export interface TextLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
     Pick<MuiLinkProps, 'children' | 'classes' | 'sx' | 'variant'> {
   /**
-   * Sets textTransform: capitalize | lowercase | uppercase.
+   * Sets textTransform: capitalize | lowercase | uppercase | none.
    */
   textTransform?: MuiTypographyProps['textTransform'];
 }
 
 /**
  * TextLink is for non button type links.
- * It adds the data-heading attribute as true if variant is one of the following:
- * 'displayHeading', 'h1', 'h2', 'h3', 'h4'.
- * It adds the data-bg-color-brand attribute as true if nested in a Box component where
- * background = isBrandBackground.
  */
 
 export const TextLink = React.forwardRef<HTMLAnchorElement, TextLinkProps>(function Link(
