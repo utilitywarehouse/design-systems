@@ -7,8 +7,15 @@ import { useBackground } from '../Box';
 export interface TextLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
     Pick<MuiLinkProps, 'children' | 'classes' | 'sx' | 'variant'> {
+  /**
+   * Sets textTransform: capitalize | lowercase | uppercase | none.
+   */
   textTransform?: MuiTypographyProps['textTransform'];
 }
+
+/**
+ * TextLink is for non button type links.
+ */
 
 export const TextLink = React.forwardRef<HTMLAnchorElement, TextLinkProps>(function Link(
   { variant = 'inherit', ...props },

@@ -10,6 +10,7 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Components / TextLink',
   component: TextLink,
+  tags: ['autodocs'],
 };
 
 export default meta;
