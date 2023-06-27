@@ -4,7 +4,7 @@ import { fonts, fontWeights, transitions } from '../tokens';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const borderWidth = 2;
-const { disableCapitalizeFirstLetter, inverse, bgcolorBrand, size, variant } = dataAttributes;
+const { inverse, bgcolorBrand, size, variant } = dataAttributes;
 
 export const buttonThemeOverrides: Partial<Components> = {
   MuiButton: {
@@ -13,7 +13,6 @@ export const buttonThemeOverrides: Partial<Components> = {
     },
     styleOverrides: {
       root: {
-        display: 'inline-block', // otherwise `first-letter` does not work
         transition: `${transitions.duration}ms ${transitions.easingFunction}`,
         transitionProperty: 'background-color, border-color, color, opacity',
         fontFamily: fonts.secondary,
@@ -36,9 +35,6 @@ export const buttonThemeOverrides: Partial<Components> = {
         },
         '&:first-letter': {
           textTransform: 'uppercase',
-        },
-        [`&[data-${disableCapitalizeFirstLetter}=true]::first-letter`]: {
-          textTransform: 'none',
         },
         [`&[data-${bgcolorBrand}=true]`]: {
           '&:disabled': {
