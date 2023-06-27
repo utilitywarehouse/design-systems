@@ -7,7 +7,6 @@ export const dataAttributes = {
   variant: 'variant',
   size: 'size',
   inverse: 'inverse-background',
-  disableCapitalizeFirstLetter: 'disable-capitalize-first-letter',
   multiline: 'multiline',
   heading: 'heading',
   bgcolorBrand: 'bg-color-brand',

@@ -9,7 +9,6 @@ export interface TextLinkProps
     Pick<MuiLinkProps, 'children' | 'classes' | 'sx' | 'variant'> {
   /**
    * Sets text-transform property on the TextLink contents.
-   * @type capitalize | lowercase | uppercase | none
    */
   textTransform?: MuiTypographyProps['textTransform'];
 }
