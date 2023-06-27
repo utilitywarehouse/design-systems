@@ -4,11 +4,18 @@ import { Box, BoxProps } from '../Box';
 import { Stack } from '../Stack';
 
 export interface FieldsetProps extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
-    /** Sets the fieldset content */
-    children: ReactNode;
-    sx?: BoxProps['sx'];
+  /** Sets the Fieldset content */
+  children: ReactNode;
+  sx?: BoxProps['sx'];
 }
 
+/**
+ * > This component is only required when building a custom field that isn’t
+ * > provided by UW Web UI.
+ *
+ * The `Fieldset` component should be used to group related form inputs, and
+ * should be used with the `FieldsetLegend` component
+ **/
 export const Fieldset = forwardRef<HTMLLegendElement, FieldsetProps>(
   ({ children, ...props }, ref) => {
     return (
