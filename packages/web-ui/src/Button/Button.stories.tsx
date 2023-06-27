@@ -91,6 +91,11 @@ export const ButtonWorkshop: Story = {
         type: 'boolean',
       },
     },
+    fullWidth: {
+      control: {
+        type: 'boolean',
+      },
+    },
     variant: {
       options: [...variants, 'tertiary'],
       control: { type: 'radio' },
@@ -106,7 +111,6 @@ export const ButtonWorkshop: Story = {
     size: 'medium',
     disabled: false,
     fullWidth: false,
-    disableCapitalizeFirstLetter: false,
     href: '',
   },
 };
@@ -117,9 +121,9 @@ export const ButtonVariants: Story = {
   render: () => {
     return (
       <Stack spacing={3} direction="row">
-        <Button variant="primary">primary</Button>
-        <Button variant="secondary">secondary</Button>
-        <Button variant="tertiary">tertiary</Button>
+        <Button variant="primary">Primary</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="tertiary">Tertiary</Button>
       </Stack>
     );
   },
@@ -131,9 +135,9 @@ export const ButtonSizes: Story = {
   render: () => {
     return (
       <Stack spacing={3} direction="row">
-        <Button size="small">small</Button>
-        <Button size="medium">medium</Button>
-        <Button size="large">large</Button>
+        <Button size="small">Small</Button>
+        <Button size="medium">Medium</Button>
+        <Button size="large">Large</Button>
       </Stack>
     );
   },
@@ -157,12 +161,12 @@ export const ButtonLegacyColour: Story = {
               <>
                 {sizes.map(size => (
                   <Button key={size} size={size} variant={variant}>
-                    button
+                    Button
                   </Button>
                 ))}
                 {sizes.map(size => (
                   <Button key={size} size={size} variant={variant} disabled={true}>
-                    button
+                    Button
                   </Button>
                 ))}
               </>

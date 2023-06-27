@@ -7,9 +7,10 @@ import { useBackground } from '../Box';
 export type DefaultButtonComponent = 'button';
 
 export interface CustomButtonProps {
-  size?: 'small' | 'medium' | 'large';
+  /** Sets the button's visual variant */
   variant?: 'primary' | 'secondary' | 'tertiary';
-  disableCapitalizeFirstLetter?: boolean;
+  /** Sets the button height. Does not apply to `tertiary` buttons. */
+  size?: 'small' | 'medium' | 'large';
 }
 
 export type ButtonTypeMap<P = {}, D extends React.ElementType = DefaultButtonComponent> = {
@@ -23,15 +24,17 @@ export type ButtonProps<
   P = {}
 > = OverrideProps<ButtonTypeMap<P, D>, D>;
 
+/**
+ * A Button should be used for actions.
+ */
 export const Button = forwardRef(function Button(
-  { size = 'medium', variant = 'primary', disableCapitalizeFirstLetter, ...props },
+  { size = 'medium', variant = 'primary', ...props },
   ref
 ) {
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
     [`data-${dataAttributes.variant}`]: variant,
     [`data-${dataAttributes.size}`]: size,
-    [`data-${dataAttributes.disableCapitalizeFirstLetter}`]: disableCapitalizeFirstLetter,
     [`data-${dataAttributes.bgcolorBrand}`]: isBrandBackground,
   };
   return <MuiButton {...(props as Partial<MuiButtonProps>)} ref={ref} {...dataAttributeProps} />;
