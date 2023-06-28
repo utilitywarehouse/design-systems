@@ -1,4 +1,4 @@
-import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
 import * as Stories from './Grid.stories';
 import { DEFAULT_COLUMNS, DEFAULT_SPACING } from './Grid';
 import { Box } from '../Box';
@@ -11,12 +11,7 @@ import { spacingBase, breakpoints } from '../tokens';
 
 # Grid
 
-A responsive layout grid adapts to screen size and orientation, ensuring
-consistency across layouts.
-
-This component is mostly based on the one from the '@mui/material' package, the
-differences are documented below. Please
-[check the MUI site for further documentation](https://mui.com/material-ui/react-grid/).
+<Description />
 
 <Canvas of={Stories.GridStory} />
 
