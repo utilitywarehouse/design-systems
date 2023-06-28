@@ -1,8 +1,7 @@
 import '@utilitywarehouse/fontsource';
-import { ThemeProvider } from '../src/ThemeProvider';
-import { breakpoints } from '../src/tokens';
+import { useEffect } from 'react';
+import { ThemeProvider, useTheme, breakpoints, Box } from '../src';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { Box } from '../src/Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 const customerUiViewports = {
@@ -38,23 +37,22 @@ const customerUiViewports = {
 };
 
 const StoriesContainer = props => {
-  // TODO: get this working!
-  // const theme = useTheme();
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     console.log(
-  //       `%c
-  //   ░█▒█░█░░▒█░░░█░░▒█▒██▀░██▄░░░█▒█░█
-  //   ░▀▄█░▀▄▀▄▀▒░░▀▄▀▄▀░█▄▄▒█▄█▒░░▀▄█░█
-  //
-  //   Tip: you can access the documentation \`theme\` object directly in the console.
-  //   `,
-  //       `font-family:monospace;color:${colorsCommon.brandPrimaryPurple};font-size:16px;`
-  //     );
-  //     // Expose the theme as a global variable so people can play with it.
-  //     window.theme = theme;
-  //   }
-  // }, [theme]);
+  const theme = useTheme();
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      console.log(
+        `%c
+    ░█▒█░█░░▒█░░░█░░▒█▒██▀░██▄░░░█▒█░█
+    ░▀▄█░▀▄▀▄▀▒░░▀▄▀▄▀░█▄▄▒█▄█▒░░▀▄█░█
+
+    Tip: you can access the documentation \`theme\` object directly in the console.
+    `,
+        `font-family:monospace;color:${colorsCommon.brandPrimaryPurple};font-size:16px;`
+      );
+      // Expose the theme as a global variable so people can play with it.
+      window.parent.window.theme = theme;
+    }
+  }, [theme]);
   return <Box padding={4} {...props} />;
 };
 

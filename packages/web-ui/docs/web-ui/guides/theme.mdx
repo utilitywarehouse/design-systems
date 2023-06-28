@@ -1,0 +1,94 @@
+import { Meta } from '@storybook/blocks';
+import { theme } from '../../../src/theme';
+import { Text } from '../../../src';
+
+<Meta title="Web UI / Guides / Theme" />
+
+# Theme
+
+Where possible we recommend using breakpoint and typography tokens imported
+from Web UI, and colours imported from the `colour-system` library, over
+accessing values in the theme object.
+
+However there are some useful fields available in the theme object that you may want to access.
+
+## Breakpoints
+
+<details>
+<summary><Text component='span' variant='subtitle'>theme.breakpoints</Text></summary>
+
+<pre>
+  <code>{JSON.stringify(theme.breakpoints, null, 2)}</code>
+</pre>
+
+</details>
+
+You can use `theme.breakpoints`, alongside the `useMediaQuery` hook, for [CSS media queries](https://mui.com/material-ui/customization/breakpoints/#css-media-queries).
+
+```tsx
+import { useMediaQuery } from '@utilitywarehouse/web-ui';
+
+const isMobileOrTablet = useMediaQuery(theme => theme.breakpoints.down('desktop'));
+```
+
+## Palette
+
+<details>
+<summary><Text component='span' variant='subtitle'>theme.palette.colorsCommon</Text></summary>
+
+<pre>
+  <code>{JSON.stringify(theme.palette.colorsCommon, null, 2)}</code>
+</pre>
+
+</details>
+<details>
+<summary><Text component='span' variant='subtitle'>theme.palette.colors</Text></summary>
+
+<pre>
+  <code>{JSON.stringify(theme.palette.colors, null, 2)}</code>
+</pre>
+
+</details>
+
+The colours from the `colour-system` library are available on the theme palette object.
+
+You can access these as string values in the colour based system props, and the `sx` prop, however
+you will lose the advantages of autocomplete and 'documentation on hover' when
+using the colours in this way:
+
+```tsx
+<Box padding={8} bgcolor="colorsCommon.brandPink"></Box>
+<Box padding={8} bgcolor="colors.apple400" color="colors.apple900">
+  Apple
+</Box>
+```
+
+## Typography
+
+<details>
+<summary><Text component='span' variant='subtitle'>theme.typography</Text></summary>
+
+<pre>
+  <code>{JSON.stringify(theme.typography, null, 2)}</code>
+</pre>
+
+</details>
+
+You can access the `Text` and `Heading` typography variants font styles, and apply them on custom components.
+
+```tsx
+<Box sx={{ ...theme.typography.body }}>Body</Box>
+```
+
+## Viewing the theme
+
+When viewing component stories you can access the `theme` object directly in the console.
+
+<details>
+<summary><Text component='span' variant='subtitle'>The theme object</Text></summary>
+
+<pre>
+  <code>{JSON.stringify(theme, null, 2)}</code>
+</pre>
+
+</details>
