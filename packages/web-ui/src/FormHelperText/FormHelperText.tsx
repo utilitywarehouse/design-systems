@@ -15,6 +15,9 @@ export interface FormHelperTextProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 /**
+ * > This component is only required when building a custom field that isn’t
+ * > provided by UW Web UI.
+ *
  * This component should be used with form field components to display helper
  * text, descriptions or error messages.
  */
