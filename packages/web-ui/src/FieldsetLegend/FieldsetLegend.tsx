@@ -6,11 +6,19 @@ import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';
 
 export interface FieldsetLegendProps extends HTMLAttributes<HTMLLegendElement> {
-  children: ReactNode;
+  /** Sets whether the text should appear disabled. */
   disabled?: boolean;
+  children: ReactNode;
   sx?: BoxProps['sx'];
 }
 
+/**
+ * > This component is only required when building a custom field that isn’t
+ * > provided by UW Web UI.
+ *
+ * The `FieldsetLegend` should be used with the `Fieldset` component to label
+ * grouped from inputs.
+ */
 export const FieldsetLegend = forwardRef<HTMLLegendElement, FieldsetLegendProps>(
   ({ disabled, ...props }, ref) => {
     return (
