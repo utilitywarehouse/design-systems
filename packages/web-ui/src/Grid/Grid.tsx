@@ -25,6 +25,15 @@ export type GridProps<D extends React.ElementType = DefaultGridComponent, P = {}
   D
 >;
 
+/**
+ * A responsive layout grid which adapts to screen size and orientation, ensuring
+ * consistency across layouts.
+ *
+ * This component is based on the `@mui/material` Grid component, except it
+ * adheres to our custom breakpoints, and has default spacing & columns.
+ *
+ * Please [check the MUI site for further documentation](https://mui.com/material-ui/react-grid/).
+ */
 export const Grid = forwardRef(function Grid({ columns = DEFAULT_COLUMNS, ...props }, ref) {
   if (props.container) {
     return (
