@@ -1,0 +1,29 @@
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import * as Stories from './TextLink.stories';
+
+<Meta of={Stories} />
+
+# TextLink
+
+<Description />
+
+## Variants
+
+The `TextLink` component has all the same variants as the `Text` and `Heading` components.
+
+<Canvas of={Stories.TextLinkVariants} />
+
+## Inline TextLink
+
+When contained within a `Text` or `Heading` component, and without a specific variant, the `TextLink` will inherit the parent variant.
+
+<Canvas of={Stories.InlineTextLink} />
+
+## Guidelines
+
+Try and avoid using `target=_blank` if possible: [When to use target="\_blank"](https://css-tricks.com/use-target_blank/).
+Though if you do use it, then be aware that [browsers now implicitly set rel=noopener for any target=\_blank link](https://mathiasbynens.github.io/rel-noopener/).
+
+## Props
+
+<ArgTypes of={Stories} />

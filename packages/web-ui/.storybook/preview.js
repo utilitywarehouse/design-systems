@@ -2,28 +2,8 @@ import '@utilitywarehouse/fontsource';
 import { ThemeProvider } from '../src/ThemeProvider';
 import { breakpoints } from '../src/tokens';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { MDXProvider } from '@mdx-js/react';
-import { DocsContainer as StorybookDocsContainer } from '@storybook/blocks';
-import { Heading } from '../src/Heading';
-import { Text } from '../src/Text';
 import { Box } from '../src/Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-
-const components = {
-  h1: props => <Heading component="h1" variant="h1" gutterBottom {...props} />,
-  h2: props => <Heading component="h2" variant="h2" gutterBottom marginTop={2} {...props} />,
-  h3: props => <Heading component="h3" variant="h3" gutterBottom {...props} />,
-  h4: props => <Heading component="h4" variant="h4" gutterBottom {...props} />,
-  p: props => <Text paragraph component="p" variant="body" {...props} />,
-};
-
-export const DocsContainer = props => (
-  <ThemeProvider>
-    <MDXProvider components={components}>
-      <StorybookDocsContainer {...props} />
-    </MDXProvider>
-  </ThemeProvider>
-);
 
 const customerUiViewports = {
   mobile: {
@@ -98,9 +78,6 @@ const preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
-    },
-    docs: {
-      container: DocsContainer,
     },
   },
   decorators: [
