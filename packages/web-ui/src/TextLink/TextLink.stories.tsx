@@ -1,4 +1,4 @@
-import { TextLink } from './TextLink';
+import { TextLink, TextLinkProps } from './TextLink';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Backgrounds } from '../storybook-utils';
 import { Text, TextProps } from '../Text';
@@ -10,14 +10,13 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Components / TextLink',
   component: TextLink,
-  tags: ['autodocs'],
 };
 
 export default meta;
 type Story = StoryObj<typeof TextLink>;
 
 const textVariants = Object.keys(textVariantMapping);
-const variants = [...textVariants, ...Object.keys(headingVariantMapping)];
+const variants = [...Object.keys(headingVariantMapping), ...textVariants];
 
 export const Workshop: Story = {
   render: args => {
@@ -56,6 +55,21 @@ export const Workshop: Story = {
     children: 'Text link',
     variant: 'body',
     href: '#',
+  },
+};
+
+export const TextLinkVariants: Story = {
+  name: 'Variants',
+  render: () => {
+    return (
+      <Stack spacing={1}>
+        {variants.map(variant => (
+          <TextLink variant={variant as TextLinkProps['variant']}>
+            hamburgefons ({variant})
+          </TextLink>
+        ))}
+      </Stack>
+    );
   },
 };
 

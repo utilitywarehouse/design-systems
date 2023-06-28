@@ -16,9 +16,17 @@ export interface TextLinkProps
 /**
  * TextLink is for non button type links.
  *
- * The text colour will be set to `colorsCommon.brandWhite` when rendered
- * inside a `Box` component, with the `background` property set to either
- * `colorsCommon.brandPrimaryPurple` or `colorsCommon.brandMidnight`.
+ * ## Contextual colour
+ *
+ * When contained inside a `Box` component that specifies a `backgroundColor`
+ * which is the value of either `colorsCommon.brandMidnight` or
+ * `colorsCommon.brandPrimaryPurple`, the `TextLink` color will be set to
+ * `colorsCommon.brandWhite`. This can be overridden by the `color` prop.
+ *
+ * ## Styles
+ *
+ * The system props are not available on the `TextLink` component. If necessary
+ * you can use `sx` as an escape hatch for one-off custom styling.
  */
 export const TextLink = React.forwardRef<HTMLAnchorElement, TextLinkProps>(function Link(
   { variant = 'inherit', ...props },
