@@ -8,6 +8,7 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 const meta: Meta<typeof Stack> = {
   title: 'Web UI / Components / Stack',
   component: Stack,
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -16,7 +17,7 @@ type Story = StoryObj<typeof Stack>;
 export const Workshop: Story = {
   render: args => {
     const sx = {
-      backgroundColor: colorsCommon.brandPrimaryPurple,
+      background: colorsCommon.brandPrimaryPurple,
       border: `1px solid ${colorsCommon.brandPrimaryPurple}`,
       borderRadius: '8px',
     };
@@ -34,17 +35,17 @@ export const Workshop: Story = {
           }
         >
           <Box px={2} py={4} {...sx}>
-            <Text component="span" variant="body" color={colorsCommon.brandWhite}>
+            <Text component="span" variant="body">
               Item 1
             </Text>
           </Box>
           <Box px={6} py={8} {...sx}>
-            <Text component="span" variant="body" color={colorsCommon.brandWhite}>
+            <Text component="span" variant="body">
               Item 2
             </Text>
           </Box>
           <Box px={12} py={16} {...sx}>
-            <Text component="span" variant="body" color={colorsCommon.brandWhite}>
+            <Text component="span" variant="body">
               Item 3
             </Text>
           </Box>
