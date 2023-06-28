@@ -6,12 +6,18 @@ import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';
 
 export interface FormHelperTextProps extends HTMLAttributes<HTMLSpanElement> {
-  children: ReactNode;
+  /** Sets whether the text should appear disabled. */
   disabled?: boolean;
-  sx?: BoxProps['sx'];
+  /** Sets whether the text is displaying an error message. */
   error?: boolean;
+  children: ReactNode;
+  sx?: BoxProps['sx'];
 }
 
+/**
+ * This component should be used with form field components to display helper
+ * text, descriptions or error messages.
+ */
 export const FormHelperText = forwardRef<HTMLSpanElement, FormHelperTextProps>(
   ({ disabled, error, sx, ...props }, ref) => {
     const getColor = () => {

@@ -4,6 +4,7 @@ import { FormHelperText } from './FormHelperText';
 const meta: Meta<typeof FormHelperText> = {
   title: 'Web UI / Components / FormHelperText',
   component: FormHelperText,
+  tags: ['autodocs'],
 };
 
 export default meta;
