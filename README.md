@@ -50,7 +50,8 @@ clone this repo and run the following command in the root directory.
 npm run setup
 ```
 
-This will get `pnpm` set up.
+This will get `pnpm` set up. If necessary, refer to the [corepack documentation](https://github.com/nodejs/corepack#manual-installs)
+if there are issues with the corepack installation.
 
 You can then install all the necessary dependencies, build the packages, and run
 the Storybook app and the Web UI library in watch mode. As before, run these
