@@ -60,6 +60,11 @@ const StoriesContainer = props => {
 
 const preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: ['Web UI', ['Introduction'], 'Colour System', ['Introduction', 'Common', 'Colors']],
+      },
+    },
     backgrounds: {
       default: 'light',
       values: [
