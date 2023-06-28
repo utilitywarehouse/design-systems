@@ -10,11 +10,16 @@ import type { ResponsiveStyleValue } from '@mui/system/styleFunctionSx';
 export type DefaultSpacerComponent = 'div';
 
 export interface CustomSpacerProps {
-  /**
-   * The direction of the Spacer axis
-   */
+  /** The direction of the Spacer axis */
   axis?: 'horizontal' | 'vertical';
+  /**
+   * The size of the Spacer.
+   * This uses the default spacing scale, so this value will be multiplied by 8px
+   */
   size: ResponsiveStyleValue<number>;
+  /**
+   * Changes whether the rendered element is inline, if true will render a `span` rather than a `div`.
+   */
   inline?: boolean;
 }
 
@@ -28,6 +33,14 @@ export type SpacerProps<
   P = {}
 > = OverrideProps<SpacerTypeMap<D, P>, D>;
 
+/**
+ * Spacer is a layout primitive, loosely based on [Let's Bring Spacer GIFs Back!](https://www.joshwcomeau.com/react/modern-spacer-gif/)
+ * by Josh Comeau.
+ * This component, adds an extra node to the DOM, so should be used sparingly, for
+ * more significant layout concerns please use Stack or Grid.
+ *
+ * The `size` prop is responsive, so you can set different values for different breakpoints.
+ */
 export const Spacer = forwardRef(function Spacer(
   { axis = 'vertical', size = 1, component, inline = false, sx, ...props },
   ref
