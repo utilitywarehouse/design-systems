@@ -24,6 +24,27 @@ When contained within a `Text` or `Heading` component, and without a specific va
 Try and avoid using `target=_blank` if possible: [When to use target="\_blank"](https://css-tricks.com/use-target_blank/).
 Though if you do use it, then be aware that [browsers now implicitly set rel=noopener for any target=\_blank link](https://mathiasbynens.github.io/rel-noopener/).
 
+## Usage in Next.js
+
+You can use the `TextLink` component with the `Link` component from `next/link`:
+
+```tsx
+import { TextLink, TextLinkProps } from '@utilitywarehouse/web-ui';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
+
+export interface LinkProps extends Omit<TextLinkProps, 'href'> {
+  href: NextLinkProps['href'];
+}
+
+export const Link: React.FC<LinkProps> = ({ children, href, ...props }) => (
+  <NextLink href={href} passHref>
+    <TextLink {...props}>{children}</TextLink>
+  </NextLink>
+);
+
+export default Link;
+```
+
 ## Props
 
 <ArgTypes of={Stories} />
