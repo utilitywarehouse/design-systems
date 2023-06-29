@@ -6,13 +6,80 @@ import { Text } from '../../../src';
 
 # Theme
 
-Where possible we recommend using breakpoint and typography tokens imported
-from Web UI, and colours imported from the `colour-system` library, over
-accessing values in the theme object.
+- [Guidelines](#guidelines)
+- [Usage](#usage)
+  - [Spacing](#spacing)
+  - [Breakpoints](#breakpoints)
+  - [Palette](#palette)
+  - [Typography](#typography)
+- [Viewing the theme](#viewing-the-theme)
 
-However there are some useful fields available in the theme object that you may want to access.
+## Guidelines
 
-## Breakpoints
+We recommend using the typography tokens imported from Web UI and colours
+imported from the `colour-system` library, over accessing values in the theme
+object. This provides clarity, as well as better autocomplete and
+documentation.
+
+```tsx
+import { fontWeights } from '@utilitywarehouse/web-ui';
+import { colors } from '@utilitywarehouse/colour-system';
+
+[...]
+
+<Box
+  sx={{
+    // choose imported values
+    fontWeight: fontWeights.secondary.semibold,
+    color: colors.grey800,
+    // over theme-aware string values
+    fontWeight: "fontWeights.secondary.semibold",
+    color: "colors.grey800",
+  }}
+/>
+```
+
+## Usage
+
+### Spacing
+
+The _theme-aware_ [spacing](https://mui.com/material-ui/customization/spacing/)
+properties helps keep layouts on the 8px grid.
+
+```tsx
+import { Box } from '@utilitywarehouse/web-ui';
+
+[...]
+
+<Box
+  // prefer theme-aware values
+  padding={2} // theme.spacing(2) -> `${8 * 2}px` = '16px'
+  // over string values
+  margin='16px'
+  // when using the sx prop also
+  sx={{
+    paddingX: 1,
+  }}
+/>
+```
+
+However this should be kept to spacing properties and not used when setting other values, such as `border-radius`.
+
+You can also take advantage of the `theme.spacing` function directly.
+
+```tsx
+import { Box, useTheme } from '@utilitywarehouse/web-ui';
+
+[...]
+
+const theme = useTheme()
+
+<Box
+  padding={theme.spacing(2, 1, 2, 'auto')} // '16px 8px 16px auto'
+/>
+```
+
+### Breakpoints
 
 <details>
 <summary><Text component='span' variant='subtitle'>theme.breakpoints</Text></summary>
@@ -31,7 +98,7 @@ import { useMediaQuery } from '@utilitywarehouse/web-ui';
 const isMobileOrTablet = useMediaQuery(theme => theme.breakpoints.down('desktop'));
 ```
 
-## Palette
+### Palette
 
 <details>
 <summary><Text component='span' variant='subtitle'>theme.palette.colorsCommon</Text></summary>
@@ -53,7 +120,7 @@ const isMobileOrTablet = useMediaQuery(theme => theme.breakpoints.down('desktop'
 The colours from the `colour-system` library are available on the theme palette object.
 
 You can access these as string values in the colour based system props, and the `sx` prop, however
-you will lose the advantages of autocomplete and 'documentation on hover' when
+you will lose the advantages of autocomplete and _documentation on hover_ when
 using the colours in this way:
 
 ```tsx
@@ -63,7 +130,7 @@ using the colours in this way:
 </Box>
 ```
 
-## Typography
+### Typography
 
 <details>
 <summary><Text component='span' variant='subtitle'>theme.typography</Text></summary>
