@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.23
+
+### Patch Changes
+
+- [`b820af6`](https://github.com/utilitywarehouse/design-systems/commit/b820af69ce845f2388a9410bab550e5cb859e60d) Thanks [@robphoenix](https://github.com/robphoenix)! - Update deps
+
 ## 0.0.22
 
 ### Patch Changes
