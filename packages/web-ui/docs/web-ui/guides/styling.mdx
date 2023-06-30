@@ -76,14 +76,14 @@ import * as React from 'react';
 import { styled } from '@utilitywarehouse/web-ui';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 
-const Container = styled('div')(({theme}) => {
+const StyledContainer = styled('div')(({theme}) => {
   color: colorsCommon.brandMidnight,
   backgroundColor: colorsCommon.brandWhite,
   padding: theme.spacing(2),
 });
 
 export default function App() {
-  return <MyComponent>Styled div</MyComponent>;
+  return <StyledContainer>Styled container</StyledContainer>;
 }
 ```
 
