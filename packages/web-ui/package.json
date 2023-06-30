@@ -24,11 +24,10 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@storybook/addon-a11y": "^7.0.23",
     "@utilitywarehouse/colour-system": "workspace:^",
     "@utilitywarehouse/customer-ui-react-icons": "^1.1.0",
-    "react-aria": "^3.23.1",
-    "react-stately": "^3.21.0"
+    "react-aria": "3.26.0",
+    "react-stately": "3.24.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
@@ -37,6 +36,7 @@
     "@mui/material": "^5.11.14",
     "@mui/system": "^5.11.14",
     "@mui/types": "^7.1.4",
+    "@storybook/addon-a11y": "^7.0.23",
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-links": "^7.0.2",
     "@storybook/blocks": "^7.0.2",
