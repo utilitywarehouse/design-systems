@@ -28,9 +28,9 @@
     "@react-aria/label": "^3.6.0",
     "@react-aria/radio": "^3.6.2",
     "@react-aria/utils": "^3.18.0",
+    "@react-stately/radio": "^3.8.2",
     "@utilitywarehouse/colour-system": "workspace:^",
-    "@utilitywarehouse/customer-ui-react-icons": "^1.1.0",
-    "react-stately": "3.24.0"
+    "@utilitywarehouse/customer-ui-react-icons": "^1.1.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",

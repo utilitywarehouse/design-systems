@@ -1,9 +1,9 @@
-import { useRadioGroupState } from 'react-stately';
+import { useRadioGroupState } from '@react-stately/radio';
 import { useRadioGroup } from '@react-aria/radio';
 import { createContext } from 'react';
 import type { ReactNode } from 'react';
 import type { AriaRadioGroupProps } from '@react-aria/radio';
-import type { RadioGroupState } from 'react-stately';
+import type { RadioGroupState } from '@react-stately/radio';
 import { Box, BoxProps } from '../Box';
 import { FormHelperText } from '../FormHelperText';
 import { Fieldset } from '../Fieldset';
