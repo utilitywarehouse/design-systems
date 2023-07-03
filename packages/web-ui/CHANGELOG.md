@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.24
+
+### Patch Changes
+
+- [#109](https://github.com/utilitywarehouse/design-systems/pull/109) [`ce5dcc6`](https://github.com/utilitywarehouse/design-systems/commit/ce5dcc6fb90190fa0133dc16c9eb01d18fd4eb88) Thanks [@robphoenix](https://github.com/robphoenix)! - Change react-aria package imports to be more specific and avoid pulling in unnecessary dependencies.
+
 ## 0.0.23
 
 ### Patch Changes
