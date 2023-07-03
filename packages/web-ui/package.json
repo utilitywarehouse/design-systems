@@ -24,9 +24,12 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@react-aria/focus": "^3.13.0",
+    "@react-aria/label": "^3.6.0",
+    "@react-aria/radio": "^3.6.2",
+    "@react-aria/utils": "^3.18.0",
     "@utilitywarehouse/colour-system": "workspace:^",
     "@utilitywarehouse/customer-ui-react-icons": "^1.1.0",
-    "react-aria": "3.26.0",
     "react-stately": "3.24.0"
   },
   "devDependencies": {
