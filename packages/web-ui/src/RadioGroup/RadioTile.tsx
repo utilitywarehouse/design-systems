@@ -1,7 +1,10 @@
 import { forwardRef, useContext } from 'react';
 import type { RefObject } from 'react';
 import { Box } from '../Box';
-import { useFocusRing, useRadio, useLabel, useId } from 'react-aria';
+import { useFocusRing } from '@react-aria/focus';
+import { useRadio } from '@react-aria/radio';
+import { useLabel } from '@react-aria/label';
+import { useId } from '@react-aria/utils';
 import { RadioGroupContext } from './RadioGroup';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
