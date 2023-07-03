@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.25
+
+### Patch Changes
+
+- [#111](https://github.com/utilitywarehouse/design-systems/pull/111) [`a424594`](https://github.com/utilitywarehouse/design-systems/commit/a424594eb83b71d58c32ff1ab13d1611c99b9c8d) Thanks [@robphoenix](https://github.com/robphoenix)! - Update react-stately package import
+
 ## 0.0.24
 
 ### Patch Changes
