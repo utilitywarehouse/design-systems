@@ -4,11 +4,8 @@ import { Meta } from '@storybook/blocks';
 
 # Migration Guide
 
-## From Customer Web UI v2
-
-### Typography
-
-The `component` and `variant` props are now both required. In an effort to
-improve accessibility, encouraging users to choose the underlying element will
-hopefully lead to a more semantic approach. Removing the default variant should
-also improve clarity around what style the component is rendering.
+It is possible to use Web UI in an application which is currently using
+Customer Web UI. While you probably don't want to use components from both
+libraries side-by-side, as long as any Web UI are children of a `ThemeProvider`
+from Web UI then you can do this at the most specific level you want, whether
+that is app-wide, for a single page, or for a single section or component.
