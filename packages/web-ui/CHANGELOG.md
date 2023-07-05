@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.27
+
+### Patch Changes
+
+- [#115](https://github.com/utilitywarehouse/design-systems/pull/115) [`7e1c1ad`](https://github.com/utilitywarehouse/design-systems/commit/7e1c1ad9e482871512107b114bf5da184b5e938f) Thanks [@robphoenix](https://github.com/robphoenix)! - Revert "pin react spectrum packages"
+
 ## 0.0.26
 
 ### Patch Changes
