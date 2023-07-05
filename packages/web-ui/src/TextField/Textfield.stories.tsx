@@ -49,7 +49,7 @@ export const Workshop: Story = {
     multiline: false,
     label: 'Label',
     helperText: 'Helper text',
-    placeholder: '',
+    placeholder: 'Placeholder',
     id: 'web-ui-textfield-example',
   },
 };
