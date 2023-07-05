@@ -24,11 +24,11 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@react-aria/focus": "3.12.1",
-    "@react-aria/label": "3.5.2",
-    "@react-aria/radio": "3.6.1",
-    "@react-aria/utils": "3.17.0",
-    "@react-stately/radio": "3.8.1",
+    "@react-aria/focus": "^3.13.0",
+    "@react-aria/label": "^3.6.0",
+    "@react-aria/radio": "^3.6.2",
+    "@react-aria/utils": "^3.18.0",
+    "@react-stately/radio": "^3.8.2",
     "@utilitywarehouse/colour-system": "workspace:^",
     "@utilitywarehouse/customer-ui-react-icons": "^1.1.0"
   },
