@@ -35,15 +35,28 @@ export interface TextFieldProps
     | 'slotProps'
     | 'slots'
   > {
+  /**
+   * The unique id used to properly label the `input` element.
+   * @required
+   */
   id: NonNullable<FormElementProps['id']>;
-  // TODO: add guidelines regarding labels to docs - https://github.com/seek-oss/braid-design-system/pull/979
-  // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby
   'aria-label'?: NonNullable<FormElementProps['aria-label']>;
   'aria-labelledby'?: NonNullable<FormElementProps['aria-labelledby']>;
+  /**
+   * Sets the visual status of the Textfield.
+   * @default 'neutral'
+   */
   status?: 'neutral' | 'success' | 'error';
+  /**
+   * Sets the label for the TextField. If not used, please ensure you set
+   * either `aria-label`, or `aria-labelledby` and `labelId`.
+   */
   label?: ReactNode;
+  /** The id passed to the label element. You should set this if using `aria-lebelledby`. */
   labelId?: string;
+  /** Sets descriptive helper text. */
   helperText?: ReactNode;
+  /** If true, a TextareaAutosize element is rendered. */
   multiline?: boolean;
 }
 
@@ -55,10 +68,22 @@ const IconContainer = styled(Box)(({ theme }) => ({
 }));
 
 const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(function TextfieldInput(
-  { status = 'neutral', endAdornment, ...props },
+  {
+    status = 'neutral',
+    endAdornment,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledBy,
+    'aria-describedby': ariaDescribedBy,
+    ...props
+  },
   ref
 ) {
   const showIcon = !props.disabled;
+  const inputProps = {
+    'aria-labelledby': ariaLabelledBy,
+    'aria-label': ariaLabel,
+    'aria-describedby': ariaDescribedBy,
+  };
   const dataAttributeProps = {
     [`data-${dataAttributes.success}`]: !props.disabled && isSuccessStatus(status),
     [`data-${dataAttributes.multiline}`]: !!props.multiline,
@@ -81,20 +106,26 @@ const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(functi
           {endAdornment ? <IconContainer>{endAdornment}</IconContainer> : null}
         </>
       }
+      inputProps={inputProps}
       {...props}
       {...dataAttributeProps}
     />
   );
 });
 
+/**
+ * TextField enables users to enter text into a UI. They typically appear in forms and dialogs.
+ */
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfield(
-  { label, labelId, helperText, ...props },
+  { label, labelId, helperText, 'aria-label': ariaLabel, ...props },
   ref
 ) {
   const { status = 'neutral', disabled } = props;
   const hasErrorStatus = !disabled && isErrorStatus(status);
   const formControlProps = { error: hasErrorStatus, disabled };
-  const ariaDescribedBy = props['aria-describedby'] || `${props.id}-helper-text`;
+  const ariaDescribedBy = !!helperText
+    ? props['aria-describedby'] || `${props.id}-helper-text`
+    : undefined;
   const ariaLabelledBy = !!label ? labelId : props['aria-labelledby'];
 
   return (
@@ -110,7 +141,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(func
         {...props}
         aria-describedby={ariaDescribedBy}
         aria-labelledby={ariaLabelledBy}
-        aria-label={props['aria-label']}
+        aria-label={ariaLabel}
       />
 
       {helperText ? <FormHelperText id={ariaDescribedBy}>{helperText}</FormHelperText> : null}
