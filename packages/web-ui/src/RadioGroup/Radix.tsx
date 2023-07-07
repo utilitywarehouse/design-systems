@@ -1,12 +1,15 @@
-import * as RadioGroup from '@radix-ui/react-radio-group';
-import { Box } from '../Box';
+import * as RadixRadioGroup from '@radix-ui/react-radio-group';
+import type { RadioGroupItemProps } from '@radix-ui/react-radio-group';
+import { Box, BoxProps } from '../Box';
 import styled from '@emotion/styled';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { keyframes } from '@mui/material';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
+import { forwardRef, type ReactNode } from 'react';
+import { useFormControl } from '../hooks';
 
-const RadioItem = styled(RadioGroup.Item)({
+const RadioItem = styled(RadixRadioGroup.Item)({
   all: 'unset',
   cursor: 'pointer',
   height: 20,
@@ -31,7 +34,7 @@ const RadioItem = styled(RadioGroup.Item)({
 const appear = keyframes({ from: { opacity: 0 }, to: { opacity: 1 } });
 const disappear = keyframes({ from: { opacity: 1 }, to: { opacity: 0 } });
 
-const RadioIndicator = styled(RadioGroup.Indicator)({
+const RadioIndicator = styled(RadixRadioGroup.Indicator)({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -57,106 +60,81 @@ const RadioIndicator = styled(RadioGroup.Indicator)({
   },
 });
 
-/**
- * The `Radio` should be used within a `RadioGroup` component.
- */
-export const Radix = () => {
-  const isDisabled = false;
-  const showHelperText = false;
-  const l1 = 'One';
-  const id1 = `uw-web-ui-${l1.toLowerCase()}`;
-  const htid1 = `uw-web-ui-${l1.toLowerCase()}-helper-text`;
-  const l2 = 'Two';
-  const id2 = `uw-web-ui-${l2.toLowerCase()}`;
-  const htid2 = `uw-web-ui-${l2.toLowerCase()}-helper-text`;
-  const l3 = 'Three';
-  const id3 = `uw-web-ui-${l3.toLowerCase()}`;
-  const htid3 = `uw-web-ui-${l3.toLowerCase()}-helper-text`;
-  return (
-    <RadioGroup.Root defaultValue="1" aria-label="View density">
-      <Box display="flex" alignItems="flex-start">
-        <Box
-          width={40}
-          height={40}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          position="relative"
-          top={-8}
-        >
-          <RadioItem value="1" id={id1} disabled={isDisabled} aria-describedby={htid1}>
-            <RadioIndicator />
-          </RadioItem>
-        </Box>
-        <Box display="flex" flexDirection="column">
-          <Box height={24} display="flex" alignItems="center">
-            <Label htmlFor={id1} nested disabled={isDisabled}>
-              {l1}
-            </Label>
-          </Box>
-          {showHelperText ? (
-            <FormHelperText id={htid1} disabled={isDisabled}>
-              helper text
-            </FormHelperText>
-          ) : null}
-        </Box>
-      </Box>
-      <Box display="flex" alignItems="flex-start">
-        <Box
-          width={40}
-          height={40}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          position="relative"
-          top={-8}
-        >
-          <RadioItem value="2" id={id2} disabled={isDisabled} aria-describedby={htid2}>
-            <RadioIndicator />
-          </RadioItem>
-        </Box>
-        <Box display="flex" flexDirection="column">
-          <Box height={24} display="flex" alignItems="center">
-            <Label htmlFor={id2} nested disabled={isDisabled}>
-              {l2}
-            </Label>
-          </Box>
-          {showHelperText ? (
-            <FormHelperText id={htid2} disabled={isDisabled}>
-              helper text
-            </FormHelperText>
-          ) : null}
-        </Box>
-      </Box>
-      <Box display="flex" alignItems="flex-start">
-        <Box
-          width={40}
-          height={40}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          position="relative"
-          top={-8}
-        >
-          <RadioItem value="3" id={id3} disabled={isDisabled} aria-describedby={htid3}>
-            <RadioIndicator />
-          </RadioItem>
-        </Box>
-        <Box display="flex" flexDirection="column">
-          <Box height={24} display="flex" alignItems="center">
-            <Label htmlFor={id3} nested disabled={isDisabled}>
-              {l3}
-            </Label>
-          </Box>
-          {showHelperText ? (
-            <FormHelperText id={htid3} disabled={isDisabled}>
-              helper text
-            </FormHelperText>
-          ) : null}
-        </Box>
-      </Box>
-    </RadioGroup.Root>
-  );
-};
+export interface RadioProps extends Omit<RadioGroupItemProps, 'children'> {
+  sx?: BoxProps['sx'];
+  label?: ReactNode;
+  labelId?: string;
+  helperText?: ReactNode;
+  helperTextId?: string;
+}
 
-Radix.displayName = 'Radix';
+/**
+ * Radios can be used to choose between a set of more than two options.
+ *
+ * Radios should always be used with a `RadioGroup` to handle the state control and
+ * layout.
+ */
+export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
+  (
+    {
+      sx,
+      id: providedId,
+      label,
+      labelId: providedLabelId,
+      helperText,
+      helperTextId: providedHelperTextId,
+      disabled,
+      'aria-describedby': ariaDescribedby,
+      'aria-labelledby': ariaLabelledby,
+      ...props
+    },
+    ref
+  ) => {
+    const { id, labelId, helperTextId } = useFormControl({
+      providedId,
+      providedLabelId,
+      providedHelperTextId,
+    });
+
+    return (
+      <Box display="flex" alignItems="flex-start" marginBottom={!helperText ? 0 : 1}>
+        <Box
+          width={40}
+          height={40}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          top={-8}
+        >
+          <RadioItem
+            ref={ref}
+            {...props}
+            id={id}
+            disabled={disabled}
+            aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
+            aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
+          >
+            <RadioIndicator />
+          </RadioItem>
+        </Box>
+        {!helperText ? (
+          <Label id={labelId} htmlFor={id} nested disabled={disabled}>
+            {label}
+          </Label>
+        ) : (
+          <Box display="flex" flexDirection="column">
+            <Label htmlFor={id} nested disabled={disabled}>
+              {label}
+            </Label>
+            <FormHelperText id={helperTextId} disabled={disabled}>
+              {helperText}
+            </FormHelperText>
+          </Box>
+        )}
+      </Box>
+    );
+  }
+);
+
+Radio.displayName = 'Radio';

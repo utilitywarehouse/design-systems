@@ -32,15 +32,24 @@ export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElemen
  * The Label component is used for labelling form elements, such as radio inputs.
  **/
 export const Label = ({ disabled, nested, sx, component = 'label', ...props }: LabelProps) => {
+  const defaultColor = colors.grey1000;
+  const disabledColor = colors.grey400;
   return (
     <Box
       component={component}
-      color={disabled ? colors.grey400 : colors.grey1000}
+      color={disabled ? disabledColor : defaultColor}
       fontFamily={fonts.secondary}
       fontWeight={fontWeights.secondary[nested ? 'regular' : 'semibold']}
       fontSize={pxToRem(16)}
       lineHeight={pxToRem(24)}
-      sx={{ cursor: disabled ? 'auto' : 'pointer', ...sx }}
+      sx={{
+        cursor: disabled ? 'auto' : 'pointer',
+        color: defaultColor,
+        '[data-disabled] &': {
+          color: disabledColor,
+        },
+        ...sx,
+      }}
       {...props}
     />
   );

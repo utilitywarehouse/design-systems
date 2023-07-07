@@ -31,7 +31,7 @@ export interface RadioGroupProps
    * Position of the helper text.
    * @default 'top'
    */
-  helperTextPosition?: 'top' | 'bottom';
+  helperTextPosition?: 'top' | 'bottom'; // TODO: change to start/end
   sx?: BoxProps['sx'];
   error?: boolean;
   /** Set the width of the RadioGroup children, separate to the width of the entire RadioGroup. */

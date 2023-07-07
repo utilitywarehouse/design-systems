@@ -2,30 +2,28 @@ import { forwardRef } from 'react';
 import type { ReactNode, HTMLAttributes } from 'react';
 import { fonts, fontWeights } from '../tokens';
 import { colors } from '@utilitywarehouse/colour-system';
-import { Box } from '../Box';
+import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';
-import { SxProps } from '../types';
 
-export interface FormHelperTextProps extends SxProps, HTMLAttributes<HTMLSpanElement> {
-  /** Sets whether the text should appear disabled. */
-  disabled?: boolean;
+export interface FormErrorMessageProps extends HTMLAttributes<HTMLSpanElement> {
   children: ReactNode;
+  sx?: BoxProps['sx'];
 }
 
 /**
  * > This component is only required when building a custom field that isn’t
  * > provided by UW Web UI.
  *
- * This component should be used with form field components to display helper
- * text.
+ * This component should be used with form field components to display error
+ * messages.
  */
-export const FormHelperText = forwardRef<HTMLSpanElement, FormHelperTextProps>(
-  ({ disabled, sx, ...props }, ref) => {
+export const FormErrorMessage = forwardRef<HTMLSpanElement, FormErrorMessageProps>(
+  ({ sx, ...props }, ref) => {
     return (
       <Box
         ref={ref}
         component="span"
-        color={disabled ? colors.grey400 : colors.grey800}
+        color={colors.red600}
         fontFamily={fonts.secondary}
         fontWeight={fontWeights.secondary.regular}
         fontSize={pxToRem(13)}
@@ -37,4 +35,4 @@ export const FormHelperText = forwardRef<HTMLSpanElement, FormHelperTextProps>(
   }
 );
 
-FormHelperText.displayName = 'FormHelperText';
+FormErrorMessage.displayName = 'FormErrorMessage';
