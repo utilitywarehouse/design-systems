@@ -106,7 +106,7 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
     const { hasGroupHelperText } = useContext(RadioGroupContext);
 
     return (
-      <Stack direction="row" spacing={1}>
+      <Stack direction="row" spacing={1} sx={sx}>
         <Box
           width={40}
           height={40}
