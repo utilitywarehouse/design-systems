@@ -9,6 +9,7 @@ import { FormHelperText } from '../FormHelperText';
 import { forwardRef, useContext, type ReactNode } from 'react';
 import { useFormControl } from '../hooks';
 import { RadioGroupContext } from './RadixRadioGroup';
+import { Stack } from '../Stack';
 
 const RadioItem = styled(RadixRadioGroup.Item)({
   all: 'unset',
@@ -99,15 +100,14 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
     const { hasGroupHelperText } = useContext(RadioGroupContext);
 
     return (
-      <Box display="flex" alignItems="flex-start" marginBottom={!helperText ? 0 : 1}>
+      <Stack direction="row" spacing={1}>
         <Box
           width={40}
           height={40}
           display="flex"
           alignItems="center"
           justifyContent="center"
-          position="relative"
-          top={-8}
+          margin={-1}
         >
           <RadioItem
             ref={ref}
@@ -134,7 +134,7 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
             </FormHelperText>
           </Box>
         )}
-      </Box>
+      </Stack>
     );
   }
 );

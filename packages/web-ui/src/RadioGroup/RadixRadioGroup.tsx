@@ -26,7 +26,7 @@ export interface RadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
    * Position of the helper text.
    * @default 'top'
    */
-  helperTextPosition?: 'above' | 'below';
+  helperTextPosition?: 'top' | 'bottom';
   helperTextId?: string;
   sx?: BoxProps['sx'];
   error?: boolean;
@@ -48,7 +48,7 @@ export const RadioGroup = ({
   labelId: providedLabelId,
   id: providedId,
   helperText,
-  helperTextPosition = 'above',
+  helperTextPosition = 'top',
   helperTextId: providedHelperTextId,
   error,
   errorMessage,
@@ -108,14 +108,14 @@ export const RadioGroup = ({
         <FieldsetLegend disabled={disabled} id={labelId}>
           {label}
         </FieldsetLegend>
-        {helperText && helperTextPosition === 'above' ? (
+        {helperText && helperTextPosition === 'top' ? (
           <FormHelperText disabled={disabled} id={helperTextId}>
             {helperText}
           </FormHelperText>
         ) : null}
         <RadioGroupContext.Provider value={{ hasGroupHelperText: !!helperText }}>
           {!columns ? (
-            <Stack spacing={1} direction={direction} minWidth="fit-content" width={contentWidth}>
+            <Stack spacing={2} direction={direction} minWidth="fit-content" width={contentWidth}>
               {children}
             </Stack>
           ) : (
@@ -130,7 +130,7 @@ export const RadioGroup = ({
             </Box>
           )}
         </RadioGroupContext.Provider>
-        {helperText && helperTextPosition === 'below' ? (
+        {helperText && helperTextPosition === 'bottom' ? (
           <FormHelperText disabled={disabled} id={helperTextId}>
             {helperText}
           </FormHelperText>

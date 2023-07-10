@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Radio } from './Radix';
 import { RadioGroup } from './RadixRadioGroup';
-import { Stack } from '../Stack';
 import { useState } from 'react';
 
 const meta: Meta<typeof RadioGroup> = {
@@ -21,7 +20,7 @@ const argTypes = {
   error: { control: { type: 'boolean' } },
   defaultValue: { control: { type: 'text' } },
   helperText: { control: { type: 'text' } },
-  helperTextPosition: { options: ['above', 'below'], control: { type: 'radio' } },
+  helperTextPosition: { options: ['top', 'bottom'], control: { type: 'radio' } },
   label: { control: { type: 'text' } },
   errorMessage: { control: { type: 'text' } },
   disabled: { control: { type: 'boolean' } },
@@ -44,8 +43,8 @@ export const Workshop: Story = {
   render: args => {
     return (
       <form>
-        <RadioGroup {...args} helperText="RadioGroup with Radio">
-          <Radio value="1" label="One" />
+        <RadioGroup {...args}>
+          <Radio value="1" label="One" helperText="choose me" />
           <Radio value="2" label="Two" />
           <Radio value="3" label="Three" />
         </RadioGroup>
