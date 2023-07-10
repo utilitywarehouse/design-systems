@@ -43,11 +43,13 @@ export const Workshop: Story = {
   name: 'Radix RadioGroup',
   render: args => {
     return (
-      <RadioGroup {...args} helperText="RadioGroup with Radio">
-        <Radio value="1" label="One" />
-        <Radio value="2" label="Two" />
-        <Radio value="3" label="Three" />
-      </RadioGroup>
+      <form>
+        <RadioGroup {...args} helperText="RadioGroup with Radio">
+          <Radio value="1" label="One" />
+          <Radio value="2" label="Two" />
+          <Radio value="3" label="Three" />
+        </RadioGroup>
+      </form>
     );
   },
   argTypes,

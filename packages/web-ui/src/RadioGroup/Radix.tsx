@@ -6,8 +6,9 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { keyframes } from '@mui/material';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
-import { forwardRef, type ReactNode } from 'react';
+import { forwardRef, useContext, type ReactNode } from 'react';
 import { useFormControl } from '../hooks';
+import { RadioGroupContext } from './RadixRadioGroup';
 
 const RadioItem = styled(RadixRadioGroup.Item)({
   all: 'unset',
@@ -95,6 +96,7 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
       providedLabelId,
       providedHelperTextId,
     });
+    const { hasGroupHelperText } = useContext(RadioGroupContext);
 
     return (
       <Box display="flex" alignItems="flex-start" marginBottom={!helperText ? 0 : 1}>
@@ -118,7 +120,7 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
             <RadioIndicator />
           </RadioItem>
         </Box>
-        {!helperText ? (
+        {hasGroupHelperText || !helperText ? (
           <Label id={labelId} htmlFor={id} nested disabled={disabled}>
             {label}
           </Label>
