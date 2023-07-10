@@ -1,157 +1,146 @@
-import { forwardRef, useContext } from 'react';
-import type { RefObject, ReactNode } from 'react';
+import { type RadioGroupItemProps, Item, Indicator } from '@radix-ui/react-radio-group';
 import { Box, BoxProps } from '../Box';
-import { RadioGroupContext } from './RadioGroup';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { transition } from '../tokens';
+import { forwardRef, useContext, type ReactNode } from 'react';
+import { useFormControl } from '../hooks';
+import { Stack } from '../Stack';
 import { styled } from '../theme';
-import { AriaRadioProps, useRadio } from '@react-aria/radio';
-import { useFocusRing } from '@react-aria/focus';
-import { useLabel } from '@react-aria/label';
-import { useId } from '@react-aria/utils';
+import { keyframes } from '@emotion/react';
+import { RadioGroupContext } from './RadioGroup';
 
-/**
- * RadioInput is an internal component used in the Radio & RadioTile
- * components. It is not intended for public use.
- *
- * The RadioInput renders the HTML `input` element, but visually hiding it.
- * https://moderncss.dev/pure-css-custom-styled-radio-buttons/
- *
- * It then renders the internal filled circle shown when the radio is checked,
- * as well as the larger containing circle to support hover & focus styles.
- */
-export const RadioInput: any = styled('input')({
-  // visually hidden styles
-  appearance: 'none',
-  backgroundColor: 'transparent',
-  margin: 0,
-  // radio styles
+const RadioItem = styled(Item)({
+  all: 'unset',
   cursor: 'pointer',
-  outline: 'none',
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  zIndex: 1,
-  width: '100%',
-  height: '100%',
-  borderRadius: '50%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: colors.cyan500,
-  '&:before': {
-    content: '""',
-    width: 14,
-    height: 14,
-    borderRadius: '50%',
-    transform: 'scale(0)',
-    transition: 'transform 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-    boxShadow: `inset 1em 1em currentColor`,
+  height: 20,
+  width: 20,
+  backgroundColor: colorsCommon.brandWhite,
+  borderRadius: '100%',
+  border: '2px solid',
+  borderColor: colors.grey500,
+  '&:focus-visible': {
+    borderColor: colors.cyan500,
+    boxShadow: `0 0 0 2px ${colors.cyan700}`,
   },
-  '&:checked:before': {
-    transform: 'scale(1)',
+  '&[data-state="checked"]': {
+    borderColor: colors.cyan500,
   },
-  '&:disabled': {
+  '&:hover:enabled': {
+    borderColor: colors.cyan500,
+    boxShadow: `0 0 0 8px ${colors.cyan75}`,
+    '&:focus-visible': {
+      boxShadow: `0 0 0 2px ${colors.cyan700}, 0 0 0 8px ${colors.cyan75}`,
+    },
+  },
+  '&[data-disabled]': {
     cursor: 'auto',
-    color: colors.grey300,
+    borderColor: colors.grey300,
   },
 });
 
-export interface RadioProps extends Omit<AriaRadioProps, 'isDisabled'> {
-  disabled?: AriaRadioProps['isDisabled'];
+const appear = keyframes({ from: { opacity: 0 }, to: { opacity: 1 } });
+const disappear = keyframes({ from: { opacity: 1 }, to: { opacity: 0 } });
+
+const RadioIndicator = styled(Indicator)({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  height: '100%',
+  position: 'relative',
+  animation: `${disappear.toString()} 120ms ease-in`,
+  '&[data-state="checked"]': {
+    animation: `${appear.toString()} 120ms ease-out`,
+  },
+  '&::after': {
+    content: '""',
+    display: 'block',
+    width: 14,
+    height: 14,
+    borderRadius: '50%',
+    backgroundColor: colors.cyan500,
+  },
+  '&[data-disabled]': {
+    '&::after': {
+      backgroundColor: colors.grey300,
+    },
+  },
+});
+
+export interface RadioProps extends Omit<RadioGroupItemProps, 'children'> {
   sx?: BoxProps['sx'];
+  label?: ReactNode;
+  labelId?: string;
   helperText?: ReactNode;
+  helperTextId?: string;
 }
 
 /**
- * The `Radio` should be used within a `RadioGroup` component.
+ * Radios can be used to choose between a set of more than two options.
+ *
+ * Radios should always be used with a `RadioGroup` to handle the state control and
+ * layout.
  */
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ sx, children, helperText, disabled, ...props }, ref) => {
-    const { hasGroupHelperText, ...state } = useContext(RadioGroupContext);
-
-    const { isFocusVisible, focusProps } = useFocusRing({ within: true });
-    const { inputProps, isSelected, isDisabled } = useRadio(
-      { ...props, children, isDisabled: disabled },
-      state,
-      ref as RefObject<HTMLInputElement>
-    );
-    const { labelProps, fieldProps } = useLabel({
-      'aria-label': props['aria-label'],
-      label: children,
+export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
+  (
+    {
+      sx,
+      id: providedId,
+      label,
+      labelId: providedLabelId,
+      helperText,
+      helperTextId: providedHelperTextId,
+      disabled,
+      'aria-describedby': ariaDescribedby,
+      'aria-labelledby': ariaLabelledby,
+      ...props
+    },
+    ref
+  ) => {
+    const { id, labelId, helperTextId } = useFormControl({
+      providedId,
+      providedLabelId,
+      providedHelperTextId,
     });
-    const helperTextId = useId();
-    const descriptionId = helperText ? helperTextId : inputProps['aria-describedby'];
-
-    const getOuterRingColor = () => {
-      if (isDisabled) return colors.grey300;
-      if (isSelected || isFocusVisible) return colors.cyan500;
-      return colors.grey500;
-    };
-    const outerRingColor = getOuterRingColor();
+    const { hasGroupHelperText } = useContext(RadioGroupContext);
 
     return (
-      <Box
-        {...focusProps}
-        display="flex"
-        sx={{ cursor: isDisabled ? undefined : 'pointer', ...sx }}
-      >
+      <Stack direction="row" spacing={1}>
         <Box
-          position="relative"
           width={40}
           height={40}
-          marginLeft={-1}
-          marginTop={-1}
-          marginBottom={helperText ? 0 : -1}
-          borderRadius="50%"
-          color={outerRingColor}
-          bgcolor={isFocusVisible ? colors.cyan100 : undefined}
-          sx={{
-            transition,
-            transitionProperty: 'background-color, color',
-            '&:hover': {
-              backgroundColor: isDisabled
-                ? 'transparent'
-                : isFocusVisible
-                ? colors.cyan100
-                : colors.cyan75,
-              color: isDisabled ? colors.grey300 : colors.cyan500,
-            },
-          }}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          margin={-1}
         >
-          <RadioInput ref={ref} {...fieldProps} {...inputProps} aria-describedby={descriptionId} />
-          <Box
-            component="span"
-            position="absolute"
-            top={8}
-            left={8}
-            bgcolor={colorsCommon.brandWhite}
-            height={24}
-            width={24}
-            border="2px solid"
-            borderColor="currentColor"
-            borderRadius="50%"
-          />
+          <RadioItem
+            ref={ref}
+            {...props}
+            id={id}
+            disabled={disabled}
+            aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
+            aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
+          >
+            <RadioIndicator />
+          </RadioItem>
         </Box>
-        <Box>
-          {children ? (
-            <Box height={24} display="flex" alignItems="center">
-              <Label {...labelProps} disabled={isDisabled} nested>
-                {children}
-              </Label>
-            </Box>
-          ) : null}
-          {!hasGroupHelperText && helperText ? (
-            <FormHelperText id={helperTextId} disabled={isDisabled}>
+        {hasGroupHelperText || !helperText ? (
+          <Label id={labelId} htmlFor={id} nested disabled={disabled}>
+            {label}
+          </Label>
+        ) : (
+          <Box display="flex" flexDirection="column">
+            <Label htmlFor={id} nested disabled={disabled}>
+              {label}
+            </Label>
+            <FormHelperText id={helperTextId} disabled={disabled}>
               {helperText}
             </FormHelperText>
-          ) : null}
-        </Box>
-      </Box>
+          </Box>
+        )}
+      </Stack>
     );
   }
 );
-
-Radio.displayName = 'Radio';

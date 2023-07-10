@@ -1,136 +1,121 @@
-import { useRadioGroupState } from '@react-stately/radio';
-import { useRadioGroup } from '@react-aria/radio';
-import { createContext } from 'react';
+import { createContext, forwardRef } from 'react';
 import type { ReactNode } from 'react';
-import type { AriaRadioGroupProps } from '@react-aria/radio';
-import type { RadioGroupState } from '@react-stately/radio';
 import { Box, BoxProps } from '../Box';
 import { FormHelperText } from '../FormHelperText';
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
 import { Stack, StackProps } from '../Stack';
-import { breakpoints } from '../tokens';
+import { type RadioGroupProps as RadixRadioGroupProps, Root } from '@radix-ui/react-radio-group';
+import { useFormControl } from '../hooks';
+import { FormErrorMessage } from '../FormErrorMessage';
 
-export type RadioGroupContextValue = RadioGroupState & { hasGroupHelperText: boolean };
+export type RadioGroupContextValue = { hasGroupHelperText: boolean };
 export const RadioGroupContext = createContext<RadioGroupContextValue>({
   hasGroupHelperText: false,
 } as RadioGroupContextValue);
 
-export interface RadioGroupProps
-  extends Omit<
-    AriaRadioGroupProps,
-    'description' | 'orientation' | 'isDisabled' | 'validationState'
-  > {
-  /** Disable the entire RadioGroup */
-  disabled?: AriaRadioGroupProps['isDisabled'];
+export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
+  label: ReactNode;
+  labelId?: string;
   children: ReactNode;
-  direction?: 'column' | 'row';
   /** Helper text for the field. Provides a hint such as specific requirements for what to choose. */
-  helperText?: AriaRadioGroupProps['description'];
+  helperText?: ReactNode;
   /**
    * Position of the helper text.
    * @default 'top'
    */
-  helperTextPosition?: 'top' | 'bottom'; // TODO: change to start/end
+  helperTextPosition?: 'top' | 'bottom';
+  helperTextId?: string;
   sx?: BoxProps['sx'];
   error?: boolean;
+  errorMessage?: ReactNode;
+  errorMessageId?: string;
+}
+
+export const BaseRadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
+  (
+    {
+      id: providedId,
+      children,
+      label,
+      labelId: providedLabelId,
+      helperText,
+      helperTextId: providedHelperTextId,
+      helperTextPosition = 'top',
+      error,
+      errorMessage,
+      errorMessageId: providedErrorMessageId,
+      sx,
+      disabled,
+      'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby,
+      'aria-errormessage': ariaErrorMessage,
+      ...props
+    },
+    ref
+  ) => {
+    const { id, labelId, helperTextId, errorMessageId } = useFormControl({
+      providedId,
+      providedLabelId,
+      providedHelperTextId,
+      providedErrorMessageId,
+    });
+    const showErrorMessage = Boolean(error && errorMessage);
+
+    return (
+      <Root ref={ref} asChild {...props} disabled={disabled}>
+        <Fieldset
+          id={id}
+          sx={sx}
+          aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
+          aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
+          aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
+        >
+          <FieldsetLegend id={labelId}>{label}</FieldsetLegend>
+          <Stack spacing={2} direction={helperTextPosition === 'top' ? 'column' : 'column-reverse'}>
+            {helperText ? <FormHelperText id={helperTextId}>{helperText}</FormHelperText> : null}
+            <RadioGroupContext.Provider value={{ hasGroupHelperText: !!helperText }}>
+              {children}
+            </RadioGroupContext.Provider>
+          </Stack>
+          {showErrorMessage ? <FormErrorMessage>{errorMessage}</FormErrorMessage> : null}
+        </Fieldset>
+      </Root>
+    );
+  }
+);
+
+export interface RadioGroupProps extends BaseRadioGroupProps {
+  direction?: 'column' | 'row';
   /** Set the width of the RadioGroup children, separate to the width of the entire RadioGroup. */
   contentWidth?: BoxProps['width'];
-  /** Display the RadioGRoup contents in a set number of columns */
-  columns?: StackProps['spacing'];
 }
 
 /**
  * The RadioGroup provides an accessible way to group and control a set of
  * RadioItem components, allowing the user to select one option from a set.
  */
-export const RadioGroup = (props: RadioGroupProps) => {
-  const {
-    children,
-    direction = 'column',
-    label,
-    helperText,
-    helperTextPosition = 'top',
-    errorMessage,
-    error,
-    sx,
-    disabled,
-    contentWidth = 'fit-content',
-    columns,
-  } = props;
-  const orientationMap: { [key: string]: AriaRadioGroupProps['orientation'] } = {
-    column: 'vertical',
-    row: 'horizontal',
-  };
-  const validationState = error ? 'invalid' : 'valid';
-  const state = useRadioGroupState({
-    ...props,
-    validationState,
-    isDisabled: disabled,
-  });
-  const { radioGroupProps, labelProps, descriptionProps, errorMessageProps } = useRadioGroup(
+export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
+  (
     {
-      ...props,
-      orientation: orientationMap[direction],
-      validationState,
+      children,
+      contentWidth = 'fit-content',
+      direction = 'column',
+      orientation = 'vertical',
+      ...props
     },
-    state
-  );
-
-  const convert = (c: string) => `repeat(${c}, minmax(10px, 1fr))`;
-  const getColumns = () => {
-    if (Array.isArray(columns)) {
-      return columns.map(s => convert(s as string));
-    }
-    if (typeof columns === 'object') {
-      return Object.keys(breakpoints).reduce(
-        (acc: { [key: string]: string }, breakpoint: string) => {
-          if (columns[breakpoint] !== null) {
-            acc[breakpoint] = convert(columns[breakpoint] as string);
-          }
-          return acc;
-        },
-        {}
-      );
-    }
-    return convert(columns as string);
-  };
-
-  const HelperText = () => (
-    <FormHelperText {...descriptionProps} disabled={disabled}>
-      {helperText}
-    </FormHelperText>
-  );
-
-  return (
-    <Fieldset {...radioGroupProps} aria-errormessage={errorMessageProps.id} sx={sx}>
-      <FieldsetLegend disabled={disabled} {...labelProps}>
-        {label}
-      </FieldsetLegend>
-      {helperText && helperTextPosition === 'top' ? <HelperText /> : null}
-      <RadioGroupContext.Provider value={{ ...state, hasGroupHelperText: !!helperText }}>
-        {!!columns ? (
-          <Box
-            display="grid"
-            gap={2}
-            gridTemplateColumns={getColumns()}
-            minWidth="fit-content"
-            width={contentWidth}
-          >
-            {children}
-          </Box>
-        ) : (
-          <Stack spacing={2} direction={direction} minWidth="fit-content" width={contentWidth}>
-            {children}
-          </Stack>
-        )}
-      </RadioGroupContext.Provider>
-      {helperText && helperTextPosition === 'bottom' ? <HelperText /> : null}
-      {errorMessage && error ? (
-        <FormHelperText {...errorMessageProps} error>
-          {errorMessage}
-        </FormHelperText>
-      ) : null}
-    </Fieldset>
-  );
-};
+    ref
+  ) => {
+    return (
+      <BaseRadioGroup
+        ref={ref}
+        {...props}
+        orientation={orientation || direction === 'column' ? 'vertical' : 'horizontal'}
+      >
+        <Stack spacing={2} direction={direction} minWidth="fit-content" width={contentWidth}>
+          {children}
+        </Stack>
+      </BaseRadioGroup>
+    );
+  }
+);

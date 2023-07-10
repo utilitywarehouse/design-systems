@@ -21,16 +21,25 @@ export interface FormHelperTextProps extends SxProps, HTMLAttributes<HTMLSpanEle
  */
 export const FormHelperText = forwardRef<HTMLSpanElement, FormHelperTextProps>(
   ({ disabled, sx, ...props }, ref) => {
+    const defaultColor = colors.grey800;
+    const disabledColor = colors.grey400;
     return (
       <Box
         ref={ref}
         component="span"
-        color={disabled ? colors.grey400 : colors.grey800}
+        color={disabled ? disabledColor : defaultColor}
         fontFamily={fonts.secondary}
         fontWeight={fontWeights.secondary.regular}
         fontSize={pxToRem(13)}
         lineHeight={pxToRem(16)}
-        sx={{ cursor: 'auto', ...sx }}
+        sx={{
+          cursor: disabled ? 'auto' : 'pointer',
+          color: defaultColor,
+          '[data-disabled] &': {
+            color: disabledColor,
+          },
+          ...sx,
+        }}
         {...props}
       />
     );
