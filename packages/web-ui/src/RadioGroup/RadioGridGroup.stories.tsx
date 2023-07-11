@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Radio } from './Radio';
 import { RadioGridGroup } from './RadioGridGroup';
 import { Stack } from '../Stack';
+import { RadioTile } from './RadioTile';
 
 const meta: Meta<typeof RadioGridGroup> = {
   title: 'Web UI / Components / RadioGridGroup',
@@ -37,15 +37,15 @@ export const RadioGridGroupWorkshop: Story = {
   render: args => {
     return (
       <RadioGridGroup {...args} helperText="RadioGridGroup with Radio">
-        <Radio value="1" label="One" />
-        <Radio value="2" label="Two" />
-        <Radio value="3" label="Three" />
-        <Radio value="4" label="Four" />
-        <Radio value="5" label="Five" />
-        <Radio value="6" label="Six" />
-        <Radio value="7" label="Seven" />
-        <Radio value="8" label="Eight" />
-        <Radio value="9" label="Nine" />
+        <RadioTile value="1" label="One" />
+        <RadioTile value="2" label="Two" />
+        <RadioTile value="3" label="Three" />
+        <RadioTile value="4" label="Four" />
+        <RadioTile value="5" label="Five" />
+        <RadioTile value="6" label="Six" />
+        <RadioTile value="7" label="Seven" />
+        <RadioTile value="8" label="Eight" />
+        <RadioTile value="9" label="Nine" />
       </RadioGridGroup>
     );
   },
@@ -57,12 +57,12 @@ export const RadioGridWithRadioHelperText: Story = {
     return (
       <Stack spacing={8}>
         <RadioGridGroup {...args}>
-          <Radio value="1" label="One" helperText="One helper text" />
-          <Radio value="2" label="Two" helperText="Two helper text" />
-          <Radio value="3" label="Three" helperText="Three helper text" />
-          <Radio value="4" label="One" helperText="Four helper text" />
-          <Radio value="5" label="Two" helperText="Five helper text" />
-          <Radio value="6" label="Three" helperText="Six helper text" />
+          <RadioTile value="1" label="One" helperText="One helper text" />
+          <RadioTile value="2" label="Two" helperText="Two helper text" />
+          <RadioTile value="3" label="Three" helperText="Three helper text" />
+          <RadioTile value="4" label="One" helperText="Four helper text" />
+          <RadioTile value="5" label="Two" helperText="Five helper text" />
+          <RadioTile value="6" label="Three" helperText="Six helper text" />
         </RadioGridGroup>
       </Stack>
     );

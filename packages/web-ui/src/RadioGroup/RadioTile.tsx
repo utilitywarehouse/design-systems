@@ -1,4 +1,5 @@
 import { forwardRef, useContext } from 'react';
+import { type RadioGroupItemProps, Item, Indicator } from '@radix-ui/react-radio-group';
 import type { RefObject } from 'react';
 import { Box } from '../Box';
 import { useFocusRing } from '@react-aria/focus';
@@ -11,108 +12,145 @@ import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { transition } from '../tokens';
 import { RadioInput, RadioProps } from './Radio';
+import { styled } from '../theme';
+import { keyframes } from '@emotion/react';
+import emotionStyled from '@emotion/styled';
+import { uwWebUiPrefix } from '../utils';
+import { Stack } from '../Stack';
+import { useIds } from '../hooks';
 
 export interface RadioTileProps extends RadioProps {}
+
+const StyledRadio = emotionStyled('div')({
+  cursor: 'pointer',
+  height: 20,
+  width: 20,
+  backgroundColor: colorsCommon.brandWhite,
+  borderRadius: '100%',
+  border: '2px solid',
+  borderColor: colors.grey500,
+  '&:focus-visible': {
+    borderColor: colors.cyan500,
+    boxShadow: `0 0 0 2px ${colors.cyan700}`,
+  },
+  '[data-state="checked"] &': {
+    borderColor: colors.cyan500,
+  },
+  '[data-disabled] &': {
+    cursor: 'auto',
+    borderColor: colors.grey300,
+  },
+});
+
+const appear = keyframes({ from: { opacity: 0 }, to: { opacity: 1 } });
+const disappear = keyframes({ from: { opacity: 1 }, to: { opacity: 0 } });
+
+const StyledRadioIndicator = styled(Indicator)({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  height: '100%',
+  position: 'relative',
+  animation: `${disappear.toString()} 120ms ease-in`,
+  '&[data-state="checked"]': {
+    animation: `${appear.toString()} 120ms ease-out`,
+  },
+  '&::after': {
+    content: '""',
+    display: 'block',
+    width: 14,
+    height: 14,
+    borderRadius: '50%',
+    backgroundColor: colors.cyan500,
+  },
+  '&[data-disabled]': {
+    '&::after': {
+      backgroundColor: colors.grey300,
+    },
+  },
+});
+
+const StyledRadioItem = styled(Item)(({ theme }) => ({
+  all: 'unset',
+  cursor: 'pointer',
+  minWidth: 80,
+  borderRadius: '8px',
+  padding: theme.spacing(2),
+  flex: 1,
+  display: 'flex',
+  backgroundColor: colorsCommon.brandWhite,
+  boxShadow: `0 0 0 2px ${colors.grey400}`,
+
+  '&:focus-visible': {
+    backgroundColor: colors.cyan100,
+    boxShadow: `0 0 0 2px ${colors.cyan500}`,
+  },
+  '&:hover:enabled': {
+    backgroundColor: colors.cyan75,
+    boxShadow: `0 0 0 2px ${colors.cyan500}`,
+    [`& ${StyledRadio}`]: {
+      borderColor: colors.cyan500,
+    },
+  },
+  '&[data-disabled]': {
+    cursor: 'auto',
+    boxShadow: `0 0 0 2px ${colors.grey300}`,
+  },
+}));
 
 /**
  * The `RadioTile` should be used within a `RadioGroup` component.
  */
-export const RadioTile = forwardRef<HTMLInputElement, RadioTileProps>(
-  ({ sx, children, helperText, disabled, ...props }, ref) => {
-    const { hasGroupHelperText, ...state } = useContext(RadioGroupContext);
-
-    const { isFocusVisible, focusProps } = useFocusRing({ within: true });
-    const { inputProps, isSelected, isDisabled } = useRadio(
-      { ...props, children, isDisabled: disabled },
-      state,
-      ref as RefObject<HTMLInputElement>
-    );
-    const { labelProps, fieldProps } = useLabel({
-      'aria-label': props['aria-label'],
-      label: children,
+export const RadioTile = forwardRef<HTMLButtonElement, RadioTileProps>(
+  (
+    {
+      sx,
+      id: providedId,
+      label,
+      labelId: providedLabelId,
+      helperText,
+      helperTextId: providedHelperTextId,
+      disabled,
+      'aria-describedby': ariaDescribedby,
+      'aria-labelledby': ariaLabelledby,
+      ...props
+    },
+    ref
+  ) => {
+    const { id, labelId, helperTextId } = useIds({
+      providedId,
+      providedLabelId,
+      providedHelperTextId,
     });
-    const helperTextId = useId();
-    const descriptionId = helperText ? helperTextId : inputProps['aria-describedby'];
-
+    const { hasGroupHelperText } = useContext(RadioGroupContext);
     return (
-      <Box
-        component="label"
-        {...focusProps}
-        border="2px solid"
-        borderColor={isDisabled ? colors.grey300 : isFocusVisible ? colors.cyan500 : colors.grey400}
-        borderRadius="8px"
-        padding={2}
-        flex={1}
-        display="flex"
-        color={
-          isDisabled
-            ? colors.grey300
-            : isSelected || isFocusVisible
-            ? colors.cyan500
-            : colors.grey500
-        }
-        bgcolor={isFocusVisible ? colors.cyan100 : colorsCommon.brandWhite}
-        sx={{
-          transition,
-          transitionProperty: 'background-color, border-color, color',
-          cursor: isDisabled ? undefined : 'pointer',
-          '&:hover':
-            isDisabled || isFocusVisible
-              ? {}
-              : {
-                  color: colors.cyan500,
-                  borderColor: colors.cyan500,
-                  backgroundColor: colors.cyan75,
-                },
-          ...sx,
-        }}
+      <StyledRadioItem
+        ref={ref}
+        {...props}
+        id={id}
+        disabled={disabled}
+        aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
+        aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
       >
-        <Box width={24} height={24}>
-          <Box
-            position="relative"
-            marginBottom={helperText ? 0 : -1}
-            borderRadius="50%"
-            color="currentColor"
-            height="100%"
-            width="100%"
-            sx={{
-              transition,
-              transitionProperty: 'color',
-            }}
-          >
-            <RadioInput
-              ref={ref}
-              {...fieldProps}
-              {...inputProps}
-              aria-describedby={descriptionId}
-            />
-            <Box
-              component="span"
-              position="absolute"
-              bgcolor={colorsCommon.brandWhite}
-              height="100%"
-              width="100%"
-              border="2px solid"
-              borderColor="currentColor"
-              borderRadius="50%"
-            />
-          </Box>
-        </Box>
-        {children ? (
-          <Box marginLeft={1}>
-            <Box height={24} display="flex" alignItems="center">
-              <Label component="span" {...labelProps} disabled={isDisabled} nested>
-                {children}
+        <Stack direction="row" spacing={1}>
+          <StyledRadio>
+            <StyledRadioIndicator />
+          </StyledRadio>
+          {hasGroupHelperText || !helperText ? (
+            <Label id={labelId} htmlFor={id} nested>
+              {label}
+            </Label>
+          ) : (
+            <Stack>
+              <Label htmlFor={id} nested>
+                {label}
               </Label>
-            </Box>
-            {!hasGroupHelperText && helperText ? (
-              <FormHelperText id={helperTextId} disabled={isDisabled}>
-                {helperText}
-              </FormHelperText>
-            ) : null}
-          </Box>
-        ) : null}
-      </Box>
+              <FormHelperText id={helperTextId}>{helperText}</FormHelperText>
+            </Stack>
+          )}
+        </Stack>
+      </StyledRadioItem>
     );
   }
 );

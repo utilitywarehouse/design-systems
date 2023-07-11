@@ -43,10 +43,11 @@ export const Label = ({ disabled, nested, sx, component = 'label', ...props }: L
       fontSize={pxToRem(16)}
       lineHeight={pxToRem(24)}
       sx={{
-        cursor: disabled ? 'auto' : 'pointer',
         color: defaultColor,
+        cursor: disabled ? 'auto' : 'pointer',
         '[data-disabled] &': {
           color: disabledColor,
+          cursor: 'auto',
         },
         ...sx,
       }}

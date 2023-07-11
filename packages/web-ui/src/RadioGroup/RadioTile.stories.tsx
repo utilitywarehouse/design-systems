@@ -29,36 +29,12 @@ export const RadioTileStory: Story = {
   argTypes: {
     value: { control: { type: 'text' } },
     helperText: { control: { type: 'text' } },
-    children: { control: { type: 'text' } },
+    label: { control: { type: 'text' } },
     disabled: { control: { type: 'boolean' } },
   },
   args: {
     value: '1',
     disabled: false,
-    children: 'One',
-  },
-};
-
-export const RadioTileStoryWithOneLongLabel: Story = {
-  name: 'RadioTile with one long label',
-  render: () => {
-    return (
-      <RadioGroup value="2" label="Radio group">
-        <RadioTile value="1">One</RadioTile>
-        <RadioTile value="2">Twit Twoooooooooooooo</RadioTile>
-        <RadioTile value="3">Three</RadioTile>
-      </RadioGroup>
-    );
-  },
-  argTypes: {
-    value: { control: { type: 'text' } },
-    helperText: { control: { type: 'text' } },
-    children: { control: { type: 'text' } },
-    disabled: { control: { type: 'boolean' } },
-  },
-  args: {
-    value: '1',
-    disabled: false,
-    children: 'One',
+    label: 'One',
   },
 };

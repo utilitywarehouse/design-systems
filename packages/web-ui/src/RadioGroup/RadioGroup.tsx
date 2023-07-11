@@ -1,12 +1,87 @@
-import { forwardRef } from 'react';
+import { createContext, forwardRef, type ReactNode } from 'react';
 import { BoxProps } from '../Box';
 import { Stack } from '../Stack';
 import { type RadioGroupProps as RadixRadioGroupProps, Root } from '@radix-ui/react-radio-group';
-import { FormControl, FormControlProps } from '../FormControl';
+import { Fieldset } from '../Fieldset';
+import { FieldsetLegend } from '../FieldsetLegend';
+import { FormHelperText } from '../FormHelperText';
+import { FormErrorMessage } from '../FormErrorMessage';
+import { useIds } from '../hooks';
 
-export interface BaseRadioGroupProps
-  extends FormControlProps,
-    Omit<RadixRadioGroupProps, 'children' | 'id' | 'dir'> {}
+export type RadioGroupContextValue = { hasGroupHelperText: boolean };
+export const RadioGroupContext = createContext<RadioGroupContextValue>({
+  hasGroupHelperText: false,
+} as RadioGroupContextValue);
+
+export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
+  label: ReactNode;
+  labelId?: string;
+  children: ReactNode;
+  /** Helper text for the field. Provides a hint such as specific requirements for what to choose. */
+  helperText?: ReactNode;
+  /**
+   * Position of the helper text.
+   * @default 'top'
+   */
+  helperTextPosition?: 'top' | 'bottom';
+  helperTextId?: string;
+  sx?: BoxProps['sx'];
+  error?: boolean;
+  errorMessage?: ReactNode;
+  errorMessageId?: string;
+}
+
+export const RadioGroupFormControl = forwardRef<HTMLDivElement, RadioGroupProps>(
+  (
+    {
+      id: providedId,
+      children,
+      label,
+      labelId: providedLabelId,
+      helperText,
+      helperTextId: providedHelperTextId,
+      helperTextPosition = 'top',
+      error,
+      errorMessage,
+      errorMessageId: providedErrorMessageId,
+      sx,
+      disabled,
+      'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby,
+      'aria-errormessage': ariaErrorMessage,
+      ...props
+    },
+    ref
+  ) => {
+    const { id, labelId, helperTextId, errorMessageId } = useIds({
+      providedId,
+      providedLabelId,
+      providedHelperTextId,
+      providedErrorMessageId,
+    });
+    const showErrorMessage = Boolean(error && errorMessage);
+    return (
+      <Root ref={ref} asChild {...props} disabled={disabled}>
+        <Fieldset
+          id={id}
+          sx={sx}
+          aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
+          aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
+          aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
+        >
+          <FieldsetLegend id={labelId}>{label}</FieldsetLegend>
+          <Stack spacing={2} direction={helperTextPosition === 'top' ? 'column' : 'column-reverse'}>
+            {helperText ? <FormHelperText id={helperTextId}>{helperText}</FormHelperText> : null}
+            <RadioGroupContext.Provider value={{ hasGroupHelperText: !!helperText }}>
+              {children}
+            </RadioGroupContext.Provider>
+          </Stack>
+          {showErrorMessage ? <FormErrorMessage>{errorMessage}</FormErrorMessage> : null}
+        </Fieldset>
+      </Root>
+    );
+  }
+);
 
 export interface RadioGroupProps extends BaseRadioGroupProps {
   direction?: 'column' | 'row';
@@ -30,18 +105,15 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
     ref
   ) => {
     return (
-      <Root
-        asChild
+      <RadioGroupFormControl
+        ref={ref}
         {...props}
         orientation={orientation || direction === 'column' ? 'vertical' : 'horizontal'}
-        ref={ref}
       >
-        <FormControl {...props}>
-          <Stack spacing={2} direction={direction} minWidth="fit-content" width={contentWidth}>
-            {children}
-          </Stack>
-        </FormControl>
-      </Root>
+        <Stack spacing={2} direction={direction} minWidth="fit-content" width={contentWidth}>
+          {children}
+        </Stack>
+      </RadioGroupFormControl>
     );
   }
 );

@@ -2,9 +2,7 @@ import { forwardRef } from 'react';
 import { Box } from '../Box';
 import { StackProps } from '../Stack';
 import { breakpoints } from '../tokens';
-import { RadioGroupProps } from './RadioGroup';
-import { Root } from '@radix-ui/react-radio-group';
-import { FormControl } from '../FormControl';
+import { RadioGroupFormControl, RadioGroupProps } from './RadioGroup';
 
 export interface RadioGridGroupProps extends RadioGroupProps {
   /** Display the RadioGroup contents in a set number of columns */
@@ -36,19 +34,17 @@ export const RadioGridGroup = forwardRef<HTMLDivElement, RadioGridGroupProps>(
       return convert(columns as string);
     };
     return (
-      <Root asChild {...props} ref={ref}>
-        <FormControl {...props}>
-          <Box
-            display="grid"
-            gap={2}
-            gridTemplateColumns={getColumns()}
-            minWidth="fit-content"
-            width={contentWidth}
-          >
-            {children}
-          </Box>
-        </FormControl>
-      </Root>
+      <RadioGroupFormControl ref={ref} {...props}>
+        <Box
+          display="grid"
+          gap={2}
+          gridTemplateColumns={getColumns()}
+          minWidth="fit-content"
+          width={contentWidth}
+        >
+          {children}
+        </Box>
+      </RadioGroupFormControl>
     );
   }
 );

@@ -1,14 +1,15 @@
 import { type RadioGroupItemProps, Item, Indicator } from '@radix-ui/react-radio-group';
-import { Box, BoxProps } from '../Box';
+import { BoxProps } from '../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
-import { forwardRef, type ReactNode } from 'react';
+import { forwardRef, useContext, type ReactNode } from 'react';
 import { Stack } from '../Stack';
 import { styled } from '../theme';
 import { keyframes } from '@emotion/react';
 import { useFormControl } from '../FormControl';
 import { useIds } from '../hooks';
+import { RadioGroupContext } from './RadioGroup';
 
 const StyledRadioItem = styled(Item)({
   all: 'unset',
@@ -112,7 +113,7 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
       providedLabelId,
       providedHelperTextId,
     });
-    const { hasGroupHelperText } = useFormControl();
+    const { hasGroupHelperText } = useContext(RadioGroupContext);
 
     return (
       <Stack direction="row" spacing={1} sx={sx}>
@@ -129,17 +130,15 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
           </StyledRadioItem>
         </StyledRadioContainer>
         {hasGroupHelperText || !helperText ? (
-          <Label id={labelId} htmlFor={id} nested disabled={disabled}>
+          <Label id={labelId} htmlFor={id} nested>
             {label}
           </Label>
         ) : (
           <Stack>
-            <Label htmlFor={id} nested disabled={disabled}>
+            <Label htmlFor={id} nested>
               {label}
             </Label>
-            <FormHelperText id={helperTextId} disabled={disabled}>
-              {helperText}
-            </FormHelperText>
+            <FormHelperText id={helperTextId}>{helperText}</FormHelperText>
           </Stack>
         )}
       </Stack>

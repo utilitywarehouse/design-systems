@@ -3,6 +3,7 @@ import { Radio } from './Radio';
 import { RadioGroup } from './RadioGroup';
 import { Stack } from '../Stack';
 import { useState } from 'react';
+import { RadioTile } from './RadioTile';
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'Web UI / Components / RadioGroup',
@@ -36,14 +37,20 @@ export default meta;
 type Story = StoryObj<typeof RadioGroup>;
 
 export const Workshop: Story = {
-  name: 'RadioGroup',
   render: args => {
     return (
-      <RadioGroup {...args} helperText="RadioGroup with Radio">
-        <Radio value="1" label="One" />
-        <Radio value="2" label="Two" />
-        <Radio value="3" label="Three" />
-      </RadioGroup>
+      <Stack spacing={8}>
+        <RadioGroup {...args} helperText="RadioGroup with Radio" name="with-radio">
+          <Radio value="1" label="One" />
+          <Radio value="2" label="Two" />
+          <Radio value="3" label="Three" />
+        </RadioGroup>
+        <RadioGroup {...args} helperText="RadioGroup with Radio" name="with-radio-tile">
+          <RadioTile value="1" label="One" />
+          <RadioTile value="2" label="Two" />
+          <RadioTile value="3" label="Three" />
+        </RadioGroup>
+      </Stack>
     );
   },
 };
