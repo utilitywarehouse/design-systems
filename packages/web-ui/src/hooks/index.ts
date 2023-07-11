@@ -1,2 +1,2 @@
 export { useMediaQuery } from './use-media-query';
-export { useFormControl } from './use-form-control';
+export { useIds } from './use-ids';

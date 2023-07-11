@@ -1,19 +1,19 @@
 import { useId } from 'react';
 import { uwWebUiPrefix } from '../utils';
 
-interface UseFormControlProps {
+interface UseIdsProps {
   providedId?: string;
   providedLabelId?: string;
   providedHelperTextId?: string;
   providedErrorMessageId?: string;
 }
 
-export const useFormControl = ({
+export const useIds = ({
   providedId,
   providedLabelId,
   providedHelperTextId,
   providedErrorMessageId,
-}: UseFormControlProps) => {
+}: UseIdsProps) => {
   const generatedId = useId();
   const id = providedId || `${uwWebUiPrefix}-${generatedId}`;
   const labelId = providedLabelId || `${uwWebUiPrefix}-${generatedId}-label`;

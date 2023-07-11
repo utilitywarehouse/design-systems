@@ -3,14 +3,14 @@ import { Box, BoxProps } from '../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
-import { forwardRef, useContext, type ReactNode } from 'react';
-import { useFormControl } from '../hooks';
+import { forwardRef, type ReactNode } from 'react';
 import { Stack } from '../Stack';
 import { styled } from '../theme';
 import { keyframes } from '@emotion/react';
-import { RadioGroupContext } from './RadioGroup';
+import { useFormControl } from '../FormControl';
+import { useIds } from '../hooks';
 
-const RadioItem = styled(Item)({
+const StyledRadioItem = styled(Item)({
   all: 'unset',
   cursor: 'pointer',
   height: 20,
@@ -42,7 +42,7 @@ const RadioItem = styled(Item)({
 const appear = keyframes({ from: { opacity: 0 }, to: { opacity: 1 } });
 const disappear = keyframes({ from: { opacity: 1 }, to: { opacity: 0 } });
 
-const RadioIndicator = styled(Indicator)({
+const StyledRadioIndicator = styled(Indicator)({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -66,6 +66,15 @@ const RadioIndicator = styled(Indicator)({
       backgroundColor: colors.grey300,
     },
   },
+});
+
+const StyledRadioContainer = styled('div')({
+  width: 40,
+  height: 40,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  margin: -8,
 });
 
 export interface RadioProps extends Omit<RadioGroupItemProps, 'children'> {
@@ -98,24 +107,17 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
     },
     ref
   ) => {
-    const { id, labelId, helperTextId } = useFormControl({
+    const { id, labelId, helperTextId } = useIds({
       providedId,
       providedLabelId,
       providedHelperTextId,
     });
-    const { hasGroupHelperText } = useContext(RadioGroupContext);
+    const { hasGroupHelperText } = useFormControl();
 
     return (
       <Stack direction="row" spacing={1} sx={sx}>
-        <Box
-          width={40}
-          height={40}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          margin={-1}
-        >
-          <RadioItem
+        <StyledRadioContainer>
+          <StyledRadioItem
             ref={ref}
             {...props}
             id={id}
@@ -123,22 +125,22 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
             aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
             aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
           >
-            <RadioIndicator />
-          </RadioItem>
-        </Box>
+            <StyledRadioIndicator />
+          </StyledRadioItem>
+        </StyledRadioContainer>
         {hasGroupHelperText || !helperText ? (
           <Label id={labelId} htmlFor={id} nested disabled={disabled}>
             {label}
           </Label>
         ) : (
-          <Box display="flex" flexDirection="column">
+          <Stack>
             <Label htmlFor={id} nested disabled={disabled}>
               {label}
             </Label>
             <FormHelperText id={helperTextId} disabled={disabled}>
               {helperText}
             </FormHelperText>
-          </Box>
+          </Stack>
         )}
       </Stack>
     );
