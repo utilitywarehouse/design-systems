@@ -1,5 +1,5 @@
 import { type RadioGroupItemProps, Item, Indicator } from '@radix-ui/react-radio-group';
-import { BoxProps } from '../Box';
+import { Box, BoxProps } from '../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
@@ -76,10 +76,13 @@ const StyledRadioContainer = styled('div')({
 
 export interface RadioProps extends Omit<RadioGroupItemProps, 'children'> {
   sx?: BoxProps['sx'];
+  /**
+   * The label for the Radio. If not using please properly associate the
+   * Radio with a label using the `aria-label` or `aria-labelledby` props
+   */
   label?: ReactNode;
-  labelId?: string;
+  /** Helper text for the Radio. Will not display if the radio group has `helperText` set. */
   helperText?: ReactNode;
-  helperTextId?: string;
 }
 
 /**
@@ -94,25 +97,18 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
       sx,
       id: providedId,
       label,
-      labelId: providedLabelId,
       helperText,
-      helperTextId: providedHelperTextId,
       disabled,
       'aria-describedby': ariaDescribedby,
-      'aria-labelledby': ariaLabelledby,
       ...props
     },
     ref
   ) => {
-    const { id, labelId, helperTextId } = useIds({
-      providedId,
-      providedLabelId,
-      providedHelperTextId,
-    });
+    const { id, helperTextId } = useIds({ providedId, componentPrefix: 'radio' });
     const { hasGroupHelperText } = useContext(RadioGroupContext);
 
     return (
-      <Stack direction="row" spacing={1} sx={sx}>
+      <Box display="flex" alignItems="center" sx={sx}>
         <StyledRadioContainer>
           <StyledRadioItem
             ref={ref}
@@ -120,13 +116,12 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
             id={id}
             disabled={disabled}
             aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
-            aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
           >
             <StyledRadioIndicator />
           </StyledRadioItem>
         </StyledRadioContainer>
         {hasGroupHelperText || !helperText ? (
-          <Label id={labelId} htmlFor={id} nested>
+          <Label htmlFor={id} nested sx={{ paddingLeft: 1 }}>
             {label}
           </Label>
         ) : (
@@ -137,7 +132,7 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
             <FormHelperText id={helperTextId}>{helperText}</FormHelperText>
           </Stack>
         )}
-      </Stack>
+      </Box>
     );
   }
 );

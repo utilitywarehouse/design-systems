@@ -5,7 +5,7 @@ import { breakpoints } from '../tokens';
 import { RadioGroupFormControl, RadioGroupProps } from './RadioGroup';
 
 export interface RadioGridGroupProps extends RadioGroupProps {
-  /** Display the RadioGroup contents in a set number of columns */
+  /** Sets the number of columns to display the contents in. */
   columns?: StackProps['spacing'];
 }
 

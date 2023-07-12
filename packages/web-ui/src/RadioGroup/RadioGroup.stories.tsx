@@ -80,15 +80,15 @@ export const Controlled: Story = {
         onValueChange={setSelected}
         helperText={`The selected value is: ${selected}`}
       >
-        <Radio value="1" label="One" />
-        <Radio value="2" label="Two" />
-        <Radio value="3" label="Three" />
+        <Radio value="1" label="Dog" />
+        <Radio value="2" label="Koala" />
+        <Radio value="3" label="Wolf" />
       </RadioGroup>
     );
   },
   args: {
     errorMessage: 'There is an error',
-    label: 'Controlled Radio Group',
+    label: 'What is your favourite animal?',
   },
 };
 
@@ -97,14 +97,16 @@ export const ShowingError: Story = {
   render: args => {
     return (
       <RadioGroup {...args}>
-        <Radio value="1" label="One" />
-        <Radio value="2" label="Two" />
-        <Radio value="3" label="Three" />
+        <Radio value="1" label="Cat" />
+        <Radio value="2" label="Koala" />
+        <Radio value="3" label="Wolf" />
       </RadioGroup>
     );
   },
   args: {
     error: true,
-    errorMessage: 'Radio group error message',
+    errorMessage: 'You cannot choose cat.',
+    label: 'What is your favourite animal?',
+    helperText: 'Choose only one animal.',
   },
 };

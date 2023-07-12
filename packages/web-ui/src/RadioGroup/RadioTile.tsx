@@ -100,21 +100,14 @@ export const RadioTile = forwardRef<HTMLButtonElement, RadioTileProps>(
       sx,
       id: providedId,
       label,
-      labelId: providedLabelId,
       helperText,
-      helperTextId: providedHelperTextId,
       disabled,
       'aria-describedby': ariaDescribedby,
-      'aria-labelledby': ariaLabelledby,
       ...props
     },
     ref
   ) => {
-    const { id, labelId, helperTextId } = useIds({
-      providedId,
-      providedLabelId,
-      providedHelperTextId,
-    });
+    const { id, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
     const { hasGroupHelperText } = useContext(RadioGroupContext);
     return (
       <StyledRadioItem
@@ -123,14 +116,13 @@ export const RadioTile = forwardRef<HTMLButtonElement, RadioTileProps>(
         id={id}
         disabled={disabled}
         aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
-        aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
       >
         <Stack direction="row" spacing={1}>
           <StyledRadio>
             <StyledRadioIndicator />
           </StyledRadio>
           {hasGroupHelperText || !helperText ? (
-            <Label id={labelId} htmlFor={id} nested>
+            <Label htmlFor={id} nested>
               {label}
             </Label>
           ) : (

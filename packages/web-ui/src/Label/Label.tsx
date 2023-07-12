@@ -41,7 +41,7 @@ export const Label = ({ disabled, nested, sx, component = 'label', ...props }: L
       fontFamily={fonts.secondary}
       fontWeight={fontWeights.secondary[nested ? 'regular' : 'semibold']}
       fontSize={pxToRem(16)}
-      lineHeight={pxToRem(24)}
+      lineHeight="1"
       sx={{
         color: defaultColor,
         cursor: disabled ? 'auto' : 'pointer',

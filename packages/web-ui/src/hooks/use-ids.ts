@@ -6,6 +6,7 @@ interface UseIdsProps {
   providedLabelId?: string;
   providedHelperTextId?: string;
   providedErrorMessageId?: string;
+  componentPrefix?: string;
 }
 
 export const useIds = ({
@@ -13,11 +14,14 @@ export const useIds = ({
   providedLabelId,
   providedHelperTextId,
   providedErrorMessageId,
+  componentPrefix,
 }: UseIdsProps) => {
   const generatedId = useId();
-  const id = providedId || `${uwWebUiPrefix}-${generatedId}`;
-  const labelId = providedLabelId || `${uwWebUiPrefix}-${generatedId}-label`;
-  const helperTextId = providedHelperTextId || `${uwWebUiPrefix}-${generatedId}-helper-text`;
-  const errorMessageId = providedErrorMessageId || `${uwWebUiPrefix}-${generatedId}-error-message`;
+  const prefix = componentPrefix ? `${uwWebUiPrefix}-${componentPrefix}` : uwWebUiPrefix;
+  const defaultId = `${prefix}-${generatedId}`;
+  const id = providedId || defaultId;
+  const labelId = providedLabelId || `${defaultId}-label`;
+  const helperTextId = providedHelperTextId || `${defaultId}-helper-text`;
+  const errorMessageId = providedErrorMessageId || `${defaultId}-error-message`;
   return { id, labelId, helperTextId, errorMessageId };
 };
