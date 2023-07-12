@@ -100,11 +100,12 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
       helperText,
       disabled,
       'aria-describedby': ariaDescribedby,
+      'aria-labelledby': ariaLabelledby,
       ...props
     },
     ref
   ) => {
-    const { id, helperTextId } = useIds({ providedId, componentPrefix: 'radio' });
+    const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radio' });
     const { hasGroupHelperText } = useContext(RadioGroupContext);
 
     return (
@@ -116,12 +117,14 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
             id={id}
             disabled={disabled}
             aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
+            aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
           >
             <StyledRadioIndicator />
           </StyledRadioItem>
         </StyledRadioContainer>
         {hasGroupHelperText || !helperText ? (
-          <Label htmlFor={id} nested sx={{ paddingLeft: 1 }}>
+          // TODO: only show label if present
+          <Label id={labelId} htmlFor={id} nested sx={{ paddingLeft: 1 }}>
             {label}
           </Label>
         ) : (
