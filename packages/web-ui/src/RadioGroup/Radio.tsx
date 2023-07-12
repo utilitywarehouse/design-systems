@@ -7,7 +7,6 @@ import { forwardRef, useContext, type ReactNode } from 'react';
 import { Stack } from '../Stack';
 import { styled } from '../theme';
 import { keyframes } from '@emotion/react';
-import { useFormControl } from '../FormControl';
 import { useIds } from '../hooks';
 import { RadioGroupContext } from './RadioGroup';
 
@@ -22,7 +21,7 @@ const StyledRadioItem = styled(Item)({
   borderColor: colors.grey500,
   '&:focus-visible': {
     borderColor: colors.cyan500,
-    boxShadow: `0 0 0 2px ${colors.cyan700}`,
+    outline: `2px solid ${colors.cyan700}`,
   },
   '&[data-state="checked"]': {
     borderColor: colors.cyan500,
@@ -30,9 +29,6 @@ const StyledRadioItem = styled(Item)({
   '&:hover:enabled': {
     borderColor: colors.cyan500,
     boxShadow: `0 0 0 8px ${colors.cyan75}`,
-    '&:focus-visible': {
-      boxShadow: `0 0 0 2px ${colors.cyan700}, 0 0 0 8px ${colors.cyan75}`,
-    },
   },
   '&[data-disabled]': {
     cursor: 'auto',

@@ -80,22 +80,22 @@ const StyledRadioItem = styled(Item)(({ theme }) => ({
   flex: 1,
   display: 'flex',
   backgroundColor: colorsCommon.brandWhite,
-  boxShadow: `0 0 0 2px ${colors.grey400}`,
-
+  boxShadow: `inset 0 0 0 2px ${colors.grey400}`,
   '&:focus-visible': {
     backgroundColor: colors.cyan100,
-    boxShadow: `0 0 0 2px ${colors.cyan500}`,
+    boxShadow: `inset 0 0 0 2px ${colors.cyan500}`,
+    outline: `4px solid ${colors.cyan700}`,
   },
   '&:hover:enabled': {
     backgroundColor: colors.cyan75,
-    boxShadow: `0 0 0 2px ${colors.cyan500}`,
+    boxShadow: `inset 0 0 0 2px ${colors.cyan500}`,
     [`& ${StyledRadio}`]: {
       borderColor: colors.cyan500,
     },
   },
   '&[data-disabled]': {
     cursor: 'auto',
-    boxShadow: `0 0 0 2px ${colors.grey300}`,
+    boxShadow: `inset 0 0 0 2px ${colors.grey300}`,
   },
 }));
 
