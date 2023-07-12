@@ -14,6 +14,11 @@ export const RadioGroupContext = createContext<RadioGroupContextValue>({
 } as RadioGroupContextValue);
 
 export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
+  /**
+   * The label for the radio group, renders a legend element for the fieldset
+   * group. This should contain the question being answered by the radio
+   * group.
+   */
   label: ReactNode;
   labelId?: string;
   children: ReactNode;

@@ -1,21 +1,13 @@
 import { forwardRef, useContext } from 'react';
-import { type RadioGroupItemProps, Item, Indicator } from '@radix-ui/react-radio-group';
-import type { RefObject } from 'react';
-import { Box } from '../Box';
-import { useFocusRing } from '@react-aria/focus';
-import { useRadio } from '@react-aria/radio';
-import { useLabel } from '@react-aria/label';
-import { useId } from '@react-aria/utils';
+import { Item, Indicator } from '@radix-ui/react-radio-group';
 import { RadioGroupContext } from './RadioGroup';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { transition } from '../tokens';
-import { RadioInput, RadioProps } from './Radio';
+import { RadioProps } from './Radio';
 import { styled } from '../theme';
 import { keyframes } from '@emotion/react';
 import emotionStyled from '@emotion/styled';
-import { uwWebUiPrefix } from '../utils';
 import { Stack } from '../Stack';
 import { useIds } from '../hooks';
 
