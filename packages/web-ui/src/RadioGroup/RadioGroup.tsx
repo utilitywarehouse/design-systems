@@ -15,15 +15,14 @@ export const RadioGroupContext = createContext<RadioGroupContextValue>({
 export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
   children: ReactNode;
   /**
-   * The label for the radio group, renders a legend element for the fieldset
-   * group. This should contain the question being answered by the radio
-   * group.
+   * The label for the radio group. This should contain the question being
+   * answered by the radio group.
    *
    * If you don't include a label you need to ensure you use the `aria-label`
    * or `aria-labelledby` prop to properly associate a label with the radio
    * group.
    */
-  label: ReactNode;
+  label?: ReactNode;
   /**
    * Helper text for the radio group. Provides a hint such as specific
    * requirements for what to choose. When displayed, child `Radio` or
@@ -109,10 +108,14 @@ export interface RadioGroupProps extends BaseRadioGroupProps {
 }
 
 /**
- * The RadioGroup provides an accessible way to group and control a set of
- * RadioItem components, allowing the user to select one option from a set.
+ * The `RadioGroup` provides an accessible way to group and control a set of
+ * `Radio` or `RadioTile` components, allowing the user to select one option from a set.
  *
- * https://www.w3.org/WAI/ARIA/apg/patterns/radio/
+ * The `RadioGroup` is responsible for handling the value, helper text, error
+ * state, error message, and disabled state, as well as determining the presentation and
+ * selection of the items in the list.
+ *
+ * Follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) for radio groups not contained in a toolbar.
  */
 export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
   (

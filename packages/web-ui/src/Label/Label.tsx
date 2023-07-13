@@ -17,10 +17,8 @@ export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElemen
    */
   nested?: boolean;
   /**
-   * Sets the HTML component that is rendered. While this component is
-   * intended to be used as a `label` element, there may be times you need to
-   * render a visual label within a larger label element. See the `RadioTile`
-   * for an example of this.
+   * Sets the HTML component that is rendered.
+   * @default label
    */
   component?: BoxProps['component'];
 }
@@ -30,24 +28,22 @@ export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElemen
  * > provided by UW Web UI.
  *
  * The Label component is used for labelling form elements, such as radio inputs.
- **/
-export const Label = ({ disabled, nested, sx, component = 'label', ...props }: LabelProps) => {
+ */
+export const Label = ({ disabled, nested, sx, ...props }: LabelProps) => {
   const defaultColor = colors.grey1000;
   const disabledColor = colors.grey400;
   return (
     <Box
-      component={component}
+      component="label"
       color={disabled ? disabledColor : defaultColor}
       fontFamily={fonts.secondary}
       fontWeight={fontWeights.secondary[nested ? 'regular' : 'semibold']}
       fontSize={pxToRem(16)}
-      lineHeight="1"
+      lineHeight={pxToRem(24)}
       sx={{
         color: defaultColor,
-        cursor: disabled ? 'auto' : 'pointer',
         '[data-disabled] &': {
           color: disabledColor,
-          cursor: 'auto',
         },
         ...sx,
       }}

@@ -6,6 +6,7 @@ import { RadioTile } from './RadioTile';
 const meta: Meta<typeof RadioGridGroup> = {
   title: 'Web UI / Components / RadioGridGroup',
   component: RadioGridGroup,
+  tags: ['autodocs'],
   argTypes: {
     error: { control: { type: 'boolean' } },
     defaultValue: { control: { type: 'text' } },
@@ -18,8 +19,8 @@ const meta: Meta<typeof RadioGridGroup> = {
     columns: { control: { type: 'number' } },
   },
   args: {
-    columns: 3,
-    label: 'Radio group label',
+    columns: 2,
+    label: 'Label',
     helperText: 'Helper text',
     defaultValue: '1',
     contentWidth: undefined,
@@ -33,21 +34,21 @@ export default meta;
 type Story = StoryObj<typeof RadioGridGroup>;
 
 export const RadioGridGroupWorkshop: Story = {
-  name: 'RadioGridGroup',
+  name: 'Workshop',
   render: args => {
     return (
-      <RadioGridGroup {...args} helperText="RadioGridGroup with Radio">
+      <RadioGridGroup {...args}>
         <RadioTile value="1" label="One" />
         <RadioTile value="2" label="Two" />
         <RadioTile value="3" label="Three" />
         <RadioTile value="4" label="Four" />
         <RadioTile value="5" label="Five" />
         <RadioTile value="6" label="Six" />
-        <RadioTile value="7" label="Seven" />
-        <RadioTile value="8" label="Eight" />
-        <RadioTile value="9" label="Nine" />
       </RadioGridGroup>
     );
+  },
+  args: {
+    helperText: 'RadioGridGroup with Radio',
   },
 };
 
@@ -68,6 +69,6 @@ export const RadioGridWithRadioHelperText: Story = {
     );
   },
   args: {
-    columns: 2,
+    helperText: '',
   },
 };

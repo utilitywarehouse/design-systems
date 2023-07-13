@@ -33,7 +33,6 @@ export const FormHelperText = forwardRef<HTMLSpanElement, FormHelperTextProps>(
         fontSize={pxToRem(13)}
         lineHeight={pxToRem(16)}
         sx={{
-          cursor: disabled ? 'auto' : 'pointer',
           color: defaultColor,
           '[data-disabled] &': {
             color: disabledColor,

@@ -12,9 +12,12 @@ import { Divider } from '@mui/material';
 
 <Description of={RadioGroupStories} />
 
+## Contents
+
+- [Contents](#contents)
+- [Alternatives](#alternatives)
 - [Accessibility](#accessibility)
-  - [Known Issues](#known-issues)
-  - [Keyboard interactions](#keyboard-interactions)
+- [Keyboard interactions](#keyboard-interactions)
 - [Helper text](#helper-text)
 - [Error message](#error-message)
 - [Width](#width)
@@ -24,24 +27,20 @@ import { Divider } from '@mui/material';
   - [Accessibility](#accessibility)
   - [Props](#props)
 
-<Canvas of={RadioGroupStories.Workshop} sourceState="shown" />
+<Canvas of={RadioGroupStories.Workshop} />
+
+## Alternatives
+
+- [RadioGridGroup](?path=/docs/components-radiogridgroup--documentation) - For presenting radios in a grid layout.
 
 ## Accessibility
-
-Follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) for radio groups not contained in a toolbar.
 
 The necessary aria props, such as `aria-labelledby`, `aria-describedby` and
 `aria-errormessage` are handled internally, however you can pass these and
 other aria props, such as `aria-label`, to the `RadioGroup` and `Radio`
 components yourself if you need to.
 
-### Known Issues
-
-The current focus indicator for the `Radio` component does not meet AA colour
-contrast standards, and the focus styles for the `RadioTile` are being reviewed
-to ensure they are accessible. This is being worked on by the Design Systems team.
-
-### Keyboard interactions
+## Keyboard interactions
 
 <Stack spacing={1} divider={<Divider />}>
   <Box display="flex" alignItems="baseline">
@@ -104,7 +103,7 @@ In general, radio buttons should have a value selected by default. If this is
 not the case, you can display an error if no value is selected when the form is
 submitted.
 
-<Canvas of={RadioGroupStories.ShowingError} sourceState="none" />
+<Canvas of={RadioGroupStories.ShowingError} />
 
 ## Width
 
@@ -120,31 +119,24 @@ the `RadioGroup`.
 This is a responsive property, so you are able to set different widths for
 different breakpoints.
 
+<Canvas of={RadioGroupStories.Width} />
+
 ## Controlled
 
 A controlled value can be provided using the value prop, which accepts a value
 corresponding with the value prop of each `Radio`. The onChange event is fired
 when the user selects a `Radio`.
 
-<Canvas of={RadioGroupStories.Controlled} sourceState="shown"
-source={{
-code: `
-const [selected, setSelected] = useState('')
-
-[...]
-
-<RadioGroup
-  value={selected}
-  onChange={setSelected}
-  helperText={'The selected value is: ' + selected}
->
-  <Radio value="1">One</Radio>
-  <Radio value="2">Two</Radio>
-  <Radio value="3">Three</Radio>
-</RadioGroup>
-`, }} />
+<Canvas of={RadioGroupStories.Controlled} />
 
 ## RadioGroup props
+
+<details>
+<summary><Text component="span" variant="body">Click to show `RadioGroup` props</Text></summary>
+
+<ArgTypes of={RadioGroupStories} />
+
+</details>
 
 ## Radio & RadioTile
 
@@ -152,10 +144,15 @@ The `Radio` & `RadioTile` components should be used within a `RadioGroup` compon
 
 ### Accessibility
 
-The `Radio` and `RadioTile` are, by default, appropriately labelled using it's
-children, if you do not provide children, you must specify an `aria-label` for
-accessibility.
+The `Radio` and `RadioTile` are, by default, appropriately labelled when using
+the `label` props, if you do not provide a label, you must specify an
+`aria-label` or `aria-labelledby` for accessibility.
 
 ### Props
 
+<details>
+<summary><Text component="span" variant="body">Click to show `Radio`/`RadioTile` props</Text></summary>
+
 <ArgTypes of={RadioStories} />
+
+</details>

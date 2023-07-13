@@ -10,11 +10,11 @@ import { keyframes } from '@emotion/react';
 import emotionStyled from '@emotion/styled';
 import { Stack } from '../Stack';
 import { useIds } from '../hooks';
+import { Box } from '../Box';
 
 export interface RadioTileProps extends RadioProps {}
 
 const StyledRadio = emotionStyled('div')({
-  cursor: 'pointer',
   height: 20,
   width: 20,
   backgroundColor: colorsCommon.brandWhite,
@@ -29,7 +29,6 @@ const StyledRadio = emotionStyled('div')({
     borderColor: colors.cyan500,
   },
   '[data-disabled] &': {
-    cursor: 'auto',
     borderColor: colors.grey300,
   },
 });
@@ -65,8 +64,6 @@ const StyledRadioIndicator = styled(Indicator)({
 
 const StyledRadioItem = styled(Item)(({ theme }) => ({
   all: 'unset',
-  cursor: 'pointer',
-  minWidth: 80,
   borderRadius: '8px',
   padding: theme.spacing(2),
   flex: 1,
@@ -86,7 +83,6 @@ const StyledRadioItem = styled(Item)(({ theme }) => ({
     },
   },
   '&[data-disabled]': {
-    cursor: 'auto',
     boxShadow: `inset 0 0 0 2px ${colors.grey300}`,
   },
 }));
@@ -97,18 +93,21 @@ const StyledRadioItem = styled(Item)(({ theme }) => ({
 export const RadioTile = forwardRef<HTMLButtonElement, RadioTileProps>(
   (
     {
-      sx,
       id: providedId,
       label,
       helperText,
       disabled,
       'aria-describedby': ariaDescribedby,
+      'aria-labelledby': ariaLabelledby,
       ...props
     },
     ref
   ) => {
-    const { id, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
+    const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
     const { hasGroupHelperText } = useContext(RadioGroupContext);
+    const showHelperText = !hasGroupHelperText && !!helperText;
+    const showLabel = !!label;
+
     return (
       <StyledRadioItem
         ref={ref}
@@ -116,24 +115,23 @@ export const RadioTile = forwardRef<HTMLButtonElement, RadioTileProps>(
         id={id}
         disabled={disabled}
         aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
+        aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
       >
-        <Stack direction="row" spacing={1}>
+        <Box component="label" display="flex" gap={1}>
           <StyledRadio>
             <StyledRadioIndicator />
           </StyledRadio>
-          {hasGroupHelperText || !helperText ? (
-            <Label htmlFor={id} nested>
-              {label}
-            </Label>
-          ) : (
-            <Stack>
-              <Label htmlFor={id} nested>
+          {showLabel ? (
+            <Box display="flex" flexDirection="column" gap={0.5}>
+              <Label component="span" id={labelId} htmlFor={id} nested>
                 {label}
               </Label>
-              <FormHelperText id={helperTextId}>{helperText}</FormHelperText>
-            </Stack>
-          )}
-        </Stack>
+              {showHelperText ? (
+                <FormHelperText id={helperTextId}>{helperText}</FormHelperText>
+              ) : null}
+            </Box>
+          ) : null}
+        </Box>
       </StyledRadioItem>
     );
   }

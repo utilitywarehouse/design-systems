@@ -45,7 +45,7 @@ export const WithCustomLabel: Story = {
   name: 'Custom Radio label',
   render: () => {
     const CustomLabel = (props: { children: TextProps['children'] }) => (
-      <Text {...props} variant="subtitle" component="span" bold />
+      <Text {...props} variant="subtitle" component="span" bold sx={{ lineHeight: '24px' }} />
     );
     return (
       <RadioGroup defaultValue="1" label="Radio group label">

@@ -12,7 +12,6 @@ import { RadioGroupContext } from './RadioGroup';
 
 const StyledRadioItem = styled(Item)({
   all: 'unset',
-  cursor: 'pointer',
   height: 20,
   width: 20,
   backgroundColor: colorsCommon.brandWhite,
@@ -31,7 +30,6 @@ const StyledRadioItem = styled(Item)({
     boxShadow: `0 0 0 8px ${colors.cyan75}`,
   },
   '&[data-disabled]': {
-    cursor: 'auto',
     borderColor: colors.grey300,
   },
 });
@@ -78,7 +76,7 @@ export interface RadioProps extends Omit<RadioGroupItemProps, 'children'> {
   sx?: BoxProps['sx'];
   /**
    * The label for the Radio. If not using please properly associate the
-   * Radio with a label using the `aria-label` or `aria-labelledby` props
+   * Radio with a label using the `aria-label` or `aria-labelledby` props.
    */
   label?: ReactNode;
   /** Helper text for the Radio. Will not display if the radio group has `helperText` set. */
@@ -107,9 +105,11 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radio' });
     const { hasGroupHelperText } = useContext(RadioGroupContext);
+    const showHelperText = !hasGroupHelperText && !!helperText;
+    const showLabel = !!label;
 
     return (
-      <Box display="flex" alignItems="center" sx={sx}>
+      <Box component="label" display="flex" gap={1} sx={sx}>
         <StyledRadioContainer>
           <StyledRadioItem
             ref={ref}
@@ -122,19 +122,16 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
             <StyledRadioIndicator />
           </StyledRadioItem>
         </StyledRadioContainer>
-        {hasGroupHelperText || !helperText ? (
-          // TODO: only show label if present
-          <Label id={labelId} htmlFor={id} nested sx={{ paddingLeft: 1 }}>
-            {label}
-          </Label>
-        ) : (
-          <Stack>
-            <Label htmlFor={id} nested>
+        {showLabel ? (
+          <Box display="flex" flexDirection="column" gap={0.5}>
+            <Label component="span" id={labelId} htmlFor={id} nested>
               {label}
             </Label>
-            <FormHelperText id={helperTextId}>{helperText}</FormHelperText>
-          </Stack>
-        )}
+            {showHelperText ? (
+              <FormHelperText id={helperTextId}>{helperText}</FormHelperText>
+            ) : null}
+          </Box>
+        ) : null}
       </Box>
     );
   }
