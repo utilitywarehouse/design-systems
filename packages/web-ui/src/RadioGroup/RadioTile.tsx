@@ -8,7 +8,6 @@ import { RadioProps } from './Radio';
 import { styled } from '../theme';
 import { keyframes } from '@emotion/react';
 import emotionStyled from '@emotion/styled';
-import { Stack } from '../Stack';
 import { useIds } from '../hooks';
 import { Box } from '../Box';
 

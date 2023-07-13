@@ -4,7 +4,6 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
 import { forwardRef, useContext, type ReactNode } from 'react';
-import { Stack } from '../Stack';
 import { styled } from '../theme';
 import { keyframes } from '@emotion/react';
 import { useIds } from '../hooks';
