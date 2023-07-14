@@ -1,12 +1,12 @@
 import { forwardRef } from 'react';
 import type { ReactNode, FieldsetHTMLAttributes } from 'react';
-import { Box, BoxProps } from '../Box';
+import { Box } from '../Box';
 import { Stack } from '../Stack';
+import { SxProps } from '../types';
 
-export interface FieldsetProps extends FieldsetHTMLAttributes<HTMLFieldSetElement> {
+export interface FieldsetProps extends SxProps, FieldsetHTMLAttributes<HTMLFieldSetElement> {
   /** Sets the Fieldset content */
   children: ReactNode;
-  sx?: BoxProps['sx'];
 }
 
 /**

@@ -1,9 +1,9 @@
-import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
+import { BoxTypeMap as MuiBoxTypeMap, createBox } from '@mui/system';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { createContext, forwardRef, useContext, useMemo } from 'react';
-import type { Theme } from '../theme';
-import MuiBox from '@mui/material/Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { theme, type Theme } from '../theme';
+import { uwWebUiPrefix } from '../utils';
 
 export type DefaultBoxComponent = 'div';
 
@@ -17,6 +17,11 @@ export interface CustomBoxProps {
   background?: string; // we are not setting this as MuiBoxProps['backgroundColor'] as we don't believe there is any need for it to be responsive, yet.
 }
 
+const BaseBox = createBox<Theme, { background?: string }>({
+  defaultTheme: theme,
+  defaultClassName: `[ ${uwWebUiPrefix}-box ]`,
+});
+
 export type BoxProps<
   D extends React.ElementType<any> = DefaultBoxComponent,
   P = {}
@@ -24,14 +29,14 @@ export type BoxProps<
 
 type BackgroundContextValue = { background: string; isBrandBackground: boolean };
 
-const backgroundContext = createContext<BackgroundContextValue>({
+const BackgroundContext = createContext<BackgroundContextValue>({
   background: colorsCommon.brandWhite,
   isBrandBackground: false,
 });
 
-const BackgroundProvider = backgroundContext.Provider;
+const BackgroundProvider = BackgroundContext.Provider;
 
-export const useBackground = () => useContext(backgroundContext);
+export const useBackground = () => useContext(BackgroundContext);
 
 /**
  * Box is a low-level primitive, which supports theme-aware styling props, and can
@@ -51,9 +56,9 @@ export const Box = forwardRef(function Box({ background, bgcolor, ...props }, re
 
   return background ? (
     <BackgroundProvider value={backgroundProps}>
-      <MuiBox ref={ref} bgcolor={backgroundColor} {...props} />
+      <BaseBox ref={ref} bgcolor={backgroundColor} {...props} />
     </BackgroundProvider>
   ) : (
-    <MuiBox ref={ref} bgcolor={backgroundColor} {...props} />
+    <BaseBox ref={ref} bgcolor={backgroundColor} {...props} />
   );
 }) as OverridableComponent<MuiBoxTypeMap<CustomBoxProps, DefaultBoxComponent, Theme>>;

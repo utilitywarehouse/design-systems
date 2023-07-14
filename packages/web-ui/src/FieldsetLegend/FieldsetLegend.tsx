@@ -2,14 +2,14 @@ import { forwardRef } from 'react';
 import type { ReactNode, HTMLAttributes } from 'react';
 import { fonts, fontWeights } from '../tokens';
 import { colors } from '@utilitywarehouse/colour-system';
-import { Box, BoxProps } from '../Box';
+import { Box } from '../Box';
 import { pxToRem } from '../utils';
+import { SxProps } from '../types';
 
-export interface FieldsetLegendProps extends HTMLAttributes<HTMLLegendElement> {
+export interface FieldsetLegendProps extends SxProps, HTMLAttributes<HTMLLegendElement> {
   /** Sets whether the text should appear disabled. */
   disabled?: boolean;
   children: ReactNode;
-  sx?: BoxProps['sx'];
 }
 
 /**
