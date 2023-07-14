@@ -54,7 +54,6 @@
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "storybook": "^7.0.2",
-    "storybook-addon-designs": "beta",
     "tsup": "^6.7.0"
   },
   "peerDependencies": {
