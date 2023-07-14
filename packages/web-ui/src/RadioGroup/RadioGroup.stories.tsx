@@ -41,12 +41,6 @@ const sharedArgs = {
 
 export const Workshop: Story = {
   name: 'RadioGroup',
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=902-9379&t=XTterR22jM1rC0Xr-0',
-    },
-  },
   render: args => {
     return (
       <Stack spacing={8}>

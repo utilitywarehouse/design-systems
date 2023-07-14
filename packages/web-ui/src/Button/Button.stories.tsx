@@ -18,13 +18,7 @@ type Story = StoryObj<typeof Button>;
 
 export const ButtonKitchenSink: Story = {
   name: 'Kitchen Sink',
-  parameters: {
-    layout: 'fullscreen',
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=6%3A139&t=nzEeo2X7lGLW2Y93-1',
-    },
-  },
+  parameters: { layout: 'fullscreen' },
   render: () => {
     return (
       <Stack>

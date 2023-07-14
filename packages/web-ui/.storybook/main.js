@@ -10,7 +10,6 @@ const config = {
         actions: false,
       },
     },
-    'storybook-addon-designs',
   ],
   framework: {
     name: '@storybook/react-webpack5',
