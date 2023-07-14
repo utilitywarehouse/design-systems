@@ -68,6 +68,13 @@ Pull requests are encouraged. If you want to add a feature or fix a bug:
 1. Create a changeset by running `pnpm changeset`. [More info](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md).
 1. Push your branch and open a PR 🚀
 
+## Using the styled function
+
+When styling components, if you use the `styled()` utility, please import it
+from `@mui/material`. Doing this means any component you build will have the
+`sx` prop available on it, with the correct types, and will also be able to
+make use of the [component selectors API](https://mui.com/system/styled/#how-to-use-components-selector-api).
+
 ## Documentation Contributions
 
 There are a number of ways you can add documentation for components and for more general information.
