@@ -6,9 +6,9 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import { Box } from '../Box';
-import { dataAttributes } from '../utils';
+import { dataAttributes, spacing } from '../utils';
 import type { ReactNode, AllHTMLAttributes } from 'react';
-import { styled } from '../theme';
+import { styled } from '@mui/material';
 import { colors } from '@utilitywarehouse/colour-system';
 
 const isSuccessStatus = (status?: string): boolean => status === 'success';
@@ -62,10 +62,7 @@ export interface TextFieldProps
 
 const SuccessIcon = styled(SuccessOutlined)({ fill: colors.green600 });
 const WarningIcon = styled(WarningOutlined)({ fill: colors.red600 });
-const IconContainer = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  marginLeft: theme.spacing(0.5),
-}));
+const IconContainer = styled(Box)({ display: 'flex', marginLeft: spacing(0.5) });
 
 const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(function TextfieldInput(
   {
