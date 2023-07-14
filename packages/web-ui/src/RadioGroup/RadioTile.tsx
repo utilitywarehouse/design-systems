@@ -1,5 +1,5 @@
 import { forwardRef, useContext } from 'react';
-import { Item } from '@radix-ui/react-radio-group';
+import { Item, type RadioGroupItemProps } from '@radix-ui/react-radio-group';
 import { RadioGroupContext } from './RadioGroup';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
@@ -53,7 +53,7 @@ const StyledRadioItem = styled(Item)({
   '&[data-disabled]': {
     boxShadow: `inset 0 0 0 2px ${colors.grey300}`,
   },
-});
+}) as React.FC<RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>>;
 
 /**
  * The `RadioTile` should be used within a `RadioGroup` component.

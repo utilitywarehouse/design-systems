@@ -1,4 +1,9 @@
-import { type RadioGroupItemProps, Item, Indicator } from '@radix-ui/react-radio-group';
+import {
+  type RadioGroupItemProps,
+  Item,
+  Indicator,
+  RadioGroupIndicatorProps,
+} from '@radix-ui/react-radio-group';
 import { Box } from '../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Label } from '../Label';
@@ -31,7 +36,7 @@ const StyledRadioItem = styled(Item)({
   '&[data-disabled]': {
     borderColor: colors.grey300,
   },
-});
+}) as React.FC<RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>>;
 
 export const StyledRadioIndicator = styled(Indicator)({
   display: 'flex',
@@ -53,7 +58,7 @@ export const StyledRadioIndicator = styled(Indicator)({
       backgroundColor: colors.grey300,
     },
   },
-});
+}) as React.FC<RadioGroupIndicatorProps & React.RefAttributes<HTMLButtonElement>>;
 
 const StyledRadioContainer = styled('div')({
   width: 40,
