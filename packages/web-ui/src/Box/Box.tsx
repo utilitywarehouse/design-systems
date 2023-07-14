@@ -19,7 +19,7 @@ export interface CustomBoxProps {
 
 const BaseBox = createBox<Theme, { background?: string }>({
   defaultTheme: theme,
-  defaultClassName: `[ ${uwWebUiPrefix}-box ]`,
+  defaultClassName: `${uwWebUiPrefix}-Box`,
 });
 
 export type BoxProps<
