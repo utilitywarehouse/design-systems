@@ -6,8 +6,6 @@ import { colors } from '@utilitywarehouse/colour-system';
 import { SxProps } from '../types';
 
 export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElement> {
-  /** Sets the label content */
-  children: ReactNode;
   /** Sets the disabled prop, when true sets the label colour to grey */
   disabled?: boolean;
   /**
@@ -21,6 +19,7 @@ export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElemen
    * @default label
    */
   component?: BoxProps['component'];
+  children: ReactNode;
 }
 
 /**
@@ -29,12 +28,12 @@ export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElemen
  *
  * The Label component is used for labelling form elements, such as radio inputs.
  */
-export const Label = ({ disabled, nested, sx, ...props }: LabelProps) => {
+export const Label = ({ component = 'label', disabled, nested, sx, ...props }: LabelProps) => {
   const defaultColor = colors.grey1000;
   const disabledColor = colors.grey400;
   return (
     <Box
-      component="label"
+      component={component}
       color={disabled ? disabledColor : defaultColor}
       fontFamily={fonts.secondary}
       fontWeight={fontWeights.secondary[nested ? 'regular' : 'semibold']}

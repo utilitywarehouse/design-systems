@@ -6,13 +6,14 @@ import { FieldsetLegend } from '../FieldsetLegend';
 import { FormHelperText } from '../FormHelperText';
 import { FormErrorMessage } from '../FormErrorMessage';
 import { useIds } from '../hooks';
+import { SxProps } from '../types';
 
 export type RadioGroupContextValue = { hasGroupHelperText: boolean };
 export const RadioGroupContext = createContext<RadioGroupContextValue>({
   hasGroupHelperText: false,
 } as RadioGroupContextValue);
 
-export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
+export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'>, SxProps {
   children: ReactNode;
   /**
    * The label for the radio group. This should contain the question being
@@ -38,7 +39,6 @@ export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
   error?: boolean;
   /** The error message to be displayed. */
   errorMessage?: ReactNode;
-  sx?: BoxProps['sx'];
 }
 
 export const RadioGroupFormControl = forwardRef<HTMLDivElement, RadioGroupProps>(

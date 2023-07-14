@@ -1,13 +1,13 @@
 import { type RadioGroupItemProps, Item, Indicator } from '@radix-ui/react-radio-group';
-import { Box, BoxProps } from '../Box';
+import { Box } from '../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
 import { forwardRef, useContext, type ReactNode } from 'react';
-import { styled } from '../theme';
-import { keyframes } from '@emotion/react';
+import { styled } from '@mui/material';
 import { useIds } from '../hooks';
 import { RadioGroupContext } from './RadioGroup';
+import { SxProps } from '../types';
 
 const StyledRadioItem = styled(Item)({
   all: 'unset',
@@ -33,9 +33,6 @@ const StyledRadioItem = styled(Item)({
   },
 });
 
-const appear = keyframes({ from: { opacity: 0 }, to: { opacity: 1 } });
-const disappear = keyframes({ from: { opacity: 1 }, to: { opacity: 0 } });
-
 const StyledRadioIndicator = styled(Indicator)({
   display: 'flex',
   alignItems: 'center',
@@ -43,10 +40,6 @@ const StyledRadioIndicator = styled(Indicator)({
   width: '100%',
   height: '100%',
   position: 'relative',
-  animation: `${disappear.toString()} 120ms ease-in`,
-  '&[data-state="checked"]': {
-    animation: `${appear.toString()} 120ms ease-out`,
-  },
   '&::after': {
     content: '""',
     display: 'block',
@@ -71,8 +64,7 @@ const StyledRadioContainer = styled('div')({
   margin: -8,
 });
 
-export interface RadioProps extends Omit<RadioGroupItemProps, 'children'> {
-  sx?: BoxProps['sx'];
+export interface RadioProps extends SxProps, Omit<RadioGroupItemProps, 'children'> {
   /**
    * The label for the Radio. If not using please properly associate the
    * Radio with a label using the `aria-label` or `aria-labelledby` props.

@@ -5,15 +5,14 @@ import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { RadioProps } from './Radio';
-import { styled } from '../theme';
-import { keyframes } from '@emotion/react';
-import emotionStyled from '@emotion/styled';
+import { styled } from '@mui/material';
 import { useIds } from '../hooks';
 import { Box } from '../Box';
+import { spacing } from '../utils';
 
 export interface RadioTileProps extends RadioProps {}
 
-const StyledRadio = emotionStyled('div')({
+const StyledRadio = styled('div')({
   height: 20,
   width: 20,
   backgroundColor: colorsCommon.brandWhite,
@@ -32,9 +31,6 @@ const StyledRadio = emotionStyled('div')({
   },
 });
 
-const appear = keyframes({ from: { opacity: 0 }, to: { opacity: 1 } });
-const disappear = keyframes({ from: { opacity: 1 }, to: { opacity: 0 } });
-
 const StyledRadioIndicator = styled(Indicator)({
   display: 'flex',
   alignItems: 'center',
@@ -42,10 +38,6 @@ const StyledRadioIndicator = styled(Indicator)({
   width: '100%',
   height: '100%',
   position: 'relative',
-  animation: `${disappear.toString()} 120ms ease-in`,
-  '&[data-state="checked"]': {
-    animation: `${appear.toString()} 120ms ease-out`,
-  },
   '&::after': {
     content: '""',
     display: 'block',
@@ -61,10 +53,10 @@ const StyledRadioIndicator = styled(Indicator)({
   },
 });
 
-const StyledRadioItem = styled(Item)(({ theme }) => ({
+const StyledRadioItem = styled(Item)({
   all: 'unset',
   borderRadius: '8px',
-  padding: theme.spacing(2),
+  padding: spacing(2),
   flex: 1,
   display: 'flex',
   backgroundColor: colorsCommon.brandWhite,
@@ -84,7 +76,7 @@ const StyledRadioItem = styled(Item)(({ theme }) => ({
   '&[data-disabled]': {
     boxShadow: `inset 0 0 0 2px ${colors.grey300}`,
   },
-}));
+});
 
 /**
  * The `RadioTile` should be used within a `RadioGroup` component.

@@ -2,12 +2,12 @@ import { forwardRef } from 'react';
 import type { ReactNode, HTMLAttributes } from 'react';
 import { fonts, fontWeights } from '../tokens';
 import { colors } from '@utilitywarehouse/colour-system';
-import { Box, BoxProps } from '../Box';
+import { Box } from '../Box';
 import { pxToRem } from '../utils';
+import { SxProps } from '../types';
 
-export interface FormErrorMessageProps extends HTMLAttributes<HTMLSpanElement> {
+export interface FormErrorMessageProps extends SxProps, HTMLAttributes<HTMLSpanElement> {
   children: ReactNode;
-  sx?: BoxProps['sx'];
 }
 
 /**

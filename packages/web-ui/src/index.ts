@@ -12,6 +12,7 @@ export * from './Label';
 export * from './Fieldset';
 export * from './FieldsetLegend';
 export * from './FormHelperText';
+export * from './FormErrorMessage';
 export * from './Grid';
 export * from './Heading';
 export * from './Link';
