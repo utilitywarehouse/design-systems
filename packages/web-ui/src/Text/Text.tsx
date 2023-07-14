@@ -3,6 +3,7 @@ import { fonts, fontWeights } from '../tokens';
 import { Box, BoxProps, useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
+import { SxProps } from '../types';
 
 export type TextProps = {
   /**
@@ -21,7 +22,8 @@ export type TextProps = {
    * @default false
    */
   bold?: boolean;
-} & Pick<BoxProps, 'sx' | 'component' | 'children'> &
+} & SxProps &
+  Pick<BoxProps, 'component' | 'children'> &
   Pick<MuiTypographyProps, 'textTransform' | 'align' | 'noWrap'>;
 
 /**

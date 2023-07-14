@@ -3,8 +3,9 @@ import { Box, BoxProps } from '../Box';
 import { pxToRem } from '../utils';
 import { fonts, fontWeights } from '../tokens';
 import { colors } from '@utilitywarehouse/colour-system';
+import { SxProps } from '../types';
 
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElement> {
   /** Sets the label content */
   children: ReactNode;
   /** Sets the disabled prop, when true sets the label colour to grey */
@@ -22,7 +23,6 @@ export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
    * for an example of this.
    */
   component?: BoxProps['component'];
-  sx?: BoxProps['sx'];
 }
 
 /**

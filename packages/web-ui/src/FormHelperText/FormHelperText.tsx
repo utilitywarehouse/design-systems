@@ -2,16 +2,16 @@ import { forwardRef } from 'react';
 import type { ReactNode, HTMLAttributes } from 'react';
 import { fonts, fontWeights } from '../tokens';
 import { colors } from '@utilitywarehouse/colour-system';
-import { Box, BoxProps } from '../Box';
+import { Box } from '../Box';
 import { pxToRem } from '../utils';
+import { SxProps } from '../types';
 
-export interface FormHelperTextProps extends HTMLAttributes<HTMLSpanElement> {
+export interface FormHelperTextProps extends SxProps, HTMLAttributes<HTMLSpanElement> {
   /** Sets whether the text should appear disabled. */
   disabled?: boolean;
   /** Sets whether the text is displaying an error message. */
   error?: boolean;
   children: ReactNode;
-  sx?: BoxProps['sx'];
 }
 
 /**
