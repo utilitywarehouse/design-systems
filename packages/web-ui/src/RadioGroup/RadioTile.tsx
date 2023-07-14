@@ -30,6 +30,7 @@ const StyledRadio = styled('div')({
     borderColor: colors.grey300,
   },
 });
+console.log(`${StyledRadio}`);
 
 const StyledRadioItem = styled(Item)({
   all: 'unset',
