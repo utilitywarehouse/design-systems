@@ -33,7 +33,7 @@ const StyledRadioItem = styled(Item)({
   },
 });
 
-const StyledRadioIndicator = styled(Indicator)({
+export const StyledRadioIndicator = styled(Indicator)({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

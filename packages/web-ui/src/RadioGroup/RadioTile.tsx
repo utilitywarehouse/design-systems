@@ -1,10 +1,10 @@
 import { forwardRef, useContext } from 'react';
-import { Item, Indicator } from '@radix-ui/react-radio-group';
+import { Item } from '@radix-ui/react-radio-group';
 import { RadioGroupContext } from './RadioGroup';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { RadioProps } from './Radio';
+import { RadioProps, StyledRadioIndicator } from './Radio';
 import { styled } from '@mui/material';
 import { useIds } from '../hooks';
 import { Box } from '../Box';
@@ -31,33 +31,10 @@ const StyledRadio = styled('div')({
   },
 });
 
-const StyledRadioIndicator = styled(Indicator)({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '100%',
-  height: '100%',
-  position: 'relative',
-  '&::after': {
-    content: '""',
-    display: 'block',
-    width: 14,
-    height: 14,
-    borderRadius: '50%',
-    backgroundColor: colors.cyan500,
-  },
-  '&[data-disabled]': {
-    '&::after': {
-      backgroundColor: colors.grey300,
-    },
-  },
-});
-
 const StyledRadioItem = styled(Item)({
   all: 'unset',
   borderRadius: '8px',
   padding: spacing(2),
-  flex: 1,
   display: 'flex',
   backgroundColor: colorsCommon.brandWhite,
   boxShadow: `inset 0 0 0 2px ${colors.grey400}`,
