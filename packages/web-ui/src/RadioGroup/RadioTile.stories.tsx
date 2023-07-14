@@ -38,3 +38,16 @@ export const RadioTileStory: Story = {
     label: 'One',
   },
 };
+
+export const RadioTileStoryWithOneLongLabel: Story = {
+  name: 'RadioTile with one long label',
+  render: () => {
+    return (
+      <RadioGroup label="Radio group">
+        <RadioTile value="1" label="One" />
+        <RadioTile value="2" label="Twit Twoooooooooooooo" />
+        <RadioTile value="3" label="Three" />
+      </RadioGroup>
+    );
+  },
+};
