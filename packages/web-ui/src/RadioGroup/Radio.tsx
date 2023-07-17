@@ -22,7 +22,7 @@ const StyledRadioItem = styled(Item)({
   borderRadius: '100%',
   border: '2px solid',
   borderColor: colors.grey500,
-  '&:focus-visible': {
+  '&:focus': {
     borderColor: colors.cyan500,
     outline: `2px solid ${colors.cyan700}`,
   },
