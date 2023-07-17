@@ -75,6 +75,7 @@ export const RadioGroupFormControl = forwardRef<HTMLDivElement, RadioGroupProps>
         id={id}
         aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
+        aria-invalid={showErrorMessage}
       >
         <Fieldset sx={sx}>
           {label ? <FieldsetLegend id={labelId}>{label}</FieldsetLegend> : null}
