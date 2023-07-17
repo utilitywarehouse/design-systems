@@ -93,26 +93,26 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
       label,
       helperText,
       disabled,
-      'aria-describedby': ariaDescribedby,
       'aria-labelledby': ariaLabelledby,
       ...props
     },
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radio' });
-    const { hasGroupHelperText } = useContext(RadioGroupContext);
+    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
+      useContext(RadioGroupContext);
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
 
     return (
-      <Box component="label" display="flex" gap={1} sx={sx}>
+      <Box display="flex" sx={sx} gap={1}>
         <StyledRadioContainer>
           <StyledRadioItem
             ref={ref}
             {...props}
             id={id}
             disabled={disabled}
-            aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
+            aria-describedby={showHelperText ? helperTextId : ariaDescribedby}
             aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
           >
             <StyledRadioIndicator />
@@ -120,7 +120,22 @@ export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
         </StyledRadioContainer>
         {showLabel ? (
           <Box display="flex" flexDirection="column" gap={0.5}>
-            <Label component="span" id={labelId} htmlFor={id} nested>
+            <Label
+              id={labelId}
+              htmlFor={id}
+              nested
+              // we do this so that the gap between the radio & label is clickable
+              sx={{
+                position: 'relative',
+                '&:after': {
+                  content: '""',
+                  position: 'absolute',
+                  height: '100%',
+                  width: '100%',
+                  left: -8,
+                },
+              }}
+            >
               {label}
             </Label>
             {showHelperText ? (

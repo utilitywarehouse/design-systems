@@ -7,8 +7,9 @@ import { FormHelperText } from '../FormHelperText';
 import { FormErrorMessage } from '../FormErrorMessage';
 import { useIds } from '../hooks';
 import { SxProps } from '../types';
+import { mergeIds } from '../utils';
 
-export type RadioGroupContextValue = { hasGroupHelperText: boolean };
+export type RadioGroupContextValue = { hasGroupHelperText: boolean; 'aria-describedby'?: string };
 export const RadioGroupContext = createContext<RadioGroupContextValue>({
   hasGroupHelperText: false,
 } as RadioGroupContextValue);
@@ -74,7 +75,6 @@ export const RadioGroupFormControl = forwardRef<HTMLDivElement, RadioGroupProps>
         id={id}
         aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
-        aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
       >
         <Fieldset sx={sx}>
           {label ? <FieldsetLegend id={labelId}>{label}</FieldsetLegend> : null}
@@ -84,7 +84,15 @@ export const RadioGroupFormControl = forwardRef<HTMLDivElement, RadioGroupProps>
             flexDirection={helperTextPosition === 'top' ? 'column' : 'column-reverse'}
           >
             {helperText ? <FormHelperText id={helperTextId}>{helperText}</FormHelperText> : null}
-            <RadioGroupContext.Provider value={{ hasGroupHelperText: !!helperText }}>
+            <RadioGroupContext.Provider
+              value={{
+                hasGroupHelperText: !!helperText,
+                'aria-describedby': mergeIds(
+                  ariaDescribedby || !!helperText ? helperTextId : undefined,
+                  ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
+                ),
+              }}
+            >
               {children}
             </RadioGroupContext.Provider>
           </Box>

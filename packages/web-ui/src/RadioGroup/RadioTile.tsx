@@ -30,7 +30,6 @@ const StyledRadio = styled('div')({
     borderColor: colors.grey300,
   },
 });
-console.log(`${StyledRadio}`);
 
 const StyledRadioItem = styled(Item)({
   all: 'unset',
@@ -61,19 +60,12 @@ const StyledRadioItem = styled(Item)({
  */
 export const RadioTile = forwardRef<HTMLButtonElement, RadioTileProps>(
   (
-    {
-      id: providedId,
-      label,
-      helperText,
-      disabled,
-      'aria-describedby': ariaDescribedby,
-      'aria-labelledby': ariaLabelledby,
-      ...props
-    },
+    { id: providedId, label, helperText, disabled, 'aria-labelledby': ariaLabelledby, ...props },
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
-    const { hasGroupHelperText } = useContext(RadioGroupContext);
+    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
+      useContext(RadioGroupContext);
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
 
@@ -83,7 +75,7 @@ export const RadioTile = forwardRef<HTMLButtonElement, RadioTileProps>(
         {...props}
         id={id}
         disabled={disabled}
-        aria-describedby={ariaDescribedby || !!helperText ? helperTextId : undefined}
+        aria-describedby={showHelperText ? helperTextId : ariaDescribedby}
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
       >
         <Box component="label" display="flex" gap={1}>

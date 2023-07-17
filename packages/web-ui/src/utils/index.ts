@@ -3,3 +3,4 @@ export * from './typography';
 export * from './media-queries';
 export * from './color';
 export * from './utils';
+export * from './merge-ids';
