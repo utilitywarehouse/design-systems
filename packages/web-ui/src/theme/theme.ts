@@ -1,13 +1,13 @@
 import { createTheme, Theme as MuiTheme } from '@mui/material/styles';
-import { buttonThemeOverrides } from '../Button';
-import { textFieldThemeOverrides } from '../TextField';
-import { textLinkThemeOverrides } from '../TextLink';
-import { legacyTypographyThemeOverrides, baseTypographyTheme } from '../Typography';
-import { menuThemeOverrides } from '../Menu';
+import { baseTypographyTheme, legacyTypographyThemeOverrides } from '../Typography';
 import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 import { htmlFontSize, pxToRem, spacing } from '../utils';
 import { breakpoints, fonts, fontWeights } from '../tokens';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { buttonThemeOverrides } from '../Button/Button.theme';
+import { textLinkThemeOverrides } from '../TextLink/TextLink.theme';
+import { textFieldThemeOverrides } from '../TextField/TextField.theme';
+import { menuThemeOverrides } from '../Menu/Menu.theme';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
