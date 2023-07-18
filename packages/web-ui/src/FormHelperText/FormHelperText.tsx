@@ -7,8 +7,10 @@ import { pxToRem } from '../utils';
 import { SxProps } from '../types';
 
 export interface FormHelperTextProps extends SxProps, HTMLAttributes<HTMLSpanElement> {
-  /** Sets whether the text should appear disabled. */
+  /** Set the text appearance to disabled. */
   disabled?: boolean;
+  /** Set the text appearance when showing an error message. This will override the disabled styles. */
+  error?: boolean;
   children: ReactNode;
 }
 
@@ -20,25 +22,20 @@ export interface FormHelperTextProps extends SxProps, HTMLAttributes<HTMLSpanEle
  * text.
  */
 export const FormHelperText = forwardRef<HTMLSpanElement, FormHelperTextProps>(
-  ({ disabled, sx, ...props }, ref) => {
+  ({ disabled, error, ...props }, ref) => {
     const defaultColor = colors.grey800;
     const disabledColor = colors.grey400;
+    const errorColor = colors.red600;
+    const color = error ? errorColor : disabled ? disabledColor : defaultColor;
     return (
       <Box
         ref={ref}
         component="span"
-        color={disabled ? disabledColor : defaultColor}
+        color={color}
         fontFamily={fonts.secondary}
         fontWeight={fontWeights.secondary.regular}
         fontSize={pxToRem(13)}
         lineHeight={pxToRem(16)}
-        sx={{
-          color: defaultColor,
-          '[data-disabled] &': {
-            color: disabledColor,
-          },
-          ...sx,
-        }}
         {...props}
       />
     );

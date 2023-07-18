@@ -2,9 +2,10 @@ import { forwardRef } from 'react';
 import { Box } from '../Box';
 import { StackProps } from '../Stack';
 import { breakpoints } from '../tokens';
-import { RadioGroupFormControl, RadioGroupProps } from './RadioGroup';
+import { RadioGroupProps } from './RadioGroup';
+import { RadioGroupFormControl } from './RadioGroupFormControl';
 
-export interface RadioGridGroupProps extends RadioGroupProps {
+export interface RadioGridGroupProps extends Omit<RadioGroupProps, 'direction'> {
   /** Sets the number of columns to display the contents in. */
   columns?: StackProps['spacing'];
 }

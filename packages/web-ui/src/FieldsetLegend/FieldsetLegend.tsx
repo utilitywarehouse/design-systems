@@ -20,7 +20,7 @@ export interface FieldsetLegendProps extends SxProps, HTMLAttributes<HTMLLegendE
  * grouped from inputs.
  */
 export const FieldsetLegend = forwardRef<HTMLLegendElement, FieldsetLegendProps>(
-  ({ disabled, sx, ...props }, ref) => {
+  ({ disabled, ...props }, ref) => {
     const defaultColor = colors.grey1000;
     const disabledColor = colors.grey400;
     return (
@@ -33,14 +33,6 @@ export const FieldsetLegend = forwardRef<HTMLLegendElement, FieldsetLegendProps>
         fontWeight={fontWeights.secondary.semibold}
         fontSize={pxToRem(16)}
         lineHeight={pxToRem(16)}
-        sx={{
-          cursor: disabled ? 'auto' : 'pointer',
-          color: defaultColor,
-          '[data-disabled] &': {
-            color: disabledColor,
-          },
-          ...sx,
-        }}
         {...props}
       />
     );
