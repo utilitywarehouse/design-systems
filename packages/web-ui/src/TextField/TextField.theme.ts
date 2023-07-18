@@ -73,7 +73,7 @@ export const textFieldThemeOverrides: Components = {
         ':hover': {
           backgroundColor: colorsCommon.brandWhite,
           borderBottomColor: colors.cyan600,
-          '&:not(.Mui-disabled)': {
+          '&:not(.Mui-disabled):not(.Mui-error),': {
             '&:before': {
               borderWidth: 2,
               transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
