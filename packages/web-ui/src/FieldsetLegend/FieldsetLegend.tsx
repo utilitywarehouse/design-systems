@@ -21,12 +21,14 @@ export interface FieldsetLegendProps extends SxProps, HTMLAttributes<HTMLLegendE
  */
 export const FieldsetLegend = forwardRef<HTMLLegendElement, FieldsetLegendProps>(
   ({ disabled, ...props }, ref) => {
+    const defaultColor = colors.grey1000;
+    const disabledColor = colors.grey400;
     return (
       <Box
         ref={ref}
         component="legend"
         padding={0} // reset
-        color={disabled ? colors.grey400 : colors.grey1000}
+        color={disabled ? disabledColor : defaultColor}
         fontFamily={fonts.secondary}
         fontWeight={fontWeights.secondary.semibold}
         fontSize={pxToRem(16)}

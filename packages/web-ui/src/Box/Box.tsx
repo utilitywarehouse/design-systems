@@ -1,8 +1,8 @@
 import { BoxTypeMap as MuiBoxTypeMap, createBox } from '@mui/system';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { createContext, forwardRef, useContext, useMemo } from 'react';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { theme, type Theme } from '../theme';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { uwWebUiPrefix } from '../utils';
 
 export type DefaultBoxComponent = 'div';
