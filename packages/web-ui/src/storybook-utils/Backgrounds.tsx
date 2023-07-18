@@ -1,6 +1,6 @@
-import { Background } from '../Background';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { Box } from '../Box';
 import { Stack } from '../Stack';
-import { backgroundColors } from '../types';
 
 interface BackgroundsProps {
   children: React.ReactNode;
@@ -8,16 +8,18 @@ interface BackgroundsProps {
 
 const Backgrounds = (props: BackgroundsProps) => (
   <Stack spacing={0}>
-    {backgroundColors.map(bg => (
-      <Background
-        key={bg}
-        backgroundColor={bg}
-        display="flex"
-        justifyContent="center"
-        padding={4}
-        {...props}
-      />
-    ))}
+    {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
+      bg => (
+        <Box
+          key={bg}
+          background={bg}
+          display="flex"
+          justifyContent="center"
+          padding={4}
+          {...props}
+        />
+      )
+    )}
   </Stack>
 );
 
