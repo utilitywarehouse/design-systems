@@ -1,6 +1,6 @@
 import { forwardRef, useContext } from 'react';
 import { Item, type RadioGroupItemProps } from '@radix-ui/react-radio-group';
-import { RadioGroupContext } from './RadioGroup';
+import { RadioGroupContext } from './RadioGroupFormControl';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
