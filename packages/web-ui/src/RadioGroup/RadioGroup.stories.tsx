@@ -1,160 +1,137 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Radio } from './Radio';
-import { RadioTile } from './RadioTile';
 import { RadioGroup } from './RadioGroup';
-import { Stack } from '../Stack';
 import { useState } from 'react';
+import { RadioTile } from './RadioTile';
+import { Box } from '../Box';
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'Web UI / Components / RadioGroup',
   component: RadioGroup,
+  argTypes: {
+    direction: {
+      options: ['column', 'row'],
+      control: { type: 'radio' },
+    },
+    error: { control: { type: 'boolean' } },
+    defaultValue: { control: { type: 'text' } },
+    helperText: { control: { type: 'text' } },
+    helperTextPosition: { options: ['top', 'bottom'], control: { type: 'radio' } },
+    label: { control: { type: 'text' } },
+    errorMessage: { control: { type: 'text' } },
+    disabled: { control: { type: 'boolean' } },
+    contentWidth: { control: { type: 'text' } },
+  },
+  args: {
+    defaultValue: '1',
+    label: 'Label',
+    helperText: 'Helper text',
+    contentWidth: undefined,
+    disabled: false,
+    error: false,
+    errorMessage: 'There is an error',
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof RadioGroup>;
 
-const argTypes = {
-  direction: {
-    options: ['column', 'row'],
-    control: { type: 'radio' },
-  },
-  error: { control: { type: 'boolean' } },
-  defaultValue: { control: { type: 'text' } },
-  helperText: { control: { type: 'text' } },
-  helperTextPosition: { options: ['top', 'bottom'], control: { type: 'radio' } },
-  label: { control: { type: 'text' } },
-  errorMessage: { control: { type: 'text' } },
-  disabled: { control: { type: 'boolean' } },
-  isReadOnly: { control: { type: 'boolean' } },
-  contentWidth: { control: { type: 'text' } },
-  columns: { control: { type: 'number' } },
-};
-const sharedArgs = {
-  label: 'Radio group label',
-  helperText: 'Helper text',
-  defaultValue: '1',
-  contentWidth: undefined,
-  disabled: false,
-  error: false,
-  errorMessage: 'There is an error',
-};
-
 export const Workshop: Story = {
-  name: 'RadioGroup',
   render: args => {
     return (
-      <Stack spacing={8}>
-        <RadioGroup {...args} helperText="RadioGroup with Radio">
-          <Radio value="1">One</Radio>
-          <Radio value="2">Two</Radio>
-          <Radio value="3">Three</Radio>
+      <Box display="flex" width={400} justifyContent="space-between">
+        <Box display="flex" gap={2} flexDirection="column">
+          <RadioGroup {...args} name="with-radio">
+            <Radio value="1" label="One" />
+            <Radio value="2" label="Two" />
+            <Radio value="3" label="Three" />
+          </RadioGroup>
+          <RadioGroup {...args} name="with-radio-2">
+            <Radio value="1" label="One" />
+            <Radio value="2" label="Two" />
+            <Radio value="3" label="Three" />
+          </RadioGroup>
+        </Box>
+        <RadioGroup {...args} name="with-radio-tile">
+          <RadioTile value="1" label="One" />
+          <RadioTile value="2" label="Two" />
+          <RadioTile value="3" label="Three" />
         </RadioGroup>
-        <RadioGroup {...args} helperText="RadioGroup with RadioTile">
-          <RadioTile value="1">One</RadioTile>
-          <RadioTile value="2">Two</RadioTile>
-          <RadioTile value="3">Three</RadioTile>
-        </RadioGroup>
-      </Stack>
+      </Box>
     );
   },
-  argTypes,
-  args: sharedArgs,
 };
 
 export const WithRadioHelperText: Story = {
   name: 'With Radio HelperText',
   render: args => {
     return (
-      <Stack spacing={8}>
-        <RadioGroup {...args}>
-          <Radio value="1" helperText="One helper text">
-            One
-          </Radio>
-          <Radio value="2" helperText="Two helper text">
-            Two
-          </Radio>
-          <Radio value="3" helperText="Three helper text">
-            Three
-          </Radio>
-        </RadioGroup>
-        <RadioGroup {...args}>
-          <RadioTile value="1" helperText="One helper text">
-            One
-          </RadioTile>
-          <RadioTile value="2" helperText="Two helper text">
-            Two
-          </RadioTile>
-          <RadioTile value="3" helperText="Three helper text">
-            Three
-          </RadioTile>
-        </RadioGroup>
-      </Stack>
+      <RadioGroup {...args}>
+        <Radio value="1" label="One" helperText="One helper text" />
+        <Radio value="2" label="Two" helperText="Two helper text" />
+        <Radio value="3" label="Three" helperText="Three helper text" />
+      </RadioGroup>
     );
   },
-  argTypes,
   args: {
-    defaultValue: '1',
-    disabled: false,
-    error: false,
-    label: 'Radio group',
+    helperText: '',
   },
+};
+
+export const Width: Story = {
+  name: 'Width',
+  render: args => {
+    return (
+      <RadioGroup {...args} helperText="Setting the width of the children elements">
+        <RadioTile value="1" label="One" />
+        <RadioTile value="2" label="Two" />
+        <RadioTile value="3" label="Three" />
+      </RadioGroup>
+    );
+  },
+  args: { contentWidth: '100%' },
 };
 
 export const Controlled: Story = {
   render: args => {
-    const [selected, setSelected] = useState('');
-
+    const options = ['Bear', 'Koala', 'Wolf', 'Horse'];
+    const [selected, setSelected] = useState(options[0]);
     return (
       <RadioGroup
         {...args}
         value={selected}
-        onChange={setSelected}
-        helperText={`The selected value is: ${selected}`}
+        onValueChange={setSelected}
+        helperText={`Your favourite animal is a ${selected}`}
       >
-        <Radio value="1">One</Radio>
-        <Radio value="2">Two</Radio>
-        <Radio value="3">Three</Radio>
+        {options.map(animal => (
+          <Radio key={animal} value={animal} label={animal} />
+        ))}
       </RadioGroup>
     );
   },
-  argTypes,
   args: {
     errorMessage: 'There is an error',
-    disabled: false,
-    error: false,
-    label: 'Controlled Radio Group',
+    label: 'What is your favourite animal?',
   },
 };
 
 export const ShowingError: Story = {
   name: 'Error message',
   render: args => {
+    const [selected, setSelected] = useState('');
     return (
-      <RadioGroup {...args}>
-        <Radio value="1">One</Radio>
-        <Radio value="2">Two</Radio>
-        <Radio value="3">Three</Radio>
+      <RadioGroup {...args} value={selected} onValueChange={setSelected} error={!selected}>
+        <Radio value="1" label="Bear" />
+        <Radio value="2" label="Koala" />
+        <Radio value="3" label="Wolf" />
+        <Radio value="4" label="Horse" />
       </RadioGroup>
     );
   },
-  argTypes,
-  args: { ...sharedArgs, error: true, errorMessage: 'Radio group error message' },
-};
-
-export const Columns: Story = {
-  name: 'RadioGroup columns',
-  render: args => {
-    return (
-      <RadioGroup {...args} label="RadioGroup with columns">
-        <RadioTile value="1">One</RadioTile>
-        <RadioTile value="2">Two</RadioTile>
-        <RadioTile value="3">Three</RadioTile>
-        <RadioTile value="4">Four</RadioTile>
-        <RadioTile value="5">Five</RadioTile>
-        <RadioTile value="6">Six</RadioTile>
-      </RadioGroup>
-    );
+  args: {
+    errorMessage: 'Please tell us what your favourite animal is.',
+    label: 'What is your favourite animal?',
+    helperText: 'These are the best animals.',
+    helperTextPosition: 'bottom',
   },
-  argTypes,
-  args: { columns: 2, ...sharedArgs },
 };

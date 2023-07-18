@@ -6,8 +6,6 @@ import { colors } from '@utilitywarehouse/colour-system';
 import { SxProps } from '../types';
 
 export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElement> {
-  /** Sets the label content */
-  children: ReactNode;
   /** Sets the disabled prop, when true sets the label colour to grey */
   disabled?: boolean;
   /**
@@ -17,12 +15,11 @@ export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElemen
    */
   nested?: boolean;
   /**
-   * Sets the HTML component that is rendered. While this component is
-   * intended to be used as a `label` element, there may be times you need to
-   * render a visual label within a larger label element. See the `RadioTile`
-   * for an example of this.
+   * Sets the HTML component that is rendered.
+   * @default label
    */
   component?: BoxProps['component'];
+  children: ReactNode;
 }
 
 /**
@@ -30,17 +27,25 @@ export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElemen
  * > provided by UW Web UI.
  *
  * The Label component is used for labelling form elements, such as radio inputs.
- **/
-export const Label = ({ disabled, nested, sx, component = 'label', ...props }: LabelProps) => {
+ */
+export const Label = ({ component = 'label', disabled, nested, sx, ...props }: LabelProps) => {
+  const defaultColor = colors.grey1000;
+  const disabledColor = colors.grey400;
   return (
     <Box
       component={component}
-      color={disabled ? colors.grey400 : colors.grey1000}
+      color={disabled ? disabledColor : defaultColor}
       fontFamily={fonts.secondary}
       fontWeight={fontWeights.secondary[nested ? 'regular' : 'semibold']}
       fontSize={pxToRem(16)}
       lineHeight={pxToRem(24)}
-      sx={{ cursor: disabled ? 'auto' : 'pointer', ...sx }}
+      sx={{
+        color: defaultColor,
+        '[data-disabled] &': {
+          color: disabledColor,
+        },
+        ...sx,
+      }}
       {...props}
     />
   );
