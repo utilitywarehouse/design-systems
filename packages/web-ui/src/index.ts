@@ -14,7 +14,6 @@ export * from './FieldsetLegend';
 export * from './FormHelperText';
 export * from './Grid';
 export * from './Heading';
-export * from './Icon';
 export * from './Link';
 export * from './Menu';
 export * from './RadioGroup';
