@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Background } from '../Background';
 import { Stack } from '../Stack';
-import { Backgrounds } from '../storybook-utils';
 import { backgroundColors } from '../types';
 import { headingVariantMapping, textVariantMapping, Typography } from './Typography';
 
