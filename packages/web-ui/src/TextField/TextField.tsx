@@ -1,7 +1,6 @@
 import * as React from 'react';
 import FilledInput, { FilledInputProps } from '@mui/material/FilledInput';
-import SuccessOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/SuccessOutlined';
-import WarningOutlined from '@utilitywarehouse/customer-ui-react-icons/24x24/WarningOutlined';
+import { TickMediumContainedIcon, WarningMediumContainedIcon } from '@utilitywarehouse/react-icons';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -60,8 +59,6 @@ export interface TextFieldProps
   multiline?: boolean;
 }
 
-const SuccessIcon = styled(SuccessOutlined)({ fill: colors.green600 });
-const WarningIcon = styled(WarningOutlined)({ fill: colors.red600 });
 const IconContainer = styled(Box)({ display: 'flex', marginLeft: spacing(0.5) });
 
 const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(function TextfieldInput(
@@ -91,13 +88,13 @@ const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(functi
       inputRef={ref}
       endAdornment={
         <>
-          {showIcon && isErrorStatus(status) ? (
+          {showIcon ? (
             <IconContainer>
-              <WarningIcon />
-            </IconContainer>
-          ) : isSuccessStatus(status) ? (
-            <IconContainer>
-              <SuccessIcon />
+              {isErrorStatus(status) ? (
+                <WarningMediumContainedIcon color={colors.red600} />
+              ) : isSuccessStatus(status) ? (
+                <TickMediumContainedIcon color={colors.green600} />
+              ) : null}
             </IconContainer>
           ) : null}
           {endAdornment ? <IconContainer>{endAdornment}</IconContainer> : null}
