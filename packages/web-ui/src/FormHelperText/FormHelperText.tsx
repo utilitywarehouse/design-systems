@@ -7,9 +7,9 @@ import { pxToRem } from '../utils';
 import { SxProps } from '../types';
 
 export interface FormHelperTextProps extends SxProps, HTMLAttributes<HTMLSpanElement> {
-  /** Sets whether the text should appear disabled. */
+  /** Set the text appearance to disabled. */
   disabled?: boolean;
-  /** Sets whether the text is displaying an error message. */
+  /** Set the text appearance when showing an error message. This will override the disabled styles. */
   error?: boolean;
   children: ReactNode;
 }
@@ -19,16 +19,14 @@ export interface FormHelperTextProps extends SxProps, HTMLAttributes<HTMLSpanEle
  * > provided by UW Web UI.
  *
  * This component should be used with form field components to display helper
- * text, descriptions or error messages.
+ * text.
  */
 export const FormHelperText = forwardRef<HTMLSpanElement, FormHelperTextProps>(
-  ({ disabled, error, sx, ...props }, ref) => {
-    const getColor = () => {
-      if (error) return colors.red600;
-      if (disabled) return colors.grey400;
-      return colors.grey800;
-    };
-    const color = getColor();
+  ({ disabled, error, ...props }, ref) => {
+    const defaultColor = colors.grey800;
+    const disabledColor = colors.grey400;
+    const errorColor = colors.red600;
+    const color = error ? errorColor : disabled ? disabledColor : defaultColor;
     return (
       <Box
         ref={ref}
@@ -38,7 +36,6 @@ export const FormHelperText = forwardRef<HTMLSpanElement, FormHelperTextProps>(
         fontWeight={fontWeights.secondary.regular}
         fontSize={pxToRem(13)}
         lineHeight={pxToRem(16)}
-        sx={{ cursor: 'auto', ...sx }}
         {...props}
       />
     );

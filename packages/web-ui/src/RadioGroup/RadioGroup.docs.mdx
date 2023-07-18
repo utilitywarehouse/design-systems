@@ -1,7 +1,6 @@
 import { Meta, Description, Canvas, ArgTypes } from '@storybook/blocks';
 import * as RadioGroupStories from './RadioGroup.stories';
 import * as RadioStories from './Radio.stories';
-import * as RadioTileStories from './RadioTile.stories';
 import { Stack } from '../Stack';
 import { Box } from '../Box';
 import { Text } from '../Text';
@@ -11,66 +10,37 @@ import { Divider } from '@mui/material';
 
 # RadioGroup
 
+<Description of={RadioGroupStories} />
+
+## Contents
+
+- [Contents](#contents)
+- [Alternatives](#alternatives)
 - [Accessibility](#accessibility)
-  - [Known Issues](#known-issues)
-  - [Keyboard interactions](#keyboard-interactions)
+- [Keyboard interactions](#keyboard-interactions)
 - [Helper text](#helper-text)
 - [Error message](#error-message)
 - [Width](#width)
-- [Columns](#columns)
 - [Controlled](#controlled)
 - [RadioGroup props](#radiogroup-props)
-- [Radio](#radio)
-  - [Radio accessibility](#radio-accessibility)
-  - [Radio props](#radio-props)
-- [RadioTile](#radiotile)
-  - [RadioTile accessibility](#radiotile-accessibility)
-  - [RadioTile props](#radiotile-props)
+- [Radio & RadioTile](#radio-&-radiotile)
+  - [Accessibility](#accessibility)
+  - [Props](#props)
 
-<Description of={RadioGroupStories} />
+<Canvas of={RadioGroupStories.Workshop} />
 
-<Canvas
-  of={RadioGroupStories.Workshop}
-  sourceState="shown"
-  source={{
-    code: `
-<RadioGroup defaultValue={1} label="Label" helperText="RadioGroup Helper text">
-  <Radio value="1" helperText="One helper text">
-    One
-  </Radio>
-  <Radio value="2" helperText="Two helper text">
-    Two
-  </Radio>
-  <Radio value="3" helperText="Three helper text">
-    Three
-  </Radio>
-</RadioGroup>
-`,
-  }}
-/>
+## Alternatives
+
+- [RadioGridGroup](?path=/docs/components-radiogridgroup--documentation) - For presenting radios in a grid layout.
 
 ## Accessibility
-
-Follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) for radio groups not contained in a toolbar.
-
-> **NOTE**
-> The initial focus behaviour when using `Shift+Tab` to move focus into the
-> radio group, if none of the radio buttons are selected, reflects the native
-> browser behaviour, rather than that described in the WAI-ARIA pattern, as it
-> focuses the last radio button in the group, rather than the first.
 
 The necessary aria props, such as `aria-labelledby`, `aria-describedby` and
 `aria-errormessage` are handled internally, however you can pass these and
 other aria props, such as `aria-label`, to the `RadioGroup` and `Radio`
 components yourself if you need to.
 
-### Known Issues
-
-The current focus indicator for the `Radio` component does not meet AA colour
-contrast standards, and the focus styles for the `RadioTile` are being reviewed
-to ensure they are accessible. This is being worked on by the Design Systems team.
-
-### Keyboard interactions
+## Keyboard interactions
 
 <Stack spacing={1} divider={<Divider />}>
   <Box display="flex" alignItems="baseline">
@@ -133,7 +103,7 @@ In general, radio buttons should have a value selected by default. If this is
 not the case, you can display an error if no value is selected when the form is
 submitted.
 
-<Canvas of={RadioGroupStories.ShowingError} sourceState="none" />
+<Canvas of={RadioGroupStories.ShowingError} />
 
 ## Width
 
@@ -149,13 +119,7 @@ the `RadioGroup`.
 This is a responsive property, so you are able to set different widths for
 different breakpoints.
 
-## Columns
-
-You can use the `columns` prop to display the RadioGroup's child elements in
-columns rather than a flat column or row, by setting the number of columns you
-need.
-
-<Canvas of={RadioGroupStories.Columns} />
+<Canvas of={RadioGroupStories.Width} />
 
 ## Controlled
 
@@ -163,27 +127,16 @@ A controlled value can be provided using the value prop, which accepts a value
 corresponding with the value prop of each `Radio`. The onChange event is fired
 when the user selects a `Radio`.
 
-<Canvas of={RadioGroupStories.Controlled} sourceState="shown"
-source={{
-code: `
-const [selected, setSelected] = useState('')
-
-[...]
-
-<RadioGroup
-  value={selected}
-  onChange={setSelected}
-  helperText={'The selected value is: ' + selected}
->
-  <Radio value="1">One</Radio>
-  <Radio value="2">Two</Radio>
-  <Radio value="3">Three</Radio>
-</RadioGroup>
-`, }} />
+<Canvas of={RadioGroupStories.Controlled} />
 
 ## RadioGroup props
 
+<details>
+<summary><Text component="span" variant="body">Click to show `RadioGroup` props</Text></summary>
+
 <ArgTypes of={RadioGroupStories} />
+
+</details>
 
 ## Radio & RadioTile
 
@@ -191,10 +144,15 @@ The `Radio` & `RadioTile` components should be used within a `RadioGroup` compon
 
 ### Accessibility
 
-The `Radio` and `RadioTile` are, by default, appropriately labelled using it's
-children, if you do not provide children, you must specify an `aria-label` for
-accessibility.
+The `Radio` and `RadioTile` are, by default, appropriately labelled when using
+the `label` props, if you do not provide a label, you must specify an
+`aria-label` or `aria-labelledby` for accessibility.
 
 ### Props
 
-<ArgTypes of={RadioTileStories} />
+<details>
+<summary><Text component="span" variant="body">Click to show `Radio`/`RadioTile` props</Text></summary>
+
+<ArgTypes of={RadioStories} />
+
+</details>
