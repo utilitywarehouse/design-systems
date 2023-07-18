@@ -1,8 +1,11 @@
 import { forwardRef } from 'react';
 import MuiMenuItem from '@mui/material/MenuItem';
-import { Text } from '../Text';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import type { MenuItemProps as MuiMenuItemProps } from '@mui/material/MenuItem';
+import { Typography } from '../Typography';
+import { fonts } from '../tokens';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { pxToRem } from '../utils';
 
 export type DefaultMenuItemComponent = 'li';
 
@@ -19,7 +22,14 @@ export type MenuItemProps<
 export const MenuItem = forwardRef(function MenuItem({ children, ...props }, ref) {
   return (
     <MuiMenuItem ref={ref} {...props}>
-      <Text variant="body">{children}</Text>
+      <Typography
+        color={colorsCommon.brandMidnight}
+        fontFamily={fonts.secondary}
+        fontSize={pxToRem(18)}
+        lineHeight={pxToRem(24)}
+      >
+        {children}
+      </Typography>
     </MuiMenuItem>
   );
 }) as OverridableComponent<MenuItemTypeMap>;

@@ -40,18 +40,12 @@ export const Workshop: Story = {
   render: args => {
     return (
       <Box display="flex" width={400} justifyContent="space-between">
-        <Box display="flex" gap={2} flexDirection="column">
-          <RadioGroup {...args} name="with-radio">
-            <Radio value="1" label="One" />
-            <Radio value="2" label="Two" />
-            <Radio value="3" label="Three" />
-          </RadioGroup>
-          <RadioGroup {...args} name="with-radio-2">
-            <Radio value="1" label="One" />
-            <Radio value="2" label="Two" />
-            <Radio value="3" label="Three" />
-          </RadioGroup>
-        </Box>
+        <RadioGroup {...args} name="with-radio">
+          <Radio value="1" label="One" />
+          <Radio value="2" label="Two" />
+          <Radio value="3" label="Three" />
+        </RadioGroup>
+
         <RadioGroup {...args} name="with-radio-tile">
           <RadioTile value="1" label="One" />
           <RadioTile value="2" label="Two" />

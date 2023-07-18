@@ -54,3 +54,10 @@ export const Workshop: Story = {
     );
   },
 };
+
+export const MenuItemStory: Story = {
+  name: 'MenuItem',
+  render: () => {
+    return <MenuItem onClick={() => {}}>Option</MenuItem>;
+  },
+};
