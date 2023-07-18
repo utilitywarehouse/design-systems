@@ -1,5 +1,31 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.28
+
+### Patch Changes
+
+- [#127](https://github.com/utilitywarehouse/design-systems/pull/127) [`16be0ab`](https://github.com/utilitywarehouse/design-systems/commit/16be0ab5022b5fda77f0943239d05d7e82ed1240) Thanks [@robphoenix](https://github.com/robphoenix)! - Update MenuItem component text styles
+
+- [#118](https://github.com/utilitywarehouse/design-systems/pull/118) [`91e2721`](https://github.com/utilitywarehouse/design-systems/commit/91e27219c35aeeba57794b59d070e45ac0448435) Thanks [@robphoenix](https://github.com/robphoenix)! - Improve TextField input labelling
+
+- [#125](https://github.com/utilitywarehouse/design-systems/pull/125) [`40d6782`](https://github.com/utilitywarehouse/design-systems/commit/40d67824474195b4f9e63ee2bbb77bde9ca8602f) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove `Icon` component. This component only really works with the legacy Customer UI icons, and it will be possible to use the same component from Customer Web UI alonside Web UI, so there is really no reason at all to keep this implementation. We can look at reintroducing this component in the future if there is a reason to have it as well as the new icons packages.
+
+- [#123](https://github.com/utilitywarehouse/design-systems/pull/123) [`4bce38e`](https://github.com/utilitywarehouse/design-systems/commit/4bce38ed30bf88750cb09390fc0af26e6450a433) Thanks [@robphoenix](https://github.com/robphoenix)! - This change customises our box component to use a different default class.
+
+  `Mui-Box` -> `uw-web-ui-Box`
+
+- [#121](https://github.com/utilitywarehouse/design-systems/pull/121) [`4438150`](https://github.com/utilitywarehouse/design-systems/commit/4438150f90a921aeff78a46e3d8f2fe1cfa70846) Thanks [@robphoenix](https://github.com/robphoenix)! - Refactor `RadioGroup` to use Radix UI. This change is mainly due to the interoperability problems between Next 12 & react-aria. While this change is mostly invisible to consumers, there are some API differences to be aware of:
+
+  - Add `RadioGridGroup`
+  - Remove `columns` prop from `RadioGroup`
+  - Use `label` prop instead of children on `Radio` & `RadioTile`
+
+- [#128](https://github.com/utilitywarehouse/design-systems/pull/128) [`9f107be`](https://github.com/utilitywarehouse/design-systems/commit/9f107be67008115855eaf263b7ba0a1cec68873b) Thanks [@robphoenix](https://github.com/robphoenix)! - Replace customer-ui-icons with react-icons package
+
+- [#124](https://github.com/utilitywarehouse/design-systems/pull/124) [`528369c`](https://github.com/utilitywarehouse/design-systems/commit/528369c83e97af7d01a3257a9727d87882ae4c84) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix cyclic dependencies in theme usage
+
+- [#129](https://github.com/utilitywarehouse/design-systems/pull/129) [`bc7db9e`](https://github.com/utilitywarehouse/design-systems/commit/bc7db9e1000031a93cd78250c6c717e9a9c764db) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix error hover state on TextField component
+
 ## 0.0.27
 
 ### Patch Changes
