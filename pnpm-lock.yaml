@@ -104,9 +104,9 @@ importers:
       '@utilitywarehouse/colour-system':
         specifier: workspace:^
         version: link:../colour-system
-      '@utilitywarehouse/customer-ui-react-icons':
-        specifier: ^1.1.0
-        version: 1.1.0
+      '@utilitywarehouse/react-icons':
+        specifier: ^0.2.4
+        version: 0.2.4(react@18.2.0)
     devDependencies:
       '@babel/preset-env':
         specifier: ^7.20.2
@@ -4937,13 +4937,17 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@utilitywarehouse/customer-ui-react-icons@1.1.0:
-    resolution: {integrity: sha512-766iDHmpXHl96D3TtSjQC8C5YrTAb63erIbSSpzmLQWapk2rEF4iNVB2LBpP08W/5Ck5uDmEnR2l08hPokSAEw==}
-    dev: false
-
   /@utilitywarehouse/fontsource@0.0.5:
     resolution: {integrity: sha512-g+/X7s/p+Xa4z6tv1JVxM5y0yNPLJxCA4LbkXwQ6Eq7Rq9cLrP8YW/ttkWcSbSC1BtgKhDKheiW0UAD5gNAwBg==}
     dev: true
+
+  /@utilitywarehouse/react-icons@0.2.4(react@18.2.0):
+    resolution: {integrity: sha512-S9KWaRXVZlMxs9VODqAFBJb14xcOSH2cIV8XDK+g1l6pGF2hKXmiRnhlhoyPzVVyGjPL4sGLZrRrme//SLUn1A==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@webassemblyjs/ast@1.11.1:
     resolution: {integrity: sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw==}
