@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { Box } from '../Box';
 import { Stack } from '../Stack';
 import { Backgrounds } from '../storybook-utils';
 import { Button } from './Button';
@@ -21,38 +19,32 @@ export const ButtonKitchenSink: Story = {
   parameters: { layout: 'fullscreen' },
   render: () => {
     return (
-      <Stack>
-        {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
-          bg => (
-            <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-              <Stack spacing={4}>
-                {variants.map(variant => (
-                  <Stack key={variant} direction="row" spacing={2} alignItems="center">
-                    <>
-                      {sizes.map(size => (
-                        <Button key={size} size={size} variant={variant}>
-                          button
-                        </Button>
-                      ))}
-                      {sizes.map(size => (
-                        <Button key={size} size={size} variant={variant} disabled={true}>
-                          button
-                        </Button>
-                      ))}
-                    </>
-                  </Stack>
-                ))}
-                <Stack direction="row" spacing={2} alignItems="center">
-                  <Button variant="tertiary">button</Button>
-                  <Button variant="tertiary" disabled={true}>
+      <Backgrounds>
+        <Stack spacing={4}>
+          {variants.map(variant => (
+            <Stack key={variant} direction="row" spacing={2} alignItems="center">
+              <>
+                {sizes.map(size => (
+                  <Button key={size} size={size} variant={variant}>
                     button
                   </Button>
-                </Stack>
-              </Stack>
-            </Box>
-          )
-        )}
-      </Stack>
+                ))}
+                {sizes.map(size => (
+                  <Button key={size} size={size} variant={variant} disabled={true}>
+                    button
+                  </Button>
+                ))}
+              </>
+            </Stack>
+          ))}
+          <Stack direction="row" spacing={2} alignItems="center">
+            <Button variant="tertiary">button</Button>
+            <Button variant="tertiary" disabled={true}>
+              button
+            </Button>
+          </Stack>
+        </Stack>
+      </Backgrounds>
     );
   },
 };
