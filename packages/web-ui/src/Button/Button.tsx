@@ -15,7 +15,10 @@ export interface CustomButtonProps {
 
 export type ButtonTypeMap<P = {}, D extends React.ElementType = DefaultButtonComponent> = {
   props: CustomButtonProps &
-    Pick<MuiButtonProps<D, P>, 'sx' | 'classes' | 'fullWidth' | 'children' | 'href'>;
+    Pick<
+      MuiButtonProps<D, P>,
+      'sx' | 'classes' | 'fullWidth' | 'children' | 'href' | 'startIcon' | 'endIcon'
+    >;
   defaultComponent: D;
 };
 

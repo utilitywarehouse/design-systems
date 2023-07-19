@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Box } from '../Box';
 import { Stack } from '../Stack';
 import { Backgrounds } from '../storybook-utils';
 import { Button } from './Button';
+import { ChevronLeft01MediumIcon, ChevronRight01MediumIcon } from '@utilitywarehouse/react-icons';
 
 const sizes = ['small', 'medium', 'large'] as const;
 const variants = ['primary', 'secondary'] as const;
@@ -131,13 +133,7 @@ export const ButtonSizes: Story = {
 
 export const ButtonLegacyColour: Story = {
   name: 'On legacy Background',
-  parameters: {
-    layout: 'fullscreen',
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=6%3A139&t=nzEeo2X7lGLW2Y93-1',
-    },
-  },
+  parameters: { layout: 'fullscreen' },
   render: () => {
     return (
       <Backgrounds>
@@ -166,6 +162,21 @@ export const ButtonLegacyColour: Story = {
           </Stack>
         </Stack>
       </Backgrounds>
+    );
+  },
+};
+
+export const WithIcons: Story = {
+  name: 'With Icons',
+  render: () => {
+    return (
+      <Box display="flex" flexDirection="column" gap={4} alignItems="flex-start">
+        <Button startIcon={<ChevronLeft01MediumIcon />}>Button</Button>
+        <Button endIcon={<ChevronRight01MediumIcon />}>Button</Button>
+        <Button startIcon={<ChevronLeft01MediumIcon />} endIcon={<ChevronRight01MediumIcon />}>
+          Button
+        </Button>
+      </Box>
     );
   },
 };
