@@ -17,13 +17,8 @@ export interface CustomButtonProps {
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
-  /** An icon to include alongside the button label */
-  icon?: MuiButtonProps['startIcon'];
-  /**
-   * The position of the icon, either to the left or right of the label
-   * @default left
-   */
-  iconPosition?: 'left' | 'right';
+  iconLeft?: MuiButtonProps['startIcon'];
+  iconRight?: MuiButtonProps['startIcon'];
 }
 
 export type ButtonTypeMap<P = {}, D extends React.ElementType = DefaultButtonComponent> = {
@@ -41,7 +36,7 @@ export type ButtonProps<
  * A Button should be used for actions.
  */
 export const Button = forwardRef(function Button(
-  { size = 'medium', variant = 'primary', icon, iconPosition = 'left', ...props },
+  { size = 'medium', variant = 'primary', iconLeft, iconRight, ...props },
   ref
 ) {
   const { isBrandBackground } = useBackground();
@@ -54,8 +49,8 @@ export const Button = forwardRef(function Button(
     <MuiButton
       {...(props as Partial<MuiButtonProps>)}
       ref={ref}
-      startIcon={iconPosition === 'left' ? icon : undefined}
-      endIcon={iconPosition === 'right' ? icon : undefined}
+      startIcon={iconLeft}
+      endIcon={iconRight}
       {...dataAttributeProps}
     />
   );

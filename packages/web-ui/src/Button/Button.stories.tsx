@@ -28,21 +28,21 @@ export const ButtonKitchenSink: Story = {
               <>
                 {sizes.map(size => (
                   <Button key={size} size={size} variant={variant}>
-                    button
+                    Button
                   </Button>
                 ))}
                 {sizes.map(size => (
                   <Button key={size} size={size} variant={variant} disabled={true}>
-                    button
+                    Button
                   </Button>
                 ))}
               </>
             </Stack>
           ))}
           <Stack direction="row" spacing={2} alignItems="center">
-            <Button variant="tertiary">button</Button>
+            <Button variant="tertiary">Button</Button>
             <Button variant="tertiary" disabled={true}>
-              button
+              Button
             </Button>
           </Stack>
         </Stack>
@@ -155,9 +155,9 @@ export const ButtonLegacyColour: Story = {
             </Stack>
           ))}
           <Stack direction="row" spacing={2} alignItems="center">
-            <Button variant="tertiary">button</Button>
+            <Button variant="tertiary">Button</Button>
             <Button variant="tertiary" disabled={true}>
-              button
+              Button
             </Button>
           </Stack>
         </Stack>
@@ -171,8 +171,9 @@ export const WithIcons: Story = {
   render: () => {
     return (
       <Box display="flex" flexDirection="column" gap={4} alignItems="flex-start">
-        <Button icon={<ChevronLeft01MediumIcon />}>Button</Button>
-        <Button icon={<ChevronRight01MediumIcon />} iconPosition="right">
+        <Button iconLeft={<ChevronLeft01MediumIcon />}>Button</Button>
+        <Button iconRight={<ChevronRight01MediumIcon />}>Button</Button>
+        <Button iconLeft={<ChevronLeft01MediumIcon />} iconRight={<ChevronRight01MediumIcon />}>
           Button
         </Button>
       </Box>
