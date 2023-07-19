@@ -10,6 +10,8 @@ export const buttonThemeOverrides: Partial<Components> = {
   MuiButton: {
     defaultProps: {
       disableElevation: true,
+      disableFocusRipple: true,
+      disableRipple: true,
     },
     styleOverrides: {
       root: {
@@ -47,12 +49,21 @@ export const buttonThemeOverrides: Partial<Components> = {
         // size
         [`&[data-${size}=small]`]: {
           height: px(32),
+          '&:focus': {
+            outline: `2px solid ${colors.cyan700}`,
+          },
         },
         [`&[data-${size}=medium]`]: {
           height: px(40),
+          '&:focus': {
+            outline: `4px solid ${colors.cyan700}`,
+          },
         },
         [`&[data-${size}=large]`]: {
           height: px(48),
+          '&:focus': {
+            outline: `4px solid ${colors.cyan700}`,
+          },
         },
         [`&[data-${variant}=primary]`]: {
           color: colorsCommon.brandMidnight,
@@ -104,6 +115,10 @@ export const buttonThemeOverrides: Partial<Components> = {
           lineHeight: 1.333,
           '&:hover': {
             opacity: 0.5,
+          },
+          '&:focus': {
+            borderRadius: '4px',
+            outline: `2px solid ${colors.cyan700}`,
           },
           [`&[data-${bgcolorBrand}=true]`]: {
             color: colorsCommon.brandWhite,
