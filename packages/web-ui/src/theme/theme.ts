@@ -5,7 +5,6 @@ import { htmlFontSize, pxToRem, spacing } from '../utils';
 import { breakpoints, fonts, fontWeights } from '../tokens';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { buttonThemeOverrides } from '../Button/Button.theme';
-import { textFieldThemeOverrides } from '../TextField/TextField.theme';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
@@ -13,7 +12,6 @@ const theme: MuiTheme = createTheme({
   components: {
     ...cssBaselineThemeOverrides,
     ...buttonThemeOverrides,
-    ...textFieldThemeOverrides,
     MuiTypography: {
       styleOverrides: legacyTypographyThemeOverrides,
     },

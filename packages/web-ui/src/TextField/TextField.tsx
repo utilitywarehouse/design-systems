@@ -2,16 +2,119 @@ import * as React from 'react';
 import FilledInput, { FilledInputProps } from '@mui/material/FilledInput';
 import { TickMediumContainedIcon, WarningMediumContainedIcon } from '@utilitywarehouse/react-icons';
 import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import FormHelperText from '@mui/material/FormHelperText';
 import { Box } from '../Box';
-import { dataAttributes, spacing } from '../utils';
 import type { ReactNode, AllHTMLAttributes } from 'react';
 import { styled } from '@mui/material';
-import { colors } from '@utilitywarehouse/colour-system';
+import { Label } from '../Label';
+import { FormHelperText } from '../FormHelperText';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { fonts, fontWeights, transitions } from '../tokens';
+import { dataAttributes, pxToRem, spacing } from '../utils';
 
 const isSuccessStatus = (status?: string): boolean => status === 'success';
 const isErrorStatus = (status?: string): boolean => status === 'error';
+
+const { success, multiline } = dataAttributes;
+const StyledInput = styled(FilledInput)({
+  fontFamily: fonts.secondary,
+  fontSize: pxToRem(18),
+  fontWeight: fontWeights.secondary.regular,
+  height: 58,
+  borderRadius: 0,
+  borderTopLeftRadius: 16,
+  borderTopRightRadius: 16,
+  borderStyle: 'solid',
+  paddingLeft: spacing(2),
+  paddingRight: spacing(2),
+  borderBottom: 0,
+  color: colorsCommon.brandMidnight,
+  backgroundColor: colorsCommon.brandWhite,
+  borderColor: colors.grey100,
+  borderBottomColor: colorsCommon.brandPrimaryPurple,
+  borderWidth: 2,
+  transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
+  ':hover': {
+    backgroundColor: colorsCommon.brandWhite,
+    borderBottomColor: colors.cyan600,
+    '&:not(.Mui-disabled):not(.Mui-error),': {
+      '&:before': {
+        borderWidth: 2,
+        transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
+        borderBottomColor: colors.cyan600,
+      },
+    },
+  },
+  '&:before': {
+    borderColor: colorsCommon.brandPrimaryPurple,
+    borderWidth: 2,
+    transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
+  },
+  '&:after': {
+    borderColor: colors.cyan600,
+    borderWidth: 2,
+    transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
+  },
+  '&.Mui-focused': {
+    backgroundColor: colorsCommon.brandWhite,
+    borderColor: colors.cyan600,
+  },
+  '&.Mui-disabled': {
+    color: colorsCommon.brandMidnight,
+    backgroundColor: colors.grey50,
+    borderColor: colors.grey100,
+    borderBottomColor: colors.grey600,
+    transition: `all ${transitions.duration}ms ${transitions.easingFunction}`,
+    '&:before': {
+      borderColor: colors.grey600,
+      borderBottomStyle: 'solid',
+    },
+    '&:after': {
+      borderColor: colors.grey600,
+    },
+  },
+  '&.Mui-error': {
+    '&.Mui-focused': {
+      borderColor: colors.red600,
+    },
+    '&:not(.Mui-disabled)': {
+      '&:after': {
+        borderColor: colors.red600,
+      },
+    },
+  },
+  [`&[data-${success}=true]`]: {
+    ':before': {
+      borderBottomColor: colors.green600,
+    },
+    '&:after': {
+      borderBottomColor: colors.green600,
+    },
+    ':hover': {
+      '&:not(.Mui-disabled)': {
+        '&:before': {
+          borderColor: colors.green600,
+        },
+      },
+    },
+    '&.Mui-focused': {
+      borderColor: colors.green600,
+    },
+    '&:not(.Mui-disabled)': {
+      borderBottomColor: colors.green600,
+    },
+  },
+  [`&[data-${multiline}=true]`]: {
+    // padding values differ slightly from non-multiline since a `textarea` is rendered rather than an `input`.
+    paddingTop: 15,
+    paddingBottom: 14,
+    // height is overridden to allow the input to expand with any number of lines
+    height: 'auto',
+    minHeight: 58,
+  },
+  input: {
+    padding: 0,
+  },
+});
 
 type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
 
@@ -61,7 +164,7 @@ export interface TextFieldProps
 
 const IconContainer = styled(Box)({ display: 'flex', marginLeft: spacing(0.5) });
 
-const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(function TextfieldInput(
+const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function TextfieldInput(
   {
     status = 'neutral',
     endAdornment,
@@ -84,8 +187,9 @@ const TextFieldInput = React.forwardRef<HTMLInputElement, TextFieldProps>(functi
   };
 
   return (
-    <FilledInput
+    <StyledInput
       inputRef={ref}
+      hiddenLabel={true}
       endAdornment={
         <>
           {showIcon ? (
@@ -123,22 +227,26 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(func
   const ariaLabelledBy = !!label ? labelId : props['aria-labelledby'];
 
   return (
-    <FormControl fullWidth={true} {...formControlProps}>
+    <Box display="flex" flexDirection="column" gap={1}>
       {!!label ? (
-        <InputLabel shrink id={labelId} htmlFor={props.id}>
+        <Label id={labelId} htmlFor={props.id} disabled={disabled}>
           {label}
-        </InputLabel>
+        </Label>
       ) : null}
 
-      <TextFieldInput
-        ref={ref}
-        {...props}
-        aria-describedby={ariaDescribedBy}
-        aria-labelledby={ariaLabelledBy}
-        aria-label={ariaLabel}
-      />
+      <FormControl fullWidth={true} {...formControlProps}>
+        <Input
+          ref={ref}
+          {...props}
+          aria-describedby={ariaDescribedBy}
+          aria-labelledby={ariaLabelledBy}
+          aria-label={ariaLabel}
+        />
+      </FormControl>
 
-      {helperText ? <FormHelperText id={ariaDescribedBy}>{helperText}</FormHelperText> : null}
-    </FormControl>
+      <FormHelperText id={ariaDescribedBy} disabled={disabled} error={isErrorStatus(status)}>
+        {helperText || '\u00A0'}
+      </FormHelperText>
+    </Box>
   );
 });
