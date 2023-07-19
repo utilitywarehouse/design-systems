@@ -18,7 +18,7 @@ export interface CustomButtonProps {
    */
   size?: 'small' | 'medium' | 'large';
   iconLeft?: MuiButtonProps['startIcon'];
-  iconRight?: MuiButtonProps['startIcon'];
+  iconRight?: MuiButtonProps['endIcon'];
 }
 
 export type ButtonTypeMap<P = {}, D extends React.ElementType = DefaultButtonComponent> = {
