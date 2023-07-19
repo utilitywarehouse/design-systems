@@ -171,9 +171,8 @@ export const WithIcons: Story = {
   render: () => {
     return (
       <Box display="flex" flexDirection="column" gap={4} alignItems="flex-start">
-        <Button startIcon={<ChevronLeft01MediumIcon />}>Button</Button>
-        <Button endIcon={<ChevronRight01MediumIcon />}>Button</Button>
-        <Button startIcon={<ChevronLeft01MediumIcon />} endIcon={<ChevronRight01MediumIcon />}>
+        <Button icon={<ChevronLeft01MediumIcon />}>Button</Button>
+        <Button icon={<ChevronRight01MediumIcon />} iconPosition="right">
           Button
         </Button>
       </Box>
