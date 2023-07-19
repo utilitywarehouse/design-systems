@@ -7,7 +7,6 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { buttonThemeOverrides } from '../Button/Button.theme';
 import { textLinkThemeOverrides } from '../TextLink/TextLink.theme';
 import { textFieldThemeOverrides } from '../TextField/TextField.theme';
-import { menuThemeOverrides } from '../Menu/Menu.theme';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
@@ -17,7 +16,6 @@ const theme: MuiTheme = createTheme({
     ...buttonThemeOverrides,
     ...textLinkThemeOverrides,
     ...textFieldThemeOverrides,
-    ...menuThemeOverrides,
     MuiTypography: {
       styleOverrides: legacyTypographyThemeOverrides,
     },
