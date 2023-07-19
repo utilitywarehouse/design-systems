@@ -189,7 +189,7 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
   return (
     <StyledInput
       inputRef={ref}
-      hiddenLabel={true}
+      hiddenLabel
       endAdornment={
         <>
           {showIcon ? (
