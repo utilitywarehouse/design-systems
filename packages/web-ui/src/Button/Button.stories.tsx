@@ -26,21 +26,21 @@ export const ButtonKitchenSink: Story = {
               <>
                 {sizes.map(size => (
                   <Button key={size} size={size} variant={variant}>
-                    button
+                    Button
                   </Button>
                 ))}
                 {sizes.map(size => (
                   <Button key={size} size={size} variant={variant} disabled={true}>
-                    button
+                    Button
                   </Button>
                 ))}
               </>
             </Stack>
           ))}
           <Stack direction="row" spacing={2} alignItems="center">
-            <Button variant="tertiary">button</Button>
+            <Button variant="tertiary">Button</Button>
             <Button variant="tertiary" disabled={true}>
-              button
+              Button
             </Button>
           </Stack>
         </Stack>
