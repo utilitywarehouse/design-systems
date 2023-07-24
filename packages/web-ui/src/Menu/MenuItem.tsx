@@ -5,7 +5,8 @@ import type { MenuItemProps as MuiMenuItemProps } from '@mui/material/MenuItem';
 import { Typography } from '../Typography';
 import { fonts } from '../tokens';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { pxToRem } from '../utils';
+import { pxToRem, spacing } from '../utils';
+import { styled } from '@mui/material';
 
 export type DefaultMenuItemComponent = 'li';
 
@@ -19,9 +20,13 @@ export type MenuItemProps<
   P = {}
 > = OverrideProps<MenuItemTypeMap<D, P>, D>;
 
+const StyledMenuItem = styled(MuiMenuItem)({
+  padding: spacing(2),
+});
+
 export const MenuItem = forwardRef(function MenuItem({ children, ...props }, ref) {
   return (
-    <MuiMenuItem ref={ref} {...props}>
+    <StyledMenuItem ref={ref} {...props}>
       <Typography
         color={colorsCommon.brandMidnight}
         fontFamily={fonts.secondary}
@@ -30,6 +35,6 @@ export const MenuItem = forwardRef(function MenuItem({ children, ...props }, ref
       >
         {children}
       </Typography>
-    </MuiMenuItem>
+    </StyledMenuItem>
   );
 }) as OverridableComponent<MenuItemTypeMap>;

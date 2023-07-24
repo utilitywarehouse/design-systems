@@ -4,20 +4,12 @@ import { cssBaselineThemeOverrides } from './CssBaseline.theme';
 import { htmlFontSize, pxToRem, spacing } from '../utils';
 import { breakpoints, fonts, fontWeights } from '../tokens';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { buttonThemeOverrides } from '../Button/Button.theme';
-import { textLinkThemeOverrides } from '../TextLink/TextLink.theme';
-import { textFieldThemeOverrides } from '../TextField/TextField.theme';
-import { menuThemeOverrides } from '../Menu/Menu.theme';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
   spacing,
   components: {
     ...cssBaselineThemeOverrides,
-    ...buttonThemeOverrides,
-    ...textLinkThemeOverrides,
-    ...textFieldThemeOverrides,
-    ...menuThemeOverrides,
     MuiTypography: {
       styleOverrides: legacyTypographyThemeOverrides,
     },
