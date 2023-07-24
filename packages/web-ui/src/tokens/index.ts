@@ -1,3 +1,16 @@
+/** ----- BREAKPOINTS ----- */
+
+export const breakpoints = {
+  // px
+  mobile: 0,
+  tablet: 740,
+  desktop: 992,
+  wide: 1200,
+};
+export type Breakpoints = typeof breakpoints;
+
+/** ----- TYPOGRAPHY ----- */
+
 export const fonts = {
   primary: 'Aeonik, Arial, sans-serif',
   secondary: 'Work Sans, Arial, sans-serif',
@@ -14,17 +27,12 @@ export const fontWeights = {
 
 export type FontWeights = typeof fontWeights;
 
-export const breakpoints = {
-  // px
-  mobile: 0,
-  tablet: 740,
-  desktop: 992,
-  wide: 1200,
-};
-export type Breakpoints = typeof breakpoints;
+/** ----- TRANSITIONS ----- */
 
 export const transitions = { duration: 120, easingFunction: 'ease-out' };
 export const transition = `${transitions.duration}ms ${transitions.easingFunction}`;
 export type Transitions = typeof transitions;
+
+/** ----- SPACING ----- */
 
 export const spacingBase = 8;
