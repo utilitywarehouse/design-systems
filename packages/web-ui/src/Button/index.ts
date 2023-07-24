@@ -5,4 +5,3 @@ export type {
   ButtonTypeMap,
   ButtonProps,
 } from './Button';
-export { buttonThemeOverrides } from './Button.theme';

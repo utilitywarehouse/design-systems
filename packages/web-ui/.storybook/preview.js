@@ -53,7 +53,7 @@ const StoriesContainer = props => {
       window.parent.window.theme = theme;
     }
   }, [theme]);
-  return <Box padding={4} {...props} />;
+  return <Box {...props} />;
 };
 
 const preview = {
