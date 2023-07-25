@@ -10,9 +10,15 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 export type DefaultButtonComponent = 'button';
 
 export interface CustomButtonProps {
-  /** Sets the button's visual variant */
+  /**
+   * Sets the button's visual variant
+   * @default primary
+   */
   variant?: 'primary' | 'secondary' | 'tertiary';
-  /** Sets the button height. Does not apply to `tertiary` buttons. */
+  /**
+   * Sets the button height. Does not apply to `tertiary` buttons.
+   * @default medium
+   */
   size?: 'small' | 'medium' | 'large';
 }
 

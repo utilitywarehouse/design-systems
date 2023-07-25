@@ -133,10 +133,6 @@ export const ButtonLegacyColour: Story = {
   name: 'On legacy Background',
   parameters: {
     layout: 'fullscreen',
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI---MASTER?node-id=6%3A139&t=nzEeo2X7lGLW2Y93-1',
-    },
   },
   render: () => {
     return (
@@ -159,9 +155,9 @@ export const ButtonLegacyColour: Story = {
             </Stack>
           ))}
           <Stack direction="row" spacing={2} alignItems="center">
-            <Button variant="tertiary">button</Button>
+            <Button variant="tertiary">Button</Button>
             <Button variant="tertiary" disabled={true}>
-              button
+              Button
             </Button>
           </Stack>
         </Stack>
