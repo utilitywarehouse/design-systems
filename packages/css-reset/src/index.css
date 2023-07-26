@@ -22,12 +22,14 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-/* Core body defaults */
+/* Core body defaults & typography adjustments */
 body {
   min-height: 100vh;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
-  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; /* Firefox */
+  -webkit-font-smoothing: antialiased; /* WebKit  */
+  -webkit-text-size-adjust: 100%; /** Prevent adjustments of font size after orientation changes in iOS. */
   font-family: 'Work Sans, Arial, sans-serif';
 }
 
@@ -35,6 +37,8 @@ body {
 ul[role='list'],
 ol[role='list'] {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* a elements that don't have a class get default styles */
