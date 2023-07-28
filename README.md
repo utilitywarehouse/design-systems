@@ -9,6 +9,7 @@ Shared tools and libraries for building UW applications.
 ### Web UI
 
 A set of UW React components.
+In order for the library components to be displayed as presented in the https://uw-web-ui.vercel.app/ start by wrapping your app in the ThemeProvider component.
 
 ### Colour System
 
