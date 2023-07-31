@@ -16,6 +16,15 @@ React component library for building UW Web UIs.
 
 Current version: v{version}
 
+- [Installation](#installation)
+- [Fonts](#fonts)
+- [Theming](#theming)
+- [ES modules](#es-modules)
+  - [Plain React App](#plain-react-app)
+  - [Create React App](#create-react-app)
+  - [Next.js](#next.js)
+- [Dark Mode](#dark-mode)
+
 ## Installation
 
 Assuming you already have React installed, to get started install the library and it's peer dependencies.
@@ -48,6 +57,34 @@ const App: React.FC = () => (
   </ThemeProvider>
 );
 ```
+
+## ES modules
+
+In an effort to provide a tree-shakeable library we export bundles for both ES modules and CommonJS. This however may cause issues with Webpack based applications as they default to expecting ES module files to be referenced with a file extension.
+
+### Plain React App
+
+If you are using Web UI in a plain React app, you can update [this rule](https://webpack.js.org/configuration/module/#resolvefullyspecified).
+
+```js
+{
+  test: /\.m?js/,
+  resolve: {
+    fullySpecified: false,
+  },
+},
+```
+
+### Create React App
+
+If you are using Create React App the process is almost the same, but you will
+have to install `react-app-rewired` (or any other package that let's you edit
+the build process). In this [StackOverflow answer](https://stackoverflow.com/a/70720290) you can see exactly what
+is needed (As the example provided solves exactly this issue coincidentally).
+
+### Next.js
+
+If you are using Next.js this won't happen to you as it is handled by the framework.
 
 ## Dark Mode
 
