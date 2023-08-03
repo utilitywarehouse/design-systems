@@ -10,4 +10,6 @@ export const dataAttributes = {
   multiline: 'multiline',
   heading: 'heading',
   bgcolorBrand: 'bg-color-brand',
+  bold: 'bold',
+  noWrap: 'no-wrap',
 };
