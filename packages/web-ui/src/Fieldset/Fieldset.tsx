@@ -1,8 +1,8 @@
-import { forwardRef, PropsWithChildren , FieldsetHTMLAttributes } from 'react';
-import { Stack } from '../Stack';
+import { forwardRef, PropsWithChildren, FieldsetHTMLAttributes } from 'react';
 import { SxProps } from '../types';
 import styled, { FunctionInterpolation } from '@emotion/styled';
 import { unstable_styleFunctionSx as styleFunctionSx } from '@mui/system';
+import { Box } from '../Box';
 
 const displayName = 'Fieldset';
 
@@ -28,7 +28,9 @@ export const Fieldset = forwardRef<HTMLFieldSetElement, PropsWithChildren<Fields
   ({ children, ...props }, ref) => {
     return (
       <StyledFieldset ref={ref} {...props}>
-        <Stack spacing={2}>{children}</Stack>
+        <Box display="flex" flexDirection="column" gap={2}>
+          {children}
+        </Box>
       </StyledFieldset>
     );
   }
