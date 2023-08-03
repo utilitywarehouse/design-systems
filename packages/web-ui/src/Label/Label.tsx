@@ -1,9 +1,12 @@
-import type { ReactNode, LabelHTMLAttributes } from 'react';
-import { Box, BoxProps } from '../Box';
+import { ElementType, LabelHTMLAttributes, PropsWithChildren } from 'react';
 import { pxToRem } from '../utils';
 import { fonts, fontWeights } from '../tokens';
 import { colors } from '@utilitywarehouse/colour-system';
 import { SxProps } from '../types';
+import styled, { FunctionInterpolation } from '@emotion/styled';
+import { unstable_styleFunctionSx as styleFunctionSx } from '@mui/system';
+
+const displayName = 'Label';
 
 export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElement> {
   /** Sets the disabled prop, when true sets the label colour to grey */
@@ -18,9 +21,21 @@ export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElemen
    * Sets the HTML component that is rendered.
    * @default label
    */
-  component?: BoxProps['component'];
-  children: ReactNode;
+  component?: ElementType<any> | undefined;
 }
+
+const StyledLabel = styled('label', { label: displayName })<LabelProps>(
+  styleFunctionSx as FunctionInterpolation<LabelProps>,
+  ({ disabled, nested }) => {
+    return {
+      color: disabled ? colors.grey400 : colors.grey1000,
+      fontFamily: fonts.secondary,
+      fontWeight: fontWeights.secondary[nested ? 'regular' : 'semibold'],
+      fontSize: pxToRem(16),
+      lineHeight: pxToRem(24),
+    };
+  }
+);
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -28,21 +43,8 @@ export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElemen
  *
  * The Label component is used for labelling form elements, such as radio inputs.
  */
-export const Label = ({ component = 'label', disabled, nested, ...props }: LabelProps) => {
-  const defaultColor = colors.grey1000;
-  const disabledColor = colors.grey400;
-  const color = disabled ? disabledColor : defaultColor;
-  return (
-    <Box
-      component={component}
-      color={color}
-      fontFamily={fonts.secondary}
-      fontWeight={fontWeights.secondary[nested ? 'regular' : 'semibold']}
-      fontSize={pxToRem(16)}
-      lineHeight={pxToRem(24)}
-      {...props}
-    />
-  );
+export const Label = ({ component = 'label', ...props }: PropsWithChildren<LabelProps>) => {
+  return <StyledLabel as={component} {...props} />;
 };
 
 Label.displayName = 'Label';
