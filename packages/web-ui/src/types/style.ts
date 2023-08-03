@@ -1,5 +1,4 @@
-import { SystemProps as MuiSystemProps } from '@mui/system';
-import { SxProps as MuiSxProps } from '@mui/material/styles';
+import { SystemProps as MuiSystemProps, SxProps as MuiSxProps } from '@mui/system';
 import { Theme } from '../theme';
 
 export type SystemProps = keyof MuiSystemProps<Theme>;
