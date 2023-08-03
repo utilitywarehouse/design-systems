@@ -12,9 +12,10 @@ import {
   unstable_styleFunctionSx as styleFunctionSx,
 } from '@mui/system';
 import styled, { FunctionInterpolation } from '@emotion/styled';
-import { useMediaQuery } from '../hooks';
 import isPropValid from '@emotion/is-prop-valid';
 import { ResponsiveStyleValue } from '@mui/system/styleFunctionSx';
+
+const displayName = 'Text';
 
 export type TextProps = {
   /**
@@ -25,11 +26,12 @@ export type TextProps = {
   /**
    * Sets the text color.
    * It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
-   * @default colorsCommon.brandMidnight
    *
-   * The default color is `colors.brandMidnight` unless within a `Box`
+   * The default color is `colorsCommon.brandMidnight` unless within a `Box`
    * component with the background prop set to a darker brand background, then
-   * it will be `colors.brandWhite`.
+   * it will be `colorsCommon.brandWhite`.
+   *
+   * @default colorsCommon.brandMidnight
    */
   color?: string;
   /**
@@ -52,31 +54,30 @@ export type TextProps = {
    * @default 'inherit'
    */
   align?: ResponsiveStyleValue<'right' | 'left' | 'inherit' | 'center' | 'justify' | undefined>;
+  /**
+   * Set the text-transform on the component.
+   * @default 'none'
+   */
+  textTransform?: ResponsiveStyleValue<
+    'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined
+  >;
 } & SxProps;
 
 const StyledText = styled('p', {
-  label: 'Text',
-  shouldForwardProp: prop => isPropValid(prop) && prop !== 'color',
+  label: displayName,
+  shouldForwardProp: prop => isPropValid(prop) && prop !== 'color' && prop !== 'fontSize',
 })<TextProps & PaletteProps & TypographyProps>(
   palette,
   typography,
   styleFunctionSx as FunctionInterpolation<TextProps>,
   ({ bold, noWrap, variant, color }) => {
-    const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
-    const fontSizes: { [key: string]: any } = {
-      caption: pxToRem(12),
-      legalNote: pxToRem(14),
-      body: pxToRem(16),
-      subtitle: pxToRem(isDesktop ? 20 : 18),
-    };
     const { isBrandBackground } = useBackground();
-    const defaultColor = isBrandBackground ? colorsCommon.brandWhite : colorsCommon.brandMidnight;
     return {
       fontFamily: fonts.secondary,
-      fontSize: variant ? fontSizes[variant] : fontSizes.body,
       fontWeight: fontWeights.secondary[bold ? 'semibold' : 'regular'],
-      color: color || defaultColor,
       lineHeight: variant === 'caption' ? 2 : 1.5,
+      color: color || colorsCommon.brandMidnight,
+      ...(isBrandBackground && { color: color || colorsCommon.brandWhite }),
       ...(noWrap && {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
@@ -89,8 +90,30 @@ const StyledText = styled('p', {
 /**
  * Text renders the secondary UW font, Work Sans, to be used for body copy.
  */
-export const Text = ({ component = 'p', align, sx, ...props }: PropsWithChildren<TextProps>) => {
-  return <StyledText as={component} {...props} sx={{ textAlign: align, ...sx }} />;
+export const Text = ({
+  component = 'p',
+  variant = 'body',
+  align,
+  textTransform,
+  ...props
+}: PropsWithChildren<TextProps>) => {
+  const fontSizes = {
+    caption: pxToRem(12),
+    legalNote: pxToRem(14),
+    body: pxToRem(16),
+    subtitle: {
+      mobile: pxToRem(18),
+      desktop: pxToRem(20),
+    },
+  };
+  const combinedProps = {
+    as: component,
+    textTransform,
+    textAlign: align,
+    fontSize: fontSizes[variant],
+    ...props,
+  };
+  return <StyledText {...combinedProps} />;
 };
 
-Text.displayName = 'Text';
+Text.displayName = displayName;
