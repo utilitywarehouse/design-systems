@@ -101,9 +101,11 @@ export const RadioGroupFormControl = forwardRef<HTMLDivElement, BaseRadioGroupPr
             <RadioGroupContext.Provider value={value}>{children}</RadioGroupContext.Provider>
           </Box>
 
-          <FormHelperText error id={errorMessageId}>
-            {errorMessage}
-          </FormHelperText>
+          {showErrorMessage ? (
+            <FormHelperText error id={errorMessageId}>
+              {errorMessage}
+            </FormHelperText>
+          ) : null}
         </Fieldset>
       </Root>
     );

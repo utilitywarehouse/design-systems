@@ -1,13 +1,21 @@
-import { forwardRef } from 'react';
-import type { ReactNode, FieldsetHTMLAttributes } from 'react';
-import { Box } from '../Box';
+import { forwardRef, PropsWithChildren , FieldsetHTMLAttributes } from 'react';
 import { Stack } from '../Stack';
 import { SxProps } from '../types';
+import styled, { FunctionInterpolation } from '@emotion/styled';
+import { unstable_styleFunctionSx as styleFunctionSx } from '@mui/system';
 
-export interface FieldsetProps extends SxProps, FieldsetHTMLAttributes<HTMLFieldSetElement> {
-  /** Sets the Fieldset content */
-  children: ReactNode;
-}
+const displayName = 'Fieldset';
+
+export interface FieldsetProps extends SxProps, FieldsetHTMLAttributes<HTMLFieldSetElement> {}
+
+const StyledFieldset = styled('fieldset', { label: displayName })<FieldsetProps>(
+  styleFunctionSx as FunctionInterpolation<FieldsetProps>,
+  {
+    border: 0,
+    margin: 0,
+    padding: 0,
+  }
+);
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -16,14 +24,14 @@ export interface FieldsetProps extends SxProps, FieldsetHTMLAttributes<HTMLField
  * The `Fieldset` component should be used to group related form inputs, and
  * should be used with the `FieldsetLegend` component
  **/
-export const Fieldset = forwardRef<HTMLLegendElement, FieldsetProps>(
+export const Fieldset = forwardRef<HTMLFieldSetElement, PropsWithChildren<FieldsetProps>>(
   ({ children, ...props }, ref) => {
     return (
-      <Box ref={ref} component="fieldset" border={0} margin={0} padding={0} {...props}>
+      <StyledFieldset ref={ref} {...props}>
         <Stack spacing={2}>{children}</Stack>
-      </Box>
+      </StyledFieldset>
     );
   }
 );
 
-Fieldset.displayName = 'Fieldset';
+Fieldset.displayName = displayName;
