@@ -1,5 +1,4 @@
-import { forwardRef, PropsWithChildren } from 'react';
-import type { FieldsetHTMLAttributes } from 'react';
+import { forwardRef, PropsWithChildren , FieldsetHTMLAttributes } from 'react';
 import { Stack } from '../Stack';
 import { SxProps } from '../types';
 import styled, { FunctionInterpolation } from '@emotion/styled';

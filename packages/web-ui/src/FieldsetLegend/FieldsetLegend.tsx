@@ -1,5 +1,4 @@
-import { forwardRef, PropsWithChildren } from 'react';
-import type { HTMLAttributes } from 'react';
+import { forwardRef, PropsWithChildren, HTMLAttributes } from 'react';
 import { fonts, fontWeights } from '../tokens';
 import { colors } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
