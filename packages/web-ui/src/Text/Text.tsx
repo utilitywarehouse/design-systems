@@ -1,9 +1,10 @@
 import { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import { fonts, fontWeights } from '../tokens';
-import { Box, BoxProps, useBackground } from '../Box';
+import { Box, useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
 import { SxProps } from '../types';
+import { ElementType, PropsWithChildren } from 'react';
 
 export type TextProps = {
   /**
@@ -15,6 +16,10 @@ export type TextProps = {
    * Sets the text color.
    * It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
    * @default colorsCommon.brandMidnight
+   *
+   * The default color is `colors.brandMidnight` unless within a `Box`
+   * component with the background prop set to a darker brand background, then
+   * it will be `colors.brandWhite`.
    */
   color?: string;
   /**
@@ -22,8 +27,12 @@ export type TextProps = {
    * @default false
    */
   bold?: boolean;
+  /**
+   * Sets the HTML component that is rendered.
+   * @default p
+   */
+  component?: ElementType<any> | undefined;
 } & SxProps &
-  Pick<BoxProps, 'component' | 'children'> &
   Pick<MuiTypographyProps, 'textTransform' | 'align' | 'noWrap'>;
 
 /**
@@ -38,9 +47,7 @@ export const Text = ({
   noWrap,
   sx,
   ...props
-}: TextProps) => {
-  const fontFamily = fonts.secondary;
-  const fontWeight = bold ? fontWeights.secondary.semibold : undefined;
+}: PropsWithChildren<TextProps>) => {
   const fontSizes = {
     caption: pxToRem(12),
     legalNote: pxToRem(14),
@@ -51,13 +58,6 @@ export const Text = ({
     },
   };
 
-  const noWrapStyles = {
-    ...sx,
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-  };
-
   const { isBrandBackground } = useBackground();
   const defaultColor = isBrandBackground ? colorsCommon.brandWhite : colorsCommon.brandMidnight;
 
@@ -65,12 +65,19 @@ export const Text = ({
     <Box
       color={color || defaultColor}
       component={component}
-      fontFamily={fontFamily}
+      fontFamily={fonts.secondary}
       fontSize={fontSizes[variant]}
-      fontWeight={fontWeight}
+      fontWeight={fontWeights.secondary[bold ? 'semibold' : 'regular']}
       lineHeight={variant === 'caption' ? 2 : 1.5}
       textAlign={align}
-      sx={noWrap ? noWrapStyles : sx}
+      sx={{
+        ...(noWrap && {
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }),
+        ...sx,
+      }}
       {...props}
     />
   );
