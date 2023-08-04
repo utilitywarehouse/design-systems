@@ -90,50 +90,11 @@ export const Typography = forwardRef(function Typography(
       }
     : {};
 
-  //   const variantSizeMapping: { [key: string]: TextProps['size'] } = {
-  //     caption: 'xs',
-  //     legalNote: 'sm',
-  //     body: 'md',
-  //     subtitle: 'lg',
-  //   };
-  //   return (
-  //     <Text
-  //       size={variantSizeMapping[variant]}
-  //       component={component || 'p'}
-  //       {...props}
-  //       {...dataAttributeProps}
-  //     />
-  //   );
-  // }
   if (isLegacyHeadingVariant) {
     console.warn(
       'The Typography variant prop is deprecated, please use the Heading component instead'
     );
   }
-  //   const dataAttributeProps = isLegacyColor
-  //     ? {
-  //         [`data-${dataAttributes.legacy}`]: true,
-  //         // @ts-ignore
-  //         [`data-${dataAttributes[getLegacyColor(color)]}`]: true,
-  //       }
-  //     : {};
-  //   const variantSizeMapping: { [key: string]: HeadingProps['size'] } = {
-  //     h4: 'xs',
-  //     h3: 'sm',
-  //     h2: 'md',
-  //     h1: 'lg',
-  //     displayHeading: 'xl',
-  //   };
-  //   return (
-  //     <Heading
-  //       ref={ref}
-  //       size={variantSizeMapping[variant]}
-  //       component={component || 'h2'}
-  //       {...props}
-  //       {...dataAttributeProps}
-  //     />
-  //   );
-  // }
 
   return (
     <MuiTypography
