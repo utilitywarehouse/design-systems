@@ -27,5 +27,5 @@ export const grey700 = '#c1c1c1';
 export const grey800 = '#e3e3e3';
 /** To replace F7F7F7 */
 export const grey900 = '#f0f0f0';
-/** AKA Highlight text */
+/** Can be used for: Headings */
 export const grey1000 = '#fafafa';

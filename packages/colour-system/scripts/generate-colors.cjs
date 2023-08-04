@@ -5,6 +5,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const { render } = require('ejs');
 
+require('dotenv').config();
+
 const figmaConfig = {
   baseUrl: 'https://api.figma.com',
   fileKey: '6lQm8QMegMx1CHchbzkHyc',
