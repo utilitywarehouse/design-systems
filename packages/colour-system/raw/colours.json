@@ -464,9 +464,9 @@
         "scale": "grey",
         "step": "1000",
         "name": "grey1000",
-        "description": "AKA Highlight text",
+        "description": "Can be used for: Headings",
         "created_at": "2023-03-27T17:50:59.433Z",
-        "updated_at": "2023-04-27T13:23:42.848Z",
+        "updated_at": "2023-06-28T10:00:43.038Z",
         "value": "#fafafa"
       }
     },
@@ -1634,9 +1634,9 @@
         "scale": "apple",
         "step": "700",
         "name": "apple700",
-        "description": "Use it for large text, borders, and graphic elements against white and Apple 50, Apple  200, Grey 25, Grey  50, and Grey 75. Use it as a background color combined with a white foreground.",
+        "description": "Use it as a background color combined with a white foreground.",
         "created_at": "2023-04-27T17:00:01.461Z",
-        "updated_at": "2023-04-27T17:38:49.786Z",
+        "updated_at": "2023-07-03T12:44:51.114Z",
         "value": "#10b259"
       },
       "apple800": {
@@ -2022,25 +2022,36 @@
         "value": "#ed176c"
       },
       "rose700": {
-        "id": "352:1138",
+        "id": "755:11886",
         "mode": "light",
         "scale": "rose",
         "step": "700",
         "name": "rose700",
-        "description": "Use is as any foreground against Rose 100, Rose 200  or any Grey shade in the range of 25 to 150. Use it for borders, icons, and large text against white, Rose 50, Rose 200, Rose 300, or any Grey shade in the range of 25 to 200. Use it as a background color with white as the foreground color.",
-        "created_at": "2023-05-03T15:52:13.673Z",
-        "updated_at": "2023-05-03T15:52:13.673Z",
-        "value": "#9f1446"
+        "description": "",
+        "created_at": "2023-06-30T15:39:48.137Z",
+        "updated_at": "2023-06-30T15:39:48.137Z",
+        "value": "#c8185c"
       },
       "rose800": {
-        "id": "352:1139",
+        "id": "352:1138",
         "mode": "light",
         "scale": "rose",
         "step": "800",
         "name": "rose800",
+        "description": "Use is as any foreground against Rose 100, Rose 200  or any Grey shade in the range of 25 to 150. Use it for borders, icons, and large text against white, Rose 50, Rose 200, Rose 300, or any Grey shade in the range of 25 to 200. Use it as a background color with white as the foreground color.",
+        "created_at": "2023-05-03T15:52:13.673Z",
+        "updated_at": "2023-06-30T15:39:48.156Z",
+        "value": "#9f1446"
+      },
+      "rose900": {
+        "id": "352:1139",
+        "mode": "light",
+        "scale": "rose",
+        "step": "900",
+        "name": "rose900",
         "description": "Use is as any foreground against Rose 100, Rose 200, Rose 300, Rose 400 or any Grey shade in the range of 25 to 300.",
         "created_at": "2023-05-03T15:52:13.606Z",
-        "updated_at": "2023-05-03T15:52:13.606Z",
+        "updated_at": "2023-06-30T15:39:48.164Z",
         "value": "#4a1125"
       }
     }
