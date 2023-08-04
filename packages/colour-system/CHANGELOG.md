@@ -1,5 +1,25 @@
 # @utilitywarehouse/colour-system
 
+## 0.1.0
+
+### Minor Changes
+
+- [#143](https://github.com/utilitywarehouse/design-systems/pull/143) [`ac49f91`](https://github.com/utilitywarehouse/design-systems/commit/ac49f91e779cd46344acd7b669200cf98ebcced4) Thanks [@robphoenix](https://github.com/robphoenix)! - Updates to light/rose scale
+
+  - Update `rose700`
+  - Rename `rose700` -> `rose800`
+  - Rename `rose800` -> `rose900`
+
+  ```diff
+  + export const rose700 = '#c8185c';
+
+  - export const rose700 = '#9f1446';
+  + export const rose800 = '#9f1446';
+
+  - export const rose800 = '#4a1125';
+  + export const rose900 = '#4a1125';
+  ```
+
 ## 0.0.5
 
 ### Patch Changes
