@@ -1,27 +1,28 @@
 import { Meta } from '@storybook/blocks';
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { Box, Stack, Text, Heading } from '../../src';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { Box, Text, Heading } from '../../src';
+import { ColourDisplay } from '../components/ColourDisplay.tsx';
 
 <Meta title="Colour System / Common" />
 
 # Common Colours
 
-      <Stack spacing={2}  component="ul" padding={0} margin={0}  >
+      <Box display='flex' flexDirection='column' gap={2}  component="ul" padding={0} margin={0}  >
       {Object.keys(colorsCommon).map((color)=> {
       return(
-      <Box key={color} display='flex' justifyContent='space-between' alignItems='center' >
+      <Box key={color} display='flex' gap={4} alignItems='center' >
       <Box width={100} height={100} bgcolor={colorsCommon[color]}></Box>
-      <Box flex={2} display='flex' justifyContent='center'>
-          <Text component='span' variant='body' bold >
+      <Box  display='flex' justifyContent='center'>
+          <Text  variant='body' bold >
           {color}
           </Text>
       </Box>
 
-      <Text component='span' variant='body' flex={3}>
+      <Text  variant='body' >
 
       </Text>
 
       </Box>
       ) })}
 
-    </Stack>
+    </Box>
