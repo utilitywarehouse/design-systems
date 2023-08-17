@@ -20,8 +20,8 @@ The design source for these components is available in [Figma](https://www.figma
 Please have a look at [the documentation we have in Storybook](https://uw-web-ui.vercel.app/?path=/docs/web-ui-introduction--documentation) for how to get
 started using this library.
 
-Please note the need for the UW fontsource library, and the Web UI `ThemeProvider`
-component.
+Please note the need for the `@utilitywarehouse/fontsource` library, and the Web UI `ThemeProvider`
+component. We also recommend using the `@utilitywarehouse/css-reset` package.
 
 
 

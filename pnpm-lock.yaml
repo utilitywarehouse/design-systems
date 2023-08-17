@@ -169,6 +169,9 @@ importers:
       '@types/react':
         specifier: ^17.0.0 || ^18.0.0
         version: 18.0.25
+      '@utilitywarehouse/css-reset':
+        specifier: workspace:^
+        version: link:../css-reset
       '@utilitywarehouse/fontsource':
         specifier: ^0.0.5
         version: 0.0.5

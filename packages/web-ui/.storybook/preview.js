@@ -1,4 +1,5 @@
 import '@utilitywarehouse/fontsource';
+import '@utilitywarehouse/css-reset';
 import { useEffect } from 'react';
 import { ThemeProvider, useTheme, breakpoints, Box } from '../src';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
@@ -60,7 +61,13 @@ const preview = {
   parameters: {
     options: {
       storySort: {
-        order: ['Web UI', ['Introduction'], 'Colour System', ['Introduction', 'Common', 'Colors']],
+        order: [
+          'Web UI',
+          ['Introduction'],
+          'CSS Reset',
+          'Colour System',
+          ['Introduction', 'Common', 'Colors'],
+        ],
       },
     },
     backgrounds: {

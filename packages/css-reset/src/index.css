@@ -30,7 +30,7 @@ body {
   -moz-osx-font-smoothing: grayscale; /* Firefox */
   -webkit-font-smoothing: antialiased; /* WebKit  */
   -webkit-text-size-adjust: 100%; /** Prevent adjustments of font size after orientation changes in iOS. */
-  font-family: 'Work Sans, Arial, sans-serif';
+  font-family: 'Work Sans, Arial, sans-serif'; /** TODO: replace this with a custom property when available **/
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
