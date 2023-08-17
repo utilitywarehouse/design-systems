@@ -3,4 +3,4 @@
 '@utilitywarehouse/css-reset': patch
 ---
 
-Remove `CssBaseline` theme and component from the `ThemeProvider` component. Recommend using `@utilitywarehouse/css-reset` instead.
+Remove `CssBaseline` theme, and stop including the `CssBaseline` component in the `ThemeProvider`. Recommend using `@utilitywarehouse/css-reset` instead.
