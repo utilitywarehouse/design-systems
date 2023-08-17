@@ -77,7 +77,12 @@ const StyledText = styled('p', {
       fontWeight: fontWeights.secondary[bold ? 'semibold' : 'regular'],
       lineHeight: variant === 'caption' ? 2 : 1.5,
       color: color || colorsCommon.brandMidnight,
+      textRendering: 'optimizeSpeed',
       ...(isBrandBackground && { color: color || colorsCommon.brandWhite }),
+      ...(isBrandBackground && {
+        mozOsxFontSmoothing: 'grayscale' /* Firefox */,
+        webkitFontSmoothing: 'antialiased' /* WebKit  */,
+      }),
       ...(noWrap && {
         overflow: 'hidden',
         textOverflow: 'ellipsis',

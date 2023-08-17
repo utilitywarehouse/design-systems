@@ -72,7 +72,12 @@ const StyledHeading = styled('p', {
       fontFamily: fonts.primary,
       fontWeight: fontWeights.primary,
       color: color || colorsCommon.brandPrimaryPurple,
+      textRendering: 'optimizeLegibility',
       ...(isBrandBackground && { color: color || colorsCommon.brandWhite }),
+      ...(isBrandBackground && {
+        mozOsxFontSmoothing: 'grayscale' /* Firefox */,
+        webkitFontSmoothing: 'antialiased' /* WebKit  */,
+      }),
       ...(noWrap && {
         overflow: 'hidden',
         textOverflow: 'ellipsis',

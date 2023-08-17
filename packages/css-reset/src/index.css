@@ -26,8 +26,6 @@ html:focus-within {
 body {
   min-height: 100vh;
   line-height: 1.5;
-  -moz-osx-font-smoothing: grayscale; /* Firefox */
-  -webkit-font-smoothing: antialiased; /* WebKit  */
   -webkit-text-size-adjust: 100%; /** Prevent adjustments of font size after orientation changes in iOS. */
   font-family: 'Work Sans', Arial, sans-serif; /** TODO: replace this with a custom property when available **/
 }
