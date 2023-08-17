@@ -1,20 +1,17 @@
 import * as React from 'react';
 import { ThemeProvider as MuiThemeProvider } from '@mui/system';
 import { theme } from '../theme';
-import CssBaseline from '@mui/material/CssBaseline';
 
 export interface ThemeProviderProps {
+  /**
+   * Your component tree.
+   */
   children?: React.ReactNode;
 }
 
 /**
- * Provides the custom Web UI theme, and renders the `CssBaseline` component.
+ * Provides the custom Web UI theme.
  */
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  return (
-    <MuiThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </MuiThemeProvider>
-  );
+export const ThemeProvider = (props: ThemeProviderProps) => {
+  return <MuiThemeProvider theme={theme} {...props} />;
 };

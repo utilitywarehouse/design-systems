@@ -17,7 +17,7 @@ React component library for building UW Web UIs.
 Current version: v{version}
 
 - [Installation](#installation)
-- [Fonts](#fonts)
+- [Additional packages](#additional-packages)
 - [Theming](#theming)
 - [ES modules](#es-modules)
   - [Plain React App](#plain-react-app)
@@ -33,13 +33,27 @@ Assuming you already have React installed, to get started install the library an
 yarn add @utilitywarehouse/web-ui @mui/material
 ```
 
-## Fonts
+## Additional packages
 
-You will also need to include the **Aeonik** and **Work Sans** fonts. The
+You will need to include the **Aeonik** and **Work Sans** fonts. The
 easiest way to do this is to use the `@utilitywarehouse/fontsource` package.
 
 ```console
 yarn add @utilitywarehouse/fontsource
+```
+
+We also recommend you use the `@utilitywarehouse/css-reset` package as Web UI does
+not include a CSS reset by default.
+
+```console
+yarn add @utilitywarehouse/css-reset
+```
+
+If using, import both packages in the root of your application.
+
+```js
+import '@utilitywarehouse/css-reset';
+import '@utilitywarehouse/fontsource';
 ```
 
 ## Theming
