@@ -40,6 +40,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: Aeonik, Arial, sans-serif; /** TODO: replace this with a custom property when available **/
   text-rendering: optimizeLegibility;
 }
 
