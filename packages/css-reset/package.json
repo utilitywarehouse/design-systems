@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/css-reset",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A bare-bones CSS reset for UW web development",
   "main": "./dist/index.css",
   "author": "Rob Phoenix <rphoenix@uw.co.uk>",
