@@ -33,6 +33,17 @@ body {
   font-family: 'Work Sans', Arial, sans-serif; /** TODO: replace this with a custom property when available **/
 }
 
+/** Preserve the ligatures and kerning of the Aeonik typeface used for headings. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Aeonik, Arial, sans-serif; /** TODO: replace this with a custom property when available **/
+  text-rendering: optimizeLegibility;
+}
+
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {

@@ -13,7 +13,7 @@ export type Breakpoints = typeof breakpoints;
 
 export const fonts = {
   primary: 'Aeonik, Arial, sans-serif',
-  secondary: 'Work Sans, Arial, sans-serif',
+  secondary: "'Work Sans', Arial, sans-serif",
 };
 export type Fonts = typeof fonts;
 
