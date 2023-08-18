@@ -26,8 +26,21 @@ html:focus-within {
 body {
   min-height: 100vh;
   line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  -moz-osx-font-smoothing: grayscale; /* Firefox */
+  -webkit-font-smoothing: antialiased; /* WebKit  */
   -webkit-text-size-adjust: 100%; /** Prevent adjustments of font size after orientation changes in iOS. */
   font-family: 'Work Sans', Arial, sans-serif; /** TODO: replace this with a custom property when available **/
+}
+
+/** Preserve the ligatures and kerning of the Aeonik typeface used for headings. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-rendering: optimizeLegibility;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
