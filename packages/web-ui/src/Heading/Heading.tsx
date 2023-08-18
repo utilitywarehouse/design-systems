@@ -72,6 +72,7 @@ const StyledHeading = styled('p', {
       fontFamily: fonts.primary,
       fontWeight: fontWeights.primary,
       color: color || colorsCommon.brandPrimaryPurple,
+      textRendering: 'optimizeLegibility', // ensure we preserve the ligatures & kerning of the Aeonik typeface
       ...(isBrandBackground && { color: color || colorsCommon.brandWhite }),
       ...(noWrap && {
         overflow: 'hidden',
