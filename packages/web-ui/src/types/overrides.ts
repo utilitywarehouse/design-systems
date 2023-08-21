@@ -3,9 +3,14 @@ import { TypographyOptions, TypographyUtils } from '@mui/material/styles/createT
 import { Fonts, FontWeights } from '../tokens';
 import * as React from 'react';
 import { customPalette } from '../theme';
+import { baseTypographyTheme } from '../Typography';
 
 // TODO: v1 see https://linear.app/utilitywarehouse/issue/UWDS-1082/refactor-types
-interface CustomTypography extends TypographyUtils, Omit<TypographyOptions, 'fontFamily'> {
+type BaseTypography = typeof baseTypographyTheme;
+interface CustomTypography
+  extends BaseTypography,
+    TypographyUtils,
+    Omit<TypographyOptions, keyof BaseTypography | 'fontFamily'> {
   fontFamily: Fonts;
   fontWeights: FontWeights;
 }
@@ -27,6 +32,7 @@ declare module '@mui/material/styles' {
 
   interface TypographyVariants {
     displayHeading: React.CSSProperties;
+    h1: React.CSSProperties;
     subtitle: React.CSSProperties;
     body: React.CSSProperties;
     legalNote: React.CSSProperties;
