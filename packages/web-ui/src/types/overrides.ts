@@ -4,18 +4,13 @@ import { Fonts, FontWeights } from '../tokens';
 import * as React from 'react';
 import { customPalette } from '../theme';
 
-interface CustomTypography
-  extends TypographyUtils,
-    Omit<
-      TypographyOptions,
-      'fontFamily' | 'fontWeightBold' | 'fontWeightLight' | 'fontWeightMedium' | 'fontWeightRegular'
-    > {
+// TODO: v1 see https://linear.app/utilitywarehouse/issue/UWDS-1082/refactor-types
+interface CustomTypography extends TypographyUtils, Omit<TypographyOptions, 'fontFamily'> {
   fontFamily: Fonts;
   fontWeights: FontWeights;
 }
-
 type CustomPalette = typeof customPalette;
-interface Palette extends Omit<MuiPalette, 'text' | 'common' | 'background'>, CustomPalette {}
+interface Palette extends Omit<MuiPalette, 'text'>, CustomPalette {}
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
