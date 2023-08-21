@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.1.2
+
+### Patch Changes
+
+- [#152](https://github.com/utilitywarehouse/design-systems/pull/152) [`404c834`](https://github.com/utilitywarehouse/design-systems/commit/404c83401e336d3631e10b20ea8346a530e7cd6a) Thanks [@robphoenix](https://github.com/robphoenix)! - This change syncs the MUI overrides with CWUI to better support migration.
+
 ## 0.1.1
 
 ### Patch Changes
