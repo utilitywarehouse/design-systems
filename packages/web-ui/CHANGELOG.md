@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.1.3
+
+### Patch Changes
+
+- [#154](https://github.com/utilitywarehouse/design-systems/pull/154) [`f212690`](https://github.com/utilitywarehouse/design-systems/commit/f21269015ed17e13b5a59957e8450037602481ef) Thanks [@robphoenix](https://github.com/robphoenix)! - update typography types
+
 ## 0.1.2
 
 ### Patch Changes
