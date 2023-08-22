@@ -3,7 +3,7 @@ import { Box } from '../Box';
 import { type RadioGroupProps as RadixRadioGroupProps, Root } from '@radix-ui/react-radio-group';
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
-import { FormHelperText } from '../FormHelperText';
+import { HelperText } from '../HelperText';
 import { useIds } from '../hooks';
 import { PropsWithSx } from '../types';
 import { mergeIds } from '../utils';
@@ -94,17 +94,17 @@ export const RadioGroupFormControl = forwardRef<HTMLDivElement, PropsWithSx<Base
 
           <Box display="flex" gap={2} flexDirection={direction}>
             {helperText ? (
-              <FormHelperText id={helperTextId} disabled={disabled}>
+              <HelperText id={helperTextId} disabled={disabled}>
                 {helperText}
-              </FormHelperText>
+              </HelperText>
             ) : null}
             <RadioGroupContext.Provider value={value}>{children}</RadioGroupContext.Provider>
           </Box>
 
           {showErrorMessage ? (
-            <FormHelperText error id={errorMessageId}>
+            <HelperText error id={errorMessageId}>
               {errorMessage}
-            </FormHelperText>
+            </HelperText>
           ) : null}
         </Fieldset>
       </Root>

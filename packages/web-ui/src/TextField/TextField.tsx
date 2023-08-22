@@ -6,7 +6,7 @@ import { Box } from '../Box';
 import type { ReactNode, AllHTMLAttributes } from 'react';
 import { styled } from '@mui/material';
 import { Label } from '../Label';
-import { FormHelperText } from '../FormHelperText';
+import { HelperText } from '../HelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights, transitions } from '../tokens';
 import { dataAttributes, pxToRem, spacing } from '../utils';
@@ -244,9 +244,9 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(func
         />
       </FormControl>
 
-      <FormHelperText id={ariaDescribedBy} disabled={disabled} error={isErrorStatus(status)}>
+      <HelperText id={ariaDescribedBy} disabled={disabled} error={isErrorStatus(status)}>
         {helperText || '\u00A0'}
-      </FormHelperText>
+      </HelperText>
     </Box>
   );
 });

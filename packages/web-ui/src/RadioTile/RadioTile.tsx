@@ -1,7 +1,7 @@
 import { forwardRef, useContext } from 'react';
 import { Item, type RadioGroupItemProps } from '@radix-ui/react-radio-group';
 import { Label } from '../Label';
-import { FormHelperText } from '../FormHelperText';
+import { HelperText } from '../HelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { styled } from '@mui/material';
 import { useIds } from '../hooks';
@@ -89,9 +89,7 @@ export const RadioTile = forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProp
               <Label component="span" id={labelId} htmlFor={id} nested>
                 {label}
               </Label>
-              {showHelperText ? (
-                <FormHelperText id={helperTextId}>{helperText}</FormHelperText>
-              ) : null}
+              {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
             </Box>
           ) : null}
         </Box>
