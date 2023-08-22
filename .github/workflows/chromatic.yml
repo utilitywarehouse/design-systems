@@ -5,6 +5,9 @@ on: push
 jobs:
   chromatic-deployment:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages/web-ui
     steps:
       - uses: pnpm/action-setup@v2
         with:
