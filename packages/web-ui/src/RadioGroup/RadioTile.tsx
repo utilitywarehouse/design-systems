@@ -9,6 +9,7 @@ import { styled } from '@mui/material';
 import { useIds } from '../hooks';
 import { Box } from '../Box';
 import { spacing } from '../utils';
+import { PropsWithSx } from '../types';
 
 export interface RadioTileProps extends RadioProps {}
 
@@ -58,7 +59,7 @@ const StyledRadioItem = styled(Item)({
 /**
  * The `RadioTile` should be used within a `RadioGroup` component.
  */
-export const RadioTile = forwardRef<HTMLButtonElement, RadioTileProps>(
+export const RadioTile = forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProps>>(
   (
     { id: providedId, label, helperText, disabled, 'aria-labelledby': ariaLabelledby, ...props },
     ref

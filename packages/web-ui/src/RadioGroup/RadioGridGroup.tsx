@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import { Box } from '../Box';
 import { StackProps } from '../Stack';
 import { breakpoints } from '../tokens';
+import { PropsWithSx } from '../types';
 import { RadioGroupProps } from './RadioGroup';
 import { RadioGroupFormControl } from './RadioGroupFormControl';
 
@@ -23,7 +24,7 @@ export interface RadioGridGroupProps extends Omit<RadioGroupProps, 'direction'> 
  *
  * Follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) for radio groups not contained in a toolbar.
  */
-export const RadioGridGroup = forwardRef<HTMLDivElement, RadioGridGroupProps>(
+export const RadioGridGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGridGroupProps>>(
   ({ children, contentWidth = 'fit-content', columns = 2, ...props }, ref) => {
     const convert = (c: string) => `repeat(${c}, minmax(10px, 1fr))`;
     const getColumns = () => {

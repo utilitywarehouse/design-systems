@@ -6,10 +6,11 @@ import { useBackground } from '../Box';
 import { styled } from '@mui/material';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { transitions } from '../tokens';
+import { PropsWithSx } from '../types';
 
 export interface TextLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    Pick<MuiLinkProps, 'children' | 'classes' | 'sx' | 'variant'> {
+    Pick<MuiLinkProps, 'children' | 'classes' | 'variant'> {
   /**
    * Sets text-transform property on the TextLink contents.
    */
@@ -60,17 +61,16 @@ const StyledLink = styled(MuiLink)({
  * The system props are not available on the `TextLink` component. If necessary
  * you can use `sx` as an escape hatch for one-off custom styling.
  */
-export const TextLink = React.forwardRef<HTMLAnchorElement, TextLinkProps>(function Link(
-  { variant = 'inherit', ...props },
-  ref
-) {
-  const heading = isHeadingVariant(variant);
-  const { isBrandBackground } = useBackground();
-  const dataAttributeProps = {
-    [`data-${dataAttributes.heading}`]: heading,
-    [`data-${dataAttributes.bgcolorBrand}`]: isBrandBackground,
-  };
-  return (
-    <StyledLink ref={ref} variant={variant} {...props} underline="none" {...dataAttributeProps} />
-  );
-});
+export const TextLink = React.forwardRef<HTMLAnchorElement, PropsWithSx<TextLinkProps>>(
+  function Link({ variant = 'inherit', ...props }, ref) {
+    const heading = isHeadingVariant(variant);
+    const { isBrandBackground } = useBackground();
+    const dataAttributeProps = {
+      [`data-${dataAttributes.heading}`]: heading,
+      [`data-${dataAttributes.bgcolorBrand}`]: isBrandBackground,
+    };
+    return (
+      <StyledLink ref={ref} variant={variant} {...props} underline="none" {...dataAttributeProps} />
+    );
+  }
+);

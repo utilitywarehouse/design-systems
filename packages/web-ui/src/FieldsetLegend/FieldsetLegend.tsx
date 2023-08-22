@@ -2,13 +2,13 @@ import { forwardRef, PropsWithChildren, HTMLAttributes } from 'react';
 import { fonts, fontWeights } from '../tokens';
 import { colors } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
-import { SxProps } from '../types';
 import styled, { FunctionInterpolation } from '@emotion/styled';
 import { unstable_styleFunctionSx as styleFunctionSx } from '@mui/system';
+import { PropsWithSx } from '../types';
 
 const displayName = 'FieldsetLegend';
 
-export interface FieldsetLegendProps extends SxProps, HTMLAttributes<HTMLLegendElement> {
+export interface FieldsetLegendProps extends HTMLAttributes<HTMLLegendElement> {
   /** Sets whether the text should appear disabled. */
   disabled?: boolean;
 }
@@ -32,10 +32,11 @@ const StyledFieldsetLegend = styled('legend', { label: displayName })<FieldsetLe
  * The `FieldsetLegend` should be used with the `Fieldset` component to label
  * grouped from inputs.
  */
-export const FieldsetLegend = forwardRef<HTMLLegendElement, PropsWithChildren<FieldsetLegendProps>>(
-  (props, ref) => {
-    return <StyledFieldsetLegend ref={ref} {...props} />;
-  }
-);
+export const FieldsetLegend = forwardRef<
+  HTMLLegendElement,
+  PropsWithChildren<PropsWithSx<FieldsetLegendProps>>
+>((props, ref) => {
+  return <StyledFieldsetLegend ref={ref} {...props} />;
+});
 
 FieldsetLegend.displayName = 'FieldsetLegend';

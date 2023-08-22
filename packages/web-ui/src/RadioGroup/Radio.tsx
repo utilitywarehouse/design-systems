@@ -12,7 +12,7 @@ import { forwardRef, useContext, type ReactNode } from 'react';
 import { styled } from '@mui/material';
 import { useIds } from '../hooks';
 import { RadioGroupContext } from './RadioGroupFormControl';
-import { SxProps } from '../types';
+import { PropsWithSx } from '../types';
 
 const StyledRadioItem = styled(Item)({
   all: 'unset',
@@ -69,7 +69,7 @@ const StyledRadioContainer = styled('div')({
   margin: -8,
 });
 
-export interface RadioProps extends SxProps, Omit<RadioGroupItemProps, 'children'> {
+export interface RadioProps extends Omit<RadioGroupItemProps, 'children'> {
   /**
    * The label for the Radio. If not using please properly associate the
    * Radio with a label using the `aria-label` or `aria-labelledby` props.
@@ -85,7 +85,7 @@ export interface RadioProps extends SxProps, Omit<RadioGroupItemProps, 'children
  * Radios should always be used with a `RadioGroup` to handle the state control and
  * layout.
  */
-export const Radio = forwardRef<HTMLButtonElement, RadioProps>(
+export const Radio = forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>>(
   (
     {
       sx,

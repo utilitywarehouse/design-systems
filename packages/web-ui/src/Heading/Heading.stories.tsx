@@ -34,6 +34,7 @@ export const Workshop: Story = {
       <Heading
         // @ts-ignore
         color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
+        className="Heading"
         {...args}
       />
     );

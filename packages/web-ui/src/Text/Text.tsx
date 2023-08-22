@@ -2,7 +2,7 @@ import { fonts, fontWeights } from '../tokens';
 import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
-import { SxProps } from '../types';
+import { PropsWithStyleOverrides, SxProps } from '../types';
 import { ElementType, PropsWithChildren } from 'react';
 import {
   palette,
@@ -61,7 +61,7 @@ export type TextProps = {
   textTransform?: ResponsiveStyleValue<
     'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined
   >;
-} & SxProps;
+};
 
 const StyledText = styled('p', {
   label: displayName,
@@ -69,7 +69,6 @@ const StyledText = styled('p', {
 })<TextProps & PaletteProps & TypographyProps>(
   palette,
   typography,
-  styleFunctionSx as FunctionInterpolation<TextProps>,
   ({ bold, noWrap, variant, color }) => {
     const { isBrandBackground } = useBackground();
     return {
@@ -84,7 +83,8 @@ const StyledText = styled('p', {
         whiteSpace: 'nowrap',
       }),
     };
-  }
+  },
+  styleFunctionSx as FunctionInterpolation<TextProps>
 );
 
 /**
@@ -96,7 +96,7 @@ export const Text = ({
   align,
   textTransform,
   ...props
-}: PropsWithChildren<TextProps>) => {
+}: PropsWithChildren<PropsWithStyleOverrides<TextProps>>) => {
   const fontSizes = {
     caption: pxToRem(12),
     legalNote: pxToRem(14),
