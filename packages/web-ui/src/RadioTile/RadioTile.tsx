@@ -1,21 +1,22 @@
 import { forwardRef, useContext } from 'react';
 import { Item, type RadioGroupItemProps } from '@radix-ui/react-radio-group';
-import { RadioGroupContext } from './RadioGroupFormControl';
 import { Label } from '../Label';
 import { FormHelperText } from '../FormHelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { RadioProps, StyledRadioIndicator } from './Radio';
 import { styled } from '@mui/material';
 import { useIds } from '../hooks';
 import { Box } from '../Box';
 import { spacing } from '../utils';
 import { PropsWithSx } from '../types';
+import { StyledRadioIndicator } from '../Radio/Radio';
+import { RadioProps } from '../Radio';
+import { RadioGroupContext } from '../RadioGroup/RadioGroupFormControl';
 
 export interface RadioTileProps extends RadioProps {}
 
 const StyledRadio = styled('div')({
-  height: 20,
-  width: 20,
+  height: 24,
+  width: 24,
   backgroundColor: colorsCommon.brandWhite,
   borderRadius: '100%',
   border: '2px solid',

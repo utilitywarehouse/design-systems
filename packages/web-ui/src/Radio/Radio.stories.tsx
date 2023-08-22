@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Radio } from './Radio';
-import { RadioGroup } from './RadioGroup';
+import { RadioGroup } from '../RadioGroup';
 import { Stack } from '../Stack';
 import { Text, TextProps } from '../Text';
 

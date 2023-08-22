@@ -11,8 +11,8 @@ import { FormHelperText } from '../FormHelperText';
 import { forwardRef, useContext, type ReactNode } from 'react';
 import { styled } from '@mui/material';
 import { useIds } from '../hooks';
-import { RadioGroupContext } from './RadioGroupFormControl';
 import { PropsWithSx } from '../types';
+import { RadioGroupContext } from '../RadioGroup/RadioGroupFormControl';
 
 const StyledRadioItem = styled(Item)({
   all: 'unset',
