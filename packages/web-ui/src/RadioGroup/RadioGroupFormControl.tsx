@@ -5,7 +5,7 @@ import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
 import { FormHelperText } from '../FormHelperText';
 import { useIds } from '../hooks';
-import { PropsWithSx, SxProps } from '../types';
+import { PropsWithSx } from '../types';
 import { mergeIds } from '../utils';
 
 export type RadioGroupContextValue = { hasGroupHelperText: boolean; 'aria-describedby'?: string };

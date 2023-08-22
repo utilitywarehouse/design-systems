@@ -2,7 +2,7 @@ import { fonts, fontWeights } from '../tokens';
 import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
-import { PropsWithStyleOverrides, SxProps } from '../types';
+import { PropsWithStyleOverrides } from '../types';
 import { ElementType, PropsWithChildren } from 'react';
 import {
   palette,
