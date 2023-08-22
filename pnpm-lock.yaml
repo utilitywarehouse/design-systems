@@ -175,6 +175,9 @@ importers:
       '@utilitywarehouse/fontsource':
         specifier: ^0.0.5
         version: 0.0.5
+      chromatic:
+        specifier: ^6.23.0
+        version: 6.23.0
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
@@ -5827,6 +5830,11 @@ packages:
   /chownr@2.0.0:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
     engines: {node: '>=10'}
+    dev: true
+
+  /chromatic@6.23.0:
+    resolution: {integrity: sha512-y30/n2b/lCGywgvaiHKwg4WaFVMNIUXHvV7Cyn8lWAPgXhbkOmfiyLUkqFi+X7dzzwAUq8xOmAkpyRyoD5+utA==}
+    hasBin: true
     dev: true
 
   /chrome-trace-event@1.0.3:

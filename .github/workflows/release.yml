@@ -10,8 +10,6 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
     steps:
       - uses: pnpm/action-setup@v2
         with:
