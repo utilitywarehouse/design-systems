@@ -15,8 +15,8 @@ import { RadioGroupContext } from '../RadioGroup/RadioGroupFormControl';
 export interface RadioTileProps extends RadioProps {}
 
 const StyledRadio = styled('div')({
-  height: 20,
-  width: 20,
+  height: 24,
+  width: 24,
   backgroundColor: colorsCommon.brandWhite,
   borderRadius: '100%',
   border: '2px solid',
