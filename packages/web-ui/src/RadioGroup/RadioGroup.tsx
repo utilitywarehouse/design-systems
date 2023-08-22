@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { Box, BoxProps } from '../Box';
-import {PropsWithSx} from '../types';
-import { BaseRadioGroupProps, RadioGroupFormControl } from './RadioGroupFormControl';
+import { PropsWithSx } from '../types';
+import { BaseRadioGroupProps, RadioGroupFormControl } from '../RadioGroup/RadioGroupFormControl';
 
 export interface RadioGroupProps extends BaseRadioGroupProps {
   /** The direction of the radios, will also set the aria-orientation value. */

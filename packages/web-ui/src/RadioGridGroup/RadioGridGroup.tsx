@@ -3,8 +3,8 @@ import { Box } from '../Box';
 import { StackProps } from '../Stack';
 import { breakpoints } from '../tokens';
 import { PropsWithSx } from '../types';
-import { RadioGroupProps } from './RadioGroup';
-import { RadioGroupFormControl } from './RadioGroupFormControl';
+import { RadioGroupProps } from '../RadioGroup';
+import { RadioGroupFormControl } from '../RadioGroup/RadioGroupFormControl';
 
 export interface RadioGridGroupProps extends Omit<RadioGroupProps, 'direction'> {
   /** Sets the number of columns to display the contents in. */

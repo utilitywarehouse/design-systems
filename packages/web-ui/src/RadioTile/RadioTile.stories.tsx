@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { RadioTile } from './RadioTile';
-import { RadioGroup } from './RadioGroup';
+import { RadioGroup } from '../RadioGroup';
 import { Stack } from '../Stack';
 
 const meta: Meta<typeof RadioTile> = {
