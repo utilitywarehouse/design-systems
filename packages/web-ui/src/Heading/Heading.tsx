@@ -1,5 +1,5 @@
 import { useBackground } from '../Box';
-import { SxProps } from '../types';
+import { PropsWithStyleOverrides } from '../types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
 import { pxToRem } from '../utils';
@@ -56,7 +56,7 @@ export type HeadingProps = {
   textTransform?: ResponsiveStyleValue<
     'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined
   >;
-} & SxProps;
+};
 
 const StyledHeading = styled('p', {
   label: displayName,
@@ -65,7 +65,6 @@ const StyledHeading = styled('p', {
 })<HeadingProps & PaletteProps & TypographyProps>(
   palette,
   typography,
-  styleFunctionSx as FunctionInterpolation<HeadingProps>,
   ({ noWrap, color }) => {
     const { isBrandBackground } = useBackground();
     return {
@@ -80,7 +79,8 @@ const StyledHeading = styled('p', {
         whiteSpace: 'nowrap',
       }),
     };
-  }
+  },
+  styleFunctionSx as FunctionInterpolation<HeadingProps>
 );
 
 /**
@@ -92,7 +92,7 @@ export const Heading = ({
   align,
   textTransform,
   ...props
-}: PropsWithChildren<HeadingProps>) => {
+}: PropsWithChildren<PropsWithStyleOverrides<HeadingProps>>) => {
   const fontSizes = {
     h4: {
       mobile: pxToRem(18),

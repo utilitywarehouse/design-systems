@@ -2,13 +2,13 @@ import { ElementType, LabelHTMLAttributes, PropsWithChildren } from 'react';
 import { pxToRem } from '../utils';
 import { fonts, fontWeights } from '../tokens';
 import { colors } from '@utilitywarehouse/colour-system';
-import { SxProps } from '../types';
+import { PropsWithSx } from '../types';
 import styled, { FunctionInterpolation } from '@emotion/styled';
 import { unstable_styleFunctionSx as styleFunctionSx } from '@mui/system';
 
 const displayName = 'Label';
 
-export interface LabelProps extends SxProps, LabelHTMLAttributes<HTMLLabelElement> {
+export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   /** Sets the disabled prop, when true sets the label colour to grey */
   disabled?: boolean;
   /**
@@ -43,7 +43,10 @@ const StyledLabel = styled('label', { label: displayName })<LabelProps>(
  *
  * The Label component is used for labelling form elements, such as radio inputs.
  */
-export const Label = ({ component = 'label', ...props }: PropsWithChildren<LabelProps>) => {
+export const Label = ({
+  component = 'label',
+  ...props
+}: PropsWithChildren<PropsWithSx<LabelProps>>) => {
   return <StyledLabel as={component} {...props} />;
 };
 

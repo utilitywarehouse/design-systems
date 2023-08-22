@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import { Box, BoxProps } from '../Box';
+import {PropsWithSx} from '../types';
 import { BaseRadioGroupProps, RadioGroupFormControl } from './RadioGroupFormControl';
 
 export interface RadioGroupProps extends BaseRadioGroupProps {
@@ -22,7 +23,7 @@ export interface RadioGroupProps extends BaseRadioGroupProps {
  *
  * Follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) for radio groups not contained in a toolbar.
  */
-export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
+export const RadioGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps>>(
   (
     {
       children,

@@ -5,7 +5,7 @@ import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
 import { FormHelperText } from '../FormHelperText';
 import { useIds } from '../hooks';
-import { SxProps } from '../types';
+import { PropsWithSx } from '../types';
 import { mergeIds } from '../utils';
 
 export type RadioGroupContextValue = { hasGroupHelperText: boolean; 'aria-describedby'?: string };
@@ -13,7 +13,7 @@ export const RadioGroupContext = createContext<RadioGroupContextValue>({
   hasGroupHelperText: false,
 } as RadioGroupContextValue);
 
-export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'>, SxProps {
+export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
   children: ReactNode;
   /**
    * The label for the radio group. This should contain the question being
@@ -41,7 +41,7 @@ export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'>, 
   errorMessage?: ReactNode;
 }
 
-export const RadioGroupFormControl = forwardRef<HTMLDivElement, BaseRadioGroupProps>(
+export const RadioGroupFormControl = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGroupProps>>(
   (
     {
       id: providedId,
