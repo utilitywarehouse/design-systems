@@ -33,3 +33,4 @@ jobs:
           workingDir: packages/web-ui
           buildScriptName: build:storybook
           exitOnceUploaded: true
+          onlyChanged: true
