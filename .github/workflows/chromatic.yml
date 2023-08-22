@@ -22,6 +22,7 @@ jobs:
         run: pnpm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: pnpm run build
 
       - name: Publish to Chromatic
         uses: chromaui/action@v1
