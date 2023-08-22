@@ -21,7 +21,7 @@ const StyledFieldsetLegend = styled('legend', { label: displayName })<FieldsetLe
     fontFamily: fonts.secondary,
     fontWeight: fontWeights.secondary.semibold,
     fontSize: pxToRem(16),
-    lineHeight: pxToRem(16),
+    lineHeight: pxToRem(24),
   })
 );
 
