@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FormHelperText } from './FormHelperText';
+import { HelperText } from './HelperText';
 
-const meta: Meta<typeof FormHelperText> = {
-  title: 'Web UI / Components / FormHelperText',
-  component: FormHelperText,
+const meta: Meta<typeof HelperText> = {
+  title: 'Web UI / Components / HelperText',
+  component: HelperText,
   tags: ['autodocs'],
 };
 
 export default meta;
-type Story = StoryObj<typeof FormHelperText>;
+type Story = StoryObj<typeof HelperText>;
 
 export const Workshop: Story = {
   argTypes: {

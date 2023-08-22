@@ -7,7 +7,7 @@ import {
 import { Box } from '../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Label } from '../Label';
-import { FormHelperText } from '../FormHelperText';
+import { HelperText } from '../HelperText';
 import { forwardRef, useContext, type ReactNode } from 'react';
 import { styled } from '@mui/material';
 import { useIds } from '../hooks';
@@ -138,9 +138,7 @@ export const Radio = forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>>(
             >
               {label}
             </Label>
-            {showHelperText ? (
-              <FormHelperText id={helperTextId}>{helperText}</FormHelperText>
-            ) : null}
+            {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
           </Box>
         ) : null}
       </Box>

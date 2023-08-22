@@ -6,17 +6,16 @@ import { PropsWithSx } from '../types';
 import styled, { FunctionInterpolation } from '@emotion/styled';
 import { unstable_styleFunctionSx as styleFunctionSx } from '@mui/system';
 
-const displayName = 'FormHelperText';
+const displayName = 'HelperText';
 
-export interface FormHelperTextProps extends HTMLAttributes<HTMLSpanElement> {
+export interface HelperTextProps extends HTMLAttributes<HTMLSpanElement> {
   /** Set the text appearance to disabled. */
   disabled?: boolean;
   /** Set the text appearance when showing an error message. This will override the disabled styles. */
   error?: boolean;
 }
 
-const StyledFormHelperText = styled('span', { label: displayName })<FormHelperTextProps>(
-  styleFunctionSx as FunctionInterpolation<FormHelperTextProps>,
+const StyledHelperText = styled('span', { label: displayName })<HelperTextProps>(
   ({ disabled, error }) => {
     const color = error ? colors.red600 : disabled ? colors.grey400 : colors.grey800;
     return {
@@ -26,7 +25,8 @@ const StyledFormHelperText = styled('span', { label: displayName })<FormHelperTe
       fontSize: pxToRem(13),
       lineHeight: pxToRem(16),
     };
-  }
+  },
+  styleFunctionSx as FunctionInterpolation<HelperTextProps>
 );
 
 /**
@@ -36,11 +36,11 @@ const StyledFormHelperText = styled('span', { label: displayName })<FormHelperTe
  * This component should be used with form field components to display helper
  * text.
  */
-export const FormHelperText = forwardRef<
+export const HelperText = forwardRef<
   HTMLSpanElement,
-  PropsWithChildren<PropsWithSx<FormHelperTextProps>>
+  PropsWithChildren<PropsWithSx<HelperTextProps>>
 >((props, ref) => {
-  return <StyledFormHelperText ref={ref} {...props} />;
+  return <StyledHelperText ref={ref} {...props} />;
 });
 
-FormHelperText.displayName = 'FormHelperText';
+HelperText.displayName = displayName;
