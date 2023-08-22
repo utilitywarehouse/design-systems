@@ -15,7 +15,7 @@
     "lint": "TIMING=1 eslint --ext ts,tsx src",
     "dev": "storybook dev --quiet -p 6006",
     "build:storybook": "storybook build --quiet",
-    "chromatic": "chromatic"
+    "chromatic": "chromatic --output-dir=storybook-static"
   },
   "author": "",
   "license": "UNLICENSED",
