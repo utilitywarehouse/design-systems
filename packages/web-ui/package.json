@@ -14,7 +14,7 @@
     "lint:fix": "TIMING=1 eslint --fix --ext ts,tsx src",
     "lint": "TIMING=1 eslint --ext ts,tsx src",
     "dev": "storybook dev --quiet -p 6006",
-    "build:storybook": "storybook build --quiet --output-dir=storybook-static",
+    "build:storybook": "storybook build --quiet",
     "chromatic": "chromatic"
   },
   "author": "",
