@@ -4,7 +4,12 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
 import { pxToRem } from '../utils';
 import { ElementType, PropsWithChildren } from 'react';
-import { ResponsiveStyleValue, unstable_styleFunctionSx as styleFunctionSx } from '@mui/system';
+import {
+  typography,
+  TypographyProps,
+  ResponsiveStyleValue,
+  unstable_styleFunctionSx as styleFunctionSx,
+} from '@mui/system';
 import styled, { FunctionInterpolation } from '@emotion/styled';
 import isPropValid from '@emotion/is-prop-valid';
 
@@ -55,21 +60,25 @@ const StyledHeading = styled('p', {
   label: displayName,
   shouldForwardProp: prop =>
     isPropValid(prop) && prop !== 'color' && prop !== 'fontSize' && prop !== 'lineHeight',
-})<HeadingProps>(({ noWrap, color }) => {
-  const { isBrandBackground } = useBackground();
-  return {
-    fontFamily: fonts.primary,
-    fontWeight: fontWeights.primary,
-    color: color || colorsCommon.brandPrimaryPurple,
-    textRendering: 'optimizeLegibility', // ensure we preserve the ligatures & kerning of the Aeonik typeface
-    ...(isBrandBackground && { color: color || colorsCommon.brandWhite }),
-    ...(noWrap && {
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-    }),
-  };
-}, styleFunctionSx as FunctionInterpolation<HeadingProps>);
+})<HeadingProps & TypographyProps>(
+  typography,
+  ({ noWrap, color }) => {
+    const { isBrandBackground } = useBackground();
+    return {
+      fontFamily: fonts.primary,
+      fontWeight: fontWeights.primary,
+      color: color || colorsCommon.brandPrimaryPurple,
+      textRendering: 'optimizeLegibility', // ensure we preserve the ligatures & kerning of the Aeonik typeface
+      ...(isBrandBackground && { color: color || colorsCommon.brandWhite }),
+      ...(noWrap && {
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+      }),
+    };
+  },
+  styleFunctionSx as FunctionInterpolation<HeadingProps>
+);
 
 /**
  * Heading renders the primary UW font, to be used for heading-level typography.
