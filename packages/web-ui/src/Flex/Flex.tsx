@@ -1,5 +1,4 @@
 import { BoxProps as MuiBoxProps, createBox } from '@mui/system';
-import { PropsWithStyleOverrides } from '../types';
 import { PropsWithChildren } from 'react';
 import { theme, type Theme } from '../theme';
 import { globalPrefix } from '../utils';
@@ -47,7 +46,7 @@ export const Flex = ({
   shrink,
   component,
   ...props
-}: PropsWithChildren<PropsWithStyleOverrides<FlexProps>>) => {
+}: PropsWithChildren<FlexProps>) => {
   const combinedProps = {
     as: component,
     flexDirection: direction,
