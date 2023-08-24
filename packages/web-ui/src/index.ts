@@ -10,6 +10,7 @@ export * from './Box';
 export * from './Button';
 export * from './Fieldset';
 export * from './FieldsetLegend';
+export * from './Flex';
 export * from './Grid';
 export * from './Heading';
 export * from './HelperText';
