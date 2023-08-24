@@ -78,7 +78,7 @@ export const Workshop: Story = {
         'flex-end',
         'space-between',
         'space-around',
-        'space-evently',
+        'space-evenly',
       ],
       control: {
         type: 'radio',

@@ -39,8 +39,9 @@ const BackgroundProvider = BackgroundContext.Provider;
 export const useBackground = () => useContext(BackgroundContext);
 
 /**
- * Box is a low-level primitive, which supports theme-aware styling props, and can
- * be used for building any styled element.
+ * Box is a low-level primitive, which supports style props, as well as
+ * contextual brand background colours, and can be used for building any styled
+ * element.
  */
 export const Box = forwardRef(function Box({ background, bgcolor, ...props }, ref) {
   const isBrandBackground =
