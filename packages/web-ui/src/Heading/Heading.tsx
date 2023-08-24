@@ -5,11 +5,9 @@ import { fonts, fontWeights } from '../tokens';
 import { pxToRem } from '../utils';
 import { ElementType, PropsWithChildren } from 'react';
 import {
-  ResponsiveStyleValue,
-  palette,
-  PaletteProps,
   typography,
   TypographyProps,
+  ResponsiveStyleValue,
   unstable_styleFunctionSx as styleFunctionSx,
 } from '@mui/system';
 import styled, { FunctionInterpolation } from '@emotion/styled';
@@ -17,7 +15,7 @@ import isPropValid from '@emotion/is-prop-valid';
 
 const displayName = 'Heading';
 
-export type HeadingProps = {
+export interface HeadingProps {
   /**
    * Applies the heading font styles.
    * @default h2
@@ -56,14 +54,13 @@ export type HeadingProps = {
   textTransform?: ResponsiveStyleValue<
     'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined
   >;
-};
+}
 
 const StyledHeading = styled('p', {
   label: displayName,
   shouldForwardProp: prop =>
     isPropValid(prop) && prop !== 'color' && prop !== 'fontSize' && prop !== 'lineHeight',
-})<HeadingProps & PaletteProps & TypographyProps>(
-  palette,
+})<HeadingProps & TypographyProps>(
   typography,
   ({ noWrap, color }) => {
     const { isBrandBackground } = useBackground();
