@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { uwWebUiPrefix } from '../utils';
+import { globalPrefix } from '../utils';
 
 interface UseIdsProps {
   providedId?: string;
@@ -17,7 +17,7 @@ export const useIds = ({
   componentPrefix,
 }: UseIdsProps) => {
   const generatedId = useId();
-  const prefix = componentPrefix ? `${uwWebUiPrefix}-${componentPrefix}` : uwWebUiPrefix;
+  const prefix = componentPrefix ? `${globalPrefix}-${componentPrefix}` : globalPrefix;
   const defaultId = `${prefix}-${generatedId}`;
   const id = providedId || defaultId;
   const labelId = providedLabelId || `${defaultId}-label`;
