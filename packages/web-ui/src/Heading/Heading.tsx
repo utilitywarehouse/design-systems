@@ -4,20 +4,13 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
 import { pxToRem } from '../utils';
 import { ElementType, PropsWithChildren } from 'react';
-import {
-  ResponsiveStyleValue,
-  palette,
-  PaletteProps,
-  typography,
-  TypographyProps,
-  unstable_styleFunctionSx as styleFunctionSx,
-} from '@mui/system';
+import { ResponsiveStyleValue, unstable_styleFunctionSx as styleFunctionSx } from '@mui/system';
 import styled, { FunctionInterpolation } from '@emotion/styled';
 import isPropValid from '@emotion/is-prop-valid';
 
 const displayName = 'Heading';
 
-export type HeadingProps = {
+export interface HeadingProps {
   /**
    * Applies the heading font styles.
    * @default h2
@@ -56,32 +49,27 @@ export type HeadingProps = {
   textTransform?: ResponsiveStyleValue<
     'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined
   >;
-};
+}
 
 const StyledHeading = styled('p', {
   label: displayName,
   shouldForwardProp: prop =>
     isPropValid(prop) && prop !== 'color' && prop !== 'fontSize' && prop !== 'lineHeight',
-})<HeadingProps & PaletteProps & TypographyProps>(
-  palette,
-  typography,
-  ({ noWrap, color }) => {
-    const { isBrandBackground } = useBackground();
-    return {
-      fontFamily: fonts.primary,
-      fontWeight: fontWeights.primary,
-      color: color || colorsCommon.brandPrimaryPurple,
-      textRendering: 'optimizeLegibility', // ensure we preserve the ligatures & kerning of the Aeonik typeface
-      ...(isBrandBackground && { color: color || colorsCommon.brandWhite }),
-      ...(noWrap && {
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-      }),
-    };
-  },
-  styleFunctionSx as FunctionInterpolation<HeadingProps>
-);
+})<HeadingProps>(({ noWrap, color }) => {
+  const { isBrandBackground } = useBackground();
+  return {
+    fontFamily: fonts.primary,
+    fontWeight: fontWeights.primary,
+    color: color || colorsCommon.brandPrimaryPurple,
+    textRendering: 'optimizeLegibility', // ensure we preserve the ligatures & kerning of the Aeonik typeface
+    ...(isBrandBackground && { color: color || colorsCommon.brandWhite }),
+    ...(noWrap && {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+    }),
+  };
+}, styleFunctionSx as FunctionInterpolation<HeadingProps>);
 
 /**
  * Heading renders the primary UW font, to be used for heading-level typography.
