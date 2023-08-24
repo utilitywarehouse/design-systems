@@ -3,7 +3,7 @@ import { OverridableComponent, OverrideProps } from '@mui/material/OverridableCo
 import { createContext, forwardRef, useContext, useMemo } from 'react';
 import { theme, type Theme } from '../theme';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { uwWebUiPrefix } from '../utils';
+import { globalPrefix } from '../utils';
 
 export type DefaultBoxComponent = 'div';
 
@@ -19,7 +19,7 @@ export interface CustomBoxProps {
 
 const BaseBox = createBox<Theme, { background?: string }>({
   defaultTheme: theme,
-  defaultClassName: `${uwWebUiPrefix}-Box`,
+  defaultClassName: `${globalPrefix}-Box`,
 });
 
 export type BoxProps<
