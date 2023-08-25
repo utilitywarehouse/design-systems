@@ -6,6 +6,7 @@ import { globalPrefix } from '../utils';
 const displayName = 'Flex';
 
 export interface FlexProps extends Omit<MuiBoxProps, 'display'> {
+  display?: 'flex' | 'inline-flex';
   direction?: MuiBoxProps['flexDirection'];
   align?: MuiBoxProps['alignItems'];
   justify?: MuiBoxProps['justifyContent'];
@@ -37,6 +38,7 @@ const BaseBox = createBox<Theme>({
  * This component should be used to create vertical and horizontal stacked layouts.
  */
 export const Flex = ({
+  display = 'flex',
   direction,
   align,
   justify,
@@ -49,6 +51,7 @@ export const Flex = ({
 }: PropsWithChildren<FlexProps>) => {
   const combinedProps = {
     as: component,
+    display,
     flexDirection: direction,
     flexWrap: wrap,
     flexBasis: basis,
@@ -59,7 +62,7 @@ export const Flex = ({
     ...props,
   };
 
-  return <BaseBox {...combinedProps} display="flex" />;
+  return <BaseBox {...combinedProps} />;
 };
 
 Flex.displayName = displayName;
