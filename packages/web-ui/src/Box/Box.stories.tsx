@@ -63,7 +63,7 @@ type Props = BoxProps<'a', { additionalProp: string }>;
 export const CustomComponent = {
   render: (args: Props) => {
     const CustomAnchor = ({ onClick, href, additionalProp, ...props }: Props) => {
-      const ref = useRef<HTMLButtonElement>(null);
+      const ref = useRef<HTMLAnchorElement>(null);
       return (
         <Box component="a" onClick={onClick} href={href} ref={ref} {...props}>
           Additional Prop: {additionalProp}

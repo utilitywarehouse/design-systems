@@ -22,6 +22,12 @@ export type StackProps<D extends React.ElementType = DefaultStackComponent, P = 
  *
  * This component is directly based on the one from the '@mui/material' package, please
  * [check their site for further documentation](https://mui.com/material-ui/react-stack/).
+ *
+ * ## Accessibility
+ *
+ * The `Stack` component is an all purpose component. By default, it has no
+ * accessibility concerns. If you use the `Stack` as a custom element, it is up to
+ * you to manage the resulting accessibility implications.
  */
 export const Stack = forwardRef(function Stack(props, ref) {
   return <MuiStack ref={ref} {...props} />;
