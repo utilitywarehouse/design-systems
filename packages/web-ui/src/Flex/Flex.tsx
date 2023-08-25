@@ -1,4 +1,4 @@
-import { BoxProps as MuiBoxProps, createBox } from '@mui/system';
+import { BoxProps as MuiBoxProps, createBox, ResponsiveStyleValue } from '@mui/system';
 import { PropsWithChildren } from 'react';
 import { theme, type Theme } from '../theme';
 import { globalPrefix } from '../utils';
@@ -6,7 +6,7 @@ import { globalPrefix } from '../utils';
 const displayName = 'Flex';
 
 export interface FlexProps extends Omit<MuiBoxProps, 'display'> {
-  display?: 'flex' | 'inline-flex';
+  display?: ResponsiveStyleValue<'none' | 'flex' | 'inline-flex'>;
   direction?: MuiBoxProps['flexDirection'];
   align?: MuiBoxProps['alignItems'];
   justify?: MuiBoxProps['justifyContent'];
