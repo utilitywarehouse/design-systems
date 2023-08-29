@@ -27,7 +27,7 @@ export type DefaultTypographyComponent = 'p';
 
 export interface TypographyTypeMap<
   AdditionalProps = {},
-  DefaultComponent extends React.ElementType = 'span'
+  DefaultComponent extends React.ElementType = DefaultTypographyComponent
 > {
   props: AdditionalProps & PropsWithChildren<PropsWithStyleOverrides<TypographyOwnProps>>;
   defaultComponent: DefaultComponent;
