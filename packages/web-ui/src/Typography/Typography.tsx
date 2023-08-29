@@ -24,7 +24,7 @@ export interface TypographyProps
     | 'textAlign'
     | 'padding'
   > {
-  fontFamily: 'primary' | 'secondary';
+  fontFamily?: 'primary' | 'secondary';
   fontWeight?: 'regular' | 'semibold';
   noWrap?: boolean | undefined;
   color?: string | 'primary' | 'secondary' | 'success' | 'error';
@@ -55,7 +55,7 @@ export interface TypographyProps
  */
 export const Typography = ({
   variant,
-  fontFamily,
+  fontFamily = 'secondary',
   fontWeight = 'regular',
   sx,
   noWrap,
