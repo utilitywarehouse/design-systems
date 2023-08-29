@@ -20,24 +20,27 @@ export const headingVariantMapping: Record<string, string> = {
   h4: 'h4',
 };
 
-export type DefaultComponent = 'p';
+export type DefaultLegacyTypographyComponent = 'p';
 
-export interface CustomProps {
+export interface CustomLegacyTypographyProps {
   color?: string | 'primary' | 'secondary' | 'success' | 'error';
   /** @deprecated The variant prop is deprecated and will be removed in v1 */
   variant?: MuiTypographyProps['variant'];
   component?: React.ElementType;
 }
 
-export interface TypeMap<D extends React.ElementType = DefaultComponent, P = {}> {
-  props: MuiTypographyProps<D, P> & CustomProps;
+export interface LegacyTypographyTypeMap<
+  D extends React.ElementType = DefaultLegacyTypographyComponent,
+  P = {}
+> {
+  props: MuiTypographyProps<D, P> & CustomLegacyTypographyProps;
   defaultComponent: D;
 }
 
 export type LegacyTypographyProps<
-  D extends React.ElementType = DefaultComponent,
+  D extends React.ElementType = DefaultLegacyTypographyComponent,
   P = {}
-> = OverrideProps<TypeMap<D, P>, D>;
+> = OverrideProps<LegacyTypographyTypeMap<D, P>, D>;
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -64,7 +67,6 @@ export const LegacyTypography = forwardRef(function LegacyTypography(
   { color, variant, component, ...props },
   ref
 ) {
-  console.log({ color });
   const isLegacyTextVariant = variant && Object.keys(textVariantMapping).includes(variant);
   const isLegacyHeadingVariant = variant && Object.keys(headingVariantMapping).includes(variant);
   const isLegacyColor = [undefined, 'primary', 'secondary', 'success', 'error'].includes(
@@ -104,4 +106,4 @@ export const LegacyTypography = forwardRef(function LegacyTypography(
       {...props}
     />
   );
-}) as OverridableComponent<TypeMap>;
+}) as OverridableComponent<LegacyTypographyTypeMap>;

@@ -2,11 +2,14 @@ import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
 import { PropsWithStyleOverrides } from '../types';
-import { PropsWithChildren } from 'react';
+import { forwardRef, PropsWithChildren } from 'react';
 import { BoxProps as MuiBoxProps, ResponsiveStyleValue } from '@mui/system';
 import { Typography } from '../Typography';
+import { OverridableComponent, OverrideProps } from '@mui/types';
 
-export type TextProps = {
+export type DefaultTextComponent = 'p';
+
+export interface CustomTextProps {
   /**
    * Applies the text font styles.
    * @default body
@@ -50,19 +53,25 @@ export type TextProps = {
   textTransform?: ResponsiveStyleValue<
     'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined
   >;
-};
+}
+
+export interface TextTypeMap<D extends React.ElementType = DefaultTextComponent> {
+  props: PropsWithChildren<PropsWithStyleOverrides<CustomTextProps>>;
+  defaultComponent: D;
+}
+
+export type TextProps<D extends React.ElementType<any> = DefaultTextComponent> = OverrideProps<
+  TextTypeMap,
+  D
+>;
 
 /**
- * Text renders the secondary UW font, Work Sans, to be used for body copy.
+ * Text renders the secondary UW font, Work Sans, to be used for body text.
  */
-export const Text = ({
-  component = 'p',
-  variant = 'body',
-  align,
-  bold,
-  color,
-  ...props
-}: PropsWithChildren<PropsWithStyleOverrides<TextProps>>) => {
+export const Text = forwardRef(function Text(
+  { component = 'p', variant = 'body', align, bold, color, ...props },
+  ref
+) {
   const fontSizes = {
     caption: pxToRem(12),
     legalNote: pxToRem(14),
@@ -80,6 +89,7 @@ export const Text = ({
     : colorsCommon.brandMidnight;
   return (
     <Typography
+      ref={ref}
       component={component}
       fontFamily="secondary"
       fontSize={fontSizes[variant]}
@@ -90,6 +100,4 @@ export const Text = ({
       {...props}
     />
   );
-};
-
-Text.displayName = 'Text';
+}) as OverridableComponent<TextTypeMap>;

@@ -1,5 +1,5 @@
 import { BoxTypeMap as MuiBoxTypeMap, createBox } from '@mui/system';
-import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
+import { OverridableComponent, OverrideProps } from '@mui/types';
 import { createContext, forwardRef, useContext, useMemo } from 'react';
 import { theme, type Theme } from '../theme';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
