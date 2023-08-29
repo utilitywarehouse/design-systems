@@ -16,7 +16,13 @@ const BaseBox = createBox<Theme>({
 export interface TypographyProps
   extends Pick<
     MuiBoxProps,
-    'component' | 'fontSize' | 'lineHeight' | 'letterSpacing' | 'textTransform' | 'textAlign'
+    | 'component'
+    | 'fontSize'
+    | 'lineHeight'
+    | 'letterSpacing'
+    | 'textTransform'
+    | 'textAlign'
+    | 'padding'
   > {
   fontFamily: 'primary' | 'secondary';
   fontWeight?: 'regular' | 'semibold';

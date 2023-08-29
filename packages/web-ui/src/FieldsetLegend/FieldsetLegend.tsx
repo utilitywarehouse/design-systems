@@ -1,29 +1,13 @@
-import { forwardRef, PropsWithChildren, HTMLAttributes } from 'react';
-import { fonts, fontWeights } from '../tokens';
+import { PropsWithChildren, HTMLAttributes } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
-import styled, { FunctionInterpolation } from '@emotion/styled';
-import { unstable_styleFunctionSx as styleFunctionSx } from '@mui/system';
 import { PropsWithSx } from '../types';
-
-const displayName = 'FieldsetLegend';
+import { Typography } from '../Typography';
 
 export interface FieldsetLegendProps extends HTMLAttributes<HTMLLegendElement> {
   /** Sets whether the text should appear disabled. */
   disabled?: boolean;
 }
-
-const StyledFieldsetLegend = styled('legend', { label: displayName })<FieldsetLegendProps>(
-  styleFunctionSx as FunctionInterpolation<FieldsetLegendProps>,
-  ({ disabled }) => ({
-    padding: 0,
-    color: disabled ? colors.grey400 : colors.grey1000,
-    fontFamily: fonts.secondary,
-    fontWeight: fontWeights.secondary.semibold,
-    fontSize: pxToRem(16),
-    lineHeight: pxToRem(24),
-  })
-);
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -32,11 +16,21 @@ const StyledFieldsetLegend = styled('legend', { label: displayName })<FieldsetLe
  * The `FieldsetLegend` should be used with the `Fieldset` component to label
  * grouped from inputs.
  */
-export const FieldsetLegend = forwardRef<
-  HTMLLegendElement,
-  PropsWithChildren<PropsWithSx<FieldsetLegendProps>>
->((props, ref) => {
-  return <StyledFieldsetLegend ref={ref} {...props} />;
-});
+export const FieldsetLegend = ({
+  disabled,
+  ...props
+}: PropsWithChildren<PropsWithSx<FieldsetLegendProps>>) => {
+  return (
+    <Typography
+      padding={0}
+      fontFamily="secondary"
+      fontWeight="semibold"
+      fontSize={pxToRem(16)}
+      lineHeight={pxToRem(24)}
+      color={disabled ? colors.grey400 : colors.grey1000}
+      {...props}
+    />
+  );
+};
 
 FieldsetLegend.displayName = 'FieldsetLegend';
