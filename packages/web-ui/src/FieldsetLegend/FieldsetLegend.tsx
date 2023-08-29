@@ -1,4 +1,4 @@
-import { PropsWithChildren, HTMLAttributes } from 'react';
+import { PropsWithChildren, HTMLAttributes, forwardRef } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
 import { PropsWithSx } from '../types';
@@ -16,12 +16,13 @@ export interface FieldsetLegendProps extends HTMLAttributes<HTMLLegendElement> {
  * The `FieldsetLegend` should be used with the `Fieldset` component to label
  * grouped from inputs.
  */
-export const FieldsetLegend = ({
-  disabled,
-  ...props
-}: PropsWithChildren<PropsWithSx<FieldsetLegendProps>>) => {
+export const FieldsetLegend = forwardRef<
+  HTMLLegendElement,
+  PropsWithChildren<PropsWithSx<FieldsetLegendProps>>
+>(({ disabled, ...props }, ref) => {
   return (
     <Typography
+      ref={ref}
       padding={0}
       fontFamily="secondary"
       fontWeight="semibold"
@@ -31,6 +32,6 @@ export const FieldsetLegend = ({
       {...props}
     />
   );
-};
+});
 
 FieldsetLegend.displayName = 'FieldsetLegend';

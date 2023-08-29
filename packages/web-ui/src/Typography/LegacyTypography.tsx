@@ -1,10 +1,10 @@
-import { forwardRef } from 'react';
-import MuiTypography from '@mui/material/Typography';
+import { forwardRef, PropsWithChildren } from 'react';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import type { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
-import type { OverrideProps } from '@mui/material/OverridableComponent';
+import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } from '@mui/material';
+import { OverrideProps } from '@mui/types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { dataAttributes } from '../utils';
+import { PropsWithStyleOverrides } from '../types';
 
 export const textVariantMapping: Record<string, string> = {
   subtitle: 'p',
@@ -20,27 +20,29 @@ export const headingVariantMapping: Record<string, string> = {
   h4: 'h4',
 };
 
-export type DefaultLegacyTypographyComponent = 'p';
-
-export interface CustomLegacyTypographyProps {
+export interface LegacyTypographyOwnProps {
   color?: string | 'primary' | 'secondary' | 'success' | 'error';
   /** @deprecated The variant prop is deprecated and will be removed in v1 */
   variant?: MuiTypographyProps['variant'];
   component?: React.ElementType;
 }
 
+export type DefaultLegacyTypographyComponent = 'p';
+
 export interface LegacyTypographyTypeMap<
-  D extends React.ElementType = DefaultLegacyTypographyComponent,
-  P = {}
+  AdditionalProps = {},
+  DefaultComponent extends React.ElementType = 'span'
 > {
-  props: MuiTypographyProps<D, P> & CustomLegacyTypographyProps;
-  defaultComponent: D;
+  props: AdditionalProps & PropsWithChildren<PropsWithStyleOverrides<LegacyTypographyOwnProps>>;
+  defaultComponent: DefaultComponent;
 }
 
 export type LegacyTypographyProps<
-  D extends React.ElementType = DefaultLegacyTypographyComponent,
-  P = {}
-> = OverrideProps<LegacyTypographyTypeMap<D, P>, D>;
+  RootComponent extends React.ElementType = LegacyTypographyTypeMap['defaultComponent'],
+  AdditionalProps = {}
+> = OverrideProps<LegacyTypographyTypeMap<AdditionalProps, RootComponent>, RootComponent> & {
+  component?: React.ElementType;
+};
 
 /**
  * > This component is only required when building a custom field that isn’t

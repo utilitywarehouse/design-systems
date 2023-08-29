@@ -8,14 +8,12 @@ import { theme, type Theme } from '../theme';
 import { LegacyTypography } from './LegacyTypography';
 import { OverridableComponent, OverrideProps } from '@mui/types';
 
-export type DefaultTypographyComponent = 'p';
-
 const BaseBox = createBox<Theme>({
   defaultTheme: theme,
   defaultClassName: `${globalPrefix}-Typography`,
 });
 
-export interface CustomTypographyProps
+export interface TypographyOwnProps
   extends Pick<
     MuiBoxProps,
     | 'component'
@@ -34,13 +32,22 @@ export interface CustomTypographyProps
   variant?: MuiTypographyProps['variant'];
 }
 
-export interface TypographyTypeMap<D extends React.ElementType = DefaultTypographyComponent> {
-  props: PropsWithChildren<PropsWithStyleOverrides<CustomTypographyProps>>;
-  defaultComponent: D;
+export type DefaultTypographyComponent = 'p';
+
+export interface TypographyTypeMap<
+  AdditionalProps = {},
+  DefaultComponent extends React.ElementType = 'span'
+> {
+  props: AdditionalProps & PropsWithChildren<PropsWithStyleOverrides<TypographyOwnProps>>;
+  defaultComponent: DefaultComponent;
 }
 
-export type TypographyProps<D extends React.ElementType<any> = DefaultTypographyComponent> =
-  OverrideProps<TypographyTypeMap, D>;
+export type TypographyProps<
+  RootComponent extends React.ElementType = TypographyTypeMap['defaultComponent'],
+  AdditionalProps = {}
+> = OverrideProps<TypographyTypeMap<AdditionalProps, RootComponent>, RootComponent> & {
+  component?: React.ElementType;
+};
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -68,7 +75,7 @@ export const Typography = forwardRef(function Typography(
   ref
 ) {
   if (!!variant) {
-    return <LegacyTypography variant={variant} {...props} />;
+    return <LegacyTypography ref={ref} variant={variant} {...props} />;
   }
   return (
     <BaseBox

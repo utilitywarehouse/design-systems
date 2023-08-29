@@ -3,12 +3,12 @@ export { legacyTypographyThemeOverrides, baseTypographyTheme } from './Typograph
 export type {
   TypographyProps,
   DefaultTypographyComponent,
-  CustomTypographyProps,
+  TypographyOwnProps,
   TypographyTypeMap,
 } from './Typography';
 export type {
   DefaultLegacyTypographyComponent,
-  CustomLegacyTypographyProps,
+  LegacyTypographyOwnProps,
   LegacyTypographyProps,
   LegacyTypographyTypeMap,
 } from './LegacyTypography';
