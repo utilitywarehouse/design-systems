@@ -5,7 +5,7 @@ export type {
   DefaultTypographyComponent,
   TypographyOwnProps,
   TypographyTypeMap,
-} from './Typography';
+} from './Typography.props';
 export type {
   DefaultLegacyTypographyComponent,
   LegacyTypographyOwnProps,

@@ -1,53 +1,16 @@
 import { fonts, fontWeights } from '../tokens';
-import { TypographyProps as MuiTypographyProps } from '@mui/material';
 import { globalPrefix } from '../utils';
-import { PropsWithStyleOverrides } from '../types';
-import { forwardRef, PropsWithChildren } from 'react';
-import { BoxProps as MuiBoxProps, createBox } from '@mui/system';
+import { forwardRef } from 'react';
+import { createBox } from '@mui/system';
 import { theme, type Theme } from '../theme';
 import { LegacyTypography } from './LegacyTypography';
-import { OverridableComponent, OverrideProps } from '@mui/types';
+import { OverridableComponent } from '@mui/types';
+import { TypographyTypeMap } from './Typography.props';
 
 const BaseBox = createBox<Theme>({
   defaultTheme: theme,
   defaultClassName: `${globalPrefix}-Typography`,
 });
-
-export interface TypographyOwnProps
-  extends Pick<
-    MuiBoxProps,
-    | 'component'
-    | 'fontSize'
-    | 'lineHeight'
-    | 'letterSpacing'
-    | 'textTransform'
-    | 'textAlign'
-    | 'padding'
-  > {
-  fontFamily?: 'primary' | 'secondary';
-  fontWeight?: 'regular' | 'semibold';
-  noWrap?: boolean | undefined;
-  color?: string | 'primary' | 'secondary' | 'success' | 'error';
-  /** @deprecated The variant prop is deprecated and will be removed in v1 */
-  variant?: MuiTypographyProps['variant'];
-}
-
-export type DefaultTypographyComponent = 'p';
-
-export interface TypographyTypeMap<
-  AdditionalProps = {},
-  DefaultComponent extends React.ElementType = 'span'
-> {
-  props: AdditionalProps & PropsWithChildren<PropsWithStyleOverrides<TypographyOwnProps>>;
-  defaultComponent: DefaultComponent;
-}
-
-export type TypographyProps<
-  RootComponent extends React.ElementType = TypographyTypeMap['defaultComponent'],
-  AdditionalProps = {}
-> = OverrideProps<TypographyTypeMap<AdditionalProps, RootComponent>, RootComponent> & {
-  component?: React.ElementType;
-};
 
 /**
  * > This component is only required when building a custom field that isn’t
