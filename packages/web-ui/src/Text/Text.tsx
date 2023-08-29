@@ -1,59 +1,10 @@
-import { fonts, fontWeights } from '../tokens';
 import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { pxToRem, globalPrefix } from '../utils';
+import { pxToRem } from '../utils';
 import { PropsWithStyleOverrides } from '../types';
 import { PropsWithChildren } from 'react';
-import { BoxProps as MuiBoxProps, createBox, ResponsiveStyleValue } from '@mui/system';
-
-import { theme, type Theme } from '../theme';
-
-const displayName = 'Text';
-
-const BaseBox = createBox<Theme>({
-  defaultTheme: theme,
-  defaultClassName: `${globalPrefix}-Typography`,
-});
-
-export interface TypographyProps
-  extends Pick<
-    MuiBoxProps,
-    | 'component'
-    | 'fontSize'
-    | 'lineHeight'
-    | 'letterSpacing'
-    | 'textTransform'
-    | 'textAlign'
-    | 'color'
-  > {
-  fontFamily: 'primary' | 'secondary';
-  fontWeight?: 'regular' | 'semibold';
-  noWrap?: boolean | undefined;
-}
-
-const Typography = ({
-  fontFamily,
-  fontWeight = 'regular',
-  sx,
-  noWrap,
-  ...props
-}: PropsWithChildren<PropsWithStyleOverrides<TypographyProps>>) => {
-  return (
-    <BaseBox
-      fontFamily={fonts[fontFamily]}
-      fontWeight={fontWeights.secondary[fontWeight]}
-      {...props}
-      sx={{
-        ...(noWrap && {
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-        }),
-        ...sx,
-      }}
-    />
-  );
-};
+import { BoxProps as MuiBoxProps, ResponsiveStyleValue } from '@mui/system';
+import { Typography } from '../Typography';
 
 export type TextProps = {
   /**
@@ -127,7 +78,6 @@ export const Text = ({
     : isBrandBackground
     ? colorsCommon.brandWhite
     : colorsCommon.brandMidnight;
-
   return (
     <Typography
       component={component}
@@ -142,4 +92,4 @@ export const Text = ({
   );
 };
 
-Text.displayName = displayName;
+Text.displayName = 'Text';

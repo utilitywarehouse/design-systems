@@ -3,7 +3,8 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Background } from '../Background';
 import { Flex } from '../Flex';
 import { backgroundColors } from '../types';
-import { headingVariantMapping, textVariantMapping, Typography } from './Typography';
+import { headingVariantMapping, textVariantMapping } from './LegacyTypography';
+import { Typography } from './Typography';
 
 const textVariants = Object.keys(textVariantMapping);
 const headingVariants = Object.keys(headingVariantMapping);
