@@ -1,8 +1,8 @@
 export { Typography } from './Typography';
 export { legacyTypographyThemeOverrides, baseTypographyTheme } from './Typography.theme';
+export type { TypographyProps } from './Typography';
 export type {
-  DefaultTypographyComponent,
-  CustomTypographyProps,
-  TypographyTypeMap,
-  TypographyProps,
-} from './Typography';
+  DefaultComponent as DefaultTypographyComponent,
+  CustomProps as CustomTypographyProps,
+  TypeMap as TypographyTypeMap,
+} from './LegacyTypography';
