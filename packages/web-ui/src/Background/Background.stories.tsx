@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { backgroundColors } from '../types';
 import { Typography } from '../Typography';
-import { Stack } from '../Stack';
 import { Heading } from '../Heading';
 import { Background, backgroundColorsMapping } from './Background';
 import { fonts } from '../tokens';
