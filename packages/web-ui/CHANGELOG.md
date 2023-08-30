@@ -1,5 +1,18 @@
 # @utilitywarehouse/web-ui
 
+## 0.1.5
+
+### Patch Changes
+
+- [#167](https://github.com/utilitywarehouse/design-systems/pull/167) [`8c39c46`](https://github.com/utilitywarehouse/design-systems/commit/8c39c464b30a5811e1104e66db1babb4712c0036) Thanks [@robphoenix](https://github.com/robphoenix)! - Set default Typography variant
+
+- [#166](https://github.com/utilitywarehouse/design-systems/pull/166) [`1c741e0`](https://github.com/utilitywarehouse/design-systems/commit/1c741e04f3050b8d98b611c67c0a0e299f43bfaf) Thanks [@robphoenix](https://github.com/robphoenix)! - Use Typography component as a base for all Typographic components. This replaces
+  the use of styled to create these components.
+
+- [#168](https://github.com/utilitywarehouse/design-systems/pull/168) [`3a685da`](https://github.com/utilitywarehouse/design-systems/commit/3a685daf8d6dfe506dcb9d98cac9dd232c11370f) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix caption line-height
+
+- [#164](https://github.com/utilitywarehouse/design-systems/pull/164) [`289a63d`](https://github.com/utilitywarehouse/design-systems/commit/289a63df6853e1c6fa15f1d290cff74d1c3acffd) Thanks [@robphoenix](https://github.com/robphoenix)! - Make Flex display responsive
+
 ## 0.1.4
 
 ### Patch Changes
