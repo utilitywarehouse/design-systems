@@ -3,7 +3,6 @@ import MuiMenuItem from '@mui/material/MenuItem';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import type { MenuItemProps as MuiMenuItemProps } from '@mui/material/MenuItem';
 import { Typography } from '../Typography';
-import { fonts } from '../tokens';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { pxToRem, spacing } from '../utils';
 import { styled } from '@mui/material';
@@ -29,7 +28,7 @@ export const MenuItem = forwardRef(function MenuItem({ children, ...props }, ref
     <StyledMenuItem ref={ref} {...props}>
       <Typography
         color={colorsCommon.brandMidnight}
-        fontFamily={fonts.secondary}
+        fontFamily="secondary"
         fontSize={pxToRem(18)}
         lineHeight={pxToRem(24)}
       >

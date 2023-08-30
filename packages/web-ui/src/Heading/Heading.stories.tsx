@@ -3,6 +3,7 @@ import Stack from '@mui/material/Stack';
 import { Heading } from './Heading';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
+import { Flex } from '../Flex';
 
 const meta: Meta<typeof Heading> = {
   title: 'Web UI / Components / Heading',
@@ -17,13 +18,13 @@ const variants = ['displayHeading', 'h1', 'h2', 'h3', 'h4'] as const;
 export const KitchenSink: Story = {
   render: () => {
     return (
-      <Stack spacing={1}>
+      <Flex direction="column" gap={1}>
         {variants.map(variant => (
           <Heading key={variant} variant={variant}>
             Heading variant: {variant}
           </Heading>
         ))}
-      </Stack>
+      </Flex>
     );
   },
 };
@@ -39,39 +40,24 @@ export const Workshop: Story = {
     );
   },
   argTypes: {
-    children: {
-      control: {
-        type: 'text',
-      },
-    },
-    component: {
-      control: {
-        type: 'text',
-      },
-    },
+    children: { control: { type: 'text' } },
+    component: { control: { type: 'text' } },
     variant: {
       options: variants,
-      control: {
-        type: 'radio',
-      },
+      control: { type: 'radio' },
     },
     color: {
       options: [...Object.keys(colorsCommon), ...Object.keys(colors)],
-      control: {
-        type: 'select',
-      },
+      control: { type: 'select' },
     },
     textTransform: {
       options: ['capitalize', 'uppercase', 'lowercase', 'none'],
-      control: {
-        type: 'radio',
-      },
+      control: { type: 'radio' },
     },
   },
   args: {
     children: 'hamburgefons',
     variant: 'h2',
-    component: 'h2',
     color: undefined,
     textTransform: 'capitalize',
   },

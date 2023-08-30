@@ -3,9 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Backgrounds } from '../storybook-utils';
 import { Text, TextProps } from '../Text';
 import { Stack } from '../Stack';
-import { headingVariantMapping, textVariantMapping, Typography } from '../Typography/Typography';
 import { Box } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { headingVariantMapping, textVariantMapping } from '../Typography/LegacyTypography';
+import { Typography } from '../Typography';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Components / TextLink',
