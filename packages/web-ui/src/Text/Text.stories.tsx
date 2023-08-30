@@ -3,6 +3,7 @@ import Stack from '@mui/material/Stack';
 import { Text } from './Text';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
+import { Flex } from '../Flex';
 
 const meta: Meta<typeof Text> = {
   title: 'Web UI / Components / Text',
@@ -18,13 +19,13 @@ export const KitchenSink: Story = {
   parameters: { controls: { hideNoControlsWarning: true } },
   render: () => {
     return (
-      <Stack spacing={1}>
+      <Flex direction="column" gap={1}>
         {variants.map(variant => (
           <Text key={variant} variant={variant}>
             Text variant: {variant}
           </Text>
         ))}
-      </Stack>
+      </Flex>
     );
   },
 };
