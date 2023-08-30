@@ -46,11 +46,9 @@ export const Flex = ({
   basis,
   grow,
   shrink,
-  component,
   ...props
 }: PropsWithChildren<FlexProps>) => {
   const combinedProps = {
-    as: component,
     display,
     flexDirection: direction,
     flexWrap: wrap,

@@ -3,7 +3,8 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Background } from '../Background';
 import { Flex } from '../Flex';
 import { backgroundColors } from '../types';
-import { headingVariantMapping, textVariantMapping, Typography } from './Typography';
+import { headingVariantMapping, textVariantMapping } from './LegacyTypography';
+import { Typography } from './Typography';
 
 const textVariants = Object.keys(textVariantMapping);
 const headingVariants = Object.keys(headingVariantMapping);
@@ -18,26 +19,26 @@ type Story = StoryObj<typeof Typography>;
 
 export const Workshop: Story = {
   argTypes: {
-    color: {
-      control: {
-        type: 'text',
-      },
+    color: { control: { type: 'text' } },
+    fontFamily: {
+      options: ['primary', 'secondary'],
+      control: { type: 'radio' },
     },
-    letterSpacing: {
-      control: {
-        type: 'text',
-      },
+    weight: {
+      options: ['regular', 'semibold'],
+      control: { type: 'radio' },
     },
     textTransform: {
       options: ['capitalize', 'uppercase', 'lowercase', 'none'],
-      control: {
-        type: 'radio',
-      },
+      control: { type: 'radio' },
     },
+    letterSpacing: { control: { type: 'text' } },
+    component: { control: { type: 'text' } },
   },
   args: {
     children: 'hamburgefons',
-    component: 'span',
+    fontFamily: 'secondary',
+    weight: 'regular',
     color: colorsCommon.brandPrimaryPurple,
     textTransform: 'capitalize',
   },
