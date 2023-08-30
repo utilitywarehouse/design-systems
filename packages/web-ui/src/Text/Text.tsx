@@ -108,6 +108,7 @@ export const Text = ({
   };
   const combinedProps = {
     as: component,
+    variant,
     textTransform,
     textAlign: align,
     fontSize: fontSizes[variant],
