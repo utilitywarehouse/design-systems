@@ -12,7 +12,7 @@ import { PropsWithStyleOverrides } from '../types';
 export const Text = forwardRef<
   React.ElementRef<'span'>,
   PropsWithChildren<PropsWithStyleOverrides<TextProps>>
->(function Text({ variant = 'body', align, bold, color, ...props }, ref) {
+>(({ variant = 'body', align, bold, color, ...props }, ref) => {
   const fontSizes: { [key: string]: any } = {
     caption: pxToRem(12),
     legalNote: pxToRem(14),
@@ -35,10 +35,12 @@ export const Text = forwardRef<
       fontFamily="secondary"
       fontSize={fontSizes[variant]}
       lineHeight={variant === 'caption' ? 2 : 1.5}
-      fontWeight={bold ? 'semibold' : 'regular'}
-      textAlign={align}
+      weight={bold ? 'semibold' : 'regular'}
+      align={align}
       color={textColor}
       {...props}
     />
   );
 });
+
+Text.displayName = 'Text';

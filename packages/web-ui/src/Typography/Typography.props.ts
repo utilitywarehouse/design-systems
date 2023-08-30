@@ -1,10 +1,7 @@
 import { TypographyProps as MuiTypographyProps } from '@mui/material';
-import { PropsWithStyleOverrides } from '../types';
-import { PropsWithChildren } from 'react';
 import { BoxProps as MuiBoxProps } from '@mui/system';
-import { OverrideProps } from '@mui/types';
 
-export interface TypographyOwnProps
+export interface TypographyProps
   extends Pick<
     MuiBoxProps,
     | 'component'
@@ -12,30 +9,14 @@ export interface TypographyOwnProps
     | 'lineHeight'
     | 'letterSpacing'
     | 'textTransform'
-    | 'textAlign'
     | 'padding'
+    | 'margin'
   > {
   fontFamily?: 'primary' | 'secondary';
-  fontWeight?: 'regular' | 'semibold';
+  weight?: 'regular' | 'semibold';
+  align?: MuiBoxProps['textAlign'];
   noWrap?: boolean | undefined;
   color?: string | 'primary' | 'secondary' | 'success' | 'error';
   /** @deprecated The variant prop is deprecated and will be removed in v1 */
   variant?: MuiTypographyProps['variant'];
 }
-
-export type DefaultTypographyComponent = 'span';
-
-export interface TypographyTypeMap<
-  AdditionalProps = {},
-  DefaultComponent extends React.ElementType = DefaultTypographyComponent
-> {
-  props: AdditionalProps & PropsWithChildren<PropsWithStyleOverrides<TypographyOwnProps>>;
-  defaultComponent: DefaultComponent;
-}
-
-export type TypographyProps<
-  RootComponent extends React.ElementType = TypographyTypeMap['defaultComponent'],
-  AdditionalProps = {}
-> = OverrideProps<TypographyTypeMap<AdditionalProps, RootComponent>, RootComponent> & {
-  component?: React.ElementType;
-};

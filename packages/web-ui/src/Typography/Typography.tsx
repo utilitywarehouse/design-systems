@@ -1,11 +1,11 @@
 import { fonts, fontWeights } from '../tokens';
 import { globalPrefix } from '../utils';
-import { forwardRef } from 'react';
+import { forwardRef, PropsWithChildren } from 'react';
 import { createBox } from '@mui/system';
 import { theme, type Theme } from '../theme';
 import { LegacyTypography } from './LegacyTypography';
-import { OverridableComponent } from '@mui/types';
-import { TypographyTypeMap } from './Typography.props';
+import { TypographyProps } from './Typography.props';
+import { PropsWithStyleOverrides } from '../types';
 
 const BaseBox = createBox<Theme>({
   defaultTheme: theme,
@@ -33,36 +33,39 @@ const BaseBox = createBox<Theme>({
  * - `Heading` for heading-level text
  * - `Text` for body text
  */
-export const Typography = forwardRef(function Typography(
-  {
-    component = 'p',
-    variant,
-    fontFamily = 'secondary',
-    fontWeight = 'regular',
-    sx,
-    noWrap,
-    ...props
-  },
-  ref
-) {
-  if (!!variant) {
-    return <LegacyTypography ref={ref} component={component} variant={variant} {...props} />;
+export const Typography = forwardRef<
+  React.ElementRef<'span'>,
+  PropsWithChildren<PropsWithStyleOverrides<TypographyProps>>
+>(
+  (
+    {
+      component = 'p',
+      variant,
+      fontFamily = 'secondary',
+      weight = 'regular',
+      align,
+      sx,
+      noWrap,
+      ...props
+    },
+    ref
+  ) => {
+    if (!!variant) {
+      return <LegacyTypography ref={ref} component={component} variant={variant} {...props} />;
+    }
+    return (
+      <BaseBox
+        ref={ref}
+        component={component}
+        fontFamily={fonts[fontFamily]}
+        fontWeight={fontWeights.secondary[weight]}
+        textAlign={align}
+        {...props}
+        sx={{
+          ...(noWrap && { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }),
+          ...sx,
+        }}
+      />
+    );
   }
-  return (
-    <BaseBox
-      ref={ref}
-      component={component}
-      fontFamily={fonts[fontFamily]}
-      fontWeight={fontWeights.secondary[fontWeight]}
-      {...props}
-      sx={{
-        ...(noWrap && {
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-        }),
-        ...sx,
-      }}
-    />
-  );
-}) as OverridableComponent<TypographyTypeMap>;
+);

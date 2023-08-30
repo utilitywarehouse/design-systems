@@ -1,15 +1,9 @@
-import { forwardRef, PropsWithChildren, HTMLAttributes } from 'react';
+import { forwardRef, PropsWithChildren } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
 import { PropsWithSx } from '../types';
 import { Typography } from '../Typography';
-
-export interface HelperTextProps extends HTMLAttributes<HTMLSpanElement> {
-  /** Set the text appearance to disabled. */
-  disabled?: boolean;
-  /** Set the text appearance when showing an error message. This will override the disabled styles. */
-  error?: boolean;
-}
+import { HelperTextProps } from './HelperText.props';
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -27,7 +21,7 @@ export const HelperText = forwardRef<
     <Typography
       ref={ref}
       fontFamily="secondary"
-      fontWeight="regular"
+      weight="regular"
       fontSize={pxToRem(13)}
       lineHeight={pxToRem(16)}
       color={color}
