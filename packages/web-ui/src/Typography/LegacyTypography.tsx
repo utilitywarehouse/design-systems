@@ -66,7 +66,7 @@ export type LegacyTypographyProps<
  * - `Text` for body text
  */
 export const LegacyTypography = forwardRef(function LegacyTypography(
-  { color, variant, component, ...props },
+  { color, variant, component = 'body', ...props },
   ref
 ) {
   const isLegacyTextVariant = variant && Object.keys(textVariantMapping).includes(variant);

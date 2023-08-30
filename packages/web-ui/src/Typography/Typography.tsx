@@ -40,7 +40,7 @@ export const Typography = forwardRef<
   (
     {
       component = 'p',
-      variant = 'body',
+      variant,
       fontFamily = 'secondary',
       weight = 'regular',
       align,
