@@ -23,7 +23,7 @@ export interface TypographyOwnProps
   variant?: MuiTypographyProps['variant'];
 }
 
-export type DefaultTypographyComponent = 'p';
+export type DefaultTypographyComponent = 'span';
 
 export interface TypographyTypeMap<
   AdditionalProps = {},

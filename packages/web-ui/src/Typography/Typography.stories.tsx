@@ -38,7 +38,6 @@ export const Workshop: Story = {
   },
   args: {
     children: 'hamburgefons',
-    component: 'span',
     color: colorsCommon.brandPrimaryPurple,
     textTransform: 'capitalize',
   },

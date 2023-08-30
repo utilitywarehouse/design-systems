@@ -1,4 +1,4 @@
-import { PropsWithChildren, HTMLAttributes } from 'react';
+import { forwardRef, PropsWithChildren, HTMLAttributes } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
 import { PropsWithSx } from '../types';
@@ -18,14 +18,14 @@ export interface HelperTextProps extends HTMLAttributes<HTMLSpanElement> {
  * This component should be used with form field components to display helper
  * text.
  */
-export const HelperText = ({
-  disabled,
-  error,
-  ...props
-}: PropsWithChildren<PropsWithSx<HelperTextProps>>) => {
+export const HelperText = forwardRef<
+  HTMLSpanElement,
+  PropsWithChildren<PropsWithSx<HelperTextProps>>
+>(({ disabled, error, ...props }, ref) => {
   const color = error ? colors.red600 : disabled ? colors.grey400 : colors.grey800;
   return (
     <Typography
+      ref={ref}
       fontFamily="secondary"
       fontWeight="regular"
       fontSize={pxToRem(13)}
@@ -34,6 +34,6 @@ export const HelperText = ({
       {...props}
     />
   );
-};
+});
 
 HelperText.displayName = 'HelperText';

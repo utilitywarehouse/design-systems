@@ -34,15 +34,24 @@ const BaseBox = createBox<Theme>({
  * - `Text` for body text
  */
 export const Typography = forwardRef(function Typography(
-  { variant, fontFamily = 'secondary', fontWeight = 'regular', sx, noWrap, ...props },
+  {
+    component = 'p',
+    variant,
+    fontFamily = 'secondary',
+    fontWeight = 'regular',
+    sx,
+    noWrap,
+    ...props
+  },
   ref
 ) {
   if (!!variant) {
-    return <LegacyTypography ref={ref} variant={variant} {...props} />;
+    return <LegacyTypography ref={ref} component={component} variant={variant} {...props} />;
   }
   return (
     <BaseBox
       ref={ref}
+      component={component}
       fontFamily={fonts[fontFamily]}
       fontWeight={fontWeights.secondary[fontWeight]}
       {...props}
