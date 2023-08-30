@@ -1,2 +1,2 @@
 export { Text } from './Text';
-export type { TextProps, DefaultTextComponent, TextTypeMap, CustomTextProps } from './Text.props';
+export type { TextProps } from './Text.props';

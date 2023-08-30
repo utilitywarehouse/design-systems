@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Stack from '@mui/material/Stack';
 import { Text } from './Text';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
@@ -87,12 +86,12 @@ export const TextVariants: Story = {
   name: 'Variants',
   render: () => {
     return (
-      <Stack spacing={1}>
+      <Flex direction="column" gap={1}>
         <Text variant="subtitle">hamburgefons (subtitle)</Text>
         <Text variant="body">hamburgefons (body)</Text>
         <Text variant="legalNote">hamburgefons (legalNote)</Text>
         <Text variant="caption">hamburgefons (caption)</Text>
-      </Stack>
+      </Flex>
     );
   },
 };
@@ -101,7 +100,7 @@ export const TextColour: Story = {
   name: 'Contextual Colour',
   render: () => {
     return (
-      <Stack>
+      <Flex direction="column">
         <Box padding={2}>
           <Text variant="subtitle">text</Text>
         </Box>
@@ -116,7 +115,7 @@ export const TextColour: Story = {
             text on brandMidnight background with custom color
           </Text>
         </Box>
-      </Stack>
+      </Flex>
     );
   },
 };

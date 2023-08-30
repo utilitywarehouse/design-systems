@@ -1,19 +1,19 @@
 import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
-import { forwardRef } from 'react';
+import { forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
-import { OverridableComponent } from '@mui/types';
-import { TextTypeMap } from './Text.props';
+import { TextProps } from './Text.props';
+import { PropsWithStyleOverrides } from '../types';
 
 /**
  * Text renders the secondary UW font, Work Sans, to be used for body text.
  */
-export const Text = forwardRef(function Text(
-  { component = 'p', variant = 'body', align, bold, color, ...props },
-  ref
-) {
-  const fontSizes = {
+export const Text = forwardRef<
+  React.ElementRef<'span'>,
+  PropsWithChildren<PropsWithStyleOverrides<TextProps>>
+>(function Text({ variant = 'body', align, bold, color, ...props }, ref) {
+  const fontSizes: { [key: string]: any } = {
     caption: pxToRem(12),
     legalNote: pxToRem(14),
     body: pxToRem(16),
@@ -28,10 +28,10 @@ export const Text = forwardRef(function Text(
     : isBrandBackground
     ? colorsCommon.brandWhite
     : colorsCommon.brandMidnight;
+
   return (
     <Typography
       ref={ref}
-      component={component}
       fontFamily="secondary"
       fontSize={fontSizes[variant]}
       lineHeight={variant === 'caption' ? 2 : 1.5}
@@ -41,4 +41,4 @@ export const Text = forwardRef(function Text(
       {...props}
     />
   );
-}) as OverridableComponent<TextTypeMap>;
+});

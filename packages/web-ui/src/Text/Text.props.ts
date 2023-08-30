@@ -1,11 +1,7 @@
-import { PropsWithStyleOverrides, PropsWithSx } from '../types';
-import { PropsWithChildren } from 'react';
-import { BoxProps as MuiBoxProps, ResponsiveStyleValue } from '@mui/system';
-import { OverrideProps } from '@mui/types';
+import { ResponsiveStyleValue } from '@mui/system';
+import { TypographyProps } from '../Typography';
 
-export type DefaultTextComponent = 'span';
-
-export interface CustomTextProps {
+export interface TextProps {
   /**
    * Applies the text font styles.
    * @default body
@@ -44,14 +40,9 @@ export interface CustomTextProps {
   textTransform?: ResponsiveStyleValue<
     'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined
   >;
+  /**
+   * Sets the HTML component that is rendered.
+   * @default span
+   */
+  component?: TypographyProps['component'];
 }
-
-export interface TextTypeMap<D extends React.ElementType = DefaultTextComponent> {
-  props: PropsWithChildren<PropsWithSx<CustomTextProps>>;
-  defaultComponent: D;
-}
-
-export type TextProps<D extends React.ElementType<any> = DefaultTextComponent> = OverrideProps<
-  TextTypeMap,
-  D
->;

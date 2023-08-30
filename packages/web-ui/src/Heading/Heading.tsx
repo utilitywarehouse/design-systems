@@ -61,7 +61,7 @@ const StyledHeading = styled('p', {
   shouldForwardProp: prop =>
     isPropValid(prop) && prop !== 'color' && prop !== 'fontSize' && prop !== 'lineHeight',
 })<HeadingProps & TypographyProps>(
-  typography,
+  typography, // TODO: i don't think we want this
   ({ noWrap, color }) => {
     const { isBrandBackground } = useBackground();
     return {
