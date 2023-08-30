@@ -20,6 +20,7 @@ export const HelperText = forwardRef<
   return (
     <Typography
       ref={ref}
+      component="span"
       fontFamily="secondary"
       weight="regular"
       fontSize={pxToRem(13)}
