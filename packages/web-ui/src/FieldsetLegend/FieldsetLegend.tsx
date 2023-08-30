@@ -1,13 +1,9 @@
-import { PropsWithChildren, HTMLAttributes, forwardRef } from 'react';
+import { PropsWithChildren, forwardRef } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
 import { PropsWithSx } from '../types';
 import { Typography } from '../Typography';
-
-export interface FieldsetLegendProps extends HTMLAttributes<HTMLLegendElement> {
-  /** Sets whether the text should appear disabled. */
-  disabled?: boolean;
-}
+import { FieldsetLegendProps } from './Fieldset.props';
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -25,7 +21,7 @@ export const FieldsetLegend = forwardRef<
       ref={ref}
       padding={0}
       fontFamily="secondary"
-      fontWeight="semibold"
+      weight="semibold"
       fontSize={pxToRem(16)}
       lineHeight={pxToRem(24)}
       color={disabled ? colors.grey400 : colors.grey1000}

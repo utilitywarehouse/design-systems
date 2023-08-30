@@ -4,41 +4,11 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
 import { Flex } from '../Flex';
 
+const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
+
 const meta: Meta<typeof Text> = {
   title: 'Web UI / Components / Text',
   component: Text,
-};
-
-export default meta;
-type Story = StoryObj<typeof Text>;
-
-const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
-
-export const KitchenSink: Story = {
-  parameters: { controls: { hideNoControlsWarning: true } },
-  render: () => {
-    return (
-      <Flex direction="column" gap={1}>
-        {variants.map(variant => (
-          <Text key={variant} variant={variant}>
-            Text variant: {variant}
-          </Text>
-        ))}
-      </Flex>
-    );
-  },
-};
-
-export const Workshop: Story = {
-  render: ({ color = 'brandMidnight', ...args }) => {
-    return (
-      <Text
-        // @ts-ignore
-        color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
-        {...args}
-      />
-    );
-  },
   argTypes: {
     children: {
       control: {
@@ -71,6 +41,36 @@ export const Workshop: Story = {
     bold: { control: { type: 'boolean' } },
     align: { control: { type: 'text' } },
     noWrap: { control: { type: 'boolean' } },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Text>;
+
+export const KitchenSink: Story = {
+  parameters: { controls: { hideNoControlsWarning: true } },
+  render: () => {
+    return (
+      <Flex direction="column" gap={1}>
+        {variants.map(variant => (
+          <Text key={variant} variant={variant}>
+            Text variant: {variant}
+          </Text>
+        ))}
+      </Flex>
+    );
+  },
+};
+
+export const Workshop: Story = {
+  render: ({ color = 'brandMidnight', ...args }) => {
+    return (
+      <Text
+        // @ts-ignore
+        color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
+        {...args}
+      />
+    );
   },
   args: {
     children: 'hamburgefons',

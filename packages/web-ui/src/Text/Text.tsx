@@ -1,7 +1,7 @@
 import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
-import { forwardRef, PropsWithChildren } from 'react';
+import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
 import { TextProps } from './Text.props';
 import { PropsWithStyleOverrides } from '../types';
@@ -10,9 +10,9 @@ import { PropsWithStyleOverrides } from '../types';
  * Text renders the secondary UW font, Work Sans, to be used for body text.
  */
 export const Text = forwardRef<
-  React.ElementRef<'span'>,
+  ElementRef<'span'>,
   PropsWithChildren<PropsWithStyleOverrides<TextProps>>
->(({ variant = 'body', align, bold, color, ...props }, ref) => {
+>(({ variant = 'body', bold, color, ...props }, ref) => {
   const fontSizes: { [key: string]: any } = {
     caption: pxToRem(12),
     legalNote: pxToRem(14),
@@ -36,7 +36,6 @@ export const Text = forwardRef<
       fontSize={fontSizes[variant]}
       lineHeight={variant === 'caption' ? 2 : 1.5}
       weight={bold ? 'semibold' : 'regular'}
-      align={align}
       color={textColor}
       {...props}
     />

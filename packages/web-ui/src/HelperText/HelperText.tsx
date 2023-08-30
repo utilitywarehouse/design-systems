@@ -1,7 +1,7 @@
-import { forwardRef, PropsWithChildren } from 'react';
+import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
-import { PropsWithSx } from '../types';
+import { PropsWithStyleOverrides } from '../types';
 import { Typography } from '../Typography';
 import { HelperTextProps } from './HelperText.props';
 
@@ -13,8 +13,8 @@ import { HelperTextProps } from './HelperText.props';
  * text.
  */
 export const HelperText = forwardRef<
-  HTMLSpanElement,
-  PropsWithChildren<PropsWithSx<HelperTextProps>>
+  ElementRef<'span'>,
+  PropsWithChildren<PropsWithStyleOverrides<HelperTextProps>>
 >(({ disabled, error, ...props }, ref) => {
   const color = error ? colors.red600 : disabled ? colors.grey400 : colors.grey800;
   return (

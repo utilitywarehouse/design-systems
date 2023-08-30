@@ -1,6 +1,6 @@
 import { fonts, fontWeights } from '../tokens';
 import { globalPrefix } from '../utils';
-import { forwardRef, PropsWithChildren } from 'react';
+import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { createBox } from '@mui/system';
 import { theme, type Theme } from '../theme';
 import { LegacyTypography } from './LegacyTypography';
@@ -34,7 +34,7 @@ const BaseBox = createBox<Theme>({
  * - `Text` for body text
  */
 export const Typography = forwardRef<
-  React.ElementRef<'span'>,
+  ElementRef<'span'>,
   PropsWithChildren<PropsWithStyleOverrides<TypographyProps>>
 >(
   (
