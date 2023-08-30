@@ -5,6 +5,7 @@ import { Stack } from '../Stack';
 import { Heading } from '../Heading';
 import { Background, backgroundColorsMapping } from './Background';
 import { fonts } from '../tokens';
+import { Flex } from '../Flex';
 
 const meta: Meta<typeof Background> = {
   title: 'Web UI / Components / Background',
@@ -50,7 +51,7 @@ export const Workshop: Story = {
 export const Backgrounds = {
   name: 'Background colours',
   render: () => (
-    <Stack spacing={0}>
+    <Flex direction="column" gap={0}>
       <Background backgroundColor="white" padding={2}>
         <Typography variant="body" component="span">
           Typography on neutral background
@@ -76,7 +77,7 @@ export const Backgrounds = {
           Typography on inverse background
         </Typography>
       </Background>
-    </Stack>
+    </Flex>
   ),
 };
 

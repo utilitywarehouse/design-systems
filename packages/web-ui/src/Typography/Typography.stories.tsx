@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Background } from '../Background';
-import { Stack } from '../Stack';
+import { Flex } from '../Flex';
 import { backgroundColors } from '../types';
 import { headingVariantMapping, textVariantMapping, Typography } from './Typography';
 
@@ -47,7 +47,7 @@ export const LegacyVariants: Story = {
   name: 'Deprecated Legacy Variants',
   parameters: { layout: 'fullscreen' },
   render: args => (
-    <Stack spacing={0}>
+    <Flex direction="column" gap={0}>
       {backgroundColors.map(bg => (
         <Background
           key={bg}
@@ -59,7 +59,7 @@ export const LegacyVariants: Story = {
           <Typography {...args} />
         </Background>
       ))}
-    </Stack>
+    </Flex>
   ),
   argTypes: {
     variant: {
