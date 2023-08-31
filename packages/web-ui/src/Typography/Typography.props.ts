@@ -6,6 +6,7 @@ export interface TypographyProps
     MuiBoxProps,
     | 'component'
     | 'fontSize'
+    | 'fontStyle'
     | 'lineHeight'
     | 'letterSpacing'
     | 'textTransform'
@@ -13,7 +14,7 @@ export interface TypographyProps
     | 'margin'
   > {
   fontFamily?: 'primary' | 'secondary' | 'inherit';
-  weight?: 'regular' | 'semibold';
+  weight?: 'regular' | 'semibold' | 'inherit';
   align?: MuiBoxProps['textAlign'];
   noWrap?: boolean | undefined;
   color?: string | 'primary' | 'secondary' | 'success' | 'error';

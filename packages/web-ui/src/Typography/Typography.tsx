@@ -54,12 +54,13 @@ export const Typography = forwardRef<
     if (!!variant) {
       return <LegacyTypography ref={ref} component={component} variant={variant} {...props} />;
     }
+
     return (
       <BaseBox
         ref={ref}
         component={component}
         fontFamily={fontFamily === 'inherit' ? 'inherit' : fonts[fontFamily]}
-        fontWeight={fontWeights.secondary[weight]}
+        fontWeight={weight === 'inherit' ? 'inherit' : fontWeights.secondary[weight]}
         textAlign={align}
         {...props}
         sx={{
