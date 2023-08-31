@@ -1,7 +1,9 @@
+import { ComponentPropsWithoutRef } from 'react';
 import { TypographyProps } from '../Typography';
 
 export interface TextProps
-  extends Pick<TypographyProps, 'textTransform' | 'align' | 'padding' | 'margin'> {
+  extends ComponentPropsWithoutRef<'span'>,
+    Pick<TypographyProps, 'textTransform' | 'align' | 'padding' | 'margin'> {
   /**
    * Applies the text font styles.
    * @default body
