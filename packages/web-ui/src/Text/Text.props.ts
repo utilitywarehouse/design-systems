@@ -1,7 +1,7 @@
-import { ResponsiveStyleValue } from '@mui/system';
 import { TypographyProps } from '../Typography';
 
-export interface TextProps {
+export interface TextProps
+  extends Pick<TypographyProps, 'textTransform' | 'align' | 'padding' | 'margin'> {
   /**
    * Applies the text font styles.
    * @default body
@@ -28,18 +28,6 @@ export interface TextProps {
    * Note that text overflow can only happen with block or inline-block level elements (the element needs to have a width in order to overflow).
    */
   noWrap?: boolean | undefined;
-  /**
-   * Set the text-align on the component.
-   * @default 'inherit'
-   */
-  align?: ResponsiveStyleValue<'right' | 'left' | 'inherit' | 'center' | 'justify' | undefined>;
-  /**
-   * Set the text-transform on the component.
-   * @default 'none'
-   */
-  textTransform?: ResponsiveStyleValue<
-    'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined
-  >;
   /**
    * Sets the HTML component that is rendered.
    * @default span
