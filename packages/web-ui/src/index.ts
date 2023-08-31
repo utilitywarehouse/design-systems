@@ -23,6 +23,7 @@ export * from './RadioGroup';
 export * from './RadioTile';
 export * from './Spacer';
 export * from './Stack';
+export * from './Strong';
 export * from './Text';
 export * from './TextField';
 export * from './TextLink';

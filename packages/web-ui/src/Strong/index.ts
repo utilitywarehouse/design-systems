@@ -1,2 +1,2 @@
-export { Text } from './Text';
-export type { TextProps } from './Text.props';
+export { Strong } from './Strong';
+export type { StrongProps } from './Strong.props';
