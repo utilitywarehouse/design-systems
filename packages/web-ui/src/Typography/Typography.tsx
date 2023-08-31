@@ -57,7 +57,7 @@ export const Typography = forwardRef<
       <BaseBox
         ref={ref}
         component={component}
-        fontFamily={fonts[fontFamily]}
+        fontFamily={fontFamily === 'inherit' ? 'inherit' : fonts[fontFamily]}
         fontWeight={fontWeights.secondary[weight]}
         textAlign={align}
         {...props}
