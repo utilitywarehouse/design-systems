@@ -32,6 +32,7 @@ const BaseBox = createBox<Theme>({
  *
  * - `Heading` for heading-level text
  * - `Text` for body text
+ * - `Strong` for strong importance
  */
 export const Typography = forwardRef<
   ElementRef<'span'>,
