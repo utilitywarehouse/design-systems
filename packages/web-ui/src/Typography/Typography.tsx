@@ -32,6 +32,7 @@ const BaseBox = createBox<Theme>({
  *
  * - `Heading` for heading-level text
  * - `Text` for body text
+ * - `Strong` for strong importance
  */
 export const Typography = forwardRef<
   ElementRef<'span'>,
@@ -57,7 +58,7 @@ export const Typography = forwardRef<
       <BaseBox
         ref={ref}
         component={component}
-        fontFamily={fonts[fontFamily]}
+        fontFamily={fontFamily === 'inherit' ? 'inherit' : fonts[fontFamily]}
         fontWeight={fontWeights.secondary[weight]}
         textAlign={align}
         {...props}

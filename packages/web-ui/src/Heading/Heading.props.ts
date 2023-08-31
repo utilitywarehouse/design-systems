@@ -1,7 +1,7 @@
-import { ElementType } from 'react';
+import { ComponentPropsWithoutRef, ElementType } from 'react';
 import { ResponsiveStyleValue } from '@mui/system';
 
-export interface HeadingProps {
+export interface HeadingProps extends ComponentPropsWithoutRef<'h2'> {
   /**
    * Applies the heading font styles.
    * @default h2

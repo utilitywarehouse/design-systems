@@ -12,7 +12,7 @@ export interface TypographyProps
     | 'padding'
     | 'margin'
   > {
-  fontFamily?: 'primary' | 'secondary';
+  fontFamily?: 'primary' | 'secondary' | 'inherit';
   weight?: 'regular' | 'semibold';
   align?: MuiBoxProps['textAlign'];
   noWrap?: boolean | undefined;
