@@ -8,6 +8,7 @@ export * from './hooks';
 export * from './Background';
 export * from './Box';
 export * from './Button';
+export * from './Em';
 export * from './Fieldset';
 export * from './FieldsetLegend';
 export * from './Flex';
