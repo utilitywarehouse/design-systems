@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Box, BoxProps } from './Box';
+import { Box } from './Box';
+import { BoxProps } from './Box.props';
 import { useRef } from 'react';
 import { fonts } from '../tokens';
 import { colorsCommon } from '@utilitywarehouse/colour-system';

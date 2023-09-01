@@ -1,47 +1,21 @@
 import { BoxTypeMap as MuiBoxTypeMap, createBox } from '@mui/system';
-import { OverridableComponent, OverrideProps } from '@mui/types';
-import { createContext, forwardRef, useContext, useMemo } from 'react';
+import { OverridableComponent } from '@mui/types';
+import { forwardRef, useMemo } from 'react';
 import { theme, type Theme } from '../theme';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { globalPrefix } from '../utils';
-
-export type DefaultBoxComponent = 'div';
-
-export interface CustomBoxProps {
-  /**
-   * Sets the background colour.
-   *
-   * When 'purple' and 'midnight' brand colours are used, child `Text` &
-   * `Heading` components have their foreground colour set to 'white'.
-   */
-  background?: string; // we are not setting this as MuiBoxProps['backgroundColor'] as we don't believe there is any need for it to be responsive, yet.
-}
+import { BackgroundProvider } from './Box.context';
+import { BoxOwnProps } from './Box.props';
 
 const BaseBox = createBox<Theme, { background?: string }>({
   defaultTheme: theme,
   defaultClassName: `${globalPrefix}-Box`,
 });
 
-export type BoxProps<
-  D extends React.ElementType<any> = DefaultBoxComponent,
-  P = {}
-> = OverrideProps<MuiBoxTypeMap<CustomBoxProps & P, D, Theme>, D>;
-
-type BackgroundContextValue = { background: string; isBrandBackground: boolean };
-
-const BackgroundContext = createContext<BackgroundContextValue>({
-  background: colorsCommon.brandWhite,
-  isBrandBackground: false,
-});
-
-const BackgroundProvider = BackgroundContext.Provider;
-
-export const useBackground = () => useContext(BackgroundContext);
-
 /**
- * Box is a low-level primitive, which supports style props, as well as
- * contextual brand background colours, and can be used for building any styled
- * element.
+ * Box is a foundational primitive, based on the `div` element. It supports all
+ * style props, as well as contextual brand background colours, and can be used
+ * for building any styled element.
  */
 export const Box = forwardRef(function Box({ background, bgcolor, ...props }, ref) {
   const isBrandBackground =
@@ -62,4 +36,4 @@ export const Box = forwardRef(function Box({ background, bgcolor, ...props }, re
   ) : (
     <BaseBox ref={ref} bgcolor={backgroundColor} {...props} />
   );
-}) as OverridableComponent<MuiBoxTypeMap<CustomBoxProps, DefaultBoxComponent, Theme>>;
+}) as OverridableComponent<MuiBoxTypeMap<BoxOwnProps, MuiBoxTypeMap['defaultComponent'], Theme>>;

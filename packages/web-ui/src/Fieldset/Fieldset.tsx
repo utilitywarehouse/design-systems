@@ -1,17 +1,9 @@
-import { forwardRef, PropsWithChildren, FieldsetHTMLAttributes } from 'react';
-import styled, { FunctionInterpolation } from '@emotion/styled';
-import { unstable_styleFunctionSx as styleFunctionSx } from '@mui/system';
+import { forwardRef, PropsWithChildren, ElementRef } from 'react';
 import { Box } from '../Box';
 import { PropsWithSx } from '../types';
+import { FieldsetProps } from './Fieldset.props';
 
 const displayName = 'Fieldset';
-
-export interface FieldsetProps extends FieldsetHTMLAttributes<HTMLFieldSetElement> {}
-
-const StyledFieldset = styled('fieldset', { label: displayName })<FieldsetProps>(
-  { border: 0, margin: 0, padding: 0 },
-  styleFunctionSx as FunctionInterpolation<FieldsetProps>
-);
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -21,15 +13,15 @@ const StyledFieldset = styled('fieldset', { label: displayName })<FieldsetProps>
  * should be used with the `FieldsetLegend` component
  **/
 export const Fieldset = forwardRef<
-  HTMLFieldSetElement,
+  ElementRef<'fieldset'>,
   PropsWithChildren<PropsWithSx<FieldsetProps>>
 >(({ children, ...props }, ref) => {
   return (
-    <StyledFieldset ref={ref} {...props}>
+    <Box ref={ref} component="fieldset" border={0} margin={0} padding={0} {...props}>
       <Box display="flex" flexDirection="column" gap={2}>
         {children}
       </Box>
-    </StyledFieldset>
+    </Box>
   );
 });
 

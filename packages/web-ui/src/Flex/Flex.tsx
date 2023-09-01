@@ -1,25 +1,6 @@
-import { BoxProps as MuiBoxProps, createBox, ResponsiveStyleValue } from '@mui/system';
-import { PropsWithChildren } from 'react';
-import { theme, type Theme } from '../theme';
-import { globalPrefix } from '../utils';
-
-const displayName = 'Flex';
-
-export interface FlexProps extends Omit<MuiBoxProps, 'display'> {
-  display?: ResponsiveStyleValue<'none' | 'flex' | 'inline-flex'>;
-  direction?: MuiBoxProps['flexDirection'];
-  align?: MuiBoxProps['alignItems'];
-  justify?: MuiBoxProps['justifyContent'];
-  wrap?: MuiBoxProps['flexWrap'];
-  basis?: MuiBoxProps['flexBasis'];
-  grow?: MuiBoxProps['flexGrow'];
-  shrink?: MuiBoxProps['flexShrink'];
-}
-
-const BaseBox = createBox<Theme>({
-  defaultTheme: theme,
-  defaultClassName: `${globalPrefix}-${displayName}`,
-});
+import { ElementRef, forwardRef } from 'react';
+import { FlexProps } from './Flex.props';
+import { Box } from '../Box';
 
 /**
  * Flex is a low-level primitive, with display set to `flex`.
@@ -37,30 +18,39 @@ const BaseBox = createBox<Theme>({
  *
  * This component should be used to create vertical and horizontal stacked layouts.
  */
-export const Flex = ({
-  display = 'flex',
-  direction,
-  align,
-  justify,
-  wrap,
-  basis,
-  grow,
-  shrink,
-  ...props
-}: PropsWithChildren<FlexProps>) => {
-  const combinedProps = {
-    display,
-    flexDirection: direction,
-    flexWrap: wrap,
-    flexBasis: basis,
-    flexGrow: grow,
-    flexShrink: shrink,
-    alignItems: align,
-    justifyContent: justify,
-    ...props,
-  };
-
-  return <BaseBox {...combinedProps} />;
-};
-
-Flex.displayName = displayName;
+export const Flex = forwardRef<ElementRef<'div'>, FlexProps>(function Flex(
+  {
+    display = 'flex',
+    direction,
+    flexDirection,
+    align,
+    alignItems,
+    justify,
+    justifyContent,
+    wrap,
+    flexWrap,
+    basis,
+    flexBasis,
+    grow,
+    flexGrow,
+    shrink,
+    flexShrink,
+    ...props
+  },
+  ref
+) {
+  return (
+    <Box
+      ref={ref}
+      display={display}
+      flexDirection={direction || flexDirection}
+      alignItems={align || alignItems}
+      justifyContent={justify || justifyContent}
+      flexWrap={wrap || flexWrap}
+      flexBasis={basis || flexBasis}
+      flexGrow={grow || flexGrow}
+      flexShrink={shrink || flexShrink}
+      {...props}
+    />
+  );
+});
