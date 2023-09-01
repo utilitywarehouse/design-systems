@@ -2,4 +2,4 @@
 '@utilitywarehouse/web-ui': patch
 ---
 
-Improve typography components HTML props
+Improve typography components HTML & style props

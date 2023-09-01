@@ -75,7 +75,7 @@ export const Workshop: Story = {
   args: {
     children: 'hamburgefons',
     variant: 'body',
-    component: 'p',
+    component: 'span',
     color: undefined,
     bold: false,
     textTransform: 'capitalize',
