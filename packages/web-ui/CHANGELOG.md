@@ -1,5 +1,19 @@
 # @utilitywarehouse/web-ui
 
+## 0.2.0
+
+### Minor Changes
+
+- [#170](https://github.com/utilitywarehouse/design-systems/pull/170) [`103cb46`](https://github.com/utilitywarehouse/design-systems/commit/103cb4619fd8695c987ec912062ab970270971be) Thanks [@robphoenix](https://github.com/robphoenix)! - add `Em` component
+
+- [#169](https://github.com/utilitywarehouse/design-systems/pull/169) [`fd14294`](https://github.com/utilitywarehouse/design-systems/commit/fd142940a4066edaeb1e03f0e719d4d8933529f1) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `Strong` component
+
+### Patch Changes
+
+- [#173](https://github.com/utilitywarehouse/design-systems/pull/173) [`7c88ec0`](https://github.com/utilitywarehouse/design-systems/commit/7c88ec01be4b39d38abb78597fce9a99a8bdb91d) Thanks [@robphoenix](https://github.com/robphoenix)! - Build `Flex` on top of `Box`
+
+- [#171](https://github.com/utilitywarehouse/design-systems/pull/171) [`839f138`](https://github.com/utilitywarehouse/design-systems/commit/839f1384395d1b376f64f675daa9a8bb1cec983f) Thanks [@robphoenix](https://github.com/robphoenix)! - Improve typography components HTML & style props
+
 ## 0.1.5
 
 ### Patch Changes
