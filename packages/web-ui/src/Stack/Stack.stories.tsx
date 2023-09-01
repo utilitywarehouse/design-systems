@@ -25,7 +25,6 @@ export const Workshop: Story = {
       <Box sx={{ padding: 1 }}>
         <Stack
           {...args}
-          component="main"
           divider={
             args.divider ? (
               <Divider

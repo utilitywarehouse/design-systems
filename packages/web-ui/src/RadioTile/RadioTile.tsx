@@ -109,4 +109,4 @@ export const RadioTile = forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProp
   }
 );
 
-RadioTile.displayName = 'RadioTile';
+RadioTile.displayName = displayName;

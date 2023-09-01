@@ -1,6 +1,6 @@
 import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { pxToRem , globalPrefix } from '../utils';
+import { pxToRem, globalPrefix } from '../utils';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
 import { TextProps } from './Text.props';
@@ -46,4 +46,4 @@ export const Text = forwardRef<ElementRef<'span'>, PropsWithChildren<PropsWithSx
   }
 );
 
-Text.displayName = 'Text';
+Text.displayName = displayName;
