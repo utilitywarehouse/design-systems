@@ -6,7 +6,7 @@ import { Strong } from './Strong';
 const textVariants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
 const meta: Meta<typeof Strong> = {
-  title: 'Web UI / Components / Strong',
+  title: 'Web UI / Typography / Strong',
   component: Strong,
   tags: ['autodocs'],
 };

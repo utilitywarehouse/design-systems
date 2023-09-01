@@ -5,7 +5,6 @@ import MuiToggleButtonGroup, {
 } from '@mui/material/ToggleButtonGroup';
 import { dataAttributes, px } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
-import { PropsWithStyleOverrides } from '../types';
 
 const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme, disabled }) => {
   const { inverse } = dataAttributes;
@@ -36,22 +35,21 @@ const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme, disabl
 
 export type ToggleButtonGroupProps = Pick<
   MuiToggleButtonGroupProps,
-  'children' | 'classes' | 'disabled' | 'fullWidth' | 'onChange' | 'value'
+  'children' | 'classes' | 'disabled' | 'fullWidth' | 'onChange' | 'value' | 'className' | 'sx'
 >;
 
-export const ToggleButtonGroup = React.forwardRef<
-  HTMLDivElement,
-  PropsWithStyleOverrides<ToggleButtonGroupProps>
->(function ToggleButtonGroup({ children, disabled, className, ...props }, ref) {
-  return (
-    <StyledMuiToggleButtonGroup
-      ref={ref}
-      className={className}
-      disabled={disabled}
-      exclusive
-      {...props}
-    >
-      {children}
-    </StyledMuiToggleButtonGroup>
-  );
-});
+export const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGroupProps>(
+  function ToggleButtonGroup({ children, disabled, className, ...props }, ref) {
+    return (
+      <StyledMuiToggleButtonGroup
+        ref={ref}
+        className={className}
+        disabled={disabled}
+        exclusive
+        {...props}
+      >
+        {children}
+      </StyledMuiToggleButtonGroup>
+    );
+  }
+);

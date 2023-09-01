@@ -7,7 +7,7 @@ import { Flex } from '../Flex';
 const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
 const meta: Meta<typeof Text> = {
-  title: 'Web UI / Components / Text',
+  title: 'Web UI / Typography / Text',
   component: Text,
 };
 
@@ -75,7 +75,7 @@ export const Workshop: Story = {
   args: {
     children: 'hamburgefons',
     variant: 'body',
-    component: 'p',
+    component: 'span',
     color: undefined,
     bold: false,
     textTransform: 'capitalize',

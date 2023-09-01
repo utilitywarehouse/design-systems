@@ -1,10 +1,10 @@
-import { forwardRef, PropsWithChildren } from 'react';
+import { ComponentPropsWithoutRef, forwardRef, PropsWithChildren } from 'react';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } from '@mui/material';
 import { OverrideProps } from '@mui/types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { dataAttributes } from '../utils';
-import { PropsWithStyleOverrides } from '../types';
+import { PropsWithSx } from '../types';
 
 export const textVariantMapping: Record<string, string> = {
   subtitle: 'p',
@@ -20,7 +20,7 @@ export const headingVariantMapping: Record<string, string> = {
   h4: 'h4',
 };
 
-export interface LegacyTypographyOwnProps {
+export interface LegacyTypographyOwnProps extends ComponentPropsWithoutRef<'span'> {
   color?: string | 'primary' | 'secondary' | 'success' | 'error';
   /** @deprecated The variant prop is deprecated and will be removed in v1 */
   variant?: MuiTypographyProps['variant'];
@@ -33,7 +33,7 @@ export interface LegacyTypographyTypeMap<
   AdditionalProps = {},
   DefaultComponent extends React.ElementType = 'span'
 > {
-  props: AdditionalProps & PropsWithChildren<PropsWithStyleOverrides<LegacyTypographyOwnProps>>;
+  props: AdditionalProps & PropsWithChildren<PropsWithSx<LegacyTypographyOwnProps>>;
   defaultComponent: DefaultComponent;
 }
 

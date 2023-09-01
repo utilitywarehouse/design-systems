@@ -1,4 +1,4 @@
-import { PropsWithChildren, forwardRef } from 'react';
+import { PropsWithChildren, forwardRef, ElementRef } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
 import { pxToRem } from '../utils';
 import { PropsWithSx } from '../types';
@@ -13,12 +13,13 @@ import { FieldsetLegendProps } from './FieldsetLegend.props';
  * grouped from inputs.
  */
 export const FieldsetLegend = forwardRef<
-  HTMLLegendElement,
+  ElementRef<'legend'>,
   PropsWithChildren<PropsWithSx<FieldsetLegendProps>>
 >(({ disabled, ...props }, ref) => {
   return (
     <Typography
       ref={ref}
+      component="legend"
       padding={0}
       fontFamily="secondary"
       weight="semibold"

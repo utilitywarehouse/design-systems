@@ -7,7 +7,7 @@ import { fonts } from '../tokens';
 import { Flex } from '../Flex';
 
 const meta: Meta<typeof Background> = {
-  title: 'Web UI / Components / Background',
+  title: 'Web UI / Deprecated / Background',
   component: Background,
 };
 

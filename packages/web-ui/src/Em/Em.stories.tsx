@@ -6,7 +6,7 @@ import { Em } from './Em';
 const textVariants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
 const meta: Meta<typeof Em> = {
-  title: 'Web UI / Components / Em',
+  title: 'Web UI / Typography / Em',
   component: Em,
   tags: ['autodocs'],
 };

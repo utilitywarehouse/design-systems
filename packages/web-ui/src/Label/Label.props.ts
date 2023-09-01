@@ -1,6 +1,6 @@
-import { ElementType, LabelHTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef, ElementType } from 'react';
 
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+export interface LabelProps extends ComponentPropsWithoutRef<'label'> {
   /** Sets the disabled prop, when true sets the label colour to grey */
   disabled?: boolean;
   /**
