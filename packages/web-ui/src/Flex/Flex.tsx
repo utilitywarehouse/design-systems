@@ -1,6 +1,9 @@
 import { ElementRef, forwardRef } from 'react';
 import { FlexProps } from './Flex.props';
-import { Box } from '../Box';
+import { createBox } from '../Box';
+
+const componentClassName = 'Flex';
+const BaseBox = createBox({ componentClassName });
 
 /**
  * Flex is a low-level primitive, with display set to `flex`.
@@ -40,7 +43,7 @@ export const Flex = forwardRef<ElementRef<'div'>, FlexProps>(function Flex(
   ref
 ) {
   return (
-    <Box
+    <BaseBox
       ref={ref}
       display={display}
       flexDirection={direction || flexDirection}
@@ -54,3 +57,5 @@ export const Flex = forwardRef<ElementRef<'div'>, FlexProps>(function Flex(
     />
   );
 });
+
+Flex.displayName = componentClassName;

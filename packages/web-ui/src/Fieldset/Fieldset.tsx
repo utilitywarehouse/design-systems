@@ -1,9 +1,10 @@
 import { forwardRef, PropsWithChildren, ElementRef } from 'react';
-import { Box } from '../Box';
+import { Box, createBox } from '../Box';
 import { PropsWithSx } from '../types';
 import { FieldsetProps } from './Fieldset.props';
 
-const displayName = 'Fieldset';
+const componentClassName = 'Fieldset';
+const BaseBox = createBox({ componentClassName });
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -17,12 +18,12 @@ export const Fieldset = forwardRef<
   PropsWithChildren<PropsWithSx<FieldsetProps>>
 >(({ children, ...props }, ref) => {
   return (
-    <Box ref={ref} component="fieldset" border={0} margin={0} padding={0} {...props}>
+    <BaseBox ref={ref} component="fieldset" border={0} margin={0} padding={0} {...props}>
       <Box display="flex" flexDirection="column" gap={2}>
         {children}
       </Box>
-    </Box>
+    </BaseBox>
   );
 });
 
-Fieldset.displayName = displayName;
+Fieldset.displayName = componentClassName;

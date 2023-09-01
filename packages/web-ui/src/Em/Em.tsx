@@ -2,6 +2,11 @@ import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
 import { PropsWithSx } from '../types';
 import { EmProps } from './Em.props';
+import { globalPrefix } from '../utils';
+import clsx from 'clsx';
+
+const displayName = 'Em';
+const componentClassName = `${globalPrefix}-${displayName}`;
 
 /**
  * The `Em` component is based on the HTML `em` element and is used to indicate
@@ -12,11 +17,12 @@ import { EmProps } from './Em.props';
  * not valid HTML to use `em` inside headings.
  */
 export const Em = forwardRef<ElementRef<'em'>, PropsWithChildren<PropsWithSx<EmProps>>>(
-  ({ ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     return (
       <Typography
         ref={ref}
         component="em"
+        className={clsx(componentClassName, className)}
         fontStyle="italic"
         fontFamily="inherit"
         fontSize="inherit"
@@ -29,4 +35,4 @@ export const Em = forwardRef<ElementRef<'em'>, PropsWithChildren<PropsWithSx<EmP
   }
 );
 
-Em.displayName = 'Em';
+Em.displayName = displayName;

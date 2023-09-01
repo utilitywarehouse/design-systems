@@ -6,13 +6,15 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { styled } from '@mui/material';
 import { useIds } from '../hooks';
 import { Box } from '../Box';
-import { spacing } from '../utils';
+import { globalPrefix, spacing } from '../utils';
 import { PropsWithSx } from '../types';
 import { StyledRadioIndicator } from '../Radio/Radio';
-import { RadioProps } from '../Radio';
-import { RadioGroupContext } from '../RadioGroup/RadioGroupFormControl';
+import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
+import clsx from 'clsx';
+import { RadioTileProps } from './RadioTile.props';
 
-export interface RadioTileProps extends RadioProps {}
+const displayName = 'Radio';
+const componentClassName = `${globalPrefix}-${displayName}`;
 
 const StyledRadio = styled('div')({
   height: 24,
@@ -62,7 +64,15 @@ const StyledRadioItem = styled(Item)({
  */
 export const RadioTile = forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProps>>(
   (
-    { id: providedId, label, helperText, disabled, 'aria-labelledby': ariaLabelledby, ...props },
+    {
+      id: providedId,
+      label,
+      helperText,
+      disabled,
+      'aria-labelledby': ariaLabelledby,
+      className,
+      ...props
+    },
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
@@ -74,6 +84,7 @@ export const RadioTile = forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProp
     return (
       <StyledRadioItem
         ref={ref}
+        className={clsx(componentClassName, className)}
         {...props}
         id={id}
         disabled={disabled}
