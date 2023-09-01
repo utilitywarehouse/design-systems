@@ -1,2 +1,3 @@
-export { Box, useBackground } from './Box';
-export type { DefaultBoxComponent, BoxProps } from './Box';
+export { Box } from './Box';
+export { useBackground, BackgroundProvider } from './Box.context';
+export type { BoxProps } from './Box.props';
