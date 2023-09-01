@@ -1,17 +1,13 @@
 import { forwardRef } from 'react';
-import { Box, BoxProps } from '../Box';
+import { Box } from '../Box';
 import { PropsWithSx } from '../types';
-import { BaseRadioGroupProps, RadioGroupFormControl } from '../RadioGroup/RadioGroupFormControl';
+import { globalPrefix } from '../utils';
+import { RadioGroupProps } from './RadioGroup.props';
+import { RadioGroupFormControl } from './RadioGroupFormControl';
+import clsx from 'clsx';
 
-export interface RadioGroupProps extends BaseRadioGroupProps {
-  /** The direction of the radios, will also set the aria-orientation value. */
-  direction?: 'column' | 'row';
-  /**
-   * Set the width of the RadioGroup children, separate to the width of the
-   * entire RadioGroup.
-   */
-  contentWidth?: BoxProps['width'];
-}
+const displayName = 'RadioGroup';
+const componentClassName = `${globalPrefix}-${displayName}`;
 
 /**
  * The `RadioGroup` provides an accessible way to group and control a set of
@@ -30,6 +26,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps
       contentWidth = 'fit-content',
       direction = 'column',
       orientation = 'vertical',
+      className,
       ...props
     },
     ref
@@ -37,6 +34,7 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps
     return (
       <RadioGroupFormControl
         ref={ref}
+        className={clsx(componentClassName, className)}
         {...props}
         orientation={orientation || direction === 'column' ? 'vertical' : 'horizontal'}
       >
@@ -53,3 +51,5 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps
     );
   }
 );
+
+RadioGroup.displayName = displayName;

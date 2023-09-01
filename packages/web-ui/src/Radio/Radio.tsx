@@ -4,15 +4,19 @@ import {
   Indicator,
   RadioGroupIndicatorProps,
 } from '@radix-ui/react-radio-group';
-import { Box } from '../Box';
+import { Box, createBox } from '../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
-import { forwardRef, useContext, type ReactNode } from 'react';
+import { forwardRef, useContext } from 'react';
 import { styled } from '@mui/material';
 import { useIds } from '../hooks';
 import { PropsWithSx } from '../types';
-import { RadioGroupContext } from '../RadioGroup/RadioGroupFormControl';
+import { RadioProps } from './Radio.props';
+import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
+
+const componentClassName = 'Radio';
+const BaseBox = createBox({ componentClassName });
 
 const StyledRadioItem = styled(Item)({
   all: 'unset',
@@ -69,16 +73,6 @@ const StyledRadioContainer = styled('div')({
   margin: -8,
 });
 
-export interface RadioProps extends Omit<RadioGroupItemProps, 'children'> {
-  /**
-   * The label for the Radio. If not using please properly associate the
-   * Radio with a label using the `aria-label` or `aria-labelledby` props.
-   */
-  label?: ReactNode;
-  /** Helper text for the Radio. Will not display if the radio group has `helperText` set. */
-  helperText?: ReactNode;
-}
-
 /**
  * Radios can be used to choose between a set of more than two options.
  *
@@ -105,7 +99,7 @@ export const Radio = forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>>(
     const showLabel = !!label;
 
     return (
-      <Box display="flex" sx={sx} gap={1}>
+      <BaseBox display="flex" sx={sx} gap={1}>
         <StyledRadioContainer>
           <StyledRadioItem
             ref={ref}
@@ -141,7 +135,7 @@ export const Radio = forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>>(
             {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
           </Box>
         ) : null}
-      </Box>
+      </BaseBox>
     );
   }
 );

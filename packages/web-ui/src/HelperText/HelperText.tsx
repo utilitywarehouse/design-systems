@@ -1,9 +1,13 @@
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { pxToRem } from '../utils';
+import { globalPrefix, pxToRem } from '../utils';
 import { PropsWithSx } from '../types';
 import { Typography } from '../Typography';
 import { HelperTextProps } from './HelperText.props';
+import clsx from 'clsx';
+
+const displayName = 'HelperText';
+const componentClassName = `${globalPrefix}-${displayName}`;
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -15,12 +19,13 @@ import { HelperTextProps } from './HelperText.props';
 export const HelperText = forwardRef<
   ElementRef<'span'>,
   PropsWithChildren<PropsWithSx<HelperTextProps>>
->(({ disabled, error, ...props }, ref) => {
+>(({ disabled, error, className, ...props }, ref) => {
   const color = error ? colors.red600 : disabled ? colors.grey400 : colors.grey800;
   return (
     <Typography
       ref={ref}
       component="span"
+      className={clsx(componentClassName, className)}
       fontFamily="secondary"
       weight="regular"
       fontSize={pxToRem(13)}
@@ -31,4 +36,4 @@ export const HelperText = forwardRef<
   );
 });
 
-HelperText.displayName = 'HelperText';
+HelperText.displayName = displayName;

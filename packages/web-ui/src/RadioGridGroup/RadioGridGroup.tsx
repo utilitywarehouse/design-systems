@@ -1,15 +1,14 @@
 import { forwardRef } from 'react';
 import { Box } from '../Box';
-import { StackProps } from '../Stack';
+import { RadioGroupFormControl } from '../RadioGroup/RadioGroupFormControl';
 import { breakpoints } from '../tokens';
 import { PropsWithSx } from '../types';
-import { RadioGroupProps } from '../RadioGroup';
-import { RadioGroupFormControl } from '../RadioGroup/RadioGroupFormControl';
+import { RadioGridGroupProps } from './RadioGridGroup.props';
+import clsx from 'clsx';
+import { globalPrefix } from '../utils';
 
-export interface RadioGridGroupProps extends Omit<RadioGroupProps, 'direction'> {
-  /** Sets the number of columns to display the contents in. */
-  columns?: StackProps['spacing'];
-}
+const displayName = 'RadioGridGroup';
+const componentClassName = `${globalPrefix}-${displayName}`;
 
 /**
  * The `RadioGridGroup` provides an accessible way to group and control a set
@@ -25,7 +24,7 @@ export interface RadioGridGroupProps extends Omit<RadioGroupProps, 'direction'> 
  * Follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) for radio groups not contained in a toolbar.
  */
 export const RadioGridGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGridGroupProps>>(
-  ({ children, contentWidth = 'fit-content', columns = 2, ...props }, ref) => {
+  ({ children, contentWidth = 'fit-content', columns = 2, className, ...props }, ref) => {
     const convert = (c: string) => `repeat(${c}, minmax(10px, 1fr))`;
     const getColumns = () => {
       if (Array.isArray(columns)) {
@@ -45,7 +44,7 @@ export const RadioGridGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGridGr
       return convert(columns as string);
     };
     return (
-      <RadioGroupFormControl ref={ref} {...props}>
+      <RadioGroupFormControl ref={ref} className={clsx(componentClassName, className)} {...props}>
         <Box
           display="grid"
           gap={2}
@@ -59,3 +58,5 @@ export const RadioGridGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGridGr
     );
   }
 );
+
+RadioGridGroup.displayName = displayName;

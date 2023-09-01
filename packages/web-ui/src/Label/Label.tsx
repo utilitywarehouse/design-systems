@@ -1,9 +1,13 @@
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
-import { pxToRem } from '../utils';
+import { globalPrefix, pxToRem } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 import { PropsWithSx } from '../types';
 import { LabelProps } from './Label.props';
 import { Typography } from '../Typography';
+import clsx from 'clsx';
+
+const displayName = 'Label';
+const componentClassName = `${globalPrefix}-${displayName}`;
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -12,11 +16,12 @@ import { Typography } from '../Typography';
  * The Label component is used for labelling form elements, such as radio inputs.
  */
 export const Label = forwardRef<ElementRef<'label'>, PropsWithChildren<PropsWithSx<LabelProps>>>(
-  ({ component = 'label', disabled, nested, ...props }, ref) => {
+  ({ component = 'label', disabled, nested, className, ...props }, ref) => {
     return (
       <Typography
         ref={ref}
         component={component}
+        className={clsx(componentClassName, className)}
         fontFamily="secondary"
         weight={nested ? 'regular' : 'semibold'}
         fontSize={pxToRem(16)}
@@ -28,4 +33,4 @@ export const Label = forwardRef<ElementRef<'label'>, PropsWithChildren<PropsWith
   }
 );
 
-Label.displayName = 'Label';
+Label.displayName = displayName;

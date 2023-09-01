@@ -1,16 +1,20 @@
 import { useBackground } from '../Box';
 import { PropsWithSx } from '../types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { pxToRem } from '../utils';
+import { globalPrefix, pxToRem } from '../utils';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { HeadingProps } from './Heading.props';
 import { Typography } from '../Typography';
+import clsx from 'clsx';
+
+const displayName = 'Heading';
+const componentClassName = `${globalPrefix}-${displayName}`;
 
 /**
  * Heading renders the primary UW font, to be used for heading-level typography.
  */
 export const Heading = forwardRef<ElementRef<'h2'>, PropsWithChildren<PropsWithSx<HeadingProps>>>(
-  ({ component, variant = 'h2', color, ...props }, ref) => {
+  ({ component, variant = 'h2', color, className, ...props }, ref) => {
     const element = variant === 'displayHeading' ? 'h1' : variant;
     const { isBrandBackground } = useBackground();
     const headingColor = !!color
@@ -56,6 +60,7 @@ export const Heading = forwardRef<ElementRef<'h2'>, PropsWithChildren<PropsWithS
       <Typography
         ref={ref}
         component={component || element}
+        className={clsx(componentClassName, className)}
         fontFamily="primary"
         fontSize={fontSizes[variant]}
         lineHeight={lineHeights[variant]}
@@ -67,4 +72,4 @@ export const Heading = forwardRef<ElementRef<'h2'>, PropsWithChildren<PropsWithS
   }
 );
 
-Heading.displayName = 'Heading';
+Heading.displayName = displayName;
