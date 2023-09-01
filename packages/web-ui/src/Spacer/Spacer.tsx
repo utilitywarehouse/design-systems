@@ -19,11 +19,10 @@ const BaseBox = createBox({ componentClassName });
  * The `size` prop is responsive, so you can set different values for different breakpoints.
  */
 export const Spacer = forwardRef<ElementRef<'div'>, PropsWithSx<SpacerProps>>(function Spacer(
-  { axis = 'vertical', size = 1, component, inline = false, sx, ...props },
+  { axis = 'vertical', size = 1, inline = false, sx, ...props },
   ref
 ) {
   const theme = useTheme();
-  const defaultElement = inline ? 'span' : 'div';
 
   const getSize = () => {
     if (Array.isArray(size)) {
@@ -49,7 +48,7 @@ export const Spacer = forwardRef<ElementRef<'div'>, PropsWithSx<SpacerProps>>(fu
   return (
     <BaseBox
       ref={ref}
-      component={component || defaultElement}
+      component={inline ? 'span' : 'div'}
       sx={{
         display: inline ? 'inline-block' : 'block',
         width,
