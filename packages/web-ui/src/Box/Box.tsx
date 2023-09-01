@@ -1,4 +1,4 @@
-import { BoxTypeMap as MuiBoxTypeMap, createBox as createMuiBox } from '@mui/system';
+import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { OverridableComponent } from '@mui/types';
 import { forwardRef, useMemo } from 'react';
 import { type Theme } from '../theme';
