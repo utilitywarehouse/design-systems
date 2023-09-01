@@ -1,6 +1,6 @@
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
-import { PropsWithStyleOverrides } from '../types';
+import { PropsWithSx } from '../types';
 import { StrongProps } from './Strong.props';
 
 /**
@@ -12,22 +12,21 @@ import { StrongProps } from './Strong.props';
  * `Heading` component, however as `Heading` has only one font-weight there will
  * be no visual distinction, and so this is discouraged.
  */
-export const Strong = forwardRef<
-  ElementRef<'strong'>,
-  PropsWithChildren<PropsWithStyleOverrides<StrongProps>>
->(({ ...props }, ref) => {
-  return (
-    <Typography
-      ref={ref}
-      component="strong"
-      fontFamily="inherit"
-      fontSize="inherit"
-      lineHeight="inherit"
-      weight="semibold"
-      color="inherit"
-      {...props}
-    />
-  );
-});
+export const Strong = forwardRef<ElementRef<'strong'>, PropsWithChildren<PropsWithSx<StrongProps>>>(
+  ({ ...props }, ref) => {
+    return (
+      <Typography
+        ref={ref}
+        component="strong"
+        fontFamily="inherit"
+        fontSize="inherit"
+        lineHeight="inherit"
+        weight="semibold"
+        color="inherit"
+        {...props}
+      />
+    );
+  }
+);
 
 Strong.displayName = 'Strong';

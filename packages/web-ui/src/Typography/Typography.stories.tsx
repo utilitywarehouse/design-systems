@@ -10,7 +10,7 @@ const textVariants = Object.keys(textVariantMapping);
 const headingVariants = Object.keys(headingVariantMapping);
 
 const meta: Meta<typeof Typography> = {
-  title: 'Web UI / Components / Typography',
+  title: 'Web UI / Typography / Typography',
   component: Typography,
 };
 

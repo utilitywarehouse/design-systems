@@ -5,7 +5,7 @@ import { createBox } from '@mui/system';
 import { theme, type Theme } from '../theme';
 import { LegacyTypography } from './LegacyTypography';
 import { TypographyProps } from './Typography.props';
-import { PropsWithStyleOverrides } from '../types';
+import { PropsWithSx } from '../types';
 
 const BaseBox = createBox<Theme>({
   defaultTheme: theme,
@@ -37,7 +37,7 @@ const BaseBox = createBox<Theme>({
  */
 export const Typography = forwardRef<
   ElementRef<'span'>,
-  PropsWithChildren<PropsWithStyleOverrides<TypographyProps>>
+  PropsWithChildren<PropsWithSx<TypographyProps>>
 >(
   (
     {

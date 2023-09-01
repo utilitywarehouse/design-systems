@@ -6,7 +6,7 @@ import { Box } from '../Box';
 import { Flex } from '../Flex';
 
 const meta: Meta<typeof Heading> = {
-  title: 'Web UI / Components / Heading',
+  title: 'Web UI / Typography / Heading',
   component: Heading,
 };
 

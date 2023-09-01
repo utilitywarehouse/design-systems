@@ -3,7 +3,7 @@ import { Box } from '../Box';
 import { FieldsetLegend } from './FieldsetLegend';
 
 const meta: Meta<typeof FieldsetLegend> = {
-  title: 'Web UI / Components / FieldsetLegend',
+  title: 'Web UI / Typography / FieldsetLegend',
   component: FieldsetLegend,
   tags: ['autodocs'],
 };

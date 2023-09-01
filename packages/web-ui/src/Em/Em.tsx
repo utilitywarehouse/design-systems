@@ -1,6 +1,6 @@
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
-import { PropsWithStyleOverrides } from '../types';
+import { PropsWithSx } from '../types';
 import { EmProps } from './Em.props';
 
 /**
@@ -11,7 +11,7 @@ import { EmProps } from './Em.props';
  * styles. It should __not__ be used within the `Heading` component, as it is
  * not valid HTML to use `em` inside headings.
  */
-export const Em = forwardRef<ElementRef<'em'>, PropsWithChildren<PropsWithStyleOverrides<EmProps>>>(
+export const Em = forwardRef<ElementRef<'em'>, PropsWithChildren<PropsWithSx<EmProps>>>(
   ({ ...props }, ref) => {
     return (
       <Typography

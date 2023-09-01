@@ -6,7 +6,6 @@ import MuiToggleButton, {
 import { fonts, fontWeights } from '../tokens';
 import { dataAttributes, px } from '../utils';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { PropsWithStyleOverrides } from '../types';
 
 const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
   const { inverse } = dataAttributes;
@@ -53,23 +52,31 @@ const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
 
 export type ToggleButtonProps = Pick<
   MuiToggleButtonProps,
-  'value' | 'children' | 'classes' | 'disabled' | 'fullWidth' | 'onChange' | 'onClick' | 'selected'
+  | 'value'
+  | 'children'
+  | 'classes'
+  | 'disabled'
+  | 'fullWidth'
+  | 'onChange'
+  | 'onClick'
+  | 'selected'
+  | 'sx'
+  | 'className'
 >;
 
-export const ToggleButton = React.forwardRef<
-  HTMLButtonElement,
-  PropsWithStyleOverrides<ToggleButtonProps>
->(function ToggleButton({ children, className, ...props }, ref) {
-  return (
-    <StyledMuiToggleButton
-      ref={ref}
-      disableTouchRipple
-      disableRipple
-      disableFocusRipple
-      {...props}
-      className={className}
-    >
-      {children}
-    </StyledMuiToggleButton>
-  );
-});
+export const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(
+  function ToggleButton({ children, className, ...props }, ref) {
+    return (
+      <StyledMuiToggleButton
+        ref={ref}
+        disableTouchRipple
+        disableRipple
+        disableFocusRipple
+        {...props}
+        className={className}
+      >
+        {children}
+      </StyledMuiToggleButton>
+    );
+  }
+);

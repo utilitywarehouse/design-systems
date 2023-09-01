@@ -5,7 +5,7 @@ import { Box } from '../Box';
 import { Text } from '../Text';
 
 const meta: Meta<typeof Flex> = {
-  title: 'Web UI / Components / Flex',
+  title: 'Web UI / Layout / Flex',
   component: Flex,
   argTypes: {
     gap: { control: { type: 'number' } },
