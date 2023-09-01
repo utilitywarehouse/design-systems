@@ -6,7 +6,7 @@ import { Text } from '../Text';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof Grid> = {
-  title: 'Web UI / Components / Grid',
+  title: 'Web UI / Layout / Grid',
   component: Grid,
 };
 

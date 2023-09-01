@@ -6,7 +6,7 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Text } from '../Text';
 
 const meta: Meta<typeof Box> = {
-  title: 'Web UI / Components / Box',
+  title: 'Web UI / Layout / Box',
   component: Box,
 };
 

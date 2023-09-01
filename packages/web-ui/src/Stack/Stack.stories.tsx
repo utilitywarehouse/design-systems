@@ -6,7 +6,7 @@ import Divider from '@mui/material/Divider';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof Stack> = {
-  title: 'Web UI / Components / Stack',
+  title: 'Web UI / Layout / Stack',
   component: Stack,
   tags: ['autodocs'],
 };
