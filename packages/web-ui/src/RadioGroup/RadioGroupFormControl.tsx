@@ -1,45 +1,14 @@
-import { createContext, forwardRef, type ReactNode } from 'react';
+import { forwardRef } from 'react';
 import { Box } from '../Box';
-import { type RadioGroupProps as RadixRadioGroupProps, Root } from '@radix-ui/react-radio-group';
+import { Root } from '@radix-ui/react-radio-group';
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
 import { HelperText } from '../HelperText';
 import { useIds } from '../hooks';
 import { PropsWithSx } from '../types';
 import { mergeIds } from '../utils';
-
-export type RadioGroupContextValue = { hasGroupHelperText: boolean; 'aria-describedby'?: string };
-export const RadioGroupContext = createContext<RadioGroupContextValue>({
-  hasGroupHelperText: false,
-} as RadioGroupContextValue);
-
-export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
-  children: ReactNode;
-  /**
-   * The label for the radio group. This should contain the question being
-   * answered by the radio group.
-   *
-   * If you don't include a label you need to ensure you use the `aria-label`
-   * or `aria-labelledby` prop to properly associate a label with the radio
-   * group.
-   */
-  label?: ReactNode;
-  /**
-   * Helper text for the radio group. Provides a hint such as specific
-   * requirements for what to choose. When displayed, child `Radio` or
-   * `RadioTile` components will not display `helperText`.
-   */
-  helperText?: ReactNode;
-  /**
-   * Position of the helper text.
-   * @default 'top'
-   */
-  helperTextPosition?: 'top' | 'bottom';
-  /** Controls whether the error message is displayed. */
-  error?: boolean;
-  /** The error message to be displayed. */
-  errorMessage?: ReactNode;
-}
+import { BaseRadioGroupProps } from './RadioGroup.props';
+import { RadioGroupContext } from './RadioGroup.context';
 
 export const RadioGroupFormControl = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGroupProps>>(
   (

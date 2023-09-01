@@ -1,2 +1,2 @@
 export { RadioGridGroup } from './RadioGridGroup';
-export type { RadioGridGroupProps } from './RadioGridGroup';
+export type { RadioGridGroupProps } from './RadioGridGroup.props';

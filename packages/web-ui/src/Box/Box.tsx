@@ -1,16 +1,13 @@
-import { BoxTypeMap as MuiBoxTypeMap, createBox } from '@mui/system';
+import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { OverridableComponent } from '@mui/types';
 import { forwardRef, useMemo } from 'react';
-import { theme, type Theme } from '../theme';
+import { type Theme } from '../theme';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { globalPrefix } from '../utils';
 import { BackgroundProvider } from './Box.context';
 import { BoxOwnProps } from './Box.props';
+import { createBox } from './createBox';
 
-const BaseBox = createBox<Theme, { background?: string }>({
-  defaultTheme: theme,
-  defaultClassName: `${globalPrefix}-Box`,
-});
+const BaseBox = createBox();
 
 /**
  * Box is a foundational primitive, based on the `div` element. It supports all

@@ -2,6 +2,11 @@ import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
 import { PropsWithSx } from '../types';
 import { StrongProps } from './Strong.props';
+import clsx from 'clsx';
+import { globalPrefix } from '../utils';
+
+const displayName = 'Strong';
+const componentClassName = `${globalPrefix}-${displayName}`;
 
 /**
  * The `Strong` component is based on the HTML `strong` element and is used to
@@ -13,11 +18,12 @@ import { StrongProps } from './Strong.props';
  * be no visual distinction, and so this is discouraged.
  */
 export const Strong = forwardRef<ElementRef<'strong'>, PropsWithChildren<PropsWithSx<StrongProps>>>(
-  ({ ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     return (
       <Typography
         ref={ref}
         component="strong"
+        className={clsx(componentClassName, className)}
         fontFamily="inherit"
         fontSize="inherit"
         lineHeight="inherit"
@@ -29,4 +35,4 @@ export const Strong = forwardRef<ElementRef<'strong'>, PropsWithChildren<PropsWi
   }
 );
 
-Strong.displayName = 'Strong';
+Strong.displayName = displayName;
