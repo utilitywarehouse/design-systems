@@ -1,5 +1,6 @@
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { OverrideProps } from '@mui/types';
+import { ElementType } from 'react';
 import { Theme } from '../theme';
 
 export interface BoxOwnProps {
@@ -13,9 +14,11 @@ export interface BoxOwnProps {
 }
 
 export type BoxProps<
-  RootComponent extends React.ElementType<any> = MuiBoxTypeMap['defaultComponent'],
+  RootComponent extends ElementType = MuiBoxTypeMap['defaultComponent'],
   AdditionalProps = {}
 > = OverrideProps<
   MuiBoxTypeMap<BoxOwnProps & AdditionalProps, RootComponent, Theme>,
   RootComponent
->;
+> & {
+  component?: ElementType;
+};
