@@ -1,14 +1,6 @@
-import { createBox, BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
-import { OverridableComponent } from '@mui/types';
-import { forwardRef } from 'react';
-import { theme, type Theme } from '../theme';
-import { globalPrefix } from '../utils';
-import { FlexOwnProps } from './Flex.props';
-
-const BaseBox = createBox<Theme>({
-  defaultTheme: theme,
-  defaultClassName: `${globalPrefix}-Flex`,
-});
+import { ElementRef, forwardRef } from 'react';
+import { FlexProps } from './Flex.props';
+import { Box } from '../Box';
 
 /**
  * Flex is a low-level primitive, with display set to `flex`.
@@ -26,7 +18,7 @@ const BaseBox = createBox<Theme>({
  *
  * This component should be used to create vertical and horizontal stacked layouts.
  */
-export const Flex = forwardRef(function Flex(
+export const Flex = forwardRef<ElementRef<'div'>, FlexProps>(function Flex(
   {
     display = 'flex',
     direction,
@@ -48,7 +40,7 @@ export const Flex = forwardRef(function Flex(
   ref
 ) {
   return (
-    <BaseBox
+    <Box
       ref={ref}
       display={display}
       flexDirection={direction || flexDirection}
@@ -61,4 +53,4 @@ export const Flex = forwardRef(function Flex(
       {...props}
     />
   );
-}) as OverridableComponent<MuiBoxTypeMap<FlexOwnProps, MuiBoxTypeMap['defaultComponent'], Theme>>;
+});

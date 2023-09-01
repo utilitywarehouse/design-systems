@@ -1,12 +1,7 @@
-import {
-  BoxProps as MuiBoxProps,
-  ResponsiveStyleValue,
-  BoxTypeMap as MuiBoxTypeMap,
-} from '@mui/system';
-import { OverrideProps } from '@mui/types';
-import { Theme } from '../theme';
+import { BoxProps as MuiBoxProps, ResponsiveStyleValue } from '@mui/system';
+import { BoxOwnProps } from '../Box/Box.props';
 
-export interface FlexOwnProps extends Omit<MuiBoxProps, 'display'> {
+export interface FlexProps extends Omit<MuiBoxProps, 'display' | keyof BoxOwnProps> {
   display?: ResponsiveStyleValue<'none' | 'flex' | 'inline-flex'>;
   direction?: MuiBoxProps['flexDirection'];
   align?: MuiBoxProps['alignItems'];
@@ -16,11 +11,3 @@ export interface FlexOwnProps extends Omit<MuiBoxProps, 'display'> {
   grow?: MuiBoxProps['flexGrow'];
   shrink?: MuiBoxProps['flexShrink'];
 }
-
-export type FlexProps<
-  RootComponent extends React.ElementType<any> = MuiBoxTypeMap['defaultComponent'],
-  AdditionalProps = {}
-> = OverrideProps<
-  MuiBoxTypeMap<FlexOwnProps & AdditionalProps, RootComponent, Theme>,
-  RootComponent
->;
