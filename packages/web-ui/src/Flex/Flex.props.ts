@@ -1,13 +1,15 @@
-import { BoxProps as MuiBoxProps, ResponsiveStyleValue } from '@mui/system';
-import { BoxOwnProps } from '../Box/Box.props';
+import { ResponsiveStyleValue } from '@mui/system';
+import { BoxOwnProps, BoxProps } from '../Box/Box.props';
 
-export interface FlexProps extends Omit<MuiBoxProps, 'display' | keyof BoxOwnProps> {
+export interface FlexOwnProps {
   display?: ResponsiveStyleValue<'none' | 'flex' | 'inline-flex'>;
-  direction?: MuiBoxProps['flexDirection'];
-  align?: MuiBoxProps['alignItems'];
-  justify?: MuiBoxProps['justifyContent'];
-  wrap?: MuiBoxProps['flexWrap'];
-  basis?: MuiBoxProps['flexBasis'];
-  grow?: MuiBoxProps['flexGrow'];
-  shrink?: MuiBoxProps['flexShrink'];
+  direction?: BoxProps['flexDirection'];
+  align?: BoxProps['alignItems'];
+  justify?: BoxProps['justifyContent'];
+  wrap?: BoxProps['flexWrap'];
+  basis?: BoxProps['flexBasis'];
+  grow?: BoxProps['flexGrow'];
+  shrink?: BoxProps['flexShrink'];
 }
+
+export interface FlexProps extends FlexOwnProps, Omit<BoxProps, 'display' | keyof BoxOwnProps> {}
