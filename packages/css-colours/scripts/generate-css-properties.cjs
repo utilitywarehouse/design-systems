@@ -5,33 +5,41 @@ const path = require('path');
 
 const generateCSSProps = async () => {
   const prefix = 'color';
-  let result = '';
+  let cssResult = '';
+  let scssResult = '';
   // Add a note that this is auto generated
-  result += `
-    /* VARIABLES GENERATED FROM COLOUR-SYSTEM ON ${new Date().toLocaleDateString()}. */
+  cssResult += `
+    /* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON ${new Date().toLocaleDateString()}. */
 
     :root {
+  `;
+  scssResult += `
+    /* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON ${new Date().toLocaleDateString()}. */
+
   `;
 
   // Loop through the light mode colour scale objects, using each object's name
   // & value to define a :root custom prop
   Object.keys(light).forEach(colourScale => {
-    result += `\n/* ${colourScale} */\n`;
+    cssResult += `\n/* ${colourScale} */\n`;
+    scssResult += `\n/* ${colourScale} */\n`;
     Object.values(light[colourScale]).forEach(({ name, value }) => {
-      result += `--${prefix}-${name}: ${value};`;
+      cssResult += `--${prefix}-${name}: ${value};`;
+      scssResult += `$${name}: ${value};`;
     });
   });
 
   // Close the :root block
-  result += `
+  cssResult += `
     }
   `;
 
-  // Make the CSS readable to help people with auto-complete in their editors
-  result = prettier.format(result, { parser: 'scss' });
+  cssResult = prettier.format(cssResult, { parser: 'scss' });
+  scssResult = prettier.format(scssResult, { parser: 'scss' });
 
   // Push this file into the CSS dir, ready to go
-  await fs.outputFile(path.resolve(__dirname, '../src', 'css', 'colours.css'), result);
+  await fs.outputFile(path.resolve(__dirname, '../src', 'css', 'colours.css'), cssResult);
+  await fs.outputFile(path.resolve(__dirname, '../src', 'scss', '_colours.scss'), scssResult);
 };
 
 async function main() {
