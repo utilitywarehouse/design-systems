@@ -166,7 +166,7 @@ async function generateColoursFiles(colours) {
 
     // generate colour scales
     colorModes.forEach(async colourScale => {
-      const colorScalesTemplateSrc = fs.readFileSync(
+      const colorScalesTemplateSrc = await fs.readFileSync(
         path.resolve(__dirname, '../templates', 'color-scale.ts.ejs'),
         { encoding: 'utf8' }
       );
@@ -182,7 +182,7 @@ async function generateColoursFiles(colours) {
 }
 
 /* Generate CSS custom properties & SCSS variables */
-async function generateVariablesFiles(colours, mode) {
+async function generateVariablesFiles(colours) {
   const prefix = 'color';
   let cssResult = '';
   let scssResult = '';
@@ -210,8 +210,8 @@ async function generateVariablesFiles(colours, mode) {
   `;
 
   // Push this file into the CSS dir, ready to go
-  await fs.outputFile(path.resolve(__dirname, '..', 'css', `${mode}.css`), cssResult);
-  await fs.outputFile(path.resolve(__dirname, '..', 'scss', `_${mode}.scss`), scssResult);
+  await fs.outputFile(path.resolve(__dirname, '..', 'css', 'colours.css'), cssResult);
+  await fs.outputFile(path.resolve(__dirname, '..', 'scss', '_colours.scss'), scssResult);
 }
 
 async function main() {
@@ -221,8 +221,7 @@ async function main() {
   const colours = await getColours(styles);
   console.log('generating colours file');
   await generateColoursFiles(colours);
-  await generateVariablesFiles(colours.light, 'light');
-  await generateVariablesFiles(colours.dark, 'dark');
+  await generateVariablesFiles(colours.light);
 }
 
 main()
