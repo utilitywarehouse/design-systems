@@ -181,6 +181,39 @@ async function generateColoursFiles(colours) {
   });
 }
 
+/* Generate CSS custom properties & SCSS variables */
+async function generateVariablesFiles(colours) {
+  const prefix = 'color';
+  let cssResult = '';
+  let scssResult = '';
+  // Add a note that this is auto generated
+  const note = `
+  /* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON ${new Date().toLocaleDateString()}. */
+
+    `;
+  cssResult += `${note}
+    :root {
+  `;
+  scssResult += `${note}`;
+
+  Object.keys(colours).forEach(colourScale => {
+    cssResult += `\n/* ${colourScale} */\n`;
+    scssResult += `\n/* ${colourScale} */\n`;
+    Object.values(colours[colourScale]).forEach(({ name, value }) => {
+      cssResult += `--${prefix}-${name}: ${value};`;
+      scssResult += `$${name}: ${value};`;
+    });
+  });
+
+  cssResult += `
+    }
+  `;
+
+  // Push this file into the CSS dir, ready to go
+  await fs.outputFile(path.resolve(__dirname, '..', 'css', 'colours.css'), cssResult);
+  await fs.outputFile(path.resolve(__dirname, '..', 'scss', '_colours.scss'), scssResult);
+}
+
 async function main() {
   console.log('getting figma styles');
   const styles = await getStyles();
@@ -188,6 +221,7 @@ async function main() {
   const colours = await getColours(styles);
   console.log('generating colours file');
   await generateColoursFiles(colours);
+  await generateVariablesFiles(colours.light);
 }
 
 main()

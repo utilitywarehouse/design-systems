@@ -14,7 +14,8 @@
     "generate": "pnpm clean:src && node ./scripts/generate-colors.cjs && pnpm copy-files",
     "lint:fix": "TIMING=1 eslint --fix --ext ts src",
     "lint": "TIMING=1 eslint --ext ts src",
-    "format": "prettier --write --parser=typescript \"src/**/*.ts*\""
+    "format:css": "prettier --write --parser=scss \"./**/*.{css,scss}\"",
+    "format": "prettier --write --parser=typescript \"src/**/*.ts*\" && pnpm run format:css"
   },
   "license": "UNLICENSED",
   "publishConfig": {
@@ -30,5 +31,13 @@
   },
   "dependencies": {
     "dotenv": "^16.3.1"
-  }
+  },
+  "files": [
+    "README.md",
+    "index.js",
+    "index.mjs",
+    "types",
+    "css",
+    "scss"
+  ]
 }
