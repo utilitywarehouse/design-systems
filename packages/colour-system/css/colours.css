@@ -1,6 +1,17 @@
 /* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON 06/09/2023. */
 
 :root {
+  /* brand */
+  --color-brand-midnight: #1e0a46;
+  --color-brand-white: #ffffff;
+  --color-brand-pink: #f495f9;
+  --color-brand-primaryPurple: #550091;
+  /* service */
+  --color-service-gas: #75a7fd;
+  --color-service-electricity: #62dd99;
+  --color-service-insurance: #f25192;
+  --color-service-mobile: #ffd76f;
+  --color-service-landline: #a66de8;
   /* purple */
   --color-purple50: #fbf6fd;
   --color-purple75: #f5eef9;

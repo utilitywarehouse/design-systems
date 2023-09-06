@@ -2055,27 +2055,5 @@
         "value": "#4a1125"
       }
     }
-  },
-  "common": {
-    "brandMidnight": {
-      "id": "240:492",
-      "mode": "common",
-      "scale": "brand",
-      "name": "brandMidnight",
-      "description": "White can be utilised in any theme as a background or foreground color. ",
-      "created_at": "2023-04-25T14:46:26.458Z",
-      "updated_at": "2023-04-25T15:53:53.028Z",
-      "value": "#1e0a46"
-    },
-    "brandWhite": {
-      "id": "240:491",
-      "mode": "common",
-      "scale": "brand",
-      "name": "brandWhite",
-      "description": "White can be utilised in any theme as a background, border, or foreground color. ",
-      "created_at": "2023-04-25T14:46:26.451Z",
-      "updated_at": "2023-04-25T15:53:53.035Z",
-      "value": "#ffffff"
-    }
   }
 }
