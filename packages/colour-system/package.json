@@ -8,7 +8,7 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
-    "clean:src": "rm -rf raw && rm -rf src",
+    "clean:src": "rm -rf {raw,src,css,scss}",
     "build": "rollup -c",
     "copy-files": "cp ./templates/lib-index.ts.ejs ./src/index.ts && cp ./lib/services.ts ./src/common/ && cp ./lib/brand.ts ./src/common/",
     "generate": "pnpm clean:src && node ./scripts/generate-colors.cjs && pnpm copy-files",
