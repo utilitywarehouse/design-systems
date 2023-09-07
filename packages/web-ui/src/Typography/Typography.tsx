@@ -1,15 +1,12 @@
 import { fonts, fontWeights } from '../tokens';
-import { globalPrefix } from '../utils';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
-import { createBox } from '@mui/system';
-import { theme, type Theme } from '../theme';
 import { LegacyTypography } from './LegacyTypography';
 import { TypographyProps } from './Typography.props';
 import { PropsWithSx } from '../types';
+import { createBox } from '../Box/createBox';
 
-const BaseBox = createBox<Theme>({
-  defaultTheme: theme,
-  defaultClassName: `${globalPrefix}-Typography`,
+const BaseBox = createBox<'p' | 'span' | 'div' | 'label' | 'strong' | 'em' | 'legend'>({
+  componentClassName: 'Typography',
 });
 
 /**
