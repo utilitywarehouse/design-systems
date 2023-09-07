@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Colour System / CSS" />
+
+# UW Colour System CSS custom properties
+
+A selected group of colour-system colour scales are available as CSS custom
+properties. This includes the light mode colour scales, and the common colour
+scales. These are the only ones included as there are no plans to support dark
+mode on the web, and no plans to use CSS in the native mobile apps.
+
+## Usage
+
+When you have the colour-system package installed, you need to import the `colours.css` file in the root of your project.
+
+```js
+import '@utilitywarehouse/colour-system/css/colours.css';
+```
+
+You can then reference the colours in your CSS.
+
+```css
+.pink-text {
+  color: var(--color-brand-pink);
+  background-color: var(--color-grey200);
+}
+```
