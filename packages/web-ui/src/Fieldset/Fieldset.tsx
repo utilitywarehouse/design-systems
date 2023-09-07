@@ -4,7 +4,7 @@ import { PropsWithSx } from '../types';
 import { FieldsetProps } from './Fieldset.props';
 
 const componentClassName = 'Fieldset';
-const BaseBox = createBox({ componentClassName });
+const BaseBox = createBox<'fieldset'>({ componentClassName });
 
 /**
  * > This component is only required when building a custom field that isn’t
