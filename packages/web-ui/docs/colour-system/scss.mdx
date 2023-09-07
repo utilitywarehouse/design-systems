@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Colour System / SCSS" />
+
+# UW Colour System SCSS variables
+
+A selected group of colour-system colour scales are available as SCSS
+variables. This includes the light mode colour scales, and the common colour
+scales. These are the only ones included as there are no plans to support dark
+mode on the web, and no plans to use SCSS in the native mobile apps.
+
+## Usage
+
+When you have the colour-system package installed, you need to import the `_colours.scss` file in the root of your project.
+
+```js
+import '@utilitywarehouse/colour-system/scss/_colours.css';
+```
+
+You can then reference the colours in your SCSS.
+
+```css
+.electricity {
+  background-color: $serviceElectricity;
+  border: 1px solid $apple900;
+}
+```
