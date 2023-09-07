@@ -109,7 +109,7 @@ const StyledButton = styled('button', { label: componentClassName })<ButtonProps
     paddingRight: spacing(3),
     paddingTop: spacing(1.5),
     paddingBottom: spacing(1.5),
-    '&:where(:focus)': {
+    '&:where(:focus-visible)': {
       outline: '4px solid',
     },
   },
@@ -122,12 +122,12 @@ const StyledButton = styled('button', { label: componentClassName })<ButtonProps
     paddingRight: spacing(2),
     paddingTop: spacing(1),
     paddingBottom: spacing(1),
-    '&:where(:focus)': {
+    '&:where(:focus-visible)': {
       outline: '2px solid',
     },
   },
   // all button variants focus colours
-  '&:where(:focus)': {
+  '&:where(:focus-visible)': {
     [`&[data-colorscheme=cyan]`]: {
       outlineColor: colors.cyan700,
     },
