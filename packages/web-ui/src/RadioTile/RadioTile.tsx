@@ -6,7 +6,7 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { styled } from '@mui/material';
 import { useIds } from '../hooks';
 import { Box } from '../Box';
-import { globalPrefix, spacing } from '../utils';
+import { getClassName, spacing } from '../utils';
 import { PropsWithSx } from '../types';
 import { StyledRadioIndicator } from '../Radio/Radio';
 import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
@@ -14,7 +14,7 @@ import clsx from 'clsx';
 import { RadioTileProps } from './RadioTile.props';
 
 const displayName = 'Radio';
-const componentClassName = `${globalPrefix}-${displayName}`;
+const componentClassName = getClassName(displayName);
 
 const StyledRadio = styled('div')({
   height: 24,
