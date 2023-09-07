@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Flex } from '../../Flex';
-import { Heading } from '../../Heading';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -22,9 +21,8 @@ export const KitchenSink: Story = {
   parameters: { controls: { hideNoControlsWarning: true } },
   render: () => {
     return (
-      <Flex direction="column" gap={2}>
-        <Heading>Solid</Heading>
-        <Flex gap={3}>
+      <Flex direction="column" gap={4}>
+        <Flex gap={3} align="center">
           {sizes.map(size => (
             <Flex gap={2}>
               {colorSchemes.solid.map(colorScheme => (
@@ -35,8 +33,7 @@ export const KitchenSink: Story = {
             </Flex>
           ))}
         </Flex>
-        <Heading>Outline</Heading>
-        <Flex gap={3}>
+        <Flex gap={3} align="center">
           {sizes.map(size => (
             <Flex gap={2}>
               {colorSchemes.outline.map(colorScheme => (
