@@ -1,5 +1,11 @@
 # @utilitywarehouse/colour-system
 
+## 0.2.0
+
+### Minor Changes
+
+- [#176](https://github.com/utilitywarehouse/design-systems/pull/176) [`e46ea49`](https://github.com/utilitywarehouse/design-systems/commit/e46ea49e84b95653787114ce1b5ab42dd82bfeac) Thanks [@robphoenix](https://github.com/robphoenix)! - Generate CSS & SCSS variables
+
 ## 0.1.0
 
 ### Minor Changes

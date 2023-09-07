@@ -1,5 +1,14 @@
 # @utilitywarehouse/web-ui
 
+## 0.2.1
+
+### Patch Changes
+
+- [#174](https://github.com/utilitywarehouse/design-systems/pull/174) [`848ef15`](https://github.com/utilitywarehouse/design-systems/commit/848ef154d1a63e9be689ec9df59378c27e61d323) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `createBox` utility and component class names
+
+- Updated dependencies [[`e46ea49`](https://github.com/utilitywarehouse/design-systems/commit/e46ea49e84b95653787114ce1b5ab42dd82bfeac)]:
+  - @utilitywarehouse/colour-system@0.2.0
+
 ## 0.2.0
 
 ### Minor Changes
