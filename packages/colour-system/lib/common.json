@@ -1,0 +1,51 @@
+{
+  "brand": [
+    {
+      "name": "midnight",
+      "description": "Midnight can be utilised in any theme as a background or foreground color.",
+      "value": "#1e0a46"
+    },
+    {
+      "name": "white",
+      "description": "White can be utilised in any theme as a background, border or foreground color.",
+      "value": "#ffffff"
+    },
+    {
+      "name": "pink",
+      "description": "Same as `colors.pink300`. Pink is predominantly used for our graphic line, from our main flow line and simple objects, to our UW monogram and iconography. We also use pink to highlight key words in headlines.",
+      "value": "#f495f9"
+    },
+    {
+      "name": "primaryPurple",
+      "description": "Same as `colors.purple800`. Purple is our hero colour. It’s both ownable and instantly recognisable, and we use it a lot; it’s at the core of our brand and it’s normally the first colour you or a customer will be exposed to.",
+      "value": "#550091"
+    }
+  ],
+  "service": [
+    {
+      "name": "gas",
+      "description": "Same as `colors.cyan400`. Use for Gas services.",
+      "value": "#75A7FD"
+    },
+    {
+      "name": "electricity",
+      "description": "Same as `colors.apple400`. Use for Electricity services.",
+      "value": "#62DD99"
+    },
+    {
+      "name": "insurance",
+      "description": "Same as `colors.rose400`. Use for Insurance services.",
+      "value": "#F25192"
+    },
+    {
+      "name": "mobile",
+      "description": "Same as `colors.gold300`. Use for Mobile services.",
+      "value": "#FFD76F"
+    },
+    {
+      "name": "landline",
+      "description": "Same as `colors.grape400`. Use for Landline & Homephone services.",
+      "value": "#A66DE8"
+    }
+  ]
+}

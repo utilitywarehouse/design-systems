@@ -1,4 +1,5 @@
-// Hey, don't edit this file directly, it's been magically generated.
+// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
+
 /** For backgrounds mostly. Foregrounds that can be used against this color range from Grape 700 and up. It passes AA with large text, borders and icons against combined with Grape 500. */
 export const grape100 = '#240444';
 /** For backgrounds mostly. Foregrounds that can be used against this color range from Grape 700 and up. It passes AA with large text, borders and icons against combined with Grape 500. */

@@ -1,4 +1,5 @@
-// Hey, don't edit this file directly, it's been magically generated.
+// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
+
 /** Use it for backgrounds.  Use it for text that goes on top of Apple 800 and the lighter shades of Grey.  */
 export const apple100 = '#03361b';
 /**  */
