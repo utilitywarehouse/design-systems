@@ -1,4 +1,5 @@
-// Hey, don't edit this file directly, it's been magically generated.
+// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
+
 /** For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900. */
 export const gold50 = '#2e1103';
 /** For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900. It passes AA with large text, borders and icons against combined with Gold 400. */

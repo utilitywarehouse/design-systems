@@ -1,4 +1,5 @@
-// Hey, don't edit this file directly, it's been magically generated.
+// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
+
 /** This is to use instead of using pure black. */
 export const grey25 = '#050505';
 /** This is to use instead of using pure black. */
