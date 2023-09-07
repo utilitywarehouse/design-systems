@@ -1,4 +1,5 @@
-// Hey, don't edit this file directly, it's been magically generated.
+// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
+
 /** It replaces Grape-50. Use it for backgrounds.  Use it for text that goes on Grape 800, and the darker shades of Grey.  */
 export const grape50 = '#f1e6fb';
 /** It replaces Grape-100. Use it for backgrounds.  Use it for text that goes on Grape 800, and the darker shades of Grey.  */

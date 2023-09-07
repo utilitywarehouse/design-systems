@@ -4,6 +4,7 @@ const tinycolor = require('tinycolor2');
 const fs = require('fs-extra');
 const path = require('path');
 const { render } = require('ejs');
+const commonColours = require('../lib/common.json');
 
 require('dotenv').config();
 
@@ -98,12 +99,10 @@ async function getColours(styles) {
       styles[nodeData.document.id].value = hex;
     });
 
-  // rebuild the object into light/dark mode colour scales, and common colours
+  // rebuild the object into light/dark mode colour scales
   // ie. { light: { cyan: { cyan100: { ... }}}, dark: { cyan: { cyan100: { ... }}}}
   return Object.values(styles).reduce((colours, style) => {
-    if (style.mode === ORPHAN_STYLES_MODE) {
-      colours.common = { ...colours.common, [style.name]: style };
-    } else {
+    if (style.mode !== ORPHAN_STYLES_MODE) {
       colours[style.mode] = { ...colours[style.mode] };
       colours[style.mode][style.scale] = {
         ...colours[style.mode][style.scale],
@@ -132,23 +131,41 @@ async function generateColoursFiles(colours) {
     { encoding: 'utf8' }
   );
 
-  Object.keys(colours).forEach(async colourMode => {
-    // generate common colours
-    if (colourMode === ORPHAN_STYLES_MODE) {
-      const commonColorsIndexTemplateSrc = await fs.readFileSync(
-        path.resolve(__dirname, '../templates', 'common-index.ts.ejs'),
-        { encoding: 'utf8' }
-      );
-      const commonColorsIndexRendered = render(commonColorsIndexTemplateSrc, {
-        colors: Object.values(colours[ORPHAN_STYLES_MODE]),
-      });
-      await fs.outputFile(
-        path.resolve(__dirname, '../src', ORPHAN_STYLES_MODE, 'index.ts'),
-        commonColorsIndexRendered
-      );
-      return;
-    }
+  // generate common colors index file
+  const commonColoursIndexTemplateSrc = await fs.readFileSync(
+    path.resolve(__dirname, '../templates', 'color-mode-index.ts.ejs'),
+    { encoding: 'utf8' }
+  );
+  const commonColoursIndexRendered = render(commonColoursIndexTemplateSrc, {
+    colorModes: Object.keys(commonColours),
+  });
+  await fs.outputFile(
+    path.resolve(__dirname, '../src', 'common', 'index.ts'),
+    commonColoursIndexRendered
+  );
 
+  // generate common colour scales
+  Object.keys(commonColours).forEach(async colourMode => {
+    // generate colour scales
+    const colorScalesTemplateSrc = await fs.readFileSync(
+      path.resolve(__dirname, '../templates', 'color-scale.ts.ejs'),
+      { encoding: 'utf8' }
+    );
+    const colors = Object.values(commonColours[colourMode]).map(({ name, value, description }) => ({
+      name: `${colourMode}${_.upperFirst(name)}`,
+      value,
+      description,
+    }));
+    const colorScaleRendered = render(colorScalesTemplateSrc, {
+      colors,
+    });
+    await fs.outputFile(
+      path.resolve(__dirname, '../src', 'common', `${colourMode}.ts`),
+      colorScaleRendered
+    );
+  });
+
+  Object.keys(colours).forEach(async colourMode => {
     // generate colour mode colours
     const colorModes = Object.keys(colours[colourMode]);
     // generate color mode index files
@@ -181,6 +198,49 @@ async function generateColoursFiles(colours) {
   });
 }
 
+/* Generate CSS custom properties & SCSS variables */
+async function generateVariablesFiles(colours) {
+  const prefix = 'color';
+  let cssResult = '';
+  let scssResult = '';
+  // Add a note that this is auto generated
+  const note = `
+  /* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON ${new Date().toLocaleDateString()}. */
+
+    `;
+  cssResult += `${note}
+    :root {
+  `;
+  scssResult += `${note}`;
+
+  // common colours
+  Object.keys(commonColours).forEach(colourScale => {
+    cssResult += `\n/* ${colourScale} */\n`;
+    scssResult += `\n/* ${colourScale} */\n`;
+    Object.values(commonColours[colourScale]).forEach(({ name, value }) => {
+      cssResult += `--${prefix}-${colourScale}-${name}: ${value};`;
+      scssResult += `$${colourScale}${_.upperFirst(name)}: ${value};`;
+    });
+  });
+  // light mode colours
+  Object.keys(colours).forEach(colourScale => {
+    cssResult += `\n/* ${colourScale} */\n`;
+    scssResult += `\n/* ${colourScale} */\n`;
+    Object.values(colours[colourScale]).forEach(({ name, value }) => {
+      cssResult += `--${prefix}-${name}: ${value};`;
+      scssResult += `$${name}: ${value};`;
+    });
+  });
+
+  cssResult += `
+    }
+  `;
+
+  // Push this file into the CSS dir, ready to go
+  await fs.outputFile(path.resolve(__dirname, '..', 'css', 'colours.css'), cssResult);
+  await fs.outputFile(path.resolve(__dirname, '..', 'scss', '_colours.scss'), scssResult);
+}
+
 async function main() {
   console.log('getting figma styles');
   const styles = await getStyles();
@@ -188,6 +248,7 @@ async function main() {
   const colours = await getColours(styles);
   console.log('generating colours file');
   await generateColoursFiles(colours);
+  await generateVariablesFiles(colours.light);
 }
 
 main()

@@ -1,4 +1,5 @@
-// Hey, don't edit this file directly, it's been magically generated.
+// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
+
 /** For backgrounds */
 export const green50 = '#eefcf3';
 /** For backgrounds */

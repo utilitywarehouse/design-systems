@@ -1,4 +1,5 @@
-// Hey, don't edit this file directly, it's been magically generated.
+// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
+
 /**  */
 export const grey25 = '#fafafa';
 /** Replaces F7F7F7 Cod-Gray-05 */

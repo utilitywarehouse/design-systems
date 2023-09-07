@@ -1,7 +1,4 @@
-// Hey, don't edit this file directly, it's been magically generated.
-/** White can be utilised in any theme as a background or foreground color.  */
-export const brandMidnight = '#1e0a46';
-/** White can be utilised in any theme as a background, border, or foreground color.  */
-export const brandWhite = '#ffffff';
+// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
+
 export * from './brand';
-export * from './services';
+export * from './service';
