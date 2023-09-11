@@ -1,8 +1,6 @@
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
-import { dataAttributes, mediaQueries, pxToRem } from '../utils';
-
-const { legacy, primary, secondary, inverse, success, error } = dataAttributes;
+import { mediaQueries, pxToRem } from '../utils';
 
 const baseTextStyles = {
   fontFamily: fonts.secondary,
@@ -10,49 +8,9 @@ const baseTextStyles = {
   color: colorsCommon.brandMidnight,
 };
 
-const legacyTextStyles = {
-  [`&[data-${legacy}=true][data-${primary}=true]`]: {
-    color: colorsCommon.brandMidnight,
-  },
-  [`[data-${inverse}=true] &`]: {
-    [`&[data-${legacy}=true]`]: {
-      color: colorsCommon.brandWhite,
-    },
-  },
-  [`&[data-${legacy}=true][data-${success}=true]`]: {
-    color: colors.green700,
-    [`[data-${inverse}=true] &`]: {
-      color: colors.apple400,
-    },
-  },
-  [`&[data-${legacy}=true][data-${error}=true]`]: {
-    color: colors.red600,
-    [`[data-${inverse}=true] &`]: {
-      color: colors.rose400,
-    },
-  },
-};
-
 const baseHeadingStyles = {
   fontFamily: fonts.primary,
   color: colorsCommon.brandPrimaryPurple,
-};
-
-const legacyHeadingStyles = {
-  [`&[data-${legacy}=true][data-${primary}=true]`]: {
-    color: colorsCommon.brandPrimaryPurple,
-  },
-  [`&[data-${legacy}=true][data-${secondary}=true]`]: {
-    color: colorsCommon.brandMidnight,
-  },
-  [`&[data-${legacy}=true][data-${error}=true]`]: {
-    color: colorsCommon.brandPrimaryPurple,
-  },
-  [`[data-${inverse}=true] &`]: {
-    [`&[data-${legacy}=true]`]: {
-      color: colorsCommon.brandWhite,
-    },
-  },
 };
 
 // we do this so that consumers can access this separately to the components.
@@ -122,18 +80,4 @@ export const baseTypographyTheme = {
       fontSize: pxToRem(20),
     },
   },
-};
-
-// and then this is for the components styles.
-// We'll be able to unify this in v1, when we no longer support the legacy color styles.
-export const legacyTypographyThemeOverrides = {
-  body: { ...legacyTextStyles },
-  subtitle: { ...legacyTextStyles },
-  legalNote: { ...legacyTextStyles },
-  caption: { ...legacyTextStyles },
-  displayHeading: { ...legacyHeadingStyles },
-  h1: { ...legacyHeadingStyles },
-  h2: { ...legacyHeadingStyles },
-  h3: { ...legacyHeadingStyles },
-  h4: { ...legacyHeadingStyles },
 };
