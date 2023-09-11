@@ -10,6 +10,8 @@ export interface TypographyOwnProps {
   color?: string | 'primary' | 'secondary' | 'success' | 'error';
   /** @deprecated The variant prop is deprecated and will be removed in v1 */
   variant?: MuiTypographyProps['variant'];
+  /** @deprecated The fontWeight prop is deprecated and will be removed in v1 */
+  fontWeight?: 'regular' | 'semibold' | 'inherit';
 }
 
 export interface TypographyProps

@@ -2,9 +2,12 @@ import { ComponentPropsWithoutRef, forwardRef, PropsWithChildren } from 'react';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } from '@mui/material';
 import { OverrideProps } from '@mui/types';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { dataAttributes } from '../utils';
 import { PropsWithSx } from '../types';
+import { useBackground } from '../Background/Background';
+import { fonts, fontWeights } from '../tokens';
+import { TypographyProps } from './Typography.props';
 
 export const textVariantMapping: Record<string, string> = {
   subtitle: 'p',
@@ -22,9 +25,10 @@ export const headingVariantMapping: Record<string, string> = {
 
 export interface LegacyTypographyOwnProps extends ComponentPropsWithoutRef<'span'> {
   color?: string | 'primary' | 'secondary' | 'success' | 'error';
+  component?: React.ElementType;
+  fontWeight?: TypographyProps['fontWeight'];
   /** @deprecated The variant prop is deprecated and will be removed in v1 */
   variant?: MuiTypographyProps['variant'];
-  component?: React.ElementType;
 }
 
 export type DefaultLegacyTypographyComponent = 'p';
@@ -42,6 +46,13 @@ export type LegacyTypographyProps<
   AdditionalProps = {}
 > = OverrideProps<LegacyTypographyTypeMap<AdditionalProps, RootComponent>, RootComponent> & {
   component?: React.ElementType;
+};
+
+export const isBrandBackgroundColor = (backgroundColor: string): boolean => {
+  if (backgroundColor === 'midnight' || backgroundColor === 'purple') {
+    return true;
+  }
+  return false;
 };
 
 /**
@@ -66,7 +77,7 @@ export type LegacyTypographyProps<
  * - `Text` for body text
  */
 export const LegacyTypography = forwardRef(function LegacyTypography(
-  { color, variant, component = 'body', ...props },
+  { color, variant, component = 'body', fontWeight = 'regular', ...props },
   ref
 ) {
   const isLegacyTextVariant = variant && Object.keys(textVariantMapping).includes(variant);
@@ -74,37 +85,60 @@ export const LegacyTypography = forwardRef(function LegacyTypography(
   const isLegacyColor = [undefined, 'primary', 'secondary', 'success', 'error'].includes(
     color as string
   );
-  const getLegacyColor = (textColor: string) => {
-    if (textColor === undefined) return 'primary';
-    if (isLegacyColor) return textColor;
-    return 'primary';
-  };
-  const dataAttributeProps = isLegacyColor
-    ? {
-        [`data-${dataAttributes.legacy}`]: true,
-        // @ts-ignore
-        [`data-${dataAttributes[getLegacyColor(color)]}`]: true,
+  const { backgroundColor } = useBackground();
+  const getLegacyColor = () => {
+    if (!isLegacyColor) return color;
+    if (isLegacyHeadingVariant) {
+      console.warn(
+        'The Typography variant prop is deprecated, please use the Heading component instead'
+      );
+      if (isBrandBackgroundColor(backgroundColor)) {
+        return colorsCommon.brandWhite;
       }
-    : {};
-
-  if (isLegacyTextVariant) {
-    console.warn(
-      'The Typography variant prop is deprecated, please use the Text component instead'
-    );
-  }
-  if (isLegacyHeadingVariant) {
-    console.warn(
-      'The Typography variant prop is deprecated, please use the Heading component instead'
-    );
-  }
+      if (color === 'secondary') {
+        return colorsCommon.brandMidnight;
+      } else {
+        return colorsCommon.brandPrimaryPurple;
+      }
+    }
+    if (isLegacyTextVariant) {
+      console.warn(
+        'The Typography variant prop is deprecated, please use the Text component instead'
+      );
+      if (color === 'error') {
+        if (isBrandBackgroundColor(`${backgroundColor}`)) {
+          return colors.rose400;
+        } else {
+          return colors.red600;
+        }
+      }
+      if (color === 'success') {
+        if (isBrandBackgroundColor(`${backgroundColor}`)) {
+          return colors.apple400;
+        } else {
+          return colors.green700;
+        }
+      }
+      return isBrandBackgroundColor(`${backgroundColor}`)
+        ? colorsCommon.brandWhite
+        : colorsCommon.brandMidnight;
+    }
+  };
 
   return (
     <MuiTypography
       ref={ref}
-      color={color || colorsCommon.brandMidnight}
+      fontFamily={isLegacyHeadingVariant ? fonts.primary : fonts.secondary}
+      fontWeight={
+        isLegacyHeadingVariant
+          ? fontWeights.primary
+          : fontWeight === 'regular'
+          ? fontWeights.secondary.regular
+          : fontWeights.secondary.semibold
+      }
+      color={getLegacyColor()}
       component={component || 'p'}
       variant={variant}
-      {...dataAttributeProps}
       {...props}
     />
   );

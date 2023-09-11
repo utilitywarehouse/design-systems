@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Background } from '../Background';
 import { Flex } from '../Flex';
+import { fontWeights } from '../tokens';
 import { backgroundColors } from '../types';
 import { headingVariantMapping, textVariantMapping } from './LegacyTypography';
 import { Typography } from './Typography';
@@ -52,7 +53,7 @@ export const LegacyVariants: Story = {
       {backgroundColors.map(bg => (
         <Background
           key={bg}
-          backgroundColor={bg}
+          backgroundColor={bg as any}
           display="flex"
           justifyContent="center"
           padding={4}

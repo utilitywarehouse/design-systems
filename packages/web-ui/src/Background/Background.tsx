@@ -1,8 +1,7 @@
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { dataAttributes, isInverseBackgroundColor } from '../utils';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { forwardRef } from 'react';
-import type { NeutralBackgroundColor, InverseBackgroundColor } from '../types';
+import React, { forwardRef } from 'react';
 import type { Theme } from '../theme';
 import MuiBox from '@mui/material/Box';
 
@@ -14,13 +13,39 @@ export const backgroundColorsMapping: { [key: string]: string } = {
   midnight: '#1e0a46',
 };
 
+export type BackgroundColor = 'midnight' | 'purple' | 'lightTint' | 'whiteOwl' | 'white';
+
+const defaultBackgroundColor = 'white';
+
+interface BackgroundContextValue {
+  backgroundColor: BackgroundColor;
+}
+
+const BackgroundContext = React.createContext<BackgroundContextValue>({
+  backgroundColor: defaultBackgroundColor,
+});
+
+export const useBackground = (): BackgroundContextValue => React.useContext(BackgroundContext);
+
+export interface BackgroundProviderProps {
+  children?: React.ReactNode;
+  backgroundColor?: BackgroundColor;
+}
+
+export const BackgroundProvider = (props: BackgroundProviderProps): JSX.Element => {
+  const { backgroundColor = defaultBackgroundColor, children } = props;
+  return (
+    <BackgroundContext.Provider value={{ backgroundColor }}>{children}</BackgroundContext.Provider>
+  );
+};
+
 export type DefaultBackgroundComponent = 'div';
 
 export interface CustomBackgroundProps {
   /**
    * Set the background colour according to predefined theme
    */
-  backgroundColor?: NeutralBackgroundColor | InverseBackgroundColor;
+  backgroundColor?: BackgroundColor;
 }
 
 export type BackgroundProps<
@@ -38,15 +63,14 @@ export const Background = forwardRef(function Background({ backgroundColor, ...p
   console.warn(
     'The Background component is deprecated and will be removed in v1, please use Box instead.'
   );
-  const inverse = backgroundColor ? isInverseBackgroundColor(backgroundColor) : false;
-  const dataAttributeProps = inverse ? { [`data-${dataAttributes.inverse}`]: true } : {};
 
   return (
-    <MuiBox
-      ref={ref}
-      bgcolor={backgroundColor && backgroundColorsMapping[backgroundColor]}
-      {...dataAttributeProps}
-      {...props}
-    />
+    <BackgroundProvider backgroundColor={backgroundColor}>
+      <MuiBox
+        ref={ref}
+        bgcolor={backgroundColor && backgroundColorsMapping[backgroundColor]}
+        {...props}
+      />
+    </BackgroundProvider>
   );
 }) as OverridableComponent<MuiBoxTypeMap<CustomBackgroundProps, DefaultBackgroundComponent, Theme>>;

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { backgroundColors } from '../types';
 import { Typography } from '../Typography';
-import { Heading } from '../Heading';
 import { Background, backgroundColorsMapping } from './Background';
 import { fonts } from '../tokens';
 import { Flex } from '../Flex';
@@ -22,9 +21,9 @@ export const Workshop: Story = {
         {args.children ? (
           args.children
         ) : (
-          <Heading component="h2" variant="h2">
+          <Typography component="h2" variant="h2">
             {args.backgroundColor} ({hexValue})
-          </Heading>
+          </Typography>
         )}
       </Background>
     );
