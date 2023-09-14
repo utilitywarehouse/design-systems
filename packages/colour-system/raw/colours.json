@@ -1157,96 +1157,6 @@
         "value": "#1c0128"
       }
     },
-    "gold": {
-      "gold50": {
-        "id": "64:421",
-        "mode": "light",
-        "scale": "gold",
-        "step": "50",
-        "name": "gold50",
-        "description": "For backgrounds",
-        "created_at": "2023-03-30T17:02:23.488Z",
-        "updated_at": "2023-04-03T16:57:18.027Z",
-        "value": "#fef9e6"
-      },
-      "gold100": {
-        "id": "64:422",
-        "mode": "light",
-        "scale": "gold",
-        "step": "100",
-        "name": "gold100",
-        "description": "For backgrounds",
-        "created_at": "2023-03-30T17:02:23.470Z",
-        "updated_at": "2023-03-30T17:02:23.470Z",
-        "value": "#fff1d1"
-      },
-      "gold200": {
-        "id": "64:423",
-        "mode": "light",
-        "scale": "gold",
-        "step": "200",
-        "name": "gold200",
-        "description": "It can be used as a background  It passes AA against Gold 700 and Gold 900",
-        "created_at": "2023-03-30T17:02:23.499Z",
-        "updated_at": "2023-03-30T17:02:23.499Z",
-        "value": "#ffe6a8"
-      },
-      "gold300": {
-        "id": "64:425",
-        "mode": "light",
-        "scale": "gold",
-        "step": "300",
-        "name": "gold300",
-        "description": "This is Brand Gold.  Use it as a background It doesn't pass contrast against white It passes AA against Gold 700 and Gold 900",
-        "created_at": "2023-03-30T17:02:23.476Z",
-        "updated_at": "2023-04-26T15:41:26.078Z",
-        "value": "#ffd76f"
-      },
-      "gold500": {
-        "id": "64:426",
-        "mode": "light",
-        "scale": "gold",
-        "step": "500",
-        "name": "gold500",
-        "description": "Use it for large text, borders, and graphic elements against white, Gold 50, Grey 25, Grey 50 and Grey 75. Use it as a background color with white large text (24px), borders, or icons.",
-        "created_at": "2023-03-30T17:02:23.481Z",
-        "updated_at": "2023-04-27T17:38:49.830Z",
-        "value": "#c77800"
-      },
-      "gold600": {
-        "id": "392:1249",
-        "mode": "light",
-        "scale": "gold",
-        "step": "600",
-        "name": "gold600",
-        "description": "Use it for large text, borders, and graphic elements against white, Gold 50, Gold 100,  Grey 25, Grey 50 and Grey 75. Use it as a background color with white large text (24px), borders, or icons.",
-        "created_at": "2023-05-09T13:25:07.328Z",
-        "updated_at": "2023-05-09T13:25:07.328Z",
-        "value": "#ac6406"
-      },
-      "gold700": {
-        "id": "64:427",
-        "mode": "light",
-        "scale": "gold",
-        "step": "700",
-        "name": "gold700",
-        "description": "Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200 and Gold 300 ",
-        "created_at": "2023-03-30T17:02:23.505Z",
-        "updated_at": "2023-05-09T13:25:07.340Z",
-        "value": "#894e16"
-      },
-      "gold900": {
-        "id": "64:428",
-        "mode": "light",
-        "scale": "gold",
-        "step": "900",
-        "name": "gold900",
-        "description": "Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200,  Gold 300 and Gold 500",
-        "created_at": "2023-03-30T17:02:23.459Z",
-        "updated_at": "2023-03-30T17:02:23.459Z",
-        "value": "#52210c"
-      }
-    },
     "red": {
       "red50": {
         "id": "20:478",
@@ -1794,6 +1704,118 @@
         "created_at": "2023-03-28T17:39:15.581Z",
         "updated_at": "2023-03-30T12:22:01.376Z",
         "value": "#001333"
+      }
+    },
+    "gold": {
+      "gold50": {
+        "id": "64:421",
+        "mode": "light",
+        "scale": "gold",
+        "step": "50",
+        "name": "gold50",
+        "description": "For backgrounds of interactive and semantic components like Alert. This color is not meant to be used in the tone-by-tone Service Color.",
+        "created_at": "2023-03-30T17:02:23.488Z",
+        "updated_at": "2023-09-13T16:10:39.083Z",
+        "value": "#fef9e6"
+      },
+      "gold75": {
+        "id": "1162:145",
+        "mode": "light",
+        "scale": "gold",
+        "step": "75",
+        "name": "gold75",
+        "description": "This color is part of the service colours' tone-by-tone pairing. It should be used as a background for service colours but not for interactive components",
+        "created_at": "2023-09-13T16:10:39.066Z",
+        "updated_at": "2023-09-13T16:10:39.066Z",
+        "value": "#fef6dc"
+      },
+      "gold100": {
+        "id": "64:422",
+        "mode": "light",
+        "scale": "gold",
+        "step": "100",
+        "name": "gold100",
+        "description": "For backgrounds",
+        "created_at": "2023-03-30T17:02:23.470Z",
+        "updated_at": "2023-03-30T17:02:23.470Z",
+        "value": "#fff1d1"
+      },
+      "gold200": {
+        "id": "64:423",
+        "mode": "light",
+        "scale": "gold",
+        "step": "200",
+        "name": "gold200",
+        "description": "It can be used as a background  It passes AA against Gold 700 and Gold 900",
+        "created_at": "2023-03-30T17:02:23.499Z",
+        "updated_at": "2023-03-30T17:02:23.499Z",
+        "value": "#ffe6a8"
+      },
+      "gold300": {
+        "id": "64:425",
+        "mode": "light",
+        "scale": "gold",
+        "step": "300",
+        "name": "gold300",
+        "description": "This is Brand Gold.  It should be used as a foreground color with a purple 800 background. This color is not recommended for interactive components due to its limited contrast capabilities.",
+        "created_at": "2023-03-30T17:02:23.476Z",
+        "updated_at": "2023-09-13T16:10:39.090Z",
+        "value": "#ffd76f"
+      },
+      "gold400": {
+        "id": "1162:151",
+        "mode": "light",
+        "scale": "gold",
+        "step": "400",
+        "name": "gold400",
+        "description": "This color is intended to be used as the foreground color for non-interactive icons within the service colour palette.  It's not recommended to use this colour in interactive elements.",
+        "created_at": "2023-09-13T16:10:39.058Z",
+        "updated_at": "2023-09-13T16:10:39.058Z",
+        "value": "#f7b51d"
+      },
+      "gold500": {
+        "id": "64:426",
+        "mode": "light",
+        "scale": "gold",
+        "step": "500",
+        "name": "gold500",
+        "description": "Use it for large text, borders, and graphic elements against white, Gold 50, Grey 25, Grey 50 and Grey 75. Use it as a background color with white large text (24px), borders, or icons.",
+        "created_at": "2023-03-30T17:02:23.481Z",
+        "updated_at": "2023-04-27T17:38:49.830Z",
+        "value": "#c77800"
+      },
+      "gold600": {
+        "id": "392:1249",
+        "mode": "light",
+        "scale": "gold",
+        "step": "600",
+        "name": "gold600",
+        "description": "Use it for large text, borders, and graphic elements against white, Gold 50, Gold 100,  Grey 25, Grey 50 and Grey 75. Use it as a background color with white large text (24px), borders, or icons.",
+        "created_at": "2023-05-09T13:25:07.328Z",
+        "updated_at": "2023-05-09T13:25:07.328Z",
+        "value": "#ac6406"
+      },
+      "gold700": {
+        "id": "64:427",
+        "mode": "light",
+        "scale": "gold",
+        "step": "700",
+        "name": "gold700",
+        "description": "Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200 and Gold 300 ",
+        "created_at": "2023-03-30T17:02:23.505Z",
+        "updated_at": "2023-05-09T13:25:07.340Z",
+        "value": "#894e16"
+      },
+      "gold900": {
+        "id": "64:428",
+        "mode": "light",
+        "scale": "gold",
+        "step": "900",
+        "name": "gold900",
+        "description": "Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200,  Gold 300 and Gold 500",
+        "created_at": "2023-03-30T17:02:23.459Z",
+        "updated_at": "2023-03-30T17:02:23.459Z",
+        "value": "#52210c"
       }
     },
     "green": {

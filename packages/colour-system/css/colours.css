@@ -1,4 +1,4 @@
-/* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON 06/09/2023. */
+/* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON 14/09/2023. */
 
 :root {
   /* brand */
@@ -25,15 +25,6 @@
   --color-purple800: #550091;
   --color-purple900: #400066;
   --color-purple1000: #1c0128;
-  /* gold */
-  --color-gold50: #fef9e6;
-  --color-gold100: #fff1d1;
-  --color-gold200: #ffe6a8;
-  --color-gold300: #ffd76f;
-  --color-gold500: #c77800;
-  --color-gold600: #ac6406;
-  --color-gold700: #894e16;
-  --color-gold900: #52210c;
   /* red */
   --color-red50: #ffebeb;
   --color-red100: #ffd8d9;
@@ -88,6 +79,17 @@
   --color-cyan800: #002b75;
   --color-cyan900: #001e52;
   --color-cyan1000: #001333;
+  /* gold */
+  --color-gold50: #fef9e6;
+  --color-gold75: #fef6dc;
+  --color-gold100: #fff1d1;
+  --color-gold200: #ffe6a8;
+  --color-gold300: #ffd76f;
+  --color-gold400: #f7b51d;
+  --color-gold500: #c77800;
+  --color-gold600: #ac6406;
+  --color-gold700: #894e16;
+  --color-gold900: #52210c;
   /* green */
   --color-green50: #eefcf3;
   --color-green100: #e0f5e8;
