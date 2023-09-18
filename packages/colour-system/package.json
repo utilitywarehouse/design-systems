@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/colour-system",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "UW Colour System",
   "main": "index.js",
   "module": "index.mjs",

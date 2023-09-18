@@ -1,5 +1,11 @@
 # @utilitywarehouse/colour-system
 
+## 0.3.0
+
+### Minor Changes
+
+- [#182](https://github.com/utilitywarehouse/design-systems/pull/182) [`82efdb9`](https://github.com/utilitywarehouse/design-systems/commit/82efdb98d664805d4bfc3a5f6a5741004e01b8f6) Thanks [@robphoenix](https://github.com/robphoenix)! - Add Gold75 & Gold400 for light mode
+
 ## 0.2.0
 
 ### Minor Changes
