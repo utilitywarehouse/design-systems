@@ -67,7 +67,7 @@ export const HeadingVariants: Story = {
   name: 'Variants',
   render: () => {
     return (
-      <Stack spacing={1}>
+      <Flex gap={1} direction="column">
         <Heading variant="displayHeading" noWrap>
           hamburgefons (displayHeading)
         </Heading>
@@ -75,7 +75,7 @@ export const HeadingVariants: Story = {
         <Heading variant="h2">hamburgefons (h2)</Heading>
         <Heading variant="h3">hamburgefons (h3)</Heading>
         <Heading variant="h4">hamburgefons (h4)</Heading>
-      </Stack>
+      </Flex>
     );
   },
 };
@@ -84,7 +84,7 @@ export const HeadingColour: Story = {
   name: 'Contextual Colour',
   render: () => {
     return (
-      <Stack>
+      <Flex direction="column">
         <Box padding={2}>
           <Heading variant="h2">heading</Heading>
         </Box>
@@ -99,7 +99,7 @@ export const HeadingColour: Story = {
             heading on brandMidnight background with custom color
           </Heading>
         </Box>
-      </Stack>
+      </Flex>
     );
   },
 };
