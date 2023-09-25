@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Stack from '@mui/material/Stack';
 import { Heading } from './Heading';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
