@@ -18,3 +18,4 @@ coverage
 storybook-static
 .turbo/*
 !.turbo/config.json
+.idea/
