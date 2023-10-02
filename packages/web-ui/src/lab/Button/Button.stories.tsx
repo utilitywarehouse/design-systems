@@ -84,8 +84,8 @@ export const Examples: Story = {
         </Flex>
         <Flex direction="column" gap={2}>
           <Text>
-            Button with active state different to the focus state styles. (Use arrow keys to
-            navigate, space key to activate button.)
+            Button with active state different to the focus state styles. (Use tab key to navigate,
+            space key to activate button.)
           </Text>
           <Flex gap={3} align="center">
             {colorSchemes.solid.map(colorScheme => (
