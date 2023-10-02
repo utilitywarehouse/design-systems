@@ -12,6 +12,7 @@ type OutlineColorSchemeProps = {
 
 export type ButtonProps = ComponentPropsWithoutRef<'button'> &
   (SolidColorSchemeProps | OutlineColorSchemeProps) & {
+    potentialStates?: 'activeFocus' | 'separateActiveFocus' | 'focusVisible' | 'outlineOffset';
     /**
      * Sets the button's visual variant
      * @default solid
