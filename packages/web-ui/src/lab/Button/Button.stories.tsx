@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Flex } from '../../Flex';
+import { Text } from '../../Text';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -57,5 +58,88 @@ export const Workshop: Story = {
   args: {
     children: 'Button',
     disabled: false,
+  },
+};
+
+export const Examples: Story = {
+  parameters: { controls: { hideNoControlsWarning: true } },
+  render: () => {
+    return (
+      <Flex direction="column" gap={4}>
+        <Flex direction="column" gap={2}>
+          <Text>Button with active state the same styles as the focus state.</Text>
+          <Flex gap={3} align="center">
+            {colorSchemes.solid.map(colorScheme => (
+              <Button
+                key={colorScheme}
+                variant="solid"
+                colorScheme={colorScheme}
+                size="large"
+                potentialStates="activeFocus"
+              >
+                Button
+              </Button>
+            ))}
+          </Flex>
+        </Flex>
+        <Flex direction="column" gap={2}>
+          <Text>
+            Button with active state different to the focus state styles. (Use arrow keys to
+            navigate, space key to activate button.)
+          </Text>
+          <Flex gap={3} align="center">
+            {colorSchemes.solid.map(colorScheme => (
+              <Button
+                key={colorScheme}
+                variant="solid"
+                colorScheme={colorScheme}
+                size="large"
+                potentialStates="separateActiveFocus"
+              >
+                Button
+              </Button>
+            ))}
+          </Flex>
+        </Flex>
+        <Flex direction="column" gap={2}>
+          <Text>
+            Button with active state different to the focus state styles, but using focus-visible,
+            so the focus state only appears with keyboard interaction.
+          </Text>
+          <Flex gap={3} align="center">
+            {colorSchemes.solid.map(colorScheme => (
+              <Button
+                key={colorScheme}
+                variant="solid"
+                colorScheme={colorScheme}
+                size="large"
+                potentialStates="focusVisible"
+              >
+                Button
+              </Button>
+            ))}
+          </Flex>
+        </Flex>
+        <Flex direction="column" gap={2}>
+          <Text>
+            Button with active state different to the focus state styles, but using focus-visible,
+            and adding an outline offset.
+          </Text>
+          <Flex gap={3} align="center">
+            {colorSchemes.solid.map(colorScheme => (
+              <Button
+                key={colorScheme}
+                variant="solid"
+                colorScheme={colorScheme}
+                size="large"
+                potentialStates="outlineOffset"
+              >
+                Button
+              </Button>
+            ))}
+          </Flex>
+        </Flex>
+      </Flex>
+    );
   },
 };
