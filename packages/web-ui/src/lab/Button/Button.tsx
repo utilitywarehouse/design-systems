@@ -24,80 +24,96 @@ const StyledButton = styled('button', { label: componentClassName })<ButtonProps
   '-webkit-tap-highlight-color': 'transparent',
   fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.semibold,
-  borderRadius: px(32),
+  borderRadius: px(9999),
+  color: `var(--button-foreground-color, ${colors.cyan1000})`,
+  backgroundColor: `var(--button-background-color, ${colors.cyan400})`,
   [`&.${getClassName('variant-solid')}`]: {
     border: 'none',
-    // solid variant color schemes default colours
     [`&[data-colorscheme=cyan]`]: {
-      color: colors.cyan1000,
-      backgroundColor: colors.cyan400,
+      '--button-foreground-color': colors.cyan1000,
+      '--button-background-color': colors.cyan400,
     },
     [`&[data-colorscheme=red]`]: {
-      color: colorsCommon.brandWhite,
-      backgroundColor: colors.red500,
+      '--button-foreground-color': colorsCommon.brandWhite,
+      '--button-background-color': colors.red500,
     },
     [`&[data-colorscheme=green]`]: {
-      color: colorsCommon.brandWhite,
-      backgroundColor: colors.green500,
+      '--button-foreground-color': colorsCommon.brandWhite,
+      '--button-background-color': colors.green500,
     },
-    // solid variant color schemes hover colours
     '@media (hover: hover)': {
       '&:where(:hover)': {
         [`&[data-colorscheme=cyan]`]: {
-          backgroundColor: colors.cyan500,
+          '--button-background-color': colors.cyan500,
         },
         [`&[data-colorscheme=red]`]: {
-          backgroundColor: colors.red600,
+          '--button-background-color': colors.red600,
         },
         [`&[data-colorscheme=green]`]: {
-          backgroundColor: colors.green600,
+          '--button-background-color': colors.green600,
         },
       },
     },
   },
   [`&.${getClassName('variant-outline')}`]: {
-    backgroundColor: 'transparent',
-    border: '2px solid',
-    // outline variant color schemes default colours
+    border: `2px solid var(--button-border-color)`,
+    '--button-background-color': 'transparent',
     [`&[data-colorscheme=cyan]`]: {
-      color: colors.cyan1000,
-      borderColor: colors.cyan400,
+      '--button-foreground-color': colors.cyan1000,
+      '--button-border-color': colors.cyan400,
     },
     [`&[data-colorscheme=grey]`]: {
-      color: colors.grey1000,
-      borderColor: colors.grey500,
+      '--button-foreground-color': colors.grey1000,
+      '--button-border-color': colors.grey500,
     },
     [`&[data-colorscheme=red]`]: {
-      color: colors.red900,
-      borderColor: colors.red500,
+      '--button-foreground-color': colors.red900,
+      '--button-border-color': colors.red500,
     },
     [`&[data-colorscheme=green]`]: {
-      color: colors.green900,
-      borderColor: colors.green600,
+      '--button-foreground-color': colors.green900,
+      '--button-border-color': colors.green600,
     },
     [`&[data-colorscheme=gold]`]: {
-      color: colors.gold900,
-      borderColor: colors.gold500,
+      '--button-foreground-color': colors.gold900,
+      '--button-border-color': colors.gold500,
     },
-    // outline variant color schemes hover colours
     '@media (hover: hover)': {
       '&:where(:hover)': {
         [`&[data-colorscheme=cyan]`]: {
-          backgroundColor: colors.cyan75,
+          '--button-background-color': colors.cyan75,
         },
         [`&[data-colorscheme=grey]`]: {
-          backgroundColor: colors.grey100,
+          '--button-background-color': colors.grey100,
         },
         [`&[data-colorscheme=red]`]: {
-          backgroundColor: colors.red100,
+          '--button-background-color': colors.red100,
         },
         [`&[data-colorscheme=green]`]: {
-          backgroundColor: colors.green100,
+          '--button-background-color': colors.green100,
         },
         [`&[data-colorscheme=gold]`]: {
-          backgroundColor: colors.gold100,
+          '--button-background-color': colors.gold100,
         },
       },
+    },
+  },
+  '&:where(:focus-visible)': {
+    boxShadow: '0 0 0 var(--focus-outline-width, 0) var(--focus-outline-color, transparent)',
+    [`&[data-colorscheme=cyan]`]: {
+      '--focus-outline-color': colors.cyan700,
+    },
+    [`&[data-colorscheme=grey]`]: {
+      '--focus-outline-color': colors.grey700,
+    },
+    [`&[data-colorscheme=red]`]: {
+      '--focus-outline-color': colors.red700,
+    },
+    [`&[data-colorscheme=green]`]: {
+      '--focus-outline-color': colors.green700,
+    },
+    [`&[data-colorscheme=gold]`]: {
+      '--focus-outline-color': colors.gold700,
     },
   },
   [`&.${getClassName('size-large')}`]: {
@@ -110,7 +126,7 @@ const StyledButton = styled('button', { label: componentClassName })<ButtonProps
     paddingTop: spacing(1.5),
     paddingBottom: spacing(1.5),
     '&:where(:focus-visible)': {
-      outline: '4px solid',
+      '--focus-outline-width': '4px',
     },
   },
   [`&.${getClassName('size-small')}`]: {
@@ -123,25 +139,7 @@ const StyledButton = styled('button', { label: componentClassName })<ButtonProps
     paddingTop: spacing(1),
     paddingBottom: spacing(1),
     '&:where(:focus-visible)': {
-      outline: '2px solid',
-    },
-  },
-  // all button variants focus colours
-  '&:where(:focus-visible)': {
-    [`&[data-colorscheme=cyan]`]: {
-      outlineColor: colors.cyan700,
-    },
-    [`&[data-colorscheme=grey]`]: {
-      outlineColor: colors.grey700,
-    },
-    [`&[data-colorscheme=red]`]: {
-      outlineColor: colors.red700,
-    },
-    [`&[data-colorscheme=green]`]: {
-      outlineColor: colors.green700,
-    },
-    [`&[data-colorscheme=gold]`]: {
-      outlineColor: colors.gold700,
+      '--focus-outline-width': '2px',
     },
   },
 }));
