@@ -1,3 +1,5 @@
+const colorSchemeDataAttribute = (color: string) => `:where([data-colorscheme='${color}'])`;
+
 export const dataAttributes = {
   legacy: 'legacy-cwui',
   primary: 'primary',
@@ -10,4 +12,9 @@ export const dataAttributes = {
   multiline: 'multiline',
   heading: 'heading',
   bgcolorBrand: 'bg-color-brand',
+  cyan: colorSchemeDataAttribute('cyan'),
+  red: colorSchemeDataAttribute('red'),
+  green: colorSchemeDataAttribute('green'),
+  gold: colorSchemeDataAttribute('gold'),
+  grey: colorSchemeDataAttribute('grey'),
 };

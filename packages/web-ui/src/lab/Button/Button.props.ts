@@ -1,30 +1,19 @@
 import { ComponentPropsWithoutRef } from 'react';
 
-type SolidColorSchemeProps = {
-  variant?: 'solid';
-  colorScheme?: 'cyan' | 'red' | 'green';
+export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
+  /**
+   * Sets the button's visual variant
+   * @default solid
+   */
+  variant?: 'solid' | 'outline' | 'ghost';
+  /**
+   * Sets the button's colour scheme
+   * @default cyan
+   */
+  colorScheme?: 'cyan' | 'red' | 'green' | 'gold' | 'grey';
+  /**
+   * Sets the button height.
+   * @default large
+   */
+  size?: 'large' | 'small';
 };
-
-type OutlineColorSchemeProps = {
-  variant?: 'outline';
-  colorScheme?: 'cyan' | 'grey' | 'red' | 'green' | 'gold';
-};
-
-export type ButtonProps = ComponentPropsWithoutRef<'button'> &
-  (SolidColorSchemeProps | OutlineColorSchemeProps) & {
-    /**
-     * Sets the button's visual variant
-     * @default solid
-     */
-    // variant?: 'solid' | 'outline' | 'ghost';
-    /**
-     * Sets the button's colour scheme
-     * @default cyan
-     */
-    // colorScheme?: 'cyan';
-    /**
-     * Sets the button height.
-     * @default large
-     */
-    size?: 'small' | 'large';
-  };

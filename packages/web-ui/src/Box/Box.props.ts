@@ -11,10 +11,6 @@ export interface BoxOwnProps {
    * `Heading` components have their foreground colour set to 'white'.
    */
   background?: string; // we are not setting this as MuiBoxProps['backgroundColor'] as we don't believe there is any need for it to be responsive, yet.
-  /**
-   * Sets the default className for the component.
-   */
-  componentClassName?: string;
 }
 
 export type BoxProps<
