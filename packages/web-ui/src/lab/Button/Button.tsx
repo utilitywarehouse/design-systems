@@ -33,69 +33,60 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => ({
   borderRadius: px(9999),
   color: `var(--button-foreground-color, ${colors.cyan1000})`,
   backgroundColor: `var(--button-background-color, ${colors.cyan400})`,
+  [dataAttributes.cyan]: {
+    '--button-solid-foreground-color': colors.cyan1000,
+    '--button-solid-background-color': colors.cyan400,
+    '--button-solid-background-color-hover': colors.cyan500,
+    '--button-outline-foreground-color': colors.cyan1000,
+    '--button-outline-border-color': colors.cyan400,
+    '--button-outline-background-color-hover': colors.cyan75,
+  },
+  [dataAttributes.red]: {
+    '--button-solid-foreground-color': colorsCommon.brandWhite,
+    '--button-solid-background-color': colors.red500,
+    '--button-solid-background-color-hover': colors.red600,
+    '--button-outline-foreground-color': colors.red900,
+    '--button-outline-border-color': colors.red500,
+    '--button-outline-background-color-hover': colors.red100,
+  },
+  [dataAttributes.green]: {
+    '--button-solid-foreground-color': colorsCommon.brandWhite,
+    '--button-solid-background-color': colors.green500,
+    '--button-solid-background-color-hover': colors.green600,
+    '--button-outline-foreground-color': colors.green900,
+    '--button-outline-border-color': colors.green600,
+    '--button-outline-background-color-hover': colors.green100,
+  },
+  [dataAttributes.gold]: {
+    '--button-outline-foreground-color': colors.gold900,
+    '--button-outline-border-color': colors.gold500,
+    '--button-outline-background-color-hover': colors.gold100,
+  },
+  [dataAttributes.grey]: {
+    '--button-outline-foreground-color': colors.grey1000,
+    '--button-outline-border-color': colors.grey500,
+    '--button-outline-background-color-hover': colors.grey100,
+  },
   [`&.${classNames.solid}`]: {
     border: 'none',
-    [dataAttributes.cyan]: {
-      '--button-foreground-color': colors.cyan1000,
-      '--button-background-color': colors.cyan400,
-      '--button-background-color-hover': colors.cyan500,
-    },
-    [dataAttributes.red]: {
-      '--button-foreground-color': colorsCommon.brandWhite,
-      '--button-background-color': colors.red500,
-      '--button-background-color-hover': colors.red600,
-    },
-    [dataAttributes.green]: {
-      '--button-foreground-color': colorsCommon.brandWhite,
-      '--button-background-color': colors.green500,
-      '--button-background-color-hover': colors.green600,
-    },
+    '--button-foreground-color': 'var(--button-solid-foreground-color)',
+    '--button-background-color': 'var(--button-solid-background-color)',
+    '--button-background-color-hover': 'var(--button-solid-background-color-hover)',
     '@media (hover: hover)': {
       '&:where(:hover)': {
         '--button-background-color': 'var(--button-background-color-hover)',
       },
     },
   },
-  [`&.${globalPrefix}-variant-outline`]: {
+  [`&.${classNames.outline}`]: {
     border: `2px solid var(--button-border-color)`,
     '--button-background-color': 'transparent',
-    [`&:where([data-colorscheme='cyan'])`]: {
-      '--button-foreground-color': colors.cyan1000,
-      '--button-border-color': colors.cyan400,
-    },
-    [`&:where([data-colorscheme='red'])`]: {
-      '--button-foreground-color': colors.red900,
-      '--button-border-color': colors.red500,
-    },
-    [`&:where([data-colorscheme='green'])`]: {
-      '--button-foreground-color': colors.green900,
-      '--button-border-color': colors.green600,
-    },
-    [`&:where([data-colorscheme='gold'])`]: {
-      '--button-foreground-color': colors.gold900,
-      '--button-border-color': colors.gold500,
-    },
-    [`&:where([data-colorscheme='grey'])`]: {
-      '--button-foreground-color': colors.grey1000,
-      '--button-border-color': colors.grey500,
-    },
+    '--button-foreground-color': 'var(--button-outline-foreground-color)',
+    '--button-border-color': 'var(--button-outline-border-color)',
+    '--button-background-color-hover': 'var(--button-outline-background-color-hover)',
     '@media (hover: hover)': {
       '&:where(:hover)': {
-        [`&:where([data-colorscheme='cyan'])`]: {
-          '--button-background-color': colors.cyan75,
-        },
-        [`&:where([data-colorscheme='red'])`]: {
-          '--button-background-color': colors.red100,
-        },
-        [`&:where([data-colorscheme='green'])`]: {
-          '--button-background-color': colors.green100,
-        },
-        [`&:where([data-colorscheme='gold'])`]: {
-          '--button-background-color': colors.gold100,
-        },
-        [`&:where([data-colorscheme='grey'])`]: {
-          '--button-background-color': colors.grey100,
-        },
+        '--button-background-color': 'var(--button-background-color-hover)',
       },
     },
   },
