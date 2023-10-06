@@ -1,6 +1,6 @@
 import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { pxToRem, getClassName } from '../utils';
+import { pxToRem, getPrefixedName } from '../utils';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
 import { TextProps } from './Text.props';
@@ -8,7 +8,7 @@ import { PropsWithSx } from '../types';
 import clsx from 'clsx';
 
 const displayName = 'Text';
-const componentClassName = getClassName(displayName);
+const componentClassName = getPrefixedName(displayName);
 
 /**
  * Text renders the secondary UW font, Work Sans, to be used for body text.

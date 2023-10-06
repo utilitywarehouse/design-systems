@@ -5,10 +5,10 @@ import { breakpoints } from '../tokens';
 import { PropsWithSx } from '../types';
 import { RadioGridGroupProps } from './RadioGridGroup.props';
 import clsx from 'clsx';
-import { getClassName } from '../utils';
+import { getPrefixedName } from '../utils';
 
 const displayName = 'RadioGridGroup';
-const componentClassName = getClassName(displayName);
+const componentClassName = getPrefixedName(displayName);
 
 /**
  * The `RadioGridGroup` provides an accessible way to group and control a set

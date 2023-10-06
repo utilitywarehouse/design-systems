@@ -3,10 +3,10 @@ import { Typography } from '../Typography';
 import { PropsWithSx } from '../types';
 import { StrongProps } from './Strong.props';
 import clsx from 'clsx';
-import { getClassName } from '../utils';
+import { getPrefixedName } from '../utils';
 
 const displayName = 'Strong';
-const componentClassName = getClassName(displayName);
+const componentClassName = getPrefixedName(displayName);
 
 /**
  * The `Strong` component is based on the HTML `strong` element and is used to

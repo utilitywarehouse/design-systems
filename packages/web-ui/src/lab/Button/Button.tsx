@@ -3,17 +3,27 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { fonts, fontWeights } from '../../tokens';
 import { PropsWithSx } from '../../types';
-import { dataAttributes, getClassName, globalPrefix, px, pxToRem, spacing } from '../../utils';
+import { dataAttributes, getPrefixedName, px, pxToRem, spacing } from '../../utils';
 import { ButtonProps } from './Button.props';
 import clsx from 'clsx';
 
 const componentName = 'Button';
-const label = getClassName(componentName);
+const label = getPrefixedName(componentName);
 
 const classNames = {
-  solid: `${globalPrefix}-variant-solid`,
-  outline: `${globalPrefix}-variant-outline`,
-  ghost: `${globalPrefix}-variant-ghost`,
+  solid: getPrefixedName('variant-solid'),
+  outline: getPrefixedName('variant-outline'),
+  ghost: getPrefixedName('variant-ghost'),
+  large: getPrefixedName('size-large'),
+  small: getPrefixedName('size-small'),
+};
+const classSelector = (className: string) => `&:where(.${className})`;
+const classSelectors = {
+  solid: classSelector(classNames.solid),
+  outline: classSelector(classNames.outline),
+  ghost: classSelector(classNames.ghost),
+  large: classSelector(classNames.large),
+  small: classSelector(classNames.small),
 };
 
 const StyledButton = styled('button', { label })<ButtonProps>(() => ({
@@ -31,8 +41,15 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => ({
   fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.semibold,
   borderRadius: px(9999),
-  color: `var(--button-foreground-color, ${colors.cyan1000})`,
-  backgroundColor: `var(--button-background-color, ${colors.cyan400})`,
+  color: 'var(--button-foreground-color)',
+  backgroundColor: 'var(--button-background-color)',
+  border: 'var(--button-border)',
+  fontSize: 'var(--button-font-size)',
+  lineHeight: 'var(--button-line-height)',
+  minWidth: 'var(--button-min-width)',
+  height: 'var(--button-height)',
+  paddingLeft: 'var(--button-padding)',
+  paddingRight: 'var(--button-padding)',
   [dataAttributes.cyan]: {
     '--button-solid-foreground-color': colors.cyan1000,
     '--button-solid-background-color': colors.cyan400,
@@ -40,6 +57,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => ({
     '--button-outline-foreground-color': colors.cyan1000,
     '--button-outline-border-color': colors.cyan400,
     '--button-outline-background-color-hover': colors.cyan75,
+    '--focus-outline-color': colors.cyan700,
   },
   [dataAttributes.red]: {
     '--button-solid-foreground-color': colorsCommon.brandWhite,
@@ -48,6 +66,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => ({
     '--button-outline-foreground-color': colors.red900,
     '--button-outline-border-color': colors.red500,
     '--button-outline-background-color-hover': colors.red100,
+    '--focus-outline-color': colors.red700,
   },
   [dataAttributes.green]: {
     '--button-solid-foreground-color': colorsCommon.brandWhite,
@@ -56,82 +75,55 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => ({
     '--button-outline-foreground-color': colors.green900,
     '--button-outline-border-color': colors.green600,
     '--button-outline-background-color-hover': colors.green100,
+    '--focus-outline-color': colors.green700,
   },
   [dataAttributes.gold]: {
     '--button-outline-foreground-color': colors.gold900,
     '--button-outline-border-color': colors.gold500,
     '--button-outline-background-color-hover': colors.gold100,
+    '--focus-outline-color': colors.gold700,
   },
   [dataAttributes.grey]: {
     '--button-outline-foreground-color': colors.grey1000,
     '--button-outline-border-color': colors.grey500,
     '--button-outline-background-color-hover': colors.grey100,
+    '--focus-outline-color': colors.grey700,
   },
-  [`&.${classNames.solid}`]: {
-    border: 'none',
+  [classSelectors.solid]: {
+    '--button-border': 'none',
     '--button-foreground-color': 'var(--button-solid-foreground-color)',
     '--button-background-color': 'var(--button-solid-background-color)',
     '--button-background-color-hover': 'var(--button-solid-background-color-hover)',
-    '@media (hover: hover)': {
-      '&:where(:hover)': {
-        '--button-background-color': 'var(--button-background-color-hover)',
-      },
-    },
   },
-  [`&.${classNames.outline}`]: {
-    border: `2px solid var(--button-border-color)`,
+  [classSelectors.outline]: {
+    '--button-border': `2px solid var(--button-border-color)`,
     '--button-background-color': 'transparent',
     '--button-foreground-color': 'var(--button-outline-foreground-color)',
     '--button-border-color': 'var(--button-outline-border-color)',
     '--button-background-color-hover': 'var(--button-outline-background-color-hover)',
-    '@media (hover: hover)': {
-      '&:where(:hover)': {
-        '--button-background-color': 'var(--button-background-color-hover)',
-      },
-    },
+  },
+  [classSelectors.large]: {
+    '--button-font-size': pxToRem(18),
+    '--button-line-height': pxToRem(24),
+    '--button-min-width': px(160),
+    '--button-height': px(48),
+    '--button-padding': px(spacing(3)),
+    '--focus-outline-width': '4px',
+  },
+  [classSelectors.small]: {
+    '--button-font-size': pxToRem(16),
+    '--button-line-height': pxToRem(16),
+    '--button-min-width': px(56),
+    '--button-height': px(32),
+    '--button-padding': px(spacing(2)),
+    '--focus-outline-width': '2px',
   },
   '&:where(:focus-visible)': {
     boxShadow: '0 0 0 var(--focus-outline-width, 0) var(--focus-outline-color, transparent)',
-    [`&[data-colorscheme=cyan]`]: {
-      '--focus-outline-color': colors.cyan700,
-    },
-    [`&[data-colorscheme=grey]`]: {
-      '--focus-outline-color': colors.grey700,
-    },
-    [`&[data-colorscheme=red]`]: {
-      '--focus-outline-color': colors.red700,
-    },
-    [`&[data-colorscheme=green]`]: {
-      '--focus-outline-color': colors.green700,
-    },
-    [`&[data-colorscheme=gold]`]: {
-      '--focus-outline-color': colors.gold700,
-    },
   },
-  [`&.${getClassName('size-large')}`]: {
-    fontSize: pxToRem(18),
-    lineHeight: pxToRem(24),
-    minWidth: 160,
-    height: 48,
-    paddingLeft: spacing(3),
-    paddingRight: spacing(3),
-    paddingTop: spacing(1.5),
-    paddingBottom: spacing(1.5),
-    '&:where(:focus-visible)': {
-      '--focus-outline-width': '4px',
-    },
-  },
-  [`&.${getClassName('size-small')}`]: {
-    fontSize: pxToRem(16),
-    lineHeight: pxToRem(16),
-    minWidth: 56,
-    height: 32,
-    paddingLeft: spacing(2),
-    paddingRight: spacing(2),
-    paddingTop: spacing(1),
-    paddingBottom: spacing(1),
-    '&:where(:focus-visible)': {
-      '--focus-outline-width': '2px',
+  '@media (hover: hover)': {
+    '&:where(:hover)': {
+      '--button-background-color': 'var(--button-background-color-hover)',
     },
   },
 }));
@@ -145,12 +137,7 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
       <StyledButton
         ref={forwardedRef}
         data-colorscheme={colorScheme}
-        className={clsx(
-          label,
-          className,
-          getClassName(`size-${size}`),
-          getClassName(`variant-${variant}`)
-        )}
+        className={clsx(label, className, classNames[size], classNames[variant])}
         {...props}
       />
     );
