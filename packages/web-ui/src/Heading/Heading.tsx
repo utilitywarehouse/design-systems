@@ -1,14 +1,14 @@
 import { useBackground } from '../Box';
 import { PropsWithSx } from '../types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { getClassName, pxToRem } from '../utils';
+import { getPrefixedName, pxToRem } from '../utils';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { HeadingProps } from './Heading.props';
 import { Typography } from '../Typography';
 import clsx from 'clsx';
 
 const displayName = 'Heading';
-const componentClassName = getClassName(displayName);
+const componentClassName = getPrefixedName(displayName);
 
 /**
  * Heading renders the primary UW font, to be used for heading-level typography.

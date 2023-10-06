@@ -1,13 +1,13 @@
 import { forwardRef } from 'react';
 import { Box } from '../Box';
 import { PropsWithSx } from '../types';
-import { getClassName } from '../utils';
+import { getPrefixedName } from '../utils';
 import { RadioGroupProps } from './RadioGroup.props';
 import { RadioGroupFormControl } from './RadioGroupFormControl';
 import clsx from 'clsx';
 
 const displayName = 'RadioGroup';
-const componentClassName = getClassName(displayName);
+const componentClassName = getPrefixedName(displayName);
 
 /**
  * The `RadioGroup` provides an accessible way to group and control a set of
