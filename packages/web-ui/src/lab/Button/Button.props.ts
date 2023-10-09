@@ -15,5 +15,6 @@ export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
    * Sets the button height.
    * @default large
    */
+  // 3. Responsive type
   size?: 'large' | 'small';
 };

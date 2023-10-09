@@ -3,7 +3,7 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { fonts, fontWeights } from '../../tokens';
 import { PropsWithSx } from '../../types';
-import { dataAttributes, getPrefixedName, px, pxToRem, spacing } from '../../utils';
+import { dataAttributes, getPrefixedName, mediaQueries, px, pxToRem, spacing } from '../../utils';
 import { ButtonProps } from './Button.props';
 import clsx from 'clsx';
 
@@ -16,6 +16,7 @@ const classNames = {
   ghost: getPrefixedName('variant-ghost'),
   large: getPrefixedName('size-large'),
   small: getPrefixedName('size-small'),
+  tl: `tablet:${getPrefixedName('size-large')}`,
 };
 const classSelector = (className: string) => `&:where(.${className})`;
 const classSelectors = {
@@ -24,6 +25,7 @@ const classSelectors = {
   ghost: classSelector(classNames.ghost),
   large: classSelector(classNames.large),
   small: classSelector(classNames.small),
+  tl: `&:where(.tablet\\:${getPrefixedName('size-large')})`,
 };
 
 const StyledButton = styled('button', { label })<ButtonProps>(() => ({
@@ -134,13 +136,23 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => ({
     '--button-background-color-hover': 'var(--button-ghost-background-color-hover)',
     '--button-background-color-active': 'var(--button-ghost-background-color-active)',
   },
-  [classSelectors.large]: {
-    '--button-font-size': pxToRem(18),
-    '--button-line-height': pxToRem(24),
-    '--button-min-width': px(160),
-    '--button-height': px(48),
-    '--button-padding': px(spacing(3)),
-    '--focus-outline-width': '4px',
+  // 2. create all the possible styles
+  // ie.
+  // [mediaQueries.tablet]: {
+  // [classSelectors.[tablet:large]]: {
+  // [classSelectors.[tablet:small]]: {
+  //
+  // [mediaQueries.desktop]: {
+  // [classSelectors.[desktop:large]]: {
+  [mediaQueries.tablet]: {
+    [classSelectors.tl]: {
+      '--button-font-size': pxToRem(18),
+      '--button-line-height': pxToRem(24),
+      '--button-min-width': px(160),
+      '--button-height': px(48),
+      '--button-padding': px(spacing(3)),
+      '--focus-outline-width': '4px',
+    },
   },
   [classSelectors.small]: {
     '--button-font-size': pxToRem(16),
@@ -172,6 +184,7 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
       <StyledButton
         ref={forwardedRef}
         data-colorscheme={colorScheme}
+        // 1. create the classnames from the object; withBreakpoints(size) -> tablet:uwu-r-size-large desktop:uwu-r-size-small etc.
         className={clsx(label, className, classNames[size], classNames[variant])}
         {...props}
       />
