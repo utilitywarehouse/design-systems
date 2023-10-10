@@ -41,6 +41,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => ({
   fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.semibold,
   borderRadius: px(9999),
+  gap: 'var(--button-gap)',
   color: 'var(--button-foreground-color)',
   backgroundColor: 'var(--button-background-color)',
   border: 'var(--button-border)',
@@ -140,6 +141,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => ({
     '--button-min-width': px(160),
     '--button-height': px(48),
     '--button-padding': px(spacing(3)),
+    '--button-gap': px(spacing(2)),
     '--focus-outline-width': '4px',
   },
   [classSelectors.small]: {
@@ -148,6 +150,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => ({
     '--button-min-width': px(56),
     '--button-height': px(32),
     '--button-padding': px(spacing(2)),
+    '--button-gap': px(spacing(0.5)),
     '--focus-outline-width': '2px',
   },
   '&:where(:focus-visible)': {
