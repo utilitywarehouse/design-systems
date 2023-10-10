@@ -6,4 +6,5 @@ export const mediaQueries = {
   mobile: mq(breakpoints.mobile),
   tablet: mq(breakpoints.tablet),
   desktop: mq(breakpoints.desktop),
+  wide: mq(breakpoints.wide),
 };

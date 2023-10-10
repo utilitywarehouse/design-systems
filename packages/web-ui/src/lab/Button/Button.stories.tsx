@@ -31,48 +31,29 @@ export const KitchenSink: Story = {
   render: () => {
     return (
       <Flex direction="column" gap={6}>
-        <Flex gap={2} direction="column">
-          <Heading variant="h2">Solid</Heading>
-          <Flex gap={3} align="center">
-            {sizes.map(size => (
-              <Flex gap={2}>
-                {colorSchemes.solid.map(colorScheme => (
-                  <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size={size}>
-                    Button
-                  </Button>
-                ))}
-              </Flex>
-            ))}
+        {variants.map(variant => (
+          <Flex gap={2} direction="column">
+            <Heading variant="h2" textTransform="capitalize">
+              {variant}
+            </Heading>
+            <Flex gap={3} align="center">
+              {sizes.map(size => (
+                <Flex gap={2}>
+                  {colorSchemes[variant].map(colorScheme => (
+                    <Button
+                      key={colorScheme}
+                      variant={variant}
+                      colorScheme={colorScheme}
+                      size={size}
+                    >
+                      Button
+                    </Button>
+                  ))}
+                </Flex>
+              ))}
+            </Flex>
           </Flex>
-        </Flex>
-        <Flex gap={2} direction="column">
-          <Heading variant="h2">Ghost</Heading>
-          <Flex gap={3} align="center">
-            {sizes.map(size => (
-              <Flex gap={2}>
-                {colorSchemes.ghost.map(colorScheme => (
-                  <Button key={colorScheme} variant="ghost" colorScheme={colorScheme} size={size}>
-                    Button
-                  </Button>
-                ))}
-              </Flex>
-            ))}
-          </Flex>
-        </Flex>
-        <Flex gap={2} direction="column">
-          <Heading variant="h2">Outline</Heading>
-          <Flex gap={3} align="center">
-            {sizes.map(size => (
-              <Flex gap={2}>
-                {colorSchemes.outline.map(colorScheme => (
-                  <Button key={colorScheme} variant="outline" colorScheme={colorScheme} size={size}>
-                    Button
-                  </Button>
-                ))}
-              </Flex>
-            ))}
-          </Flex>
-        </Flex>
+        ))}
       </Flex>
     );
   },
@@ -86,6 +67,7 @@ export const Workshop: Story = {
   args: {
     children: 'Button',
     disabled: false,
+    size: { mobile: 'small', tablet: 'large', desktop: 'small', wide: 'large' },
   },
 };
 

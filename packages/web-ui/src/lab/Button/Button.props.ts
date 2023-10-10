@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react';
+import { Responsive } from '../../types';
 
 export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   /**
@@ -15,5 +16,5 @@ export type ButtonProps = ComponentPropsWithoutRef<'button'> & {
    * Sets the button height.
    * @default large
    */
-  size?: 'large' | 'small';
+  size?: Responsive<'large' | 'small'>;
 };
