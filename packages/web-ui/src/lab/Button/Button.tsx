@@ -85,13 +85,18 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-solid-background-color': colors.cyan400,
       '--button-solid-background-color-hover': colors.cyan500,
       '--button-solid-background-color-active': colors.cyan300,
+      '--button-solid-foreground-color-disabled': colors.cyan300,
+      '--button-solid-background-color-disabled': colors.cyan100,
+      '--button-ghost-foreground-color': colors.cyan1000,
+      '--button-ghost-background-color-hover': colors.cyan100,
+      '--button-ghost-background-color-active': colors.cyan200,
+      '--button-ghost-foreground-color-disabled': colors.cyan300,
       '--button-outline-foreground-color': colors.cyan1000,
       '--button-outline-border-color': colors.cyan400,
       '--button-outline-background-color-hover': colors.cyan75,
       '--button-outline-background-color-active': colors.cyan200,
-      '--button-ghost-foreground-color': colors.cyan1000,
-      '--button-ghost-background-color-hover': colors.cyan100,
-      '--button-ghost-background-color-active': colors.cyan200,
+      '--button-outline-foreground-color-disabled': colors.cyan300,
+      '--button-outline-border-color-disabled': colors.cyan300,
       '--focus-outline-color': colors.cyan700,
     },
     [dataAttributes.red]: {
@@ -99,13 +104,18 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-solid-background-color': colors.red500,
       '--button-solid-background-color-hover': colors.red600,
       '--button-solid-background-color-active': colors.red700,
+      '--button-solid-foreground-color-disabled': colors.red300,
+      '--button-solid-background-color-disabled': colors.red100,
+      '--button-ghost-foreground-color': colors.red900,
+      '--button-ghost-background-color-hover': colors.red100,
+      '--button-ghost-background-color-active': colors.red200,
+      '--button-ghost-foreground-color-disabled': colors.red300,
       '--button-outline-foreground-color': colors.red900,
       '--button-outline-border-color': colors.red500,
       '--button-outline-background-color-hover': colors.red100,
       '--button-outline-background-color-active': colors.red200,
-      '--button-ghost-foreground-color': colors.red900,
-      '--button-ghost-background-color-hover': colors.red100,
-      '--button-ghost-background-color-active': colors.red200,
+      '--button-outline-foreground-color-disabled': colors.red300,
+      '--button-outline-border-color-disabled': colors.red300,
       '--focus-outline-color': colors.red700,
     },
     [dataAttributes.green]: {
@@ -113,13 +123,18 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-solid-background-color': colors.green500,
       '--button-solid-background-color-hover': colors.green600,
       '--button-solid-background-color-active': colors.green700,
+      '--button-solid-foreground-color-disabled': colors.green300,
+      '--button-solid-background-color-disabled': colors.green100,
+      '--button-ghost-foreground-color': colors.green900,
+      '--button-ghost-background-color-hover': colors.green100,
+      '--button-ghost-background-color-active': colors.green200,
+      '--button-ghost-foreground-color-disabled': colors.green300,
       '--button-outline-foreground-color': colors.green900,
       '--button-outline-border-color': colors.green600,
       '--button-outline-background-color-hover': colors.green100,
       '--button-outline-background-color-active': colors.green200,
-      '--button-ghost-foreground-color': colors.green900,
-      '--button-ghost-background-color-hover': colors.green100,
-      '--button-ghost-background-color-active': colors.green200,
+      '--button-outline-foreground-color-disabled': colors.green300,
+      '--button-outline-border-color-disabled': colors.green300,
       '--focus-outline-color': colors.green700,
     },
     [dataAttributes.gold]: {
@@ -130,6 +145,9 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-ghost-foreground-color': colors.gold900,
       '--button-ghost-background-color-hover': colors.gold100,
       '--button-ghost-background-color-active': colors.gold200,
+      '--button-ghost-foreground-color-disabled': colors.gold300,
+      '--button-outline-foreground-color-disabled': colors.gold300,
+      '--button-outline-border-color-disabled': colors.gold300,
       '--focus-outline-color': colors.gold700,
     },
     [dataAttributes.grey]: {
@@ -140,6 +158,9 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-ghost-foreground-color': colors.grey1000,
       '--button-ghost-background-color-hover': colors.grey100,
       '--button-ghost-background-color-active': colors.grey175,
+      '--button-ghost-foreground-color-disabled': colors.grey300,
+      '--button-outline-foreground-color-disabled': colors.grey300,
+      '--button-outline-border-color-disabled': colors.grey300,
       '--focus-outline-color': colors.grey700,
     },
     [classSelectors.solid]: {
@@ -148,21 +169,28 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-background-color': 'var(--button-solid-background-color)',
       '--button-background-color-hover': 'var(--button-solid-background-color-hover)',
       '--button-background-color-active': 'var(--button-solid-background-color-active)',
-    },
-    [classSelectors.outline]: {
-      '--button-border': `2px solid var(--button-border-color)`,
-      '--button-background-color': 'transparent',
-      '--button-foreground-color': 'var(--button-outline-foreground-color)',
-      '--button-border-color': 'var(--button-outline-border-color)',
-      '--button-background-color-hover': 'var(--button-outline-background-color-hover)',
-      '--button-background-color-active': 'var(--button-outline-background-color-active)',
+      '--button-foreground-color-disabled': 'var(--button-solid-foreground-color-disabled)',
+      '--button-background-color-disabled': 'var(--button-solid-background-color-disabled)',
     },
     [classSelectors.ghost]: {
       '--button-border': 'none',
       '--button-background-color': 'transparent',
+      '--button-background-color-disabled': 'transparent',
       '--button-foreground-color': 'var(--button-ghost-foreground-color)',
       '--button-background-color-hover': 'var(--button-ghost-background-color-hover)',
       '--button-background-color-active': 'var(--button-ghost-background-color-active)',
+      '--button-foreground-color-disabled': 'var(--button-ghost-foreground-color-disabled)',
+    },
+    [classSelectors.outline]: {
+      '--button-border': `2px solid var(--button-border-color)`,
+      '--button-background-color': 'transparent',
+      '--button-background-color-disabled': 'transparent',
+      '--button-foreground-color': 'var(--button-outline-foreground-color)',
+      '--button-border-color': 'var(--button-outline-border-color)',
+      '--button-background-color-hover': 'var(--button-outline-background-color-hover)',
+      '--button-background-color-active': 'var(--button-outline-background-color-active)',
+      '--button-foreground-color-disabled': 'var(--button-outline-foreground-color-disabled)',
+      '--button-border-color-disabled': 'var(--button-outline-border-color-disabled)',
     },
     [classSelectors.large]: {
       ...sizeStyles.large,
@@ -205,13 +233,16 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     '&:where(:active)': {
       '--button-background-color': 'var(--button-background-color-active)',
     },
+    '&:where(:disabled)': {
+      cursor: 'not-allowed',
+      '--button-foreground-color': 'var(--button-foreground-color-disabled)',
+      '--button-background-color': 'var(--button-background-color-disabled)',
+      '--button-border-color': 'var(--button-border-color-disabled)',
+    },
   };
 });
 
-const withBreakpoints = (
-  value: Responsive<string> | undefined, // Value to check
-  prefix = ''
-) => {
+const withBreakpoints = (value: Responsive<string> | undefined, prefix = '') => {
   if (typeof value === 'string') {
     return getPrefixedName(`${prefix}-${value}`);
   }

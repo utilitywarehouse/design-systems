@@ -52,6 +52,23 @@ export const KitchenSink: Story = {
                 </Flex>
               ))}
             </Flex>
+            <Flex gap={3} align="center">
+              {sizes.map(size => (
+                <Flex gap={2}>
+                  {colorSchemes[variant].map(colorScheme => (
+                    <Button
+                      disabled
+                      key={colorScheme}
+                      variant={variant}
+                      colorScheme={colorScheme}
+                      size={size}
+                    >
+                      Button
+                    </Button>
+                  ))}
+                </Flex>
+              ))}
+            </Flex>
           </Flex>
         ))}
       </Flex>
@@ -63,11 +80,16 @@ export const Workshop: Story = {
   argTypes: {
     children: { control: { type: 'text' } },
     disabled: { control: { type: 'boolean' } },
+    variant: { control: { type: 'radio' }, options: variants },
+    colorScheme: { options: colorSchemes.ghost, control: { type: 'radio' } },
+    size: { control: { type: 'radio' }, options: sizes },
   },
   args: {
     children: 'Button',
     disabled: false,
-    size: { mobile: 'small', tablet: 'large', desktop: 'small', wide: 'large' },
+    variant: 'solid',
+    colorScheme: 'cyan',
+    size: 'large',
   },
 };
 
