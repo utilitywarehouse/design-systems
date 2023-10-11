@@ -6,6 +6,7 @@ import { Breakpoints, PropsWithSx, Responsive } from '../../types';
 import { dataAttributes, getPrefixedName, mediaQueries, px, pxToRem, spacing } from '../../utils';
 import { ButtonProps } from './Button.props';
 import clsx from 'clsx';
+import { Slot } from '@radix-ui/react-slot';
 
 const componentName = 'Button';
 const label = getPrefixedName(componentName);
@@ -236,7 +237,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     '&:where(:active)': {
       '--button-background-color': 'var(--button-background-color-active)',
     },
-    '&:where(:disabled)': {
+    [dataAttributes.disabled]: {
       cursor: 'not-allowed',
       '--button-foreground-color': 'var(--button-foreground-color-disabled)',
       '--button-background-color': 'var(--button-background-color-disabled)',
@@ -265,13 +266,16 @@ const withBreakpoints = (value: Responsive<string> | undefined, prefix = '') => 
 
 export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWithSx<ButtonProps>>>(
   function Button(
-    { variant = 'solid', colorScheme = 'cyan', size = 'large', className, ...props },
+    { variant = 'solid', colorScheme = 'cyan', size = 'large', className, asChild, ...props },
     forwardedRef
   ) {
     return (
       <StyledButton
+        as={asChild ? Slot : 'button'}
         ref={forwardedRef}
         data-colorscheme={colorScheme}
+        // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
+        data-disabled={props.disabled || undefined}
         className={clsx(label, className, withBreakpoints(size, 'size'), classNames[variant])}
         {...props}
       />
