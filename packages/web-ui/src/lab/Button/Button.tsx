@@ -75,7 +75,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     gap: 'var(--button-gap)',
     color: 'var(--button-foreground-color)',
     backgroundColor: 'var(--button-background-color)',
-    border: 'var(--button-border)',
+    border: 'none',
     fontSize: 'var(--button-font-size)',
     lineHeight: 'var(--button-line-height)',
     minWidth: 'var(--button-min-width)',
@@ -84,6 +84,8 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     paddingBottom: 'var(--button-padding-block)',
     paddingLeft: 'var(--button-padding-inline)',
     paddingRight: 'var(--button-padding-inline)',
+    '--button-focus-outline':
+      '0 0 0 var(--focus-outline-width, 0) var(--focus-outline-color, transparent)',
     [dataAttributes.cyan]: {
       '--button-solid-foreground-color': colors.cyan1000,
       '--button-solid-background-color': colors.cyan400,
@@ -168,7 +170,6 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--focus-outline-color': colors.grey700,
     },
     [classSelectors.solid]: {
-      '--button-border': 'none',
       '--button-foreground-color': 'var(--button-solid-foreground-color)',
       '--button-background-color': 'var(--button-solid-background-color)',
       '--button-background-color-hover': 'var(--button-solid-background-color-hover)',
@@ -177,7 +178,6 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-background-color-disabled': 'var(--button-solid-background-color-disabled)',
     },
     [classSelectors.ghost]: {
-      '--button-border': 'none',
       '--button-background-color': 'transparent',
       '--button-background-color-disabled': 'transparent',
       '--button-foreground-color': 'var(--button-ghost-foreground-color)',
@@ -186,15 +186,15 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-foreground-color-disabled': 'var(--button-ghost-foreground-color-disabled)',
     },
     [classSelectors.outline]: {
-      '--button-border': `2px solid var(--button-border-color)`,
       '--button-background-color': 'transparent',
       '--button-background-color-disabled': 'transparent',
       '--button-foreground-color': 'var(--button-outline-foreground-color)',
-      '--button-border-color': 'var(--button-outline-border-color)',
       '--button-background-color-hover': 'var(--button-outline-background-color-hover)',
       '--button-background-color-active': 'var(--button-outline-background-color-active)',
       '--button-foreground-color-disabled': 'var(--button-outline-foreground-color-disabled)',
       '--button-border-color-disabled': 'var(--button-outline-border-color-disabled)',
+      '--button-outline-border': 'inset 0 0 0 2px var(--button-outline-border-color)',
+      boxShadow: 'var(--button-outline-border)',
     },
     [classSelectors.large]: {
       ...sizeStyles.large,
@@ -227,7 +227,11 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       },
     },
     '&:where(:focus-visible)': {
-      boxShadow: '0 0 0 var(--focus-outline-width, 0) var(--focus-outline-color, transparent)',
+      boxShadow: 'var(--button-focus-outline)',
+      '--button-background-color': 'var(--button-background-color-hover)',
+      [classSelectors.outline]: {
+        boxShadow: 'var(--button-outline-border), var(--button-focus-outline)',
+      },
     },
     '@media (hover: hover)': {
       '&:where(:hover)': {
@@ -242,6 +246,9 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-foreground-color': 'var(--button-foreground-color-disabled)',
       '--button-background-color': 'var(--button-background-color-disabled)',
       '--button-border-color': 'var(--button-border-color-disabled)',
+      [classSelectors.outline]: {
+        '--button-outline-border-color': 'var(--button-outline-border-color-disabled)',
+      },
     },
   };
 });
