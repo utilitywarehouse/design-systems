@@ -12,6 +12,7 @@ export const dataAttributes = {
   multiline: 'multiline',
   heading: 'heading',
   bgcolorBrand: 'bg-color-brand',
+  disabled: ':where([data-disabled])',
   cyan: colorSchemeDataAttribute('cyan'),
   red: colorSchemeDataAttribute('red'),
   green: colorSchemeDataAttribute('green'),
