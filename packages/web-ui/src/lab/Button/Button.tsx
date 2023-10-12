@@ -84,6 +84,10 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     paddingBottom: 'var(--button-padding-block)',
     paddingLeft: 'var(--button-padding-inline)',
     paddingRight: 'var(--button-padding-inline)',
+    svg: {
+      // this will fallback to the icon's default fill of currentColor when not set
+      color: 'var(--button-icon-color)',
+    },
     '--button-focus-outline':
       '0 0 0 var(--focus-outline-width, 0) var(--focus-outline-color, transparent)',
     [dataAttributes.cyan]: {
@@ -93,16 +97,19 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-solid-background-color-active': colors.cyan300,
       '--button-solid-foreground-color-disabled': colors.cyan300,
       '--button-solid-background-color-disabled': colors.cyan100,
+      '--button-solid-icon-color': colors.cyan800,
       '--button-ghost-foreground-color': colors.cyan1000,
       '--button-ghost-background-color-hover': colors.cyan100,
       '--button-ghost-background-color-active': colors.cyan200,
       '--button-ghost-foreground-color-disabled': colors.cyan300,
+      '--button-ghost-icon-color': colors.cyan600,
       '--button-outline-foreground-color': colors.cyan1000,
       '--button-outline-border-color': colors.cyan400,
       '--button-outline-background-color-hover': colors.cyan75,
       '--button-outline-background-color-active': colors.cyan200,
       '--button-outline-foreground-color-disabled': colors.cyan300,
       '--button-outline-border-color-disabled': colors.cyan300,
+      '--button-outline-icon-color': colors.cyan600,
       '--focus-outline-color': colors.cyan700,
     },
     [dataAttributes.red]: {
@@ -116,12 +123,14 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-ghost-background-color-hover': colors.red100,
       '--button-ghost-background-color-active': colors.red200,
       '--button-ghost-foreground-color-disabled': colors.red300,
+      '--button-ghost-icon-color': colors.red600,
       '--button-outline-foreground-color': colors.red900,
       '--button-outline-border-color': colors.red500,
       '--button-outline-background-color-hover': colors.red100,
       '--button-outline-background-color-active': colors.red200,
       '--button-outline-foreground-color-disabled': colors.red300,
       '--button-outline-border-color-disabled': colors.red300,
+      '--button-outline-icon-color': colors.red600,
       '--focus-outline-color': colors.red700,
     },
     [dataAttributes.green]: {
@@ -135,12 +144,14 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-ghost-background-color-hover': colors.green100,
       '--button-ghost-background-color-active': colors.green200,
       '--button-ghost-foreground-color-disabled': colors.green300,
+      '--button-ghost-icon-color': colors.green600,
       '--button-outline-foreground-color': colors.green900,
       '--button-outline-border-color': colors.green600,
       '--button-outline-background-color-hover': colors.green100,
       '--button-outline-background-color-active': colors.green200,
       '--button-outline-foreground-color-disabled': colors.green300,
       '--button-outline-border-color-disabled': colors.green300,
+      '--button-outline-icon-color': colors.green600,
       '--focus-outline-color': colors.green700,
     },
     [dataAttributes.gold]: {
@@ -152,8 +163,10 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-ghost-background-color-hover': colors.gold100,
       '--button-ghost-background-color-active': colors.gold200,
       '--button-ghost-foreground-color-disabled': colors.gold300,
+      '--button-ghost-icon-color': colors.gold600,
       '--button-outline-foreground-color-disabled': colors.gold300,
       '--button-outline-border-color-disabled': colors.gold300,
+      '--button-outline-icon-color': colors.gold600,
       '--focus-outline-color': colors.gold700,
     },
     [dataAttributes.grey]: {
@@ -165,6 +178,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-ghost-background-color-hover': colors.grey100,
       '--button-ghost-background-color-active': colors.grey175,
       '--button-ghost-foreground-color-disabled': colors.grey300,
+      '--button-ghost-icon-color': colors.grey800,
       '--button-outline-foreground-color-disabled': colors.grey300,
       '--button-outline-border-color-disabled': colors.grey300,
       '--focus-outline-color': colors.grey700,
@@ -176,6 +190,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-background-color-active': 'var(--button-solid-background-color-active)',
       '--button-foreground-color-disabled': 'var(--button-solid-foreground-color-disabled)',
       '--button-background-color-disabled': 'var(--button-solid-background-color-disabled)',
+      '--button-icon-color': 'var(--button-solid-icon-color)',
     },
     [classSelectors.ghost]: {
       '--button-background-color': 'transparent',
@@ -184,6 +199,9 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-background-color-hover': 'var(--button-ghost-background-color-hover)',
       '--button-background-color-active': 'var(--button-ghost-background-color-active)',
       '--button-foreground-color-disabled': 'var(--button-ghost-foreground-color-disabled)',
+      ':not(:hover,:active,:disabled)': {
+        '--button-icon-color': 'var(--button-ghost-icon-color)',
+      },
     },
     [classSelectors.outline]: {
       '--button-background-color': 'transparent',
@@ -195,6 +213,9 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-border-color-disabled': 'var(--button-outline-border-color-disabled)',
       '--button-outline-border': 'inset 0 0 0 2px var(--button-outline-border-color)',
       boxShadow: 'var(--button-outline-border)',
+      ':not(:hover,:active,:disabled)': {
+        '--button-icon-color': 'var(--button-outline-icon-color)',
+      },
     },
     [classSelectors.large]: {
       ...sizeStyles.large,
@@ -240,12 +261,14 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     },
     '&:where(:active)': {
       '--button-background-color': 'var(--button-background-color-active)',
+      '--button-icon-color': 'var(--button-icon-color-active)',
     },
     [dataAttributes.disabled]: {
       cursor: 'not-allowed',
       '--button-foreground-color': 'var(--button-foreground-color-disabled)',
       '--button-background-color': 'var(--button-background-color-disabled)',
       '--button-border-color': 'var(--button-border-color-disabled)',
+      '--button-icon-color': 'var(--button-icon-color-disabled)',
       [classSelectors.outline]: {
         '--button-outline-border-color': 'var(--button-outline-border-color-disabled)',
       },
@@ -273,9 +296,19 @@ const withBreakpoints = (value: Responsive<string> | undefined, prefix = '') => 
 
 export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWithSx<ButtonProps>>>(
   function Button(
-    { variant = 'solid', colorScheme = 'cyan', size = 'large', className, asChild, ...props },
+    {
+      variant = 'solid',
+      colorScheme = 'cyan',
+      size = 'large',
+      className,
+      asChild,
+      children,
+      iconLeft,
+      ...props
+    },
     forwardedRef
   ) {
+    const IconLeft = iconLeft;
     return (
       <StyledButton
         as={asChild ? Slot : 'button'}
@@ -285,7 +318,10 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
         data-disabled={props.disabled || undefined}
         className={clsx(label, className, withBreakpoints(size, 'size'), classNames[variant])}
         {...props}
-      />
+      >
+        {iconLeft ? <IconLeft color="hotpink" /> : null}
+        {children}
+      </StyledButton>
     );
   }
 );
