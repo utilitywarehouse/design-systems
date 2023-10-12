@@ -1,5 +1,11 @@
 # @utilitywarehouse/colour-system
 
+## 0.3.1
+
+### Patch Changes
+
+- [#190](https://github.com/utilitywarehouse/design-systems/pull/190) [`1c8d757`](https://github.com/utilitywarehouse/design-systems/commit/1c8d7572c1891bd1ec0c4fc2cba04d26333570fc) Thanks [@robphoenix](https://github.com/robphoenix)! - Update light/green500
+
 ## 0.3.0
 
 ### Minor Changes
