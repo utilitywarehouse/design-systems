@@ -1,5 +1,14 @@
 # @utilitywarehouse/web-ui
 
+## 0.2.3
+
+### Patch Changes
+
+- [#187](https://github.com/utilitywarehouse/design-systems/pull/187) [`29add81`](https://github.com/utilitywarehouse/design-systems/commit/29add8121d190f2bcf0654c7ce8224d9601bdb28) Thanks [@robphoenix](https://github.com/robphoenix)! - Use a terser global prefix for clarity & ease of scanning the DOM
+
+- Updated dependencies [[`1c8d757`](https://github.com/utilitywarehouse/design-systems/commit/1c8d7572c1891bd1ec0c4fc2cba04d26333570fc)]:
+  - @utilitywarehouse/colour-system@0.3.1
+
 ## 0.2.2
 
 ### Patch Changes
