@@ -1869,10 +1869,10 @@
         "scale": "green",
         "step": "500",
         "name": "green500",
-        "description": "Use it for borders, icons, and large text against white, Green 50, Grey 25, and Grey 50. Use it as a background color with white large text (24px), borders, or icons. ",
+        "description": "Employ it for borders, icons, and exclusively for large text against white, Green 50, Grey 25, and Grey 50. Use it as a background colour, pairing it with white, for instance, in buttons. It's ideal for icons placed next to text in green 600. However, it's not the most suitable choice for small text; for that, stick with green 600.",
         "created_at": "2023-03-29T16:17:22.759Z",
-        "updated_at": "2023-04-27T17:38:50.083Z",
-        "value": "#31a063"
+        "updated_at": "2023-10-09T13:28:21.849Z",
+        "value": "#1c874d"
       },
       "green600": {
         "id": "391:1241",
