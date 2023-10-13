@@ -85,7 +85,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     paddingLeft: 'var(--button-padding-inline)',
     paddingRight: 'var(--button-padding-inline)',
     svg: {
-      // this will fallback to the icon's default fill of currentColor when not set
+      // as UW icons use currentColor by default, this will fallback to the Button's color property if not set.
       color: 'var(--button-icon-color)',
     },
     '--button-focus-outline':
