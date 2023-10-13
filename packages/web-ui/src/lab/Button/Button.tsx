@@ -39,7 +39,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     large: {
       '--button-font-size': pxToRem(18),
       '--button-line-height': pxToRem(24),
-      '--button-min-width': px(160),
+      '--button-min-width': px(120),
       '--button-padding-inline': px(24),
       '--button-padding-block': px(12),
       '--button-gap': px(spacing(2)),
