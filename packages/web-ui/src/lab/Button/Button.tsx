@@ -254,6 +254,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       },
     },
     '@media (hover: hover)': {
+      cursor: 'default', // so the cursor doesn't change on hover when using a `a` element with `asChild`
       '&:where(:hover)': {
         '--button-background-color': 'var(--button-background-color-hover)',
       },
