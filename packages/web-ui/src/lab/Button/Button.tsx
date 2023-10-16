@@ -1,8 +1,18 @@
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { fonts, fontWeights } from '../../tokens';
-import { Breakpoints, PropsWithSx, Responsive } from '../../types';
-import { dataAttributes, getPrefixedName, mediaQueries, px, pxToRem, spacing } from '../../utils';
+import { PropsWithSx } from '../../types';
+import {
+  classSelector,
+  dataAttributes,
+  getPrefixedName,
+  mediaQueries,
+  px,
+  pxToRem,
+  responsiveClassSelector,
+  spacing,
+  withBreakpoints,
+} from '../../utils';
 import { ButtonProps } from './Button.props';
 import clsx from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
@@ -17,21 +27,26 @@ const classNames = {
   ghost: getPrefixedName('variant-ghost'),
   large: getPrefixedName('size-large'),
   small: getPrefixedName('size-small'),
-  ['tablet:large']: `tablet:${getPrefixedName('size-large')}`,
 };
-const classSelector = (className: string) => `&:where(.${className})`;
+
 const classSelectors = {
   solid: classSelector(classNames.solid),
   outline: classSelector(classNames.outline),
   ghost: classSelector(classNames.ghost),
   large: classSelector(classNames.large),
   small: classSelector(classNames.small),
-  ['tablet:large']: `&:where(.tablet\\:${getPrefixedName('size-large')})`,
-  ['tablet:small']: `&:where(.tablet\\:${getPrefixedName('size-small')})`,
-  ['desktop:large']: `&:where(.desktop\\:${getPrefixedName('size-large')})`,
-  ['desktop:small']: `&:where(.desktop\\:${getPrefixedName('size-small')})`,
-  ['wide:large']: `&:where(.wide\\:${getPrefixedName('size-large')})`,
-  ['wide:small']: `&:where(.wide\\:${getPrefixedName('size-small')})`,
+  tablet: {
+    large: responsiveClassSelector(classNames.large, 'tablet'),
+    small: responsiveClassSelector(classNames.small, 'tablet'),
+  },
+  desktop: {
+    large: responsiveClassSelector(classNames.large, 'desktop'),
+    small: responsiveClassSelector(classNames.small, 'desktop'),
+  },
+  wide: {
+    large: responsiveClassSelector(classNames.large, 'wide'),
+    small: responsiveClassSelector(classNames.small, 'wide'),
+  },
 };
 
 const StyledButton = styled('button', { label })<ButtonProps>(() => {
@@ -217,35 +232,19 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
         '--button-icon-color': 'var(--button-outline-icon-color)',
       },
     },
-    [classSelectors.large]: {
-      ...sizeStyles.large,
-    },
-    [classSelectors.small]: {
-      ...sizeStyles.small,
-    },
+    [classSelectors.large]: { ...sizeStyles.large },
+    [classSelectors.small]: { ...sizeStyles.small },
     [mediaQueries.tablet]: {
-      [classSelectors['tablet:large']]: {
-        ...sizeStyles.large,
-      },
-      [classSelectors['tablet:small']]: {
-        ...sizeStyles.small,
-      },
+      [classSelectors.tablet.large]: { ...sizeStyles.large },
+      [classSelectors.tablet.small]: { ...sizeStyles.small },
     },
     [mediaQueries.desktop]: {
-      [classSelectors['desktop:large']]: {
-        ...sizeStyles.large,
-      },
-      [classSelectors['desktop:small']]: {
-        ...sizeStyles.small,
-      },
+      [classSelectors.desktop.large]: { ...sizeStyles.large },
+      [classSelectors.desktop.small]: { ...sizeStyles.small },
     },
     [mediaQueries.wide]: {
-      [classSelectors['wide:large']]: {
-        ...sizeStyles.large,
-      },
-      [classSelectors['wide:small']]: {
-        ...sizeStyles.small,
-      },
+      [classSelectors.wide.large]: { ...sizeStyles.large },
+      [classSelectors.wide.small]: { ...sizeStyles.small },
     },
     '&:where(:focus-visible)': {
       boxShadow: 'var(--button-focus-outline)',
@@ -275,24 +274,6 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     },
   };
 });
-
-const withBreakpoints = (value: Responsive<string> | undefined, prefix = '') => {
-  if (typeof value === 'string') {
-    return getPrefixedName(`${prefix}-${value}`);
-  }
-
-  const classes: string[] = [];
-  if (typeof value === 'object') {
-    for (const bp of Object.keys(value) as Breakpoints[]) {
-      if (bp in value) {
-        const baseClassName = getPrefixedName(`${prefix}-${value[bp]}`);
-        const className = bp === 'mobile' ? baseClassName : `${bp}:${baseClassName}`;
-        classes.push(className);
-      }
-    }
-    return classes.reverse().join(' ');
-  }
-};
 
 export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWithSx<ButtonProps>>>(
   function Button(
