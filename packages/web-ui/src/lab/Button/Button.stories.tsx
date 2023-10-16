@@ -7,19 +7,20 @@ import {
   ChevronRight01MediumIcon,
   ChevronLeft01SmallIcon,
   ChevronRight01SmallIcon,
+  OpenMediumIcon,
+  SettingsMediumIcon,
 } from '@utilitywarehouse/react-icons';
 
 const meta: Meta<typeof Button> = {
   title: 'Web UI / Lab / Button',
   component: Button,
-  tags: ['autodocs'],
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
 const sizes = ['large', 'small'] as const;
-const variants = ['solid', 'ghost', 'outline'] as const;
+const variants = ['solid', 'outline', 'ghost'] as const;
 const colorSchemes = {
   solid: ['cyan', 'red', 'green'] as const,
   outline: ['cyan', 'grey', 'red', 'green', 'gold'] as const,
@@ -136,7 +137,7 @@ export const WithIcons: Story = {
                     Button <ChevronRight01MediumIcon />
                   </Button>
                 ))}
-                {colorSchemes.solid.map(colorScheme => (
+                {colorSchemes[variant].map(colorScheme => (
                   <Button
                     key={colorScheme}
                     variant={variant}
@@ -153,4 +154,98 @@ export const WithIcons: Story = {
       </Flex>
     );
   },
+};
+
+export const WithBasicIcons: Story = {
+  render: () => {
+    return (
+      <Flex gap={2} align="center">
+        {variants.map(variant => (
+          <Button variant={variant} size="large">
+            <SettingsMediumIcon />
+            Edit account
+          </Button>
+        ))}
+      </Flex>
+    );
+  },
+};
+
+export const AsLink: Story = {
+  render: () => (
+    <Button asChild>
+      <a href="https://uw.co.uk/services">
+        View UW services
+        <OpenMediumIcon />
+      </a>
+    </Button>
+  ),
+};
+
+export const Basic: Story = {
+  render: () => (
+    <Flex gap={2}>
+      {variants.map(variant => (
+        <Button key={variant} variant={variant} size="large">
+          Next page <ChevronRight01MediumIcon />
+        </Button>
+      ))}
+    </Flex>
+  ),
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <Flex gap={2} align="center">
+      {sizes.map(size => (
+        <Button key={size} variant="outline" size={size}>
+          Edit address
+        </Button>
+      ))}
+    </Flex>
+  ),
+};
+
+export const SolidVariant: Story = {
+  render: () => (
+    <Flex gap={2} align="center">
+      {colorSchemes.solid.map(color => (
+        <Button key={color} variant="solid" size="large" colorScheme={color}>
+          Solid button
+        </Button>
+      ))}
+    </Flex>
+  ),
+};
+
+export const OutlineVariant: Story = {
+  render: () => (
+    <Flex gap={2} align="center">
+      {colorSchemes.outline.map(color => (
+        <Button key={color} variant="outline" size="large" colorScheme={color}>
+          Outline button
+        </Button>
+      ))}
+    </Flex>
+  ),
+};
+
+export const GhostVariant: Story = {
+  render: () => (
+    <Flex gap={2} align="center">
+      {colorSchemes.ghost.map(color => (
+        <Button key={color} variant="ghost" size="large" colorScheme={color}>
+          Ghost button
+        </Button>
+      ))}
+    </Flex>
+  ),
+};
+
+export const FullWidth: Story = {
+  render: () => (
+    <Flex direction="column" align="stretch">
+      <Button>Button</Button>
+    </Flex>
+  ),
 };

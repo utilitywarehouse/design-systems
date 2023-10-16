@@ -1,0 +1,120 @@
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import * as Stories from './Button.stories';
+
+<Meta of={Stories} />
+
+# Button
+
+<Description />
+
+<Canvas of={Stories.Basic} />
+
+## Contents
+
+- [Variant](#variant)
+  - [Solid](#solid)
+  - [Outline](#outline)
+  - [Ghost](#ghost)
+- [ColorScheme](#colorscheme)
+- [Size](#size)
+- [With icons](#with-icons)
+- [Semantic HTML](#semantic-html)
+- [Full Width Button](#full-width-button)
+- [API Reference](#api-reference)
+
+## Variant
+
+The variant prop controls the visual appearance of the button.
+
+```tsx
+<Flex gap={2} align="center">
+  <Button variant="solid">Button</Button>
+  <Button variant="outline">Button</Button>
+  <Button variant="ghost">Button</Button>
+</Flex>
+```
+
+### Solid
+
+The solid button can be combined with the `cyan`, `red` & `green` color schemes.
+
+<Canvas of={Stories.SolidVariant} />
+
+### Outline
+
+The outline button can be combined with all color schemes.
+
+<Canvas of={Stories.OutlineVariant} />
+
+### Ghost
+
+The ghost button can be combined with all color schemes.
+
+<Canvas of={Stories.GhostVariant} />
+
+## ColorScheme
+
+The colorScheme prop will change the button colours. Be aware there are some
+combinations of colorScheme & variant that do not work together (ie. `solid` &
+`grey`), and if used will render a button with no colours at all.
+
+## Size
+
+The size prop controls the size of the button. This is a responsive prop and
+can be used to display different sizes at different breakpoints.
+
+<Canvas of={Stories.Sizes} />
+
+```tsx
+<Button
+  size={{
+    mobile: 'small',
+    desktop: 'large',
+  }}
+/>
+```
+
+## With icons
+
+You can nest icons directly inside the button. An appropriate gap is provided
+automatically, and the icon will inherit the appropriate colours. This button
+is intended to be used with the UW icons packages and using other icons may
+result in an unexpected appearance.
+
+<Canvas of={Stories.WithBasicIcons} />
+
+```tsx
+<Button variant="solid" size="large">
+  <SettingsMediumIcon />
+  Edit account
+</Button>
+```
+
+## Semantic HTML
+
+A semantic HTML button is rendered by default, however you can change the underlying HTML element by using the `asChild` prop.
+When `asChild` is set to true, Radix will not render a default DOM element,
+instead cloning the child and passing it the props and behaviour required to
+make it functional.
+Read more about this idea in the [Radix UI composition docs](https://www.radix-ui.com/primitives/docs/guides/composition).
+
+<Canvas of={Stories.AsLink} />
+
+```tsx
+<Button asChild>
+  <a href="https://uw.co.uk/services">
+    View UW services
+    <OpenMediumIcon />
+  </a>
+</Button>
+```
+
+## Full Width Button
+
+Use layout components to, like `Flex`, to define your UI layouts.
+
+<Canvas of={Stories.FullWidth} />
+
+## API Reference
+
+<ArgTypes of={Stories} />
