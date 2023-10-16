@@ -45,7 +45,6 @@ export const KitchenSink: Story = {
                       variant={variant}
                       colorScheme={colorScheme}
                       size={size}
-                      // iconLeft={<ChevronLeft01MediumIcon />}
                     >
                       Button
                     </Button>

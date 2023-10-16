@@ -1,4 +1,3 @@
-import styled from '@emotion/styled';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { fonts, fontWeights } from '../../tokens';
@@ -7,6 +6,7 @@ import { dataAttributes, getPrefixedName, mediaQueries, px, pxToRem, spacing } f
 import { ButtonProps } from './Button.props';
 import clsx from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
+import { styled } from '../../theme';
 
 const componentName = 'Button';
 const label = getPrefixedName(componentName);
@@ -303,12 +303,10 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
       className,
       asChild,
       children,
-      iconLeft,
       ...props
     },
     forwardedRef
   ) {
-    const IconLeft = iconLeft;
     return (
       <StyledButton
         as={asChild ? Slot : 'button'}
@@ -319,7 +317,6 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
         className={clsx(label, className, withBreakpoints(size, 'size'), classNames[variant])}
         {...props}
       >
-        {iconLeft ? <IconLeft color="hotpink" /> : null}
         {children}
       </StyledButton>
     );
