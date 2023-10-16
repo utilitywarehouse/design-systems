@@ -156,7 +156,7 @@ export const WithIcons: Story = {
   },
 };
 
-export const WithBasicIcons: Story = {
+export const BasicWithIcons: Story = {
   render: () => {
     return (
       <Flex gap={2} align="center">
