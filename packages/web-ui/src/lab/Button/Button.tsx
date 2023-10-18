@@ -22,30 +22,38 @@ const componentName = 'Button';
 const label = getPrefixedName(componentName);
 
 const classNames = {
-  solid: getPrefixedName('variant-solid'),
-  outline: getPrefixedName('variant-outline'),
-  ghost: getPrefixedName('variant-ghost'),
-  large: getPrefixedName('size-large'),
-  small: getPrefixedName('size-small'),
+  variant: {
+    solid: getPrefixedName('variant-solid'),
+    outline: getPrefixedName('variant-outline'),
+    ghost: getPrefixedName('variant-ghost'),
+  },
+  size: {
+    large: getPrefixedName('size-large'),
+    small: getPrefixedName('size-small'),
+  },
 };
 
 const classSelectors = {
-  solid: classSelector(classNames.solid),
-  outline: classSelector(classNames.outline),
-  ghost: classSelector(classNames.ghost),
-  large: classSelector(classNames.large),
-  small: classSelector(classNames.small),
-  tablet: {
-    large: responsiveClassSelector(classNames.large, 'tablet'),
-    small: responsiveClassSelector(classNames.small, 'tablet'),
+  variant: {
+    solid: classSelector(classNames.variant.solid),
+    outline: classSelector(classNames.variant.outline),
+    ghost: classSelector(classNames.variant.ghost),
   },
-  desktop: {
-    large: responsiveClassSelector(classNames.large, 'desktop'),
-    small: responsiveClassSelector(classNames.small, 'desktop'),
-  },
-  wide: {
-    large: responsiveClassSelector(classNames.large, 'wide'),
-    small: responsiveClassSelector(classNames.small, 'wide'),
+  size: {
+    large: classSelector(classNames.size.large),
+    small: classSelector(classNames.size.small),
+    tablet: {
+      large: responsiveClassSelector(classNames.size.large, 'tablet'),
+      small: responsiveClassSelector(classNames.size.small, 'tablet'),
+    },
+    desktop: {
+      large: responsiveClassSelector(classNames.size.large, 'desktop'),
+      small: responsiveClassSelector(classNames.size.small, 'desktop'),
+    },
+    wide: {
+      large: responsiveClassSelector(classNames.size.large, 'wide'),
+      small: responsiveClassSelector(classNames.size.small, 'wide'),
+    },
   },
 };
 
@@ -203,7 +211,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-outline-border-color-disabled': colors.grey300,
       '--focus-outline-color': colors.grey700,
     },
-    [classSelectors.solid]: {
+    [classSelectors.variant.solid]: {
       '--button-foreground-color': 'var(--button-solid-foreground-color)',
       '--button-background-color': 'var(--button-solid-background-color)',
       '--button-background-color-hover': 'var(--button-solid-background-color-hover)',
@@ -212,7 +220,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-background-color-disabled': 'var(--button-solid-background-color-disabled)',
       '--button-icon-color': 'var(--button-solid-icon-color)',
     },
-    [classSelectors.ghost]: {
+    [classSelectors.variant.ghost]: {
       '--button-background-color': 'transparent',
       '--button-background-color-disabled': 'transparent',
       '--button-foreground-color': 'var(--button-ghost-foreground-color)',
@@ -223,7 +231,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
         '--button-icon-color': 'var(--button-ghost-icon-color)',
       },
     },
-    [classSelectors.outline]: {
+    [classSelectors.variant.outline]: {
       '--button-background-color': 'transparent',
       '--button-background-color-disabled': 'transparent',
       '--button-foreground-color': 'var(--button-outline-foreground-color)',
@@ -237,24 +245,24 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
         '--button-icon-color': 'var(--button-outline-icon-color)',
       },
     },
-    [classSelectors.large]: { ...sizeStyles.large },
-    [classSelectors.small]: { ...sizeStyles.small },
+    [classSelectors.size.large]: { ...sizeStyles.large },
+    [classSelectors.size.small]: { ...sizeStyles.small },
     [mediaQueries.tablet]: {
-      [classSelectors.tablet.large]: { ...sizeStyles.large },
-      [classSelectors.tablet.small]: { ...sizeStyles.small },
+      [classSelectors.size.tablet.large]: { ...sizeStyles.large },
+      [classSelectors.size.tablet.small]: { ...sizeStyles.small },
     },
     [mediaQueries.desktop]: {
-      [classSelectors.desktop.large]: { ...sizeStyles.large },
-      [classSelectors.desktop.small]: { ...sizeStyles.small },
+      [classSelectors.size.desktop.large]: { ...sizeStyles.large },
+      [classSelectors.size.desktop.small]: { ...sizeStyles.small },
     },
     [mediaQueries.wide]: {
-      [classSelectors.wide.large]: { ...sizeStyles.large },
-      [classSelectors.wide.small]: { ...sizeStyles.small },
+      [classSelectors.size.wide.large]: { ...sizeStyles.large },
+      [classSelectors.size.wide.small]: { ...sizeStyles.small },
     },
     '&:where(:focus-visible)': {
       boxShadow: 'var(--button-focus-outline)',
       '--button-background-color': 'var(--button-background-color-hover)',
-      [classSelectors.outline]: {
+      [classSelectors.variant.outline]: {
         boxShadow: 'var(--button-outline-border), var(--button-focus-outline)',
       },
     },
@@ -274,7 +282,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-background-color': 'var(--button-background-color-disabled)',
       '--button-border-color': 'var(--button-border-color-disabled)',
       '--button-icon-color': 'var(--button-icon-color-disabled)',
-      [classSelectors.outline]: {
+      [classSelectors.variant.outline]: {
         '--button-outline-border-color': 'var(--button-outline-border-color-disabled)',
       },
     },
@@ -306,7 +314,12 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
         data-colorscheme={colorScheme}
         // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
         data-disabled={props.disabled || undefined}
-        className={clsx(label, className, withBreakpoints(size, 'size'), classNames[variant])}
+        className={clsx(
+          label,
+          className,
+          withBreakpoints(size, 'size'),
+          classNames.variant[variant]
+        )}
         {...props}
       >
         {children}
