@@ -6,8 +6,8 @@ export const withBreakpoints = (value: Responsive<string> | undefined, prefix = 
     return getPrefixedName(`${prefix}-${value}`);
   }
 
-  const classes: string[] = [];
   if (typeof value === 'object') {
+    const classes: string[] = [];
     for (const bp of Object.keys(value) as Breakpoints[]) {
       if (bp in value) {
         const baseClassName = getPrefixedName(`${prefix}-${value[bp]}`);
