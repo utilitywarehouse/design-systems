@@ -15,6 +15,6 @@ export const withBreakpoints = (value: Responsive<string> | undefined, prefix = 
         classes.push(className);
       }
     }
-    return classes.reverse().join(' ');
+    return classes.join(' ');
   }
 };
