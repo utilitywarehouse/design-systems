@@ -11,6 +11,8 @@ import * as Stories from './Button.stories';
 
 ## Contents
 
+- [Accessibility](#accessibility)
+  - [Known issues](#known-issues)
 - [Variant](#variant)
   - [Solid](#solid)
   - [Outline](#outline)
@@ -21,6 +23,17 @@ import * as Stories from './Button.stories';
 - [Semantic HTML](#semantic-html)
 - [Full Width Button](#full-width-button)
 - [API Reference](#api-reference)
+
+## Accessibility
+
+Uses a native `<button>` element under the hood, with support for the <kbd>Space</kbd> and <kbd>Enter</kbd> keys.
+
+### Known issues
+
+We are aware that the `cyan` background colour for the `solid` variant does not
+meet colour contrast standards. There is an ongoing discussion with the Brand
+and Creative team about how we can replace this with an accessible colour which
+does not undermine the brand design.
 
 ## Variant
 
@@ -57,6 +70,10 @@ The ghost button can be combined with all color schemes.
 The colorScheme prop will change the button colours. Be aware there are some
 combinations of colorScheme & variant that do not work together (ie. `solid` &
 `grey`), and if used will render a button with no colours at all.
+
+```tsx
+<Button colorScheme="red">
+```
 
 ## Size
 

@@ -186,7 +186,7 @@ export const Basic: Story = {
   render: () => (
     <Flex gap={2}>
       {variants.map(variant => (
-        <Button key={variant} variant={variant} size="large">
+        <Button key={variant} variant={variant} size="large" onClick={() => alert('Hello world!')}>
           Next page <ChevronRight01MediumIcon />
         </Button>
       ))}
