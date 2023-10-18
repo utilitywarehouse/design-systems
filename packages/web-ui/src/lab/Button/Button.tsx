@@ -86,9 +86,12 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     userSelect: 'none',
     verticalAlign: 'top',
     '-webkit-tap-highlight-color': 'transparent',
+    '-webkit-touch-callout': 'none',
     fontFamily: fonts.secondary,
     fontWeight: fontWeights.secondary.semibold,
     borderRadius: px(9999),
+    // make clicks not need to wait and observe a potential double click, making the buttons feel faster
+    touchAction: 'manipulation',
     gap: 'var(--button-gap)',
     color: 'var(--button-foreground-color)',
     backgroundColor: 'var(--button-background-color)',
@@ -101,7 +104,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     paddingBottom: 'var(--button-padding-block)',
     paddingLeft: 'var(--button-padding-inline)',
     paddingRight: 'var(--button-padding-inline)',
-    svg: {
+    '> :where(svg, [data-icon])': {
       // as UW icons use currentColor by default, this will fallback to the Button's color property if not set.
       color: 'var(--button-icon-color)',
     },

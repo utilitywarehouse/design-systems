@@ -107,6 +107,15 @@ result in an unexpected appearance.
 </Button>
 ```
 
+If you are not using an `svg` icon please add the `data-icon` attribute to your icon.
+
+```tsx
+<Button variant="solid" size="large">
+  <MyFontIcon data-icon />
+  Edit account
+</Button>
+```
+
 ## Semantic HTML
 
 A semantic HTML button is rendered by default, however you can change the underlying HTML element by using the `asChild` prop.
