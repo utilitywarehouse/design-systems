@@ -243,9 +243,12 @@ export const GhostVariant: Story = {
 };
 
 export const FullWidth: Story = {
-  render: () => (
-    <Flex direction="column" align="stretch">
-      <Button>Button</Button>
-    </Flex>
-  ),
+  decorators: [
+    Story => (
+      <Flex direction="column" align="stretch">
+        <Story />
+      </Flex>
+    ),
+  ],
+  args: { children: 'Full width button' },
 };
