@@ -9,11 +9,11 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
 import { forwardRef, useContext } from 'react';
-import { styled } from '@mui/material';
 import { useIds } from '../hooks';
 import { PropsWithSx } from '../types';
 import { RadioProps } from './Radio.props';
 import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
+import { styled } from '../theme';
 
 const componentClassName = 'Radio';
 const BaseBox = createBox({ componentClassName });
