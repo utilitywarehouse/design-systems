@@ -141,9 +141,13 @@ can be used to display different sizes at different breakpoints.
 ## With icons
 
 You can nest icons directly inside the button. An appropriate gap is provided
-automatically, and the icon will inherit the appropriate colours. This button
-is intended to be used with the UW icons packages and using other icons may
-result in an unexpected appearance.
+automatically, and the icon will inherit the appropriate colours.
+
+This button is intended to be used with the UW icons packages. Small buttons
+should use 16px icons (small), while large buttons should use 24px icons
+(medium).
+
+Using other icons may result in an unexpected appearance.
 
 <Canvas of={Stories.SimpleExample} />
 
@@ -154,17 +158,20 @@ result in an unexpected appearance.
 </Button>
 ```
 
-If you are not using an `svg` icon please add the `data-icon` attribute to your icon.
+Icons from the UW icons packages have `aria-hidden="true"` set by default. If
+you are using an icon from outside these packages, and for purely decorative
+reasons, please ensure it has this attribute set so that the icon is hidden
+from screen readers.
+
+Please also add the `data-icon` attribute to your icon so that it renders the
+appropriate styles.
 
 ```tsx
 <Button variant="solid" size="large">
-  <MyFontIcon data-icon />
+  <MyFontIcon aria-hidden="true" data-icon />
   Edit account
 </Button>
 ```
-
-Small buttons should use 16px icons (small), while large buttons should use
-24px icons (medium).
 
 ## Semantic HTML
 
