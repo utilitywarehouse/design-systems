@@ -8,7 +8,6 @@ import {
   ChevronLeft01SmallIcon,
   ChevronRight01SmallIcon,
   OpenMediumIcon,
-  SettingsMediumIcon,
 } from '@utilitywarehouse/react-icons';
 
 const sizes = ['large', 'small'] as const;
@@ -224,6 +223,19 @@ export const GhostVariant: Story = {
       ))}
     </Flex>
   ),
+};
+
+export const ResponsiveSize: Story = {
+  render: args => <Button {...args}>{args.children}</Button>,
+  args: {
+    children: 'Responsive size button',
+    size: {
+      mobile: 'large',
+      tablet: 'small',
+      desktop: 'large',
+      wide: 'small',
+    },
+  },
 };
 
 export const FullWidth: Story = {
