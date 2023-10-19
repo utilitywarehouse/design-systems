@@ -7,10 +7,12 @@ export const withBreakpoints = (value: Responsive<string> | undefined, prefix = 
   }
 
   if (typeof value === 'object') {
-    return (Object.keys(value) as Breakpoints[]).map(bp => {
+    const initialBreakpoint = 'mobile';
+    const classes = (Object.keys(value) as Breakpoints[]).map(bp => {
       const baseClassName = getPrefixedName(`${prefix}-${value[bp]}`);
-      const className = bp === 'mobile' ? baseClassName : `${bp}:${baseClassName}`;
+      const className = bp === initialBreakpoint ? baseClassName : `${bp}:${baseClassName}`;
       return className;
-    }).join(' ');
+    });
+    return classes.join(' ');
   }
 };
