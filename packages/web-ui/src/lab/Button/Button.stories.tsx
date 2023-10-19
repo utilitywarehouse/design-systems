@@ -11,14 +11,6 @@ import {
   SettingsMediumIcon,
 } from '@utilitywarehouse/react-icons';
 
-const meta: Meta<typeof Button> = {
-  title: 'Web UI / Lab / Button',
-  component: Button,
-};
-
-export default meta;
-type Story = StoryObj<typeof Button>;
-
 const sizes = ['large', 'small'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;
 const colorSchemes = {
@@ -26,6 +18,28 @@ const colorSchemes = {
   outline: ['cyan', 'grey', 'red', 'green', 'gold'] as const,
   ghost: ['cyan', 'grey', 'red', 'green', 'gold'] as const,
 };
+
+const meta: Meta<typeof Button> = {
+  title: 'Web UI / Lab / Button',
+  component: Button,
+  argTypes: {
+    children: { control: { type: 'text' } },
+    variant: { control: { type: 'radio' }, options: variants },
+    colorScheme: { options: colorSchemes.ghost, control: { type: 'radio' } },
+    size: { control: { type: 'radio' }, options: sizes },
+    disabled: { control: { type: 'boolean' } },
+  },
+  args: {
+    children: 'Button',
+    variant: 'solid',
+    colorScheme: 'cyan',
+    size: 'large',
+    disabled: false,
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Button>;
 
 export const KitchenSink: Story = {
   parameters: { controls: { hideNoControlsWarning: true } },
@@ -77,21 +91,17 @@ export const KitchenSink: Story = {
   },
 };
 
-export const Workshop: Story = {
-  argTypes: {
-    children: { control: { type: 'text' } },
-    disabled: { control: { type: 'boolean' } },
-    variant: { control: { type: 'radio' }, options: variants },
-    colorScheme: { options: colorSchemes.ghost, control: { type: 'radio' } },
-    size: { control: { type: 'radio' }, options: sizes },
-  },
-  args: {
-    children: 'Button',
-    disabled: false,
-    variant: 'solid',
-    colorScheme: 'cyan',
-    size: 'large',
-  },
+export const Workshop: Story = {};
+
+export const AsLink: Story = {
+  render: () => (
+    <Button asChild>
+      <a href="https://uw.co.uk/services">
+        View UW services
+        <OpenMediumIcon />
+      </a>
+    </Button>
+  ),
 };
 
 export const WithIcons: Story = {
@@ -156,33 +166,7 @@ export const WithIcons: Story = {
   },
 };
 
-export const BasicWithIcons: Story = {
-  render: () => {
-    return (
-      <Flex gap={2} align="center">
-        {variants.map(variant => (
-          <Button variant={variant} size="large">
-            <SettingsMediumIcon />
-            Edit account
-          </Button>
-        ))}
-      </Flex>
-    );
-  },
-};
-
-export const AsLink: Story = {
-  render: () => (
-    <Button asChild>
-      <a href="https://uw.co.uk/services">
-        View UW services
-        <OpenMediumIcon />
-      </a>
-    </Button>
-  ),
-};
-
-export const Basic: Story = {
+export const SimpleExample: Story = {
   render: () => (
     <Flex gap={2}>
       {variants.map(variant => (
@@ -243,12 +227,13 @@ export const GhostVariant: Story = {
 };
 
 export const FullWidth: Story = {
-  decorators: [
-    Story => (
-      <Flex direction="column" align="stretch">
-        <Story />
-      </Flex>
-    ),
-  ],
-  args: { children: 'Full width button' },
+  render: args => (
+    <Flex direction="column" align="stretch" gap={2}>
+      <Button {...args}>
+        {args.children}
+        <ChevronRight01MediumIcon />
+      </Button>
+    </Flex>
+  ),
+  args: { children: 'Full width button with icon' },
 };
