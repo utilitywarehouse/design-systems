@@ -29,9 +29,14 @@ export type BackgroundProps<
 > = OverrideProps<MuiBoxTypeMap<CustomBackgroundProps & P, D, Theme>, D>;
 
 /**
+ * > This component is deprecated and will be removed in the next major version (`v1`).
+ *
  * The Background component extends `Box` to support pre-defined background colours
  * that provide visual context to child components. This means that components
  * will change foreground colour depending on the parent background colour.
+ *
+ * > This component should be wrapped in a ThemeProvider
+ *
  * @deprecated
  */
 export const Background = forwardRef(function Background({ backgroundColor, ...props }, ref) {

@@ -5,10 +5,18 @@ import { Heading } from '../Heading';
 import { Background, backgroundColorsMapping } from './Background';
 import { fonts } from '../tokens';
 import { Flex } from '../Flex';
+import { ThemeProvider } from '../ThemeProvider';
 
 const meta: Meta<typeof Background> = {
   title: 'Web UI / Deprecated / Background',
   component: Background,
+  decorators: [
+    Story => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 };
 
 export default meta;

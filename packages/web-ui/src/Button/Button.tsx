@@ -140,6 +140,8 @@ const StyledButton = styled(MuiButton)({
 
 /**
  * A Button should be used for actions.
+ *
+ * > This component should be wrapped in a ThemeProvider
  */
 export const Button = forwardRef(function Button(
   { size = 'medium', variant = 'primary', ...props },

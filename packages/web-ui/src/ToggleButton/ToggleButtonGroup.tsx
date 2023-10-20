@@ -38,6 +38,9 @@ export type ToggleButtonGroupProps = Pick<
   'children' | 'classes' | 'disabled' | 'fullWidth' | 'onChange' | 'value' | 'className' | 'sx'
 >;
 
+/**
+ * > This component should be wrapped in a ThemeProvider
+ */
 export const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGroupProps>(
   function ToggleButtonGroup({ children, disabled, className, ...props }, ref) {
     return (

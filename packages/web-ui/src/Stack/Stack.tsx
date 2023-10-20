@@ -23,6 +23,8 @@ export type StackProps<D extends React.ElementType = DefaultStackComponent, P = 
  * This component is directly based on the one from the '@mui/material' package, please
  * [check their site for further documentation](https://mui.com/material-ui/react-stack/).
  *
+ * > This component should be wrapped in a ThemeProvider
+ *
  * ## Accessibility
  *
  * The `Stack` component is an all purpose component. By default, it has no
