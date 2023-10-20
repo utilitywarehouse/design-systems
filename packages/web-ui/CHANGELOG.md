@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.2.4
+
+### Patch Changes
+
+- [#192](https://github.com/utilitywarehouse/design-systems/pull/192) [`287ab7f`](https://github.com/utilitywarehouse/design-systems/commit/287ab7f2ef4633de60316c45c596011eb8b0e4d5) Thanks [@robphoenix](https://github.com/robphoenix)! - Update internal styled import
+
 ## 0.2.3
 
 ### Patch Changes
