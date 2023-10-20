@@ -7,10 +7,18 @@ import { Box } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { headingVariantMapping, textVariantMapping } from '../Typography/LegacyTypography';
 import { Typography } from '../Typography';
+import { ThemeProvider } from '../ThemeProvider';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Components / TextLink',
   component: TextLink,
+  decorators: [
+    Story => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 };
 
 export default meta;

@@ -4,10 +4,18 @@ import { Grid } from './Grid';
 import { Box } from '../Box';
 import { Text } from '../Text';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { ThemeProvider } from '../ThemeProvider';
 
 const meta: Meta<typeof Grid> = {
   title: 'Web UI / Layout / Grid',
   component: Grid,
+  decorators: [
+    Story => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 };
 
 export default meta;

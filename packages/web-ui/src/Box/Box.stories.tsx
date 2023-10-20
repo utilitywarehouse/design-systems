@@ -5,7 +5,6 @@ import { useRef } from 'react';
 import { fonts } from '../tokens';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Text } from '../Text';
-import '@utilitywarehouse/colour-system/css/colours.css';
 
 const meta: Meta<typeof Box> = {
   title: 'Web UI / Layout / Box',

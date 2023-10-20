@@ -49,6 +49,8 @@ const StyledLink = styled(MuiLink)({
 /**
  * TextLink is for non button type links.
  *
+ * > This component should be wrapped in a ThemeProvider
+ *
  * ## Contextual colour
  *
  * When contained inside a `Box` component that specifies a `backgroundColor`
