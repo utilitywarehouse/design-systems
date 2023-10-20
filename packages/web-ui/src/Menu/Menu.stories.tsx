@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { Box } from '../Box';
 import { Button } from '../Button';
+import { ThemeProvider } from '../ThemeProvider';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
 
@@ -9,6 +10,13 @@ const meta: Meta<typeof Menu> = {
   title: 'Web UI / Components / Menu',
   component: Menu,
   tags: ['autodocs'],
+  decorators: [
+    Story => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 };
 
 export default meta;

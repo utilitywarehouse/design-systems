@@ -1,6 +1,6 @@
 import '@utilitywarehouse/fontsource';
 import '@utilitywarehouse/css-reset';
-import { breakpoints } from '../src';
+import { breakpoints, Box } from '../src';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 
@@ -69,6 +69,15 @@ const preview = {
       },
     },
   },
+  decorators: [
+    Story => {
+      return (
+        <Box>
+          <Story />
+        </Box>
+      );
+    },
+  ],
 };
 
 export default preview;
