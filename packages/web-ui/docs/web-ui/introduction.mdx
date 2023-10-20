@@ -58,7 +58,18 @@ import '@utilitywarehouse/fontsource';
 
 ## Theming
 
-Start by wrapping your application with the `ThemeProvider` component.
+The following components should be wrapped in the `ThemeProvider`;
+
+- `Background` (deprecated)
+- `Grid`
+- `Menu` (& `MenuItem`)
+- `TextField`
+- `TextLink`
+- `Stack`
+- `ToggleButtonGroup` (& `ToggleButton`)
+- `Typography` (only if using the legacy `variant` prop)
+
+Wrap your application with the `ThemeProvider` component.
 
 ```tsx
 import * as React from 'react';
@@ -71,6 +82,24 @@ const App: React.FC = () => (
   </ThemeProvider>
 );
 ```
+
+Or if necessary wrap only specific components with the `ThemeProvider`.
+
+```tsx
+import * as React from 'react';
+import { ThemeProvider, TextField } from '@utilitywarehouse/web-ui';
+import App from './App';
+
+const CustomInput: React.FC = () => (
+  <ThemeProvider>
+    <TextField />
+  </ThemeProvider>
+);
+```
+
+All other components can be used without being wrapped in a `ThemeProvider`,
+and will nnot be affected if wrapped in a `ThemeProvider` from another
+component library, including the deprecated `customer-ui-material`.
 
 ## ES modules
 
