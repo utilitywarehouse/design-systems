@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Background } from '../Background';
 import { Flex } from '../Flex';
+import { ThemeProvider } from '../ThemeProvider';
 import { backgroundColors } from '../types';
 import { headingVariantMapping, textVariantMapping } from './LegacyTypography';
 import { Typography } from './Typography';
@@ -47,6 +48,13 @@ export const Workshop: Story = {
 export const LegacyVariants: Story = {
   name: 'Deprecated Legacy Variants',
   parameters: { layout: 'fullscreen' },
+  decorators: [
+    Story => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   render: args => (
     <Flex direction="column" gap={0}>
       {backgroundColors.map(bg => (
