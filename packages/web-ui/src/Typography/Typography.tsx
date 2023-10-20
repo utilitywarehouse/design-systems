@@ -25,6 +25,8 @@ const BaseBox = createBox<'p' | 'span' | 'div' | 'label' | 'strong' | 'em' | 'le
  * `customer-ui-material`, but is deprecated and will be removed in the next major
  * version (`v1`), in favour of the `Text` & `Heading` components.
  *
+ * > When using the variant prop, this component should be wrapped in a ThemeProvider.
+ *
  * ## Alternatives
  *
  * - `Heading` for heading-level text

@@ -213,6 +213,8 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
 
 /**
  * TextField enables users to enter text into a UI. They typically appear in forms and dialogs.
+ *
+ * > This component should be wrapped in a ThemeProvider
  */
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfield(
   { label, labelId, helperText, 'aria-label': ariaLabel, ...props },

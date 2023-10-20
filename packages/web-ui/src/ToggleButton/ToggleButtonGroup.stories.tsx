@@ -1,11 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { Box } from '../Box';
+import { ThemeProvider } from '../ThemeProvider';
 import { ToggleButton } from './ToggleButton';
 import { ToggleButtonGroup } from './ToggleButtonGroup';
 
 const meta: Meta<typeof ToggleButtonGroup> = {
   title: 'Web UI / Components / ToggleButtonGroup',
   component: ToggleButtonGroup,
+  tags: ['autodocs'],
+  decorators: [
+    Story => (
+      <ThemeProvider>
+        <Box padding={4}>
+          <Story />
+        </Box>
+      </ThemeProvider>
+    ),
+  ],
 };
 
 export default meta;

@@ -1,7 +1,6 @@
 import '@utilitywarehouse/fontsource';
 import '@utilitywarehouse/css-reset';
-import { useEffect } from 'react';
-import { ThemeProvider, useTheme, breakpoints, Box } from '../src';
+import { breakpoints, Box } from '../src';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 
@@ -35,26 +34,6 @@ const customerUiViewports = {
     },
   },
   ...INITIAL_VIEWPORTS,
-};
-
-const StoriesContainer = props => {
-  const theme = useTheme();
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      console.log(
-        `%c
-    ░█▒█░█░░▒█░░░█░░▒█▒██▀░██▄░░░█▒█░█
-    ░▀▄█░▀▄▀▄▀▒░░▀▄▀▄▀░█▄▄▒█▄█▒░░▀▄█░█
-
-    Tip: you can access the documentation \`theme\` object directly in the console.
-    `,
-        `font-family:monospace;color:${colorsCommon.brandPrimaryPurple};font-size:16px;`
-      );
-      // Expose the theme as a global variable so people can play with it.
-      window.parent.window.theme = theme;
-    }
-  }, [theme]);
-  return <Box {...props} />;
 };
 
 const preview = {
@@ -93,11 +72,9 @@ const preview = {
   decorators: [
     Story => {
       return (
-        <ThemeProvider>
-          <StoriesContainer>
-            <Story />
-          </StoriesContainer>
-        </ThemeProvider>
+        <Box>
+          <Story />
+        </Box>
       );
     },
   ],
