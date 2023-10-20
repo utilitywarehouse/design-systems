@@ -1,5 +1,11 @@
 # @utilitywarehouse/css-reset
 
+## 0.1.0
+
+### Minor Changes
+
+- [#195](https://github.com/utilitywarehouse/design-systems/pull/195) [`9028320`](https://github.com/utilitywarehouse/design-systems/commit/9028320cebdd6eb3de2761c24fd54cdca35fd409) Thanks [@robphoenix](https://github.com/robphoenix)! - Ensure svg icons do not shrink. This fixes issues when used inside flex containers.
+
 ## 0.0.4
 
 ### Patch Changes
