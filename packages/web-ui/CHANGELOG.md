@@ -1,5 +1,15 @@
 # @utilitywarehouse/web-ui
 
+## 0.3.0
+
+### Minor Changes
+
+- [#177](https://github.com/utilitywarehouse/design-systems/pull/177) [`8a0446c`](https://github.com/utilitywarehouse/design-systems/commit/8a0446c1330202fe499a0e01fda47b01b77a750b) Thanks [@robphoenix](https://github.com/robphoenix)! - Add lab/Button component
+
+### Patch Changes
+
+- [#196](https://github.com/utilitywarehouse/design-systems/pull/196) [`01d4359`](https://github.com/utilitywarehouse/design-systems/commit/01d4359583bf1e9dca09477362a306a9c5b79e21) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix TextField border on error
+
 ## 0.2.4
 
 ### Patch Changes
