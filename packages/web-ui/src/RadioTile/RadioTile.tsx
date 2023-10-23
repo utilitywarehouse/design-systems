@@ -23,7 +23,7 @@ const StyledRadio = styled('div')({
   borderRadius: '100%',
   border: '2px solid',
   borderColor: colors.grey500,
-  '&:focus': {
+  '&:focus-visible': {
     borderColor: colors.cyan500,
     boxShadow: `0 0 0 2px ${colors.cyan700}`,
   },
@@ -42,7 +42,7 @@ const StyledRadioItem = styled(Item)({
   display: 'flex',
   backgroundColor: colorsCommon.brandWhite,
   boxShadow: `inset 0 0 0 2px ${colors.grey400}`,
-  '&:focus': {
+  '&:focus-visible': {
     backgroundColor: colors.cyan100,
     boxShadow: `inset 0 0 0 2px ${colors.cyan500}`,
     outline: `4px solid ${colors.cyan700}`,
