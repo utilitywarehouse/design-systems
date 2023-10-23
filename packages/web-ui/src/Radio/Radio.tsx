@@ -25,20 +25,25 @@ const StyledRadioItem = styled(Item)({
   backgroundColor: colorsCommon.brandWhite,
   borderRadius: '100%',
   border: '2px solid',
-  borderColor: colors.grey500,
-  '&:focus': {
-    borderColor: colors.cyan500,
+  '--radio-border-color-default': colors.grey500,
+  '--radio-border-color-hover': colors.cyan500,
+  '--radio-border-color-focus': colors.cyan500,
+  '--radio-border-color-checked': colors.cyan500,
+  '--radio-border-color-disabled': colors.grey300,
+  borderColor: `var(--radio-border-color, --radio-border-color-default)`,
+  '&:focus-visible': {
+    '--radio-border-color': 'var(--radio-border-color-focus)',
     outline: `2px solid ${colors.cyan700}`,
   },
   '&[data-state="checked"]': {
-    borderColor: colors.cyan500,
+    '--radio-border-color': 'var(--radio-border-color-checked)',
   },
   '&:hover:enabled': {
-    borderColor: colors.cyan500,
+    '--radio-border-color': 'var(--radio-border-color-hover)',
     boxShadow: `0 0 0 8px ${colors.cyan75}`,
   },
   '&[data-disabled]': {
-    borderColor: colors.grey300,
+    '--radio-border-color': 'var(--radio-border-color-disabled)',
   },
 }) as React.FC<RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>>;
 
