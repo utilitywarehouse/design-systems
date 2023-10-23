@@ -7,7 +7,6 @@ export const breakpoints = {
   desktop: 992,
   wide: 1200,
 };
-export type Breakpoints = typeof breakpoints;
 
 /** ----- TYPOGRAPHY ----- */
 
