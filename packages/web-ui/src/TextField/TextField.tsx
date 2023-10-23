@@ -73,6 +73,9 @@ const StyledInput = styled(FilledInput)({
     },
   },
   '&.Mui-error': {
+    ':before': {
+      borderBottomColor: colors.red600,
+    },
     '&.Mui-focused': {
       borderColor: colors.red600,
     },
