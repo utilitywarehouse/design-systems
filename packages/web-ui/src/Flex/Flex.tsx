@@ -1,6 +1,9 @@
-import { ElementRef, forwardRef } from 'react';
-import { FlexProps } from './Flex.props';
+import { forwardRef } from 'react';
+import { FlexOwnProps } from './Flex.props';
 import { createBox } from '../Box';
+import { OverridableComponent } from '@mui/types';
+import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
+import { type Theme } from '../theme';
 
 const componentClassName = 'Flex';
 const BaseBox = createBox({ componentClassName });
@@ -21,7 +24,7 @@ const BaseBox = createBox({ componentClassName });
  *
  * This component should be used to create vertical and horizontal stacked layouts.
  */
-export const Flex = forwardRef<ElementRef<'div'>, FlexProps>(function Flex(
+export const Flex = forwardRef(function Flex(
   {
     display = 'flex',
     direction,
@@ -56,6 +59,4 @@ export const Flex = forwardRef<ElementRef<'div'>, FlexProps>(function Flex(
       {...props}
     />
   );
-});
-
-Flex.displayName = componentClassName;
+}) as OverridableComponent<MuiBoxTypeMap<FlexOwnProps, MuiBoxTypeMap['defaultComponent'], Theme>>;
