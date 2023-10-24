@@ -22,7 +22,8 @@ const BaseBox = createBox({ componentClassName });
  * - `align` is `alignItems`
  * - `justify` is `justifyContent`
  *
- * This component should be used to create vertical and horizontal stacked layouts.
+ * This component should be used for flexbox based layouts, and to create
+ * vertical and horizontal stacked layouts.
  */
 export const Flex = forwardRef(function Flex(
   {
