@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.3.1
+
+### Patch Changes
+
+- [#199](https://github.com/utilitywarehouse/design-systems/pull/199) [`ab51c82`](https://github.com/utilitywarehouse/design-systems/commit/ab51c82ea45e3d35773e6edba3f5db222e25976c) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Flex types
+
 ## 0.3.0
 
 ### Minor Changes
