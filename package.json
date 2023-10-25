@@ -21,7 +21,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.2.1",
     "turbo": "^1.9.3",
-    "typescript": "^5.0.2"
+    "typescript": "^5"
   },
   "scripts": {
     "setup": "corepack enable && corepack prepare pnpm@8.6.3 --activate",
@@ -39,7 +39,8 @@
     "checks": "turbo run lint build"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "dependencies": {
     "pnpm": "^8.6.3"
