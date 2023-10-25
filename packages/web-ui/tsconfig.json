@@ -8,14 +8,6 @@
     "lib": ["DOM", "ESNext", "DOM.Iterable"],
     "jsx": "react",
     "moduleResolution": "bundler",
-    "sourceMap": true,
-    "declaration": true,
-    "importHelpers": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "alwaysStrict": true,
-    "skipLibCheck": true,
     "emitDeclarationOnly": true
   },
   "exclude": [
