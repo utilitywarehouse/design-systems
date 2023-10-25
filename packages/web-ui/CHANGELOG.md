@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.3.2
+
+### Patch Changes
+
+- [#202](https://github.com/utilitywarehouse/design-systems/pull/202) [`4df4bd9`](https://github.com/utilitywarehouse/design-systems/commit/4df4bd976e8008cb6055b95debde8da49d90c190) Thanks [@robphoenix](https://github.com/robphoenix)! - Update the exports so consumers can import from /lab
+
 ## 0.3.1
 
 ### Patch Changes
