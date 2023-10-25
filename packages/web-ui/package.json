@@ -1,11 +1,33 @@
 {
   "name": "@utilitywarehouse/web-ui",
-  "version": "0.3.1",
+  "version": "0.0.0-20231025093754",
   "description": "React components for building UW UIs",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      },
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./lab": {
+      "require": {
+        "types": "./dist/lab/index.d.ts",
+        "default": "./dist/lab/index.cjs"
+      },
+      "import": {
+        "types": "./dist/lab/index.d.ts",
+        "default": "./dist/lab/index.js"
+      }
+    }
+  },
   "sideEffects": false,
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
@@ -64,6 +86,6 @@
     "react-dom": "^17.0.0 || ^18.0.0"
   },
   "files": [
-    "dist"
+    "dist/**"
   ]
 }
