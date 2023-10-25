@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { getPrefixedName, pxToRem } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';

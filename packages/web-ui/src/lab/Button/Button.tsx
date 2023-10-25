@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { fonts, fontWeights } from '../../tokens';

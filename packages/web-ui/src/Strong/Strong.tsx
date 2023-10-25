@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
 import { PropsWithSx } from '../types';

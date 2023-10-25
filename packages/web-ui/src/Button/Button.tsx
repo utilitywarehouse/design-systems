@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { forwardRef } from 'react';
 import MuiButton, { ButtonProps as MuiButtonProps, ExtendButton } from '@mui/material/Button';
 import type { OverrideProps } from '@mui/material/OverridableComponent';

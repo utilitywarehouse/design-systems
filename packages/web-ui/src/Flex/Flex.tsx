@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { forwardRef } from 'react';
 import { FlexOwnProps } from './Flex.props';
 import { createBox } from '../Box';

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { pxToRem, getPrefixedName } from '../utils';
