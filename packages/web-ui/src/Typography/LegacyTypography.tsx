@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ComponentPropsWithoutRef, forwardRef, PropsWithChildren } from 'react';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } from '@mui/material';

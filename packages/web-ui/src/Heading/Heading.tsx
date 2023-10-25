@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useBackground } from '../Box';
 import { PropsWithSx } from '../types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { forwardRef } from 'react';
 import { Box } from '../Box';
 import { Root } from '@radix-ui/react-radio-group';

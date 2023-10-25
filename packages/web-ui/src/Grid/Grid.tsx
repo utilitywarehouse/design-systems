@@ -1,3 +1,4 @@
+import * as React from 'react';
 import MuiGrid from '@mui/material/Grid';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { forwardRef } from 'react';

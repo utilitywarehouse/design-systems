@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { dataAttributes, isInverseBackgroundColor } from '../utils';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { OverridableComponent } from '@mui/types';
 import { forwardRef, useMemo } from 'react';

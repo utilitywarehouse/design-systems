@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { forwardRef, PropsWithChildren, ElementRef } from 'react';
 import { Box, createBox } from '../Box';
 import { PropsWithSx } from '../types';

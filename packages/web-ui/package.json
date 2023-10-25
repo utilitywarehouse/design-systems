@@ -7,6 +7,18 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./lab": {
+      "require": "./dist/lab/index.cjs",
+      "import": "./dist/lab/index.js",
+      "types": "./dist/lab/index.d.ts"
+    }
+  },
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf dist",
     "build": "tsup",

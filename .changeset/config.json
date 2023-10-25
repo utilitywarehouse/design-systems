@@ -4,5 +4,6 @@
   "commit": false,
   "access": "restricted",
   "baseBranch": "main",
-  "updateInternalDependencies": "patch"
+  "updateInternalDependencies": "patch",
+  "ignore": ["playground"]
 }

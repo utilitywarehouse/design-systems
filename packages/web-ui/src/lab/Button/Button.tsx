@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { fonts, fontWeights } from '../../tokens';
@@ -93,8 +94,8 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
     flexShrink: 0,
     userSelect: 'none',
     verticalAlign: 'top',
-    '-webkit-tap-highlight-color': 'transparent',
-    '-webkit-touch-callout': 'none',
+    WebkitTapHighlightColor: 'transparent',
+    WebkitTouchCallout: 'none',
     fontFamily: fonts.secondary,
     fontWeight: fontWeights.secondary.semibold,
     borderRadius: px(9999),

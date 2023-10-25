@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { forwardRef, useContext } from 'react';
 import { Item, type RadioGroupItemProps } from '@radix-ui/react-radio-group';
 import { Label } from '../Label';
