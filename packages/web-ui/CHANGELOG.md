@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.0.0-20231025094321
+
+### Patch Changes
+
+- import paths
+
 ## 0.0.0-20231025093754
 
 ### Patch Changes
