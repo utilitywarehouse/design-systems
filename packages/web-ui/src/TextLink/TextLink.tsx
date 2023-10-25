@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link';
 import { dataAttributes, isHeadingVariant } from '../utils';
 import { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';

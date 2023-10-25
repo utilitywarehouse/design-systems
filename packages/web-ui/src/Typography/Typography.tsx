@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { fonts, fontWeights } from '../tokens';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { LegacyTypography } from './LegacyTypography';

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { forwardRef } from 'react';
 import MuiMenuItem from '@mui/material/MenuItem';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
