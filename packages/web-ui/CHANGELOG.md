@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.3.4
+
+### Patch Changes
+
+- [#206](https://github.com/utilitywarehouse/design-systems/pull/206) [`ef8bc5d`](https://github.com/utilitywarehouse/design-systems/commit/ef8bc5dba22ca45f084a155749e79661b9cc9db3) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix button disabled state for screenreaders
+
 ## 0.3.3
 
 ### Patch Changes
