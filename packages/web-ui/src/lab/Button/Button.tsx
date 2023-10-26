@@ -304,6 +304,7 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
       className,
       asChild,
       children,
+      disabled,
       ...props
     },
     forwardedRef
@@ -314,7 +315,8 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
         ref={forwardedRef}
         data-colorscheme={colorScheme}
         // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
-        data-disabled={props.disabled || undefined}
+        data-disabled={disabled || undefined}
+        aria-disabled={disabled || undefined}
         className={clsx(
           label,
           className,
