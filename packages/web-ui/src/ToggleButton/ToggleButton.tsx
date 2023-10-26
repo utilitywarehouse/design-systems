@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import MuiToggleButton, {
+import {
+  ToggleButton as MuiToggleButton,
   ToggleButtonProps as MuiToggleButtonProps,
-} from '@mui/material/ToggleButton';
+} from '@mui/material';
 import { fonts, fontWeights } from '../tokens';
 import { dataAttributes, px } from '../utils';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { styled } from '../theme';
 
 const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
   const { inverse } = dataAttributes;
@@ -80,3 +81,5 @@ export const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProp
     );
   }
 );
+
+export default ToggleButton;

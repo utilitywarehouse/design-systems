@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Text } from '../Text';
 import { Flex } from '../Flex';

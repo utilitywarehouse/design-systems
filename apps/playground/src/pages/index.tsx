@@ -2,14 +2,21 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
-import '@utilitywarehouse/css-reset';
-import '@utilitywarehouse/fontsource';
-import { Button } from '@utilitywarehouse/web-ui/lab';
-import { Heading } from '@utilitywarehouse/web-ui';
+// import { Button } from '@utilitywarehouse/web-ui/dist/lab';
+import { Lab, Heading, ToggleButton, ToggleButtonGroup, Spacer } from '@utilitywarehouse/web-ui';
+import { useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
+// const { Button } = Lab;
 
 export default function Home() {
+  const [option, setOption] = useState<string | null>('option-1');
+
+  const handleOption = (event: React.MouseEvent<HTMLElement>, newOption: string | null) => {
+    if (newOption !== null) {
+      setOption(newOption);
+    }
+  };
   return (
     <>
       <Head>
@@ -20,7 +27,14 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <Heading>Web UI</Heading>
-        <Button>Web UI button</Button>
+        <Lab.Button>Web UI button</Lab.Button>
+        <Spacer size={6} />
+        <ToggleButtonGroup value={option} onChange={handleOption}>
+          <ToggleButton value="option-1">Option 1</ToggleButton>
+          <ToggleButton value="option-2">Option 2</ToggleButton>
+          <ToggleButton value="option-3">Option 3</ToggleButton>
+        </ToggleButtonGroup>
+
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;

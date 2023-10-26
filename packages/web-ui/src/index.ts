@@ -4,6 +4,7 @@ export * from './theme';
 export * from './tokens';
 export * from './types';
 export * from './hooks';
+export * as Lab from './lab';
 /* components */
 export * from './Background';
 export * from './Box';
