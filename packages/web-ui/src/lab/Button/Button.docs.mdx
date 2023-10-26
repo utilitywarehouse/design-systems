@@ -11,6 +11,7 @@ import * as Stories from './Button.stories';
 
 ## Contents
 
+- [Usage](#usage)
 - [Accessibility](#accessibility)
   - [Known issues](#known-issues)
 - [Variant](#variant)
@@ -28,6 +29,45 @@ import * as Stories from './Button.stories';
 - [Semantic HTML](#semantic-html)
 - [Full Width Button](#full-width-button)
 - [API Reference](#api-reference)
+
+## Usage
+
+This `Button` component is part of the lab submodule, a way for us to make new
+components available prior to an official major release. This helps us bed in
+new components before introducing breaking changes, and to avoid blocking the
+availability of these components for designers.
+
+There are 2 options for importing this component.
+
+1. Import directly from the `lab` directory.
+
+```tsx
+import { Box } from '@utilitywarehouse/web-ui';
+import { Button } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+<Box>
+  <Button>Button</Button>
+</Box>;
+```
+
+2. Import `Lab` directly from Web UI.
+
+```tsx
+import { Box, Lab } from '@utilitywarehouse/web-ui';
+
+[...]
+
+<Box>
+  <Lab.Button>Button</Lab.Button>
+</Box>
+// or
+const { Button } = Lab
+<Box>
+  <Button>Button</Button>
+</Box>
+```
 
 ## Accessibility
 

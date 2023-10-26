@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import MuiToggleButtonGroup, {
+import {
+  ToggleButtonGroup as MuiToggleButtonGroup,
   ToggleButtonGroupProps as MuiToggleButtonGroupProps,
-} from '@mui/material/ToggleButtonGroup';
+} from '@mui/material';
 import { dataAttributes, px } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
+import { styled } from '../theme';
 
 const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme, disabled }) => {
   const { inverse } = dataAttributes;

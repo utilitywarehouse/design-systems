@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import { px } from '../utils';
+import { px, spacing } from '../utils';
 import { ElementRef, forwardRef } from 'react';
 import { createBox } from '../Box';
 import { PropsWithSx } from '../types';
 import { SpacerProps } from './Spacer.props';
+import { breakpoints } from '../tokens';
 
 export type DefaultSpacerComponent = 'div';
 
@@ -23,24 +23,22 @@ export const Spacer = forwardRef<ElementRef<'div'>, PropsWithSx<SpacerProps>>(fu
   { axis = 'vertical', size = 1, inline = false, sx, ...props },
   ref
 ) {
-  const theme = useTheme();
-
   const getSize = () => {
     if (Array.isArray(size)) {
-      return size.map(s => theme.spacing(s as number));
+      return size.map(s => spacing(s as number));
     }
     if (typeof size === 'object') {
-      return Object.keys(theme.breakpoints.values).reduce(
-        (acc: { [key: string]: string }, breakpoint: string) => {
+      return Object.keys(breakpoints).reduce(
+        (acc: { [key: string]: number }, breakpoint: string) => {
           if (size[breakpoint] !== null) {
-            acc[breakpoint] = theme.spacing(size[breakpoint] as number);
+            acc[breakpoint] = spacing(size[breakpoint] as number);
           }
           return acc;
         },
         {}
       );
     }
-    return theme.spacing(size);
+    return spacing(size);
   };
 
   const width = axis === 'vertical' ? px(1) : getSize();

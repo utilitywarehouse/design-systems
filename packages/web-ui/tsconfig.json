@@ -3,19 +3,13 @@
   "compilerOptions": {
     "target": "ES2018",
     "module": "ES2020",
+    "moduleResolution": "node",
     "outDir": "dist",
     "rootDir": "src",
     "lib": ["DOM", "ESNext", "DOM.Iterable"],
     "jsx": "react",
-    "moduleResolution": "bundler",
     "emitDeclarationOnly": true
   },
-  "exclude": [
-    "dist",
-    "node_modules",
-    "storybook-static"
-  ],
-  "include": [
-    "src/**/*"
-  ]
+  "exclude": ["dist", "node_modules", "storybook-static"],
+  "include": ["src/**/*"]
 }

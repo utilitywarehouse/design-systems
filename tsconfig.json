@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "DOM",
-      "ESNext"
-    ],
+    "lib": ["DOM", "ESNext"],
+    "module": "commonjs",
+    "moduleResolution": "node",
     "allowJs": true,
     "noEmit": false,
     "allowSyntheticDefaultImports": true,
@@ -20,8 +19,5 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": [
-    "dist",
-    "node_modules"
-  ]
+  "exclude": ["dist", "node_modules"]
 }
