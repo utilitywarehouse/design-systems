@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { TextLink, TextLinkProps } from './TextLink';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Backgrounds } from '../storybook-utils';
