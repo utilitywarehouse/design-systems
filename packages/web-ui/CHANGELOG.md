@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.3.3
+
+### Patch Changes
+
+- [#204](https://github.com/utilitywarehouse/design-systems/pull/204) [`46b5e96`](https://github.com/utilitywarehouse/design-systems/commit/46b5e96d9c48bb76b5f7ac37902c09863903d79a) Thanks [@robphoenix](https://github.com/robphoenix)! - Improve importing of lab components
+
 ## 0.3.2
 
 ### Patch Changes
