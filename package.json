@@ -32,7 +32,7 @@
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "clean": "pnpm -r --stream clean && rm -rf node_modules",
-    "dev": "turbo run dev --no-cache --parallel --continue",
+    "dev": "turbo run dev --no-cache --parallel --continue --filter='./packages/*'",
     "changeset": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
     "ci:publish": "NODE_OPTIONS=\"--max_old_space_size=4096\" pnpm run build && changeset publish",
