@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.3.5
+
+### Patch Changes
+
+- [#209](https://github.com/utilitywarehouse/design-systems/pull/209) [`43c76f1`](https://github.com/utilitywarehouse/design-systems/commit/43c76f1306d62b71d27780c097b7dd005b32f0af) Thanks [@robphoenix](https://github.com/robphoenix)! - bump mui deps
+
 ## 0.3.4
 
 ### Patch Changes
