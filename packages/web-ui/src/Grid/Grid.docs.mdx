@@ -15,6 +15,13 @@ import { spacingBase, breakpoints } from '../tokens';
 
 <Canvas of={Stories.GridStory} />
 
+- [Accessibility](#accessibility)
+- [Breakpoint Props](#breakpoint-props)
+- [Default Columns](#default-columns)
+- [Default Spacing](#default-spacing)
+- [Guidelines](#guidelines)
+- [Props](#props)
+
 ## Accessibility
 
 The `Grid` component is an all purpose component. By default, it has no
@@ -55,6 +62,14 @@ reflect our custom breakpoint names: {Object.keys(breakpoints).join(', ')}
     </Box>
   ))}
 </Stack>
+
+## Guidelines
+
+The `Grid` component should be used for [macro layouts](https://web.dev/learn/design/macro-layouts/),
+and shouldn't be used inside other layout components. Due to the current implementation of the
+`Stack` component, using the [lobotomized owl selector](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/),
+you may find that rendering a `Grid` as a child of `Stack` breaks the layout.
+Please avoid this.
 
 ## Props
 
