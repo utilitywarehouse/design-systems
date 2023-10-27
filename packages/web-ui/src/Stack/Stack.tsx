@@ -31,6 +31,12 @@ export type StackProps<D extends React.ElementType = DefaultStackComponent, P = 
  * The `Stack` component is an all purpose component. By default, it has no
  * accessibility concerns. If you use the `Stack` as a custom element, it is up to
  * you to manage the resulting accessibility implications.
+ *
+ * ## Implementation
+ *
+ * By default `Stack` uses margins to create space between children. You can
+ * change this to use the flexbox gap property with the `useFlexGap` boolean
+ * prop.
  */
 export const Stack = forwardRef(function Stack(props, ref) {
   return <MuiStack ref={ref} {...props} />;
