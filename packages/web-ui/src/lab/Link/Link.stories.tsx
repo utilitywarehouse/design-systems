@@ -5,6 +5,7 @@ import {
   ChevronRightSmallIcon,
   ChevronLeftMediumIcon,
   ChevronLeftSmallIcon,
+  OpenMediumIcon,
 } from '@utilitywarehouse/react-icons';
 import { Link } from './Link';
 import { Flex } from '../../Flex';
@@ -12,6 +13,11 @@ import { Flex } from '../../Flex';
 const meta: Meta<typeof Link> = {
   title: 'Web UI / Lab / Link',
   component: Link,
+  argTypes: {
+    children: { control: { type: 'text' } },
+    href: { control: { type: 'text' } },
+    size: { control: { type: 'radio' }, options: ['large', 'small'] },
+  },
 };
 
 export default meta;
@@ -19,7 +25,7 @@ type Story = StoryObj<typeof Link>;
 
 const sizes = ['large', 'small'] as const;
 
-export const Workshop: Story = {
+export const KitchenSink: Story = {
   render: () => (
     <Flex direction="column" gap={4}>
       <Flex gap={2} align="center">
@@ -42,6 +48,22 @@ export const Workshop: Story = {
   ),
 };
 
+export const Workshop: Story = {
+  args: {
+    children: 'Link',
+    href: '#',
+  },
+};
+
+export const SimpleExample: Story = {
+  render: () => (
+    <Link href="#">
+      Link
+      <ChevronRightMediumIcon />
+    </Link>
+  ),
+};
+
 export const ResponsiveSize: Story = {
   args: {
     children: 'Responsive size link',
@@ -52,4 +74,27 @@ export const ResponsiveSize: Story = {
       wide: 'small',
     },
   },
+};
+
+export const AsButton: Story = {
+  render: () => (
+    <Link asChild>
+      <button onClick={() => alert('Hello world!')}>
+        View UW services
+        <OpenMediumIcon />
+      </button>
+    </Link>
+  ),
+};
+
+export const FullWidth: Story = {
+  render: args => (
+    <Flex direction="column" align="stretch" gap={2}>
+      <Link {...args}>
+        {args.children}
+        <ChevronRightMediumIcon />
+      </Link>
+    </Flex>
+  ),
+  args: { children: 'Full width link with icon' },
 };

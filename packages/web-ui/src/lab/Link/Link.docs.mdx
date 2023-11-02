@@ -1,0 +1,126 @@
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import * as Stories from './Link.stories';
+
+<Meta of={Stories} />
+
+# Link
+
+<Description />
+
+<Canvas of={Stories.SimpleExample} />
+
+## Usage
+
+This `Link` component is part of the lab submodule, a way for us to make new
+components available prior to an official major release. This helps us bed in
+new components before introducing breaking changes, and to avoid blocking the
+availability of these components for designers.
+
+There are 2 options for importing this component.
+
+1. Import directly from the `lab` directory.
+
+```tsx
+import { Box } from '@utilitywarehouse/web-ui';
+import { Link } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+<Box>
+  <Link>Link</Link>
+</Box>;
+```
+
+2. Import `Lab` directly from Web UI.
+
+```tsx
+import { Box, Lab } from '@utilitywarehouse/web-ui';
+
+[...]
+
+<Box>
+  <Lab.Link>Link</Lab.Link>
+</Box>
+// or
+const { Link } = Lab
+<Box>
+  <Button>Button</Button>
+</Box>
+```
+
+## Size
+
+The size prop controls the size of the `Link`. This is a responsive prop and
+can be used to display different sizes at different breakpoints.
+
+<Canvas of={Stories.ResponsiveSize} />
+
+```tsx
+<Link
+  size={{
+    mobile: 'small',
+    desktop: 'large',
+  }}
+/>
+```
+
+## With icons
+
+You can nest icons directly inside the `Link`. An appropriate gap is provided
+automatically, and the icon will inherit the appropriate colours.
+
+This button is intended to be used with the UW icons packages. Small links
+should use 16px icons (small), while large links should use 24px icons
+(medium).
+
+```tsx
+<Link size="large">
+  <SettingsMediumIcon />
+  Edit account
+</Link>
+```
+
+Icons from the UW icons packages have `aria-hidden="true"` set by default. If
+you are using an icon from outside these packages, and for purely decorative
+reasons, please ensure it has this attribute set so that the icon is hidden
+from screen readers.
+
+## Semantic HTML
+
+> If it goes somewhere it's a link, if it does something it's a button.
+
+A semantic HTML `a` is rendered by default, however you can change the
+underlying HTML element by using the `asChild` prop.
+
+When `asChild` is set to true, we will not render a default DOM element,
+instead cloning the child and passing it the props and behaviour required to
+make it functional.
+
+Read more about this idea in the [Radix UI composition docs](https://www.radix-ui.com/primitives/docs/guides/composition).
+
+<Canvas of={Stories.AsButton} />
+
+```tsx
+<Link asChild href="https://uw.co.uk/services">
+  <button>
+    View UW services
+    <OpenMediumIcon />
+  </button>
+</Link>
+```
+
+## Full Width Link
+
+Use layout components, like `Flex`, to define your UI layouts.
+
+<Canvas of={Stories.FullWidth} />
+
+```tsx
+<Flex direction="column" align="stretch">
+  <Link>Link</Link>
+</Flex>
+```
+
+## API Reference
+
+<ArgTypes of={Stories} />

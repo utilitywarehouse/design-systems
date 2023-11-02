@@ -66,9 +66,20 @@ const StyledLink = styled('a', { label })<LinkProps>(() => {
   };
 
   return {
+    // unset button styles when asChild is used
+    ':where(button)': {
+      outline: 'transparent',
+      appearance: 'none',
+      border: 'none',
+      background: 'transparent',
+      padding: 0,
+    },
     cursor: 'pointer',
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    flexShrink: 0,
     gap: 'var(--link-gap)',
     fontFamily: fonts.secondary,
     fontSize: 'var(--link-font-size)',
@@ -124,8 +135,9 @@ const StyledLink = styled('a', { label })<LinkProps>(() => {
 });
 
 /**
+ * A semantic Call To Action for navigating between pages.
  *
- * This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Link = forwardRef<ElementRef<'a'>, PropsWithChildren<PropsWithSx<LinkProps>>>(
   function Link({ className, asChild, children, size = 'large', ...props }, forwardedRef) {
