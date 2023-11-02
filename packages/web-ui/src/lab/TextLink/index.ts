@@ -1,2 +1,2 @@
-export { Link } from './Link';
-export type { LinkProps } from './Link.props';
+export { TextLink } from './TextLink';
+export type { TextLinkProps } from './TextLink.props';
