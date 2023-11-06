@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { TextLink } from './TextLink';
 import { Text } from '../../Text';
 import { Flex } from '../../Flex';
+import { Box } from '../../Box';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Lab / TextLink',
@@ -56,6 +58,36 @@ export const WithinText: Story = {
             <TextLink href="#">an embedded link</TextLink> within this text.
           </Text>
         ))}
+      </Flex>
+    );
+  },
+};
+
+export const TextLinkColour: Story = {
+  name: 'Contextual Colour',
+  render: () => {
+    return (
+      <Flex direction="column">
+        <Box padding={2}>
+          <Text variant="body">
+            Text with a <TextLink>TextLink</TextLink>
+          </Text>
+        </Box>
+        <Box padding={2} background={colorsCommon.brandPrimaryPurple}>
+          <Text variant="body">
+            Text with a <TextLink>TextLink</TextLink> on brandPrimaryPurple background
+          </Text>
+        </Box>
+        <Box padding={2} background={colorsCommon.brandMidnight}>
+          <Text variant="body">
+            Text with a <TextLink>TextLink</TextLink> on brandMidnight background
+          </Text>
+        </Box>
+        <Box padding={2} background={colorsCommon.brandMidnight}>
+          <Text variant="body" color={colorsCommon.brandPink}>
+            Text with a <TextLink>TextLink</TextLink> on brandMidnight background with custom color
+          </Text>
+        </Box>
       </Flex>
     );
   },
