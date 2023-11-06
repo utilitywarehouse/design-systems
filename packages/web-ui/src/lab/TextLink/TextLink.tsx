@@ -6,35 +6,39 @@ import clsx from 'clsx';
 import { Typography } from '../../Typography';
 import { TextLinkProps } from './TextLink.props';
 import { styled } from '../../theme';
-import { colors } from '@utilitywarehouse/colour-system';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { useBackground } from '../../Box';
 
 const componentName = 'TextLink';
 const componentClassName = getPrefixedName(componentName);
 
-const StyledTypography = styled(Typography)({
-  cursor: 'pointer',
-  textDecoration: 'underline',
-  '--text-link-color-default': colors.cyan600,
-  '--text-link-color-hover': colors.cyan700,
-  '--text-link-color-active': colors.cyan800,
-  '--text-link-color': 'var(--text-link-color-default)',
-  color: 'var(--text-link-color)',
-  textDecorationColor: 'currentColor',
-  borderRadius: px(4),
-  '@media (hover: hover)': {
-    '&:where(:hover)': {
-      '--text-link-color': 'var(--text-link-color-hover)',
+const StyledTypography = styled(Typography)(() => {
+  const { isBrandBackground } = useBackground();
+  return {
+    cursor: 'pointer',
+    textDecoration: 'underline',
+    '--text-link-color-default': isBrandBackground ? colorsCommon.brandWhite : colors.cyan600,
+    '--text-link-color-hover': isBrandBackground ? colorsCommon.brandWhite : colors.cyan700,
+    '--text-link-color-active': isBrandBackground ? colorsCommon.brandWhite : colors.cyan800,
+    '--text-link-color': 'var(--text-link-color-default)',
+    color: 'var(--text-link-color)',
+    textDecorationColor: 'currentColor',
+    borderRadius: px(4),
+    '@media (hover: hover)': {
+      '&:where(:hover)': {
+        '--text-link-color': 'var(--text-link-color-hover)',
+      },
     },
-  },
-  '&:where(:active)': {
-    '--text-link-color': 'var(--text-link-color-active)',
-  },
-  '&:where(:focus-visible)': {
-    outlineWidth: px(2),
-    outlineStyle: 'solid',
-    outlineColor: colors.cyan700,
-    outlineOffset: px(2),
-  },
+    '&:where(:active)': {
+      '--text-link-color': 'var(--text-link-color-active)',
+    },
+    '&:where(:focus-visible)': {
+      outlineWidth: px(2),
+      outlineStyle: 'solid',
+      outlineColor: colors.cyan700,
+      outlineOffset: px(2),
+    },
+  };
 });
 
 /**

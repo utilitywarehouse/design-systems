@@ -23,9 +23,17 @@ const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
 export const Workshop: Story = {
   render: args => (
-    <Text>
-      <TextLink {...args} />
-    </Text>
+    <Flex direction="column" gap={4} width={500}>
+      <Text>
+        <TextLink {...args} />
+      </Text>
+      <Text>
+        Susan Kare is an American artist and <TextLink {...args}>graphic designer</TextLink>, who
+        contributed <TextLink {...args}>interface</TextLink> elements and{' '}
+        <TextLink {...args}>typefaces</TextLink> for the first{' '}
+        <TextLink {...args}>Apple Macintosh</TextLink> personal computer from 1983 to 1986.
+      </Text>
+    </Flex>
   ),
   args: {
     children: 'TextLink',
@@ -39,7 +47,9 @@ export const KitchenSink: Story = {
       <Flex direction="column" gap={1}>
         {variants.map(variant => (
           <Text key={variant} variant={variant}>
-            <TextLink textTransform="capitalize">{variant} TextLink</TextLink>
+            <TextLink textTransform="capitalize" href="#">
+              {variant} TextLink
+            </TextLink>
           </Text>
         ))}
       </Flex>
