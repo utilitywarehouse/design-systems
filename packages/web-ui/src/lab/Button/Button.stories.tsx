@@ -60,6 +60,7 @@ export const KitchenSink: Story = {
                       variant={variant}
                       colorScheme={colorScheme}
                       size={size}
+                      onClick={() => alert('hello, world!')}
                     >
                       Button
                     </Button>
@@ -77,6 +78,7 @@ export const KitchenSink: Story = {
                       variant={variant}
                       colorScheme={colorScheme}
                       size={size}
+                      onClick={() => alert('hello, world!')}
                     >
                       Button
                     </Button>

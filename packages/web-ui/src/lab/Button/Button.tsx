@@ -305,6 +305,7 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
       asChild,
       children,
       disabled,
+      onClick,
       ...props
     },
     forwardedRef
@@ -317,6 +318,9 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
         // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
         data-disabled={disabled || undefined}
         aria-disabled={disabled || undefined}
+        // as we're using aria-disabled instead of disabled then we need to
+        // disable the onClick event
+        onClick={disabled ? undefined : onClick}
         className={clsx(
           label,
           className,
