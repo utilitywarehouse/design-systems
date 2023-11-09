@@ -1,5 +1,5 @@
 import { Responsive } from '../../types';
-import { UnstyledButtonProps } from '../UnstyledButton/UnstyledButton.props';
+import { UnstyledButtonProps } from '../../UnstyledButton';
 
 export type ButtonProps = UnstyledButtonProps & {
   /**
