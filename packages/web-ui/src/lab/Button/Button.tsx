@@ -16,13 +16,13 @@ import {
 } from '../../utils';
 import { ButtonProps } from './Button.props';
 import clsx from 'clsx';
-import { Slot } from '@radix-ui/react-slot';
 import { styled } from '../../theme';
+import { UnstyledButton } from '../../UnstyledButton';
 
 const componentName = 'Button';
 const label = getPrefixedName(componentName);
 
-const classNames = {
+const classNames: { [key: string]: { [key: string]: string } } = {
   variant: {
     solid: getPrefixedName('variant-solid'),
     outline: getPrefixedName('variant-outline'),
@@ -58,7 +58,7 @@ const classSelectors = {
   },
 };
 
-const StyledButton = styled('button', { label })<ButtonProps>(() => {
+const StyledButton = styled(UnstyledButton, { label })<ButtonProps>(() => {
   const sizeStyles = {
     large: {
       '--button-font-size': pxToRem(18),
@@ -83,28 +83,12 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
   };
 
   return {
-    all: 'unset',
-    outline: 'transparent',
-    appearance: 'none',
-    boxSizing: 'border-box',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    flexShrink: 0,
-    userSelect: 'none',
-    verticalAlign: 'top',
-    WebkitTapHighlightColor: 'transparent',
-    WebkitTouchCallout: 'none',
     fontFamily: fonts.secondary,
     fontWeight: fontWeights.secondary.semibold,
     borderRadius: px(9999),
-    // make clicks not need to wait and observe a potential double click, making the buttons feel faster
-    touchAction: 'manipulation',
     gap: 'var(--button-gap)',
     color: 'var(--button-foreground-color)',
     backgroundColor: 'var(--button-background-color)',
-    border: 'none',
     fontSize: 'var(--button-font-size)',
     lineHeight: 'var(--button-line-height)',
     minWidth: 'var(--button-min-width)',
@@ -302,8 +286,6 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
       colorScheme = 'cyan',
       size = 'large',
       className,
-      asChild,
-      children,
       disabled,
       onClick,
       ...props
@@ -312,7 +294,6 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
   ) {
     return (
       <StyledButton
-        as={asChild ? Slot : 'button'}
         ref={forwardedRef}
         data-colorscheme={colorScheme}
         // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
@@ -328,9 +309,7 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
           classNames.variant[variant]
         )}
         {...props}
-      >
-        {children}
-      </StyledButton>
+      />
     );
   }
 );

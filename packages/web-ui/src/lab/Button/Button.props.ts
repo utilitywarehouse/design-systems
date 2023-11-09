@@ -1,7 +1,7 @@
-import { ComponentPropsWithoutRef } from 'react';
 import { Responsive } from '../../types';
+import { UnstyledButtonProps } from '../UnstyledButton/UnstyledButton.props';
 
-export type ButtonProps = {
+export type ButtonProps = UnstyledButtonProps & {
   /**
    * Sets the button's visual variant
    * @default solid
@@ -17,8 +17,4 @@ export type ButtonProps = {
    * @default large
    */
   size?: Responsive<'large' | 'small'>;
-  /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
-   */
-  asChild?: boolean;
-} & ComponentPropsWithoutRef<'button'>;
+};
