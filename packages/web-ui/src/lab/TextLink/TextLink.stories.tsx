@@ -95,7 +95,17 @@ export const TextLinkColour: Story = {
         </Box>
         <Box padding={2} background={colorsCommon.brandMidnight}>
           <Text variant="body" color={colorsCommon.brandPink}>
-            Text with a <TextLink>TextLink</TextLink> on brandMidnight background with custom color
+            Text with a{' '}
+            <TextLink
+              sx={{
+                '--text-link-color-default': colorsCommon.brandPink,
+                '--text-link-color-hover': colorsCommon.brandPink,
+                '--text-link-color-active': colorsCommon.brandPink,
+              }}
+            >
+              TextLink
+            </TextLink>{' '}
+            on brandMidnight background with custom color
           </Text>
         </Box>
       </Flex>
