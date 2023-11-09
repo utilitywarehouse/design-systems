@@ -45,12 +45,16 @@ const StyledButton = styled('button', { label })<UnstyledButtonProps>(() => {
 export const UnstyledButton = forwardRef<
   ElementRef<'button'>,
   PropsWithChildren<PropsWithSx<UnstyledButtonProps>>
->(function UnstyledButton({ className, asChild, ...props }, forwardedRef) {
+>(function UnstyledButton({ className, asChild, disabled, onClick, ...props }, forwardedRef) {
   return (
     <StyledButton
       as={asChild ? Slot : 'button'}
       ref={forwardedRef}
+      aria-disabled={disabled || undefined}
       className={clsx(label, className)}
+      // as we're using aria-disabled instead of disabled then we need to
+      // disable the onClick event
+      onClick={disabled ? undefined : onClick}
       {...props}
     />
   );

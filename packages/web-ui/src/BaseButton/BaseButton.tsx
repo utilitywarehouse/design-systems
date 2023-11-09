@@ -208,7 +208,7 @@ export const BaseButton = forwardRef<
   ElementRef<'button'>,
   PropsWithChildren<PropsWithSx<BaseButtonProps>>
 >(function BaseButton(
-  { variant = 'solid', colorScheme = 'cyan', className, disabled, ...props },
+  { variant = 'solid', colorScheme = 'cyan', className, ...props },
   forwardedRef
 ) {
   return (
@@ -216,8 +216,7 @@ export const BaseButton = forwardRef<
       ref={forwardedRef}
       data-colorscheme={colorScheme}
       // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
-      data-disabled={disabled || undefined}
-      aria-disabled={disabled || undefined}
+      data-disabled={props.disabled || undefined}
       className={clsx(label, className, classNames.variant[variant])}
       {...props}
     />
