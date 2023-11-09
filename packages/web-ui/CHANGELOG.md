@@ -1,5 +1,13 @@
 # @utilitywarehouse/web-ui
 
+## 0.3.6
+
+### Patch Changes
+
+- [#215](https://github.com/utilitywarehouse/design-systems/pull/215) [`8d44087`](https://github.com/utilitywarehouse/design-systems/commit/8d44087a1999643879d6dddc8713aa852e061a57) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix lab/Button onClick event when disabled
+
+- [#212](https://github.com/utilitywarehouse/design-systems/pull/212) [`d81314b`](https://github.com/utilitywarehouse/design-systems/commit/d81314b08115155b6465452910220b28ac6a7b67) Thanks [@archieewald](https://github.com/archieewald)! - Fix `RadioTile` shrink RWD
+
 ## 0.3.5
 
 ### Patch Changes
