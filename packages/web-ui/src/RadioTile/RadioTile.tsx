@@ -20,6 +20,7 @@ const componentClassName = getPrefixedName(displayName);
 const StyledRadio = styled('div')({
   height: 24,
   width: 24,
+  flexShrink: 0,
   backgroundColor: colorsCommon.brandWhite,
   borderRadius: '100%',
   border: '2px solid',
