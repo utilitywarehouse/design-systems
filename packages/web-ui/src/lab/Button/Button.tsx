@@ -228,7 +228,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-background-color-hover': 'var(--button-ghost-background-color-hover)',
       '--button-background-color-active': 'var(--button-ghost-background-color-active)',
       '--button-foreground-color-disabled': 'var(--button-ghost-foreground-color-disabled)',
-      ':not(:hover,:active,:disabled)': {
+      ':not(:hover,:active,[aria-disabled])': {
         '--button-icon-color': 'var(--button-ghost-icon-color)',
       },
     },
@@ -242,7 +242,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-border-color-disabled': 'var(--button-outline-border-color-disabled)',
       '--button-outline-border': 'inset 0 0 0 2px var(--button-outline-border-color)',
       boxShadow: 'var(--button-outline-border)',
-      ':not(:hover,:active,:disabled)': {
+      ':not(:hover,:active,[aria-disabled])': {
         '--button-icon-color': 'var(--button-outline-icon-color)',
       },
     },
@@ -315,8 +315,6 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
         as={asChild ? Slot : 'button'}
         ref={forwardedRef}
         data-colorscheme={colorScheme}
-        // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
-        data-disabled={disabled || undefined}
         aria-disabled={disabled || undefined}
         // as we're using aria-disabled instead of disabled then we need to
         // disable the onClick event
