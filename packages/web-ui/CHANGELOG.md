@@ -1,5 +1,13 @@
 # @utilitywarehouse/web-ui
 
+## 0.3.8
+
+### Patch Changes
+
+- [#219](https://github.com/utilitywarehouse/design-systems/pull/219) [`ab37bba`](https://github.com/utilitywarehouse/design-systems/commit/ab37bba3e13f121262256e6bea99e36ea98bf386) Thanks [@robphoenix](https://github.com/robphoenix)! - make useTheme type optional
+
+- [#219](https://github.com/utilitywarehouse/design-systems/pull/219) [`ab37bba`](https://github.com/utilitywarehouse/design-systems/commit/ab37bba3e13f121262256e6bea99e36ea98bf386) Thanks [@robphoenix](https://github.com/robphoenix)! - update useTheme types
+
 ## 0.3.7
 
 ### Patch Changes
