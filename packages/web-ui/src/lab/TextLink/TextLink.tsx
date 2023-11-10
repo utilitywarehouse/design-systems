@@ -15,18 +15,17 @@ const componentClassName = getPrefixedName(componentName);
 const StyledTypography = styled(Typography)(() => {
   const { isBrandBackground } = useBackground();
   return {
-    cursor: 'pointer',
-    textDecoration: 'underline',
     '--text-link-color-default': isBrandBackground ? colorsCommon.brandWhite : colors.cyan600,
-    '--text-link-color-hover': isBrandBackground ? colorsCommon.brandWhite : colors.cyan700,
     '--text-link-color-active': isBrandBackground ? colorsCommon.brandWhite : colors.cyan800,
     '--text-link-color': 'var(--text-link-color-default)',
+    cursor: 'pointer',
+    textDecoration: 'underline',
     color: 'var(--text-link-color)',
-    textDecorationColor: 'currentColor',
+    textDecorationColor: 'var(--text-link-color)',
     borderRadius: px(4),
     '@media (hover: hover)': {
       '&:where(:hover)': {
-        '--text-link-color': 'var(--text-link-color-hover)',
+        textDecoration: 'none',
       },
     },
     '&:where(:active)': {
