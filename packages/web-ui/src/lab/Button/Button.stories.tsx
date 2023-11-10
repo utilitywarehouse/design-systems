@@ -176,6 +176,9 @@ export const SimpleExample: Story = {
           Next page <ChevronRight01MediumIcon />
         </Button>
       ))}
+      <Button disabled variant="outline" size="large" onClick={() => alert('Hello world!')}>
+        Next page <ChevronRight01MediumIcon />
+      </Button>
     </Flex>
   ),
 };
