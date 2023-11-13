@@ -10,6 +10,7 @@ import {
   ChevronRight01SmallIcon,
   OpenMediumIcon,
 } from '@utilitywarehouse/react-icons';
+import { Box } from '../../Box';
 
 const sizes = ['large', 'small'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;
@@ -232,16 +233,13 @@ export const GhostVariant: Story = {
 };
 
 export const ResponsiveSize: Story = {
-  render: args => <Button {...args}>{args.children}</Button>,
-  args: {
-    children: 'Responsive size button',
-    size: {
-      mobile: 'large',
-      tablet: 'small',
-      desktop: 'large',
-      wide: 'small',
-    },
-  },
+  render: args => (
+    <Button {...args} size={{ mobile: 'small', desktop: 'large' }}>
+      Responsive size button
+      <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
+      <Box component={ChevronRight01SmallIcon} display={{ mobile: 'block', desktop: 'none' }} />
+    </Button>
+  ),
 };
 
 export const FullWidth: Story = {
