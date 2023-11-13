@@ -6,7 +6,12 @@ const config = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-a11y',
-    '@storybook/addon-essentials',
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        actions: false,
+      },
+    },
     {
       name: '@storybook/addon-docs',
       options: {
