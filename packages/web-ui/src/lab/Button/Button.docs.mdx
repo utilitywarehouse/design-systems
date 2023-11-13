@@ -208,7 +208,7 @@ Please also add the `data-icon` attribute to your icon so that it renders the
 appropriate styles.
 
 ```tsx
-<Button variant="solid" size="large">
+<Button>
   <MyFontIcon aria-hidden="true" data-icon />
   Edit account
 </Button>
@@ -221,7 +221,8 @@ If you need to render different sized icons in conjunction with the responsive s
 1. Using JS, with the `useMediaQuery` hook.
 
 ```tsx
-import { Button, useMediaQuery } from '@utilitywarehouse/web-ui';
+import { Button } from '@utilitywarehouse/web-ui/lab';
+import { useMediaQuery } from '@utilitywarehouse/web-ui';
 import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
 
 const MyComponent = () => {
@@ -239,18 +240,19 @@ const MyComponent = () => {
 2. Using CSS, with `Box` and style props. This can also be achieved with the `sx` prop.
 
 ```tsx
-import { Button, Box } from '@utilitywarehouse/web-ui';
+import { Button } from '@utilitywarehouse/web-ui/lab';
+import { Box } from '@utilitywarehouse/web-ui';
 import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
 
 const MyComponent = () => {
   const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
 
   return (
-    <Button size={{ mobile: 'small', desktop: 'large' }}>
+    <IconButton size={{ mobile: 'small', desktop: 'large' }}>
       Next page
       <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
       <Box component={ChevronRight01SmallIcon} display={{ desktop: 'none' }} />
-    </Button>
+    </IconButton>
   );
 };
 ```
@@ -268,7 +270,6 @@ Read more about this idea in the [Radix UI composition docs](https://www.radix-u
 ```tsx
 <Button asChild>
   <a href="https://uw.co.uk/services">
-    View UW services
     <OpenMediumIcon />
   </a>
 </Button>

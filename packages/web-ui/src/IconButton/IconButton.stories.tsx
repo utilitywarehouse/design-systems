@@ -4,6 +4,7 @@ import { IconButton } from './IconButton';
 import { ChevronRightMediumIcon, ChevronRightSmallIcon } from '@utilitywarehouse/react-icons';
 import { Flex } from '../Flex';
 import { Heading } from '../Heading';
+import { Box } from '../Box';
 
 const sizes = ['large', 'small', 'xsmall'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;
@@ -86,6 +87,85 @@ export const KitchenSink: Story = {
 };
 
 export const Workshop: Story = {};
+
+export const SimpleExample: Story = {
+  render: () => (
+    <Flex gap={2}>
+      {variants.map(variant => (
+        <IconButton
+          key={variant}
+          variant={variant}
+          size="large"
+          onClick={() => alert('Hello world!')}
+        >
+          <ChevronRightMediumIcon />
+        </IconButton>
+      ))}
+      <IconButton disabled variant="outline" size="large" onClick={() => alert('Hello world!')}>
+        <ChevronRightMediumIcon />
+      </IconButton>
+    </Flex>
+  ),
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <Flex gap={2} align="center">
+      {sizes.map(size => (
+        <IconButton key={size} variant="outline" size={size}>
+          {size === 'xsmall' ? <ChevronRightSmallIcon /> : <ChevronRightMediumIcon />}
+        </IconButton>
+      ))}
+    </Flex>
+  ),
+};
+
+export const ResponsiveSize: Story = {
+  render: () => (
+    <Flex gap={2} align="center">
+      <IconButton variant="outline" size={{ mobile: 'xsmall', tablet: 'small', desktop: 'large' }}>
+        <Box component={ChevronRightSmallIcon} display={{ tablet: 'none' }} />
+        <Box component={ChevronRightMediumIcon} display={{ mobile: 'none', tablet: 'block' }} />
+      </IconButton>
+    </Flex>
+  ),
+};
+
+export const SolidVariant: Story = {
+  render: () => (
+    <Flex gap={2} align="center">
+      {colorSchemes.solid.map(color => (
+        <IconButton key={color} variant="solid" size="large" colorScheme={color}>
+          <ChevronRightMediumIcon />
+        </IconButton>
+      ))}
+    </Flex>
+  ),
+};
+
+export const OutlineVariant: Story = {
+  render: () => (
+    <Flex gap={2} align="center">
+      {colorSchemes.outline.map(color => (
+        <IconButton key={color} variant="outline" size="large" colorScheme={color}>
+          <ChevronRightMediumIcon />
+        </IconButton>
+      ))}
+    </Flex>
+  ),
+};
+
+export const GhostVariant: Story = {
+  render: () => (
+    <Flex gap={2} align="center">
+      {colorSchemes.ghost.map(color => (
+        <IconButton key={color} variant="ghost" size="large" colorScheme={color}>
+          <ChevronRightMediumIcon />
+        </IconButton>
+      ))}
+    </Flex>
+  ),
+};
 
 export const AsLink: Story = {
   render: () => (

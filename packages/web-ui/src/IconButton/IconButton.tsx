@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import clsx from 'clsx';
-import { classSelector, getPrefixedName, pxToRem } from '../utils';
+import {
+  classSelector,
+  getPrefixedName,
+  mediaQueries,
+  pxToRem,
+  responsiveClassSelector,
+  withBreakpoints,
+} from '../utils';
 import { styled } from '../theme';
 import { BaseButton } from '../BaseButton';
 import { IconButtonProps } from './IconButton.props';
@@ -14,7 +21,7 @@ const classNames: { [key: string]: { [key: string]: string } } = {
   size: {
     large: getPrefixedName('size-large'),
     small: getPrefixedName('size-small'),
-    xsmall: getPrefixedName('size-x-small'),
+    xsmall: getPrefixedName('size-xsmall'),
   },
 };
 
@@ -23,24 +30,60 @@ const classSelectors = {
     large: classSelector(classNames.size.large),
     small: classSelector(classNames.size.small),
     xsmall: classSelector(classNames.size.xsmall),
+    tablet: {
+      large: responsiveClassSelector(classNames.size.large, 'tablet'),
+      small: responsiveClassSelector(classNames.size.small, 'tablet'),
+      xsmall: responsiveClassSelector(classNames.size.xsmall, 'tablet'),
+    },
+    desktop: {
+      large: responsiveClassSelector(classNames.size.large, 'desktop'),
+      small: responsiveClassSelector(classNames.size.small, 'desktop'),
+      xsmall: responsiveClassSelector(classNames.size.xsmall, 'desktop'),
+    },
+    wide: {
+      large: responsiveClassSelector(classNames.size.large, 'wide'),
+      small: responsiveClassSelector(classNames.size.small, 'wide'),
+      xsmall: responsiveClassSelector(classNames.size.xsmall, 'wide'),
+    },
   },
 };
 
 const StyledButton = styled(BaseButton, { label })<IconButtonProps>(() => {
-  return {
-    height: 'var(--icon-button-height)',
-    width: 'var(--icon-button-height)',
-    [classSelectors.size.large]: {
+  const sizeStyles = {
+    large: {
       '--icon-button-height': pxToRem(48),
       '--focus-outline-width': '4px',
     },
-    [classSelectors.size.small]: {
+    small: {
       '--icon-button-height': pxToRem(32),
       '--focus-outline-width': '2px',
     },
-    [classSelectors.size.xsmall]: {
+    xsmall: {
       '--icon-button-height': pxToRem(24),
       '--focus-outline-width': '2px',
+    },
+  };
+
+  return {
+    height: 'var(--icon-button-height)',
+    width: 'var(--icon-button-height)',
+    [classSelectors.size.large]: { ...sizeStyles.large },
+    [classSelectors.size.small]: { ...sizeStyles.small },
+    [classSelectors.size.xsmall]: { ...sizeStyles.xsmall },
+    [mediaQueries.tablet]: {
+      [classSelectors.size.tablet.large]: { ...sizeStyles.large },
+      [classSelectors.size.tablet.small]: { ...sizeStyles.small },
+      [classSelectors.size.tablet.xsmall]: { ...sizeStyles.xsmall },
+    },
+    [mediaQueries.desktop]: {
+      [classSelectors.size.desktop.large]: { ...sizeStyles.large },
+      [classSelectors.size.desktop.small]: { ...sizeStyles.small },
+      [classSelectors.size.desktop.xsmall]: { ...sizeStyles.xsmall },
+    },
+    [mediaQueries.wide]: {
+      [classSelectors.size.wide.large]: { ...sizeStyles.large },
+      [classSelectors.size.wide.small]: { ...sizeStyles.small },
+      [classSelectors.size.wide.xsmall]: { ...sizeStyles.xsmall },
     },
   };
 });
@@ -57,7 +100,7 @@ export const IconButton = forwardRef<
   return (
     <StyledButton
       ref={forwardedRef}
-      className={clsx(label, className, classNames.size[size])}
+      className={clsx(label, className, withBreakpoints(size, 'size'))}
       {...props}
     />
   );
