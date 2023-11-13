@@ -1,3 +1,5 @@
+import remarkGfm from 'remark-gfm';
+
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
   stories: ['../docs/**/*.mdx', '../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -8,6 +10,16 @@ const config = {
       name: '@storybook/addon-essentials',
       options: {
         actions: false,
+      },
+    },
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
       },
     },
   ],

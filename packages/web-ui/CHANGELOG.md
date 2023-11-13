@@ -1,5 +1,21 @@
 # @utilitywarehouse/web-ui
 
+## 0.3.8
+
+### Patch Changes
+
+- [#219](https://github.com/utilitywarehouse/design-systems/pull/219) [`ab37bba`](https://github.com/utilitywarehouse/design-systems/commit/ab37bba3e13f121262256e6bea99e36ea98bf386) Thanks [@robphoenix](https://github.com/robphoenix)! - make useTheme type optional
+
+- [#219](https://github.com/utilitywarehouse/design-systems/pull/219) [`ab37bba`](https://github.com/utilitywarehouse/design-systems/commit/ab37bba3e13f121262256e6bea99e36ea98bf386) Thanks [@robphoenix](https://github.com/robphoenix)! - update useTheme types
+
+## 0.3.7
+
+### Patch Changes
+
+- [#216](https://github.com/utilitywarehouse/design-systems/pull/216) [`44f481a`](https://github.com/utilitywarehouse/design-systems/commit/44f481a2e5ccf4b3c5eaf00bc9555952e36219c7) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Button icon colour when disabled
+
+- [#217](https://github.com/utilitywarehouse/design-systems/pull/217) [`ae36617`](https://github.com/utilitywarehouse/design-systems/commit/ae36617d5f7196776f354c14f5149aef0a877839) Thanks [@robphoenix](https://github.com/robphoenix)! - update useTheme types
+
 ## 0.3.6
 
 ### Patch Changes
