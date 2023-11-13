@@ -150,7 +150,7 @@ const StyledButton = styled(UnstyledButton, { label })<BaseButtonProps>(() => {
       '--base-button-background-color-active': 'var(--base-button-ghost-background-color-active)',
       '--base-button-foreground-color-disabled':
         'var(--base-button-ghost-foreground-color-disabled)',
-      ':not(:hover,:active,:disabled)': {
+      ':not(:hover,:active,[aria-disabled])': {
         '--base-button-icon-color': 'var(--base-button-ghost-icon-color)',
       },
     },
@@ -165,7 +165,7 @@ const StyledButton = styled(UnstyledButton, { label })<BaseButtonProps>(() => {
       '--base-button-border-color-disabled': 'var(--base-button-outline-border-color-disabled)',
       '--base-button-outline-border': 'inset 0 0 0 2px var(--base-button-outline-border-color)',
       boxShadow: 'var(--base-button-outline-border)',
-      ':not(:hover,:active,:disabled)': {
+      ':not(:hover,:active,[aria-disabled])': {
         '--base-button-icon-color': 'var(--base-button-outline-icon-color)',
       },
     },
@@ -208,15 +208,14 @@ export const BaseButton = forwardRef<
   ElementRef<'button'>,
   PropsWithChildren<PropsWithSx<BaseButtonProps>>
 >(function BaseButton(
-  { variant = 'solid', colorScheme = 'cyan', className, ...props },
+  { variant = 'solid', colorScheme = 'cyan', className, disabled, ...props },
   forwardedRef
 ) {
   return (
     <StyledButton
       ref={forwardedRef}
       data-colorscheme={colorScheme}
-      // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
-      data-disabled={props.disabled || undefined}
+      aria-disabled={disabled || undefined}
       className={clsx(label, className, classNames.variant[variant])}
       {...props}
     />
