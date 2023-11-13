@@ -36,7 +36,8 @@ export const RadioTileStory: Story = {
   args: {
     value: '1',
     disabled: false,
-    label: 'One',
+    label: 'Label',
+    helperText: 'Helper text',
   },
 };
 
