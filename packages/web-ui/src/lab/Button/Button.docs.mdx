@@ -26,6 +26,7 @@ import * as Stories from './Button.stories';
   - [Grey](#grey)
 - [Size](#size)
 - [With icons](#with-icons)
+  - [Responsive icon sizes](#responsive-icon-sizes)
 - [Semantic HTML](#semantic-html)
 - [Full Width Button](#full-width-button)
 - [API Reference](#api-reference)
@@ -211,6 +212,47 @@ appropriate styles.
   <MyFontIcon aria-hidden="true" data-icon />
   Edit account
 </Button>
+```
+
+### Responsive icon sizes
+
+If you need to render different sized icons in conjunction with the responsive size prop, there are a couple of ways you can do this.
+
+1. Using JS, with the `useMediaQuery` hook.
+
+```tsx
+import { Button, useMediaQuery } from '@utilitywarehouse/web-ui';
+import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
+
+const MyComponent = () => {
+  const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
+
+  return (
+    <Button size={{ mobile: 'small', desktop: 'large' }}>
+      Next page
+      {isDesktop ? <ChevronRight01MediumIcon /> : <ChevronRight01SmallIcon />}
+    </Button>
+  );
+};
+```
+
+2. Using CSS, with `Box` and style props. This can also be achieved with the `sx` prop.
+
+```tsx
+import { Button, Box } from '@utilitywarehouse/web-ui';
+import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
+
+const MyComponent = () => {
+  const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
+
+  return (
+    <Button size={{ mobile: 'small', desktop: 'large' }}>
+      Next page
+      <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
+      <Box component={ChevronRight01SmallIcon} display={{ desktop: 'none' }} />
+    </Button>
+  );
+};
 ```
 
 ## Semantic HTML
