@@ -13,6 +13,8 @@ const componentClassName = getPrefixedName(displayName);
 
 /**
  * Heading renders the primary UW font, to be used for heading-level typography.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Heading = forwardRef<ElementRef<'h2'>, PropsWithChildren<PropsWithSx<HeadingProps>>>(
   ({ component, variant = 'h2', color, className, ...props }, ref) => {

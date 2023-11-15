@@ -63,6 +63,8 @@ const StyledRadioItem = styled(Item)({
 
 /**
  * The `RadioTile` should be used within a `RadioGroup` component.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const RadioTile = forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProps>>(
   (

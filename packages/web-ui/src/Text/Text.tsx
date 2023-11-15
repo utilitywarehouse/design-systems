@@ -13,6 +13,8 @@ const componentClassName = getPrefixedName(displayName);
 
 /**
  * Text renders the secondary UW font, Work Sans, to be used for body text.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Text = forwardRef<ElementRef<'span'>, PropsWithChildren<PropsWithSx<TextProps>>>(
   ({ variant = 'body', bold, color, className, ...props }, ref) => {

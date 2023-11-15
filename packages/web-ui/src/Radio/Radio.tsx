@@ -85,6 +85,8 @@ const StyledRadioContainer = styled('div')({
  *
  * Radios should always be used with a `RadioGroup` to handle the state control and
  * layout.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Radio = forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>>(
   (

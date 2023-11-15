@@ -16,6 +16,8 @@ const componentClassName = getPrefixedName(displayName);
  *
  * The `FieldsetLegend` should be used with the `Fieldset` component to label
  * grouped from inputs.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const FieldsetLegend = forwardRef<
   ElementRef<'legend'>,

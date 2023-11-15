@@ -17,6 +17,8 @@ const componentClassName = getPrefixedName(displayName);
  * styles from it's parent. You can also use this component within the
  * `Heading` component, however as `Heading` has only one font-weight there will
  * be no visual distinction, and so this is discouraged.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Strong = forwardRef<ElementRef<'strong'>, PropsWithChildren<PropsWithSx<StrongProps>>>(
   ({ className, ...props }, ref) => {

@@ -25,6 +25,8 @@ const BaseBox = createBox({ componentClassName });
  *
  * This component should be used for flexbox based layouts, and to create
  * vertical and horizontal stacked layouts.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Flex = forwardRef(function Flex(
   {
