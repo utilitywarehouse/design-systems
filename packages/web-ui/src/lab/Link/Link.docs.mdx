@@ -28,7 +28,7 @@ import { Link } from '@utilitywarehouse/web-ui/dist/lab';
 
 <Box>
   <Link>Link</Link>
-</Box>;
+</Box>
 ```
 
 2. Import `Lab` directly from Web UI.
@@ -44,7 +44,7 @@ import { Box, Lab } from '@utilitywarehouse/web-ui';
 // or
 const { Link } = Lab
 <Box>
-  <Button>Button</Button>
+  <Link>Link</Link>
 </Box>
 ```
 
@@ -79,6 +79,8 @@ should use 16px icons (small), while large links should use 24px icons
   Edit account
 </Link>
 ```
+
+## Accessibility
 
 Icons from the UW icons packages have `aria-hidden="true"` set by default. If
 you are using an icon from outside these packages, and for purely decorative

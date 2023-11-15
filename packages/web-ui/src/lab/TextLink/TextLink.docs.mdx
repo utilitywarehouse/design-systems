@@ -1,0 +1,109 @@
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import * as Stories from './TextLink.stories';
+
+<Meta of={Stories} />
+
+# Link
+
+<Description />
+
+<Canvas of={Stories.Workshop} />
+
+## Usage
+
+This `TextLink` component is part of the lab submodule, a way for us to make new
+components available prior to an official major release. This helps us bed in
+new components before introducing breaking changes, and to avoid blocking the
+availability of these components for designers.
+
+There are 2 options for importing this component.
+
+1. Import directly from the `lab` directory.
+
+```tsx
+import { Text } from '@utilitywarehouse/web-ui';
+import { TextLink } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+<Text>
+  <TextLink>TextLink</TextLink>
+</Text>
+```
+
+2. Import `Lab` directly from Web UI.
+
+```tsx
+import { Text, Lab } from '@utilitywarehouse/web-ui';
+
+[...]
+
+<Text>
+  <Lab.TextLink>TextLink</Lab.TextLink>
+</Text>
+// or
+const { TextLink } = Lab
+<Text>
+  <TextLink>TextLink</TextLink>
+</Text>
+```
+
+## Semantic HTML
+
+A semantic HTML `a` is rendered by default, this cannot be changed due to the
+expectations on links within blocks of text.
+
+## Size
+
+The `TextLink` component must be wrapped in a `Text` component, and will
+inherit it's styles, so it's size will can be controlled by the contianing
+`Text` variant.
+
+## Color
+
+When nested inside a `Box` component that specifies a either a brand purple or
+brand midnight background, the `TextLink` colour will change in the same way
+the `Text` component does.
+
+```tsx
+<Box padding={2} background={colorsCommon.brandPrimaryPurple}>
+  <Text variant="body">
+    Text with a <TextLink>TextLink</TextLink> on brandPrimaryPurple background
+  </Text>
+</Box>
+<Box padding={2} background={colorsCommon.brandMidnight}>
+  <Text variant="body">
+    Text with a <TextLink>TextLink</TextLink> on brandMidnight background
+  </Text>
+</Box>
+```
+
+You can set the `TextLink` CSS custom properties to override the colours. You
+will have to do this separately to any color overrides you set on the parent
+`Text` component due to the additional `active state`.
+
+```tsx
+import { styled, Box, Text } from "@utilitywarehouse/web-ui";
+import { TextLink } from "@utilitywarehouse/web-ui/dist/lab";
+
+const StyledTextLink = styled(TextLink)({
+  '--text-link-color-default': colorsCommon.brandPink,
+  '--text-link-color-active': colorsCommon.brandPink,
+})
+
+[...]
+
+<Box padding={2} background={colorsCommon.brandMidnight}>
+  <Text variant="body" color={colorsCommon.brandPink}>
+    Text with a <StyledTextLink>TextLink</StyledTextLink> on brandMidnight background with
+    custom color
+  </Text>
+</Box>
+```
+
+<Canvas of={Stories.TextLinkColour} />
+
+## API Reference
+
+<ArgTypes of={Stories} />
+```

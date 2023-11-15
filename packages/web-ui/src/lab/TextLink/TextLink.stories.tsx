@@ -5,6 +5,7 @@ import { Text } from '../../Text';
 import { Flex } from '../../Flex';
 import { Box } from '../../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { styled } from '../../theme';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Lab / TextLink',
@@ -13,7 +14,6 @@ const meta: Meta<typeof TextLink> = {
     children: { control: { type: 'text' } },
     href: { control: { type: 'text' } },
   },
-  tags: ['autodocs'],
 };
 
 export default meta;
@@ -28,10 +28,12 @@ export const Workshop: Story = {
         <TextLink {...args} />
       </Text>
       <Text>
-        Susan Kare is an American artist and <TextLink {...args}>graphic designer</TextLink>, who
-        contributed <TextLink {...args}>interface</TextLink> elements and{' '}
-        <TextLink {...args}>typefaces</TextLink> for the first{' '}
-        <TextLink {...args}>Apple Macintosh</TextLink> personal computer from 1983 to 1986.
+        Agnes Martin was an American <TextLink {...args}>abstract painter</TextLink> known for her{' '}
+        <TextLink {...args}>minimalist</TextLink> style. Martin's art was characterized by serene
+        compositions featuring <TextLink {...args}>grids and lines</TextLink>. Martin's minimalist
+        approach conveyed tranquility and <TextLink {...args}>spirituality</TextLink>, and her
+        paintings often carried positive names reflective of her{' '}
+        <TextLink {...args}>philosophy</TextLink>.
       </Text>
     </Flex>
   ),
@@ -76,6 +78,10 @@ export const WithinText: Story = {
 export const TextLinkColour: Story = {
   name: 'Contextual Colour',
   render: () => {
+    const StyledTextLink = styled(TextLink)({
+      '--text-link-color-default': colorsCommon.brandPink,
+      '--text-link-color-active': colorsCommon.brandPink,
+    });
     return (
       <Flex direction="column">
         <Box padding={2}>
@@ -95,17 +101,8 @@ export const TextLinkColour: Story = {
         </Box>
         <Box padding={2} background={colorsCommon.brandMidnight}>
           <Text variant="body" color={colorsCommon.brandPink}>
-            Text with a{' '}
-            <TextLink
-              sx={{
-                '--text-link-color-default': colorsCommon.brandPink,
-                '--text-link-color-hover': colorsCommon.brandPink,
-                '--text-link-color-active': colorsCommon.brandPink,
-              }}
-            >
-              TextLink
-            </TextLink>{' '}
-            on brandMidnight background with custom color
+            Text with a <StyledTextLink>TextLink</StyledTextLink> on brandMidnight background with
+            custom color
           </Text>
         </Box>
       </Flex>

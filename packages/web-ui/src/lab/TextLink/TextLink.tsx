@@ -41,9 +41,13 @@ const StyledTypography = styled(Typography)(() => {
 });
 
 /**
- * A semantic element for navigating between pages, the `TextLink` should be wrapped in a `Text` component.
+ * A semantic element for navigating between pages.
  *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ * The `TextLink` component is intended to be used within a block of text, and
+ * must be nested in a `Text` component.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be
+ * > used standalone with other component libraries.
  */
 export const TextLink = forwardRef<ElementRef<'a'>, PropsWithChildren<PropsWithSx<TextLinkProps>>>(
   ({ className, ...props }, ref) => {
