@@ -23,6 +23,8 @@ const componentClassName = getPrefixedName(displayName);
  * presentation and selection of the items in the list.
  *
  * Follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) for radio groups not contained in a toolbar.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const RadioGridGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGridGroupProps>>(
   ({ children, contentWidth = 'fit-content', columns = 2, className, ...props }, ref) => {

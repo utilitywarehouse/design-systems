@@ -6,8 +6,8 @@ import { EmProps } from './Em.props';
 import { getPrefixedName } from '../utils';
 import clsx from 'clsx';
 
-const displayName = 'Em';
-const componentClassName = getPrefixedName(displayName);
+const componentName = 'Em';
+const componentClassName = getPrefixedName(componentName);
 
 /**
  * The `Em` component is based on the HTML `em` element and is used to indicate
@@ -16,6 +16,8 @@ const componentClassName = getPrefixedName(displayName);
  * `Em` should be wrapped in a `Text` component, and will inherit the parent
  * styles. It should __not__ be used within the `Heading` component, as this
  * will result in invalid HTML.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Em = forwardRef<ElementRef<'em'>, PropsWithChildren<PropsWithSx<EmProps>>>(
   ({ className, ...props }, ref) => {
@@ -36,4 +38,4 @@ export const Em = forwardRef<ElementRef<'em'>, PropsWithChildren<PropsWithSx<EmP
   }
 );
 
-Em.displayName = displayName;
+Em.displayName = componentName;

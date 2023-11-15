@@ -18,6 +18,8 @@ const BaseBox = createBox({ componentClassName });
  * more significant layout concerns please use Stack or Grid.
  *
  * The `size` prop is responsive, so you can set different values for different breakpoints.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Spacer = forwardRef<ElementRef<'div'>, PropsWithSx<SpacerProps>>(function Spacer(
   { axis = 'vertical', size = 1, inline = false, sx, ...props },
