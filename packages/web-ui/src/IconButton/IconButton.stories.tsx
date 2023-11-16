@@ -86,7 +86,15 @@ export const KitchenSink: Story = {
   },
 };
 
-export const Workshop: Story = {};
+export const Workshop: Story = {
+  render: args => (
+    <Flex gap={2}>
+      <IconButton onClick={() => alert('Hello world!')} {...args}>
+        <ChevronRightMediumIcon />
+      </IconButton>
+    </Flex>
+  ),
+};
 
 export const SimpleExample: Story = {
   render: () => (
