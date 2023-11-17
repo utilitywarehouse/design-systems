@@ -15,7 +15,7 @@ import { IconButtonProps } from './IconButton.props';
 import { PropsWithSx } from '../types';
 
 const componentName = 'IconButton';
-const label = getPrefixedName(componentName);
+const componentLabel = getPrefixedName(componentName);
 
 const classNames: { [key: string]: { [key: string]: string } } = {
   size: {
@@ -48,7 +48,7 @@ const classSelectors = {
   },
 };
 
-const StyledButton = styled(BaseButton, { label })<IconButtonProps>(() => {
+const StyledButton = styled(BaseButton, { label: componentLabel })(() => {
   const sizeStyles = {
     large: {
       '--icon-button-height': pxToRem(48),
@@ -96,11 +96,12 @@ const StyledButton = styled(BaseButton, { label })<IconButtonProps>(() => {
 export const IconButton = forwardRef<
   ElementRef<'button'>,
   PropsWithChildren<PropsWithSx<IconButtonProps>>
->(function IconButton({ size = 'large', className, ...props }, forwardedRef) {
+>(function IconButton({ size = 'large', className, label, ...props }, forwardedRef) {
   return (
     <StyledButton
       ref={forwardedRef}
       className={clsx(label, className, withBreakpoints(size, 'size'))}
+      aria-label={label}
       {...props}
     />
   );

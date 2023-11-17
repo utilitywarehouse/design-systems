@@ -55,6 +55,7 @@ export const KitchenSink: Story = {
                       variant={variant}
                       colorScheme={colorScheme}
                       size={size}
+                      label="continue"
                     >
                       {size === 'xsmall' ? <ChevronRightSmallIcon /> : <ChevronRightMediumIcon />}
                     </IconButton>
@@ -72,6 +73,7 @@ export const KitchenSink: Story = {
                       variant={variant}
                       colorScheme={colorScheme}
                       size={size}
+                      label="continue"
                     >
                       {size === 'xsmall' ? <ChevronRightSmallIcon /> : <ChevronRightMediumIcon />}
                     </IconButton>
@@ -105,11 +107,18 @@ export const SimpleExample: Story = {
           variant={variant}
           size="large"
           onClick={() => alert('Hello world!')}
+          label="continue"
         >
           <ChevronRightMediumIcon />
         </IconButton>
       ))}
-      <IconButton disabled variant="outline" size="large" onClick={() => alert('Hello world!')}>
+      <IconButton
+        disabled
+        variant="outline"
+        size="large"
+        onClick={() => alert('Hello world!')}
+        label="continue"
+      >
         <ChevronRightMediumIcon />
       </IconButton>
     </Flex>
@@ -120,7 +129,7 @@ export const Sizes: Story = {
   render: () => (
     <Flex gap={2} align="center">
       {sizes.map(size => (
-        <IconButton key={size} variant="outline" size={size}>
+        <IconButton key={size} variant="outline" size={size} label="continue">
           {size === 'xsmall' ? <ChevronRightSmallIcon /> : <ChevronRightMediumIcon />}
         </IconButton>
       ))}
@@ -131,7 +140,11 @@ export const Sizes: Story = {
 export const ResponsiveSize: Story = {
   render: () => (
     <Flex gap={2} align="center">
-      <IconButton variant="outline" size={{ mobile: 'xsmall', tablet: 'small', desktop: 'large' }}>
+      <IconButton
+        variant="outline"
+        size={{ mobile: 'xsmall', tablet: 'small', desktop: 'large' }}
+        label="continue"
+      >
         <Box component={ChevronRightSmallIcon} display={{ tablet: 'none' }} />
         <Box component={ChevronRightMediumIcon} display={{ mobile: 'none', tablet: 'block' }} />
       </IconButton>
@@ -143,7 +156,7 @@ export const SolidVariant: Story = {
   render: () => (
     <Flex gap={2} align="center">
       {colorSchemes.solid.map(color => (
-        <IconButton key={color} variant="solid" size="large" colorScheme={color}>
+        <IconButton key={color} variant="solid" size="large" colorScheme={color} label="continue">
           <ChevronRightMediumIcon />
         </IconButton>
       ))}
@@ -155,7 +168,7 @@ export const OutlineVariant: Story = {
   render: () => (
     <Flex gap={2} align="center">
       {colorSchemes.outline.map(color => (
-        <IconButton key={color} variant="outline" size="large" colorScheme={color}>
+        <IconButton key={color} variant="outline" size="large" colorScheme={color} label="continue">
           <ChevronRightMediumIcon />
         </IconButton>
       ))}
@@ -167,7 +180,7 @@ export const GhostVariant: Story = {
   render: () => (
     <Flex gap={2} align="center">
       {colorSchemes.ghost.map(color => (
-        <IconButton key={color} variant="ghost" size="large" colorScheme={color}>
+        <IconButton key={color} variant="ghost" size="large" colorScheme={color} label="continue">
           <ChevronRightMediumIcon />
         </IconButton>
       ))}
@@ -177,7 +190,7 @@ export const GhostVariant: Story = {
 
 export const AsLink: Story = {
   render: () => (
-    <IconButton asChild>
+    <IconButton asChild label="continue">
       <a href="https://uw.co.uk/services">
         <ChevronRightMediumIcon />
       </a>

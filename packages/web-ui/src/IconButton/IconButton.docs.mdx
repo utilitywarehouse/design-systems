@@ -30,7 +30,7 @@ import * as Stories from './IconButton.stories';
 
 ## Icons
 
-This button is intended to be used with the UW icons packages. If you do use
+This button is intended to be used with the [UW Icons](https://uw-icons.vercel.app/) packages. If you do use
 another icon, please add the `data-icon` attribute to your icon so that it
 renders the appropriate styles.
 
@@ -47,6 +47,12 @@ renders the appropriate styles.
 ```
 
 ## Accessibility
+
+Follows the [WAI-ARIA Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/).
+
+Given the button contains only an icon (i.e. no text content), it is required
+that a label be provided. This will be announced to a screen reader, and should
+reflect the visual icon being used with the button.
 
 Icons from the UW icons packages have `aria-hidden="true"` set by default. If
 you are using an icon from outside these packages, and for purely decorative
