@@ -16,13 +16,19 @@ const StyledTypography = styled(Typography)(() => {
   const { isBrandBackground } = useBackground();
   return {
     '--text-link-color-default': isBrandBackground ? colorsCommon.brandWhite : colors.cyan600,
-    '--text-link-color-active': isBrandBackground ? colorsCommon.brandWhite : colors.cyan800,
+    '--text-link-color-active': isBrandBackground ? colors.purple100 : colors.cyan800,
+    '--text-link-color-visited': isBrandBackground ? colors.purple300 : colors.cyan800,
+    '--text-link-focus-outline-color': isBrandBackground ? colors.purple400 : colors.cyan700,
     '--text-link-color': 'var(--text-link-color-default)',
     cursor: 'pointer',
     textDecoration: 'underline',
     color: 'var(--text-link-color)',
     textDecorationColor: 'var(--text-link-color)',
     borderRadius: px(4),
+    '&:visited': {
+      color: 'var(--text-link-color-visited)',
+      textDecorationColor: 'var(--text-link-color-visited)',
+    },
     '@media (hover: hover)': {
       '&:where(:hover)': {
         textDecoration: 'none',
@@ -34,7 +40,7 @@ const StyledTypography = styled(Typography)(() => {
     '&:where(:focus-visible)': {
       outlineWidth: px(2),
       outlineStyle: 'solid',
-      outlineColor: colors.cyan700,
+      outlineColor: 'var(--text-link-focus-outline-color)',
       outlineOffset: px(2),
     },
   };

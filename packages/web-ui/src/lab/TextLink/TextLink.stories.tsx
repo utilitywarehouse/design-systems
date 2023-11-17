@@ -77,32 +77,34 @@ export const WithinText: Story = {
 
 export const TextLinkColour: Story = {
   name: 'Contextual Colour',
-  render: () => {
+  args: { href: '#' },
+  render: args => {
     const StyledTextLink = styled(TextLink)({
       '--text-link-color-default': colorsCommon.brandPink,
       '--text-link-color-active': colorsCommon.brandPink,
+      '--text-link-color-visited': colorsCommon.brandPink,
     });
     return (
       <Flex direction="column">
         <Box padding={2}>
           <Text variant="body">
-            Text with a <TextLink>TextLink</TextLink>
+            Text with a <TextLink {...args}>TextLink</TextLink>
           </Text>
         </Box>
         <Box padding={2} background={colorsCommon.brandPrimaryPurple}>
           <Text variant="body">
-            Text with a <TextLink>TextLink</TextLink> on brandPrimaryPurple background
+            Text with a <TextLink {...args}>TextLink</TextLink> on brandPrimaryPurple background
           </Text>
         </Box>
         <Box padding={2} background={colorsCommon.brandMidnight}>
           <Text variant="body">
-            Text with a <TextLink>TextLink</TextLink> on brandMidnight background
+            Text with a <TextLink {...args}>TextLink</TextLink> on brandMidnight background
           </Text>
         </Box>
         <Box padding={2} background={colorsCommon.brandMidnight}>
           <Text variant="body" color={colorsCommon.brandPink}>
-            Text with a <StyledTextLink>TextLink</StyledTextLink> on brandMidnight background with
-            custom color
+            Text with a <StyledTextLink {...args}>TextLink</StyledTextLink> on brandMidnight
+            background with custom color
           </Text>
         </Box>
       </Flex>

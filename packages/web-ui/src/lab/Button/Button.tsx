@@ -68,7 +68,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-padding-inline': px(24),
       '--button-padding-block': px(12),
       '--button-gap': px(spacing(2)),
-      '--focus-outline-width': '4px',
+      '--button-focus-outline-width': '4px',
     },
     small: {
       '--button-font-size': pxToRem(16),
@@ -78,7 +78,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-padding-inline': px(16),
       '--button-padding-block': px(8),
       '--button-gap': px(spacing(0.5)),
-      '--focus-outline-width': '2px',
+      '--button-focus-outline-width': '2px',
     },
   };
 
@@ -118,7 +118,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       color: 'var(--button-icon-color)',
     },
     '--button-focus-outline':
-      '0 0 0 var(--focus-outline-width, 0) var(--focus-outline-color, transparent)',
+      '0 0 0 var(--button-focus-outline-width, 0) var(--button-focus-outline-color, transparent)',
     [dataAttributes.cyan]: {
       '--button-solid-foreground-color': colors.cyan1000,
       '--button-solid-background-color': colors.cyan400,
@@ -139,7 +139,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-outline-foreground-color-disabled': colors.cyan300,
       '--button-outline-border-color-disabled': colors.cyan300,
       '--button-outline-icon-color': colors.cyan600,
-      '--focus-outline-color': colors.cyan700,
+      '--button-focus-outline-color': colors.cyan700,
     },
     [dataAttributes.red]: {
       '--button-solid-foreground-color': colorsCommon.brandWhite,
@@ -160,7 +160,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-outline-foreground-color-disabled': colors.red300,
       '--button-outline-border-color-disabled': colors.red300,
       '--button-outline-icon-color': colors.red600,
-      '--focus-outline-color': colors.red700,
+      '--button-focus-outline-color': colors.red700,
     },
     [dataAttributes.green]: {
       '--button-solid-foreground-color': colorsCommon.brandWhite,
@@ -181,7 +181,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-outline-foreground-color-disabled': colors.green300,
       '--button-outline-border-color-disabled': colors.green300,
       '--button-outline-icon-color': colors.green600,
-      '--focus-outline-color': colors.green700,
+      '--button-focus-outline-color': colors.green700,
     },
     [dataAttributes.gold]: {
       '--button-outline-foreground-color': colors.gold900,
@@ -196,7 +196,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-outline-foreground-color-disabled': colors.gold300,
       '--button-outline-border-color-disabled': colors.gold300,
       '--button-outline-icon-color': colors.gold600,
-      '--focus-outline-color': colors.gold700,
+      '--button-focus-outline-color': colors.gold700,
     },
     [dataAttributes.grey]: {
       '--button-outline-foreground-color': colors.grey1000,
@@ -210,7 +210,7 @@ const StyledButton = styled('button', { label })<ButtonProps>(() => {
       '--button-ghost-icon-color': colors.grey800,
       '--button-outline-foreground-color-disabled': colors.grey300,
       '--button-outline-border-color-disabled': colors.grey300,
-      '--focus-outline-color': colors.grey700,
+      '--button-focus-outline-color': colors.grey700,
     },
     [classSelectors.variant.solid]: {
       '--button-foreground-color': 'var(--button-solid-foreground-color)',
