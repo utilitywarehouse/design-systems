@@ -15,12 +15,17 @@ const componentClassName = getPrefixedName(componentName);
 const StyledTypography = styled(Typography)(() => {
   const { isBrandBackground } = useBackground();
   return {
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    flexShrink: 0,
     '--text-link-color-default': isBrandBackground ? colorsCommon.brandWhite : colors.cyan600,
     '--text-link-color-active': isBrandBackground ? colors.purple100 : colors.cyan800,
     '--text-link-color-visited': isBrandBackground ? colors.purple300 : colors.cyan800,
     '--text-link-focus-outline-color': isBrandBackground ? colors.purple400 : colors.cyan700,
     '--text-link-color': 'var(--text-link-color-default)',
-    cursor: 'pointer',
     textDecoration: 'underline',
     color: 'var(--text-link-color)',
     textDecorationColor: 'var(--text-link-color)',

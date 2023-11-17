@@ -6,6 +6,7 @@ import { Flex } from '../../Flex';
 import { Box } from '../../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { styled } from '../../theme';
+import { OpenMediumIcon } from '@utilitywarehouse/react-icons';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Lab / TextLink',

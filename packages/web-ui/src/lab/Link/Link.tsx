@@ -53,14 +53,12 @@ const StyledLink = styled('a', { label })<LinkProps>(() => {
       '--link-font-size': pxToRem(18),
       '--link-line-height': pxToRem(24),
       '--link-height': pxToRem(24),
-      '--link-gap': px(spacing(0.5)),
       '--link-underline-offset': px(2),
     },
     small: {
       '--link-font-size': pxToRem(16),
       '--link-line-height': pxToRem(16),
       '--link-height': pxToRem(16),
-      '--link-gap': px(spacing(0.5)),
       '--link-underline-offset': px(-1),
     },
   };
@@ -80,7 +78,7 @@ const StyledLink = styled('a', { label })<LinkProps>(() => {
     justifyContent: 'center',
     textAlign: 'center',
     flexShrink: 0,
-    gap: 'var(--link-gap)',
+    gap: px(spacing(0.5)),
     fontFamily: fonts.secondary,
     fontSize: 'var(--link-font-size)',
     lineHeight: 'var(--link-line-height)',

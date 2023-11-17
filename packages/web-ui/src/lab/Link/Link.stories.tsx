@@ -6,6 +6,7 @@ import {
   ChevronLeftMediumIcon,
   ChevronLeftSmallIcon,
   OpenMediumIcon,
+  ChevronUpMediumIcon,
 } from '@utilitywarehouse/react-icons';
 import { Link } from './Link';
 import { Flex } from '../../Flex';
@@ -13,6 +14,7 @@ import { Flex } from '../../Flex';
 const meta: Meta<typeof Link> = {
   title: 'Web UI / Lab / Link',
   component: Link,
+  args: { href: '#' },
   argTypes: {
     children: { control: { type: 'text' } },
     href: { control: { type: 'text' } },
@@ -61,6 +63,25 @@ export const SimpleExample: Story = {
       Link
       <ChevronRightMediumIcon />
     </Link>
+  ),
+};
+
+export const WithIcons: Story = {
+  render: args => (
+    <Flex gap={6}>
+      <Link {...args}>
+        <ChevronLeftMediumIcon />
+        Back to Home
+      </Link>
+      <Link {...args}>
+        <ChevronUpMediumIcon />
+        Back to top
+      </Link>
+      <Link {...args}>
+        Check the guidelines
+        <OpenMediumIcon />
+      </Link>
+    </Flex>
   ),
 };
 
