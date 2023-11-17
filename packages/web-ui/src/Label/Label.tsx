@@ -15,6 +15,8 @@ const componentClassName = getPrefixedName(displayName);
  * > provided by UW Web UI.
  *
  * The Label component is used for labelling form elements, such as radio inputs.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Label = forwardRef<ElementRef<'label'>, PropsWithChildren<PropsWithSx<LabelProps>>>(
   ({ component = 'label', disabled, nested, className, ...props }, ref) => {

@@ -16,6 +16,8 @@ const componentClassName = getPrefixedName(displayName);
  *
  * This component should be used with form field components to display helper
  * text.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const HelperText = forwardRef<
   ElementRef<'span'>,

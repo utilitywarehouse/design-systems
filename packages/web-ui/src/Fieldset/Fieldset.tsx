@@ -13,6 +13,8 @@ const BaseBox = createBox<'fieldset'>({ componentClassName });
  *
  * The `Fieldset` component should be used to group related form inputs, and
  * should be used with the `FieldsetLegend` component
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  **/
 export const Fieldset = forwardRef<
   ElementRef<'fieldset'>,

@@ -56,7 +56,7 @@ const StyledButton = styled(BaseButton, { label })<ButtonProps>(() => {
       '--button-padding-inline': px(24),
       '--button-padding-block': px(12),
       '--button-gap': px(spacing(2)),
-      '--focus-outline-width': '4px',
+      '--button-focus-outline-width': '4px',
     },
     small: {
       '--button-font-size': pxToRem(16),
@@ -66,7 +66,7 @@ const StyledButton = styled(BaseButton, { label })<ButtonProps>(() => {
       '--button-padding-inline': px(16),
       '--button-padding-block': px(8),
       '--button-gap': px(spacing(0.5)),
-      '--focus-outline-width': '2px',
+      '--button-focus-outline-width': '2px',
     },
   };
 
@@ -102,7 +102,7 @@ const StyledButton = styled(BaseButton, { label })<ButtonProps>(() => {
 /**
  * Trigger an action or event, such as submitting a form or displaying a dialog.
  *
- * This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWithSx<ButtonProps>>>(
   function Button({ size = 'large', className, ...props }, forwardedRef) {

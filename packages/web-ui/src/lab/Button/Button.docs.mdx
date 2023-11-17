@@ -50,7 +50,7 @@ import { Button } from '@utilitywarehouse/web-ui/dist/lab';
 
 <Box>
   <Button>Button</Button>
-</Box>;
+</Box>
 ```
 
 2. Import `Lab` directly from Web UI.
@@ -165,7 +165,7 @@ making it less visually prominent.
 
 ## Size
 
-The size prop controls the size of the button. This is a responsive prop and
+The size prop controls the size of the `Button`. This is a responsive prop and
 can be used to display different sizes at different breakpoints.
 
 <Canvas of={Stories.Sizes} />
@@ -181,10 +181,10 @@ can be used to display different sizes at different breakpoints.
 
 ## With icons
 
-You can nest icons directly inside the button. An appropriate gap is provided
+You can nest icons directly inside the `Button`. An appropriate gap is provided
 automatically, and the icon will inherit the appropriate colours.
 
-This button is intended to be used with the UW icons packages. Small buttons
+This button is intended to be used with the [UW Icons](https://uw-icons.vercel.app/) packages. Small buttons
 should use 16px icons (small), while large buttons should use 24px icons
 (medium).
 
@@ -259,10 +259,15 @@ const MyComponent = () => {
 
 ## Semantic HTML
 
-A semantic HTML button is rendered by default, however you can change the underlying HTML element by using the `asChild` prop.
-When `asChild` is set to true, Radix will not render a default DOM element,
+> If it goes somewhere it's a link, if it does something it's a button.
+
+A semantic HTML `button` is rendered by default, however you can change the
+underlying HTML element by using the `asChild` prop.
+
+When `asChild` is set to true, we will not render a default DOM element,
 instead cloning the child and passing it the props and behaviour required to
 make it functional.
+
 Read more about this idea in the [Radix UI composition docs](https://www.radix-ui.com/primitives/docs/guides/composition).
 
 <Canvas of={Stories.AsLink} />
