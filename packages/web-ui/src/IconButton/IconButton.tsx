@@ -51,22 +51,22 @@ const classSelectors = {
 const StyledButton = styled(BaseButton, { label: componentLabel })(() => {
   const sizeStyles = {
     large: {
-      '--icon-button-height': pxToRem(48),
+      '--icon-button-size': pxToRem(48),
       '--focus-outline-width': '4px',
     },
     small: {
-      '--icon-button-height': pxToRem(32),
+      '--icon-button-size': pxToRem(32),
       '--focus-outline-width': '2px',
     },
     xsmall: {
-      '--icon-button-height': pxToRem(24),
+      '--icon-button-size': pxToRem(24),
       '--focus-outline-width': '2px',
     },
   };
 
   return {
-    height: 'var(--icon-button-height)',
-    width: 'var(--icon-button-height)',
+    height: 'var(--icon-button-size)',
+    width: 'var(--icon-button-size)',
     [classSelectors.size.large]: { ...sizeStyles.large },
     [classSelectors.size.small]: { ...sizeStyles.small },
     [classSelectors.size.xsmall]: { ...sizeStyles.xsmall },
