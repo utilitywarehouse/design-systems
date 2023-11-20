@@ -72,7 +72,7 @@ export const RadioGroupFormControl = forwardRef<HTMLDivElement, PropsWithSx<Base
           </Box>
 
           {showErrorMessage ? (
-            <HelperText error id={errorMessageId}>
+            <HelperText validationStatus="invalid" id={errorMessageId}>
               {errorMessage}
             </HelperText>
           ) : null}
