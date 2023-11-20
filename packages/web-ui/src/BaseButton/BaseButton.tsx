@@ -215,7 +215,7 @@ export const BaseButton = forwardRef<
     <StyledButton
       ref={forwardedRef}
       data-colorscheme={colorScheme}
-      aria-disabled={disabled}
+      aria-disabled={disabled || undefined}
       disabled={disabled}
       className={clsx(label, className, classNames.variant[variant])}
       {...props}
