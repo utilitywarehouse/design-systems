@@ -17,7 +17,7 @@ import * as Stories from './IconButton.stories';
   - [Solid](#solid)
   - [Outline](#outline)
   - [Ghost](#ghost)
-- [ColorScheme](#colorscheme)
+- [Colour schemes](#colour-schemes)
   - [Cyan](#cyan)
   - [Green](#green)
   - [Red](#red)
@@ -79,26 +79,26 @@ The variant prop controls the visual appearance of the button.
 
 ### Solid
 
-The solid button can be combined with the `cyan`, `red` & `green` color schemes.
+The solid button can be combined with the `cyan`, `red` & `green` colour schemes.
 
 <Canvas of={Stories.SolidVariant} />
 
 ### Outline
 
-The outline button can be combined with all color schemes.
+The outline button can be combined with all colour schemes.
 
 <Canvas of={Stories.OutlineVariant} />
 
 ### Ghost
 
-The ghost button can be combined with all color schemes.
+The ghost button can be combined with all colour schemes.
 
 <Canvas of={Stories.GhostVariant} />
 
-## ColorScheme
+## Colour schemes
 
-The colorScheme prop will change the button colours. Be aware there are some
-combinations of colorScheme & variant that do not work together (ie. `solid` &
+The `colorScheme` prop will change the button colours. Be aware there are some
+combinations of `colorScheme` & `variant` that do not work together (ie. `solid` &
 `grey`), and if used will render a button with no colours at all.
 
 ```tsx
@@ -107,17 +107,17 @@ combinations of colorScheme & variant that do not work together (ie. `solid` &
 
 ### Cyan
 
-Cyan serves as the default color scheme for primary actions.
+Cyan serves as the default colour scheme for primary actions.
 
 ### Green
 
-The green button color scheme is ideal for indicating positive or affirmative
-actions. This color can be used when you want to draw attention to actions that
+The green button colour scheme is ideal for indicating positive or affirmative
+actions. This colour can be used when you want to draw attention to actions that
 confirm or approve something.
 
 ### Red
 
-The red color scheme is most suitable for destructive actions that could result
+The red colour scheme is most suitable for destructive actions that could result
 in data loss, are irreversible, or will have significant and negative
 consequences for the user. It serves as a visual warning to approach such
 actions with caution due to their potential substantial impact.
@@ -131,9 +131,9 @@ level of urgency or potential consequences as red buttons do.
 
 ### Grey
 
-The grey color scheme is best suited for situations where you want the button
+The grey colour scheme is best suited for situations where you want the button
 to have very low prominence. It's especially useful in designs that are
-color-heavy, as it allows the button to blend in with the overall color scheme,
+colour-heavy, as it allows the button to blend in with the overall colour scheme,
 making it less visually prominent.
 
 ## Size
@@ -164,11 +164,11 @@ import { IconButton, useMediaQuery } from '@utilitywarehouse/web-ui';
 import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
 
 const MyComponent = () => {
-  const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
+  const showDesktopIcon = useMediaQuery(theme => theme.breakpoints.up('desktop'));
 
   return (
     <IconButton size={{ mobile: 'small', desktop: 'large' }}>
-      {isDesktop ? <ChevronRight01MediumIcon /> : <ChevronRight01SmallIcon />}
+      {showDesktopIcon ? <ChevronRight01MediumIcon /> : <ChevronRight01SmallIcon />}
     </IconButton>
   );
 };
@@ -180,25 +180,26 @@ const MyComponent = () => {
 import { Button, Box } from '@utilitywarehouse/web-ui';
 import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
 
-const MyComponent = () => {
-  const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
-
-  return (
-    <Button size={{ mobile: 'small', desktop: 'large' }}>
-      Next page
-      <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
-      <Box component={ChevronRight01SmallIcon} display={{ desktop: 'none' }} />
-    </Button>
-  );
-};
+const MyComponent = () => (
+  <Button size={{ mobile: 'small', desktop: 'large' }}>
+    Next page
+    <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
+    <Box component={ChevronRight01SmallIcon} display={{ desktop: 'none' }} />
+  </Button>
+);
 ```
 
 ## Semantic HTML
 
-A semantic HTML button is rendered by default, however you can change the underlying HTML element by using the `asChild` prop.
-When `asChild` is set to true, Radix will not render a default DOM element,
+> If it goes somewhere it's a link, if it does something it's a button.
+
+A semantic HTML button is rendered by default, however you can change the
+underlying HTML element by using the `asChild` prop.
+
+When `asChild` is set to true, the button will not render a default DOM element,
 instead cloning the child and passing it the props and behaviour required to
 make it functional.
+
 Read more about this idea in the [Radix UI composition docs](https://www.radix-ui.com/primitives/docs/guides/composition).
 
 <Canvas of={Stories.AsLink} />

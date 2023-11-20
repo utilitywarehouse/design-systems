@@ -18,7 +18,7 @@ import * as Stories from './Button.stories';
   - [Solid](#solid)
   - [Outline](#outline)
   - [Ghost](#ghost)
-- [ColorScheme](#colorscheme)
+- [Colour schemes](#colour-schemes)
   - [Cyan](#cyan)
   - [Green](#green)
   - [Red](#red)
@@ -97,7 +97,7 @@ The variant prop controls the visual appearance of the button.
 
 Solid buttons are typically used for primary actions that require high emphasis.
 
-The solid button can be combined with the `cyan`, `red` & `green` color schemes.
+The solid button can be combined with the `cyan`, `red` & `green` colour schemes.
 
 <Canvas of={Stories.SolidVariant} />
 
@@ -106,7 +106,7 @@ The solid button can be combined with the `cyan`, `red` & `green` color schemes.
 Outline buttons typically have a medium level of emphasis. They are best suited
 for non-critical actions.
 
-The outline button can be combined with all color schemes.
+The outline button can be combined with all colour schemes.
 
 <Canvas of={Stories.OutlineVariant} />
 
@@ -118,14 +118,14 @@ their background becomes visible, on hover and other states. This makes them
 suitable for actions that are not as important as the primary one and also
 allows them to be used as building blocks for other components.
 
-The ghost button can be combined with all color schemes.
+The ghost button can be combined with all colour schemes.
 
 <Canvas of={Stories.GhostVariant} />
 
-## ColorScheme
+## Color schemes
 
-The colorScheme prop will change the button colours. Be aware there are some
-combinations of colorScheme & variant that do not work together (ie. `solid` &
+The `colorScheme` prop will change the button colours. Be aware there are some
+combinations of `colorScheme` & `variant` that do not work together (ie. `solid` &
 `grey`), and if used will render a button with no colours at all.
 
 ```tsx
@@ -134,17 +134,17 @@ combinations of colorScheme & variant that do not work together (ie. `solid` &
 
 ### Cyan
 
-Cyan serves as the default color scheme for primary actions.
+Cyan serves as the default colour scheme for primary actions.
 
 ### Green
 
-The green button color scheme is ideal for indicating positive or affirmative
-actions. This color can be used when you want to draw attention to actions that
+The green button colour scheme is ideal for indicating positive or affirmative
+actions. This colour can be used when you want to draw attention to actions that
 confirm or approve something.
 
 ### Red
 
-The red color scheme is most suitable for destructive actions that could result
+The red colour scheme is most suitable for destructive actions that could result
 in data loss, are irreversible, or will have significant and negative
 consequences for the user. It serves as a visual warning to approach such
 actions with caution due to their potential substantial impact.
@@ -158,9 +158,9 @@ level of urgency or potential consequences as red buttons do.
 
 ### Grey
 
-The grey color scheme is best suited for situations where you want the button
+The grey colour scheme is best suited for situations where you want the button
 to have very low prominence. It's especially useful in designs that are
-color-heavy, as it allows the button to blend in with the overall color scheme,
+colour-heavy, as it allows the button to blend in with the overall color scheme,
 making it less visually prominent.
 
 ## Size
