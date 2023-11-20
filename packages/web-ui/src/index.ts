@@ -4,8 +4,8 @@ export * from './theme';
 export * from './tokens';
 export * from './types';
 export * from './hooks';
-export * as Lab from './lab';
 /* components */
+export * as Lab from './lab';
 export * from './Background';
 export * from './Box';
 export * from './Button';
@@ -32,3 +32,4 @@ export * from './TextLink';
 export * from './ThemeProvider';
 export * from './ToggleButton';
 export * from './Typography';
+export * from './UnstyledButton';
