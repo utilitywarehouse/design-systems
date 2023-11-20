@@ -186,7 +186,7 @@ const StyledButton = styled(UnstyledButton, { label })<BaseButtonProps>(() => {
       '--base-button-background-color': 'var(--base-button-background-color-active)',
       '--base-button-icon-color': 'var(--base-button-icon-color-active)',
     },
-    [dataAttributes.disabled]: {
+    [dataAttributes.ariaDisabled]: {
       cursor: 'not-allowed',
       '--base-button-foreground-color': 'var(--base-button-foreground-color-disabled)',
       '--base-button-background-color': 'var(--base-button-background-color-disabled)',
