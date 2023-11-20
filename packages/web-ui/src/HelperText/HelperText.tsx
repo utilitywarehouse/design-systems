@@ -1,14 +1,47 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { getPrefixedName, pxToRem } from '../utils';
+import { classSelector, dataAttributes, getPrefixedName, pxToRem } from '../utils';
 import { PropsWithSx } from '../types';
 import { Typography } from '../Typography';
 import { HelperTextProps } from './HelperText.props';
 import clsx from 'clsx';
+import { styled } from '../theme';
 
-const displayName = 'HelperText';
-const componentClassName = getPrefixedName(displayName);
+const componentName = 'HelperText';
+const componentClassName = getPrefixedName(componentName);
+
+const classNames = {
+  status: {
+    valid: getPrefixedName('status-valid'),
+    invalid: getPrefixedName('status-invalid'),
+  },
+};
+
+const classSelectors = {
+  status: {
+    valid: classSelector(classNames.status.valid),
+    invalid: classSelector(classNames.status.invalid),
+  },
+};
+
+const StyledTypography = styled(Typography)<HelperTextProps>({
+  '--helper-text-color-default': colors.grey800,
+  '--helper-text-color-disabled': colors.grey400,
+  '--helper-text-color-valid': colors.green600,
+  '--helper-text-color-invalid': colors.red600,
+  '--helper-text-color': 'var(--helper-text-color-default)',
+  color: 'var(--helper-text-color)',
+  [dataAttributes.disabled]: {
+    '--helper-text-color': 'var(--helper-text-color-disabled)',
+  },
+  [classSelectors.status.valid]: {
+    '--helper-text-color': 'var(--helper-text-color-valid)',
+  },
+  [classSelectors.status.invalid]: {
+    '--helper-text-color': 'var(--helper-text-color-invalid)',
+  },
+});
 
 /**
  * > This component is only required when building a custom field that isn’t
@@ -17,26 +50,30 @@ const componentClassName = getPrefixedName(displayName);
  * This component should be used with form field components to display helper
  * text.
  *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be
+ * > used standalone with other component libraries.
  */
 export const HelperText = forwardRef<
   ElementRef<'span'>,
   PropsWithChildren<PropsWithSx<HelperTextProps>>
->(({ disabled, error, className, ...props }, ref) => {
-  const color = error ? colors.red600 : disabled ? colors.grey400 : colors.grey800;
+>(({ disabled, validationStatus = 'default', className, ...props }, ref) => {
   return (
-    <Typography
+    <StyledTypography
       ref={ref}
       component="span"
-      className={clsx(componentClassName, className)}
+      className={clsx(
+        componentClassName,
+        validationStatus && validationStatus !== 'default' && classNames.status[validationStatus],
+        className
+      )}
       fontFamily="secondary"
       weight="regular"
       fontSize={pxToRem(13)}
       lineHeight={pxToRem(16)}
-      color={color}
+      data-disabled={disabled || undefined}
       {...props}
     />
   );
 });
 
-HelperText.displayName = displayName;
+HelperText.displayName = componentName;
