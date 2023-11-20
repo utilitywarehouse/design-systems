@@ -55,6 +55,7 @@ export const KitchenSink: Story = {
                       variant={variant}
                       colorScheme={colorScheme}
                       size={size}
+                      onClick={() => alert('hello, world!')}
                       label="continue"
                     >
                       {size === 'xsmall' ? <ChevronRightSmallIcon /> : <ChevronRightMediumIcon />}
@@ -73,6 +74,7 @@ export const KitchenSink: Story = {
                       variant={variant}
                       colorScheme={colorScheme}
                       size={size}
+                      onClick={() => alert('hello, world!')}
                       label="continue"
                     >
                       {size === 'xsmall' ? <ChevronRightSmallIcon /> : <ChevronRightMediumIcon />}

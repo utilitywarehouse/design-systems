@@ -208,14 +208,15 @@ export const BaseButton = forwardRef<
   ElementRef<'button'>,
   PropsWithChildren<PropsWithSx<BaseButtonProps>>
 >(function BaseButton(
-  { variant = 'solid', colorScheme = 'cyan', className, ...props },
+  { variant = 'solid', colorScheme = 'cyan', className, disabled, ...props },
   forwardedRef
 ) {
   return (
     <StyledButton
       ref={forwardedRef}
       data-colorscheme={colorScheme}
-      aria-disabled={props.disabled || undefined}
+      aria-disabled={disabled}
+      disabled={disabled}
       className={clsx(label, className, classNames.variant[variant])}
       {...props}
     />
