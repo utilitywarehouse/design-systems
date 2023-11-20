@@ -200,9 +200,8 @@ const StyledButton = styled(UnstyledButton, { label })<BaseButtonProps>(() => {
 });
 
 /**
- * `BaseButton` provides the variant and colourScheme styles for all button components.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ * `BaseButton` is a private component which provides the variant and
+ * colourScheme styles for other button components.
  */
 export const BaseButton = forwardRef<
   ElementRef<'button'>,
