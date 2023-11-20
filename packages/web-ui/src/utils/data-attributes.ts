@@ -13,6 +13,7 @@ export const dataAttributes = {
   heading: 'heading',
   bgcolorBrand: 'bg-color-brand',
   ariaDisabled: ':where([aria-disabled="true"])',
+  disabled: ':where([data-disabled])',
   cyan: colorSchemeDataAttribute('cyan'),
   red: colorSchemeDataAttribute('red'),
   green: colorSchemeDataAttribute('green'),
