@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { classSelector, dataAttributes, getPrefixedName, pxToRem } from '../utils';
+import { classSelector, dataAttributes, getPrefixedName, pxToRem, spacing } from '../utils';
 import { PropsWithSx } from '../types';
 import { Typography } from '../Typography';
 import { HelperTextProps } from './HelperText.props';
 import clsx from 'clsx';
 import { styled } from '../theme';
-import { Flex } from '../Flex';
 import {
   Information01SmallContainedIcon,
   Warning01SmallContainedIcon,
@@ -27,7 +26,9 @@ const classSelectors = {
   invalid: classSelector(classNames.invalid),
 };
 
-const StyledFlex = styled(Flex)({
+const StyledTypography = styled(Typography)({
+  display: 'inline-flex',
+  gap: spacing(1),
   '--helper-text-color-initial': colors.grey800,
   '--helper-text-color-disabled': colors.grey400,
   '--helper-text-color-valid': colors.green600,
@@ -71,7 +72,7 @@ const StyledFlex = styled(Flex)({
 export const HelperText = forwardRef<
   ElementRef<'span'>,
   PropsWithChildren<PropsWithSx<HelperTextProps>>
->(({ showIcon, validationStatus = 'initial', disabled, className, ...props }, ref) => {
+>(({ showIcon, validationStatus = 'initial', disabled, children, className, ...props }, ref) => {
   const icons: { [key: string]: any } = {
     initial: Information01SmallContainedIcon,
     valid: Tick01SmallContainedIcon,
@@ -79,29 +80,24 @@ export const HelperText = forwardRef<
   };
   const Icon = icons[validationStatus];
   return (
-    <StyledFlex
+    <StyledTypography
       ref={ref}
       component="span"
-      direction="row"
-      gap={1}
+      fontFamily="secondary"
+      weight="regular"
+      fontSize={pxToRem(13)}
+      lineHeight={pxToRem(16)}
+      data-disabled={disabled || undefined}
       className={clsx(
         componentClassName,
         validationStatus && validationStatus !== 'initial' && classNames[validationStatus],
         className
       )}
-      data-disabled={disabled || undefined}
+      {...props}
     >
       {showIcon ? <Icon /> : null}
-      <Typography
-        ref={ref}
-        component="span"
-        fontFamily="secondary"
-        weight="regular"
-        fontSize={pxToRem(13)}
-        lineHeight={pxToRem(16)}
-        {...props}
-      />
-    </StyledFlex>
+      {children}
+    </StyledTypography>
   );
 });
 

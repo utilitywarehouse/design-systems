@@ -170,8 +170,8 @@ importers:
         specifier: workspace:^
         version: link:../colour-system
       '@utilitywarehouse/react-icons':
-        specifier: ^1.1.0
-        version: 1.1.0(react@18.2.0)
+        specifier: ^1.1.1
+        version: 1.1.1(react@18.2.0)
       clsx:
         specifier: ^2.0.0
         version: 2.0.0
@@ -5219,8 +5219,8 @@ packages:
   /@utilitywarehouse/fontsource@0.0.5:
     resolution: {integrity: sha512-g+/X7s/p+Xa4z6tv1JVxM5y0yNPLJxCA4LbkXwQ6Eq7Rq9cLrP8YW/ttkWcSbSC1BtgKhDKheiW0UAD5gNAwBg==}
 
-  /@utilitywarehouse/react-icons@1.1.0(react@18.2.0):
-    resolution: {integrity: sha512-FpQ7YCqzlczOU1EFCKbwAB9I23SRCkx17eCgBYGbGMxTaRqbrujMyKkEuBu1oCLRCum7apslA4w4lKK5PUFJbg==}
+  /@utilitywarehouse/react-icons@1.1.1(react@18.2.0):
+    resolution: {integrity: sha512-h4YpnpujEW2hnj9Aiil9DRgCtcDdYANp0eSNfzKPNMI7/lsSLxFgXOwuOACKhtge38vc5wTkdZIk5TsEAR4GOA==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
