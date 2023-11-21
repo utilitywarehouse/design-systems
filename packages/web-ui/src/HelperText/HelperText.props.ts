@@ -6,6 +6,12 @@ export interface HelperTextProps extends ComponentPropsWithoutRef<'span'> {
   /**
    * Set the text appearance to show the validation status.
    * This will override the disabled styles.
+   *
+   * @default 'default'
    * */
-  validationStatus?: 'default' | 'valid' | 'invalid';
+  validationStatus?: 'initial' | 'valid' | 'invalid';
+  /**
+   * Set whether to display the relevant icon.
+   */
+  showIcon?: boolean;
 }
