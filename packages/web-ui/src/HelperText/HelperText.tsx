@@ -29,22 +29,21 @@ const classSelectors = {
 const StyledTypography = styled(Typography)({
   display: 'inline-flex',
   gap: spacing(1),
-  '--helper-text-color-initial': colors.grey800,
+  alignItems: 'center',
+  '--helper-text-color': colors.grey800,
   '--helper-text-color-disabled': colors.grey400,
   '--helper-text-color-valid': colors.green600,
   '--helper-text-color-invalid': colors.red600,
-  '--helper-text-color': 'var(--helper-text-color-initial)',
-  '--helper-text-icon-color-initial': colors.grey700,
+  '--helper-text-icon-color': colors.grey700,
   '--helper-text-icon-color-disabled': colors.grey300,
   '--helper-text-icon-color-valid': colors.green500,
   '--helper-text-icon-color-invalid': colors.red500,
-  '--helper-text-icon-color': 'var(--helper-text-icon-color-initial)',
-  '> :where(svg)': {
+  color: 'var(--helper-text-color)',
+  '> :where(svg), [data-icon]': {
     // as UW icons use currentColor by default, this will fallback to the
     // Button's color property if not set.
     color: 'var(--helper-text-icon-color)',
   },
-  color: 'var(--helper-text-color)',
   [dataAttributes.disabled]: {
     '--helper-text-color': 'var(--helper-text-color-disabled)',
     '--helper-text-icon-color': 'var(--helper-text-icon-color-disabled)',
@@ -72,13 +71,13 @@ const StyledTypography = styled(Typography)({
 export const HelperText = forwardRef<
   ElementRef<'span'>,
   PropsWithChildren<PropsWithSx<HelperTextProps>>
->(({ showIcon, validationStatus = 'initial', disabled, children, className, ...props }, ref) => {
-  const icons: { [key: string]: any } = {
-    initial: Information01SmallContainedIcon,
+>(({ showIcon, validationStatus, disabled, children, className, ...props }, ref) => {
+  const icons: { [key: string]: typeof Tick01SmallContainedIcon } = {
     valid: Tick01SmallContainedIcon,
     invalid: Warning01SmallContainedIcon,
   };
-  const Icon = icons[validationStatus];
+  const Icon = validationStatus ? icons[validationStatus] : Information01SmallContainedIcon;
+
   return (
     <StyledTypography
       ref={ref}
@@ -90,7 +89,7 @@ export const HelperText = forwardRef<
       data-disabled={disabled || undefined}
       className={clsx(
         componentClassName,
-        validationStatus && validationStatus !== 'initial' && classNames[validationStatus],
+        validationStatus && classNames[validationStatus],
         className
       )}
       {...props}

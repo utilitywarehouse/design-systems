@@ -10,13 +10,13 @@ const meta: Meta<typeof HelperText> = {
     children: { control: { type: 'text' } },
     disabled: { control: { type: 'boolean' } },
     showIcon: { control: { type: 'boolean' } },
-    validationStatus: { control: { type: 'radio' }, options: ['initial', 'valid', 'invalid'] },
+    validationStatus: { control: { type: 'radio' }, options: [undefined, 'valid', 'invalid'] },
   },
   args: {
     children: 'Helper text',
     disabled: false,
     showIcon: false,
-    validationStatus: 'initial',
+    validationStatus: undefined,
   },
 };
 
