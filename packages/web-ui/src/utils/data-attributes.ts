@@ -1,4 +1,4 @@
-const colorSchemeDataAttribute = (color: string) => `:where([data-colorscheme='${color}'])`;
+const colorSchemeDataAttribute = (color: string) => `:where([data-colorscheme="${color}"])`;
 
 export const dataAttributes = {
   legacy: 'legacy-cwui',
@@ -12,7 +12,7 @@ export const dataAttributes = {
   multiline: 'multiline',
   heading: 'heading',
   bgcolorBrand: 'bg-color-brand',
-  disabled: ':where([aria-disabled])',
+  ariaDisabled: ':where([aria-disabled="true"])',
   cyan: colorSchemeDataAttribute('cyan'),
   red: colorSchemeDataAttribute('red'),
   green: colorSchemeDataAttribute('green'),
