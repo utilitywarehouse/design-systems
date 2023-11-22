@@ -1,5 +1,13 @@
 # @utilitywarehouse/web-ui
 
+## 0.4.0
+
+### Minor Changes
+
+- [#213](https://github.com/utilitywarehouse/design-systems/pull/213) [`921eb95`](https://github.com/utilitywarehouse/design-systems/commit/921eb9599498e2b20e8ccdb6aeafdb0ebd284141) Thanks [@robphoenix](https://github.com/robphoenix)! - add `IconButton` & `UnstyledButton` components
+
+- [#211](https://github.com/utilitywarehouse/design-systems/pull/211) [`cf4be8a`](https://github.com/utilitywarehouse/design-systems/commit/cf4be8a68e82da493100adda3c29ad79705d2cdc) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `Link` and `TextLink` components to lab.
+
 ## 0.3.8
 
 ### Patch Changes
