@@ -19,8 +19,10 @@ export const RadioGroupFormControl = forwardRef<HTMLDivElement, PropsWithSx<Base
       label,
       helperText,
       helperTextPosition = 'top',
+      showHelperTextIcon,
       error,
       errorMessage,
+      showErrorMessageIcon,
       sx,
       disabled,
       'aria-labelledby': ariaLabelledby,
@@ -64,7 +66,7 @@ export const RadioGroupFormControl = forwardRef<HTMLDivElement, PropsWithSx<Base
 
           <Box display="flex" gap={2} flexDirection={direction}>
             {helperText ? (
-              <HelperText id={helperTextId} disabled={disabled}>
+              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
                 {helperText}
               </HelperText>
             ) : null}
@@ -72,7 +74,11 @@ export const RadioGroupFormControl = forwardRef<HTMLDivElement, PropsWithSx<Base
           </Box>
 
           {showErrorMessage ? (
-            <HelperText error id={errorMessageId}>
+            <HelperText
+              validationStatus="invalid"
+              showIcon={showErrorMessageIcon}
+              id={errorMessageId}
+            >
               {errorMessage}
             </HelperText>
           ) : null}

@@ -249,7 +249,11 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(func
         />
       </FormControl>
 
-      <HelperText id={ariaDescribedBy} disabled={disabled} error={isErrorStatus(status)}>
+      <HelperText
+        id={ariaDescribedBy}
+        disabled={disabled}
+        validationStatus={isErrorStatus(status) ? 'invalid' : undefined}
+      >
         {helperText || '\u00A0'}
       </HelperText>
     </Box>
