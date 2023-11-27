@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
-import { getPrefixedName, pxToRem } from '../utils';
+import { withPrefix, pxToRem } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 import { PropsWithSx } from '../types';
 import { LabelProps } from './Label.props';
@@ -8,7 +8,7 @@ import { Typography } from '../Typography';
 import clsx from 'clsx';
 
 const displayName = 'Label';
-const componentClassName = getPrefixedName(displayName);
+const componentClassName = withPrefix(displayName);
 
 /**
  * > This component is only required when building a custom field that isn’t

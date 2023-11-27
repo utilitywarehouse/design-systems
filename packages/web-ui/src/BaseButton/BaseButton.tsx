@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { PropsWithSx } from '../types';
-import { classSelector, dataAttributes, getPrefixedName, px } from '../utils';
+import { classSelector, dataAttributes, withPrefix, px } from '../utils';
 import clsx from 'clsx';
 import { styled } from '../theme';
 import { UnstyledButton } from '../UnstyledButton';
@@ -9,13 +9,13 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { BaseButtonProps } from './BaseButton.props';
 
 const componentName = 'BaseButton';
-const label = getPrefixedName(componentName);
+const label = withPrefix(componentName);
 
 const classNames: { [key: string]: { [key: string]: string } } = {
   variant: {
-    solid: getPrefixedName('variant-solid'),
-    outline: getPrefixedName('variant-outline'),
-    ghost: getPrefixedName('variant-ghost'),
+    solid: withPrefix('variant-solid'),
+    outline: withPrefix('variant-outline'),
+    ghost: withPrefix('variant-ghost'),
   },
 };
 

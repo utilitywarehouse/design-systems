@@ -3,11 +3,11 @@ import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
 import { PropsWithSx } from '../types';
 import { EmProps } from './Em.props';
-import { getPrefixedName } from '../utils';
+import { withPrefix } from '../utils';
 import clsx from 'clsx';
 
 const componentName = 'Em';
-const componentClassName = getPrefixedName(componentName);
+const componentClassName = withPrefix(componentName);
 
 /**
  * The `Em` component is based on the HTML `em` element and is used to indicate

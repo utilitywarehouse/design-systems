@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { PropsWithSx } from '../types';
-import { getPrefixedName } from '../utils';
+import { withPrefix } from '../utils';
 import { UnstyledButtonProps } from './UnstyledButton.props';
 import clsx from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 import { styled } from '../theme';
 
 const componentName = 'UnstyledButton';
-const label = getPrefixedName(componentName);
+const label = withPrefix(componentName);
 
 const StyledButton = styled('button', { label })<UnstyledButtonProps>(() => {
   return {
