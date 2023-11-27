@@ -35,7 +35,7 @@ const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
         backgroundColor: colors.grey200,
       },
     },
-    [`[data-${inverse}=true] &`]: {
+    [`[${inverse}=true] &`]: {
       color: colorsCommon.brandWhite,
       '&:disabled': {
         color: colors.grey400,

@@ -185,8 +185,8 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
     'aria-describedby': ariaDescribedBy,
   };
   const dataAttributeProps = {
-    [`data-${dataAttributes.success}`]: !props.disabled && isSuccessStatus(status),
-    [`data-${dataAttributes.multiline}`]: !!props.multiline,
+    [dataAttributes.success]: !props.disabled && isSuccessStatus(status),
+    [dataAttributes.multiline]: !!props.multiline,
   };
 
   return (
