@@ -19,4 +19,7 @@ export const dataAttributes = {
   green: colorSchemeDataAttribute('green'),
   gold: colorSchemeDataAttribute('gold'),
   grey: colorSchemeDataAttribute('grey'),
+  compressed: 'compressed',
+  bottomRadius: 'bottom-radius',
+  colorScheme: 'color-scheme'
 };
