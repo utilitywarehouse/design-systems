@@ -2,8 +2,14 @@ export function withDataPrefix(name: string) {
   return `data-${name}`;
 }
 
-// TODO: remove in v1
 export const dataAttributes = {
+  orientation: {
+    horizontal: ':where([data-orientation="horizontal"])',
+    vertical: ':where([data-orientation="vertical"])',
+  },
+  // TODO: remove in v1
+  // when removing this, update ToggleButton to use context
+  inverse: withDataPrefix('inverse-background'),
   legacy: withDataPrefix('legacy-cwui'),
   primary: withDataPrefix('primary'),
   secondary: withDataPrefix('secondary'),
@@ -13,6 +19,4 @@ export const dataAttributes = {
   size: withDataPrefix('size'),
   heading: withDataPrefix('heading'),
   bgcolorBrand: withDataPrefix('bg-color-brand'),
-  // when removing this, update ToggleButton to use context
-  inverse: withDataPrefix('inverse-background'),
 };
