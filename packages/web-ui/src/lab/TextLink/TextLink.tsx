@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { PropsWithSx } from '../../types';
-import { withPrefix, px } from '../../utils';
+import { withGlobalPrefix, px } from '../../utils';
 import clsx from 'clsx';
 import { Typography } from '../../Typography';
 import { TextLinkProps } from './TextLink.props';
@@ -10,7 +10,7 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { useBackground } from '../../Box';
 
 const componentName = 'TextLink';
-const componentClassName = withPrefix(componentName);
+const componentClassName = withGlobalPrefix(componentName);
 
 const StyledTypography = styled(Typography)(() => {
   const { isBrandBackground } = useBackground();

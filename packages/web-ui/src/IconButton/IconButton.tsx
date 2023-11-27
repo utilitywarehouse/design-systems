@@ -3,7 +3,7 @@ import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import {
   classSelector,
-  withPrefix,
+  withGlobalPrefix,
   mediaQueries,
   pxToRem,
   responsiveClassSelector,
@@ -15,13 +15,13 @@ import { IconButtonProps } from './IconButton.props';
 import { PropsWithSx } from '../types';
 
 const componentName = 'IconButton';
-const componentLabel = withPrefix(componentName);
+const componentLabel = withGlobalPrefix(componentName);
 
 const classNames: { [key: string]: { [key: string]: string } } = {
   size: {
-    large: withPrefix('size-large'),
-    small: withPrefix('size-small'),
-    xsmall: withPrefix('size-xsmall'),
+    large: withGlobalPrefix('size-large'),
+    small: withGlobalPrefix('size-small'),
+    xsmall: withGlobalPrefix('size-xsmall'),
   },
 };
 

@@ -5,7 +5,7 @@ import { fonts, fontWeights } from '../../tokens';
 import { PropsWithSx } from '../../types';
 import {
   classSelector,
-  withPrefix,
+  withGlobalPrefix,
   mediaQueries,
   px,
   pxToRem,
@@ -19,12 +19,12 @@ import { styled } from '../../theme';
 import { LinkProps } from './Link.props';
 
 const componentName = 'Link';
-const label = withPrefix(componentName);
+const label = withGlobalPrefix(componentName);
 
 const classNames = {
   size: {
-    large: withPrefix('size-large'),
-    small: withPrefix('size-small'),
+    large: withGlobalPrefix('size-large'),
+    small: withGlobalPrefix('size-small'),
   },
 };
 

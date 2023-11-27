@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { pxToRem, withPrefix } from '../utils';
+import { pxToRem, withGlobalPrefix } from '../utils';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
 import { TextProps } from './Text.props';
@@ -9,7 +9,7 @@ import { PropsWithSx } from '../types';
 import clsx from 'clsx';
 
 const displayName = 'Text';
-const componentClassName = withPrefix(displayName);
+const componentClassName = withGlobalPrefix(displayName);
 
 /**
  * Text renders the secondary UW font, Work Sans, to be used for body text.

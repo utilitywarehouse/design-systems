@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { classSelector, dataAttributes, withPrefix, pxToRem, spacing } from '../utils';
+import { classSelector, dataAttributes, withGlobalPrefix, pxToRem, spacing } from '../utils';
 import { PropsWithSx } from '../types';
 import { Typography } from '../Typography';
 import { HelperTextProps } from './HelperText.props';
@@ -14,11 +14,11 @@ import {
 } from '@utilitywarehouse/react-icons';
 
 const componentName = 'HelperText';
-const componentClassName = withPrefix(componentName);
+const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
-  valid: withPrefix('valid'),
-  invalid: withPrefix('invalid'),
+  valid: withGlobalPrefix('valid'),
+  invalid: withGlobalPrefix('invalid'),
 };
 
 const classSelectors = {

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { PropsWithChildren, forwardRef, ElementRef } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { pxToRem, withPrefix } from '../utils';
+import { pxToRem, withGlobalPrefix } from '../utils';
 import { PropsWithSx } from '../types';
 import { Typography } from '../Typography';
 import { FieldsetLegendProps } from './FieldsetLegend.props';
 import clsx from 'clsx';
 
 const displayName = 'FieldsetLegend';
-const componentClassName = withPrefix(displayName);
+const componentClassName = withGlobalPrefix(displayName);
 
 /**
  * > This component is only required when building a custom field that isn’t
