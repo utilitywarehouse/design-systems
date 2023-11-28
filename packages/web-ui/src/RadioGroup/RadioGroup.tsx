@@ -2,13 +2,13 @@ import * as React from 'react';
 import { forwardRef } from 'react';
 import { Box } from '../Box';
 import { PropsWithSx } from '../types';
-import { getPrefixedName } from '../utils';
+import { withGlobalPrefix } from '../utils';
 import { RadioGroupProps } from './RadioGroup.props';
 import { RadioGroupFormControl } from './RadioGroupFormControl';
 import clsx from 'clsx';
 
 const displayName = 'RadioGroup';
-const componentClassName = getPrefixedName(displayName);
+const componentClassName = withGlobalPrefix(displayName);
 
 /**
  * The `RadioGroup` provides an accessible way to group and control a set of

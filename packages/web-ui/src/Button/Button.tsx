@@ -57,28 +57,28 @@ const StyledButton = styled(MuiButton)({
   '&:disabled': {
     opacity: 0.5,
   },
-  [`&[data-${dataAttributes.bgcolorBrand}=true]`]: {
+  [`&[${dataAttributes.bgcolorBrand}=true]`]: {
     '&:disabled': {
       opacity: 0.6,
     },
   },
   // TODO: remove when `Background` component removed.
-  [`[data-${dataAttributes.inverse}=true] &`]: {
+  [`[${dataAttributes.inverse}=true] &`]: {
     '&:disabled': {
       opacity: 0.6,
     },
   },
   // size
-  [`&[data-${dataAttributes.size}=small]`]: {
+  [`&[${dataAttributes.size}=small]`]: {
     height: px(32),
   },
-  [`&[data-${dataAttributes.size}=medium]`]: {
+  [`&[${dataAttributes.size}=medium]`]: {
     height: px(40),
   },
-  [`&[data-${dataAttributes.size}=large]`]: {
+  [`&[${dataAttributes.size}=large]`]: {
     height: px(48),
   },
-  [`&[data-${dataAttributes.variant}=primary]`]: {
+  [`&[${dataAttributes.variant}=primary]`]: {
     color: colorsCommon.brandMidnight,
     backgroundColor: colors.cyan400,
     border: 'none',
@@ -88,7 +88,7 @@ const StyledButton = styled(MuiButton)({
       backgroundColor: colors.cyan200,
     },
   },
-  [`&[data-${dataAttributes.variant}=secondary]`]: {
+  [`&[${dataAttributes.variant}=secondary]`]: {
     color: colorsCommon.brandMidnight,
     backgroundColor: 'transparent',
     borderColor: colors.cyan400,
@@ -100,21 +100,21 @@ const StyledButton = styled(MuiButton)({
       opacity: 0.5,
       borderWidth,
     },
-    [`&[data-${dataAttributes.bgcolorBrand}=true]`]: {
+    [`&[${dataAttributes.bgcolorBrand}=true]`]: {
       color: colorsCommon.brandWhite,
       '&:hover': {
         borderColor: colorsCommon.brandWhite,
       },
     },
     // TODO: remove when `Background` component removed.
-    [`[data-${dataAttributes.inverse}=true] &`]: {
+    [`[${dataAttributes.inverse}=true] &`]: {
       color: colorsCommon.brandWhite,
       '&:hover': {
         borderColor: colorsCommon.brandWhite,
       },
     },
   },
-  [`&[data-${dataAttributes.variant}=tertiary]`]: {
+  [`&[${dataAttributes.variant}=tertiary]`]: {
     color: colorsCommon.brandMidnight,
     backgroundColor: 'transparent',
     borderColor: colors.cyan400,
@@ -129,11 +129,11 @@ const StyledButton = styled(MuiButton)({
     '&:hover': {
       opacity: 0.5,
     },
-    [`&[data-${dataAttributes.bgcolorBrand}=true]`]: {
+    [`&[${dataAttributes.bgcolorBrand}=true]`]: {
       color: colorsCommon.brandWhite,
     },
     // TODO: remove when `Background` component removed.
-    [`[data-${dataAttributes.inverse}=true] &`]: {
+    [`[${dataAttributes.inverse}=true] &`]: {
       color: colorsCommon.brandWhite,
     },
   },
@@ -150,9 +150,9 @@ export const Button = forwardRef(function Button(
 ) {
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
-    [`data-${dataAttributes.variant}`]: variant,
-    [`data-${dataAttributes.size}`]: size,
-    [`data-${dataAttributes.bgcolorBrand}`]: isBrandBackground,
+    [dataAttributes.variant]: variant,
+    [dataAttributes.size]: size,
+    [dataAttributes.bgcolorBrand]: isBrandBackground,
   };
   return (
     <StyledButton

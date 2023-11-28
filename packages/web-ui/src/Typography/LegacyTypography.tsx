@@ -61,9 +61,9 @@ export const LegacyTypography = forwardRef(function LegacyTypography(
   };
   const dataAttributeProps = isLegacyColor
     ? {
-        [`data-${dataAttributes.legacy}`]: true,
+        [dataAttributes.legacy]: true,
         // @ts-ignore
-        [`data-${dataAttributes[getLegacyColor(color)]}`]: true,
+        [dataAttributes[getLegacyColor(color)]]: true,
       }
     : {};
 

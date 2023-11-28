@@ -1,22 +1,18 @@
-const colorSchemeDataAttribute = (color: string) => `:where([data-colorscheme="${color}"])`;
+export function withDataPrefix(name: string) {
+  return `data-${name}`;
+}
 
+// TODO: remove in v1
 export const dataAttributes = {
-  legacy: 'legacy-cwui',
-  primary: 'primary',
-  secondary: 'secondary',
-  success: 'success',
-  error: 'error',
-  variant: 'variant',
-  size: 'size',
-  inverse: 'inverse-background',
-  multiline: 'multiline',
-  heading: 'heading',
-  bgcolorBrand: 'bg-color-brand',
-  disabled: ':where([data-disabled="true"])',
-  ariaDisabled: ':where([aria-disabled="true"])',
-  cyan: colorSchemeDataAttribute('cyan'),
-  red: colorSchemeDataAttribute('red'),
-  green: colorSchemeDataAttribute('green'),
-  gold: colorSchemeDataAttribute('gold'),
-  grey: colorSchemeDataAttribute('grey'),
+  legacy: withDataPrefix('legacy-cwui'),
+  primary: withDataPrefix('primary'),
+  secondary: withDataPrefix('secondary'),
+  success: withDataPrefix('success'),
+  error: withDataPrefix('error'),
+  variant: withDataPrefix('variant'),
+  size: withDataPrefix('size'),
+  heading: withDataPrefix('heading'),
+  bgcolorBrand: withDataPrefix('bg-color-brand'),
+  // when removing this, update ToggleButton to use context
+  inverse: withDataPrefix('inverse-background'),
 };

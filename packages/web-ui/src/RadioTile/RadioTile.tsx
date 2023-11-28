@@ -6,7 +6,7 @@ import { HelperText } from '../HelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { useIds } from '../hooks';
 import { Box } from '../Box';
-import { getPrefixedName, spacing } from '../utils';
+import { withGlobalPrefix, spacing } from '../utils';
 import { PropsWithSx } from '../types';
 import { StyledRadioIndicator } from '../Radio/Radio';
 import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
@@ -15,7 +15,7 @@ import { RadioTileProps } from './RadioTile.props';
 import { styled } from '../theme';
 
 const displayName = 'Radio';
-const componentClassName = getPrefixedName(displayName);
+const componentClassName = withGlobalPrefix(displayName);
 
 const StyledRadio = styled('div')({
   height: 24,

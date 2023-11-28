@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { PropsWithSx } from '../types';
-import { getPrefixedName } from '../utils';
+import { withGlobalPrefix } from '../utils';
 import { UnstyledButtonProps } from './UnstyledButton.props';
 import clsx from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
 import { styled } from '../theme';
 
 const componentName = 'UnstyledButton';
-const label = getPrefixedName(componentName);
+const componentClassName = withGlobalPrefix(componentName);
 
-const StyledButton = styled('button', { label })<UnstyledButtonProps>(() => {
+const StyledButton = styled('button')<UnstyledButtonProps>(() => {
   return {
     all: 'unset',
     outline: 'transparent',
@@ -51,7 +51,7 @@ export const UnstyledButton = forwardRef<
       as={asChild ? Slot : 'button'}
       ref={forwardedRef}
       aria-disabled={disabled || undefined}
-      className={clsx(label, className)}
+      className={clsx(componentClassName, className)}
       // as we're using aria-disabled instead of disabled then we need to
       // disable the onClick event
       onClick={disabled ? undefined : onClick}

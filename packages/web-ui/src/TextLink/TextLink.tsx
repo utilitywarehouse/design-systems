@@ -30,14 +30,14 @@ const StyledLink = styled(MuiLink)({
   '&:hover': {
     opacity: 0.5,
   },
-  [`&[data-${dataAttributes.heading}=true]`]: {
+  [`&[${dataAttributes.heading}=true]`]: {
     color: colorsCommon.brandPrimaryPurple,
   },
-  [`&[data-${dataAttributes.bgcolorBrand}=true]`]: {
+  [`&[${dataAttributes.bgcolorBrand}=true]`]: {
     color: colorsCommon.brandWhite,
   },
   // TODO: remove when `Background` component removed.
-  [`[data-${dataAttributes.inverse}=true] &`]: {
+  [`[${dataAttributes.inverse}=true] &`]: {
     color: colorsCommon.brandWhite,
   },
   '&.MuiTypography-inherit': {
@@ -68,8 +68,8 @@ export const TextLink = React.forwardRef<HTMLAnchorElement, PropsWithSx<TextLink
     const heading = isHeadingVariant(variant);
     const { isBrandBackground } = useBackground();
     const dataAttributeProps = {
-      [`data-${dataAttributes.heading}`]: heading,
-      [`data-${dataAttributes.bgcolorBrand}`]: isBrandBackground,
+      [dataAttributes.heading]: heading,
+      [dataAttributes.bgcolorBrand]: isBrandBackground,
     };
     return (
       <StyledLink ref={ref} variant={variant} {...props} underline="none" {...dataAttributeProps} />

@@ -2,7 +2,7 @@ import { BoxTypeMap as MuiBoxTypeMap, createBox as createMuiBox } from '@mui/sys
 import { OverridableComponent } from '@mui/types';
 import { ElementType } from 'react';
 import { theme, type Theme } from '../theme';
-import { globalPrefix } from '../utils';
+import { GLOBAL_PREFIX } from '../utils';
 
 export function createBox<RootComponent extends ElementType = MuiBoxTypeMap['defaultComponent']>(
   options: {
@@ -13,7 +13,7 @@ export function createBox<RootComponent extends ElementType = MuiBoxTypeMap['def
   const { componentClassName = 'Box', removeClassNamePrefix } = options;
   const defaultClassName = removeClassNamePrefix
     ? componentClassName
-    : `${globalPrefix}-${componentClassName}`;
+    : `${GLOBAL_PREFIX}-${componentClassName}`;
   const BaseBox = createMuiBox<Theme>({
     defaultTheme: theme,
     defaultClassName,

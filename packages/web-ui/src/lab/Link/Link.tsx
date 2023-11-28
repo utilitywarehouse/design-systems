@@ -5,7 +5,7 @@ import { fonts, fontWeights } from '../../tokens';
 import { PropsWithSx } from '../../types';
 import {
   classSelector,
-  getPrefixedName,
+  withGlobalPrefix,
   mediaQueries,
   px,
   pxToRem,
@@ -19,12 +19,12 @@ import { styled } from '../../theme';
 import { LinkProps } from './Link.props';
 
 const componentName = 'Link';
-const label = getPrefixedName(componentName);
+const label = withGlobalPrefix(componentName);
 
 const classNames = {
   size: {
-    large: getPrefixedName('size-large'),
-    small: getPrefixedName('size-small'),
+    large: withGlobalPrefix('size-large'),
+    small: withGlobalPrefix('size-small'),
   },
 };
 
@@ -100,15 +100,15 @@ const StyledLink = styled('a', { label })<LinkProps>(() => {
     '--link-underline-color-active': colors.cyan700,
     '--link-underline-color': 'var(--link-underline-color-default)',
     '@media (hover: hover)': {
-      '&:where(:hover)': {
+      ':where(:hover)': {
         '--link-underline-color': 'var(--link-underline-color-hover)',
         '--link-color': 'var(--link-color-hover)',
       },
     },
-    '&:where(:active)': {
+    ':where(:active)': {
       '--link-underline-color': 'var(--link-underline-color-active)',
     },
-    '&:where(:focus-visible)': {
+    ':where(:focus-visible)': {
       textDecoration: 'none',
       outlineWidth: px(2),
       outlineStyle: 'solid',
