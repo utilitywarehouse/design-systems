@@ -13,9 +13,10 @@ import * as Stories from './Divider.stories';
 
 Follows the [Separator role requirements](https://www.w3.org/TR/wai-aria-1.2/#separator).
 
-By default the `Divider` component renders a `div` with a role of `separator`.
-This is a semantically meaningful division between elements, and should be used
-considerately.
+By default the `Divider` component renders an `hr` which has a role of
+`separator` by default. This is a semantically meaningful division between
+elements, and should be used considerately.
+
 If you need a purely visual separation you can use the `decorative` prop, which
 will remove the element from the accessibility tree. Alternatively you could
 use CSS styling, such as `border-color`, instead of this component.
