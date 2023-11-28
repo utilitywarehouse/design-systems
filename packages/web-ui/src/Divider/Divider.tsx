@@ -1,44 +1,49 @@
 import * as React from 'react';
-import { createBox } from '../Box';
 import { DividerProps, ORIENTATIONS, Orientation } from './Divider.props';
 import { styled } from '../theme';
-import { dataAttributes, px } from '../utils';
+import { dataAttributes, getPrefixedName, px } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
+import clsx from 'clsx';
 
-const componentName = 'Divider';
-const BaseBox = createBox({ componentClassName: componentName });
-
-const StyledBox = styled(BaseBox)({
-  alignSelf: 'stretch',
-  flexShrink: 0,
-  [dataAttributes.orientation.horizontal]: {
-    height: px(1),
-    width: 'auto',
-  },
-  [dataAttributes.orientation.vertical]: {
-    height: 'auto',
-    width: px(1),
-  },
-});
-
+const COMPONENT_NAME = 'Divider';
+const DISPLAY_NAME = getPrefixedName(COMPONENT_NAME);
 const DEFAULT_ORIENTATION = 'horizontal';
 
 function isValidOrientation(orientation: any): orientation is Orientation {
   return ORIENTATIONS.includes(orientation);
 }
 
+const StyledElement = styled('hr', {
+  shouldForwardProp: prop => prop !== 'color',
+})<{ color: string }>(({ color }) => {
+  return {
+    all: 'unset',
+    alignSelf: 'stretch',
+    flexShrink: 0,
+    backgroundColor: color,
+    [dataAttributes.orientation.horizontal]: {
+      height: px(1),
+      width: 'auto',
+    },
+    [dataAttributes.orientation.vertical]: {
+      height: 'auto',
+      width: px(1),
+    },
+  };
+});
+
 /**
- * Create a visual or semantic separation or divide between content or sections
- * on a page.
+ * Used to provide a visual break and semantically divide content.
  *
  * Supports vertical and horizontal orientations.
  */
-export const Divider = React.forwardRef<React.ElementRef<'div'>, DividerProps>(
+export const Divider = React.forwardRef<React.ElementRef<'hr'>, DividerProps>(
   (
     {
       decorative,
       orientation: orientationProp = DEFAULT_ORIENTATION,
       color = colors.grey175,
+      className,
       ...props
     },
     ref
@@ -48,13 +53,14 @@ export const Divider = React.forwardRef<React.ElementRef<'div'>, DividerProps>(
     // `aria-orientation` defaults to `horizontal` so we only need it if `orientation` is vertical
     const ariaOrientation = orientation === 'vertical' ? orientation : undefined;
     const semanticProps = decorative
-      ? { role: 'none' }
-      : { 'aria-orientation': ariaOrientation, role: 'separator' };
+      ? { 'aria-hidden': true }
+      : { 'aria-orientation': ariaOrientation };
 
     return (
-      <StyledBox
+      <StyledElement
+        color={color}
+        className={clsx(DISPLAY_NAME, className)}
         data-orientation={orientation}
-        bgcolor={color}
         {...semanticProps}
         {...props}
         ref={ref}
@@ -63,4 +69,4 @@ export const Divider = React.forwardRef<React.ElementRef<'div'>, DividerProps>(
   }
 );
 
-Divider.displayName = componentName;
+Divider.displayName = DISPLAY_NAME;
