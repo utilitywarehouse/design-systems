@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { DividerProps, ORIENTATIONS, Orientation } from './Divider.props';
 import { styled } from '../theme';
-import { dataAttributes, getPrefixedName, px } from '../utils';
+import { px, withGlobalPrefix } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 import clsx from 'clsx';
 
-const COMPONENT_NAME = 'Divider';
-const DISPLAY_NAME = getPrefixedName(COMPONENT_NAME);
-const DEFAULT_ORIENTATION = 'horizontal';
+const componentName = 'Divider';
+const componentClassName = withGlobalPrefix(componentName);
+const defaultOrientation = 'horizontal';
 
 function isValidOrientation(orientation: any): orientation is Orientation {
   return ORIENTATIONS.includes(orientation);
@@ -21,11 +21,11 @@ const StyledElement = styled('hr', {
     alignSelf: 'stretch',
     flexShrink: 0,
     backgroundColor: color,
-    [dataAttributes.orientation.horizontal]: {
+    ':where([data-orientation="horizontal"])': {
       height: px(1),
       width: 'auto',
     },
-    [dataAttributes.orientation.vertical]: {
+    ':where([data-orientation="vertical"])': {
       height: 'auto',
       width: px(1),
     },
@@ -41,14 +41,14 @@ export const Divider = React.forwardRef<React.ElementRef<'hr'>, DividerProps>(
   (
     {
       decorative,
-      orientation: orientationProp = DEFAULT_ORIENTATION,
+      orientation: orientationProp = defaultOrientation,
       color = colors.grey175,
       className,
       ...props
     },
     ref
   ) => {
-    const orientation = isValidOrientation(orientationProp) ? orientationProp : DEFAULT_ORIENTATION;
+    const orientation = isValidOrientation(orientationProp) ? orientationProp : defaultOrientation;
 
     // `aria-orientation` defaults to `horizontal` so we only need it if `orientation` is vertical
     const ariaOrientation = orientation === 'vertical' ? orientation : undefined;
@@ -59,7 +59,7 @@ export const Divider = React.forwardRef<React.ElementRef<'hr'>, DividerProps>(
     return (
       <StyledElement
         color={color}
-        className={clsx(DISPLAY_NAME, className)}
+        className={clsx(componentClassName, className)}
         data-orientation={orientation}
         {...semanticProps}
         {...props}
@@ -69,4 +69,4 @@ export const Divider = React.forwardRef<React.ElementRef<'hr'>, DividerProps>(
   }
 );
 
-Divider.displayName = DISPLAY_NAME;
+Divider.displayName = componentName;
