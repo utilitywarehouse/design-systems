@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { PropsWithSx } from '../types';
-import { classSelector, dataAttributes, withGlobalPrefix, px } from '../utils';
+import { classSelector, withGlobalPrefix, px, COLORSCHEME_SELECTORS } from '../utils';
 import clsx from 'clsx';
 import { styled } from '../theme';
 import { UnstyledButton } from '../UnstyledButton';
@@ -9,7 +9,7 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { BaseButtonProps } from './BaseButton.props';
 
 const componentName = 'BaseButton';
-const label = withGlobalPrefix(componentName);
+const componentClassName = withGlobalPrefix(componentName);
 
 const classNames: { [key: string]: { [key: string]: string } } = {
   variant: {
@@ -27,7 +27,7 @@ const classSelectors = {
   },
 };
 
-const StyledButton = styled(UnstyledButton, { label })<BaseButtonProps>(() => {
+const StyledButton = styled(UnstyledButton)<BaseButtonProps>(() => {
   return {
     borderRadius: px(9999),
     color: 'var(--base-button-foreground-color)',
@@ -38,7 +38,7 @@ const StyledButton = styled(UnstyledButton, { label })<BaseButtonProps>(() => {
       // as UW icons use currentColor by default, this will fallback to the Button's color property if not set.
       color: 'var(--base-button-icon-color)',
     },
-    [dataAttributes.cyan]: {
+    [COLORSCHEME_SELECTORS.cyan]: {
       '--base-button-solid-foreground-color': colors.cyan1000,
       '--base-button-solid-background-color': colors.cyan400,
       '--base-button-solid-background-color-hover': colors.cyan500,
@@ -60,7 +60,7 @@ const StyledButton = styled(UnstyledButton, { label })<BaseButtonProps>(() => {
       '--base-button-outline-icon-color': colors.cyan600,
       '--focus-outline-color': colors.cyan700,
     },
-    [dataAttributes.red]: {
+    [COLORSCHEME_SELECTORS.red]: {
       '--base-button-solid-foreground-color': colorsCommon.brandWhite,
       '--base-button-solid-background-color': colors.red500,
       '--base-button-solid-background-color-hover': colors.red600,
@@ -81,7 +81,7 @@ const StyledButton = styled(UnstyledButton, { label })<BaseButtonProps>(() => {
       '--base-button-outline-icon-color': colors.red600,
       '--focus-outline-color': colors.red700,
     },
-    [dataAttributes.green]: {
+    [COLORSCHEME_SELECTORS.green]: {
       '--base-button-solid-foreground-color': colorsCommon.brandWhite,
       '--base-button-solid-background-color': colors.green500,
       '--base-button-solid-background-color-hover': colors.green600,
@@ -102,7 +102,7 @@ const StyledButton = styled(UnstyledButton, { label })<BaseButtonProps>(() => {
       '--base-button-outline-icon-color': colors.green600,
       '--focus-outline-color': colors.green700,
     },
-    [dataAttributes.gold]: {
+    [COLORSCHEME_SELECTORS.gold]: {
       '--base-button-outline-foreground-color': colors.gold900,
       '--base-button-outline-background-color-hover': colors.gold100,
       '--base-button-outline-background-color-active': colors.gold200,
@@ -117,7 +117,7 @@ const StyledButton = styled(UnstyledButton, { label })<BaseButtonProps>(() => {
       '--base-button-ghost-icon-color': colors.gold600,
       '--focus-outline-color': colors.gold700,
     },
-    [dataAttributes.grey]: {
+    [COLORSCHEME_SELECTORS.grey]: {
       '--base-button-outline-foreground-color': colors.grey1000,
       '--base-button-outline-border-color': colors.grey500,
       '--base-button-outline-background-color-hover': colors.grey100,
@@ -186,7 +186,7 @@ const StyledButton = styled(UnstyledButton, { label })<BaseButtonProps>(() => {
       '--base-button-background-color': 'var(--base-button-background-color-active)',
       '--base-button-icon-color': 'var(--base-button-icon-color-active)',
     },
-    [dataAttributes.ariaDisabled]: {
+    ['&:where([aria-disabled="true"])']: {
       cursor: 'not-allowed',
       '--base-button-foreground-color': 'var(--base-button-foreground-color-disabled)',
       '--base-button-background-color': 'var(--base-button-background-color-disabled)',
@@ -216,7 +216,7 @@ export const BaseButton = forwardRef<
       data-colorscheme={colorScheme}
       aria-disabled={disabled || undefined}
       disabled={disabled}
-      className={clsx(label, className, classNames.variant[variant])}
+      className={clsx(componentClassName, className, classNames.variant[variant])}
       {...props}
     />
   );
