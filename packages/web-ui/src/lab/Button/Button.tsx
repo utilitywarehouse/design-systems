@@ -4,7 +4,7 @@ import { fonts, fontWeights } from '../../tokens';
 import { PropsWithSx } from '../../types';
 import {
   classSelector,
-  getPrefixedName,
+  withGlobalPrefix,
   mediaQueries,
   px,
   pxToRem,
@@ -18,12 +18,12 @@ import { styled } from '../../theme';
 import { BaseButton } from '../../BaseButton';
 
 const componentName = 'Button';
-const label = getPrefixedName(componentName);
+const label = withGlobalPrefix(componentName);
 
 const classNames: { [key: string]: { [key: string]: string } } = {
   size: {
-    large: getPrefixedName('size-large'),
-    small: getPrefixedName('size-small'),
+    large: withGlobalPrefix('size-large'),
+    small: withGlobalPrefix('size-small'),
   },
 };
 

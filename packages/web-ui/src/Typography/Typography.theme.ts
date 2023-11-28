@@ -11,23 +11,23 @@ const baseTextStyles = {
 };
 
 const legacyTextStyles = {
-  [`&[data-${legacy}=true][data-${primary}=true]`]: {
+  [`&[${legacy}="true"][${primary}="true"]`]: {
     color: colorsCommon.brandMidnight,
   },
-  [`[data-${inverse}=true] &`]: {
-    [`&[data-${legacy}=true]`]: {
+  [`[${inverse}=true] &`]: {
+    [`&[${legacy}=true]`]: {
       color: colorsCommon.brandWhite,
     },
   },
-  [`&[data-${legacy}=true][data-${success}=true]`]: {
+  [`&[${legacy}=true][${success}=true]`]: {
     color: colors.green700,
-    [`[data-${inverse}=true] &`]: {
+    [`[${inverse}=true] &`]: {
       color: colors.apple400,
     },
   },
-  [`&[data-${legacy}=true][data-${error}=true]`]: {
+  [`&[${legacy}=true][${error}=true]`]: {
     color: colors.red600,
-    [`[data-${inverse}=true] &`]: {
+    [`[${inverse}=true] &`]: {
       color: colors.rose400,
     },
   },
@@ -39,17 +39,17 @@ const baseHeadingStyles = {
 };
 
 const legacyHeadingStyles = {
-  [`&[data-${legacy}=true][data-${primary}=true]`]: {
+  [`&[${legacy}=true][${primary}=true]`]: {
     color: colorsCommon.brandPrimaryPurple,
   },
-  [`&[data-${legacy}=true][data-${secondary}=true]`]: {
+  [`&[${legacy}=true][${secondary}=true]`]: {
     color: colorsCommon.brandMidnight,
   },
-  [`&[data-${legacy}=true][data-${error}=true]`]: {
+  [`&[${legacy}=true][${error}=true]`]: {
     color: colorsCommon.brandPrimaryPurple,
   },
-  [`[data-${inverse}=true] &`]: {
-    [`&[data-${legacy}=true]`]: {
+  [`[${inverse}=true] &`]: {
+    [`&[${legacy}=true]`]: {
       color: colorsCommon.brandWhite,
     },
   },

@@ -1,4 +1,5 @@
 export * from './data-attributes';
+export * from './css-selector-helpers';
 export * from './typography';
 export * from './media-queries';
 export * from './color';

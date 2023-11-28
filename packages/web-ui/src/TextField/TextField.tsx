@@ -9,12 +9,26 @@ import { Label } from '../Label';
 import { HelperText } from '../HelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights, transitions } from '../tokens';
-import { dataAttributes, pxToRem, spacing } from '../utils';
+import { classSelector, pxToRem, spacing, withGlobalPrefix } from '../utils';
+import clsx from 'clsx';
 
-const isSuccessStatus = (status?: string): boolean => status === 'success';
-const isErrorStatus = (status?: string): boolean => status === 'error';
+const classNames: { [key: string]: string } = {
+  success: withGlobalPrefix('status-success'),
+  multiline: withGlobalPrefix('multiline'),
+};
 
-const { success, multiline } = dataAttributes;
+const classSelectors = {
+  success: classSelector(classNames.success),
+  multiline: classSelector(classNames.multiline),
+};
+
+function isSuccessStatus(status?: string): boolean {
+  return status === 'success';
+}
+function isErrorStatus(status?: string): boolean {
+  return status === 'error';
+}
+
 const StyledInput = styled(FilledInput)({
   fontFamily: fonts.secondary,
   fontSize: pxToRem(18),
@@ -85,7 +99,7 @@ const StyledInput = styled(FilledInput)({
       },
     },
   },
-  [`&[data-${success}=true]`]: {
+  [classSelectors.success]: {
     ':before': {
       borderBottomColor: colors.green600,
     },
@@ -106,7 +120,7 @@ const StyledInput = styled(FilledInput)({
       borderBottomColor: colors.green600,
     },
   },
-  [`&[data-${multiline}=true]`]: {
+  [classSelectors.multiline]: {
     // padding values differ slightly from non-multiline since a `textarea` is rendered rather than an `input`.
     paddingTop: 15,
     paddingBottom: 14,
@@ -174,6 +188,7 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
     'aria-label': ariaLabel,
     'aria-labelledby': ariaLabelledBy,
     'aria-describedby': ariaDescribedBy,
+    className,
     ...props
   },
   ref
@@ -183,10 +198,6 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
     'aria-labelledby': ariaLabelledBy,
     'aria-label': ariaLabel,
     'aria-describedby': ariaDescribedBy,
-  };
-  const dataAttributeProps = {
-    [`data-${dataAttributes.success}`]: !props.disabled && isSuccessStatus(status),
-    [`data-${dataAttributes.multiline}`]: !!props.multiline,
   };
 
   return (
@@ -208,8 +219,14 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
         </>
       }
       inputProps={inputProps}
+      className={clsx(
+        {
+          [classNames.success]: !props.disabled && isSuccessStatus(status),
+          [classNames.multiline]: !!props.multiline,
+        },
+        className
+      )}
       {...props}
-      {...dataAttributeProps}
     />
   );
 });

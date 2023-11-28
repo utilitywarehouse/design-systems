@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { classSelector, dataAttributes, getPrefixedName, pxToRem, spacing } from '../utils';
+import { classSelector, withGlobalPrefix, pxToRem, spacing } from '../utils';
 import { PropsWithSx } from '../types';
 import { Typography } from '../Typography';
 import { HelperTextProps } from './HelperText.props';
@@ -14,11 +14,11 @@ import {
 } from '@utilitywarehouse/react-icons';
 
 const componentName = 'HelperText';
-const componentClassName = getPrefixedName(componentName);
+const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
-  valid: getPrefixedName('valid'),
-  invalid: getPrefixedName('invalid'),
+  valid: withGlobalPrefix('valid'),
+  invalid: withGlobalPrefix('invalid'),
 };
 
 const classSelectors = {
@@ -44,7 +44,7 @@ const StyledTypography = styled(Typography)({
     // Button's color property if not set.
     color: 'var(--helper-text-icon-color)',
   },
-  [dataAttributes.disabled]: {
+  ['&:where([data-disabled="true"])']: {
     '--helper-text-color': 'var(--helper-text-color-disabled)',
     '--helper-text-icon-color': 'var(--helper-text-icon-color-disabled)',
   },

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { PropsWithSx } from '../../types';
-import { getPrefixedName, px } from '../../utils';
+import { withGlobalPrefix, px } from '../../utils';
 import clsx from 'clsx';
 import { Typography } from '../../Typography';
 import { TextLinkProps } from './TextLink.props';
@@ -10,7 +10,7 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { useBackground } from '../../Box';
 
 const componentName = 'TextLink';
-const componentClassName = getPrefixedName(componentName);
+const componentClassName = withGlobalPrefix(componentName);
 
 const StyledTypography = styled(Typography)(() => {
   const { isBrandBackground } = useBackground();
@@ -30,19 +30,19 @@ const StyledTypography = styled(Typography)(() => {
     color: 'var(--text-link-color)',
     textDecorationColor: 'var(--text-link-color)',
     borderRadius: px(4),
-    '&:visited': {
+    ':visited': {
       color: 'var(--text-link-color-visited)',
       textDecorationColor: 'var(--text-link-color-visited)',
     },
     '@media (hover: hover)': {
-      '&:where(:hover)': {
+      ':where(:hover)': {
         textDecoration: 'none',
       },
     },
-    '&:where(:active)': {
+    ':where(:active)': {
       '--text-link-color': 'var(--text-link-color-active)',
     },
-    '&:where(:focus-visible)': {
+    ':where(:focus-visible)': {
       outlineWidth: px(2),
       outlineStyle: 'solid',
       outlineColor: 'var(--text-link-focus-outline-color)',
