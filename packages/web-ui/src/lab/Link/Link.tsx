@@ -100,15 +100,15 @@ const StyledLink = styled('a', { label })<LinkProps>(() => {
     '--link-underline-color-active': colors.cyan700,
     '--link-underline-color': 'var(--link-underline-color-default)',
     '@media (hover: hover)': {
-      '&:where(:hover)': {
+      ':where(:hover)': {
         '--link-underline-color': 'var(--link-underline-color-hover)',
         '--link-color': 'var(--link-color-hover)',
       },
     },
-    '&:where(:active)': {
+    ':where(:active)': {
       '--link-underline-color': 'var(--link-underline-color-active)',
     },
-    '&:where(:focus-visible)': {
+    ':where(:focus-visible)': {
       textDecoration: 'none',
       outlineWidth: px(2),
       outlineStyle: 'solid',

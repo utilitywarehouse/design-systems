@@ -1,11 +1,11 @@
 import { Breakpoints } from '../types';
 
 export function classSelector(className: string) {
-  return `&:where(.${className})`;
+  return `:where(.${className})`;
 }
 
 export function responsiveClassSelector(className: string, breakpoint: Breakpoints) {
-  return `&:where(.${breakpoint}\\:${className})`;
+  return `:where(.${breakpoint}\\:${className})`;
 }
 
 export function colorSchemeSelector(color: string) {

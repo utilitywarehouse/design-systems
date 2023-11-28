@@ -169,7 +169,7 @@ const StyledButton = styled(UnstyledButton)<BaseButtonProps>(() => {
         '--base-button-icon-color': 'var(--base-button-outline-icon-color)',
       },
     },
-    '&:where(:focus-visible)': {
+    ':where(:focus-visible)': {
       boxShadow: 'var(--base-button-focus-outline)',
       '--base-button-background-color': 'var(--base-button-background-color-hover)',
       [classSelectors.variant.outline]: {
@@ -178,15 +178,15 @@ const StyledButton = styled(UnstyledButton)<BaseButtonProps>(() => {
     },
     '@media (hover: hover)': {
       cursor: 'default', // so the cursor doesn't change on hover when using a `a` element with `asChild`
-      '&:where(:hover)': {
+      ':where(:hover)': {
         '--base-button-background-color': 'var(--base-button-background-color-hover)',
       },
     },
-    '&:where(:active)': {
+    ':where(:active)': {
       '--base-button-background-color': 'var(--base-button-background-color-active)',
       '--base-button-icon-color': 'var(--base-button-icon-color-active)',
     },
-    ['&:where([aria-disabled="true"])']: {
+    [':where([aria-disabled="true"])']: {
       cursor: 'not-allowed',
       '--base-button-foreground-color': 'var(--base-button-foreground-color-disabled)',
       '--base-button-background-color': 'var(--base-button-background-color-disabled)',

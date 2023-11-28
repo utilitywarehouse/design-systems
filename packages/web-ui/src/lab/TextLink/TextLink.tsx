@@ -30,19 +30,19 @@ const StyledTypography = styled(Typography)(() => {
     color: 'var(--text-link-color)',
     textDecorationColor: 'var(--text-link-color)',
     borderRadius: px(4),
-    '&:visited': {
+    ':visited': {
       color: 'var(--text-link-color-visited)',
       textDecorationColor: 'var(--text-link-color-visited)',
     },
     '@media (hover: hover)': {
-      '&:where(:hover)': {
+      ':where(:hover)': {
         textDecoration: 'none',
       },
     },
-    '&:where(:active)': {
+    ':where(:active)': {
       '--text-link-color': 'var(--text-link-color-active)',
     },
-    '&:where(:focus-visible)': {
+    ':where(:focus-visible)': {
       outlineWidth: px(2),
       outlineStyle: 'solid',
       outlineColor: 'var(--text-link-focus-outline-color)',
