@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { fonts, fontWeights } from '../../tokens';
 import { PropsWithSx } from '../../types';
 import {
@@ -19,7 +18,7 @@ import { styled } from '../../theme';
 import { LinkProps } from './Link.props';
 
 const componentName = 'Link';
-const label = withGlobalPrefix(componentName);
+const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
   size: {
@@ -47,7 +46,7 @@ const classSelectors = {
   },
 };
 
-const StyledLink = styled('a', { label })<LinkProps>(() => {
+const StyledElement = styled('a', { label: componentClassName })<LinkProps>(() => {
   const sizeStyles = {
     large: {
       '--link-font-size': pxToRem(18),
@@ -137,19 +136,20 @@ const StyledLink = styled('a', { label })<LinkProps>(() => {
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
-export const Link = forwardRef<ElementRef<'a'>, PropsWithChildren<PropsWithSx<LinkProps>>>(
-  function Link({ className, asChild, children, size = 'large', ...props }, forwardedRef) {
-    return (
-      <StyledLink
-        as={asChild ? Slot : 'a'}
-        ref={forwardedRef}
-        className={clsx(label, className, withBreakpoints(size, 'size'))}
-        {...props}
-      >
-        {children}
-      </StyledLink>
-    );
-  }
-);
+export const Link = React.forwardRef<
+  React.ElementRef<'a'>,
+  React.PropsWithChildren<PropsWithSx<LinkProps>>
+>(function Link({ className, asChild, children, size = 'large', ...props }, ref) {
+  return (
+    <StyledElement
+      as={asChild ? Slot : 'a'}
+      ref={ref}
+      className={clsx(componentClassName, className, withBreakpoints(size, 'size'))}
+      {...props}
+    >
+      {children}
+    </StyledElement>
+  );
+});
 
 Link.displayName = componentName;

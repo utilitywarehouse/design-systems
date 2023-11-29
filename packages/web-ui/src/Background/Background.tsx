@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
-import { dataAttributes, isInverseBackgroundColor } from '../utils';
+import { DATA_ATTRIBUTES, isInverseBackgroundColor } from '../utils';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import { forwardRef } from 'react';
 import type { NeutralBackgroundColor, InverseBackgroundColor } from '../types';
@@ -45,7 +45,7 @@ export const Background = forwardRef(function Background({ backgroundColor, ...p
     'The Background component is deprecated and will be removed in v1, please use Box instead.'
   );
   const inverse = backgroundColor ? isInverseBackgroundColor(backgroundColor) : false;
-  const dataAttributeProps = inverse ? { [dataAttributes.inverse]: true } : {};
+  const dataAttributeProps = inverse ? { [`${DATA_ATTRIBUTES.inverse}`]: true } : {};
 
   return (
     <MuiBox

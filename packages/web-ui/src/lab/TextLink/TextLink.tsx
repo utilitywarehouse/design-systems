@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { PropsWithSx } from '../../types';
-import { withGlobalPrefix, px } from '../../utils';
+import { withGlobalPrefix, px, DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS } from '../../utils';
 import clsx from 'clsx';
 import { Typography } from '../../Typography';
 import { TextLinkProps } from './TextLink.props';
@@ -12,8 +11,7 @@ import { useBackground } from '../../Box';
 const componentName = 'TextLink';
 const componentClassName = withGlobalPrefix(componentName);
 
-const StyledTypography = styled(Typography)(() => {
-  const { isBrandBackground } = useBackground();
+const StyledElement = styled(Typography)(() => {
   return {
     cursor: 'pointer',
     display: 'inline-flex',
@@ -21,11 +19,14 @@ const StyledTypography = styled(Typography)(() => {
     justifyContent: 'center',
     textAlign: 'center',
     flexShrink: 0,
-    '--text-link-color-default': isBrandBackground ? colorsCommon.brandWhite : colors.cyan600,
-    '--text-link-color-active': isBrandBackground ? colors.purple100 : colors.cyan800,
-    '--text-link-color-visited': isBrandBackground ? colors.purple300 : colors.cyan800,
-    '--text-link-focus-outline-color': isBrandBackground ? colors.purple400 : colors.cyan700,
-    '--text-link-color': 'var(--text-link-color-default)',
+    '--text-link-color': colors.cyan600,
+    '--text-link-color-on-brand-bg': colorsCommon.brandWhite,
+    '--text-link-color-active': colors.cyan800,
+    '--text-link-color-active-on-brand-bg': colors.purple100,
+    '--text-link-color-visited': colors.cyan800,
+    '--text-link-color-visited-on-brand-bg': colors.purple300,
+    '--text-link-focus-outline-color': colors.cyan700,
+    '--text-link-focus-outline-color-on-brand-bg': colors.purple400,
     textDecoration: 'underline',
     color: 'var(--text-link-color)',
     textDecorationColor: 'var(--text-link-color)',
@@ -48,6 +49,12 @@ const StyledTypography = styled(Typography)(() => {
       outlineColor: 'var(--text-link-focus-outline-color)',
       outlineOffset: px(2),
     },
+    [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
+      '--text-link-color': 'var(--text-link-color-on-brand-bg)',
+      '--text-link-color-active': 'var(--text-link-color-active-on-brand-bg)',
+      '--text-link-color-visited': 'var(--text-link-color-visited-on-brand-bg)',
+      '--text-link-focus-outline-color': 'var(--text-link-focus-outline-color-on-brand-bg)',
+    },
   };
 });
 
@@ -60,22 +67,28 @@ const StyledTypography = styled(Typography)(() => {
  * > This component does not need to be wrapped in a `ThemeProvider` and can be
  * > used standalone with other component libraries.
  */
-export const TextLink = forwardRef<ElementRef<'a'>, PropsWithChildren<PropsWithSx<TextLinkProps>>>(
-  ({ className, ...props }, ref) => {
-    return (
-      <StyledTypography
-        ref={ref}
-        component="a"
-        className={clsx(componentClassName, className)}
-        fontFamily="inherit"
-        fontSize="inherit"
-        lineHeight="inherit"
-        weight="inherit"
-        color="inherit"
-        {...props}
-      />
-    );
-  }
-);
+export const TextLink = React.forwardRef<
+  React.ElementRef<'a'>,
+  React.PropsWithChildren<PropsWithSx<TextLinkProps>>
+>(({ className, ...props }, ref) => {
+  const { isBrandBackground } = useBackground();
+  const dataAttributeProps = {
+    [DATA_ATTRIBUTES.onBrandBackground]: isBrandBackground || undefined,
+  };
+  return (
+    <StyledElement
+      ref={ref}
+      component="a"
+      className={clsx(componentClassName, className)}
+      fontFamily="inherit"
+      fontSize="inherit"
+      lineHeight="inherit"
+      weight="inherit"
+      color="inherit"
+      {...dataAttributeProps}
+      {...props}
+    />
+  );
+});
 
 TextLink.displayName = componentName;

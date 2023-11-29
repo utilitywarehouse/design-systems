@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
 import { PropsWithSx } from '../types';
 import { EmProps } from './Em.props';
@@ -19,23 +18,24 @@ const componentClassName = withGlobalPrefix(componentName);
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
-export const Em = forwardRef<ElementRef<'em'>, PropsWithChildren<PropsWithSx<EmProps>>>(
-  ({ className, ...props }, ref) => {
-    return (
-      <Typography
-        ref={ref}
-        component="em"
-        className={clsx(componentClassName, className)}
-        fontStyle="italic"
-        fontFamily="inherit"
-        fontSize="inherit"
-        lineHeight="inherit"
-        weight="inherit"
-        color="inherit"
-        {...props}
-      />
-    );
-  }
-);
+export const Em = React.forwardRef<
+  React.ElementRef<'em'>,
+  React.PropsWithChildren<PropsWithSx<EmProps>>
+>(({ className, ...props }, ref) => {
+  return (
+    <Typography
+      ref={ref}
+      component="em"
+      className={clsx(componentClassName, className)}
+      fontStyle="italic"
+      fontFamily="inherit"
+      fontSize="inherit"
+      lineHeight="inherit"
+      weight="inherit"
+      color="inherit"
+      {...props}
+    />
+  );
+});
 
 Em.displayName = componentName;

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
 import { classSelector, withGlobalPrefix, pxToRem, spacing } from '../utils';
 import { PropsWithSx } from '../types';
@@ -26,7 +25,7 @@ const classSelectors = {
   invalid: classSelector(classNames.invalid),
 };
 
-const StyledTypography = styled(Typography)({
+const StyledElement = styled(Typography)({
   display: 'inline-flex',
   gap: spacing(1),
   alignItems: 'center',
@@ -68,9 +67,9 @@ const StyledTypography = styled(Typography)({
  * > This component does not need to be wrapped in a `ThemeProvider` and can be
  * > used standalone with other component libraries.
  */
-export const HelperText = forwardRef<
-  ElementRef<'span'>,
-  PropsWithChildren<PropsWithSx<HelperTextProps>>
+export const HelperText = React.forwardRef<
+  React.ElementRef<'span'>,
+  React.PropsWithChildren<PropsWithSx<HelperTextProps>>
 >(({ showIcon, validationStatus, disabled, children, className, ...props }, ref) => {
   const icons: { [key: string]: typeof Tick01SmallContainedIcon } = {
     valid: Tick01SmallContainedIcon,
@@ -79,7 +78,7 @@ export const HelperText = forwardRef<
   const Icon = validationStatus ? icons[validationStatus] : Information01SmallContainedIcon;
 
   return (
-    <StyledTypography
+    <StyledElement
       ref={ref}
       component="span"
       fontFamily="secondary"
@@ -96,7 +95,7 @@ export const HelperText = forwardRef<
     >
       {showIcon ? <Icon /> : null}
       {children}
-    </StyledTypography>
+    </StyledElement>
   );
 });
 

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import {
   classSelector,
@@ -15,9 +14,9 @@ import { IconButtonProps } from './IconButton.props';
 import { PropsWithSx } from '../types';
 
 const componentName = 'IconButton';
-const componentLabel = withGlobalPrefix(componentName);
+const componentClassName = withGlobalPrefix(componentName);
 
-const classNames: { [key: string]: { [key: string]: string } } = {
+const classNames = {
   size: {
     large: withGlobalPrefix('size-large'),
     small: withGlobalPrefix('size-small'),
@@ -48,7 +47,7 @@ const classSelectors = {
   },
 };
 
-const StyledButton = styled(BaseButton, { label: componentLabel })(() => {
+const StyledElement = styled(BaseButton, { label: componentClassName })(() => {
   const sizeStyles = {
     large: {
       '--icon-button-size': pxToRem(48),
@@ -93,13 +92,13 @@ const StyledButton = styled(BaseButton, { label: componentLabel })(() => {
  *
  * This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
-export const IconButton = forwardRef<
-  ElementRef<'button'>,
-  PropsWithChildren<PropsWithSx<IconButtonProps>>
->(function IconButton({ size = 'large', className, label, ...props }, forwardedRef) {
+export const IconButton = React.forwardRef<
+  React.ElementRef<'button'>,
+  React.PropsWithChildren<PropsWithSx<IconButtonProps>>
+>(function IconButton({ size = 'large', className, label, ...props }, ref) {
   return (
-    <StyledButton
-      ref={forwardedRef}
+    <StyledElement
+      ref={ref}
       className={clsx(label, className, withBreakpoints(size, 'size'))}
       aria-label={label}
       {...props}

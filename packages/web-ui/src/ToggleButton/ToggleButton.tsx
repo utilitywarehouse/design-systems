@@ -4,12 +4,12 @@ import {
   ToggleButtonProps as MuiToggleButtonProps,
 } from '@mui/material';
 import { fonts, fontWeights } from '../tokens';
-import { dataAttributes, px } from '../utils';
+import { DATA_ATTRIBUTES, px } from '../utils';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { styled } from '../theme';
 
 const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
-  const { inverse } = dataAttributes;
+  const { inverse } = DATA_ATTRIBUTES;
   return {
     border: 0,
     padding: `${theme.spacing(0.5)} ${theme.spacing(3)}`,

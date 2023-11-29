@@ -1,8 +1,8 @@
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
-import { dataAttributes, mediaQueries, pxToRem } from '../utils';
+import { DATA_ATTRIBUTES, mediaQueries, pxToRem } from '../utils';
 
-const { legacy, primary, secondary, inverse, success, error } = dataAttributes;
+const { legacy, primary, secondary, inverse, success, error } = DATA_ATTRIBUTES;
 
 const baseTextStyles = {
   fontFamily: fonts.secondary,
