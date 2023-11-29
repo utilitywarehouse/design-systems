@@ -11,6 +11,7 @@ import {
   responsiveClassSelector,
   spacing,
   withBreakpoints,
+  CSS_SELECTORS,
 } from '../../utils';
 import clsx from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
@@ -104,10 +105,10 @@ const StyledElement = styled('a', { label: componentClassName })<LinkProps>(() =
         '--link-color': 'var(--link-color-hover)',
       },
     },
-    ':where(:active)': {
+    [CSS_SELECTORS.active]: {
       '--link-underline-color': 'var(--link-underline-color-active)',
     },
-    ':where(:focus-visible)': {
+    [CSS_SELECTORS.focusVisible]: {
       textDecoration: 'none',
       outlineWidth: px(2),
       outlineStyle: 'solid',

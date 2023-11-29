@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { PropsWithSx } from '../../types';
-import { withGlobalPrefix, px, DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS } from '../../utils';
+import {
+  withGlobalPrefix,
+  px,
+  DATA_ATTRIBUTES,
+  DATA_ATTRIBUTE_SELECTORS,
+  CSS_SELECTORS,
+} from '../../utils';
 import clsx from 'clsx';
 import { Typography } from '../../Typography';
 import { TextLinkProps } from './TextLink.props';
@@ -40,10 +46,10 @@ const StyledElement = styled(Typography)(() => {
         textDecoration: 'none',
       },
     },
-    ':where(:active)': {
+    [CSS_SELECTORS.active]: {
       '--text-link-color': 'var(--text-link-color-active)',
     },
-    ':where(:focus-visible)': {
+    [CSS_SELECTORS.focusVisible]: {
       outlineWidth: px(2),
       outlineStyle: 'solid',
       outlineColor: 'var(--text-link-focus-outline-color)',
