@@ -18,7 +18,7 @@ import { styled } from '../../theme';
 import { BaseButton } from '../../BaseButton';
 
 const componentName = 'Button';
-const label = withGlobalPrefix(componentName);
+const componentClassName = withGlobalPrefix(componentName);
 
 const classNames: { [key: string]: { [key: string]: string } } = {
   size: {
@@ -46,7 +46,7 @@ const classSelectors = {
   },
 };
 
-const StyledButton = styled(BaseButton, { label })<ButtonProps>(() => {
+const StyledButton = styled(BaseButton)<ButtonProps>(() => {
   const sizeStyles = {
     large: {
       '--button-font-size': pxToRem(18),
@@ -109,7 +109,7 @@ export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWi
     return (
       <StyledButton
         ref={forwardedRef}
-        className={clsx(label, className, withBreakpoints(size, 'size'))}
+        className={clsx(componentClassName, className, withBreakpoints(size, 'size'))}
         {...props}
       />
     );
