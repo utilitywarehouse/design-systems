@@ -2,7 +2,6 @@ import * as React from 'react';
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { DATA_ATTRIBUTES, isInverseBackgroundColor } from '../utils';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { forwardRef } from 'react';
 import type { NeutralBackgroundColor, InverseBackgroundColor } from '../types';
 import type { Theme } from '../theme';
 import MuiBox from '@mui/material/Box';
@@ -40,7 +39,7 @@ export type BackgroundProps<
  *
  * @deprecated
  */
-export const Background = forwardRef(function Background({ backgroundColor, ...props }, ref) {
+export const Background = React.forwardRef(function Background({ backgroundColor, ...props }, ref) {
   console.warn(
     'The Background component is deprecated and will be removed in v1, please use Box instead.'
   );
