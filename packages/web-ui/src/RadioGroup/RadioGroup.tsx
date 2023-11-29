@@ -23,23 +23,13 @@ const componentClassName = withGlobalPrefix(displayName);
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const RadioGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps>>(
-  (
-    {
-      children,
-      contentWidth = 'fit-content',
-      direction = 'column',
-      orientation = 'vertical',
-      className,
-      ...props
-    },
-    ref
-  ) => {
+  ({ children, contentWidth = 'fit-content', direction = 'column', className, ...props }, ref) => {
     return (
       <RadioGroupFormControl
         ref={ref}
         className={clsx(componentClassName, className)}
         {...props}
-        orientation={orientation || direction === 'column' ? 'vertical' : 'horizontal'}
+        orientation={direction === 'column' ? 'vertical' : 'horizontal'}
       >
         <Box
           display="flex"
