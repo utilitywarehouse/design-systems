@@ -10,7 +10,7 @@ export function responsiveClassSelector(className: string, breakpoint: Breakpoin
 }
 
 export function colorSchemeSelector(color: string) {
-  return `:where([data-colorscheme="${color}"])`;
+  return `:where([${DATA_ATTRIBUTES.colorscheme}="${color}"])`;
 }
 
 export const COLORSCHEME_SELECTORS = {
@@ -21,6 +21,12 @@ export const COLORSCHEME_SELECTORS = {
   grey: colorSchemeSelector('grey'),
 };
 
+export function dataAttributeSelector(attribute: string) {
+  return `:where([${attribute}])`;
+}
+
 export const DATA_ATTRIBUTE_SELECTORS = {
-  onBrandBackground: `:where([${DATA_ATTRIBUTES.onBrandBackground}="true"])`,
+  onBrandBackground: dataAttributeSelector(DATA_ATTRIBUTES.onBrandBackground),
+  disabled: dataAttributeSelector(DATA_ATTRIBUTES.disabled),
+  nested: dataAttributeSelector(DATA_ATTRIBUTES.nested),
 };

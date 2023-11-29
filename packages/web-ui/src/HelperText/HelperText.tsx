@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { classSelector, withGlobalPrefix, pxToRem, spacing } from '../utils';
+import {
+  classSelector,
+  withGlobalPrefix,
+  pxToRem,
+  spacing,
+  DATA_ATTRIBUTE_SELECTORS,
+} from '../utils';
 import { PropsWithSx } from '../types';
 import { Typography } from '../Typography';
 import { HelperTextProps } from './HelperText.props';
@@ -43,7 +49,7 @@ const StyledElement = styled(Typography)({
     // Button's color property if not set.
     color: 'var(--helper-text-icon-color)',
   },
-  ['&:where([data-disabled="true"])']: {
+  [DATA_ATTRIBUTE_SELECTORS.disabled]: {
     '--helper-text-color': 'var(--helper-text-color-disabled)',
     '--helper-text-icon-color': 'var(--helper-text-icon-color-disabled)',
   },
@@ -85,7 +91,7 @@ export const HelperText = React.forwardRef<
       weight="regular"
       fontSize={pxToRem(13)}
       lineHeight={pxToRem(16)}
-      data-disabled={disabled || undefined}
+      data-disabled={disabled ? '' : undefined}
       className={clsx(
         componentClassName,
         validationStatus && classNames[validationStatus],

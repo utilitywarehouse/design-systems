@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DividerProps, ORIENTATIONS, Orientation } from './Divider.props';
 import { styled } from '../theme';
-import { px, withGlobalPrefix } from '../utils';
+import { DATA_ATTRIBUTES, px, withGlobalPrefix } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 import clsx from 'clsx';
 
@@ -21,11 +21,11 @@ const StyledElement = styled('hr', {
     alignSelf: 'stretch',
     flexShrink: 0,
     backgroundColor: color,
-    ':where([data-orientation="horizontal"])': {
+    [`:where([${DATA_ATTRIBUTES.orientation}="horizontal"])`]: {
       height: px(1),
       width: 'auto',
     },
-    ':where([data-orientation="vertical"])': {
+    [`:where([${DATA_ATTRIBUTES.orientation}="vertical"])`]: {
       height: 'auto',
       width: px(1),
     },
@@ -55,12 +55,15 @@ export const Divider = React.forwardRef<React.ElementRef<'hr'>, DividerProps>(
     const semanticProps = decorative
       ? { 'aria-hidden': true }
       : { 'aria-orientation': ariaOrientation };
+    const dataAttributeProps = {
+      [DATA_ATTRIBUTES.orientation]: orientation,
+    };
 
     return (
       <StyledElement
         color={color}
         className={clsx(componentClassName, className)}
-        data-orientation={orientation}
+        {...dataAttributeProps}
         {...semanticProps}
         {...props}
         ref={ref}

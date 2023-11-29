@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { PropsWithSx } from '../types';
-import { classSelector, withGlobalPrefix, px, COLORSCHEME_SELECTORS } from '../utils';
+import {
+  classSelector,
+  withGlobalPrefix,
+  px,
+  COLORSCHEME_SELECTORS,
+  DATA_ATTRIBUTES,
+} from '../utils';
 import clsx from 'clsx';
 import { styled } from '../theme';
 import { UnstyledButton } from '../UnstyledButton';
@@ -185,7 +191,7 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-background-color': 'var(--base-button-background-color-active)',
       '--base-button-icon-color': 'var(--base-button-icon-color-active)',
     },
-    [':where([aria-disabled="true"])']: {
+    [':where([aria-disabled])']: {
       cursor: 'not-allowed',
       '--base-button-foreground-color': 'var(--base-button-foreground-color-disabled)',
       '--base-button-background-color': 'var(--base-button-background-color-disabled)',
@@ -209,13 +215,16 @@ export const BaseButton = React.forwardRef<
   { variant = 'solid', colorScheme = 'cyan', className, disabled, ...props },
   forwardedRef
 ) {
+  const dataAttributeProps = {
+    [DATA_ATTRIBUTES.colorscheme]: colorScheme,
+  };
   return (
     <StyledElement
       ref={forwardedRef}
-      data-colorscheme={colorScheme}
       aria-disabled={disabled || undefined}
       disabled={disabled}
       className={clsx(componentClassName, className, classNames.variant[variant])}
+      {...dataAttributeProps}
       {...props}
     />
   );

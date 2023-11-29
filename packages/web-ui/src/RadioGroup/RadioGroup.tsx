@@ -1,14 +1,25 @@
 import * as React from 'react';
 import { forwardRef } from 'react';
-import { Box } from '../Box';
 import { PropsWithSx } from '../types';
-import { withGlobalPrefix } from '../utils';
+import { DATA_ATTRIBUTES, withGlobalPrefix } from '../utils';
 import { RadioGroupProps } from './RadioGroup.props';
 import { RadioGroupFormControl } from './RadioGroupFormControl';
 import clsx from 'clsx';
+import { Flex } from '../Flex';
+import { styled } from '../theme';
 
 const displayName = 'RadioGroup';
 const componentClassName = withGlobalPrefix(displayName);
+
+const StyledElement = styled(Flex)({
+  minWidth: 'fit-content',
+  [`:where([${DATA_ATTRIBUTES.orientation}="horizontal"] &)`]: {
+    flexDirection: 'row',
+  },
+  [`:where([${DATA_ATTRIBUTES.orientation}="vertical"] &)`]: {
+    flexDirection: 'column',
+  },
+});
 
 /**
  * The `RadioGroup` provides an accessible way to group and control a set of
@@ -31,15 +42,9 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps
         {...props}
         orientation={direction === 'column' ? 'vertical' : 'horizontal'}
       >
-        <Box
-          display="flex"
-          gap={2}
-          flexDirection={direction}
-          minWidth="fit-content"
-          width={contentWidth}
-        >
+        <StyledElement width={contentWidth} gap={2}>
           {children}
-        </Box>
+        </StyledElement>
       </RadioGroupFormControl>
     );
   }

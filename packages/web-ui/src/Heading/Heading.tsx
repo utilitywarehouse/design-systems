@@ -114,7 +114,7 @@ export const Heading = React.forwardRef<
   const element = variant === 'displayHeading' ? 'h1' : variant;
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
-    [DATA_ATTRIBUTES.onBrandBackground]: isBrandBackground || undefined,
+    [DATA_ATTRIBUTES.onBrandBackground]: isBrandBackground ? '' : undefined,
   };
   return (
     <StyledElement

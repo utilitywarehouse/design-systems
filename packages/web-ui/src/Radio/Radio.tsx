@@ -5,19 +5,25 @@ import {
   Indicator,
   RadioGroupIndicatorProps,
 } from '@radix-ui/react-radio-group';
-import { Box, createBox } from '../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
-import { forwardRef, useContext } from 'react';
 import { useIds } from '../hooks';
 import { PropsWithSx } from '../types';
 import { RadioProps } from './Radio.props';
 import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
 import { styled } from '../theme';
+import { DATA_ATTRIBUTE_SELECTORS, spacing, withGlobalPrefix } from '../utils';
+import clsx from 'clsx';
+import { Flex } from '../Flex';
 
-const componentClassName = 'Radio';
-const BaseBox = createBox({ componentClassName });
+const componentName = 'Radio';
+const componentClassName = withGlobalPrefix(componentName);
+
+const StyledElement = styled('div')({
+  display: 'flex',
+  gap: spacing(1),
+});
 
 const StyledRadioItem = styled(Item)({
   all: 'unset',
@@ -33,18 +39,18 @@ const StyledRadioItem = styled(Item)({
   '--radio-border-color-checked': colors.cyan500,
   '--radio-border-color-disabled': colors.grey300,
   '--radio-border-color': 'var(--radio-border-color-default)',
-  '&:focus-visible': {
+  ':where(:focus-visible)': {
     '--radio-border-color': 'var(--radio-border-color-focus)',
     outline: `2px solid ${colors.cyan700}`,
   },
-  '&[data-state="checked"]': {
+  ':where([data-state="checked"])': {
     '--radio-border-color': 'var(--radio-border-color-checked)',
   },
-  '&:hover:enabled': {
+  ':where(:hover:enabled)': {
     '--radio-border-color': 'var(--radio-border-color-hover)',
     boxShadow: `0 0 0 8px ${colors.cyan75}`,
   },
-  '&[data-disabled]': {
+  [DATA_ATTRIBUTE_SELECTORS.disabled]: {
     '--radio-border-color': 'var(--radio-border-color-disabled)',
   },
 }) as React.FC<RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>>;
@@ -64,7 +70,7 @@ export const StyledRadioIndicator = styled(Indicator)({
     borderRadius: '50%',
     backgroundColor: colors.cyan500,
   },
-  '&[data-disabled]': {
+  [DATA_ATTRIBUTE_SELECTORS.disabled]: {
     '&::after': {
       backgroundColor: colors.grey300,
     },
@@ -88,7 +94,7 @@ const StyledRadioContainer = styled('div')({
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
-export const Radio = forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>>(
+export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>>(
   (
     {
       sx,
@@ -96,6 +102,7 @@ export const Radio = forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>>(
       label,
       helperText,
       disabled,
+      className,
       'aria-labelledby': ariaLabelledby,
       ...props
     },
@@ -103,12 +110,12 @@ export const Radio = forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>>(
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radio' });
     const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
-      useContext(RadioGroupContext);
+      React.useContext(RadioGroupContext);
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
 
     return (
-      <BaseBox display="flex" sx={sx} gap={1}>
+      <StyledElement className={clsx(componentClassName, className)} sx={sx}>
         <StyledRadioContainer>
           <StyledRadioItem
             ref={ref}
@@ -122,7 +129,7 @@ export const Radio = forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>>(
           </StyledRadioItem>
         </StyledRadioContainer>
         {showLabel ? (
-          <Box display="flex" flexDirection="column" gap={0.5}>
+          <Flex direction="column" gap={0.5}>
             <Label
               id={labelId}
               htmlFor={id}
@@ -142,9 +149,9 @@ export const Radio = forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>>(
               {label}
             </Label>
             {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
-          </Box>
+          </Flex>
         ) : null}
-      </BaseBox>
+      </StyledElement>
     );
   }
 );

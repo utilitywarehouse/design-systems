@@ -73,7 +73,7 @@ export const TextLink = React.forwardRef<
 >(({ className, ...props }, ref) => {
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
-    [DATA_ATTRIBUTES.onBrandBackground]: isBrandBackground || undefined,
+    [DATA_ATTRIBUTES.onBrandBackground]: isBrandBackground ? '' : undefined,
   };
   return (
     <StyledElement
