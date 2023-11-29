@@ -45,7 +45,7 @@ export const Background = forwardRef(function Background({ backgroundColor, ...p
     'The Background component is deprecated and will be removed in v1, please use Box instead.'
   );
   const inverse = backgroundColor ? isInverseBackgroundColor(backgroundColor) : false;
-  const dataAttributeProps = inverse ? { [`${DATA_ATTRIBUTES.inverse}`]: true } : {};
+  const dataAttributeProps = inverse ? { [DATA_ATTRIBUTES.inverse]: true } : {};
 
   return (
     <MuiBox
