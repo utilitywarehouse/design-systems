@@ -47,7 +47,7 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled(BaseButton, { label: componentClassName })(() => {
+const StyledElement = styled(BaseButton)(() => {
   const sizeStyles = {
     large: {
       '--icon-button-size': pxToRem(48),

@@ -11,51 +11,49 @@ import { useBackground } from '../../Box';
 const componentName = 'TextLink';
 const componentClassName = withGlobalPrefix(componentName);
 
-const StyledElement = styled(Typography)(() => {
-  return {
-    cursor: 'pointer',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    flexShrink: 0,
-    '--text-link-color': colors.cyan600,
-    '--text-link-color-on-brand-bg': colorsCommon.brandWhite,
-    '--text-link-color-active': colors.cyan800,
-    '--text-link-color-active-on-brand-bg': colors.purple100,
-    '--text-link-color-visited': colors.cyan800,
-    '--text-link-color-visited-on-brand-bg': colors.purple300,
-    '--text-link-focus-outline-color': colors.cyan700,
-    '--text-link-focus-outline-color-on-brand-bg': colors.purple400,
-    textDecoration: 'underline',
-    color: 'var(--text-link-color)',
-    textDecorationColor: 'var(--text-link-color)',
-    borderRadius: px(4),
-    ':where(:visited)': {
-      color: 'var(--text-link-color-visited)',
-      textDecorationColor: 'var(--text-link-color-visited)',
+const StyledElement = styled(Typography)({
+  cursor: 'pointer',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  textAlign: 'center',
+  flexShrink: 0,
+  '--text-link-color': colors.cyan600,
+  '--text-link-color-on-brand-bg': colorsCommon.brandWhite,
+  '--text-link-color-active': colors.cyan800,
+  '--text-link-color-active-on-brand-bg': colors.purple100,
+  '--text-link-color-visited': colors.cyan800,
+  '--text-link-color-visited-on-brand-bg': colors.purple300,
+  '--text-link-focus-outline-color': colors.cyan700,
+  '--text-link-focus-outline-color-on-brand-bg': colors.purple400,
+  textDecoration: 'underline',
+  color: 'var(--text-link-color)',
+  textDecorationColor: 'var(--text-link-color)',
+  borderRadius: px(4),
+  ':where(:visited)': {
+    color: 'var(--text-link-color-visited)',
+    textDecorationColor: 'var(--text-link-color-visited)',
+  },
+  '@media (hover: hover)': {
+    ':where(:hover)': {
+      textDecoration: 'none',
     },
-    '@media (hover: hover)': {
-      ':where(:hover)': {
-        textDecoration: 'none',
-      },
-    },
-    ':where(:active)': {
-      '--text-link-color': 'var(--text-link-color-active)',
-    },
-    ':where(:focus-visible)': {
-      outlineWidth: px(2),
-      outlineStyle: 'solid',
-      outlineColor: 'var(--text-link-focus-outline-color)',
-      outlineOffset: px(2),
-    },
-    [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
-      '--text-link-color': 'var(--text-link-color-on-brand-bg)',
-      '--text-link-color-active': 'var(--text-link-color-active-on-brand-bg)',
-      '--text-link-color-visited': 'var(--text-link-color-visited-on-brand-bg)',
-      '--text-link-focus-outline-color': 'var(--text-link-focus-outline-color-on-brand-bg)',
-    },
-  };
+  },
+  ':where(:active)': {
+    '--text-link-color': 'var(--text-link-color-active)',
+  },
+  ':where(:focus-visible)': {
+    outlineWidth: px(2),
+    outlineStyle: 'solid',
+    outlineColor: 'var(--text-link-focus-outline-color)',
+    outlineOffset: px(2),
+  },
+  [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
+    '--text-link-color': 'var(--text-link-color-on-brand-bg)',
+    '--text-link-color-active': 'var(--text-link-color-active-on-brand-bg)',
+    '--text-link-color-visited': 'var(--text-link-color-visited-on-brand-bg)',
+    '--text-link-focus-outline-color': 'var(--text-link-focus-outline-color-on-brand-bg)',
+  },
 });
 
 /**

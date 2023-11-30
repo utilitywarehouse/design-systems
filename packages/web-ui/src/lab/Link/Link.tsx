@@ -46,7 +46,7 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled('a', { label: componentClassName })<LinkProps>(() => {
+const StyledElement = styled('a')<LinkProps>(() => {
   const sizeStyles = {
     large: {
       '--link-font-size': pxToRem(18),
