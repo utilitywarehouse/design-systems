@@ -33,7 +33,8 @@ function getSize(size: SpacerProps['size']) {
  *
  * The `size` prop is responsive, so you can set different values for different breakpoints.
  *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be
+ * > used standalone with other component libraries.
  */
 export const Spacer = React.forwardRef<React.ElementRef<'div'>, PropsWithSx<SpacerProps>>(
   function Spacer({ axis = 'vertical', size = 1, inline = false, ...props }, ref) {

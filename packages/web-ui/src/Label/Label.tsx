@@ -18,7 +18,7 @@ const StyledElement = styled(Typography)({
   '--label-font-weight-nested': fontWeights.secondary.regular,
   color: 'var(--label-color)',
   fontWeight: 'var(--label-font-weight)',
-  ':where([data-disabled])': {
+  ':where([data-disabled],[data-disabled] &)': {
     '--label-color': 'var(--label-color-disabled)',
   },
   ':where([data-nested])': {

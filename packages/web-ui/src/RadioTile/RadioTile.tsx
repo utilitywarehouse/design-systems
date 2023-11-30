@@ -35,7 +35,7 @@ const StyledRadio = styled('div')({
   ':where([data-state="checked"] &)': {
     '--radio-border-color': 'var(--radio-border-color-checked)',
   },
-  [`:where([data-disabled] &)`]: {
+  ':where([data-disabled] &)': {
     '--radio-border-color': 'var(--radio-border-color-disabled)',
   },
 });
