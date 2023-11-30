@@ -4,6 +4,7 @@ function withDataPrefix(name: string) {
 
 export const DATA_ATTRIBUTES = {
   onBrandBackground: withDataPrefix('on-brand-bg'),
+  customColor: withDataPrefix('custom-color'),
   colorscheme: withDataPrefix('colorscheme'),
   // TODO: remove in v1
   legacy: withDataPrefix('legacy-cwui'),

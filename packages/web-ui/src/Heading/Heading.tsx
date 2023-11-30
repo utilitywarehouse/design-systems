@@ -41,15 +41,13 @@ const classSelectors = {
 const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== 'color' })<{
   color?: string;
 }>(({ color }) => {
-  if (color) {
-    return { color };
-  }
   return {
     fontSize: 'var(--heading-font-size)',
     lineHeight: 'var(--heading-line-height)',
     color: 'var(--heading-color)',
     '--heading-color': colorsCommon.brandPrimaryPurple,
     '--heading-color-on-brand-bg': colorsCommon.brandWhite,
+    '--heading-color-custom': color,
     '--heading-font-size-display-heading': pxToRem(42),
     '--heading-font-size-display-heading-desktop': pxToRem(64),
     '--heading-font-size-h1': pxToRem(32),
@@ -68,6 +66,9 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
     '--heading-line-height-h4': 1.5,
     [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
       '--heading-color': 'var(--heading-color-on-brand-bg)',
+    },
+    [DATA_ATTRIBUTE_SELECTORS.customColor]: {
+      '--heading-color': 'var(--heading-color-custom)',
     },
     [classSelectors.variant.displayHeading]: {
       '--heading-font-size': 'var(--heading-font-size-display-heading)',
@@ -114,7 +115,8 @@ export const Heading = React.forwardRef<
   const element = variant === 'displayHeading' ? 'h1' : variant;
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
-    [DATA_ATTRIBUTES.onBrandBackground]: isBrandBackground ? '' : undefined,
+    [DATA_ATTRIBUTES.onBrandBackground]: !color && isBrandBackground ? '' : undefined,
+    [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
   };
   return (
     <StyledElement

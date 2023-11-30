@@ -22,4 +22,5 @@ export const COLORSCHEME_SELECTORS = {
 
 export const DATA_ATTRIBUTE_SELECTORS = {
   onBrandBackground: `:where([${DATA_ATTRIBUTES.onBrandBackground}])`,
+  customColor: `:where([${DATA_ATTRIBUTES.customColor}])`,
 };
