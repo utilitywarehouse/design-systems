@@ -1,5 +1,37 @@
 # @utilitywarehouse/web-ui
 
+## 0.5.0
+
+### Minor Changes
+
+- [#225](https://github.com/utilitywarehouse/design-systems/pull/225) [`29bfe7d`](https://github.com/utilitywarehouse/design-systems/commit/29bfe7dd19c64983857aadc7bb42b0cdd438a8b6) Thanks [@robphoenix](https://github.com/robphoenix)! - `HelperText` updates
+
+  - remove `error` prop
+  - new `validationStatus` prop
+  - new `showIcon` prop
+
+  These updates are also reflected in the `RadioGroup` & `RadioGridGroup`
+  components.
+
+- [#226](https://github.com/utilitywarehouse/design-systems/pull/226) [`1aed72c`](https://github.com/utilitywarehouse/design-systems/commit/1aed72c9fe0f5532dbd1050318ece9d6d8a5e988) Thanks [@robphoenix](https://github.com/robphoenix)! - add `Divider` component
+
+### Patch Changes
+
+- [#230](https://github.com/utilitywarehouse/design-systems/pull/230) [`e185be7`](https://github.com/utilitywarehouse/design-systems/commit/e185be72e2c522d57fb707a16207aa7a0ab27862) Thanks [@robphoenix](https://github.com/robphoenix)! - This is a housekeeping PR.
+
+  - sync component naming convention; `componentName`, `componentClassName` & `StyledElement`
+  - standardise usage of `createBox` & `styled`
+    - `createBox` for general polymorphic components
+    - `styled` for custom components
+  - settle on react import; `import * as React from "react"` rather than named imports; clarifies what's react and what's custom
+  - clean up `createBox` utility
+  - clean up usage of data attributes and mark what needs removing in v1
+  - [uppercase only const variables when exported](https://github.com/airbnb/javascript/#naming--uppercase)
+  - update styling to use declarative CSS rather than JS; with a view to lean on CSS more heavily in the future, isolating CSS-in-JS to separate styling packages.
+  - Fixes
+    - `RadioTile` label when disabled
+    - `RadioGroup` aria-orientation
+
 ## 0.4.0
 
 ### Minor Changes
