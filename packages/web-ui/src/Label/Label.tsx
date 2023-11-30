@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withGlobalPrefix, pxToRem, DATA_ATTRIBUTE_SELECTORS, DATA_ATTRIBUTES } from '../utils';
+import { withGlobalPrefix, pxToRem } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 import { PropsWithSx } from '../types';
 import { LabelProps } from './Label.props';

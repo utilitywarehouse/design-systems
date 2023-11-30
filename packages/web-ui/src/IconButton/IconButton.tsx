@@ -99,7 +99,7 @@ export const IconButton = React.forwardRef<
   return (
     <StyledElement
       ref={ref}
-      className={clsx(label, className, withBreakpoints(size, 'size'))}
+      className={clsx(componentClassName, className, withBreakpoints(size, 'size'))}
       aria-label={label}
       {...props}
     />
