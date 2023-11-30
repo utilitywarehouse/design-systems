@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { fonts, fontWeights } from '../tokens';
-import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { LegacyTypography } from './LegacyTypography';
 import { TypographyProps } from './Typography.props';
 import { PropsWithSx } from '../types';
 import { createBox } from '../Box/createBox';
 
+const componentName = 'Typography';
 const BaseBox = createBox<'p' | 'span' | 'div' | 'label' | 'strong' | 'em' | 'legend'>({
-  componentClassName: 'Typography',
+  componentName,
 });
 
 /**
@@ -35,9 +35,9 @@ const BaseBox = createBox<'p' | 'span' | 'div' | 'label' | 'strong' | 'em' | 'le
  * - `Strong` for strong importance
  * - `Em` for emphasis
  */
-export const Typography = forwardRef<
-  ElementRef<'span'>,
-  PropsWithChildren<PropsWithSx<TypographyProps>>
+export const Typography = React.forwardRef<
+  React.ElementRef<'span'>,
+  React.PropsWithChildren<PropsWithSx<TypographyProps>>
 >(
   (
     {
@@ -72,3 +72,5 @@ export const Typography = forwardRef<
     );
   }
 );
+
+Typography.displayName = componentName;

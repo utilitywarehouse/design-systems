@@ -21,7 +21,7 @@ export const KitchenSink: Story = {
       <Flex direction="column" gap={1}>
         {variants.map(variant => (
           <Heading key={variant} variant={variant}>
-            Heading variant: {variant}
+            Hamburgefons ({variant})
           </Heading>
         ))}
       </Flex>

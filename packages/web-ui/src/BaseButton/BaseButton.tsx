@@ -1,7 +1,12 @@
 import * as React from 'react';
-import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { PropsWithSx } from '../types';
-import { classSelector, withGlobalPrefix, px, COLORSCHEME_SELECTORS } from '../utils';
+import {
+  classSelector,
+  withGlobalPrefix,
+  px,
+  COLORSCHEME_SELECTORS,
+  DATA_ATTRIBUTES,
+} from '../utils';
 import clsx from 'clsx';
 import { styled } from '../theme';
 import { UnstyledButton } from '../UnstyledButton';
@@ -11,7 +16,7 @@ import { BaseButtonProps } from './BaseButton.props';
 const componentName = 'BaseButton';
 const componentClassName = withGlobalPrefix(componentName);
 
-const classNames: { [key: string]: { [key: string]: string } } = {
+const classNames = {
   variant: {
     solid: withGlobalPrefix('variant-solid'),
     outline: withGlobalPrefix('variant-outline'),
@@ -27,7 +32,7 @@ const classSelectors = {
   },
 };
 
-const StyledButton = styled(UnstyledButton)<BaseButtonProps>(() => {
+const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
   return {
     borderRadius: px(9999),
     color: 'var(--base-button-foreground-color)',
@@ -186,7 +191,7 @@ const StyledButton = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-background-color': 'var(--base-button-background-color-active)',
       '--base-button-icon-color': 'var(--base-button-icon-color-active)',
     },
-    [':where([aria-disabled="true"])']: {
+    [':where([aria-disabled])']: {
       cursor: 'not-allowed',
       '--base-button-foreground-color': 'var(--base-button-foreground-color-disabled)',
       '--base-button-background-color': 'var(--base-button-background-color-disabled)',
@@ -203,20 +208,23 @@ const StyledButton = styled(UnstyledButton)<BaseButtonProps>(() => {
  * `BaseButton` is a private component which provides the variant and
  * colourScheme styles for other button components.
  */
-export const BaseButton = forwardRef<
-  ElementRef<'button'>,
-  PropsWithChildren<PropsWithSx<BaseButtonProps>>
+export const BaseButton = React.forwardRef<
+  React.ElementRef<'button'>,
+  React.PropsWithChildren<PropsWithSx<BaseButtonProps>>
 >(function BaseButton(
   { variant = 'solid', colorScheme = 'cyan', className, disabled, ...props },
   forwardedRef
 ) {
+  const dataAttributeProps = {
+    [DATA_ATTRIBUTES.colorscheme]: colorScheme,
+  };
   return (
-    <StyledButton
+    <StyledElement
       ref={forwardedRef}
-      data-colorscheme={colorScheme}
       aria-disabled={disabled || undefined}
       disabled={disabled}
       className={clsx(componentClassName, className, classNames.variant[variant])}
+      {...dataAttributeProps}
       {...props}
     />
   );

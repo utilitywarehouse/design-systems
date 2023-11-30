@@ -1,14 +1,24 @@
 import * as React from 'react';
-import { forwardRef } from 'react';
-import { Box } from '../Box';
 import { PropsWithSx } from '../types';
 import { withGlobalPrefix } from '../utils';
 import { RadioGroupProps } from './RadioGroup.props';
 import { RadioGroupFormControl } from './RadioGroupFormControl';
 import clsx from 'clsx';
+import { Flex } from '../Flex';
+import { styled } from '../theme';
 
-const displayName = 'RadioGroup';
-const componentClassName = withGlobalPrefix(displayName);
+const componentName = 'RadioGroup';
+const componentClassName = withGlobalPrefix(componentName);
+
+const StyledElement = styled(Flex)({
+  minWidth: 'fit-content',
+  ':where(data-orientation="horizontal" &)': {
+    flexDirection: 'row',
+  },
+  ':where([data-orientation="vertical"] &)': {
+    flexDirection: 'column',
+  },
+});
 
 /**
  * The `RadioGroup` provides an accessible way to group and control a set of
@@ -22,37 +32,21 @@ const componentClassName = withGlobalPrefix(displayName);
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
-export const RadioGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps>>(
-  (
-    {
-      children,
-      contentWidth = 'fit-content',
-      direction = 'column',
-      orientation = 'vertical',
-      className,
-      ...props
-    },
-    ref
-  ) => {
+export const RadioGroup = React.forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps>>(
+  ({ children, contentWidth = 'fit-content', direction = 'column', className, ...props }, ref) => {
     return (
       <RadioGroupFormControl
         ref={ref}
         className={clsx(componentClassName, className)}
         {...props}
-        orientation={orientation || direction === 'column' ? 'vertical' : 'horizontal'}
+        orientation={direction === 'column' ? 'vertical' : 'horizontal'}
       >
-        <Box
-          display="flex"
-          gap={2}
-          flexDirection={direction}
-          minWidth="fit-content"
-          width={contentWidth}
-        >
+        <StyledElement width={contentWidth} gap={2}>
           {children}
-        </Box>
+        </StyledElement>
       </RadioGroupFormControl>
     );
   }
 );
 
-RadioGroup.displayName = displayName;
+RadioGroup.displayName = componentName;

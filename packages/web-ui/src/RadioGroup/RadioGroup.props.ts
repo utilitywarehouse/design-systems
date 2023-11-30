@@ -38,7 +38,7 @@ export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
   showErrorMessageIcon?: boolean;
 }
 
-export interface RadioGroupProps extends BaseRadioGroupProps {
+export interface RadioGroupProps extends Omit<BaseRadioGroupProps, 'orientation'> {
   /** The direction of the radios, will also set the aria-orientation value. */
   direction?: 'column' | 'row';
   /**

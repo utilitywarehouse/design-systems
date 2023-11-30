@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { Typography } from '../Typography';
 import { PropsWithSx } from '../types';
 import { StrongProps } from './Strong.props';
 import clsx from 'clsx';
 import { withGlobalPrefix } from '../utils';
 
-const displayName = 'Strong';
-const componentClassName = withGlobalPrefix(displayName);
+const componentName = 'Strong';
+const componentClassName = withGlobalPrefix(componentName);
 
 /**
  * The `Strong` component is based on the HTML `strong` element and is used to
@@ -20,22 +19,23 @@ const componentClassName = withGlobalPrefix(displayName);
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
-export const Strong = forwardRef<ElementRef<'strong'>, PropsWithChildren<PropsWithSx<StrongProps>>>(
-  ({ className, ...props }, ref) => {
-    return (
-      <Typography
-        ref={ref}
-        component="strong"
-        className={clsx(componentClassName, className)}
-        fontFamily="inherit"
-        fontSize="inherit"
-        lineHeight="inherit"
-        weight="semibold"
-        color="inherit"
-        {...props}
-      />
-    );
-  }
-);
+export const Strong = React.forwardRef<
+  React.ElementRef<'strong'>,
+  React.PropsWithChildren<PropsWithSx<StrongProps>>
+>(({ className, ...props }, ref) => {
+  return (
+    <Typography
+      ref={ref}
+      component="strong"
+      className={clsx(componentClassName, className)}
+      fontFamily="inherit"
+      fontSize="inherit"
+      lineHeight="inherit"
+      weight="semibold"
+      color="inherit"
+      {...props}
+    />
+  );
+});
 
-Strong.displayName = displayName;
+Strong.displayName = componentName;
