@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { PropsWithSx } from '../../types';
-import {
-  withGlobalPrefix,
-  px,
-  DATA_ATTRIBUTES,
-  DATA_ATTRIBUTE_SELECTORS,
-  CSS_SELECTORS,
-} from '../../utils';
+import { withGlobalPrefix, px, DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS } from '../../utils';
 import clsx from 'clsx';
 import { Typography } from '../../Typography';
 import { TextLinkProps } from './TextLink.props';
@@ -37,7 +31,7 @@ const StyledElement = styled(Typography)(() => {
     color: 'var(--text-link-color)',
     textDecorationColor: 'var(--text-link-color)',
     borderRadius: px(4),
-    ':visited': {
+    ':where(:visited)': {
       color: 'var(--text-link-color-visited)',
       textDecorationColor: 'var(--text-link-color-visited)',
     },
@@ -46,10 +40,10 @@ const StyledElement = styled(Typography)(() => {
         textDecoration: 'none',
       },
     },
-    [CSS_SELECTORS.active]: {
+    ':where(:active)': {
       '--text-link-color': 'var(--text-link-color-active)',
     },
-    [CSS_SELECTORS.focusVisible]: {
+    ':where(:focus-visible)': {
       outlineWidth: px(2),
       outlineStyle: 'solid',
       outlineColor: 'var(--text-link-focus-outline-color)',

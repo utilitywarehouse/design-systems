@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PropsWithChildren, forwardRef, ElementRef } from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS, pxToRem, withGlobalPrefix } from '../utils';
+import { pxToRem, withGlobalPrefix } from '../utils';
 import { PropsWithSx } from '../types';
 import { Typography } from '../Typography';
 import { FieldsetLegendProps } from './FieldsetLegend.props';
@@ -15,7 +15,7 @@ const StyledElement = styled(Typography)({
   '--fieldset-legend-color': colors.grey1000,
   '--fieldset-legend-color-disabled': colors.grey400,
   color: 'var(--fieldset-legend-color)',
-  [DATA_ATTRIBUTE_SELECTORS.disabled]: {
+  ':where([data-disabled])': {
     '--fieldset-legend-color': 'var(--fieldset-legend-color-disabled)',
   },
 });
@@ -34,20 +34,17 @@ export const FieldsetLegend = forwardRef<
   ElementRef<'legend'>,
   PropsWithChildren<PropsWithSx<FieldsetLegendProps>>
 >(({ disabled, className, ...props }, ref) => {
-  const dataAttributeProps = {
-    [DATA_ATTRIBUTES.disabled]: disabled ? '' : undefined,
-  };
   return (
     <StyledElement
       ref={ref}
       component="legend"
       className={clsx(componentClassName, className)}
+      data-disabled={disabled ? '' : undefined}
       padding={0}
       fontFamily="secondary"
       weight="semibold"
       fontSize={pxToRem(16)}
       lineHeight={pxToRem(24)}
-      {...dataAttributeProps}
       {...props}
     />
   );

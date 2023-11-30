@@ -1,13 +1,10 @@
-export function withDataPrefix(name: string) {
+function withDataPrefix(name: string) {
   return `data-${name}`;
 }
 
 export const DATA_ATTRIBUTES = {
   onBrandBackground: withDataPrefix('on-brand-bg'),
-  disabled: withDataPrefix('disabled'),
-  nested: withDataPrefix('nested'),
   colorscheme: withDataPrefix('colorscheme'),
-  orientation: withDataPrefix('orientation'),
   // TODO: remove in v1
   legacy: withDataPrefix('legacy-cwui'),
   primary: withDataPrefix('primary'),

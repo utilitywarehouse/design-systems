@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { forwardRef, useContext } from 'react';
 import { Item, type RadioGroupItemProps } from '@radix-ui/react-radio-group';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { useIds } from '../hooks';
-import { withGlobalPrefix, spacing, DATA_ATTRIBUTES, CSS_SELECTORS } from '../utils';
+import { withGlobalPrefix, spacing, DATA_ATTRIBUTES } from '../utils';
 import { PropsWithSx } from '../types';
 import { StyledRadioIndicator } from '../Radio/Radio';
 import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
@@ -25,14 +24,14 @@ const StyledRadio = styled('div')({
   borderRadius: '100%',
   border: '2px solid',
   borderColor: colors.grey500,
-  [CSS_SELECTORS.focusVisible]: {
+  ':where(:focus-visible)': {
     borderColor: colors.cyan500,
     boxShadow: `0 0 0 2px ${colors.cyan700}`,
   },
   ':where([data-state="checked"] &)': {
     borderColor: colors.cyan500,
   },
-  [`:where([${DATA_ATTRIBUTES.disabled}] &)`]: {
+  [`:where([data-disabled] &)`]: {
     borderColor: colors.grey300,
   },
 });
@@ -44,7 +43,7 @@ const StyledRadioItem = styled(Item)({
   display: 'flex',
   backgroundColor: colorsCommon.brandWhite,
   boxShadow: `inset 0 0 0 2px ${colors.grey400}`,
-  [CSS_SELECTORS.focusVisible]: {
+  ':where(:focus-visible)': {
     backgroundColor: colors.cyan100,
     boxShadow: `inset 0 0 0 2px ${colors.cyan500}`,
     outline: `4px solid ${colors.cyan700}`,
@@ -58,7 +57,7 @@ const StyledRadioItem = styled(Item)({
       },
     },
   },
-  '&[data-disabled]': {
+  ':where([data-disabled])': {
     boxShadow: `inset 0 0 0 2px ${colors.grey300}`,
   },
 }) as React.FC<RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>>;
@@ -68,7 +67,7 @@ const StyledRadioItem = styled(Item)({
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
-export const RadioTile = forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProps>>(
+export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProps>>(
   (
     {
       id: providedId,
@@ -83,7 +82,7 @@ export const RadioTile = forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProp
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
     const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
-      useContext(RadioGroupContext);
+      React.useContext(RadioGroupContext);
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
 

@@ -1,22 +1,21 @@
 import * as React from 'react';
-import { forwardRef } from 'react';
 import { PropsWithSx } from '../types';
-import { DATA_ATTRIBUTES, withGlobalPrefix } from '../utils';
+import { withGlobalPrefix } from '../utils';
 import { RadioGroupProps } from './RadioGroup.props';
 import { RadioGroupFormControl } from './RadioGroupFormControl';
 import clsx from 'clsx';
 import { Flex } from '../Flex';
 import { styled } from '../theme';
 
-const displayName = 'RadioGroup';
-const componentClassName = withGlobalPrefix(displayName);
+const componentName = 'RadioGroup';
+const componentClassName = withGlobalPrefix(componentName);
 
 const StyledElement = styled(Flex)({
   minWidth: 'fit-content',
-  [`:where([${DATA_ATTRIBUTES.orientation}="horizontal"] &)`]: {
+  ':where(data-orientation="horizontal" &)': {
     flexDirection: 'row',
   },
-  [`:where([${DATA_ATTRIBUTES.orientation}="vertical"] &)`]: {
+  ':where([data-orientation="vertical"] &)': {
     flexDirection: 'column',
   },
 });
@@ -33,7 +32,7 @@ const StyledElement = styled(Flex)({
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
-export const RadioGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps>>(
+export const RadioGroup = React.forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps>>(
   ({ children, contentWidth = 'fit-content', direction = 'column', className, ...props }, ref) => {
     return (
       <RadioGroupFormControl
@@ -50,4 +49,4 @@ export const RadioGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps
   }
 );
 
-RadioGroup.displayName = displayName;
+RadioGroup.displayName = componentName;

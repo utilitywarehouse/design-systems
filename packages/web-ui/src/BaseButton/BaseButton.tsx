@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { PropsWithSx } from '../types';
-import { classSelector, withGlobalPrefix, px, CSS_SELECTORS, DATA_ATTRIBUTES } from '../utils';
+import {
+  classSelector,
+  withGlobalPrefix,
+  px,
+  COLORSCHEME_SELECTORS,
+  DATA_ATTRIBUTES,
+} from '../utils';
 import clsx from 'clsx';
 import { styled } from '../theme';
 import { UnstyledButton } from '../UnstyledButton';
@@ -37,7 +43,7 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       // as UW icons use currentColor by default, this will fallback to the Button's color property if not set.
       color: 'var(--base-button-icon-color)',
     },
-    [CSS_SELECTORS.colorScheme.cyan]: {
+    [COLORSCHEME_SELECTORS.cyan]: {
       '--base-button-solid-foreground-color': colors.cyan1000,
       '--base-button-solid-background-color': colors.cyan400,
       '--base-button-solid-background-color-hover': colors.cyan500,
@@ -59,7 +65,7 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-outline-icon-color': colors.cyan600,
       '--focus-outline-color': colors.cyan700,
     },
-    [CSS_SELECTORS.colorScheme.red]: {
+    [COLORSCHEME_SELECTORS.red]: {
       '--base-button-solid-foreground-color': colorsCommon.brandWhite,
       '--base-button-solid-background-color': colors.red500,
       '--base-button-solid-background-color-hover': colors.red600,
@@ -80,7 +86,7 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-outline-icon-color': colors.red600,
       '--focus-outline-color': colors.red700,
     },
-    [CSS_SELECTORS.colorScheme.green]: {
+    [COLORSCHEME_SELECTORS.green]: {
       '--base-button-solid-foreground-color': colorsCommon.brandWhite,
       '--base-button-solid-background-color': colors.green500,
       '--base-button-solid-background-color-hover': colors.green600,
@@ -101,7 +107,7 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-outline-icon-color': colors.green600,
       '--focus-outline-color': colors.green700,
     },
-    [CSS_SELECTORS.colorScheme.gold]: {
+    [COLORSCHEME_SELECTORS.gold]: {
       '--base-button-outline-foreground-color': colors.gold900,
       '--base-button-outline-background-color-hover': colors.gold100,
       '--base-button-outline-background-color-active': colors.gold200,
@@ -116,7 +122,7 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-ghost-icon-color': colors.gold600,
       '--focus-outline-color': colors.gold700,
     },
-    [CSS_SELECTORS.colorScheme.grey]: {
+    [COLORSCHEME_SELECTORS.grey]: {
       '--base-button-outline-foreground-color': colors.grey1000,
       '--base-button-outline-border-color': colors.grey500,
       '--base-button-outline-background-color-hover': colors.grey100,
@@ -168,7 +174,7 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
         '--base-button-icon-color': 'var(--base-button-outline-icon-color)',
       },
     },
-    [CSS_SELECTORS.focusVisible]: {
+    ':where(:focus-visible)': {
       boxShadow: 'var(--base-button-focus-outline)',
       '--base-button-background-color': 'var(--base-button-background-color-hover)',
       [classSelectors.variant.outline]: {

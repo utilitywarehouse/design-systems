@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { withGlobalPrefix, pxToRem, DATA_ATTRIBUTE_SELECTORS, DATA_ATTRIBUTES } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 import { PropsWithSx } from '../types';
@@ -19,10 +18,10 @@ const StyledElement = styled(Typography)({
   '--label-font-weight-nested': fontWeights.secondary.regular,
   color: 'var(--label-color)',
   fontWeight: 'var(--label-font-weight)',
-  [DATA_ATTRIBUTE_SELECTORS.disabled]: {
+  ':where([data-disabled])': {
     '--label-color': 'var(--label-color-disabled)',
   },
-  [DATA_ATTRIBUTE_SELECTORS.nested]: {
+  ':where([data-nested])': {
     '--label-font-weight': 'var(--label-font-weight-nested)',
   },
 });
@@ -36,25 +35,23 @@ const StyledElement = styled(Typography)({
  * > This component does not need to be wrapped in a `ThemeProvider` and can be
  * > used standalone with other component libraries.
  */
-export const Label = forwardRef<ElementRef<'label'>, PropsWithChildren<PropsWithSx<LabelProps>>>(
-  ({ component = 'label', disabled, nested, className, ...props }, ref) => {
-    const dataAttributeProps = {
-      [DATA_ATTRIBUTES.disabled]: disabled ? '' : undefined,
-      [DATA_ATTRIBUTES.nested]: nested ? '' : undefined,
-    };
-    return (
-      <StyledElement
-        ref={ref}
-        component={component}
-        className={clsx(componentClassName, className)}
-        fontFamily="secondary"
-        fontSize={pxToRem(16)}
-        lineHeight={pxToRem(24)}
-        {...dataAttributeProps}
-        {...props}
-      />
-    );
-  }
-);
+export const Label = React.forwardRef<
+  React.ElementRef<'label'>,
+  React.PropsWithChildren<PropsWithSx<LabelProps>>
+>(({ component = 'label', disabled, nested, className, ...props }, ref) => {
+  return (
+    <StyledElement
+      ref={ref}
+      component={component}
+      className={clsx(componentClassName, className)}
+      data-disabled={disabled ? '' : undefined}
+      data-nested={nested ? '' : undefined}
+      fontFamily="secondary"
+      fontSize={pxToRem(16)}
+      lineHeight={pxToRem(24)}
+      {...props}
+    />
+  );
+});
 
 Label.displayName = componentName;

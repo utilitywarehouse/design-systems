@@ -13,7 +13,7 @@ import { PropsWithSx } from '../types';
 import { RadioProps } from './Radio.props';
 import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
 import { styled } from '../theme';
-import { CSS_SELECTORS, DATA_ATTRIBUTE_SELECTORS, spacing, withGlobalPrefix } from '../utils';
+import { spacing, withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
 import { Flex } from '../Flex';
 
@@ -39,7 +39,7 @@ const StyledRadioItem = styled(Item)({
   '--radio-border-color-checked': colors.cyan500,
   '--radio-border-color-disabled': colors.grey300,
   '--radio-border-color': 'var(--radio-border-color-default)',
-  [CSS_SELECTORS.focusVisible]: {
+  ':where(:focus-visible)': {
     '--radio-border-color': 'var(--radio-border-color-focus)',
     outline: `2px solid ${colors.cyan700}`,
   },
@@ -52,7 +52,7 @@ const StyledRadioItem = styled(Item)({
       boxShadow: `0 0 0 8px ${colors.cyan75}`,
     },
   },
-  [DATA_ATTRIBUTE_SELECTORS.disabled]: {
+  ':where([data-disabled])': {
     '--radio-border-color': 'var(--radio-border-color-disabled)',
   },
 }) as React.FC<RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>>;
@@ -72,7 +72,7 @@ export const StyledRadioIndicator = styled(Indicator)({
     borderRadius: '50%',
     backgroundColor: colors.cyan500,
   },
-  [DATA_ATTRIBUTE_SELECTORS.disabled]: {
+  ':where([data-disabled])': {
     '&::after': {
       backgroundColor: colors.grey300,
     },
@@ -157,3 +157,5 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
     );
   }
 );
+
+Radio.displayName = componentName;

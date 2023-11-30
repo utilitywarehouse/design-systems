@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { forwardRef } from 'react';
 import { FlexOwnProps } from './Flex.props';
 import { createBox } from '../Box';
 import { OverridableComponent } from '@mui/types';
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { type Theme } from '../theme';
 
-const componentClassName = 'Flex';
-const BaseBox = createBox({ componentClassName });
+const componentName = 'Flex';
+const BaseBox = createBox({ componentName });
 
 /**
  * Flex is a low-level primitive, with display set to `flex`.
@@ -28,7 +27,7 @@ const BaseBox = createBox({ componentClassName });
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
-export const Flex = forwardRef(function Flex(
+export const Flex = React.forwardRef(function Flex(
   {
     display = 'flex',
     direction,

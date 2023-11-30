@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { forwardRef } from 'react';
 import { Box } from '../Box';
 import { RadioGroupFormControl } from '../RadioGroup/RadioGroupFormControl';
 import { breakpoints } from '../tokens';
@@ -8,8 +7,26 @@ import { RadioGridGroupProps } from './RadioGridGroup.props';
 import clsx from 'clsx';
 import { withGlobalPrefix } from '../utils';
 
-const displayName = 'RadioGridGroup';
-const componentClassName = withGlobalPrefix(displayName);
+const componentName = 'RadioGridGroup';
+const componentClassName = withGlobalPrefix(componentName);
+
+function convert(c: string) {
+  return `repeat(${c}, minmax(10px, 1fr))`;
+}
+function getColumns(columns: RadioGridGroupProps['columns']) {
+  if (Array.isArray(columns)) {
+    return columns.map(s => convert(s as string));
+  }
+  if (typeof columns === 'object') {
+    return Object.keys(breakpoints).reduce((acc: { [key: string]: string }, breakpoint: string) => {
+      if (columns[breakpoint] !== null) {
+        acc[breakpoint] = convert(columns[breakpoint] as string);
+      }
+      return acc;
+    }, {});
+  }
+  return convert(columns as string);
+}
 
 /**
  * The `RadioGridGroup` provides an accessible way to group and control a set
@@ -26,32 +43,14 @@ const componentClassName = withGlobalPrefix(displayName);
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
-export const RadioGridGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGridGroupProps>>(
+export const RadioGridGroup = React.forwardRef<HTMLDivElement, PropsWithSx<RadioGridGroupProps>>(
   ({ children, contentWidth = 'fit-content', columns = 2, className, ...props }, ref) => {
-    const convert = (c: string) => `repeat(${c}, minmax(10px, 1fr))`;
-    const getColumns = () => {
-      if (Array.isArray(columns)) {
-        return columns.map(s => convert(s as string));
-      }
-      if (typeof columns === 'object') {
-        return Object.keys(breakpoints).reduce(
-          (acc: { [key: string]: string }, breakpoint: string) => {
-            if (columns[breakpoint] !== null) {
-              acc[breakpoint] = convert(columns[breakpoint] as string);
-            }
-            return acc;
-          },
-          {}
-        );
-      }
-      return convert(columns as string);
-    };
     return (
       <RadioGroupFormControl ref={ref} className={clsx(componentClassName, className)} {...props}>
         <Box
           display="grid"
           gap={2}
-          gridTemplateColumns={getColumns()}
+          gridTemplateColumns={getColumns(columns)}
           minWidth="fit-content"
           width={contentWidth}
         >
@@ -62,4 +61,4 @@ export const RadioGridGroup = forwardRef<HTMLDivElement, PropsWithSx<RadioGridGr
   }
 );
 
-RadioGridGroup.displayName = displayName;
+RadioGridGroup.displayName = componentName;

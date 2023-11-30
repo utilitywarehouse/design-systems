@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import {
-  classSelector,
-  withGlobalPrefix,
-  pxToRem,
-  spacing,
-  DATA_ATTRIBUTE_SELECTORS,
-} from '../utils';
+import { classSelector, withGlobalPrefix, pxToRem, spacing } from '../utils';
 import { PropsWithSx } from '../types';
 import { Typography } from '../Typography';
 import { HelperTextProps } from './HelperText.props';
@@ -49,7 +43,7 @@ const StyledElement = styled(Typography)({
     // Button's color property if not set.
     color: 'var(--helper-text-icon-color)',
   },
-  [DATA_ATTRIBUTE_SELECTORS.disabled]: {
+  ':where([data-disabled])': {
     '--helper-text-color': 'var(--helper-text-color-disabled)',
     '--helper-text-icon-color': 'var(--helper-text-icon-color-disabled)',
   },

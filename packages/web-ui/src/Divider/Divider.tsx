@@ -21,11 +21,11 @@ const StyledElement = styled('hr', {
     alignSelf: 'stretch',
     flexShrink: 0,
     backgroundColor: color,
-    [`:where([${DATA_ATTRIBUTES.orientation}="horizontal"])`]: {
+    ':where([data-orientation="horizontal"])': {
       height: px(1),
       width: 'auto',
     },
-    [`:where([${DATA_ATTRIBUTES.orientation}="vertical"])`]: {
+    ':where([data-orientation="vertical"])': {
       height: 'auto',
       width: px(1),
     },
@@ -55,15 +55,12 @@ export const Divider = React.forwardRef<React.ElementRef<'hr'>, DividerProps>(
     const semanticProps = decorative
       ? { 'aria-hidden': true }
       : { 'aria-orientation': ariaOrientation };
-    const dataAttributeProps = {
-      [DATA_ATTRIBUTES.orientation]: orientation,
-    };
 
     return (
       <StyledElement
         color={color}
         className={clsx(componentClassName, className)}
-        {...dataAttributeProps}
+        data-orientation={orientation}
         {...semanticProps}
         {...props}
         ref={ref}
