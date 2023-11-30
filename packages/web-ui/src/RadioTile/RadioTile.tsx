@@ -23,16 +23,20 @@ const StyledRadio = styled('div')({
   backgroundColor: colorsCommon.brandWhite,
   borderRadius: '100%',
   border: '2px solid',
-  borderColor: colors.grey500,
+  borderColor: 'var(--radio-border-color)',
+  '--radio-border-color': colors.grey500,
+  '--radio-border-color-focus': colors.cyan500,
+  '--radio-border-color-checked': colors.cyan500,
+  '--radio-border-color-disabled': colors.grey300,
   ':where(:focus-visible)': {
-    borderColor: colors.cyan500,
+    '--radio-border-color': 'var(--radio-border-color-focus)',
     boxShadow: `0 0 0 2px ${colors.cyan700}`,
   },
   ':where([data-state="checked"] &)': {
-    borderColor: colors.cyan500,
+    '--radio-border-color': 'var(--radio-border-color-checked)',
   },
   [`:where([data-disabled] &)`]: {
-    borderColor: colors.grey300,
+    '--radio-border-color': 'var(--radio-border-color-disabled)',
   },
 });
 
@@ -41,24 +45,31 @@ const StyledRadioItem = styled(Item)({
   borderRadius: '8px',
   padding: spacing(2),
   display: 'flex',
-  backgroundColor: colorsCommon.brandWhite,
-  boxShadow: `inset 0 0 0 2px ${colors.grey400}`,
+  boxShadow: `inset 0 0 0 2px var(--radio-item-box-shadow-color)`,
+  backgroundColor: 'var(--radio-item-background-color)',
+  '--radio-item-background-color': colorsCommon.brandWhite,
+  '--radio-item-background-color-focus': colors.cyan100,
+  '--radio-item-background-color-hover': colors.cyan75,
+  '--radio-item-box-shadow-color': colors.grey400,
+  '--radio-item-box-shadow-color-focus': colors.cyan500,
+  '--radio-item-box-shadow-color-hover': colors.cyan500,
+  '--radio-item-box-shadow-color-disabled': colors.grey300,
   ':where(:focus-visible)': {
-    backgroundColor: colors.cyan100,
-    boxShadow: `inset 0 0 0 2px ${colors.cyan500}`,
+    '--radio-item-background-color': 'var(--radio-item-background-color-focus)',
+    '--radio-item-box-shadow-color': 'var(--radio-item-box-shadow-color-focus)',
     outline: `4px solid ${colors.cyan700}`,
   },
   '@media (hover: hover)': {
     ':where(:hover:enabled)': {
-      backgroundColor: colors.cyan75,
-      boxShadow: `inset 0 0 0 2px ${colors.cyan500}`,
+      '--radio-item-background-color': 'var(--radio-item-background-color-hover)',
+      '--radio-item-box-shadow-color': 'var(--radio-item-box-shadow-color-hover)',
       [`& ${StyledRadio}`]: {
         borderColor: colors.cyan500,
       },
     },
   },
   ':where([data-disabled])': {
-    boxShadow: `inset 0 0 0 2px ${colors.grey300}`,
+    '--radio-item-box-shadow-color': 'var(--radio-item-box-shadow-color-disabled)',
   },
 }) as React.FC<RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>>;
 
