@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DividerProps, ORIENTATIONS, Orientation } from './Divider.props';
 import { styled } from '../theme';
-import { DATA_ATTRIBUTES, px, withGlobalPrefix } from '../utils';
+import { px, withGlobalPrefix } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 import clsx from 'clsx';
 
