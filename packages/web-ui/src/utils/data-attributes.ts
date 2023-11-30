@@ -1,9 +1,12 @@
-export function withDataPrefix(name: string) {
+function withDataPrefix(name: string) {
   return `data-${name}`;
 }
 
-// TODO: remove in v1
-export const dataAttributes = {
+export const DATA_ATTRIBUTES = {
+  onBrandBackground: withDataPrefix('on-brand-bg'),
+  customColor: withDataPrefix('custom-color'),
+  colorscheme: withDataPrefix('colorscheme'),
+  // TODO: remove in v1
   legacy: withDataPrefix('legacy-cwui'),
   primary: withDataPrefix('primary'),
   secondary: withDataPrefix('secondary'),

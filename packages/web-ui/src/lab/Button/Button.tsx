@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ElementRef, forwardRef, PropsWithChildren } from 'react';
 import { fonts, fontWeights } from '../../tokens';
 import { PropsWithSx } from '../../types';
 import {
@@ -20,7 +19,7 @@ import { BaseButton } from '../../BaseButton';
 const componentName = 'Button';
 const componentClassName = withGlobalPrefix(componentName);
 
-const classNames: { [key: string]: { [key: string]: string } } = {
+const classNames = {
   size: {
     large: withGlobalPrefix('size-large'),
     small: withGlobalPrefix('size-small'),
@@ -46,7 +45,7 @@ const classSelectors = {
   },
 };
 
-const StyledButton = styled(BaseButton)<ButtonProps>(() => {
+const StyledElement = styled(BaseButton)<ButtonProps>(() => {
   const sizeStyles = {
     large: {
       '--button-font-size': pxToRem(18),
@@ -102,18 +101,20 @@ const StyledButton = styled(BaseButton)<ButtonProps>(() => {
 /**
  * Trigger an action or event, such as submitting a form or displaying a dialog.
  *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be
+ * > used standalone with other component libraries.
  */
-export const Button = forwardRef<ElementRef<'button'>, PropsWithChildren<PropsWithSx<ButtonProps>>>(
-  function Button({ size = 'large', className, ...props }, forwardedRef) {
-    return (
-      <StyledButton
-        ref={forwardedRef}
-        className={clsx(componentClassName, className, withBreakpoints(size, 'size'))}
-        {...props}
-      />
-    );
-  }
-);
+export const Button = React.forwardRef<
+  React.ElementRef<'button'>,
+  React.PropsWithChildren<PropsWithSx<ButtonProps>>
+>(function Button({ size = 'large', className, ...props }, ref) {
+  return (
+    <StyledElement
+      ref={ref}
+      className={clsx(componentClassName, className, withBreakpoints(size, 'size'))}
+      {...props}
+    />
+  );
+});
 
 Button.displayName = componentName;

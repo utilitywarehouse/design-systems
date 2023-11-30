@@ -1,7 +1,6 @@
 import * as React from 'react';
 import MuiGrid from '@mui/material/Grid';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { forwardRef } from 'react';
 import type { GridProps as MuiGridProps, RegularBreakpoints } from '@mui/material/Grid';
 
 export const DEFAULT_COLUMNS = { mobile: 4, tablet: 8, desktop: 12, wide: 12 };
@@ -37,7 +36,7 @@ export type GridProps<D extends React.ElementType = DefaultGridComponent, P = {}
  *
  * > This component should be wrapped in a ThemeProvider
  */
-export const Grid = forwardRef(function Grid({ columns = DEFAULT_COLUMNS, ...props }, ref) {
+export const Grid = React.forwardRef(function Grid({ columns = DEFAULT_COLUMNS, ...props }, ref) {
   if (props.container) {
     return (
       <MuiGrid ref={ref} columns={columns} spacing={props.spacing || DEFAULT_SPACING} {...props} />

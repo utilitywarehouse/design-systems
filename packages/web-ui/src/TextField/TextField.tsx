@@ -3,14 +3,13 @@ import FilledInput, { FilledInputProps } from '@mui/material/FilledInput';
 import { TickMediumContainedIcon, WarningMediumContainedIcon } from '@utilitywarehouse/react-icons';
 import FormControl from '@mui/material/FormControl';
 import { Box } from '../Box';
-import type { ReactNode, AllHTMLAttributes } from 'react';
-import { styled } from '@mui/material';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights, transitions } from '../tokens';
 import { classSelector, pxToRem, spacing, withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
+import { styled } from '../theme';
 
 const classNames: { [key: string]: string } = {
   success: withGlobalPrefix('status-success'),
@@ -47,7 +46,7 @@ const StyledInput = styled(FilledInput)({
   borderBottomColor: colorsCommon.brandPrimaryPurple,
   borderWidth: 2,
   transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
-  ':hover': {
+  ':where(:hover)': {
     backgroundColor: colorsCommon.brandWhite,
     borderBottomColor: colors.cyan600,
     '&:not(.Mui-disabled):not(.Mui-error),': {
@@ -133,7 +132,7 @@ const StyledInput = styled(FilledInput)({
   },
 });
 
-type FormElementProps = AllHTMLAttributes<HTMLFormElement>;
+type FormElementProps = React.AllHTMLAttributes<HTMLFormElement>;
 
 export interface TextFieldProps
   extends Omit<
@@ -170,11 +169,11 @@ export interface TextFieldProps
    * Sets the label for the TextField. If not used, please ensure you set
    * either `aria-label`, or `aria-labelledby` and `labelId`.
    */
-  label?: ReactNode;
+  label?: React.ReactNode;
   /** The id passed to the label element. You should set this if using `aria-lebelledby`. */
   labelId?: string;
   /** Sets descriptive helper text. */
-  helperText?: ReactNode;
+  helperText?: React.ReactNode;
   /** If true, a TextareaAutosize element is rendered. */
   multiline?: boolean;
 }

@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { forwardRef, useContext } from 'react';
 import { Item, type RadioGroupItemProps } from '@radix-ui/react-radio-group';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { useIds } from '../hooks';
-import { Box } from '../Box';
 import { withGlobalPrefix, spacing } from '../utils';
 import { PropsWithSx } from '../types';
 import { StyledRadioIndicator } from '../Radio/Radio';
@@ -13,9 +11,10 @@ import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
 import clsx from 'clsx';
 import { RadioTileProps } from './RadioTile.props';
 import { styled } from '../theme';
+import { Flex } from '../Flex';
 
-const displayName = 'Radio';
-const componentClassName = withGlobalPrefix(displayName);
+const componentName = 'Radio';
+const componentClassName = withGlobalPrefix(componentName);
 
 const StyledRadio = styled('div')({
   height: 24,
@@ -24,16 +23,20 @@ const StyledRadio = styled('div')({
   backgroundColor: colorsCommon.brandWhite,
   borderRadius: '100%',
   border: '2px solid',
-  borderColor: colors.grey500,
-  '&:focus-visible': {
-    borderColor: colors.cyan500,
+  borderColor: 'var(--radio-border-color)',
+  '--radio-border-color': colors.grey500,
+  '--radio-border-color-focus': colors.cyan500,
+  '--radio-border-color-checked': colors.cyan500,
+  '--radio-border-color-disabled': colors.grey300,
+  ':where(:focus-visible)': {
+    '--radio-border-color': 'var(--radio-border-color-focus)',
     boxShadow: `0 0 0 2px ${colors.cyan700}`,
   },
-  '[data-state="checked"] &': {
-    borderColor: colors.cyan500,
+  ':where([data-state="checked"] &)': {
+    '--radio-border-color': 'var(--radio-border-color-checked)',
   },
-  '[data-disabled] &': {
-    borderColor: colors.grey300,
+  ':where([data-disabled] &)': {
+    '--radio-border-color': 'var(--radio-border-color-disabled)',
   },
 });
 
@@ -42,22 +45,31 @@ const StyledRadioItem = styled(Item)({
   borderRadius: '8px',
   padding: spacing(2),
   display: 'flex',
-  backgroundColor: colorsCommon.brandWhite,
-  boxShadow: `inset 0 0 0 2px ${colors.grey400}`,
-  '&:focus-visible': {
-    backgroundColor: colors.cyan100,
-    boxShadow: `inset 0 0 0 2px ${colors.cyan500}`,
+  boxShadow: `inset 0 0 0 2px var(--radio-item-box-shadow-color)`,
+  backgroundColor: 'var(--radio-item-background-color)',
+  '--radio-item-background-color': colorsCommon.brandWhite,
+  '--radio-item-background-color-focus': colors.cyan100,
+  '--radio-item-background-color-hover': colors.cyan75,
+  '--radio-item-box-shadow-color': colors.grey400,
+  '--radio-item-box-shadow-color-focus': colors.cyan500,
+  '--radio-item-box-shadow-color-hover': colors.cyan500,
+  '--radio-item-box-shadow-color-disabled': colors.grey300,
+  ':where(:focus-visible)': {
+    '--radio-item-background-color': 'var(--radio-item-background-color-focus)',
+    '--radio-item-box-shadow-color': 'var(--radio-item-box-shadow-color-focus)',
     outline: `4px solid ${colors.cyan700}`,
   },
-  '&:hover:enabled': {
-    backgroundColor: colors.cyan75,
-    boxShadow: `inset 0 0 0 2px ${colors.cyan500}`,
-    [`& ${StyledRadio}`]: {
-      borderColor: colors.cyan500,
+  '@media (hover: hover)': {
+    ':where(:hover:enabled)': {
+      '--radio-item-background-color': 'var(--radio-item-background-color-hover)',
+      '--radio-item-box-shadow-color': 'var(--radio-item-box-shadow-color-hover)',
+      [`& ${StyledRadio}`]: {
+        borderColor: colors.cyan500,
+      },
     },
   },
-  '&[data-disabled]': {
-    boxShadow: `inset 0 0 0 2px ${colors.grey300}`,
+  ':where([data-disabled])': {
+    '--radio-item-box-shadow-color': 'var(--radio-item-box-shadow-color-disabled)',
   },
 }) as React.FC<RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>>;
 
@@ -66,7 +78,7 @@ const StyledRadioItem = styled(Item)({
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
-export const RadioTile = forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProps>>(
+export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProps>>(
   (
     {
       id: providedId,
@@ -81,7 +93,7 @@ export const RadioTile = forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProp
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
     const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
-      useContext(RadioGroupContext);
+      React.useContext(RadioGroupContext);
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
 
@@ -95,22 +107,22 @@ export const RadioTile = forwardRef<HTMLButtonElement, PropsWithSx<RadioTileProp
         aria-describedby={showHelperText ? helperTextId : ariaDescribedby}
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
       >
-        <Box component="label" display="flex" gap={1}>
+        <Flex component="label" gap={1}>
           <StyledRadio>
             <StyledRadioIndicator />
           </StyledRadio>
           {showLabel ? (
-            <Box display="flex" flexDirection="column" gap={0.5}>
+            <Flex direction="column" gap={0.5}>
               <Label component="span" id={labelId} htmlFor={id} nested>
                 {label}
               </Label>
               {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
-            </Box>
+            </Flex>
           ) : null}
-        </Box>
+        </Flex>
       </StyledRadioItem>
     );
   }
 );
 
-RadioTile.displayName = displayName;
+RadioTile.displayName = componentName;

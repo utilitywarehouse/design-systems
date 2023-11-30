@@ -4,7 +4,7 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } from '@mui/material';
 import { OverrideProps } from '@mui/types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { dataAttributes } from '../utils';
+import { DATA_ATTRIBUTES } from '../utils';
 import { PropsWithSx } from '../types';
 
 export const textVariantMapping: Record<string, string> = {
@@ -61,9 +61,9 @@ export const LegacyTypography = forwardRef(function LegacyTypography(
   };
   const dataAttributeProps = isLegacyColor
     ? {
-        [dataAttributes.legacy]: true,
+        [DATA_ATTRIBUTES.legacy]: true,
         // @ts-ignore
-        [dataAttributes[getLegacyColor(color)]]: true,
+        [DATA_ATTRIBUTES[getLegacyColor(color)]]: true,
       }
     : {};
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link';
-import { dataAttributes, isHeadingVariant } from '../utils';
+import { DATA_ATTRIBUTES, isHeadingVariant } from '../utils';
 import { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
 import { useBackground } from '../Box';
 import { styled } from '@mui/material';
@@ -30,14 +30,14 @@ const StyledLink = styled(MuiLink)({
   '&:hover': {
     opacity: 0.5,
   },
-  [`&[${dataAttributes.heading}=true]`]: {
+  [`&[${DATA_ATTRIBUTES.heading}=true]`]: {
     color: colorsCommon.brandPrimaryPurple,
   },
-  [`&[${dataAttributes.bgcolorBrand}=true]`]: {
+  [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
     color: colorsCommon.brandWhite,
   },
   // TODO: remove when `Background` component removed.
-  [`[${dataAttributes.inverse}=true] &`]: {
+  [`[${DATA_ATTRIBUTES.inverse}=true] &`]: {
     color: colorsCommon.brandWhite,
   },
   '&.MuiTypography-inherit': {
@@ -68,8 +68,8 @@ export const TextLink = React.forwardRef<HTMLAnchorElement, PropsWithSx<TextLink
     const heading = isHeadingVariant(variant);
     const { isBrandBackground } = useBackground();
     const dataAttributeProps = {
-      [dataAttributes.heading]: heading,
-      [dataAttributes.bgcolorBrand]: isBrandBackground,
+      [DATA_ATTRIBUTES.heading]: heading,
+      [DATA_ATTRIBUTES.bgcolorBrand]: isBrandBackground,
     };
     return (
       <StyledLink ref={ref} variant={variant} {...props} underline="none" {...dataAttributeProps} />

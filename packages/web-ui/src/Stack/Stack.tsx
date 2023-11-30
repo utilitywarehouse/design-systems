@@ -1,7 +1,6 @@
 import * as React from 'react';
 import MuiStack from '@mui/material/Stack';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import { forwardRef } from 'react';
 import type { StackProps as MuiStackProps } from '@mui/material/Stack';
 
 export type DefaultStackComponent = 'div';
@@ -38,6 +37,6 @@ export type StackProps<D extends React.ElementType = DefaultStackComponent, P = 
  * change this to use the flexbox gap property with the `useFlexGap` boolean
  * prop.
  */
-export const Stack = forwardRef(function Stack(props, ref) {
+export const Stack = React.forwardRef(function Stack(props, ref) {
   return <MuiStack ref={ref} {...props} />;
 }) as OverridableComponent<StackTypeMap>;

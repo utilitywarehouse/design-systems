@@ -4,7 +4,7 @@ import MuiButton, { ButtonProps as MuiButtonProps, ExtendButton } from '@mui/mat
 import type { OverrideProps } from '@mui/material/OverridableComponent';
 import { useBackground } from '../Box';
 import { styled } from '@mui/material';
-import { dataAttributes, px } from '../utils';
+import { DATA_ATTRIBUTES, px } from '../utils';
 import { fonts, fontWeights, transitions } from '../tokens';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
@@ -57,28 +57,28 @@ const StyledButton = styled(MuiButton)({
   '&:disabled': {
     opacity: 0.5,
   },
-  [`&[${dataAttributes.bgcolorBrand}=true]`]: {
+  [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
     '&:disabled': {
       opacity: 0.6,
     },
   },
   // TODO: remove when `Background` component removed.
-  [`[${dataAttributes.inverse}=true] &`]: {
+  [`[${DATA_ATTRIBUTES.inverse}=true] &`]: {
     '&:disabled': {
       opacity: 0.6,
     },
   },
   // size
-  [`&[${dataAttributes.size}=small]`]: {
+  [`&[${DATA_ATTRIBUTES.size}=small]`]: {
     height: px(32),
   },
-  [`&[${dataAttributes.size}=medium]`]: {
+  [`&[${DATA_ATTRIBUTES.size}=medium]`]: {
     height: px(40),
   },
-  [`&[${dataAttributes.size}=large]`]: {
+  [`&[${DATA_ATTRIBUTES.size}=large]`]: {
     height: px(48),
   },
-  [`&[${dataAttributes.variant}=primary]`]: {
+  [`&[${DATA_ATTRIBUTES.variant}=primary]`]: {
     color: colorsCommon.brandMidnight,
     backgroundColor: colors.cyan400,
     border: 'none',
@@ -88,7 +88,7 @@ const StyledButton = styled(MuiButton)({
       backgroundColor: colors.cyan200,
     },
   },
-  [`&[${dataAttributes.variant}=secondary]`]: {
+  [`&[${DATA_ATTRIBUTES.variant}=secondary]`]: {
     color: colorsCommon.brandMidnight,
     backgroundColor: 'transparent',
     borderColor: colors.cyan400,
@@ -100,21 +100,21 @@ const StyledButton = styled(MuiButton)({
       opacity: 0.5,
       borderWidth,
     },
-    [`&[${dataAttributes.bgcolorBrand}=true]`]: {
+    [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
       color: colorsCommon.brandWhite,
       '&:hover': {
         borderColor: colorsCommon.brandWhite,
       },
     },
     // TODO: remove when `Background` component removed.
-    [`[${dataAttributes.inverse}=true] &`]: {
+    [`[${DATA_ATTRIBUTES.inverse}=true] &`]: {
       color: colorsCommon.brandWhite,
       '&:hover': {
         borderColor: colorsCommon.brandWhite,
       },
     },
   },
-  [`&[${dataAttributes.variant}=tertiary]`]: {
+  [`&[${DATA_ATTRIBUTES.variant}=tertiary]`]: {
     color: colorsCommon.brandMidnight,
     backgroundColor: 'transparent',
     borderColor: colors.cyan400,
@@ -129,11 +129,11 @@ const StyledButton = styled(MuiButton)({
     '&:hover': {
       opacity: 0.5,
     },
-    [`&[${dataAttributes.bgcolorBrand}=true]`]: {
+    [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
       color: colorsCommon.brandWhite,
     },
     // TODO: remove when `Background` component removed.
-    [`[${dataAttributes.inverse}=true] &`]: {
+    [`[${DATA_ATTRIBUTES.inverse}=true] &`]: {
       color: colorsCommon.brandWhite,
     },
   },
@@ -150,9 +150,9 @@ export const Button = forwardRef(function Button(
 ) {
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
-    [dataAttributes.variant]: variant,
-    [dataAttributes.size]: size,
-    [dataAttributes.bgcolorBrand]: isBrandBackground,
+    [DATA_ATTRIBUTES.variant]: variant,
+    [DATA_ATTRIBUTES.size]: size,
+    [DATA_ATTRIBUTES.bgcolorBrand]: isBrandBackground,
   };
   return (
     <StyledButton

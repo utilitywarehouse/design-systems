@@ -53,7 +53,7 @@ export const RadioGridGroupWorkshop: Story = {
     );
   },
   args: {
-    helperText: 'RadioGridGroup with Radio',
+    helperText: 'RadioGridGroup with RadioTile',
   },
 };
 
