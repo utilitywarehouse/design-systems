@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.5.1
+
+### Patch Changes
+
+- [#231](https://github.com/utilitywarehouse/design-systems/pull/231) [`849d0ce`](https://github.com/utilitywarehouse/design-systems/commit/849d0ce30985f34bd49344e7848146b13e6f91e4) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix RadioTile on hover
+
 ## 0.5.0
 
 ### Minor Changes
