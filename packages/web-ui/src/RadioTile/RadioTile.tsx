@@ -63,7 +63,7 @@ const StyledRadioItem = styled(Item)({
     ':where(:hover:enabled)': {
       '--radio-item-background-color': 'var(--radio-item-background-color-hover)',
       '--radio-item-box-shadow-color': 'var(--radio-item-box-shadow-color-hover)',
-      [`& ${StyledRadio}`]: {
+      '& div:first-child': {
         borderColor: colors.cyan500,
       },
     },
