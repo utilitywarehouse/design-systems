@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.5.2
+
+### Patch Changes
+
+- [#233](https://github.com/utilitywarehouse/design-systems/pull/233) [`0c97a84`](https://github.com/utilitywarehouse/design-systems/commit/0c97a84a267661efa4ee38fb4b2415f6356e3a32) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Textfield background on hover
+
 ## 0.5.1
 
 ### Patch Changes
