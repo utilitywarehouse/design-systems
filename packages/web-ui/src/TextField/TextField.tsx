@@ -46,7 +46,7 @@ const StyledInput = styled(FilledInput)({
   borderBottomColor: colorsCommon.brandPrimaryPurple,
   borderWidth: 2,
   transition: `border ${transitions.duration}ms ${transitions.easingFunction}`,
-  ':where(:hover)': {
+  ':hover': {
     backgroundColor: colorsCommon.brandWhite,
     borderBottomColor: colors.cyan600,
     '&:not(.Mui-disabled):not(.Mui-error),': {
