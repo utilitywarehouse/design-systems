@@ -1,26 +1,26 @@
 // HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
 
 /** This colour is for backgrounds only.  Replaces former Cyan-10 and Cyan-50 usage */
-export const cyan50 = '#ecf4fe';
+export const cyan50 = '#ecf4fe'; 
 /** This colour is for backgrounds only.  This replaces the former Cyan-50.  */
-export const cyan75 = '#e5f1ff';
+export const cyan75 = '#e5f1ff'; 
 /**  */
-export const cyan100 = '#cce0ff';
+export const cyan100 = '#cce0ff'; 
 /** This colour replaces some of the former Cyan-30 usage */
-export const cyan200 = '#a6c8fc';
+export const cyan200 = '#a6c8fc'; 
 /** This replaces the usage of former Cyan-40 */
-export const cyan300 = '#8fbaff';
+export const cyan300 = '#8fbaff'; 
 /** This is Brand Cyan */
-export const cyan400 = '#75a7fd';
+export const cyan400 = '#75a7fd'; 
 /** Use it for large text, borders, and graphic elements against white, Cyan 50, Grey 25, and Grey 50. Use it as a background color with white borders or graphic foreground elements. */
-export const cyan500 = '#4789fa';
+export const cyan500 = '#4789fa'; 
 /** Use it for large text, borders, and graphic elements against white and Cyan 50, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150. Use it as a background color combined with a white foreground. This color should replace some of the former Blue Ribbon usage. */
-export const cyan600 = '#0550d1';
+export const cyan600 = '#0550d1'; 
 /**  */
-export const cyan700 = '#003a9e';
+export const cyan700 = '#003a9e'; 
 /**  */
-export const cyan800 = '#002b75';
+export const cyan800 = '#002b75'; 
 /** Use it for text over a Cyan/50 or Cyan/75 */
-export const cyan900 = '#001e52';
+export const cyan900 = '#001e52'; 
 /** Use it for text over a Cyan/50, Cyan/75 or Cyan/100 */
-export const cyan1000 = '#001333';
+export const cyan1000 = '#001333'; 

@@ -1,117 +1,28 @@
-/* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON 12/10/2023. */
 
+  /* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON 15/01/2024. */
+
+    
 /* brand */
-$brandMidnight: #1e0a46;
-$brandWhite: #ffffff;
-$brandPink: #f495f9;
-$brandPrimaryPurple: #550091;
+$brandMidnight: #1e0a46;$brandWhite: #ffffff;$brandPink: #f495f9;$brandPrimaryPurple: #550091;
 /* service */
-$serviceGas: #75a7fd;
-$serviceElectricity: #62dd99;
-$serviceInsurance: #f25192;
-$serviceMobile: #ffd76f;
-$serviceLandline: #a66de8;
+$serviceGas: #75A7FD;$serviceElectricity: #62DD99;$serviceInsurance: #F25192;$serviceMobile: #FFD76F;$serviceLandline: #A66DE8;
 /* purple */
-$purple50: #fbf6fd;
-$purple75: #f5eef9;
-$purple100: #ede0f2;
-$purple200: #e2c7eb;
-$purple300: #d69ddd;
-$purple400: #c777df;
-$purple500: #af4dd5;
-$purple600: #931cce;
-$purple700: #7209ae;
-$purple800: #550091;
-$purple900: #400066;
-$purple1000: #1c0128;
+$purple50: #fbf6fd;$purple75: #f5eef9;$purple100: #ede0f2;$purple200: #e2c7eb;$purple300: #d69ddd;$purple400: #c777df;$purple500: #af4dd5;$purple600: #931cce;$purple700: #7209ae;$purple800: #550091;$purple900: #400066;$purple1000: #1c0128;
 /* red */
-$red50: #ffebeb;
-$red100: #ffd8d9;
-$red200: #ffb3b4;
-$red300: #f58e92;
-$red500: #df2a38;
-$red600: #c31d2a;
-$red700: #891e27;
-$red900: #3b1216;
+$red50: #ffebeb;$red100: #ffd8d9;$red200: #ffb3b4;$red300: #f58e92;$red400: #ec515d;$red500: #df2a38;$red600: #c31d2a;$red700: #891e27;$red900: #3b1216;
 /* pink */
-$pink50: #fde6fb;
-$pink100: #fccff9;
-$pink200: #f9bdfa;
-$pink300: #f495f9;
-$pink500: #c933d1;
-$pink700: #8f248f;
-$pink900: #48104b;
+$pink50: #fde6fb;$pink100: #fccff9;$pink200: #f9bdfa;$pink300: #f495f9;$pink500: #c933d1;$pink700: #8f248f;$pink900: #48104b;
 /* grey */
-$grey25: #fafafa;
-$grey50: #f5f5f5;
-$grey75: #f0f0f0;
-$grey100: #e3e3e3;
-$grey150: #d8d8d8;
-$grey175: #cccccc;
-$grey200: #c1c1c1;
-$grey300: #b8b8b8;
-$grey400: #a0a0a0;
-$grey500: #888888;
-$grey600: #707070;
-$grey700: #585858;
-$grey800: #414141;
-$grey900: #242424;
-$grey1000: #121212;
+$grey25: #fafafa;$grey50: #f5f5f5;$grey75: #f0f0f0;$grey100: #e3e3e3;$grey150: #d8d8d8;$grey175: #cccccc;$grey200: #c1c1c1;$grey300: #b8b8b8;$grey400: #a0a0a0;$grey500: #888888;$grey600: #707070;$grey700: #585858;$grey800: #414141;$grey900: #242424;$grey1000: #121212;
 /* apple */
-$apple50: #e5f9ed;
-$apple200: #c1f0d3;
-$apple300: #96e6b7;
-$apple400: #62dd99;
-$apple700: #10b259;
-$apple800: #087a3c;
-$apple900: #03361b;
+$apple50: #e5f9ed;$apple200: #c1f0d3;$apple300: #96e6b7;$apple400: #62dd99;$apple700: #10b259;$apple800: #087a3c;$apple900: #03361b;
 /* cyan */
-$cyan50: #ecf4fe;
-$cyan75: #e5f1ff;
-$cyan100: #cce0ff;
-$cyan200: #a6c8fc;
-$cyan300: #8fbaff;
-$cyan400: #75a7fd;
-$cyan500: #4789fa;
-$cyan600: #0550d1;
-$cyan700: #003a9e;
-$cyan800: #002b75;
-$cyan900: #001e52;
-$cyan1000: #001333;
+$cyan50: #ecf4fe;$cyan75: #e5f1ff;$cyan100: #cce0ff;$cyan200: #a6c8fc;$cyan300: #8fbaff;$cyan400: #75a7fd;$cyan500: #4789fa;$cyan600: #0550d1;$cyan700: #003a9e;$cyan800: #002b75;$cyan900: #001e52;$cyan1000: #001333;
 /* gold */
-$gold50: #fef9e6;
-$gold75: #fef6dc;
-$gold100: #fff1d1;
-$gold200: #ffe6a8;
-$gold300: #ffd76f;
-$gold400: #f7b51d;
-$gold500: #c77800;
-$gold600: #ac6406;
-$gold700: #894e16;
-$gold900: #52210c;
+$gold50: #fef9e6;$gold75: #fef6dc;$gold100: #fff1d1;$gold200: #ffe6a8;$gold300: #ffd76f;$gold400: #f7b51d;$gold500: #c77800;$gold600: #ac6406;$gold700: #894e16;$gold900: #52210c;
 /* green */
-$green50: #eefcf3;
-$green100: #e0f5e8;
-$green200: #bdead0;
-$green300: #a3e1bf;
-$green500: #1c874d;
-$green600: #297f50;
-$green700: #21693f;
-$green900: #003d1e;
+$green50: #eefcf3;$green100: #e0f5e8;$green200: #bdead0;$green300: #a3e1bf;$green400: #2fb66d;$green500: #1c874d;$green600: #297f50;$green700: #21693f;$green900: #003d1e;
 /* grape */
-$grape50: #f1e6fb;
-$grape100: #e4d3f8;
-$grape200: #d4baf3;
-$grape300: #bc92ed;
-$grape400: #a66de8;
-$grape500: #7b39c6;
-$grape800: #2c094e;
+$grape50: #f1e6fb;$grape100: #e4d3f8;$grape200: #d4baf3;$grape300: #bc92ed;$grape400: #a66de8;$grape500: #7b39c6;$grape800: #2c094e;
 /* rose */
-$rose50: #fde2ec;
-$rose200: #f9b6d0;
-$rose300: #f586b1;
-$rose400: #f25192;
-$rose500: #ed176c;
-$rose700: #c8185c;
-$rose800: #9f1446;
-$rose900: #4a1125;
+$rose50: #fde2ec;$rose200: #f9b6d0;$rose300: #f586b1;$rose400: #f25192;$rose500: #ed176c;$rose700: #c8185c;$rose800: #9f1446;$rose900: #4a1125;

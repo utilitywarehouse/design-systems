@@ -1,119 +1,32 @@
-/* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON 12/10/2023. */
 
-:root {
-  /* brand */
-  --color-brand-midnight: #1e0a46;
-  --color-brand-white: #ffffff;
-  --color-brand-pink: #f495f9;
-  --color-brand-primaryPurple: #550091;
-  /* service */
-  --color-service-gas: #75a7fd;
-  --color-service-electricity: #62dd99;
-  --color-service-insurance: #f25192;
-  --color-service-mobile: #ffd76f;
-  --color-service-landline: #a66de8;
-  /* purple */
-  --color-purple50: #fbf6fd;
-  --color-purple75: #f5eef9;
-  --color-purple100: #ede0f2;
-  --color-purple200: #e2c7eb;
-  --color-purple300: #d69ddd;
-  --color-purple400: #c777df;
-  --color-purple500: #af4dd5;
-  --color-purple600: #931cce;
-  --color-purple700: #7209ae;
-  --color-purple800: #550091;
-  --color-purple900: #400066;
-  --color-purple1000: #1c0128;
-  /* red */
-  --color-red50: #ffebeb;
-  --color-red100: #ffd8d9;
-  --color-red200: #ffb3b4;
-  --color-red300: #f58e92;
-  --color-red500: #df2a38;
-  --color-red600: #c31d2a;
-  --color-red700: #891e27;
-  --color-red900: #3b1216;
-  /* pink */
-  --color-pink50: #fde6fb;
-  --color-pink100: #fccff9;
-  --color-pink200: #f9bdfa;
-  --color-pink300: #f495f9;
-  --color-pink500: #c933d1;
-  --color-pink700: #8f248f;
-  --color-pink900: #48104b;
-  /* grey */
-  --color-grey25: #fafafa;
-  --color-grey50: #f5f5f5;
-  --color-grey75: #f0f0f0;
-  --color-grey100: #e3e3e3;
-  --color-grey150: #d8d8d8;
-  --color-grey175: #cccccc;
-  --color-grey200: #c1c1c1;
-  --color-grey300: #b8b8b8;
-  --color-grey400: #a0a0a0;
-  --color-grey500: #888888;
-  --color-grey600: #707070;
-  --color-grey700: #585858;
-  --color-grey800: #414141;
-  --color-grey900: #242424;
-  --color-grey1000: #121212;
-  /* apple */
-  --color-apple50: #e5f9ed;
-  --color-apple200: #c1f0d3;
-  --color-apple300: #96e6b7;
-  --color-apple400: #62dd99;
-  --color-apple700: #10b259;
-  --color-apple800: #087a3c;
-  --color-apple900: #03361b;
-  /* cyan */
-  --color-cyan50: #ecf4fe;
-  --color-cyan75: #e5f1ff;
-  --color-cyan100: #cce0ff;
-  --color-cyan200: #a6c8fc;
-  --color-cyan300: #8fbaff;
-  --color-cyan400: #75a7fd;
-  --color-cyan500: #4789fa;
-  --color-cyan600: #0550d1;
-  --color-cyan700: #003a9e;
-  --color-cyan800: #002b75;
-  --color-cyan900: #001e52;
-  --color-cyan1000: #001333;
-  /* gold */
-  --color-gold50: #fef9e6;
-  --color-gold75: #fef6dc;
-  --color-gold100: #fff1d1;
-  --color-gold200: #ffe6a8;
-  --color-gold300: #ffd76f;
-  --color-gold400: #f7b51d;
-  --color-gold500: #c77800;
-  --color-gold600: #ac6406;
-  --color-gold700: #894e16;
-  --color-gold900: #52210c;
-  /* green */
-  --color-green50: #eefcf3;
-  --color-green100: #e0f5e8;
-  --color-green200: #bdead0;
-  --color-green300: #a3e1bf;
-  --color-green500: #1c874d;
-  --color-green600: #297f50;
-  --color-green700: #21693f;
-  --color-green900: #003d1e;
-  /* grape */
-  --color-grape50: #f1e6fb;
-  --color-grape100: #e4d3f8;
-  --color-grape200: #d4baf3;
-  --color-grape300: #bc92ed;
-  --color-grape400: #a66de8;
-  --color-grape500: #7b39c6;
-  --color-grape800: #2c094e;
-  /* rose */
-  --color-rose50: #fde2ec;
-  --color-rose200: #f9b6d0;
-  --color-rose300: #f586b1;
-  --color-rose400: #f25192;
-  --color-rose500: #ed176c;
-  --color-rose700: #c8185c;
-  --color-rose800: #9f1446;
-  --color-rose900: #4a1125;
-}
+  /* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON 15/01/2024. */
+
+    
+    :root {
+  
+/* brand */
+--color-brand-midnight: #1e0a46;--color-brand-white: #ffffff;--color-brand-pink: #f495f9;--color-brand-primaryPurple: #550091;
+/* service */
+--color-service-gas: #75A7FD;--color-service-electricity: #62DD99;--color-service-insurance: #F25192;--color-service-mobile: #FFD76F;--color-service-landline: #A66DE8;
+/* purple */
+--color-purple50: #fbf6fd;--color-purple75: #f5eef9;--color-purple100: #ede0f2;--color-purple200: #e2c7eb;--color-purple300: #d69ddd;--color-purple400: #c777df;--color-purple500: #af4dd5;--color-purple600: #931cce;--color-purple700: #7209ae;--color-purple800: #550091;--color-purple900: #400066;--color-purple1000: #1c0128;
+/* red */
+--color-red50: #ffebeb;--color-red100: #ffd8d9;--color-red200: #ffb3b4;--color-red300: #f58e92;--color-red400: #ec515d;--color-red500: #df2a38;--color-red600: #c31d2a;--color-red700: #891e27;--color-red900: #3b1216;
+/* pink */
+--color-pink50: #fde6fb;--color-pink100: #fccff9;--color-pink200: #f9bdfa;--color-pink300: #f495f9;--color-pink500: #c933d1;--color-pink700: #8f248f;--color-pink900: #48104b;
+/* grey */
+--color-grey25: #fafafa;--color-grey50: #f5f5f5;--color-grey75: #f0f0f0;--color-grey100: #e3e3e3;--color-grey150: #d8d8d8;--color-grey175: #cccccc;--color-grey200: #c1c1c1;--color-grey300: #b8b8b8;--color-grey400: #a0a0a0;--color-grey500: #888888;--color-grey600: #707070;--color-grey700: #585858;--color-grey800: #414141;--color-grey900: #242424;--color-grey1000: #121212;
+/* apple */
+--color-apple50: #e5f9ed;--color-apple200: #c1f0d3;--color-apple300: #96e6b7;--color-apple400: #62dd99;--color-apple700: #10b259;--color-apple800: #087a3c;--color-apple900: #03361b;
+/* cyan */
+--color-cyan50: #ecf4fe;--color-cyan75: #e5f1ff;--color-cyan100: #cce0ff;--color-cyan200: #a6c8fc;--color-cyan300: #8fbaff;--color-cyan400: #75a7fd;--color-cyan500: #4789fa;--color-cyan600: #0550d1;--color-cyan700: #003a9e;--color-cyan800: #002b75;--color-cyan900: #001e52;--color-cyan1000: #001333;
+/* gold */
+--color-gold50: #fef9e6;--color-gold75: #fef6dc;--color-gold100: #fff1d1;--color-gold200: #ffe6a8;--color-gold300: #ffd76f;--color-gold400: #f7b51d;--color-gold500: #c77800;--color-gold600: #ac6406;--color-gold700: #894e16;--color-gold900: #52210c;
+/* green */
+--color-green50: #eefcf3;--color-green100: #e0f5e8;--color-green200: #bdead0;--color-green300: #a3e1bf;--color-green400: #2fb66d;--color-green500: #1c874d;--color-green600: #297f50;--color-green700: #21693f;--color-green900: #003d1e;
+/* grape */
+--color-grape50: #f1e6fb;--color-grape100: #e4d3f8;--color-grape200: #d4baf3;--color-grape300: #bc92ed;--color-grape400: #a66de8;--color-grape500: #7b39c6;--color-grape800: #2c094e;
+/* rose */
+--color-rose50: #fde2ec;--color-rose200: #f9b6d0;--color-rose300: #f586b1;--color-rose400: #f25192;--color-rose500: #ed176c;--color-rose700: #c8185c;--color-rose800: #9f1446;--color-rose900: #4a1125;
+    }
+  
