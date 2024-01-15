@@ -190,6 +190,17 @@
         "updated_at": "2023-04-27T17:38:49.816Z",
         "value": "#f7b51d"
       },
+      "gold600": {
+        "id": "1463:241",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "600",
+        "name": "gold600",
+        "description": "This colour is used on Helper Text in form components. This colour can be used against grey.50 and up to grey.175 and over gold.50",
+        "created_at": "2024-01-11T11:46:15.045Z",
+        "updated_at": "2024-01-11T11:46:15.045Z",
+        "value": "#fbc64b"
+      },
       "gold700": {
         "id": "64:434",
         "mode": "dark",
@@ -660,6 +671,17 @@
         "updated_at": "2023-04-27T17:38:49.947Z",
         "value": "#f24550"
       },
+      "red600": {
+        "id": "1461:617",
+        "mode": "dark",
+        "scale": "red",
+        "step": "600",
+        "name": "red600",
+        "description": "This colour is used on Helper Text in form components. This colour can be used against grey.50 and up to grey.175 and over red.50",
+        "created_at": "2024-01-11T11:46:15.053Z",
+        "updated_at": "2024-01-11T11:46:15.053Z",
+        "value": "#f2636a"
+      },
       "red700": {
         "id": "20:476",
         "mode": "dark",
@@ -749,6 +771,17 @@
         "created_at": "2023-03-29T16:17:22.778Z",
         "updated_at": "2023-04-27T17:38:49.972Z",
         "value": "#55ce8b"
+      },
+      "green600": {
+        "id": "1463:156",
+        "mode": "dark",
+        "scale": "green",
+        "step": "600",
+        "name": "green600",
+        "description": "This colour is used on Helper Text in form components. This colour can be used against grey.50 and up to grey.175 and over green.50",
+        "created_at": "2024-01-11T11:46:15.017Z",
+        "updated_at": "2024-01-11T11:46:15.017Z",
+        "value": "#76d5a1"
       },
       "green700": {
         "id": "34:924",
@@ -1201,6 +1234,17 @@
         "created_at": "2023-03-28T09:59:05.798Z",
         "updated_at": "2023-03-30T12:22:01.394Z",
         "value": "#f58e92"
+      },
+      "red400": {
+        "id": "1463:85",
+        "mode": "light",
+        "scale": "red",
+        "step": "400",
+        "name": "red400",
+        "description": "",
+        "created_at": "2024-01-11T11:46:15.038Z",
+        "updated_at": "2024-01-11T11:46:15.038Z",
+        "value": "#ec515d"
       },
       "red500": {
         "id": "20:482",
@@ -1862,6 +1906,17 @@
         "created_at": "2023-03-29T16:17:22.774Z",
         "updated_at": "2023-03-30T12:22:01.356Z",
         "value": "#a3e1bf"
+      },
+      "green400": {
+        "id": "1463:162",
+        "mode": "light",
+        "scale": "green",
+        "step": "400",
+        "name": "green400",
+        "description": "",
+        "created_at": "2024-01-11T11:46:15.029Z",
+        "updated_at": "2024-01-11T11:46:15.029Z",
+        "value": "#2fb66d"
       },
       "green500": {
         "id": "34:932",
