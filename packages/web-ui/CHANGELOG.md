@@ -1,5 +1,14 @@
 # @utilitywarehouse/web-ui
 
+## 0.5.3
+
+### Patch Changes
+
+- [#237](https://github.com/utilitywarehouse/design-systems/pull/237) [`7fea9ed`](https://github.com/utilitywarehouse/design-systems/commit/7fea9ed1fe5c6fe5d042df1505e991a35a8f9511) Thanks [@jordmccord](https://github.com/jordmccord)! - Update helper text colour
+
+- Updated dependencies [[`fcc2b39`](https://github.com/utilitywarehouse/design-systems/commit/fcc2b39f47035ab0ba550c5fc8ac11a24b9b1f31)]:
+  - @utilitywarehouse/colour-system@0.3.2
+
 ## 0.5.2
 
 ### Patch Changes
