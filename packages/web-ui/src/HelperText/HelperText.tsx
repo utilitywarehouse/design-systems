@@ -33,27 +33,20 @@ const StyledElement = styled(Typography)({
   '--helper-text-color-disabled': colors.grey400,
   '--helper-text-color-valid': colors.green600,
   '--helper-text-color-invalid': colors.red600,
-  '--helper-text-icon-color': colors.grey700,
-  '--helper-text-icon-color-disabled': colors.grey300,
-  '--helper-text-icon-color-valid': colors.green500,
-  '--helper-text-icon-color-invalid': colors.red500,
   color: 'var(--helper-text-color)',
   '> :where(svg), [data-icon]': {
     // as UW icons use currentColor by default, this will fallback to the
     // Button's color property if not set.
-    color: 'var(--helper-text-icon-color)',
+    color: 'var(--helper-text-color)',
   },
   ':where([data-disabled])': {
     '--helper-text-color': 'var(--helper-text-color-disabled)',
-    '--helper-text-icon-color': 'var(--helper-text-icon-color-disabled)',
   },
   [classSelectors.valid]: {
     '--helper-text-color': 'var(--helper-text-color-valid)',
-    '--helper-text-icon-color': 'var(--helper-text-icon-color-valid)',
   },
   [classSelectors.invalid]: {
     '--helper-text-color': 'var(--helper-text-color-invalid)',
-    '--helper-text-icon-color': 'var(--helper-text-icon-color-invalid)',
   },
 });
 
