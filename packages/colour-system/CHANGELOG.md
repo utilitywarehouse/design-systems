@@ -1,5 +1,11 @@
 # @utilitywarehouse/colour-system
 
+## 0.3.2
+
+### Patch Changes
+
+- [#235](https://github.com/utilitywarehouse/design-systems/pull/235) [`fcc2b39`](https://github.com/utilitywarehouse/design-systems/commit/fcc2b39f47035ab0ba550c5fc8ac11a24b9b1f31) Thanks [@jordmccord](https://github.com/jordmccord)! - add 600/400 step for green, red, gold
+
 ## 0.3.1
 
 ### Patch Changes
