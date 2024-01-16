@@ -146,8 +146,6 @@ export interface TextFieldProps
     | 'hiddenLabel'
     | 'id'
     | 'inputComponent'
-    | 'inputProps'
-    | 'inputRef'
     | 'margin'
     | 'ref'
     | 'slotProps'
@@ -194,6 +192,7 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
 ) {
   const showIcon = !props.disabled;
   const inputProps = {
+    ...props.inputProps,
     'aria-labelledby': ariaLabelledBy,
     'aria-label': ariaLabel,
     'aria-describedby': ariaDescribedBy,
