@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.5.4
+
+### Patch Changes
+
+- [#238](https://github.com/utilitywarehouse/design-systems/pull/238) [`b906c8c`](https://github.com/utilitywarehouse/design-systems/commit/b906c8c2821aab34502dcba7402ae7e9b551f003) Thanks [@robphoenix](https://github.com/robphoenix)! - re-add MUI inputProps prop to TextField
+
 ## 0.5.3
 
 ### Patch Changes
