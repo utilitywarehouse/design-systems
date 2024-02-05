@@ -32,6 +32,7 @@ module.exports = {
     'no-sequences': 'error',
   },
   settings: {
+    'import/ignore': ['react-native'],
     react: {
       version: 'detect',
     },
