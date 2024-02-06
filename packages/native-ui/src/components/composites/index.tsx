@@ -2,12 +2,7 @@ export { Alert, AlertIcon, AlertText } from '@gluestack-ui/themed';
 
 export { Progress, ProgressFilledTrack } from '@gluestack-ui/themed';
 export { Spinner } from '@gluestack-ui/themed';
-export {
-  Toast,
-  ToastDescription,
-  ToastTitle,
-  useToast,
-} from '@gluestack-ui/themed';
+export { Toast, ToastDescription, ToastTitle, useToast } from '@gluestack-ui/themed';
 
 export {
   AlertDialog,

@@ -45,5 +45,8 @@
   "dependencies": {
     "pnpm": "^8.6.3"
   },
+  "resolutions": {
+    "react-docgen-typescript": "2.2.2"
+  },
   "prettier": "@utilitywarehouse/prettier-config"
 }
