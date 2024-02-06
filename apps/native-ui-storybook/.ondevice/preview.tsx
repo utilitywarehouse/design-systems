@@ -2,14 +2,16 @@ import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import type { Preview } from '@storybook/react';
 import React from 'react';
 import { GluestackUIProvider, Box, config } from '@utilitywarehouse/native-ui';
+import { useColorScheme } from 'react-native';
 
 const preview: Preview = {
   decorators: [
     withBackgrounds,
     Story => {
+      const theme = useColorScheme() === 'dark' ? 'dark' : 'light';
       return (
-        <GluestackUIProvider config={config}>
-          <Box flex={1} p="$10">
+        <GluestackUIProvider colorMode={theme} config={config}>
+          <Box flex={1} m="$10">
             <Story />
           </Box>
         </GluestackUIProvider>
@@ -18,14 +20,6 @@ const preview: Preview = {
   ],
 
   parameters: {
-    backgrounds: {
-      default: 'plain',
-      values: [
-        { name: 'plain', value: 'white' },
-        { name: 'warm', value: 'hotpink' },
-        { name: 'cool', value: 'deepskyblue' },
-      ],
-    },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
