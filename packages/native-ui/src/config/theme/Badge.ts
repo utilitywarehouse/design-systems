@@ -1,10 +1,13 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const Badge = createStyle({
-  'flexDirection': 'row',
-  'alignItems': 'center',
-  'borderRadius': '$xs',
-  'variants': {
+  flexDirection: 'row',
+  alignItems: 'center',
+  borderRadius: 4,
+  paddingHorizontal: 8,
+  paddingVertical: 4,
+  alignSelf: 'flex-start',
+  variants: {
     action: {
       error: {
         bg: '$backgroundLightError',
@@ -87,13 +90,13 @@ export const Badge = createStyle({
         },
       },
       muted: {
-        bg: '$backgroundLightMuted',
+        bg: '#A6C8FC',
         borderColor: '$secondary300',
         _icon: {
           color: '$secondary600',
         },
         _text: {
-          color: '$secondary600',
+          color: '#001E52',
         },
         _dark: {
           bg: '$backgroundDarkMuted',
@@ -157,7 +160,7 @@ export const Badge = createStyle({
   ':disabled': {
     opacity: 0.5,
   },
-  'defaultProps': {
+  defaultProps: {
     action: 'info',
     variant: 'solid',
     size: 'md',

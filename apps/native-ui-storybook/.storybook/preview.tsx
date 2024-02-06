@@ -2,18 +2,19 @@ import type { Preview } from '@storybook/react';
 import React from 'react';
 import { Center, GluestackUIProvider, config } from '@utilitywarehouse/native-ui';
 
+export const decorators = [
+  Story => {
+    return (
+      <GluestackUIProvider config={config}>
+        <Center>
+          <Story />
+        </Center>
+      </GluestackUIProvider>
+    );
+  },
+];
+
 const preview: Preview = {
-  decorators: [
-    Story => {
-      return (
-        <GluestackUIProvider config={config}>
-          <Center>
-            <Story />
-          </Center>
-        </GluestackUIProvider>
-      );
-    },
-  ],
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {

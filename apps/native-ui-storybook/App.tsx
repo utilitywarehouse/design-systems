@@ -1,27 +1,24 @@
-import { StyleSheet, Text, View } from "react-native";
-import Constants from "expo-constants";
+import StorybookUIRoot from './.ondevice';
 
-function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
-}
+import React from 'react';
+import { useFonts } from 'expo-font';
 
-let AppEntryPoint = App;
+export default () => {
+  const [loaded] = useFonts({
+    'Aeonik-Bold': require('./assets/fonts/Aeonik/Aeonik-Bold.otf'),
+    'Aeonik-Regular': require('./assets/fonts/Aeonik/Aeonik-Regular.otf'),
 
-if (Constants.expoConfig?.extra?.storybookEnabled === "true") {
-  AppEntryPoint = require("./.ondevice").default;
-}
+    'WorkSans-Black': require('./assets/fonts/WorkSans/WorkSans-Black.ttf'),
+    'WorkSans-Bold': require('./assets/fonts/WorkSans/WorkSans-Bold.ttf'),
+    'WorkSans-ExtraBold': require('./assets/fonts/WorkSans/WorkSans-ExtraBold.ttf'),
+    'WorkSans-ExtraLight': require('./assets/fonts/WorkSans/WorkSans-ExtraLight.ttf'),
+    'WorkSans-Light': require('./assets/fonts/WorkSans/WorkSans-Light.ttf'),
+    'WorkSans-Meium': require('./assets/fonts/WorkSans/WorkSans-Medium.ttf'),
+    'WorkSans-Regular': require('./assets/fonts/WorkSans/WorkSans-Regular.ttf'),
+    'WorkSans-SemiBold': require('./assets/fonts/WorkSans/WorkSans-SemiBold.ttf'),
+    'WorkSans-Thin': require('./assets/fonts/WorkSans/WorkSans-Thin.ttf'),
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
-
-export default AppEntryPoint;
+  if (!loaded) return null;
+  return <StorybookUIRoot />;
+};
