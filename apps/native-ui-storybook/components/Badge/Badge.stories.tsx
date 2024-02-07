@@ -21,14 +21,14 @@ const BadgeMeta: Meta<typeof Badge> = {
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['badge'],
     },
   },
   args: {
     text: 'New Feature',
     variant: 'solid',
     action: 'muted',
-    size: 'md',
+    size: 'badge',
   },
 };
 

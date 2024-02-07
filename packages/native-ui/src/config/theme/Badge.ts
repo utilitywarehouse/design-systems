@@ -7,6 +7,12 @@ export const Badge = createStyle({
   paddingHorizontal: 8,
   paddingVertical: 4,
   alignSelf: 'flex-start',
+  _text: {
+    fontSize: '$badge',
+    fontWeight: '400',
+    lineHeight: 16,
+    fontFamily: 'WorkSans-Regular',
+  },
   variants: {
     action: {
       error: {
@@ -90,22 +96,22 @@ export const Badge = createStyle({
         },
       },
       muted: {
-        bg: '#A6C8FC',
-        borderColor: '$secondary300',
+        bg: '$cyan200',
+        borderColor: '$cyan900',
         _icon: {
-          color: '$secondary600',
+          color: '$cyan900',
         },
         _text: {
-          color: '#001E52',
+          color: '$cyan900',
         },
         _dark: {
-          bg: '$backgroundDarkMuted',
-          borderColor: '$secondary700',
+          bg: '$darkCyan700',
+          borderColor: '$darkCyan50',
           _text: {
-            color: '$secondary400',
+            color: '$darkCyan50',
           },
           _icon: {
-            color: '$secondary400',
+            color: '$darkCyan50',
           },
         },
       },
@@ -119,39 +125,11 @@ export const Badge = createStyle({
     },
 
     size: {
-      sm: {
-        px: '$2',
-        _icon: {
-          props: {
-            size: '2xs',
-          },
-        },
+      badge: {
         _text: {
           props: {
-            size: '2xs',
+            size: 'badge',
           },
-        },
-      },
-      md: {
-        px: '$2',
-        _icon: {
-          props: {
-            size: 'xs',
-          },
-        },
-        _text: {
-          props: {
-            size: 'xs',
-          },
-        },
-      },
-      lg: {
-        px: '$2',
-        _icon: {
-          props: { size: 'sm' },
-        },
-        _text: {
-          props: { size: 'sm' },
         },
       },
     },
@@ -163,6 +141,6 @@ export const Badge = createStyle({
   defaultProps: {
     action: 'info',
     variant: 'solid',
-    size: 'md',
+    size: 'badge',
   },
 });

@@ -2,11 +2,11 @@ import React from 'react';
 import { Badge, BadgeText, BadgeIcon } from '@utilitywarehouse/native-ui';
 import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
 
-const BadgeBasic = ({ text = 'NEW FEATURE', ...props }: any) => {
+const BadgeBasic = ({ text = 'NEW FEATURE', icon = false, ...props }: any) => {
   return (
     <Badge {...props} gap="$1">
       <BadgeText>{text}</BadgeText>
-      <BadgeIcon as={AddSmallIcon} />
+      {icon && <BadgeIcon as={AddSmallIcon} />}
     </Badge>
   );
 };

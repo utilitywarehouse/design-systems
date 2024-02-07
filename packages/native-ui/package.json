@@ -19,7 +19,8 @@
     "@expo/html-elements": "latest",
     "@gluestack-style/animation-resolver": "^1.0.4",
     "@gluestack-style/legend-motion-animation-driver": "^1.0.3",
-    "@gluestack-ui/themed": "latest"
+    "@gluestack-ui/themed": "latest",
+    "@utilitywarehouse/colour-system": "workspace:^"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.9",
