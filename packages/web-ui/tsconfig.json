@@ -14,11 +14,6 @@
     "jsx": "react",
     "emitDeclarationOnly": true,
     "typeRoots": [],
-    "paths": {
-      "react": [
-        "./node_modules/@types/react"
-      ]
-    }
   },
   "exclude": [
     "dist",
