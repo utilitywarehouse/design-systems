@@ -18,7 +18,6 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@utilitywarehouse/react-native-icons': '@utilitywarehouse/react-icons',
-      react: path.resolve('../../packages/native-ui/node_modules/react'),
     };
 
     return config;
