@@ -6,10 +6,21 @@
     "moduleResolution": "node",
     "outDir": "dist",
     "rootDir": "src",
-    "lib": ["DOM", "ESNext", "DOM.Iterable"],
+    "lib": [
+      "DOM",
+      "ESNext",
+      "DOM.Iterable"
+    ],
     "jsx": "react",
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "typeRoots": [],
   },
-  "exclude": ["dist", "node_modules", "storybook-static"],
-  "include": ["src/**/*"]
+  "exclude": [
+    "dist",
+    "node_modules",
+    "storybook-static"
+  ],
+  "include": [
+    "src/**/*"
+  ]
 }

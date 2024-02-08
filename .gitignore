@@ -18,3 +18,5 @@ coverage
 storybook-static
 .turbo/*
 !.turbo/config.json
+
+native-ui-storybook-2
