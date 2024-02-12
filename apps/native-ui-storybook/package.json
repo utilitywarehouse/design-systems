@@ -22,6 +22,7 @@
     "@react-native-community/datetimepicker": "7.6.1",
     "@react-native-community/slider": "4.4.2",
     "@utilitywarehouse/colour-system": "workspace:^",
+    "@utilitywarehouse/fontsource": "^0.0.5",
     "@utilitywarehouse/native-ui": "workspace:^",
     "@utilitywarehouse/react-icons": "^1.1.1",
     "@utilitywarehouse/react-native-icons": "^1.2.0",
