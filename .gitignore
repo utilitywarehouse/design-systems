@@ -19,4 +19,18 @@ storybook-static
 .turbo/*
 !.turbo/config.json
 
-native-ui-storybook-2
+# fonts 
+Aonik
+WorkSans
+
+apps/native-ui-storybook/assets/fonts/WorkSans/WorkSans-Black.ttf
+apps/native-ui-storybook/assets/fonts/WorkSans/WorkSans-Bold.ttf
+apps/native-ui-storybook/assets/fonts/WorkSans/WorkSans-ExtraBold.ttf
+apps/native-ui-storybook/assets/fonts/WorkSans/WorkSans-ExtraLight.ttf
+apps/native-ui-storybook/assets/fonts/WorkSans/WorkSans-Light.ttf
+apps/native-ui-storybook/assets/fonts/WorkSans/WorkSans-Medium.ttf
+apps/native-ui-storybook/assets/fonts/WorkSans/WorkSans-Regular.ttf
+apps/native-ui-storybook/assets/fonts/WorkSans/WorkSans-SemiBold.ttf
+apps/native-ui-storybook/assets/fonts/WorkSans/WorkSans-Thin.ttf
+apps/native-ui-storybook/assets/fonts/Aonik/Aonik-Bold.otf
+apps/native-ui-storybook/assets/fonts/Aonik/Aonik-Regular.otf
