@@ -29,6 +29,7 @@ export default ({ config }) => ({
     },
   },
   android: {
+    package: 'com.utilitywarehouse.nativeui',
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#FFFFFF',
@@ -36,16 +37,5 @@ export default ({ config }) => ({
   },
   web: {
     favicon: './assets/favicon.png',
-  },
-  build: {
-    preview: {
-      env: {
-        STORYBOOK_ENABLED: 'true',
-      },
-      ios: {
-        simulator: true,
-      },
-    },
-    production: {},
   },
 });
