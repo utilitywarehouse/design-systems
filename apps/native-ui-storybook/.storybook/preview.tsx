@@ -1,6 +1,6 @@
 import type { Preview, Decorator } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
-import { Box, Center, GluestackUIProvider, config } from '@utilitywarehouse/native-ui';
+import { Center, GluestackUIProvider, config } from '@utilitywarehouse/native-ui';
 import { PlatformContextProvider } from '../contexts/PlatformContext';
 import { useStoryContext, useArgs, useGlobals } from '@storybook/preview-api';
 import '../assets/style.css';
@@ -16,6 +16,8 @@ export const decorators: Decorator[] = [
     const [colourMode, setColourMode] = useState<'dark' | 'light'>(theme);
     const [args] = useArgs();
     const { id, viewMode } = useStoryContext();
+
+    console.log('globals', globals);
 
     useEffect(() => {
       updateGlobals({
@@ -49,6 +51,9 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
+    },
+    native: {
+      clickHome: false,
     },
     backgrounds: {
       default: 'light',

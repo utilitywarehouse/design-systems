@@ -3,7 +3,7 @@ import type { Preview } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
 import { GluestackUIProvider, Box, config } from '@utilitywarehouse/native-ui';
 import { useColorScheme } from 'react-native';
-import { useArgs, useStoryContext } from '@storybook/preview-api';
+import { useArgs } from '@storybook/preview-api';
 import { Linking } from 'react-native';
 import { navigate } from './utils';
 
@@ -13,7 +13,6 @@ const preview: Preview = {
     Story => {
       const theme = useColorScheme() === 'dark' ? 'dark' : 'light';
       const [args, updateArgs] = useArgs();
-      const { id } = useStoryContext();
       const [theneColourMode, setColourMode] = useState<'dark' | 'light'>(theme);
       useEffect(() => {
         Linking.addEventListener('url', event => {
