@@ -1,6 +1,6 @@
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import type { Preview } from '@storybook/react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GluestackUIProvider, Box, config } from '@utilitywarehouse/native-ui';
 import { useColorScheme } from 'react-native';
 import { useArgs, useStoryContext } from '@storybook/preview-api';
@@ -14,25 +14,35 @@ const preview: Preview = {
       const theme = useColorScheme() === 'dark' ? 'dark' : 'light';
       const [args, updateArgs] = useArgs();
       const { id } = useStoryContext();
+      const [theneColourMode, setColourMode] = useState<'dark' | 'light'>(theme);
       useEffect(() => {
         Linking.addEventListener('url', event => {
           const url = new URL(event.url ?? '');
           const params = new URLSearchParams(url.search);
-          const { storyId, ...rest } = Object.fromEntries(params.entries());
+          const { colourMode, storyId, ...rest } = Object.fromEntries(params.entries());
 
           navigate({ storyId });
           updateArgs({
             ...args,
             ...rest,
           });
+          if (colourMode) {
+            setColourMode(colourMode as 'dark' | 'light');
+          }
         });
         return () => Linking.removeAllListeners('url');
       }, []);
 
+      useEffect(() => {
+        setColourMode(theme);
+      }, [theme]);
+
       return (
-        <GluestackUIProvider colorMode={theme} config={config}>
-          <Box flex={1} m="$10">
-            <Story />
+        <GluestackUIProvider colorMode={theneColourMode} config={config}>
+          <Box flex={1} backgroundColor={theneColourMode === 'dark' ? '#1D1D1D' : '$brandWhite'}>
+            <Box m="$10">
+              <Story />
+            </Box>
           </Box>
         </GluestackUIProvider>
       );
@@ -51,3 +61,5 @@ const preview: Preview = {
 };
 
 export default preview;
+
+// native-ui://story?storyId=components-badge--badge&text=New%20Feature&variant=solid&action=muted&size=badge

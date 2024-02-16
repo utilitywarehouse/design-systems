@@ -1,4 +1,4 @@
-import { Box, Pressable, Text } from '@utilitywarehouse/native-ui';
+import { Box, HStack, Pressable, Switch, Text } from '@utilitywarehouse/native-ui';
 import React, { FC, PropsWithChildren, createContext, useEffect, useState } from 'react';
 import { PlatformContextProps, Platform } from './types';
 
@@ -6,14 +6,21 @@ const PlatformContext = createContext<PlatformContextProps>({
   platform: 'web',
   args: {},
   id: '',
+  colourMode: 'light',
 });
 
 const PlatformContextProvider: FC<
-  PropsWithChildren<Omit<PlatformContextProps, 'platform'> & { viewMode: 'story' | 'docs' }>
-> = ({ children, args, id, viewMode }) => {
+  PropsWithChildren<
+    Omit<PlatformContextProps, 'platform'> & {
+      viewMode: 'story' | 'docs';
+      colourMode: 'light' | 'dark';
+      setColourMode: (mode: 'light' | 'dark') => void;
+    }
+  >
+> = ({ children, args, id, viewMode, colourMode, setColourMode }) => {
   const [platform, setPlatform] = useState<Platform>('web');
   const [showPlatformSelector, setShowPlatformSelector] = useState(viewMode === 'story');
-  console.log('viewMode', viewMode);
+
   useEffect(() => {
     setShowPlatformSelector(viewMode === 'story');
   }, [viewMode]);
@@ -23,6 +30,7 @@ const PlatformContextProvider: FC<
         args,
         id,
         platform: platform || 'web',
+        colourMode,
       }}
     >
       {showPlatformSelector && (
@@ -35,19 +43,38 @@ const PlatformContextProvider: FC<
             width: '100%',
             padding: 8,
             flexDirection: 'row',
-            justifyContent: 'flex-end',
+            justifyContent: 'space-between',
             gap: 8,
           }}
         >
-          <Pressable onPress={() => setPlatform('web')}>
-            <Text color={platform === 'web' ? '$white' : '$brandPink'}>Web</Text>
-          </Pressable>
-          <Pressable onPress={() => setPlatform('android')}>
-            <Text color={platform === 'android' ? '$white' : '$brandPink'}>Android</Text>
-          </Pressable>
-          <Pressable onPress={() => setPlatform('ios')}>
-            <Text color={platform === 'ios' ? '$white' : '$brandPink'}>iOS</Text>
-          </Pressable>
+          <Box>
+            <HStack space="md">
+              <Switch
+                value={colourMode === 'dark'}
+                onToggle={() => setColourMode(colourMode === 'dark' ? 'light' : 'dark')}
+              />
+              <Text size="sm" color="$brandWhite">
+                Dark mode
+              </Text>
+            </HStack>
+          </Box>
+          <Box
+            sx={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              gap: 8,
+            }}
+          >
+            <Pressable onPress={() => setPlatform('web')}>
+              <Text color={platform === 'web' ? '$white' : '$brandPink'}>Web</Text>
+            </Pressable>
+            <Pressable onPress={() => setPlatform('android')}>
+              <Text color={platform === 'android' ? '$white' : '$brandPink'}>Android</Text>
+            </Pressable>
+            <Pressable onPress={() => setPlatform('ios')}>
+              <Text color={platform === 'ios' ? '$white' : '$brandPink'}>iOS</Text>
+            </Pressable>
+          </Box>
         </Box>
       )}
       <Box
