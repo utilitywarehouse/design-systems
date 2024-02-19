@@ -12,29 +12,20 @@ const darkColour: string = '#1d1d1d';
 export const decorators: Decorator[] = [
   Story => {
     const [globals, updateGlobals] = useGlobals();
-    const theme = globals.backgrounds?.value ?? lightColour === lightColour ? 'light' : 'dark';
-    const [colourMode, setColourMode] = useState<'dark' | 'light'>(theme);
+    const theme = globals.backgrounds?.value === lightColour ? 'light' : 'dark';
     const [args] = useArgs();
     const { id, viewMode } = useStoryContext();
 
-    console.log('globals', globals);
-
-    useEffect(() => {
-      updateGlobals({
-        backgrounds: {
-          value: colourMode === 'dark' ? darkColour : lightColour,
-        },
-      });
-    }, [colourMode]);
+    console.log(theme);
 
     return (
-      <GluestackUIProvider colorMode={colourMode} config={config}>
+      <GluestackUIProvider colorMode={theme} config={config}>
         <PlatformContextProvider
           args={args}
           id={id}
           viewMode={viewMode}
-          colourMode={colourMode}
-          setColourMode={setColourMode}
+          colourMode={theme}
+          platform={globals.device}
         >
           <Center>{viewMode === 'story' ? <StoryWrap>{<Story />}</StoryWrap> : <Story />}</Center>
         </PlatformContextProvider>
@@ -44,6 +35,9 @@ export const decorators: Decorator[] = [
 ];
 
 const preview: Preview = {
+  globals: {
+    device: 'web',
+  },
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {

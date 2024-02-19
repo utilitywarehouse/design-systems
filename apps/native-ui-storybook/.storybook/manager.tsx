@@ -4,6 +4,8 @@ import { version } from '../package.json';
 // @ts-ignore
 import img from './static/monogram.svg';
 
+import './addons/devices/register';
+
 const theme = create({
   brandTitle: `UW Native UI v${version}`,
   fontBase: '"Work Sans", "Open Sans", sans-serif',
