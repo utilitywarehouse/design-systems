@@ -122,6 +122,15 @@ export const Badge = createStyle({
       true: {},
       false: {},
     },
+
+    size: {
+      large: {
+        paddingVertical: 4,
+      },
+      small: {
+        paddingVertical: 2,
+      },
+    },
   },
 
   compoundVariants: [
@@ -136,6 +145,15 @@ export const Badge = createStyle({
         _text: {
           color: '$cyan50',
         },
+        _dark: {
+          bg: '$darkCyan700',
+          _text: {
+            color: '$darkCyan50',
+          },
+          _icon: {
+            color: '$darkCyan50',
+          },
+        },
       },
     },
     {
@@ -148,6 +166,15 @@ export const Badge = createStyle({
         },
         _text: {
           color: '$green50',
+        },
+        _dark: {
+          bg: '$darkGreen700',
+          _text: {
+            color: '$darkGreen50',
+          },
+          _icon: {
+            color: '$darkGreen50',
+          },
         },
       },
     },
@@ -162,6 +189,15 @@ export const Badge = createStyle({
         _text: {
           color: '$red50',
         },
+        _dark: {
+          bg: '$darkRed700',
+          _text: {
+            color: '$darkRed50',
+          },
+          _icon: {
+            color: '$darkRed50',
+          },
+        },
       },
     },
     {
@@ -174,6 +210,15 @@ export const Badge = createStyle({
         },
         _text: {
           color: '$gold900',
+        },
+        _dark: {
+          bg: '$darkGold700',
+          _text: {
+            color: '$darkGold50',
+          },
+          _icon: {
+            color: '$darkGold50',
+          },
         },
       },
     },
@@ -188,6 +233,15 @@ export const Badge = createStyle({
         _text: {
           color: '$grey50',
         },
+        _dark: {
+          bg: '$darkGrey700',
+          _text: {
+            color: '$darkGrey50',
+          },
+          _icon: {
+            color: '$darkGrey50',
+          },
+        },
       },
     },
   ],
@@ -200,5 +254,6 @@ export const Badge = createStyle({
     colourScheme: 'cyan',
     borderless: false,
     strong: false,
+    size: 'large',
   },
 });

@@ -21,12 +21,17 @@ const BadgeMeta: Meta<typeof Badge> = {
     strong: {
       control: 'boolean',
     },
+    size: {
+      control: 'select',
+      options: ['large', 'small'],
+    },
   },
   args: {
     text: 'New Feature',
     strong: false,
     borderless: false,
     colourScheme: 'cyan',
+    size: 'large',
   },
 };
 
