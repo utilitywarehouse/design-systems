@@ -4,6 +4,9 @@ on:
   push:
     branches-ignore:
       - main
+    paths:
+      - 'packages/web-ui/**'
+      - 'packages/colour-system/**'
 
 jobs:
   chromatic-deployment:
