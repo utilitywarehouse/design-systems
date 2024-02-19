@@ -3,8 +3,8 @@ import { createStyle } from '@gluestack-style/react';
 export const Badge = createStyle({
   flexDirection: 'row',
   alignItems: 'center',
-  borderRadius: 4,
   paddingHorizontal: 8,
+  borderRadius: 4,
   paddingVertical: 4,
   alignSelf: 'flex-start',
   _text: {
@@ -12,92 +12,14 @@ export const Badge = createStyle({
     fontWeight: '400',
     lineHeight: 16,
     fontFamily: 'WorkSans-Regular',
+    props: {
+      size: 'badge',
+    },
   },
   variants: {
-    action: {
-      error: {
-        bg: '$backgroundLightError',
-        borderColor: '$error300',
-        _icon: {
-          color: '$error600',
-        },
-        _text: {
-          color: '$error600',
-        },
-        _dark: {
-          bg: '$backgroundDarkError',
-          borderColor: '$error700',
-          _text: {
-            color: '$error400',
-          },
-          _icon: {
-            color: '$error400',
-          },
-        },
-      },
-      warning: {
-        bg: '$backgroundLightWarning',
-        borderColor: '$warning300',
-        _icon: {
-          color: '$warning600',
-        },
-        _text: {
-          color: '$warning600',
-        },
-        _dark: {
-          bg: '$backgroundDarkWarning',
-          borderColor: '$warning700',
-          _text: {
-            color: '$warning400',
-          },
-          _icon: {
-            color: '$warning400',
-          },
-        },
-      },
-      success: {
-        bg: '$backgroundLightSuccess',
-        borderColor: '$success300',
-        _icon: {
-          color: '$success600',
-        },
-        _text: {
-          color: '$success600',
-        },
-        _dark: {
-          bg: '$backgroundDarkSuccess',
-          borderColor: '$success700',
-          _text: {
-            color: '$success400',
-          },
-          _icon: {
-            color: '$success400',
-          },
-        },
-      },
-      info: {
-        bg: '$backgroundLightInfo',
-        borderColor: '$info300',
-        _icon: {
-          color: '$info600',
-        },
-        _text: {
-          color: '$info600',
-        },
-        _dark: {
-          bg: '$backgroundDarkInfo',
-          borderColor: '$info700',
-          _text: {
-            color: '$info400',
-          },
-          _icon: {
-            color: '$info400',
-          },
-        },
-      },
-      muted: {
+    colourScheme: {
+      cyan: {
         bg: '$cyan200',
-        borderColor: '$cyan900',
         _icon: {
           color: '$cyan900',
         },
@@ -106,7 +28,6 @@ export const Badge = createStyle({
         },
         _dark: {
           bg: '$darkCyan700',
-          borderColor: '$darkCyan50',
           _text: {
             color: '$darkCyan50',
           },
@@ -115,32 +36,169 @@ export const Badge = createStyle({
           },
         },
       },
-    },
-
-    variant: {
-      solid: {},
-      outline: {
-        borderWidth: '$1',
-      },
-    },
-
-    size: {
-      badge: {
+      red: {
+        bg: '$red200',
+        _icon: {
+          color: '$red900',
+        },
         _text: {
-          props: {
-            size: 'badge',
+          color: '$red900',
+        },
+        _dark: {
+          bg: '$darkRed700',
+          _text: {
+            color: '$darkRed50',
+          },
+          _icon: {
+            color: '$darkRed50',
+          },
+        },
+      },
+      green: {
+        bg: '$green200',
+        _icon: {
+          color: '$green900',
+        },
+        _text: {
+          color: '$green900',
+        },
+        _dark: {
+          bg: '$darkGreen700',
+          _text: {
+            color: '$darkGreen50',
+          },
+          _icon: {
+            color: '$darkGreen50',
+          },
+        },
+      },
+      gold: {
+        bg: '$gold200',
+        _icon: {
+          color: '$gold900',
+        },
+        _text: {
+          color: '$gold900',
+        },
+        _dark: {
+          bg: '$darkGold700',
+          _text: {
+            color: '$darkGold50',
+          },
+          _icon: {
+            color: '$darkGold50',
+          },
+        },
+      },
+      grey: {
+        bg: '$grey200',
+        _icon: {
+          color: '$grey900',
+        },
+        _text: {
+          color: '$grey00',
+        },
+        _dark: {
+          bg: '$darkGrey700',
+          _text: {
+            color: '$darkGrey50',
+          },
+          _icon: {
+            color: '$darkGrey50',
           },
         },
       },
     },
+
+    borderless: {
+      false: {},
+      true: {
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
+      },
+    },
+
+    strong: {
+      true: {},
+      false: {},
+    },
   },
+
+  compoundVariants: [
+    {
+      colourScheme: 'cyan',
+      strong: true,
+      value: {
+        bg: '$cyan600',
+        _icon: {
+          color: '$cyan50',
+        },
+        _text: {
+          color: '$cyan50',
+        },
+      },
+    },
+    {
+      colourScheme: 'green',
+      strong: true,
+      value: {
+        bg: '$green600',
+        _icon: {
+          color: '$green50',
+        },
+        _text: {
+          color: '$green50',
+        },
+      },
+    },
+    {
+      colourScheme: 'red',
+      strong: true,
+      value: {
+        bg: '$red600',
+        _icon: {
+          color: '$red50',
+        },
+        _text: {
+          color: '$red50',
+        },
+      },
+    },
+    {
+      colourScheme: 'gold',
+      strong: true,
+      value: {
+        bg: '$gold300',
+        _icon: {
+          color: '$gold900',
+        },
+        _text: {
+          color: '$gold900',
+        },
+      },
+    },
+    {
+      colourScheme: 'grey',
+      strong: true,
+      value: {
+        bg: '$grey600',
+        _icon: {
+          color: '$grey50',
+        },
+        _text: {
+          color: '$grey50',
+        },
+      },
+    },
+  ],
 
   ':disabled': {
     opacity: 0.5,
   },
+
   defaultProps: {
-    action: 'info',
-    variant: 'solid',
-    size: 'badge',
+    colourScheme: 'cyan',
+    borderless: false,
+    strong: false,
   },
 });

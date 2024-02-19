@@ -65,9 +65,6 @@
     "storybook": "^7.6.12",
     "typescript": "^5.3.0"
   },
-  "resolutions": {
-    "react-docgen-typescript": "2.2.2"
-  },
   "overrides": {
     "react-docgen-typescript": "2.2.2"
   },
