@@ -18,17 +18,17 @@ $ npm i @utilitywarehouse/native-ui @gluestack-ui/themed @gluestack-style/react 
 A button component is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website. Here's an example:
 
 ```jsx
-import { Button, GluestackUIProvider, config } from '@@utilitywarehouse/native-ui';
+import { Button, NativeUIProvider, config } from '@@utilitywarehouse/native-ui';
 
 export default function App () {
  return (
-    <GluestackUIProvider config={config}>
+    <NativeUIProvider config={config}>
      <Button>
       <ButtonText>
         Hello world!
       </ButtonText>
      <Button>
-    </GluestackUIProvider>
+    </NativeUIProvider>
   )
 }
 ```

@@ -9,6 +9,6 @@ export {
 } from '@gluestack-ui/themed';
 
 export {
-  GluestackUIProvider,
-  GluestackUIStyledProvider,
+  GluestackUIProvider as NativeUIProvider,
+  GluestackUIStyledProvider as NativeUIStyledProvider,
 } from '@gluestack-ui/themed';

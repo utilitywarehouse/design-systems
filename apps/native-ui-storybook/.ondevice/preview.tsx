@@ -1,7 +1,7 @@
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import type { Preview } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
-import { GluestackUIProvider, Box, config } from '@utilitywarehouse/native-ui';
+import { NativeUIProvider, Box, config } from '@utilitywarehouse/native-ui';
 import { useColorScheme } from 'react-native';
 import { useArgs } from '@storybook/preview-api';
 import { Linking } from 'react-native';
@@ -20,10 +20,18 @@ const preview: Preview = {
           const params = new URLSearchParams(url.search);
           const { colourMode, storyId, ...rest } = Object.fromEntries(params.entries());
 
+          // Convert "true" and "false" strings in args to boolean values
+          const convertedArgs = Object.fromEntries(
+            Object.entries(rest).map(([key, value]) => [
+              key,
+              value === 'true' ? true : value === 'false' ? false : value,
+            ])
+          );
+
           navigate({ storyId });
           updateArgs({
             ...args,
-            ...rest,
+            ...convertedArgs,
           });
           if (colourMode) {
             setColourMode(colourMode as 'dark' | 'light');
@@ -37,13 +45,13 @@ const preview: Preview = {
       }, [theme]);
 
       return (
-        <GluestackUIProvider colorMode={theneColourMode} config={config}>
+        <NativeUIProvider colorMode={theneColourMode} config={config}>
           <Box flex={1} backgroundColor={theneColourMode === 'dark' ? '#1D1D1D' : '$brandWhite'}>
             <Box m="$10">
               <Story />
             </Box>
           </Box>
-        </GluestackUIProvider>
+        </NativeUIProvider>
       );
     },
   ],

@@ -1,0 +1,12 @@
+import { Meta } from '@storybook/blocks';
+import { dark } from '../../../../packages/colour-system/raw/colours.json';
+import { ColourDisplay } from '../components/ColourDisplay.tsx';
+import { NativeUIProvider, config } from '../../../../packages/native-ui/src';
+
+<Meta title="Colour System / Colors Dark" />
+
+# Colors for Dark Mode
+
+<NativeUIProvider config={config}>
+  <ColourDisplay colorScale={dark} />
+</NativeUIProvider>

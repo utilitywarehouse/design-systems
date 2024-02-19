@@ -1,6 +1,6 @@
 import type { Preview, Decorator } from '@storybook/react';
-import React, { useEffect, useState } from 'react';
-import { Center, GluestackUIProvider, config } from '@utilitywarehouse/native-ui';
+import React from 'react';
+import { Center, NativeUIProvider, config } from '@utilitywarehouse/native-ui';
 import { PlatformContextProvider } from '../contexts/PlatformContext';
 import { useStoryContext, useArgs, useGlobals } from '@storybook/preview-api';
 import '../assets/style.css';
@@ -11,15 +11,13 @@ const darkColour: string = '#1d1d1d';
 
 export const decorators: Decorator[] = [
   Story => {
-    const [globals, updateGlobals] = useGlobals();
+    const [globals] = useGlobals();
     const theme = globals.backgrounds?.value === lightColour ? 'light' : 'dark';
     const [args] = useArgs();
     const { id, viewMode } = useStoryContext();
 
-    console.log(theme);
-
     return (
-      <GluestackUIProvider colorMode={theme} config={config}>
+      <NativeUIProvider colorMode={theme} config={config}>
         <PlatformContextProvider
           args={args}
           id={id}
@@ -29,7 +27,7 @@ export const decorators: Decorator[] = [
         >
           <Center>{viewMode === 'story' ? <StoryWrap>{<Story />}</StoryWrap> : <Story />}</Center>
         </PlatformContextProvider>
-      </GluestackUIProvider>
+      </NativeUIProvider>
     );
   },
 ];
@@ -39,15 +37,22 @@ const preview: Preview = {
     device: 'web',
   },
   parameters: {
+    options: {
+      storySort: {
+        order: [
+          'Native UI',
+          ['Introduction', 'Guides', 'Tokens', 'Layout', 'Typography', 'Components', 'Lab'],
+          'Colour System',
+          ['Introduction', 'Common', 'Colors'],
+        ],
+      },
+    },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
       },
-    },
-    native: {
-      clickHome: false,
     },
     backgrounds: {
       default: 'light',
