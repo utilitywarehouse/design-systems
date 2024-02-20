@@ -1,5 +1,0 @@
-{
-  "installCommand": "pnpm install",
-  "buildCommand": "NODE_OPTIONS=\"--max_old_space_size=4096 --openssl-legacy-provider\" pnpm build && NODE_OPTIONS=--openssl-legacy-provider pnpm build:storybook",
-  "outputDirectory": "packages/web-ui/storybook-static"
-}
