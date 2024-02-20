@@ -11,7 +11,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "storybook:web": "storybook dev -p 6006",
-    "build": "storybook build",
+    "build:storybook": "storybook build",
     "storybook-generate": "sb-rn-get-stories --config-path .ondevice",
     "storybook": "cross-env STORYBOOK_ENABLED='true' expo start",
     "storybook:ios": "cross-env STORYBOOK_ENABLED='true' expo start --ios",
