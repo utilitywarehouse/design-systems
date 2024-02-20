@@ -1,0 +1,13 @@
+import { Meta } from '@storybook/blocks';
+
+import { ColourDisplay } from '../components/ColourDisplay.tsx';
+import common from '../../../../packages/colour-system/lib/common.json';
+import { NativeUIProvider, config } from '../../../../packages/native-ui/src';
+
+<Meta title="Colour System / Common" />
+
+# Common Colours
+
+<NativeUIProvider config={config}>
+  <ColourDisplay colorScale={common} />
+</NativeUIProvider>

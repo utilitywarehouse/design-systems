@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/blocks';
+import { version } from '../../../../packages/native-ui/package.json';
+import img from './gardening.png';
+
+<Meta title="Native UI / Introduction" />
+
+<img src={img} alt="UW Design Systems Gardeners" title="UW Design Systems Gardeners" width="600" />
+
+# UW Native UI
+
+React component library for building UW Native UIs.
+
+Current version: v{version}
+
+- [Installation](#installation)
+- [Additional packages](#additional-packages)
+- [Theming](#theming)
+- [Dark Mode](#dark-mode)
+
+## Installation
+
+Assuming you already have React installed, to get started install the library and it's peer dependencies.
+
+```console
+yarn add @utilitywarehouse/native-ui @gluestack-ui/themed @gluestack-style/react react-native-svg@13.4.0
+```
+
+## Additional packages
+
+You will need to include the **Aeonik** and **Work Sans** fonts. The
+easiest way to do this is to use the `@utilitywarehouse/fontsource` package.
+
+```console
+yarn add @utilitywarehouse/fontsource
+```
+
+Next, create a react-native.config.js file in the root directory and paste the code below inside it:
+
+```js
+module.exports = {
+  project: {
+    ios: {},
+    android: {},
+  },
+  assets: ['@utilitywarehouse/fontsource/files/truetype'],
+};
+```
+
+## Theming
+
+Wrap your application with the `ThemeProvider` component.
+
+```tsx
+import * as React from 'react';
+import { NativeUIProvider } from '@utilitywarehouse/native-ui';
+import App from './App';
+
+const App: React.FC = () => (
+  <NativeUIProvider>
+    <App />
+  </NativeUIProviderr>
+);
+```
+
+## Dark Mode

@@ -5,18 +5,18 @@ import { useFonts } from 'expo-font';
 
 export default () => {
   const [loaded] = useFonts({
-    'Aeonik-Bold': require('./assets/fonts/Aeonik/Aeonik-Bold.otf'),
-    'Aeonik-Regular': require('./assets/fonts/Aeonik/Aeonik-Regular.otf'),
+    'Aeonik-Bold': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/Aeonik/Aeonik-Bold.otf'),
+    'Aeonik-Regular': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/Aeonik/Aeonik-Regular.otf'),
 
-    'WorkSans-Black': require('./assets/fonts/WorkSans/WorkSans-Black.ttf'),
-    'WorkSans-Bold': require('./assets/fonts/WorkSans/WorkSans-Bold.ttf'),
-    'WorkSans-ExtraBold': require('./assets/fonts/WorkSans/WorkSans-ExtraBold.ttf'),
-    'WorkSans-ExtraLight': require('./assets/fonts/WorkSans/WorkSans-ExtraLight.ttf'),
-    'WorkSans-Light': require('./assets/fonts/WorkSans/WorkSans-Light.ttf'),
-    'WorkSans-Meium': require('./assets/fonts/WorkSans/WorkSans-Medium.ttf'),
-    'WorkSans-Regular': require('./assets/fonts/WorkSans/WorkSans-Regular.ttf'),
-    'WorkSans-SemiBold': require('./assets/fonts/WorkSans/WorkSans-SemiBold.ttf'),
-    'WorkSans-Thin': require('./assets/fonts/WorkSans/WorkSans-Thin.ttf'),
+    'WorkSans-Black': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Black.ttf'),
+    'WorkSans-Bold': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Bold.ttf'),
+    'WorkSans-ExtraBold': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-ExtraBold.ttf'),
+    'WorkSans-ExtraLight': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-ExtraLight.ttf'),
+    'WorkSans-Light': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Light.ttf'),
+    'WorkSans-Meium': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Medium.ttf'),
+    'WorkSans-Regular': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Regular.ttf'),
+    'WorkSans-SemiBold': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-SemiBold.ttf'),
+    'WorkSans-Thin': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Thin.ttf'),
   });
 
   if (!loaded) return null;

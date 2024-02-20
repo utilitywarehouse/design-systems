@@ -1,65 +1,38 @@
 @font-face {
-  font-family: 'Aeonik-Bold';
-  src: url('./fonts/Aeonik/Aeonik-Bold.otf');
-  font-weight: bold;
-}
-
-@font-face {
+  font-display: swap;
   font-family: 'Aeonik-Regular';
-  src: url('./fonts/Aeonik/Aeonik-Regular.otf');
-  font-weight: normal;
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../../node_modules/@utilitywarehouse/fontsource/files/aeonik-700-normal.woff2')
+      format('woff2'),
+    url('../../../node_modules/@utilitywarehouse/fontsource/files/aeonik-700-normal.woff2')
+      format('woff');
+  unicode-range: u+00??, u+0131, u+0152-0153, u+02bb-02bc, u+02c6, u+02da, u+02dc, u+2000-206f,
+    u+2074, u+20ac, u+2122, u+2191, u+2193, u+2212, u+2215, u+feff, u+fffd;
 }
 
 @font-face {
-  font-family: 'WorkSans-Black';
-  src: url('./fonts/WorkSans/WorkSans-Black.ttf');
-  font-weight: 900;
-}
-
-@font-face {
-  font-family: 'WorkSans-Bold';
-  src: url('./fonts/WorkSans/WorkSans-Bold.ttf');
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: 'WorkSans-ExtraBold';
-  src: url('./fonts/WorkSans/WorkSans-ExtraBold.ttf');
-  font-weight: 800;
-}
-
-@font-face {
-  font-family: 'WorkSans-ExtraLight';
-  src: url('./fonts/WorkSans/WorkSans-ExtraLight.ttf');
-  font-weight: 200;
-}
-
-@font-face {
-  font-family: 'WorkSans-Light';
-  src: url('./fonts/WorkSans/WorkSans-Light.ttf');
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: 'WorkSans-Medium';
-  src: url('./fonts/WorkSans/WorkSans-Medium.ttf');
-  font-weight: 500;
-}
-
-@font-face {
+  font-display: swap;
   font-family: 'WorkSans-Regular';
-  src: url('./fonts/WorkSans/WorkSans-Regular.ttf');
-  font-weight: normal;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../../node_modules/@utilitywarehouse/fontsource/files/work-sans-400-normal.woff2')
+      format('woff2'),
+    url('../../../node_modules/@utilitywarehouse/fontsource/files/work-sans-400-normal.woff')
+      format('woff');
+  unicode-range: u+00??, u+0131, u+0152-0153, u+02bb-02bc, u+02c6, u+02da, u+02dc, u+2000-206f,
+    u+2074, u+20ac, u+2122, u+2191, u+2193, u+2212, u+2215, u+feff, u+fffd;
 }
 
 @font-face {
-  font-family: 'WorkSans-SemiBold';
-  src: url('./fonts/WorkSans/WorkSans-SemiBold.ttf');
+  font-display: swap;
+  font-family: 'WorkSans-Bold';
+  font-style: normal;
   font-weight: 600;
-}
-
-@font-face {
-  font-family: 'WorkSans-Thin';
-  src: url('./fonts/WorkSans/WorkSans-Thin.ttf');
-  font-weight: 100;
+  src: url('../../../node_modules/@utilitywarehouse/fontsource/files/work-sans-600-normal.woff2')
+      format('woff2'),
+    url('../../../node_modules/@utilitywarehouse/fontsource/files/work-sans-600-normal.woff')
+      format('woff');
+  unicode-range: u+00??, u+0131, u+0152-0153, u+02bb-02bc, u+02c6, u+02da, u+02dc, u+2000-206f,
+    u+2074, u+20ac, u+2122, u+2191, u+2193, u+2212, u+2215, u+feff, u+fffd;
 }

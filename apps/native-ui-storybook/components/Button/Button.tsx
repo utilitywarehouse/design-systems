@@ -1,5 +1,5 @@
-import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { Pressable, Text } from '@utilitywarehouse/native-ui';
+import React from 'react';
 
 interface MyButtonProps {
   onPress: () => void;
@@ -8,19 +8,20 @@ interface MyButtonProps {
 
 export const MyButton = ({ onPress, text }: MyButtonProps) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Text style={styles.text}>{text}</Text>
-    </TouchableOpacity>
+    <Pressable
+      sx={{
+        paddingHorizontal: 32,
+        paddingVertical: 8,
+        backgroundColor: 'purple',
+        alignSelf: 'flex-start',
+        borderRadius: 8,
+        ':active': {
+          backgroundColor: 'rebeccapurple',
+        },
+      }}
+      onPress={onPress}
+    >
+      <Text sx={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>{text}</Text>
+    </Pressable>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 32,
-    paddingVertical: 8,
-    backgroundColor: "purple",
-    alignSelf: "flex-start",
-    borderRadius: 8,
-  },
-  text: { color: "white", fontSize: 16, fontWeight: "bold" },
-});
