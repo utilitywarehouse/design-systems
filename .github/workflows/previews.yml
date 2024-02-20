@@ -53,7 +53,7 @@ jobs:
   build-for-ios:
     runs-on: macos-13
     concurrency:
-      group: preview-android-${{ github.ref }}
+      group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
     steps:
       - uses: pnpm/action-setup@v2
