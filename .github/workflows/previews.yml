@@ -46,6 +46,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Build Android APK Bundle
+        working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:android
       - name: Upload iOS to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
@@ -90,11 +91,12 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Build iOS app
+        working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:ios
       - name: Upload iOS to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           publicKey: ${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}
-          appFile: ./build/native-ui.tar.gz
+          appFile: ./apps/native-ui-storybook/build/native-ui.tar.gz
           platform: 'ios'
