@@ -12,7 +12,10 @@ env:
 
 jobs:
   build-for-android:
-    runs-on: macos-latest
+    runs-on: [self-hosted, merit-mac-mini-m1-dex]
+    concurrency:
+      group: native-preview-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - uses: pnpm/action-setup@v2
         with:
@@ -28,11 +31,11 @@ jobs:
           java-version: '17.0.10'
           java-package: jdk
           architecture: x64
-      - uses: sinoru/actions-setup-xcode@v2
-        with:
-          xcode-version: '15'
-          apple-id: ${{ secrets.APPLE_ID }}
-          apple-id-password: ${{ secrets.APPLE_PASSWORD }}
+      # - uses: sinoru/actions-setup-xcode@v2
+      #   with:
+      #     xcode-version: '15'
+      #     apple-id: ${{ secrets.APPLE_ID }}
+      #     apple-id-password: ${{ secrets.APPLE_PASSWORD }}
       - uses: expo/expo-github-action@v8
         with:
           eas-version: latest
@@ -50,7 +53,10 @@ jobs:
           platform: 'android'
 
   build-for-ios:
-    runs-on: macos-latest
+    runs-on: [self-hosted, merit-mac-mini-m1-dex]
+    concurrency:
+      group: native-preview-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - uses: pnpm/action-setup@v2
         with:
@@ -66,11 +72,11 @@ jobs:
           java-version: '17.0.10'
           java-package: jdk
           architecture: x64
-      - uses: sinoru/actions-setup-xcode@v2
-        with:
-          xcode-version: '15'
-          apple-id: ${{ secrets.APPLE_ID }}
-          apple-id-password: ${{ secrets.APPLE_PASSWORD }}
+      # - uses: sinoru/actions-setup-xcode@v2
+      #   with:
+      #     xcode-version: '15'
+      #     apple-id: ${{ secrets.APPLE_ID }}
+      #     apple-id-password: ${{ secrets.APPLE_PASSWORD }}
       - uses: expo/expo-github-action@v8
         with:
           eas-version: latest
