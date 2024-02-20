@@ -2,8 +2,7 @@ name: Build Native Previews
 
 on:
   pull_request:
-    branches-ignore:
-      - main
+    types: [opened, synchronize, reopened]
     paths:
       - 'packages/native-ui/**'
       - 'apps/native-ui-storybook/**'
