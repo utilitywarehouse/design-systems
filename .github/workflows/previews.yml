@@ -18,10 +18,11 @@ jobs:
         with:
           version: 8
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v2
         with:
-          node-version: 18.x
-          cache: pnpm
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
@@ -61,10 +62,11 @@ jobs:
         with:
           version: 8
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v2
         with:
-          node-version: 18.x
-          cache: pnpm
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
