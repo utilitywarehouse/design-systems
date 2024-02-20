@@ -13,6 +13,9 @@ env:
 jobs:
   build-for-android:
     runs-on: macos-13
+    concurrency:
+      group: preview-android-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - uses: pnpm/action-setup@v2
         with:
@@ -50,6 +53,9 @@ jobs:
 
   build-for-ios:
     runs-on: macos-13
+    concurrency:
+      group: preview-android-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - uses: pnpm/action-setup@v2
         with:
@@ -66,6 +72,9 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7'
+      - uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'beta'
       - name: setup-cocoapods
         uses: maxim-lobanov/setup-cocoapods@v1
         with:
