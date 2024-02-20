@@ -2,6 +2,7 @@ import React from 'react';
 
 import { IconButton, WithTooltip, TooltipLinkList, Icons } from '@storybook/components';
 import { useGlobals } from '@storybook/manager-api';
+import { DEVICES } from '../constants';
 
 export default () => {
   const [globals, updateGlobals] = useGlobals();
@@ -15,22 +16,22 @@ export default () => {
         <TooltipLinkList
           links={[
             {
-              id: 'web',
+              id: DEVICES.WEB,
               title: `Web`,
-              onClick: () => updateGlobals({ device: 'web' }),
-              active: globals.device === 'web',
+              onClick: () => updateGlobals({ device: DEVICES.WEB }),
+              active: globals.device === DEVICES.WEB,
             },
             {
-              id: 'ios',
+              id: DEVICES.IOS,
               title: `iOS`,
-              onClick: () => updateGlobals({ device: 'ios' }),
-              active: globals.device === 'ios',
+              onClick: () => updateGlobals({ device: DEVICES.IOS }),
+              active: globals.device === DEVICES.IOS,
             },
             {
-              id: 'android',
+              id: DEVICES.ANDROID,
               title: `Android`,
-              onClick: () => updateGlobals({ device: 'android' }),
-              active: globals.device === 'android',
+              onClick: () => updateGlobals({ device: DEVICES.ANDROID }),
+              active: globals.device === DEVICES.ANDROID,
             },
           ]}
         />

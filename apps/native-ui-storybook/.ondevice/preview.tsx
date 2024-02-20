@@ -68,5 +68,3 @@ const preview: Preview = {
 };
 
 export default preview;
-
-// native-ui://story?storyId=components-badge--badge&text=New%20Feature&variant=solid&action=muted&size=badge
