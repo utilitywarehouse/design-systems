@@ -29,14 +29,6 @@ jobs:
           java-version: '17.0.10'
           java-package: jdk
           architecture: x64
-      - uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: '15.0.1'
-      # - uses: sinoru/actions-setup-xcode@v2
-      #   with:
-      #     xcode-version: '15'
-      #     apple-id: ${{ secrets.APPLE_ID }}
-      #     apple-id-password: ${{ secrets.APPLE_PASSWORD }}
       - uses: expo/expo-github-action@v8
         with:
           eas-version: latest
@@ -48,12 +40,12 @@ jobs:
       - name: Build Android APK Bundle
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:android
-      - name: Upload iOS to Appetize
+      - name: Upload bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           publicKey: ${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}
-          appFile: ./build/native-ui.apk
+          appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
           platform: 'android'
 
   build-for-ios:
@@ -68,20 +60,16 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
-      - uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '17.0.10'
-          java-package: jdk
-          architecture: x64
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '15.0.1'
-      # - uses: sinoru/actions-setup-xcode@v2
-      #   with:
-      #     xcode-version: '15'
-      #     apple-id: ${{ secrets.APPLE_ID }}
-      #     apple-id-password: ${{ secrets.APPLE_PASSWORD }}
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+      - name: setup-cocoapods
+        uses: maxim-lobanov/setup-cocoapods@v1
+        with:
+          version: 1.14.3
       - uses: expo/expo-github-action@v8
         with:
           eas-version: latest
@@ -93,10 +81,10 @@ jobs:
       - name: Build iOS app
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:ios
-      - name: Upload iOS to Appetize
+      - name: Upload bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           publicKey: ${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}
-          appFile: ./apps/native-ui-storybook/build/native-ui.tar.gz
+          appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
           platform: 'ios'
