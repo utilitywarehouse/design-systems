@@ -1,7 +1,6 @@
 name: Build Native Previews
 
 on:
-  push:
   pull_request:
     branches-ignore:
       - main
