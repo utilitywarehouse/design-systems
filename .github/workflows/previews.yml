@@ -2,11 +2,12 @@ name: Build Native Previews
 
 on:
   push:
-    # branches-ignore:
-    #   - main
-    # paths:
-    #   - 'packages/native-ui/**'
-    #   - 'apps/native-ui-storybook/**'
+  pull_request:
+    branches-ignore:
+      - main
+    paths:
+      - 'packages/native-ui/**'
+      - 'apps/native-ui-storybook/**'
 env:
   CI: true
 
