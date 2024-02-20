@@ -16,33 +16,43 @@ jobs:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
     steps:
-      - uses: pnpm/action-setup@v2
+      - name: 🏗 Setup repo
+        uses: pnpm/action-setup@v2
         with:
           version: 8
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v2
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
-      - uses: actions/setup-java@v4
+
+      - name: 🏗 Setup Java
+        uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17.0.10'
           java-package: jdk
           architecture: x64
-      - uses: expo/expo-github-action@v8
+
+      - name: 🏗 Setup EAS
+        uses: expo/expo-github-action@v8
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-      - name: Install deps
+
+      - name: 📦 Install dependencies
         run: pnpm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Build Android APK Bundle
+
+      - name: 🚀 Build Android APK Bundle
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:android
-      - name: Upload bundle to Appetize
+
+      - name: 🚀 Upload bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
@@ -56,40 +66,44 @@ jobs:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
     steps:
-      - uses: pnpm/action-setup@v2
+      - name: 🏗 Setup repo
+        uses: pnpm/action-setup@v2
         with:
           version: 8
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v2
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
-      - uses: maxim-lobanov/setup-xcode@v1
+
+      - name: 🏗 Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '15.0.1'
-      # - uses: ruby/setup-ruby@v1
-      #   with:
-      #     ruby-version: '2.7'
-      # - uses: maierj/fastlane-action@v3.0.0
-      #   with:
-      #     lane: 'beta'
-      - name: setup-cocoapods
+
+      - name: 🏗 Setup Cocoapods
         uses: maxim-lobanov/setup-cocoapods@v1
         with:
           version: 1.14.3
-      - uses: expo/expo-github-action@v8
+
+      - name: 🏗 Setup EAS
+        uses: expo/expo-github-action@v8
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-      - name: Install deps
+
+      - name: 📦 Install dependencies
         run: pnpm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Build iOS app
+      - name: 🚀 Build iOS app
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:ios
-      - name: Upload bundle to Appetize
+
+      - name: 🚀 Upload bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
