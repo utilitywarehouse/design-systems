@@ -82,7 +82,7 @@ jobs:
       - name: 🏗 Setup Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '15.0.1'
+          xcode-version: '15.2.0'
 
       - name: 🏗 Setup Cocoapods
         uses: maxim-lobanov/setup-cocoapods@v1
