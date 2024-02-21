@@ -11,7 +11,7 @@ env:
 
 jobs:
   build-for-android:
-    runs-on: namespace-profile-macos-m2
+    runs-on: macos-13
     concurrency:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
@@ -61,7 +61,7 @@ jobs:
           platform: 'android'
 
   build-for-ios:
-    runs-on: namespace-profile-macos-m2
+    runs-on: macos-13
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
@@ -83,6 +83,11 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '15.2.0'
+
+      - name: 🏗 Setup Cocoapods
+        uses: maxim-lobanov/setup-cocoapods@v1
+        with:
+          version: 1.15.2
 
       - name: 🏗 Setup EAS
         uses: expo/expo-github-action@v8
