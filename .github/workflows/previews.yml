@@ -10,58 +10,58 @@ env:
   CI: true
 
 jobs:
-  build-for-android:
-    runs-on: macos-13
-    concurrency:
-      group: preview-android-${{ github.ref }}
-      cancel-in-progress: true
-    steps:
-      - name: 🏗 Setup repo
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - uses: actions/checkout@v3
+  # build-for-android:
+  #   runs-on: macos-13
+  #   concurrency:
+  #     group: preview-android-${{ github.ref }}
+  #     cancel-in-progress: true
+  #   steps:
+  #     - name: 🏗 Setup repo
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
+  #     - uses: actions/checkout@v3
 
-      - name: 🏗 Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18.x'
-          registry-url: 'https://registry.npmjs.org'
-          cache: 'pnpm'
+  #     - name: 🏗 Setup Node
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '18.x'
+  #         registry-url: 'https://registry.npmjs.org'
+  #         cache: 'pnpm'
 
-      - name: 🏗 Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '17.0.10'
-          java-package: jdk
-          architecture: x64
+  #     - name: 🏗 Setup Java
+  #       uses: actions/setup-java@v4
+  #       with:
+  #         distribution: 'zulu'
+  #         java-version: '17.0.10'
+  #         java-package: jdk
+  #         architecture: x64
 
-      - name: 🏗 Setup EAS
-        uses: expo/expo-github-action@v8
-        with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
+  #     - name: 🏗 Setup EAS
+  #       uses: expo/expo-github-action@v8
+  #       with:
+  #         eas-version: latest
+  #         token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: 📦 Install dependencies
-        run: pnpm install
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  #     - name: 📦 Install dependencies
+  #       run: pnpm install
+  #       env:
+  #         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: 🚀 Build Android APK Bundle
-        working-directory: ./apps/native-ui-storybook
-        run: pnpm run build:preview:android
+  #     - name: 🚀 Build Android APK Bundle
+  #       working-directory: ./apps/native-ui-storybook
+  #       run: pnpm run build:preview:android
 
-      - name: 🚀 Upload bundle to Appetize
-        uses: appetizeio/github-action-appetize@v1.0.1
-        with:
-          apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
-          publicKey: ${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}
-          appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
-          platform: 'android'
+  #     - name: 🚀 Upload bundle to Appetize
+  #       uses: appetizeio/github-action-appetize@v1.0.1
+  #       with:
+  #         apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
+  #         publicKey: ${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}
+  #         appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
+  #         platform: 'android'
 
   build-for-ios:
-    runs-on: macos-13
+    runs-on: namespace-profile-macos-m2
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
@@ -84,10 +84,8 @@ jobs:
         with:
           xcode-version: '15.2.0'
 
-      - name: 🏗 Setup Cocoapods
-        uses: maxim-lobanov/setup-cocoapods@v1
-        with:
-          version: 1.15.2
+      - name: 🏗 Setup Xcode
+        run: echo export LANG=en_US.UTF-8 > ~/.profile
 
       - name: 🏗 Setup EAS
         uses: expo/expo-github-action@v8
