@@ -84,11 +84,6 @@ jobs:
         with:
           xcode-version: '15.2.0'
 
-      - name: 🏗 Setup Cocoapods
-        uses: maxim-lobanov/setup-cocoapods@v1
-        with:
-          version: 1.14.3
-
       - name: 🏗 Setup EAS
         uses: expo/expo-github-action@v8
         with:
