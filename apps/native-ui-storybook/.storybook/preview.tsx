@@ -1,5 +1,5 @@
 import type { Preview, Decorator } from '@storybook/react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Center, NativeUIProvider, config } from '@utilitywarehouse/native-ui';
 import { PlatformContextProvider } from '../contexts/PlatformContext';
 import { useStoryContext, useArgs, useGlobals } from '@storybook/preview-api';
@@ -12,9 +12,15 @@ const darkColour: string = '#1d1d1d';
 export const decorators: Decorator[] = [
   Story => {
     const [globals] = useGlobals();
-    const theme = globals.backgrounds?.value === lightColour ? 'light' : 'dark';
+    const background = globals.backgrounds?.value;
+    const isLight = !background || background === 'transparent' || background === lightColour;
     const [args] = useArgs();
     const { id, viewMode } = useStoryContext();
+    const [theme, setTheme] = useState<'light' | 'dark'>(isLight ? 'light' : 'dark');
+
+    useEffect(() => {
+      setTheme(isLight ? 'light' : 'dark');
+    }, [background]);
 
     return (
       <NativeUIProvider colorMode={theme} config={config}>
