@@ -151,8 +151,8 @@ export const gluestackUIConfig = createConfig({
       black: '900',
     },
     fonts: {
-      heading: undefined,
-      body: undefined,
+      heading: 'Aeonik-Regular',
+      body: 'WorkSans-Regular',
       mono: undefined,
     },
     fontSizes: {

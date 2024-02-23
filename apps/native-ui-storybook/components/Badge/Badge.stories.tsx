@@ -11,7 +11,7 @@ const BadgeMeta: Meta<typeof Badge> = {
       'The badge component lets you quickly and easily add status indicators to your interface for improved usability. They are designed to be attention-grabbing and quickly convey important information.',
   },
   argTypes: {
-    colourScheme: {
+    colorScheme: {
       control: 'select',
       options: ['cyan', 'red', 'green', 'gold', 'grey'],
     },
@@ -30,7 +30,7 @@ const BadgeMeta: Meta<typeof Badge> = {
     text: 'New Feature',
     strong: false,
     borderless: false,
-    colourScheme: 'cyan',
+    colorScheme: 'cyan',
     size: 'large',
   },
 };

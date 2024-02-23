@@ -17,7 +17,7 @@ export const Badge = createStyle({
     },
   },
   variants: {
-    colourScheme: {
+    colorScheme: {
       cyan: {
         bg: '$cyan200',
         _icon: {
@@ -135,7 +135,7 @@ export const Badge = createStyle({
 
   compoundVariants: [
     {
-      colourScheme: 'cyan',
+      colorScheme: 'cyan',
       strong: true,
       value: {
         bg: '$cyan600',
@@ -157,7 +157,7 @@ export const Badge = createStyle({
       },
     },
     {
-      colourScheme: 'green',
+      colorScheme: 'green',
       strong: true,
       value: {
         bg: '$green600',
@@ -179,7 +179,7 @@ export const Badge = createStyle({
       },
     },
     {
-      colourScheme: 'red',
+      colorScheme: 'red',
       strong: true,
       value: {
         bg: '$red600',
@@ -201,7 +201,7 @@ export const Badge = createStyle({
       },
     },
     {
-      colourScheme: 'gold',
+      colorScheme: 'gold',
       strong: true,
       value: {
         bg: '$gold300',
@@ -223,7 +223,7 @@ export const Badge = createStyle({
       },
     },
     {
-      colourScheme: 'grey',
+      colorScheme: 'grey',
       strong: true,
       value: {
         bg: '$grey600',
@@ -251,7 +251,7 @@ export const Badge = createStyle({
   },
 
   defaultProps: {
-    colourScheme: 'cyan',
+    colorScheme: 'cyan',
     borderless: false,
     strong: false,
     size: 'large',
