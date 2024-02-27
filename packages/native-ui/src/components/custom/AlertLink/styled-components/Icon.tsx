@@ -1,16 +1,16 @@
 import { styled, AsForwarder } from '@gluestack-ui/themed';
 
-const AlertChevron = styled(
+const AlertLinkChevron = styled(
   AsForwarder,
   {
-    width: 24,
-    height: 24,
+    width: 16,
+    height: 16,
   },
   {
-    componentName: 'AlertChevron',
+    componentName: 'AlertLinkChevron',
     descendantStyle: [],
     ancestorStyle: ['_chevron'],
   } as const
 );
 
-export default AlertChevron;
+export default AlertLinkChevron;

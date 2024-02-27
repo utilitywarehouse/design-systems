@@ -13,6 +13,16 @@ export const Alert = createStyle({
   _chevron: {
     alignSelf: 'center',
   },
+  _button: {
+    width: 24,
+    height: 24,
+    padding: 0,
+    _icon: {
+      width: 24,
+      height: 24,
+      minWidth: 24,
+    },
+  },
   variants: {
     colorScheme: {
       error: {
@@ -26,6 +36,11 @@ export const Alert = createStyle({
         },
         _chevron: {
           color: '$red700',
+        },
+        _button: {
+          _icon: {
+            color: '$red700',
+          },
         },
         _dark: {
           bg: '$darkRed50',

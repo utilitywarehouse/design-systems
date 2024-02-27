@@ -1,17 +1,19 @@
 name: Build Native Previews
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    paths:
-      - 'packages/native-ui/**'
-      - 'apps/native-ui-storybook/**'
+  - push
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
+  #   paths:
+  #     - 'packages/native-ui/**'
+  #     - 'apps/native-ui-storybook/**'
+
 env:
   CI: true
 
 jobs:
   build-for-android:
-    runs-on: macos-13
+    runs-on: macos-14-arm64
     concurrency:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
@@ -61,7 +63,7 @@ jobs:
           platform: 'android'
 
   build-for-ios:
-    runs-on: macos-13
+    runs-on: macos-14-arm64
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true

@@ -1,3 +1,4 @@
 export * from './IconButton';
+export * from './AlertLink';
 export * from './AlertTitle';
-export * from './AlertChevron';
+export * from './AlertIconButton';

@@ -2,30 +2,40 @@ import React from 'react';
 import {
   Alert,
   AlertIcon,
-  AlertChevron,
   AlertText,
   AlertTitle,
+  AlertLink,
   CheckCircleIcon,
   CloseCircleIcon,
   AlertCircleIcon,
   VStack,
   Icon,
+  AlertLinkText,
+  AlertLinkChevron,
+  AlertIconButton,
 } from '@utilitywarehouse/native-ui';
 
 import {
   InformationMediumContainedIcon,
-  ChevronRight01MediumIcon,
+  ChevronRightMediumIcon,
+  ChevronRightSmallIcon,
 } from '@utilitywarehouse/react-native-icons';
 
 const AlertBasic = ({ text = 'Selection successfully moved!', ...props }: any) => {
   return (
-    <Alert {...props} si>
+    <Alert {...props}>
       <AlertIcon as={InformationMediumContainedIcon} />
-      <VStack flex={1}>
+      <VStack flex={1} gap={4}>
         <AlertTitle>Success</AlertTitle>
         <AlertText>{text}</AlertText>
+        <AlertLink>
+          <AlertLinkText>View details</AlertLinkText>
+          <AlertLinkChevron as={ChevronRightSmallIcon} />
+        </AlertLink>
       </VStack>
-      <AlertChevron as={ChevronRight01MediumIcon} />
+      <AlertIconButton>
+        <Icon as={ChevronRightMediumIcon} />
+      </AlertIconButton>
     </Alert>
   );
 };
@@ -39,7 +49,6 @@ export {
   Alert,
   AlertIcon,
   AlertText,
-  AlertChevron,
   CheckCircleIcon,
   CloseCircleIcon,
   AlertCircleIcon,

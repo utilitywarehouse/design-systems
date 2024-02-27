@@ -1,5 +1,5 @@
 {
   "dependencies": { "@gluestack-ui/button": "latest" },
-  "componentDependencies": ["AsForwarder"],
+  "componentDependencies": ["Button"],
   "keywords": ["components", "core", "Alert"]
 }
