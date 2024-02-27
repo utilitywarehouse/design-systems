@@ -1,4 +1,4 @@
-import { dirname, join } from "path";
+import { dirname, join } from 'path';
 const path = require('path');
 /** @type{import("@storybook/react-webpack5").StorybookConfig} */
 module.exports = {
@@ -8,17 +8,17 @@ module.exports = {
     '../components/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
-    getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-essentials"),
-    getAbsolutePath("@storybook/addon-react-native-web"),
-    getAbsolutePath("@storybook/addon-mdx-gfm")
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-react-native-web'),
+    getAbsolutePath('@storybook/addon-mdx-gfm'),
   ],
   framework: {
-    name: getAbsolutePath("@storybook/react-webpack5"),
+    name: getAbsolutePath('@storybook/react-webpack5'),
     options: {},
   },
   docs: {
-    autodocs: true,
+    autodocs: 'tag',
   },
   webpackFinal: async config => {
     config.resolve.alias = {
@@ -31,5 +31,5 @@ module.exports = {
 };
 
 function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, "package.json")));
+  return dirname(require.resolve(join(value, 'package.json')));
 }

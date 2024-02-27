@@ -4,6 +4,7 @@ import Variants from './Variants';
 
 const AlertMeta: Meta<typeof Alert> = {
   title: 'components/Alert',
+  tags: ['autodocs'],
   component: Alert,
   // metaInfo is required for figma generation
   // @ts-ignore
