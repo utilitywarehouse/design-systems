@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Alert, AlertIcon, AlertText, VStack, Icon } from '@utilitywarehouse/native-ui';
+import { Meta } from '@storybook/react';
+import { useArgs } from '@storybook/preview-api';
 
-const AlertBasic = ({ link, dismissable, iconButton, ...props }: any) => {
+const AlertBasic = ({ linkText, onPressIconButton, onClose, ...props }: any) => {
+  const [args, setArgs] = useArgs();
   const handlePressLink = () => {
     alert('Link Pressed!');
   };
@@ -13,14 +16,67 @@ const AlertBasic = ({ link, dismissable, iconButton, ...props }: any) => {
   const handleClose = () => {
     alert('Alert Dismissed!');
   };
+
+  useEffect(() => {
+    if (onPressIconButton && linkText) {
+      setArgs({ ...args, linkText: undefined });
+    }
+  }, [linkText, onPressIconButton]);
+
   return (
     <Alert
-      onPressLink={!iconButton && link && handlePressLink}
-      onPressIconButton={iconButton && handlePressIconButton}
-      onClose={dismissable && handleClose}
+      linkText={linkText}
+      onPressLink={linkText ? handlePressLink : undefined}
+      onPressIconButton={onPressIconButton ? handlePressIconButton : undefined}
+      onClose={onClose ? handleClose : undefined}
       {...props}
     />
   );
+};
+
+AlertBasic.argTypes = {
+  colorScheme: {
+    control: 'select',
+    options: ['info', 'success', 'warning', 'error'],
+    description: 'Use this valie to change the alert type and colour scheme.',
+    defaultValue: 'info',
+  },
+  title: {
+    control: 'text',
+    description: 'Use this value to set the alert title.',
+  },
+  text: {
+    control: 'text',
+    description: 'Use this value to set the alert text.',
+  },
+  linkText: {
+    control: 'text',
+    description:
+      'Use this value to set the alert link text. Use along with the `onPressLink` prop.',
+  },
+  icon: {
+    control: 'boolean',
+    description: 'Use this value to show or hide the icon.',
+    defaultValue: true,
+  },
+  onClose: {
+    control: 'boolean',
+    description: 'Use this handle the on close event. (Use a function to handle the event.)',
+  },
+  onPressIconButton: {
+    control: 'boolean',
+    description: 'Use this handle Icon Button press. (Use a function to handle the event.)',
+  },
+} as Meta<typeof Alert>['argTypes'];
+
+AlertBasic.args = {
+  colorScheme: 'info',
+  title: 'Information',
+  text: 'Unlock the power of knowledge with the following information.',
+  linkText: 'Learn more',
+  icon: true,
+  onClose: false,
+  onPressIconButton: false,
 };
 
 AlertBasic.description =

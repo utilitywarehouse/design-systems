@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Center, Alert, AlertIcon, AlertText } from '@utilitywarehouse/native-ui';
 
 import {
@@ -39,6 +40,8 @@ const AlertVariants = () => {
     </Center>
   );
 };
+
+AlertVariants.argTypes = {};
 
 export default AlertVariants;
 export { Alert };
