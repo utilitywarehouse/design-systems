@@ -1,42 +1,25 @@
 import React from 'react';
-import {
-  Alert,
-  AlertIcon,
-  AlertText,
-  AlertTitle,
-  AlertLink,
-  CheckCircleIcon,
-  CloseCircleIcon,
-  AlertCircleIcon,
-  VStack,
-  Icon,
-  AlertLinkText,
-  AlertLinkChevron,
-  AlertIconButton,
-} from '@utilitywarehouse/native-ui';
+import { Alert, AlertIcon, AlertText, VStack, Icon } from '@utilitywarehouse/native-ui';
 
-import {
-  InformationMediumContainedIcon,
-  ChevronRightMediumIcon,
-  ChevronRightSmallIcon,
-} from '@utilitywarehouse/react-native-icons';
+const AlertBasic = ({ link, dismissable, iconButton, ...props }: any) => {
+  const handlePressLink = () => {
+    alert('Link Pressed!');
+  };
 
-const AlertBasic = ({ text = 'Selection successfully moved!', ...props }: any) => {
+  const handlePressIconButton = () => {
+    alert('Icon Button Pressed!');
+  };
+
+  const handleClose = () => {
+    alert('Alert Dismissed!');
+  };
   return (
-    <Alert {...props}>
-      <AlertIcon as={InformationMediumContainedIcon} />
-      <VStack flex={1} gap={4}>
-        <AlertTitle>Success</AlertTitle>
-        <AlertText>{text}</AlertText>
-        <AlertLink>
-          <AlertLinkText>View details</AlertLinkText>
-          <AlertLinkChevron as={ChevronRightSmallIcon} />
-        </AlertLink>
-      </VStack>
-      <AlertIconButton>
-        <Icon as={ChevronRightMediumIcon} />
-      </AlertIconButton>
-    </Alert>
+    <Alert
+      onPressLink={!iconButton && link && handlePressLink}
+      onPressIconButton={iconButton && handlePressIconButton}
+      onClose={dismissable && handleClose}
+      {...props}
+    />
   );
 };
 
@@ -45,13 +28,4 @@ AlertBasic.description =
 
 export default AlertBasic;
 
-export {
-  Alert,
-  AlertIcon,
-  AlertText,
-  CheckCircleIcon,
-  CloseCircleIcon,
-  AlertCircleIcon,
-  Icon,
-  VStack,
-};
+export { Alert, AlertIcon, AlertText, Icon, VStack };

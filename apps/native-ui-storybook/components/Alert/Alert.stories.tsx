@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 import Alert from './Alert';
-import AlertVariants from './Variants';
+import Variants from './Variants';
 
 const AlertMeta: Meta<typeof Alert> = {
   title: 'components/Alert',
@@ -15,12 +15,36 @@ const AlertMeta: Meta<typeof Alert> = {
       control: 'select',
       options: ['info', 'success', 'warning', 'error'],
     },
+    dismissable: {
+      control: 'boolean',
+    },
+    icon: {
+      control: 'boolean',
+    },
+    text: {
+      control: 'text',
+    },
+    title: {
+      control: 'text',
+    },
+    linkText: {
+      control: 'text',
+    },
+    iconButton: {
+      control: 'boolean',
+    },
   },
   args: {
     colorScheme: 'info',
+    dismissable: false,
+    iconButton: false,
+    icon: true,
+    text: 'Unlock the power of knowledge with the following information.',
+    title: 'Information',
+    linkText: 'Learn more',
   },
 };
 
 export default AlertMeta;
 
-export { Alert, AlertVariants };
+export { Alert as Playground, Variants };

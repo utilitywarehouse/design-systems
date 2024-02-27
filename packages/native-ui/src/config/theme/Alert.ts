@@ -16,11 +16,26 @@ export const Alert = createStyle({
   _button: {
     width: 24,
     height: 24,
+    minWidth: 24,
+    minHeight: 24,
     padding: 0,
-    _icon: {
+    _buttonIcon: {
       width: 24,
       height: 24,
       minWidth: 24,
+      minHeight: 24,
+    },
+  },
+  _closeButton: {
+    width: 24,
+    height: 24,
+    minWidth: 24,
+    minHeight: 24,
+    _closeIcon: {
+      width: 16,
+      height: 16,
+      minWidth: 16,
+      minHeight: 16,
     },
   },
   variants: {
@@ -38,7 +53,12 @@ export const Alert = createStyle({
           color: '$red700',
         },
         _button: {
-          _icon: {
+          _buttonIcon: {
+            color: '$red700',
+          },
+        },
+        _closeButton: {
+          _closeIcon: {
             color: '$red700',
           },
         },
@@ -54,6 +74,16 @@ export const Alert = createStyle({
           _chevron: {
             color: '$darkRed700',
           },
+          _button: {
+            _buttonIcon: {
+              color: '$darkRed700',
+            },
+          },
+          _closeButton: {
+            _closeIcon: {
+              color: '$darkRed700',
+            },
+          },
         },
       },
       info: {
@@ -68,6 +98,16 @@ export const Alert = createStyle({
         _chevron: {
           color: '$cyan700',
         },
+        _button: {
+          _buttonIcon: {
+            color: '$cyan700',
+          },
+        },
+        _closeButton: {
+          _closeIcon: {
+            color: '$cyan700',
+          },
+        },
         _dark: {
           bg: '$darkCyan50',
           borderColor: '$darkCyan500',
@@ -79,6 +119,16 @@ export const Alert = createStyle({
           },
           _chevron: {
             color: '$darkCyan700',
+          },
+          _button: {
+            _buttonIcon: {
+              color: '$darkCyan700',
+            },
+          },
+          _closeButton: {
+            _closeIcon: {
+              color: '$darkCyan700',
+            },
           },
         },
       },
@@ -94,6 +144,16 @@ export const Alert = createStyle({
         _chevron: {
           color: '$green700',
         },
+        _button: {
+          _buttonIcon: {
+            color: '$green700',
+          },
+        },
+        _closeButton: {
+          _closeIcon: {
+            color: '$green700',
+          },
+        },
         _dark: {
           bg: '$darkGreen50',
           borderColor: '$darkGreen500',
@@ -105,6 +165,16 @@ export const Alert = createStyle({
           },
           _chevron: {
             color: '$darkGreen700',
+          },
+          _button: {
+            _buttonIcon: {
+              color: '$darkGreen700',
+            },
+          },
+          _closeButton: {
+            _closeIcon: {
+              color: '$darkGreen700',
+            },
           },
         },
       },
@@ -120,6 +190,16 @@ export const Alert = createStyle({
         _chevron: {
           color: '$gold700',
         },
+        _button: {
+          _buttonIcon: {
+            color: '$gold700',
+          },
+        },
+        _closeButton: {
+          _closeIcon: {
+            color: '$gold700',
+          },
+        },
         _dark: {
           bg: '$darkGold50',
           borderColor: '$darkGold500',
@@ -131,6 +211,16 @@ export const Alert = createStyle({
           },
           _chevron: {
             color: '$darkGold700',
+          },
+          _button: {
+            _buttonIcon: {
+              color: '$darkGold700',
+            },
+          },
+          _closeButton: {
+            _closeIcon: {
+              color: '$darkGold700',
+            },
           },
         },
       },

@@ -1,4 +1,4 @@
-export { Alert, AlertIcon, AlertText } from '@gluestack-ui/themed';
+export { AlertIcon, AlertText } from '@gluestack-ui/themed';
 
 export { Progress, ProgressFilledTrack } from '@gluestack-ui/themed';
 export { Spinner } from '@gluestack-ui/themed';

@@ -1,6 +1,6 @@
 import { styled, Pressable } from '@gluestack-ui/themed';
 
-const AlertIconButton = styled(
+const AlertCloseButton = styled(
   Pressable,
   {
     width: 24,
@@ -8,17 +8,17 @@ const AlertIconButton = styled(
     display: 'flex',
     alignContent: 'center',
     justifyContent: 'center',
-    _icon: {
-      width: 24,
-      height: 24,
+    alignSelf: 'flex-start',
+    _closeIcon: {
+      alignSelf: 'center',
     },
   },
   {
-    componentName: 'AlertIconButton',
-    descendantStyle: ['_icon'],
-    ancestorStyle: ['_iconButton'],
+    componentName: 'AlertCloseButton',
+    descendantStyle: ['_closeIcon'],
+    ancestorStyle: ['_closeButton'],
   } as const
 ) as React.ForwardRefExoticComponent<import('react-native').PressableProps & {}> & {
   displayName: string;
 };
-export default AlertIconButton;
+export default AlertCloseButton;
