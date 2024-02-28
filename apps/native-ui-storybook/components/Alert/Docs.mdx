@@ -1,0 +1,202 @@
+import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
+import * as AlertStories from './Alert.stories';
+import {
+  Alert,
+  Center,
+  NativeUIProvider,
+  config,
+  AlertIcon,
+  AlertText,
+  AlertTitle,
+  AlertLink,
+  AlertLinkChevron,
+  AlertLinkText,
+  AlertIconButton,
+  AlertIconButtonChevron,
+  AlertCloseButton,
+  AlertCloseButtonIcon,
+  VStack,
+} from '@utilitywarehouse/native-ui';
+import {
+  InformationMediumContainedIcon,
+  ChevronRightMediumIcon,
+  ChevronRightSmallIcon,
+  CloseSmallIcon,
+} from '@utilitywarehouse/react-native-icons';
+
+<Meta of={AlertStories} />
+
+# Alert
+
+The Alert component displays a short, important message in a way that attracts the user's attention without interrupting the user's task.
+This component should be used to flag information of high importance, whether it be an error, warning, success or information.
+The Alert offers different colour schemes, the colour scheme is mapped to an icon
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider config={config}>
+    <Alert
+      colorScheme="info"
+      title="Information"
+      text="Unlock the power of knowledge with the following information."
+    />
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Alert } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <Alert
+      colorScheme="info"
+      title="Information"
+      text="Unlock the power of knowledge with the following information."
+    />
+  );
+};
+```
+
+## Props
+
+### `colorScheme`
+
+_type: 'info' | 'success' | 'warning' | 'error'_
+
+The colour scheme of the alert. The colour scheme is mapped to an icon.
+
+- `info` - Cyan
+- `success` - Green
+- `warning` - Gold
+- `error` - Red
+
+### `title`
+
+_type: string_
+
+The title of the alert.
+
+### `text`
+
+_type: string_
+
+The text of the alert.
+
+### `icon`
+
+_type: boolean_
+
+Whether to show the icon or not.
+
+### `linkText`
+
+_type: string_
+
+The text of the link.
+
+### `onPressLink`
+
+_type: () => void_
+
+A callback function to be called when the link is clicked.
+
+### `onPressIconButton`
+
+_type: () => void_
+
+A callback function to be called when the icon button is clicked. This will also display the icon button.
+
+### `onClose`
+
+_type: () => void_
+
+A callback function to be called when the close button is clicked. This will also display the close button.
+
+For more information, see the [Gluestack Alert component documentation](https://gluestack.io/ui/docs/components/feedback/alert).
+
+## Advanced Usage
+
+If you need to use the Alert component in a more advanced way, you can use the parts of the component directly.
+
+<Canvas>
+  <NativeUIProvider config={config}>
+    <Alert colorScheme="info">
+      <AlertIcon as={InformationMediumContainedIcon} />
+      <VStack flex={1} gap={4}>
+        <AlertTitle>Information</AlertTitle>
+        <AlertText>Unlock the power of knowledge with the following information.</AlertText>
+
+        <AlertLink onPress={() => console.log('Link clicked')}>
+          <AlertLinkText>Learn more</AlertLinkText>
+          <AlertLinkChevron as={ChevronRightSmallIcon} />
+        </AlertLink>
+      </VStack>
+      <AlertIconButton onPress={() => console.log('Icon button clicked')}>
+        <AlertIconButtonChevron as={ChevronRightMediumIcon} />
+      </AlertIconButton>
+      <AlertCloseButton onClose={() => console.log('Close button clicked')}>
+        <AlertCloseButtonIcon as={CloseSmallIcon} />
+      </AlertCloseButton>
+    </Alert>
+
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import {
+  Alert,
+  AlertIcon,
+  AlertText,
+  AlertTitle,
+  AlertLink,
+  AlertLinkChevron,
+  AlertLinkText,
+  AlertIconButton,
+  AlertIconButtonChevron,
+  AlertCloseButton,
+  AlertCloseButtonIcon,
+  VStack,
+} from '@utilitywarehouse/native-ui';
+import {
+  InformationMediumContainedIcon,
+  ChevronRightMediumIcon,
+  ChevronRightSmallIcon,
+  CloseSmallIcon,
+} from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => {
+  return (
+    <Alert colorScheme="info">
+      <AlertIcon as={InformationMediumContainedIcon} />
+      <VStack flex={1} gap={4}>
+        <AlertTitle>Information</AlertTitle>
+        <AlertText>Unlock the power of knowledge with the following information.</AlertText>
+
+        <AlertLink onPress={() => console.log('Link clicked')}>
+          <AlertLinkText>Learn more</AlertLinkText>
+          <AlertLinkChevron as={ChevronRightSmallIcon} />
+        </AlertLink>
+      </VStack>
+      {/* Note: AlertIconButton should not be used with the AlertLink component */}
+      <AlertIconButton onPress={() => console.log('Icon button clicked')}>
+        <AlertIconButtonChevron as={ChevronRightMediumIcon} />
+      </AlertIconButton>
+
+      <AlertCloseButton onClose={() => console.log('Close button clicked')}>
+        <AlertCloseButtonIcon as={CloseSmallIcon} />
+      </AlertCloseButton>
+    </Alert>
+  );
+};
+```
+
+### Figma link: [https://www.figma.com/file/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?type=design&node-id=5227-8115&mode=device](https://www.figma.com/file/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?type=design&node-id=5227-8115&mode=device)

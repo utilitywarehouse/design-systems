@@ -1,12 +1,11 @@
 name: Build Native Previews
 
 on:
-  - push
-  # pull_request:
-  #   types: [opened, synchronize, reopened]
-  #   paths:
-  #     - 'packages/native-ui/**'
-  #     - 'apps/native-ui-storybook/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'packages/native-ui/**'
+      - 'apps/native-ui-storybook/**'
 env:
   CI: true
 
@@ -47,7 +46,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -89,12 +88,6 @@ jobs:
         with:
           xcode-version: '15.2.0'
 
-      - name: 🏗 Setup Xcode Cache
-        uses: irgaly/xcode-cache@v1
-        with:
-          key: xcode-cache-deriveddata-${{ github.workflow }}-${{ github.sha }}
-          restore-keys: xcode-cache-deriveddata-${{ github.workflow }}-
-
       - name: 🏗 Setup EAS
         uses: expo/expo-github-action@v8
         with:
@@ -102,7 +95,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: 🚀 Build iOS app

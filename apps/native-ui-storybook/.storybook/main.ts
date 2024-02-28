@@ -4,6 +4,7 @@ const path = require('path');
 module.exports = {
   stories: [
     '../docs/**/*.mdx',
+    '../components/**/*.mdx',
     '../components/**/*.stories.mdx',
     '../components/**/*.stories.@(js|jsx|ts|tsx)',
   ],
@@ -12,6 +13,7 @@ module.exports = {
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-react-native-web'),
     getAbsolutePath('@storybook/addon-mdx-gfm'),
+    getAbsolutePath('storybook-dark-mode'),
   ],
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
