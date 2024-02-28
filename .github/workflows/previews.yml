@@ -39,7 +39,6 @@ jobs:
           java-version: '17.0.10'
           java-package: jdk
           architecture: x64
-          cache: 'gradle'
 
       - name: 🏗 Setup EAS
         uses: expo/expo-github-action@v8
