@@ -9,7 +9,7 @@ module.exports = function (api) {
         'module-resolver',
         {
           alias: {
-            '@utilitywarehouse/native-ui': path.join(__dirname, '../../packages/native-ui'),
+            '@utilitywarehouse/native-ui': path.join(__dirname, '../../packages/native-ui/src'),
           },
         },
       ],

@@ -21,7 +21,9 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
-      - uses: actions/checkout@v3
+
+      - name: 🏗 Checkout code
+        uses: actions/checkout@v3
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
@@ -37,6 +39,7 @@ jobs:
           java-version: '17.0.10'
           java-package: jdk
           architecture: x64
+          cache: 'gradle'
 
       - name: 🏗 Setup EAS
         uses: expo/expo-github-action@v8
@@ -71,7 +74,9 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
-      - uses: actions/checkout@v3
+
+      - name: 🏗 Checkout code
+        uses: actions/checkout@v3
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
