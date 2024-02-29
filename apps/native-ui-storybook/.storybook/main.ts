@@ -1,5 +1,4 @@
 import { dirname, join } from 'path';
-const path = require('path');
 /** @type{import("@storybook/react-webpack5").StorybookConfig} */
 module.exports = {
   stories: [
@@ -26,6 +25,7 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@utilitywarehouse/react-native-icons': '@utilitywarehouse/react-icons',
+      '@utilitywarehouse/native-ui': getAbsolutePath('@utilitywarehouse/native-ui'),
     };
 
     return config;
