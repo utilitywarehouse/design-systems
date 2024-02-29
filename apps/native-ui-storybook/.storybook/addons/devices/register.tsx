@@ -1,7 +1,6 @@
-import { addons, types, useGlobals } from '@storybook/addons';
+import { addons, types } from '@storybook/addons';
 import React from 'react';
 
-import { Icons, IconButton } from '@storybook/components';
 import { ADDON_ID } from './constants';
 import PlatformSelector from './components/PlatformSelector';
 

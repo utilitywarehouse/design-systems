@@ -1,10 +1,15 @@
 import type { Preview, Decorator } from '@storybook/react';
-import React, { useEffect, useState } from 'react';
-import { Center, NativeUIProvider, config } from '@utilitywarehouse/native-ui';
+import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
+import { Box, Center, NativeUIProvider, config } from '@utilitywarehouse/native-ui';
 import { PlatformContextProvider } from '../contexts/PlatformContext';
-import { useStoryContext, useArgs, useGlobals } from '@storybook/preview-api';
+import { useStoryContext, useArgs, useGlobals, getQueryParams } from '@storybook/preview-api';
 import '../assets/style.css';
 import StoryWrap from '../components/StoryWrap';
+import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
+import { addons } from '@storybook/addons';
+import { UPDATE_GLOBALS } from '@storybook/core-events';
+import { themes } from '@storybook/theming';
+import { DocsContainer as BaseContainer, DocsContainerProps } from '@storybook/blocks';
 
 const lightColour: string = '#fff';
 const darkColour: string = '#1d1d1d';
@@ -12,37 +17,103 @@ const darkColour: string = '#1d1d1d';
 export const decorators: Decorator[] = [
   Story => {
     const [globals] = useGlobals();
-    const background = globals.backgrounds?.value;
-    const isLight = !background || background === 'transparent' || background === lightColour;
     const [args] = useArgs();
+    const colorScheme = useDarkMode() ? 'dark' : 'light';
     const { id, viewMode } = useStoryContext();
-    const [theme, setTheme] = useState<'light' | 'dark'>(isLight ? 'light' : 'dark');
+    const device = globals.device;
 
-    useEffect(() => {
-      setTheme(isLight ? 'light' : 'dark');
-    }, [background]);
-
-    return (
-      <NativeUIProvider colorMode={theme} config={config}>
+    return viewMode === 'story' ? (
+      <NativeUIProvider colorMode={colorScheme} config={config}>
         <PlatformContextProvider
           args={args}
           id={id}
           viewMode={viewMode}
-          colourMode={theme}
+          colourMode={colorScheme}
           platform={globals.device}
         >
-          <Center>{viewMode === 'story' ? <StoryWrap>{<Story />}</StoryWrap> : <Story />}</Center>
+          <Box
+            sx={{
+              bg: colorScheme === 'light' ? lightColour : darkColour,
+              p: device !== 'web' ? 0 : 20,
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              _web: {
+                width: '100vw',
+                height: '100vh',
+                zIndex: device !== 'web' ? -1 : 0,
+              },
+            }}
+          >
+            <Center>
+              <StoryWrap>
+                <Story />
+              </StoryWrap>
+            </Center>
+          </Box>
         </PlatformContextProvider>
+      </NativeUIProvider>
+    ) : (
+      <NativeUIProvider colorMode={colorScheme} config={config}>
+        <Center padding={20} bg={colorScheme === 'light' ? lightColour : darkColour}>
+          <Story />
+        </Center>
       </NativeUIProvider>
     );
   },
 ];
+
+let channel = addons.getChannel();
+
+const storyListener = darkMode => {
+  const { viewMode } = getQueryParams();
+  if (viewMode === 'story') {
+    channel.emit(UPDATE_GLOBALS, {
+      globals: {
+        theme: darkMode ? 'dark' : 'light',
+        backgrounds: darkMode
+          ? { name: 'dark', value: darkColour }
+          : { name: 'light', value: lightColour },
+      },
+    });
+  }
+};
+
+function setupBackgroundListener() {
+  channel.removeListener(DARK_MODE_EVENT_NAME, storyListener);
+  channel.addListener(DARK_MODE_EVENT_NAME, storyListener);
+}
+
+setupBackgroundListener();
+
+export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({ children, context }) => {
+  const [isDark, setDark] = useState(false);
+
+  useEffect(() => {
+    channel.on(DARK_MODE_EVENT_NAME, setDark);
+    return () => channel.off(DARK_MODE_EVENT_NAME, setDark);
+  }, [channel]);
+
+  return (
+    <BaseContainer theme={isDark ? themes.dark : themes.light} context={context}>
+      {children}
+    </BaseContainer>
+  );
+};
 
 const preview: Preview = {
   globals: {
     device: 'web',
   },
   parameters: {
+    docs: {
+      container: DocsContainer,
+    },
+    layout: 'fullscreen',
+    darkMode: {
+      current: 'light',
+      stylePreview: true,
+    },
     options: {
       storySort: {
         order: [
@@ -61,6 +132,7 @@ const preview: Preview = {
       },
     },
     backgrounds: {
+      // disable: true,
       default: 'light',
       values: [
         {

@@ -1,4 +1,3 @@
-import { Box } from '@utilitywarehouse/native-ui';
 import React, { FC, PropsWithChildren, createContext, useEffect, useState } from 'react';
 import { PlatformContextProps, Platform } from './types';
 
@@ -31,7 +30,7 @@ const PlatformContextProvider: FC<
         colourMode,
       }}
     >
-      <Box>{children}</Box>
+      {children}
     </PlatformContext.Provider>
   );
 };
