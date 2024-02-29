@@ -1,5 +1,5 @@
 import { Alert as GSAlert, AlertIcon, AlertText, VStack } from '@gluestack-ui/themed';
-import React, { PropsWithChildren, ComponentProps, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { AlertTitle } from './AlertTitle';
 import { AlertLink, AlertLinkChevron, AlertLinkText } from './AlertLink';
 import {
@@ -13,21 +13,7 @@ import {
 } from '@utilitywarehouse/react-native-icons';
 import { AlertIconButton, AlertIconButtonChevron } from './AlertIconButton';
 import { AlertCloseButton, AlertCloseButtonIcon } from './AlertCloseButton';
-
-interface AlertProps {
-  text: string;
-  title?: string;
-  linkText?: string;
-  icon?: boolean;
-  colorScheme?: 'info' | 'success' | 'warning' | 'error';
-  onPressIconButton?: () => void;
-  onPressLink?: () => void;
-  onClose?: () => void;
-}
-
-interface AlertWithChildrenProps extends PropsWithChildren, Omit<AlertProps, 'text'> {
-  text?: string;
-}
+import type { AlertProps } from './Alert.props';
 
 const getIcon = (colorScheme: string) => {
   switch (colorScheme) {
@@ -44,16 +30,13 @@ const getIcon = (colorScheme: string) => {
   }
 };
 
-type IAlertProps = ComponentProps<typeof GSAlert>;
-
-const Alert: React.FC<(AlertProps | AlertWithChildrenProps) & IAlertProps> = ({
+const Alert: React.FC<AlertProps> = ({
   text,
   title,
   linkText,
   onPressLink,
   colorScheme = 'info',
   onPressIconButton,
-  icon = true,
   onClose,
   children,
   ...props
@@ -79,7 +62,7 @@ const Alert: React.FC<(AlertProps | AlertWithChildrenProps) & IAlertProps> = ({
   return (
     <GSAlert colorScheme={colorScheme} {...props}>
       <>
-        {icon && <AlertIcon as={getIcon(colorScheme)} />}
+        <AlertIcon as={getIcon(colorScheme)} />
         <VStack flex={1} gap={4}>
           {!!title && <AlertTitle>{title}</AlertTitle>}
           <AlertText>{text}</AlertText>

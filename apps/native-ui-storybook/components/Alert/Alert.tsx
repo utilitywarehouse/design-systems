@@ -54,11 +54,6 @@ AlertBasic.argTypes = {
     description:
       'Use this value to set the alert link text. Use along with the `onPressLink` prop.',
   },
-  icon: {
-    control: 'boolean',
-    description: 'Use this value to show or hide the icon.',
-    defaultValue: true,
-  },
   onClose: {
     control: 'boolean',
     description: 'Use this handle the on close event. (Use a function to handle the event.)',
@@ -74,7 +69,6 @@ AlertBasic.args = {
   title: 'Information',
   text: 'Unlock the power of knowledge with the following information.',
   linkText: 'Learn more',
-  icon: true,
   onClose: false,
   onPressIconButton: false,
 };
