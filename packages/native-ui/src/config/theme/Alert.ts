@@ -2,100 +2,232 @@ import { createStyle } from '@gluestack-style/react';
 
 export const Alert = createStyle({
   alignItems: 'center',
-  p: '$3',
+  p: 12,
   flexDirection: 'row',
-  borderRadius: '$sm',
+  borderRadius: 8,
+  gap: 8,
+  borderWidth: '$1',
+  _icon: {
+    alignSelf: 'flex-start',
+  },
+  _chevron: {
+    alignSelf: 'center',
+  },
+  _button: {
+    width: 24,
+    height: 24,
+    minWidth: 24,
+    minHeight: 24,
+    padding: 0,
+    _buttonIcon: {
+      width: 24,
+      height: 24,
+      minWidth: 24,
+      minHeight: 24,
+    },
+  },
+  _closeButton: {
+    width: 24,
+    height: 24,
+    minWidth: 24,
+    minHeight: 24,
+    _closeIcon: {
+      width: 16,
+      height: 16,
+      minWidth: 16,
+      minHeight: 16,
+    },
+  },
   variants: {
-    action: {
+    colorScheme: {
       error: {
-        bg: '$backgroundLightError',
-        borderColor: '$error300',
-        _icon: {
-          color: '$error500',
+        bg: '$red50',
+        borderColor: '$red500',
+        _text: {
+          color: '$red900',
         },
-        _dark: {
-          bg: '$backgroundDarkError',
-          borderColor: '$error700',
-          _icon: {
-            color: '$error500',
+        _icon: {
+          color: '$red700',
+        },
+        _chevron: {
+          color: '$red700',
+        },
+        _button: {
+          _buttonIcon: {
+            color: '$red700',
           },
         },
-      },
-      warning: {
-        bg: '$backgroundLightWarning',
-        borderColor: '$warning300',
-        _icon: {
-          color: '$warning500',
-        },
-        _dark: {
-          bg: '$backgroundDarkWarning',
-          borderColor: '$warning700',
-          _icon: {
-            color: '$warning500',
+        _closeButton: {
+          _closeIcon: {
+            color: '$red700',
           },
         },
-      },
-      success: {
-        bg: '$backgroundLightSuccess',
-        borderColor: '$success300',
-        _icon: {
-          color: '$success500',
-        },
         _dark: {
-          bg: '$backgroundDarkSuccess',
-          borderColor: '$success700',
+          bg: '$darkRed50',
+          borderColor: '$darkRed500',
+          _text: {
+            color: '$darkRed900',
+          },
           _icon: {
-            color: '$success500',
+            color: '$darkRed700',
+          },
+          _chevron: {
+            color: '$darkRed700',
+          },
+          _button: {
+            _buttonIcon: {
+              color: '$darkRed700',
+            },
+          },
+          _closeButton: {
+            _closeIcon: {
+              color: '$darkRed700',
+            },
           },
         },
       },
       info: {
-        bg: '$backgroundLightInfo',
-        borderColor: '$info300',
+        bg: '$cyan50',
+        borderColor: '$cyan500',
+        _text: {
+          color: '$cyan900',
+        },
         _icon: {
-          color: '$info500',
+          color: '$cyan700',
+        },
+        _chevron: {
+          color: '$cyan700',
+        },
+        _button: {
+          _buttonIcon: {
+            color: '$cyan700',
+          },
+        },
+        _closeButton: {
+          _closeIcon: {
+            color: '$cyan700',
+          },
         },
         _dark: {
-          bg: '$backgroundDarkInfo',
-          borderColor: '$info700',
+          bg: '$darkCyan50',
+          borderColor: '$darkCyan500',
+          _text: {
+            color: '$darkCyan900',
+          },
           _icon: {
-            color: '$info500',
+            color: '$darkCyan700',
+          },
+          _chevron: {
+            color: '$darkCyan700',
+          },
+          _button: {
+            _buttonIcon: {
+              color: '$darkCyan700',
+            },
+          },
+          _closeButton: {
+            _closeIcon: {
+              color: '$darkCyan700',
+            },
           },
         },
       },
-      muted: {
-        bg: '$backgroundLightMuted',
-        borderColor: '$secondary300',
+      success: {
+        bg: '$green50',
+        borderColor: '$green500',
+        _text: {
+          color: '$green900',
+        },
         _icon: {
-          color: '$secondary500',
+          color: '$green700',
+        },
+        _chevron: {
+          color: '$green700',
+        },
+        _button: {
+          _buttonIcon: {
+            color: '$green700',
+          },
+        },
+        _closeButton: {
+          _closeIcon: {
+            color: '$green700',
+          },
         },
         _dark: {
-          bg: '$backgroundDarkMuted',
-          borderColor: '$secondary700',
+          bg: '$darkGreen50',
+          borderColor: '$darkGreen500',
+          _text: {
+            color: '$darkGreen900',
+          },
           _icon: {
-            color: '$secondary500',
+            color: '$darkGreen700',
+          },
+          _chevron: {
+            color: '$darkGreen700',
+          },
+          _button: {
+            _buttonIcon: {
+              color: '$darkGreen700',
+            },
+          },
+          _closeButton: {
+            _closeIcon: {
+              color: '$darkGreen700',
+            },
           },
         },
       },
-    },
-
-    variant: {
-      solid: {},
-      outline: {
-        borderWidth: '$1',
-        bg: '$white',
-        _dark: {
-          bg: '$black',
+      warning: {
+        bg: '$gold50',
+        borderColor: '$gold500',
+        _text: {
+          color: '$gold900',
         },
-      },
-      accent: {
-        borderLeftWidth: '$4',
+        _icon: {
+          color: '$gold700',
+        },
+        _chevron: {
+          color: '$gold700',
+        },
+        _button: {
+          _buttonIcon: {
+            color: '$gold700',
+          },
+        },
+        _closeButton: {
+          _closeIcon: {
+            color: '$gold700',
+          },
+        },
+        _dark: {
+          bg: '$darkGold50',
+          borderColor: '$darkGold500',
+          _text: {
+            color: '$darkGold900',
+          },
+          _icon: {
+            color: '$darkGold700',
+          },
+          _chevron: {
+            color: '$darkGold700',
+          },
+          _button: {
+            _buttonIcon: {
+              color: '$darkGold700',
+            },
+          },
+          _closeButton: {
+            _closeIcon: {
+              color: '$darkGold700',
+            },
+          },
+        },
       },
     },
   },
 
   defaultProps: {
-    variant: 'solid',
-    action: 'info',
+    colorScheme: 'error',
   },
 });

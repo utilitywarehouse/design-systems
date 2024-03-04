@@ -20,7 +20,9 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
-      - uses: actions/checkout@v3
+
+      - name: 🏗 Checkout code
+        uses: actions/checkout@v3
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
@@ -44,7 +46,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -61,7 +63,7 @@ jobs:
           platform: 'android'
 
   build-for-ios:
-    runs-on: macos-13
+    runs-on: macos-13-xlarge
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
@@ -70,7 +72,9 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
-      - uses: actions/checkout@v3
+
+      - name: 🏗 Checkout code
+        uses: actions/checkout@v3
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
@@ -91,7 +95,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: 🚀 Build iOS app

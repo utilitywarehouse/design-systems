@@ -8,6 +8,9 @@
       "distribution": "internal"
     },
     "preview": {
+      "cache": {
+        "paths": ["./ios/Podfile.lock"]
+      },
       "env": {
         "STORYBOOK_ENABLED": "true"
       },
