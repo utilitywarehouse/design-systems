@@ -33,7 +33,7 @@ const getIcon = (colorScheme: string) => {
 const Alert: React.FC<AlertProps> = ({
   text,
   title,
-  linkText,
+  link,
   onPressLink,
   colorScheme = 'info',
   onPressIconButton,
@@ -51,13 +51,13 @@ const Alert: React.FC<AlertProps> = ({
 
   useEffect(() => {
     if (__DEV__) {
-      if (onPressIconButton && linkText) {
+      if (onPressIconButton && link) {
         console.warn(
-          'You cannot use both onPressIconButton and linkText props at the same time. Please choose one or the other.'
+          'You cannot use both onPressIconButton and link props at the same time. Please choose one or the other.'
         );
       }
     }
-  }, [onPressIconButton, linkText]);
+  }, [onPressIconButton, link]);
 
   return (
     <GSAlert colorScheme={colorScheme} {...props}>
@@ -66,14 +66,14 @@ const Alert: React.FC<AlertProps> = ({
         <VStack flex={1} gap={4}>
           {!!title && <AlertTitle>{title}</AlertTitle>}
           <AlertText>{text}</AlertText>
-          {!!linkText && (
+          {!!link && (
             <AlertLink onPress={onPressLink}>
-              <AlertLinkText>{linkText}</AlertLinkText>
+              <AlertLinkText>{link}</AlertLinkText>
               <AlertLinkChevron as={ChevronRightSmallIcon} />
             </AlertLink>
           )}
         </VStack>
-        {!!onPressIconButton && !linkText && (
+        {!!onPressIconButton && !link && (
           <AlertIconButton onPress={onPressIconButton}>
             <AlertIconButtonChevron as={ChevronRightMediumIcon} />
           </AlertIconButton>

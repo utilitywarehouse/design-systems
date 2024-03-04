@@ -18,7 +18,7 @@ interface AlertWithoutChildrenProps {
   /**
    * The text for the link in the alert.
    */
-  linkText?: string;
+  link?: string;
 
   /**
    * The color scheme of the alert.

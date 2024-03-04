@@ -3,7 +3,7 @@ import { Alert, AlertIcon, AlertText, VStack, Icon } from '@utilitywarehouse/nat
 import { Meta } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 
-const AlertBasic = ({ linkText, onPressIconButton, onClose, ...props }: any) => {
+const AlertBasic = ({ link, onPressIconButton, onClose, ...props }: any) => {
   const [args, setArgs] = useArgs();
   const handlePressLink = () => {
     alert('Link Pressed!');
@@ -18,15 +18,15 @@ const AlertBasic = ({ linkText, onPressIconButton, onClose, ...props }: any) => 
   };
 
   useEffect(() => {
-    if (onPressIconButton && linkText) {
-      setArgs({ ...args, linkText: undefined });
+    if (onPressIconButton && link) {
+      setArgs({ ...args, link: undefined });
     }
-  }, [linkText, onPressIconButton]);
+  }, [link, onPressIconButton]);
 
   return (
     <Alert
-      linkText={linkText}
-      onPressLink={linkText ? handlePressLink : undefined}
+      link={link}
+      onPressLink={link ? handlePressLink : undefined}
       onPressIconButton={onPressIconButton ? handlePressIconButton : undefined}
       onClose={onClose ? handleClose : undefined}
       {...props}
@@ -49,7 +49,7 @@ AlertBasic.argTypes = {
     control: 'text',
     description: 'Use this value to set the alert text.',
   },
-  linkText: {
+  link: {
     control: 'text',
     description:
       'Use this value to set the alert link text. Use along with the `onPressLink` prop.',
@@ -68,7 +68,7 @@ AlertBasic.args = {
   colorScheme: 'info',
   title: 'Information',
   text: 'Unlock the power of knowledge with the following information.',
-  linkText: 'Learn more',
+  link: 'Learn more',
   onClose: false,
   onPressIconButton: false,
 };
