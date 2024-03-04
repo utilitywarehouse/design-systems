@@ -28,7 +28,7 @@ import {
 
 # Alert
 
-The Alert component displays a short, important message in a way that attracts the user's attention without interrupting the user's task.
+The `Alert` component displays a short, important message in a way that attracts the user's attention without interrupting the user's task.
 This component should be used to flag information of high importance, whether it be an error, warning, success or information.
 The Alert offers different colour schemes, the colour scheme is mapped to an icon
 
@@ -68,52 +68,15 @@ const MyComponent = () => {
 
 ## Props
 
-### `colorScheme`
-
-_type: 'info' | 'success' | 'warning' | 'error'_
-
-The colour scheme of the alert. The colour scheme is mapped to an icon.
-
-- `info` - Cyan
-- `success` - Green
-- `warning` - Gold
-- `error` - Red
-
-### `title`
-
-_type: string_
-
-The title of the alert.
-
-### `text`
-
-_type: string_
-
-The text of the alert.
-
-### `link`
-
-_type: string_
-
-The text of the link.
-
-### `onPressLink`
-
-_type: () => void_
-
-A callback function to be called when the link is clicked.
-
-### `onPressIconButton`
-
-_type: () => void_
-
-A callback function to be called when the icon button is clicked. This will also display the icon button.
-
-### `onClose`
-
-_type: () => void_
-
-A callback function to be called when the close button is clicked. This will also display the close button.
+| Property            | Type                                          | Description                                                        | Default |
+| ------------------- | --------------------------------------------- | ------------------------------------------------------------------ | ------- |
+| `colorScheme`       | `'info' \| 'success' \| 'warning' \| 'error'` | The colour scheme of the alert. Mapped to an icon.                 | 'info'  |
+| `title`             | `string`                                      | The title of the alert.                                            |         |
+| `text`              | `string`                                      | The text of the alert.                                             |         |
+| `link`              | `string`                                      | The text of the link.                                              |         |
+| `onPressLink`       | `() => void`                                  | A callback function to be called when the link is clicked.         |         |
+| `onPressIconButton` | `() => void`                                  | A callback function to be called when the icon button is clicked.  |         |
+| `onClose`           | `() => void`                                  | A callback function to be called when the close button is clicked. |         |
 
 For more information, see the [Gluestack Alert component documentation](https://gluestack.io/ui/docs/components/feedback/alert).
 

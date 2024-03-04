@@ -3,7 +3,6 @@ import Badge from './Badge';
 
 const BadgeMeta: Meta<typeof Badge> = {
   title: 'components/Badge',
-  tags: ['autodocs'],
   component: Badge,
   // metaInfo is required for figma generation
   // @ts-ignore
