@@ -5,7 +5,6 @@ import type { Meta } from '@storybook/react';
 const BoxMeta: Meta<typeof Box> = {
   title: 'components/Box',
   component: Box,
-
   args: { bg: 'red500', w: 100, h: 100 },
 };
 

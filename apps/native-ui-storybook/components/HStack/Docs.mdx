@@ -1,0 +1,48 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as HStackStories from './HStack.stories';
+import { HStack, Center, Box, NativeUIProvider } from '@utilitywarehouse/native-ui';
+
+<Meta of={HStackStories} />
+
+# HStack
+
+HStack arranges its child elements horizontally, making it a suitable layout component for creating a row of items. It is worth noting that Row is just an alternative name for HStack.
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <HStack space="sm">
+        <Box sx={{ w: 100, h: 100, bg: '$cyan300' }} />
+        <Box sx={{ w: 100, h: 100, bg: '$cyan400' }} />
+        <Box sx={{ w: 100, h: 100, bg: '$cyan500' }} />
+        <Box sx={{ w: 100, h: 100, bg: '$cyan600' }} />
+      </HStack>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```jsx
+import { HStack, Text } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => (
+  <HStack space="sm">
+    <Box sx={{ w: 100, h: 100, bg: '$cyan300' }} />
+    <Box sx={{ w: 100, h: 100, bg: '$cyan400' }} />
+    <Box sx={{ w: 100, h: 100, bg: '$cyan500' }} />
+    <Box sx={{ w: 100, h: 100, bg: '$cyan600' }} />
+  </HStack>
+);
+```
+
+## Props
+
+| Property | Type    | Description                                                 | Default |
+| -------- | ------- | ----------------------------------------------------------- | ------- |
+| space    | string  | It sets the space between children.                         | -       |
+| reversed | boolean | When true, it places the HStack items in reverse direction. | -       |
+
+For more information, see the [Gluestack HStack component documentation](https://gluestack.io/ui/docs/components/layout/hstack).

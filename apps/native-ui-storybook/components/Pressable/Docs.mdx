@@ -1,0 +1,35 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as PressableStories from './Pressable.stories';
+import { Center, Pressable, Text, NativeUIProvider } from '@utilitywarehouse/native-ui';
+
+<Meta of={PressableStories} />
+
+# Pressable
+
+By providing access to hover, pressed, and focus events, Pressable serves as a more flexible alternative to buttons at a lower level of abstraction. It is a useful primitive for advanced customization needs.
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Pressable onPress={() => alert('Hello')} p={12} bg="$cyan500">
+        <Text color="white">Press me</Text>
+      </Pressable>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```jsx
+import { Pressable, Text } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => (
+  <Pressable onPress={() => console.log('Hello')} p={12} bg="$cyan500">
+    <Text color="white">Press me</Text>
+  </Pressable>
+);
+```
+
+For more information, see the [Gluestack Center component documentation](https://gluestack.io/ui/docs/components/layout/center).
