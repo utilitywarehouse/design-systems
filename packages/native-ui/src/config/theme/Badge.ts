@@ -96,7 +96,7 @@ export const Badge = createStyle({
           color: '$grey900',
         },
         _text: {
-          color: '$grey00',
+          color: '$grey900',
         },
         _dark: {
           bg: '$darkGrey700',

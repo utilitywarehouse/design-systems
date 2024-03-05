@@ -8,7 +8,4 @@ export {
   flush,
 } from '@gluestack-ui/themed';
 
-export {
-  GluestackUIProvider as NativeUIProvider,
-  GluestackUIStyledProvider as NativeUIStyledProvider,
-} from '@gluestack-ui/themed';
+export { default as NativeUIProvider } from './NativeUIProvider';

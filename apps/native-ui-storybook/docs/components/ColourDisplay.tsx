@@ -31,18 +31,18 @@ export const ColourDisplay = ({ colorScale }: ColourDisplayProps) => {
             >
               <Box
                 sx={{
-                  width: 200,
+                  width: 80,
                   height: 20,
                 }}
               />
               <Box sx={cellStyle}>
-                <Text fontFamily="WorkSans-Bold">Name</Text>
+                <Text fontFamily="WorkSans-SemiBold">Name</Text>
               </Box>
               <Box sx={cellStyle}>
-                <Text fontFamily="WorkSans-Bold">Value</Text>
+                <Text fontFamily="WorkSans-SemiBold">Value</Text>
               </Box>
               <Box sx={cellStyle}>
-                <Text fontFamily="WorkSans-Bold">Description</Text>
+                <Text fontFamily="WorkSans-SemiBold">Description</Text>
               </Box>
             </Box>
             {Object.keys(colorScale[scale]).map(colour => {
@@ -56,23 +56,24 @@ export const ColourDisplay = ({ colorScale }: ColourDisplayProps) => {
                       flexDirection: 'row',
                       gap: 8,
                       alignItems: 'flex-start',
+                      flex: 0.16,
                     }}
                   >
                     <Box
                       sx={{
-                        width: 200,
+                        width: 80,
                         height: 60,
                         bg: value,
                         borderRadius: 8,
                       }}
                     />
-                    <Box sx={cellStyle}>
+                    <Box sx={cellStyle} flex={0.16}>
                       <Text>{name}</Text>
                     </Box>
-                    <Box sx={cellStyle}>
+                    <Box sx={cellStyle} flex={0.16}>
                       <Text>{value?.toUpperCase()}</Text>
                     </Box>
-                    <Box sx={cellStyle}>
+                    <Box sx={cellStyle} flexBasis="50%">
                       <Text sx={{ flex: 1, flexWrap: 'wrap' }}>{description}</Text>
                     </Box>
                   </Box>
