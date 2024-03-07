@@ -1,0 +1,48 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as VStackStories from './VStack.stories';
+import { VStack, Center, Box, NativeUIProvider } from '@utilitywarehouse/native-ui';
+
+<Meta of={VStackStories} />
+
+# VStack
+
+VStack organizes items vertically in a layout. Alternatively, you can use Column as an alias for VStack to achieve the same layout.
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <VStack space="sm">
+        <Box sx={{ w: 100, h: 100, bg: '$cyan300' }} />
+        <Box sx={{ w: 100, h: 100, bg: '$cyan400' }} />
+        <Box sx={{ w: 100, h: 100, bg: '$cyan500' }} />
+        <Box sx={{ w: 100, h: 100, bg: '$cyan600' }} />
+      </VStack>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```jsx
+import { VStack, Text } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => (
+  <VStack space="sm">
+    <Box sx={{ w: 100, h: 100, bg: '$cyan300' }} />
+    <Box sx={{ w: 100, h: 100, bg: '$cyan400' }} />
+    <Box sx={{ w: 100, h: 100, bg: '$cyan500' }} />
+    <Box sx={{ w: 100, h: 100, bg: '$cyan600' }} />
+  </VStack>
+);
+```
+
+## Props
+
+| Property | Type    | Description                                                 | Default |
+| -------- | ------- | ----------------------------------------------------------- | ------- |
+| space    | string  | It sets the space between children.                         | -       |
+| reversed | boolean | When true, it places the VStack items in reverse direction. | -       |
+
+For more information, see the [Gluestack VStack component documentation](https://gluestack.io/ui/docs/components/layout/vstack).

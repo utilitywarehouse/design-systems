@@ -20,7 +20,6 @@ const AlertVariants = () => {
         <AlertIcon as={TickMediumContainedIcon} />
         <AlertText>
           Boom! You did it! Please take a moment to pat yourself on the back. You've earned it!
-          Boom! You did it! Please take a moment to pat yourself on the back. You've earned it!
         </AlertText>
       </Alert>
       <Alert colorScheme="error">

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Alert, AlertIcon, AlertText, VStack, Icon } from '@utilitywarehouse/native-ui';
-import { Meta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 
-const AlertBasic = ({ link, onPressIconButton, onClose, ...props }: any) => {
+const AlertBasic: StoryFn = ({ link, onPressIconButton, onClose, ...props }: any) => {
   const [args, setArgs] = useArgs();
   const handlePressLink = () => {
     alert('Link Pressed!');
@@ -64,17 +64,15 @@ AlertBasic.argTypes = {
   },
 } as Meta<typeof Alert>['argTypes'];
 
+// @ts-expect-error
 AlertBasic.args = {
   colorScheme: 'info',
   title: 'Information',
   text: 'Unlock the power of knowledge with the following information.',
   link: 'Learn more',
-  onClose: false,
+  onClose: true,
   onPressIconButton: false,
-};
-
-AlertBasic.description =
-  'This is a basic Alert component example. Alerts are used to communicate a state that affects a system, feature or page';
+} as Meta<typeof Alert>['args'];
 
 export default AlertBasic;
 

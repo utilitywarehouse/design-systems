@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/react';
 import Badge from './Badge';
+import Variants from './Variants';
 
 const BadgeMeta: Meta<typeof Badge> = {
   title: 'components/Badge',
@@ -10,31 +11,8 @@ const BadgeMeta: Meta<typeof Badge> = {
     componentDescription:
       'The badge component lets you quickly and easily add status indicators to your interface for improved usability. They are designed to be attention-grabbing and quickly convey important information.',
   },
-  argTypes: {
-    colorScheme: {
-      control: 'select',
-      options: ['cyan', 'red', 'green', 'gold', 'grey'],
-    },
-    borderless: {
-      control: 'boolean',
-    },
-    strong: {
-      control: 'boolean',
-    },
-    size: {
-      control: 'select',
-      options: ['large', 'small'],
-    },
-  },
-  args: {
-    text: 'New Feature',
-    strong: false,
-    borderless: false,
-    colorScheme: 'cyan',
-    size: 'large',
-  },
 };
 
 export default BadgeMeta;
 
-export { Badge };
+export { Badge as Playground, Variants };

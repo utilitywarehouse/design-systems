@@ -43,7 +43,7 @@ The Alert offers different colour schemes, the colour scheme is mapped to an ico
 > This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
 
 <Canvas>
-  <NativeUIProvider config={config}>
+  <NativeUIProvider>
     <Alert
       colorScheme="info"
       title="Information"
@@ -85,7 +85,7 @@ For more information, see the [Gluestack Alert component documentation](https://
 If you need to use the Alert component in a more advanced way, you can use the parts of the component directly.
 
 <Canvas>
-  <NativeUIProvider config={config}>
+  <NativeUIProvider>
     <Alert colorScheme="info">
       <AlertIcon as={InformationMediumContainedIcon} />
       <VStack flex={1} gap={4}>

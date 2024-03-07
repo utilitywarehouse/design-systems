@@ -1,7 +1,7 @@
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import type { Preview } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
-import { NativeUIProvider, Box, config } from '@utilitywarehouse/native-ui';
+import { NativeUIProvider, Box } from '@utilitywarehouse/native-ui';
 import { useColorScheme } from 'react-native';
 import { useArgs } from '@storybook/preview-api';
 import { Linking } from 'react-native';
@@ -45,7 +45,7 @@ const preview: Preview = {
       }, [theme]);
 
       return (
-        <NativeUIProvider colorMode={theneColourMode} config={config}>
+        <NativeUIProvider colorMode={theneColourMode}>
           <Box flex={1} backgroundColor={theneColourMode === 'dark' ? '#1D1D1D' : '$brandWhite'}>
             <Box m="$10">
               <Story />

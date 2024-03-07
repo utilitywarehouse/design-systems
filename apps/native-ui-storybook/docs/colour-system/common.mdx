@@ -1,13 +1,27 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, ColorItem, ColorPalette } from '@storybook/blocks';
 
-import { ColourDisplay } from '../components/ColourDisplay.tsx';
 import common from '../../../../packages/colour-system/lib/common.json';
-import { NativeUIProvider, config } from '../../../../packages/native-ui/src';
 
 <Meta title="Colour System / Common" />
 
 # Common Colours
 
-<NativeUIProvider config={config}>
-  <ColourDisplay colorScale={common} />
-</NativeUIProvider>
+<ColorPalette>
+  <ColorItem
+    title="Brand"
+    subtitle={`common.brand`}
+    colors={common['brand'].reduce((acc, key) => {
+      acc[key.name] = key.value;
+      return acc;
+    }, {})}
+  />
+  <ColorItem
+    title="Service"
+    subtitle={`common.service`}
+    colors={common['service'].reduce((acc, key) => {
+      acc[key.name] = key.value;
+      return acc;
+    }, {})}
+  />
+
+</ColorPalette>

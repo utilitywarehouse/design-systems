@@ -1,0 +1,49 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as BoxStories from './Box.stories';
+import { Box, Text, NativeUIProvider, Center } from '@utilitywarehouse/native-ui';
+
+<Meta of={BoxStories} />
+
+# Box
+
+If you're looking for a flexible component to help with low-level layout needs, the Box component might be just what you need. With its customizable styles and props, it can be used to create a wide range of UI elements, from simple containers to complex layout structures.
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Box
+        sx={{
+          padding: 20,
+          margin: 15,
+          backgroundColor: '$cyan500',
+          borderRadius: 8,
+        }}
+      >
+        <Text color="white">Hello, world!</Text>
+      </Box>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```jsx
+import { Box, Text } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => (
+  <Box
+    sx={{
+      padding: 20,
+      margin: 15,
+      backgroundColor: '$cyan500',
+      borderRadius: 8,
+    }}
+  >
+    <Text color="white">Hello, world!</Text>
+  </Box>
+);
+```
+
+For more information, see the [Gluestack Box component documentation](https://gluestack.io/ui/docs/components/layout/box).

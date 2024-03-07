@@ -1,6 +1,6 @@
 import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
 import * as BadgeStories from './Badge.stories';
-import { Badge, BadgeText, Center, NativeUIProvider, config } from '@utilitywarehouse/native-ui';
+import { Badge, BadgeText, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
 
 <Meta of={BadgeStories} />
 
@@ -23,7 +23,7 @@ Use the `Badge` component to draw attention to another interface element or to p
 > This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
 
 <Canvas>
-  <NativeUIProvider config={config}>
+  <NativeUIProvider>
     <Center>
       <Badge colorScheme="green">
         <BadgeText>Ready</BadgeText>

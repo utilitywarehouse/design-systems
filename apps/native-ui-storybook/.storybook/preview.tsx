@@ -1,6 +1,6 @@
 import type { Preview, Decorator } from '@storybook/react';
 import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
-import { Box, Center, NativeUIProvider, config } from '@utilitywarehouse/native-ui';
+import { Box, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
 import { PlatformContextProvider } from '../contexts/PlatformContext';
 import { useStoryContext, useArgs, useGlobals, getQueryParams } from '@storybook/preview-api';
 import '../assets/style.css';
@@ -23,7 +23,7 @@ export const decorators: Decorator[] = [
     const device = globals.device;
 
     return viewMode === 'story' ? (
-      <NativeUIProvider colorMode={colorScheme} config={config}>
+      <NativeUIProvider colorMode={colorScheme}>
         <PlatformContextProvider
           args={args}
           id={id}
@@ -54,7 +54,7 @@ export const decorators: Decorator[] = [
         </PlatformContextProvider>
       </NativeUIProvider>
     ) : (
-      <NativeUIProvider colorMode={colorScheme} config={config}>
+      <NativeUIProvider colorMode={colorScheme}>
         <Center padding={20} bg={colorScheme === 'light' ? lightColour : darkColour}>
           <Story />
         </Center>
@@ -120,7 +120,7 @@ const preview: Preview = {
           'Native UI',
           ['Introduction', 'Guides', 'Tokens', 'Layout', 'Typography', 'Components', 'Lab'],
           'Colour System',
-          ['Introduction', 'Common', 'Colors'],
+          ['Introduction', 'Common', 'Colors Light'],
         ],
       },
     },
