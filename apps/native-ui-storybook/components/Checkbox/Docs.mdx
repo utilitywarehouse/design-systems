@@ -1,0 +1,130 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as CheckboxStories from './Checkbox.stories';
+import {
+  CheckIcon,
+  Checkbox,
+  CheckboxGroup,
+  CheckboxIndicator,
+  CheckboxIcon,
+  CheckboxLabel,
+  Center,
+  NativeUIProvider,
+} from '@utilitywarehouse/native-ui';
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+Whether you're building a simple form or a complex data collection system, the Checkbox component offers a user-friendly way for users to select multiple options from a list.
+
+- Use checkboxes (instead of Toggle Switch or Radio) if multiple options can be selected from a list
+- On table rows
+- On multiple selection components, such as a Multi Select Component.
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <CheckboxGroup
+        aria-label="Checkbox Group"
+        value={['Label 1']}
+        nativeID="checkbox-group"
+        gap="$2"
+      >
+        <Checkbox
+          size={props.size}
+          isInvalid={props.isInvalid}
+          isIndeterminate
+          value="Label 1"
+          aria-label="Label 1"
+          onChange={() =>
+            console.log(isSelected, '###')
+          }
+          nativeID="checkbox-1"
+          gap="$2"
+        >
+          <CheckboxIndicator>
+            <CheckboxIcon as={CheckIcon} />
+          </CheckboxIndicator>
+          <CheckboxLabel>Label 1</CheckboxLabel>
+        </Checkbox>
+        <Checkbox
+          isInvalid={props.isInvalid}
+          size={props.size}
+          aria-label="Label 2"
+          value="Label 2"
+          onChange={() =>
+            console.log(isSelected, '###')
+          }
+          nativeID="checkbox-2"
+          gap="$2"
+        >
+          <CheckboxIndicator>
+            <CheckboxIcon as={CheckIcon} />
+          </CheckboxIndicator>
+          <CheckboxLabel>Label 2</CheckboxLabel>
+        </Checkbox>
+      </CheckboxGroup>
+    </Center>
+
+  </NativeUIProvider>
+</Canvas>
+
+```jsx
+import {
+  CheckIcon,
+  Checkbox,
+  CheckboxGroup,
+  CheckboxIndicator,
+  CheckboxIcon,
+  CheckboxLabel,
+} from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const [values, setValues] = React.useState(['Label 1']);
+  return (
+    <CheckboxGroup
+      aria-label="Checkbox Group"
+      value={['Label 1']}
+      onChange={setValues}
+      nativeID="checkbox-group"
+      gap="$2"
+    >
+      <Checkbox
+        size={props.size}
+        isInvalid={props.isInvalid}
+        isIndeterminate
+        value="Label 1"
+        aria-label="Label 1"
+        onChange={() => console.log(isSelected, '###')}
+        nativeID="checkbox-1"
+        gap="$2"
+      >
+        <CheckboxIndicator>
+          <CheckboxIcon as={CheckIcon} />
+        </CheckboxIndicator>
+        <CheckboxLabel>Label 1</CheckboxLabel>
+      </Checkbox>
+      <Checkbox
+        isInvalid={props.isInvalid}
+        size={props.size}
+        aria-label="Label 2"
+        value="Label 2"
+        onChange={() => console.log(isSelected, '###')}
+        nativeID="checkbox-2"
+        gap="$2"
+      >
+        <CheckboxIndicator>
+          <CheckboxIcon as={CheckIcon} />
+        </CheckboxIndicator>
+        <CheckboxLabel>Label 2</CheckboxLabel>
+      </Checkbox>
+    </CheckboxGroup>
+  );
+};
+```
+
+For more information, see the [Gluestack Checkbox component documentation](https://gluestack.io/ui/docs/components/forms/checkbox).

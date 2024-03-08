@@ -3,9 +3,9 @@ import { createStyle } from '@gluestack-style/react';
 export const Badge = createStyle({
   flexDirection: 'row',
   alignItems: 'center',
-  paddingHorizontal: 8,
-  borderRadius: 4,
-  paddingVertical: 4,
+  paddingHorizontal: '$2',
+  borderRadius: '$sm',
+  paddingVertical: '$1',
   alignSelf: 'flex-start',
   _text: {
     fontSize: '$badge',
@@ -125,10 +125,10 @@ export const Badge = createStyle({
 
     size: {
       large: {
-        paddingVertical: 4,
+        paddingVertical: '$1',
       },
       small: {
-        paddingVertical: 2,
+        paddingVertical: '$0.5',
       },
     },
   },
