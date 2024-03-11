@@ -1,63 +1,59 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const CheckboxLabel = createStyle({
-  'color': '$textLight600',
+  color: '$brandMidnight',
   ':checked': {
-    color: '$textLight900',
+    color: '$brandMidnight',
   },
   ':hover': {
-    'color': '$textLight900',
+    color: '$brandMidnight',
     ':checked': {
-      'color': '$textLight900',
+      color: '$brandMidnight',
       ':disabled': {
-        color: '$textLight900',
+        color: '$brandMidnight',
       },
     },
     ':disabled': {
-      color: '$textLight600',
+      color: '$brandMidnight',
     },
   },
   ':active': {
-    'color': '$textLight900',
+    color: '$brandMidnight',
 
     ':checked': {
-      color: '$textLight900',
+      color: '$brandMidnight',
     },
   },
 
-  ':disabled': {
-    opacity: 0.4,
-  },
-
-  '_web': {
+  _web: {
     MozUserSelect: 'none',
     WebkitUserSelect: 'none',
     msUserSelect: 'none',
   },
-  'userSelect': 'none',
-  '_dark': {
-    'color': '$textDark400',
+  userSelect: 'none',
+  _dark: {
+    color: '$brandWhite',
     ':checked': {
-      color: '$textDark100',
+      color: '$brandWhite',
     },
     ':hover': {
-      'color': '$textDark100',
+      color: '$brandWhite',
       ':checked': {
-        'color': '$textDark100',
+        color: '$brandWhite',
         ':disabled': {
-          color: '$textDark100',
+          color: '$brandWhite',
         },
       },
     },
     ':disabled': {
-      color: '$textDark100',
+      color: '$brandWhite',
     },
 
     ':active': {
-      'color': '$textDark100',
+      color: '$brandWhite',
 
       ':checked': {
-        color: '$textDark100',
+        color: '$brandWhite',
       },
     },
   },

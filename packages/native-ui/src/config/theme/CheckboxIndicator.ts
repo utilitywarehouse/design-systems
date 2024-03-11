@@ -1,48 +1,50 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const CheckboxIndicator = createStyle({
-  'justifyContent': 'center',
-  'alignItems': 'center',
-  'borderColor': '$borderLight400',
-  'bg': '$transparent',
-  'borderRadius': 4,
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderColor: '$grey500',
+  bg: '$transparent',
+  height: '$6',
+  width: '$6',
+  borderRadius: 4,
+  borderWidth: 2,
 
-  '_web': {
+  _web: {
     ':focusVisible': {
       outlineWidth: '2px',
-      outlineColor: '$primary700',
+      outlineColor: '$cyan700',
       outlineStyle: 'solid',
       _dark: {
-        outlineColor: '$primary300',
+        outlineColor: '$darkCyan500',
       },
     },
   },
 
   ':checked': {
-    borderColor: '$primary600',
-    bg: '$primary600',
+    borderColor: '$cyan500',
+    bg: '$cyan500',
   },
 
   ':hover': {
-    'borderColor': '$borderLight500',
-    'bg': 'transparent',
+    borderColor: '$grey500',
+    bg: '$transparent',
     ':invalid': {
       borderColor: '$error700',
     },
     ':checked': {
-      'bg': '$primary700',
-      'borderColor': '$primary700',
+      borderColor: '$cyan500',
+      bg: '$cyan500',
       ':disabled': {
-        'borderColor': '$primary600',
-        'bg': '$primary600',
-        'opacity': 0.4,
+        bg: '$grey150',
+        borderColor: '$grey150',
         ':invalid': {
           borderColor: '$error700',
         },
       },
     },
     ':disabled': {
-      'borderColor': '$borderLight400',
+      borderColor: '$grey400',
       ':invalid': {
         borderColor: '$error700',
       },
@@ -59,37 +61,43 @@ export const CheckboxIndicator = createStyle({
     borderColor: '$error700',
   },
   ':disabled': {
-    opacity: 0.4,
+    borderColor: '$grey400',
+    ':checked': {
+      bg: '$grey150',
+      borderColor: '$grey150',
+      _icon: {
+        color: '$grey400',
+      },
+    },
   },
 
-  '_dark': {
-    'borderColor': '$borderDark500',
-    'bg': '$transparent',
+  _dark: {
+    borderColor: '$darkGrey600',
+    bg: '$transparent',
 
     ':checked': {
-      borderColor: '$primary500',
-      bg: '$primary500',
+      borderColor: '$darkCyan700',
+      bg: '$darkCyan700',
     },
     ':hover': {
-      'borderColor': '$borderDark400',
-      'bg': 'transparent',
+      borderColor: '$darkGrey600',
+      bg: 'transparent',
       ':invalid': {
         borderColor: '$error400',
       },
       ':checked': {
-        'bg': '$primary400',
-        'borderColor': '$primary400',
+        bg: '$darkCyan700',
+        borderColor: '$darkCyan700',
         ':disabled': {
-          'borderColor': '$primary500',
-          'bg': '$primary500',
-          'opacity': 0.4,
+          borderColor: '$darkGrey700',
+          bg: '$darkGrey700',
           ':invalid': {
             borderColor: '$error400',
           },
         },
       },
       ':disabled': {
-        'borderColor': '$borderDark500',
+        borderColor: '$darkGrey400',
         ':invalid': {
           borderColor: '$error400',
         },
@@ -104,9 +112,6 @@ export const CheckboxIndicator = createStyle({
 
     ':invalid': {
       borderColor: '$error400',
-    },
-    ':disabled': {
-      opacity: 0.4,
     },
   },
 });

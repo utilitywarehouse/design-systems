@@ -6,16 +6,10 @@ export { Center } from '@gluestack-ui/themed';
 export { Divider } from '@gluestack-ui/themed';
 export { HStack, VStack } from '@gluestack-ui/themed';
 
-export {
-  Button,
-  ButtonText,
-  ButtonGroup,
-  ButtonIcon,
-  ButtonSpinner,
-} from '@gluestack-ui/themed';
+export { Button, ButtonText, ButtonGroup, ButtonIcon, ButtonSpinner } from '@gluestack-ui/themed';
 
 export {
-  Checkbox,
+  // Checkbox,
   CheckboxGroup,
   CheckboxIcon,
   CheckboxIndicator,
@@ -38,13 +32,7 @@ export { Input, InputField, InputIcon, InputSlot } from '@gluestack-ui/themed';
 
 export { Link, LinkText } from '@gluestack-ui/themed';
 export { Pressable } from '@gluestack-ui/themed';
-export {
-  Radio,
-  RadioGroup,
-  RadioIcon,
-  RadioIndicator,
-  RadioLabel,
-} from '@gluestack-ui/themed';
+export { Radio, RadioGroup, RadioIcon, RadioIndicator, RadioLabel } from '@gluestack-ui/themed';
 export {
   Select,
   SelectBackdrop,
@@ -63,12 +51,7 @@ export {
   SelectTrigger,
   SelectVirtualizedList,
 } from '@gluestack-ui/themed';
-export {
-  Slider,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
-} from '@gluestack-ui/themed';
+export { Slider, SliderFilledTrack, SliderThumb, SliderTrack } from '@gluestack-ui/themed';
 export { Switch } from '@gluestack-ui/themed';
 export { Textarea, TextareaInput } from '@gluestack-ui/themed';
 export {
