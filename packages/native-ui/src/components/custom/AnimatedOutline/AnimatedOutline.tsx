@@ -18,7 +18,7 @@ const AnimatedCircle = styled(AnimatedView, {
   },
   ':initial': {
     opacity: 0.4,
-    scale: 0.1,
+    scale: 0.8,
   },
   ':animate': {
     opacity: 1,
@@ -26,7 +26,7 @@ const AnimatedCircle = styled(AnimatedView, {
   },
   ':exit': {
     opacity: 0,
-    scale: 0.1,
+    scale: 0.4,
   },
 });
 

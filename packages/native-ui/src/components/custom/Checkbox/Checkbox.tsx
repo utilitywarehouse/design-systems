@@ -8,7 +8,10 @@ import {
 import AnimatedOutline from '../AnimatedOutline';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 
-type CheckboxProps = ComponentProps<typeof GSCheckbox> & { label?: string };
+type CheckboxProps = Omit<
+  ComponentProps<typeof GSCheckbox>,
+  'onPressIn' | 'onPressOut' | 'onPointerUp' | 'onPointerDown'
+> & { label?: string };
 
 const Checkbox: React.FC<CheckboxProps> = props => {
   const [show, setShow] = React.useState(false);
@@ -18,11 +21,10 @@ const Checkbox: React.FC<CheckboxProps> = props => {
   ) : (
     <GSCheckbox
       {...props}
-      onChange={(isSelected: boolean) => {
-        setShow(true);
-        setTimeout(() => setShow(false), 500);
-        props.onChange?.(isSelected);
-      }}
+      onPressIn={() => setShow(true)}
+      onPressOut={() => setTimeout(() => setShow(false), 250)}
+      onPointerUp={() => setTimeout(() => setShow(false), 250)}
+      onPointerDown={() => setShow(true)}
     >
       <AnimatedOutline show={show}>
         <CheckboxIndicator>
