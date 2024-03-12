@@ -14,6 +14,7 @@ type CheckboxProps = Omit<
 > & { label?: string };
 
 const Checkbox: React.FC<CheckboxProps> = props => {
+  const { label } = props;
   const [show, setShow] = React.useState(false);
 
   return props.children ? (
@@ -31,7 +32,7 @@ const Checkbox: React.FC<CheckboxProps> = props => {
           <CheckboxIcon as={TickSmallIcon} />
         </CheckboxIndicator>
       </AnimatedOutline>
-      {!!props.label && <CheckboxLabel>Label 1</CheckboxLabel>}
+      {!!label && <CheckboxLabel>{label}</CheckboxLabel>}
     </GSCheckbox>
   );
 };

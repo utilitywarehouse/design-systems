@@ -4,18 +4,24 @@ export const CheckboxLabel = createStyle({
   color: '$brandMidnight',
   ':checked': {
     color: '$brandMidnight',
+    ':disabled': {
+      color: '$grey400',
+    },
   },
   ':hover': {
     color: '$brandMidnight',
     ':checked': {
       color: '$brandMidnight',
       ':disabled': {
-        color: '$brandMidnight',
+        color: '$grey400',
       },
     },
     ':disabled': {
-      color: '$brandMidnight',
+      color: '$grey400',
     },
+  },
+  ':disabled': {
+    color: '$grey400',
   },
   ':active': {
     color: '$brandMidnight',
@@ -35,18 +41,21 @@ export const CheckboxLabel = createStyle({
     color: '$brandWhite',
     ':checked': {
       color: '$brandWhite',
+      ':disabled': {
+        color: '$darkGrey700',
+      },
     },
     ':hover': {
       color: '$brandWhite',
       ':checked': {
         color: '$brandWhite',
         ':disabled': {
-          color: '$brandWhite',
+          color: '$darkGrey700',
         },
       },
     },
     ':disabled': {
-      color: '$brandWhite',
+      color: '$darkGrey700',
     },
 
     ':active': {

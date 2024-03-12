@@ -4,6 +4,7 @@ export const Checkbox = createStyle({
   flexDirection: 'row',
   justifyContent: 'flex-start',
   alignItems: 'center',
+  gap: '$2',
 
   variants: {},
 

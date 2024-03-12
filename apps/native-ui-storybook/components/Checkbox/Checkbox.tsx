@@ -18,7 +18,6 @@ const CheckboxGroupBasic = ({ ...props }: any) => {
         value={values}
         onChange={setValues}
         nativeID="checkbox-group"
-        gap="$2"
       >
         <Checkbox
           isInvalid={props.isInvalid}
@@ -29,7 +28,6 @@ const CheckboxGroupBasic = ({ ...props }: any) => {
             console.log(isSelected, '###');
           }}
           nativeID="checkbox-1"
-          gap="$2"
           label="Label 1"
         />
         <Checkbox
@@ -41,7 +39,7 @@ const CheckboxGroupBasic = ({ ...props }: any) => {
             console.log(isSelected, '###');
           }}
           nativeID="checkbox-11"
-          gap="$2"
+          label="Label 11"
         />
         <Checkbox
           isInvalid={props.isInvalid}
