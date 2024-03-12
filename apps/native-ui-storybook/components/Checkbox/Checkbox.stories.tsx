@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/react';
 import Checkbox from './Checkbox';
+import Variants from './Variants';
 
 const CheckboxMeta: Meta<typeof Checkbox> = {
   title: 'components/Checkbox',
@@ -9,37 +10,7 @@ const CheckboxMeta: Meta<typeof Checkbox> = {
   metaInfo: {
     componentDescription: `Whether you're building a simple form or a complex data collection system, the Checkbox component offers a user-friendly way for users to select multiple options from a list.`,
   },
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    isChecked: {
-      type: 'boolean',
-      options: [true, false],
-    },
-    isInvalid: {
-      type: 'boolean',
-      options: [true, false],
-    },
-    isDisabled: {
-      type: 'boolean',
-      options: [true, false],
-    },
-    isReadOnly: {
-      type: 'boolean',
-      figmaIgnore: true,
-      options: [true, false],
-    },
-  },
-  args: {
-    size: 'md',
-    isInvalid: false,
-    isDisabled: false,
-    isReadOnly: false,
-    isChecked: false,
-  },
 };
 
 export default CheckboxMeta;
-export { Checkbox };
+export { Checkbox as Playground, Variants };

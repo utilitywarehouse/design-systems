@@ -1,7 +1,6 @@
-import { Meta, Canvas, Story } from '@storybook/blocks';
+import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
 import * as CheckboxStories from './Checkbox.stories';
 import {
-  CheckIcon,
   Checkbox,
   CheckboxGroup,
   CheckboxIndicator,
@@ -10,6 +9,7 @@ import {
   Center,
   NativeUIProvider,
 } from '@utilitywarehouse/native-ui';
+import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 
 <Meta of={CheckboxStories} />
 
@@ -21,9 +21,61 @@ Whether you're building a simple form or a complex data collection system, the C
 - On table rows
 - On multiple selection components, such as a Multi Select Component.
 
+## Playground
+
+<Primary />
+
+<Controls />
+
 ## Usage
 
 > This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Checkbox
+        value="Label"
+        onChange={() => console.log(isSelected, '###')}
+        label="I accept the terms and conditions"
+      />
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Checkbox } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const [accepted, setAccepted] = React.useState(false);
+  return (
+    <Checkbox
+      value="Label"
+      onChange={(isSelected: boolean) => setAccepted(isSelected)}
+      label="I accept the terms and conditions"
+    />
+  );
+};
+```
+
+## Props
+
+| Property           | Type                       | Default | Description                                                                                                          |
+| ------------------ | -------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
+| `value`            | `string`                   | -       | The value to be used in the checkbox input. This is the value that will be returned on form submission.              |
+| `onChange`         | `(value: boolean) => void` | -       | Function called when the state of the checkbox changes.                                                              |
+| `defaultIsChecked` | `bool`                     | `false` | If true, the checkbox will be initially checked.                                                                     |
+| `isChecked`        | `bool`                     | `false` | When true, the checkbox will be checked. You'll need to pass onChange update it's value (since it's now controlled). |
+| `isDisabled`       | `bool`                     | `false` | To manually set disable to the checkbox.                                                                             |
+| `isInvalid`        | `bool`                     | `false` | To manually set invalid to the checkbox.                                                                             |
+| `isReadOnly`       | `bool`                     | `false` | To manually set read-only to the checkbox.                                                                           |
+| `isHovered`        | `bool`                     | `false` | To manually set hover to the checkbox.                                                                               |
+| `isFocusVisible`   | `bool`                     | `false` | To manually set focus visible state to the checkbox.                                                                 |
+| `isIndeterminate`  | `bool`                     | `false` | To manually set indeterminate to the checkbox.                                                                       |
+
+For more information, see the [Gluestack Checkbox component documentation](https://gluestack.io/ui/docs/components/forms/checkbox).
+
+## Advanced Usage
 
 <Canvas>
   <NativeUIProvider>
@@ -32,38 +84,28 @@ Whether you're building a simple form or a complex data collection system, the C
         aria-label="Checkbox Group"
         value={['Label 1']}
         nativeID="checkbox-group"
-        gap="$2"
       >
         <Checkbox
-          size={props.size}
-          isInvalid={props.isInvalid}
-          isIndeterminate
           value="Label 1"
           aria-label="Label 1"
           onChange={() =>
             console.log(isSelected, '###')
           }
-          nativeID="checkbox-1"
-          gap="$2"
         >
           <CheckboxIndicator>
-            <CheckboxIcon as={CheckIcon} />
+            <CheckboxIcon as={TickSmallIcon} />
           </CheckboxIndicator>
           <CheckboxLabel>Label 1</CheckboxLabel>
         </Checkbox>
         <Checkbox
-          isInvalid={props.isInvalid}
-          size={props.size}
-          aria-label="Label 2"
           value="Label 2"
+          aria-label="Label 2"
           onChange={() =>
             console.log(isSelected, '###')
           }
-          nativeID="checkbox-2"
-          gap="$2"
         >
           <CheckboxIndicator>
-            <CheckboxIcon as={CheckIcon} />
+            <CheckboxIcon as={TickSmallIcon} />
           </CheckboxIndicator>
           <CheckboxLabel>Label 2</CheckboxLabel>
         </Checkbox>
@@ -75,7 +117,6 @@ Whether you're building a simple form or a complex data collection system, the C
 
 ```jsx
 import {
-  CheckIcon,
   Checkbox,
   CheckboxGroup,
   CheckboxIndicator,
@@ -83,25 +124,21 @@ import {
   CheckboxLabel,
 } from '@utilitywarehouse/native-ui';
 
+import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
+
 const MyComponent = () => {
   const [values, setValues] = React.useState(['Label 1']);
   return (
     <CheckboxGroup
       aria-label="Checkbox Group"
-      value={['Label 1']}
+      value={values}
       onChange={setValues}
       nativeID="checkbox-group"
-      gap="$2"
     >
       <Checkbox
-        size={props.size}
-        isInvalid={props.isInvalid}
-        isIndeterminate
         value="Label 1"
         aria-label="Label 1"
         onChange={() => console.log(isSelected, '###')}
-        nativeID="checkbox-1"
-        gap="$2"
       >
         <CheckboxIndicator>
           <CheckboxIcon as={CheckIcon} />
@@ -109,13 +146,9 @@ const MyComponent = () => {
         <CheckboxLabel>Label 1</CheckboxLabel>
       </Checkbox>
       <Checkbox
-        isInvalid={props.isInvalid}
-        size={props.size}
-        aria-label="Label 2"
         value="Label 2"
+        aria-label="Label 2"
         onChange={() => console.log(isSelected, '###')}
-        nativeID="checkbox-2"
-        gap="$2"
       >
         <CheckboxIndicator>
           <CheckboxIcon as={CheckIcon} />
@@ -126,5 +159,3 @@ const MyComponent = () => {
   );
 };
 ```
-
-For more information, see the [Gluestack Checkbox component documentation](https://gluestack.io/ui/docs/components/forms/checkbox).

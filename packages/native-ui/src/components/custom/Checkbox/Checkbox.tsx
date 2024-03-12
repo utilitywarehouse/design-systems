@@ -14,10 +14,10 @@ type CheckboxProps = Omit<
 > & { label?: string };
 
 const Checkbox: React.FC<CheckboxProps> = props => {
-  const { label } = props;
+  const { label, isDisabled, children } = props;
   const [show, setShow] = React.useState(false);
 
-  return props.children ? (
+  return children ? (
     <GSCheckbox {...props} />
   ) : (
     <GSCheckbox
@@ -27,7 +27,7 @@ const Checkbox: React.FC<CheckboxProps> = props => {
       onPointerUp={() => setTimeout(() => setShow(false), 250)}
       onPointerDown={() => setShow(true)}
     >
-      <AnimatedOutline show={show}>
+      <AnimatedOutline show={!isDisabled && show}>
         <CheckboxIndicator>
           <CheckboxIcon as={TickSmallIcon} />
         </CheckboxIndicator>
