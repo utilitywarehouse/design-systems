@@ -2,7 +2,7 @@ import React from 'react';
 import { Checkbox } from '@utilitywarehouse/native-ui';
 import { useArgs } from '@storybook/preview-api';
 
-const CheckboxBasic = ({ isDisabled, isInvalid, label, isReadOnly }) => {
+const CheckboxBasic = ({ isDisabled, isFocusVisible, label }) => {
   const [args, updateArgs] = useArgs();
 
   return (
@@ -15,8 +15,7 @@ const CheckboxBasic = ({ isDisabled, isInvalid, label, isReadOnly }) => {
       nativeID="checkbox-1"
       isChecked={args.isChecked}
       isDisabled={isDisabled}
-      isInvalid={isInvalid}
-      isReadOnly={isReadOnly}
+      isFocusVisible={isFocusVisible}
       label={label}
     />
   );
@@ -29,15 +28,11 @@ CheckboxBasic.argTypes = {
     type: 'boolean',
     control: 'boolean',
   },
-  isInvalid: {
-    type: 'boolean',
-    control: 'boolean',
-  },
   isDisabled: {
     type: 'boolean',
     control: 'boolean',
   },
-  isReadOnly: {
+  isFocusVisible: {
     type: 'boolean',
     control: 'boolean',
   },
@@ -49,10 +44,9 @@ CheckboxBasic.argTypes = {
 
 CheckboxBasic.args = {
   label: '',
-  isInvalid: false,
   isDisabled: false,
-  isReadOnly: false,
   isChecked: false,
+  isFocusVisible: false,
 };
 
 export default CheckboxBasic;

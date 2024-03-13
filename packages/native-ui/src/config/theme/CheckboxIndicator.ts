@@ -29,32 +29,24 @@ export const CheckboxIndicator = createStyle({
   ':hover': {
     borderColor: '$grey500',
     bg: '$transparent',
-    ':invalid': {
-      borderColor: '$error700',
-    },
+
     ':checked': {
       borderColor: '$cyan500',
       bg: '$cyan500',
       ':disabled': {
         bg: '$grey150',
         borderColor: '$grey150',
-        ':invalid': {
-          borderColor: '$error700',
-        },
       },
     },
     ':disabled': {
       borderColor: '$grey400',
-      ':invalid': {
-        borderColor: '$error700',
-      },
     },
   },
 
   ':active': {
     ':checked': {
-      bg: '$primary800',
-      borderColor: '$primary800',
+      borderColor: '$cyan500',
+      bg: '$cyan500',
     },
   },
   ':invalid': {
@@ -82,9 +74,6 @@ export const CheckboxIndicator = createStyle({
     ':hover': {
       borderColor: '$darkGrey600',
       bg: 'transparent',
-      ':invalid': {
-        borderColor: '$error400',
-      },
       ':checked': {
         bg: '$darkCyan700',
         borderColor: '$darkCyan700',
@@ -98,20 +87,13 @@ export const CheckboxIndicator = createStyle({
       },
       ':disabled': {
         borderColor: '$darkGrey400',
-        ':invalid': {
-          borderColor: '$error400',
-        },
       },
     },
     ':active': {
       ':checked': {
-        bg: '$primary300',
-        borderColor: '$primary300',
+        borderColor: '$darkCyan700',
+        bg: '$darkCyan700',
       },
-    },
-
-    ':invalid': {
-      borderColor: '$error400',
     },
   },
 });

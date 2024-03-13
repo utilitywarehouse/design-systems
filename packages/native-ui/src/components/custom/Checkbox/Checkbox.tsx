@@ -10,7 +10,7 @@ import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 
 type CheckboxProps = Omit<
   ComponentProps<typeof GSCheckbox>,
-  'onPressIn' | 'onPressOut' | 'onPointerUp' | 'onPointerDown'
+  'onPressIn' | 'onPressOut' | 'onPointerUp' | 'onPointerDown' | 'isInvalid' | 'isReadOnly'
 > & { label?: string };
 
 const Checkbox: React.FC<CheckboxProps> = props => {
