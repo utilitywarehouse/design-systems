@@ -8,7 +8,7 @@ export { HStack, VStack } from '@gluestack-ui/themed';
 
 export { Button, ButtonText, ButtonGroup, ButtonIcon, ButtonSpinner } from '@gluestack-ui/themed';
 
-export { Checkbox, CheckboxGroup, CheckboxIcon, CheckboxLabel } from '@gluestack-ui/themed';
+export { Checkbox, CheckboxGroup, CheckboxLabel } from '@gluestack-ui/themed';
 
 export {
   FormControl,
