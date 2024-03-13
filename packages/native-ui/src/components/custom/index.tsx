@@ -1,4 +1,4 @@
 export * from './IconButton';
 export * from './Alert';
 export { default as AnimatedOutline } from './AnimatedOutline';
-export { default as Checkbox } from './Checkbox';
+export { default as CheckboxIndicator } from './CheckboxIndicator';

@@ -1,5 +1,0 @@
-{
-  "dependencies": { "@gluestack-ui/button": "latest" },
-  "componentDependencies": ["Checkbox", "CheckboxIndicator", "CheckboxLabel", "CheckboxIcon"],
-  "keywords": ["components", "core"]
-}

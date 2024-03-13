@@ -1,8 +1,8 @@
 import React from 'react';
-import { Checkbox } from '@utilitywarehouse/native-ui';
+import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/native-ui';
 import { useArgs } from '@storybook/preview-api';
 
-const CheckboxBasic = ({ isDisabled, isFocusVisible, label }) => {
+const CheckboxBasic = ({ isDisabled, isFocusVisible, CheckboxLabel: label }: any) => {
   const [args, updateArgs] = useArgs();
 
   return (
@@ -16,8 +16,10 @@ const CheckboxBasic = ({ isDisabled, isFocusVisible, label }) => {
       isChecked={args.isChecked}
       isDisabled={isDisabled}
       isFocusVisible={isFocusVisible}
-      label={label}
-    />
+    >
+      <CheckboxIndicator />
+      {!!label && <CheckboxLabel>{label}</CheckboxLabel>}
+    </Checkbox>
   );
 };
 
@@ -27,26 +29,31 @@ CheckboxBasic.argTypes = {
   isChecked: {
     type: 'boolean',
     control: 'boolean',
+    description: 'When true, the checkbox will be checked.',
   },
   isDisabled: {
     type: 'boolean',
     control: 'boolean',
+    description: 'To manually set disable to the checkbox.',
   },
   isFocusVisible: {
     type: 'boolean',
     control: 'boolean',
+    description: 'To manually set focus visible state to the checkbox.',
   },
-  label: {
+  CheckboxLabel: {
     type: 'string',
     control: 'text',
+    description:
+      'The label component for the checkbox.\n _Note: this is not a prop of the `Checkbox` component, just a representation of the `CheckboxLabel` component for the Storybook playground._',
   },
 };
 
 CheckboxBasic.args = {
-  label: '',
-  isDisabled: false,
   isChecked: false,
+  isDisabled: false,
   isFocusVisible: false,
+  CheckboxLabel: '',
 };
 
 export default CheckboxBasic;

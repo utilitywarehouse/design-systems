@@ -4,7 +4,6 @@ import {
   Checkbox,
   CheckboxGroup,
   CheckboxIndicator,
-  CheckboxIcon,
   CheckboxLabel,
   Center,
   NativeUIProvider,
@@ -16,10 +15,6 @@ import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 # Checkbox
 
 Whether you're building a simple form or a complex data collection system, the Checkbox component offers a user-friendly way for users to select multiple options from a list.
-
-- Use checkboxes (instead of Toggle Switch or Radio) if multiple options can be selected from a list
-- On table rows
-- On multiple selection components, such as a Multi Select Component.
 
 ## Playground
 
@@ -34,26 +29,24 @@ Whether you're building a simple form or a complex data collection system, the C
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Checkbox
-        value="Label"
-        onChange={() => console.log(isSelected, '###')}
-        label="I accept the terms and conditions"
-      />
+      <Checkbox value="Label" onChange={() => console.log(isSelected, '###')}>
+        <CheckboxIndicator />
+        <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
+      </Checkbox>
     </Center>
   </NativeUIProvider>
 </Canvas>
 
 ```tsx
-import { Checkbox } from '@utilitywarehouse/native-ui';
+import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
   const [accepted, setAccepted] = React.useState(false);
   return (
-    <Checkbox
-      value="Label"
-      onChange={(isSelected: boolean) => setAccepted(isSelected)}
-      label="I accept the terms and conditions"
-    />
+    <Checkbox value="accepted" onChange={(isSelected: boolean) => setAccepted(isSelected)}>
+      <CheckboxIndicator />
+      <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
+    </Checkbox>
   );
 };
 ```
@@ -73,7 +66,100 @@ const MyComponent = () => {
 
 For more information, see the [Gluestack Checkbox component documentation](https://gluestack.io/ui/docs/components/forms/checkbox).
 
-## Advanced Usage
+## Components
+
+### `Checkbox`
+
+The `Checkbox` component is the wrapper for the checkbox input. It is used to handle the state of the checkbox input.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Checkbox value="Label" onChange={() => console.log(isSelected, '###')}>
+        <CheckboxIndicator />
+        <CheckboxLabel>Subscribe</CheckboxLabel>
+      </Checkbox>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const [subscribed, setSubscribed] = React.useState(false);
+  return (
+    <Checkbox value="subscribed" onChange={(isSelected: boolean) => setSubscribed(isSelected)}>
+      <CheckboxIndicator />
+      <CheckboxLabel>Subscribe</CheckboxLabel>
+    </Checkbox>
+  );
+};
+```
+
+### `CheckboxIndicator`
+
+The `CheckboxIndicator` component is used to create the visual representation of the checkbox input. It is used to create the visual representation of the checkbox input.
+
+- Use checkboxes (instead of Toggle Switch or Radio) if multiple options can be selected from a list
+- On table rows
+- On multiple selection components, such as a Multi Select Component.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Checkbox value="Label" onChange={() => console.log(isSelected, '###')}>
+        <CheckboxIndicator />
+      </Checkbox>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Checkbox, CheckboxIndicator } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const [isSelected, setIsSelected] = React.useState(false);
+  return (
+    <Checkbox value="subscribed" onChange={(isSelected: boolean) => setIsSelected(isSelected)}>
+      <CheckboxIndicator />
+    </Checkbox>
+  );
+};
+```
+
+### `CheckboxLabel`
+
+The `CheckboxLabel` component is used to create the label for the checkbox input. It is used to create the label for the checkbox input.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Checkbox value="Label" onChange={() => console.log(isSelected, '###')}>
+        <CheckboxIndicator />
+        <CheckboxLabel>Subscribe</CheckboxLabel>
+      </Checkbox>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const [subscribed, setSubscribed] = React.useState(false);
+  return (
+    <Checkbox value="subscribed" onChange={(isSelected: boolean) => setSubscribed(isSelected)}>
+      <CheckboxIndicator />
+      <CheckboxLabel>I accept</CheckboxLabel>
+    </Checkbox>
+  );
+};
+```
+
+### `CheckboxGroup`
+
+The `CheckboxGroup` component is used to group multiple checkbox inputs together.
 
 <Canvas>
   <NativeUIProvider>
@@ -90,9 +176,7 @@ For more information, see the [Gluestack Checkbox component documentation](https
             console.log(isSelected, '###')
           }
         >
-          <CheckboxIndicator>
-            <CheckboxIcon as={TickSmallIcon} />
-          </CheckboxIndicator>
+          <CheckboxIndicator />
           <CheckboxLabel>Label 1</CheckboxLabel>
         </Checkbox>
         <Checkbox
@@ -102,9 +186,7 @@ For more information, see the [Gluestack Checkbox component documentation](https
             console.log(isSelected, '###')
           }
         >
-          <CheckboxIndicator>
-            <CheckboxIcon as={TickSmallIcon} />
-          </CheckboxIndicator>
+          <CheckboxIndicator />
           <CheckboxLabel>Label 2</CheckboxLabel>
         </Checkbox>
       </CheckboxGroup>
@@ -125,7 +207,7 @@ import {
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 
 const MyComponent = () => {
-  const [values, setValues] = React.useState(['Label 1']);
+  const [values, setValues] = React.useState(['option1']);
   return (
     <CheckboxGroup
       aria-label="Checkbox Group"
@@ -134,7 +216,7 @@ const MyComponent = () => {
       nativeID="checkbox-group"
     >
       <Checkbox
-        value="Label 1"
+        value="option1"
         aria-label="Label 1"
         onChange={() => console.log(isSelected, '###')}
       >
@@ -144,7 +226,7 @@ const MyComponent = () => {
         <CheckboxLabel>Label 1</CheckboxLabel>
       </Checkbox>
       <Checkbox
-        value="Label 2"
+        value="option2"
         aria-label="Label 2"
         onChange={() => console.log(isSelected, '###')}
       >
