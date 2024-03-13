@@ -1,17 +1,18 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const CheckboxLabel = createStyle({
-  color: '$brandMidnight',
+  color: '$grey1000',
+  lineHeight: 24,
   ':checked': {
-    color: '$brandMidnight',
+    color: '$grey1000',
     ':disabled': {
       color: '$grey400',
     },
   },
   ':hover': {
-    color: '$brandMidnight',
+    color: '$grey1000',
     ':checked': {
-      color: '$brandMidnight',
+      color: '$grey1000',
       ':disabled': {
         color: '$grey400',
       },
@@ -24,10 +25,10 @@ export const CheckboxLabel = createStyle({
     color: '$grey400',
   },
   ':active': {
-    color: '$brandMidnight',
+    color: '$grey1000',
 
     ':checked': {
-      color: '$brandMidnight',
+      color: '$grey1000',
     },
   },
 
@@ -38,31 +39,31 @@ export const CheckboxLabel = createStyle({
   },
   userSelect: 'none',
   _dark: {
-    color: '$brandWhite',
+    color: '$darkGrey1000',
     ':checked': {
-      color: '$brandWhite',
+      color: '$darkGrey1000',
       ':disabled': {
-        color: '$darkGrey700',
+        color: '$darkGrey400',
       },
     },
     ':hover': {
-      color: '$brandWhite',
+      color: '$darkGrey1000',
       ':checked': {
-        color: '$brandWhite',
+        color: '$darkGrey1000',
         ':disabled': {
-          color: '$darkGrey700',
+          color: '$darkGrey400',
         },
       },
     },
     ':disabled': {
-      color: '$darkGrey700',
+      color: '$darkGrey400',
     },
 
     ':active': {
-      color: '$brandWhite',
+      color: '$darkGrey1000',
 
       ':checked': {
-        color: '$brandWhite',
+        color: '$darkGrey1000',
       },
     },
   },
