@@ -29,7 +29,7 @@ Whether you're building a simple form or a complex data collection system, the C
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Checkbox value="Label" onChange={() => console.log(isSelected, '###')}>
+      <Checkbox value="Label" onChange={isChecked => console.log(isChecked, '###')}>
         <CheckboxIndicator />
         <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
       </Checkbox>
@@ -43,7 +43,7 @@ import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/na
 const MyComponent = () => {
   const [accepted, setAccepted] = React.useState(false);
   return (
-    <Checkbox value="accepted" onChange={(isSelected: boolean) => setAccepted(isSelected)}>
+    <Checkbox value="accepted" onChange={(isChecked: boolean) => setAccepted(isChecked)}>
       <CheckboxIndicator />
       <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
     </Checkbox>
@@ -75,7 +75,7 @@ The `Checkbox` component is the wrapper for the checkbox input. It is used to ha
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Checkbox value="Label" onChange={() => console.log(isSelected, '###')}>
+      <Checkbox value="Label" onChange={() => console.log(isChecked, '###')}>
         <CheckboxIndicator />
         <CheckboxLabel>Subscribe</CheckboxLabel>
       </Checkbox>
@@ -89,7 +89,7 @@ import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/na
 const MyComponent = () => {
   const [subscribed, setSubscribed] = React.useState(false);
   return (
-    <Checkbox value="subscribed" onChange={(isSelected: boolean) => setSubscribed(isSelected)}>
+    <Checkbox value="subscribed" onChange={(isChecked: boolean) => setSubscribed(isChecked)}>
       <CheckboxIndicator />
       <CheckboxLabel>Subscribe</CheckboxLabel>
     </Checkbox>
@@ -108,7 +108,7 @@ The `CheckboxIndicator` component is used to create the visual representation of
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Checkbox value="Label" onChange={() => console.log(isSelected, '###')}>
+      <Checkbox value="Label" onChange={isChecked => console.log(isChecked, '###')}>
         <CheckboxIndicator />
       </Checkbox>
     </Center>
@@ -119,9 +119,9 @@ The `CheckboxIndicator` component is used to create the visual representation of
 import { Checkbox, CheckboxIndicator } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
-  const [isSelected, setIsSelected] = React.useState(false);
+  const [accepted, setAccepted] = React.useState(false);
   return (
-    <Checkbox value="subscribed" onChange={(isSelected: boolean) => setIsSelected(isSelected)}>
+    <Checkbox value="subscribed" onChange={(isChecked: boolean) => setAccepted(isChecked)}>
       <CheckboxIndicator />
     </Checkbox>
   );
@@ -135,7 +135,7 @@ The `CheckboxLabel` component is used to create the label for the checkbox input
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Checkbox value="Label" onChange={() => console.log(isSelected, '###')}>
+      <Checkbox value="Label" onChange={isChecked => console.log(isChecked, '###')}>
         <CheckboxIndicator />
         <CheckboxLabel>Subscribe</CheckboxLabel>
       </Checkbox>
@@ -149,7 +149,7 @@ import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/na
 const MyComponent = () => {
   const [subscribed, setSubscribed] = React.useState(false);
   return (
-    <Checkbox value="subscribed" onChange={(isSelected: boolean) => setSubscribed(isSelected)}>
+    <Checkbox value="subscribed" onChange={(isChecked: boolean) => setSubscribed(isChecked)}>
       <CheckboxIndicator />
       <CheckboxLabel>I accept</CheckboxLabel>
     </Checkbox>
@@ -172,8 +172,8 @@ The `CheckboxGroup` component is used to group multiple checkbox inputs together
         <Checkbox
           value="Label 1"
           aria-label="Label 1"
-          onChange={() =>
-            console.log(isSelected, '###')
+          onChange={(isChecked) =>
+            console.log(isChecked, '###')
           }
         >
           <CheckboxIndicator />
@@ -182,8 +182,8 @@ The `CheckboxGroup` component is used to group multiple checkbox inputs together
         <Checkbox
           value="Label 2"
           aria-label="Label 2"
-          onChange={() =>
-            console.log(isSelected, '###')
+          onChange={(isChecked) =>
+            console.log(isChecked, '###')
           }
         >
           <CheckboxIndicator />
@@ -217,7 +217,7 @@ const MyComponent = () => {
       <Checkbox
         value="option1"
         aria-label="Label 1"
-        onChange={() => console.log(isSelected, '###')}
+        onChange={(isChecked: boolean) => console.log(isChecked, '###')}
       >
         <CheckboxIndicator>
           <CheckboxIcon as={CheckIcon} />
@@ -227,7 +227,7 @@ const MyComponent = () => {
       <Checkbox
         value="option2"
         aria-label="Label 2"
-        onChange={() => console.log(isSelected, '###')}
+        onChange={(isChecked: boolean) => console.log(isChecked, '###')}
       >
         <CheckboxIndicator>
           <CheckboxIcon as={CheckIcon} />

@@ -9,8 +9,8 @@ const CheckboxBasic = ({ isDisabled, isFocusVisible, CheckboxLabel: label }: any
     <Checkbox
       value="Label 1"
       aria-label="Label 1"
-      onChange={(isSelected: boolean) => {
-        updateArgs({ isChecked: isSelected });
+      onChange={(isChecked: boolean) => {
+        updateArgs({ isChecked });
       }}
       nativeID="checkbox-1"
       isChecked={args.isChecked}

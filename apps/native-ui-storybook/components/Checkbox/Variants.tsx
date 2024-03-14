@@ -3,7 +3,6 @@ import {
   Checkbox,
   CheckboxGroup,
   CheckboxIndicator,
-  CheckboxIcon,
   CheckboxLabel,
 } from '@utilitywarehouse/native-ui';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
@@ -21,8 +20,8 @@ const CheckboxGroupBasic = () => {
       <Checkbox
         value="Label 1"
         aria-label="Label 1"
-        onChange={(isSelected: boolean) => {
-          console.log(isSelected, '###');
+        onChange={(isChecked: boolean) => {
+          console.log(isChecked, '###');
         }}
         nativeID="checkbox-1"
       >
@@ -31,8 +30,8 @@ const CheckboxGroupBasic = () => {
       <Checkbox
         value="Label 2"
         aria-label="Label 2"
-        onChange={(isSelected: boolean) => {
-          console.log(isSelected, '###');
+        onChange={(isChecked: boolean) => {
+          console.log(isChecked, '###');
         }}
         nativeID="checkbox-2"
       >
@@ -44,7 +43,7 @@ const CheckboxGroupBasic = () => {
         value="Label 3"
         isDisabled
         isChecked
-        onChange={(isSelected: boolean) => console.log(isSelected, '###')}
+        onChange={(isChecked: boolean) => console.log(isChecked, '###')}
         nativeID="checkbox-3"
       >
         <CheckboxIndicator />
@@ -53,7 +52,7 @@ const CheckboxGroupBasic = () => {
         aria-label="Label 4"
         value="Label 4"
         isDisabled
-        onChange={(isSelected: boolean) => console.log(isSelected, '###')}
+        onChange={(isChecked: boolean) => console.log(isChecked, '###')}
         nativeID="checkbox-4"
       >
         <CheckboxIndicator />
@@ -67,4 +66,4 @@ CheckboxGroupBasic.description = 'This is a basic Checkbox component example';
 
 export default CheckboxGroupBasic;
 
-export { TickSmallIcon, Checkbox, CheckboxGroup, CheckboxIndicator, CheckboxIcon, CheckboxLabel };
+export { TickSmallIcon, Checkbox, CheckboxGroup, CheckboxIndicator, CheckboxLabel };
