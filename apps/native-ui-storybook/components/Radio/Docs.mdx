@@ -1,0 +1,148 @@
+import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
+import * as RadioStories from './Radio.stories';
+import {
+  Radio,
+  RadioGroup,
+  RadioIndicator,
+  RadioIcon,
+  RadioLabel,
+  Center,
+  NativeUIProvider,
+} from '@utilitywarehouse/native-ui';
+import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
+
+<Meta of={RadioStories} />
+
+# Radio
+
+Whether you're building a simple form or a complex data collection system, the Radio component offers a user-friendly way for users to select multiple options from a list.
+
+- Use Radioes (instead of Toggle Switch or Radio) if multiple options can be selected from a list
+- On table rows
+- On multiple selection components, such as a Multi Select Component.
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Radio
+        value="Label"
+        onChange={() => console.log(isSelected, '###')}
+        label="I accept the terms and conditions"
+      />
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Radio } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const [accepted, setAccepted] = React.useState(false);
+  return (
+    <Radio
+      value="Label"
+      onChange={(isSelected: boolean) => setAccepted(isSelected)}
+      label="I accept the terms and conditions"
+    />
+  );
+};
+```
+
+## Props
+
+| Property           | Type                       | Default | Description                                                                                                       |
+| ------------------ | -------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| `value`            | `string`                   | -       | The value to be used in the Radio input. This is the value that will be returned on form submission.              |
+| `onChange`         | `(value: boolean) => void` | -       | Function called when the state of the Radio changes.                                                              |
+| `defaultIsChecked` | `bool`                     | `false` | If true, the Radio will be initially checked.                                                                     |
+| `isChecked`        | `bool`                     | `false` | When true, the Radio will be checked. You'll need to pass onChange update it's value (since it's now controlled). |
+| `isDisabled`       | `bool`                     | `false` | To manually set disable to the Radio.                                                                             |
+| `isInvalid`        | `bool`                     | `false` | To manually set invalid to the Radio.                                                                             |
+| `isReadOnly`       | `bool`                     | `false` | To manually set read-only to the Radio.                                                                           |
+| `isHovered`        | `bool`                     | `false` | To manually set hover to the Radio.                                                                               |
+| `isFocusVisible`   | `bool`                     | `false` | To manually set focus visible state to the Radio.                                                                 |
+| `isIndeterminate`  | `bool`                     | `false` | To manually set indeterminate to the Radio.                                                                       |
+
+For more information, see the [Gluestack Radio component documentation](https://gluestack.io/ui/docs/components/forms/Radio).
+
+## Advanced Usage
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <RadioGroup
+        aria-label="Radio Group"
+        value={['Label 1']}
+        nativeID="Radio-group"
+      >
+        <Radio
+          value="Label 1"
+          aria-label="Label 1"
+          onChange={() =>
+            console.log(isSelected, '###')
+          }
+        >
+          <RadioIndicator>
+            <RadioIcon as={TickSmallIcon} />
+          </RadioIndicator>
+          <RadioLabel>Label 1</RadioLabel>
+        </Radio>
+        <Radio
+          value="Label 2"
+          aria-label="Label 2"
+          onChange={() =>
+            console.log(isSelected, '###')
+          }
+        >
+          <RadioIndicator>
+            <RadioIcon as={TickSmallIcon} />
+          </RadioIndicator>
+          <RadioLabel>Label 2</RadioLabel>
+        </Radio>
+      </RadioGroup>
+    </Center>
+
+  </NativeUIProvider>
+</Canvas>
+
+```jsx
+import {
+  Radio,
+  RadioGroup,
+  RadioIndicator,
+  RadioIcon,
+  RadioLabel,
+} from '@utilitywarehouse/native-ui';
+
+import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => {
+  const [values, setValues] = React.useState(['Label 1']);
+  return (
+    <RadioGroup aria-label="Radio Group" value={values} onChange={setValues} nativeID="Radio-group">
+      <Radio value="Label 1" aria-label="Label 1" onChange={() => console.log(isSelected, '###')}>
+        <RadioIndicator>
+          <RadioIcon as={CheckIcon} />
+        </RadioIndicator>
+        <RadioLabel>Label 1</RadioLabel>
+      </Radio>
+      <Radio value="Label 2" aria-label="Label 2" onChange={() => console.log(isSelected, '###')}>
+        <RadioIndicator>
+          <RadioIcon as={CheckIcon} />
+        </RadioIndicator>
+        <RadioLabel>Label 2</RadioLabel>
+      </Radio>
+    </RadioGroup>
+  );
+};
+```

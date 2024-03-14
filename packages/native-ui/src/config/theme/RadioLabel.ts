@@ -1,60 +1,69 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const RadioLabel = createStyle({
-  'color': '$textLight600',
+  color: '$grey1000',
+  lineHeight: 24,
   ':checked': {
-    color: '$textLight900',
+    color: '$grey1000',
+    ':disabled': {
+      color: '$grey400',
+    },
   },
   ':hover': {
-    'color': '$textLight900',
+    color: '$grey1000',
     ':checked': {
-      color: '$textLight900',
-    },
-    ':disabled': {
-      'color': '$textLight600',
-      ':checked': {
-        color: '$textLight900',
+      color: '$grey1000',
+      ':disabled': {
+        color: '$grey400',
       },
     },
+    ':disabled': {
+      color: '$grey400',
+    },
+  },
+  ':disabled': {
+    color: '$grey400',
   },
   ':active': {
-    'color': '$textLight900',
+    color: '$grey1000',
+
     ':checked': {
-      color: '$textLight900',
+      color: '$grey1000',
     },
   },
 
-  ':disabled': {
-    opacity: 0.4,
-  },
-
-  '_web': {
+  _web: {
     MozUserSelect: 'none',
     WebkitUserSelect: 'none',
     msUserSelect: 'none',
   },
-  'userSelect': 'none',
-  '_dark': {
-    'color': '$textDark400',
+  userSelect: 'none',
+  _dark: {
+    color: '$darkGrey1000',
     ':checked': {
-      color: '$textDark100',
+      color: '$darkGrey1000',
+      ':disabled': {
+        color: '$darkGrey400',
+      },
     },
     ':hover': {
-      'color': '$textDark100',
+      color: '$darkGrey1000',
       ':checked': {
-        color: '$textDark100',
-      },
-      ':disabled': {
-        'color': '$textDark400',
-        ':checked': {
-          color: '$textDark100',
+        color: '$darkGrey1000',
+        ':disabled': {
+          color: '$darkGrey400',
         },
       },
     },
+    ':disabled': {
+      color: '$darkGrey400',
+    },
+
     ':active': {
-      'color': '$textDark100',
+      color: '$darkGrey1000',
+
       ':checked': {
-        color: '$textDark100',
+        color: '$darkGrey1000',
       },
     },
   },

@@ -1,27 +1,33 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const RadioIcon = createStyle({
-  'borderRadius': '$full',
+  borderRadius: '$full',
   ':checked': {
-    'color': '$primary600',
+    color: '$cyan500',
+    ':disabled': {
+      color: '$grey400',
+    },
     ':hover': {
-      'color': '$primary700',
+      color: '$cyan500',
       ':disabled': {
-        color: '$primary600',
+        color: '$grey400',
       },
     },
   },
-  '_dark': {
+  ':disabled': {
+    color: '$grey400',
+  },
+  _dark: {
     ':checked': {
-      'color': '$primary500',
+      color: '$darkCyan700',
       ':disabled': {
-        color: '$primary500',
+        color: '$darkGrey400',
       },
       ':hover': {
+        color: '$darkCyan700',
         ':disabled': {
-          color: '$primary500',
+          color: '$darkGrey400',
         },
-        'color': '$primary400',
       },
     },
   },
