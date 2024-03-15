@@ -13,7 +13,7 @@ export const RadioIndicator = createStyle({
       outlineColor: '$cyan700',
       outlineStyle: 'solid',
       _dark: {
-        outlineColor: '$darkCyan700',
+        outlineColor: '$darkCyan500',
       },
     },
   },

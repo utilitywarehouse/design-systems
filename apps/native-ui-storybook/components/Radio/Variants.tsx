@@ -3,19 +3,14 @@ import { Radio, RadioGroup, RadioIndicator, RadioLabel, VStack } from '@utilityw
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 
 const RadioGroupBasic = () => {
-  const [values, setValues] = React.useState('Label 1');
+  const [value, setValue] = React.useState('Option 1');
 
   return (
     <VStack gap="$4">
-      <RadioGroup
-        aria-label="Radio Group"
-        value={values}
-        onChange={setValues}
-        nativeID="Radio-group"
-      >
+      <RadioGroup aria-label="Radio Group" value={value} onChange={setValue} nativeID="Radio-group">
         <Radio
-          value="Label 1"
-          aria-label="Label 1"
+          value="Option 1"
+          aria-label="Option 1"
           onChange={(isChecked: boolean) => {
             console.log(isChecked, '###');
           }}
@@ -25,8 +20,8 @@ const RadioGroupBasic = () => {
           <RadioLabel>Option 1</RadioLabel>
         </Radio>
         <Radio
-          value="Label 2"
-          aria-label="Label 2"
+          value="Option 2"
+          aria-label="Option 2"
           onChange={(isChecked: boolean) => {
             console.log(isChecked, '###');
           }}
@@ -38,14 +33,14 @@ const RadioGroupBasic = () => {
       </RadioGroup>
       <RadioGroup
         aria-label="Radio Group"
-        value={values}
-        onChange={setValues}
+        value={value}
+        onChange={setValue}
         nativeID="Radio-group"
         isDisabled
       >
         <Radio
-          aria-label="Label 3"
-          value="Label 1"
+          aria-label="Option 3"
+          value="Option 1"
           isDisabled
           onChange={(isChecked: boolean) => console.log(isChecked, '###')}
           nativeID="Radio-3"
@@ -54,8 +49,8 @@ const RadioGroupBasic = () => {
           <RadioLabel>Option 1</RadioLabel>
         </Radio>
         <Radio
-          aria-label="Label 4"
-          value="Label 4"
+          aria-label="Option 4"
+          value="Option 2"
           isDisabled
           onChange={(isChecked: boolean) => console.log(isChecked, '###')}
           nativeID="Radio-4"
