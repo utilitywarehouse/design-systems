@@ -15,11 +15,11 @@ import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 
 # Radio
 
-Whether you're building a simple form or a complex data collection system, the Radio component offers a user-friendly way for users to select multiple options from a list.
+The Radio component presents users with predefined choices and enables them to select only one option. It is commonly used for providing a single-choice selection in forms or surveys.
 
-- Use Radioes (instead of Toggle Switch or Radio) if multiple options can be selected from a list
-- On table rows
-- On multiple selection components, such as a Multi Select Component.
+- A `Radio` component is composed of a `RadioGroup`, `RadioIndicator`, `RadioLabel`.
+- `Radio` is used for a single selection
+- `RadioGroup` is the building block for `Radio`
 
 ## Playground
 
@@ -112,8 +112,6 @@ const MyComponent = () => {
 | isFocusVisible  | bool     | false   | To manually set focus visible state to the radio.                                                    |
 | isIndeterminate | bool     | false   | To manually set indeterminate to the radio.                                                          |
 
-For more information, see the [Gluestack Radio component documentation](https://gluestack.io/ui/docs/components/forms/Radio).
-
 ### Descendants Styling Props
 
 Props to style child components.
@@ -123,3 +121,41 @@ Props to style child components.
 | \_text      | Prop to style RadioLabel     |
 | \_icon      | Prop to style RadioIcon      |
 | \_indicator | Prop to style RadioIndicator |
+
+For more information, see the [Gluestack Radio component documentation](https://gluestack.io/ui/docs/components/forms/Radio).
+
+## Components
+
+### `Radio`
+
+Contains all Radio related layout style props and actions. It inherits all the properties of React Native's View component.
+
+### `RadioIndicator`
+
+Contains all Indicator related layout style props and actions. It inherits all the properties of React Native's View component.
+
+### `RadioIcon`
+
+Contains all Icon related layout style props and actions. It inherits all the properties of gluestack Style's AsForwarder component.
+
+### `RadioLabel`
+
+Contains all Label related layout style props and actions. It inherits all the properties of React Native's Text component.
+
+### `RadioGroup`
+
+Contains all Group related layout style props and actions. It inherits all the properties of React Native's View component.
+
+| Property   | Type     | Default | Description                                                         |
+| ---------- | -------- | ------- | ------------------------------------------------------------------- |
+| value      | string   | -       | The value of the radio group.                                       |
+| onChange   | function | -       | The callback fired when any children Radio is checked or unchecked. |
+| isReadOnly | bool     | false   | To manually set read-only to the radio group.                       |
+
+#### Descendants Styling Props
+
+Props to style child components.
+
+| Sx Prop | Description                   |
+| ------- | ----------------------------- |
+| \_radio | Prop to style Radio Component |

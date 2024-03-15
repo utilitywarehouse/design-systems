@@ -68,6 +68,16 @@ const MyComponent = () => {
 | `isFocusVisible`   | `bool`                     | `false` | To manually set focus visible state to the checkbox.                                                                 |
 | `isIndeterminate`  | `bool`                     | `false` | To manually set indeterminate to the checkbox.                                                                       |
 
+### Descendants Styling Props
+
+Props to style child components.
+
+| Sx Prop      | Description                               |
+| ------------ | ----------------------------------------- |
+| `_text`      | Prop to style CheckboxLabel Component     |
+| `_icon`      | Prop to style CheckboxIcon Component      |
+| `_indicator` | Prop to style CheckboxIndicator Component |
+
 For more information, see the [Gluestack Checkbox component documentation](https://gluestack.io/ui/docs/components/forms/checkbox).
 
 ## Components
@@ -109,57 +119,9 @@ The `CheckboxIndicator` component is used to create the visual representation of
 - On table rows
 - On multiple selection components, such as a Multi Select Component.
 
-<Canvas>
-  <NativeUIProvider>
-    <Center>
-      <Checkbox value="Label" onChange={isChecked => console.log(isChecked, '###')}>
-        <CheckboxIndicator />
-      </Checkbox>
-    </Center>
-  </NativeUIProvider>
-</Canvas>
-
-```tsx
-import { Checkbox, CheckboxIndicator } from '@utilitywarehouse/native-ui';
-
-const MyComponent = () => {
-  const [accepted, setAccepted] = React.useState(false);
-  return (
-    <Checkbox value="subscribed" onChange={(isChecked: boolean) => setAccepted(isChecked)}>
-      <CheckboxIndicator />
-    </Checkbox>
-  );
-};
-```
-
 ### `CheckboxLabel`
 
 The `CheckboxLabel` component is used to create the label for the checkbox input. It is used to create the label for the checkbox input.
-
-<Canvas>
-  <NativeUIProvider>
-    <Center>
-      <Checkbox value="Label" onChange={isChecked => console.log(isChecked, '###')}>
-        <CheckboxIndicator />
-        <CheckboxLabel>Subscribe</CheckboxLabel>
-      </Checkbox>
-    </Center>
-  </NativeUIProvider>
-</Canvas>
-
-```tsx
-import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/native-ui';
-
-const MyComponent = () => {
-  const [subscribed, setSubscribed] = React.useState(false);
-  return (
-    <Checkbox value="subscribed" onChange={(isChecked: boolean) => setSubscribed(isChecked)}>
-      <CheckboxIndicator />
-      <CheckboxLabel>I accept</CheckboxLabel>
-    </Checkbox>
-  );
-};
-```
 
 ### `CheckboxGroup`
 
@@ -225,9 +187,7 @@ const MyComponent = () => {
         aria-label="Label 1"
         onChange={(isChecked: boolean) => console.log(isChecked, '###')}
       >
-        <CheckboxIndicator>
-          <CheckboxIcon as={CheckIcon} />
-        </CheckboxIndicator>
+        <CheckboxIndicator />
         <CheckboxLabel>Label 1</CheckboxLabel>
       </Checkbox>
       <Checkbox
@@ -235,12 +195,18 @@ const MyComponent = () => {
         aria-label="Label 2"
         onChange={(isChecked: boolean) => console.log(isChecked, '###')}
       >
-        <CheckboxIndicator>
-          <CheckboxIcon as={CheckIcon} />
-        </CheckboxIndicator>
+        <CheckboxIndicator />
         <CheckboxLabel>Label 2</CheckboxLabel>
       </Checkbox>
     </CheckboxGroup>
   );
 };
 ```
+
+| Property     | Type                              | Default | Description                                                            |
+| ------------ | --------------------------------- | ------- | ---------------------------------------------------------------------- |
+| `value`      | `string[]`                        | -       | The value of the checkbox group.                                       |
+| `onChange`   | `(values: Array<string>) => void` | -       | The callback fired when any children Checkbox is checked or unchecked. |
+| `isDisabled` | `bool`                            | `false` | To manually set disable to the checkbox.                               |
+| `isInvalid`  | `bool`                            | `false` | To manually set invalid to the checkbox.                               |
+| `isReadOnly` | `bool`                            | `false` | To manually set read-only to the checkbox.                             |
