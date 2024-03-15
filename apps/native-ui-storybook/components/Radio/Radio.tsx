@@ -1,7 +1,7 @@
 import React from 'react';
 import { RadioGroup, Radio, RadioIndicator, RadioLabel } from '@utilitywarehouse/native-ui';
 
-const RadioBasic = ({ isDisabled, isFocusVisible, RadioLabel: label }: any) => {
+const RadioBasic = ({ isDisabled, isFocusVisible, _RadioLabel: label }: any) => {
   return (
     <RadioGroup>
       <Radio
@@ -34,7 +34,7 @@ RadioBasic.argTypes = {
     control: 'boolean',
     description: 'To manually set focus visible state to the Radio.',
   },
-  RadioLabel: {
+  _RadioLabel: {
     type: 'string',
     control: 'text',
     description:
@@ -45,7 +45,7 @@ RadioBasic.argTypes = {
 RadioBasic.args = {
   isDisabled: false,
   isFocusVisible: false,
-  RadioLabel: '',
+  _RadioLabel: '',
 };
 
 export default RadioBasic;
