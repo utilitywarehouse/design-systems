@@ -68,7 +68,7 @@ export const Text = createStyle({
 
       md: {
         fontSize: '$md',
-        lineHeight: '$md',
+        lineHeight: '$lg',
       },
 
       lg: {

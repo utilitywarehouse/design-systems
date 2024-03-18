@@ -4,7 +4,6 @@ module.exports = {
   stories: [
     '../docs/**/*.mdx',
     '../components/**/*.mdx',
-    '../components/**/*.stories.mdx',
     '../components/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
@@ -16,10 +15,13 @@ module.exports = {
   ],
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
-    options: {},
+    options: { builder: { useSWC: true } },
   },
   docs: {
-    autodocs: 'tag',
+    autodocs: false,
+  },
+  typescript: {
+    reactDocgen: 'react-docgen',
   },
   webpackFinal: async config => {
     config.resolve.alias = {

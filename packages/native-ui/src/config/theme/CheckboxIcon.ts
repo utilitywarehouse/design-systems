@@ -2,17 +2,11 @@ import { createStyle } from '@gluestack-style/react';
 
 export const CheckboxIcon = createStyle({
   ':checked': {
-    color: '$backgroundLight0',
+    color: '$brandWhite',
   },
-  ':disabled': {
-    opacity: 0.4,
-  },
-  '_dark': {
+  _dark: {
     ':checked': {
-      color: '$backgroundDark0',
-    },
-    ':disabled': {
-      opacity: 0.4,
+      color: '$darkCyan50',
     },
   },
 });

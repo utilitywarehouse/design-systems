@@ -1,5 +1,5 @@
 {
   "installCommand": "pnpm install",
-  "buildCommand": "turbo run build --no-cache && pnpm storybook:build",
+  "buildCommand": "NODE_OPTIONS=\"--max_old_space_size=4096 --openssl-legacy-provider\" turbo run build --no-cache && pnpm storybook:build",
   "outputDirectory": "./storybook-static"
 }

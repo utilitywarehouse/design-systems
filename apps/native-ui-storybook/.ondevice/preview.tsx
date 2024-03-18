@@ -13,7 +13,7 @@ const preview: Preview = {
     Story => {
       const theme = useColorScheme() === 'dark' ? 'dark' : 'light';
       const [args, updateArgs] = useArgs();
-      const [theneColourMode, setColourMode] = useState<'dark' | 'light'>(theme);
+      const [themeColourMode, setColourMode] = useState<'dark' | 'light'>(theme);
       useEffect(() => {
         Linking.addEventListener('url', event => {
           const url = new URL(event.url ?? '');
@@ -45,8 +45,8 @@ const preview: Preview = {
       }, [theme]);
 
       return (
-        <NativeUIProvider colorMode={theneColourMode}>
-          <Box flex={1} backgroundColor={theneColourMode === 'dark' ? '#1D1D1D' : '$brandWhite'}>
+        <NativeUIProvider colorMode={themeColourMode}>
+          <Box flex={1} backgroundColor={themeColourMode === 'dark' ? '#1D1D1D' : '$brandWhite'}>
             <Box m="$10">
               <Story />
             </Box>

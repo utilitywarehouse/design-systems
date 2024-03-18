@@ -27,6 +27,9 @@ BadgeBasic.argTypes = {
     control: 'select',
     options: ['large', 'small'],
   },
+  text: {
+    control: 'text',
+  },
 } as Meta<typeof Badge>['argTypes'];
 
 BadgeBasic.args = {

@@ -1,112 +1,103 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const CheckboxIndicator = createStyle({
-  'justifyContent': 'center',
-  'alignItems': 'center',
-  'borderColor': '$borderLight400',
-  'bg': '$transparent',
-  'borderRadius': 4,
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderColor: '$grey500',
+  bg: '$transparent',
+  height: '$6',
+  width: '$6',
+  borderRadius: 4,
+  borderWidth: 2,
 
-  '_web': {
+  _web: {
     ':focusVisible': {
       outlineWidth: '2px',
-      outlineColor: '$primary700',
+      outlineColor: '$cyan700',
       outlineStyle: 'solid',
       _dark: {
-        outlineColor: '$primary300',
+        outlineColor: '$darkCyan500',
       },
     },
   },
 
   ':checked': {
-    borderColor: '$primary600',
-    bg: '$primary600',
+    borderColor: '$cyan500',
+    bg: '$cyan500',
   },
 
   ':hover': {
-    'borderColor': '$borderLight500',
-    'bg': 'transparent',
-    ':invalid': {
-      borderColor: '$error700',
-    },
+    borderColor: '$grey500',
+    bg: '$transparent',
+
     ':checked': {
-      'bg': '$primary700',
-      'borderColor': '$primary700',
+      borderColor: '$cyan500',
+      bg: '$cyan500',
       ':disabled': {
-        'borderColor': '$primary600',
-        'bg': '$primary600',
-        'opacity': 0.4,
-        ':invalid': {
-          borderColor: '$error700',
-        },
+        bg: '$grey150',
+        borderColor: '$grey150',
       },
     },
     ':disabled': {
-      'borderColor': '$borderLight400',
-      ':invalid': {
-        borderColor: '$error700',
-      },
+      borderColor: '$grey400',
     },
   },
 
   ':active': {
     ':checked': {
-      bg: '$primary800',
-      borderColor: '$primary800',
+      borderColor: '$cyan500',
+      bg: '$cyan500',
     },
-  },
-  ':invalid': {
-    borderColor: '$error700',
   },
   ':disabled': {
-    opacity: 0.4,
+    borderColor: '$grey400',
+    ':checked': {
+      bg: '$grey150',
+      borderColor: '$grey150',
+      _icon: {
+        color: '$grey400',
+      },
+    },
   },
 
-  '_dark': {
-    'borderColor': '$borderDark500',
-    'bg': '$transparent',
+  _dark: {
+    borderColor: '$darkGrey600',
+    bg: '$transparent',
 
     ':checked': {
-      borderColor: '$primary500',
-      bg: '$primary500',
+      borderColor: '$darkCyan700',
+      bg: '$darkCyan700',
     },
     ':hover': {
-      'borderColor': '$borderDark400',
-      'bg': 'transparent',
-      ':invalid': {
-        borderColor: '$error400',
-      },
+      borderColor: '$darkGrey600',
+      bg: 'transparent',
       ':checked': {
-        'bg': '$primary400',
-        'borderColor': '$primary400',
+        bg: '$darkCyan700',
+        borderColor: '$darkCyan700',
         ':disabled': {
-          'borderColor': '$primary500',
-          'bg': '$primary500',
-          'opacity': 0.4,
-          ':invalid': {
-            borderColor: '$error400',
-          },
+          borderColor: '$darkGrey700',
+          bg: '$darkGrey700',
         },
       },
       ':disabled': {
-        'borderColor': '$borderDark500',
-        ':invalid': {
-          borderColor: '$error400',
-        },
+        borderColor: '$darkGrey400',
       },
     },
     ':active': {
       ':checked': {
-        bg: '$primary300',
-        borderColor: '$primary300',
+        borderColor: '$darkCyan700',
+        bg: '$darkCyan700',
       },
     },
-
-    ':invalid': {
-      borderColor: '$error400',
-    },
     ':disabled': {
-      opacity: 0.4,
+      borderColor: '$darkGrey400',
+      ':checked': {
+        bg: '$darkGrey700',
+        borderColor: '$darkGrey700',
+        _icon: {
+          color: '$darkGrey500',
+        },
+      },
     },
   },
 });

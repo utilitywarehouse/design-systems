@@ -13,7 +13,6 @@ module.exports = function (api) {
           },
         },
       ],
-      ['babel-plugin-react-docgen-typescript', { exclude: 'node_modules' }],
     ],
   };
 };

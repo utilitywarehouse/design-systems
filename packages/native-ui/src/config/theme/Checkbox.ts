@@ -4,74 +4,14 @@ export const Checkbox = createStyle({
   flexDirection: 'row',
   justifyContent: 'flex-start',
   alignItems: 'center',
+  gap: '$2',
 
-  variants: {
-    size: {
-      lg: {
-        _text: {
-          props: {
-            size: 'lg',
-          },
-        },
+  variants: {},
 
-        _icon: {
-          props: {
-            size: 'md',
-          },
-        },
-        _indicator: {
-          borderWidth: 3,
-          h: '$6',
-          w: '$6',
-        },
-      },
-
-      md: {
-        _text: {
-          props: {
-            size: 'md',
-          },
-        },
-
-        _icon: {
-          props: {
-            size: 'sm',
-          },
-        },
-        _indicator: {
-          borderWidth: 2,
-          h: '$5',
-          w: '$5',
-        },
-      },
-
-      sm: {
-        _text: {
-          props: {
-            size: 'sm',
-          },
-        },
-
-        _icon: {
-          props: {
-            size: '2xs',
-          },
-        },
-        _indicator: {
-          borderWidth: 2,
-          h: '$4',
-          w: '$4',
-        },
-      },
-    },
-  },
-
-  defaultProps: {
-    size: 'md',
-  },
+  defaultProps: {},
 
   _web: {
-    'cursor': 'pointer',
+    cursor: 'pointer',
     ':disabled': {
       cursor: 'not-allowed',
     },

@@ -256,13 +256,16 @@ importers:
         version: 0.9.1
       '@gluestack-style/animation-resolver':
         specifier: ^1.0.4
-        version: 1.0.4(@gluestack-style/react@1.0.45)
+        version: 1.0.4(@gluestack-style/react@1.0.50)
       '@gluestack-style/legend-motion-animation-driver':
         specifier: ^1.0.3
-        version: 1.0.3(@gluestack-style/react@1.0.45)(@legendapp/motion@2.3.0)
+        version: 1.0.3(@gluestack-style/react@1.0.50)(@legendapp/motion@2.3.0)
+      '@gluestack-style/react':
+        specifier: ^1.0.50
+        version: 1.0.50
       '@gluestack-ui/themed':
-        specifier: latest
-        version: 1.1.3(@gluestack-style/react@1.0.45)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.3)(react@18.2.0)
+        specifier: ^1.1.3
+        version: 1.1.3(@gluestack-style/react@1.0.50)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.3)(react@18.2.0)
       '@utilitywarehouse/colour-system':
         specifier: workspace:^
         version: link:../colour-system
@@ -282,9 +285,6 @@ importers:
       '@babel/preset-typescript':
         specifier: ^7.22.5
         version: 7.23.3(@babel/core@7.23.9)
-      '@gluestack-style/react':
-        specifier: ^1.0.45
-        version: 1.0.45
       '@types/react':
         specifier: ^18.2.45
         version: 18.2.54
@@ -3352,29 +3352,30 @@ packages:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: false
 
-  /@gluestack-style/animation-resolver@1.0.4(@gluestack-style/react@1.0.45):
+  /@gluestack-style/animation-resolver@1.0.4(@gluestack-style/react@1.0.50):
     resolution: {integrity: sha512-AeAQ61u41j9F2fxWTGiR6C7G3KG7qSCAYVi3jCE+aUiOEPEctfurUCT70DnrKp1Tg/Bl29a+OUwutaW/3YKvQw==}
     peerDependencies:
       '@gluestack-style/react': '>=1.0'
     dependencies:
-      '@gluestack-style/react': 1.0.45
+      '@gluestack-style/react': 1.0.50
     dev: false
 
-  /@gluestack-style/legend-motion-animation-driver@1.0.3(@gluestack-style/react@1.0.45)(@legendapp/motion@2.3.0):
+  /@gluestack-style/legend-motion-animation-driver@1.0.3(@gluestack-style/react@1.0.50)(@legendapp/motion@2.3.0):
     resolution: {integrity: sha512-sD6aFS6Tq5XpyjrboFEIc8LrRY4TA4kodFYHzk6mDchvbkdLODijtjnaDQB1UqihOkMRg49e7ANRAOzc7eymaQ==}
     peerDependencies:
       '@gluestack-style/react': '>=1.0.27'
       '@legendapp/motion': '>=2.2'
     dependencies:
-      '@gluestack-style/react': 1.0.45
+      '@gluestack-style/react': 1.0.50
       '@legendapp/motion': 2.3.0(nativewind@2.0.11)(react-native@0.73.3)(react@18.2.0)
     dev: false
 
-  /@gluestack-style/react@1.0.45:
-    resolution: {integrity: sha512-aMGKPX3Z30ZS9mBcyF2Q2IjDsVbNjqxi1WByyLOYdgosMTAHJwnp4lSjB7MT7B/jcLnIS8pd+WwCM/5toa8jFg==}
+  /@gluestack-style/react@1.0.50:
+    resolution: {integrity: sha512-WCME8xmfGFJnK7WaARgI1y1TZwU1y1xO0z4aou4e1PSk9lLfNy696Uu00ywG6r4AWEch3ZQyZAa3QADax5RHeA==}
     dependencies:
       inline-style-prefixer: 6.0.4
       normalize-css-color: 1.0.2
+    dev: false
 
   /@gluestack-ui/accordion@1.0.0(react-dom@18.2.0)(react-native@0.73.3)(react@18.2.0):
     resolution: {integrity: sha512-97L37wSRP2TgXQEPnekIteZWKJvtPn3XYEZmbAbVmLUjuEsfAXJYHD8VnB5BM8fJDjUPF7iS0NeKU6isbPgAVQ==}
@@ -3839,7 +3840,7 @@ packages:
       - react-native
     dev: false
 
-  /@gluestack-ui/themed@1.1.3(@gluestack-style/react@1.0.45)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.3)(react@18.2.0):
+  /@gluestack-ui/themed@1.1.3(@gluestack-style/react@1.0.50)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.3)(react@18.2.0):
     resolution: {integrity: sha512-Jh3InxWvBag6XYe2mfYgdfYmbM4yIWawHS0EfPTCWA+XAyBpcoXfb4/uBBp8+vrYrDOXS2ucI9rGN5rz75C95w==}
     peerDependencies:
       '@gluestack-style/react': '>=1.0'
@@ -3851,9 +3852,9 @@ packages:
       react-native-web: '>=0.19'
     dependencies:
       '@expo/html-elements': 0.9.1
-      '@gluestack-style/animation-resolver': 1.0.4(@gluestack-style/react@1.0.45)
-      '@gluestack-style/legend-motion-animation-driver': 1.0.3(@gluestack-style/react@1.0.45)(@legendapp/motion@2.3.0)
-      '@gluestack-style/react': 1.0.45
+      '@gluestack-style/animation-resolver': 1.0.4(@gluestack-style/react@1.0.50)
+      '@gluestack-style/legend-motion-animation-driver': 1.0.3(@gluestack-style/react@1.0.50)(@legendapp/motion@2.3.0)
+      '@gluestack-style/react': 1.0.50
       '@gluestack-ui/accordion': 1.0.0(react-dom@18.2.0)(react-native@0.73.3)(react@18.2.0)
       '@gluestack-ui/actionsheet': 0.2.36(react-dom@18.2.0)(react-native@0.73.3)(react@18.2.0)
       '@gluestack-ui/alert': 0.1.12(react-dom@18.2.0)(react@18.2.0)
@@ -7383,11 +7384,11 @@ packages:
       telejson: 7.2.0
       tiny-invariant: 1.3.1
 
-  /@storybook/channels@8.0.0-rc.3:
-    resolution: {integrity: sha512-XGTHjZ4ovCS3i9ocjBMrEAnwQ16SXSXX9i+K+5o0p9NSHSWvwd2rtjtInSCDnBvJHWS+typVYkfwpcwcJkbP2g==}
+  /@storybook/channels@8.1.0-alpha.1:
+    resolution: {integrity: sha512-j00I4SuB4heQ9NvVvrUSMQ0DwdUE5vDzQ/6IM89ehMfBEvZ4IzY8GEDbdDJNMwI77crRmf2vMbf8V6+r9b6wbg==}
     dependencies:
-      '@storybook/client-logger': 8.0.0-rc.3
-      '@storybook/core-events': 8.0.0-rc.3
+      '@storybook/client-logger': 8.1.0-alpha.1
+      '@storybook/core-events': 8.1.0-alpha.1
       '@storybook/global': 5.0.0
       telejson: 7.2.0
       tiny-invariant: 1.3.1
@@ -7530,8 +7531,8 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.0.0-rc.3:
-    resolution: {integrity: sha512-Bx4IFbpiCwyGXnCwbYW+bYIMAQzZrF9gQniEt5yDF7P5vGw4GcI7+Q6GCj+PIzlJDSt77dHvrHgTptIXbPNBHw==}
+  /@storybook/client-logger@8.1.0-alpha.1:
+    resolution: {integrity: sha512-sja7Ez2gwLNXbNFXG3d1X+c6XNo2wgCfg8RZ8YtN5hJw2nlFGzQx23Zrd20LvfuDbRAkHEyd7zCbXwZUculOyg==}
     dependencies:
       '@storybook/global': 5.0.0
     dev: true
@@ -7739,8 +7740,8 @@ packages:
     dependencies:
       ts-dedent: 2.2.0
 
-  /@storybook/core-events@8.0.0-rc.3:
-    resolution: {integrity: sha512-W2hoe8hRA4RM7YVQoaSW6qbUCTlx/HfzQXqVTT78A/w5Th+GLzAvu6yX8E+fbPJotTNzK81yp9Uf1C4g2cveyg==}
+  /@storybook/core-events@8.1.0-alpha.1:
+    resolution: {integrity: sha512-3sO9pkKffIQ5Q3mPRT4omSFY7KMopEjlfGtp43PiL8z6ascLDxTTGnrFRRaj0MIesa5CdQtbHY3lJAbFaYs11A==}
     dependencies:
       ts-dedent: 2.2.0
     dev: true
@@ -7976,15 +7977,15 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.0.0-rc.3:
-    resolution: {integrity: sha512-+pXnQTEvY/I7CVZT7cwTS/VxilF1DWEN2Pv7xOFMF1MBaIS3sVC2yNxHsoM360HW4x0P99NttyCLSNoF31tQiw==}
+  /@storybook/instrumenter@8.1.0-alpha.1:
+    resolution: {integrity: sha512-4cEgw472yOQvPdBAQBHBoGzN+JBovjrcmYtYHlwpu2Erl45A45dNU2EpjXYtz1yYo65dl1w54C1IJUEEWfPJnQ==}
     dependencies:
-      '@storybook/channels': 8.0.0-rc.3
-      '@storybook/client-logger': 8.0.0-rc.3
-      '@storybook/core-events': 8.0.0-rc.3
+      '@storybook/channels': 8.1.0-alpha.1
+      '@storybook/client-logger': 8.1.0-alpha.1
+      '@storybook/core-events': 8.1.0-alpha.1
       '@storybook/global': 5.0.0
-      '@storybook/preview-api': 8.0.0-rc.3
-      '@vitest/utils': 0.34.6
+      '@storybook/preview-api': 8.1.0-alpha.1
+      '@vitest/utils': 1.3.1
       util: 0.12.5
     dev: true
 
@@ -8419,15 +8420,15 @@ packages:
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
 
-  /@storybook/preview-api@8.0.0-rc.3:
-    resolution: {integrity: sha512-XiSM1ezxDsmlD+9vNjJyL/Hlp2JBGKwUyKSEAE304XN+FED7mUR9B9JaxvPnsgJ0cSgVyjJYI9H+/edaCNEc+g==}
+  /@storybook/preview-api@8.1.0-alpha.1:
+    resolution: {integrity: sha512-dFxqZBjJE0VaULe7CczjMvFynKbPdrcv/FxpfoLkXLD2FVn4Qpsi1ciT1i41SkTqCTQCCKfhCZs28LSpwhuhYg==}
     dependencies:
-      '@storybook/channels': 8.0.0-rc.3
-      '@storybook/client-logger': 8.0.0-rc.3
-      '@storybook/core-events': 8.0.0-rc.3
+      '@storybook/channels': 8.1.0-alpha.1
+      '@storybook/client-logger': 8.1.0-alpha.1
+      '@storybook/core-events': 8.1.0-alpha.1
       '@storybook/csf': 0.1.2
       '@storybook/global': 5.0.0
-      '@storybook/types': 8.0.0-rc.3
+      '@storybook/types': 8.1.0-alpha.1
       '@types/qs': 6.9.7
       dequal: 2.0.3
       lodash: 4.17.21
@@ -8768,8 +8769,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1:
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.0.0-rc.3
-      '@storybook/instrumenter': 8.0.0-rc.3
+      '@storybook/client-logger': 8.1.0-alpha.1
+      '@storybook/instrumenter': 8.1.0-alpha.1
       '@testing-library/dom': 8.20.0
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.0)
       ts-dedent: 2.2.0
@@ -8872,10 +8873,10 @@ packages:
       '@types/express': 4.17.17
       file-system-cache: 2.3.0
 
-  /@storybook/types@8.0.0-rc.3:
-    resolution: {integrity: sha512-rV6Vj84WcD+Xea9c0LdVTAzRvDWHTFIbDiT4R4+yNppy9q5NZGTiWprdGNtOiDVCGsT6kpvafBzKYXPtLiCJ+Q==}
+  /@storybook/types@8.1.0-alpha.1:
+    resolution: {integrity: sha512-iCwuuEF6wRLyA7YTv8bhr6Qw2N2EwBgD5SCsfK7oz+Pp6aqVfb/i4rkDiCj3TvoKv/RIXElLfw42fJyXHaCVQw==}
     dependencies:
-      '@storybook/channels': 8.0.0-rc.3
+      '@storybook/channels': 8.1.0-alpha.1
       '@types/express': 4.17.17
       file-system-cache: 2.3.0
     dev: true
@@ -9563,10 +9564,11 @@ packages:
       react-native-svg: 14.1.0(react-native@0.73.4)(react@18.2.0)
     dev: false
 
-  /@vitest/utils@0.34.6:
-    resolution: {integrity: sha512-IG5aDD8S6zlvloDsnzHw0Ut5xczlF+kv2BOTo+iXfPr54Yhi5qbVOgGB1hZaVq4iJ4C/MZ2J0y15IlsV/ZcI0A==}
+  /@vitest/utils@1.3.1:
+    resolution: {integrity: sha512-d3Waie/299qqRyHTm2DjADeTaNdNSVsnwHPWrs20JMpjh6eiVq7ggggweO8rc4arhf6rRkWuHKwvxGvejUXZZQ==}
     dependencies:
       diff-sequences: 29.6.3
+      estree-walker: 3.0.3
       loupe: 2.3.7
       pretty-format: 29.7.0
     dev: true
@@ -12288,6 +12290,12 @@ packages:
 
   /estree-walker@1.0.1:
     resolution: {integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==}
+    dev: true
+
+  /estree-walker@3.0.3:
+    resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
+    dependencies:
+      '@types/estree': 1.0.5
     dev: true
 
   /esutils@2.0.3:
@@ -15489,6 +15497,7 @@ packages:
 
   /normalize-css-color@1.0.2:
     resolution: {integrity: sha512-jPJ/V7Cp1UytdidsPqviKEElFQJs22hUUgK5BOPHTwOonNCk7/2qOxhhqzEajmFrWJowADFfOFh1V+aWkRfy+w==}
+    dev: false
 
   /normalize-package-data@2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
