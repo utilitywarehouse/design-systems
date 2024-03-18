@@ -89,5 +89,15 @@ export const CheckboxIndicator = createStyle({
         bg: '$darkCyan700',
       },
     },
+    ':disabled': {
+      borderColor: '$darkGrey400',
+      ':checked': {
+        bg: '$darkGrey700',
+        borderColor: '$darkGrey700',
+        _icon: {
+          color: '$darkGrey500',
+        },
+      },
+    },
   },
 });
