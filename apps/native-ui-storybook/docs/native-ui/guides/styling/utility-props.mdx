@@ -1,0 +1,821 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import RNExample from './components/RNExample';
+import GSExample from './components/GSExample';
+import BackToTopButton from '../../../components/BackToTopButton';
+import {
+  Center,
+  NativeUIProvider,
+  Button,
+  ButtonText,
+  Box,
+  Text,
+} from '@utilitywarehouse/native-ui';
+
+<Meta title="Native UI / Guides / Styling / Utility and SX props" />
+
+<BackToTopButton />
+
+# Utility and SX props
+
+`@utilitywarehouse/native-ui` provides a set of utility props and the `sx` prop to style components. These utility props are designed to help you build components quickly and consistently.
+
+#### Table of contents
+
+- [Utility Props](#utility-props)
+  - [With React Native (without native-ui)](#with-react-native-without-native-ui)
+  - [With native-ui](#with-native-ui)
+  - [Complex styling](#complex-styling)
+  - [More utility props](#more-utility-props)
+- [SX Prop](#sx-prop)
+- [Supported Utility Props](#supported-utility-props)
+  - [Margin and padding](#margin-and-padding)
+  - [Color and background color](#color-and-background-color)
+  - [Typography](#typography)
+  - [Layout, width and height](#layout-width-and-height)
+  - [Borders](#borders)
+  - [Borders Radius](#borders-radius)
+  - [Position](#position)
+  - [Shadow](#shadow)
+- [Supported SX Props](#supported-sx-props)
+  - [Internal Props](#internal-props)
+  - [Interaction Props](#interaction-props)
+  - [Platform Props](#platform-props)
+
+## Utility Props
+
+React Native has a great StyleSheet API which is optimal for component-based systems. `@utilitywarehouse/native-ui` leverages it and adds a layer of utility props and constraint based designed tokens on top of it.
+[**gluestack-style**](https://gluestack.io/style) is used as styling engine for `@utilitywarehouse/native-ui`.
+
+To understand utility props, let's take an example.
+
+### With React Native (without native-ui)
+
+Let's try the traditional way of building the following card in React Native.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <RNExample />
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+function Example() {
+  return (
+    <View style={styles.container}>
+      <View style={styles.topContainer}>
+        <View style={styles.metaContainer}>
+          <View>
+            <Text style={styles.timings}>Uswitch Energy Awards 2023</Text>
+            <Text style={styles.description}>Over a million reasons to join</Text>
+          </View>
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Remind me</Text>
+          </Pressable>
+        </View>
+        <Image
+          source={{
+            uri: 'https://d1pverny9k19rc.cloudfront.net/attachments/cl0rw8sf30lxt0qczvzte5r51-snappr-day3-ben-running-0221.jpg',
+          }}
+          style={styles.avatar}
+        />
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#550091',
+    paddingVertical: 16,
+    paddingHorizontal: 12,
+    borderRadius: 5,
+    alignSelf: 'center',
+    width: 420,
+    maxWidth: '100%',
+  },
+  timings: {
+    color: '#fff',
+    fontSize: 14,
+  },
+  metaContainer: {
+    justifyContent: 'space-between',
+  },
+  topContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  avatar: {
+    height: 100,
+    width: 100,
+    borderRadius: 100,
+  },
+  description: {
+    color: 'white',
+    marginTop: 5,
+    fontSize: 20,
+  },
+  button: {
+    backgroundColor: '#75A7FD',
+    alignSelf: 'flex-start',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 8,
+  },
+  buttonText: {
+    fontWeight: 'bold',
+    color: 'white',
+    textTransform: 'uppercase',
+    fontSize: 14,
+  },
+});
+```
+
+### With native-ui
+
+Let's try to build the same card using `@utilitywarehouse/native-ui`. All the aliases are defined in config.
+This is already set up, you can easily apply styles to the layout using shorthands when working with `@utilitywarehouse/native-ui` components.
+
+You can apply aliases and styling props directly to the component.
+
+<Canvas height="200">
+  <NativeUIProvider>
+    <Center>
+      <GSExample />
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+function Example() {
+  return (
+    <Box bg="#550091" py="$4" px="$3" rounded="$lg" height={132} width={420} maxWidth="100%">
+      <HStack justifyContent="space-between" height="100%">
+        <Box justifyContent="space-between">
+          <VStack space="xs">
+            <Text fontSize="$sm" color="$white">
+              Uswitch Energy Awards 2023
+            </Text>
+            <Text color="$white" fontSize="$xl">
+              Over a million reasons to join
+            </Text>
+          </VStack>
+          <Pressable rounded="$lg" bg="#75a7fd" alignSelf="flex-start" py="$1" px="$3">
+            <ButtonText textTransform="uppercase" fontSize="$sm" fontWeight="$bold" color="$white">
+              Remind me
+            </ButtonText>
+          </Pressable>
+        </Box>
+        <Image
+          source={{
+            uri: 'https://d1pverny9k19rc.cloudfront.net/attachments/cl0rw8sf30lxt0qczvzte5r51-snappr-day3-ben-running-0221.jpg',
+          }}
+          alt="Aang flying and surrounded by clouds"
+          height={100}
+          rounded="$full"
+          width={100}
+        />
+      </HStack>
+    </Box>
+  );
+}
+```
+
+The above example demonstrates the usage of utility props along with VStack, HStack components. This approach allows us to style components without using StyleSheet API.
+
+### Complex styling
+
+You can also handle more intricate styling, such as styles for different states, colormode, media queries, and descendants.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button
+        size="lg"
+        mb="$4"
+        bg="$green500"
+        $hover-bg="$green600"
+        $active-bg="$green700"
+        $_text-hover-color="$white"
+      >
+        <ButtonText>Button</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<Button
+  size="lg"
+  mb="$4"
+  bg="$green500"
+  $hover-bg="$green600"
+  $active-bg="$green700"
+  $_text-hover-color="$white"
+>
+  <ButtonText>Button</ButtonText>
+</Button>
+```
+
+- To achieve this, you can use the `$` prefix and specify the entire property path, like `$hover-bg` followed by its corresponding value.
+- We provide comprehensive TypeScript support for single-level utility props, including aliases and styles in the format `${states/media/colormode/platform/descendants}-{aliases / style}`.
+- For something like `$hover-sm-bg`, TypeScript suggestions are not available, but you can write props prefixed with `${states/media/colormode/platform/descendants}-*`.
+
+## More utility props
+
+If your component's props become cluttered when using the above utility props, we offer support for an object-based approach to improve code maintainability.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button
+        size="lg"
+        mb="$4"
+        bg="$green500"
+        $hover={{
+          bg: '$green600',
+          _text: {
+            color: '$white',
+          },
+        }}
+        $active={{
+          bg: '$green700',
+        }}
+      >
+        <ButtonText>Button</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<Button
+  size="lg"
+  mb="$4"
+  bg="$green500"
+  $hover={{
+    bg: '$green600',
+    _text: {
+      color: '$white',
+    },
+  }}
+  $active={{
+    bg: '$green700',
+  }}
+>
+  <ButtonText>Button</ButtonText>
+</Button>
+```
+
+- In this case, you can specify states, colormode, media queries, and descendants in object form, prefixed with `$`. These objects take sx properties as values.
+- We have provided complete TypeScript support for this approach as well.
+
+## SX Prop
+
+native-ui supports the `sx` prop for overriding styles. The `sx` prop enables passing an object supporting tokens, media queries, nesting, and token-aware values to the component.
+sx accepts the same style object as the base style.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button
+        size="lg"
+        sx={{
+          marginBottom: '$4',
+          bg: '$green500',
+          ':hover': {
+            bg: '$green600',
+            _text: {
+              color: '$white',
+            },
+          },
+          ':active': {
+            bg: '$green700',
+          },
+        }}
+      >
+        <ButtonText>Button</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<Button
+  size="lg"
+  sx={{
+    marginBottom: '$4',
+    bg: '$green500',
+    ':hover': {
+      bg: '$green600',
+      _text: {
+        color: '$white',
+      },
+    },
+    ':active': {
+      bg: '$green700',
+    },
+  }}
+>
+  <ButtonText>Button</ButtonText>
+</Button>
+```
+
+In this example, the button has a green background instead of the default primary color, as the backgroundColor style is overridden using the `sx` prop.
+The `sx` prop is particularly useful for theming and responsive styles, as it enables easy style changes for a component based on the theme or viewport size.
+It is important to note that you should generally avoid using the `sx` prop, as it adds complexity to style calculations and may decrease performance.
+Apart from productivity boosts and saving time, there are other benefits to styling components using utility props and `sx` prop. No need to name styles anymore, no need to define an object and think about naming it.
+Using utility-first and `sx` props, you can focus on creating reusable components instead of reusable stylesheets.Once you start writing styles this way, any other way will feel cumbersome.
+
+## Supported Utility Props
+
+The following table shows a list of every style prop and the properties within each group.
+
+### Margin and padding
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <>
+        <Box borderRadius="$md" bg="$grey400" m="$2" p="$5" />
+        <Box borderRadius="$md" bg="$grey400" mx="auto" px="$20" py="$5" />
+        <Box
+          borderRadius="$md"
+          bg="$grey400"
+          sx={{
+            '@sm': { m: '$2' },
+            '@lg': {
+              m: '$3',
+            },
+          }}
+          mt="$2"
+          pt="$10"
+          pr="$10"
+        />
+      </>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<>
+  <Box borderRadius="$md" bg="$cyan400" m="$2" p="$5" />
+  <Box borderRadius="$md" bg="$cyan400" mx="auto" px="$20" py="$5" />
+  <Box
+    borderRadius="$md"
+    bg="$cyan400"
+    sx={{
+      '@sm': { m: '$2' },
+      '@lg': {
+        m: '$3',
+      },
+    }}
+    mt="$2"
+    pt="$10"
+    pr="$10"
+  />
+</>
+```
+
+| Prop              | CSS Equivalent                 | Theme Key |
+| ----------------- | ------------------------------ | --------- |
+| m, margin         | margin                         | space     |
+| mt, marginTop     | margin-top                     | space     |
+| mr, marginRight   | margin-right                   | space     |
+| mb, marginBottom  | margin-bottom                  | space     |
+| ml, marginLeft    | margin-left                    | space     |
+| mx                | margin-left and margin-right   | space     |
+| my                | margin-top and margin-bottom   | space     |
+| p, padding        | padding                        | space     |
+| pt, paddingTop    | padding-top                    | space     |
+| pr, paddingRight  | padding-right                  | space     |
+| pb, paddingBottom | padding-bottom                 | space     |
+| pl, paddingLeft   | padding-left                   | space     |
+| px                | padding-left and padding-right | space     |
+| py                | padding-top and padding-bottom | space     |
+
+### Color and background color
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <>
+        <Box p="$5" m="$2" borderRadius="$md" bg="$gold200" />
+        <Box p="$5" m="$2" borderRadius="$md" bgColor="$cyan200" py="$3">
+          <Text color="$red400" fontWeight="bold">
+            I ❤️ UW
+          </Text>
+        </Box>
+        <Box p="$5" m="$2" borderRadius="$md" backgroundColor="$green300" />
+      </>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<>
+  <Box p="$5" m="$2" borderRadius="$md" bg="$gold200" />
+  <Box p="$5" m="$2" borderRadius="$md" bgColor="$cyan200" py="$3">
+    <Text color="$red400" fontWeight="bold">
+      I ❤️ UW
+    </Text>
+  </Box>
+  <Box p="$5" m="$2" borderRadius="$md" backgroundColor="$green300" />
+</>
+```
+
+| Prop    | CSS Equivalent   | Theme Key |
+| ------- | ---------------- | --------- |
+| color   | color            | colors    |
+| bg      | background       | colors    |
+| bgColor | background-color | colors    |
+| opacity | opacity          | -         |
+
+### Typography
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <>
+        <Text m="$2" fontSize="md">
+          Sample Text
+        </Text>
+        <Text m="$2" fontSize={32} textDecoration="underline">
+          Sample Text
+        </Text>
+        <Text m="$2" fontSize="2em" fontWeight="bold">
+          Sample Text
+        </Text>
+        <Text m="$2" textAlign="center">
+          Sample Text
+        </Text>
+      </>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<>
+  <Text m="$2" fontSize="md">
+    Sample Text
+  </Text>
+  <Text m="$2" fontSize={32} textDecoration="underline">
+    Sample Text
+  </Text>
+  <Text m="$2" fontSize="2em" fontWeight="bold">
+    Sample Text
+  </Text>
+  <Text m="$2" textAlign="center">
+    Sample Text
+  </Text>
+</>
+```
+
+| Prop           | CSS Equivalent  | Theme Key      |
+| -------------- | --------------- | -------------- |
+| fontFamily     | font-family     | fonts          |
+| fontSize       | font-size       | fontSizes      |
+| fontWeight     | font-weight     | fontWeights    |
+| lineHeight     | line-height     | lineHeights    |
+| letterSpacing  | letter-spacing  | letterSpacings |
+| textAlign      | text-align      | -              |
+| fontStyle      | font-style      | -              |
+| textTransform  | text-transform  | -              |
+| textDecoration | text-decoration | -              |
+
+### Layout, width and height
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <>
+        <Box m="$2" borderRadius="$md" bg="$cyan400" width="100%" height="$8" />
+        <Box m="$2" borderRadius="$md" bg="$cyan400" w="75%" h="32px" />
+        <Box m="$2" borderRadius="$md" bg="$cyan400" w="50%" h="$8" />
+        <Box m="$2" borderRadius="$md" bg="$cyan400" w={256} />
+        <Box m="$2" borderRadius="$md" bg="$cyan400" w="40px" h="$8" />
+      </>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<>
+  <Box m="$2" borderRadius="$md" bg="$cyan400" width="100%" height="$8" />
+  <Box m="$2" borderRadius="$md" bg="$cyan400" w="75%" h="32px" />
+  <Box m="$2" borderRadius="$md" bg="$cyan400" w="50%" h="$8" />
+  <Box m="$2" borderRadius="$md" bg="$cyan400" w={256} />
+  <Box m="$2" borderRadius="$md" bg="$cyan400" w="40px" h="$8" />
+</>
+```
+
+| Prop          | CSS Equivalent | Theme Key |
+| ------------- | -------------- | --------- |
+| w, width      | width          | sizes     |
+| h, height     | height         | sizes     |
+| minW          | min-width      | sizes     |
+| maxW          | max-width      | sizes     |
+| minH          | min-height     | sizes     |
+| maxH          | max-height     | sizes     |
+| d, display    | display        | -         |
+| verticalAlign | vertical-align | -         |
+| overflow      | overflow       | -         |
+| overflowX     | overflowX      | -         |
+| overflowY     | overflowY      | -         |
+
+### Borders
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <>
+        <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" borderWidth="$1" />
+        <Box
+          p="$5"
+          m="$2"
+          borderRadius="$md"
+          bg="$cyan400"
+          borderWidth="$2"
+          borderColor="$red400"
+        />
+        <Box
+          p="$5"
+          m="$2"
+          borderRadius="$md"
+          bg="$cyan400"
+          borderWidth="$2"
+          borderBottomColor="$red500"
+          borderTopWidth="$4"
+        />
+      </>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<>
+  <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" borderWidth="$1" />
+  <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" borderWidth="$2" borderColor="$red400" />
+  <Box
+    p="$5"
+    m="$2"
+    borderRadius="$md"
+    bg="$cyan400"
+    borderWidth="$2"
+    borderBottomColor="$red500"
+    borderTopWidth="$4"
+  />
+</>
+```
+
+| Prop              | CSS Equivalent      | Theme Key    |
+| ----------------- | ------------------- | ------------ |
+| border            | border              | borders      |
+| borderWidth       | border-width        | borderWidths |
+| borderStyle       | border-style        | borderStyles |
+| borderColor       | border-color        | colors       |
+| borderTopWidth    | border-top-width    | borderWidths |
+| borderTopColor    | border-top-color    | colors       |
+| borderRightWidth  | border-right-width  | borderWidths |
+| borderRightColor  | border-right-color  | colors       |
+| borderBottomWidth | border-bottom-width | borderWidths |
+| borderBottomColor | border-bottom-color | colors       |
+| borderLeftWidth   | border-left-width   | borderWidths |
+| borderLeftColor   | border-left-color   | colors       |
+
+### Borders Radius
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <>
+        <Box p="$5" m="$2" bg="$cyan400" borderRadius="$md" />
+        <Box p="$5" m="$2" bg="$cyan400" borderRadius="$full" />
+        <Box p="$5" m="$2" bg="$cyan400" borderTopLeftRadius="$lg" borderBottomRightRadius="$md" />
+      </>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<>
+  <Box p="$5" m="$2" bg="$cyan400" borderRadius="$md" />
+  <Box p="$5" m="$2" bg="$cyan400" borderRadius="$full" />
+  <Box p="$5" m="$2" bg="$cyan400" borderTopLeftRadius="$lg" borderBottomRightRadius="$md" />
+</>
+```
+
+| Prop                    | CSS Equivalent             | Theme Key |
+| ----------------------- | -------------------------- | --------- |
+| borderRadius            | border-radius              | radii     |
+| borderTopLeftRadius     | border-top-left-radius     | radii     |
+| borderTopRightRadius    | border-top-right-radius    | radii     |
+| borderBottomRightRadius | border-bottom-right-radius | radii     |
+| borderBottomLeftRadius  | border-bottom-left-radius  | radii     |
+
+### Position
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <>
+        <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" position="absolute" left="$64" />
+        <Box p="$5" m="$2" borderRadius="$md" bgColor="$red300" zIndex={2} position="relative" />
+        <Box
+          p="$5"
+          m="$2"
+          borderRadius="$md"
+          backgroundColor="$cyan800"
+          position="absolute"
+          right="$32"
+        />
+      </>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<>
+  <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" position="absolute" left="$64" />
+  <Box p="$5" m="$2" borderRadius="$md" bgColor="$red300" zIndex={2} position="relative" />
+  <Box
+    p="$5"
+    m="$2"
+    borderRadius="$md"
+    backgroundColor="$cyan800"
+    position="absolute"
+    right="$32"
+  />
+</>
+```
+
+| Prop     | CSS Equivalent | Theme Key |
+| -------- | -------------- | --------- |
+| position | position       | -         |
+| zIndex   | z-index        | zIndices  |
+| top      | top            | space     |
+| right    | right          | space     |
+| bottom   | bottom         | space     |
+| left     | left           | space     |
+
+### Shadow
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <>
+        <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" softShadow="1" />
+        <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" softShadow="3" />
+        <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" hardShadow="5" />
+        <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" hardShadow="7" />
+        <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" hardShadow="9" />
+      </>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<>
+  <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" softShadow="1" />
+  <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" softShadow="3" />
+  <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" hardShadow="5" />
+  <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" hardShadow="7" />
+  <Box p="$5" m="$2" borderRadius="$md" bg="$cyan400" hardShadow="9" />
+</>
+```
+
+| Prop       | CSS Equivalent | Theme Key |
+| ---------- | -------------- | --------- |
+| hardShadow | box-shadow     | shadows   |
+| softShadow | box-shadow     | shadows   |
+
+## Supported SX Props
+
+### Internal Props
+
+Provides a way to pass props to child components inside Composite components.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button
+        sx={{
+          bg: '$cyan400',
+          _text: {
+            color: '$grey900',
+            fontSize: '$xs',
+            fontWeight: '$bold',
+          },
+        }}
+      >
+        <ButtonText>Sample Text</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<Button
+  sx={{
+    bg: '$cyan400',
+    _text: {
+      color: '$grey900',
+      fontSize: '$xs',
+      fontWeight: '$bold',
+    },
+  }}
+>
+  <ButtonText>Sample Text</ButtonText>
+</Button>
+```
+
+child.
+
+| Prop   | CSS Equivalent | Theme Key                                      |
+| ------ | -------------- | ---------------------------------------------- |
+| \_text | TextProps      | Passed props will be provided to `Text` child. |
+
+### Interaction Props
+
+Provides a way to pass props on certain interaction.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button
+        sx={{
+          ':hover': {
+            // below props will only be applied on button is hovered
+            bg: '$red300',
+          },
+        }}
+      >
+        <ButtonText>Sample Text</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<Button
+  sx={{
+    ':hover': {
+      // below props will only be applied on button is hovered
+      bg: '$red300',
+    },
+  }}
+>
+  <ButtonText>Sample Text</ButtonText>
+</Button>
+```
+
+| Prop      | CSS Equivalent        | Theme Key                                       |
+| --------- | --------------------- | ----------------------------------------------- |
+| :disabled | Same as the component | Passed props will be applied on disabled state. |
+| :focus    | Same as the component | Passed props will be applied on focused state.  |
+| :hover    | Same as the component | Passed props will be applied on hovered state.  |
+| :invalid  | Same as the component | Passed props will be applied on invalid state.  |
+| :active   | Same as the component | Passed props will be applied on pressed state.  |
+
+### Platform Props
+
+Provides a way to pass props based on Platform (android, ios or web).
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button
+        sx={{
+          _web: {
+            bg: '$cyan300',
+          },
+          _ios: { bg: '$red500' },
+          _android: { bg: '$gold500' },
+        }}
+      >
+        <ButtonText>Sample Text</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<Button
+  sx={{
+    _web: {
+      bg: '$cyan300',
+    },
+    _ios: { bg: '$red500' },
+    _android: { bg: '$gold500' },
+  }}
+>
+  <ButtonText>Sample Text</ButtonText>
+</Button>
+```
+
+| Prop      | CSS Equivalent        | Theme Key                                |
+| --------- | --------------------- | ---------------------------------------- |
+| \_android | Same as the component | Passed props will be applied on android. |
+| \_ios     | Same as the component | Passed props will be applied on ios.     |
+| \_web     | Same as the component | Passed props will be applied on web.     |
