@@ -6,7 +6,8 @@ const AlertLinkText = styled(
   {
     fontSize: 16,
     lineHeight: 24,
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily: 'Work Sans',
+    fontWeight: '600',
   },
   {
     componentName: 'AlertLinkText',

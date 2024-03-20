@@ -1,8 +1,9 @@
 import { AnimationResolver } from '@gluestack-style/animation-resolver';
 import { MotionAnimationDriver } from '@gluestack-style/legend-motion-animation-driver';
-import { createConfig, createComponents } from '@gluestack-style/react';
+import { createConfig, createComponents, FontResolver } from '@gluestack-style/react';
 import * as componentsTheme from './theme';
 import { colors, colorsCommon, colorsDark } from '@utilitywarehouse/colour-system';
+import mapFonts from '../utils/mapFonts';
 
 export const gluestackUIConfig = createConfig({
   aliases: {
@@ -140,8 +141,8 @@ export const gluestackUIConfig = createConfig({
       '7xl': 90,
     },
     fontWeights: {
-      hairline: '100',
-      thin: '200',
+      thin: '100',
+      extralight: '200',
       light: '300',
       normal: '400',
       medium: '500',
@@ -151,8 +152,8 @@ export const gluestackUIConfig = createConfig({
       black: '900',
     },
     fonts: {
-      heading: 'Aeonik-Regular',
-      body: 'WorkSans-Regular',
+      heading: 'Aeonik',
+      body: 'Work Sans',
       mono: undefined,
     },
     fontSizes: {
@@ -309,7 +310,12 @@ export const gluestackUIConfig = createConfig({
       },
     },
   },
-  plugins: [new AnimationResolver(MotionAnimationDriver)],
+  plugins: [
+    new AnimationResolver(MotionAnimationDriver),
+    new FontResolver({
+      mapFonts,
+    }),
+  ],
 });
 
 type Config = typeof gluestackUIConfig; // Assuming `config` is defined elsewhere
