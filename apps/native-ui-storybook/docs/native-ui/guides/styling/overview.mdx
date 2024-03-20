@@ -1,0 +1,18 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Native UI / Guides / Styling / Overview" />
+
+## Styling Overview
+
+Styling is provided by our styling engine from [`@gluestack-style/react`](https://gluestack.io/style/docs/overview/introduction) it is configured by passing config file from [`@gluestack-ui/config`](https://github.com/gluestack/gluestack-ui/tree/main/packages/config).
+The condif file exports an object which is passed into our `@utilitywarehouse/native-ui` `NativeUIProvider` (a Wrapper component that applies the theme to all the children).
+
+```tsx
+import { NativeUIProvider } from '@utilitywarehouse/native-ui';
+
+function App({ children }) {
+  return <NativeUIProvider>{children}</NativeUIProvider>;
+}
+```
+
+Our `NativeUIProvider` is a wrapper around the `@gluestack/themed` UI Provider. For more information on how to use the `@gluestack/themed` provider, please refer to the [documentation](https://gluestack.io/ui/docs/styling/overview).

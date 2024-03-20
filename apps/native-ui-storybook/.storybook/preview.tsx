@@ -118,7 +118,23 @@ const preview: Preview = {
       storySort: {
         order: [
           'Native UI',
-          ['Introduction', 'Guides', 'Tokens', 'Layout', 'Typography', 'Components', 'Lab'],
+          [
+            'Introduction',
+            'Guides',
+            [
+              'Styling',
+              [
+                'Overview',
+                'Utility and SX props',
+                'State',
+                'Color Mode',
+                'Responsive',
+                'Descendants',
+                'Platform Specific',
+              ],
+            ],
+            'Components',
+          ],
           'Colour System',
           ['Introduction', 'Common', 'Colors Light'],
         ],
