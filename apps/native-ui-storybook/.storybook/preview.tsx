@@ -122,6 +122,7 @@ const preview: Preview = {
             'Introduction',
             'Guides',
             [
+              'Using Storybook',
               'Styling',
               [
                 'Overview',
