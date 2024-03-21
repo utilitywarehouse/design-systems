@@ -14,15 +14,17 @@ Current version: v{version}
 
 - [Installation](#installation)
 - [Additional packages](#additional-packages)
-- [Theming](#theming)
-- [Dark Mode](#dark-mode)
+  - [Linking the fonts to be used in your project](#linking-the-fonts-to-be-used-in-your-project)
+  - [Using Expo](#using-expo)
+- [Getting Started](#getting-started)
+  - [Dark Mode](#dark-mode)
 
 ## Installation
 
-Assuming you already have React installed, to get started install the library and it's peer dependencies.
+Assuming you already have React Native installed and your project set up, to get started install the library and it's peer dependencies.
 
 ```console
-yarn add @utilitywarehouse/native-ui @gluestack-ui/themed @gluestack-style/react react-native-svg@13.4.0
+yarn add @utilitywarehouse/native-ui
 ```
 
 ## Additional packages
@@ -34,7 +36,7 @@ easiest way to do this is to use the `@utilitywarehouse/fontsource` package.
 yarn add @utilitywarehouse/fontsource
 ```
 
-Next, create a react-native.config.js file in the root directory and paste the code below inside it:
+Next, create or update your `react-native.config.js` file in the root directory and paste the code below inside it:
 
 ```js
 module.exports = {
@@ -42,13 +44,54 @@ module.exports = {
     ios: {},
     android: {},
   },
-  assets: ['@utilitywarehouse/fontsource/files/truetype'],
+  assets: [
+    './node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans',
+    './node_modules/@utilitywarehouse/fontsource/files/truetype/Aeonik',
+  ],
 };
 ```
 
-## Theming
+### Linking the fonts to be used in your project
 
-Wrap your application with the `ThemeProvider` component.
+Now we need to link them so we'll be able to use them in any files inside the project. To do that, run the following command:
+
+```console
+npx react-native-asset
+```
+
+### Using Expo
+
+If you are using Expo, you can use the `expo-font` package to load the fonts. Here is an example of how to load the fonts in your `App.tsx` file:
+
+```tsx
+import React from 'react';
+import { useFonts } from 'expo-font';
+import App from './src/App';
+
+export default () => {
+  const [loaded] = useFonts({
+    'Aeonik-Regular': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/Aeonik/Aeonik-Regular.otf'),
+    'Aeonik-Bold': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/Aeonik/Aeonik-Bold.otf'),
+    'WorkSans-Thin': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Thin.ttf'),
+    'WorkSans-ExtraLight': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-ExtraLight.ttf'),
+    'WorkSans-Light': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Light.ttf'),
+    'WorkSans-Regular': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Regular.ttf'),
+    'WorkSans-SemiBold': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-SemiBold.ttf'),
+    'WorkSans-Medium': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Medium.ttf'),
+    'WorkSans-Bold': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Bold.ttf'),
+    'WorkSans-ExtraBold': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-ExtraBold.ttf'),
+    'WorkSans-Black': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Black.ttf'),
+  });
+
+  if (!loaded) return null;
+
+  return <App />;
+};
+```
+
+## Getting Started
+
+Wrap your application with the `NativeUIProvider` component.
 
 ```tsx
 import * as React from 'react';
@@ -62,4 +105,20 @@ const App: React.FC = () => (
 );
 ```
 
-## Dark Mode
+### Dark Mode
+
+By default the light colour mode is enabled. If you want to enable dark mode, you can pass the `colorMode` prop to the `NativeUIProvider` component. The two options for `colorMode` are `light` and `dark`.
+
+```tsx
+import { ColorSchemeName, useColorScheme } from 'react-native';
+
+const App: React.FC = () => {
+  const colorScheme = useColorScheme();
+
+  return (
+    <NativeUIProvider colorMode={colorScheme as ColorSchemeName}>
+      <App />
+    </NativeUIProvider>
+  );
+};
+```
