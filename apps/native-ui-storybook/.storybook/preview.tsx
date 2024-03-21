@@ -132,6 +132,7 @@ const preview: Preview = {
                 'Responsive',
                 'Descendants',
                 'Platform Specific',
+                'Fonts',
               ],
             ],
             'Components',
