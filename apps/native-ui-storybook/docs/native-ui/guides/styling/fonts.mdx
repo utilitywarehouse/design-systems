@@ -10,8 +10,8 @@ import { Center, NativeUIProvider, Box, Text } from '@utilitywarehouse/native-ui
 
 # Fonts
 
-native-ui uses two fonts, on for headings and one for body text. The heading font is `Aeonik` and the body font is `Work Sans`.
-To use these fonts with native-ui, unlike just using the `fontFamily` in React Native stylesheets, you can use styles similar to web CSS.
+`native-ui` uses two fonts, one for headings and one for body text. The heading font is `Aeonik` and the body font is `Work Sans`.
+To use these fonts with `native-ui`, unlike just using the `fontFamily` in React Native stylesheets, you can use styles similar to web CSS.
 
 For example to use the `Work Sans` regular font, you can see the following example using a normal React Native stylesheet:
 
@@ -32,7 +32,7 @@ const MyComponent = () => (
 );
 ```
 
-Whereas with native-ui, you can use the following:
+Whereas with `native-ui`, you can use the following:
 
 ```tsx
 import { Text, Box } from '@utilitywarehouse/native-ui';
@@ -52,7 +52,7 @@ const MyComponent = () => (
 );
 ```
 
-This is because native-ui uses a custom font loader to load the fonts into the app, and then uses the font names as they are in the font files.
+This is because `native-ui` uses a custom font loader to load the fonts into the app, and then uses the font names as they are in the font files.
 
 ## Font Weights and Aliases
 
