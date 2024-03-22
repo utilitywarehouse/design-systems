@@ -26,7 +26,7 @@ export { Input, InputField, InputIcon, InputSlot } from '@gluestack-ui/themed';
 
 export { Link, LinkText } from '@gluestack-ui/themed';
 export { Pressable } from '@gluestack-ui/themed';
-export { Radio, RadioGroup, RadioIcon, RadioIndicator, RadioLabel } from '@gluestack-ui/themed';
+export { Radio, RadioGroup, RadioLabel } from '@gluestack-ui/themed';
 export {
   Select,
   SelectBackdrop,

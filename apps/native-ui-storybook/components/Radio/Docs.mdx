@@ -1,0 +1,161 @@
+import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
+import * as RadioStories from './Radio.stories';
+import {
+  Radio,
+  RadioGroup,
+  RadioIndicator,
+  RadioIcon,
+  RadioLabel,
+  Center,
+  NativeUIProvider,
+} from '@utilitywarehouse/native-ui';
+import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
+
+<Meta of={RadioStories} />
+
+# Radio
+
+The Radio component presents users with predefined choices and enables them to select only one option. It is commonly used for providing a single-choice selection in forms or surveys.
+
+- A `Radio` component is composed of a `RadioGroup`, `RadioIndicator`, `RadioLabel`.
+- `Radio` is used for a single selection
+- `RadioGroup` is the building block for `Radio`
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <RadioGroup
+        aria-label="Radio Group"
+        value="Label 1"
+        onChange={() => console.log(isSelected, '###')}
+        nativeID="Radio-group"
+      >
+        <Radio
+          value="Label 1"
+          aria-label="Label 1"
+          onChange={() => {
+            console.log(isSelected, '###');
+          }}
+          nativeID="Radio-1"
+        >
+          <RadioIndicator />
+          <RadioLabel>Option 1</RadioLabel>
+        </Radio>
+        <Radio
+          value="Label 2"
+          aria-label="Label 2"
+          onChange={() => {
+            console.log(isSelected, '###');
+          }}
+          nativeID="Radio-2"
+        >
+          <RadioIndicator />
+          <RadioLabel>Option 2</RadioLabel>
+        </Radio>
+      </RadioGroup>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Radio } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const [value, setValue] = React.useState('Option 1');
+  return (
+    <RadioGroup aria-label="Radio Group" value={value} onChange={setValue} nativeID="Radio-group">
+      <Radio
+        value="Option 1"
+        aria-label="Option 1"
+        onChange={(isSelected: boolean) => {
+          console.log(isSelected, '###');
+        }}
+        nativeID="Radio-1"
+      >
+        <RadioIndicator />
+        <RadioLabel>Option 1</RadioLabel>
+      </Radio>
+      <Radio
+        value="Option 2"
+        aria-label="Option 2"
+        onChange={(isSelected: boolean) => {
+          console.log(isSelected, '###');
+        }}
+        nativeID="Radio-2"
+      >
+        <RadioIndicator />
+        <RadioLabel>Option 2</RadioLabel>
+      </Radio>
+    </RadioGroup>
+  );
+};
+```
+
+## Props
+
+| Property        | Type     | Default | Description                                                                                          |
+| --------------- | -------- | ------- | ---------------------------------------------------------------------------------------------------- |
+| value           | string   | -       | The value to be used in the radio input. This is the value that will be returned on form submission. |
+| onChange        | function | -       | Function called when the state of the radio changes.                                                 |
+| isDisabled      | bool     | false   | To manually set disable to the radio.                                                                |
+| isHovered       | bool     | false   | To manually set hover to the radio.                                                                  |
+| isFocusVisible  | bool     | false   | To manually set focus visible state to the radio.                                                    |
+| isIndeterminate | bool     | false   | To manually set indeterminate to the radio.                                                          |
+
+### Descendants Styling Props
+
+Props to style child components.
+
+| Sx Prop     | Description                  |
+| ----------- | ---------------------------- |
+| \_text      | Prop to style RadioLabel     |
+| \_icon      | Prop to style RadioIcon      |
+| \_indicator | Prop to style RadioIndicator |
+
+For more information, see the [Gluestack Radio component documentation](https://gluestack.io/ui/docs/components/forms/Radio).
+
+## Components
+
+### `Radio`
+
+Contains all Radio related layout style props and actions. It inherits all the properties of React Native's View component.
+
+### `RadioIndicator`
+
+Contains all Indicator related layout style props and actions. It inherits all the properties of React Native's View component.
+
+### `RadioIcon`
+
+Contains all Icon related layout style props and actions. It inherits all the properties of gluestack Style's AsForwarder component.
+
+### `RadioLabel`
+
+Contains all Label related layout style props and actions. It inherits all the properties of React Native's Text component.
+
+### `RadioGroup`
+
+Contains all Group related layout style props and actions. It inherits all the properties of React Native's View component.
+
+| Property   | Type     | Default | Description                                                         |
+| ---------- | -------- | ------- | ------------------------------------------------------------------- |
+| value      | string   | -       | The value of the radio group.                                       |
+| onChange   | function | -       | The callback fired when any children Radio is checked or unchecked. |
+| isReadOnly | bool     | false   | To manually set read-only to the radio group.                       |
+
+#### Descendants Styling Props
+
+Props to style child components.
+
+| Sx Prop | Description                   |
+| ------- | ----------------------------- |
+| \_radio | Prop to style Radio Component |

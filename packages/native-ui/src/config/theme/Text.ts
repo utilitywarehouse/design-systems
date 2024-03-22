@@ -1,9 +1,9 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const Text = createStyle({
-  color: '$textLight700',
+  color: '$grey1000',
   _dark: {
-    color: '$textDark200',
+    color: '$darkGrey1000',
   },
   fontWeight: '$normal',
   fontFamily: '$body',

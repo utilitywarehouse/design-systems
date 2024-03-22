@@ -2,7 +2,7 @@ import React from 'react';
 import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/native-ui';
 import { useArgs } from '@storybook/preview-api';
 
-const CheckboxBasic = ({ isDisabled, isFocusVisible, CheckboxLabel: label }: any) => {
+const CheckboxBasic = ({ isDisabled, isFocusVisible, _CheckboxLabel: label }: any) => {
   const [args, updateArgs] = useArgs();
 
   return (
@@ -41,7 +41,7 @@ CheckboxBasic.argTypes = {
     control: 'boolean',
     description: 'To manually set focus visible state to the checkbox.',
   },
-  CheckboxLabel: {
+  _CheckboxLabel: {
     type: 'string',
     control: 'text',
     description:
@@ -53,7 +53,7 @@ CheckboxBasic.args = {
   isChecked: false,
   isDisabled: false,
   isFocusVisible: false,
-  CheckboxLabel: '',
+  _CheckboxLabel: '',
 };
 
 export default CheckboxBasic;
