@@ -31,10 +31,14 @@ jobs:
       - name: 🏗 Checkout code
         uses: actions/checkout@v3
 
+      - name: 🏗 Create .env
+        run: |
+          touch ./apps/native-ui-storybook/.env
+
       - name: 🏗 Cache .env
         uses: actions/cache@v2
         with:
-          path: ./apps/native-ui-storybook/.env
+          path: ./apps/native-ui-storybook
           key: ${{ github.event.number }}
 
       - name: 🏗 Setup Node
@@ -69,7 +73,7 @@ jobs:
 
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
-        if: github.event.action == 'opened'
+        # if: github.event.action == 'opened'
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
@@ -89,17 +93,17 @@ jobs:
       - name: 🚀 Load .env file
         uses: xom9ikk/dotenv@v2
         with:
-          path: ./apps/native-ui-storybook/.env
+          path: ./apps/native-ui-storybook
           load-mode: strict
 
-      - name: 🚀 Upload updated bundle to Appetize
-        uses: appetizeio/github-action-appetize@v1.0.1
-        if: github.event.action != 'opened'
-        with:
-          apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
-          publicKey: ${{ env.ANDROID_API_KEY }}
-          appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
-          platform: 'android'
+      # - name: 🚀 Upload updated bundle to Appetize
+      #   uses: appetizeio/github-action-appetize@v1.0.1
+      #   if: github.event.action != 'opened'
+      #   with:
+      #     apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
+      #     publicKey: ${{ env.ANDROID_API_KEY }}
+      #     appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
+      #     platform: 'android'
 
   build-for-ios:
     runs-on: macos-13-xlarge
@@ -118,7 +122,7 @@ jobs:
       - name: 🏗 Cache .env
         uses: actions/cache@v2
         with:
-          path: ./apps/native-ui-storybook/.env
+          path: ./apps/native-ui-storybook
           key: ${{ github.event.number }}
 
       - name: 🏗 Setup Node
@@ -149,7 +153,7 @@ jobs:
 
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
-        if: github.event.action == 'opened'
+        # if: github.event.action == 'opened'
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
@@ -171,14 +175,14 @@ jobs:
           path: ./apps/native-ui-storybook/.env
           load-mode: strict
 
-      - name: 🚀 Upload updated bundle to Appetize
-        uses: appetizeio/github-action-appetize@v1.0.1
-        if: github.event.action != 'opened'
-        with:
-          apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
-          publicKey: ${{ env.IOS_API_KEY }}
-          appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
-          platform: 'ios'
+      # - name: 🚀 Upload updated bundle to Appetize
+      #   uses: appetizeio/github-action-appetize@v1.0.1
+      #   if: github.event.action != 'opened'
+      #   with:
+      #     apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
+      #     publicKey: ${{ env.IOS_API_KEY }}
+      #     appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
+      #     platform: 'ios'
 
   build-for-web:
     if: github.event_name == 'pull_request'
