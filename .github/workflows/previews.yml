@@ -169,7 +169,7 @@ jobs:
           name: env-file-ios-${{ github.event.number }}
 
       - name: 🏗 Create/Read .env
-        run: touch ./apps/native-ui-storybook/.env-ios && cat ./apps/native-ui-storybook/.env.ios
+        run: touch ./apps/native-ui-storybook/.env.ios && cat ./apps/native-ui-storybook/.env.ios
 
       - name: 🚀 Load .env file
         uses: xom9ikk/dotenv@v2
