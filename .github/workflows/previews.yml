@@ -38,11 +38,7 @@ jobs:
           key: ${{ github.event.number }}-env
 
       - name: See env output
-        run: cat ./apps/native-ui-storybook/.env
-
-      - name: 🏗 Create .env
-        run: |
-          touch ./apps/native-ui-storybook/.env
+        run: touch ./apps/native-ui-storybook/.env && cat ./apps/native-ui-storybook/.env
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
@@ -138,11 +134,7 @@ jobs:
           key: ${{ github.event.number }}-env
 
       - name: See env output
-        run: cat ./apps/native-ui-storybook/.env
-
-      - name: 🏗 Create .env
-        run: |
-          touch ./apps/native-ui-storybook/.env
+        run: touch ./apps/native-ui-storybook/.env && cat ./apps/native-ui-storybook/.env
 
       - name: 🏗 Cache .env
         uses: actions/cache@v2
