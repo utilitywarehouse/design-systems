@@ -31,15 +31,18 @@ jobs:
       - name: 🏗 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🏗 Create .env
-        run: |
-          touch ./apps/native-ui-storybook/.env
-
       - name: 🏗 Cache .env
         uses: actions/cache@v2
         with:
           path: ./apps/native-ui-storybook/.env
           key: ${{ github.event.number }}
+
+      - name: See env output
+        run: cat ./apps/native-ui-storybook/.env
+
+      - name: 🏗 Create .env
+        run: |
+          touch ./apps/native-ui-storybook/.env
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
@@ -73,6 +76,7 @@ jobs:
 
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
+        id: appetizeio_github_action_appetize
         # if: github.event.action == 'opened'
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
@@ -80,11 +84,11 @@ jobs:
           platform: 'android'
 
       - name: 🚀 Add output to .env
-        if: github.event.action == 'opened'
+        # if: github.event.action == 'opened'
         working-directory: ./apps/native-ui-storybook
         run: |
           if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
-            echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY }}" >> .env
+            echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env
           else
             echo "ANDROID_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env
           fi
@@ -94,7 +98,10 @@ jobs:
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
-          load-mode: strict
+          mode: strict
+
+      - name: See env output
+        run: cat ./apps/native-ui-storybook/.env
 
       # - name: 🚀 Upload updated bundle to Appetize
       #   uses: appetizeio/github-action-appetize@v1.0.1
@@ -116,12 +123,21 @@ jobs:
         with:
           version: 8
 
+      - name: 🏗 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🏗 Cache .env
+        uses: actions/cache@v2
+        with:
+          path: ./apps/native-ui-storybook/.env
+          key: ${{ github.event.number }}
+
+      - name: See env output
+        run: cat ./apps/native-ui-storybook/.env
+
       - name: 🏗 Create .env
         run: |
           touch ./apps/native-ui-storybook/.env
-
-      - name: 🏗 Checkout code
-        uses: actions/checkout@v3
 
       - name: 🏗 Cache .env
         uses: actions/cache@v2
@@ -157,6 +173,7 @@ jobs:
 
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
+        id: appetizeio_github_action_appetize
         # if: github.event.action == 'opened'
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
@@ -164,11 +181,11 @@ jobs:
           platform: 'ios'
 
       - name: 🚀 Add output to .env
-        if: github.event.action == 'opened'
+        # if: github.event.action == 'opened'
         working-directory: ./apps/native-ui-storybook
         run: |
           if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
-            echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY }}" >> .env
+            echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
           else
             echo "ANDROID_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env
           fi
@@ -177,7 +194,7 @@ jobs:
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
-          load-mode: strict
+          mode: strict
 
       # - name: 🚀 Upload updated bundle to Appetize
       #   uses: appetizeio/github-action-appetize@v1.0.1
@@ -234,7 +251,7 @@ jobs:
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
-          load-mode: strict
+          mode: strict
 
       - name: 🚀 Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
