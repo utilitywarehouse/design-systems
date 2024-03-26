@@ -31,9 +31,6 @@ jobs:
       - name: 🏗 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🏗 Create .env
-        run: touch ./apps/native-ui-storybook/.env && cat ./apps/native-ui-storybook/.env
-
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
         with:
@@ -68,15 +65,16 @@ jobs:
         uses: actions/download-artifact@v4
         continue-on-error: true
         with:
-          name: env-file
+          name: env-file-android-${{ github.event.number }}
 
       - name: 🏗 Create/Read .env
-        run: touch ./apps/native-ui-storybook/.env && cat ./apps/native-ui-storybook/.env
+        run: touch ./apps/native-ui-storybook/.env.android && cat ./apps/native-ui-storybook/.env.android
 
       - name: 🚀 Load .env file
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
+          mode: 'android'
 
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
@@ -92,9 +90,9 @@ jobs:
         working-directory: ./apps/native-ui-storybook
         run: |
           if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
-            echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env
+            echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env.android
           else
-            echo "ANDROID_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env
+            echo "ANDROID_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env.android
           fi
         shell: bash
 
@@ -102,16 +100,17 @@ jobs:
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
+          mode: 'android'
 
       - name: 🚀 Upload env file
         uses: actions/upload-artifact@v4
         if: env.ANDROID_API_KEY
         with:
-          name: env-file
-          path: ./apps/native-ui-storybook/.env
+          name: env-file-android-${{ github.event.number }}
+          path: ./apps/native-ui-storybook/.env.android
 
       - name: See env output
-        run: cat ./apps/native-ui-storybook/.env
+        run: cat ./apps/native-ui-storybook/.env.android
 
       - name: 🚀 Upload updated bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
@@ -167,15 +166,16 @@ jobs:
         uses: actions/download-artifact@v4
         continue-on-error: true
         with:
-          name: env-file
+          name: env-file-ios-${{ github.event.number }}
 
       - name: 🏗 Create/Read .env
-        run: touch ./apps/native-ui-storybook/.env && cat ./apps/native-ui-storybook/.env
+        run: touch ./apps/native-ui-storybook/.env-ios && cat ./apps/native-ui-storybook/.env.ios
 
       - name: 🚀 Load .env file
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
+          mode: 'ios'
 
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
@@ -191,25 +191,26 @@ jobs:
         working-directory: ./apps/native-ui-storybook
         run: |
           if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
-            echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
+            echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env.ios
           else
-            echo "IOS_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env
+            echo "IOS_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env.ios
           fi
 
       - name: 🚀 Reload .env file
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
+          mode: 'ios'
 
       - name: 🚀 Upload env file
         uses: actions/upload-artifact@v4
         if: env.IOS_API_KEY
         with:
-          name: env-file
-          path: ./apps/native-ui-storybook/.env
+          name: env-file-ios-${{ github.event.number }}
+          path: ./apps/native-ui-storybook/.env.ios
 
       - name: See env output
-        run: cat ./apps/native-ui-storybook/.env
+        run: cat ./apps/native-ui-storybook/.env.ios
 
       - name: 🚀 Save .env
         uses: actions/cache/save@v4
@@ -247,13 +248,18 @@ jobs:
       - name: 🏗 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🏗 Donwload .env
+      - name: 🏗 Donwload .env.ios
         uses: actions/download-artifact@v4
         with:
-          name: env-file
+          name: env-file-ios-${{ github.event.number }}
+
+      - name: 🏗 Donwload .env.android
+        uses: actions/download-artifact@v4
+        with:
+          name: env-file-android-${{ github.event.number }}
 
       - name: See env output
-        run: cat ./apps/native-ui-storybook/.env
+        run: cat ./apps/native-ui-storybook/.env.ios && cat ./apps/native-ui-storybook/.env.android
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
@@ -270,14 +276,6 @@ jobs:
       - name: 📦 Install Vercel CLI
         run: pnpm install --global vercel@latest
 
-      - name: 🚀 Load .env file
-        uses: xom9ikk/dotenv@v2
-        with:
-          path: ./apps/native-ui-storybook
-
-      - name: See env output
-        run: touch ./apps/native-ui-storybook/.env && cat ./apps/native-ui-storybook/.env
-
       - name: Get branch name
         run: echo "The branch name is ${GITHUB_REF##*/}"
         shell: bash
@@ -287,10 +285,22 @@ jobs:
       - name: 🚀 Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: 🚀 Set Vercel Environment Variables
+      - name: 🚀 Load .env.android file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook
+          mode: 'android'
+
+      - name: 🚀 Set Vercel Android Key Environment Variables
         run: echo ${{ env.ANDROID_API_KEY }} | vercel env add ANDROID_API_KEY preview ${{github.head_ref}} --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: 🚀 Set Vercel Environment Variables
+      - name: 🚀 Load .env.ios file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook
+          mode: 'ios'
+
+      - name: 🚀 Set Vercel iOS Key Environment Variables
         run: echo ${{ env.IOS_API_KEY }} | vercel env add IOS_API_KEY preview ${{github.head_ref}}} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Build Project Artifacts
