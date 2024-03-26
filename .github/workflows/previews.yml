@@ -264,10 +264,10 @@ jobs:
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Set Vercel Environment Variables
-        run: vercel env add ANDROID_API_KEY ${{ env.ANDROID_API_KEY }} --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel env add ANDROID_API_KEY=${{ env.ANDROID_API_KEY }} --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Set Vercel Environment Variables
-        run: vercel env add IOS_API_KEY ${{ env.IOS_API_KEY }} --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel env add IOS_API_KEY=${{ env.IOS_API_KEY }} --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
