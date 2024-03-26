@@ -6,6 +6,13 @@ on:
     paths:
       - 'packages/native-ui/**'
       - 'apps/native-ui-storybook/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/native-ui/**'
+      - 'apps/native-ui-storybook/**'
+
 env:
   CI: true
 
@@ -23,6 +30,12 @@ jobs:
 
       - name: 🏗 Checkout code
         uses: actions/checkout@v3
+
+      - name: 🏗 Cache .env
+        uses: actions/cache@v2
+        with:
+          path: ./apps/native-ui-storybook/.env
+          key: ${{ github.event.number }}
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
@@ -54,11 +67,37 @@ jobs:
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:android
 
-      - name: 🚀 Upload bundle to Appetize
+      - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
+        if: github.event.action == 'opened'
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
-          publicKey: ${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}
+          appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
+          platform: 'android'
+
+      - name: 🚀 Add output to .env
+        if: github.event.action == 'opened'
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
+            echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY }}" >> .env
+          else
+            echo "ANDROID_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env
+          fi
+        shell: bash
+
+      - name: 🚀 Load .env file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook/.env
+          load-mode: strict
+
+      - name: 🚀 Upload updated bundle to Appetize
+        uses: appetizeio/github-action-appetize@v1.0.1
+        if: github.event.action != 'opened'
+        with:
+          apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
+          publicKey: ${{ env.ANDROID_API_KEY }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
           platform: 'android'
 
@@ -75,6 +114,12 @@ jobs:
 
       - name: 🏗 Checkout code
         uses: actions/checkout@v3
+
+      - name: 🏗 Cache .env
+        uses: actions/cache@v2
+        with:
+          path: ./apps/native-ui-storybook/.env
+          key: ${{ github.event.number }}
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
@@ -102,10 +147,98 @@ jobs:
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:ios
 
-      - name: 🚀 Upload bundle to Appetize
+      - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
+        if: github.event.action == 'opened'
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
-          publicKey: ${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
           platform: 'ios'
+
+      - name: 🚀 Add output to .env
+        if: github.event.action == 'opened'
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
+            echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY }}" >> .env
+          else
+            echo "ANDROID_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env
+          fi
+
+      - name: 🚀 Load .env file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook/.env
+          load-mode: strict
+
+      - name: 🚀 Upload updated bundle to Appetize
+        uses: appetizeio/github-action-appetize@v1.0.1
+        if: github.event.action != 'opened'
+        with:
+          apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
+          publicKey: ${{ env.IOS_API_KEY }}
+          appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
+          platform: 'ios'
+
+  build-for-web:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    needs:
+      - build-for-android
+      - build-for-ios
+    concurrency:
+      group: preview-web-${{ github.ref }}
+      cancel-in-progress: true
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - name: 🏗 Setup repo
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: 🏗 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🏗 Cache .env
+        uses: actions/cache@v2
+        with:
+          path: ./apps/native-ui-storybook/.env
+          key: ${{ github.event.number }}
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: 📦 Install Vercel CLI
+        run: pnpm install --global vercel@latest
+
+      - name: 🚀 Load .env file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook/.env
+          load-mode: strict
+
+      - name: 🚀 Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🚀 Set Vercel Environment Variables
+        run: vercel env add ANDROID_API_KEY ${{ env.ANDROID_API_KEY }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🚀 Set Vercel Environment Variables
+        run: vercel env add IOS_API_KEY ${{ env.IOS_API_KEY }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🚀 Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🚀 Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
