@@ -31,13 +31,7 @@ jobs:
       - name: 🏗 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🏗 Cache .env
-        uses: actions/cache/restore@v4
-        with:
-          path: ./apps/native-ui-storybook/.env
-          key: ${{ github.event.number }}-env
-
-      - name: See env output
+      - name: 🏗 Create .env
         run: touch ./apps/native-ui-storybook/.env && cat ./apps/native-ui-storybook/.env
 
       - name: 🏗 Setup Node
@@ -78,6 +72,12 @@ jobs:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
           platform: 'android'
+
+      - name: 🏗 Restore .env
+        uses: actions/cache/restore@v4
+        with:
+          path: ./apps/native-ui-storybook/.env
+          key: ${{ github.event.number }}-env
 
       - name: 🚀 Add output to .env
         # if: github.event.action == 'opened'
@@ -127,13 +127,7 @@ jobs:
       - name: 🏗 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🏗 Cache .env
-        uses: actions/cache/restore@v4
-        with:
-          path: ./apps/native-ui-storybook/.env
-          key: ${{ github.event.number }}-env
-
-      - name: See env output
+      - name: 🏗 Create .env
         run: touch ./apps/native-ui-storybook/.env && cat ./apps/native-ui-storybook/.env
 
       - name: 🏗 Cache .env
@@ -177,14 +171,20 @@ jobs:
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
           platform: 'ios'
 
+      - name: 🏗 Restore .env
+        uses: actions/cache/restore@v4
+        with:
+          path: ./apps/native-ui-storybook/.env
+          key: ${{ github.event.number }}-env
+
       - name: 🚀 Add output to .env
         # if: github.event.action == 'opened'
         working-directory: ./apps/native-ui-storybook
         run: |
           if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
-            echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
+            echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
           else
-            echo "ANDROID_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env
+            echo "IOS_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env
           fi
 
       - name: 🚀 Load .env file
