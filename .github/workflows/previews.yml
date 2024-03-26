@@ -38,7 +38,7 @@ jobs:
       - name: 🏗 Cache .env
         uses: actions/cache@v2
         with:
-          path: ./apps/native-ui-storybook
+          path: ./apps/native-ui-storybook/.env
           key: ${{ github.event.number }}
 
       - name: 🏗 Setup Node
@@ -116,13 +116,17 @@ jobs:
         with:
           version: 8
 
+      - name: 🏗 Create .env
+        run: |
+          touch ./apps/native-ui-storybook/.env
+
       - name: 🏗 Checkout code
         uses: actions/checkout@v3
 
       - name: 🏗 Cache .env
         uses: actions/cache@v2
         with:
-          path: ./apps/native-ui-storybook
+          path: ./apps/native-ui-storybook/.env
           key: ${{ github.event.number }}
 
       - name: 🏗 Setup Node
@@ -172,7 +176,7 @@ jobs:
       - name: 🚀 Load .env file
         uses: xom9ikk/dotenv@v2
         with:
-          path: ./apps/native-ui-storybook/.env
+          path: ./apps/native-ui-storybook
           load-mode: strict
 
       # - name: 🚀 Upload updated bundle to Appetize
@@ -229,17 +233,17 @@ jobs:
       - name: 🚀 Load .env file
         uses: xom9ikk/dotenv@v2
         with:
-          path: ./apps/native-ui-storybook/.env
+          path: ./apps/native-ui-storybook
           load-mode: strict
 
       - name: 🚀 Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Set Vercel Environment Variables
-        run: vercel env add ANDROID_API_KEY ${{ env.ANDROID_API_KEY }} --token=${{ secrets.VERCEL_TOKEN }} --environment=preview
+        run: vercel env add ANDROID_API_KEY ${{ env.ANDROID_API_KEY }} --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Set Vercel Environment Variables
-        run: vercel env add IOS_API_KEY ${{ env.IOS_API_KEY }} --token=${{ secrets.VERCEL_TOKEN }} --environment=preview
+        run: vercel env add IOS_API_KEY ${{ env.IOS_API_KEY }} --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
