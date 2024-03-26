@@ -98,7 +98,6 @@ jobs:
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
-          mode: strict
 
       - name: See env output
         run: cat ./apps/native-ui-storybook/.env
@@ -194,7 +193,6 @@ jobs:
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
-          mode: strict
 
       # - name: 🚀 Upload updated bundle to Appetize
       #   uses: appetizeio/github-action-appetize@v1.0.1
