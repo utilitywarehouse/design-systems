@@ -67,7 +67,7 @@ jobs:
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        # if: github.event.action == 'opened'
+        if: github.event.action == 'opened'
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
@@ -79,8 +79,11 @@ jobs:
           path: ./apps/native-ui-storybook/.env
           key: ${{ github.event.number }}-env
 
+      - name: 🏗 Create/Read .env
+        run: touch ./apps/native-ui-storybook/.env && cat ./apps/native-ui-storybook/.env
+
       - name: 🚀 Add output to .env
-        # if: github.event.action == 'opened'
+        if: github.event.action == 'opened'
         working-directory: ./apps/native-ui-storybook
         run: |
           if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
@@ -104,14 +107,14 @@ jobs:
           path: ./apps/native-ui-storybook/.env
           key: ${{ github.event.number }}-env
 
-      # - name: 🚀 Upload updated bundle to Appetize
-      #   uses: appetizeio/github-action-appetize@v1.0.1
-      #   if: github.event.action != 'opened'
-      #   with:
-      #     apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
-      #     publicKey: ${{ env.ANDROID_API_KEY }}
-      #     appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
-      #     platform: 'android'
+      - name: 🚀 Upload updated bundle to Appetize
+        uses: appetizeio/github-action-appetize@v1.0.1
+        if: github.event.action != 'opened'
+        with:
+          apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
+          publicKey: ${{ env.ANDROID_API_KEY }}
+          appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
+          platform: 'android'
 
   build-for-ios:
     runs-on: macos-13-xlarge
@@ -126,15 +129,6 @@ jobs:
 
       - name: 🏗 Checkout code
         uses: actions/checkout@v3
-
-      - name: 🏗 Create .env
-        run: touch ./apps/native-ui-storybook/.env && cat ./apps/native-ui-storybook/.env
-
-      - name: 🏗 Cache .env
-        uses: actions/cache@v2
-        with:
-          path: ./apps/native-ui-storybook/.env
-          key: ${{ github.event.number }}
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
@@ -158,6 +152,7 @@ jobs:
         run: pnpm install --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: 🚀 Build iOS app
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:ios
@@ -165,7 +160,7 @@ jobs:
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        # if: github.event.action == 'opened'
+        if: github.event.action == 'opened'
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
@@ -177,8 +172,16 @@ jobs:
           path: ./apps/native-ui-storybook/.env
           key: ${{ github.event.number }}-env
 
+      - name: 🏗 Create/Read .env
+        run: touch ./apps/native-ui-storybook/.env && cat ./apps/native-ui-storybook/.env
+
+      - name: 🚀 Load .env file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook
+
       - name: 🚀 Add output to .env
-        # if: github.event.action == 'opened'
+        if: github.event.action == 'opened'
         working-directory: ./apps/native-ui-storybook
         run: |
           if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
@@ -201,14 +204,14 @@ jobs:
           path: ./apps/native-ui-storybook/.env
           key: ${{ github.event.number }}-env
 
-      # - name: 🚀 Upload updated bundle to Appetize
-      #   uses: appetizeio/github-action-appetize@v1.0.1
-      #   if: github.event.action != 'opened'
-      #   with:
-      #     apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
-      #     publicKey: ${{ env.IOS_API_KEY }}
-      #     appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
-      #     platform: 'ios'
+      - name: 🚀 Upload updated bundle to Appetize
+        uses: appetizeio/github-action-appetize@v1.0.1
+        if: github.event.action != 'opened'
+        with:
+          apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
+          publicKey: ${{ env.IOS_API_KEY }}
+          appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
+          platform: 'ios'
 
   build-for-web:
     if: github.event_name == 'pull_request'
@@ -264,10 +267,10 @@ jobs:
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Set Vercel Environment Variables
-        run: vercel env add ANDROID_API_KEY=${{ env.ANDROID_API_KEY }} --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel env add ANDROID_API_KEY "${{ env.ANDROID_API_KEY }}" --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Set Vercel Environment Variables
-        run: vercel env add IOS_API_KEY=${{ env.IOS_API_KEY }} --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel env add IOS_API_KEY "${{ env.IOS_API_KEY }}" --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
