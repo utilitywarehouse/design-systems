@@ -282,6 +282,7 @@ jobs:
           mode: 'android'
 
       - name: 🚀 Set Vercel Android Key Environment Variables
+        continue-on-error: true
         run: echo ${{ env.ANDROID_API_KEY }} | vercel env add ANDROID_API_KEY preview ${{github.head_ref}} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🏗 Restore iOS .env
@@ -300,6 +301,7 @@ jobs:
           mode: 'ios'
 
       - name: 🚀 Set Vercel iOS Key Environment Variables
+        continue-on-error: true
         run: echo ${{ env.IOS_API_KEY }} | vercel env add IOS_API_KEY preview ${{github.head_ref}} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🚀 Build Project Artifacts
