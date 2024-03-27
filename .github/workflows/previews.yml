@@ -322,9 +322,7 @@ jobs:
       - name: 🚀 Extract Deployment URL
         id: extract_deployment_url
         run: |
-          cat ./vercel-deploy.log
-          echo "deployment-url=$(cat ./vercel-deploy.log | grep 'Preview:' | awk '{print $2}')" >> "$GITHUB_OUTPUT"
-          echo "deployment-inspect=$(cat ./vercel-deploy.log | grep 'Inspect:' | awk '{print $2}')" >> "$GITHUB_OUTPUT"
+          echo "deployment-url=$(cat ./vercel-deploy.log)" >> "$GITHUB_OUTPUT"
 
       - name: 💬 Find Comment
         uses: peter-evans/find-comment@v3
@@ -342,7 +340,5 @@ jobs:
           body: |
             ## 🖥️ Preview URL
             Visit the preview URL to see the changes in action.
-            ${{toJson(steps.extract_deployment_url.outputs)}}
             - Preview: [${{ steps.extract_deployment_url.outputs.deployment-url }}](${{ steps.extract_deployment_url.outputs.deployment-url }})
-            - Inspect Deployment: [${{ steps.extract_deployment_url.outputs.deployment-inspect }}](${{ steps.extract_deployment_url.outputs.deployment-inspect }})
           edit-mode: replace
