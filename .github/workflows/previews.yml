@@ -248,19 +248,6 @@ jobs:
       - name: 🏗 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🏗 Donwload .env.ios
-        uses: actions/download-artifact@v4
-        with:
-          name: env-file-ios-${{ github.event.number }}
-
-      - name: 🏗 Donwload .env.android
-        uses: actions/download-artifact@v4
-        with:
-          name: env-file-android-${{ github.event.number }}
-
-      - name: See env output
-        run: cat ./apps/native-ui-storybook/.env.ios && cat ./apps/native-ui-storybook/.env.android
-
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2
         with:
@@ -285,6 +272,14 @@ jobs:
       - name: 🚀 Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
+      - name: 🏗 Donwload .env.android
+        uses: actions/download-artifact@v4
+        with:
+          name: env-file-android-${{ github.event.number }}
+
+      - name: See env output
+        run: cat ./apps/native-ui-storybook/.env.android
+
       - name: 🚀 Load .env.android file
         uses: xom9ikk/dotenv@v2
         with:
@@ -293,6 +288,14 @@ jobs:
 
       - name: 🚀 Set Vercel Android Key Environment Variables
         run: echo ${{ env.ANDROID_API_KEY }} | vercel env add ANDROID_API_KEY preview ${{github.head_ref}} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🏗 Donwload .env.ios
+        uses: actions/download-artifact@v4
+        with:
+          name: env-file-ios-${{ github.event.number }}
+
+      - name: See env output
+        run: cat ./apps/native-ui-storybook/.env.ios
 
       - name: 🚀 Load .env.ios file
         uses: xom9ikk/dotenv@v2
