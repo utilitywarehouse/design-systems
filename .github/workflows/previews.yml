@@ -18,7 +18,6 @@ env:
 
 jobs:
   build-for-android:
-    if: ${{!contains(github.event.head_commit.message , '[skip android]')}}
     runs-on: macos-13-large
     concurrency:
       group: preview-android-${{ github.ref }}
@@ -122,7 +121,6 @@ jobs:
           platform: 'android'
 
   build-for-ios:
-    if: ${{!contains(github.event.head_commit.message , '[skip ios]')}}
     runs-on: macos-13-xlarge
     concurrency:
       group: preview-ios-${{ github.ref }}
@@ -222,7 +220,7 @@ jobs:
           platform: 'ios'
 
   build-for-web:
-    if: ${{!contains(github.event.head_commit.message , '[skip web]')}}
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     needs:
       - build-for-android
@@ -281,9 +279,10 @@ jobs:
           path: ./apps/native-ui-storybook
           mode: 'android'
 
-      - name: 🚀 Set Vercel Android Key Environment Variables
-        continue-on-error: true
-        run: echo ${{ env.ANDROID_API_KEY }} | vercel env add ANDROID_API_KEY preview ${{github.head_ref}} --token=${{ secrets.VERCEL_TOKEN }}
+      - name: 🚀 Create local .env and add Android key
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
 
       - name: 🏗 Restore iOS .env
         uses: actions/cache/restore@v4
@@ -300,24 +299,19 @@ jobs:
           path: ./apps/native-ui-storybook
           mode: 'ios'
 
-      - name: 🚀 Set Vercel iOS Key Environment Variables
-        continue-on-error: true
-        run: echo ${{ env.IOS_API_KEY }} | vercel env add IOS_API_KEY preview ${{github.head_ref}} --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: 🚀 Create local .env
+      - name: 🚀 Create local .env and add iOS key
+        working-directory: ./apps/native-ui-storybook
         run: |
           echo "IOS_API_KEY=${{ env.IOS_API_KEY }}" >> .env
-          echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
 
-      - name: 🚀 Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: See env output
+        run: cat ./apps/native-ui-storybook/.env
 
       - name: 🚀 Deploy Project Artifacts to Vercel
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-args: '--prebuilt'
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
           working-directory: ./apps/native-ui-storybook
