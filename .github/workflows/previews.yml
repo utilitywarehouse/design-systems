@@ -316,7 +316,10 @@ jobs:
 
       - name: 🚀 Deploy Project Artifacts to Vercel
         id: vercel-deploy
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} --meta githubCommitAuthorLogin=${{github.event.head_commit.committer.username}} --meta githubCommitAuthorName=${{github.event.head_commit.committer.name}} --meta githubPreviousCommitSha=${{ github.event.before }} --meta githubPreviousCommitMessage=${{ github.event.before }} --meta githubPreviousCommitAuthorLogin=${{ github.event.before }} --meta vercelUrl=https://native-ui-git-${{ steps.extract_branch.outputs.branch }}-utility-warehouse.vercel.app/
+        run: |
+          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} > vercel-deploy.log
+          echo "::set-output name=deployment-url::$(cat previews.yml | grep 'Preview:' | awk '{print $2}')"
+          echo "::set-output name=deployment-inspect::$(cat previews.yml | grep 'Inspect:' | awk '{print $2}')"
 
       - name: 💬 Find Comment
         uses: peter-evans/find-comment@v3
@@ -334,5 +337,6 @@ jobs:
           body: |
             ## 🖥️ Preview URL
             Visit the preview URL to see the changes in action.
-            - [https://native-ui-git-${{ steps.extract_branch.outputs.branch }}-utility-warehouse.vercel.app/](https://native-ui-git-${{ steps.extract_branch.outputs.branch }}-utility-warehouse.vercel.app/)
+            - Preview: [${{ steps.vercel-deploy.outputs.deployment-url }}](${{ steps.vercel-deploy.outputs.deployment-url }})
+            - Inspect Deployment: [${{ steps.vercel-deploy.outputs.deployment-inspect }}](${{ steps.vercel-deploy.outputs.deployment-inspect }})
           edit-mode: replace
