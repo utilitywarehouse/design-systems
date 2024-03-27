@@ -317,13 +317,14 @@ jobs:
       - name: 🚀 Deploy Project Artifacts to Vercel
         id: vercel-deploy
         run: |
-          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} > vercel-deploy.log
+          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} > ./vercel-deploy.log
 
       - name: 🚀 Extract Deployment URL
         id: extract_deployment_url
         run: |
-          echo "deployment-url=$(cat vercel-deploy.log | grep 'Preview:' | awk '{print $2}')" >> "$GITHUB_OUTPUT"
-          echo "deployment-inspect=$(cat vercel-deploy.log | grep 'Inspect:' | awk '{print $2}')" >> "$GITHUB_OUTPUT"
+          cat ./vercel-deploy.log
+          echo "deployment-url=$(cat ./vercel-deploy.log | grep 'Preview:' | awk '{print $2}')" >> "$GITHUB_OUTPUT"
+          echo "deployment-inspect=$(cat ./vercel-deploy.log | grep 'Inspect:' | awk '{print $2}')" >> "$GITHUB_OUTPUT"
 
       - name: 💬 Find Comment
         uses: peter-evans/find-comment@v3
