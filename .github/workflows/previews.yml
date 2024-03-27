@@ -247,6 +247,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
 
+      - name: 🏗 Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
         env:
@@ -254,12 +259,6 @@ jobs:
 
       - name: 📦 Install Vercel CLI
         run: pnpm install --global vercel@latest
-
-      - name: Get branch name
-        run: echo "The branch name is ${GITHUB_REF##*/}"
-        shell: bash
-        env:
-          GITHUB_REF: ${{ github.ref }}
 
       - name: 🚀 Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
@@ -307,7 +306,7 @@ jobs:
       - name: 🚀 Pull Vercel Environment Information
         run: |
           if [[ -z "${{ github.event_name == 'pull_request' }}" ]]; then
-            vercel pull --yes --environment=preview --git-branch=${{ github.ref_name }} --token=${{ secrets.VERCEL_TOKEN }}
+            vercel pull --yes --environment=preview --git-branch=${{ steps.extract_branch.outputs.branch }} --token=${{ secrets.VERCEL_TOKEN }}
           else
             vercel pull --yes --environment=production  --token=${{ secrets.VERCEL_TOKEN }}
           fi
@@ -335,5 +334,5 @@ jobs:
           body: |
             ## 🖥️ Preview URL
             Visit the preview URL to see the changes in action.
-            - [https://native-ui-git-${{ github.ref_name }}-utility-warehouse.vercel.app/](https://native-ui-git-${{ github.ref_name }}-utility-warehouse.vercel.app/)
+            - [https://native-ui-git-${{ steps.extract_branch.outputs.branch }}-utility-warehouse.vercel.app/](https://native-ui-git-${{ steps.extract_branch.outputs.branch }}-utility-warehouse.vercel.app/)
           edit-mode: replace
