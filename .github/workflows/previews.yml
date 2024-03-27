@@ -61,11 +61,11 @@ jobs:
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:android
 
-      - name: 🏗 Donwload .env
-        uses: actions/download-artifact@v4
-        continue-on-error: true
+      - name: 🚀 Restore .env
+        uses: actions/cache/restore@v4
         with:
-          name: env-file-android-${{ github.event.number }}
+          path: ./apps/native-ui-storybook/.env.android
+          key: ${{ github.event.number }}-env-android
 
       - name: 🏗 Create/Read .env
         run: touch ./apps/native-ui-storybook/.env.android && cat ./apps/native-ui-storybook/.env.android
@@ -102,12 +102,11 @@ jobs:
           path: ./apps/native-ui-storybook
           mode: 'android'
 
-      - name: 🚀 Upload env file
-        uses: actions/upload-artifact@v4
-        if: env.ANDROID_API_KEY
+      - name: 🚀 Save .env
+        uses: actions/cache/save@v4
         with:
-          name: env-file-android-${{ github.event.number }}
           path: ./apps/native-ui-storybook/.env.android
+          key: ${{ github.event.number }}-env-android
 
       - name: See env output
         run: cat ./apps/native-ui-storybook/.env.android
@@ -162,11 +161,11 @@ jobs:
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:ios
 
-      - name: 🏗 Donwload .env
-        uses: actions/download-artifact@v4
-        continue-on-error: true
+      - name: 🚀 Restorre .env
+        uses: actions/cache/restore@v4
         with:
-          name: env-file-ios-${{ github.event.number }}
+          path: ./apps/native-ui-storybook/.env.ios
+          key: ${{ github.event.number }}-env-ios
 
       - name: 🏗 Create/Read .env
         run: touch ./apps/native-ui-storybook/.env.ios && cat ./apps/native-ui-storybook/.env.ios
@@ -202,13 +201,6 @@ jobs:
           path: ./apps/native-ui-storybook
           mode: 'ios'
 
-      - name: 🚀 Upload env file
-        uses: actions/upload-artifact@v4
-        if: env.IOS_API_KEY
-        with:
-          name: env-file-ios-${{ github.event.number }}
-          path: ./apps/native-ui-storybook/.env.ios
-
       - name: See env output
         run: cat ./apps/native-ui-storybook/.env.ios
 
@@ -216,7 +208,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: ./apps/native-ui-storybook/.env.ios
-          key: ${{ github.event.number }}-env
+          key: ${{ github.event.number }}-env-ios
 
       - name: 🚀 Upload updated bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
@@ -272,10 +264,11 @@ jobs:
       - name: 🚀 Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: 🏗 Donwload .env.android
-        uses: actions/download-artifact@v4
+      - name: 🏗 Restore Android .env
+        uses: actions/cache/restore@v4
         with:
-          name: env-file-android-${{ github.event.number }}
+          path: ./apps/native-ui-storybook/.env.android
+          key: ${{ github.event.number }}-env-android
 
       - name: See env output
         run: cat ./apps/native-ui-storybook/.env.android
@@ -289,10 +282,11 @@ jobs:
       - name: 🚀 Set Vercel Android Key Environment Variables
         run: echo ${{ env.ANDROID_API_KEY }} | vercel env add ANDROID_API_KEY preview ${{github.head_ref}} --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: 🏗 Donwload .env.ios
-        uses: actions/download-artifact@v4
+      - name: 🏗 Restore iOS .env
+        uses: actions/cache/restore@v4
         with:
-          name: env-file-ios-${{ github.event.number }}
+          path: ./apps/native-ui-storybook/.env.ios
+          key: ${{ github.event.number }}-env-ios
 
       - name: See env output
         run: cat ./apps/native-ui-storybook/.env.ios
