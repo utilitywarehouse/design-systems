@@ -220,6 +220,7 @@ jobs:
   #         platform: 'ios'
 
   build-for-web:
+    name: Build for Web
     runs-on: ubuntu-latest
     # needs:
     #   - build-for-android
@@ -332,6 +333,7 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            🖥️ Preview URL
-            ${{ toJSON(steps.vercel-deploy.outputs) }}
+            ## 🖥️ Preview URL
+            Visit the preview URL to see the changes in action.
+            - [https://native-ui-git-${{ github.ref_name }}-utility-warehouse.vercel.app/](https://native-ui-git-${{ github.ref_name }}-utility-warehouse.vercel.app/)
           edit-mode: replace
