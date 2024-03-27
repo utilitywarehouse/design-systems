@@ -332,6 +332,6 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            Preview URL
-            ${{ steps.vercel-deploy.outputs }}
+            🖥️ Preview URL
+            ${{ toJSON(steps.vercel-deploy.outputs) }}
           edit-mode: replace
