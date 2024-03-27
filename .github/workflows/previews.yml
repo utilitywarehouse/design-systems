@@ -316,7 +316,7 @@ jobs:
 
       - name: 🚀 Deploy Project Artifacts to Vercel
         id: vercel-deploy
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }}
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} --meta githubCommitMessage=${{ github.event.head_commit.message }} --meta githubCommitAuthorLogin=${{github.event.head_commit.committer.username}} --meta githubCommitAuthorName=${{github.event.head_commit.committer.name}} --meta githubPreviousCommitSha=${{ github.event.before }} --meta githubPreviousCommitMessage=${{ github.event.before }} --meta githubPreviousCommitAuthorLogin=${{ github.event.before }} --meta vercelUrl=https://native-ui-git-${{ steps.extract_branch.outputs.branch }}-utility-warehouse.vercel.app/
 
       - name: 💬 Find Comment
         uses: peter-evans/find-comment@v3
