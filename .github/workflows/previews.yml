@@ -315,13 +315,13 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 💬 Get Commit Message
-        run: |
-          MSG=$(git log --format=%B -n 1 ${{github.event.after}})
-          echo "::set-env name=COMMIT_MESSAGE::${MSG}"
+        id: commit
+        run: echo "::set-output name=message::$(git log --format=%B -n 1 ${{ github.event.after }})"
+        shell: bash
 
       - name: 🚀 Deploy Project Artifacts to Vercel
         id: vercel-deploy
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} --meta githubCommitMessage=${{ env.COMMIT_MESSAGE || github.event.head_commit.message}} --meta githubCommitAuthorLogin=${{github.event.head_commit.committer.username}} --meta githubCommitAuthorName=${{github.event.head_commit.committer.name}} --meta githubPreviousCommitSha=${{ github.event.before }} --meta githubPreviousCommitMessage=${{ github.event.before }} --meta githubPreviousCommitAuthorLogin=${{ github.event.before }} --meta vercelUrl=https://native-ui-git-${{ steps.extract_branch.outputs.branch }}-utility-warehouse.vercel.app/
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} --meta githubCommitMessage=${{ steps.commit.outputs.message }} --meta githubCommitAuthorLogin=${{github.event.head_commit.committer.username}} --meta githubCommitAuthorName=${{github.event.head_commit.committer.name}} --meta githubPreviousCommitSha=${{ github.event.before }} --meta githubPreviousCommitMessage=${{ github.event.before }} --meta githubPreviousCommitAuthorLogin=${{ github.event.before }} --meta vercelUrl=https://native-ui-git-${{ steps.extract_branch.outputs.branch }}-utility-warehouse.vercel.app/
 
       - name: 💬 Find Comment
         uses: peter-evans/find-comment@v3
