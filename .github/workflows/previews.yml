@@ -337,6 +337,6 @@ jobs:
           body: |
             ## 🖥️ Preview URL
             Visit the preview URL to see the changes in action.
-            - Preview: [${{ steps.vercel-deploy.outputs.deployment-url }}](${{ steps.vercel-deploy.outputs.deployment-url }})
-            - Inspect Deployment: [${{ steps.vercel-deploy.outputs.deployment-inspect }}](${{ steps.vercel-deploy.outputs.deployment-inspect }})
+            - Preview: [$deployment-url]($deployment-url)
+            - Inspect Deployment: [$deployment-inspect]($deployment-inspect)
           edit-mode: replace
