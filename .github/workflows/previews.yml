@@ -215,7 +215,7 @@ jobs:
       - name: 🚀 Save .env
         uses: actions/cache/save@v4
         with:
-          path: ./apps/native-ui-storybook/.env
+          path: ./apps/native-ui-storybook/.env.ios
           key: ${{ github.event.number }}-env
 
       - name: 🚀 Upload updated bundle to Appetize
