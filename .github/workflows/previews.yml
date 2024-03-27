@@ -318,6 +318,10 @@ jobs:
         id: vercel-deploy
         run: |
           vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} > vercel-deploy.log
+
+      - name: 🚀 Extract Deployment URL
+        id: extract_deployment_url
+        run: |
           echo "deployment-url=$(cat vercel-deploy.log | grep 'Preview:' | awk '{print $2}')" >> "$GITHUB_OUTPUT"
           echo "deployment-inspect=$(cat vercel-deploy.log | grep 'Inspect:' | awk '{print $2}')" >> "$GITHUB_OUTPUT"
 
@@ -337,7 +341,7 @@ jobs:
           body: |
             ## 🖥️ Preview URL
             Visit the preview URL to see the changes in action.
-            ${{toJson(steps.vercel-deploy.outputs)}}
-            - Preview: [${{ steps.vercel-deploy.outputs.deployment-url }}](${{ steps.vercel-deploy.outputs.deployment-url }})
-            - Inspect Deployment: [${{ steps.vercel-deploy.outputs.deployment-inspect }}](${{ steps.vercel-deploy.outputs.deployment-inspect }})
+            ${{toJson(steps.extract_deployment_url.outputs)}}
+            - Preview: [${{ steps.extract_deployment_url.outputs.deployment-url }}](${{ steps.extract_deployment_url.outputs.deployment-url }})
+            - Inspect Deployment: [${{ steps.extract_deployment_url.outputs.deployment-inspect }}](${{ steps.extract_deployment_url.outputs.deployment-inspect }})
           edit-mode: replace
