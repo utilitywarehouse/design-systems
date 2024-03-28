@@ -21,7 +21,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ./apps/native-ui-storybook/.env.android
-          key: ${{ github.event.number }}-env-android
+          key: ${{github.sha}}-env-android
 
       - name: 🏗 Load Android .env file
         uses: xom9ikk/dotenv@v2
