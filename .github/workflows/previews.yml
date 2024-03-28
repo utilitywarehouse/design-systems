@@ -24,9 +24,6 @@ jobs:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Echo base sha - ba14eefe81958f3f9741abbf484ef57673370db7
-        run: echo ${{ github.event.pull_request.base.sha }}
-
       - name: 🏗 Setup repo
         uses: pnpm/action-setup@v2
         with:
@@ -70,7 +67,7 @@ jobs:
         if: github.event.action == 'synchronize' && !github.event_name != 'push'
         with:
           path: ./apps/native-ui-storybook/.env.android
-          key: ${{ github.event.number }}-env-android
+          key: ${{ github.event.pull_request.base.sha }}-env-android
 
       - name: 🏗 Create/Read .env
         run: touch ./apps/native-ui-storybook/.env.android && cat ./apps/native-ui-storybook/.env.android
@@ -111,7 +108,7 @@ jobs:
         if: github.event_name == 'pull_request'
         with:
           path: ./apps/native-ui-storybook/.env.android
-          key: ${{ github.event.number }}-env-android
+          key: ${{ github.event.pull_request.base.sha }}-env-android
 
       - name: See env output
         run: cat ./apps/native-ui-storybook/.env.android
@@ -172,7 +169,7 @@ jobs:
         if: github.event.action != 'opened' && github.event.action != 'reopened' && github.event_name == 'pull_request'
         with:
           path: ./apps/native-ui-storybook/.env.ios
-          key: ${{ github.event.number }}-env-ios
+          key: ${{ github.event.pull_request.base.sha }}-env-ios
 
       - name: 🏗 Create/Read .env
         run: touch ./apps/native-ui-storybook/.env.ios && cat ./apps/native-ui-storybook/.env.ios
@@ -216,7 +213,7 @@ jobs:
         if: github.event_name == 'pull_request'
         with:
           path: ./apps/native-ui-storybook/.env.ios
-          key: ${{ github.event.number }}-env-ios
+          key: ${{ github.event.pull_request.base.sha }}-env-ios
 
       - name: 🚀 Upload updated bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
@@ -275,7 +272,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ./apps/native-ui-storybook/.env.android
-          key: ${{ github.event.number }}-env-android
+          key: ${{ github.event.pull_request.base.sha }}-env-android
 
       - name: 🚀 Load .env.android file
         uses: xom9ikk/dotenv@v2
@@ -292,7 +289,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ./apps/native-ui-storybook/.env.ios
-          key: ${{ github.event.number }}-env-ios
+          key: ${{ github.event.pull_request.base.sha }}-env-ios
 
       - name: See env output
         run: cat ./apps/native-ui-storybook/.env.ios
