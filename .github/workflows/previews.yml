@@ -81,22 +81,21 @@ jobs:
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.ANDROID_API_KEY
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || (!env.ANDROID_API_KEY && github.action.event_name == 'pull_request')
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
           platform: 'android'
 
       - name: 🚀 Add output to .env
-        if: github.event.action == 'opened' || github.event.action == 'reopened'  || !env.ANDROID_API_KEY
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.ANDROID_API_KEY
         working-directory: ./apps/native-ui-storybook
         run: |
-          if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
+          if [ "${{ github.event_name }}" == "push" ]; then
             echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env.android
           else
             echo "ANDROID_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env.android
           fi
-        shell: bash
 
       - name: 🚀 Reload .env file
         uses: xom9ikk/dotenv@v2
@@ -183,7 +182,7 @@ jobs:
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.IOS_API_KEY
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || (!env.IOS_API_KEY && github.action.event_name == 'pull_request')
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
@@ -193,7 +192,7 @@ jobs:
         if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.IOS_API_KEY
         working-directory: ./apps/native-ui-storybook
         run: |
-          if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
+          if [ "${{ github.event_name }}" == "push" ]; then
             echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env.ios
           else
             echo "IOS_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env.ios
@@ -309,10 +308,10 @@ jobs:
 
       - name: 🚀 Pull Vercel Environment Information
         run: |
-          if [[ -z "${{ github.event_name == 'pull_request' }}" ]]; then
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
             vercel pull --yes --environment=preview --git-branch=${{ steps.extract_branch.outputs.branch }} --token=${{ secrets.VERCEL_TOKEN }}
           else
-            vercel pull --yes --environment=production  --token=${{ secrets.VERCEL_TOKEN }}
+            vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
           fi
 
       - name: 🚀 Build Project Artifacts
@@ -320,7 +319,11 @@ jobs:
 
       - name: 🚀 Deploy Project Artifacts to Vercels
         run: |
-          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} > ./vercel-deploy.log
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} > ./vercel-deploy.log
+          else
+            vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitSha=${{ github.sha }} > ./vercel-deploy.log
+          fi
 
       - name: 🚀 Extract Deployment URL
         if: github.event_name == 'pull_request'
