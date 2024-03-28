@@ -7,7 +7,7 @@ export default ({ config }) => ({
   orientation: 'portrait',
   icon: './assets/icon.png',
   extra: {
-    storybookEnabled: process.env.STORYBOOK_ENABLED,
+    storybookEnabled: 'true',
     eas: {
       projectId: '5d5d04e2-5607-4d40-84a9-4d1bdf331ae3',
     },

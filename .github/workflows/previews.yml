@@ -1,4 +1,4 @@
-name: Build Native Previews
+name: Native UI Previews
 
 on:
   pull_request:
@@ -6,11 +6,19 @@ on:
     paths:
       - 'packages/native-ui/**'
       - 'apps/native-ui-storybook/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/native-ui/**'
+      - 'apps/native-ui-storybook/**'
+
 env:
   CI: true
 
 jobs:
   build-for-android:
+    name: Build for Android
     runs-on: macos-13-large
     concurrency:
       group: preview-android-${{ github.ref }}
@@ -54,15 +62,68 @@ jobs:
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:android
 
-      - name: 🚀 Upload bundle to Appetize
+      - name: 🚀 Restore .env
+        uses: actions/cache/restore@v4
+        if: github.event.action != 'opened' && github.event.action != 'reopened'
+        with:
+          path: ./apps/native-ui-storybook/.env.android
+          key: ${{ github.event.number }}-env-android
+
+      - name: 🏗 Create/Read .env
+        run: touch ./apps/native-ui-storybook/.env.android && cat ./apps/native-ui-storybook/.env.android
+
+      - name: 🚀 Load .env file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook
+          mode: 'android'
+
+      - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
+        id: appetizeio_github_action_appetize
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.ANDROID_API_KEY
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
-          publicKey: ${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}
+          appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
+          platform: 'android'
+
+      - name: 🚀 Add output to .env
+        if: github.event.action == 'opened' || github.event.action == 'reopened'  || !env.ANDROID_API_KEY
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
+            echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env.android
+          else
+            echo "ANDROID_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env.android
+          fi
+        shell: bash
+
+      - name: 🚀 Reload .env file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook
+          mode: 'android'
+
+      - name: 🚀 Save .env
+        uses: actions/cache/save@v4
+        with:
+          path: ./apps/native-ui-storybook/.env.android
+          key: ${{ github.event.number }}-env-android
+
+      - name: See env output
+        run: cat ./apps/native-ui-storybook/.env.android
+
+      - name: 🚀 Upload updated bundle to Appetize
+        uses: appetizeio/github-action-appetize@v1.0.1
+        if: github.event.action != 'opened' && env.ANDROID_API_KEY
+        with:
+          apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
+          publicKey: ${{ env.ANDROID_API_KEY }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
           platform: 'android'
 
   build-for-ios:
+    name: Build for iOS
     runs-on: macos-13-xlarge
     concurrency:
       group: preview-ios-${{ github.ref }}
@@ -98,14 +159,201 @@ jobs:
         run: pnpm install --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: 🚀 Build iOS app
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:ios
 
-      - name: 🚀 Upload bundle to Appetize
+      - name: 🚀 Restore .env
+        uses: actions/cache/restore@v4
+        if: github.event.action != 'opened' && github.event.action != 'reopened'
+        with:
+          path: ./apps/native-ui-storybook/.env.ios
+          key: ${{ github.event.number }}-env-ios
+
+      - name: 🏗 Create/Read .env
+        run: touch ./apps/native-ui-storybook/.env.ios && cat ./apps/native-ui-storybook/.env.ios
+
+      - name: 🚀 Load .env file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook
+          mode: 'ios'
+
+      - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
+        id: appetizeio_github_action_appetize
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.IOS_API_KEY
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
-          publicKey: ${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
           platform: 'ios'
+
+      - name: 🚀 Add output to .env
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.IOS_API_KEY
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
+            echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env.ios
+          else
+            echo "IOS_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env.ios
+          fi
+
+      - name: 🚀 Reload .env file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook
+          mode: 'ios'
+
+      - name: See env output
+        run: cat ./apps/native-ui-storybook/.env.ios
+
+      - name: 🚀 Save .env
+        uses: actions/cache/save@v4
+        with:
+          path: ./apps/native-ui-storybook/.env.ios
+          key: ${{ github.event.number }}-env-ios
+
+      - name: 🚀 Upload updated bundle to Appetize
+        uses: appetizeio/github-action-appetize@v1.0.1
+        if: github.event.action != 'opened' && env.IOS_API_KEY
+        with:
+          apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
+          publicKey: ${{ env.IOS_API_KEY }}
+          appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
+          platform: 'ios'
+
+  build-for-web:
+    name: Build for Web
+    runs-on: ubuntu-latest
+    needs:
+      - build-for-android
+      - build-for-ios
+    concurrency:
+      group: preview-web-${{ github.ref }}
+      cancel-in-progress: true
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - name: 🏗 Setup repo
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: 🏗 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
+
+      - name: 🏗 Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_HEAD_REF##*/})"
+        id: extract_branch
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: 📦 Install Vercel CLI
+        run: pnpm install --global vercel@latest
+
+      - name: 🚀 Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🏗 Restore Android .env
+        uses: actions/cache/restore@v4
+        with:
+          path: ./apps/native-ui-storybook/.env.android
+          key: ${{ github.event.number }}-env-android
+
+      - name: See env output
+        run: cat ./apps/native-ui-storybook/.env.android
+
+      - name: 🚀 Load .env.android file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook
+          mode: 'android'
+
+      - name: 🚀 Create local .env and add Android key
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
+
+      - name: 🏗 Restore iOS .env
+        uses: actions/cache/restore@v4
+        with:
+          path: ./apps/native-ui-storybook/.env.ios
+          key: ${{ github.event.number }}-env-ios
+
+      - name: See env output
+        run: cat ./apps/native-ui-storybook/.env.ios
+
+      - name: 🚀 Load .env.ios file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook
+          mode: 'ios'
+
+      - name: 🚀 Create local .env and add iOS key
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          echo "IOS_API_KEY=${{ env.IOS_API_KEY }}" >> .env
+
+      - name: 🚀 Pull Vercel Environment Information
+        run: |
+          if [[ -z "${{ github.event_name == 'pull_request' }}" ]]; then
+            vercel pull --yes --environment=preview --git-branch=${{ steps.extract_branch.outputs.branch }} --token=${{ secrets.VERCEL_TOKEN }}
+          else
+            vercel pull --yes --environment=production  --token=${{ secrets.VERCEL_TOKEN }}
+          fi
+
+      - name: 🚀 Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🚀 Deploy Project Artifacts to Vercels
+        run: |
+          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} > ./vercel-deploy.log
+
+      - name: 🚀 Extract Deployment URL
+        if: github.event_name == 'pull_request'
+        id: extract_deployment_url
+        run: |
+          echo "deployment-url=$(cat ./vercel-deploy.log)" >> "$GITHUB_OUTPUT"
+
+      - name: 💬 Find Comment
+        uses: peter-evans/find-comment@v3
+        if: github.event_name == 'pull_request'
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Storybook Preview
+
+      - name: 💬 Create or update comment
+        uses: peter-evans/create-or-update-comment@v4
+        if: github.event_name == 'pull_request'
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ## 🖥️ Native UI - Storybook Preview
+
+            Visit the Storybook preview URL to see the changes in action.
+
+            - Preview: [${{ steps.extract_deployment_url.outputs.deployment-url }}](${{ steps.extract_deployment_url.outputs.deployment-url }})
+
+            ## 📱 Appetize Previews
+
+            You can view the apps using the link above and choosing the device from the top action bar. Alternatively you can use the direct links below.
+
+            - [Android](https://appetize.io/embed/${{ env.ANDROID_API_KEY }})
+            - [iOS](https://appetize.io/embed/${{ env.IOS_API_KEY }})
+          edit-mode: replace
