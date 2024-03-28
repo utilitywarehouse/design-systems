@@ -331,7 +331,7 @@ jobs:
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} > ./vercel-deploy.log
           else
-            vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitSha=${{ github.sha }} > ./vercel-deploy.log
+            vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitSha=${{ github.sha }} > ./vercel-deploy.log
           fi
 
       - name: 🚀 Extract Deployment URL
