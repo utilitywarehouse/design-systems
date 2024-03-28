@@ -17,25 +17,9 @@ env:
   CI: true
 
 jobs:
-  check_skip_flags:
-    name: Check skip flags
-    runs-on: ubuntu-latest
-    outputs:
-      head-commit-message: ${{ steps.get_head_commit_message.outputs.headCommitMsg }}
-    steps:
-      - name: Get repo
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - name: Print head git commit message
-        id: get_head_commit_message
-        run: echo "headCommitMsg=$(git show -s --format=%s)" >> "$GITHUB_OUTPUT"
-
   build-for-android:
     name: Build for Android
     runs-on: macos-13-large
-    needs: check_skip_flags
-    if: ${{ !contains(needs.check_skip_flags.outputs.head-commit-message, '[skip android]') }} && ${{ !contains(needs.check_skip_flags.outputs.head-commit-message, '[skip preview]') }}
     concurrency:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
@@ -140,8 +124,6 @@ jobs:
   build-for-ios:
     name: Build for iOS
     runs-on: macos-13-xlarge
-    needs: check_skip_flags
-    if: ${{ !contains(needs.check_skip_flags.outputs.head-commit-message, '[skip ios]') }} && ${{ !contains(needs.check_skip_flags.outputs.head-commit-message, '[skip preview]') }}
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
