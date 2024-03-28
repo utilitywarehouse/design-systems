@@ -24,6 +24,9 @@ jobs:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
     steps:
+      - name: Echo base sha - ba14eefe81958f3f9741abbf484ef57673370db7
+        run: echo ${{ github.event.pull_request.base.sha }}
+
       - name: 🏗 Setup repo
         uses: pnpm/action-setup@v2
         with:
@@ -64,7 +67,7 @@ jobs:
 
       - name: 🚀 Restore .env
         uses: actions/cache/restore@v4
-        if: github.event.action == 'synchronize' && github.event_name != 'push'
+        if: github.event.action == 'synchronize' && !github.event_name != 'push'
         with:
           path: ./apps/native-ui-storybook/.env.android
           key: ${{ github.event.number }}-env-android
@@ -166,7 +169,7 @@ jobs:
 
       - name: 🚀 Restore .env
         uses: actions/cache/restore@v4
-        if: github.event.action == 'synchronize' && github.event_name != 'push'
+        if: github.event.action != 'opened' && github.event.action != 'reopened' && github.event_name == 'pull_request'
         with:
           path: ./apps/native-ui-storybook/.env.ios
           key: ${{ github.event.number }}-env-ios
