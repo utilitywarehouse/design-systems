@@ -324,7 +324,12 @@ jobs:
           fi
 
       - name: 🚀 Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            vercel build --token=${{ secrets.VERCEL_TOKEN }}
+          else
+          vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+          fi
 
       - name: 🚀 Deploy Project Artifacts to Vercels
         run: |
