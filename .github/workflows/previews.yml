@@ -1,4 +1,4 @@
-name: Build Native Previews
+name: Native UI Previews
 
 on:
   pull_request:
@@ -18,6 +18,7 @@ env:
 
 jobs:
   build-for-android:
+    name: Build for Android
     runs-on: macos-13-large
     concurrency:
       group: preview-android-${{ github.ref }}
@@ -63,6 +64,7 @@ jobs:
 
       - name: 🚀 Restore .env
         uses: actions/cache/restore@v4
+        if: github.event.action != 'opened' && github.event.action != 'reopened'
         with:
           path: ./apps/native-ui-storybook/.env.android
           key: ${{ github.event.number }}-env-android
@@ -79,14 +81,14 @@ jobs:
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        if: github.event.action == 'opened' || !env.ANDROID_API_KEY
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.ANDROID_API_KEY
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
           platform: 'android'
 
       - name: 🚀 Add output to .env
-        if: github.event.action == 'opened' || !env.ANDROID_API_KEY
+        if: github.event.action == 'opened' || github.event.action == 'reopened'  || !env.ANDROID_API_KEY
         working-directory: ./apps/native-ui-storybook
         run: |
           if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
@@ -121,6 +123,7 @@ jobs:
           platform: 'android'
 
   build-for-ios:
+    name: Build for iOS
     runs-on: macos-13-xlarge
     concurrency:
       group: preview-ios-${{ github.ref }}
@@ -161,8 +164,9 @@ jobs:
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:ios
 
-      - name: 🚀 Restorre .env
+      - name: 🚀 Restore .env
         uses: actions/cache/restore@v4
+        if: github.event.action != 'opened' && github.event.action != 'reopened'
         with:
           path: ./apps/native-ui-storybook/.env.ios
           key: ${{ github.event.number }}-env-ios
@@ -179,14 +183,14 @@ jobs:
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        if: github.event.action == 'opened' || !env.IOS_API_KEY
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.IOS_API_KEY
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
           platform: 'ios'
 
       - name: 🚀 Add output to .env
-        if: github.event.action == 'opened' || !env.IOS_API_KEY
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.IOS_API_KEY
         working-directory: ./apps/native-ui-storybook
         run: |
           if [[ -z "${{ github.event_name != 'pull_request' }}" ]]; then
@@ -314,18 +318,19 @@ jobs:
       - name: 🚀 Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: 🚀 Deploy Project Artifacts to Vercel
-        id: vercel-deploy
+      - name: 🚀 Deploy Project Artifacts to Vercels
         run: |
           vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} > ./vercel-deploy.log
 
       - name: 🚀 Extract Deployment URL
+        if: github.event_name == 'pull_request'
         id: extract_deployment_url
         run: |
           echo "deployment-url=$(cat ./vercel-deploy.log)" >> "$GITHUB_OUTPUT"
 
       - name: 💬 Find Comment
         uses: peter-evans/find-comment@v3
+        if: github.event_name == 'pull_request'
         id: fc
         with:
           issue-number: ${{ github.event.pull_request.number }}
@@ -334,11 +339,12 @@ jobs:
 
       - name: 💬 Create or update comment
         uses: peter-evans/create-or-update-comment@v4
+        if: github.event_name == 'pull_request'
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            ## 🖥️ Storybook Preview
+            ## 🖥️ Native UI - Storybook Preview
 
             Visit the Storybook preview URL to see the changes in action.
 
@@ -346,7 +352,7 @@ jobs:
 
             ## 📱 Appetize Previews
 
-            You can view the apps using the link above and choosing the device from the top action bar or use the direct links below.
+            You can view the apps using the link above and choosing the device from the top action bar. Alternatively you can use the direct links below.
 
             - [Android](https://appetize.io/embed/${{ env.ANDROID_API_KEY }})
             - [iOS](https://appetize.io/embed/${{ env.IOS_API_KEY }})
