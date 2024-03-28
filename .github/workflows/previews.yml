@@ -270,11 +270,13 @@ jobs:
 
       - name: 🏗 Restore Android .env
         uses: actions/cache/restore@v4
+        if: github.event_name != 'push'
         with:
           path: ./apps/native-ui-storybook/.env.android
           key: ${{ github.event.pull_request.base.sha }}-env-android
 
       - name: 🚀 Load .env.android file
+        if: github.event_name != 'push'
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
@@ -282,28 +284,36 @@ jobs:
 
       - name: 🚀 Create local .env and add Android key
         working-directory: ./apps/native-ui-storybook
+        if: github.event_name != 'push'
         run: |
           echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
 
       - name: 🏗 Restore iOS .env
         uses: actions/cache/restore@v4
+        if: github.event_name != 'push'
         with:
           path: ./apps/native-ui-storybook/.env.ios
           key: ${{ github.event.pull_request.base.sha }}-env-ios
 
-      - name: See env output
-        run: cat ./apps/native-ui-storybook/.env.ios
-
       - name: 🚀 Load .env.ios file
         uses: xom9ikk/dotenv@v2
+        if: github.event_name != 'push'
         with:
           path: ./apps/native-ui-storybook
           mode: 'ios'
 
       - name: 🚀 Create local .env and add iOS key
+        if: github.event_name != 'push'
         working-directory: ./apps/native-ui-storybook
         run: |
           echo "IOS_API_KEY=${{ env.IOS_API_KEY }}" >> .env
+
+      - name: 🚀 Create local production .env
+        if: github.event_name == 'push'
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env
+          echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
 
       - name: 🚀 Pull Vercel Environment Information
         run: |
