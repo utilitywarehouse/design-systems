@@ -24,7 +24,7 @@ jobs:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Echo base sha
+      - name: Echo base sha - ba14eefe81958f3f9741abbf484ef57673370db7
         run: echo ${{ github.event.pull_request.base.sha }}
 
       - name: 🏗 Setup repo
