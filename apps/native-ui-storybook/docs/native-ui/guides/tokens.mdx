@@ -1,0 +1,312 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { config } from '@utilitywarehouse/native-ui';
+import { dark, light } from '../../../../../packages/colour-system/raw/colours.json';
+import common from '../../../../../packages/colour-system/lib/common.json';
+import BackToTopButton from '../../components/BackToTopButton';
+
+<Meta title="Native UI / Guides / Tokens" />
+
+<BackToTopButton />
+
+# Tokens
+
+- [Colours](#colours)
+- [Typography](#typography)
+  - [Fonts](#fonts)
+  - [Font Sizes](#font-sizes)
+  - [Font Weights](#font-weights)
+  - [Letter Heights](#letter-heights)
+  - [Line Heights](#line-heights)
+- [Spacing](#spacing)
+- [Opacity](#opacity)
+- [Shadows](#shadows)
+- [Breakpoints](#breakpoints)
+- [Borders](#borders)
+  - [Border Widths](#border-widths)
+  - [Radii](#radii)
+
+`native-ui` uses a design token system to provide a consistent and scalable way to manage design properties.
+
+`native-ui` ships with default tokens that provide access to theme values and lets you build and customize your own themed components.
+It has colors, typography, size, opacity, shadows, breakpoints and more.
+
+## Colours
+
+The colour system is based on the `colour-system` package which provides a set of tokens for both light and dark themes.
+To use the colours tokens in your components, you can use the colours below for example `color: $cyan400;` or `color: $darkCyan400;`.
+
+<ColorPalette>
+  {Object.keys(light).map(key => (
+    <>
+      <ColorItem
+        title={`${key}`}
+        subtitle="Light Theme"
+        colors={Object.keys(light[key])
+          .slice(0, 6)
+          .reduce((acc, subKey) => {
+            acc[subKey] = light[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+      <ColorItem
+        title={`${key}`}
+        subtitle="Light Theme"
+        colors={Object.keys(light[key])
+          .slice(6, 12)
+          .reduce((acc, subKey) => {
+            acc[subKey] = light[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+    </>
+  ))}
+  {Object.keys(dark).map(key => (
+    <>
+      <ColorItem
+        title={`dark${key.charAt(0).toUpperCase() + key.slice(1)}`}
+        subtitle="Dark Theme"
+        colors={Object.keys(dark[key])
+          .map(key => `dark${key.charAt(0).toUpperCase() + key.slice(1)}`)
+          .slice(0, 6)
+          .reduce((acc, subKey) => {
+            acc[subKey] =
+              dark[key][
+                subKey.replace('dark', '').charAt(0).toLowerCase() +
+                  subKey.replace('dark', '').slice(1)
+              ].value;
+            return acc;
+          }, {})}
+      />
+      <ColorItem
+        title={`dark${key.charAt(0).toUpperCase() + key.slice(1)}`}
+        subtitle="Dark Theme"
+        colors={Object.keys(dark[key])
+          .map(key => `dark${key.charAt(0).toUpperCase() + key.slice(1)}`)
+          .slice(6, 12)
+          .reduce((acc, subKey) => {
+            acc[subKey] =
+              dark[key][
+                subKey.replace('dark', '').charAt(0).toLowerCase() +
+                  subKey.replace('dark', '').slice(1)
+              ].value;
+            return acc;
+          }, {})}
+      />
+    </>
+  ))}
+
+  <ColorItem
+    title="Brand"
+    subtitle={`Common Brand`}
+    colors={common['brand'].reduce((acc, key) => {
+      acc[key.name] = key.value;
+      return acc;
+    }, {})}
+  />
+  <ColorItem
+    title="Service"
+    subtitle={`Common Service`}
+    colors={common['service'].reduce((acc, key) => {
+      acc[key.name] = key.value;
+      return acc;
+    }, {})}
+  />
+</ColorPalette>
+
+## Typography
+
+To manage Typography options, the tokens object supports the following keys:
+
+- fonts (font families)
+- fontSizes
+- fontWeights
+- lineHeights
+- letterSpacings
+
+### Fonts
+
+| Key        | Value       |
+| ---------- | ----------- |
+| `$heading` | `Aeonik`    |
+| `$body`    | `Work Sans` |
+
+### Font Sizes
+
+| Key    | Value |
+| ------ | ----- |
+| `$2xs` | 10    |
+| `$xs`  | 12    |
+| `$sm`  | 14    |
+| `$md`  | 16    |
+| `$lg`  | 18    |
+| `$xl`  | 20    |
+| `$2xl` | 24    |
+| `$3xl` | 30    |
+| `$4xl` | 36    |
+| `$5xl` | 48    |
+| `$6xl` | 60    |
+| `$7xl` | 72    |
+| `$8xl` | 96    |
+| `$9xl` | 128   |
+
+### Font Weights
+
+| Key           | Value |
+| ------------- | ----- |
+| `$thin`       | 100   |
+| `$extralight` | 200   |
+| `$light`      | 300   |
+| `$normal`     | 400   |
+| `$medium`     | 500   |
+| `$semibold`   | 600   |
+| `$bold`       | 700   |
+| `$extrabold`  | 800   |
+| `$black`      | 900   |
+
+### Letter Heights
+
+| Key    | Value |
+| ------ | ----- |
+| `$xs`  | -0.4  |
+| `$sm`  | -0.2  |
+| `$md`  | 0     |
+| `$lg`  | 0.2   |
+| `$xl`  | 0.4   |
+| `$2xl` | 1.6   |
+
+### Line Heights
+
+| Key    | Value |
+| ------ | ----- |
+| `$2xs` | 16    |
+| `$xs`  | 18    |
+| `$sm`  | 20    |
+| `$md`  | 22    |
+| `$lg`  | 24    |
+| `$xl`  | 28    |
+| `$2xl` | 32    |
+| `$3xl` | 40    |
+| `$4xl` | 48    |
+| `$5xl` | 56    |
+| `$6xl` | 72    |
+| `$7xl` | 90    |
+
+## Spacing
+
+The space key allows you to customise the global spacing and sizing scale for your project.
+By default these spacing value can be referenced by the padding, margin, and top, left, right, bottom, props.
+
+| Key    | Value   |
+| ------ | ------- |
+| `$0`   | 0       |
+| `$0.5` | 2       |
+| `$1`   | 4       |
+| `$1.5` | 6       |
+| `$2`   | 8       |
+| `$2.5` | 10      |
+| `$3`   | 12      |
+| `$3.5` | 14      |
+| `$4`   | 16      |
+| `$4.5` | 18      |
+| `$5`   | 20      |
+| `$6`   | 24      |
+| `$7`   | 28      |
+| `$8`   | 32      |
+| `$9`   | 36      |
+| `$10`  | 40      |
+| `$11`  | 44      |
+| `$12`  | 48      |
+| `$16`  | 64      |
+| `$20`  | 80      |
+| `$24`  | 96      |
+| `$32`  | 128     |
+| `$40`  | 160     |
+| `$48`  | 192     |
+| `$56`  | 224     |
+| `$64`  | 256     |
+| `$72`  | 288     |
+| `$80`  | 320     |
+| `$96`  | 384     |
+| `$1/2` | 50%     |
+| `$1/3` | 33.333% |
+| `$2/3` | 66.666% |
+| `$1/4` | 25%     |
+| `$2/4` | 50%     |
+| `$3/4` | 75%     |
+| `$1/5` | 20%     |
+| `$2/5` | 40%     |
+| `$3/5` | 60%     |
+| `$4/5` | 80%     |
+| `$1/6` | 16.666% |
+| `$2/6` | 33.333% |
+| `$3/6` | 50%     |
+| `$4/6` | 66.666% |
+| `$5/6` | 83.333% |
+| `full` | 100%    |
+
+## Opacity
+
+The opacity key allows you to customise the global opacity scale for your project.
+
+| Key    | Value |
+| ------ | ----- |
+| `$0`   | 0     |
+| `$5`   | 0.05  |
+| `$10`  | 0.1   |
+| `$20`  | 0.2   |
+| `$25`  | 0.25  |
+| `$30`  | 0.3   |
+| `$40`  | 0.4   |
+| `$50`  | 0.5   |
+| `$60`  | 0.6   |
+| `$70`  | 0.7   |
+| `$75`  | 0.75  |
+| `$80`  | 0.8   |
+| `$90`  | 0.9   |
+| `$95`  | 0.95  |
+| `$100` | 1     |
+
+## Shadows
+
+The shadows key allows you to customise the global shadow scale for your project.
+
+| Key | Value |
+| --- | ----- |
+
+## Breakpoints
+
+The breakpoints key allows you to customise the global breakpoints for your project.
+
+| Key  | Value                                   |
+| ---- | --------------------------------------- |
+| `xs` | `@media screen and (min-width: 400px)`  |
+| `sm` | `@media screen and (min-width: 480px)`  |
+| `md` | `@media screen and (min-width: 768px)`  |
+| `lg` | `@media screen and (min-width: 992px)`  |
+| `xl` | `@media screen and (min-width: 1280px)` |
+
+## Borders
+
+### Border widths
+
+| Key  | Value |
+| ---- | ----- |
+| `$0` | 0     |
+| `$1` | 1     |
+| `$2` | 2     |
+| `$4` | 4     |
+| `$8` | 8     |
+
+### Radii
+
+| Key    | Value |
+| ------ | ----- |
+| `none` | 0     |
+| `xs`   | 2     |
+| `sm`   | 4     |
+| `md`   | 6     |
+| `lg`   | 8     |
+| `xl`   | 12    |
+| `2xl`  | 16    |
+| `3xl`  | 24    |
+| `full` | 9999  |
