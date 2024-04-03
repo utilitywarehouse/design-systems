@@ -60,6 +60,7 @@ jobs:
 
       - name: 🚀 Restore .env
         uses: actions/download-artifact@v4
+        continue-on-error: true
         if: github.event.action == 'synchronize' && !github.event_name != 'push'
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-android
@@ -162,6 +163,7 @@ jobs:
 
       - name: 🚀 Restore .env
         uses: actions/download-artifact@v4
+        continue-on-error: true
         if: github.event.action != 'opened' && github.event.action != 'reopened' && github.event_name == 'pull_request'
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-ios
