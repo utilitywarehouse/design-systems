@@ -63,11 +63,11 @@ jobs:
         run: pnpm run build:preview:android
 
       - name: 🚀 Restore .env
-        uses: actions/cache/restore@v4
+        uses: actions/download-artifact@v4
         if: github.event.action == 'synchronize' && !github.event_name != 'push'
         with:
+          name: ${{ github.event.pull_request.base.sha }}-env-android
           path: ./apps/native-ui-storybook/.env.android
-          key: ${{ github.event.pull_request.base.sha }}-env-android
 
       - name: 🏗 Create/Read .env
         run: touch ./apps/native-ui-storybook/.env.android && cat ./apps/native-ui-storybook/.env.android
@@ -104,11 +104,11 @@ jobs:
           mode: 'android'
 
       - name: 🚀 Save .env
-        uses: actions/cache/save@v4
+        uses: actions/upload-artifact@v4
         if: github.event_name == 'pull_request'
         with:
+          name: ${{ github.event.pull_request.base.sha }}-env-android
           path: ./apps/native-ui-storybook/.env.android
-          key: ${{ github.event.pull_request.base.sha }}-env-android
 
       - name: See env output
         run: cat ./apps/native-ui-storybook/.env.android
@@ -165,11 +165,11 @@ jobs:
         run: pnpm run build:preview:ios
 
       - name: 🚀 Restore .env
-        uses: actions/cache/restore@v4
+        uses: actions/download-artifact@v4
         if: github.event.action != 'opened' && github.event.action != 'reopened' && github.event_name == 'pull_request'
         with:
+          name: ${{ github.event.pull_request.base.sha }}-env-ios
           path: ./apps/native-ui-storybook/.env.ios
-          key: ${{ github.event.pull_request.base.sha }}-env-ios
 
       - name: 🏗 Create/Read .env
         run: touch ./apps/native-ui-storybook/.env.ios && cat ./apps/native-ui-storybook/.env.ios
@@ -209,11 +209,11 @@ jobs:
         run: cat ./apps/native-ui-storybook/.env.ios
 
       - name: 🚀 Save .env
-        uses: actions/cache/save@v4
+        uses: actions/upload-artifact@v4
         if: github.event_name == 'pull_request'
         with:
+          name: ${{ github.event.pull_request.base.sha }}-env-ios
           path: ./apps/native-ui-storybook/.env.ios
-          key: ${{ github.event.pull_request.base.sha }}-env-ios
 
       - name: 🚀 Upload updated bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
@@ -269,11 +269,11 @@ jobs:
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🏗 Restore Android .env
-        uses: actions/cache/restore@v4
+        uses: actions/download-artifact@v4
         if: github.event_name != 'push'
         with:
+          name: ${{ github.event.pull_request.base.sha }}-env-android
           path: ./apps/native-ui-storybook/.env.android
-          key: ${{ github.event.pull_request.base.sha }}-env-android
 
       - name: 🚀 Load .env.android file
         if: github.event_name != 'push'
@@ -289,11 +289,11 @@ jobs:
           echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
 
       - name: 🏗 Restore iOS .env
-        uses: actions/cache/restore@v4
+        uses: actions/download-artifact@v4
         if: github.event_name != 'push'
         with:
+          name: ${{ github.event.pull_request.base.sha }}-env-ios
           path: ./apps/native-ui-storybook/.env.ios
-          key: ${{ github.event.pull_request.base.sha }}-env-ios
 
       - name: 🚀 Load .env.ios file
         uses: xom9ikk/dotenv@v2
