@@ -101,6 +101,7 @@ export const gluestackUIConfig = createConfig({
       xl: 12,
       '2xl': 16,
       '3xl': 24,
+      '4xl': 32,
       full: 9999,
     },
     breakpoints: {
