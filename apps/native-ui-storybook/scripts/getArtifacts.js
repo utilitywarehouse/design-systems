@@ -20,6 +20,7 @@ async function getArtifacts() {
   if (!artifactObject?.archive_download_url) {
     return console.error('No artifact found');
   }
+  console.log(artifactObject);
 
   const archive = await fetch(artifactObject.archive_download_url, {
     headers: {
