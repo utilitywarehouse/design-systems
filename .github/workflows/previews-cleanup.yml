@@ -35,7 +35,7 @@ jobs:
         id: ios_env
         working-directory: ./apps/native-ui-storybook
         run: |
-          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-ios node ./scripts/getArtifacts.js
 
       - name: 🏗 Load iOS .env file
         uses: xom9ikk/dotenv@v2
