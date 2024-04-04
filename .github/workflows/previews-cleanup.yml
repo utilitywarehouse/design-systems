@@ -21,7 +21,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{github.event.before}}-env-android
-          path: ./apps/native-ui-storybook/.env.android
+          path: ./apps/native-ui-storybook
           github-token: ${{ secrets.DS_ACTION_READ_PAT }}
           repository: utilitywarehouse/design-systems
 
@@ -40,7 +40,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ github.event.before }}-env-ios
-          path: ./apps/native-ui-storybook/.env.ios
+          path: ./apps/native-ui-storybook
           github-token: ${{ secrets.DS_ACTION_READ_PAT }} # token with actions:read permissions on target repo
           repository: utilitywarehouse/design-systems
 

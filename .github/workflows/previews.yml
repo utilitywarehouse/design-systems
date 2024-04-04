@@ -64,7 +64,7 @@ jobs:
         if: github.event.action == 'synchronize' && !github.event_name != 'push'
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-android
-          path: ./apps/native-ui-storybook/.env.android
+          path: ./apps/native-ui-storybook
 
       - name: 🚀 Build Android APK Bundle
         working-directory: ./apps/native-ui-storybook
@@ -167,7 +167,7 @@ jobs:
         if: github.event.action != 'opened' && github.event.action != 'reopened' && github.event_name == 'pull_request'
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-ios
-          path: ./apps/native-ui-storybook/.env.ios
+          path: ./apps/native-ui-storybook
 
       - name: 🚀 Build iOS app
         working-directory: ./apps/native-ui-storybook
@@ -275,7 +275,7 @@ jobs:
         if: github.event_name != 'push'
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-android
-          path: ./apps/native-ui-storybook/.env.android
+          path: ./apps/native-ui-storybook
 
       - name: 🚀 Load .env.android file
         if: github.event_name != 'push'
@@ -295,7 +295,7 @@ jobs:
         if: github.event_name != 'push'
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-ios
-          path: ./apps/native-ui-storybook/.env.ios
+          path: ./apps/native-ui-storybook
 
       - name: 🚀 Load .env.ios file
         uses: xom9ikk/dotenv@v2
