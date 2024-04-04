@@ -19,10 +19,12 @@ jobs:
         id: android_env
         uses: dawidd6/action-download-artifact@v3
         with:
-          name: ${{github.event.before}}-env-android
+          name: ${{ github.event.pull_request.base.sha }}-env-android
           path: ./apps/native-ui-storybook
           github_token: ${{ secrets.DS_ACTION_READ_PAT }}
-          pr: ${{github.event.pull_request.number}}
+          pr: ${{ github.event.pull_request.number }}
+          commit: ${{ github.event.pull_request.base.sha }}
+          workflow_search: true
 
       - name: 🏗 Load Android .env file
         uses: xom9ikk/dotenv@v2
@@ -38,10 +40,12 @@ jobs:
         id: ios_env
         uses: dawidd6/action-download-artifact@v3
         with:
-          name: ${{ github.event.before }}-env-ios
+          name: ${{ github.event.pull_request.base.sha }}-env-ios
           path: ./apps/native-ui-storybook
           github_token: ${{ secrets.DS_ACTION_READ_PAT }}
-          pr: ${{github.event.pull_request.number}}
+          pr: ${{ github.event.pull_request.number }}
+          commit: ${{ github.event.pull_request.base.sha }}
+          workflow_search: true
 
       - name: 🏗 Load iOS .env file
         uses: xom9ikk/dotenv@v2
