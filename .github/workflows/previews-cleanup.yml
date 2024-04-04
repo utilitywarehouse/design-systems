@@ -22,7 +22,7 @@ jobs:
           name: ${{ github.event.pull_request.base.sha }}-env-android
           path: ./apps/native-ui-storybook
           github_token: ${{ secrets.DS_ACTION_READ_PAT }}
-          pr: ${{ github.event.pull_request.number }}
+          commit: ${{ github.event.pull_request.base.sha }}
           workflow_search: true
 
       - name: 🏗 Load Android .env file
@@ -42,7 +42,7 @@ jobs:
           name: ${{ github.event.pull_request.base.sha }}-env-ios
           path: ./apps/native-ui-storybook
           github_token: ${{ secrets.DS_ACTION_READ_PAT }}
-          pr: ${{ github.event.pull_request.number }}
+          commit: ${{ github.event.pull_request.base.sha }}
           workflow_search: true
 
       - name: 🏗 Load iOS .env file
