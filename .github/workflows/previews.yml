@@ -58,16 +58,15 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: 🚀 Restore .env
+        if: github.event.action == 'synchronize' && !github.event_name != 'push'
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
+
       - name: 🚀 Build Android APK Bundle
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:android
-
-      - name: 🚀 Restore .env
-        uses: actions/cache/restore@v4
-        if: github.event.action == 'synchronize' && !github.event_name != 'push'
-        with:
-          path: ./apps/native-ui-storybook/.env.android
-          key: ${{ github.event.pull_request.base.sha }}-env-android
 
       - name: 🏗 Create/Read .env
         run: touch ./apps/native-ui-storybook/.env.android && cat ./apps/native-ui-storybook/.env.android
@@ -81,7 +80,7 @@ jobs:
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        if: github.event.action == 'opened' || github.event.action == 'reopened' || (!env.ANDROID_API_KEY && github.action.event_name == 'pull_request')
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || ${{ !env.ANDROID_API_KEY && github.action.event_name == 'pull_request' }}
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
@@ -93,8 +92,10 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" == "push" ]; then
             echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env.android
-          else
+          elif [ ${{steps.appetizeio_github_action_appetize.outputs.publicKey}} ]; then
             echo "ANDROID_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env.android
+          else
+            echo "No public key found"
           fi
 
       - name: 🚀 Reload .env file
@@ -104,11 +105,12 @@ jobs:
           mode: 'android'
 
       - name: 🚀 Save .env
-        uses: actions/cache/save@v4
-        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && env.ANDROID_API_KEY
         with:
+          name: ${{ github.event.pull_request.base.sha }}-env-android
           path: ./apps/native-ui-storybook/.env.android
-          key: ${{ github.event.pull_request.base.sha }}-env-android
+          overwrite: true
 
       - name: See env output
         run: cat ./apps/native-ui-storybook/.env.android
@@ -160,16 +162,15 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: 🚀 Restore .env
+        if: github.event.action != 'opened' && github.event.action != 'reopened' && github.event_name == 'pull_request'
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-ios node ./scripts/getArtifacts.js
+
       - name: 🚀 Build iOS app
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:ios
-
-      - name: 🚀 Restore .env
-        uses: actions/cache/restore@v4
-        if: github.event.action != 'opened' && github.event.action != 'reopened' && github.event_name == 'pull_request'
-        with:
-          path: ./apps/native-ui-storybook/.env.ios
-          key: ${{ github.event.pull_request.base.sha }}-env-ios
 
       - name: 🏗 Create/Read .env
         run: touch ./apps/native-ui-storybook/.env.ios && cat ./apps/native-ui-storybook/.env.ios
@@ -183,7 +184,7 @@ jobs:
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        if: github.event.action == 'opened' || github.event.action == 'reopened' || (!env.IOS_API_KEY && github.action.event_name == 'pull_request')
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || ${{ !env.IOS_API_KEY && github.action.event_name == 'pull_request' }}
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
@@ -195,8 +196,10 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" == "push" ]; then
             echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env.ios
-          else
+          elif [ ${{steps.appetizeio_github_action_appetize.outputs.publicKey}} ]; then
             echo "IOS_API_KEY=${{ steps.appetizeio_github_action_appetize.outputs.publicKey }}" >> .env.ios
+          else
+            echo "No public key found"
           fi
 
       - name: 🚀 Reload .env file
@@ -209,11 +212,12 @@ jobs:
         run: cat ./apps/native-ui-storybook/.env.ios
 
       - name: 🚀 Save .env
-        uses: actions/cache/save@v4
-        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && env.IOS_API_KEY
         with:
+          name: ${{ github.event.pull_request.base.sha }}-env-ios
           path: ./apps/native-ui-storybook/.env.ios
-          key: ${{ github.event.pull_request.base.sha }}-env-ios
+          overwrite: true
 
       - name: 🚀 Upload updated bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
@@ -269,11 +273,10 @@ jobs:
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🏗 Restore Android .env
-        uses: actions/cache/restore@v4
         if: github.event_name != 'push'
-        with:
-          path: ./apps/native-ui-storybook/.env.android
-          key: ${{ github.event.pull_request.base.sha }}-env-android
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
       - name: 🚀 Load .env.android file
         if: github.event_name != 'push'
@@ -289,11 +292,10 @@ jobs:
           echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
 
       - name: 🏗 Restore iOS .env
-        uses: actions/cache/restore@v4
         if: github.event_name != 'push'
-        with:
-          path: ./apps/native-ui-storybook/.env.ios
-          key: ${{ github.event.pull_request.base.sha }}-env-ios
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-ios node ./scripts/getArtifacts.js
 
       - name: 🚀 Load .env.ios file
         uses: xom9ikk/dotenv@v2

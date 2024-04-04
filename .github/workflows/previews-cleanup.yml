@@ -1,51 +1,48 @@
-# name: Cleanup Native UI Previews
+name: Cleanup Native UI Previews
 
-# on:
-#   push:
-#     branches:
-#       - main
-#     paths:
-#       - 'packages/native-ui/**'
-#       - 'apps/native-ui-storybook/**'
+on:
+  pull_request:
+    types: [closed]
+    paths:
+      - 'packages/native-ui/**'
+      - 'apps/native-ui-storybook/**'
 
-# jobs:
-#   cleanup:
-#     name: Cleanup Previews
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: 🏗 Checkout
-#         uses: actions/checkout@v4
+jobs:
+  cleanup:
+    name: Cleanup Previews
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Checkout
+        uses: actions/checkout@v4
 
-#       - name: 🏗 Restore .env for Android
-#         id: android_env
-#         uses: actions/cache/restore@v4
-#         with:
-#           path: ./apps/native-ui-storybook/.env.android
-#           key: ${{github.event.before}}-env-android
+      - name: 🏗 Restore .env for Android
+        id: android_env
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
-#       - name: 🏗 Load Android .env file
-#         uses: xom9ikk/dotenv@v2
-#         with:
-#           path: ./apps/native-ui-storybook
-#           mode: 'android'
+      - name: 🏗 Load Android .env file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook
+          mode: 'android'
 
-#       - name: 🧽 Cleanup Android preview
-#         run: |
-#           curl -X DELETE https://${{ secrets.APPETIZE_API_TOKEN }}@api.appetize.io/v1/apps/${{env.ANDROID_API_KEY}}
+      - name: 🧽 Cleanup Android preview
+        run: |
+          curl -X DELETE https://${{ secrets.APPETIZE_API_TOKEN }}@api.appetize.io/v1/apps/${{env.ANDROID_API_KEY}}
 
-#       - name: 🏗 Restore .env for iOS
-#         id: ios_env
-#         uses: actions/cache/restore@v4
-#         with:
-#           path: ./apps/native-ui-storybook/.env.ios
-#           key: ${{ github.event.before }}-env-ios
+      - name: 🏗 Restore .env for iOS
+        id: ios_env
+        working-directory: ./apps/native-ui-storybook
+        run: |
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-ios node ./scripts/getArtifacts.js
 
-#       - name: 🏗 Load iOS .env file
-#         uses: xom9ikk/dotenv@v2
-#         with:
-#           path: ./apps/native-ui-storybook
-#           mode: 'ios'
+      - name: 🏗 Load iOS .env file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./apps/native-ui-storybook
+          mode: 'ios'
 
-#       - name: 🧽 Cleanup iOS preview
-#         run: |
-#           curl -X DELETE https://${{ secrets.APPETIZE_API_TOKEN }}@api.appetize.io/v1/apps/${{env.IOS_API_KEY}}
+      - name: 🧽 Cleanup iOS preview
+        run: |
+          curl -X DELETE https://${{ secrets.APPETIZE_API_TOKEN }}@api.appetize.io/v1/apps/${{env.IOS_API_KEY}}
