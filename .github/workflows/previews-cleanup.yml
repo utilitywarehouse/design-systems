@@ -17,6 +17,7 @@ jobs:
 
       - name: 🏗 Restore .env for Android
         id: android_env
+        working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
@@ -32,6 +33,7 @@ jobs:
 
       - name: 🏗 Restore .env for iOS
         id: ios_env
+        working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 

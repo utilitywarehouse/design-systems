@@ -60,6 +60,7 @@ jobs:
 
       - name: 🚀 Restore .env
         if: github.event.action == 'synchronize' && !github.event_name != 'push'
+        working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
@@ -160,6 +161,7 @@ jobs:
 
       - name: 🚀 Restore .env
         if: github.event.action != 'opened' && github.event.action != 'reopened' && github.event_name == 'pull_request'
+        working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
@@ -266,6 +268,7 @@ jobs:
 
       - name: 🏗 Restore Android .env
         if: github.event_name != 'push'
+        working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
@@ -284,6 +287,7 @@ jobs:
 
       - name: 🏗 Restore iOS .env
         if: github.event_name != 'push'
+        working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
