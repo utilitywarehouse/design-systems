@@ -80,7 +80,7 @@ jobs:
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        if: github.event.action == 'opened' || github.event.action == 'reopened' || (!env.ANDROID_API_KEY && github.action.event_name == 'pull_request')
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || ${{ !env.ANDROID_API_KEY && github.action.event_name == 'pull_request' }}
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
@@ -106,7 +106,7 @@ jobs:
 
       - name: 🚀 Save .env
         uses: actions/upload-artifact@v4
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && env.ANDROID_API_KEY
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-android
           path: ./apps/native-ui-storybook/.env.android
@@ -184,7 +184,7 @@ jobs:
       - name: 🚀 Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        if: github.event.action == 'opened' || github.event.action == 'reopened' || (!env.IOS_API_KEY && github.action.event_name == 'pull_request')
+        if: github.event.action == 'opened' || github.event.action == 'reopened' || ${{ !env.IOS_API_KEY && github.action.event_name == 'pull_request' }}
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
@@ -213,7 +213,7 @@ jobs:
 
       - name: 🚀 Save .env
         uses: actions/upload-artifact@v4
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && env.IOS_API_KEY
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-ios
           path: ./apps/native-ui-storybook/.env.ios
