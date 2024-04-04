@@ -1,9 +1,8 @@
 name: Cleanup Native UI Previews
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    types: [closed]
     paths:
       - 'packages/native-ui/**'
       - 'apps/native-ui-storybook/**'
@@ -18,12 +17,12 @@ jobs:
 
       - name: 🏗 Restore .env for Android
         id: android_env
-        uses: actions/download-artifact@v4
+        uses: dawidd6/action-download-artifact@v3
         with:
           name: ${{github.event.before}}-env-android
           path: ./apps/native-ui-storybook
-          github-token: ${{ secrets.DS_ACTION_READ_PAT }}
-          repository: utilitywarehouse/design-systems
+          github_token: ${{ secrets.DS_ACTION_READ_PAT }}
+          pr: ${{github.event.pull_request.number}}
 
       - name: 🏗 Load Android .env file
         uses: xom9ikk/dotenv@v2
@@ -37,12 +36,12 @@ jobs:
 
       - name: 🏗 Restore .env for iOS
         id: ios_env
-        uses: actions/download-artifact@v4
+        uses: dawidd6/action-download-artifact@v3
         with:
           name: ${{ github.event.before }}-env-ios
           path: ./apps/native-ui-storybook
-          github-token: ${{ secrets.DS_ACTION_READ_PAT }} # token with actions:read permissions on target repo
-          repository: utilitywarehouse/design-systems
+          github_token: ${{ secrets.DS_ACTION_READ_PAT }}
+          pr: ${{github.event.pull_request.number}}
 
       - name: 🏗 Load iOS .env file
         uses: xom9ikk/dotenv@v2
