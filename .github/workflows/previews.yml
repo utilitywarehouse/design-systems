@@ -59,15 +59,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: 🚀 Restore .env
-        uses: dawidd6/action-download-artifact@v3
-        continue-on-error: true
         if: github.event.action == 'synchronize' && !github.event_name != 'push'
-        with:
-          name: ${{ github.event.pull_request.base.sha }}-env-android
-          path: ./apps/native-ui-storybook
-          github_token: ${{ secrets.DS_ACTION_READ_PAT }}
-          commit: ${{ github.event.pull_request.base.sha }}
-          workflow_search: true
+        run: |
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
       - name: 🚀 Build Android APK Bundle
         working-directory: ./apps/native-ui-storybook
@@ -165,15 +159,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: 🚀 Restore .env
-        uses: dawidd6/action-download-artifact@v3
-        continue-on-error: true
         if: github.event.action != 'opened' && github.event.action != 'reopened' && github.event_name == 'pull_request'
-        with:
-          name: ${{ github.event.pull_request.base.sha }}-env-ios
-          path: ./apps/native-ui-storybook
-          github_token: ${{ secrets.DS_ACTION_READ_PAT }}
-          commit: ${{ github.event.pull_request.base.sha }}
-          workflow_search: true
+        run: |
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
       - name: 🚀 Build iOS app
         working-directory: ./apps/native-ui-storybook
@@ -277,14 +265,9 @@ jobs:
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: 🏗 Restore Android .env
-        uses: dawidd6/action-download-artifact@v3
         if: github.event_name != 'push'
-        with:
-          name: ${{ github.event.pull_request.base.sha }}-env-android
-          path: ./apps/native-ui-storybook
-          github_token: ${{ secrets.DS_ACTION_READ_PAT }}
-          commit: ${{ github.event.pull_request.base.sha }}
-          workflow_search: true
+        run: |
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
       - name: 🚀 Load .env.android file
         if: github.event_name != 'push'
@@ -300,14 +283,9 @@ jobs:
           echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
 
       - name: 🏗 Restore iOS .env
-        uses: dawidd6/action-download-artifact@v3
         if: github.event_name != 'push'
-        with:
-          name: ${{ github.event.pull_request.base.sha }}-env-ios
-          path: ./apps/native-ui-storybook
-          github_token: ${{ secrets.DS_ACTION_READ_PAT }}
-          commit: ${{ github.event.pull_request.base.sha }}
-          workflow_search: true
+        run: |
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
       - name: 🚀 Load .env.ios file
         uses: xom9ikk/dotenv@v2
