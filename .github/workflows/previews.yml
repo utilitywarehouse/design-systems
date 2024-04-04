@@ -67,7 +67,6 @@ jobs:
           path: ./apps/native-ui-storybook
           github_token: ${{ secrets.DS_ACTION_READ_PAT }}
           pr: ${{ github.event.pull_request.number }}
-          commit: ${{ github.event.pull_request.base.sha }}
           workflow_search: true
 
       - name: 🚀 Build Android APK Bundle
@@ -174,7 +173,6 @@ jobs:
           path: ./apps/native-ui-storybook
           github_token: ${{ secrets.DS_ACTION_READ_PAT }}
           pr: ${{ github.event.pull_request.number }}
-          commit: ${{ github.event.pull_request.base.sha }}
           workflow_search: true
 
       - name: 🚀 Build iOS app
@@ -286,7 +284,6 @@ jobs:
           path: ./apps/native-ui-storybook
           github_token: ${{ secrets.DS_ACTION_READ_PAT }}
           pr: ${{ github.event.pull_request.number }}
-          commit: ${{ github.event.pull_request.base.sha }}
           workflow_search: true
 
       - name: 🚀 Load .env.android file
@@ -310,7 +307,6 @@ jobs:
           path: ./apps/native-ui-storybook
           github_token: ${{ secrets.DS_ACTION_READ_PAT }}
           pr: ${{ github.event.pull_request.number }}
-          commit: ${{ github.event.pull_request.base.sha }}
           workflow_search: true
 
       - name: 🚀 Load .env.ios file
