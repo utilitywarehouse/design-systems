@@ -6,7 +6,7 @@ export { Center } from '@gluestack-ui/themed';
 export { Divider } from '@gluestack-ui/themed';
 export { HStack, VStack } from '@gluestack-ui/themed';
 
-export { Button, ButtonText, ButtonGroup, ButtonIcon, ButtonSpinner } from '@gluestack-ui/themed';
+export { Button, ButtonGroup, ButtonSpinner } from '@gluestack-ui/themed';
 
 export { Checkbox, CheckboxGroup, CheckboxLabel } from '@gluestack-ui/themed';
 
