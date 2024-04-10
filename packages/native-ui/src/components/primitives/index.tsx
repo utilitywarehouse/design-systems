@@ -18,7 +18,6 @@ export {
   FormControlHelper,
   FormControlHelperText,
   FormControlLabel,
-  FormControlLabelAstrick,
   FormControlLabelText,
 } from '@gluestack-ui/themed';
 

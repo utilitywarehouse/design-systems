@@ -65,6 +65,7 @@ const Alert: React.FC<AlertProps> = ({
         <AlertIcon as={getIcon(colorScheme)} />
         <VStack flex={1} gap={4}>
           {!!title && <AlertTitle>{title}</AlertTitle>}
+          {/* @ts-ignore */}
           <AlertText>{text}</AlertText>
           {!!link && (
             <AlertLink onPress={onPressLink}>
