@@ -1,11 +1,16 @@
-import { Button, ButtonIcon, ButtonSpinner, ButtonText } from '@utilitywarehouse/native-ui';
+import {
+  ButtonGroup,
+  Button,
+  ButtonIcon,
+  ButtonSpinner,
+  ButtonText,
+} from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 
-const ButtonBasic: StoryFn = ({
+const ButtonPlaygroundVariants: StoryFn = ({
   size,
-  variant,
   colorScheme,
   isDisabled,
   isFocusVisible,
@@ -16,32 +21,57 @@ const ButtonBasic: StoryFn = ({
   _buttonPosition,
 }: any) => {
   return (
-    <Button
-      size={size}
-      variant={variant}
-      colorScheme={colorScheme}
-      isDisabled={isDisabled}
-      isFocusVisible={isFocusVisible}
-    >
-      {_showIcon && _buttonPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
-      {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
-      <ButtonText>{_ButtonText}</ButtonText>
-      {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
-      {_showIcon && _buttonPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
-    </Button>
+    <ButtonGroup flexDirection="column" space="md">
+      <Button
+        size={size}
+        variant="solid"
+        colorScheme={colorScheme}
+        isDisabled={isDisabled}
+        isFocusVisible={isFocusVisible}
+      >
+        {_showIcon && _buttonPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
+        {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
+        <ButtonText>{_ButtonText}</ButtonText>
+        {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
+        {_showIcon && _buttonPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+      </Button>
+      <Button
+        size={size}
+        variant="outline"
+        colorScheme={colorScheme}
+        isDisabled={isDisabled}
+        isFocusVisible={isFocusVisible}
+      >
+        {_showIcon && _buttonPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
+        {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
+        <ButtonText>{_ButtonText}</ButtonText>
+        {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
+        {_showIcon && _buttonPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+      </Button>
+      <Button
+        size={size}
+        variant="ghost"
+        colorScheme={colorScheme}
+        isDisabled={isDisabled}
+        isFocusVisible={isFocusVisible}
+      >
+        {_showIcon && _buttonPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
+        {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
+        <ButtonText>{_ButtonText}</ButtonText>
+        {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
+        {_showIcon && _buttonPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+      </Button>
+    </ButtonGroup>
   );
 };
 
-ButtonBasic.argTypes = {
+ButtonPlaygroundVariants.storyName = 'Playground Variants';
+
+ButtonPlaygroundVariants.argTypes = {
   size: {
     options: ['small', 'regular'],
     control: 'select',
     description: 'The size of the button.',
-  },
-  variant: {
-    options: ['solid', 'outline', 'ghost'],
-    control: 'select',
-    description: 'The variant of the button.',
   },
   colorScheme: {
     options: ['cyan', 'red', 'green'],
@@ -90,9 +120,8 @@ ButtonBasic.argTypes = {
   },
 };
 
-ButtonBasic.args = {
+ButtonPlaygroundVariants.args = {
   size: 'regular',
-  variant: 'solid',
   colorScheme: 'cyan',
   isDisabled: false,
   isFocusVisible: false,
@@ -103,6 +132,6 @@ ButtonBasic.args = {
   _loadingPosition: 'left',
 };
 
-export default ButtonBasic;
+export default ButtonPlaygroundVariants;
 
 export { ButtonText, Button };

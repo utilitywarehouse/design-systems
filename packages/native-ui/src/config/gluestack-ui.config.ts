@@ -29,6 +29,7 @@ export const gluestackUIConfig = createConfig({
   } as const,
   tokens: {
     colors: {
+      white: '#ffffff',
       ...colors,
       ...Object.keys(colorsDark).reduce((acc, key) => {
         acc[`dark${key[0].toUpperCase()}${key.slice(1)}`] =
