@@ -373,6 +373,113 @@ export const Button = createStyle({
       },
     },
     {
+      variant: 'outline',
+      colorScheme: 'red',
+      value: {
+        backgroundColor: 'transparent',
+
+        ':hover': {
+          backgroundColor: '$red100',
+
+          _icon: {
+            color: '$red500',
+          },
+
+          _spinner: {
+            color: '$red500',
+          },
+        },
+
+        ':active': {
+          backgroundColor: '$red200',
+        },
+
+        _text: {
+          color: '$red500',
+        },
+
+        _icon: {
+          color: '$red500',
+        },
+
+        _spinner: {
+          color: '$red500',
+        },
+
+        ':disabled': {
+          borderColor: '$red900',
+          backgroundColor: 'transparent',
+
+          _text: {
+            color: '$red300',
+          },
+          _icon: {
+            color: '$red300',
+          },
+          _spinner: {
+            color: '$red300',
+          },
+        },
+
+        ':focusVisible': {
+          backgroundColor: '$red100',
+          outlineColor: '$red700',
+        },
+
+        _dark: {
+          backgroundColor: 'transparent',
+
+          ':hover': {
+            backgroundColor: '$darkRed100',
+
+            _icon: {
+              color: '$darkRed500',
+            },
+
+            _spinner: {
+              color: '$darkRed500',
+            },
+          },
+
+          ':active': {
+            backgroundColor: '$darkRed200',
+          },
+
+          _text: {
+            color: '$darkRed500',
+          },
+
+          _icon: {
+            color: '$darkRed500',
+          },
+
+          _spinner: {
+            color: '$darkRed500',
+          },
+
+          ':disabled': {
+            borderColor: '$darkRed900',
+            backgroundColor: 'transparent',
+
+            _text: {
+              color: '$darkRed300',
+            },
+            _icon: {
+              color: '$darkRed300',
+            },
+            _spinner: {
+              color: '$darkRed300',
+            },
+
+            ':focusVisible': {
+              backgroundColor: '$darkRed100',
+              outlineColor: '$darkRed700',
+            },
+          },
+        },
+      },
+    },
+    {
       variant: 'ghost',
       colorScheme: 'cyan',
       value: {
@@ -433,6 +540,108 @@ export const Button = createStyle({
               backgroundColor: '$darkCyan100',
               outlineColor: '$darkCyan700',
             },
+          },
+        },
+      },
+    },
+    {
+      variant: 'ghost',
+      colorScheme: 'red',
+      value: {
+        backgroundColor: 'transparent',
+
+        ':hover': {
+          backgroundColor: '$red100',
+          _icon: {
+            color: '$red900',
+          },
+
+          _spinner: {
+            color: '$red900',
+          },
+        },
+
+        ':active': {
+          backgroundColor: '$red200',
+        },
+
+        ':disabled': {
+          backgroundColor: 'transparent',
+
+          _text: {
+            color: '$red300',
+          },
+          _icon: {
+            color: '$red300',
+          },
+          _spinner: {
+            color: '$red300',
+          },
+        },
+
+        ':focusVisible': {
+          backgroundColor: '$red100',
+          outlineColor: '$red700',
+        },
+
+        _text: {
+          color: '$red900',
+        },
+
+        _icon: {
+          color: '$red900',
+        },
+
+        _spinner: {
+          color: '$red900',
+        },
+
+        _dark: {
+          backgroundColor: 'transparent',
+
+          ':hover': {
+            backgroundColor: '$darkRed100',
+            _icon: {
+              color: '$darkRed900',
+            },
+            _spinner: {
+              color: '$darkRed900',
+            },
+          },
+
+          ':active': {
+            backgroundColor: '$darkRed200',
+          },
+
+          ':disabled': {
+            backgroundColor: 'transparent',
+
+            _text: {
+              color: '$darkRed300',
+            },
+            _icon: {
+              color: '$darkRed300',
+            },
+            _spinner: {
+              color: '$darkRed300',
+            },
+
+            ':focusVisible': {
+              backgroundColor: '$darkRed100',
+              outlineColor: '$darkRed700',
+            },
+          },
+
+          _text: {
+            color: '$darkRed900',
+          },
+
+          _icon: {
+            color: '$darkRed900',
+          },
+
+          _spinner: {
+            color: '$darkRed900',
           },
         },
       },
