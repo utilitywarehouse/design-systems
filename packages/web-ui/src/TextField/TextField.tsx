@@ -17,8 +17,8 @@ const classNames: { [key: string]: string } = {
 };
 
 const classSelectors = {
-  success: classSelector(classNames.success),
-  multiline: classSelector(classNames.multiline),
+  success: classSelector(classNames.success as string),
+  multiline: classSelector(classNames.multiline as string),
 };
 
 function isSuccessStatus(status?: string): boolean {
@@ -219,8 +219,8 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
       inputProps={inputProps}
       className={clsx(
         {
-          [classNames.success]: !props.disabled && isSuccessStatus(status),
-          [classNames.multiline]: !!props.multiline,
+          [classNames.success as string]: !props.disabled && isSuccessStatus(status),
+          [classNames.multiline as string]: !!props.multiline,
         },
         className
       )}
