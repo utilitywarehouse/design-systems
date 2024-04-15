@@ -77,3 +77,22 @@ export const RadioGridWithRadioHelperText: Story = {
     helperText: '',
   },
 };
+
+export const RadioGridGroupResponsiveColumns: Story = {
+  name: 'With Responsive Columns',
+  render: args => {
+    return (
+      <RadioGridGroup {...args} columns={{ mobile: 2, desktop: 1 }}>
+        <RadioTile value="1" label="One" />
+        <RadioTile value="2" label="Two" />
+        <RadioTile value="3" label="Three" />
+        <RadioTile value="4" label="Four" />
+        <RadioTile value="5" label="Five" />
+        <RadioTile value="6" label="Six" />
+      </RadioGridGroup>
+    );
+  },
+  args: {
+    helperText: 'RadioGridGroup with Responsive Columns',
+  },
+};

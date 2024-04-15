@@ -5,6 +5,7 @@ import { RadioGroup } from './RadioGroup';
 import { useState } from 'react';
 import { RadioTile } from '../RadioTile';
 import { Box } from '../Box';
+import { colors } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'Web UI / Components / RadioGroup',
@@ -44,7 +45,7 @@ type Story = StoryObj<typeof RadioGroup>;
 export const Workshop: Story = {
   render: args => {
     return (
-      <Box display="flex" width={400} justifyContent="space-between">
+      <Box display="flex" gap={10}>
         <RadioGroup {...args} name="with-radio">
           <Radio value="1" label="One" />
           <Radio value="2" label="Two" />
@@ -132,5 +133,22 @@ export const ShowingError: Story = {
     label: 'What is your favourite animal?',
     helperText: 'These are the best animals.',
     helperTextPosition: 'bottom',
+  },
+};
+
+export const Wrap: Story = {
+  name: 'Wrap',
+  render: args => {
+    return (
+      <Box height={800} width={400} padding={2} border="2px solid" borderColor={colors.grey500}>
+        <RadioGroup {...args} direction="row" helperText="Child elements will wrap by default">
+          <RadioTile value="1" label="One" />
+          <RadioTile value="2" label="Two" />
+          <RadioTile value="3" label="Three" />
+          <RadioTile value="4" label="Four" />
+          <RadioTile value="5" label="Five" />
+        </RadioGroup>
+      </Box>
+    );
   },
 };
