@@ -31,7 +31,7 @@ export interface LegacyTypographyOwnProps extends ComponentPropsWithoutRef<'span
 export type DefaultLegacyTypographyComponent = 'p';
 
 export interface LegacyTypographyTypeMap<
-  AdditionalProps = {},
+  AdditionalProps = object,
   DefaultComponent extends React.ElementType = 'span'
 > {
   props: AdditionalProps & PropsWithChildren<PropsWithSx<LegacyTypographyOwnProps>>;
@@ -40,7 +40,7 @@ export interface LegacyTypographyTypeMap<
 
 export type LegacyTypographyProps<
   RootComponent extends React.ElementType = LegacyTypographyTypeMap['defaultComponent'],
-  AdditionalProps = {}
+  AdditionalProps = object
 > = OverrideProps<LegacyTypographyTypeMap<AdditionalProps, RootComponent>, RootComponent> & {
   component?: React.ElementType;
 };
@@ -62,7 +62,7 @@ export const LegacyTypography = forwardRef(function LegacyTypography(
   const dataAttributeProps = isLegacyColor
     ? {
         [DATA_ATTRIBUTES.legacy]: true,
-        // @ts-ignore
+        // @ts-expect-error this code is deprecated and soon to be removed
         [DATA_ATTRIBUTES[getLegacyColor(color)]]: true,
       }
     : {};

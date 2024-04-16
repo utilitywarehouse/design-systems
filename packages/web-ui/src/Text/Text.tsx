@@ -102,8 +102,8 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Text = React.forwardRef<
-  React.ElementRef<'span'>,
-  React.PropsWithChildren<PropsWithSx<TextProps>>
+React.ElementRef<'span'>,
+React.PropsWithChildren<PropsWithSx<TextProps>>
 >(({ variant = 'body', bold, color, className, ...props }, ref) => {
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {

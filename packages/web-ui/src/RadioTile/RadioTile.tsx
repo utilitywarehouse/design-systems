@@ -45,7 +45,7 @@ const StyledRadioItem = styled(Item)({
   borderRadius: '8px',
   padding: spacing(2),
   display: 'flex',
-  boxShadow: `inset 0 0 0 2px var(--radio-item-box-shadow-color)`,
+  boxShadow: 'inset 0 0 0 2px var(--radio-item-box-shadow-color)',
   backgroundColor: 'var(--radio-item-background-color)',
   '--radio-item-background-color': colorsCommon.brandWhite,
   '--radio-item-background-color-focus': colors.cyan100,
@@ -89,7 +89,7 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
     const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
@@ -122,7 +122,7 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
         </Flex>
       </StyledRadioItem>
     );
-  }
+  },
 );
 
 RadioTile.displayName = componentName;

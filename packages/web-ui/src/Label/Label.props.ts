@@ -13,5 +13,5 @@ export interface LabelProps extends ComponentPropsWithoutRef<'label'> {
    * Sets the HTML component that is rendered.
    * @default label
    */
-  component?: ElementType<any> | undefined;
+  component?: ElementType;
 }

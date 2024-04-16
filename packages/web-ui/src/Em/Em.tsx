@@ -19,8 +19,8 @@ const componentClassName = withGlobalPrefix(componentName);
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Em = React.forwardRef<
-  React.ElementRef<'em'>,
-  React.PropsWithChildren<PropsWithSx<EmProps>>
+React.ElementRef<'em'>,
+React.PropsWithChildren<PropsWithSx<EmProps>>
 >(({ className, ...props }, ref) => {
   return (
     <Typography

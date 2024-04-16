@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { DATA_ATTRIBUTES, isInverseBackgroundColor } from '../utils';
-import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import type { BackgroundColor } from '../types';
 import type { Theme } from '../theme';
 import MuiBox from '@mui/material/Box';
+import { OverridableComponent, OverrideProps } from '@mui/types';
 
 export const backgroundColorsMapping: { [key: string]: string } = {
   white: '#ffffff',
@@ -24,8 +24,8 @@ export interface CustomBackgroundProps {
 }
 
 export type BackgroundProps<
-  D extends React.ElementType<any> = DefaultBackgroundComponent,
-  P = {}
+  D extends React.ElementType = DefaultBackgroundComponent,
+  P = object
 > = OverrideProps<MuiBoxTypeMap<CustomBackgroundProps & P, D, Theme>, D>;
 
 /**

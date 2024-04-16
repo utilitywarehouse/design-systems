@@ -9,8 +9,8 @@ import { baseTypographyTheme } from '../Typography';
 type BaseTypography = typeof baseTypographyTheme;
 interface CustomTypography
   extends BaseTypography,
-    TypographyUtils,
-    Omit<TypographyOptions, keyof BaseTypography | 'fontFamily'> {
+  TypographyUtils,
+  Omit<TypographyOptions, keyof BaseTypography | 'fontFamily'> {
   fontFamily: Fonts;
   fontWeights: FontWeights;
 }

@@ -31,8 +31,8 @@ const StyledElement = styled(Typography)({
  * > used standalone with other component libraries.
  */
 export const FieldsetLegend = forwardRef<
-  ElementRef<'legend'>,
-  PropsWithChildren<PropsWithSx<FieldsetLegendProps>>
+ElementRef<'legend'>,
+PropsWithChildren<PropsWithSx<FieldsetLegendProps>>
 >(({ disabled, className, ...props }, ref) => {
   return (
     <StyledElement

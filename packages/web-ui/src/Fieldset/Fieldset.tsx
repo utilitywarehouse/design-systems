@@ -25,8 +25,8 @@ const StyledElement = styled('fieldset')({
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  **/
 export const Fieldset = React.forwardRef<
-  React.ElementRef<'fieldset'>,
-  React.PropsWithChildren<PropsWithSx<FieldsetProps>>
+React.ElementRef<'fieldset'>,
+React.PropsWithChildren<PropsWithSx<FieldsetProps>>
 >(({ children, className, ...props }, ref) => {
   return (
     <StyledElement className={clsx(componentClassName, className)} ref={ref} {...props}>

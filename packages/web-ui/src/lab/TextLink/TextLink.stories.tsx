@@ -29,11 +29,11 @@ export const Workshop: Story = {
       </Text>
       <Text>
         Agnes Martin was an American <TextLink {...args}>abstract painter</TextLink> known for her{' '}
-        <TextLink {...args}>minimalist</TextLink> style. Martin's art was characterized by serene
-        compositions featuring <TextLink {...args}>grids and lines</TextLink>. Martin's minimalist
-        approach conveyed tranquility and <TextLink {...args}>spirituality</TextLink>, and her
-        paintings often carried positive names reflective of her{' '}
-        <TextLink {...args}>philosophy</TextLink>.
+        <TextLink {...args}>minimalist</TextLink> style. Martin`&apos;`s art was characterized by
+        serene compositions featuring <TextLink {...args}>grids and lines</TextLink>.
+        Martin`&apos;`s minimalist approach conveyed tranquility and{' '}
+        <TextLink {...args}>spirituality</TextLink>, and her paintings often carried positive names
+        reflective of her <TextLink {...args}>philosophy</TextLink>.
       </Text>
     </Flex>
   ),

@@ -14,15 +14,15 @@ export interface TypographyOwnProps {
 
 export interface TypographyProps
   extends TypographyOwnProps,
-    Pick<
-      MuiBoxProps,
-      | 'component'
-      | 'fontSize'
-      | 'fontStyle'
-      | 'lineHeight'
-      | 'letterSpacing'
-      | 'textTransform'
-      | 'padding'
-      | 'margin'
-    >,
-    ComponentPropsWithoutRef<'span'> {}
+  Pick<
+  MuiBoxProps,
+  | 'component'
+  | 'fontSize'
+  | 'fontStyle'
+  | 'lineHeight'
+  | 'letterSpacing'
+  | 'textTransform'
+  | 'padding'
+  | 'margin'
+  >,
+  ComponentPropsWithoutRef<'span'> {}

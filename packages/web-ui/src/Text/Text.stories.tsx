@@ -34,7 +34,7 @@ export const Workshop: Story = {
   render: ({ color = 'brandMidnight', ...args }) => {
     return (
       <Text
-        // @ts-ignore
+        // @ts-expect-error story
         color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
         {...args}
       />

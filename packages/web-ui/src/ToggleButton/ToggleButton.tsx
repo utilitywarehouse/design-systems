@@ -52,17 +52,17 @@ const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
 });
 
 export type ToggleButtonProps = Pick<
-  MuiToggleButtonProps,
-  | 'value'
-  | 'children'
-  | 'classes'
-  | 'disabled'
-  | 'fullWidth'
-  | 'onChange'
-  | 'onClick'
-  | 'selected'
-  | 'sx'
-  | 'className'
+MuiToggleButtonProps,
+| 'value'
+| 'children'
+| 'classes'
+| 'disabled'
+| 'fullWidth'
+| 'onChange'
+| 'onClick'
+| 'selected'
+| 'sx'
+| 'className'
 >;
 
 export const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(
@@ -79,7 +79,7 @@ export const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProp
         {children}
       </StyledMuiToggleButton>
     );
-  }
+  },
 );
 
 export default ToggleButton;

@@ -3,4 +3,4 @@ import { TypographyProps } from '../Typography';
 
 export interface StrongProps
   extends Pick<TypographyProps, 'textTransform' | 'padding' | 'margin'>,
-    ComponentPropsWithoutRef<'strong'> {}
+  ComponentPropsWithoutRef<'strong'> {}

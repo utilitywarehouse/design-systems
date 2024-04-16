@@ -8,11 +8,9 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:@typescript-eslint/recommended-type-checked',
+    'plugin:@typescript-eslint/recommended',
   ],
   plugins: ['react', '@typescript-eslint/eslint-plugin', 'jsx-a11y', 'react-hooks'],
   parser: '@typescript-eslint/parser',
@@ -25,7 +23,6 @@ module.exports = {
     project: './tsconfig.json',
   },
   rules: {
-    'import/no-extraneous-dependencies': 'off',
     'no-extra-boolean-cast': 'off',
     'no-cond-assign': 'error',
     'no-constant-condition': 'error',
@@ -33,9 +30,17 @@ module.exports = {
     'no-unused-expressions': 'error',
     'no-constant-binary-expression': 'error',
     'no-sequences': 'error',
+    'react/prop-types': 'off',
   },
+  overrides: [
+    {
+      files: ['*.stories.tsx'],
+      rules: {
+        'react-hooks/rules-of-hooks': 'off',
+      },
+    },
+  ],
   settings: {
-    'import/ignore': ['react-native'],
     react: {
       version: 'detect',
     },

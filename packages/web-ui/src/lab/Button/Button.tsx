@@ -105,8 +105,8 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
  * > used standalone with other component libraries.
  */
 export const Button = React.forwardRef<
-  React.ElementRef<'button'>,
-  React.PropsWithChildren<PropsWithSx<ButtonProps>>
+React.ElementRef<'button'>,
+React.PropsWithChildren<PropsWithSx<ButtonProps>>
 >(function Button({ size = 'large', className, ...props }, ref) {
   return (
     <StyledElement
