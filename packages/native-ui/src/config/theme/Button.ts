@@ -252,6 +252,114 @@ export const Button = createStyle({
           },
         },
       },
+
+      green: {
+        backgroundColor: '$green500',
+        borderColor: '$green500',
+        ':hover': {
+          bg: '$green600',
+        },
+        ':active': {
+          bg: '$green700',
+        },
+
+        _text: {
+          color: '$white',
+        },
+
+        _icon: {
+          color: '$white',
+          ':hover': {
+            color: '$white',
+          },
+          ':active': {
+            color: '$white',
+          },
+        },
+
+        _spinner: {
+          color: '$white',
+          ':hover': {
+            color: '$white',
+          },
+          ':active': {
+            color: '$white',
+          },
+        },
+
+        ':disabled': {
+          backgroundColor: '$green100',
+
+          _text: {
+            color: '$green300',
+          },
+          _icon: {
+            color: '$green300',
+          },
+          _spinner: {
+            color: '$green300',
+          },
+        },
+
+        ':focusVisible': {
+          outlineColor: '$green700',
+        },
+
+        _dark: {
+          bg: '$darkGreen500',
+          ':hover': {
+            bg: '$darkGreen600',
+          },
+          ':active': {
+            bg: '$darkGreen700',
+          },
+          _text: {
+            color: '$darkWhite',
+            ':hover': {
+              color: '$darkWhite',
+            },
+            ':active': {
+              color: '$darkWhite',
+            },
+          },
+          _icon: {
+            color: '$darkWhite',
+            ':hover': {
+              color: '$darkWhite',
+            },
+            ':active': {
+              color: '$darkWhite',
+            },
+          },
+          _spinner: {
+            color: '$darkWhite',
+            ':hover': {
+              color: '$darkWhite',
+            },
+            ':active': {
+              color: '$darkWhite',
+            },
+          },
+
+          ':disabled': {
+            backgroundColor: '$darkGreen100',
+
+            _text: {
+              color: '$darkGreen300',
+            },
+            _icon: {
+              color: '$darkGreen300',
+            },
+            _spinner: {
+              color: '$darkGreen300',
+            },
+
+            ':focusVisible': {
+              outlineColor: '$darkGreen700',
+            },
+          },
+        },
+      },
     },
 
     variant: {
@@ -272,9 +380,9 @@ export const Button = createStyle({
         paddingHorizontal: '$3',
         minHeight: 32,
 
-        _text: {
-          paddingHorizontal: '$1',
-        },
+        // _text: {
+        //   paddingHorizontal: '$1',
+        // },
       },
       regular: {
         paddingVertical: '$4',
@@ -284,9 +392,9 @@ export const Button = createStyle({
           width: 16,
           height: 16,
         },
-        _text: {
-          paddingHorizontal: '$2',
-        },
+        // _text: {
+        //   paddingHorizontal: '$2',
+        // },
       },
     },
   },
@@ -392,6 +500,14 @@ export const Button = createStyle({
 
         ':active': {
           backgroundColor: '$red200',
+
+          _icon: {
+            color: '$red500',
+          },
+
+          _spinner: {
+            color: '$red500',
+          },
         },
 
         _text: {
@@ -443,6 +559,14 @@ export const Button = createStyle({
 
           ':active': {
             backgroundColor: '$darkRed200',
+
+            _icon: {
+              color: '$darkRed500',
+            },
+
+            _spinner: {
+              color: '$darkRed500',
+            },
           },
 
           _text: {
@@ -474,6 +598,129 @@ export const Button = createStyle({
             ':focusVisible': {
               backgroundColor: '$darkRed100',
               outlineColor: '$darkRed700',
+            },
+          },
+        },
+      },
+    },
+    {
+      colorScheme: 'green',
+      variant: 'outline',
+      value: {
+        backgroundColor: 'transparent',
+
+        ':hover': {
+          backgroundColor: '$green100',
+
+          _icon: {
+            color: '$green900',
+          },
+
+          _spinner: {
+            color: '$green900',
+          },
+        },
+
+        ':active': {
+          backgroundColor: '$green200',
+
+          _icon: {
+            color: '$green900',
+          },
+
+          _spinner: {
+            color: '$green900',
+          },
+        },
+
+        _text: {
+          color: '$green900',
+        },
+
+        _icon: {
+          color: '$green900',
+        },
+
+        _spinner: {
+          color: '$green900',
+        },
+
+        ':disabled': {
+          borderColor: '$green300',
+          backgroundColor: 'transparent',
+
+          _text: {
+            color: '$green300',
+          },
+          _icon: {
+            color: '$green300',
+          },
+          _spinner: {
+            color: '$green300',
+          },
+        },
+
+        ':focusVisible': {
+          backgroundColor: '$green100',
+          outlineColor: '$green700',
+        },
+
+        _dark: {
+          backgroundColor: 'transparent',
+
+          ':hover': {
+            backgroundColor: '$darkGreen100',
+
+            _icon: {
+              color: '$darkGreen900',
+            },
+
+            _spinner: {
+              color: '$darkGreen900',
+            },
+          },
+
+          ':active': {
+            backgroundColor: '$darkGreen200',
+
+            _icon: {
+              color: '$darkGreen900',
+            },
+
+            _spinner: {
+              color: '$darkGreen900',
+            },
+          },
+
+          _text: {
+            color: '$darkGreen500',
+          },
+
+          _icon: {
+            color: '$darkGreen500',
+          },
+
+          _spinner: {
+            color: '$darkGreen500',
+          },
+
+          ':disabled': {
+            borderColor: '$darkGreen900',
+            backgroundColor: 'transparent',
+
+            _text: {
+              color: '$darkGreen300',
+            },
+            _icon: {
+              color: '$darkGreen300',
+            },
+            _spinner: {
+              color: '$darkGreen300',
+            },
+
+            ':focusVisible': {
+              backgroundColor: '$darkGreen100',
+              outlineColor: '$darkGreen700',
             },
           },
         },
@@ -563,6 +810,14 @@ export const Button = createStyle({
 
         ':active': {
           backgroundColor: '$red200',
+
+          _icon: {
+            color: '$red900',
+          },
+
+          _spinner: {
+            color: '$red900',
+          },
         },
 
         ':disabled': {
@@ -611,6 +866,14 @@ export const Button = createStyle({
 
           ':active': {
             backgroundColor: '$darkRed200',
+
+            _icon: {
+              color: '$darkRed900',
+            },
+
+            _spinner: {
+              color: '$darkRed900',
+            },
           },
 
           ':disabled': {
@@ -642,6 +905,119 @@ export const Button = createStyle({
 
           _spinner: {
             color: '$darkRed900',
+          },
+        },
+      },
+    },
+    {
+      variant: 'ghost',
+      colorScheme: 'green',
+      value: {
+        backgroundColor: 'transparent',
+
+        ':hover': {
+          backgroundColor: '$green100',
+
+          _icon: {
+            color: '$green900',
+          },
+
+          _spinner: {
+            color: '$green900',
+          },
+        },
+
+        ':active': {
+          backgroundColor: '$green200',
+
+          _icon: {
+            color: '$green900',
+          },
+
+          _spinner: {
+            color: '$green900',
+          },
+        },
+
+        ':disabled': {
+          backgroundColor: 'transparent',
+
+          _text: {
+            color: '$green300',
+          },
+          _icon: {
+            color: '$green300',
+          },
+          _spinner: {
+            color: '$green300',
+          },
+        },
+
+        ':focusVisible': {
+          backgroundColor: '$green100',
+          outlineColor: '$green700',
+        },
+
+        _text: {
+          color: '$green900',
+        },
+
+        _icon: {
+          color: '$green900',
+        },
+
+        _spinner: {
+          color: '$green900',
+        },
+
+        _dark: {
+          backgroundColor: 'transparent',
+
+          ':hover': {
+            backgroundColor: '$darkGreen100',
+
+            _icon: {
+              color: '$darkGreen900',
+            },
+
+            _spinner: {
+              color: '$darkGreen900',
+            },
+          },
+
+          ':active': {
+            backgroundColor: '$darkGreen200',
+          },
+
+          ':disabled': {
+            backgroundColor: 'transparent',
+
+            _text: {
+              color: '$darkGreen300',
+            },
+            _icon: {
+              color: '$darkGreen300',
+            },
+            _spinner: {
+              color: '$darkGreen300',
+            },
+
+            ':focusVisible': {
+              backgroundColor: '$darkGreen100',
+              outlineColor: '$darkGreen700',
+            },
+          },
+
+          _text: {
+            color: '$darkGreen900',
+          },
+
+          _icon: {
+            color: '$darkGreen900',
+          },
+
+          _spinner: {
+            color: '$darkGreen900',
           },
         },
       },
