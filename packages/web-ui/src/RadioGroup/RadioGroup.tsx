@@ -12,7 +12,8 @@ const componentClassName = withGlobalPrefix(componentName);
 
 const StyledElement = styled(Flex)({
   minWidth: 'fit-content',
-  ':where(data-orientation="horizontal" &)': {
+  flexWrap: 'wrap',
+  ':where([data-orientation="horizontal"] &)': {
     flexDirection: 'row',
   },
   ':where([data-orientation="vertical"] &)': {
