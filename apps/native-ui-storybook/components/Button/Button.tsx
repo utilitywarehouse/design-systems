@@ -44,7 +44,7 @@ ButtonBasic.argTypes = {
     description: 'The variant of the button.',
   },
   colorScheme: {
-    options: ['cyan', 'red', 'green'],
+    options: ['cyan', 'red', 'green', 'grey', 'gold'],
     control: 'select',
     description: 'The color scheme of the button.',
   },
