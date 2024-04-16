@@ -7,11 +7,14 @@ module.exports = {
     module: 'readonly',
   },
   extends: [
+    'eslint:recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
-    'airbnb-typescript',
-    'prettier',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/recommended-type-checked',
   ],
+  plugins: ['react', '@typescript-eslint/eslint-plugin', 'jsx-a11y', 'react-hooks'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -21,9 +24,9 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['react', '@typescript-eslint/eslint-plugin', 'jsx-a11y', 'prettier', 'react-hooks'],
   rules: {
     'import/no-extraneous-dependencies': 'off',
+    'no-extra-boolean-cast': 'off',
     'no-cond-assign': 'error',
     'no-constant-condition': 'error',
     'no-unreachable': 'error',

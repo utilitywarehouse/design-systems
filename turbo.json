@@ -11,10 +11,13 @@
     },
     "checks": {
       "outputs": ["dist/**"],
-      "dependsOn": ["^build", "^lint"]
+      "dependsOn": ["^format", "^build", "^lint"]
     },
     "format": {
       "outputs": ["src/**", "raw/**"]
+    },
+    "format:ci": {
+      "outputs": []
     },
     "lint": {
       "outputs": []
