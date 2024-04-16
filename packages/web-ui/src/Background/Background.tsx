@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { DATA_ATTRIBUTES, isInverseBackgroundColor } from '../utils';
 import { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import type { NeutralBackgroundColor, InverseBackgroundColor } from '../types';
+import type { BackgroundColor } from '../types';
 import type { Theme } from '../theme';
 import MuiBox from '@mui/material/Box';
 
@@ -20,7 +20,7 @@ export interface CustomBackgroundProps {
   /**
    * Set the background colour according to predefined theme
    */
-  backgroundColor?: NeutralBackgroundColor | InverseBackgroundColor;
+  backgroundColor?: BackgroundColor;
 }
 
 export type BackgroundProps<
