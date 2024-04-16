@@ -33,9 +33,6 @@ importers:
       eslint:
         specifier: ^8.25.0
         version: 8.28.0
-      eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@8.28.0)
       eslint-plugin-jsx-a11y:
         specifier: ^6.6.1
         version: 6.7.1(eslint@8.28.0)
@@ -12020,15 +12017,6 @@ packages:
       esutils: 2.0.3
     optionalDependencies:
       source-map: 0.6.1
-
-  /eslint-config-prettier@9.1.0(eslint@8.28.0):
-    resolution: {integrity: sha512-NSWl5BFQWEPi1j4TjVNItzYV7dZXZ+wP6I6ZhrBGpChQhZRUaElihE9uRRkcbRnNb76UMKDF3r+WTmNcGPKsqw==}
-    hasBin: true
-    peerDependencies:
-      eslint: '>=7.0.0'
-    dependencies:
-      eslint: 8.28.0
-    dev: true
 
   /eslint-plugin-jsx-a11y@6.7.1(eslint@8.28.0):
     resolution: {integrity: sha512-63Bog4iIethyo8smBklORknVjB0T2dwB8Mr/hIC+fBS0uyHdYYpzM/Ed+YC8VxTjlXHEWFOdmgwcDn1U2L9VCA==}
