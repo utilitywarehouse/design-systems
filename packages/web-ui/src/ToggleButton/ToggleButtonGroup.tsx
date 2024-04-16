@@ -35,8 +35,8 @@ const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme, disabl
 });
 
 export type ToggleButtonGroupProps = Pick<
-MuiToggleButtonGroupProps,
-'children' | 'classes' | 'disabled' | 'fullWidth' | 'onChange' | 'value' | 'className' | 'sx'
+  MuiToggleButtonGroupProps,
+  'children' | 'classes' | 'disabled' | 'fullWidth' | 'onChange' | 'value' | 'className' | 'sx'
 >;
 
 /**
@@ -55,5 +55,5 @@ export const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGr
         {children}
       </StyledMuiToggleButtonGroup>
     );
-  },
+  }
 );

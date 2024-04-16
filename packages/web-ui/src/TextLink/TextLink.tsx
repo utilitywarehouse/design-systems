@@ -10,7 +10,7 @@ import { PropsWithSx } from '../types';
 
 export interface TextLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
-  Pick<MuiLinkProps, 'children' | 'classes' | 'variant'> {
+    Pick<MuiLinkProps, 'children' | 'classes' | 'variant'> {
   /**
    * Sets text-transform property on the TextLink contents.
    */
@@ -74,5 +74,5 @@ export const TextLink = React.forwardRef<HTMLAnchorElement, PropsWithSx<TextLink
     return (
       <StyledLink ref={ref} variant={variant} {...props} underline="none" {...dataAttributeProps} />
     );
-  },
+  }
 );

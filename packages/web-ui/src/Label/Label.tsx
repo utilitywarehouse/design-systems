@@ -36,8 +36,8 @@ const StyledElement = styled(Typography)({
  * > used standalone with other component libraries.
  */
 export const Label = React.forwardRef<
-React.ElementRef<'label'>,
-React.PropsWithChildren<PropsWithSx<LabelProps>>
+  React.ElementRef<'label'>,
+  React.PropsWithChildren<PropsWithSx<LabelProps>>
 >(({ component = 'label', disabled, nested, className, ...props }, ref) => {
   return (
     <StyledElement

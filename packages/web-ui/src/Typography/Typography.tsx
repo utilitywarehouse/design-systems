@@ -36,8 +36,8 @@ const BaseBox = createBox<'p' | 'span' | 'div' | 'label' | 'strong' | 'em' | 'le
  * - `Em` for emphasis
  */
 export const Typography = React.forwardRef<
-React.ElementRef<'span'>,
-React.PropsWithChildren<PropsWithSx<TypographyProps>>
+  React.ElementRef<'span'>,
+  React.PropsWithChildren<PropsWithSx<TypographyProps>>
 >(
   (
     {
@@ -50,7 +50,7 @@ React.PropsWithChildren<PropsWithSx<TypographyProps>>
       noWrap,
       ...props
     },
-    ref,
+    ref
   ) => {
     if (!!variant) {
       return <LegacyTypography ref={ref} component={component} variant={variant} {...props} />;
@@ -70,7 +70,7 @@ React.PropsWithChildren<PropsWithSx<TypographyProps>>
         }}
       />
     );
-  },
+  }
 );
 
 Typography.displayName = componentName;

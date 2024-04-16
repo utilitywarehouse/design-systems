@@ -209,11 +209,11 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
  * colourScheme styles for other button components.
  */
 export const BaseButton = React.forwardRef<
-React.ElementRef<'button'>,
-React.PropsWithChildren<PropsWithSx<BaseButtonProps>>
+  React.ElementRef<'button'>,
+  React.PropsWithChildren<PropsWithSx<BaseButtonProps>>
 >(function BaseButton(
   { variant = 'solid', colorScheme = 'cyan', className, disabled, ...props },
-  forwardedRef,
+  forwardedRef
 ) {
   const dataAttributeProps = {
     [DATA_ATTRIBUTES.colorscheme]: colorScheme,

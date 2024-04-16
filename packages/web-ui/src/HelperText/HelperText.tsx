@@ -61,8 +61,8 @@ const StyledElement = styled(Typography)({
  * > used standalone with other component libraries.
  */
 export const HelperText = React.forwardRef<
-React.ElementRef<'span'>,
-React.PropsWithChildren<PropsWithSx<HelperTextProps>>
+  React.ElementRef<'span'>,
+  React.PropsWithChildren<PropsWithSx<HelperTextProps>>
 >(({ showIcon, validationStatus, disabled, children, className, ...props }, ref) => {
   const icons: { [key: string]: typeof Tick01SmallContainedIcon } = {
     valid: Tick01SmallContainedIcon,
@@ -84,7 +84,7 @@ React.PropsWithChildren<PropsWithSx<HelperTextProps>>
       className={clsx(
         componentClassName,
         validationStatus && classNames[validationStatus],
-        className,
+        className
       )}
       {...props}
     >

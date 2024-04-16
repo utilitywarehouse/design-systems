@@ -108,7 +108,7 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
       'aria-labelledby': ariaLabelledby,
       ...props
     },
-    ref,
+    ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radio' });
     const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
@@ -155,7 +155,7 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
         ) : null}
       </StyledElement>
     );
-  },
+  }
 );
 
 Radio.displayName = componentName;

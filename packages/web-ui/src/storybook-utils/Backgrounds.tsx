@@ -19,7 +19,7 @@ const Backgrounds = (props: BackgroundsProps) => (
           padding={4}
           {...props}
         />
-      ),
+      )
     )}
   </Stack>
 );

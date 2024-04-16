@@ -20,8 +20,8 @@ const componentClassName = withGlobalPrefix(componentName);
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Strong = React.forwardRef<
-React.ElementRef<'strong'>,
-React.PropsWithChildren<PropsWithSx<StrongProps>>
+  React.ElementRef<'strong'>,
+  React.PropsWithChildren<PropsWithSx<StrongProps>>
 >(({ className, ...props }, ref) => {
   return (
     <Typography

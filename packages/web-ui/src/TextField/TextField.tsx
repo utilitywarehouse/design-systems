@@ -136,20 +136,20 @@ type FormElementProps = React.AllHTMLAttributes<HTMLFormElement>;
 
 export interface TextFieldProps
   extends Omit<
-  FilledInputProps,
-  | 'color'
-  | 'components'
-  | 'componentsProps'
-  | 'disableUnderline'
-  | 'error'
-  | 'fullWidth'
-  | 'hiddenLabel'
-  | 'id'
-  | 'inputComponent'
-  | 'margin'
-  | 'ref'
-  | 'slotProps'
-  | 'slots'
+    FilledInputProps,
+    | 'color'
+    | 'components'
+    | 'componentsProps'
+    | 'disableUnderline'
+    | 'error'
+    | 'fullWidth'
+    | 'hiddenLabel'
+    | 'id'
+    | 'inputComponent'
+    | 'margin'
+    | 'ref'
+    | 'slotProps'
+    | 'slots'
   > {
   /**
    * The unique id used to properly label the `input` element.
@@ -188,7 +188,7 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
     className,
     ...props
   },
-  ref,
+  ref
 ) {
   const showIcon = !props.disabled;
   const inputProps = {
@@ -222,7 +222,7 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
           [classNames.success as string]: !props.disabled && isSuccessStatus(status),
           [classNames.multiline as string]: !!props.multiline,
         },
-        className,
+        className
       )}
       {...props}
     />
@@ -241,7 +241,7 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
  */
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfield(
   { label, labelId, helperText, 'aria-label': ariaLabel, ...props },
-  ref,
+  ref
 ) {
   const { status = 'neutral', disabled } = props;
   const hasErrorStatus = !disabled && isErrorStatus(status);

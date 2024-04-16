@@ -42,8 +42,8 @@ const StyledButton = styled('button')<UnstyledButtonProps>(() => {
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const UnstyledButton = React.forwardRef<
-React.ElementRef<'button'>,
-React.PropsWithChildren<PropsWithSx<UnstyledButtonProps>>
+  React.ElementRef<'button'>,
+  React.PropsWithChildren<PropsWithSx<UnstyledButtonProps>>
 >(function UnstyledButton({ className, asChild, disabled, onClick, ...props }, forwardedRef) {
   return (
     <StyledButton

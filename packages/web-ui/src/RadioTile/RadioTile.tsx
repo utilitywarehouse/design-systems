@@ -89,7 +89,7 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
       className,
       ...props
     },
-    ref,
+    ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
     const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
@@ -122,7 +122,7 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
         </Flex>
       </StyledRadioItem>
     );
-  },
+  }
 );
 
 RadioTile.displayName = componentName;

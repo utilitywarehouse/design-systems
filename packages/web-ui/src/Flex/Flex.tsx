@@ -46,7 +46,7 @@ export const Flex = React.forwardRef(function Flex(
     flexShrink,
     ...props
   },
-  ref,
+  ref
 ) {
   return (
     <BaseBox

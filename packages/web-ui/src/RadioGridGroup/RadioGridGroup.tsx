@@ -58,7 +58,7 @@ export const RadioGridGroup = React.forwardRef<HTMLDivElement, PropsWithSx<Radio
         </Box>
       </RadioGroupFormControl>
     );
-  },
+  }
 );
 
 RadioGridGroup.displayName = componentName;

@@ -114,8 +114,8 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Heading = React.forwardRef<
-React.ElementRef<'h2'>,
-React.PropsWithChildren<PropsWithSx<HeadingProps>>
+  React.ElementRef<'h2'>,
+  React.PropsWithChildren<PropsWithSx<HeadingProps>>
 >(({ component, variant = 'h2', color, className, ...props }, ref) => {
   const element = variant === 'displayHeading' ? 'h1' : variant;
   const { isBrandBackground } = useBackground();

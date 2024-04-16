@@ -26,7 +26,7 @@ export const Box = React.forwardRef(function Box({ background, bgcolor, ...props
   // Prevent re-renders when context values haven't changed
   const backgroundProps = React.useMemo(
     () => ({ background: background || 'transparent', isBrandBackground }),
-    [background, isBrandBackground],
+    [background, isBrandBackground]
   );
 
   return background ? (

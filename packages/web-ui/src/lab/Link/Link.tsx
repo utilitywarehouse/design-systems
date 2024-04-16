@@ -137,8 +137,8 @@ const StyledElement = styled('a')<LinkProps>(() => {
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Link = React.forwardRef<
-React.ElementRef<'a'>,
-React.PropsWithChildren<PropsWithSx<LinkProps>>
+  React.ElementRef<'a'>,
+  React.PropsWithChildren<PropsWithSx<LinkProps>>
 >(function Link({ className, asChild, children, size = 'large', ...props }, ref) {
   return (
     <StyledElement

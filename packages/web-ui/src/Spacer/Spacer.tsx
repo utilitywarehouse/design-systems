@@ -53,7 +53,7 @@ export const Spacer = React.forwardRef<React.ElementRef<'div'>, PropsWithSx<Spac
         {...props}
       />
     );
-  },
+  }
 );
 
 Spacer.displayName = componentName;

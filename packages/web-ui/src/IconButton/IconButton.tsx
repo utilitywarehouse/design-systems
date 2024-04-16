@@ -93,8 +93,8 @@ const StyledElement = styled(BaseButton)(() => {
  * This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const IconButton = React.forwardRef<
-React.ElementRef<'button'>,
-React.PropsWithChildren<PropsWithSx<IconButtonProps>>
+  React.ElementRef<'button'>,
+  React.PropsWithChildren<PropsWithSx<IconButtonProps>>
 >(function IconButton({ size = 'large', className, label, ...props }, ref) {
   return (
     <StyledElement

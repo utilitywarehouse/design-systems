@@ -66,8 +66,8 @@ const StyledElement = styled(Typography)({
  * > used standalone with other component libraries.
  */
 export const TextLink = React.forwardRef<
-React.ElementRef<'a'>,
-React.PropsWithChildren<PropsWithSx<TextLinkProps>>
+  React.ElementRef<'a'>,
+  React.PropsWithChildren<PropsWithSx<TextLinkProps>>
 >(({ className, ...props }, ref) => {
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
