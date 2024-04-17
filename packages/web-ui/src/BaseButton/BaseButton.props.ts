@@ -15,15 +15,7 @@ export type BaseButtonProps = UnstyledButtonProps &
         colorScheme?: 'cyan' | 'red' | 'green';
       }
     | {
-        /**
-         * Sets the button's visual variant
-         * @default solid
-         */
         variant?: 'outline' | 'ghost';
-        /**
-         * Sets the button's colour scheme
-         * @default cyan
-         */
         colorScheme?: 'cyan' | 'red' | 'green' | 'gold' | 'grey';
       }
   );
