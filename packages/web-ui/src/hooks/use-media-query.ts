@@ -1,5 +1,5 @@
 import { Theme } from '../theme';
-import { useMediaQuery as useMuiMediaQuery } from '@mui/material';
+import { useMediaQuery as useMuiMediaQuery } from '@mui/system';
 import { useTheme } from '../ThemeProvider';
 
 // https://github.com/mui/material-ui/issues/16859#issuecomment-832560383
