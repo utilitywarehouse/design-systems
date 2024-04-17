@@ -10,7 +10,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-type-checked',
   ],
   plugins: ['react', '@typescript-eslint/eslint-plugin', 'jsx-a11y', 'react-hooks'],
   parser: '@typescript-eslint/parser',
@@ -20,6 +20,8 @@ module.exports = {
     },
     ecmaVersion: 12,
     sourceType: 'module',
+    project: ['./packages/*/tsconfig.json'],
+    tsconfigRootDir: __dirname,
   },
   rules: {
     'no-extra-boolean-cast': 'off',
@@ -36,6 +38,7 @@ module.exports = {
       files: ['*.stories.tsx'],
       rules: {
         'react-hooks/rules-of-hooks': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
       },
     },
   ],

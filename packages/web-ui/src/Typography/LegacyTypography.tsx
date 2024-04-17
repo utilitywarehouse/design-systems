@@ -22,7 +22,7 @@ export const headingVariantMapping: Record<string, string> = {
 };
 
 export interface LegacyTypographyOwnProps extends ComponentPropsWithoutRef<'span'> {
-  color?: string | 'primary' | 'secondary' | 'success' | 'error';
+  color?: string;
   /** @deprecated The variant prop is deprecated and will be removed in v1 */
   variant?: MuiTypographyProps['variant'];
   component?: React.ElementType;

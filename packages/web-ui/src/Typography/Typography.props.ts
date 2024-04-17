@@ -7,7 +7,7 @@ export interface TypographyOwnProps {
   weight?: 'regular' | 'semibold' | 'inherit';
   align?: MuiBoxProps['textAlign'];
   noWrap?: boolean | undefined;
-  color?: string | 'primary' | 'secondary' | 'success' | 'error';
+  color?: string;
   /** @deprecated The variant prop is deprecated and will be removed in v1 */
   variant?: MuiTypographyProps['variant'];
 }
