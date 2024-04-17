@@ -740,7 +740,7 @@ export const Button = createStyle({
         },
 
         ':disabled': {
-          borderColor: '$red900',
+          borderColor: '$red300',
           backgroundColor: 'transparent',
 
           _text: {
