@@ -1,3 +1,4 @@
+/* eslint-env node */
 module.exports = {
   env: {
     browser: true,
@@ -12,7 +13,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended-type-checked',
   ],
-  plugins: ['react', '@typescript-eslint/eslint-plugin', 'jsx-a11y', 'react-hooks'],
+  plugins: ['react', '@typescript-eslint', 'jsx-a11y', 'react-hooks'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -21,7 +22,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
     project: ['./packages/*/tsconfig.json'],
-    tsconfigRootDir: __dirname,
+    tsconfigRootDir: import.meta.dirname,
   },
   rules: {
     'no-extra-boolean-cast': 'off',
@@ -47,4 +48,5 @@ module.exports = {
       version: 'detect',
     },
   },
+  root: true,
 };
