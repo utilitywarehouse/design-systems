@@ -1,0 +1,195 @@
+import {
+  VStack,
+  Text,
+  Button,
+  ButtonIcon,
+  ButtonGroup,
+  ButtonSpinner,
+  ButtonText,
+  Box,
+} from '@utilitywarehouse/native-ui';
+import {
+  AddSmallIcon,
+  ChevronLeft01SmallIcon,
+  ChevronRight01SmallIcon,
+} from '@utilitywarehouse/react-native-icons';
+import React, { ComponentProps } from 'react';
+
+type ButtonVariantsProps = {
+  colorScheme: ComponentProps<typeof Button>['colorScheme'];
+  size: ComponentProps<typeof Button>['size'];
+};
+
+const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) => {
+  const validScheme = colorScheme === 'cyan' || colorScheme === 'red' || colorScheme === 'green';
+  return (
+    <VStack space="2xl">
+      <Box
+        sx={
+          validScheme
+            ? undefined
+            : {
+                opacity: 0,
+                _web: {
+                  pointerEvents: 'none',
+                },
+              }
+        }
+      >
+        <Text size="lg">Solid</Text>
+        <ButtonGroup flexDirection="column" space="md">
+          <Text size="sm">Default</Text>
+          <Button variant="solid" colorScheme={colorScheme} size={size}>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Hovered</Text>
+          <Button variant="solid" colorScheme={colorScheme} size={size} isHovered>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Pressed</Text>
+          <Button variant="solid" colorScheme={colorScheme} size={size} isPressed>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Focus Visible</Text>
+          <Button variant="solid" colorScheme={colorScheme} size={size} isFocusVisible>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Disabled</Text>
+          <Button variant="solid" colorScheme={colorScheme} size={size} isDisabled>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Disabled Icon Left</Text>
+          <Button variant="solid" colorScheme={colorScheme} size={size} isDisabled>
+            <ButtonIcon as={AddSmallIcon} />
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Icon Left</Text>
+          <Button variant="solid" colorScheme={colorScheme} size={size}>
+            <ButtonIcon as={AddSmallIcon} />
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Icon Right</Text>
+          <Button variant="solid" colorScheme={colorScheme} size={size}>
+            <ButtonText>Example</ButtonText>
+            <ButtonIcon as={ChevronRight01SmallIcon} />
+          </Button>
+          <Text size="sm">Icon Left & Right</Text>
+          <Button variant="solid" colorScheme={colorScheme} size={size}>
+            <ButtonIcon as={ChevronLeft01SmallIcon} />
+            <ButtonText>Example</ButtonText>
+            <ButtonIcon as={ChevronRight01SmallIcon} />
+          </Button>
+          <Text size="sm">Loading Left</Text>
+          <Button variant="solid" colorScheme={colorScheme} size={size}>
+            <ButtonSpinner />
+            <ButtonText>Example</ButtonText>
+          </Button>
+        </ButtonGroup>
+      </Box>
+      <Box>
+        <Text size="lg">Outline</Text>
+        <ButtonGroup flexDirection="column" space="md">
+          <Text size="sm">Default</Text>
+          <Button variant="outline" colorScheme={colorScheme} size={size}>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Hovered</Text>
+          <Button variant="outline" colorScheme={colorScheme} size={size} isHovered>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Pressed</Text>
+          <Button variant="outline" colorScheme={colorScheme} size={size} isPressed>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Focus Visible</Text>
+          <Button variant="outline" colorScheme={colorScheme} size={size} isFocusVisible>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Disabled</Text>
+          <Button variant="outline" colorScheme={colorScheme} size={size} isDisabled>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Disabled Icon Left</Text>
+          <Button variant="outline" colorScheme={colorScheme} size={size} isDisabled>
+            <ButtonIcon as={AddSmallIcon} />
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Icon Left</Text>
+          <Button variant="outline" colorScheme={colorScheme} size={size}>
+            <ButtonIcon as={AddSmallIcon} />
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Icon Right</Text>
+          <Button variant="outline" colorScheme={colorScheme} size={size}>
+            <ButtonText>Example</ButtonText>
+            <ButtonIcon as={ChevronRight01SmallIcon} />
+          </Button>
+          <Text size="sm">Icon Left & Right</Text>
+          <Button variant="outline" colorScheme={colorScheme} size={size}>
+            <ButtonIcon as={ChevronLeft01SmallIcon} />
+            <ButtonText>Example</ButtonText>
+            <ButtonIcon as={ChevronRight01SmallIcon} />
+          </Button>
+          <Text size="sm">Loading Left</Text>
+          <Button variant="outline" colorScheme={colorScheme} size={size}>
+            <ButtonSpinner />
+            <ButtonText>Example</ButtonText>
+          </Button>
+        </ButtonGroup>
+      </Box>
+      <Box>
+        <Text size="lg">Ghost</Text>
+        <ButtonGroup flexDirection="column" space="md" sx={{ mb: '$4' }}>
+          <Text size="sm">Default</Text>
+          <Button variant="ghost" colorScheme={colorScheme} size={size}>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Hovered</Text>
+          <Button variant="ghost" colorScheme={colorScheme} size={size} isHovered>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Pressed</Text>
+          <Button variant="ghost" colorScheme={colorScheme} size={size} isPressed>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Focus Visible</Text>
+          <Button variant="ghost" colorScheme={colorScheme} size={size} isFocusVisible>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Disabled</Text>
+          <Button variant="ghost" colorScheme={colorScheme} size={size} isDisabled>
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Disabled Icon Left</Text>
+          <Button variant="ghost" colorScheme={colorScheme} size={size} isDisabled>
+            <ButtonIcon as={AddSmallIcon} />
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Icon Left</Text>
+          <Button variant="ghost" colorScheme={colorScheme} size={size}>
+            <ButtonIcon as={AddSmallIcon} />
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Icon Right</Text>
+          <Button variant="ghost" colorScheme={colorScheme} size={size}>
+            <ButtonText>Example</ButtonText>
+            <ButtonIcon as={ChevronRight01SmallIcon} />
+          </Button>
+          <Text size="sm">Icon Left & Right</Text>
+          <Button variant="ghost" colorScheme={colorScheme} size={size}>
+            <ButtonIcon as={ChevronLeft01SmallIcon} />
+            <ButtonText>Example</ButtonText>
+            <ButtonIcon as={ChevronRight01SmallIcon} />
+          </Button>
+          <Text size="sm">Loading Left</Text>
+          <Button variant="ghost" colorScheme={colorScheme} size={size}>
+            <ButtonSpinner />
+            <ButtonText>Example</ButtonText>
+          </Button>
+        </ButtonGroup>
+      </Box>
+    </VStack>
+  );
+};
+
+export default ButtonVariants;
