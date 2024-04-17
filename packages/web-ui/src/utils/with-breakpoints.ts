@@ -8,7 +8,7 @@ export const withBreakpoints = (value: Responsive<string> | undefined, prefix = 
 
   if (typeof value === 'object') {
     const initialBreakpoint = 'mobile';
-    const classes = (Object.keys(value) as Breakpoints[]).map(bp => {
+    const classes = (Object.keys(value) as Array<Breakpoints>).map(bp => {
       const baseClassName = withGlobalPrefix(`${prefix}-${value[bp]}`);
       const className = bp === initialBreakpoint ? baseClassName : `${bp}:${baseClassName}`;
       return className;
