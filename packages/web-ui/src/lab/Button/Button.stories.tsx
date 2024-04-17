@@ -13,12 +13,9 @@ import {
 import { Box } from '../../Box';
 
 const sizes = ['large', 'small'] as const;
-const variants = ['solid', 'outline', 'ghost'] as const;
-const colorSchemes = {
-  solid: ['cyan', 'red', 'green'] as const,
-  outline: ['cyan', 'grey', 'red', 'green', 'gold'] as const,
-  ghost: ['cyan', 'grey', 'red', 'green', 'gold'] as const,
-};
+const variants = ['outline', 'ghost'] as const;
+const solidColorSchemes = ['cyan', 'red', 'green'] as const;
+const colorSchemes = [...solidColorSchemes, 'grey', 'gold'] as const;
 
 const meta: Meta<typeof Button> = {
   title: 'Web UI / Lab / Button',
@@ -26,7 +23,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     children: { control: { type: 'text' } },
     variant: { control: { type: 'radio' }, options: variants },
-    colorScheme: { options: colorSchemes.ghost, control: { type: 'radio' } },
+    colorScheme: { options: colorSchemes, control: { type: 'radio' } },
     size: { control: { type: 'radio' }, options: sizes },
     disabled: { control: { type: 'boolean' } },
   },
@@ -47,6 +44,46 @@ export const KitchenSink: Story = {
   render: () => {
     return (
       <Flex direction="column" gap={6}>
+        <Flex gap={2} direction="column">
+          <Heading variant="h2" textTransform="capitalize">
+            solid
+          </Heading>
+          <Flex gap={3} align="center">
+            {sizes.map(size => (
+              <Flex gap={2}>
+                {solidColorSchemes.map(colorScheme => (
+                  <Button
+                    key={colorScheme}
+                    variant="solid"
+                    colorScheme={colorScheme}
+                    size={size}
+                    onClick={() => alert('hello, world!')}
+                  >
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+            ))}
+          </Flex>
+          <Flex gap={3} align="center">
+            {sizes.map(size => (
+              <Flex gap={2}>
+                {solidColorSchemes.map(colorScheme => (
+                  <Button
+                    disabled
+                    key={colorScheme}
+                    variant="solid"
+                    colorScheme={colorScheme}
+                    size={size}
+                    onClick={() => alert('hello, world!')}
+                  >
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+            ))}
+          </Flex>
+        </Flex>
         {variants.map(variant => (
           <Flex gap={2} direction="column">
             <Heading variant="h2" textTransform="capitalize">
@@ -55,7 +92,7 @@ export const KitchenSink: Story = {
             <Flex gap={3} align="center">
               {sizes.map(size => (
                 <Flex gap={2}>
-                  {colorSchemes[variant].map(colorScheme => (
+                  {colorSchemes.map(colorScheme => (
                     <Button
                       key={colorScheme}
                       variant={variant}
@@ -72,7 +109,7 @@ export const KitchenSink: Story = {
             <Flex gap={3} align="center">
               {sizes.map(size => (
                 <Flex gap={2}>
-                  {colorSchemes[variant].map(colorScheme => (
+                  {colorSchemes.map(colorScheme => (
                     <Button
                       disabled
                       key={colorScheme}
@@ -111,6 +148,37 @@ export const WithIcons: Story = {
   render: () => {
     return (
       <Flex direction="column" gap={6}>
+        <Flex gap={2} direction="column">
+          <Heading variant="h2" textTransform="capitalize">
+            solid
+          </Heading>
+          <Flex gap={3} direction="column">
+            <Flex gap={2} align="center">
+              {solidColorSchemes.map(colorScheme => (
+                <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="large">
+                  <ChevronLeft01MediumIcon /> Button
+                </Button>
+              ))}
+              {solidColorSchemes.map(colorScheme => (
+                <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="small">
+                  <ChevronLeft01SmallIcon /> Button
+                </Button>
+              ))}
+            </Flex>
+            <Flex gap={2} align="center">
+              {solidColorSchemes.map(colorScheme => (
+                <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="large">
+                  Button <ChevronRight01MediumIcon />
+                </Button>
+              ))}
+              {solidColorSchemes.map(colorScheme => (
+                <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="small">
+                  Button <ChevronRight01SmallIcon />
+                </Button>
+              ))}
+            </Flex>
+          </Flex>
+        </Flex>
         {variants.map(variant => (
           <Flex gap={2} direction="column">
             <Heading variant="h2" textTransform="capitalize">
@@ -118,7 +186,7 @@ export const WithIcons: Story = {
             </Heading>
             <Flex gap={3} direction="column">
               <Flex gap={2} align="center">
-                {colorSchemes[variant].map(colorScheme => (
+                {colorSchemes.map(colorScheme => (
                   <Button
                     key={colorScheme}
                     variant={variant}
@@ -128,7 +196,7 @@ export const WithIcons: Story = {
                     <ChevronLeft01MediumIcon /> Button
                   </Button>
                 ))}
-                {colorSchemes[variant].map(colorScheme => (
+                {colorSchemes.map(colorScheme => (
                   <Button
                     key={colorScheme}
                     variant={variant}
@@ -140,7 +208,7 @@ export const WithIcons: Story = {
                 ))}
               </Flex>
               <Flex gap={2} align="center">
-                {colorSchemes[variant].map(colorScheme => (
+                {colorSchemes.map(colorScheme => (
                   <Button
                     key={colorScheme}
                     variant={variant}
@@ -150,7 +218,7 @@ export const WithIcons: Story = {
                     Button <ChevronRight01MediumIcon />
                   </Button>
                 ))}
-                {colorSchemes[variant].map(colorScheme => (
+                {colorSchemes.map(colorScheme => (
                   <Button
                     key={colorScheme}
                     variant={variant}
@@ -199,7 +267,7 @@ export const Sizes: Story = {
 export const SolidVariant: Story = {
   render: () => (
     <Flex gap={2} align="center">
-      {colorSchemes.solid.map(color => (
+      {solidColorSchemes.map(color => (
         <Button key={color} variant="solid" size="large" colorScheme={color}>
           Solid button
         </Button>
@@ -211,7 +279,7 @@ export const SolidVariant: Story = {
 export const OutlineVariant: Story = {
   render: () => (
     <Flex gap={2} align="center">
-      {colorSchemes.outline.map(color => (
+      {colorSchemes.map(color => (
         <Button key={color} variant="outline" size="large" colorScheme={color}>
           Outline button
         </Button>
@@ -223,7 +291,7 @@ export const OutlineVariant: Story = {
 export const GhostVariant: Story = {
   render: () => (
     <Flex gap={2} align="center">
-      {colorSchemes.ghost.map(color => (
+      {colorSchemes.map(color => (
         <Button key={color} variant="ghost" size="large" colorScheme={color}>
           Ghost button
         </Button>
