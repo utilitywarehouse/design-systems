@@ -45,7 +45,7 @@ const StyledRadioItem = styled(Item)({
   borderRadius: '8px',
   padding: spacing(2),
   display: 'flex',
-  boxShadow: `inset 0 0 0 2px var(--radio-item-box-shadow-color)`,
+  boxShadow: 'inset 0 0 0 2px var(--radio-item-box-shadow-color)',
   backgroundColor: 'var(--radio-item-background-color)',
   '--radio-item-background-color': colorsCommon.brandWhite,
   '--radio-item-background-color-focus': colors.cyan100,

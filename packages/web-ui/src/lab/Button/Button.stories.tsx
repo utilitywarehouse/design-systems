@@ -50,7 +50,7 @@ export const KitchenSink: Story = {
           </Heading>
           <Flex gap={3} align="center">
             {sizes.map(size => (
-              <Flex gap={2}>
+              <Flex key={size} gap={2}>
                 {solidColorSchemes.map(colorScheme => (
                   <Button
                     key={colorScheme}
@@ -67,7 +67,7 @@ export const KitchenSink: Story = {
           </Flex>
           <Flex gap={3} align="center">
             {sizes.map(size => (
-              <Flex gap={2}>
+              <Flex key={size} gap={2}>
                 {solidColorSchemes.map(colorScheme => (
                   <Button
                     disabled
@@ -85,13 +85,13 @@ export const KitchenSink: Story = {
           </Flex>
         </Flex>
         {variants.map(variant => (
-          <Flex gap={2} direction="column">
+          <Flex key={variant} gap={2} direction="column">
             <Heading variant="h2" textTransform="capitalize">
               {variant}
             </Heading>
             <Flex gap={3} align="center">
               {sizes.map(size => (
-                <Flex gap={2}>
+                <Flex key={size} gap={2}>
                   {colorSchemes.map(colorScheme => (
                     <Button
                       key={colorScheme}
@@ -108,7 +108,7 @@ export const KitchenSink: Story = {
             </Flex>
             <Flex gap={3} align="center">
               {sizes.map(size => (
-                <Flex gap={2}>
+                <Flex key={size} gap={2}>
                   {colorSchemes.map(colorScheme => (
                     <Button
                       disabled
@@ -180,7 +180,7 @@ export const WithIcons: Story = {
           </Flex>
         </Flex>
         {variants.map(variant => (
-          <Flex gap={2} direction="column">
+          <Flex key={variant} gap={2} direction="column">
             <Heading variant="h2" textTransform="capitalize">
               {variant}
             </Heading>

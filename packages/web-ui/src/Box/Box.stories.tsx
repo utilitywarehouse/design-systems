@@ -39,7 +39,7 @@ export const Workshop: Story = {
 };
 
 export const NestedBoxes: Story = {
-  render: ({ children, ...args }) => {
+  render: ({ ...args }) => {
     return (
       <Box {...args} background={colorsCommon.brandMidnight}>
         <Text>This text should be white</Text>

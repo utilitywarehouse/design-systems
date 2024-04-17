@@ -74,7 +74,7 @@ export const TextLinkVariants: Story = {
     return (
       <Stack spacing={1}>
         {variants.map(variant => (
-          <TextLink variant={variant as TextLinkProps['variant']}>
+          <TextLink key={variant} variant={variant as TextLinkProps['variant']}>
             hamburgefons ({variant})
           </TextLink>
         ))}
@@ -93,7 +93,7 @@ export const InlineTextLink: Story = {
             <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
               <Stack spacing={2}>
                 {textVariants.map(v => (
-                  <Text component="span" variant={v as TextProps['variant']}>
+                  <Text key={v} component="span" variant={v as TextProps['variant']}>
                     This is a <TextLink href="#">text link</TextLink>, wrapped in a {v} Text
                     component.
                   </Text>
@@ -114,7 +114,7 @@ export const TextLinkColor: Story = {
       <Backgrounds>
         <Stack spacing={4}>
           {textVariants.map(v => (
-            <Stack spacing={1}>
+            <Stack key={v} spacing={1}>
               <TextLink href="#" variant={v as TextProps['variant']}>
                 {v} text link
               </TextLink>

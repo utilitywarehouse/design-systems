@@ -15,7 +15,9 @@
     "lint:fix": "TIMING=1 eslint --fix --ext ts src",
     "lint": "TIMING=1 eslint --ext ts src",
     "format:css": "prettier --write --parser=scss \"./**/*.{css,scss}\"",
-    "format": "prettier --write --parser=typescript \"src/**/*.ts*\" && pnpm run format:css"
+    "format:css:ci": "prettier --list-different --parser=scss \"./**/*.{css,scss}\"",
+    "format": "prettier --write --parser=typescript \"src/**/*.ts*\" && pnpm run format:css",
+    "format:ci": "prettier --list-different --parser=typescript \"src/**/*.ts*\" && pnpm run format:css:ci"
   },
   "license": "UNLICENSED",
   "publishConfig": {

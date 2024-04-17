@@ -5,15 +5,15 @@ import type { StackProps as MuiStackProps } from '@mui/material/Stack';
 
 export type DefaultStackComponent = 'div';
 
-export interface StackTypeMap<D extends React.ElementType = DefaultStackComponent, P = {}> {
+export interface StackTypeMap<D extends React.ElementType = DefaultStackComponent, P = object> {
   props: MuiStackProps<D, P>;
   defaultComponent: D;
 }
 
-export type StackProps<D extends React.ElementType = DefaultStackComponent, P = {}> = OverrideProps<
-  StackTypeMap<D, P>,
-  D
->;
+export type StackProps<
+  D extends React.ElementType = DefaultStackComponent,
+  P = object
+> = OverrideProps<StackTypeMap<D, P>, D>;
 
 /**
  * Stack is a layout primitive, for managing layout of immediate children along the

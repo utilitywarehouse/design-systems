@@ -15,15 +15,15 @@ export interface CustomGridProps {
   wide?: RegularBreakpoints['xl'];
 }
 
-export interface GridTypeMap<D extends React.ElementType = DefaultGridComponent, P = {}> {
+export interface GridTypeMap<D extends React.ElementType = DefaultGridComponent, P = object> {
   props: CustomGridProps & Omit<MuiGridProps<D, P>, 'xs' | 'sm' | 'lg' | 'md' | 'xl'>;
   defaultComponent: D;
 }
 
-export type GridProps<D extends React.ElementType = DefaultGridComponent, P = {}> = OverrideProps<
-  GridTypeMap<D, P>,
-  D
->;
+export type GridProps<
+  D extends React.ElementType = DefaultGridComponent,
+  P = object
+> = OverrideProps<GridTypeMap<D, P>, D>;
 
 /**
  * A responsive layout grid which adapts to screen size and orientation, ensuring

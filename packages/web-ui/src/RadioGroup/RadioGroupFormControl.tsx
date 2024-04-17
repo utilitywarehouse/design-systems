@@ -11,6 +11,8 @@ import { mergeIds } from '../utils';
 import { BaseRadioGroupProps } from './RadioGroup.props';
 import { RadioGroupContext } from './RadioGroup.context';
 
+const componentName = 'RadioGroupFormControl';
+
 export const RadioGroupFormControl = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGroupProps>>(
   (
     {
@@ -87,3 +89,5 @@ export const RadioGroupFormControl = forwardRef<HTMLDivElement, PropsWithSx<Base
     );
   }
 );
+
+RadioGroupFormControl.displayName = componentName;
