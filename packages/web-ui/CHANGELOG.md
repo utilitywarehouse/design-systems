@@ -1,5 +1,17 @@
 # @utilitywarehouse/web-ui
 
+## 0.6.0
+
+### Minor Changes
+
+- [#267](https://github.com/utilitywarehouse/design-systems/pull/267) [`be9de42`](https://github.com/utilitywarehouse/design-systems/commit/be9de4255d541b2e061345fc58428a7b373c3d50) Thanks [@robphoenix](https://github.com/robphoenix)! - Set RadioGroup to wrap children by default
+
+### Patch Changes
+
+- [#274](https://github.com/utilitywarehouse/design-systems/pull/274) [`7ba83c3`](https://github.com/utilitywarehouse/design-systems/commit/7ba83c32f689aada8958da0abc6e2611ac74a170) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Heading line heights
+
+- [#271](https://github.com/utilitywarehouse/design-systems/pull/271) [`89a3f67`](https://github.com/utilitywarehouse/design-systems/commit/89a3f6747f7b5b289beb0d42a0ffdcbe5fec0764) Thanks [@robphoenix](https://github.com/robphoenix)! - Deprecate `TextField` component
+
 ## 0.5.4
 
 ### Patch Changes
