@@ -23,7 +23,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
     project: ['./packages/*/tsconfig.json'],
-    tsconfigRootDir: import.meta.dirname,
+    tsconfigRootDir: __dirname,
   },
   rules: {
     'no-extra-boolean-cast': 'off',
