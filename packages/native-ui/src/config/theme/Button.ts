@@ -1734,8 +1734,4 @@ export const Button = createStyle({
     variant: 'solid',
     colorScheme: 'cyan',
   },
-
-  ':disabled': {
-    opacity: 0.4,
-  },
 });
