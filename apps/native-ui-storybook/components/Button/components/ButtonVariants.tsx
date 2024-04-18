@@ -16,15 +16,17 @@ import {
 } from '@utilitywarehouse/react-native-icons';
 import React, { ComponentProps } from 'react';
 
-type ButtonVariantsProps = {
-  colorScheme: ComponentProps<typeof Button>['colorScheme'];
-  size: ComponentProps<typeof Button>['size'];
-};
+interface ButtonProps extends ComponentProps<typeof Button> {}
+interface ButtonVariantsProps {
+  colorScheme: ButtonProps['colorScheme'];
+  size: ButtonProps['size'];
+}
 
 const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) => {
   const validScheme = colorScheme === 'cyan' || colorScheme === 'red' || colorScheme === 'green';
-  const media = useMedia();
-  const { sm, base } = media;
+  const capitalisedScheme =
+    (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');
+  const { sm, base } = useMedia();
 
   return (
     <VStack space="2xl">
@@ -41,7 +43,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
               }
         }
       >
-        <Text size="lg">Solid</Text>
+        <Text size="lg">Solid - {capitalisedScheme}</Text>
         <ButtonGroup flexDirection="column" space="md">
           <Text size="sm">Default</Text>
           <Button variant="solid" colorScheme={colorScheme} size={size}>
@@ -97,7 +99,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
         </ButtonGroup>
       </Box>
       <Box>
-        <Text size="lg">Outline</Text>
+        <Text size="lg">Outline - {capitalisedScheme}</Text>
         <ButtonGroup flexDirection="column" space="md">
           <Text size="sm">Default</Text>
           <Button variant="outline" colorScheme={colorScheme} size={size}>
@@ -153,7 +155,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
         </ButtonGroup>
       </Box>
       <Box>
-        <Text size="lg">Ghost</Text>
+        <Text size="lg">Ghost - {capitalisedScheme}</Text>
         <ButtonGroup flexDirection="column" space="md" sx={{ mb: '$4' }}>
           <Text size="sm">Default</Text>
           <Button variant="ghost" colorScheme={colorScheme} size={size}>
