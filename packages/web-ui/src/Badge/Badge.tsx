@@ -1,13 +1,14 @@
+import * as React from 'react';
 import { createBox } from '../Box/createBox';
 import { useBackground } from '../Box';
-import { dataAttributes, px } from '../utils';
+import { DATA_ATTRIBUTES, px } from '../utils';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { styled, theme } from '../theme';
 import { Chip } from '@mui/material';
 import { fontWeights, fonts } from '../tokens';
 
 const BaseBox = createBox({
-  componentClassName: 'Badge',
+  componentName: 'Badge',
 });
 
 export interface CustomBadgeProps {
@@ -28,12 +29,11 @@ export interface CustomBadgeProps {
   bottomRadius?: boolean;
   children: string;
   /**
-   * Sets whether the padding of the badge text is compressed 
+   * Sets whether the padding of the badge text is compressed
    * @default false
    */
   compressed?: boolean;
 }
-
 
 const StyledBadge = styled(Chip)({
   fontFamily: fonts.secondary,
@@ -46,75 +46,77 @@ const StyledBadge = styled(Chip)({
   borderRadius: px(4),
   // padding: children.compressed ? 0 : theme.spacing(32),
 
-  [`&[data-${dataAttributes.variant}=soft]`]: {
+  [`&[data-${DATA_ATTRIBUTES.variant}=soft]`]: {
     [`&[data-colorscheme=cyan]`]: {
       '--button-foreground-color': colors.cyan1000,
       '--button-border-color': colors.cyan400,
     },
   },
 
-  [`&[data-${dataAttributes.colorScheme}=cyan`]: {
+  [`&[data-${DATA_ATTRIBUTES.colorscheme}=cyan`]: {
     color: colorsCommon.brandMidnight,
     border: 'none',
     backgroundColor: colors.cyan200,
   },
-  [`&[data-${dataAttributes.variant}=strong]`]: {
+  [`&[data-${DATA_ATTRIBUTES.variant}=strong]`]: {
     color: colorsCommon.brandMidnight,
     backgroundColor: 'transparent',
     borderColor: colors.cyan400,
   },
-  [`&[data-${dataAttributes.variant}=outline]`]: {
+  [`&[data-${DATA_ATTRIBUTES.variant}=outline]`]: {
     color: colorsCommon.brandMidnight,
     backgroundColor: 'transparent',
     borderColor: colors.cyan400,
   },
-  [`&[data-${dataAttributes.bgcolorBrand}=true]`]: {
+  [`&[data-${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
     color: colorsCommon.brandWhite,
     '&:hover': {
       borderColor: colorsCommon.brandWhite,
     },
   },
   // TODO: remove when `Background` component removed.
-  [`[data-${dataAttributes.inverse}=true] &`]: {
+  [`[data-${DATA_ATTRIBUTES.inverse}=true] &`]: {
     color: colorsCommon.brandWhite,
     '&:hover': {
       borderColor: colorsCommon.brandWhite,
     },
   },
-  [`[data-${dataAttributes.bottomRadius}=false}] &`]: {
+  [`[data-${DATA_ATTRIBUTES.bottomRadius}=false}] &`]: {
     borderBottomLeftRadius: `${theme.spacing(0)}`,
     borderBottomRightRadius: `${theme.spacing(0)}`,
   },
-  [`& [data-${dataAttributes.bgcolorBrand} = true]`]: {
+  [`& [data-${DATA_ATTRIBUTES.bgcolorBrand} = true]`]: {
     color: colorsCommon.brandWhite,
   },
-  [`[data-${dataAttributes.compressed} = true] & `]: {
+  [`[data-${DATA_ATTRIBUTES.compressed} = true] & `]: {
     padding: theme.spacing(0),
   },
-  [`[data-${dataAttributes.compressed} = false] & `]: {
+  [`[data-${DATA_ATTRIBUTES.compressed} = false] & `]: {
     padding: theme.spacing(8),
   },
-}
-);
+});
 
 export const Badge = (props: CustomBadgeProps) => {
-  const { children } = props
+  const { children } = props;
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
-    [`data-${dataAttributes.variant}`]: props.variant,
-    [`data-${dataAttributes.compressed}`]: props.compressed,
-    [`data-${dataAttributes.bgcolorBrand}`]: isBrandBackground,
+    [`data-${DATA_ATTRIBUTES.variant}`]: props.variant,
+    [`data-${DATA_ATTRIBUTES.compressed}`]: props.compressed,
+    [`data-${DATA_ATTRIBUTES.bgcolorBrand}`]: isBrandBackground,
   };
   return (
-    <BaseBox sx={{
-      alignSelf: 'flex-start',
-      whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
-      overflow: 'auto',
-      colorScheme: props.colorScheme,
-      borderRadius: '4px',
-      padding: theme.spacing(0, 1)
-    }}>
+    <BaseBox
+      sx={{
+        alignSelf: 'flex-start',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
+        overflow: 'auto',
+        colorScheme: props.colorScheme,
+        borderRadius: '4px',
+        padding: theme.spacing(0, 1),
+      }}
+    >
       <StyledBadge label={children} {...dataAttributeProps} />
-    </BaseBox>)
-}
+    </BaseBox>
+  );
+};
