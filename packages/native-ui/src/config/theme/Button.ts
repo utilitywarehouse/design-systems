@@ -414,12 +414,12 @@ export const Button = createStyle({
         },
 
         _dark: {
-          bg: '$darkGray500',
+          bg: '$darkGrey500',
           ':hover': {
-            bg: '$darkGray600',
+            bg: '$darkGrey600',
           },
           ':active': {
-            bg: '$darkGray700',
+            bg: '$darkGrey700',
           },
           _text: {
             color: '$darkWhite',
@@ -450,20 +450,20 @@ export const Button = createStyle({
           },
 
           ':disabled': {
-            backgroundColor: '$darkGray100',
+            backgroundColor: '$darkGrey100',
 
             _text: {
-              color: '$darkGray300',
+              color: '$darkGrey300',
             },
             _icon: {
-              color: '$darkGray300',
+              color: '$darkGrey300',
             },
             _spinner: {
-              color: '$darkGray300',
+              color: '$darkGrey300',
             },
 
             ':focusVisible': {
-              outlineColor: '$darkGray700',
+              outlineColor: '$darkGrey700',
             },
           },
         },
@@ -636,12 +636,36 @@ export const Button = createStyle({
       value: {
         backgroundColor: 'transparent',
 
+        _icon: {
+          color: '$cyan600',
+        },
+
+        _spinner: {
+          color: '$cyan600',
+        },
+
         ':hover': {
           backgroundColor: '$cyan75',
+
+          _icon: {
+            color: '$cyan1000',
+          },
+
+          _spinner: {
+            color: '$cyan1000',
+          },
         },
 
         ':active': {
           backgroundColor: '$cyan200',
+
+          _icon: {
+            color: '$cyan1000',
+          },
+
+          _spinner: {
+            color: '$cyan1000',
+          },
         },
 
         ':disabled': {
@@ -667,12 +691,36 @@ export const Button = createStyle({
         _dark: {
           backgroundColor: 'transparent',
 
+          _icon: {
+            color: '$darkCyan600',
+          },
+
+          _spinner: {
+            color: '$darkCyan600',
+          },
+
           ':hover': {
             backgroundColor: '$darkCyan75',
+
+            _icon: {
+              color: '$darkCyan1000',
+            },
+
+            _spinner: {
+              color: '$darkCyan1000',
+            },
           },
 
           ':active': {
             backgroundColor: '$darkCyan200',
+
+            _icon: {
+              color: '$darkCyan1000',
+            },
+
+            _spinner: {
+              color: '$darkCyan1000',
+            },
           },
 
           ':disabled': {
@@ -703,15 +751,27 @@ export const Button = createStyle({
       value: {
         backgroundColor: 'transparent',
 
+        _text: {
+          color: '$red900',
+        },
+
+        _icon: {
+          color: '$red600',
+        },
+
+        _spinner: {
+          color: '$red600',
+        },
+
         ':hover': {
           backgroundColor: '$red100',
 
           _icon: {
-            color: '$red500',
+            color: '$red900',
           },
 
           _spinner: {
-            color: '$red500',
+            color: '$red900',
           },
         },
 
@@ -719,24 +779,12 @@ export const Button = createStyle({
           backgroundColor: '$red200',
 
           _icon: {
-            color: '$red500',
+            color: '$red900',
           },
 
           _spinner: {
-            color: '$red500',
+            color: '$red900',
           },
-        },
-
-        _text: {
-          color: '$red500',
-        },
-
-        _icon: {
-          color: '$red500',
-        },
-
-        _spinner: {
-          color: '$red500',
         },
 
         ':disabled': {
@@ -762,15 +810,27 @@ export const Button = createStyle({
         _dark: {
           backgroundColor: 'transparent',
 
+          _text: {
+            color: '$darkRed900',
+          },
+
+          _icon: {
+            color: '$darkRed600',
+          },
+
+          _spinner: {
+            color: '$darkRed600',
+          },
+
           ':hover': {
             backgroundColor: '$darkRed100',
 
             _icon: {
-              color: '$darkRed500',
+              color: '$darkRed900',
             },
 
             _spinner: {
-              color: '$darkRed500',
+              color: '$darkRed900',
             },
           },
 
@@ -778,28 +838,16 @@ export const Button = createStyle({
             backgroundColor: '$darkRed200',
 
             _icon: {
-              color: '$darkRed500',
+              color: '$darkRed900',
             },
 
             _spinner: {
-              color: '$darkRed500',
+              color: '$darkRed900',
             },
           },
 
-          _text: {
-            color: '$darkRed500',
-          },
-
-          _icon: {
-            color: '$darkRed500',
-          },
-
-          _spinner: {
-            color: '$darkRed500',
-          },
-
           ':disabled': {
-            borderColor: '$darkRed900',
+            borderColor: '$darkRed300',
             backgroundColor: 'transparent',
 
             _text: {
@@ -826,6 +874,18 @@ export const Button = createStyle({
       value: {
         backgroundColor: 'transparent',
 
+        _text: {
+          color: '$green900',
+        },
+
+        _icon: {
+          color: '$green600',
+        },
+
+        _spinner: {
+          color: '$green600',
+        },
+
         ':hover': {
           backgroundColor: '$green100',
 
@@ -848,18 +908,6 @@ export const Button = createStyle({
           _spinner: {
             color: '$green900',
           },
-        },
-
-        _text: {
-          color: '$green900',
-        },
-
-        _icon: {
-          color: '$green900',
-        },
-
-        _spinner: {
-          color: '$green900',
         },
 
         ':disabled': {
@@ -885,6 +933,18 @@ export const Button = createStyle({
         _dark: {
           backgroundColor: 'transparent',
 
+          _text: {
+            color: '$darkGreen900',
+          },
+
+          _icon: {
+            color: '$darkGreen600',
+          },
+
+          _spinner: {
+            color: '$darkGreen600',
+          },
+
           ':hover': {
             backgroundColor: '$darkGreen100',
 
@@ -909,20 +969,8 @@ export const Button = createStyle({
             },
           },
 
-          _text: {
-            color: '$darkGreen500',
-          },
-
-          _icon: {
-            color: '$darkGreen500',
-          },
-
-          _spinner: {
-            color: '$darkGreen500',
-          },
-
           ':disabled': {
-            borderColor: '$darkGreen900',
+            borderColor: '$darkGreen300',
             backgroundColor: 'transparent',
 
             _text: {
@@ -949,6 +997,18 @@ export const Button = createStyle({
       value: {
         backgroundColor: 'transparent',
 
+        _text: {
+          color: '$grey1000',
+        },
+
+        _icon: {
+          color: '$grey800',
+        },
+
+        _spinner: {
+          color: '$grey800',
+        },
+
         ':hover': {
           backgroundColor: '$grey100',
 
@@ -971,18 +1031,6 @@ export const Button = createStyle({
           _spinner: {
             color: '$grey1000',
           },
-        },
-
-        _text: {
-          color: '$grey1000',
-        },
-
-        _icon: {
-          color: '$grey1000',
-        },
-
-        _spinner: {
-          color: '$grey1000',
         },
 
         ':disabled': {
@@ -1008,59 +1056,59 @@ export const Button = createStyle({
         _dark: {
           backgroundColor: 'transparent',
 
+          _text: {
+            color: '$darkGrey1000',
+          },
+
+          _icon: {
+            color: '$darkGrey600',
+          },
+
+          _spinner: {
+            color: '$darkGrey600',
+          },
+
           ':hover': {
-            backgroundColor: '$darkGray100',
+            backgroundColor: '$darkGrey175',
 
             _icon: {
-              color: '$darkGray1000',
+              color: '$darkGrey1000',
             },
 
             _spinner: {
-              color: '$darkGray1000',
+              color: '$darkGrey1000',
             },
           },
 
           ':active': {
-            backgroundColor: '$darkGray175',
+            backgroundColor: '$darkGrey175',
 
             _icon: {
-              color: '$darkGray1000',
+              color: '$darkGrey1000',
             },
 
             _spinner: {
-              color: '$darkGray1000',
+              color: '$darkGrey1000',
             },
-          },
-
-          _text: {
-            color: '$darkGray1000',
-          },
-
-          _icon: {
-            color: '$darkGray1000',
-          },
-
-          _spinner: {
-            color: '$darkGray1000',
           },
 
           ':disabled': {
-            borderColor: '$darkGray300',
+            borderColor: '$darkGrey300',
             backgroundColor: 'transparent',
 
             _text: {
-              color: '$darkGray300',
+              color: '$darkGrey300',
             },
             _icon: {
-              color: '$darkGray300',
+              color: '$darkGrey300',
             },
             _spinner: {
-              color: '$darkGray300',
+              color: '$darkGrey300',
             },
 
             ':focusVisible': {
-              backgroundColor: '$darkGray100',
-              outlineColor: '$darkGray700',
+              backgroundColor: '$darkGrey100',
+              outlineColor: '$darkGrey700',
             },
           },
         },
@@ -1071,6 +1119,18 @@ export const Button = createStyle({
       variant: 'outline',
       value: {
         backgroundColor: 'transparent',
+
+        _text: {
+          color: '$gold900',
+        },
+
+        _icon: {
+          color: '$gold600',
+        },
+
+        _spinner: {
+          color: '$gold600',
+        },
 
         ':hover': {
           backgroundColor: '$gold100',
@@ -1096,18 +1156,6 @@ export const Button = createStyle({
           },
         },
 
-        _text: {
-          color: '$gold900',
-        },
-
-        _icon: {
-          color: '$gold900',
-        },
-
-        _spinner: {
-          color: '$gold900',
-        },
-
         ':disabled': {
           borderColor: '$gold300',
           backgroundColor: 'transparent',
@@ -1131,6 +1179,18 @@ export const Button = createStyle({
         _dark: {
           backgroundColor: 'transparent',
 
+          _text: {
+            color: '$darkGold900',
+          },
+
+          _icon: {
+            color: '$darkGold600',
+          },
+
+          _spinner: {
+            color: '$darkGold600',
+          },
+
           ':hover': {
             backgroundColor: '$darkGold100',
 
@@ -1153,18 +1213,6 @@ export const Button = createStyle({
             _spinner: {
               color: '$darkGold900',
             },
-          },
-
-          _text: {
-            color: '$darkGold900',
-          },
-
-          _icon: {
-            color: '$darkGold900',
-          },
-
-          _spinner: {
-            color: '$darkGold900',
           },
 
           ':disabled': {
@@ -1550,26 +1598,26 @@ export const Button = createStyle({
           backgroundColor: 'transparent',
 
           ':hover': {
-            backgroundColor: '$darkGray100',
+            backgroundColor: '$darkGrey100',
 
             _icon: {
-              color: '$darkGray1000',
+              color: '$darkGrey1000',
             },
 
             _spinner: {
-              color: '$darkGray1000',
+              color: '$darkGrey1000',
             },
           },
 
           ':active': {
-            backgroundColor: '$darkGray175',
+            backgroundColor: '$darkGrey175',
 
             _icon: {
-              color: '$darkGray1000',
+              color: '$darkGrey1000',
             },
 
             _spinner: {
-              color: '$darkGray1000',
+              color: '$darkGrey1000',
             },
           },
 
@@ -1577,31 +1625,31 @@ export const Button = createStyle({
             backgroundColor: 'transparent',
 
             _text: {
-              color: '$darkGray300',
+              color: '$darkGrey300',
             },
             _icon: {
-              color: '$darkGray300',
+              color: '$darkGrey300',
             },
             _spinner: {
-              color: '$darkGray300',
+              color: '$darkGrey300',
             },
 
             ':focusVisible': {
-              backgroundColor: '$darkGray100',
-              outlineColor: '$darkGray700',
+              backgroundColor: '$darkGrey100',
+              outlineColor: '$darkGrey700',
             },
           },
 
           _text: {
-            color: '$darkGray1000',
+            color: '$darkGrey1000',
           },
 
           _icon: {
-            color: '$darkGray1000',
+            color: '$darkGrey1000',
           },
 
           _spinner: {
-            color: '$darkGray1000',
+            color: '$darkGrey1000',
           },
         },
       },

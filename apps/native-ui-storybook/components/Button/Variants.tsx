@@ -6,6 +6,7 @@ import ButtonVariants from './components/ButtonVariants';
 
 const ButtonPlaygroundVariants: StoryFn = ({ size }: any) => {
   const media = useMedia();
+  const { base, sm } = media;
   return (
     <ScrollView
       sx={{
@@ -15,7 +16,7 @@ const ButtonPlaygroundVariants: StoryFn = ({ size }: any) => {
       <Box
         sx={{
           display: 'flex',
-          flexDirection: !media.sm ? 'column' : 'row',
+          flexDirection: base || sm ? 'column' : 'row',
           gap: '$4',
         }}
       >

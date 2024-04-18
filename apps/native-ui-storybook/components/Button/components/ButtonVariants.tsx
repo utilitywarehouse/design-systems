@@ -7,6 +7,7 @@ import {
   ButtonSpinner,
   ButtonText,
   Box,
+  useMedia,
 } from '@utilitywarehouse/native-ui';
 import {
   AddSmallIcon,
@@ -22,6 +23,9 @@ type ButtonVariantsProps = {
 
 const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) => {
   const validScheme = colorScheme === 'cyan' || colorScheme === 'red' || colorScheme === 'green';
+  const media = useMedia();
+  const { sm, base } = media;
+
   return (
     <VStack space="2xl">
       <Box
@@ -30,6 +34,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
             ? undefined
             : {
                 opacity: 0,
+                display: base || sm ? 'none' : 'flex',
                 _web: {
                   pointerEvents: 'none',
                 },
@@ -79,8 +84,13 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
             <ButtonText>Example</ButtonText>
             <ButtonIcon as={ChevronRight01SmallIcon} />
           </Button>
-          <Text size="sm">Loading Left</Text>
+          <Text size="sm">Loading</Text>
           <Button variant="solid" colorScheme={colorScheme} size={size}>
+            <ButtonSpinner />
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Disabled & Loading</Text>
+          <Button variant="solid" colorScheme={colorScheme} size={size} isDisabled>
             <ButtonSpinner />
             <ButtonText>Example</ButtonText>
           </Button>
@@ -130,8 +140,13 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
             <ButtonText>Example</ButtonText>
             <ButtonIcon as={ChevronRight01SmallIcon} />
           </Button>
-          <Text size="sm">Loading Left</Text>
+          <Text size="sm">Loading</Text>
           <Button variant="outline" colorScheme={colorScheme} size={size}>
+            <ButtonSpinner />
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Disabled & Loading</Text>
+          <Button variant="outline" colorScheme={colorScheme} size={size} isDisabled>
             <ButtonSpinner />
             <ButtonText>Example</ButtonText>
           </Button>
@@ -181,8 +196,13 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
             <ButtonText>Example</ButtonText>
             <ButtonIcon as={ChevronRight01SmallIcon} />
           </Button>
-          <Text size="sm">Loading Left</Text>
+          <Text size="sm">Loading</Text>
           <Button variant="ghost" colorScheme={colorScheme} size={size}>
+            <ButtonSpinner />
+            <ButtonText>Example</ButtonText>
+          </Button>
+          <Text size="sm">Disabled & Loading</Text>
+          <Button variant="ghost" colorScheme={colorScheme} size={size} isDisabled>
             <ButtonSpinner />
             <ButtonText>Example</ButtonText>
           </Button>
