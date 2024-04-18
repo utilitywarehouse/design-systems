@@ -18,4 +18,7 @@ export const DATA_ATTRIBUTES = {
   bgcolorBrand: withDataPrefix('bg-color-brand'),
   // when removing this, update ToggleButton to use context
   inverse: withDataPrefix('inverse-background'),
+  // remove when updating badge
+  bottomRadius: withDataPrefix('bottom-radius'),
+  compressed: withDataPrefix('compressed'),
 };
