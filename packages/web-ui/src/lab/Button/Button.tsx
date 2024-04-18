@@ -72,6 +72,7 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
     fontSize: 'var(--button-font-size)',
     fontWeight: fontWeights.secondary.semibold,
     lineHeight: 'var(--button-line-height)',
+    inlineSize: 'fit-content',
     minWidth: 'var(--button-min-width)',
     gap: 'var(--button-gap)',
     paddingBlock: 'var(--button-padding-block)',

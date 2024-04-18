@@ -40,8 +40,7 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
     '--base-button-focus-outline':
       '0 0 0 var(--focus-outline-width, 0) var(--focus-outline-color, transparent)',
     '> :where(svg, [data-icon])': {
-      // as UW icons use currentColor by default, this will fallback to the Button's color property if not set.
-      color: 'var(--base-button-icon-color)',
+      color: 'var(--base-button-icon-color)', // as UW icons use currentColor by default, this will fallback to the Button's color property if not set.
     },
     [COLORSCHEME_SELECTORS.cyan]: {
       '--base-button-solid-foreground-color': colors.cyan1000,
