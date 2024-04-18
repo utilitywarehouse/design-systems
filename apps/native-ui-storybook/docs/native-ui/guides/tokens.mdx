@@ -58,6 +58,18 @@ To use the colours tokens in your components, you can use the colours below for 
             return acc;
           }, {})}
       />
+      {Object.keys(light[key]).length > 12 && (
+        <ColorItem
+          title={`${key}`}
+          subtitle="Light Theme"
+          colors={Object.keys(light[key])
+            .slice(12, 18)
+            .reduce((acc, subKey) => {
+              acc[subKey] = light[key][subKey].value;
+              return acc;
+            }, {})}
+        />
+      )}
     </>
   ))}
   {Object.keys(dark).map(key => (
@@ -92,6 +104,21 @@ To use the colours tokens in your components, you can use the colours below for 
             return acc;
           }, {})}
       />
+      {Object.keys(dark[key]).length > 12 && (<ColorItem
+        title={`dark${key.charAt(0).toUpperCase() + key.slice(1)}`}
+        subtitle="Dark Theme"
+        colors={Object.keys(dark[key])
+          .map(key => `dark${key.charAt(0).toUpperCase() + key.slice(1)}`)
+          .slice(12, 16)
+          .reduce((acc, subKey) => {
+            acc[subKey] =
+              dark[key][
+                subKey.replace('dark', '').charAt(0).toLowerCase() +
+                  subKey.replace('dark', '').slice(1)
+              ].value;
+            return acc;
+          }, {})}
+      />)}
     </>
   ))}
 
@@ -277,13 +304,14 @@ The shadows key allows you to customise the global shadow scale for your project
 
 The breakpoints key allows you to customise the global breakpoints for your project.
 
-| Key  | Value                                   |
-| ---- | --------------------------------------- |
-| `xs` | `@media screen and (min-width: 400px)`  |
-| `sm` | `@media screen and (min-width: 480px)`  |
-| `md` | `@media screen and (min-width: 768px)`  |
-| `lg` | `@media screen and (min-width: 992px)`  |
-| `xl` | `@media screen and (min-width: 1280px)` |
+| Key    | Value                                                          |
+| ------ | -------------------------------------------------------------- |
+| `base` | `@media screen and (min-width: 0px) and (max-wdith: 399px)`    |
+| `xs`   | `@media screen and (min-width: 400px) and (max-width: 479px)`  |
+| `sm`   | `@media screen and (min-width: 480px) and (max-width: 767px)`  |
+| `md`   | `@media screen and (min-width: 768px) and (max-width: 991px)`  |
+| `lg`   | `@media screen and (min-width: 992px) and (max-width: 1279px)` |
+| `xl`   | `@media screen and (min-width: 1280px)`                        |
 
 ## Borders
 
