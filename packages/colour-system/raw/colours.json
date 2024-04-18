@@ -962,17 +962,6 @@
         "created_at": "2023-05-02T15:36:02.608Z",
         "updated_at": "2023-05-02T15:36:02.608Z",
         "value": "#d4baf3"
-      },
-      "grape950": {
-        "id": "338:1056",
-        "mode": "dark",
-        "scale": "grape",
-        "step": "950",
-        "name": "grape950",
-        "description": "Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 300.",
-        "created_at": "2023-05-02T15:36:02.601Z",
-        "updated_at": "2023-05-02T15:36:02.601Z",
-        "value": "#f1e6fb"
       }
     },
     "rose": {
