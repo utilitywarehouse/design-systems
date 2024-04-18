@@ -34,6 +34,7 @@ module.exports = {
     'no-constant-binary-expression': 'error',
     'no-sequences': 'error',
     'react/prop-types': 'off',
+    '@typescript-eslint/array-type': ['error', { default: 'generic' }],
   },
   overrides: [
     {
