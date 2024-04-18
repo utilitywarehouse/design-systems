@@ -32,12 +32,14 @@ const ScrollButton = () => {
     <NativeUIProvider>
       <Button
         onPress={scrollToTop}
+        variant="ghost"
         sx={{
           display: visible ? 'flex' : 'none',
+          maxWidth: 220,
           _web: {
             position: 'fixed',
             width: '100%',
-            left: '40%',
+            left: '80%',
             bottom: 40,
             height: 20,
             zIndex: 1,
@@ -45,7 +47,7 @@ const ScrollButton = () => {
           },
         }}
       >
-        <Icon as={ChevronUpIcon} sx={{ mr: 8 }} />
+        <Icon as={ChevronUpIcon} />
         <ButtonText>Back to top</ButtonText>
       </Button>
     </NativeUIProvider>
