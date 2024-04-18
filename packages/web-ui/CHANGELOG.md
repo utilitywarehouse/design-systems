@@ -1,5 +1,19 @@
 # @utilitywarehouse/web-ui
 
+## 0.6.1
+
+### Patch Changes
+
+- [#268](https://github.com/utilitywarehouse/design-systems/pull/268) [`ce37c2e`](https://github.com/utilitywarehouse/design-systems/commit/ce37c2e9155c35364bbdfc2ffd6223736bcdbe6e) Thanks [@robphoenix](https://github.com/robphoenix)! - Update eslint/prettier settings
+
+- [#272](https://github.com/utilitywarehouse/design-systems/pull/272) [`e594e27`](https://github.com/utilitywarehouse/design-systems/commit/e594e2781305dd83967a796f64a14e90b9c3d660) Thanks [@robphoenix](https://github.com/robphoenix)! - Replace usage of material with system in useMediaQuery
+
+- [#276](https://github.com/utilitywarehouse/design-systems/pull/276) [`d728414`](https://github.com/utilitywarehouse/design-systems/commit/d7284149a4ca98fc6b6a198a6fbb088e6e661554) Thanks [@robphoenix](https://github.com/robphoenix)! - Prefer interfaces
+
+- [#273](https://github.com/utilitywarehouse/design-systems/pull/273) [`3e29417`](https://github.com/utilitywarehouse/design-systems/commit/3e2941799c4a39e640765913e0d370cd632a43ad) Thanks [@robphoenix](https://github.com/robphoenix)! - Update lab/Button types to guard against dead prop combinations.
+
+- [#278](https://github.com/utilitywarehouse/design-systems/pull/278) [`01dd9fb`](https://github.com/utilitywarehouse/design-systems/commit/01dd9fbedfacae8af59f84b6ce0004ae4801f1fe) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove lab/Button fixed height
+
 ## 0.6.0
 
 ### Minor Changes
