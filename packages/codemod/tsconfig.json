@@ -1,14 +1,20 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "target": "es2015",
     "downlevelIteration": true,
     "preserveWatchOutput": true,
     "outDir": "dist",
     "lib": ["es2022"],
-    "rootDir":"transforms"
+    "rootDir":"transforms",
+    "composite": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "types": ["node", "jest"]
   },
   "include": ["transforms/**/*.ts"],
   "exclude": ["transforms/**/__test*/**","node_modules"]
