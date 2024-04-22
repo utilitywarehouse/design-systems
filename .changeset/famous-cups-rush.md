@@ -1,5 +1,5 @@
 ---
-'@utilitywarehouse/web-ui-codemod': patch
+'@utilitywarehouse/ds-codemod': patch
 ---
 
 initial test release
