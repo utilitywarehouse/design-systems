@@ -88,14 +88,13 @@ const TRANSFORMER_INQUIRER_CHOICES = [
     value: 'v2-migration',
   },
   {
-    name:
-      'background-color-level-naming: Transforms the backgroundColor prop on the Background component to the new color level naming convention',
+    name: 'background-color-level-naming: Transforms the backgroundColor prop on the Background component to the new color level naming convention',
     value: 'background-color-level-naming',
   },
 ];
 
-function expandFilePathsIfNeeded(filesBeforeExpansion: string[]) {
-  const shouldExpandFiles = filesBeforeExpansion.some((file: string | string[]) =>
+function expandFilePathsIfNeeded(filesBeforeExpansion: Array<string>) {
+  const shouldExpandFiles = filesBeforeExpansion.some((file: string | Array<string>) =>
     file.includes('*')
   );
   return shouldExpandFiles ? globby.sync(filesBeforeExpansion) : filesBeforeExpansion;

@@ -32,7 +32,7 @@ export type DefaultLegacyTypographyComponent = 'p';
 
 export interface LegacyTypographyTypeMap<
   AdditionalProps = object,
-  DefaultComponent extends React.ElementType = 'span'
+  DefaultComponent extends React.ElementType = 'span',
 > {
   props: AdditionalProps & PropsWithChildren<PropsWithSx<LegacyTypographyOwnProps>>;
   defaultComponent: DefaultComponent;
@@ -40,7 +40,7 @@ export interface LegacyTypographyTypeMap<
 
 export type LegacyTypographyProps<
   RootComponent extends React.ElementType = LegacyTypographyTypeMap['defaultComponent'],
-  AdditionalProps = object
+  AdditionalProps = object,
 > = OverrideProps<LegacyTypographyTypeMap<AdditionalProps, RootComponent>, RootComponent> & {
   component?: React.ElementType;
 };

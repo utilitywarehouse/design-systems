@@ -12,7 +12,7 @@ export interface StackTypeMap<D extends React.ElementType = DefaultStackComponen
 
 export type StackProps<
   D extends React.ElementType = DefaultStackComponent,
-  P = object
+  P = object,
 > = OverrideProps<StackTypeMap<D, P>, D>;
 
 /**

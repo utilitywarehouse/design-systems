@@ -15,7 +15,7 @@ export interface BoxOwnProps {
 
 export type BoxProps<
   RootComponent extends ElementType = MuiBoxTypeMap['defaultComponent'],
-  AdditionalProps = object
+  AdditionalProps = object,
 > = OverrideProps<
   MuiBoxTypeMap<BoxOwnProps & AdditionalProps, RootComponent, Theme>,
   RootComponent

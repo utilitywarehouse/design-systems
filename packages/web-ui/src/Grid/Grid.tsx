@@ -22,7 +22,7 @@ export interface GridTypeMap<D extends React.ElementType = DefaultGridComponent,
 
 export type GridProps<
   D extends React.ElementType = DefaultGridComponent,
-  P = object
+  P = object,
 > = OverrideProps<GridTypeMap<D, P>, D>;
 
 /**
