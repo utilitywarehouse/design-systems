@@ -1,9 +1,9 @@
 {
-  "name": "@utilitywarehouse/web-ui-codemod",
+  "name": "@utilitywarehouse/ds-codemods",
   "version": "0.0.1",
-  "description": "Codemode scripts for Web UI",
+  "description": "Codemod scripts for Design Systems packages.",
   "bin": {
-    "@utilitywarehouse/web-ui-codemod": "dist/bin/codemod.js"
+    "@utilitywarehouse/ds-codemod": "dist/bin/codemod.js"
   },
   "scripts": {
     "build": "rm -rf dist && pnpm tsc -d -p tsconfig.json",
