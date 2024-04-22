@@ -1,11 +1,11 @@
 /* eslint-disable */
 // @utilitywarehouse/customer-ui-codemod optional-name-of-transform optional/path/to/src [...options]
 
-import globby from 'globby';
+import { globbySync } from 'globby';
 import inquirer from 'inquirer';
 import meow from 'meow';
 import path from 'path';
-import execa from 'execa';
+import { execaSync } from 'execa';
 import chalk from 'chalk';
 import isGitClean from 'is-git-clean';
 
@@ -72,7 +72,7 @@ export function runTransform({ files, flags, transformer }) {
 
   console.log(`Executing command: jscodeshift ${args.join(' ')}`);
 
-  const result = execa.sync(jscodeshiftExecutable, args, {
+  const result = execaSync(jscodeshiftExecutable, args, {
     stdio: 'inherit',
     stripFinalNewline: false,
   });
@@ -82,13 +82,22 @@ export function runTransform({ files, flags, transformer }) {
   }
 }
 
-const TRANSFORMER_INQUIRER_CHOICES = [];
+const TRANSFORMER_INQUIRER_CHOICES = [
+  {
+    name: 'Web UI v0 migration: Runs all the CWUI transforms.',
+    value: 'web-ui/v0/migration',
+  },
+  {
+    name: 'cwui-import-paths: Transforms top level customer-ui-material imports.',
+    value: 'web-ui/v0/import-paths',
+  },
+];
 
 function expandFilePathsIfNeeded(filesBeforeExpansion: Array<string>) {
   const shouldExpandFiles = filesBeforeExpansion.some((file: string | Array<string>) =>
     file.includes('*')
   );
-  return shouldExpandFiles ? globby.sync(filesBeforeExpansion) : filesBeforeExpansion;
+  return shouldExpandFiles ? globbySync(filesBeforeExpansion) : filesBeforeExpansion;
 }
 
 export function run() {

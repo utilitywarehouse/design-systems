@@ -25,9 +25,17 @@ const validWebUiElements = [
   'TypographyProps',
   'Stack',
   'StackProps',
+  'ThemeProvider',
+  'ThemeProviderProps',
+  'ToggleButton',
+  'ToggleButtonProps',
+  'ToggleButtonGroup',
+  'ToggleButtonGroupProps',
+  'styled',
 ];
 
 const localMyAccountComponents = ['Card', 'CardProps', 'CardVariant', 'Container', 'NavLink'];
+const localMyAccountHooks = ['useDeviceSize'];
 
 const removedCwuiElements = [
   'Icon',
@@ -51,6 +59,7 @@ export default function transformer(file: FileInfo, api: API, options: Options) 
   const cwuiSpecifiers = [];
   const webUiSpecifiers = [];
   const localComponentSpecifiers = [];
+  const localHooksSpecifiers = [];
 
   root
     .find(j.ImportDeclaration)
@@ -64,6 +73,8 @@ export default function transformer(file: FileInfo, api: API, options: Options) 
             webUiSpecifiers.push(j.importSpecifier(j.identifier(localName)));
           } else if (localMyAccountComponents.includes(localName)) {
             localComponentSpecifiers.push(j.importSpecifier(j.identifier(localName)));
+          } else if (localMyAccountHooks.includes(localName)) {
+            localHooksSpecifiers.push(j.importSpecifier(j.identifier(localName)));
           } else if (removedCwuiElements.includes(localName)) {
             cwuiSpecifiers.push(j.importSpecifier(j.identifier(localName)));
           }
@@ -85,6 +96,13 @@ export default function transformer(file: FileInfo, api: API, options: Options) 
       .find(j.Program)
       .get('body', 0)
       .insertAfter(j.importDeclaration(localComponentSpecifiers, j.literal('~/components')));
+  }
+
+  if (localComponentSpecifiers.length > 0) {
+    root
+      .find(j.Program)
+      .get('body', 0)
+      .insertAfter(j.importDeclaration(localHooksSpecifiers, j.literal('~/hooks')));
   }
 
   if (cwuiSpecifiers.length > 0) {

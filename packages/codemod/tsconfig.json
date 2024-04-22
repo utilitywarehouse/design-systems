@@ -5,7 +5,6 @@
     "preserveWatchOutput": true,
     "outDir": "dist",
     "lib": ["es2022"],
-    "rootDir":"transforms",
     "composite": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -16,6 +15,6 @@
     "isolatedModules": true,
     "types": ["node", "jest"]
   },
-  "include": ["transforms/**/*.ts"],
+  "include": ["**/*.ts"],
   "exclude": ["transforms/**/__test*/**","node_modules"]
 }
