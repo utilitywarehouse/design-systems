@@ -4,3 +4,4 @@ dist/
 ./.vscode/
 tsconfig.json
 *.md*
+**/__testfixtures__

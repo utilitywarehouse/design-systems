@@ -1,48 +1,33 @@
 import { API, FileInfo, Options } from 'jscodeshift';
 
-const validCwuiElements = [
-  'Background',
+const validWebUiElements = [
   'Box',
   'BoxProps',
   'Button',
   'ButtonProps',
-  'Card',
-  'CardProps',
   'CardVariant',
   'Container',
   'Grid',
   'GridProps',
-  'Hidden',
-  'HiddenProps',
-  'Icon',
-  'IconProps',
-  'InteractiveCard',
-  'InteractiveCardProps',
   'Link',
   'LinkProps',
   'Menu',
   'MenuItem',
   'MenuItemProps',
   'MenuProps',
-  'NavLink',
-  'NavLinkProps',
   'Stack',
   'StackProps',
-  'StylesProvider',
-  'StylesProviderProps',
   'TextField',
   'TextFieldProps',
   'ThemeProvider',
   'ThemeProviderProps',
   'Typography',
   'TypographyProps',
-  'makeStyles',
   'styled',
-  'useDeviceSize',
   'useTheme',
 ];
 
-const removedCwuiElements = ['BackgroundContext', 'BackgroundProvider'];
+const removedCwuiElements = ['Card','Container','Hidden', 'Icon', 'useDeviceSize', 'InteractiveCard', 'NavLink'];
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function transformer(file: FileInfo, api: API, options: Options) {

@@ -1,9 +1,9 @@
 {
-  "name": "@utilitywarehouse/customer-ui-codemod",
+  "name": "@utilitywarehouse/web-ui-codemod",
   "version": "0.0.13",
-  "description": "Codemode scripts for Customer Web UI",
+  "description": "Codemode scripts for Web UI",
   "bin": {
-    "@utilitywarehouse/customer-ui-codemod": "dist/bin/codemod.js"
+    "@utilitywarehouse/web-ui-codemod": "dist/bin/codemod.js"
   },
   "scripts": {
     "build": "rm -rf dist && pnpm tsc -d -p tsconfig.json",
@@ -14,17 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/utilitywarehouse/customer-web-ui.git",
+    "url": "git+https://github.com/utilitywarehouse/design-systems.git",
     "directory": "packages/codemod"
   },
   "author": "Rob Phoenix",
   "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/utilitywarehouse/customer-web-ui/issues"
-  },
   "homepage": "https://github.com/utilitywarehouse/customer-web-ui#readme",
   "dependencies": {
-    "@utilitywarehouse/customer-ui-material": "workspace:^2.2.0",
+    "@utilitywarehouse/web-ui": "workspace:^",
     "chalk": "4.1.0",
     "cheerio": "1.0.0-rc.9",
     "execa": "4.0.3",

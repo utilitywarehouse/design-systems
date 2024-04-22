@@ -35,26 +35,4 @@ import {
   TypographyProps,
   styled,
   useDeviceSize,
-} from 'cwui-v2';
-
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Alert,
-  Checkbox,
-  Dialog,
-  Divider,
-  FormControlLabel,
-  IconButton,
-  InputLabel,
-  Select,
-  SelectProps,
-  Tab,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Tabs,
-} from '@mui/material';
+} from '@utilitywarehouse/customer-ui-material';
