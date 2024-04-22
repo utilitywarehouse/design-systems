@@ -25,7 +25,7 @@ export interface CustomBackgroundProps {
 
 export type BackgroundProps<
   D extends React.ElementType = DefaultBackgroundComponent,
-  P = object
+  P = object,
 > = OverrideProps<MuiBoxTypeMap<CustomBackgroundProps & P, D, Theme>, D>;
 
 /**
