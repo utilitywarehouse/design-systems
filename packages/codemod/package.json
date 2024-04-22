@@ -20,19 +20,19 @@
   "author": "Rob Phoenix",
   "license": "UNLICENSED",
   "dependencies": {
-    "@utilitywarehouse/web-ui": "workspace:^",
-    "chalk": "4.1.0",
-    "cheerio": "1.0.0-rc.9",
-    "execa": "4.0.3",
-    "globby": "11.0.1",
-    "inquirer": "7.3.3",
-    "is-git-clean": "1.1.0",
-    "jscodeshift": "0.13.1",
-    "meow": "7.0.1"
+    "chalk": "^5.3.0",
+    "cheerio": "1.0.0-rc.12",
+    "execa": "^8.0.1",
+    "globby": "^14.0.1",
+    "inquirer": "^9.2.19",
+    "is-git-clean": "^1.1.0",
+    "jscodeshift": "^0.15.2",
+    "meow": "^13.2.0"
   },
   "devDependencies": {
     "@types/jest": "^29.2.5",
     "@types/jscodeshift": "0.11.0",
+    "@utilitywarehouse/web-ui": "workspace:^",
     "jest": "^29.3.1",
     "ts-jest": "^29.0.3"
   },

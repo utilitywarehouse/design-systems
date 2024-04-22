@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable */
 // @utilitywarehouse/customer-ui-codemod optional-name-of-transform optional/path/to/src [...options]
 
 import globby from 'globby';
@@ -82,16 +82,7 @@ export function runTransform({ files, flags, transformer }) {
   }
 }
 
-const TRANSFORMER_INQUIRER_CHOICES = [
-  {
-    name: 'v2-migration: Runs all v2 transforms',
-    value: 'v2-migration',
-  },
-  {
-    name: 'background-color-level-naming: Transforms the backgroundColor prop on the Background component to the new color level naming convention',
-    value: 'background-color-level-naming',
-  },
-];
+const TRANSFORMER_INQUIRER_CHOICES = [];
 
 function expandFilePathsIfNeeded(filesBeforeExpansion: Array<string>) {
   const shouldExpandFiles = filesBeforeExpansion.some((file: string | Array<string>) =>
