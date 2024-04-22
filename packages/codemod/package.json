@@ -1,5 +1,5 @@
 {
-  "name": "@utilitywarehouse/ds-codemods",
+  "name": "@utilitywarehouse/ds-codemod",
   "version": "0.0.1",
   "description": "Codemod scripts for Design Systems packages.",
   "bin": {
