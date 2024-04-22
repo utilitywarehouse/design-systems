@@ -1,9 +1,9 @@
 {
-  "name": "@utilitywarehouse/web-ui-codemod",
+  "name": "@utilitywarehouse/ds-codemods",
   "version": "0.0.1",
-  "description": "Codemode scripts for Web UI",
+  "description": "Codemod scripts for Design Systems packages.",
   "bin": {
-    "@utilitywarehouse/web-ui-codemod": "dist/bin/codemod.js"
+    "@utilitywarehouse/ds-codemod": "dist/bin/codemod.js"
   },
   "scripts": {
     "build": "rm -rf dist && pnpm tsc -d -p tsconfig.json",
@@ -30,9 +30,13 @@
     "meow": "^13.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-typescript": "^7.24.1",
     "@types/jest": "^29.2.5",
     "@types/jscodeshift": "0.11.0",
     "@utilitywarehouse/web-ui": "workspace:^",
+    "babel-jest": "^29.7.0",
     "jest": "^29.3.1",
     "ts-jest": "^29.0.3"
   },

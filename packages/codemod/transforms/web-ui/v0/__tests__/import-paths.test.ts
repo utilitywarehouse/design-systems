@@ -1,6 +1,6 @@
 import { defineTest } from 'jscodeshift/src/testUtils';
 
-const NAME = 'top-level-imports';
+const NAME = 'import-paths';
 
 describe(NAME, () => {
   defineTest(__dirname, NAME, {}, undefined, {

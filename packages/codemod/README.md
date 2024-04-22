@@ -1,10 +1,14 @@
 # Codemod
 
-Web UI codemods, primarily for migrating between major versions.
+Codemods, primarily for migrating between major versions.
 
 ## Available codemods
 
-### cwui-migration
+### Web UI
+
+#### v0
+
+##### migration
 
 This is the main codemod, and contains all the transforms that will do most of
 the heavy lifting for migrating from `customer-ui-material` to `web-ui` of. This
@@ -22,10 +26,9 @@ be updated as expected; `variant={true ? 'contained' : 'outlined'}`. In this
 circumstance the resulting build will probably break and will require some
 manual updating.
 
-### top-level-imports
+##### import-paths
 
-This codemod transforms the top level imports in your files by updating the
-package name.
+This codemod transforms imports from the `customer-ui-material` library.
 
 ```diff
 - import {
@@ -33,12 +36,7 @@ package name.
 -   Button,
 -   Stack,
 - } from '@utilitywarehouse/customer-ui-material';
-+ import { Box, Button } from 'cwui-v2';
-+ import {
-+   MuiTextfield,
-+   ButtonBase,
-+   Checkbox as MuiCheckbox
-+ } from '@mui/material';
++ import { Box, Button, Stack } from 'cwui-v2';
 ```
 
 ### background-color-level-name
