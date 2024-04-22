@@ -12,7 +12,7 @@ export type DefaultMenuItemComponent = 'li';
 
 export interface MenuItemTypeMap<
   D extends React.ElementType = DefaultMenuItemComponent,
-  P = object
+  P = object,
 > {
   props: MuiMenuItemProps<D, P>;
   defaultComponent: D;
@@ -20,7 +20,7 @@ export interface MenuItemTypeMap<
 
 export type MenuItemProps<
   D extends React.ElementType = DefaultMenuItemComponent,
-  P = object
+  P = object,
 > = OverrideProps<MenuItemTypeMap<D, P>, D>;
 
 const StyledMenuItem = styled(MuiMenuItem)({
