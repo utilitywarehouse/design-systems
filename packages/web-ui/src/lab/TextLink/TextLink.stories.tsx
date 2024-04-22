@@ -5,8 +5,6 @@ import { Text } from '../../Text';
 import { Flex } from '../../Flex';
 import { Box } from '../../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { styled } from '../../theme';
-import { DATA_ATTRIBUTE_SELECTORS } from '../../utils';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Lab / TextLink',
