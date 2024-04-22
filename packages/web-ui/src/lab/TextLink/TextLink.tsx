@@ -11,7 +11,9 @@ import { useBackground } from '../../Box';
 const componentName = 'TextLink';
 const componentClassName = withGlobalPrefix(componentName);
 
-const StyledElement = styled(Typography)({
+const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== 'color' })<{
+  color?: string;
+}>(({ color }) => ({
   cursor: 'pointer',
   display: 'inline-flex',
   alignItems: 'center',
@@ -19,6 +21,7 @@ const StyledElement = styled(Typography)({
   textAlign: 'center',
   flexShrink: 0,
   '--text-link-color': colors.cyan600,
+  '--text-link-color-custom': color,
   '--text-link-color-on-brand-bg': colorsCommon.brandWhite,
   '--text-link-color-active': colors.cyan800,
   '--text-link-color-active-on-brand-bg': colors.purple100,
@@ -54,7 +57,12 @@ const StyledElement = styled(Typography)({
     '--text-link-color-visited': 'var(--text-link-color-visited-on-brand-bg)',
     '--text-link-focus-outline-color': 'var(--text-link-focus-outline-color-on-brand-bg)',
   },
-});
+  [DATA_ATTRIBUTE_SELECTORS.customColor]: {
+    '--text-link-color': 'var(--text-link-color-custom)',
+    '--text-link-color-active': 'var(--text-link-color-custom)',
+    '--text-link-color-visited': 'var(--text-link-color-custom)',
+  },
+}));
 
 /**
  * A semantic element for navigating between pages.
@@ -68,10 +76,11 @@ const StyledElement = styled(Typography)({
 export const TextLink = React.forwardRef<
   React.ElementRef<'a'>,
   React.PropsWithChildren<PropsWithSx<TextLinkProps>>
->(({ className, ...props }, ref) => {
+>(({ className, color, ...props }, ref) => {
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
     [DATA_ATTRIBUTES.onBrandBackground]: isBrandBackground ? '' : undefined,
+    [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
   };
   return (
     <StyledElement
@@ -82,7 +91,7 @@ export const TextLink = React.forwardRef<
       fontSize="inherit"
       lineHeight="inherit"
       weight="inherit"
-      color="inherit"
+      color={color}
       {...dataAttributeProps}
       {...props}
     />
