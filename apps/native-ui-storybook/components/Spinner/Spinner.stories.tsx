@@ -1,12 +1,12 @@
 import Spinner from './Spinner';
+import Variants from './Variants';
 import type { Meta } from '@storybook/react';
 
-const BoxMeta: Meta<typeof Spinner> = {
+const SpinnerMeta: Meta<typeof Spinner> = {
   title: 'components/Spinner',
   component: Spinner,
-  args: { bg: 'red500', w: 100, h: 100 },
 };
 
-export default BoxMeta;
+export default SpinnerMeta;
 
-export { Spinner };
+export { Spinner as Playground, Variants };
