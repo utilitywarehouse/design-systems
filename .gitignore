@@ -18,8 +18,9 @@ coverage
 storybook-static
 .turbo/*
 !.turbo/config.json
+/**/*.tsbuildinfo
 
-# fonts 
+# fonts
 Aeonik
 WorkSans
 

@@ -31,7 +31,7 @@ export type ButtonTypeMap<P = object, D extends React.ElementType = DefaultButto
 
 export type ButtonProps<
   D extends React.ElementType = DefaultButtonComponent,
-  P = object
+  P = object,
 > = OverrideProps<ButtonTypeMap<P, D>, D>;
 
 const borderWidth = 2;
