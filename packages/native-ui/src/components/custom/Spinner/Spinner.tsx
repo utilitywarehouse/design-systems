@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { styled } from '@gluestack-style/react';
-import Animated, {
+import {
   useSharedValue,
   withTiming,
   useAnimatedProps,
@@ -9,79 +8,14 @@ import Animated, {
   withSequence,
   withRepeat,
 } from 'react-native-reanimated';
-import { Svg, G, Circle } from 'react-native-svg';
-import { Platform, View } from 'react-native';
+import { G } from 'react-native-svg';
+import { Platform } from 'react-native';
+import { StyledCircle, StyledSpinner, StyledSvg } from './styled-components';
 
 interface SpinnerProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   color?: string;
 }
-
-const StyledSpinner = styled(
-  View,
-  {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    _svg: {
-      props: {
-        color: '$purple800',
-      },
-    },
-    _dark: {
-      _svg: {
-        props: {
-          color: '$darkPurple800',
-        },
-      },
-    },
-    variants: {
-      size: {
-        xs: {
-          width: 16,
-          height: 16,
-        },
-        sm: {
-          width: 24,
-          height: 24,
-        },
-        md: {
-          width: 32,
-          height: 32,
-        },
-        lg: {
-          width: 48,
-          height: 48,
-        },
-      },
-    },
-
-    defaultProps: {
-      size: 'md',
-    },
-  },
-  { componentName: 'Spinner', ancestorStyle: ['_spinner'], descendantStyle: ['_svg'] }
-);
-
-const AnimatedSvg = Animated.createAnimatedComponent(Svg);
-
-const SpinnerSVG = styled(
-  AnimatedSvg,
-  {},
-  {
-    componentName: 'SpinnerSvg',
-    ancestorStyle: ['_svg'],
-    descendantStyle: ['_circle'],
-  }
-);
-
-const AnimatedCircle = Animated.createAnimatedComponent(Circle);
-
-const SpinnerCircle = styled(
-  AnimatedCircle,
-  {},
-  { componentName: 'SpinnerCircle', ancestorStyle: ['_circle'] }
-);
 
 const getWidth = (size: 'xs' | 'sm' | 'md' | 'lg') => {
   switch (size) {
@@ -154,7 +88,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color }) => {
 
   return (
     <StyledSpinner size={size}>
-      <SpinnerSVG
+      <StyledSvg
         width={width}
         height={width}
         viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}
@@ -162,7 +96,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color }) => {
         animatedProps={Platform.OS === 'web' ? animatedSvgProps : {}}
       >
         <G origin={`${HALF_CIRCLE}, ${HALF_CIRCLE}`} rotation={-90}>
-          <SpinnerCircle
+          <StyledCircle
             fill="transparent"
             stroke={color ? color : 'currentColor'}
             strokeWidth={STROKE_WIDTH}
@@ -174,7 +108,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color }) => {
             strokeDasharray={CIRCUMFERENCE}
           />
         </G>
-      </SpinnerSVG>
+      </StyledSvg>
     </StyledSpinner>
   );
 };
