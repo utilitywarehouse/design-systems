@@ -41,14 +41,6 @@ const Alert: React.FC<AlertProps> = ({
   children,
   ...props
 }) => {
-  if (children) {
-    return (
-      <GSAlert colorScheme={colorScheme} {...props}>
-        {children}
-      </GSAlert>
-    );
-  }
-
   useEffect(() => {
     if (__DEV__) {
       if (onPressIconButton && link) {
@@ -59,12 +51,21 @@ const Alert: React.FC<AlertProps> = ({
     }
   }, [onPressIconButton, link]);
 
+  if (children) {
+    return (
+      <GSAlert colorScheme={colorScheme} {...props}>
+        {children}
+      </GSAlert>
+    );
+  }
+
   return (
     <GSAlert colorScheme={colorScheme} {...props}>
       <>
         <AlertIcon as={getIcon(colorScheme)} />
         <VStack flex={1} gap={4}>
           {!!title && <AlertTitle>{title}</AlertTitle>}
+          {/* @ts-expect-error - Gluestack issue reported */}
           <AlertText>{text}</AlertText>
           {!!link && (
             <AlertLink onPress={onPressLink}>
