@@ -16,9 +16,9 @@ async function runJscodeshiftTransform(transform, files, flags, codemodFlags) {
   let transformerPath;
   let error;
   try {
-    await fs.stat(item);
+    await fs.stat(transformPath);
     error = undefined;
-    transformerPath = item;
+    transformerPath = transformPath;
   } catch (srcPathError) {
     error = srcPathError;
   }
@@ -26,7 +26,7 @@ async function runJscodeshiftTransform(transform, files, flags, codemodFlags) {
   if (error) {
     if (error?.code === 'ENOENT') {
       throw new Error(
-        `Transform '${transform}' not found. Check out ${transformPath.resolve(
+        `Transform '${transform}' not found. Check out ${path.resolve(
           __dirname,
           './README.md for a list of available codemods.'
         )}`
