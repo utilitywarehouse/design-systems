@@ -1,5 +1,13 @@
 # @utilitywarehouse/ds-codemod
 
+## 0.0.9
+
+### Patch Changes
+
+- [#304](https://github.com/utilitywarehouse/design-systems/pull/304) [`bc5e901`](https://github.com/utilitywarehouse/design-systems/commit/bc5e9010555dafa771dd2a011543b6500c5e3521) Thanks [@robphoenix](https://github.com/robphoenix)! - fix linting
+
+- [#304](https://github.com/utilitywarehouse/design-systems/pull/304) [`bc5e901`](https://github.com/utilitywarehouse/design-systems/commit/bc5e9010555dafa771dd2a011543b6500c5e3521) Thanks [@robphoenix](https://github.com/robphoenix)! - rip & replace the codemod cli
+
 ## 0.0.8
 
 ### Patch Changes
