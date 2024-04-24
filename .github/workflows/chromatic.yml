@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - 'packages/web-ui/**'
-      - 'packages/colour-system/**'
 
 jobs:
   chromatic-deployment:

@@ -12,6 +12,16 @@ module.exports = {
     getAbsolutePath('@storybook/addon-react-native-web'),
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     getAbsolutePath('storybook-dark-mode'),
+    {
+      name: '@storybook/addon-react-native-web',
+      options: {
+        modulesToTranspile: ['react-native-reanimated'],
+        babelPlugins: [
+          '@babel/plugin-proposal-export-namespace-from',
+          'react-native-reanimated/plugin',
+        ],
+      },
+    },
   ],
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),

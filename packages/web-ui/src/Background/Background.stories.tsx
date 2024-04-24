@@ -90,7 +90,7 @@ export const Backgrounds = {
 };
 
 export const NestedBackgrounds: Story = {
-  render: ({ children, ...args }) => {
+  render: ({ ...args }) => {
     return (
       <Background {...args} backgroundColor="midnight">
         <Typography variant="body">This text should be white</Typography>

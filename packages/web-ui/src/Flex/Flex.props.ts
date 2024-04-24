@@ -17,7 +17,7 @@ export interface FlexOwnProps {
 
 export type FlexProps<
   RootComponent extends ElementType = MuiBoxTypeMap['defaultComponent'],
-  AdditionalProps = {}
+  AdditionalProps = object,
 > = OverrideProps<
   MuiBoxTypeMap<FlexOwnProps & AdditionalProps, RootComponent, Theme>,
   RootComponent

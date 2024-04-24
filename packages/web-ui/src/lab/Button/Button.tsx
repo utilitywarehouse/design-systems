@@ -50,7 +50,6 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
     large: {
       '--button-font-size': pxToRem(18),
       '--button-line-height': pxToRem(24),
-      '--button-height': pxToRem(48),
       '--button-min-width': px(120),
       '--button-padding-inline': px(24),
       '--button-padding-block': px(12),
@@ -60,7 +59,6 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
     small: {
       '--button-font-size': pxToRem(16),
       '--button-line-height': pxToRem(16),
-      '--button-height': pxToRem(32),
       '--button-min-width': px(56),
       '--button-padding-inline': px(16),
       '--button-padding-block': px(8),
@@ -74,13 +72,11 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
     fontSize: 'var(--button-font-size)',
     fontWeight: fontWeights.secondary.semibold,
     lineHeight: 'var(--button-line-height)',
+    inlineSize: 'fit-content',
     minWidth: 'var(--button-min-width)',
     gap: 'var(--button-gap)',
-    height: 'var(--button-height)',
-    paddingTop: 'var(--button-padding-block)',
-    paddingBottom: 'var(--button-padding-block)',
-    paddingLeft: 'var(--button-padding-inline)',
-    paddingRight: 'var(--button-padding-inline)',
+    paddingBlock: 'var(--button-padding-block)',
+    paddingInline: 'var(--button-padding-inline)',
     [classSelectors.size.large]: { ...sizeStyles.large },
     [classSelectors.size.small]: { ...sizeStyles.small },
     [mediaQueries.tablet]: {

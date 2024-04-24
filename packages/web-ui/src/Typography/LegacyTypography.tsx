@@ -22,7 +22,7 @@ export const headingVariantMapping: Record<string, string> = {
 };
 
 export interface LegacyTypographyOwnProps extends ComponentPropsWithoutRef<'span'> {
-  color?: string | 'primary' | 'secondary' | 'success' | 'error';
+  color?: string;
   /** @deprecated The variant prop is deprecated and will be removed in v1 */
   variant?: MuiTypographyProps['variant'];
   component?: React.ElementType;
@@ -31,8 +31,8 @@ export interface LegacyTypographyOwnProps extends ComponentPropsWithoutRef<'span
 export type DefaultLegacyTypographyComponent = 'p';
 
 export interface LegacyTypographyTypeMap<
-  AdditionalProps = {},
-  DefaultComponent extends React.ElementType = 'span'
+  AdditionalProps = object,
+  DefaultComponent extends React.ElementType = 'span',
 > {
   props: AdditionalProps & PropsWithChildren<PropsWithSx<LegacyTypographyOwnProps>>;
   defaultComponent: DefaultComponent;
@@ -40,7 +40,7 @@ export interface LegacyTypographyTypeMap<
 
 export type LegacyTypographyProps<
   RootComponent extends React.ElementType = LegacyTypographyTypeMap['defaultComponent'],
-  AdditionalProps = {}
+  AdditionalProps = object,
 > = OverrideProps<LegacyTypographyTypeMap<AdditionalProps, RootComponent>, RootComponent> & {
   component?: React.ElementType;
 };
@@ -62,7 +62,7 @@ export const LegacyTypography = forwardRef(function LegacyTypography(
   const dataAttributeProps = isLegacyColor
     ? {
         [DATA_ATTRIBUTES.legacy]: true,
-        // @ts-ignore
+        // @ts-expect-error this code is deprecated and soon to be removed
         [DATA_ATTRIBUTES[getLegacyColor(color)]]: true,
       }
     : {};

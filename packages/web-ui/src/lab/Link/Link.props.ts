@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react';
 import { Responsive } from '../../types';
 
-export type LinkProps = {
+export interface LinkProps extends ComponentPropsWithoutRef<'a'> {
   /**
    * Sets the link size.
    * @default large
@@ -11,4 +11,4 @@ export type LinkProps = {
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    */
   asChild?: boolean;
-} & ComponentPropsWithoutRef<'a'>;
+}

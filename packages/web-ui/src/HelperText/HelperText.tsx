@@ -68,7 +68,9 @@ export const HelperText = React.forwardRef<
     valid: Tick01SmallContainedIcon,
     invalid: Warning01SmallContainedIcon,
   };
-  const Icon = validationStatus ? icons[validationStatus] : Information01SmallContainedIcon;
+  const Icon = validationStatus
+    ? (icons[validationStatus] as JSX.ElementType)
+    : (Information01SmallContainedIcon as JSX.ElementType);
 
   return (
     <StyledElement

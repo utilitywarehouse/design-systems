@@ -1,6 +1,6 @@
 export const ORIENTATIONS = ['horizontal', 'vertical'] as const;
 
-export type Orientation = typeof ORIENTATIONS[number];
+export type Orientation = (typeof ORIENTATIONS)[number];
 
 export interface DividerProps extends React.ComponentPropsWithoutRef<'hr'> {
   /**

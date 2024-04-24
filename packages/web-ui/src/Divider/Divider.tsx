@@ -9,7 +9,7 @@ const componentName = 'Divider';
 const componentClassName = withGlobalPrefix(componentName);
 const defaultOrientation = 'horizontal';
 
-function isValidOrientation(orientation: any): orientation is Orientation {
+function isValidOrientation(orientation: Orientation) {
   return ORIENTATIONS.includes(orientation);
 }
 

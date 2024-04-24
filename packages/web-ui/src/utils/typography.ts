@@ -1,4 +1,3 @@
-
 // 16px is the default font-size used by browsers.
 export const htmlFontSize = 16; // px
 export const pxToRem = (size: number) => `${size / htmlFontSize}rem`;

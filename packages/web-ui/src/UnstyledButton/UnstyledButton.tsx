@@ -21,12 +21,11 @@ const StyledButton = styled('button')<UnstyledButtonProps>(() => {
     justifyContent: 'center',
     textAlign: 'center',
     flexShrink: 0,
-    userSelect: 'none',
+    userSelect: 'none', // make inner text unselectable
     verticalAlign: 'top',
     WebkitTapHighlightColor: 'transparent',
     WebkitTouchCallout: 'none',
-    // make clicks not need to wait and observe a potential double click, making the buttons feel faster
-    touchAction: 'manipulation',
+    touchAction: 'manipulation', // make clicks not need to wait and observe a potential double click, making the buttons feel faster
     backgroundColor: 'transparent',
     border: 'none',
   };

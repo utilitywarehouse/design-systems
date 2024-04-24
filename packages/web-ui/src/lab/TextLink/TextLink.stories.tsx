@@ -4,8 +4,7 @@ import { TextLink } from './TextLink';
 import { Text } from '../../Text';
 import { Flex } from '../../Flex';
 import { Box } from '../../Box';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { styled } from '../../theme';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Lab / TextLink',
@@ -29,10 +28,10 @@ export const Workshop: Story = {
       </Text>
       <Text>
         Agnes Martin was an American <TextLink {...args}>abstract painter</TextLink> known for her{' '}
-        <TextLink {...args}>minimalist</TextLink> style. Martin's art was characterized by serene
-        compositions featuring <TextLink {...args}>grids and lines</TextLink>. Martin's minimalist
-        approach conveyed tranquility and <TextLink {...args}>spirituality</TextLink>, and her
-        paintings often carried positive names reflective of her{' '}
+        <TextLink {...args}>minimalist</TextLink> style. Martin&apos;s art was characterized by
+        serene compositions featuring <TextLink {...args}>grids and lines</TextLink>. Martin&apos;s
+        minimalist approach conveyed tranquility and <TextLink {...args}>spirituality</TextLink>,
+        and her paintings often carried positive names reflective of her{' '}
         <TextLink {...args}>philosophy</TextLink>.
       </Text>
     </Flex>
@@ -79,32 +78,39 @@ export const TextLinkColour: Story = {
   name: 'Contextual Colour',
   args: { href: '#' },
   render: args => {
-    const StyledTextLink = styled(TextLink)({
-      '--text-link-color-default': colorsCommon.brandPink,
-      '--text-link-color-active': colorsCommon.brandPink,
-      '--text-link-color-visited': colorsCommon.brandPink,
-    });
     return (
       <Flex direction="column">
         <Box padding={2}>
           <Text variant="body">
-            Text with a <TextLink {...args}>TextLink</TextLink>
+            Text with a <TextLink {...args}>TextLink</TextLink>.
           </Text>
         </Box>
         <Box padding={2} background={colorsCommon.brandPrimaryPurple}>
           <Text variant="body">
-            Text with a <TextLink {...args}>TextLink</TextLink> on brandPrimaryPurple background
+            Text with a <TextLink {...args}>TextLink</TextLink> on brandPrimaryPurple background.
           </Text>
         </Box>
         <Box padding={2} background={colorsCommon.brandMidnight}>
           <Text variant="body">
-            Text with a <TextLink {...args}>TextLink</TextLink> on brandMidnight background
+            Text with a <TextLink {...args}>TextLink</TextLink> on brandMidnight background.
           </Text>
         </Box>
         <Box padding={2} background={colorsCommon.brandMidnight}>
           <Text variant="body" color={colorsCommon.brandPink}>
-            Text with a <StyledTextLink {...args}>TextLink</StyledTextLink> on brandMidnight
-            background with custom color
+            Text with a{' '}
+            <TextLink {...args} color="inherit">
+              TextLink
+            </TextLink>{' '}
+            on brandMidnight background with inherited colour.
+          </Text>
+        </Box>
+        <Box padding={2}>
+          <Text variant="body">
+            Text with a{' '}
+            <TextLink {...args} color={colors.green500}>
+              TextLink
+            </TextLink>{' '}
+            on brandWhite background with custom colour.
           </Text>
         </Box>
       </Flex>

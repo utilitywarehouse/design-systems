@@ -19,8 +19,11 @@ type Options = {
  * for that please use the styled utility.
  */
 export function createBox<
-  RootComponent extends React.ElementType = MuiBoxTypeMap['defaultComponent']
->(options: Options = {}) {
+  RootComponent extends React.ElementType = MuiBoxTypeMap['defaultComponent'],
+>(
+  /* eslint-disable @typescript-eslint/ban-types */
+  options: Options = {}
+) {
   const { componentName = 'Box' } = options;
   const BaseBox = createMuiBox<Theme>({
     defaultTheme: theme,

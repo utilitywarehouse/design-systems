@@ -78,26 +78,33 @@ the `Text` component does.
 </Box>
 ```
 
-You can set the `TextLink` CSS custom properties to override the colours. You
-will have to do this separately to any color overrides you set on the parent
-`Text` component due to the additional `active state`.
+You can use the `color` prop to override the `TextLink` colours. This will set
+the `active` & `visited` states to the same colour as the default state. If you
+set it to `"inherit"` then the `TextLink` component will inherit the colour of
+the parent element.
 
 ```tsx
-import { styled, Box, Text } from "@utilitywarehouse/web-ui";
+import { Box, Text } from "@utilitywarehouse/web-ui";
 import { TextLink } from "@utilitywarehouse/web-ui/dist/lab";
-
-const StyledTextLink = styled(TextLink)({
-  '--text-link-color-default': colorsCommon.brandPink,
-  '--text-link-color-active': colorsCommon.brandPink,
-  '--text-link-color-visited': colorsCommon.brandPink,
-})
 
 [...]
 
 <Box padding={2} background={colorsCommon.brandMidnight}>
   <Text variant="body" color={colorsCommon.brandPink}>
-    Text with a <StyledTextLink>TextLink</StyledTextLink> on brandMidnight background with
-    custom color
+    Text with a{' '}
+    <TextLink {...args} color="inherit">
+      TextLink
+    </TextLink>{' '}
+    on brandMidnight background with custom color
+  </Text>
+</Box>
+<Box padding={2}>
+  <Text variant="body">
+    Text with a{' '}
+    <TextLink {...args} color={colors.green500}>
+      TextLink
+    </TextLink>{' '}
+    on brandWhite background with custom color
   </Text>
 </Box>
 ```

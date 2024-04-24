@@ -1,26 +1,32 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "ES2018",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": false,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
     "module": "ES2020",
     "moduleResolution": "node",
     "outDir": "dist",
     "rootDir": "src",
-    "lib": [
-      "DOM",
-      "ESNext",
-      "DOM.Iterable"
-    ],
+    "lib": ["es2022", "dom", "dom.iterable"],
     "jsx": "react",
     "emitDeclarationOnly": true,
-    "typeRoots": [],
+    "typeRoots": []
   },
-  "exclude": [
-    "dist",
-    "node_modules",
-    "storybook-static"
-  ],
-  "include": [
-    "src/**/*"
-  ]
+  "exclude": ["dist", "node_modules", "storybook-static"],
+  "include": ["src/**/*"]
 }
+

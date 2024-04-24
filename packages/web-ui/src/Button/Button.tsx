@@ -23,7 +23,7 @@ export interface CustomButtonProps {
   size?: 'small' | 'medium' | 'large';
 }
 
-export type ButtonTypeMap<P = {}, D extends React.ElementType = DefaultButtonComponent> = {
+export type ButtonTypeMap<P = object, D extends React.ElementType = DefaultButtonComponent> = {
   props: CustomButtonProps &
     Pick<MuiButtonProps<D, P>, 'sx' | 'classes' | 'fullWidth' | 'children' | 'href'>;
   defaultComponent: D;
@@ -31,7 +31,7 @@ export type ButtonTypeMap<P = {}, D extends React.ElementType = DefaultButtonCom
 
 export type ButtonProps<
   D extends React.ElementType = DefaultButtonComponent,
-  P = {}
+  P = object,
 > = OverrideProps<ButtonTypeMap<P, D>, D>;
 
 const borderWidth = 2;

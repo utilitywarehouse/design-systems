@@ -1,0 +1,66 @@
+name: Generate
+on:
+  workflow_dispatch:
+    inputs:
+      branchName:
+        description: 'Branch name'
+        required: true
+        default: 'release-colour-system'
+        type: string
+      type:
+        description: |
+          The semver type <major|minor|patch> to bump the packages.
+        required: true
+        default: minor
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+env:
+  CI: true
+
+jobs:
+  generate:
+    name: Generate colour system
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
+      - run: pnpm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Generate colour system
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+        run: pnpm generate
+
+      - name: Add changeset
+        run: |
+          touch ./.changeset/${{ github.sha }}.md
+          cat > ./.changeset/${{ github.sha }}.md << EOF
+          ---
+          "@utilitywarehouse/colour-system": ${{ inputs.type }}
+          ---
+
+          EOF
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.PAT }}
+          branch: ${{ inputs.branchName }}
+          title: 'Generate updated colour system'
+          commit-message: 'Generate updated colour system'
+          delete-branch: true
+          base: main
+          body: ${{ steps.vars.outputs.pr_body }}

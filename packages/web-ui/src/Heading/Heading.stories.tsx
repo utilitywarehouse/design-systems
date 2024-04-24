@@ -33,7 +33,7 @@ export const Workshop: Story = {
   render: ({ color = 'brandPrimaryPurple', ...args }) => {
     return (
       <Heading
-        // @ts-ignore
+        // @ts-expect-error story
         color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
         {...args}
       />

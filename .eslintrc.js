@@ -1,3 +1,4 @@
+/* eslint-env node */
 module.exports = {
   env: {
     browser: true,
@@ -7,11 +8,13 @@ module.exports = {
     module: 'readonly',
   },
   extends: [
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    'airbnb-typescript',
-    'prettier',
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-type-checked',
   ],
+  plugins: ['react', '@typescript-eslint', 'jsx-a11y', 'react-hooks'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -19,22 +22,33 @@ module.exports = {
     },
     ecmaVersion: 12,
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: ['./packages/*/tsconfig.json'],
+    tsconfigRootDir: __dirname,
   },
-  plugins: ['react', '@typescript-eslint/eslint-plugin', 'jsx-a11y', 'prettier', 'react-hooks'],
   rules: {
-    'import/no-extraneous-dependencies': 'off',
+    'no-extra-boolean-cast': 'off',
     'no-cond-assign': 'error',
     'no-constant-condition': 'error',
     'no-unreachable': 'error',
     'no-unused-expressions': 'error',
     'no-constant-binary-expression': 'error',
     'no-sequences': 'error',
+    'react/prop-types': 'off',
+    '@typescript-eslint/array-type': ['error', { default: 'generic' }],
   },
+  overrides: [
+    {
+      files: ['*.stories.tsx'],
+      rules: {
+        'react-hooks/rules-of-hooks': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+      },
+    },
+  ],
   settings: {
-    'import/ignore': ['react-native'],
     react: {
       version: 'detect',
     },
   },
+  root: true,
 };
