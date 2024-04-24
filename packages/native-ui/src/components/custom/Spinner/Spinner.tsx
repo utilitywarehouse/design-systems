@@ -36,7 +36,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color }) => {
   const width = getWidth(size);
   const CIRCUMFERENCE = (width - 4) * Math.PI;
   const R = CIRCUMFERENCE / (2 * Math.PI);
-  const STROKE_WIDTH = 2;
+  const STROKE_WIDTH = size === 'xs' ? 1.5 : 2;
   const HALF_CIRCLE = R + STROKE_WIDTH;
   const DIAMETER = 2 * HALF_CIRCLE;
 
