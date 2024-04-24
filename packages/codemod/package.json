@@ -18,7 +18,8 @@
   "author": "Rob Phoenix",
   "license": "UNLICENSED",
   "dependencies": {
-    "jscodeshift": "^0.15.2"
+    "jscodeshift": "^0.15.2",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
