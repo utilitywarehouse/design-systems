@@ -35,6 +35,7 @@
     "@utilitywarehouse/react-native-icons": "^1.2.0",
     "expo": "~50.0.17",
     "expo-constants": "~15.4.6",
+    "expo-dev-client": "~3.3.11",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
