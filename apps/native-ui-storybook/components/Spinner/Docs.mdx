@@ -1,4 +1,5 @@
 import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
+import { colors } from '@utilitywarehouse/colour-system';
 import * as SpinnerStories from './Spinner.stories';
 import { Spinner, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
 
@@ -23,7 +24,7 @@ The Spinner can be used independently (it's a self-contained component) or in co
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Spinner size="md" color="blue" />
+      <Spinner size="sm" color={colors.cyan400} />
     </Center>
   </NativeUIProvider>
 </Canvas>
@@ -33,7 +34,7 @@ import { Spinner, Center } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => (
   <Center>
-    <Spinner size="sm" color="blue" />
+    <Spinner size="sm" color={colors.cyan400} />
   </Center>
 );
 ```
