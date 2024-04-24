@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-undef */
 
 const childProcess = require('child_process');
 const { promises: fs } = require('fs');
@@ -10,13 +11,11 @@ const jscodeshiftDirectory = path.dirname(require.resolve('jscodeshift'));
 const jscodeshiftExecutable = path.join(jscodeshiftDirectory, jscodeshiftPackage.bin.jscodeshift);
 
 async function runJscodeshiftTransform(transform, files, flags, codemodFlags) {
-  const path = path.resolve(__dirname, '..', './transforms', `${transform}.js`);
+  const transformPath = transformPath.resolve(__dirname, '..', './transforms', `${transform}.js`);
 
   let transformerPath;
   let error;
-  // eslint-disable-next-line no-restricted-syntax
   try {
-    // eslint-disable-next-line no-await-in-loop
     await fs.stat(item);
     error = undefined;
     transformerPath = item;
@@ -27,7 +26,7 @@ async function runJscodeshiftTransform(transform, files, flags, codemodFlags) {
   if (error) {
     if (error?.code === 'ENOENT') {
       throw new Error(
-        `Transform '${transform}' not found. Check out ${path.resolve(
+        `Transform '${transform}' not found. Check out ${transformPath.resolve(
           __dirname,
           './README.md for a list of available codemods.'
         )}`
@@ -62,7 +61,6 @@ async function runJscodeshiftTransform(transform, files, flags, codemodFlags) {
 
   args.push(...files);
 
-  // eslint-disable-next-line no-console -- debug information
   console.log(`Executing command: jscodeshift ${args.join(' ')}`);
   const jscodeshiftProcess = childProcess.spawnSync('node', args, { stdio: 'inherit' });
 
