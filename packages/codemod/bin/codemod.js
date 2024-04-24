@@ -11,7 +11,7 @@ const jscodeshiftDirectory = path.dirname(require.resolve('jscodeshift'));
 const jscodeshiftExecutable = path.join(jscodeshiftDirectory, jscodeshiftPackage.bin.jscodeshift);
 
 async function runJscodeshiftTransform(transform, files, flags, codemodFlags) {
-  const transformPath = transformPath.resolve(__dirname, '..', './transforms', `${transform}.js`);
+  const transformPath = path.resolve(__dirname, '..', './transforms', `${transform}.js`);
 
   let transformerPath;
   let error;
