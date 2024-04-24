@@ -1,5 +1,13 @@
 # @utilitywarehouse/ds-codemod
 
+## 0.0.4
+
+### Patch Changes
+
+- [#294](https://github.com/utilitywarehouse/design-systems/pull/294) [`5d5caf6`](https://github.com/utilitywarehouse/design-systems/commit/5d5caf6b7231024f963e8f101869324ac7f417cc) Thanks [@robphoenix](https://github.com/robphoenix)! - files
+
+- [#294](https://github.com/utilitywarehouse/design-systems/pull/294) [`5d5caf6`](https://github.com/utilitywarehouse/design-systems/commit/5d5caf6b7231024f963e8f101869324ac7f417cc) Thanks [@robphoenix](https://github.com/robphoenix)! - esm updates
+
 ## 0.0.3
 
 ### Patch Changes
