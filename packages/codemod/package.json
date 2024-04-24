@@ -5,11 +5,10 @@
   "bin": {
     "@utilitywarehouse/ds-codemod": "bin/codemod.js"
   },
-  "type": "module",
   "scripts": {
     "test": "jest",
-    "format": "prettier --write \"./{transforms,bin}/**/*.{ts,tsx,js}\"",
-    "format:ci": "prettier --list-different \"./{transforms,bin}/**/*.{tsx,ts,js}\""
+    "format": "prettier --write \"./{transforms,bin}/**/*.{ts,tsx,js,jsx}\"",
+    "format:ci": "prettier --list-different \"./{transforms,bin}/**/*.{tsx,ts,js,jsx}\""
   },
   "repository": {
     "type": "git",
