@@ -1,6 +1,6 @@
 *.d.ts
 *.js.map
-!transforms/__tests__/**/*.js
-!transforms/__testfixtures__/**/*.js
+!transforms/**/__tests__/**/*.js
+!transforms/**/__testfixtures__/**/*.tsx
 dist/
 *.tsbuildinfo

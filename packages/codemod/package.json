@@ -7,6 +7,8 @@
   },
   "scripts": {
     "test": "jest",
+    "lint:fix": "TIMING=1 eslint --fix --max-warnings 0 --ext js,jsx,ts,tsx .",
+    "lint": "TIMING=1 eslint --max-warnings 0 --ext js,jsx,ts,tsx .",
     "format": "prettier --write \"./{transforms,bin}/**/*.{ts,tsx,js,jsx}\"",
     "format:ci": "prettier --list-different \"./{transforms,bin}/**/*.{tsx,ts,js,jsx}\""
   },
