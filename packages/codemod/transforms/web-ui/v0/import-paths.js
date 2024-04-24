@@ -1,6 +1,4 @@
 /* eslint-disable */
-import { API, FileInfo, Options } from 'jscodeshift';
-
 const validWebUiElements = [
   'Background',
   'useBackground',
@@ -47,7 +45,7 @@ const removedCwuiElements = [
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function transformer(file: FileInfo, api: API, options: Options) {
+function transformer(file, api) {
   const j = api.jscodeshift;
 
   const root = j(file.source);
@@ -121,3 +119,5 @@ export default function transformer(file: FileInfo, api: API, options: Options) 
   }
   return root.toSource({ quote: 'single' });
 }
+
+module.exports = transformer;

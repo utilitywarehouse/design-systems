@@ -1,4 +1,4 @@
-import { defineTest } from 'jscodeshift/src/testUtils';
+const defineTest = require('jscodeshift/dist/testUtils').defineTest;
 
 const NAME = 'import-paths';
 

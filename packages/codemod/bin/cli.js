@@ -9,10 +9,17 @@ import { execaSync } from 'execa';
 import chalk from 'chalk';
 import isGitClean from 'is-git-clean';
 
+import { createRequire } from 'node:module';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const require = createRequire(import.meta.url);
 export const jscodeshiftExecutable = require.resolve('.bin/jscodeshift');
 export const transformerDirectory = path.join(__dirname, '../', 'transforms');
 
-export function checkGitStatus(force: unknown) {
+export function checkGitStatus(force) {
   let clean = false;
   let errorMessage = 'Unable to determine if git directory is clean';
   try {
@@ -93,19 +100,18 @@ const TRANSFORMER_INQUIRER_CHOICES = [
   },
 ];
 
-function expandFilePathsIfNeeded(filesBeforeExpansion: Array<string>) {
-  const shouldExpandFiles = filesBeforeExpansion.some((file: string | Array<string>) =>
-    file.includes('*')
-  );
+function expandFilePathsIfNeeded(filesBeforeExpansion) {
+  const shouldExpandFiles = filesBeforeExpansion.some(file => file.includes('*'));
   return shouldExpandFiles ? globbySync(filesBeforeExpansion) : filesBeforeExpansion;
 }
 
 export function run() {
   const cli = meow({
-    description: 'Codemods for updating UW Customer Web UI apps.',
+    importMeta: import.meta,
+    description: 'Codemods for migrating UW Design Systems packages.',
     help: `
     Usage
-      $ npx @utilitywarehouse/customer-ui-codemod <transform> <path> <...options>
+      $ npx @utilitywarehouse/ds-codemod <transform> <path> <...options>
         transform    One of the choices from https://github.com/vercel/next.js/tree/canary/packages/next-codemod
         path         Files or directory to transform. Can be a glob like pages/**.js
     Options
@@ -121,7 +127,7 @@ export function run() {
         h: 'help',
       },
     },
-  } as meow.Options<meow.AnyFlags>);
+  });
 
   if (!cli.flags.dry) {
     checkGitStatus(cli.flags.force);
@@ -141,7 +147,7 @@ export function run() {
         message: 'On which files or directory should the codemods be applied?',
         when: !cli.input[1],
         default: '.',
-        filter: (files: string) => files.trim(),
+        filter: files => files.trim(),
       },
       {
         type: 'list',
@@ -152,7 +158,7 @@ export function run() {
         choices: TRANSFORMER_INQUIRER_CHOICES,
       },
     ])
-    .then((answers: { files: any; transformer: any }) => {
+    .then(answers => {
       const { files, transformer } = answers;
 
       const filesBeforeExpansion = cli.input[1] || files;
