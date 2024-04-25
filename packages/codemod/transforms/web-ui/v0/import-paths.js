@@ -30,6 +30,7 @@ const validWebUiElements = [
   'ToggleButtonGroup',
   'ToggleButtonGroupProps',
   'styled',
+  'useTheme',
 ];
 
 const localMyAccountComponents = ['Card', 'CardProps', 'CardVariant', 'Container', 'NavLink'];
