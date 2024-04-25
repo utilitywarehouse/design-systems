@@ -39,6 +39,7 @@ import {
   HiddenProps,
   InteractiveCard,
   InteractiveCardProps,
+  useTheme,
 } from '@utilitywarehouse/customer-ui-material';
 
 import { useDeviceSize } from '~/hooks';
