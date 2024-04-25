@@ -30,7 +30,6 @@ import {
   ToggleButtonGroup,
   ToggleButtonGroupProps,
   styled,
-  useTheme,
 } from '@utilitywarehouse/web-ui';
 
 import {
@@ -40,6 +39,7 @@ import {
   HiddenProps,
   InteractiveCard,
   InteractiveCardProps,
+  useTheme,
 } from '@utilitywarehouse/customer-ui-material';
 
 import { useDeviceSize } from '~/hooks';

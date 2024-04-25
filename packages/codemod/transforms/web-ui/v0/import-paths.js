@@ -30,13 +30,16 @@ const validWebUiElements = [
   'ToggleButtonGroup',
   'ToggleButtonGroupProps',
   'styled',
-  'useTheme',
 ];
 
 const localMyAccountComponents = ['Card', 'CardProps', 'CardVariant', 'Container', 'NavLink'];
 const localMyAccountHooks = ['useDeviceSize'];
 
-const removedCwuiElements = [
+const cwuiElements = [
+  // useTheme is still available in web-ui, however we're going to recommend
+  // migrating manually as you would have to include a ThemeProvider wrapper.
+  'useTheme',
+  // deprecated elements
   'Icon',
   'IconProps',
   'Hidden',
@@ -74,7 +77,7 @@ function transformer(file, api) {
             localComponentSpecifiers.push(j.importSpecifier(j.identifier(localName)));
           } else if (localMyAccountHooks.includes(localName)) {
             localHooksSpecifiers.push(j.importSpecifier(j.identifier(localName)));
-          } else if (removedCwuiElements.includes(localName)) {
+          } else if (cwuiElements.includes(localName)) {
             cwuiSpecifiers.push(j.importSpecifier(j.identifier(localName)));
           }
         });
@@ -97,7 +100,7 @@ function transformer(file, api) {
       .insertAfter(j.importDeclaration(localComponentSpecifiers, j.literal('~/components')));
   }
 
-  if (localComponentSpecifiers.length > 0) {
+  if (localHooksSpecifiers.length > 0) {
     root
       .find(j.Program)
       .get('body', 0)
