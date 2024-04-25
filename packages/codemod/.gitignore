@@ -4,3 +4,4 @@
 !transforms/**/__testfixtures__/**/*.tsx
 dist/
 *.tsbuildinfo
+test-file.tsx

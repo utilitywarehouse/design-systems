@@ -5,10 +5,35 @@ const childProcess = require('child_process');
 const { promises: fs } = require('fs');
 const path = require('path');
 const yargs = require('yargs');
+const isGitClean = require('is-git-clean');
 const jscodeshiftPackage = require('jscodeshift/package.json');
 
 const jscodeshiftDirectory = path.dirname(require.resolve('jscodeshift'));
 const jscodeshiftExecutable = path.join(jscodeshiftDirectory, jscodeshiftPackage.bin.jscodeshift);
+
+function checkGitStatus(force) {
+  let clean = false;
+  let errorMessage = 'Unable to determine if git directory is clean';
+  try {
+    clean = isGitClean.sync(process.cwd());
+    errorMessage = 'Git directory is not clean';
+  } catch (err) {
+    if (err && err.stderr && err.stderr.indexOf('Not a git repository') >= 0) {
+      clean = true;
+    }
+  }
+
+  if (!clean) {
+    if (force) {
+      console.log(`WARNING: ${errorMessage}. Forcibly continuing.`);
+    } else {
+      console.log('Thank you for using @utilitywarehouse/customer-ui-codemod!');
+      console.log('\nBut before we continue, please stash or commit your git changes.');
+      console.log('\nYou may use the --force flag to override this safety check.');
+      process.exit(1);
+    }
+  }
+}
 
 async function runJscodeshiftTransform(transform, files, flags, codemodFlags) {
   const transformPath = path.resolve(__dirname, '..', './transforms', `${transform}.js`);
@@ -70,8 +95,12 @@ async function runJscodeshiftTransform(transform, files, flags, codemodFlags) {
 }
 
 function run(argv) {
-  const { codemod, paths, ...flags } = argv;
+  const { codemod, paths, force, ...flags } = argv;
   const files = paths.map(filePath => path.resolve(filePath));
+
+  if (!flags.dry) {
+    checkGitStatus(force);
+  }
 
   runJscodeshiftTransform(codemod, files, flags, argv._);
 }
@@ -92,7 +121,12 @@ yargs
           type: 'string',
         })
         .option('dry', {
-          description: 'dry run (no changes are made to files)',
+          description: 'Dry run (no changes are made to files)',
+          default: false,
+          type: 'boolean',
+        })
+        .option('force', {
+          description: 'Bypass Git safety checks and forcibly run codemods',
           default: false,
           type: 'boolean',
         })
