@@ -1,5 +1,13 @@
 # @utilitywarehouse/ds-codemod
 
+## 0.0.12
+
+### Patch Changes
+
+- [#312](https://github.com/utilitywarehouse/design-systems/pull/312) [`34cbd6d`](https://github.com/utilitywarehouse/design-systems/commit/34cbd6d53505de052b9b26fb67511eaa895e19fc) Thanks [@robphoenix](https://github.com/robphoenix)! - add git clean check
+
+- [#311](https://github.com/utilitywarehouse/design-systems/pull/311) [`54a0e38`](https://github.com/utilitywarehouse/design-systems/commit/54a0e386ef2ebf5f5ab56929277c23636e53d1d3) Thanks [@robphoenix](https://github.com/robphoenix)! - fix import paths codemod
+
 ## 0.0.11
 
 ### Patch Changes
