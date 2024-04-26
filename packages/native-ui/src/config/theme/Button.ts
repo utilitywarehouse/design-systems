@@ -808,6 +808,10 @@ export const Button = createStyle({
         ':hover': {
           backgroundColor: '$cyan75',
 
+          _text: {
+            color: '$cyan1000',
+          },
+
           _icon: {
             color: '$cyan1000',
           },
@@ -821,6 +825,10 @@ export const Button = createStyle({
 
         ':active': {
           backgroundColor: '$cyan200',
+
+          _text: {
+            color: '$cyan1000',
+          },
 
           _icon: {
             color: '$cyan1000',
@@ -858,6 +866,10 @@ export const Button = createStyle({
         _dark: {
           backgroundColor: 'transparent',
 
+          _text: {
+            color: '$darkCyan1000',
+          },
+
           _icon: {
             color: '$darkCyan600',
           },
@@ -870,6 +882,10 @@ export const Button = createStyle({
 
           ':hover': {
             backgroundColor: '$darkCyan75',
+
+            _text: {
+              color: '$darkCyan1000',
+            },
 
             _icon: {
               color: '$darkCyan1000',
@@ -884,6 +900,10 @@ export const Button = createStyle({
 
           ':active': {
             backgroundColor: '$darkCyan200',
+
+            _text: {
+              color: '$darkCyan1000',
+            },
 
             _icon: {
               color: '$darkCyan1000',
@@ -943,6 +963,10 @@ export const Button = createStyle({
         ':hover': {
           backgroundColor: '$red100',
 
+          _text: {
+            color: '$red900',
+          },
+
           _icon: {
             color: '$red900',
           },
@@ -956,6 +980,10 @@ export const Button = createStyle({
 
         ':active': {
           backgroundColor: '$red200',
+
+          _text: {
+            color: '$red900',
+          },
 
           _icon: {
             color: '$red900',
@@ -1010,6 +1038,10 @@ export const Button = createStyle({
           ':hover': {
             backgroundColor: '$darkRed100',
 
+            _text: {
+              color: '$darkRed900',
+            },
+
             _icon: {
               color: '$darkRed900',
             },
@@ -1023,6 +1055,10 @@ export const Button = createStyle({
 
           ':active': {
             backgroundColor: '$darkRed200',
+
+            _text: {
+              color: '$darkRed900',
+            },
 
             _icon: {
               color: '$darkRed900',
@@ -1082,6 +1118,10 @@ export const Button = createStyle({
         ':hover': {
           backgroundColor: '$green100',
 
+          _text: {
+            color: '$green900',
+          },
+
           _icon: {
             color: '$green900',
           },
@@ -1095,6 +1135,10 @@ export const Button = createStyle({
 
         ':active': {
           backgroundColor: '$green200',
+
+          _text: {
+            color: '$green900',
+          },
 
           _icon: {
             color: '$green900',
@@ -1149,6 +1193,10 @@ export const Button = createStyle({
           ':hover': {
             backgroundColor: '$darkGreen100',
 
+            _text: {
+              color: '$darkGreen900',
+            },
+
             _icon: {
               color: '$darkGreen900',
             },
@@ -1162,6 +1210,10 @@ export const Button = createStyle({
 
           ':active': {
             backgroundColor: '$darkGreen200',
+
+            _text: {
+              color: '$darkGreen900',
+            },
 
             _icon: {
               color: '$darkGreen900',
@@ -1221,6 +1273,10 @@ export const Button = createStyle({
         ':hover': {
           backgroundColor: '$grey100',
 
+          _text: {
+            color: '$grey1000',
+          },
+
           _icon: {
             color: '$grey1000',
           },
@@ -1234,6 +1290,10 @@ export const Button = createStyle({
 
         ':active': {
           backgroundColor: '$grey175',
+
+          _text: {
+            color: '$grey1000',
+          },
 
           _icon: {
             color: '$grey1000',
@@ -1288,6 +1348,10 @@ export const Button = createStyle({
           ':hover': {
             backgroundColor: '$darkGrey175',
 
+            _text: {
+              color: '$darkGrey1000',
+            },
+
             _icon: {
               color: '$darkGrey1000',
             },
@@ -1301,6 +1365,10 @@ export const Button = createStyle({
 
           ':active': {
             backgroundColor: '$darkGrey175',
+
+            _text: {
+              color: '$darkGrey1000',
+            },
 
             _icon: {
               color: '$darkGrey1000',
@@ -1360,6 +1428,10 @@ export const Button = createStyle({
         ':hover': {
           backgroundColor: '$gold100',
 
+          _text: {
+            color: '$gold900',
+          },
+
           _icon: {
             color: '$gold900',
           },
@@ -1373,6 +1445,10 @@ export const Button = createStyle({
 
         ':active': {
           backgroundColor: '$gold200',
+
+          _text: {
+            color: '$gold900',
+          },
 
           _icon: {
             color: '$gold900',
@@ -1427,6 +1503,10 @@ export const Button = createStyle({
           ':hover': {
             backgroundColor: '$darkGold100',
 
+            _text: {
+              color: '$darkGold900',
+            },
+
             _icon: {
               color: '$darkGold900',
             },
@@ -1440,6 +1520,10 @@ export const Button = createStyle({
 
           ':active': {
             backgroundColor: '$darkGold200',
+
+            _text: {
+              color: '$darkGold900',
+            },
 
             _icon: {
               color: '$darkGold900',
