@@ -7,18 +7,7 @@ const StyledSpinner = styled(
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    _svg: {
-      props: {
-        color: '$purple800',
-      },
-    },
-    _dark: {
-      _svg: {
-        props: {
-          color: '$darkPurple800',
-        },
-      },
-    },
+
     variants: {
       size: {
         xs: {
