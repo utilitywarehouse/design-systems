@@ -72,6 +72,7 @@
     "entities": "2.0.3",
     "patch-package": "^8.0.0",
     "storybook": "^7.6.17",
+    "tocbot": "^4.27.13",
     "typescript": "^5.3.0",
     "unzipper": "^0.10.14"
   },
