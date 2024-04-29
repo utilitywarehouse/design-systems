@@ -26,7 +26,8 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
   const validScheme = colorScheme === 'cyan' || colorScheme === 'red' || colorScheme === 'green';
   const capitalisedScheme =
     (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');
-  const { sm, base } = useMedia();
+  const { sm, xs, base } = useMedia();
+  const isMobile = base || xs || sm;
 
   return (
     <VStack space="2xl">
@@ -36,7 +37,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
             ? undefined
             : {
                 opacity: 0,
-                display: base || sm ? 'none' : 'flex',
+                display: isMobile ? 'none' : 'flex',
                 _web: {
                   pointerEvents: 'none',
                 },

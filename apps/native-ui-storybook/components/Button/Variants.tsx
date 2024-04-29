@@ -1,4 +1,12 @@
-import { ScrollView, Button, ButtonText, useMedia, Box } from '@utilitywarehouse/native-ui';
+import {
+  ScrollView,
+  Button,
+  ButtonText,
+  useMedia,
+  Box,
+  VStack,
+  HStack,
+} from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { StoryFn } from '@storybook/react';
 
@@ -6,26 +14,26 @@ import ButtonVariants from './components/ButtonVariants';
 
 const ButtonPlaygroundVariants: StoryFn = ({ size }: any) => {
   const media = useMedia();
-  const { base, sm } = media;
+  const { base, xs, sm } = media;
+  const isMobile = base || xs || sm;
+
+  const variants = (
+    <>
+      <ButtonVariants colorScheme="cyan" size={size} />
+      <ButtonVariants colorScheme="green" size={size} />
+      <ButtonVariants colorScheme="red" size={size} />
+      <ButtonVariants colorScheme="grey" size={size} />
+      <ButtonVariants colorScheme="gold" size={size} />
+    </>
+  );
+
   return (
     <ScrollView
       sx={{
         padding: '$4',
       }}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: base || sm ? 'column' : 'row',
-          gap: '$4',
-        }}
-      >
-        <ButtonVariants colorScheme="cyan" size={size} />
-        <ButtonVariants colorScheme="green" size={size} />
-        <ButtonVariants colorScheme="red" size={size} />
-        <ButtonVariants colorScheme="grey" size={size} />
-        <ButtonVariants colorScheme="gold" size={size} />
-      </Box>
+      {isMobile ? <VStack space="md">{variants}</VStack> : <HStack space="md">{variants}</HStack>}
     </ScrollView>
   );
 };
