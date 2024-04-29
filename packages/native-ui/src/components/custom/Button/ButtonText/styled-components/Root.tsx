@@ -16,7 +16,7 @@ const ButtonText = styled(
     descendantStyle: [],
     ancestorStyle: ['_text'],
   } as const
-) as React.ForwardRefExoticComponent<ComponentProps<typeof GSButtonText> & {}> & {
+) as React.ForwardRefExoticComponent<ComponentProps<typeof GSButtonText> & object> & {
   displayName: string;
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   useSharedValue,
   withTiming,
@@ -43,11 +43,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color }) => {
   const progress = useSharedValue(1);
   const rotation = useSharedValue(0);
 
-  useEffect(() => {
-    startAnimation();
-  }, []);
-
-  const startAnimation = () => {
+  const startAnimation = useCallback(() => {
     progress.value = withRepeat(withTiming(0.6, { duration: 1000 }), -1, true);
 
     progress.value = withRepeat(
@@ -61,7 +57,11 @@ const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color }) => {
       -1,
       false
     );
-  };
+  }, [progress, rotation]);
+
+  useEffect(() => {
+    startAnimation();
+  }, [startAnimation]);
 
   const animatedCircleProps = useAnimatedProps(() => {
     return {
