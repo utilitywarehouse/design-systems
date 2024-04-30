@@ -9,6 +9,19 @@ import * as Stories from './Link.stories';
 
 <Canvas of={Stories.SimpleExample} />
 
+## Contents
+
+- [Usage](#usage)
+- [Size](#size)
+- [With icons](#with-icons)
+- [Accessibility](#accessibility)
+- [Semantic HTML](#semantic-html)
+- [Full Width Link](#full-width-link)
+- [Usage with Next.js](#usage-with-next.js)
+  - [Next.js v13](#next.js-v13)
+  - [Next.js before v13](#next.js-before-v13)
+- [API Reference](#api-reference)
+
 ## Usage
 
 This `Link` component is part of the lab submodule, a way for us to make new
@@ -102,16 +115,21 @@ make it functional.
 
 Read more about this idea in the [Radix UI composition docs](https://www.radix-ui.com/primitives/docs/guides/composition).
 
-<Canvas of={Stories.AsButton} />
+For instance, while we discourage it, if you really wanted to render a `button`
+that looks like a `Link`, you could do the following:
 
 ```tsx
-<Link asChild href="https://uw.co.uk/services">
-  <button>
+// You may need to disable this eslint warning:
+// eslint-disable-next-line jsx-a11y/anchor-is-valid
+<Link asChild>
+  <button type="button" onClick={onClick}>
     View UW services
     <OpenMediumIcon />
   </button>
 </Link>
 ```
+
+<Canvas of={Stories.AsButton} />
 
 ## Full Width Link
 
@@ -121,8 +139,69 @@ Use layout components, like `Flex`, to define your UI layouts.
 
 ```tsx
 <Flex direction="column" align="stretch">
-  <Link>Link</Link>
+  <Link href="#">Link</Link>
 </Flex>
+```
+
+## Usage with Next.js
+
+### Next.js v13
+
+The Next.js `Link` component behaviour has changed in v13, so that an `<a>` is
+no longer required as a child. You can render the Web UI `Link` component as a
+Next.js `Link` component using `asChild`:
+
+```tsx
+import NextLink from 'next/link';
+import { Link } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+{/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+<Link asChild>
+  <NextLink href={href} onClick={onClick}>
+    {title}
+  </NextLink>
+</Link>
+```
+
+You can also use the `legacyBehavior` prop directly on the Next.js Link component:
+
+```tsx
+import NextLink from 'next/link';
+import { Link } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+<NextLink href={href} passHref onClick={onClick} legacyBehavior>
+  {/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+  <Link>{title}</Link>
+</NextLink>
+```
+
+And if you want to set this behavior globally you can use the following Next.js
+configuration:
+
+```
+{
+  experimental: {
+    newNextLinkBehavior: false
+  }
+}
+```
+
+### Next.js before v13
+
+```tsx
+import NextLink from 'next/link';
+import { Link } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+<NextLink href={href} passHref onClick={onClick}>
+  {/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+  <Link>{title}</Link>
+</NextLink>
 ```
 
 ## API Reference
