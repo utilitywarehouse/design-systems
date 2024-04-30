@@ -13,22 +13,15 @@ import * as Stories from './Button.stories';
 
 - [Usage](#usage)
 - [Accessibility](#accessibility)
-  - [Known issues](#known-issues)
 - [Variant](#variant)
-  - [Solid](#solid)
-  - [Outline](#outline)
-  - [Ghost](#ghost)
-- [Colour schemes](#colour-schemes)
-  - [Cyan](#cyan)
-  - [Green](#green)
-  - [Red](#red)
-  - [Gold](#gold)
-  - [Grey](#grey)
+- [Color schemes](#color-schemes)
 - [Size](#size)
 - [With icons](#with-icons)
-  - [Responsive icon sizes](#responsive-icon-sizes)
 - [Semantic HTML](#semantic-html)
 - [Full Width Button](#full-width-button)
+- [Usage with Next.js](#usage-with-next.js)
+  - [Next.js v13](#next.js-v13)
+  - [Next.js before v13](#next.js-before-v13)
 - [API Reference](#api-reference)
 
 ## Usage
@@ -290,6 +283,66 @@ Use layout components, like `Flex`, to define your UI layouts.
 <Flex direction="column" align="stretch">
   <Button>Button</Button>
 </Flex>
+```
+
+## Usage with Next.js
+
+### Next.js v13
+
+The Next.js `Link` component behaviour has changed in v13, so that an `<a>` is
+no longer required as a child. You can render the Web UI `Button` component as a
+Next.js `Link` component using `asChild`:
+
+```tsx
+import NextLink from 'next/link';
+import { Button } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+<Button asChild onClick={onClick}>
+  <NextLink href={href}>{title}</NextLink>
+</Button>
+```
+
+You can also use the `legacyBehavior` prop directly on the Next.js Link component:
+
+```tsx
+import NextLink from 'next/link';
+import { Button } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+<NextLink href={href} passHref legacyBehavior>
+  <Button {...props} asChild onClick={onClick}>
+    <a href={href as string}>{title}</a>
+  </Button>
+</NextLink>
+```
+
+And if you want to set this behavior globally you can use the following Next.js
+configuration:
+
+```
+{
+  experimental: {
+    newNextLinkBehavior: false
+  }
+}
+```
+
+### Next.js before v13
+
+```tsx
+import NextLink from 'next/link';
+import { Button } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+<NextLink href={href} passHref>
+  <Button {...props} asChild onClick={onClick}>
+    <a href={href as string}>{title}</a>
+  </Button>
+</NextLink>
 ```
 
 ## API Reference
