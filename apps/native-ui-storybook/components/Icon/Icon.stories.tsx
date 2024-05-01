@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/react';
 import Icon from './Icon';
 
 const IconMeta: Meta<typeof Icon> = {
-  title: 'components/Icons',
+  title: 'Native UI / Components / Icons',
   component: Icon,
   // metaInfo is required for figma generation
   // @ts-ignore
