@@ -1,10 +1,5 @@
-import {
-  Button,
-  ButtonText,
-  ChevronUpIcon,
-  Icon,
-  NativeUIProvider,
-} from '@utilitywarehouse/native-ui';
+import { Button, ButtonIcon, ButtonText, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { ChevronUpSmallIcon } from '@utilitywarehouse/react-native-icons';
 import React, { useState } from 'react';
 
 const ScrollButton = () => {
@@ -47,7 +42,7 @@ const ScrollButton = () => {
           },
         }}
       >
-        <Icon as={ChevronUpIcon} />
+        <ButtonIcon as={ChevronUpSmallIcon} />
         <ButtonText>Back to top</ButtonText>
       </Button>
     </NativeUIProvider>
