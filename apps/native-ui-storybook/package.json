@@ -32,7 +32,7 @@
     "@utilitywarehouse/fontsource": "^0.0.6",
     "@utilitywarehouse/native-ui": "workspace:^",
     "@utilitywarehouse/react-icons": "^1.1.1",
-    "@utilitywarehouse/react-native-icons": "^1.2.0",
+    "@utilitywarehouse/react-native-icons": "^1.5.0",
     "expo": "~50.0.17",
     "expo-constants": "~15.4.6",
     "expo-dev-client": "~3.3.11",
