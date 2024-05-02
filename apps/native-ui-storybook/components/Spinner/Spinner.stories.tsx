@@ -3,7 +3,7 @@ import Variants from './Variants';
 import type { Meta } from '@storybook/react';
 
 const SpinnerMeta: Meta<typeof Spinner> = {
-  title: 'components/Spinner',
+  title: 'Native UI / Components / Spinner',
   component: Spinner,
 };
 

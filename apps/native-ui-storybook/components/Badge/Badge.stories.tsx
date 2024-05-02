@@ -3,7 +3,7 @@ import Badge from './Badge';
 import Variants from './Variants';
 
 const BadgeMeta: Meta<typeof Badge> = {
-  title: 'components/Badge',
+  title: 'Native UI / Components / Badge',
   component: Badge,
   // metaInfo is required for figma generation
   // @ts-ignore

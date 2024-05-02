@@ -3,7 +3,7 @@ import VStackReversedExample from './VStackReversed';
 import type { Meta } from '@storybook/react';
 
 const VStackMeta: Meta<typeof VStack> = {
-  title: 'components/VStack',
+  title: 'Native UI / Components / VStack',
   component: VStack,
   argTypes: {
     space: {

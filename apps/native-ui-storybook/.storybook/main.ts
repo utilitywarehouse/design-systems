@@ -37,7 +37,6 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@utilitywarehouse/react-native-icons': '@utilitywarehouse/react-icons',
-      '@utilitywarehouse/native-ui': getAbsolutePath('@utilitywarehouse/native-ui'),
     };
 
     return config;

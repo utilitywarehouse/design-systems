@@ -3,7 +3,7 @@ import Alert from './Alert';
 import Variants from './Variants';
 
 const AlertMeta: Meta<typeof Alert> = {
-  title: 'components/Alert',
+  title: 'Native UI / Components / Alert',
   component: Alert,
 };
 

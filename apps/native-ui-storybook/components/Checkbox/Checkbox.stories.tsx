@@ -3,7 +3,7 @@ import Checkbox from './Checkbox';
 import Variants from './Variants';
 
 const CheckboxMeta: Meta<typeof Checkbox> = {
-  title: 'components/Checkbox',
+  title: 'Native UI / Components / Checkbox',
   component: Checkbox,
   // metaInfo is required for figma generation
   // @ts-ignore

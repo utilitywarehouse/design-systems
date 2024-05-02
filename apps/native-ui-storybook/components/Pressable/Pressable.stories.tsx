@@ -2,7 +2,7 @@ import Pressable from './Pressable';
 import type { Meta } from '@storybook/react';
 
 const PressableMeta: Meta<typeof Pressable> = {
-  title: 'components/Pressable',
+  title: 'Native UI / Components / Pressable',
   component: Pressable,
   // metaInfo is required for figma generation
   // @ts-ignore
