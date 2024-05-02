@@ -375,4 +375,7 @@ jobs:
 
             - [Android](https://appetize.io/embed/${{ env.ANDROID_API_KEY }})
             - [iOS](https://appetize.io/embed/${{ env.IOS_API_KEY }})
+
+            ---
+            Last updated from commit ${{ github.sha }}
           edit-mode: replace
