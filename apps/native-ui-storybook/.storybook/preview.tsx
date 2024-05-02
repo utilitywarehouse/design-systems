@@ -141,6 +141,7 @@ const preview: Preview = {
               'Alert',
               'Badge',
               'Box',
+              'Button',
               'Center',
               'Checkbox',
               'HStack',

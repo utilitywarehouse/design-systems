@@ -4,7 +4,7 @@ import PlaygroundVariants from './PlaygroundVariants';
 import Variants from './Variants';
 
 const ButtonMeta: Meta<typeof Button> = {
-  title: 'components/Button',
+  title: 'Native UI / Components / Button',
   component: Button,
 };
 
