@@ -1,6 +1,7 @@
 {
   "include": [
-    "./src"
+    "./src",
+    "unstyled"
   ],
   "exclude": [
     "node_modules",
