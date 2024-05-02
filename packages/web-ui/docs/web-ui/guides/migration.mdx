@@ -1,11 +1,23 @@
 import { Meta } from '@storybook/blocks';
 
-<Meta title="Web UI / Guides / Migrating from CWUI v2" />
+<Meta title="Web UI / Guides / Migration" />
 
-# Migration Guide
+# v0
 
 It is possible to use Web UI in an application which is currently using
-Customer Web UI. While you probably don't want to use components from both
-libraries side-by-side, as long as any Web UI are children of a `ThemeProvider`
+`customer-ui-material`. While you probably don't want to use components from both
+libraries side-by-side,
+
+this is no longer true - make it apparent that this only applies to certain components - as long as any Web UI are children of a `ThemeProvider`
 from Web UI then you can do this at the most specific level you want, whether
 that is app-wide, for a single page, or for a single section or component.
+
+## Codemods
+
+### Migration
+
+This will run all codemods, except any optional ones.
+
+### Import Paths
+
+Updates `customer-ui-material` imports.

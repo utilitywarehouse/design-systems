@@ -3,7 +3,7 @@ import HStackReversed from './HStackReversed';
 import type { Meta } from '@storybook/react';
 
 const HStackMeta: Meta<typeof HStack> = {
-  title: 'components/HStack',
+  title: 'Native UI / Components / HStack',
   component: HStack,
   argTypes: {
     space: {

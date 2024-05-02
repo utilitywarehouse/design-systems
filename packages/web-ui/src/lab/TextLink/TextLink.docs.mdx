@@ -9,6 +9,17 @@ import * as Stories from './TextLink.stories';
 
 <Canvas of={Stories.Workshop} />
 
+## Contents
+
+- [Usage](#usage)
+- [Semantic HTML](#semantic-html)
+- [Size](#size)
+- [Color](#color)
+- [Usage with Next.js](#usage-with-nextjs)
+  - [Next.js v13](#nextjs-v13)
+  - [Next.js before v13](#nextjs-before-v13)
+- [API Reference](#api-reference)
+
 ## Usage
 
 This `TextLink` component is part of the lab submodule, a way for us to make new
@@ -110,6 +121,67 @@ import { TextLink } from "@utilitywarehouse/web-ui/dist/lab";
 ```
 
 <Canvas of={Stories.TextLinkColour} />
+
+## Usage with Next.js
+
+### Next.js v13
+
+The Next.js `Link` component behaviour has changed in v13, so that an `<a>` is
+no longer required as a child. You can render the Web UI `TextLink` component as a
+Next.js `Link` component using `asChild`:
+
+```tsx
+import NextLink from 'next/link';
+import { TextLink } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+{/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+<TextLink asChild>
+  <NextLink href={href} onClick={onClick}>
+    {title}
+  </NextLink>
+</TextLink>
+```
+
+You can also use the `legacyBehavior` prop directly on the Next.js Link component:
+
+```tsx
+import NextLink from 'next/link';
+import { TextLink } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+<NextLink href={href} passHref onClick={onClick} legacyBehavior>
+  {/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+  <TextLink>{title}</TextLink>
+</NextLink>
+```
+
+And if you want to set this behavior globally you can use the following Next.js
+configuration:
+
+```
+{
+  experimental: {
+    newNextLinkBehavior: false
+  }
+}
+```
+
+### Next.js before v13
+
+```tsx
+import NextLink from 'next/link';
+import { TextLink } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+<NextLink href={href} passHref onClick={onClick}>
+  {/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+  <TextLink>{title}</TextLink>
+</NextLink>
+```
 
 ## API Reference
 

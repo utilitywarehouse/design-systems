@@ -3,7 +3,7 @@ import BoxWithRef from './BoxWithRef';
 import type { Meta } from '@storybook/react';
 
 const BoxMeta: Meta<typeof Box> = {
-  title: 'components/Box',
+  title: 'Native UI / Components /Box',
   component: Box,
   args: { bg: 'red500', w: 100, h: 100 },
 };

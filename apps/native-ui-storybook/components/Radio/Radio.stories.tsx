@@ -3,7 +3,7 @@ import Radio from './Radio';
 import Variants from './Variants';
 
 const RadioMeta: Meta<typeof Radio> = {
-  title: 'components/Radio',
+  title: 'Native UI / Components / Radio',
   component: Radio,
   // metaInfo is required for figma generation
   // @ts-ignore
