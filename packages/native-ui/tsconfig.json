@@ -1,11 +1,11 @@
 {
   "include": [
     "./src",
-    "unstyled"
   ],
   "exclude": [
     "node_modules",
-    "example"
+    "example",
+    "./src/components/unstyled"
   ],
   "baseUrl": ".", // This must be specified if "paths" is.
   "paths": {
