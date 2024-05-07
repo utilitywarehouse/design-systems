@@ -64,7 +64,6 @@ AlertBasic.argTypes = {
   },
 } as Meta<typeof Alert>['argTypes'];
 
-// @ts-expect-error
 AlertBasic.args = {
   colorScheme: 'info',
   title: 'Information',
