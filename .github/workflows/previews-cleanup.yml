@@ -1,8 +1,9 @@
 name: Cleanup Native UI Previews
 
 on:
-  pull_request:
-    types: [closed]
+  push:
+    branches:
+      - main
     paths:
       - 'packages/native-ui/**'
       - 'apps/native-ui-storybook/**'
