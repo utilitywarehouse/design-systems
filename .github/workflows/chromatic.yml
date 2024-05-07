@@ -36,6 +36,7 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: packages/web-ui
+          baseDir: .
           buildScriptName: build:storybook
           exitOnceUploaded: true
           onlyChanged: true
