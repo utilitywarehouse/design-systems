@@ -1,0 +1,596 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Web UI / Guides / Migration / v0" />
+
+# v0
+
+It is possible to use Web UI in an application which is currently using
+`customer-ui-material`. While you probably don't want to use components from both
+libraries side-by-side,
+
+this is no longer true - make it apparent that this only applies to certain components - as long as any Web UI are children of a `ThemeProvider`
+from Web UI then you can do this at the most specific level you want, whether
+that is app-wide, for a single page, or for a single section or component.
+
+## Theme
+
+We advise against using the `theme` object, and it is highly likely it will be removed in a future release.
+
+As we can't reliably predict the theme usage there is no codemod for updating
+any theme values, so you'll have to update manually.
+
+the components key will have changed considerably, you shouldn't rely on it.
+
+### Breakpoints
+
+```diff
+{
+ "breakpoints": {
+-  "keys": ["mobile", "tablet", "desktop"],
++  "keys": ["mobile", "tablet", "desktop", "wide"],
+   "values": {
+     "mobile": 0,
+-    "tablet": 768,
+-    "desktop": 1366
++    "tablet": 740,
++    "desktop": 992,
++    "wide": 1200
+   },
+```
+
+Use the mobile first mediaQueries instead of the theme.breakpoints helper fucntions...
+doesn't rely on ThemeProvider
+
+```diff
++ import { mediaQueries } from '@utilitywarehouse/web-ui';
+
+[...]
+
+ sx={{
+   color: 'red',
+-  [theme.breakpoints.up('desktop')]: {
+-    color: 'blue',
+-  },
++  [mediaQueries.desktop]: {
++    color: 'purple',
++  },
+}}
+```
+
+### Palette
+
+<details>
+  <summary>palette theme diff</summary>
+
+```diff
+  "palette": {
+    "mode": "light",
+    "common": {
+-      "black": "#000000",
+-      "white": "#ffffff"
++      "black": "#000",
++      "white": "#fff"
+    },
+    "primary": {
+-      "main": "#550091",
+-      "light": "rgb(119, 51, 167)",
+-      "dark": "rgb(59, 0, 101)",
++      "main": "#1976d2",
++      "light": "#42a5f5",
++      "dark": "#1565c0",
+      "contrastText": "#fff"
+    },
+    "secondary": {
+-      "main": "#75a7fd",
+-      "light": "rgb(144, 184, 253)",
+-      "dark": "rgb(81, 116, 177)",
+-      "contrastText": "rgba(0, 0, 0, 0.87)"
++      "main": "#9c27b0",
++      "light": "#ba68c8",
++      "dark": "#7b1fa2",
++      "contrastText": "#fff"
+    },
+    "error": {
+-      "main": "#f25192",
+-      "light": "rgb(244, 115, 167)",
+-      "dark": "rgb(169, 56, 102)",
++      "main": "#d32f2f",
++      "light": "#ef5350",
++      "dark": "#c62828",
+      "contrastText": "#fff"
+    },
+    "warning": {
+-      "main": "#ffd76f",
+-      "light": "rgb(255, 223, 139)",
+-      "dark": "rgb(178, 150, 77)",
+-      "contrastText": "rgba(0, 0, 0, 0.87)"
++      "main": "#ed6c02",
++      "light": "#ff9800",
++      "dark": "#e65100",
++      "contrastText": "#fff"
+    },
+    "info": {
+-      "main": "#1e0a46",
+-      "light": "rgb(75, 59, 107)",
+-      "dark": "rgb(21, 7, 49)",
++      "main": "#0288d1",
++      "light": "#03a9f4",
++      "dark": "#01579b",
+      "contrastText": "#fff"
+    },
+    "success": {
+-      "main": "#62dd99",
+-      "light": "rgb(129, 227, 173)",
+-      "dark": "rgb(68, 154, 107)",
+-      "contrastText": "rgba(0, 0, 0, 0.87)"
++      "main": "#2e7d32",
++      "light": "#4caf50",
++      "dark": "#1b5e20",
++      "contrastText": "#fff"
+    },
+    "grey": {
+      "50": "#fafafa",
+      "100": "#f5f5f5",
+      "200": "#eeeeee",
+      "300": "#e0e0e0",
+      "400": "#bdbdbd",
+      "500": "#9e9e9e",
+      "600": "#757575",
+      "700": "#616161",
+      "800": "#424242",
+      "900": "#212121",
+      "A100": "#f5f5f5",
+      "A200": "#eeeeee",
+      "A400": "#bdbdbd",
+      "A700": "#616161"
+    },
+    "contrastThreshold": 3,
+    "tonalOffset": 0.2,
+    "text": {
+-      "primary": "rgba(0, 0, 0, 0.87)",
+-      "secondary": "rgba(0, 0, 0, 0.6)",
+-      "disabled": "rgba(0, 0, 0, 0.38)"
++      "primary": "#1e0a46"
+    },
+    "divider": "rgba(0, 0, 0, 0.12)",
+    "background": {
+      "paper": "#fff",
+      "default": "#fff"
+    },
+    "action": {
+      "active": "rgba(0, 0, 0, 0.54)",
+      "hover": "rgba(0, 0, 0, 0.04)",
+      "hoverOpacity": 0.04,
+      "selected": "rgba(0, 0, 0, 0.08)",
+      "selectedOpacity": 0.08,
+      "disabled": "rgba(0, 0, 0, 0.26)",
+      "disabledBackground": "rgba(0, 0, 0, 0.12)",
+      "disabledOpacity": 0.38,
+      "focus": "rgba(0, 0, 0, 0.12)",
+      "focusOpacity": 0.12,
+      "activatedOpacity": 0.12
+    },
++    "colorsCommon": {
++      "brandMidnight": "#1e0a46",
++      "brandWhite": "#ffffff",
++      "brandPink": "#f495f9",
++      "brandPrimaryPurple": "#550091",
++      "serviceGas": "#75A7FD",
++      "serviceElectricity": "#62DD99",
++      "serviceInsurance": "#F25192",
++      "serviceMobile": "#FFD76F",
++      "serviceLandline": "#A66DE8"
++    },
++    "colors": {
++      "purple50": "#fbf6fd",
++      "purple75": "#f5eef9",
++      "purple100": "#ede0f2",
++      "purple200": "#e2c7eb",
++      "purple300": "#d69ddd",
++      "purple400": "#c777df",
++      "purple500": "#af4dd5",
++      "purple600": "#931cce",
++      "purple700": "#7209ae",
++      "purple800": "#550091",
++      "purple900": "#400066",
++      "purple1000": "#1c0128",
++      "red50": "#ffebeb",
++      "red100": "#ffd8d9",
++      "red200": "#ffb3b4",
++      "red300": "#f58e92",
++      "red400": "#ec515d",
++      "red500": "#df2a38",
++      "red600": "#c31d2a",
++      "red700": "#891e27",
++      "red900": "#3b1216",
++      "pink50": "#fde6fb",
++      "pink100": "#fccff9",
++      "pink200": "#f9bdfa",
++      "pink300": "#f495f9",
++      "pink500": "#c933d1",
++      "pink700": "#8f248f",
++      "pink900": "#48104b",
++      "grey25": "#fafafa",
++      "grey50": "#f5f5f5",
++      "grey75": "#f0f0f0",
++      "grey100": "#e3e3e3",
++      "grey150": "#d8d8d8",
++      "grey175": "#cccccc",
++      "grey200": "#c1c1c1",
++      "grey300": "#b8b8b8",
++      "grey400": "#a0a0a0",
++      "grey500": "#888888",
++      "grey600": "#707070",
++      "grey700": "#585858",
++      "grey800": "#414141",
++      "grey900": "#242424",
++      "grey1000": "#121212",
++      "apple50": "#e5f9ed",
++      "apple200": "#c1f0d3",
++      "apple300": "#96e6b7",
++      "apple400": "#62dd99",
++      "apple700": "#10b259",
++      "apple800": "#087a3c",
++      "apple900": "#03361b",
++      "cyan50": "#ecf4fe",
++      "cyan75": "#e5f1ff",
++      "cyan100": "#cce0ff",
++      "cyan200": "#a6c8fc",
++      "cyan300": "#8fbaff",
++      "cyan400": "#75a7fd",
++      "cyan500": "#4789fa",
++      "cyan600": "#0550d1",
++      "cyan700": "#003a9e",
++      "cyan800": "#002b75",
++      "cyan900": "#001e52",
++      "cyan1000": "#001333",
++      "gold50": "#fef9e6",
++      "gold75": "#fef6dc",
++      "gold100": "#fff1d1",
++      "gold200": "#ffe6a8",
++      "gold300": "#ffd76f",
++      "gold400": "#f7b51d",
++      "gold500": "#c77800",
++      "gold600": "#ac6406",
++      "gold700": "#894e16",
++      "gold900": "#52210c",
++      "green50": "#eefcf3",
++      "green100": "#e0f5e8",
++      "green200": "#bdead0",
++      "green300": "#a3e1bf",
++      "green400": "#2fb66d",
++      "green500": "#1c874d",
++      "green600": "#297f50",
++      "green700": "#21693f",
++      "green900": "#003d1e",
++      "grape50": "#f1e6fb",
++      "grape100": "#e4d3f8",
++      "grape200": "#d4baf3",
++      "grape300": "#bc92ed",
++      "grape400": "#a66de8",
++      "grape500": "#7b39c6",
++      "grape800": "#2c094e",
++      "rose50": "#fde2ec",
++      "rose200": "#f9b6d0",
++      "rose300": "#f586b1",
++      "rose400": "#f25192",
++      "rose500": "#ed176c",
++      "rose700": "#c8185c",
++      "rose800": "#9f1446",
++      "rose900": "#4a1125"
++    }
++  },
+```
+
+</details>
+
+Can access `colour-system` colours like so:
+
+```jsx
+const StyledDiv = styled('div')(({ theme }) => ({
+  padding: 4,
+  backgroundColor: theme.palette.colors.gold50,
+}));
+
+// or
+
+<StyledDiv sx={{ color: 'colorsCommon.brandMidnight' }}>hello</StyledDiv>;
+```
+
+### Typography
+
+<details>
+  <summary>Typography theme diff</summary>
+
+```diff
+  "typography": {
+    "fontSize": 16,
+    "htmlFontSize": 16,
+-    "fontFamily": "Work Sans, Arial, sans-serif",
++    "fontFamily": {
++      "primary": "Aeonik, Arial, sans-serif",
++      "secondary": "'Work Sans', Arial, sans-serif"
++    },
+-    "fontWeightLight": 400,
+-    "fontWeightRegular": 400,
+-    "fontWeightMedium": 600,
+-    "fontWeightBold": 700,
++    "fontWeights": {
++      "primary": 700,
++      "secondary": {
++        "semibold": 600,
++        "regular": 400
++      }
++    },
+-    "body": {
+-      "fontFamily": "Work Sans, Arial, sans-serif",
+-      "color": "#1e0a46",
+-      "fontWeight": 400,
+-      "&.uw-cwui-Typography-semibold": {
+-        "fontWeight": 600
+-      },
+-      "&.uw-cwui-Typography-inverse": {
+-        "color": "#ffffff"
+-      },
+-      "&.uw-cwui-Typography-success": {
+-        "color": "#1b7d47"
+-      },
+-      "&.uw-cwui-Typography-success.uw-cwui-Typography-inverse": {
+-        "color": "#62dd99"
+-      },
+-      "&.uw-cwui-Typography-error": {
+-        "color": "#ce2261"
+-      },
+-      "&.uw-cwui-Typography-error.uw-cwui-Typography-inverse": {
+-        "color": "#f25192"
+-      },
+-      "fontSize": "1rem",
+-      "lineHeight": 1.5
+-    },
++    "body": {
++      "fontFamily": "'Work Sans', Arial, sans-serif",
++      "fontWeight": 400,
++      "color": "#1e0a46",
++      "fontSize": "1rem",
++      "lineHeight": 1.5
++    },
+-   "subtitle": {
+-      "fontFamily": "Work Sans, Arial, sans-serif",
+-      "color": "#1e0a46",
+-      "fontWeight": 400,
+-      "&.uw-cwui-Typography-semibold": {
+-        "fontWeight": 600
+-      },
+-      "&.uw-cwui-Typography-inverse": {
+-        "color": "#ffffff"
+-      },
+-      "&.uw-cwui-Typography-success": {
+-        "color": "#1b7d47"
+-      },
+-      "&.uw-cwui-Typography-success.uw-cwui-Typography-inverse": {
+-        "color": "#62dd99"
+-      },
+-      "&.uw-cwui-Typography-error": {
+-        "color": "#ce2261"
+-      },
+-      "&.uw-cwui-Typography-error.uw-cwui-Typography-inverse": {
+-        "color": "#f25192"
+-      },
+-      "fontSize": "1.125rem",
+-      "lineHeight": 1.5,
+-      "@media (min-width:1366px)": {
+-        "fontSize": "1.25rem"
+-      }
+-    },
++    "subtitle": {
++      "fontFamily": "'Work Sans', Arial, sans-serif",
++      "fontWeight": 400,
++      "color": "#1e0a46",
++      "fontSize": "1.125rem",
++      "lineHeight": 1.5,
++      "@media (min-width:992px)": {
++        "fontSize": "1.25rem"
++      }
++    },
+-    "legalNote": {
+-      "fontFamily": "Work Sans, Arial, sans-serif",
+-      "color": "#1e0a46",
+-      "fontWeight": 400,
+-      "&.uw-cwui-Typography-semibold": {
+-        "fontWeight": 600
+-      },
+-      "&.uw-cwui-Typography-inverse": {
+-        "color": "#ffffff"
+-      },
+-      "&.uw-cwui-Typography-success": {
+-        "color": "#1b7d47"
+-      },
+-      "&.uw-cwui-Typography-success.uw-cwui-Typography-inverse": {
+-        "color": "#62dd99"
+-      },
+-      "&.uw-cwui-Typography-error": {
+-        "color": "#ce2261"
+-      },
+-      "&.uw-cwui-Typography-error.uw-cwui-Typography-inverse": {
+-        "color": "#f25192"
+-      },
+-      "fontSize": "0.875rem",
+-      "lineHeight": 1.5
+-    }
+-  },
++    "legalNote": {
++      "fontFamily": "'Work Sans', Arial, sans-serif",
++      "fontWeight": 400,
++      "color": "#1e0a46",
++      "fontSize": "0.875rem",
++      "lineHeight": 1.5
++    },
+-    "caption": {
+-      "fontFamily": "Work Sans, Arial, sans-serif",
+-      "color": "#1e0a46",
+-      "fontWeight": 400,
+-      "&.uw-cwui-Typography-semibold": {
+-        "fontWeight": 600
+-      },
+-      "&.uw-cwui-Typography-inverse": {
+-        "color": "#ffffff"
+-      },
+-      "&.uw-cwui-Typography-success": {
+-        "color": "#1b7d47"
+-      },
+-      "&.uw-cwui-Typography-success.uw-cwui-Typography-inverse": {
+-        "color": "#62dd99"
+-      },
+-      "&.uw-cwui-Typography-error": {
+-        "color": "#ce2261"
+-      },
+-      "&.uw-cwui-Typography-error.uw-cwui-Typography-inverse": {
+-        "color": "#f25192"
+-      },
+-      "fontSize": "0.75rem",
+-      "lineHeight": 2
+-    },
++    "caption": {
++      "fontFamily": "'Work Sans', Arial, sans-serif",
++      "fontWeight": 400,
++      "color": "#1e0a46",
++      "fontSize": "0.75rem",
++      "lineHeight": 2
++    },
+-    "displayHeading": {
+-      "fontFamily": "Aeonik, Arial, sans-serif",
+-      "color": "#550091",
+-      "&.uw-cwui-Typography-secondary": {
+-        "color": "#1e0a46"
+-      },
+-      "&.uw-cwui-Typography-inverse": {
+-        "color": "#ffffff"
+-      },
+-      "fontSize": "2.625rem",
+-      "lineHeight": 1,
+-      "@media (min-width:1366px)": {
+-        "fontSize": "4rem"
+-      }
+-    },
++    "displayHeading": {
++      "fontFamily": "Aeonik, Arial, sans-serif",
++      "color": "#550091",
++      "fontSize": "2.625rem",
++      "lineHeight": 1,
++      "@media (min-width:992px)": {
++        "fontSize": "4rem"
++      }
++    },
+-    "h1": {
+-      "fontFamily": "Aeonik, Arial, sans-serif",
+-      "color": "#550091",
+-      "&.uw-cwui-Typography-secondary": {
+-        "color": "#1e0a46"
+-      },
+-      "&.uw-cwui-Typography-inverse": {
+-        "color": "#ffffff"
+-      },
+-      "fontSize": "2rem",
+-      "lineHeight": 1.2,
+-      "@media (min-width:1366px)": {
+-        "fontSize": "2.625rem"
+-      }
+-    },
++    "h1": {
++      "fontFamily": "Aeonik, Arial, sans-serif",
++      "color": "#550091",
++      "fontSize": "2rem",
++      "lineHeight": 1.2,
++      "@media (min-width:992px)": {
++        "fontSize": "2.625rem"
++      }
++    },
+-    "h2": {
+-      "fontFamily": "Aeonik, Arial, sans-serif",
+-      "color": "#550091",
+-      "&.uw-cwui-Typography-secondary": {
+-        "color": "#1e0a46"
+-      },
+-      "&.uw-cwui-Typography-inverse": {
+-        "color": "#ffffff"
+-      },
+-      "fontSize": "1.75rem",
+-      "lineHeight": 1.5,
+-      "@media (min-width:1366px)": {
+-        "fontSize": "2rem",
+-        "lineHeight": 1.2
+-      }
+-    },
++    "h2": {
++      "fontFamily": "Aeonik, Arial, sans-serif",
++      "color": "#550091",
++      "fontSize": "1.75rem",
++      "lineHeight": 1.5,
++      "@media (min-width:992px)": {
++        "fontSize": "2rem",
++        "lineHeight": 1.2
++      }
++    },
+-    "h3": {
+-      "fontFamily": "Aeonik, Arial, sans-serif",
+-      "color": "#550091",
+-      "&.uw-cwui-Typography-secondary": {
+-        "color": "#1e0a46"
+-      },
+-      "&.uw-cwui-Typography-inverse": {
+-        "color": "#ffffff"
+-      },
+-      "fontSize": "1.375rem",
+-      "lineHeight": 1.5,
+-      "@media (min-width:1366px)": {
+-        "fontSize": "1.5rem"
+-      }
+-    },
++    "h3": {
++      "fontFamily": "Aeonik, Arial, sans-serif",
++      "color": "#550091",
++      "fontSize": "1.375rem",
++      "lineHeight": 1.5,
++      "@media (min-width:992px)": {
++        "fontSize": "1.5rem"
++      }
++    },
+-    "h4": {
+-      "fontFamily": "Aeonik, Arial, sans-serif",
+-      "color": "#550091",
+-      "&.uw-cwui-Typography-secondary": {
+-        "color": "#1e0a46"
+-      },
+-      "&.uw-cwui-Typography-inverse": {
+-        "color": "#ffffff"
+-      },
+-      "fontSize": "1.125rem",
+-      "lineHeight": 1.5,
+-      "@media (min-width:1366px)": {
+-        "fontSize": "1.25rem"
+-      }
+-    },
++    "h4": {
++      "fontFamily": "Aeonik, Arial, sans-serif",
++      "color": "#550091",
++      "fontSize": "1.125rem",
++      "lineHeight": 1.5,
++      "@media (min-width:992px)": {
++        "fontSize": "1.25rem"
++      }
++    }
++  },
+```
+
+</details>
+
+## Codemods
+
+### Migration
+
+This will run all codemods, except any optional ones.
+
+### Import Paths
+
+Updates `customer-ui-material` imports.
+`useTheme` imports will stay as a customer-ui-material import, we recommend you update manually, avoiding the use of `useTheme`
