@@ -293,16 +293,16 @@ importers:
         version: 0.9.1
       '@gluestack-style/animation-resolver':
         specifier: ^1.0.4
-        version: 1.0.4(@gluestack-style/react@1.0.55)
+        version: 1.0.4(@gluestack-style/react@1.0.54)
       '@gluestack-style/legend-motion-animation-driver':
         specifier: ^1.0.3
-        version: 1.0.3(@gluestack-style/react@1.0.55)(@legendapp/motion@2.3.0)
+        version: 1.0.3(@gluestack-style/react@1.0.54)(@legendapp/motion@2.3.0)
       '@gluestack-style/react':
-        specifier: ^1.0.55
-        version: 1.0.55
+        specifier: 1.0.54
+        version: 1.0.54
       '@gluestack-ui/themed':
-        specifier: ^1.1.23
-        version: 1.1.23(@gluestack-style/react@1.0.55)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.6)(react@18.2.0)
+        specifier: 1.1.22
+        version: 1.1.22(@gluestack-style/react@1.0.54)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.6)(react@18.2.0)
       '@utilitywarehouse/colour-system':
         specifier: workspace:^
         version: link:../colour-system
@@ -5191,26 +5191,26 @@ packages:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: false
 
-  /@gluestack-style/animation-resolver@1.0.4(@gluestack-style/react@1.0.55):
+  /@gluestack-style/animation-resolver@1.0.4(@gluestack-style/react@1.0.54):
     resolution: {integrity: sha512-AeAQ61u41j9F2fxWTGiR6C7G3KG7qSCAYVi3jCE+aUiOEPEctfurUCT70DnrKp1Tg/Bl29a+OUwutaW/3YKvQw==}
     peerDependencies:
       '@gluestack-style/react': '>=1.0'
     dependencies:
-      '@gluestack-style/react': 1.0.55
+      '@gluestack-style/react': 1.0.54
     dev: false
 
-  /@gluestack-style/legend-motion-animation-driver@1.0.3(@gluestack-style/react@1.0.55)(@legendapp/motion@2.3.0):
+  /@gluestack-style/legend-motion-animation-driver@1.0.3(@gluestack-style/react@1.0.54)(@legendapp/motion@2.3.0):
     resolution: {integrity: sha512-sD6aFS6Tq5XpyjrboFEIc8LrRY4TA4kodFYHzk6mDchvbkdLODijtjnaDQB1UqihOkMRg49e7ANRAOzc7eymaQ==}
     peerDependencies:
       '@gluestack-style/react': '>=1.0.27'
       '@legendapp/motion': '>=2.2'
     dependencies:
-      '@gluestack-style/react': 1.0.55
+      '@gluestack-style/react': 1.0.54
       '@legendapp/motion': 2.3.0(nativewind@2.0.11)(react-native@0.73.6)(react@18.2.0)
     dev: false
 
-  /@gluestack-style/react@1.0.55:
-    resolution: {integrity: sha512-v/HzqobsU0KYTIXMGhhjhHUCen8JT8vd1w0xy4Vco2vKoJaErvMi7kYkDo0/I9VL8g6cadleVRTbjlFexottAg==}
+  /@gluestack-style/react@1.0.54:
+    resolution: {integrity: sha512-LAN7mMYr7IlhJAnab2PT5xiB55SUjKHdyIZ24qfayrZveKBH8Iy6TGCHkyE3JPP3ExgzFepDeshzz4T9X2/eoQ==}
     dependencies:
       inline-style-prefixer: 6.0.4
       normalize-css-color: 1.0.2
@@ -5679,10 +5679,10 @@ packages:
       - react-native
     dev: false
 
-  /@gluestack-ui/themed@1.1.23(@gluestack-style/react@1.0.55)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.6)(react@18.2.0):
-    resolution: {integrity: sha512-okk8W3iQ4CU4QYK2LvIATSB8XDdCRnD37ucGkyBluSWeUhUHwJCXD1brIdX3B9QkfeAVDICsqXCwXMMX4CEfAg==}
+  /@gluestack-ui/themed@1.1.22(@gluestack-style/react@1.0.54)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.6)(react@18.2.0):
+    resolution: {integrity: sha512-gdriivFCdddPR5GDuucNR8r0sLXns1y3qN7a7C38lMjodj5ygAZ7Bg+016vdzQKStQY66tvtxmFZyakkWBVzHg==}
     peerDependencies:
-      '@gluestack-style/react': '>=1.0.55'
+      '@gluestack-style/react': '>=1.0'
       '@types/react-native': '>=0.72'
       react: '>=16'
       react-dom: '>=16'
@@ -5691,9 +5691,9 @@ packages:
       react-native-web: '>=0.19'
     dependencies:
       '@expo/html-elements': 0.9.1
-      '@gluestack-style/animation-resolver': 1.0.4(@gluestack-style/react@1.0.55)
-      '@gluestack-style/legend-motion-animation-driver': 1.0.3(@gluestack-style/react@1.0.55)(@legendapp/motion@2.3.0)
-      '@gluestack-style/react': 1.0.55
+      '@gluestack-style/animation-resolver': 1.0.4(@gluestack-style/react@1.0.54)
+      '@gluestack-style/legend-motion-animation-driver': 1.0.3(@gluestack-style/react@1.0.54)(@legendapp/motion@2.3.0)
+      '@gluestack-style/react': 1.0.54
       '@gluestack-ui/accordion': 1.0.4(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/actionsheet': 0.2.41(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/alert': 0.1.13(react-dom@18.2.0)(react@18.2.0)
