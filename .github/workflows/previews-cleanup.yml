@@ -12,6 +12,9 @@ jobs:
     name: Cleanup Previews
     runs-on: ubuntu-latest
     steps:
+      - name: Get stringified GitHub info
+        run: echo '${{ toJson(github) }}'
+
       - name: 🏗 Setup repo
         uses: pnpm/action-setup@v2
         with:
