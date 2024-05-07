@@ -4,8 +4,8 @@ import { Meta } from '@storybook/blocks';
 
 ## Styling Overview
 
-Styling is provided by our styling engine from [`@gluestack-style/react`](https://gluestack.io/style/docs/overview/introduction) it is configured by passing config file from [`@gluestack-ui/config`](https://github.com/gluestack/gluestack-ui/tree/main/packages/config).
-The condif file exports an object which is passed into our `@utilitywarehouse/native-ui` `NativeUIProvider` (a Wrapper component that applies the theme to all the children).
+Styling is provided by our styling engine [`@gluestack-style/react`](https://gluestack.io/style/docs/overview/introduction) it is configured by passing config file from [`@gluestack-ui/config`](https://github.com/gluestack/gluestack-ui/tree/main/packages/config).
+The config file exports an object which is passed into the `@utilitywarehouse/native-ui` `NativeUIProvider` (a Wrapper component that applies the theme and styling to all the children).
 
 ```tsx
 import { NativeUIProvider } from '@utilitywarehouse/native-ui';
