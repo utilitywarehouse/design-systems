@@ -6,7 +6,6 @@ const VStackBasic = ({ space, reversed, ...props }: any) => {
   return (
     <VStack
       space={space}
-      //@ts-ignore
       sx={{ justifyContent: 'center', alignItems: 'center' }}
       reversed={reversed}
       {...props}
