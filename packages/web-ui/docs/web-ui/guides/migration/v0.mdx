@@ -4,24 +4,51 @@ import { Meta } from '@storybook/blocks';
 
 # v0
 
-It is possible to use Web UI in an application which is currently using
-`customer-ui-material`. While you probably don't want to use components from both
-libraries side-by-side,
+This guide aims to support your migration from using the legacy
+`customer-ui-material` component library to **Web UI**.
 
-this is no longer true - make it apparent that this only applies to certain components - as long as any Web UI are children of a `ThemeProvider`
-from Web UI then you can do this at the most specific level you want, whether
-that is app-wide, for a single page, or for a single section or component.
+It should cover all the significant changes, however there may be some minor
+inconsistencies not documented here. Please open an issue or PR if you find
+something worth documenting for others, thankyou!
+
+## Using both libraries together
+
+It is possible to use **Web UI** alongside `customer-ui-material`, you just
+need to be aware that a few **Web UI** components will need to be wrapped in a
+**Web UI** `ThemeProvider` to ensure they render the correct styles.
+
+### **Web UI** components that need to wrapped in a **Web UI** `ThemeProvider`
+
+- `Grid`
+- `Stack`
+- `Button` (NOTE: this does not apply to the newer `lab/Button` component)
+- `TextLink` (NOTE: this does not apply to the newer `lab/TextLink` component)
+- `Menu`
+- `TextField`
+- `ToggleButtonGroup`
+- `Background` (deprecated)
 
 ## Theme
 
-We advise against using the `theme` object, and it is highly likely it will be removed in a future release.
+We advise against using the `theme` object, and it is highly likely we will
+remove it in a future release.
 
-As we can't reliably predict the theme usage there is no codemod for updating
-any theme values, so you'll have to update manually.
+Unfortunately, as we can't reliably predict how the theme is being used, there
+is no codemod for updating theme values, so you'll have to update manually.
 
-the components key will have changed considerably, you shouldn't rely on it.
+Below we describe the main differences between the theme object from
+`customer-ui-material` and the one available from **Web UI**.
+
+### Components
+
+The `components` field within the theme object will have changed considerably,
+you really shouldn't rely on it.
 
 ### Breakpoints
+
+There is a new additional breakpoint; `wide`, and the breakpoint values have
+also been updated. The `mobile` breakpoint is still `0` and should be thought
+of as the _initial_ starting point for mobile-first designs.
 
 ```diff
 {
@@ -38,26 +65,63 @@ the components key will have changed considerably, you shouldn't rely on it.
    },
 ```
 
-Use the mobile first mediaQueries instead of the theme.breakpoints helper fucntions...
-doesn't rely on ThemeProvider
+#### Media Queries
+
+We recommend using the **Web UI** mobile first `mediaQueries` object, instead of the `theme.breakpoints` utilities.
+
+Be aware that if you do wish to use the `theme.breakpoints` utilities then
+you'll need to ensure your usage happens within a **Web UI** `ThemeProvider`.
 
 ```diff
+- import { useTheme } from '@utilitywarehouse/customer-ui-material';
 + import { mediaQueries } from '@utilitywarehouse/web-ui';
 
 [...]
 
+- const theme = useTheme()
+
+[...]
+
  sx={{
-   color: 'red',
+   minWidth: 500,
 -  [theme.breakpoints.up('desktop')]: {
--    color: 'blue',
+-    minWidth: 800,
 -  },
 +  [mediaQueries.desktop]: {
-+    color: 'purple',
++    minWidth: 800,
 +  },
 }}
 ```
 
 ### Palette
+
+We recommend that you import and use the colours from the `colour-system`
+library rather than accessing the colours from the `theme` object.
+
+We have made the colours available on the `theme` object to support the
+migration, however you will need to ensure that if you use these you do so
+within a component wrapped in a **Web UI** `ThemeProvider`. You should also
+expect these to be removed in a future major release.
+
+Many of the `theme.palette` colours have been updated to reflect the updated
+colour usage, so while you may not see errors in your code, if you continue to
+use the theme colours, you should absolutely visually check any changes to
+ensure the UI still looks as you
+intend it to.
+
+You can access `colour-system` colours like so:
+
+```jsx
+const StyledDiv = styled('div')(({ theme }) => ({
+  backgroundColor: theme.palette.colors.gold50,
+}));
+```
+
+or
+
+```jsx
+<StyledDiv sx={{ color: 'colorsCommon.brandMidnight' }}>styled</StyledDiv>
+```
 
 <details>
   <summary>palette theme diff</summary>
@@ -284,20 +348,16 @@ doesn't rely on ThemeProvider
 
 </details>
 
-Can access `colour-system` colours like so:
-
-```jsx
-const StyledDiv = styled('div')(({ theme }) => ({
-  padding: 4,
-  backgroundColor: theme.palette.colors.gold50,
-}));
-
-// or
-
-<StyledDiv sx={{ color: 'colorsCommon.brandMidnight' }}>hello</StyledDiv>;
-```
-
 ### Typography
+
+We recommend that you import and use the typography tokens from **Web UI**
+rather than accessing the typography values from the `theme` object.
+
+These are still available on the `theme` object to support the migration,
+however they have changed significantly, and you will need to ensure that if
+you use these you do so within a component wrapped in a **Web UI**
+`ThemeProvider`. You should also expect these to be removed in a future major
+release.
 
 <details>
   <summary>Typography theme diff</summary>
