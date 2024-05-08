@@ -4,20 +4,28 @@ import { Meta } from '@storybook/blocks';
 
 # v0
 
-This guide aims to support your migration from using the legacy
+This guide exists to support the migration from the legacy
 `customer-ui-material` component library to **Web UI**.
 
 It should cover all the significant changes, however there may be some minor
 inconsistencies not documented here. Please open an issue or PR if you find
 something worth documenting for others, thankyou!
 
-## Using both libraries together
+## Contents
 
-It is possible to use **Web UI** alongside `customer-ui-material`, you just
-need to be aware that a few **Web UI** components will need to be wrapped in a
-**Web UI** `ThemeProvider` to ensure they render the correct styles.
+- [Interoperability](#interoperability)
+- [Theme](#theme)
+- [Codemods](#codemods)
 
-### **Web UI** components that need to wrapped in a **Web UI** `ThemeProvider`
+## Interoperability
+
+It is possible to use **Web UI** alongside `customer-ui-material`. However, you
+should be aware that some **Web UI** components will need to be wrapped in a
+**Web UI** `ThemeProvider` to ensure they render the correct styles. This can
+be done at an individual component level, or per section, page, or journey;
+wherever it makes sense to you.
+
+### Components that need to wrapped in a Web UI `ThemeProvider`
 
 - `Grid`
 - `Stack`
@@ -31,13 +39,13 @@ need to be aware that a few **Web UI** components will need to be wrapped in a
 ## Theme
 
 We advise against using the `theme` object, and it is highly likely we will
-remove it in a future release.
+remove it in a future release. For now it is still in use, however there are
+differences between the theme objects from **Web UI** & `customer-ui-material`,
+these are described below.
 
 Unfortunately, as we can't reliably predict how the theme is being used, there
-is no codemod for updating theme values, so you'll have to update manually.
-
-Below we describe the main differences between the theme object from
-`customer-ui-material` and the one available from **Web UI**.
+is no codemod for updating theme values, so you'll have to update any usage
+manually.
 
 ### Components
 
@@ -113,6 +121,7 @@ You can access `colour-system` colours like so:
 
 ```jsx
 const StyledDiv = styled('div')(({ theme }) => ({
+  color: theme.palette.colorsCommon.brandMidnight,
   backgroundColor: theme.palette.colors.gold50,
 }));
 ```
@@ -120,7 +129,14 @@ const StyledDiv = styled('div')(({ theme }) => ({
 or
 
 ```jsx
-<StyledDiv sx={{ color: 'colorsCommon.brandMidnight' }}>styled</StyledDiv>
+<StyledDiv
+  sx={{
+    color: 'colorsCommon.brandMidnight',
+    backgroundColor: 'colors.gold50',
+  }}
+>
+  styled
+</StyledDiv>
 ```
 
 <details>
@@ -648,9 +664,22 @@ release.
 
 ### Migration
 
-This will run all codemods, except any optional ones.
+This will run all codemods required to migrate to **Web UI**. It will not run
+any of the optional codemods which exist in preparation for `v1`, these should
+be run after running, and committing, the main migration codemod.
+
+You can use `npx` to run the codemod on your source files.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v0/migration <path>
+```
 
 ### Import Paths
 
-Updates `customer-ui-material` imports.
-`useTheme` imports will stay as a customer-ui-material import, we recommend you update manually, avoiding the use of `useTheme`
+Updates `customer-ui-material` imports. Most components will change to **Web UI** imports, however some legacy components will change to local imports.
+
+Imported usage of `useTheme` will stay as a `customer-ui-material` import. We recommend you update manually, and avoid the use of `useTheme` entirely.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v0/import-paths <path>
+```
