@@ -3,6 +3,10 @@ import '@utilitywarehouse/css-reset';
 import { breakpoints, Box } from '../src';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { SyntaxHighlighter } from '@storybook/components';
+import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
+
+SyntaxHighlighter.registerLanguage('diff', diff);
 
 const customerUiViewports = {
   mobile: {
