@@ -301,8 +301,8 @@ importers:
         specifier: 1.0.56
         version: 1.0.56
       '@gluestack-ui/themed':
-        specifier: 1.1.24
-        version: 1.1.24(@gluestack-style/react@1.0.56)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.6)(react@18.2.0)
+        specifier: 1.1.26
+        version: 1.1.26(@gluestack-style/react@1.0.56)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.6)(react@18.2.0)
       '@utilitywarehouse/colour-system':
         specifier: workspace:^
         version: link:../colour-system
@@ -4741,6 +4741,10 @@ packages:
       - supports-color
     dev: false
 
+  /@expo/html-elements@0.10.1:
+    resolution: {integrity: sha512-3PTmtkV15D7+lykXVtvkH1jQ5Y6JE+e3zCaoMMux7z2cSLGQUNwDEUwG37gew3OEB1/E4/SEWgjvg8m7E6/e2Q==}
+    dev: false
+
   /@expo/html-elements@0.9.1:
     resolution: {integrity: sha512-HOWw6tkOknG98CTTCaT3S+wRRcS00FY6v6JIc3b8LEcIxppFnNDDhxzvtdMbATzg+wQ6c2xxqfxA6FeibGNSNQ==}
     dev: false
@@ -5089,8 +5093,8 @@ packages:
       - react-native
     dev: false
 
-  /@gluestack-ui/alert@0.1.13(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-5LxekYIWSF9SxJ7l0yg7QJwCptC1ua3PDRcpIloooxuHg0YP+sejoSfCxgAf5iwparsvY8ILWCYo1iP1rTN2ug==}
+  /@gluestack-ui/alert@0.1.14(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-eBQTfZrktiTria3/2mWpnEjptvjlVv1Vn3fDs6RBJCqA7k/c5RTfipyawixejRcg5zT+PoWwR11hvnEPv3UDng==}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
@@ -5196,8 +5200,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@gluestack-ui/icon@0.1.20(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0):
-    resolution: {integrity: sha512-f/+DGR3139LU9NbMMvoumZWIwqy4B4e+xc02kAAubiv7p7aqGDV5KPm2JN5vVmCwiDRxX5u0F3SxodSQhEoQZA==}
+  /@gluestack-ui/icon@0.1.21(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0):
+    resolution: {integrity: sha512-QZsx/MUS9AVjMka1mOcDPH6NDvPHQpp/nYEBD8M8pqj6C3SPtLbNAQJNWewy7WQTAsUdJblk6mUayq7LDrkQtA==}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
@@ -5407,8 +5411,8 @@ packages:
       - react-native
     dev: false
 
-  /@gluestack-ui/select@0.1.25(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0):
-    resolution: {integrity: sha512-whwfpFSo4/qvnaJR7a2uA0ca3MotMeBV4IyqpATk7AlMy+NZXi8RjQR5sBzeGP5/RhzwDhcYC8gbCXhyBpJi+g==}
+  /@gluestack-ui/select@0.1.26(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0):
+    resolution: {integrity: sha512-gclLFh3zI1RF2/ViKg7e3EF+ZVf6aNPa45KZFdvHlt3Po8QITtzeK0OXWT/xyb2MtNztNcuILbcCC4GhVNuFIA==}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
@@ -5499,8 +5503,8 @@ packages:
       - react-native
     dev: false
 
-  /@gluestack-ui/themed@1.1.24(@gluestack-style/react@1.0.56)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.6)(react@18.2.0):
-    resolution: {integrity: sha512-fXYlYc7UvWBzIt6ZHzWF7igQa2k3tis6dZJbgE381zpfh+bqza8GJUCnF0DyLM/sh+VytjOjymkntevQ9ppUIA==}
+  /@gluestack-ui/themed@1.1.26(@gluestack-style/react@1.0.56)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.10)(react-native@0.73.6)(react@18.2.0):
+    resolution: {integrity: sha512-lpj+OGhb+4NoHSR02uUzNh/9a+eGGhdOfpr5IMP4LDWJIr47Oa+4PUMAnujR9Be8LZj58ld8tV9f6uDZCthP/Q==}
     peerDependencies:
       '@gluestack-style/react': '>=1.0.55'
       '@types/react-native': '>=0.72'
@@ -5510,13 +5514,13 @@ packages:
       react-native-svg: '>=13.4.0'
       react-native-web: '>=0.19'
     dependencies:
-      '@expo/html-elements': 0.9.1
+      '@expo/html-elements': 0.10.1
       '@gluestack-style/animation-resolver': 1.0.4(@gluestack-style/react@1.0.56)
       '@gluestack-style/legend-motion-animation-driver': 1.0.3(@gluestack-style/react@1.0.56)(@legendapp/motion@2.3.0)
       '@gluestack-style/react': 1.0.56
       '@gluestack-ui/accordion': 1.0.4(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/actionsheet': 0.2.41(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
-      '@gluestack-ui/alert': 0.1.13(react-dom@18.2.0)(react@18.2.0)
+      '@gluestack-ui/alert': 0.1.14(react-dom@18.2.0)(react@18.2.0)
       '@gluestack-ui/alert-dialog': 0.1.28(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/avatar': 0.1.16(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/button': 1.0.4(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
@@ -5524,7 +5528,7 @@ packages:
       '@gluestack-ui/divider': 0.1.8(react-dom@18.2.0)(react@18.2.0)
       '@gluestack-ui/fab': 0.1.20(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/form-control': 0.1.17(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
-      '@gluestack-ui/icon': 0.1.20(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
+      '@gluestack-ui/icon': 0.1.21(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/image': 0.1.9(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/input': 0.1.29(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/link': 0.1.20(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
@@ -5536,7 +5540,7 @@ packages:
       '@gluestack-ui/progress': 0.1.14(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/provider': 0.1.12(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/radio': 0.1.29(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
-      '@gluestack-ui/select': 0.1.25(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
+      '@gluestack-ui/select': 0.1.26(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/slider': 0.1.23(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
       '@gluestack-ui/spinner': 0.1.14(react-dom@18.2.0)(react@18.2.0)
       '@gluestack-ui/switch': 0.1.21(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)

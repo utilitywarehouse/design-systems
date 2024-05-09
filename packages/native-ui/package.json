@@ -19,7 +19,7 @@
     "@gluestack-style/animation-resolver": "^1.0.4",
     "@gluestack-style/legend-motion-animation-driver": "^1.0.3",
     "@gluestack-style/react": "1.0.56",
-    "@gluestack-ui/themed": "1.1.24",
+    "@gluestack-ui/themed": "1.1.26",
     "@utilitywarehouse/colour-system": "workspace:^"
   },
   "devDependencies": {
@@ -46,7 +46,7 @@
     "react": ">=16",
     "react-dom": ">=16",
     "react-native": ">=0.72",
-    "react-native-reanimated": "~3.6.2",
+    "react-native-reanimated": "3.x",
     "react-native-svg": ">=13.4.0",
     "react-native-web": ">=0.19"
   },
