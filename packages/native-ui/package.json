@@ -19,7 +19,7 @@
     "@gluestack-style/animation-resolver": "^1.0.4",
     "@gluestack-style/legend-motion-animation-driver": "^1.0.3",
     "@gluestack-style/react": "1.0.56",
-    "@gluestack-ui/themed": "1.1.24",
+    "@gluestack-ui/themed": "1.1.26",
     "@utilitywarehouse/colour-system": "workspace:^"
   },
   "devDependencies": {
