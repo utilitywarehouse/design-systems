@@ -1,11 +1,11 @@
 import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
-import * as Stories from './TextLink.stories';
+import * as Stories from './Link.stories';
 
 <Meta of={Stories} />
 
-# TextLink
+# Link
 
-This component will be replaced with the `lab/TextLink` component in a future major release.
+This component will be replaced with the `lab/Link` component in a future major release.
 
 <Description />
 
@@ -19,15 +19,15 @@ This component will be replaced with the `lab/TextLink` component in a future ma
 
 ## Variants
 
-The `TextLink` component has all the same variants as the `Text` and `Heading` components.
+The `Link` component has all the same variants as the `Text` and `Heading` components.
 
-<Canvas of={Stories.TextLinkVariants} />
+<Canvas of={Stories.LinkVariants} />
 
-## Inline TextLink
+## Inline Link
 
-When contained within a `Text` or `Heading` component, and without a specific variant, the `TextLink` will inherit the parent variant.
+When contained within a `Text` or `Heading` component, and without a specific variant, the `Link` will inherit the parent variant.
 
-<Canvas of={Stories.InlineTextLink} />
+<Canvas of={Stories.InlineLink} />
 
 ## Guidelines
 
@@ -38,19 +38,19 @@ Though if you do use it, then be aware that [browsers now implicitly set rel=noo
 
 ### v12
 
-You can use the `TextLink` component with the `Link` component from `next/link`:
+You can use the `Link` component with the `Link` component from `next/link`:
 
 ```tsx
-import { TextLink, TextLinkProps } from '@utilitywarehouse/web-ui';
+import { Link, LinkProps } from '@utilitywarehouse/web-ui';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 
-export interface LinkProps extends Omit<TextLinkProps, 'href'> {
+export interface LinkProps extends Omit<LinkProps, 'href'> {
   href: NextLinkProps['href'];
 }
 
 export const Link: React.FC<LinkProps> = ({ children, href, ...props }) => (
   <NextLink href={href} passHref>
-    <TextLink {...props}>{children}</TextLink>
+    <Link {...props}>{children}</Link>
   </NextLink>
 );
 
@@ -61,19 +61,19 @@ export default Link;
 
 The behaviour of the `Link` component from `next/link` changes in v13, so for
 the time being you will need to add the `legacyBehavior` prop. We are looking
-into how best to use `TextLink` in Next.js 13.
+into how best to use `Link` in Next.js 13.
 
 ```tsx
-import { TextLink, TextLinkProps } from '@utilitywarehouse/web-ui';
+import { Link, LinkProps } from '@utilitywarehouse/web-ui';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 
-export interface LinkProps extends Omit<TextLinkProps, 'href'> {
+export interface LinkProps extends Omit<LinkProps, 'href'> {
   href: NextLinkProps['href'];
 }
 
 export const Link: React.FC<LinkProps> = ({ children, href, ...props }) => (
   <NextLink href={href} passHref legacyBehavior>
-    <TextLink {...props}>{children}</TextLink>
+    <Link {...props}>{children}</Link>
   </NextLink>
 );
 

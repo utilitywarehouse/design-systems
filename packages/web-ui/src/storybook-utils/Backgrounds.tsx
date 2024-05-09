@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
-import { Stack } from '../Stack';
+import { Background } from '../Background';
+import { backgroundColors } from '../types';
+import { Flex } from '../Flex';
 
 interface BackgroundsProps {
   children: React.ReactNode;
 }
 
-const Backgrounds = (props: BackgroundsProps) => (
-  <Stack spacing={0}>
+export const Backgrounds = (props: BackgroundsProps) => (
+  <Flex direction="column">
     {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
       bg => (
         <Box
@@ -21,7 +23,20 @@ const Backgrounds = (props: BackgroundsProps) => (
         />
       )
     )}
-  </Stack>
+  </Flex>
 );
 
-export default Backgrounds;
+export const LegacyBackgrounds = (props: BackgroundsProps) => (
+  <Flex direction="column">
+    {backgroundColors.map(bg => (
+      <Background
+        key={bg}
+        backgroundColor={bg}
+        display="flex"
+        justifyContent="center"
+        padding={4}
+        {...props}
+      />
+    ))}
+  </Flex>
+);
