@@ -31,6 +31,7 @@ wherever it makes sense to you.
 - `Stack`
 - `Button` (NOTE: this does not apply to the newer `lab/Button` component)
 - `TextLink` (NOTE: this does not apply to the newer `lab/TextLink` component)
+- `Link` (NOTE: this does not apply to the newer `lab/Link` component)
 - `Menu`
 - `TextField`
 - `ToggleButtonGroup`
@@ -105,6 +106,15 @@ you'll need to ensure your usage happens within a **Web UI** `ThemeProvider`.
 
 We recommend that you import and use the colours from the `colour-system`
 library rather than accessing the colours from the `theme` object.
+
+```diff
++ import { colorsCommon } from '@utilitywarehouse/colour-system';
+
+[...]
+
+- backgroundColor: theme.palette.background.paper,
++ backgroundColor: colorsCommon.brandWhite,
+```
 
 We have made the colours available on the `theme` object to support the
 migration, however you will need to ensure that if you use these you do so
@@ -660,6 +670,118 @@ release.
 
 </details>
 
+## MUI Material classes
+
+MUI class names, such as `buttonClasses`, are not exported from **Web UI**,
+whereas they were available from `customer-ui-material`. You will need to
+manually update these if you are using them. If this causes any issues with
+overriding **Web UI** components then please get in touch.
+
+## Incoming breaking changes
+
+### Button component
+
+The **Web UI** `Button` component is the same as the legacy
+`customer-ui-material` component, except that it responds to contextual colour
+with both the deprecated `Background` component and the updated `Box`
+component.
+
+There will be significant breaking changes in the next major release of **Web
+UI** when we replace the `Button` component with the new `Button` & `Link`
+components from the `lab` subdirectory.
+
+We will not be providing a codemod to migrate to components from the `lab`
+subdirectory, however we will provide one when migrating to `v1`.
+In the meantime we do recommend you take the time to update to the `lab/Button`
+& `lab/Link` components where possible, and make sure all changes are
+visually verified.
+
+### Link component
+
+The **Web UI** `Link` component is the same as the legacy
+`customer-ui-material` component, except that it responds to contextual colour
+with both the deprecated `Background` component and the updated `Box`
+component.
+
+There will be significant breaking changes in the next major release of **Web
+UI** when we replace the `Link` component with the new `Link`, `TextLink` & `Button` components from
+the `lab` subdirectory.
+
+We will not be providing a codemod to migrate to components from the `lab`
+subdirectory, however we will provide one when migrating to `v1`.
+In the meantime we do recommend you take the time to update to the `lab/Button`
+& `lab/Link` components where possible, and make sure all changes are
+visually verified.
+
+### Typography component
+
+The **Web UI** `Typography` component is the same as the legacy
+`customer-ui-material` component. However there will be significant breaking
+changes in the next major release as we move to using the `Heading` & `Text`
+components.
+
+We will provide a codemod to migrate to these components, however they are not
+a 1-2-1 match, as they do not continue with props such as `paragraph` or
+`gutterBottom`, so you should visually verify all changes.
+
+In place of the `paragraph` and `gutterBottom` props, we recommend you
+structure your layouts using the layout components, such as `Box`, `Flex`,
+`Stack`, `Grid`, and to a lesser extent `Spacer`.
+
+### Background component
+
+The `Background` component has been deprecated and will be removed in v1. You
+can achieve the same contextual colour result using the `Box` component.
+
+```diff
+- import { Background } from '@utilitywarehouse/customer-ui-material';
++ import { Box } from '@utilitywarehouse/web-ui';
++ import { colorsCommon } from '@utilitywarehouse/colour-system';
+
+[...]
+
+- <Background backgroundColor="midnight">
+-   <Typography>This text will be white</Typography>
+- </Background>
++ <Box background={colorsCommon.brandMidnight}>
++   <Text>This text will be white</Text>
++ </Box>
+```
+
+### Card component
+
+The `Card` component from `customer-ui-material` has been removed from **Web
+UI**. There is a replacement `Card` component in the `my-account-web` local
+shared components, however it doesn't imply any contextual colour information
+so you will need to manually set the background colour appropriately.
+
+```diff
+- import { Card } from '@utilitywarehouse/customer-ui-material';
++ import { Card } from '~/components';
+
+[...]
+
+- <Background backgroundColor="white">
+-   <Card>{content}</Card>
+- </Background>
++ <Box>
++   <Card backgroundColor={colorsCommon.brandPrimaryPurple}>{content}</Card>
++ </Box>
+
+- <Background backgroundColor="purple">
+-   <Card>{content}</Card>
+- </Background>
++ <Box background={colorsCommon.brandPrimaryPurple}>
++   <Card backgroundColor={colorsCommon.brandWhite}>{content}</Card>
++ </Box>
+```
+
+### Icon component
+
+The `Icon` component from `customer-ui-material` has been removed from **Web
+UI**. Please use the [`react-icons` package](https://uw-icons.vercel.app/)
+instead.
+
 ## Codemods
 
 ### Migration
@@ -683,3 +805,11 @@ Imported usage of `useTheme` will stay as a `customer-ui-material` import. We re
 ```console
 npx @utilitywarehouse/ds-codemod web-ui/v0/import-paths <path>
 ```
+
+### Background (TODO)
+
+Updates usage of the `Background` component to the `Box` component.
+
+### Typography (optional) (TODO)
+
+Updates usage of the `Typography` component to the `Heading` & `Text` components.
