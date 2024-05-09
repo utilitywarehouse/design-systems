@@ -4,24 +4,70 @@ import { Meta } from '@storybook/blocks';
 
 # v0
 
-It is possible to use Web UI in an application which is currently using
-`customer-ui-material`. While you probably don't want to use components from both
-libraries side-by-side,
+This guide exists to support the migration from the legacy
+`customer-ui-material` component library to **Web UI**.
 
-this is no longer true - make it apparent that this only applies to certain components - as long as any Web UI are children of a `ThemeProvider`
-from Web UI then you can do this at the most specific level you want, whether
-that is app-wide, for a single page, or for a single section or component.
+It should cover all the significant changes, however there may be some minor
+inconsistencies not documented here. Please open an issue or PR if you find
+something worth documenting for others, thankyou!
+
+## Contents
+
+- [Interoperability](#interoperability)
+- [Theme](#theme)
+- [MUI Material classes](#mui-material-classes)
+- [Incoming breaking changes](#incoming-breaking-changes)
+  - [Button component](#button-component)
+  - [Link component](#link-component)
+  - [Typography component](#typography-component)
+  - [Background component](#background-component)
+  - [Card component](#card-component)
+  - [Icon component](#icon-component)
+- [Codemods](#codemods)
+  - [Migration](#migration)
+  - [Import Paths](#import-paths)
+
+## Interoperability
+
+It is possible to use **Web UI** alongside `customer-ui-material`. However, you
+should be aware that some **Web UI** components will need to be wrapped in a
+**Web UI** `ThemeProvider` to ensure they render the correct styles. This can
+be done at an individual component level, or per section, page, or journey;
+wherever it makes sense to you.
+
+### Components that need to wrapped in a Web UI `ThemeProvider`
+
+- `Grid`
+- `Stack`
+- `Button` (NOTE: this does not apply to the newer `lab/Button` component)
+- `TextLink` (NOTE: this does not apply to the newer `lab/TextLink` component)
+- `Link` (NOTE: this does not apply to the newer `lab/Link` component)
+- `Menu`
+- `TextField`
+- `ToggleButtonGroup`
+- `Background` (deprecated)
 
 ## Theme
 
-We advise against using the `theme` object, and it is highly likely it will be removed in a future release.
+We advise against using the `theme` object, and it is highly likely we will
+remove it in a future release. For now it is still in use, however there are
+differences between the theme objects from **Web UI** & `customer-ui-material`,
+these are described below.
 
-As we can't reliably predict the theme usage there is no codemod for updating
-any theme values, so you'll have to update manually.
+Unfortunately, as we can't reliably predict how the theme is being used, there
+is no codemod for updating theme values, so you'll have to update any usage
+manually.
 
-the components key will have changed considerably, you shouldn't rely on it.
+### Components
+
+The `components` field within the theme object will have changed considerably,
+you really shouldn't rely on it.
 
 ### Breakpoints
+
+There is a new additional breakpoint; `wide`, and the breakpoint values have
+also been updated. The `mobile` breakpoint is still `0` and should be thought
+of as the _initial_ starting point for mobile-first designs.
 
 ```diff
 {
@@ -38,26 +84,80 @@ the components key will have changed considerably, you shouldn't rely on it.
    },
 ```
 
-Use the mobile first mediaQueries instead of the theme.breakpoints helper fucntions...
-doesn't rely on ThemeProvider
+#### Media Queries
+
+We recommend using the **Web UI** mobile first `mediaQueries` object, instead of the `theme.breakpoints` utilities.
+
+Be aware that if you do wish to use the `theme.breakpoints` utilities then
+you'll need to ensure your usage happens within a **Web UI** `ThemeProvider`.
 
 ```diff
+- import { useTheme } from '@utilitywarehouse/customer-ui-material';
 + import { mediaQueries } from '@utilitywarehouse/web-ui';
 
 [...]
 
+- const theme = useTheme()
+
+[...]
+
  sx={{
-   color: 'red',
+   minWidth: 500,
 -  [theme.breakpoints.up('desktop')]: {
--    color: 'blue',
+-    minWidth: 800,
 -  },
 +  [mediaQueries.desktop]: {
-+    color: 'purple',
++    minWidth: 800,
 +  },
 }}
 ```
 
 ### Palette
+
+We recommend that you import and use the colours from the `colour-system`
+library rather than accessing the colours from the `theme` object.
+
+```diff
++ import { colorsCommon } from '@utilitywarehouse/colour-system';
+
+[...]
+
+- backgroundColor: theme.palette.background.paper,
++ backgroundColor: colorsCommon.brandWhite,
+```
+
+We have made the colours available on the `theme` object to support the
+migration, however you will need to ensure that if you use these you do so
+within a component wrapped in a **Web UI** `ThemeProvider`. You should also
+expect these to be removed in a future major release.
+
+Many of the `theme.palette` colours have been updated to reflect the updated
+colour usage, so while you may not see errors in your code, if you continue to
+use the theme colours, you should absolutely visually check any changes to
+ensure the UI still looks as you
+intend it to.
+
+You can access `colour-system` colours like so:
+
+```jsx
+const StyledDiv = styled('div')(({ theme }) => ({
+  color: theme.palette.colorsCommon.brandMidnight,
+  backgroundColor: theme.palette.colors.gold50,
+}));
+```
+
+or
+
+```jsx
+<StyledDiv
+  sx={{
+    color: 'colorsCommon.brandMidnight',
+    backgroundColor: 'colors.gold50',
+  }}
+>
+  styled
+</StyledDiv>
+```
 
 <details>
   <summary>palette theme diff</summary>
@@ -284,20 +384,16 @@ doesn't rely on ThemeProvider
 
 </details>
 
-Can access `colour-system` colours like so:
-
-```jsx
-const StyledDiv = styled('div')(({ theme }) => ({
-  padding: 4,
-  backgroundColor: theme.palette.colors.gold50,
-}));
-
-// or
-
-<StyledDiv sx={{ color: 'colorsCommon.brandMidnight' }}>hello</StyledDiv>;
-```
-
 ### Typography
+
+We recommend that you import and use the typography tokens from **Web UI**
+rather than accessing the typography values from the `theme` object.
+
+These are still available on the `theme` object to support the migration,
+however they have changed significantly, and you will need to ensure that if
+you use these you do so within a component wrapped in a **Web UI**
+`ThemeProvider`. You should also expect these to be removed in a future major
+release.
 
 <details>
   <summary>Typography theme diff</summary>
@@ -584,13 +680,146 @@ const StyledDiv = styled('div')(({ theme }) => ({
 
 </details>
 
+## MUI Material classes
+
+MUI class names, such as `buttonClasses`, are not exported from **Web UI**,
+whereas they were available from `customer-ui-material`. You will need to
+manually update these if you are using them. If this causes any issues with
+overriding **Web UI** components then please get in touch.
+
+## Incoming breaking changes
+
+### Button component
+
+The **Web UI** `Button` component is the same as the legacy
+`customer-ui-material` component, except that it responds to contextual colour
+with both the deprecated `Background` component and the updated `Box`
+component.
+
+There will be significant breaking changes in the next major release of **Web
+UI** when we replace the `Button` component with the new `Button` & `Link`
+components from the `lab` subdirectory.
+
+We will not be providing a codemod to migrate to components from the `lab`
+subdirectory, however we will provide one when migrating to `v1`.
+In the meantime we do recommend you take the time to update to the `lab/Button`
+& `lab/Link` components where possible, and make sure all changes are
+visually verified.
+
+### Link component
+
+The **Web UI** `Link` component is the same as the legacy
+`customer-ui-material` component, except that it responds to contextual colour
+with both the deprecated `Background` component and the updated `Box`
+component.
+
+There will be significant breaking changes in the next major release of **Web
+UI** when we replace the `Link` component with the new `Link`, `TextLink` & `Button` components from
+the `lab` subdirectory.
+
+We will not be providing a codemod to migrate to components from the `lab`
+subdirectory, however we will provide one when migrating to `v1`.
+In the meantime we do recommend you take the time to update to the `lab/Button`
+& `lab/Link` components where possible, and make sure all changes are
+visually verified.
+
+### Typography component
+
+The **Web UI** `Typography` component is the same as the legacy
+`customer-ui-material` component. However there will be significant breaking
+changes in the next major release as we move to using the `Heading` & `Text`
+components.
+
+We will provide a codemod to migrate to these components, however they are not
+a 1-2-1 match, as they do not continue with props such as `paragraph` or
+`gutterBottom`, so you should visually verify all changes.
+
+In place of the `paragraph` and `gutterBottom` props, we recommend you
+structure your layouts using the layout components, such as `Box`, `Flex`,
+`Stack`, `Grid`, and to a lesser extent `Spacer`.
+
+### Background component
+
+The `Background` component has been deprecated and will be removed in v1. You
+can achieve the same contextual colour result using the `Box` component.
+
+```diff
+- import { Background } from '@utilitywarehouse/customer-ui-material';
++ import { Box } from '@utilitywarehouse/web-ui';
++ import { colorsCommon } from '@utilitywarehouse/colour-system';
+
+[...]
+
+- <Background backgroundColor="midnight">
+-   <Typography>This text will be white</Typography>
+- </Background>
++ <Box background={colorsCommon.brandMidnight}>
++   <Text>This text will be white</Text>
++ </Box>
+```
+
+### Card component
+
+The `Card` component from `customer-ui-material` has been removed from **Web
+UI**. There is a replacement `Card` component in the `my-account-web` local
+shared components, however it doesn't imply any contextual colour information
+so you will need to manually set the background colour appropriately.
+
+```diff
+- import { Card } from '@utilitywarehouse/customer-ui-material';
++ import { Card } from '~/components';
+
+[...]
+
+- <Background backgroundColor="white">
+-   <Card>{content}</Card>
+- </Background>
++ <Box>
++   <Card backgroundColor={colorsCommon.brandPrimaryPurple}>{content}</Card>
++ </Box>
+
+- <Background backgroundColor="purple">
+-   <Card>{content}</Card>
+- </Background>
++ <Box background={colorsCommon.brandPrimaryPurple}>
++   <Card backgroundColor={colorsCommon.brandWhite}>{content}</Card>
++ </Box>
+```
+
+### Icon component
+
+The `Icon` component from `customer-ui-material` has been removed from **Web
+UI**. Please use the [`react-icons` package](https://uw-icons.vercel.app/)
+instead.
+
 ## Codemods
 
 ### Migration
 
-This will run all codemods, except any optional ones.
+This will run all codemods required to migrate to **Web UI**. It will not run
+any of the optional codemods which exist in preparation for `v1`, these should
+be run after running, and committing, the main migration codemod.
+
+You can use `npx` to run the codemod on your source files.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v0/migration <path>
+```
 
 ### Import Paths
 
-Updates `customer-ui-material` imports.
-`useTheme` imports will stay as a customer-ui-material import, we recommend you update manually, avoiding the use of `useTheme`
+Updates `customer-ui-material` imports. Most components will change to **Web UI** imports, however some legacy components will change to local imports.
+
+Imported usage of `useTheme` will stay as a `customer-ui-material` import. We recommend you update manually, and avoid the use of `useTheme` entirely.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v0/import-paths <path>
+```
+
+### Background (TODO)
+
+Updates usage of the `Background` component to the `Box` component.
+
+### Typography (optional) (TODO)
+
+Updates usage of the `Typography` component to the `Heading` & `Text` components.
