@@ -24,7 +24,7 @@ jobs:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Get stringified GitHub info
+      - name: ℹ️ Get stringified GitHub info
         run: echo '${{ toJson(github) }}'
 
       - name: 🏗 Setup repo
