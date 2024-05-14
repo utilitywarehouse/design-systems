@@ -43,4 +43,5 @@ import {
   useDeviceSize,
   styled,
   useTheme,
+  Theme,
 } from '@utilitywarehouse/customer-ui-material';
