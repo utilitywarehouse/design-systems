@@ -10,6 +10,12 @@ const Component = () => (
     <Box background={colors.purple100}></Box>
     <Box background={colors.grey75}></Box>
     <Box background={colorsCommon.brandWhite}></Box>
+    <Box background={colorsCommon.brandWhite} padding={4}></Box>
+    <Box background={colorsCommon.brandWhite}>content</Box>
+    <Box background={colorsCommon.brandWhite}>
+      <span>content</span>
+    </Box>
+    <Box background={colorsCommon.brandWhite}></Box>
   </div>
 );
 

@@ -9,6 +9,12 @@ const Component = () => (
     <Background backgroundColor="lightTint"></Background>
     <Background backgroundColor="whiteOwl"></Background>
     <Background backgroundColor="white"></Background>
+    <Background backgroundColor="white" padding={4}></Background>
+    <Background backgroundColor="white">content</Background>
+    <Background backgroundColor="white">
+      <span>content</span>
+    </Background>
+    <Background></Background>
   </div>
 );
 
