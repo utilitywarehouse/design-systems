@@ -39,6 +39,7 @@ const cwuiElements = [
   // useTheme is still available in web-ui, however we're going to recommend
   // migrating manually as you would have to include a ThemeProvider wrapper.
   'useTheme',
+  'Theme',
   // Card is available as a local shared component, however the background
   // colour will have to be manually set, it will not infer it from the
   // background context. To avoid issues, we're going to expect consumers to
