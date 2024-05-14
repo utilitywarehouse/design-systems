@@ -1,5 +1,11 @@
 # @utilitywarehouse/ds-codemod
 
+## 0.0.15
+
+### Patch Changes
+
+- [#329](https://github.com/utilitywarehouse/design-systems/pull/329) [`d408bcc`](https://github.com/utilitywarehouse/design-systems/commit/d408bcc87a16fc5b47db8f616a9fb1ad1f893ba2) Thanks [@robphoenix](https://github.com/robphoenix)! - leave Theme import from customer-ui-material
+
 ## 0.0.14
 
 ### Patch Changes
