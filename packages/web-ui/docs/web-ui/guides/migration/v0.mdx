@@ -832,6 +832,16 @@ UI `Background` component to the `Box` component, updating usage of the
 `backgroundColor` prop to `background` and colours from the Colour System
 library.
 
+Be aware that when you use this codemod you will need to check, and update as
+necessary, any child components which use the background colour context to
+update their foreground colour.
+Please update the following components:
+
+- `Typography` -> `Text` & `Heading`
+- `Button` -> `lab/Button`
+- `Link` -> `lab/Link`
+- `TextLink` -> `lab/TextLink`
+
 ```console
 npx @utilitywarehouse/ds-codemod web-ui/v0/background-to-box <path>
 ```
