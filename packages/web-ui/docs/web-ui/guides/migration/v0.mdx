@@ -24,8 +24,11 @@ something worth documenting for others, thankyou!
   - [Card component](#card-component)
   - [Icon component](#icon-component)
 - [Codemods](#codemods)
-  - [Migration](#migration)
-  - [Import Paths](#import-paths)
+  - [Required](#required)
+    - [Import Paths](#import-paths)
+  - [Optional](#optional)
+    - [Background To Box](#background-to-box)
+    - [Typography (optional) (TODO)](<#typography-(optional)-(todo)>)
 
 ## Interoperability
 
@@ -806,7 +809,9 @@ You can use `npx` to run the codemod on your source files.
 npx @utilitywarehouse/ds-codemod web-ui/v0/migration <path>
 ```
 
-### Import Paths
+### Required
+
+#### Import Paths
 
 Updates `customer-ui-material` imports. Most components will change to **Web
 UI** imports, however some legacy components will change to local imports.
@@ -818,7 +823,9 @@ recommend you update manually, and avoid the use of `useTheme` entirely.
 npx @utilitywarehouse/ds-codemod web-ui/v0/import-paths <path>
 ```
 
-### Background To Box
+### Optional
+
+#### Background To Box
 
 This is an **optional** codemod that will transform usage of the deprecated Web
 UI `Background` component to the `Box` component, updating usage of the
@@ -842,6 +849,6 @@ npx @utilitywarehouse/ds-codemod web-ui/v0/background-to-box <path>
 + <Box background={colorsCommon.brandWhite}></Box>
 ```
 
-### Typography (optional) (TODO)
+#### Typography (optional) (TODO)
 
 Updates usage of the `Typography` component to the `Heading` & `Text` components.
