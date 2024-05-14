@@ -818,15 +818,28 @@ recommend you update manually, and avoid the use of `useTheme` entirely.
 npx @utilitywarehouse/ds-codemod web-ui/v0/import-paths <path>
 ```
 
-### Background To Box (optional)
+### Background To Box
 
-This is an optional codemod that will migrate Web UI imports of the deprecated
-`Background` component to the `Box` component, updating usage of the
+This is an **optional** codemod that will transform usage of the deprecated Web
+UI `Background` component to the `Box` component, updating usage of the
 `backgroundColor` prop to `background` and colours from the Colour System
 library.
 
 ```console
 npx @utilitywarehouse/ds-codemod web-ui/v0/background-to-box <path>
+```
+
+```diff
+- <Background backgroundColor="midnight"></Background>
+- <Background backgroundColor="purple"></Background>
+- <Background backgroundColor="lightTint"></Background>
+- <Background backgroundColor="whiteOwl"></Background>
+- <Background backgroundColor="white"></Background>
++ <Box background={colorsCommon.brandMidnight}></Box>
++ <Box background={colorsCommon.brandPrimaryPurple}></Box>
++ <Box background={colors.purple100}></Box>
++ <Box background={colors.grey75}></Box>
++ <Box background={colorsCommon.brandWhite}></Box>
 ```
 
 ### Typography (optional) (TODO)
