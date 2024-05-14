@@ -24,8 +24,11 @@ something worth documenting for others, thankyou!
   - [Card component](#card-component)
   - [Icon component](#icon-component)
 - [Codemods](#codemods)
-  - [Migration](#migration)
-  - [Import Paths](#import-paths)
+  - [Required](#required)
+    - [Import Paths](#import-paths)
+  - [Optional](#optional)
+    - [Background To Box](#background-to-box)
+    - [Typography (optional) (TODO)](<#typography-(optional)-(todo)>)
 
 ## Interoperability
 
@@ -806,20 +809,46 @@ You can use `npx` to run the codemod on your source files.
 npx @utilitywarehouse/ds-codemod web-ui/v0/migration <path>
 ```
 
-### Import Paths
+### Required
 
-Updates `customer-ui-material` imports. Most components will change to **Web UI** imports, however some legacy components will change to local imports.
+#### Import Paths
 
-Imported usage of `useTheme` will stay as a `customer-ui-material` import. We recommend you update manually, and avoid the use of `useTheme` entirely.
+Updates `customer-ui-material` imports. Most components will change to **Web
+UI** imports, however some legacy components will change to local imports.
+
+Imported usage of `useTheme` will stay as a `customer-ui-material` import. We
+recommend you update manually, and avoid the use of `useTheme` entirely.
 
 ```console
 npx @utilitywarehouse/ds-codemod web-ui/v0/import-paths <path>
 ```
 
-### Background (TODO)
+### Optional
 
-Updates usage of the `Background` component to the `Box` component.
+#### Background To Box
 
-### Typography (optional) (TODO)
+This is an **optional** codemod that will transform usage of the deprecated Web
+UI `Background` component to the `Box` component, updating usage of the
+`backgroundColor` prop to `background` and colours from the Colour System
+library.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v0/background-to-box <path>
+```
+
+```diff
+- <Background backgroundColor="midnight"></Background>
+- <Background backgroundColor="purple"></Background>
+- <Background backgroundColor="lightTint"></Background>
+- <Background backgroundColor="whiteOwl"></Background>
+- <Background backgroundColor="white"></Background>
++ <Box background={colorsCommon.brandMidnight}></Box>
++ <Box background={colorsCommon.brandPrimaryPurple}></Box>
++ <Box background={colors.purple100}></Box>
++ <Box background={colors.grey75}></Box>
++ <Box background={colorsCommon.brandWhite}></Box>
+```
+
+#### Typography (optional) (TODO)
 
 Updates usage of the `Typography` component to the `Heading` & `Text` components.
