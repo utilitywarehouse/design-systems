@@ -90,15 +90,17 @@ function transformer(file, api) {
       }
     });
 
+  // add in the colour-system import
   if (colourSystemSpecifiers.length > 0) {
-    // console.log(new Set(colourSystemSpecifiers));
-    const replacement = Array.from(new Set(colourSystemSpecifiers)).map(specifier =>
+    const importSpecifiers = Array.from(new Set(colourSystemSpecifiers)).map(specifier =>
       j.importSpecifier(j.identifier(specifier))
     );
     root
       .find(j.Program)
       .get('body', 0)
-      .insertAfter(j.importDeclaration(replacement, j.literal('@utilitywarehouse/colour-system')));
+      .insertAfter(
+        j.importDeclaration(importSpecifiers, j.literal('@utilitywarehouse/colour-system'))
+      );
   }
 
   // If the first node has been modified or deleted, reattach the comments
