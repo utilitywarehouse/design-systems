@@ -1,7 +1,7 @@
 // this is a comment at the beginning of the file
 import * as React from 'react';
+import { colorsCommon, colors } from '@utilitywarehouse/colour-system';
 import { Box } from '@utilitywarehouse/web-ui';
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const Component = () => (
   <div>

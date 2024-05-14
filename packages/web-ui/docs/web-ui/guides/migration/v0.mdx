@@ -808,17 +808,26 @@ npx @utilitywarehouse/ds-codemod web-ui/v0/migration <path>
 
 ### Import Paths
 
-Updates `customer-ui-material` imports. Most components will change to **Web UI** imports, however some legacy components will change to local imports.
+Updates `customer-ui-material` imports. Most components will change to **Web
+UI** imports, however some legacy components will change to local imports.
 
-Imported usage of `useTheme` will stay as a `customer-ui-material` import. We recommend you update manually, and avoid the use of `useTheme` entirely.
+Imported usage of `useTheme` will stay as a `customer-ui-material` import. We
+recommend you update manually, and avoid the use of `useTheme` entirely.
 
 ```console
 npx @utilitywarehouse/ds-codemod web-ui/v0/import-paths <path>
 ```
 
-### Background (TODO)
+### Background To Box (optional)
 
-Updates usage of the `Background` component to the `Box` component.
+This is an optional codemod that will migrate Web UI imports of the deprecated
+`Background` component to the `Box` component, updating usage of the
+`backgroundColor` prop to `background` and colours from the Colour System
+library.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v0/background-to-box <path>
+```
 
 ### Typography (optional) (TODO)
 
