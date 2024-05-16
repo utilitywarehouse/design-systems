@@ -2,7 +2,6 @@ import * as React from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
 import { classSelector, withGlobalPrefix, pxToRem, spacing } from '../utils';
 import { PropsWithSx } from '../types';
-import { Typography } from '../Typography';
 import { HelperTextProps } from './HelperText.props';
 import clsx from 'clsx';
 import { styled } from '../theme';
@@ -11,6 +10,7 @@ import {
   Warning01SmallContainedIcon,
   Tick01SmallContainedIcon,
 } from '@utilitywarehouse/react-icons';
+import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'HelperText';
 const componentClassName = withGlobalPrefix(componentName);
@@ -25,8 +25,12 @@ const classSelectors = {
   invalid: classSelector(classNames.invalid),
 };
 
-const StyledElement = styled(Typography)({
+const StyledElement = styled('span')({
   display: 'inline-flex',
+  fontFamily: fonts.secondary,
+  weight: fontWeights.secondary.regular,
+  fontSize: pxToRem(13),
+  lineHeight: pxToRem(16),
   gap: spacing(1),
   alignItems: 'center',
   '--helper-text-color': colors.grey800,
@@ -75,11 +79,6 @@ export const HelperText = React.forwardRef<
   return (
     <StyledElement
       ref={ref}
-      component="span"
-      fontFamily="secondary"
-      weight="regular"
-      fontSize={pxToRem(13)}
-      lineHeight={pxToRem(16)}
       data-disabled={disabled ? '' : undefined}
       className={clsx(
         componentClassName,
