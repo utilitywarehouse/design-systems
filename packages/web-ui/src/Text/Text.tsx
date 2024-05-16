@@ -20,6 +20,7 @@ const BaseBox = createBox<'p' | 'span'>({ componentName });
 
 const classNames = {
   bold: withGlobalPrefix('bold'),
+  noWrap: withGlobalPrefix('no-wrap'),
   variant: {
     subtitle: withGlobalPrefix('variant-subtitle'),
     body: withGlobalPrefix('variant-body'),
@@ -30,6 +31,7 @@ const classNames = {
 
 const classSelectors = {
   bold: classSelector(classNames.bold),
+  noWrap: classSelector(classNames.noWrap),
   variant: {
     subtitle: classSelector(classNames.variant.subtitle),
     body: classSelector(classNames.variant.body),
@@ -70,6 +72,11 @@ const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'col
     [classSelectors.bold]: {
       '--text-font-weight': 'var(--text-font-weight-bold)',
     },
+    [classSelectors.noWrap]: {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+    },
     [classSelectors.variant.subtitle]: {
       '--text-font-size': 'var(--text-font-size-subtitle)',
       '--text-font-size-desktop': 'var(--text-font-size-subtitle-desktop)',
@@ -104,7 +111,7 @@ const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'col
 export const Text = React.forwardRef<
   React.ElementRef<'span'>,
   React.PropsWithChildren<PropsWithSx<TextProps>>
->(({ variant = 'body', bold, color, className, ...props }, ref) => {
+>(({ variant = 'body', bold, noWrap, color, className, ...props }, ref) => {
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
     [DATA_ATTRIBUTES.onBrandBackground]: !color && isBrandBackground ? '' : undefined,
@@ -114,7 +121,10 @@ export const Text = React.forwardRef<
   return (
     <StyledElement
       ref={ref}
-      className={clsx(className, classNames.variant[variant], { [classNames.bold]: bold })}
+      className={clsx(className, classNames.variant[variant], {
+        [classNames.bold]: bold,
+        [classNames.noWrap]: noWrap,
+      })}
       color={color}
       {...dataAttributeProps}
       {...props}
