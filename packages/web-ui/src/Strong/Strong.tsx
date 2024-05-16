@@ -4,9 +4,19 @@ import { PropsWithSx } from '../types';
 import { StrongProps } from './Strong.props';
 import clsx from 'clsx';
 import { withGlobalPrefix } from '../utils';
+import { styled } from '../theme';
+import { fontWeights } from '../tokens';
 
 const componentName = 'Strong';
 const componentClassName = withGlobalPrefix(componentName);
+
+const StyledElement = styled('strong')({
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  fontWeight: fontWeights.secondary.semibold,
+  lineHeight: 'inherit',
+  color: 'inherit',
+});
 
 /**
  * The `Strong` component is based on the HTML `strong` element and is used to
@@ -23,19 +33,7 @@ export const Strong = React.forwardRef<
   React.ElementRef<'strong'>,
   React.PropsWithChildren<PropsWithSx<StrongProps>>
 >(({ className, ...props }, ref) => {
-  return (
-    <Typography
-      ref={ref}
-      component="strong"
-      className={clsx(componentClassName, className)}
-      fontFamily="inherit"
-      fontSize="inherit"
-      lineHeight="inherit"
-      weight="semibold"
-      color="inherit"
-      {...props}
-    />
-  );
+  return <StyledElement ref={ref} className={clsx(componentClassName, className)} {...props} />;
 });
 
 Strong.displayName = componentName;
