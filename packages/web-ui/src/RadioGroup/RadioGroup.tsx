@@ -2,7 +2,7 @@ import * as React from 'react';
 import { PropsWithSx } from '../types';
 import { withGlobalPrefix } from '../utils';
 import { RadioGroupProps } from './RadioGroup.props';
-import { RadioGroupFormControl } from './RadioGroupFormControl';
+import { RadioGroupFormField } from './RadioGroupFormField';
 import clsx from 'clsx';
 import { Flex } from '../Flex';
 import { styled } from '../theme';
@@ -36,7 +36,7 @@ const StyledElement = styled(Flex)({
 export const RadioGroup = React.forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps>>(
   ({ children, contentWidth = 'fit-content', direction = 'column', className, ...props }, ref) => {
     return (
-      <RadioGroupFormControl
+      <RadioGroupFormField
         ref={ref}
         className={clsx(componentClassName, className)}
         {...props}
@@ -45,7 +45,7 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, PropsWithSx<RadioGrou
         <StyledElement width={contentWidth} gap={2}>
           {children}
         </StyledElement>
-      </RadioGroupFormControl>
+      </RadioGroupFormField>
     );
   }
 );
