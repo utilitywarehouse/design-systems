@@ -3,10 +3,6 @@
     "version": ">= 5.9.2"
   },
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal"
-    },
     "preview": {
       "cache": {
         "paths": ["./ios/Podfile.lock"]
