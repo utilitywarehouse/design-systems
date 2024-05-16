@@ -11,22 +11,11 @@ const BaseBox = createBox<'p' | 'span' | 'div' | 'label' | 'strong' | 'em' | 'le
 });
 
 /**
- * > This component is only required when building a custom field that isn’t
- * > provided by UW Web UI, or for backwards compatability with the
+ * > This component is deprecated and will be removed in the next major version
+ * > (`v1`), it exists only for backwards compatability with the
  * > `customer-ui-material` library.
- *
- * `Typography` is an all purpose component intended for custom typography needs.
- * Most of the time you should be using `Text` or `Heading`. Typography is not
- * affected by any Box context and will not change foreground colour according to
- * the containing Box background prop value.
- *
- * ## Deprecated legacy variants
- *
- * The `variant` prop is currently available for backward compatability with
- * `customer-ui-material`, but is deprecated and will be removed in the next major
- * version (`v1`), in favour of the `Text` & `Heading` components.
- *
- * > When using the variant prop, this component should be wrapped in a ThemeProvider.
+ * >
+ * > This component should be wrapped in a ThemeProvider.
  *
  * ## Alternatives
  *
@@ -34,6 +23,8 @@ const BaseBox = createBox<'p' | 'span' | 'div' | 'label' | 'strong' | 'em' | 'le
  * - `Text` for body text
  * - `Strong` for strong importance
  * - `Em` for emphasis
+ *
+ * @deprecated
  */
 export const Typography = React.forwardRef<
   React.ElementRef<'span'>,
