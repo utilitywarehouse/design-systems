@@ -16,7 +16,7 @@ import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'Heading';
-const BaseBox = createBox({ componentName });
+const BaseBox = createBox<'h1' | 'h2' | 'h3' | 'h4'>({ componentName });
 
 const classNames = {
   variant: {
