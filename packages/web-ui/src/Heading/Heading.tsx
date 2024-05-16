@@ -56,6 +56,8 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
     '--heading-font-size-h2-desktop': pxToRem(32),
     '--heading-font-size-h3': pxToRem(22),
     '--heading-font-size-h3-desktop': pxToRem(24),
+    '--heading-font-size-h4': pxToRem(18),
+    '--heading-font-size-h4-desktop': pxToRem(20),
     '--heading-line-height-display-heading': 1.2,
     '--heading-line-height-h1': 1.2,
     '--heading-line-height-h2': 1.2,
