@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Typography } from '../Typography';
 import { PropsWithSx } from '../types';
 import { StrongProps } from './Strong.props';
 import clsx from 'clsx';
