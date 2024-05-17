@@ -30,15 +30,31 @@ something worth documenting for others, thankyou!
     - [Background To Box](#background-to-box)
     - [Typography (optional) (TODO)](<#typography-(optional)-(todo)>)
 
-## Interoperability
+## Customer UI interoperability
 
-It is possible to use **Web UI** alongside `customer-ui-material`. However, you
-should be aware that some **Web UI** components will need to be wrapped in a
-**Web UI** `ThemeProvider` to ensure they render the correct styles. This can
-be done at an individual component level, or per section, page, or journey;
-wherever it makes sense to you.
+When we first set out rebuilding `customer-ui-material` as **Web UI** we
+strived to make the transition from the old library to the new one as seamless
+as possible. However, we have come to realise that we've made some seemingly
+innocuous technical decisions which have greater ramifications than expected.
+As well as this, adoption of **Web UI** has exceeded our expectations and we
+are now supporting multiple product teams and applications.
 
-### Components that need to wrapped in a Web UI `ThemeProvider`
+This means we've had to concede that we cannot support some of the legacy
+components and behaviour of `customer-ui-material`, and that the transition
+between the libraries will have more friction than we had initially hoped.
+
+We have tried to provide documentation and guidelines, and codemods where
+applicable, to support the transition as best we can. Please do try to migrate
+your code in small chunks, and visually verify all your changes. Get in touch
+if you have any questions or you think something's broken.
+
+It's not imperative you migrate all of your code to use the new **Web UI**
+library. It is possible to use **Web UI** components alongside `customer-ui-material` components.
+
+However, the following **Web UI** components will need to be wrapped in a **Web UI**
+`ThemeProvider` to ensure they render the correct styles. This can be done at
+an individual component level, per section, page, or journey; wherever it makes
+sense to you.
 
 - `Grid`
 - `Stack`
@@ -48,7 +64,52 @@ wherever it makes sense to you.
 - `Menu`
 - `TextField`
 - `ToggleButtonGroup`
-- `Background` (deprecated)
+
+## Card, Background & Typography
+
+These three components can be quite tightly interconnected, and have ultimately
+proved too problematic to continue to support.
+
+> **TL;DR** If you migrate from legacy `Card` & `Background` components, you will
+> also need to migrate child `Tyopgraphy` components.
+
+| Legacy `customer-ui-material` component   | New component(s)                                                                   |
+| :---------------------------------------- | :--------------------------------------------------------------------------------- |
+| `<Card>`                                  | `<Card background={colorsCommon.brandPrimaryPurple}>` from local shared components |
+| `<Background backgroundColor="midnight">` | `<Box background={colorsCommon.brandMidnight}>`                                    |
+| `<Typography gutterBottom>`               | `<Text sx={{ marginBottom: n }}>` or `<Heading sx={{ marginBottom: n }}>`          |
+
+The `Card` component has no design support and is a component we have had no
+intention of supporting for a long time. There is a replacement component,
+built using **Web UI** in the `my-account-web` shared components. It has a
+different API, in that it doesn't infer it's own background colour from any
+parent `Background` component, and so you will have to intentionally set the
+`backgroundColor` prop yourself, preferably using tokens from the
+`colour-system` library. As it is built using **Web UI** it will no longer
+provide contextual colour data to child `Typography` components from
+`customer-ui-material`, so you will need to update all of these to the `Text` &
+`Heading` components from **Web UI**, though this will only _really_ be
+apparent if your card is using the Primary Purple colour.
+
+The behaviour from the `customer-ui-material` `Background` component has been
+amalgamated into the **Web UI** `Box` component, with the `backgroundColor`
+prop being renamed `background`. As with `Card`, if you migrate your
+`Background` components, you should be aware that if you were setting the
+`backgroundColor` to either `purple` or `midnight`, child `Typography`
+components will no longer infer their inverse foreground colour. Therefore you
+should also update these to the **Web UI** `Text` & `Heading` components.
+
+The `Typogaphy` component from `customer-ui-material` is widely used and we had
+intended to continue to support it in **Web UI** while people migrate to using
+the newer `Text` & `Heading` components. However, due to it's relationship to
+the unsupported `Card` & `Background` components, it is difficult to provide a
+component that supports their legacy behaviour. There are also elements of
+the `Typography` component API that we are not currently supporting, and in
+consideration of other teams using **Web UI** we would prefer to support the
+change to the newer `Text` & `Heading` components than put time into a
+component we intend to remove anyway. Ultimately, we have decided not to
+provide a `Typography` component, and will instead enable migration to the
+newer **Web UI** typographic components.
 
 ## Theme
 
