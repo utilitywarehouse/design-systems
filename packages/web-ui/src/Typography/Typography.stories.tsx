@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { ThemeProvider } from '../ThemeProvider';
-import { headingVariantMapping, textVariantMapping } from './LegacyTypography';
+import { headingVariantMapping, textVariantMapping } from './Typography';
 import { Typography } from './Typography';
 import { Backgrounds } from '../storybook-utils';
 import { Flex } from '../Flex';

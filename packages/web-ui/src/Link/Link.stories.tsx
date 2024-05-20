@@ -6,7 +6,7 @@ import { Text, TextProps } from '../Text';
 import { Stack } from '../Stack';
 import { Box } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { headingVariantMapping, textVariantMapping } from '../Typography/LegacyTypography';
+import { headingVariantMapping, textVariantMapping } from '../Typography/Typography';
 import { Typography } from '../Typography';
 import { ThemeProvider } from '../ThemeProvider';
 

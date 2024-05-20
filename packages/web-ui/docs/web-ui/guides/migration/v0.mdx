@@ -733,6 +733,10 @@ The **Web UI** `Typography` component is the same as the legacy
 changes in the next major release as we move to using the `Heading` & `Text`
 components.
 
+The **Web UI** `Typography` component will not work in the same way as before
+with the `customer-ui-material` `Background` component, so you will need to
+migrate any `Background` components at the same time.
+
 We will provide a codemod to migrate to these components, however they are not
 a 1-2-1 match, as they do not continue with props such as `paragraph` or
 `gutterBottom`, so you should visually verify all changes.
