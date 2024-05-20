@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Link, LinkProps } from './Link';
 import type { Meta, StoryObj } from '@storybook/react';
-import { LegacyBackgrounds } from '../storybook-utils';
 import { Text, TextProps } from '../Text';
 import { Stack } from '../Stack';
 import { Box } from '../Box';
@@ -102,28 +101,6 @@ export const InlineLink: Story = {
           )
         )}
       </Stack>
-    );
-  },
-};
-
-export const LinkColor: Story = {
-  name: 'On legacy Background',
-  render: () => {
-    return (
-      <LegacyBackgrounds>
-        <Stack spacing={4}>
-          {textVariants.map(v => (
-            <Stack key={v} spacing={1}>
-              <Link href="#" variant={v as TextProps['variant']}>
-                {v} link
-              </Link>
-              <Typography component="span" variant={v as TextProps['variant']}>
-                This is a <Link href="#">link</Link>, wrapped in a {v} Typography component.
-              </Typography>
-            </Stack>
-          ))}
-        </Stack>
-      </LegacyBackgrounds>
     );
   },
 };

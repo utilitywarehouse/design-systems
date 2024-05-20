@@ -36,10 +36,6 @@ const StyledLink = styled(MuiLink)({
   [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
     color: colorsCommon.brandWhite,
   },
-  // TODO: remove when `Background` component removed.
-  [`[${DATA_ATTRIBUTES.inverse}=true] &`]: {
-    color: colorsCommon.brandWhite,
-  },
   '&.MuiTypography-inherit': {
     color: 'inherit',
     textTransform: 'inherit',
