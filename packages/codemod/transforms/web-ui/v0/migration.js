@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const transformImportPaths = require('./import-paths');
 const transformBackgroundToBox = require('./background-to-box');
 

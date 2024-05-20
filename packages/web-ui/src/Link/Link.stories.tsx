@@ -6,7 +6,6 @@ import { Stack } from '../Stack';
 import { Box } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { headingVariantMapping, textVariantMapping } from '../Typography/Typography';
-import { Typography } from '../Typography';
 import { ThemeProvider } from '../ThemeProvider';
 
 const meta: Meta<typeof Link> = {
