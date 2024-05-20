@@ -1,6 +1,5 @@
 /* eslint-disable */
 const validWebUiElements = [
-  'Background',
   'useBackground',
   'BackgroundProvider',
   'Box',
@@ -32,7 +31,7 @@ const validWebUiElements = [
   'styled',
 ];
 
-const localMyAccountComponents = ['CardVariant', 'Container', 'NavLink'];
+const localMyAccountComponents = ['CardVariant', 'Container', 'NavLink', 'Card', 'CardProps'];
 const localMyAccountHooks = ['useDeviceSize'];
 
 const cwuiElements = [
@@ -40,14 +39,8 @@ const cwuiElements = [
   // migrating manually as you would have to include a ThemeProvider wrapper.
   'useTheme',
   'Theme',
-  // Card is available as a local shared component, however the background
-  // colour will have to be manually set, it will not infer it from the
-  // background context. To avoid issues, we're going to expect consumers to
-  // update manually, so they can visually confirm the correct background
-  // colour.
-  'Card',
-  'CardProps',
-  // deprecated elements
+  // deprecated/removed components
+  'Background',
   'Icon',
   'IconProps',
   'Hidden',
