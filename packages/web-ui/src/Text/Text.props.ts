@@ -1,9 +1,10 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { TypographyProps } from '../Typography';
+import { BoxProps } from '../Box';
+import { ResponsiveStyleValue } from '@mui/system';
 
 export interface TextProps
   extends ComponentPropsWithoutRef<'span'>,
-    Pick<TypographyProps, 'textTransform' | 'align' | 'padding' | 'margin'> {
+    Pick<BoxProps, 'textTransform' | 'padding' | 'margin'> {
   /**
    * Applies the text font styles.
    * @default body
@@ -26,6 +27,11 @@ export interface TextProps
    */
   bold?: boolean;
   /**
+   * Set the text-align on the component.
+   * @default 'inherit'
+   */
+  align?: ResponsiveStyleValue<'right' | 'left' | 'inherit' | 'center' | 'justify' | undefined>;
+  /**
    * If true, the text will not wrap, but instead will truncate with a text overflow ellipsis.
    * Note that text overflow can only happen with block or inline-block level elements (the element needs to have a width in order to overflow).
    */
@@ -34,5 +40,5 @@ export interface TextProps
    * Sets the HTML component that is rendered.
    * @default span
    */
-  component?: TypographyProps['component'];
+  component?: BoxProps['component'];
 }

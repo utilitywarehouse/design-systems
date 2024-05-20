@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Stack } from '../Stack';
-import { Backgrounds } from '../storybook-utils';
+import { Backgrounds, LegacyBackgrounds } from '../storybook-utils';
 import { Button } from './Button';
 
 const sizes = ['small', 'medium', 'large'] as const;
@@ -137,7 +137,7 @@ export const ButtonLegacyColour: Story = {
   },
   render: () => {
     return (
-      <Backgrounds>
+      <LegacyBackgrounds>
         <Stack spacing={4}>
           {variants.map(variant => (
             <Stack key={variant} direction="row" spacing={2} alignItems="center">
@@ -162,7 +162,7 @@ export const ButtonLegacyColour: Story = {
             </Button>
           </Stack>
         </Stack>
-      </Backgrounds>
+      </LegacyBackgrounds>
     );
   },
 };

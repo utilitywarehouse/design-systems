@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.6.2
+
+### Patch Changes
+
+- [#331](https://github.com/utilitywarehouse/design-systems/pull/331) [`4340700`](https://github.com/utilitywarehouse/design-systems/commit/4340700500553b2f31a6fc9c0ff82e38f34ee974) Thanks [@robphoenix](https://github.com/robphoenix)! - Add missing h4 font sizes
+
 ## 0.6.1
 
 ### Patch Changes

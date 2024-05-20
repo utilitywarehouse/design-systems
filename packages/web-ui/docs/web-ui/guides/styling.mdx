@@ -10,8 +10,6 @@ import { Meta } from '@storybook/blocks';
   - [Caveats](#caveats)
 - [Responsive values](#responsive-values)
 - [Guidelines](#guidelines)
-  - [Avoid using shorthand property names](#avoid-using-shorthand-property-names)
-  - [Prefer the object syntax for responsive values](#prefer-the-object-syntax-for-responsive-values)
 - [References](#references)
 
 ## sx prop
@@ -94,6 +92,8 @@ export default function App() {
 1. You need to explicitly reference the `theme.spacing` utility; `padding: 2`
    will become `padding: '2px'`, in styled whereas it will be `padding: '16px'`
    in `sx`.
+1. You are not able to use the [component selectors API](https://mui.com/system/styled/#how-to-use-components-selector-api) with
+   the exported `styled` function.
 
 ## Responsive values
 

@@ -24,6 +24,13 @@ import { colorsCommon } from '@utilitywarehouse/colour-system'
 <Text color={colorsCommon.brandPrimaryPurple}>{...}</Text>
 ```
 
+### Text wrapping
+
+Use the `noWrap` prop to set the text to truncate, instead of wrapping, with a
+text overflow ellipsis. Note that text overflow can only happen with block or
+inline-block level elements (the element needs to have a width in order to
+overflow).
+
 ### Contextual colour
 
 When inside a `Box` component that specifies a `backgroundColor` which is the
@@ -35,8 +42,9 @@ value of either `colorsCommon.brandMidnight` or
 
 ## Styles
 
-The system props are not available on the Text component, if you need custom typography then use the [Typography](?path=/docs/components-typography--documentation) component.
-If necessary you can use `sx` as an escape hatch for one-off custom styling.
+The system props are not available on the Text component, if you need custom
+typography then you can use `sx`, `styled` or the
+[Box](?path=/docs/components-box--documentation) component.
 
 ## Alternatives
 

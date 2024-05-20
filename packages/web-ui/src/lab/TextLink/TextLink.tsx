@@ -2,7 +2,6 @@ import * as React from 'react';
 import { PropsWithSx } from '../../types';
 import { withGlobalPrefix, px, DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS } from '../../utils';
 import clsx from 'clsx';
-import { Typography } from '../../Typography';
 import { TextLinkProps } from './TextLink.props';
 import { styled } from '../../theme';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
@@ -11,7 +10,7 @@ import { useBackground } from '../../Box';
 const componentName = 'TextLink';
 const componentClassName = withGlobalPrefix(componentName);
 
-const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== 'color' })<{
+const StyledElement = styled('a', { shouldForwardProp: prop => prop !== 'color' })<{
   color?: string;
 }>(({ color }) => ({
   cursor: 'pointer',
@@ -20,6 +19,10 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
   justifyContent: 'center',
   textAlign: 'center',
   flexShrink: 0,
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  lineHeight: 'inherit',
+  weight: 'inherit',
   '--text-link-color': colors.cyan600,
   '--text-link-color-custom': color,
   '--text-link-color-on-brand-bg': colorsCommon.brandWhite,
@@ -85,12 +88,7 @@ export const TextLink = React.forwardRef<
   return (
     <StyledElement
       ref={ref}
-      component="a"
       className={clsx(componentClassName, className)}
-      fontFamily="inherit"
-      fontSize="inherit"
-      lineHeight="inherit"
-      weight="inherit"
       color={color}
       {...dataAttributeProps}
       {...props}

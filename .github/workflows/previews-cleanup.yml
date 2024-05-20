@@ -12,7 +12,11 @@ jobs:
   cleanup:
     name: Cleanup Previews
     runs-on: ubuntu-latest
+    if: ${{ github.event.before && github.head_commit.author.username != 'github-actions[bot]'}}
     steps:
+      - name: ℹ️ Get stringified GitHub info
+        run: echo '${{ toJson(github) }}'
+
       - name: 🏗 Setup repo
         uses: pnpm/action-setup@v2
         with:

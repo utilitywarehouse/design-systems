@@ -3,7 +3,6 @@ import {
   useSharedValue,
   withTiming,
   useAnimatedProps,
-  useAnimatedStyle,
   Easing,
   withSequence,
   withRepeat,
@@ -11,7 +10,7 @@ import {
 import { G } from 'react-native-svg';
 import { StyledCircle, StyledSpinner, StyledSvg } from './styled-components';
 
-export interface SpinnerProps {
+interface SpinnerProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   color?: string;
 }
@@ -68,16 +67,11 @@ const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color }) => {
     };
   }, [progress]);
 
-  const animatedSvgStyle = useAnimatedStyle(
-    () => ({
-      transform: [
-        {
-          rotate: `${rotation.value}deg`,
-        },
-      ],
-    }),
-    [rotation]
-  );
+  const animatedSvgProps = useAnimatedProps(() => {
+    return {
+      rotation: rotation.value,
+    };
+  }, [progress]);
 
   return (
     <StyledSpinner size={size}>
@@ -85,7 +79,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color }) => {
         width={width}
         height={width}
         viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}
-        style={animatedSvgStyle}
+        animatedProps={animatedSvgProps}
       >
         <G origin={`${HALF_CIRCLE}, ${HALF_CIRCLE}`} rotation={-90}>
           <StyledCircle

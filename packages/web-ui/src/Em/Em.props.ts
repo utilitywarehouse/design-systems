@@ -1,5 +1,5 @@
-import { TypographyProps } from '../Typography';
+import { BoxProps } from '../Box';
 
 export interface EmProps
-  extends Pick<TypographyProps, 'textTransform' | 'padding' | 'margin'>,
+  extends Pick<BoxProps, 'textTransform' | 'padding' | 'margin'>,
     React.ComponentPropsWithoutRef<'em'> {}

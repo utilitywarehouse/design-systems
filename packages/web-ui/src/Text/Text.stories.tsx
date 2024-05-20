@@ -120,3 +120,27 @@ export const TextColour: Story = {
     );
   },
 };
+
+export const TextNoWrap: Story = {
+  name: 'No Wrap',
+  render: args => {
+    return (
+      <Flex direction="column" gap={1} width={200}>
+        <Text variant="subtitle" {...args}>
+          the quick brown fox jumped over the lazy dog.
+        </Text>
+        <Text variant="body" {...args}>
+          the quick brown fox jumped over the lazy dog.
+        </Text>
+        <Text variant="legalNote" {...args}>
+          the quick brown fox jumped over the lazy dog.
+        </Text>
+        <Text variant="caption" {...args}>
+          the quick brown fox jumped over the lazy dog.
+        </Text>
+      </Flex>
+    );
+  },
+  argTypes: { noWrap: { control: { type: 'boolean' } } },
+  args: { noWrap: true },
+};

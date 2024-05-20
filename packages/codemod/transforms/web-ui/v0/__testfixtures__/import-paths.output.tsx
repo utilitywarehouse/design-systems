@@ -33,6 +33,8 @@ import {
 } from '@utilitywarehouse/web-ui';
 
 import {
+  Card,
+  CardProps,
   Icon,
   IconProps,
   Hidden,
@@ -40,7 +42,8 @@ import {
   InteractiveCard,
   InteractiveCardProps,
   useTheme,
+  Theme,
 } from '@utilitywarehouse/customer-ui-material';
 
 import { useDeviceSize } from '~/hooks';
-import { Card, CardProps, Container, NavLink } from '~/components';
+import { Container, NavLink } from '~/components';

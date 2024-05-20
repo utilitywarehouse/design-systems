@@ -65,7 +65,6 @@ const Alert: React.FC<AlertProps> = ({
         <AlertIcon as={getIcon(colorScheme)} />
         <VStack flex={1} gap={4}>
           {!!title && <AlertTitle>{title}</AlertTitle>}
-          {/* @ts-expect-error - Gluestack issue reported */}
           <AlertText>{text}</AlertText>
           {!!link && (
             <AlertLink onPress={onPressLink}>

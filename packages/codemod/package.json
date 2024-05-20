@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/ds-codemod",
-  "version": "0.0.12",
+  "version": "0.0.15",
   "description": "Codemod scripts for Design Systems packages.",
   "bin": {
     "@utilitywarehouse/ds-codemod": "bin/codemod.js"
@@ -20,6 +20,7 @@
   "author": "Rob Phoenix",
   "license": "UNLICENSED",
   "dependencies": {
+    "is-git-clean": "^1.1.0",
     "jscodeshift": "^0.15.2",
     "yargs": "^17.7.2"
   },

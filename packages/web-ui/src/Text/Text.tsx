@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useBackground } from '../Box';
+import { createBox, useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import {
   DATA_ATTRIBUTES,
@@ -9,18 +9,18 @@ import {
   pxToRem,
   withGlobalPrefix,
 } from '../utils';
-import { Typography } from '../Typography';
 import { TextProps } from './Text.props';
 import { PropsWithSx } from '../types';
 import clsx from 'clsx';
 import { styled } from '../theme';
-import { fontWeights } from '../tokens';
+import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'Text';
-const componentClassName = withGlobalPrefix(componentName);
+const BaseBox = createBox<'p' | 'span'>({ componentName });
 
 const classNames = {
   bold: withGlobalPrefix('bold'),
+  noWrap: withGlobalPrefix('no-wrap'),
   variant: {
     subtitle: withGlobalPrefix('variant-subtitle'),
     body: withGlobalPrefix('variant-body'),
@@ -31,6 +31,7 @@ const classNames = {
 
 const classSelectors = {
   bold: classSelector(classNames.bold),
+  noWrap: classSelector(classNames.noWrap),
   variant: {
     subtitle: classSelector(classNames.variant.subtitle),
     body: classSelector(classNames.variant.body),
@@ -39,10 +40,11 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== 'color' })<{
+const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'color' })<{
   color?: string;
 }>(({ color }) => {
   return {
+    fontFamily: fonts.secondary,
     fontSize: 'var(--text-font-size)',
     lineHeight: 'var(--text-line-height)',
     fontWeight: 'var(--text-font-weight)',
@@ -69,6 +71,11 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
     },
     [classSelectors.bold]: {
       '--text-font-weight': 'var(--text-font-weight-bold)',
+    },
+    [classSelectors.noWrap]: {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
     },
     [classSelectors.variant.subtitle]: {
       '--text-font-size': 'var(--text-font-size-subtitle)',
@@ -104,7 +111,7 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
 export const Text = React.forwardRef<
   React.ElementRef<'span'>,
   React.PropsWithChildren<PropsWithSx<TextProps>>
->(({ variant = 'body', bold, color, className, ...props }, ref) => {
+>(({ variant = 'body', bold, noWrap, color, className, ...props }, ref) => {
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
     [DATA_ATTRIBUTES.onBrandBackground]: !color && isBrandBackground ? '' : undefined,
@@ -114,10 +121,10 @@ export const Text = React.forwardRef<
   return (
     <StyledElement
       ref={ref}
-      className={clsx(componentClassName, className, classNames.variant[variant], {
+      className={clsx(className, classNames.variant[variant], {
         [classNames.bold]: bold,
+        [classNames.noWrap]: noWrap,
       })}
-      fontFamily="secondary"
       color={color}
       {...dataAttributeProps}
       {...props}
