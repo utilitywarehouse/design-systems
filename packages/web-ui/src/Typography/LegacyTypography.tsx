@@ -1,11 +1,23 @@
 import * as React from 'react';
-import { ComponentPropsWithoutRef, forwardRef, PropsWithChildren } from 'react';
+import { forwardRef, PropsWithChildren } from 'react';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } from '@mui/material';
 import { OverrideProps } from '@mui/types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { DATA_ATTRIBUTES } from '../utils';
+import { GLOBAL_PREFIX } from '../utils';
 import { PropsWithSx } from '../types';
+import { useBackground } from '../Box';
+import clsx from 'clsx';
+
+const PREFIX = `${GLOBAL_PREFIX}-Typography`;
+export const typographyClasses: { [key: string]: string } = {
+  primary: `${PREFIX}-primary`,
+  secondary: `${PREFIX}-secondary`,
+  success: `${PREFIX}-success`,
+  error: `${PREFIX}-error`,
+  inverse: `${PREFIX}-inverse`,
+  semibold: `${PREFIX}-semibold`,
+};
 
 export const textVariantMapping: Record<string, string> = {
   subtitle: 'p',
@@ -21,14 +33,29 @@ export const headingVariantMapping: Record<string, string> = {
   h4: 'h4',
 };
 
-export interface LegacyTypographyOwnProps extends ComponentPropsWithoutRef<'span'> {
+export type DefaultLegacyTypographyComponent = 'p';
+
+export interface LegacyTypographyOwnProps<
+  D extends React.ElementType = DefaultLegacyTypographyComponent,
+  P = object,
+> extends Pick<
+    MuiTypographyProps<D, P>,
+    | 'sx'
+    | 'gutterBottom'
+    | 'paragraph'
+    | 'align'
+    | 'classes'
+    | 'className'
+    | 'noWrap'
+    | 'textTransform'
+    | 'letterSpacing'
+    | 'children'
+    | 'variant'
+  > {
   color?: string;
-  /** @deprecated The variant prop is deprecated and will be removed in v1 */
-  variant?: MuiTypographyProps['variant'];
+  fontWeight?: 'regular' | 'semibold';
   component?: React.ElementType;
 }
-
-export type DefaultLegacyTypographyComponent = 'p';
 
 export interface LegacyTypographyTypeMap<
   AdditionalProps = object,
@@ -45,38 +72,35 @@ export type LegacyTypographyProps<
   component?: React.ElementType;
 };
 
+/**
+ * > This component is deprecated and will be removed in the next major version
+ * > (`v1`), it exists only for backwards compatability with the
+ * > `customer-ui-material` library.
+ * >
+ * > This component should be wrapped in a ThemeProvider.
+ *
+ * ## Alternatives
+ *
+ * - `Heading` for heading-level text
+ * - `Text` for body text
+ * - `Strong` for strong importance
+ * - `Em` for emphasis
+ *
+ * @deprecated
+ */
 export const LegacyTypography = forwardRef(function LegacyTypography(
-  { color, variant, component = 'body', ...props },
+  { color = 'primary', variant = 'body', fontWeight = 'regular', className, component, ...props },
   ref
 ) {
-  const isLegacyTextVariant = variant && Object.keys(textVariantMapping).includes(variant);
-  const isLegacyHeadingVariant = variant && Object.keys(headingVariantMapping).includes(variant);
-  const isLegacyColor = [undefined, 'primary', 'secondary', 'success', 'error'].includes(
-    color as string
+  const { isBrandBackground } = useBackground();
+  const classNames = clsx(
+    typographyClasses[color],
+    {
+      [typographyClasses.inverse as string]: isBrandBackground,
+      [typographyClasses.semibold as string]: fontWeight === 'semibold',
+    },
+    className
   );
-  const getLegacyColor = (textColor: string) => {
-    if (textColor === undefined) return 'primary';
-    if (isLegacyColor) return textColor;
-    return 'primary';
-  };
-  const dataAttributeProps = isLegacyColor
-    ? {
-        [DATA_ATTRIBUTES.legacy]: true,
-        // @ts-expect-error this code is deprecated and soon to be removed
-        [DATA_ATTRIBUTES[getLegacyColor(color)]]: true,
-      }
-    : {};
-
-  if (isLegacyTextVariant) {
-    console.warn(
-      'The Typography variant prop is deprecated, please use the Text component instead'
-    );
-  }
-  if (isLegacyHeadingVariant) {
-    console.warn(
-      'The Typography variant prop is deprecated, please use the Heading component instead'
-    );
-  }
 
   return (
     <MuiTypography
@@ -84,7 +108,7 @@ export const LegacyTypography = forwardRef(function LegacyTypography(
       color={color || colorsCommon.brandMidnight}
       component={component || 'p'}
       variant={variant}
-      {...dataAttributeProps}
+      className={classNames}
       {...props}
     />
   );

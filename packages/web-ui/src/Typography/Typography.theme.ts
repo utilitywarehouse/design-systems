@@ -1,57 +1,44 @@
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
-import { DATA_ATTRIBUTES, mediaQueries, pxToRem } from '../utils';
+import { mediaQueries, pxToRem } from '../utils';
+import { typographyClasses } from './Typography';
 
-const { legacy, primary, secondary, inverse, success, error } = DATA_ATTRIBUTES;
-
-const baseTextStyles = {
+const textStyles = {
   fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.regular,
-  color: colorsCommon.brandMidnight,
-};
-
-const legacyTextStyles = {
-  [`&[${legacy}="true"][${primary}="true"]`]: {
+  [`&.${typographyClasses.primary}`]: {
     color: colorsCommon.brandMidnight,
   },
-  [`[${inverse}=true] &`]: {
-    [`&[${legacy}=true]`]: {
-      color: colorsCommon.brandWhite,
-    },
+  [`&.${typographyClasses.semibold}`]: {
+    fontWeight: fontWeights.secondary.semibold,
   },
-  [`&[${legacy}=true][${success}=true]`]: {
+  [`&.${typographyClasses.inverse}`]: {
+    color: colorsCommon.brandWhite,
+  },
+  [`&.${typographyClasses.success}`]: {
     color: colors.green700,
-    [`[${inverse}=true] &`]: {
-      color: colors.apple400,
-    },
   },
-  [`&[${legacy}=true][${error}=true]`]: {
+  [`&.${typographyClasses.success}.${typographyClasses.inverse}`]: {
+    color: colors.apple400,
+  },
+  [`&.${typographyClasses.error}`]: {
     color: colors.red600,
-    [`[${inverse}=true] &`]: {
-      color: colors.rose400,
-    },
+  },
+  [`&.${typographyClasses.error}.${typographyClasses.inverse}`]: {
+    color: colors.rose400,
   },
 };
 
-const baseHeadingStyles = {
+const headingStyles = {
   fontFamily: fonts.primary,
-  color: colorsCommon.brandPrimaryPurple,
-};
-
-const legacyHeadingStyles = {
-  [`&[${legacy}=true][${primary}=true]`]: {
+  [`&.${typographyClasses.primary}`]: {
     color: colorsCommon.brandPrimaryPurple,
   },
-  [`&[${legacy}=true][${secondary}=true]`]: {
+  [`&.${typographyClasses.secondary}`]: {
     color: colorsCommon.brandMidnight,
   },
-  [`&[${legacy}=true][${error}=true]`]: {
-    color: colorsCommon.brandPrimaryPurple,
-  },
-  [`[${inverse}=true] &`]: {
-    [`&[${legacy}=true]`]: {
-      color: colorsCommon.brandWhite,
-    },
+  [`&.${typographyClasses.inverse}`]: {
+    color: colorsCommon.brandWhite,
   },
 };
 
@@ -59,12 +46,12 @@ const legacyHeadingStyles = {
 // ie sx={{ ...theme.typography.body }}
 export const baseTypographyTheme = {
   body: {
-    ...baseTextStyles,
+    ...textStyles,
     fontSize: pxToRem(16),
     lineHeight: 1.5,
   },
   subtitle: {
-    ...baseTextStyles,
+    ...textStyles,
     fontSize: pxToRem(18),
     lineHeight: 1.5,
     [mediaQueries.desktop]: {
@@ -72,17 +59,17 @@ export const baseTypographyTheme = {
     },
   },
   legalNote: {
-    ...baseTextStyles,
+    ...textStyles,
     fontSize: pxToRem(14),
     lineHeight: 1.5,
   },
   caption: {
-    ...baseTextStyles,
+    ...textStyles,
     fontSize: pxToRem(12),
     lineHeight: 2,
   },
   displayHeading: {
-    ...baseHeadingStyles,
+    ...headingStyles,
     fontSize: pxToRem(42),
     lineHeight: 1,
     [mediaQueries.desktop]: {
@@ -90,7 +77,7 @@ export const baseTypographyTheme = {
     },
   },
   h1: {
-    ...baseHeadingStyles,
+    ...headingStyles,
     fontSize: pxToRem(32),
     lineHeight: 1.2,
     [mediaQueries.desktop]: {
@@ -98,7 +85,7 @@ export const baseTypographyTheme = {
     },
   },
   h2: {
-    ...baseHeadingStyles,
+    ...headingStyles,
     fontSize: pxToRem(28),
     lineHeight: 1.5,
     [mediaQueries.desktop]: {
@@ -107,7 +94,7 @@ export const baseTypographyTheme = {
     },
   },
   h3: {
-    ...baseHeadingStyles,
+    ...headingStyles,
     fontSize: pxToRem(22),
     lineHeight: 1.5,
     [mediaQueries.desktop]: {
@@ -115,7 +102,7 @@ export const baseTypographyTheme = {
     },
   },
   h4: {
-    ...baseHeadingStyles,
+    ...headingStyles,
     fontSize: pxToRem(18),
     lineHeight: 1.5,
     [mediaQueries.desktop]: {
@@ -125,15 +112,15 @@ export const baseTypographyTheme = {
 };
 
 // and then this is for the components styles.
-// We'll be able to unify this in v1, when we no longer support the legacy color styles.
+// We'll be able to unify this in v1, when we no longer support the Typography component
 export const legacyTypographyThemeOverrides = {
-  body: { ...legacyTextStyles },
-  subtitle: { ...legacyTextStyles },
-  legalNote: { ...legacyTextStyles },
-  caption: { ...legacyTextStyles },
-  displayHeading: { ...legacyHeadingStyles },
-  h1: { ...legacyHeadingStyles },
-  h2: { ...legacyHeadingStyles },
-  h3: { ...legacyHeadingStyles },
-  h4: { ...legacyHeadingStyles },
+  body: { ...textStyles },
+  subtitle: { ...textStyles },
+  legalNote: { ...textStyles },
+  caption: { ...textStyles },
+  displayHeading: { ...headingStyles },
+  h1: { ...headingStyles },
+  h2: { ...headingStyles },
+  h3: { ...headingStyles },
+  h4: { ...headingStyles },
 };
