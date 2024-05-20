@@ -17,6 +17,7 @@
     "format:ci": "prettier --list-different \"./{src,types}/**/*.{tsx,ts}\"",
     "dev": "storybook dev --quiet -p 6006",
     "build:storybook": "storybook build --quiet",
+    "build-storybook": "storybook build",
     "chromatic": "chromatic"
   },
   "author": "",
@@ -53,7 +54,7 @@
     "@types/react": "^17.0.0 || ^18.0.0",
     "@utilitywarehouse/css-reset": "workspace:^",
     "@utilitywarehouse/fontsource": "^0.0.5",
-    "chromatic": "^6.23.0",
+    "chromatic": "^11.3.5",
     "prop-types": "^15.8.1",
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",

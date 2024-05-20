@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { TypographyProps } from '../Typography';
+import { BoxProps } from '../Box';
 
 export interface StrongProps
-  extends Pick<TypographyProps, 'textTransform' | 'padding' | 'margin'>,
+  extends Pick<BoxProps, 'textTransform' | 'padding' | 'margin'>,
     ComponentPropsWithoutRef<'strong'> {}

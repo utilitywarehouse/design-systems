@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useBackground } from '../Box';
+import { createBox, useBackground } from '../Box';
 import { PropsWithSx } from '../types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import {
@@ -11,12 +11,12 @@ import {
   DATA_ATTRIBUTES,
 } from '../utils';
 import { HeadingProps } from './Heading.props';
-import { Typography } from '../Typography';
 import clsx from 'clsx';
 import { styled } from '../theme';
+import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'Heading';
-const componentClassName = withGlobalPrefix(componentName);
+const BaseBox = createBox<'h1' | 'h2' | 'h3' | 'h4'>({ componentName });
 
 const classNames = {
   variant: {
@@ -38,10 +38,12 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== 'color' })<{
+const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'color' })<{
   color?: string;
 }>(({ color }) => {
   return {
+    fontFamily: fonts.primary,
+    fontWeight: fontWeights.primary,
     fontSize: 'var(--heading-font-size)',
     lineHeight: 'var(--heading-line-height)',
     color: 'var(--heading-color)',
@@ -119,7 +121,7 @@ export const Heading = React.forwardRef<
   React.ElementRef<'h2'>,
   React.PropsWithChildren<PropsWithSx<HeadingProps>>
 >(({ component, variant = 'h2', color, className, ...props }, ref) => {
-  const element = variant === 'displayHeading' ? 'h1' : variant;
+  const element = component ? component : variant === 'displayHeading' ? 'h1' : variant;
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
     [DATA_ATTRIBUTES.onBrandBackground]: !color && isBrandBackground ? '' : undefined,
@@ -128,10 +130,8 @@ export const Heading = React.forwardRef<
   return (
     <StyledElement
       ref={ref}
-      component={component || element}
-      className={clsx(componentClassName, className, classNames.variant[variant])}
-      fontFamily="primary"
-      weight="regular"
+      component={element}
+      className={clsx(className, classNames.variant[variant])}
       color={color}
       {...dataAttributeProps}
       {...props}

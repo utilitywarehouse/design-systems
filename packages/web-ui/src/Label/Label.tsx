@@ -1,17 +1,19 @@
 import * as React from 'react';
-import { withGlobalPrefix, pxToRem } from '../utils';
+import { pxToRem } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 import { PropsWithSx } from '../types';
 import { LabelProps } from './Label.props';
-import { Typography } from '../Typography';
-import clsx from 'clsx';
 import { styled } from '../theme';
-import { fontWeights } from '../tokens';
+import { fontWeights, fonts } from '../tokens';
+import { createBox } from '../Box';
 
 const componentName = 'Label';
-const componentClassName = withGlobalPrefix(componentName);
+const BaseBox = createBox<'label'>({ componentName });
 
-const StyledElement = styled(Typography)({
+const StyledElement = styled(BaseBox)({
+  fontFamily: fonts.secondary,
+  fontSize: pxToRem(16),
+  lineHeight: pxToRem(24),
   '--label-color': colors.grey1000,
   '--label-color-disabled': colors.grey400,
   '--label-font-weight': fontWeights.secondary.semibold,
@@ -38,17 +40,13 @@ const StyledElement = styled(Typography)({
 export const Label = React.forwardRef<
   React.ElementRef<'label'>,
   React.PropsWithChildren<PropsWithSx<LabelProps>>
->(({ component = 'label', disabled, nested, className, ...props }, ref) => {
+>(({ component = 'label', disabled, nested, ...props }, ref) => {
   return (
     <StyledElement
       ref={ref}
       component={component}
-      className={clsx(componentClassName, className)}
       data-disabled={disabled ? '' : undefined}
       data-nested={nested ? '' : undefined}
-      fontFamily="secondary"
-      fontSize={pxToRem(16)}
-      lineHeight={pxToRem(24)}
       {...props}
     />
   );

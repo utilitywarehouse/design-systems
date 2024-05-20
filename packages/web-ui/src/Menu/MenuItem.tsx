@@ -3,10 +3,11 @@ import { forwardRef } from 'react';
 import MuiMenuItem from '@mui/material/MenuItem';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import type { MenuItemProps as MuiMenuItemProps } from '@mui/material/MenuItem';
-import { Typography } from '../Typography';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { pxToRem, spacing } from '../utils';
 import { styled } from '@mui/material';
+import { Box } from '../Box';
+import { fonts } from '../tokens';
 
 export type DefaultMenuItemComponent = 'li';
 
@@ -30,14 +31,15 @@ const StyledMenuItem = styled(MuiMenuItem)({
 export const MenuItem = forwardRef(function MenuItem({ children, ...props }, ref) {
   return (
     <StyledMenuItem ref={ref} {...props}>
-      <Typography
+      <Box
+        component="p"
         color={colorsCommon.brandMidnight}
-        fontFamily="secondary"
+        fontFamily={fonts.secondary}
         fontSize={pxToRem(18)}
         lineHeight={pxToRem(24)}
       >
         {children}
-      </Typography>
+      </Box>
     </StyledMenuItem>
   );
 }) as OverridableComponent<MenuItemTypeMap>;
