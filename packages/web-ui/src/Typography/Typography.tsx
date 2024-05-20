@@ -4,12 +4,12 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } from '@mui/material';
 import { OverrideProps } from '@mui/types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { GLOBAL_PREFIX } from '../utils';
+import { withGlobalPrefix } from '../utils';
 import { PropsWithSx } from '../types';
 import { useBackground } from '../Box';
 import clsx from 'clsx';
 
-const PREFIX = `${GLOBAL_PREFIX}-Typography`;
+const PREFIX = withGlobalPrefix('Typography');
 export const typographyClasses: { [key: string]: string } = {
   primary: `${PREFIX}-primary`,
   secondary: `${PREFIX}-secondary`,
