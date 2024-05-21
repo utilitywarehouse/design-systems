@@ -25,6 +25,14 @@ function transformer(file, api) {
   root
     .find(j.ImportDeclaration)
     .filter(path => path.value.source.value === '@utilitywarehouse/customer-ui-material')
+    // add in the Box import
+    .insertAfter(
+      j.importDeclaration(
+        [j.importSpecifier(j.identifier(newComponentName))],
+        j.stringLiteral('@utilitywarehouse/web-ui')
+      )
+    )
+    // remove the Background import
     .forEach(path => {
       j(path)
         .find(j.ImportSpecifier)
@@ -88,17 +96,6 @@ function transformer(file, api) {
         return node;
       }
     });
-
-  // add in the Box import
-  root
-    .find(j.Program)
-    .get('body', 0)
-    .insertAfter(
-      j.importDeclaration(
-        [j.importSpecifier(j.identifier(newComponentName))],
-        j.stringLiteral('@utilitywarehouse/web-ui')
-      )
-    );
 
   // add in the colour-system import
   if (colourSystemSpecifiers.length > 0) {
