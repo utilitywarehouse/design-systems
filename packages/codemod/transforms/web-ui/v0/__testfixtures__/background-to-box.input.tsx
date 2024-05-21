@@ -1,6 +1,6 @@
 // this is a comment at the beginning of the file
 import * as React from 'react';
-import { Background } from '@utilitywarehouse/web-ui';
+import { Background } from '@utilitywarehouse/customer-ui-material';
 
 const Component = () => (
   <div>

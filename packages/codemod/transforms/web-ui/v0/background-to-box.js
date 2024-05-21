@@ -24,15 +24,14 @@ function transformer(file, api) {
 
   root
     .find(j.ImportDeclaration)
-    .filter(path => path.value.source.value === '@utilitywarehouse/web-ui')
+    .filter(path => path.value.source.value === '@utilitywarehouse/customer-ui-material')
     .forEach(path => {
-      return j(path)
+      j(path)
         .find(j.ImportSpecifier)
-        .forEach(p => {
-          if (p.node.local.name === deprecatedComponentName) {
-            p.node.local.name = newComponentName;
+        .forEach(path => {
+          if (path.node.local.name === deprecatedComponentName) {
+            path.parentPath.parentPath.prune();
           }
-          return p;
         });
     });
 
@@ -89,6 +88,17 @@ function transformer(file, api) {
         return node;
       }
     });
+
+  // add in the Box import
+  root
+    .find(j.Program)
+    .get('body', 0)
+    .insertAfter(
+      j.importDeclaration(
+        [j.importSpecifier(j.identifier(newComponentName))],
+        j.stringLiteral('@utilitywarehouse/web-ui')
+      )
+    );
 
   // add in the colour-system import
   if (colourSystemSpecifiers.length > 0) {

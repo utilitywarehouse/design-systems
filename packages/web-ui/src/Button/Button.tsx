@@ -62,12 +62,6 @@ const StyledButton = styled(MuiButton)({
       opacity: 0.6,
     },
   },
-  // TODO: remove when `Background` component removed.
-  [`[${DATA_ATTRIBUTES.inverse}=true] &`]: {
-    '&:disabled': {
-      opacity: 0.6,
-    },
-  },
   // size
   [`&[${DATA_ATTRIBUTES.size}=small]`]: {
     height: px(32),
@@ -106,13 +100,6 @@ const StyledButton = styled(MuiButton)({
         borderColor: colorsCommon.brandWhite,
       },
     },
-    // TODO: remove when `Background` component removed.
-    [`[${DATA_ATTRIBUTES.inverse}=true] &`]: {
-      color: colorsCommon.brandWhite,
-      '&:hover': {
-        borderColor: colorsCommon.brandWhite,
-      },
-    },
   },
   [`&[${DATA_ATTRIBUTES.variant}=tertiary]`]: {
     color: colorsCommon.brandMidnight,
@@ -130,10 +117,6 @@ const StyledButton = styled(MuiButton)({
       opacity: 0.5,
     },
     [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
-      color: colorsCommon.brandWhite,
-    },
-    // TODO: remove when `Background` component removed.
-    [`[${DATA_ATTRIBUTES.inverse}=true] &`]: {
       color: colorsCommon.brandWhite,
     },
   },

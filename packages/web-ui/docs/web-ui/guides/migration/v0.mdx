@@ -747,8 +747,12 @@ structure your layouts using the layout components, such as `Box`, `Flex`,
 
 ### Background component
 
-The `Background` component has been deprecated and will be removed in v1. You
-can achieve the same contextual colour result using the `Box` component.
+The `Background` component has been removed. You can achieve the same
+contextual colour result using the `Box` component.
+
+Any component which inferred contextual colour information from the
+`Background` component, such as `Typography` or `Card`, will also need to be
+migrated when you migrate to the **Web UI** `Box` component.
 
 ```diff
 - import { Background } from '@utilitywarehouse/customer-ui-material';
@@ -769,8 +773,10 @@ can achieve the same contextual colour result using the `Box` component.
 
 The `Card` component from `customer-ui-material` has been removed from **Web
 UI**. There is a replacement `Card` component in the `my-account-web` local
-shared components, however it doesn't imply any contextual colour information
-so you will need to manually set the background colour appropriately.
+shared components, however it infer any contextual colour information from the
+legacy `Background` component as before, so you will either need to migrate and
+`Background` components to `Box` or manually set the background colour
+appropriately.
 
 ```diff
 - import { Card } from '@utilitywarehouse/customer-ui-material';
@@ -781,15 +787,13 @@ so you will need to manually set the background colour appropriately.
 - <Background backgroundColor="white">
 -   <Card>{content}</Card>
 - </Background>
-+ <Box>
-+   <Card backgroundColor={colorsCommon.brandPrimaryPurple}>{content}</Card>
-+ </Box>
++ <Card backgroundColor={colorsCommon.brandPrimaryPurple}>{content}</Card>
 
 - <Background backgroundColor="purple">
 -   <Card>{content}</Card>
 - </Background>
 + <Box background={colorsCommon.brandPrimaryPurple}>
-+   <Card backgroundColor={colorsCommon.brandWhite}>{content}</Card>
++   <Card>{content}</Card>
 + </Box>
 ```
 
