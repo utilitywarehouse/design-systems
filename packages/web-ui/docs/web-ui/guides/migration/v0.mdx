@@ -831,8 +831,6 @@ recommend you update manually, and avoid the use of `useTheme` entirely.
 npx @utilitywarehouse/ds-codemod web-ui/v0/import-paths <path>
 ```
 
-### Optional
-
 #### Background To Box
 
 This is an **optional** codemod that will transform usage of the deprecated Web
@@ -867,6 +865,14 @@ npx @utilitywarehouse/ds-codemod web-ui/v0/background-to-box <path>
 + <Box background={colorsCommon.brandWhite}></Box>
 ```
 
-#### Typography (optional) (TODO)
+Be aware that you may get multiple `Box` imports, that you may have to delete manually, sorry.
+You may also get duplicated `colors` imports from both the Colour
+System library and the legacy `customer-ui-design-tokens` library. You should
+prefer the newer library, and can refer the the
+[colour system migration table in the documentation](https://uw-web-ui.vercel.app/?path=/docs/colour-system-migration--documentation).
+
+### Optional
+
+#### Typography (TODO)
 
 Updates usage of the `Typography` component to the `Heading` & `Text` components.
