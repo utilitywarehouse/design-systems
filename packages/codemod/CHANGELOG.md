@@ -1,5 +1,11 @@
 # @utilitywarehouse/ds-codemod
 
+## 0.0.22
+
+### Patch Changes
+
+- [#352](https://github.com/utilitywarehouse/design-systems/pull/352) [`92d0490`](https://github.com/utilitywarehouse/design-systems/commit/92d0490a5878e698d33f302c6f07a35e3a4c7441) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix typography variants
+
 ## 0.0.21
 
 ### Patch Changes
