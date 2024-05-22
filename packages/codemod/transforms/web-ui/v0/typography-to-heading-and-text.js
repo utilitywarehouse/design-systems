@@ -71,7 +71,7 @@ function transformer(file, api) {
 
     // rename components
     typographyComponents.forEach(path => {
-      const props = path.value.openingElement.attributes.map(attr => attr.name.name);
+      const props = path.value.openingElement.attributes.map(attr => attr?.name?.name);
 
       if (!props.includes('variant')) {
         webUiImportedComponents.push('Text');
