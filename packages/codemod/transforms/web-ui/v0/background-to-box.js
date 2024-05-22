@@ -1,4 +1,3 @@
-/* eslint-disable */
 const colorTransforms = {
   white: 'colorsCommon.brandWhite',
   whiteOwl: 'colors.grey75',
@@ -12,7 +11,6 @@ const deprecatedPropName = 'backgroundColor';
 const newComponentName = 'Box';
 const newPropName = 'background';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function transformer(file, api) {
   const j = api.jscodeshift;
   const root = j(file.source);
@@ -99,6 +97,7 @@ function transformer(file, api) {
 
   // add in the colour-system import
   if (colourSystemSpecifiers.length > 0) {
+    // eslint-disable-next-line no-undef
     const importSpecifiers = Array.from(new Set(colourSystemSpecifiers)).map(specifier =>
       j.importSpecifier(j.identifier(specifier))
     );

@@ -37,6 +37,36 @@ function transformer(file, api) {
     // get all the `Typography` components
     const typographyComponents = root.findJSXElements(deprecatedComponentName);
 
+    // transform the gutterBottom prop
+    typographyComponents
+      .find(j.JSXAttribute, {
+        name: { type: 'JSXIdentifier', name: 'gutterBottom' },
+      })
+      .replaceWith(() =>
+        j.jsxAttribute(
+          j.jsxIdentifier('sx'),
+          j.jsxExpressionContainer(j.identifier("{ marginBottom: '0.35em' }"))
+        )
+      );
+
+    const addParagraphComponentProp = path => {
+      const paragraph = j.jsxAttribute(j.jsxIdentifier('component'), j.literal('p'));
+      path.parentPath.parentPath.value.attributes.unshift(paragraph);
+    };
+
+    // transform the paragraph prop
+    typographyComponents
+      .find(j.JSXAttribute, {
+        name: { type: 'JSXIdentifier', name: 'paragraph' },
+      })
+      .forEach(addParagraphComponentProp)
+      .replaceWith(() =>
+        j.jsxAttribute(
+          j.jsxIdentifier('sx'),
+          j.jsxExpressionContainer(j.identifier("{ marginBottom: '16px' }"))
+        )
+      );
+
     // rename components
     typographyComponents.forEach(path => {
       const componentVariant = getVariantPropValue(path);
@@ -54,9 +84,9 @@ function transformer(file, api) {
       }
     });
 
-    // add the web-ui import back in
-
+    // add the web-ui imports back in
     const importSpecifiers = Array.from(
+      // eslint-disable-next-line no-undef
       new Set(webUiImportedComponents.filter(component => component !== deprecatedComponentName))
     ).map(specifier => j.importSpecifier(j.identifier(specifier)));
     root

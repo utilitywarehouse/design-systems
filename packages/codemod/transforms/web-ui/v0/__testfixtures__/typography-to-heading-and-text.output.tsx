@@ -14,6 +14,8 @@ const Component = ({ content }) => (
     <Heading variant="h2">{content}</Heading>
     <Heading variant="h3">{content}</Heading>
     <Heading variant="h4">{content}</Heading>
+    <Text sx={{ marginBottom: '0.35em' }}>{content}</Text>
+    <Text component='p' sx={{ marginBottom: '16px' }}>{content}</Text>
   </Box>
 );
 

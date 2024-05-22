@@ -817,6 +817,11 @@ You can use `npx` to run the codemod on your source files.
 npx @utilitywarehouse/ds-codemod web-ui/v0/migration <path>
 ```
 
+Included codemods:
+
+- `import-paths`
+- `background-to-box`
+
 ### Required
 
 #### Import Paths
@@ -833,14 +838,14 @@ npx @utilitywarehouse/ds-codemod web-ui/v0/import-paths <path>
 
 #### Background To Box
 
-This is an **optional** codemod that will transform usage of the deprecated Web
-UI `Background` component to the `Box` component, updating usage of the
-`backgroundColor` prop to `background` and colours from the Colour System
-library.
+Transforms the deprecated Web UI `Background` component to the `Box` component,
+updating usage of the `backgroundColor` prop to `background` and colours from
+the Colour System library.
 
 Be aware that when you use this codemod you will need to check, and update as
 necessary, any child components which use the background colour context to
 update their foreground colour.
+
 Please update the following components:
 
 - `Typography` -> `Text` & `Heading`
@@ -873,8 +878,52 @@ prefer the newer library, and can refer the the
 
 ### Optional
 
-#### Typography (TODO)
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v0/optional <path>
+```
+
+Included codemods
+
+- `typography-to-heading-and-text`
+
+#### Typography
+
+This will update `Typography` imports from Web UI only, so you will need to run the required `migration` codemod first.
 
 Updates usage of the `Typography` component to the `Heading` & `Text` components.
 
-this will update Typography imports from Web UI, so you will need to run the required `migration` codemod first.
+Also transforms the following removed props:
+
+- 'gutterBottom' -> `sx={{ marginBottom: '0.35em' }}`
+- 'paragraph' -> `component="p"` and `sx={{ marginBottom: '16px' }}`
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v0/typography-to-heading-and-text <path>
+```
+
+```diff
+- <Typography>{content}</Typography>
+- <Typography variant="subtitle">{content}</Typography>
+- <Typography variant="body">{content}</Typography>
+- <Typography variant="legalNote">{content}</Typography>
+- <Typography variant="caption">{content}</Typography>
+- <Typography variant="displayHeading">{content}</Typography>
+- <Typography variant="h1">{content}</Typography>
+- <Typography variant="h2">{content}</Typography>
+- <Typography variant="h3">{content}</Typography>
+- <Typography variant="h4">{content}</Typography>
+- <Typography gutterBottom>{content}</Typography>
+- <Typography paragraph>{content}</Typography>
++ <Text>{content}</Text>
++ <Text variant="subtitle">{content}</Text>
++ <Text variant="body">{content}</Text>
++ <Text variant="legalNote">{content}</Text>
++ <Text variant="caption">{content}</Text>
++ <Heading variant="displayHeading">{content}</Heading>
++ <Heading variant="h1">{content}</Heading>
++ <Heading variant="h2">{content}</Heading>
++ <Heading variant="h3">{content}</Heading>
++ <Heading variant="h4">{content}</Heading>
++ <Text sx={{ marginBottom: '0.35em' }}>{content}</Text>
++ <Text component='p' sx={{ marginBottom: '16px' }}>{content}</Text>
+```
