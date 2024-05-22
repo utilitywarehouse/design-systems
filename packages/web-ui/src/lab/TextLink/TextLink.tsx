@@ -6,11 +6,14 @@ import { TextLinkProps } from './TextLink.props';
 import { styled } from '../../theme';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { useBackground } from '../../Box';
+import { Slot } from '@radix-ui/react-slot';
 
 const componentName = 'TextLink';
 const componentClassName = withGlobalPrefix(componentName);
 
-const StyledElement = styled('a', { shouldForwardProp: prop => prop !== 'color' })<{
+const StyledElement = styled('a', {
+  shouldForwardProp: prop => prop !== 'color' && prop !== 'as',
+})<{
   color?: string;
 }>(({ color }) => ({
   cursor: 'pointer',
@@ -79,7 +82,7 @@ const StyledElement = styled('a', { shouldForwardProp: prop => prop !== 'color' 
 export const TextLink = React.forwardRef<
   React.ElementRef<'a'>,
   React.PropsWithChildren<PropsWithSx<TextLinkProps>>
->(({ className, color, ...props }, ref) => {
+>(({ className, color, asChild, ...props }, ref) => {
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
     [DATA_ATTRIBUTES.onBrandBackground]: isBrandBackground ? '' : undefined,
@@ -87,6 +90,7 @@ export const TextLink = React.forwardRef<
   };
   return (
     <StyledElement
+      as={asChild ? Slot : 'a'}
       ref={ref}
       className={clsx(componentClassName, className)}
       color={color}

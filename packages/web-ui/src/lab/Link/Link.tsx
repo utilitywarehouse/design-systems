@@ -139,7 +139,7 @@ const StyledElement = styled('a')<LinkProps>(() => {
 export const Link = React.forwardRef<
   React.ElementRef<'a'>,
   React.PropsWithChildren<PropsWithSx<LinkProps>>
->(function Link({ className, asChild, children, size = 'large', ...props }, ref) {
+>(({ className, asChild, children, size = 'large', ...props }, ref) => {
   return (
     <StyledElement
       as={asChild ? Slot : 'a'}
