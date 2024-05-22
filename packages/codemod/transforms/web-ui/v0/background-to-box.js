@@ -71,7 +71,10 @@ function transformer(file, api) {
     // rename `Background` to `Box`
     .forEach(path => {
       path.value.openingElement.name = newComponentName;
-      path.value.closingElement.name = newComponentName;
+
+      if (path.value.closingElement.name) {
+        path.value.closingElement.name = newComponentName;
+      }
       return path;
     })
     .find(j.JSXAttribute, { name: { type: 'JSXIdentifier', name: deprecatedPropName } })

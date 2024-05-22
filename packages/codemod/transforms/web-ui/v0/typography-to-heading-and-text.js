@@ -73,13 +73,17 @@ function transformer(file, api) {
       if (componentVariant === undefined || textVariants.includes(componentVariant)) {
         webUiImportedComponents.push('Text');
         path.value.openingElement.name = 'Text';
-        path.value.closingElement.name = 'Text';
+        if (path.value.closingElement.name) {
+          path.value.closingElement.name = 'Text';
+        }
         return path;
       }
       if (headingVariants.includes(componentVariant)) {
         webUiImportedComponents.push('Heading');
         path.value.openingElement.name = 'Heading';
-        path.value.closingElement.name = 'Heading';
+        if (path.value.closingElement.name) {
+          path.value.closingElement.name = 'Heading';
+        }
         return path;
       }
     });
