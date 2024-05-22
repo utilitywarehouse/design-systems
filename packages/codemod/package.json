@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/ds-codemod",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Codemod scripts for Design Systems packages.",
   "bin": {
     "@utilitywarehouse/ds-codemod": "bin/codemod.js"

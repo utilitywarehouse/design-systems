@@ -1,5 +1,11 @@
 # @utilitywarehouse/ds-codemod
 
+## 0.0.23
+
+### Patch Changes
+
+- [#354](https://github.com/utilitywarehouse/design-systems/pull/354) [`c1a9acc`](https://github.com/utilitywarehouse/design-systems/commit/c1a9acc50cec3aad063a1d7cd6b60f72d8256ca7) Thanks [@robphoenix](https://github.com/robphoenix)! - fix
+
 ## 0.0.22
 
 ### Patch Changes
