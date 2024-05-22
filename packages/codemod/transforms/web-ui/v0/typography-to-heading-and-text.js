@@ -8,7 +8,7 @@ function transformer(file, api) {
 
   const getVariantPropValue = path => {
     return path.value.openingElement.attributes.map(attr => {
-      if (attr.name.name === 'variant') {
+      if (attr?.name?.name === 'variant') {
         return attr.value.value;
       }
     })[0];
