@@ -13,7 +13,6 @@ const ButtonPlaygroundVariants: StoryFn = ({
   size,
   colorScheme,
   isDisabled,
-  isFocusVisible,
   _ButtonText,
   _showIcon,
   _showLoading,
@@ -22,39 +21,21 @@ const ButtonPlaygroundVariants: StoryFn = ({
 }: any) => {
   return (
     <ButtonGroup flexDirection="column" space="md">
-      <Button
-        size={size}
-        variant="solid"
-        colorScheme={colorScheme}
-        isDisabled={isDisabled}
-        isFocusVisible={isFocusVisible}
-      >
+      <Button size={size} variant="solid" colorScheme={colorScheme} isDisabled={isDisabled}>
         {_showIcon && _buttonPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
         {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
         <ButtonText>{_ButtonText}</ButtonText>
         {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
         {_showIcon && _buttonPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
       </Button>
-      <Button
-        size={size}
-        variant="outline"
-        colorScheme={colorScheme}
-        isDisabled={isDisabled}
-        isFocusVisible={isFocusVisible}
-      >
+      <Button size={size} variant="outline" colorScheme={colorScheme} isDisabled={isDisabled}>
         {_showIcon && _buttonPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
         {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
         <ButtonText>{_ButtonText}</ButtonText>
         {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
         {_showIcon && _buttonPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
       </Button>
-      <Button
-        size={size}
-        variant="ghost"
-        colorScheme={colorScheme}
-        isDisabled={isDisabled}
-        isFocusVisible={isFocusVisible}
-      >
+      <Button size={size} variant="ghost" colorScheme={colorScheme} isDisabled={isDisabled}>
         {_showIcon && _buttonPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
         {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
         <ButtonText>{_ButtonText}</ButtonText>
@@ -82,11 +63,6 @@ ButtonPlaygroundVariants.argTypes = {
     type: 'boolean',
     control: 'boolean',
     description: 'To manually set disable to the button.',
-  },
-  isFocusVisible: {
-    type: 'boolean',
-    control: 'boolean',
-    description: 'To manually set focus visible state to the button.',
   },
   _ButtonText: {
     type: 'string',
@@ -124,7 +100,6 @@ ButtonPlaygroundVariants.args = {
   size: 'regular',
   colorScheme: 'cyan',
   isDisabled: false,
-  isFocusVisible: false,
   _ButtonText: 'Example',
   _showIcon: true,
   _buttonPosition: 'left',

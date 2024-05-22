@@ -8,7 +8,6 @@ const ButtonBasic: StoryFn = ({
   variant,
   colorScheme,
   isDisabled,
-  isFocusVisible,
   _ButtonText,
   _showIcon,
   _showLoading,
@@ -16,13 +15,7 @@ const ButtonBasic: StoryFn = ({
   _buttonPosition,
 }: any) => {
   return (
-    <Button
-      size={size}
-      variant={variant}
-      colorScheme={colorScheme}
-      isDisabled={isDisabled}
-      isFocusVisible={isFocusVisible}
-    >
+    <Button size={size} variant={variant} colorScheme={colorScheme} isDisabled={isDisabled}>
       {_showIcon && _buttonPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
       {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
       <ButtonText>{_ButtonText}</ButtonText>
@@ -52,11 +45,6 @@ ButtonBasic.argTypes = {
     type: 'boolean',
     control: 'boolean',
     description: 'To manually set disable to the button.',
-  },
-  isFocusVisible: {
-    type: 'boolean',
-    control: 'boolean',
-    description: 'To manually set focus visible state to the button.',
   },
   _ButtonText: {
     type: 'string',
@@ -95,7 +83,6 @@ ButtonBasic.args = {
   variant: 'solid',
   colorScheme: 'cyan',
   isDisabled: false,
-  isFocusVisible: false,
   _ButtonText: 'Example',
   _showIcon: true,
   _buttonPosition: 'left',

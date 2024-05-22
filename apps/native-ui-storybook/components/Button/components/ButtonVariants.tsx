@@ -50,16 +50,8 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
           <Button variant="solid" colorScheme={colorScheme} size={size}>
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text size="sm">Hovered</Text>
-          <Button variant="solid" colorScheme={colorScheme} size={size} isHovered>
-            <ButtonText>Example</ButtonText>
-          </Button>
           <Text size="sm">Pressed</Text>
           <Button variant="solid" colorScheme={colorScheme} size={size} isPressed>
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text size="sm">Focus Visible</Text>
-          <Button variant="solid" colorScheme={colorScheme} size={size} isFocusVisible>
             <ButtonText>Example</ButtonText>
           </Button>
           <Text size="sm">Disabled</Text>
@@ -106,16 +98,8 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
           <Button variant="outline" colorScheme={colorScheme} size={size}>
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text size="sm">Hovered</Text>
-          <Button variant="outline" colorScheme={colorScheme} size={size} isHovered>
-            <ButtonText>Example</ButtonText>
-          </Button>
           <Text size="sm">Pressed</Text>
           <Button variant="outline" colorScheme={colorScheme} size={size} isPressed>
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text size="sm">Focus Visible</Text>
-          <Button variant="outline" colorScheme={colorScheme} size={size} isFocusVisible>
             <ButtonText>Example</ButtonText>
           </Button>
           <Text size="sm">Disabled</Text>
@@ -162,16 +146,8 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
           <Button variant="ghost" colorScheme={colorScheme} size={size}>
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text size="sm">Hovered</Text>
-          <Button variant="ghost" colorScheme={colorScheme} size={size} isHovered>
-            <ButtonText>Example</ButtonText>
-          </Button>
           <Text size="sm">Pressed</Text>
           <Button variant="ghost" colorScheme={colorScheme} size={size} isPressed>
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text size="sm">Focus Visible</Text>
-          <Button variant="ghost" colorScheme={colorScheme} size={size} isFocusVisible>
             <ButtonText>Example</ButtonText>
           </Button>
           <Text size="sm">Disabled</Text>
