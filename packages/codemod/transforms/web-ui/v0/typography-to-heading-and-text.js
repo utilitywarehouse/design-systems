@@ -7,11 +7,13 @@ function transformer(file, api) {
   const root = j(file.source);
 
   const getVariantPropValue = path => {
-    return path.value.openingElement.attributes.map(attr => {
+    const variant = [];
+    path.value.openingElement.attributes.forEach(attr => {
       if (attr?.name?.name === 'variant') {
-        return attr.value.value;
+        variant.push(attr.value.value);
       }
-    })[0];
+    });
+    return variant[0];
   };
 
   const getFirstNode = () => root.find(j.Program).get('body', 0).node;
@@ -69,8 +71,19 @@ function transformer(file, api) {
 
     // rename components
     typographyComponents.forEach(path => {
+      const props = path.value.openingElement.attributes.map(attr => attr.name.name);
+
+      if (!props.includes('variant')) {
+        webUiImportedComponents.push('Text');
+        path.value.openingElement.name = 'Text';
+        if (path.value.closingElement) {
+          path.value.closingElement.name = 'Text';
+        }
+        return path;
+      }
+
       const componentVariant = getVariantPropValue(path);
-      if (componentVariant === undefined || textVariants.includes(componentVariant)) {
+      if (textVariants.includes(componentVariant)) {
         webUiImportedComponents.push('Text');
         path.value.openingElement.name = 'Text';
         if (path.value.closingElement) {

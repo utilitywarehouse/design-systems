@@ -900,6 +900,9 @@ Also transforms the following removed props:
 - 'gutterBottom' -> `sx={{ marginBottom: '0.35em' }}`
 - 'paragraph' -> `component="p"` and `sx={{ marginBottom: '16px' }}`
 
+Please note that this may cause your components to have duplicate `sx` props,
+which you will need to manually combine.
+
 ```console
 npx @utilitywarehouse/ds-codemod web-ui/v0/typography-to-heading-and-text <path>
 ```

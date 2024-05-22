@@ -15,6 +15,7 @@ const Component = ({ content }) => (
     <Typography variant="h2">{content}</Typography>
     <Typography variant="h3">{content}</Typography>
     <Typography variant="h4">{content}</Typography>
+    <Typography component="span" variant="h4">{content}</Typography>
     <Typography gutterBottom>{content}</Typography>
     <Typography paragraph>{content}</Typography>
   </Box>
