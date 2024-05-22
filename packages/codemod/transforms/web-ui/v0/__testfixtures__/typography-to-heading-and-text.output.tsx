@@ -5,6 +5,7 @@ import { Box, Text, Heading } from '@utilitywarehouse/web-ui';
 const Component = ({ content }) => (
   <Box>
     <Text>{content}</Text>
+    <Text />
     <Text variant="subtitle">{content}</Text>
     <Text variant="body">{content}</Text>
     <Text variant="legalNote">{content}</Text>

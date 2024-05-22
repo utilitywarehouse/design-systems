@@ -5,6 +5,7 @@ import { Typography, Box } from '@utilitywarehouse/web-ui';
 const Component = ({ content }) => (
   <Box>
     <Typography>{content}</Typography>
+    <Typography />
     <Typography variant="subtitle">{content}</Typography>
     <Typography variant="body">{content}</Typography>
     <Typography variant="legalNote">{content}</Typography>

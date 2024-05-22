@@ -72,7 +72,7 @@ function transformer(file, api) {
     .forEach(path => {
       path.value.openingElement.name = newComponentName;
 
-      if (path.value.closingElement.name) {
+      if (path.value.closingElement) {
         path.value.closingElement.name = newComponentName;
       }
       return path;
