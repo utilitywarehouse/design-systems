@@ -73,7 +73,7 @@ function transformer(file, api) {
       if (componentVariant === undefined || textVariants.includes(componentVariant)) {
         webUiImportedComponents.push('Text');
         path.value.openingElement.name = 'Text';
-        if (path.value.closingElement.name) {
+        if (path.value.closingElement) {
           path.value.closingElement.name = 'Text';
         }
         return path;
@@ -81,7 +81,7 @@ function transformer(file, api) {
       if (headingVariants.includes(componentVariant)) {
         webUiImportedComponents.push('Heading');
         path.value.openingElement.name = 'Heading';
-        if (path.value.closingElement.name) {
+        if (path.value.closingElement) {
           path.value.closingElement.name = 'Heading';
         }
         return path;
