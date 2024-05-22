@@ -1,5 +1,11 @@
 # @utilitywarehouse/ds-codemod
 
+## 0.0.18
+
+### Patch Changes
+
+- [#343](https://github.com/utilitywarehouse/design-systems/pull/343) [`1ec17ab`](https://github.com/utilitywarehouse/design-systems/commit/1ec17ab188636502f4ab275caaa1155dad8d1cd0) Thanks [@robphoenix](https://github.com/robphoenix)! - Add Typography component codemod
+
 ## 0.0.17
 
 ### Patch Changes
