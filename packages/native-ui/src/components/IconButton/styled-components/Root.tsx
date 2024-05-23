@@ -575,14 +575,14 @@ const IconButton = styled(
             backgroundColor: 'transparent',
 
             _icon: {
-              color: '$darkCyan700',
+              color: '$darkCyan600',
             },
 
             ':active': {
               backgroundColor: '$darkGrey175',
 
               _icon: {
-                color: '$darkCyan700',
+                color: '$darkCyan600',
               },
             },
 
@@ -677,14 +677,14 @@ const IconButton = styled(
             backgroundColor: 'transparent',
 
             _icon: {
-              color: '$darkGreen700',
+              color: '$darkGreen600',
             },
 
             ':active': {
               backgroundColor: '$darkGrey175',
 
               _icon: {
-                color: '$darkGreen700',
+                color: '$darkGreen600',
               },
             },
 

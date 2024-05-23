@@ -1184,16 +1184,16 @@ export const Button = createStyle({
           backgroundColor: 'transparent',
 
           _text: {
-            color: '$darkCyan700',
+            color: '$darkCyan600',
           },
 
           _icon: {
-            color: '$darkCyan700',
+            color: '$darkCyan600',
           },
 
           _spinner: {
             _svg: {
-              color: '$darkCyan700',
+              color: '$darkCyan600',
             },
           },
 
@@ -1201,16 +1201,16 @@ export const Button = createStyle({
             backgroundColor: '$darkGrey175',
 
             _text: {
-              color: '$darkCyan700',
+              color: '$darkCyan600',
             },
 
             _icon: {
-              color: '$darkCyan700',
+              color: '$darkCyan600',
             },
 
             _spinner: {
               _svg: {
-                color: '$darkCyan700',
+                color: '$darkCyan600',
               },
             },
           },
@@ -1398,16 +1398,16 @@ export const Button = createStyle({
           backgroundColor: 'transparent',
 
           _text: {
-            color: '$darkGreen700',
+            color: '$darkGreen600',
           },
 
           _icon: {
-            color: '$darkGreen700',
+            color: '$darkGreen600',
           },
 
           _spinner: {
             _svg: {
-              color: '$darkGreen700',
+              color: '$darkGreen600',
             },
           },
 
@@ -1415,16 +1415,16 @@ export const Button = createStyle({
             backgroundColor: '$darkGrey175',
 
             _text: {
-              color: '$darkGreen700',
+              color: '$darkGreen600',
             },
 
             _icon: {
-              color: '$darkGreen700',
+              color: '$darkGreen600',
             },
 
             _spinner: {
               _svg: {
-                color: '$darkGreen700',
+                color: '$darkGreen600',
               },
             },
           },
