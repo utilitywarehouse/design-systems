@@ -40,6 +40,7 @@ const cwuiElements = [
   'useTheme',
   'Theme',
   // deprecated/removed components
+  'buttonClasses',
   'Background',
   'Icon',
   'IconProps',

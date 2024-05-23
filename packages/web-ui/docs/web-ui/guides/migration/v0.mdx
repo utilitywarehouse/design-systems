@@ -733,17 +733,29 @@ The **Web UI** `Typography` component is the same as the legacy
 changes in the next major release as we move to using the `Heading` & `Text`
 components.
 
+The `Text` & `Heading` components support nearly all the same variants as the
+deprecated `Typography` component, the only exception to this is the `inherit`
+variant. To replace this you can use either a `Box` or `Text` component with
+`sx` styling:
+
+```tsx
+<Box component="span" sx={{ font: 'inherit' }}>
+```
+
 The **Web UI** `Typography` component will not work in the same way as before
 with the `customer-ui-material` `Background` component, so you will need to
 migrate any `Background` components at the same time.
 
 We will provide a codemod to migrate to these components, however they are not
-a 1-2-1 match, as they do not continue with props such as `paragraph` or
+a 1-2-1 match, as they do not continue with props such as `fontWeight`, `paragraph` or
 `gutterBottom`, so you should visually verify all changes.
 
 In place of the `paragraph` and `gutterBottom` props, we recommend you
 structure your layouts using the layout components, such as `Box`, `Flex`,
 `Stack`, `Grid`, and to a lesser extent `Spacer`.
+
+In place of the `fontWeight` prop, on `Text` components you can use the `bold`
+boolean prop, or, when appropriate, use the `Strong` component.
 
 ### Background component
 
@@ -803,6 +815,10 @@ The `Icon` component from `customer-ui-material` has been removed from **Web
 UI**. Please use the [`react-icons` package](https://uw-icons.vercel.app/)
 instead.
 
+### TextField component
+
+The `id` prop is now required.
+
 ## Codemods
 
 ### Migration
@@ -832,7 +848,7 @@ run any further codemods.
 Updates `customer-ui-material` imports. Most components will change to **Web
 UI** imports, however some legacy components will change to local imports.
 
-Imported usage of `useTheme` will stay as a `customer-ui-material` import. We
+Imported usage of `useTheme`, will stay as a `customer-ui-material` import. We
 recommend you update manually, and avoid the use of `useTheme` entirely.
 
 ```console
