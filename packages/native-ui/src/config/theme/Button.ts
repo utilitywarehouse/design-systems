@@ -1348,7 +1348,7 @@ export const Button = createStyle({
         },
 
         ':active': {
-          backgroundColor: '$lightGrey100',
+          backgroundColor: '$grey100',
 
           _text: {
             color: '$green600',
