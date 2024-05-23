@@ -80,31 +80,33 @@ const IconButton = styled(
           },
 
           ':disabled': {
-            backgroundColor: '$red100',
+            backgroundColor: '$red200',
 
             _icon: {
-              color: '$red300',
+              color: '$white',
             },
           },
 
           _dark: {
-            bg: '$darkRed500',
+            bg: '$darkRed700',
 
             _icon: {
-              color: '$darkWhite',
+              color: '$darkRed50',
             },
 
             ':active': {
+              bg: '$darkRed800',
+
               _icon: {
-                color: '$darkWhite',
+                color: '$darkRed50',
               },
             },
 
             ':disabled': {
-              backgroundColor: '$darkRed100',
+              backgroundColor: '$darkGrey175',
 
               _icon: {
-                color: '$darkRed300',
+                color: '$darkGrey400',
               },
             },
           },
@@ -130,7 +132,7 @@ const IconButton = styled(
             backgroundColor: '$green200',
 
             _icon: {
-              color: '$green400',
+              color: '$white',
             },
           },
 
@@ -332,11 +334,12 @@ const IconButton = styled(
           backgroundColor: 'transparent',
 
           _icon: {
-            color: '$red600',
+            color: '$red900',
           },
 
           ':active': {
-            backgroundColor: '$red200',
+            backgroundColor: '$red50',
+            borderColor: '$red600',
 
             _icon: {
               color: '$red900',
@@ -344,7 +347,7 @@ const IconButton = styled(
           },
 
           ':disabled': {
-            borderColor: '$red300',
+            borderColor: '$red200',
             backgroundColor: 'transparent',
 
             _icon: {
@@ -354,13 +357,15 @@ const IconButton = styled(
 
           _dark: {
             backgroundColor: 'transparent',
+            borderColor: '$darkRed700',
 
             _icon: {
-              color: '$darkRed600',
+              color: '$darkRed900',
             },
 
             ':active': {
-              backgroundColor: '$darkRed200',
+              backgroundColor: '$darkRed50',
+              borderColor: '$darkRed800',
 
               _icon: {
                 color: '$darkRed900',
@@ -368,11 +373,11 @@ const IconButton = styled(
             },
 
             ':disabled': {
-              borderColor: '$darkRed300',
+              borderColor: '$darkGrey175',
               backgroundColor: 'transparent',
 
               _icon: {
-                color: '$darkRed300',
+                color: '$darkGrey400',
               },
             },
           },
@@ -597,11 +602,15 @@ const IconButton = styled(
         value: {
           backgroundColor: 'transparent',
 
+          _icon: {
+            color: '$red600',
+          },
+
           ':active': {
-            backgroundColor: '$red200',
+            backgroundColor: '$grey100',
 
             _icon: {
-              color: '$red900',
+              color: '$red600',
             },
           },
 
@@ -613,18 +622,18 @@ const IconButton = styled(
             },
           },
 
-          _icon: {
-            color: '$red900',
-          },
-
           _dark: {
             backgroundColor: 'transparent',
 
+            _icon: {
+              color: '$darkRed600',
+            },
+
             ':active': {
-              backgroundColor: '$darkRed200',
+              backgroundColor: '$darkGrey175',
 
               _icon: {
-                color: '$darkRed900',
+                color: '$darkRed600',
               },
             },
 
@@ -632,12 +641,8 @@ const IconButton = styled(
               backgroundColor: 'transparent',
 
               _icon: {
-                color: '$darkRed300',
+                color: '$darkGrey400',
               },
-            },
-
-            _icon: {
-              color: '$darkRed900',
             },
           },
         },

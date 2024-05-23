@@ -132,7 +132,7 @@ export const Button = createStyle({
         },
 
         ':active': {
-          bg: '$red700',
+          bg: '$red600',
 
           _text: {
             color: '$white',
@@ -148,66 +148,68 @@ export const Button = createStyle({
         },
 
         ':disabled': {
-          backgroundColor: '$red100',
+          backgroundColor: '$red200',
 
           _text: {
-            color: '$red300',
+            color: '$white',
           },
           _icon: {
-            color: '$red300',
+            color: '$white',
           },
           _spinner: {
             _svg: {
-              color: '$red300',
+              color: '$white',
             },
           },
         },
 
         _dark: {
-          bg: '$darkRed500',
+          bg: '$darkRed700',
 
           _text: {
-            color: '$darkWhite',
+            color: '$darkRed50',
           },
 
           _icon: {
-            color: '$darkWhite',
+            color: '$darkRed50',
           },
 
           _spinner: {
             _svg: {
-              color: '$darkWhite',
+              color: '$darkRed50',
             },
           },
 
           ':active': {
+            bg: '$darkRed800',
+
             _text: {
-              color: '$darkWhite',
+              color: '$darkRed50',
             },
 
             _icon: {
-              color: '$darkWhite',
+              color: '$darkRed50',
             },
 
             _spinner: {
               _svg: {
-                color: '$darkWhite',
+                color: '$darkRed50',
               },
             },
           },
 
           ':disabled': {
-            backgroundColor: '$darkRed100',
+            backgroundColor: '$darkGrey175',
 
             _text: {
-              color: '$darkRed300',
+              color: '$darkGrey400',
             },
             _icon: {
-              color: '$darkRed300',
+              color: '$darkGrey400',
             },
             _spinner: {
               _svg: {
-                color: '$darkRed300',
+                color: '$darkGrey400',
               },
             },
           },
@@ -254,14 +256,14 @@ export const Button = createStyle({
           backgroundColor: '$green200',
 
           _text: {
-            color: '$green400',
+            color: '$white',
           },
           _icon: {
-            color: '$green400',
+            color: '$white',
           },
           _spinner: {
             _svg: {
-              color: '$green400',
+              color: '$white',
             },
           },
         },
@@ -693,17 +695,18 @@ export const Button = createStyle({
         },
 
         _icon: {
-          color: '$red600',
+          color: '$red900',
         },
 
         _spinner: {
           _svg: {
-            color: '$red600',
+            color: '$red900',
           },
         },
 
         ':active': {
-          backgroundColor: '$red200',
+          backgroundColor: '$red50',
+          borderColor: '$red600',
 
           _text: {
             color: '$red900',
@@ -721,7 +724,7 @@ export const Button = createStyle({
         },
 
         ':disabled': {
-          borderColor: '$red300',
+          borderColor: '$red200',
           backgroundColor: 'transparent',
 
           _text: {
@@ -739,23 +742,25 @@ export const Button = createStyle({
 
         _dark: {
           backgroundColor: 'transparent',
+          borderColor: '$darkRed700',
 
           _text: {
             color: '$darkRed900',
           },
 
           _icon: {
-            color: '$darkRed600',
+            color: '$darkRed900',
           },
 
           _spinner: {
             _svg: {
-              color: '$darkRed600',
+              color: '$darkRed900',
             },
           },
 
           ':active': {
-            backgroundColor: '$darkRed200',
+            backgroundColor: '$darkRed50',
+            borderColor: '$darkRed800',
 
             _text: {
               color: '$darkRed900',
@@ -773,18 +778,18 @@ export const Button = createStyle({
           },
 
           ':disabled': {
-            borderColor: '$darkRed300',
+            borderColor: '$darkGrey175',
             backgroundColor: 'transparent',
 
             _text: {
-              color: '$darkRed300',
+              color: '$darkGrey400',
             },
             _icon: {
-              color: '$darkRed300',
+              color: '$darkGrey400',
             },
             _spinner: {
               _svg: {
-                color: '$darkRed300',
+                color: '$darkGrey400',
               },
             },
           },
@@ -1234,16 +1239,34 @@ export const Button = createStyle({
       value: {
         backgroundColor: 'transparent',
 
+        _text: {
+          color: '$red600',
+        },
+
+        _icon: {
+          color: '$red600',
+        },
+
+        _spinner: {
+          _svg: {
+            color: '$red600',
+          },
+        },
+
         ':active': {
-          backgroundColor: '$red200',
+          backgroundColor: '$grey100',
+
+          _text: {
+            color: '$red600',
+          },
 
           _icon: {
-            color: '$red900',
+            color: '$red600',
           },
 
           _spinner: {
             _svg: {
-              color: '$red900',
+              color: '$red600',
             },
           },
         },
@@ -1264,33 +1287,37 @@ export const Button = createStyle({
           },
         },
 
-        _text: {
-          color: '$red900',
-        },
-
-        _icon: {
-          color: '$red900',
-        },
-
-        _spinner: {
-          _svg: {
-            color: '$red900',
-          },
-        },
-
         _dark: {
           backgroundColor: 'transparent',
 
+          _text: {
+            color: '$darkRed600',
+          },
+
+          _icon: {
+            color: '$darkRed600',
+          },
+
+          _spinner: {
+            _svg: {
+              color: '$darkRed600',
+            },
+          },
+
           ':active': {
-            backgroundColor: '$darkRed200',
+            backgroundColor: '$darkGrey175',
+
+            _text: {
+              color: '$darkRed600',
+            },
 
             _icon: {
-              color: '$darkRed900',
+              color: '$darkRed600',
             },
 
             _spinner: {
               _svg: {
-                color: '$darkRed900',
+                color: '$darkRed600',
               },
             },
           },
@@ -1299,29 +1326,15 @@ export const Button = createStyle({
             backgroundColor: 'transparent',
 
             _text: {
-              color: '$darkRed300',
+              color: '$darkGrey400',
             },
             _icon: {
-              color: '$darkRed300',
+              color: '$darkGrey400',
             },
             _spinner: {
               _svg: {
-                color: '$darkRed300',
+                color: '$darkGrey400',
               },
-            },
-          },
-
-          _text: {
-            color: '$darkRed900',
-          },
-
-          _icon: {
-            color: '$darkRed900',
-          },
-
-          _spinner: {
-            _svg: {
-              color: '$darkRed900',
             },
           },
         },
