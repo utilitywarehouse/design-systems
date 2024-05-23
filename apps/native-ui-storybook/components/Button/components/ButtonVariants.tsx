@@ -58,11 +58,6 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
           <Button variant="solid" colorScheme={colorScheme} size={size} isDisabled>
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text size="sm">Disabled Icon Left</Text>
-          <Button variant="solid" colorScheme={colorScheme} size={size} isDisabled>
-            <ButtonIcon as={AddSmallIcon} />
-            <ButtonText>Example</ButtonText>
-          </Button>
           <Text size="sm">Icon Left</Text>
           <Button variant="solid" colorScheme={colorScheme} size={size}>
             <ButtonIcon as={AddSmallIcon} />
@@ -106,11 +101,6 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
           <Button variant="outline" colorScheme={colorScheme} size={size} isDisabled>
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text size="sm">Disabled Icon Left</Text>
-          <Button variant="outline" colorScheme={colorScheme} size={size} isDisabled>
-            <ButtonIcon as={AddSmallIcon} />
-            <ButtonText>Example</ButtonText>
-          </Button>
           <Text size="sm">Icon Left</Text>
           <Button variant="outline" colorScheme={colorScheme} size={size}>
             <ButtonIcon as={AddSmallIcon} />
@@ -152,11 +142,6 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({ colorScheme, size }) =>
           </Button>
           <Text size="sm">Disabled</Text>
           <Button variant="ghost" colorScheme={colorScheme} size={size} isDisabled>
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text size="sm">Disabled Icon Left</Text>
-          <Button variant="ghost" colorScheme={colorScheme} size={size} isDisabled>
-            <ButtonIcon as={AddSmallIcon} />
             <ButtonText>Example</ButtonText>
           </Button>
           <Text size="sm">Icon Left</Text>

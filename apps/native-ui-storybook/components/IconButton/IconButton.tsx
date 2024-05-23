@@ -1,17 +1,26 @@
-import { IconButton, IconButtonIcon } from '@utilitywarehouse/native-ui';
+import { IconButton } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { AddMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 
-const IconButtonBasic: StoryFn = ({ variant, colorScheme, isDisabled }: any) => {
+const IconButtonBasic: StoryFn = ({ variant, colorScheme, isDisabled, size }: any) => {
   return (
-    <IconButton variant={variant} colorScheme={colorScheme} isDisabled={isDisabled}>
-      <IconButtonIcon as={AddMediumIcon} />
-    </IconButton>
+    <IconButton
+      icon={AddMediumIcon}
+      variant={variant}
+      colorScheme={colorScheme}
+      isDisabled={isDisabled}
+      size={size}
+    />
   );
 };
 
 IconButtonBasic.argTypes = {
+  size: {
+    options: ['x-small', 'small', 'large'],
+    control: 'select',
+    description: 'The size of the button.',
+  },
   variant: {
     options: ['solid', 'outline', 'ghost'],
     control: 'select',
@@ -30,6 +39,7 @@ IconButtonBasic.argTypes = {
 };
 
 IconButtonBasic.args = {
+  size: 'large',
   variant: 'solid',
   colorScheme: 'cyan',
   isDisabled: false,

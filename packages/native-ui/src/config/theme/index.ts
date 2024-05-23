@@ -146,4 +146,4 @@ export * from './Text';
 // export * from './TooltipText';
 export * from './VStack';
 export * from './View';
-// export * from './IconButton';
+export * from './IconButton';

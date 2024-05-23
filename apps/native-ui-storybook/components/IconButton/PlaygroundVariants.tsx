@@ -1,26 +1,32 @@
-import {
-  ButtonGroup,
-  Button,
-  IconButtonIcon,
-  IconButton,
-  ButtonText,
-} from '@utilitywarehouse/native-ui';
+import { ButtonGroup, Button, IconButton, ButtonText } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 
-const ButtonPlaygroundVariants: StoryFn = ({ colorScheme, isDisabled }: any) => {
+const ButtonPlaygroundVariants: StoryFn = ({ colorScheme, isDisabled, size }: any) => {
   return (
     <ButtonGroup flexDirection="column" space="md">
-      <IconButton variant="solid" colorScheme={colorScheme} isDisabled={isDisabled}>
-        <IconButtonIcon as={ChevronRightMediumIcon} />
-      </IconButton>
-      <IconButton variant="outline" colorScheme={colorScheme} isDisabled={isDisabled}>
-        <IconButtonIcon as={ChevronRightMediumIcon} />
-      </IconButton>
-      <IconButton variant="ghost" colorScheme={colorScheme} isDisabled={isDisabled}>
-        <IconButtonIcon as={ChevronRightMediumIcon} />
-      </IconButton>
+      <IconButton
+        icon={ChevronRightMediumIcon}
+        variant="solid"
+        colorScheme={colorScheme}
+        isDisabled={isDisabled}
+        size={size}
+      />
+      <IconButton
+        icon={ChevronRightMediumIcon}
+        variant="outline"
+        colorScheme={colorScheme}
+        isDisabled={isDisabled}
+        size={size}
+      />
+      <IconButton
+        icon={ChevronRightMediumIcon}
+        variant="ghost"
+        colorScheme={colorScheme}
+        isDisabled={isDisabled}
+        size={size}
+      />
     </ButtonGroup>
   );
 };
@@ -28,6 +34,11 @@ const ButtonPlaygroundVariants: StoryFn = ({ colorScheme, isDisabled }: any) => 
 ButtonPlaygroundVariants.storyName = 'Playground Variants';
 
 ButtonPlaygroundVariants.argTypes = {
+  size: {
+    options: ['x-small', 'small', 'large'],
+    control: 'select',
+    description: 'The size of the button.',
+  },
   colorScheme: {
     options: ['cyan', 'red', 'green', 'grey', 'gold'],
     control: 'select',
@@ -41,6 +52,7 @@ ButtonPlaygroundVariants.argTypes = {
 };
 
 ButtonPlaygroundVariants.args = {
+  size: 'large',
   colorScheme: 'cyan',
   isDisabled: false,
 };

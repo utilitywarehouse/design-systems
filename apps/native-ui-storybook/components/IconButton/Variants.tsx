@@ -1,18 +1,11 @@
-import {
-  ScrollView,
-  Button,
-  ButtonText,
-  useMedia,
-  VStack,
-  HStack,
-} from '@utilitywarehouse/native-ui';
+import { ScrollView, IconButton, useMedia, VStack, HStack } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { StoryFn } from '@storybook/react';
 
 import ButtonVariants from './components/IconButtonVariants';
 import { Dimensions, Platform } from 'react-native';
 
-const ButtonPlaygroundVariants: StoryFn = ({ size }: any) => {
+const IconButtonPlaygroundVariants: StoryFn = ({ size }: any) => {
   const media = useMedia();
   const { base, xs, sm } = media;
   const isMobile = base || xs || sm;
@@ -21,11 +14,11 @@ const ButtonPlaygroundVariants: StoryFn = ({ size }: any) => {
 
   const variants = (
     <>
-      <ButtonVariants colorScheme="cyan" />
-      <ButtonVariants colorScheme="green" />
-      <ButtonVariants colorScheme="red" />
-      <ButtonVariants colorScheme="grey" />
-      <ButtonVariants colorScheme="gold" />
+      <ButtonVariants colorScheme="cyan" size={size} />
+      <ButtonVariants colorScheme="green" size={size} />
+      <ButtonVariants colorScheme="red" size={size} />
+      <ButtonVariants colorScheme="grey" size={size} />
+      <ButtonVariants colorScheme="gold" size={size} />
     </>
   );
 
@@ -58,8 +51,20 @@ const ButtonPlaygroundVariants: StoryFn = ({ size }: any) => {
   );
 };
 
-ButtonPlaygroundVariants.storyName = 'Variants';
+IconButtonPlaygroundVariants.storyName = 'Variants';
 
-export default ButtonPlaygroundVariants;
+IconButtonPlaygroundVariants.argTypes = {
+  size: {
+    options: ['x-small', 'small', 'large'],
+    control: 'select',
+    description: 'The size of the button.',
+  },
+};
 
-export { ButtonText, Button };
+IconButtonPlaygroundVariants.args = {
+  size: 'large',
+};
+
+export default IconButtonPlaygroundVariants;
+
+export { IconButton };
