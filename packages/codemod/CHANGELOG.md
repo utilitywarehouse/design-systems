@@ -1,5 +1,11 @@
 # @utilitywarehouse/ds-codemod
 
+## 0.0.24
+
+### Patch Changes
+
+- [#356](https://github.com/utilitywarehouse/design-systems/pull/356) [`6a24c4e`](https://github.com/utilitywarehouse/design-systems/commit/6a24c4e551b48ab57430350eedfd715ff5db2793) Thanks [@robphoenix](https://github.com/robphoenix)! - Leave buttonClasses import from cwui
+
 ## 0.0.23
 
 ### Patch Changes
