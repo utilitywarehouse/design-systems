@@ -33,6 +33,7 @@ import {
 
 import {
   Background,
+  buttonClasses,
   Icon,
   IconProps,
   Hidden,
