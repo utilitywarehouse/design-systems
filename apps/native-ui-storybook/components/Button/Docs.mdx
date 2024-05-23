@@ -1,0 +1,193 @@
+import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
+import * as ButtonStories from './Button.stories';
+import {
+  ButtonGroup,
+  Button,
+  ButtonIcon,
+  ButtonSpinner,
+  ButtonText,
+  Center,
+  NativeUIProvider,
+} from '@utilitywarehouse/native-ui';
+import {
+  AddSmallIcon,
+  ChevronLeft01SmallIcon,
+  ChevronRight01SmallIcon,
+} from '@utilitywarehouse/react-native-icons';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+The `Button` component is used to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button colorScheme="green">
+        <ButtonText>Button</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Button, ButtonText } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const handlePress = () => {
+    console.log('Button pressed');
+  };
+  return (
+    <Button onPress={handlePress} colorScheme="green">
+      <ButtonText>Button</ButtonText>
+    </Button>
+  );
+};
+```
+
+## Props
+
+| Property      | Type                                             | Description                                                | Default   |
+| ------------- | ------------------------------------------------ | ---------------------------------------------------------- | --------- |
+| `onPress`     | `() => void`                                     | Callback function to be called when the button is pressed. | -         |
+| `variant`     | `'solid' \| 'outline' \| 'ghost'`                | The variant of the button.                                 | 'solid'   |
+| `size`        | `'small' \| 'regular'`                           | The size of the button.                                    | 'regular' |
+| `colorScheme` | `'cyan' \| 'greeb' \| 'red' \| 'grey' \| 'gold'` | The colour scheme of the button.                           | 'cyan'    |
+| `isDisabled`  | `boolean`                                        | Disables the button.                                       | `false`   |
+| `isPressed`   | `boolean`                                        | Changes the button to a pressed state.                     | `false`   |
+
+### Descendants Styling Props
+
+Props to style the child components.
+
+| Sx Prop    | Description                           |
+| ---------- | ------------------------------------- |
+| `_text`    | Prop to style ButtonText Component    |
+| `_icon`    | Prop to style ButtonIcon Component    |
+| `_spinner` | Prop to style ButtonSpinner Component |
+
+### Components
+
+- [ButtonGroup](#buttongroup)
+- [ButtonIcon](#buttonicon)
+- [ButtonSpinner](#buttonspinner)
+
+### `ButtonGroup`
+
+The `ButtonGroup` component is used to group multiple buttons together.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <ButtonGroup flexDirection="column">
+        <Button colorScheme="cyan">
+          <ButtonText>Button 1</ButtonText>
+        </Button>
+        <Button colorScheme="grey" variant="outline">
+          <ButtonText>Button 2</ButtonText>
+        </Button>
+        <Button colorScheme="red" variant="ghost">
+          <ButtonText>Button 3</ButtonText>
+        </Button>
+      </ButtonGroup>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { ButtonGroup, Button, ButtonText } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <ButtonGroup flexDirection="column">
+      <Button colorScheme="cyan">
+        <ButtonText>Button 1</ButtonText>
+      </Button>
+      <Button colorScheme="grey" variant="outline">
+        <ButtonText>Button 2</ButtonText>
+      </Button>
+      <Button colorScheme="red" variant="ghost">
+        <ButtonText>Button 3</ButtonText>
+      </Button>
+    </ButtonGroup>
+  );
+};
+```
+
+#### Props
+
+| Property        | Type                                                     | Description                                                    | Default |
+| --------------- | -------------------------------------------------------- | -------------------------------------------------------------- | ------- |
+| `flexDirection` | `'row' \| 'column' \| 'row-reverse' \| 'column-reverse'` | Set the direction of Button group to vertical or horizontal    | 'row'   |
+| `isDisabled`    | `boolean`                                                | When true, this will disable all the buttons in a ButtonGroup. | `false` |
+| `isAttached`    | `boolean`                                                | When attached, all buttons will be attached to each other.     | `false` |
+| `reversed`      | `boolean`                                                | To reverse the order of components.                            | `false` |
+| `space`         | `string`                                                 | It sets the space between different buttons.                   | 'md'    |
+
+### `ButtonIcon`
+
+The `ButtonIcon` component is used to add an icon to the button.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button colorScheme="cyan">
+        <ButtonIcon as={AddSmallIcon} />
+        <ButtonText>Button</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Button, ButtonIcon, ButtonText } from '@utilitywarehouse/native-ui';
+import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => {
+  return (
+    <Button colorScheme="cyan">
+      <ButtonIcon as={AddSmallIcon} />
+      <ButtonText>Button</ButtonText>
+    </Button>
+  );
+};
+```
+
+### `ButtonSpinner`
+
+The `ButtonSpinner` component is used to add a spinner to the button and show loading state.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button colorScheme="cyan">
+        <ButtonSpinner />
+        <ButtonText>Button</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Button, ButtonSpinner, ButtonText } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <Button colorScheme="cyan">
+      <ButtonSpinner />
+      <ButtonText>Button</ButtonText>
+    </Button>
+  );
+};
+```

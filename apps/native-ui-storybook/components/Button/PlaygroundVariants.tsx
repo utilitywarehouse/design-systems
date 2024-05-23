@@ -17,30 +17,30 @@ const ButtonPlaygroundVariants: StoryFn = ({
   _showIcon,
   _showLoading,
   _loadingPosition,
-  _buttonPosition,
+  _iconPosition,
 }: any) => {
   return (
     <ButtonGroup flexDirection="column" space="md">
       <Button size={size} variant="solid" colorScheme={colorScheme} isDisabled={isDisabled}>
-        {_showIcon && _buttonPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
+        {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
         {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
         <ButtonText>{_ButtonText}</ButtonText>
         {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
-        {_showIcon && _buttonPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+        {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
       </Button>
       <Button size={size} variant="outline" colorScheme={colorScheme} isDisabled={isDisabled}>
-        {_showIcon && _buttonPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
+        {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
         {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
         <ButtonText>{_ButtonText}</ButtonText>
         {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
-        {_showIcon && _buttonPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+        {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
       </Button>
       <Button size={size} variant="ghost" colorScheme={colorScheme} isDisabled={isDisabled}>
-        {_showIcon && _buttonPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
+        {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
         {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
         <ButtonText>{_ButtonText}</ButtonText>
         {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
-        {_showIcon && _buttonPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+        {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
       </Button>
     </ButtonGroup>
   );
@@ -76,7 +76,7 @@ ButtonPlaygroundVariants.argTypes = {
     description:
       'To show or hide the icon component for the button.\n _Note: this is not a prop of the `Button` component, just a representation of the `ButtonIcon` component for the Storybook playground._',
   },
-  _buttonPosition: {
+  _iconPosition: {
     options: ['left', 'right'],
     control: 'select',
     description:
@@ -102,7 +102,7 @@ ButtonPlaygroundVariants.args = {
   isDisabled: false,
   _ButtonText: 'Example',
   _showIcon: true,
-  _buttonPosition: 'left',
+  _iconPosition: 'left',
   _showLoading: false,
   _loadingPosition: 'left',
 };

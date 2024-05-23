@@ -3,7 +3,6 @@ import {
   Button,
   ButtonText,
   useMedia,
-  Box,
   VStack,
   HStack,
 } from '@utilitywarehouse/native-ui';
