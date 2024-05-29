@@ -9,7 +9,6 @@ interface IconButtonVariantsProps {
 }
 
 const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }) => {
-  const validScheme = colorScheme === 'cyan' || colorScheme === 'red' || colorScheme === 'green';
   const capitalisedScheme =
     (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');
   const { sm, xs, base } = useMedia();
@@ -17,19 +16,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
 
   return (
     <VStack space="2xl">
-      <Box
-        sx={
-          validScheme
-            ? undefined
-            : {
-                opacity: 0,
-                display: isMobile ? 'none' : 'flex',
-                _web: {
-                  pointerEvents: 'none',
-                },
-              }
-        }
-      >
+      <Box>
         <Text size="lg">Solid - {capitalisedScheme}</Text>
         <ButtonGroup flexDirection="column" space="md">
           <Text size="sm">Default</Text>
@@ -93,6 +80,14 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             isPressed={true}
             size={size}
           />
+          <Text size="sm">Loading</Text>
+          <IconButton
+            icon={ChevronRightMediumIcon}
+            variant="outline"
+            colorScheme={colorScheme}
+            size={size}
+            loading={true}
+          />
           <Text size="sm">Disabled</Text>
           <IconButton
             icon={ChevronRightMediumIcon}
@@ -100,6 +95,15 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             colorScheme={colorScheme}
             isDisabled={true}
             size={size}
+          />
+          <Text size="sm">Disabled Loading</Text>
+          <IconButton
+            icon={ChevronRightMediumIcon}
+            variant="outline"
+            colorScheme={colorScheme}
+            isDisabled={true}
+            size={size}
+            loading={true}
           />
         </ButtonGroup>
       </Box>
@@ -121,6 +125,14 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             isPressed={true}
             size={size}
           />
+          <Text size="sm">Loading</Text>
+          <IconButton
+            icon={ChevronRightMediumIcon}
+            variant="ghost"
+            colorScheme={colorScheme}
+            size={size}
+            loading={true}
+          />
           <Text size="sm">Disabled</Text>
           <IconButton
             icon={ChevronRightMediumIcon}
@@ -128,6 +140,15 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             colorScheme={colorScheme}
             isDisabled={true}
             size={size}
+          />
+          <Text size="sm">Disabled Loading</Text>
+          <IconButton
+            icon={ChevronRightMediumIcon}
+            variant="ghost"
+            colorScheme={colorScheme}
+            isDisabled={true}
+            size={size}
+            loading={true}
           />
         </ButtonGroup>
       </Box>

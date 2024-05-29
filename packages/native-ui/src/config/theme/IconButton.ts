@@ -55,10 +55,22 @@ export const IconButton = createStyle({
             color: '$darkCyan50',
           },
 
+          _spinner: {
+            _svg: {
+              color: '$darkCyan50',
+            },
+          },
+
           ':active': {
             bg: '$darkCyan800',
             _icon: {
               color: '$darkCyan50',
+            },
+
+            _spinner: {
+              _svg: {
+                color: '$darkCyan50',
+              },
             },
           },
 
@@ -67,6 +79,12 @@ export const IconButton = createStyle({
 
             _icon: {
               color: '$darkGrey400',
+            },
+
+            _spinner: {
+              _svg: {
+                color: '$darkGrey400',
+              },
             },
           },
         },
@@ -80,11 +98,23 @@ export const IconButton = createStyle({
           color: '$white',
         },
 
+        _spinner: {
+          _svg: {
+            color: '$white',
+          },
+        },
+
         ':active': {
           bg: '$red700',
 
           _icon: {
             color: '$white',
+          },
+
+          _spinner: {
+            _svg: {
+              color: '$white',
+            },
           },
         },
 
@@ -93,6 +123,12 @@ export const IconButton = createStyle({
 
           _icon: {
             color: '$white',
+          },
+
+          _spinner: {
+            _svg: {
+              color: '$white',
+            },
           },
         },
 
@@ -103,11 +139,23 @@ export const IconButton = createStyle({
             color: '$darkRed50',
           },
 
+          _spinner: {
+            _svg: {
+              color: '$darkRed50',
+            },
+          },
+
           ':active': {
             bg: '$darkRed800',
 
             _icon: {
               color: '$darkRed50',
+            },
+
+            _spinner: {
+              _svg: {
+                color: '$darkRed50',
+              },
             },
           },
 
@@ -116,6 +164,12 @@ export const IconButton = createStyle({
 
             _icon: {
               color: '$darkGrey400',
+            },
+
+            _spinner: {
+              _svg: {
+                color: '$darkGrey400',
+              },
             },
           },
         },
@@ -129,11 +183,23 @@ export const IconButton = createStyle({
           color: '$white',
         },
 
+        _spinner: {
+          _svg: {
+            color: '$white',
+          },
+        },
+
         ':active': {
           bg: '$green600',
 
           _icon: {
             color: '$white',
+          },
+
+          _spinner: {
+            _svg: {
+              color: '$white',
+            },
           },
         },
 
@@ -142,6 +208,12 @@ export const IconButton = createStyle({
 
           _icon: {
             color: '$white',
+          },
+
+          _spinner: {
+            _svg: {
+              color: '$white',
+            },
           },
         },
 
@@ -152,11 +224,23 @@ export const IconButton = createStyle({
             color: '$darkGreen50',
           },
 
+          _spinner: {
+            _svg: {
+              color: '$darkGreen50',
+            },
+          },
+
           ':active': {
             bg: '$darkGreen800',
 
             _icon: {
               color: '$darkGreen50',
+            },
+
+            _spinner: {
+              _svg: {
+                color: '$darkGreen50',
+              },
             },
           },
 
@@ -165,6 +249,12 @@ export const IconButton = createStyle({
 
             _icon: {
               color: '$darkGrey400',
+            },
+
+            _spinner: {
+              _svg: {
+                color: '$darkGrey400',
+              },
             },
           },
         },
@@ -178,11 +268,23 @@ export const IconButton = createStyle({
           color: '$white',
         },
 
+        _spinner: {
+          _svg: {
+            color: '$white',
+          },
+        },
+
         ':active': {
           bg: '$grey700',
 
           _icon: {
             color: '$white',
+          },
+
+          _spinner: {
+            _svg: {
+              color: '$white',
+            },
           },
         },
 
@@ -191,6 +293,12 @@ export const IconButton = createStyle({
 
           _icon: {
             color: '$grey300',
+          },
+
+          _spinner: {
+            _svg: {
+              color: '$grey300',
+            },
           },
         },
 
@@ -201,11 +309,23 @@ export const IconButton = createStyle({
             color: '$darkWhite',
           },
 
+          _spinner: {
+            _svg: {
+              color: '$darkWhite',
+            },
+          },
+
           ':active': {
             bg: '$darkGrey700',
 
             _icon: {
               color: '$darkWhite',
+            },
+
+            _spinner: {
+              _svg: {
+                color: '$darkWhite',
+              },
             },
           },
 
@@ -214,6 +334,12 @@ export const IconButton = createStyle({
 
             _icon: {
               color: '$darkGrey300',
+            },
+
+            _spinner: {
+              _svg: {
+                color: '$darkGrey300',
+              },
             },
           },
         },
