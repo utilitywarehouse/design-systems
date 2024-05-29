@@ -57,17 +57,17 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               }
         }
       >
-        <Text color={textColor} size="lg">
+        <Text $light-color={textColor} size="lg">
           Solid - {capitalisedScheme}
         </Text>
         <ButtonGroup flexDirection="column" space="md">
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Default
           </Text>
           <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Pressed
           </Text>
           <Button
@@ -79,7 +79,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           >
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Disabled
           </Text>
           <Button
@@ -91,21 +91,21 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           >
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Icon Left
           </Text>
           <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonIcon as={AddSmallIcon} />
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Icon Right
           </Text>
           <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonText>Example</ButtonText>
             <ButtonIcon as={ChevronRight01SmallIcon} />
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Icon Left & Right
           </Text>
           <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
@@ -113,14 +113,14 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
             <ButtonText>Example</ButtonText>
             <ButtonIcon as={ChevronRight01SmallIcon} />
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Loading
           </Text>
           <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonSpinner />
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Disabled & Loading
           </Text>
           <Button
@@ -136,17 +136,17 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
         </ButtonGroup>
       </Box>
       <Box>
-        <Text color={textColor} size="lg">
+        <Text $light-color={textColor} size="lg">
           Outline - {capitalisedScheme}
         </Text>
         <ButtonGroup flexDirection="column" space="md">
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Default
           </Text>
           <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Pressed
           </Text>
           <Button
@@ -158,7 +158,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           >
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Disabled
           </Text>
           <Button
@@ -170,21 +170,21 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           >
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Icon Left
           </Text>
           <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonIcon as={AddSmallIcon} />
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Icon Right
           </Text>
           <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonText>Example</ButtonText>
             <ButtonIcon as={ChevronRight01SmallIcon} />
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Icon Left & Right
           </Text>
           <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
@@ -192,14 +192,14 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
             <ButtonText>Example</ButtonText>
             <ButtonIcon as={ChevronRight01SmallIcon} />
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Loading
           </Text>
           <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonSpinner />
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Disabled & Loading
           </Text>
           <Button
@@ -215,17 +215,17 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
         </ButtonGroup>
       </Box>
       <Box>
-        <Text color={textColor} size="lg">
+        <Text $light-color={textColor} size="lg">
           Ghost - {capitalisedScheme}
         </Text>
         <ButtonGroup flexDirection="column" space="md" sx={{ mb: '$4' }}>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Default
           </Text>
           <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Pressed
           </Text>
           <Button
@@ -237,7 +237,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           >
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Disabled
           </Text>
           <Button
@@ -249,21 +249,21 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           >
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Icon Left
           </Text>
           <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonIcon as={AddSmallIcon} />
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Icon Right
           </Text>
           <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonText>Example</ButtonText>
             <ButtonIcon as={ChevronRight01SmallIcon} />
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Icon Left & Right
           </Text>
           <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
@@ -271,14 +271,14 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
             <ButtonText>Example</ButtonText>
             <ButtonIcon as={ChevronRight01SmallIcon} />
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Loading
           </Text>
           <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
             <ButtonSpinner />
             <ButtonText>Example</ButtonText>
           </Button>
-          <Text color={textColor} size="sm">
+          <Text $light-color={textColor} size="sm">
             Disabled & Loading
           </Text>
           <Button

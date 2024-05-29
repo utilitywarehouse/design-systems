@@ -1,4 +1,4 @@
-import { VStack, Text, IconButton, ButtonGroup, Box, useMedia } from '@utilitywarehouse/native-ui';
+import { VStack, Text, IconButton, ButtonGroup, Box } from '@utilitywarehouse/native-ui';
 import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
 import React, { ComponentProps } from 'react';
 
@@ -11,8 +11,6 @@ interface IconButtonVariantsProps {
 const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }) => {
   const capitalisedScheme =
     (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');
-  const { sm, xs, base } = useMedia();
-  const isMobile = base || xs || sm;
 
   return (
     <VStack space="2xl">
