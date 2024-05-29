@@ -1,18 +1,29 @@
 import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
 import * as ButtonStories from './IconButton.stories';
-import { IconButton, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import {
+  Button,
+  ButtonText,
+  ButtonIcon,
+  IconButton,
+  Center,
+  NativeUIProvider,
+} from '@utilitywarehouse/native-ui';
 import {
   AddSmallIcon,
+  ChevronRightSmallIcon,
   ChevronLeft01SmallIcon,
   ChevronRight01SmallIcon,
   ChevronRightMediumIcon,
 } from '@utilitywarehouse/react-native-icons';
+import ViewStorybookButton from '../../docs/components/ViewStorybookButton';
 
 <Meta of={ButtonStories} />
 
+<ViewStorybookButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=1746-4235" />
+
 # Icon Button
 
-The `Icon Button` component is used to trigger an action or event, such as opening a dialog, canceling an action, or performing a delete operation.
+The `IconButton` component is used to trigger an action or event, such as opening a dialog, canceling an action, or performing a delete operation.
 
 ## Playground
 
