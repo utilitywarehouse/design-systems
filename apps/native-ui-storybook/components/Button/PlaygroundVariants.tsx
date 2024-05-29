@@ -90,7 +90,8 @@ ButtonPlaygroundVariants.argTypes = {
   inverted: {
     type: 'boolean',
     control: 'boolean',
-    description: 'To set the button to be inverted.',
+    description:
+      'To set the button to be inverted. (To only be used on `midnight` or `purple` backgrounds)',
   },
   _ButtonText: {
     type: 'string',

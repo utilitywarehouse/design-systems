@@ -3,13 +3,14 @@ import React from 'react';
 import { AddMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 
-const IconButtonBasic: StoryFn = ({ variant, colorScheme, isDisabled, size }: any) => {
+const IconButtonBasic: StoryFn = ({ variant, colorScheme, isDisabled, size, loading }: any) => {
   return (
     <IconButton
       icon={AddMediumIcon}
       variant={variant}
       colorScheme={colorScheme}
       isDisabled={isDisabled}
+      loading={loading}
       size={size}
     />
   );
@@ -25,6 +26,11 @@ IconButtonBasic.argTypes = {
     options: ['solid', 'outline', 'ghost'],
     control: 'select',
     description: 'The variant of the button.',
+  },
+  loading: {
+    type: 'boolean',
+    control: 'boolean',
+    description: 'To manually set loading to the button.',
   },
   colorScheme: {
     options: ['cyan', 'red', 'green', 'grey', 'gold'],
@@ -42,6 +48,7 @@ IconButtonBasic.args = {
   size: 'large',
   variant: 'solid',
   colorScheme: 'cyan',
+  loading: false,
   isDisabled: false,
 };
 

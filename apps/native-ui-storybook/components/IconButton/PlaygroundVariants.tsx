@@ -3,7 +3,7 @@ import React from 'react';
 import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 
-const ButtonPlaygroundVariants: StoryFn = ({ colorScheme, isDisabled, size }: any) => {
+const ButtonPlaygroundVariants: StoryFn = ({ colorScheme, isDisabled, size, loading }: any) => {
   return (
     <ButtonGroup flexDirection="column" space="md">
       <IconButton
@@ -11,6 +11,7 @@ const ButtonPlaygroundVariants: StoryFn = ({ colorScheme, isDisabled, size }: an
         variant="solid"
         colorScheme={colorScheme}
         isDisabled={isDisabled}
+        loading={loading}
         size={size}
       />
       <IconButton
@@ -18,6 +19,7 @@ const ButtonPlaygroundVariants: StoryFn = ({ colorScheme, isDisabled, size }: an
         variant="outline"
         colorScheme={colorScheme}
         isDisabled={isDisabled}
+        loading={loading}
         size={size}
       />
       <IconButton
@@ -25,6 +27,7 @@ const ButtonPlaygroundVariants: StoryFn = ({ colorScheme, isDisabled, size }: an
         variant="ghost"
         colorScheme={colorScheme}
         isDisabled={isDisabled}
+        loading={loading}
         size={size}
       />
     </ButtonGroup>
@@ -44,6 +47,11 @@ ButtonPlaygroundVariants.argTypes = {
     control: 'select',
     description: 'The color scheme of the button.',
   },
+  loading: {
+    type: 'boolean',
+    control: 'boolean',
+    description: 'To manually set loading to the button.',
+  },
   isDisabled: {
     type: 'boolean',
     control: 'boolean',
@@ -54,6 +62,7 @@ ButtonPlaygroundVariants.argTypes = {
 ButtonPlaygroundVariants.args = {
   size: 'large',
   colorScheme: 'cyan',
+  loading: false,
   isDisabled: false,
 };
 
