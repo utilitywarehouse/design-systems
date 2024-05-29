@@ -51,6 +51,7 @@
     "storybook-dark-mode": "^3.0.3"
   },
   "devDependencies": {
+    "@a110/storybook-expand-all": "^1.1.1",
     "@babel/core": "^7.24.5",
     "@expo/metro-runtime": "^3.2.1",
     "@storybook/addon-actions": "^7.6.17",
