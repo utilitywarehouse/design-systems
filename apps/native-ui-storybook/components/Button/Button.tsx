@@ -1,27 +1,40 @@
-import { Button, ButtonIcon, ButtonSpinner, ButtonText } from '@utilitywarehouse/native-ui';
+import { Box, Button, ButtonIcon, ButtonSpinner, ButtonText } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
+import ButtonWrap from './components/ButtonWrap';
 
 const ButtonBasic: StoryFn = ({
   size,
   variant,
   colorScheme,
   isDisabled,
+  inverted,
   _ButtonText,
   _showIcon,
   _showLoading,
   _loadingPosition,
   _iconPosition,
+  _backgroundColor,
 }: any) => {
   return (
-    <Button size={size} variant={variant} colorScheme={colorScheme} isDisabled={isDisabled}>
-      {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
-      {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
-      <ButtonText>{_ButtonText}</ButtonText>
-      {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
-      {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
-    </Button>
+    <Box height={68} width="100%">
+      <ButtonWrap _backgroundColor={_backgroundColor}>
+        <Button
+          size={size}
+          variant={variant}
+          colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          inverted={inverted}
+        >
+          {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
+          {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
+          <ButtonText>{_ButtonText}</ButtonText>
+          {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
+          {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+        </Button>
+      </ButtonWrap>
+    </Box>
   );
 };
 
@@ -40,6 +53,11 @@ ButtonBasic.argTypes = {
     options: ['cyan', 'red', 'green', 'grey', 'gold'],
     control: 'select',
     description: 'The color scheme of the button.',
+  },
+  inverted: {
+    type: 'boolean',
+    control: 'boolean',
+    description: 'To set the button to be inverted.',
   },
   isDisabled: {
     type: 'boolean',
@@ -76,6 +94,12 @@ ButtonBasic.argTypes = {
     description:
       'The position of the loading spinner component in the button.\n _Note: this is not a prop of the `Button` component, just a representation of the `ButtonSpinner` component for the Storybook playground._',
   },
+  _backgroundColor: {
+    options: ['default', 'midnight', 'purple'],
+    control: 'select',
+    description:
+      'The background color the button appears on.\n _Note: this is not a prop of the `Button` component, just a representation of the `Button` component for the Storybook playground._',
+  },
 };
 
 ButtonBasic.args = {
@@ -83,11 +107,13 @@ ButtonBasic.args = {
   variant: 'solid',
   colorScheme: 'cyan',
   isDisabled: false,
+  inverted: false,
   _ButtonText: 'Example',
   _showIcon: true,
   _iconPosition: 'left',
   _showLoading: false,
   _loadingPosition: 'left',
+  _backgroundColor: 'default',
 };
 
 export default ButtonBasic;

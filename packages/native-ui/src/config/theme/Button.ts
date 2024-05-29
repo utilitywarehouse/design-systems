@@ -561,6 +561,11 @@ export const Button = createStyle({
         },
       },
     },
+
+    inverted: {
+      true: {},
+      false: {},
+    },
   },
   compoundVariants: [
     {
@@ -1681,11 +1686,31 @@ export const Button = createStyle({
         },
       },
     },
+    {
+      inverted: true,
+      variant: 'outline',
+      value: {
+        _text: {
+          color: '$white',
+        },
+
+        _icon: {
+          color: '$white',
+        },
+
+        _spinner: {
+          _svg: {
+            color: '$white',
+          },
+        },
+      },
+    },
   ],
 
   props: {
     size: 'regular',
     variant: 'solid',
     colorScheme: 'cyan',
+    inverted: false,
   },
 });
