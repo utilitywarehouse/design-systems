@@ -616,14 +616,14 @@ export const Button = createStyle({
           backgroundColor: 'transparent',
 
           _text: {
-            color: '$cyan300',
+            color: '$cyan200',
           },
           _icon: {
-            color: '$cyan300',
+            color: '$cyan200',
           },
           _spinner: {
             _svg: {
-              color: '$cyan300',
+              color: '$cyan200',
             },
           },
         },
@@ -1178,14 +1178,14 @@ export const Button = createStyle({
           backgroundColor: 'transparent',
 
           _text: {
-            color: '$cyan300',
+            color: '$cyan200',
           },
           _icon: {
-            color: '$cyan300',
+            color: '$cyan200',
           },
           _spinner: {
             _svg: {
-              color: '$cyan300',
+              color: '$cyan200',
             },
           },
         },
