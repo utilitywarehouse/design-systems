@@ -11,8 +11,6 @@ export {
   FormControlLabelText,
 } from '@gluestack-ui/themed';
 
-export { Input, InputField, InputIcon, InputSlot } from '@gluestack-ui/themed';
-
 export {
   Select,
   SelectBackdrop,
