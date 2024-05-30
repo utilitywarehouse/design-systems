@@ -1,4 +1,3 @@
-/* eslint-disable */
 const colorTransforms = {
   white: 'colorsCommon.brandWhite',
   whiteOwl: 'colors.grey75',
@@ -12,7 +11,6 @@ const deprecatedPropName = 'backgroundColor';
 const newComponentName = 'Box';
 const newPropName = 'background';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function transformer(file, api) {
   const j = api.jscodeshift;
   const root = j(file.source);
@@ -24,15 +22,22 @@ function transformer(file, api) {
 
   root
     .find(j.ImportDeclaration)
-    .filter(path => path.value.source.value === '@utilitywarehouse/web-ui')
+    .filter(path => path.value.source.value === '@utilitywarehouse/customer-ui-material')
+    // add in the Box import
+    .insertAfter(
+      j.importDeclaration(
+        [j.importSpecifier(j.identifier(newComponentName))],
+        j.stringLiteral('@utilitywarehouse/web-ui')
+      )
+    )
+    // remove the Background import
     .forEach(path => {
-      return j(path)
+      j(path)
         .find(j.ImportSpecifier)
-        .forEach(p => {
-          if (p.node.local.name === deprecatedComponentName) {
-            p.node.local.name = newComponentName;
+        .forEach(path => {
+          if (path.node.local.name === deprecatedComponentName) {
+            path.parentPath.parentPath.prune();
           }
-          return p;
         });
     });
 
@@ -66,7 +71,10 @@ function transformer(file, api) {
     // rename `Background` to `Box`
     .forEach(path => {
       path.value.openingElement.name = newComponentName;
-      path.value.closingElement.name = newComponentName;
+
+      if (path.value.closingElement) {
+        path.value.closingElement.name = newComponentName;
+      }
       return path;
     })
     .find(j.JSXAttribute, { name: { type: 'JSXIdentifier', name: deprecatedPropName } })
@@ -92,6 +100,7 @@ function transformer(file, api) {
 
   // add in the colour-system import
   if (colourSystemSpecifiers.length > 0) {
+    // eslint-disable-next-line no-undef
     const importSpecifiers = Array.from(new Set(colourSystemSpecifiers)).map(specifier =>
       j.importSpecifier(j.identifier(specifier))
     );

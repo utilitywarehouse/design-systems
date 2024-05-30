@@ -5,7 +5,7 @@ import { Meta } from '@storybook/blocks';
 # v0
 
 This guide exists to support the migration from the legacy
-`customer-ui-material` component library to **Web UI**.
+`customer-ui-material` component library to **Web UI** v0.
 
 It should cover all the significant changes, however there may be some minor
 inconsistencies not documented here. Please open an issue or PR if you find
@@ -23,12 +23,11 @@ something worth documenting for others, thankyou!
   - [Background component](#background-component)
   - [Card component](#card-component)
   - [Icon component](#icon-component)
+  - [TextField component](#textfield-component)
 - [Codemods](#codemods)
+  - [Migration](#migration)
   - [Required](#required)
-    - [Import Paths](#import-paths)
   - [Optional](#optional)
-    - [Background To Box](#background-to-box)
-    - [Typography (optional) (TODO)](<#typography-(optional)-(todo)>)
 
 ## Interoperability
 
@@ -733,22 +732,38 @@ The **Web UI** `Typography` component is the same as the legacy
 changes in the next major release as we move to using the `Heading` & `Text`
 components.
 
+The `Text` & `Heading` components support nearly all the same variants as the
+deprecated `Typography` component, the only exception to this is the `inherit`
+variant. To replace this you can use either a `Box` or `Text` component with
+`sx` styling:
+
+```tsx
+<Box component="span" sx={{ font: 'inherit' }}>
+```
+
 The **Web UI** `Typography` component will not work in the same way as before
 with the `customer-ui-material` `Background` component, so you will need to
 migrate any `Background` components at the same time.
 
 We will provide a codemod to migrate to these components, however they are not
-a 1-2-1 match, as they do not continue with props such as `paragraph` or
+a 1-2-1 match, as they do not continue with props such as `fontWeight`, `paragraph` or
 `gutterBottom`, so you should visually verify all changes.
 
 In place of the `paragraph` and `gutterBottom` props, we recommend you
 structure your layouts using the layout components, such as `Box`, `Flex`,
 `Stack`, `Grid`, and to a lesser extent `Spacer`.
 
+In place of the `fontWeight` prop, on `Text` components you can use the `bold`
+boolean prop, or, when appropriate, use the `Strong` component.
+
 ### Background component
 
-The `Background` component has been deprecated and will be removed in v1. You
-can achieve the same contextual colour result using the `Box` component.
+The `Background` component has been removed. You can achieve the same
+contextual colour result using the `Box` component.
+
+Any component which inferred contextual colour information from the
+`Background` component, such as `Typography` or `Card`, will also need to be
+migrated when you migrate to the **Web UI** `Box` component.
 
 ```diff
 - import { Background } from '@utilitywarehouse/customer-ui-material';
@@ -769,8 +784,10 @@ can achieve the same contextual colour result using the `Box` component.
 
 The `Card` component from `customer-ui-material` has been removed from **Web
 UI**. There is a replacement `Card` component in the `my-account-web` local
-shared components, however it doesn't imply any contextual colour information
-so you will need to manually set the background colour appropriately.
+shared components, however it infer any contextual colour information from the
+legacy `Background` component as before, so you will either need to migrate and
+`Background` components to `Box` or manually set the background colour
+appropriately.
 
 ```diff
 - import { Card } from '@utilitywarehouse/customer-ui-material';
@@ -781,15 +798,13 @@ so you will need to manually set the background colour appropriately.
 - <Background backgroundColor="white">
 -   <Card>{content}</Card>
 - </Background>
-+ <Box>
-+   <Card backgroundColor={colorsCommon.brandPrimaryPurple}>{content}</Card>
-+ </Box>
++ <Card backgroundColor={colorsCommon.brandPrimaryPurple}>{content}</Card>
 
 - <Background backgroundColor="purple">
 -   <Card>{content}</Card>
 - </Background>
 + <Box background={colorsCommon.brandPrimaryPurple}>
-+   <Card backgroundColor={colorsCommon.brandWhite}>{content}</Card>
++   <Card>{content}</Card>
 + </Box>
 ```
 
@@ -798,6 +813,10 @@ so you will need to manually set the background colour appropriately.
 The `Icon` component from `customer-ui-material` has been removed from **Web
 UI**. Please use the [`react-icons` package](https://uw-icons.vercel.app/)
 instead.
+
+### TextField component
+
+The `id` prop is now required.
 
 ## Codemods
 
@@ -813,6 +832,14 @@ You can use `npx` to run the codemod on your source files.
 npx @utilitywarehouse/ds-codemod web-ui/v0/migration <path>
 ```
 
+Included codemods:
+
+- `import-paths`
+- `background-to-box`
+
+Please make sure you fix any linting or formatting issues before continuing to
+run any further codemods.
+
 ### Required
 
 #### Import Paths
@@ -820,25 +847,23 @@ npx @utilitywarehouse/ds-codemod web-ui/v0/migration <path>
 Updates `customer-ui-material` imports. Most components will change to **Web
 UI** imports, however some legacy components will change to local imports.
 
-Imported usage of `useTheme` will stay as a `customer-ui-material` import. We
+Imported usage of `useTheme`, will stay as a `customer-ui-material` import. We
 recommend you update manually, and avoid the use of `useTheme` entirely.
 
 ```console
 npx @utilitywarehouse/ds-codemod web-ui/v0/import-paths <path>
 ```
 
-### Optional
-
 #### Background To Box
 
-This is an **optional** codemod that will transform usage of the deprecated Web
-UI `Background` component to the `Box` component, updating usage of the
-`backgroundColor` prop to `background` and colours from the Colour System
-library.
+Transforms the deprecated Web UI `Background` component to the `Box` component,
+updating usage of the `backgroundColor` prop to `background` and colours from
+the Colour System library.
 
 Be aware that when you use this codemod you will need to check, and update as
 necessary, any child components which use the background colour context to
 update their foreground colour.
+
 Please update the following components:
 
 - `Typography` -> `Text` & `Heading`
@@ -863,6 +888,63 @@ npx @utilitywarehouse/ds-codemod web-ui/v0/background-to-box <path>
 + <Box background={colorsCommon.brandWhite}></Box>
 ```
 
-#### Typography (optional) (TODO)
+Be aware that you may get multiple `Box` imports, that you may have to delete manually, sorry.
+You may also get duplicated `colors` imports from both the Colour
+System library and the legacy `customer-ui-design-tokens` library. You should
+prefer the newer library, and can refer the the
+[colour system migration table in the documentation](https://uw-web-ui.vercel.app/?path=/docs/colour-system-migration--documentation).
+
+### Optional
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v0/optional <path>
+```
+
+Included codemods
+
+- `typography-to-heading-and-text`
+
+#### Typography
+
+This will update `Typography` imports from Web UI only, so you will need to run the required `migration` codemod first.
 
 Updates usage of the `Typography` component to the `Heading` & `Text` components.
+
+Also transforms the following removed props:
+
+- 'gutterBottom' -> `sx={{ marginBottom: '0.35em' }}`
+- 'paragraph' -> `component="p"` and `sx={{ marginBottom: '16px' }}`
+
+Please note that this may cause your components to have duplicate `sx` props,
+which you will need to manually combine.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v0/typography-to-heading-and-text <path>
+```
+
+```diff
+- <Typography>{content}</Typography>
+- <Typography variant="subtitle">{content}</Typography>
+- <Typography variant="body">{content}</Typography>
+- <Typography variant="legalNote">{content}</Typography>
+- <Typography variant="caption">{content}</Typography>
+- <Typography variant="displayHeading">{content}</Typography>
+- <Typography variant="h1">{content}</Typography>
+- <Typography variant="h2">{content}</Typography>
+- <Typography variant="h3">{content}</Typography>
+- <Typography variant="h4">{content}</Typography>
+- <Typography gutterBottom>{content}</Typography>
+- <Typography paragraph>{content}</Typography>
++ <Text>{content}</Text>
++ <Text variant="subtitle">{content}</Text>
++ <Text variant="body">{content}</Text>
++ <Text variant="legalNote">{content}</Text>
++ <Text variant="caption">{content}</Text>
++ <Heading variant="displayHeading">{content}</Heading>
++ <Heading variant="h1">{content}</Heading>
++ <Heading variant="h2">{content}</Heading>
++ <Heading variant="h3">{content}</Heading>
++ <Heading variant="h4">{content}</Heading>
++ <Text sx={{ marginBottom: '0.35em' }}>{content}</Text>
++ <Text component='p' sx={{ marginBottom: '16px' }}>{content}</Text>
+```

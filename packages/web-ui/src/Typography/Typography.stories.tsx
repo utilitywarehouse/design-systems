@@ -53,7 +53,7 @@ export const KitchenSink: Story = {
     <Backgrounds>
       <Flex direction="column">
         {[...headingVariants, ...textVariants].map(variant => (
-          <Typography key={variant} {...args} variant={variant} gutterBottom />
+          <Typography key={variant} {...args} variant={variant} />
         ))}
       </Flex>
     </Backgrounds>
@@ -70,7 +70,7 @@ export const KitchenSink: Story = {
   },
   args: {
     children: 'hamburgefons',
-    component: 'span',
+    // component: 'span',
     color: 'primary',
     textTransform: 'capitalize',
   },

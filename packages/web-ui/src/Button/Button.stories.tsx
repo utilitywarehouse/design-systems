@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Stack } from '../Stack';
-import { Backgrounds, LegacyBackgrounds } from '../storybook-utils';
+import { Backgrounds } from '../storybook-utils';
 import { Button } from './Button';
 
 const sizes = ['small', 'medium', 'large'] as const;
@@ -126,43 +126,6 @@ export const ButtonSizes: Story = {
         <Button size="medium">Medium</Button>
         <Button size="large">Large</Button>
       </Stack>
-    );
-  },
-};
-
-export const ButtonLegacyColour: Story = {
-  name: 'On legacy Background',
-  parameters: {
-    layout: 'fullscreen',
-  },
-  render: () => {
-    return (
-      <LegacyBackgrounds>
-        <Stack spacing={4}>
-          {variants.map(variant => (
-            <Stack key={variant} direction="row" spacing={2} alignItems="center">
-              <>
-                {sizes.map(size => (
-                  <Button key={size} size={size} variant={variant}>
-                    Button
-                  </Button>
-                ))}
-                {sizes.map(size => (
-                  <Button key={size} size={size} variant={variant} disabled={true}>
-                    Button
-                  </Button>
-                ))}
-              </>
-            </Stack>
-          ))}
-          <Stack direction="row" spacing={2} alignItems="center">
-            <Button variant="tertiary">Button</Button>
-            <Button variant="tertiary" disabled={true}>
-              Button
-            </Button>
-          </Stack>
-        </Stack>
-      </LegacyBackgrounds>
     );
   },
 };

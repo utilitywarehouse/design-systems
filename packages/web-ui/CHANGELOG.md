@@ -1,5 +1,15 @@
 # @utilitywarehouse/web-ui
 
+## 0.7.0
+
+### Minor Changes
+
+- [#337](https://github.com/utilitywarehouse/design-systems/pull/337) [`6af022e`](https://github.com/utilitywarehouse/design-systems/commit/6af022ea33c4dcd8300d37c3bcf9cd787af27ae7) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove legacy Background component
+
+### Patch Changes
+
+- [#334](https://github.com/utilitywarehouse/design-systems/pull/334) [`93effbd`](https://github.com/utilitywarehouse/design-systems/commit/93effbdd783772653e84e04f35707e5923225391) Thanks [@robphoenix](https://github.com/robphoenix)! - Deprecate Typography component
+
 ## 0.6.2
 
 ### Patch Changes

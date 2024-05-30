@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TextLink, TextLinkProps } from './TextLink';
 import type { Meta, StoryObj } from '@storybook/react';
-import { LegacyBackgrounds } from '../storybook-utils';
+import { Backgrounds } from '../storybook-utils';
 import { Text, TextProps } from '../Text';
 import { Stack } from '../Stack';
 import { Box } from '../Box';
@@ -108,10 +108,10 @@ export const InlineTextLink: Story = {
 };
 
 export const TextLinkColor: Story = {
-  name: 'On legacy Background',
+  name: 'Contextual colour',
   render: () => {
     return (
-      <LegacyBackgrounds>
+      <Backgrounds>
         <Stack spacing={4}>
           {textVariants.map(v => (
             <Stack key={v} spacing={1}>
@@ -125,7 +125,7 @@ export const TextLinkColor: Story = {
             </Stack>
           ))}
         </Stack>
-      </LegacyBackgrounds>
+      </Backgrounds>
     );
   },
 };
