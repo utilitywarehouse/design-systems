@@ -1,64 +1,85 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const Input = createStyle({
-  borderWidth: 1,
-  borderColor: '$backgroundLight300',
+  borderWidth: 2,
+  borderColor: '$grey500',
+  borderBottomColor: '$grey900',
   height: '$14',
-  borderRadius: '$sm',
+  borderTopLeftRadius: '$2xl',
+
+  borderTopRightRadius: '$2xl',
+  borderBottomLeftRadius: '$none',
+  borderBottomRightRadius: '$none',
   flexDirection: 'row',
   overflow: 'hidden',
   alignContent: 'center',
-
-  ':hover': {
-    borderColor: '$borderLight400',
-  },
+  px: '$4',
+  backgroundColor: '$white',
 
   ':focus': {
-    borderColor: '$primary700',
-    ':hover': {
-      borderColor: '$primary700',
-    },
+    borderColor: '$cyan500',
+    borderBottomColor: '$cyan500',
+  },
+
+  ':readOnly': {
+    opacity: 0.5,
+    borderColor: '$transparent',
+    borderBottomColor: '$transparent',
   },
 
   ':disabled': {
-    opacity: 0.4,
-    ':hover': {
-      borderColor: '$backgroundLight300',
+    borderColor: '$grey400',
+    borderBottomColor: '$grey600',
+
+    _icon: {
+      color: '$grey400',
+    },
+
+    _input: {
+      props: {
+        placeholderTextColor: '$grey400',
+      },
     },
   },
 
   _input: {
     py: 'auto',
-    px: '$3',
+    px: '$2',
   },
 
   _icon: {
-    color: '$textLight400',
+    color: '$grey700',
   },
 
-  _dark: {
-    borderColor: '$borderDark700',
-    ':hover': {
-      borderColor: '$borderDark400',
-    },
-    ':focus': {
-      borderColor: '$primary400',
-      ':hover': {
-        borderColor: '$primary400',
-      },
-    },
-    ':disabled': {
-      ':hover': {
-        borderColor: '$borderDark700',
-      },
-    },
-  },
+  _dark: {},
 
   variants: {
     validationStatus: {
       initial: {},
-      valid: {},
-      invalid: {},
+      valid: {
+        borderBottomColor: '$green500',
+
+        _validationIcon: {
+          color: '$green500',
+        },
+
+        ':focus': {
+          borderColor: '$green500',
+          borderBottomColor: '$green500',
+        },
+      },
+      invalid: {
+        borderBottomColor: '$red500',
+
+        _validationIcon: {
+          color: '$red500',
+        },
+
+        ':focus': {
+          borderColor: '$red500',
+          borderBottomColor: '$red500',
+        },
+      },
     },
   },
 
