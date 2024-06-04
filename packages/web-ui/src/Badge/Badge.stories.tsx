@@ -1,57 +1,35 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Stack } from '../Stack';
 import { Backgrounds } from '../storybook-utils';
 import { Badge } from './Badge';
 
 const variants = ['soft', 'strong', 'outline'] as const;
-const compressed = [true, false] as const;
-const bottomRadius = [true, false] as const;
 const colorSchemes = ['cyan', 'green', 'red', 'gold', 'grey'] as const;
 
 const meta: Meta<typeof Badge> = {
   title: 'Web UI / Components / Badge',
   component: Badge,
   tags: ['autodocs'],
+  argTypes: {
+    children: { control: { type: 'text' } },
+    variant: { options: [...variants], control: { type: 'radio' } },
+    colorScheme: { options: colorSchemes, control: { type: 'radio' } },
+    compact: { control: { type: 'boolean' } },
+    hasBottomRadiusZero: { control: { type: 'boolean' } },
+  },
+  args: {
+    children: 'Badge',
+    variant: 'soft',
+    colorScheme: 'cyan',
+    compact: false,
+    hasBottomRadiusZero: false,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Badge>;
 
-export const BadgeWorkshop: Story = {
-  name: 'Workshop',
-  parameters: { layout: 'fullscreen' },
-  render: args => {
-    return (
-      <Backgrounds>
-        <Badge {...args}>{args.children}</Badge>
-      </Backgrounds>
-    );
-  },
-  argTypes: {
-    children: {
-      control: {
-        type: 'text',
-      },
-    },
-    variant: {
-      options: [...variants],
-      control: { type: 'radio' },
-    },
-    compact: {
-      control: { type: 'boolean' },
-    },
-    hasBottomRadiusZero: {
-      control: { type: 'boolean' },
-    },
-  },
-  args: {
-    children: 'Badge',
-    variant: 'soft',
-    compact: false,
-    hasBottomRadiusZero: false,
-  },
-};
+export const Workshop: Story = {};
 
 // export const BadgeVariations: Story = {
 //   name: 'Variants',
