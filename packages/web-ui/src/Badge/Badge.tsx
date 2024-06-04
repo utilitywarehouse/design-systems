@@ -1,122 +1,62 @@
 import * as React from 'react';
-import { createBox } from '../Box/createBox';
-import { useBackground } from '../Box';
-import { DATA_ATTRIBUTES, px } from '../utils';
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { styled, theme } from '../theme';
-import { Chip } from '@mui/material';
+import { PropsWithSx } from '../types';
+import { BadgeProps } from './Badge.props';
+import { classSelector, px, pxToRem, withGlobalPrefix } from '../utils';
+import clsx from 'clsx';
+import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
 
-const BaseBox = createBox({
-  componentName: 'Badge',
-});
+const componentName = 'Badge';
+const componentClassName = withGlobalPrefix(componentName);
 
-export interface CustomBadgeProps {
-  /**
-   * Sets the badges's visual variant
-   * @default soft
-   */
-  variant?: 'soft' | 'strong' | 'outline';
-  /**
-   * Sets the colour scheme.
-   * @default cyan
-   */
-  colorScheme?: 'cyan' | 'green' | 'red' | 'gold' | 'grey';
-  /**
-   * Sets the lower border radius. Use 'false' when placing the component directly above other components, e.g. a box.
-   * @default true
-   */
-  bottomRadius?: boolean;
-  children: string;
-  /**
-   * Sets whether the padding of the badge text is compressed
-   * @default false
-   */
-  compressed?: boolean;
-}
+const classNames = {
+  compact: withGlobalPrefix('compact'),
+  bottomRadiusZero: withGlobalPrefix('bottom-radius-zero'),
+};
 
-const StyledBadge = styled(Chip)({
+const classSelectors = {
+  compact: classSelector(classNames.compact),
+  bottomRadiusZero: classSelector(classNames.bottomRadiusZero),
+};
+
+const StyledElement = styled('span')({
+  border: '1px solid red',
+  fontSize: pxToRem(13),
   fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.regular,
-  fontSize: 13,
-  lineHeight: '16px',
-  textTransform: 'none',
-  opacity: 1,
-  borderStyle: 'solid',
+  lineHeight: pxToRem(16),
+  '--badge-padding-inline': px(16),
+  '--badge-padding-inline-compact': px(8),
+  paddingBlock: px(4),
+  paddingInline: 'var(--badge-padding-inline)',
   borderRadius: px(4),
-  // padding: children.compressed ? 0 : theme.spacing(32),
-
-  [`&[data-${DATA_ATTRIBUTES.variant}=soft]`]: {
-    [`&[data-colorscheme=cyan]`]: {
-      '--button-foreground-color': colors.cyan1000,
-      '--button-border-color': colors.cyan400,
-    },
+  [classSelectors.compact]: {
+    paddingInline: 'var(--badge-padding-inline-compact)',
   },
-
-  [`&[data-${DATA_ATTRIBUTES.colorscheme}=cyan`]: {
-    color: colorsCommon.brandMidnight,
-    border: 'none',
-    backgroundColor: colors.cyan200,
-  },
-  [`&[data-${DATA_ATTRIBUTES.variant}=strong]`]: {
-    color: colorsCommon.brandMidnight,
-    backgroundColor: 'transparent',
-    borderColor: colors.cyan400,
-  },
-  [`&[data-${DATA_ATTRIBUTES.variant}=outline]`]: {
-    color: colorsCommon.brandMidnight,
-    backgroundColor: 'transparent',
-    borderColor: colors.cyan400,
-  },
-  [`&[data-${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
-    color: colorsCommon.brandWhite,
-    '&:hover': {
-      borderColor: colorsCommon.brandWhite,
-    },
-  },
-  // TODO: remove when `Background` component removed.
-  [`[data-${DATA_ATTRIBUTES.inverse}=true] &`]: {
-    color: colorsCommon.brandWhite,
-    '&:hover': {
-      borderColor: colorsCommon.brandWhite,
-    },
-  },
-  [`[data-${DATA_ATTRIBUTES.bottomRadius}=false}] &`]: {
-    borderBottomLeftRadius: `${theme.spacing(0)}`,
-    borderBottomRightRadius: `${theme.spacing(0)}`,
-  },
-  [`& [data-${DATA_ATTRIBUTES.bgcolorBrand} = true]`]: {
-    color: colorsCommon.brandWhite,
-  },
-  [`[data-${DATA_ATTRIBUTES.compressed} = true] & `]: {
-    padding: theme.spacing(0),
-  },
-  [`[data-${DATA_ATTRIBUTES.compressed} = false] & `]: {
-    padding: theme.spacing(8),
+  [classSelectors.bottomRadiusZero]: {
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
   },
 });
 
-export const Badge = (props: CustomBadgeProps) => {
-  const { children } = props;
-  const { isBrandBackground } = useBackground();
-  const dataAttributeProps = {
-    [`data-${DATA_ATTRIBUTES.variant}`]: props.variant,
-    [`data-${DATA_ATTRIBUTES.compressed}`]: props.compressed,
-    [`data-${DATA_ATTRIBUTES.bgcolorBrand}`]: isBrandBackground,
-  };
+/**
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ */
+export const Badge = React.forwardRef<
+  React.ElementRef<'span'>,
+  React.PropsWithChildren<PropsWithSx<BadgeProps>>
+>(({ className, hasBottomRadiusZero, compact = false, ...props }, ref) => {
   return (
-    <BaseBox
-      sx={{
-        alignSelf: 'flex-start',
-        whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis',
-        overflow: 'auto',
-        colorScheme: props.colorScheme,
-        borderRadius: '4px',
-        padding: theme.spacing(0, 1),
-      }}
-    >
-      <StyledBadge label={children} {...dataAttributeProps} />
-    </BaseBox>
+    <StyledElement
+      ref={ref}
+      className={clsx(componentClassName, className, {
+        [classNames.compact]: compact,
+        [classNames.bottomRadiusZero]: hasBottomRadiusZero,
+      })}
+      {...props}
+    />
   );
-};
+});
+
+Badge.displayName = componentName;

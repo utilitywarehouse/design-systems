@@ -24,9 +24,7 @@ export const BadgeWorkshop: Story = {
   render: args => {
     return (
       <Backgrounds>
-        <Badge {...args}>
-          {args.children ? args.children : `${args.compressed} ${args.variant} Badge`}
-        </Badge>
+        <Badge {...args}>{args.children}</Badge>
       </Backgrounds>
     );
   },
@@ -40,69 +38,68 @@ export const BadgeWorkshop: Story = {
       options: [...variants],
       control: { type: 'radio' },
     },
-    compressed: {
-      options: compressed,
-      control: { type: 'radio' },
+    compact: {
+      control: { type: 'boolean' },
     },
-    bottomRadius: {
-      options: compressed,
-      control: { type: 'radio' },
+    hasBottomRadiusZero: {
+      control: { type: 'boolean' },
     },
   },
   args: {
-    children: '',
+    children: 'Badge',
     variant: 'soft',
-    compressed: false,
+    compact: false,
+    hasBottomRadiusZero: false,
   },
 };
 
-export const BadgeVariations: Story = {
-  name: 'Variants',
-  parameters: { layout: 'centered' },
-  render: () => {
-    return (
-      <Stack spacing={2} direction="row" alignItems="center">
-        <>
-          {variants.map((variant, index) => (
-            <Badge key={index} variant={variant}>
-              {variant}
-            </Badge>
-          ))}
-          {compressed.map((compression, index) => (
-            <Badge key={index} compressed={compression}>
-              {`${compression ? 'compressed' : 'not compressed'}`}
-            </Badge>
-          ))}
-          {bottomRadius.map((radius, index) => (
-            <Badge key={index} bottomRadius={radius}>
-              {`${bottomRadius ? 'with bottom border radius' : 'without'}`}
-            </Badge>
-          ))}
-        </>
-      </Stack>
-    );
-  },
-};
-export const BadgeColorSchemes: Story = {
-  name: 'Color Schemes',
-  parameters: { layout: 'centered' },
-  render: () => {
-    return (
-      <Backgrounds>
-        <Stack spacing={4}>
-          {colorSchemes.map(colorScheme => (
-            <Stack key={colorScheme} direction="row" spacing={2} alignItems="center">
-              <>
-                {compressed.map((compression, index) => (
-                  <Badge key={index} compressed={compression}>
-                    {colorScheme}
-                  </Badge>
-                ))}
-              </>
-            </Stack>
-          ))}
-        </Stack>
-      </Backgrounds>
-    );
-  },
-};
+// export const BadgeVariations: Story = {
+//   name: 'Variants',
+//   parameters: { layout: 'centered' },
+//   render: () => {
+//     return (
+//       <Stack spacing={2} direction="row" alignItems="center">
+//         <>
+//           {variants.map((variant, index) => (
+//             <Badge key={index} variant={variant}>
+//               {variant}
+//             </Badge>
+//           ))}
+//           {compressed.map((compression, index) => (
+//             <Badge key={index} compressed={compression}>
+//               {`${compression ? 'compressed' : 'not compressed'}`}
+//             </Badge>
+//           ))}
+//           {bottomRadius.map((radius, index) => (
+//             <Badge key={index} bottomRadius={radius}>
+//               {`${bottomRadius ? 'with bottom border radius' : 'without'}`}
+//             </Badge>
+//           ))}
+//         </>
+//       </Stack>
+//     );
+//   },
+// };
+// export const BadgeColorSchemes: Story = {
+//   name: 'Color Schemes',
+//   parameters: { layout: 'centered' },
+//   render: () => {
+//     return (
+//       <Backgrounds>
+//         <Stack spacing={4}>
+//           {colorSchemes.map(colorScheme => (
+//             <Stack key={colorScheme} direction="row" spacing={2} alignItems="center">
+//               <>
+//                 {compressed.map((compression, index) => (
+//                   <Badge key={index} compressed={compression}>
+//                     {colorScheme}
+//                   </Badge>
+//                 ))}
+//               </>
+//             </Stack>
+//           ))}
+//         </Stack>
+//       </Backgrounds>
+//     );
+//   },
+// };
