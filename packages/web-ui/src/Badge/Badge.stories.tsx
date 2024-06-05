@@ -2,6 +2,8 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Backgrounds } from '../storybook-utils';
 import { Badge } from './Badge';
+import { Flex } from '../Flex';
+import { StarSmallIcon } from '@utilitywarehouse/react-icons';
 
 const variants = ['soft', 'strong', 'outline'] as const;
 const colorSchemes = ['cyan', 'green', 'red', 'gold', 'grey'] as const;
@@ -15,69 +17,83 @@ const meta: Meta<typeof Badge> = {
     variant: { options: [...variants], control: { type: 'radio' } },
     colorScheme: { options: colorSchemes, control: { type: 'radio' } },
     compact: { control: { type: 'boolean' } },
-    hasBottomRadiusZero: { control: { type: 'boolean' } },
+    inverted: { control: { type: 'boolean' } },
+    bottomRadiusZero: { control: { type: 'boolean' } },
   },
   args: {
     children: 'Badge',
     variant: 'soft',
     colorScheme: 'cyan',
     compact: false,
-    hasBottomRadiusZero: false,
+    inverted: false,
+    bottomRadiusZero: false,
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Badge>;
 
-export const Workshop: Story = {};
+export const KitchenSink: Story = {
+  parameters: { controls: { hideNoControlsWarning: true } },
+  render: () => {
+    return (
+      <Flex direction="column">
+        {variants.map(variant => (
+          <Flex key={variant} gap={4} justifyContent="center" padding={4} direction="column">
+            {colorSchemes.map(colorScheme => (
+              <Flex key={colorScheme} direction="row" gap={2}>
+                <Badge variant={variant} colorScheme={colorScheme}>
+                  Badge
+                </Badge>
+                <Badge compact variant={variant} colorScheme={colorScheme}>
+                  Badge
+                </Badge>
+                <Badge variant={variant} colorScheme={colorScheme}>
+                  <StarSmallIcon />
+                  Badge
+                </Badge>
+                <Badge compact variant={variant} colorScheme={colorScheme}>
+                  <StarSmallIcon />
+                  Badge
+                </Badge>
+                <Badge variant={variant} colorScheme={colorScheme} bottomRadiusZero>
+                  Badge
+                </Badge>
+                <Badge compact variant={variant} colorScheme={colorScheme} bottomRadiusZero>
+                  Badge
+                </Badge>
+                <Badge variant={variant} colorScheme={colorScheme} bottomRadiusZero>
+                  <StarSmallIcon />
+                  Badge
+                </Badge>
+                <Badge compact variant={variant} colorScheme={colorScheme} bottomRadiusZero>
+                  <StarSmallIcon />
+                  Badge
+                </Badge>
+              </Flex>
+            ))}
+          </Flex>
+        ))}
+      </Flex>
+    );
+  },
+};
 
-// export const BadgeVariations: Story = {
-//   name: 'Variants',
-//   parameters: { layout: 'centered' },
-//   render: () => {
-//     return (
-//       <Stack spacing={2} direction="row" alignItems="center">
-//         <>
-//           {variants.map((variant, index) => (
-//             <Badge key={index} variant={variant}>
-//               {variant}
-//             </Badge>
-//           ))}
-//           {compressed.map((compression, index) => (
-//             <Badge key={index} compressed={compression}>
-//               {`${compression ? 'compressed' : 'not compressed'}`}
-//             </Badge>
-//           ))}
-//           {bottomRadius.map((radius, index) => (
-//             <Badge key={index} bottomRadius={radius}>
-//               {`${bottomRadius ? 'with bottom border radius' : 'without'}`}
-//             </Badge>
-//           ))}
-//         </>
-//       </Stack>
-//     );
-//   },
-// };
-// export const BadgeColorSchemes: Story = {
-//   name: 'Color Schemes',
-//   parameters: { layout: 'centered' },
-//   render: () => {
-//     return (
-//       <Backgrounds>
-//         <Stack spacing={4}>
-//           {colorSchemes.map(colorScheme => (
-//             <Stack key={colorScheme} direction="row" spacing={2} alignItems="center">
-//               <>
-//                 {compressed.map((compression, index) => (
-//                   <Badge key={index} compressed={compression}>
-//                     {colorScheme}
-//                   </Badge>
-//                 ))}
-//               </>
-//             </Stack>
-//           ))}
-//         </Stack>
-//       </Backgrounds>
-//     );
-//   },
-// };
+export const ContextualColour: Story = {
+  parameters: { controls: { hideNoControlsWarning: true } },
+  render: () => {
+    return (
+      <Backgrounds>
+        <Flex gap={4}>
+          {colorSchemes.map(colorScheme => (
+            <Badge key={colorScheme} colorScheme={colorScheme} variant="outline">
+              {colorScheme}
+            </Badge>
+          ))}
+        </Flex>
+      </Backgrounds>
+    );
+  },
+};
+
+export const Workshop: Story = {};
