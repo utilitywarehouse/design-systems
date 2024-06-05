@@ -15,7 +15,7 @@ const meta: Meta<typeof Badge> = {
   component: Badge,
   argTypes: {
     children: { control: { type: 'text' } },
-    variant: { options: [...variants], control: { type: 'radio' } },
+    variant: { options: variants, control: { type: 'radio' } },
     colorScheme: { options: colorSchemes, control: { type: 'radio' } },
     compact: { control: { type: 'boolean' } },
     inverted: { control: { type: 'boolean' } },

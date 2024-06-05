@@ -13,11 +13,6 @@ export type BaseButtonProps = UnstyledButtonProps &
          * @default cyan
          */
         colorScheme?: 'cyan' | 'red' | 'green';
-        /**
-         * Sets the colorScheme to be inverted, for use on darker brand backgrounds.
-         * @default false
-         */
-        inverted?: boolean;
       }
     | {
         variant?: 'outline' | 'ghost';
