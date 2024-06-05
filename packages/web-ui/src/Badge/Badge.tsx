@@ -51,6 +51,8 @@ const StyledElement = styled('span')({
   flexShrink: 0,
   lineHeight: pxToRem(16),
   textAlign: 'center',
+  /* Make sure that the height is not stretched in a Flex/Grid layout */
+  height: 'fit-content',
   '--badge-padding-inline': px(16),
   '--badge-padding-inline-compact': px(8),
   paddingBlock: px(4),
@@ -136,6 +138,7 @@ const StyledElement = styled('span')({
 });
 
 /**
+ * Provide additional context (such as status), or use Badge to draw attention to another interface element.
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */

@@ -4,6 +4,8 @@ import { Backgrounds } from '../storybook-utils';
 import { Badge } from './Badge';
 import { Flex } from '../Flex';
 import { StarSmallIcon } from '@utilitywarehouse/react-icons';
+import { colors } from '@utilitywarehouse/colour-system';
+import { Box } from '../Box';
 
 const variants = ['soft', 'strong', 'outline'] as const;
 const colorSchemes = ['cyan', 'green', 'red', 'gold', 'grey'] as const;
@@ -11,7 +13,6 @@ const colorSchemes = ['cyan', 'green', 'red', 'gold', 'grey'] as const;
 const meta: Meta<typeof Badge> = {
   title: 'Web UI / Components / Badge',
   component: Badge,
-  tags: ['autodocs'],
   argTypes: {
     children: { control: { type: 'text' } },
     variant: { options: [...variants], control: { type: 'radio' } },
@@ -79,8 +80,24 @@ export const KitchenSink: Story = {
   },
 };
 
+export const Workshop: Story = {};
+
+export const BottomRadiusZero: Story = {
+  render: () => {
+    return (
+      <Box>
+        <Box marginLeft="250px">
+          <Badge colorScheme="green" variant="strong" bottomRadiusZero>
+            Multi SIM offer
+          </Badge>
+        </Box>
+        <Box width={400} height={200} borderRadius="8px" bgcolor={colors.green100} />
+      </Box>
+    );
+  },
+};
+
 export const ContextualColour: Story = {
-  parameters: { controls: { hideNoControlsWarning: true } },
   render: () => {
     return (
       <Backgrounds>
@@ -95,5 +112,3 @@ export const ContextualColour: Story = {
     );
   },
 };
-
-export const Workshop: Story = {};

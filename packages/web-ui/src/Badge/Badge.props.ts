@@ -23,7 +23,7 @@ export interface BadgeProps extends ComponentPropsWithoutRef<'span'> {
    */
   bottomRadiusZero?: boolean;
   /**
-   * Sets a more compressed padding
+   * Sets a more compact padding
    * @default false
    */
   compact?: boolean;
