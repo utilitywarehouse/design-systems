@@ -1,43 +1,87 @@
 import React from 'react';
-import { Input, InputField, InputIcon } from '@utilitywarehouse/native-ui';
-import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
+import { Input, InputField, InputIcon, InputSlot } from '@utilitywarehouse/native-ui';
+import { EmailMediumIcon, EyeMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { Meta, StoryFn } from '@storybook/react';
 
-const InputBasic: StoryFn = ({ text = 'NEW FEATURE', icon = false, ...props }: any) => {
+const InputBasic: StoryFn = ({
+  placeholder,
+  validationStatus,
+  type,
+  _showIconLeft,
+  _showIconRight,
+  ...props
+}: any) => {
   return (
-    <Input {...props}>
-      <InputField />
-      {icon && <InputIcon as={AddSmallIcon} />}
+    <Input {...props} validationStatus={validationStatus}>
+      {_showIconLeft && (
+        <InputSlot>
+          <InputIcon as={EmailMediumIcon} />
+        </InputSlot>
+      )}
+      <InputField placeholder={placeholder} type={type} />
+      {_showIconRight && (
+        <InputSlot>
+          <InputIcon as={EyeMediumIcon} />
+        </InputSlot>
+      )}
     </Input>
   );
 };
 
 InputBasic.argTypes = {
-  colorScheme: {
-    control: 'select',
-    options: ['cyan', 'red', 'green', 'gold', 'grey'],
-  },
-  borderless: {
-    control: 'boolean',
-  },
-  strong: {
-    control: 'boolean',
-  },
-  size: {
-    control: 'select',
-    options: ['large', 'small'],
-  },
-  text: {
+  placeholder: {
     control: 'text',
+    description: 'The Input field placeholder',
+    defaultValue: '',
+  },
+  type: {
+    control: 'select',
+    options: ['text', 'password'],
+    description: 'The Input field type',
+    defaultValue: 'text',
+  },
+  validationStatus: {
+    control: 'select',
+    options: ['initial', 'valid', 'invalid'],
+    description: 'The validation status of the Input component',
+    defaultValue: 'initial',
+  },
+  showValidationIcon: {
+    control: 'boolean',
+    description: 'Show the validation icon',
+    defaultValue: true,
+  },
+  isDisabled: {
+    control: 'boolean',
+    description: 'Disable the Input component',
+    defaultValue: false,
+  },
+  isFocused: {
+    control: 'boolean',
+    description: 'Focus the Input component',
+    defaultValue: false,
+  },
+  _showIconLeft: {
+    control: 'boolean',
+    description:
+      'Show icon left. \n _Note: this is not a prop of the `Input` component, just a representation of the `InputSlot` and `InputIcon` component for the Storybook playground._',
+  },
+  _showIconRight: {
+    control: 'boolean',
+    description:
+      'Show icon right. \n _Note: this is not a prop of the `Input` component, just a representation of the `InputSlot` and `InputIcon` component for the Storybook playground._',
   },
 } as Meta<typeof Input>['argTypes'];
 
 InputBasic.args = {
-  text: 'New Feature',
-  strong: false,
-  borderless: false,
-  colorScheme: 'cyan',
-  size: 'large',
+  placeholder: 'Input placeholder',
+  validationStatus: 'initial',
+  showValidationIcon: true,
+  type: 'text',
+  isDisabled: false,
+  isFocused: false,
+  _showIconLeft: false,
+  _showIconRight: false,
 } as Meta<typeof Input>['args'];
 
 export default InputBasic;

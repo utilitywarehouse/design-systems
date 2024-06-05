@@ -8,9 +8,9 @@ import {
 import { InputValidationIcon } from './styled-components';
 
 const Input: React.FC<InputProps> = ({
-  children,
   validationStatus,
   showValidationIcon = true,
+  children,
   ...props
 }) => {
   return (

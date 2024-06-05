@@ -6,7 +6,7 @@ export const InputField = createStyle({
   borderTopRightRadius: '$2xl',
   borderBottomLeftRadius: '$none',
   borderBottomRightRadius: '$none',
-  color: '$textLight900',
+  color: '$grey1000',
   fontSize: '$lg',
   fontFamily: '$body',
   fontWeight: '$normal',
@@ -23,9 +23,9 @@ export const InputField = createStyle({
     placeholderTextColor: '$grey600',
   },
   _dark: {
-    color: '$textDark50',
+    color: '$darkGrey1000',
     props: {
-      placeholderTextColor: '$textDark400',
+      placeholderTextColor: '$darkGrey600',
     },
   },
   _web: {
