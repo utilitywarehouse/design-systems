@@ -21,6 +21,8 @@ export const InputField = createStyle({
 
   props: {
     placeholderTextColor: '$grey600',
+    selectionColor: '$cyan500',
+    cursorColor: '$cyan500',
   },
   _dark: {
     color: '$darkGrey1000',

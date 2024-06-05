@@ -11,10 +11,17 @@ const Input: React.FC<InputProps> = ({
   validationStatus,
   showValidationIcon = true,
   children,
+  disabled,
+  isDisabled,
   ...props
 }) => {
   return (
-    <GSInput {...props} validationStatus={validationStatus}>
+    <GSInput
+      {...props}
+      validationStatus={validationStatus}
+      isInvalid={validationStatus === 'invalid'}
+      isDisabled={disabled || isDisabled}
+    >
       {children}
       {showValidationIcon && validationStatus === 'invalid' && (
         <InputSlot>
