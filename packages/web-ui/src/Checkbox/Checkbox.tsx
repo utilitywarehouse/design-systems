@@ -19,14 +19,19 @@ const StyledRoot = styled(Root)({
   verticalAlign: 'top',
   flexShrink: 0,
   padding: 0,
-  // height: 24,
-  // width: 24,
+  height: 24,
+  width: 24,
   border: 'none',
-  '--checkbox-border-width': px(2),
-  '--checkbox-border-color': colors.grey500,
-  '--checkbox-border-color-hover': colors.cyan500,
-  color: colors.cyan1000,
   borderRadius: '50%',
+  '--checkbox-border-width': px(2),
+  '--checkbox-border-color-unchecked': colors.grey500,
+  '--checkbox-border-color-checked': colors.cyan500,
+  '--checkbox-border-color-hover': colors.cyan500,
+  '--checkbox-border-color-focus': colors.cyan500,
+  '--checkbox-outline-color': 'transparent',
+  '--checkbox-outline-color-focus': colors.cyan700,
+  color: colors.cyan1000,
+  outline: 'none',
   ['&::before']: {
     content: '""',
     display: 'block',
@@ -34,23 +39,26 @@ const StyledRoot = styled(Root)({
     width: 24,
     borderRadius: px(3),
     backgroundColor: 'inherit',
+    boxShadow: 'inset 0 0 0 var(--checkbox-border-width) var(--checkbox-border-color)',
+    outline: `2px solid var(--checkbox-outline-color)`,
   },
-  ['&:where([data-state="unchecked"])']: {
+  [':where([data-state="unchecked"])']: {
     backgroundColor: colorsCommon.brandWhite,
-    ['&::before']: {
-      boxShadow: 'inset 0 0 0 var(--checkbox-border-width) var(--checkbox-border-color)',
-    },
+    '--checkbox-border-color': 'var(--checkbox-border-color-unchecked)',
   },
-  ['&:where([data-state="checked"])']: {
+  [':where([data-state="checked"])']: {
     backgroundColor: colors.cyan500,
+    '--checkbox-border-color': 'var(--checkbox-border-color-checked)',
   },
   '@media (hover: hover)': {
     ':where(:hover:enabled)': {
       boxShadow: `0 0 0 8px ${colors.cyan75}`,
-      ['&::before']: {
-        '--checkbox-border-color': 'var(--checkbox-border-color-hover)',
-      },
+      '--checkbox-border-color': 'var(--checkbox-border-color-hover)',
     },
+  },
+  ':where(:focus-visible)': {
+    '--checkbox-border-color': 'var(--checkbox-border-color-focus)',
+    '--checkbox-outline-color': 'var(--checkbox-outline-color-focus)',
   },
 });
 
