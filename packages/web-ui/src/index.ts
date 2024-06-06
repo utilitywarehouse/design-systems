@@ -9,6 +9,7 @@ export { mediaQueries, px, pxToRem, spacing, withGlobalPrefix, DATA_ATTRIBUTES }
 export * as Lab from './lab';
 export * from './Box';
 export * from './Button';
+export * from './Divider';
 export * from './Em';
 export * from './Fieldset';
 export * from './FieldsetLegend';
