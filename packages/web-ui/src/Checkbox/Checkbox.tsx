@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { px, withGlobalPrefix } from '../utils';
+import { px, spacing, withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
 import { CheckboxProps } from './Checkbox.props';
 import { Root, Indicator } from '@radix-ui/react-checkbox';
@@ -7,9 +7,18 @@ import { TickMediumIcon } from '@utilitywarehouse/react-icons';
 import { styled } from '../theme';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { PropsWithSx } from '../types';
+import { useIds } from '../hooks';
+import { Flex } from '../Flex';
+import { Label } from '../Label';
+import { HelperText } from '../HelperText';
 
 const componentName = 'Checkbox';
 const componentClassName = withGlobalPrefix(componentName);
+
+const StyledElement = styled('div')({
+  display: 'flex',
+  gap: spacing(1),
+});
 
 const StyledRoot = styled(Root)({
   position: 'relative',
@@ -88,13 +97,47 @@ const StyledIndicator = styled(Indicator)({
  * Checkbox
  */
 export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<CheckboxProps>>(
-  ({ className, ...props }, ref) => {
+  ({ id: providedId, label, helperText, className, disabled, ...props }, ref) => {
+    const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'checkbox' });
+    const showHelperText = !!helperText;
+    const showLabel = !!label;
     return (
-      <StyledRoot ref={ref} {...props} className={clsx(componentClassName, className)}>
-        <StyledIndicator>
-          <TickMediumIcon />
-        </StyledIndicator>
-      </StyledRoot>
+      <StyledElement data-disabled={disabled ? '' : undefined}>
+        <StyledRoot
+          ref={ref}
+          {...props}
+          id={id}
+          className={clsx(componentClassName, className)}
+          disabled={disabled}
+        >
+          <StyledIndicator>
+            <TickMediumIcon />
+          </StyledIndicator>
+        </StyledRoot>
+        {showLabel ? (
+          <Flex direction="column" gap={0.5}>
+            <Label
+              id={labelId}
+              htmlFor={id}
+              nested
+              // we do this so that the gap between the checkbox & label is clickable
+              sx={{
+                position: 'relative',
+                '&:after': {
+                  content: '""',
+                  position: 'absolute',
+                  height: '100%',
+                  width: '100%',
+                  left: -8,
+                },
+              }}
+            >
+              {label}
+            </Label>
+            {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
+          </Flex>
+        ) : null}
+      </StyledElement>
     );
   }
 );

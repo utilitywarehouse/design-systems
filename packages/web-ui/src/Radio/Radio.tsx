@@ -13,7 +13,7 @@ import { PropsWithSx } from '../types';
 import { RadioProps } from './Radio.props';
 import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
 import { styled } from '../theme';
-import { spacing, withGlobalPrefix } from '../utils';
+import { DATA_ATTRIBUTES, spacing, withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
 import { Flex } from '../Flex';
 
@@ -117,7 +117,11 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
     const showLabel = !!label;
 
     return (
-      <StyledElement className={clsx(componentClassName, className)} sx={sx}>
+      <StyledElement
+        className={clsx(componentClassName, className)}
+        sx={sx}
+        data-disabled={disabled ? '' : undefined}
+      >
         <StyledRadioContainer>
           <StyledRadioItem
             ref={ref}
