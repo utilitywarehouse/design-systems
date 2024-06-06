@@ -43,7 +43,7 @@ const StyledElement = styled('span')({
     // Button's color property if not set.
     color: 'var(--helper-text-color)',
   },
-  ':where([data-disabled])': {
+  ':where([data-disabled],[data-disabled] &)': {
     '--helper-text-color': 'var(--helper-text-color-disabled)',
   },
   [classSelectors.valid]: {

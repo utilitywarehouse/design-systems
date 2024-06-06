@@ -5,14 +5,20 @@ import { Checkbox } from './Checkbox';
 const meta: Meta<typeof Checkbox> = {
   title: 'Web UI / Components / Checkbox',
   component: Checkbox,
-  argTypes: { disabled: { type: 'boolean' } },
-  args: { disabled: false },
+  argTypes: {
+    helperText: { control: { type: 'text' } },
+    label: { control: { type: 'text' } },
+    disabled: { type: 'boolean' },
+  },
+  args: {
+    label: 'Label',
+    helperText: 'Helper text',
+    disabled: false,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const KitchenSink: Story = {};
-export const Workshop: Story = {
-  args: { children: 'Checkbox' },
-};
+export const Workshop: Story = {};
