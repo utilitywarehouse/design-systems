@@ -5,6 +5,8 @@ import { Checkbox } from './Checkbox';
 const meta: Meta<typeof Checkbox> = {
   title: 'Web UI / Components / Checkbox',
   component: Checkbox,
+  argTypes: { disabled: { type: 'boolean' } },
+  args: { disabled: false },
 };
 
 export default meta;

@@ -23,16 +23,25 @@ const StyledRoot = styled(Root)({
   width: 24,
   border: 'none',
   borderRadius: '50%',
+  '--checkbox-color': colors.cyan1000,
+  '--checkbox-color-disabled': colors.grey400,
+  '--checkbox-background-color-unchecked': colorsCommon.brandWhite,
+  '--checkbox-background-color-checked': colors.cyan500,
+  '--checkbox-background-color-unchecked-disabled': colorsCommon.brandWhite,
+  '--checkbox-background-color-checked-disabled': colors.grey150,
   '--checkbox-border-width': px(2),
   '--checkbox-border-color-unchecked': colors.grey500,
   '--checkbox-border-color-checked': colors.cyan500,
   '--checkbox-border-color-hover': colors.cyan500,
   '--checkbox-border-color-focus': colors.cyan500,
+  '--checkbox-border-color-unchecked-disabled': colors.grey300,
+  '--checkbox-border-color-checked-disabled': colors.grey150,
   '--checkbox-outline-color': 'transparent',
   '--checkbox-outline-color-focus': colors.cyan700,
-  color: colors.cyan1000,
+  color: 'var(--checkbox-color)',
+  backgroundColor: 'var(--checkbox-background-color)',
   outline: 'none',
-  ['&::before']: {
+  '&::before': {
     content: '""',
     display: 'block',
     height: 24,
@@ -42,13 +51,17 @@ const StyledRoot = styled(Root)({
     boxShadow: 'inset 0 0 0 var(--checkbox-border-width) var(--checkbox-border-color)',
     outline: `2px solid var(--checkbox-outline-color)`,
   },
-  [':where([data-state="unchecked"])']: {
-    backgroundColor: colorsCommon.brandWhite,
+  ':where([data-state="unchecked"])': {
+    '--checkbox-background-color': 'var(--checkbox-background-color-unchecked)',
     '--checkbox-border-color': 'var(--checkbox-border-color-unchecked)',
+    '--checkbox-border-color-disabled': 'var(--checkbox-border-color-unchecked-disabled)',
+    '--checkbox-background-color-disabled': 'var(--checkbox-background-color-unchecked-disabled)',
   },
-  [':where([data-state="checked"])']: {
-    backgroundColor: colors.cyan500,
+  ':where([data-state="checked"])': {
+    '--checkbox-background-color': 'var(--checkbox-background-color-checked)',
     '--checkbox-border-color': 'var(--checkbox-border-color-checked)',
+    '--checkbox-border-color-disabled': 'var(--checkbox-border-color-checked-disabled)',
+    '--checkbox-background-color-disabled': 'var(--checkbox-background-color-checked-disabled)',
   },
   '@media (hover: hover)': {
     ':where(:hover:enabled)': {
@@ -59,6 +72,11 @@ const StyledRoot = styled(Root)({
   ':where(:focus-visible)': {
     '--checkbox-border-color': 'var(--checkbox-border-color-focus)',
     '--checkbox-outline-color': 'var(--checkbox-outline-color-focus)',
+  },
+  ':where([data-disabled])': {
+    '--checkbox-color': 'var(--checkbox-color-disabled)',
+    '--checkbox-border-color': 'var(--checkbox-border-color-disabled)',
+    '--checkbox-background-color': 'var(--checkbox-background-color-disabled)',
   },
 });
 
