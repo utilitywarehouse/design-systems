@@ -89,26 +89,13 @@ const InputVariants: StoryFn = () => {
           </InputSlot>
           <InputField placeholder="Input placeholder" />
         </Input>
-        {/* <Text>Input readonly</Text> TODO: Show example when readonly is supported
-        See: https://github.com/gluestack/gluestack-ui/issues/2214
-        <Input
-          isReadOnly
-          sx={{
-            ':readOnly': {
-              opacity: 0.5,
-              borderColor: 'transparent',
-              borderBottomColor: 'transparent',
-            },
-          }}
-        >
+        <Text>Input readonly</Text>
+        <Input isReadOnly>
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
           </InputSlot>
-          <InputField
-            placeholder="Input placeholder"
-            readOnly
-          />
-        </Input> */}
+          <InputField placeholder="Input placeholder" readOnly />
+        </Input>
       </Box>
     </ScrollView>
   );

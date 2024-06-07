@@ -2,11 +2,12 @@ import { createStyle } from '@gluestack-style/react';
 
 export const Input = createStyle({
   borderWidth: 2,
-  borderColor: '$grey500',
+  borderTopColor: '$grey500',
+  borderLeftColor: '$grey500',
+  borderRightColor: '$grey500',
   borderBottomColor: '$grey900',
   height: '$14',
   borderTopLeftRadius: '$2xl',
-
   borderTopRightRadius: '$2xl',
   borderBottomLeftRadius: '$none',
   borderBottomRightRadius: '$none',
@@ -15,6 +16,7 @@ export const Input = createStyle({
   alignContent: 'center',
   px: '$4',
   backgroundColor: '$white',
+  gap: '$2',
 
   ':focus': {
     borderColor: '$cyan500',
@@ -24,7 +26,7 @@ export const Input = createStyle({
   ':readOnly': {
     borderColor: '$transparent',
     borderBottomColor: '$transparent',
-    paddingLeft: 0,
+    px: 0,
   },
 
   ':disabled': {
@@ -46,7 +48,6 @@ export const Input = createStyle({
 
   _input: {
     py: 'auto',
-    px: '$2',
   },
 
   _icon: {
