@@ -29,10 +29,15 @@ const Input: React.FC<InputProps> = ({
             px: 0,
             borderWidth: 0,
             py: 2,
+            backgroundColor: 'transparent',
           }
         : {
             px: '$4',
             borderWidth: 2,
+            backgroundColor: '$white',
+            _dark: {
+              backgroundColor: '$darkGrey25',
+            },
           }
     }
   >

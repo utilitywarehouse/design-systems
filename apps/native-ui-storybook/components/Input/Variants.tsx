@@ -15,81 +15,81 @@ const InputVariants: StoryFn = () => {
   return (
     <ScrollView>
       <Box gap={8}>
-        <Text>Input</Text>
+        <Text>Defaut</Text>
         <Input>
           <InputField />
         </Input>
-        <Text>Input with icon</Text>
+        <Text>With icon</Text>
         <Input>
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
           </InputSlot>
           <InputField />
         </Input>
-        <Text>Input with placeholder</Text>
+        <Text>With placeholder</Text>
         <Input>
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
           </InputSlot>
           <InputField placeholder="Input placeholder" />
         </Input>
-        <Text>Input with value</Text>
+        <Text>With value</Text>
         <Input>
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
           </InputSlot>
           <InputField placeholder="Input placeholder" value="filling the value" />
         </Input>
-        <Text>Input focused</Text>
+        <Text>Focused</Text>
         <Input isFocused>
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
           </InputSlot>
           <InputField placeholder="Input placeholder" value="filling the value" />
         </Input>
-        <Text>Input - Password</Text>
+        <Text>Type password</Text>
         <Input>
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
           </InputSlot>
           <InputField placeholder="Input placeholder" value="filling the value" type="password" />
         </Input>
-        <Text>Input valid</Text>
+        <Text>Valid</Text>
         <Input validationStatus="valid">
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
           </InputSlot>
           <InputField placeholder="Input placeholder" />
         </Input>
-        <Text>Input valid focused</Text>
+        <Text>Valid focused</Text>
         <Input validationStatus="valid" isFocused>
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
           </InputSlot>
           <InputField placeholder="Input placeholder" />
         </Input>
-        <Text>Input invalid</Text>
+        <Text>Invalid</Text>
         <Input validationStatus="invalid">
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
           </InputSlot>
           <InputField placeholder="Input placeholder" />
         </Input>
-        <Text>Input invalid focused</Text>
+        <Text>Invalid focused</Text>
         <Input validationStatus="invalid" isFocused>
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
           </InputSlot>
           <InputField placeholder="Input placeholder" />
         </Input>
-        <Text>Input disabled</Text>
+        <Text>Disabled</Text>
         <Input isDisabled>
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
           </InputSlot>
           <InputField placeholder="Input placeholder" />
         </Input>
-        <Text>Input readonly</Text>
+        <Text>Readonly</Text>
         <Input isReadOnly>
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
