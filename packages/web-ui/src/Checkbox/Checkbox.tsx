@@ -20,7 +20,7 @@ const StyledElement = styled('div')({
   gap: spacing(1),
 });
 
-const StyledRoot = styled(Root)({
+export const StyledRoot = styled(Root)({
   position: 'relative',
   display: 'inline-flex',
   alignItems: 'center',
@@ -89,7 +89,7 @@ const StyledRoot = styled(Root)({
   },
 });
 
-const StyledIndicator = styled(Indicator)({
+export const StyledIndicator = styled(Indicator)({
   position: 'absolute',
 });
 
