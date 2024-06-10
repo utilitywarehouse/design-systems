@@ -1,9 +1,16 @@
 import { BoxProps } from '../Box';
-import type { ReactNode } from 'react';
-import type { RadioGroupProps as RadixRadioGroupProps } from '@radix-ui/react-radio-group';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
+export interface CheckboxGroupProps extends ComponentPropsWithoutRef<'fieldset'> {
   children: ReactNode;
+  disabled?: boolean;
+  /** The direction of the radios, will also set the aria-orientation value. */
+  direction?: 'column' | 'row';
+  /**
+   * Set the width of the RadioGroup children, separate to the width of the
+   * entire RadioGroup.
+   */
+  contentWidth?: BoxProps['width'];
   /**
    * The label for the radio group. This should contain the question being
    * answered by the radio group.
@@ -36,14 +43,4 @@ export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
    * Set whether to display the error message icon.
    */
   showErrorMessageIcon?: boolean;
-}
-
-export interface RadioGroupProps extends Omit<BaseRadioGroupProps, 'orientation'> {
-  /** The direction of the radios, will also set the aria-orientation value. */
-  direction?: 'column' | 'row';
-  /**
-   * Set the width of the RadioGroup children, separate to the width of the
-   * entire RadioGroup.
-   */
-  contentWidth?: BoxProps['width'];
 }

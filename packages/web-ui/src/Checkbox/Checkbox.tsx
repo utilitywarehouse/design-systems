@@ -11,6 +11,7 @@ import { useIds } from '../hooks';
 import { Flex } from '../Flex';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
+import { CheckboxGroupContext } from './CheckboxGroup.context';
 
 const componentName = 'Checkbox';
 const componentClassName = withGlobalPrefix(componentName);
@@ -78,7 +79,7 @@ export const BaseCheckbox = styled(Root)({
       '--checkbox-border-color': 'var(--checkbox-border-color-hover)',
     },
   },
-  ':where([data-disabled])': {
+  ':where([data-disabled],[data-disabled] &)': {
     '--checkbox-color': 'var(--checkbox-color-disabled)',
     '--checkbox-border-color': 'var(--checkbox-border-color-disabled)',
     '--checkbox-background-color': 'var(--checkbox-background-color-disabled)',
@@ -100,9 +101,22 @@ export const StyledIndicator = styled(Indicator)({
  * Checkbox
  */
 export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<CheckboxProps>>(
-  ({ id: providedId, label, helperText, className, disabled, ...props }, ref) => {
+  (
+    {
+      id: providedId,
+      label,
+      helperText,
+      className,
+      disabled,
+      'aria-labelledby': ariaLabelledby,
+      ...props
+    },
+    ref
+  ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'checkbox' });
-    const showHelperText = !!helperText;
+    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
+      React.useContext(CheckboxGroupContext);
+    const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
     return (
       <StyledElement data-disabled={disabled ? '' : undefined}>
@@ -112,6 +126,8 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<Checkbox
           id={id}
           className={clsx(componentClassName, className)}
           disabled={disabled}
+          aria-describedby={showHelperText ? helperTextId : ariaDescribedby}
+          aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
         >
           <StyledIndicator>
             <TickMediumIcon />
