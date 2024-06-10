@@ -20,7 +20,7 @@ const StyledElement = styled('div')({
   gap: spacing(1),
 });
 
-export const StyledRoot = styled(Root)({
+export const BaseCheckbox = styled(Root)({
   position: 'relative',
   display: 'inline-flex',
   alignItems: 'center',
@@ -78,14 +78,17 @@ export const StyledRoot = styled(Root)({
       '--checkbox-border-color': 'var(--checkbox-border-color-hover)',
     },
   },
-  ':where(:focus-visible)': {
-    '--checkbox-border-color': 'var(--checkbox-border-color-focus)',
-    '--checkbox-outline-color': 'var(--checkbox-outline-color-focus)',
-  },
   ':where([data-disabled])': {
     '--checkbox-color': 'var(--checkbox-color-disabled)',
     '--checkbox-border-color': 'var(--checkbox-border-color-disabled)',
     '--checkbox-background-color': 'var(--checkbox-background-color-disabled)',
+  },
+});
+
+export const StyledBaseCheckbox = styled(BaseCheckbox)({
+  ':where(:focus-visible)': {
+    '--checkbox-border-color': 'var(--checkbox-border-color-focus)',
+    '--checkbox-outline-color': 'var(--checkbox-outline-color-focus)',
   },
 });
 
@@ -103,7 +106,7 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<Checkbox
     const showLabel = !!label;
     return (
       <StyledElement data-disabled={disabled ? '' : undefined}>
-        <StyledRoot
+        <StyledBaseCheckbox
           ref={ref}
           {...props}
           id={id}
@@ -113,7 +116,7 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<Checkbox
           <StyledIndicator>
             <TickMediumIcon />
           </StyledIndicator>
-        </StyledRoot>
+        </StyledBaseCheckbox>
         {showLabel ? (
           <Flex direction="column" gap={0.5}>
             <Label
