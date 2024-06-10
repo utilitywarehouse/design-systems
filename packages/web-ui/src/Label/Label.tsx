@@ -41,6 +41,7 @@ export const Label = React.forwardRef<
   React.ElementRef<'label'>,
   React.PropsWithChildren<PropsWithSx<LabelProps>>
 >(({ component = 'label', disabled, nested, ...props }, ref) => {
+  console.log({ props });
   return (
     <StyledElement
       ref={ref}
