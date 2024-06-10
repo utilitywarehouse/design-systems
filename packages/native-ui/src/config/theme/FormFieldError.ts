@@ -1,8 +1,8 @@
 import { createStyle } from '@gluestack-style/react';
 
-export const FormControlLabel = createStyle({
+export const FormFieldError = createStyle({
   flexDirection: 'row',
   justifyContent: 'flex-start',
   alignItems: 'center',
-  mb: '$1',
+  gap: '$2',
 });
