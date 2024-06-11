@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import { createCheckboxScope } from '@radix-ui/react-checkbox';
 // import { useComposedRefs } from '@radix-ui/react-compose-refs';
 import { createContextScope } from '@radix-ui/react-context';
@@ -7,8 +7,6 @@ import * as RovingFocusGroup from '@radix-ui/react-roving-focus';
 import { createRovingFocusGroupScope } from '@radix-ui/react-roving-focus';
 import { useControllableState } from '@radix-ui/react-use-controllable-state';
 // import { useDirection } from '@radix-ui/react-direction';
-
-import type * as Radix from '@radix-ui/react-primitive';
 import type { Scope } from '@radix-ui/react-context';
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
@@ -17,21 +15,20 @@ import { Box } from '../Box';
 import { styled } from '../theme';
 import { Flex } from '../Flex';
 import type { ComponentPropsWithoutRef, ElementRef } from 'react';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { px } from '../utils';
 
-/* -------------------------------------------------------------------------------------------------
- * CheckboxGroup
- * -----------------------------------------------------------------------------------------------*/
-const CHECKBOX_GROUP_NAME = 'CheckboxGroup';
+const checkboxGroupName = 'BaseCheckboxGroup';
 
 type ScopedProps<P> = P & { __scopeCheckboxGroup?: Scope };
-const [createCheckboxGroupContext, createCheckboxGroupScope] = createContextScope(
-  CHECKBOX_GROUP_NAME,
+const [createBaseCheckboxGroupContext, createBaseCheckboxGroupScope] = createContextScope(
+  checkboxGroupName,
   [createRovingFocusGroupScope, createCheckboxScope]
 );
 const useRovingFocusGroupScope = createRovingFocusGroupScope();
 const useCheckboxScope = createCheckboxScope();
 
-type CheckboxGroupContextValue = {
+type BaseCheckboxGroupContextValue = {
   name?: string;
   required: boolean;
   disabled: boolean;
@@ -40,25 +37,24 @@ type CheckboxGroupContextValue = {
   onItemUncheck(value: string): void;
 };
 
-const [CheckboxGroupProvider, useCheckboxGroupContext] =
-  createCheckboxGroupContext<CheckboxGroupContextValue>(CHECKBOX_GROUP_NAME);
+const [BaseCheckboxGroupProvider, useBaseCheckboxGroupContext] =
+  createBaseCheckboxGroupContext<BaseCheckboxGroupContextValue>(checkboxGroupName);
 
-type CheckboxGroupElement = ElementRef<'fieldset'>;
 type RovingFocusGroupProps = ComponentPropsWithoutRef<typeof RovingFocusGroup.Root>;
 
-interface CheckboxGroupProps extends ComponentPropsWithoutRef<'fieldset'> {
-  name?: CheckboxGroupContextValue['name'];
-  required?: ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>['required'];
-  disabled?: ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>['disabled'];
+interface BaseCheckboxGroupProps extends ComponentPropsWithoutRef<'fieldset'> {
+  name?: BaseCheckboxGroupContextValue['name'];
+  required?: ComponentPropsWithoutRef<typeof RadixCheckbox.Root>['required'];
+  disabled?: ComponentPropsWithoutRef<typeof RadixCheckbox.Root>['disabled'];
   dir?: RovingFocusGroupProps['dir'];
   orientation?: RovingFocusGroupProps['orientation'];
   loop?: RovingFocusGroupProps['loop'];
   defaultValue?: Array<string>;
-  value?: CheckboxGroupContextValue['value'];
+  value?: BaseCheckboxGroupContextValue['value'];
   onValueChange?: (value: Array<string>) => void;
 }
 
-const StyledElement = styled(Flex)({
+const StyledContentContainer = styled(Flex)({
   minWidth: 'fit-content',
   flexWrap: 'wrap',
   ':where([data-orientation="horizontal"] &)': {
@@ -69,8 +65,8 @@ const StyledElement = styled(Flex)({
   },
 });
 
-const CheckboxGroup = React.forwardRef<CheckboxGroupElement, CheckboxGroupProps>(
-  (props: ScopedProps<CheckboxGroupProps>, ref) => {
+const BaseCheckboxGroup = React.forwardRef<ElementRef<'fieldset'>, BaseCheckboxGroupProps>(
+  (props: ScopedProps<BaseCheckboxGroupProps>, ref) => {
     const {
       __scopeCheckboxGroup,
       name,
@@ -85,6 +81,7 @@ const CheckboxGroup = React.forwardRef<CheckboxGroupElement, CheckboxGroupProps>
       children,
       ...groupProps
     } = props;
+
     const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeCheckboxGroup);
     // const direction = useDirection(dir);
     const [value = [], setValue] = useControllableState({
@@ -122,7 +119,7 @@ const CheckboxGroup = React.forwardRef<CheckboxGroupElement, CheckboxGroupProps>
     // />
 
     return (
-      <CheckboxGroupProvider
+      <BaseCheckboxGroupProvider
         scope={__scopeCheckboxGroup}
         name={name}
         required={required}
@@ -163,9 +160,9 @@ const CheckboxGroup = React.forwardRef<CheckboxGroupElement, CheckboxGroupProps>
                 </HelperText>
               ) : null}
 
-              <StyledElement width={contentWidth} gap={2}>
+              <StyledContentContainer width={contentWidth} gap={2}>
                 {children}
-              </StyledElement>
+              </StyledContentContainer>
             </Box>
             {showErrorMessage ? (
               <HelperText
@@ -178,31 +175,92 @@ const CheckboxGroup = React.forwardRef<CheckboxGroupElement, CheckboxGroupProps>
             ) : null}
           </Fieldset>
         </RovingFocusGroup.Root>
-      </CheckboxGroupProvider>
+      </BaseCheckboxGroupProvider>
     );
   }
 );
 
-CheckboxGroup.displayName = CHECKBOX_GROUP_NAME;
+BaseCheckboxGroup.displayName = checkboxGroupName;
 
-/* -------------------------------------------------------------------------------------------------
- * CheckboxGroupItem
- * -----------------------------------------------------------------------------------------------*/
+const StyledCheckboxRoot = styled(RadixCheckbox.Root)({
+  position: 'relative',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  verticalAlign: 'top',
+  flexShrink: 0,
+  padding: 0,
+  height: 24,
+  width: 24,
+  border: 'none',
+  borderRadius: '50%',
+  '--checkbox-color': colors.cyan1000,
+  '--checkbox-color-disabled': colors.grey400,
+  '--checkbox-background-color-unchecked': colorsCommon.brandWhite,
+  '--checkbox-background-color-checked': colors.cyan500,
+  '--checkbox-background-color-unchecked-disabled': colorsCommon.brandWhite,
+  '--checkbox-background-color-checked-disabled': colors.grey150,
+  '--checkbox-border-width': px(2),
+  '--checkbox-border-color-unchecked': colors.grey500,
+  '--checkbox-border-color-checked': colors.cyan500,
+  '--checkbox-border-color-hover': colors.cyan500,
+  '--checkbox-border-color-focus': colors.cyan500,
+  '--checkbox-border-color-unchecked-disabled': colors.grey300,
+  '--checkbox-border-color-checked-disabled': colors.grey150,
+  '--checkbox-outline-color': 'transparent',
+  '--checkbox-outline-color-focus': colors.cyan700,
+  color: 'var(--checkbox-color)',
+  backgroundColor: 'var(--checkbox-background-color)',
+  outline: 'none',
+  '&::before': {
+    content: '""',
+    display: 'block',
+    height: 24,
+    width: 24,
+    borderRadius: px(3),
+    backgroundColor: 'inherit',
+    boxShadow: 'inset 0 0 0 var(--checkbox-border-width) var(--checkbox-border-color)',
+    outline: `2px solid var(--checkbox-outline-color)`,
+  },
+  ':where([data-state="unchecked"])': {
+    '--checkbox-background-color': 'var(--checkbox-background-color-unchecked)',
+    '--checkbox-border-color': 'var(--checkbox-border-color-unchecked)',
+    '--checkbox-border-color-disabled': 'var(--checkbox-border-color-unchecked-disabled)',
+    '--checkbox-background-color-disabled': 'var(--checkbox-background-color-unchecked-disabled)',
+  },
+  ':where([data-state="checked"])': {
+    '--checkbox-background-color': 'var(--checkbox-background-color-checked)',
+    '--checkbox-border-color': 'var(--checkbox-border-color-checked)',
+    '--checkbox-border-color-disabled': 'var(--checkbox-border-color-checked-disabled)',
+    '--checkbox-background-color-disabled': 'var(--checkbox-background-color-checked-disabled)',
+  },
+  '@media (hover: hover)': {
+    ':where(:hover:enabled)': {
+      boxShadow: `0 0 0 8px ${colors.cyan75}`,
+      '--checkbox-border-color': 'var(--checkbox-border-color-hover)',
+    },
+  },
+  ':where([data-disabled],[data-disabled] &)': {
+    '--checkbox-color': 'var(--checkbox-color-disabled)',
+    '--checkbox-border-color': 'var(--checkbox-border-color-disabled)',
+    '--checkbox-background-color': 'var(--checkbox-background-color-disabled)',
+  },
+});
 
-const ITEM_NAME = 'CheckboxGroupItem';
+const checkboxName = 'BaseCheckbox';
 
-type CheckboxGroupItemElement = ElementRef<typeof CheckboxPrimitive.Root>;
-type CheckboxProps = ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>;
-
-interface CheckboxGroupItemProps
-  extends Omit<CheckboxProps, 'checked' | 'defaultChecked' | 'onCheckedChange' | 'name'> {
+interface BaseCheckboxProps
+  extends Omit<
+    ComponentPropsWithoutRef<typeof RadixCheckbox.Root>,
+    'checked' | 'defaultChecked' | 'onCheckedChange' | 'name'
+  > {
   value: string;
 }
 
-const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGroupItemProps>(
-  (props: ScopedProps<CheckboxGroupItemProps>, ref) => {
+const BaseCheckbox = React.forwardRef<ElementRef<typeof RadixCheckbox.Root>, BaseCheckboxProps>(
+  (props: ScopedProps<BaseCheckboxProps>, ref) => {
     const { __scopeCheckboxGroup, disabled, ...itemProps } = props;
-    const context = useCheckboxGroupContext(ITEM_NAME, __scopeCheckboxGroup);
+    const context = useBaseCheckboxGroupContext(checkboxName, __scopeCheckboxGroup);
     const isDisabled = context.disabled || disabled;
     const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeCheckboxGroup);
     const checkboxScope = useCheckboxScope(__scopeCheckboxGroup);
@@ -217,7 +275,7 @@ const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGro
         focusable={!isDisabled}
         active={checked}
       >
-        <CheckboxPrimitive.Root
+        <StyledCheckboxRoot
           name={context.name}
           disabled={isDisabled}
           required={context.required}
@@ -238,44 +296,24 @@ const CheckboxGroupItem = React.forwardRef<CheckboxGroupItemElement, CheckboxGro
   }
 );
 
-CheckboxGroupItem.displayName = ITEM_NAME;
+BaseCheckbox.displayName = checkboxName;
 
-/* -------------------------------------------------------------------------------------------------
- * CheckboxGroupIndicator
- * -----------------------------------------------------------------------------------------------*/
+const checkboxIndicatorName = 'BaseCheckboxIndicator';
 
-const INDICATOR_NAME = 'CheckboxGroupIndicator';
-
-type CheckboxGroupIndicatorElement = React.ElementRef<typeof CheckboxPrimitive.Indicator>;
-type CheckboxIndicatorProps = Radix.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Indicator>;
+type CheckboxGroupIndicatorElement = React.ElementRef<typeof RadixCheckbox.Indicator>;
+type CheckboxIndicatorProps = ComponentPropsWithoutRef<typeof RadixCheckbox.Indicator>;
 interface CheckboxGroupIndicatorProps extends CheckboxIndicatorProps {}
 
-const CheckboxGroupIndicator = React.forwardRef<
+const BaseCheckboxIndicator = React.forwardRef<
   CheckboxGroupIndicatorElement,
   CheckboxGroupIndicatorProps
 >((props: ScopedProps<CheckboxGroupIndicatorProps>, forwardedRef) => {
   const { __scopeCheckboxGroup, ...indicatorProps } = props;
   const checkboxScope = useCheckboxScope(__scopeCheckboxGroup);
-  return <CheckboxPrimitive.Indicator {...checkboxScope} {...indicatorProps} ref={forwardedRef} />;
+  return <RadixCheckbox.Indicator {...checkboxScope} {...indicatorProps} ref={forwardedRef} />;
 });
 
-CheckboxGroupIndicator.displayName = INDICATOR_NAME;
+BaseCheckboxIndicator.displayName = checkboxIndicatorName;
 
-/* ---------------------------------------------------------------------------------------------- */
-
-const Root = CheckboxGroup;
-const Item = CheckboxGroupItem;
-const Indicator = CheckboxGroupIndicator;
-
-export {
-  createCheckboxGroupScope,
-  //
-  CheckboxGroup,
-  CheckboxGroupItem,
-  CheckboxGroupIndicator,
-  //
-  Root,
-  Item,
-  Indicator,
-};
-export type { CheckboxGroupProps, CheckboxGroupItemProps, CheckboxGroupIndicatorProps };
+export { createBaseCheckboxGroupScope, BaseCheckboxGroup, BaseCheckboxIndicator, BaseCheckbox };
+export type { BaseCheckboxGroupProps, BaseCheckboxProps, CheckboxGroupIndicatorProps };
