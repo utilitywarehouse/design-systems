@@ -22,12 +22,4 @@ export default meta;
 type Story = StoryObj<typeof CheckboxTile>;
 
 export const KitchenSink: Story = {};
-export const Workshop: Story = {
-  render: args => (
-    <Flex direction="column" gap={2} role="group">
-      <CheckboxTile {...args} />
-      <CheckboxTile {...args} />
-      <CheckboxTile {...args} />
-    </Flex>
-  ),
-};
+export const Workshop: Story = {};

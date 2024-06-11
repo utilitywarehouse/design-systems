@@ -26,7 +26,6 @@ const StyledTile = styled('label')({
   '--checkbox-tile-box-shadow-color-focus': colors.cyan500,
   '--checkbox-tile-box-shadow-color-disabled': colors.grey300,
   boxShadow: 'inset 0 0 0 var(--checkbox-tile-border-width) var(--checkbox-tile-box-shadow-color)',
-  width: 'fit-content', //TODO: just for now
   ':where(:focus-visible)': {
     backgroundColor: colors.cyan75,
     outline: `4px solid ${colors.cyan700}`,

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from './Checkbox';
-import { CheckboxGroup } from './CheckboxGroup';
+import { CheckboxTileGroup } from './CheckboxTileGroup';
+import { CheckboxTile } from '../CheckboxTile';
 
-const meta: Meta<typeof CheckboxGroup> = {
-  title: 'Web UI / Components / CheckboxGroup',
-  component: CheckboxGroup,
+const meta: Meta<typeof CheckboxTileGroup> = {
+  title: 'Web UI / Components / CheckboxTileGroup',
+  component: CheckboxTileGroup,
   argTypes: {
     direction: {
       options: ['column', 'row'],
@@ -36,15 +36,15 @@ const meta: Meta<typeof CheckboxGroup> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof CheckboxGroup>;
+type Story = StoryObj<typeof CheckboxTileGroup>;
 
 export const KitchenSink: Story = {};
 export const Workshop: Story = {
   render: args => (
-    <CheckboxGroup {...args}>
-      <Checkbox label="Fun" />
-      <Checkbox label="Serious" />
-      <Checkbox label="Smart" />
-    </CheckboxGroup>
+    <CheckboxTileGroup {...args}>
+      <CheckboxTile label="Fun" />
+      <CheckboxTile label="Serious" />
+      <CheckboxTile label="Smart" />
+    </CheckboxTileGroup>
   ),
 };
