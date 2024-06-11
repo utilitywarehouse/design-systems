@@ -11,6 +11,12 @@ import { useDirection } from '@radix-ui/react-direction';
 
 import type * as Radix from '@radix-ui/react-primitive';
 import type { Scope } from '@radix-ui/react-context';
+import { Fieldset } from '../Fieldset';
+import { FieldsetLegend } from '../FieldsetLegend';
+import { HelperText } from '../HelperText';
+import { Box } from '../Box';
+import { styled } from '../theme';
+import { Flex } from '../Flex';
 
 /* -------------------------------------------------------------------------------------------------
  * CheckboxGroup
@@ -37,7 +43,7 @@ type CheckboxGroupContextValue = {
 const [CheckboxGroupProvider, useCheckboxGroupContext] =
   createCheckboxGroupContext<CheckboxGroupContextValue>(CHECKBOX_GROUP_NAME);
 
-type CheckboxGroupElement = React.ElementRef<typeof Primitive.div>;
+type CheckboxGroupElement = React.ElementRef<'fieldset'>;
 type RovingFocusGroupProps = Radix.ComponentPropsWithoutRef<typeof RovingFocusGroup.Root>;
 type PrimitiveDivProps = Radix.ComponentPropsWithoutRef<typeof Primitive.div>;
 interface CheckboxGroupProps extends PrimitiveDivProps {
@@ -52,6 +58,17 @@ interface CheckboxGroupProps extends PrimitiveDivProps {
   onValueChange?: (value: Array<string>) => void;
 }
 
+const StyledElement = styled(Flex)({
+  minWidth: 'fit-content',
+  flexWrap: 'wrap',
+  ':where([data-orientation="horizontal"] &)': {
+    flexDirection: 'row',
+  },
+  ':where([data-orientation="vertical"] &)': {
+    flexDirection: 'column',
+  },
+});
+
 const CheckboxGroup = React.forwardRef<CheckboxGroupElement, CheckboxGroupProps>(
   (props: ScopedProps<CheckboxGroupProps>, forwardedRef) => {
     const {
@@ -65,6 +82,7 @@ const CheckboxGroup = React.forwardRef<CheckboxGroupElement, CheckboxGroupProps>
       dir,
       loop = true,
       onValueChange,
+      children,
       ...groupProps
     } = props;
     const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeCheckboxGroup);
@@ -85,6 +103,23 @@ const CheckboxGroup = React.forwardRef<CheckboxGroupElement, CheckboxGroupProps>
         setValue((prevValue = []) => prevValue.filter(value => value !== itemValue)),
       [setValue]
     );
+    const label = 'Label';
+    const helperText = 'helperText';
+    const helperTextId = 'helperTextId';
+    const id = 'id';
+    const labelId = 'labelId';
+    const showHelperTextIcon = true;
+    const showErrorMessage = false;
+    const contentWidth = 'fit-content';
+    const errorMessage = 'error message';
+
+    // <Primitive.div
+    //   role="group"
+    //   data-disabled={disabled ? '' : undefined}
+    //   dir={direction}
+    //   {...groupProps}
+    //   ref={forwardedRef}
+    // />
 
     return (
       <CheckboxGroupProvider
@@ -103,13 +138,45 @@ const CheckboxGroup = React.forwardRef<CheckboxGroupElement, CheckboxGroupProps>
           dir={direction}
           loop={loop}
         >
-          <Primitive.div
-            role="group"
-            data-disabled={disabled ? '' : undefined}
-            dir={direction}
+          <Fieldset
+            // ref={forwardedRef}
             {...groupProps}
-            ref={forwardedRef}
-          />
+            {...props}
+            disabled={disabled}
+            id={id}
+            data-disabled={disabled ? '' : undefined}
+            data-orientation="vertical"
+            // data-orientation={direction === 'column' ? 'vertical' : 'horizontal'}
+            // aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
+            // aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
+            // aria-invalid={showErrorMessage}
+          >
+            {label ? (
+              <FieldsetLegend id={labelId} disabled={disabled}>
+                {label}
+              </FieldsetLegend>
+            ) : null}
+            <Box display="flex" gap={2} flexDirection={'column'}>
+              {helperText ? (
+                <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                  {helperText}
+                </HelperText>
+              ) : null}
+
+              <StyledElement width={contentWidth} gap={2}>
+                {children}
+              </StyledElement>
+            </Box>
+            {showErrorMessage ? (
+              <HelperText
+                validationStatus="invalid"
+                // showIcon={showErrorMessageIcon}
+                // id={errorMessageId}
+              >
+                {errorMessage}
+              </HelperText>
+            ) : null}
+          </Fieldset>
         </RovingFocusGroup.Root>
       </CheckboxGroupProvider>
     );
