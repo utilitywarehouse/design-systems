@@ -8,8 +8,12 @@ import {
 } from '@utilitywarehouse/react-native-icons';
 import { InputValidationIcon } from './styled-components';
 
-export const AccessibleInput = createInput({
+// TODO: remove once upgraded to typescript 5.5
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const AccessibleInput: any = createInput({
   Icon,
+  // TODO: remove once upgraded to typescript 5.5
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   Slot,
   Root,
   Input: StyledInput,

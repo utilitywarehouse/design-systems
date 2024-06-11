@@ -1,7 +1,7 @@
 import type { Input } from '@gluestack-ui/themed';
 import type { ComponentProps } from 'react';
 
-interface InputComponentProps extends ComponentProps<typeof Input> {}
+export interface InputComponentProps extends ComponentProps<typeof Input> {}
 
 /**
  * Props for the Input component.
