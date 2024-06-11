@@ -1,9 +1,9 @@
 import { createStyle } from '@gluestack-style/react';
 
-export const FormFieldHelperText = createStyle({
+export const FormFieldHelperIcon = createStyle({
   color: '$grey800',
-  fontSize: '$md',
   _dark: {
     color: '$darkGrey800',
   },
+  props: {},
 });

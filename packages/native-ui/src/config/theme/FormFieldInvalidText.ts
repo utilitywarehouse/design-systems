@@ -1,9 +1,10 @@
 import { createStyle } from '@gluestack-style/react';
 
-export const FormFieldErrorIcon = createStyle({
+export const FormFieldInvalidText = createStyle({
+  fontFamily: '$body',
+  fontSize: '$md',
   color: '$red500',
   _dark: {
     color: '$darkRed700',
   },
-  props: {},
 });

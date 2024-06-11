@@ -5,19 +5,18 @@ import {
   InputIcon,
   InputSlot,
   FormField,
-  FormFieldError,
-  FormFieldErrorIcon,
-  FormFieldErrorText,
   FormFieldHelper,
   FormFieldHelperText,
   FormFieldLabel,
   FormFieldLabelText,
+  FormFieldInvalidIcon,
+  FormFieldInvalid,
+  FormFieldInvalidText,
+  FormFieldValidIcon,
+  FormFieldValid,
+  FormFieldValidText,
 } from '@utilitywarehouse/native-ui';
-import {
-  WarningSmallContainedIcon,
-  EmailMediumIcon,
-  EyeMediumIcon,
-} from '@utilitywarehouse/react-native-icons';
+import { EmailMediumIcon, EyeMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { Meta, StoryFn } from '@storybook/react';
 
 const InputBasic: StoryFn = ({
@@ -29,11 +28,11 @@ const InputBasic: StoryFn = ({
   ...props
 }: any) => {
   return (
-    <FormField validationStatus={validationStatus}>
+    <FormField validationStatus={validationStatus} {...props}>
       <FormFieldLabel>
         <FormFieldLabelText>Label</FormFieldLabelText>
       </FormFieldLabel>
-      <Input {...props}>
+      <Input>
         {_showIconLeft && (
           <InputSlot>
             <InputIcon as={EmailMediumIcon} />
@@ -49,10 +48,14 @@ const InputBasic: StoryFn = ({
       <FormFieldHelper>
         <FormFieldHelperText>Helper text</FormFieldHelperText>
       </FormFieldHelper>
-      <FormFieldError>
-        <FormFieldErrorIcon as={WarningSmallContainedIcon} />
-        <FormFieldErrorText>Error text</FormFieldErrorText>
-      </FormFieldError>
+      <FormFieldInvalid>
+        <FormFieldInvalidIcon />
+        <FormFieldInvalidText>Invalid form field text</FormFieldInvalidText>
+      </FormFieldInvalid>
+      <FormFieldValid>
+        <FormFieldValidIcon />
+        <FormFieldValidText>Valid form field text</FormFieldValidText>
+      </FormFieldValid>
     </FormField>
   );
 };

@@ -6,9 +6,13 @@ export default styled(View, {}, {
   descendantStyle: [
     '_labelText',
     '_helperText',
+    '_helperIcon',
     '_errorText',
     '_labelAstrick',
-    '_validationText',
+    '_invalidText',
+    '_validText',
+    '_invalidIcon',
+    '_validIcon',
     '_input',
   ],
 } as const);

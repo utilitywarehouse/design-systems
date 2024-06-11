@@ -40,6 +40,11 @@ export const Input = createStyle({
 
     _input: {
       color: '$grey400',
+
+      _validationIcon: {
+        color: '$grey400',
+      },
+
       props: {
         placeholderTextColor: '$grey400',
       },
