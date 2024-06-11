@@ -42,6 +42,7 @@
     "@radix-ui/react-use-controllable-state": "^1.0.1",
     "@utilitywarehouse/colour-system": "workspace:^",
     "@utilitywarehouse/react-icons": "^1.1.1",
+    "classnames": "^2.5.1",
     "clsx": "^2.0.0"
   },
   "devDependencies": {
