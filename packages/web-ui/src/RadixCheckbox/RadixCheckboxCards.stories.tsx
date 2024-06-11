@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import * as CheckboxCards from './checkbox-cards';
+import * as CheckboxCards from './CheckboxTileGroup';
 
 const meta: Meta<typeof CheckboxCards.Root> = {
   title: 'Web UI / Components / RadixCheckboxCards',
