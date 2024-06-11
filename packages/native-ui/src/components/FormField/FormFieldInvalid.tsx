@@ -4,7 +4,7 @@ import { useFormFieldContext } from './FormField';
 
 const FormFieldInvalid: FC<PropsWithChildren> = ({ children }) => {
   const formFieldContext = useFormFieldContext();
-  return formFieldContext?.validationStatus === 'invalid' ? <Invalid> {children} </Invalid> : null;
+  return formFieldContext?.validationStatus === 'invalid' ? <Invalid>{children}</Invalid> : null;
 };
 
 export default FormFieldInvalid;
