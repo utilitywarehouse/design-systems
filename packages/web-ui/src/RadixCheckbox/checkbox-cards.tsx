@@ -1,10 +1,7 @@
 import * as React from 'react';
-import classNames from 'classnames';
-
 import * as CheckboxGroupPrimitive from './checkbox-group.primitive';
 import { createCheckboxGroupScope } from './checkbox-group.primitive';
 import { TickMediumIcon } from '@utilitywarehouse/react-icons';
-
 import type { Scope } from '@radix-ui/react-context';
 import styled from '../theme/styled';
 import { px, spacing } from '../utils';
@@ -12,38 +9,21 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Flex } from '../Flex';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
+import { ComponentPropsWithoutRef, ElementRef } from 'react';
 
 type ScopedProps<P> = P & { __scopeCheckboxCards?: Scope };
 const useCheckboxGroupScope = createCheckboxGroupScope();
 
-// Omits the specified props from the component props. Autocomplete will suggest props
-// of the component, but won't restrict the omittable props to those that actually exist.
-type ComponentPropsWithout<
-  T extends React.ElementType,
-  O extends
-    | Omit<string, keyof React.ComponentPropsWithoutRef<T>>
-    | keyof React.ComponentPropsWithoutRef<T>,
-> = Omit<React.ComponentPropsWithoutRef<T>, O & string>;
+type CheckboxCardsRootElement = ElementRef<typeof CheckboxGroupPrimitive.Root>;
 
-type CheckboxCardsRootElement = React.ElementRef<typeof CheckboxGroupPrimitive.Root>;
 interface CheckboxCardsRootProps
-  extends ComponentPropsWithout<
-    typeof CheckboxGroupPrimitive.Root,
-    'asChild' | 'color' | 'defaultChecked'
-  > {}
+  extends Omit<typeof CheckboxGroupPrimitive.Root, 'asChild' | 'color' | 'defaultChecked'> {}
 
 const CheckboxCardsRoot = React.forwardRef<CheckboxCardsRootElement, CheckboxCardsRootProps>(
-  (props: ScopedProps<CheckboxCardsRootProps>, forwardedRef) => {
-    const { __scopeCheckboxCards, className, ...rootProps } = props;
+  (props: ScopedProps<CheckboxCardsRootProps>, ref) => {
+    const { __scopeCheckboxCards, ...rootProps } = props;
     const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCards);
-    return (
-      <CheckboxGroupPrimitive.Root
-        {...checkboxGroupScope}
-        {...rootProps}
-        ref={forwardedRef}
-        className={classNames('rt-CheckboxCardsRoot', className)}
-      />
-    );
+    return <CheckboxGroupPrimitive.Root {...checkboxGroupScope} {...rootProps} ref={ref} />;
   }
 );
 
@@ -150,8 +130,7 @@ export const StyledIndicator = styled(CheckboxGroupPrimitive.Indicator)({
 });
 
 type CheckboxCardsItemElement = React.ElementRef<typeof CheckboxGroupPrimitive.Item>;
-interface CheckboxCardsItemProps
-  extends ComponentPropsWithout<typeof CheckboxGroupPrimitive.Item, ''> {}
+type CheckboxCardsItemProps = ComponentPropsWithoutRef<typeof CheckboxGroupPrimitive.Item>;
 
 const CheckboxCardsItem = React.forwardRef<
   CheckboxCardsItemElement,
