@@ -16,7 +16,7 @@ const RadioIndicator: React.FC<RadioIndicatorProps> = props => {
         onPointerUp={() => setTimeout(() => setShow(false), 250)}
         onPointerDown={() => setShow(true)}
       >
-        <RadioIcon as={CircleIcon} />
+        {props.children ? props.children : <RadioIcon as={CircleIcon} />}
       </GSRadioIndicator>
     </AnimatedOutline>
   );
