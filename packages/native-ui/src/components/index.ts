@@ -32,7 +32,7 @@ export { Checkbox, CheckboxGroup, CheckboxLabel } from '@gluestack-ui/themed';
 
 export { Link, LinkText } from '@gluestack-ui/themed';
 export { Pressable } from '@gluestack-ui/themed';
-export { Radio, RadioGroup, RadioLabel } from '@gluestack-ui/themed';
+export { Radio, RadioGroup, RadioLabel, RadioIcon } from '@gluestack-ui/themed';
 
 export { Image } from '@gluestack-ui/themed';
 
