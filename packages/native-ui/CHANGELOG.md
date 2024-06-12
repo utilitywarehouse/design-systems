@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.1.2
+
+### Patch Changes
+
+- [#364](https://github.com/utilitywarehouse/design-systems/pull/364) [`f7c5202`](https://github.com/utilitywarehouse/design-systems/commit/f7c520292b00c7bc6ca559183c28c5e09aa4ae72) Thanks [@jordmccord](https://github.com/jordmccord)! - feat: expose `RadioIcon` component
+
 ## 0.1.1
 
 ### Patch Changes
