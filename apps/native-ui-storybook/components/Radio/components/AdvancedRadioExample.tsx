@@ -24,6 +24,7 @@ const CustomRadio: React.FC<RadioProps> = ({ children, ...props }) => (
         borderColor: '$green500',
       },
       _dark: {
+        borderColor: '$grey700',
         ':checked': {
           borderColor: '$darkGreen700',
         },
@@ -34,9 +35,10 @@ const CustomRadio: React.FC<RadioProps> = ({ children, ...props }) => (
     <Box
       sx={{
         flexDirection: 'row',
+        flex: 1,
       }}
     >
-      <Box sx={{ pr: '$2', flex: 1 }}>{children}</Box>
+      <Box sx={{ pr: '$4', flex: 1 }}>{children}</Box>
       <RadioIndicator
         sx={{
           ':checked': {
