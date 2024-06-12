@@ -4,6 +4,14 @@ export const FormField = createStyle({
   flexDirection: 'column',
   gap: '$2',
 
+  _labelText: {
+    color: '$grey1000',
+  },
+
+  _helperText: {
+    color: '$grey800',
+  },
+
   ':disabled': {
     _labelText: {
       color: '$grey400',
@@ -32,36 +40,44 @@ export const FormField = createStyle({
     _validIcon: {
       color: '$grey400',
     },
+  },
 
-    _dark: {
-      ':disabled': {
-        _labelText: {
-          color: '$darkGrey400',
-        },
+  _dark: {
+    _labelText: {
+      color: '$darkGrey1000',
+    },
 
-        _helperText: {
-          color: '$darkGrey400',
-        },
+    _helperText: {
+      color: '$darkGrey800',
+    },
 
-        _helperIcon: {
-          color: '$darkGrey400',
-        },
+    ':disabled': {
+      _labelText: {
+        color: '$darkGrey400',
+      },
 
-        _invalidText: {
-          color: '$darkGrey400',
-        },
+      _helperText: {
+        color: '$darkGrey400',
+      },
 
-        _validText: {
-          color: '$darkGrey400',
-        },
+      _helperIcon: {
+        color: '$darkGrey400',
+      },
 
-        _invalidIcon: {
-          color: '$darkGrey400',
-        },
+      _invalidText: {
+        color: '$darkGrey400',
+      },
 
-        _validIcon: {
-          color: '$darkGrey400',
-        },
+      _validText: {
+        color: '$darkGrey400',
+      },
+
+      _invalidIcon: {
+        color: '$darkGrey400',
+      },
+
+      _validIcon: {
+        color: '$darkGrey400',
       },
     },
   },
@@ -71,6 +87,15 @@ export const FormField = createStyle({
       initial: {},
       valid: {},
       invalid: {},
+    },
+    isDisabled: {
+      true: {
+        backgroundColor: '$red100',
+        _labelText: {
+          color: '$grey400',
+        },
+      },
+      false: {},
     },
   },
 
