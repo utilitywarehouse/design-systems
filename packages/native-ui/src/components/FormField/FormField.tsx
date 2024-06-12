@@ -11,6 +11,7 @@ import {
   Helper,
   HelperText,
 } from './styled-components';
+import { useColorMode } from '@gluestack-style/react';
 
 export const FormField = createFormControl({
   Root,
@@ -33,6 +34,7 @@ interface FormFieldContextType {
 const FormFieldContext = createContext<FormFieldContextType | undefined>(undefined);
 
 const FormFieldProvider: FC<FormFieldProps> = ({ children, ...props }) => {
+  const colorMode = useColorMode();
   const value = useMemo(
     () => ({
       validationStatus: props.validationStatus || 'initial',
@@ -42,7 +44,74 @@ const FormFieldProvider: FC<FormFieldProps> = ({ children, ...props }) => {
 
   return (
     <FormFieldContext.Provider value={value}>
-      <FormField {...props}>{children}</FormField>
+      <FormField
+        sx={
+          colorMode === 'dark' // TODO: remove when https://github.com/gluestack/gluestack-ui/issues/2231 is fixed
+            ? props.isDisabled
+              ? {
+                  _labelText: {
+                    color: '$darkGrey400',
+                  },
+
+                  _helperText: {
+                    color: '$darkGrey400',
+                  },
+
+                  _helperIcon: {
+                    color: '$darkGrey400',
+                  },
+
+                  _invalidText: {
+                    color: '$darkGrey400',
+                  },
+
+                  _validText: {
+                    color: '$darkGrey400',
+                  },
+
+                  _invalidIcon: {
+                    color: '$darkGrey400',
+                  },
+
+                  _validIcon: {
+                    color: '$darkGrey400',
+                  },
+                }
+              : {
+                  _labelText: {
+                    color: '$darkGrey1000',
+                  },
+
+                  _helperText: {
+                    color: '$darkGrey800',
+                  },
+
+                  _helperIcon: {
+                    color: '$darkGrey800',
+                  },
+
+                  _invalidText: {
+                    color: '$darkRed700',
+                  },
+
+                  _validText: {
+                    color: '$darkGreen700',
+                  },
+
+                  _invalidIcon: {
+                    color: '$darkRed700',
+                  },
+
+                  _validIcon: {
+                    color: '$darkGreen700',
+                  },
+                }
+            : undefined
+        }
+        {...props}
+      >
+        {children}
+      </FormField>
     </FormFieldContext.Provider>
   );
 };
