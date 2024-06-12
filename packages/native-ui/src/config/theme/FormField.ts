@@ -32,6 +32,38 @@ export const FormField = createStyle({
     _validIcon: {
       color: '$grey400',
     },
+
+    _dark: {
+      ':disabled': {
+        _labelText: {
+          color: '$darkGrey400',
+        },
+
+        _helperText: {
+          color: '$darkGrey400',
+        },
+
+        _helperIcon: {
+          color: '$darkGrey400',
+        },
+
+        _invalidText: {
+          color: '$darkGrey400',
+        },
+
+        _validText: {
+          color: '$darkGrey400',
+        },
+
+        _invalidIcon: {
+          color: '$darkGrey400',
+        },
+
+        _validIcon: {
+          color: '$darkGrey400',
+        },
+      },
+    },
   },
 
   variants: {
