@@ -63,6 +63,16 @@ const CustomRadio: React.FC<RadioProps> = ({ children, ...props }) => (
   </Radio>
 );
 
+const BulletListItem = ({ children }: { children: React.ReactNode }) => (
+  <Text>
+    {'\u2022'} {children}
+  </Text>
+);
+
+const BulletList = ({ children }: { children: React.ReactNode }) => (
+  <Box sx={{ pl: '$2', gap: '$2' }}>{children}</Box>
+);
+
 const AdvancedRadioExample: React.FC = () => {
   const [value, setValue] = React.useState('Option 1');
 
@@ -80,16 +90,24 @@ const AdvancedRadioExample: React.FC = () => {
           <BadgeText>Recommended</BadgeText>
         </Badge>
         <CustomRadio value="Option 1">
-          <Text sx={{ fontWeight: '$semibold' }}>Instant bank transfer</Text>
-          <Text>- Receive your money instantly</Text>
-          <Text>- No fees</Text>
-          <Text>- Available 24/7</Text>
+          <Text sx={{ fontFamily: '$heading', fontWeight: '$bold', mb: '$2' }}>
+            Instant bank transfer
+          </Text>
+          <BulletList>
+            <BulletListItem>Receive your money instantly</BulletListItem>
+            <BulletListItem>No fees</BulletListItem>
+            <BulletListItem>Available 24/7</BulletListItem>
+          </BulletList>
         </CustomRadio>
       </Box>
       <CustomRadio value="Option 2">
-        <Text sx={{ fontWeight: '$semibold' }}>Debit card payment</Text>
-        <Text>- 5 free top-ups</Text>
-        <Text>- £0.35 per additional top-up</Text>
+        <Text sx={{ fontFamily: '$heading', fontWeight: '$bold', mb: '$2' }}>
+          Debit card payment
+        </Text>
+        <BulletList>
+          <BulletListItem>£0.35 fee</BulletListItem>
+          <BulletListItem>Available 24/7</BulletListItem>
+        </BulletList>
       </CustomRadio>
     </RadioGroup>
   );
