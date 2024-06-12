@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.7.1
+
+### Patch Changes
+
+- [#362](https://github.com/utilitywarehouse/design-systems/pull/362) [`36be752`](https://github.com/utilitywarehouse/design-systems/commit/36be7522f3fd7652fbaa9fbb5ce2271b3d7843ab) Thanks [@robphoenix](https://github.com/robphoenix)! - Export `Divider`
+
 ## 0.7.0
 
 ### Minor Changes

@@ -1,9 +1,8 @@
 import { AnimationResolver } from '@gluestack-style/animation-resolver';
 import { MotionAnimationDriver } from '@gluestack-style/legend-motion-animation-driver';
-import { createConfig, createComponents, FontResolver } from '@gluestack-style/react';
+import { createConfig, createComponents } from '@gluestack-style/react';
 import * as componentsTheme from './theme';
 import { colors, colorsCommon, colorsDark } from '@utilitywarehouse/colour-system';
-import mapFonts from '../utils/mapFonts';
 
 export const gluestackUIConfig = createConfig({
   aliases: {
@@ -312,12 +311,7 @@ export const gluestackUIConfig = createConfig({
       },
     },
   },
-  plugins: [
-    new AnimationResolver(MotionAnimationDriver),
-    new FontResolver({
-      mapFonts,
-    }),
-  ],
+  plugins: [new AnimationResolver(MotionAnimationDriver)],
 });
 
 type Config = typeof gluestackUIConfig; // Assuming `config` is defined elsewhere
