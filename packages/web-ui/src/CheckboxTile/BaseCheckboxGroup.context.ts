@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-export type CheckboxTileGroupContextValue = {
+export type BaseCheckboxGroupContextValue = {
   hasGroupHelperText: boolean;
   name?: string;
   required: boolean;
@@ -11,6 +11,6 @@ export type CheckboxTileGroupContextValue = {
   'aria-describedby'?: string;
 };
 
-export const CheckboxTileGroupContext = createContext<CheckboxTileGroupContextValue>({
+export const BaseCheckboxGroupContext = createContext<BaseCheckboxGroupContextValue>({
   hasGroupHelperText: false,
-} as CheckboxTileGroupContextValue);
+} as BaseCheckboxGroupContextValue);

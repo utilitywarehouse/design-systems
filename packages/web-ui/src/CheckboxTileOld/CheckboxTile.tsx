@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { BaseCheckbox } from './BaseCheckboxGroup';
-import styled from '../theme/styled';
-import clsx from 'clsx';
 import { px, spacing, withGlobalPrefix } from '../utils';
-import { colors } from '@utilitywarehouse/colour-system';
+import clsx from 'clsx';
+import { CheckboxTileProps } from './CheckboxTile.props';
+import { TickMediumIcon } from '@utilitywarehouse/react-icons';
+import { styled } from '../theme';
+import { PropsWithSx } from '../types';
+import { useIds } from '../hooks';
 import { Flex } from '../Flex';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
-import { PropsWithSx } from '../types';
-import { CheckboxTileProps } from './CheckboxTile.props';
-import { useIds } from '../hooks';
-import { BaseCheckboxGroupContext } from './BaseCheckboxGroup.context';
+import { StyledIndicator, BaseCheckbox } from '../Checkbox/Checkbox';
+import { colors } from '@utilitywarehouse/colour-system';
 
 const componentName = 'CheckboxTile';
 const componentClassName = withGlobalPrefix(componentName);
@@ -26,7 +26,7 @@ const StyledTile = styled('label')({
   '--checkbox-tile-box-shadow-color-focus': colors.cyan500,
   '--checkbox-tile-box-shadow-color-disabled': colors.grey300,
   boxShadow: 'inset 0 0 0 var(--checkbox-tile-border-width) var(--checkbox-tile-box-shadow-color)',
-  ':where(:has(:focus-visible))': {
+  ':where(:focus-visible)': {
     backgroundColor: colors.cyan75,
     outline: `4px solid ${colors.cyan700}`,
     '--checkbox-tile-box-shadow-color': 'var(--checkbox-tile-box-shadow-color-focus)',
@@ -46,35 +46,27 @@ const StyledTile = styled('label')({
   },
 });
 
+/**
+ * CheckboxTile
+ */
 export const CheckboxTile = React.forwardRef<HTMLButtonElement, PropsWithSx<CheckboxTileProps>>(
-  (
-    {
-      id: providedId,
-      label,
-      helperText,
-      className,
-      disabled,
-      'aria-labelledby': ariaLabelledby,
-      ...props
-    },
-    ref
-  ) => {
-    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
-      React.useContext(BaseCheckboxGroupContext);
-    const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: componentName });
-    const showHelperText = !hasGroupHelperText && !!helperText;
+  ({ id: providedId, label, helperText, className, disabled, ...props }, ref) => {
+    const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'checkbox' });
+    const showHelperText = !!helperText;
     const showLabel = !!label;
-
     return (
-      <StyledTile>
+      <StyledTile data-disabled={disabled ? '' : undefined}>
         <BaseCheckbox
-          {...props}
           ref={ref}
+          {...props}
+          id={id}
           className={clsx(componentClassName, className)}
           disabled={disabled}
-          aria-describedby={showHelperText ? helperTextId : ariaDescribedby}
-          aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
-        />
+        >
+          <StyledIndicator>
+            <TickMediumIcon />
+          </StyledIndicator>
+        </BaseCheckbox>
         {showLabel ? (
           <Flex direction="column" gap={0.5}>
             <Label component="span" id={labelId} htmlFor={id} nested>
