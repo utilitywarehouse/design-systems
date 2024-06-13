@@ -2,12 +2,13 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Checkbox } from './Checkbox';
 import { CheckboxGroup } from './CheckboxGroup';
+import { BaseCheckboxGroup } from '../CheckboxTile/BaseCheckboxGroup';
 
-const meta: Meta<typeof CheckboxGroup> = {
+const meta: Meta<typeof BaseCheckboxGroup> = {
   title: 'Web UI / Components / CheckboxGroup',
-  component: CheckboxGroup,
+  component: BaseCheckboxGroup,
   argTypes: {
-    direction: {
+    dir: {
       options: ['column', 'row'],
       control: { type: 'radio' },
     },
@@ -23,7 +24,7 @@ const meta: Meta<typeof CheckboxGroup> = {
     contentWidth: { control: { type: 'text' } },
   },
   args: {
-    defaultValue: '1',
+    defaultValue: ['1'],
     label: 'Label',
     disabled: false,
     helperText: 'Helper text',
@@ -36,15 +37,18 @@ const meta: Meta<typeof CheckboxGroup> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof CheckboxGroup>;
+type Story = StoryObj<typeof BaseCheckboxGroup>;
 
 export const KitchenSink: Story = {};
 export const Workshop: Story = {
   render: args => (
-    <CheckboxGroup {...args}>
-      <Checkbox label="Fun" />
-      <Checkbox label="Serious" />
-      <Checkbox label="Smart" />
-    </CheckboxGroup>
+    <BaseCheckboxGroup {...args}>
+      {/* <Checkbox label="Fun" /> */}
+      {/* <Checkbox label="Serious" /> */}
+      {/* <Checkbox label="Smart" /> */}
+      <Checkbox value="1" label="Fun" />
+      <Checkbox value="2" label="Serious" />
+      <Checkbox value="3" label="Smart" />
+    </BaseCheckboxGroup>
   ),
 };

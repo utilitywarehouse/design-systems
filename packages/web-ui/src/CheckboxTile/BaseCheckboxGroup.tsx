@@ -6,7 +6,7 @@ import { useControllableState } from '@radix-ui/react-use-controllable-state';
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
 import { HelperText } from '../HelperText';
-import { Box } from '../Box';
+import { Box, BoxProps } from '../Box';
 import { styled } from '../theme';
 import { Flex } from '../Flex';
 import type { ComponentPropsWithoutRef, ElementRef, ReactNode } from 'react';
@@ -14,6 +14,7 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { px } from '../utils';
 import { TickMediumIcon } from '@utilitywarehouse/react-icons';
 import { BaseCheckboxGroupContext } from './BaseCheckboxGroup.context';
+import { useIds } from '../hooks';
 
 const checkboxGroupName = 'BaseCheckboxGroup';
 
@@ -41,6 +42,47 @@ interface BaseCheckboxGroupProps extends ComponentPropsWithoutRef<'fieldset'> {
   defaultValue?: Array<string>;
   value?: BaseCheckboxGroupContextValue['value'];
   onValueChange?: (value: Array<string>) => void;
+  //
+  // disabled?: boolean;
+  /** The direction of the radios, will also set the aria-orientation value. */
+  direction?: 'column' | 'row';
+  /**
+   * Set the width of the RadioGroup children, separate to the width of the
+   * entire RadioGroup.
+   */
+  contentWidth?: BoxProps['width'];
+  /**
+   * The label for the radio group. This should contain the question being
+   * answered by the radio group.
+   *
+   * If you don't include a label you need to ensure you use the `aria-label`
+   * or `aria-labelledby` prop to properly associate a label with the radio
+   * group.
+   */
+  label?: ReactNode;
+  /**
+   * Helper text for the radio group. Provides a hint such as specific
+   * requirements for what to choose. When displayed, child `Radio` or
+   * `RadioTile` components will not display `helperText`.
+   */
+  helperText?: ReactNode;
+  /**
+   * Position of the helper text.
+   * @default 'top'
+   */
+  helperTextPosition?: 'top' | 'bottom';
+  /**
+   * Set whether to display the helper text icon.
+   */
+  showHelperTextIcon?: boolean;
+  /** Controls whether the error message is displayed. */
+  error?: boolean;
+  /** The error message to be displayed. */
+  errorMessage?: ReactNode;
+  /**
+   * Set whether to display the error message icon.
+   */
+  showErrorMessageIcon?: boolean;
 }
 
 const StyledContentContainer = styled(Flex)({
@@ -66,12 +108,39 @@ const BaseCheckboxGroup = React.forwardRef<ElementRef<'fieldset'>, BaseCheckboxG
       dir: direction,
       loop = true,
       onValueChange,
+      id: providedId,
+      label,
+      helperText,
+      helperTextPosition = 'top',
+      showHelperTextIcon,
+      error,
+      errorMessage,
+      showErrorMessageIcon,
+      contentWidth = 'fit-content',
+      // direction = 'column',
+      'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby,
+      'aria-errormessage': ariaErrorMessage,
       children,
       ...groupProps
     } = props;
 
     const scope = { [checkboxGroupName]: [BaseCheckboxGroupContext] };
     const rovingFocusGroupScope = useRovingFocusGroupScope(scope);
+
+    const { id, labelId, helperTextId, errorMessageId } = useIds({
+      providedId,
+      componentPrefix: 'checkboxgroup',
+    });
+    const showErrorMessage = Boolean(error && errorMessage);
+    // const dir = helperTextPosition === 'top' ? 'column' : 'column-reverse';
+    // const value = {
+    //   hasGroupHelperText: !!helperText,
+    //   'aria-describedby': mergeIds(
+    //     ariaDescribedby || !!helperText ? helperTextId : undefined,
+    //     ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
+    //   ),
+    // };
 
     // With useControllableState, you can pass an initial state (using
     // defaultValue) implying the component is uncontrolled, or you can pass a
@@ -92,15 +161,15 @@ const BaseCheckboxGroup = React.forwardRef<ElementRef<'fieldset'>, BaseCheckboxG
         setValue((prevValue = []) => prevValue.filter(value => value !== itemValue)),
       [setValue]
     );
-    const label = 'Label';
-    const helperText = 'helperText';
-    const helperTextId = 'helperTextId';
-    const id = 'id';
-    const labelId = 'labelId';
-    const showHelperTextIcon = true;
-    const showErrorMessage = false;
-    const contentWidth = 'fit-content';
-    const errorMessage = 'error message';
+    // const label = 'Label';
+    // const helperText = 'helperText';
+    // const helperTextId = 'helperTextId';
+    // const id = 'id';
+    // const labelId = 'labelId';
+    // const showHelperTextIcon = true;
+    // const showErrorMessage = false;
+    // const contentWidth = 'fit-content';
+    // const errorMessage = 'error message';
 
     const providerValue = {
       hasGroupHelperText: true,
