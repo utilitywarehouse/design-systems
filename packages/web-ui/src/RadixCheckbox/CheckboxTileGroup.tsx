@@ -4,6 +4,7 @@ import {
   BaseCheckbox,
   BaseCheckboxGroup,
   createBaseCheckboxGroupScope,
+  useBaseCheckboxGroupContext,
 } from './BaseCheckboxGroup';
 import type { BaseCheckboxGroupProps } from './BaseCheckboxGroup';
 import { TickMediumIcon } from '@utilitywarehouse/react-icons';
@@ -15,9 +16,10 @@ import { Label } from '../Label';
 import { HelperText } from '../HelperText';
 import type { ComponentPropsWithoutRef, ElementRef } from 'react';
 import type { Scope } from '@radix-ui/react-context';
+import { CheckboxTileGroupContext } from './CheckboxTileGroup.context';
 
 type ScopedProps<P> = P & { __scopeCheckboxCards?: Scope };
-const useCheckboxGroupScope = createBaseCheckboxGroupScope();
+// const useCheckboxGroupScope = createBaseCheckboxGroupScope();
 
 type CheckboxCardsRootElement = ElementRef<typeof BaseCheckboxGroup>;
 
@@ -27,8 +29,8 @@ interface CheckboxCardsRootProps
 const CheckboxCardsRoot = React.forwardRef<CheckboxCardsRootElement, CheckboxCardsRootProps>(
   (props: ScopedProps<CheckboxCardsRootProps>, ref) => {
     const { __scopeCheckboxCards, ...rootProps } = props;
-    const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCards);
-    return <BaseCheckboxGroup {...checkboxGroupScope} {...rootProps} ref={ref} />;
+    // const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCards);
+    return <BaseCheckboxGroup {...rootProps} ref={ref} />;
   }
 );
 
@@ -77,7 +79,11 @@ const CheckboxCardsItem = React.forwardRef<
   ScopedProps<CheckboxCardsItemProps>
 >(({ __scopeCheckboxCards, children, ...props }, forwardedRef) => {
   // const context = useCheckboxCardsContext('CheckboxCardsItem', __scopeCheckboxCards);
-  const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCards);
+  // const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCards);
+  // const context = useBaseCheckboxGroupContext('CheckboxCardsItem', undefined);
+  const context = React.useContext(CheckboxTileGroupContext);
+  console.log({ context });
+  // console.log(__scopeCheckboxCards);
   const showLabel = true;
   const showHelperText = true;
   const labelId = 'labelId';
@@ -88,8 +94,8 @@ const CheckboxCardsItem = React.forwardRef<
 
   return (
     <StyledTile>
-      <BaseCheckbox {...checkboxGroupScope} {...props} ref={forwardedRef}>
-        <StyledIndicator {...checkboxGroupScope}>
+      <BaseCheckbox {...props} ref={forwardedRef}>
+        <StyledIndicator>
           <TickMediumIcon />
         </StyledIndicator>
       </BaseCheckbox>
