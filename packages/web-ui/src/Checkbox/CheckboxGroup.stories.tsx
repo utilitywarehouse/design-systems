@@ -49,11 +49,6 @@ export const Workshop: Story = {
         <Checkbox value="serious" label="Serious" />
         <Checkbox value="smart" label="Smart" />
       </CheckboxGroup>
-      <CheckboxGroup {...args} name="checkbox-story-two">
-        <Checkbox value="fun" label="Fun" />
-        <Checkbox value="serious" label="Serious" />
-        <Checkbox value="smart" label="Smart" />
-      </CheckboxGroup>
       <CheckboxGroup {...args} name="checkbox-tiles-story">
         <CheckboxTile value="fun" label="Fun" />
         <CheckboxTile value="serious" label="Serious" />

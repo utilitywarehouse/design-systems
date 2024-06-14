@@ -1,14 +1,11 @@
 import * as React from 'react';
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
-import * as RovingFocusGroup from '@radix-ui/react-roving-focus';
 import { styled } from '../theme';
-import type { ElementRef } from 'react';
 import { TickMediumIcon } from '@utilitywarehouse/react-icons';
 import { CheckboxGroupContext } from './CheckboxGroup.context';
 import { BaseCheckboxProps } from './BaseCheckbox.props';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { px } from '../utils';
-import { useRovingFocusGroupScope } from './CheckboxGroup';
 
 const componentName = 'BaseCheckbox';
 
@@ -81,24 +78,16 @@ const StyledCheckboxRoot = styled(RadixCheckbox.Root)({
   },
 });
 
-export const BaseCheckbox = React.forwardRef<
-  ElementRef<typeof RadixCheckbox.Root>,
-  BaseCheckboxProps
->((props: BaseCheckboxProps, ref) => {
-  const { disabled, ...itemProps } = props;
-  const context = React.useContext(CheckboxGroupContext);
-  const isDisabled = context.disabled || disabled;
-  const scope = { [componentName]: [CheckboxGroupContext] };
-  const rovingFocusGroupScope = useRovingFocusGroupScope(scope);
-  const checked = context.value?.includes(itemProps.value);
+export const BaseCheckbox = React.forwardRef<HTMLButtonElement, BaseCheckboxProps>(
+  (props: BaseCheckboxProps, ref) => {
+    const { disabled, ...itemProps } = props;
+    // TODO: don't create context
+    const context = React.useContext(CheckboxGroupContext);
+    const isDisabled = context.disabled || disabled;
+    const checked = context.value?.includes(itemProps.value);
+    console.log({ context });
 
-  return (
-    <RovingFocusGroup.Item
-      asChild
-      {...rovingFocusGroupScope}
-      focusable={!isDisabled}
-      active={checked}
-    >
+    return (
       <StyledCheckboxRoot
         name={context.name}
         disabled={isDisabled}
@@ -107,10 +96,12 @@ export const BaseCheckbox = React.forwardRef<
         {...itemProps}
         ref={ref}
         onCheckedChange={checked => {
-          if (checked) {
-            context.onItemCheck(props.value);
-          } else {
-            context.onItemUncheck(props.value);
+          if (context.onItemCheck) {
+            if (checked) {
+              context.onItemCheck(props.value);
+            } else {
+              context.onItemUncheck(props.value);
+            }
           }
         }}
       >
@@ -118,8 +109,8 @@ export const BaseCheckbox = React.forwardRef<
           <TickMediumIcon />
         </StyledIndicator>
       </StyledCheckboxRoot>
-    </RovingFocusGroup.Item>
-  );
-});
+    );
+  }
+);
 
 BaseCheckbox.displayName = componentName;
