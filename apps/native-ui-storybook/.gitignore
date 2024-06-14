@@ -18,3 +18,5 @@ eas-build
 *.env
 .env
 .vercel
+
+assets/fonts/
