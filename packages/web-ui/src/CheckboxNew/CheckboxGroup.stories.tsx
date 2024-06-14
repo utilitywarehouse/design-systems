@@ -6,7 +6,7 @@ import { Flex } from '../Flex';
 import { Checkbox } from './Checkbox';
 
 const meta: Meta<typeof CheckboxGroup> = {
-  title: 'Web UI / Components / CheckboxGroup',
+  title: 'Web UI / Components / CheckboxGroupNew (new)',
   component: CheckboxGroup,
   argTypes: {
     direction: {

@@ -1,22 +1,26 @@
 import * as React from 'react';
-import * as RadixCheckbox from '@radix-ui/react-checkbox';
-import * as RovingFocusGroup from '@radix-ui/react-roving-focus';
+import { px, withGlobalPrefix } from '../utils';
+import clsx from 'clsx';
+import { CheckboxProps } from './Checkbox.props';
 import { styled } from '../theme';
-import type { ElementRef } from 'react';
-import { TickMediumIcon } from '@utilitywarehouse/react-icons';
-import { CheckboxGroupContext } from './CheckboxGroup.context';
-import { BaseCheckboxProps } from './BaseCheckbox.props';
+import { PropsWithSx } from '../types';
+import { useIds } from '../hooks';
+import { Flex } from '../Flex';
+import { Label } from '../Label';
+import { HelperText } from '../HelperText';
+import { CheckboxGroupContext } from './CheckboxGroupAlt.context';
+import { Indicator, Item } from './CheckboxPrimitive';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { px } from '../utils';
-import { useRovingFocusGroupScope } from './CheckboxGroup';
+import { TickMediumIcon } from '@utilitywarehouse/react-icons';
 
-const componentName = 'BaseCheckbox';
+const componentName = 'Checkbox';
+const componentClassName = withGlobalPrefix(componentName);
 
-export const StyledIndicator = styled(RadixCheckbox.Indicator)({
+export const StyledIndicator = styled(Indicator)({
   position: 'absolute',
 });
 
-const StyledCheckboxRoot = styled(RadixCheckbox.Root)({
+export const StyledBaseCheckbox = styled(Item)({
   position: 'relative',
   display: 'inline-flex',
   alignItems: 'center',
@@ -79,47 +83,71 @@ const StyledCheckboxRoot = styled(RadixCheckbox.Root)({
     '--checkbox-border-color': 'var(--checkbox-border-color-disabled)',
     '--checkbox-background-color': 'var(--checkbox-background-color-disabled)',
   },
+  ':where(:focus-visible)': {
+    '--checkbox-border-color': 'var(--checkbox-border-color-focus)',
+    '--checkbox-outline-color': 'var(--checkbox-outline-color-focus)',
+  },
 });
 
-export const BaseCheckbox = React.forwardRef<
-  ElementRef<typeof RadixCheckbox.Root>,
-  BaseCheckboxProps
->((props: BaseCheckboxProps, ref) => {
-  const { disabled, ...itemProps } = props;
-  const context = React.useContext(CheckboxGroupContext);
-  const isDisabled = context.disabled || disabled;
-  const scope = { [componentName]: [CheckboxGroupContext] };
-  const rovingFocusGroupScope = useRovingFocusGroupScope(scope);
-  const checked = context.value?.includes(itemProps.value);
-
-  return (
-    <RovingFocusGroup.Item
-      asChild
-      {...rovingFocusGroupScope}
-      focusable={!isDisabled}
-      active={checked}
-    >
-      <StyledCheckboxRoot
-        name={context.name}
-        disabled={isDisabled}
-        required={context.required}
-        checked={checked}
-        {...itemProps}
-        ref={ref}
-        onCheckedChange={checked => {
-          if (checked) {
-            context.onItemCheck(props.value);
-          } else {
-            context.onItemUncheck(props.value);
-          }
-        }}
-      >
-        <StyledIndicator>
-          <TickMediumIcon />
-        </StyledIndicator>
-      </StyledCheckboxRoot>
-    </RovingFocusGroup.Item>
-  );
+// we do this so that the gap between the checkbox & label is clickable
+export const StyledLabel = styled(Label)({
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    left: -8,
+  },
 });
 
-BaseCheckbox.displayName = componentName;
+/**
+ * Checkbox
+ */
+export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<CheckboxProps>>(
+  (
+    {
+      id: providedId,
+      label,
+      helperText,
+      className,
+      disabled,
+      'aria-labelledby': ariaLabelledby,
+      ...props
+    },
+    ref
+  ) => {
+    const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'checkbox' });
+    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
+      React.useContext(CheckboxGroupContext);
+    const showHelperText = !hasGroupHelperText && !!helperText;
+    const showLabel = !!label;
+    return (
+      <Flex data-disabled={disabled ? '' : undefined} gap={1}>
+        <StyledBaseCheckbox
+          ref={ref}
+          {...props}
+          id={id}
+          className={clsx(componentClassName, className)}
+          disabled={disabled}
+          aria-describedby={showHelperText ? helperTextId : ariaDescribedby}
+          aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
+        >
+          <StyledIndicator>
+            <TickMediumIcon />
+          </StyledIndicator>
+        </StyledBaseCheckbox>
+        {showLabel ? (
+          <Flex direction="column" gap={0.5}>
+            <StyledLabel id={labelId} htmlFor={id} nested>
+              {label}
+            </StyledLabel>
+            {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
+          </Flex>
+        ) : null}
+      </Flex>
+    );
+  }
+);
+
+Checkbox.displayName = componentName;
