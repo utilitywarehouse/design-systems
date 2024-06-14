@@ -1,6 +1,4 @@
 import * as React from 'react';
-import * as RovingFocusGroup from '@radix-ui/react-roving-focus';
-import { createRovingFocusGroupScope } from '@radix-ui/react-roving-focus';
 import { useControllableState } from '@radix-ui/react-use-controllable-state';
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
@@ -13,8 +11,6 @@ import { useIds } from '../hooks';
 import { CheckboxGroupProps } from './CheckboxGroup.props';
 
 const checkboxGroupName = 'CheckboxGroup';
-
-export const useRovingFocusGroupScope = createRovingFocusGroupScope();
 
 const StyledContentContainer = styled(Flex)({
   minWidth: 'fit-content',
@@ -56,9 +52,6 @@ const CheckboxGroup = React.forwardRef<HTMLFieldSetElement, CheckboxGroupProps>(
     },
     ref
   ) => {
-    const checkboxGroupScope = { [checkboxGroupName]: [CheckboxGroupContext] };
-    const rovingFocusGroupScope = useRovingFocusGroupScope(checkboxGroupScope);
-
     const { id, labelId, helperTextId, errorMessageId } = useIds({
       providedId,
       componentPrefix: 'checkboxgroup',
@@ -102,45 +95,43 @@ const CheckboxGroup = React.forwardRef<HTMLFieldSetElement, CheckboxGroupProps>(
 
     return (
       <CheckboxGroupContext.Provider value={providerValue}>
-        <RovingFocusGroup.Root asChild {...rovingFocusGroupScope}>
-          <Fieldset
-            ref={ref}
-            {...props}
-            disabled={disabled}
-            id={id}
-            data-disabled={disabled ? '' : undefined}
-            data-orientation={direction === 'column' ? 'vertical' : 'horizontal'}
-            aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
-            aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
-            aria-invalid={showErrorMessage}
-          >
-            {label ? (
-              <FieldsetLegend id={labelId} disabled={disabled}>
-                {label}
-              </FieldsetLegend>
-            ) : null}
-            <Flex gap={2} direction={fieldDirection}>
-              {helperText ? (
-                <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
-                  {helperText}
-                </HelperText>
-              ) : null}
-
-              <StyledContentContainer width={contentWidth} gap={2}>
-                {children}
-              </StyledContentContainer>
-            </Flex>
-            {showErrorMessage ? (
-              <HelperText
-                validationStatus="invalid"
-                showIcon={showErrorMessageIcon}
-                id={errorMessageId}
-              >
-                {errorMessage}
+        <Fieldset
+          ref={ref}
+          {...props}
+          disabled={disabled}
+          id={id}
+          data-disabled={disabled ? '' : undefined}
+          data-orientation={direction === 'column' ? 'vertical' : 'horizontal'}
+          aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
+          aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
+          aria-invalid={showErrorMessage}
+        >
+          {label ? (
+            <FieldsetLegend id={labelId} disabled={disabled}>
+              {label}
+            </FieldsetLegend>
+          ) : null}
+          <Flex gap={2} direction={fieldDirection}>
+            {helperText ? (
+              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                {helperText}
               </HelperText>
             ) : null}
-          </Fieldset>
-        </RovingFocusGroup.Root>
+
+            <StyledContentContainer width={contentWidth} gap={2}>
+              {children}
+            </StyledContentContainer>
+          </Flex>
+          {showErrorMessage ? (
+            <HelperText
+              validationStatus="invalid"
+              showIcon={showErrorMessageIcon}
+              id={errorMessageId}
+            >
+              {errorMessage}
+            </HelperText>
+          ) : null}
+        </Fieldset>
       </CheckboxGroupContext.Provider>
     );
   }
