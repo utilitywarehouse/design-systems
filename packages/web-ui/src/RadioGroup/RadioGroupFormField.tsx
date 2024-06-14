@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { forwardRef } from 'react';
-import { Box } from '../Box';
 import { Root } from '@radix-ui/react-radio-group';
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
@@ -10,6 +9,7 @@ import { PropsWithSx } from '../types';
 import { mergeIds } from '../utils';
 import { BaseRadioGroupProps } from './RadioGroup.props';
 import { RadioGroupContext } from './RadioGroup.context';
+import {Flex} from '../Flex';
 
 const componentName = 'RadioGroupFormField';
 
@@ -66,14 +66,14 @@ export const RadioGroupFormField = forwardRef<HTMLDivElement, PropsWithSx<BaseRa
             </FieldsetLegend>
           ) : null}
 
-          <Box display="flex" gap={2} flexDirection={direction}>
+          <Flex gap={2} direction={direction}>
             {helperText ? (
               <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
                 {helperText}
               </HelperText>
             ) : null}
             <RadioGroupContext.Provider value={value}>{children}</RadioGroupContext.Provider>
-          </Box>
+          </Flex>
 
           {showErrorMessage ? (
             <HelperText
