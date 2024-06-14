@@ -9,7 +9,7 @@ import { PropsWithSx } from '../types';
 import { mergeIds } from '../utils';
 import { BaseRadioGroupProps } from './RadioGroup.props';
 import { RadioGroupContext } from './RadioGroup.context';
-import {Flex} from '../Flex';
+import { Flex } from '../Flex';
 
 const componentName = 'RadioGroupFormField';
 
