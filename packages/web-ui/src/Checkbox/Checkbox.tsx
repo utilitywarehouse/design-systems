@@ -9,80 +9,27 @@ import { Flex } from '../Flex';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
 import { CheckboxGroupContext } from './CheckboxGroup.context';
-import { BaseCheckbox } from '../CheckboxTile/BaseCheckboxGroup';
+import { BaseCheckbox } from './BaseCheckbox';
 
 const componentName = 'Checkbox';
 const componentClassName = withGlobalPrefix(componentName);
-
-// export const BaseCheckbox = styled(Root)({
-//   position: 'relative',
-//   display: 'inline-flex',
-//   alignItems: 'center',
-//   justifyContent: 'center',
-//   verticalAlign: 'top',
-//   flexShrink: 0,
-//   padding: 0,
-//   height: 24,
-//   width: 24,
-//   border: 'none',
-//   borderRadius: '50%',
-//   '--checkbox-color': colors.cyan1000,
-//   '--checkbox-color-disabled': colors.grey400,
-//   '--checkbox-background-color-unchecked': colorsCommon.brandWhite,
-//   '--checkbox-background-color-checked': colors.cyan500,
-//   '--checkbox-background-color-unchecked-disabled': colorsCommon.brandWhite,
-//   '--checkbox-background-color-checked-disabled': colors.grey150,
-//   '--checkbox-border-width': px(2),
-//   '--checkbox-border-color-unchecked': colors.grey500,
-//   '--checkbox-border-color-checked': colors.cyan500,
-//   '--checkbox-border-color-hover': colors.cyan500,
-//   '--checkbox-border-color-focus': colors.cyan500,
-//   '--checkbox-border-color-unchecked-disabled': colors.grey300,
-//   '--checkbox-border-color-checked-disabled': colors.grey150,
-//   '--checkbox-outline-color': 'transparent',
-//   '--checkbox-outline-color-focus': colors.cyan700,
-//   color: 'var(--checkbox-color)',
-//   backgroundColor: 'var(--checkbox-background-color)',
-//   outline: 'none',
-//   '&::before': {
-//     content: '""',
-//     display: 'block',
-//     height: 24,
-//     width: 24,
-//     borderRadius: px(3),
-//     backgroundColor: 'inherit',
-//     boxShadow: 'inset 0 0 0 var(--checkbox-border-width) var(--checkbox-border-color)',
-//     outline: `2px solid var(--checkbox-outline-color)`,
-//   },
-//   ':where([data-state="unchecked"])': {
-//     '--checkbox-background-color': 'var(--checkbox-background-color-unchecked)',
-//     '--checkbox-border-color': 'var(--checkbox-border-color-unchecked)',
-//     '--checkbox-border-color-disabled': 'var(--checkbox-border-color-unchecked-disabled)',
-//     '--checkbox-background-color-disabled': 'var(--checkbox-background-color-unchecked-disabled)',
-//   },
-//   ':where([data-state="checked"])': {
-//     '--checkbox-background-color': 'var(--checkbox-background-color-checked)',
-//     '--checkbox-border-color': 'var(--checkbox-border-color-checked)',
-//     '--checkbox-border-color-disabled': 'var(--checkbox-border-color-checked-disabled)',
-//     '--checkbox-background-color-disabled': 'var(--checkbox-background-color-checked-disabled)',
-//   },
-//   '@media (hover: hover)': {
-//     ':where(:hover:enabled)': {
-//       boxShadow: `0 0 0 8px ${colors.cyan75}`,
-//       '--checkbox-border-color': 'var(--checkbox-border-color-hover)',
-//     },
-//   },
-//   ':where([data-disabled],[data-disabled] &)': {
-//     '--checkbox-color': 'var(--checkbox-color-disabled)',
-//     '--checkbox-border-color': 'var(--checkbox-border-color-disabled)',
-//     '--checkbox-background-color': 'var(--checkbox-background-color-disabled)',
-//   },
-// });
 
 export const StyledBaseCheckbox = styled(BaseCheckbox)({
   ':where(:focus-visible)': {
     '--checkbox-border-color': 'var(--checkbox-border-color-focus)',
     '--checkbox-outline-color': 'var(--checkbox-outline-color-focus)',
+  },
+});
+
+// we do this so that the gap between the checkbox & label is clickable
+export const StyledLabel = styled(Label)({
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    left: -8,
   },
 });
 
@@ -120,24 +67,9 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<Checkbox
         />
         {showLabel ? (
           <Flex direction="column" gap={0.5}>
-            <Label
-              id={labelId}
-              htmlFor={id}
-              nested
-              // we do this so that the gap between the checkbox & label is clickable
-              sx={{
-                position: 'relative',
-                '&:after': {
-                  content: '""',
-                  position: 'absolute',
-                  height: '100%',
-                  width: '100%',
-                  left: -8,
-                },
-              }}
-            >
+            <StyledLabel id={labelId} htmlFor={id} nested>
               {label}
-            </Label>
+            </StyledLabel>
             {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
           </Flex>
         ) : null}

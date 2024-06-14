@@ -1,18 +1,18 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from './Checkbox';
 import { CheckboxGroup } from './CheckboxGroup';
-import { BaseCheckboxGroup } from '../CheckboxTile/BaseCheckboxGroup';
+import { CheckboxTile } from './CheckboxTile';
+import { Flex } from '../Flex';
+import { Checkbox } from './Checkbox';
 
-const meta: Meta<typeof BaseCheckboxGroup> = {
-  title: 'Web UI / Components / CheckboxGroup',
-  component: BaseCheckboxGroup,
+const meta: Meta<typeof CheckboxGroup> = {
+  title: 'Web UI / Components / CheckboxGroup (new)',
+  component: CheckboxGroup,
   argTypes: {
-    dir: {
+    direction: {
       options: ['column', 'row'],
       control: { type: 'radio' },
     },
-    defaultValue: { control: { type: 'text' } },
     helperText: { control: { type: 'text' } },
     helperTextPosition: { options: ['top', 'bottom'], control: { type: 'radio' } },
     showHelperTextIcon: { control: { type: 'boolean' } },
@@ -24,10 +24,12 @@ const meta: Meta<typeof BaseCheckboxGroup> = {
     contentWidth: { control: { type: 'text' } },
   },
   args: {
-    defaultValue: ['1'],
     label: 'Label',
+    defaultValue: ['1', '2'],
+    direction: 'column',
     disabled: false,
     helperText: 'Helper text',
+    helperTextPosition: 'top',
     showHelperTextIcon: false,
     error: false,
     errorMessage: 'There is an error',
@@ -37,18 +39,21 @@ const meta: Meta<typeof BaseCheckboxGroup> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BaseCheckboxGroup>;
+type Story = StoryObj<typeof CheckboxGroup>;
 
-export const KitchenSink: Story = {};
 export const Workshop: Story = {
   render: args => (
-    <BaseCheckboxGroup {...args}>
-      {/* <Checkbox label="Fun" /> */}
-      {/* <Checkbox label="Serious" /> */}
-      {/* <Checkbox label="Smart" /> */}
-      <Checkbox value="1" label="Fun" />
-      <Checkbox value="2" label="Serious" />
-      <Checkbox value="3" label="Smart" />
-    </BaseCheckboxGroup>
+    <Flex gap={8}>
+      <CheckboxGroup {...args} name="checkbox-story">
+        <Checkbox value="1" label="Fun" />
+        <Checkbox value="2" label="Serious" />
+        <Checkbox value="3" label="Smart" />
+      </CheckboxGroup>
+      <CheckboxGroup {...args} name="checkbox-tiles-story">
+        <CheckboxTile value="1" label="Fun" />
+        <CheckboxTile value="2" label="Serious" />
+        <CheckboxTile value="3" label="Smart" />
+      </CheckboxGroup>
+    </Flex>
   ),
 };

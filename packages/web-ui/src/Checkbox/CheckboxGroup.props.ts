@@ -1,9 +1,14 @@
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { CheckboxGroupContextValue } from './CheckboxGroup.context';
 import { BoxProps } from '../Box';
-import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 export interface CheckboxGroupProps extends ComponentPropsWithoutRef<'fieldset'> {
-  children: ReactNode;
+  name?: CheckboxGroupContextValue['name'];
+  required?: boolean;
   disabled?: boolean;
+  defaultValue?: Array<string>;
+  value?: CheckboxGroupContextValue['value'];
+  onValueChange?: (value: Array<string>) => void;
   /** The direction of the radios, will also set the aria-orientation value. */
   direction?: 'column' | 'row';
   /**
