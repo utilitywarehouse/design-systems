@@ -444,7 +444,7 @@ importers:
         version: 7.6.17(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2)
       '@storybook/react-webpack5':
         specifier: ^7.6.3
-        version: 7.6.17(@swc/core@1.5.0)(esbuild@0.19.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2)
+        version: 7.6.17(@swc/core@1.5.0)(esbuild@0.18.20)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2)
       '@storybook/testing-library':
         specifier: ^0.0.14-next.1
         version: 0.0.14-next.1
@@ -9927,6 +9927,63 @@ packages:
       - supports-color
     dev: true
 
+  /@storybook/builder-webpack5@7.6.17(esbuild@0.18.20)(typescript@5.3.2):
+    resolution: {integrity: sha512-GMaBd8/RzivuAmWrYSt9Rga3j8WLcu5LCMYiPVs+XKXsKAC8lTkV0WRWh8Nk6wTmfzsRQ2acwFjSG5oE4ClZKA==}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@babel/core': 7.24.5
+      '@storybook/channels': 7.6.17
+      '@storybook/client-logger': 7.6.17
+      '@storybook/core-common': 7.6.17
+      '@storybook/core-events': 7.6.17
+      '@storybook/core-webpack': 7.6.17
+      '@storybook/node-logger': 7.6.17
+      '@storybook/preview': 7.6.17
+      '@storybook/preview-api': 7.6.17
+      '@swc/core': 1.5.0
+      '@types/node': 18.19.31
+      '@types/semver': 7.5.8
+      babel-loader: 9.1.3(@babel/core@7.24.5)(webpack@5.91.0)
+      browser-assert: 1.2.1
+      case-sensitive-paths-webpack-plugin: 2.4.0
+      cjs-module-lexer: 1.2.3
+      constants-browserify: 1.0.0
+      css-loader: 6.11.0(webpack@5.91.0)
+      es-module-lexer: 1.5.0
+      express: 4.19.2
+      fork-ts-checker-webpack-plugin: 8.0.0(typescript@5.3.2)(webpack@5.91.0)
+      fs-extra: 11.2.0
+      html-webpack-plugin: 5.6.0(webpack@5.91.0)
+      magic-string: 0.30.10
+      path-browserify: 1.0.1
+      process: 0.11.10
+      semver: 7.6.0
+      style-loader: 3.3.4(webpack@5.91.0)
+      swc-loader: 0.2.6(@swc/core@1.5.0)(webpack@5.91.0)
+      terser-webpack-plugin: 5.3.10(@swc/core@1.5.0)(esbuild@0.18.20)(webpack@5.91.0)
+      ts-dedent: 2.2.0
+      typescript: 5.3.2
+      url: 0.11.3
+      util: 0.12.5
+      util-deprecate: 1.0.2
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
+      webpack-dev-middleware: 6.1.3(webpack@5.91.0)
+      webpack-hot-middleware: 2.26.1
+      webpack-virtual-modules: 0.5.0
+    transitivePeerDependencies:
+      - '@rspack/core'
+      - '@swc/helpers'
+      - encoding
+      - esbuild
+      - supports-color
+      - uglify-js
+      - webpack-cli
+    dev: true
+
   /@storybook/builder-webpack5@7.6.17(esbuild@0.18.20)(typescript@5.3.3):
     resolution: {integrity: sha512-GMaBd8/RzivuAmWrYSt9Rga3j8WLcu5LCMYiPVs+XKXsKAC8lTkV0WRWh8Nk6wTmfzsRQ2acwFjSG5oE4ClZKA==}
     peerDependencies:
@@ -9984,63 +10041,6 @@ packages:
       - webpack-cli
     dev: true
 
-  /@storybook/builder-webpack5@7.6.17(esbuild@0.19.12)(typescript@5.3.2):
-    resolution: {integrity: sha512-GMaBd8/RzivuAmWrYSt9Rga3j8WLcu5LCMYiPVs+XKXsKAC8lTkV0WRWh8Nk6wTmfzsRQ2acwFjSG5oE4ClZKA==}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@babel/core': 7.24.5
-      '@storybook/channels': 7.6.17
-      '@storybook/client-logger': 7.6.17
-      '@storybook/core-common': 7.6.17
-      '@storybook/core-events': 7.6.17
-      '@storybook/core-webpack': 7.6.17
-      '@storybook/node-logger': 7.6.17
-      '@storybook/preview': 7.6.17
-      '@storybook/preview-api': 7.6.17
-      '@swc/core': 1.5.0
-      '@types/node': 18.19.31
-      '@types/semver': 7.5.8
-      babel-loader: 9.1.3(@babel/core@7.24.5)(webpack@5.91.0)
-      browser-assert: 1.2.1
-      case-sensitive-paths-webpack-plugin: 2.4.0
-      cjs-module-lexer: 1.2.3
-      constants-browserify: 1.0.0
-      css-loader: 6.11.0(webpack@5.91.0)
-      es-module-lexer: 1.5.0
-      express: 4.19.2
-      fork-ts-checker-webpack-plugin: 8.0.0(typescript@5.3.2)(webpack@5.91.0)
-      fs-extra: 11.2.0
-      html-webpack-plugin: 5.6.0(webpack@5.91.0)
-      magic-string: 0.30.10
-      path-browserify: 1.0.1
-      process: 0.11.10
-      semver: 7.6.0
-      style-loader: 3.3.4(webpack@5.91.0)
-      swc-loader: 0.2.6(@swc/core@1.5.0)(webpack@5.91.0)
-      terser-webpack-plugin: 5.3.10(@swc/core@1.5.0)(esbuild@0.19.12)(webpack@5.91.0)
-      ts-dedent: 2.2.0
-      typescript: 5.3.2
-      url: 0.11.3
-      util: 0.12.5
-      util-deprecate: 1.0.2
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
-      webpack-dev-middleware: 6.1.3(webpack@5.91.0)
-      webpack-hot-middleware: 2.26.1
-      webpack-virtual-modules: 0.5.0
-    transitivePeerDependencies:
-      - '@rspack/core'
-      - '@swc/helpers'
-      - encoding
-      - esbuild
-      - supports-color
-      - uglify-js
-      - webpack-cli
-    dev: true
-
   /@storybook/channels@7.6.17:
     resolution: {integrity: sha512-GFG40pzaSxk1hUr/J/TMqW5AFDDPUSu+HkeE/oqSWJbOodBOLJzHN6CReJS6y1DjYSZLNFt1jftPWZZInG/XUA==}
     dependencies:
@@ -10063,6 +10063,7 @@ packages:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /@storybook/channels@8.2.0-alpha.8:
     resolution: {integrity: sha512-Pi2LZ0ps9Ra7IV3NUJk4/l7+dTvrcDh22Y1XIIPasRBsRVLVZSl8IXK7WjJiZxUAHw4vR+aM6dWBu1b5YQ5GjA==}
 ||||||| parent of a65d2ab (add checkbox)
@@ -10079,7 +10080,15 @@ packages:
   /@storybook/channels@8.2.0-alpha.7:
     resolution: {integrity: sha512-XZk8gH5KexxHHzXZeIqOihO6+Aq4d71xmLZu+hnVCJP1epsDO+TBkUCRc4QjcnU9HtKb8/STzqUo1ap3VuTryA==}
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+  /@storybook/channels@8.2.0-alpha.7:
+    resolution: {integrity: sha512-XZk8gH5KexxHHzXZeIqOihO6+Aq4d71xmLZu+hnVCJP1epsDO+TBkUCRc4QjcnU9HtKb8/STzqUo1ap3VuTryA==}
+=======
+  /@storybook/channels@8.2.0-alpha.9:
+    resolution: {integrity: sha512-FiRosldLixA5Q4Z5aJ+Xc2LJ1+0/25syuW3x1iUraq/0StfkRE5AIm1iegbyGVWcpjSWM/XWKSjkTyGpLkhPfA==}
+>>>>>>> d518603 (stuff)
     dependencies:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       '@storybook/client-logger': 8.2.0-alpha.8
@@ -10098,6 +10107,13 @@ packages:
       '@storybook/client-logger': 8.2.0-alpha.7
       '@storybook/core-events': 8.2.0-alpha.7
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+      '@storybook/client-logger': 8.2.0-alpha.7
+      '@storybook/core-events': 8.2.0-alpha.7
+=======
+      '@storybook/client-logger': 8.2.0-alpha.9
+      '@storybook/core-events': 8.2.0-alpha.9
+>>>>>>> d518603 (stuff)
       '@storybook/global': 5.0.0
       telejson: 7.2.0
       tiny-invariant: 1.3.3
@@ -10173,6 +10189,7 @@ packages:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /@storybook/client-logger@8.2.0-alpha.8:
     resolution: {integrity: sha512-s9LnDG7FygBhpQYwcezBqXk53kJcdUk/S05I/11/VH30OTQEwgIg4swch/90Umj9d0b/93ttT0LrsxLTs8Mu3w==}
 ||||||| parent of a65d2ab (add checkbox)
@@ -10189,6 +10206,13 @@ packages:
   /@storybook/client-logger@8.2.0-alpha.7:
     resolution: {integrity: sha512-hrYRC68bOURNPskrYV+/W4mTd/4J4CdhgxsIQPmYmTo1cWoO6EHLSStA5QhqQ3G77LPvMyXTKDNjRkL+w7orUg==}
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+  /@storybook/client-logger@8.2.0-alpha.7:
+    resolution: {integrity: sha512-hrYRC68bOURNPskrYV+/W4mTd/4J4CdhgxsIQPmYmTo1cWoO6EHLSStA5QhqQ3G77LPvMyXTKDNjRkL+w7orUg==}
+=======
+  /@storybook/client-logger@8.2.0-alpha.9:
+    resolution: {integrity: sha512-/qkyfSOAdLxY2tHrX7yN7favCOZm8soXoMMW3QXfewFyy6MSj5EE5RkPCTOYgsAO1e3tnbQqgAdZegdYiJ1obg==}
+>>>>>>> d518603 (stuff)
     dependencies:
       '@storybook/global': 5.0.0
     dev: true
@@ -10360,6 +10384,7 @@ packages:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /@storybook/core-events@8.2.0-alpha.8:
     resolution: {integrity: sha512-y3EarOnhEQfEuQW6uuTKPfMw6AXzsTgO7M4vHYUuaHsefl4diSd4G8Bk/qxzMwRaGDEvtZ05/fYJlVKuIUKs8Q==}
 ||||||| parent of a65d2ab (add checkbox)
@@ -10376,6 +10401,13 @@ packages:
   /@storybook/core-events@8.2.0-alpha.7:
     resolution: {integrity: sha512-SqZJxKK1Z7Tz+9CgpXM6aLAO8aLWIflZQakvGQ8Jlxlso7Ry0gUXvk25BeHK3lnOcYQhhbaXBVAjWcPAGPluRw==}
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+  /@storybook/core-events@8.2.0-alpha.7:
+    resolution: {integrity: sha512-SqZJxKK1Z7Tz+9CgpXM6aLAO8aLWIflZQakvGQ8Jlxlso7Ry0gUXvk25BeHK3lnOcYQhhbaXBVAjWcPAGPluRw==}
+=======
+  /@storybook/core-events@8.2.0-alpha.9:
+    resolution: {integrity: sha512-PltOd1NBekk1/3yXI0OQmqD1vyc2yvotjoXJHzpwTF8RooFB04ioHWt89TyMYEiodR7r9Fbuhyr6OA/NZvDZ/A==}
+>>>>>>> d518603 (stuff)
     dependencies:
       '@storybook/csf': 0.1.8
       ts-dedent: 2.2.0
@@ -10505,11 +10537,21 @@ packages:
     dependencies:
       type-fest: 2.19.0
 
+<<<<<<< HEAD
   /@storybook/csf@0.1.8:
     resolution: {integrity: sha512-Ntab9o7LjBCbFIao5l42itFiaSh/Qu+l16l/r/9qmV9LnYZkO+JQ7tzhdlwpgJfhs+B5xeejpdAtftDRyXNajw==}
     dependencies:
       type-fest: 2.19.0
 
+||||||| parent of d518603 (stuff)
+=======
+  /@storybook/csf@0.1.8:
+    resolution: {integrity: sha512-Ntab9o7LjBCbFIao5l42itFiaSh/Qu+l16l/r/9qmV9LnYZkO+JQ7tzhdlwpgJfhs+B5xeejpdAtftDRyXNajw==}
+    dependencies:
+      type-fest: 2.19.0
+    dev: true
+
+>>>>>>> d518603 (stuff)
   /@storybook/deep-link-logger@3.1.2(@types/react@18.2.79):
     resolution: {integrity: sha512-sLp5HzqmcKIu+tBAKSOClRwW07xmclbsqSpSm3PoZKkGf7St1QpLYdnRokjOkk4JqkmiENsgj/D9SR3ozf7ryg==}
     dependencies:
@@ -10562,6 +10604,7 @@ packages:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /@storybook/instrumenter@8.2.0-alpha.8:
     resolution: {integrity: sha512-zrfCx8bSoVdWdN6MhIPzI+nB56AnQmi+Fs8KzhSfyjKR8Oy1TA/iW7kVTSDefPDaDJEahBMQg9r7Wcu5PofvRw==}
 ||||||| parent of a65d2ab (add checkbox)
@@ -10578,7 +10621,15 @@ packages:
   /@storybook/instrumenter@8.2.0-alpha.7:
     resolution: {integrity: sha512-FR6nOuPVGWoLen87xsfGA930PC08I+ZXVVaM1TSymsImTtBp/GjgDdnUcIc2yc3YA7d+fcjPsnNlaqiexT05aA==}
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+  /@storybook/instrumenter@8.2.0-alpha.7:
+    resolution: {integrity: sha512-FR6nOuPVGWoLen87xsfGA930PC08I+ZXVVaM1TSymsImTtBp/GjgDdnUcIc2yc3YA7d+fcjPsnNlaqiexT05aA==}
+=======
+  /@storybook/instrumenter@8.2.0-alpha.9:
+    resolution: {integrity: sha512-AW0ul1MIAOKScushKfBJFNK0CKis/zrBcDwLOjPK2z9oXd+8ElAscGIy9Z3zTIkF1h7NmBOcwsMreLxOcLlbvQ==}
+>>>>>>> d518603 (stuff)
     dependencies:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       '@storybook/channels': 8.2.0-alpha.8
@@ -10602,7 +10653,17 @@ packages:
       '@storybook/client-logger': 8.2.0-alpha.7
       '@storybook/core-events': 8.2.0-alpha.7
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+      '@storybook/channels': 8.2.0-alpha.7
+      '@storybook/client-logger': 8.2.0-alpha.7
+      '@storybook/core-events': 8.2.0-alpha.7
+=======
+      '@storybook/channels': 8.2.0-alpha.9
+      '@storybook/client-logger': 8.2.0-alpha.9
+      '@storybook/core-events': 8.2.0-alpha.9
+>>>>>>> d518603 (stuff)
       '@storybook/global': 5.0.0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       '@storybook/preview-api': 8.2.0-alpha.8
@@ -10616,6 +10677,11 @@ packages:
 =======
       '@storybook/preview-api': 8.2.0-alpha.7
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+      '@storybook/preview-api': 8.2.0-alpha.7
+=======
+      '@storybook/preview-api': 8.2.0-alpha.9
+>>>>>>> d518603 (stuff)
       '@vitest/utils': 1.5.1
       util: 0.12.5
     dev: true
@@ -10858,7 +10924,7 @@ packages:
       - webpack-plugin-serve
     dev: true
 
-  /@storybook/preset-react-webpack@7.6.17(@swc/core@1.5.0)(esbuild@0.19.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2):
+  /@storybook/preset-react-webpack@7.6.17(@swc/core@1.5.0)(esbuild@0.18.20)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2):
     resolution: {integrity: sha512-gn/LvIbll9loOkzwbFlxzOZGmJ6t1vF2/gfi+p/N/AifDYe8+LVM1QV4KRVKt6UEJwsQd79lKf7vPH92AQaKKQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -10891,7 +10957,7 @@ packages:
       react-refresh: 0.14.0
       semver: 7.6.0
       typescript: 5.3.2
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     transitivePeerDependencies:
       - '@swc/core'
       - '@types/webpack'
@@ -10945,6 +11011,7 @@ packages:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /@storybook/preview-api@8.2.0-alpha.8:
     resolution: {integrity: sha512-CyYU9/LUshioStv/aTwAddC3C/TDUkwz0xVO9nGdy+TpvlUzy4j5pAGXNF8OJiLlwIFxelHZ3kATk8ZOPNx4aw==}
 ||||||| parent of a65d2ab (add checkbox)
@@ -10961,7 +11028,15 @@ packages:
   /@storybook/preview-api@8.2.0-alpha.7:
     resolution: {integrity: sha512-T2MM9cgYiD+Att3U8rUJ904vVXAAx7B57uRDTK3r1nsAfsrx4/5cfwls8aNDVwRu8O1ddnX+7YYxMoODHxMMBg==}
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+  /@storybook/preview-api@8.2.0-alpha.7:
+    resolution: {integrity: sha512-T2MM9cgYiD+Att3U8rUJ904vVXAAx7B57uRDTK3r1nsAfsrx4/5cfwls8aNDVwRu8O1ddnX+7YYxMoODHxMMBg==}
+=======
+  /@storybook/preview-api@8.2.0-alpha.9:
+    resolution: {integrity: sha512-7qxmUzRqFSzYqABWSUOwzPpSW5Id/A9z2WcZhIEeRYDYwQm27gZh/ymQ6uo5c9Sh9+K/nQZ7d8+y/aOPjk0qEA==}
+>>>>>>> d518603 (stuff)
     dependencies:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       '@storybook/channels': 8.2.0-alpha.8
@@ -10988,7 +11063,19 @@ packages:
 >>>>>>> 1b0d4c4 (roving tabindex)
       '@storybook/csf': 0.1.7
 >>>>>>> a65d2ab (add checkbox)
+||||||| parent of d518603 (stuff)
+      '@storybook/channels': 8.2.0-alpha.7
+      '@storybook/client-logger': 8.2.0-alpha.7
+      '@storybook/core-events': 8.2.0-alpha.7
+      '@storybook/csf': 0.1.7
+=======
+      '@storybook/channels': 8.2.0-alpha.9
+      '@storybook/client-logger': 8.2.0-alpha.9
+      '@storybook/core-events': 8.2.0-alpha.9
+      '@storybook/csf': 0.1.8
+>>>>>>> d518603 (stuff)
       '@storybook/global': 5.0.0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       '@storybook/types': 8.2.0-alpha.8
@@ -11002,6 +11089,11 @@ packages:
 =======
       '@storybook/types': 8.2.0-alpha.7
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+      '@storybook/types': 8.2.0-alpha.7
+=======
+      '@storybook/types': 8.2.0-alpha.9
+>>>>>>> d518603 (stuff)
       '@types/qs': 6.9.15
       dequal: 2.0.3
       lodash: 4.17.21
@@ -11040,7 +11132,7 @@ packages:
       react-docgen-typescript: 2.2.2(typescript@5.3.2)
       tslib: 2.6.2
       typescript: 5.3.2
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -11176,7 +11268,7 @@ packages:
       - webpack-plugin-serve
     dev: true
 
-  /@storybook/react-webpack5@7.6.17(@swc/core@1.5.0)(esbuild@0.19.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2):
+  /@storybook/react-webpack5@7.6.17(@swc/core@1.5.0)(esbuild@0.18.20)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2):
     resolution: {integrity: sha512-qGc2JxaSmvPXV7ndxA/8qPtPLK7lAwejL/QdrzLXhxEmVdZLMew640FBYgOV/zWnehV3BnivThln/8PsQyst/g==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -11190,8 +11282,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@storybook/builder-webpack5': 7.6.17(esbuild@0.19.12)(typescript@5.3.2)
-      '@storybook/preset-react-webpack': 7.6.17(@swc/core@1.5.0)(esbuild@0.19.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2)
+      '@storybook/builder-webpack5': 7.6.17(esbuild@0.18.20)(typescript@5.3.2)
+      '@storybook/preset-react-webpack': 7.6.17(@swc/core@1.5.0)(esbuild@0.18.20)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2)
       '@storybook/react': 7.6.17(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.2)
       '@types/node': 18.19.31
       react: 18.2.0
@@ -11328,6 +11420,7 @@ packages:
     dependencies:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       '@storybook/client-logger': 8.2.0-alpha.8
       '@storybook/instrumenter': 8.2.0-alpha.8
 ||||||| parent of a65d2ab (add checkbox)
@@ -11344,6 +11437,13 @@ packages:
       '@storybook/client-logger': 8.2.0-alpha.7
       '@storybook/instrumenter': 8.2.0-alpha.7
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+      '@storybook/client-logger': 8.2.0-alpha.7
+      '@storybook/instrumenter': 8.2.0-alpha.7
+=======
+      '@storybook/client-logger': 8.2.0-alpha.9
+      '@storybook/instrumenter': 8.2.0-alpha.9
+>>>>>>> d518603 (stuff)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
@@ -11393,6 +11493,7 @@ packages:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /@storybook/types@8.2.0-alpha.8:
     resolution: {integrity: sha512-/UA/hXuRR5G/vhzQ36Loppz7D7F4TnDvuTeOfpYYapfX6CbkMyeoSKjvoUScySEuVmJHnTOmBbR+eUq+MTkp2w==}
 ||||||| parent of a65d2ab (add checkbox)
@@ -11409,7 +11510,15 @@ packages:
   /@storybook/types@8.2.0-alpha.7:
     resolution: {integrity: sha512-6q/sAyfQLAIXJYOQLuVAo30T03I3fkbN+fNmmgmbS8+vvrmlLtzhFMJ1YrijGnCfuRi/Oh06ihuq2N8DTfsAEg==}
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+  /@storybook/types@8.2.0-alpha.7:
+    resolution: {integrity: sha512-6q/sAyfQLAIXJYOQLuVAo30T03I3fkbN+fNmmgmbS8+vvrmlLtzhFMJ1YrijGnCfuRi/Oh06ihuq2N8DTfsAEg==}
+=======
+  /@storybook/types@8.2.0-alpha.9:
+    resolution: {integrity: sha512-FpZjkNmdv7VwzHZFFA6+uxYRPrIbOQ05lwrVXI5sNThvAtJvuQzBLWQo3Gg0+foXdi+yjbL9TaNtT7FHt8t8Kw==}
+>>>>>>> d518603 (stuff)
     dependencies:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       '@storybook/channels': 8.2.0-alpha.8
@@ -11423,6 +11532,11 @@ packages:
 =======
       '@storybook/channels': 8.2.0-alpha.7
 >>>>>>> 1b0d4c4 (roving tabindex)
+||||||| parent of d518603 (stuff)
+      '@storybook/channels': 8.2.0-alpha.7
+=======
+      '@storybook/channels': 8.2.0-alpha.9
+>>>>>>> d518603 (stuff)
       '@types/express': 4.17.21
       file-system-cache: 2.3.0
     dev: true
@@ -15602,7 +15716,7 @@ packages:
       semver: 7.6.0
       tapable: 2.2.1
       typescript: 5.3.2
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /fork-ts-checker-webpack-plugin@8.0.0(typescript@5.3.3)(webpack@5.91.0):
@@ -22083,32 +22197,6 @@ packages:
       terser: 5.30.4
       webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
 
-  /terser-webpack-plugin@5.3.10(@swc/core@1.5.0)(esbuild@0.19.12)(webpack@5.91.0):
-    resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      '@swc/core': '*'
-      esbuild: '*'
-      uglify-js: '*'
-      webpack: ^5.1.0
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      esbuild:
-        optional: true
-      uglify-js:
-        optional: true
-    dependencies:
-      '@jridgewell/trace-mapping': 0.3.25
-      '@swc/core': 1.5.0
-      esbuild: 0.19.12
-      jest-worker: 27.5.1
-      schema-utils: 3.3.0
-      serialize-javascript: 6.0.2
-      terser: 5.30.4
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
-    dev: true
-
   /terser-webpack-plugin@5.3.10(webpack@5.88.2):
     resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
     engines: {node: '>= 10.13.0'}
@@ -23136,46 +23224,6 @@ packages:
       - '@swc/core'
       - esbuild
       - uglify-js
-
-  /webpack@5.91.0(@swc/core@1.5.0)(esbuild@0.19.12):
-    resolution: {integrity: sha512-rzVwlLeBWHJbmgTC/8TvAcu5vpJNII+MelQpylD4jNERPwpBJOE2lEcko1zJX3QJeLjTTAnQxn/OJ8bjDzVQaw==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-    peerDependencies:
-      webpack-cli: '*'
-    peerDependenciesMeta:
-      webpack-cli:
-        optional: true
-    dependencies:
-      '@types/eslint-scope': 3.7.7
-      '@types/estree': 1.0.5
-      '@webassemblyjs/ast': 1.12.1
-      '@webassemblyjs/wasm-edit': 1.12.1
-      '@webassemblyjs/wasm-parser': 1.12.1
-      acorn: 8.11.3
-      acorn-import-assertions: 1.9.0(acorn@8.11.3)
-      browserslist: 4.23.0
-      chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.16.0
-      es-module-lexer: 1.5.0
-      eslint-scope: 5.1.1
-      events: 3.3.0
-      glob-to-regexp: 0.4.1
-      graceful-fs: 4.2.11
-      json-parse-even-better-errors: 2.3.1
-      loader-runner: 4.3.0
-      mime-types: 2.1.35
-      neo-async: 2.6.2
-      schema-utils: 3.3.0
-      tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(@swc/core@1.5.0)(esbuild@0.19.12)(webpack@5.91.0)
-      watchpack: 2.4.1
-      webpack-sources: 3.2.3
-    transitivePeerDependencies:
-      - '@swc/core'
-      - esbuild
-      - uglify-js
-    dev: true
 
   /whatwg-fetch@3.6.20:
     resolution: {integrity: sha512-EqhiFU6daOA8kpjOWTL0olhVOF3i7OrFzSYiGsEMB8GcXS+RrzauAERX65xMeNWVqxA6HXH2m69Z9LaKKdisfg==}
