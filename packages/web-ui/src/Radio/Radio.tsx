@@ -13,7 +13,7 @@ import { PropsWithSx } from '../types';
 import { RadioProps } from './Radio.props';
 import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
 import { styled } from '../theme';
-import { DATA_ATTRIBUTES, spacing, withGlobalPrefix } from '../utils';
+import { spacing, withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
 import { Flex } from '../Flex';
 
