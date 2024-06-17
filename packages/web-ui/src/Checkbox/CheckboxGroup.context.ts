@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 export type CheckboxGroupContextValue = {
   name?: string;
@@ -11,6 +11,8 @@ export type CheckboxGroupContextValue = {
   'aria-describedby'?: string;
 };
 
-export const CheckboxGroupContext = createContext<CheckboxGroupContextValue>({
-  hasGroupHelperText: false,
-} as CheckboxGroupContextValue);
+export const CheckboxGroupContext = createContext<CheckboxGroupContextValue | undefined>(undefined);
+
+export const CheckboxGroupProvider = CheckboxGroupContext.Provider;
+
+export const useCheckboxGroup = () => useContext(CheckboxGroupContext);

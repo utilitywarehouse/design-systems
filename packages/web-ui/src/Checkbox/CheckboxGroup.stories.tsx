@@ -6,7 +6,7 @@ import { Flex } from '../Flex';
 import { Checkbox } from './Checkbox';
 
 const meta: Meta<typeof CheckboxGroup> = {
-  title: 'Web UI / Components / CheckboxGroup',
+  title: 'Web UI / Components / Checkbox / CheckboxGroup',
   component: CheckboxGroup,
   argTypes: {
     direction: {
@@ -42,17 +42,18 @@ export default meta;
 type Story = StoryObj<typeof CheckboxGroup>;
 
 export const Workshop: Story = {
+  name: 'CheckboxGroup',
   render: args => (
-    <Flex gap={8}>
+    <Flex component="form" gap={8}>
       <CheckboxGroup {...args} name="checkbox-story">
-        <Checkbox value="fun" label="Fun" />
-        <Checkbox value="serious" label="Serious" />
-        <Checkbox value="smart" label="Smart" />
+        <Checkbox value="1" label="One" />
+        <Checkbox value="2" label="Two" />
+        <Checkbox value="3" label="Three" />
       </CheckboxGroup>
       <CheckboxGroup {...args} name="checkbox-tiles-story">
-        <CheckboxTile value="fun" label="Fun" />
-        <CheckboxTile value="serious" label="Serious" />
-        <CheckboxTile value="smart" label="Smart" />
+        <CheckboxTile value="1" label="One" />
+        <CheckboxTile value="2" label="Two" />
+        <CheckboxTile value="3" label="Three" />
       </CheckboxGroup>
     </Flex>
   ),

@@ -1,24 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from './Checkbox';
+import { CheckboxTile } from './CheckboxTile';
 
-const meta: Meta<typeof Checkbox> = {
-  title: 'Web UI / Components / Checkbox / Checkbox',
-  component: Checkbox,
+const meta: Meta<typeof CheckboxTile> = {
+  title: 'Web UI / Components / Checkbox / CheckboxTile',
+  component: CheckboxTile,
   argTypes: {
     helperText: { control: { type: 'text' } },
     label: { control: { type: 'text' } },
-    value: { control: { type: 'text' } },
     disabled: { type: 'boolean' },
   },
   args: {
     label: 'Label',
     helperText: 'Helper text',
     disabled: false,
-    value: '1',
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Checkbox>;
+type Story = StoryObj<typeof CheckboxTile>;
 
-export const Workshop: Story = { name: 'Checkbox' };
+export const Workshop: Story = { name: 'CheckboxTile' };
