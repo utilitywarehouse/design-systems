@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import { styled } from '../theme';
 import { TickMediumIcon } from '@utilitywarehouse/react-icons';
-import { CheckboxGroupContext } from './CheckboxGroup.context';
+import { useCheckboxGroup } from './CheckboxGroup.context';
 import { BaseCheckboxProps } from './BaseCheckbox.props';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { px } from '../utils';
@@ -76,36 +76,38 @@ const StyledCheckboxRoot = styled(RadixCheckbox.Root)({
     '--checkbox-border-color': 'var(--checkbox-border-color-disabled)',
     '--checkbox-background-color': 'var(--checkbox-background-color-disabled)',
   },
+  ':where(:focus-visible)': {
+    '--checkbox-border-color': 'var(--checkbox-border-color-focus)',
+  },
 });
 
 export const BaseCheckbox = React.forwardRef<HTMLButtonElement, BaseCheckboxProps>(
-  (props: BaseCheckboxProps, ref) => {
-    const { disabled, ...itemProps } = props;
-    // TODO: don't create context
-    const context = React.useContext(CheckboxGroupContext);
-    const isDisabled = context.disabled || disabled;
-    const checked = context.value?.includes(itemProps.value);
-    console.log({ context });
+  ({ onCheckedChange, ...props }, ref) => {
+    const context = useCheckboxGroup();
+    const checked = context?.value?.includes(props.value);
 
     return (
       <StyledCheckboxRoot
-        name={context.name}
-        disabled={isDisabled}
-        required={context.required}
-        checked={checked}
-        {...itemProps}
         ref={ref}
+        name={context?.name}
+        disabled={context?.disabled}
+        required={context?.required}
+        checked={checked}
+        {...props}
         onCheckedChange={checked => {
-          if (context.onItemCheck) {
+          if (context) {
             if (checked) {
-              context.onItemCheck(props.value);
+              context?.onItemCheck(props.value);
             } else {
-              context.onItemUncheck(props.value);
+              context?.onItemUncheck(props.value);
             }
+          }
+          if (onCheckedChange) {
+            onCheckedChange(checked);
           }
         }}
       >
-        <StyledIndicator>
+        <StyledIndicator asChild>
           <TickMediumIcon />
         </StyledIndicator>
       </StyledCheckboxRoot>

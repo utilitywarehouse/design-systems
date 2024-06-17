@@ -31,8 +31,6 @@ const CheckboxGroup = React.forwardRef<HTMLFieldSetElement, CheckboxGroupProps>(
       value: valueProp,
       required = false,
       disabled = false,
-      // orientation,
-      // dir: direction,
       onValueChange,
       id: providedId,
       label,

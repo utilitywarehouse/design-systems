@@ -9,7 +9,7 @@ import { HelperText } from '../HelperText';
 import { PropsWithSx } from '../types';
 import { CheckboxTileProps } from './CheckboxTile.props';
 import { useIds } from '../hooks';
-import { CheckboxGroupContext } from './CheckboxGroup.context';
+import { useCheckboxGroup } from './CheckboxGroup.context';
 import { BaseCheckbox } from './BaseCheckbox';
 
 const componentName = 'CheckboxTile';
@@ -21,28 +21,24 @@ const StyledTile = styled('label')({
   padding: spacing(2),
   borderRadius: px(8),
   '--checkbox-tile-border-width': px(2),
-  '--checkbox-tile-box-shadow-color': colors.grey400,
-  '--checkbox-tile-box-shadow-color-hover': colors.cyan500,
-  '--checkbox-tile-box-shadow-color-focus': colors.cyan500,
-  '--checkbox-tile-box-shadow-color-disabled': colors.grey300,
-  boxShadow: 'inset 0 0 0 var(--checkbox-tile-border-width) var(--checkbox-tile-box-shadow-color)',
+  '--checkbox-tile-border-color': colors.grey400,
+  '--checkbox-tile-border-color-hover': colors.cyan500,
+  '--checkbox-tile-border-color-focus': colors.cyan500,
+  '--checkbox-tile-border-color-disabled': colors.grey300,
+  boxShadow: 'inset 0 0 0 var(--checkbox-tile-border-width) var(--checkbox-tile-border-color)',
   ':where(:has(:focus-visible))': {
     backgroundColor: colors.cyan75,
     outline: `4px solid ${colors.cyan700}`,
-    '--checkbox-tile-box-shadow-color': 'var(--checkbox-tile-box-shadow-color-focus)',
-    '& button::before': {
-      boxShadow:
-        'inset 0 0 0 var(--checkbox-tile-border-width) var(--checkbox-tile-box-shadow-color-focus)',
-    },
+    '--checkbox-tile-border-color': 'var(--checkbox-tile-border-color-focus)',
   },
   '@media (hover: hover)': {
-    ':where(:hover:enabled)': {
+    ':where(:hover:not([data-disabled],[data-disabled] &))': {
       backgroundColor: colors.cyan75,
-      '--checkbox-tile-box-shadow-color': 'var(--checkbox-tile-box-shadow-color-hover)',
+      '--checkbox-tile-border-color': 'var(--checkbox-tile-border-color-hover)',
     },
   },
-  ':where([data-disabled])': {
-    '--checkbox-tile-box-shadow-color': 'var(--checkbox-tile-box-shadow-color-disabled)',
+  ':where([data-disabled],[data-disabled] &)': {
+    '--checkbox-tile-border-color': 'var(--checkbox-tile-border-color-disabled)',
   },
 });
 
@@ -59,14 +55,13 @@ export const CheckboxTile = React.forwardRef<HTMLButtonElement, PropsWithSx<Chec
     },
     ref
   ) => {
-    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
-      React.useContext(CheckboxGroupContext);
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: componentName });
-    const showHelperText = !hasGroupHelperText && !!helperText;
+    const context = useCheckboxGroup();
+    const ariaDescribedby = context ? context['aria-describedby'] : '';
+    const showHelperText = !context?.hasGroupHelperText && !!helperText;
     const showLabel = !!label;
-
     return (
-      <StyledTile>
+      <StyledTile data-disabled={disabled ? '' : undefined}>
         <BaseCheckbox
           {...props}
           ref={ref}
