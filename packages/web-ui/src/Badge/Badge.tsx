@@ -44,7 +44,7 @@ const StyledElement = styled('span')({
   gap: px(4),
   alignItems: 'center',
   whiteSpace: 'nowrap',
-  fontSize: pxToRem(13),
+  fontSize: pxToRem(14),
   fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.regular,
   fontStyle: 'normal',
