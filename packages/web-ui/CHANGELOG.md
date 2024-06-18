@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.8.0
+
+### Minor Changes
+
+- [#360](https://github.com/utilitywarehouse/design-systems/pull/360) [`f98c1b0b`](https://github.com/utilitywarehouse/design-systems/commit/f98c1b0b42c25ac5740bfd05f50586c63b7cf08c) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `Badge` component
+
 ## 0.7.1
 
 ### Patch Changes
