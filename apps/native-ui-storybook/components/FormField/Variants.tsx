@@ -3,8 +3,17 @@ import {
   Box,
   Input,
   InputField,
-  InputIcon,
-  InputSlot,
+  FormField,
+  FormFieldHelper,
+  FormFieldHelperText,
+  FormFieldLabel,
+  FormFieldLabelText,
+  FormFieldInvalidIcon,
+  FormFieldInvalid,
+  FormFieldInvalidText,
+  FormFieldValidIcon,
+  FormFieldValid,
+  FormFieldValidText,
   ScrollView,
   Text,
 } from '@utilitywarehouse/native-ui';
@@ -15,87 +24,95 @@ const InputVariants: StoryFn = () => {
   return (
     <ScrollView>
       <Box gap={8}>
-        <Text>Defaut</Text>
-        <Input>
-          <InputField />
-        </Input>
-        <Text>With icon</Text>
-        <Input>
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-          <InputField />
-        </Input>
-        <Text>With placeholder</Text>
-        <Input>
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-          <InputField placeholder="Input placeholder" />
-        </Input>
-        <Text>With value</Text>
-        <Input>
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-          <InputField placeholder="Input placeholder" value="filling the value" />
-        </Input>
-        <Text>Focused</Text>
-        <Input isFocused>
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-          <InputField placeholder="Input placeholder" value="filling the value" />
-        </Input>
-        <Text>Type password</Text>
-        <Input>
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-          <InputField placeholder="Input placeholder" value="filling the value" type="password" />
-        </Input>
-        <Text>Valid</Text>
-        <Input validationStatus="valid">
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-          <InputField placeholder="Input placeholder" />
-        </Input>
-        <Text>Valid focused</Text>
-        <Input validationStatus="valid" isFocused>
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-          <InputField placeholder="Input placeholder" />
-        </Input>
-        <Text>Invalid</Text>
-        <Input validationStatus="invalid">
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-          <InputField placeholder="Input placeholder" />
-        </Input>
-        <Text>Invalid focused</Text>
-        <Input validationStatus="invalid" isFocused>
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-          <InputField placeholder="Input placeholder" />
-        </Input>
-        <Text>Disabled</Text>
-        <Input isDisabled>
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-          <InputField placeholder="Input placeholder" />
-        </Input>
-        <Text>Readonly</Text>
-        <Input isReadOnly>
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-          <InputField placeholder="Input placeholder" readOnly />
-        </Input>
+        <Text mt="$4" mb="$2">
+          Defaut
+        </Text>
+        <FormField>
+          <FormFieldLabel>
+            <FormFieldLabelText>Label</FormFieldLabelText>
+          </FormFieldLabel>
+          <Input>
+            <InputField />
+          </Input>
+        </FormField>
+        <Text mt="$4" mb="$2">
+          With helper text bottom
+        </Text>
+        <FormField>
+          <FormFieldLabel>
+            <FormFieldLabelText>Label</FormFieldLabelText>
+          </FormFieldLabel>
+          <Input>
+            <InputField />
+          </Input>
+          <FormFieldHelper>
+            <FormFieldHelperText>Helper text</FormFieldHelperText>
+          </FormFieldHelper>
+        </FormField>
+        <Text mt="$4" mb="$2">
+          With helper text top
+        </Text>
+        <FormField>
+          <FormFieldLabel>
+            <FormFieldLabelText>Label</FormFieldLabelText>
+          </FormFieldLabel>
+          <FormFieldHelper>
+            <FormFieldHelperText>Helper text</FormFieldHelperText>
+          </FormFieldHelper>
+          <Input>
+            <InputField />
+          </Input>
+        </FormField>
+        <Text mt="$4" mb="$2">
+          Valid with valid text
+        </Text>
+        <FormField validationStatus="valid">
+          <FormFieldLabel>
+            <FormFieldLabelText>Label</FormFieldLabelText>
+          </FormFieldLabel>
+          <FormFieldHelper>
+            <FormFieldHelperText>Helper text</FormFieldHelperText>
+          </FormFieldHelper>
+          <Input>
+            <InputField />
+          </Input>
+          <FormFieldValid>
+            <FormFieldValidIcon />
+            <FormFieldValidText>Valid form field text</FormFieldValidText>
+          </FormFieldValid>
+        </FormField>
+        <Text mt="$4" mb="$2">
+          Invalid with invalid text
+        </Text>
+        <FormField validationStatus="invalid">
+          <FormFieldLabel>
+            <FormFieldLabelText>Label</FormFieldLabelText>
+          </FormFieldLabel>
+          <FormFieldHelper>
+            <FormFieldHelperText>Helper text</FormFieldHelperText>
+          </FormFieldHelper>
+          <Input>
+            <InputField />
+          </Input>
+          <FormFieldInvalid>
+            <FormFieldInvalidIcon />
+            <FormFieldInvalidText>Invalid form field text</FormFieldInvalidText>
+          </FormFieldInvalid>
+        </FormField>
+        <Text mt="$4" mb="$2">
+          Disabled
+        </Text>
+        <FormField isDisabled>
+          <FormFieldLabel>
+            <FormFieldLabelText>Label</FormFieldLabelText>
+          </FormFieldLabel>
+          <Input>
+            <InputField />
+          </Input>
+          <FormFieldHelper>
+            <FormFieldHelperText>Helper text</FormFieldHelperText>
+          </FormFieldHelper>
+        </FormField>
       </Box>
     </ScrollView>
   );

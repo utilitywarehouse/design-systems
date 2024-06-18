@@ -2,8 +2,6 @@ import React from 'react';
 import {
   Input,
   InputField,
-  InputIcon,
-  InputSlot,
   FormField,
   FormFieldHelper,
   FormFieldHelperText,
@@ -16,15 +14,13 @@ import {
   FormFieldValid,
   FormFieldValidText,
 } from '@utilitywarehouse/native-ui';
-import { EmailMediumIcon, EyeMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { Meta, StoryFn } from '@storybook/react';
 
-const InputBasic: StoryFn = ({
+const FormFieldBasic: StoryFn = ({
   placeholder,
   validationStatus,
   type,
-  _showIconLeft,
-  _showIconRight,
+  _showValidationIcon,
   ...props
 }: any) => {
   return (
@@ -33,34 +29,24 @@ const InputBasic: StoryFn = ({
         <FormFieldLabelText>Label</FormFieldLabelText>
       </FormFieldLabel>
       <Input>
-        {_showIconLeft && (
-          <InputSlot>
-            <InputIcon as={EmailMediumIcon} />
-          </InputSlot>
-        )}
         <InputField placeholder={placeholder} type={type} />
-        {_showIconRight && (
-          <InputSlot>
-            <InputIcon as={EyeMediumIcon} />
-          </InputSlot>
-        )}
       </Input>
       <FormFieldHelper>
         <FormFieldHelperText>Helper text</FormFieldHelperText>
       </FormFieldHelper>
       <FormFieldInvalid>
-        <FormFieldInvalidIcon />
+        {_showValidationIcon && <FormFieldInvalidIcon />}
         <FormFieldInvalidText>Invalid form field text</FormFieldInvalidText>
       </FormFieldInvalid>
       <FormFieldValid>
-        <FormFieldValidIcon />
+        {_showValidationIcon && <FormFieldValidIcon />}
         <FormFieldValidText>Valid form field text</FormFieldValidText>
       </FormFieldValid>
     </FormField>
   );
 };
 
-InputBasic.argTypes = {
+FormFieldBasic.argTypes = {
   placeholder: {
     control: 'text',
     description: 'The Input field placeholder',
@@ -78,9 +64,10 @@ InputBasic.argTypes = {
     description: 'The validation status of the Input component',
     defaultValue: 'initial',
   },
-  showValidationIcon: {
+  _showValidationIcon: {
     control: 'boolean',
-    description: 'Show the validation icon',
+    description:
+      'Show the validation icon. \n _Note: this is not a prop of the `FormField` component, just a representation of the `FormFieldInvalidIcon` and `FormFieldValidIcon` component for the Storybook playground._',
     defaultValue: true,
   },
   isDisabled: {
@@ -88,38 +75,14 @@ InputBasic.argTypes = {
     description: 'Disable the Input component',
     defaultValue: false,
   },
-  isReadOnly: {
-    control: 'boolean',
-    description: 'Read only the Input component',
-    defaultValue: false,
-  },
-  isFocused: {
-    control: 'boolean',
-    description: 'Focus the Input component',
-    defaultValue: false,
-  },
-  _showIconLeft: {
-    control: 'boolean',
-    description:
-      'Show icon left. \n _Note: this is not a prop of the `Input` component, just a representation of the `InputSlot` and `InputIcon` component for the Storybook playground._',
-  },
-  _showIconRight: {
-    control: 'boolean',
-    description:
-      'Show icon right. \n _Note: this is not a prop of the `Input` component, just a representation of the `InputSlot` and `InputIcon` component for the Storybook playground._',
-  },
 } as Meta<typeof Input>['argTypes'];
 
-InputBasic.args = {
+FormFieldBasic.args = {
   placeholder: 'Input placeholder',
   validationStatus: 'initial',
-  showValidationIcon: true,
   type: 'text',
   isDisabled: false,
-  isReadOnly: false,
-  isFocused: false,
-  _showIconLeft: false,
-  _showIconRight: false,
+  _showValidationIcon: true,
 } as Meta<typeof Input>['args'];
 
-export default InputBasic;
+export default FormFieldBasic;

@@ -3,13 +3,255 @@ import * as FormFieldStories from './FormField.stories';
 import {
   Input,
   InputField,
-  InputIcon,
-  InputSlot,
+  FormField,
+  FormFieldHelper,
+  FormFieldHelperText,
+  FormFieldLabel,
+  FormFieldLabelText,
+  FormFieldInvalidIcon,
+  FormFieldInvalid,
+  FormFieldInvalidText,
+  FormFieldValidIcon,
+  FormFieldValid,
+  FormFieldValidText,
   Center,
   NativeUIProvider,
+  RadioGroup,
+  Radio,
+  RadioIndicator,
+  RadioLabel,
 } from '@utilitywarehouse/native-ui';
 import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
 
 <Meta of={FormFieldStories} />
 
 # Form Field
+
+The `FormField` component is a container for form elements such as input fields. It provides a consistent layout and styling for form elements in which developers can provide important context to form elements. This context can include whether the element is invalid, disabled, or required.
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <FormField>
+        <FormFieldLabel>
+          <FormFieldLabelText>Label</FormFieldLabelText>
+        </FormFieldLabel>
+        <Input onChange={() => console.log('###')}>
+          <InputField placeholder="Placeholder" />
+        </Input>
+        <FormFieldHelper>
+          <FormFieldHelperText>Helper text</FormFieldHelperText>
+        </FormFieldHelper>
+      </FormField>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import {
+  Input,
+  InputField,
+  FormField,
+  FormFieldHelper,
+  FormFieldHelperText,
+  FormFieldLabel,
+  FormFieldLabelText,
+} from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <FormField>
+      <FormFieldLabel>
+        <FormFieldLabelText>Label</FormFieldLabelText>
+      </FormFieldLabel>
+      <Input onChange={() => console.log('###')}>
+        <InputField placeholder="Placeholder" />
+      </Input>
+      <FormFieldHelper>
+        <FormFieldHelperText>Helper text</FormFieldHelperText>
+      </FormFieldHelper>
+    </FormField>
+  );
+};
+```
+
+### Validation Helper Text
+
+The `FormField` component can display helper text to provide additional context to the user. This text can be used to provide information about the field, such as the format of the input or the requirements for the field.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <FormField validationStatus="invalid">
+        <FormFieldLabel>
+          <FormFieldLabelText>Label</FormFieldLabelText>
+        </FormFieldLabel>
+        <Input onChange={() => console.log('###')}>
+          <InputField placeholder="Placeholder" />
+        </Input>
+        <FormFieldHelper>
+          <FormFieldHelperText>Helper text</FormFieldHelperText>
+        </FormFieldHelper>
+        <FormFieldInvalid>
+          <FormFieldInvalidIcon />
+          <FormFieldInvalidText>Invalid form field text</FormFieldInvalidText>
+        </FormFieldInvalid>
+        <FormFieldValid>
+          <FormFieldValidIcon />
+          <FormFieldValidText>Valid form field text</FormFieldValidText>
+        </FormFieldValid>
+      </FormField>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import {
+  Input,
+  InputField,
+  FormField,
+  FormFieldHelper,
+  FormFieldHelperText,
+  FormFieldLabel,
+  FormFieldLabelText,
+  FormFieldInvalidIcon,
+  FormFieldInvalid,
+  FormFieldInvalidText,
+  FormFieldValidIcon,
+  FormFieldValid,
+  FormFieldValidText,
+} from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <FormField validationStatus="invalid">
+      <FormFieldLabel>
+        <FormFieldLabelText>Label</FormFieldLabelText>
+      </FormFieldLabel>
+      <Input onChange={() => console.log('###')}>
+        <InputField placeholder="Placeholder" />
+      </Input>
+      <FormFieldHelper>
+        <FormFieldHelperText>Helper text</FormFieldHelperText>
+      </FormFieldHelper>
+      <FormFieldInvalid>
+        <FormFieldInvalidIcon />
+        <FormFieldInvalidText>Invalid form field text</FormFieldInvalidText>
+      </FormFieldInvalid>
+      <FormFieldValid>
+        <FormFieldValidIcon />
+        <FormFieldValidText>Valid form field text</FormFieldValidText>
+      </FormFieldValid>
+    </FormField>
+  );
+};
+```
+
+## Props
+
+| Name               | Type                               | Default     | Description                         |
+| ------------------ | ---------------------------------- | ----------- | ----------------------------------- |
+| `validationStatus` | `'initial' \| 'valid' \| 'invalid` | `'initial'` | The validation status of the field. |
+| `isDisabled`       | `boolean`                          | `false`     | Whether the field is disabled.      |
+
+### Descendants Styling Props
+
+Props to style child components.
+
+| Sx Prop        | Description                        |
+| -------------- | ---------------------------------- |
+| `_labelText`   | Prop to style FormFieldLabel       |
+| `_helperText`  | Prop to style FormFieldHelperText  |
+| `_helperIcon`  | Prop to style FormFieldHelperIcon  |
+| `_errorText`   | Prop to style FormFieldErrorText   |
+| `_invalidText` | Prop to style FormFieldInvalidText |
+| `_validText`   | Prop to style FormFieldValidText   |
+| `_invalidIcon` | Prop to style FormFieldInvalidIcon |
+| `_validIcon`   | Prop to style FormFieldValidIcon   |
+| `_input`       | Prop to style Input                |
+
+## Examples
+
+### With RadioGroup
+
+The `FormField` component can be used to wrap a `RadioGroup` component to provide additional context to the user.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <FormField>
+        <FormFieldLabel>
+          <FormFieldLabelText>Favourite fruit</FormFieldLabelText>
+        </FormFieldLabel>
+        <RadioGroup aria-label="Radio Group">
+          <Radio value="mango">
+            <RadioIndicator />
+            <RadioLabel>Mango</RadioLabel>
+          </Radio>
+          <Radio value="apple">
+            <RadioIndicator />
+            <RadioLabel>Apple</RadioLabel>
+          </Radio>
+          <Radio value="orange">
+            <RadioIndicator />
+            <RadioLabel>Orange</RadioLabel>
+          </Radio>
+        </RadioGroup>
+        <FormFieldHelper>
+          <FormFieldHelperText>Choose the fruit you like the most</FormFieldHelperText>
+        </FormFieldHelper>
+      </FormField>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import {
+  RadioGroup,
+  Radio,
+  RadioIndicator,
+  RadioLabel,
+  FormField,
+  FormFieldHelper,
+  FormFieldHelperText,
+  FormFieldLabel,
+  FormFieldLabelText,
+} from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <FormField>
+      <FormFieldLabel>
+        <FormFieldLabelText>Favourite fruit</FormFieldLabelText>
+      </FormFieldLabel>
+      <RadioGroup aria-label="Radio Group">
+        <Radio value="mango">
+          <RadioIndicator />
+          <RadioLabel>Mango</RadioLabel>
+        </Radio>
+        <Radio value="apple">
+          <RadioIndicator />
+          <RadioLabel>Apple</RadioLabel>
+        </Radio>
+        <Radio value="orange">
+          <RadioIndicator />
+          <RadioLabel>Orange</RadioLabel>
+        </Radio>
+      </RadioGroup>
+      <FormFieldHelper>
+        <FormFieldHelperText>Choose the fruit you like the most</FormFieldHelperText>
+      </FormFieldHelper>
+    </FormField>
+  );
+};
+```
