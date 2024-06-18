@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- [#360](https://github.com/utilitywarehouse/design-systems/pull/360) [`f98c1b0b`](https://github.com/utilitywarehouse/design-systems/commit/f98c1b0b42c25ac5740bfd05f50586c63b7cf08c) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `Badge` component
+- [#360](https://github.com/utilitywarehouse/design-systems/pull/360) [`f98c1b0b`](https://github.com/utilitywarehouse/design-systems/commit/f98c1b0b42c25ac5740bfd05f50586c63b7cf08c) Thanks [@PollyCR](https://github.com/PollyCR)! [@robphoenix](https://github.com/robphoenix)! - Add `Badge` component
 
 ## 0.7.1
 
