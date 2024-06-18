@@ -66,7 +66,9 @@ export const Input = createStyle({
   },
 
   _dark: {
-    borderColor: '$darkGrey500',
+    borderTopColor: '$darkGrey500',
+    borderLeftColor: '$darkGrey500',
+    borderRightColor: '$darkGrey500',
     borderBottomColor: '$darkGrey900',
     backgroundColor: '$darkGrey25',
 
