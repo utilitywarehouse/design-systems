@@ -9,8 +9,8 @@ import { HelperText } from '../HelperText';
 import { PropsWithSx } from '../types';
 import { CheckboxTileProps } from './CheckboxTile.props';
 import { useIds } from '../hooks';
-import { useCheckboxGroup } from '../CheckboxGroup';
 import { BaseCheckbox } from '../BaseCheckbox';
+import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
 
 const componentName = 'CheckboxTile';
 const componentClassName = withGlobalPrefix(componentName);
@@ -56,7 +56,7 @@ export const CheckboxTile = React.forwardRef<HTMLButtonElement, PropsWithSx<Chec
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: componentName });
-    const context = useCheckboxGroup();
+    const context = useBaseCheckboxGroup();
     const ariaDescribedby = context ? context['aria-describedby'] : '';
     const showHelperText = !context?.hasGroupHelperText && !!helperText;
     const showLabel = !!label;

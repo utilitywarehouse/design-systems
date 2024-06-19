@@ -106,7 +106,7 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
         aria-describedby={showHelperText ? helperTextId : ariaDescribedby}
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
       >
-        <Flex component="label" gap={1}>
+        <Flex component="span" gap={1}>
           <StyledRadio>
             <StyledRadioIndicator />
           </StyledRadio>

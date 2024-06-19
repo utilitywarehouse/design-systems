@@ -7,7 +7,8 @@ import { Flex } from '../Flex';
 import { mergeIds } from '../utils';
 import { useIds } from '../hooks';
 import { BaseCheckboxGroupProps } from './BaseCheckboxGroup.props';
-import { CheckboxGroupContext, CheckboxGroupProps } from '../CheckboxGroup';
+import { CheckboxGroupProps } from '../CheckboxGroup';
+import { BaseCheckboxGroupProvider } from './BaseCheckboxGroup.context';
 
 const componentName = 'BaseCheckboxGroup';
 
@@ -41,11 +42,9 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
       componentPrefix: 'checkboxgroup',
     });
     const showErrorMessage = Boolean(error && errorMessage);
-    const fieldDirection = helperTextPosition === 'top' ? 'column' : 'column-reverse';
+    const direction = helperTextPosition === 'top' ? 'column' : 'column-reverse';
 
-    // With useControllableState, you can pass an initial state (using
-    // defaultValue) implying the component is uncontrolled, or you can pass a
-    // controlled value (using value) implying the component is controlled.
+    // useControllableState will handle whether controlled or uncontrolled
     const [value = [], setValue] = useControllableState({
       prop: valueProp,
       defaultProp: defaultValue,
@@ -93,16 +92,14 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
             {label}
           </FieldsetLegend>
         ) : null}
-        <Flex gap={2} direction={fieldDirection}>
+        <Flex gap={2} direction={direction}>
           {helperText ? (
             <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
               {helperText}
             </HelperText>
           ) : null}
 
-          <CheckboxGroupContext.Provider value={providerValue}>
-            {children}
-          </CheckboxGroupContext.Provider>
+          <BaseCheckboxGroupProvider value={providerValue}>{children}</BaseCheckboxGroupProvider>
         </Flex>
         {showErrorMessage ? (
           <HelperText

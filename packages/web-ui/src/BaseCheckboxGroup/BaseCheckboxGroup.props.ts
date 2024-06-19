@@ -1,13 +1,13 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { BoxProps } from '../Box';
-import { CheckboxGroupContextValue } from '../CheckboxGroup';
+import { BaseCheckboxGroupContextValue } from './BaseCheckboxGroup.context';
 
 export interface BaseCheckboxGroupProps extends ComponentPropsWithoutRef<'fieldset'> {
-  name?: CheckboxGroupContextValue['name'];
+  name?: string;
   required?: boolean;
   disabled?: boolean;
   defaultValue?: Array<string>;
-  value?: CheckboxGroupContextValue['value'];
+  value?: BaseCheckboxGroupContextValue['value'];
   onValueChange?: (value: Array<string>) => void;
   /**
    * The label for the radio group. This should contain the question being

@@ -9,7 +9,7 @@ import { Flex } from '../Flex';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
 import { BaseCheckbox } from '../BaseCheckbox';
-import { useCheckboxGroup } from '../CheckboxGroup';
+import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
 
 const componentName = 'Checkbox';
 const componentClassName = withGlobalPrefix(componentName);
@@ -49,7 +49,7 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<Checkbox
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'checkbox' });
-    const context = useCheckboxGroup();
+    const context = useBaseCheckboxGroup();
     const ariaDescribedby = context ? context['aria-describedby'] : '';
     const showHelperText = !context?.hasGroupHelperText && !!helperText;
     const showLabel = !!label;
