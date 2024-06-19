@@ -7,11 +7,11 @@ import { useIds } from '../hooks';
 import { withGlobalPrefix, spacing, px } from '../utils';
 import { PropsWithSx } from '../types';
 import { StyledRadioIndicator } from '../Radio/Radio';
-import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
 import clsx from 'clsx';
 import { RadioTileProps } from './RadioTile.props';
 import { styled } from '../theme';
 import { Flex } from '../Flex';
+import { useBaseRadioGroup } from '../BaseRadioGroup';
 
 const componentName = 'Radio';
 const componentClassName = withGlobalPrefix(componentName);
@@ -92,8 +92,7 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
-    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
-      React.useContext(RadioGroupContext);
+    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } = useBaseRadioGroup();
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
 

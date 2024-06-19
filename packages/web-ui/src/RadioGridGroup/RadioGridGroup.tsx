@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Box } from '../Box';
-import { RadioGroupFormField } from '../RadioGroup/RadioGroupFormField';
 import { PropsWithSx } from '../types';
 import { RadioGridGroupProps } from './RadioGridGroup.props';
 import clsx from 'clsx';
 import { getColumns, withGlobalPrefix } from '../utils';
+import { BaseRadioGroup } from '../BaseRadioGroup';
 
 const componentName = 'RadioGridGroup';
 const componentClassName = withGlobalPrefix(componentName);
@@ -27,7 +27,7 @@ const componentClassName = withGlobalPrefix(componentName);
 export const RadioGridGroup = React.forwardRef<HTMLDivElement, PropsWithSx<RadioGridGroupProps>>(
   ({ children, contentWidth = 'fit-content', columns = 2, className, ...props }, ref) => {
     return (
-      <RadioGroupFormField ref={ref} className={clsx(componentClassName, className)} {...props}>
+      <BaseRadioGroup ref={ref} className={clsx(componentClassName, className)} {...props}>
         <Box
           display="grid"
           gap={2}
@@ -37,7 +37,7 @@ export const RadioGridGroup = React.forwardRef<HTMLDivElement, PropsWithSx<Radio
         >
           {children}
         </Box>
-      </RadioGroupFormField>
+      </BaseRadioGroup>
     );
   }
 );

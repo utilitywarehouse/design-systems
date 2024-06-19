@@ -7,13 +7,13 @@ import { HelperText } from '../HelperText';
 import { useIds } from '../hooks';
 import { PropsWithSx } from '../types';
 import { mergeIds } from '../utils';
-import { BaseRadioGroupProps } from './RadioGroup.props';
-import { RadioGroupContext } from './RadioGroup.context';
 import { Flex } from '../Flex';
+import { BaseRadioGroupProps } from './BaseRadioGroup.props';
+import { BaseRadioGroupProvider } from './BaseRadioGroup.context';
 
-const componentName = 'RadioGroupFormField';
+const componentName = 'BaseRadioGroup';
 
-export const RadioGroupFormField = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGroupProps>>(
+export const BaseRadioGroup = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGroupProps>>(
   (
     {
       id: providedId,
@@ -72,7 +72,7 @@ export const RadioGroupFormField = forwardRef<HTMLDivElement, PropsWithSx<BaseRa
                 {helperText}
               </HelperText>
             ) : null}
-            <RadioGroupContext.Provider value={value}>{children}</RadioGroupContext.Provider>
+            <BaseRadioGroupProvider value={value}>{children}</BaseRadioGroupProvider>
           </Flex>
 
           {showErrorMessage ? (
@@ -90,4 +90,4 @@ export const RadioGroupFormField = forwardRef<HTMLDivElement, PropsWithSx<BaseRa
   }
 );
 
-RadioGroupFormField.displayName = componentName;
+BaseRadioGroup.displayName = componentName;
