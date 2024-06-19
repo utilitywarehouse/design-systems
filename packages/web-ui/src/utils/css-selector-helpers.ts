@@ -18,6 +18,10 @@ export const COLORSCHEME_SELECTORS = {
   green: colorSchemeSelector('green'),
   gold: colorSchemeSelector('gold'),
   grey: colorSchemeSelector('grey'),
+  error: colorSchemeSelector('error'),
+  info: colorSchemeSelector('info'),
+  warning: colorSchemeSelector('warning'),
+  success: colorSchemeSelector('success'),
 };
 
 export const DATA_ATTRIBUTE_SELECTORS = {
