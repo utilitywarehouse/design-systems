@@ -33,7 +33,13 @@ export const StyledLabel = styled(Label)({
 });
 
 /**
- * Checkbox
+ * Checkbox allows the user to toggle between checked and not checked.
+ *
+ * A Checkbox can be used independently, multiple checkboxes should be used
+ * with a `CheckboxGroup` or `CheckboxGridGroup` to handle the state control
+ * and layout.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<CheckboxProps>>(
   (

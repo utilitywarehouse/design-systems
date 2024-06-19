@@ -1,0 +1,41 @@
+import { Meta, Description, Canvas, ArgTypes } from '@storybook/blocks';
+import * as Stories from './CheckboxTile.stories';
+import { Stack } from '../Stack';
+import { Box } from '../Box';
+import { Text } from '../Text';
+
+<Meta of={Stories} />
+
+# CheckboxTile
+
+<Description of={Stories} />
+
+<Canvas of={Stories.Workshop} />
+
+## Helper text
+
+The `CheckboxTile` can display a secondary message as a helper text. This will not
+show if the `CheckboxTile` is a child of a `CheckboxGroup` or `CheckboxGridGroup`
+which also displays a helper text message.
+
+```tsx
+<CheckboxTile value="1" label="One" helperText="The number one" />
+```
+
+## Controlled
+
+The checked state can be controlled by using the `checked` and `onCheckedChange` props together.
+
+```tsx
+[...]
+
+const [checked, setChecked] = React.useState(false);
+
+[...]
+
+<CheckboxTile value="1" label="One" checked={checked} onCheckedChange={c => setChecked(c)} />
+```
+
+## Props
+
+<ArgTypes of={Stories} />

@@ -91,8 +91,8 @@ const StyledRadioContainer = styled('div')({
 /**
  * Radios can be used to choose between a set of more than two options.
  *
- * Radios should always be used with a `RadioGroup` to handle the state control and
- * layout.
+ * Radios should always be used with a `RadioGroup` or `RadioGridGroup` to
+ * handle the state control and layout.
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */

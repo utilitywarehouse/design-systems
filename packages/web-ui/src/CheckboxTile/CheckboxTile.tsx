@@ -42,6 +42,15 @@ const StyledTile = styled('label')({
   },
 });
 
+/**
+ * CheckboxTile allows the user to toggle between checked and not checked.
+ *
+ * A CheckboxTile can be used independently, multiple checkboxes should be used
+ * with a `CheckboxGroup` or `CheckboxGridGroup` to handle the state control
+ * and layout.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ */
 export const CheckboxTile = React.forwardRef<HTMLButtonElement, PropsWithSx<CheckboxTileProps>>(
   (
     {

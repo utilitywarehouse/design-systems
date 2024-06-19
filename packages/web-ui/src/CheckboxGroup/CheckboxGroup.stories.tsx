@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { CheckboxGroup } from './CheckboxGroup';
 import { Flex } from '../Flex';
+import { Text } from '../Text';
 import { Checkbox } from '../Checkbox';
 import { CheckboxTile } from '../CheckboxTile';
 
@@ -57,4 +58,20 @@ export const Workshop: Story = {
       </CheckboxGroup>
     </Flex>
   ),
+};
+
+export const Controlled: Story = {
+  render: () => {
+    const [value, setValue] = React.useState(['1']);
+    return (
+      <Flex direction="column" gap={4}>
+        <Text>Checked: {value.join(', ')}</Text>
+        <CheckboxGroup defaultValue={value} onValueChange={v => setValue(v)}>
+          <Checkbox value="1" label="One" />
+          <Checkbox value="2" label="Two" />
+          <Checkbox value="3" label="Three" />
+        </CheckboxGroup>
+      </Flex>
+    );
+  },
 };

@@ -95,7 +95,7 @@ export const BaseCheckbox = React.forwardRef<HTMLButtonElement, BaseCheckboxProp
         checked={checked}
         value={value}
         {...props}
-        onCheckedChange={checked => {
+        onCheckedChange={(checked: boolean) => {
           if (context) {
             if (checked) {
               context?.onItemCheck(value);

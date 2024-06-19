@@ -2,6 +2,8 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { CheckboxGridGroup } from './CheckboxGridGroup';
 import { CheckboxTile } from '../CheckboxTile';
+import { Flex } from '../Flex';
+import { Text } from '../Text';
 
 const meta: Meta<typeof CheckboxGridGroup> = {
   title: 'Web UI / Components / Checkbox / CheckboxGridGroup',
@@ -50,4 +52,23 @@ export const Workshop: Story = {
       </CheckboxGridGroup>
     </form>
   ),
+};
+
+export const Controlled: Story = {
+  render: () => {
+    const [value, setValue] = React.useState(['1']);
+    return (
+      <Flex direction="column" gap={4}>
+        <Text>Checked: {value.join(', ')}</Text>
+        <CheckboxGridGroup defaultValue={value} onValueChange={v => setValue(v)}>
+          <CheckboxTile value="1" label="One" />
+          <CheckboxTile value="2" label="Two" />
+          <CheckboxTile value="3" label="Three" />
+          <CheckboxTile value="4" label="Four" />
+          <CheckboxTile value="5" label="Five" />
+          <CheckboxTile value="6" label="Six" />
+        </CheckboxGridGroup>
+      </Flex>
+    );
+  },
 };

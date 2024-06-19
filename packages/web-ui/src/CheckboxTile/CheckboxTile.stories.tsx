@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { CheckboxTile } from './CheckboxTile';
 import { Flex } from '../Flex';
+import { Text } from '../Text';
 
 const meta: Meta<typeof CheckboxTile> = {
   title: 'Web UI / Components / Checkbox / CheckboxTile',
@@ -22,10 +23,26 @@ export default meta;
 type Story = StoryObj<typeof CheckboxTile>;
 
 export const Workshop: Story = {
-  name: 'CheckboxTile',
   render: args => (
     <Flex>
       <CheckboxTile {...args} />
     </Flex>
   ),
+};
+
+export const Controlled: Story = {
+  render: () => {
+    const [checked, setChecked] = React.useState(false);
+    return (
+      <Flex direction="column" gap={4}>
+        <Text>Checked: {checked ? 'true' : 'false'}</Text>
+        <CheckboxTile
+          value="1"
+          label="One"
+          checked={checked}
+          onCheckedChange={c => setChecked(c)}
+        />
+      </Flex>
+    );
+  },
 };
