@@ -116,7 +116,11 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
     const showLabel = !!label;
 
     return (
-      <StyledElement className={clsx(componentClassName, className)} sx={sx}>
+      <StyledElement
+        className={clsx(componentClassName, className)}
+        sx={sx}
+        data-disabled={disabled ? '' : undefined}
+      >
         <StyledRadioContainer>
           <StyledRadioItem
             ref={ref}

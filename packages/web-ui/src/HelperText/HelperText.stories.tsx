@@ -23,6 +23,4 @@ const meta: Meta<typeof HelperText> = {
 export default meta;
 type Story = StoryObj<typeof HelperText>;
 
-export const Workshop: Story = {
-  render: args => <HelperText {...args} />,
-};
+export const Workshop: Story = {};
