@@ -11,11 +11,11 @@ import { HelperText } from '../HelperText';
 import { useIds } from '../hooks';
 import { PropsWithSx } from '../types';
 import { RadioProps } from './Radio.props';
-import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
 import { styled } from '../theme';
 import { spacing, withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
 import { Flex } from '../Flex';
+import { useBaseRadioGroup } from '../BaseRadioGroup';
 
 const componentName = 'Radio';
 const componentClassName = withGlobalPrefix(componentName);
@@ -111,8 +111,7 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radio' });
-    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
-      React.useContext(RadioGroupContext);
+    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } = useBaseRadioGroup();
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
 

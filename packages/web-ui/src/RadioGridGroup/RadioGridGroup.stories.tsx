@@ -5,7 +5,7 @@ import { Stack } from '../Stack';
 import { RadioTile } from '../RadioTile';
 
 const meta: Meta<typeof RadioGridGroup> = {
-  title: 'Web UI / Components / RadioGridGroup',
+  title: 'Web UI / Components / Radio / RadioGridGroup',
   component: RadioGridGroup,
   tags: ['autodocs'],
   argTypes: {

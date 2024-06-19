@@ -8,7 +8,7 @@ import { Box } from '../Box';
 import { colors } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof RadioGroup> = {
-  title: 'Web UI / Components / RadioGroup',
+  title: 'Web UI / Components / Radio / RadioGroup',
   component: RadioGroup,
   argTypes: {
     direction: {
@@ -62,8 +62,8 @@ export const Workshop: Story = {
   },
 };
 
-export const WithRadioHelperText: Story = {
-  name: 'With Radio HelperText',
+export const RadioHelperText: Story = {
+  name: 'Radio HelperText',
   render: args => {
     return (
       <RadioGroup {...args}>
@@ -78,8 +78,8 @@ export const WithRadioHelperText: Story = {
   },
 };
 
-export const Width: Story = {
-  name: 'Width',
+export const ContentWidth: Story = {
+  name: 'Content Width',
   render: args => {
     return (
       <RadioGroup {...args} helperText="Setting the width of the children elements">
@@ -89,7 +89,7 @@ export const Width: Story = {
       </RadioGroup>
     );
   },
-  args: { contentWidth: '100%' },
+  args: { contentWidth: '200px' },
 };
 
 export const Controlled: Story = {
