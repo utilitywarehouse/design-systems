@@ -3,8 +3,8 @@ import { styled } from '../theme';
 import { Flex } from '../Flex';
 import { withGlobalPrefix } from '../utils';
 import { CheckboxGroupProps } from './CheckboxGroup.props';
-import { BaseCheckboxGroup } from './BaseCheckboxGroup';
 import clsx from 'clsx';
+import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
 
 const componentName = 'CheckboxGroup';
 const componentClassName = withGlobalPrefix(componentName);

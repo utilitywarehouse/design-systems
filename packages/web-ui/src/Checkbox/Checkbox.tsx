@@ -8,8 +8,8 @@ import { useIds } from '../hooks';
 import { Flex } from '../Flex';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
-import { useCheckboxGroup } from './CheckboxGroup.context';
-import { BaseCheckbox } from './BaseCheckbox';
+import { BaseCheckbox } from '../BaseCheckbox';
+import { useCheckboxGroup } from '../CheckboxGroup';
 
 const componentName = 'Checkbox';
 const componentClassName = withGlobalPrefix(componentName);

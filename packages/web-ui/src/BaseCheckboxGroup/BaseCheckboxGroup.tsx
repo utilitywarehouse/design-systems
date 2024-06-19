@@ -5,10 +5,9 @@ import { FieldsetLegend } from '../FieldsetLegend';
 import { HelperText } from '../HelperText';
 import { Flex } from '../Flex';
 import { mergeIds } from '../utils';
-import { CheckboxGroupContext } from './CheckboxGroup.context';
 import { useIds } from '../hooks';
-import { CheckboxGroupProps } from './CheckboxGroup.props';
 import { BaseCheckboxGroupProps } from './BaseCheckboxGroup.props';
+import { CheckboxGroupContext, CheckboxGroupProps } from '../CheckboxGroup';
 
 const componentName = 'BaseCheckboxGroup';
 

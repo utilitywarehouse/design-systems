@@ -1,16 +1,12 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { CheckboxGridGroup } from './CheckboxGridGroup';
-import { CheckboxTile } from './CheckboxTile';
+import { CheckboxTile } from '../CheckboxTile';
 
 const meta: Meta<typeof CheckboxGridGroup> = {
   title: 'Web UI / Components / Checkbox / CheckboxGridGroup',
   component: CheckboxGridGroup,
   argTypes: {
-    direction: {
-      options: ['column', 'row'],
-      control: { type: 'radio' },
-    },
     helperText: { control: { type: 'text' } },
     helperTextPosition: { options: ['top', 'bottom'], control: { type: 'radio' } },
     showHelperTextIcon: { control: { type: 'boolean' } },
@@ -26,7 +22,6 @@ const meta: Meta<typeof CheckboxGridGroup> = {
     label: 'Label',
     defaultValue: ['1', '2'],
     columns: 2,
-    direction: 'column',
     disabled: false,
     helperText: 'Helper text',
     helperTextPosition: 'top',

@@ -1,3 +1,3 @@
-import { CheckboxProps } from './Checkbox.props';
+import { CheckboxProps } from '../Checkbox';
 
 export interface CheckboxTileProps extends CheckboxProps {}

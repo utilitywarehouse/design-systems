@@ -9,8 +9,8 @@ import { HelperText } from '../HelperText';
 import { PropsWithSx } from '../types';
 import { CheckboxTileProps } from './CheckboxTile.props';
 import { useIds } from '../hooks';
-import { useCheckboxGroup } from './CheckboxGroup.context';
-import { BaseCheckbox } from './BaseCheckbox';
+import { useCheckboxGroup } from '../CheckboxGroup';
+import { BaseCheckbox } from '../BaseCheckbox';
 
 const componentName = 'CheckboxTile';
 const componentClassName = withGlobalPrefix(componentName);

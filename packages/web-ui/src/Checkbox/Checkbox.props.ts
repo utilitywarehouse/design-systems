@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { BaseCheckboxProps } from '../Checkbox/BaseCheckbox.props';
+import { BaseCheckboxProps } from '../BaseCheckbox';
 
 export interface CheckboxProps extends BaseCheckboxProps {
   /**
