@@ -61,6 +61,14 @@ export const KitchenSink: Story = {
               <AlertText>Alert text</AlertText>
               <AlertLink href="#">Alert link</AlertLink>
             </Alert>
+            <Alert colorScheme={colorScheme} direction="row" onClick={() => alert('clicked')}>
+              <AlertTitle>Alert title</AlertTitle>
+              <AlertText>Alert text</AlertText>
+            </Alert>
+            <Alert colorScheme={colorScheme} direction="column" onClick={() => alert('clicked')}>
+              <AlertTitle>Alert title</AlertTitle>
+              <AlertText>Alert text</AlertText>
+            </Alert>
           </Flex>
         ))}
       </Flex>

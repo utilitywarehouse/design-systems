@@ -17,6 +17,7 @@ import {
   TickMediumContainedIcon,
   CloseMediumIcon,
   CloseSmallIcon,
+  ChevronRightMediumIcon,
 } from '@utilitywarehouse/react-icons';
 import { AlertTitle } from './AlertTitle';
 import { AlertText } from './AlertText';
@@ -78,12 +79,16 @@ const StyledElement = styled('div')({
   '> :where(a)': {
     color: 'var(--alert-link-color)',
   },
-  '> :where(button)[data-dismiss]': {
-    alignSelf: 'flex-start',
+  '> :where(button)': {
     color: 'var(--alert-icon-color)',
     backgroundColor: 'transparent',
     border: 'none',
     cursor: 'pointer',
+    padding: 0,
+    alignSelf: 'center',
+  },
+  '> :where(button)[data-dismiss]': {
+    alignSelf: 'flex-start',
   },
   [COLORSCHEME_SELECTORS.info]: {
     '--alert-background-color': colors.cyan50,
@@ -146,6 +151,7 @@ export const Alert = React.forwardRef<
       text,
       linkText,
       linkHref,
+      onClick,
       ...props
     },
     ref
@@ -157,6 +163,9 @@ export const Alert = React.forwardRef<
       <StyledElement
         ref={ref}
         className={clsx(componentClassName, className, classNames.direction[direction])}
+        role="alert" // Adding role for dynamic alerts
+        aria-live="assertive" // Making it announced immediately
+        aria-atomic="true" // Ensuring the entire alert is read as a whole
         {...dataAttributeProps}
         {...props}
       >
@@ -164,14 +173,19 @@ export const Alert = React.forwardRef<
         <div className={classNames.content}>
           {children ?? (
             <>
-              {title && <AlertTitle>{title}</AlertTitle>}
-              {text && <AlertText>{text}</AlertText>}
-              {linkText && <AlertLink href={linkHref}>{linkText}</AlertLink>}
+              {!!title && <AlertTitle>{title}</AlertTitle>}
+              {!!text && <AlertText>{text}</AlertText>}
+              {!!linkText && <AlertLink href={linkHref}>{linkText}</AlertLink>}
             </>
           )}
         </div>
-        {dismissible && (
-          <button data-dismiss onClick={onDismiss}>
+        {!!onClick && (
+          <button onClick={onClick} title="Alert action" aria-label="Alert action">
+            <ChevronRightMediumIcon />
+          </button>
+        )}
+        {!!dismissible && (
+          <button data-dismiss onClick={onDismiss} title="Dismiss" aria-label="Dismiss alert">
             {direction === 'row' ? <CloseMediumIcon /> : <CloseSmallIcon />}
           </button>
         )}
