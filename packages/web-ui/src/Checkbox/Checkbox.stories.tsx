@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Checkbox } from './Checkbox';
 import { Flex } from '../Flex';
 import { Text } from '../Text';
-import { CheckboxGroup } from '../CheckboxGroup';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Web UI / Components / Checkbox / Checkbox',
@@ -38,4 +37,3 @@ export const Controlled: Story = {
     );
   },
 };
-
