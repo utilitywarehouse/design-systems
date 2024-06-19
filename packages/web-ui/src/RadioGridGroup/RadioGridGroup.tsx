@@ -1,32 +1,13 @@
 import * as React from 'react';
 import { Box } from '../Box';
-import { breakpoints } from '../tokens';
 import { PropsWithSx } from '../types';
 import { RadioGridGroupProps } from './RadioGridGroup.props';
 import clsx from 'clsx';
-import { withGlobalPrefix } from '../utils';
+import { getColumns, withGlobalPrefix } from '../utils';
 import { BaseRadioGroup } from '../BaseRadioGroup';
 
 const componentName = 'RadioGridGroup';
 const componentClassName = withGlobalPrefix(componentName);
-
-function convert(c: string) {
-  return `repeat(${c}, minmax(10px, 1fr))`;
-}
-function getColumns(columns: RadioGridGroupProps['columns']) {
-  if (Array.isArray(columns)) {
-    return columns.map(s => convert(s as string));
-  }
-  if (typeof columns === 'object') {
-    return Object.keys(breakpoints).reduce((acc: { [key: string]: string }, breakpoint: string) => {
-      if (columns[breakpoint] !== null) {
-        acc[breakpoint] = convert(columns[breakpoint] as string);
-      }
-      return acc;
-    }, {});
-  }
-  return convert(columns as string);
-}
 
 /**
  * The `RadioGridGroup` provides an accessible way to group and control a set

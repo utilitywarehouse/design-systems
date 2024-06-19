@@ -4,7 +4,7 @@ import { Label } from '../Label';
 import { HelperText } from '../HelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { useIds } from '../hooks';
-import { withGlobalPrefix, spacing } from '../utils';
+import { withGlobalPrefix, spacing, px } from '../utils';
 import { PropsWithSx } from '../types';
 import { StyledRadioIndicator } from '../Radio/Radio';
 import clsx from 'clsx';
@@ -42,7 +42,7 @@ const StyledRadio = styled('div')({
 
 const StyledRadioItem = styled(Item)({
   all: 'unset',
-  borderRadius: '8px',
+  borderRadius: px(8),
   padding: spacing(2),
   display: 'flex',
   boxShadow: 'inset 0 0 0 2px var(--radio-item-box-shadow-color)',
