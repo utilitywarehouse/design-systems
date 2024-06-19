@@ -2,6 +2,9 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Alert } from './Alert';
 import { Flex } from '../Flex';
+import { AlertTitle } from './AlertTitle';
+import { AlertText } from './AlertText';
+import { AlertLink } from './AlertLink';
 
 const colorSchemes = ['info', 'warning', 'error', 'success'] as const;
 
@@ -29,12 +32,14 @@ export const KitchenSink: Story = {
         {colorSchemes.map(colorScheme => (
           <Flex key={colorScheme} direction="column" gap={2}>
             <Alert colorScheme={colorScheme} direction="row">
-              <span>Alert text</span>
-              <a href="#">Alert link</a>
+              <AlertTitle>Alert title</AlertTitle>
+              <AlertText>Alert text</AlertText>
+              <AlertLink href="#">Alert link</AlertLink>
             </Alert>
             <Alert colorScheme={colorScheme} direction="column">
-              <span>Alert text</span>
-              <a href="#">Alert link</a>
+              <AlertTitle>Alert title</AlertTitle>
+              <AlertText>Alert text</AlertText>
+              <AlertLink href="#">Alert link</AlertLink>
             </Alert>
             <Alert
               colorScheme={colorScheme}
@@ -42,8 +47,9 @@ export const KitchenSink: Story = {
               dismissible
               onDismiss={() => alert('dismissed')}
             >
-              <span>Alert text</span>
-              <a href="#">Alert link</a>
+              <AlertTitle>Alert title</AlertTitle>
+              <AlertText>Alert text</AlertText>
+              <AlertLink href="#">Alert link</AlertLink>
             </Alert>
             <Alert
               colorScheme={colorScheme}
@@ -51,8 +57,9 @@ export const KitchenSink: Story = {
               dismissible
               onDismiss={() => alert('dismissed')}
             >
-              <span>Alert text</span>
-              <a href="#">Alert link</a>
+              <AlertTitle>Alert title</AlertTitle>
+              <AlertText>Alert text</AlertText>
+              <AlertLink href="#">Alert link</AlertLink>
             </Alert>
           </Flex>
         ))}

@@ -18,6 +18,9 @@ import {
   CloseMediumIcon,
   CloseSmallIcon,
 } from '@utilitywarehouse/react-icons';
+import { AlertTitle } from './AlertTitle';
+import { AlertText } from './AlertText';
+import { AlertLink } from './AlertLink';
 
 const componentName = 'Alert';
 const componentClassName = withGlobalPrefix(componentName);
@@ -139,6 +142,10 @@ export const Alert = React.forwardRef<
       children,
       dismissible,
       onDismiss,
+      title,
+      text,
+      linkText,
+      linkHref,
       ...props
     },
     ref
@@ -154,7 +161,15 @@ export const Alert = React.forwardRef<
         {...props}
       >
         <AlertIcon colorScheme={colorScheme} />
-        <div className={classNames.content}>{children}</div>
+        <div className={classNames.content}>
+          {children ?? (
+            <>
+              {title && <AlertTitle>{title}</AlertTitle>}
+              {text && <AlertText>{text}</AlertText>}
+              {linkText && <AlertLink href={linkHref}>{linkText}</AlertLink>}
+            </>
+          )}
+        </div>
         {dismissible && (
           <button data-dismiss onClick={onDismiss}>
             {direction === 'row' ? <CloseMediumIcon /> : <CloseSmallIcon />}

@@ -20,4 +20,24 @@ export interface AlertProps extends ComponentPropsWithoutRef<'div'> {
    * @default column
    */
   direction?: 'row' | 'column';
+  /**
+   * Sets the title of the alert.
+   */
+  title?: string;
+  /**
+   * Sets the text of the alert.
+   */
+  text?: string;
+  /**
+   * Sets the link text of the alert.
+   */
+  linkText?: string;
+  /**
+   * Sets the link href of the alert.
+   */
+  linkHref?: string;
+  /**
+   * Sets the function to be called when the alert button is clicked.
+   */
+  onClick?: () => void;
 }
