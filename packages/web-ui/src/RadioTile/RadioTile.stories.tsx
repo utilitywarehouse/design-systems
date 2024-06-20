@@ -5,7 +5,7 @@ import { RadioGroup } from '../RadioGroup';
 import { Stack } from '../Stack';
 
 const meta: Meta<typeof RadioTile> = {
-  title: 'Web UI / Components / RadioGroup',
+  title: 'Web UI / Components / Radio / RadioTile',
   component: RadioTile,
 };
 
