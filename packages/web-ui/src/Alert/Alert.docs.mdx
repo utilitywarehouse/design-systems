@@ -1,0 +1,26 @@
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import * as Stories from './Alert.stories';
+
+<Meta of={Stories} />
+
+# Alert
+
+<Description />
+
+<Canvas of={Stories.KitchenSink} />
+
+## Color schemes
+
+The `colorScheme` prop will change the Alert colours.
+
+```tsx
+<Alert
+  colorScheme="error"
+  title="Something went wrong"
+  text="Please refresh your browser or come back later."
+/>
+```
+
+## Props
+
+<ArgTypes of={Stories} />
