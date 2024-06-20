@@ -7,6 +7,10 @@ import * as Stories from './Alert.stories';
 
 <Description />
 
+- [Color Scheme](#color-schemes)
+- [Advanced Usage](#advanced-usage)
+- [Props](#props)
+
 <Canvas of={Stories.KitchenSink} />
 
 ## Color schemes
@@ -21,6 +25,25 @@ The `colorScheme` prop will change the Alert colours.
 />
 ```
 
+## Advanced usage
+
+You can use the elements of a `Alert` separately for advanced usage for example changing the alert text:
+
+```tsx
+import { Alert, AlertTitle, AlertText, AlertLink } from './Alert';
+
+const YourComponent = () => (
+  <Alert colorScheme="error">
+    <AlertTitle>Alert title</AlertTitle>
+    <AlertText>
+      Alert text <strong>purus odio</strong>, maximus tincidunt aliquet posuere, mollis ut mauris.
+    </AlertText>
+    <AlertLink href="#">Alert link</AlertLink>
+  </Alert>
+);
+```
+
 ## Props
 
 <ArgTypes of={Stories} />
+````

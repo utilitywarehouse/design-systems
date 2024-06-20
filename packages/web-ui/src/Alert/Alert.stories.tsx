@@ -2,9 +2,6 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Alert } from './Alert';
 import { Flex } from '../Flex';
-import { AlertTitle } from './AlertTitle';
-import { AlertText } from './AlertText';
-import { AlertLink } from './AlertLink';
 
 const colorSchemes = ['info', 'warning', 'error', 'success'] as const;
 
@@ -34,53 +31,54 @@ export const KitchenSink: Story = {
       <Flex direction="column" gap={2}>
         {colorSchemes.map(colorScheme => (
           <Flex key={colorScheme} direction="column" gap={2}>
-            <Alert colorScheme={colorScheme} direction="row">
-              <AlertTitle>Alert title</AlertTitle>
-              <AlertText>
-                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris.
-              </AlertText>
-              <AlertLink href="#">Alert link</AlertLink>
-            </Alert>
-            <Alert colorScheme={colorScheme} direction="column">
-              <AlertTitle>Alert title</AlertTitle>
-              <AlertText>
-                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris
-                nibh quam, hendrerit mattis ligula sit amet.
-              </AlertText>
-              <AlertLink href="#">Alert link</AlertLink>
-            </Alert>
-            <Alert colorScheme={colorScheme} direction="row" onDismiss={() => alert('dismissed')}>
-              <AlertTitle>Alert title</AlertTitle>
-              <AlertText>
-                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris.
-              </AlertText>
-              <AlertLink href="#">Alert link</AlertLink>
-            </Alert>
+            <Alert
+              colorScheme={colorScheme}
+              direction="row"
+              title="AlertTitle"
+              text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris."
+              linkText="Alert link"
+              linkHref="#"
+            />
             <Alert
               colorScheme={colorScheme}
               direction="column"
+              title="AlertTitle"
+              text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris nibh quam, hendrerit mattis ligula sit amet."
+              linkText="Alert link"
+              linkHref="#"
+            />
+            <Alert
+              colorScheme={colorScheme}
+              direction="row"
+              text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris."
+              title="Alert title"
+              linkText="Alert link"
+              linkHref="#"
               onDismiss={() => alert('dismissed')}
-            >
-              <AlertTitle>Alert title</AlertTitle>
-              <AlertText>
-                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris
-                nibh quam, hendrerit mattis ligula sit amet.
-              </AlertText>
-              <AlertLink href="#">Alert link</AlertLink>
-            </Alert>
-            <Alert colorScheme={colorScheme} direction="row" onClick={() => alert('clicked')}>
-              <AlertTitle>Alert title</AlertTitle>
-              <AlertText>
-                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris.
-              </AlertText>
-            </Alert>
-            <Alert colorScheme={colorScheme} direction="column" onClick={() => alert('clicked')}>
-              <AlertTitle>Alert title</AlertTitle>
-              <AlertText>
-                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris
-                nibh quam, hendrerit mattis ligula sit amet.
-              </AlertText>
-            </Alert>
+            />
+            <Alert
+              colorScheme={colorScheme}
+              direction="column"
+              title="Alert title"
+              text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris nibh quam, hendrerit mattis ligula sit amet."
+              linkText="Alert link"
+              linkHref="#"
+              onDismiss={() => alert('dismissed')}
+            />
+            <Alert
+              colorScheme={colorScheme}
+              direction="row"
+              title="Alert title"
+              text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris."
+              onClick={() => alert('clicked')}
+            />
+            <Alert
+              colorScheme={colorScheme}
+              direction="column"
+              title="Alert title"
+              text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris nibh quam, hendrerit mattis ligula sit amet."
+              onClick={() => alert('clicked')}
+            />
           </Flex>
         ))}
       </Flex>
