@@ -1,5 +1,17 @@
 # @utilitywarehouse/web-ui
 
+## 0.8.1
+
+### Patch Changes
+
+- [#373](https://github.com/utilitywarehouse/design-systems/pull/373) [`9de954d1`](https://github.com/utilitywarehouse/design-systems/commit/9de954d10b166219e69b49f08debb8249bc3a530) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix disabled Radio
+
+## 0.8.0
+
+### Minor Changes
+
+- [#360](https://github.com/utilitywarehouse/design-systems/pull/360) [`f98c1b0b`](https://github.com/utilitywarehouse/design-systems/commit/f98c1b0b42c25ac5740bfd05f50586c63b7cf08c) Thanks [@PollyCR](https://github.com/PollyCR)! [@robphoenix](https://github.com/robphoenix)! - Add `Badge` component
+
 ## 0.7.1
 
 ### Patch Changes

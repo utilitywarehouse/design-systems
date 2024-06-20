@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.1.3
+
+### Patch Changes
+
+- [#366](https://github.com/utilitywarehouse/design-systems/pull/366) [`b93e6c1a`](https://github.com/utilitywarehouse/design-systems/commit/b93e6c1a987083681e330f17ce8f3ae69415effc) Thanks [@jordmccord](https://github.com/jordmccord)! - fix: remove broken font resolver
+
 ## 0.1.2
 
 ### Patch Changes
