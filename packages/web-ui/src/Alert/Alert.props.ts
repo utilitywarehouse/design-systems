@@ -7,12 +7,7 @@ export interface AlertProps extends ComponentPropsWithoutRef<'div'> {
    */
   colorScheme?: 'info' | 'success' | 'warning' | 'error';
   /**
-   * Sets whether the alert is dismissible.
-   * @default false
-   */
-  dismissible?: boolean;
-  /**
-   * Sets the function to be called when the alert is dismissed.
+   * Sets the function to be called when the alert is dismissed and shows the dismiss icon.
    */
   onDismiss?: () => void;
   /**

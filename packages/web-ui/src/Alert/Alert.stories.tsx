@@ -16,7 +16,10 @@ const meta: Meta<typeof Alert> = {
     colorScheme: { options: colorSchemes, control: { type: 'radio' } },
   },
   args: {
-    children: 'Alert',
+    title: 'Alert title',
+    text: 'Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris.',
+    linkText: 'Alert link',
+    linkHref: '#',
     colorScheme: 'info',
   },
 };
@@ -33,41 +36,50 @@ export const KitchenSink: Story = {
           <Flex key={colorScheme} direction="column" gap={2}>
             <Alert colorScheme={colorScheme} direction="row">
               <AlertTitle>Alert title</AlertTitle>
-              <AlertText>Alert text</AlertText>
+              <AlertText>
+                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris.
+              </AlertText>
               <AlertLink href="#">Alert link</AlertLink>
             </Alert>
             <Alert colorScheme={colorScheme} direction="column">
               <AlertTitle>Alert title</AlertTitle>
-              <AlertText>Alert text</AlertText>
+              <AlertText>
+                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris
+                nibh quam, hendrerit mattis ligula sit amet.
+              </AlertText>
               <AlertLink href="#">Alert link</AlertLink>
             </Alert>
-            <Alert
-              colorScheme={colorScheme}
-              direction="row"
-              dismissible
-              onDismiss={() => alert('dismissed')}
-            >
+            <Alert colorScheme={colorScheme} direction="row" onDismiss={() => alert('dismissed')}>
               <AlertTitle>Alert title</AlertTitle>
-              <AlertText>Alert text</AlertText>
+              <AlertText>
+                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris.
+              </AlertText>
               <AlertLink href="#">Alert link</AlertLink>
             </Alert>
             <Alert
               colorScheme={colorScheme}
               direction="column"
-              dismissible
               onDismiss={() => alert('dismissed')}
             >
               <AlertTitle>Alert title</AlertTitle>
-              <AlertText>Alert text</AlertText>
+              <AlertText>
+                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris
+                nibh quam, hendrerit mattis ligula sit amet.
+              </AlertText>
               <AlertLink href="#">Alert link</AlertLink>
             </Alert>
             <Alert colorScheme={colorScheme} direction="row" onClick={() => alert('clicked')}>
               <AlertTitle>Alert title</AlertTitle>
-              <AlertText>Alert text</AlertText>
+              <AlertText>
+                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris.
+              </AlertText>
             </Alert>
             <Alert colorScheme={colorScheme} direction="column" onClick={() => alert('clicked')}>
               <AlertTitle>Alert title</AlertTitle>
-              <AlertText>Alert text</AlertText>
+              <AlertText>
+                Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris
+                nibh quam, hendrerit mattis ligula sit amet.
+              </AlertText>
             </Alert>
           </Flex>
         ))}

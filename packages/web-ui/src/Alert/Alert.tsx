@@ -32,7 +32,6 @@ const classNames = {
     column: withGlobalPrefix('direction-column'),
   },
   content: withGlobalPrefix('alert-content'),
-  icon: withGlobalPrefix('alert-icon'),
 };
 
 const classSelectors = {
@@ -40,7 +39,6 @@ const classSelectors = {
     row: classSelector(classNames.direction.row),
     column: classSelector(classNames.direction.column),
   },
-  icon: classSelector(classNames.icon),
   content: classSelector(classNames.content),
 };
 
@@ -69,6 +67,9 @@ const StyledElement = styled('div')({
     [`> ${classSelectors.content}`]: {
       flexDirection: 'column',
     },
+    '> :where(button)[data-dismiss]': {
+      alignSelf: 'flex-start',
+    },
   },
   '> :where(svg, [data-icon])': {
     color: 'var(--alert-icon-color)',
@@ -86,9 +87,11 @@ const StyledElement = styled('div')({
     cursor: 'pointer',
     padding: 0,
     alignSelf: 'center',
-  },
-  '> :where(button)[data-dismiss]': {
-    alignSelf: 'flex-start',
+    '&:focus-visible': {
+      outline: 'none',
+      borderRadius: px(4),
+      boxShadow: '0 0 0 2px var(--alert-focus-color)',
+    },
   },
   [COLORSCHEME_SELECTORS.info]: {
     '--alert-background-color': colors.cyan50,
@@ -96,6 +99,7 @@ const StyledElement = styled('div')({
     '--alert-border-color': colors.cyan500,
     '--alert-text-color': colors.cyan900,
     '--alert-link-color': colors.cyan700,
+    '--alert-focus-color': colors.cyan700,
   },
   [COLORSCHEME_SELECTORS.success]: {
     '--alert-background-color': colors.green50,
@@ -103,6 +107,7 @@ const StyledElement = styled('div')({
     '--alert-border-color': colors.green500,
     '--alert-text-color': colors.green900,
     '--alert-link-color': colors.green700,
+    '--alert-focus-color': colors.green700,
   },
   [COLORSCHEME_SELECTORS.warning]: {
     '--alert-background-color': colors.gold50,
@@ -110,6 +115,7 @@ const StyledElement = styled('div')({
     '--alert-border-color': colors.gold500,
     '--alert-text-color': colors.gold900,
     '--alert-link-color': colors.gold700,
+    '--alert-focus-color': colors.gold700,
   },
   [COLORSCHEME_SELECTORS.error]: {
     '--alert-background-color': colors.red50,
@@ -117,10 +123,11 @@ const StyledElement = styled('div')({
     '--alert-border-color': colors.red500,
     '--alert-text-color': colors.red900,
     '--alert-link-color': colors.red700,
+    '--alert-focus-color': colors.red700,
   },
 });
 
-const AlertIcon = ({ colorScheme }) => {
+const AlertIcon = ({ colorScheme }: { colorScheme: AlertProps['colorScheme'] }) => {
   if (colorScheme === 'info') {
     return <InformationMediumContainedIcon />;
   }
@@ -145,7 +152,6 @@ export const Alert = React.forwardRef<
       colorScheme = 'info',
       direction = 'column',
       children,
-      dismissible,
       onDismiss,
       title,
       text,
@@ -184,7 +190,7 @@ export const Alert = React.forwardRef<
             <ChevronRightMediumIcon />
           </button>
         )}
-        {!!dismissible && (
+        {!!onDismiss && (
           <button data-dismiss onClick={onDismiss} title="Dismiss" aria-label="Dismiss alert">
             {direction === 'row' ? <CloseMediumIcon /> : <CloseSmallIcon />}
           </button>
