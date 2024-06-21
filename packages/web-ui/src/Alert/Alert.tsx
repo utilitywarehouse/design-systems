@@ -27,18 +27,10 @@ const componentName = 'Alert';
 const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
-  direction: {
-    row: withGlobalPrefix('direction-row'),
-    column: withGlobalPrefix('direction-column'),
-  },
   content: withGlobalPrefix('alert-content'),
 };
 
 const classSelectors = {
-  direction: {
-    row: classSelector(classNames.direction.row),
-    column: classSelector(classNames.direction.column),
-  },
   content: classSelector(classNames.content),
 };
 
@@ -57,13 +49,13 @@ const StyledElement = styled('div')({
     gap: px(8),
     flex: 1,
   },
-  [classSelectors.direction.row]: {
+  [`:where([${DATA_ATTRIBUTES.orientation}="horizontal"])`]: {
     [`> ${classSelectors.content}`]: {
       flexDirection: 'row',
       alignItems: 'center',
     },
   },
-  [classSelectors.direction.column]: {
+  [`:where([${DATA_ATTRIBUTES.orientation}="vertical"])`]: {
     [`> ${classSelectors.content}`]: {
       flexDirection: 'column',
     },
@@ -73,12 +65,6 @@ const StyledElement = styled('div')({
   },
   '> :where(svg, [data-icon])': {
     color: 'var(--alert-icon-color)',
-  },
-  '> :where(span)': {
-    color: 'var(--alert-text-color)',
-  },
-  '> :where(a)': {
-    color: 'var(--alert-link-color)',
   },
   '> :where(button)': {
     color: 'var(--alert-icon-color)',
@@ -164,11 +150,12 @@ export const Alert = React.forwardRef<
   ) => {
     const dataAttributeProps = {
       [DATA_ATTRIBUTES.colorscheme]: colorScheme,
+      [DATA_ATTRIBUTES.orientation]: direction === 'column' ? 'vertical' : 'horizontal',
     };
     return (
       <StyledElement
         ref={ref}
-        className={clsx(componentClassName, className, classNames.direction[direction])}
+        className={clsx(componentClassName, className)}
         role="alert" // Adding role for dynamic alerts
         aria-live="assertive" // Making it announced immediately
         aria-atomic="true" // Ensuring the entire alert is read as a whole
