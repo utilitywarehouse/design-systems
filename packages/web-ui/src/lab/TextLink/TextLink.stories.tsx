@@ -7,7 +7,7 @@ import { Box } from '../../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof TextLink> = {
-  title: 'Web UI / Lab / TextLink',
+  title: 'Web UI / Lab / Link / TextLink',
   component: TextLink,
   argTypes: {
     children: { control: { type: 'text' } },

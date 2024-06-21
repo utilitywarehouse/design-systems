@@ -6,7 +6,7 @@ import { Stack } from '../Stack';
 import { Text, TextProps } from '../Text';
 
 const meta: Meta<typeof Radio> = {
-  title: 'Web UI / Components / RadioGroup',
+  title: 'Web UI / Components / Radio / Radio',
   component: Radio,
 };
 
