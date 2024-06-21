@@ -1,4 +1,4 @@
-import { Breakpoints } from '../types';
+import { Breakpoints, COLOR_SCHEME } from '../types';
 import { DATA_ATTRIBUTES } from './data-attributes';
 
 export function classSelector(className: string) {
@@ -12,16 +12,20 @@ function colorSchemeSelector(color: string) {
   return `:where([${DATA_ATTRIBUTES.colorscheme}="${color}"])`;
 }
 
+export function colorSchemeParentSelector(colorScheme: COLOR_SCHEME) {
+  return `:where([${DATA_ATTRIBUTES.colorscheme}="${colorScheme}"] &)`;
+}
+
 export const COLORSCHEME_SELECTORS = {
-  cyan: colorSchemeSelector('cyan'),
-  red: colorSchemeSelector('red'),
-  green: colorSchemeSelector('green'),
-  gold: colorSchemeSelector('gold'),
-  grey: colorSchemeSelector('grey'),
-  error: colorSchemeSelector('error'),
-  info: colorSchemeSelector('info'),
-  warning: colorSchemeSelector('warning'),
-  success: colorSchemeSelector('success'),
+  cyan: colorSchemeSelector(COLOR_SCHEME.cyan),
+  red: colorSchemeSelector(COLOR_SCHEME.red),
+  green: colorSchemeSelector(COLOR_SCHEME.green),
+  gold: colorSchemeSelector(COLOR_SCHEME.gold),
+  grey: colorSchemeSelector(COLOR_SCHEME.grey),
+  error: colorSchemeSelector(COLOR_SCHEME.error),
+  info: colorSchemeSelector(COLOR_SCHEME.info),
+  warning: colorSchemeSelector(COLOR_SCHEME.warning),
+  success: colorSchemeSelector(COLOR_SCHEME.success),
 };
 
 export const DATA_ATTRIBUTE_SELECTORS = {

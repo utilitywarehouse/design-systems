@@ -4,8 +4,8 @@ import { Text } from '../Text';
 import type { TextProps } from '../Text';
 import { styled } from '../theme';
 import { fontWeights } from '../tokens';
-import { COLORSCHEME_SELECTORS, withGlobalPrefix } from '../utils';
-import { PropsWithSx } from '../types';
+import { colorSchemeParentSelector, withGlobalPrefix } from '../utils';
+import { COLOR_SCHEME, PropsWithSx } from '../types';
 import clsx from 'clsx';
 
 const componentName = 'AlertTitle';
@@ -14,17 +14,17 @@ const componentClassName = withGlobalPrefix(componentName);
 const StyledElement = styled(Text)({
   fontWeight: fontWeights.secondary.semibold,
   color: 'var(--alert-text-color)',
-  [`${COLORSCHEME_SELECTORS.info} &`]: {
-    '--alert-link-color': colors.cyan700,
+  [colorSchemeParentSelector(COLOR_SCHEME.info)]: {
+    '--alert-text-color': colors.cyan900,
   },
-  [`${COLORSCHEME_SELECTORS.success} &`]: {
-    '--alert-link-color': colors.green700,
+  [colorSchemeParentSelector(COLOR_SCHEME.success)]: {
+    '--alert-text-color': colors.green900,
   },
-  [`${COLORSCHEME_SELECTORS.warning} &`]: {
-    '--alert-link-color': colors.gold700,
+  [colorSchemeParentSelector(COLOR_SCHEME.warning)]: {
+    '--alert-text-color': colors.gold900,
   },
-  [`${COLORSCHEME_SELECTORS.error} &`]: {
-    '--alert-link-color': colors.red700,
+  [colorSchemeParentSelector(COLOR_SCHEME.error)]: {
+    '--alert-text-color': colors.red900,
   },
 });
 

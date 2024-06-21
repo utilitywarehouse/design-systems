@@ -4,8 +4,8 @@ import { TextLink } from '../lab/TextLink';
 import type { TextLinkProps } from '../lab/TextLink';
 import { styled } from '../theme';
 import { fontWeights } from '../tokens';
-import { COLORSCHEME_SELECTORS, withGlobalPrefix } from '../utils';
-import { PropsWithSx } from '../types';
+import { colorSchemeParentSelector, withGlobalPrefix } from '../utils';
+import { COLOR_SCHEME, PropsWithSx } from '../types';
 import clsx from 'clsx';
 
 const componentName = 'AlertLink';
@@ -16,16 +16,16 @@ const StyledElement = styled(TextLink)({
   color: 'var(--alert-link-color)',
   textDecorationColor: 'var(--alert-link-color)',
   alignSelf: 'flex-start',
-  [`${COLORSCHEME_SELECTORS.info} &`]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.info)]: {
     '--alert-link-color': colors.cyan700,
   },
-  [`${COLORSCHEME_SELECTORS.success} &`]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.success)]: {
     '--alert-link-color': colors.green700,
   },
-  [`${COLORSCHEME_SELECTORS.warning} &`]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.warning)]: {
     '--alert-link-color': colors.gold700,
   },
-  [`${COLORSCHEME_SELECTORS.error} &`]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.error)]: {
     '--alert-link-color': colors.red700,
   },
 });

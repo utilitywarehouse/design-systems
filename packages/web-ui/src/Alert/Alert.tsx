@@ -59,7 +59,7 @@ const StyledElement = styled('div')({
     [`> ${classSelectors.content}`]: {
       flexDirection: 'column',
     },
-    '> :where(button)[data-dismiss]': {
+    '> button[data-dismiss]': {
       alignSelf: 'flex-start',
     },
   },
@@ -83,32 +83,24 @@ const StyledElement = styled('div')({
     '--alert-background-color': colors.cyan50,
     '--alert-icon-color': colors.cyan700,
     '--alert-border-color': colors.cyan500,
-    '--alert-text-color': colors.cyan900,
-    '--alert-link-color': colors.cyan700,
     '--alert-focus-color': colors.cyan700,
   },
   [COLORSCHEME_SELECTORS.success]: {
     '--alert-background-color': colors.green50,
     '--alert-icon-color': colors.green700,
     '--alert-border-color': colors.green500,
-    '--alert-text-color': colors.green900,
-    '--alert-link-color': colors.green700,
     '--alert-focus-color': colors.green700,
   },
   [COLORSCHEME_SELECTORS.warning]: {
     '--alert-background-color': colors.gold50,
     '--alert-icon-color': colors.gold700,
     '--alert-border-color': colors.gold500,
-    '--alert-text-color': colors.gold900,
-    '--alert-link-color': colors.gold700,
     '--alert-focus-color': colors.gold700,
   },
   [COLORSCHEME_SELECTORS.error]: {
     '--alert-background-color': colors.red50,
     '--alert-icon-color': colors.red700,
     '--alert-border-color': colors.red500,
-    '--alert-text-color': colors.red900,
-    '--alert-link-color': colors.red700,
     '--alert-focus-color': colors.red700,
   },
 });
