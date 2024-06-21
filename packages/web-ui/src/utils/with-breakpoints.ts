@@ -11,14 +11,14 @@ export const translateBooleanValues = (
   }
   if (typeof value === 'object') {
     const updated = (Object.keys(value) as Array<Breakpoints>).reduce(
-      (acc, bp) => {
+      (acc: { [key: string]: string }, bp: Breakpoints) => {
         const breakpointValue = value[bp];
         if (breakpointValue !== undefined) {
-          acc[bp as unknown as number] = translation[`${breakpointValue}`];
+          acc[bp] = translation[`${breakpointValue}`];
         }
         return acc;
       },
-      {} as { [key in keyof Breakpoints]: string }
+      {}
     );
     return updated as Responsive<string>;
   }
