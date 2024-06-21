@@ -11,6 +11,7 @@ const meta: Meta<typeof Alert> = {
   argTypes: {
     children: { control: { type: 'text' } },
     colorScheme: { options: colorSchemes, control: { type: 'radio' } },
+    direction: { options: ['column', 'row'], control: { type: 'radio' } },
   },
   args: {
     title: 'Alert title',
