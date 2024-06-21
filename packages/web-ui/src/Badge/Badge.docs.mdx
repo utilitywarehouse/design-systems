@@ -44,6 +44,12 @@ This prop will render a more compact Badge.
 <Badge compact>Compact badge</Badge>
 ```
 
+This prop is responsive, so you can set the value according to breakpoint values.
+
+```tsx
+<Badge compact={{ mobile: true, desktop: false }}>Responsive badge padding</Badge>
+```
+
 ## Bottom radius
 
 The `bottomRadiusZero` will remove the `border-bottom-right-radius` and `border-bottom-left-radius`, for use when the badge is positioned on top of another element.
