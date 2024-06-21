@@ -179,22 +179,22 @@ export const Alert = React.forwardRef<
         <div className={classNames.content}>
           {children ?? (
             <>
-              {!!title && <AlertTitle>{title}</AlertTitle>}
-              {!!text && <AlertText>{text}</AlertText>}
-              {!!linkText && <AlertLink href={linkHref}>{linkText}</AlertLink>}
+              {title ? <AlertTitle>{title}</AlertTitle> : null}
+              {text ? <AlertText>{text}</AlertText> : null}
+              {linkText ? <AlertLink href={linkHref}>{linkText}</AlertLink> : null}
             </>
           )}
         </div>
-        {!!onClick && (
+        {onClick ? (
           <button onClick={onClick} title="Alert action" aria-label="Alert action">
             <ChevronRightMediumIcon />
           </button>
-        )}
-        {!!onDismiss && (
+        ) : null}
+        {onDismiss ? (
           <button data-dismiss onClick={onDismiss} title="Dismiss" aria-label="Dismiss alert">
             {direction === 'row' ? <CloseMediumIcon /> : <CloseSmallIcon />}
           </button>
-        )}
+        ) : null}
       </StyledElement>
     );
   }
