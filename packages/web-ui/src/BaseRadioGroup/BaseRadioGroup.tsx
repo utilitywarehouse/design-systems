@@ -65,25 +65,25 @@ export const BaseRadioGroup = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGr
               {label}
             </FieldsetLegend>
           ) : null}
-
-          <Flex gap={2} direction={direction}>
-            {helperText ? (
-              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
-                {helperText}
+          <Flex direction="column" gap={helperTextPosition === 'top' ? 2 : 1}>
+            <Flex gap={2} direction={direction}>
+              {helperText ? (
+                <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                  {helperText}
+                </HelperText>
+              ) : null}
+              <BaseRadioGroupProvider value={value}>{children}</BaseRadioGroupProvider>
+            </Flex>
+            {showErrorMessage ? (
+              <HelperText
+                validationStatus="invalid"
+                showIcon={showErrorMessageIcon}
+                id={errorMessageId}
+              >
+                {errorMessage}
               </HelperText>
             ) : null}
-            <BaseRadioGroupProvider value={value}>{children}</BaseRadioGroupProvider>
           </Flex>
-
-          {showErrorMessage ? (
-            <HelperText
-              validationStatus="invalid"
-              showIcon={showErrorMessageIcon}
-              id={errorMessageId}
-            >
-              {errorMessage}
-            </HelperText>
-          ) : null}
         </Fieldset>
       </Root>
     );

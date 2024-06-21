@@ -92,24 +92,26 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
             {label}
           </FieldsetLegend>
         ) : null}
-        <Flex gap={2} direction={direction}>
-          {helperText ? (
-            <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
-              {helperText}
+        <Flex direction="column" gap={helperTextPosition === 'top' ? 2 : 1}>
+          <Flex gap={2} direction={direction}>
+            {helperText ? (
+              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                {helperText}
+              </HelperText>
+            ) : null}
+
+            <BaseCheckboxGroupProvider value={providerValue}>{children}</BaseCheckboxGroupProvider>
+          </Flex>
+          {showErrorMessage ? (
+            <HelperText
+              validationStatus="invalid"
+              showIcon={showErrorMessageIcon}
+              id={errorMessageId}
+            >
+              {errorMessage}
             </HelperText>
           ) : null}
-
-          <BaseCheckboxGroupProvider value={providerValue}>{children}</BaseCheckboxGroupProvider>
         </Flex>
-        {showErrorMessage ? (
-          <HelperText
-            validationStatus="invalid"
-            showIcon={showErrorMessageIcon}
-            id={errorMessageId}
-          >
-            {errorMessage}
-          </HelperText>
-        ) : null}
       </Fieldset>
     );
   }
