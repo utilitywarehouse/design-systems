@@ -52,25 +52,25 @@ const StyledElement = styled('div')({
       boxShadow: '0 0 0 2px var(--alert-focus-color)',
     },
   },
-  [COLORSCHEME_SELECTORS.info]: {
+  [COLORSCHEME_SELECTORS.cyan]: {
     '--alert-background-color': colors.cyan50,
     '--alert-icon-color': colors.cyan700,
     '--alert-border-color': colors.cyan500,
     '--alert-focus-color': colors.cyan700,
   },
-  [COLORSCHEME_SELECTORS.success]: {
+  [COLORSCHEME_SELECTORS.green]: {
     '--alert-background-color': colors.green50,
     '--alert-icon-color': colors.green700,
     '--alert-border-color': colors.green500,
     '--alert-focus-color': colors.green700,
   },
-  [COLORSCHEME_SELECTORS.warning]: {
+  [COLORSCHEME_SELECTORS.gold]: {
     '--alert-background-color': colors.gold50,
     '--alert-icon-color': colors.gold700,
     '--alert-border-color': colors.gold500,
     '--alert-focus-color': colors.gold700,
   },
-  [COLORSCHEME_SELECTORS.error]: {
+  [COLORSCHEME_SELECTORS.red]: {
     '--alert-background-color': colors.red50,
     '--alert-icon-color': colors.red700,
     '--alert-border-color': colors.red500,

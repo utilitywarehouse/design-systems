@@ -22,10 +22,6 @@ export const COLORSCHEME_SELECTORS = {
   green: colorSchemeSelector(COLOR_SCHEME.green),
   gold: colorSchemeSelector(COLOR_SCHEME.gold),
   grey: colorSchemeSelector(COLOR_SCHEME.grey),
-  error: colorSchemeSelector(COLOR_SCHEME.error),
-  info: colorSchemeSelector(COLOR_SCHEME.info),
-  warning: colorSchemeSelector(COLOR_SCHEME.warning),
-  success: colorSchemeSelector(COLOR_SCHEME.success),
 };
 
 export const DATA_ATTRIBUTE_SELECTORS = {

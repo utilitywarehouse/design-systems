@@ -4,7 +4,7 @@ import { COLOR_SCHEME } from '../types';
 export interface AlertProps extends ComponentPropsWithoutRef<'div'> {
   /**
    * Sets the colour scheme.
-   * @default info
+   * @default cyan
    */
   colorScheme?: COLOR_SCHEME.cyan | COLOR_SCHEME.red | COLOR_SCHEME.green | COLOR_SCHEME.gold;
   /**
