@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 0.8.3
+
+### Patch Changes
+
+- [#376](https://github.com/utilitywarehouse/design-systems/pull/376) [`8456179c`](https://github.com/utilitywarehouse/design-systems/commit/8456179c56fc0bb2ea7e14f047c273bad931319b) Thanks [@robphoenix](https://github.com/robphoenix)! - Make the compact prop on `Badge` responsive
+
 ## 0.8.2
 
 ### Patch Changes
