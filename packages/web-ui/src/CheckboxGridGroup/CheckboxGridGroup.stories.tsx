@@ -8,6 +8,7 @@ import { Text } from '../Text';
 const meta: Meta<typeof CheckboxGridGroup> = {
   title: 'Web UI / Components / Checkbox / CheckboxGridGroup',
   component: CheckboxGridGroup,
+  tags: ['autodocs'],
   argTypes: {
     helperText: { control: { type: 'text' } },
     helperTextPosition: { options: ['top', 'bottom'], control: { type: 'radio' } },
@@ -70,5 +71,44 @@ export const Controlled: Story = {
         </CheckboxGridGroup>
       </Flex>
     );
+  },
+};
+
+export const CheckboxGridWithRadioHelperText: Story = {
+  name: 'With Checkbox HelperText',
+  render: args => {
+    return (
+      <CheckboxGridGroup {...args}>
+        <CheckboxTile value="1" label="One" helperText="One helper text" />
+        <CheckboxTile value="2" label="Two" helperText="Two helper text" />
+        <CheckboxTile value="3" label="Three" helperText="Three helper text" />
+        <CheckboxTile value="4" label="One" helperText="Four helper text" />
+        <CheckboxTile value="5" label="Two" helperText="Five helper text" />
+        <CheckboxTile value="6" label="Three" helperText="Six helper text" />
+      </CheckboxGridGroup>
+    );
+  },
+  args: {
+    helperText: '',
+  },
+};
+
+export const CheckboxGridGroupResponsiveColumns: Story = {
+  name: 'With Responsive Columns',
+  render: args => {
+    return (
+      <CheckboxGridGroup {...args}>
+        <CheckboxTile value="1" label="One" />
+        <CheckboxTile value="2" label="Two" />
+        <CheckboxTile value="3" label="Three" />
+        <CheckboxTile value="4" label="Four" />
+        <CheckboxTile value="5" label="Five" />
+        <CheckboxTile value="6" label="Six" />
+      </CheckboxGridGroup>
+    );
+  },
+  args: {
+    helperText: 'CheckboxGridGroup with Responsive Columns',
+    columns: { mobile: 1, tablet: 2, desktop: 3, wide: 6 },
   },
 };
