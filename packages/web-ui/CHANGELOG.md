@@ -1,5 +1,19 @@
 # @utilitywarehouse/web-ui
 
+## 0.8.3
+
+### Patch Changes
+
+- [#376](https://github.com/utilitywarehouse/design-systems/pull/376) [`8456179c`](https://github.com/utilitywarehouse/design-systems/commit/8456179c56fc0bb2ea7e14f047c273bad931319b) Thanks [@robphoenix](https://github.com/robphoenix)! - Make the compact prop on `Badge` responsive
+
+## 0.8.2
+
+### Patch Changes
+
+- [#377](https://github.com/utilitywarehouse/design-systems/pull/377) [`19239bc8`](https://github.com/utilitywarehouse/design-systems/commit/19239bc8f041e8cc6cb38a5010c0bdb72a75e553) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix TextLink font-weight
+
+- [#378](https://github.com/utilitywarehouse/design-systems/pull/378) [`774e2a86`](https://github.com/utilitywarehouse/design-systems/commit/774e2a8623256d20d97c41309397a1dba24e116f) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Text element
+
 ## 0.8.1
 
 ### Patch Changes

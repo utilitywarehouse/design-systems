@@ -25,7 +25,7 @@ const StyledElement = styled('a', {
   fontFamily: 'inherit',
   fontSize: 'inherit',
   lineHeight: 'inherit',
-  weight: 'inherit',
+  fontWeight: 'inherit',
   '--text-link-color': colors.cyan600,
   '--text-link-color-custom': color,
   '--text-link-color-on-brand-bg': colorsCommon.brandWhite,

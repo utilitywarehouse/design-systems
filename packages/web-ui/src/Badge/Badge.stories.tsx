@@ -112,3 +112,12 @@ export const ContextualColour: Story = {
     );
   },
 };
+
+export const Compact: Story = {
+  name: 'Responsive padding',
+  render: args => (
+    <Badge {...args} compact={{ mobile: true, desktop: false }}>
+      Responsive badge padding
+    </Badge>
+  ),
+};
