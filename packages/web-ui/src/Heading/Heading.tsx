@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createBox, useBackground } from '../Box';
+import { useBackground } from '../Box';
 import { PropsWithSx } from '../types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import {
@@ -16,7 +16,7 @@ import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'Heading';
-const BaseBox = createBox<'h1' | 'h2' | 'h3' | 'h4'>({ componentName });
+const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
   variant: {
@@ -38,7 +38,9 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'color' })<{
+const StyledElement = styled('h2', {
+  shouldForwardProp: prop => prop !== 'color' && prop !== 'as',
+})<{
   color?: string;
 }>(({ color }) => {
   return {
@@ -130,8 +132,8 @@ export const Heading = React.forwardRef<
   return (
     <StyledElement
       ref={ref}
-      component={element}
-      className={clsx(className, classNames.variant[variant])}
+      as={element}
+      className={clsx(componentClassName, className, classNames.variant[variant])}
       color={color}
       {...dataAttributeProps}
       {...props}
