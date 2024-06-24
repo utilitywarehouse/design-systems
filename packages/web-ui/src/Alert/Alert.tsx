@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PropsWithSx } from '../types';
+import { COLOR_SCHEME, PropsWithSx } from '../types';
 import { AlertProps } from './Alert.props';
 import { COLORSCHEME_SELECTORS, DATA_ATTRIBUTES, px, withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
@@ -79,10 +79,10 @@ const StyledElement = styled('div')({
 });
 
 const AlertIcon = ({ colorScheme }: { colorScheme: AlertProps['colorScheme'] }) => {
-  if (colorScheme === 'info') {
+  if (colorScheme === COLOR_SCHEME.cyan) {
     return <InformationMediumContainedIcon />;
   }
-  if (colorScheme === 'success') {
+  if (colorScheme === COLOR_SCHEME.green) {
     return <TickMediumContainedIcon />;
   }
   return <WarningMediumContainedIcon />;
@@ -100,7 +100,7 @@ export const Alert = React.forwardRef<
   (
     {
       className,
-      colorScheme = 'info',
+      colorScheme = COLOR_SCHEME.cyan,
       direction = 'column',
       children,
       onDismiss,

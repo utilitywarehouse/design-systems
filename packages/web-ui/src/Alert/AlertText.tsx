@@ -12,16 +12,16 @@ const componentClassName = withGlobalPrefix(componentName);
 
 const StyledElement = styled(Text)({
   color: 'var(--alert-text-color)',
-  [colorSchemeParentSelector(COLOR_SCHEME.info)]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.cyan)]: {
     '--alert-text-color': colors.cyan900,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.success)]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.green)]: {
     '--alert-text-color': colors.green900,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.warning)]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.gold)]: {
     '--alert-text-color': colors.gold900,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.error)]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.red)]: {
     '--alert-text-color': colors.red900,
   },
 });

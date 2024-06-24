@@ -16,16 +16,16 @@ const StyledElement = styled(TextLink)({
   color: 'var(--alert-link-color)',
   textDecorationColor: 'var(--alert-link-color)',
   alignSelf: 'flex-start',
-  [colorSchemeParentSelector(COLOR_SCHEME.info)]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.cyan)]: {
     '--alert-link-color': colors.cyan700,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.success)]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.green)]: {
     '--alert-link-color': colors.green700,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.warning)]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.gold)]: {
     '--alert-link-color': colors.gold700,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.error)]: {
+  [colorSchemeParentSelector(COLOR_SCHEME.red)]: {
     '--alert-link-color': colors.red700,
   },
 });

@@ -12,8 +12,4 @@ export enum COLOR_SCHEME {
   green = 'green',
   gold = 'gold',
   grey = 'grey',
-  error = 'error',
-  info = 'info',
-  warning = 'warning',
-  success = 'success',
 }

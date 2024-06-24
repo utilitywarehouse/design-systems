@@ -2,8 +2,14 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Alert } from './Alert';
 import { Flex } from '../Flex';
+import { COLOR_SCHEME } from '../types';
 
-const colorSchemes = ['info', 'warning', 'error', 'success'] as const;
+const colorSchemes = [
+  COLOR_SCHEME.cyan,
+  COLOR_SCHEME.red,
+  COLOR_SCHEME.green,
+  COLOR_SCHEME.gold,
+] as const;
 
 const meta: Meta<typeof Alert> = {
   title: 'Web UI / Components / Alert',
@@ -18,7 +24,7 @@ const meta: Meta<typeof Alert> = {
     text: 'Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris.',
     linkText: 'Alert link',
     linkHref: '#',
-    colorScheme: 'info',
+    colorScheme: COLOR_SCHEME.cyan,
   },
 };
 
