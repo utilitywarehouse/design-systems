@@ -36,6 +36,31 @@ const [checked, setChecked] = React.useState(false);
 <Checkbox value="1" label="One" checked={checked} onCheckedChange={c => setChecked(c)} />
 ```
 
+## Keyboard interactions
+
+<Stack spacing={1} divider={<Divider />}>
+  <Box display="flex" alignItems="baseline">
+    <Box width={300}>
+      <Text component="span" variant="legalNote">
+        {'Key'}
+      </Text>
+    </Box>
+    <Text component="span" variant="legalNote">
+      {'Description'}
+    </Text>
+  </Box>
+  {[{ key: 'Space', description: 'Checks/unchecks the checkbox.' }].map(kbi => (
+    <Box display="flex" alignItems="baseline">
+      <Box width={300}>
+        <kbd>{kbi.key}</kbd>
+      </Box>
+      <Text component="span" variant="body">
+        {kbi.description}
+      </Text>
+    </Box>
+  ))}
+</Stack>
+
 ## Props
 
 <ArgTypes of={Stories} />

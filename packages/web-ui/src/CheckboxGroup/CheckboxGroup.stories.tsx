@@ -5,6 +5,9 @@ import { Flex } from '../Flex';
 import { Text } from '../Text';
 import { Checkbox } from '../Checkbox';
 import { CheckboxTile } from '../CheckboxTile';
+import { useState } from 'react';
+import { Box } from '../Box';
+import { colors } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof CheckboxGroup> = {
   title: 'Web UI / Components / Checkbox / CheckboxGroup',
@@ -72,6 +75,80 @@ export const Controlled: Story = {
           <Checkbox value="3" label="Three" />
         </CheckboxGroup>
       </Flex>
+    );
+  },
+};
+
+export const CheckboxHelperText: Story = {
+  name: 'Checkbox HelperText',
+  render: args => {
+    return (
+      <CheckboxGroup {...args}>
+        <Checkbox value="1" label="One" helperText="One helper text" />
+        <Checkbox value="2" label="Two" helperText="Two helper text" />
+        <Checkbox value="3" label="Three" helperText="Three helper text" />
+      </CheckboxGroup>
+    );
+  },
+  args: {
+    helperText: 'Please choose wisely.',
+  },
+};
+
+export const ShowingError: Story = {
+  name: 'Error message',
+  render: args => {
+    const [selected, setSelected] = useState<Array<string>>([]);
+    return (
+      <CheckboxGroup
+        {...args}
+        value={selected}
+        onValueChange={setSelected}
+        error={selected.length < 2}
+      >
+        <Checkbox value="1" label="Bear" />
+        <Checkbox value="2" label="Koala" />
+        <Checkbox value="3" label="Wolf" />
+        <Checkbox value="4" label="Horse" />
+        <Checkbox value="5" label="Chicken" />
+        <Checkbox value="6" label="Peacock" />
+      </CheckboxGroup>
+    );
+  },
+  args: {
+    errorMessage: 'Please pick two.',
+    label: 'What are your two favourite animals?',
+    helperTextPosition: 'bottom',
+  },
+};
+
+export const ContentWidth: Story = {
+  name: 'Content Width',
+  render: args => {
+    return (
+      <CheckboxGroup {...args} helperText="Setting the width of the children elements">
+        <CheckboxTile value="1" label="One" />
+        <CheckboxTile value="2" label="Two" />
+        <CheckboxTile value="3" label="Three" />
+      </CheckboxGroup>
+    );
+  },
+  args: { contentWidth: '200px' },
+};
+
+export const Wrap: Story = {
+  name: 'Wrap',
+  render: args => {
+    return (
+      <Box height={800} width={400} padding={2} border="2px solid" borderColor={colors.grey500}>
+        <CheckboxGroup {...args} direction="row" helperText="Child elements will wrap by default">
+          <CheckboxTile value="1" label="One" />
+          <CheckboxTile value="2" label="Two" />
+          <CheckboxTile value="3" label="Three" />
+          <CheckboxTile value="4" label="Four" />
+          <CheckboxTile value="5" label="Five" />
+        </CheckboxGroup>
+      </Box>
     );
   },
 };

@@ -10,18 +10,18 @@ export interface BaseCheckboxGroupProps extends ComponentPropsWithoutRef<'fields
   value?: BaseCheckboxGroupContextValue['value'];
   onValueChange?: (value: Array<string>) => void;
   /**
-   * The label for the radio group. This should contain the question being
-   * answered by the radio group.
+   * The label for the checkbox group. This should contain the question being
+   * answered by the checkbox group.
    *
    * If you don't include a label you need to ensure you use the `aria-label`
-   * or `aria-labelledby` prop to properly associate a label with the radio
+   * or `aria-labelledby` prop to properly associate a label with the checkbox
    * group.
    */
   label?: ReactNode;
   /**
-   * Helper text for the radio group. Provides a hint such as specific
-   * requirements for what to choose. When displayed, child `Radio` or
-   * `RadioTile` components will not display `helperText`.
+   * Helper text for the checkbox group. Provides a hint such as specific
+   * requirements for what to choose. When displayed, child `Checkbox` or
+   * `CheckboxTile` components will not display `helperText`.
    */
   helperText?: ReactNode;
   /**
@@ -42,8 +42,8 @@ export interface BaseCheckboxGroupProps extends ComponentPropsWithoutRef<'fields
    */
   showErrorMessageIcon?: boolean;
   /**
-   * Set the width of the RadioGroup children, separate to the width of the
-   * entire RadioGroup.
+   * Set the width of the CheckboxGroup children, separate to the width of the
+   * entire CheckboxGroup.
    */
   contentWidth?: BoxProps['width'];
 }

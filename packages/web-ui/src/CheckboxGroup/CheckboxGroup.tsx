@@ -20,6 +20,16 @@ const StyledContentContainer = styled(Flex)({
   },
 });
 
+/**
+ * Set of interactive buttons where multiple options can be selected at a time.
+ * The `CheckboxGroup` uses a fieldset to group related `Checkbox` controls.
+ *
+ * The `CheckboxGroup` is responsible for handling the value, helper text, error
+ * state, error message, and disabled state, as well as determining the presentation and
+ * selection of the items in the list.
+ *
+ * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ */
 export const CheckboxGroup = React.forwardRef<HTMLFieldSetElement, CheckboxGroupProps>(
   ({ contentWidth = 'fit-content', direction = 'column', children, className, ...props }, ref) => {
     return (
