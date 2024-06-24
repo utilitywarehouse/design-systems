@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { PropsWithSx } from '../types';
 import { AlertProps } from './Alert.props';
-import {
-  COLORSCHEME_SELECTORS,
-  DATA_ATTRIBUTES,
-  classSelector,
-  px,
-  withGlobalPrefix,
-} from '../utils';
+import { COLORSCHEME_SELECTORS, DATA_ATTRIBUTES, px, withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
 import { styled } from '../theme';
 import { colors } from '@utilitywarehouse/colour-system';
@@ -22,17 +16,10 @@ import {
 import { AlertTitle } from './AlertTitle';
 import { AlertText } from './AlertText';
 import { AlertLink } from './AlertLink';
+import { Flex } from '../Flex';
 
 const componentName = 'Alert';
 const componentClassName = withGlobalPrefix(componentName);
-
-const classNames = {
-  content: withGlobalPrefix('alert-content'),
-};
-
-const classSelectors = {
-  content: classSelector(classNames.content),
-};
 
 const StyledElement = styled('div')({
   display: 'flex',
@@ -44,21 +31,7 @@ const StyledElement = styled('div')({
   flexDirection: 'row',
   padding: px(16),
   backgroundColor: 'var(--alert-background-color)',
-  [`> ${classSelectors.content}`]: {
-    display: 'flex',
-    gap: px(8),
-    flex: 1,
-  },
-  [`:where([${DATA_ATTRIBUTES.orientation}="horizontal"])`]: {
-    [`> ${classSelectors.content}`]: {
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-  },
   [`:where([${DATA_ATTRIBUTES.orientation}="vertical"])`]: {
-    [`> ${classSelectors.content}`]: {
-      flexDirection: 'column',
-    },
     '> button[data-dismiss]': {
       alignSelf: 'flex-start',
     },
@@ -155,7 +128,7 @@ export const Alert = React.forwardRef<
         {...props}
       >
         <AlertIcon colorScheme={colorScheme} />
-        <div className={classNames.content}>
+        <Flex direction={direction} gap={1} flex={1}>
           {children ?? (
             <>
               {title ? <AlertTitle>{title}</AlertTitle> : null}
@@ -163,7 +136,7 @@ export const Alert = React.forwardRef<
               {linkText ? <AlertLink href={linkHref}>{linkText}</AlertLink> : null}
             </>
           )}
-        </div>
+        </Flex>
         {onClick ? (
           <button onClick={onClick} title="Alert action" aria-label="Alert action">
             <ChevronRightMediumIcon />
