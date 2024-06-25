@@ -7,4 +7,3 @@ export * from './merge-ids';
 export * from './typography';
 export * from './utils';
 export * from './with-breakpoints';
-export * from './columns';
