@@ -1,5 +1,5 @@
 import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
-import * as AlertStories from './Alert.stories';
+import * as Stories from './Alert.stories';
 import {
   Alert,
   Center,
@@ -24,7 +24,7 @@ import {
   CloseSmallIcon,
 } from '@utilitywarehouse/react-native-icons';
 
-<Meta of={AlertStories} />
+<Meta of={Stories} />
 
 # Alert
 
@@ -79,6 +79,12 @@ const MyComponent = () => {
 | `onClose`           | `() => void`                           | A callback function to be called when the close button is clicked. |         |
 
 For more information, see the [Gluestack Alert component documentation](https://gluestack.io/ui/docs/components/feedback/alert).
+
+## Variants
+
+The `Alert` component has four colour schemes: cyan, green, gold and red. Each colour scheme is mapped to an icon.
+
+<Canvas of={Stories.Variants} />
 
 ## Advanced Usage
 
