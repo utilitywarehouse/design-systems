@@ -20,7 +20,8 @@
     "@gluestack-style/legend-motion-animation-driver": "^1.0.3",
     "@gluestack-style/react": "1.0.56",
     "@gluestack-ui/themed": "1.1.26",
-    "@utilitywarehouse/colour-system": "workspace:^"
+    "@utilitywarehouse/colour-system": "workspace:^",
+    "@utilitywarehouse/react-native-icons": "1.6.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.9",
@@ -41,7 +42,6 @@
     "webpack-cli": "^5.1.4"
   },
   "peerDependencies": {
-    "@utilitywarehouse/react-native-icons": ">=1.2.0",
     "react": ">=16",
     "react-dom": ">=16",
     "react-native": ">=0.72",
