@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createBox, useBackground } from '../Box';
+import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import {
   DATA_ATTRIBUTES,
@@ -16,7 +16,7 @@ import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'Text';
-const BaseBox = createBox<'p' | 'span'>({ componentName });
+const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
   bold: withGlobalPrefix('bold'),
@@ -40,7 +40,9 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'color' })<{
+const StyledElement = styled('p', {
+  shouldForwardProp: prop => prop !== 'color' && prop !== 'as',
+})<{
   color?: string;
 }>(({ color }) => {
   return {
@@ -109,9 +111,9 @@ const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'col
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Text = React.forwardRef<
-  React.ElementRef<'span'>,
+  React.ElementRef<'p'>,
   React.PropsWithChildren<PropsWithSx<TextProps>>
->(({ variant = 'body', bold, noWrap, color, className, ...props }, ref) => {
+>(({ variant = 'body', component = 'p', bold, noWrap, color, className, ...props }, ref) => {
   const { isBrandBackground } = useBackground();
   const dataAttributeProps = {
     [DATA_ATTRIBUTES.onBrandBackground]: !color && isBrandBackground ? '' : undefined,
@@ -121,7 +123,8 @@ export const Text = React.forwardRef<
   return (
     <StyledElement
       ref={ref}
-      className={clsx(className, classNames.variant[variant], {
+      as={component}
+      className={clsx(componentClassName, className, classNames.variant[variant], {
         [classNames.bold]: bold,
         [classNames.noWrap]: noWrap,
       })}
