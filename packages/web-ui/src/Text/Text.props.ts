@@ -38,7 +38,7 @@ export interface TextProps
   noWrap?: boolean | undefined;
   /**
    * Sets the HTML component that is rendered.
-   * @default span
+   * @default p
    */
   component?: BoxProps['component'];
 }
