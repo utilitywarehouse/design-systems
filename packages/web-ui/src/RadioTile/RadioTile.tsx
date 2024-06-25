@@ -73,6 +73,9 @@ const StyledRadioItem = styled(Item)({
   },
 }) as React.FC<RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>>;
 
+const StyledLabel = styled(Label)({ userSelect: 'none' });
+const StyledHelperText = styled(HelperText)({ userSelect: 'none' });
+
 /**
  * The `RadioTile` should be used within a `RadioGroup` component.
  *
@@ -112,10 +115,12 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
           </StyledRadio>
           {showLabel ? (
             <Flex direction="column" gap={0.5}>
-              <Label component="span" id={labelId} htmlFor={id} nested>
+              <StyledLabel component="span" id={labelId} htmlFor={id} nested>
                 {label}
-              </Label>
-              {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
+              </StyledLabel>
+              {showHelperText ? (
+                <StyledHelperText id={helperTextId}>{helperText}</StyledHelperText>
+              ) : null}
             </Flex>
           ) : null}
         </Flex>

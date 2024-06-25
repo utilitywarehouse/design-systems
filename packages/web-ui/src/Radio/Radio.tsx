@@ -88,6 +88,23 @@ const StyledRadioContainer = styled('div')({
   margin: -8,
 });
 
+// we do this so that the gap between the checkbox & label is clickable
+const StyledLabel = styled(Label)({
+  userSelect: 'none',
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    left: -8,
+  },
+});
+
+const StyledHelperText = styled(HelperText)({
+  userSelect: 'none',
+});
+
 /**
  * Radios can be used to choose between a set of more than two options.
  *
@@ -135,25 +152,12 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
         </StyledRadioContainer>
         {showLabel ? (
           <Flex direction="column" gap={0.5}>
-            <Label
-              id={labelId}
-              htmlFor={id}
-              nested
-              // we do this so that the gap between the radio & label is clickable
-              sx={{
-                position: 'relative',
-                '&:after': {
-                  content: '""',
-                  position: 'absolute',
-                  height: '100%',
-                  width: '100%',
-                  left: -8,
-                },
-              }}
-            >
+            <StyledLabel id={labelId} htmlFor={id} nested>
               {label}
-            </Label>
-            {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
+            </StyledLabel>
+            {showHelperText ? (
+              <StyledHelperText id={helperTextId}>{helperText}</StyledHelperText>
+            ) : null}
           </Flex>
         ) : null}
       </StyledElement>
