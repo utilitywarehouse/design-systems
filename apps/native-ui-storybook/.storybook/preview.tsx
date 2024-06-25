@@ -145,6 +145,7 @@ const preview: Preview = {
               'Checkbox',
               'HStack',
               'Icons',
+              'Input',
               'Pressable',
               'Radio',
               'Spinner',

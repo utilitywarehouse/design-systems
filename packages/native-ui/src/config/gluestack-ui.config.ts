@@ -29,11 +29,14 @@ export const gluestackUIConfig = createConfig({
   tokens: {
     colors: {
       ...colors,
-      ...Object.keys(colorsDark).reduce((acc, key) => {
-        acc[`dark${key[0].toUpperCase()}${key.slice(1)}`] =
-          colorsDark[key as keyof typeof colorsDark];
-        return acc;
-      }, {} as Record<string, string>),
+      ...Object.keys(colorsDark).reduce(
+        (acc, key) => {
+          acc[`dark${key[0].toUpperCase()}${key.slice(1)}`] =
+            colorsDark[key as keyof typeof colorsDark];
+          return acc;
+        },
+        {} as Record<string, string>
+      ),
       ...colorsCommon,
     },
     space: {
@@ -56,6 +59,7 @@ export const gluestackUIConfig = createConfig({
       '10': 40,
       '11': 44,
       '12': 48,
+      '14': 56,
       '16': 64,
       '20': 80,
       '24': 96,

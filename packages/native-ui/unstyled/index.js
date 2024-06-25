@@ -1,6 +1,4 @@
 export { Divider } from '@gluestack-ui/themed';
-export { FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlHelper, FormControlHelperText, FormControlLabel, FormControlLabelText, } from '@gluestack-ui/themed';
-export { Input, InputField, InputIcon, InputSlot } from '@gluestack-ui/themed';
 export { Select, SelectBackdrop, SelectContent, SelectDragIndicator, SelectDragIndicatorWrapper, SelectFlatList, SelectIcon, SelectInput, SelectItem, SelectItemText, SelectPortal, SelectScrollView, SelectSectionHeaderText, SelectSectionList, SelectTrigger, SelectVirtualizedList, } from '@gluestack-ui/themed';
 export { Slider, SliderFilledTrack, SliderThumb, SliderTrack } from '@gluestack-ui/themed';
 export { Switch } from '@gluestack-ui/themed';
