@@ -14,14 +14,15 @@ import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
 const componentName = 'Checkbox';
 const componentClassName = withGlobalPrefix(componentName);
 
-export const StyledBaseCheckbox = styled(BaseCheckbox)({
+const StyledBaseCheckbox = styled(BaseCheckbox)({
   ':where(:focus-visible)': {
     '--checkbox-outline-color': 'var(--checkbox-outline-color-focus)',
   },
 });
 
 // we do this so that the gap between the checkbox & label is clickable
-export const StyledLabel = styled(Label)({
+const StyledLabel = styled(Label)({
+  userSelect: 'none',
   position: 'relative',
   '&::before': {
     content: '""',
@@ -30,6 +31,10 @@ export const StyledLabel = styled(Label)({
     width: '100%',
     left: -8,
   },
+});
+
+const StyledHelperText = styled(HelperText)({
+  userSelect: 'none',
 });
 
 /**
@@ -75,7 +80,9 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<Checkbox
             <StyledLabel id={labelId} htmlFor={id} nested>
               {label}
             </StyledLabel>
-            {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
+            {showHelperText ? (
+              <StyledHelperText id={helperTextId}>{helperText}</StyledHelperText>
+            ) : null}
           </Flex>
         ) : null}
       </Flex>

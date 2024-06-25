@@ -42,6 +42,9 @@ const StyledTile = styled('label')({
   },
 });
 
+const StyledLabel = styled(Label)({ userSelect: 'none' });
+const StyledHelperText = styled(HelperText)({ userSelect: 'none' });
+
 /**
  * CheckboxTile allows the user to toggle between checked and not checked.
  *
@@ -81,10 +84,12 @@ export const CheckboxTile = React.forwardRef<HTMLButtonElement, PropsWithSx<Chec
         />
         {showLabel ? (
           <Flex direction="column" gap={0.5}>
-            <Label component="span" id={labelId} htmlFor={id} nested>
+            <StyledLabel component="span" id={labelId} htmlFor={id} nested>
               {label}
-            </Label>
-            {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
+            </StyledLabel>
+            {showHelperText ? (
+              <StyledHelperText id={helperTextId}>{helperText}</StyledHelperText>
+            ) : null}
           </Flex>
         ) : null}
       </StyledTile>
