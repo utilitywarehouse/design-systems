@@ -1,3 +1,4 @@
+import { colorsDark } from '@utilitywarehouse/colour-system';
 import { capitalise } from './captailise';
 
 type Scheme = 'cyan' | 'red' | 'green' | 'grey' | 'gold';
@@ -106,7 +107,9 @@ export const colourScheme = (scheme: Scheme) => ({
 
     _spinner: {
       _svg: {
-        color: `$dark${capitalise(scheme)}50`,
+        props: {
+          color: colorsDark?.[`${scheme}50`],
+        },
       },
     },
 
@@ -120,7 +123,9 @@ export const colourScheme = (scheme: Scheme) => ({
       },
       _spinner: {
         _svg: {
-          color: `$dark${capitalise(scheme)}50`,
+          props: {
+            color: colorsDark?.[`${scheme}50`],
+          },
         },
       },
     },
@@ -136,7 +141,9 @@ export const colourScheme = (scheme: Scheme) => ({
       },
       _spinner: {
         _svg: {
-          color: '$darkGrey400',
+          props: {
+            color: colorsDark.grey400,
+          },
         },
       },
     },
@@ -214,7 +221,9 @@ export const outlineScheme = (scheme: Scheme) => ({
 
       _spinner: {
         _svg: {
-          color: `$dark${capitalise(scheme)}900`,
+          props: {
+            color: colorsDark?.[`${scheme}900`],
+          },
         },
       },
 
@@ -232,7 +241,9 @@ export const outlineScheme = (scheme: Scheme) => ({
 
         _spinner: {
           _svg: {
-            color: `$dark${capitalise(scheme)}900`,
+            props: {
+              color: colorsDark?.[`${scheme}900`],
+            },
           },
         },
       },
@@ -249,7 +260,9 @@ export const outlineScheme = (scheme: Scheme) => ({
         },
         _spinner: {
           _svg: {
-            color: `$darkGrey400`,
+            props: {
+              color: colorsDark.grey400,
+            },
           },
         },
       },
@@ -324,7 +337,9 @@ export const ghostScheme = (scheme: Scheme) => ({
 
       _spinner: {
         _svg: {
-          color: `$dark${capitalise(scheme)}600`,
+          props: {
+            color: colorsDark?.[`${scheme}600`],
+          },
         },
       },
 
@@ -341,7 +356,9 @@ export const ghostScheme = (scheme: Scheme) => ({
 
         _spinner: {
           _svg: {
-            color: `$dark${capitalise(scheme)}600`,
+            props: {
+              color: colorsDark?.[`${scheme}600`],
+            },
           },
         },
       },
@@ -359,7 +376,9 @@ export const ghostScheme = (scheme: Scheme) => ({
 
         _spinner: {
           _svg: {
-            color: `$darkGrey400`,
+            props: {
+              color: colorsDark.grey400,
+            },
           },
         },
       },
