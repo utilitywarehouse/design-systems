@@ -320,19 +320,22 @@ importers:
         version: 14.1.0(react-native@0.74.1)(react@18.2.0)
     devDependencies:
       '@babel/preset-env':
-        specifier: ^7.24.4
+        specifier: ^7.22.9
         version: 7.24.4
       '@babel/preset-react':
-        specifier: ^7.24.1
+        specifier: ^7.22.5
         version: 7.24.1
       '@babel/preset-typescript':
-        specifier: ^7.24.1
-        version: 7.24.1(@babel/core@7.19.3)
+        specifier: ^7.22.5
+        version: 7.24.1
       '@types/react':
-        specifier: ^18.2.75
+        specifier: ^18.2.45
         version: 18.2.79
+      '@types/react-native':
+        specifier: ^0.73.0
+        version: 0.73.0(@babel/preset-env@7.24.4)(@types/react@18.2.79)(react@18.2.0)
       '@utilitywarehouse/react-native-icons':
-        specifier: ^1.4.0
+        specifier: ^1.2.0
         version: 1.5.0(react-native-svg@14.1.0)(react-native@0.74.1)(react@18.2.0)
       file-loader:
         specifier: ^6.2.0
@@ -353,13 +356,13 @@ importers:
         specifier: ^9.4.4
         version: 9.4.4(typescript@5.4.5)(webpack@5.91.0)
       typescript:
-        specifier: ^5.4.4
+        specifier: ^5.1.6
         version: 5.4.5
       url-loader:
         specifier: ^4.1.1
         version: 4.1.1(file-loader@6.2.0)(webpack@5.91.0)
       webpack:
-        specifier: ^5.91.0
+        specifier: ^5.88.2
         version: 5.91.0(webpack-cli@5.1.4)
       webpack-cli:
         specifier: ^5.1.4
@@ -408,7 +411,7 @@ importers:
         version: 7.22.5
       '@babel/preset-typescript':
         specifier: ^7.18.6
-        version: 7.24.1(@babel/core@7.19.3)
+        version: 7.24.1
       '@mui/material':
         specifier: 5.14.15
         version: 5.14.15(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
@@ -773,8 +776,8 @@ packages:
       '@babel/core': 7.24.5
       '@babel/helper-environment-visitor': 7.22.20
       '@babel/helper-module-imports': 7.24.3
-      '@babel/helper-simple-access': 7.22.5
-      '@babel/helper-split-export-declaration': 7.22.6
+      '@babel/helper-simple-access': 7.24.5
+      '@babel/helper-split-export-declaration': 7.24.5
       '@babel/helper-validator-identifier': 7.24.5
 
   /@babel/helper-module-transforms@7.24.5(@babel/core@7.19.3):
@@ -2475,18 +2478,6 @@ packages:
       '@babel/helper-plugin-utils': 7.24.0
     dev: true
 
-  /@babel/plugin-transform-modules-amd@7.24.1:
-    resolution: {integrity: sha512-lAxNHi4HVtjnHd5Rxg3D5t99Xm6H7b04hUS7EHIXcUl2EV4yl1gWdqZrNzXnSrHveL9qMdbODlLF55mvgjAfaQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-    dependencies:
-      '@babel/helper-module-transforms': 7.24.5(@babel/core@7.19.3)
-      '@babel/helper-plugin-utils': 7.24.0
-
   /@babel/plugin-transform-modules-amd@7.24.1(@babel/core@7.19.3):
     resolution: {integrity: sha512-lAxNHi4HVtjnHd5Rxg3D5t99Xm6H7b04hUS7EHIXcUl2EV4yl1gWdqZrNzXnSrHveL9qMdbODlLF55mvgjAfaQ==}
     engines: {node: '>=6.9.0'}
@@ -2497,7 +2488,7 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.19.3
-      '@babel/helper-module-transforms': 7.23.3(@babel/core@7.19.3)
+      '@babel/helper-module-transforms': 7.24.5(@babel/core@7.19.3)
       '@babel/helper-plugin-utils': 7.24.0
 
   /@babel/plugin-transform-modules-amd@7.24.1(@babel/core@7.24.5):
@@ -2510,7 +2501,7 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.24.5
-      '@babel/helper-module-transforms': 7.23.3(@babel/core@7.24.5)
+      '@babel/helper-module-transforms': 7.24.5(@babel/core@7.24.5)
       '@babel/helper-plugin-utils': 7.24.0
     dev: true
 
@@ -3429,8 +3420,8 @@ packages:
       '@babel/plugin-transform-literals': 7.24.1(@babel/core@7.19.3)
       '@babel/plugin-transform-logical-assignment-operators': 7.24.1(@babel/core@7.19.3)
       '@babel/plugin-transform-member-expression-literals': 7.24.1(@babel/core@7.19.3)
-      '@babel/plugin-transform-modules-amd': 7.24.1
-      '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.19.3)
+      '@babel/plugin-transform-modules-amd': 7.24.1(@babel/core@7.19.3)
+      '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.24.5)
       '@babel/plugin-transform-modules-systemjs': 7.24.1(@babel/core@7.19.3)
       '@babel/plugin-transform-modules-umd': 7.24.1(@babel/core@7.19.3)
       '@babel/plugin-transform-named-capturing-groups-regex': 7.22.5(@babel/core@7.19.3)
@@ -3758,7 +3749,7 @@ packages:
       '@babel/helper-plugin-utils': 7.24.0
       '@babel/helper-validator-option': 7.23.5
       '@babel/plugin-syntax-jsx': 7.24.1(@babel/core@7.19.3)
-      '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.19.3)
+      '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.24.5)
       '@babel/plugin-transform-typescript': 7.24.4(@babel/core@7.19.3)
     dev: true
 
@@ -8274,7 +8265,7 @@ packages:
       '@babel/plugin-transform-flow-strip-types': 7.24.1(@babel/core@7.24.5)
       '@babel/plugin-transform-function-name': 7.24.1(@babel/core@7.19.3)
       '@babel/plugin-transform-literals': 7.24.1(@babel/core@7.19.3)
-      '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.19.3)
+      '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.24.5)
       '@babel/plugin-transform-named-capturing-groups-regex': 7.22.5(@babel/core@7.19.3)
       '@babel/plugin-transform-parameters': 7.24.1(@babel/core@7.19.3)
       '@babel/plugin-transform-private-methods': 7.24.1(@babel/core@7.19.3)
@@ -8385,7 +8376,7 @@ packages:
       '@babel/plugin-transform-flow-strip-types': 7.24.1(@babel/core@7.24.5)
       '@babel/plugin-transform-function-name': 7.24.1(@babel/core@7.19.3)
       '@babel/plugin-transform-literals': 7.24.1(@babel/core@7.19.3)
-      '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.19.3)
+      '@babel/plugin-transform-modules-commonjs': 7.24.1(@babel/core@7.24.5)
       '@babel/plugin-transform-named-capturing-groups-regex': 7.22.5(@babel/core@7.19.3)
       '@babel/plugin-transform-parameters': 7.24.1(@babel/core@7.19.3)
       '@babel/plugin-transform-private-methods': 7.24.1(@babel/core@7.19.3)
@@ -8407,7 +8398,6 @@ packages:
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
-    dev: false
 
   /@react-native/codegen@0.74.83(@babel/preset-env@7.24.4):
     resolution: {integrity: sha512-GgvgHS3Aa2J8/mp1uC/zU8HuTh8ZT5jz7a4mVMWPw7+rGyv70Ba8uOVBq6UH2Q08o617IATYc+0HfyzAfm4n0w==}
@@ -8520,7 +8510,6 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
-    dev: false
 
   /@react-native/debugger-frontend@0.74.83:
     resolution: {integrity: sha512-RGQlVUegBRxAUF9c1ss1ssaHZh6CO+7awgtI9sDeU0PzDZY/40ImoPD5m0o0SI6nXoVzbPtcMGzU+VO590pRfA==}
@@ -8640,7 +8629,6 @@ packages:
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
-    dev: false
 
   /@react-native/normalize-colors@0.74.83:
     resolution: {integrity: sha512-jhCY95gRDE44qYawWVvhTjTplW1g+JtKTKM3f8xYT1dJtJ8QWv+gqEtKcfmOHfDkSDaMKG0AGBaDTSK8GXLH8Q==}
@@ -11620,7 +11608,6 @@ packages:
       - react
       - supports-color
       - utf-8-validate
-    dev: false
 
   /@types/react-redux@7.1.33:
     resolution: {integrity: sha512-NF8m5AjWCkert+fosDsN3hAlHzpjSiXlVy9EgQEmLoBhaNXbmyeGs/aj5dQzKuF+/q+S7JQagorGDW8pJ28Hmg==}
@@ -20370,7 +20357,6 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
-    dev: false
 
   /react-redux@7.2.9(react-dom@18.2.0)(react-native@0.74.2)(react@18.2.0):
     resolution: {integrity: sha512-Gx4L3uM182jEEayZfRbI/G11ZpYdNAnBs70lFVMNdHJI76XYtR+7m0MN+eAs7UHBPhWXcnFPaS+9owSCJQHNpQ==}
