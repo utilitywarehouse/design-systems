@@ -28,7 +28,7 @@ const classSelectors = {
 const StyledElement = styled('span')({
   display: 'inline-flex',
   fontFamily: fonts.secondary,
-  weight: fontWeights.secondary.regular,
+  fontWeight: fontWeights.secondary.regular,
   fontSize: pxToRem(13),
   lineHeight: pxToRem(16),
   gap: spacing(1),
