@@ -40,13 +40,13 @@ const StyledTile = styled('label')({
   ':where([data-disabled],[data-disabled] &)': {
     '--checkbox-tile-border-color': 'var(--checkbox-tile-border-color-disabled)',
   },
+  cursor: 'pointer',
+  '*': { cursor: 'pointer' },
 });
 
-const StyledLabel = styled(Label)({ userSelect: 'none' });
-const StyledHelperText = styled(HelperText)({ userSelect: 'none' });
-
 /**
- * CheckboxTile allows the user to toggle between checked and not checked.
+ * CheckboxTile is a dual-state checkbox allowing users to toggle between
+ * checked and not checked.
  *
  * A CheckboxTile can be used independently, multiple checkboxes should be used
  * with a `CheckboxGroup` or `CheckboxGridGroup` to handle the state control
@@ -84,11 +84,13 @@ export const CheckboxTile = React.forwardRef<HTMLButtonElement, PropsWithSx<Chec
         />
         {showLabel ? (
           <Flex direction="column" gap={0.5}>
-            <StyledLabel component="span" id={labelId} htmlFor={id} nested>
+            <Label component="span" id={labelId} htmlFor={id} nested disableUserSelect>
               {label}
-            </StyledLabel>
+            </Label>
             {showHelperText ? (
-              <StyledHelperText id={helperTextId}>{helperText}</StyledHelperText>
+              <HelperText id={helperTextId} disableUserSelect>
+                {helperText}
+              </HelperText>
             ) : null}
           </Flex>
         ) : null}

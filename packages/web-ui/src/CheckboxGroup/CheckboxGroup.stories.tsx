@@ -84,13 +84,15 @@ export const CheckboxHelperText: Story = {
   render: args => {
     return (
       <CheckboxGroup {...args}>
-        <Checkbox value="1" label="One" helperText="One helper text" />
-        <Checkbox value="2" label="Two" helperText="Two helper text" />
-        <Checkbox value="3" label="Three" helperText="Three helper text" />
+        <Checkbox value="1" label="Rap" helperText="Including Grime" />
+        <Checkbox value="2" label="Rock" helperText="Including Heavy Metal" />
+        <Checkbox value="3" label="Folk" helperText="Including World music" />
+        <Checkbox value="4" label="Dance" helperText="Including House music" />
       </CheckboxGroup>
     );
   },
   args: {
+    label: 'Choose music you enjoy.',
     helperText: 'Please choose wisely.',
   },
 };

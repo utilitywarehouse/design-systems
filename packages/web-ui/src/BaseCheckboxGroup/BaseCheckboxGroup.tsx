@@ -62,6 +62,10 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
       [setValue]
     );
 
+    const ariaDescribedbyValue = mergeIds(
+      ariaDescribedby || !!helperText ? helperTextId : undefined,
+      ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
+    );
     const providerValue = {
       name,
       required,
@@ -70,10 +74,7 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
       onItemCheck: handleItemCheck,
       onItemUncheck: handleItemUncheck,
       hasGroupHelperText: !!helperText,
-      'aria-describedby': mergeIds(
-        ariaDescribedby || !!helperText ? helperTextId : undefined,
-        ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
-      ),
+      'aria-describedby': ariaDescribedbyValue,
     };
 
     return (
@@ -86,6 +87,7 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
         aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
         aria-invalid={showErrorMessage}
+        aria-describedby={ariaDescribedbyValue}
       >
         {label ? (
           <FieldsetLegend id={labelId} disabled={disabled}>

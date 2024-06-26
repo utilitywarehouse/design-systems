@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Item, type RadioGroupItemProps } from '@radix-ui/react-radio-group';
+import { Item } from '@radix-ui/react-radio-group';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
@@ -71,10 +71,9 @@ const StyledRadioItem = styled(Item)({
   ':where([data-disabled])': {
     '--radio-item-box-shadow-color': 'var(--radio-item-box-shadow-color-disabled)',
   },
-}) as React.FC<RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>>;
-
-const StyledLabel = styled(Label)({ userSelect: 'none' });
-const StyledHelperText = styled(HelperText)({ userSelect: 'none' });
+  cursor: 'pointer',
+  '*': { cursor: 'pointer' },
+});
 
 /**
  * The `RadioTile` should be used within a `RadioGroup` component.
@@ -115,11 +114,13 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
           </StyledRadio>
           {showLabel ? (
             <Flex direction="column" gap={0.5}>
-              <StyledLabel component="span" id={labelId} htmlFor={id} nested>
+              <Label component="span" id={labelId} htmlFor={id} nested disableUserSelect>
                 {label}
-              </StyledLabel>
+              </Label>
               {showHelperText ? (
-                <StyledHelperText id={helperTextId}>{helperText}</StyledHelperText>
+                <HelperText id={helperTextId} disableUserSelect>
+                  {helperText}
+                </HelperText>
               ) : null}
             </Flex>
           ) : null}

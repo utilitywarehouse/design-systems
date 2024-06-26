@@ -40,12 +40,13 @@ export const BaseRadioGroup = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGr
     });
     const showErrorMessage = Boolean(error && errorMessage);
     const direction = helperTextPosition === 'top' ? 'column' : 'column-reverse';
+    const ariaDescribedbyValue = mergeIds(
+      ariaDescribedby || !!helperText ? helperTextId : undefined,
+      ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
+    );
     const value = {
       hasGroupHelperText: !!helperText,
-      'aria-describedby': mergeIds(
-        ariaDescribedby || !!helperText ? helperTextId : undefined,
-        ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
-      ),
+      'aria-describedby': ariaDescribedbyValue,
     };
 
     return (
@@ -58,6 +59,7 @@ export const BaseRadioGroup = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGr
         aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
         aria-invalid={showErrorMessage}
+        aria-describedby={ariaDescribedbyValue}
       >
         <Fieldset sx={sx}>
           {label ? (

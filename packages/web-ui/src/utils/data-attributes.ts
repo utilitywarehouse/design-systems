@@ -9,6 +9,7 @@ export const DATA_ATTRIBUTES = {
   customColor: withDataPrefix('custom-color'),
   colorscheme: withDataPrefix('colorscheme'),
   inverted: withDataPrefix('inverted'),
+  disableUserSelect: withDataPrefix('disable-user-select'),
   // TODO: remove in v1
   primary: withDataPrefix('primary'),
   secondary: withDataPrefix('secondary'),

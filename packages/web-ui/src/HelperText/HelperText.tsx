@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { classSelector, withGlobalPrefix, pxToRem, spacing } from '../utils';
+import {
+  classSelector,
+  withGlobalPrefix,
+  pxToRem,
+  spacing,
+  DATA_ATTRIBUTE_SELECTORS,
+} from '../utils';
 import { PropsWithSx } from '../types';
 import { HelperTextProps } from './HelperText.props';
 import clsx from 'clsx';
@@ -52,6 +58,9 @@ const StyledElement = styled('span')({
   [classSelectors.invalid]: {
     '--helper-text-color': 'var(--helper-text-color-invalid)',
   },
+  [DATA_ATTRIBUTE_SELECTORS.disableUserSelect]: {
+    userSelect: 'none',
+  },
 });
 
 /**
@@ -67,30 +76,36 @@ const StyledElement = styled('span')({
 export const HelperText = React.forwardRef<
   React.ElementRef<'span'>,
   React.PropsWithChildren<PropsWithSx<HelperTextProps>>
->(({ showIcon, validationStatus, disabled, children, className, ...props }, ref) => {
-  const icons: { [key: string]: typeof Tick01SmallContainedIcon } = {
-    valid: Tick01SmallContainedIcon,
-    invalid: Warning01SmallContainedIcon,
-  };
-  const Icon = validationStatus
-    ? (icons[validationStatus] as JSX.ElementType)
-    : (Information01SmallContainedIcon as JSX.ElementType);
+>(
+  (
+    { showIcon, validationStatus, disabled, children, className, disableUserSelect, ...props },
+    ref
+  ) => {
+    const icons: { [key: string]: typeof Tick01SmallContainedIcon } = {
+      valid: Tick01SmallContainedIcon,
+      invalid: Warning01SmallContainedIcon,
+    };
+    const Icon = validationStatus
+      ? (icons[validationStatus] as JSX.ElementType)
+      : (Information01SmallContainedIcon as JSX.ElementType);
 
-  return (
-    <StyledElement
-      ref={ref}
-      data-disabled={disabled ? '' : undefined}
-      className={clsx(
-        componentClassName,
-        validationStatus && classNames[validationStatus],
-        className
-      )}
-      {...props}
-    >
-      {showIcon ? <Icon /> : null}
-      {children}
-    </StyledElement>
-  );
-});
+    return (
+      <StyledElement
+        ref={ref}
+        data-disabled={disabled ? '' : undefined}
+        data-disable-user-select={disableUserSelect ? '' : undefined}
+        className={clsx(
+          componentClassName,
+          validationStatus && classNames[validationStatus],
+          className
+        )}
+        {...props}
+      >
+        {showIcon ? <Icon /> : null}
+        {children}
+      </StyledElement>
+    );
+  }
+);
 
 HelperText.displayName = componentName;

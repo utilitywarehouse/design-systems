@@ -36,6 +36,34 @@ The necessary aria props, such as `aria-labelledby`, `aria-describedby` and
 other aria props, such as `aria-label`, to the `CheckboxGroup`, `Checkbox` &
 `CheckboxTile` components yourself if you need to.
 
+### Keyboard interactions
+
+<Stack spacing={1} divider={<Divider />}>
+  <Box display="flex" alignItems="baseline">
+    <Box width={300}>
+      <Text component="span" variant="legalNote">
+        {'Key'}
+      </Text>
+    </Box>
+    <Text component="span" variant="legalNote">
+      {'Description'}
+    </Text>
+  </Box>
+  {[
+    { key: 'Tab', description: 'Moves keyboard focus to the checkbox.' },
+    { key: 'Space', description: 'Toggles checkbox between checked and unchecked states.' },
+  ].map(kbi => (
+    <Box display="flex" alignItems="baseline">
+      <Box width={300}>
+        <kbd>{kbi.key}</kbd>
+      </Box>
+      <Text component="span" variant="body">
+        {kbi.description}
+      </Text>
+    </Box>
+  ))}
+</Stack>
+
 ## Helper text
 
 The Checkbox group can display a secondary message as a helper text. This can be
