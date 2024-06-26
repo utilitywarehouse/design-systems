@@ -11,7 +11,7 @@ module.exports = function (api) {
             '@utilitywarehouse/native-ui': path.join(__dirname, '../../packages/native-ui/src'),
             '@utilitywarehouse/native-ui/unstyled': path.join(
               __dirname,
-              '../../packages/native-ui/unstyled'
+              '../../packages/native-ui/src/components/unstyled'
             ),
           },
         },
