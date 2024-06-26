@@ -1,5 +1,12 @@
 import { createStyle } from '@gluestack-style/react';
-import { colourScheme, ghostScheme, invertedOutlineScheme, outlineScheme } from './helpers/Button';
+import {
+  colourScheme,
+  ghostScheme,
+  invertedGhostScheme,
+  invertedOutlineScheme,
+  invertedSolidScheme,
+  outlineScheme,
+} from './helpers/Button';
 
 export const Button = createStyle({
   borderRadius: '$full',
@@ -68,9 +75,16 @@ export const Button = createStyle({
     },
     {
       variant: 'outline',
-      size: 'regular',
+      size: 'medium',
       value: {
         paddingVertical: '$3',
+      },
+    },
+    {
+      variant: 'outline',
+      size: 'large',
+      value: {
+        paddingVertical: '$4',
       },
     },
     outlineScheme('cyan'),
@@ -88,6 +102,14 @@ export const Button = createStyle({
     invertedOutlineScheme('red'),
     invertedOutlineScheme('gold'),
     invertedOutlineScheme('grey'),
+    invertedSolidScheme('cyan'),
+    invertedSolidScheme('green'),
+    invertedSolidScheme('red'),
+    invertedGhostScheme('cyan'),
+    invertedGhostScheme('green'),
+    invertedGhostScheme('red'),
+    invertedGhostScheme('gold'),
+    invertedGhostScheme('grey'),
   ],
 
   props: {

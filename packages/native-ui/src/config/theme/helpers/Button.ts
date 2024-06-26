@@ -39,6 +39,99 @@ export const invertedOutlineScheme = (scheme: Scheme) => ({
         },
       },
     },
+
+    ':disabled': {
+      borderColor: `$${scheme}700`,
+
+      _text: {
+        color: `$${scheme}700`,
+      },
+      _icon: {
+        color: `$${scheme}700`,
+      },
+      _spinner: {
+        _svg: {
+          color: `$${scheme}700`,
+        },
+      },
+    },
+  },
+});
+
+export const invertedSolidScheme = (scheme: Scheme) => ({
+  inverted: true,
+  colorScheme: scheme,
+  variant: 'solid',
+  value: {
+    ':disabled': {
+      backgroundColor: `$${scheme}300`,
+      _text: {
+        color: `$${scheme}100`,
+      },
+      _icon: {
+        color: `$${scheme}100`,
+      },
+      _spinner: {
+        _svg: {
+          color: `$${scheme}100`,
+        },
+      },
+    },
+  },
+});
+
+export const invertedGhostScheme = (scheme: Scheme) => ({
+  inverted: true,
+  colorScheme: scheme,
+  variant: 'ghost',
+  value: {
+    _text: {
+      color: `$${scheme}400`,
+    },
+
+    _icon: {
+      color: `$${scheme}400`,
+    },
+
+    _spinner: {
+      _svg: {
+        color: `$${scheme}400`,
+      },
+    },
+
+    ':active': {
+      backgroundColor: `$grey900`,
+
+      _text: {
+        color: `$${scheme}400`,
+      },
+
+      _icon: {
+        color: `$${scheme}400`,
+      },
+
+      _spinner: {
+        _svg: {
+          color: `$${scheme}400`,
+        },
+      },
+    },
+
+    ':disabled': {
+      backgroundColor: 'transparent',
+
+      _text: {
+        color: `$${scheme}700`,
+      },
+      _icon: {
+        color: `$${scheme}700`,
+      },
+      _spinner: {
+        _svg: {
+          color: `$${scheme}700`,
+        },
+      },
+    },
   },
 });
 
@@ -79,17 +172,17 @@ export const colourScheme = (scheme: Scheme) => ({
   },
 
   ':disabled': {
-    backgroundColor: scheme === 'cyan' ? '$cyan100' : `$${scheme}200`,
+    backgroundColor: `$${scheme}100`,
 
     _text: {
-      color: scheme === 'cyan' ? `$${scheme}300` : '$white',
+      color: `$${scheme}300`,
     },
     _icon: {
-      color: scheme === 'cyan' ? `$${scheme}300` : '$white',
+      color: `$${scheme}300`,
     },
     _spinner: {
       _svg: {
-        color: scheme === 'cyan' ? `$${scheme}300` : '$white',
+        color: `$${scheme}300`,
       },
     },
   },
@@ -172,7 +265,7 @@ export const outlineScheme = (scheme: Scheme) => ({
     },
 
     ':active': {
-      backgroundColor: `$${scheme}${scheme === 'cyan' ? 50 : 100}`,
+      backgroundColor: `$${scheme}50`,
       borderColor: `$${scheme}${scheme === 'cyan' ? 500 : 600}`,
 
       _text: {
@@ -228,21 +321,21 @@ export const outlineScheme = (scheme: Scheme) => ({
       },
 
       ':active': {
-        backgroundColor: scheme === 'cyan' ? `$darkGrey150` : `$dark${capitalise(scheme)}50`,
+        backgroundColor: scheme === 'cyan' ? `$darkCyan75` : `$dark${capitalise(scheme)}50`,
         borderColor: `$dark${capitalise(scheme)}800`,
 
         _text: {
-          color: `$dark${capitalise(scheme)}900`,
+          color: scheme === 'cyan' ? `$darkCyan1000` : `$dark${capitalise(scheme)}900`,
         },
 
         _icon: {
-          color: `$dark${capitalise(scheme)}900`,
+          color: scheme === 'cyan' ? `$darkCyan1000` : `$dark${capitalise(scheme)}900`,
         },
 
         _spinner: {
           _svg: {
             props: {
-              color: colorsDark?.[`${scheme}900`],
+              color: scheme === 'cyan' ? `$darkCyan1000` : colorsDark?.[`${scheme}900`],
             },
           },
         },
