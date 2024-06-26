@@ -40,7 +40,7 @@ const ButtonBasic: StoryFn = ({
 
 ButtonBasic.argTypes = {
   size: {
-    options: ['small', 'regular'],
+    options: ['small', 'medium', 'large'],
     control: 'select',
     description: 'The size of the button.',
   },
@@ -104,7 +104,7 @@ ButtonBasic.argTypes = {
 };
 
 ButtonBasic.args = {
-  size: 'regular',
+  size: 'medium',
   variant: 'solid',
   colorScheme: 'cyan',
   isDisabled: false,

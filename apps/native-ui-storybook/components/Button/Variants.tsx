@@ -62,7 +62,7 @@ ButtonPlaygroundVariants.storyName = 'Variants';
 
 ButtonPlaygroundVariants.argTypes = {
   size: {
-    options: ['small', 'regular'],
+    options: ['small', 'medium', 'large'],
     control: 'select',
     description: 'The size of the button.',
   },
@@ -81,7 +81,7 @@ ButtonPlaygroundVariants.argTypes = {
 };
 
 ButtonPlaygroundVariants.args = {
-  size: 'regular',
+  size: 'medium',
   inverted: false,
   _backgroundColor: 'default',
 };

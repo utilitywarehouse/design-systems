@@ -6,6 +6,11 @@ export const Button = createStyle({
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
+  gap: '$2',
+  _icon: {
+    width: 16,
+    height: 16,
+  },
   _text: {
     fontWeight: '$medium',
   },
@@ -35,17 +40,16 @@ export const Button = createStyle({
         paddingVertical: '$2',
         paddingHorizontal: '$3',
         minHeight: 32,
-        gap: '$2',
       },
-      regular: {
+      medium: {
         paddingVertical: '$4',
         paddingHorizontal: '$6',
         minHeight: 48,
-        gap: '$2',
-        _icon: {
-          width: 16,
-          height: 16,
-        },
+      },
+      large: {
+        paddingVertical: '$5',
+        paddingHorizontal: '$6',
+        minHeight: 56,
       },
     },
 
@@ -87,7 +91,7 @@ export const Button = createStyle({
   ],
 
   props: {
-    size: 'regular',
+    size: 'medium',
     variant: 'solid',
     colorScheme: 'cyan',
     inverted: false,
