@@ -10,7 +10,7 @@ const componentClassName = withGlobalPrefix(componentName);
 
 /**
  * Set of interactive buttons where multiple options can be selected at a time,
- * displayed in a grid layout. The `CheckboxGroup` uses a fieldset to group
+ * displayed in a grid layout. The `CheckboxGridGroup` uses a fieldset to group
  * related `Checkbox` controls.
  *
  * For displaying checkboxes in a column or row, please use the `CheckboxGroup` component.
