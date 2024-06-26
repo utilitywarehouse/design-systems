@@ -8,7 +8,7 @@ import {
 import React from 'react';
 import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
-import ButtonWrap from './components/ButtonWrap';
+import ScrollWrap from '../../docs/components/ScrollWrap';
 
 const ButtonPlaygroundVariants: StoryFn = ({
   size,
@@ -23,7 +23,7 @@ const ButtonPlaygroundVariants: StoryFn = ({
   _backgroundColor,
 }: any) => {
   return (
-    <ButtonWrap _backgroundColor={_backgroundColor}>
+    <ScrollWrap backgroundColor={_backgroundColor}>
       <ButtonGroup flexDirection="column" space="md">
         <Button
           size={size}
@@ -65,7 +65,7 @@ const ButtonPlaygroundVariants: StoryFn = ({
           {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
         </Button>
       </ButtonGroup>
-    </ButtonWrap>
+    </ScrollWrap>
   );
 };
 

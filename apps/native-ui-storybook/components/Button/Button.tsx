@@ -2,7 +2,7 @@ import { Box, Button, ButtonIcon, ButtonSpinner, ButtonText } from '@utilityware
 import React from 'react';
 import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
-import ButtonWrap from './components/ButtonWrap';
+import ScrollWrap from '../../docs/components/ScrollWrap';
 
 const ButtonBasic: StoryFn = ({
   size,
@@ -19,7 +19,7 @@ const ButtonBasic: StoryFn = ({
 }: any) => {
   return (
     <Box height={68} width="100%">
-      <ButtonWrap _backgroundColor={_backgroundColor}>
+      <ScrollWrap backgroundColor={_backgroundColor}>
         <Button
           size={size}
           variant={variant}
@@ -33,7 +33,7 @@ const ButtonBasic: StoryFn = ({
           {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
           {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
         </Button>
-      </ButtonWrap>
+      </ScrollWrap>
     </Box>
   );
 };

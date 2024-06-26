@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Text, Heading, Divider } from '@utilitywarehouse/native-ui';
+import { Box, Text, Heading } from '@utilitywarehouse/native-ui';
+import { Divider } from '@utilitywarehouse/native-ui/unstyled';
 
 interface ColourDisplayProps {
   colorScale: any;

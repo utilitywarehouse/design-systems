@@ -6,7 +6,7 @@ interface Props {
   url: string;
 }
 
-const ViewStorybookButton: React.FC<Props> = ({ url }) => (
+const ViewFigmaButton: React.FC<Props> = ({ url }) => (
   <NativeUIProvider>
     <Button
       variant="ghost"
@@ -22,10 +22,10 @@ const ViewStorybookButton: React.FC<Props> = ({ url }) => (
       }}
       onPress={() => window.open(url)}
     >
-      <ButtonText>View Storybook</ButtonText>
+      <ButtonText>View in Figma</ButtonText>
       <ButtonIcon as={ChevronRightSmallIcon} />
     </Button>
   </NativeUIProvider>
 );
 
-export default ViewStorybookButton;
+export default ViewFigmaButton;

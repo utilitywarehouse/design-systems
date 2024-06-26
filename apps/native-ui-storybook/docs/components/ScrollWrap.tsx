@@ -3,14 +3,14 @@ import { ScrollView } from '@utilitywarehouse/native-ui';
 import React, { FC, PropsWithChildren } from 'react';
 import { Platform, Dimensions } from 'react-native';
 
-type ButtonWrapProps = {
-  _backgroundColor: string;
+type ScrollWrapProps = {
+  backgroundColor: string;
 };
 
-const ButtonWrap: FC<PropsWithChildren<ButtonWrapProps>> = ({ children, _backgroundColor }) => {
+const ScrollWrap: FC<PropsWithChildren<ScrollWrapProps>> = ({ children, backgroundColor }) => {
   const { width, height } = Dimensions.get('window');
   const bg = (() => {
-    switch (_backgroundColor) {
+    switch (backgroundColor) {
       case 'midnight':
         return colorsCommon.brandMidnight;
       case 'purple':
@@ -49,4 +49,4 @@ const ButtonWrap: FC<PropsWithChildren<ButtonWrapProps>> = ({ children, _backgro
   );
 };
 
-export default ButtonWrap;
+export default ScrollWrap;
