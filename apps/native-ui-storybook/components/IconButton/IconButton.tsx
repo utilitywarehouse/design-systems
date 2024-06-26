@@ -1,4 +1,4 @@
-import { IconButton } from '@utilitywarehouse/native-ui';
+import { Box, IconButton } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { AddMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
@@ -14,17 +14,19 @@ const IconButtonBasic: StoryFn = ({
   _backgroundColor,
 }: any) => {
   return (
-    <ScrollWrap backgroundColor={_backgroundColor}>
-      <IconButton
-        icon={AddMediumIcon}
-        variant={variant}
-        colorScheme={colorScheme}
-        isDisabled={isDisabled}
-        loading={loading}
-        size={size}
-        inverted={inverted}
-      />
-    </ScrollWrap>
+    <Box height={48} width="100%">
+      <ScrollWrap backgroundColor={_backgroundColor}>
+        <IconButton
+          icon={AddMediumIcon}
+          variant={variant}
+          colorScheme={colorScheme}
+          isDisabled={isDisabled}
+          loading={loading}
+          size={size}
+          inverted={inverted}
+        />
+      </ScrollWrap>
+    </Box>
   );
 };
 
