@@ -28,6 +28,10 @@ const StyledElement = styled(TextLink)({
   [colorSchemeParentSelector(COLOR_SCHEME.red)]: {
     '--alert-link-color': colors.red700,
   },
+  ':where(:visited)': {
+    color: 'var(--alert-link-color)',
+    textDecorationColor: 'var(--alert-link-color)',
+  },
 });
 
 /**

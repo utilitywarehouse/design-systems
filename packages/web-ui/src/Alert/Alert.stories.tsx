@@ -16,13 +16,13 @@ const meta: Meta<typeof Alert> = {
   component: Alert,
   argTypes: {
     children: { control: { type: 'text' } },
+    linkText: { control: { type: 'text' } },
     colorScheme: { options: colorSchemes, control: { type: 'radio' } },
     direction: { options: ['column', 'row'], control: { type: 'radio' } },
   },
   args: {
     title: 'Alert title',
     text: 'Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris.',
-    linkText: 'Alert link',
     linkHref: '#',
     colorScheme: COLOR_SCHEME.cyan,
   },
@@ -33,7 +33,6 @@ type Story = StoryObj<typeof Alert>;
 
 export const KitchenSink: Story = {
   parameters: { controls: { hideNoControlsWarning: true } },
-  render: () => {
     return (
       <Flex direction="column" gap={2}>
         {colorSchemes.map(colorScheme => (
@@ -43,7 +42,6 @@ export const KitchenSink: Story = {
               direction="row"
               title="AlertTitle"
               text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris."
-              linkText="Alert link"
               linkHref="#"
             />
             <Alert
@@ -51,7 +49,6 @@ export const KitchenSink: Story = {
               direction="column"
               title="AlertTitle"
               text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris nibh quam, hendrerit mattis ligula sit amet."
-              linkText="Alert link"
               linkHref="#"
             />
             <Alert
@@ -77,14 +74,14 @@ export const KitchenSink: Story = {
               direction="row"
               title="Alert title"
               text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris."
-              onClick={() => alert('clicked')}
+              linkHref="#"
             />
             <Alert
               colorScheme={colorScheme}
               direction="column"
               title="Alert title"
               text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris nibh quam, hendrerit mattis ligula sit amet."
-              onClick={() => alert('clicked')}
+              linkHref="#"
             />
           </Flex>
         ))}

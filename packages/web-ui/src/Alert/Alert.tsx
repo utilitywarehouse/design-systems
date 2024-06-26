@@ -17,41 +17,40 @@ import { AlertTitle } from './AlertTitle';
 import { AlertText } from './AlertText';
 import { AlertLink } from './AlertLink';
 import { Flex } from '../Flex';
+import { AlertButton } from './AlertButton';
+import { IconButton } from '../IconButton';
 
 const componentName = 'Alert';
 const componentClassName = withGlobalPrefix(componentName);
 
-const StyledElement = styled('div')({
-  display: 'flex',
-  gap: px(8),
+const StyledElement = styled(Flex)({
   borderRadius: px(8),
   borderWidth: px(1),
   borderStyle: 'solid',
   borderColor: 'var(--alert-border-color)',
-  flexDirection: 'row',
   padding: px(16),
   backgroundColor: 'var(--alert-background-color)',
   [`:where([${DATA_ATTRIBUTES.orientation}="vertical"])`]: {
-    '> button[data-dismiss]': {
-      alignSelf: 'flex-start',
-    },
+    // '> button[data-dismiss]': {
+    //   alignSelf: 'flex-start',
+    // },
   },
   '> :where(svg, [data-icon])': {
     color: 'var(--alert-icon-color)',
   },
-  '> :where(button)': {
-    color: 'var(--alert-icon-color)',
-    backgroundColor: 'transparent',
-    border: 'none',
-    cursor: 'pointer',
-    padding: 0,
-    alignSelf: 'center',
-    '&:focus-visible': {
-      outline: 'none',
-      borderRadius: px(4),
-      boxShadow: '0 0 0 2px var(--alert-focus-color)',
-    },
-  },
+  // '> :where(button)': {
+  //   color: 'var(--alert-icon-color)',
+  //   backgroundColor: 'transparent',
+  //   border: 'none',
+  //   cursor: 'pointer',
+  //   padding: 0,
+  //   alignSelf: 'center',
+  //   '&:focus-visible': {
+  //     outline: 'none',
+  //     borderRadius: px(4),
+  //     boxShadow: '0 0 0 2px var(--alert-focus-color)',
+  //   },
+  // },
   [COLORSCHEME_SELECTORS.cyan]: {
     '--alert-background-color': colors.cyan50,
     '--alert-icon-color': colors.cyan700,
@@ -108,7 +107,6 @@ export const Alert = React.forwardRef<
       text,
       linkText,
       linkHref,
-      onClick,
       ...props
     },
     ref
@@ -119,6 +117,8 @@ export const Alert = React.forwardRef<
     };
     return (
       <StyledElement
+        gap={1}
+        direction="row"
         ref={ref}
         className={clsx(componentClassName, className)}
         role="alert" // Adding role for dynamic alerts
@@ -133,19 +133,23 @@ export const Alert = React.forwardRef<
             <>
               {title ? <AlertTitle>{title}</AlertTitle> : null}
               {text ? <AlertText>{text}</AlertText> : null}
-              {linkText ? <AlertLink href={linkHref}>{linkText}</AlertLink> : null}
+              {linkHref && linkText ? <AlertLink href={linkHref}>{linkText}</AlertLink> : null}
             </>
           )}
         </Flex>
-        {onClick ? (
-          <button onClick={onClick} title="Alert action" aria-label="Alert action">
-            <ChevronRightMediumIcon />
-          </button>
+        {linkHref && !linkText ? (
+          <Flex align="center">
+            <AlertButton asChild title="Alert action" aria-label="Alert action">
+              <a href={linkHref}>
+                <ChevronRightMediumIcon />
+              </a>
+            </AlertButton>
+          </Flex>
         ) : null}
         {onDismiss ? (
-          <button data-dismiss onClick={onDismiss} title="Dismiss" aria-label="Dismiss alert">
+          <AlertButton data-dismiss onClick={onDismiss} title="Dismiss" aria-label="Dismiss alert">
             {direction === 'row' ? <CloseMediumIcon /> : <CloseSmallIcon />}
-          </button>
+          </AlertButton>
         ) : null}
       </StyledElement>
     );

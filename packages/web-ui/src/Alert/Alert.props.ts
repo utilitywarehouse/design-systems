@@ -32,8 +32,4 @@ export interface AlertProps extends ComponentPropsWithoutRef<'div'> {
    * Sets the link href of the alert.
    */
   linkHref?: string;
-  /**
-   * Sets the function to be called when the alert button is clicked.
-   */
-  onClick?: () => void;
 }
