@@ -1,5 +1,5 @@
 import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
-import * as AlertStories from './Alert.stories';
+import * as Stories from './Alert.stories';
 import {
   Alert,
   Center,
@@ -24,7 +24,7 @@ import {
   CloseSmallIcon,
 } from '@utilitywarehouse/react-native-icons';
 
-<Meta of={AlertStories} />
+<Meta of={Stories} />
 
 # Alert
 
@@ -58,7 +58,7 @@ import { Alert } from '@utilitywarehouse/native-ui';
 const MyComponent = () => {
   return (
     <Alert
-      colorScheme="info"
+      colorScheme="cyan"
       title="Information"
       text="Unlock the power of knowledge with the following information."
     />
@@ -68,17 +68,23 @@ const MyComponent = () => {
 
 ## Props
 
-| Property            | Type                                          | Description                                                        | Default |
-| ------------------- | --------------------------------------------- | ------------------------------------------------------------------ | ------- |
-| `colorScheme`       | `'info' \| 'success' \| 'warning' \| 'error'` | The colour scheme of the alert. Mapped to an icon.                 | 'info'  |
-| `title`             | `string`                                      | The title of the alert.                                            |         |
-| `text`              | `string`                                      | The text of the alert.                                             |         |
-| `link`              | `string`                                      | The text of the link.                                              |         |
-| `onPressLink`       | `() => void`                                  | A callback function to be called when the link is clicked.         |         |
-| `onPressIconButton` | `() => void`                                  | A callback function to be called when the icon button is clicked.  |         |
-| `onClose`           | `() => void`                                  | A callback function to be called when the close button is clicked. |         |
+| Property            | Type                                   | Description                                                        | Default |
+| ------------------- | -------------------------------------- | ------------------------------------------------------------------ | ------- |
+| `colorScheme`       | `'cyan' \| 'green' \| 'gold' \| 'red'` | The colour scheme of the alert. Mapped to an icon.                 | 'info'  |
+| `title`             | `string`                               | The title of the alert.                                            |         |
+| `text`              | `string`                               | The text of the alert.                                             |         |
+| `link`              | `string`                               | The text of the link.                                              |         |
+| `onPressLink`       | `() => void`                           | A callback function to be called when the link is clicked.         |         |
+| `onPressIconButton` | `() => void`                           | A callback function to be called when the icon button is clicked.  |         |
+| `onClose`           | `() => void`                           | A callback function to be called when the close button is clicked. |         |
 
 For more information, see the [Gluestack Alert component documentation](https://gluestack.io/ui/docs/components/feedback/alert).
+
+## Variants
+
+The `Alert` component has four colour schemes: cyan, green, gold and red. Each colour scheme is mapped to an icon.
+
+<Canvas of={Stories.Variants} />
 
 ## Advanced Usage
 
@@ -86,22 +92,21 @@ If you need to use the Alert component in a more advanced way, you can use the p
 
 <Canvas>
   <NativeUIProvider>
-    <Alert colorScheme="info">
-      <AlertIcon as={InformationMediumContainedIcon} />
+    <Alert colorScheme="cyan">
+      <AlertIcon />
       <VStack flex={1} gap={4}>
         <AlertTitle>Information</AlertTitle>
         <AlertText>Unlock the power of knowledge with the following information.</AlertText>
-
         <AlertLink onPress={() => console.log('Link clicked')}>
           <AlertLinkText>Learn more</AlertLinkText>
-          <AlertLinkChevron as={ChevronRightSmallIcon} />
+          <AlertLinkChevron />
         </AlertLink>
       </VStack>
       <AlertIconButton onPress={() => console.log('Icon button clicked')}>
-        <AlertIconButtonChevron as={ChevronRightMediumIcon} />
+        <AlertIconButtonChevron />
       </AlertIconButton>
       <AlertCloseButton onClose={() => console.log('Close button clicked')}>
-        <AlertCloseButtonIcon as={CloseSmallIcon} />
+        <AlertCloseButtonIcon />
       </AlertCloseButton>
     </Alert>
 
@@ -121,18 +126,12 @@ import {
   AlertIconButtonChevron,
   AlertCloseButton,
   AlertCloseButtonIcon,
-  VStack,
 } from '@utilitywarehouse/native-ui';
-import {
-  InformationMediumContainedIcon,
-  ChevronRightMediumIcon,
-  ChevronRightSmallIcon,
-  CloseSmallIcon,
-} from '@utilitywarehouse/react-native-icons';
+import { InformationMediumContainedIcon } from '@utilitywarehouse/react-native-icons';
 
 const MyComponent = () => {
   return (
-    <Alert colorScheme="info">
+    <Alert colorScheme="cyan">
       <AlertIcon as={InformationMediumContainedIcon} />
       <VStack flex={1} gap={4}>
         <AlertTitle>Information</AlertTitle>
@@ -140,16 +139,16 @@ const MyComponent = () => {
 
         <AlertLink onPress={() => console.log('Link clicked')}>
           <AlertLinkText>Learn more</AlertLinkText>
-          <AlertLinkChevron as={ChevronRightSmallIcon} />
+          <AlertLinkChevron />
         </AlertLink>
       </VStack>
       {/* Note: AlertIconButton should not be used with the AlertLink component */}
       <AlertIconButton onPress={() => console.log('Icon button clicked')}>
-        <AlertIconButtonChevron as={ChevronRightMediumIcon} />
+        <AlertIconButtonChevron />
       </AlertIconButton>
 
       <AlertCloseButton onClose={() => console.log('Close button clicked')}>
-        <AlertCloseButtonIcon as={CloseSmallIcon} />
+        <AlertCloseButtonIcon />
       </AlertCloseButton>
     </Alert>
   );
