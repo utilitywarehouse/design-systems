@@ -6,9 +6,10 @@ interface IconButtonProps extends ComponentProps<typeof IconButton> {}
 interface IconButtonVariantsProps {
   colorScheme: IconButtonProps['colorScheme'];
   size: IconButtonProps['size'];
+  inverted: IconButtonProps['inverted'];
 }
 
-const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }) => {
+const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size, inverted }) => {
   const capitalisedScheme =
     (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');
 
@@ -23,6 +24,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             variant="solid"
             colorScheme={colorScheme}
             size={size}
+            inverted={inverted}
           />
           <Text size="sm">Pressed</Text>
           <IconButton
@@ -31,6 +33,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             colorScheme={colorScheme}
             isPressed={true}
             size={size}
+            inverted={inverted}
           />
           <Text size="sm">Loading</Text>
           <IconButton
@@ -38,6 +41,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             variant="solid"
             colorScheme={colorScheme}
             size={size}
+            inverted={inverted}
             loading={true}
           />
           <Text size="sm">Disabled</Text>
@@ -47,6 +51,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             colorScheme={colorScheme}
             isDisabled={true}
             size={size}
+            inverted={inverted}
           />
           <Text size="sm">Disabled Loading</Text>
           <IconButton
@@ -55,6 +60,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             colorScheme={colorScheme}
             isDisabled={true}
             size={size}
+            inverted={inverted}
             loading={true}
           />
         </ButtonGroup>
@@ -68,6 +74,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             variant="outline"
             colorScheme={colorScheme}
             size={size}
+            inverted={inverted}
           />
 
           <Text size="sm">Pressed</Text>
@@ -77,6 +84,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             colorScheme={colorScheme}
             isPressed={true}
             size={size}
+            inverted={inverted}
           />
           <Text size="sm">Loading</Text>
           <IconButton
@@ -84,6 +92,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             variant="outline"
             colorScheme={colorScheme}
             size={size}
+            inverted={inverted}
             loading={true}
           />
           <Text size="sm">Disabled</Text>
@@ -93,6 +102,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             colorScheme={colorScheme}
             isDisabled={true}
             size={size}
+            inverted={inverted}
           />
           <Text size="sm">Disabled Loading</Text>
           <IconButton
@@ -101,6 +111,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             colorScheme={colorScheme}
             isDisabled={true}
             size={size}
+            inverted={inverted}
             loading={true}
           />
         </ButtonGroup>
@@ -114,6 +125,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             variant="ghost"
             colorScheme={colorScheme}
             size={size}
+            inverted={inverted}
           />
           <Text size="sm">Pressed</Text>
           <IconButton
@@ -122,6 +134,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             colorScheme={colorScheme}
             isPressed={true}
             size={size}
+            inverted={inverted}
           />
           <Text size="sm">Loading</Text>
           <IconButton
@@ -129,6 +142,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             variant="ghost"
             colorScheme={colorScheme}
             size={size}
+            inverted={inverted}
             loading={true}
           />
           <Text size="sm">Disabled</Text>
@@ -138,6 +152,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             colorScheme={colorScheme}
             isDisabled={true}
             size={size}
+            inverted={inverted}
           />
           <Text size="sm">Disabled Loading</Text>
           <IconButton
@@ -146,6 +161,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({ colorScheme, size }
             colorScheme={colorScheme}
             isDisabled={true}
             size={size}
+            inverted={inverted}
             loading={true}
           />
         </ButtonGroup>

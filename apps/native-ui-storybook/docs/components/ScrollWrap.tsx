@@ -1,13 +1,18 @@
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { ScrollView } from '@utilitywarehouse/native-ui';
+import { Center, ScrollView } from '@utilitywarehouse/native-ui';
 import React, { FC, PropsWithChildren } from 'react';
 import { Platform, Dimensions } from 'react-native';
 
 type ScrollWrapProps = {
-  backgroundColor: string;
+  backgroundColor?: string;
+  center?: boolean;
 };
 
-const ScrollWrap: FC<PropsWithChildren<ScrollWrapProps>> = ({ children, backgroundColor }) => {
+const ScrollWrap: FC<PropsWithChildren<ScrollWrapProps>> = ({
+  children,
+  backgroundColor,
+  center = true,
+}) => {
   const { width, height } = Dimensions.get('window');
   const bg = (() => {
     switch (backgroundColor) {
@@ -44,7 +49,7 @@ const ScrollWrap: FC<PropsWithChildren<ScrollWrapProps>> = ({ children, backgrou
         ...nativeStyles,
       }}
     >
-      {children}
+      {center ? <Center>{children}</Center> : children}
     </ScrollView>
   );
 };

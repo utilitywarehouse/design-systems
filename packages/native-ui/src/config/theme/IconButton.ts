@@ -1,5 +1,12 @@
 import { createStyle } from '@gluestack-style/react';
-import { colourScheme, ghostScheme, invertedOutlineScheme, outlineScheme } from './helpers/Button';
+import {
+  colourScheme,
+  ghostScheme,
+  invertedGhostScheme,
+  invertedOutlineScheme,
+  invertedSolidScheme,
+  outlineScheme,
+} from './helpers/Button';
 
 export const IconButton = createStyle({
   alignItems: 'center',
@@ -43,9 +50,17 @@ export const IconButton = createStyle({
           height: 24,
         },
       },
-      large: {
+      medium: {
         width: 48,
         height: 48,
+        _icon: {
+          width: 24,
+          height: 24,
+        },
+      },
+      large: {
+        width: 56,
+        height: 56,
         _icon: {
           width: 24,
           height: 24,
@@ -74,10 +89,18 @@ export const IconButton = createStyle({
     invertedOutlineScheme('red'),
     invertedOutlineScheme('gold'),
     invertedOutlineScheme('grey'),
+    invertedSolidScheme('cyan'),
+    invertedSolidScheme('green'),
+    invertedSolidScheme('red'),
+    invertedGhostScheme('cyan'),
+    invertedGhostScheme('green'),
+    invertedGhostScheme('red'),
+    invertedGhostScheme('gold'),
+    invertedGhostScheme('grey'),
   ],
 
   props: {
-    size: 'large',
+    size: 'medium',
     variant: 'solid',
     colorScheme: 'cyan',
   },
