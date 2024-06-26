@@ -1,4 +1,10 @@
 import { createStyle } from '@gluestack-style/react';
+import {
+  WarningMediumContainedIcon,
+  TickMediumContainedIcon,
+  InformationMediumContainedIcon,
+} from '@utilitywarehouse/react-native-icons';
+import { colorScheme } from './helpers/Alert';
 
 export const Alert = createStyle({
   alignItems: 'center',
@@ -40,190 +46,18 @@ export const Alert = createStyle({
   },
   variants: {
     colorScheme: {
-      error: {
-        bg: '$red50',
-        borderColor: '$red500',
-        _text: {
-          color: '$red900',
-        },
-        _icon: {
-          color: '$red700',
-        },
-        _chevron: {
-          color: '$red700',
-        },
-        _button: {
-          _buttonIcon: {
-            color: '$red700',
-          },
-        },
-        _closeButton: {
-          _closeIcon: {
-            color: '$red700',
-          },
-        },
-        _dark: {
-          bg: '$darkRed50',
-          borderColor: '$darkRed500',
-          _text: {
-            color: '$darkRed900',
-          },
-          _icon: {
-            color: '$darkRed700',
-          },
-          _chevron: {
-            color: '$darkRed700',
-          },
-          _button: {
-            _buttonIcon: {
-              color: '$darkRed700',
-            },
-          },
-          _closeButton: {
-            _closeIcon: {
-              color: '$darkRed700',
-            },
-          },
-        },
-      },
-      info: {
-        bg: '$cyan50',
-        borderColor: '$cyan500',
-        _text: {
-          color: '$cyan900',
-        },
-        _icon: {
-          color: '$cyan700',
-        },
-        _chevron: {
-          color: '$cyan700',
-        },
-        _button: {
-          _buttonIcon: {
-            color: '$cyan700',
-          },
-        },
-        _closeButton: {
-          _closeIcon: {
-            color: '$cyan700',
-          },
-        },
-        _dark: {
-          bg: '$darkCyan50',
-          borderColor: '$darkCyan500',
-          _text: {
-            color: '$darkCyan900',
-          },
-          _icon: {
-            color: '$darkCyan700',
-          },
-          _chevron: {
-            color: '$darkCyan700',
-          },
-          _button: {
-            _buttonIcon: {
-              color: '$darkCyan700',
-            },
-          },
-          _closeButton: {
-            _closeIcon: {
-              color: '$darkCyan700',
-            },
-          },
-        },
-      },
-      success: {
-        bg: '$green50',
-        borderColor: '$green500',
-        _text: {
-          color: '$green900',
-        },
-        _icon: {
-          color: '$green700',
-        },
-        _chevron: {
-          color: '$green700',
-        },
-        _button: {
-          _buttonIcon: {
-            color: '$green700',
-          },
-        },
-        _closeButton: {
-          _closeIcon: {
-            color: '$green700',
-          },
-        },
-        _dark: {
-          bg: '$darkGreen50',
-          borderColor: '$darkGreen500',
-          _text: {
-            color: '$darkGreen900',
-          },
-          _icon: {
-            color: '$darkGreen700',
-          },
-          _chevron: {
-            color: '$darkGreen700',
-          },
-          _button: {
-            _buttonIcon: {
-              color: '$darkGreen700',
-            },
-          },
-          _closeButton: {
-            _closeIcon: {
-              color: '$darkGreen700',
-            },
-          },
-        },
-      },
-      warning: {
-        bg: '$gold50',
-        borderColor: '$gold500',
-        _text: {
-          color: '$gold900',
-        },
-        _icon: {
-          color: '$gold700',
-        },
-        _chevron: {
-          color: '$gold700',
-        },
-        _button: {
-          _buttonIcon: {
-            color: '$gold700',
-          },
-        },
-        _closeButton: {
-          _closeIcon: {
-            color: '$gold700',
-          },
-        },
-        _dark: {
-          bg: '$darkGold50',
-          borderColor: '$darkGold500',
-          _text: {
-            color: '$darkGold900',
-          },
-          _icon: {
-            color: '$darkGold700',
-          },
-          _chevron: {
-            color: '$darkGold700',
-          },
-          _button: {
-            _buttonIcon: {
-              color: '$darkGold700',
-            },
-          },
-          _closeButton: {
-            _closeIcon: {
-              color: '$darkGold700',
-            },
-          },
-        },
-      },
+      // @deprecated - use 'red' instead
+      error: colorScheme('red', WarningMediumContainedIcon),
+      // @deprecated - use 'cyan' instead
+      info: colorScheme('cyan', InformationMediumContainedIcon),
+      // @deprecated - use 'green' instead
+      success: colorScheme('green', TickMediumContainedIcon),
+      // @deprecated - use 'gold' instead
+      warning: colorScheme('gold', WarningMediumContainedIcon),
+      red: colorScheme('red', WarningMediumContainedIcon),
+      cyan: colorScheme('cyan', InformationMediumContainedIcon),
+      green: colorScheme('green', TickMediumContainedIcon),
+      gold: colorScheme('gold', WarningMediumContainedIcon),
     },
   },
 
