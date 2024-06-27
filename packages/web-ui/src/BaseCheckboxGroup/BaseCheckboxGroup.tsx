@@ -42,7 +42,8 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
       componentPrefix: 'checkboxgroup',
     });
     const showErrorMessage = Boolean(error && errorMessage);
-    const direction = helperTextPosition === 'top' ? 'column' : 'column-reverse';
+    const showTopHelperText = helperText && helperTextPosition === 'top';
+    const showBottomHelperText = helperText && helperTextPosition === 'bottom';
 
     // useControllableState will handle whether controlled or uncontrolled
     const [value = [], setValue] = useControllableState({
@@ -89,37 +90,41 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
         aria-invalid={showErrorMessage}
         aria-describedby={ariaDescribedbyValue}
       >
-        <Flex direction="column" gap={0.5}>
-          {label ? (
-            <FieldsetLegend id={labelId} disabled={disabled}>
-              {label}
-            </FieldsetLegend>
-          ) : null}
-          {helperText && helperTextPosition === 'top' ? (
-            <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
-              {helperText}
-            </HelperText>
-          ) : null}
-        </Flex>
+        {label || showTopHelperText ? (
+          <Flex direction="column" gap={0.5}>
+            {label ? (
+              <FieldsetLegend id={labelId} disabled={disabled}>
+                {label}
+              </FieldsetLegend>
+            ) : null}
+            {showTopHelperText ? (
+              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                {helperText}
+              </HelperText>
+            ) : null}
+          </Flex>
+        ) : null}
 
         <BaseCheckboxGroupProvider value={providerValue}>{children}</BaseCheckboxGroupProvider>
 
-        <Flex direction="column" gap={1}>
-          {helperText && helperTextPosition === 'bottom' ? (
-            <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
-              {helperText}
-            </HelperText>
-          ) : null}
-          {showErrorMessage ? (
-            <HelperText
-              validationStatus="invalid"
-              showIcon={showErrorMessageIcon}
-              id={errorMessageId}
-            >
-              {errorMessage}
-            </HelperText>
-          ) : null}
-        </Flex>
+        {showBottomHelperText || showErrorMessage ? (
+          <Flex direction="column" gap={1}>
+            {showBottomHelperText ? (
+              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                {helperText}
+              </HelperText>
+            ) : null}
+            {showErrorMessage ? (
+              <HelperText
+                validationStatus="invalid"
+                showIcon={showErrorMessageIcon}
+                id={errorMessageId}
+              >
+                {errorMessage}
+              </HelperText>
+            ) : null}
+          </Flex>
+        ) : null}
       </Fieldset>
     );
   }
