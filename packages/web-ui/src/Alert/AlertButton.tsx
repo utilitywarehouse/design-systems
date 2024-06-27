@@ -1,10 +1,10 @@
 import * as React from 'react';
-import type { TextLinkProps } from '../lab/TextLink';
 import { styled } from '../theme';
 import { colorSchemeParentSelector, px, withGlobalPrefix } from '../utils';
 import { COLOR_SCHEME, PropsWithSx } from '../types';
 import clsx from 'clsx';
 import { UnstyledButton } from '../UnstyledButton';
+import type { UnstyledButtonProps } from '../UnstyledButton';
 import { colors } from '@utilitywarehouse/colour-system';
 
 const componentName = 'AlertButton';
@@ -47,8 +47,8 @@ const StyledElement = styled(UnstyledButton)({
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const AlertButton = React.forwardRef<
-  React.ElementRef<typeof UnstyledButton>,
-  React.PropsWithChildren<PropsWithSx<TextLinkProps>>
+  React.ElementRef<'button'>,
+  React.PropsWithChildren<PropsWithSx<UnstyledButtonProps>>
 >(({ className, ...props }, ref) => (
   <StyledElement ref={ref} className={clsx(componentClassName, className)} {...props} />
 ));
