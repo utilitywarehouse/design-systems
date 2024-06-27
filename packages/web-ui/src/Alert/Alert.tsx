@@ -17,7 +17,7 @@ import { AlertTitle } from './AlertTitle';
 import { AlertText } from './AlertText';
 import { AlertLink } from './AlertLink';
 import { Flex } from '../Flex';
-import { UnstyledButton } from '../UnstyledButton';
+import { AlertButton } from './AlertButton';
 
 const componentName = 'Alert';
 const componentClassName = withGlobalPrefix(componentName);
@@ -41,25 +41,12 @@ const StyledElement = styled('div')({
   '> :where(svg, [data-icon])': {
     color: 'var(--alert-icon-color)',
   },
-  '> :where(button, a)': {
-    color: 'var(--alert-icon-color)',
-    alignSelf: 'center',
-    '&:hover': {
-      color: 'var(--alert-button-hover-color)',
-    },
-    '&:focus-visible': {
-      outline: 'none',
-      borderRadius: px(4),
-      boxShadow: '0 0 0 2px var(--alert-focus-color)',
-    },
-  },
   [COLORSCHEME_SELECTORS.cyan]: {
     '--alert-text-color': colors.cyan900,
     '--alert-background-color': colors.cyan50,
     '--alert-icon-color': colors.cyan700,
     '--alert-border-color': colors.cyan500,
     '--alert-focus-color': colors.cyan700,
-    '--alert-button-hover-color': colors.cyan900,
   },
   [COLORSCHEME_SELECTORS.green]: {
     '--alert-text-color': colors.green900,
@@ -67,7 +54,6 @@ const StyledElement = styled('div')({
     '--alert-icon-color': colors.green700,
     '--alert-border-color': colors.green500,
     '--alert-focus-color': colors.green700,
-    '--alert-button-hover-color': colors.green900,
   },
   [COLORSCHEME_SELECTORS.gold]: {
     '--alert-text-color': colors.gold900,
@@ -75,7 +61,6 @@ const StyledElement = styled('div')({
     '--alert-icon-color': colors.gold700,
     '--alert-border-color': colors.gold500,
     '--alert-focus-color': colors.gold700,
-    '--alert-button-hover-color': colors.gold900,
   },
   [COLORSCHEME_SELECTORS.red]: {
     '--alert-text-color': colors.red900,
@@ -83,7 +68,6 @@ const StyledElement = styled('div')({
     '--alert-icon-color': colors.red700,
     '--alert-border-color': colors.red500,
     '--alert-focus-color': colors.red700,
-    '--alert-button-hover-color': colors.red900,
   },
 });
 
@@ -146,21 +130,16 @@ export const Alert = React.forwardRef<
           )}
         </Flex>
         {linkHref && !linkText ? (
-          <UnstyledButton asChild title="Alert action" aria-label="Alert action">
+          <AlertButton asChild title="Alert action" aria-label="Alert action">
             <a href={linkHref}>
               <ChevronRightMediumIcon />
             </a>
-          </UnstyledButton>
+          </AlertButton>
         ) : null}
         {onDismiss ? (
-          <UnstyledButton
-            data-dismiss
-            onClick={onDismiss}
-            title="Dismiss"
-            aria-label="Dismiss alert"
-          >
+          <AlertButton data-dismiss onClick={onDismiss} title="Dismiss" aria-label="Dismiss alert">
             {direction === 'row' ? <CloseMediumIcon /> : <CloseSmallIcon />}
-          </UnstyledButton>
+          </AlertButton>
         ) : null}
       </StyledElement>
     );
