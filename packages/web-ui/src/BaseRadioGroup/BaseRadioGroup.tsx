@@ -62,20 +62,27 @@ export const BaseRadioGroup = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGr
         aria-describedby={ariaDescribedbyValue}
       >
         <Fieldset sx={sx}>
-          {label ? (
-            <FieldsetLegend id={labelId} disabled={disabled}>
-              {label}
-            </FieldsetLegend>
-          ) : null}
-          <Flex direction="column" gap={helperTextPosition === 'top' ? 2 : 1}>
-            <Flex gap={2} direction={direction}>
-              {helperText ? (
-                <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
-                  {helperText}
-                </HelperText>
-              ) : null}
-              <BaseRadioGroupProvider value={value}>{children}</BaseRadioGroupProvider>
-            </Flex>
+          <Flex direction="column" gap={0.5}>
+            {label ? (
+              <FieldsetLegend id={labelId} disabled={disabled}>
+                {label}
+              </FieldsetLegend>
+            ) : null}
+            {helperText && helperTextPosition === 'top' ? (
+              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                {helperText}
+              </HelperText>
+            ) : null}
+          </Flex>
+
+          <BaseRadioGroupProvider value={value}>{children}</BaseRadioGroupProvider>
+
+          <Flex direction="column" gap={1}>
+            {helperText && helperTextPosition === 'bottom' ? (
+              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                {helperText}
+              </HelperText>
+            ) : null}
             {showErrorMessage ? (
               <HelperText
                 validationStatus="invalid"

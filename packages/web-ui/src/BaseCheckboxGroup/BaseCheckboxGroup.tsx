@@ -89,21 +89,27 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
         aria-invalid={showErrorMessage}
         aria-describedby={ariaDescribedbyValue}
       >
-        {label ? (
-          <FieldsetLegend id={labelId} disabled={disabled}>
-            {label}
-          </FieldsetLegend>
-        ) : null}
-        <Flex direction="column" gap={helperTextPosition === 'top' ? 2 : 1}>
-          <Flex gap={2} direction={direction}>
-            {helperText ? (
-              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
-                {helperText}
-              </HelperText>
-            ) : null}
+        <Flex direction="column" gap={0.5}>
+          {label ? (
+            <FieldsetLegend id={labelId} disabled={disabled}>
+              {label}
+            </FieldsetLegend>
+          ) : null}
+          {helperText && helperTextPosition === 'top' ? (
+            <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+              {helperText}
+            </HelperText>
+          ) : null}
+        </Flex>
 
-            <BaseCheckboxGroupProvider value={providerValue}>{children}</BaseCheckboxGroupProvider>
-          </Flex>
+        <BaseCheckboxGroupProvider value={providerValue}>{children}</BaseCheckboxGroupProvider>
+
+        <Flex direction="column" gap={1}>
+          {helperText && helperTextPosition === 'bottom' ? (
+            <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+              {helperText}
+            </HelperText>
+          ) : null}
           {showErrorMessage ? (
             <HelperText
               validationStatus="invalid"
