@@ -4,7 +4,7 @@ import { TextLink } from '../lab/TextLink';
 import type { TextLinkProps } from '../lab/TextLink';
 import { styled } from '../theme';
 import { fontWeights } from '../tokens';
-import { colorSchemeParentSelector, withGlobalPrefix } from '../utils';
+import { colorSchemeParentSelector, px, withGlobalPrefix } from '../utils';
 import { COLOR_SCHEME, PropsWithSx } from '../types';
 import clsx from 'clsx';
 
@@ -16,17 +16,26 @@ const StyledElement = styled(TextLink)({
   color: 'var(--alert-link-color)',
   textDecorationColor: 'var(--alert-link-color)',
   alignSelf: 'flex-start',
+  ':where(:focus-visible)': {
+    outline: 'none',
+    borderRadius: px(4),
+    boxShadow: '0 0 0 2px var(--alert-focus-color)',
+  },
   [colorSchemeParentSelector(COLOR_SCHEME.cyan)]: {
     '--alert-link-color': colors.cyan700,
+    '--alert-focus-color': colors.cyan700,
   },
   [colorSchemeParentSelector(COLOR_SCHEME.green)]: {
     '--alert-link-color': colors.green700,
+    '--alert-focus-color': colors.green700,
   },
   [colorSchemeParentSelector(COLOR_SCHEME.gold)]: {
     '--alert-link-color': colors.gold700,
+    '--alert-focus-color': colors.gold700,
   },
   [colorSchemeParentSelector(COLOR_SCHEME.red)]: {
     '--alert-link-color': colors.red700,
+    '--alert-focus-color': colors.red700,
   },
 });
 

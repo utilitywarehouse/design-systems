@@ -26,18 +26,22 @@ const StyledElement = styled(UnstyledButton)({
   [colorSchemeParentSelector(COLOR_SCHEME.cyan)]: {
     '--alert-button-color': colors.cyan700,
     '--alert-button-color-hover': colors.cyan900,
+    '--alert-focus-color': colors.cyan700,
   },
   [colorSchemeParentSelector(COLOR_SCHEME.green)]: {
     '--alert-button-color': colors.green700,
     '--alert-button-color-hover': colors.green900,
+    '--alert-focus-color': colors.green700,
   },
   [colorSchemeParentSelector(COLOR_SCHEME.gold)]: {
     '--alert-button-color': colors.gold700,
     '--alert-button-color-hover': colors.gold900,
+    '--alert-focus-color': colors.gold700,
   },
   [colorSchemeParentSelector(COLOR_SCHEME.red)]: {
     '--alert-button-color': colors.red700,
     '--alert-button-color-hover': colors.red900,
+    '--alert-focus-color': colors.red700,
   },
 });
 

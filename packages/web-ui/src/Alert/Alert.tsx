@@ -46,28 +46,24 @@ const StyledElement = styled('div')({
     '--alert-background-color': colors.cyan50,
     '--alert-icon-color': colors.cyan700,
     '--alert-border-color': colors.cyan500,
-    '--alert-focus-color': colors.cyan700,
   },
   [COLORSCHEME_SELECTORS.green]: {
     '--alert-text-color': colors.green900,
     '--alert-background-color': colors.green50,
     '--alert-icon-color': colors.green700,
     '--alert-border-color': colors.green500,
-    '--alert-focus-color': colors.green700,
   },
   [COLORSCHEME_SELECTORS.gold]: {
     '--alert-text-color': colors.gold900,
     '--alert-background-color': colors.gold50,
     '--alert-icon-color': colors.gold700,
     '--alert-border-color': colors.gold500,
-    '--alert-focus-color': colors.gold700,
   },
   [COLORSCHEME_SELECTORS.red]: {
     '--alert-text-color': colors.red900,
     '--alert-background-color': colors.red50,
     '--alert-icon-color': colors.red700,
     '--alert-border-color': colors.red500,
-    '--alert-focus-color': colors.red700,
   },
 });
 
