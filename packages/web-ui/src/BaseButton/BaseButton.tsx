@@ -181,7 +181,6 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       },
     },
     '@media (hover: hover)': {
-      cursor: 'default', // so the cursor doesn't change on hover when using a `a` element with `asChild`
       ':where(:hover)': {
         '--base-button-background-color': 'var(--base-button-background-color-hover)',
       },
