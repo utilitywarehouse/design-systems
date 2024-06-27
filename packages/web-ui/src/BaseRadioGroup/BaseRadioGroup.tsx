@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { forwardRef } from 'react';
-import { Box } from '../Box';
 import { Root } from '@radix-ui/react-radio-group';
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
@@ -8,6 +7,7 @@ import { HelperText } from '../HelperText';
 import { useIds } from '../hooks';
 import { PropsWithSx } from '../types';
 import { mergeIds } from '../utils';
+import { Flex } from '../Flex';
 import { BaseRadioGroupProps } from './BaseRadioGroup.props';
 import { BaseRadioGroupProvider } from './BaseRadioGroup.context';
 
@@ -65,25 +65,25 @@ export const BaseRadioGroup = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGr
               {label}
             </FieldsetLegend>
           ) : null}
-
-          <Box display="flex" gap={2} flexDirection={direction}>
-            {helperText ? (
-              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
-                {helperText}
+          <Flex direction="column" gap={helperTextPosition === 'top' ? 2 : 1}>
+            <Flex gap={2} direction={direction}>
+              {helperText ? (
+                <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                  {helperText}
+                </HelperText>
+              ) : null}
+              <BaseRadioGroupProvider value={value}>{children}</BaseRadioGroupProvider>
+            </Flex>
+            {showErrorMessage ? (
+              <HelperText
+                validationStatus="invalid"
+                showIcon={showErrorMessageIcon}
+                id={errorMessageId}
+              >
+                {errorMessage}
               </HelperText>
             ) : null}
-            <BaseRadioGroupProvider value={value}>{children}</BaseRadioGroupProvider>
-          </Box>
-
-          {showErrorMessage ? (
-            <HelperText
-              validationStatus="invalid"
-              showIcon={showErrorMessageIcon}
-              id={errorMessageId}
-            >
-              {errorMessage}
-            </HelperText>
-          ) : null}
+          </Flex>
         </Fieldset>
       </Root>
     );

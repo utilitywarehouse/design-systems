@@ -32,6 +32,7 @@ const StyledElement = styled('div')({
   flexDirection: 'row',
   padding: px(16),
   backgroundColor: 'var(--alert-background-color)',
+  color: 'var(--alert-text-color)',
   [`:where([${DATA_ATTRIBUTES.orientation}="vertical"])`]: {
     '> button[data-dismiss]': {
       alignSelf: 'flex-start',
@@ -53,6 +54,7 @@ const StyledElement = styled('div')({
     },
   },
   [COLORSCHEME_SELECTORS.cyan]: {
+    '--alert-text-color': colors.cyan900,
     '--alert-background-color': colors.cyan50,
     '--alert-icon-color': colors.cyan700,
     '--alert-border-color': colors.cyan500,
@@ -60,6 +62,7 @@ const StyledElement = styled('div')({
     '--alert-button-hover-color': colors.cyan900,
   },
   [COLORSCHEME_SELECTORS.green]: {
+    '--alert-text-color': colors.green900,
     '--alert-background-color': colors.green50,
     '--alert-icon-color': colors.green700,
     '--alert-border-color': colors.green500,
@@ -67,6 +70,7 @@ const StyledElement = styled('div')({
     '--alert-button-hover-color': colors.green900,
   },
   [COLORSCHEME_SELECTORS.gold]: {
+    '--alert-text-color': colors.gold900,
     '--alert-background-color': colors.gold50,
     '--alert-icon-color': colors.gold700,
     '--alert-border-color': colors.gold500,
@@ -74,6 +78,7 @@ const StyledElement = styled('div')({
     '--alert-button-hover-color': colors.gold900,
   },
   [COLORSCHEME_SELECTORS.red]: {
+    '--alert-text-color': colors.red900,
     '--alert-background-color': colors.red50,
     '--alert-icon-color': colors.red700,
     '--alert-border-color': colors.red500,
