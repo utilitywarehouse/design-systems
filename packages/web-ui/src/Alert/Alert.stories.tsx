@@ -77,14 +77,14 @@ export const KitchenSink: Story = {
               direction="row"
               title="Alert title"
               text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris."
-              onClick={() => alert('clicked')}
+              linkHref="#"
             />
             <Alert
               colorScheme={colorScheme}
               direction="column"
               title="Alert title"
               text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris nibh quam, hendrerit mattis ligula sit amet."
-              onClick={() => alert('clicked')}
+              linkHref="#"
             />
           </Flex>
         ))}

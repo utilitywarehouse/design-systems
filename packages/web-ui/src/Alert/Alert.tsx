@@ -41,7 +41,7 @@ const StyledElement = styled('div')({
   '> :where(svg, [data-icon])': {
     color: 'var(--alert-icon-color)',
   },
-  '> :where(button)': {
+  '> :where(button, a)': {
     color: 'var(--alert-icon-color)',
     alignSelf: 'center',
     '&:hover': {
@@ -117,7 +117,6 @@ export const Alert = React.forwardRef<
       text,
       linkText,
       linkHref,
-      onClick,
       ...props
     },
     ref
@@ -142,13 +141,15 @@ export const Alert = React.forwardRef<
             <>
               {title ? <AlertTitle>{title}</AlertTitle> : null}
               {text ? <AlertText>{text}</AlertText> : null}
-              {linkText ? <AlertLink href={linkHref}>{linkText}</AlertLink> : null}
+              {linkText && linkHref ? <AlertLink href={linkHref}>{linkText}</AlertLink> : null}
             </>
           )}
         </Flex>
-        {onClick ? (
-          <UnstyledButton onClick={onClick} title="Alert action" aria-label="Alert action">
-            <ChevronRightMediumIcon />
+        {linkHref && !linkText ? (
+          <UnstyledButton asChild title="Alert action" aria-label="Alert action">
+            <a href={linkHref}>
+              <ChevronRightMediumIcon />
+            </a>
           </UnstyledButton>
         ) : null}
         {onDismiss ? (
