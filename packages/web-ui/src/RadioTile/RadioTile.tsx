@@ -76,7 +76,14 @@ const StyledRadioItem = styled(Item)({
 });
 
 /**
- * The `RadioTile` should be used within a `RadioGroup` component.
+ * `RadioTile` can be used to choose between a set of more than two options.
+ *
+ * `RadioTile` should always be used with a `RadioGroup` or `RadioGridGroup` to
+ * handle the state control and layout.
+ *
+ * `RadioTile` is, by default, appropriately labelled when using
+ * the `label` prop, if you do not provide a label, you must specify an
+ * `aria-label` or `aria-labelledby` for accessibility.
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */

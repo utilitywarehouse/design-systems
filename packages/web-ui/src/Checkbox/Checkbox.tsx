@@ -38,12 +38,16 @@ const StyledLabel = styled(Label)({
 });
 
 /**
- * Checkbox is a dual-state checkbox allowing users to toggle between checked
+ * `Checkbox` is a dual-state checkbox allowing users to toggle between checked
  * and not checked.
  *
- * A Checkbox can be used independently, multiple checkboxes should be used
+ * `Checkbox` can be used independently, multiple checkboxes should be used
  * with a `CheckboxGroup` or `CheckboxGridGroup` to handle the state control
  * and layout.
+ *
+ * `Checkbox` is, by default, appropriately labelled when using
+ * the `label` prop, if you do not provide a label, you must specify an
+ * `aria-label` or `aria-labelledby` for accessibility.
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */

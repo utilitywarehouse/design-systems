@@ -36,6 +36,12 @@ const [checked, setChecked] = React.useState(false);
 <CheckboxTile value="1" label="One" checked={checked} onCheckedChange={c => setChecked(c)} />
 ```
 
+## Accessibility
+
+`CheckboxTile` is, by default, appropriately labelled when using
+the `label` prop, if you do not provide a label, you must specify an
+`aria-label` or `aria-labelledby` for accessibility.
+
 ## Props
 
 <ArgTypes of={Stories} />

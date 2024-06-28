@@ -101,10 +101,14 @@ const StyledLabel = styled(Label)({
 });
 
 /**
- * Radios can be used to choose between a set of more than two options.
+ * `Radio` can be used to choose between a set of more than two options.
  *
- * Radios should always be used with a `RadioGroup` or `RadioGridGroup` to
+ * `Radio` should always be used with a `RadioGroup` or `RadioGridGroup` to
  * handle the state control and layout.
+ *
+ * `Radio` is, by default, appropriately labelled when using
+ * the `label` prop, if you do not provide a label, you must specify an
+ * `aria-label` or `aria-labelledby` for accessibility.
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */

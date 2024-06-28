@@ -25,6 +25,20 @@ export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const Workshop: Story = {};
+export const KitchenSink: Story = {
+  render: () => (
+    <Flex gap={4}>
+      <Flex direction="column" gap={2}>
+        <Text>Standalone</Text>
+        <Checkbox aria-label="standalone" />
+      </Flex>
+      <Flex direction="column" gap={2}>
+        <Text>With label</Text>
+        <Checkbox label="Label" />
+      </Flex>
+    </Flex>
+  ),
+};
 
 export const Controlled: Story = {
   render: () => {

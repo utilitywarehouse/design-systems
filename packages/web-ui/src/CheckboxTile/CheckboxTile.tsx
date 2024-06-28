@@ -45,12 +45,16 @@ const StyledTile = styled('label')({
 });
 
 /**
- * CheckboxTile is a dual-state checkbox allowing users to toggle between
+ * `CheckboxTile` is a dual-state checkbox allowing users to toggle between
  * checked and not checked.
  *
- * A CheckboxTile can be used independently, multiple checkboxes should be used
+ * `CheckboxTile` can be used independently, multiple checkboxes should be used
  * with a `CheckboxGroup` or `CheckboxGridGroup` to handle the state control
  * and layout.
+ *
+ * `CheckboxTile` is, by default, appropriately labelled when using
+ * the `label` prop, if you do not provide a label, you must specify an
+ * `aria-label` or `aria-labelledby` for accessibility.
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
