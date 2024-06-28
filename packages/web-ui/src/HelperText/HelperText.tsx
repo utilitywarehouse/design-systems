@@ -12,9 +12,9 @@ import { HelperTextProps } from './HelperText.props';
 import clsx from 'clsx';
 import { styled } from '../theme';
 import {
-  Information01SmallContainedIcon,
-  Warning01SmallContainedIcon,
-  Tick01SmallContainedIcon,
+  InformationMediumContainedIcon,
+  WarningMediumContainedIcon,
+  TickMediumContainedIcon,
 } from '@utilitywarehouse/react-icons';
 import { fontWeights, fonts } from '../tokens';
 
@@ -39,7 +39,7 @@ const StyledElement = styled('span')({
   lineHeight: pxToRem(24),
   gap: spacing(1),
   alignItems: 'center',
-  '--helper-text-color': colors.grey800,
+  '--helper-text-color': colors.grey700,
   '--helper-text-color-disabled': colors.grey400,
   '--helper-text-color-valid': colors.green600,
   '--helper-text-color-invalid': colors.red600,
@@ -81,13 +81,13 @@ export const HelperText = React.forwardRef<
     { showIcon, validationStatus, disabled, children, className, disableUserSelect, ...props },
     ref
   ) => {
-    const icons: { [key: string]: typeof Tick01SmallContainedIcon } = {
-      valid: Tick01SmallContainedIcon,
-      invalid: Warning01SmallContainedIcon,
+    const icons: { [key: string]: typeof TickMediumContainedIcon } = {
+      valid: TickMediumContainedIcon,
+      invalid: WarningMediumContainedIcon,
     };
     const Icon = validationStatus
       ? (icons[validationStatus] as JSX.ElementType)
-      : (Information01SmallContainedIcon as JSX.ElementType);
+      : (InformationMediumContainedIcon as JSX.ElementType);
 
     return (
       <StyledElement
