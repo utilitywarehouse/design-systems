@@ -5,6 +5,11 @@ import { Text } from '../../Text';
 import { Flex } from '../../Flex';
 import { Box } from '../../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import {
+  ChevronLeftMediumIcon,
+  ChevronRightMediumIcon,
+  OpenMediumIcon,
+} from '@utilitywarehouse/react-icons';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Lab / Link / TextLink',
@@ -74,6 +79,21 @@ export const WithinText: Story = {
   },
 };
 
+export const WithIcons: Story = {
+  render: args => (
+    <Flex gap={6}>
+      <TextLink {...args}>
+        Learn More
+        <ChevronRightMediumIcon />
+      </TextLink>
+      <TextLink {...args}>
+        Open in a new tab
+        <OpenMediumIcon />
+      </TextLink>
+    </Flex>
+  ),
+};
+
 export const TextLinkColour: Story = {
   name: 'Contextual Colour',
   args: { href: '#' },
@@ -116,4 +136,23 @@ export const TextLinkColour: Story = {
       </Flex>
     );
   },
+};
+
+export const AsButton: Story = {
+  render: () => (
+    <Flex direction="column" gap={2} align="start">
+      <TextLink asChild>
+        <button onClick={() => alert('Hello world!')}>
+          View benefits
+          <ChevronRightMediumIcon />
+        </button>
+      </TextLink>
+      <TextLink asChild color={colors.grey900}>
+        <button onClick={() => alert('Hello world!')}>
+          Custom color
+          <ChevronRightMediumIcon />
+        </button>
+      </TextLink>
+    </Flex>
+  ),
 };

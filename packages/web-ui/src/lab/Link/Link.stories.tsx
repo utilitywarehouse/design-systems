@@ -102,7 +102,7 @@ export const AsButton: Story = {
     <Link asChild>
       <button onClick={() => alert('Hello world!')}>
         View UW services
-        <OpenMediumIcon />
+        <ChevronRightMediumIcon />
       </button>
     </Link>
   ),
