@@ -5,11 +5,7 @@ import { Text } from '../../Text';
 import { Flex } from '../../Flex';
 import { Box } from '../../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import {
-  ChevronLeftMediumIcon,
-  ChevronRightMediumIcon,
-  OpenMediumIcon,
-} from '@utilitywarehouse/react-icons';
+import { ChevronRightMediumIcon, OpenMediumIcon } from '@utilitywarehouse/react-icons';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Lab / Link / TextLink',
