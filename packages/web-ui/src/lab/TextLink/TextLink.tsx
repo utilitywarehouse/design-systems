@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { PropsWithSx } from '../../types';
-import { withGlobalPrefix, px, DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS } from '../../utils';
+import {
+  withGlobalPrefix,
+  px,
+  DATA_ATTRIBUTES,
+  DATA_ATTRIBUTE_SELECTORS,
+  spacing,
+} from '../../utils';
 import clsx from 'clsx';
 import { TextLinkProps } from './TextLink.props';
 import { styled } from '../../theme';
@@ -16,12 +22,21 @@ const StyledElement = styled('a', {
 })<{
   color?: string;
 }>(({ color }) => ({
+  // unset button styles when asChild is used
+  ':where(button)': {
+    outline: 'transparent',
+    appearance: 'none',
+    border: 'none',
+    background: 'transparent',
+    padding: 0,
+  },
   cursor: 'pointer',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   textAlign: 'center',
   flexShrink: 0,
+  gap: px(spacing(0.5)),
   fontFamily: 'inherit',
   fontSize: 'inherit',
   lineHeight: 'inherit',
@@ -74,7 +89,9 @@ const StyledElement = styled('a', {
  * A semantic element for navigating between pages.
  *
  * The `TextLink` component is intended to be used within a block of text, and
- * must be nested in a `Text` component.
+ * should be nested in a `Text` component. This should happen even when using
+ * as a standalone link element as it will inherit many styles from the parent
+ * `Text` component.
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be
  * > used standalone with other component libraries.

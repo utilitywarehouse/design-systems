@@ -12,6 +12,7 @@ import * as Stories from './TextLink.stories';
 ## Contents
 
 - [Usage](#usage)
+- [Accessibility](#accessibility)
 - [Semantic HTML](#semantic-html)
 - [Size](#size)
 - [Color](#color)
@@ -59,10 +60,38 @@ const { TextLink } = Lab
 </Text>
 ```
 
+## Accessibility
+
+Icons from the UW icons packages have `aria-hidden="true"` set by default. If
+you are using an icon, in the `TextLink` component, from outside these
+packages, and for purely decorative reasons, please ensure it has this
+attribute set so that the icon is hidden from screen readers.
+
 ## Semantic HTML
 
-A semantic HTML `a` is rendered by default, this cannot be changed due to the
-expectations on links within blocks of text.
+> If it goes somewhere it's a link, if it does something it's a button.
+
+A semantic HTML `a` is rendered by default, however you can change the
+underlying HTML element by using the `asChild` prop.
+
+When `asChild` is set to true, we will not render a default DOM element,
+instead cloning the child and passing it the props and behaviour required to
+make it functional.
+
+Read more about this idea in the [Radix UI composition docs](https://www.radix-ui.com/primitives/docs/guides/composition).
+
+```tsx
+// You may need to disable this eslint warning:
+// eslint-disable-next-line jsx-a11y/anchor-is-valid
+<TextLink asChild>
+  <button type="button" onClick={onClick}>
+    View benefits
+    <ChevronRightMediumIcon />
+  </button>
+</TextLink>
+```
+
+<Canvas of={Stories.AsButton} />
 
 ## Size
 
