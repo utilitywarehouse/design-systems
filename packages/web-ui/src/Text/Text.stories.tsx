@@ -31,43 +31,34 @@ export const KitchenSink: Story = {
 };
 
 export const Workshop: Story = {
-  render: ({ color = 'brandMidnight', ...args }) => {
+  render: ({ color = undefined, ...args }) => {
     return (
-      <Text
-        // @ts-expect-error story
-        color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
-        {...args}
-      />
+      <Flex
+        p={4}
+        bgcolor={args.inverted ? colors.grey900 : colors.grey50}
+        align="center"
+        justify="center"
+      >
+        <Text
+          // @ts-expect-error story
+          color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
+          {...args}
+        />
+      </Flex>
     );
   },
   argTypes: {
-    children: {
-      control: {
-        type: 'text',
-      },
-    },
-    component: {
-      control: {
-        type: 'text',
-      },
-    },
-    variant: {
-      options: variants,
-      control: {
-        type: 'radio',
-      },
-    },
+    children: { control: { type: 'text' } },
+    component: { control: { type: 'text' } },
+    variant: { options: variants, control: { type: 'radio' } },
     color: {
-      options: [...Object.keys(colorsCommon), ...Object.keys(colors)],
-      control: {
-        type: 'select',
-      },
+      options: [undefined, ...Object.keys(colorsCommon), ...Object.keys(colors)],
+      control: { type: 'select' },
     },
+    inverted: { control: { type: 'boolean' } },
     textTransform: {
       options: ['capitalize', 'uppercase', 'lowercase', 'none'],
-      control: {
-        type: 'radio',
-      },
+      control: { type: 'radio' },
     },
     bold: { control: { type: 'boolean' } },
     align: { control: { type: 'text' } },

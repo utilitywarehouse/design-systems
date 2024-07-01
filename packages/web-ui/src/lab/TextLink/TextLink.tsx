@@ -99,10 +99,10 @@ const StyledElement = styled('a', {
 export const TextLink = React.forwardRef<
   React.ElementRef<'a'>,
   React.PropsWithChildren<PropsWithSx<TextLinkProps>>
->(({ className, color, asChild, ...props }, ref) => {
+>(({ className, color, asChild, inverted, ...props }, ref) => {
   const { isInvertedBackground } = useBackground();
   const dataAttributeProps = {
-    [DATA_ATTRIBUTES.inverted]: isInvertedBackground ? '' : undefined,
+    [DATA_ATTRIBUTES.inverted]: inverted || isInvertedBackground ? '' : undefined,
     [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
   };
   return (
