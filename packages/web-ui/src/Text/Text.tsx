@@ -65,7 +65,7 @@ const StyledElement = styled('p', {
     '--text-line-height-body': 1.5,
     '--text-line-height-legalNote': 1.5,
     '--text-line-height-caption': 2,
-    [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
+    [DATA_ATTRIBUTE_SELECTORS.inverted]: {
       '--text-color': 'var(--text-color-on-brand-bg)',
     },
     [DATA_ATTRIBUTE_SELECTORS.customColor]: {
@@ -114,9 +114,9 @@ export const Text = React.forwardRef<
   React.ElementRef<'p'>,
   React.PropsWithChildren<PropsWithSx<TextProps>>
 >(({ variant = 'body', component = 'p', bold, noWrap, color, className, ...props }, ref) => {
-  const { isBrandBackground } = useBackground();
+  const { isInvertedBackground } = useBackground();
   const dataAttributeProps = {
-    [DATA_ATTRIBUTES.onBrandBackground]: !color && isBrandBackground ? '' : undefined,
+    [DATA_ATTRIBUTES.inverted]: !color && isInvertedBackground ? '' : undefined,
     [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
   };
 

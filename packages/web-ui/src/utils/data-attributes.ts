@@ -4,8 +4,6 @@ function withDataPrefix(name: string) {
 
 /* a set of data-attributes used internally for styling */
 export const DATA_ATTRIBUTES = {
-  // TODO: replace usage of this with inverted
-  onBrandBackground: withDataPrefix('on-brand-bg'),
   customColor: withDataPrefix('custom-color'),
   colorscheme: withDataPrefix('colorscheme'),
   inverted: withDataPrefix('inverted'),

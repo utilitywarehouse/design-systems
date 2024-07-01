@@ -76,11 +76,11 @@ export const Typography = forwardRef(function LegacyTypography(
   { color = 'primary', variant = 'body', fontWeight = 'regular', className, component, ...props },
   ref
 ) {
-  const { isBrandBackground } = useBackground();
+  const { isInvertedBackground } = useBackground();
   const classNames = clsx(
     typographyClasses[color],
     {
-      [typographyClasses.inverse as string]: isBrandBackground,
+      [typographyClasses.inverse as string]: isInvertedBackground,
       [typographyClasses.semibold as string]: fontWeight === 'semibold',
     },
     className

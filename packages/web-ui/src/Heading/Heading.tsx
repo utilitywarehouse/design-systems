@@ -68,7 +68,7 @@ const StyledElement = styled('h2', {
     '--heading-line-height-h2-desktop': 1.5,
     '--heading-line-height-h3': 1.5,
     '--heading-line-height-h4': 1.5,
-    [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
+    [DATA_ATTRIBUTE_SELECTORS.inverted]: {
       '--heading-color': 'var(--heading-color-on-brand-bg)',
     },
     [DATA_ATTRIBUTE_SELECTORS.customColor]: {
@@ -124,9 +124,9 @@ export const Heading = React.forwardRef<
   React.PropsWithChildren<PropsWithSx<HeadingProps>>
 >(({ component, variant = 'h2', color, className, ...props }, ref) => {
   const element = component ? component : variant === 'displayHeading' ? 'h1' : variant;
-  const { isBrandBackground } = useBackground();
+  const { isInvertedBackground } = useBackground();
   const dataAttributeProps = {
-    [DATA_ATTRIBUTES.onBrandBackground]: !color && isBrandBackground ? '' : undefined,
+    [DATA_ATTRIBUTES.inverted]: !color && isInvertedBackground ? '' : undefined,
     [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
   };
   return (

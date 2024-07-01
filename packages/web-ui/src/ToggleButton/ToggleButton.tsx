@@ -67,9 +67,9 @@ export type ToggleButtonProps = Pick<
 
 export const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(
   function ToggleButton({ children, className, ...props }, ref) {
-    const { isBrandBackground } = useBackground();
+    const { isInvertedBackground } = useBackground();
     const dataAttributeProps = {
-      [DATA_ATTRIBUTES.bgcolorBrand]: isBrandBackground,
+      [DATA_ATTRIBUTES.bgcolorBrand]: isInvertedBackground,
     };
     return (
       <StyledMuiToggleButton
