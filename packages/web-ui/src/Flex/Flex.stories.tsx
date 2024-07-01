@@ -79,7 +79,6 @@ export const Stack: Story = {
               </Box>
               {i < 2 ? (
                 <Divider
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                   orientation={
                     typeof args.direction === 'string' && args?.direction?.includes('row')
                       ? 'vertical'
