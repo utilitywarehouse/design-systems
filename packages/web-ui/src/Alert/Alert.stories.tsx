@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Alert } from './Alert';
 import { Flex } from '../Flex';
 import { COLOR_SCHEME } from '../types';
+import { Button } from '../lab/Button';
 
 const colorSchemes = [
   COLOR_SCHEME.cyan,
@@ -94,3 +95,22 @@ export const KitchenSink: Story = {
 };
 
 export const Workshop: Story = {};
+
+export const ToggleAlert: Story = {
+  render: () => {
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    return (
+      <Flex direction="column" gap={2} width="fit-content">
+        <Button size="small" variant="outline" onClick={handleOpen}>
+          Open alert
+        </Button>
+        {open ? (
+          <Alert direction="row" text="This is for your information." onDismiss={handleClose} />
+        ) : null}
+      </Flex>
+    );
+  },
+};

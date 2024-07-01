@@ -8,10 +8,11 @@ import * as Stories from './Alert.stories';
 <Description />
 
 - [Color Scheme](#color-schemes)
+- [Accessibility](#accessibility)
 - [Advanced Usage](#advanced-usage)
 - [Props](#props)
 
-<Canvas of={Stories.KitchenSink} />
+<Canvas of={Stories.Workshop} />
 
 ## Color schemes
 
@@ -23,6 +24,49 @@ The `colorScheme` prop will change the Alert colours.
   title="Something went wrong"
   text="Please refresh your browser or come back later."
 />
+```
+
+## Accessibility
+
+Alerts should be used sparingly.
+
+Alerts are dynamic content, usually time-sensitive, that is injected into the
+page when it changes and a person using a screenreader needs to know that some
+state of the application has changed. If an alert is present on page load, it
+won’t be read automatically by screenreaders. If an element is present on page
+load, it is not technically an alert.
+
+To display the `Alert` component, use either conditional rendering or
+dynamically alter the CSS `display` property in your React code.
+
+```tsx
+[...]
+
+const [open, setOpen] = React.useState(false);
+const handleOpen = () => setOpen(true);
+const handleClose = () => setOpen(false);
+
+[...]
+
+return (
+  <Flex direction="column" gap={2} width="fit-content">
+
+    <Button size="small" variant="outline" onClick={handleOpen}>
+      Open alert
+    </Button>
+
+    {/* conditionally render */}
+    {open ? (
+      <Alert direction="row" text="This is for your information." onDismiss={handleClose} />
+    ) : null}
+
+    {/* or, dynamically alter `display` */}
+    <Box display={open ? 'block' : 'none'}>
+      <Alert direction="row" text="This is for your information." onDismiss={handleClose} />
+    </Box>
+
+  </Flex>
+);
 ```
 
 ## Advanced usage
