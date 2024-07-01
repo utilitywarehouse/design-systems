@@ -4,7 +4,6 @@ import { Alert } from './Alert';
 import { Flex } from '../Flex';
 import { COLOR_SCHEME } from '../types';
 import { Button } from '../lab/Button';
-import { Box } from '../Box';
 
 const colorSchemes = [
   COLOR_SCHEME.cyan,
