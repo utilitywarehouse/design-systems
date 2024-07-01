@@ -3,3 +3,5 @@ src
 ./packages
 .vercel
 ./turbo
+./packages
+./scripts
