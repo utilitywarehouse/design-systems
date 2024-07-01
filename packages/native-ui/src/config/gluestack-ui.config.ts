@@ -2,7 +2,7 @@ import { AnimationResolver } from '@gluestack-style/animation-resolver';
 import { MotionAnimationDriver } from '@gluestack-style/legend-motion-animation-driver';
 import { createConfig, createComponents } from '@gluestack-style/react';
 import * as componentsTheme from './theme';
-import { colors, colorsCommon, colorsDark } from '@utilitywarehouse/colour-system';
+import { colors } from './colors';
 
 export const gluestackUIConfig = createConfig({
   aliases: {
@@ -27,15 +27,7 @@ export const gluestackUIConfig = createConfig({
     rounded: 'borderRadius',
   } as const,
   tokens: {
-    colors: {
-      ...colors,
-      ...Object.keys(colorsDark).reduce((acc, key) => {
-        acc[`dark${key[0].toUpperCase()}${key.slice(1)}`] =
-          colorsDark[key as keyof typeof colorsDark];
-        return acc;
-      }, {} as Record<string, string>),
-      ...colorsCommon,
-    },
+    colors,
     space: {
       px: '1px',
       '0': 0,

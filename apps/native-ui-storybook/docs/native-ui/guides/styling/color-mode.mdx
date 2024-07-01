@@ -24,15 +24,19 @@ In the below example we are defining styles to be applied in dark mode in `_dark
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Button $dark-bg="$blue600" $light-bg="$red600">
-        <ButtonText>Hello world</ButtonText>
+      <Button $dark-bg="$darkCyan600" $light-bg="$red600" p="$2">
+        <ButtonText color="$white">Hello world</ButtonText>
       </Button>
     </Center>
   </NativeUIProvider>
 </Canvas>
 
 ```tsx
-<Button $dark-bg="$blue600" $light-bg="$red600">
+<Button $dark-bg="$cyan600" $light-bg="$red600" p="$2">
+  <ButtonText>Hello world</ButtonText>
+</Button>
+// or
+<Button sx={{ backgroundColor: '$red600', p: "$2", _dark: { backgroundColor: '$darkCyan600' }, }}>
   <ButtonText>Hello world</ButtonText>
 </Button>
 ```
