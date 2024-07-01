@@ -1,0 +1,49 @@
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import * as Stories from './Alert.stories';
+
+<Meta of={Stories} />
+
+# Alert
+
+<Description />
+
+- [Color Scheme](#color-schemes)
+- [Advanced Usage](#advanced-usage)
+- [Props](#props)
+
+<Canvas of={Stories.KitchenSink} />
+
+## Color schemes
+
+The `colorScheme` prop will change the Alert colours.
+
+```tsx
+<Alert
+  colorScheme="red"
+  title="Something went wrong"
+  text="Please refresh your browser or come back later."
+/>
+```
+
+## Advanced usage
+
+You can use the elements of a `Alert` separately for advanced usage for example changing the alert text:
+
+```tsx
+import { Alert, AlertTitle, AlertText, AlertLink, Strong } from '@utilitywarehouse/web-ui';
+
+const YourComponent = () => (
+  <Alert colorScheme="red">
+    <AlertTitle>Alert title</AlertTitle>
+    <AlertText>
+      Alert text <Strong>purus odio</Strong>, maximus tincidunt aliquet posuere, mollis ut mauris.
+    </AlertText>
+    <AlertLink href="#">Alert link</AlertLink>
+  </Alert>
+);
+```
+
+## Props
+
+<ArgTypes of={Stories} />
+````
