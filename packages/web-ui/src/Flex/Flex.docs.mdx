@@ -34,13 +34,9 @@ spaced layouts. It did this by adding additional margin to child components,
 which could sometimes cause problems, such as margin collapse on the child
 components.
 
-It is now possible to achieve the same layouts using the native
-flexbox gap property, and this is our preferred way of achieving these common
-_stacked_ layouts.
-
-Currently the only area where the `Stack` component is more
-useful, is if you want to include a divider in between your children. This is
-not possible using `Flex`, so we recommend using `Stack` in this instance.
+It is now possible to achieve the same layouts using the native flexbox gap
+property, and this is our preferred way of achieving these common _stacked_
+layouts. The `Stack` component will be deprecated and removed in due course.
 
 <Canvas of={Stories.Stack} />
 
