@@ -39,6 +39,9 @@ export const Button = createStyle({
       ghost: {
         backgroundColor: 'transparent',
         borderWidth: 0,
+        _text: {
+          fontWeight: '$semibold',
+        },
       },
     },
 
