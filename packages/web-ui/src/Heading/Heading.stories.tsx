@@ -30,13 +30,20 @@ export const KitchenSink: Story = {
 };
 
 export const Workshop: Story = {
-  render: ({ color = 'brandPrimaryPurple', ...args }) => {
+  render: ({ color = undefined, ...args }) => {
     return (
-      <Heading
-        // @ts-expect-error story
-        color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
-        {...args}
-      />
+      <Flex
+        p={4}
+        bgcolor={args.inverted ? colors.grey900 : colors.grey50}
+        align="center"
+        justify="center"
+      >
+        <Heading
+          // @ts-expect-error story
+          color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
+          {...args}
+        />
+      </Flex>
     );
   },
   argTypes: {
@@ -47,9 +54,10 @@ export const Workshop: Story = {
       control: { type: 'radio' },
     },
     color: {
-      options: [...Object.keys(colorsCommon), ...Object.keys(colors)],
+      options: [undefined, ...Object.keys(colorsCommon), ...Object.keys(colors)],
       control: { type: 'select' },
     },
+    inverted: { control: { type: 'boolean' } },
     textTransform: {
       options: ['capitalize', 'uppercase', 'lowercase', 'none'],
       control: { type: 'radio' },

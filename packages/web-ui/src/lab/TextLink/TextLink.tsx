@@ -72,7 +72,7 @@ const StyledElement = styled('a', {
     outlineColor: 'var(--text-link-focus-outline-color)',
     outlineOffset: px(2),
   },
-  [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
+  [DATA_ATTRIBUTE_SELECTORS.inverted]: {
     '--text-link-color': 'var(--text-link-color-on-brand-bg)',
     '--text-link-color-active': 'var(--text-link-color-active-on-brand-bg)',
     '--text-link-color-visited': 'var(--text-link-color-visited-on-brand-bg)',
@@ -99,10 +99,10 @@ const StyledElement = styled('a', {
 export const TextLink = React.forwardRef<
   React.ElementRef<'a'>,
   React.PropsWithChildren<PropsWithSx<TextLinkProps>>
->(({ className, color, asChild, ...props }, ref) => {
-  const { isBrandBackground } = useBackground();
+>(({ className, color, asChild, inverted, ...props }, ref) => {
+  const { isInvertedBackground } = useBackground();
   const dataAttributeProps = {
-    [DATA_ATTRIBUTES.onBrandBackground]: isBrandBackground ? '' : undefined,
+    [DATA_ATTRIBUTES.inverted]: inverted || isInvertedBackground ? '' : undefined,
     [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
   };
   return (
