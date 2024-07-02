@@ -18,15 +18,18 @@ const BaseBox = createBox();
  * > used standalone with other component libraries.
  */
 export const Box = React.forwardRef(function Box({ background, bgcolor, ...props }, ref) {
-  const isBrandBackground =
-    !!background &&
-    [colorsCommon.brandMidnight, colorsCommon.brandPrimaryPurple].includes(background);
+  const invertedBackgrounds = [colorsCommon.brandMidnight, colorsCommon.brandPrimaryPurple];
+  const isInvertedBackground = !!background && invertedBackgrounds.includes(background);
   const backgroundColor = bgcolor || background;
 
   // Prevent re-renders when context values haven't changed
   const backgroundProps = React.useMemo(
-    () => ({ background: background || 'transparent', isBrandBackground }),
-    [background, isBrandBackground]
+    () => ({
+      background: background || 'transparent',
+      isBrandBackground: isInvertedBackground,
+      isInvertedBackground,
+    }),
+    [background, isInvertedBackground]
   );
 
   return background ? (

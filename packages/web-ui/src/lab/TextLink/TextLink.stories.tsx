@@ -13,6 +13,7 @@ const meta: Meta<typeof TextLink> = {
   argTypes: {
     children: { control: { type: 'text' } },
     href: { control: { type: 'text' } },
+    inverted: { control: { type: 'boolean' } },
   },
 };
 
@@ -23,11 +24,19 @@ const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
 export const Workshop: Story = {
   render: args => (
-    <Flex direction="column" gap={4} width={500}>
-      <Text>
+    <Flex
+      direction="column"
+      gap={4}
+      width={500}
+      p={4}
+      bgcolor={args.inverted ? colors.grey900 : colors.grey50}
+      align="center"
+      justify="center"
+    >
+      <Text inverted={args.inverted}>
         <TextLink {...args} />
       </Text>
-      <Text>
+      <Text inverted={args.inverted}>
         Agnes Martin was an American <TextLink {...args}>abstract painter</TextLink> known for her{' '}
         <TextLink {...args}>minimalist</TextLink> style. Martin&apos;s art was characterized by
         serene compositions featuring <TextLink {...args}>grids and lines</TextLink>. Martin&apos;s

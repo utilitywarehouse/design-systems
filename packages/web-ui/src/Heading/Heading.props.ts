@@ -40,4 +40,6 @@ export interface HeadingProps extends ComponentPropsWithoutRef<'h2'> {
   textTransform?: ResponsiveStyleValue<
     'none' | 'capitalize' | 'uppercase' | 'lowercase' | undefined
   >;
+  /** Inverts the component colours, for use on darker backgrounds. */
+  inverted?: boolean;
 }

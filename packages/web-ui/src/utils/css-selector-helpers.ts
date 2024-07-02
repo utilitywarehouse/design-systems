@@ -25,8 +25,6 @@ export const COLORSCHEME_SELECTORS = {
 };
 
 export const DATA_ATTRIBUTE_SELECTORS = {
-  // TODO: replace usage of this with inverted
-  onBrandBackground: `:where([${DATA_ATTRIBUTES.onBrandBackground}])`,
   inverted: `:where([${DATA_ATTRIBUTES.inverted}])`,
   customColor: `:where([${DATA_ATTRIBUTES.customColor}])`,
 };
