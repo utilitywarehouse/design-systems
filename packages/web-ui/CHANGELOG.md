@@ -1,5 +1,29 @@
 # @utilitywarehouse/web-ui
 
+## 0.9.0
+
+### Minor Changes
+
+- [#375](https://github.com/utilitywarehouse/design-systems/pull/375) [`39903aa8`](https://github.com/utilitywarehouse/design-systems/commit/39903aa8a01450bfe5d04e8de233a1bb7fe7b13e) Thanks [@jordmccord](https://github.com/jordmccord)! - Add `Alert` component
+
+- [#393](https://github.com/utilitywarehouse/design-systems/pull/393) [`c86da487`](https://github.com/utilitywarehouse/design-systems/commit/c86da48708a4ced6faba426eef81c1fac6679a82) Thanks [@robphoenix](https://github.com/robphoenix)! - Deprecate `isBrandBackground`
+
+- [#394](https://github.com/utilitywarehouse/design-systems/pull/394) [`945874fd`](https://github.com/utilitywarehouse/design-systems/commit/945874fdc6834526ef8cb72dfb7c3714cf3270ff) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `mediaQueries` helper functions
+
+### Patch Changes
+
+- [#388](https://github.com/utilitywarehouse/design-systems/pull/388) [`f46d8c22`](https://github.com/utilitywarehouse/design-systems/commit/f46d8c224d3f75fdfbfa7b1dc8f5be05af9bf850) Thanks [@robphoenix](https://github.com/robphoenix)! - Update TextLink
+
+  - Can render as a button
+  - Render with icons
+  - Accessibility docs
+
+- [#393](https://github.com/utilitywarehouse/design-systems/pull/393) [`c86da487`](https://github.com/utilitywarehouse/design-systems/commit/c86da48708a4ced6faba426eef81c1fac6679a82) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix `Text` & `Heading` textTransform prop
+
+- [#386](https://github.com/utilitywarehouse/design-systems/pull/386) [`2a7afb82`](https://github.com/utilitywarehouse/design-systems/commit/2a7afb822552ced44b557357dde9500d64ab8670) Thanks [@robphoenix](https://github.com/robphoenix)! - Change `Button` cursor to pointer.
+
+- [#393](https://github.com/utilitywarehouse/design-systems/pull/393) [`c86da487`](https://github.com/utilitywarehouse/design-systems/commit/c86da48708a4ced6faba426eef81c1fac6679a82) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `inverted` prop to `Heading`, `Text` & `TextLink` components
+
 ## 0.8.4
 
 ### Patch Changes
