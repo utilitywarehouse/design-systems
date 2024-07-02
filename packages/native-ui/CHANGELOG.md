@@ -1,5 +1,13 @@
 # @utilitywarehouse/native-ui
 
+## 0.1.4
+
+### Patch Changes
+
+- [#391](https://github.com/utilitywarehouse/design-systems/pull/391) [`73695762`](https://github.com/utilitywarehouse/design-systems/commit/73695762ba6f46f8767848f64ac9b1a155cf8430) Thanks [@jordmccord](https://github.com/jordmccord)! - fix: Intellisense for dark colours
+
+- [#383](https://github.com/utilitywarehouse/design-systems/pull/383) [`bf25cc7f`](https://github.com/utilitywarehouse/design-systems/commit/bf25cc7f420d57dda8d958955e3f0b2d3818cc80) Thanks [@jordmccord](https://github.com/jordmccord)! - refactor: `Alert` icon defaults and use presentational colorScheme props
+
 ## 0.1.3
 
 ### Patch Changes
