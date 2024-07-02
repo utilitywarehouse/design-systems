@@ -18,8 +18,6 @@ type Story = StoryObj<typeof Box>;
 
 export const Workshop: Story = {
   render: ({ children, ...args }) => {
-    const mq = mediaQueries.not(444);
-    console.log({ mq });
     return (
       <Box {...args}>
         <Text>{children}</Text>

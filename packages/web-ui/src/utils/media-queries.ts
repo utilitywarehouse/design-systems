@@ -6,8 +6,8 @@ const step = 1;
 const mq = (breakpoint: string) => `@media (min-width:${breakpoint})`;
 const keys = Object.keys(breakpoints);
 
-type BreakpointsKey = keyof typeof breakpoints;
-type Breakpoint = BreakpointsKey | number | (string & {});
+type Breakpoint = keyof typeof breakpoints;
+type Ass = Breakpoint | number | (string & {});
 
 /**
  * Returns a min-width media query string matching screen widths greater than the screen size given by the breakpoint.
@@ -16,13 +16,8 @@ type Breakpoint = BreakpointsKey | number | (string & {});
  * but also accepts numbers, which will be used as px values, and arbitrary strings.
  */
 function above(breakpoint: Breakpoint) {
-  const value =
-    typeof breakpoints[breakpoint as BreakpointsKey] === 'number'
-      ? breakpoints[breakpoint as BreakpointsKey] + unit
-      : typeof breakpoint === 'number'
-        ? breakpoint + unit
-        : breakpoint;
-  return mq(value);
+  if (!keys.includes(breakpoint)) return;
+  return mq(breakpoints[breakpoint] + unit);
 }
 
 /**
@@ -32,13 +27,8 @@ function above(breakpoint: Breakpoint) {
  * but also accepts numbers, which will be used as px values, and arbitrary strings.
  */
 function below(breakpoint: Breakpoint) {
-  const value =
-    typeof breakpoints[breakpoint as BreakpointsKey] === 'number'
-      ? breakpoints[breakpoint as BreakpointsKey] + unit
-      : typeof breakpoint === 'number'
-        ? breakpoint + unit
-        : breakpoint;
-  return `@media (max-width:${value})`;
+  if (!keys.includes(breakpoint)) return;
+  return `@media (max-width:${breakpoints[breakpoint] + unit})`;
 }
 
 /**
@@ -48,50 +38,34 @@ function below(breakpoint: Breakpoint) {
  * but also accepts numbers, which will be used as px values, and arbitrary strings.
  */
 function between(start: Breakpoint, end: Breakpoint) {
-  const endIndex = keys.indexOf(end as string);
+  if (!keys.includes(start) || !keys.includes(end)) return '';
   return (
-    `@media (min-width:${
-      typeof breakpoints[start as BreakpointsKey] === 'number'
-        ? breakpoints[start as BreakpointsKey] + unit
-        : typeof start === 'number'
-          ? start + unit
-          : start
-    }) and ` +
-    `(max-width:${
-      endIndex !== -1 && typeof breakpoints[keys[endIndex] as BreakpointsKey] === 'number'
-        ? breakpoints[end as BreakpointsKey] - step + unit
-        : typeof end === 'number'
-          ? end + unit
-          : end
-    })`
+    `@media (min-width:${breakpoints[start] + unit}) and ` +
+    `(max-width:${breakpoints[end] - step + unit})`
   );
 }
 
-function only(breakpoint: BreakpointsKey) {
-  if (!keys.includes(breakpoint)) return;
+function only(breakpoint: Breakpoint) {
+  if (!keys.includes(breakpoint)) return '';
 
-  if (keys.indexOf(breakpoint as string) + 1 < keys.length) {
-    return between(breakpoint, keys[keys.indexOf(breakpoint as string) + 1] as Breakpoint);
+  if (keys.indexOf(breakpoint) + 1 < keys.length) {
+    return between(breakpoint, keys[keys.indexOf(breakpoint) + 1] as Breakpoint);
   }
   return above(breakpoint);
 }
 
-function not(breakpoint: BreakpointsKey) {
-  if (!keys.includes(breakpoint)) return;
+function not(breakpoint: Breakpoint) {
+  if (!keys.includes(breakpoint)) return '';
 
-  // handle first and last key separately, for better readability
-  const keyIndex = keys.indexOf(breakpoint as string);
+  const keyIndex = keys.indexOf(breakpoint);
   if (keyIndex === 0) {
     return above(keys[1] as Breakpoint);
   }
   if (keyIndex === keys.length - 1) {
     return below(keys[keyIndex] as Breakpoint);
   }
-
-  return between(breakpoint, keys[keys.indexOf(breakpoint as string) + 1] as Breakpoint).replace(
-    '@media',
-    '@media not all and'
-  );
+  const end = keys[keys.indexOf(breakpoint as string) + 1] as Breakpoint;
+  return between(breakpoint, end).replace('@media', '@media not all and');
 }
 
 /* mobile first media queries mirroring the Web UI breakpoint values */
