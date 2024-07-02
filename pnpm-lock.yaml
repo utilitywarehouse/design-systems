@@ -323,20 +323,17 @@ importers:
         version: 14.1.0(react-native@0.74.1)(react@18.2.0)
     devDependencies:
       '@babel/preset-env':
-        specifier: ^7.22.9
+        specifier: ^7.24.4
         version: 7.24.4(@babel/core@7.19.3)
       '@babel/preset-react':
-        specifier: ^7.22.5
+        specifier: ^7.24.1
         version: 7.24.1
       '@babel/preset-typescript':
-        specifier: ^7.22.5
+        specifier: ^7.24.1
         version: 7.24.1(@babel/core@7.19.3)
       '@types/react':
-        specifier: ^18.2.45
+        specifier: ^18.2.75
         version: 18.2.79
-      '@types/react-native':
-        specifier: ^0.73.0
-        version: 0.73.0(@babel/preset-env@7.24.4)(@types/react@18.2.79)(react@18.2.0)
       file-loader:
         specifier: ^6.2.0
         version: 6.2.0(webpack@5.91.0)
@@ -356,13 +353,13 @@ importers:
         specifier: ^9.4.4
         version: 9.4.4(typescript@5.4.5)(webpack@5.91.0)
       typescript:
-        specifier: ^5.1.6
+        specifier: ^5.4.4
         version: 5.4.5
       url-loader:
         specifier: ^4.1.1
         version: 4.1.1(file-loader@6.2.0)(webpack@5.91.0)
       webpack:
-        specifier: ^5.88.2
+        specifier: ^5.91.0
         version: 5.91.0(webpack-cli@5.1.4)
       webpack-cli:
         specifier: ^5.1.4
@@ -8382,6 +8379,7 @@ packages:
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
+    dev: false
 
   /@react-native/codegen@0.74.83(@babel/preset-env@7.24.4):
     resolution: {integrity: sha512-GgvgHS3Aa2J8/mp1uC/zU8HuTh8ZT5jz7a4mVMWPw7+rGyv70Ba8uOVBq6UH2Q08o617IATYc+0HfyzAfm4n0w==}
@@ -8494,6 +8492,7 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
+    dev: false
 
   /@react-native/debugger-frontend@0.74.83:
     resolution: {integrity: sha512-RGQlVUegBRxAUF9c1ss1ssaHZh6CO+7awgtI9sDeU0PzDZY/40ImoPD5m0o0SI6nXoVzbPtcMGzU+VO590pRfA==}
@@ -8613,6 +8612,7 @@ packages:
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
+    dev: false
 
   /@react-native/normalize-colors@0.74.83:
     resolution: {integrity: sha512-jhCY95gRDE44qYawWVvhTjTplW1g+JtKTKM3f8xYT1dJtJ8QWv+gqEtKcfmOHfDkSDaMKG0AGBaDTSK8GXLH8Q==}
@@ -11592,6 +11592,7 @@ packages:
       - react
       - supports-color
       - utf-8-validate
+    dev: false
 
   /@types/react-redux@7.1.33:
     resolution: {integrity: sha512-NF8m5AjWCkert+fosDsN3hAlHzpjSiXlVy9EgQEmLoBhaNXbmyeGs/aj5dQzKuF+/q+S7JQagorGDW8pJ28Hmg==}
@@ -20347,6 +20348,7 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
+    dev: false
 
   /react-redux@7.2.9(react-dom@18.2.0)(react-native@0.74.2)(react@18.2.0):
     resolution: {integrity: sha512-Gx4L3uM182jEEayZfRbI/G11ZpYdNAnBs70lFVMNdHJI76XYtR+7m0MN+eAs7UHBPhWXcnFPaS+9owSCJQHNpQ==}

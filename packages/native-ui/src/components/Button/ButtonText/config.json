@@ -1,0 +1,5 @@
+{
+  "dependencies": { "@gluestack-ui/button": "latest" },
+  "componentDependencies": ["Text"],
+  "keywords": ["components", "core"]
+}

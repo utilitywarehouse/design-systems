@@ -11,7 +11,7 @@ import {
 import { G } from 'react-native-svg';
 import { StyledCircle, StyledSpinner, StyledSvg } from './styled-components';
 
-interface SpinnerProps {
+export interface SpinnerProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   color?: string;
 }

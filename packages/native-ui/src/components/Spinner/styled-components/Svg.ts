@@ -6,7 +6,13 @@ const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 
 const SpinnerSVG = styled(
   AnimatedSvg,
-  {},
+  {
+    color: '$purple800',
+    _dark: {
+      // @ts-expect-error - typescript doesn't know about the _dark property
+      color: '$darkPurple800',
+    },
+  },
   {
     componentName: 'SpinnerSvg',
     ancestorStyle: ['_svg'],
