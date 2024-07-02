@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { pxToRem } from '../utils';
+import { DATA_ATTRIBUTE_SELECTORS, pxToRem } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 import { PropsWithSx } from '../types';
 import { LabelProps } from './Label.props';
@@ -26,6 +26,9 @@ const StyledElement = styled(BaseBox)({
   ':where([data-nested])': {
     '--label-font-weight': 'var(--label-font-weight-nested)',
   },
+  [DATA_ATTRIBUTE_SELECTORS.disableUserSelect]: {
+    userSelect: 'none',
+  },
 });
 
 /**
@@ -40,13 +43,14 @@ const StyledElement = styled(BaseBox)({
 export const Label = React.forwardRef<
   React.ElementRef<'label'>,
   React.PropsWithChildren<PropsWithSx<LabelProps>>
->(({ component = 'label', disabled, nested, ...props }, ref) => {
+>(({ component = 'label', disabled, nested, disableUserSelect, ...props }, ref) => {
   return (
     <StyledElement
       ref={ref}
       component={component}
       data-disabled={disabled ? '' : undefined}
       data-nested={nested ? '' : undefined}
+      data-disable-user-select={disableUserSelect ? '' : undefined}
       {...props}
     />
   );

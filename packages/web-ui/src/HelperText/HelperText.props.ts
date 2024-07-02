@@ -1,6 +1,9 @@
 import { ComponentPropsWithoutRef } from 'react';
+import type { LabelProps } from '../Label';
 
-export interface HelperTextProps extends ComponentPropsWithoutRef<'span'> {
+export interface HelperTextProps
+  extends ComponentPropsWithoutRef<'span'>,
+    Pick<LabelProps, 'disableUserSelect'> {
   /**
    * Set the helper text appearance to disabled.
    * This will be overriden by the validation status.

@@ -9,6 +9,8 @@ export interface LabelProps extends ComponentPropsWithoutRef<'label'> {
    * labelling a Radio inside a RadioGroup.
    */
   nested?: boolean;
+  /** Make the text unselectable, for use when associated with input elements. */
+  disableUserSelect?: boolean;
   /**
    * Sets the HTML component that is rendered.
    * @default label
