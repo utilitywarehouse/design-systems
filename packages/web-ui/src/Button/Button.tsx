@@ -131,11 +131,11 @@ export const Button = forwardRef(function Button(
   { size = 'medium', variant = 'primary', ...props },
   ref
 ) {
-  const { isBrandBackground } = useBackground();
+  const { isInvertedBackground } = useBackground();
   const dataAttributeProps = {
     [DATA_ATTRIBUTES.variant]: variant,
     [DATA_ATTRIBUTES.size]: size,
-    [DATA_ATTRIBUTES.bgcolorBrand]: isBrandBackground,
+    [DATA_ATTRIBUTES.bgcolorBrand]: isInvertedBackground,
   };
   return (
     <StyledButton

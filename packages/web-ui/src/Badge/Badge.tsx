@@ -198,12 +198,12 @@ export const Badge = React.forwardRef<
     },
     ref
   ) => {
-    const { isBrandBackground } = useBackground();
+    const { isInvertedBackground } = useBackground();
 
     const dataAttributeProps = {
       [DATA_ATTRIBUTES.colorscheme]: colorScheme,
       [DATA_ATTRIBUTES.inverted]:
-        (inverted || isBrandBackground) && variant === 'outline' ? '' : undefined,
+        (inverted || isInvertedBackground) && variant === 'outline' ? '' : undefined,
     };
     return (
       <StyledElement

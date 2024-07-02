@@ -15,7 +15,7 @@ const StyledButton = styled('button')<UnstyledButtonProps>(() => {
     outline: 'transparent',
     appearance: 'none',
     boxSizing: 'border-box',
-    cursor: 'default',
+    cursor: 'pointer',
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',

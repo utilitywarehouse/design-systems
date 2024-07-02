@@ -41,4 +41,6 @@ export interface TextProps
    * @default p
    */
   component?: BoxProps['component'];
+  /** Inverts the component colours, for use on darker backgrounds. */
+  inverted?: boolean;
 }

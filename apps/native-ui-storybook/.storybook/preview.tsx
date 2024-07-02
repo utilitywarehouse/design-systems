@@ -8,8 +8,8 @@ import StoryWrap from '../components/StoryWrap';
 import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import { addons } from '@storybook/addons';
 import { UPDATE_GLOBALS } from '@storybook/core-events';
-import { themes } from '@storybook/theming';
 import { DocsContainer as BaseContainer, DocsContainerProps } from '@storybook/blocks';
+import { themeDark, themeLight } from './themes';
 
 const lightColour: string = '#fff';
 const darkColour: string = '#1d1d1d';
@@ -71,9 +71,6 @@ const storyListener = darkMode => {
     channel.emit(UPDATE_GLOBALS, {
       globals: {
         theme: darkMode ? 'dark' : 'light',
-        backgrounds: darkMode
-          ? { name: 'dark', value: darkColour }
-          : { name: 'light', value: lightColour },
       },
     });
   }
@@ -95,7 +92,7 @@ export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({ child
   }, [channel]);
 
   return (
-    <BaseContainer theme={isDark ? themes.dark : themes.light} context={context}>
+    <BaseContainer theme={isDark ? themeDark : themeLight} context={context}>
       {children}
     </BaseContainer>
   );
@@ -105,14 +102,20 @@ const preview: Preview = {
   globals: {
     device: 'web',
   },
+
   parameters: {
     docs: {
       container: DocsContainer,
     },
     layout: 'fullscreen',
     darkMode: {
-      current: 'light',
       stylePreview: true,
+      dark: {
+        ...themeDark,
+      },
+      light: {
+        ...themeLight,
+      },
     },
     options: {
       storySort: {
@@ -167,18 +170,7 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      // disable: true,
-      default: 'light',
-      values: [
-        {
-          name: 'light',
-          value: lightColour,
-        },
-        {
-          name: 'dark',
-          value: darkColour,
-        },
-      ],
+      disable: true,
     },
   },
 };
