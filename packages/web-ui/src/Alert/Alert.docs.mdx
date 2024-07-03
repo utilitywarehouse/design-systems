@@ -58,12 +58,12 @@ return (
 
     {/* conditionally render */}
     {open ? (
-      <Alert direction="row" text="This is for your information." onDismiss={handleClose} />
+      <Alert direction="row" text="This is for your information." onClose={handleClose} />
     ) : null}
 
     {/* or, dynamically alter `display` */}
     <Box display={open ? 'block' : 'none'}>
-      <Alert direction="row" text="This is for your information." onDismiss={handleClose} />
+      <Alert direction="row" text="This is for your information." onClose={handleClose} />
     </Box>
 
   </Flex>

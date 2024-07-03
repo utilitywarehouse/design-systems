@@ -62,7 +62,7 @@ export const KitchenSink: Story = {
               title="Alert title"
               linkText="Alert link"
               linkHref="#"
-              onDismiss={() => alert('dismissed')}
+              onClose={() => alert('dismissed')}
             />
             <Alert
               colorScheme={colorScheme}
@@ -71,7 +71,7 @@ export const KitchenSink: Story = {
               text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris nibh quam, hendrerit mattis ligula sit amet."
               linkText="Alert link"
               linkHref="#"
-              onDismiss={() => alert('dismissed')}
+              onClose={() => alert('dismissed')}
             />
             <Alert
               colorScheme={colorScheme}
@@ -108,7 +108,7 @@ export const ToggleAlert: Story = {
           Open alert
         </Button>
         {open ? (
-          <Alert direction="row" text="This is for your information." onDismiss={handleClose} />
+          <Alert direction="row" text="This is for your information." onClose={handleClose} />
         ) : null}
       </Flex>
     );
