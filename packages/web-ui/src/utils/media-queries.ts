@@ -1,5 +1,9 @@
 import { breakpoints } from '../tokens';
 
+/**
+ * A lot of this file is directly copied from MUI - https://github.com/mui/material-ui/blob/next/packages/mui-system/src/createTheme/createBreakpoints.js
+ */
+
 const unit = 'px';
 const step = 5;
 const mq = (breakpoint: string) => `@media (min-width:${breakpoint})`;

@@ -28,13 +28,14 @@ The `colorScheme` prop will change the Alert colours.
 
 ## Accessibility
 
-Alerts should be used sparingly.
+The `Alert` component should be used sparingly. It has an ARIA role of `alert`,
+used to communicate an important and usually time-sensitive message to the
+user. The browser will send out an accessible alert event to assistive
+technology products which can then notify the user.
 
-Alerts are dynamic content, usually time-sensitive, that is injected into the
-page when it changes and a person using a screenreader needs to know that some
-state of the application has changed. If an alert is present on page load, it
-won’t be read automatically by screenreaders. If an element is present on page
-load, it is not technically an alert.
+The `alert` role is for content that is dynamically displayed, not for content
+that appears on page load. If an alert is present on page load, it won’t be
+read automatically by screenreaders, and is not technically an alert.
 
 To display the `Alert` component, use either conditional rendering or
 dynamically alter the CSS `display` property in your React code.
@@ -57,12 +58,12 @@ return (
 
     {/* conditionally render */}
     {open ? (
-      <Alert direction="row" text="This is for your information." onDismiss={handleClose} />
+      <Alert direction="row" text="This is for your information." onClose={handleClose} />
     ) : null}
 
     {/* or, dynamically alter `display` */}
     <Box display={open ? 'block' : 'none'}>
-      <Alert direction="row" text="This is for your information." onDismiss={handleClose} />
+      <Alert direction="row" text="This is for your information." onClose={handleClose} />
     </Box>
 
   </Flex>

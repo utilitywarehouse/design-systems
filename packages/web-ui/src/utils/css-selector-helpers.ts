@@ -27,4 +27,5 @@ export const COLORSCHEME_SELECTORS = {
 export const DATA_ATTRIBUTE_SELECTORS = {
   inverted: `:where([${DATA_ATTRIBUTES.inverted}])`,
   customColor: `:where([${DATA_ATTRIBUTES.customColor}])`,
+  disableUserSelect: `:where([${DATA_ATTRIBUTES.disableUserSelect}])`,
 };
