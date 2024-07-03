@@ -3,8 +3,8 @@ import {
   Box,
   Button,
   ButtonText,
-  Center,
   HStack,
+  Heading,
   Image,
   KeyboardAvoidingView,
   Text,
@@ -18,6 +18,7 @@ import {
   ActionsheetDragIndicatorWrapper,
   ActionsheetItem,
   ActionsheetItemText,
+  ActionsheetScrollView,
 } from '@utilitywarehouse/native-ui/lab';
 import React from 'react';
 
@@ -117,6 +118,49 @@ const KeyboardAvoidWithSnap: StoryFn = ({ ...props }: any) => {
   );
 };
 
+const WithScrollView: StoryFn = ({ ...props }: any) => {
+  const [showActionsheet, setShowActionsheet] = React.useState(false);
+  const handleClose = () => setShowActionsheet(!showActionsheet);
+  return (
+    <Box h="$96" alignItems="center" justifyContent="center">
+      <Button onPress={handleClose}>
+        <ButtonText>Open</ButtonText>
+      </Button>
+      <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
+        <KeyboardAvoidingView
+          behavior="position"
+          sx={{
+            position: 'relative',
+            flex: 1,
+            justifyContent: 'flex-end',
+          }}
+        >
+          <ActionsheetBackdrop />
+          <ActionsheetContent maxHeight="75%">
+            <ActionsheetDragIndicatorWrapper>
+              <ActionsheetDragIndicator />
+            </ActionsheetDragIndicatorWrapper>
+            <ActionsheetScrollView>
+              <Heading textAlign="center" mb="$4">
+                Out of range reading
+              </Heading>
+              <Text mb="$6">
+                The number that was entered was too high or too low for what we'd expect based on
+                past readings and your typical energy usage. This normally suggests an error when
+                the reading was submitted. In some cases, the reading may still be used after
+                investigation.
+              </Text>
+              <Button onPress={handleClose}>
+                <ButtonText>Close</ButtonText>
+              </Button>
+            </ActionsheetScrollView>
+          </ActionsheetContent>
+        </KeyboardAvoidingView>
+      </Actionsheet>
+    </Box>
+  );
+};
+
 export default ActionsheetMeta;
 
-export { ActionsheetBasic as Basic, KeyboardAvoidWithSnap };
+export { ActionsheetBasic as Basic, KeyboardAvoidWithSnap, WithScrollView };

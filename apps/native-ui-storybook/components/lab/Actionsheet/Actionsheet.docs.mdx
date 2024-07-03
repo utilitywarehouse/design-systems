@@ -1,6 +1,6 @@
 import { Meta, Canvas, Story } from '@storybook/blocks';
-import * as ActionsheetStories from './Actionsheet.stories';
-import { Center, Text, NativeUIProvider, Alert } from '@utilitywarehouse/native-ui';
+import * as Stories from './Actionsheet.stories';
+import { Center, Text, NativeUIProvider, Alert, Box } from '@utilitywarehouse/native-ui';
 import {
   Actionsheet,
   ActionsheetBackdrop,
@@ -11,16 +11,18 @@ import {
   ActionsheetItemText,
 } from '@utilitywarehouse/native-ui/lab';
 
-<Meta of={ActionsheetStories} />
+<Meta of={Stories} />
 
 # Actionsheet
 
 <NativeUIProvider>
-  <Alert
-    colorScheme="warning"
-    text="These components may potentially change their API and/or design and will be replaced in minor release versions, eventually being integrated into the main library code. Use at your own discretion."
-    mb="$4"
-  />
+  <Box mt="$6">
+    <Alert
+      colorScheme="warning"
+      text="These components may potentially change their API and/or design and will be replaced in minor release versions, eventually being integrated into the main library code. Use at your own discretion."
+      mb="$4"
+    />
+  </Box>
 </NativeUIProvider>
 
 The Actionsheet component presents a set of options to the user, overlaid on top of the app's content, allowing them to take quick actions without leaving the current page or view.
@@ -31,7 +33,7 @@ The Actionsheet component presents a set of options to the user, overlaid on top
 
 **Warning**: Showing the actionsheet in examples disables the ability to interact with the rest of the page. To interact with the rest of the page, close the actionsheet.
 
-<Canvas of={ActionsheetStories.Basic} />
+<Canvas of={Stories.Basic} />
 
 ```tsx
   import { Actionsheet } from '@utilitywarehouse/native-ui/lab';
@@ -167,3 +169,60 @@ It inherits all the properties of React Native's Text component.
 - Pressing Esc closes the Actionsheet
 - Clicking on the overlay closes the Actionsheet
 - Scrolling is blocked on the elements behind the Actionsheet
+
+## Examples
+
+### With ScrollView
+
+<Canvas of={Stories.WithScrollView} />
+
+```tsx
+import {
+  Actionsheet,
+  ActionsheetBackdrop,
+  ActionsheetContent,
+  ActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper,
+  ActionsheetScrollView,
+} from '@utilitywarehouse/native-ui/lab';
+import {
+  Heading,
+  Text,
+  Button,
+  ButtonText
+} from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const [showActionsheet, setShowActionsheet] = React.useState(false);
+  const handleClose = () => setShowActionsheet(!showActionsheet);
+  return (
+    <Box h="$96" alignItems="center" justifyContent="center">
+      <Button onPress={handleClose}>
+        <ButtonText>Open</ButtonText>
+      </Button>
+      <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
+        <ActionsheetBackdrop />
+        <ActionsheetContent maxHeight="75%">
+          <ActionsheetDragIndicatorWrapper>
+            <ActionsheetDragIndicator />
+          </ActionsheetDragIndicatorWrapper>
+          <ActionsheetScrollView>
+            <Heading textAlign="center" mb="$4">
+              Out of range reading
+            </Heading>
+            <Text mb="$6">
+              The number that was entered was too high or too low for what we'd expect based on past
+              readings and your typical energy usage. This normally suggests an error when the
+              reading was submitted. In some cases, the reading may still be used after
+              investigation.
+            </Text>
+            <Button onPress={handleClose}>
+              <ButtonText>Close</ButtonText>
+            </Button>
+          </ActionsheetScrollView>
+        </ActionsheetContent>
+      </ActionsheetContent>
+    </Box>
+  );
+};
+```
