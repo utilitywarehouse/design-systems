@@ -62,7 +62,7 @@ export const KitchenSink: Story = {
               title="Alert title"
               linkText="Alert link"
               linkHref="#"
-              onClose={() => alert('dismissed')}
+              onClose={() => alert('closed')}
             />
             <Alert
               colorScheme={colorScheme}
@@ -71,7 +71,7 @@ export const KitchenSink: Story = {
               text="Alert text purus odio, maximus tincidunt aliquet posuere, mollis ut mauris. Mauris nibh quam, hendrerit mattis ligula sit amet."
               linkText="Alert link"
               linkHref="#"
-              onClose={() => alert('dismissed')}
+              onClose={() => alert('closed')}
             />
             <Alert
               colorScheme={colorScheme}
