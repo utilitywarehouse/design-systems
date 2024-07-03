@@ -15,7 +15,6 @@ const StyledElement = styled(TextLink)({
   fontWeight: fontWeights.secondary.semibold,
   color: 'var(--alert-link-color)',
   textDecorationColor: 'var(--alert-link-color)',
-  alignSelf: 'flex-start',
   ':where(:focus-visible)': {
     outline: 'none',
     borderRadius: px(4),

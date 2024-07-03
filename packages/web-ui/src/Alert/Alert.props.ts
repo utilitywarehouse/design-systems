@@ -8,9 +8,9 @@ export interface AlertProps extends ComponentPropsWithoutRef<'div'> {
    */
   colorScheme?: COLOR_SCHEME.cyan | COLOR_SCHEME.red | COLOR_SCHEME.green | COLOR_SCHEME.gold;
   /**
-   * Sets the function to be called when the alert is dismissed and shows the dismiss icon.
+   * Sets the function to be called when the alert is closed.
    */
-  onDismiss?: () => void;
+  onClose?: () => void;
   /**
    * Sets the direction of the alert content.
    * @default column
