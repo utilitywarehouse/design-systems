@@ -14,6 +14,10 @@ module.exports = function (api) {
               __dirname,
               '../../packages/native-ui/src/lab'
             ),
+            '@utilitywarehouse/native-ui/unstyled': path.join(
+              __dirname,
+              '../../packages/native-ui/src/components/unstyled'
+            ),
           },
         },
       ],
