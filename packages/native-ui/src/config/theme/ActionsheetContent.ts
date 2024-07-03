@@ -9,7 +9,6 @@ export const ActionsheetContent = createStyle({
   pb: '$5',
   pt: '$2',
   bg: '$white',
-  gap: '$3',
   _sectionHeaderBackground: {
     bg: '$white',
   },

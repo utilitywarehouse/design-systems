@@ -4,6 +4,7 @@ export const ActionsheetItem = createStyle({
   flexDirection: 'row',
   alignItems: 'center',
   rounded: '$sm',
+  py: '$1.5',
   w: '$full',
 
   ':disabled': {
