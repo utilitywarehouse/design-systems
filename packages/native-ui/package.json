@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf build",
     "generateColours": "node ./scripts/generateColours.js",
-    "build": "tsc && tsc --p tsconfig.unstyled.json",
+    "build": "tsc && tsc --p tsconfig.unstyled.json && tsc --p tsconfig.lab.json",
     "watch": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

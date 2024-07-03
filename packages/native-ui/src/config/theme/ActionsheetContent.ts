@@ -2,18 +2,21 @@ import { createStyle } from '@gluestack-style/react';
 
 export const ActionsheetContent = createStyle({
   alignItems: 'center',
-  borderTopLeftRadius: '$3xl',
-  borderTopRightRadius: '$3xl',
+  borderTopLeftRadius: '$2xl',
+  borderTopRightRadius: '$2xl',
   h: '$full',
-  p: '$2',
-  bg: '$backgroundLight0',
+  px: '$5',
+  pb: '$5',
+  pt: '$2',
+  bg: '$white',
+  gap: '$3',
   _sectionHeaderBackground: {
-    bg: '$backgroundLight0',
+    bg: '$white',
   },
   _dark: {
-    bg: '$backgroundDark900',
+    bg: '$darkGrey200',
     _sectionHeaderBackground: {
-      bg: '$backgroundDark900',
+      bg: '$darkGrey200',
     },
   },
   userSelect: 'none',

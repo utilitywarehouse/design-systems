@@ -44,7 +44,7 @@ To use the colours tokens in your components, you can use the colours below for 
         colors={Object.keys(light[key])
           .slice(0, 6)
           .reduce((acc, subKey) => {
-            acc[subKey] = light[key][subKey].value;
+            acc[`$${subKey}`] = light[key][subKey].value;
             return acc;
           }, {})}
       />
@@ -54,10 +54,24 @@ To use the colours tokens in your components, you can use the colours below for 
         colors={Object.keys(light[key])
           .slice(6, 12)
           .reduce((acc, subKey) => {
-            acc[subKey] = light[key][subKey].value;
+            acc[`$${subKey}`] = light[key][subKey].value;
             return acc;
           }, {})}
       />
+      {
+        Object.keys(light[key]).length > 12 && (
+          <ColorItem
+            title={`${key}`}
+            subtitle="Light Theme"
+            colors={Object.keys(light[key])
+              .slice(12, 18)
+              .reduce((acc, subKey) => {
+                acc[`$${subKey}`] = light[key][subKey].value;
+                return acc;
+              }, {})}
+          />
+        )
+      }
     </>
   ))}
   {Object.keys(dark).map(key => (
@@ -66,13 +80,13 @@ To use the colours tokens in your components, you can use the colours below for 
         title={`dark${key.charAt(0).toUpperCase() + key.slice(1)}`}
         subtitle="Dark Theme"
         colors={Object.keys(dark[key])
-          .map(key => `dark${key.charAt(0).toUpperCase() + key.slice(1)}`)
+          .map(key => `$dark${key.charAt(0).toUpperCase() + key.slice(1)}`)
           .slice(0, 6)
           .reduce((acc, subKey) => {
             acc[subKey] =
               dark[key][
-                subKey.replace('dark', '').charAt(0).toLowerCase() +
-                  subKey.replace('dark', '').slice(1)
+                subKey.replace('$dark', '').charAt(0).toLowerCase() +
+                  subKey.replace('$dark', '').slice(1)
               ].value;
             return acc;
           }, {})}
@@ -81,17 +95,36 @@ To use the colours tokens in your components, you can use the colours below for 
         title={`dark${key.charAt(0).toUpperCase() + key.slice(1)}`}
         subtitle="Dark Theme"
         colors={Object.keys(dark[key])
-          .map(key => `dark${key.charAt(0).toUpperCase() + key.slice(1)}`)
+          .map(key => `$dark${key.charAt(0).toUpperCase() + key.slice(1)}`)
           .slice(6, 12)
           .reduce((acc, subKey) => {
             acc[subKey] =
               dark[key][
-                subKey.replace('dark', '').charAt(0).toLowerCase() +
-                  subKey.replace('dark', '').slice(1)
+                subKey.replace('$dark', '').charAt(0).toLowerCase() +
+                  subKey.replace('$dark', '').slice(1)
               ].value;
             return acc;
           }, {})}
       />
+      {
+        Object.keys(dark[key]).length > 12 && (
+          <ColorItem
+            title={`dark${key.charAt(0).toUpperCase() + key.slice(1)}`}
+            subtitle="Dark Theme"
+            colors={Object.keys(dark[key])
+              .map(key => `$dark${key.charAt(0).toUpperCase() + key.slice(1)}`)
+              .slice(12, 18)
+              .reduce((acc, subKey) => {
+                acc[subKey] =
+                  dark[key][
+                    subKey.replace('$dark', '').charAt(0).toLowerCase() +
+                      subKey.replace('$dark', '').slice(1)
+                  ].value;
+                return acc;
+              }, {})}
+          />
+        )
+      }
     </>
   ))}
 
@@ -99,7 +132,8 @@ To use the colours tokens in your components, you can use the colours below for 
     title="Brand"
     subtitle={`Common Brand`}
     colors={common['brand'].reduce((acc, key) => {
-      acc[key.name] = key.value;
+      acc[key.name.replace('$brand', '').charAt(0).toLowerCase() +
+                      key.name.replace('$brand', '').slice(1)] = key.value;
       return acc;
     }, {})}
   />
@@ -107,7 +141,8 @@ To use the colours tokens in your components, you can use the colours below for 
     title="Service"
     subtitle={`Common Service`}
     colors={common['service'].reduce((acc, key) => {
-      acc[key.name] = key.value;
+      acc[key.name.replace('$service', '').charAt(0).toLowerCase() +
+                      key.name.replace('$service', '').slice(1)] = key.value;
       return acc;
     }, {})}
   />

@@ -10,6 +10,10 @@ module.exports = function (api) {
         {
           alias: {
             '@utilitywarehouse/native-ui': path.join(__dirname, '../../packages/native-ui/src'),
+            '@utilitywarehouse/native-ui/lab': path.join(
+              __dirname,
+              '../../packages/native-ui/src/lab'
+            ),
           },
         },
       ],

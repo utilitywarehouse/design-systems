@@ -5,23 +5,21 @@ export const ActionsheetBackdrop = createStyle({
     opacity: 0,
   },
   ':animate': {
-    opacity: 0.5,
+    opacity: 0.7,
   },
   ':exit': {
     opacity: 0,
   },
-  'position': 'absolute',
-  'left': 0,
-  'top': 0,
-  'right': 0,
-  'bottom': 0,
-  'bg': '$backgroundLight950',
-  // @ts-ignore
-  '_dark': {
-    bg: '$backgroundDark950',
+  position: 'absolute',
+  left: 0,
+  top: 0,
+  right: 0,
+  bottom: 0,
+  bg: '$grey1000',
+  _dark: {
+    bg: '$darkGrey25',
   },
-  // @ts-ignore
-  '_web': {
+  _web: {
     cursor: 'default',
     pointerEvents: 'auto',
   },
