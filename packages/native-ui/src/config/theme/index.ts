@@ -65,7 +65,7 @@ export * from './CheckboxLabel';
 // export * from './FormControlLabel';
 // export * from './FormControlLabelText';
 export * from './HStack';
-// export * from './Heading';
+export * from './Heading';
 export * from './Icon';
 // export * from './Image';
 // export * from './Input';

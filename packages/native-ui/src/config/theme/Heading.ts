@@ -3,7 +3,6 @@ import { H1, H2, H3, H4, H5, H6 } from '@expo/html-elements';
 
 export const Heading = createStyle({
   color: '$grey1000',
-  letterSpacing: '$sm',
   fontWeight: '$bold',
   fontFamily: '$heading',
   marginVertical: 0,
