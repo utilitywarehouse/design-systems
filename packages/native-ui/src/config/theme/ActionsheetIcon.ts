@@ -4,9 +4,8 @@ export const ActionsheetIcon = createStyle({
   props: {
     size: 'sm',
   },
-  color: '$backgroundLight500',
+  color: '$grey1000',
   _dark: {
-    //@ts-ignore
-    color: '$backgroundDark400',
+    color: '$darkGrey1000',
   },
 });

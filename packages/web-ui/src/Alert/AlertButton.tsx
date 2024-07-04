@@ -12,7 +12,6 @@ const componentClassName = withGlobalPrefix(componentName);
 
 const StyledElement = styled(UnstyledButton)({
   color: 'var(--alert-button-color)',
-  alignSelf: 'center',
   '@media (hover: hover)': {
     ':where(:hover)': {
       color: 'var(--alert-button-color-hover)',

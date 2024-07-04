@@ -22,22 +22,13 @@ import { AlertButton } from './AlertButton';
 const componentName = 'Alert';
 const componentClassName = withGlobalPrefix(componentName);
 
-const StyledElement = styled('div')({
-  display: 'flex',
-  gap: px(8),
+const StyledElement = styled(Flex)({
   borderRadius: px(8),
   borderWidth: px(1),
   borderStyle: 'solid',
   borderColor: 'var(--alert-border-color)',
-  flexDirection: 'row',
-  padding: px(16),
   backgroundColor: 'var(--alert-background-color)',
   color: 'var(--alert-text-color)',
-  [`:where([${DATA_ATTRIBUTES.orientation}="vertical"])`]: {
-    '> button[data-dismiss]': {
-      alignSelf: 'flex-start',
-    },
-  },
   '> :where(svg, [data-icon])': {
     color: 'var(--alert-icon-color)',
   },
@@ -67,16 +58,6 @@ const StyledElement = styled('div')({
   },
 });
 
-const AlertIcon = ({ colorScheme }: { colorScheme: AlertProps['colorScheme'] }) => {
-  if (colorScheme === COLOR_SCHEME.cyan) {
-    return <InformationMediumContainedIcon />;
-  }
-  if (colorScheme === COLOR_SCHEME.green) {
-    return <TickMediumContainedIcon />;
-  }
-  return <WarningMediumContainedIcon />;
-};
-
 /**
  * An `Alert` is a component that provides feedback messages to users. Alerts
  * are dynamic content that is injected into the page when it changes and
@@ -94,7 +75,7 @@ export const Alert = React.forwardRef<
       colorScheme = COLOR_SCHEME.cyan,
       direction = 'column',
       children,
-      onDismiss,
+      onClose,
       title,
       text,
       linkText,
@@ -103,12 +84,13 @@ export const Alert = React.forwardRef<
     },
     ref
   ) => {
-    const dataAttributeProps = {
-      [DATA_ATTRIBUTES.colorscheme]: colorScheme,
-      [DATA_ATTRIBUTES.orientation]: direction === 'column' ? 'vertical' : 'horizontal',
-    };
+    const dataAttributeProps = { [DATA_ATTRIBUTES.colorscheme]: colorScheme };
     return (
       <StyledElement
+        gap={1}
+        direction="row"
+        padding={2}
+        align={direction === 'row' ? 'center' : 'start'}
         ref={ref}
         className={clsx(componentClassName, className)}
         role="alert" // Adding role for dynamic alerts
@@ -117,8 +99,12 @@ export const Alert = React.forwardRef<
         {...dataAttributeProps}
         {...props}
       >
-        <AlertIcon colorScheme={colorScheme} />
-        <Flex direction={direction} gap={1} flex={1}>
+        {colorScheme === COLOR_SCHEME.cyan ? <InformationMediumContainedIcon /> : null}
+        {colorScheme === COLOR_SCHEME.green ? <TickMediumContainedIcon /> : null}
+        {colorScheme === COLOR_SCHEME.gold ? <WarningMediumContainedIcon /> : null}
+        {colorScheme === COLOR_SCHEME.red ? <WarningMediumContainedIcon /> : null}
+
+        <Flex direction={direction} gap={1} flex={1} align="start">
           {children ?? (
             <>
               {title ? <AlertTitle>{title}</AlertTitle> : null}
@@ -134,8 +120,8 @@ export const Alert = React.forwardRef<
             </a>
           </AlertButton>
         ) : null}
-        {onDismiss ? (
-          <AlertButton data-dismiss onClick={onDismiss} title="Dismiss" aria-label="Dismiss alert">
+        {onClose ? (
+          <AlertButton onClick={onClose} title="Close" aria-label="Close alert">
             {direction === 'row' ? <CloseMediumIcon /> : <CloseSmallIcon />}
           </AlertButton>
         ) : null}

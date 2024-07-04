@@ -12,7 +12,7 @@ import { useIds } from '../hooks';
 import { PropsWithSx } from '../types';
 import { RadioProps } from './Radio.props';
 import { styled } from '../theme';
-import { spacing, withGlobalPrefix } from '../utils';
+import { withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
 import { Flex } from '../Flex';
 import { useBaseRadioGroup } from '../BaseRadioGroup';
@@ -20,9 +20,9 @@ import { useBaseRadioGroup } from '../BaseRadioGroup';
 const componentName = 'Radio';
 const componentClassName = withGlobalPrefix(componentName);
 
-const StyledElement = styled('div')({
-  display: 'flex',
-  gap: spacing(1),
+const StyledFlex = styled(Flex)({
+  cursor: 'pointer',
+  '*': { cursor: 'pointer' },
 });
 
 const StyledRadioItem = styled(Item)({
@@ -90,7 +90,6 @@ const StyledRadioContainer = styled('div')({
 
 // we do this so that the gap between the checkbox & label is clickable
 const StyledLabel = styled(Label)({
-  userSelect: 'none',
   position: 'relative',
   '&::before': {
     content: '""',
@@ -101,15 +100,15 @@ const StyledLabel = styled(Label)({
   },
 });
 
-const StyledHelperText = styled(HelperText)({
-  userSelect: 'none',
-});
-
 /**
- * Radios can be used to choose between a set of more than two options.
+ * `Radio` can be used to choose between a set of more than two options.
  *
- * Radios should always be used with a `RadioGroup` or `RadioGridGroup` to
+ * `Radio` should always be used with a `RadioGroup` or `RadioGridGroup` to
  * handle the state control and layout.
+ *
+ * `Radio` is, by default, appropriately labelled when using
+ * the `label` prop, if you do not provide a label, you must specify an
+ * `aria-label` or `aria-labelledby` for accessibility.
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
@@ -133,7 +132,8 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
     const showLabel = !!label;
 
     return (
-      <StyledElement
+      <StyledFlex
+        gap={1}
         className={clsx(componentClassName, className)}
         sx={sx}
         data-disabled={disabled ? '' : undefined}
@@ -152,15 +152,17 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
         </StyledRadioContainer>
         {showLabel ? (
           <Flex direction="column" gap={0.5}>
-            <StyledLabel id={labelId} htmlFor={id} nested>
+            <StyledLabel id={labelId} htmlFor={id} nested disableUserSelect>
               {label}
             </StyledLabel>
             {showHelperText ? (
-              <StyledHelperText id={helperTextId}>{helperText}</StyledHelperText>
+              <HelperText id={helperTextId} disableUserSelect>
+                {helperText}
+              </HelperText>
             ) : null}
           </Flex>
         ) : null}
-      </StyledElement>
+      </StyledFlex>
     );
   }
 );
