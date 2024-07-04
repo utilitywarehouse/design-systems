@@ -10,7 +10,7 @@ export const Heading = createStyle({
     color: '$darkGrey1000',
   },
   variants: {
-    isTruncated: {
+    truncated: {
       true: {
         props: {
           numberOfLines: 1,
@@ -50,62 +50,41 @@ export const Heading = createStyle({
       },
     },
     size: {
-      '5xl': {
-        props: { as: H1 },
-        fontSize: '$6xl',
-        lineHeight: '$7xl',
-      },
-      '4xl': {
-        props: { as: H1 },
-        fontSize: '$5xl',
-        lineHeight: '$6xl',
-      },
-
-      '3xl': {
+      h1: {
         props: { as: H1 },
         fontSize: '$4xl',
-        lineHeight: '$5xl',
+        lineHeight: '$3xl',
       },
-
-      '2xl': {
+      h2: {
         props: { as: H2 },
         fontSize: '$3xl',
-        lineHeight: '$3xl',
-      },
-
-      xl: {
-        props: { as: H3 },
-        fontSize: '$2xl',
-        lineHeight: '$3xl',
-      },
-
-      lg: {
-        props: { as: H4 },
-        fontSize: '$xl',
         lineHeight: '$2xl',
       },
-
-      md: {
-        props: { as: H5 },
+      h3: {
+        props: { as: H3 },
+        fontSize: '$2xl',
+        lineHeight: '$2xl',
+      },
+      h4: {
+        props: { as: H4 },
         fontSize: '$lg',
         lineHeight: '$lg',
       },
-
-      sm: {
+      h5: {
+        props: { as: H5 },
+        fontSize: '$md',
+        lineHeight: '$sm',
+      },
+      h6: {
         props: { as: H6 },
         fontSize: '$md',
         lineHeight: '$lg',
-      },
-
-      xs: {
-        props: { as: H6 },
-        fontSize: '$sm',
-        lineHeight: '$xs',
+        fontFamily: '$body',
       },
     },
   },
 
   defaultProps: {
-    size: 'lg',
+    size: 'h4',
   },
 });
