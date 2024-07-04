@@ -106,11 +106,6 @@ export const Text = createStyle({
         fontSize: '$6xl',
         lineHeight: '$7xl',
       },
-
-      badge: {
-        fontSize: '$badge',
-        lineHeight: 16,
-      },
     },
   },
 

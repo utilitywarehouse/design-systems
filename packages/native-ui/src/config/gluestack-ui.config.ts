@@ -163,7 +163,6 @@ export const gluestackUIConfig = createConfig({
       '7xl': 72,
       '8xl': 96,
       '9xl': 128,
-      badge: 13,
     },
     opacity: {
       0: 0,
