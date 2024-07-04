@@ -20,6 +20,10 @@ const StyledElement = styled(TextLink)({
     borderRadius: px(4),
     boxShadow: '0 0 0 2px var(--alert-focus-color)',
   },
+  ':where(:visited)': {
+    color: 'var(--alert-link-color)',
+    textDecorationColor: 'var(--alert-link-color)',
+  },
   [colorSchemeParentSelector(COLOR_SCHEME.cyan)]: {
     '--alert-link-color': colors.cyan700,
     '--alert-focus-color': colors.cyan700,

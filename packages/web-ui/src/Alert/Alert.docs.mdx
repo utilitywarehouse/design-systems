@@ -26,6 +26,19 @@ The `colorScheme` prop will change the Alert colours.
 />
 ```
 
+For now, we have adopted a presentational naming convention here, rather than
+associating semantics with the different colour schemes. This is only because
+we're not ready yet to properly define these semantics within the the colour
+system, across all components, and product applications.
+
+However you can imply some familiar semantics, which could be considered as
+`severity` or `tone`;
+
+- `cyan` -> `information`
+- `green` -> `success`
+- `gold` -> `warning`
+- `red` -> `error`
+
 ## Accessibility
 
 The `Alert` component should be used sparingly. It has an ARIA role of `alert`,

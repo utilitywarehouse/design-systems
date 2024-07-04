@@ -104,7 +104,12 @@ export const Alert = React.forwardRef<
         {colorScheme === COLOR_SCHEME.gold ? <WarningMediumContainedIcon /> : null}
         {colorScheme === COLOR_SCHEME.red ? <WarningMediumContainedIcon /> : null}
 
-        <Flex direction={direction} gap={1} flex={1} align="start">
+        <Flex
+          direction={direction}
+          gap={1}
+          flex={1}
+          align={direction === 'row' ? 'center' : 'start'}
+        >
           {children ?? (
             <>
               {title ? <AlertTitle>{title}</AlertTitle> : null}
