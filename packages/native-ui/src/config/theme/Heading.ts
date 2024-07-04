@@ -10,17 +10,12 @@ export const Heading = createStyle({
     color: '$darkGrey1000',
   },
   variants: {
-    isTruncated: {
+    truncated: {
       true: {
         props: {
           numberOfLines: 1,
           ellipsizeMode: 'tail',
         },
-      },
-    },
-    bold: {
-      true: {
-        fontWeight: '$bold',
       },
     },
     underline: {
@@ -33,79 +28,43 @@ export const Heading = createStyle({
         textDecorationLine: 'line-through',
       },
     },
-    sub: {
-      true: {
-        fontSize: '$xs',
-        lineHeight: '$xs',
-      },
-    },
-    italic: {
-      true: {
-        fontStyle: 'italic',
-      },
-    },
-    highlight: {
-      true: {
-        bg: '$yellow500',
-      },
-    },
     size: {
-      '5xl': {
-        props: { as: H1 },
-        fontSize: '$6xl',
-        lineHeight: '$7xl',
-      },
-      '4xl': {
-        props: { as: H1 },
-        fontSize: '$5xl',
-        lineHeight: '$6xl',
-      },
-
-      '3xl': {
+      h1: {
         props: { as: H1 },
         fontSize: '$4xl',
-        lineHeight: '$5xl',
+        lineHeight: '$3xl',
       },
-
-      '2xl': {
+      h2: {
         props: { as: H2 },
         fontSize: '$3xl',
-        lineHeight: '$3xl',
-      },
-
-      xl: {
-        props: { as: H3 },
-        fontSize: '$2xl',
-        lineHeight: '$3xl',
-      },
-
-      lg: {
-        props: { as: H4 },
-        fontSize: '$xl',
         lineHeight: '$2xl',
       },
-
-      md: {
-        props: { as: H5 },
+      h3: {
+        props: { as: H3 },
+        fontSize: '$2xl',
+        lineHeight: '$2xl',
+      },
+      h4: {
+        props: { as: H4 },
         fontSize: '$lg',
         lineHeight: '$lg',
       },
-
-      sm: {
+      h5: {
+        props: { as: H5 },
+        fontSize: '$md',
+        lineHeight: '$sm',
+      },
+      h6: {
         props: { as: H6 },
         fontSize: '$md',
         lineHeight: '$lg',
-      },
-
-      xs: {
-        props: { as: H6 },
-        fontSize: '$sm',
-        lineHeight: '$xs',
+        fontFamily: '$body',
+        fontWeight: '$normal',
       },
     },
   },
 
   defaultProps: {
-    size: 'lg',
+    size: 'h4',
   },
 });
