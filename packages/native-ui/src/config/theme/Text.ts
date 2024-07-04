@@ -13,12 +13,6 @@ export const Text = createStyle({
     fontFaimly: 'Work Sans !important',
   },
   variants: {
-    variant: {
-      body: {
-        fontSize: '$md',
-        lineHeight: '$2xl',
-      },
-    },
     truncated: {
       true: {
         props: {
@@ -47,12 +41,6 @@ export const Text = createStyle({
         textDecorationLine: 'line-through',
       },
     },
-    sub: {
-      true: {
-        fontSize: '$xs',
-        lineHeight: '$xs',
-      },
-    },
     italic: {
       true: {
         fontStyle: 'italic',
@@ -60,7 +48,7 @@ export const Text = createStyle({
     },
     size: {
       xs: {
-        fontSize: '$sm',
+        fontSize: '$xs',
         lineHeight: '$2xs',
       },
 
@@ -70,11 +58,6 @@ export const Text = createStyle({
       },
 
       md: {
-        fontSize: '$md',
-        lineHeight: '$lg',
-      },
-
-      body: {
         fontSize: '$md',
         lineHeight: '$lg',
       },

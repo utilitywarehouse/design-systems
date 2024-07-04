@@ -18,11 +18,6 @@ export const Heading = createStyle({
         },
       },
     },
-    bold: {
-      true: {
-        fontWeight: '$bold',
-      },
-    },
     underline: {
       true: {
         textDecorationLine: 'underline',
@@ -31,22 +26,6 @@ export const Heading = createStyle({
     strikeThrough: {
       true: {
         textDecorationLine: 'line-through',
-      },
-    },
-    sub: {
-      true: {
-        fontSize: '$xs',
-        lineHeight: '$xs',
-      },
-    },
-    italic: {
-      true: {
-        fontStyle: 'italic',
-      },
-    },
-    highlight: {
-      true: {
-        bg: '$yellow500',
       },
     },
     size: {
@@ -80,6 +59,7 @@ export const Heading = createStyle({
         fontSize: '$md',
         lineHeight: '$lg',
         fontFamily: '$body',
+        fontWeight: '$normal',
       },
     },
   },
