@@ -28,7 +28,7 @@ jobs:
         run: echo '${{ toJson(github) }}'
 
       - name: 🏗 Setup repo
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 8
 
@@ -135,7 +135,7 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: 🏗 Setup repo
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 8
 
@@ -245,7 +245,7 @@ jobs:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
       - name: 🏗 Setup repo
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 8
 
