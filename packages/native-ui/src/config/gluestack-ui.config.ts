@@ -92,6 +92,7 @@ export const gluestackUIConfig = createConfig({
       xl: 12,
       '2xl': 16,
       '3xl': 24,
+      '4xl': 32,
       full: 9999,
     },
     breakpoints: {
@@ -102,11 +103,11 @@ export const gluestackUIConfig = createConfig({
       xl: 1280,
     },
     mediaQueries: {
-      base: '@media screen and (min-width: 0)',
-      xs: '@media screen and (min-width: 400px)',
-      sm: '@media screen and (min-width: 480px)',
-      md: '@media screen and (min-width: 768px)',
-      lg: '@media screen and (min-width: 992px)',
+      base: '@media screen and (min-width: 0) and (max-width: 399px)',
+      xs: '@media screen and (min-width: 400px) and (max-width: 479px)',
+      sm: '@media screen and (min-width: 480px) and (max-width: 767px)',
+      md: '@media screen and (min-width: 768px) and (max-width: 991px)',
+      lg: '@media screen and (min-width: 992px) and (max-width: 1279px)',
       xl: '@media screen and (min-width: 1280px)',
     },
     letterSpacings: {

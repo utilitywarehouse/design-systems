@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = function (api) {
   api.cache(true);
   return {
-    presets: ['babel-preset-expo'],
     plugins: [
       [
         'module-resolver',
@@ -24,5 +23,6 @@ module.exports = function (api) {
       '@babel/plugin-proposal-export-namespace-from',
       'react-native-reanimated/plugin',
     ],
+    presets: ['babel-preset-expo'],
   };
 };

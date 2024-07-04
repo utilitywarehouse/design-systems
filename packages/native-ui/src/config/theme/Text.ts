@@ -9,12 +9,13 @@ export const Text = createStyle({
   fontFamily: '$body',
   fontStyle: 'normal',
   letterSpacing: '$md',
-
+  _web: {
+    fontFaimly: 'Work Sans !important',
+  },
   variants: {
     isTruncated: {
       true: {
         props: {
-          // @ts-ignore
           numberOfLines: 1,
           ellipsizeMode: 'tail',
         },
