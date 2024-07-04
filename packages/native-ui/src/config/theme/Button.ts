@@ -21,6 +21,11 @@ export const Button = createStyle({
   _text: {
     fontWeight: '$medium',
   },
+  _web: {
+    _text: {
+      fontFamily: 'Work Sans !important',
+    },
+  },
   variants: {
     colorScheme: {
       cyan: colourScheme('cyan'),

@@ -44,6 +44,11 @@ export const Alert = createStyle({
       minHeight: 16,
     },
   },
+  _web: {
+    _text: {
+      fontFamily: 'Work Sans !important',
+    },
+  },
   variants: {
     colorScheme: {
       // @deprecated - use 'red' instead
