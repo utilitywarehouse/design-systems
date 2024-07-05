@@ -1,5 +1,20 @@
 # @utilitywarehouse/native-ui
 
+## 0.2.0
+
+### Minor Changes
+
+- [#400](https://github.com/utilitywarehouse/design-systems/pull/400) [`d3b7b7b8`](https://github.com/utilitywarehouse/design-systems/commit/d3b7b7b8c35426c468cfdede45ae2fe2e56bebb4) Thanks [@jordmccord](https://github.com/jordmccord)! - Add `Text` and `Heading` components
+
+- [#359](https://github.com/utilitywarehouse/design-systems/pull/359) [`3b320c24`](https://github.com/utilitywarehouse/design-systems/commit/3b320c24e1c2f8b3daa70ce1692897b0b4f9cb5e) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Button` component
+  Adds `IconButton` component
+
+- [#396](https://github.com/utilitywarehouse/design-systems/pull/396) [`4b830eb2`](https://github.com/utilitywarehouse/design-systems/commit/4b830eb22d2e3efd1ca645f5b55d970d71460942) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Actionsheet` to lab components
+
+### Patch Changes
+
+- [#400](https://github.com/utilitywarehouse/design-systems/pull/400) [`d3b7b7b8`](https://github.com/utilitywarehouse/design-systems/commit/d3b7b7b8c35426c468cfdede45ae2fe2e56bebb4) Thanks [@jordmccord](https://github.com/jordmccord)! - Update `Badge` font size
+
 ## 0.1.4
 
 ### Patch Changes
