@@ -41,4 +41,18 @@ We can provide platform specific styles in the `sx` prop of the component. The `
     </Button>
   </Box>
 </Box>
+
+// or
+
+<Button sx={{ _ios: { backgroundColor: '$red500' }, _web: { backgroundColor: '$green500' }, _android: { backgroundColor: '$gold500' } }}>
+  <ButtonText>Button</ButtonText>
+</Button>
+
+// or
+
+const StyledButton = styled(Button, {
+  _ios: { backgroundColor: '$red500' },
+  _web: { backgroundColor: '$green500' },
+  _android: { backgroundColor: '$gold500' },
+});
 ```

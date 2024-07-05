@@ -42,4 +42,17 @@ In the below example we are applying styles to ButtonText by passing styles `_te
     </Button>
   </Box>
 </Box>
+
+// or
+
+<Button sx={{ backgroundColor: '$grey300', $_text: { color: '$red' } }}>
+  <ButtonText>Button</ButtonText>
+</Button>
+
+// or
+
+const StyledButton = styled(Button, {
+  backgroundColor: '$grey300',
+  _text: { color: '$red' },
+});
 ```

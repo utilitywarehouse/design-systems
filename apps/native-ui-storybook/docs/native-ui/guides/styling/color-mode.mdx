@@ -35,8 +35,18 @@ In the below example we are defining styles to be applied in dark mode in `_dark
 <Button $dark-bg="$cyan600" $light-bg="$red600" p="$2">
   <ButtonText>Hello world</ButtonText>
 </Button>
+
 // or
+
 <Button sx={{ backgroundColor: '$red600', p: "$2", _dark: { backgroundColor: '$darkCyan600' }, }}>
   <ButtonText>Hello world</ButtonText>
 </Button>
+
+// or
+
+const StyledButton = styled(Button, {
+  backgroundColor: '$red600',
+  p: "$2",
+  _dark: { backgroundColor: '$darkCyan600' },
+});
 ```
