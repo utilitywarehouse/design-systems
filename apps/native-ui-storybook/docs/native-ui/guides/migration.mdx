@@ -4,4 +4,115 @@ import { Meta } from '@storybook/blocks';
 
 # Migration Guide
 
-Coming Soon
+This guide is intended to help you migrate from our old React Native UI library, UW Native UI (`@utilitywarehouse/uw-native-ui`)
+to Native UI (`@utilitywarehouse/native-ui`). Although you can use both libraries in the same project, it is recommended that you
+migrate to Native UI as UW Native UI is deprecated.
+
+- UW Native UI: `@utilitywarehouse/uw-native-ui` - [Repo](https://github.com/utilitywarehouse/uw-native-ui)
+- Native UI: `@utilitywarehouse/native-ui` - [Repo](https://github.com/utilitywarehouse/design-systems/tree/main/packages/native-ui)
+
+## Key Info
+
+- `@utilitywarehouse/uw-native-ui` is deprecated and will not receive any updates.
+- `@utilitywarehouse/native-ui` is the new library and will receive updates and new features.
+- `@utilitywarehouse/native-ui` is a complete rewrite of `@utilitywarehouse/uw-native-ui` and has a different API.
+- `@utilitywarehouse/uw-native-ui` uses `react-native-paper` under the hood.
+- `@utilitywarehouse/native-ui` uses `gluestack-ui` under the hood.
+- `@utilitywarehouse/native-ui` uses `gluestack-style` for styling, this has a similar API to other popular UI
+  libaraies and exposes a `styled` method, utility and props at the component level.
+
+## Migration Steps
+
+### Components
+
+Not all components from `@utilitywarehouse/uw-native-ui` are available in `@utilitywarehouse/native-ui` yet and
+not all components have a 1:1 mapping. Below are the steps to replace the components.
+
+#### `Button`
+
+Replace all `Button` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Button } from '@utilitywarehouse/uw-native-ui';
++ import { Button, ButtonText } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Button onPress={handleClick}>Click me</Button>
++ <Button onPress={handleClick}><ButtonText>Click me</Button></Button>
+```
+
+For more info see the [Button](/docs/native-ui-components-button--docs) documentation.
+
+#### `Typography`
+
+The `Typography` component doesn't map 1:1 with `@utilitywarehouse/uw-native-ui`. You can use the `Text` and `Heading` components
+from `@utilitywarehouse/native-ui` instead.
+
+```tsx
+- import { Typography } from '@utilitywarehouse/uw-native-ui';
++ import { Text, Heading } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Typography variant="h1">Heading 1</Typography>
++ <Heading size="h1">Heading 1</Heading>
+
+- <Typography variant="body">Body text</Typography>
++ <Text>Body text</Text>
+```
+
+For more info see the [Text](/docs/native-ui-components-text--docs) and [Heading](/docs/native-ui-components-heading--docs) documentation.
+
+#### `ThemeProvider`
+
+```tsx
+- import { ThemeProvider } from '@utilitywarehouse/uw-native-ui';
++ import { NativeUIProvider } from '@utilitywarehouse/native-ui';
+```
+
+```tsx
+- <ThemeProvider theme={theme} variant={colorMode}>
++ <NativeUIProvider theme={theme} colorMode={colorMode}>
+```
+
+More info can be found in the [Getting Started](/docs/native-ui-introduction--docs#dark-mode) documentation.
+
+### Styles
+
+`@utilitywarehouse/uw-native-ui` uses `StyleSheet` from `react-native` for styling, whereas `@utilitywarehouse/native-ui` uses
+`gluestack-style` for styles. You can still use the `StyleSheet` from `react-native` with `@utilitywarehouse/native-ui` but
+it is recommended to use the `sx` prop for styling. You can also use the `styled` method and utility props for styling.
+See out [Styling](/docs/native-ui-guides-styling-overview--docs) documentation for more info.
+
+#### `StyleSheet`
+
+```tsx
+- import { StyleSheet } from 'react-native';
+- import { View } from '@utilitywarehouse/uw-native-ui';
++ import { Box } from '@utilitywarehouse/native-ui';
+// or
++ import { styled } from '@utilitywarehouse/native-ui';
+
+- const styles = StyleSheet.create({
+-   container: {
+-     backgroundColor: 'red',
+-   },
+- });
+
+- <View style={styles.container}>
+
++ <Box sx={{ backgroundColor: 'red' }}>
+
+// or
+
++ <Box bg="red" />
+
+// or
+
++ const StyledBox = styled(Box, {
++   backgroundColor: 'red',
++ });
+```
+
+#### Dark Mode
