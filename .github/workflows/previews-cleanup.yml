@@ -12,6 +12,7 @@ jobs:
   cleanup:
     name: Cleanup Previews
     runs-on: ubuntu-latest
+    continue-on-error: true
     if: ${{ github.event.before && github.head_commit.author.username != 'github-actions[bot]'}}
     steps:
       - name: ℹ️ Get stringified GitHub info
