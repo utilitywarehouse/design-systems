@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { styled } from '../theme';
 import { colorSchemeParentSelector, px, withGlobalPrefix } from '../utils';
-import { COLOR_SCHEME, PropsWithSx } from '../types';
+import { PropsWithSx } from '../types';
 import clsx from 'clsx';
 import { UnstyledButton } from '../UnstyledButton';
 import type { UnstyledButtonProps } from '../UnstyledButton';
@@ -22,22 +22,22 @@ const StyledElement = styled(UnstyledButton)({
     borderRadius: px(4),
     boxShadow: '0 0 0 2px var(--alert-focus-color)',
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.cyan)]: {
+  [colorSchemeParentSelector('cyan')]: {
     '--alert-button-color': colors.cyan700,
     '--alert-button-color-hover': colors.cyan900,
     '--alert-focus-color': colors.cyan700,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.green)]: {
+  [colorSchemeParentSelector('green')]: {
     '--alert-button-color': colors.green700,
     '--alert-button-color-hover': colors.green900,
     '--alert-focus-color': colors.green700,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.gold)]: {
+  [colorSchemeParentSelector('gold')]: {
     '--alert-button-color': colors.gold700,
     '--alert-button-color-hover': colors.gold900,
     '--alert-focus-color': colors.gold700,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.red)]: {
+  [colorSchemeParentSelector('red')]: {
     '--alert-button-color': colors.red700,
     '--alert-button-color-hover': colors.red900,
     '--alert-focus-color': colors.red700,

@@ -1,12 +1,11 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { COLOR_SCHEME } from '../types';
 
 export interface AlertProps extends ComponentPropsWithoutRef<'div'> {
   /**
    * Sets the colour scheme.
    * @default cyan
    */
-  colorScheme?: COLOR_SCHEME.cyan | COLOR_SCHEME.red | COLOR_SCHEME.green | COLOR_SCHEME.gold;
+  colorScheme?: 'cyan' | 'green' | 'gold' | 'red';
   /**
    * Sets the function to be called when the alert is closed.
    */
