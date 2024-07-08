@@ -1,5 +1,13 @@
 # @utilitywarehouse/web-ui
 
+## 0.9.1
+
+### Patch Changes
+
+- [#398](https://github.com/utilitywarehouse/design-systems/pull/398) [`eafe765f`](https://github.com/utilitywarehouse/design-systems/commit/eafe765f057e272a6debd0057c6008b4d891cb53) Thanks [@robphoenix](https://github.com/robphoenix)! - `Alert` component fixes
+  - Layout for `row` direction
+  - Fix `colorScheme` prop type, updating from enum to string
+
 ## 0.9.0
 
 ### Minor Changes
