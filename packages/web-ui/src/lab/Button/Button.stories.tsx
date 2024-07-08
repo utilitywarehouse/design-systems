@@ -12,7 +12,7 @@ import {
 } from '@utilitywarehouse/react-icons';
 import { Box } from '../../Box';
 
-const sizes = ['large', 'small'] as const;
+const sizes = ['large', 'medium', 'small'] as const;
 const variants = ['outline', 'ghost'] as const;
 const solidColorSchemes = ['cyan', 'red', 'green'] as const;
 const colorSchemes = [...solidColorSchemes, 'grey', 'gold'] as const;
@@ -257,7 +257,7 @@ export const Sizes: Story = {
     <Flex gap={2} align="center">
       {sizes.map(size => (
         <Button key={size} variant="outline" size={size}>
-          Edit address
+          Button {size}
         </Button>
       ))}
     </Flex>
