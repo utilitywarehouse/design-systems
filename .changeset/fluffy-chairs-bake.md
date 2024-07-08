@@ -2,5 +2,6 @@
 '@utilitywarehouse/web-ui': patch
 ---
 
-- Alert layout fix
-- Fix colorScheme prop type, updating from enum to string
+`Alert` component fixes
+- Layout for `row` direction
+- Fix `colorScheme` prop type, updating from enum to string
