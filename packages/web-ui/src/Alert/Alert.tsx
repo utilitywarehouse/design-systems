@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { COLOR_SCHEME, PropsWithSx } from '../types';
+import { PropsWithSx } from '../types';
 import { AlertProps } from './Alert.props';
 import { COLORSCHEME_SELECTORS, DATA_ATTRIBUTES, px, withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
@@ -72,7 +72,7 @@ export const Alert = React.forwardRef<
   (
     {
       className,
-      colorScheme = COLOR_SCHEME.cyan,
+      colorScheme = 'cyan',
       direction = 'column',
       children,
       onClose,
@@ -84,6 +84,13 @@ export const Alert = React.forwardRef<
     },
     ref
   ) => {
+    const icons = {
+      cyan: InformationMediumContainedIcon,
+      green: TickMediumContainedIcon,
+      gold: WarningMediumContainedIcon,
+      red: WarningMediumContainedIcon,
+    };
+    const AlertIcon = icons[colorScheme];
     const dataAttributeProps = { [DATA_ATTRIBUTES.colorscheme]: colorScheme };
     return (
       <StyledElement
@@ -99,12 +106,14 @@ export const Alert = React.forwardRef<
         {...dataAttributeProps}
         {...props}
       >
-        {colorScheme === COLOR_SCHEME.cyan ? <InformationMediumContainedIcon /> : null}
-        {colorScheme === COLOR_SCHEME.green ? <TickMediumContainedIcon /> : null}
-        {colorScheme === COLOR_SCHEME.gold ? <WarningMediumContainedIcon /> : null}
-        {colorScheme === COLOR_SCHEME.red ? <WarningMediumContainedIcon /> : null}
+        <AlertIcon />
 
-        <Flex direction={direction} gap={1} flex={1} align="start">
+        <Flex
+          direction={direction}
+          gap={1}
+          flex={1}
+          align={direction === 'row' ? 'center' : 'start'}
+        >
           {children ?? (
             <>
               {title ? <AlertTitle>{title}</AlertTitle> : null}

@@ -5,7 +5,7 @@ import type { TextLinkProps } from '../lab/TextLink';
 import { styled } from '../theme';
 import { fontWeights } from '../tokens';
 import { colorSchemeParentSelector, px, withGlobalPrefix } from '../utils';
-import { COLOR_SCHEME, PropsWithSx } from '../types';
+import { PropsWithSx } from '../types';
 import clsx from 'clsx';
 
 const componentName = 'AlertLink';
@@ -20,19 +20,23 @@ const StyledElement = styled(TextLink)({
     borderRadius: px(4),
     boxShadow: '0 0 0 2px var(--alert-focus-color)',
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.cyan)]: {
+  ':where(:visited)': {
+    color: 'var(--alert-link-color)',
+    textDecorationColor: 'var(--alert-link-color)',
+  },
+  [colorSchemeParentSelector('cyan')]: {
     '--alert-link-color': colors.cyan700,
     '--alert-focus-color': colors.cyan700,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.green)]: {
+  [colorSchemeParentSelector('green')]: {
     '--alert-link-color': colors.green700,
     '--alert-focus-color': colors.green700,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.gold)]: {
+  [colorSchemeParentSelector('gold')]: {
     '--alert-link-color': colors.gold700,
     '--alert-focus-color': colors.gold700,
   },
-  [colorSchemeParentSelector(COLOR_SCHEME.red)]: {
+  [colorSchemeParentSelector('red')]: {
     '--alert-link-color': colors.red700,
     '--alert-focus-color': colors.red700,
   },
