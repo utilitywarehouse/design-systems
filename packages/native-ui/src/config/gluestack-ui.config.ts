@@ -246,7 +246,7 @@ export const gluestackUIConfig = createConfig({
           shadowRadius: 10,
           shadowOpacity: 0.1,
           _android: {
-            shadowColor: '$backgroundLight500',
+            shadowColor: '$grey900',
             elevation: 5,
             shadowOpacity: 0.05,
           },
@@ -261,7 +261,7 @@ export const gluestackUIConfig = createConfig({
           elevation: 3,
           shadowOpacity: 0.1,
           _android: {
-            shadowColor: '$backgroundLight500',
+            shadowColor: '$grey900',
             elevation: 10,
             shadowOpacity: 0.1,
           },
@@ -276,7 +276,7 @@ export const gluestackUIConfig = createConfig({
           shadowOpacity: 0.1,
           elevation: 4,
           _android: {
-            shadowColor: '$backgroundLight500',
+            shadowColor: '$grey900',
             elevation: 15,
             shadowOpacity: 0.15,
           },
@@ -291,7 +291,7 @@ export const gluestackUIConfig = createConfig({
           shadowOpacity: 0.1,
           elevation: 10,
           _android: {
-            shadowColor: '$backgroundLight500',
+            shadowColor: '$grey900',
             elevation: 20,
             shadowOpacity: 0.2,
           },
