@@ -75,7 +75,7 @@ The Actionsheet component presents a set of options to the user, overlaid on top
 
 ## Props
 
-### Actionsheet
+### `Actionsheet`
 
 It inherits all the properties of React Native's View component.
 
@@ -94,11 +94,11 @@ It inherits all the properties of React Native's View component.
 | `children`              | `any`                  | The content to display inside the Actionsheet                                                                                                                                                                                                                                                         | -       |
 | `snapPoints`            | `Array<number>`        | The snap points for the Actionsheet The Actionsheet will snap to the point closest to its current position. The default value is 50% of the screen height. The value should be between 0 and 100. Currently, only one snap point is supported. We plan to support multiple snap points in the future. | [50]    |
 
-### ActionsheetBackdrop
+### `ActionsheetBackdrop`
 
 It is React Native's Pressable component, created using @legendapp/motion's createMotionAnimatedComponent function to add animation to the component. You can use any declarative animation library you prefer.
 
-### ActionsheetContent
+### `ActionsheetContent`
 
 It inherits all the properties of @legendapp/motion's Motion.View component. With this Actionsheet component, you have the flexibility to use any declarative animation library that suits your needs.
 
@@ -110,15 +110,15 @@ Props to style child components.
 | -------------------- | ---------------------------------------------------- |
 | `_sectionHeaderText` | Prop to style ActionsheetSectionHeaderText Component |
 
-### ActionsheetDragIndicatorWrapper
+### `ActionsheetDragIndicatorWrapper`
 
 It inherits all the properties of React Native's View component.
 
-### ActionsheetDragIndicator
+### `ActionsheetDragIndicator`
 
 It inherits all the properties of React Native's View component.
 
-### ActionsheetItem
+### `ActionsheetItem`
 
 It inherits all the properties of React Native's Pressable component.
 
@@ -131,31 +131,31 @@ Props to style child components.
 | `_text` | Prop to style ActionsheetItemText Component |
 | `_icon` | Prop to style ActionsheetIcon Component     |
 
-### ActionsheetItemText
+### `ActionsheetItemText`
 
 It inherits all the properties of React Native's Text component.
 
-### ActionsheetIcon
+### `ActionsheetIcon`
 
 It inherits all the properties of React Native's View component.
 
-### ActionsheetScrollView
+### `ActionsheetScrollView`
 
 It inherits all the properties of React Native's ScrollView component.
 
-### ActionsheetVirtualizedList
+### `ActionsheetVirtualizedList`
 
 It inherits all the properties of React Native's VirtualizedList component.
 
-### ActionsheetFlatList
+### `ActionsheetFlatList`
 
 It inherits all the properties of React Native's FlatList component.
 
-### ActionsheetSectionList
+### `ActionsheetSectionList`
 
 It inherits all the properties of React Native's SectionList component.
 
-### ActionsheetSectionHeaderText
+### `ActionsheetSectionHeaderText`
 
 It inherits all the properties of React Native's Text component.
 
@@ -172,7 +172,7 @@ It inherits all the properties of React Native's Text component.
 
 ## Examples
 
-### With ScrollView
+### With `ScrollView`
 
 <Canvas of={Stories.WithScrollView} />
 
