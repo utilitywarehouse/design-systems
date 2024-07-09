@@ -1,15 +1,17 @@
-import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './TextLink.stories';
+import { DocsHeader } from '../../storybook-utils';
 
 <Meta of={Stories} />
 
-# Link
-
-<Description />
+<DocsHeader
+  lab
+  componentName="TextLink"
+  stories={Stories}
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=6834-38146"
+/>
 
 <Canvas of={Stories.Workshop} />
-
-## Contents
 
 - [Usage](#usage)
 - [Accessibility](#accessibility)
@@ -28,33 +30,12 @@ components available prior to an official major release. This helps us bed in
 new components before introducing breaking changes, and to avoid blocking the
 availability of these components for designers.
 
-There are 2 options for importing this component.
-
-1. Import directly from the `lab` directory.
-
 ```tsx
 import { Text } from '@utilitywarehouse/web-ui';
 import { TextLink } from '@utilitywarehouse/web-ui/dist/lab';
 
 [...]
 
-<Text>
-  <TextLink>TextLink</TextLink>
-</Text>
-```
-
-2. Import `Lab` directly from Web UI.
-
-```tsx
-import { Text, Lab } from '@utilitywarehouse/web-ui';
-
-[...]
-
-<Text>
-  <Lab.TextLink>TextLink</Lab.TextLink>
-</Text>
-// or
-const { TextLink } = Lab
 <Text>
   <TextLink>TextLink</TextLink>
 </Text>

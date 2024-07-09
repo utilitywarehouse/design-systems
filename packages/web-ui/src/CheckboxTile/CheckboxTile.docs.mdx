@@ -1,16 +1,24 @@
-import { Meta, Description, Canvas, ArgTypes } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './CheckboxTile.stories';
 import { Stack } from '../Stack';
 import { Box } from '../Box';
 import { Text } from '../Text';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-# CheckboxTile
+<DocsHeader
+  componentName="CheckboxTile"
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=910-9379"
+  stories={Stories}
+/>
 
-<Description of={Stories} />
+<Canvas of={Stories.Workshop} sourceState="shown" />
 
-<Canvas of={Stories.Workshop} />
+- [Helper text](#helper-text)
+- [Controlled](#controlled)
+- [Accessibility](#accessibility)
+- [Props](#props)
 
 ## Helper text
 

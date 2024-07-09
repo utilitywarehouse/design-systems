@@ -10,12 +10,9 @@ import { createBox } from './createBox';
 const BaseBox = createBox();
 
 /**
- * Box is a foundational primitive, based on the `div` element. It supports all
+ * The `Box` component is a foundational primitive, based on the `div` element. It supports all
  * style props, as well as contextual brand background colours, and can be used
  * for building any styled element.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be
- * > used standalone with other component libraries.
  */
 export const Box = React.forwardRef(function Box({ background, bgcolor, ...props }, ref) {
   const invertedBackgrounds = [colorsCommon.brandMidnight, colorsCommon.brandPrimaryPurple];

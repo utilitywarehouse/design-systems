@@ -178,9 +178,8 @@ const StyledElement = styled('span')(() => {
 });
 
 /**
- * Provide additional context (such as status), or use Badge to draw attention to another interface element.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ * Provide additional context (such as status), or to draw attention to another
+ * interface element.
  */
 export const Badge = React.forwardRef<
   React.ElementRef<'span'>,

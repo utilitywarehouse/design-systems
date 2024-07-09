@@ -6,7 +6,6 @@ import { RadioTile } from '../RadioTile';
 const meta: Meta<typeof RadioGridGroup> = {
   title: 'Web UI / Components / Radio / RadioGridGroup',
   component: RadioGridGroup,
-  tags: ['autodocs'],
   argTypes: {
     error: { control: { type: 'boolean' } },
     defaultValue: { control: { type: 'text' } },
@@ -37,8 +36,7 @@ const meta: Meta<typeof RadioGridGroup> = {
 export default meta;
 type Story = StoryObj<typeof RadioGridGroup>;
 
-export const RadioGridGroupWorkshop: Story = {
-  name: 'Workshop',
+export const Workshop: Story = {
   render: args => {
     return (
       <RadioGridGroup {...args}>

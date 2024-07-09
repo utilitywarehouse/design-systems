@@ -110,8 +110,6 @@ const StyledElement = styled('p', {
 
 /**
  * Text renders the secondary UW font, Work Sans, to be used for body text.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Text = React.forwardRef<
   React.ElementRef<'p'>,

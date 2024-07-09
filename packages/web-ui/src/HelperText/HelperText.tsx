@@ -64,14 +64,8 @@ const StyledElement = styled('span')({
 });
 
 /**
- * > This component is only required when building a custom field that isn’t
- * > provided by UW Web UI.
- *
  * This component should be used with form field components to display helper
- * text.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be
- * > used standalone with other component libraries.
+ * text or error text.
  */
 export const HelperText = React.forwardRef<
   React.ElementRef<'span'>,

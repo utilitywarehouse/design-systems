@@ -8,7 +8,6 @@ import { Text } from '../Text';
 const meta: Meta<typeof CheckboxGridGroup> = {
   title: 'Web UI / Components / Checkbox / CheckboxGridGroup',
   component: CheckboxGridGroup,
-  tags: ['autodocs'],
   argTypes: {
     helperText: { control: { type: 'text' } },
     helperTextPosition: { options: ['top', 'bottom'], control: { type: 'radio' } },

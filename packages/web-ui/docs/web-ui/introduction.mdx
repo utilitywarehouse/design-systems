@@ -1,8 +1,5 @@
 import { Meta } from '@storybook/blocks';
 import { version } from '../../package.json';
-import { Analytics } from '@vercel/analytics/react';
-
-<Analytics />
 
 <Meta title="Web UI / Introduction" />
 
@@ -61,16 +58,17 @@ import '@utilitywarehouse/fontsource';
 
 ## Theming
 
-The following components should be wrapped in the `ThemeProvider`;
+Newer components do not need to be wrapped in a `ThemeProvider` component.
+Individual component documentation will indicate when a component requires the
+`ThemeProvider`. Only the following components should be wrapped in the
+`ThemeProvider`:
 
-- `Background` (deprecated)
 - `Grid`
 - `Menu` (& `MenuItem`)
 - `TextField`
-- `TextLink`
+- `Link` & `TextLink` (deprecated)
 - `Stack`
 - `ToggleButtonGroup` (& `ToggleButton`)
-- `Typography` (only if using the legacy `variant` prop)
 
 Wrap your application with the `ThemeProvider` component.
 

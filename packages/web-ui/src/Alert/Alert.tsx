@@ -59,11 +59,8 @@ const StyledElement = styled(Flex)({
 });
 
 /**
- * An `Alert` is a component that provides feedback messages to users. Alerts
- * are dynamic content that is injected into the page when it changes and
- * should be used sparingly.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ * Provide feedback messages to users. Alerts are dynamic content that is
+ * injected into the page when it changes and should be used sparingly.
  */
 export const Alert = React.forwardRef<
   React.ElementRef<'div'>,

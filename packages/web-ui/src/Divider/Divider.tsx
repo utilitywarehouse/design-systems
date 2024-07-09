@@ -33,9 +33,8 @@ const StyledElement = styled('hr', {
 });
 
 /**
- * Used to provide a visual break and semantically divide content.
- *
- * Supports vertical and horizontal orientations.
+ * Used to provide a visual break and semantically divide content. Supports
+ * vertical and horizontal orientations.
  */
 export const Divider = React.forwardRef<React.ElementRef<'hr'>, DividerProps>(
   (

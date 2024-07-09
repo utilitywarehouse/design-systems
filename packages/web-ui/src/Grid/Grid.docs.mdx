@@ -6,12 +6,11 @@ import { Stack } from '../Stack';
 import { Text } from '../Text';
 import { Divider } from '@mui/material';
 import { spacingBase, breakpoints } from '../tokens';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-# Grid
-
-<Description />
+<DocsHeader componentName="Grid" stories={Stories} themeProviderRequired />
 
 <Canvas of={Stories.GridStory} />
 

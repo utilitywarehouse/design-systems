@@ -86,15 +86,10 @@ const StyledElement = styled('a', {
 }));
 
 /**
- * A semantic element for navigating between pages.
- *
- * The `TextLink` component is intended to be used within a block of text, and
- * should be nested in a `Text` component. This should happen even when using
- * as a standalone link element as it will inherit many styles from the parent
- * `Text` component.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be
- * > used standalone with other component libraries.
+ * A semantic element for navigating between pages. The `TextLink` component is
+ * intended to be used within a block of text, and should be nested in a `Text`
+ * component. This should happen even when using as a standalone link element
+ * as it will inherit many styles from the parent `Text` component.
  */
 export const TextLink = React.forwardRef<
   React.ElementRef<'a'>,

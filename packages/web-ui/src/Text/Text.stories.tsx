@@ -22,7 +22,7 @@ export const KitchenSink: Story = {
       <Flex direction="column" gap={1}>
         {variants.map(variant => (
           <Text key={variant} variant={variant}>
-            Text variant: {variant}
+            Hamburgefons
           </Text>
         ))}
       </Flex>
@@ -79,10 +79,11 @@ export const TextVariants: Story = {
   render: () => {
     return (
       <Flex direction="column" gap={1}>
-        <Text variant="subtitle">hamburgefons (subtitle)</Text>
-        <Text variant="body">hamburgefons (body)</Text>
-        <Text variant="legalNote">hamburgefons (legalNote)</Text>
-        <Text variant="caption">hamburgefons (caption)</Text>
+        {variants.map(variant => (
+          <Text key={variant} variant={variant}>
+            {variant}
+          </Text>
+        ))}
       </Flex>
     );
   },

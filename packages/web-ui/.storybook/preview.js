@@ -5,6 +5,7 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { SyntaxHighlighter } from '@storybook/components';
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
+import { Analytics } from '@vercel/analytics/react';
 
 SyntaxHighlighter.registerLanguage('diff', diff);
 
@@ -77,6 +78,7 @@ const preview = {
     Story => {
       return (
         <Box>
+          <Analytics />
           <Story />
         </Box>
       );

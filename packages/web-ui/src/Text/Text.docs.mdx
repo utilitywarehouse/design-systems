@@ -1,11 +1,31 @@
-import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './Text.stories';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-# Text
+<DocsHeader
+  componentName="Text"
+  stories={Stories}
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=38-884"
+/>
 
-<Description />
+<Canvas of={Stories.KitchenSink} />
+
+- [Alternatives](#alternatives)
+- [Variants](#variants)
+- [Colour](#colour)
+  - [Text wrapping](#text-wrapping)
+  - [Contextual colour](#contextual-colour)
+- [Styles](#styles)
+- [Props](#props)
+
+## Alternatives
+
+- [Heading](?path=/docs/components-heading--documentation) - For heading-level text
+- [Strong](?path=/docs/components-strong--documentation) - For strong importance
+- [Em](?path=/docs/components-em--documentation) - For emphasis
+- [Typography](?path=/docs/components-typography--documentation) - For custom typography
 
 ## Variants
 
@@ -45,13 +65,6 @@ value of either `colorsCommon.brandMidnight` or
 The system props are not available on the Text component, if you need custom
 typography then you can use `sx`, `styled` or the
 [Box](?path=/docs/components-box--documentation) component.
-
-## Alternatives
-
-- [Heading](?path=/docs/components-heading--documentation) - For heading-level text
-- [Strong](?path=/docs/components-strong--documentation) - For strong importance
-- [Em](?path=/docs/components-em--documentation) - For emphasis
-- [Typography](?path=/docs/components-typography--documentation) - For custom typography
 
 ## Props
 

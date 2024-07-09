@@ -4,7 +4,6 @@ import { HelperText } from './HelperText';
 const meta: Meta<typeof HelperText> = {
   title: 'Web UI / Typography / HelperText',
   component: HelperText,
-  tags: ['autodocs'],
   argTypes: {
     children: { control: { type: 'text' } },
     disabled: { control: { type: 'boolean' } },
