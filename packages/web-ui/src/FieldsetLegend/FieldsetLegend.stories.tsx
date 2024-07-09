@@ -6,7 +6,6 @@ import { FieldsetLegend } from './FieldsetLegend';
 const meta: Meta<typeof FieldsetLegend> = {
   title: 'Web UI / Typography / FieldsetLegend',
   component: FieldsetLegend,
-  tags: ['autodocs'],
 };
 
 export default meta;

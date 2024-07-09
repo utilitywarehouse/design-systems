@@ -9,7 +9,6 @@ const textVariants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 const meta: Meta<typeof Strong> = {
   title: 'Web UI / Typography / Strong',
   component: Strong,
-  tags: ['autodocs'],
 };
 
 export default meta;

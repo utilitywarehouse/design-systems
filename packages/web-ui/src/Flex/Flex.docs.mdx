@@ -1,13 +1,31 @@
-import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './Flex.stories';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-# Flex
-
-<Description />
+<DocsHeader componentName="Flex" stories={Stories} />
 
 <Canvas of={Stories.Workshop} />
+
+- [Semantic HTML](#semantic-html)
+- [Accessibility](#accessibility)
+- [Shorthand props](#shorthand-props)
+- [Flex vs. Stack](#flex-vs.-stack)
+- [Props](#props)
+
+## Shorthand props
+
+As well as the same style props as the `Box` component, it supports a set of
+shorthand, flexbox specific props.
+
+- `direction` is `flexDirection`
+- `wrap` is `flexWrap`
+- `basis` is `flexBasis`
+- `grow` is `flexGrow`
+- `shrink` is `flexShrink`
+- `align` is `alignItems`
+- `justify` is `justifyContent`
 
 ## Semantic HTML
 

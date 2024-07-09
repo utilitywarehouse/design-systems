@@ -9,7 +9,6 @@ import { colors } from '@utilitywarehouse/colour-system';
 const meta: Meta<typeof Fieldset> = {
   title: 'Web UI / Components / Fieldset',
   component: Fieldset,
-  tags: ['autodocs'],
 };
 
 export default meta;

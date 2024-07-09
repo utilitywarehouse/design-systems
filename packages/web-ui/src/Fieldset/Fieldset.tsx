@@ -16,14 +16,9 @@ const StyledElement = styled('fieldset')({
 });
 
 /**
- * > This component is only required when building a custom field that isn’t
- * > provided by UW Web UI.
- *
  * The `Fieldset` component should be used to group related form inputs, and
  * should be used with the `FieldsetLegend` component
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
- **/
+ */
 export const Fieldset = React.forwardRef<
   React.ElementRef<'fieldset'>,
   React.PropsWithChildren<PropsWithSx<FieldsetProps>>

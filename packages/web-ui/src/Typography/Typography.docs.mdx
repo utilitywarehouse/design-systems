@@ -1,12 +1,11 @@
 import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
 import Typography from './Typography.tsx';
 import * as Stories from './Typography.stories';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-# Typography
-
-<Description />
+<DocsHeader componentName="Typography" stories={Stories} themeProviderRequired />
 
 ## Props
 

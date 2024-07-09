@@ -5,7 +5,6 @@ import { UnstyledButton } from './UnstyledButton';
 const meta: Meta<typeof UnstyledButton> = {
   title: 'Web UI / Components / UnstyledButton',
   component: UnstyledButton,
-  tags: ['autodocs'],
   argTypes: { children: { control: { type: 'text' } } },
   args: { children: 'UnstyledButton' },
 };
