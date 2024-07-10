@@ -96,6 +96,9 @@ importers:
       '@utilitywarehouse/react-native-icons':
         specifier: ^1.5.0
         version: 1.5.0(react-native-svg@15.2.0)(react-native@0.74.2)(react@18.2.0)
+      '@vercel/analytics':
+        specifier: ^1.3.1
+        version: 1.3.1(react@18.2.0)
       expo:
         specifier: ~51.0.14
         version: 51.0.14(@babel/core@7.24.5)
@@ -6329,7 +6332,7 @@ packages:
       react-refresh: 0.14.0
       schema-utils: 3.3.0
       source-map: 0.7.4
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /@popperjs/core@2.11.8:
@@ -10268,10 +10271,10 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.2.0-beta.1(storybook@7.6.17):
-    resolution: {integrity: sha512-siZX79/e7uylLWIMsrc7VwYyPa5LG/3AoB1l1L4c4Bw5UaoMHKD+jrxiAlFmgCGxM8ly/BOpuWQR6lEtUOud7w==}
+  /@storybook/client-logger@8.2.0-beta.3(storybook@7.6.17):
+    resolution: {integrity: sha512-GQUN+AoPmQH3iUAdevwwU4SQhBUwKjHViPo8wTKZtRtmMz7aSfr0nCUGGhsSNhNukShcKvhLFt4n9PIu/GhsFg==}
     peerDependencies:
-      storybook: ^8.2.0-beta.1
+      storybook: ^8.2.0-beta.3
     dependencies:
       storybook: 7.6.17
     dev: true
@@ -10620,10 +10623,10 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.2.0-beta.1(storybook@7.6.17):
-    resolution: {integrity: sha512-xN2R9QKSm7BwjLXCu29SX7ABd8pekpuxwwYPbtbwT41UaOacLCVGwaTr0E3iH/gi0z+JAzkJM/0aB51B3K4VGw==}
+  /@storybook/instrumenter@8.2.0-beta.3(storybook@7.6.17):
+    resolution: {integrity: sha512-w+bKizx2Ely3sHdERxopRalhfEjMrcwqnRdKxmOihOWQlhrh/Fa0Sd0lK1BzUWuOmZPV+xaOUeBugRUuHQNTYw==}
     peerDependencies:
-      storybook: ^8.2.0-beta.1
+      storybook: ^8.2.0-beta.3
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 1.5.1
@@ -11268,8 +11271,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1(storybook@7.6.17):
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.2.0-beta.1(storybook@7.6.17)
-      '@storybook/instrumenter': 8.2.0-beta.1(storybook@7.6.17)
+      '@storybook/client-logger': 8.2.0-beta.3(storybook@7.6.17)
+      '@storybook/instrumenter': 8.2.0-beta.3(storybook@7.6.17)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
@@ -12036,7 +12039,6 @@ packages:
     dependencies:
       react: 18.2.0
       server-only: 0.0.1
-    dev: true
 
   /@vitest/utils@1.5.1:
     resolution: {integrity: sha512-92pE17bBXUxA0Y7goPcvnATMCuq4NQLOmqsG0e2BtzRi7KLwZB5jpiELi/8ybY8IQNWemKjSD5rMoO7xTdv8ug==}
@@ -12696,7 +12698,7 @@ packages:
       '@babel/core': 7.24.5
       find-cache-dir: 4.0.0
       schema-utils: 4.2.0
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /babel-plugin-add-react-displayname@0.0.5:
@@ -13804,7 +13806,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.4.38)
       postcss-value-parser: 4.2.0
       semver: 7.6.0
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /css-mediaquery@0.1.2:
@@ -16115,7 +16117,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /htmlparser2@6.1.0:
@@ -21262,7 +21264,6 @@ packages:
 
   /server-only@0.0.1:
     resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
-    dev: true
 
   /set-blocking@2.0.0:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
@@ -21725,7 +21726,7 @@ packages:
     peerDependencies:
       webpack: ^5.0.0
     dependencies:
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /stylehacks@5.1.1(postcss@8.4.16):
@@ -21841,7 +21842,7 @@ packages:
     dependencies:
       '@swc/core': 1.5.0
       '@swc/counter': 0.1.3
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /synchronous-promise@2.0.17:
@@ -22951,7 +22952,7 @@ packages:
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.2.0
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /webpack-hot-middleware@2.26.1:

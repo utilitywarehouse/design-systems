@@ -4,12 +4,13 @@ import { Box, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
 import { PlatformContextProvider } from '../contexts/PlatformContext';
 import { useStoryContext, useArgs, useGlobals, getQueryParams } from '@storybook/preview-api';
 import '../assets/style.css';
-import StoryWrap from '../components/StoryWrap';
+import StoryWrap from '../docs/components/StoryWrap';
 import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import { addons } from '@storybook/addons';
 import { UPDATE_GLOBALS } from '@storybook/core-events';
 import { DocsContainer as BaseContainer, DocsContainerProps } from '@storybook/blocks';
 import { themeDark, themeLight } from './themes';
+import { Analytics } from '@vercel/analytics/react';
 
 const lightColour: string = '#fff';
 const darkColour: string = '#1d1d1d';
@@ -24,6 +25,7 @@ export const decorators: Decorator[] = [
 
     return viewMode === 'story' ? (
       <NativeUIProvider colorMode={colorScheme}>
+        <Analytics />
         <PlatformContextProvider
           args={args}
           id={id}
@@ -93,6 +95,7 @@ export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({ child
 
   return (
     <BaseContainer theme={isDark ? themeDark : themeLight} context={context}>
+      <Analytics />
       {children}
     </BaseContainer>
   );

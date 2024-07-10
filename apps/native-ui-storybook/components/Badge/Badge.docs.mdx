@@ -1,16 +1,22 @@
 import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
 import * as BadgeStories from './Badge.stories';
 import { Badge, BadgeText, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
+
+<BackToTopButton />
 
 <Meta of={BadgeStories} />
 
+<ViewFigmaButton url="https://www.figma.com/file/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?type=design&node-id=2960-3929&mode=dev" />
+
 # Badge
 
-Use the `Badge` component to draw attention to another interface element or to provide additional context (such as status). Badge is a stateless component, e.g. it has no Pressed, Disabled, Active states. Badges should not be used as a mechanism for:
+Use the `Badge` component to draw attention to another interface element or to provide additional context (such as status).
 
-- Filtering content
-- Assigning a piece of content to a group (tagging)
-- Performing an action
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Variants](#variants)
 
 ## Playground
 
@@ -21,6 +27,12 @@ Use the `Badge` component to draw attention to another interface element or to p
 ## Usage
 
 > This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+Badge is a stateless component, e.g. it has no Pressed, Disabled, Active states. Badges should not be used as a mechanism for:
+
+- Filtering content
+- Assigning a piece of content to a group (tagging)
+- Performing an action
 
 <Canvas>
   <NativeUIProvider>
@@ -55,4 +67,8 @@ const MyComponent = () => (
 
 For more information, see the [Gluestack Badge component documentation](https://gluestack.io/ui/docs/components/data-display/badge).
 
-## Figma link: [https://www.figma.com/file/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?type=design&node-id=2960-3929&mode=dev](https://www.figma.com/file/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?type=design&node-id=2960-3929&mode=dev)
+## Variants
+
+The `Badge` component has different variants to style the badge.
+
+<Canvas of={BadgeStories.Variants} />

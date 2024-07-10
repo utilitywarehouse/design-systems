@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
-import * as ButtonStories from './Button.stories';
+import * as Stories from './Button.stories';
 import {
   ButtonGroup,
   Button,
@@ -16,15 +16,26 @@ import {
   ChevronLeft01SmallIcon,
   ChevronRight01SmallIcon,
 } from '@utilitywarehouse/react-native-icons';
-import ViewFigmaButton from '../../docs/components/ViewFigmaButton';
+import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
 
-<Meta of={ButtonStories} />
+<Meta of={Stories} />
 
 <ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=15-3" />
+
+<BackToTopButton />
 
 # Button
 
 The `Button` component is used to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Components](#components)
+  - [ButtonGroup](#buttongroup)
+  - [ButtonIcon](#buttonicon)
+  - [ButtonSpinner](#buttonspinner)
+- [Variants](#variants)
 
 ## Playground
 
@@ -73,7 +84,7 @@ const MyComponent = () => {
 | `isDisabled`  | `boolean`                                        | Disables the button.                                                                              | `false`  |
 | `isPressed`   | `boolean`                                        | Changes the button to a pressed state.                                                            | `false`  |
 
-### Descendants Styling Props
+#### Descendants Styling Props
 
 Props to style the child components.
 
@@ -83,7 +94,7 @@ Props to style the child components.
 | `_icon`    | Prop to style ButtonIcon Component    |
 | `_spinner` | Prop to style ButtonSpinner Component |
 
-### Components
+## Components
 
 - [ButtonGroup](#buttongroup)
 - [ButtonIcon](#buttonicon)
@@ -197,3 +208,5 @@ const MyComponent = () => {
   );
 };
 ```
+
+<Canvas of={Stories.PlaygroundVariants} />

@@ -13,11 +13,36 @@ const IconButtonPlaygroundVariants: StoryFn = ({ size, inverted, _backgroundColo
 
   const variants = (
     <>
-      <ButtonVariants colorScheme="cyan" size={size} inverted={inverted} />
-      <ButtonVariants colorScheme="green" size={size} inverted={inverted} />
-      <ButtonVariants colorScheme="red" size={size} inverted={inverted} />
-      <ButtonVariants colorScheme="grey" size={size} inverted={inverted} />
-      <ButtonVariants colorScheme="gold" size={size} inverted={inverted} />
+      <ButtonVariants
+        colorScheme="cyan"
+        size={size}
+        inverted={inverted}
+        _backgroundColor={_backgroundColor}
+      />
+      <ButtonVariants
+        colorScheme="green"
+        size={size}
+        inverted={inverted}
+        _backgroundColor={_backgroundColor}
+      />
+      <ButtonVariants
+        colorScheme="red"
+        size={size}
+        inverted={inverted}
+        _backgroundColor={_backgroundColor}
+      />
+      <ButtonVariants
+        colorScheme="grey"
+        size={size}
+        inverted={inverted}
+        _backgroundColor={_backgroundColor}
+      />
+      <ButtonVariants
+        colorScheme="gold"
+        size={size}
+        inverted={inverted}
+        _backgroundColor={_backgroundColor}
+      />
     </>
   );
 
