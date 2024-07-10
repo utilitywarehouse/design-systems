@@ -194,8 +194,8 @@ const MyComponent = () => {
 
 The `ButtonIcon` component is used to add an icon to the button.
 
-**Note:** The `ButtonIcon` component should when using [advanced usage](#advanced-usage) with the `Button` component.
-Prefer the `icon` prop on the `Button` component for simple usage.
+**Note:** The `ButtonIcon` component should be used only when utilising [advanced usage](#advanced-usage) with the `Button` component.
+We recommend using the `icon` prop on the `Button` component for simpler usage.
 
 <Canvas>
   <NativeUIProvider>
@@ -226,7 +226,8 @@ const MyComponent = () => {
 
 The `ButtonText` component is used to add text to the button.
 
-**Note:** The `ButtonText` component should when using [advanced usage](#advanced-usage) with the `Button` component.
+**Note:** The `ButtonText` component should be used only when utilising [advanced usage](#advanced-usage) with the `Button` component.
+We recommend using the children prop on the `Button` component for simpler usage.
 
 <Canvas>
   <NativeUIProvider>
@@ -254,13 +255,16 @@ const MyComponent = () => {
 
 The `ButtonSpinner` component is used to add a spinner to the button and show loading state.
 
-**Note:** The `Spinner` component should when using advanced usage with the `Button` component.
-Prefer the `loading` prop on the `Button` component for simple usage.
+> This component is used for buttons that trigger long-running actions, like form submissions or data loading.
+> The Button's appearance resembles a disabled state, as user interaction is prevented during the loading process.
+
+**Note:** The `ButtonSpinner` component should be used only when utilising [advanced usage](#advanced-usage) with the `Button` component and
+should inlude this `disabled` prop. We recommend using the `loading` prop on the `Button` component for simpler usage.
 
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Button colorScheme="cyan">
+      <Button colorScheme="cyan" disabled>
         <ButtonSpinner />
         <ButtonText>Button</ButtonText>
       </Button>
@@ -273,7 +277,7 @@ import { Button, ButtonSpinner, ButtonText } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
   return (
-    <Button colorScheme="cyan">
+    <Button colorScheme="cyan" disabled>
       <ButtonSpinner />
       <ButtonText>Button</ButtonText>
     </Button>
