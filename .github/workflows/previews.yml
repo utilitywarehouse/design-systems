@@ -17,26 +17,9 @@ env:
   CI: true
 
 jobs:
-  fetch-commit-message:
-    runs-on: ubuntu-latest
-    outputs:
-      commit-message: ${{ steps.get-message.outputs.commit-message }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Get commit message
-        id: get-message
-        run: |
-          COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
-          echo "commit-message=${COMMIT_MESSAGE}" >> $GITHUB_ENV
-          echo "::set-output name=commit-message::${COMMIT_MESSAGE}"
-
   build-for-android:
     name: Build for Android
     runs-on: macos-13-large
-    needs: fetch-commit-message
-    if: ${{ !contains(needs.fetch-commit-message.outputs.commit-message, '[skip-android]') }}
     concurrency:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
@@ -147,8 +130,6 @@ jobs:
   build-for-ios:
     name: Build for iOS
     runs-on: macos-13-xlarge
-    needs: fetch-commit-message
-    if: ${{ !contains(needs.fetch-commit-message.outputs.commit-message, '[skip-ios]') }}
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
