@@ -14,9 +14,10 @@ const AccessbileButton = createButton({
 interface IconButtonProps extends React.ComponentProps<typeof AccessbileButton> {
   icon: React.ElementType;
   loading?: boolean;
+  disabled?: boolean;
 }
 
-const IconButton: FC<IconButtonProps> = ({ loading, icon, ...props }) => {
+const IconButton: FC<IconButtonProps> = ({ loading, icon, disabled, ...props }) => {
   const getSize = (size: IconButtonProps['size']) => {
     switch (size) {
       case 'x-small':
@@ -28,7 +29,7 @@ const IconButton: FC<IconButtonProps> = ({ loading, icon, ...props }) => {
     }
   };
   return (
-    <AccessbileButton {...props}>
+    <AccessbileButton {...props} isDisabled={disabled ?? props.isDisabled}>
       {loading ? (
         <AccessbileButton.Spinner size={getSize(props.size)} color="" />
       ) : (

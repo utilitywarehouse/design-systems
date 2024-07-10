@@ -1,13 +1,6 @@
-import {
-  ButtonGroup,
-  Button,
-  ButtonIcon,
-  ButtonSpinner,
-  ButtonText,
-  Box,
-} from '@utilitywarehouse/native-ui';
+import { ButtonGroup, Button, Box } from '@utilitywarehouse/native-ui';
 import React from 'react';
-import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
+import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 import ScrollWrap from '../../docs/components/ScrollWrap';
 import { VariantTitle } from '../../docs/components';
@@ -15,15 +8,16 @@ import { VariantTitle } from '../../docs/components';
 const ButtonPlaygroundVariants: StoryFn = ({
   size,
   colorScheme,
-  isDisabled,
+  disabled,
+  loading,
+  iconPosition,
+  icon: _icon,
   inverted,
   _ButtonText,
-  _showIcon,
-  _showLoading,
-  _loadingPosition,
-  _iconPosition,
   _backgroundColor,
 }: any) => {
+  // @ts-expect-error - This is a playground
+  const icon = _icon === 'none' ? undefined : Icons[_icon];
   return (
     <Box height={240} width="100%">
       <ScrollWrap backgroundColor={_backgroundColor}>
@@ -33,14 +27,13 @@ const ButtonPlaygroundVariants: StoryFn = ({
               size={size}
               variant="solid"
               colorScheme={colorScheme}
-              isDisabled={isDisabled}
+              disabled={disabled}
               inverted={inverted}
+              iconPosition={iconPosition}
+              icon={icon}
+              loading={loading}
             >
-              {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
-              {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
-              <ButtonText>{_ButtonText}</ButtonText>
-              {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
-              {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+              {_ButtonText}
             </Button>
           </VariantTitle>
           <VariantTitle title="Outline">
@@ -48,14 +41,13 @@ const ButtonPlaygroundVariants: StoryFn = ({
               size={size}
               variant="outline"
               colorScheme={colorScheme}
-              isDisabled={isDisabled}
+              disabled={disabled}
               inverted={inverted}
+              iconPosition={iconPosition}
+              icon={icon}
+              loading={loading}
             >
-              {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
-              {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
-              <ButtonText>{_ButtonText}</ButtonText>
-              {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
-              {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+              {_ButtonText}
             </Button>
           </VariantTitle>
           <VariantTitle title="Ghost">
@@ -63,14 +55,13 @@ const ButtonPlaygroundVariants: StoryFn = ({
               size={size}
               variant="ghost"
               colorScheme={colorScheme}
-              isDisabled={isDisabled}
+              disabled={disabled}
               inverted={inverted}
+              iconPosition={iconPosition}
+              icon={icon}
+              loading={loading}
             >
-              {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
-              {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
-              <ButtonText>{_ButtonText}</ButtonText>
-              {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
-              {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+              {_ButtonText}
             </Button>
           </VariantTitle>
         </ButtonGroup>
@@ -92,7 +83,7 @@ ButtonPlaygroundVariants.argTypes = {
     control: 'select',
     description: 'The color scheme of the button.',
   },
-  isDisabled: {
+  disabled: {
     type: 'boolean',
     control: 'boolean',
     description: 'To manually set disable to the button.',
@@ -103,35 +94,26 @@ ButtonPlaygroundVariants.argTypes = {
     description:
       'To set the button to be inverted. (To only be used on `midnight` or `purple` backgrounds)',
   },
+  icon: {
+    options: ['none', ...Object.keys(Icons).filter(icon => icon.includes('Small'))],
+    control: 'select',
+    description: 'The icon component for the button.',
+  },
+  iconPosition: {
+    options: ['left', 'right'],
+    control: 'select',
+    description: 'The position of the icon component in the button.',
+  },
+  loading: {
+    type: 'boolean',
+    control: 'boolean',
+    description: 'To show or hide the loading spinner component for the button.',
+  },
   _ButtonText: {
     type: 'string',
     control: 'text',
     description:
       'The text component for the button.\n _Note: this is not a prop of the `Button` component, just a representation of the `ButtonText` component for the Storybook playground._',
-  },
-  _showIcon: {
-    type: 'boolean',
-    control: 'boolean',
-    description:
-      'To show or hide the icon component for the button.\n _Note: this is not a prop of the `Button` component, just a representation of the `ButtonIcon` component for the Storybook playground._',
-  },
-  _iconPosition: {
-    options: ['left', 'right'],
-    control: 'select',
-    description:
-      'The position of the icon component in the button.\n _Note: this is not a prop of the `Button` component, just a representation of the `ButtonIcon` component for the Storybook playground._',
-  },
-  _showLoading: {
-    type: 'boolean',
-    control: 'boolean',
-    description:
-      'To show or hide the loading spinner component for the button.\n _Note: this is not a prop of the `Button` component, just a representation of the `ButtonSpinner` component for the Storybook playground._',
-  },
-  _loadingPosition: {
-    options: ['left', 'right'],
-    control: 'select',
-    description:
-      'The position of the loading spinner component in the button.\n _Note: this is not a prop of the `Button` component, just a representation of the `ButtonSpinner` component for the Storybook playground._',
   },
   _backgroundColor: {
     options: ['default', 'midnight', 'purple'],
@@ -144,16 +126,15 @@ ButtonPlaygroundVariants.argTypes = {
 ButtonPlaygroundVariants.args = {
   size: 'medium',
   colorScheme: 'cyan',
-  isDisabled: false,
+  disabled: false,
   inverted: false,
+  loading: false,
+  icon: 'none',
+  iconPosition: 'left',
   _ButtonText: 'Example',
-  _showIcon: true,
-  _iconPosition: 'left',
-  _showLoading: false,
-  _loadingPosition: 'left',
   _backgroundColor: 'default',
 };
 
 export default ButtonPlaygroundVariants;
 
-export { ButtonText, Button };
+export { Button };

@@ -31,11 +31,9 @@ The `Button` component is used to trigger an action or event, such as submitting
 - [Playground](#playground)
 - [Usage](#usage)
 - [Props](#props)
-- [Components](#components)
-  - [ButtonGroup](#buttongroup)
-  - [ButtonIcon](#buttonicon)
-  - [ButtonSpinner](#buttonspinner)
 - [Variants](#variants)
+- [Advanced Usage](#advanced-usage)
+- [Components](#components)
 
 ## Playground
 
@@ -50,15 +48,13 @@ The `Button` component is used to trigger an action or event, such as submitting
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Button colorScheme="green">
-        <ButtonText>Button</ButtonText>
-      </Button>
+      <Button colorScheme="green">Button</Button>
     </Center>
   </NativeUIProvider>
 </Canvas>
 
 ```tsx
-import { Button, ButtonText } from '@utilitywarehouse/native-ui';
+import { Button } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
   const handlePress = () => {
@@ -66,7 +62,7 @@ const MyComponent = () => {
   };
   return (
     <Button onPress={handlePress} colorScheme="green">
-      <ButtonText>Button</ButtonText>
+      Button
     </Button>
   );
 };
@@ -74,15 +70,18 @@ const MyComponent = () => {
 
 ## Props
 
-| Property      | Type                                             | Description                                                                                       | Default  |
-| ------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------- | -------- |
-| `onPress`     | `() => void`                                     | Callback function to be called when the button is pressed.                                        | -        |
-| `variant`     | `'solid' \| 'outline' \| 'ghost'`                | The variant of the button.                                                                        | 'solid'  |
-| `size`        | `'small' \| 'medium' \| 'large'`                 | The size of the button.                                                                           | 'medium' |
-| `colorScheme` | `'cyan' \| 'greeb' \| 'red' \| 'grey' \| 'gold'` | The colour scheme of the button.                                                                  | 'cyan'   |
-| `inverted`    | `boolean`                                        | Changes the button to an inverted state. (To only be used on `midnight` or `purple` backgrounds). | `false`  |
-| `isDisabled`  | `boolean`                                        | Disables the button.                                                                              | `false`  |
-| `isPressed`   | `boolean`                                        | Changes the button to a pressed state.                                                            | `false`  |
+| Property       | Type                                             | Description                                                                                       | Default  |
+| -------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------- | -------- |
+| `onPress`      | `() => void`                                     | Callback function to be called when the button is pressed.                                        | -        |
+| `variant`      | `'solid' \| 'outline' \| 'ghost'`                | The variant of the button.                                                                        | 'solid'  |
+| `size`         | `'small' \| 'medium' \| 'large'`                 | The size of the button.                                                                           | 'medium' |
+| `colorScheme`  | `'cyan' \| 'green' \| 'red' \| 'grey' \| 'gold'` | The colour scheme of the button.                                                                  | 'cyan'   |
+| `icon`         | `ReactNode`                                      | The icon to be displayed in the button. _Note: Can't use with advanced usage._                    | -        |
+| `iconPosition` | `'left' \| 'right'`                              | The position of the icon in the button. _Note: Can't use with advanced usage._                    | 'left'   |
+| `inverted`     | `boolean`                                        | Changes the button to an inverted state. (To only be used on `midnight` or `purple` backgrounds). | `false`  |
+| `loading`      | `boolean`                                        | Shows a loading spinner in the button. _Note: Can't use with advanced usage._                     | `false`  |
+| `disabled`     | `boolean`                                        | Disables the button.                                                                              | `false`  |
+| `isPressed`    | `boolean`                                        | Changes the button to a pressed state.                                                            | `false`  |
 
 #### Descendants Styling Props
 
@@ -94,11 +93,52 @@ Props to style the child components.
 | `_icon`    | Prop to style ButtonIcon Component    |
 | `_spinner` | Prop to style ButtonSpinner Component |
 
+## Variants
+
+<Canvas of={Stories.PlaygroundVariants} />
+
+## Advanced Usage
+
+For more advanced usage, you can use the `ButtonText`, `ButtonIcon` and `ButtonSpinner` components to customise the button.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button colorScheme="cyan">
+        <ButtonIcon as={AddSmallIcon} />
+        <ButtonText>Button</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Button, ButtonIcon, ButtonText, ButtonSpinner } from '@utilitywarehouse/native-ui';
+import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = ({ doSomething }) => {
+  const [loading, setLoading] = useState(false);
+  const handleClick = () => {
+    setLoading(true);
+    doSomething();
+  };
+  return (
+    <Button colorScheme="cyan" disabled={loading}>
+      {loading ? <ButtonSpinner /> : <ButtonIcon as={AddSmallIcon} />}
+      <ButtonText onPress={handleClick}>Button</ButtonText>
+    </Button>
+  );
+};
+```
+
 ## Components
 
+The `Button` component is composed of the following components under the hood and can be used to customise the button further:
+
 - [ButtonGroup](#buttongroup)
-- [ButtonIcon](#buttonicon)
-- [ButtonSpinner](#buttonspinner)
+- [ButtonText](#buttontext) (Advanced usage only)
+- [ButtonIcon](#buttonicon) (Advanced usage only)
+- [ButtonSpinner](#buttonspinner) (Advanced usage only)
 
 ### `ButtonGroup`
 
@@ -123,19 +163,17 @@ The `ButtonGroup` component is used to group multiple buttons together.
 </Canvas>
 
 ```tsx
-import { ButtonGroup, Button, ButtonText } from '@utilitywarehouse/native-ui';
+import { ButtonGroup, Button } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
   return (
     <ButtonGroup flexDirection="column">
-      <Button colorScheme="cyan">
-        <ButtonText>Button 1</ButtonText>
-      </Button>
+      <Button colorScheme="cyan">Button 1</Button>
       <Button colorScheme="grey" variant="outline">
-        <ButtonText>Button 2</ButtonText>
+        Button 2
       </Button>
       <Button colorScheme="red" variant="ghost">
-        <ButtonText>Button 3</ButtonText>
+        Button 3
       </Button>
     </ButtonGroup>
   );
@@ -155,6 +193,9 @@ const MyComponent = () => {
 ### `ButtonIcon`
 
 The `ButtonIcon` component is used to add an icon to the button.
+
+**Note:** The `ButtonIcon` component should when using [advanced usage](#advanced-usage) with the `Button` component.
+Prefer the `icon` prop on the `Button` component for simple usage.
 
 <Canvas>
   <NativeUIProvider>
@@ -181,9 +222,40 @@ const MyComponent = () => {
 };
 ```
 
+### `ButtonText`
+
+The `ButtonText` component is used to add text to the button.
+
+**Note:** The `ButtonText` component should when using [advanced usage](#advanced-usage) with the `Button` component.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button colorScheme="cyan">
+        <ButtonText>Button</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Button, ButtonText } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <Button colorScheme="cyan">
+      <ButtonText>Button</ButtonText>
+    </Button>
+  );
+};
+```
+
 ### `ButtonSpinner`
 
 The `ButtonSpinner` component is used to add a spinner to the button and show loading state.
+
+**Note:** The `Spinner` component should when using advanced usage with the `Button` component.
+Prefer the `loading` prop on the `Button` component for simple usage.
 
 <Canvas>
   <NativeUIProvider>
@@ -208,5 +280,3 @@ const MyComponent = () => {
   );
 };
 ```
-
-<Canvas of={Stories.PlaygroundVariants} />

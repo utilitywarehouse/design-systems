@@ -1,7 +1,6 @@
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import {
   VStack,
-  Text,
   Button,
   ButtonIcon,
   ButtonGroup,
@@ -11,15 +10,12 @@ import {
   useMedia,
   Heading,
 } from '@utilitywarehouse/native-ui';
-import {
-  AddSmallIcon,
-  ChevronLeft01SmallIcon,
-  ChevronRight01SmallIcon,
-} from '@utilitywarehouse/react-native-icons';
+import { Button as GSButton } from '@gluestack-ui/themed';
+import { AddSmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-native-icons';
 import React, { ComponentProps } from 'react';
 import { VariantTitle } from '../../../docs/components';
 
-interface ButtonProps extends ComponentProps<typeof Button> {}
+interface ButtonProps extends ComponentProps<typeof GSButton> {}
 interface ButtonVariantsProps {
   colorScheme: ButtonProps['colorScheme'];
   size: ButtonProps['size'];
