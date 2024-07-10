@@ -10,8 +10,13 @@ import {
   ActionsheetItem,
   ActionsheetItemText,
 } from '@utilitywarehouse/native-ui/lab';
+import { ViewFigmaButton, BackToTopButton } from '../../../docs/components';
 
 <Meta of={Stories} />
+
+<BackToTopButton />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=1746-4235" />
 
 # Actionsheet
 
@@ -26,6 +31,25 @@ import {
 </NativeUIProvider>
 
 The Actionsheet component presents a set of options to the user, overlaid on top of the app's content, allowing them to take quick actions without leaving the current page or view.
+
+- [Usage](#usage)
+- [Props](#props)
+- [Components](#components)
+  - [Actionsheet](#actionsheet)
+  - [ActionsheetBackdrop](#actionsheetbackdrop)
+  - [ActionsheetContent](#actionsheetcontent)
+  - [ActionsheetDragIndicatorWrapper](#actionsheetdragindicatorwrapper)
+  - [ActionsheetDragIndicator](#actionsheetdragindicator)
+  - [ActionsheetItem](#actionsheetitem)
+  - [ActionsheetItemText](#actionsheetitemtext)
+  - [ActionsheetIcon](#actionsheeticon)
+  - [ActionsheetScrollView](#actionsheetscrollview)
+  - [ActionsheetVirtualizedList](#actionsheetvirtualizedlist)
+  - [ActionsheetFlatList](#actionsheetflatlist)
+  - [ActionsheetSectionList](#actionsheetsectionlist)
+  - [ActionsheetSectionHeaderText](#actionsheetsectionheadertext)
+- [Examples](#examples)
+  - [With ScrollView](#with-scrollview)
 
 ## Usage
 
@@ -75,10 +99,6 @@ The Actionsheet component presents a set of options to the user, overlaid on top
 
 ## Props
 
-### `Actionsheet`
-
-It inherits all the properties of React Native's View component.
-
 | Property                | Type                   | Description                                                                                                                                                                                                                                                                                           | Default |
 | ----------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `isOpen`                | `boolean`              | If true, the Actionsheet will open. Useful for controllable state behavior.                                                                                                                                                                                                                           | -       |
@@ -93,6 +113,12 @@ It inherits all the properties of React Native's View component.
 | `trapFocus`             | `boolean`              | If true, creates a focus scope containing all elements within the Actionsheet content.                                                                                                                                                                                                                | true    |
 | `children`              | `any`                  | The content to display inside the Actionsheet                                                                                                                                                                                                                                                         | -       |
 | `snapPoints`            | `Array<number>`        | The snap points for the Actionsheet The Actionsheet will snap to the point closest to its current position. The default value is 50% of the screen height. The value should be between 0 and 100. Currently, only one snap point is supported. We plan to support multiple snap points in the future. | [50]    |
+
+## Components
+
+### `Actionsheet`
+
+It inherits all the properties of React Native's View component.
 
 ### `ActionsheetBackdrop`
 

@@ -1,15 +1,23 @@
 import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
 import { colors } from '@utilitywarehouse/colour-system';
-import * as SpinnerStories from './Spinner.stories';
+import * as Stories from './Spinner.stories';
 import { Spinner, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
 
-<Meta of={SpinnerStories} />
+<Meta of={Stories} />
+
+<BackToTopButton />
+
+<ViewFigmaButton url="https://www.figma.com/file/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?type=design&node-id=5627-1530&mode=dev" />
 
 # Spinner
 
 Using a Spinner is a common method for indicating that an asynchronous process is ongoing. Additionally, it informs users that they should refrain from clicking or tapping the UI until the loading state has been resolved.
 
-The Spinner can be used independently (it's a self-contained component) or in conjunction with other components, such as in the loading state of a `Button` or `Input` Search retrieving data. It can also be used inside a `Dialog` with text, or directly in a container on the screen when we want the user to wait and avoid performing any actions.
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Variants](#variants)
 
 ## Playground
 
@@ -20,6 +28,10 @@ The Spinner can be used independently (it's a self-contained component) or in co
 ## Usage
 
 > This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+The Spinner can be used independently (it's a self-contained component) or in conjunction with other components,
+such as in the loading state of a `Button` or `Input` Search retrieving data. It can also be used inside a `Dialog`
+with text, or directly in a container on the screen when we want the user to wait and avoid performing any actions.
 
 <Canvas>
   <NativeUIProvider>
@@ -46,4 +58,8 @@ const MyComponent = () => (
 | `size`   | `'xs' \|'sm' \| 'md' \| 'lg'` | The size of the spinner.  | `md`    |
 | `color`  | `string`                      | The color of the spinner. |         |
 
-## Figma link: [https://www.figma.com/file/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?type=design&node-id=5627-1530&mode=dev](https://www.figma.com/file/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?type=design&node-id=5627-1530&mode=dev)
+## Variants
+
+The `Spinner` component has different variants to style the spinner.
+
+<Canvas of={Stories.Variants} />

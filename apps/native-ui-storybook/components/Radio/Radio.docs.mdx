@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
-import * as RadioStories from './Radio.stories';
+import * as Stories from './Radio.stories';
 import {
   Radio,
   RadioGroup,
@@ -11,16 +11,29 @@ import {
 } from '@utilitywarehouse/native-ui';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 import AdvancedRadioExample from './components/AdvancedRadioExample';
+import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
 
-<Meta of={RadioStories} />
+<Meta of={Stories} />
+
+<BackToTopButton />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4454-2232" />
 
 # Radio
 
 The Radio component presents users with predefined choices and enables them to select only one option. It is commonly used for providing a single-choice selection in forms or surveys.
 
-- A `Radio` component is composed of a `RadioGroup`, `RadioIndicator`, `RadioLabel`.
-- `Radio` is used for a single selection
-- `RadioGroup` is the building block for `Radio`
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Components](#components)
+  - [Radio](#radio)
+  - [RadioIndicator](#radioindicator)
+  - [RadioIcon](#radioicon)
+  - [RadioLabel](#radiolabel)
+  - [RadioGroup](#radiogroup)
+- [Variants](#variants)
+- [Advanced Usage](#advanced-usage)
 
 ## Playground
 
@@ -31,6 +44,10 @@ The Radio component presents users with predefined choices and enables them to s
 ## Usage
 
 > This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+- A `Radio` component is composed of a `RadioGroup`, `RadioIndicator`, `RadioLabel`.
+- `Radio` is used for a single selection
+- `RadioGroup` is the building block for `Radio`
 
 <Canvas>
   <NativeUIProvider>
@@ -105,14 +122,14 @@ const MyComponent = () => {
 ## Props
 
 | Property        | Type     | Default | Description                                                                                          |
-| --------------- | -------- | ------- | ---------------------------------------------------------------------------------------------------- | --- |
+| --------------- | -------- | ------- | ---------------------------------------------------------------------------------------------------- |
 | value           | string   | -       | The value to be used in the radio input. This is the value that will be returned on form submission. |
 | onChange        | function | -       | Function called when the state of the radio changes.                                                 |
 | isDisabled      | bool     | false   | To manually set disable to the radio.                                                                |
-| isHovered       | bool     | false   | To manually set hover to the radio.                                                                  |     |
+| isHovered       | bool     | false   | To manually set hover to the radio.                                                                  |
 | isIndeterminate | bool     | false   | To manually set indeterminate to the radio.                                                          |
 
-### Descendants Styling Props
+#### Descendants Styling Props
 
 Props to style child components.
 
@@ -160,7 +177,14 @@ Props to style child components.
 | ------- | ----------------------------- |
 | \_radio | Prop to style Radio Component |
 
-### Advanced Usage
+## Variants
+
+<Canvas of={Stories.Variants} />
+
+## Advanced Usage
+
+There may be cases where you need to customise the Radio component to fit your design requirements.
+In this example, we will create a custom Radio component with a badge and bullet list.
 
 <Canvas>
   <NativeUIProvider>

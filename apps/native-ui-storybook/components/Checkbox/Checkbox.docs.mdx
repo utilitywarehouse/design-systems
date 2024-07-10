@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
-import * as CheckboxStories from './Checkbox.stories';
+import * as Stories from './Checkbox.stories';
 import {
   Checkbox,
   CheckboxGroup,
@@ -9,12 +9,27 @@ import {
   NativeUIProvider,
 } from '@utilitywarehouse/native-ui';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
+import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
 
-<Meta of={CheckboxStories} />
+<Meta of={Stories} />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4454-2156" />
+
+<BackToTopButton />
 
 # Checkbox
 
 Whether you're building a simple form or a complex data collection system, the Checkbox component offers a user-friendly way for users to select multiple options from a list.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Components](#components)
+  - [Checkbox](#checkbox)
+  - [CheckboxIndicator](#checkboxindicator)
+  - [CheckboxLabel](#checkboxlabel)
+  - [CheckboxGroup](#checkboxgroup)
+- [Variants](#variants)
 
 ## Playground
 
@@ -54,16 +69,16 @@ const MyComponent = () => {
 ## Props
 
 | Property           | Type                       | Default | Description                                                                                                          |
-| ------------------ | -------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------- | --- |
+| ------------------ | -------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
 | `value`            | `string`                   | -       | The value to be used in the checkbox input. This is the value that will be returned on form submission.              |
 | `onChange`         | `(value: boolean) => void` | -       | Function called when the state of the checkbox changes.                                                              |
 | `defaultIsChecked` | `bool`                     | `false` | If true, the checkbox will be initially checked.                                                                     |
 | `isChecked`        | `bool`                     | `false` | When true, the checkbox will be checked. You'll need to pass onChange update it's value (since it's now controlled). |
 | `isDisabled`       | `bool`                     | `false` | To manually set disable to the checkbox.                                                                             |
-| `isHovered`        | `bool`                     | `false` | To manually set hover to the checkbox.                                                                               |     |
+| `isHovered`        | `bool`                     | `false` | To manually set hover to the checkbox.                                                                               |
 | `isIndeterminate`  | `bool`                     | `false` | To manually set indeterminate to the checkbox.                                                                       |
 
-### Descendants Styling Props
+#### Descendants Styling Props
 
 Props to style child components.
 
@@ -122,7 +137,7 @@ The `CheckboxLabel` component is used to create the label for the checkbox input
 
 The `CheckboxGroup` component is used to group multiple checkbox inputs together.
 
-_\* note the `CheckboxGroup` component is not in Figma_
+_\* **Note:** the `CheckboxGroup` component is not in Figma_
 
 <Canvas>
   <NativeUIProvider>
@@ -205,3 +220,7 @@ const MyComponent = () => {
 | `isDisabled` | `bool`                            | `false` | To manually set disable to the checkbox.                               |
 | `isInvalid`  | `bool`                            | `false` | To manually set invalid to the checkbox.                               |
 | `isReadOnly` | `bool`                            | `false` | To manually set read-only to the checkbox.                             |
+
+## Variants
+
+<Canvas of={Stories.Variants} />

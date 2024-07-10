@@ -4,11 +4,13 @@ import {
   ButtonIcon,
   ButtonSpinner,
   ButtonText,
+  Box,
 } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 import ScrollWrap from '../../docs/components/ScrollWrap';
+import { VariantTitle } from '../../docs/components';
 
 const ButtonPlaygroundVariants: StoryFn = ({
   size,
@@ -23,49 +25,57 @@ const ButtonPlaygroundVariants: StoryFn = ({
   _backgroundColor,
 }: any) => {
   return (
-    <ScrollWrap backgroundColor={_backgroundColor}>
-      <ButtonGroup flexDirection="column" space="md">
-        <Button
-          size={size}
-          variant="solid"
-          colorScheme={colorScheme}
-          isDisabled={isDisabled}
-          inverted={inverted}
-        >
-          {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
-          {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
-          <ButtonText>{_ButtonText}</ButtonText>
-          {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
-          {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
-        </Button>
-        <Button
-          size={size}
-          variant="outline"
-          colorScheme={colorScheme}
-          isDisabled={isDisabled}
-          inverted={inverted}
-        >
-          {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
-          {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
-          <ButtonText>{_ButtonText}</ButtonText>
-          {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
-          {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
-        </Button>
-        <Button
-          size={size}
-          variant="ghost"
-          colorScheme={colorScheme}
-          isDisabled={isDisabled}
-          inverted={inverted}
-        >
-          {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
-          {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
-          <ButtonText>{_ButtonText}</ButtonText>
-          {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
-          {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
-        </Button>
-      </ButtonGroup>
-    </ScrollWrap>
+    <Box height={240} width="100%">
+      <ScrollWrap backgroundColor={_backgroundColor}>
+        <ButtonGroup flexDirection="column" space="md">
+          <VariantTitle title="Solid">
+            <Button
+              size={size}
+              variant="solid"
+              colorScheme={colorScheme}
+              isDisabled={isDisabled}
+              inverted={inverted}
+            >
+              {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
+              {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
+              <ButtonText>{_ButtonText}</ButtonText>
+              {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
+              {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Outline">
+            <Button
+              size={size}
+              variant="outline"
+              colorScheme={colorScheme}
+              isDisabled={isDisabled}
+              inverted={inverted}
+            >
+              {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
+              {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
+              <ButtonText>{_ButtonText}</ButtonText>
+              {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
+              {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Ghost">
+            <Button
+              size={size}
+              variant="ghost"
+              colorScheme={colorScheme}
+              isDisabled={isDisabled}
+              inverted={inverted}
+            >
+              {_showIcon && _iconPosition === 'left' && <ButtonIcon as={AddSmallIcon} />}
+              {_showLoading && _loadingPosition === 'left' && <ButtonSpinner />}
+              <ButtonText>{_ButtonText}</ButtonText>
+              {_showLoading && _loadingPosition === 'right' && <ButtonSpinner />}
+              {_showIcon && _iconPosition === 'right' && <ButtonIcon as={AddSmallIcon} />}
+            </Button>
+          </VariantTitle>
+        </ButtonGroup>
+      </ScrollWrap>
+    </Box>
   );
 };
 

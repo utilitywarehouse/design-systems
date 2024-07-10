@@ -1,8 +1,9 @@
-import { ButtonGroup, Button, IconButton, ButtonText } from '@utilitywarehouse/native-ui';
+import { ButtonGroup, Button, IconButton, ButtonText, Box } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
-import { ScrollWrap } from '../../docs/components';
+import { ScrollWrap, VariantTitle } from '../../docs/components';
+import { V } from '@storybook/react-native/dist/View-9ba91d66';
 
 const ButtonPlaygroundVariants: StoryFn = ({
   colorScheme,
@@ -13,37 +14,45 @@ const ButtonPlaygroundVariants: StoryFn = ({
   _backgroundColor,
 }: any) => {
   return (
-    <ScrollWrap backgroundColor={_backgroundColor}>
-      <ButtonGroup flexDirection="column" space="md">
-        <IconButton
-          icon={ChevronRightMediumIcon}
-          variant="solid"
-          colorScheme={colorScheme}
-          isDisabled={isDisabled}
-          loading={loading}
-          size={size}
-          inverted={inverted}
-        />
-        <IconButton
-          icon={ChevronRightMediumIcon}
-          variant="outline"
-          colorScheme={colorScheme}
-          isDisabled={isDisabled}
-          loading={loading}
-          size={size}
-          inverted={inverted}
-        />
-        <IconButton
-          icon={ChevronRightMediumIcon}
-          variant="ghost"
-          colorScheme={colorScheme}
-          isDisabled={isDisabled}
-          loading={loading}
-          size={size}
-          inverted={inverted}
-        />
-      </ButtonGroup>
-    </ScrollWrap>
+    <Box height={240} width="100%">
+      <ScrollWrap backgroundColor={_backgroundColor}>
+        <ButtonGroup flexDirection="column" space="md">
+          <VariantTitle title="Solid">
+            <IconButton
+              icon={ChevronRightMediumIcon}
+              variant="solid"
+              colorScheme={colorScheme}
+              isDisabled={isDisabled}
+              loading={loading}
+              size={size}
+              inverted={inverted}
+            />
+          </VariantTitle>
+          <VariantTitle title="Outline">
+            <IconButton
+              icon={ChevronRightMediumIcon}
+              variant="outline"
+              colorScheme={colorScheme}
+              isDisabled={isDisabled}
+              loading={loading}
+              size={size}
+              inverted={inverted}
+            />
+          </VariantTitle>
+          <VariantTitle title="Ghost">
+            <IconButton
+              icon={ChevronRightMediumIcon}
+              variant="ghost"
+              colorScheme={colorScheme}
+              isDisabled={isDisabled}
+              loading={loading}
+              size={size}
+              inverted={inverted}
+            />
+          </VariantTitle>
+        </ButtonGroup>
+      </ScrollWrap>
+    </Box>
   );
 };
 

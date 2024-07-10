@@ -9,6 +9,7 @@ import {
   ButtonText,
   Box,
   useMedia,
+  Heading,
 } from '@utilitywarehouse/native-ui';
 import {
   AddSmallIcon,
@@ -16,6 +17,7 @@ import {
   ChevronRight01SmallIcon,
 } from '@utilitywarehouse/react-native-icons';
 import React, { ComponentProps } from 'react';
+import { VariantTitle } from '../../../docs/components';
 
 interface ButtonProps extends ComponentProps<typeof Button> {}
 interface ButtonVariantsProps {
@@ -57,240 +59,171 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               }
         }
       >
-        <Text $light-color={textColor} size="lg">
-          Solid - {capitalisedScheme}
-        </Text>
+        <Heading $light-color={textColor}>Solid - {capitalisedScheme}</Heading>
         <ButtonGroup flexDirection="column" space="md">
-          <Text $light-color={textColor} size="sm">
-            Default
-          </Text>
-          <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Pressed
-          </Text>
-          <Button
-            variant="solid"
-            colorScheme={colorScheme}
-            size={size}
-            inverted={inverted}
-            isPressed
-          >
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Disabled
-          </Text>
-          <Button
-            variant="solid"
-            colorScheme={colorScheme}
-            size={size}
-            inverted={inverted}
-            isDisabled
-          >
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Icon Left
-          </Text>
-          <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonIcon as={AddSmallIcon} />
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Icon Right
-          </Text>
-          <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonText>Example</ButtonText>
-            <ButtonIcon as={ChevronRight01SmallIcon} />
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Icon Left & Right
-          </Text>
-          <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonIcon as={ChevronLeft01SmallIcon} />
-            <ButtonText>Example</ButtonText>
-            <ButtonIcon as={ChevronRight01SmallIcon} />
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Loading
-          </Text>
-          <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonSpinner />
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Disabled & Loading
-          </Text>
-          <Button
-            variant="solid"
-            colorScheme={colorScheme}
-            size={size}
-            inverted={inverted}
-            isDisabled
-          >
-            <ButtonSpinner />
-            <ButtonText>Example</ButtonText>
-          </Button>
+          <VariantTitle title="Default">
+            <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Pressed">
+            <Button
+              variant="solid"
+              colorScheme={colorScheme}
+              size={size}
+              inverted={inverted}
+              isPressed
+            >
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Disabled">
+            <Button
+              variant="solid"
+              colorScheme={colorScheme}
+              size={size}
+              inverted={inverted}
+              isDisabled
+            >
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Icon Left">
+            <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
+              <ButtonIcon as={AddSmallIcon} />
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Icon Right">
+            <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
+              <ButtonText>Example</ButtonText>
+              <ButtonIcon as={ChevronRight01SmallIcon} />
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Loading">
+            <Button
+              variant="solid"
+              isDisabled
+              colorScheme={colorScheme}
+              size={size}
+              inverted={inverted}
+            >
+              <ButtonSpinner />
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
         </ButtonGroup>
       </Box>
       <Box>
-        <Text $light-color={textColor} size="lg">
-          Outline - {capitalisedScheme}
-        </Text>
+        <Heading $light-color={textColor}>Outline - {capitalisedScheme}</Heading>
         <ButtonGroup flexDirection="column" space="md">
-          <Text $light-color={textColor} size="sm">
-            Default
-          </Text>
-          <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Pressed
-          </Text>
-          <Button
-            variant="outline"
-            colorScheme={colorScheme}
-            size={size}
-            inverted={inverted}
-            isPressed
-          >
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Disabled
-          </Text>
-          <Button
-            variant="outline"
-            colorScheme={colorScheme}
-            size={size}
-            inverted={inverted}
-            isDisabled
-          >
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Icon Left
-          </Text>
-          <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonIcon as={AddSmallIcon} />
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Icon Right
-          </Text>
-          <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonText>Example</ButtonText>
-            <ButtonIcon as={ChevronRight01SmallIcon} />
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Icon Left & Right
-          </Text>
-          <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonIcon as={ChevronLeft01SmallIcon} />
-            <ButtonText>Example</ButtonText>
-            <ButtonIcon as={ChevronRight01SmallIcon} />
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Loading
-          </Text>
-          <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonSpinner />
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Disabled & Loading
-          </Text>
-          <Button
-            variant="outline"
-            colorScheme={colorScheme}
-            size={size}
-            inverted={inverted}
-            isDisabled
-          >
-            <ButtonSpinner />
-            <ButtonText>Example</ButtonText>
-          </Button>
+          <VariantTitle title="Default">
+            <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Pressed">
+            <Button
+              variant="outline"
+              colorScheme={colorScheme}
+              size={size}
+              inverted={inverted}
+              isPressed
+            >
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Disabled">
+            <Button
+              variant="outline"
+              colorScheme={colorScheme}
+              size={size}
+              inverted={inverted}
+              isDisabled
+            >
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Icon Left">
+            <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
+              <ButtonIcon as={AddSmallIcon} />
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Icon Right">
+            <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
+              <ButtonText>Example</ButtonText>
+              <ButtonIcon as={ChevronRight01SmallIcon} />
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Loading">
+            <Button
+              variant="outline"
+              isDisabled
+              colorScheme={colorScheme}
+              size={size}
+              inverted={inverted}
+            >
+              <ButtonSpinner />
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
         </ButtonGroup>
       </Box>
       <Box>
-        <Text $light-color={textColor} size="lg">
-          Ghost - {capitalisedScheme}
-        </Text>
+        <Heading $light-color={textColor}>Ghost - {capitalisedScheme}</Heading>
         <ButtonGroup flexDirection="column" space="md" sx={{ mb: '$4' }}>
-          <Text $light-color={textColor} size="sm">
-            Default
-          </Text>
-          <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Pressed
-          </Text>
-          <Button
-            variant="ghost"
-            colorScheme={colorScheme}
-            size={size}
-            inverted={inverted}
-            isPressed
-          >
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Disabled
-          </Text>
-          <Button
-            variant="ghost"
-            colorScheme={colorScheme}
-            size={size}
-            inverted={inverted}
-            isDisabled
-          >
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Icon Left
-          </Text>
-          <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonIcon as={AddSmallIcon} />
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Icon Right
-          </Text>
-          <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonText>Example</ButtonText>
-            <ButtonIcon as={ChevronRight01SmallIcon} />
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Icon Left & Right
-          </Text>
-          <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonIcon as={ChevronLeft01SmallIcon} />
-            <ButtonText>Example</ButtonText>
-            <ButtonIcon as={ChevronRight01SmallIcon} />
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Loading
-          </Text>
-          <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
-            <ButtonSpinner />
-            <ButtonText>Example</ButtonText>
-          </Button>
-          <Text $light-color={textColor} size="sm">
-            Disabled & Loading
-          </Text>
-          <Button
-            variant="ghost"
-            colorScheme={colorScheme}
-            size={size}
-            inverted={inverted}
-            isDisabled
-          >
-            <ButtonSpinner />
-            <ButtonText>Example</ButtonText>
-          </Button>
+          <VariantTitle title="Default">
+            <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Pressed">
+            <Button
+              variant="ghost"
+              colorScheme={colorScheme}
+              size={size}
+              inverted={inverted}
+              isPressed
+            >
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Disabled">
+            <Button
+              variant="ghost"
+              colorScheme={colorScheme}
+              size={size}
+              inverted={inverted}
+              isDisabled
+            >
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Icon Left">
+            <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
+              <ButtonIcon as={AddSmallIcon} />
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Icon Right">
+            <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
+              <ButtonText>Example</ButtonText>
+              <ButtonIcon as={ChevronRight01SmallIcon} />
+            </Button>
+          </VariantTitle>
+          <VariantTitle title="Loading">
+            <Button
+              variant="ghost"
+              isDisabled
+              colorScheme={colorScheme}
+              size={size}
+              inverted={inverted}
+            >
+              <ButtonSpinner />
+              <ButtonText>Example</ButtonText>
+            </Button>
+          </VariantTitle>
         </ButtonGroup>
       </Box>
     </VStack>

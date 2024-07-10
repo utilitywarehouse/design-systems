@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
-import * as ButtonStories from './IconButton.stories';
+import * as Stories from './IconButton.stories';
 import {
   Button,
   ButtonText,
@@ -17,15 +17,22 @@ import {
   ChevronRight01SmallIcon,
   ChevronRightMediumIcon,
 } from '@utilitywarehouse/react-native-icons';
-import ViewFigmaButton from '../../docs/components/ViewFigmaButton';
+import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
 
-<Meta of={ButtonStories} />
+<Meta of={Stories} />
+
+<BackToTopButton />
 
 <ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=1746-4235" />
 
 # Icon Button
 
 The `IconButton` component is used to trigger an action or event, such as opening a dialog, canceling an action, or performing a delete operation.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Variants](#variants)
 
 ## Playground
 
@@ -81,7 +88,7 @@ const MyComponent = () => {
 | `isDisabled`  | `boolean`                                        | Disables the button.                                       | `false`  |
 | `isPressed`   | `boolean`                                        | Changes the button to a pressed state.                     | `false`  |
 
-### Descendants Styling Props
+#### Descendants Styling Props
 
 Props to style the child components.
 
@@ -89,3 +96,7 @@ Props to style the child components.
 | ---------- | ------------------------------------- |
 | `_icon`    | Prop to style ButtonIcon Component    |
 | `_spinner` | Prop to style ButtonSpinner Component |
+
+## Variants
+
+<Canvas of={Stories.PlaygroundVariants} />
