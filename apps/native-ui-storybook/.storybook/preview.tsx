@@ -25,7 +25,7 @@ export const decorators: Decorator[] = [
 
     return viewMode === 'story' ? (
       <NativeUIProvider colorMode={colorScheme}>
-        <Analytics />
+        <Analytics endpoint={window.top?.location?.href} />
         <PlatformContextProvider
           args={args}
           id={id}
@@ -95,7 +95,7 @@ export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({ child
 
   return (
     <BaseContainer theme={isDark ? themeDark : themeLight} context={context}>
-      <Analytics />
+      <Analytics endpoint={window.top?.location?.href} />
       {children}
     </BaseContainer>
   );
@@ -112,6 +112,7 @@ const preview: Preview = {
     },
     layout: 'fullscreen',
     darkMode: {
+      current: 'light',
       stylePreview: true,
       dark: {
         ...themeDark,
