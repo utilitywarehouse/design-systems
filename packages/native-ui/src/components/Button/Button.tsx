@@ -7,7 +7,7 @@ const Button: React.FC<ButtonProps> = ({ children, disabled, isDisabled, ...prop
   if (typeof children === 'string' || typeof children === 'number') {
     const { icon, loading, iconPosition = 'left' } = props as ButtonWithStringChildrenProps;
     return (
-      <GSButton {...props} isDisabled={loading ?? disabled ?? isDisabled}>
+      <GSButton {...props} isDisabled={loading || (disabled ?? isDisabled)}>
         {!!icon && !loading && iconPosition === 'left' ? <ButtonIcon as={icon} /> : null}
         {loading ? <ButtonSpinner /> : null}
         <ButtonText>{children}</ButtonText>
