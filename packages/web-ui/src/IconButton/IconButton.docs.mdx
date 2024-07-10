@@ -12,33 +12,14 @@ import { DocsHeader } from '../storybook-utils';
 
 <Canvas of={Stories.SimpleExample} />
 
-- [Accessibility](#accessibility)
 - [Icons](#icons)
+- [Accessibility](#accessibility)
 - [Variant](#variant)
 - [Colour schemes](#colour-schemes)
 - [Size](#size)
   - [Responsive icon sizes](#responsive-icon-sizes)
 - [Semantic HTML](#semantic-html)
 - [API Reference](#api-reference)
-
-## Accessibility
-
-Follows the [WAI-ARIA Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/).
-
-Given the button contains only an icon (i.e. no text content), it is required
-that a label be provided. This will be announced to a screen reader, and should
-reflect the visual icon being used with the button.
-
-```tsx
-<IconButton label="continue">
-  <ChevronRightMediumIcon />
-</IconButton>
-```
-
-Icons from the UW icons packages have `aria-hidden="true"` set by default. If
-you are using an icon from outside these packages, and for purely decorative
-reasons, please ensure it has this attribute set so that the icon is hidden
-from screen readers.
 
 ## Icons
 
@@ -47,7 +28,7 @@ another icon, please add the `data-icon` attribute to your icon so that it
 renders the appropriate styles.
 
 ```tsx
-<IconButton label="continue">
+<IconButton>
   <ChevronRightMediumIcon />
 </IconButton>
 
@@ -58,19 +39,32 @@ renders the appropriate styles.
 </IconButton>
 ```
 
+## Accessibility
+
+Follows the [WAI-ARIA Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/).
+
+Given the button contains only an icon (i.e. no text content), it is required
+that a label be provided. This will be announced to a screen reader, and should
+reflect the visual icon being used with the button.
+
+Icons from the UW icons packages have `aria-hidden="true"` set by default. If
+you are using an icon from outside these packages, and for purely decorative
+reasons, please ensure it has this attribute set so that the icon is hidden
+from screen readers.
+
 ## Variant
 
 The variant prop controls the visual appearance of the button.
 
 ```tsx
 <Flex gap={2} align="center">
-  <IconButton variant="solid" label="continue">
+  <IconButton variant="solid">
     <ChevronRightMediumIcon />
   </IconButton>
-  <IconButton variant="outline" label="continue">
+  <IconButton variant="outline">
     <ChevronRightMediumIcon />
   </IconButton>
-  <IconButton variant="ghost" label="continue">
+  <IconButton variant="ghost">
     <ChevronRightMediumIcon />
   </IconButton>
 </Flex>
@@ -101,7 +95,7 @@ combinations of `colorScheme` & `variant` that do not work together (ie. `solid`
 `grey`), and if used will render a button with no colours at all.
 
 ```tsx
-<IconButton colorScheme="cyan" label="continue">
+<IconButton colorScheme="red">
 ```
 
 ### Cyan
@@ -143,10 +137,10 @@ can be used to display different sizes at different breakpoints.
 <Canvas of={Stories.Sizes} />
 
 ```tsx
-<IconButton
+<Button
   size={{
     mobile: 'small',
-    desktop: 'medium',
+    desktop: 'large',
   }}
 />
 ```
@@ -166,7 +160,7 @@ const MyComponent = () => {
   const showDesktopIcon = useMediaQuery(theme => theme.breakpoints.up('desktop'));
 
   return (
-    <IconButton size={{ mobile: 'small', desktop: 'medium' }} label="continue">
+    <IconButton size={{ mobile: 'small', desktop: 'large' }}>
       {showDesktopIcon ? <ChevronRight01MediumIcon /> : <ChevronRight01SmallIcon />}
     </IconButton>
   );
@@ -176,15 +170,15 @@ const MyComponent = () => {
 2. Using CSS, with `Box` and style props. This can also be achieved with the `sx` prop.
 
 ```tsx
-import { IconButton, Box } from '@utilitywarehouse/web-ui';
+import { Button, Box } from '@utilitywarehouse/web-ui';
 import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
 
 const MyComponent = () => (
-  <IconButton size={{ mobile: 'small', desktop: 'medium' }} label="continue">
+  <Button size={{ mobile: 'small', desktop: 'large' }}>
     Next page
     <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
     <Box component={ChevronRight01SmallIcon} display={{ desktop: 'none' }} />
-  </IconButton>
+  </Button>
 );
 ```
 
@@ -204,9 +198,9 @@ Read more about this idea in the [Radix UI composition docs](https://www.radix-u
 <Canvas of={Stories.AsLink} />
 
 ```tsx
-<IconButton asChild label="continue">
+<IconButton asChild>
   <a href="https://uw.co.uk/services">
-    <ChevronRightMediumIcon />
+    <OpenMediumIcon />
   </a>
 </IconButton>
 ```

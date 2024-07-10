@@ -4,7 +4,7 @@ import { Responsive } from '../../types';
 export type ButtonProps = BaseButtonProps & {
   /**
    * Sets the button height.
-   * @default medium
+   * @default large
    */
-  size?: Responsive<'medium' | 'small'>;
+  size?: Responsive<'large' | 'small'>;
 };

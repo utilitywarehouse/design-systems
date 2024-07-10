@@ -21,25 +21,25 @@ const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
   size: {
-    medium: withGlobalPrefix('size-medium'),
+    large: withGlobalPrefix('size-large'),
     small: withGlobalPrefix('size-small'),
   },
 };
 
 const classSelectors = {
   size: {
-    medium: classSelector(classNames.size.medium),
+    large: classSelector(classNames.size.large),
     small: classSelector(classNames.size.small),
     tablet: {
-      medium: responsiveClassSelector(classNames.size.medium, 'tablet'),
+      large: responsiveClassSelector(classNames.size.large, 'tablet'),
       small: responsiveClassSelector(classNames.size.small, 'tablet'),
     },
     desktop: {
-      medium: responsiveClassSelector(classNames.size.medium, 'desktop'),
+      large: responsiveClassSelector(classNames.size.large, 'desktop'),
       small: responsiveClassSelector(classNames.size.small, 'desktop'),
     },
     wide: {
-      medium: responsiveClassSelector(classNames.size.medium, 'wide'),
+      large: responsiveClassSelector(classNames.size.large, 'wide'),
       small: responsiveClassSelector(classNames.size.small, 'wide'),
     },
   },
@@ -47,7 +47,7 @@ const classSelectors = {
 
 const StyledElement = styled(BaseButton)<ButtonProps>(() => {
   const sizeStyles = {
-    medium: {
+    large: {
       '--button-font-size': pxToRem(18),
       '--button-line-height': pxToRem(24),
       '--button-min-width': px(120),
@@ -77,18 +77,18 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
     gap: 'var(--button-gap)',
     paddingBlock: 'var(--button-padding-block)',
     paddingInline: 'var(--button-padding-inline)',
-    [classSelectors.size.medium]: { ...sizeStyles.medium },
+    [classSelectors.size.large]: { ...sizeStyles.large },
     [classSelectors.size.small]: { ...sizeStyles.small },
     [mediaQueries.tablet]: {
-      [classSelectors.size.tablet.medium]: { ...sizeStyles.medium },
+      [classSelectors.size.tablet.large]: { ...sizeStyles.large },
       [classSelectors.size.tablet.small]: { ...sizeStyles.small },
     },
     [mediaQueries.desktop]: {
-      [classSelectors.size.desktop.medium]: { ...sizeStyles.medium },
+      [classSelectors.size.desktop.large]: { ...sizeStyles.large },
       [classSelectors.size.desktop.small]: { ...sizeStyles.small },
     },
     [mediaQueries.wide]: {
-      [classSelectors.size.wide.medium]: { ...sizeStyles.medium },
+      [classSelectors.size.wide.large]: { ...sizeStyles.large },
       [classSelectors.size.wide.small]: { ...sizeStyles.small },
     },
   };
@@ -102,7 +102,7 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
 export const Button = React.forwardRef<
   React.ElementRef<'button'>,
   React.PropsWithChildren<PropsWithSx<ButtonProps>>
->(function Button({ size = 'medium', className, ...props }, ref) {
+>(function Button({ size = 'large', className, ...props }, ref) {
   return (
     <StyledElement
       ref={ref}
