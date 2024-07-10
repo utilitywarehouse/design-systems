@@ -18,7 +18,7 @@ const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
   size: {
-    large: withGlobalPrefix('size-large'),
+    medium: withGlobalPrefix('size-medium'),
     small: withGlobalPrefix('size-small'),
     xsmall: withGlobalPrefix('size-xsmall'),
   },
@@ -26,21 +26,21 @@ const classNames = {
 
 const classSelectors = {
   size: {
-    large: classSelector(classNames.size.large),
+    medium: classSelector(classNames.size.medium),
     small: classSelector(classNames.size.small),
     xsmall: classSelector(classNames.size.xsmall),
     tablet: {
-      large: responsiveClassSelector(classNames.size.large, 'tablet'),
+      medium: responsiveClassSelector(classNames.size.medium, 'tablet'),
       small: responsiveClassSelector(classNames.size.small, 'tablet'),
       xsmall: responsiveClassSelector(classNames.size.xsmall, 'tablet'),
     },
     desktop: {
-      large: responsiveClassSelector(classNames.size.large, 'desktop'),
+      medium: responsiveClassSelector(classNames.size.medium, 'desktop'),
       small: responsiveClassSelector(classNames.size.small, 'desktop'),
       xsmall: responsiveClassSelector(classNames.size.xsmall, 'desktop'),
     },
     wide: {
-      large: responsiveClassSelector(classNames.size.large, 'wide'),
+      medium: responsiveClassSelector(classNames.size.medium, 'wide'),
       small: responsiveClassSelector(classNames.size.small, 'wide'),
       xsmall: responsiveClassSelector(classNames.size.xsmall, 'wide'),
     },
@@ -49,7 +49,7 @@ const classSelectors = {
 
 const StyledElement = styled(BaseButton)(() => {
   const sizeStyles = {
-    large: {
+    medium: {
       '--icon-button-size': pxToRem(48),
       '--focus-outline-width': '4px',
     },
@@ -66,21 +66,21 @@ const StyledElement = styled(BaseButton)(() => {
   return {
     height: 'var(--icon-button-size)',
     width: 'var(--icon-button-size)',
-    [classSelectors.size.large]: { ...sizeStyles.large },
+    [classSelectors.size.medium]: { ...sizeStyles.medium },
     [classSelectors.size.small]: { ...sizeStyles.small },
     [classSelectors.size.xsmall]: { ...sizeStyles.xsmall },
     [mediaQueries.tablet]: {
-      [classSelectors.size.tablet.large]: { ...sizeStyles.large },
+      [classSelectors.size.tablet.medium]: { ...sizeStyles.medium },
       [classSelectors.size.tablet.small]: { ...sizeStyles.small },
       [classSelectors.size.tablet.xsmall]: { ...sizeStyles.xsmall },
     },
     [mediaQueries.desktop]: {
-      [classSelectors.size.desktop.large]: { ...sizeStyles.large },
+      [classSelectors.size.desktop.medium]: { ...sizeStyles.medium },
       [classSelectors.size.desktop.small]: { ...sizeStyles.small },
       [classSelectors.size.desktop.xsmall]: { ...sizeStyles.xsmall },
     },
     [mediaQueries.wide]: {
-      [classSelectors.size.wide.large]: { ...sizeStyles.large },
+      [classSelectors.size.wide.medium]: { ...sizeStyles.medium },
       [classSelectors.size.wide.small]: { ...sizeStyles.small },
       [classSelectors.size.wide.xsmall]: { ...sizeStyles.xsmall },
     },
