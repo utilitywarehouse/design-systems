@@ -1,12 +1,12 @@
 // this is a comment at the beginning of the file
 import * as React from 'react';
-import { Button } from '@utilitywarehouse/web-ui/dist/lab';
+import { Link } from '@utilitywarehouse/web-ui/dist/lab';
+import { Heading } from '@utilitywarehouse/web-ui';
 
 const Component = () => (
   <div>
-    <Button></Button>
-    <Button size='small'></Button>
-    <Button size='large'></Button>
+    <Heading></Heading>
+    <Link></Link>
   </div>
 );
 

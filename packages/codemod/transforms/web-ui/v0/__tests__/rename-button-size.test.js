@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const defineTest = require('jscodeshift/dist/testUtils').defineTest;
 
-const NAME = 'lab-button-sizes';
+const NAME = 'rename-button-size';
 
 describe(NAME, () => {
   defineTest(__dirname, NAME, {}, undefined, {

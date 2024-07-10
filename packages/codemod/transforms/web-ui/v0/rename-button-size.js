@@ -14,9 +14,29 @@ function transformer(file, api) {
       .find(j.ImportSpecifier)
       .filter(path => path.node.imported.name === 'Button').length > 0;
 
+  const hasWebUIIconButton =
+    root
+      .find(j.ImportDeclaration)
+      .filter(path => path.value.source.value === '@utilitywarehouse/web-ui')
+      .find(j.ImportSpecifier)
+      .filter(path => path.node.imported.name === 'IconButton').length > 0;
+
   if (hasWebUILabButton) {
     root
       .findJSXElements('Button')
+      .find(j.JSXAttribute, { name: { type: 'JSXIdentifier', name: 'size' } })
+      .find(j.Literal)
+      .forEach(path => {
+        const value = path.node.value;
+        if (value === 'large') {
+          path.node.value = 'medium';
+        }
+      });
+  }
+
+  if (hasWebUIIconButton) {
+    root
+      .findJSXElements('IconButton')
       .find(j.JSXAttribute, { name: { type: 'JSXIdentifier', name: 'size' } })
       .find(j.Literal)
       .forEach(path => {
