@@ -1,7 +1,9 @@
 import React from 'react';
 import { Button as GSButton } from '@gluestack-ui/themed';
 import type { ButtonProps, ButtonWithStringChildrenProps } from './Button.props';
-import { ButtonIcon, ButtonSpinner, ButtonText } from './';
+import { ButtonText } from './ButtonText';
+import { ButtonSpinner } from './ButtonSpinner';
+import { ButtonIcon } from './ButtonIcon';
 
 const Button: React.FC<ButtonProps> = ({ children, disabled, isDisabled, ...props }) => {
   if (typeof children === 'string' || typeof children === 'number') {
