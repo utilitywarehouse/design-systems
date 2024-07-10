@@ -21,7 +21,6 @@ const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
   size: {
-    large: withGlobalPrefix('size-large'),
     medium: withGlobalPrefix('size-medium'),
     small: withGlobalPrefix('size-small'),
   },
@@ -29,21 +28,17 @@ const classNames = {
 
 const classSelectors = {
   size: {
-    large: classSelector(classNames.size.large),
     medium: classSelector(classNames.size.medium),
     small: classSelector(classNames.size.small),
     tablet: {
-      large: responsiveClassSelector(classNames.size.large, 'tablet'),
       medium: responsiveClassSelector(classNames.size.medium, 'tablet'),
       small: responsiveClassSelector(classNames.size.small, 'tablet'),
     },
     desktop: {
-      large: responsiveClassSelector(classNames.size.large, 'desktop'),
       medium: responsiveClassSelector(classNames.size.medium, 'desktop'),
       small: responsiveClassSelector(classNames.size.small, 'desktop'),
     },
     wide: {
-      large: responsiveClassSelector(classNames.size.large, 'wide'),
       medium: responsiveClassSelector(classNames.size.medium, 'wide'),
       small: responsiveClassSelector(classNames.size.small, 'wide'),
     },
@@ -52,15 +47,6 @@ const classSelectors = {
 
 const StyledElement = styled(BaseButton)<ButtonProps>(() => {
   const sizeStyles = {
-    large: {
-      '--button-font-size': pxToRem(18),
-      '--button-line-height': pxToRem(24),
-      '--button-min-width': px(120),
-      '--button-padding-inline': px(24),
-      '--button-padding-block': px(16),
-      '--button-gap': px(spacing(2)),
-      '--focus-outline-width': '4px',
-    },
     medium: {
       '--button-font-size': pxToRem(18),
       '--button-line-height': pxToRem(24),
@@ -91,21 +77,17 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
     gap: 'var(--button-gap)',
     paddingBlock: 'var(--button-padding-block)',
     paddingInline: 'var(--button-padding-inline)',
-    [classSelectors.size.large]: { ...sizeStyles.large },
     [classSelectors.size.medium]: { ...sizeStyles.medium },
     [classSelectors.size.small]: { ...sizeStyles.small },
     [mediaQueries.tablet]: {
-      [classSelectors.size.tablet.large]: { ...sizeStyles.large },
       [classSelectors.size.tablet.medium]: { ...sizeStyles.medium },
       [classSelectors.size.tablet.small]: { ...sizeStyles.small },
     },
     [mediaQueries.desktop]: {
-      [classSelectors.size.desktop.large]: { ...sizeStyles.large },
       [classSelectors.size.desktop.medium]: { ...sizeStyles.medium },
       [classSelectors.size.desktop.small]: { ...sizeStyles.small },
     },
     [mediaQueries.wide]: {
-      [classSelectors.size.wide.large]: { ...sizeStyles.large },
       [classSelectors.size.wide.medium]: { ...sizeStyles.medium },
       [classSelectors.size.wide.small]: { ...sizeStyles.small },
     },

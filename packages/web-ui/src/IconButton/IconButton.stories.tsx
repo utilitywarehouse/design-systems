@@ -6,7 +6,7 @@ import { Flex } from '../Flex';
 import { Heading } from '../Heading';
 import { Box } from '../Box';
 
-const sizes = ['large', 'medium', 'small', 'xsmall'] as const;
+const sizes = ['medium', 'small', 'xsmall'] as const;
 const variants = ['outline', 'ghost'] as const;
 const colorSchemes = {
   solid: ['cyan', 'red', 'green'] as const,

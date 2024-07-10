@@ -6,5 +6,5 @@ export type ButtonProps = BaseButtonProps & {
    * Sets the button height.
    * @default medium
    */
-  size?: Responsive<'large' | 'medium' | 'small'>;
+  size?: Responsive<'medium' | 'small'>;
 };

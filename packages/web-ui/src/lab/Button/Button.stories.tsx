@@ -12,8 +12,8 @@ import {
 } from '@utilitywarehouse/react-icons';
 import { Box } from '../../Box';
 
-const sizes = ['large', 'medium', 'small'] as const;
-const variants = ['outline', 'ghost'] as const;
+const sizes = ['medium', 'small'] as const;
+const variants = ['solid', 'outline', 'ghost'] as const;
 const solidColorSchemes = ['cyan', 'red', 'green'] as const;
 const colorSchemes = [...solidColorSchemes, 'grey', 'gold'] as const;
 
@@ -84,7 +84,7 @@ export const KitchenSink: Story = {
             ))}
           </Flex>
         </Flex>
-        {variants.map(variant => (
+        {(['outline', 'ghost'] as const).map(variant => (
           <Flex key={variant} gap={2} direction="column">
             <Heading variant="h2" textTransform="capitalize">
               {variant}
@@ -155,11 +155,6 @@ export const WithIcons: Story = {
           <Flex gap={3} direction="column">
             <Flex gap={2} align="center">
               {solidColorSchemes.map(colorScheme => (
-                <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="large">
-                  <ChevronLeft01MediumIcon /> Button
-                </Button>
-              ))}
-              {solidColorSchemes.map(colorScheme => (
                 <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="medium">
                   <ChevronLeft01MediumIcon /> Button
                 </Button>
@@ -171,11 +166,6 @@ export const WithIcons: Story = {
               ))}
             </Flex>
             <Flex gap={2} align="center">
-              {solidColorSchemes.map(colorScheme => (
-                <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="large">
-                  Button <ChevronRight01MediumIcon />
-                </Button>
-              ))}
               {solidColorSchemes.map(colorScheme => (
                 <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="medium">
                   Button <ChevronRight01MediumIcon />
@@ -189,23 +179,13 @@ export const WithIcons: Story = {
             </Flex>
           </Flex>
         </Flex>
-        {variants.map(variant => (
+        {(['outline', 'ghost'] as const).map(variant => (
           <Flex key={variant} gap={2} direction="column">
             <Heading variant="h2" textTransform="capitalize">
               {variant}
             </Heading>
             <Flex gap={3} direction="column">
               <Flex gap={2} align="center">
-                {colorSchemes.map(colorScheme => (
-                  <Button
-                    key={colorScheme}
-                    variant={variant}
-                    colorScheme={colorScheme}
-                    size="large"
-                  >
-                    <ChevronLeft01MediumIcon /> Button
-                  </Button>
-                ))}
                 {colorSchemes.map(colorScheme => (
                   <Button
                     key={colorScheme}
@@ -228,16 +208,6 @@ export const WithIcons: Story = {
                 ))}
               </Flex>
               <Flex gap={2} align="center">
-                {colorSchemes.map(colorScheme => (
-                  <Button
-                    key={colorScheme}
-                    variant={variant}
-                    colorScheme={colorScheme}
-                    size="large"
-                  >
-                    Button <ChevronRight01MediumIcon />
-                  </Button>
-                ))}
                 {colorSchemes.map(colorScheme => (
                   <Button
                     key={colorScheme}
@@ -270,7 +240,7 @@ export const WithIcons: Story = {
 export const SimpleExample: Story = {
   render: () => (
     <Flex gap={2}>
-      {['solid' as const, ...variants].map(variant => (
+      {variants.map(variant => (
         <Button key={variant} variant={variant} onClick={() => alert('Hello world!')}>
           Next page <ChevronRight01MediumIcon />
         </Button>
@@ -332,10 +302,10 @@ export const GhostVariant: Story = {
 
 export const ResponsiveSize: Story = {
   render: args => (
-    <Button {...args} size={{ mobile: 'small', tablet: 'medium', desktop: 'large' }}>
+    <Button {...args} size={{ mobile: 'small', desktop: 'medium' }}>
       Responsive size button
-      <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', tablet: 'block' }} />
-      <Box component={ChevronRight01SmallIcon} display={{ mobile: 'block', tablet: 'none' }} />
+      <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
+      <Box component={ChevronRight01SmallIcon} display={{ mobile: 'block', desktop: 'none' }} />
     </Button>
   ),
 };

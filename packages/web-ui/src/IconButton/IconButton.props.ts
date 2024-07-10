@@ -11,5 +11,5 @@ export type IconButtonProps = BaseButtonProps & {
    * Sets the button height & width.
    * @default large
    */
-  size?: Responsive<'large' | 'medium' | 'small' | 'xsmall'>;
+  size?: Responsive<'medium' | 'small' | 'xsmall'>;
 };

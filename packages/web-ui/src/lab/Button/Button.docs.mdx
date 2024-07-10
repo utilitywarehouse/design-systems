@@ -148,8 +148,7 @@ can be used to display different sizes at different breakpoints.
 <Button
   size={{
     mobile: 'small',
-    tablet: 'medium',
-    desktop: 'large',
+    desktop: 'medium',
   }}
 />
 ```
@@ -160,7 +159,7 @@ You can nest icons directly inside the `Button`. An appropriate gap is provided
 automatically, and the icon will inherit the appropriate colours.
 
 This button is intended to be used with the [UW Icons](https://uw-icons.vercel.app/) packages. Small buttons
-should use 16px icons (small), while large buttons should use 24px icons
+should use 16px icons (small), while medium buttons should use 24px icons
 (medium).
 
 Using other icons may result in an unexpected appearance.
@@ -168,7 +167,7 @@ Using other icons may result in an unexpected appearance.
 <Canvas of={Stories.SimpleExample} />
 
 ```tsx
-<Button variant="solid" size="large">
+<Button variant="solid" size="medium">
   <SettingsMediumIcon />
   Edit account
 </Button>
@@ -204,7 +203,7 @@ const MyComponent = () => {
   const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
 
   return (
-    <Button size={{ mobile: 'small', desktop: 'large' }}>
+    <Button size={{ mobile: 'small', desktop: 'medium' }}>
       Next page
       {isDesktop ? <ChevronRight01MediumIcon /> : <ChevronRight01SmallIcon />}
     </Button>
@@ -223,7 +222,7 @@ const MyComponent = () => {
   const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
 
   return (
-    <IconButton size={{ mobile: 'small', desktop: 'large' }}>
+    <IconButton size={{ mobile: 'small', desktop: 'medium' }}>
       Next page
       <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
       <Box component={ChevronRight01SmallIcon} display={{ desktop: 'none' }} />

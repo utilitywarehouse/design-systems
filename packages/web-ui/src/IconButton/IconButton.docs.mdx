@@ -146,8 +146,7 @@ can be used to display different sizes at different breakpoints.
 <IconButton
   size={{
     mobile: 'small',
-    tablet: 'medium',
-    desktop: 'large',
+    desktop: 'medium',
   }}
 />
 ```
@@ -167,7 +166,7 @@ const MyComponent = () => {
   const showDesktopIcon = useMediaQuery(theme => theme.breakpoints.up('desktop'));
 
   return (
-    <IconButton size={{ mobile: 'small', desktop: 'large' }} label="continue">
+    <IconButton size={{ mobile: 'small', desktop: 'medium' }} label="continue">
       {showDesktopIcon ? <ChevronRight01MediumIcon /> : <ChevronRight01SmallIcon />}
     </IconButton>
   );
@@ -181,7 +180,7 @@ import { IconButton, Box } from '@utilitywarehouse/web-ui';
 import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
 
 const MyComponent = () => (
-  <IconButton size={{ mobile: 'small', desktop: 'large' }} label="continue">
+  <IconButton size={{ mobile: 'small', desktop: 'medium' }} label="continue">
     Next page
     <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
     <Box component={ChevronRight01SmallIcon} display={{ desktop: 'none' }} />
