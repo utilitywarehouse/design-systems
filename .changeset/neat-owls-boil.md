@@ -3,4 +3,5 @@
 '@utilitywarehouse/web-ui': minor
 ---
 
-Rename `lab/Button` size value
+- Rename `lab/Button` & `IconButton` size value, `large` -> `medium`
+- Add codemod to support above change
