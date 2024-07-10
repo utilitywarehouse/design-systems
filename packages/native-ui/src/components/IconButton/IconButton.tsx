@@ -17,7 +17,7 @@ interface IconButtonProps extends React.ComponentProps<typeof AccessbileButton> 
   disabled?: boolean;
 }
 
-const IconButton: FC<IconButtonProps> = ({ loading, icon, disabled, ...props }) => {
+const IconButton: FC<IconButtonProps> = ({ loading, icon, disabled, isDisabled, ...props }) => {
   const getSize = (size: IconButtonProps['size']) => {
     switch (size) {
       case 'x-small':
@@ -29,7 +29,7 @@ const IconButton: FC<IconButtonProps> = ({ loading, icon, disabled, ...props }) 
     }
   };
   return (
-    <AccessbileButton {...props} isDisabled={disabled ?? props.isDisabled}>
+    <AccessbileButton {...props} isDisabled={disabled ?? isDisabled}>
       {loading ? (
         <AccessbileButton.Spinner size={getSize(props.size)} color="" />
       ) : (
