@@ -17,10 +17,26 @@ env:
   CI: true
 
 jobs:
+  fetch-commit-message:
+    runs-on: ubuntu-latest
+    outputs:
+      commit-message: ${{ steps.get-message.outputs.commit-message }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get commit message
+        id: get-message
+        run: |
+          COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
+          echo "commit-message=${COMMIT_MESSAGE}" >> $GITHUB_ENV
+          echo "::set-output name=commit-message::${COMMIT_MESSAGE}"
+
   build-for-android:
     name: Build for Android
     runs-on: macos-13-large
-    if: ${{ !contains(github.event.head_commit.message, '[skip-android]') && !contains(join(github.event.commits.*.message, '\n'), '[skip-android]') }}
+    needs: fetch-commit-message
+    if: ${{ !contains(needs.fetch-commit-message.outputs.commit-message, '[skip-android]') }}
     concurrency:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
@@ -131,7 +147,8 @@ jobs:
   build-for-ios:
     name: Build for iOS
     runs-on: macos-13-xlarge
-    if: ${{ !contains(github.event.head_commit.message, '[skip-ios]') && !contains(join(github.event.commits.*.message, '\n'), '[skip-ios]') }}
+    needs: fetch-commit-message
+    if: ${{ !contains(needs.fetch-commit-message.outputs.commit-message, '[skip-ios]') }}
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
