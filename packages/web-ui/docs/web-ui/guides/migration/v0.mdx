@@ -7,23 +7,19 @@ import { Analytics } from '@vercel/analytics/react';
 
 # v0
 
-This guide should help with migrating from the legacy `customer-ui-material`
-component library to **Web UI** v0, and with any `v0` minor version changes to
-components in the `lab` subdirectory.
+This guide exists to support the migration from the legacy
+`customer-ui-material` component library to **Web UI** v0.
 
-It should cover all significant changes, however there may be some minor
+It should cover all the significant changes, however there may be some minor
 inconsistencies not documented here. Please open an issue or PR if you find
 something worth documenting for others, thankyou!
 
 ## Contents
 
-- [v0.10](#v010)
-  - [lab Button size](#lab-button-size)
-
-* [Interoperability](#interoperability)
-* [Theme](#theme)
-* [MUI Material classes](#mui-material-classes)
-* [Incoming breaking changes](#incoming-breaking-changes)
+- [Interoperability](#interoperability)
+- [Theme](#theme)
+- [MUI Material classes](#mui-material-classes)
+- [Incoming breaking changes](#incoming-breaking-changes)
   - [Button component](#button-component)
   - [Link component](#link-component)
   - [Typography component](#typography-component)
@@ -31,49 +27,10 @@ something worth documenting for others, thankyou!
   - [Card component](#card-component)
   - [Icon component](#icon-component)
   - [TextField component](#textfield-component)
-* [Codemods](#codemods)
+- [Codemods](#codemods)
   - [Migration](#migration)
   - [Required](#required)
   - [Optional](#optional)
-
-## v0.10
-
-### lab Button size
-
-In `v0.10` we are introducing a new larger size button. The previous `large`
-size will be renamed `medium` so we can name the new size `large`.
-
-There is a codemod available to support this change.
-
-```console
-npx @utilitywarehouse/ds-codemod web-ui/v0/lab-button-sizes <path>
-```
-
-This will update any `large` buttons to `medium` buttons, including when using
-responsive props. While the default prop value is changing from `large` to
-`medium` there is no actual size changes so any `Button` components which have
-no size prop declared will not need to change.
-
-```diff
-- <Button></Button>
-- <Button size='small'></Button>
-- <Button size='large'></Button>
-- <Button
--   size={{
--     mobile: 'small',
--     desktop: 'large',
--   }}
-- ></Button>
-+ <Button></Button>
-+ <Button size='small'></Button>
-+ <Button size='medium'></Button>
-+ <Button
-+   size={{
-+     mobile: 'small',
-+     desktop: 'medium',
-+   }}
-+ ></Button>
-```
 
 ## Interoperability
 
