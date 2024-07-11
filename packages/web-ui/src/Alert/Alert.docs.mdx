@@ -29,13 +29,15 @@ The `colorScheme` prop will change the Alert colours.
 />
 ```
 
-For now, we have adopted a presentational naming convention here, rather than
-associating semantics with the different colour schemes. This is only because
-we're not ready yet to properly define these semantics within the the colour
-system, across all components, and product applications.
+The `colorScheme` prop uses a presentational naming convention, rather than
+attaching semantics to different colour schemes. We haven't yet defined
+appropriate semantics within the colour system, which can then be applied
+across components and product applications. We hope to do this in the future,
+and expect to be able to add a semantic colour prop and relevant values to
+components.
 
-However you can imply some familiar semantics, which could be considered as
-`severity` or `tone`;
+However, in the meantime, you can imply some familiar semantics, which could be
+considered as `severity` or `tone`;
 
 - `cyan` -> `information`
 - `green` -> `success`
