@@ -38,6 +38,15 @@ A UW standard config for Prettier code formatting.
 Please have a look at [the package README](./packages/prettier-config/README.md) for how to get started using these
 colours.
 
+## Branches
+
+### Web UI
+
+We will be using the `web-ui-v1.x` branch to manage the upcoming Web UI `v1`
+release. Any hotfix releases for Web UI `v0.x` will happen on the `main` branch
+until `v1` is released, at which point a `web-ui-v0.x` branch will be created to
+support any `v0.x` bug fixes.
+
 ## Contributing
 
 Please read our [contribution guide](CONTRIBUTING.md).
@@ -45,7 +54,7 @@ Please read our [contribution guide](CONTRIBUTING.md).
 ### Issues
 
 Please feel free to open issues here, however we are using
-[linear](https://linear.app/utilitywarehouse/team/UWUI/all) for issue tracking,
+[linear](https://linear.app/utilitywarehouse/team/UWDS/all) for issue tracking,
 so it may be moved there after being evaluated.
 
 ## Publishing
