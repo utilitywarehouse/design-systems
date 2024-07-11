@@ -5,11 +5,11 @@ import { Box } from '../Box';
 import { ThemeProvider } from '../ThemeProvider';
 import { ToggleButton } from './ToggleButton';
 import { ToggleButtonGroup } from './ToggleButtonGroup';
+import { Backgrounds } from '../storybook-utils';
 
 const meta: Meta<typeof ToggleButtonGroup> = {
   title: 'Web UI / Components / ToggleButtonGroup',
   component: ToggleButtonGroup,
-  tags: ['autodocs'],
   decorators: [
     Story => (
       <ThemeProvider>
@@ -36,21 +36,15 @@ export const Workshop: Story = {
     };
 
     return (
-      <ToggleButtonGroup {...args} value={option} onChange={handleOption}>
-        <ToggleButton value="option-1">Option 1</ToggleButton>
-        <ToggleButton value="option-2">Option 2</ToggleButton>
-        <ToggleButton value="option-3">Option 3</ToggleButton>
-      </ToggleButtonGroup>
+      <Backgrounds>
+        <ToggleButtonGroup {...args} value={option} onChange={handleOption}>
+          <ToggleButton value="option-1">Option 1</ToggleButton>
+          <ToggleButton value="option-2">Option 2</ToggleButton>
+          <ToggleButton value="option-3">Option 3</ToggleButton>
+        </ToggleButtonGroup>
+      </Backgrounds>
     );
   },
-  argTypes: {
-    disabled: {
-      control: {
-        type: 'boolean',
-      },
-    },
-  },
-  args: {
-    disabled: false,
-  },
+  argTypes: { disabled: { control: { type: 'boolean' } } },
+  args: { disabled: false },
 };

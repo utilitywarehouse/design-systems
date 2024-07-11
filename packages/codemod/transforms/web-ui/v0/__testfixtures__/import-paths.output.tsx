@@ -1,6 +1,5 @@
 // this is a comment at the beginning of the file
 import {
-  Background,
   useBackground,
   BackgroundProvider,
   Box,
@@ -33,12 +32,16 @@ import {
 } from '@utilitywarehouse/web-ui';
 
 import {
+  Background,
+  buttonClasses,
   Icon,
   IconProps,
   Hidden,
   HiddenProps,
   InteractiveCard,
   InteractiveCardProps,
+  useTheme,
+  Theme,
 } from '@utilitywarehouse/customer-ui-material';
 
 import { useDeviceSize } from '~/hooks';

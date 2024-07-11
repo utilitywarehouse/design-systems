@@ -89,8 +89,6 @@ const StyledElement = styled(BaseButton)(() => {
 
 /**
  * Trigger an action or event, such as submitting a form or displaying a dialog.
- *
- * This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const IconButton = React.forwardRef<
   React.ElementRef<'button'>,

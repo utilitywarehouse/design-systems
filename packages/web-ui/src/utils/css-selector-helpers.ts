@@ -12,6 +12,10 @@ function colorSchemeSelector(color: string) {
   return `:where([${DATA_ATTRIBUTES.colorscheme}="${color}"])`;
 }
 
+export function colorSchemeParentSelector(colorScheme: string) {
+  return `:where([${DATA_ATTRIBUTES.colorscheme}="${colorScheme}"] &)`;
+}
+
 export const COLORSCHEME_SELECTORS = {
   cyan: colorSchemeSelector('cyan'),
   red: colorSchemeSelector('red'),
@@ -21,6 +25,7 @@ export const COLORSCHEME_SELECTORS = {
 };
 
 export const DATA_ATTRIBUTE_SELECTORS = {
-  onBrandBackground: `:where([${DATA_ATTRIBUTES.onBrandBackground}])`,
+  inverted: `:where([${DATA_ATTRIBUTES.inverted}])`,
   customColor: `:where([${DATA_ATTRIBUTES.customColor}])`,
+  disableUserSelect: `:where([${DATA_ATTRIBUTES.disableUserSelect}])`,
 };

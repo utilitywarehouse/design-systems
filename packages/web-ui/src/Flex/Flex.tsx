@@ -9,23 +9,9 @@ const componentName = 'Flex';
 const BaseBox = createBox({ componentName });
 
 /**
- * Flex is a low-level primitive, with display set to `flex`.
- *
- * As well as the same style props as the `Box` component, it supports a set of
- * shorthand, flexbox specific props.
- *
- * - `direction` is `flexDirection`
- * - `wrap` is `flexWrap`
- * - `basis` is `flexBasis`
- * - `grow` is `flexGrow`
- * - `shrink` is `flexShrink`
- * - `align` is `alignItems`
- * - `justify` is `justifyContent`
- *
- * This component should be used for flexbox based layouts, and to create
- * vertical and horizontal stacked layouts.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ * The `Flex` is a low-level primitive, based on the `div` element with display
+ * set to `flex`. This component should be used for flexbox based layouts, and
+ * to create vertical and horizontal stacked layouts.
  */
 export const Flex = React.forwardRef(function Flex(
   {

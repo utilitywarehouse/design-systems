@@ -1,11 +1,9 @@
-import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { HelperText } from './HelperText';
 
 const meta: Meta<typeof HelperText> = {
   title: 'Web UI / Typography / HelperText',
   component: HelperText,
-  tags: ['autodocs'],
   argTypes: {
     children: { control: { type: 'text' } },
     disabled: { control: { type: 'boolean' } },
@@ -23,6 +21,4 @@ const meta: Meta<typeof HelperText> = {
 export default meta;
 type Story = StoryObj<typeof HelperText>;
 
-export const Workshop: Story = {
-  render: args => <HelperText {...args} />,
-};
+export const Workshop: Story = {};

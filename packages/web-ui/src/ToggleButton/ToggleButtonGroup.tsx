@@ -6,13 +6,13 @@ import {
 import { DATA_ATTRIBUTES, px } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 import { styled } from '../theme';
+import { useBackground } from '../Box';
 
 const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme, disabled }) => {
-  const { inverse } = DATA_ATTRIBUTES;
   return {
     border: `2px solid ${disabled ? colors.grey200 : colors.cyan400}`,
     borderRadius: px(32),
-    [`[data-${inverse}=true] &`]: {
+    [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
       '&:disabled': {
         borderColor: colors.grey400,
       },
@@ -40,10 +40,13 @@ export type ToggleButtonGroupProps = Pick<
 >;
 
 /**
- * > This component should be wrapped in a ThemeProvider
  */
 export const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGroupProps>(
   function ToggleButtonGroup({ children, disabled, className, ...props }, ref) {
+    const { isInvertedBackground } = useBackground();
+    const dataAttributeProps = {
+      [DATA_ATTRIBUTES.bgcolorBrand]: isInvertedBackground,
+    };
     return (
       <StyledMuiToggleButtonGroup
         ref={ref}
@@ -51,6 +54,7 @@ export const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGr
         disabled={disabled}
         exclusive
         {...props}
+        {...dataAttributeProps}
       >
         {children}
       </StyledMuiToggleButtonGroup>

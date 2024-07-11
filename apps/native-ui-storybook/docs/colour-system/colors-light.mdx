@@ -28,6 +28,18 @@ import { light } from '../../../../packages/colour-system/raw/colours.json';
             return acc;
           }, {})}
       />
+      {Object.keys(light[key]).length > 12 && (
+        <ColorItem
+          title={`${key}`}
+          subtitle={`light.${key}`}
+          colors={Object.keys(light[key])
+            .slice(12, 18)
+            .reduce((acc, subKey) => {
+              acc[subKey] = light[key][subKey].value;
+              return acc;
+            }, {})}
+        />
+      )}
     </>
   ))}
 </ColorPalette>

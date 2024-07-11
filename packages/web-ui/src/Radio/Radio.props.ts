@@ -1,5 +1,5 @@
-import { type RadioGroupItemProps } from '@radix-ui/react-radio-group';
-import { type ReactNode } from 'react';
+import type { RadioGroupItemProps } from '@radix-ui/react-radio-group';
+import type { ReactNode } from 'react';
 
 export interface RadioProps extends Omit<RadioGroupItemProps, 'children'> {
   /**

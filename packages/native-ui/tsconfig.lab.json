@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "./src/lab",
+  ],
+  "exclude": [
+    "node_modules",
+    "example",
+  ],
+  "compilerOptions": {
+    "outDir": "./lab"
+  }
+}

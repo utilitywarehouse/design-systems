@@ -1,0 +1,52 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as Stories from './Checkbox.stories';
+import { DocsHeader } from '../storybook-utils';
+
+<Meta of={Stories} />
+
+<DocsHeader
+  componentName="Checkbox"
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=910-9379"
+  stories={Stories}
+/>
+
+<Canvas of={Stories.Workshop} sourceState="shown" />
+
+- [Helper text](#helper-text)
+- [Controlled](#controlled)
+- [Accessibility](#accessibility)
+- [Props](#props)
+
+## Helper text
+
+The `Checkbox` can display a secondary message as a helper text. This will not
+show if the `Checkbox` is a child of a `CheckboxGroup` or `CheckboxGridGroup`
+which also displays a helper text message.
+
+```tsx
+<Checkbox value="1" label="One" helperText="The number one" />
+```
+
+## Controlled
+
+The checked state can be controlled by using the `checked` and `onCheckedChange` props together.
+
+```tsx
+[...]
+
+const [checked, setChecked] = React.useState(false);
+
+[...]
+
+<Checkbox value="1" label="One" checked={checked} onCheckedChange={c => setChecked(c)} />
+```
+
+## Accessibility
+
+`Checkbox` is, by default, appropriately labelled when using
+the `label` prop, if you do not provide a label, you must specify an
+`aria-label` or `aria-labelledby` for accessibility.
+
+## Props
+
+<ArgTypes of={Stories} />

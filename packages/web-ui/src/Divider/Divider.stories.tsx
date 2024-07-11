@@ -6,6 +6,7 @@ import { Heading } from '../Heading';
 import { Text } from '../Text';
 import { Strong } from '../Strong';
 import { colors } from '@utilitywarehouse/colour-system';
+import { Box } from '../Box';
 
 const meta: Meta<typeof Divider> = {
   title: 'Web UI / Components / Divider',
@@ -82,4 +83,15 @@ export const CustomColor: Story = {
       </Flex>
     );
   },
+};
+
+export const UsageOutsideFlexbox: Story = {
+  render: () => (
+    <Box width="100%" p={4}>
+      <Divider decorative />
+      <Box height={100}>
+        <Divider orientation="vertical" decorative />
+      </Box>
+    </Box>
+  ),
 };

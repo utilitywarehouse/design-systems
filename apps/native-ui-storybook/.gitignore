@@ -10,6 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 build
+eas-build
 
 # macOS
 .DS_Store
@@ -17,3 +18,5 @@ build
 *.env
 .env
 .vercel
+
+assets/fonts/

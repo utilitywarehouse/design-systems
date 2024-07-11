@@ -12,6 +12,7 @@ module.exports = {
     getAbsolutePath('@storybook/addon-react-native-web'),
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     getAbsolutePath('storybook-dark-mode'),
+    getAbsolutePath('@a110/storybook-expand-all'),
     {
       name: '@storybook/addon-react-native-web',
       options: {
@@ -37,7 +38,6 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@utilitywarehouse/react-native-icons': '@utilitywarehouse/react-icons',
-      '@utilitywarehouse/native-ui': getAbsolutePath('@utilitywarehouse/native-ui'),
     };
 
     return config;

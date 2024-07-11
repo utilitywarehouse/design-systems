@@ -1,76 +1,99 @@
 import * as React from 'react';
-import { fonts, fontWeights } from '../tokens';
-import { LegacyTypography } from './LegacyTypography';
-import { TypographyProps } from './Typography.props';
+import { forwardRef, PropsWithChildren } from 'react';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { Typography as MuiTypography, TypographyProps as MuiTypographyProps } from '@mui/material';
+import { OverrideProps } from '@mui/types';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { withGlobalPrefix } from '../utils';
 import { PropsWithSx } from '../types';
-import { createBox } from '../Box/createBox';
+import { useBackground } from '../Box';
+import clsx from 'clsx';
 
-const componentName = 'Typography';
-const BaseBox = createBox<'p' | 'span' | 'div' | 'label' | 'strong' | 'em' | 'legend'>({
-  componentName,
-});
+const PREFIX = withGlobalPrefix('Typography');
+export const typographyClasses: { [key: string]: string } = {
+  primary: `${PREFIX}-primary`,
+  secondary: `${PREFIX}-secondary`,
+  success: `${PREFIX}-success`,
+  error: `${PREFIX}-error`,
+  inverse: `${PREFIX}-inverse`,
+  semibold: `${PREFIX}-semibold`,
+};
 
-/**
- * > This component is only required when building a custom field that isn’t
- * > provided by UW Web UI, or for backwards compatability with the
- * > `customer-ui-material` library.
- *
- * `Typography` is an all purpose component intended for custom typography needs.
- * Most of the time you should be using `Text` or `Heading`. Typography is not
- * affected by any Box context and will not change foreground colour according to
- * the containing Box background prop value.
- *
- * ## Deprecated legacy variants
- *
- * The `variant` prop is currently available for backward compatability with
- * `customer-ui-material`, but is deprecated and will be removed in the next major
- * version (`v1`), in favour of the `Text` & `Heading` components.
- *
- * > When using the variant prop, this component should be wrapped in a ThemeProvider.
- *
- * ## Alternatives
- *
- * - `Heading` for heading-level text
- * - `Text` for body text
- * - `Strong` for strong importance
- * - `Em` for emphasis
- */
-export const Typography = React.forwardRef<
-  React.ElementRef<'span'>,
-  React.PropsWithChildren<PropsWithSx<TypographyProps>>
->(
-  (
+export const textVariantMapping: Record<string, string> = {
+  subtitle: 'p',
+  body: 'p',
+  legalNote: 'p',
+  caption: 'span',
+};
+export const headingVariantMapping: Record<string, string> = {
+  displayHeading: 'h1',
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+};
+
+export type DefaultLegacyTypographyComponent = 'p';
+
+export interface LegacyTypographyOwnProps<
+  D extends React.ElementType = DefaultLegacyTypographyComponent,
+  P = object,
+> extends Pick<
+    MuiTypographyProps<D, P>,
+    | 'sx'
+    | 'gutterBottom'
+    | 'paragraph'
+    | 'align'
+    | 'classes'
+    | 'className'
+    | 'noWrap'
+    | 'textTransform'
+    | 'letterSpacing'
+    | 'children'
+    | 'variant'
+  > {
+  color?: string;
+  fontWeight?: 'regular' | 'semibold';
+  component?: React.ElementType;
+}
+
+export interface LegacyTypographyTypeMap<
+  AdditionalProps = object,
+  DefaultComponent extends React.ElementType = 'span',
+> {
+  props: AdditionalProps & PropsWithChildren<PropsWithSx<LegacyTypographyOwnProps>>;
+  defaultComponent: DefaultComponent;
+}
+
+export type TypographyProps<
+  RootComponent extends React.ElementType = LegacyTypographyTypeMap['defaultComponent'],
+  AdditionalProps = object,
+> = OverrideProps<LegacyTypographyTypeMap<AdditionalProps, RootComponent>, RootComponent> & {
+  component?: React.ElementType;
+};
+
+export const Typography = forwardRef(function LegacyTypography(
+  { color = 'primary', variant = 'body', fontWeight = 'regular', className, component, ...props },
+  ref
+) {
+  const { isInvertedBackground } = useBackground();
+  const classNames = clsx(
+    typographyClasses[color],
     {
-      component = 'p',
-      variant,
-      fontFamily = 'secondary',
-      weight = 'regular',
-      align,
-      sx,
-      noWrap,
-      ...props
+      [typographyClasses.inverse as string]: isInvertedBackground,
+      [typographyClasses.semibold as string]: fontWeight === 'semibold',
     },
-    ref
-  ) => {
-    if (!!variant) {
-      return <LegacyTypography ref={ref} component={component} variant={variant} {...props} />;
-    }
+    className
+  );
 
-    return (
-      <BaseBox
-        ref={ref}
-        component={component}
-        fontFamily={fontFamily === 'inherit' ? 'inherit' : fonts[fontFamily]}
-        fontWeight={weight === 'inherit' ? 'inherit' : fontWeights.secondary[weight]}
-        textAlign={align}
-        {...props}
-        sx={{
-          ...(noWrap && { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }),
-          ...sx,
-        }}
-      />
-    );
-  }
-);
-
-Typography.displayName = componentName;
+  return (
+    <MuiTypography
+      ref={ref}
+      color={color || colorsCommon.brandMidnight}
+      component={component || 'p'}
+      variant={variant}
+      className={classNames}
+      {...props}
+    />
+  );
+}) as OverridableComponent<LegacyTypographyTypeMap>;

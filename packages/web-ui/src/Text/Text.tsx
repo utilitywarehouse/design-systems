@@ -9,18 +9,18 @@ import {
   pxToRem,
   withGlobalPrefix,
 } from '../utils';
-import { Typography } from '../Typography';
 import { TextProps } from './Text.props';
 import { PropsWithSx } from '../types';
 import clsx from 'clsx';
 import { styled } from '../theme';
-import { fontWeights } from '../tokens';
+import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'Text';
 const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
   bold: withGlobalPrefix('bold'),
+  noWrap: withGlobalPrefix('no-wrap'),
   variant: {
     subtitle: withGlobalPrefix('variant-subtitle'),
     body: withGlobalPrefix('variant-body'),
@@ -31,6 +31,7 @@ const classNames = {
 
 const classSelectors = {
   bold: classSelector(classNames.bold),
+  noWrap: classSelector(classNames.noWrap),
   variant: {
     subtitle: classSelector(classNames.variant.subtitle),
     body: classSelector(classNames.variant.body),
@@ -39,10 +40,16 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== 'color' })<{
+const StyledElement = styled('p', {
+  shouldForwardProp: prop => prop !== 'color' && prop !== 'as' && prop !== 'textTransform',
+})<{
   color?: string;
-}>(({ color }) => {
+  textTransform?: TextProps['textTransform'];
+}>(({ color, textTransform }) => {
   return {
+    fontFamily: fonts.secondary,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    textTransform: textTransform as any,
     fontSize: 'var(--text-font-size)',
     lineHeight: 'var(--text-line-height)',
     fontWeight: 'var(--text-font-weight)',
@@ -61,7 +68,7 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
     '--text-line-height-body': 1.5,
     '--text-line-height-legalNote': 1.5,
     '--text-line-height-caption': 2,
-    [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
+    [DATA_ATTRIBUTE_SELECTORS.inverted]: {
       '--text-color': 'var(--text-color-on-brand-bg)',
     },
     [DATA_ATTRIBUTE_SELECTORS.customColor]: {
@@ -69,6 +76,11 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
     },
     [classSelectors.bold]: {
       '--text-font-weight': 'var(--text-font-weight-bold)',
+    },
+    [classSelectors.noWrap]: {
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
     },
     [classSelectors.variant.subtitle]: {
       '--text-font-size': 'var(--text-font-size-subtitle)',
@@ -98,31 +110,35 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
 
 /**
  * Text renders the secondary UW font, Work Sans, to be used for body text.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Text = React.forwardRef<
-  React.ElementRef<'span'>,
+  React.ElementRef<'p'>,
   React.PropsWithChildren<PropsWithSx<TextProps>>
->(({ variant = 'body', bold, color, className, ...props }, ref) => {
-  const { isBrandBackground } = useBackground();
-  const dataAttributeProps = {
-    [DATA_ATTRIBUTES.onBrandBackground]: !color && isBrandBackground ? '' : undefined,
-    [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
-  };
+>(
+  (
+    { variant = 'body', component = 'p', bold, noWrap, color, className, inverted, ...props },
+    ref
+  ) => {
+    const { isInvertedBackground } = useBackground();
+    const dataAttributeProps = {
+      [DATA_ATTRIBUTES.inverted]: !color && (inverted || isInvertedBackground) ? '' : undefined,
+      [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
+    };
 
-  return (
-    <StyledElement
-      ref={ref}
-      className={clsx(componentClassName, className, classNames.variant[variant], {
-        [classNames.bold]: bold,
-      })}
-      fontFamily="secondary"
-      color={color}
-      {...dataAttributeProps}
-      {...props}
-    />
-  );
-});
+    return (
+      <StyledElement
+        ref={ref}
+        as={component}
+        className={clsx(componentClassName, className, classNames.variant[variant], {
+          [classNames.bold]: bold,
+          [classNames.noWrap]: noWrap,
+        })}
+        color={color}
+        {...dataAttributeProps}
+        {...props}
+      />
+    );
+  }
+);
 
 Text.displayName = componentName;

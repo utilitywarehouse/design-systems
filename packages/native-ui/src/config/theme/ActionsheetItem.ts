@@ -1,16 +1,15 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const ActionsheetItem = createStyle({
-  'p': '$3',
-  'flexDirection': 'row',
-  'alignItems': 'center',
-  'rounded': '$sm',
-  'w': '$full',
+  flexDirection: 'row',
+  alignItems: 'center',
+  rounded: '$sm',
+  py: '$1.5',
+  w: '$full',
 
   ':disabled': {
     opacity: 0.4,
     _web: {
-      // @ts-ignore
       pointerEvents: 'all !important',
       cursor: 'not-allowed',
     },
@@ -28,7 +27,7 @@ export const ActionsheetItem = createStyle({
     bg: '$backgroundLight100',
   },
 
-  '_dark': {
+  _dark: {
     ':hover': {
       bg: '$backgroundDark800',
     },
@@ -42,7 +41,7 @@ export const ActionsheetItem = createStyle({
     },
   },
 
-  '_web': {
+  _web: {
     ':focusVisible': {
       bg: '$backgroundLight100',
       _dark: {

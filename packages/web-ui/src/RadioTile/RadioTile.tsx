@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { Item, type RadioGroupItemProps } from '@radix-ui/react-radio-group';
+import { Item } from '@radix-ui/react-radio-group';
 import { Label } from '../Label';
 import { HelperText } from '../HelperText';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { useIds } from '../hooks';
-import { withGlobalPrefix, spacing } from '../utils';
+import { withGlobalPrefix, spacing, px } from '../utils';
 import { PropsWithSx } from '../types';
 import { StyledRadioIndicator } from '../Radio/Radio';
-import { RadioGroupContext } from '../RadioGroup/RadioGroup.context';
 import clsx from 'clsx';
 import { RadioTileProps } from './RadioTile.props';
 import { styled } from '../theme';
 import { Flex } from '../Flex';
+import { useBaseRadioGroup } from '../BaseRadioGroup';
 
 const componentName = 'Radio';
 const componentClassName = withGlobalPrefix(componentName);
@@ -42,7 +42,7 @@ const StyledRadio = styled('div')({
 
 const StyledRadioItem = styled(Item)({
   all: 'unset',
-  borderRadius: '8px',
+  borderRadius: px(8),
   padding: spacing(2),
   display: 'flex',
   boxShadow: 'inset 0 0 0 2px var(--radio-item-box-shadow-color)',
@@ -71,10 +71,19 @@ const StyledRadioItem = styled(Item)({
   ':where([data-disabled])': {
     '--radio-item-box-shadow-color': 'var(--radio-item-box-shadow-color-disabled)',
   },
-}) as React.FC<RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>>;
+  cursor: 'pointer',
+  '*': { cursor: 'pointer' },
+});
 
 /**
- * The `RadioTile` should be used within a `RadioGroup` component.
+ * `RadioTile` can be used to choose between a set of more than two options.
+ *
+ * `RadioTile` should always be used with a `RadioGroup` or `RadioGridGroup` to
+ * handle the state control and layout.
+ *
+ * `RadioTile` is, by default, appropriately labelled when using
+ * the `label` prop, if you do not provide a label, you must specify an
+ * `aria-label` or `aria-labelledby` for accessibility.
  *
  * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
@@ -92,8 +101,7 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
-    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } =
-      React.useContext(RadioGroupContext);
+    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } = useBaseRadioGroup();
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
 
@@ -107,16 +115,20 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
         aria-describedby={showHelperText ? helperTextId : ariaDescribedby}
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
       >
-        <Flex component="label" gap={1}>
+        <Flex component="span" gap={1}>
           <StyledRadio>
             <StyledRadioIndicator />
           </StyledRadio>
           {showLabel ? (
             <Flex direction="column" gap={0.5}>
-              <Label component="span" id={labelId} htmlFor={id} nested>
+              <Label component="span" id={labelId} htmlFor={id} nested disableUserSelect>
                 {label}
               </Label>
-              {showHelperText ? <HelperText id={helperTextId}>{helperText}</HelperText> : null}
+              {showHelperText ? (
+                <HelperText id={helperTextId} disableUserSelect>
+                  {helperText}
+                </HelperText>
+              ) : null}
             </Flex>
           ) : null}
         </Flex>

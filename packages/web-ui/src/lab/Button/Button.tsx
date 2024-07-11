@@ -97,8 +97,7 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
 /**
  * Trigger an action or event, such as submitting a form or displaying a dialog.
  *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be
- * > used standalone with other component libraries.
+ * This component is not intended for use on the midnight & purple brand colours.
  */
 export const Button = React.forwardRef<
   React.ElementRef<'button'>,

@@ -9,23 +9,19 @@ const textVariants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 const meta: Meta<typeof Em> = {
   title: 'Web UI / Typography / Em',
   component: Em,
-  tags: ['autodocs'],
 };
 
 export default meta;
 type Story = StoryObj<typeof Em>;
 
 export const KitchenSink: Story = {
-  parameters: { controls: { hideNoControlsWarning: true } },
-  render: () => {
-    return (
-      <Flex direction="column" gap={1}>
-        {textVariants.map(variant => (
-          <Text key={variant} variant={variant}>
-            We <Em>had</Em> to do something about it.
-          </Text>
-        ))}
-      </Flex>
-    );
-  },
+  render: () => (
+    <Flex direction="column" gap={1}>
+      {textVariants.map(variant => (
+        <Text key={variant} variant={variant}>
+          We <Em>had</Em> to do something about it.
+        </Text>
+      ))}
+    </Flex>
+  ),
 };

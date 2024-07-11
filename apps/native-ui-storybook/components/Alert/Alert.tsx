@@ -37,9 +37,9 @@ const AlertBasic: StoryFn = ({ link, onPressIconButton, onClose, ...props }: any
 AlertBasic.argTypes = {
   colorScheme: {
     control: 'select',
-    options: ['info', 'success', 'warning', 'error'],
+    options: ['cyan', 'green', 'gold', 'red'],
     description: 'Use this valie to change the alert type and colour scheme.',
-    defaultValue: 'info',
+    defaultValue: 'cyan',
   },
   title: {
     control: 'text',
@@ -64,13 +64,12 @@ AlertBasic.argTypes = {
   },
 } as Meta<typeof Alert>['argTypes'];
 
-// @ts-expect-error
 AlertBasic.args = {
-  colorScheme: 'info',
+  colorScheme: 'cyan',
   title: 'Information',
   text: 'Unlock the power of knowledge with the following information.',
   link: 'Learn more',
-  onClose: true,
+  onClose: true as () => void,
   onPressIconButton: false,
 } as Meta<typeof Alert>['args'];
 

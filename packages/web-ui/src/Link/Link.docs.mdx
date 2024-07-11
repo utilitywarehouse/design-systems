@@ -1,0 +1,84 @@
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import * as Stories from './Link.stories';
+import { DocsHeader } from '../storybook-utils';
+
+<Meta of={Stories} />
+
+<DocsHeader componentName="Link" stories={Stories} themeProviderRequired />
+
+This component will be replaced with the `lab/Link` component in a future major release.
+
+- [Variants](#variants)
+- [Inline TextLink](#inline-textlink)
+- [Guidelines](#guidelines)
+- [Usage in Next.js](#usage-in-next.js)
+  - [v12](#v12)
+  - [v13](#v13)
+- [Props](#props)
+
+## Variants
+
+The `Link` component has all the same variants as the `Text` and `Heading` components.
+
+<Canvas of={Stories.LinkVariants} />
+
+## Inline Link
+
+When contained within a `Text` or `Heading` component, and without a specific variant, the `Link` will inherit the parent variant.
+
+<Canvas of={Stories.InlineLink} />
+
+## Guidelines
+
+Try and avoid using `target=_blank` if possible: [When to use target="\_blank"](https://css-tricks.com/use-target_blank/).
+Though if you do use it, then be aware that [browsers now implicitly set rel=noopener for any target=\_blank link](https://mathiasbynens.github.io/rel-noopener/).
+
+## Usage in Next.js
+
+### v12
+
+You can use the `Link` component with the `Link` component from `next/link`:
+
+```tsx
+import { Link, LinkProps } from '@utilitywarehouse/web-ui';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
+
+export interface LinkProps extends Omit<LinkProps, 'href'> {
+  href: NextLinkProps['href'];
+}
+
+export const Link: React.FC<LinkProps> = ({ children, href, ...props }) => (
+  <NextLink href={href} passHref>
+    <Link {...props}>{children}</Link>
+  </NextLink>
+);
+
+export default Link;
+```
+
+### v13
+
+The behaviour of the `Link` component from `next/link` changes in v13, so for
+the time being you will need to add the `legacyBehavior` prop. We are looking
+into how best to use `Link` in Next.js 13.
+
+```tsx
+import { Link, LinkProps } from '@utilitywarehouse/web-ui';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
+
+export interface LinkProps extends Omit<LinkProps, 'href'> {
+  href: NextLinkProps['href'];
+}
+
+export const Link: React.FC<LinkProps> = ({ children, href, ...props }) => (
+  <NextLink href={href} passHref legacyBehavior>
+    <Link {...props}>{children}</Link>
+  </NextLink>
+);
+
+export default Link;
+```
+
+## Props
+
+<ArgTypes of={Stories} />

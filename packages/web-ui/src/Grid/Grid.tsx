@@ -33,8 +33,6 @@ export type GridProps<
  * adheres to our custom breakpoints, and has default spacing & columns.
  *
  * Please [check the MUI site for further documentation](https://mui.com/material-ui/react-grid/).
- *
- * > This component should be wrapped in a ThemeProvider
  */
 export const Grid = React.forwardRef(function Grid({ columns = DEFAULT_COLUMNS, ...props }, ref) {
   if (props.container) {

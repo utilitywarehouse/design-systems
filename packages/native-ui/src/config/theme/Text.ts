@@ -9,12 +9,13 @@ export const Text = createStyle({
   fontFamily: '$body',
   fontStyle: 'normal',
   letterSpacing: '$md',
-
+  _web: {
+    fontFaimly: 'Work Sans !important',
+  },
   variants: {
-    isTruncated: {
+    truncated: {
       true: {
         props: {
-          // @ts-ignore
           numberOfLines: 1,
           ellipsizeMode: 'tail',
         },
@@ -23,6 +24,11 @@ export const Text = createStyle({
     bold: {
       true: {
         fontWeight: '$bold',
+      },
+    },
+    highlight: {
+      true: {
+        fontWeight: '$semibold',
       },
     },
     underline: {
@@ -35,80 +41,25 @@ export const Text = createStyle({
         textDecorationLine: 'line-through',
       },
     },
-    sub: {
-      true: {
-        fontSize: '$xs',
-        lineHeight: '$xs',
-      },
-    },
     italic: {
       true: {
         fontStyle: 'italic',
       },
     },
-    highlight: {
-      true: {
-        bg: '$yellow500',
-      },
-    },
     size: {
-      '2xs': {
-        fontSize: '$2xs',
-        lineHeight: '$2xs',
-      },
       xs: {
         fontSize: '$xs',
-        lineHeight: '$sm',
+        lineHeight: '$2xs',
       },
 
       sm: {
         fontSize: '$sm',
-        lineHeight: '$sm',
+        lineHeight: '$2xs',
       },
 
       md: {
         fontSize: '$md',
         lineHeight: '$lg',
-      },
-
-      lg: {
-        fontSize: '$lg',
-        lineHeight: '$xl',
-      },
-
-      xl: {
-        fontSize: '$xl',
-        lineHeight: '$xl',
-      },
-
-      '2xl': {
-        fontSize: '$2xl',
-        lineHeight: '$2xl',
-      },
-
-      '3xl': {
-        fontSize: '$3xl',
-        lineHeight: '$3xl',
-      },
-
-      '4xl': {
-        fontSize: '$4xl',
-        lineHeight: '$4xl',
-      },
-
-      '5xl': {
-        fontSize: '$5xl',
-        lineHeight: '$6xl',
-      },
-
-      '6xl': {
-        fontSize: '$6xl',
-        lineHeight: '$7xl',
-      },
-
-      badge: {
-        fontSize: '$badge',
-        lineHeight: 16,
       },
     },
   },

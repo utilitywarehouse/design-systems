@@ -1,17 +1,32 @@
-import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes, Typeset } from '@storybook/blocks';
 import * as Stories from './Heading.stories';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-# Heading
+<DocsHeader
+  componentName="Heading"
+  stories={Stories}
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=38-884"
+/>
 
-<Description />
+<Canvas of={Stories.KitchenSink} />
+
+- [Alternatives](#alternatives)
+- [Variants](#variants)
+- [Color prop](#color-prop)
+  - [Contextual colour](#contextual-colour)
+- [Props](#props)
+
+## Alternatives
+
+- [Text](?path=/docs/components-text--documentation) - For body text
 
 ## Variants
 
 <Canvas of={Stories.HeadingVariants} />
 
-## Color
+## Color prop
 
 You can pass any valid string color to the `Heading` component. It is recommended
 you use the `@utilitywarehouse/colour-system` package, and pass color values
@@ -32,16 +47,6 @@ value of either `colorsCommon.brandMidnight` or
 `colorsCommon.brandWhite`. This will be overridden by the `color` prop.
 
 <Canvas of={Stories.HeadingColour} />
-
-## Styles
-
-The system props are not available on the Heading component, if you need custom typography then use the [Typography](?path=/docs/components-typography--documentation) component.
-If necessary you can use `sx` as an escape hatch for one-off custom styling.
-
-## Alternatives
-
-- [Text](?path=/docs/components-text--documentation) - For body text
-- [Typography](?path=/docs/components-typography--documentation) - For custom typography
 
 ## Props
 

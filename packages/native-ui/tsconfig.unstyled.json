@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "./src/components/unstyled",
+  ],
+  "exclude": [
+    "node_modules",
+    "example",
+  ],
+  "compilerOptions": {
+    "outDir": "./unstyled"
+  }
+}

@@ -1,5 +1,114 @@
 # @utilitywarehouse/web-ui
 
+## 0.9.2
+
+### Patch Changes
+
+- [#410](https://github.com/utilitywarehouse/design-systems/pull/410) [`56cfa4b`](https://github.com/utilitywarehouse/design-systems/commit/56cfa4b68f374536ad2e5bfb8c8bef293ef006ff) Thanks [@robphoenix](https://github.com/robphoenix)! - Upgrade mui peerdep
+
+- [#417](https://github.com/utilitywarehouse/design-systems/pull/417) [`40c0625`](https://github.com/utilitywarehouse/design-systems/commit/40c06258c7fec58ef802c7bc430d3c6f32ce297e) Thanks [@robphoenix](https://github.com/robphoenix)! - Update `Divider` component & docs
+
+## 0.9.1
+
+### Patch Changes
+
+- [#398](https://github.com/utilitywarehouse/design-systems/pull/398) [`eafe765f`](https://github.com/utilitywarehouse/design-systems/commit/eafe765f057e272a6debd0057c6008b4d891cb53) Thanks [@robphoenix](https://github.com/robphoenix)! - `Alert` component fixes
+  - Layout for `row` direction
+  - Fix `colorScheme` prop type, updating from enum to string
+
+## 0.9.0
+
+### Minor Changes
+
+- [#375](https://github.com/utilitywarehouse/design-systems/pull/375) [`39903aa8`](https://github.com/utilitywarehouse/design-systems/commit/39903aa8a01450bfe5d04e8de233a1bb7fe7b13e) Thanks [@jordmccord](https://github.com/jordmccord)! - Add `Alert` component
+
+- [#393](https://github.com/utilitywarehouse/design-systems/pull/393) [`c86da487`](https://github.com/utilitywarehouse/design-systems/commit/c86da48708a4ced6faba426eef81c1fac6679a82) Thanks [@robphoenix](https://github.com/robphoenix)! - Deprecate `isBrandBackground`
+
+- [#394](https://github.com/utilitywarehouse/design-systems/pull/394) [`945874fd`](https://github.com/utilitywarehouse/design-systems/commit/945874fdc6834526ef8cb72dfb7c3714cf3270ff) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `mediaQueries` helper functions
+
+- [#370](https://github.com/utilitywarehouse/design-systems/pull/370) [`b97a94dd`](https://github.com/utilitywarehouse/design-systems/commit/b97a94dd7c7f1722c869484afee66035fd04bb2c) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `Checkbox`, `CheckboxTile`, `CheckboxGroup`, `CheckboxGridGroup` components
+
+### Patch Changes
+
+- [#388](https://github.com/utilitywarehouse/design-systems/pull/388) [`f46d8c22`](https://github.com/utilitywarehouse/design-systems/commit/f46d8c224d3f75fdfbfa7b1dc8f5be05af9bf850) Thanks [@robphoenix](https://github.com/robphoenix)! - Update TextLink
+
+  - Can render as a button
+  - Render with icons
+  - Accessibility docs
+
+- [#370](https://github.com/utilitywarehouse/design-systems/pull/370) [`b97a94dd`](https://github.com/utilitywarehouse/design-systems/commit/b97a94dd7c7f1722c869484afee66035fd04bb2c) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `disableUserSelect` prop to Label & HelperText components
+
+- [#393](https://github.com/utilitywarehouse/design-systems/pull/393) [`c86da487`](https://github.com/utilitywarehouse/design-systems/commit/c86da48708a4ced6faba426eef81c1fac6679a82) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix `Text` & `Heading` textTransform prop
+
+- [#386](https://github.com/utilitywarehouse/design-systems/pull/386) [`2a7afb82`](https://github.com/utilitywarehouse/design-systems/commit/2a7afb822552ced44b557357dde9500d64ab8670) Thanks [@robphoenix](https://github.com/robphoenix)! - Change `Button` cursor to pointer.
+
+- [#370](https://github.com/utilitywarehouse/design-systems/pull/370) [`b97a94dd`](https://github.com/utilitywarehouse/design-systems/commit/b97a94dd7c7f1722c869484afee66035fd04bb2c) Thanks [@robphoenix](https://github.com/robphoenix)! - Change cursor to pointer for Radio & Checkbox components
+
+- [#370](https://github.com/utilitywarehouse/design-systems/pull/370) [`b97a94dd`](https://github.com/utilitywarehouse/design-systems/commit/b97a94dd7c7f1722c869484afee66035fd04bb2c) Thanks [@robphoenix](https://github.com/robphoenix)! - Update HelperText icon size & text colour
+
+- [#393](https://github.com/utilitywarehouse/design-systems/pull/393) [`c86da487`](https://github.com/utilitywarehouse/design-systems/commit/c86da48708a4ced6faba426eef81c1fac6679a82) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `inverted` prop to `Heading`, `Text` & `TextLink` components
+
+- [#370](https://github.com/utilitywarehouse/design-systems/pull/370) [`b97a94dd`](https://github.com/utilitywarehouse/design-systems/commit/b97a94dd7c7f1722c869484afee66035fd04bb2c) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix `HelperText` fontsize & lineheight
+
+## 0.8.4
+
+### Patch Changes
+
+- [#381](https://github.com/utilitywarehouse/design-systems/pull/381) [`7bda5054`](https://github.com/utilitywarehouse/design-systems/commit/7bda5054bf887a429e5b7e7b4c9a56a400408ae4) Thanks [@robphoenix](https://github.com/robphoenix)! - Radio updates from working on Checkbox
+  - improve shared Radio group props
+  - fix `HelperText` font weight
+  - prefer `styled` over `sx` internally
+  - fix `Divider` import in docs
+  - add `userSelect: 'none'` to Radio components
+
+## 0.8.3
+
+### Patch Changes
+
+- [#376](https://github.com/utilitywarehouse/design-systems/pull/376) [`8456179c`](https://github.com/utilitywarehouse/design-systems/commit/8456179c56fc0bb2ea7e14f047c273bad931319b) Thanks [@robphoenix](https://github.com/robphoenix)! - Make the compact prop on `Badge` responsive
+
+## 0.8.2
+
+### Patch Changes
+
+- [#377](https://github.com/utilitywarehouse/design-systems/pull/377) [`19239bc8`](https://github.com/utilitywarehouse/design-systems/commit/19239bc8f041e8cc6cb38a5010c0bdb72a75e553) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix TextLink font-weight
+
+- [#378](https://github.com/utilitywarehouse/design-systems/pull/378) [`774e2a86`](https://github.com/utilitywarehouse/design-systems/commit/774e2a8623256d20d97c41309397a1dba24e116f) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Text element
+
+## 0.8.1
+
+### Patch Changes
+
+- [#373](https://github.com/utilitywarehouse/design-systems/pull/373) [`9de954d1`](https://github.com/utilitywarehouse/design-systems/commit/9de954d10b166219e69b49f08debb8249bc3a530) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix disabled Radio
+
+## 0.8.0
+
+### Minor Changes
+
+- [#360](https://github.com/utilitywarehouse/design-systems/pull/360) [`f98c1b0b`](https://github.com/utilitywarehouse/design-systems/commit/f98c1b0b42c25ac5740bfd05f50586c63b7cf08c) Thanks [@PollyCR](https://github.com/PollyCR)! [@robphoenix](https://github.com/robphoenix)! - Add `Badge` component
+
+## 0.7.1
+
+### Patch Changes
+
+- [#362](https://github.com/utilitywarehouse/design-systems/pull/362) [`36be752`](https://github.com/utilitywarehouse/design-systems/commit/36be7522f3fd7652fbaa9fbb5ce2271b3d7843ab) Thanks [@robphoenix](https://github.com/robphoenix)! - Export `Divider`
+
+## 0.7.0
+
+### Minor Changes
+
+- [#337](https://github.com/utilitywarehouse/design-systems/pull/337) [`6af022e`](https://github.com/utilitywarehouse/design-systems/commit/6af022ea33c4dcd8300d37c3bcf9cd787af27ae7) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove legacy Background component
+
+### Patch Changes
+
+- [#334](https://github.com/utilitywarehouse/design-systems/pull/334) [`93effbd`](https://github.com/utilitywarehouse/design-systems/commit/93effbdd783772653e84e04f35707e5923225391) Thanks [@robphoenix](https://github.com/robphoenix)! - Deprecate Typography component
+
+## 0.6.2
+
+### Patch Changes
+
+- [#331](https://github.com/utilitywarehouse/design-systems/pull/331) [`4340700`](https://github.com/utilitywarehouse/design-systems/commit/4340700500553b2f31a6fc9c0ff82e38f34ee974) Thanks [@robphoenix](https://github.com/robphoenix)! - Add missing h4 font sizes
+
 ## 0.6.1
 
 ### Patch Changes

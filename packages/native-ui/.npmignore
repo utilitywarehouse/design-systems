@@ -1,2 +1,7 @@
 !build
 src
+./packages
+.vercel
+./turbo
+./packages
+./scripts

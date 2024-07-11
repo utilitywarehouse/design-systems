@@ -10,7 +10,6 @@ import { ThemeProvider } from '../ThemeProvider';
 const meta: Meta<typeof Stack> = {
   title: 'Web UI / Layout / Stack',
   component: Stack,
-  tags: ['autodocs'],
   decorators: [
     Story => (
       <ThemeProvider>

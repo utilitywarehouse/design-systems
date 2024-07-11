@@ -1,25 +1,46 @@
 import * as React from 'react';
 import { PropsWithSx } from '../../types';
-import { withGlobalPrefix, px, DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS } from '../../utils';
+import {
+  withGlobalPrefix,
+  px,
+  DATA_ATTRIBUTES,
+  DATA_ATTRIBUTE_SELECTORS,
+  spacing,
+} from '../../utils';
 import clsx from 'clsx';
-import { Typography } from '../../Typography';
 import { TextLinkProps } from './TextLink.props';
 import { styled } from '../../theme';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { useBackground } from '../../Box';
+import { Slot } from '@radix-ui/react-slot';
 
 const componentName = 'TextLink';
 const componentClassName = withGlobalPrefix(componentName);
 
-const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== 'color' })<{
+const StyledElement = styled('a', {
+  shouldForwardProp: prop => prop !== 'color' && prop !== 'as',
+})<{
   color?: string;
 }>(({ color }) => ({
+  // unset button styles when asChild is used
+  ':where(button)': {
+    outline: 'transparent',
+    appearance: 'none',
+    border: 'none',
+    background: 'transparent',
+    padding: 0,
+  },
   cursor: 'pointer',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   textAlign: 'center',
   flexShrink: 0,
+  gap: px(spacing(0.5)),
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  lineHeight: 'inherit',
+  fontWeight: 'inherit',
   '--text-link-color': colors.cyan600,
   '--text-link-color-custom': color,
   '--text-link-color-on-brand-bg': colorsCommon.brandWhite,
@@ -51,7 +72,7 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
     outlineColor: 'var(--text-link-focus-outline-color)',
     outlineOffset: px(2),
   },
-  [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
+  [DATA_ATTRIBUTE_SELECTORS.inverted]: {
     '--text-link-color': 'var(--text-link-color-on-brand-bg)',
     '--text-link-color-active': 'var(--text-link-color-active-on-brand-bg)',
     '--text-link-color-visited': 'var(--text-link-color-visited-on-brand-bg)',
@@ -65,32 +86,25 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
 }));
 
 /**
- * A semantic element for navigating between pages.
- *
- * The `TextLink` component is intended to be used within a block of text, and
- * must be nested in a `Text` component.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be
- * > used standalone with other component libraries.
+ * A semantic element for navigating between pages. The `TextLink` component is
+ * intended to be used within a block of text, and should be nested in a `Text`
+ * component. This should happen even when using as a standalone link element
+ * as it will inherit many styles from the parent `Text` component.
  */
 export const TextLink = React.forwardRef<
   React.ElementRef<'a'>,
   React.PropsWithChildren<PropsWithSx<TextLinkProps>>
->(({ className, color, ...props }, ref) => {
-  const { isBrandBackground } = useBackground();
+>(({ className, color, asChild, inverted, ...props }, ref) => {
+  const { isInvertedBackground } = useBackground();
   const dataAttributeProps = {
-    [DATA_ATTRIBUTES.onBrandBackground]: isBrandBackground ? '' : undefined,
+    [DATA_ATTRIBUTES.inverted]: inverted || isInvertedBackground ? '' : undefined,
     [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
   };
   return (
     <StyledElement
+      as={asChild ? Slot : 'a'}
       ref={ref}
-      component="a"
       className={clsx(componentClassName, className)}
-      fontFamily="inherit"
-      fontSize="inherit"
-      lineHeight="inherit"
-      weight="inherit"
       color={color}
       {...dataAttributeProps}
       {...props}

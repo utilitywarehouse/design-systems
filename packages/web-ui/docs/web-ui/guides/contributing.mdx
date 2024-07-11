@@ -1,20 +1,23 @@
 import { Meta } from '@storybook/blocks';
+import { Analytics } from '@vercel/analytics/react';
+
+<Analytics />
 
 <Meta title="Web UI / Guides / Contributing" />
 
 # Contributing
 
 Thank you for your interest in contributing to UW Web UI!
-This project is made possible by contributors like you, and we welcome any
-contributions to the codebase and documentation.
+While we welcome contributions to the codebase and documentation, we're not
+currently able to support significant contributions such as new components.
+Please get in touch with the core team directly if you want to discuss any
+aspect of the Design Systems projects.
 
 - [Getting Started](#getting-started)
-- [Linting](#linting)
+- [Linting & formatting](#linting-&-formatting)
 - [Making Changes](#making-changes)
 - [Using the styled function](#using-the-styled-function)
 - [Documentation Contributions](#documentation-contributions)
-  - [General Documentation](#general-documentation)
-  - [Component Documentation](#component-documentation)
 - [Changesets](#changesets)
 
 ## Getting Started
@@ -24,11 +27,11 @@ which we use to manage this monorepo.
 
 **Make sure you're using node v16.10+ before running the below commands**
 
-```
+```console
 npm run setup
 ```
 
-Next, install install dependencies across all packages, and build the local
+Next, install dependencies across all packages, and build the local
 packages.
 
 ```
@@ -36,21 +39,16 @@ pnpm install
 pnpm build
 ```
 
-## Linting
+## Linting & formatting
 
-This will run ESLint & prettier across all packages, and take advantage of turborepo's caching.
-
-```
-pnpm lint
-```
-
-To fix linting & formatting issues, run:
+Linting and formatting is done separately.
 
 ```
 pnpm lint:fix
+pnpm format
 ```
 
-To run lint & build with turborepo:
+To lint, format & build in a single command:
 
 ```
 pnpm run checks
@@ -58,14 +56,12 @@ pnpm run checks
 
 ## Making Changes
 
-Pull requests are encouraged. If you want to add a feature or fix a bug:
+If you want to update some documentation or fix a bug:
 
 1. Clone this repository
 1. [Create a separate branch](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/managing-branches)
    for your changes
-1. Make your changes, and ensure they are formatted by
-   [Prettier](https://prettier.io), a pre-commit hook will ensure linting &
-   formatting checks pass
+1. Make your changes, ensuring you have run the linting & formatting commands before oprning your PR.
 1. Create a changeset by running `pnpm changeset`. [More info](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md).
 1. Push your branch and open a PR 🚀
 
@@ -82,7 +78,7 @@ There are a number of ways you can add documentation for components and for more
 ### General Documentation
 
 You can update existing documenation, such as this page, or add new
-documentation regarding the UW Web UI package, in the [docs](https://github.com/utilitywarehouse/design-systems/tree/main/packages/web-ui/docs) directory
+documentation, in the [docs](https://github.com/utilitywarehouse/design-systems/tree/main/packages/web-ui/docs) directory
 of the `web-ui` package. These docs use `mdx` and are rendered in our online
 [Storybook](https://uw-web-ui.vercel.app/).
 

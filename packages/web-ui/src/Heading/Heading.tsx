@@ -11,9 +11,9 @@ import {
   DATA_ATTRIBUTES,
 } from '../utils';
 import { HeadingProps } from './Heading.props';
-import { Typography } from '../Typography';
 import clsx from 'clsx';
 import { styled } from '../theme';
+import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'Heading';
 const componentClassName = withGlobalPrefix(componentName);
@@ -38,10 +38,17 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== 'color' })<{
+const StyledElement = styled('h2', {
+  shouldForwardProp: prop => prop !== 'color' && prop !== 'as' && prop !== 'textTransform',
+})<{
   color?: string;
-}>(({ color }) => {
+  textTransform?: HeadingProps['textTransform'];
+}>(({ color, textTransform }) => {
   return {
+    fontFamily: fonts.primary,
+    fontWeight: fontWeights.primary,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    textTransform: textTransform as any,
     fontSize: 'var(--heading-font-size)',
     lineHeight: 'var(--heading-line-height)',
     color: 'var(--heading-color)',
@@ -56,13 +63,15 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
     '--heading-font-size-h2-desktop': pxToRem(32),
     '--heading-font-size-h3': pxToRem(22),
     '--heading-font-size-h3-desktop': pxToRem(24),
+    '--heading-font-size-h4': pxToRem(18),
+    '--heading-font-size-h4-desktop': pxToRem(20),
     '--heading-line-height-display-heading': 1.2,
     '--heading-line-height-h1': 1.2,
     '--heading-line-height-h2': 1.2,
     '--heading-line-height-h2-desktop': 1.5,
     '--heading-line-height-h3': 1.5,
     '--heading-line-height-h4': 1.5,
-    [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
+    [DATA_ATTRIBUTE_SELECTORS.inverted]: {
       '--heading-color': 'var(--heading-color-on-brand-bg)',
     },
     [DATA_ATTRIBUTE_SELECTORS.customColor]: {
@@ -116,20 +125,18 @@ const StyledElement = styled(Typography, { shouldForwardProp: prop => prop !== '
 export const Heading = React.forwardRef<
   React.ElementRef<'h2'>,
   React.PropsWithChildren<PropsWithSx<HeadingProps>>
->(({ component, variant = 'h2', color, className, ...props }, ref) => {
-  const element = variant === 'displayHeading' ? 'h1' : variant;
-  const { isBrandBackground } = useBackground();
+>(({ component, variant = 'h2', color, className, inverted, ...props }, ref) => {
+  const element = component ? component : variant === 'displayHeading' ? 'h1' : variant;
+  const { isInvertedBackground } = useBackground();
   const dataAttributeProps = {
-    [DATA_ATTRIBUTES.onBrandBackground]: !color && isBrandBackground ? '' : undefined,
+    [DATA_ATTRIBUTES.inverted]: !color && (inverted || isInvertedBackground) ? '' : undefined,
     [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
   };
   return (
     <StyledElement
       ref={ref}
-      component={component || element}
+      as={element}
       className={clsx(componentClassName, className, classNames.variant[variant])}
-      fontFamily="primary"
-      weight="regular"
       color={color}
       {...dataAttributeProps}
       {...props}

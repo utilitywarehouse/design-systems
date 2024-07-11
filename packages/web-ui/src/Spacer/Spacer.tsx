@@ -27,14 +27,8 @@ function getSize(size: SpacerProps['size']) {
 
 /**
  * Spacer is a layout primitive, loosely based on [Let's Bring Spacer GIFs Back!](https://www.joshwcomeau.com/react/modern-spacer-gif/)
- * by Josh Comeau.
- * This component, adds an extra node to the DOM, so should be used sparingly, for
- * more significant layout concerns please use Stack or Grid.
- *
- * The `size` prop is responsive, so you can set different values for different breakpoints.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be
- * > used standalone with other component libraries.
+ * by Josh Comeau. This component, adds an extra node to the DOM, so should be used sparingly, for
+ * more significant layout concerns please use Stack or Grid. The `size` prop is responsive, so you can set different values for different breakpoints.
  */
 export const Spacer = React.forwardRef<React.ElementRef<'div'>, PropsWithSx<SpacerProps>>(
   function Spacer({ axis = 'vertical', size = 1, inline = false, ...props }, ref) {

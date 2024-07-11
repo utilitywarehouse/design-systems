@@ -21,7 +21,7 @@ export const KitchenSink: Story = {
       <Flex direction="column" gap={1}>
         {variants.map(variant => (
           <Heading key={variant} variant={variant}>
-            Hamburgefons ({variant})
+            Hamburgefons
           </Heading>
         ))}
       </Flex>
@@ -30,13 +30,20 @@ export const KitchenSink: Story = {
 };
 
 export const Workshop: Story = {
-  render: ({ color = 'brandPrimaryPurple', ...args }) => {
+  render: ({ color = undefined, ...args }) => {
     return (
-      <Heading
-        // @ts-expect-error story
-        color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
-        {...args}
-      />
+      <Flex
+        p={4}
+        bgcolor={args.inverted ? colors.grey900 : colors.grey50}
+        align="center"
+        justify="center"
+      >
+        <Heading
+          // @ts-expect-error story
+          color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
+          {...args}
+        />
+      </Flex>
     );
   },
   argTypes: {
@@ -47,9 +54,10 @@ export const Workshop: Story = {
       control: { type: 'radio' },
     },
     color: {
-      options: [...Object.keys(colorsCommon), ...Object.keys(colors)],
+      options: [undefined, ...Object.keys(colorsCommon), ...Object.keys(colors)],
       control: { type: 'select' },
     },
+    inverted: { control: { type: 'boolean' } },
     textTransform: {
       options: ['capitalize', 'uppercase', 'lowercase', 'none'],
       control: { type: 'radio' },
@@ -68,13 +76,11 @@ export const HeadingVariants: Story = {
   render: () => {
     return (
       <Flex gap={1} direction="column">
-        <Heading variant="displayHeading" noWrap>
-          hamburgefons (displayHeading)
-        </Heading>
-        <Heading variant="h1">hamburgefons (h1)</Heading>
-        <Heading variant="h2">hamburgefons (h2)</Heading>
-        <Heading variant="h3">hamburgefons (h3)</Heading>
-        <Heading variant="h4">hamburgefons (h4)</Heading>
+        {variants.map(variant => (
+          <Heading key={variant} variant={variant}>
+            {variant}
+          </Heading>
+        ))}
       </Flex>
     );
   },

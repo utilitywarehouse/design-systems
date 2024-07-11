@@ -18,6 +18,7 @@ const StyledElement = styled('hr', {
 })<{ color: string }>(({ color }) => {
   return {
     all: 'unset',
+    display: 'block', // explicitly set this so horizontal dividers show inside block elements
     alignSelf: 'stretch',
     flexShrink: 0,
     backgroundColor: color,
@@ -33,9 +34,9 @@ const StyledElement = styled('hr', {
 });
 
 /**
- * Used to provide a visual break and semantically divide content.
- *
- * Supports vertical and horizontal orientations.
+ * Used to provide a visual break and semantically divide content. Supports
+ * vertical and horizontal orientations. Vertical dividers will only be visible
+ * when contained inside an element with display set to `flexbox` or `grid`.
  */
 export const Divider = React.forwardRef<React.ElementRef<'hr'>, DividerProps>(
   (

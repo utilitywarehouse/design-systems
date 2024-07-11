@@ -1,11 +1,12 @@
-import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './TextLink.stories';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-# TextLink
+<DocsHeader componentName="Link" stories={Stories} themeProviderRequired />
 
-<Description />
+This component will be replaced with the `lab/TextLink` component in a future major release.
 
 - [Variants](#variants)
 - [Inline TextLink](#inline-textlink)

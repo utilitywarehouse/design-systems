@@ -15,7 +15,7 @@ const StyledButton = styled('button')<UnstyledButtonProps>(() => {
     outline: 'transparent',
     appearance: 'none',
     boxSizing: 'border-box',
-    cursor: 'default',
+    cursor: 'pointer',
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -32,13 +32,10 @@ const StyledButton = styled('button')<UnstyledButtonProps>(() => {
 });
 
 /**
- * Trigger an action or event, such as submitting a form or displaying a dialog.
- *
- * `UnstyledButton` resets default button styles, and includes the `asChild`
- * prop for changing the rendered element. It can be used as a base for custom
- * button components.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
+ * Trigger an action or event, such as submitting a form or displaying a
+ * dialog. `UnstyledButton` resets default button styles, and includes the
+ * `asChild` prop for changing the rendered element. It can be used as a base
+ * for custom button components.
  */
 export const UnstyledButton = React.forwardRef<
   React.ElementRef<'button'>,
