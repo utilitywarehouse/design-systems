@@ -48,9 +48,9 @@ export const KitchenSink: Story = {
           <Heading variant="h2" textTransform="capitalize">
             solid
           </Heading>
-          <Flex gap={3} align="center">
+          <Flex gap={4} align="center">
             {sizes.map(size => (
-              <Flex key={size} gap={2}>
+              <Flex key={size} gap={1}>
                 {solidColorSchemes.map(colorScheme => (
                   <Button
                     key={colorScheme}
@@ -65,9 +65,9 @@ export const KitchenSink: Story = {
               </Flex>
             ))}
           </Flex>
-          <Flex gap={3} align="center">
+          <Flex gap={4} align="center">
             {sizes.map(size => (
-              <Flex key={size} gap={2}>
+              <Flex key={size} gap={1}>
                 {solidColorSchemes.map(colorScheme => (
                   <Button
                     disabled
@@ -89,9 +89,9 @@ export const KitchenSink: Story = {
             <Heading variant="h2" textTransform="capitalize">
               {variant}
             </Heading>
-            <Flex gap={3} align="center">
+            <Flex gap={4} align="center">
               {sizes.map(size => (
-                <Flex key={size} gap={2}>
+                <Flex key={size} gap={1}>
                   {colorSchemes.map(colorScheme => (
                     <Button
                       key={colorScheme}
@@ -106,9 +106,9 @@ export const KitchenSink: Story = {
                 </Flex>
               ))}
             </Flex>
-            <Flex gap={3} align="center">
+            <Flex gap={4} align="center">
               {sizes.map(size => (
-                <Flex key={size} gap={2}>
+                <Flex key={size} gap={1}>
                   {colorSchemes.map(colorScheme => (
                     <Button
                       disabled
