@@ -7,7 +7,7 @@ import { Heading } from '../Heading';
 import { Box } from '../Box';
 
 const sizes = ['medium', 'small', 'xsmall'] as const;
-const variants = ['outline', 'ghost'] as const;
+const variants = ['solid', 'outline', 'ghost'] as const;
 const colorSchemes = {
   solid: ['cyan', 'red', 'green'] as const,
   outline: ['cyan', 'red', 'green', 'gold', 'grey'] as const,
@@ -44,11 +44,11 @@ export const KitchenSink: Story = {
       <Flex direction="column" gap={6}>
         <Flex gap={2} direction="column">
           <Heading variant="h2" textTransform="capitalize">
-            solid
+            Solid
           </Heading>
-          <Flex gap={5} align="center">
+          <Flex gap={4} align="center">
             {sizes.map(size => (
-              <Flex key={size} gap={2} align="center">
+              <Flex key={size} gap={1}>
                 {colorSchemes.solid.map(colorScheme => (
                   <IconButton
                     key={colorScheme}
@@ -64,9 +64,9 @@ export const KitchenSink: Story = {
               </Flex>
             ))}
           </Flex>
-          <Flex gap={5} align="center">
+          <Flex gap={4} align="center">
             {sizes.map(size => (
-              <Flex key={size} gap={2} align="center">
+              <Flex key={size} gap={1}>
                 {colorSchemes.solid.map(colorScheme => (
                   <IconButton
                     disabled
@@ -84,14 +84,14 @@ export const KitchenSink: Story = {
             ))}
           </Flex>
         </Flex>
-        {variants.map(variant => (
+        {(['outline', 'ghost'] as const).map(variant => (
           <Flex key={variant} gap={2} direction="column">
             <Heading variant="h2" textTransform="capitalize">
               {variant}
             </Heading>
-            <Flex gap={5} align="center">
+            <Flex gap={4} align="center">
               {sizes.map(size => (
-                <Flex key={size} gap={2}>
+                <Flex key={size} gap={1}>
                   {colorSchemes[variant].map(colorScheme => (
                     <IconButton
                       key={colorScheme}
@@ -107,9 +107,9 @@ export const KitchenSink: Story = {
                 </Flex>
               ))}
             </Flex>
-            <Flex gap={5} align="center">
+            <Flex gap={4} align="center">
               {sizes.map(size => (
-                <Flex key={size} gap={2}>
+                <Flex key={size} gap={1}>
                   {colorSchemes[variant].map(colorScheme => (
                     <IconButton
                       disabled
@@ -146,11 +146,10 @@ export const Workshop: Story = {
 export const SimpleExample: Story = {
   render: () => (
     <Flex gap={2}>
-      {['solid' as const, ...variants].map(variant => (
+      {variants.map(variant => (
         <IconButton
           key={variant}
           variant={variant}
-          colorScheme="cyan"
           size="medium"
           onClick={() => alert('Hello world!')}
           label="continue"
@@ -158,6 +157,15 @@ export const SimpleExample: Story = {
           <ChevronRightMediumIcon />
         </IconButton>
       ))}
+      <IconButton
+        disabled
+        variant="outline"
+        size="medium"
+        onClick={() => alert('Hello world!')}
+        label="continue"
+      >
+        <ChevronRightMediumIcon />
+      </IconButton>
     </Flex>
   ),
 };
