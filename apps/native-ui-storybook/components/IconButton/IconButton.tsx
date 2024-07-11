@@ -1,6 +1,6 @@
 import { Box, IconButton } from '@utilitywarehouse/native-ui';
 import React from 'react';
-import { AddMediumIcon } from '@utilitywarehouse/react-native-icons';
+import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 import { ScrollWrap } from '../../docs/components';
 
@@ -8,16 +8,19 @@ const IconButtonBasic: StoryFn = ({
   variant,
   colorScheme,
   isDisabled,
+  icon: _icon,
   size,
   loading,
   inverted,
   _backgroundColor,
 }: any) => {
+  // @ts-expect-error - This is a playground
+  const icon = _icon === 'none' ? undefined : Icons[_icon];
   return (
     <Box height={48} width="100%">
       <ScrollWrap backgroundColor={_backgroundColor}>
         <IconButton
-          icon={AddMediumIcon}
+          icon={icon}
           variant={variant}
           colorScheme={colorScheme}
           isDisabled={isDisabled}
@@ -40,6 +43,11 @@ IconButtonBasic.argTypes = {
     options: ['solid', 'outline', 'ghost'],
     control: 'select',
     description: 'The variant of the button.',
+  },
+  icon: {
+    options: [...Object.keys(Icons)],
+    control: 'select',
+    description: 'The icon component for the button.',
   },
   loading: {
     type: 'boolean',
@@ -74,6 +82,7 @@ IconButtonBasic.args = {
   size: 'medium',
   variant: 'solid',
   colorScheme: 'cyan',
+  icon: 'AddMediumIcon',
   loading: false,
   isDisabled: false,
   inverted: false,

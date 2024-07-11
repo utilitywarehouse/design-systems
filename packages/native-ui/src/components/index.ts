@@ -27,7 +27,7 @@ export { Center } from '@gluestack-ui/themed';
 
 export { HStack, VStack } from '@gluestack-ui/themed';
 
-export { Button, ButtonGroup } from '@gluestack-ui/themed';
+export { ButtonGroup } from '@gluestack-ui/themed';
 
 export { Checkbox, CheckboxGroup, CheckboxLabel } from '@gluestack-ui/themed';
 

@@ -1,25 +1,27 @@
 import { ButtonGroup, Button, IconButton, ButtonText, Box } from '@utilitywarehouse/native-ui';
 import React from 'react';
-import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
+import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 import { ScrollWrap, VariantTitle } from '../../docs/components';
-import { V } from '@storybook/react-native/dist/View-9ba91d66';
 
 const ButtonPlaygroundVariants: StoryFn = ({
   colorScheme,
   isDisabled,
   size,
+  icon: _icon,
   loading,
   inverted,
   _backgroundColor,
 }: any) => {
+  // @ts-expect-error - This is a playground
+  const icon = _icon === 'none' ? undefined : Icons[_icon];
   return (
     <Box height={240} width="100%">
       <ScrollWrap backgroundColor={_backgroundColor}>
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Solid">
             <IconButton
-              icon={ChevronRightMediumIcon}
+              icon={icon}
               variant="solid"
               colorScheme={colorScheme}
               isDisabled={isDisabled}
@@ -30,7 +32,7 @@ const ButtonPlaygroundVariants: StoryFn = ({
           </VariantTitle>
           <VariantTitle title="Outline">
             <IconButton
-              icon={ChevronRightMediumIcon}
+              icon={icon}
               variant="outline"
               colorScheme={colorScheme}
               isDisabled={isDisabled}
@@ -41,7 +43,7 @@ const ButtonPlaygroundVariants: StoryFn = ({
           </VariantTitle>
           <VariantTitle title="Ghost">
             <IconButton
-              icon={ChevronRightMediumIcon}
+              icon={icon}
               variant="ghost"
               colorScheme={colorScheme}
               isDisabled={isDisabled}
@@ -68,6 +70,11 @@ ButtonPlaygroundVariants.argTypes = {
     options: ['cyan', 'red', 'green', 'grey', 'gold'],
     control: 'select',
     description: 'The color scheme of the button.',
+  },
+  icon: {
+    options: [...Object.keys(Icons)],
+    control: 'select',
+    description: 'The icon component for the button.',
   },
   loading: {
     type: 'boolean',
@@ -96,6 +103,7 @@ ButtonPlaygroundVariants.argTypes = {
 ButtonPlaygroundVariants.args = {
   size: 'medium',
   colorScheme: 'cyan',
+  icon: 'ChevronRightMediumIcon',
   loading: false,
   isDisabled: false,
   inverted: false,

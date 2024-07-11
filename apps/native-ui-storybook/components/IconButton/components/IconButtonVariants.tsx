@@ -1,9 +1,8 @@
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { VStack, Text, IconButton, ButtonGroup, Box, Heading } from '@utilitywarehouse/native-ui';
+import { VStack, IconButton, ButtonGroup, Box, Heading } from '@utilitywarehouse/native-ui';
 import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
 import React, { ComponentProps } from 'react';
 import { VariantTitle } from '../../../docs/components';
-import { V } from '@storybook/react-native/dist/View-9ba91d66';
 
 interface IconButtonProps extends ComponentProps<typeof IconButton> {}
 interface IconButtonVariantsProps {

@@ -11,12 +11,25 @@ const AccessbileButton = createButton({
   Spinner,
 });
 
-interface IconButtonProps extends React.ComponentProps<typeof AccessbileButton> {
+export interface IconButtonProps extends React.ComponentProps<typeof AccessbileButton> {
+  /*
+   * The icon to display on the button.
+   * @default undefined
+   */
   icon: React.ElementType;
+  /*
+   * If `true`, the button will show a spinner.
+   * @default  false
+   */
   loading?: boolean;
+  /*
+   * If `true`, the button will be disabled.
+   * @default  false
+   */
+  disabled?: boolean;
 }
 
-const IconButton: FC<IconButtonProps> = ({ loading, icon, ...props }) => {
+const IconButton: FC<IconButtonProps> = ({ loading, icon, disabled, isDisabled, ...props }) => {
   const getSize = (size: IconButtonProps['size']) => {
     switch (size) {
       case 'x-small':
@@ -28,7 +41,7 @@ const IconButton: FC<IconButtonProps> = ({ loading, icon, ...props }) => {
     }
   };
   return (
-    <AccessbileButton {...props}>
+    <AccessbileButton {...props} isDisabled={disabled ?? isDisabled}>
       {loading ? (
         <AccessbileButton.Spinner size={getSize(props.size)} color="" />
       ) : (
