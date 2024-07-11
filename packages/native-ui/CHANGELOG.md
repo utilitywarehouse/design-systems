@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.2.1
+
+### Patch Changes
+
+- [#408](https://github.com/utilitywarehouse/design-systems/pull/408) [`a3a7459`](https://github.com/utilitywarehouse/design-systems/commit/a3a7459f8c50155b22786bc904d642cc1b75a9b2) Thanks [@jordmccord](https://github.com/jordmccord)! - Add simple `Button` API with loading, icon and disabled props
+
 ## 0.2.0
 
 ### Minor Changes
