@@ -1,31 +1,38 @@
 import { Meta } from '@storybook/blocks';
 import { version } from '../../package.json';
 import { Analytics } from '@vercel/analytics/react';
+import { Flex, Heading, Text } from '../../src';
+import { Unstyled } from '@storybook/blocks';
 
 <Analytics />
 
 <Meta title="Web UI / Introduction" />
 
-<img
-  src="gardening.png"
-  alt="UW Design Systems Gardeners"
-  title="UW Design Systems Gardeners"
-  width="600"
-/>
+<Unstyled>
+  <Flex direction="column" align="center" pb={6}>
+    <img
+      src="gardening.png"
+      alt="UW Design Systems Gardeners"
+      title="UW Design Systems Gardeners"
+      width="600"
+    />
+    <Flex direction="column" gap={4} align="center">
+      <Heading variant="displayHeading">UW Web UI</Heading>
+      <Flex direction="column" gap={1} align="center">
+        <Text variant="subtitle">React component library for building UW Web UIs.</Text>
+        <Text>Current version: v{version}</Text>
+      </Flex>
+    </Flex>
+  </Flex>
+</Unstyled>
 
-# UW Web UI
-
-React component library for building UW Web UIs.
-
-Current version: v{version}
+## Contents
 
 - [Installation](#installation)
 - [Additional packages](#additional-packages)
 - [Theming](#theming)
+- [The `lab` submodule](#the-lab-submodule)
 - [ES modules](#es-modules)
-  - [Plain React App](#plain-react-app)
-  - [Create React App](#create-react-app)
-  - [Next.js](#next.js)
 - [Dark Mode](#dark-mode)
 
 ## Installation
@@ -102,12 +109,37 @@ const CustomInput: React.FC = () => (
 ```
 
 All other components can be used without being wrapped in a `ThemeProvider`,
-and will nnot be affected if wrapped in a `ThemeProvider` from another
+and will not be affected if wrapped in a `ThemeProvider` from another
 component library, including the deprecated `customer-ui-material`.
+
+## The `lab` submodule
+
+In an effort to avoid blocking the UX team, at the same time as avoiding
+forcing breaking changes on dev teams, we use the `lab` submodule to add
+component updates when necessary. For instance, if significant design updates,
+required by product, also incur breaking api changes, or a complete refactor,
+we can introduce them via the `lab` import path, alongside the existing
+component. Components introduced in this way can then replace the existing
+component in the next major release.
+
+After being released, components within `lab` will still be subject to semantic
+releasing, so any breaking changes will be considered as just that and will
+require a major release.
+
+```tsx
+import { Button } from '@utilitywarehouse/web-ui/dist/lab';
+
+[...]
+
+<Button>New button</Button>
+```
 
 ## ES modules
 
-In an effort to provide a tree-shakeable library we export bundles for both ES modules and CommonJS. This however may cause issues with Webpack based applications as they default to expecting ES module files to be referenced with a file extension.
+In an effort to provide a tree-shakeable library we export bundles for both ES
+modules and CommonJS. This however may cause issues with Webpack based
+applications as they default to expecting ES module files to be referenced with
+a file extension.
 
 ### Plain React App
 

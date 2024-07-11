@@ -24,9 +24,6 @@ jobs:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
     steps:
-      - name: ℹ️ Get stringified GitHub info
-        run: echo '${{ toJson(github) }}'
-
       - name: 🏗 Setup repo
         uses: pnpm/action-setup@v4
         with:

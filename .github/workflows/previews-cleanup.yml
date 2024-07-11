@@ -15,9 +15,6 @@ jobs:
     continue-on-error: true
     if: ${{ github.event.before && github.head_commit.author.username != 'github-actions[bot]'}}
     steps:
-      - name: ℹ️ Get stringified GitHub info
-        run: echo '${{ toJson(github) }}'
-
       - name: 🏗 Setup repo
         uses: pnpm/action-setup@v4
         with:
