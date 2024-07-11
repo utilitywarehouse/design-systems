@@ -1,5 +1,13 @@
 # @utilitywarehouse/web-ui
 
+## 0.9.2
+
+### Patch Changes
+
+- [#410](https://github.com/utilitywarehouse/design-systems/pull/410) [`56cfa4b`](https://github.com/utilitywarehouse/design-systems/commit/56cfa4b68f374536ad2e5bfb8c8bef293ef006ff) Thanks [@robphoenix](https://github.com/robphoenix)! - Upgrade mui peerdep
+
+- [#417](https://github.com/utilitywarehouse/design-systems/pull/417) [`40c0625`](https://github.com/utilitywarehouse/design-systems/commit/40c06258c7fec58ef802c7bc430d3c6f32ce297e) Thanks [@robphoenix](https://github.com/robphoenix)! - Update `Divider` component & docs
+
 ## 0.9.1
 
 ### Patch Changes
