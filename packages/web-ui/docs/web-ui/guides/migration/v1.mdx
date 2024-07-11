@@ -14,32 +14,42 @@ documenting for others, thankyou!
 
 ## Contents
 
-- [Button size renaming](#button-size-renaming)
+- [Buttons size renaming](#buttons-size-renaming)
 
-### Button size renaming
+### Buttons size renaming
 
-The `Button` component from the `lab` submodule has had the `large` size value
-renamed to `medium`.
+The `Button` component from the `lab` submodule, and the `IconButton`
+component, have had the `large` size value renamed to `medium`.
 
 There will be a codemod available to support this change.
 
 ```diff
-- <Button></Button>
-- <Button size='small'></Button>
 - <Button size='large'></Button>
++ <Button size='medium'></Button>
 - <Button
 -   size={{
 -     mobile: 'small',
 -     desktop: 'large',
 -   }}
 - ></Button>
-+ <Button></Button>
-+ <Button size='small'></Button>
-+ <Button size='medium'></Button>
 + <Button
 +   size={{
 +     mobile: 'small',
 +     desktop: 'medium',
 +   }}
 + ></Button>
+- <IconButton size='large'></IconButton>
++ <IconButton size='medium'></IconButton>
+- <IconButton
+-   size={{
+-     mobile: 'small',
+-     desktop: 'large',
+-   }}
+- ></IconButton>
++ <IconButton
++   size={{
++     mobile: 'small',
++     desktop: 'medium',
++   }}
++ ></IconButton>
 ```
