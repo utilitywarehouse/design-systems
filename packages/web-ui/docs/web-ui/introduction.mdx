@@ -109,17 +109,17 @@ const CustomInput: React.FC = () => (
 ```
 
 All other components can be used without being wrapped in a `ThemeProvider`,
-and will nnot be affected if wrapped in a `ThemeProvider` from another
+and will not be affected if wrapped in a `ThemeProvider` from another
 component library, including the deprecated `customer-ui-material`.
 
 ## The `lab` submodule
 
 In an effort to avoid blocking the UX team, at the same time as avoiding
 forcing breaking changes on dev teams, we use the `lab` submodule to add
-component updates when necessary. for instance, if significant design updates,
+component updates when necessary. For instance, if significant design updates,
 required by product, also incur breaking api changes, or a complete refactor,
 we can introduce them via the `lab` import path, alongside the existing
-component. components introduced in this way can then replace the existing
+component. Components introduced in this way can then replace the existing
 component in the next major release.
 
 After being released, components within `lab` will still be subject to semantic
