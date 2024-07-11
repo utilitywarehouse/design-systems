@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/blocks';
+import { Analytics } from '@vercel/analytics/react';
+
+<Analytics />
+
+<Meta title="Web UI / Guides / Migration / v1" />
+
+# v1
+
+This guide should help with migrating from **Web UI** `v0` to `v1`. It should
+cover all significant changes, however there may be some minor inconsistencies
+not documented here. Please open an issue or PR if you find something worth
+documenting for others, thankyou!
+
+## Contents
+
+- [Button size renaming](#button-size-renaming)
+
+### Button size renaming
+
+The `Button` component from the `lab` submodule has had the `large` size value
+renamed to `medium`.
+
+There will be a codemod available to support this change.
+
+```diff
+- <Button></Button>
+- <Button size='small'></Button>
+- <Button size='large'></Button>
+- <Button
+-   size={{
+-     mobile: 'small',
+-     desktop: 'large',
+-   }}
+- ></Button>
++ <Button></Button>
++ <Button size='small'></Button>
++ <Button size='medium'></Button>
++ <Button
++   size={{
++     mobile: 'small',
++     desktop: 'medium',
++   }}
++ ></Button>
+```
