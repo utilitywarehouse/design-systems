@@ -15,13 +15,16 @@ documenting for others, thankyou!
 ## Contents
 
 - [Buttons size renaming](#buttons-size-renaming)
+- [Codemods](#codemods)
+  - [Migration](#migration)
+  - [Rename lab button size](#rename-lab-button-size)
 
-### Buttons size renaming
+## Buttons size renaming
 
 The `Button` component from the `lab` submodule, and the `IconButton`
 component, have had the `large` size value renamed to `medium`.
 
-There will be a codemod available to support this change.
+There is a codemod available to support this change.
 
 ```diff
 - <Button size='large'></Button>
@@ -52,4 +55,30 @@ There will be a codemod available to support this change.
 +     desktop: 'medium',
 +   }}
 + ></IconButton>
+```
+
+## Codemods
+
+### Migration
+
+This will run all codemods required to migrate from Web UI `v0` to `v1`.
+You can use `npx` to run the codemod on your source files.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/migration <path>
+```
+
+Included codemods:
+
+- `rename-lab-button-size`
+
+Please make sure you fix any linting or formatting issues before continuing to
+run any further codemods.
+
+### Rename lab button size
+
+Updates the size value `large` to `medium` for the `Button` comopnent from the lab submodule.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/rename-lab-button-size <path>
 ```
