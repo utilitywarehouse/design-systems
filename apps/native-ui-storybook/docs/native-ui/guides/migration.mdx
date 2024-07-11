@@ -49,15 +49,42 @@ Replace all `Button` components from `@utilitywarehouse/uw-native-ui` with `@uti
 
 ```tsx
 - import { Button } from '@utilitywarehouse/uw-native-ui';
-+ import { Button, ButtonText } from '@utilitywarehouse/native-ui';
++ import { Button} from '@utilitywarehouse/native-ui';
 
 ...
 
-- <Button onPress={handleClick}>Click me</Button>
-+ <Button onPress={handleClick}><ButtonText>Click me</Button></Button>
+- <Button onPress={handleClick} >Click me</Button>
++ <Button onPress={handleClick}>Click me</Button>
 ```
 
+| Prop Before | Prop After | Values                                                                 |
+| ----------- | ---------- | ---------------------------------------------------------------------- |
+| `mode`      | `variant`  | `contained` -> `solid` \| `outlined` -> `outline` \| `text` -> `ghost` |
+| `size`      | `size`     | `small` -> `small` \| `normal` -> `medium` \| n/a -> `large`           |
+| `uppercase` | n/a        | `true` \| `false`                                                      |
+
+For the `labelStyleOverride` and `contentStyleOverride` props see the [Styling](/docs/native-ui-guides-styling-overview--docs)
+documentation and the `Button` [descendants styling props](/docs/native-ui-components-button--docs#descendants-styling-props)
+and [advanced usage](/docs/native-ui-components-button--docs#advanced-usage) docs.
+
 For more info see the [Button](/docs/native-ui-components-button--docs) documentation.
+
+#### `IconButton`
+
+Replace all `IconButton` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { IconButton } from '@utilitywarehouse/uw-native-ui';
++ import { IconButton } from '@utilitywarehouse/native-ui';
+import { AddMediumIcon } from '@utilitywarehouse/react-native-icons';
+
+...
+
+- <IconButton icon={() => <AddMediumIcon />} color="red" onPress={handleClick} />
++ <IconButton colorScheme="red" icon={<AddMediumIcon />} onPress={handleClick} />
+```
+
+For more info see the [IconButton](/docs/native-ui-components-iconbutton--docs) documentation.
 
 #### `Typography`
 
