@@ -20,10 +20,6 @@ const props = {
   iconRight: figma.instance('Icon Right'),
   iconLeft: figma.instance('Icon Left'),
   text: figma.string('Text'),
-  theme: figma.enum('theme', {
-    light: 'light',
-    dark: 'dark',
-  }),
   colorScheme: figma.enum('colorScheme', {
     cyan: 'cyan',
     green: 'green',
@@ -33,11 +29,6 @@ const props = {
     'medium - 48 (default)': 'medium',
     'large - 56': 'large',
     'small - 32': 'small',
-  }),
-  state: figma.enum('state', {
-    default: 'default',
-    pressed: 'pressed',
-    loading: 'loading',
   }),
   disabled: figma.enum('state', {
     disabled: true,
