@@ -8,6 +8,14 @@ import { colors } from '@utilitywarehouse/colour-system';
 import { styled } from '../theme';
 import { useBackground } from '../Box';
 
+export type ToggleButtonGroupProps = Pick<
+  MuiToggleButtonGroupProps,
+  'children' | 'classes' | 'disabled' | 'fullWidth' | 'onChange' | 'value' | 'className' | 'sx'
+> & {
+  /** Inverts the component colours, for use on darker backgrounds. */
+  inverted?: boolean;
+};
+
 const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme, disabled }) => {
   return {
     border: `2px solid ${disabled ? colors.grey200 : colors.cyan400}`,
@@ -34,18 +42,13 @@ const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)(({ theme, disabl
   };
 });
 
-export type ToggleButtonGroupProps = Pick<
-  MuiToggleButtonGroupProps,
-  'children' | 'classes' | 'disabled' | 'fullWidth' | 'onChange' | 'value' | 'className' | 'sx'
->;
-
 /**
  */
 export const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGroupProps>(
-  function ToggleButtonGroup({ children, disabled, className, ...props }, ref) {
+  function ToggleButtonGroup({ children, disabled, className, inverted, ...props }, ref) {
     const { isInvertedBackground } = useBackground();
     const dataAttributeProps = {
-      [DATA_ATTRIBUTES.inverted]: isInvertedBackground ? '' : undefined,
+      [DATA_ATTRIBUTES.inverted]: inverted || isInvertedBackground ? '' : undefined,
     };
     return (
       <StyledMuiToggleButtonGroup
