@@ -1,14 +1,13 @@
 import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
 import Button from './Button.tsx';
 import * as Stories from './Button.stories';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-# Button
+<DocsHeader componentName="Button" stories={Stories} themeProviderRequired />
 
 This component will be replaced with the `lab/Button` component in a future major release.
-
-<Description />
 
 ## Semantic HTML
 

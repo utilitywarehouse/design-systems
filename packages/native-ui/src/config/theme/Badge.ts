@@ -8,12 +8,13 @@ export const Badge = createStyle({
   paddingVertical: '$1',
   alignSelf: 'flex-start',
   _text: {
-    fontSize: '$badge',
+    fontSize: '$sm',
     fontWeight: '400',
-    lineHeight: 16,
+    lineHeight: '$2xs',
     fontFamily: 'Work Sans',
     props: {
-      size: 'badge',
+      size: 'sm',
+      lineHeight: '$2xs',
     },
   },
   variants: {

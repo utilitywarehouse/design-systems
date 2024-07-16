@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react';
+import { Responsive } from '../types';
 
 export interface BadgeProps extends ComponentPropsWithoutRef<'span'> {
   /**
@@ -26,5 +27,5 @@ export interface BadgeProps extends ComponentPropsWithoutRef<'span'> {
    * Sets a more compact padding
    * @default false
    */
-  compact?: boolean;
+  compact?: Responsive<boolean>;
 }

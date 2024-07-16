@@ -4,12 +4,13 @@ import { Box, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
 import { PlatformContextProvider } from '../contexts/PlatformContext';
 import { useStoryContext, useArgs, useGlobals, getQueryParams } from '@storybook/preview-api';
 import '../assets/style.css';
-import StoryWrap from '../components/StoryWrap';
+import StoryWrap from '../docs/components/StoryWrap';
 import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import { addons } from '@storybook/addons';
 import { UPDATE_GLOBALS } from '@storybook/core-events';
-import { themes } from '@storybook/theming';
 import { DocsContainer as BaseContainer, DocsContainerProps } from '@storybook/blocks';
+import { themeDark, themeLight } from './themes';
+import { Analytics } from '@vercel/analytics/react';
 
 const lightColour: string = '#fff';
 const darkColour: string = '#1d1d1d';
@@ -24,6 +25,7 @@ export const decorators: Decorator[] = [
 
     return viewMode === 'story' ? (
       <NativeUIProvider colorMode={colorScheme}>
+        <Analytics endpoint={window.top?.location?.href} />
         <PlatformContextProvider
           args={args}
           id={id}
@@ -71,9 +73,6 @@ const storyListener = darkMode => {
     channel.emit(UPDATE_GLOBALS, {
       globals: {
         theme: darkMode ? 'dark' : 'light',
-        backgrounds: darkMode
-          ? { name: 'dark', value: darkColour }
-          : { name: 'light', value: lightColour },
       },
     });
   }
@@ -95,7 +94,8 @@ export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({ child
   }, [channel]);
 
   return (
-    <BaseContainer theme={isDark ? themes.dark : themes.light} context={context}>
+    <BaseContainer theme={isDark ? themeDark : themeLight} context={context}>
+      <Analytics endpoint={window.top?.location?.href} />
       {children}
     </BaseContainer>
   );
@@ -105,6 +105,7 @@ const preview: Preview = {
   globals: {
     device: 'web',
   },
+
   parameters: {
     docs: {
       container: DocsContainer,
@@ -113,6 +114,12 @@ const preview: Preview = {
     darkMode: {
       current: 'light',
       stylePreview: true,
+      dark: {
+        ...themeDark,
+      },
+      light: {
+        ...themeLight,
+      },
     },
     options: {
       storySort: {
@@ -141,15 +148,20 @@ const preview: Preview = {
               'Alert',
               'Badge',
               'Box',
+              'Button',
               'Center',
               'Checkbox',
+              'Heading',
               'HStack',
               'Icons',
               'Input',
+              'IconButton',
               'Pressable',
               'Radio',
               'Spinner',
+              'Text',
               'VStack',
+              'Lab',
               'unstyled',
             ],
           ],
@@ -166,18 +178,7 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      // disable: true,
-      default: 'light',
-      values: [
-        {
-          name: 'light',
-          value: lightColour,
-        },
-        {
-          name: 'dark',
-          value: darkColour,
-        },
-      ],
+      disable: true,
     },
   },
 };

@@ -62,10 +62,10 @@ const StyledLink = styled(MuiLink)({
 export const TextLink = React.forwardRef<HTMLAnchorElement, PropsWithSx<TextLinkProps>>(
   function Link({ variant = 'inherit', ...props }, ref) {
     const heading = isHeadingVariant(variant);
-    const { isBrandBackground } = useBackground();
+    const { isInvertedBackground } = useBackground();
     const dataAttributeProps = {
       [DATA_ATTRIBUTES.heading]: heading,
-      [DATA_ATTRIBUTES.bgcolorBrand]: isBrandBackground,
+      [DATA_ATTRIBUTES.bgcolorBrand]: isInvertedBackground,
     };
     return (
       <StyledLink ref={ref} variant={variant} {...props} underline="none" {...dataAttributeProps} />

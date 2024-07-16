@@ -124,18 +124,16 @@ const StyledButton = styled(MuiButton)({
 
 /**
  * A Button should be used for actions.
- *
- * > This component should be wrapped in a ThemeProvider
  */
 export const Button = forwardRef(function Button(
   { size = 'medium', variant = 'primary', ...props },
   ref
 ) {
-  const { isBrandBackground } = useBackground();
+  const { isInvertedBackground } = useBackground();
   const dataAttributeProps = {
     [DATA_ATTRIBUTES.variant]: variant,
     [DATA_ATTRIBUTES.size]: size,
-    [DATA_ATTRIBUTES.bgcolorBrand]: isBrandBackground,
+    [DATA_ATTRIBUTES.bgcolorBrand]: isInvertedBackground,
   };
   return (
     <StyledButton

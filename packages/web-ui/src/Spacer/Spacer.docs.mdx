@@ -1,13 +1,12 @@
-import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './Spacer.stories';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-# Spacer
+<DocsHeader componentName="Spacer" stories={Stories} />
 
-<Description />
-
-<Canvas of={Stories.Workshop} />
+<Canvas of={Stories.Workshop} sourceState="none" />
 
 ## Props
 

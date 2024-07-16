@@ -1,25 +1,22 @@
 import { Box, Spinner, Text, VStack } from '@utilitywarehouse/native-ui';
 import React from 'react';
+import { VariantTitle } from '../../docs/components';
 
 const SpinnerVariants: any = ({ color }: any) => {
   return (
     <VStack space="md">
-      <Box>
-        <Text>xs</Text>
+      <VariantTitle title="x-small - xs">
         <Spinner color={color} size="xs" />
-      </Box>
-      <Box>
-        <Text>sm</Text>
+      </VariantTitle>
+      <VariantTitle title="small - sm">
         <Spinner color={color} size="sm" />
-      </Box>
-      <Box>
-        <Text>md</Text>
+      </VariantTitle>
+      <VariantTitle title="medium - md">
         <Spinner color={color} size="md" />
-      </Box>
-      <Box>
-        <Text>lg</Text>
+      </VariantTitle>
+      <VariantTitle title="large - lg">
         <Spinner color={color} size="lg" />
-      </Box>
+      </VariantTitle>
     </VStack>
   );
 };

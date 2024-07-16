@@ -82,6 +82,30 @@ export const KitchenSink: Story = {
 
 export const Workshop: Story = {};
 
+export const Variants: Story = {
+  render: () => (
+    <Flex gap={2}>
+      {variants.map(variant => (
+        <Badge key={variant} variant={variant}>
+          {variant}
+        </Badge>
+      ))}
+    </Flex>
+  ),
+};
+
+export const ColorSchemes: Story = {
+  render: () => (
+    <Flex gap={2}>
+      {colorSchemes.map(colorScheme => (
+        <Badge key={colorScheme} colorScheme={colorScheme}>
+          {colorScheme}
+        </Badge>
+      ))}
+    </Flex>
+  ),
+};
+
 export const BottomRadiusZero: Story = {
   render: () => {
     return (
@@ -111,4 +135,13 @@ export const ContextualColour: Story = {
       </Backgrounds>
     );
   },
+};
+
+export const Compact: Story = {
+  name: 'Responsive padding',
+  render: args => (
+    <Badge {...args} compact={{ mobile: true, desktop: false }}>
+      Responsive badge padding
+    </Badge>
+  ),
 };

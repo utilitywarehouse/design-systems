@@ -24,11 +24,8 @@ jobs:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
     steps:
-      - name: ℹ️ Get stringified GitHub info
-        run: echo '${{ toJson(github) }}'
-
       - name: 🏗 Setup repo
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 8
 
@@ -135,7 +132,7 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: 🏗 Setup repo
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 8
 
@@ -245,7 +242,7 @@ jobs:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
       - name: 🏗 Setup repo
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 8
 
@@ -378,4 +375,7 @@ jobs:
 
             - [Android](https://appetize.io/embed/${{ env.ANDROID_API_KEY }})
             - [iOS](https://appetize.io/embed/${{ env.IOS_API_KEY }})
+
+            ---
+            Last updated from commit ${{ github.sha }}
           edit-mode: replace

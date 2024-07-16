@@ -1,0 +1,114 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+import * as Stories from './Alert.stories';
+import { DocsHeader } from '../storybook-utils';
+
+<Meta of={Stories} />
+
+<DocsHeader
+  componentName="Alert"
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=5367-21799"
+  stories={Stories}
+/>
+
+<Canvas of={Stories.Workshop} sourceState="none" />
+
+- [Color Scheme](#color-schemes)
+- [Accessibility](#accessibility)
+- [Advanced Usage](#advanced-usage)
+- [Props](#props)
+
+## Color schemes
+
+The `colorScheme` prop will change the Alert colours.
+
+```tsx
+<Alert
+  colorScheme="red"
+  title="Something went wrong"
+  text="Please refresh your browser or come back later"
+/>
+```
+
+The `colorScheme` prop uses a presentational naming convention, rather than
+attaching semantics to different colour schemes. We haven't yet defined
+appropriate semantics within the colour system, which can then be applied
+across components and product applications. We hope to do this in the future,
+and expect to be able to add a semantic colour prop and relevant values to
+components.
+
+However, in the meantime, you can imply some familiar semantics, which could be
+considered as `severity` or `tone`;
+
+- `cyan` -> `information`
+- `green` -> `success`
+- `gold` -> `warning`
+- `red` -> `error`
+
+<Canvas of={Stories.AlertColorSchemes} />
+
+## Accessibility
+
+The `Alert` component should be used sparingly. It has an ARIA role of `alert`,
+used to communicate an important and usually time-sensitive message to the
+user. The browser will send out an accessible alert event to assistive
+technology products which can then notify the user.
+
+The `alert` role is for content that is dynamically displayed, not for content
+that appears on page load. If an alert is present on page load, it won’t be
+read automatically by screenreaders, and is not technically an alert.
+
+To display the `Alert` component, use either conditional rendering or
+dynamically alter the CSS `display` property in your React code.
+
+```tsx
+[...]
+
+const [open, setOpen] = React.useState(false);
+const handleOpen = () => setOpen(true);
+const handleClose = () => setOpen(false);
+
+[...]
+
+return (
+  <Flex direction="column" gap={2} width="fit-content">
+
+    <Button size="small" variant="outline" onClick={handleOpen}>
+      Open alert
+    </Button>
+
+    {/* conditionally render */}
+    {open ? (
+      <Alert direction="row" text="This is for your information." onClose={handleClose} />
+    ) : null}
+
+    {/* or, dynamically alter `display` */}
+    <Box display={open ? 'block' : 'none'}>
+      <Alert direction="row" text="This is for your information." onClose={handleClose} />
+    </Box>
+
+  </Flex>
+);
+```
+
+## Advanced usage
+
+You can use the elements of a `Alert` separately for advanced usage for example changing the alert text:
+
+```tsx
+import { Alert, AlertTitle, AlertText, AlertLink, Strong } from '@utilitywarehouse/web-ui';
+
+const YourComponent = () => (
+  <Alert colorScheme="red">
+    <AlertTitle>Alert title</AlertTitle>
+    <AlertText>
+      Alert text <Strong>purus odio</Strong>, maximus tincidunt aliquet posuere, mollis ut mauris.
+    </AlertText>
+    <AlertLink href="#">Alert link</AlertLink>
+  </Alert>
+);
+```
+
+## Props
+
+<ArgTypes of={Stories} />
+````

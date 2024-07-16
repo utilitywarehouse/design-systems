@@ -1,20 +1,22 @@
 import { Meta, Description, Canvas, ArgTypes } from '@storybook/blocks';
 import * as RadioGroupStories from './RadioGroup.stories';
 import * as RadioStories from '../Radio/Radio.stories';
-import { Stack } from '../Stack';
+import { Flex } from '../Flex';
 import { Box } from '../Box';
 import { Text } from '../Text';
-import { Divider } from '@mui/material';
+import { Divider } from '../Divider';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={RadioGroupStories} />
 
-# RadioGroup
+<DocsHeader
+  componentName="RadioGroup"
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=902-9379"
+  stories={RadioGroupStories}
+/>
 
-<Description of={RadioGroupStories} />
+<Canvas of={RadioGroupStories.Workshop} sourceState="none" />
 
-## Contents
-
-- [Contents](#contents)
 - [Alternatives](#alternatives)
 - [Accessibility](#accessibility)
 - [Keyboard interactions](#keyboard-interactions)
@@ -27,11 +29,11 @@ import { Divider } from '@mui/material';
   - [Accessibility](#accessibility)
   - [Props](#props)
 
-<Canvas of={RadioGroupStories.Workshop} />
-
 ## Alternatives
 
 - [RadioGridGroup](?path=/docs/components-radiogridgroup--documentation) - For presenting radios in columns or a grid layout.
+- [CheckboxGroup](?path=/docs/components-checkboxgroup--documentation) - For multi-select.
+- [CheckboxGridGroup](?path=/docs/components-checkboxgridgroup--documentation) - For multi-select in columns or grid layout.
 
 ## Accessibility
 
@@ -42,17 +44,14 @@ components yourself if you need to.
 
 ## Keyboard interactions
 
-<Stack spacing={1} divider={<Divider />}>
+<Flex direction="column" gap={2}>
   <Box display="flex" alignItems="baseline">
     <Box width={300}>
-      <Text component="span" variant="legalNote">
-        {'Key'}
-      </Text>
+      <Text component="span">Key</Text>
     </Box>
-    <Text component="span" variant="legalNote">
-      {'Description'}
-    </Text>
+    <Text component="span">Description</Text>
   </Box>
+  <Divider />
   {[
     {
       key: 'Tab',
@@ -76,17 +75,20 @@ components yourself if you need to.
       key: 'Arrow Up / Arrow Left',
       description: 'Moves focus and checks the previous radio item in the group.',
     },
-  ].map(kbi => (
-    <Box display="flex" alignItems="baseline">
-      <Box width={300}>
-        <kbd>{kbi.key}</kbd>
+  ].map((kbi, i) => (
+    <>
+      <Box display="flex" alignItems="baseline">
+        <Box width={300}>
+          <kbd>{kbi.key}</kbd>
+        </Box>
+        <Text component="span" variant="body">
+          {kbi.description}
+        </Text>
       </Box>
-      <Text component="span" variant="body">
-        {kbi.description}
-      </Text>
-    </Box>
+      {i < 4 ? <Divider /> : null}
+    </>
   ))}
-</Stack>
+</Flex>
 
 ## Helper text
 

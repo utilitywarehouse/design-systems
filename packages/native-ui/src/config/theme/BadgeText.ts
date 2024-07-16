@@ -1,8 +1,8 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const BadgeText = createStyle({
-  fontSize: '$badge',
+  fontSize: '$sm',
+  lineHeight: '$2xs',
   fontWeight: '400',
-  lineHeight: 16,
   fontFamily: 'Work Sans',
 });

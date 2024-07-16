@@ -11,8 +11,9 @@ export function getColumns(columns: StackProps['spacing']) {
   }
   if (typeof columns === 'object') {
     return Object.keys(breakpoints).reduce((acc: { [key: string]: string }, breakpoint: string) => {
-      if (columns[breakpoint] !== null) {
-        acc[breakpoint] = convert(columns[breakpoint] as string);
+      const breakpointValue = columns[breakpoint];
+      if (breakpointValue !== undefined && breakpointValue !== null) {
+        acc[breakpoint] = convert(breakpointValue as string);
       }
       return acc;
     }, {});

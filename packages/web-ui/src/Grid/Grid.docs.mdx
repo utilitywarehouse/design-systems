@@ -6,14 +6,13 @@ import { Stack } from '../Stack';
 import { Text } from '../Text';
 import { Divider } from '@mui/material';
 import { spacingBase, breakpoints } from '../tokens';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-# Grid
+<DocsHeader componentName="Grid" stories={Stories} themeProviderRequired />
 
-<Description />
-
-<Canvas of={Stories.GridStory} />
+<Canvas of={Stories.GridStory} sourceState="none" />
 
 - [Accessibility](#accessibility)
 - [Breakpoint Props](#breakpoint-props)

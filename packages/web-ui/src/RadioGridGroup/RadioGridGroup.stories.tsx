@@ -1,13 +1,11 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { RadioGridGroup } from './RadioGridGroup';
-import { Stack } from '../Stack';
 import { RadioTile } from '../RadioTile';
 
 const meta: Meta<typeof RadioGridGroup> = {
   title: 'Web UI / Components / Radio / RadioGridGroup',
   component: RadioGridGroup,
-  tags: ['autodocs'],
   argTypes: {
     error: { control: { type: 'boolean' } },
     defaultValue: { control: { type: 'text' } },
@@ -38,8 +36,7 @@ const meta: Meta<typeof RadioGridGroup> = {
 export default meta;
 type Story = StoryObj<typeof RadioGridGroup>;
 
-export const RadioGridGroupWorkshop: Story = {
-  name: 'Workshop',
+export const Workshop: Story = {
   render: args => {
     return (
       <RadioGridGroup {...args}>
@@ -61,16 +58,14 @@ export const RadioGridWithRadioHelperText: Story = {
   name: 'With Radio HelperText',
   render: args => {
     return (
-      <Stack spacing={8}>
-        <RadioGridGroup {...args}>
-          <RadioTile value="1" label="One" helperText="One helper text" />
-          <RadioTile value="2" label="Two" helperText="Two helper text" />
-          <RadioTile value="3" label="Three" helperText="Three helper text" />
-          <RadioTile value="4" label="One" helperText="Four helper text" />
-          <RadioTile value="5" label="Two" helperText="Five helper text" />
-          <RadioTile value="6" label="Three" helperText="Six helper text" />
-        </RadioGridGroup>
-      </Stack>
+      <RadioGridGroup {...args}>
+        <RadioTile value="1" label="One" helperText="One helper text" />
+        <RadioTile value="2" label="Two" helperText="Two helper text" />
+        <RadioTile value="3" label="Three" helperText="Three helper text" />
+        <RadioTile value="4" label="One" helperText="Four helper text" />
+        <RadioTile value="5" label="Two" helperText="Five helper text" />
+        <RadioTile value="6" label="Three" helperText="Six helper text" />
+      </RadioGridGroup>
     );
   },
   args: {
@@ -82,7 +77,7 @@ export const RadioGridGroupResponsiveColumns: Story = {
   name: 'With Responsive Columns',
   render: args => {
     return (
-      <RadioGridGroup {...args} columns={{ mobile: 2, desktop: 1 }}>
+      <RadioGridGroup {...args}>
         <RadioTile value="1" label="One" />
         <RadioTile value="2" label="Two" />
         <RadioTile value="3" label="Three" />
@@ -94,5 +89,6 @@ export const RadioGridGroupResponsiveColumns: Story = {
   },
   args: {
     helperText: 'RadioGridGroup with Responsive Columns',
+    columns: { mobile: 1, tablet: 2, desktop: 3, wide: 6 },
   },
 };

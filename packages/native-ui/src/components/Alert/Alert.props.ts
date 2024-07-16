@@ -22,10 +22,10 @@ interface AlertWithoutChildrenProps {
 
   /**
    * The color scheme of the alert.
-   * Possible values: 'info', 'success', 'warning', 'error'.
-   * @default 'info'
+   * Possible values: 'cyan', 'green', 'gold', 'red'.
+   * @default 'cyan'
    */
-  colorScheme?: 'info' | 'success' | 'warning' | 'error';
+  colorScheme?: 'cyan' | 'green' | 'gold' | 'red';
 
   /**
    * Callback function for when the icon button is pressed.

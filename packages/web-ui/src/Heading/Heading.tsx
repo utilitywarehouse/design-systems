@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createBox, useBackground } from '../Box';
+import { useBackground } from '../Box';
 import { PropsWithSx } from '../types';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import {
@@ -16,7 +16,7 @@ import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'Heading';
-const BaseBox = createBox<'h1' | 'h2' | 'h3' | 'h4'>({ componentName });
+const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
   variant: {
@@ -38,12 +38,17 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'color' })<{
+const StyledElement = styled('h2', {
+  shouldForwardProp: prop => prop !== 'color' && prop !== 'as' && prop !== 'textTransform',
+})<{
   color?: string;
-}>(({ color }) => {
+  textTransform?: HeadingProps['textTransform'];
+}>(({ color, textTransform }) => {
   return {
     fontFamily: fonts.primary,
     fontWeight: fontWeights.primary,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    textTransform: textTransform as any,
     fontSize: 'var(--heading-font-size)',
     lineHeight: 'var(--heading-line-height)',
     color: 'var(--heading-color)',
@@ -66,7 +71,7 @@ const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'col
     '--heading-line-height-h2-desktop': 1.5,
     '--heading-line-height-h3': 1.5,
     '--heading-line-height-h4': 1.5,
-    [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
+    [DATA_ATTRIBUTE_SELECTORS.inverted]: {
       '--heading-color': 'var(--heading-color-on-brand-bg)',
     },
     [DATA_ATTRIBUTE_SELECTORS.customColor]: {
@@ -120,18 +125,18 @@ const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'col
 export const Heading = React.forwardRef<
   React.ElementRef<'h2'>,
   React.PropsWithChildren<PropsWithSx<HeadingProps>>
->(({ component, variant = 'h2', color, className, ...props }, ref) => {
+>(({ component, variant = 'h2', color, className, inverted, ...props }, ref) => {
   const element = component ? component : variant === 'displayHeading' ? 'h1' : variant;
-  const { isBrandBackground } = useBackground();
+  const { isInvertedBackground } = useBackground();
   const dataAttributeProps = {
-    [DATA_ATTRIBUTES.onBrandBackground]: !color && isBrandBackground ? '' : undefined,
+    [DATA_ATTRIBUTES.inverted]: !color && (inverted || isInvertedBackground) ? '' : undefined,
     [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
   };
   return (
     <StyledElement
       ref={ref}
-      component={element}
-      className={clsx(className, classNames.variant[variant])}
+      as={element}
+      className={clsx(componentClassName, className, classNames.variant[variant])}
       color={color}
       {...dataAttributeProps}
       {...props}

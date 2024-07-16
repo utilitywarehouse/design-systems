@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { pxToRem } from '../utils';
+import { DATA_ATTRIBUTE_SELECTORS, pxToRem } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
 import { PropsWithSx } from '../types';
 import { LabelProps } from './Label.props';
@@ -26,27 +26,25 @@ const StyledElement = styled(BaseBox)({
   ':where([data-nested])': {
     '--label-font-weight': 'var(--label-font-weight-nested)',
   },
+  [DATA_ATTRIBUTE_SELECTORS.disableUserSelect]: {
+    userSelect: 'none',
+  },
 });
 
 /**
- * > This component is only required when building a custom field that isn’t
- * > provided by UW Web UI.
- *
  * The Label component is used for labelling form elements, such as radio inputs.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be
- * > used standalone with other component libraries.
  */
 export const Label = React.forwardRef<
   React.ElementRef<'label'>,
   React.PropsWithChildren<PropsWithSx<LabelProps>>
->(({ component = 'label', disabled, nested, ...props }, ref) => {
+>(({ component = 'label', disabled, nested, disableUserSelect, ...props }, ref) => {
   return (
     <StyledElement
       ref={ref}
       component={component}
       data-disabled={disabled ? '' : undefined}
       data-nested={nested ? '' : undefined}
+      data-disable-user-select={disableUserSelect ? '' : undefined}
       {...props}
     />
   );
