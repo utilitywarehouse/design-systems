@@ -3,6 +3,7 @@ import { createStyle } from '@gluestack-style/react';
 export const RadioLabel = createStyle({
   color: '$grey1000',
   lineHeight: 24,
+  fontWeight: '$semibold',
   ':checked': {
     color: '$grey1000',
     ':disabled': {

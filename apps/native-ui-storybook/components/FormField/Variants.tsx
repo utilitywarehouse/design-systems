@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Box,
   Input,
   InputField,
   FormField,
@@ -15,105 +14,99 @@ import {
   FormFieldValid,
   FormFieldValidText,
   ScrollView,
-  Text,
+  VStack,
 } from '@utilitywarehouse/native-ui';
 import { StoryFn } from '@storybook/react';
-import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
+import { VariantTitle } from '../../docs/components';
 
 const InputVariants: StoryFn = () => {
   return (
     <ScrollView>
-      <Box gap={8}>
-        <Text mt="$4" mb="$2">
-          Defaut
-        </Text>
-        <FormField>
-          <FormFieldLabel>
-            <FormFieldLabelText>Label</FormFieldLabelText>
-          </FormFieldLabel>
-          <Input>
-            <InputField />
-          </Input>
-        </FormField>
-        <Text mt="$4" mb="$2">
-          With helper text bottom
-        </Text>
-        <FormField>
-          <FormFieldLabel>
-            <FormFieldLabelText>Label</FormFieldLabelText>
-          </FormFieldLabel>
-          <Input>
-            <InputField />
-          </Input>
-          <FormFieldHelper>
-            <FormFieldHelperText>Helper text</FormFieldHelperText>
-          </FormFieldHelper>
-        </FormField>
-        <Text mt="$4" mb="$2">
-          With helper text top
-        </Text>
-        <FormField>
-          <FormFieldLabel>
-            <FormFieldLabelText>Label</FormFieldLabelText>
-          </FormFieldLabel>
-          <FormFieldHelper>
-            <FormFieldHelperText>Helper text</FormFieldHelperText>
-          </FormFieldHelper>
-          <Input>
-            <InputField />
-          </Input>
-        </FormField>
-        <Text mt="$4" mb="$2">
-          Valid with valid text
-        </Text>
-        <FormField validationStatus="valid">
-          <FormFieldLabel>
-            <FormFieldLabelText>Label</FormFieldLabelText>
-          </FormFieldLabel>
-          <FormFieldHelper>
-            <FormFieldHelperText>Helper text</FormFieldHelperText>
-          </FormFieldHelper>
-          <Input>
-            <InputField />
-          </Input>
-          <FormFieldValid>
-            <FormFieldValidIcon />
-            <FormFieldValidText>Valid form field text</FormFieldValidText>
-          </FormFieldValid>
-        </FormField>
-        <Text mt="$4" mb="$2">
-          Invalid with invalid text
-        </Text>
-        <FormField validationStatus="invalid">
-          <FormFieldLabel>
-            <FormFieldLabelText>Label</FormFieldLabelText>
-          </FormFieldLabel>
-          <FormFieldHelper>
-            <FormFieldHelperText>Helper text</FormFieldHelperText>
-          </FormFieldHelper>
-          <Input>
-            <InputField />
-          </Input>
-          <FormFieldInvalid>
-            <FormFieldInvalidIcon />
-            <FormFieldInvalidText>Invalid form field text</FormFieldInvalidText>
-          </FormFieldInvalid>
-        </FormField>
-        <Text mt="$4" mb="$2">
-          Disabled
-        </Text>
-        <FormField isDisabled>
-          <FormFieldLabel>
-            <FormFieldLabelText>Label</FormFieldLabelText>
-          </FormFieldLabel>
-          <Input>
-            <InputField />
-          </Input>
-          <FormFieldHelper>
-            <FormFieldHelperText>Helper text</FormFieldHelperText>
-          </FormFieldHelper>
-        </FormField>
-      </Box>
+      <VStack gap="$4">
+        <VariantTitle title="Default">
+          <FormField>
+            <FormFieldLabel>
+              <FormFieldLabelText>Label</FormFieldLabelText>
+            </FormFieldLabel>
+            <Input>
+              <InputField />
+            </Input>
+          </FormField>
+        </VariantTitle>
+        <VariantTitle title="With helper text bottom">
+          <FormField>
+            <FormFieldLabel>
+              <FormFieldLabelText>Label</FormFieldLabelText>
+            </FormFieldLabel>
+            <Input>
+              <InputField />
+            </Input>
+            <FormFieldHelper>
+              <FormFieldHelperText>Helper text</FormFieldHelperText>
+            </FormFieldHelper>
+          </FormField>
+        </VariantTitle>
+        <VariantTitle title="With helper text top">
+          <FormField>
+            <FormFieldLabel>
+              <FormFieldLabelText>Label</FormFieldLabelText>
+            </FormFieldLabel>
+            <FormFieldHelper>
+              <FormFieldHelperText>Helper text</FormFieldHelperText>
+            </FormFieldHelper>
+            <Input>
+              <InputField />
+            </Input>
+          </FormField>
+        </VariantTitle>
+        <VariantTitle title="Valid with valid text">
+          <FormField validationStatus="valid">
+            <FormFieldLabel>
+              <FormFieldLabelText>Label</FormFieldLabelText>
+            </FormFieldLabel>
+            <FormFieldHelper>
+              <FormFieldHelperText>Helper text</FormFieldHelperText>
+            </FormFieldHelper>
+            <Input>
+              <InputField />
+            </Input>
+            <FormFieldValid>
+              <FormFieldValidIcon />
+              <FormFieldValidText>Valid form field text</FormFieldValidText>
+            </FormFieldValid>
+          </FormField>
+        </VariantTitle>
+        <VariantTitle title="Invalid with invalid text">
+          <FormField validationStatus="invalid">
+            <FormFieldLabel>
+              <FormFieldLabelText>Label</FormFieldLabelText>
+            </FormFieldLabel>
+            <FormFieldHelper>
+              <FormFieldHelperText>Helper text</FormFieldHelperText>
+            </FormFieldHelper>
+            <Input>
+              <InputField />
+            </Input>
+            <FormFieldInvalid>
+              <FormFieldInvalidIcon />
+              <FormFieldInvalidText>Invalid form field text</FormFieldInvalidText>
+            </FormFieldInvalid>
+          </FormField>
+        </VariantTitle>
+        <VariantTitle title="Disabled">
+          <FormField isDisabled>
+            <FormFieldLabel>
+              <FormFieldLabelText>Label</FormFieldLabelText>
+            </FormFieldLabel>
+            <Input>
+              <InputField />
+            </Input>
+            <FormFieldHelper>
+              <FormFieldHelperText>Helper text</FormFieldHelperText>
+            </FormFieldHelper>
+          </FormField>
+        </VariantTitle>
+      </VStack>
     </ScrollView>
   );
 };

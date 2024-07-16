@@ -1,5 +1,5 @@
 import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
-import * as FormFieldStories from './FormField.stories';
+import * as Stories from './FormField.stories';
 import {
   Input,
   InputField,
@@ -20,14 +20,32 @@ import {
   Radio,
   RadioIndicator,
   RadioLabel,
+  Checkbox,
+  CheckboxIndicator,
+  CheckboxLabel,
+  VStack,
 } from '@utilitywarehouse/native-ui';
 import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
+import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
 
-<Meta of={FormFieldStories} />
+<Meta of={Stories} />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=7140-9243&m=dev" />
+
+<BackToTopButton />
 
 # Form Field
 
 The `FormField` component is a container for form elements such as input fields. It provides a consistent layout and styling for form elements in which developers can provide important context to form elements. This context can include whether the element is invalid, disabled, or required.
+
+- [Playground](#playground)
+- [Usage](#usage)
+  - [Validation Helper Text](#validation-helper-text)
+- [Props](#props)
+- [Variants](#variants)
+- [Examples](#examples)
+  - [With RadioGroup](#with-radiogroup)
+  - [With Checkbox](#with-checkbox)
 
 ## Playground
 
@@ -164,7 +182,7 @@ const MyComponent = () => {
 | `validationStatus` | `'initial' \| 'valid' \| 'invalid` | `'initial'` | The validation status of the field. |
 | `isDisabled`       | `boolean`                          | `false`     | Whether the field is disabled.      |
 
-### Descendants Styling Props
+#### Descendants Styling Props
 
 Props to style child components.
 
@@ -179,6 +197,10 @@ Props to style child components.
 | `_invalidIcon` | Prop to style FormFieldInvalidIcon |
 | `_validIcon`   | Prop to style FormFieldValidIcon   |
 | `_input`       | Prop to style Input                |
+
+## Variants
+
+<Canvas of={Stories.Variants} />
 
 ## Examples
 
@@ -251,6 +273,67 @@ const MyComponent = () => {
       <FormFieldHelper>
         <FormFieldHelperText>Choose the fruit you like the most</FormFieldHelperText>
       </FormFieldHelper>
+    </FormField>
+  );
+};
+```
+
+### With Checkbox
+
+The `FormField` component can be used to wrap a `Checkbox` component to provide additional context to the user.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <FormField validationStatus="invalid">
+        <Checkbox alignItems="flex-start">
+          <CheckboxIndicator />
+          <VStack gap="$1">
+            <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
+            <FormFieldHelper>
+              <FormFieldHelperText>Read and accept the terms and conditions</FormFieldHelperText>
+            </FormFieldHelper>
+            <FormFieldInvalid>
+              <FormFieldInvalidIcon />
+              <FormFieldInvalidText>Please check the box above</FormFieldInvalidText>
+            </FormFieldInvalid>
+          </VStack>
+        </Checkbox>
+      </FormField>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import {
+  Checkbox,
+  CheckboxIndicator,
+  CheckboxLabel,
+  FormField,
+  FormFieldHelper,
+  FormFieldHelperText,
+  FormFieldInvalidIcon,
+  FormFieldInvalid,
+  FormFieldInvalidText,
+  VStack,
+} from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <FormField validationStatus="invalid">
+      <Checkbox alignItems="flex-start">
+        <CheckboxIndicator />
+        <VStack gap="$1">
+          <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
+          <FormFieldHelper>
+            <FormFieldHelperText>Read and accept the terms and conditions</FormFieldHelperText>
+          </FormFieldHelper>
+          <FormFieldInvalid>
+            <FormFieldInvalidIcon />
+            <FormFieldInvalidText>Please check the box above</FormFieldInvalidText>
+          </FormFieldInvalid>
+        </VStack>
+      </Checkbox>
     </FormField>
   );
 };
