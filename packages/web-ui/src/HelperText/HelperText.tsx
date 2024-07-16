@@ -1,14 +1,20 @@
 import * as React from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { classSelector, withGlobalPrefix, pxToRem, spacing } from '../utils';
+import {
+  classSelector,
+  withGlobalPrefix,
+  pxToRem,
+  spacing,
+  DATA_ATTRIBUTE_SELECTORS,
+} from '../utils';
 import { PropsWithSx } from '../types';
 import { HelperTextProps } from './HelperText.props';
 import clsx from 'clsx';
 import { styled } from '../theme';
 import {
-  Information01SmallContainedIcon,
-  Warning01SmallContainedIcon,
-  Tick01SmallContainedIcon,
+  InformationMediumContainedIcon,
+  WarningMediumContainedIcon,
+  TickMediumContainedIcon,
 } from '@utilitywarehouse/react-icons';
 import { fontWeights, fonts } from '../tokens';
 
@@ -28,12 +34,12 @@ const classSelectors = {
 const StyledElement = styled('span')({
   display: 'inline-flex',
   fontFamily: fonts.secondary,
-  weight: fontWeights.secondary.regular,
-  fontSize: pxToRem(13),
-  lineHeight: pxToRem(16),
+  fontWeight: fontWeights.secondary.regular,
+  fontSize: pxToRem(16),
+  lineHeight: pxToRem(24),
   gap: spacing(1),
   alignItems: 'center',
-  '--helper-text-color': colors.grey800,
+  '--helper-text-color': colors.grey700,
   '--helper-text-color-disabled': colors.grey400,
   '--helper-text-color-valid': colors.green600,
   '--helper-text-color-invalid': colors.red600,
@@ -52,45 +58,48 @@ const StyledElement = styled('span')({
   [classSelectors.invalid]: {
     '--helper-text-color': 'var(--helper-text-color-invalid)',
   },
+  [DATA_ATTRIBUTE_SELECTORS.disableUserSelect]: {
+    userSelect: 'none',
+  },
 });
 
 /**
- * > This component is only required when building a custom field that isn’t
- * > provided by UW Web UI.
- *
  * This component should be used with form field components to display helper
- * text.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be
- * > used standalone with other component libraries.
+ * text or error text.
  */
 export const HelperText = React.forwardRef<
   React.ElementRef<'span'>,
   React.PropsWithChildren<PropsWithSx<HelperTextProps>>
->(({ showIcon, validationStatus, disabled, children, className, ...props }, ref) => {
-  const icons: { [key: string]: typeof Tick01SmallContainedIcon } = {
-    valid: Tick01SmallContainedIcon,
-    invalid: Warning01SmallContainedIcon,
-  };
-  const Icon = validationStatus
-    ? (icons[validationStatus] as JSX.ElementType)
-    : (Information01SmallContainedIcon as JSX.ElementType);
+>(
+  (
+    { showIcon, validationStatus, disabled, children, className, disableUserSelect, ...props },
+    ref
+  ) => {
+    const icons: { [key: string]: typeof TickMediumContainedIcon } = {
+      valid: TickMediumContainedIcon,
+      invalid: WarningMediumContainedIcon,
+    };
+    const Icon = validationStatus
+      ? (icons[validationStatus] as JSX.ElementType)
+      : (InformationMediumContainedIcon as JSX.ElementType);
 
-  return (
-    <StyledElement
-      ref={ref}
-      data-disabled={disabled ? '' : undefined}
-      className={clsx(
-        componentClassName,
-        validationStatus && classNames[validationStatus],
-        className
-      )}
-      {...props}
-    >
-      {showIcon ? <Icon /> : null}
-      {children}
-    </StyledElement>
-  );
-});
+    return (
+      <StyledElement
+        ref={ref}
+        data-disabled={disabled ? '' : undefined}
+        data-disable-user-select={disableUserSelect ? '' : undefined}
+        className={clsx(
+          componentClassName,
+          validationStatus && classNames[validationStatus],
+          className
+        )}
+        {...props}
+      >
+        {showIcon ? <Icon /> : null}
+        {children}
+      </StyledElement>
+    );
+  }
+);
 
 HelperText.displayName = componentName;

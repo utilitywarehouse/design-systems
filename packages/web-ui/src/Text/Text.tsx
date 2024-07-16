@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createBox, useBackground } from '../Box';
+import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import {
   DATA_ATTRIBUTES,
@@ -16,7 +16,7 @@ import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'Text';
-const BaseBox = createBox<'p' | 'span'>({ componentName });
+const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
   bold: withGlobalPrefix('bold'),
@@ -40,11 +40,16 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'color' })<{
+const StyledElement = styled('p', {
+  shouldForwardProp: prop => prop !== 'color' && prop !== 'as' && prop !== 'textTransform',
+})<{
   color?: string;
-}>(({ color }) => {
+  textTransform?: TextProps['textTransform'];
+}>(({ color, textTransform }) => {
   return {
     fontFamily: fonts.secondary,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    textTransform: textTransform as any,
     fontSize: 'var(--text-font-size)',
     lineHeight: 'var(--text-line-height)',
     fontWeight: 'var(--text-font-weight)',
@@ -63,7 +68,7 @@ const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'col
     '--text-line-height-body': 1.5,
     '--text-line-height-legalNote': 1.5,
     '--text-line-height-caption': 2,
-    [DATA_ATTRIBUTE_SELECTORS.onBrandBackground]: {
+    [DATA_ATTRIBUTE_SELECTORS.inverted]: {
       '--text-color': 'var(--text-color-on-brand-bg)',
     },
     [DATA_ATTRIBUTE_SELECTORS.customColor]: {
@@ -105,31 +110,35 @@ const StyledElement = styled(BaseBox, { shouldForwardProp: prop => prop !== 'col
 
 /**
  * Text renders the secondary UW font, Work Sans, to be used for body text.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Text = React.forwardRef<
-  React.ElementRef<'span'>,
+  React.ElementRef<'p'>,
   React.PropsWithChildren<PropsWithSx<TextProps>>
->(({ variant = 'body', bold, noWrap, color, className, ...props }, ref) => {
-  const { isBrandBackground } = useBackground();
-  const dataAttributeProps = {
-    [DATA_ATTRIBUTES.onBrandBackground]: !color && isBrandBackground ? '' : undefined,
-    [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
-  };
+>(
+  (
+    { variant = 'body', component = 'p', bold, noWrap, color, className, inverted, ...props },
+    ref
+  ) => {
+    const { isInvertedBackground } = useBackground();
+    const dataAttributeProps = {
+      [DATA_ATTRIBUTES.inverted]: !color && (inverted || isInvertedBackground) ? '' : undefined,
+      [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
+    };
 
-  return (
-    <StyledElement
-      ref={ref}
-      className={clsx(className, classNames.variant[variant], {
-        [classNames.bold]: bold,
-        [classNames.noWrap]: noWrap,
-      })}
-      color={color}
-      {...dataAttributeProps}
-      {...props}
-    />
-  );
-});
+    return (
+      <StyledElement
+        ref={ref}
+        as={component}
+        className={clsx(componentClassName, className, classNames.variant[variant], {
+          [classNames.bold]: bold,
+          [classNames.noWrap]: noWrap,
+        })}
+        color={color}
+        {...dataAttributeProps}
+        {...props}
+      />
+    );
+  }
+);
 
 Text.displayName = componentName;

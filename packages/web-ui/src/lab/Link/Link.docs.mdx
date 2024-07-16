@@ -1,15 +1,17 @@
-import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './Link.stories';
+import { DocsHeader } from '../../storybook-utils';
 
 <Meta of={Stories} />
 
-# Link
+<DocsHeader
+  lab
+  componentName="Link"
+  stories={Stories}
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=6834-38146"
+/>
 
-<Description />
-
-<Canvas of={Stories.SimpleExample} />
-
-## Contents
+<Canvas of={Stories.SimpleExample} sourceState="none" />
 
 - [Usage](#usage)
 - [Size](#size)
@@ -29,33 +31,12 @@ components available prior to an official major release. This helps us bed in
 new components before introducing breaking changes, and to avoid blocking the
 availability of these components for designers.
 
-There are 2 options for importing this component.
-
-1. Import directly from the `lab` directory.
-
 ```tsx
 import { Box } from '@utilitywarehouse/web-ui';
 import { Link } from '@utilitywarehouse/web-ui/dist/lab';
 
 [...]
 
-<Box>
-  <Link>Link</Link>
-</Box>
-```
-
-2. Import `Lab` directly from Web UI.
-
-```tsx
-import { Box, Lab } from '@utilitywarehouse/web-ui';
-
-[...]
-
-<Box>
-  <Lab.Link>Link</Lab.Link>
-</Box>
-// or
-const { Link } = Lab
 <Box>
   <Link>Link</Link>
 </Box>
@@ -114,9 +95,6 @@ instead cloning the child and passing it the props and behaviour required to
 make it functional.
 
 Read more about this idea in the [Radix UI composition docs](https://www.radix-ui.com/primitives/docs/guides/composition).
-
-While **we do not recommend** you do this, if you really wanted to render a
-`button` that looks like a `Link`, you could do the following:
 
 ```tsx
 // You may need to disable this eslint warning:

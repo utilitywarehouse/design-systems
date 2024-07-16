@@ -28,8 +28,6 @@ const StyledMenu = styled(MuiMenu)({
  * the user interacts with a button, or other control.
  *
  * Please refer to [MUI](https://mui.com/material-ui/react-menu/) for more extensive documentation.
- *
- * > This component should be wrapped in a ThemeProvider
  */
 export const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu(props, ref) {
   return (

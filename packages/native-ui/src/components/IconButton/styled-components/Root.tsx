@@ -3,10 +3,7 @@ import { Pressable } from 'react-native';
 
 const IconButton = styled(Pressable, {}, {
   componentName: 'IconButton',
-  descendantStyle: ['_text', '_spinner', '_icon'],
+  descendantStyle: ['_icon', '_spinner'],
   ancestorStyle: ['_button'],
-} as const) as React.ForwardRefExoticComponent<import('react-native').PressableProps & {}> & {
-  displayName: string;
-};
-
+} as const);
 export default IconButton;

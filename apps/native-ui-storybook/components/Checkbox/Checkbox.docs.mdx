@@ -1,0 +1,226 @@
+import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
+import * as Stories from './Checkbox.stories';
+import {
+  Checkbox,
+  CheckboxGroup,
+  CheckboxIndicator,
+  CheckboxLabel,
+  Center,
+  NativeUIProvider,
+} from '@utilitywarehouse/native-ui';
+import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
+import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
+
+<Meta of={Stories} />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4454-2156" />
+
+<BackToTopButton />
+
+# Checkbox
+
+Whether you're building a simple form or a complex data collection system, the Checkbox component offers a user-friendly way for users to select multiple options from a list.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Components](#components)
+  - [Checkbox](#checkbox)
+  - [CheckboxIndicator](#checkboxindicator)
+  - [CheckboxLabel](#checkboxlabel)
+  - [CheckboxGroup](#checkboxgroup)
+- [Variants](#variants)
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Checkbox value="Label" onChange={isChecked => console.log(isChecked, '###')}>
+        <CheckboxIndicator />
+        <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
+      </Checkbox>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const [accepted, setAccepted] = React.useState(false);
+  return (
+    <Checkbox value="accepted" onChange={(isChecked: boolean) => setAccepted(isChecked)}>
+      <CheckboxIndicator />
+      <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
+    </Checkbox>
+  );
+};
+```
+
+## Props
+
+| Property           | Type                       | Default | Description                                                                                                          |
+| ------------------ | -------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
+| `value`            | `string`                   | -       | The value to be used in the checkbox input. This is the value that will be returned on form submission.              |
+| `onChange`         | `(value: boolean) => void` | -       | Function called when the state of the checkbox changes.                                                              |
+| `defaultIsChecked` | `bool`                     | `false` | If true, the checkbox will be initially checked.                                                                     |
+| `isChecked`        | `bool`                     | `false` | When true, the checkbox will be checked. You'll need to pass onChange update it's value (since it's now controlled). |
+| `isDisabled`       | `bool`                     | `false` | To manually set disable to the checkbox.                                                                             |
+| `isHovered`        | `bool`                     | `false` | To manually set hover to the checkbox.                                                                               |
+| `isIndeterminate`  | `bool`                     | `false` | To manually set indeterminate to the checkbox.                                                                       |
+
+#### Descendants Styling Props
+
+Props to style child components.
+
+| Sx Prop      | Description                               |
+| ------------ | ----------------------------------------- |
+| `_text`      | Prop to style CheckboxLabel Component     |
+| `_icon`      | Prop to style CheckboxIcon Component      |
+| `_indicator` | Prop to style CheckboxIndicator Component |
+
+For more information, see the [Gluestack Checkbox component documentation](https://gluestack.io/ui/docs/components/forms/checkbox).
+
+## Components
+
+### `Checkbox`
+
+The `Checkbox` component is the wrapper for the checkbox input. It is used to handle the state of the checkbox input.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Checkbox value="Label" onChange={() => console.log(isChecked, '###')}>
+        <CheckboxIndicator />
+        <CheckboxLabel>Subscribe</CheckboxLabel>
+      </Checkbox>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const [subscribed, setSubscribed] = React.useState(false);
+  return (
+    <Checkbox value="subscribed" onChange={(isChecked: boolean) => setSubscribed(isChecked)}>
+      <CheckboxIndicator />
+      <CheckboxLabel>Subscribe</CheckboxLabel>
+    </Checkbox>
+  );
+};
+```
+
+### `CheckboxIndicator`
+
+The `CheckboxIndicator` component is used to create the visual representation of the checkbox input. It is used to create the visual representation of the checkbox input.
+
+- Use checkboxes (instead of Toggle Switch or Radio) if multiple options can be selected from a list
+- On table rows
+- On multiple selection components, such as a Multi Select Component.
+
+### `CheckboxLabel`
+
+The `CheckboxLabel` component is used to create the label for the checkbox input. It is used to create the label for the checkbox input.
+
+### `CheckboxGroup`
+
+The `CheckboxGroup` component is used to group multiple checkbox inputs together.
+
+_\* **Note:** the `CheckboxGroup` component is not in Figma_
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <CheckboxGroup
+        aria-label="Checkbox Group"
+        value={['Label 1']}
+        nativeID="checkbox-group"
+      >
+        <Checkbox
+          value="Label 1"
+          aria-label="Label 1"
+          onChange={(isChecked) =>
+            console.log(isChecked, '###')
+          }
+        >
+          <CheckboxIndicator />
+          <CheckboxLabel>Label 1</CheckboxLabel>
+        </Checkbox>
+        <Checkbox
+          value="Label 2"
+          aria-label="Label 2"
+          onChange={(isChecked) =>
+            console.log(isChecked, '###')
+          }
+        >
+          <CheckboxIndicator />
+          <CheckboxLabel>Label 2</CheckboxLabel>
+        </Checkbox>
+      </CheckboxGroup>
+    </Center>
+
+  </NativeUIProvider>
+</Canvas>
+
+```jsx
+import {
+  Checkbox,
+  CheckboxGroup,
+  CheckboxIndicator,
+  CheckboxLabel,
+} from '@utilitywarehouse/native-ui';
+
+import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => {
+  const [values, setValues] = React.useState(['option1']);
+  return (
+    <CheckboxGroup
+      aria-label="Checkbox Group"
+      value={values}
+      onChange={setValues}
+      nativeID="checkbox-group"
+    >
+      <Checkbox
+        value="option1"
+        aria-label="Label 1"
+        onChange={(isChecked: boolean) => console.log(isChecked, '###')}
+      >
+        <CheckboxIndicator />
+        <CheckboxLabel>Label 1</CheckboxLabel>
+      </Checkbox>
+      <Checkbox
+        value="option2"
+        aria-label="Label 2"
+        onChange={(isChecked: boolean) => console.log(isChecked, '###')}
+      >
+        <CheckboxIndicator />
+        <CheckboxLabel>Label 2</CheckboxLabel>
+      </Checkbox>
+    </CheckboxGroup>
+  );
+};
+```
+
+| Property     | Type                              | Default | Description                                                            |
+| ------------ | --------------------------------- | ------- | ---------------------------------------------------------------------- |
+| `value`      | `string[]`                        | -       | The value of the checkbox group.                                       |
+| `onChange`   | `(values: Array<string>) => void` | -       | The callback fired when any children Checkbox is checked or unchecked. |
+| `isDisabled` | `bool`                            | `false` | To manually set disable to the checkbox.                               |
+| `isInvalid`  | `bool`                            | `false` | To manually set invalid to the checkbox.                               |
+| `isReadOnly` | `bool`                            | `false` | To manually set read-only to the checkbox.                             |
+
+## Variants
+
+<Canvas of={Stories.Variants} />

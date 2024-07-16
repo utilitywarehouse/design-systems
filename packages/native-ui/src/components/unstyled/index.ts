@@ -64,21 +64,7 @@ export {
   PopoverHeader,
 } from '@gluestack-ui/themed';
 export { Tooltip, TooltipContent, TooltipText } from '@gluestack-ui/themed';
-export {
-  Actionsheet,
-  ActionsheetBackdrop,
-  ActionsheetContent,
-  ActionsheetDragIndicator,
-  ActionsheetDragIndicatorWrapper,
-  ActionsheetFlatList,
-  ActionsheetIcon,
-  ActionsheetItem,
-  ActionsheetItemText,
-  ActionsheetScrollView,
-  ActionsheetSectionHeaderText,
-  ActionsheetSectionList,
-  ActionsheetVirtualizedList,
-} from '@gluestack-ui/themed';
+
 export {
   Accordion,
   AccordionIcon,

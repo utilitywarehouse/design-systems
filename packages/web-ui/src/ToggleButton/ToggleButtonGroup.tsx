@@ -40,13 +40,12 @@ export type ToggleButtonGroupProps = Pick<
 >;
 
 /**
- * > This component should be wrapped in a ThemeProvider
  */
 export const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGroupProps>(
   function ToggleButtonGroup({ children, disabled, className, ...props }, ref) {
-    const { isBrandBackground } = useBackground();
+    const { isInvertedBackground } = useBackground();
     const dataAttributeProps = {
-      [DATA_ATTRIBUTES.bgcolorBrand]: isBrandBackground,
+      [DATA_ATTRIBUTES.bgcolorBrand]: isInvertedBackground,
     };
     return (
       <StyledMuiToggleButtonGroup

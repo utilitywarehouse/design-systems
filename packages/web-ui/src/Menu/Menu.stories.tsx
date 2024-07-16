@@ -10,7 +10,6 @@ import { MenuItem } from './MenuItem';
 const meta: Meta<typeof Menu> = {
   title: 'Web UI / Components / Menu',
   component: Menu,
-  tags: ['autodocs'],
   decorators: [
     Story => (
       <ThemeProvider>

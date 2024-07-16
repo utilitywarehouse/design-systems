@@ -1,0 +1,83 @@
+import { Meta } from '@storybook/blocks';
+import { mediaQueries } from '../../../src/utils';
+import { Text, Flex, Divider } from '../../../src';
+import { Analytics } from '@vercel/analytics/react';
+
+<Analytics />
+
+<Meta title="Web UI / Helpers / Media Queries" />
+
+# Media Queries
+
+While you should be able to do most things using the responsive style props, if
+you need to you can use the `mediaQueries` object to help create responsive
+styles.
+
+```tsx
+import { mediaQueries } from '@utilitywarehouse/web-ui';
+
+[...]
+
+<Box
+  sx={{
+    display: 'flex',
+    flexDirection: 'column',
+    [mediaQueries.desktop]: {
+      flexDirection: 'row'
+    }
+  }}>
+  {...}
+</Box>
+```
+
+## Base media queries
+
+<Flex direction="column" gap={1} width={500}>
+  <Flex justify="space-between" align="center">
+    <Text variant="body" component="span">
+      {`mediaQueries.mobile`}
+    </Text>
+    <Text variant="body" component="span">
+      {mediaQueries.mobile}
+    </Text>
+  </Flex>
+  <Divider />
+  <Flex justify="space-between" align="center">
+    <Text variant="body" component="span">
+      {`mediaQueries.tablet`}
+    </Text>
+    <Text variant="body" component="span">
+      {mediaQueries.tablet}
+    </Text>
+  </Flex>
+  <Divider />
+  <Flex justifyContent="space-between" alignItems="center">
+    <Text variant="body" component="span">
+      {`mediaQueries.desktop`}
+    </Text>
+    <Text variant="body" component="span">
+      {mediaQueries.desktop}
+    </Text>
+  </Flex>
+  <Divider />
+  <Flex justifyContent="space-between" alignItems="center">
+    <Text variant="body" component="span">
+      {`mediaQueries.wide`}
+    </Text>
+    <Text variant="body" component="span">
+      {mediaQueries.wide}
+    </Text>
+  </Flex>
+</Flex>
+
+## Media query helpers
+
+There are also some media query helper functions available for more specific media queries. These helpers all take only the breakpoint values as arguments (`mobile`, `tablet`, `desktop`, `wide`).
+
+|         helper         |                                                                                                     description                                                                                                      |                   example                   |                query string                 |
+| :--------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------: | :-----------------------------------------: |
+|  `mediaQueries.above`  | This function takes a breakpoint key and returns a min-width media query string matching screen widths greater than the screen size given by the breakpoint. This is the same as using the above base media queries. |       `mediaQueries.above("tablet")`        |       {mediaQueries.above("tablet")}        |
+|  `mediaQueries.below`  |                            This function takes a breakpoint key and returns a max-width media query string matching screen widths less than than the screen size given by the breakpoint.                            |        `mediaQueries.below("wide")`         |        {mediaQueries.below("wide")}         |
+| `mediaQueries.between` |                    This function takes a breakpoint key and returns a media query string matching screen widths greater than the given start screen size and less than the given end screen size.                    | `mediaQueries.between("tablet", "desktop")` | {mediaQueries.between("tablet", "desktop")} |
+|  `mediaQueries.only`   |                    This function takes a breakpoint key and returns a media query string matching screen widths starting from the given screen size and stopping just before the next breakpoint.                    |        `mediaQueries.only("tablet")`        |        {mediaQueries.only("tablet")}        |
+|   `mediaQueries.not`   |                     This function takes a breakpoint key and returns a media query string matching screen widths stopping at the given screen size and starting just before the next breakpoint.                     |        `mediaQueries.not("desktop")`        |        {mediaQueries.not("desktop")}        |

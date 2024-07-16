@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/blocks';
+import { breakpoints, fonts, fontWeights } from '../../../src/tokens';
+import { Text, Flex, Divider } from '../../../src';
+import { Analytics } from '@vercel/analytics/react';
+
+<Analytics />
+
+<Meta title="Web UI / Helpers / Tokens" />
+
+# Breakpoints (px)
+
+<Flex direction="column" gap={1} width={400}>
+  {Object.keys(breakpoints).map((bp, i) => (
+    <>
+      <Flex justify="space-between">
+        <Text variant="body" component="span">
+          {`breakpoints.${bp}`}
+        </Text>
+        <Text variant="body" component="span">
+          {breakpoints[bp]}
+        </Text>
+      </Flex>
+      {i < Object.keys(breakpoints).length - 1 ? <Divider /> : null}
+    </>
+  ))}
+</Flex>
+
+# Font families
+
+<Flex direction="column" gap={1} width={400}>
+  {Object.keys(fonts).map((font, i) => (
+    <>
+      <Flex justify="space-between">
+        <Text variant="body" component="span">
+          {`fonts.${font}`}
+        </Text>
+        <Text variant="body" component="span">
+          {fonts[font]}
+        </Text>
+      </Flex>
+      {i < Object.keys(breakpoints).length - 1 ? <Divider /> : null}
+    </>
+  ))}
+</Flex>
+
+# Font weights
+
+<Flex direction="column" gap={1} width={400}>
+  <Flex justify="space-between" align="center">
+    <Text variant="body" component="span">
+      {`fontWeights.primary`}
+    </Text>
+    <Text variant="body" component="span">
+      {fontWeights.primary}
+    </Text>
+  </Flex>
+  <Divider />
+  <Flex justify="space-between" align="center">
+    <Text variant="body" component="span">
+      {`fontWeights.secondary.regular`}
+    </Text>
+    <Text variant="body" component="span">
+      {fontWeights.secondary.regular}
+    </Text>
+  </Flex>
+  <Divider />
+  <Flex justifyContent="space-between" alignItems="center">
+    <Text variant="body" component="span">
+      {`fontWeights.secondary.semibold`}
+    </Text>
+    <Text variant="body" component="span">
+      {fontWeights.secondary.semibold}
+    </Text>
+  </Flex>
+</Flex>

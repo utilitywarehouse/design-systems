@@ -5,6 +5,7 @@ import { Text } from '../../Text';
 import { Flex } from '../../Flex';
 import { Box } from '../../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { ChevronRightMediumIcon, OpenMediumIcon } from '@utilitywarehouse/react-icons';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Lab / Link / TextLink',
@@ -12,6 +13,7 @@ const meta: Meta<typeof TextLink> = {
   argTypes: {
     children: { control: { type: 'text' } },
     href: { control: { type: 'text' } },
+    inverted: { control: { type: 'boolean' } },
   },
 };
 
@@ -22,11 +24,19 @@ const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
 export const Workshop: Story = {
   render: args => (
-    <Flex direction="column" gap={4} width={500}>
-      <Text>
+    <Flex
+      direction="column"
+      gap={4}
+      width={500}
+      p={4}
+      bgcolor={args.inverted ? colors.grey900 : colors.grey50}
+      align="center"
+      justify="center"
+    >
+      <Text inverted={args.inverted}>
         <TextLink {...args} />
       </Text>
-      <Text>
+      <Text inverted={args.inverted}>
         Agnes Martin was an American <TextLink {...args}>abstract painter</TextLink> known for her{' '}
         <TextLink {...args}>minimalist</TextLink> style. Martin&apos;s art was characterized by
         serene compositions featuring <TextLink {...args}>grids and lines</TextLink>. Martin&apos;s
@@ -74,6 +84,21 @@ export const WithinText: Story = {
   },
 };
 
+export const WithIcons: Story = {
+  render: args => (
+    <Flex gap={6}>
+      <TextLink {...args}>
+        Learn More
+        <ChevronRightMediumIcon />
+      </TextLink>
+      <TextLink {...args}>
+        Open in a new tab
+        <OpenMediumIcon />
+      </TextLink>
+    </Flex>
+  ),
+};
+
 export const TextLinkColour: Story = {
   name: 'Contextual Colour',
   args: { href: '#' },
@@ -116,4 +141,23 @@ export const TextLinkColour: Story = {
       </Flex>
     );
   },
+};
+
+export const AsButton: Story = {
+  render: () => (
+    <Flex direction="column" gap={2} align="start">
+      <TextLink asChild>
+        <button onClick={() => alert('Hello world!')}>
+          View benefits
+          <ChevronRightMediumIcon />
+        </button>
+      </TextLink>
+      <TextLink asChild color={colors.grey900}>
+        <button onClick={() => alert('Hello world!')}>
+          Custom color
+          <ChevronRightMediumIcon />
+        </button>
+      </TextLink>
+    </Flex>
+  ),
 };

@@ -4,9 +4,7 @@ import React from 'react';
 const CenterBasic = () => {
   return (
     <Center bg="$cyan500" h={200} w={300}>
-      <Text color="$brandWhite" fontFamily="WorkSans-SemiBold">
-        This is the center.
-      </Text>
+      <Text color="$brandWhite">This is the center.</Text>
     </Center>
   );
 };

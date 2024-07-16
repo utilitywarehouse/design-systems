@@ -1,12 +1,8 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const Spinner = createStyle({
-  props: {
-    color: '$primary500',
-  },
+  props: {},
   _dark: {
-    props: {
-      color: '$primary400',
-    },
+    props: {},
   },
 });

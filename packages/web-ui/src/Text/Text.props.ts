@@ -38,7 +38,9 @@ export interface TextProps
   noWrap?: boolean | undefined;
   /**
    * Sets the HTML component that is rendered.
-   * @default span
+   * @default p
    */
   component?: BoxProps['component'];
+  /** Inverts the component colours, for use on darker backgrounds. */
+  inverted?: boolean;
 }

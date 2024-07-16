@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { forwardRef } from 'react';
-import { Box } from '../Box';
 import { Root } from '@radix-ui/react-radio-group';
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
@@ -8,6 +7,7 @@ import { HelperText } from '../HelperText';
 import { useIds } from '../hooks';
 import { PropsWithSx } from '../types';
 import { mergeIds } from '../utils';
+import { Flex } from '../Flex';
 import { BaseRadioGroupProps } from './BaseRadioGroup.props';
 import { BaseRadioGroupProvider } from './BaseRadioGroup.context';
 
@@ -39,13 +39,16 @@ export const BaseRadioGroup = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGr
       componentPrefix: 'radiogroup',
     });
     const showErrorMessage = Boolean(error && errorMessage);
-    const direction = helperTextPosition === 'top' ? 'column' : 'column-reverse';
+    const showTopHelperText = helperText && helperTextPosition === 'top';
+    const showBottomHelperText = helperText && helperTextPosition === 'bottom';
+
+    const ariaDescribedbyValue = mergeIds(
+      ariaDescribedby || !!helperText ? helperTextId : undefined,
+      ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
+    );
     const value = {
       hasGroupHelperText: !!helperText,
-      'aria-describedby': mergeIds(
-        ariaDescribedby || !!helperText ? helperTextId : undefined,
-        ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
-      ),
+      'aria-describedby': ariaDescribedbyValue,
     };
 
     return (
@@ -58,31 +61,43 @@ export const BaseRadioGroup = forwardRef<HTMLDivElement, PropsWithSx<BaseRadioGr
         aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
         aria-invalid={showErrorMessage}
+        aria-describedby={ariaDescribedbyValue}
       >
         <Fieldset sx={sx}>
-          {label ? (
-            <FieldsetLegend id={labelId} disabled={disabled}>
-              {label}
-            </FieldsetLegend>
+          {label || showTopHelperText ? (
+            <Flex direction="column" gap={0.5}>
+              {label ? (
+                <FieldsetLegend id={labelId} disabled={disabled}>
+                  {label}
+                </FieldsetLegend>
+              ) : null}
+              {showTopHelperText ? (
+                <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                  {helperText}
+                </HelperText>
+              ) : null}
+            </Flex>
           ) : null}
 
-          <Box display="flex" gap={2} flexDirection={direction}>
-            {helperText ? (
-              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
-                {helperText}
-              </HelperText>
-            ) : null}
-            <BaseRadioGroupProvider value={value}>{children}</BaseRadioGroupProvider>
-          </Box>
+          <BaseRadioGroupProvider value={value}>{children}</BaseRadioGroupProvider>
 
-          {showErrorMessage ? (
-            <HelperText
-              validationStatus="invalid"
-              showIcon={showErrorMessageIcon}
-              id={errorMessageId}
-            >
-              {errorMessage}
-            </HelperText>
+          {showBottomHelperText || showErrorMessage ? (
+            <Flex direction="column" gap={1}>
+              {showBottomHelperText ? (
+                <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                  {helperText}
+                </HelperText>
+              ) : null}
+              {showErrorMessage ? (
+                <HelperText
+                  validationStatus="invalid"
+                  showIcon={showErrorMessageIcon}
+                  id={errorMessageId}
+                >
+                  {errorMessage}
+                </HelperText>
+              ) : null}
+            </Flex>
           ) : null}
         </Fieldset>
       </Root>

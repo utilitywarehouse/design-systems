@@ -1,6 +1,4 @@
 import { Meta, Canvas } from '@storybook/blocks';
-import RNExample from './components/RNExample';
-import GSExample from './components/GSExample';
 import BackToTopButton from '../../../components/BackToTopButton';
 import { Center, NativeUIProvider, Box, Text } from '@utilitywarehouse/native-ui';
 
@@ -32,6 +30,22 @@ const MyComponent = () => (
 );
 ```
 
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Text
+        sx={{
+          fontFamily: 'Work Sans',
+          fontWeight: '400',
+          fontSize: 16,
+        }}
+      >
+        Hello World
+      </Text>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
 Whereas with `native-ui`, you can use the following:
 
 ```tsx
@@ -51,6 +65,22 @@ const MyComponent = () => (
   </Box>
 );
 ```
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Text
+        sx={{
+          fontFamily: 'Work Sans',
+          fontWeight: '400',
+          fontSize: 16,
+        }}
+      >
+        Hello World
+      </Text>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
 
 This is because `native-ui` uses a custom font loader to load the fonts into the app, and then uses the font names as they are in the font files.
 

@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+import { Analytics } from '@vercel/analytics/react';
+
+<Analytics />
+
+<Meta title="Web UI / Helpers / Hooks" />
+
+# Hooks
+
+## useMediaQuery
+
+This is [the MUI hook](https://mui.com/material-ui/react-use-media-query/) with our custom breakpoints: mobile, tablet, desktop & wide.
+
+You can use it to match media queries.
+
+```tsx
+import { useMediaQuery } from '@utilitywarehouse/web-ui';
+
+const isMobileOrTablet = useMediaQuery(theme => theme.breakpoints.down('desktop'));
+const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
+const isTablet = useMediaQuery(theme => theme.breakpoints.between('tablet', 'desktop'));
+```
+
+## useTheme
+
+This is default MUI hook you can use to access the custom UW Web UI theme.
+
+```tsx
+import { useTheme } from '@utilitywarehouse/web-ui'
+
+[...]
+
+const theme = useTheme()
+```

@@ -26,14 +26,8 @@ const StyledElement = styled('legend')({
 });
 
 /**
- * > This component is only required when building a custom field that isn’t
- * > provided by UW Web UI.
- *
  * The `FieldsetLegend` should be used with the `Fieldset` component to label
- * grouped from inputs.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be
- * > used standalone with other component libraries.
+ * grouped form inputs.
  */
 export const FieldsetLegend = forwardRef<
   ElementRef<'legend'>,

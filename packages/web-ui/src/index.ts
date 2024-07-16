@@ -7,9 +7,14 @@ export * from './hooks';
 export { mediaQueries, px, pxToRem, spacing, withGlobalPrefix, DATA_ATTRIBUTES } from './utils';
 /* components */
 export * as Lab from './lab';
+export * from './Alert';
 export * from './Badge';
 export * from './Box';
 export * from './Button';
+export * from './Checkbox';
+export * from './CheckboxGridGroup';
+export * from './CheckboxGroup';
+export * from './CheckboxTile';
 export * from './Divider';
 export * from './Em';
 export * from './Fieldset';

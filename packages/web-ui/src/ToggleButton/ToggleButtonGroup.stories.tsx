@@ -10,7 +10,6 @@ import { Backgrounds } from '../storybook-utils';
 const meta: Meta<typeof ToggleButtonGroup> = {
   title: 'Web UI / Components / ToggleButtonGroup',
   component: ToggleButtonGroup,
-  tags: ['autodocs'],
   decorators: [
     Story => (
       <ThemeProvider>

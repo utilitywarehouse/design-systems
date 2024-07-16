@@ -1,28 +1,21 @@
-import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './IconButton.stories';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-# IconButton
+<DocsHeader
+  componentName="IconButton"
+  stories={Stories}
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=5443-21847"
+/>
 
-<Description />
-
-<Canvas of={Stories.SimpleExample} />
-
-## Contents
+<Canvas of={Stories.SimpleExample} sourceState="none" />
 
 - [Icons](#icons)
 - [Accessibility](#accessibility)
 - [Variant](#variant)
-  - [Solid](#solid)
-  - [Outline](#outline)
-  - [Ghost](#ghost)
 - [Colour schemes](#colour-schemes)
-  - [Cyan](#cyan)
-  - [Green](#green)
-  - [Red](#red)
-  - [Gold](#gold)
-  - [Grey](#grey)
 - [Size](#size)
   - [Responsive icon sizes](#responsive-icon-sizes)
 - [Semantic HTML](#semantic-html)
