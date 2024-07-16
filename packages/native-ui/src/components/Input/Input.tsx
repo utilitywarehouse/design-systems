@@ -7,6 +7,7 @@ import {
   TickMediumContainedIcon,
 } from '@utilitywarehouse/react-native-icons';
 import { InputValidationIcon } from './styled-components';
+import { useFormFieldContext } from '../FormField';
 
 // TODO: remove once upgraded to typescript 5.5
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,11 +29,13 @@ const Input: React.FC<InputProps> = ({
   isDisabled,
   ...props
 }) => {
+  const formFieldContext = useFormFieldContext();
+  const validationStatusFromContext = formFieldContext?.validationStatus;
   return (
     <AccessibleInput
       {...props}
-      validationStatus={validationStatus}
-      isInvalid={validationStatus === 'invalid'}
+      validationStatus={validationStatusFromContext || validationStatus}
+      isInvalid={(validationStatusFromContext || validationStatus) === 'invalid'}
       isReadOnly={isReadOnly}
       isDisabled={disabled || isDisabled}
       // TODO: remove once Gluestack bug is fixed - https://github.com/gluestack/gluestack-ui/issues/2214
@@ -61,12 +64,12 @@ const Input: React.FC<InputProps> = ({
       }
     >
       {children}
-      {showValidationIcon && validationStatus === 'invalid' && (
+      {showValidationIcon && (validationStatusFromContext || validationStatus) === 'invalid' && (
         <AccessibleInput.Slot>
           <InputValidationIcon as={WarningMediumContainedIcon} />
         </AccessibleInput.Slot>
       )}
-      {showValidationIcon && validationStatus === 'valid' && (
+      {showValidationIcon && (validationStatusFromContext || validationStatus) === 'valid' && (
         <AccessibleInput.Slot>
           <InputValidationIcon as={TickMediumContainedIcon} />
         </AccessibleInput.Slot>
