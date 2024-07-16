@@ -154,6 +154,7 @@ const preview: Preview = {
               'Heading',
               'HStack',
               'Icons',
+              'Input',
               'IconButton',
               'Pressable',
               'Radio',
