@@ -1,5 +1,5 @@
 import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
-import * as BadgeStories from './Input.stories';
+import * as Stories from './Input.stories';
 import {
   Input,
   InputField,
@@ -9,12 +9,27 @@ import {
   NativeUIProvider,
 } from '@utilitywarehouse/native-ui';
 import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
+import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
 
-<Meta of={BadgeStories} />
+<Meta of={Stories} />
+
+<BackToTopButton />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=6988-2603&m=dev" />
 
 # Input
 
 The input component is a text field that allows users to enter text, numbers, or other data. It is commonly used in forms and search fields.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+  - [`Input`](#input)
+  - [`InputField`](#inputfield)
+  - [`InputIcon`](#inputicon)
+  - [`InputSlot`](#inputslot)
+- [Variants](#variants)
+- [Accessibility](#accessibility)
 
 ## Playground
 
@@ -61,7 +76,7 @@ const MyComponent = () => {
 
 ## Props
 
-### Input
+### `Input`
 
 | Prop               | Type                               | Default     | Description                          |
 | ------------------ | ---------------------------------- | ----------- | ------------------------------------ |
@@ -71,7 +86,7 @@ const MyComponent = () => {
 | isReadOnly         | boolean                            | false       | Makes the input read-only.           |
 | isFocused          | boolean                            | false       | Sets focus on the input.             |
 
-### Descendants Styling Props
+#### Descendants Styling Props
 
 Props to style child components.
 
@@ -81,7 +96,7 @@ Props to style child components.
 | \_icon           | Prop to style InputIcon           |
 | \_validationIcon | Prop to style InputValidationIcon |
 
-### InputField
+### `InputField`
 
 | Prop        | Type                   | Default  | Description                                                       |
 | ----------- | ---------------------- | -------- | ----------------------------------------------------------------- |
@@ -92,17 +107,23 @@ Props to style child components.
 | placeholder | string                 |          | The placeholder text for the input.                               |
 | type        | `'text' \| 'password'` | `'text'` | The type of the input.                                            |
 
-### InputIcon
+### `InputIcon`
 
 | Prop | Type   | Default | Description         |
 | ---- | ------ | ------- | ------------------- |
 | as   | string |         | The icon component. |
 
-### InputSlot
+### `InputSlot`
 
 | Prop | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | -    | -    | -       | -           |
+
+## Variants
+
+The `Input` component has the following variants:
+
+<Canvas of={Stories.Variants} />
 
 ## Accessibility
 
