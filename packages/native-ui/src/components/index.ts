@@ -6,6 +6,7 @@ export { default as CheckboxIndicator } from './CheckboxIndicator';
 export { default as RadioIndicator } from './RadioIndicator';
 export * from './Button';
 export * from './Spinner';
+export * from './ListItem';
 
 // Gluestack UI
 export {
