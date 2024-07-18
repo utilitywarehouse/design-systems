@@ -18,6 +18,8 @@ const ListItemBasic: StoryFn = ({
   trailingContent: _trailingIcon,
   divider,
   onPress,
+  disabled,
+  loading,
   _numberOfItems,
 }: any) => {
   // @ts-expect-error - This is a playground
@@ -33,6 +35,8 @@ const ListItemBasic: StoryFn = ({
           text={text}
           supportingText={supportingText}
           onPress={handlePress}
+          disabled={disabled}
+          loading={loading}
           leadingContent={<ListItemIcon as={icon} />}
           trailingContent={trailingIcon ? <ListItemTrailingIcon as={trailingIcon} /> : null}
           divider={divider}
@@ -70,6 +74,14 @@ ListItemBasic.argTypes = {
     control: 'boolean',
     description: 'Whether to display a divider below the list item.',
   },
+  disabled: {
+    control: 'boolean',
+    description: 'Whether the list item is disabled.',
+  },
+  loading: {
+    control: 'boolean',
+    description: 'Whether the list item is in a loading state.',
+  },
   _numberOfItems: {
     control: 'number',
     description: 'The number of list items to display. \n _Note: This is a playground prop._',
@@ -83,6 +95,8 @@ ListItemBasic.args = {
   trailingContent: 'none',
   divider: true,
   onPress: "() => console.log('List item pressed')",
+  disabled: false,
+  loading: false,
   _numberOfItems: 4,
 };
 

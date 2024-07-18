@@ -31,6 +31,31 @@ export const ListItem = createStyle({
     },
   },
 
+  ':disabled': {
+    _text: {
+      color: '$grey400',
+    },
+    _icon: {
+      color: '$grey400',
+    },
+    _supportingText: {
+      color: '$grey400',
+    },
+    _leadingContent: {
+      _icon: {
+        color: '$grey400',
+      },
+    },
+    _trailingContent: {
+      _icon: {
+        color: '$grey400',
+      },
+      _trailingIcon: {
+        color: '$grey400',
+      },
+    },
+  },
+
   _dark: {
     _icon: {
       color: '$darkGrey800',
@@ -52,6 +77,31 @@ export const ListItem = createStyle({
       },
       _trailingIcon: {
         color: '$darkGrey800',
+      },
+    },
+
+    ':disabled': {
+      _text: {
+        color: '$darkGrey500',
+      },
+      _icon: {
+        color: '$darkGrey500',
+      },
+      _supportingText: {
+        color: '$darkGrey500',
+      },
+      _leadingContent: {
+        _icon: {
+          color: '$darkGrey500',
+        },
+      },
+      _trailingContent: {
+        _icon: {
+          color: '$darkGrey500',
+        },
+        _trailingIcon: {
+          color: '$darkGrey500',
+        },
       },
     },
   },
@@ -94,5 +144,11 @@ export const ListItem = createStyle({
         },
       },
     },
+    // disabled: {
+    //   true: {
+
+    //   },
+    //   false: {},
+    // },
   },
 });

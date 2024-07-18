@@ -8,6 +8,7 @@ interface ListItemProps extends ComponentProps<typeof Root> {
   trailingContent?: React.ReactNode;
   divider?: boolean;
   loading?: boolean;
+  disabled?: boolean;
 }
 
 export default ListItemProps;
