@@ -12,12 +12,15 @@ import { useBackground } from '../Box';
 const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
   return {
     border: 0,
+    letterSpacing: '0.02857em',
     padding: `${theme.spacing(0.5)} ${theme.spacing(3)}`,
     borderRadius: px(32),
+    height: px(32),
     fontFamily: fonts.secondary,
     fontWeight: fontWeights.secondary.semibold,
     fontSize: 16,
     lineHeight: 1.5,
+    textTransform: 'none',
     color: colorsCommon.brandMidnight,
     '&:focus, &:active': {
       backgroundColor: colors.cyan500,
