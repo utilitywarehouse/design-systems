@@ -1,5 +1,15 @@
 # @utilitywarehouse/web-ui
 
+## 0.9.3
+
+### Patch Changes
+
+- [#427](https://github.com/utilitywarehouse/design-systems/pull/427) [`9932218`](https://github.com/utilitywarehouse/design-systems/commit/9932218cd16ec82f263c99e936c222b78b4ef680) Thanks [@robphoenix](https://github.com/robphoenix)! - Update `ThemeProvider` usage & docs for the following components:
+  - `Menu`
+  - `TextField`
+  - `Stack`
+  - `ToggleButtonGroup`
+
 ## 0.9.2
 
 ### Patch Changes
