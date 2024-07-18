@@ -1,5 +1,5 @@
 import { createTheme, Theme as MuiTheme } from '@mui/material/styles';
-import { baseTypographyTheme } from '../Typography';
+import { baseTypographyTheme } from './Typography.theme';
 import { htmlFontSize, pxToRem, spacing } from '../utils';
 import { breakpoints, fonts, fontWeights } from '../tokens';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
