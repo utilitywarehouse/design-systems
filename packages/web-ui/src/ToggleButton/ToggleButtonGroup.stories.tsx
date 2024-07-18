@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Box } from '../Box';
 import { ToggleButton } from './ToggleButton';
 import { ToggleButtonGroup } from './ToggleButtonGroup';
 import { Backgrounds } from '../storybook-utils';
@@ -9,13 +8,6 @@ import { Backgrounds } from '../storybook-utils';
 const meta: Meta<typeof ToggleButtonGroup> = {
   title: 'Web UI / Components / ToggleButtonGroup',
   component: ToggleButtonGroup,
-  decorators: [
-    Story => (
-      <Box padding={4}>
-        <Story />
-      </Box>
-    ),
-  ],
 };
 
 export default meta;
