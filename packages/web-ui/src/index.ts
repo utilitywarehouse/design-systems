@@ -39,5 +39,4 @@ export * from './TextField';
 export * from './TextLink';
 export * from './ThemeProvider';
 export * from './ToggleButton';
-export * from './Typography';
 export * from './UnstyledButton';

@@ -6,8 +6,6 @@ import { Text, TextProps } from '../Text';
 import { Stack } from '../Stack';
 import { Box } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { headingVariantMapping, textVariantMapping } from '../Typography/Typography';
-import { Typography } from '../Typography';
 import { ThemeProvider } from '../ThemeProvider';
 
 const meta: Meta<typeof TextLink> = {
@@ -25,8 +23,8 @@ const meta: Meta<typeof TextLink> = {
 export default meta;
 type Story = StoryObj<typeof TextLink>;
 
-const textVariants = Object.keys(textVariantMapping);
-const variants = [...Object.keys(headingVariantMapping), ...textVariants];
+const textVariants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
+const variants = ['displayHeading', 'h1', 'h2', 'h3', 'h4', ...textVariants] as const;
 
 export const Workshop: Story = {
   render: args => {
@@ -118,10 +116,9 @@ export const TextLinkColor: Story = {
               <TextLink href="#" variant={v as TextProps['variant']}>
                 {v} text link
               </TextLink>
-              <Typography component="span" variant={v as TextProps['variant']}>
-                This is a <TextLink href="#">text link</TextLink>, wrapped in a {v} Typography
-                component.
-              </Typography>
+              <Text component="span" variant={v as TextProps['variant']}>
+                This is a <TextLink href="#">text link</TextLink>, wrapped in a {v} Text component.
+              </Text>
             </Stack>
           ))}
         </Stack>
