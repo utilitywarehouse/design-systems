@@ -5,18 +5,10 @@ import { Stack } from '../Stack';
 import { Text } from '../Text';
 import Divider from '@mui/material/Divider';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { ThemeProvider } from '../ThemeProvider';
 
 const meta: Meta<typeof Stack> = {
   title: 'Web UI / Layout / Stack',
   component: Stack,
-  decorators: [
-    Story => (
-      <ThemeProvider>
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
 };
 
 export default meta;

@@ -18,6 +18,7 @@ const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
     fontWeight: fontWeights.secondary.semibold,
     fontSize: 16,
     lineHeight: 1.5,
+    textTransform: 'none',
     color: colorsCommon.brandMidnight,
     '&:focus, &:active': {
       backgroundColor: colors.cyan500,

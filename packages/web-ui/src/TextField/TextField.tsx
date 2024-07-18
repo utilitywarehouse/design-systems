@@ -72,6 +72,7 @@ const StyledInput = styled(FilledInput)({
     borderColor: colors.cyan600,
   },
   '&.Mui-disabled': {
+    '-webkit-text-fill-color': 'unset', // override MUI
     color: colorsCommon.brandMidnight,
     backgroundColor: colors.grey50,
     borderColor: colors.grey100,
