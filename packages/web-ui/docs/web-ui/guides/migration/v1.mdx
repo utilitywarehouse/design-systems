@@ -14,10 +14,40 @@ documenting for others, thankyou!
 
 ## Contents
 
+- [Typography component](#typography-component)
 - [Buttons size renaming](#buttons-size-renaming)
 - [Codemods](#codemods)
   - [Migration](#migration)
   - [Rename lab button size](#rename-lab-button-size)
+
+## Typography component
+
+The `Typography` component is being removed for this release, and replaced with
+the `Text` & `Heading` components.
+
+The `Text` & `Heading` components support nearly all the same variants as the
+legacy `Typography` component, the only exception to this is the `inherit`
+variant. To replace this you can use either a `Box` or `Text` component with
+`sx` styling:
+
+```tsx
+<Box component="span" sx={{ font: 'inherit' }}>
+```
+
+We will provide a codemod to migrate to these components, however they are not
+a 1-2-1 match, as they do not continue with props such as `fontWeight`, `paragraph` or
+`gutterBottom`, so you should visually verify all changes.
+
+In place of the `paragraph` and `gutterBottom` props, we recommend you
+structure your layouts using the layout components, such as `Box`, `Flex`,
+`Stack`, `Grid`, and to a lesser extent `Spacer`. However the codemod will
+transform these props, as follows:
+
+- 'gutterBottom' -> `sx={{ marginBottom: '0.35em' }}`
+- 'paragraph' -> `component="p"` and `sx={{ marginBottom: '16px' }}`
+
+In place of the `fontWeight` prop, on `Text` components you can use the `bold`
+boolean prop, or, when appropriate, use the `Strong` component.
 
 ## Buttons size renaming
 
