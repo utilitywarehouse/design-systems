@@ -1,7 +1,7 @@
 import {
   Box,
-  Icon,
   IconButton,
+  ListHeading,
   ListItem,
   ListItemIcon,
   ListItemTrailingIcon,
@@ -9,7 +9,6 @@ import {
 import React from 'react';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
-import _ from 'lodash';
 
 const ListItemBasic: StoryFn = ({
   text,
@@ -29,6 +28,8 @@ const ListItemBasic: StoryFn = ({
   const handlePress = onPress === 'null' ? undefined : eval(onPress);
   return (
     <Box width="$full">
+      <ListHeading title="List item" supportingText="Supporting text" />
+      {/* <Box borderRadius="$xl" backgroundColor="$grey100" mt="$3"> */}
       {Array.from({ length: _numberOfItems }).map((_, index) => (
         <ListItem
           key={index}
@@ -37,11 +38,12 @@ const ListItemBasic: StoryFn = ({
           onPress={handlePress}
           disabled={disabled}
           loading={loading}
-          leadingContent={<ListItemIcon as={icon} />}
+          leadingContent={icon && <ListItemIcon as={icon} />}
           trailingContent={trailingIcon ? <ListItemTrailingIcon as={trailingIcon} /> : null}
           divider={divider}
         />
       ))}
+      {/* </Box> */}
     </Box>
   );
 };
