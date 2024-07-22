@@ -73,6 +73,7 @@ export * from './Icon';
 export * from './KeyboardAvoidingView';
 // export * from './Link';
 // export * from './LinkText';
+export * from './List';
 export * from './ListHeading';
 export * from './ListItem';
 // export * from './Menu';

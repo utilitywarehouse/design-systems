@@ -1,6 +1,7 @@
 import {
   Box,
   IconButton,
+  List,
   ListHeading,
   ListItem,
   ListItemIcon,
@@ -10,7 +11,7 @@ import React from 'react';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 
-const ListItemBasic: StoryFn = ({
+const ListBasic: StoryFn = ({
   text,
   supportingText,
   leadingContent: _icon,
@@ -27,9 +28,9 @@ const ListItemBasic: StoryFn = ({
   const trailingIcon = _trailingIcon === 'none' ? undefined : Icons[_trailingIcon];
   const handlePress = onPress === 'null' ? undefined : eval(onPress);
   return (
-    <Box width="$full">
+    <List>
       <ListHeading title="List item" supportingText="Supporting text" />
-      {/* <Box borderRadius="$xl" backgroundColor="$grey100" mt="$3"> */}
+      {/* <Box borderRadius="$xl" backgroundColor="$grey50" $dark-bg="$darkGrey50"> */}
       {Array.from({ length: _numberOfItems }).map((_, index) => (
         <ListItem
           key={index}
@@ -44,11 +45,11 @@ const ListItemBasic: StoryFn = ({
         />
       ))}
       {/* </Box> */}
-    </Box>
+    </List>
   );
 };
 
-ListItemBasic.argTypes = {
+ListBasic.argTypes = {
   text: {
     control: 'text',
     description: 'The text to be displayed on the list item.',
@@ -90,7 +91,7 @@ ListItemBasic.argTypes = {
   },
 };
 
-ListItemBasic.args = {
+ListBasic.args = {
   text: 'List item text',
   supportingText: 'Supporting text',
   leadingContent: 'SettingsMediumIcon',
@@ -102,6 +103,6 @@ ListItemBasic.args = {
   _numberOfItems: 4,
 };
 
-export default ListItemBasic;
+export default ListBasic;
 
 export { IconButton };
