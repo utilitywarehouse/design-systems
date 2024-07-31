@@ -1,5 +1,13 @@
 # @utilitywarehouse/web-ui
 
+## 0.9.4
+
+### Patch Changes
+
+- [#429](https://github.com/utilitywarehouse/design-systems/pull/429) [`df14d3e`](https://github.com/utilitywarehouse/design-systems/commit/df14d3ef442b73857695dade8fde8fa7d9230498) Thanks [@robphoenix](https://github.com/robphoenix)! - Updated ToggleButton
+  - add inverted prop
+  - updated internally data-attributes
+
 ## 0.9.3
 
 ### Patch Changes

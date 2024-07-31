@@ -34,6 +34,12 @@ export const Workshop: Story = {
       </Backgrounds>
     );
   },
-  argTypes: { disabled: { control: { type: 'boolean' } } },
-  args: { disabled: false },
+  argTypes: {
+    disabled: { control: { type: 'boolean' } },
+    inverted: { control: { type: 'boolean' } },
+  },
+  args: {
+    disabled: false,
+    inverted: false,
+  },
 };
