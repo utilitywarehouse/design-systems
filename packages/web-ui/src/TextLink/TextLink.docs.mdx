@@ -5,7 +5,6 @@ import { DocsHeader } from '../storybook-utils';
 <Meta of={Stories} />
 
 <DocsHeader
-  lab
   componentName="TextLink"
   stories={Stories}
   figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=6834-38146"
@@ -13,7 +12,6 @@ import { DocsHeader } from '../storybook-utils';
 
 <Canvas of={Stories.Workshop} sourceState="none" />
 
-- [Usage](#usage)
 - [Accessibility](#accessibility)
 - [Semantic HTML](#semantic-html)
 - [Size](#size)
@@ -22,24 +20,6 @@ import { DocsHeader } from '../storybook-utils';
   - [Next.js v13](#nextjs-v13)
   - [Next.js before v13](#nextjs-before-v13)
 - [API Reference](#api-reference)
-
-## Usage
-
-This `TextLink` component is part of the lab submodule, a way for us to make new
-components available prior to an official major release. This helps us bed in
-new components before introducing breaking changes, and to avoid blocking the
-availability of these components for designers.
-
-```tsx
-import { Text } from '@utilitywarehouse/web-ui';
-import { TextLink } from '@utilitywarehouse/web-ui/dist/lab';
-
-[...]
-
-<Text>
-  <TextLink>TextLink</TextLink>
-</Text>
-```
 
 ## Accessibility
 
@@ -105,8 +85,7 @@ set it to `"inherit"` then the `TextLink` component will inherit the colour of
 the parent element.
 
 ```tsx
-import { Box, Text } from "@utilitywarehouse/web-ui";
-import { TextLink } from "@utilitywarehouse/web-ui/dist/lab";
+import { Box, Text, TextLink } from "@utilitywarehouse/web-ui";
 
 [...]
 
@@ -142,7 +121,7 @@ Next.js `Link` component using `asChild`:
 
 ```tsx
 import NextLink from 'next/link';
-import { TextLink } from '@utilitywarehouse/web-ui/dist/lab';
+import { TextLink } from '@utilitywarehouse/web-ui';
 
 [...]
 
@@ -158,7 +137,7 @@ You can also use the `legacyBehavior` prop directly on the Next.js Link componen
 
 ```tsx
 import NextLink from 'next/link';
-import { TextLink } from '@utilitywarehouse/web-ui/dist/lab';
+import { TextLink } from '@utilitywarehouse/web-ui';
 
 [...]
 
@@ -183,7 +162,7 @@ configuration:
 
 ```tsx
 import NextLink from 'next/link';
-import { TextLink } from '@utilitywarehouse/web-ui/dist/lab';
+import { TextLink } from '@utilitywarehouse/web-ui';
 
 [...]
 

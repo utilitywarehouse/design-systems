@@ -5,7 +5,6 @@ import { DocsHeader } from '../storybook-utils';
 <Meta of={Stories} />
 
 <DocsHeader
-  lab
   componentName="Link"
   stories={Stories}
   figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=6834-38146"
@@ -13,7 +12,6 @@ import { DocsHeader } from '../storybook-utils';
 
 <Canvas of={Stories.SimpleExample} sourceState="none" />
 
-- [Usage](#usage)
 - [Size](#size)
 - [With icons](#with-icons)
 - [Accessibility](#accessibility)
@@ -23,24 +21,6 @@ import { DocsHeader } from '../storybook-utils';
   - [Next.js v13](#nextjs-v13)
   - [Next.js before v13](#nextjs-before-v13)
 - [API Reference](#api-reference)
-
-## Usage
-
-This `Link` component is part of the lab submodule, a way for us to make new
-components available prior to an official major release. This helps us bed in
-new components before introducing breaking changes, and to avoid blocking the
-availability of these components for designers.
-
-```tsx
-import { Box } from '@utilitywarehouse/web-ui';
-import { Link } from '@utilitywarehouse/web-ui/dist/lab';
-
-[...]
-
-<Box>
-  <Link>Link</Link>
-</Box>
-```
 
 ## Size
 
@@ -131,7 +111,7 @@ Next.js `Link` component using `asChild`:
 
 ```tsx
 import NextLink from 'next/link';
-import { Link } from '@utilitywarehouse/web-ui/dist/lab';
+import { Link } from '@utilitywarehouse/web-ui';
 
 [...]
 
@@ -147,7 +127,7 @@ You can also use the `legacyBehavior` prop directly on the Next.js Link componen
 
 ```tsx
 import NextLink from 'next/link';
-import { Link } from '@utilitywarehouse/web-ui/dist/lab';
+import { Link } from '@utilitywarehouse/web-ui';
 
 [...]
 
@@ -172,7 +152,7 @@ configuration:
 
 ```tsx
 import NextLink from 'next/link';
-import { Link } from '@utilitywarehouse/web-ui/dist/lab';
+import { Link } from '@utilitywarehouse/web-ui';
 
 [...]
 

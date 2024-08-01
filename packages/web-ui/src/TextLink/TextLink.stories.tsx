@@ -8,7 +8,7 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { ChevronRightMediumIcon, OpenMediumIcon } from '@utilitywarehouse/react-icons';
 
 const meta: Meta<typeof TextLink> = {
-  title: 'Web UI / Links / TextLink',
+  title: 'Web UI / Components / Links / TextLink',
   component: TextLink,
   argTypes: {
     children: { control: { type: 'text' } },

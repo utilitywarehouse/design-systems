@@ -12,7 +12,7 @@ import { Link } from './Link';
 import { Flex } from '../Flex';
 
 const meta: Meta<typeof Link> = {
-  title: 'Web UI / Lab / Link / Link',
+  title: 'Web UI / Components / Links / Link',
   component: Link,
   args: { href: '#' },
   argTypes: {

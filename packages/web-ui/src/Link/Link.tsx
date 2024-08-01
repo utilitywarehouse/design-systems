@@ -133,8 +133,6 @@ const StyledElement = styled('a')<LinkProps>(() => {
 
 /**
  * A semantic Call To Action for navigating between pages.
- *
- * > This component does not need to be wrapped in a `ThemeProvider` and can be used standalone with other component libraries.
  */
 export const Link = React.forwardRef<
   React.ElementRef<'a'>,
