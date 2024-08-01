@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { Responsive } from '../../types';
+import { Responsive } from '../types';
 
 export interface LinkProps extends ComponentPropsWithoutRef<'a'> {
   /**

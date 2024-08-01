@@ -1,14 +1,14 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { TextLink } from './TextLink';
-import { Text } from '../../Text';
-import { Flex } from '../../Flex';
-import { Box } from '../../Box';
+import { Text } from '../Text';
+import { Flex } from '../Flex';
+import { Box } from '../Box';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { ChevronRightMediumIcon, OpenMediumIcon } from '@utilitywarehouse/react-icons';
 
 const meta: Meta<typeof TextLink> = {
-  title: 'Web UI / Lab / Link / TextLink',
+  title: 'Web UI / Links / TextLink',
   component: TextLink,
   argTypes: {
     children: { control: { type: 'text' } },

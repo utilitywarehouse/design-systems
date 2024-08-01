@@ -9,7 +9,7 @@ import {
   ChevronUpMediumIcon,
 } from '@utilitywarehouse/react-icons';
 import { Link } from './Link';
-import { Flex } from '../../Flex';
+import { Flex } from '../Flex';
 
 const meta: Meta<typeof Link> = {
   title: 'Web UI / Lab / Link / Link',

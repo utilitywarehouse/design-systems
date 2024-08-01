@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { fonts, fontWeights } from '../../tokens';
-import { PropsWithSx } from '../../types';
+import { fonts, fontWeights } from '../tokens';
+import { PropsWithSx } from '../types';
 import {
   classSelector,
   withGlobalPrefix,
@@ -11,10 +11,10 @@ import {
   responsiveClassSelector,
   spacing,
   withBreakpoints,
-} from '../../utils';
+} from '../utils';
 import clsx from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
-import { styled } from '../../theme';
+import { styled } from '../theme';
 import { LinkProps } from './Link.props';
 
 const componentName = 'Link';
