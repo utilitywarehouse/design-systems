@@ -14,6 +14,10 @@ const meta: Meta<typeof TextLink> = {
     children: { control: { type: 'text' } },
     href: { control: { type: 'text' } },
     inverted: { control: { type: 'boolean' } },
+    textTransform: {
+      options: ['capitalize', 'uppercase', 'lowercase', 'none'],
+      control: { type: 'radio' },
+    },
   },
 };
 
