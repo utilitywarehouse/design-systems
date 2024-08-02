@@ -5,6 +5,8 @@ export const green50 = '#133922';
 /** backgrounds */
 export const green100 = '#164429';
 /**  */
+export const green200 = '#1b5533';
+/**  */
 export const green300 = '#21693f';
 /** For borders, icons and outlines against Green 50. Not suitable for small text. */
 export const green400 = '#34a868';

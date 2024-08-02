@@ -1,4 +1,4 @@
-/* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON 15/01/2024. */
+/* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON 8/1/2024. */
 
 :root {
   /* brand */
@@ -34,6 +34,7 @@
   --color-red500: #df2a38;
   --color-red600: #c31d2a;
   --color-red700: #891e27;
+  --color-red800: #611a20;
   --color-red900: #3b1216;
   /* pink */
   --color-pink50: #fde6fb;
@@ -90,6 +91,7 @@
   --color-gold500: #c77800;
   --color-gold600: #ac6406;
   --color-gold700: #894e16;
+  --color-gold800: #6e3311;
   --color-gold900: #52210c;
   /* green */
   --color-green50: #eefcf3;
@@ -100,6 +102,7 @@
   --color-green500: #1c874d;
   --color-green600: #297f50;
   --color-green700: #21693f;
+  --color-green800: #0a522c;
   --color-green900: #003d1e;
   /* grape */
   --color-grape50: #f1e6fb;
