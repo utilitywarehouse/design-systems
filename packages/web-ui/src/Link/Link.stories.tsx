@@ -14,11 +14,15 @@ import { Flex } from '../Flex';
 const meta: Meta<typeof Link> = {
   title: 'Web UI / Components / Links / Link',
   component: Link,
-  args: { href: '#' },
+  args: { href: '#', size: 'small' },
   argTypes: {
     children: { control: { type: 'text' } },
     href: { control: { type: 'text' } },
     size: { control: { type: 'radio' }, options: ['large', 'small'] },
+    textTransform: {
+      options: ['capitalize', 'uppercase', 'lowercase', 'none'],
+      control: { type: 'radio' },
+    },
   },
 };
 

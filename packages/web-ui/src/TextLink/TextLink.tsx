@@ -12,10 +12,11 @@ const componentName = 'TextLink';
 const componentClassName = withGlobalPrefix(componentName);
 
 const StyledElement = styled('a', {
-  shouldForwardProp: prop => prop !== 'color' && prop !== 'as',
+  shouldForwardProp: prop => prop !== 'color' && prop !== 'as' && prop !== 'textTransform',
 })<{
   color?: string;
-}>(({ color }) => ({
+  textTransform?: TextLinkProps['textTransform'];
+}>(({ color, textTransform }) => ({
   // unset button styles when asChild is used
   ':where(button)': {
     outline: 'transparent',
@@ -24,6 +25,8 @@ const StyledElement = styled('a', {
     background: 'transparent',
     padding: 0,
   },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  textTransform: textTransform as any,
   cursor: 'pointer',
   display: 'inline-flex',
   alignItems: 'center',

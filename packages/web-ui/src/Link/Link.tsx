@@ -46,7 +46,9 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled('a')<LinkProps>(() => {
+const StyledElement = styled('a', {
+  shouldForwardProp: prop => prop !== 'textTransform',
+})<LinkProps>(({ textTransform }) => {
   const sizeStyles = {
     large: {
       '--link-font-size': pxToRem(18),
@@ -63,6 +65,8 @@ const StyledElement = styled('a')<LinkProps>(() => {
   };
 
   return {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    textTransform: textTransform as any,
     // unset button styles when asChild is used
     ':where(button)': {
       outline: 'transparent',
