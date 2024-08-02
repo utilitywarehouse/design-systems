@@ -61,7 +61,9 @@ variant. To replace this you can use either a `Box` or `Text` component with
 <Box component="span" sx={{ font: 'inherit' }}>
 ```
 
-We will provide a codemod to migrate to these components, however they are not
+### Codemod
+
+There is a codemod to migrate to these components, however they are not
 a 1-2-1 match, as they do not continue with props such as `fontWeight`, `paragraph` or
 `gutterBottom`, so you should visually verify all changes.
 
@@ -80,6 +82,8 @@ boolean prop, or, when appropriate, use the `Strong` component.
 
 The `Button` component from the `lab` submodule, and the `IconButton`
 component, have had the `large` size value renamed to `medium`.
+
+### Codemod
 
 There is a codemod available to support this change.
 
@@ -113,6 +117,59 @@ There is a codemod available to support this change.
 +   }}
 + ></IconButton>
 ```
+
+## Link component
+
+The `Link` component has been completely redesigned. This redesign was
+available in `v0` through the `lab` subdirectory, and in this release we have
+moved `Link` out of `lab`, replacing the previous `Link` component.
+
+This redesign is visual, and also introduces a rethought API, props, and usage
+intentions.
+
+The new `Link` component is designed specifically for standalone links that are
+not wrapped or contained within a block of text. While this component may
+appear similar to the legacy tertiary `Button` variant, it should not be
+confused with that component.
+
+### Variant and Size
+
+There are 2 main changes to be aware of; the removal of the `variant` prop, and
+the addition of the `size` prop. These changes mean that the `Link` component's
+font size no longer simply reflects that of the `Text` and `Heading`
+components, but is controlled by the 2 size values; `small` & `large`.
+
+There is no equivalent replacement if any of the `Heading` variants were used
+with the legacy `Link` component. This is by design.
+
+As this change is not a 1-2-1 replacement, when migrating, you will need to
+visually check each usage of the component, and appropriately choose the best
+replacement size for the previous variant. It may also be that you want to
+completely replace the previous usage of the `Link` component with the new
+`TextLink` component, if the previous usage was inline within a section of
+text.
+
+```diff
+- <Link variant="body">Link</Link>
+- <Link variant="subtitle">Link</Link>
++ <Link size="small">Link</Link>
++ <Link size="large">Link</Link>
+```
+
+### Colour
+
+The new `Link` component is not designed to be used on darker background
+colours, where the previous `Link` component would adjust it's colours
+contextually if rendered on a midnight or brand purple background. If you need
+to update something like this then you may need to have a conversation with the
+design team.
+
+### Codemod
+
+Due to the nature of the changes, and the fact this is not a 1-2-1 replacement,
+we are unable to offer a reliable codemod. We also felt it would be better not
+to provide a codemod which removed legacy props, so that the errors this caused
+would highlight where manual updates and checks needed to happen.
 
 ## Codemods
 
