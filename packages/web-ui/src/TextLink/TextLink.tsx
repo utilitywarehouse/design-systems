@@ -1,74 +1,111 @@
 import * as React from 'react';
-import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link';
-import { DATA_ATTRIBUTES, isHeadingVariant } from '../utils';
-import { TypographyProps as MuiTypographyProps } from '@mui/material/Typography';
-import { useBackground } from '../Box';
-import { styled } from '@mui/material';
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { transitions } from '../tokens';
 import { PropsWithSx } from '../types';
+import { withGlobalPrefix, px, DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS, spacing } from '../utils';
+import clsx from 'clsx';
+import { TextLinkProps } from './TextLink.props';
+import { styled } from '../theme';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { useBackground } from '../Box';
+import { Slot } from '@radix-ui/react-slot';
 
-export interface TextLinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    Pick<MuiLinkProps, 'children' | 'classes' | 'variant'> {
-  /**
-   * Sets text-transform property on the TextLink contents.
-   */
-  textTransform?: MuiTypographyProps['textTransform'];
-}
+const componentName = 'TextLink';
+const componentClassName = withGlobalPrefix(componentName);
 
-const StyledLink = styled(MuiLink)({
-  transition: `${transitions.duration}ms ${transitions.easingFunction}`,
-  transitionProperty: 'text-decoration, color, opacity',
-  opacity: 1,
+const StyledElement = styled('a', {
+  shouldForwardProp: prop => prop !== 'color' && prop !== 'as' && prop !== 'textTransform',
+})<{
+  color?: string;
+  textTransform?: TextLinkProps['textTransform'];
+}>(({ color, textTransform }) => ({
+  // unset button styles when asChild is used
+  ':where(button)': {
+    outline: 'transparent',
+    appearance: 'none',
+    border: 'none',
+    background: 'transparent',
+    padding: 0,
+  },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  textTransform: textTransform as any,
   cursor: 'pointer',
-  color: colorsCommon.brandMidnight,
+  display: 'inline-flex',
+  alignItems: 'center',
+  textAlign: 'center',
+  flexShrink: 0,
+  gap: px(spacing(0.5)),
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  lineHeight: 'inherit',
+  fontWeight: 'inherit',
+  '--text-link-color': colors.cyan600,
+  '--text-link-color-custom': color,
+  '--text-link-color-on-brand-bg': colorsCommon.brandWhite,
+  '--text-link-color-active': colors.cyan800,
+  '--text-link-color-active-on-brand-bg': colors.purple100,
+  '--text-link-color-visited': colors.cyan800,
+  '--text-link-color-visited-on-brand-bg': colors.purple300,
+  '--text-link-focus-outline-color': colors.cyan700,
+  '--text-link-focus-outline-color-on-brand-bg': colors.purple400,
   textDecoration: 'underline',
-  textDecorationThickness: 2,
-  textUnderlineOffset: 4,
-  textDecorationColor: colors.cyan400,
-  '&:hover': {
-    opacity: 0.5,
+  color: 'var(--text-link-color)',
+  textDecorationColor: 'var(--text-link-color)',
+  borderRadius: px(4),
+  ':where(:visited)': {
+    color: 'var(--text-link-color-visited)',
+    textDecorationColor: 'var(--text-link-color-visited)',
   },
-  [`&[${DATA_ATTRIBUTES.heading}=true]`]: {
-    color: colorsCommon.brandPrimaryPurple,
+  '@media (hover: hover)': {
+    ':where(:hover)': {
+      textDecoration: 'none',
+    },
   },
-  [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
-    color: colorsCommon.brandWhite,
+  ':where(:active)': {
+    '--text-link-color': 'var(--text-link-color-active)',
   },
-  '&.MuiTypography-inherit': {
-    color: 'inherit',
-    textTransform: 'inherit',
+  ':where(:focus-visible)': {
+    outlineWidth: px(2),
+    outlineStyle: 'solid',
+    outlineColor: 'var(--text-link-focus-outline-color)',
+    outlineOffset: px(2),
   },
-});
+  [DATA_ATTRIBUTE_SELECTORS.inverted]: {
+    '--text-link-color': 'var(--text-link-color-on-brand-bg)',
+    '--text-link-color-active': 'var(--text-link-color-active-on-brand-bg)',
+    '--text-link-color-visited': 'var(--text-link-color-visited-on-brand-bg)',
+    '--text-link-focus-outline-color': 'var(--text-link-focus-outline-color-on-brand-bg)',
+  },
+  [DATA_ATTRIBUTE_SELECTORS.customColor]: {
+    '--text-link-color': 'var(--text-link-color-custom)',
+    '--text-link-color-active': 'var(--text-link-color-custom)',
+    '--text-link-color-visited': 'var(--text-link-color-custom)',
+  },
+}));
 
 /**
- * TextLink is for non button type links.
- *
- * > This component should be wrapped in a ThemeProvider
- *
- * ## Contextual colour
- *
- * When contained inside a `Box` component that specifies a `backgroundColor`
- * which is the value of either `colorsCommon.brandMidnight` or
- * `colorsCommon.brandPrimaryPurple`, the `TextLink` color will be set to
- * `colorsCommon.brandWhite`. This can be overridden by the `color` prop.
- *
- * ## Styles
- *
- * The system props are not available on the `TextLink` component. If necessary
- * you can use `sx` as an escape hatch for one-off custom styling.
+ * A semantic element for navigating between pages. The `TextLink` component is
+ * intended to be used within a block of text, and should be nested in a `Text`
+ * component. This should happen even when using as a standalone link element
+ * as it will inherit many styles from the parent `Text` component.
  */
-export const TextLink = React.forwardRef<HTMLAnchorElement, PropsWithSx<TextLinkProps>>(
-  function Link({ variant = 'inherit', ...props }, ref) {
-    const heading = isHeadingVariant(variant);
-    const { isInvertedBackground } = useBackground();
-    const dataAttributeProps = {
-      [DATA_ATTRIBUTES.heading]: heading,
-      [DATA_ATTRIBUTES.bgcolorBrand]: isInvertedBackground,
-    };
-    return (
-      <StyledLink ref={ref} variant={variant} {...props} underline="none" {...dataAttributeProps} />
-    );
-  }
-);
+export const TextLink = React.forwardRef<
+  React.ElementRef<'a'>,
+  React.PropsWithChildren<PropsWithSx<TextLinkProps>>
+>(({ className, color, asChild, inverted, ...props }, ref) => {
+  const { isInvertedBackground } = useBackground();
+  const dataAttributeProps = {
+    [DATA_ATTRIBUTES.inverted]: inverted || isInvertedBackground ? '' : undefined,
+    [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
+  };
+  return (
+    <StyledElement
+      as={asChild ? Slot : 'a'}
+      ref={ref}
+      className={clsx(componentClassName, className)}
+      color={color}
+      {...dataAttributeProps}
+      {...props}
+    />
+  );
+});
+
+TextLink.displayName = componentName;

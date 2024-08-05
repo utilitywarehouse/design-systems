@@ -1,7 +1,17 @@
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { fonts, fontWeights } from '../tokens';
 import { mediaQueries, pxToRem } from '../utils';
-import { typographyClasses } from './Typography';
+import { withGlobalPrefix } from '../utils';
+
+const PREFIX = withGlobalPrefix('Typography');
+export const typographyClasses: { [key: string]: string } = {
+  primary: `${PREFIX}-primary`,
+  secondary: `${PREFIX}-secondary`,
+  success: `${PREFIX}-success`,
+  error: `${PREFIX}-error`,
+  inverse: `${PREFIX}-inverse`,
+  semibold: `${PREFIX}-semibold`,
+};
 
 const textStyles = {
   fontFamily: fonts.secondary,
@@ -109,18 +119,4 @@ export const baseTypographyTheme = {
       fontSize: pxToRem(20),
     },
   },
-};
-
-// and then this is for the components styles.
-// We'll be able to unify this in v1, when we no longer support the Typography component
-export const legacyTypographyThemeOverrides = {
-  body: { ...textStyles },
-  subtitle: { ...textStyles },
-  legalNote: { ...textStyles },
-  caption: { ...textStyles },
-  displayHeading: { ...headingStyles },
-  h1: { ...headingStyles },
-  h2: { ...headingStyles },
-  h3: { ...headingStyles },
-  h4: { ...headingStyles },
 };

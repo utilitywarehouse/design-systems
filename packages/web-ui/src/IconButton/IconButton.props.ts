@@ -9,7 +9,7 @@ export type IconButtonProps = BaseButtonProps & {
   label: string;
   /**
    * Sets the button height & width.
-   * @default large
+   * @default medium
    */
-  size?: Responsive<'large' | 'small' | 'xsmall'>;
+  size?: Responsive<'medium' | 'small' | 'xsmall'>;
 };
