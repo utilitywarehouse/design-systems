@@ -30,7 +30,6 @@ const StyledElement = styled('a', {
   cursor: 'pointer',
   display: 'inline-flex',
   alignItems: 'center',
-  justifyContent: 'center',
   textAlign: 'center',
   flexShrink: 0,
   gap: px(spacing(0.5)),
