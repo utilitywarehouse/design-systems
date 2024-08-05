@@ -51,17 +51,15 @@ function transformer(file, api) {
         )
       );
 
-    const addParagraphComponentProp = path => {
-      const paragraph = j.jsxAttribute(j.jsxIdentifier('component'), j.literal('p'));
-      path.parentPath.parentPath.value.attributes.unshift(paragraph);
-    };
-
     // transform the paragraph prop
     typographyComponents
       .find(j.JSXAttribute, {
         name: { type: 'JSXIdentifier', name: 'paragraph' },
       })
-      .forEach(addParagraphComponentProp)
+      .forEach(path => {
+        const paragraph = j.jsxAttribute(j.jsxIdentifier('component'), j.literal('p'));
+        path.parentPath.parentPath.value.attributes.unshift(paragraph);
+      })
       .replaceWith(() =>
         j.jsxAttribute(
           j.jsxIdentifier('sx'),
