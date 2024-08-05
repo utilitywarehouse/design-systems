@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Flex } from '../Flex';
-import { Link } from '../lab';
+import { Link } from '../Link';
 import { Heading } from '../Heading';
 import { Alert } from '../Alert';
 import { Unstyled } from '@storybook/blocks';

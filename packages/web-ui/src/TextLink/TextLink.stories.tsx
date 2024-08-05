@@ -1,128 +1,167 @@
 import * as React from 'react';
-import { TextLink, TextLinkProps } from './TextLink';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Backgrounds } from '../storybook-utils';
-import { Text, TextProps } from '../Text';
-import { Stack } from '../Stack';
+import { TextLink } from './TextLink';
+import { Text } from '../Text';
+import { Flex } from '../Flex';
 import { Box } from '../Box';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { ThemeProvider } from '../ThemeProvider';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { ChevronRightMediumIcon, OpenMediumIcon } from '@utilitywarehouse/react-icons';
 
 const meta: Meta<typeof TextLink> = {
-  title: 'Web UI / Components / TextLink',
+  title: 'Web UI / Components / Links / TextLink',
   component: TextLink,
-  decorators: [
-    Story => (
-      <ThemeProvider>
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
+  argTypes: {
+    children: { control: { type: 'text' } },
+    href: { control: { type: 'text' } },
+    inverted: { control: { type: 'boolean' } },
+    textTransform: {
+      options: ['capitalize', 'uppercase', 'lowercase', 'none'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof TextLink>;
 
-const textVariants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
-const variants = ['displayHeading', 'h1', 'h2', 'h3', 'h4', ...textVariants] as const;
+const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
 export const Workshop: Story = {
-  render: args => {
-    return (
-      <Stack>
-        {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
-          bg => (
-            <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-              <TextLink href="#" {...args} />
-            </Box>
-          )
-        )}
-      </Stack>
-    );
-  },
-  argTypes: {
-    children: {
-      control: {
-        type: 'text',
-      },
-    },
-    variant: {
-      options: variants,
-      control: {
-        type: 'radio',
-      },
-    },
-    textTransform: {
-      options: ['none', 'lowercase', 'uppercase', 'capitalize'] as const,
-      control: {
-        type: 'radio',
-      },
-    },
-  },
+  render: args => (
+    <Flex
+      direction="column"
+      gap={4}
+      width={500}
+      p={4}
+      bgcolor={args.inverted ? colors.grey900 : colors.grey50}
+      align="center"
+      justify="center"
+    >
+      <Text inverted={args.inverted}>
+        <TextLink {...args} />
+      </Text>
+      <Text inverted={args.inverted}>
+        Agnes Martin was an American <TextLink {...args}>abstract painter</TextLink> known for her{' '}
+        <TextLink {...args}>minimalist</TextLink> style. Martin&apos;s art was characterized by
+        serene compositions featuring <TextLink {...args}>grids and lines</TextLink>. Martin&apos;s
+        minimalist approach conveyed tranquility and <TextLink {...args}>spirituality</TextLink>,
+        and her paintings often carried positive names reflective of her{' '}
+        <TextLink {...args}>philosophy</TextLink>.
+      </Text>
+    </Flex>
+  ),
   args: {
-    children: 'Text link',
-    variant: 'body',
+    children: 'TextLink',
     href: '#',
   },
 };
 
-export const TextLinkVariants: Story = {
-  name: 'Variants',
+export const KitchenSink: Story = {
   render: () => {
     return (
-      <Stack spacing={1}>
+      <Flex direction="column" gap={1}>
         {variants.map(variant => (
-          <TextLink key={variant} variant={variant as TextLinkProps['variant']}>
-            hamburgefons ({variant})
-          </TextLink>
+          <Text key={variant} variant={variant}>
+            <TextLink textTransform="capitalize" href="#">
+              {variant} TextLink
+            </TextLink>
+          </Text>
         ))}
-      </Stack>
+      </Flex>
     );
   },
 };
 
-export const InlineTextLink: Story = {
-  name: 'Inline TextLink',
+export const WithinText: Story = {
+  name: 'In a block of text',
   render: () => {
     return (
-      <Stack>
-        {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
-          bg => (
-            <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-              <Stack spacing={2}>
-                {textVariants.map(v => (
-                  <Text key={v} component="span" variant={v as TextProps['variant']}>
-                    This is a <TextLink href="#">text link</TextLink>, wrapped in a {v} Text
-                    component.
-                  </Text>
-                ))}
-              </Stack>
-            </Box>
-          )
-        )}
-      </Stack>
+      <Flex direction="column" gap={1}>
+        {variants.map(variant => (
+          <Text key={variant} variant={variant}>
+            This is the {variant} text style, and it contains{' '}
+            <TextLink href="#">an embedded link</TextLink> within this text.
+          </Text>
+        ))}
+      </Flex>
     );
   },
 };
 
-export const TextLinkColor: Story = {
-  name: 'Contextual colour',
-  render: () => {
+export const WithIcons: Story = {
+  render: args => (
+    <Flex gap={6}>
+      <TextLink {...args}>
+        Learn More
+        <ChevronRightMediumIcon />
+      </TextLink>
+      <TextLink {...args}>
+        Open in a new tab
+        <OpenMediumIcon />
+      </TextLink>
+    </Flex>
+  ),
+};
+
+export const TextLinkColour: Story = {
+  name: 'Contextual Colour',
+  args: { href: '#' },
+  render: args => {
     return (
-      <Backgrounds>
-        <Stack spacing={4}>
-          {textVariants.map(v => (
-            <Stack key={v} spacing={1}>
-              <TextLink href="#" variant={v as TextProps['variant']}>
-                {v} text link
-              </TextLink>
-              <Text component="span" variant={v as TextProps['variant']}>
-                This is a <TextLink href="#">text link</TextLink>, wrapped in a {v} Text component.
-              </Text>
-            </Stack>
-          ))}
-        </Stack>
-      </Backgrounds>
+      <Flex direction="column">
+        <Box padding={2}>
+          <Text variant="body">
+            Text with a <TextLink {...args}>TextLink</TextLink>.
+          </Text>
+        </Box>
+        <Box padding={2} background={colorsCommon.brandPrimaryPurple}>
+          <Text variant="body">
+            Text with a <TextLink {...args}>TextLink</TextLink> on brandPrimaryPurple background.
+          </Text>
+        </Box>
+        <Box padding={2} background={colorsCommon.brandMidnight}>
+          <Text variant="body">
+            Text with a <TextLink {...args}>TextLink</TextLink> on brandMidnight background.
+          </Text>
+        </Box>
+        <Box padding={2} background={colorsCommon.brandMidnight}>
+          <Text variant="body" color={colorsCommon.brandPink}>
+            Text with a{' '}
+            <TextLink {...args} color="inherit">
+              TextLink
+            </TextLink>{' '}
+            on brandMidnight background with inherited colour.
+          </Text>
+        </Box>
+        <Box padding={2}>
+          <Text variant="body">
+            Text with a{' '}
+            <TextLink {...args} color={colors.green500}>
+              TextLink
+            </TextLink>{' '}
+            on brandWhite background with custom colour.
+          </Text>
+        </Box>
+      </Flex>
     );
   },
+};
+
+export const AsButton: Story = {
+  render: () => (
+    <Flex direction="column" gap={2} align="start">
+      <TextLink asChild>
+        <button onClick={() => alert('Hello world!')}>
+          View benefits
+          <ChevronRightMediumIcon />
+        </button>
+      </TextLink>
+      <TextLink asChild color={colors.grey900}>
+        <button onClick={() => alert('Hello world!')}>
+          Custom color
+          <ChevronRightMediumIcon />
+        </button>
+      </TextLink>
+    </Flex>
+  ),
 };

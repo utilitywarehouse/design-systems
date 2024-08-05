@@ -16,9 +16,12 @@ documenting for others, thankyou!
 
 - [Typography component](#typography-component)
 - [Buttons size renaming](#buttons-size-renaming)
+- [Link component](#link-component)
+- [TextLink component](#textlink-component)
 - [Codemods](#codemods)
   - [Migration](#migration)
-  - [Rename lab button size](#rename-lab-button-size)
+  - [Rename lab Button size](#rename-lab-button-size)
+  - [Rename IconButton size](#rename-iconbutton-size)
 
 ## Typography component
 
@@ -61,7 +64,9 @@ variant. To replace this you can use either a `Box` or `Text` component with
 <Box component="span" sx={{ font: 'inherit' }}>
 ```
 
-We will provide a codemod to migrate to these components, however they are not
+### Codemod
+
+There is a codemod to migrate to these components, however they are not
 a 1-2-1 match, as they do not continue with props such as `fontWeight`, `paragraph` or
 `gutterBottom`, so you should visually verify all changes.
 
@@ -80,6 +85,8 @@ boolean prop, or, when appropriate, use the `Strong` component.
 
 The `Button` component from the `lab` submodule, and the `IconButton`
 component, have had the `large` size value renamed to `medium`.
+
+### Codemod
 
 There is a codemod available to support this change.
 
@@ -114,6 +121,81 @@ There is a codemod available to support this change.
 + ></IconButton>
 ```
 
+## Link component
+
+The `Link` component has been completely redesigned. This redesign was
+available in `v0` through the `lab` subdirectory, and in this release we have
+moved `Link` out of `lab`, replacing the previous `Link` component.
+
+This redesign is visual, and also introduces a rethought API, props, and usage
+intentions.
+
+The new `Link` component is designed specifically for standalone links that are
+not wrapped or contained within a block of text. While this component may
+appear similar to the legacy tertiary `Button` variant, it should not be
+confused with that component.
+
+### Variant and Size
+
+There are 2 main API changes to be aware of; the removal of the `variant` prop, and
+the addition of the `size` prop.
+
+Visually, these changes mean that the `Link` component's font size no longer
+simply reflects that of the `Text` and `Heading` components, but is controlled
+by the 2 size values; `small` & `large`. These sizes do not reflect any of the
+previous variants, and change both the font size, and the line height. The font
+weight has also changed from 'regular' to 'semibold'.
+
+As this change is not a 1-2-1 replacement, when migrating, you will need to
+visually check each usage of the component, and appropriately choose the best
+replacement size for the previous variant.
+
+It may also be that you want to completely replace the previous usage of the
+`Link` component with the new `TextLink` component, if the previous usage was
+inline within a section of text. However, do be aware that the new `TextLink`
+component is a complete redesign and so you may want to discuss any significant
+UI changes with the Design team.
+
+### Colour
+
+The new `Link` component is not designed to be used on darker background
+colours, where the previous `Link` component would adjust it's colours
+contextually if rendered on a midnight or brand purple background. If you need
+to update something like this then you may need to have a conversation with the
+design team.
+
+### Codemod
+
+Due to the nature of the changes, and the fact this is not a 1-2-1 replacement,
+we are unable to offer a reliable codemod. We also feel it would be better not
+to provide a codemod removing legacy props, so that the errors caused by having
+incorrect props will highlight where manual updates and checks needed to
+happen.
+
+There is a codemod to update imports from the `lab` subdirectory, including the
+`Link` component.
+
+## TextLink component
+
+This component has been completely redesigned. The previous implementation only
+re-exported the `Link` component, whereas this new implementation has been
+separately designed to be used specifically within a block of text.
+
+When migrating your code you may want to replace your previous usage with the
+new `Link` component, or you could choose to discuss with the Design team if
+the newly designed `TextLink` is more appropriate.
+
+### Codemod
+
+Due to the nature of the changes, and the fact this is not a 1-2-1 replacement,
+we are unable to offer a reliable codemod. We also feel it would be better not
+to provide a codemod removing legacy props, so that the errors caused by having
+incorrect props will highlight where manual updates and checks needed to
+happen.
+
+There is a codemod to update imports from the `lab` subdirectory, including the
+`TextLink` component.
+
 ## Codemods
 
 ### Migration
@@ -127,15 +209,26 @@ npx @utilitywarehouse/ds-codemod web-ui/v1/migration <path>
 
 Included codemods:
 
+- `update-lab-imports`
 - `rename-lab-button-size`
 - `rename-icon-button-size`
 
 Please make sure you fix any linting or formatting issues before continuing to
 run any further codemods.
 
+### Update lab imports
+
+Updates the import paths for components that are being moved out of the `lab`
+subdirectory.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/update-lab-imports <path>
+```
+
 ### Rename lab Button size
 
-Updates the size value `large` to `medium` for the `Button` component from the lab submodule.
+Updates the size value `large` to `medium` for the `Button` component from the
+lab subdirectory.
 
 ```console
 npx @utilitywarehouse/ds-codemod web-ui/v1/rename-lab-button-size <path>

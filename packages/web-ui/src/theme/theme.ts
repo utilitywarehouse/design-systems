@@ -27,8 +27,7 @@ export const customPalette = {
 };
 
 theme.palette = {
-  // TODO: we have to do this because the mui/material Button component relies on certain palette properties.
-  // I'm guessing we can remove this when we refactor to use the unstyled mui/base Button
+  // TODO: the mui/material Button component relies on certain palette properties, remove when refactor Button.
   ...theme.palette,
   ...customPalette,
 };

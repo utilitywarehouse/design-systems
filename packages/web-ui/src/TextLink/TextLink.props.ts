@@ -1,4 +1,4 @@
-import { TextProps } from '../../Text';
+import { TextProps } from '../Text';
 
 export interface TextLinkProps
   extends Pick<TextProps, 'textTransform'>,
