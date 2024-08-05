@@ -17,6 +17,7 @@ documenting for others, thankyou!
 - [Typography component](#typography-component)
 - [Buttons size renaming](#buttons-size-renaming)
 - [Link component](#link-component)
+- [TextLink component](#textlink-component)
 - [Codemods](#codemods)
   - [Migration](#migration)
   - [Rename lab Button size](#rename-lab-button-size)
@@ -147,10 +148,13 @@ weight has also changed from 'regular' to 'semibold'.
 
 As this change is not a 1-2-1 replacement, when migrating, you will need to
 visually check each usage of the component, and appropriately choose the best
-replacement size for the previous variant. It may also be that you want to
-completely replace the previous usage of the `Link` component with the new
-`TextLink` component, if the previous usage was inline within a section of
-text.
+replacement size for the previous variant.
+
+It may also be that you want to completely replace the previous usage of the
+`Link` component with the new `TextLink` component, if the previous usage was
+inline within a section of text. However, do be aware that the new `TextLink`
+component is a complete redesign and so you may want to discuss any significant
+UI changes with the Design team.
 
 ### Colour
 
@@ -159,6 +163,24 @@ colours, where the previous `Link` component would adjust it's colours
 contextually if rendered on a midnight or brand purple background. If you need
 to update something like this then you may need to have a conversation with the
 design team.
+
+### Codemod
+
+Due to the nature of the changes, and the fact this is not a 1-2-1 replacement,
+we are unable to offer a reliable codemod. We also feel it would be better not
+to provide a codemod removing legacy props, so that the errors caused by having
+incorrect props will highlight where manual updates and checks needed to
+happen.
+
+## TextLink component
+
+This component has been completely redesigned. The previous implementation only
+re-exported the `Link` component, whereas this new implementation has been
+separately designed to be used specifically within a block of text.
+
+When migrating your code you may want to replace your previous usage with the
+new `Link` component, or you could choose to discuss with the Design team if
+the newly designed `TextLink` is more appropriate.
 
 ### Codemod
 
