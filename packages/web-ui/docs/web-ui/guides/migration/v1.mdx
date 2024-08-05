@@ -172,6 +172,9 @@ to provide a codemod removing legacy props, so that the errors caused by having
 incorrect props will highlight where manual updates and checks needed to
 happen.
 
+There is a codemod to update imports from the `lab` subdirectory, including the
+`Link` component.
+
 ## TextLink component
 
 This component has been completely redesigned. The previous implementation only
@@ -190,6 +193,9 @@ to provide a codemod removing legacy props, so that the errors caused by having
 incorrect props will highlight where manual updates and checks needed to
 happen.
 
+There is a codemod to update imports from the `lab` subdirectory, including the
+`TextLink` component.
+
 ## Codemods
 
 ### Migration
@@ -203,15 +209,26 @@ npx @utilitywarehouse/ds-codemod web-ui/v1/migration <path>
 
 Included codemods:
 
+- `update-lab-imports`
 - `rename-lab-button-size`
 - `rename-icon-button-size`
 
 Please make sure you fix any linting or formatting issues before continuing to
 run any further codemods.
 
+### Update lab imports
+
+Updates the import paths for components that are being moved out of the `lab`
+subdirectory.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/update-lab-imports <path>
+```
+
 ### Rename lab Button size
 
-Updates the size value `large` to `medium` for the `Button` component from the lab submodule.
+Updates the size value `large` to `medium` for the `Button` component from the
+lab subdirectory.
 
 ```console
 npx @utilitywarehouse/ds-codemod web-ui/v1/rename-lab-button-size <path>
