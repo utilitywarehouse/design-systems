@@ -22,6 +22,7 @@ documenting for others, thankyou!
   - [Migration](#migration)
   - [Rename lab Button size](#rename-lab-button-size)
   - [Rename IconButton size](#rename-iconbutton-size)
+  - [Update Typography](#update-typography)
 
 ## Typography component
 
@@ -240,4 +241,47 @@ Updates the size value `large` to `medium` for the `IconButton` component.
 
 ```console
 npx @utilitywarehouse/ds-codemod web-ui/v1/rename-icon-button-size <path>
+```
+
+### Update Typography
+
+Updates usage of the `Typography` component to the `Heading` & `Text` components.
+
+Also transforms the following removed props:
+
+- 'gutterBottom' -> `sx={{ marginBottom: '0.35em' }}`
+- 'paragraph' -> `component="p"` and `sx={{ marginBottom: '16px' }}`
+
+Please note that this may cause your components to have duplicate `sx` props,
+which you will need to manually combine.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/typography-to-heading-and-text <path>
+```
+
+```diff
+- <Typography>{content}</Typography>
+- <Typography variant="subtitle">{content}</Typography>
+- <Typography variant="body">{content}</Typography>
+- <Typography variant="legalNote">{content}</Typography>
+- <Typography variant="caption">{content}</Typography>
+- <Typography variant="displayHeading">{content}</Typography>
+- <Typography variant="h1">{content}</Typography>
+- <Typography variant="h2">{content}</Typography>
+- <Typography variant="h3">{content}</Typography>
+- <Typography variant="h4">{content}</Typography>
+- <Typography gutterBottom>{content}</Typography>
+- <Typography paragraph>{content}</Typography>
++ <Text>{content}</Text>
++ <Text variant="subtitle">{content}</Text>
++ <Text variant="body">{content}</Text>
++ <Text variant="legalNote">{content}</Text>
++ <Text variant="caption">{content}</Text>
++ <Heading variant="displayHeading">{content}</Heading>
++ <Heading variant="h1">{content}</Heading>
++ <Heading variant="h2">{content}</Heading>
++ <Heading variant="h3">{content}</Heading>
++ <Heading variant="h4">{content}</Heading>
++ <Text sx={{ marginBottom: '0.35em' }}>{content}</Text>
++ <Text component='p' sx={{ marginBottom: '16px' }}>{content}</Text>
 ```
