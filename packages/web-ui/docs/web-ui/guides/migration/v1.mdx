@@ -16,9 +16,11 @@ documenting for others, thankyou!
 
 - [Typography component](#typography-component)
 - [Buttons size renaming](#buttons-size-renaming)
+- [Link component](#link-component)
 - [Codemods](#codemods)
   - [Migration](#migration)
-  - [Rename lab button size](#rename-lab-button-size)
+  - [Rename lab Button size](#rename-lab-button-size)
+  - [Rename IconButton size](#rename-iconbutton-size)
 
 ## Typography component
 
@@ -134,13 +136,14 @@ confused with that component.
 
 ### Variant and Size
 
-There are 2 main changes to be aware of; the removal of the `variant` prop, and
-the addition of the `size` prop. These changes mean that the `Link` component's
-font size no longer simply reflects that of the `Text` and `Heading`
-components, but is controlled by the 2 size values; `small` & `large`.
+There are 2 main API changes to be aware of; the removal of the `variant` prop, and
+the addition of the `size` prop.
 
-There is no equivalent replacement if any of the `Heading` variants were used
-with the legacy `Link` component. This is by design.
+Visually, these changes mean that the `Link` component's font size no longer
+simply reflects that of the `Text` and `Heading` components, but is controlled
+by the 2 size values; `small` & `large`. These sizes do not reflect any of the
+previous variants, and change both the font size, and the line height. The font
+weight has also changed from 'regular' to 'semibold'.
 
 As this change is not a 1-2-1 replacement, when migrating, you will need to
 visually check each usage of the component, and appropriately choose the best
@@ -148,13 +151,6 @@ replacement size for the previous variant. It may also be that you want to
 completely replace the previous usage of the `Link` component with the new
 `TextLink` component, if the previous usage was inline within a section of
 text.
-
-```diff
-- <Link variant="body">Link</Link>
-- <Link variant="subtitle">Link</Link>
-+ <Link size="small">Link</Link>
-+ <Link size="large">Link</Link>
-```
 
 ### Colour
 
@@ -167,9 +163,10 @@ design team.
 ### Codemod
 
 Due to the nature of the changes, and the fact this is not a 1-2-1 replacement,
-we are unable to offer a reliable codemod. We also felt it would be better not
-to provide a codemod which removed legacy props, so that the errors this caused
-would highlight where manual updates and checks needed to happen.
+we are unable to offer a reliable codemod. We also feel it would be better not
+to provide a codemod removing legacy props, so that the errors caused by having
+incorrect props will highlight where manual updates and checks needed to
+happen.
 
 ## Codemods
 

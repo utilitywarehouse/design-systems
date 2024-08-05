@@ -37,7 +37,7 @@ export const KitchenSink: Story = {
       <Flex gap={2} align="center">
         {sizes.map(size => (
           <Link key={size} size={size} href="#">
-            Link
+            Hamburgefons
             {size === 'large' ? <ChevronRightMediumIcon /> : <ChevronRightSmallIcon />}
           </Link>
         ))}
@@ -46,7 +46,7 @@ export const KitchenSink: Story = {
         {sizes.map(size => (
           <Link key={size} size={size} href="#">
             {size === 'large' ? <ChevronLeftMediumIcon /> : <ChevronLeftSmallIcon />}
-            Link
+            Hamburgefons
           </Link>
         ))}
       </Flex>
