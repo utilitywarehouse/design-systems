@@ -41,7 +41,7 @@ const ListBasic: StoryFn = ({
       loading={loading}
       leadingContent={icon && <ListItemIcon as={icon} />}
       trailingContent={trailingIcon ? <ListItemTrailingIcon as={trailingIcon} /> : null}
-      divider={divider}
+      divider={_listContainer === 'full' ? divider : divider && index !== _numberOfItems - 1}
     />
   ));
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItemProps from './ListItem.props';
+import type ListItemProps from './ListItem.props';
 import {
   Root,
   Text,

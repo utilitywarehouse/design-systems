@@ -1,5 +1,5 @@
-import { ComponentProps } from 'react';
-import { Root } from './styled-components';
+import type { ComponentProps } from 'react';
+import type { Root } from './styled-components';
 
 interface ListItemProps extends ComponentProps<typeof Root> {
   text: string;

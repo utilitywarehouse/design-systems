@@ -1,6 +1,7 @@
 import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
 import * as Stories from './List.stories';
 import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
+import { NativeUIProvider, List, ListHeading, ListItem } from '@utilitywarehouse/native-ui';
 
 <Meta of={Stories} />
 
@@ -13,3 +14,39 @@ import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
 The List component serves as the primary wrapper for List Items and List Heading components.
 
 List item is the main building block of list. Each item has its own set of properties that you can customise and adapt to suit your needs.
+
+- [Playground](#playground)
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <List>
+      <ListHeading title="Heading" supportingText="Supporting text" />
+      <ListItem text="List Item 1" onPress={() => console.log('item pressed')} />
+      <ListItem text="List Item 2" onPress={() => console.log('item pressed')} />
+      <ListItem text="List Item 3" onPress={() => console.log('item pressed')} />
+    </List>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { List, ListHeading, ListItem } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => (
+  <List>
+    <ListHeading title="Heading" supportingText="Supporting text" />
+    <ListItem text="List Item 1" onPress={() => console.log('item pressed')} />
+    <ListItem text="List Item 2" onPress={() => console.log('item pressed')} />
+    <ListItem text="List Item 3" onPress={() => console.log('item pressed')} />
+  </List>
+);
+```
