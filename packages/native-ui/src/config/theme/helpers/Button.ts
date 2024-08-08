@@ -124,14 +124,14 @@ export const invertedGhostScheme = (scheme: Scheme) => ({
       backgroundColor: 'transparent',
 
       _text: {
-        color: `$${scheme}700`,
+        color: `$${scheme}600`,
       },
       _icon: {
-        color: `$${scheme}700`,
+        color: `$${scheme}600`,
       },
       _spinner: {
         _svg: {
-          color: `$${scheme}700`,
+          color: `$${scheme}600`,
         },
       },
     },
