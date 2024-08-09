@@ -10,6 +10,7 @@ import {
 } from './styled-components';
 import { Box, VStack } from '@gluestack-ui/themed';
 import { ChevronRight01MediumIcon } from '@utilitywarehouse/react-native-icons';
+import { useListContext } from '../List';
 
 const ListItem: React.FC<ListItemProps> = ({
   text,
@@ -17,13 +18,15 @@ const ListItem: React.FC<ListItemProps> = ({
   leadingContent,
   trailingContent,
   disabled,
+  divider,
   loading,
   children,
   ...props
 }) => {
   const { onPress } = props;
+  const listContext = useListContext();
 
-  if (loading) {
+  if (loading || listContext?.loading) {
     return (
       // @ts-expect-error - This is a variant value
       <Root {...props} showPressed={false}>
@@ -66,8 +69,13 @@ const ListItem: React.FC<ListItemProps> = ({
   }
 
   return (
-    // @ts-expect-error - This is a variant value
-    <Root {...props} showPressed={!!onPress} disabled={disabled}>
+    <Root
+      {...props}
+      // @ts-expect-error - This is a variant value
+      showPressed={!!onPress}
+      disabled={disabled || listContext?.disabled}
+      divider={divider || listContext?.divider}
+    >
       {children ? (
         <>{children}</>
       ) : (

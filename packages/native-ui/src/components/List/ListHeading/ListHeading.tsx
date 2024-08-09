@@ -2,14 +2,14 @@ import React from 'react';
 import { Root, SupportingText, Title } from './styled-components';
 
 interface ListHeadingProps {
-  title: string;
+  text: string;
   supportingText?: string;
 }
 
-const ListHeading: React.FC<ListHeadingProps> = ({ title, supportingText }) => {
+const ListHeading: React.FC<ListHeadingProps> = ({ text, supportingText }) => {
   return (
     <Root>
-      <Title>{title}</Title>
+      <Title>{text}</Title>
       {supportingText ? <SupportingText>{supportingText}</SupportingText> : null}
     </Root>
   );

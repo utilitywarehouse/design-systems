@@ -37,16 +37,14 @@ const ListBasic: StoryFn = ({
       text={text}
       supportingText={supportingText}
       onPress={handlePress}
-      disabled={disabled}
-      loading={loading}
       leadingContent={icon && <ListItemIcon as={icon} />}
       trailingContent={trailingIcon ? <ListItemTrailingIcon as={trailingIcon} /> : null}
       divider={_listContainer === 'full' ? divider : divider && index !== _numberOfItems - 1}
     />
   ));
   return (
-    <List container={_listContainer}>
-      {_headingText && <ListHeading title={_headingText} supportingText={_headingSupportingText} />}
+    <List container={_listContainer} disabled={disabled} loading={loading}>
+      {_headingText && <ListHeading text={_headingText} supportingText={_headingSupportingText} />}
       {_listContainer === 'card' && (
         <Box borderRadius="$xl" backgroundColor="$grey50" $dark-bg="$darkGrey50">
           {listItems}
