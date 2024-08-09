@@ -26,7 +26,7 @@ export const invertedOutlineScheme = (scheme: Scheme) => ({
 
     ':active': {
       backgroundColor: `$${scheme}900`,
-      borderColor: `$${scheme}400`,
+      borderColor: `$${scheme}${scheme === 'cyan' ? 400 : 500}`,
 
       _text: {
         color: `$${scheme}100`,
@@ -269,7 +269,7 @@ export const outlineScheme = (scheme: Scheme) => ({
 
     ':active': {
       backgroundColor: `$${scheme}${scheme === 'grey' ? 100 : 50}`,
-      borderColor: `$${scheme}${scheme === 'cyan' ? 500 : 600}`,
+      borderColor: `$${scheme}${scheme === 'cyan' ? 400 : 500}`,
 
       _text: {
         color: `$${scheme}${scheme === 'cyan' ? 1000 : 900}`,
