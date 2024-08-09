@@ -2,7 +2,6 @@ import {
   Box,
   IconButton,
   List,
-  ListHeading,
   ListItem,
   ListItemIcon,
   ListItemTrailingIcon,
@@ -13,15 +12,15 @@ import { StoryFn } from '@storybook/react';
 import _ from 'lodash';
 
 const ListBasic: StoryFn = ({
-  _listContainer,
-  _headingText,
-  _headingSupportingText,
-  text,
-  supportingText,
-  leadingContent: _icon,
-  trailingContent: _trailingIcon,
+  container,
+  headingText,
+  headingSupportingText,
+  _listItemText,
+  _listItemSupportingText,
+  _listItemLeadingContent: _icon,
+  _listItemTrailingContent: _trailingIcon,
   divider,
-  onPress,
+  _listItemOnPress,
   disabled,
   loading,
   _numberOfItems,
@@ -30,70 +29,79 @@ const ListBasic: StoryFn = ({
   const icon = _icon === 'none' ? undefined : Icons[_icon];
   // @ts-expect-error - This is a playground
   const trailingIcon = _trailingIcon === 'none' ? undefined : Icons[_trailingIcon];
-  const handlePress = onPress === 'null' ? undefined : eval(onPress);
+  const handlePress = _listItemOnPress === 'null' ? undefined : eval(_listItemOnPress);
   const listItems = Array.from({ length: _numberOfItems }).map((_, index) => (
     <ListItem
       key={index}
-      text={text}
-      supportingText={supportingText}
+      text={_listItemText}
+      supportingText={_listItemSupportingText}
       onPress={handlePress}
       leadingContent={icon && <ListItemIcon as={icon} />}
       trailingContent={trailingIcon ? <ListItemTrailingIcon as={trailingIcon} /> : null}
-      divider={_listContainer === 'full' ? divider : divider && index !== _numberOfItems - 1}
+      divider={container === 'full' ? divider : divider && index !== _numberOfItems - 1}
     />
   ));
   return (
-    <List container={_listContainer} disabled={disabled} loading={loading}>
-      {_headingText && <ListHeading text={_headingText} supportingText={_headingSupportingText} />}
-      {_listContainer === 'card' && (
+    <List
+      container={container}
+      disabled={disabled}
+      loading={loading}
+      headingText={headingText}
+      headingSupportingText={headingSupportingText}
+    >
+      {container === 'card' && (
         <Box borderRadius="$xl" backgroundColor="$grey50" $dark-bg="$darkGrey50">
           {listItems}
         </Box>
       )}
-      {_listContainer === 'full' && listItems}
+      {container === 'full' && listItems}
     </List>
   );
 };
 
 ListBasic.argTypes = {
-  _listContainer: {
+  container: {
     options: ['full', 'card'],
     control: 'select',
-    description:
-      'The container variant to be displayed on the list. \n _Note: This is a playground prop. Use the container prop on the List component._',
+    description: 'The container variant to be displayed on the list.',
   },
-  _headingText: {
+  headingText: {
     control: 'text',
     description:
       'The heading text to be displayed on the list. \n _Note: This is a playground prop, use title on the ListHeading component._',
   },
-  _headingSupportingText: {
+  headingSupportingText: {
     control: 'text',
     description:
-      'The heading supporting text to be displayed on the list. \n _Note: This is a playground prop, use supportingText on the ListHeading component._',
+      'The heading supporting text to be displayed on the list. \n _Note: This is a playground prop, use _listItemSupportingText on the ListHeading component._',
   },
-  text: {
+  _listItemText: {
     control: 'text',
-    description: 'The text to be displayed on the list item.',
+    description:
+      'The text to be displayed on the list item. \n _Note: This is a playground prop. Use the text prop on the ListItem component._',
   },
-  supportingText: {
+  _listItemSupportingText: {
     control: 'text',
-    description: 'The supporting text to be displayed on the list item.',
+    description:
+      'The supporting text to be displayed on the list item. \n _Note: This is a playground prop. Use the supportingText prop on the ListItem component._',
   },
-  leadingContent: {
+  _listItemLeadingContent: {
     options: ['none', ...Object.keys(Icons).filter(icon => icon.includes('Medium'))],
     control: 'select',
-    description: 'The leading content to be displayed on the list item.',
+    description:
+      'The leading content to be displayed on the list item.\n _Note: This is a playground prop. Use the leadingContent prop on the ListItem component._',
   },
-  trailingContent: {
+  _listItemTrailingContent: {
     options: ['none', ...Object.keys(Icons).filter(icon => icon.includes('Medium'))],
     control: 'select',
-    description: 'The trailing content to be displayed on the list item.',
+    description:
+      'The trailing content to be displayed on the list item.\n _Note: This is a playground prop. Use the trailingText prop on the ListItem component._',
   },
-  onPress: {
+  _listItemOnPress: {
     options: ["() => console.log('List item pressed')", 'null'],
     control: 'select',
-    description: 'The function to be called when the list item is pressed',
+    description:
+      'The function to be called when the list item is pressed. \n _Note: This is a playground prop. Use the onPress prop on the ListItem component._',
   },
   divider: {
     control: 'boolean',
@@ -114,17 +122,17 @@ ListBasic.argTypes = {
 };
 
 ListBasic.args = {
-  _listContainer: 'full',
-  _headingText: 'This is the list heading',
-  _headingSupportingText: 'Supporting text',
-  text: 'List item text',
-  supportingText: 'Supporting text',
-  leadingContent: 'SettingsMediumIcon',
-  trailingContent: 'none',
+  container: 'full',
+  headingText: 'This is the list heading',
+  headingSupportingText: 'Supporting text',
   divider: true,
-  onPress: "() => console.log('List item pressed')",
   disabled: false,
   loading: false,
+  _listItemText: 'List item text',
+  _listItemSupportingText: 'Supporting text',
+  _listItemLeadingContent: 'SettingsMediumIcon',
+  _listItemTrailingContent: 'none',
+  _listItemOnPress: "() => console.log('List item pressed')",
   _numberOfItems: 4,
 };
 

@@ -1,7 +1,35 @@
 import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
 import * as Stories from './List.stories';
 import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
-import { NativeUIProvider, List, ListHeading, ListItem } from '@utilitywarehouse/native-ui';
+import {
+  NativeUIProvider,
+  List,
+  ListHeading,
+  ListItem,
+  ListItemIcon,
+  ListItemLeadingContent,
+  ListItemSupportingText,
+  ListItemText,
+  ListItemTrailingContent,
+  ListItemTrailingIcon,
+  ListItemContent,
+  Box,
+  Badge,
+  BadgeText,
+  HStack,
+  Checkbox,
+  CheckboxGroup,
+  CheckboxIndicator,
+} from '@utilitywarehouse/native-ui';
+import {
+  BillMediumIcon,
+  ChevronRight01MediumIcon,
+  PaymentMediumIcon,
+  HomeMediumIcon,
+  UserMediumIcon,
+  ElectricityMediumIcon,
+  GasMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
 
 <Meta of={Stories} />
 
@@ -16,6 +44,15 @@ The List component serves as the primary wrapper for List Items and List Heading
 List item is the main building block of list. Each item has its own set of properties that you can customise and adapt to suit your needs.
 
 - [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+  - [`List`](#list-1)
+  - [`ListHeading`](#listheading)
+  - [`ListItem`](#listitem)
+- [Advanced Usage](#advanced-usage)
+- [Examples](#examples)
+  - [List Item with Badge](#list-item-with-badge)
+  - [Checbox List](#checbox-list)
 
 ## Playground
 
@@ -29,8 +66,7 @@ List item is the main building block of list. Each item has its own set of prope
 
 <Canvas>
   <NativeUIProvider>
-    <List>
-      <ListHeading text="Heading" supportingText="Supporting text" />
+    <List headingText="Heading" headingSupportingText="Supporting text" divider>
       <ListItem text="List Item 1" onPress={() => console.log('item pressed')} />
       <ListItem text="List Item 2" onPress={() => console.log('item pressed')} />
       <ListItem text="List Item 3" onPress={() => console.log('item pressed')} />
@@ -43,10 +79,400 @@ import { List, ListHeading, ListItem } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => (
   <List>
-    <ListHeading text="Heading" supportingText="Supporting text" />
-    <ListItem text="List Item 1" onPress={() => console.log('item pressed')} />
-    <ListItem text="List Item 2" onPress={() => console.log('item pressed')} />
-    <ListItem text="List Item 3" onPress={() => console.log('item pressed')} />
+    <List headingText="Heading" headingSupportingText="Supporting text" divider>
+      <ListItem text="List Item 1" onPress={() => console.log('item pressed')} />
+      <ListItem text="List Item 2" onPress={() => console.log('item pressed')} />
+      <ListItem text="List Item 3" onPress={() => console.log('item pressed')} />
+    </List>
   </List>
 );
 ```
+
+## Props
+
+### `List`
+
+| Name                  | Type                | Default  | Description                                                |
+| --------------------- | ------------------- | -------- | ---------------------------------------------------------- |
+| container             | `'full' \| 'card' ` | `'full'` | The container style of the list.                           |
+| headingText           | string              |          | The text to display in the heading of the list.            |
+| headingSupportingText | string              |          | The supporting text to display in the heading of the list. |
+| divider               | boolean             | false    | Whether to display a divider below the list items.         |
+| loading               | boolean             | false    | Whether to show the list items in loading state.           |
+| disabled              | boolean             | false    | Whether to disable the list.                               |
+
+### `ListHeading`
+
+| Name           | Type   | Default | Description                                                |
+| -------------- | ------ | ------- | ---------------------------------------------------------- |
+| text           | string |         | The text to display in the heading of the list.            |
+| supportingText | string |         | The supporting text to display in the heading of the list. |
+
+### `ListItem`
+
+| Name            | Type       | Default | Description                                                     |
+| --------------- | ---------- | ------- | --------------------------------------------------------------- |
+| text            | string     |         | The text to display in the list item.                           |
+| onPress         | () => void |         | A callback function to be called when the list item is pressed. |
+| supportingText  | string     |         | The supporting text to display in the list item.                |
+| leadingContent  | ReactNode  |         | The leading content to display in the list item.                |
+| trailingContent | ReactNode  |         | The trailing content to display in the list item.               |
+| disabled        | boolean    | false   | Whether to disable the list item.                               |
+| loading         | boolean    | false   | Whether to show the list item in loading state.                 |
+| divider         | boolean    | false   | Whether to display a divider below the list item.               |
+
+## Advanced Usage
+
+If you need to use the List component in a more advanced way, you can use the parts of the component directly.
+
+<Canvas>
+  <NativeUIProvider>
+    <List>
+      <ListHeading text="Your account" supportingText="Tap the links below to view your account" />
+      <ListItem onPress={() => console.log('pressed')} divider>
+        <ListItemLeadingContent>
+          <ListItemIcon as={BillMediumIcon} color="$purple300" />
+        </ListItemLeadingContent>
+        <ListItemContent>
+          <ListItemText>Bills</ListItemText>
+          <ListItemSupportingText>View your bills</ListItemSupportingText>
+        </ListItemContent>
+        <ListItemTrailingContent>
+          <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+        </ListItemTrailingContent>
+      </ListItem>
+      <ListItem onPress={() => console.log('pressed')} divider>
+        <ListItemLeadingContent>
+          <ListItemIcon as={PaymentMediumIcon} color="$purple300" />
+        </ListItemLeadingContent>
+        <ListItemContent>
+          <ListItemText>Payments</ListItemText>
+          <ListItemSupportingText>Make a payment</ListItemSupportingText>
+        </ListItemContent>
+        <ListItemTrailingContent>
+          <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+        </ListItemTrailingContent>
+      </ListItem>
+      <ListItem onPress={() => console.log('pressed')} divider>
+        <ListItemLeadingContent>
+          <ListItemIcon as={HomeMediumIcon} color="$purple300" />
+        </ListItemLeadingContent>
+        <ListItemContent>
+          <ListItemText>Moving home</ListItemText>
+          <ListItemSupportingText>Tell us if your moving</ListItemSupportingText>
+        </ListItemContent>
+        <ListItemTrailingContent>
+          <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+        </ListItemTrailingContent>
+      </ListItem>
+      <ListItem onPress={() => console.log('pressed')}>
+        <ListItemLeadingContent>
+          <ListItemIcon as={UserMediumIcon} color="$purple300" />
+        </ListItemLeadingContent>
+        <ListItemContent>
+          <ListItemText>Refer a friend</ListItemText>
+          <ListItemSupportingText>Get rewarded with a friend</ListItemSupportingText>
+        </ListItemContent>
+        <ListItemTrailingContent>
+          <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+        </ListItemTrailingContent>
+      </ListItem>
+    </List>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import {
+  List,
+  ListHeading,
+  ListItem,
+  ListItemIcon,
+  ListItemLeadingContent,
+  ListItemSupportingText,
+  ListItemText,
+  ListItemTrailingContent,
+  ListItemTrailingIcon,
+  ListItemContent,
+} from '@utilitywarehouse/native-ui';
+import {
+  BillMediumIcon,
+  ChevronRight01MediumIcon,
+  PaymentMediumIcon,
+  HomeMediumIcon,
+  UserMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => (
+  <List>
+    <ListHeading text="Your account" supportingText="Tap the links below to view your account" />
+    <ListItem onPress={() => console.log('pressed')} divider>
+      <ListItemLeadingContent>
+        <ListItemIcon as={BillMediumIcon} color="$purple300" />
+      </ListItemLeadingContent>
+      <ListItemContent>
+        <ListItemText>Bills</ListItemText>
+        <ListItemSupportingText>View your bills</ListItemSupportingText>
+      </ListItemContent>
+      <ListItemTrailingContent>
+        <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+      </ListItemTrailingContent>
+    </ListItem>
+    <ListItem onPress={() => console.log('pressed')} divider>
+      <ListItemLeadingContent>
+        <ListItemIcon as={PaymentMediumIcon} color="$purple300" />
+      </ListItemLeadingContent>
+      <ListItemContent>
+        <ListItemText>Payments</ListItemText>
+        <ListItemSupportingText>Make a payment</ListItemSupportingText>
+      </ListItemContent>
+      <ListItemTrailingContent>
+        <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+      </ListItemTrailingContent>
+    </ListItem>
+    <ListItem onPress={() => console.log('pressed')} divider>
+      <ListItemLeadingContent>
+        <ListItemIcon as={HomeMediumIcon} color="$purple300" />
+      </ListItemLeadingContent>
+      <ListItemContent>
+        <ListItemText>Moving home</ListItemText>
+        <ListItemSupportingText>Tell us if your moving</ListItemSupportingText>
+      </ListItemContent>
+      <ListItemTrailingContent>
+        <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+      </ListItemTrailingContent>
+    </ListItem>
+    <ListItem onPress={() => console.log('pressed')}>
+      <ListItemLeadingContent>
+        <ListItemIcon as={UserMediumIcon} color="$purple300" />
+      </ListItemLeadingContent>
+      <ListItemContent>
+        <ListItemText>Refer a friend</ListItemText>
+        <ListItemSupportingText>Get rewarded with a friend</ListItemSupportingText>
+      </ListItemContent>
+      <ListItemTrailingContent>
+        <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+      </ListItemTrailingContent>
+    </ListItem>
+  </List>
+);
+```
+
+## Examples
+
+### List Item with Badge
+
+<Canvas>
+  <NativeUIProvider>
+    <List>
+      <ListItem onPress={() => console.log('pressed')} divider>
+        <ListItemLeadingContent>
+          <Box padding="$3" borderRadius="$lg" bg="$apple50">
+            <ListItemIcon as={ElectricityMediumIcon} color="$apple800" />
+          </Box>
+        </ListItemLeadingContent>
+        <ListItemContent>
+          <ListItemText>Electricity</ListItemText>
+          <Badge colorScheme="cyan" size="small">
+            <BadgeText>Text</BadgeText>
+          </Badge>
+          <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
+        </ListItemContent>
+        <ListItemTrailingContent>
+          <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+        </ListItemTrailingContent>
+      </ListItem>
+      <ListItem onPress={() => console.log('pressed')} divider={false}>
+        <ListItemLeadingContent>
+          <Box padding="$3" borderRadius="$lg" bg="$apple50">
+            <ListItemIcon as={GasMediumIcon} color="$apple800" />
+          </Box>
+        </ListItemLeadingContent>
+        <ListItemContent>
+          <HStack justifyContent="space-between">
+            <ListItemText>Electricity</ListItemText>
+            <Badge colorScheme="green" size="small">
+              <BadgeText>Smart meter</BadgeText>
+            </Badge>
+          </HStack>
+          <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
+        </ListItemContent>
+        <ListItemTrailingContent>
+          <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+        </ListItemTrailingContent>
+      </ListItem>
+    </List>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemLeadingContent,
+  ListItemSupportingText,
+  ListItemText,
+  ListItemTrailingContent,
+  ListItemTrailingIcon,
+  ListItemContent,
+  Badge,
+  BadgeText,
+  Box,
+  HStack,
+} from '@utilitywarehouse/native-ui';
+import { ElectricityMediumIcon, GasMediumIcon } from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => (
+  <List>
+    <ListItem onPress={() => console.log('pressed')} divider>
+      <ListItemLeadingContent>
+        <Box padding="$3" borderRadius="$lg" bg="$apple50">
+          <ListItemIcon as={ElectricityMediumIcon} color="$apple800" />
+        </Box>
+      </ListItemLeadingContent>
+      <ListItemContent>
+        <ListItemText>Electricity</ListItemText>
+        <Badge colorScheme="cyan" size="small">
+          <BadgeText>Text</BadgeText>
+        </Badge>
+        <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
+      </ListItemContent>
+      <ListItemTrailingContent>
+        <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+      </ListItemTrailingContent>
+    </ListItem>
+    <ListItem onPress={() => console.log('pressed')} divider={false}>
+      <ListItemLeadingContent>
+        <Box padding="$3" borderRadius="$lg" bg="$apple50">
+          <ListItemIcon as={GasMediumIcon} color="$apple800" />
+        </Box>
+      </ListItemLeadingContent>
+      <ListItemContent>
+        <HStack justifyContent="space-between">
+          <ListItemText>Electricity</ListItemText>
+          <Badge colorScheme="green" size="small">
+            <BadgeText>Smart meter</BadgeText>
+          </Badge>
+        </HStack>
+        <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
+      </ListItemContent>
+      <ListItemTrailingContent>
+        <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+      </ListItemTrailingContent>
+    </ListItem>
+  </List>
+);
+```
+
+### Checbox List
+
+<Canvas>
+  <NativeUIProvider>
+    <CheckboxGroup aria-label="Checkbox Group" nativeID="checkbox-group">
+      <List>
+        <ListItem
+          text="Joe Blogs"
+          supportingText="12 Somewhere Street"
+          leadingContent={<ListItemIcon as={UserMediumIcon} />}
+          trailingContent={
+            <Checkbox value="option1" aria-label="Label 1">
+              <CheckboxIndicator />
+            </Checkbox>
+          }
+        />
+        <ListItem
+          text="Mary Poppins"
+          supportingText="45 Somewhere Street"
+          leadingContent={<ListItemIcon as={UserMediumIcon} />}
+          trailingContent={
+            <Checkbox value="option2" aria-label="Label 2">
+              <CheckboxIndicator />
+            </Checkbox>
+          }
+        />
+        <ListItem
+          text="Charlie Brown"
+          supportingText="78 Somewhere Street"
+          leadingContent={<ListItemIcon as={UserMediumIcon} />}
+          trailingContent={
+            <Checkbox value="option3" aria-label="Label 3">
+              <CheckboxIndicator />
+            </Checkbox>
+          }
+        />
+        <ListItem
+          text="Jane Doe"
+          supportingText="90 Somewhere Street"
+          leadingContent={<ListItemIcon as={UserMediumIcon} />}
+          trailingContent={
+            <Checkbox value="option4" aria-label="Label 4">
+              <CheckboxIndicator />
+            </Checkbox>
+          }
+        />
+      </List>
+    </CheckboxGroup>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemSupportingText,
+  Checkbox,
+  CheckboxGroup,
+  CheckboxIndicator,
+} from '@utilitywarehouse/native-ui';
+import { UserMediumIcon } from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = ({ onChange }) => (
+  <CheckboxGroup aria-label="Checkbox Group" nativeID="checkbox-group" onChange={onChange}>
+    <List>
+      <ListItem
+        text="Joe Blogs"
+        supportingText="12 Somewhere Street"
+        leadingContent={<ListItemIcon as={UserMediumIcon} />}
+        trailingContent={
+          <Checkbox value="option1" aria-label="Label 1">
+            <CheckboxIndicator />
+          </Checkbox>
+        }
+      />
+      <ListItem
+        text="Mary Poppins"
+        supportingText="45 Somewhere Street"
+        leadingContent={<ListItemIcon as={UserMediumIcon} />}
+        trailingContent={
+          <Checkbox value="option2" aria-label="Label 2">
+            <CheckboxIndicator />
+          </Checkbox>
+        }
+      />
+      <ListItem
+        text="Charlie Brown"
+        supportingText="78 Somewhere Street"
+        leadingContent={<ListItemIcon as={UserMediumIcon} />}
+        trailingContent={
+          <Checkbox value="option3" aria-label="Label 3">
+            <CheckboxIndicator />
+          </Checkbox>
+        }
+      />
+      <ListItem
+        text="Jane Doe"
+        supportingText="90 Somewhere Street"
+        leadingContent={<ListItemIcon as={UserMediumIcon} />}
+        trailingContent={
+          <Checkbox value="option4" aria-label="Label 4">
+            <CheckboxIndicator />
+          </Checkbox>
+        }
+      />
+    </List>
+  </CheckboxGroup>
+);
+```
+
+For more information on the `Checbox` component, see the [`Checkbox` component documentation](/docs/native-ui-components-checkbox--docs).

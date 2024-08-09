@@ -7,8 +7,9 @@ import {
   LeadingContent,
   TrailingContent,
   TrailingIcon,
+  Content,
 } from './styled-components';
-import { Box, VStack } from '@gluestack-ui/themed';
+import { Box } from '@gluestack-ui/themed';
 import { ChevronRight01MediumIcon } from '@utilitywarehouse/react-native-icons';
 import { useListContext } from '../List';
 
@@ -39,7 +40,7 @@ const ListItem: React.FC<ListItemProps> = ({
             $dark-backgroundColor="$darkGrey300"
           />
         ) : null}
-        <VStack gap="$1" flex={1}>
+        <Content>
           <Box
             width="80%"
             height={20}
@@ -54,7 +55,7 @@ const ListItem: React.FC<ListItemProps> = ({
             backgroundColor="$grey75"
             $dark-backgroundColor="$darkGrey300"
           />
-        </VStack>
+        </Content>
         {onPress || trailingContent ? (
           <Box
             width={24}
@@ -74,17 +75,17 @@ const ListItem: React.FC<ListItemProps> = ({
       // @ts-expect-error - This is a variant value
       showPressed={!!onPress}
       disabled={disabled || listContext?.disabled}
-      divider={divider || listContext?.divider}
+      divider={listContext?.divider ?? divider}
     >
       {children ? (
         <>{children}</>
       ) : (
         <>
           {leadingContent ? <LeadingContent>{leadingContent}</LeadingContent> : null}
-          <VStack gap="$1" flex={1}>
+          <Content>
             <Text>{text}</Text>
             {supportingText ? <SupportingText>{supportingText}</SupportingText> : null}
-          </VStack>
+          </Content>
           {trailingContent ? (
             <TrailingContent>{trailingContent}</TrailingContent>
           ) : !!onPress ? (

@@ -7,4 +7,5 @@ export {
   TrailingContent as ListItemTrailingContent,
   TrailingIcon as ListItemTrailingIcon,
   Icon as ListItemIcon,
+  Content as ListItemContent,
 } from './styled-components';
