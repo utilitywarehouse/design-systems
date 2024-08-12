@@ -8,50 +8,53 @@ export const invertedOutlineScheme = (scheme: Scheme) => ({
   colorScheme: scheme,
   variant: 'outline',
   value: {
+    borderColor: `$${scheme}400`,
+
     _text: {
-      color: `$${scheme}50`,
+      color: `$${scheme}100`,
     },
 
     _icon: {
-      color: `$${scheme}50`,
+      color: `$${scheme}100`,
     },
 
     _spinner: {
       _svg: {
-        color: `$${scheme}50`,
+        color: `$${scheme}100`,
       },
     },
 
     ':active': {
       backgroundColor: `$${scheme}900`,
+      borderColor: `$${scheme}${scheme === 'cyan' ? 400 : 500}`,
 
       _text: {
-        color: `$${scheme}50`,
+        color: `$${scheme}100`,
       },
 
       _icon: {
-        color: `$${scheme}50`,
+        color: `$${scheme}100`,
       },
 
       _spinner: {
         _svg: {
-          color: `$${scheme}50`,
+          color: `$${scheme}100`,
         },
       },
     },
 
     ':disabled': {
-      borderColor: `$${scheme}700`,
+      borderColor: `$${scheme}600`,
 
       _text: {
-        color: `$${scheme}700`,
+        color: `$${scheme}600`,
       },
       _icon: {
-        color: `$${scheme}700`,
+        color: `$${scheme}600`,
       },
       _spinner: {
         _svg: {
-          color: `$${scheme}700`,
+          color: `$${scheme}600`,
         },
       },
     },
@@ -121,14 +124,14 @@ export const invertedGhostScheme = (scheme: Scheme) => ({
       backgroundColor: 'transparent',
 
       _text: {
-        color: `$${scheme}700`,
+        color: `$${scheme}600`,
       },
       _icon: {
-        color: `$${scheme}700`,
+        color: `$${scheme}600`,
       },
       _spinner: {
         _svg: {
-          color: `$${scheme}700`,
+          color: `$${scheme}600`,
         },
       },
     },
@@ -265,8 +268,8 @@ export const outlineScheme = (scheme: Scheme) => ({
     },
 
     ':active': {
-      backgroundColor: `$${scheme}50`,
-      borderColor: `$${scheme}${scheme === 'cyan' ? 500 : 600}`,
+      backgroundColor: `$${scheme}${scheme === 'grey' ? 100 : 50}`,
+      borderColor: `$${scheme}${scheme === 'cyan' ? 400 : 500}`,
 
       _text: {
         color: `$${scheme}${scheme === 'cyan' ? 1000 : 900}`,
