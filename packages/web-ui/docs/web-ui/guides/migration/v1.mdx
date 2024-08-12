@@ -211,6 +211,58 @@ As we are migrating away from using `@mui/material`, refactoring this component
 would be only a thin wrapper around the `Flex` component. As such we don't feel
 it's necessary and recommend using `Flex` instead.
 
+### Grid component
+
+The `Grid` component is a thin wrapper around the `@mui/material` `Grid`
+component. It is a layout component with an implementation that is very
+specific to `@mui/material`, and as we are migrating away from using the MUI
+project, refactoring this component would become a maintenance burden. We would
+also prefer not to support a grid layout component based on flexbox, and intend
+to introduce a layout component based on CSS grid.
+
+If consumers would like to continue using the `Grid` component they can do so
+by importing it from the `@mui/material` package, and adding some defaults.
+Below is our full implementation of the component. You may also need to
+override the default MUI theme breakpoints.
+
+```tsx
+import * as React from 'react';
+import MuiGrid from '@mui/material/Grid';
+import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
+import type { GridProps as MuiGridProps, RegularBreakpoints } from '@mui/material/Grid';
+
+export const DEFAULT_COLUMNS = { mobile: 4, tablet: 8, desktop: 12, wide: 12 };
+export const DEFAULT_SPACING = { mobile: 2, tablet: 3, desktop: 3, wide: 3 };
+
+export type DefaultGridComponent = 'div';
+
+export interface CustomGridProps {
+  mobile?: RegularBreakpoints['xs'];
+  tablet?: RegularBreakpoints['md'];
+  desktop?: RegularBreakpoints['lg'];
+  wide?: RegularBreakpoints['xl'];
+}
+
+export interface GridTypeMap<D extends React.ElementType = DefaultGridComponent, P = object> {
+  props: CustomGridProps & Omit<MuiGridProps<D, P>, 'xs' | 'sm' | 'lg' | 'md' | 'xl'>;
+  defaultComponent: D;
+}
+
+export type GridProps<
+  D extends React.ElementType = DefaultGridComponent,
+  P = object,
+> = OverrideProps<GridTypeMap<D, P>, D>;
+
+export const Grid = React.forwardRef(function Grid({ columns = DEFAULT_COLUMNS, ...props }, ref) {
+  if (props.container) {
+    return (
+      <MuiGrid ref={ref} columns={columns} spacing={props.spacing || DEFAULT_SPACING} {...props} />
+    );
+  }
+  return <MuiGrid ref={ref} columns={columns} {...props} />;
+}) as OverridableComponent<GridTypeMap>;
+```
+
 ## Codemods
 
 ### Migration
