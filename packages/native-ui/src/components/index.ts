@@ -7,6 +7,7 @@ export { default as RadioIndicator } from './RadioIndicator';
 export * from './Button';
 export * from './Spinner';
 export * from './List';
+export * from './Skeleton';
 
 // Gluestack UI
 export {

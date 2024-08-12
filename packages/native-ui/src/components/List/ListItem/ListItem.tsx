@@ -9,9 +9,9 @@ import {
   TrailingIcon,
   Content,
 } from './styled-components';
-import { Box } from '@gluestack-ui/themed';
 import { ChevronRight01MediumIcon } from '@utilitywarehouse/react-native-icons';
 import { useListContext } from '../List';
+import { Skeleton } from '../../Skeleton';
 
 const ListItem: React.FC<ListItemProps> = ({
   text,
@@ -31,40 +31,17 @@ const ListItem: React.FC<ListItemProps> = ({
     return (
       // @ts-expect-error - This is a variant value
       <Root {...props} showPressed={false}>
-        {leadingContent ? (
-          <Box
-            width={24}
-            height={24}
-            borderRadius="$sm"
-            backgroundColor="$grey75"
-            $dark-backgroundColor="$darkGrey300"
-          />
-        ) : null}
+        {leadingContent ? <Skeleton width={24} height={24} /> : null}
         <Content>
-          <Box
+          <Skeleton
             width="80%"
             height={20}
-            borderRadius="$sm"
             backgroundColor="$grey100"
             $dark-backgroundColor="$darkGrey400"
           />
-          <Box
-            width="100%"
-            height={16}
-            borderRadius="$sm"
-            backgroundColor="$grey75"
-            $dark-backgroundColor="$darkGrey300"
-          />
+          <Skeleton width="100%" height={16} />
         </Content>
-        {onPress || trailingContent ? (
-          <Box
-            width={24}
-            height={24}
-            borderRadius="$sm"
-            backgroundColor="$grey75"
-            $dark-backgroundColor="$darkGrey300"
-          />
-        ) : null}
+        {onPress || trailingContent ? <Skeleton width={24} height={24} /> : null}
       </Root>
     );
   }
