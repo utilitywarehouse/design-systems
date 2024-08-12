@@ -1,7 +1,8 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Flex } from '../../Flex';
-import { Heading } from '../../Heading';
+import { Flex } from '../Flex';
+import { Heading } from '../Heading';
+import { Text } from '../Text';
 import { Button } from './Button';
 import {
   ChevronLeft01MediumIcon,
@@ -10,7 +11,7 @@ import {
   ChevronRight01SmallIcon,
   OpenMediumIcon,
 } from '@utilitywarehouse/react-icons';
-import { Box } from '../../Box';
+import { Box } from '../Box';
 
 const sizes = ['medium', 'small'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;
@@ -18,7 +19,7 @@ const solidColorSchemes = ['cyan', 'red', 'green'] as const;
 const colorSchemes = [...solidColorSchemes, 'grey', 'gold'] as const;
 
 const meta: Meta<typeof Button> = {
-  title: 'Web UI / Lab / Button',
+  title: 'Web UI / Components / Button',
   component: Button,
   argTypes: {
     children: { control: { type: 'text' } },
@@ -312,7 +313,8 @@ export const ResponsiveSize: Story = {
 
 export const FullWidth: Story = {
   render: args => (
-    <Flex direction="column" align="stretch" gap={2}>
+    <Flex direction="column" align={{ mobile: 'stretch', desktop: 'start' }}>
+      <Text>This Button is full width for screen widths below the desktop breakpoint.</Text>
       <Button {...args}>
         {args.children}
         <ChevronRight01MediumIcon />

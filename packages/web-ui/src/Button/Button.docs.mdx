@@ -1,11 +1,10 @@
 import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './Button.stories';
-import { DocsHeader } from '../../storybook-utils';
+import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
 <DocsHeader
-  lab
   componentName="Button"
   stories={Stories}
   figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=0-1"
@@ -13,7 +12,6 @@ import { DocsHeader } from '../../storybook-utils';
 
 <Canvas of={Stories.SimpleExample} sourceState="none" />
 
-- [Usage](#usage)
 - [Accessibility](#accessibility)
 - [Variant](#variant)
 - [Color schemes](#color-schemes)
@@ -25,24 +23,6 @@ import { DocsHeader } from '../../storybook-utils';
   - [Next.js v13](#nextjs-v13)
   - [Next.js before v13](#nextjs-before-v13)
 - [Props](#props)
-
-## Usage
-
-This `Button` component is part of the lab submodule, a way for us to make new
-components available prior to an official major release. This helps us bed in
-new components before introducing breaking changes, and to avoid blocking the
-availability of these components for designers.
-
-```tsx
-import { Box } from '@utilitywarehouse/web-ui';
-import { Button } from '@utilitywarehouse/web-ui/dist/lab';
-
-[...]
-
-<Box>
-  <Button>Button</Button>
-</Box>
-```
 
 ## Accessibility
 
@@ -195,8 +175,7 @@ If you need to render different sized icons in conjunction with the responsive s
 1. Using JS, with the `useMediaQuery` hook.
 
 ```tsx
-import { Button } from '@utilitywarehouse/web-ui/lab';
-import { useMediaQuery } from '@utilitywarehouse/web-ui';
+import { Button, useMediaQuery } from '@utilitywarehouse/web-ui';
 import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
 
 const MyComponent = () => {
@@ -214,8 +193,7 @@ const MyComponent = () => {
 2. Using CSS, with `Box` and style props. This can also be achieved with the `sx` prop.
 
 ```tsx
-import { Button } from '@utilitywarehouse/web-ui/lab';
-import { Box } from '@utilitywarehouse/web-ui';
+import { Box, Button } from '@utilitywarehouse/web-ui';
 import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
 
 const MyComponent = () => {
@@ -256,13 +234,17 @@ Read more about this idea in the [Radix UI composition docs](https://www.radix-u
 
 ## Full Width Button
 
-Use layout components, like `Flex`, to define your UI layouts.
+Use layout components, like `Flex`, to define your UI layouts, which can also be responsive.
 
 <Canvas of={Stories.FullWidth} />
 
 ```tsx
-<Flex direction="column" align="stretch">
+<Flex direction="column">
   <Button>Button</Button>
+</Flex>
+
+<Flex direction="column" align={{ mobile: 'stretch', desktop: 'start' }}>
+  <Button>Responsive Button</Button>
 </Flex>
 ```
 
@@ -276,7 +258,7 @@ Next.js `Link` component using `asChild`:
 
 ```tsx
 import NextLink from 'next/link';
-import { Button } from '@utilitywarehouse/web-ui/dist/lab';
+import { Button } from '@utilitywarehouse/web-ui';
 
 [...]
 
@@ -289,7 +271,7 @@ You can also use the `legacyBehavior` prop directly on the Next.js Link componen
 
 ```tsx
 import NextLink from 'next/link';
-import { Button } from '@utilitywarehouse/web-ui/dist/lab';
+import { Button } from '@utilitywarehouse/web-ui';
 
 [...]
 
@@ -315,7 +297,7 @@ configuration:
 
 ```tsx
 import NextLink from 'next/link';
-import { Button } from '@utilitywarehouse/web-ui/dist/lab';
+import { Button } from '@utilitywarehouse/web-ui';
 
 [...]
 

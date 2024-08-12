@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { fonts, fontWeights } from '../../tokens';
-import { PropsWithSx } from '../../types';
+import { fonts, fontWeights } from '../tokens';
+import { PropsWithSx } from '../types';
 import {
   classSelector,
   withGlobalPrefix,
@@ -10,11 +10,11 @@ import {
   responsiveClassSelector,
   spacing,
   withBreakpoints,
-} from '../../utils';
+} from '../utils';
 import { ButtonProps } from './Button.props';
 import clsx from 'clsx';
-import { styled } from '../../theme';
-import { BaseButton } from '../../BaseButton';
+import { styled } from '../theme';
+import { BaseButton } from '../BaseButton';
 
 const componentName = 'Button';
 const componentClassName = withGlobalPrefix(componentName);
@@ -72,7 +72,6 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
     fontSize: 'var(--button-font-size)',
     fontWeight: fontWeights.secondary.semibold,
     lineHeight: 'var(--button-line-height)',
-    inlineSize: 'fit-content',
     minWidth: 'var(--button-min-width)',
     gap: 'var(--button-gap)',
     paddingBlock: 'var(--button-padding-block)',
@@ -97,7 +96,7 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
 /**
  * Trigger an action or event, such as submitting a form or displaying a dialog.
  *
- * This component is not intended for use on the midnight & purple brand colours.
+ * > This component is not intended for use on the midnight & purple brand colours.
  */
 export const Button = React.forwardRef<
   React.ElementRef<'button'>,
