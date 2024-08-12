@@ -119,21 +119,41 @@ export const ListItem = createStyle({
     },
     showPressed: {
       true: {
-        ':active': {
-          backgroundColor: '$grey25',
-        },
         _trailingContent: {
           _trailingIcon: {
             color: '$cyan600',
           },
         },
-        _dark: {
-          ':active': {
-            backgroundColor: '$darkGrey75',
+        ':active': {
+          backgroundColor: '$grey25',
+        },
+        ':disabled': {
+          _trailingContent: {
+            _icon: {
+              color: '$darkGrey500',
+            },
+            _trailingIcon: {
+              color: '$darkGrey500',
+            },
           },
+        },
+        _dark: {
           _trailingContent: {
             _trailingIcon: {
               color: '$darkCyan700',
+            },
+          },
+          ':active': {
+            backgroundColor: '$darkGrey75',
+          },
+          ':disabled': {
+            _trailingContent: {
+              _icon: {
+                color: '$darkGrey500',
+              },
+              _trailingIcon: {
+                color: '$darkGrey500',
+              },
             },
           },
         },
@@ -144,11 +164,5 @@ export const ListItem = createStyle({
         },
       },
     },
-    // disabled: {
-    //   true: {
-
-    //   },
-    //   false: {},
-    // },
   },
 });
