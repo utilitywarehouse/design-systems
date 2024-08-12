@@ -1,5 +1,37 @@
 # @utilitywarehouse/web-ui
 
+## 0.9.6
+
+### Patch Changes
+
+- Updated dependencies [[`9063c8dd`](https://github.com/utilitywarehouse/design-systems/commit/9063c8dd6a47ba1b6b75f666e591c7f537ff112e)]:
+  - @utilitywarehouse/colour-system@0.4.1
+
+## 0.9.5
+
+### Patch Changes
+
+- Updated dependencies [[`abd6c1d`](https://github.com/utilitywarehouse/design-systems/commit/abd6c1d6fd45056b05e09e082043d8d922e5b5bb)]:
+  - @utilitywarehouse/colour-system@0.4.0
+
+## 0.9.4
+
+### Patch Changes
+
+- [#429](https://github.com/utilitywarehouse/design-systems/pull/429) [`df14d3e`](https://github.com/utilitywarehouse/design-systems/commit/df14d3ef442b73857695dade8fde8fa7d9230498) Thanks [@robphoenix](https://github.com/robphoenix)! - Updated ToggleButton
+  - add inverted prop
+  - updated internally data-attributes
+
+## 0.9.3
+
+### Patch Changes
+
+- [#427](https://github.com/utilitywarehouse/design-systems/pull/427) [`9932218`](https://github.com/utilitywarehouse/design-systems/commit/9932218cd16ec82f263c99e936c222b78b4ef680) Thanks [@robphoenix](https://github.com/robphoenix)! - Update `ThemeProvider` usage & docs for the following components:
+  - `Menu`
+  - `TextField`
+  - `Stack`
+  - `ToggleButtonGroup`
+
 ## 0.9.2
 
 ### Patch Changes

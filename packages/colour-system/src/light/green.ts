@@ -16,5 +16,7 @@ export const green500 = '#1c874d';
 export const green600 = '#297f50';
 /** For text, icons and border against white Green 50 and Green 100 For text, icons and border against white Green 50, Green 100 and Green 200, Grey 25, Grey 50 */
 export const green700 = '#21693f';
+/** Used for active state background colour on inverted on Web */
+export const green800 = '#0a522c';
 /** For foreground against white, Green 50, Grey 50, Grey 100, Green 100, Green 200 and Green 300 For text, icons and border against Green 50, Green 100, Green 200 and Green 300 */
 export const green900 = '#003d1e';

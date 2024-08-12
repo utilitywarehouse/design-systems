@@ -7,7 +7,6 @@ import { fonts, fontWeights } from '../tokens';
 import { DATA_ATTRIBUTES, px } from '../utils';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { styled } from '../theme';
-import { useBackground } from '../Box';
 
 const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
   return {
@@ -18,6 +17,7 @@ const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
     fontWeight: fontWeights.secondary.semibold,
     fontSize: 16,
     lineHeight: 1.5,
+    textTransform: 'none',
     color: colorsCommon.brandMidnight,
     '&:focus, &:active': {
       backgroundColor: colors.cyan500,
@@ -35,7 +35,7 @@ const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
         backgroundColor: colors.grey200,
       },
     },
-    [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
+    [`:where([${DATA_ATTRIBUTES.inverted}] &)`]: {
       color: colorsCommon.brandWhite,
       '&:disabled': {
         color: colors.grey400,
@@ -67,10 +67,6 @@ export type ToggleButtonProps = Pick<
 
 export const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(
   function ToggleButton({ children, className, ...props }, ref) {
-    const { isInvertedBackground } = useBackground();
-    const dataAttributeProps = {
-      [DATA_ATTRIBUTES.bgcolorBrand]: isInvertedBackground,
-    };
     return (
       <StyledMuiToggleButton
         ref={ref}
@@ -79,7 +75,6 @@ export const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProp
         disableFocusRipple
         {...props}
         className={className}
-        {...dataAttributeProps}
       >
         {children}
       </StyledMuiToggleButton>

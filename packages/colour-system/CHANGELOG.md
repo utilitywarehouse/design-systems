@@ -1,5 +1,17 @@
 # @utilitywarehouse/colour-system
 
+## 0.4.1
+
+### Patch Changes
+
+- [#438](https://github.com/utilitywarehouse/design-systems/pull/438) [`9063c8dd`](https://github.com/utilitywarehouse/design-systems/commit/9063c8dd6a47ba1b6b75f666e591c7f537ff112e) Thanks [@robphoenix](https://github.com/robphoenix)! - updates from build
+
+## 0.4.0
+
+### Minor Changes
+
+- [#431](https://github.com/utilitywarehouse/design-systems/pull/431) [`abd6c1d`](https://github.com/utilitywarehouse/design-systems/commit/abd6c1d6fd45056b05e09e082043d8d922e5b5bb) Thanks [@uw-design-systems-bot](https://github.com/uw-design-systems-bot)! -
+
 ## 0.3.2
 
 ### Patch Changes

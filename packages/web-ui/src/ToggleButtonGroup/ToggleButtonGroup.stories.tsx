@@ -1,8 +1,6 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { Box } from '../Box';
-import { ThemeProvider } from '../ThemeProvider';
 import { ToggleButton } from './ToggleButton';
 import { ToggleButtonGroup } from './ToggleButtonGroup';
 import { Backgrounds } from '../storybook-utils';
@@ -10,15 +8,6 @@ import { Backgrounds } from '../storybook-utils';
 const meta: Meta<typeof ToggleButtonGroup> = {
   title: 'Web UI / Components / ToggleButtonGroup',
   component: ToggleButtonGroup,
-  decorators: [
-    Story => (
-      <ThemeProvider>
-        <Box padding={4}>
-          <Story />
-        </Box>
-      </ThemeProvider>
-    ),
-  ],
 };
 
 export default meta;
@@ -45,6 +34,12 @@ export const Workshop: Story = {
       </Backgrounds>
     );
   },
-  argTypes: { disabled: { control: { type: 'boolean' } } },
-  args: { disabled: false },
+  argTypes: {
+    disabled: { control: { type: 'boolean' } },
+    inverted: { control: { type: 'boolean' } },
+  },
+  args: {
+    disabled: false,
+    inverted: false,
+  },
 };

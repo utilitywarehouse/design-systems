@@ -5,6 +5,8 @@ export const red50 = '#3b1216';
 /**  */
 export const red100 = '#581a20';
 /**  */
+export const red200 = '#721d25';
+/**  */
 export const red300 = '#891e27';
 /**  */
 export const red400 = '#bd1f2c';

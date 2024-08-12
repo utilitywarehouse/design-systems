@@ -2,8 +2,12 @@
 
 /** For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900. */
 export const gold50 = '#2e1103';
+/**  */
+export const gold75 = '#411907';
 /** For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900. It passes AA with large text, borders and icons against combined with Gold 400. */
 export const gold100 = '#52210c';
+/**  */
+export const gold200 = '#743711';
 /** Use it as a background It passes AA against Gold 900 It passes AA on large text and icons against Gold 700 */
 export const gold300 = '#925317';
 /** Use it as a background It passes AA as a foreground against Gold 50. It passes AA with large text, borders and icons against Gold 100. */
