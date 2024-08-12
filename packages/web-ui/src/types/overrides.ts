@@ -2,7 +2,7 @@ import { Palette as MuiPalette } from '@mui/material/styles/createPalette';
 import { TypographyOptions, TypographyUtils } from '@mui/material/styles/createTypography';
 import { Fonts, FontWeights } from '../tokens';
 import * as React from 'react';
-import { customPalette } from '../theme';
+import { palette as customPalette } from '../theme';
 
 // TODO: v1 see https://linear.app/utilitywarehouse/issue/UWDS-1082/refactor-types
 interface CustomTypography extends TypographyUtils, Omit<TypographyOptions, 'fontFamily'> {

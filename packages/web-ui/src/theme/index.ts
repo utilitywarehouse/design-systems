@@ -1,3 +1,3 @@
-export { theme, customPalette } from './theme';
+export { theme, palette } from './theme';
 export type { Theme } from './theme';
 export { default as styled } from './styled';
