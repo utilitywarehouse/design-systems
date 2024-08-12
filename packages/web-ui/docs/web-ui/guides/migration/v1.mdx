@@ -18,6 +18,7 @@ documenting for others, thankyou!
 - [Buttons size renaming](#buttons-size-renaming)
 - [Link component](#link-component)
 - [TextLink component](#textlink-component)
+- [Deprecations](#deprecations)
 - [Codemods](#codemods)
   - [Migration](#migration)
   - [Rename lab Button size](#rename-lab-button-size)
@@ -196,6 +197,19 @@ happen.
 
 There is a codemod to update imports from the `lab` subdirectory, including the
 `TextLink` component.
+
+## Deprecations
+
+### Stack component
+
+The `Stack` component is a thin wrapper around the `@mui/material` `Stack`
+component, and, historically, has existed because there was no easy way in CSS
+to set a vertical gap between elements. This is no longer the case now that we
+have the flexbox gap property.
+
+As we are migrating away from using `@mui/material`, refactoring this component
+would be only a thin wrapper around the `Flex` component. As such we don't feel
+it's necessary and recommend using `Flex` instead.
 
 ## Codemods
 
