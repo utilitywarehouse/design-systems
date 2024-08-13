@@ -50,7 +50,7 @@ const ListBasic: StoryFn = ({
       headingSupportingText={headingSupportingText}
     >
       {container === 'card' && (
-        <Box borderRadius="$xl" backgroundColor="$grey50" $dark-bg="$darkGrey50">
+        <Box borderRadius="$xl" backgroundColor="$grey50" $dark-bg="$darkGrey50" overflow="hidden">
           {listItems}
         </Box>
       )}
