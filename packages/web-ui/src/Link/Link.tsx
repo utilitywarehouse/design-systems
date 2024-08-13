@@ -47,7 +47,7 @@ const classSelectors = {
 };
 
 const StyledElement = styled('a', {
-  shouldForwardProp: prop => prop !== 'textTransform',
+  shouldForwardProp: prop => prop !== 'as' && prop !== 'textTransform',
 })<LinkProps>(({ textTransform }) => {
   const sizeStyles = {
     large: {
