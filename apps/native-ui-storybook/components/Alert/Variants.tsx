@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Alert, Text, VStack } from '@utilitywarehouse/native-ui';
+import { Alert, VStack } from '@utilitywarehouse/native-ui';
 import { VariantTitle } from '../../docs/components';
 
 const AlertVariants = () => {
@@ -35,7 +35,4 @@ const AlertVariants = () => {
   );
 };
 
-AlertVariants.argTypes = {};
-
 export default AlertVariants;
-export { Alert };

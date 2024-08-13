@@ -1,11 +1,21 @@
 import { ButtonGroup, Button, Box } from '@utilitywarehouse/native-ui';
-import React from 'react';
+import React, { ComponentType } from 'react';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 import ScrollWrap from '../../docs/components/ScrollWrap';
 import { VariantTitle } from '../../docs/components';
 
-const ButtonPlaygroundVariants: StoryFn = ({
+const ButtonPlaygroundVariants: StoryFn<{
+  size: 'small' | 'medium' | 'large';
+  colorScheme: 'cyan' | 'red' | 'green' | 'grey' | 'gold';
+  disabled: boolean;
+  loading: boolean;
+  iconPosition: 'left' | 'right';
+  icon: string;
+  inverted: boolean;
+  _ButtonText: string;
+  _backgroundColor: 'default' | 'midnight' | 'purple';
+}> = ({
   size,
   colorScheme,
   disabled,
@@ -15,9 +25,10 @@ const ButtonPlaygroundVariants: StoryFn = ({
   inverted,
   _ButtonText,
   _backgroundColor,
-}: any) => {
+}) => {
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
   // @ts-expect-error - This is a playground
-  const icon = _icon === 'none' ? undefined : Icons[_icon];
+  const icon: ComponentType = _icon === 'none' ? undefined : Icons[_icon];
   return (
     <Box height={240} width="100%">
       <ScrollWrap backgroundColor={_backgroundColor}>
@@ -136,5 +147,3 @@ ButtonPlaygroundVariants.args = {
 };
 
 export default ButtonPlaygroundVariants;
-
-export { Button };
