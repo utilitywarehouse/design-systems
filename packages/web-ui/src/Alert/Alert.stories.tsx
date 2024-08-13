@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Alert } from './Alert';
 import { Flex } from '../Flex';
-import { Button } from '../lab/Button';
+import { Button } from '../Button';
 
 const colorSchemes = ['cyan', 'red', 'green', 'gold'] as const;
 

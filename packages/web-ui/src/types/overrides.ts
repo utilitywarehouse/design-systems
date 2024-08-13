@@ -10,7 +10,7 @@ interface CustomTypography extends TypographyUtils, Omit<TypographyOptions, 'fon
   fontWeights: FontWeights;
 }
 type CustomPalette = typeof customPalette;
-interface Palette extends Omit<MuiPalette, 'text'>, CustomPalette {}
+interface Palette extends MuiPalette, CustomPalette {}
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {

@@ -21,13 +21,9 @@ theme.typography = {
 export const customPalette = {
   colorsCommon,
   colors,
-  text: {
-    primary: colorsCommon.brandMidnight, // TODO: remove when refactor Button
-  },
 };
 
 theme.palette = {
-  // TODO: the mui/material Button component relies on certain palette properties, remove when refactor Button.
   ...theme.palette,
   ...customPalette,
 };

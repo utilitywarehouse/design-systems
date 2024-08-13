@@ -1,146 +1,114 @@
 import * as React from 'react';
-import { forwardRef } from 'react';
-import MuiButton, { ButtonProps as MuiButtonProps, ExtendButton } from '@mui/material/Button';
-import type { OverrideProps } from '@mui/material/OverridableComponent';
-import { useBackground } from '../Box';
-import { styled } from '@mui/material';
-import { DATA_ATTRIBUTES, px } from '../utils';
-import { fonts, fontWeights, transitions } from '../tokens';
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { fonts, fontWeights } from '../tokens';
+import { PropsWithSx } from '../types';
+import {
+  classSelector,
+  withGlobalPrefix,
+  mediaQueries,
+  px,
+  pxToRem,
+  responsiveClassSelector,
+  spacing,
+  withBreakpoints,
+} from '../utils';
+import { ButtonProps } from './Button.props';
+import clsx from 'clsx';
+import { styled } from '../theme';
+import { BaseButton } from '../BaseButton';
 
-export type DefaultButtonComponent = 'button';
+const componentName = 'Button';
+const componentClassName = withGlobalPrefix(componentName);
 
-export interface CustomButtonProps {
-  /**
-   * Sets the button's visual variant
-   * @default primary
-   */
-  variant?: 'primary' | 'secondary' | 'tertiary';
-  /**
-   * Sets the button height. Does not apply to `tertiary` buttons.
-   * @default medium
-   */
-  size?: 'small' | 'medium' | 'large';
-}
-
-export type ButtonTypeMap<P = object, D extends React.ElementType = DefaultButtonComponent> = {
-  props: CustomButtonProps &
-    Pick<MuiButtonProps<D, P>, 'sx' | 'classes' | 'fullWidth' | 'children' | 'href'>;
-  defaultComponent: D;
+const classNames = {
+  size: {
+    medium: withGlobalPrefix('size-medium'),
+    small: withGlobalPrefix('size-small'),
+  },
 };
 
-export type ButtonProps<
-  D extends React.ElementType = DefaultButtonComponent,
-  P = object,
-> = OverrideProps<ButtonTypeMap<P, D>, D>;
+const classSelectors = {
+  size: {
+    medium: classSelector(classNames.size.medium),
+    small: classSelector(classNames.size.small),
+    tablet: {
+      medium: responsiveClassSelector(classNames.size.medium, 'tablet'),
+      small: responsiveClassSelector(classNames.size.small, 'tablet'),
+    },
+    desktop: {
+      medium: responsiveClassSelector(classNames.size.medium, 'desktop'),
+      small: responsiveClassSelector(classNames.size.small, 'desktop'),
+    },
+    wide: {
+      medium: responsiveClassSelector(classNames.size.medium, 'wide'),
+      small: responsiveClassSelector(classNames.size.small, 'wide'),
+    },
+  },
+};
 
-const borderWidth = 2;
+const StyledElement = styled(BaseButton)<ButtonProps>(() => {
+  const sizeStyles = {
+    medium: {
+      '--button-font-size': pxToRem(18),
+      '--button-line-height': pxToRem(24),
+      '--button-min-width': px(120),
+      '--button-padding-inline': px(24),
+      '--button-padding-block': px(12),
+      '--button-gap': px(spacing(2)),
+      '--focus-outline-width': '4px',
+    },
+    small: {
+      '--button-font-size': pxToRem(16),
+      '--button-line-height': pxToRem(16),
+      '--button-min-width': px(56),
+      '--button-padding-inline': px(16),
+      '--button-padding-block': px(8),
+      '--button-gap': px(spacing(0.5)),
+      '--focus-outline-width': '2px',
+    },
+  };
 
-const StyledButton = styled(MuiButton)({
-  transition: `${transitions.duration}ms ${transitions.easingFunction}`,
-  transitionProperty: 'background-color, border-color, color, opacity',
-  fontFamily: fonts.secondary,
-  fontWeight: fontWeights.secondary.semibold,
-  fontSize: 18,
-  lineHeight: 1,
-  letterSpacing: '0.02857em',
-  textTransform: 'none',
-  opacity: 1,
-  paddingTop: 0,
-  paddingBottom: 0,
-  paddingLeft: px(32 - borderWidth),
-  paddingRight: px(32 - borderWidth),
-  borderStyle: 'solid',
-  borderRadius: px(32),
-  borderWidth,
-  color: colorsCommon.brandMidnight,
-  '&:disabled': {
-    opacity: 0.5,
-  },
-  [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
-    '&:disabled': {
-      opacity: 0.6,
+  return {
+    fontFamily: fonts.secondary,
+    fontSize: 'var(--button-font-size)',
+    fontWeight: fontWeights.secondary.semibold,
+    lineHeight: 'var(--button-line-height)',
+    minWidth: 'var(--button-min-width)',
+    gap: 'var(--button-gap)',
+    paddingBlock: 'var(--button-padding-block)',
+    paddingInline: 'var(--button-padding-inline)',
+    [classSelectors.size.medium]: { ...sizeStyles.medium },
+    [classSelectors.size.small]: { ...sizeStyles.small },
+    [mediaQueries.tablet]: {
+      [classSelectors.size.tablet.medium]: { ...sizeStyles.medium },
+      [classSelectors.size.tablet.small]: { ...sizeStyles.small },
     },
-  },
-  // size
-  [`&[${DATA_ATTRIBUTES.size}=small]`]: {
-    height: px(32),
-  },
-  [`&[${DATA_ATTRIBUTES.size}=medium]`]: {
-    height: px(40),
-  },
-  [`&[${DATA_ATTRIBUTES.size}=large]`]: {
-    height: px(48),
-  },
-  [`&[${DATA_ATTRIBUTES.variant}=primary]`]: {
-    color: colorsCommon.brandMidnight,
-    backgroundColor: colors.cyan400,
-    border: 'none',
-    paddingLeft: px(32),
-    paddingRight: px(32),
-    '&:hover': {
-      backgroundColor: colors.cyan200,
+    [mediaQueries.desktop]: {
+      [classSelectors.size.desktop.medium]: { ...sizeStyles.medium },
+      [classSelectors.size.desktop.small]: { ...sizeStyles.small },
     },
-  },
-  [`&[${DATA_ATTRIBUTES.variant}=secondary]`]: {
-    color: colorsCommon.brandMidnight,
-    backgroundColor: 'transparent',
-    borderColor: colors.cyan400,
-    '&:hover': {
-      borderColor: colorsCommon.brandMidnight,
-      borderWidth,
+    [mediaQueries.wide]: {
+      [classSelectors.size.wide.medium]: { ...sizeStyles.medium },
+      [classSelectors.size.wide.small]: { ...sizeStyles.small },
     },
-    '&:disabled': {
-      opacity: 0.5,
-      borderWidth,
-    },
-    [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
-      color: colorsCommon.brandWhite,
-      '&:hover': {
-        borderColor: colorsCommon.brandWhite,
-      },
-    },
-  },
-  [`&[${DATA_ATTRIBUTES.variant}=tertiary]`]: {
-    color: colorsCommon.brandMidnight,
-    backgroundColor: 'transparent',
-    borderColor: colors.cyan400,
-    height: 'auto',
-    paddingBottom: 2,
-    paddingLeft: 0,
-    paddingRight: 0,
-    borderWidth: 0,
-    borderBottomWidth: 2,
-    borderRadius: 0,
-    lineHeight: 1.333,
-    '&:hover': {
-      opacity: 0.5,
-    },
-    [`&[${DATA_ATTRIBUTES.bgcolorBrand}=true]`]: {
-      color: colorsCommon.brandWhite,
-    },
-  },
+  };
 });
 
 /**
- * A Button should be used for actions.
+ * Trigger an action or event, such as submitting a form or displaying a dialog.
+ *
+ * > This component is not intended for use on the midnight & purple brand colours.
  */
-export const Button = forwardRef(function Button(
-  { size = 'medium', variant = 'primary', ...props },
-  ref
-) {
-  const { isInvertedBackground } = useBackground();
-  const dataAttributeProps = {
-    [DATA_ATTRIBUTES.variant]: variant,
-    [DATA_ATTRIBUTES.size]: size,
-    [DATA_ATTRIBUTES.bgcolorBrand]: isInvertedBackground,
-  };
+export const Button = React.forwardRef<
+  React.ElementRef<'button'>,
+  React.PropsWithChildren<PropsWithSx<ButtonProps>>
+>(function Button({ size = 'medium', className, ...props }, ref) {
   return (
-    <StyledButton
-      {...(props as Partial<MuiButtonProps>)}
+    <StyledElement
       ref={ref}
-      {...dataAttributeProps}
-      disableElevation
+      className={clsx(componentClassName, className, withBreakpoints(size, 'size'))}
+      {...props}
     />
   );
-}) as ExtendButton<ButtonTypeMap>;
+});
+
+Button.displayName = componentName;

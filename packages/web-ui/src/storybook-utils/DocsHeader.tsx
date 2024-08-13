@@ -11,7 +11,6 @@ interface DocsHeaderProps {
   figmaLink?: string;
   themeProviderRequired?: boolean;
   stories: React.ReactNode;
-  lab?: boolean;
 }
 
 export const DocsHeader = ({
@@ -19,7 +18,6 @@ export const DocsHeader = ({
   figmaLink,
   themeProviderRequired,
   stories,
-  lab,
 }: DocsHeaderProps) => (
   <Unstyled>
     <Flex direction="column" gap={3}>
@@ -27,7 +25,7 @@ export const DocsHeader = ({
         <Heading variant="h1">{componentName}</Heading>
         <Flex gap={3}>
           <Link
-            href={`https://github.com/utilitywarehouse/design-systems/blob/main/packages/web-ui/src/${lab ? 'lab/' : ''}${componentName}/${componentName}.tsx`}
+            href={`https://github.com/utilitywarehouse/design-systems/blob/main/packages/web-ui/src/${componentName}.tsx`}
           >
             View on GitHub
           </Link>
