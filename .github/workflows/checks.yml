@@ -10,8 +10,6 @@ jobs:
   checks:
     name: Code Checks
     runs-on: ubuntu-latest
-    env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
     steps:
       - uses: pnpm/action-setup@v4
         with:
@@ -25,7 +23,6 @@ jobs:
       - run: pnpm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Run checks
-        run: pnpm run checks
+      - run: pnpm run checks:ci
         env:
           NODE_OPTIONS: '--max_old_space_size=4096'

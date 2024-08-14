@@ -37,7 +37,7 @@
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
     "ci:publish": "NODE_OPTIONS=\"--max_old_space_size=4096\" pnpm run build && changeset publish",
     "checks": "turbo run format lint:fix build",
-    "checks:ci": "turbo run format:ci lint build",
+    "checks:ci": "turbo run format:ci lint build --filter='./packages/*'",
     "postinstall": "patch-package"
   },
   "workspaces": [
