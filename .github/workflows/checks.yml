@@ -29,11 +29,13 @@ jobs:
         shell: bash
         run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
-      - run: pnpm checks --filter="...[origin/${{ steps.extract_branch.outputs.branch }}]"
+      - name: Run checks for branch
+        run: pnpm checks --filter="...[${{ steps.extract_branch.outputs.branch }}]"
         if: ${{ github.event_name == 'pull_request' }}
         env:
           NODE_OPTIONS: '--max_old_space_size=4096'
-      - run: pnpm run checks
+      - name: Run checks
+        run: pnpm run checks
         if: ${{ github.event_name == 'push' }}
         env:
           NODE_OPTIONS: '--max_old_space_size=4096'
