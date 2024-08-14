@@ -22,7 +22,7 @@ import {
 } from '@utilitywarehouse/native-ui/lab';
 import React from 'react';
 
-const ActionsheetBasic: StoryFn = ({ ...props }: any) => {
+const ActionsheetBasic: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
@@ -66,7 +66,7 @@ const ActionsheetMeta: Meta<typeof ActionsheetBasic> = {
   args: {},
 };
 
-const KeyboardAvoidWithSnap: StoryFn = ({ ...props }: any) => {
+const KeyboardAvoidWithSnap: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
@@ -118,7 +118,7 @@ const KeyboardAvoidWithSnap: StoryFn = ({ ...props }: any) => {
   );
 };
 
-const WithScrollView: StoryFn = ({ ...props }: any) => {
+const WithScrollView: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
@@ -145,8 +145,8 @@ const WithScrollView: StoryFn = ({ ...props }: any) => {
                 Out of range reading
               </Heading>
               <Text mb="$6">
-                The number that was entered was too high or too low for what we'd expect based on
-                past readings and your typical energy usage. This normally suggests an error when
+                The number that was entered was too high or too low for what we&apos;d expect based
+                on past readings and your typical energy usage. This normally suggests an error when
                 the reading was submitted. In some cases, the reading may still be used after
                 investigation.
               </Text>

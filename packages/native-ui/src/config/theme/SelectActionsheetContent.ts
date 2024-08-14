@@ -10,7 +10,6 @@ export const SelectActionsheetContent = createStyle({
   _sectionHeaderBackground: {
     bg: '$backgroundLight0',
   },
-  // @ts-ignore
   _dark: {
     bg: '$backgroundDark900',
     _sectionHeaderBackground: {

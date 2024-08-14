@@ -1,15 +1,20 @@
-import { ScrollView, IconButton, useMedia, VStack, HStack } from '@utilitywarehouse/native-ui';
+import { useMedia, VStack, HStack } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { StoryFn } from '@storybook/react';
 
 import ButtonVariants from './components/IconButtonVariants';
-import { Dimensions, Platform } from 'react-native';
 import { ScrollWrap } from '../../docs/components';
 
-const IconButtonPlaygroundVariants: StoryFn = ({ size, inverted, _backgroundColor }: any) => {
+const IconButtonVariants: StoryFn<{
+  size: 'x-small' | 'small' | 'medium';
+  inverted: boolean;
+  _backgroundColor: 'default' | 'midnight' | 'purple';
+}> = ({ size, inverted, _backgroundColor }) => {
   const media = useMedia();
+  // @ts-expect-error - Reported to Gluestack error
   const { base, xs, sm } = media;
-  const isMobile = base || xs || sm;
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+  const isMobile: boolean = base || xs || sm || false;
 
   const variants = (
     <>
@@ -59,9 +64,9 @@ const IconButtonPlaygroundVariants: StoryFn = ({ size, inverted, _backgroundColo
   );
 };
 
-IconButtonPlaygroundVariants.storyName = 'Variants';
+IconButtonVariants.storyName = 'Variants';
 
-IconButtonPlaygroundVariants.argTypes = {
+IconButtonVariants.argTypes = {
   size: {
     options: ['x-small', 'small', 'medium'],
     control: 'select',
@@ -81,12 +86,10 @@ IconButtonPlaygroundVariants.argTypes = {
   },
 };
 
-IconButtonPlaygroundVariants.args = {
+IconButtonVariants.args = {
   size: 'medium',
   inverted: false,
   _backgroundColor: 'default',
 };
 
-export default IconButtonPlaygroundVariants;
-
-export { IconButton };
+export default IconButtonVariants;

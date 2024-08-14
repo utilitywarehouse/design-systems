@@ -9,23 +9,21 @@ import {
 } from '@utilitywarehouse/react-native-icons';
 import { Path, Rect } from 'react-native-svg';
 
-const IconBasic = (props: any) => {
+const IconBasic = () => {
   return (
     <HStack gap={10}>
-      <Icon {...props} as={ElectricityMediumIcon} sx={{ color: '$serviceElectricity' }} />
-      <Icon {...props} as={MobileMediumIcon} sx={{ color: '$serviceMobile' }} />
-      <Icon {...props} as={BroadbandMediumIcon} sx={{ color: '$serviceLandline' }} />
-      <Icon {...props} as={InsuranceMediumIcon} sx={{ color: '$serviceInsurance' }} />
+      <Icon as={ElectricityMediumIcon} sx={{ color: '$serviceElectricity' }} />
+      <Icon as={MobileMediumIcon} sx={{ color: '$serviceMobile' }} />
+      <Icon as={BroadbandMediumIcon} sx={{ color: '$serviceLandline' }} />
+      <Icon as={InsuranceMediumIcon} sx={{ color: '$serviceInsurance' }} />
     </HStack>
   );
 };
 
 export const GluestackIcon = createIcon({
-  // createIcon function is imported from '@utilitywarehouse/native-ui'
   viewBox: '0 0 32 32',
   path: (
     <>
-      {/* Rect, Path is imported from 'react-native-svg' */}
       <Rect width="32" height="32" rx="2" fill="currentColor" />
       <Path d="M9.5 14.6642L15.9999 9.87633V12.1358L9.5 16.9236V14.6642Z" fill="white" />
       <Path d="M22.5 14.6642L16.0001 9.87639V12.1359L22.5 16.9237V14.6642Z" fill="white" />
@@ -35,9 +33,4 @@ export const GluestackIcon = createIcon({
   ),
 });
 
-IconBasic.description =
-  'This is a basic Icon component example. Icons are used to communicate a state that affects a system, feature or page';
-
 export default IconBasic;
-
-export { Icon, createIcon };

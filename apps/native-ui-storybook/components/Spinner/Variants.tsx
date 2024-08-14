@@ -1,8 +1,11 @@
-import { Box, Spinner, Text, VStack } from '@utilitywarehouse/native-ui';
+import { Spinner, VStack } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { VariantTitle } from '../../docs/components';
+import { StoryFn } from '@storybook/react';
 
-const SpinnerVariants: any = ({ color }: any) => {
+const SpinnerVariants: StoryFn<{
+  color: string;
+}> = ({ color }) => {
   return (
     <VStack space="md">
       <VariantTitle title="x-small - xs">

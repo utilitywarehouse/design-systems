@@ -1,9 +1,16 @@
 import React from 'react';
 import { Badge, BadgeText, BadgeIcon } from '@utilitywarehouse/native-ui';
 import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
-import { Meta, StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 
-const BadgeBasic: StoryFn = ({ text = 'NEW FEATURE', icon = false, ...props }: any) => {
+const BadgeBasic: StoryFn<{
+  text: string;
+  icon: boolean;
+  colorScheme: 'cyan' | 'red' | 'green' | 'gold' | 'grey';
+  borderless: boolean;
+  strong: boolean;
+  size: 'large' | 'small';
+}> = ({ text = 'NEW FEATURE', icon = false, ...props }) => {
   return (
     <Badge {...props}>
       <BadgeText>{text}</BadgeText>
@@ -30,7 +37,7 @@ BadgeBasic.argTypes = {
   text: {
     control: 'text',
   },
-} as Meta<typeof Badge>['argTypes'];
+};
 
 BadgeBasic.args = {
   text: 'New Feature',
@@ -38,6 +45,6 @@ BadgeBasic.args = {
   borderless: false,
   colorScheme: 'cyan',
   size: 'large',
-} as Meta<typeof Badge>['args'];
+};
 
 export default BadgeBasic;
