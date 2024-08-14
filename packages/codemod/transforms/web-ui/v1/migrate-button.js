@@ -7,11 +7,6 @@ function transformer(file, api) {
   const firstNode = getFirstNode();
   const { comments } = firstNode;
 
-  const variantTranslation = {
-    primary: 'solid',
-    secondary: 'outline',
-  };
-
   const webUIButtons = root.findJSXElements('Button');
 
   const getVariantPropValue = path => {
@@ -24,37 +19,21 @@ function transformer(file, api) {
     return variant[0];
   };
 
-  // update simple variant translation
+  // TODO: update sizes
+
+  // update simple variant translations
   webUIButtons
     .find(j.JSXAttribute, { name: { type: 'JSXIdentifier', name: 'variant' } })
     .find(j.Literal)
     .forEach(path => {
       const variant = path.node.value;
-      const newVariant = variantTranslation[variant];
+      const newVariant = {
+        primary: 'solid',
+        secondary: 'outline',
+      }[variant];
+
       if (newVariant) {
         path.node.value = newVariant;
-      }
-      if (variant === 'tertiary') {
-        // add Link import
-        // Finding all Web UI import declarations
-        const webUiImports = root
-          .find(j.ImportDeclaration)
-          .filter(path => path.node.source.value === '@utilitywarehouse/web-ui');
-
-        // Build our new import specifier
-        const importSpecifier = j.importSpecifier(j.identifier('Link'));
-
-        // Iterate over Web UI imports
-        webUiImports.forEach(webUiImport =>
-          // Replace the existing node with a new one
-          j(webUiImport).replaceWith(
-            // Build a new import declaration node based on the existing one
-            j.importDeclaration(
-              [...webUiImport.node.specifiers, importSpecifier], // Insert our new import specificer
-              webUiImport.node.source
-            )
-          )
-        );
       }
     });
 
@@ -67,12 +46,6 @@ function transformer(file, api) {
       if (path.value.closingElement) {
         path.value.closingElement.name = 'button';
       }
-      // // add asChild prop
-      // path.node.openingElement.attributes = [
-      //   ...path.node.openingElement.attributes,
-      //   // build and insert our new prop
-      //   j.jsxAttribute(j.jsxIdentifier('asChild')),
-      // ];
       // remove variant prop
       path.value.openingElement.attributes = path.value.openingElement.attributes.filter(
         attr => attr === 'variant'
@@ -87,6 +60,27 @@ function transformer(file, api) {
         [path.value] // Pass in the original component as children
       );
       j(path).replaceWith(wrappedButton);
+
+      // add Link import
+      // Finding all Web UI import declarations
+      const webUiImports = root
+        .find(j.ImportDeclaration)
+        .filter(path => path.node.source.value === '@utilitywarehouse/web-ui');
+
+      // Build our new import specifier
+      const importSpecifier = j.importSpecifier(j.identifier('Link'));
+
+      // Iterate over Web UI imports
+      webUiImports.forEach(webUiImport =>
+        // Replace the existing node with a new one
+        j(webUiImport).replaceWith(
+          // Build a new import declaration node based on the existing one
+          j.importDeclaration(
+            [...webUiImport.node.specifiers, importSpecifier], // Insert our new import specificer
+            webUiImport.node.source
+          )
+        )
+      );
 
       return path;
     }
