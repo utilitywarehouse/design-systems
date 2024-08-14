@@ -25,6 +25,11 @@ jobs:
       - run: pnpm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: pnpm run checks --affected
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          NODE_OPTIONS: '--max_old_space_size=4096'
       - run: pnpm run checks
+        if: ${{ github.event_name == 'push' }}
         env:
           NODE_OPTIONS: '--max_old_space_size=4096'
