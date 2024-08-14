@@ -18,7 +18,7 @@ const AlertCloseButton = styled(
     descendantStyle: ['_closeIcon'],
     ancestorStyle: ['_closeButton'],
   } as const
-) as React.ForwardRefExoticComponent<import('react-native').PressableProps & {}> & {
+) as React.ForwardRefExoticComponent<import('react-native').PressableProps & object> & {
   displayName: string;
 };
 export default AlertCloseButton;

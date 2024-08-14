@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Box } from '@utilitywarehouse/native-ui';
 import React from 'react';
 
-const BoxWithRef = ({ ...props }: any) => {
-  const myRef = React.useRef<any>({});
+const BoxWithRef = ({ ...props }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const myRef = React.useRef<any>(null);
   React.useEffect(() => {
     const styleObj = {
       borderWidth: 8,
@@ -10,7 +13,7 @@ const BoxWithRef = ({ ...props }: any) => {
       borderColor: '#22D3EE',
     };
 
-    myRef.current?.setNativeProps?.({
+    myRef?.current?.setNativeProps?.({
       style: styleObj,
     });
   }, [myRef]);

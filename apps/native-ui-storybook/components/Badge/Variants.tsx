@@ -3,7 +3,7 @@ import { Badge, BadgeText, Box, HStack } from '@utilitywarehouse/native-ui';
 import { StoryFn } from '@storybook/react';
 import { VariantTitle } from '../../docs/components';
 
-const BadgeBasic: StoryFn = () => {
+const BadgeVariants: StoryFn = () => {
   return (
     <HStack gap={8}>
       <Box>
@@ -64,4 +64,4 @@ const BadgeBasic: StoryFn = () => {
   );
 };
 
-export default BadgeBasic;
+export default BadgeVariants;

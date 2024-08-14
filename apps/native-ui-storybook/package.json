@@ -10,6 +10,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
+    "lint:fix": "TIMING=1 eslint --fix --max-warnings 0 --ext ts,tsx",
+    "lint": "TIMING=1 eslint --max-warnings 0 --ext ts,tsx ./",
     "build:preview:android": "eas build --profile preview -p android --local --output './build/native-ui.apk'",
     "build:development:android": "eas build --profile development -p android",
     "build:preview:ios": "mv ./app.config.ts ./app.config.android.ts && mv ./app.config.ios.ts ./app.config.ts && EAS_LOCAL_BUILD_WORKINGDIR='./eas-build' eas build --profile preview -p ios --local --output './build/native-ui.tar.gz' && mv ./app.config.ts ./app.config.ios.ts && mv ./app.config.android.ts ./app.config.ts",

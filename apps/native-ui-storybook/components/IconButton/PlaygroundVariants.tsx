@@ -1,18 +1,19 @@
-import { ButtonGroup, Button, IconButton, ButtonText, Box } from '@utilitywarehouse/native-ui';
+import { ButtonGroup, IconButton, Box } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 import { ScrollWrap, VariantTitle } from '../../docs/components';
 
-const ButtonPlaygroundVariants: StoryFn = ({
-  colorScheme,
-  isDisabled,
-  size,
-  icon: _icon,
-  loading,
-  inverted,
-  _backgroundColor,
-}: any) => {
+const IconButtonPlaygroundVariants: StoryFn<{
+  colorScheme: 'cyan' | 'red' | 'green' | 'grey' | 'gold';
+  isDisabled: boolean;
+  size: 'x-small' | 'small' | 'medium';
+  icon: string;
+  loading: boolean;
+  inverted: boolean;
+  _backgroundColor: 'default' | 'midnight' | 'purple';
+}> = ({ colorScheme, isDisabled, size, icon: _icon, loading, inverted, _backgroundColor }) => {
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
   // @ts-expect-error - This is a playground
   const icon = _icon === 'none' ? undefined : Icons[_icon];
   return (
@@ -58,9 +59,9 @@ const ButtonPlaygroundVariants: StoryFn = ({
   );
 };
 
-ButtonPlaygroundVariants.storyName = 'Playground Variants';
+IconButtonPlaygroundVariants.storyName = 'Playground Variants';
 
-ButtonPlaygroundVariants.argTypes = {
+IconButtonPlaygroundVariants.argTypes = {
   size: {
     options: ['x-small', 'small', 'medium'],
     control: 'select',
@@ -100,7 +101,7 @@ ButtonPlaygroundVariants.argTypes = {
   },
 };
 
-ButtonPlaygroundVariants.args = {
+IconButtonPlaygroundVariants.args = {
   size: 'medium',
   colorScheme: 'cyan',
   icon: 'ChevronRightMediumIcon',
@@ -110,6 +111,4 @@ ButtonPlaygroundVariants.args = {
   _backgroundColor: 'default',
 };
 
-export default ButtonPlaygroundVariants;
-
-export { ButtonText, Button };
+export default IconButtonPlaygroundVariants;
