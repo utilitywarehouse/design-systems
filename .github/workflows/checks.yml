@@ -25,7 +25,11 @@ jobs:
       - run: pnpm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: pnpm run checks --affected
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+      - run: pnpm checks --filter="...[origin/${{ steps.extract_branch.outputs.branch }}]"
         if: ${{ github.event_name == 'pull_request' }}
         env:
           NODE_OPTIONS: '--max_old_space_size=4096'
