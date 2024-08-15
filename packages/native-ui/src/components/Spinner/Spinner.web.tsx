@@ -9,7 +9,7 @@ import {
 } from 'react-native-reanimated';
 import { G } from 'react-native-svg';
 import { StyledCircle, StyledSpinner, StyledSvg } from './styled-components';
-import SpinnerProps from './Spinner.props';
+import type SpinnerProps from './Spinner.props';
 import { getStrokeWidth, getWidth } from './Spinner.utils';
 
 const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color }) => {
