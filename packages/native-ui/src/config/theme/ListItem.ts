@@ -125,7 +125,7 @@ export const ListItem = createStyle({
           },
         },
         ':active': {
-          backgroundColor: '$grey25',
+          backgroundColor: '$grey75',
         },
         ':disabled': {
           _trailingContent: {
@@ -144,7 +144,7 @@ export const ListItem = createStyle({
             },
           },
           ':active': {
-            backgroundColor: '$darkGrey75',
+            backgroundColor: '$darkGrey150',
           },
           ':disabled': {
             _trailingContent: {
