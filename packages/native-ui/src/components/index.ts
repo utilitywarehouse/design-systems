@@ -8,6 +8,7 @@ export * from './Button';
 export * from './Spinner';
 export * from './List';
 export * from './Skeleton';
+export * from './Badge';
 
 // Gluestack UI
 export {
@@ -20,7 +21,7 @@ export {
 } from '@gluestack-ui/themed';
 export { AlertIcon, AlertText } from '@gluestack-ui/themed';
 
-export { Badge, BadgeIcon, BadgeText } from '@gluestack-ui/themed';
+export { BadgeIcon, BadgeText } from '@gluestack-ui/themed';
 export { Heading } from '@gluestack-ui/themed';
 export { Text } from '@gluestack-ui/themed';
 export { Box } from '@gluestack-ui/themed';

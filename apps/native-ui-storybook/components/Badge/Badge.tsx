@@ -13,8 +13,8 @@ const BadgeBasic: StoryFn<{
 }> = ({ text = 'NEW FEATURE', icon = false, ...props }) => {
   return (
     <Badge {...props}>
-      <BadgeText>{text}</BadgeText>
       {icon && <BadgeIcon as={AddSmallIcon} />}
+      <BadgeText>{text}</BadgeText>
     </Badge>
   );
 };
