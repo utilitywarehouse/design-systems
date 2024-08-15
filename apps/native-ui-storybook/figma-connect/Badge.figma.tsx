@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, BadgeText } from '@utilitywarehouse/native-ui';
+import { Badge } from '@utilitywarehouse/native-ui';
 import figma from '@figma/code-connect';
 
 figma.connect(
@@ -30,7 +30,7 @@ figma.connect(
     },
     example: ({ text, colorScheme, strong, size, borderless }) => (
       <Badge colorScheme={colorScheme} strong={strong} size={size} borderless={borderless}>
-        <BadgeText>{text}</BadgeText>
+        {text}
       </Badge>
     ),
   }
