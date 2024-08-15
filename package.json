@@ -18,7 +18,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "patch-package": "^8.0.0",
     "prettier": "^3.2.5",
-    "turbo": "^1.9.3",
+    "turbo": "^2.0.12",
     "typescript": "^5"
   },
   "scripts": {
@@ -50,6 +50,7 @@
   "resolutions": {
     "react-docgen-typescript": "2.2.2"
   },
+  "packageManager": "pnpm@8.6.3",
   "pnpm": {
     "overrides": {
       "react-docgen-typescript": "2.2.2"
