@@ -504,72 +504,79 @@ You can also use the list to display a list of radio buttons. You can achieve th
 import {
   List,
   ListItem,
-  ListItemIcon,
-  Checkbox,
-  CheckboxGroup,
-  CheckboxIndicator,
+  Radio,
+  RadioGroup,
+  RadioIndicator,
+  Image,
+  Box,
 } from '@utilitywarehouse/native-ui';
-import { UserMediumIcon } from '@utilitywarehouse/react-native-icons';
 
-const CheckboxList = () => {
-  const [values, setValues] = React.useState<Array<string>>([]);
+const RadioList = () => {
+  const [value, setValue] = React.useState<string>();
 
   const handlePress = (item: string) => {
-    if (values.includes(item)) {
-      setValues(values.filter(value => value !== item));
-    } else {
-      setValues([...values, item]);
-    }
+    setValue(item);
   };
   return (
-    <CheckboxGroup aria-label="Checkbox Group" nativeID="checkbox-group" value={values}>
-      <List>
-        <ListItem
-          text="Joe Blogs"
-          supportingText="12 Somewhere Street"
-          leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option1" aria-label="Label 1">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
-          onPress={() => handlePress('option1')}
-        />
-        <ListItem
-          text="Mary Poppins"
-          supportingText="45 Somewhere Street"
-          leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option2" aria-label="Label 2">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
-          onPress={() => handlePress('option2')}
-        />
-        <ListItem
-          text="Charlie Brown"
-          supportingText="78 Somewhere Street"
-          leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option3" aria-label="Label 3">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
-          onPress={() => handlePress('option3')}
-        />
-        <ListItem
-          text="Jane Doe"
-          supportingText="90 Somewhere Street"
-          leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option4" aria-label="Label 4">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
-          onPress={() => handlePress('option4')}
-        />
+    <RadioGroup aria-label="Radio Group" nativeID="Radio-group" value={value}>
+      <List container="card">
+        <Box borderRadius="$xl" backgroundColor="$grey25" overflow="hidden">
+          <ListItem
+            text="**** 5016"
+            supportingText="Expires 12/24"
+            divider
+            leadingContent={
+              <Image
+                source={{ uri: '/images/paymentMethods/visa/cardLight.svg' }}
+                width={56}
+                height={42}
+              />
+            }
+            trailingContent={
+              <Radio value="option1" aria-label="Label 1">
+                <RadioIndicator />
+              </Radio>
+            }
+            onPress={() => handlePress('option1')}
+          />
+          <ListItem
+            text="**** 3786"
+            supportingText="Expires 04/27"
+            leadingContent={
+              <Image
+                source={{ uri: '/images/paymentMethods/mastercard/cardLight.svg' }}
+                width={56}
+                height={42}
+              />
+            }
+            divider
+            trailingContent={
+              <Radio value="option2" aria-label="Label 2">
+                <RadioIndicator />
+              </Radio>
+            }
+            onPress={() => handlePress('option2')}
+          />
+          <ListItem
+            text="**** 1234"
+            supportingText="Expires 06/25"
+            leadingContent={
+              <Image
+                source={{ uri: '/images/paymentMethods/mastercard/cardLight.svg' }}
+                width={56}
+                height={42}
+              />
+            }
+            trailingContent={
+              <Radio value="option3" aria-label="Label 3">
+                <RadioIndicator />
+              </Radio>
+            }
+            onPress={() => handlePress('option3')}
+          />
+        </Box>
       </List>
-    </CheckboxGroup>
+    </RadioGroup>
   );
 };
 ```
