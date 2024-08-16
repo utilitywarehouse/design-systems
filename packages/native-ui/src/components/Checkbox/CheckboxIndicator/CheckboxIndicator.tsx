@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckboxIcon, CheckboxIndicator as GSCheckboxIndicator } from '@gluestack-ui/themed';
-import AnimatedOutline from '../AnimatedOutline';
+import AnimatedOutline from '../../AnimatedOutline';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 
 type CheckboxIndicatorProps = React.ComponentProps<typeof GSCheckboxIndicator>;
@@ -17,7 +17,7 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = props => {
         onPointerUp={() => setTimeout(() => setShow(false), 250)}
         onPointerDown={() => setShow(true)}
       >
-        <CheckboxIcon as={TickSmallIcon} />
+        <CheckboxIcon as={TickSmallIcon} color="white" $dark-color="$darkCyan50" />
       </GSCheckboxIndicator>
     </AnimatedOutline>
   );
