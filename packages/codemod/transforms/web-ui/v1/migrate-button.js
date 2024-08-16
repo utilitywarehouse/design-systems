@@ -47,11 +47,13 @@ function transformer(file, api) {
       }
     });
 
-  // replace tertiary variant with button component
+  // replace tertiary variant with a Link component with asChild prop and an
+  // inner button element
   webUIButtons.forEach(path => {
     // get variant
     const buttonVariant = getVariantPropValue(path);
     if (buttonVariant === 'tertiary') {
+      // change to button
       path.value.openingElement.name = 'button';
       if (path.value.closingElement) {
         path.value.closingElement.name = 'button';
@@ -61,11 +63,9 @@ function transformer(file, api) {
         attr => attr === 'variant'
       );
 
+      // create button wrapped in Link
       const wrappedButton = j.jsxElement(
-        j.jsxOpeningElement(j.jsxIdentifier('Link'), [
-          // Create a prop on the tooltip so it works as expected
-          j.jsxAttribute(j.jsxIdentifier('asChild')),
-        ]),
+        j.jsxOpeningElement(j.jsxIdentifier('Link'), [j.jsxAttribute(j.jsxIdentifier('asChild'))]),
         j.jsxClosingElement(j.jsxIdentifier('Link')),
         [path.value] // Pass in the original component as children
       );
@@ -81,7 +81,15 @@ function transformer(file, api) {
       const importSpecifier = j.importSpecifier(j.identifier('Link'));
 
       // Iterate over Web UI imports
-      webUiImports.forEach(webUiImport =>
+      webUiImports.forEach((webUiImport, i) => {
+        // we only want to do this to 1 Web UI import, just in case there is multiple
+        if (i > 0) return;
+        // we only want to add `Link` once
+        if (
+          webUiImport.node.specifiers.map(specifier => specifier.imported.name).includes('Link')
+        ) {
+          return;
+        }
         // Replace the existing node with a new one
         j(webUiImport).replaceWith(
           // Build a new import declaration node based on the existing one
@@ -89,8 +97,8 @@ function transformer(file, api) {
             [...webUiImport.node.specifiers, importSpecifier], // Insert our new import specificer
             webUiImport.node.source
           )
-        )
-      );
+        );
+      });
 
       return path;
     }
