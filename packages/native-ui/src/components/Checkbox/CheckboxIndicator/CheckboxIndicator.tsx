@@ -17,7 +17,7 @@ const CheckboxIndicator: React.FC<CheckboxIndicatorProps> = props => {
         onPointerUp={() => setTimeout(() => setShow(false), 250)}
         onPointerDown={() => setShow(true)}
       >
-        <CheckboxIcon as={TickSmallIcon} color="white" $dark-color="$darkCyan50" />
+        <CheckboxIcon as={TickSmallIcon} color="$brandWhite" $dark-color="$darkCyan50" />
       </GSCheckboxIndicator>
     </AnimatedOutline>
   );
