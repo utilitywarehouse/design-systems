@@ -6,7 +6,6 @@ export const SelectActionsheetIcon = createStyle({
   mr: '$2',
   color: '$backgroundLight500',
   _dark: {
-    //@ts-ignore
     color: '$backgroundDark400',
   },
   props: {

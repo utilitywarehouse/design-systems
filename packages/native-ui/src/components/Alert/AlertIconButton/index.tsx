@@ -1,4 +1,4 @@
 import { Root, Chevron } from './styled-components';
 
-export const AlertIconButton: any = Root;
-export const AlertIconButtonChevron: any = Chevron;
+export const AlertIconButton = Root;
+export const AlertIconButtonChevron = Chevron;

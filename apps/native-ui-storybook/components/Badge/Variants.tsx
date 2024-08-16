@@ -1,67 +1,57 @@
 import React from 'react';
-import { Badge, BadgeText, Box, HStack } from '@utilitywarehouse/native-ui';
+import { Badge, VStack, HStack } from '@utilitywarehouse/native-ui';
 import { StoryFn } from '@storybook/react';
 import { VariantTitle } from '../../docs/components';
 
-const BadgeBasic: StoryFn = () => {
+const BadgeVariants: StoryFn = () => {
   return (
-    <HStack gap={8}>
-      <Box>
+    <HStack gap="$2">
+      <VStack gap="$2">
         <VariantTitle title="cyan">
-          <Badge colorScheme="cyan">
-            <BadgeText>Cyan</BadgeText>
-          </Badge>
+          <Badge colorScheme="cyan">Cyan</Badge>
         </VariantTitle>
         <VariantTitle title="gold">
-          <Badge colorScheme="gold">
-            <BadgeText>Gold</BadgeText>
-          </Badge>
+          <Badge colorScheme="gold">Gold</Badge>
         </VariantTitle>
         <VariantTitle title="green">
-          <Badge colorScheme="green">
-            <BadgeText>Green</BadgeText>
-          </Badge>
+          <Badge colorScheme="green">Green</Badge>
         </VariantTitle>
         <VariantTitle title="grey">
-          <Badge colorScheme="grey">
-            <BadgeText>Grey</BadgeText>
-          </Badge>
+          <Badge colorScheme="grey">Grey</Badge>
         </VariantTitle>
         <VariantTitle title="red">
-          <Badge colorScheme="red">
-            <BadgeText>Red</BadgeText>
-          </Badge>
+          <Badge colorScheme="red">Red</Badge>
         </VariantTitle>
-      </Box>
-      <Box>
+      </VStack>
+      <VStack gap="$2">
         <VariantTitle title="cyan strong">
           <Badge colorScheme="cyan" strong>
-            <BadgeText>Cyan Strong</BadgeText>
+            Cyan Strong
           </Badge>
         </VariantTitle>
         <VariantTitle title="gold strong">
           <Badge colorScheme="gold" strong>
-            <BadgeText>Gold Strong</BadgeText>
+            Gold Strong
           </Badge>
         </VariantTitle>
         <VariantTitle title="green strong">
           <Badge colorScheme="green" strong>
-            <BadgeText>Green Strong</BadgeText>
+            Green Strong
           </Badge>
         </VariantTitle>
         <VariantTitle title="grey strong">
           <Badge colorScheme="grey" strong>
-            <BadgeText>Grey Strong</BadgeText>
+            Grey Strong
           </Badge>
         </VariantTitle>
         <VariantTitle title="red strong">
           <Badge colorScheme="red" strong>
-            <BadgeText>Red Strong</BadgeText>
+            Red Strong
           </Badge>
         </VariantTitle>
-      </Box>
+      </VStack>
     </HStack>
   );
 };
 
-export default BadgeBasic;
+export default BadgeVariants;

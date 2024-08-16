@@ -1,14 +1,20 @@
-import { Button, ButtonText, useMedia, VStack, HStack, Center } from '@utilitywarehouse/native-ui';
+import { useMedia, VStack, HStack, Center } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { StoryFn } from '@storybook/react';
 
 import ButtonVariants from './components/ButtonVariants';
 import ScrollWrap from '../../docs/components/ScrollWrap';
 
-const ButtonPlaygroundVariants: StoryFn = ({ size, inverted, _backgroundColor }: any) => {
+const ButtonPlaygroundVariants: StoryFn<{
+  size: 'small' | 'medium' | 'large';
+  inverted: boolean;
+  _backgroundColor: 'default' | 'midnight' | 'purple';
+}> = ({ size, inverted, _backgroundColor }) => {
   const media = useMedia();
+  // @ts-expect-error - Reported to Gluestack error
   const { base, xs, sm } = media;
-  const isMobile = base || xs || sm;
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+  const isMobile: boolean = base || xs || sm || false;
 
   const variants = (
     <>
@@ -87,5 +93,3 @@ ButtonPlaygroundVariants.args = {
 };
 
 export default ButtonPlaygroundVariants;
-
-export { ButtonText, Button };

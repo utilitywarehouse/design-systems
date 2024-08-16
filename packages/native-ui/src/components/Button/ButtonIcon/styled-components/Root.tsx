@@ -11,7 +11,7 @@ const ButtonIcon = styled(
     descendantStyle: [],
     ancestorStyle: ['_icon'],
   }
-) as React.ForwardRefExoticComponent<ComponentProps<typeof GSButtonIcon> & {}> & {
+) as React.ForwardRefExoticComponent<ComponentProps<typeof GSButtonIcon> & object> & {
   displayName: string;
 };
 export default ButtonIcon;

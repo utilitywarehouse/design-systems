@@ -1,8 +1,16 @@
 import React from 'react';
-import { Center, Text } from '@utilitywarehouse/native-ui';
-import { Meta } from '@storybook/react';
+import { Text } from '@utilitywarehouse/native-ui';
+import { Meta, StoryFn } from '@storybook/react';
 
-const TextBasic = ({ ...props }: any) => {
+const TextBasic: StoryFn<{
+  size: 'xs' | 'sm' | 'md';
+  highlight: boolean;
+  truncated: boolean;
+  bold: boolean;
+  italic: boolean;
+  underline: boolean;
+  strikeThrough: boolean;
+}> = ({ ...props }) => {
   return (
     <Text {...props}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -63,5 +71,3 @@ TextBasic.args = {
 } as Meta<typeof Text>['args'];
 
 export default TextBasic;
-
-export { Text, Center };

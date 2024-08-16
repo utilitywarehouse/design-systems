@@ -18,7 +18,7 @@ const AlertIconButton = styled(
     descendantStyle: ['_buttonIcon'],
     ancestorStyle: ['_button'],
   } as const
-) as React.ForwardRefExoticComponent<import('react-native').PressableProps & {}> & {
+) as React.ForwardRefExoticComponent<import('react-native').PressableProps & object> & {
   displayName: string;
 };
 export default AlertIconButton;
