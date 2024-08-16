@@ -330,6 +330,9 @@ importers:
       react-native-svg:
         specifier: '>=13.4.0'
         version: 14.1.0(react-native@0.74.1)(react@18.2.0)
+      react-native-unistyles:
+        specifier: ^2.9.1
+        version: 2.9.1(@react-native/normalize-colors@0.74.84)(react-native-web@0.19.11)(react-native@0.74.1)(react@18.2.0)
     devDependencies:
       '@babel/preset-env':
         specifier: ^7.24.4
@@ -10767,10 +10770,10 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.3.0-alpha.5(storybook@7.6.17):
-    resolution: {integrity: sha512-2dO6UXm0ddJlraA2jZVvkPxmad+gNDDQqUGGdkElOxYynXvciGLYSv5SAV7aMvR7dsBOyKFBlMOcohohjWyLHw==}
+  /@storybook/client-logger@8.3.0-alpha.6(storybook@7.6.17):
+    resolution: {integrity: sha512-RAZBKW6sMa4ZBXKwCaKkZs9mCIdr+rGhT60wel/OJztUkMcExcOelXKcmrtgI+fwXssukqvIB5OtUr2SpQJsGA==}
     peerDependencies:
-      storybook: ^8.3.0-alpha.5
+      storybook: ^8.3.0-alpha.6
     dependencies:
       storybook: 7.6.17
     dev: true
@@ -11118,10 +11121,10 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.3.0-alpha.5(storybook@7.6.17):
-    resolution: {integrity: sha512-1tWS23ZX/2dGPAaZNtruj7PIwdo7J3OyjTfE5RVX633j6AQifN9+e2+BMVvRxVpS2ATyYyjtHurYoqWPQWyL4A==}
+  /@storybook/instrumenter@8.3.0-alpha.6(storybook@7.6.17):
+    resolution: {integrity: sha512-poYWiXAGg6UG8Ztr4Ld9ytAlmQNzFxcahzaId8jPAhEs8Yjl1axDiv4fr/Az9gzXKHumPsqcoQBJUYwaHq4rGQ==}
     peerDependencies:
-      storybook: ^8.3.0-alpha.5
+      storybook: ^8.3.0-alpha.6
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.0.5
@@ -11766,8 +11769,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1(storybook@7.6.17):
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.3.0-alpha.5(storybook@7.6.17)
-      '@storybook/instrumenter': 8.3.0-alpha.5(storybook@7.6.17)
+      '@storybook/client-logger': 8.3.0-alpha.6(storybook@7.6.17)
+      '@storybook/instrumenter': 8.3.0-alpha.6(storybook@7.6.17)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
@@ -20865,6 +20868,30 @@ packages:
   /react-native-swipe-gestures@1.0.5:
     resolution: {integrity: sha512-Ns7Bn9H/Tyw278+5SQx9oAblDZ7JixyzeOczcBK8dipQk2pD7Djkcfnf1nB/8RErAmMLL9iXgW0QHqiII8AhKw==}
     dev: true
+
+  /react-native-unistyles@2.9.1(@react-native/normalize-colors@0.74.84)(react-native-web@0.19.11)(react-native@0.74.1)(react@18.2.0):
+    resolution: {integrity: sha512-MG+yPPHEvDuGJgXWoIEm9NcA3BEo4hK2wigvN5W4tCN8CwWwQHv4JyBBGXvF0RCQZq8qwPcfGQBdfEkfjURamA==}
+    engines: {node: '>= 18.0.0'}
+    peerDependencies:
+      '@react-native/normalize-colors': '*'
+      react: '*'
+      react-native: '*'
+      react-native-macos: '*'
+      react-native-web: '*'
+      react-native-windows: '*'
+    peerDependenciesMeta:
+      react-native-macos:
+        optional: true
+      react-native-web:
+        optional: true
+      react-native-windows:
+        optional: true
+    dependencies:
+      '@react-native/normalize-colors': 0.74.84
+      react: 18.2.0
+      react-native: 0.74.1(@babel/preset-env@7.24.4)(@types/react@18.2.79)(react@18.2.0)
+      react-native-web: 0.19.11(react-dom@18.2.0)(react@18.2.0)
+    dev: false
 
   /react-native-web@0.19.11(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-51Qcjr0AtIgskwLqLsBByUMPs2nAWZ+6QF7x/siC72svNPcJ1/daXoPTNuHR2fX4oOrDATC4Vmc/SXOYPH19rw==}
