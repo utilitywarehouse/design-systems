@@ -10,8 +10,7 @@
       "dependsOn": ["^build"]
     },
     "checks": {
-      "outputs": ["dist/**"],
-      "dependsOn": ["^format", "^build", "^lint"]
+      "outputs": ["dist/**"]
     },
     "format": {
       "outputs": ["src/**", "raw/**"]
