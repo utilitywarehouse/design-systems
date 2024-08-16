@@ -19,7 +19,17 @@ function transformer(file, api) {
     return variant[0];
   };
 
-  // TODO: update sizes
+  // update sizes
+  webUIButtons
+    .find(j.JSXAttribute, { name: { type: 'JSXIdentifier', name: 'size' } })
+    .find(j.Literal)
+    .forEach(path => {
+      const size = path.node.value;
+
+      if (size === 'large') {
+        path.node.value = 'medium';
+      }
+    });
 
   // update simple variant translations
   webUIButtons

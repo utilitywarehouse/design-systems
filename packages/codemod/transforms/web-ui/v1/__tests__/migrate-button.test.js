@@ -9,3 +9,11 @@ describe(VARIANT_NAME, () => {
     parser: 'tsx',
   });
 });
+
+const SIZE_NAME = `${NAME}-size`;
+
+describe(SIZE_NAME, () => {
+  defineTest(__dirname, NAME, {}, SIZE_NAME, {
+    parser: 'tsx',
+  });
+});
