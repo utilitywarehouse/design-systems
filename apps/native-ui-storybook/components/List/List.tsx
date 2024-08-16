@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
   Box,
   IconButton,
@@ -9,9 +10,21 @@ import {
 import React from 'react';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
-import _ from 'lodash';
 
-const ListBasic: StoryFn = ({
+const ListBasic: StoryFn<{
+  container: 'full' | 'card';
+  headingText: string;
+  headingSupportingText: string;
+  _listItemText: string;
+  _listItemSupportingText: string;
+  _listItemLeadingContent: string;
+  _listItemTrailingContent: string;
+  divider: boolean;
+  _listItemOnPress: string;
+  disabled: boolean;
+  loading: boolean;
+  _numberOfItems: number;
+}> = ({
   container,
   headingText,
   headingSupportingText,
@@ -24,7 +37,7 @@ const ListBasic: StoryFn = ({
   disabled,
   loading,
   _numberOfItems,
-}: any) => {
+}) => {
   // @ts-expect-error - This is a playground
   const icon = _icon === 'none' ? undefined : Icons[_icon];
   // @ts-expect-error - This is a playground
@@ -35,7 +48,7 @@ const ListBasic: StoryFn = ({
       key={index}
       text={_listItemText}
       supportingText={_listItemSupportingText}
-      onPress={handlePress}
+      onPress={handlePress as () => void}
       leadingContent={icon && <ListItemIcon as={icon} />}
       trailingContent={trailingIcon ? <ListItemTrailingIcon as={trailingIcon} /> : null}
       divider={container === 'full' ? divider : divider && index !== _numberOfItems - 1}

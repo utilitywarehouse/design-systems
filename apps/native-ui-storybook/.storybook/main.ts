@@ -24,6 +24,7 @@ module.exports = {
       },
     },
   ],
+  staticDirs: ['../assets'],
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
     options: { builder: { useSWC: true } },

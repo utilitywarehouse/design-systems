@@ -32,6 +32,8 @@ import {
   ElectricityMediumIcon,
   GasMediumIcon,
 } from '@utilitywarehouse/react-native-icons';
+import { CheckboxList } from './components';
+import RadioList from './components/RadioList';
 
 <Meta of={Stories} />
 
@@ -56,6 +58,7 @@ List item is the main building block of list. Each item has its own set of prope
 - [Examples](#examples)
   - [List Item with Badge](#list-item-with-badge)
   - [Checbox List](#checbox-list)
+  - [Radio List](#radio-list)
   - [List with FlatList](#list-with-flatlist)
 
 ## Playground
@@ -159,7 +162,7 @@ If you need to use the List component in a more advanced way, you can use the pa
       <ListHeading text="Your account" supportingText="Tap the links below to view your account" />
       <ListItem onPress={() => console.log('pressed')} divider>
         <ListItemLeadingContent>
-          <ListItemIcon as={BillMediumIcon} color="$purple300" />
+          <ListItemIcon as={BillMediumIcon} color="$pink300" />
         </ListItemLeadingContent>
         <ListItemContent>
           <ListItemText>Bills</ListItemText>
@@ -171,7 +174,7 @@ If you need to use the List component in a more advanced way, you can use the pa
       </ListItem>
       <ListItem onPress={() => console.log('pressed')} divider>
         <ListItemLeadingContent>
-          <ListItemIcon as={PaymentMediumIcon} color="$purple300" />
+          <ListItemIcon as={PaymentMediumIcon} color="$pink300" />
         </ListItemLeadingContent>
         <ListItemContent>
           <ListItemText>Payments</ListItemText>
@@ -183,7 +186,7 @@ If you need to use the List component in a more advanced way, you can use the pa
       </ListItem>
       <ListItem onPress={() => console.log('pressed')} divider>
         <ListItemLeadingContent>
-          <ListItemIcon as={HomeMediumIcon} color="$purple300" />
+          <ListItemIcon as={HomeMediumIcon} color="$pink300" />
         </ListItemLeadingContent>
         <ListItemContent>
           <ListItemText>Moving home</ListItemText>
@@ -195,7 +198,7 @@ If you need to use the List component in a more advanced way, you can use the pa
       </ListItem>
       <ListItem onPress={() => console.log('pressed')}>
         <ListItemLeadingContent>
-          <ListItemIcon as={UserMediumIcon} color="$purple300" />
+          <ListItemIcon as={UserMediumIcon} color="$pink300" />
         </ListItemLeadingContent>
         <ListItemContent>
           <ListItemText>Refer a friend</ListItemText>
@@ -235,7 +238,7 @@ const MyComponent = () => (
     <ListHeading text="Your account" supportingText="Tap the links below to view your account" />
     <ListItem onPress={() => console.log('pressed')} divider>
       <ListItemLeadingContent>
-        <ListItemIcon as={BillMediumIcon} color="$purple300" />
+        <ListItemIcon as={BillMediumIcon} color="$pink300" />
       </ListItemLeadingContent>
       <ListItemContent>
         <ListItemText>Bills</ListItemText>
@@ -247,7 +250,7 @@ const MyComponent = () => (
     </ListItem>
     <ListItem onPress={() => console.log('pressed')} divider>
       <ListItemLeadingContent>
-        <ListItemIcon as={PaymentMediumIcon} color="$purple300" />
+        <ListItemIcon as={PaymentMediumIcon} color="$pink300" />
       </ListItemLeadingContent>
       <ListItemContent>
         <ListItemText>Payments</ListItemText>
@@ -259,7 +262,7 @@ const MyComponent = () => (
     </ListItem>
     <ListItem onPress={() => console.log('pressed')} divider>
       <ListItemLeadingContent>
-        <ListItemIcon as={HomeMediumIcon} color="$purple300" />
+        <ListItemIcon as={HomeMediumIcon} color="$pink300" />
       </ListItemLeadingContent>
       <ListItemContent>
         <ListItemText>Moving home</ListItemText>
@@ -271,7 +274,7 @@ const MyComponent = () => (
     </ListItem>
     <ListItem onPress={() => console.log('pressed')}>
       <ListItemLeadingContent>
-        <ListItemIcon as={UserMediumIcon} color="$purple300" />
+        <ListItemIcon as={UserMediumIcon} color="$pink300" />
       </ListItemLeadingContent>
       <ListItemContent>
         <ListItemText>Refer a friend</ListItemText>
@@ -407,7 +410,33 @@ You can also use the list to display a list of checkboxes. You can achieve this 
 
 <Canvas>
   <NativeUIProvider>
-    <CheckboxGroup aria-label="Checkbox Group" nativeID="checkbox-group">
+    <CheckboxList />
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  Checkbox,
+  CheckboxGroup,
+  CheckboxIndicator,
+} from '@utilitywarehouse/native-ui';
+import { UserMediumIcon } from '@utilitywarehouse/react-native-icons';
+
+const CheckboxList = () => {
+  const [values, setValues] = React.useState<Array<string>>([]);
+
+  const handlePress = (item: string) => {
+    if (values.includes(item)) {
+      setValues(values.filter(value => value !== item));
+    } else {
+      setValues([...values, item]);
+    }
+  };
+  return (
+    <CheckboxGroup aria-label="Checkbox Group" nativeID="checkbox-group" value={values}>
       <List>
         <ListItem
           text="Joe Blogs"
@@ -418,6 +447,7 @@ You can also use the list to display a list of checkboxes. You can achieve this 
               <CheckboxIndicator />
             </Checkbox>
           }
+          onPress={() => handlePress('option1')}
         />
         <ListItem
           text="Mary Poppins"
@@ -428,6 +458,7 @@ You can also use the list to display a list of checkboxes. You can achieve this 
               <CheckboxIndicator />
             </Checkbox>
           }
+          onPress={() => handlePress('option2')}
         />
         <ListItem
           text="Charlie Brown"
@@ -438,6 +469,7 @@ You can also use the list to display a list of checkboxes. You can achieve this 
               <CheckboxIndicator />
             </Checkbox>
           }
+          onPress={() => handlePress('option3')}
         />
         <ListItem
           text="Jane Doe"
@@ -448,9 +480,23 @@ You can also use the list to display a list of checkboxes. You can achieve this 
               <CheckboxIndicator />
             </Checkbox>
           }
+          onPress={() => handlePress('option4')}
         />
       </List>
     </CheckboxGroup>
+  );
+};
+```
+
+For more information on the `Checbox` component, see the [`Checkbox` component documentation](/docs/native-ui-components-checkbox--docs).
+
+### Radio List
+
+You can also use the list to display a list of radio buttons. You can achieve this by using the `Checkbox` component as the `trailingContent` of the `ListItem`.
+
+<Canvas>
+  <NativeUIProvider>
+    <RadioList />
   </NativeUIProvider>
 </Canvas>
 
@@ -459,59 +505,73 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemSupportingText,
   Checkbox,
   CheckboxGroup,
   CheckboxIndicator,
 } from '@utilitywarehouse/native-ui';
 import { UserMediumIcon } from '@utilitywarehouse/react-native-icons';
 
-const MyComponent = ({ onChange }) => (
-  <CheckboxGroup aria-label="Checkbox Group" nativeID="checkbox-group" onChange={onChange}>
-    <List>
-      <ListItem
-        text="Joe Blogs"
-        supportingText="12 Somewhere Street"
-        leadingContent={<ListItemIcon as={UserMediumIcon} />}
-        trailingContent={
-          <Checkbox value="option1" aria-label="Label 1">
-            <CheckboxIndicator />
-          </Checkbox>
-        }
-      />
-      <ListItem
-        text="Mary Poppins"
-        supportingText="45 Somewhere Street"
-        leadingContent={<ListItemIcon as={UserMediumIcon} />}
-        trailingContent={
-          <Checkbox value="option2" aria-label="Label 2">
-            <CheckboxIndicator />
-          </Checkbox>
-        }
-      />
-      <ListItem
-        text="Charlie Brown"
-        supportingText="78 Somewhere Street"
-        leadingContent={<ListItemIcon as={UserMediumIcon} />}
-        trailingContent={
-          <Checkbox value="option3" aria-label="Label 3">
-            <CheckboxIndicator />
-          </Checkbox>
-        }
-      />
-      <ListItem
-        text="Jane Doe"
-        supportingText="90 Somewhere Street"
-        leadingContent={<ListItemIcon as={UserMediumIcon} />}
-        trailingContent={
-          <Checkbox value="option4" aria-label="Label 4">
-            <CheckboxIndicator />
-          </Checkbox>
-        }
-      />
-    </List>
-  </CheckboxGroup>
-);
+const CheckboxList = () => {
+  const [values, setValues] = React.useState<Array<string>>([]);
+
+  const handlePress = (item: string) => {
+    if (values.includes(item)) {
+      setValues(values.filter(value => value !== item));
+    } else {
+      setValues([...values, item]);
+    }
+  };
+  return (
+    <CheckboxGroup aria-label="Checkbox Group" nativeID="checkbox-group" value={values}>
+      <List>
+        <ListItem
+          text="Joe Blogs"
+          supportingText="12 Somewhere Street"
+          leadingContent={<ListItemIcon as={UserMediumIcon} />}
+          trailingContent={
+            <Checkbox value="option1" aria-label="Label 1">
+              <CheckboxIndicator />
+            </Checkbox>
+          }
+          onPress={() => handlePress('option1')}
+        />
+        <ListItem
+          text="Mary Poppins"
+          supportingText="45 Somewhere Street"
+          leadingContent={<ListItemIcon as={UserMediumIcon} />}
+          trailingContent={
+            <Checkbox value="option2" aria-label="Label 2">
+              <CheckboxIndicator />
+            </Checkbox>
+          }
+          onPress={() => handlePress('option2')}
+        />
+        <ListItem
+          text="Charlie Brown"
+          supportingText="78 Somewhere Street"
+          leadingContent={<ListItemIcon as={UserMediumIcon} />}
+          trailingContent={
+            <Checkbox value="option3" aria-label="Label 3">
+              <CheckboxIndicator />
+            </Checkbox>
+          }
+          onPress={() => handlePress('option3')}
+        />
+        <ListItem
+          text="Jane Doe"
+          supportingText="90 Somewhere Street"
+          leadingContent={<ListItemIcon as={UserMediumIcon} />}
+          trailingContent={
+            <Checkbox value="option4" aria-label="Label 4">
+              <CheckboxIndicator />
+            </Checkbox>
+          }
+          onPress={() => handlePress('option4')}
+        />
+      </List>
+    </CheckboxGroup>
+  );
+};
 ```
 
 For more information on the `Checbox` component, see the [`Checkbox` component documentation](/docs/native-ui-components-checkbox--docs).
