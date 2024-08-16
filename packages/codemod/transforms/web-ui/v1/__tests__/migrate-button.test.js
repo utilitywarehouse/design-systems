@@ -17,3 +17,11 @@ describe(SIZE_NAME, () => {
     parser: 'tsx',
   });
 });
+
+const HREF_NAME = `${NAME}-href`;
+
+describe(HREF_NAME, () => {
+  defineTest(__dirname, NAME, {}, HREF_NAME, {
+    parser: 'tsx',
+  });
+});
