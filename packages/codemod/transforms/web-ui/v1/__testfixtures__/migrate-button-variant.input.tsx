@@ -8,6 +8,9 @@ const Component = () => (
     <Button variant="primary">Button</Button>
     <Button variant="secondary">Button</Button>
     <Button variant="tertiary">Button</Button>
+    <Button variant="tertiary" href="https://uw.co.uk/services">
+      Button
+    </Button>
   </Box>
 );
 
