@@ -1,5 +1,19 @@
 # @utilitywarehouse/native-ui
 
+## 0.2.4
+
+### Patch Changes
+
+- [#454](https://github.com/utilitywarehouse/design-systems/pull/454) [`d9f64df9`](https://github.com/utilitywarehouse/design-systems/commit/d9f64df931074561606126f16a51914c2a8ac191) Thanks [@jordmccord](https://github.com/jordmccord)! - Fix `Spinner` sizes stroke widths
+
+- [#441](https://github.com/utilitywarehouse/design-systems/pull/441) [`bdf5cdd6`](https://github.com/utilitywarehouse/design-systems/commit/bdf5cdd6be8d5a4ac3085292732566d4ae16f307) Thanks [@jordmccord](https://github.com/jordmccord)! - Fix icon default stroke width
+
+- [#440](https://github.com/utilitywarehouse/design-systems/pull/440) [`c3be64b2`](https://github.com/utilitywarehouse/design-systems/commit/c3be64b2621adeef1885ce6341ec064889ab6958) Thanks [@jordmccord](https://github.com/jordmccord)! - Update outline and inverted button colours
+
+- [#450](https://github.com/utilitywarehouse/design-systems/pull/450) [`fce39177`](https://github.com/utilitywarehouse/design-systems/commit/fce391774bc41116b86504b611c1f4307a269980) Thanks [@jordmccord](https://github.com/jordmccord)! - Simplified `Badge` API
+
+- [#458](https://github.com/utilitywarehouse/design-systems/pull/458) [`a43edb30`](https://github.com/utilitywarehouse/design-systems/commit/a43edb302d8cd8d2b91cd07c3815c8eaac6bd7e2) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixes the `CheckboxIcon` colour
+
 ## 0.2.3
 
 ### Patch Changes
