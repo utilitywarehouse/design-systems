@@ -1,5 +1,13 @@
 # @utilitywarehouse/web-ui
 
+## 0.9.7
+
+### Patch Changes
+
+- [#460](https://github.com/utilitywarehouse/design-systems/pull/460) [`dec10935`](https://github.com/utilitywarehouse/design-systems/commit/dec10935eee8cd3b2f88a40bb1be71a8c0333224) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove `TextField` deprecation. Add it back in when we are ready to release replacement `Input` component.
+
+- [#461](https://github.com/utilitywarehouse/design-systems/pull/461) [`d3f68753`](https://github.com/utilitywarehouse/design-systems/commit/d3f68753019ec14181ca35c0151738176d05d92c) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove stray export
+
 ## 0.9.6
 
 ### Patch Changes
