@@ -3,8 +3,9 @@ import StorybookUIRoot from './.ondevice';
 import React from 'react';
 import { useFonts } from 'expo-font';
 
-export default () => {
+const App = () => {
   const [loaded] = useFonts({
+    /* eslint-disable @typescript-eslint/no-unsafe-assignment */
     'Aeonik-Bold': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/Aeonik/Aeonik-Bold.otf'),
     'Aeonik-Regular': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/Aeonik/Aeonik-Regular.otf'),
     'WorkSans-Black': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Black.ttf'),
@@ -21,3 +22,5 @@ export default () => {
   if (!loaded) return null;
   return <StorybookUIRoot />;
 };
+
+export default App;

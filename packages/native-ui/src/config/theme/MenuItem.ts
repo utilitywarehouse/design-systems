@@ -1,23 +1,23 @@
 import { createStyle } from '@gluestack-style/react';
 
 export const MenuItem = createStyle({
-  'p': '$3',
-  'flexDirection': 'row',
-  'alignItems': 'center',
+  p: '$3',
+  flexDirection: 'row',
+  alignItems: 'center',
 
   ':hover': {
     bg: '$backgroundLight100',
   },
 
   ':disabled': {
-    'opacity': 0.4,
-    '_web': {
+    opacity: 0.4,
+    _web: {
       cursor: 'not-allowed',
     },
     ':focus': {
       bg: 'transparent',
     },
-    '_dark': {
+    _dark: {
       ':focus': {
         bg: 'transparent',
       },
@@ -30,13 +30,11 @@ export const MenuItem = createStyle({
 
   ':focus': {
     bg: '$backgroundLight100',
-    // @ts-ignore
     outlineWidth: '$0',
     outlineStyle: 'none',
   },
 
   ':focusVisible': {
-    // @ts-ignore
     outlineWidth: '$0.5',
     outlineColor: '$primary700',
     outlineStyle: 'solid',
@@ -45,7 +43,7 @@ export const MenuItem = createStyle({
     },
   },
 
-  '_dark': {
+  _dark: {
     ':hover': {
       bg: '$backgroundDark800',
     },
@@ -58,7 +56,7 @@ export const MenuItem = createStyle({
       bg: '$backgroundDark800',
     },
   },
-  '_web': {
+  _web: {
     cursor: 'pointer',
   },
 });

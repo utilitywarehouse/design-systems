@@ -1,7 +1,11 @@
 import React from 'react';
 import { RadioGroup, Radio, RadioIndicator, RadioLabel } from '@utilitywarehouse/native-ui';
+import { StoryFn } from '@storybook/react';
 
-const RadioBasic = ({ isDisabled, _RadioLabel: label }: any) => {
+const RadioBasic: StoryFn<{
+  isDisabled: boolean;
+  _RadioLabel: string;
+}> = ({ isDisabled, _RadioLabel: label }) => {
   return (
     <RadioGroup>
       <Radio
@@ -19,8 +23,6 @@ const RadioBasic = ({ isDisabled, _RadioLabel: label }: any) => {
     </RadioGroup>
   );
 };
-
-RadioBasic.description = 'This is a basic Radio component example';
 
 RadioBasic.argTypes = {
   isDisabled: {
@@ -42,5 +44,3 @@ RadioBasic.args = {
 };
 
 export default RadioBasic;
-
-export { Radio };

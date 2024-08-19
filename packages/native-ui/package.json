@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/native-ui",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Utility Warehouse React Native UI library",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -9,6 +9,8 @@
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf build",
     "generateColours": "node ./scripts/generateColours.js",
+    "lint:fix": "TIMING=1 eslint --fix --max-warnings 0 --ext ts,tsx src --ignore-pattern 'src/components/unstyled/**'",
+    "lint": "TIMING=1 eslint --max-warnings 0 --ext ts,tsx src  --ignore-pattern 'src/components/unstyled/**'",
     "build": "tsc && tsc --p tsconfig.unstyled.json && tsc --p tsconfig.lab.json",
     "watch": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"

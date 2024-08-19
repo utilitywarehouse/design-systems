@@ -10,32 +10,14 @@ import {
 } from 'react-native-reanimated';
 import { G } from 'react-native-svg';
 import { StyledCircle, StyledSpinner, StyledSvg } from './styled-components';
-
-export interface SpinnerProps {
-  size?: 'xs' | 'sm' | 'md' | 'lg';
-  color?: string;
-}
-
-const getWidth = (size: 'xs' | 'sm' | 'md' | 'lg') => {
-  switch (size) {
-    case 'xs':
-      return 14;
-    case 'sm':
-      return 20;
-    case 'md':
-      return 28;
-    case 'lg':
-      return 40;
-    default:
-      return 32;
-  }
-};
+import type SpinnerProps from './Spinner.props';
+import { getStrokeWidth, getWidth } from './Spinner.utils';
 
 const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color }) => {
   const width = getWidth(size);
   const CIRCUMFERENCE = (width - 4) * Math.PI;
   const R = CIRCUMFERENCE / (2 * Math.PI);
-  const STROKE_WIDTH = size === 'xs' ? 1.5 : 2;
+  const STROKE_WIDTH = getStrokeWidth(size);
   const HALF_CIRCLE = R + STROKE_WIDTH;
   const DIAMETER = 2 * HALF_CIRCLE;
 

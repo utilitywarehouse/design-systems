@@ -1,7 +1,11 @@
+import { StoryFn } from '@storybook/react';
 import { Spinner } from '@utilitywarehouse/native-ui';
 import React from 'react';
 
-const SpinnerBasic: any = ({ color, size }: any) => {
+const SpinnerBasic: StoryFn<{
+  color: string;
+  size: 'xs' | 'sm' | 'md' | 'lg';
+}> = ({ color, size }) => {
   return <Spinner color={color} size={size} />;
 };
 
@@ -24,5 +28,3 @@ SpinnerBasic.args = {
 };
 
 export default SpinnerBasic;
-
-export { Spinner };

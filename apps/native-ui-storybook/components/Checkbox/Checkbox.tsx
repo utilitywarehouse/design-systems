@@ -1,8 +1,13 @@
 import React from 'react';
 import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/native-ui';
 import { useArgs } from '@storybook/preview-api';
+import { StoryFn } from '@storybook/react';
 
-const CheckboxBasic = ({ isDisabled, _CheckboxLabel: label }: any) => {
+const CheckboxBasic: StoryFn<{
+  isChecked: boolean;
+  isDisabled: boolean;
+  _CheckboxLabel: string;
+}> = ({ isDisabled, _CheckboxLabel: label }) => {
   const [args, updateArgs] = useArgs();
 
   return (
@@ -13,7 +18,7 @@ const CheckboxBasic = ({ isDisabled, _CheckboxLabel: label }: any) => {
         updateArgs({ isChecked });
       }}
       nativeID="checkbox-1"
-      isChecked={args.isChecked}
+      isChecked={args.isChecked as boolean}
       isDisabled={isDisabled}
     >
       <CheckboxIndicator />
@@ -21,8 +26,6 @@ const CheckboxBasic = ({ isDisabled, _CheckboxLabel: label }: any) => {
     </Checkbox>
   );
 };
-
-CheckboxBasic.description = 'This is a basic Checkbox component example';
 
 CheckboxBasic.argTypes = {
   isChecked: {

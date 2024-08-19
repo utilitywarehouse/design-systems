@@ -1,4 +1,4 @@
 import { Root, Icon } from './styled-components';
 
-export const AlertCloseButton: any = Root;
-export const AlertCloseButtonIcon: any = Icon;
+export const AlertCloseButton = Root;
+export const AlertCloseButtonIcon = Icon;

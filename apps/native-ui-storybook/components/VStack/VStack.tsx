@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 import { VStack, Box } from '@utilitywarehouse/native-ui';
+import { StoryFn } from '@storybook/react';
 
-const VStackBasic = ({ space, reversed, ...props }: any) => {
+const VStackBasic: StoryFn<{
+  space: ComponentProps<typeof VStack>['space'];
+  reversed: boolean;
+}> = ({ space, reversed, ...props }) => {
   return (
     <VStack
       space={space}
@@ -17,10 +21,4 @@ const VStackBasic = ({ space, reversed, ...props }: any) => {
     </VStack>
   );
 };
-
-VStackBasic.description =
-  'This is a basic VStack component example. VStack is a primitive component to layout its children vertically.';
-
 export default VStackBasic;
-
-export { Box, VStack };

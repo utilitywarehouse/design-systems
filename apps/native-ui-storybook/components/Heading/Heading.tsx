@@ -1,10 +1,10 @@
 import React from 'react';
-import { Center, Heading } from '@utilitywarehouse/native-ui';
+import { Heading } from '@utilitywarehouse/native-ui';
 import { Meta } from '@storybook/react';
 
-const HeadingBasic = ({ ...props }: any) => {
+const HeadingBasic = () => {
   return (
-    <Heading {...props}>
+    <Heading>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       labore et dolore magna aliqua.
     </Heading>
@@ -42,5 +42,3 @@ HeadingBasic.args = {
 } as Meta<typeof Heading>['args'];
 
 export default HeadingBasic;
-
-export { Heading, Center };

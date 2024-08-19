@@ -13,7 +13,7 @@ const AlertLink = styled(
     descendantStyle: ['_text', '_chevron'],
     ancestorStyle: ['_link'],
   } as const
-) as React.ForwardRefExoticComponent<import('react-native').PressableProps & {}> & {
+) as React.ForwardRefExoticComponent<import('react-native').PressableProps & object> & {
   displayName: string;
 };
 

@@ -7,6 +7,7 @@ export const Badge = createStyle({
   borderRadius: '$sm',
   paddingVertical: '$1',
   alignSelf: 'flex-start',
+  gap: '$1',
   _text: {
     fontSize: '$sm',
     fontWeight: '400',

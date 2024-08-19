@@ -1,10 +1,21 @@
 import { Box, Button } from '@utilitywarehouse/native-ui';
-import React from 'react';
+import React, { ComponentType } from 'react';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 import ScrollWrap from '../../docs/components/ScrollWrap';
 
-const ButtonBasic: StoryFn = ({
+const ButtonBasic: StoryFn<{
+  variant: 'solid' | 'outline' | 'ghost';
+  size: 'small' | 'medium' | 'large';
+  colorScheme: 'cyan' | 'red' | 'green' | 'grey' | 'gold';
+  disabled: boolean;
+  loading: boolean;
+  iconPosition: 'left' | 'right';
+  icon: string;
+  inverted: boolean;
+  _ButtonText: string;
+  _backgroundColor: 'default' | 'midnight' | 'purple';
+}> = ({
   variant,
   size,
   colorScheme,
@@ -15,9 +26,10 @@ const ButtonBasic: StoryFn = ({
   inverted,
   _ButtonText,
   _backgroundColor,
-}: any) => {
+}) => {
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
   // @ts-expect-error - This is a playground
-  const icon = _icon === 'none' ? undefined : Icons[_icon];
+  const icon: ComponentType | undefined = _icon === 'none' ? undefined : Icons[_icon];
   return (
     <Box height={68} width="100%">
       <ScrollWrap backgroundColor={_backgroundColor}>
@@ -108,5 +120,3 @@ ButtonBasic.args = {
 };
 
 export default ButtonBasic;
-
-export { Button };

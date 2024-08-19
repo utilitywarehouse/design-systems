@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import { Box, VStack } from '@utilitywarehouse/native-ui';
+import { StoryFn } from '@storybook/react';
 
-const VStackReversed = ({ space, ...props }: any) => {
+const VStackReversed: StoryFn<{
+  space: ComponentProps<typeof VStack>['space'];
+}> = ({ space, ...props }) => {
   return (
     <VStack space={space} mt="$5" {...props} reversed>
       <Box sx={{ w: 100, h: 100, rounded: '$sm', bg: '$cyan300' }} />

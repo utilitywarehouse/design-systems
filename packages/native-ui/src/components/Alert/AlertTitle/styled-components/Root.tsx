@@ -14,7 +14,7 @@ const AlertTitle = styled(
     descendantStyle: [],
     ancestorStyle: ['_text'],
   } as const
-) as React.ForwardRefExoticComponent<import('react-native').TextProps & {}> & {
+) as React.ForwardRefExoticComponent<import('react-native').TextProps & object> & {
   displayName: string;
 };
 
