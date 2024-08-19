@@ -16,6 +16,7 @@ documenting for others, thankyou!
 
 - [Typography component](#typography-component)
 - [Buttons size renaming](#buttons-size-renaming)
+- [Button component](#button-component)
 - [Link component](#link-component)
 - [TextLink component](#textlink-component)
 - [Deprecations](#deprecations)
@@ -128,10 +129,13 @@ There is a codemod available to support this change.
 The `Button` component has been compoletely rethought, with a new, more
 accessible visual design, and a clearer API design. It is also no longer built
 upon the `@mui/material` library. This redesign was available in `v0` through
-the `lab` subdirectory, and in this release we have moved `Link` out of `lab`,
-replacing the previous `Link` component.
+the `lab` subdirectory, and in this release we have moved `Button` out of `lab`,
+replacing the previous `Button` component.
 
-These are the significant API changes you should be aware of.
+There are codemods to support the following significant API changes, but you
+should still visually check all changes. Be aware that we have not addressed
+all the MUI props, or moving all HTML `a` attributes, so be prepared to
+manually check and update these as necessary.
 
 ### Size
 
@@ -139,8 +143,6 @@ These are the significant API changes you should be aware of.
 - The `medium` size remains, but the height of the button has changed, from 40px to 48px, the height for the legacy `large` button. Continue to use `medium`, but be aware that the height change may affect your layouts.
 - The `large` size has been removed for now. It will be reintroduced in the future, with the intention for it to match the height of other UI elements, such as inputs. Please use `medium` instead.
 - The default size value is `medium` in both the new and legacy `Button` components, so you will see a visual change if you have not explicitly specified a size.
-
-There are codemods to support these changes, but you should still visually check all changes.
 
 ```diff
 - <Button size="large">Button</Button>
@@ -153,9 +155,7 @@ There are codemods to support these changes, but you should still visually check
 - The `secondary` variant has been replaced with the `outline` variant.
 - A new `ghost` variant has been introduced.
 - The `tertiary` variant has been removed, and you should use the `Link` component instead. This will adhere to the visual changes, however you will need to consider what it is you are trying to achieve, and whether you need to render an HTML `button` element, or an `a` element. Please see the `Link` component docs for how to use the `asChild` prop, as it replaces the behaviour of the legacy `Button` when an `href` is included.
-- The default variant has changed from `primary` to `solid` so you do not need to make any changes if you have not explicitly specified a size.
-
-There are codemods to support these changes, but you should still visually check all changes.
+- The default variant has changed from `primary` to `solid` so you do not need to make any changes if you have not explicitly specified a variant.
 
 ```diff
 - <Button variant="primary">Button</Button>
@@ -189,16 +189,13 @@ specified. This behaviour has been removed as the polymorphism required added
 significant TypeScript overheads to implement. To recreate this behaviour
 please use the `asChild` prop instead.
 
-There are codemods to support these changes, but you should still manually
-check all changes.
-
 ```diff
 - <Button href="https://uw.co.uk/services">View UW services</Button>
-- <Button asChild>
--   <a href="https://uw.co.uk/services">
--     View UW services
--   </a>
-- </Button>
++ <Button asChild>
++   <a href="https://uw.co.uk/services">
++     View UW services
++   </a>
++ </Button>
 
 - <Button variant='primary' href="https://uw.co.uk/services">
 -   View UW services
