@@ -16,6 +16,7 @@ documenting for others, thankyou!
 
 - [Typography component](#typography-component)
 - [Buttons size renaming](#buttons-size-renaming)
+- [Button component](#button-component)
 - [Link component](#link-component)
 - [TextLink component](#textlink-component)
 - [Deprecations](#deprecations)
@@ -122,6 +123,111 @@ There is a codemod available to support this change.
 +   }}
 + ></IconButton>
 ```
+
+## Button component
+
+The `Button` component has been compoletely rethought, with a new, more
+accessible visual design, and a clearer API design. It is also no longer built
+upon the `@mui/material` library. This redesign was available in `v0` through
+the `lab` subdirectory, and in this release we have moved `Button` out of `lab`,
+replacing the previous `Button` component.
+
+There are codemods to support the following significant API changes, but you
+should still visually check all changes. Be aware that we have not addressed
+all the MUI props, or moving all HTML `a` attributes, so be prepared to
+manually check and update these as necessary.
+
+### Size
+
+- The `small` size, both name and appearance, remains the same.
+- The `medium` size remains, but the height of the button has changed, from 40px to 48px, the height for the legacy `large` button. Continue to use `medium`, but be aware that the height change may affect your layouts.
+- The `large` size has been removed for now. It will be reintroduced in the future, with the intention for it to match the height of other UI elements, such as inputs. Please use `medium` instead.
+- The default size value is `medium` in both the new and legacy `Button` components, so you will see a visual change if you have not explicitly specified a size.
+
+```diff
+- <Button size="large">Button</Button>
++ <Button size="medium">Button</Button>
+```
+
+### Variant
+
+- The `primary` variant has been replaced with the `solid` variant.
+- The `secondary` variant has been replaced with the `outline` variant.
+- A new `ghost` variant has been introduced.
+- The `tertiary` variant has been removed, and you should use the `Link` component instead. This will adhere to the visual changes, however you will need to consider what it is you are trying to achieve, and whether you need to render an HTML `button` element, or an `a` element. Please see the `Link` component docs for how to use the `asChild` prop, as it replaces the behaviour of the legacy `Button` when an `href` is included.
+- The default variant has changed from `primary` to `solid` so you do not need to make any changes if you have not explicitly specified a variant.
+
+```diff
+- <Button variant="primary">Button</Button>
++ <Button variant='solid'>Button</Button>
+- <Button variant="secondary">Button</Button>
++ <Button variant='outline'>Button</Button>
+
+// Please pay close attention when migrating `tertiary` buttons
+
+// render a `Link` with the `asChild` prop and a child `button` element if you
+// want to continue to render a semantic button
+- <Button variant="tertiary">Button</Button>
++ <Link asChild>
++   <button>Button</button>
++ </Link>
+
+// but replace the `Button` with `Link` if you are using the `href` prop
+- <Button variant="tertiary" href="https://uw.co.uk/services">
+-   Button
+- </Button>
++ <Link href="https://uw.co.uk/services">
++   Button
++ </Link>
+```
+
+### href prop
+
+As the legacy `Button` component was built on top of the `@mui/material`
+library it would render a semantic `a` element when an `href` prop was
+specified. This behaviour has been removed as the polymorphism required added
+significant TypeScript overheads to implement. To recreate this behaviour
+please use the `asChild` prop instead.
+
+```diff
+- <Button href="https://uw.co.uk/services">View UW services</Button>
++ <Button asChild>
++   <a href="https://uw.co.uk/services">
++     View UW services
++   </a>
++ </Button>
+
+- <Button variant='primary' href="https://uw.co.uk/services">
+-   View UW services
+- </Button>
++ <Button asChild variant='solid'>
++   <a href="https://uw.co.uk/services">
++     View UW services
++   </a>
++ </Button>
+
+- <Button variant="tertiary" href="https://uw.co.uk/services">
+-   View UW services
+- </Button>
++ <Link href="https://uw.co.uk/services">
++   View UW services
++ </Link>
+```
+
+### fullWidth prop
+
+The `fullWidth` prop has been removed, you should use layout components, like `Flex` instead.
+
+```diff
+// the legacy Button would have to use the `useMediaQuery` hook to achieve a responsive design
+- <Button fullWidth={isMobile ? true : false}>Button</Button>
++ <Flex direction="column" align={{ mobile: 'stretch', desktop: 'start' }}>
++   <Button>Responsive Button</Button>
++ </Flex>
+```
+
+Due to the nature of this change, we are unable to offer a codemod to support
+it so you will need to manually check and update any usage.
 
 ## Link component
 
@@ -279,6 +385,8 @@ Included codemods:
 - `update-lab-imports`
 - `rename-lab-button-size`
 - `rename-icon-button-size`
+- `typography-to-heading-and-text`
+- `migrate-button`
 
 Please make sure you fix any linting or formatting issues before continuing to
 run any further codemods.
@@ -350,4 +458,52 @@ npx @utilitywarehouse/ds-codemod web-ui/v1/typography-to-heading-and-text <path>
 + <Heading variant="h4">{content}</Heading>
 + <Text sx={{ marginBottom: '0.35em' }}>{content}</Text>
 + <Text component='p' sx={{ marginBottom: '16px' }}>{content}</Text>
+```
+
+### Migrate Button
+
+Migrates usage of the `Button` component to the new API.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/migrate-button <path>
+```
+
+```diff
+- <Button size="large">Button</Button>
++ <Button size="medium">Button</Button>
+- <Button variant="primary">Button</Button>
++ <Button variant='solid'>Button</Button>
+- <Button variant="secondary">Button</Button>
++ <Button variant='outline'>Button</Button>
+- <Button variant="tertiary">Button</Button>
++ <Link asChild>
++   <button>Button</button>
++ </Link>
+- <Button variant="tertiary" href="https://uw.co.uk/services">
+-   Button
+- </Button>
++ <Link href="https://uw.co.uk/services">
++   Button
++ </Link>
+- <Button href="https://uw.co.uk/services">View UW services</Button>
+- <Button asChild>
+-   <a href="https://uw.co.uk/services">
+-     View UW services
+-   </a>
+- </Button>
+
+- <Button variant='primary' href="https://uw.co.uk/services">
+-   View UW services
+- </Button>
++ <Button asChild variant='solid'>
++   <a href="https://uw.co.uk/services">
++     View UW services
++   </a>
++ </Button>
+- <Button variant="tertiary" href="https://uw.co.uk/services">
+-   View UW services
+- </Button>
++ <Link href="https://uw.co.uk/services">
++   View UW services
++ </Link>
 ```
