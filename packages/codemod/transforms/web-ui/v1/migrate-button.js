@@ -121,6 +121,38 @@ function transformer(file, api) {
     }
   });
 
+  // update Buttons that have an href
+  webUIButtons.forEach(path => {
+    // get variant
+    const buttonHasHrefProp = hasHrefProp(path);
+    const buttonVariant = getVariantPropValue(path);
+    if (buttonHasHrefProp && buttonVariant !== 'tertiary') {
+      // get children
+      const children = path.node.children;
+      // get props
+      const props = path.value.openingElement.attributes;
+      const hrefProp = props.filter(prop => prop.name.name === 'href');
+
+      // create new a tag
+      const newChildElement = j.jsxElement(
+        // with href prop (any other a tag props will have to be moved manually)
+        j.jsxOpeningElement(j.jsxIdentifier('a'), [...hrefProp]),
+        j.jsxClosingElement(j.jsxIdentifier('a')),
+        [...children]
+      );
+      const wrappedAvatar = j.jsxElement(
+        j.jsxOpeningElement(j.jsxIdentifier('Button'), [
+          // add asChild prop and all other props except href
+          j.jsxAttribute(j.jsxIdentifier('asChild')),
+          ...props.filter(prop => prop.name.name !== 'href'),
+        ]),
+        j.jsxClosingElement(j.jsxIdentifier('Button')),
+        [newChildElement]
+      );
+      j(path).replaceWith(wrappedAvatar);
+    }
+  });
+
   // If the first node has been modified or deleted, reattach the comments
   const firstNode2 = getFirstNode();
   if (firstNode2 !== firstNode) {

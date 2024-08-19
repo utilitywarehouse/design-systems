@@ -5,6 +5,7 @@ import { Button, Box } from '@utilitywarehouse/web-ui';
 const Component = () => (
   <Box>
     <Button href="https://uw.co.uk/services">View UW services</Button>
+    <Button variant='primary' href="https://uw.co.uk/services">View UW services</Button>
     <Button variant="tertiary" href="https://uw.co.uk/services">
       View UW services
     </Button>
