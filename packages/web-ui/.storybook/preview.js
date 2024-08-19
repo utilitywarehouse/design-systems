@@ -47,7 +47,7 @@ const preview = {
       storySort: {
         order: [
           'Web UI',
-          ['Introduction', 'Guides', 'Tokens', 'Layout', 'Typography', 'Components', 'Lab'],
+          ['Introduction', 'Guides', 'Helpers', 'Layout', 'Typography', 'Components', 'Lab'],
           'CSS Reset',
           'Colour System',
           ['Introduction', 'Common', 'Colors'],
