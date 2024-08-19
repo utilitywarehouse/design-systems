@@ -7,7 +7,7 @@ function transformer(file, api) {
   const firstNode = getFirstNode();
   const { comments } = firstNode;
 
-  const components = ['Link', 'TextLink'];
+  const components = ['Link', 'TextLink', 'Button'];
   const localComponents = [];
 
   root

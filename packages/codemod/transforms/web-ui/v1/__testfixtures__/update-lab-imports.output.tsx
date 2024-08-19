@@ -1,6 +1,6 @@
 // this is a comment at the beginning of the file
 import * as React from 'react';
-import { Link, TextLink } from '@utilitywarehouse/web-ui';
+import { Link, TextLink, Button } from '@utilitywarehouse/web-ui';
 
 const Component = () => (
   <div>
@@ -8,6 +8,7 @@ const Component = () => (
     <TextLink>Hamburgefons</TextLink>
     <Link size='small'>Hamburgefons</Link>
     <Link size='large'>Hamburgefons</Link>
+    <Button>Hamburgefons</Button>
   </div>
 );
 
