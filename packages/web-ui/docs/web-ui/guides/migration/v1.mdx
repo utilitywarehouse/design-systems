@@ -105,8 +105,8 @@ structure your layouts using the layout components, such as `Box`, `Flex`,
 `Stack`, `Grid`, and to a lesser extent `Spacer`. However the codemod will
 transform these props, as follows:
 
-- 'gutterBottom' -> `sx={{ marginBottom: '0.35em' }}`
-- 'paragraph' -> `component="p"` and `sx={{ marginBottom: '16px' }}`
+- `gutterBottom` -> `sx={{ marginBottom: '0.35em' }}`
+- `paragraph` -> `component="p"` and `sx={{ marginBottom: '16px' }}`
 
 In place of the `fontWeight` prop, on `Text` components you can use the `bold`
 boolean prop, or, when appropriate, use the `Strong` component.
@@ -450,8 +450,8 @@ Updates usage of the `Typography` component to the `Heading` & `Text` components
 
 Also transforms the following removed props:
 
-- 'gutterBottom' -> `sx={{ marginBottom: '0.35em' }}`
-- 'paragraph' -> `component="p"` and `sx={{ marginBottom: '16px' }}`
+- `gutterBottom` -> `sx={{ marginBottom: '0.35em' }}`
+- `paragraph` -> `component="p"` and `sx={{ marginBottom: '16px' }}`
 
 Please note that this may cause your components to have duplicate `sx` props,
 which you will need to manually combine.
