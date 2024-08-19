@@ -3,8 +3,12 @@ import { TypographyOptions, TypographyUtils } from '@mui/material/styles/createT
 import { Fonts, FontWeights } from '../tokens';
 import { customPalette } from '../theme';
 
-// TODO: v1 see https://linear.app/utilitywarehouse/issue/UWDS-1082/refactor-types
-interface CustomTypography extends TypographyUtils, Omit<TypographyOptions, 'fontFamily'> {
+interface CustomTypography
+  extends TypographyUtils,
+    Omit<
+      TypographyOptions,
+      'fontFamily' | 'fontWeightBold' | 'fontWeightLight' | 'fontWeightMedium' | 'fontWeightRegular'
+    > {
   fontFamily: Fonts;
   fontWeights: FontWeights;
 }
