@@ -119,13 +119,7 @@ function transformer(file, api) {
         return path;
       }
     }
-  });
-
-  // update Buttons that have an href
-  webUIButtons.forEach(path => {
-    // get variant
-    const buttonHasHrefProp = hasHrefProp(path);
-    const buttonVariant = getVariantPropValue(path);
+    // update non-tertiary variant Buttons that have an href
     if (buttonHasHrefProp && buttonVariant !== 'tertiary') {
       // get children
       const children = path.node.children;
@@ -150,6 +144,7 @@ function transformer(file, api) {
         [newChildElement]
       );
       j(path).replaceWith(wrappedAvatar);
+      return path;
     }
   });
 
