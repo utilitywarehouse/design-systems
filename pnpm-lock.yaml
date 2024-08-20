@@ -144,6 +144,9 @@ importers:
       react-native-svg:
         specifier: ^15.2.0
         version: 15.2.0(react-native@0.74.2)(react@18.2.0)
+      react-native-unistyles:
+        specifier: ^2.9.1
+        version: 2.9.1(@react-native/normalize-colors@0.74.84)(react-native-web@0.19.11)(react-native@0.74.2)(react@18.2.0)
       react-native-web:
         specifier: ~0.19.11
         version: 0.19.11(react-dom@18.2.0)(react@18.2.0)
@@ -311,7 +314,7 @@ importers:
         version: 1.0.4(@gluestack-style/react@1.0.56)
       '@gluestack-style/legend-motion-animation-driver':
         specifier: ^1.0.3
-        version: 1.0.3(@gluestack-style/react@1.0.56)(@legendapp/motion@2.3.0)
+        version: 1.0.3(@gluestack-style/react@1.0.56)(@legendapp/motion@2.4.0)
       '@gluestack-style/react':
         specifier: 1.0.56
         version: 1.0.56
@@ -5574,14 +5577,14 @@ packages:
       '@gluestack-style/react': 1.0.56
     dev: false
 
-  /@gluestack-style/legend-motion-animation-driver@1.0.3(@gluestack-style/react@1.0.56)(@legendapp/motion@2.3.0):
+  /@gluestack-style/legend-motion-animation-driver@1.0.3(@gluestack-style/react@1.0.56)(@legendapp/motion@2.4.0):
     resolution: {integrity: sha512-sD6aFS6Tq5XpyjrboFEIc8LrRY4TA4kodFYHzk6mDchvbkdLODijtjnaDQB1UqihOkMRg49e7ANRAOzc7eymaQ==}
     peerDependencies:
       '@gluestack-style/react': '>=1.0.27'
       '@legendapp/motion': '>=2.2'
     dependencies:
       '@gluestack-style/react': 1.0.56
-      '@legendapp/motion': 2.3.0(nativewind@2.0.11)(react-native@0.74.1)(react@18.2.0)
+      '@legendapp/motion': 2.4.0(nativewind@2.0.11)(react-native@0.74.1)(react@18.2.0)
     dev: false
 
   /@gluestack-style/react@1.0.56:
@@ -6067,7 +6070,7 @@ packages:
     dependencies:
       '@expo/html-elements': 0.10.1
       '@gluestack-style/animation-resolver': 1.0.4(@gluestack-style/react@1.0.56)
-      '@gluestack-style/legend-motion-animation-driver': 1.0.3(@gluestack-style/react@1.0.56)(@legendapp/motion@2.3.0)
+      '@gluestack-style/legend-motion-animation-driver': 1.0.3(@gluestack-style/react@1.0.56)(@legendapp/motion@2.4.0)
       '@gluestack-style/react': 1.0.56
       '@gluestack-ui/accordion': 1.0.4(react-dom@18.2.0)(react-native@0.74.1)(react@18.2.0)
       '@gluestack-ui/actionsheet': 0.2.41(react-dom@18.2.0)(react-native@0.74.1)(react@18.2.0)
@@ -6099,7 +6102,7 @@ packages:
       '@gluestack-ui/textarea': 0.1.21(react-dom@18.2.0)(react-native@0.74.1)(react@18.2.0)
       '@gluestack-ui/toast': 1.0.4(react-dom@18.2.0)(react-native@0.74.1)(react@18.2.0)
       '@gluestack-ui/tooltip': 0.1.30(react-dom@18.2.0)(react-native@0.74.1)(react@18.2.0)
-      '@legendapp/motion': 2.3.0(nativewind@2.0.11)(react-native@0.74.1)(react@18.2.0)
+      '@legendapp/motion': 2.4.0(nativewind@2.0.11)(react-native@0.74.1)(react@18.2.0)
       '@types/react-native': 0.73.0(@babel/preset-env@7.24.4)(@types/react@18.2.79)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -6536,10 +6539,10 @@ packages:
   /@juggle/resize-observer@3.4.0:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
 
-  /@legendapp/motion@2.3.0(nativewind@2.0.11)(react-native@0.74.1)(react@18.2.0):
-    resolution: {integrity: sha512-LtTD06eyz/Ge23FAR6BY+i9Gsgr/ZgxE12FneML8LrZGcZOSPN2Ojz3N2eJaTiA50kqoeqrGCaYJja8KgKpL6Q==}
+  /@legendapp/motion@2.4.0(nativewind@2.0.11)(react-native@0.74.1)(react@18.2.0):
+    resolution: {integrity: sha512-AAYpRLGvxGD5hIGl9sVHyoUufr66zoH82PuxYcKiPSMdCBI3jwZFWh6CuHjV1leRKVIRk2py1rSvIVabG8eqcw==}
     peerDependencies:
-      nativewind: ^2.0.0
+      nativewind: '*'
       react: '>=16'
       react-native: '*'
     dependencies:
@@ -10770,10 +10773,10 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.3.0-alpha.6(storybook@7.6.17):
-    resolution: {integrity: sha512-RAZBKW6sMa4ZBXKwCaKkZs9mCIdr+rGhT60wel/OJztUkMcExcOelXKcmrtgI+fwXssukqvIB5OtUr2SpQJsGA==}
+  /@storybook/client-logger@8.3.0-alpha.7(storybook@7.6.17):
+    resolution: {integrity: sha512-cTatL/mCzsjATzgKtGHXBmU6c/GtyL8+9iwBk2rMBGQp2V8C2+RroGQuEnOoXIDimK4leKehY2/yuRr1SM8JYg==}
     peerDependencies:
-      storybook: ^8.3.0-alpha.6
+      storybook: ^8.3.0-alpha.7
     dependencies:
       storybook: 7.6.17
     dev: true
@@ -11121,10 +11124,10 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.3.0-alpha.6(storybook@7.6.17):
-    resolution: {integrity: sha512-poYWiXAGg6UG8Ztr4Ld9ytAlmQNzFxcahzaId8jPAhEs8Yjl1axDiv4fr/Az9gzXKHumPsqcoQBJUYwaHq4rGQ==}
+  /@storybook/instrumenter@8.3.0-alpha.7(storybook@7.6.17):
+    resolution: {integrity: sha512-aWqhsKv2gTenW2fU6mhl5GYddZW86aTQThx3qO0ynOqGUD14Qh91kgbEATRXC+jLhOePg+103eEagu9HuAkHJw==}
     peerDependencies:
-      storybook: ^8.3.0-alpha.6
+      storybook: ^8.3.0-alpha.7
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.0.5
@@ -11769,8 +11772,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1(storybook@7.6.17):
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.3.0-alpha.6(storybook@7.6.17)
-      '@storybook/instrumenter': 8.3.0-alpha.6(storybook@7.6.17)
+      '@storybook/client-logger': 8.3.0-alpha.7(storybook@7.6.17)
+      '@storybook/instrumenter': 8.3.0-alpha.7(storybook@7.6.17)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
@@ -20890,6 +20893,30 @@ packages:
       '@react-native/normalize-colors': 0.74.84
       react: 18.2.0
       react-native: 0.74.1(@babel/preset-env@7.24.4)(@types/react@18.2.79)(react@18.2.0)
+      react-native-web: 0.19.11(react-dom@18.2.0)(react@18.2.0)
+    dev: false
+
+  /react-native-unistyles@2.9.1(@react-native/normalize-colors@0.74.84)(react-native-web@0.19.11)(react-native@0.74.2)(react@18.2.0):
+    resolution: {integrity: sha512-MG+yPPHEvDuGJgXWoIEm9NcA3BEo4hK2wigvN5W4tCN8CwWwQHv4JyBBGXvF0RCQZq8qwPcfGQBdfEkfjURamA==}
+    engines: {node: '>= 18.0.0'}
+    peerDependencies:
+      '@react-native/normalize-colors': '*'
+      react: '*'
+      react-native: '*'
+      react-native-macos: '*'
+      react-native-web: '*'
+      react-native-windows: '*'
+    peerDependenciesMeta:
+      react-native-macos:
+        optional: true
+      react-native-web:
+        optional: true
+      react-native-windows:
+        optional: true
+    dependencies:
+      '@react-native/normalize-colors': 0.74.84
+      react: 18.2.0
+      react-native: 0.74.2(@babel/core@7.24.5)(@types/react@18.2.79)(react@18.2.0)
       react-native-web: 0.19.11(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
