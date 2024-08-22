@@ -165,3 +165,15 @@ export const AsButton: Story = {
     </Flex>
   ),
 };
+
+export const LengthyContent: Story = {
+  render: args => (
+    <Flex width={800}>
+      <Text>
+        To limit spend on international calls, turn on Budget Control and then{' '}
+        <TextLink {...args}>{args.children}</TextLink>
+      </Text>
+    </Flex>
+  ),
+  args: { children: 'follow our handy guide to set your International call cap.' },
+};
