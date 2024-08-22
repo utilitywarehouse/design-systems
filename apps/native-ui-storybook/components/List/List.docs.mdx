@@ -59,6 +59,7 @@ List item is the main building block of list. Each item has its own set of prope
   - [List Item with Badge](#list-item-with-badge)
   - [Checbox List](#checbox-list)
   - [Radio List](#radio-list)
+  - [Switch List](#switch-list)
   - [List with FlatList](#list-with-flatlist)
 
 ## Playground
@@ -162,7 +163,7 @@ If you need to use the List component in a more advanced way, you can use the pa
       <ListHeading text="Your account" supportingText="Tap the links below to view your account" />
       <ListItem onPress={() => console.log('pressed')} divider>
         <ListItemLeadingContent>
-          <ListItemIcon as={BillMediumIcon} color="$pink300" />
+          <ListItemIcon as={BillMediumIcon} />
         </ListItemLeadingContent>
         <ListItemContent>
           <ListItemText>Bills</ListItemText>
@@ -174,7 +175,7 @@ If you need to use the List component in a more advanced way, you can use the pa
       </ListItem>
       <ListItem onPress={() => console.log('pressed')} divider>
         <ListItemLeadingContent>
-          <ListItemIcon as={PaymentMediumIcon} color="$pink300" />
+          <ListItemIcon as={PaymentMediumIcon} />
         </ListItemLeadingContent>
         <ListItemContent>
           <ListItemText>Payments</ListItemText>
@@ -186,7 +187,7 @@ If you need to use the List component in a more advanced way, you can use the pa
       </ListItem>
       <ListItem onPress={() => console.log('pressed')} divider>
         <ListItemLeadingContent>
-          <ListItemIcon as={HomeMediumIcon} color="$pink300" />
+          <ListItemIcon as={HomeMediumIcon} />
         </ListItemLeadingContent>
         <ListItemContent>
           <ListItemText>Moving home</ListItemText>
@@ -198,7 +199,7 @@ If you need to use the List component in a more advanced way, you can use the pa
       </ListItem>
       <ListItem onPress={() => console.log('pressed')}>
         <ListItemLeadingContent>
-          <ListItemIcon as={UserMediumIcon} color="$pink300" />
+          <ListItemIcon as={UserMediumIcon} />
         </ListItemLeadingContent>
         <ListItemContent>
           <ListItemText>Refer a friend</ListItemText>
@@ -306,8 +307,12 @@ parts like `ListItemLeadingContent`, `ListItemContent`, and `ListItemTrailingCon
     <List>
       <ListItem onPress={() => console.log('pressed')} divider>
         <ListItemLeadingContent>
-          <Box padding="$3" borderRadius="$lg" bg="$apple50">
-            <ListItemIcon as={ElectricityMediumIcon} color="$apple800" />
+          <Box padding="$3" borderRadius="$lg" bg="$apple50" $dark-bg="$darkApple800">
+            <ListItemIcon
+              as={ElectricityMediumIcon}
+              color="$apple800"
+              $dark-color="$darkApple200"
+            />
           </Box>
         </ListItemLeadingContent>
         <ListItemContent>
@@ -323,8 +328,8 @@ parts like `ListItemLeadingContent`, `ListItemContent`, and `ListItemTrailingCon
       </ListItem>
       <ListItem onPress={() => console.log('pressed')} divider={false}>
         <ListItemLeadingContent>
-          <Box padding="$3" borderRadius="$lg" bg="$apple50">
-            <ListItemIcon as={GasMediumIcon} color="$apple800" />
+          <Box padding="$3" borderRadius="$lg" bg="$apple50" $dark-bg="$darkApple800">
+            <ListItemIcon as={GasMediumIcon} color="$apple800" $dark-color="$darkApple200" />
           </Box>
         </ListItemLeadingContent>
         <ListItemContent>
@@ -366,8 +371,8 @@ const MyComponent = () => (
   <List>
     <ListItem onPress={() => console.log('pressed')} divider>
       <ListItemLeadingContent>
-        <Box padding="$3" borderRadius="$lg" bg="$apple50">
-          <ListItemIcon as={ElectricityMediumIcon} color="$apple800" />
+        <Box padding="$3" borderRadius="$lg" bg="$apple50" $dark-bg="$darkApple800">
+          <ListItemIcon as={ElectricityMediumIcon} color="$apple800" $dark-color="$darkApple200" />
         </Box>
       </ListItemLeadingContent>
       <ListItemContent>
@@ -383,8 +388,8 @@ const MyComponent = () => (
     </ListItem>
     <ListItem onPress={() => console.log('pressed')} divider={false}>
       <ListItemLeadingContent>
-        <Box padding="$3" borderRadius="$lg" bg="$apple50">
-          <ListItemIcon as={GasMediumIcon} color="$apple800" />
+        <Box padding="$3" borderRadius="$lg" bg="$apple50" $dark-bg="$darkApple800">
+          <ListItemIcon as={GasMediumIcon} color="$apple800" $dark-color="$darkApple200" />
         </Box>
       </ListItemLeadingContent>
       <ListItemContent>
@@ -509,10 +514,12 @@ import {
   RadioIndicator,
   Image,
   Box,
+  useColorMode,
 } from '@utilitywarehouse/native-ui';
 
 const RadioList = () => {
   const [value, setValue] = React.useState<string>();
+  const colorMode = useColorMode();
 
   const handlePress = (item: string) => {
     setValue(item);
@@ -520,14 +527,19 @@ const RadioList = () => {
   return (
     <RadioGroup aria-label="Radio Group" nativeID="Radio-group" value={value}>
       <List container="card">
-        <Box borderRadius="$xl" backgroundColor="$grey25" overflow="hidden">
+        <Box
+          borderRadius="$xl"
+          backgroundColor="$white"
+          $dark-backgroundColor="$darkGrey175"
+          overflow="hidden"
+        >
           <ListItem
             text="**** 5016"
             supportingText="Expires 12/24"
             divider
             leadingContent={
               <Image
-                source={{ uri: '/images/paymentMethods/visa/cardLight.svg' }}
+                source={{ uri: `/images/paymentMethods/visa/card${capitalize(colorMode)}.svg` }}
                 width={56}
                 height={42}
               />
@@ -544,7 +556,9 @@ const RadioList = () => {
             supportingText="Expires 04/27"
             leadingContent={
               <Image
-                source={{ uri: '/images/paymentMethods/mastercard/cardLight.svg' }}
+                source={{
+                  uri: `/images/paymentMethods/mastercard/card${capitalize(colorMode)}.svg`,
+                }}
                 width={56}
                 height={42}
               />
@@ -562,7 +576,9 @@ const RadioList = () => {
             supportingText="Expires 06/25"
             leadingContent={
               <Image
-                source={{ uri: '/images/paymentMethods/mastercard/cardLight.svg' }}
+                source={{
+                  uri: `/images/paymentMethods/mastercard/card${capitalize(colorMode)}.svg`,
+                }}
                 width={56}
                 height={42}
               />
@@ -582,6 +598,12 @@ const RadioList = () => {
 ```
 
 For more information on the `Checbox` component, see the [`Checkbox` component documentation](/docs/native-ui-components-checkbox--docs).
+
+### Switch List
+
+You can also use the list to display a list of switches. You can achieve this by using the `Switch` component as the `trailingContent` of the `ListItem`.
+
+> The switch component isn't built yet. Example coming soon.
 
 ### List with FlatList
 
