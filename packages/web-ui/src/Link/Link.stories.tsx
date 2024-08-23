@@ -123,3 +123,15 @@ export const FullWidth: Story = {
   ),
   args: { children: 'Full width link with icon' },
 };
+
+export const LengthyContent: Story = {
+  render: args => (
+    <Flex width={800}>
+      <Link {...args}>{args.children}</Link>
+    </Flex>
+  ),
+  args: {
+    children:
+      'Agnes Bernice Martin was an American abstract painter known for her minimalist style and abstract expressionism.',
+  },
+};

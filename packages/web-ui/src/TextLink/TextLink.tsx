@@ -28,11 +28,13 @@ const StyledElement = styled('a', {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   textTransform: textTransform as any,
   cursor: 'pointer',
-  display: 'inline-flex',
-  alignItems: 'center',
-  textAlign: 'center',
-  flexShrink: 0,
-  gap: px(spacing(0.5)),
+  display: 'inline',
+  ':has(svg, [data-icon])': {
+    display: 'inline-flex',
+    alignItems: 'center',
+    flexShrink: 0,
+    gap: px(spacing(0.5)),
+  },
   fontFamily: 'inherit',
   fontSize: 'inherit',
   lineHeight: 'inherit',

@@ -16,7 +16,7 @@ import { DocsHeader } from '../storybook-utils';
 - [Semantic HTML](#semantic-html)
 - [Guidelines](#guidelines)
 - [Size](#size)
-- [With icons](#with-icons)
+- [Icons](#icons)
 - [Full Width Link](#full-width-link)
 - [Usage with Next.js](#usage-with-next.js)
   - [Next.js v13](#next.js-v13)
@@ -77,12 +77,12 @@ can be used to display different sizes at different breakpoints.
 />
 ```
 
-## With icons
+## Icons
 
 You can nest icons directly inside the `Link`. An appropriate gap is provided
 automatically, and the icon will inherit the appropriate colours.
 
-This button is intended to be used with the [UW Icons](https://uw-icons.vercel.app/) packages.
+This component is intended to be used with the [UW Icons](https://uw-icons.vercel.app/) packages.
 Small links should use 16px icons (small), while large links should use 24px
 icons (medium).
 
@@ -94,6 +94,20 @@ icons (medium).
 ```
 
 <Canvas of={Stories.WithIcons} />
+
+Icons from the UW icons packages have `aria-hidden="true"` set by default. If
+you are using an icon, in the `Link` component, from outside these
+packages, and for purely decorative reasons, please ensure it has this
+attribute set so that the icon is hidden from screen readers. You should also
+add the `data-icon` attribute to your icon so that it renders the appropriate
+styles.
+
+```tsx
+<Link>
+  <MyFontIcon aria-hidden="true" data-icon />
+  Edit account
+</Link>
+```
 
 ## Full Width Link
 
