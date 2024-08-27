@@ -22,6 +22,8 @@
     "@gluestack-style/animation-resolver": "^1.0.4",
     "@gluestack-style/legend-motion-animation-driver": "^1.0.3",
     "@gluestack-style/react": "1.0.56",
+    "@gluestack-ui/alert": "^0.1.15",
+    "@gluestack-ui/icon": "^0.1.22",
     "@gluestack-ui/themed": "1.1.26",
     "@utilitywarehouse/colour-system": "workspace:^",
     "@utilitywarehouse/react-native-icons": "1.6.0",

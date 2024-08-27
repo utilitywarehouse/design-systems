@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import BadgeProps from './Badge.props';
+import type BadgeProps from './Badge.props';
 
 export const BadgeContext = React.createContext<{
   colorScheme?: BadgeProps['colorScheme'];

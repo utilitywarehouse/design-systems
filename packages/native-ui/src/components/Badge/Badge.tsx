@@ -1,5 +1,5 @@
 import React from 'react';
-import BadgeProps from './Badge.props';
+import type BadgeProps from './Badge.props';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { View } from 'react-native';
 import { BadgeContext } from './Badge.context';

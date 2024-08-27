@@ -17,7 +17,6 @@ export {
   View,
   SectionList,
 } from '@gluestack-ui/themed';
-export { AlertIcon, AlertText } from '@gluestack-ui/themed';
 
 export { BadgeIcon } from '@gluestack-ui/themed';
 export { Heading } from '@gluestack-ui/themed';

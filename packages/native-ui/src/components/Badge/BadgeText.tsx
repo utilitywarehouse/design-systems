@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 import type { TextProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { useBadgeContext } from './Badge.context';
-import BadgeProps from './Badge.props';
+import type BadgeProps from './Badge.props';
 
 const BadgeText: React.FC<TextProps> = ({ children, style, ...props }) => {
   const { colorScheme, strong } = useBadgeContext();
