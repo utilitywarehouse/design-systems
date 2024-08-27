@@ -2,11 +2,13 @@
 export * from './IconButton';
 export * from './Alert';
 export { default as AnimatedOutline } from './AnimatedOutline';
-export { default as CheckboxIndicator } from './CheckboxIndicator';
 export { default as RadioIndicator } from './RadioIndicator';
 export * from './Button';
 export * from './Spinner';
+export * from './List';
+export * from './Skeleton';
 export * from './Badge';
+export * from './Checkbox';
 
 // Gluestack UI
 export {

@@ -2,4 +2,4 @@
 '@utilitywarehouse/native-ui': patch
 ---
 
-Simplified `Badge` API
+Update Gluestack dependencies

@@ -10,20 +10,15 @@ export const CheckboxIndicator = createStyle({
   borderRadius: 4,
   borderWidth: 2,
 
-  _web: {
-    ':focusVisible': {
-      outlineWidth: '2px',
-      outlineColor: '$cyan700',
-      outlineStyle: 'solid',
-      _dark: {
-        outlineColor: '$darkCyan500',
-      },
-    },
-  },
-
   ':checked': {
     borderColor: '$cyan500',
     bg: '$cyan500',
+
+    _icon: {
+      props: {
+        color: '$brandWhite',
+      },
+    },
   },
 
   ':hover': {

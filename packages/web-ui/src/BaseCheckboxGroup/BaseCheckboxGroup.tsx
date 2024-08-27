@@ -7,7 +7,6 @@ import { Flex } from '../Flex';
 import { mergeIds } from '../utils';
 import { useIds } from '../hooks';
 import { BaseCheckboxGroupProps } from './BaseCheckboxGroup.props';
-import { CheckboxGroupProps } from '../CheckboxGroup';
 import { BaseCheckboxGroupProvider } from './BaseCheckboxGroup.context';
 
 const componentName = 'BaseCheckboxGroup';
@@ -133,4 +132,3 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
 BaseCheckboxGroup.displayName = componentName;
 
 export { BaseCheckboxGroup };
-export type { CheckboxGroupProps };
