@@ -1,5 +1,15 @@
 # @utilitywarehouse/native-ui
 
+## 0.3.0
+
+### Minor Changes
+
+- [#446](https://github.com/utilitywarehouse/design-systems/pull/446) [`9748b7bb`](https://github.com/utilitywarehouse/design-systems/commit/9748b7bbf4cbe5733c9c21c8d2292433b675a31e) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `List`, `ListHeading`, `ListItem` and `Skeleton` components
+
+### Patch Changes
+
+- [#446](https://github.com/utilitywarehouse/design-systems/pull/446) [`9748b7bb`](https://github.com/utilitywarehouse/design-systems/commit/9748b7bbf4cbe5733c9c21c8d2292433b675a31e) Thanks [@jordmccord](https://github.com/jordmccord)! - Update Gluestack dependencies
+
 ## 0.2.4
 
 ### Patch Changes

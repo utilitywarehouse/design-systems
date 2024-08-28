@@ -1,14 +1,16 @@
 import React from 'react';
 import { RadioIcon, RadioIndicator as GSRadioIndicator, CircleIcon } from '@gluestack-ui/themed';
 import AnimatedOutline from '../AnimatedOutline';
+import { useListContext } from '../List';
 
 type RadioIndicatorProps = React.ComponentProps<typeof GSRadioIndicator>;
 
 const RadioIndicator: React.FC<RadioIndicatorProps> = props => {
   const [show, setShow] = React.useState(false);
+  const isInList = Boolean(useListContext());
 
   return (
-    <AnimatedOutline show={show}>
+    <AnimatedOutline show={isInList ? false : show}>
       <GSRadioIndicator
         {...props}
         onTouchStart={() => setShow(true)}
