@@ -21,6 +21,35 @@ function transformer(file, api) {
   const hasHrefProp = path =>
     path.value.openingElement.attributes.map(attr => attr.name.name).includes('href');
 
+  const addLinkImport = () => {
+    // add Link import
+    // Finding all Web UI import declarations
+    const webUiImports = root
+      .find(j.ImportDeclaration)
+      .filter(path => path.node.source.value === '@utilitywarehouse/web-ui');
+
+    // Build our new import specifier
+    const importSpecifier = j.importSpecifier(j.identifier('Link'));
+
+    // Iterate over Web UI imports
+    webUiImports.forEach((webUiImport, i) => {
+      // we only want to do this to 1 Web UI import, just in case there is multiple
+      if (i > 0) return;
+      // we only want to add `Link` once
+      if (webUiImport.node.specifiers.map(specifier => specifier.imported.name).includes('Link')) {
+        return;
+      }
+      // Replace the existing node with a new one
+      j(webUiImport).replaceWith(
+        // Build a new import declaration node based on the existing one
+        j.importDeclaration(
+          [...webUiImport.node.specifiers, importSpecifier], // Insert our new import specificer
+          webUiImport.node.source
+        )
+      );
+    });
+  };
+
   // update sizes
   webUIButtons
     .find(j.JSXAttribute, { name: { type: 'JSXIdentifier', name: 'size' } })
@@ -66,6 +95,8 @@ function transformer(file, api) {
         path.value.openingElement.attributes = path.value.openingElement.attributes.filter(
           attr => attr.name.name !== 'variant'
         );
+
+        addLinkImport();
       } else {
         // change to button
         path.value.openingElement.name = 'button';
@@ -87,34 +118,7 @@ function transformer(file, api) {
         );
         j(path).replaceWith(wrappedButton);
 
-        // add Link import
-        // Finding all Web UI import declarations
-        const webUiImports = root
-          .find(j.ImportDeclaration)
-          .filter(path => path.node.source.value === '@utilitywarehouse/web-ui');
-
-        // Build our new import specifier
-        const importSpecifier = j.importSpecifier(j.identifier('Link'));
-
-        // Iterate over Web UI imports
-        webUiImports.forEach((webUiImport, i) => {
-          // we only want to do this to 1 Web UI import, just in case there is multiple
-          if (i > 0) return;
-          // we only want to add `Link` once
-          if (
-            webUiImport.node.specifiers.map(specifier => specifier.imported.name).includes('Link')
-          ) {
-            return;
-          }
-          // Replace the existing node with a new one
-          j(webUiImport).replaceWith(
-            // Build a new import declaration node based on the existing one
-            j.importDeclaration(
-              [...webUiImport.node.specifiers, importSpecifier], // Insert our new import specificer
-              webUiImport.node.source
-            )
-          );
-        });
+        addLinkImport();
 
         return path;
       }
