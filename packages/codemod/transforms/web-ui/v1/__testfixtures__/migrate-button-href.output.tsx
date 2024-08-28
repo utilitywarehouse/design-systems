@@ -1,6 +1,6 @@
 // this is a comment at the beginning of the file
 import * as React from 'react';
-import { Button, Box } from '@utilitywarehouse/web-ui';
+import { Button, Box, Link } from '@utilitywarehouse/web-ui';
 
 const Component = () => (
   <Box>
