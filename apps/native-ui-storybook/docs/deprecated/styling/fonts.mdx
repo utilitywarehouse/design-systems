@@ -1,8 +1,16 @@
 import { Meta, Canvas } from '@storybook/blocks';
-import BackToTopButton from '../../../components/BackToTopButton';
-import { Center, NativeUIProvider, Box, Text } from '@utilitywarehouse/native-ui';
+import BackToTopButton from '../../components/BackToTopButton';
+import { Center, NativeUIProvider, Box, Text, Alert } from '@utilitywarehouse/native-ui';
 
-<Meta title="Native UI / Guides / Styling / Fonts" />
+<NativeUIProvider>
+  <Box mb="$4">
+    <Alert
+      colorScheme="gold"
+      title="Warning"
+      text="This document is now deprecated and will be removed in the next major release."
+    />
+  </Box>
+</NativeUIProvider>
 
 <BackToTopButton />
 

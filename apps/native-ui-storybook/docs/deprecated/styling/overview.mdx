@@ -1,6 +1,15 @@
 import { Meta } from '@storybook/blocks';
+import { Center, NativeUIProvider, Box, Alert } from '@utilitywarehouse/native-ui';
 
-<Meta title="Native UI / Guides / Styling / Overview" />
+<NativeUIProvider>
+  <Box mb="$4">
+    <Alert
+      colorScheme="gold"
+      title="Warning"
+      text="This document is now deprecated and will be removed in the next major release."
+    />
+  </Box>
+</NativeUIProvider>
 
 ## Styling Overview
 
