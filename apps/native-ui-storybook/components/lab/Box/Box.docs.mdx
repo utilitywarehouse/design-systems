@@ -1,0 +1,52 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as BoxStories from './Box.stories';
+import { Text, NativeUIProvider, Center } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
+import { colors } from '@utilitywarehouse/colour-system';
+
+<Meta of={BoxStories} />
+
+# Box
+
+If you're looking for a flexible component to help with low-level layout needs, the Box component might be just what you need. With its customisable styles and props, it can be used to create a wide range of UI elements, from simple containers to complex layout structures.
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Box p={12} m={16} bg={colors.grey100} borderRadius={8} w={200} alignItems="center">
+        <Text>Hello, world!</Text>
+      </Box>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```jsx
+import { Box, Text, useStyles } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const {
+    theme: { colors, radii, space },
+  } = useStyles();
+
+  return (
+    <Box
+      p={space[3]}
+      m={space[4]}
+      bg={colors.grey100}
+      borderRadius={radii['lg']}
+      w={200}
+      alignItems="center"
+    >
+      <Text>Hello, world!</Text>
+    </Box>
+  );
+};
+```
+
+For more information about the utility props you can use on the Box component, see the
+React Native View Style Props [documentation](https://reactnative.dev/docs/view-style-props)
+and Layout Props [documentation](https://reactnative.dev/docs/layout-props).

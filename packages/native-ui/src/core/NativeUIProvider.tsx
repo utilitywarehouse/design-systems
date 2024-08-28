@@ -4,23 +4,12 @@ import { config } from '../config';
 import { breakpoints } from './breakpoints';
 import { darkTheme, lightTheme } from './themes';
 import { UnistylesRegistry, UnistylesRuntime } from 'react-native-unistyles';
-
-type AppBreakpoints = typeof breakpoints;
-
-type AppThemes = {
-  light: typeof lightTheme;
-  dark: typeof darkTheme;
-};
-
-declare module 'react-native-unistyles' {
-  export interface UnistylesBreakpoints extends AppBreakpoints {}
-  export interface UnistylesThemes extends AppThemes {}
-}
+import { AppThemes } from './types';
 
 UnistylesRegistry.addBreakpoints(breakpoints)
   .addThemes({
-    light: lightTheme,
-    dark: darkTheme,
+    light: lightTheme as AppThemes['light'],
+    dark: darkTheme as AppThemes['dark'],
   })
   .addConfig({
     adaptiveThemes: true,
