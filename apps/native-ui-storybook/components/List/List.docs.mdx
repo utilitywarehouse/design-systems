@@ -86,12 +86,10 @@ List item is the main building block of list. Each item has its own set of prope
 import { List, ListItem } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => (
-  <List>
-    <List headingText="Heading" headingSupportingText="Supporting text" divider>
-      <ListItem text="List Item 1" onPress={() => console.log('item pressed')} />
-      <ListItem text="List Item 2" onPress={() => console.log('item pressed')} />
-      <ListItem text="List Item 3" onPress={() => console.log('item pressed')} />
-    </List>
+  <List headingText="Heading" headingSupportingText="Supporting text" divider>
+    <ListItem text="List Item 1" onPress={() => console.log('item pressed')} />
+    <ListItem text="List Item 2" onPress={() => console.log('item pressed')} />
+    <ListItem text="List Item 3" onPress={() => console.log('item pressed')} />
   </List>
 );
 ```
