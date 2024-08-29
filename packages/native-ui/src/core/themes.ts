@@ -1,6 +1,8 @@
 import { colorsDark, colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { Platform } from 'react-native';
 
 const shared = {
+  platform: Platform.OS,
   space: {
     px: '1px',
     '0': 0,
