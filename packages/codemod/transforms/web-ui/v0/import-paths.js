@@ -50,7 +50,6 @@ const cwuiElements = [
   'InteractiveCardProps',
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function transformer(file, api) {
   const j = api.jscodeshift;
 

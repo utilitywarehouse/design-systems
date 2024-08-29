@@ -1,82 +1,185 @@
-import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
 import * as Stories from './Link.stories';
 import { DocsHeader } from '../storybook-utils';
 
 <Meta of={Stories} />
 
-<DocsHeader componentName="Link" stories={Stories} themeProviderRequired />
+<DocsHeader
+  componentName="Link"
+  stories={Stories}
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=6834-38146"
+/>
 
-This component will be replaced with the `lab/Link` component in a future major release.
+<Canvas of={Stories.SimpleExample} sourceState="none" />
 
-- [Variants](#variants)
-- [Inline TextLink](#inline-textlink)
+- [Accessibility](#accessibility)
+- [Semantic HTML](#semantic-html)
 - [Guidelines](#guidelines)
-- [Usage in Next.js](#usage-in-next.js)
-  - [v12](#v12)
-  - [v13](#v13)
+- [Size](#size)
+- [Icons](#icons)
+- [Full Width Link](#full-width-link)
+- [Usage with Next.js](#usage-with-next.js)
+  - [Next.js v13](#next.js-v13)
+  - [Next.js before v13](#next.js-before-v13)
 - [Props](#props)
 
-## Variants
+## Accessibility
 
-The `Link` component has all the same variants as the `Text` and `Heading` components.
+Icons from the UW icons packages have `aria-hidden="true"` set by default. If
+you are using an icon from outside these packages, and for purely decorative
+reasons, please ensure it has this attribute set so that the icon is hidden
+from screen readers.
 
-<Canvas of={Stories.LinkVariants} />
+## Semantic HTML
 
-## Inline Link
+> If it goes somewhere it's a link, if it does something it's a button.
 
-When contained within a `Text` or `Heading` component, and without a specific variant, the `Link` will inherit the parent variant.
+A semantic HTML `a` is rendered by default, however you can change the
+underlying HTML element by using the `asChild` prop.
 
-<Canvas of={Stories.InlineLink} />
+When `asChild` is set to true, we will not render a default DOM element,
+instead cloning the child and passing it the props and behaviour required to
+make it functional.
+
+Read more about this idea in the [Radix UI composition docs](https://www.radix-ui.com/primitives/docs/guides/composition).
+
+```tsx
+// You may need to disable this eslint warning:
+// eslint-disable-next-line jsx-a11y/anchor-is-valid
+<Link asChild>
+  <button type="button" onClick={onClick}>
+    View UW services
+    <OpenMediumIcon />
+  </button>
+</Link>
+```
+
+<Canvas of={Stories.AsButton} />
 
 ## Guidelines
 
 Try and avoid using `target=_blank` if possible: [When to use target="\_blank"](https://css-tricks.com/use-target_blank/).
 Though if you do use it, then be aware that [browsers now implicitly set rel=noopener for any target=\_blank link](https://mathiasbynens.github.io/rel-noopener/).
 
-## Usage in Next.js
+## Size
 
-### v12
+The size prop controls the size of the `Link`. This is a responsive prop and
+can be used to display different sizes at different breakpoints.
 
-You can use the `Link` component with the `Link` component from `next/link`:
+<Canvas of={Stories.ResponsiveSize} />
 
 ```tsx
-import { Link, LinkProps } from '@utilitywarehouse/web-ui';
-import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-
-export interface LinkProps extends Omit<LinkProps, 'href'> {
-  href: NextLinkProps['href'];
-}
-
-export const Link: React.FC<LinkProps> = ({ children, href, ...props }) => (
-  <NextLink href={href} passHref>
-    <Link {...props}>{children}</Link>
-  </NextLink>
-);
-
-export default Link;
+<Link
+  size={{
+    mobile: 'small',
+    desktop: 'large',
+  }}
+/>
 ```
 
-### v13
+## Icons
 
-The behaviour of the `Link` component from `next/link` changes in v13, so for
-the time being you will need to add the `legacyBehavior` prop. We are looking
-into how best to use `Link` in Next.js 13.
+You can nest icons directly inside the `Link`. An appropriate gap is provided
+automatically, and the icon will inherit the appropriate colours.
+
+This component is intended to be used with the [UW Icons](https://uw-icons.vercel.app/) packages.
+Small links should use 16px icons (small), while large links should use 24px
+icons (medium).
 
 ```tsx
-import { Link, LinkProps } from '@utilitywarehouse/web-ui';
-import NextLink, { LinkProps as NextLinkProps } from 'next/link';
+<Link size="large">
+  <SettingsMediumIcon />
+  Edit account
+</Link>
+```
 
-export interface LinkProps extends Omit<LinkProps, 'href'> {
-  href: NextLinkProps['href'];
-}
+<Canvas of={Stories.WithIcons} />
 
-export const Link: React.FC<LinkProps> = ({ children, href, ...props }) => (
-  <NextLink href={href} passHref legacyBehavior>
-    <Link {...props}>{children}</Link>
+Icons from the UW icons packages have `aria-hidden="true"` set by default. If
+you are using an icon, in the `Link` component, from outside these
+packages, and for purely decorative reasons, please ensure it has this
+attribute set so that the icon is hidden from screen readers. You should also
+add the `data-icon` attribute to your icon so that it renders the appropriate
+styles.
+
+```tsx
+<Link>
+  <MyFontIcon aria-hidden="true" data-icon />
+  Edit account
+</Link>
+```
+
+## Full Width Link
+
+Use layout components, like `Flex`, to define your UI layouts.
+
+<Canvas of={Stories.FullWidth} />
+
+```tsx
+<Flex direction="column" align="stretch">
+  <Link href="#">Link</Link>
+</Flex>
+```
+
+## Usage with Next.js
+
+### Next.js v13
+
+The Next.js `Link` component behaviour has changed in v13, so that an `<a>` is
+no longer required as a child. You can render the Web UI `Link` component as a
+Next.js `Link` component using `asChild`:
+
+```tsx
+import NextLink from 'next/link';
+import { Link } from '@utilitywarehouse/web-ui';
+
+[...]
+
+{/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+<Link asChild>
+  <NextLink href={href} onClick={onClick}>
+    {title}
   </NextLink>
-);
+</Link>
+```
 
-export default Link;
+You can also use the `legacyBehavior` prop directly on the Next.js Link component:
+
+```tsx
+import NextLink from 'next/link';
+import { Link } from '@utilitywarehouse/web-ui';
+
+[...]
+
+<NextLink href={href} passHref onClick={onClick} legacyBehavior>
+  {/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+  <Link>{title}</Link>
+</NextLink>
+```
+
+And if you want to set this behavior globally you can use the following Next.js
+configuration:
+
+```
+{
+  experimental: {
+    newNextLinkBehavior: false
+  }
+}
+```
+
+### Next.js before v13
+
+```tsx
+import NextLink from 'next/link';
+import { Link } from '@utilitywarehouse/web-ui';
+
+[...]
+
+<NextLink href={href} passHref onClick={onClick}>
+  {/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+  <Link>{title}</Link>
+</NextLink>
 ```
 
 ## Props
