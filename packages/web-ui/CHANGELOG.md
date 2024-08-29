@@ -1,5 +1,81 @@
 # @utilitywarehouse/web-ui
 
+## 1.0.0
+
+### Major Changes
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Refactor typography overrides
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Rename the `large` IconButton size to `medium`.
+
+  ```diff
+  - <IconButton size='large'></IconButton>
+  + <IconButton size='medium'></IconButton>
+    <IconButton
+      size={{
+        mobile: 'small',
+  -     desktop: 'large',
+  +     desktop: 'medium',
+      }}
+    ></IconButton>
+  ```
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Rename the `large` Button size to `medium`.
+
+  ```diff
+  - <Button size='large'></Button>
+  + <Button size='medium'></Button>
+    <Button
+      size={{
+        mobile: 'small',
+  -     desktop: 'large',
+  +     desktop: 'medium',
+      }}
+    ></Button>
+  ```
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove `isBrandBackground` from `Box` context, please use `isInvertedBackground`
+  instead.
+
+  ```diff
+  - const { isBrandBackground } = useBackground();
+  - const bg = isBrandBackground ? colorsCommon.brandWhite : colorsCommon.brandPrimaryPurple;
+  + const { isInvertedBackground } = useBackground();
+  + const bg = isInvertedBackground ? colorsCommon.brandWhite : colorsCommon.brandPrimaryPurple;
+  ```
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Replace Button component
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Replace `Link` and `TextLink` components with lab components
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove custom MUI typography theme.
+
+  You will no longer be able to do the following:
+
+  ```
+  sx={{ ...theme.typography.body }}
+  ```
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove deprecated `Typography` component. Consumers should use the `Text` &
+  `Heading` components instead. Please see the [migration documentation](https://uw-web-ui.vercel.app/?path=/docs/web-ui-guides-migration-v1--documentation) for further
+  details.
+
+### Minor Changes
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Implement `textTransform` for `Link` & `TextLink` components
+
+### Patch Changes
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Link component asChild
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Links text-wrapping issue
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Deprecate `Stack`. Please use the `Flex` component instead.
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Deprecate `Grid` component
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove `justify-content: center` from link components.
+
 ## 0.9.7
 
 ### Patch Changes
