@@ -8,6 +8,6 @@
     "example",
   ],
   "compilerOptions": {
-    "outDir": "./lab"
+    "outDir": "./"
   }
 }

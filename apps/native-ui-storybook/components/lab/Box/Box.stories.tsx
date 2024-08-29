@@ -14,6 +14,7 @@ const BoxMeta: Meta<typeof Box> = {
     w: { control: 'number' },
     h: { control: 'number' },
   },
+  // @ts-expect-error - This is a playground
   args: { bg: 'red500', w: 100, h: 100 },
 };
 

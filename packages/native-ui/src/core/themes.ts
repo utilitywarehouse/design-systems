@@ -150,7 +150,7 @@ const shared = {
     variants: {
       hardShadow: {
         '1': {
-          shadowColor: '$grey900',
+          shadowColor: colors.grey900,
           shadowOffset: {
             width: -2,
             height: 2,
@@ -160,7 +160,7 @@ const shared = {
           elevation: 10,
         },
         '2': {
-          shadowColor: '$grey900',
+          shadowColor: colors.grey900,
           shadowOffset: {
             width: 0,
             height: 3,
@@ -170,7 +170,7 @@ const shared = {
           elevation: 10,
         },
         '3': {
-          shadowColor: '$grey900',
+          shadowColor: colors.grey900,
           shadowOffset: {
             width: 2,
             height: 2,
@@ -180,7 +180,7 @@ const shared = {
           elevation: 10,
         },
         '4': {
-          shadowColor: '$grey900',
+          shadowColor: colors.grey900,
           shadowOffset: {
             width: 0,
             height: -3,
@@ -190,7 +190,7 @@ const shared = {
           elevation: 10,
         },
         '5': {
-          shadowColor: '$grey900',
+          shadowColor: colors.grey900,
           shadowOffset: {
             width: 0,
             height: 3,
@@ -202,7 +202,7 @@ const shared = {
       },
       softShadow: {
         '1': {
-          shadowColor: '$grey900',
+          shadowColor: colors.grey900,
           shadowOffset: {
             width: 0,
             height: 0,
@@ -210,13 +210,13 @@ const shared = {
           shadowRadius: 10,
           shadowOpacity: 0.1,
           _android: {
-            shadowColor: '$grey900',
+            shadowColor: colors.grey900,
             elevation: 5,
             shadowOpacity: 0.05,
           },
         },
         '2': {
-          shadowColor: '$grey900',
+          shadowColor: colors.grey900,
           shadowOffset: {
             width: 0,
             height: 0,
@@ -225,13 +225,13 @@ const shared = {
           elevation: 3,
           shadowOpacity: 0.1,
           _android: {
-            shadowColor: '$grey900',
+            shadowColor: colors.grey900,
             elevation: 10,
             shadowOpacity: 0.1,
           },
         },
         '3': {
-          shadowColor: '$grey900',
+          shadowColor: colors.grey900,
           shadowOffset: {
             width: 0,
             height: 0,
@@ -240,13 +240,13 @@ const shared = {
           shadowOpacity: 0.1,
           elevation: 4,
           _android: {
-            shadowColor: '$grey900',
+            shadowColor: colors.grey900,
             elevation: 15,
             shadowOpacity: 0.15,
           },
         },
         '4': {
-          shadowColor: '$grey900',
+          shadowColor: colors.grey900,
           shadowOffset: {
             width: 0,
             height: 0,
@@ -255,7 +255,7 @@ const shared = {
           shadowOpacity: 0.1,
           elevation: 10,
           _android: {
-            shadowColor: '$grey900',
+            shadowColor: colors.grey900,
             elevation: 20,
             shadowOpacity: 0.2,
           },

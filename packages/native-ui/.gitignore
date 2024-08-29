@@ -1,6 +1,7 @@
 build
 /unstyled/*
 /lab/
+/core/
 /unstyled/
 !/src/lab/
 !/src/components/unstyled/

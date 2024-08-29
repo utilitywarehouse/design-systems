@@ -13,6 +13,7 @@
     "lint": "TIMING=1 eslint --max-warnings 0 --ext ts,tsx src  --ignore-pattern 'src/components/unstyled/**'",
     "build": "tsc && tsc --p tsconfig.unstyled.json && tsc --p tsconfig.lab.json",
     "watch": "tsc --watch",
+    "watch:lab": "tsc --p tsconfig.lab.json  --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
