@@ -1,7 +1,8 @@
 import StorybookUIRoot from './.ondevice';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFonts } from 'expo-font';
+import { UnistylesRuntime } from 'react-native-unistyles';
 
 const App = () => {
   const [loaded] = useFonts({
@@ -18,6 +19,10 @@ const App = () => {
     'WorkSans-SemiBold': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-SemiBold.ttf'),
     'WorkSans-Thin': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Thin.ttf'),
   });
+
+  useEffect(() => {
+    console.log('theme', UnistylesRuntime.themeName);
+  }, []);
 
   if (!loaded) return null;
   return <StorybookUIRoot />;

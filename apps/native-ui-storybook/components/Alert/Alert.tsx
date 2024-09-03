@@ -9,7 +9,7 @@ const AlertBasic: StoryFn<{
   onClose?: boolean;
   colorScheme: 'cyan' | 'green' | 'gold' | 'red';
   title?: string;
-  text?: string;
+  text: string;
 }> = ({ link, onPressIconButton, onClose, ...props }) => {
   const [args, setArgs] = useArgs();
   const handlePressLink = () => {
