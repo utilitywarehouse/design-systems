@@ -1,10 +1,31 @@
 export {
+  /**
+   * @deprecated
+   */
   styled,
+  /**
+   * @deprecated
+   */
   createComponents,
+  /**
+   * @deprecated
+   */
   createConfig,
+  /**
+   * @deprecated
+   */
   createStyle,
+  /**
+   * @deprecated
+   */
   AsForwarder,
+  /**
+   * @deprecated
+   */
   StyledProvider,
+  /**
+   * @deprecated
+   */
   flush,
 } from '@gluestack-ui/themed';
 

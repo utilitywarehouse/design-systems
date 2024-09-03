@@ -9,7 +9,7 @@ import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import type BoxProps from './Box.props';
 
 const getValue = (value: any, type: Record<string, any>) =>
-  typeof value === 'string' && value[0] === '$' ? type[value.slice(1)] : value;
+  typeof value === 'string' && value[0] === '$' ? type?.[value?.slice(1) ?? ''] : value;
 
 const Box: React.FC<BoxProps> = ({
   alignContent,
