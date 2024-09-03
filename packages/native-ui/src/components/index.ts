@@ -23,7 +23,13 @@ export {
 export { BadgeIcon } from '@gluestack-ui/themed';
 export { Heading } from '@gluestack-ui/themed';
 export { Text } from '@gluestack-ui/themed';
-export { Box } from '@gluestack-ui/themed';
+export {
+  /**
+   * @deprecated
+   * Use `Box` from `@utilitywarehouse/native-ui/Lab` instead
+   */
+  Box,
+} from '@gluestack-ui/themed';
 
 export { Center } from '@gluestack-ui/themed';
 
