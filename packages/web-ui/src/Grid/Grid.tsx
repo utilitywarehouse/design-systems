@@ -26,6 +26,8 @@ export type GridProps<
 > = OverrideProps<GridTypeMap<D, P>, D>;
 
 /**
+ * > This component is deprecated and will be removed in `v2`.
+ *
  * A responsive layout grid which adapts to screen size and orientation, ensuring
  * consistency across layouts.
  *
@@ -33,6 +35,8 @@ export type GridProps<
  * adheres to our custom breakpoints, and has default spacing & columns.
  *
  * Please [check the MUI site for further documentation](https://mui.com/material-ui/react-grid/).
+ *
+ * @deprecated
  */
 export const Grid = React.forwardRef(function Grid({ columns = DEFAULT_COLUMNS, ...props }, ref) {
   if (props.container) {

@@ -6,7 +6,6 @@ export * from './types';
 export * from './hooks';
 export { mediaQueries, px, pxToRem, spacing, withGlobalPrefix, DATA_ATTRIBUTES } from './utils';
 /* components */
-export * as Lab from './lab';
 export * from './Alert';
 export * from './Badge';
 export * from './Box';
@@ -39,5 +38,4 @@ export * from './TextField';
 export * from './TextLink';
 export * from './ThemeProvider';
 export * from './ToggleButtonGroup';
-export * from './Typography';
 export * from './UnstyledButton';

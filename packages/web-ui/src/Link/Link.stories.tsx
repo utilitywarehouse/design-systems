@@ -1,105 +1,137 @@
 import * as React from 'react';
-import { Link, LinkProps } from './Link';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Text, TextProps } from '../Text';
-import { Stack } from '../Stack';
-import { Box } from '../Box';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { headingVariantMapping, textVariantMapping } from '../Typography/Typography';
-import { ThemeProvider } from '../ThemeProvider';
+import {
+  ChevronRightMediumIcon,
+  ChevronRightSmallIcon,
+  ChevronLeftMediumIcon,
+  ChevronLeftSmallIcon,
+  OpenMediumIcon,
+  ChevronUpMediumIcon,
+} from '@utilitywarehouse/react-icons';
+import { Link } from './Link';
+import { Flex } from '../Flex';
 
 const meta: Meta<typeof Link> = {
-  title: 'Web UI / Components / Link',
+  title: 'Web UI / Components / Links / Link',
   component: Link,
-  decorators: [
-    Story => (
-      <ThemeProvider>
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
+  args: { href: '#', size: 'small' },
+  argTypes: {
+    children: { control: { type: 'text' } },
+    href: { control: { type: 'text' } },
+    size: { control: { type: 'radio' }, options: ['large', 'small'] },
+    textTransform: {
+      options: ['capitalize', 'uppercase', 'lowercase', 'none'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Link>;
 
-const textVariants = Object.keys(textVariantMapping);
-const variants = [...Object.keys(headingVariantMapping), ...textVariants];
+const sizes = ['large', 'small'] as const;
+
+export const KitchenSink: Story = {
+  render: () => (
+    <Flex direction="column" gap={4}>
+      <Flex gap={2} align="center">
+        {sizes.map(size => (
+          <Link key={size} size={size} href="#">
+            Hamburgefons
+            {size === 'large' ? <ChevronRightMediumIcon /> : <ChevronRightSmallIcon />}
+          </Link>
+        ))}
+      </Flex>
+      <Flex gap={2} align="center">
+        {sizes.map(size => (
+          <Link key={size} size={size} href="#">
+            {size === 'large' ? <ChevronLeftMediumIcon /> : <ChevronLeftSmallIcon />}
+            Hamburgefons
+          </Link>
+        ))}
+      </Flex>
+    </Flex>
+  ),
+};
 
 export const Workshop: Story = {
-  render: args => {
-    return (
-      <Stack>
-        {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
-          bg => (
-            <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-              <Link href="#" {...args} />
-            </Box>
-          )
-        )}
-      </Stack>
-    );
-  },
-  argTypes: {
-    children: {
-      control: {
-        type: 'text',
-      },
-    },
-    variant: {
-      options: variants,
-      control: {
-        type: 'radio',
-      },
-    },
-    textTransform: {
-      options: ['none', 'lowercase', 'uppercase', 'capitalize'] as const,
-      control: {
-        type: 'radio',
-      },
-    },
-  },
   args: {
     children: 'Link',
-    variant: 'body',
     href: '#',
   },
 };
 
-export const LinkVariants: Story = {
-  name: 'Variants',
-  render: () => {
-    return (
-      <Stack spacing={1}>
-        {variants.map(variant => (
-          <Link key={variant} variant={variant as LinkProps['variant']}>
-            hamburgefons ({variant})
-          </Link>
-        ))}
-      </Stack>
-    );
+export const SimpleExample: Story = {
+  render: () => (
+    <Link href="#">
+      Link
+      <ChevronRightMediumIcon />
+    </Link>
+  ),
+};
+
+export const WithIcons: Story = {
+  render: args => (
+    <Flex gap={6}>
+      <Link {...args}>
+        <ChevronLeftMediumIcon />
+        Back to Home
+      </Link>
+      <Link {...args}>
+        <ChevronUpMediumIcon />
+        Back to top
+      </Link>
+      <Link {...args}>
+        Check the guidelines
+        <OpenMediumIcon />
+      </Link>
+    </Flex>
+  ),
+};
+
+export const ResponsiveSize: Story = {
+  args: {
+    children: 'Responsive size link',
+    size: {
+      mobile: 'large',
+      tablet: 'small',
+      desktop: 'large',
+      wide: 'small',
+    },
   },
 };
 
-export const InlineLink: Story = {
-  name: 'Inline Link',
-  render: () => {
-    return (
-      <Stack>
-        {[colorsCommon.brandWhite, colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(
-          bg => (
-            <Box key={bg} background={bg} display="flex" justifyContent="center" padding={4}>
-              <Stack spacing={2}>
-                {textVariants.map(v => (
-                  <Text key={v} component="span" variant={v as TextProps['variant']}>
-                    This is a <Link href="#">link</Link>, wrapped in a {v} Text component.
-                  </Text>
-                ))}
-              </Stack>
-            </Box>
-          )
-        )}
-      </Stack>
-    );
+export const AsButton: Story = {
+  render: () => (
+    <Link asChild>
+      <button onClick={() => alert('Hello world!')}>
+        View UW services
+        <ChevronRightMediumIcon />
+      </button>
+    </Link>
+  ),
+};
+
+export const FullWidth: Story = {
+  render: args => (
+    <Flex direction="column" align="stretch" gap={2}>
+      <Link {...args}>
+        {args.children}
+        <ChevronRightMediumIcon />
+      </Link>
+    </Flex>
+  ),
+  args: { children: 'Full width link with icon' },
+};
+
+export const LengthyContent: Story = {
+  render: args => (
+    <Flex width={800}>
+      <Link {...args}>{args.children}</Link>
+    </Flex>
+  ),
+  args: {
+    children:
+      'Agnes Bernice Martin was an American abstract painter known for her minimalist style and abstract expressionism.',
   },
 };

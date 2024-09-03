@@ -1,0 +1,552 @@
+import { Meta } from '@storybook/blocks';
+import { Analytics } from '@vercel/analytics/react';
+
+<Analytics />
+
+<Meta title="Web UI / Guides / Migration / v1" />
+
+# v1
+
+This guide should help with migrating from **Web UI** `v0` to `v1`. It should
+cover all significant changes, however there may be some minor inconsistencies
+not documented here. Please open an issue or PR if you find something worth
+documenting for others, thankyou!
+
+## Contents
+
+- [Using major versions concurrently](#using-major-versions-concurrently)
+- [Typography theme](#typography-theme)
+- [Typography component](#typography-component)
+- [Buttons size renaming](#buttons-size-renaming)
+- [Button component](#button-component)
+- [Link component](#link-component)
+- [TextLink component](#textlink-component)
+- [Deprecations](#deprecations)
+- [Codemods](#codemods)
+  - [Migration](#migration)
+  - [Update lab imports](#update-lab-imports)
+  - [Rename lab Button size](#rename-lab-button-size)
+  - [Rename IconButton size](#rename-iconbutton-size)
+  - [Update Typography](#update-typography)
+  - [Migrate Button](#migrate-button)
+
+## Using major versions concurrently
+
+If you need to you can install and use different major versions
+concurrently, using NPM aliasing. This can aid a partial migration approach,
+rather than having to migrate you whole application in one go. We don't
+recommend you have more than 2 major versions installed at one time, nor have
+them more than 1 step apart.
+
+- [Demystifying NPM Package name aliasing: A Comprehensive Guide](https://medium.com/@mahesh.jsdev/demystifying-npm-package-name-aliasing-a-comprehensive-guide-5a0a59519de9)
+- [Creating aliases with npm](https://andrewevans.dev/blog/2021-12-06-creating-aliases-with-npm/)
+- [Using Import aliases in JavaScript](https://medium.com/dailyjs/using-import-aliases-in-javascript-a0b46237601c)
+- [Installing Multiple Versions of the Same Package in your project via package aliases](https://willmendesneto.com/posts/installing-multiple-versions-of-the-same-package-in-your-project-via-package-aliases/)
+
+## Typography theme
+
+We have removed any custom typography theme from the `@mui/material` theme. You
+will no longer be able to do the following:
+
+```tsx
+sx={{ ...theme.typography.body }}
+```
+
+We have also updated the typography theme types, removing any typography
+options which do not reflect the current typography tokens. We recommend
+importing the typography tokens, and other helpers, instead.
+
+```diff
++ import { fontWeights, spacing } from '@utilitywarehouse/web-ui';
+
+- export const StyledStepTitle = styled(Typography)(({ theme }) => ({
++ export const StyledStepTitle = styled(Typography)(() => ({
+-   marginBottom: theme.spacing(2),
++   marginBottom: spacing(2),
+-   fontWeight: theme.typography.fontWeightBold,
++   fontWeight: fontWeights.secondary.semibold,
+    fontSize: 24,
+  }));
+```
+
+## Typography component
+
+The `Typography` component is being removed for this release, and replaced with
+the `Text` & `Heading` components.
+
+```diff
+- <Typography>{content}</Typography>
+- <Typography variant="subtitle">{content}</Typography>
+- <Typography variant="body">{content}</Typography>
+- <Typography variant="legalNote">{content}</Typography>
+- <Typography variant="caption">{content}</Typography>
+- <Typography variant="displayHeading">{content}</Typography>
+- <Typography variant="h1">{content}</Typography>
+- <Typography variant="h2">{content}</Typography>
+- <Typography variant="h3">{content}</Typography>
+- <Typography variant="h4">{content}</Typography>
+- <Typography gutterBottom>{content}</Typography>
+- <Typography paragraph>{content}</Typography>
++ <Text>{content}</Text>
++ <Text variant="subtitle">{content}</Text>
++ <Text variant="body">{content}</Text>
++ <Text variant="legalNote">{content}</Text>
++ <Text variant="caption">{content}</Text>
++ <Heading variant="displayHeading">{content}</Heading>
++ <Heading variant="h1">{content}</Heading>
++ <Heading variant="h2">{content}</Heading>
++ <Heading variant="h3">{content}</Heading>
++ <Heading variant="h4">{content}</Heading>
++ <Text sx={{ marginBottom: '0.35em' }}>{content}</Text>
++ <Text component='p' sx={{ marginBottom: '16px' }}>{content}</Text>
+```
+
+The `Text` & `Heading` components support nearly all the same variants as the
+legacy `Typography` component, the only exception to this is the `inherit`
+variant. To replace this you can use either a `Box` or `Text` component with
+`sx` styling:
+
+```tsx
+<Box component="span" sx={{ font: 'inherit' }}>
+```
+
+### Codemod
+
+There is a codemod to migrate to these components, however they are not
+a 1-2-1 match, as they do not continue with props such as `fontWeight`, `paragraph` or
+`gutterBottom`, so you should visually verify all changes.
+
+In place of the `paragraph` and `gutterBottom` props, we recommend you
+structure your layouts using the layout components, such as `Box`, `Flex`,
+`Stack`, `Grid`, and to a lesser extent `Spacer`. However the codemod will
+transform these props, as follows:
+
+- `gutterBottom` -> `sx={{ marginBottom: '0.35em' }}`
+- `paragraph` -> `component="p"` and `sx={{ marginBottom: '16px' }}`
+
+In place of the `fontWeight` prop, on `Text` components you can use the `bold`
+boolean prop, or, when appropriate, use the `Strong` component.
+
+## Buttons size renaming
+
+The `Button` component from the `lab` submodule, and the `IconButton`
+component, have had the `large` size value renamed to `medium`.
+
+### Codemod
+
+There is a codemod available to support this change.
+
+```diff
+- <Button size='large'></Button>
++ <Button size='medium'></Button>
+- <Button
+-   size={{
+-     mobile: 'small',
+-     desktop: 'large',
+-   }}
+- ></Button>
++ <Button
++   size={{
++     mobile: 'small',
++     desktop: 'medium',
++   }}
++ ></Button>
+- <IconButton size='large'></IconButton>
++ <IconButton size='medium'></IconButton>
+- <IconButton
+-   size={{
+-     mobile: 'small',
+-     desktop: 'large',
+-   }}
+- ></IconButton>
++ <IconButton
++   size={{
++     mobile: 'small',
++     desktop: 'medium',
++   }}
++ ></IconButton>
+```
+
+## Button component
+
+The `Button` component has been compoletely rethought, with a new, more
+accessible visual design, and a clearer API design. It is also no longer built
+upon the `@mui/material` library. This redesign was available in `v0` through
+the `lab` subdirectory, and in this release we have moved `Button` out of `lab`,
+replacing the previous `Button` component.
+
+There are codemods to support the following significant API changes, but you
+should still visually check all changes. Be aware that we have not addressed
+all the MUI props, or moving all HTML `a` attributes, so be prepared to
+manually check and update these as necessary.
+
+### Size
+
+- The `small` size, both name and appearance, remains the same.
+- The `medium` size remains, but the height of the button has changed, from 40px to 48px, the height for the legacy `large` button. Continue to use `medium`, but be aware that the height change may affect your layouts.
+- The `large` size has been removed for now. It will be reintroduced in the future, with the intention for it to match the height of other UI elements, such as inputs. Please use `medium` instead.
+- The default size value is `medium` in both the new and legacy `Button` components, so you will see a visual change if you have not explicitly specified a size.
+
+```diff
+- <Button size="large">Button</Button>
++ <Button size="medium">Button</Button>
+```
+
+### Variant
+
+- The `primary` variant has been replaced with the `solid` variant.
+- The `secondary` variant has been replaced with the `outline` variant.
+- A new `ghost` variant has been introduced.
+- The `tertiary` variant has been removed, and you should use the `Link` component instead. This will adhere to the visual changes, however you will need to consider what it is you are trying to achieve, and whether you need to render an HTML `button` element, or an `a` element. Please see the `Link` component docs for how to use the `asChild` prop, as it replaces the behaviour of the legacy `Button` when an `href` is included.
+- The default variant has changed from `primary` to `solid` so you do not need to make any changes if you have not explicitly specified a variant.
+
+```diff
+- <Button variant="primary">Button</Button>
++ <Button variant='solid'>Button</Button>
+- <Button variant="secondary">Button</Button>
++ <Button variant='outline'>Button</Button>
+
+// Please pay close attention when migrating `tertiary` buttons
+
+// render a `Link` with the `asChild` prop and a child `button` element if you
+// want to continue to render a semantic button
+- <Button variant="tertiary">Button</Button>
++ <Link asChild>
++   <button>Button</button>
++ </Link>
+
+// but replace the `Button` with `Link` if you are using the `href` prop
+- <Button variant="tertiary" href="https://uw.co.uk/services">
+-   Button
+- </Button>
++ <Link href="https://uw.co.uk/services">
++   Button
++ </Link>
+```
+
+### href prop
+
+As the legacy `Button` component was built on top of the `@mui/material`
+library it would render a semantic `a` element when an `href` prop was
+specified. This behaviour has been removed as the polymorphism required added
+significant TypeScript overheads to implement. To recreate this behaviour
+please use the `asChild` prop instead.
+
+```diff
+- <Button href="https://uw.co.uk/services">View UW services</Button>
++ <Button asChild>
++   <a href="https://uw.co.uk/services">
++     View UW services
++   </a>
++ </Button>
+
+- <Button variant='primary' href="https://uw.co.uk/services">
+-   View UW services
+- </Button>
++ <Button asChild variant='solid'>
++   <a href="https://uw.co.uk/services">
++     View UW services
++   </a>
++ </Button>
+
+- <Button variant="tertiary" href="https://uw.co.uk/services">
+-   View UW services
+- </Button>
++ <Link href="https://uw.co.uk/services">
++   View UW services
++ </Link>
+```
+
+### fullWidth prop
+
+The `fullWidth` prop has been removed, you should use layout components, like `Flex` instead.
+
+```diff
+// the legacy Button would have to use the `useMediaQuery` hook to achieve a responsive design
+- <Button fullWidth={isMobile ? true : false}>Button</Button>
++ <Flex direction="column" align={{ mobile: 'stretch', desktop: 'start' }}>
++   <Button>Responsive Button</Button>
++ </Flex>
+```
+
+Due to the nature of this change, we are unable to offer a codemod to support
+it so you will need to manually check and update any usage.
+
+## Link component
+
+The `Link` component has been completely redesigned. This redesign was
+available in `v0` through the `lab` subdirectory, and in this release we have
+moved `Link` out of `lab`, replacing the previous `Link` component.
+
+This redesign is visual, and also introduces a rethought API, props, and usage
+intentions.
+
+The new `Link` component is designed specifically for standalone links that are
+not wrapped or contained within a block of text. While this component may
+appear similar to the legacy tertiary `Button` variant, it should not be
+confused with that component.
+
+### Variant and Size
+
+There are 2 main API changes to be aware of; the removal of the `variant` prop, and
+the addition of the `size` prop.
+
+Visually, these changes mean that the `Link` component's font size no longer
+simply reflects that of the `Text` and `Heading` components, but is controlled
+by the 2 size values; `small` & `large`. These sizes do not reflect any of the
+previous variants, and change both the font size, and the line height. The font
+weight has also changed from 'regular' to 'semibold'.
+
+As this change is not a 1-2-1 replacement, when migrating, you will need to
+visually check each usage of the component, and appropriately choose the best
+replacement size for the previous variant.
+
+It may also be that you want to completely replace the previous usage of the
+`Link` component with the new `TextLink` component, if the previous usage was
+inline within a section of text. However, do be aware that the new `TextLink`
+component is a complete redesign and so you may want to discuss any significant
+UI changes with the Design team.
+
+### Colour
+
+The new `Link` component is not designed to be used on darker background
+colours, where the previous `Link` component would adjust it's colours
+contextually if rendered on a midnight or brand purple background. If you need
+to update something like this then you may need to have a conversation with the
+design team.
+
+### Codemod
+
+Due to the nature of the changes, and the fact this is not a 1-2-1 replacement,
+we are unable to offer a reliable codemod. We also feel it would be better not
+to provide a codemod removing legacy props, so that the errors caused by having
+incorrect props will highlight where manual updates and checks need to
+happen.
+
+There is a codemod to update imports from the `lab` subdirectory, including the
+`Link` component.
+
+## TextLink component
+
+This component has been completely redesigned. The previous implementation only
+re-exported the `Link` component, whereas this new implementation has been
+separately designed to be used specifically within a block of text.
+
+When migrating your code you may want to replace your previous usage with the
+new `Link` component, or you could choose to discuss with the Design team if
+the newly designed `TextLink` is more appropriate.
+
+### Codemod
+
+Due to the nature of the changes, and the fact this is not a 1-2-1 replacement,
+we are unable to offer a reliable codemod. We also feel it would be better not
+to provide a codemod removing legacy props, so that the errors caused by having
+incorrect props will highlight where manual updates and checks need to
+happen.
+
+There is a codemod to update imports from the `lab` subdirectory, including the
+`TextLink` component.
+
+## Deprecations
+
+### Stack component
+
+The `Stack` component is a thin wrapper around the `@mui/material` `Stack`
+component, and, historically, has existed because there was no easy way in CSS
+to set a vertical gap between elements. This is no longer the case now that we
+have the flexbox gap property.
+
+As we are migrating away from using `@mui/material`, refactoring this component
+would be only a thin wrapper around the `Flex` component. As such we don't feel
+it's necessary and recommend using `Flex` instead.
+
+### Grid component
+
+The `Grid` component is a thin wrapper around the `@mui/material` `Grid`
+component. It is a layout component with an implementation that is very
+specific to `@mui/material`, and as we are migrating away from using the MUI
+project, refactoring this component would become a maintenance burden. We would
+also prefer not to support a grid layout component based on flexbox, and intend
+to introduce a layout component based on CSS grid.
+
+If consumers would like to continue using the `Grid` component they can do so
+by importing it from the `@mui/material` package, and adding some defaults.
+Below is our full implementation of the component. You may also need to
+override the default MUI theme breakpoints.
+
+```tsx
+import * as React from 'react';
+import MuiGrid from '@mui/material/Grid';
+import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
+import type { GridProps as MuiGridProps, RegularBreakpoints } from '@mui/material/Grid';
+
+export const DEFAULT_COLUMNS = { mobile: 4, tablet: 8, desktop: 12, wide: 12 };
+export const DEFAULT_SPACING = { mobile: 2, tablet: 3, desktop: 3, wide: 3 };
+
+export type DefaultGridComponent = 'div';
+
+export interface CustomGridProps {
+  mobile?: RegularBreakpoints['xs'];
+  tablet?: RegularBreakpoints['md'];
+  desktop?: RegularBreakpoints['lg'];
+  wide?: RegularBreakpoints['xl'];
+}
+
+export interface GridTypeMap<D extends React.ElementType = DefaultGridComponent, P = object> {
+  props: CustomGridProps & Omit<MuiGridProps<D, P>, 'xs' | 'sm' | 'lg' | 'md' | 'xl'>;
+  defaultComponent: D;
+}
+
+export type GridProps<
+  D extends React.ElementType = DefaultGridComponent,
+  P = object,
+> = OverrideProps<GridTypeMap<D, P>, D>;
+
+export const Grid = React.forwardRef(function Grid({ columns = DEFAULT_COLUMNS, ...props }, ref) {
+  if (props.container) {
+    return (
+      <MuiGrid ref={ref} columns={columns} spacing={props.spacing || DEFAULT_SPACING} {...props} />
+    );
+  }
+  return <MuiGrid ref={ref} columns={columns} {...props} />;
+}) as OverridableComponent<GridTypeMap>;
+```
+
+## Codemods
+
+### Migration
+
+This will run all codemods required to migrate from Web UI `v0` to `v1`.
+You can use `npx` to run the codemod on your source files.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/migration <path>
+```
+
+Included codemods:
+
+- `update-lab-imports`
+- `rename-lab-button-size`
+- `rename-icon-button-size`
+- `typography-to-heading-and-text`
+- `migrate-button`
+
+Please make sure you fix any linting or formatting issues before continuing to
+run any further codemods.
+
+### Update lab imports
+
+Updates the import paths for components that are being moved out of the `lab`
+subdirectory.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/update-lab-imports <path>
+```
+
+### Rename lab Button size
+
+Updates the size value `large` to `medium` for the `Button` component from the
+lab subdirectory.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/rename-lab-button-size <path>
+```
+
+### Rename IconButton size
+
+Updates the size value `large` to `medium` for the `IconButton` component.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/rename-icon-button-size <path>
+```
+
+### Update Typography
+
+Updates usage of the `Typography` component to the `Heading` & `Text` components.
+
+Also transforms the following removed props:
+
+- `gutterBottom` -> `sx={{ marginBottom: '0.35em' }}`
+- `paragraph` -> `component="p"` and `sx={{ marginBottom: '16px' }}`
+
+Please note that this may cause your components to have duplicate `sx` props,
+which you will need to manually combine.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/typography-to-heading-and-text <path>
+```
+
+```diff
+- <Typography>{content}</Typography>
+- <Typography variant="subtitle">{content}</Typography>
+- <Typography variant="body">{content}</Typography>
+- <Typography variant="legalNote">{content}</Typography>
+- <Typography variant="caption">{content}</Typography>
+- <Typography variant="displayHeading">{content}</Typography>
+- <Typography variant="h1">{content}</Typography>
+- <Typography variant="h2">{content}</Typography>
+- <Typography variant="h3">{content}</Typography>
+- <Typography variant="h4">{content}</Typography>
+- <Typography gutterBottom>{content}</Typography>
+- <Typography paragraph>{content}</Typography>
++ <Text>{content}</Text>
++ <Text variant="subtitle">{content}</Text>
++ <Text variant="body">{content}</Text>
++ <Text variant="legalNote">{content}</Text>
++ <Text variant="caption">{content}</Text>
++ <Heading variant="displayHeading">{content}</Heading>
++ <Heading variant="h1">{content}</Heading>
++ <Heading variant="h2">{content}</Heading>
++ <Heading variant="h3">{content}</Heading>
++ <Heading variant="h4">{content}</Heading>
++ <Text sx={{ marginBottom: '0.35em' }}>{content}</Text>
++ <Text component='p' sx={{ marginBottom: '16px' }}>{content}</Text>
+```
+
+### Migrate Button
+
+Migrates usage of the `Button` component to the new API.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/migrate-button <path>
+```
+
+```diff
+- <Button size="large">Button</Button>
++ <Button size="medium">Button</Button>
+- <Button variant="primary">Button</Button>
++ <Button variant='solid'>Button</Button>
+- <Button variant="secondary">Button</Button>
++ <Button variant='outline'>Button</Button>
+- <Button variant="tertiary">Button</Button>
++ <Link asChild>
++   <button>Button</button>
++ </Link>
+- <Button variant="tertiary" href="https://uw.co.uk/services">
+-   Button
+- </Button>
++ <Link href="https://uw.co.uk/services">
++   Button
++ </Link>
+- <Button href="https://uw.co.uk/services">View UW services</Button>
+- <Button asChild>
+-   <a href="https://uw.co.uk/services">
+-     View UW services
+-   </a>
+- </Button>
+
+- <Button variant='primary' href="https://uw.co.uk/services">
+-   View UW services
+- </Button>
++ <Button asChild variant='solid'>
++   <a href="https://uw.co.uk/services">
++     View UW services
++   </a>
++ </Button>
+- <Button variant="tertiary" href="https://uw.co.uk/services">
+-   View UW services
+- </Button>
++ <Link href="https://uw.co.uk/services">
++   View UW services
++ </Link>
+```
