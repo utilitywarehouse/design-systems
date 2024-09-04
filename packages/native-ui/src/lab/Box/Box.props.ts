@@ -100,12 +100,16 @@ interface BoxProps
       | 'borderStartWidth'
       | 'borderTopWidth'
       | 'borderWidth'
+      | 'height'
+      | 'width'
+      | 'maxWidth'
+      | 'maxHeight'
     >,
     ViewProps {
   bg?: ColorValue;
   bgColor?: ColorValue;
-  h?: DimensionValue;
-  w?: DimensionValue;
+  h?: SpaceValue;
+  w?: SpaceValue;
   p?: SpaceValue;
   px?: SpaceValue;
   py?: SpaceValue;
@@ -175,6 +179,10 @@ interface BoxProps
   borderStartWidth?: BordeWidthValue;
   borderTopWidth?: BordeWidthValue;
   borderWidth?: BordeWidthValue;
+  height?: SpaceValue;
+  width?: SpaceValue;
+  maxWidth?: SpaceValue;
+  maxHeight?: SpaceValue;
 }
 
 export default BoxProps;
