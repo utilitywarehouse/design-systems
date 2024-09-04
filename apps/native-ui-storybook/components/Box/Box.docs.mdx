@@ -38,18 +38,8 @@ If you're looking for a flexible component to help with low-level layout needs, 
 import { Box, Text } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => (
-  <Box
-    // SX prop is deprecated
-    sx={{
-      padding: 20,
-      margin: 15,
-      backgroundColor: '$grey100',
-      borderRadius: 8,
-    }}
-  >
+  <Box p="$5" m="$4" bg="$grey100" borderRadius="$lg">
     <Text>Hello, world!</Text>
   </Box>
 );
 ```
-
-For more information, see the [Gluestack Box component documentation](https://gluestack.io/ui/docs/components/layout/box).

@@ -1,67 +1,73 @@
 import {
   Badge,
-  BadgeText,
-  Box,
+  createStyleSheet,
+  Heading,
   Radio,
   RadioGroup,
   RadioIcon,
   RadioIndicator,
   Text,
+  useStyles,
 } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 import React from 'react';
 
-interface RadioProps extends React.ComponentProps<typeof Radio> {}
+interface RadioProps extends React.ComponentProps<typeof Radio> {
+  currentValue: string;
+}
 
-const CustomRadio: React.FC<RadioProps> = ({ children, ...props }) => (
-  <Radio
-    sx={{
-      borderWidth: 2,
-      borderColor: '$grey500',
-      borderRadius: '$xl',
-      p: '$4',
-      ':checked': {
-        borderColor: '$green500',
-      },
-      _dark: {
-        borderColor: '$grey700',
-        ':checked': {
-          borderColor: '$darkGreen700',
+const stylesheet = createStyleSheet(({ colorMode, colors, radii, borderWidths, space }) => ({
+  radio: {
+    borderWidth: borderWidths[2],
+    borderColor: colorMode === 'light' ? colors.grey500 : colors.grey700,
+    borderRadius: radii.xl,
+    padding: space[4],
+    variants: {
+      isChecked: {
+        true: {
+          borderColor: colorMode === 'light' ? colors.green500 : colors.green700,
         },
       },
-    }}
-    {...props}
-  >
-    <Box
-      sx={{
-        flexDirection: 'row',
-        flex: 1,
-      }}
-    >
-      <Box sx={{ pr: '$4', flex: 1 }}>{children}</Box>
-      <RadioIndicator
-        sx={{
-          ':checked': {
-            backgroundColor: '$green500',
-            borderColor: '$green500',
-          },
+    },
+  },
+  indicator: {
+    variants: {
+      isChecked: {
+        true: {
+          backgroundColor: colorMode === 'light' ? colors.green500 : colors.green700,
+          borderColor: colorMode === 'light' ? colors.green500 : colors.green700,
+        },
+      },
+    },
+  },
+  icon: {
+    color: colorMode === 'light' ? colors.brandWhite : colors.grey50,
+  },
+  heading: {
+    marginBottom: space[2],
+  },
+  badge: {
+    marginRight: space[2],
+    alignSelf: 'flex-end',
+  },
+}));
 
-          _dark: {
-            ':checked': {
-              backgroundColor: '$darkGreen700',
-              borderColor: '$darkGreen700',
-            },
-          },
-        }}
-      >
-        <RadioIcon
-          as={TickSmallIcon}
-          sx={{ color: '$brandWhite', _dark: { color: '$darkGrey50' } }}
-        />
-      </RadioIndicator>
-    </Box>
-  </Radio>
-);
+const CustomRadio: React.FC<RadioProps> = ({ children, currentValue, ...props }) => {
+  const { styles } = useStyles(stylesheet, { isChecked: currentValue === props.value });
+  return (
+    <Radio style={styles.radio} {...props}>
+      <Box flexDirection="row" flex={1}>
+        <Box pr="$4" flex={1}>
+          {children}
+        </Box>
+        <RadioIndicator style={styles.indicator}>
+          <RadioIcon as={TickSmallIcon} style={styles.icon} />
+        </RadioIndicator>
+      </Box>
+    </Radio>
+  );
+};
 
 const BulletListItem = ({ children }: { children: React.ReactNode }) => (
   <Text>
@@ -70,13 +76,17 @@ const BulletListItem = ({ children }: { children: React.ReactNode }) => (
 );
 
 const BulletList = ({ children }: { children: React.ReactNode }) => (
-  <Box sx={{ pl: '$2', gap: '$2' }}>{children}</Box>
+  <Box pl="$2" gap="$2">
+    {children}
+  </Box>
 );
 
 const AdvancedRadioExample: React.FC = () => {
   const [value, setValue] = React.useState('Option 1');
 
   const handleChange = (val: string) => setValue(val);
+
+  const { styles } = useStyles(stylesheet);
 
   return (
     <RadioGroup onChange={handleChange} value={value}>
@@ -85,14 +95,14 @@ const AdvancedRadioExample: React.FC = () => {
           colorScheme={value === 'Option 1' ? 'green' : 'grey'}
           strong
           borderless
-          sx={{ mr: '$2', alignSelf: 'flex-end' }}
+          style={styles.badge}
         >
-          <BadgeText>Recommended</BadgeText>
+          Recommended
         </Badge>
-        <CustomRadio value="Option 1">
-          <Text sx={{ fontFamily: '$heading', fontWeight: '$bold', mb: '$2' }}>
+        <CustomRadio value="Option 1" currentValue={value}>
+          <Heading size="h4" style={styles.heading}>
             Instant bank transfer
-          </Text>
+          </Heading>
           <BulletList>
             <BulletListItem>Receive your money instantly</BulletListItem>
             <BulletListItem>No fees</BulletListItem>
@@ -100,10 +110,10 @@ const AdvancedRadioExample: React.FC = () => {
           </BulletList>
         </CustomRadio>
       </Box>
-      <CustomRadio value="Option 2">
-        <Text sx={{ fontFamily: '$heading', fontWeight: '$bold', mb: '$2' }}>
+      <CustomRadio value="Option 2" currentValue={value}>
+        <Heading size="h4" style={styles.heading}>
           Debit card payment
-        </Text>
+        </Heading>
         <BulletList>
           <BulletListItem>£0.35 fee</BulletListItem>
           <BulletListItem>Available 24/7</BulletListItem>

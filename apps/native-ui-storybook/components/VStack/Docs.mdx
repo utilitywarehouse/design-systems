@@ -1,6 +1,7 @@
 import { Meta, Canvas, Story } from '@storybook/blocks';
 import * as VStackStories from './VStack.stories';
-import { VStack, Center, Box, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { VStack, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 
 <Meta of={VStackStories} />
 
@@ -16,24 +17,25 @@ VStack organizes items vertically in a layout. Alternatively, you can use Column
   <NativeUIProvider>
     <Center>
       <VStack space="sm">
-        <Box sx={{ w: 100, h: 100, bg: '$cyan300' }} />
-        <Box sx={{ w: 100, h: 100, bg: '$cyan400' }} />
-        <Box sx={{ w: 100, h: 100, bg: '$cyan500' }} />
-        <Box sx={{ w: 100, h: 100, bg: '$cyan600' }} />
+        <Box w={100} h={100} bg="$cyan300" />
+        <Box w={100} h={100} bg="$cyan400" />
+        <Box w={100} h={100} bg="$cyan500" />
+        <Box w={100} h={100} bg="$cyan600" />
       </VStack>
     </Center>
   </NativeUIProvider>
 </Canvas>
 
 ```jsx
-import { VStack, Text } from '@utilitywarehouse/native-ui';
+import { VStack } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const MyComponent = () => (
   <VStack space="sm">
-    <Box sx={{ w: 100, h: 100, bg: '$cyan300' }} />
-    <Box sx={{ w: 100, h: 100, bg: '$cyan400' }} />
-    <Box sx={{ w: 100, h: 100, bg: '$cyan500' }} />
-    <Box sx={{ w: 100, h: 100, bg: '$cyan600' }} />
+    <Box w={100} h={100} bg="$cyan300" />
+    <Box w={100} h={100} bg="$cyan400" />
+    <Box w={100} h={100} bg="$cyan500" />
+    <Box w={100} h={100} bg="$cyan600" />
   </VStack>
 );
 ```
@@ -44,5 +46,3 @@ const MyComponent = () => (
 | -------- | ------- | ----------------------------------------------------------- | ------- |
 | space    | string  | It sets the space between children.                         | -       |
 | reversed | boolean | When true, it places the VStack items in reverse direction. | -       |
-
-For more information, see the [Gluestack VStack component documentation](https://gluestack.io/ui/docs/components/layout/vstack).
