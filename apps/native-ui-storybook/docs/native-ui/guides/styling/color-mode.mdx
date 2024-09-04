@@ -1,0 +1,73 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { BackToTopButton } from '../../../components';
+
+<Meta title="Native UI / Guides / Styling / Color Mode" />
+
+<BackToTopButton />
+
+# Color Mode
+
+We can apply different styles based on different color mode by setting the `colorMode` prop on the `NativeUIProvider` component.
+
+In the below example we are defining styles to be applied in dark mode, you can access the color mode using the `colorMode` theme token
+prop for example:
+
+#### Using the `colorMode` prop on `createStyleSheet`
+
+```tsx
+import { useStyles, createStyleSheet } from '@utilitywarehouse/native-ui';
+
+const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
+  container: {
+    backgroundColor: colorMode === 'dark' ? colors.cyan600 : colors.red600,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+}));
+
+const MyComponent = () => {
+  const { styles } = useStyles(stylesheet);
+
+  return (
+    <View style={styles.container}>
+      <Text>Hello world</Text>
+    </View>
+  );
+};
+```
+
+#### Using the `colorMode` prop on `useStyles` prop
+
+```tsx
+import { useStyles } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const {
+    theme: { colorMode },
+  } = useStyles(stylesheet);
+
+  return (
+    <View style={styles.container}>
+      <Text>{colorMode === 'dark' ? 'Dark mode' : 'Light mode'}</Text>
+    </View>
+  );
+};
+```
+
+#### Using the `useColorMode` hook
+
+```tsx
+import { useColorMode } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
+
+const MyComponent = () => {
+  const colorMode = useColorMode();
+
+  return (
+    <Box bg={colorMode === 'dark' ? '$grey100' : '$grey600'}>
+      <Text>{colorMode === 'dark' ? 'Dark mode' : 'Light mode'}</Text>
+    </Box>
+  );
+};
+```
