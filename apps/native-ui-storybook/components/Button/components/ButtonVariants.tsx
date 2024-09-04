@@ -14,6 +14,7 @@ import { Button as GSButton } from '@gluestack-ui/themed';
 import { AddSmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-native-icons';
 import React, { ComponentProps } from 'react';
 import { VariantTitle } from '../../../docs/components';
+import { UnistylesRuntime } from 'react-native-unistyles';
 
 interface ButtonProps extends ComponentProps<typeof GSButton> {}
 interface ButtonVariantsProps {
@@ -33,6 +34,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
   const capitalisedScheme =
     (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');
   const media = useMedia();
+  console.log(UnistylesRuntime.breakpoint);
   // @ts-expect-error - Reported to Gluestack error
   const { base, xs, sm } = media;
   /* eslint-disable @typescript-eslint/no-unsafe-assignment */
