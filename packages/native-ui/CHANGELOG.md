@@ -1,5 +1,19 @@
 # @utilitywarehouse/native-ui
 
+## 0.4.0
+
+### Minor Changes
+
+- [#469](https://github.com/utilitywarehouse/design-systems/pull/469) [`98871ae7`](https://github.com/utilitywarehouse/design-systems/commit/98871ae741182ae626683ec9ab84be84379fbe0c) Thanks [@jordmccord](https://github.com/jordmccord)! - Expose `createStyleSheet`, `useStyles` and `useInitialTheme` from `react-native-unistyles` and include tokens.
+
+- [#474](https://github.com/utilitywarehouse/design-systems/pull/474) [`2d98312b`](https://github.com/utilitywarehouse/design-systems/commit/2d98312b1e1e15d56eefe311efb4bb65e2f54ebd) Thanks [@jordmccord](https://github.com/jordmccord)! - Add lab `Box` component using new style lib
+
+### Patch Changes
+
+- [#469](https://github.com/utilitywarehouse/design-systems/pull/469) [`98871ae7`](https://github.com/utilitywarehouse/design-systems/commit/98871ae741182ae626683ec9ab84be84379fbe0c) Thanks [@jordmccord](https://github.com/jordmccord)! - Refactor `Alert` styling with `react-native-unistyles`
+
+- [#469](https://github.com/utilitywarehouse/design-systems/pull/469) [`98871ae7`](https://github.com/utilitywarehouse/design-systems/commit/98871ae741182ae626683ec9ab84be84379fbe0c) Thanks [@jordmccord](https://github.com/jordmccord)! - Refactor `Badge` styling with `react-native-unistyles`
+
 ## 0.3.0
 
 ### Minor Changes
