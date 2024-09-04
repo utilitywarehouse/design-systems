@@ -1,6 +1,6 @@
 import { Meta, Canvas, Story } from '@storybook/blocks';
 import * as Stories from './Box.stories';
-import { Text, NativeUIProvider, Center } from '@utilitywarehouse/native-ui';
+import { Text, NativeUIProvider, Center, Alert } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 import { colors } from '@utilitywarehouse/colour-system';
 import { BackToTopButton } from '../../../docs/components';
@@ -15,6 +15,10 @@ If you're looking for a flexible component to help with low-level layout needs, 
 
 - [Usage](#usage)
 - [Props](#props)
+
+<Box mb="$6">
+  <Alert text="This component is in the lab until we fully deprecate the current Gluestack Box in version 1.0.0" />
+</Box>
 
 ## Usage
 

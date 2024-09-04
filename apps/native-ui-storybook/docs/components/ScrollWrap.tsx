@@ -42,9 +42,10 @@ const ScrollWrap: FC<PropsWithChildren<ScrollWrapProps>> = ({
 
   return (
     <ScrollView
-      sx={{
-        padding: '$4',
-        bg,
+      // @ts-expect-error - This is a playground
+      style={{
+        padding: 16,
+        backgroundColor: bg,
         position: 'absolute',
         ...nativeStyles,
       }}

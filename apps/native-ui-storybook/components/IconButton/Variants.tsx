@@ -1,4 +1,5 @@
 import { useMedia, VStack, HStack } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 import React from 'react';
 import { StoryFn } from '@storybook/react';
 
@@ -54,9 +55,9 @@ const IconButtonVariants: StoryFn<{
   return (
     <ScrollWrap backgroundColor={_backgroundColor}>
       {isMobile ? (
-        <VStack space="md" sx={{ paddingBottom: '$10' }}>
-          {variants}
-        </VStack>
+        <Box pb="$10">
+          <VStack space="md">{variants}</VStack>
+        </Box>
       ) : (
         <HStack space="md">{variants}</HStack>
       )}

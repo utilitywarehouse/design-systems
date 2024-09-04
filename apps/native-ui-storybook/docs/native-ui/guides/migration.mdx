@@ -33,8 +33,7 @@ migrate to Native UI as UW Native UI is deprecated.
 - `@utilitywarehouse/native-ui` is a complete rewrite of `@utilitywarehouse/uw-native-ui` and has a different API.
 - `@utilitywarehouse/uw-native-ui` uses `react-native-paper` under the hood.
 - `@utilitywarehouse/native-ui` uses `gluestack-ui` under the hood.
-- `@utilitywarehouse/native-ui` uses `gluestack-style` for styling, this has a similar API to other popular UI
-  libaraies and exposes a `styled` method, utility and props at the component level.
+- `@utilitywarehouse/native-ui` uses `react-native-unistyles` for styling.
 
 ## Migration Steps
 
@@ -123,9 +122,9 @@ More info can be found in the [Getting Started](/docs/native-ui-introduction--do
 ### Styles
 
 `@utilitywarehouse/uw-native-ui` uses `StyleSheet` from `react-native` for styling, whereas `@utilitywarehouse/native-ui` uses
-`gluestack-style` for styles. You can still use the `StyleSheet` from `react-native` with `@utilitywarehouse/native-ui` but
-it is recommended to use the `sx` prop for styling. You can also use the `styled` method and utility props for styling.
-See out [Styling](/docs/native-ui-guides-styling-overview--docs) documentation for more info.
+`react-native-unitstyles` for styles. You can still use the `StyleSheet` from `react-native` with `@utilitywarehouse/native-ui` but
+it is recommended to use the `createStyleSheet` method and `useStyles` hook for styling. With the `Box` component you can use
+utility props for styling. See out [Styling](/docs/native-ui-guides-styling-overview--docs) documentation for more info.
 
 #### `StyleSheet`
 
@@ -143,10 +142,6 @@ See out [Styling](/docs/native-ui-guides-styling-overview--docs) documentation f
 - });
 
 - <View style={styles.container}>
-
-+ <Box sx={{ backgroundColor: 'red' }}>
-
-// or
 
 + <Box bg="red" />
 
@@ -197,16 +192,14 @@ Dark mode is also baked into the styling so you no longer need to use the `Dynam
 
 const MyComponent = () => {
 - const styles = useDynamicStyles();
++ const { colorMode } = useColorMode();
 
   return (
 -    <View style={styles.root}>
-+    <Box sx={
-+      backgroundColor: '$white',
-+      margin: 20,
-+      _dark: {
-+        backgroundColor: '$black',
-+      },
-+    }>
++    <Box
++      backgroundColor={colorMode === 'light' ? 'white' : 'black'}
++      margin={20},
++    >
 }
 
 -      <Typography>{title}</Typography>

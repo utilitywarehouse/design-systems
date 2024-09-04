@@ -1,8 +1,16 @@
 import { Meta, Canvas } from '@storybook/blocks';
-import { BackToTopButton } from '../../../components';
-import { Center, NativeUIProvider, Text } from '@utilitywarehouse/native-ui';
+import BackToTopButton from '../../components/BackToTopButton';
+import { Center, NativeUIProvider, Box, Text, Alert } from '@utilitywarehouse/native-ui';
 
-<Meta title="Native UI / Guides / Styling / Fonts" />
+<NativeUIProvider>
+  <Box mb="$4">
+    <Alert
+      colorScheme="gold"
+      title="Warning"
+      text="This document is now deprecated and will be removed in the next major release."
+    />
+  </Box>
+</NativeUIProvider>
 
 <BackToTopButton />
 
@@ -34,7 +42,7 @@ const MyComponent = () => (
   <NativeUIProvider>
     <Center>
       <Text
-        style={{
+        sx={{
           fontFamily: 'Work Sans',
           fontWeight: '400',
           fontSize: 16,
@@ -54,7 +62,7 @@ import { Text, Box } from '@utilitywarehouse/native-ui';
 const MyComponent = () => (
   <Box>
     <Text
-      style={{
+      sx={{
         fontFamily: 'Work Sans',
         fontWeight: '400',
         fontSize: 16,
@@ -70,7 +78,7 @@ const MyComponent = () => (
   <NativeUIProvider>
     <Center>
       <Text
-        style={{
+        sx={{
           fontFamily: 'Work Sans',
           fontWeight: '400',
           fontSize: 16,
@@ -86,48 +94,43 @@ This is because `native-ui` uses a custom font loader to load the fonts into the
 
 ## Font Weights and Aliases
 
-To make it easier to use the font weights, we have added aliases for the font weights. To use the aliases you need to use the `fontWeights` property. For example:
+To make it easier to use the font weights, we have added aliases for the font weights. To use the aliases you need to use the `fontWeight` property and pass in the weight prefixed with a `$`. For example:
 
 ```tsx
-import { Text, Box, useStyles } from '@utilitywarehouse/native-ui';
+import { Text, Box } from '@utilitywarehouse/native-ui';
 
-const MyComponent = () => {
-  const {
-    theme: { fontWeights, fontFamily, fontSizes },
-  } = useStyles();
-  return (
-    <Box>
-      <Text
-        style={{
-          fontFamily: fontFamily.body,
-          fontWeight: fontWeights.regular,
-          fontSize: fontSizes.md,
-        }}
-      >
-        Hello World
-      </Text>
-    </Box>
-  );
-};
+const MyComponent = () => (
+  <Box>
+    <Text
+      sx={{
+        fontFamily: 'Work Sans',
+        fontWeight: '$regular',
+        fontSize: 16,
+      }}
+    >
+      Hello World
+    </Text>
+  </Box>
+);
 ```
 
 The `Work Sans` font has the following weights available:
 
-| Weight      | Value | Alias                    |
-| ----------- | ----- | ------------------------ |
-| Thin        | 100   | `fontWeights.thin`       |
-| Extra Light | 200   | `fontWeights.extralight` |
-| Light       | 300   | `fontWeights.light`      |
-| Regular     | 400   | `fontWeights.regular`    |
-| Medium      | 500   | `fontWeights.medium`     |
-| Semi Bold   | 600   | `fontWeights.semibold`   |
-| Bold        | 700   | `fontWeights.bold`       |
-| Extra Bold  | 800   | `fontWeights.extrabold`  |
-| Black       | 900   | `fontWeights.black`      |
+| Weight      | Value | Alias         |
+| ----------- | ----- | ------------- |
+| Thin        | 100   | `$thin`       |
+| Extra Light | 200   | `$extralight` |
+| Light       | 300   | `$light`      |
+| Regular     | 400   | `$regular`    |
+| Medium      | 500   | `$medium`     |
+| Semi Bold   | 600   | `$semibold`   |
+| Bold        | 700   | `$bold`       |
+| Extra Bold  | 800   | `$extrabold`  |
+| Black       | 900   | `$black`      |
 
 The `Aeonik` font has the following weights available:
 
-| Weight  | Value | Alias                 |
-| ------- | ----- | --------------------- |
-| Regular | 400   | `fontWeights.regular` |
-| Bold    | 700   | `fontWeights.bold`    |
+| Weight  | Value | Alias      |
+| ------- | ----- | ---------- |
+| Regular | 400   | `$regular` |
+| Bold    | 700   | `$bold`    |

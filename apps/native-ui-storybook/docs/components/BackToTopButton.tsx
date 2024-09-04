@@ -1,6 +1,7 @@
 import { Button, ButtonIcon, ButtonText, NativeUIProvider } from '@utilitywarehouse/native-ui';
 import { ChevronUpSmallIcon } from '@utilitywarehouse/react-native-icons';
 import React, { useState } from 'react';
+import { Platform } from 'react-native';
 
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false);
@@ -28,18 +29,21 @@ const ScrollButton = () => {
       <Button
         onPress={scrollToTop}
         variant="ghost"
-        sx={{
+        // @ts-expect-error - This is a playground
+        style={{
           display: visible ? 'flex' : 'none',
           maxWidth: 220,
-          _web: {
-            position: 'fixed',
-            width: '100%',
-            left: '80%',
-            bottom: 40,
-            height: 20,
-            zIndex: 1,
-            cursor: 'pointer',
-          },
+          ...(Platform.OS === 'web'
+            ? {
+                position: 'fixed',
+                width: '100%',
+                left: '80%',
+                bottom: 40,
+                height: 20,
+                zIndex: 1,
+                cursor: 'pointer',
+              }
+            : {}),
         }}
       >
         <ButtonIcon as={ChevronUpSmallIcon} />

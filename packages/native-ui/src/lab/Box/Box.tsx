@@ -155,6 +155,10 @@ const Box: React.FC<BoxProps> = ({
       columnGap: getValue(columnGap, space),
       gap: getValue(gap, space),
       rowGap: getValue(rowGap, space),
+      height: getValue(height || h, space),
+      width: getValue(width || w, space),
+      maxHeight: getValue(maxHeight, space),
+      maxWidth: getValue(maxWidth, space),
     }),
     [
       padding,
@@ -192,6 +196,11 @@ const Box: React.FC<BoxProps> = ({
       columnGap,
       marginEnd,
       marginStart,
+      height,
+      h,
+      width,
+      w,
+      maxHeight,
     ]
   );
 
@@ -301,11 +310,8 @@ const Box: React.FC<BoxProps> = ({
         flexGrow,
         flexShrink,
         flexWrap,
-        height: height || h,
         justifyContent,
         left,
-        maxHeight,
-        maxWidth,
         minHeight,
         minWidth,
         overflow,
@@ -313,7 +319,6 @@ const Box: React.FC<BoxProps> = ({
         right,
         start,
         top,
-        width: width || w,
         zIndex,
         direction,
         backfaceVisibility,

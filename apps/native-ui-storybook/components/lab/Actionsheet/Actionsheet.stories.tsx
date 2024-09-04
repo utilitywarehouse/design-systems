@@ -1,6 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import {
-  Box,
   Button,
   ButtonText,
   HStack,
@@ -10,6 +9,7 @@ import {
   Text,
   VStack,
 } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 import {
   Actionsheet,
   ActionsheetBackdrop,
@@ -26,7 +26,7 @@ const ActionsheetBasic: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
-    <Box h="$96" alignItems="center" justifyContent="center">
+    <Box h={96 * 4} alignItems="center" justifyContent="center">
       <Button onPress={handleClose}>
         <ButtonText>Open</ButtonText>
       </Button>
@@ -70,14 +70,15 @@ const KeyboardAvoidWithSnap: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
-    <Box h="$96" alignItems="center" justifyContent="center">
+    <Box h={96 * 4} alignItems="center" justifyContent="center">
       <Button onPress={handleClose}>
         <ButtonText>Open</ButtonText>
       </Button>
+
       <Actionsheet isOpen={showActionsheet} onClose={handleClose} snapPoints={[50]}>
         <KeyboardAvoidingView
           behavior="position"
-          sx={{
+          style={{
             position: 'relative',
             flex: 1,
             justifyContent: 'flex-end',
@@ -92,7 +93,7 @@ const KeyboardAvoidWithSnap: StoryFn = () => {
               <HStack justifyContent="center" alignItems="center" space="md">
                 <Box
                   w={50}
-                  h="$full"
+                  h="100%"
                   px="$2"
                   borderWidth={1}
                   borderStyle="solid"
@@ -122,14 +123,14 @@ const WithScrollView: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
-    <Box h="$96" alignItems="center" justifyContent="center">
+    <Box h={96 * 4} alignItems="center" justifyContent="center">
       <Button onPress={handleClose}>
         <ButtonText>Open</ButtonText>
       </Button>
       <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
         <KeyboardAvoidingView
           behavior="position"
-          sx={{
+          style={{
             position: 'relative',
             flex: 1,
             justifyContent: 'flex-end',

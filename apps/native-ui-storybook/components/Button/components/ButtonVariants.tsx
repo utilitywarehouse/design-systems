@@ -6,10 +6,10 @@ import {
   ButtonGroup,
   ButtonSpinner,
   ButtonText,
-  Box,
   useMedia,
   Heading,
 } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 import { Button as GSButton } from '@gluestack-ui/themed';
 import { AddSmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-native-icons';
 import React, { ComponentProps } from 'react';
@@ -46,17 +46,13 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
   return (
     <VStack space="2xl">
       <Box
-        sx={
-          validScheme
-            ? undefined
-            : {
-                opacity: 0,
-                display: isMobile ? 'none' : 'flex',
-                _web: {
-                  pointerEvents: 'none',
-                },
-              }
-        }
+        {...(validScheme
+          ? {}
+          : {
+              opacity: 0,
+              display: isMobile ? 'none' : 'flex',
+              pointerEvents: 'none',
+            })}
       >
         <Heading $light-color={textColor}>Solid - {capitalisedScheme}</Heading>
         <ButtonGroup flexDirection="column" space="md">
@@ -169,9 +165,10 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           </VariantTitle>
         </ButtonGroup>
       </Box>
-      <Box>
+      <Box pb="$4">
         <Heading $light-color={textColor}>Ghost - {capitalisedScheme}</Heading>
-        <ButtonGroup flexDirection="column" space="md" sx={{ mb: '$4' }}>
+
+        <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
               <ButtonText>Example</ButtonText>

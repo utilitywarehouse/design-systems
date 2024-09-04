@@ -11,11 +11,11 @@ import { Path, Rect } from 'react-native-svg';
 
 const IconBasic = () => {
   return (
-    <HStack gap={10}>
-      <Icon as={ElectricityMediumIcon} sx={{ color: '$serviceElectricity' }} />
-      <Icon as={MobileMediumIcon} sx={{ color: '$serviceMobile' }} />
-      <Icon as={BroadbandMediumIcon} sx={{ color: '$serviceLandline' }} />
-      <Icon as={InsuranceMediumIcon} sx={{ color: '$serviceInsurance' }} />
+    <HStack space="lg">
+      <Icon as={ElectricityMediumIcon} color="$serviceElectricity" />
+      <Icon as={MobileMediumIcon} color="$serviceMobile" />
+      <Icon as={BroadbandMediumIcon} color="$serviceLandline" />
+      <Icon as={InsuranceMediumIcon} color="$serviceInsurance" />
     </HStack>
   );
 };
