@@ -9,6 +9,7 @@ export * from './List';
 export * from './Skeleton';
 export * from './Badge';
 export * from './Checkbox';
+export * from './Radio';
 
 // Gluestack UI
 export {
