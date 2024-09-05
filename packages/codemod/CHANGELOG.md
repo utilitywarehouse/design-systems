@@ -1,5 +1,15 @@
 # @utilitywarehouse/ds-codemod
 
+## 1.1.0
+
+### Minor Changes
+
+- [#479](https://github.com/utilitywarehouse/design-systems/pull/479) [`e7d18485`](https://github.com/utilitywarehouse/design-systems/commit/e7d18485a539239d112580d38ac68dac1b3a1934) Thanks [@robphoenix](https://github.com/robphoenix)! - Add codemod to rename `v0` imports
+
+### Patch Changes
+
+- [#479](https://github.com/utilitywarehouse/design-systems/pull/479) [`e7d18485`](https://github.com/utilitywarehouse/design-systems/commit/e7d18485a539239d112580d38ac68dac1b3a1934) Thanks [@robphoenix](https://github.com/robphoenix)! - Handle `web-ui-v0` imports
+
 ## 1.0.0
 
 ### Major Changes
