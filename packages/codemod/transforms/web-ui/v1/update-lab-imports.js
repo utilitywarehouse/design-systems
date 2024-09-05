@@ -12,7 +12,11 @@ function transformer(file, api) {
 
   root
     .find(j.ImportDeclaration)
-    .filter(path => path.value.source.value === '@utilitywarehouse/web-ui/dist/lab')
+    .filter(
+      path =>
+        path.value.source.value === '@utilitywarehouse/web-ui/dist/lab' ||
+        path.value.source.value === '@utilitywarehouse/web-ui-v0/dist/lab'
+    )
     .forEach(path => {
       j(path)
         .find(j.ImportSpecifier)
