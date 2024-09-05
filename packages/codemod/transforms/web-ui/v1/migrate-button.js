@@ -26,7 +26,11 @@ function transformer(file, api) {
     // Finding all Web UI import declarations
     const webUiImports = root
       .find(j.ImportDeclaration)
-      .filter(path => path.node.source.value === '@utilitywarehouse/web-ui');
+      .filter(
+        path =>
+          path.value.source.value === '@utilitywarehouse/web-ui' ||
+          path.value.source.value === '@utilitywarehouse/web-ui-v0'
+      );
 
     // Build our new import specifier
     const importSpecifier = j.importSpecifier(j.identifier('Link'));
@@ -151,6 +155,16 @@ function transformer(file, api) {
       return path;
     }
   });
+
+  // If the original import was from `web-ui-v0` we need to rename it
+  root
+    .find(j.ImportDeclaration)
+    .filter(path => path.node.source.value === '@utilitywarehouse/web-ui-v0')
+    .forEach(v0Import =>
+      j(v0Import).replaceWith(
+        j.importDeclaration(v0Import.node.specifiers, j.stringLiteral('@utilitywarehouse/web-ui'))
+      )
+    );
 
   // If the first node has been modified or deleted, reattach the comments
   const firstNode2 = getFirstNode();

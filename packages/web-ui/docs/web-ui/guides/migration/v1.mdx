@@ -30,18 +30,32 @@ documenting for others, thankyou!
   - [Update Typography](#update-typography)
   - [Migrate Button](#migrate-button)
 
-## Using major versions concurrently
+## Partial Migrations
 
 If you need to you can install and use different major versions
 concurrently, using NPM aliasing. This can aid a partial migration approach,
-rather than having to migrate you whole application in one go. We don't
-recommend you have more than 2 major versions installed at one time, nor have
-them more than 1 step apart.
+rather than having to migrate you whole application in one go.
+
+We don't recommend you have more than 2 major versions installed at one time,
+nor have them more than 1 step apart.
+
+Have a look at the following articles to understand how to make use of NPM aliasing.
 
 - [Demystifying NPM Package name aliasing: A Comprehensive Guide](https://medium.com/@mahesh.jsdev/demystifying-npm-package-name-aliasing-a-comprehensive-guide-5a0a59519de9)
 - [Creating aliases with npm](https://andrewevans.dev/blog/2021-12-06-creating-aliases-with-npm/)
 - [Using Import aliases in JavaScript](https://medium.com/dailyjs/using-import-aliases-in-javascript-a0b46237601c)
 - [Installing Multiple Versions of the Same Package in your project via package aliases](https://willmendesneto.com/posts/installing-multiple-versions-of-the-same-package-in-your-project-via-package-aliases/)
+
+We recommend aliasing Web UI `v0.x.x` to `@utilitywarehouse/web-ui-v0`, and we
+provide a codemod to update all the imports to this in your application. All
+the `v1` codemods mentioned below will handle both `@utilitywarehouse/web-ui` &
+`@utilitywarehouse/web-ui-v0` imports.
+
+To use the codemod:
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v1/rename-legacy-imports <path>
+```
 
 ## Typography theme
 
