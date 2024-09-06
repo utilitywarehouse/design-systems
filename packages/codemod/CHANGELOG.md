@@ -1,5 +1,11 @@
 # @utilitywarehouse/ds-codemod
 
+## 1.1.1
+
+### Patch Changes
+
+- [#482](https://github.com/utilitywarehouse/design-systems/pull/482) [`eec9ae0e`](https://github.com/utilitywarehouse/design-systems/commit/eec9ae0ebc03348eec129e0cba873420cf6ebd7b) Thanks [@robphoenix](https://github.com/robphoenix)! - fix naming
+
 ## 1.1.0
 
 ### Minor Changes
