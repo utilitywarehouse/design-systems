@@ -27,7 +27,7 @@ function checkGitStatus(force) {
     if (force) {
       console.log(`WARNING: ${errorMessage}. Forcibly continuing.`);
     } else {
-      console.log('Thank you for using @utilitywarehouse/customer-ui-codemod!');
+      console.log('Thank you for using @utilitywarehouse/ds-codemod!');
       console.log('\nBut before we continue, please stash or commit your git changes.');
       console.log('\nYou may use the --force flag to override this safety check.');
       process.exit(1);
