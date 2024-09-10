@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Slot } from '@radix-ui/react-slot';
 import { useBackground } from '../Box';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import {
@@ -116,7 +117,17 @@ export const Text = React.forwardRef<
   React.PropsWithChildren<PropsWithSx<TextProps>>
 >(
   (
-    { variant = 'body', component = 'p', bold, noWrap, color, className, inverted, ...props },
+    {
+      variant = 'body',
+      component = 'p',
+      bold,
+      noWrap,
+      color,
+      className,
+      inverted,
+      asChild,
+      ...props
+    },
     ref
   ) => {
     const { isInvertedBackground } = useBackground();
@@ -128,7 +139,7 @@ export const Text = React.forwardRef<
     return (
       <StyledElement
         ref={ref}
-        as={component}
+        as={asChild ? Slot : component}
         className={clsx(componentClassName, className, classNames.variant[variant], {
           [classNames.bold]: bold,
           [classNames.noWrap]: noWrap,
