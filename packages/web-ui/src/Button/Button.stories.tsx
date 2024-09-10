@@ -12,9 +12,6 @@ import {
   OpenMediumIcon,
 } from '@utilitywarehouse/react-icons';
 import { Box } from '../Box';
-import { useMediaQuery } from '@mui/system';
-import { mediaQueries } from '../utils';
-import { useMediaQueries } from '../hooks/use-media-queries';
 
 const sizes = ['medium', 'small'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;
@@ -46,10 +43,6 @@ type Story = StoryObj<typeof Button>;
 export const KitchenSink: Story = {
   parameters: { controls: { hideNoControlsWarning: true } },
   render: () => {
-    const mq = mediaQueries.above('tablet');
-    const oldMq = useMediaQuery(mq);
-    const newMq = useMediaQueries(mq);
-    console.log({ mq, newMq, oldMq });
     return (
       <Flex direction="column" gap={6}>
         <Flex gap={2} direction="column">
