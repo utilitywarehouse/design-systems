@@ -81,3 +81,18 @@ There are also some media query helper functions available for more specific med
 | `mediaQueries.between` |                    This function takes a breakpoint key and returns a media query string matching screen widths greater than the given start screen size and less than the given end screen size.                    | `mediaQueries.between("tablet", "desktop")` | {mediaQueries.between("tablet", "desktop")} |
 |  `mediaQueries.only`   |                    This function takes a breakpoint key and returns a media query string matching screen widths starting from the given screen size and stopping just before the next breakpoint.                    |        `mediaQueries.only("tablet")`        |        {mediaQueries.only("tablet")}        |
 |   `mediaQueries.not`   |                     This function takes a breakpoint key and returns a media query string matching screen widths stopping at the given screen size and starting just before the next breakpoint.                     |        `mediaQueries.not("desktop")`        |        {mediaQueries.not("desktop")}        |
+
+## useMediaQuery hook
+
+This is [the MUI hook](https://mui.com/material-ui/react-use-media-query/) with our custom breakpoints: mobile, tablet, desktop & wide.
+
+You can use it to match media queries. We recommend you use it with the
+`mediaQueries` object, rather than the theme.
+
+```tsx
+import { useMediaQuery, mediaQueries } from '@utilitywarehouse/web-ui';
+
+const isMobileOrTablet = useMediaQuery(mediaQueries.below('desktop'));
+const isDesktop = useMediaQuery(mediaQueries.above('desktop'));
+const isTablet = useMediaQuery(mediaQueries.between('tablet', 'desktop'));
+```
