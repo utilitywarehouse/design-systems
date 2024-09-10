@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  RadioGroup,
-  Radio,
-  RadioIndicator,
-  RadioLabel,
-  Radio1,
-  RadioGroup1,
-  RadioIndicator1,
-  RadioLabel1,
-} from '@utilitywarehouse/native-ui';
+import { RadioGroup, Radio, RadioIndicator, RadioLabel } from '@utilitywarehouse/native-ui';
 import { StoryFn } from '@storybook/react';
 
 const RadioBasic: StoryFn<{
@@ -17,12 +8,6 @@ const RadioBasic: StoryFn<{
 }> = ({ isDisabled, _RadioLabel: label }) => {
   return (
     <>
-      <RadioGroup1>
-        <Radio1 value="thing">
-          <RadioIndicator1 />
-          <RadioLabel1>Thing</RadioLabel1>
-        </Radio1>
-      </RadioGroup1>
       <RadioGroup>
         <Radio
           value="Label 1"

@@ -1,25 +1,16 @@
-import React from 'react';
 import { createRadio } from '@gluestack-ui/radio';
-import { useRadioContext } from '@gluestack-ui/radio/src/context';
-import { ComponentProps } from 'react';
-import { Text, View } from 'react-native';
-
-// @ts-ignore
-const RadioUI = props => {
-  console.log('RadioUI props', props);
-  return (
-    <View {...props}>
-      <Text>Hello</Text>
-    </View>
-  );
-};
+import StyledRadio from './RadioRoot';
+import StyledRadioIndicator from './RadioIndicator';
+import StyledRadioIcon from './RadioIcon';
+import StyledRadioLabel from './RadioLabel';
+import StyledRadioGroup from './RadioGroup';
 
 const Radio = createRadio({
-  Root: RadioUI,
-  Group: View,
-  Indicator: View,
-  Icon: View,
-  Label: Text,
+  Root: StyledRadio,
+  Group: StyledRadioGroup,
+  Indicator: StyledRadioIndicator,
+  Icon: StyledRadioIcon,
+  Label: StyledRadioLabel,
 });
 
 Radio.displayName = 'Radio';

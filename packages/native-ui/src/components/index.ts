@@ -2,7 +2,6 @@
 export * from './IconButton';
 export * from './Alert';
 export { default as AnimatedOutline } from './AnimatedOutline';
-export { default as RadioIndicator } from './RadioIndicator';
 export * from './Button';
 export * from './Spinner';
 export * from './List';
@@ -42,7 +41,6 @@ export { Checkbox, CheckboxGroup, CheckboxLabel } from '@gluestack-ui/themed';
 
 export { Link, LinkText } from '@gluestack-ui/themed';
 export { Pressable } from '@gluestack-ui/themed';
-export { Radio, RadioGroup, RadioLabel, RadioIcon } from '@gluestack-ui/themed';
 
 export { Image } from '@gluestack-ui/themed';
 
