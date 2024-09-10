@@ -43,4 +43,8 @@ export interface TextProps
   component?: BoxProps['component'];
   /** Inverts the component colours, for use on darker backgrounds. */
   inverted?: boolean;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   */
+  asChild?: boolean;
 }
