@@ -1,11 +1,8 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-
 import { UnstyledButton } from '../UnstyledButton';
 import { BaseButtonProps } from './BaseButton.props';
-
 import { styled } from '../theme';
 import { PropsWithSx } from '../types';
 import {

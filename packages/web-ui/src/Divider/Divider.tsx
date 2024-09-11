@@ -1,10 +1,7 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { colors } from '@utilitywarehouse/colour-system';
-
 import { DividerProps, ORIENTATIONS, Orientation } from './Divider.props';
-
 import { styled } from '../theme';
 import { px, withGlobalPrefix } from '../utils';
 

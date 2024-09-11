@@ -1,12 +1,10 @@
-import clsx from 'clsx';
+import { Slot } from '@radix-ui/react-slot';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { UnstyledButtonProps } from './UnstyledButton.props';
-
 import { styled } from '../theme';
 import { PropsWithSx } from '../types';
 import { withGlobalPrefix } from '../utils';
-import { Slot } from '@radix-ui/react-slot';
 
 const componentName = 'UnstyledButton';
 const componentClassName = withGlobalPrefix(componentName);

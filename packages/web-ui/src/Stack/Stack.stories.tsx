@@ -1,13 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-
+import Divider from '@mui/material/Divider';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-
 import { Box } from '../Box';
 import { Stack } from '../Stack';
 import { Text } from '../Text';
-import Divider from '@mui/material/Divider';
-
-import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Stack> = {
   title: 'Web UI / Layout / Stack',

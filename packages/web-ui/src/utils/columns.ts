@@ -1,5 +1,4 @@
 import { StackProps } from '../Stack';
-
 import { breakpoints } from '../tokens';
 
 function convert(c: string) {

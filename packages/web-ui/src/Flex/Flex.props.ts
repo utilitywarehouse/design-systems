@@ -1,10 +1,8 @@
 import { ElementType } from 'react';
-
-import { BoxProps } from '../Box';
-
-import { Theme } from '../theme';
 import { BoxTypeMap as MuiBoxTypeMap, ResponsiveStyleValue } from '@mui/system';
 import { OverrideProps } from '@mui/types';
+import { BoxProps } from '../Box';
+import { Theme } from '../theme';
 
 export interface FlexOwnProps {
   display?: ResponsiveStyleValue<'none' | 'flex' | 'inline-flex'>;

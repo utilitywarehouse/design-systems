@@ -1,13 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-
 import { colors } from '@utilitywarehouse/colour-system';
-
 import { Box } from '../Box';
 import { FieldsetLegend } from '../FieldsetLegend';
 import { Text } from '../Text';
 import { Fieldset } from './Fieldset';
-
-import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Fieldset> = {
   title: 'Web UI / Components / Fieldset',

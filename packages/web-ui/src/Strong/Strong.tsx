@@ -1,8 +1,6 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { StrongProps } from './Strong.props';
-
 import { styled } from '../theme';
 import { fontWeights } from '../tokens';
 import { PropsWithSx } from '../types';

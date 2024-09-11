@@ -1,14 +1,12 @@
 import * as React from 'react';
-
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-
-import { styled } from '../theme';
-import { fontWeights, fonts } from '../tokens';
-import { DATA_ATTRIBUTES, px } from '../utils';
 import {
   ToggleButton as MuiToggleButton,
   ToggleButtonProps as MuiToggleButtonProps,
 } from '@mui/material';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { styled } from '../theme';
+import { fontWeights, fonts } from '../tokens';
+import { DATA_ATTRIBUTES, px } from '../utils';
 
 const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
   return {

@@ -1,9 +1,7 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { Text } from '../Text';
 import type { TextProps } from '../Text';
-
 import { PropsWithSx } from '../types';
 import { withGlobalPrefix } from '../utils';
 

@@ -1,15 +1,12 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { colors } from '@utilitywarehouse/colour-system';
-
 import { BaseCheckbox } from '../BaseCheckbox';
 import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Flex } from '../Flex';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
 import { CheckboxTileProps } from './CheckboxTile.props';
-
 import { useIds } from '../hooks';
 import styled from '../theme/styled';
 import { PropsWithSx } from '../types';

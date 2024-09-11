@@ -1,5 +1,4 @@
 import { BaseButtonProps } from '../BaseButton';
-
 import { Responsive } from '../types';
 
 export type ButtonProps = BaseButtonProps & {

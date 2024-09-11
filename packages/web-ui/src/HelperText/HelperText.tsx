@@ -1,15 +1,12 @@
-import clsx from 'clsx';
-import * as React from 'react';
-
-import { colors } from '@utilitywarehouse/colour-system';
 import {
   InformationMediumContainedIcon,
   TickMediumContainedIcon,
   WarningMediumContainedIcon,
 } from '@utilitywarehouse/react-icons';
-
+import * as React from 'react';
+import clsx from 'clsx';
+import { colors } from '@utilitywarehouse/colour-system';
 import { HelperTextProps } from './HelperText.props';
-
 import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
 import { PropsWithSx } from '../types';

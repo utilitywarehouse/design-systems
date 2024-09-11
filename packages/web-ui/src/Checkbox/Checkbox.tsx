@@ -1,13 +1,11 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { BaseCheckbox } from '../BaseCheckbox';
 import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Flex } from '../Flex';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
 import { CheckboxProps } from './Checkbox.props';
-
 import { useIds } from '../hooks';
 import { styled } from '../theme';
 import { PropsWithSx } from '../types';

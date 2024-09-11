@@ -1,9 +1,7 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-
 import { Box } from '../Box';
 import { FieldsetLegend } from './FieldsetLegend';
-
-import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof FieldsetLegend> = {
   title: 'Web UI / Typography / FieldsetLegend',

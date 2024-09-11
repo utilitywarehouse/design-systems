@@ -1,8 +1,7 @@
+import { Theme as MuiTheme, createTheme } from '@mui/material/styles';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-
 import { breakpoints, fontWeights, fonts } from '../tokens';
 import { htmlFontSize, pxToRem, spacing } from '../utils';
-import { Theme as MuiTheme, createTheme } from '@mui/material/styles';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },

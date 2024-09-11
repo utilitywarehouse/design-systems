@@ -1,5 +1,4 @@
 import { ComponentPropsWithoutRef } from 'react';
-
 import { ResponsiveStyleValue } from '@mui/system';
 
 export interface SpacerProps extends ComponentPropsWithoutRef<'div'> {

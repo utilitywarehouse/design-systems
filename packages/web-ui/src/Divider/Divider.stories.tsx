@@ -1,15 +1,12 @@
+import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-
 import { colors } from '@utilitywarehouse/colour-system';
-
 import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Heading } from '../Heading';
 import { Strong } from '../Strong';
 import { Text } from '../Text';
 import { Divider } from './Divider';
-
-import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Divider> = {
   title: 'Web UI / Components / Divider',

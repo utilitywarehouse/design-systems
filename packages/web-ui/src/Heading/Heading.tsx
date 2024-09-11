@@ -1,11 +1,8 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-
 import { useBackground } from '../Box';
 import { HeadingProps } from './Heading.props';
-
 import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
 import { PropsWithSx } from '../types';

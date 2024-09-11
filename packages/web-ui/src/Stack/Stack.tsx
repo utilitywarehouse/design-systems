@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import MuiStack from '@mui/material/Stack';
 import type { StackProps as MuiStackProps } from '@mui/material/Stack';

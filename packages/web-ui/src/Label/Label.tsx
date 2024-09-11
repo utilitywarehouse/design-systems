@@ -1,10 +1,7 @@
 import * as React from 'react';
-
 import { colors } from '@utilitywarehouse/colour-system';
-
 import { createBox } from '../Box';
 import { LabelProps } from './Label.props';
-
 import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
 import { PropsWithSx } from '../types';

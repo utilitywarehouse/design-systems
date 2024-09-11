@@ -1,5 +1,4 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
-
 import { BoxProps } from '../Box';
 import { BaseCheckboxGroupContextValue } from './BaseCheckboxGroup.context';
 

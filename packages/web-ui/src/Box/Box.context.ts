@@ -1,5 +1,4 @@
 import { createContext, useContext } from 'react';
-
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 type BackgroundContextValue = {

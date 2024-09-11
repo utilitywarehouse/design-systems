@@ -1,10 +1,8 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { BaseRadioGroup } from '../BaseRadioGroup';
 import { Box } from '../Box';
 import { RadioGridGroupProps } from './RadioGridGroup.props';
-
 import { PropsWithSx } from '../types';
 import { getColumns, withGlobalPrefix } from '../utils';
 

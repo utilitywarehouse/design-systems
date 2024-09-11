@@ -1,9 +1,7 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { BaseButton } from '../BaseButton';
 import { IconButtonProps } from './IconButton.props';
-
 import { styled } from '../theme';
 import { PropsWithSx } from '../types';
 import {

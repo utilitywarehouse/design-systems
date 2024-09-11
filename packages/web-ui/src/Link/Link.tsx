@@ -1,10 +1,8 @@
-import clsx from 'clsx';
+import { Slot } from '@radix-ui/react-slot';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { colors } from '@utilitywarehouse/colour-system';
-
 import { LinkProps } from './Link.props';
-
 import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
 import { PropsWithSx } from '../types';
@@ -18,7 +16,6 @@ import {
   withBreakpoints,
   withGlobalPrefix,
 } from '../utils';
-import { Slot } from '@radix-ui/react-slot';
 
 const componentName = 'Link';
 const componentClassName = withGlobalPrefix(componentName);

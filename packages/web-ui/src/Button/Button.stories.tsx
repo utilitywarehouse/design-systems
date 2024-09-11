@@ -1,5 +1,4 @@
-import * as React from 'react';
-
+import type { Meta, StoryObj } from '@storybook/react';
 import {
   ChevronLeft01MediumIcon,
   ChevronLeft01SmallIcon,
@@ -7,14 +6,12 @@ import {
   ChevronRight01SmallIcon,
   OpenMediumIcon,
 } from '@utilitywarehouse/react-icons';
-
+import * as React from 'react';
 import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Heading } from '../Heading';
 import { Text } from '../Text';
 import { Button } from './Button';
-
-import type { Meta, StoryObj } from '@storybook/react';
 
 const sizes = ['medium', 'small'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;

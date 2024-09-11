@@ -1,6 +1,5 @@
-import type { ReactNode } from 'react';
-
 import type { CheckboxProps as RadixCheckboxProps } from '@radix-ui/react-checkbox';
+import type { ReactNode } from 'react';
 
 export interface BaseCheckboxProps
   extends Omit<

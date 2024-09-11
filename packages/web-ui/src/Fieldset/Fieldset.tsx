@@ -1,9 +1,7 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { Flex } from '../Flex';
 import { FieldsetProps } from './Fieldset.props';
-
 import { styled } from '../theme';
 import { PropsWithSx } from '../types';
 import { withGlobalPrefix } from '../utils';

@@ -1,8 +1,6 @@
-import * as React from 'react';
-
-import { UnstyledButton } from './UnstyledButton';
-
 import type { Meta, StoryObj } from '@storybook/react';
+import * as React from 'react';
+import { UnstyledButton } from './UnstyledButton';
 
 const meta: Meta<typeof UnstyledButton> = {
   title: 'Web UI / Components / UnstyledButton',

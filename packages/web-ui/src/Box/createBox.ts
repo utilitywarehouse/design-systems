@@ -1,9 +1,8 @@
 import * as React from 'react';
-
-import { type Theme, theme } from '../theme';
-import { withGlobalPrefix } from '../utils';
 import { BoxTypeMap as MuiBoxTypeMap, createBox as createMuiBox } from '@mui/system';
 import { OverridableComponent } from '@mui/types';
+import { type Theme, theme } from '../theme';
+import { withGlobalPrefix } from '../utils';
 
 type Options = {
   componentName?: string;

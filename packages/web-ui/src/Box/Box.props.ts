@@ -1,8 +1,7 @@
 import { ElementType } from 'react';
-
-import { Theme } from '../theme';
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
 import { OverrideProps } from '@mui/types';
+import { Theme } from '../theme';
 
 export interface BoxOwnProps {
   /**

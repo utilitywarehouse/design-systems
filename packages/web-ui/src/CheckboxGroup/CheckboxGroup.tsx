@@ -1,10 +1,8 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Flex } from '../Flex';
 import { CheckboxGroupProps } from './CheckboxGroup.props';
-
 import { styled } from '../theme';
 import { withGlobalPrefix } from '../utils';
 

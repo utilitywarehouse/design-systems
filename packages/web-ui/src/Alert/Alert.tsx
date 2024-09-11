@@ -1,7 +1,3 @@
-import clsx from 'clsx';
-import * as React from 'react';
-
-import { colors } from '@utilitywarehouse/colour-system';
 import {
   ChevronRightMediumIcon,
   CloseMediumIcon,
@@ -10,14 +6,15 @@ import {
   TickMediumContainedIcon,
   WarningMediumContainedIcon,
 } from '@utilitywarehouse/react-icons';
-
+import * as React from 'react';
+import clsx from 'clsx';
+import { colors } from '@utilitywarehouse/colour-system';
 import { Flex } from '../Flex';
 import { AlertProps } from './Alert.props';
 import { AlertButton } from './AlertButton';
 import { AlertLink } from './AlertLink';
 import { AlertText } from './AlertText';
 import { AlertTitle } from './AlertTitle';
-
 import { styled } from '../theme';
 import { PropsWithSx } from '../types';
 import { COLORSCHEME_SELECTORS, DATA_ATTRIBUTES, px, withGlobalPrefix } from '../utils';

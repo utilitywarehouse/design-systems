@@ -1,15 +1,13 @@
+import { useControllableState } from '@radix-ui/react-use-controllable-state';
 import * as React from 'react';
-
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
 import { Flex } from '../Flex';
 import { HelperText } from '../HelperText';
 import { BaseCheckboxGroupProvider } from './BaseCheckboxGroup.context';
 import { BaseCheckboxGroupProps } from './BaseCheckboxGroup.props';
-
 import { useIds } from '../hooks';
 import { mergeIds } from '../utils';
-import { useControllableState } from '@radix-ui/react-use-controllable-state';
 
 const componentName = 'BaseCheckboxGroup';
 

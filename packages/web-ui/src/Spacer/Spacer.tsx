@@ -1,8 +1,6 @@
 import * as React from 'react';
-
 import { createBox } from '../Box';
 import { SpacerProps } from './Spacer.props';
-
 import { breakpoints } from '../tokens';
 import { PropsWithSx } from '../types';
 import { px, spacing } from '../utils';

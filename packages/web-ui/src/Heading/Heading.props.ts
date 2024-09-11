@@ -1,5 +1,4 @@
 import { ComponentPropsWithoutRef, ElementType } from 'react';
-
 import { ResponsiveStyleValue } from '@mui/system';
 
 export interface HeadingProps extends ComponentPropsWithoutRef<'h2'> {

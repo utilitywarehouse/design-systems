@@ -1,5 +1,4 @@
-import * as React from 'react';
-
+import type { Meta, StoryObj } from '@storybook/react';
 import {
   ChevronLeftMediumIcon,
   ChevronLeftSmallIcon,
@@ -8,11 +7,9 @@ import {
   ChevronUpMediumIcon,
   OpenMediumIcon,
 } from '@utilitywarehouse/react-icons';
-
+import * as React from 'react';
 import { Flex } from '../Flex';
 import { Link } from './Link';
-
-import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Link> = {
   title: 'Web UI / Components / Links / Link',

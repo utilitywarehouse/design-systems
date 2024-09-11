@@ -1,24 +1,21 @@
-import clsx from 'clsx';
-import * as React from 'react';
-
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-
-import { useBaseRadioGroup } from '../BaseRadioGroup';
-import { Flex } from '../Flex';
-import { HelperText } from '../HelperText';
-import { Label } from '../Label';
-import { RadioProps } from './Radio.props';
-
-import { useIds } from '../hooks';
-import { styled } from '../theme';
-import { PropsWithSx } from '../types';
-import { withGlobalPrefix } from '../utils';
 import {
   Indicator,
   Item,
   RadioGroupIndicatorProps,
   type RadioGroupItemProps,
 } from '@radix-ui/react-radio-group';
+import * as React from 'react';
+import clsx from 'clsx';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { useBaseRadioGroup } from '../BaseRadioGroup';
+import { Flex } from '../Flex';
+import { HelperText } from '../HelperText';
+import { Label } from '../Label';
+import { RadioProps } from './Radio.props';
+import { useIds } from '../hooks';
+import { styled } from '../theme';
+import { PropsWithSx } from '../types';
+import { withGlobalPrefix } from '../utils';
 
 const componentName = 'Radio';
 const componentClassName = withGlobalPrefix(componentName);

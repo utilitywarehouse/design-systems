@@ -1,10 +1,8 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Box } from '../Box';
 import { CheckboxGridGroupProps } from './CheckboxGridGroup.props';
-
 import { getColumns, withGlobalPrefix } from '../utils';
 
 const componentName = 'CheckboxGridGroup';

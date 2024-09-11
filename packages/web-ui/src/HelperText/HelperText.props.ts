@@ -1,5 +1,4 @@
 import { ComponentPropsWithoutRef } from 'react';
-
 import type { LabelProps } from '../Label';
 
 export interface HelperTextProps

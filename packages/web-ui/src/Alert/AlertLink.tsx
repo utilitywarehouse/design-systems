@@ -1,11 +1,8 @@
-import clsx from 'clsx';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { colors } from '@utilitywarehouse/colour-system';
-
 import { TextLink } from '../TextLink';
 import type { TextLinkProps } from '../TextLink';
-
 import { styled } from '../theme';
 import { fontWeights } from '../tokens';
 import { PropsWithSx } from '../types';

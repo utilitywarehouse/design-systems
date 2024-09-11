@@ -1,7 +1,6 @@
 import * as React from 'react';
-
-import { theme } from '../theme';
 import { ThemeProvider as MuiThemeProvider } from '@mui/system';
+import { theme } from '../theme';
 
 export interface ThemeProviderProps {
   /**

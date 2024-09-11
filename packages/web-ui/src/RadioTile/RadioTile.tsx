@@ -1,20 +1,17 @@
-import clsx from 'clsx';
+import { Item } from '@radix-ui/react-radio-group';
 import * as React from 'react';
-
+import clsx from 'clsx';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-
 import { useBaseRadioGroup } from '../BaseRadioGroup';
 import { Flex } from '../Flex';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
 import { StyledRadioIndicator } from '../Radio/Radio';
 import { RadioTileProps } from './RadioTile.props';
-
 import { useIds } from '../hooks';
 import { styled } from '../theme';
 import { PropsWithSx } from '../types';
 import { px, spacing, withGlobalPrefix } from '../utils';
-import { Item } from '@radix-ui/react-radio-group';
 
 const componentName = 'Radio';
 const componentClassName = withGlobalPrefix(componentName);

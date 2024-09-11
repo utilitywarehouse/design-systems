@@ -1,14 +1,11 @@
-import * as React from 'react';
-
-import { colors } from '@utilitywarehouse/colour-system';
+import type { Meta, StoryObj } from '@storybook/react';
 import { StarSmallIcon } from '@utilitywarehouse/react-icons';
-
+import * as React from 'react';
+import { colors } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Badge } from './Badge';
-
 import { Backgrounds } from '../storybook-utils';
-import type { Meta, StoryObj } from '@storybook/react';
 
 const variants = ['soft', 'strong', 'outline'] as const;
 const colorSchemes = ['cyan', 'green', 'red', 'gold', 'grey'] as const;
