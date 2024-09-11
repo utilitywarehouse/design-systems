@@ -1,10 +1,13 @@
 import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { IconButton } from './IconButton';
+
 import { ChevronRightMediumIcon, ChevronRightSmallIcon } from '@utilitywarehouse/react-icons';
+
+import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Heading } from '../Heading';
-import { Box } from '../Box';
+import { IconButton } from './IconButton';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const sizes = ['medium', 'small', 'xsmall'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;

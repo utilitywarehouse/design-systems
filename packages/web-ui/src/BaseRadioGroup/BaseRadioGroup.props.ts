@@ -1,6 +1,8 @@
 import { type ReactNode } from 'react';
-import { type RadioGroupProps as RadixRadioGroupProps } from '@radix-ui/react-radio-group';
+
 import { BoxProps } from '../Box';
+
+import { type RadioGroupProps as RadixRadioGroupProps } from '@radix-ui/react-radio-group';
 
 export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
   children: ReactNode;

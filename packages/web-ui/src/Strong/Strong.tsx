@@ -1,10 +1,12 @@
-import * as React from 'react';
-import { PropsWithSx } from '../types';
-import { StrongProps } from './Strong.props';
 import clsx from 'clsx';
-import { withGlobalPrefix } from '../utils';
+import * as React from 'react';
+
+import { StrongProps } from './Strong.props';
+
 import { styled } from '../theme';
 import { fontWeights } from '../tokens';
+import { PropsWithSx } from '../types';
+import { withGlobalPrefix } from '../utils';
 
 const componentName = 'Strong';
 const componentClassName = withGlobalPrefix(componentName);

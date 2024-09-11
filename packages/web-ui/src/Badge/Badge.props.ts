@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react';
+
 import { Responsive } from '../types';
 
 export interface BadgeProps extends ComponentPropsWithoutRef<'span'> {

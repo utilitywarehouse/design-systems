@@ -1,8 +1,10 @@
 import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Text } from '../Text';
+
 import { Flex } from '../Flex';
+import { Text } from '../Text';
 import { Em } from './Em';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const textVariants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 

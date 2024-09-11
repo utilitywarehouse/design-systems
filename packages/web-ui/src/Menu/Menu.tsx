@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { forwardRef } from 'react';
-import MuiMenu, { type MenuProps as MuiMenuProps } from '@mui/material/Menu';
-import { styled } from '@mui/material';
-import { spacing } from '../utils';
+
 import { colors } from '@utilitywarehouse/colour-system';
+
+import MuiMenu, { type MenuProps as MuiMenuProps } from '@mui/material/Menu';
+
+import { spacing } from '../utils';
+import { styled } from '@mui/material';
 
 export interface MenuProps extends Omit<MuiMenuProps, 'ref'> {}
 

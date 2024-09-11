@@ -1,6 +1,14 @@
+import clsx from 'clsx';
 import * as React from 'react';
-import { PropsWithSx } from '../types';
+
+import { colors } from '@utilitywarehouse/colour-system';
+
+import { useBackground } from '../Box';
 import { BadgeProps } from './Badge.props';
+
+import { styled } from '../theme';
+import { fontWeights, fonts } from '../tokens';
+import { PropsWithSx } from '../types';
 import {
   COLORSCHEME_SELECTORS,
   DATA_ATTRIBUTES,
@@ -14,11 +22,6 @@ import {
   withBreakpoints,
   withGlobalPrefix,
 } from '../utils';
-import clsx from 'clsx';
-import { styled } from '../theme';
-import { fontWeights, fonts } from '../tokens';
-import { colors } from '@utilitywarehouse/colour-system';
-import { useBackground } from '../Box';
 
 const componentName = 'Badge';
 const componentClassName = withGlobalPrefix(componentName);

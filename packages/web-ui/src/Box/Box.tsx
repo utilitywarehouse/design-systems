@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
-import { OverridableComponent } from '@mui/types';
-import { type Theme } from '../theme';
+
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+
 import { BackgroundProvider } from './Box.context';
 import { BoxOwnProps } from './Box.props';
+
+import { type Theme } from '../theme';
 import { createBox } from './createBox';
+import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
+import { OverridableComponent } from '@mui/types';
 
 const BaseBox = createBox();
 

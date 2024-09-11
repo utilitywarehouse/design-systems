@@ -1,16 +1,19 @@
-import * as React from 'react';
-import styled from '../theme/styled';
 import clsx from 'clsx';
-import { px, spacing, withGlobalPrefix } from '../utils';
+import * as React from 'react';
+
 import { colors } from '@utilitywarehouse/colour-system';
-import { Flex } from '../Flex';
-import { Label } from '../Label';
-import { HelperText } from '../HelperText';
-import { PropsWithSx } from '../types';
-import { CheckboxTileProps } from './CheckboxTile.props';
-import { useIds } from '../hooks';
+
 import { BaseCheckbox } from '../BaseCheckbox';
 import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
+import { Flex } from '../Flex';
+import { HelperText } from '../HelperText';
+import { Label } from '../Label';
+import { CheckboxTileProps } from './CheckboxTile.props';
+
+import { useIds } from '../hooks';
+import styled from '../theme/styled';
+import { PropsWithSx } from '../types';
+import { px, spacing, withGlobalPrefix } from '../utils';
 
 const componentName = 'CheckboxTile';
 const componentClassName = withGlobalPrefix(componentName);

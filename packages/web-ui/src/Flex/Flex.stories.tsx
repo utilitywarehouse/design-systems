@@ -1,10 +1,13 @@
 import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Flex } from './Flex';
+
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+
 import { Box } from '../Box';
-import { Text } from '../Text';
 import { Divider } from '../Divider';
+import { Text } from '../Text';
+import { Flex } from './Flex';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Flex> = {
   title: 'Web UI / Layout / Flex',

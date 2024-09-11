@@ -1,5 +1,5 @@
+import { Theme, theme as defaultTheme } from './theme';
 import { createStyled } from '@mui/system';
-import { theme as defaultTheme, Theme } from './theme';
 
 /**
  * Utility for creating styled components.

@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import { HelperText } from './HelperText';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof HelperText> = {
   title: 'Web UI / Typography / HelperText',

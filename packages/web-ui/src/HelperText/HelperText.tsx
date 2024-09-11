@@ -1,22 +1,25 @@
+import clsx from 'clsx';
 import * as React from 'react';
+
 import { colors } from '@utilitywarehouse/colour-system';
 import {
+  InformationMediumContainedIcon,
+  TickMediumContainedIcon,
+  WarningMediumContainedIcon,
+} from '@utilitywarehouse/react-icons';
+
+import { HelperTextProps } from './HelperText.props';
+
+import { styled } from '../theme';
+import { fontWeights, fonts } from '../tokens';
+import { PropsWithSx } from '../types';
+import {
+  DATA_ATTRIBUTE_SELECTORS,
   classSelector,
-  withGlobalPrefix,
   pxToRem,
   spacing,
-  DATA_ATTRIBUTE_SELECTORS,
+  withGlobalPrefix,
 } from '../utils';
-import { PropsWithSx } from '../types';
-import { HelperTextProps } from './HelperText.props';
-import clsx from 'clsx';
-import { styled } from '../theme';
-import {
-  InformationMediumContainedIcon,
-  WarningMediumContainedIcon,
-  TickMediumContainedIcon,
-} from '@utilitywarehouse/react-icons';
-import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'HelperText';
 const componentClassName = withGlobalPrefix(componentName);

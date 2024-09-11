@@ -1,10 +1,12 @@
-import * as React from 'react';
-import { Box } from '../Box';
-import { PropsWithSx } from '../types';
-import { RadioGridGroupProps } from './RadioGridGroup.props';
 import clsx from 'clsx';
-import { getColumns, withGlobalPrefix } from '../utils';
+import * as React from 'react';
+
 import { BaseRadioGroup } from '../BaseRadioGroup';
+import { Box } from '../Box';
+import { RadioGridGroupProps } from './RadioGridGroup.props';
+
+import { PropsWithSx } from '../types';
+import { getColumns, withGlobalPrefix } from '../utils';
 
 const componentName = 'RadioGridGroup';
 const componentClassName = withGlobalPrefix(componentName);

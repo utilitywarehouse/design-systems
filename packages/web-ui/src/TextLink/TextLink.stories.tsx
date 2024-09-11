@@ -1,11 +1,14 @@
 import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { TextLink } from './TextLink';
-import { Text } from '../Text';
-import { Flex } from '../Flex';
-import { Box } from '../Box';
+
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { ChevronRightMediumIcon, OpenMediumIcon } from '@utilitywarehouse/react-icons';
+
+import { Box } from '../Box';
+import { Flex } from '../Flex';
+import { Text } from '../Text';
+import { TextLink } from './TextLink';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Components / Links / TextLink',

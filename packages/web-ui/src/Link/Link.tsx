@@ -1,21 +1,24 @@
+import clsx from 'clsx';
 import * as React from 'react';
+
 import { colors } from '@utilitywarehouse/colour-system';
-import { fonts, fontWeights } from '../tokens';
+
+import { LinkProps } from './Link.props';
+
+import { styled } from '../theme';
+import { fontWeights, fonts } from '../tokens';
 import { PropsWithSx } from '../types';
 import {
   classSelector,
-  withGlobalPrefix,
   mediaQueries,
   px,
   pxToRem,
   responsiveClassSelector,
   spacing,
   withBreakpoints,
+  withGlobalPrefix,
 } from '../utils';
-import clsx from 'clsx';
 import { Slot } from '@radix-ui/react-slot';
-import { styled } from '../theme';
-import { LinkProps } from './Link.props';
 
 const componentName = 'Link';
 const componentClassName = withGlobalPrefix(componentName);

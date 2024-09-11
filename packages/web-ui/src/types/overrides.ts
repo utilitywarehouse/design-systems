@@ -1,7 +1,7 @@
+import { customPalette } from '../theme';
+import { FontWeights, Fonts } from '../tokens';
 import { Palette as MuiPalette } from '@mui/material/styles/createPalette';
 import { TypographyOptions, TypographyUtils } from '@mui/material/styles/createTypography';
-import { Fonts, FontWeights } from '../tokens';
-import { customPalette } from '../theme';
 
 interface CustomTypography
   extends TypographyUtils,

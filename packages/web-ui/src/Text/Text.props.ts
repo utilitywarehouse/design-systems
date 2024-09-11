@@ -1,5 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react';
+
 import { BoxProps } from '../Box';
+
 import { ResponsiveStyleValue } from '@mui/system';
 
 export interface TextProps

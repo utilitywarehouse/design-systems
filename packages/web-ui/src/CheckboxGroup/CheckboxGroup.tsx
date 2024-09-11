@@ -1,10 +1,12 @@
-import * as React from 'react';
-import { styled } from '../theme';
-import { Flex } from '../Flex';
-import { withGlobalPrefix } from '../utils';
-import { CheckboxGroupProps } from './CheckboxGroup.props';
 import clsx from 'clsx';
+import * as React from 'react';
+
 import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
+import { Flex } from '../Flex';
+import { CheckboxGroupProps } from './CheckboxGroup.props';
+
+import { styled } from '../theme';
+import { withGlobalPrefix } from '../utils';
 
 const componentName = 'CheckboxGroup';
 const componentClassName = withGlobalPrefix(componentName);

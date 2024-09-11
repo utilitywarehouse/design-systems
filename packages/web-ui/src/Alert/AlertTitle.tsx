@@ -1,9 +1,11 @@
+import clsx from 'clsx';
 import * as React from 'react';
+
 import { Text } from '../Text';
 import type { TextProps } from '../Text';
-import { withGlobalPrefix } from '../utils';
+
 import { PropsWithSx } from '../types';
-import clsx from 'clsx';
+import { withGlobalPrefix } from '../utils';
 
 const componentName = 'AlertTitle';
 const componentClassName = withGlobalPrefix(componentName);

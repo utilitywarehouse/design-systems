@@ -1,8 +1,10 @@
 import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Alert } from './Alert';
-import { Flex } from '../Flex';
+
 import { Button } from '../Button';
+import { Flex } from '../Flex';
+import { Alert } from './Alert';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const colorSchemes = ['cyan', 'red', 'green', 'gold'] as const;
 

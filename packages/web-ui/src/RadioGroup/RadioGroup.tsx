@@ -1,11 +1,13 @@
+import clsx from 'clsx';
 import * as React from 'react';
+
+import { BaseRadioGroup } from '../BaseRadioGroup';
+import { Flex } from '../Flex';
+import { RadioGroupProps } from './RadioGroup.props';
+
+import { styled } from '../theme';
 import { PropsWithSx } from '../types';
 import { withGlobalPrefix } from '../utils';
-import { RadioGroupProps } from './RadioGroup.props';
-import clsx from 'clsx';
-import { Flex } from '../Flex';
-import { styled } from '../theme';
-import { BaseRadioGroup } from '../BaseRadioGroup';
 
 const componentName = 'RadioGroup';
 const componentClassName = withGlobalPrefix(componentName);

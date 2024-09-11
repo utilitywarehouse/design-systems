@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { FlexOwnProps } from './Flex.props';
+
 import { createBox } from '../Box';
-import { OverridableComponent } from '@mui/types';
-import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
+import { FlexOwnProps } from './Flex.props';
+
 import { type Theme } from '../theme';
+import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
+import { OverridableComponent } from '@mui/types';
 
 const componentName = 'Flex';
 const BaseBox = createBox({ componentName });

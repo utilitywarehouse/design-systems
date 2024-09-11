@@ -1,11 +1,14 @@
 import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Radio } from '../Radio';
-import { RadioGroup } from './RadioGroup';
 import { useState } from 'react';
-import { RadioTile } from '../RadioTile';
-import { Box } from '../Box';
+
 import { colors } from '@utilitywarehouse/colour-system';
+
+import { Box } from '../Box';
+import { Radio } from '../Radio';
+import { RadioTile } from '../RadioTile';
+import { RadioGroup } from './RadioGroup';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'Web UI / Components / Radio / RadioGroup',

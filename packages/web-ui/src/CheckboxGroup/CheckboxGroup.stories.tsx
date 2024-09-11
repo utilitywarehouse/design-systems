@@ -1,13 +1,16 @@
 import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { CheckboxGroup } from './CheckboxGroup';
-import { Flex } from '../Flex';
-import { Text } from '../Text';
+import { useState } from 'react';
+
+import { colors } from '@utilitywarehouse/colour-system';
+
+import { Box } from '../Box';
 import { Checkbox } from '../Checkbox';
 import { CheckboxTile } from '../CheckboxTile';
-import { useState } from 'react';
-import { Box } from '../Box';
-import { colors } from '@utilitywarehouse/colour-system';
+import { Flex } from '../Flex';
+import { Text } from '../Text';
+import { CheckboxGroup } from './CheckboxGroup';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof CheckboxGroup> = {
   title: 'Web UI / Components / Checkbox / CheckboxGroup',

@@ -1,8 +1,11 @@
 import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+
 import { Box } from '../Box';
 import { Spacer } from './Spacer';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Spacer> = {
   title: 'Web UI / Layout / Spacer',

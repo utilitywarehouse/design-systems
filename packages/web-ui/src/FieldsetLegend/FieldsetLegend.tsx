@@ -1,12 +1,15 @@
-import * as React from 'react';
-import { PropsWithChildren, forwardRef, ElementRef } from 'react';
-import { colors } from '@utilitywarehouse/colour-system';
-import { pxToRem, withGlobalPrefix } from '../utils';
-import { PropsWithSx } from '../types';
-import { FieldsetLegendProps } from './FieldsetLegend.props';
 import clsx from 'clsx';
+import * as React from 'react';
+import { ElementRef, PropsWithChildren, forwardRef } from 'react';
+
+import { colors } from '@utilitywarehouse/colour-system';
+
+import { FieldsetLegendProps } from './FieldsetLegend.props';
+
 import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
+import { PropsWithSx } from '../types';
+import { pxToRem, withGlobalPrefix } from '../utils';
 
 const componentName = 'FieldsetLegend';
 const componentClassName = withGlobalPrefix(componentName);

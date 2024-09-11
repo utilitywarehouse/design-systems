@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { forwardRef } from 'react';
-import MuiMenuItem from '@mui/material/MenuItem';
-import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import type { MenuItemProps as MuiMenuItemProps } from '@mui/material/MenuItem';
+
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+
+import { Box } from '../Box';
+import MuiMenuItem from '@mui/material/MenuItem';
+import type { MenuItemProps as MuiMenuItemProps } from '@mui/material/MenuItem';
+import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
+
+import { fonts } from '../tokens';
 import { pxToRem, spacing } from '../utils';
 import { styled } from '@mui/material';
-import { Box } from '../Box';
-import { fonts } from '../tokens';
 
 export type DefaultMenuItemComponent = 'li';
 

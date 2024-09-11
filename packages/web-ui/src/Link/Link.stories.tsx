@@ -1,15 +1,18 @@
 import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+
 import {
-  ChevronRightMediumIcon,
-  ChevronRightSmallIcon,
   ChevronLeftMediumIcon,
   ChevronLeftSmallIcon,
-  OpenMediumIcon,
+  ChevronRightMediumIcon,
+  ChevronRightSmallIcon,
   ChevronUpMediumIcon,
+  OpenMediumIcon,
 } from '@utilitywarehouse/react-icons';
-import { Link } from './Link';
+
 import { Flex } from '../Flex';
+import { Link } from './Link';
+
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Link> = {
   title: 'Web UI / Components / Links / Link',

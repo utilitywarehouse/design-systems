@@ -1,19 +1,22 @@
-import * as React from 'react';
-import { useBackground } from '../Box';
-import { PropsWithSx } from '../types';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
-import {
-  withGlobalPrefix,
-  pxToRem,
-  classSelector,
-  mediaQueries,
-  DATA_ATTRIBUTE_SELECTORS,
-  DATA_ATTRIBUTES,
-} from '../utils';
-import { HeadingProps } from './Heading.props';
 import clsx from 'clsx';
+import * as React from 'react';
+
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+
+import { useBackground } from '../Box';
+import { HeadingProps } from './Heading.props';
+
 import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
+import { PropsWithSx } from '../types';
+import {
+  DATA_ATTRIBUTES,
+  DATA_ATTRIBUTE_SELECTORS,
+  classSelector,
+  mediaQueries,
+  pxToRem,
+  withGlobalPrefix,
+} from '../utils';
 
 const componentName = 'Heading';
 const componentClassName = withGlobalPrefix(componentName);

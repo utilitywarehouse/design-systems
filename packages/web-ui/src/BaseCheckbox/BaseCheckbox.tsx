@@ -1,11 +1,14 @@
 import * as React from 'react';
-import * as RadixCheckbox from '@radix-ui/react-checkbox';
-import { styled } from '../theme';
-import { TickMediumIcon } from '@utilitywarehouse/react-icons';
-import { BaseCheckboxProps } from './BaseCheckbox.props';
+
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { px } from '../utils';
+import { TickMediumIcon } from '@utilitywarehouse/react-icons';
+
 import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
+import { BaseCheckboxProps } from './BaseCheckbox.props';
+
+import { styled } from '../theme';
+import { px } from '../utils';
+import * as RadixCheckbox from '@radix-ui/react-checkbox';
 
 const componentName = 'BaseCheckbox';
 

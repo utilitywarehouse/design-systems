@@ -1,11 +1,14 @@
 import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import { useRef } from 'react';
+
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+
+import { Text } from '../Text';
 import { Box } from './Box';
 import { BoxProps } from './Box.props';
-import { useRef } from 'react';
+
 import { fonts } from '../tokens';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { Text } from '../Text';
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Box> = {
   title: 'Web UI / Layout / Box',
