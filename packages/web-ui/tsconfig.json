@@ -25,7 +25,7 @@
     "jsx": "react",
     "emitDeclarationOnly": true,
     "types": ["node"],
-    "typeRoots": []
+    "typeRoots": ["./node_modules/@types"]
   },
   "exclude": ["dist", "node_modules", "storybook-static"],
   "include": ["src/**/*"]
