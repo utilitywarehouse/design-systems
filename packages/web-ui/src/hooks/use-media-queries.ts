@@ -2,7 +2,7 @@ import * as React from 'react';
 
 // totes copy-pasta from MUI -> https://github.com/mui/material-ui/blob/master/packages/mui-system/src/useMediaQuery/useMediaQuery.ts
 
-export interface UseMediaQueryOptions {
+export interface UseMediaQueriesOptions {
   /**
    * As `window.matchMedia()` is unavailable on the server,
    * this is the default value to return.
@@ -13,8 +13,8 @@ export interface UseMediaQueryOptions {
    * To perform the server-side hydration, the hook needs to render twice.
    * A first time with `defaultValue`, the value of the server, and a second time with the resolved value.
    * This double pass rendering cycle comes with a drawback: it's slower.
-   * In SSR, you should set it to `false`, returning `options.defaultValue` or `false` initially.
-   * @default true
+   * In SSR, you should set it to `true`, returning `options.defaultValue` or `false` initially.
+   * @default false
    */
   initializeWithDefaultValue?: boolean;
 }
@@ -33,18 +33,17 @@ export interface UseMediaQueryOptions {
  * // Use `isMobileOrTablet ` to conditionally apply styles or logic based on the screen size.
  * ```
  */
-export function useMediaQueries(query: string, options: UseMediaQueryOptions = {}): boolean {
-  const { defaultValue = false, initializeWithDefaultValue = true } = options;
+export function useMediaQueries(query: string, options: UseMediaQueriesOptions = {}): boolean {
+  const { defaultValue = false, initializeWithDefaultValue = false } = options;
 
   query = query.replace(/^@media( ?)/m, '');
 
   const getDefaultSnapshot = React.useCallback(() => defaultValue, [defaultValue]);
   const getServerSnapshot = React.useMemo(() => {
     if (initializeWithDefaultValue) {
-      return () => window.matchMedia(query).matches;
+      return getDefaultSnapshot;
     }
-
-    return getDefaultSnapshot;
+    return () => window.matchMedia(query).matches;
   }, [getDefaultSnapshot, query, initializeWithDefaultValue]);
 
   const [getSnapshot, subscribe] = React.useMemo(() => {
