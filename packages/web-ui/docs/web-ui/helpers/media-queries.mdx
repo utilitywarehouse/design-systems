@@ -7,6 +7,11 @@ import { Analytics } from '@vercel/analytics/react';
 
 <Meta title="Web UI / Helpers / Media Queries" />
 
+- [Base media queries](#base-media-queries)
+- [Media query helpers](#media-query-helpers)
+- [useMediaQueries hook](#usemediaqueries-hook)
+- [useMediaQuery hook](#usemediaquery-hook)
+
 # Media Queries
 
 While you should be able to do most things using the responsive style props, if
@@ -82,7 +87,23 @@ There are also some media query helper functions available for more specific med
 |  `mediaQueries.only`   |                    This function takes a breakpoint key and returns a media query string matching screen widths starting from the given screen size and stopping just before the next breakpoint.                    |        `mediaQueries.only("tablet")`        |        {mediaQueries.only("tablet")}        |
 |   `mediaQueries.not`   |                     This function takes a breakpoint key and returns a media query string matching screen widths stopping at the given screen size and starting just before the next breakpoint.                     |        `mediaQueries.not("desktop")`        |        {mediaQueries.not("desktop")}        |
 
+## useMediaQueries hook
+
+This is a custom hook that tracks the state of a media query using the [`Match Media API`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
+
+We recommend you use it with the `mediaQueries` object, however you can pass in your own custom media query strings.
+
+```tsx
+import { useMediaQueries, mediaQueries } from '@utilitywarehouse/web-ui';
+
+const isMobileOrTablet = useMediaQuery(mediaQueries.below('desktop'));
+const isDesktop = useMediaQuery(mediaQueries.above('desktop'));
+const isTablet = useMediaQuery(mediaQueries.between('tablet', 'desktop'));
+```
+
 ## useMediaQuery hook
+
+This hook is deprecated, please use `useMediaQueries` instead.
 
 This is [the MUI hook](https://mui.com/material-ui/react-use-media-query/) with our custom breakpoints: mobile, tablet, desktop & wide.
 

@@ -19,6 +19,20 @@ export interface UseMediaQueryOptions {
   initializeWithDefaultValue?: boolean;
 }
 
+/**
+ * Custom hook that tracks the state of a media query using the [`Match Media API`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
+ * @param {string} query - The media query to track.
+ * @param {?UseMediaQueriesOptions} [options] - The options for customizing the behavior of the hook (optional).
+ * @returns {boolean} The current state of the media query (true if the query matches, false otherwise).
+ * @see [Documentation](https://uw-web-ui.vercel.app/?path=/docs/web-ui-helpers-media-queries--documentation##usemediaquery-hook)
+ * @example
+ * ```tsx
+ * import { useMediaQueries, mediaQueries } from '@utilitywarehouse/web-ui';
+ *
+ * const isMobileOrTablet = useMediaQueries(mediaQueries.below('desktop'));
+ * // Use `isMobileOrTablet ` to conditionally apply styles or logic based on the screen size.
+ * ```
+ */
 export function useMediaQueries(query: string, options: UseMediaQueryOptions = {}): boolean {
   const { defaultValue = false, initializeWithDefaultValue = true } = options;
 
