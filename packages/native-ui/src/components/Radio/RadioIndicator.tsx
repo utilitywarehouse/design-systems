@@ -1,5 +1,4 @@
 import React from 'react';
-import { CircleIcon } from '@gluestack-ui/themed';
 import AnimatedOutline from '../AnimatedOutline';
 import { useListContext } from '../List';
 import { View, ViewProps } from 'react-native';
@@ -30,11 +29,7 @@ const RadioIndicator: React.FC<
         onPointerDown={() => setShow(true)}
         style={[styles.container, props.style]}
       >
-        {props.children ? (
-          props.children
-        ) : (
-          <RadioIcon as={CircleIcon} disabled={states?.disabled} />
-        )}
+        {props.children ? props.children : <RadioIcon disabled={states?.disabled} />}
       </View>
     </AnimatedOutline>
   );

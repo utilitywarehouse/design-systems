@@ -2,6 +2,7 @@ import React, { ComponentProps } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Icon } from '../Icon';
 import { ColorValue } from 'react-native';
+import { CircleIcon } from '../Icons';
 
 const RadioIcon: React.FC<
   ComponentProps<typeof Icon> & {
@@ -13,7 +14,13 @@ const RadioIcon: React.FC<
     disabled: props.disabled,
   });
 
-  return <Icon {...props} style={{ ...styles.container, ...(style ? Object(style) : {}) }} />;
+  return (
+    <Icon
+      as={CircleIcon}
+      {...props}
+      style={{ ...styles.container, ...(style ? Object(style) : {}) }}
+    />
+  );
 };
 
 const stylesheet = createStyleSheet(({ radii, colors, colorMode }) => ({
