@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { PropsWithSx } from '../types';
-import { EmProps } from './Em.props';
-import { withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
+import { EmProps } from './Em.props';
 import { styled } from '../theme';
+import { PropsWithSx } from '../types';
+import { withGlobalPrefix } from '../utils';
 
 const componentName = 'Em';
 const componentClassName = withGlobalPrefix(componentName);

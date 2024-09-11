@@ -1,9 +1,9 @@
-import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Text } from './Text';
+import * as React from 'react';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
 import { Flex } from '../Flex';
+import { Text } from './Text';
 
 const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 

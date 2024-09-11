@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { fonts, fontWeights } from '../tokens';
+import clsx from 'clsx';
+import { BaseButton } from '../BaseButton';
+import { ButtonProps } from './Button.props';
+import { styled } from '../theme';
+import { fontWeights, fonts } from '../tokens';
 import { PropsWithSx } from '../types';
 import {
   classSelector,
-  withGlobalPrefix,
   mediaQueries,
   px,
   pxToRem,
   responsiveClassSelector,
   spacing,
   withBreakpoints,
+  withGlobalPrefix,
 } from '../utils';
-import { ButtonProps } from './Button.props';
-import clsx from 'clsx';
-import { styled } from '../theme';
-import { BaseButton } from '../BaseButton';
 
 const componentName = 'Button';
 const componentClassName = withGlobalPrefix(componentName);

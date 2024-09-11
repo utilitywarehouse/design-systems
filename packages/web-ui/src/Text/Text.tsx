@@ -1,7 +1,12 @@
-import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import { useBackground } from '../Box';
+import * as React from 'react';
+import clsx from 'clsx';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { useBackground } from '../Box';
+import { TextProps } from './Text.props';
+import { styled } from '../theme';
+import { fontWeights, fonts } from '../tokens';
+import { PropsWithSx } from '../types';
 import {
   DATA_ATTRIBUTES,
   DATA_ATTRIBUTE_SELECTORS,
@@ -10,11 +15,6 @@ import {
   pxToRem,
   withGlobalPrefix,
 } from '../utils';
-import { TextProps } from './Text.props';
-import { PropsWithSx } from '../types';
-import clsx from 'clsx';
-import { styled } from '../theme';
-import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'Text';
 const componentClassName = withGlobalPrefix(componentName);

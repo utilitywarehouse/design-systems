@@ -1,12 +1,12 @@
 import * as React from 'react';
+import clsx from 'clsx';
 import { colors } from '@utilitywarehouse/colour-system';
 import { TextLink } from '../TextLink';
 import type { TextLinkProps } from '../TextLink';
 import { styled } from '../theme';
 import { fontWeights } from '../tokens';
-import { colorSchemeParentSelector, px, withGlobalPrefix } from '../utils';
 import { PropsWithSx } from '../types';
-import clsx from 'clsx';
+import { colorSchemeParentSelector, px, withGlobalPrefix } from '../utils';
 
 const componentName = 'AlertLink';
 const componentClassName = withGlobalPrefix(componentName);

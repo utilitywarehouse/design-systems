@@ -1,12 +1,12 @@
+import { Slot } from '@radix-ui/react-slot';
 import * as React from 'react';
-import { PropsWithSx } from '../types';
-import { withGlobalPrefix, px, DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS, spacing } from '../utils';
 import clsx from 'clsx';
-import { TextLinkProps } from './TextLink.props';
-import { styled } from '../theme';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { useBackground } from '../Box';
-import { Slot } from '@radix-ui/react-slot';
+import { TextLinkProps } from './TextLink.props';
+import { styled } from '../theme';
+import { PropsWithSx } from '../types';
+import { DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS, px, spacing, withGlobalPrefix } from '../utils';
 
 const componentName = 'TextLink';
 const componentClassName = withGlobalPrefix(componentName);
