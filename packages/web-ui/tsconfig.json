@@ -24,7 +24,8 @@
     "lib": ["es2022", "dom", "dom.iterable"],
     "jsx": "react",
     "emitDeclarationOnly": true,
-    "typeRoots": []
+    "types": ["node"],
+    "typeRoots": ["./node_modules/@types"]
   },
   "exclude": ["dist", "node_modules", "storybook-static"],
   "include": ["src/**/*"]

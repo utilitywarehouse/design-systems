@@ -15,7 +15,6 @@ type Breakpoint = keyof typeof breakpoints;
  * Returns a min-width media query string matching screen widths greater than the screen size given by the breakpoint.
  */
 function above(breakpoint: Breakpoint) {
-  if (!keys.includes(breakpoint)) return;
   return mq(breakpoints[breakpoint] + unit);
 }
 
@@ -23,7 +22,6 @@ function above(breakpoint: Breakpoint) {
  * Returns a max-width media query string matching screen widths less than than the screen size given by the breakpoint.
  */
 function below(breakpoint: Breakpoint) {
-  if (!keys.includes(breakpoint)) return;
   return `@media (max-width:${breakpoints[breakpoint] + unit})`;
 }
 
@@ -31,7 +29,6 @@ function below(breakpoint: Breakpoint) {
  * Returns a media query string matching screen widths greater than the given start screen size and less than the given end screen size.
  */
 function between(start: Breakpoint, end: Breakpoint) {
-  if (!keys.includes(start) || !keys.includes(end)) return '';
   return (
     `@media (min-width:${breakpoints[start] + unit}) and ` +
     `(max-width:${breakpoints[end] - step / 100 + unit})`
@@ -42,8 +39,6 @@ function between(start: Breakpoint, end: Breakpoint) {
  * Returns a media query string matching screen widths starting from the given screen size and stopping just before the next breakpoint.
  */
 function only(breakpoint: Breakpoint) {
-  if (!keys.includes(breakpoint)) return '';
-
   if (keys.indexOf(breakpoint) + 1 < keys.length) {
     return between(breakpoint, keys[keys.indexOf(breakpoint) + 1] as Breakpoint);
   }
@@ -54,8 +49,6 @@ function only(breakpoint: Breakpoint) {
  * Returns a media query string matching screen widths stopping at the given screen size and starting just before the next breakpoint.
  */
 function not(breakpoint: Breakpoint) {
-  if (!keys.includes(breakpoint)) return '';
-
   const keyIndex = keys.indexOf(breakpoint);
   if (keyIndex === 0) {
     return above(keys[1] as Breakpoint);
