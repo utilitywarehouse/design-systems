@@ -50,7 +50,7 @@ const stylesheet = createStyleSheet(
     extraStyles: (colorScheme: BadgeProps['colorScheme'], strong: BadgeProps['strong']) => {
       if (colorScheme === 'gold' && strong) {
         return {
-          color: colors.gold900,
+          color: colorMode === 'dark' ? colors.gold50 : colors.gold900,
         };
       }
       if (colorScheme && strong) {
