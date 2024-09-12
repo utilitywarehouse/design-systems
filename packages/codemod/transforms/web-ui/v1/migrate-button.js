@@ -7,6 +7,18 @@ function transformer(file, api) {
   const firstNode = getFirstNode();
   const { comments } = firstNode;
 
+  // Finding all Web UI import declarations
+  const webUiImports = root.find(j.ImportDeclaration).filter(path => {
+    return (
+      path.value.source.value === '@utilitywarehouse/web-ui' ||
+      path.value.source.value === '@utilitywarehouse/web-ui-v0'
+    );
+  });
+
+  const hasWebUIButton =
+    webUiImports.find(j.ImportSpecifier).filter(path => path.node.imported.name === 'Button')
+      .length > 0;
+
   const webUIButtons = root.findJSXElements('Button');
 
   const getVariantPropValue = path => {
@@ -23,14 +35,6 @@ function transformer(file, api) {
 
   const addLinkImport = () => {
     // add Link import
-    // Finding all Web UI import declarations
-    const webUiImports = root
-      .find(j.ImportDeclaration)
-      .filter(
-        path =>
-          path.value.source.value === '@utilitywarehouse/web-ui' ||
-          path.value.source.value === '@utilitywarehouse/web-ui-v0'
-      );
 
     // Build our new import specifier
     const importSpecifier = j.importSpecifier(j.identifier('Link'));
@@ -56,6 +60,7 @@ function transformer(file, api) {
 
   // update sizes
   webUIButtons
+    .filter(() => hasWebUIButton)
     .find(j.JSXAttribute, { name: { type: 'JSXIdentifier', name: 'size' } })
     .find(j.Literal)
     .forEach(path => {
@@ -68,6 +73,7 @@ function transformer(file, api) {
 
   // update simple variant translations
   webUIButtons
+    .filter(() => hasWebUIButton)
     .find(j.JSXAttribute, { name: { type: 'JSXIdentifier', name: 'variant' } })
     .find(j.Literal)
     .forEach(path => {
@@ -85,6 +91,7 @@ function transformer(file, api) {
   // replace tertiary variant with a Link component with asChild prop and an
   // inner button element. BUT only if it doesn't have an href prop
   webUIButtons.forEach(path => {
+    if (!hasWebUIButton) return;
     // get variant
     const buttonVariant = getVariantPropValue(path);
     const buttonHasHrefProp = hasHrefProp(path);
