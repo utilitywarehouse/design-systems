@@ -91,7 +91,7 @@ function transformer(file, api) {
   // replace tertiary variant with a Link component with asChild prop and an
   // inner button element. BUT only if it doesn't have an href prop
   webUIButtons.forEach(path => {
-    if (!hasWebUIButton) return
+    if (!hasWebUIButton) return;
     // get variant
     const buttonVariant = getVariantPropValue(path);
     const buttonHasHrefProp = hasHrefProp(path);
