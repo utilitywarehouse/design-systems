@@ -1,5 +1,11 @@
 # @utilitywarehouse/ds-codemod
 
+## 1.1.2
+
+### Patch Changes
+
+- [#491](https://github.com/utilitywarehouse/design-systems/pull/491) [`2e9ebcef`](https://github.com/utilitywarehouse/design-systems/commit/2e9ebcef01c7aab63962882412ba59959cc1aeec) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix codemod to only transform Web UI Buttons
+
 ## 1.1.1
 
 ### Patch Changes
