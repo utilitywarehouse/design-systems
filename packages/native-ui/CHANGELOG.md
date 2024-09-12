@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.4.1
+
+### Patch Changes
+
+- [#489](https://github.com/utilitywarehouse/design-systems/pull/489) [`5f5a0377`](https://github.com/utilitywarehouse/design-systems/commit/5f5a037713f768a497cc99a9d92f99aa9b78bb59) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixes the strong gold scheme `Badge`'s text colour in dark mode
+
 ## 0.4.0
 
 ### Minor Changes
