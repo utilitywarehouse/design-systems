@@ -34,7 +34,6 @@
     "@babel/preset-env": "^7.24.8",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
-    "@types/react": "^18.2.75",
     "@utilitywarehouse/react-native-icons": "^1.4.0",
     "file-loader": "^6.2.0",
     "react": "^18.2.0",
