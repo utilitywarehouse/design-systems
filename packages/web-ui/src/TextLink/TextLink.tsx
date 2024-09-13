@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot';
 import * as React from 'react';
 import clsx from 'clsx';
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { colors } from '@utilitywarehouse/colour-system';
 import { useBackground } from '../Box';
 import { TextLinkProps } from './TextLink.props';
 import { styled } from '../theme';
