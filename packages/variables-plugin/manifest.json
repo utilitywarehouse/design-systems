@@ -2,7 +2,7 @@
   "name": "variables-plugin",
   "id": "1415740052799811983",
   "api": "1.0.0",
-  "main": "code.js",
+  "main": "dist/index.js",
   "capabilities": [],
   "enableProposedApi": false,
   "documentAccess": "dynamic-page",

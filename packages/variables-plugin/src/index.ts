@@ -1,3 +1,5 @@
+import { THING } from 'env';
+console.log(`PATH is ${THING}sss`);
 // This plugin creates 5 rectangles on the screen.
 const numberOfRectangles = 5;
 
@@ -20,6 +22,7 @@ const numberOfRectangles = 5;
 
   async function getCollections() {
     console.clear();
+    alert(THING);
     const localCollections = await figma.variables.getLocalVariableCollectionsAsync();
     let colorVariables = [];
 
@@ -56,7 +59,7 @@ const numberOfRectangles = 5;
         }
       }
     }
-    alert('done');
+    figma.notify('The variables have been exported!');
     console.log(JSON.stringify(colorVariables));
   }
 
