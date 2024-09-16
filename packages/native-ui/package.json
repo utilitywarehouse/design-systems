@@ -24,7 +24,9 @@
     "@gluestack-style/legend-motion-animation-driver": "^1.0.3",
     "@gluestack-style/react": "1.0.57",
     "@gluestack-ui/alert": "^0.1.15",
+    "@gluestack-ui/button": "^1.0.7",
     "@gluestack-ui/icon": "^0.1.22",
+    "@gluestack-ui/spinner": "^0.1.14",
     "@gluestack-ui/themed": "1.1.40",
     "@utilitywarehouse/colour-system": "workspace:^",
     "@utilitywarehouse/react-native-icons": "1.6.0",
@@ -52,6 +54,7 @@
     "react-dom": ">=16",
     "react-native": ">=0.72",
     "react-native-reanimated": "3.x",
+    "react-native-unistyles": ">=2.9.0",
     "react-native-svg": ">=13.4.0",
     "react-native-web": ">=0.19"
   },
