@@ -2,6 +2,7 @@ on:
   push:
     paths:
       - apps/apps/native-ui-storybook/figma-connect/*.figma.tsx
+      - packages/web-ui/src/**/*.figma.tsx
     branches:
       - main
 
