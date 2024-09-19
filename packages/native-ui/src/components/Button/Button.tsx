@@ -4,12 +4,14 @@ import ButtonTextComponent from './ButtonText';
 import ButtonSpinnerComponent from './ButtonSpinner';
 import ButtonIconComponent from './ButtonIcon';
 import { createButton } from '@gluestack-ui/button';
-import { View } from 'react-native';
+
 import ButtonRoot from './ButtonRoot';
+import ButtonGroupRoot from './ButtonGroupRoot';
+import { useButtonGroupContext } from './ButtonGroup.context';
 
 const ButtonComponent = createButton({
   Root: ButtonRoot,
-  Group: View,
+  Group: ButtonGroupRoot,
   Icon: ButtonIconComponent,
   Spinner: ButtonSpinnerComponent,
   Text: ButtonTextComponent,
@@ -18,24 +20,35 @@ const ButtonComponent = createButton({
 export const ButtonText = ButtonComponent.Text;
 export const ButtonSpinner = ButtonComponent.Spinner;
 export const ButtonIcon = ButtonComponent.Icon;
+export const ButtonGroupComponent = ButtonComponent.Group;
+
+ButtonText.displayName = 'ButtonText';
+ButtonSpinner.displayName = 'ButtonSpinner';
+ButtonIcon.displayName = 'ButtonIcon';
 
 const Button: React.FC<ButtonProps> = ({ children, disabled, isDisabled, ...props }) => {
+  const { disabled: groupDisabled, loading: groupLoading } = useButtonGroupContext();
+  const { loading } = props;
+  const isLoading = loading ?? groupLoading;
+  const buttonDisabled = isLoading || (disabled ?? groupDisabled ?? isDisabled);
   if (typeof children === 'string' || typeof children === 'number') {
-    const { icon, loading, iconPosition = 'left' } = props as ButtonWithStringChildrenProps;
+    const { icon, iconPosition = 'left' } = props as ButtonWithStringChildrenProps;
     return (
-      <ButtonComponent {...props} isDisabled={loading || (disabled ?? isDisabled)}>
-        {!!icon && !loading && iconPosition === 'left' ? <ButtonIcon as={icon} /> : null}
-        {loading ? <ButtonSpinner /> : null}
+      <ButtonComponent {...props} isDisabled={buttonDisabled}>
+        {!!icon && !isLoading && iconPosition === 'left' ? <ButtonIcon as={icon} /> : null}
+        {isLoading ? <ButtonSpinner /> : null}
         <ButtonText>{children}</ButtonText>
-        {!!icon && !loading && iconPosition === 'right' ? <ButtonIcon as={icon} /> : null}
+        {!!icon && !isLoading && iconPosition === 'right' ? <ButtonIcon as={icon} /> : null}
       </ButtonComponent>
     );
   }
   return (
-    <ButtonComponent {...props} isDisabled={disabled ?? isDisabled}>
+    <ButtonComponent {...props} isDisabled={buttonDisabled}>
       {children}
     </ButtonComponent>
   );
 };
+
+Button.displayName = 'Button';
 
 export default Button;
