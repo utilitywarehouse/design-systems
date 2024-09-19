@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentProps, ComponentType, FC } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { useButtonContext } from './Button.context';
 import { createStyleSheet, type UnistylesValues, useStyles } from 'react-native-unistyles';
 import type { BaseButtonProps } from './Button.props';
 import { Icon } from '../Icon';
 
-const ButtonIcon: FC<ComponentProps<typeof Icon>> = ({ children, ...props }) => {
+const ButtonIcon: FC<ComponentProps<typeof Icon> & { as?: ComponentType }> = ({
+  children,
+  ...props
+}) => {
   const { colorScheme, variant, inverted, disabled } = useButtonContext();
   const { styles } = useStyles(stylesheet);
   return (
