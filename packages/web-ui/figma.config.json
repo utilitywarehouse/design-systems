@@ -1,8 +1,9 @@
 {
   "codeConnect": {
-    "include": ["apps/native-ui-storybook/figma-connect/**"],
+    "include": ["src/**"],
     "parser": "react",
     "exclude": [],
+    "label": "Web UI",
     "importPaths": {
       "packages/web-ui/src/*": "@utilitywarehouse/web-ui"
     }
