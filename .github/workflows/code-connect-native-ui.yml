@@ -2,10 +2,9 @@ name: Native UI Figma Code Connect publish
 on:
   push:
     paths:
-      - apps/apps/native-ui-storybook/**
-      # - apps/apps/native-ui-storybook/figma-connect/*.figma.tsx
-    # branches:
-    #   - main
+      - apps/apps/native-ui-storybook/figma-connect/*.figma.tsx
+    branches:
+      - main
 
 jobs:
   code-connect:
