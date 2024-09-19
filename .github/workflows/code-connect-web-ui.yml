@@ -1,3 +1,4 @@
+name: Web UI Figma Code Connect publish
 on:
   push:
     paths:

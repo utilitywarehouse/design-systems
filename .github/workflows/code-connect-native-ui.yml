@@ -1,3 +1,4 @@
+name: Native UI Figma Code Connect publish
 on:
   push:
     paths:
