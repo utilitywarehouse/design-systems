@@ -2,7 +2,8 @@ name: Web UI Figma Code Connect publish
 on:
   push:
     paths:
-      - packages/web-ui/src/**/*.figma.tsx
+      - packages/web-ui/**
+      # - packages/web-ui/src/**/*.figma.tsx
     # branches:
     #   - main
 
