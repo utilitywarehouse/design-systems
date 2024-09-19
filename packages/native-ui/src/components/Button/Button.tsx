@@ -1,26 +1,40 @@
 import React from 'react';
-import { Button as GSButton } from '@gluestack-ui/themed';
 import type { ButtonProps, ButtonWithStringChildrenProps } from './Button.props';
-import { ButtonText } from './ButtonText';
-import { ButtonSpinner } from './ButtonSpinner';
-import { ButtonIcon } from './ButtonIcon';
+import ButtonTextComponent from './ButtonText';
+import ButtonSpinnerComponent from './ButtonSpinner';
+import ButtonIconComponent from './ButtonIcon';
+import { createButton } from '@gluestack-ui/button';
+import { View } from 'react-native';
+import ButtonRoot from './ButtonRoot';
+
+const ButtonComponent = createButton({
+  Root: ButtonRoot,
+  Group: View,
+  Icon: ButtonIconComponent,
+  Spinner: ButtonSpinnerComponent,
+  Text: ButtonTextComponent,
+});
+
+export const ButtonText = ButtonComponent.Text;
+export const ButtonSpinner = ButtonComponent.Spinner;
+export const ButtonIcon = ButtonComponent.Icon;
 
 const Button: React.FC<ButtonProps> = ({ children, disabled, isDisabled, ...props }) => {
   if (typeof children === 'string' || typeof children === 'number') {
     const { icon, loading, iconPosition = 'left' } = props as ButtonWithStringChildrenProps;
     return (
-      <GSButton {...props} isDisabled={loading || (disabled ?? isDisabled)}>
+      <ButtonComponent {...props} isDisabled={loading || (disabled ?? isDisabled)}>
         {!!icon && !loading && iconPosition === 'left' ? <ButtonIcon as={icon} /> : null}
         {loading ? <ButtonSpinner /> : null}
         <ButtonText>{children}</ButtonText>
         {!!icon && !loading && iconPosition === 'right' ? <ButtonIcon as={icon} /> : null}
-      </GSButton>
+      </ButtonComponent>
     );
   }
   return (
-    <GSButton {...props} isDisabled={disabled ?? isDisabled}>
+    <ButtonComponent {...props} isDisabled={disabled ?? isDisabled}>
       {children}
-    </GSButton>
+    </ButtonComponent>
   );
 };
 

@@ -87,7 +87,7 @@ const SpinnerRoot: React.FC<SpinnerProps> = ({ size = 'md', color, ...props }) =
         <G origin={`${HALF_CIRCLE}, ${HALF_CIRCLE}`} rotation={-90}>
           <AnimatedCircle
             fill="transparent"
-            stroke={defaultColor}
+            stroke="currentColor"
             strokeWidth={STROKE_WIDTH}
             cx="50%"
             cy="50%"
