@@ -47,4 +47,6 @@ export interface TextProps
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    */
   asChild?: boolean;
+  /** Set the font-weight */
+  fontWeight?: 'regular' | 'medium' | 'semibold';
 }

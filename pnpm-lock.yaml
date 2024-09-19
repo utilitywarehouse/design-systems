@@ -348,7 +348,7 @@ importers:
         version: 7.24.8
       '@babel/preset-react':
         specifier: ^7.24.7
-        version: 7.24.7
+        version: 7.24.7(@babel/core@7.25.2)
       '@babel/preset-typescript':
         specifier: ^7.24.7
         version: 7.24.7
@@ -479,8 +479,8 @@ importers:
         specifier: workspace:^
         version: link:../css-reset
       '@utilitywarehouse/fontsource':
-        specifier: ^0.0.5
-        version: 0.0.5
+        specifier: ^0.1.0
+        version: 0.1.0
       '@vercel/analytics':
         specifier: ^1.3.1
         version: 1.3.1(react@18.2.0)
@@ -1149,7 +1149,6 @@ packages:
   /@babel/helper-validator-option@7.24.7:
     resolution: {integrity: sha512-yy1/KvjhV/ZCL+SM7hBrvnZJ3ZuT9OuZgIJAGpPEToANvc3iM6iDvBnRjtElWibHU6n8/LPR/EjX9EtIEYO3pw==}
     engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-validator-option@7.24.8:
     resolution: {integrity: sha512-xb8t9tD1MHLungh/AIoWYN+gVHaB9kwlu8gffXGSt3FFEIT7RjS+xWbc2vUD1UTZdIpKj/ab3rdqJ7ufngyi2Q==}
@@ -4538,25 +4537,6 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/preset-react@7.24.7:
-    resolution: {integrity: sha512-AAH4lEkpmzFWrGVlHaxJB7RLH21uPQ9+He+eFLWHmF9IuFQVugz8eAsamaW0DXRrTfco5zj1wWtpdcXJUOfsag==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-    dependencies:
-      '@babel/helper-plugin-utils': 7.24.8
-      '@babel/helper-validator-option': 7.24.7
-      '@babel/plugin-transform-react-display-name': 7.24.7(@babel/core@7.25.2)
-      '@babel/plugin-transform-react-jsx': 7.25.2(@babel/core@7.25.2)
-      '@babel/plugin-transform-react-jsx-development': 7.24.7(@babel/core@7.25.2)
-      '@babel/plugin-transform-react-pure-annotations': 7.24.7(@babel/core@7.25.2)
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@babel/preset-react@7.24.7(@babel/core@7.25.2):
     resolution: {integrity: sha512-AAH4lEkpmzFWrGVlHaxJB7RLH21uPQ9+He+eFLWHmF9IuFQVugz8eAsamaW0DXRrTfco5zj1wWtpdcXJUOfsag==}
     engines: {node: '>=6.9.0'}
@@ -4568,7 +4548,7 @@ packages:
     dependencies:
       '@babel/core': 7.25.2
       '@babel/helper-plugin-utils': 7.24.8
-      '@babel/helper-validator-option': 7.24.8
+      '@babel/helper-validator-option': 7.24.7
       '@babel/plugin-transform-react-display-name': 7.24.7(@babel/core@7.25.2)
       '@babel/plugin-transform-react-jsx': 7.25.2(@babel/core@7.25.2)
       '@babel/plugin-transform-react-jsx-development': 7.24.7(@babel/core@7.25.2)
@@ -7349,7 +7329,7 @@ packages:
       react-refresh: 0.14.2
       schema-utils: 3.3.0
       source-map: 0.7.4
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /@popperjs/core@2.11.8:
@@ -11138,10 +11118,10 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.3.0-beta.4(storybook@7.6.17):
-    resolution: {integrity: sha512-3Iet0USzBpKBNmqNGHClf/gbKlFUrUghjNFupccKoWsgqz6w21E1BeYF7YKJ94y3/CjwKmQFFhuTCJHbI7OmyQ==}
+  /@storybook/client-logger@8.4.0-alpha.0(storybook@7.6.17):
+    resolution: {integrity: sha512-OhiFmFAEo0f0EbpXqVuLN78gXB14hD177RDH7kXGiQyMq1CB78et34Qs6boPKfscHUXpRTa375aaGrNbNM6E4Q==}
     peerDependencies:
-      storybook: ^8.3.0-beta.4
+      storybook: ^8.4.0-alpha.0
     dependencies:
       storybook: 7.6.17
     dev: true
@@ -11654,10 +11634,10 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.3.0-beta.4(storybook@7.6.17):
-    resolution: {integrity: sha512-d0utM4uj/zpg4/mgzVp/a+CdORoIMzcW+z6KYDqw5gZV0P55f9PQFQ4Eg60PxV4ajIdc9JEFRulo15qxbv4vMQ==}
+  /@storybook/instrumenter@8.4.0-alpha.0(storybook@7.6.17):
+    resolution: {integrity: sha512-JOuez6W6rwTaFLJiQrT6Bk3Xj9KpWWH718GcN7brUb5qq2SWtNuk7yoPQ1JNQw1H3KNbA7jL54+Vwr3nzEZdQQ==}
     peerDependencies:
-      storybook: ^8.3.0-beta.4
+      storybook: ^8.4.0-alpha.0
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.0.5
@@ -11903,7 +11883,7 @@ packages:
         optional: true
     dependencies:
       '@babel/preset-flow': 7.24.1(@babel/core@7.25.2)
-      '@babel/preset-react': 7.24.7
+      '@babel/preset-react': 7.24.7(@babel/core@7.25.2)
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.11(react-refresh@0.14.2)(webpack@5.91.0)
       '@storybook/core-webpack': 7.6.17
       '@storybook/docs-tools': 7.6.17
@@ -12394,8 +12374,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1(storybook@7.6.17):
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.3.0-beta.4(storybook@7.6.17)
-      '@storybook/instrumenter': 8.3.0-beta.4(storybook@7.6.17)
+      '@storybook/client-logger': 8.4.0-alpha.0(storybook@7.6.17)
+      '@storybook/instrumenter': 8.4.0-alpha.0(storybook@7.6.17)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
@@ -13164,13 +13144,13 @@ packages:
       wonka: 4.0.15
     dev: false
 
-  /@utilitywarehouse/fontsource@0.0.5:
-    resolution: {integrity: sha512-g+/X7s/p+Xa4z6tv1JVxM5y0yNPLJxCA4LbkXwQ6Eq7Rq9cLrP8YW/ttkWcSbSC1BtgKhDKheiW0UAD5gNAwBg==}
-    dev: true
-
   /@utilitywarehouse/fontsource@0.0.6:
     resolution: {integrity: sha512-HHFg2yDFImIYOPpxe/SJ4DM/j542Za4805N2OcOx1TILI3Mi3mIPX6EtvdUXwn0WPEsx4LD4wK45f4tWY9WIaQ==}
     dev: false
+
+  /@utilitywarehouse/fontsource@0.1.0:
+    resolution: {integrity: sha512-/qsvnWAJdtRHpwt2rhn0HClXVL3m8SwERLvBDk+uN0xbAxXiS4Ae8dkoi8wGypyFX4Y9WIMZBB7MD+NywIXfHg==}
+    dev: true
 
   /@utilitywarehouse/react-icons@1.1.1(react@18.2.0):
     resolution: {integrity: sha512-h4YpnpujEW2hnj9Aiil9DRgCtcDdYANp0eSNfzKPNMI7/lsSLxFgXOwuOACKhtge38vc5wTkdZIk5TsEAR4GOA==}
@@ -13904,7 +13884,7 @@ packages:
       '@babel/core': 7.25.2
       find-cache-dir: 4.0.0
       schema-utils: 4.2.0
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /babel-plugin-add-react-displayname@0.0.5:
@@ -15067,7 +15047,7 @@ packages:
       postcss-modules-values: 4.0.0(postcss@8.4.38)
       postcss-value-parser: 4.2.0
       semver: 7.6.0
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /css-mediaquery@0.1.2:
@@ -17394,7 +17374,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /htmlparser2@6.1.0:
@@ -23078,7 +23058,7 @@ packages:
     peerDependencies:
       webpack: ^5.0.0
     dependencies:
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /stylehacks@5.1.1(postcss@8.4.16):
@@ -23194,7 +23174,7 @@ packages:
     dependencies:
       '@swc/core': 1.5.0
       '@swc/counter': 0.1.3
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /synchronous-promise@2.0.17:
@@ -24336,7 +24316,7 @@ packages:
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.2.0
-      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.19.12)
+      webpack: 5.91.0(@swc/core@1.5.0)(esbuild@0.18.20)
     dev: true
 
   /webpack-hot-middleware@2.26.1:
@@ -24384,7 +24364,7 @@ packages:
       '@webassemblyjs/wasm-parser': 1.12.1
       acorn: 8.11.3
       acorn-import-assertions: 1.9.0(acorn@8.11.3)
-      browserslist: 4.23.3
+      browserslist: 4.23.0
       chrome-trace-event: 1.0.3
       enhanced-resolve: 5.16.0
       es-module-lexer: 1.5.0
@@ -24423,7 +24403,7 @@ packages:
       '@webassemblyjs/wasm-parser': 1.12.1
       acorn: 8.11.3
       acorn-import-assertions: 1.9.0(acorn@8.11.3)
-      browserslist: 4.23.3
+      browserslist: 4.23.0
       chrome-trace-event: 1.0.3
       enhanced-resolve: 5.16.0
       es-module-lexer: 1.5.0
