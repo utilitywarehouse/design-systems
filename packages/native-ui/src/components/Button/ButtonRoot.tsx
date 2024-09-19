@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-unsafe-assignment */
 import React, { FC, PropsWithChildren, useMemo } from 'react';
 import type { BaseButtonProps, ButtonProps } from './Button.props';
 import { Pressable, ViewStyle } from 'react-native';

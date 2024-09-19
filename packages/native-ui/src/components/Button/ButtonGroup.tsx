@@ -1,7 +1,6 @@
 import React, { ComponentProps, FC, useMemo } from 'react';
 import { ButtonGroupComponent } from './Button';
 import { ButtonGroupContext } from './ButtonGroup.context';
-import { B } from '@expo/html-elements';
 
 const ButtonGroup: FC<
   Omit<ComponentProps<typeof ButtonGroupComponent>, 'isDisabled' | 'isAttached' | 'isReversed'> & {

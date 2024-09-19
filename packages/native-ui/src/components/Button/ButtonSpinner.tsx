@@ -1,3 +1,5 @@
+/* eslint-disable  @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable  react-hooks/exhaustive-deps */
 import React, { useMemo } from 'react';
 import { Spinner } from '../Spinner';
 import type { SpinnerProps } from '../Spinner';
@@ -27,7 +29,7 @@ const ButtonSpinner: React.FC<Omit<SpinnerProps, 'size'>> = ({ color = '', ...pr
       }
       if (variant === 'outline') {
         colorProp = light
-          ? // @ts-expect-error
+          ? // @ts-expect-error - TS doesn't like the dynamic key here
             colors[`${colorScheme}${colorScheme === 'cyan' ? 1000 : 900}`]
           : colors[`${colorScheme}900`];
         if (disabled) {

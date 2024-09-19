@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { ComponentProps, FC } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { useButtonContext } from './Button.context';
 import { createStyleSheet, type UnistylesValues, useStyles } from 'react-native-unistyles';
-import { BaseButtonProps } from './Button.props';
+import type { BaseButtonProps } from './Button.props';
 import { Icon } from '../Icon';
 
 const ButtonIcon: FC<ComponentProps<typeof Icon>> = ({ children, ...props }) => {
-  const { colorScheme, variant, inverted, disabled, active } = useButtonContext();
+  const { colorScheme, variant, inverted, disabled } = useButtonContext();
   const { styles } = useStyles(stylesheet);
   return (
     <Icon
@@ -49,7 +50,7 @@ const stylesheet = createStyleSheet(({ colorMode, colors }) => ({
     }
     if (variant === 'outline') {
       extraStyles.color = light
-        ? // @ts-expect-error
+        ? // @ts-expect-error - TS doesn't like the dynamic key here
           colors[`${colorScheme}${colorScheme === 'cyan' ? 1000 : 900}`]
         : colors[`${colorScheme}900`];
       if (disabled) {

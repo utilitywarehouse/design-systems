@@ -1,4 +1,3 @@
-import type { Button } from '@gluestack-ui/themed';
 import type { ReactNode, ComponentType, ReactElement } from 'react';
 import type { PressableProps } from 'react-native';
 
