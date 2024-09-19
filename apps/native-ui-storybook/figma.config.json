@@ -3,9 +3,6 @@
     "include": ["figma-connect/**"],
     "parser": "react",
     "exclude": [],
-    "label": "Native UI",
-    "importPaths": {
-      "packages/web-ui/src/*": "@utilitywarehouse/web-ui"
-    }
+    "label": "Native UI"
   }
 }
