@@ -2,11 +2,14 @@ import { Slot } from '@radix-ui/react-slot';
 import * as React from 'react';
 import clsx from 'clsx';
 import { colors } from '@utilitywarehouse/colour-system';
+import { Box, useBackground } from '../Box';
 import { LinkProps } from './Link.props';
 import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
 import { PropsWithSx } from '../types';
 import {
+  DATA_ATTRIBUTES,
+  DATA_ATTRIBUTE_SELECTORS,
   classSelector,
   mediaQueries,
   px,
@@ -52,15 +55,13 @@ const StyledElement = styled('a', {
   const sizeStyles = {
     large: {
       '--link-font-size': pxToRem(18),
-      '--link-line-height': pxToRem(24),
-      '--link-height': pxToRem(24),
-      '--link-underline-offset': px(2),
+      '--link-line-height': pxToRem(18),
+      '--link-height': pxToRem(18),
     },
     small: {
       '--link-font-size': pxToRem(16),
       '--link-line-height': pxToRem(16),
       '--link-height': pxToRem(16),
-      '--link-underline-offset': px(-1),
     },
   };
 
@@ -95,22 +96,33 @@ const StyledElement = styled('a', {
     color: 'var(--link-color)',
     textDecorationColor: 'var(--link-underline-color)',
     textUnderlinePosition: 'under',
-    textUnderlineOffset: 'var(--link-underline-offset)',
-    '--link-color-default': colors.cyan700,
-    '--link-color-hover': colors.cyan1000,
-    '--link-color': 'var(--link-color-default)',
-    '--link-underline-color-default': colors.cyan400,
+    /* colors */
+    '--link-color': colors.cyan700,
+    '--link-underline-color': colors.cyan400,
     '--link-underline-color-hover': colors.cyan500,
     '--link-underline-color-active': colors.cyan600,
-    '--link-underline-color': 'var(--link-underline-color-default)',
+    /* inverted colors */
+    '--link-color-inverted': colors.cyan300,
+    '--link-underline-color-inverted': colors.cyan400,
+    '--link-underline-color-hover-inverted': colors.cyan300,
+    '--link-underline-color-active-inverted': colors.cyan200,
+    [DATA_ATTRIBUTE_SELECTORS.inverted]: {
+      '--link-color': 'var(--link-color-inverted)',
+      '--link-underline-color': 'var(--link-underline-color-inverted)',
+    },
     '@media (hover: hover)': {
       ':where(:hover)': {
         '--link-underline-color': 'var(--link-underline-color-hover)',
-        '--link-color': 'var(--link-color-hover)',
+        [DATA_ATTRIBUTE_SELECTORS.inverted]: {
+          '--link-underline-color': 'var(--link-underline-color-hover-inverted)',
+        },
       },
     },
     ':where(:active)': {
       '--link-underline-color': 'var(--link-underline-color-active)',
+      [DATA_ATTRIBUTE_SELECTORS.inverted]: {
+        '--link-underline-color': 'var(--link-underline-color-active-inverted)',
+      },
     },
     ':where(:focus-visible)': {
       textDecoration: 'none',
@@ -142,12 +154,17 @@ const StyledElement = styled('a', {
 export const Link = React.forwardRef<
   React.ElementRef<'a'>,
   React.PropsWithChildren<PropsWithSx<LinkProps>>
->(({ className, asChild, children, size = 'large', ...props }, ref) => {
+>(({ className, asChild, children, size = 'large', inverted, ...props }, ref) => {
+  const { isInvertedBackground } = useBackground();
+  const dataAttributeProps = {
+    [DATA_ATTRIBUTES.inverted]: inverted || isInvertedBackground ? '' : undefined,
+  };
   return (
     <StyledElement
       as={asChild ? Slot : 'a'}
       ref={ref}
       className={clsx(componentClassName, className, withBreakpoints(size, 'size'))}
+      {...dataAttributeProps}
       {...props}
     >
       {children}

@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import {
-  ChevronLeftMediumIcon,
   ChevronLeftSmallIcon,
-  ChevronRightMediumIcon,
   ChevronRightSmallIcon,
-  ChevronUpMediumIcon,
-  OpenMediumIcon,
+  ChevronUpSmallIcon,
 } from '@utilitywarehouse/react-icons';
 import * as React from 'react';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { Box } from '../Box';
 import { Flex } from '../Flex';
+import { Text } from '../Text';
 import { Link } from './Link';
 
 const meta: Meta<typeof Link> = {
@@ -19,6 +19,7 @@ const meta: Meta<typeof Link> = {
     children: { control: { type: 'text' } },
     href: { control: { type: 'text' } },
     size: { control: { type: 'radio' }, options: ['large', 'small'] },
+    inverted: { control: { type: 'boolean' } },
     textTransform: {
       options: ['capitalize', 'uppercase', 'lowercase', 'none'],
       control: { type: 'radio' },
@@ -38,14 +39,14 @@ export const KitchenSink: Story = {
         {sizes.map(size => (
           <Link key={size} size={size} href="#">
             Hamburgefons
-            {size === 'large' ? <ChevronRightMediumIcon /> : <ChevronRightSmallIcon />}
+            <ChevronRightSmallIcon />
           </Link>
         ))}
       </Flex>
       <Flex gap={2} align="center">
         {sizes.map(size => (
           <Link key={size} size={size} href="#">
-            {size === 'large' ? <ChevronLeftMediumIcon /> : <ChevronLeftSmallIcon />}
+            <ChevronLeftSmallIcon />
             Hamburgefons
           </Link>
         ))}
@@ -58,6 +59,7 @@ export const Workshop: Story = {
   args: {
     children: 'Link',
     href: '#',
+    inverted: false,
   },
 };
 
@@ -65,7 +67,7 @@ export const SimpleExample: Story = {
   render: () => (
     <Link href="#">
       Link
-      <ChevronRightMediumIcon />
+      <ChevronRightSmallIcon />
     </Link>
   ),
 };
@@ -74,16 +76,16 @@ export const WithIcons: Story = {
   render: args => (
     <Flex gap={6}>
       <Link {...args}>
-        <ChevronLeftMediumIcon />
+        <ChevronLeftSmallIcon />
         Back to Home
       </Link>
       <Link {...args}>
-        <ChevronUpMediumIcon />
+        <ChevronUpSmallIcon />
         Back to top
       </Link>
       <Link {...args}>
-        Check the guidelines
-        <OpenMediumIcon />
+        Continue
+        <ChevronRightSmallIcon />
       </Link>
     </Flex>
   ),
@@ -106,7 +108,7 @@ export const AsButton: Story = {
     <Link asChild>
       <button onClick={() => alert('Hello world!')}>
         View UW services
-        <ChevronRightMediumIcon />
+        <ChevronRightSmallIcon />
       </button>
     </Link>
   ),
@@ -117,7 +119,7 @@ export const FullWidth: Story = {
     <Flex direction="column" align="stretch" gap={2}>
       <Link {...args}>
         {args.children}
-        <ChevronRightMediumIcon />
+        <ChevronRightSmallIcon />
       </Link>
     </Flex>
   ),
@@ -133,5 +135,26 @@ export const LengthyContent: Story = {
   args: {
     children:
       'Agnes Bernice Martin was an American abstract painter known for her minimalist style and abstract expressionism.',
+  },
+};
+
+export const LinkInvertedColour: Story = {
+  name: 'Contextual Colour',
+  render: () => {
+    return (
+      <Flex direction="column">
+        <Box padding={2}>
+          <Link href="#">Link</Link>
+        </Box>
+        <Box padding={2} background={colorsCommon.brandPrimaryPurple}>
+          <Link href="#">Link</Link>
+          <Text component="span"> on brandPrimaryPurple background.</Text>
+        </Box>
+        <Box padding={2} background={colorsCommon.brandMidnight}>
+          <Link href="#">Link</Link>
+          <Text component="span"> on brandMidnight background.</Text>
+        </Box>
+      </Flex>
+    );
   },
 };
