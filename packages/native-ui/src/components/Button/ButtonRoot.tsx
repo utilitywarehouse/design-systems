@@ -16,7 +16,7 @@ const ButtonRoot: FC<
   ...props
 }) => {
   const { active, disabled } = states || {};
-  const { styles } = useStyles(stylesheet, { colorScheme, variant, size, active, disabled });
+  const { styles } = useStyles(stylesheet, { variant, size });
   const value = useMemo(
     () => ({ colorScheme, variant, size, inverted, disabled, active }),
     [colorScheme, variant, size, inverted, disabled, active]
@@ -45,36 +45,6 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
     alignItems: 'center',
     gap: space[2],
     variants: {
-      colorScheme: {
-        cyan: {
-          backgroundColor: colorMode === 'light' ? colors.cyan400 : colors.cyan700,
-          borderColor: colorMode === 'light' ? colors.cyan500 : colors.cyan700,
-        },
-        red: {
-          backgroundColor: colorMode === 'light' ? colors.red500 : colors.red700,
-          borderColor: colorMode === 'light' ? colors.red500 : colors.red700,
-        },
-        green: {
-          backgroundColor: colorMode === 'light' ? colors.green500 : colors.green700,
-          borderColor: colorMode === 'light' ? colors.green500 : colors.green700,
-        },
-        gold: {
-          backgroundColor: colorMode === 'light' ? colors.gold500 : colors.gold700,
-          borderColor: colorMode === 'light' ? colors.gold500 : colors.gold700,
-        },
-        grey: {
-          backgroundColor: colorMode === 'light' ? colors.grey500 : colors.grey700,
-          borderColor: colorMode === 'light' ? colors.grey500 : colors.grey700,
-        },
-      },
-      disabled: {
-        true: {},
-        false: {},
-      },
-      active: {
-        true: {},
-        false: {},
-      },
       variant: {
         solid: {},
         outline: {
@@ -117,7 +87,11 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
     const light = colorMode === 'light';
 
     if (!colorScheme) return extraStyles;
+    const baseColor = light
+      ? colors[`${colorScheme}${colorScheme === 'cyan' ? '400' : '500'}`]
+      : colors[`${colorScheme}700`];
     if (variant === 'solid') {
+      extraStyles.backgroundColor = baseColor;
       if (active) {
         extraStyles.backgroundColor = light
           ? colors[`${colorScheme}${colorScheme === 'cyan' ? '500' : '600'}`]
@@ -131,6 +105,7 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
       }
     }
     if (variant === 'outline') {
+      extraStyles.borderColor = baseColor;
       if (size === 'small') {
         extraStyles.paddingVertical = space[1];
       }
