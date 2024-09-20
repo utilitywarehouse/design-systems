@@ -114,18 +114,6 @@ export const AsButton: Story = {
   ),
 };
 
-export const FullWidth: Story = {
-  render: args => (
-    <Flex direction="column" align="stretch" gap={2}>
-      <Link {...args}>
-        {args.children}
-        <ChevronRightSmallIcon />
-      </Link>
-    </Flex>
-  ),
-  args: { children: 'Full width link with icon' },
-};
-
 export const LengthyContent: Story = {
   render: args => (
     <Flex width={800}>

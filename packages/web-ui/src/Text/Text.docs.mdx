@@ -15,8 +15,8 @@ import { DocsHeader } from '../storybook-utils';
 - [Alternatives](#alternatives)
 - [Variants](#variants)
 - [Colour](#colour)
-  - [Text wrapping](#text-wrapping)
-  - [Contextual colour](#contextual-colour)
+- [Inverted colours](#inverted-colours)
+- [Text wrapping](#text-wrapping)
 - [Styles](#styles)
 - [Props](#props)
 
@@ -34,8 +34,8 @@ import { DocsHeader } from '../storybook-utils';
 ## Colour
 
 You can pass any valid string color to the `Text` component. It is recommended
-you use the `@utilitywarehouse/colour-system` package, and pass color values
-from that into the component. The default color is `colorsCommon.brandMidnight`
+you use the `@utilitywarehouse/colour-system` package, and pass colour values
+from that into the component. The default colour is `colorsCommon.brandMidnight`
 from this package.
 
 ```tsx
@@ -44,21 +44,21 @@ import { colorsCommon } from '@utilitywarehouse/colour-system'
 <Text color={colorsCommon.brandPrimaryPurple}>{...}</Text>
 ```
 
-### Text wrapping
+## Inverted colours
+
+When inside a `Box` component that specifies a `background` which is the value
+of either `colorsCommon.brandMidnight` or `colorsCommon.brandPrimaryPurple`,
+the `Text` component colours will be changed to an inverted colour set. This
+can also be achieved using the `inverted` prop.
+
+<Canvas of={Stories.TextColour} />
+
+## Text wrapping
 
 Use the `noWrap` prop to set the text to truncate, instead of wrapping, with a
 text overflow ellipsis. Note that text overflow can only happen with block or
 inline-block level elements (the element needs to have a width in order to
 overflow).
-
-### Contextual colour
-
-When inside a `Box` component that specifies a `background` which is the
-value of either `colorsCommon.brandMidnight` or
-`colorsCommon.brandPrimaryPurple`, the `Text` color will be set to
-`colorsCommon.brandWhite`. This will be overridden by the `color` prop.
-
-<Canvas of={Stories.TextColour} />
 
 ## Styles
 
