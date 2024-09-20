@@ -36,9 +36,6 @@
     },
     "build:storybook": {
       "outputs": ["packages/web-ui/storybook-static/**"]
-    },
-    "figma:publish": {
-      "cache": false
     }
   }
 }

@@ -14,12 +14,7 @@ export default defineConfig([
     skipNodeModulesBundle: true,
     target: 'es2020',
     outDir: 'dist',
-    entry: [
-      './src/**/*.ts?(x)',
-      '!src/**/*.stories.*',
-      '!src/storybook-utils',
-      '!src/**/*.figma.tsx',
-    ],
+    entry: ['./src/**/*.ts?(x)', '!src/**/*.stories.*', '!src/storybook-utils'],
     tsconfig: path.join(__dirname, './tsconfig.build.json'),
   },
 ]);

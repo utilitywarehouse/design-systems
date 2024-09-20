@@ -1,8 +1,0 @@
-{
-  "codeConnect": {
-    "include": ["figma-connect/**"],
-    "parser": "react",
-    "exclude": [],
-    "label": "Native UI"
-  }
-}
