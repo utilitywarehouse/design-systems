@@ -2,6 +2,7 @@
   "codeConnect": {
     "include": ["apps/native-ui-storybook/figma-connect/**"],
     "parser": "react",
+    "label": "Native UI",
     "exclude": []
   }
 }
