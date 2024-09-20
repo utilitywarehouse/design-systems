@@ -156,12 +156,6 @@ export const AsButton: Story = {
           <ChevronRightMediumIcon />
         </button>
       </TextLink>
-      <TextLink asChild color={colors.grey900}>
-        <button onClick={() => alert('Hello world!')}>
-          Custom color
-          <ChevronRightMediumIcon />
-        </button>
-      </TextLink>
     </Flex>
   ),
 };
