@@ -1,0 +1,37 @@
+name: Native UI Figma Code Connect publish
+on:
+  push:
+    paths:
+      - apps/apps/native-ui-storybook/figma-connect/*.figma.tsx
+    branches:
+      - main
+
+jobs:
+  code-connect:
+    name: Code Connect
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: 🏗 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: 🚀 Publish Figma Code Connect components
+        env:
+          FIGMA_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+        run: pnpm run figma:publish:native-ui --token ${{ secrets.FIGMA_ACESS_TOKEN }}
