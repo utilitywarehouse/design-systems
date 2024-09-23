@@ -48,7 +48,6 @@ const classSelectors = {
 const StyledElement = styled(BaseButton)<ButtonProps>(() => {
   const sizeStyles = {
     medium: {
-      '--button-font-size': pxToRem(18),
       '--button-line-height': pxToRem(24),
       '--button-min-width': px(120),
       '--button-padding-inline': px(24),
@@ -57,7 +56,6 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
       '--focus-outline-width': '4px',
     },
     small: {
-      '--button-font-size': pxToRem(16),
       '--button-line-height': pxToRem(16),
       '--button-min-width': px(56),
       '--button-padding-inline': px(16),
@@ -69,7 +67,7 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
 
   return {
     fontFamily: fonts.secondary,
-    fontSize: 'var(--button-font-size)',
+    fontSize: pxToRem(16),
     fontWeight: fontWeights.secondary.medium,
     lineHeight: 'var(--button-line-height)',
     minWidth: 'var(--button-min-width)',
