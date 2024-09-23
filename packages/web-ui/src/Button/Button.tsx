@@ -52,7 +52,6 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
       '--button-min-width': px(120),
       '--button-padding-inline': px(24),
       '--button-padding-block': px(12),
-      '--button-gap': px(spacing(2)),
       '--focus-outline-width': '4px',
     },
     small: {
@@ -60,7 +59,6 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
       '--button-min-width': px(56),
       '--button-padding-inline': px(16),
       '--button-padding-block': px(8),
-      '--button-gap': px(spacing(0.5)),
       '--focus-outline-width': '2px',
     },
   };
@@ -71,7 +69,7 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
     fontWeight: fontWeights.secondary.medium,
     lineHeight: 'var(--button-line-height)',
     minWidth: 'var(--button-min-width)',
-    gap: 'var(--button-gap)',
+    gap: px(8),
     paddingBlock: 'var(--button-padding-block)',
     paddingInline: 'var(--button-padding-inline)',
     [classSelectors.size.medium]: { ...sizeStyles.medium },
