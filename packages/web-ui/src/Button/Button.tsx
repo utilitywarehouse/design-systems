@@ -70,7 +70,7 @@ const StyledElement = styled(BaseButton)<ButtonProps>(() => {
   return {
     fontFamily: fonts.secondary,
     fontSize: 'var(--button-font-size)',
-    fontWeight: fontWeights.secondary.semibold,
+    fontWeight: fontWeights.secondary.medium,
     lineHeight: 'var(--button-line-height)',
     minWidth: 'var(--button-min-width)',
     gap: 'var(--button-gap)',
