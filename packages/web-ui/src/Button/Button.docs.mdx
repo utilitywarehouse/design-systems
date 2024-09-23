@@ -28,6 +28,10 @@ import { DocsHeader } from '../storybook-utils';
 
 Uses a native `<button>` element under the hood, with support for the <kbd>Space</kbd> and <kbd>Enter</kbd> keys.
 
+Disabled buttons use `aria-disabled` so that they are still focusable when
+using the keyboard. This means that screen readers are still able to find the
+button, however the `onClick` handler will be disabled.
+
 ### Known issues
 
 We are aware that the `cyan` background colour for the `solid` variant does not

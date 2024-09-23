@@ -37,10 +37,11 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
     borderRadius: px(9999),
     color: 'var(--base-button-foreground-color)',
     backgroundColor: 'var(--base-button-background-color)',
-    '--base-button-focus-outline':
-      '0 0 0 var(--focus-outline-width, 0) var(--focus-outline-color, transparent)',
+    '--focus-outline-width': px(2),
+    '--focus-outline-offset': px(2),
+    // as UW icons use currentColor by default, this will fallback to the Button's color property if not set.
     '> :where(svg, [data-icon])': {
-      color: 'var(--base-button-icon-color)', // as UW icons use currentColor by default, this will fallback to the Button's color property if not set.
+      color: 'var(--base-button-icon-color)',
     },
     [COLORSCHEME_SELECTORS.cyan]: {
       '--base-button-solid-foreground-color': colors.cyan1000,
@@ -159,6 +160,7 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       },
     },
     [classSelectors.variant.outline]: {
+      border: `${px(2)} solid var(--base-button-outline-border-color)`,
       '--base-button-background-color': 'transparent',
       '--base-button-background-color-disabled': 'transparent',
       '--base-button-foreground-color': 'var(--base-button-outline-foreground-color)',
@@ -167,18 +169,13 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-foreground-color-disabled':
         'var(--base-button-outline-foreground-color-disabled)',
       '--base-button-border-color-disabled': 'var(--base-button-outline-border-color-disabled)',
-      '--base-button-outline-border': 'inset 0 0 0 2px var(--base-button-outline-border-color)',
-      boxShadow: 'var(--base-button-outline-border)',
       ':not(:hover,:active,[aria-disabled])': {
         '--base-button-icon-color': 'var(--base-button-outline-icon-color)',
       },
     },
     ':where(:focus-visible)': {
-      boxShadow: 'var(--base-button-focus-outline)',
-      '--base-button-background-color': 'var(--base-button-background-color-hover)',
-      [classSelectors.variant.outline]: {
-        boxShadow: 'var(--base-button-outline-border), var(--base-button-focus-outline)',
-      },
+      outline: 'var(--focus-outline-width) solid var(--focus-outline-color)',
+      outlineOffset: 'var(--focus-outline-offset)',
     },
     '@media (hover: hover)': {
       ':where(:hover)': {

@@ -51,15 +51,12 @@ const StyledElement = styled(BaseButton)(() => {
   const sizeStyles = {
     medium: {
       '--icon-button-size': pxToRem(48),
-      '--focus-outline-width': '4px',
     },
     small: {
       '--icon-button-size': pxToRem(32),
-      '--focus-outline-width': '2px',
     },
     xsmall: {
       '--icon-button-size': pxToRem(24),
-      '--focus-outline-width': '2px',
     },
   };
 
