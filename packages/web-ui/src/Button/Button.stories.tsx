@@ -1,13 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  ChevronLeft01MediumIcon,
-  ChevronLeft01SmallIcon,
-  ChevronRight01MediumIcon,
-  ChevronRight01SmallIcon,
-  OpenMediumIcon,
-} from '@utilitywarehouse/react-icons';
+import { ChevronLeft01SmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
 import * as React from 'react';
-import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Heading } from '../Heading';
 import { Text } from '../Text';
@@ -139,7 +132,7 @@ export const AsLink: Story = {
     <Button asChild>
       <a href="https://uw.co.uk/services">
         View UW services
-        <OpenMediumIcon />
+        <ChevronRight01SmallIcon />
       </a>
     </Button>
   ),
@@ -157,7 +150,7 @@ export const WithIcons: Story = {
             <Flex gap={2} align="center">
               {solidColorSchemes.map(colorScheme => (
                 <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="medium">
-                  <ChevronLeft01MediumIcon /> Button
+                  <ChevronLeft01SmallIcon /> Button
                 </Button>
               ))}
               {solidColorSchemes.map(colorScheme => (
@@ -169,7 +162,7 @@ export const WithIcons: Story = {
             <Flex gap={2} align="center">
               {solidColorSchemes.map(colorScheme => (
                 <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="medium">
-                  Button <ChevronRight01MediumIcon />
+                  Button <ChevronRight01SmallIcon />
                 </Button>
               ))}
               {solidColorSchemes.map(colorScheme => (
@@ -194,7 +187,7 @@ export const WithIcons: Story = {
                     colorScheme={colorScheme}
                     size="medium"
                   >
-                    <ChevronLeft01MediumIcon /> Button
+                    <ChevronLeft01SmallIcon /> Button
                   </Button>
                 ))}
                 {colorSchemes.map(colorScheme => (
@@ -216,7 +209,7 @@ export const WithIcons: Story = {
                     colorScheme={colorScheme}
                     size="medium"
                   >
-                    Button <ChevronRight01MediumIcon />
+                    Button <ChevronRight01SmallIcon />
                   </Button>
                 ))}
                 {colorSchemes.map(colorScheme => (
@@ -243,11 +236,11 @@ export const SimpleExample: Story = {
     <Flex gap={2}>
       {variants.map(variant => (
         <Button key={variant} variant={variant} onClick={() => alert('Hello world!')}>
-          Next page <ChevronRight01MediumIcon />
+          Next page <ChevronRight01SmallIcon />
         </Button>
       ))}
       <Button disabled variant="outline" onClick={() => alert('Hello world!')}>
-        Next page <ChevronRight01MediumIcon />
+        Next page <ChevronRight01SmallIcon />
       </Button>
     </Flex>
   ),
@@ -305,8 +298,7 @@ export const ResponsiveSize: Story = {
   render: args => (
     <Button {...args} size={{ mobile: 'small', desktop: 'medium' }}>
       Responsive size button
-      <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
-      <Box component={ChevronRight01SmallIcon} display={{ mobile: 'block', desktop: 'none' }} />
+      <ChevronRight01SmallIcon />
     </Button>
   ),
 };
@@ -317,7 +309,7 @@ export const FullWidth: Story = {
       <Text>This Button is full width for screen widths below the desktop breakpoint.</Text>
       <Button {...args}>
         {args.children}
-        <ChevronRight01MediumIcon />
+        <ChevronRight01SmallIcon />
       </Button>
     </Flex>
   ),

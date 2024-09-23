@@ -138,18 +138,15 @@ can be used to display different sizes at different breakpoints.
 You can nest icons directly inside the `Button`. An appropriate gap is provided
 automatically, and the icon will inherit the appropriate colours.
 
-This button is intended to be used with the [UW Icons](https://uw-icons.vercel.app/) packages. Small buttons
-should use 16px icons (small), while medium buttons should use 24px icons
-(medium).
-
-Using other icons may result in an unexpected appearance.
+This button is intended to be used with the [UW Icons](https://uw-icons.vercel.app/) packages.
+All links should use the small (16px) icons.
 
 <Canvas of={Stories.SimpleExample} />
 
 ```tsx
 <Button variant="solid" size="medium">
-  <SettingsMediumIcon />
-  Edit account
+  Continue
+  <ChevronRight01SmallIcon />
 </Button>
 ```
 
@@ -166,47 +163,6 @@ appropriate styles.
   <MyFontIcon aria-hidden="true" data-icon />
   Edit account
 </Button>
-```
-
-### Responsive icon sizes
-
-If you need to render different sized icons in conjunction with the responsive size prop, there are a couple of ways you can do this.
-
-1. Using JS, with the `useMediaQuery` hook.
-
-```tsx
-import { Button, useMediaQuery } from '@utilitywarehouse/web-ui';
-import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
-
-const MyComponent = () => {
-  const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
-
-  return (
-    <Button size={{ mobile: 'small', desktop: 'medium' }}>
-      Next page
-      {isDesktop ? <ChevronRight01MediumIcon /> : <ChevronRight01SmallIcon />}
-    </Button>
-  );
-};
-```
-
-2. Using CSS, with `Box` and style props. This can also be achieved with the `sx` prop.
-
-```tsx
-import { Box, Button } from '@utilitywarehouse/web-ui';
-import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
-
-const MyComponent = () => {
-  const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
-
-  return (
-    <IconButton size={{ mobile: 'small', desktop: 'medium' }}>
-      Next page
-      <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
-      <Box component={ChevronRight01SmallIcon} display={{ desktop: 'none' }} />
-    </IconButton>
-  );
-};
 ```
 
 ## Semantic HTML
@@ -226,9 +182,7 @@ Read more about this idea in the [Radix UI composition docs](https://www.radix-u
 
 ```tsx
 <Button asChild>
-  <a href="https://uw.co.uk/services">
-    <OpenMediumIcon />
-  </a>
+  <a href="https://uw.co.uk/services">View UW services</a>
 </Button>
 ```
 
