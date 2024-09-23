@@ -56,9 +56,9 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-outline-foreground-color': colors.cyan1000,
       '--base-button-outline-foreground-color-disabled': colors.cyan300,
       /* ghost */
-      '--base-button-ghost-foreground-color': colors.cyan1000,
-      '--base-button-ghost-background-color-hover': colors.cyan100,
-      '--base-button-ghost-background-color-active': colors.cyan200,
+      '--base-button-ghost-background-color-hover': colors.cyan50,
+      '--base-button-ghost-background-color-active': colors.cyan100,
+      '--base-button-ghost-foreground-color': colors.cyan700,
       '--base-button-ghost-foreground-color-disabled': colors.cyan300,
     },
     [COLORSCHEME_SELECTORS.green]: {
@@ -78,9 +78,9 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-outline-foreground-color': colors.green900,
       '--base-button-outline-foreground-color-disabled': colors.green300,
       /* ghost */
-      '--base-button-ghost-foreground-color': colors.green900,
-      '--base-button-ghost-background-color-hover': colors.green100,
-      '--base-button-ghost-background-color-active': colors.green200,
+      '--base-button-ghost-background-color-hover': colors.green50,
+      '--base-button-ghost-background-color-active': colors.green100,
+      '--base-button-ghost-foreground-color': colors.green700,
       '--base-button-ghost-foreground-color-disabled': colors.green300,
     },
     [COLORSCHEME_SELECTORS.red]: {
@@ -100,9 +100,9 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-outline-foreground-color': colors.red900,
       '--base-button-outline-foreground-color-disabled': colors.red300,
       /* ghost */
-      '--base-button-ghost-foreground-color': colors.red900,
-      '--base-button-ghost-background-color-hover': colors.red100,
-      '--base-button-ghost-background-color-active': colors.red200,
+      '--base-button-ghost-background-color-hover': colors.red50,
+      '--base-button-ghost-background-color-active': colors.red100,
+      '--base-button-ghost-foreground-color': colors.red700,
       '--base-button-ghost-foreground-color-disabled': colors.red300,
     },
     [COLORSCHEME_SELECTORS.gold]: {
@@ -115,9 +115,9 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-outline-foreground-color': colors.gold900,
       '--base-button-outline-foreground-color-disabled': colors.gold300,
       /* ghost */
-      '--base-button-ghost-foreground-color': colors.gold900,
-      '--base-button-ghost-background-color-hover': colors.gold100,
-      '--base-button-ghost-background-color-active': colors.gold200,
+      '--base-button-ghost-background-color-hover': colors.gold50,
+      '--base-button-ghost-background-color-active': colors.gold100,
+      '--base-button-ghost-foreground-color': colors.gold700,
       '--base-button-ghost-foreground-color-disabled': colors.gold300,
     },
     [COLORSCHEME_SELECTORS.grey]: {
@@ -130,9 +130,9 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-outline-foreground-color': colors.grey900,
       '--base-button-outline-foreground-color-disabled': colors.grey300,
       /* ghost */
-      '--base-button-ghost-foreground-color': colors.grey1000,
-      '--base-button-ghost-background-color-hover': colors.grey100,
-      '--base-button-ghost-background-color-active': colors.grey175,
+      '--base-button-ghost-background-color-hover': colors.grey50,
+      '--base-button-ghost-background-color-active': colors.grey100,
+      '--base-button-ghost-foreground-color': colors.grey700,
       '--base-button-ghost-foreground-color-disabled': colors.grey300,
     },
     [classSelectors.variant.solid]: {
