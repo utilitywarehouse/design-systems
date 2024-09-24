@@ -36,6 +36,8 @@ const classSelectors = {
 
 const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
   return {
+    transitionDuration: '0.3s',
+    transitionProperty: 'color, background-color, border-color',
     borderRadius: px(9999),
     color: 'var(--base-button-foreground-color)',
     backgroundColor: 'var(--base-button-background-color)',
@@ -273,6 +275,7 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       },
     },
     ':where(:active)': {
+      transitionDuration: '0s',
       '--base-button-background-color': 'var(--base-button-background-color-active)',
     },
     [':where([aria-disabled])']: {

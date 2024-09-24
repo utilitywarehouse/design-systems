@@ -50,13 +50,7 @@ export const KitchenSink: Story = {
             {sizes.map(size => (
               <Flex key={size} gap={1}>
                 {solidColorSchemes.map(colorScheme => (
-                  <Button
-                    key={colorScheme}
-                    variant="solid"
-                    colorScheme={colorScheme}
-                    size={size}
-                    onClick={() => alert('hello, world!')}
-                  >
+                  <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size={size}>
                     Button
                   </Button>
                 ))}
@@ -73,7 +67,6 @@ export const KitchenSink: Story = {
                     variant="solid"
                     colorScheme={colorScheme}
                     size={size}
-                    onClick={() => alert('hello, world!')}
                   >
                     Button
                   </Button>
@@ -96,7 +89,6 @@ export const KitchenSink: Story = {
                       variant={variant}
                       colorScheme={colorScheme}
                       size={size}
-                      onClick={() => alert('hello, world!')}
                     >
                       Button
                     </Button>
@@ -114,7 +106,6 @@ export const KitchenSink: Story = {
                       variant={variant}
                       colorScheme={colorScheme}
                       size={size}
-                      onClick={() => alert('hello, world!')}
                     >
                       Button
                     </Button>
@@ -239,11 +230,11 @@ export const SimpleExample: Story = {
   render: () => (
     <Flex gap={2}>
       {variants.map(variant => (
-        <Button key={variant} variant={variant} onClick={() => alert('Hello world!')}>
+        <Button key={variant} variant={variant}>
           Next page <ChevronRight01SmallIcon />
         </Button>
       ))}
-      <Button disabled variant="outline" onClick={() => alert('Hello world!')}>
+      <Button disabled variant="outline">
         Next page <ChevronRight01SmallIcon />
       </Button>
     </Flex>
