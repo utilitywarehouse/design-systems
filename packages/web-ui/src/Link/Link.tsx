@@ -96,40 +96,31 @@ const StyledElement = styled('a', {
     color: 'var(--link-color)',
     textDecorationColor: 'var(--link-underline-color)',
     textUnderlinePosition: 'under',
-    /* colors */
     '--link-color': colors.cyan700,
     '--link-underline-color': colors.cyan400,
     '--link-underline-color-hover': colors.cyan500,
     '--link-underline-color-active': colors.cyan600,
-    /* inverted colors */
-    '--link-color-inverted': colors.cyan300,
-    '--link-underline-color-inverted': colors.cyan400,
-    '--link-underline-color-hover-inverted': colors.cyan300,
-    '--link-underline-color-active-inverted': colors.cyan200,
+    '--focus-outline-color': colors.cyan700,
     [DATA_ATTRIBUTE_SELECTORS.inverted]: {
-      '--link-color': 'var(--link-color-inverted)',
-      '--link-underline-color': 'var(--link-underline-color-inverted)',
+      '--link-color': colors.cyan300,
+      '--link-underline-color': colors.cyan400,
+      '--link-underline-color-hover': colors.cyan300,
+      '--link-underline-color-active': colors.cyan200,
+      '--focus-outline-color': colors.cyan300,
     },
     '@media (hover: hover)': {
       ':where(:hover)': {
         '--link-underline-color': 'var(--link-underline-color-hover)',
-        [DATA_ATTRIBUTE_SELECTORS.inverted]: {
-          '--link-underline-color': 'var(--link-underline-color-hover-inverted)',
-        },
       },
     },
     ':where(:active)': {
       '--link-underline-color': 'var(--link-underline-color-active)',
-      [DATA_ATTRIBUTE_SELECTORS.inverted]: {
-        '--link-underline-color': 'var(--link-underline-color-active-inverted)',
-      },
     },
     ':where(:focus-visible)': {
       textDecoration: 'none',
       outlineWidth: px(2),
       outlineStyle: 'solid',
-      outlineColor: colors.cyan700,
-      outlineOffset: 0,
+      outlineColor: 'var(--focus-outline-color)',
     },
     [classSelectors.size.large]: { ...sizeStyles.large },
     [classSelectors.size.small]: { ...sizeStyles.small },
