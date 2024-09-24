@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ChevronLeft01SmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
 import * as React from 'react';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Heading } from '../Heading';
 import { Text } from '../Text';
@@ -20,6 +22,7 @@ const meta: Meta<typeof Button> = {
     colorScheme: { options: colorSchemes, control: { type: 'radio' } },
     size: { control: { type: 'radio' }, options: sizes },
     disabled: { control: { type: 'boolean' } },
+    inverted: { control: { type: 'boolean' } },
   },
   args: {
     children: 'Button',
@@ -27,6 +30,7 @@ const meta: Meta<typeof Button> = {
     colorScheme: 'cyan',
     size: 'medium',
     disabled: false,
+    inverted: false,
   },
 };
 
@@ -301,6 +305,64 @@ export const ResponsiveSize: Story = {
       <ChevronRight01SmallIcon />
     </Button>
   ),
+};
+
+export const InvertedColour: Story = {
+  name: 'Inverted Colour',
+  render: () => {
+    return (
+      <Flex direction="column">
+        {[colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(bgColor => (
+          <Box key={bgColor} padding={2} background={bgColor}>
+            <Flex direction="column" gap={2}>
+              <Flex gap={2}>
+                {solidColorSchemes.map(scs => (
+                  <Button key={scs} variant="solid" colorScheme={scs}>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {solidColorSchemes.map(scs => (
+                  <Button key={scs} variant="solid" colorScheme={scs} disabled>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.map(scs => (
+                  <Button key={scs} variant="outline" colorScheme={scs}>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.map(scs => (
+                  <Button key={scs} variant="outline" colorScheme={scs} disabled>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.map(scs => (
+                  <Button key={scs} variant="ghost" colorScheme={scs}>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.map(scs => (
+                  <Button key={scs} variant="ghost" colorScheme={scs} disabled>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+            </Flex>
+          </Box>
+        ))}
+      </Flex>
+    );
+  },
 };
 
 export const FullWidth: Story = {

@@ -11,7 +11,6 @@ import {
   px,
   pxToRem,
   responsiveClassSelector,
-  spacing,
   withBreakpoints,
   withGlobalPrefix,
 } from '../utils';

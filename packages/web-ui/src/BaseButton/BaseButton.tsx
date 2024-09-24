@@ -1,6 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { useBackground } from '../Box';
 import { UnstyledButton } from '../UnstyledButton';
 import { BaseButtonProps } from './BaseButton.props';
 import { styled } from '../theme';
@@ -8,6 +9,7 @@ import { PropsWithSx } from '../types';
 import {
   COLORSCHEME_SELECTORS,
   DATA_ATTRIBUTES,
+  DATA_ATTRIBUTE_SELECTORS,
   classSelector,
   px,
   withGlobalPrefix,
@@ -60,6 +62,28 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-ghost-background-color-active': colors.cyan100,
       '--base-button-ghost-foreground-color': colors.cyan700,
       '--base-button-ghost-foreground-color-disabled': colors.cyan300,
+      [DATA_ATTRIBUTE_SELECTORS.inverted]: {
+        '--focus-outline-color': colors.cyan300,
+        /* solid */
+        '--base-button-solid-background-color': colors.cyan400,
+        '--base-button-solid-background-color-active': colors.cyan500,
+        '--base-button-solid-background-color-disabled': colors.cyan300,
+        '--base-button-solid-background-color-hover': colors.cyan300,
+        '--base-button-solid-foreground-color': colors.cyan1000,
+        '--base-button-solid-foreground-color-disabled': colors.cyan100,
+        /* outline */
+        '--base-button-outline-background-color-active': colors.cyan800,
+        '--base-button-outline-background-color-hover': colors.cyan900,
+        '--base-button-outline-border-color': colors.cyan400,
+        '--base-button-outline-border-color-disabled': colors.cyan600,
+        '--base-button-outline-foreground-color': colors.cyan100,
+        '--base-button-outline-foreground-color-disabled': colors.cyan600,
+        /* ghost */
+        '--base-button-ghost-background-color-hover': colors.cyan900,
+        '--base-button-ghost-background-color-active': colors.cyan800,
+        '--base-button-ghost-foreground-color': colors.cyan400,
+        '--base-button-ghost-foreground-color-disabled': colors.cyan600,
+      },
     },
     [COLORSCHEME_SELECTORS.green]: {
       '--focus-outline-color': colors.green700,
@@ -82,6 +106,28 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-ghost-background-color-active': colors.green100,
       '--base-button-ghost-foreground-color': colors.green700,
       '--base-button-ghost-foreground-color-disabled': colors.green300,
+      [DATA_ATTRIBUTE_SELECTORS.inverted]: {
+        '--focus-outline-color': colors.green300,
+        /* solid */
+        '--base-button-solid-background-color': colors.green400,
+        '--base-button-solid-background-color-active': colors.green200,
+        '--base-button-solid-background-color-disabled': colors.green300,
+        '--base-button-solid-background-color-hover': colors.green300,
+        '--base-button-solid-foreground-color': colors.green900,
+        '--base-button-solid-foreground-color-disabled': colors.green100,
+        /* outline */
+        '--base-button-outline-background-color-active': colors.green800,
+        '--base-button-outline-background-color-hover': colors.green900,
+        '--base-button-outline-border-color': colors.green400,
+        '--base-button-outline-border-color-disabled': colors.green600,
+        '--base-button-outline-foreground-color': colors.green100,
+        '--base-button-outline-foreground-color-disabled': colors.green600,
+        /* ghost */
+        '--base-button-ghost-background-color-hover': colors.green900,
+        '--base-button-ghost-background-color-active': colors.green800,
+        '--base-button-ghost-foreground-color': colors.green300,
+        '--base-button-ghost-foreground-color-disabled': colors.green600,
+      },
     },
     [COLORSCHEME_SELECTORS.red]: {
       '--focus-outline-color': colors.red700,
@@ -104,6 +150,28 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-ghost-background-color-active': colors.red100,
       '--base-button-ghost-foreground-color': colors.red700,
       '--base-button-ghost-foreground-color-disabled': colors.red300,
+      [DATA_ATTRIBUTE_SELECTORS.inverted]: {
+        '--focus-outline-color': colors.red300,
+        /* solid */
+        '--base-button-solid-background-color': colors.red400,
+        '--base-button-solid-background-color-active': colors.red200,
+        '--base-button-solid-background-color-disabled': colors.red300,
+        '--base-button-solid-background-color-hover': colors.red300,
+        '--base-button-solid-foreground-color': colors.red900,
+        '--base-button-solid-foreground-color-disabled': colors.red100,
+        /* outline */
+        '--base-button-outline-background-color-active': colors.red800,
+        '--base-button-outline-background-color-hover': colors.red900,
+        '--base-button-outline-border-color': colors.red400,
+        '--base-button-outline-border-color-disabled': colors.red600,
+        '--base-button-outline-foreground-color': colors.red100,
+        '--base-button-outline-foreground-color-disabled': colors.red600,
+        /* ghost */
+        '--base-button-ghost-background-color-hover': colors.red900,
+        '--base-button-ghost-background-color-active': colors.red800,
+        '--base-button-ghost-foreground-color': colors.red300,
+        '--base-button-ghost-foreground-color-disabled': colors.red600,
+      },
     },
     [COLORSCHEME_SELECTORS.gold]: {
       '--focus-outline-color': colors.gold700,
@@ -119,6 +187,21 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-ghost-background-color-active': colors.gold100,
       '--base-button-ghost-foreground-color': colors.gold700,
       '--base-button-ghost-foreground-color-disabled': colors.gold300,
+      [DATA_ATTRIBUTE_SELECTORS.inverted]: {
+        '--focus-outline-color': colors.gold300,
+        /* outline */
+        '--base-button-outline-background-color-active': colors.gold800,
+        '--base-button-outline-background-color-hover': colors.gold900,
+        '--base-button-outline-border-color': colors.gold400,
+        '--base-button-outline-border-color-disabled': colors.gold600,
+        '--base-button-outline-foreground-color': colors.gold100,
+        '--base-button-outline-foreground-color-disabled': colors.gold600,
+        /* ghost */
+        '--base-button-ghost-background-color-hover': colors.gold900,
+        '--base-button-ghost-background-color-active': colors.gold800,
+        '--base-button-ghost-foreground-color': colors.gold300,
+        '--base-button-ghost-foreground-color-disabled': colors.gold600,
+      },
     },
     [COLORSCHEME_SELECTORS.grey]: {
       '--focus-outline-color': colors.grey700,
@@ -134,6 +217,21 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
       '--base-button-ghost-background-color-active': colors.grey100,
       '--base-button-ghost-foreground-color': colors.grey700,
       '--base-button-ghost-foreground-color-disabled': colors.grey300,
+      [DATA_ATTRIBUTE_SELECTORS.inverted]: {
+        '--focus-outline-color': colors.grey300,
+        /* outline */
+        '--base-button-outline-background-color-active': colors.grey800,
+        '--base-button-outline-background-color-hover': colors.grey900,
+        '--base-button-outline-border-color': colors.grey400,
+        '--base-button-outline-border-color-disabled': colors.grey600,
+        '--base-button-outline-foreground-color': colors.grey100,
+        '--base-button-outline-foreground-color-disabled': colors.grey600,
+        /* ghost */
+        '--base-button-ghost-background-color-hover': colors.grey900,
+        '--base-button-ghost-background-color-active': colors.grey800,
+        '--base-button-ghost-foreground-color': colors.grey300,
+        '--base-button-ghost-foreground-color-disabled': colors.grey600,
+      },
     },
     [classSelectors.variant.solid]: {
       '--base-button-foreground-color': 'var(--base-button-solid-foreground-color)',
@@ -197,10 +295,12 @@ export const BaseButton = React.forwardRef<
   React.ElementRef<'button'>,
   React.PropsWithChildren<PropsWithSx<BaseButtonProps>>
 >(function BaseButton(
-  { variant = 'solid', colorScheme = 'cyan', className, disabled, ...props },
+  { variant = 'solid', colorScheme = 'cyan', className, disabled, inverted, ...props },
   forwardedRef
 ) {
+  const { isInvertedBackground } = useBackground();
   const dataAttributeProps = {
+    [DATA_ATTRIBUTES.inverted]: inverted || isInvertedBackground ? '' : undefined,
     [DATA_ATTRIBUTES.colorscheme]: colorScheme,
   };
   return (
