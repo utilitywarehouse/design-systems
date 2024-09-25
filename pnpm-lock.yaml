@@ -382,9 +382,15 @@ importers:
       '@gluestack-ui/alert':
         specifier: ^0.1.15
         version: 0.1.15(react-dom@18.2.0)(react@18.2.0)
+      '@gluestack-ui/button':
+        specifier: ^1.0.7
+        version: 1.0.7(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
       '@gluestack-ui/icon':
         specifier: ^0.1.22
         version: 0.1.22(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/spinner':
+        specifier: ^0.1.14
+        version: 0.1.14(react-dom@18.2.0)(react@18.2.0)
       '@gluestack-ui/themed':
         specifier: 1.1.40
         version: 1.1.40(@gluestack-style/react@1.0.57)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.12)(react-native@0.74.5)(react@18.2.0)

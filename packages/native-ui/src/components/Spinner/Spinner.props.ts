@@ -1,4 +1,6 @@
-interface SpinnerProps {
+import type { ViewProps } from 'react-native';
+
+interface SpinnerProps extends ViewProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   color?: string;
 }
