@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Icon } from '../Icon';
-import { ColorValue } from 'react-native';
+import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
 import { CircleIcon } from '../Icons';
 
 const RadioIcon: React.FC<
@@ -18,7 +18,7 @@ const RadioIcon: React.FC<
     <Icon
       as={CircleIcon}
       {...props}
-      style={{ ...styles.container, ...(style ? Object(style) : {}) }}
+      style={{ ...styles.container, ...(style ? Object(style) : {}) } as StyleProp<ViewStyle>}
     />
   );
 };
