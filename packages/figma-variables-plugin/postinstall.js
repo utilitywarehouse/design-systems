@@ -17,13 +17,13 @@ const eslintPluginDest = path.resolve(
   './node_modules/@figma/eslint-plugin-figma-plugins'
 );
 
-// Ensure the destination directories exist
-const pluginTypingsDestDir = path.dirname(pluginTypingsDest);
-fs.mkdirSync(pluginTypingsDestDir, { recursive: true });
-
-const eslintPluginDestDir = path.dirname(eslintPluginDest);
-fs.mkdirSync(eslintPluginDestDir, { recursive: true });
-
-// Proceed with copying the files
-execSync(`cp -R ${pluginTypingsSrc} ${pluginTypingsDest}`);
-execSync(`cp -R ${eslintPluginSrc} ${eslintPluginDest}`);
+// Ensure the 'node_modules/@figma' directory exists
+const atFigmaDir = path.resolve(__dirname, './node_modules/@figma');
+try {
+  fs.mkdirSync(atFigmaDir, { recursive: true });
+  execSync(`cp -R ${pluginTypingsSrc} ${pluginTypingsDest}`);
+  execSync(`cp -R ${eslintPluginSrc} ${eslintPluginDest}`);
+} catch (error) {
+  console.error('Error during postinstall script:', error);
+  process.exit(1); // Exit with a non-zero status code to indicate failure
+}
