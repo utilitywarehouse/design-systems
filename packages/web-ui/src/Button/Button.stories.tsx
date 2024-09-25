@@ -307,43 +307,43 @@ export const InvertedColour: Story = {
           <Box key={bgColor} padding={2} background={bgColor}>
             <Flex direction="column" gap={2}>
               <Flex gap={2}>
-                {solidColorSchemes.map(scs => (
-                  <Button key={scs} variant="solid" colorScheme={scs}>
+                {solidColorSchemes.map(color => (
+                  <Button key={color} variant="solid" colorScheme={color}>
                     Button
                   </Button>
                 ))}
               </Flex>
               <Flex gap={2}>
-                {solidColorSchemes.map(scs => (
-                  <Button key={scs} variant="solid" colorScheme={scs} disabled>
+                {solidColorSchemes.map(color => (
+                  <Button key={color} variant="solid" colorScheme={color} disabled>
                     Button
                   </Button>
                 ))}
               </Flex>
               <Flex gap={2}>
-                {colorSchemes.map(scs => (
-                  <Button key={scs} variant="outline" colorScheme={scs}>
+                {colorSchemes.map(color => (
+                  <Button key={color} variant="outline" colorScheme={color}>
                     Button
                   </Button>
                 ))}
               </Flex>
               <Flex gap={2}>
-                {colorSchemes.map(scs => (
-                  <Button key={scs} variant="outline" colorScheme={scs} disabled>
+                {colorSchemes.map(color => (
+                  <Button key={color} variant="outline" colorScheme={color} disabled>
                     Button
                   </Button>
                 ))}
               </Flex>
               <Flex gap={2}>
-                {colorSchemes.map(scs => (
-                  <Button key={scs} variant="ghost" colorScheme={scs}>
+                {colorSchemes.map(color => (
+                  <Button key={color} variant="ghost" colorScheme={color}>
                     Button
                   </Button>
                 ))}
               </Flex>
               <Flex gap={2}>
-                {colorSchemes.map(scs => (
-                  <Button key={scs} variant="ghost" colorScheme={scs} disabled>
+                {colorSchemes.map(color => (
+                  <Button key={color} variant="ghost" colorScheme={color} disabled>
                     Button
                   </Button>
                 ))}

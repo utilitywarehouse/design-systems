@@ -2,4 +2,4 @@
 '@utilitywarehouse/web-ui': patch
 ---
 
-`Button` visual updates
+`Button` & `IconButton` visual updates
