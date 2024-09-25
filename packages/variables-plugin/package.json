@@ -1,29 +1,47 @@
 {
-  "name": "ds-variables",
-  "version": "1.0.0",
-  "description": "Your Figma Plugin",
-  "main": "code.js",
-  "type": "module",
+  "name": "@utlitiywarehouse/variables-plugin",
+  "version": "0.0.0",
+  "description": "UW Figma variables plugin",
+  "license": "ISC",
   "scripts": {
-    "build": "node build.js",
-    "lint": "eslint --ext .ts,.tsx --ignore-pattern node_modules .",
-    "lint:fix": "eslint --ext .ts,.tsx --ignore-pattern node_modules --fix .",
-    "watch": "node watch.js"
+    "build": "webpack --mode=production",
+    "build:watch": "webpack --mode=development --watch",
+    "postinstall": "cp -R ../../node_modules/@figma/plugin-typings ./node_modules/@figma/plugin-typings && cp -R ../../node_modules/@figma/eslint-plugin-figma-plugins ./node_modules/@figma/eslint-plugin-figma-plugins",
+    "prettier:format": "prettier --write '**/*.{js,jsx,ts,tsx,css,json}' "
   },
-  "author": "",
-  "license": "",
+  "dependencies": {
+    "@utilitywarehouse/web-ui": "^1.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
     "@figma/eslint-plugin-figma-plugins": "0.15.0",
-    "@figma/plugin-typings": "1.100.0",
-    "@types/node": "^18.15.11",
-    "@typescript-eslint/eslint-plugin": "^6.12.0",
-    "@typescript-eslint/parser": "^6.12.0",
-    "dotenv": "^16.4.5",
-    "esbuild": "^0.23.1",
-    "esbuild-envfile-plugin": "^1.0.7",
-    "eslint": "^8.54.0",
-    "postinstall": "cp -R ../../node_modules/@figma/plugin-typings ./node_modules/@figma/plugin-typings && cp -R ../../node_modules/@figma/eslint-plugin-figma-plugins ./node_modules/@figma/eslint-plugin-figma-plugins && cp ../../node_modules/@types/node ./node_modules/@types/node",
-    "typescript": "^5.3.2"
+    "@figma/plugin-typings": "^1.100.0",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "react-dev-utils": "^12.0.1",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,css,json}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": [
