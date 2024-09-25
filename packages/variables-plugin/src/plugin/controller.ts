@@ -1,6 +1,6 @@
 figma.showUI(__html__, { width: 400, height: 260 });
 
-const debugMode = true;
+const debugMode = false;
 const consoleLog = debugMode
   ? console
   : { log: () => {}, warn: () => {}, error: () => {}, clear: () => {} };
@@ -150,10 +150,8 @@ figma.ui.onmessage = async msg => {
       };
     });
 
-    consoleLog.log('variableData', variableData);
-
     // Send the data back to the UI
-    // figma.ui.postMessage({ type: 'variables-exported', data: variableData });
+    figma.ui.postMessage({ type: 'variables-exported', data: variableData });
   } else if (msg.type === 'save-token') {
     // Save the GitHub token
     await figma.clientStorage.setAsync('githubToken', msg.token);
