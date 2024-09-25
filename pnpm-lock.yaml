@@ -333,6 +333,9 @@ importers:
       '@gluestack-ui/themed':
         specifier: 1.1.40
         version: 1.1.40(@gluestack-style/react@1.0.57)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.12)(react-native@0.74.5)(react@18.2.0)
+      '@types/react':
+        specifier: ^18.2.75
+        version: 18.2.79
       '@utilitywarehouse/colour-system':
         specifier: workspace:^
         version: link:../colour-system
@@ -358,9 +361,6 @@ importers:
       '@babel/preset-typescript':
         specifier: ^7.24.7
         version: 7.24.7
-      '@types/react':
-        specifier: ^18.2.75
-        version: 18.2.79
       file-loader:
         specifier: ^6.2.0
         version: 6.2.0(webpack@5.91.0)

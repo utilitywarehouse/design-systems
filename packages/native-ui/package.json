@@ -28,6 +28,7 @@
     "@gluestack-ui/icon": "^0.1.22",
     "@gluestack-ui/spinner": "^0.1.14",
     "@gluestack-ui/themed": "1.1.40",
+    "@types/react": "^18.2.75",
     "@utilitywarehouse/colour-system": "workspace:^",
     "@utilitywarehouse/react-native-icons": "1.6.0",
     "react-native-unistyles": "^2.9.1"
@@ -36,7 +37,6 @@
     "@babel/preset-env": "^7.24.8",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
-    "@types/react": "^18.2.75",
     "@utilitywarehouse/react-native-icons": "^1.4.0",
     "file-loader": "^6.2.0",
     "react": "^18.2.0",
