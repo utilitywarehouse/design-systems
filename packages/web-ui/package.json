@@ -18,7 +18,8 @@
     "dev": "storybook dev --quiet -p 6006",
     "build:storybook": "storybook build --quiet",
     "build-storybook": "storybook build",
-    "chromatic": "chromatic"
+    "chromatic": "chromatic",
+    "figma:publish": "figma connect publish"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -57,7 +58,7 @@
     "@types/react": "^17.0.0 || ^18.0.0",
     "@types/react-syntax-highlighter": "^15.5.11",
     "@utilitywarehouse/css-reset": "workspace:^",
-    "@utilitywarehouse/fontsource": "^0.0.5",
+    "@utilitywarehouse/fontsource": "^0.1.0",
     "@vercel/analytics": "^1.3.1",
     "chromatic": "^11.3.5",
     "prop-types": "^15.8.1",

@@ -56,6 +56,10 @@ export const Workshop: Story = {
       control: { type: 'select' },
     },
     inverted: { control: { type: 'boolean' } },
+    fontWeight: {
+      options: ['regular', 'medium', 'semibold'],
+      control: { type: 'radio' },
+    },
     textTransform: {
       options: ['capitalize', 'uppercase', 'lowercase', 'none'],
       control: { type: 'radio' },
