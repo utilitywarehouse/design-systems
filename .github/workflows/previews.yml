@@ -110,6 +110,7 @@ jobs:
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-android
           path: ./apps/native-ui-storybook/.env.android
+          include-hidden-files: true
           overwrite: true
 
       - name: See env output
@@ -217,6 +218,7 @@ jobs:
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-ios
           path: ./apps/native-ui-storybook/.env.ios
+          include-hidden-files: true
           overwrite: true
 
       - name: 🚀 Upload updated bundle to Appetize

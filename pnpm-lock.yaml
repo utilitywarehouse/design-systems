@@ -321,9 +321,15 @@ importers:
       '@gluestack-ui/alert':
         specifier: ^0.1.15
         version: 0.1.15(react-dom@18.2.0)(react@18.2.0)
+      '@gluestack-ui/button':
+        specifier: ^1.0.7
+        version: 1.0.7(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
       '@gluestack-ui/icon':
         specifier: ^0.1.22
         version: 0.1.22(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/spinner':
+        specifier: ^0.1.14
+        version: 0.1.14(react-dom@18.2.0)(react@18.2.0)
       '@gluestack-ui/themed':
         specifier: 1.1.40
         version: 1.1.40(@gluestack-style/react@1.0.57)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.12)(react-native@0.74.5)(react@18.2.0)
@@ -11099,10 +11105,10 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.4.0-alpha.0(storybook@7.6.17):
-    resolution: {integrity: sha512-OhiFmFAEo0f0EbpXqVuLN78gXB14hD177RDH7kXGiQyMq1CB78et34Qs6boPKfscHUXpRTa375aaGrNbNM6E4Q==}
+  /@storybook/client-logger@8.4.0-alpha.1(storybook@7.6.17):
+    resolution: {integrity: sha512-Qo+iAro4931VOuYT6FaeZVFoe4Vc55CDCUViVz1Tphr/NFKdq8zpuP2oOKAqFluC//BNANTG5k2emPztH9Kouw==}
     peerDependencies:
-      storybook: ^8.4.0-alpha.0
+      storybook: ^8.4.0-alpha.1
     dependencies:
       storybook: 7.6.17
     dev: true
@@ -11617,10 +11623,10 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.4.0-alpha.0(storybook@7.6.17):
-    resolution: {integrity: sha512-JOuez6W6rwTaFLJiQrT6Bk3Xj9KpWWH718GcN7brUb5qq2SWtNuk7yoPQ1JNQw1H3KNbA7jL54+Vwr3nzEZdQQ==}
+  /@storybook/instrumenter@8.4.0-alpha.1(storybook@7.6.17):
+    resolution: {integrity: sha512-jO8pQRFQWf7PPwnrW+DmM0BE5nsrnSZr5SaOOTnMM4NYJ3A1yorGy/kCUy/LbeXBUwHGutc7oDYWpHkA4ki3Cg==}
     peerDependencies:
-      storybook: ^8.4.0-alpha.0
+      storybook: ^8.4.0-alpha.1
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.0.5
@@ -12357,8 +12363,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1(storybook@7.6.17):
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.4.0-alpha.0(storybook@7.6.17)
-      '@storybook/instrumenter': 8.4.0-alpha.0(storybook@7.6.17)
+      '@storybook/client-logger': 8.4.0-alpha.1(storybook@7.6.17)
+      '@storybook/instrumenter': 8.4.0-alpha.1(storybook@7.6.17)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
