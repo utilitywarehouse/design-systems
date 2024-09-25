@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode=production",
     "build:watch": "webpack --mode=development --watch",
-    "postinstall": "cp -R ../../node_modules/@figma/plugin-typings ./node_modules/@figma/plugin-typings && cp -R ../../node_modules/@figma/eslint-plugin-figma-plugins ./node_modules/@figma/eslint-plugin-figma-plugins",
+    "postinstall": "node ./postinstall.js",
     "prettier:format": "prettier --write '**/*.{js,jsx,ts,tsx,css,json}' "
   },
   "dependencies": {
