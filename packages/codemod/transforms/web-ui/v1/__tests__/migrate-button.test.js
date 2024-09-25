@@ -19,9 +19,16 @@ describe(SIZE_NAME, () => {
 });
 
 const HREF_NAME = `${NAME}-href`;
+const CUSTOMER_UI_MATERIAL_NAME = `${HREF_NAME}-customer-ui-material`;
 
 describe(HREF_NAME, () => {
   defineTest(__dirname, NAME, {}, HREF_NAME, {
+    parser: 'tsx',
+  });
+});
+
+describe(CUSTOMER_UI_MATERIAL_NAME, () => {
+  defineTest(__dirname, NAME, {}, CUSTOMER_UI_MATERIAL_NAME, {
     parser: 'tsx',
   });
 });

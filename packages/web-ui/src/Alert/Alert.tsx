@@ -1,23 +1,23 @@
-import * as React from 'react';
-import { PropsWithSx } from '../types';
-import { AlertProps } from './Alert.props';
-import { COLORSCHEME_SELECTORS, DATA_ATTRIBUTES, px, withGlobalPrefix } from '../utils';
-import clsx from 'clsx';
-import { styled } from '../theme';
-import { colors } from '@utilitywarehouse/colour-system';
 import {
-  WarningMediumContainedIcon,
-  InformationMediumContainedIcon,
-  TickMediumContainedIcon,
+  ChevronRightMediumIcon,
   CloseMediumIcon,
   CloseSmallIcon,
-  ChevronRightMediumIcon,
+  InformationMediumContainedIcon,
+  TickMediumContainedIcon,
+  WarningMediumContainedIcon,
 } from '@utilitywarehouse/react-icons';
-import { AlertTitle } from './AlertTitle';
-import { AlertText } from './AlertText';
-import { AlertLink } from './AlertLink';
+import * as React from 'react';
+import clsx from 'clsx';
+import { colors } from '@utilitywarehouse/colour-system';
 import { Flex } from '../Flex';
+import { AlertProps } from './Alert.props';
 import { AlertButton } from './AlertButton';
+import { AlertLink } from './AlertLink';
+import { AlertText } from './AlertText';
+import { AlertTitle } from './AlertTitle';
+import { styled } from '../theme';
+import { PropsWithSx } from '../types';
+import { COLORSCHEME_SELECTORS, DATA_ATTRIBUTES, px, withGlobalPrefix } from '../utils';
 
 const componentName = 'Alert';
 const componentClassName = withGlobalPrefix(componentName);
