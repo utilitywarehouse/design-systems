@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   // Handle messages from the plugin code
-  window.onmessage = async (event) => {
+  window.onmessage = async event => {
     const { pluginMessage } = event.data;
 
     if (pluginMessage.type === 'token-loaded') {
@@ -42,7 +42,7 @@ function App() {
   };
 
   // Create a pull request on GitHub
-  const createPullRequest = async (variablesData) => {
+  const createPullRequest = async variablesData => {
     try {
       const apiBase = 'https://api.github.com';
       const headers = {
@@ -52,9 +52,12 @@ function App() {
       };
 
       // Get the SHA of the base branch
-      const branchResponse = await fetch(`${apiBase}/repos/${repoOwner}/${repoName}/git/ref/heads/${branchName}`, {
-        headers,
-      });
+      const branchResponse = await fetch(
+        `${apiBase}/repos/${repoOwner}/${repoName}/git/ref/heads/${branchName}`,
+        {
+          headers,
+        }
+      );
       if (!branchResponse.ok) throw new Error('Failed to fetch branch information.');
       const branchData = await branchResponse.json();
       const baseSha = branchData.object.sha;
@@ -75,15 +78,18 @@ function App() {
       const content = btoa(unescape(encodeURIComponent(JSON.stringify(variablesData, null, 2))));
 
       // Create or update the file in the new branch
-      const fileResponse = await fetch(`${apiBase}/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-        method: 'PUT',
-        headers,
-        body: JSON.stringify({
-          message: 'Export Figma variables',
-          content: content,
-          branch: newBranchName,
-        }),
-      });
+      const fileResponse = await fetch(
+        `${apiBase}/repos/${repoOwner}/${repoName}/contents/${filePath}`,
+        {
+          method: 'PUT',
+          headers,
+          body: JSON.stringify({
+            message: 'Export Figma variables',
+            content: content,
+            branch: newBranchName,
+          }),
+        }
+      );
       if (!fileResponse.ok) throw new Error('Failed to create or update the file.');
 
       // Create a pull request
@@ -112,7 +118,7 @@ function App() {
       <h2>Export Figma Variables</h2>
       <div>
         <label>GitHub Token:</label>
-        <input type="password" value={githubToken} onChange={(e) => setGithubToken(e.target.value)} />
+        <input type="password" value={githubToken} onChange={e => setGithubToken(e.target.value)} />
         <button onClick={saveToken}>Save Token</button>
       </div>
       <button onClick={exportVariables} className="export">
