@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --mode=production",
     "build:watch": "webpack --mode=development --watch",
+    "clean": "rm -rf node_modules && rm -rf dist",
     "lint:fix": "TIMING=1 eslint --fix --max-warnings 0 --ext ts,tsx src",
     "lint": "TIMING=1 eslint --max-warnings 0 --ext ts,tsx src",
     "postinstall": "node ./postinstall.js",
