@@ -1,13 +1,13 @@
 figma.showUI(__html__, { width: 400, height: 260 });
 
-// Function to resolve variable aliases recursively
-
 const debugMode = true;
-const consoleLog = debugMode ? console : { log: () => {}, warn: () => {}, error: () => {}, clear: () => {} };
+const consoleLog = debugMode
+  ? console
+  : { log: () => {}, warn: () => {}, error: () => {}, clear: () => {} };
 consoleLog.clear();
 
 /* eslint-disable @typescript-eslint/no-misused-promises */
-figma.ui.onmessage = async (msg) => {
+figma.ui.onmessage = async msg => {
   if (msg.type === 'export-variables') {
     // Fetch all local variables
     const variables = await figma.variables.getLocalVariablesAsync();
@@ -17,12 +17,12 @@ figma.ui.onmessage = async (msg) => {
 
     // Create maps for quick access
     const collectionsMap = new Map<string, VariableCollection>();
-    collections.forEach((collection) => {
+    collections.forEach(collection => {
       collectionsMap.set(collection.id, collection);
     });
 
     const variablesMap = new Map<string, Variable>();
-    variables.forEach((variable) => {
+    variables.forEach(variable => {
       variablesMap.set(variable.id, variable);
     });
 
@@ -39,7 +39,12 @@ figma.ui.onmessage = async (msg) => {
           return { error: 'Value is undefined' };
         }
 
-        if (typeof value === 'object' && value !== null && 'type' in value && value.type === 'VARIABLE_ALIAS') {
+        if (
+          typeof value === 'object' &&
+          value !== null &&
+          'type' in value &&
+          value.type === 'VARIABLE_ALIAS'
+        ) {
           consoleLog.log(`Resolving alias variable with ID: ${value.id} in mode: ${currentModeId}`);
 
           if (visitedVariables.has(value.id)) {
@@ -59,19 +64,29 @@ figma.ui.onmessage = async (msg) => {
               const aliasCollection = collectionsMap.get(aliasVariable.variableCollectionId);
               aliasModeId = aliasCollection ? aliasCollection.defaultModeId : null;
 
-              if (!aliasModeId || !Object.prototype.hasOwnProperty.call(aliasVariable.valuesByMode, aliasModeId)) {
-                consoleLog.warn(`No matching mode found for alias variable ID ${value.id}. Cannot resolve value.`);
+              if (
+                !aliasModeId ||
+                !Object.prototype.hasOwnProperty.call(aliasVariable.valuesByMode, aliasModeId)
+              ) {
+                consoleLog.warn(
+                  `No matching mode found for alias variable ID ${value.id}. Cannot resolve value.`
+                );
                 return { error: 'No matching mode for alias variable' };
               }
             }
 
             const aliasValue = aliasVariable.valuesByMode[aliasModeId];
 
-            consoleLog.log(`Alias variable value for ID ${value.id} in mode ${aliasModeId}:`, aliasValue);
+            consoleLog.log(
+              `Alias variable value for ID ${value.id} in mode ${aliasModeId}:`,
+              aliasValue
+            );
 
             // Handle undefined aliasValue
             if (aliasValue === undefined) {
-              consoleLog.warn(`No value found for alias variable ID ${value.id} in mode ${aliasModeId}`);
+              consoleLog.warn(
+                `No value found for alias variable ID ${value.id} in mode ${aliasModeId}`
+              );
               return { error: 'No value for alias variable in mode' };
             }
 
@@ -91,7 +106,7 @@ figma.ui.onmessage = async (msg) => {
     };
 
     // Transform variables into a serializable format
-    const variableData = variables.map((variable) => {
+    const variableData = variables.map(variable => {
       const collection = collectionsMap.get(variable.variableCollectionId);
       const collectionInfo = collection
         ? {
@@ -106,10 +121,12 @@ figma.ui.onmessage = async (msg) => {
       // Build valuesByMode with mode names and resolved values
       const valuesByMode = {};
       for (const modeId of Object.keys(variable.valuesByMode)) {
-        const mode = modes.find((m) => m.modeId === modeId);
+        const mode = modes.find(m => m.modeId === modeId);
         const modeName = mode ? mode.name : 'Unknown Mode';
 
-        consoleLog.log(`Resolving variable '${variable.name}' (${variable.id}) for mode '${modeName}' (${modeId})`);
+        consoleLog.log(
+          `Resolving variable '${variable.name}' (${variable.id}) for mode '${modeName}' (${modeId})`
+        );
 
         const rawValue = variable.valuesByMode[modeId];
 
