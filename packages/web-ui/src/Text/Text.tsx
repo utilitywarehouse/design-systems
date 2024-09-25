@@ -1,6 +1,12 @@
+import { Slot } from '@radix-ui/react-slot';
 import * as React from 'react';
-import { useBackground } from '../Box';
+import clsx from 'clsx';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { useBackground } from '../Box';
+import { TextProps } from './Text.props';
+import { styled } from '../theme';
+import { fontWeights, fonts } from '../tokens';
+import { PropsWithSx } from '../types';
 import {
   DATA_ATTRIBUTES,
   DATA_ATTRIBUTE_SELECTORS,
@@ -9,17 +15,11 @@ import {
   pxToRem,
   withGlobalPrefix,
 } from '../utils';
-import { TextProps } from './Text.props';
-import { PropsWithSx } from '../types';
-import clsx from 'clsx';
-import { styled } from '../theme';
-import { fontWeights, fonts } from '../tokens';
 
 const componentName = 'Text';
 const componentClassName = withGlobalPrefix(componentName);
 
 const classNames = {
-  bold: withGlobalPrefix('bold'),
   noWrap: withGlobalPrefix('no-wrap'),
   variant: {
     subtitle: withGlobalPrefix('variant-subtitle'),
@@ -27,16 +27,25 @@ const classNames = {
     legalNote: withGlobalPrefix('variant-legalNote'),
     caption: withGlobalPrefix('variant-caption'),
   },
+  fontWeight: {
+    regular: withGlobalPrefix('font-weight-regular'),
+    medium: withGlobalPrefix('font-weight-medium'),
+    semibold: withGlobalPrefix('font-weight-semibold'),
+  },
 };
 
 const classSelectors = {
-  bold: classSelector(classNames.bold),
   noWrap: classSelector(classNames.noWrap),
   variant: {
     subtitle: classSelector(classNames.variant.subtitle),
     body: classSelector(classNames.variant.body),
     legalNote: classSelector(classNames.variant.legalNote),
     caption: classSelector(classNames.variant.caption),
+  },
+  fontWeight: {
+    regular: classSelector(classNames.fontWeight.regular),
+    medium: classSelector(classNames.fontWeight.medium),
+    semibold: classSelector(classNames.fontWeight.semibold),
   },
 };
 
@@ -54,8 +63,10 @@ const StyledElement = styled('p', {
     lineHeight: 'var(--text-line-height)',
     fontWeight: 'var(--text-font-weight)',
     color: 'var(--text-color)',
-    '--text-font-weight': fontWeights.secondary.regular,
-    '--text-font-weight-bold': fontWeights.secondary.semibold,
+    '--text-font-weight': 'var(--text-font-weight-regular)',
+    '--text-font-weight-regular': fontWeights.secondary.regular,
+    '--text-font-weight-medium': fontWeights.secondary.medium,
+    '--text-font-weight-semibold': fontWeights.secondary.semibold,
     '--text-color': colorsCommon.brandMidnight,
     '--text-color-on-brand-bg': colorsCommon.brandWhite,
     '--text-color-custom': color,
@@ -74,8 +85,14 @@ const StyledElement = styled('p', {
     [DATA_ATTRIBUTE_SELECTORS.customColor]: {
       '--text-color': 'var(--text-color-custom)',
     },
-    [classSelectors.bold]: {
-      '--text-font-weight': 'var(--text-font-weight-bold)',
+    [classSelectors.fontWeight.regular]: {
+      '--text-font-weight': 'var(--text-font-weight-regular)',
+    },
+    [classSelectors.fontWeight.medium]: {
+      '--text-font-weight': 'var(--text-font-weight-medium)',
+    },
+    [classSelectors.fontWeight.semibold]: {
+      '--text-font-weight': 'var(--text-font-weight-semibold)',
     },
     [classSelectors.noWrap]: {
       overflow: 'hidden',
@@ -116,7 +133,18 @@ export const Text = React.forwardRef<
   React.PropsWithChildren<PropsWithSx<TextProps>>
 >(
   (
-    { variant = 'body', component = 'p', bold, noWrap, color, className, inverted, ...props },
+    {
+      variant = 'body',
+      component = 'p',
+      bold,
+      noWrap,
+      color,
+      className,
+      inverted,
+      asChild,
+      fontWeight = 'regular',
+      ...props
+    },
     ref
   ) => {
     const { isInvertedBackground } = useBackground();
@@ -128,11 +156,17 @@ export const Text = React.forwardRef<
     return (
       <StyledElement
         ref={ref}
-        as={component}
-        className={clsx(componentClassName, className, classNames.variant[variant], {
-          [classNames.bold]: bold,
-          [classNames.noWrap]: noWrap,
-        })}
+        as={asChild ? Slot : component}
+        className={clsx(
+          componentClassName,
+          className,
+          classNames.variant[variant],
+          classNames.fontWeight[fontWeight],
+          {
+            [classNames.fontWeight.semibold]: bold,
+            [classNames.noWrap]: noWrap,
+          }
+        )}
         color={color}
         {...dataAttributeProps}
         {...props}

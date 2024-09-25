@@ -1,7 +1,7 @@
 import * as React from 'react';
 import MuiGrid from '@mui/material/Grid';
-import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 import type { GridProps as MuiGridProps, RegularBreakpoints } from '@mui/material/Grid';
+import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 
 export const DEFAULT_COLUMNS = { mobile: 4, tablet: 8, desktop: 12, wide: 12 };
 export const DEFAULT_SPACING = { mobile: 2, tablet: 3, desktop: 3, wide: 3 };

@@ -1,22 +1,22 @@
-import * as React from 'react';
-import { colors } from '@utilitywarehouse/colour-system';
-import {
-  classSelector,
-  withGlobalPrefix,
-  pxToRem,
-  spacing,
-  DATA_ATTRIBUTE_SELECTORS,
-} from '../utils';
-import { PropsWithSx } from '../types';
-import { HelperTextProps } from './HelperText.props';
-import clsx from 'clsx';
-import { styled } from '../theme';
 import {
   InformationMediumContainedIcon,
-  WarningMediumContainedIcon,
   TickMediumContainedIcon,
+  WarningMediumContainedIcon,
 } from '@utilitywarehouse/react-icons';
+import * as React from 'react';
+import clsx from 'clsx';
+import { colors } from '@utilitywarehouse/colour-system';
+import { HelperTextProps } from './HelperText.props';
+import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
+import { PropsWithSx } from '../types';
+import {
+  DATA_ATTRIBUTE_SELECTORS,
+  classSelector,
+  pxToRem,
+  spacing,
+  withGlobalPrefix,
+} from '../utils';
 
 const componentName = 'HelperText';
 const componentClassName = withGlobalPrefix(componentName);

@@ -1,9 +1,9 @@
-import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Radio } from './Radio';
+import * as React from 'react';
 import { RadioGroup } from '../RadioGroup';
 import { Stack } from '../Stack';
 import { Text, TextProps } from '../Text';
+import { Radio } from './Radio';
 
 const meta: Meta<typeof Radio> = {
   title: 'Web UI / Components / Radio / Radio',

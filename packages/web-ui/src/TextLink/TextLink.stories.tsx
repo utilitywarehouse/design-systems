@@ -1,11 +1,11 @@
-import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { TextLink } from './TextLink';
-import { Text } from '../Text';
-import { Flex } from '../Flex';
-import { Box } from '../Box';
-import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { ChevronRightMediumIcon, OpenMediumIcon } from '@utilitywarehouse/react-icons';
+import * as React from 'react';
+import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { Box } from '../Box';
+import { Flex } from '../Flex';
+import { Text } from '../Text';
+import { TextLink } from './TextLink';
 
 const meta: Meta<typeof TextLink> = {
   title: 'Web UI / Components / Links / TextLink',
@@ -153,12 +153,6 @@ export const AsButton: Story = {
       <TextLink asChild>
         <button onClick={() => alert('Hello world!')}>
           View benefits
-          <ChevronRightMediumIcon />
-        </button>
-      </TextLink>
-      <TextLink asChild color={colors.grey900}>
-        <button onClick={() => alert('Hello world!')}>
-          Custom color
           <ChevronRightMediumIcon />
         </button>
       </TextLink>

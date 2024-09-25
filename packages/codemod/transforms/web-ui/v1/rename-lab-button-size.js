@@ -10,7 +10,11 @@ function transformer(file, api) {
   const hasWebUILabButton =
     root
       .find(j.ImportDeclaration)
-      .filter(path => path.value.source.value === '@utilitywarehouse/web-ui/dist/lab')
+      .filter(
+        path =>
+          path.value.source.value === '@utilitywarehouse/web-ui/dist/lab' ||
+          path.value.source.value === '@utilitywarehouse/web-ui-v0/dist/lab'
+      )
       .find(j.ImportSpecifier)
       .filter(path => path.node.imported.name === 'Button').length > 0;
 

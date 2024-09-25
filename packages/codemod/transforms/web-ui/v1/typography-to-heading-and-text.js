@@ -25,7 +25,11 @@ function transformer(file, api) {
 
   const webUiImports = root
     .find(j.ImportDeclaration)
-    .filter(path => path.value.source.value === '@utilitywarehouse/web-ui');
+    .filter(
+      path =>
+        path.value.source.value === '@utilitywarehouse/web-ui' ||
+        path.value.source.value === '@utilitywarehouse/web-ui-v0'
+    );
 
   webUiImports.forEach(path =>
     path.value.specifiers.map(s => webUiImportedComponents.push(s.local.name))

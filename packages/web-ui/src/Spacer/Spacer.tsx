@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { px, spacing } from '../utils';
 import { createBox } from '../Box';
-import { PropsWithSx } from '../types';
 import { SpacerProps } from './Spacer.props';
 import { breakpoints } from '../tokens';
+import { PropsWithSx } from '../types';
+import { px, spacing } from '../utils';
 
 export type DefaultSpacerComponent = 'div';
 

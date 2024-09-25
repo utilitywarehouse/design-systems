@@ -3,10 +3,10 @@ import {
   ToggleButtonGroup as MuiToggleButtonGroup,
   ToggleButtonGroupProps as MuiToggleButtonGroupProps,
 } from '@mui/material';
-import { DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS, px } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
-import { styled } from '../theme';
 import { useBackground } from '../Box';
+import { styled } from '../theme';
+import { DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS, px } from '../utils';
 
 export type ToggleButtonGroupProps = Pick<
   MuiToggleButtonGroupProps,

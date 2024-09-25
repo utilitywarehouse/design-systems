@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
-import { CheckboxProps } from './Checkbox.props';
-import { styled } from '../theme';
-import { PropsWithSx } from '../types';
-import { useIds } from '../hooks';
-import { Flex } from '../Flex';
-import { Label } from '../Label';
-import { HelperText } from '../HelperText';
 import { BaseCheckbox } from '../BaseCheckbox';
 import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
+import { Flex } from '../Flex';
+import { HelperText } from '../HelperText';
+import { Label } from '../Label';
+import { CheckboxProps } from './Checkbox.props';
+import { useIds } from '../hooks';
+import { styled } from '../theme';
+import { PropsWithSx } from '../types';
+import { withGlobalPrefix } from '../utils';
 
 const componentName = 'Checkbox';
 const componentClassName = withGlobalPrefix(componentName);

@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { BoxProps } from '../Box';
 import { ResponsiveStyleValue } from '@mui/system';
+import { BoxProps } from '../Box';
 
 export interface TextProps
   extends ComponentPropsWithoutRef<'span'>,
@@ -43,4 +43,10 @@ export interface TextProps
   component?: BoxProps['component'];
   /** Inverts the component colours, for use on darker backgrounds. */
   inverted?: boolean;
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   */
+  asChild?: boolean;
+  /** Set the font-weight */
+  fontWeight?: 'regular' | 'medium' | 'semibold';
 }

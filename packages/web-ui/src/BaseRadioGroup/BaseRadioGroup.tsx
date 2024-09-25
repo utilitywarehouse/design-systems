@@ -1,15 +1,15 @@
+import { Root } from '@radix-ui/react-radio-group';
 import * as React from 'react';
 import { forwardRef } from 'react';
-import { Root } from '@radix-ui/react-radio-group';
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
+import { Flex } from '../Flex';
 import { HelperText } from '../HelperText';
+import { BaseRadioGroupProvider } from './BaseRadioGroup.context';
+import { BaseRadioGroupProps } from './BaseRadioGroup.props';
 import { useIds } from '../hooks';
 import { PropsWithSx } from '../types';
 import { mergeIds } from '../utils';
-import { Flex } from '../Flex';
-import { BaseRadioGroupProps } from './BaseRadioGroup.props';
-import { BaseRadioGroupProvider } from './BaseRadioGroup.context';
 
 const componentName = 'BaseRadioGroup';
 

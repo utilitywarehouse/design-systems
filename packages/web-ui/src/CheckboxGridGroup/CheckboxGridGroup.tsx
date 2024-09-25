@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { getColumns, withGlobalPrefix } from '../utils';
 import clsx from 'clsx';
+import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Box } from '../Box';
 import { CheckboxGridGroupProps } from './CheckboxGridGroup.props';
-import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
+import { getColumns, withGlobalPrefix } from '../utils';
 
 const componentName = 'CheckboxGridGroup';
 const componentClassName = withGlobalPrefix(componentName);

@@ -34,6 +34,10 @@ The `Button` component is used to trigger an action or event, such as submitting
 - [Variants](#variants)
 - [Advanced Usage](#advanced-usage)
 - [Components](#components)
+  - [`ButtonGroup`](#buttongroup)
+  - [`ButtonIcon`](#buttonicon)
+  - [`ButtonText`](#buttontext)
+  - [`ButtonSpinner`](#buttonspinner)
 
 ## Playground
 
@@ -175,8 +179,9 @@ const MyComponent = () => {
 | Property        | Type                                                     | Description                                                    | Default |
 | --------------- | -------------------------------------------------------- | -------------------------------------------------------------- | ------- |
 | `flexDirection` | `'row' \| 'column' \| 'row-reverse' \| 'column-reverse'` | Set the direction of Button group to vertical or horizontal    | 'row'   |
-| `isDisabled`    | `boolean`                                                | When true, this will disable all the buttons in a ButtonGroup. | `false` |
-| `isAttached`    | `boolean`                                                | When attached, all buttons will be attached to each other.     | `false` |
+| `disabled`      | `boolean`                                                | When true, this will disable all the buttons in a ButtonGroup. | `false` |
+| `loading`       | `boolean`                                                | When true, this will show a loading spinner in all buttons.    | `false` |
+| `attached`      | `boolean`                                                | When attached, all buttons will be attached to each other.     | `false` |
 | `reversed`      | `boolean`                                                | To reverse the order of components.                            | `false` |
 | `space`         | `string`                                                 | It sets the space between different buttons.                   | 'md'    |
 

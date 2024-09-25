@@ -1,17 +1,17 @@
 import * as React from 'react';
 import clsx from 'clsx';
+import { BaseButton } from '../BaseButton';
+import { IconButtonProps } from './IconButton.props';
+import { styled } from '../theme';
+import { PropsWithSx } from '../types';
 import {
   classSelector,
-  withGlobalPrefix,
   mediaQueries,
   pxToRem,
   responsiveClassSelector,
   withBreakpoints,
+  withGlobalPrefix,
 } from '../utils';
-import { styled } from '../theme';
-import { BaseButton } from '../BaseButton';
-import { IconButtonProps } from './IconButton.props';
-import { PropsWithSx } from '../types';
 
 const componentName = 'IconButton';
 const componentClassName = withGlobalPrefix(componentName);

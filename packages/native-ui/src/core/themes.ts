@@ -272,6 +272,8 @@ export const lightTheme = {
   colors: {
     ...colors,
     ...colorsCommon,
+    white: '#ffffff',
+    black: '#000000',
   },
   ...shared,
 } as const;
@@ -281,6 +283,8 @@ export const darkTheme = {
   colors: {
     ...colorsDark,
     ...colorsCommon,
+    white: '#ffffff',
+    black: '#000000',
   },
   ...shared,
 } as const;

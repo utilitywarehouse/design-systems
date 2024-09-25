@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { DATA_ATTRIBUTE_SELECTORS, pxToRem } from '../utils';
 import { colors } from '@utilitywarehouse/colour-system';
-import { PropsWithSx } from '../types';
+import { createBox } from '../Box';
 import { LabelProps } from './Label.props';
 import { styled } from '../theme';
 import { fontWeights, fonts } from '../tokens';
-import { createBox } from '../Box';
+import { PropsWithSx } from '../types';
+import { DATA_ATTRIBUTE_SELECTORS, pxToRem } from '../utils';
 
 const componentName = 'Label';
 const BaseBox = createBox<'label'>({ componentName });

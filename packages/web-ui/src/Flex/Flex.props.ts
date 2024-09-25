@@ -1,6 +1,6 @@
-import { ResponsiveStyleValue, BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
-import { OverrideProps } from '@mui/types';
 import { ElementType } from 'react';
+import { BoxTypeMap as MuiBoxTypeMap, ResponsiveStyleValue } from '@mui/system';
+import { OverrideProps } from '@mui/types';
 import { BoxProps } from '../Box';
 import { Theme } from '../theme';
 

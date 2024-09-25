@@ -1,5 +1,13 @@
 # @utilitywarehouse/web-ui
 
+## 1.0.1
+
+### Patch Changes
+
+- [#485](https://github.com/utilitywarehouse/design-systems/pull/485) [`715b53de`](https://github.com/utilitywarehouse/design-systems/commit/715b53de4f97863051defc6f48d07d452059e83e) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `asChild` prop to `Text` component.
+
+- [#487](https://github.com/utilitywarehouse/design-systems/pull/487) [`497a95a5`](https://github.com/utilitywarehouse/design-systems/commit/497a95a59a74a3dba19c8ffedbcf01a2fbe450e3) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `useMediaQueries` hook, and deprecate `useMediaQuery` hook.
+
 ## 1.0.0
 
 ### Major Changes
