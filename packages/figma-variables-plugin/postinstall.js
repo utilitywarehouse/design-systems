@@ -14,5 +14,11 @@ const eslintPluginDest = path.resolve(
   './node_modules/@figma/eslint-plugin-figma-plugins'
 );
 
-execSync(`cp -R ${pluginTypingsSrc} ${pluginTypingsDest}`);
-execSync(`cp -R ${eslintPluginSrc} ${eslintPluginDest}`);
+try {
+  execSync(`cp -R ${pluginTypingsSrc} ${pluginTypingsDest}`);
+  execSync(`cp -R ${eslintPluginSrc} ${eslintPluginDest}`);
+} catch (error) {
+  if (error.status === 1) {
+    console.log('Error copying plugin-typings or eslint-plugin-figma-plugins');
+  }
+}
