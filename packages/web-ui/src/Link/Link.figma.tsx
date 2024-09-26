@@ -16,8 +16,8 @@ figma.connect(
       }),
       inverted: figma.boolean('inverted'),
     },
-    example: ({ size, children, iconLeft, iconRight }) => (
-      <Link size={size}>
+    example: ({ size, children, inverted, iconLeft, iconRight }) => (
+      <Link size={size} inverted={inverted}>
         {iconLeft}
         {children}
         {iconRight}

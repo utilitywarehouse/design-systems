@@ -13,4 +13,6 @@ export interface LinkProps extends ComponentPropsWithoutRef<'a'> {
    */
   asChild?: boolean;
   textTransform?: TextProps['textTransform'];
+  /** Inverts the component colours, for use on darker backgrounds. */
+  inverted?: boolean;
 }
