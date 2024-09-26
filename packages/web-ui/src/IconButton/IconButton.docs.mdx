@@ -16,6 +16,7 @@ import { DocsHeader } from '../storybook-utils';
 - [Accessibility](#accessibility)
 - [Variant](#variant)
 - [Colour schemes](#colour-schemes)
+- [Inverted colours](#inverted-colours)
 - [Size](#size)
   - [Responsive icon sizes](#responsive-icon-sizes)
 - [Semantic HTML](#semantic-html)
@@ -128,6 +129,16 @@ The grey colour scheme is best suited for situations where you want the button
 to have very low prominence. It's especially useful in designs that are
 colour-heavy, as it allows the button to blend in with the overall colour scheme,
 making it less visually prominent.
+
+## Inverted colours
+
+When inside a `Box` component that specifies a `background` which is the value
+of either `colorsCommon.brandMidnight` or `colorsCommon.brandPrimaryPurple`,
+the `IconButton` component colours will be changed to an inverted colour set. This
+can also be achieved using the `inverted` prop.
+
+<Canvas of={Stories.InvertedColour} />
+
 
 ## Size
 

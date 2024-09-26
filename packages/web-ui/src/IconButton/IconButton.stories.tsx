@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ChevronRightMediumIcon, ChevronRightSmallIcon } from '@utilitywarehouse/react-icons';
 import * as React from 'react';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Heading } from '../Heading';
@@ -237,6 +238,82 @@ export const GhostVariant: Story = {
       ))}
     </Flex>
   ),
+};
+
+export const InvertedColour: Story = {
+  name: 'Inverted Colour',
+  render: () => {
+    return (
+      <Flex direction="column">
+        {[colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(bgColor => (
+          <Box key={bgColor} padding={2} background={bgColor}>
+            <Flex direction="column" gap={2}>
+              <Flex gap={2}>
+                {colorSchemes.solid.map(color => (
+                  <IconButton key={color} variant="solid" colorScheme={color} label="continue">
+                    <ChevronRightMediumIcon />
+                  </IconButton>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.solid.map(color => (
+                  <IconButton
+                    key={color}
+                    variant="solid"
+                    colorScheme={color}
+                    label="continue"
+                    disabled
+                  >
+                    <ChevronRightMediumIcon />
+                  </IconButton>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.outline.map(color => (
+                  <IconButton key={color} variant="outline" colorScheme={color} label="continue">
+                    <ChevronRightMediumIcon />
+                  </IconButton>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.outline.map(color => (
+                  <IconButton
+                    key={color}
+                    variant="outline"
+                    colorScheme={color}
+                    label="continue"
+                    disabled
+                  >
+                    <ChevronRightMediumIcon />
+                  </IconButton>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.ghost.map(color => (
+                  <IconButton key={color} variant="ghost" colorScheme={color} label="continue">
+                    <ChevronRightMediumIcon />
+                  </IconButton>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.ghost.map(color => (
+                  <IconButton
+                    key={color}
+                    variant="ghost"
+                    colorScheme={color}
+                    label="continue"
+                    disabled
+                  >
+                    <ChevronRightMediumIcon />
+                  </IconButton>
+                ))}
+              </Flex>
+            </Flex>
+          </Box>
+        ))}
+      </Flex>
+    );
+  },
 };
 
 export const AsLink: Story = {
