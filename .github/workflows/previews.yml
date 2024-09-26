@@ -23,6 +23,9 @@ jobs:
     concurrency:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
+    if: |
+      (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip-android]') && !contains(github.event.head_commit.message, '[skip-native]')) ||
+      (github.event_name == 'pull_request' && (!contains(github.event.pull_request.title, '[skip-android]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-android]') && !contains(github.event.pull_request.body, '[skip-native]')))
     steps:
       - name: 🏗 Setup repo
         uses: pnpm/action-setup@v4
@@ -131,6 +134,9 @@ jobs:
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
+    if: |
+      (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip-ios]') && !contains(github.event.head_commit.message, '[skip-native]')) ||
+      (github.event_name == 'pull_request' && (!contains(github.event.pull_request.title, '[skip-ios]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-ios]') && !contains(github.event.pull_request.body, '[skip-native]')))
     steps:
       - name: 🏗 Setup repo
         uses: pnpm/action-setup@v4
@@ -233,9 +239,7 @@ jobs:
   build-for-web:
     name: Build for Web
     runs-on: ubuntu-latest
-    needs:
-      - build-for-android
-      - build-for-ios
+    if: always()
     concurrency:
       group: preview-web-${{ github.ref }}
       cancel-in-progress: true
@@ -274,50 +278,45 @@ jobs:
       - name: 🚀 Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
+      # Conditional steps for Android
       - name: 🏗 Restore Android .env
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-android]')
         working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
       - name: 🚀 Load .env.android file
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-android]')
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
           mode: 'android'
 
       - name: 🚀 Create local .env and add Android key
+        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-android]')
         working-directory: ./apps/native-ui-storybook
-        if: github.event_name != 'push'
         run: |
           echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
 
+      # Conditional steps for iOS
       - name: 🏗 Restore iOS .env
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-ios]')
         working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-ios node ./scripts/getArtifacts.js
 
       - name: 🚀 Load .env.ios file
+        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-ios]')
         uses: xom9ikk/dotenv@v2
-        if: github.event_name != 'push'
         with:
           path: ./apps/native-ui-storybook
           mode: 'ios'
 
       - name: 🚀 Create local .env and add iOS key
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-ios]')
         working-directory: ./apps/native-ui-storybook
         run: |
           echo "IOS_API_KEY=${{ env.IOS_API_KEY }}" >> .env
-
-      - name: 🚀 Create local production .env
-        if: github.event_name == 'push'
-        working-directory: ./apps/native-ui-storybook
-        run: |
-          echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env
-          echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
 
       - name: 🚀 Pull Vercel Environment Information
         run: |
@@ -332,10 +331,10 @@ jobs:
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             vercel build --token=${{ secrets.VERCEL_TOKEN }}
           else
-          vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+            vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
           fi
 
-      - name: 🚀 Deploy Project Artifacts to Vercels
+      - name: 🚀 Deploy Project Artifacts to Vercel
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} > ./vercel-deploy.log
@@ -373,7 +372,7 @@ jobs:
 
             ## 📱 Appetize Previews
 
-            You can view the apps using the link above and choosing the device from the top action bar. Alternatively you can use the direct links below.
+            You can view the apps using the link above and choosing the device from the top action bar. Alternatively, you can use the direct links below.
 
             - [Android](https://appetize.io/embed/${{ env.ANDROID_API_KEY }})
             - [iOS](https://appetize.io/embed/${{ env.IOS_API_KEY }})
