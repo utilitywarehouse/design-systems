@@ -3,7 +3,8 @@ import { Root, Icon } from './styled-components';
 import { createButton } from '@gluestack-ui/button';
 import { Spinner } from '../Spinner';
 
-const AccessbileButton = createButton({
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const AccessibleButton: any = createButton({
   Root,
   Icon,
   Group: () => null,
@@ -11,7 +12,7 @@ const AccessbileButton = createButton({
   Spinner,
 });
 
-export interface IconButtonProps extends React.ComponentProps<typeof AccessbileButton> {
+export interface IconButtonProps extends React.ComponentProps<typeof AccessibleButton> {
   /*
    * The icon to display on the button.
    * @default undefined
@@ -41,13 +42,13 @@ const IconButton: FC<IconButtonProps> = ({ loading, icon, disabled, isDisabled, 
     }
   };
   return (
-    <AccessbileButton {...props} isDisabled={disabled ?? isDisabled}>
+    <AccessibleButton {...props} isDisabled={disabled ?? isDisabled}>
       {loading ? (
-        <AccessbileButton.Spinner size={getSize(props.size)} color="" />
+        <AccessibleButton.Spinner size={getSize(props.size)} color="" />
       ) : (
-        <AccessbileButton.Icon as={icon} />
+        <AccessibleButton.Icon as={icon} />
       )}
-    </AccessbileButton>
+    </AccessibleButton>
   );
 };
 
