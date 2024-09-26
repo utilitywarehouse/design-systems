@@ -1,12 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  ChevronLeft01MediumIcon,
-  ChevronLeft01SmallIcon,
-  ChevronRight01MediumIcon,
-  ChevronRight01SmallIcon,
-  OpenMediumIcon,
-} from '@utilitywarehouse/react-icons';
+import { ChevronLeft01SmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
 import * as React from 'react';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Heading } from '../Heading';
@@ -27,6 +22,7 @@ const meta: Meta<typeof Button> = {
     colorScheme: { options: colorSchemes, control: { type: 'radio' } },
     size: { control: { type: 'radio' }, options: sizes },
     disabled: { control: { type: 'boolean' } },
+    inverted: { control: { type: 'boolean' } },
   },
   args: {
     children: 'Button',
@@ -34,6 +30,7 @@ const meta: Meta<typeof Button> = {
     colorScheme: 'cyan',
     size: 'medium',
     disabled: false,
+    inverted: false,
   },
 };
 
@@ -53,13 +50,7 @@ export const KitchenSink: Story = {
             {sizes.map(size => (
               <Flex key={size} gap={1}>
                 {solidColorSchemes.map(colorScheme => (
-                  <Button
-                    key={colorScheme}
-                    variant="solid"
-                    colorScheme={colorScheme}
-                    size={size}
-                    onClick={() => alert('hello, world!')}
-                  >
+                  <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size={size}>
                     Button
                   </Button>
                 ))}
@@ -76,7 +67,6 @@ export const KitchenSink: Story = {
                     variant="solid"
                     colorScheme={colorScheme}
                     size={size}
-                    onClick={() => alert('hello, world!')}
                   >
                     Button
                   </Button>
@@ -99,7 +89,6 @@ export const KitchenSink: Story = {
                       variant={variant}
                       colorScheme={colorScheme}
                       size={size}
-                      onClick={() => alert('hello, world!')}
                     >
                       Button
                     </Button>
@@ -117,7 +106,6 @@ export const KitchenSink: Story = {
                       variant={variant}
                       colorScheme={colorScheme}
                       size={size}
-                      onClick={() => alert('hello, world!')}
                     >
                       Button
                     </Button>
@@ -139,7 +127,7 @@ export const AsLink: Story = {
     <Button asChild>
       <a href="https://uw.co.uk/services">
         View UW services
-        <OpenMediumIcon />
+        <ChevronRight01SmallIcon />
       </a>
     </Button>
   ),
@@ -157,7 +145,7 @@ export const WithIcons: Story = {
             <Flex gap={2} align="center">
               {solidColorSchemes.map(colorScheme => (
                 <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="medium">
-                  <ChevronLeft01MediumIcon /> Button
+                  <ChevronLeft01SmallIcon /> Button
                 </Button>
               ))}
               {solidColorSchemes.map(colorScheme => (
@@ -169,7 +157,7 @@ export const WithIcons: Story = {
             <Flex gap={2} align="center">
               {solidColorSchemes.map(colorScheme => (
                 <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="medium">
-                  Button <ChevronRight01MediumIcon />
+                  Button <ChevronRight01SmallIcon />
                 </Button>
               ))}
               {solidColorSchemes.map(colorScheme => (
@@ -194,7 +182,7 @@ export const WithIcons: Story = {
                     colorScheme={colorScheme}
                     size="medium"
                   >
-                    <ChevronLeft01MediumIcon /> Button
+                    <ChevronLeft01SmallIcon /> Button
                   </Button>
                 ))}
                 {colorSchemes.map(colorScheme => (
@@ -216,7 +204,7 @@ export const WithIcons: Story = {
                     colorScheme={colorScheme}
                     size="medium"
                   >
-                    Button <ChevronRight01MediumIcon />
+                    Button <ChevronRight01SmallIcon />
                   </Button>
                 ))}
                 {colorSchemes.map(colorScheme => (
@@ -240,15 +228,23 @@ export const WithIcons: Story = {
 
 export const SimpleExample: Story = {
   render: () => (
-    <Flex gap={2}>
-      {variants.map(variant => (
-        <Button key={variant} variant={variant} onClick={() => alert('Hello world!')}>
-          Next page <ChevronRight01MediumIcon />
-        </Button>
-      ))}
-      <Button disabled variant="outline" onClick={() => alert('Hello world!')}>
-        Next page <ChevronRight01MediumIcon />
-      </Button>
+    <Flex direction="column" gap={2}>
+      <Flex gap={2}>
+        {variants.map(variant => (
+          <Button key={variant} variant={variant}>
+            Next
+            <ChevronRight01SmallIcon />
+          </Button>
+        ))}
+      </Flex>
+      <Flex gap={2}>
+        {variants.map(variant => (
+          <Button key={variant} variant={variant}>
+            <ChevronLeft01SmallIcon />
+            Back
+          </Button>
+        ))}
+      </Flex>
     </Flex>
   ),
 };
@@ -305,10 +301,67 @@ export const ResponsiveSize: Story = {
   render: args => (
     <Button {...args} size={{ mobile: 'small', desktop: 'medium' }}>
       Responsive size button
-      <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
-      <Box component={ChevronRight01SmallIcon} display={{ mobile: 'block', desktop: 'none' }} />
+      <ChevronRight01SmallIcon />
     </Button>
   ),
+};
+
+export const InvertedColour: Story = {
+  name: 'Inverted Colour',
+  render: () => {
+    return (
+      <Flex direction="column">
+        {[colorsCommon.brandPrimaryPurple, colorsCommon.brandMidnight].map(bgColor => (
+          <Box key={bgColor} padding={2} background={bgColor}>
+            <Flex direction="column" gap={2}>
+              <Flex gap={2}>
+                {solidColorSchemes.map(color => (
+                  <Button key={color} variant="solid" colorScheme={color}>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {solidColorSchemes.map(color => (
+                  <Button key={color} variant="solid" colorScheme={color} disabled>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.map(color => (
+                  <Button key={color} variant="outline" colorScheme={color}>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.map(color => (
+                  <Button key={color} variant="outline" colorScheme={color} disabled>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.map(color => (
+                  <Button key={color} variant="ghost" colorScheme={color}>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+              <Flex gap={2}>
+                {colorSchemes.map(color => (
+                  <Button key={color} variant="ghost" colorScheme={color} disabled>
+                    Button
+                  </Button>
+                ))}
+              </Flex>
+            </Flex>
+          </Box>
+        ))}
+      </Flex>
+    );
+  },
 };
 
 export const FullWidth: Story = {
@@ -317,7 +370,7 @@ export const FullWidth: Story = {
       <Text>This Button is full width for screen widths below the desktop breakpoint.</Text>
       <Button {...args}>
         {args.children}
-        <ChevronRight01MediumIcon />
+        <ChevronRight01SmallIcon />
       </Button>
     </Flex>
   ),

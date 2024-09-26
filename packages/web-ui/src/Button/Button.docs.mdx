@@ -14,7 +14,8 @@ import { DocsHeader } from '../storybook-utils';
 
 - [Accessibility](#accessibility)
 - [Variant](#variant)
-- [Color schemes](#color-schemes)
+- [Colour schemes](#color-schemes)
+- [Inverted colours](#inverted-colours)
 - [Size](#size)
 - [With icons](#with-icons)
 - [Semantic HTML](#semantic-html)
@@ -27,6 +28,10 @@ import { DocsHeader } from '../storybook-utils';
 ## Accessibility
 
 Uses a native `<button>` element under the hood, with support for the <kbd>Space</kbd> and <kbd>Enter</kbd> keys.
+
+Disabled buttons use `aria-disabled` so that they are still focusable when
+using the keyboard. This means that screen readers are still able to find the
+button, however the `onClick` handler will be disabled.
 
 ### Known issues
 
@@ -76,7 +81,7 @@ The ghost button can be combined with all colour schemes.
 
 <Canvas of={Stories.GhostVariant} />
 
-## Color schemes
+## Colour schemes
 
 The `colorScheme` prop will change the button colours. Be aware there are some
 combinations of `colorScheme` & `variant` that do not work together (ie. `solid` &
@@ -117,6 +122,15 @@ to have very low prominence. It's especially useful in designs that are
 colour-heavy, as it allows the button to blend in with the overall colour scheme,
 making it less visually prominent.
 
+## Inverted colours
+
+When inside a `Box` component that specifies a `background` which is the value
+of either `colorsCommon.brandMidnight` or `colorsCommon.brandPrimaryPurple`,
+the `Button` component colours will be changed to an inverted colour set. This
+can also be achieved using the `inverted` prop.
+
+<Canvas of={Stories.InvertedColour} />
+
 ## Size
 
 The size prop controls the size of the `Button`. This is a responsive prop and
@@ -138,18 +152,15 @@ can be used to display different sizes at different breakpoints.
 You can nest icons directly inside the `Button`. An appropriate gap is provided
 automatically, and the icon will inherit the appropriate colours.
 
-This button is intended to be used with the [UW Icons](https://uw-icons.vercel.app/) packages. Small buttons
-should use 16px icons (small), while medium buttons should use 24px icons
-(medium).
-
-Using other icons may result in an unexpected appearance.
+This button is intended to be used with the [UW Icons](https://uw-icons.vercel.app/) packages.
+All buttons should use the small (16px) icons.
 
 <Canvas of={Stories.SimpleExample} />
 
 ```tsx
 <Button variant="solid" size="medium">
-  <SettingsMediumIcon />
-  Edit account
+  Continue
+  <ChevronRight01SmallIcon />
 </Button>
 ```
 
@@ -166,47 +177,6 @@ appropriate styles.
   <MyFontIcon aria-hidden="true" data-icon />
   Edit account
 </Button>
-```
-
-### Responsive icon sizes
-
-If you need to render different sized icons in conjunction with the responsive size prop, there are a couple of ways you can do this.
-
-1. Using JS, with the `useMediaQuery` hook.
-
-```tsx
-import { Button, useMediaQuery } from '@utilitywarehouse/web-ui';
-import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
-
-const MyComponent = () => {
-  const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
-
-  return (
-    <Button size={{ mobile: 'small', desktop: 'medium' }}>
-      Next page
-      {isDesktop ? <ChevronRight01MediumIcon /> : <ChevronRight01SmallIcon />}
-    </Button>
-  );
-};
-```
-
-2. Using CSS, with `Box` and style props. This can also be achieved with the `sx` prop.
-
-```tsx
-import { Box, Button } from '@utilitywarehouse/web-ui';
-import { ChevronRight01MediumIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
-
-const MyComponent = () => {
-  const isDesktop = useMediaQuery(theme => theme.breakpoints.up('desktop'));
-
-  return (
-    <IconButton size={{ mobile: 'small', desktop: 'medium' }}>
-      Next page
-      <Box component={ChevronRight01MediumIcon} display={{ mobile: 'none', desktop: 'block' }} />
-      <Box component={ChevronRight01SmallIcon} display={{ desktop: 'none' }} />
-    </IconButton>
-  );
-};
 ```
 
 ## Semantic HTML
@@ -226,9 +196,7 @@ Read more about this idea in the [Radix UI composition docs](https://www.radix-u
 
 ```tsx
 <Button asChild>
-  <a href="https://uw.co.uk/services">
-    <OpenMediumIcon />
-  </a>
+  <a href="https://uw.co.uk/services">View UW services</a>
 </Button>
 ```
 

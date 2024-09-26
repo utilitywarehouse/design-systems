@@ -18,4 +18,7 @@ export type BaseButtonProps = UnstyledButtonProps &
         variant?: 'outline' | 'ghost';
         colorScheme?: 'cyan' | 'red' | 'green' | 'gold' | 'grey';
       }
-  );
+  ) & {
+    /** Inverts the component colours, for use on darker backgrounds. */
+    inverted?: boolean;
+  };
