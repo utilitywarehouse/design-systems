@@ -2,7 +2,8 @@ import { styled } from '@gluestack-ui/themed';
 import { Pressable } from 'react-native';
 import { createPressable } from '@gluestack-ui/pressable';
 
-const StyledListItem = styled(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const StyledListItem: any = styled(
   Pressable,
   {},
   {
@@ -13,6 +14,7 @@ const StyledListItem = styled(
 );
 
 const ListItem = createPressable({
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   Root: StyledListItem,
 });
 

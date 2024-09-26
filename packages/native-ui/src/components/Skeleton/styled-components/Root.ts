@@ -4,7 +4,8 @@ import Animated from 'react-native-reanimated';
 
 const AnimatedView = Animated.createAnimatedComponent(View);
 
-const Skeleton = styled(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Skeleton: any = styled(
   AnimatedView,
   {
     bg: '$grey75',
