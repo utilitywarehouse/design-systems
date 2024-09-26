@@ -29,6 +29,7 @@ const Skeleton: FC<SkeletonProps> = ({ width, height, style, ...props }) => {
     );
   }, [opacity]);
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   return <Root width={width} height={height} {...props} style={[style, animatedStyle]} />;
 };
 

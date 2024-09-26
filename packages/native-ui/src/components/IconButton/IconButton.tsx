@@ -5,6 +5,7 @@ import { Spinner } from '../Spinner';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AccessibleButton: any = createButton({
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   Root,
   Icon,
   Group: () => null,
@@ -42,6 +43,7 @@ const IconButton: FC<IconButtonProps> = ({ loading, icon, disabled, isDisabled, 
     }
   };
   return (
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     <AccessibleButton {...props} isDisabled={disabled ?? isDisabled}>
       {loading ? (
         <AccessibleButton.Spinner size={getSize(props.size)} color="" />
