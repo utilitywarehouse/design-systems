@@ -239,6 +239,7 @@ jobs:
   build-for-web:
     name: Build for Web
     runs-on: ubuntu-latest
+    if: always()
     concurrency:
       group: preview-web-${{ github.ref }}
       cancel-in-progress: true
