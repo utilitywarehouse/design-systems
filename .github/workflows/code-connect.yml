@@ -2,7 +2,7 @@ name: Figma Code Connect publish
 on:
   push:
     paths:
-      - apps/apps/native-ui-storybook/figma-connect/*.figma.tsx
+      # - apps/apps/native-ui-storybook/figma-connect/*.figma.tsx
       - packages/web-ui/src/**/*.figma.tsx
     branches:
       - main
