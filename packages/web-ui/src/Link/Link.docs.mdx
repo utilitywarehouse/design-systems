@@ -17,7 +17,7 @@ import { DocsHeader } from '../storybook-utils';
 - [Guidelines](#guidelines)
 - [Size](#size)
 - [Icons](#icons)
-- [Full Width Link](#full-width-link)
+- [Inverted colours](#inverted-colours)
 - [Usage with Next.js](#usage-with-next.js)
   - [Next.js v13](#next.js-v13)
   - [Next.js before v13](#next.js-before-v13)
@@ -49,7 +49,7 @@ Read more about this idea in the [Radix UI composition docs](https://www.radix-u
 <Link asChild>
   <button type="button" onClick={onClick}>
     View UW services
-    <OpenMediumIcon />
+    <OpenSmallIcon />
   </button>
 </Link>
 ```
@@ -83,12 +83,11 @@ You can nest icons directly inside the `Link`. An appropriate gap is provided
 automatically, and the icon will inherit the appropriate colours.
 
 This component is intended to be used with the [UW Icons](https://uw-icons.vercel.app/) packages.
-Small links should use 16px icons (small), while large links should use 24px
-icons (medium).
+All links should use the small (16px) icons.
 
 ```tsx
 <Link size="large">
-  <SettingsMediumIcon />
+  <SettingsSmallIcon />
   Edit account
 </Link>
 ```
@@ -109,17 +108,14 @@ styles.
 </Link>
 ```
 
-## Full Width Link
+## Inverted colours
 
-Use layout components, like `Flex`, to define your UI layouts.
+When inside a `Box` component that specifies a `background` which is the value
+of either `colorsCommon.brandMidnight` or `colorsCommon.brandPrimaryPurple`,
+the `Link` component colours will be changed to an inverted colour set. This
+can also be achieved using the `inverted` prop.
 
-<Canvas of={Stories.FullWidth} />
-
-```tsx
-<Flex direction="column" align="stretch">
-  <Link href="#">Link</Link>
-</Flex>
-```
+<Canvas of={Stories.LinkInvertedColour} />
 
 ## Usage with Next.js
 

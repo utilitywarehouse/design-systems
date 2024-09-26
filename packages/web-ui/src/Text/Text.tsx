@@ -68,7 +68,7 @@ const StyledElement = styled('p', {
     '--text-font-weight-medium': fontWeights.secondary.medium,
     '--text-font-weight-semibold': fontWeights.secondary.semibold,
     '--text-color': colorsCommon.brandMidnight,
-    '--text-color-on-brand-bg': colorsCommon.brandWhite,
+    '--text-color-inverted': colorsCommon.brandWhite,
     '--text-color-custom': color,
     '--text-font-size-subtitle': pxToRem(18),
     '--text-font-size-subtitle-desktop': pxToRem(20),
@@ -80,7 +80,7 @@ const StyledElement = styled('p', {
     '--text-line-height-legalNote': 1.5,
     '--text-line-height-caption': 2,
     [DATA_ATTRIBUTE_SELECTORS.inverted]: {
-      '--text-color': 'var(--text-color-on-brand-bg)',
+      '--text-color': 'var(--text-color-inverted)',
     },
     [DATA_ATTRIBUTE_SELECTORS.customColor]: {
       '--text-color': 'var(--text-color-custom)',
