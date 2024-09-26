@@ -1,0 +1,14 @@
+{
+  "name": "UW Variables Plugin",
+  "id": "1415740052799811983",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "documentAccess": "dynamic-page",
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": ["https://api.github.com"]
+  }
+}
