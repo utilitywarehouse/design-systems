@@ -36,7 +36,7 @@ const classSelectors = {
 
 const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
   return {
-    transitionDuration: '0.3s',
+    transitionDuration: '0.2s',
     transitionProperty: 'color, background-color, border-color',
     borderRadius: px(9999),
     color: 'var(--base-button-foreground-color)',

@@ -228,15 +228,23 @@ export const WithIcons: Story = {
 
 export const SimpleExample: Story = {
   render: () => (
-    <Flex gap={2}>
-      {variants.map(variant => (
-        <Button key={variant} variant={variant}>
-          Next page <ChevronRight01SmallIcon />
-        </Button>
-      ))}
-      <Button disabled variant="outline">
-        Next page <ChevronRight01SmallIcon />
-      </Button>
+    <Flex direction="column" gap={2}>
+      <Flex gap={2}>
+        {variants.map(variant => (
+          <Button key={variant} variant={variant}>
+            Next
+            <ChevronRight01SmallIcon />
+          </Button>
+        ))}
+      </Flex>
+      <Flex gap={2}>
+        {variants.map(variant => (
+          <Button key={variant} variant={variant}>
+            <ChevronLeft01SmallIcon />
+            Back
+          </Button>
+        ))}
+      </Flex>
     </Flex>
   ),
 };
