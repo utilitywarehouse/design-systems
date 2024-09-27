@@ -4,7 +4,7 @@ import { IconButton } from '../IconButton';
 
 figma.connect(
   IconButton,
-  'https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=6105-26516&m=dev',
+  'https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=7309-10343&m=dev',
   {
     props: {
       icon: figma.instance('Icon'),
