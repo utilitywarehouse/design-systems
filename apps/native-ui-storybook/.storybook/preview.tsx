@@ -164,6 +164,7 @@ const preview: Preview = {
               'Text',
               'VStack',
               'Lab',
+              'unstyled',
             ],
           ],
           'Colour System',

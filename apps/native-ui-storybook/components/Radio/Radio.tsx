@@ -7,22 +7,20 @@ const RadioBasic: StoryFn<{
   _RadioLabel: string;
 }> = ({ isDisabled, _RadioLabel: label }) => {
   return (
-    <>
-      <RadioGroup>
-        <Radio
-          value="Label 1"
-          aria-label="Label 1"
-          onChange={(isChecked: boolean) => {
-            console.log(isChecked, '###');
-          }}
-          nativeID="Radio-1"
-          isDisabled={isDisabled}
-        >
-          <RadioIndicator />
-          {!!label && <RadioLabel>{label}</RadioLabel>}
-        </Radio>
-      </RadioGroup>
-    </>
+    <RadioGroup>
+      <Radio
+        value="Label 1"
+        aria-label="Label 1"
+        onChange={(isChecked: boolean) => {
+          console.log(isChecked, '###');
+        }}
+        nativeID="Radio-1"
+        isDisabled={isDisabled}
+      >
+        <RadioIndicator />
+        {!!label && <RadioLabel>{label}</RadioLabel>}
+      </Radio>
+    </RadioGroup>
   );
 };
 
