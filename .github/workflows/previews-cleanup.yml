@@ -15,8 +15,20 @@ jobs:
     continue-on-error: true
     if: ${{ github.event.before && github.head_commit.author.username != 'github-actions[bot]'}}
     steps:
+      - name: 🔧 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
       - name: 📂 Checkout code
         uses: actions/checkout@v3
+
+      - name: 🔧 Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
 
       - name: 🔄 Restore .env for Android
         id: android_env
