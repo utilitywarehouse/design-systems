@@ -23,20 +23,35 @@ jobs:
     concurrency:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
-    if: |
-      (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip-android]') && !contains(github.event.head_commit.message, '[skip-native]')) ||
-      (github.event_name == 'pull_request' && (!contains(github.event.pull_request.title, '[skip-android]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-android]') && !contains(github.event.pull_request.body, '[skip-native]')))
     steps:
+      - name: 🔍 Check if Android build should be skipped
+        id: check_skip
+        run: |
+          SKIP=false
+          if [ "${{ github.event_name }}" == "push" ]; then
+            if [[ "${{ github.event.head_commit.message }}" == *"[skip-android]"* ]] || [[ "${{ github.event.head_commit.message }}" == *"[skip-native]"* ]]; then
+              SKIP=true
+            fi
+          elif [ "${{ github.event_name }}" == "pull_request" ]; then
+            if [[ "${{ github.event.pull_request.title }}" == *"[skip-android]"* ]] || [[ "${{ github.event.pull_request.title }}" == *"[skip-native]"* ]] || [[ "${{ github.event.pull_request.body }}" == *"[skip-android]"* ]] || [[ "${{ github.event.pull_request.body }}" == *"[skip-native]"* ]]; then
+              SKIP=true
+            fi
+          fi
+          echo "skip=$SKIP" >> "$GITHUB_OUTPUT"
+
       - name: 🔧 Setup pnpm
+        if: steps.check_skip.outputs.skip == 'false'
         uses: pnpm/action-setup@v4
         with:
           version: 8
 
       - name: 📂 Checkout code
+        if: steps.check_skip.outputs.skip == 'false'
         uses: actions/checkout@v3
 
       - name: 🔧 Setup Node
         uses: actions/setup-node@v2
+        if: steps.check_skip.outputs.skip == 'false'
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
@@ -44,6 +59,7 @@ jobs:
 
       - name: ☕ Setup Java
         uses: actions/setup-java@v4
+        if: steps.check_skip.outputs.skip == 'false'
         with:
           distribution: 'zulu'
           java-version: '17.0.10'
@@ -52,29 +68,34 @@ jobs:
 
       - name: 🔧 Setup EAS
         uses: expo/expo-github-action@v8
+        if: steps.check_skip.outputs.skip == 'false'
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
+        if: steps.check_skip.outputs.skip == 'false'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: 🔄 Restore .env
-        if: github.event.action == 'synchronize' && !github.event_name != 'push'
+        if: steps.check_skip.outputs.skip == 'false' && github.event.action == 'synchronize' && !github.event_name != 'push'
         working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
       - name: 🤖 Build Android APK Bundle
+        if: steps.check_skip.outputs.skip == 'false'
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:android
 
       - name: 🔐 Create/Read .env
+        if: steps.check_skip.outputs.skip == 'false'
         run: touch ./apps/native-ui-storybook/.env.android && cat ./apps/native-ui-storybook/.env.android
 
       - name: 🔄 Load .env file
+        if: steps.check_skip.outputs.skip == 'false'
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
@@ -83,14 +104,14 @@ jobs:
       - name: ⬆️ Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        if: github.event.action == 'opened' || github.event.action == 'reopened' || ${{ !env.ANDROID_API_KEY && github.action.event_name == 'pull_request' }}
+        if: steps.check_skip.outputs.skip == 'false' && (github.event.action == 'opened' || github.event.action == 'reopened' || ${{ !env.ANDROID_API_KEY && github.action.event_name == 'pull_request' }})
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
           platform: 'android'
 
       - name: 📝 Add output to .env
-        if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.ANDROID_API_KEY
+        if: steps.check_skip.outputs.skip == 'false' && (github.event.action == 'opened' || github.event.action == 'reopened' || !env.ANDROID_API_KEY)
         working-directory: ./apps/native-ui-storybook
         run: |
           if [ "${{ github.event_name }}" == "push" ]; then
@@ -103,30 +124,31 @@ jobs:
 
       - name: 🔄 Reload .env file
         uses: xom9ikk/dotenv@v2
+        if: steps.check_skip.outputs.skip == 'false'
         with:
           path: ./apps/native-ui-storybook
           mode: 'android'
 
       - name: 💾 Save .env
         uses: actions/upload-artifact@v4
-        if: github.event_name == 'pull_request' && env.ANDROID_API_KEY
+        if: steps.check_skip.outputs.skip == 'false' && github.event_name == 'pull_request' && env.ANDROID_API_KEY
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-android
           path: ./apps/native-ui-storybook/.env.android
           include-hidden-files: true
           overwrite: true
 
-      - name: 👀 See env output
-        run: cat ./apps/native-ui-storybook/.env.android
-
       - name: ⬆️ Upload updated bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
-        if: github.event.action != 'opened' && env.ANDROID_API_KEY
+        if: steps.check_skip.outputs.skip == 'false' && (github.event.action != 'opened' && env.ANDROID_API_KEY)
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           publicKey: ${{ env.ANDROID_API_KEY }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.apk
           platform: 'android'
+
+      - name: ✅ Done
+        run: echo "Job done"
 
   build-for-ios:
     name: Build for iOS
@@ -134,20 +156,35 @@ jobs:
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
-    if: |
-      (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip-ios]') && !contains(github.event.head_commit.message, '[skip-native]')) ||
-      (github.event_name == 'pull_request' && (!contains(github.event.pull_request.title, '[skip-ios]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-ios]') && !contains(github.event.pull_request.body, '[skip-native]')))
     steps:
+      - name: 🔍 Check if iOS build should be skipped
+        id: check_skip
+        run: |
+          SKIP=false
+          if [ "${{ github.event_name }}" == "push" ]; then
+            if [[ "${{ github.event.head_commit.message }}" == *"[skip-ios]"* ]] || [[ "${{ github.event.head_commit.message }}" == *"[skip-native]"* ]]; then
+              SKIP=true
+            fi
+          elif [ "${{ github.event_name }}" == "pull_request" ]; then
+            if [[ "${{ github.event.pull_request.title }}" == *"[skip-ios]"* ]] || [[ "${{ github.event.pull_request.title }}" == *"[skip-native]"* ]] || [[ "${{ github.event.pull_request.body }}" == *"[skip-ios]"* ]] || [[ "${{ github.event.pull_request.body }}" == *"[skip-native]"* ]]; then
+              SKIP=true
+            fi
+          fi
+          echo "skip=$SKIP" >> "$GITHUB_OUTPUT"
+
       - name: 🔧 Setup pnpm
         uses: pnpm/action-setup@v4
+        if: steps.check_skip.outputs.skip == 'false'
         with:
           version: 8
 
       - name: 📂 Checkout code
         uses: actions/checkout@v3
+        if: steps.check_skip.outputs.skip == 'false'
 
       - name: 🔧 Setup Node
         uses: actions/setup-node@v2
+        if: steps.check_skip.outputs.skip == 'false'
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
@@ -155,35 +192,41 @@ jobs:
 
       - name: 🍏 Setup Xcode
         uses: maxim-lobanov/setup-xcode@v1
+        if: steps.check_skip.outputs.skip == 'false'
         with:
           xcode-version: '15.2.0'
 
       - name: 🔧 Setup EAS
         uses: expo/expo-github-action@v8
+        if: steps.check_skip.outputs.skip == 'false'
         with:
           eas-version: '9.2.0'
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
+        if: steps.check_skip.outputs.skip == 'false'
         run: pnpm install --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: 🔄 Restore .env
-        if: github.event.action != 'opened' && github.event.action != 'reopened' && github.event_name == 'pull_request'
+        if: steps.check_skip.outputs.skip == 'false' && github.event.action != 'opened' && github.event.action != 'reopened' && github.event_name == 'pull_request'
         working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-ios node ./scripts/getArtifacts.js
 
       - name: 🍎 Build iOS app
+        if: steps.check_skip.outputs.skip == 'false'
         working-directory: ./apps/native-ui-storybook
         run: pnpm run build:preview:ios
 
       - name: 🔐 Create/Read .env
+        if: steps.check_skip.outputs.skip == 'false'
         run: touch ./apps/native-ui-storybook/.env.ios && cat ./apps/native-ui-storybook/.env.ios
 
       - name: 🔄 Load .env file
         uses: xom9ikk/dotenv@v2
+        if: steps.check_skip.outputs.skip == 'false'
         with:
           path: ./apps/native-ui-storybook
           mode: 'ios'
@@ -191,14 +234,14 @@ jobs:
       - name: ⬆️ Upload new bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
         id: appetizeio_github_action_appetize
-        if: github.event.action == 'opened' || github.event.action == 'reopened' || ${{ !env.IOS_API_KEY && github.action.event_name == 'pull_request' }}
+        if: steps.check_skip.outputs.skip == 'false' && (github.event.action == 'opened' || github.event.action == 'reopened' || ${{ !env.IOS_API_KEY && github.action.event_name == 'pull_request' }})
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
           platform: 'ios'
 
       - name: 📝 Add output to .env
-        if: github.event.action == 'opened' || github.event.action == 'reopened' || !env.IOS_API_KEY
+        if: steps.check_skip.outputs.skip == 'false' && (github.event.action == 'opened' || github.event.action == 'reopened' || !env.IOS_API_KEY)
         working-directory: ./apps/native-ui-storybook
         run: |
           if [ "${{ github.event_name }}" == "push" ]; then
@@ -211,13 +254,14 @@ jobs:
 
       - name: 🔄 Reload .env file
         uses: xom9ikk/dotenv@v2
+        if: steps.check_skip.outputs.skip == 'false'
         with:
           path: ./apps/native-ui-storybook
           mode: 'ios'
 
       - name: 💾 Save .env
         uses: actions/upload-artifact@v4
-        if: github.event_name == 'pull_request' && env.IOS_API_KEY
+        if: steps.check_skip.outputs.skip == 'false' && github.event_name == 'pull_request' && env.IOS_API_KEY
         with:
           name: ${{ github.event.pull_request.base.sha }}-env-ios
           path: ./apps/native-ui-storybook/.env.ios
@@ -226,12 +270,15 @@ jobs:
 
       - name: ⬆️ Upload updated bundle to Appetize
         uses: appetizeio/github-action-appetize@v1.0.1
-        if: github.event.action != 'opened' && env.IOS_API_KEY
+        if: steps.check_skip.outputs.skip == 'false' && github.event.action != 'opened' && env.IOS_API_KEY
         with:
           apiToken: ${{ secrets.APPETIZE_API_TOKEN }}
           publicKey: ${{ env.IOS_API_KEY }}
           appFile: /Users/runner/work/design-systems/design-systems/apps/native-ui-storybook/build/native-ui.tar.gz
           platform: 'ios'
+
+      - name: ✅ Done
+        run: echo "Job done"
 
   build-for-web:
     name: Build for Web
@@ -239,6 +286,7 @@ jobs:
     needs:
       - build-for-android
       - build-for-ios
+    if: ${{ needs.build-for-android.result != 'failure' && needs.build-for-ios.result != 'failure' }}
     concurrency:
       group: preview-web-${{ github.ref }}
       cancel-in-progress: true
@@ -246,8 +294,9 @@ jobs:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
-      - name: echo needs
-        run: echo ${{ toJson(needs) }}
+      - name: 📝 Echo needs
+        run: |
+          echo "Needs: ${{ toJson(needs) }}"
 
       - name: 🔧 Setup pnpm
         uses: pnpm/action-setup@v4
