@@ -310,11 +310,11 @@ importers:
         specifier: ^1.0.1
         version: link:../web-ui
       react:
-        specifier: ^18.3.1
-        version: 18.3.1
+        specifier: ^18.2.0
+        version: 18.2.0
       react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
     devDependencies:
       '@figma/eslint-plugin-figma-plugins':
         specifier: 0.15.0
@@ -10844,6 +10844,16 @@ packages:
       - react-dom
     dev: false
 
+  /@storybook/api@7.6.17(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-l92PI+5XL4zB/o4IBWFCKQWTXvPg9hR45DCJqlPHrLZStiR6Xj1mbrtOjUlgIOH+nYb/SZFZqO53hhrs7X4Nvg==}
+    dependencies:
+      '@storybook/client-logger': 7.6.17
+      '@storybook/manager-api': 7.6.17(react-dom@18.2.0)(react@18.2.0)
+    transitivePeerDependencies:
+      - react
+      - react-dom
+    dev: false
+
   /@storybook/api@7.6.17(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-l92PI+5XL4zB/o4IBWFCKQWTXvPg9hR45DCJqlPHrLZStiR6Xj1mbrtOjUlgIOH+nYb/SZFZqO53hhrs7X4Nvg==}
     dependencies:
@@ -11464,7 +11474,6 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
-    dev: true
 
   /@storybook/components@7.6.20(@types/react@18.2.79)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-0d8u4m558R+W5V+rseF/+e9JnMciADLXTpsILrG+TBhwECk0MctIWW18bkqkujdCm8kDZr5U2iM/5kS1Noy7Ug==}
@@ -11826,13 +11835,13 @@ packages:
   /@storybook/deep-link-logger@3.1.2(@types/react@18.2.79):
     resolution: {integrity: sha512-sLp5HzqmcKIu+tBAKSOClRwW07xmclbsqSpSm3PoZKkGf7St1QpLYdnRokjOkk4JqkmiENsgj/D9SR3ozf7ryg==}
     dependencies:
-      '@storybook/addons': 7.6.17(react-dom@18.3.1)(react@18.3.1)
-      '@storybook/api': 7.6.17(react-dom@18.3.1)(react@18.3.1)
-      '@storybook/components': 7.6.20(@types/react@18.2.79)(react-dom@18.3.1)(react@18.3.1)
-      '@storybook/theming': 7.6.20(react-dom@18.3.1)(react@18.3.1)
+      '@storybook/addons': 7.6.17(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/api': 7.6.17(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/components': 7.6.20(@types/react@18.2.79)(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/theming': 7.6.20(react-dom@18.2.0)(react@18.2.0)
       copy-to-clipboard: 3.3.3
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
@@ -12127,8 +12136,8 @@ packages:
     resolution: {integrity: sha512-jt1A3Vzzm8W5OHCBUDQh8kwOH1vWjVlcyemzsbcSUiYG4sQrbzN6Tr07ZSZTNeKLxOgLhMkPnuqXVrFmODO+Hg==}
     dependencies:
       '@storybook/native-types': 3.1.2
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@storybook/native-types@3.1.2:
@@ -12824,7 +12833,6 @@ packages:
       memoizerific: 1.11.3
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: true
 
   /@storybook/theming@7.6.20(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-iT1pXHkSkd35JsCte6Qbanmprx5flkqtSHC6Gi6Umqoxlg9IjiLPmpHbaIXzoC06DSW93hPj5Zbi1lPlTvRC7Q==}
