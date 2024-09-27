@@ -236,7 +236,10 @@ jobs:
   build-for-web:
     name: Build for Web
     runs-on: ubuntu-latest
-    if: always()
+    needs:
+      - build-for-android
+      - build-for-ios
+    if: ${{ (needs.build-for-android.result == 'success' || needs.build-for-android.result == 'skipped') && (needs.build-for-ios.result == 'success' || needs.build-for-ios.result == 'skipped') }}
     concurrency:
       group: preview-web-${{ github.ref }}
       cancel-in-progress: true
