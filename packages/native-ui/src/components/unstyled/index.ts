@@ -23,7 +23,6 @@ export {
   SelectIcon,
   SelectInput,
   SelectItem,
-  SelectItemText,
   SelectPortal,
   SelectScrollView,
   SelectSectionHeaderText,
