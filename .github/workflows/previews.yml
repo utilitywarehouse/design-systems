@@ -215,9 +215,6 @@ jobs:
           path: ./apps/native-ui-storybook
           mode: 'ios'
 
-      - name: See env output
-        run: cat ./apps/native-ui-storybook/.env.ios
-
       - name: 🚀 Save .env
         uses: actions/upload-artifact@v4
         if: github.event_name == 'pull_request' && env.IOS_API_KEY
@@ -278,21 +275,23 @@ jobs:
       - name: 🚀 Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Log commit message and pr title
+      - name: Log commit message and pr title and body
         run: |
-          echo "Commit message: ${{ github.event.head_commit.message }} PR Title: ${{ github.event.pull_request.title }}"
+          echo "Commit message: ${{ github.event.head_commit.message }}"
+          echo "PR Title: ${{ github.event.pull_request.title }}"
+          echo "PR Body: ${{ github.event.pull_request.body }}"
 
       # Conditional steps for Android
       - name: 🏗 Restore Android .env
         if: |
-          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-android]') && !contains(github.event.pull_request.title, '[skip-native]'))
+          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-android]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-android]') && !contains(github.event.pull_request.body, '[skip-native]'))
         working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
       - name: 🚀 Load .env.android file
         if: |
-          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-android]') && !contains(github.event.pull_request.title, '[skip-native]'))
+          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-android]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-android]') && !contains(github.event.pull_request.body, '[skip-native]'))
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
@@ -300,7 +299,7 @@ jobs:
 
       - name: 🚀 Create local .env and add Android key
         if: |
-          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-android]') && !contains(github.event.pull_request.title, '[skip-native]'))
+          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-android]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-android]') && !contains(github.event.pull_request.body, '[skip-native]'))
         working-directory: ./apps/native-ui-storybook
         run: |
           echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
@@ -308,14 +307,14 @@ jobs:
       # Conditional steps for iOS
       - name: 🏗 Restore iOS .env
         if: |
-          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-ios]') && !contains(github.event.pull_request.title, '[skip-native]'))
+          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-ios]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-ios]') && !contains(github.event.pull_request.body, '[skip-native]'))
         working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-ios node ./scripts/getArtifacts.js
 
       - name: 🚀 Load .env.ios file
         if: |
-          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-ios]') && !contains(github.event.pull_request.title, '[skip-native]'))
+          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-ios]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-ios]') && !contains(github.event.pull_request.body, '[skip-native]'))
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
@@ -323,7 +322,7 @@ jobs:
 
       - name: 🚀 Create local .env and add iOS key
         if: |
-          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-ios]') && !contains(github.event.pull_request.title, '[skip-native]'))
+          (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-ios]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-ios]') && !contains(github.event.pull_request.body, '[skip-native]'))
         working-directory: ./apps/native-ui-storybook
         run: |
           echo "IOS_API_KEY=${{ env.IOS_API_KEY }}" >> .env
@@ -331,19 +330,25 @@ jobs:
       - name: 🚀 Create local production .env
         if: |
           (github.event_name == 'push') || 
-          (github.event_name != 'push' && (contains(github.event.pull_request.title, '[skip-android]') || contains(github.event.pull_request.title, '[skip-ios]') || contains(github.event.pull_request.title, '[skip-native]')))
+          (github.event_name != 'push' && (
+            contains(github.event.pull_request.title, '[skip-android]') || contains(github.event.pull_request.body, '[skip-android]') ||
+            contains(github.event.pull_request.title, '[skip-ios]') || contains(github.event.pull_request.body, '[skip-ios]') ||
+            contains(github.event.pull_request.title, '[skip-native]') || contains(github.event.pull_request.body, '[skip-native]')
+          ))
         working-directory: ./apps/native-ui-storybook
         run: |
+          title='${{ github.event.pull_request.title }}'
+          body='${{ github.event.pull_request.body }}'
           if [ "${{ github.event_name }}" == "push" ]; then
             echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env
             echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
-          elif [ ${{contains(github.event.pull_request.title, '[skip-native]')}} ]; then
+          elif [[ "$title" == *"[skip-native]"* || "$body" == *"[skip-native]"* ]]; then
             echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env
             echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
-          elif [ ${{contains(github.event.pull_request.title, '[skip-ios]')}} ]; then
-           echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
-          elif [ ${{contains(github.event.pull_request.title, '[skip-android]')}} ]; then
-            echo "ANDROID_API_KEY=${{ env.IOS_API_KEY }}" >> .env
+          elif [[ "$title" == *"[skip-ios]"* || "$body" == *"[skip-ios]"* ]]; then
+            echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
+          elif [[ "$title" == *"[skip-android]"* || "$body" == *"[skip-android]"* ]]; then
+            echo "IOS_API_KEY=${{ env.IOS_API_KEY }}" >> .env
           else
             echo "No public key found"
           fi
