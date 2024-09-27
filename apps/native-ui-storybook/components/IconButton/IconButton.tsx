@@ -7,7 +7,7 @@ import { ScrollWrap } from '../../docs/components';
 const IconButtonBasic: StoryFn<{
   variant: 'solid' | 'outline' | 'ghost';
   colorScheme: 'cyan' | 'red' | 'green' | 'grey' | 'gold';
-  isDisabled: boolean;
+  disabled: boolean;
   icon: string;
   size: 'x-small' | 'small' | 'medium';
   loading: boolean;
@@ -16,7 +16,7 @@ const IconButtonBasic: StoryFn<{
 }> = ({
   variant,
   colorScheme,
-  isDisabled,
+  disabled,
   icon: _icon,
   size,
   loading,
@@ -33,7 +33,7 @@ const IconButtonBasic: StoryFn<{
           icon={icon}
           variant={variant}
           colorScheme={colorScheme}
-          isDisabled={isDisabled}
+          disabled={disabled}
           loading={loading}
           size={size}
           inverted={inverted}
@@ -69,7 +69,7 @@ IconButtonBasic.argTypes = {
     control: 'select',
     description: 'The color scheme of the button.',
   },
-  isDisabled: {
+  disabled: {
     type: 'boolean',
     control: 'boolean',
     description: 'To manually set disable to the button.',
@@ -94,7 +94,7 @@ IconButtonBasic.args = {
   colorScheme: 'cyan',
   icon: 'AddMediumIcon',
   loading: false,
-  isDisabled: false,
+  disabled: false,
   inverted: false,
   _backgroundColor: 'default',
 };

@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { VStack, IconButton, ButtonGroup, Box, Heading } from '@utilitywarehouse/native-ui';
 import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
@@ -59,7 +62,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               size={size}
               inverted={inverted}
               loading={true}
-              isDisabled={true}
+              disabled={true}
             />
           </VariantTitle>
           <VariantTitle title="Disabled">
@@ -67,7 +70,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="solid"
               colorScheme={colorScheme}
-              isDisabled={true}
+              disabled={true}
               size={size}
               inverted={inverted}
             />
@@ -104,7 +107,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               variant="outline"
               colorScheme={colorScheme}
               size={size}
-              isDisabled={true}
+              disabled={true}
               inverted={inverted}
               loading={true}
             />
@@ -114,7 +117,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="outline"
               colorScheme={colorScheme}
-              isDisabled={true}
+              disabled={true}
               size={size}
               inverted={inverted}
             />
@@ -153,7 +156,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               size={size}
               inverted={inverted}
               loading={true}
-              isDisabled={true}
+              disabled={true}
             />
           </VariantTitle>
           <VariantTitle title="Disabled">
@@ -161,7 +164,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="ghost"
               colorScheme={colorScheme}
-              isDisabled={true}
+              disabled={true}
               size={size}
               inverted={inverted}
             />

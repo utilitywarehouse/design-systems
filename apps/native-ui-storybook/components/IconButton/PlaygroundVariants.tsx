@@ -6,13 +6,13 @@ import { ScrollWrap, VariantTitle } from '../../docs/components';
 
 const IconButtonPlaygroundVariants: StoryFn<{
   colorScheme: 'cyan' | 'red' | 'green' | 'grey' | 'gold';
-  isDisabled: boolean;
+  disabled: boolean;
   size: 'x-small' | 'small' | 'medium';
   icon: string;
   loading: boolean;
   inverted: boolean;
   _backgroundColor: 'default' | 'midnight' | 'purple';
-}> = ({ colorScheme, isDisabled, size, icon: _icon, loading, inverted, _backgroundColor }) => {
+}> = ({ colorScheme, disabled, size, icon: _icon, loading, inverted, _backgroundColor }) => {
   /* eslint-disable @typescript-eslint/no-unsafe-assignment */
   // @ts-expect-error - This is a playground
   const icon = _icon === 'none' ? undefined : Icons[_icon];
@@ -25,7 +25,7 @@ const IconButtonPlaygroundVariants: StoryFn<{
               icon={icon}
               variant="solid"
               colorScheme={colorScheme}
-              isDisabled={isDisabled}
+              disabled={disabled}
               loading={loading}
               size={size}
               inverted={inverted}
@@ -36,7 +36,7 @@ const IconButtonPlaygroundVariants: StoryFn<{
               icon={icon}
               variant="outline"
               colorScheme={colorScheme}
-              isDisabled={isDisabled}
+              disabled={disabled}
               loading={loading}
               size={size}
               inverted={inverted}
@@ -47,7 +47,7 @@ const IconButtonPlaygroundVariants: StoryFn<{
               icon={icon}
               variant="ghost"
               colorScheme={colorScheme}
-              isDisabled={isDisabled}
+              disabled={disabled}
               loading={loading}
               size={size}
               inverted={inverted}
@@ -82,7 +82,7 @@ IconButtonPlaygroundVariants.argTypes = {
     control: 'boolean',
     description: 'To manually set loading to the button.',
   },
-  isDisabled: {
+  disabled: {
     type: 'boolean',
     control: 'boolean',
     description: 'To manually set disable to the button.',
@@ -106,7 +106,7 @@ IconButtonPlaygroundVariants.args = {
   colorScheme: 'cyan',
   icon: 'ChevronRightMediumIcon',
   loading: false,
-  isDisabled: false,
+  disabled: false,
   inverted: false,
   _backgroundColor: 'default',
 };
