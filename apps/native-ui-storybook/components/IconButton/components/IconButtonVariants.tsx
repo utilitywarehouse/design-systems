@@ -49,7 +49,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="solid"
               colorScheme={colorScheme}
-              isPressed={true}
+              pressed={true}
               size={size}
               inverted={inverted}
             />
@@ -96,7 +96,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="outline"
               colorScheme={colorScheme}
-              isPressed={true}
+              pressed={true}
               size={size}
               inverted={inverted}
             />
@@ -143,7 +143,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="ghost"
               colorScheme={colorScheme}
-              isPressed={true}
+              pressed={true}
               size={size}
               inverted={inverted}
             />
