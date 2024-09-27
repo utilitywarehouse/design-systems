@@ -36,9 +36,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
   const capitalisedScheme =
     (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');
   const media = useMedia();
-  // @ts-expect-error - Reported to Gluestack error
   const { base, xs, sm } = media;
-  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
   const isMobile: boolean = base || xs || sm || false;
 
   const textColor =
