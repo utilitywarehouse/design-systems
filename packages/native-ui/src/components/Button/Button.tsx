@@ -26,7 +26,7 @@ ButtonText.displayName = 'ButtonText';
 ButtonSpinner.displayName = 'ButtonSpinner';
 ButtonIcon.displayName = 'ButtonIcon';
 
-const Button: React.FC<ButtonProps> = ({ children, disabled, isDisabled, ...props }) => {
+const Button: React.FC<ButtonProps> = ({ children, disabled, isDisabled, pressed, ...props }) => {
   const { disabled: groupDisabled, loading: groupLoading } = useButtonGroupContext();
   const { loading } = props;
   const isLoading = loading ?? groupLoading;
@@ -34,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({ children, disabled, isDisabled, ...prop
   if (typeof children === 'string' || typeof children === 'number') {
     const { icon, iconPosition = 'left' } = props as ButtonWithStringChildrenProps;
     return (
-      <ButtonComponent {...props} isDisabled={buttonDisabled}>
+      <ButtonComponent {...props} isDisabled={buttonDisabled} isPressed={pressed}>
         {!!icon && !isLoading && iconPosition === 'left' ? <ButtonIcon as={icon} /> : null}
         {isLoading ? <ButtonSpinner /> : null}
         <ButtonText>{children}</ButtonText>

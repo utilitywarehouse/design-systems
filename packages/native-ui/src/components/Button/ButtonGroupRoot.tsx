@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { type StyleProp, Text, type ViewStyle, type ViewProps } from 'react-native';
+import { type StyleProp, type ViewStyle, type ViewProps, View } from 'react-native';
 import { createStyleSheet, type UnistylesValues, useStyles } from 'react-native-unistyles';
 
 const ButtonGroupRoot: FC<
@@ -29,18 +29,17 @@ const ButtonGroupRoot: FC<
     space,
   });
   return (
-    <Text
+    <View
       {...props}
       style={[styles.text, styles.extraStyles(direction) as StyleProp<ViewStyle>, props.style]}
     >
       {children}
-    </Text>
+    </View>
   );
 };
 
 const stylesheet = createStyleSheet(({ space }) => ({
   text: {
-    display: 'flex',
     variants: {
       space: {
         xs: {

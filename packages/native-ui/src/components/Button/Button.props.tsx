@@ -15,6 +15,7 @@ export interface BaseButtonProps extends Omit<PressableProps, 'children'> {
   size?: 'small' | 'medium' | 'large';
   inverted?: boolean;
   variant?: 'solid' | 'outline' | 'ghost';
+  pressed?: boolean;
 }
 
 export interface ButtonWithStringChildrenProps extends BaseButtonProps {

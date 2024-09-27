@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import {
   VStack,
@@ -14,7 +17,6 @@ import { Button as GSButton } from '@gluestack-ui/themed';
 import { AddSmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-native-icons';
 import React, { ComponentProps } from 'react';
 import { VariantTitle } from '../../../docs/components';
-import { UnistylesRuntime } from 'react-native-unistyles';
 
 interface ButtonProps extends ComponentProps<typeof GSButton> {}
 interface ButtonVariantsProps {
@@ -68,7 +70,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isPressed
+              pressed
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -79,7 +81,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isDisabled
+              disabled
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -99,7 +101,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           <VariantTitle title="Loading">
             <Button
               variant="solid"
-              isDisabled
+              disabled
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
@@ -124,7 +126,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isPressed
+              pressed
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -135,7 +137,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isDisabled
+              disabled
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -155,7 +157,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           <VariantTitle title="Loading">
             <Button
               variant="outline"
-              isDisabled
+              disabled
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
@@ -181,7 +183,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isPressed
+              pressed
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -192,7 +194,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isDisabled
+              disabled
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -212,7 +214,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           <VariantTitle title="Loading">
             <Button
               variant="ghost"
-              isDisabled
+              disabled
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
