@@ -1,11 +1,11 @@
-import '@utilitywarehouse/fontsource';
-import '@utilitywarehouse/css-reset';
-import { breakpoints, Box } from '../src';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { SyntaxHighlighter } from '@storybook/components';
-import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 import { Analytics } from '@vercel/analytics/react';
+import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { SyntaxHighlighter } from '@storybook/components';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import '@utilitywarehouse/css-reset';
+import '@utilitywarehouse/fontsource';
+import { breakpoints, Box } from '../src';
 
 SyntaxHighlighter.registerLanguage('diff', diff);
 
@@ -66,7 +66,6 @@ const preview = {
     viewport: {
       viewports: customerUiViewports,
     },
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
