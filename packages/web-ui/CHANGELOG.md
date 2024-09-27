@@ -1,5 +1,17 @@
 # @utilitywarehouse/web-ui
 
+## 1.0.2
+
+### Patch Changes
+
+- [#497](https://github.com/utilitywarehouse/design-systems/pull/497) [`f5eda34a`](https://github.com/utilitywarehouse/design-systems/commit/f5eda34a84faddd0e7c7faea569eeafce3825dd6) Thanks [@robphoenix](https://github.com/robphoenix)! - Visual updates to `Link` component
+
+- [#494](https://github.com/utilitywarehouse/design-systems/pull/494) [`e810891a`](https://github.com/utilitywarehouse/design-systems/commit/e810891a82b38192caa1cfedecd822bc9ed7f736) Thanks [@robphoenix](https://github.com/robphoenix)! - Add medium fontWeight token & `fontWeight` prop to `Text` component
+
+- [#492](https://github.com/utilitywarehouse/design-systems/pull/492) [`80a89a57`](https://github.com/utilitywarehouse/design-systems/commit/80a89a57e154989131c8174bbe4e35663b444a65) Thanks [@robphoenix](https://github.com/robphoenix)! - Implement `TextLink` visual updates
+
+- [#502](https://github.com/utilitywarehouse/design-systems/pull/502) [`9c3597b7`](https://github.com/utilitywarehouse/design-systems/commit/9c3597b7225c53a3c6adf7524d90c3af62e7e7fc) Thanks [@robphoenix](https://github.com/robphoenix)! - `Button` & `IconButton` visual updates
+
 ## 1.0.1
 
 ### Patch Changes
