@@ -1,5 +1,5 @@
 import { Box, IconButton } from '@utilitywarehouse/native-ui';
-import React, { ElementType } from 'react';
+import React, { ComponentType } from 'react';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 import { ScrollWrap } from '../../docs/components';
@@ -25,7 +25,7 @@ const IconButtonBasic: StoryFn<{
 }) => {
   /* eslint-disable @typescript-eslint/no-unsafe-assignment */
   // @ts-expect-error - This is a playground
-  const icon: ElementType = _icon === 'none' ? undefined : Icons[_icon];
+  const icon: ComponentType = _icon === 'none' ? undefined : Icons[_icon];
   return (
     <Box height={48} width="100%">
       <ScrollWrap backgroundColor={_backgroundColor}>

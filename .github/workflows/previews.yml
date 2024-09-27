@@ -239,7 +239,6 @@ jobs:
     needs:
       - build-for-android
       - build-for-ios
-    if: ${{ (needs.build-for-android.result == 'success' || needs.build-for-android.result == 'skipped') && (needs.build-for-ios.result == 'success' || needs.build-for-ios.result == 'skipped') }}
     concurrency:
       group: preview-web-${{ github.ref }}
       cancel-in-progress: true
@@ -247,6 +246,9 @@ jobs:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
+      - name: echo needs
+        run: echo ${{ toJson(needs) }}
+
       - name: 🔧 Setup pnpm
         uses: pnpm/action-setup@v4
         with:
