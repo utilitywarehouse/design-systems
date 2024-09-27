@@ -389,6 +389,9 @@ importers:
       '@gluestack-ui/icon':
         specifier: ^0.1.22
         version: 0.1.22(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/radio':
+        specifier: ^0.1.33
+        version: 0.1.33(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
       '@gluestack-ui/spinner':
         specifier: ^0.1.14
         version: 0.1.14(react-dom@18.2.0)(react@18.2.0)
@@ -6483,6 +6486,25 @@ packages:
 
   /@gluestack-ui/radio@0.1.31(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0):
     resolution: {integrity: sha512-0sX51NL5NQ3COPXiUZjq9BW5FVWiZnSGPpGH3Ix1oEBOiQkohd9z6lj1y75kQBjRyMK+Eg9Eub9jpfkojDsPYA==}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@gluestack-ui/form-control': 0.1.18(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/utils': 0.1.13(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@react-aria/visually-hidden': 3.8.10(react@18.2.0)
+      '@react-native-aria/focus': 0.2.9(react-native@0.74.5)(react@18.2.0)
+      '@react-native-aria/interactions': 0.2.13(react-native@0.74.5)(react@18.2.0)
+      '@react-native-aria/radio': 0.2.10(react-native@0.74.5)(react@18.2.0)
+      '@react-stately/radio': 3.10.2(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - react-native
+    dev: false
+
+  /@gluestack-ui/radio@0.1.33(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0):
+    resolution: {integrity: sha512-x93F8MTvS8EF1B0VllXcnVFpK+dlfQYjQCC0+x5G9TyXYU/z6C2Y4wq0YS6ivqRtq00diHW3b1xXz1TOgR2j6g==}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
