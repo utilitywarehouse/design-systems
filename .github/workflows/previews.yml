@@ -280,40 +280,46 @@ jobs:
 
       # Conditional steps for Android
       - name: 🏗 Restore Android .env
-        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-android]') && !contains(github.event.head_commit.message, '[skip-native]')
+        if: |
+          (github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-android]') && !contains(github.event.head_commit.message, '[skip-native]'))
         working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-android node ./scripts/getArtifacts.js
 
       - name: 🚀 Load .env.android file
-        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-android]') && !contains(github.event.head_commit.message, '[skip-native]')
+        if: |
+          (github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-android]') && !contains(github.event.head_commit.message, '[skip-native]'))
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
           mode: 'android'
 
       - name: 🚀 Create local .env and add Android key
-        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-android]') && !contains(github.event.head_commit.message, '[skip-native]')
+        if: |
+          (github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-android]') && !contains(github.event.head_commit.message, '[skip-native]'))
         working-directory: ./apps/native-ui-storybook
         run: |
           echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
 
       # Conditional steps for iOS
       - name: 🏗 Restore iOS .env
-        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-ios]') && !contains(github.event.head_commit.message, '[skip-native]')
+        if: |
+          (github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-ios]') && !contains(github.event.head_commit.message, '[skip-native]'))
         working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.pull_request.base.sha }}-env-ios node ./scripts/getArtifacts.js
 
       - name: 🚀 Load .env.ios file
-        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-ios]') && !contains(github.event.head_commit.message, '[skip-native]')
+        if: |
+          (github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-ios]') && !contains(github.event.head_commit.message, '[skip-native]'))
         uses: xom9ikk/dotenv@v2
         with:
           path: ./apps/native-ui-storybook
           mode: 'ios'
 
       - name: 🚀 Create local .env and add iOS key
-        if: github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-ios]') && !contains(github.event.head_commit.message, '[skip-native]')
+        if: |
+          (github.event_name != 'push' && !contains(github.event.head_commit.message, '[skip-ios]') && !contains(github.event.head_commit.message, '[skip-native]'))
         working-directory: ./apps/native-ui-storybook
         run: |
           echo "IOS_API_KEY=${{ env.IOS_API_KEY }}" >> .env
