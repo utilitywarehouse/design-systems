@@ -26,7 +26,6 @@
     "@gluestack-ui/alert": "^0.1.15",
     "@gluestack-ui/button": "^1.0.7",
     "@gluestack-ui/icon": "^0.1.22",
-    "@gluestack-ui/radio": "^0.1.33",
     "@gluestack-ui/spinner": "^0.1.14",
     "@gluestack-ui/themed": "1.1.40",
     "@utilitywarehouse/colour-system": "workspace:^",
