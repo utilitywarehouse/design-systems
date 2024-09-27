@@ -278,6 +278,10 @@ jobs:
       - name: 🚀 Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
+      - name: Log commit message and pr title
+        run: |
+          echo "Commit message: ${{ github.event.head_commit.message }} PR Title: ${{ github.event.pull_request.title }}"
+
       # Conditional steps for Android
       - name: 🏗 Restore Android .env
         if: |
@@ -331,12 +335,12 @@ jobs:
           if [ "${{ github.event_name }}" == "push" ]; then
             echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env
             echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
-          elif [ ${{contains(github.event.head_commit.message, '[skip-native]')}} ]; then
+          elif [ ${{contains(github.event.pull_request.title, '[skip-native]')}} ]; then
             echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env
             echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
-          elif [ ${{contains(github.event.head_commit.message, '[skip-ios]')}} ]; then
+          elif [ ${{contains(github.event.pull_request.title, '[skip-ios]')}} ]; then
            echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
-          elif [ ${{contains(github.event.head_commit.message, '[skip-android]')}} ]; then
+          elif [ ${{contains(github.event.pull_request.title, '[skip-android]')}} ]; then
             echo "ANDROID_API_KEY=${{ env.IOS_API_KEY }}" >> .env
           else
             echo "No public key found"
