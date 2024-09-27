@@ -54,8 +54,7 @@
   "pnpm": {
     "overrides": {
       "react-docgen-typescript": "2.2.2",
-      "@storybook/addon-docs": "7.6.20",
-      "@storybook/blocks": "7.6.20"
+      "react": "18.2.0"
     },
     "peerDependencyRules": {
       "ignoreMissing": [
