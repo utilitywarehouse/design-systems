@@ -36,5 +36,5 @@ jobs:
         working-directory: ./packages/web-ui
         run: pnpm run figma:publish --token=${{ secrets.FIGMA_ACCESS_TOKEN }}
 
-      - name: 🚀 Publish Native UI Figma Code Connect components
-        run: npx figma connect publish --token ${{ secrets.FIGMA_ACCESS_TOKEN }}
+      # - name: 🚀 Publish Native UI Figma Code Connect components
+      #   run: npx figma connect publish --token ${{ secrets.FIGMA_ACCESS_TOKEN }}
