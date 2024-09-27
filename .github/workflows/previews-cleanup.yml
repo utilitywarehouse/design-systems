@@ -15,33 +15,16 @@ jobs:
     continue-on-error: true
     if: ${{ github.event.before && github.head_commit.author.username != 'github-actions[bot]'}}
     steps:
-      - name: 🏗 Setup repo
-        uses: pnpm/action-setup@v4
-        with:
-          version: 8
+      - name: 📂 Checkout code
+        uses: actions/checkout@v3
 
-      - name: 🏗 Checkout
-        uses: actions/checkout@v4
-
-      - name: 🏗 Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18.x'
-          registry-url: 'https://registry.npmjs.org'
-          cache: 'pnpm'
-
-      - name: 📦 Install dependencies
-        run: pnpm install --frozen-lockfile
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: 🏗 Restore .env for Android
+      - name: 🔄 Restore .env for Android
         id: android_env
         working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.before }}-env-android node ./scripts/getArtifacts.js || echo "No Android .env file found"
 
-      - name: 🏗 Load Android .env file and Cleanup Preview
+      - name: 🧽 Load Android .env file and Cleanup Preview
         run: |
           if [ -f "./apps/native-ui-storybook/.env.android" ]; then
             # Load .env file
@@ -54,13 +37,13 @@ jobs:
             echo "No Android .env file found, skipping cleanup."
           fi
 
-      - name: 🏗 Restore .env for iOS
+      - name: 🔄 Restore .env for iOS
         id: ios_env
         working-directory: ./apps/native-ui-storybook
         run: |
           GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.before }}-env-ios node ./scripts/getArtifacts.js || echo "No iOS .env file found"
 
-      - name: 🏗 Load iOS .env file and Cleanup Preview
+      - name: 🧽 Load iOS .env file and Cleanup Preview
         run: |
           if [ -f "./apps/native-ui-storybook/.env.ios" ]; then
             # Load .env file
