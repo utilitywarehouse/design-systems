@@ -13,7 +13,7 @@ const BaseBox = createBox<'label'>({ componentName });
 const StyledElement = styled(BaseBox)({
   fontFamily: fonts.secondary,
   fontSize: pxToRem(16),
-  lineHeight: pxToRem(24),
+  lineHeight: 1.5,
   '--label-color': colors.grey1000,
   '--label-color-disabled': colors.grey400,
   '--label-font-weight': fontWeights.secondary.semibold,

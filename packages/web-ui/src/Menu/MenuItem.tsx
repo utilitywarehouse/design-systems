@@ -36,7 +36,7 @@ export const MenuItem = forwardRef(function MenuItem({ children, ...props }, ref
         color={colorsCommon.brandMidnight}
         fontFamily={fonts.secondary}
         fontSize={pxToRem(18)}
-        lineHeight={pxToRem(24)}
+        lineHeight={1.5}
       >
         {children}
       </Box>

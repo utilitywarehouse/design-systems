@@ -77,7 +77,7 @@ const StyledElement = styled('span')(() => {
     fontWeight: fontWeights.secondary.regular,
     fontStyle: 'normal',
     flexShrink: 0,
-    lineHeight: pxToRem(16),
+    lineHeight: 16 / 14,
     textAlign: 'center',
     height: 'fit-content' /* Make sure that the height is not stretched in a Flex/Grid layout */,
     '--badge-padding-inline-regular': px(16),

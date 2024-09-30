@@ -47,13 +47,13 @@ const classSelectors = {
 const StyledElement = styled(BaseButton)<ButtonProps>(() => {
   const sizeStyles = {
     medium: {
-      '--button-line-height': pxToRem(24),
+      '--button-line-height': 1.5,
       '--button-min-width': px(136),
       '--button-padding-inline': px(24),
       '--button-padding-block': px(12),
     },
     small: {
-      '--button-line-height': pxToRem(16),
+      '--button-line-height': 1,
       '--button-min-width': px(120),
       '--button-padding-inline': px(16),
       '--button-padding-block': px(8),

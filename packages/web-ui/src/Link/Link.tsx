@@ -53,16 +53,8 @@ const StyledElement = styled('a', {
   shouldForwardProp: prop => prop !== 'as' && prop !== 'textTransform',
 })<LinkProps>(({ textTransform }) => {
   const sizeStyles = {
-    large: {
-      '--link-font-size': pxToRem(18),
-      '--link-line-height': pxToRem(18),
-      '--link-height': pxToRem(18),
-    },
-    small: {
-      '--link-font-size': pxToRem(16),
-      '--link-line-height': pxToRem(16),
-      '--link-height': pxToRem(16),
-    },
+    large: { '--link-font-size': 'var(--link-font-size-large)' },
+    small: { '--link-font-size': 'var(--link-font-size-small)' },
   };
 
   return {
@@ -84,10 +76,11 @@ const StyledElement = styled('a', {
       flexShrink: 0,
       gap: px(spacing(0.5)),
     },
+    '--link-font-size-large': pxToRem(18),
+    '--link-font-size-small': pxToRem(16),
     fontFamily: fonts.secondary,
     fontSize: 'var(--link-font-size)',
-    lineHeight: 'var(--link-line-height)',
-    height: 'var(--link-height)',
+    lineHeight: 1,
     fontWeight: fontWeights.secondary.medium,
     textDecorationLine: 'underline',
     textDecorationStyle: 'solid',
