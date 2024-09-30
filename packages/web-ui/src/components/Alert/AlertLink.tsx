@@ -7,10 +7,11 @@ import { colors } from '@utilitywarehouse/colour-system';
 import { TextLink } from '../TextLink';
 import type { TextLinkProps } from '../TextLink';
 
+import { colorSchemeParentSelector } from '../../helpers';
 import { styled } from '../../theme';
 import { fontWeights } from '../../tokens';
 import type { PropsWithSx } from '../../types';
-import { colorSchemeParentSelector, px, withGlobalPrefix } from '../../utils';
+import { px, withGlobalPrefix } from '../../utils';
 
 const componentName = 'AlertLink';
 const componentClassName = withGlobalPrefix(componentName);

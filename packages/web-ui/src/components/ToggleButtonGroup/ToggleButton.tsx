@@ -7,9 +7,10 @@ import {
 
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
+import { DATA_ATTRIBUTES } from '../../helpers';
 import { styled } from '../../theme';
 import { fontWeights, fonts } from '../../tokens';
-import { DATA_ATTRIBUTES, px } from '../../utils';
+import { px } from '../../utils';
 
 const StyledMuiToggleButton = styled(MuiToggleButton)(({ theme }) => {
   return {

@@ -7,9 +7,10 @@ import { colors } from '@utilitywarehouse/colour-system';
 import { UnstyledButton } from '../UnstyledButton';
 import type { UnstyledButtonProps } from '../UnstyledButton';
 
+import { colorSchemeParentSelector } from '../../helpers';
 import { styled } from '../../theme';
 import { PropsWithSx } from '../../types';
-import { colorSchemeParentSelector, px, withGlobalPrefix } from '../../utils';
+import { px, withGlobalPrefix } from '../../utils';
 
 const componentName = 'AlertButton';
 const componentClassName = withGlobalPrefix(componentName);

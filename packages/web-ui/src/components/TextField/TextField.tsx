@@ -12,9 +12,10 @@ import { Box } from '../Box';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
 
+import { classSelector } from '../../helpers';
 import { styled } from '../../theme';
 import { fontWeights, fonts, transitions } from '../../tokens';
-import { classSelector, pxToRem, spacing, withGlobalPrefix } from '../../utils';
+import { pxToRem, spacing, withGlobalPrefix } from '../../utils';
 
 const classNames: { [key: string]: string } = {
   success: withGlobalPrefix('status-success'),

@@ -10,8 +10,8 @@ import { FieldsetLegend } from '../FieldsetLegend';
 import { Flex } from '../Flex';
 import { HelperText } from '../HelperText';
 
+import { mergeIds } from '../../helpers';
 import { useIds } from '../../hooks';
-import { mergeIds } from '../../utils';
 
 const componentName = 'BaseCheckboxGroup';
 

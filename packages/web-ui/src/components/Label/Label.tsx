@@ -2,14 +2,15 @@ import * as React from 'react';
 
 import { colors } from '@utilitywarehouse/colour-system';
 
-import { LabelProps } from './Label.props';
+import type { LabelProps } from './Label.props';
 
 import { createBox } from '../Box';
 
+import { DATA_ATTRIBUTE_SELECTORS } from '../../helpers';
 import { styled } from '../../theme';
 import { fontWeights, fonts } from '../../tokens';
-import { PropsWithSx } from '../../types';
-import { DATA_ATTRIBUTE_SELECTORS, pxToRem } from '../../utils';
+import type { PropsWithSx } from '../../types';
+import { pxToRem } from '../../utils';
 
 const componentName = 'Label';
 const BaseBox = createBox<'label'>({ componentName });

@@ -7,8 +7,9 @@ import type { RadioGridGroupProps } from './RadioGridGroup.props';
 import { BaseRadioGroup } from '../BaseRadioGroup';
 import { Box } from '../Box';
 
+import { getColumns } from '../../helpers';
 import type { PropsWithSx } from '../../types';
-import { getColumns, withGlobalPrefix } from '../../utils';
+import { withGlobalPrefix } from '../../utils';
 
 const componentName = 'RadioGridGroup';
 const componentClassName = withGlobalPrefix(componentName);

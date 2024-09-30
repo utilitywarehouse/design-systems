@@ -8,22 +8,19 @@ import { BadgeProps } from './Badge.props';
 
 import { useBackground } from '../Box';
 
-import { styled } from '../../theme';
-import { fontWeights, fonts } from '../../tokens';
-import { PropsWithSx } from '../../types';
 import {
   COLORSCHEME_SELECTORS,
   DATA_ATTRIBUTES,
   DATA_ATTRIBUTE_SELECTORS,
   classSelector,
-  mediaQueries,
-  px,
-  pxToRem,
   responsiveClassSelector,
   translateBooleanValues,
   withBreakpoints,
-  withGlobalPrefix,
-} from '../../utils';
+} from '../../helpers';
+import { styled } from '../../theme';
+import { fontWeights, fonts } from '../../tokens';
+import { PropsWithSx } from '../../types';
+import { mediaQueries, px, pxToRem, withGlobalPrefix } from '../../utils';
 
 const componentName = 'Badge';
 const componentClassName = withGlobalPrefix(componentName);

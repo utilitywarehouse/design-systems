@@ -8,17 +8,11 @@ import { HeadingProps } from './Heading.props';
 
 import { useBackground } from '../Box';
 
+import { DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS, classSelector } from '../../helpers';
 import { styled } from '../../theme';
 import { fontWeights, fonts } from '../../tokens';
 import { PropsWithSx } from '../../types';
-import {
-  DATA_ATTRIBUTES,
-  DATA_ATTRIBUTE_SELECTORS,
-  classSelector,
-  mediaQueries,
-  pxToRem,
-  withGlobalPrefix,
-} from '../../utils';
+import { mediaQueries, pxToRem, withGlobalPrefix } from '../../utils';
 
 const componentName = 'Heading';
 const componentClassName = withGlobalPrefix(componentName);

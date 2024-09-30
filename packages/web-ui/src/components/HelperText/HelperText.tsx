@@ -11,16 +11,11 @@ import {
 
 import { HelperTextProps } from './HelperText.props';
 
+import { DATA_ATTRIBUTE_SELECTORS, classSelector } from '../../helpers';
 import { styled } from '../../theme';
 import { fontWeights, fonts } from '../../tokens';
 import { PropsWithSx } from '../../types';
-import {
-  DATA_ATTRIBUTE_SELECTORS,
-  classSelector,
-  pxToRem,
-  spacing,
-  withGlobalPrefix,
-} from '../../utils';
+import { pxToRem, spacing, withGlobalPrefix } from '../../utils';
 
 const componentName = 'HelperText';
 const componentClassName = withGlobalPrefix(componentName);

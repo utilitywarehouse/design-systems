@@ -9,8 +9,9 @@ import { colors } from '@utilitywarehouse/colour-system';
 
 import { useBackground } from '../Box';
 
+import { DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS } from '../../helpers';
 import { styled } from '../../theme';
-import { DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS, px } from '../../utils';
+import { px } from '../../utils';
 
 export type ToggleButtonGroupProps = Pick<
   MuiToggleButtonGroupProps,

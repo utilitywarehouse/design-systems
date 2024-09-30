@@ -6,16 +6,10 @@ import { IconButtonProps } from './IconButton.props';
 
 import { BaseButton } from '../BaseButton';
 
+import { classSelector, responsiveClassSelector, withBreakpoints } from '../../helpers';
 import { styled } from '../../theme';
 import { PropsWithSx } from '../../types';
-import {
-  classSelector,
-  mediaQueries,
-  pxToRem,
-  responsiveClassSelector,
-  withBreakpoints,
-  withGlobalPrefix,
-} from '../../utils';
+import { mediaQueries, pxToRem, withGlobalPrefix } from '../../utils';
 
 const componentName = 'IconButton';
 const componentClassName = withGlobalPrefix(componentName);

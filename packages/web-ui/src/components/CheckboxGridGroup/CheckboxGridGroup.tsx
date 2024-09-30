@@ -7,7 +7,8 @@ import type { CheckboxGridGroupProps } from './CheckboxGridGroup.props';
 import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Box } from '../Box';
 
-import { getColumns, withGlobalPrefix } from '../../utils';
+import { getColumns } from '../../helpers';
+import { withGlobalPrefix } from '../../utils';
 
 const componentName = 'CheckboxGridGroup';
 const componentClassName = withGlobalPrefix(componentName);

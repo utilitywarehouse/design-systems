@@ -20,9 +20,10 @@ import { AlertTitle } from './AlertTitle';
 
 import { Flex } from '../Flex';
 
+import { COLORSCHEME_SELECTORS, DATA_ATTRIBUTES } from '../../helpers';
 import { styled } from '../../theme';
 import { PropsWithSx } from '../../types';
-import { COLORSCHEME_SELECTORS, DATA_ATTRIBUTES, px, withGlobalPrefix } from '../../utils';
+import { px, withGlobalPrefix } from '../../utils';
 
 const componentName = 'Alert';
 const componentClassName = withGlobalPrefix(componentName);

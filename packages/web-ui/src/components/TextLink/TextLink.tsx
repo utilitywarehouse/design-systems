@@ -10,15 +10,10 @@ import type { TextLinkProps } from './TextLink.props';
 
 import { useBackground } from '../Box';
 
+import { DATA_ATTRIBUTES, DATA_ATTRIBUTE_SELECTORS } from '../../helpers';
 import { styled } from '../../theme';
 import type { PropsWithSx } from '../../types';
-import {
-  DATA_ATTRIBUTES,
-  DATA_ATTRIBUTE_SELECTORS,
-  px,
-  spacing,
-  withGlobalPrefix,
-} from '../../utils';
+import { px, spacing, withGlobalPrefix } from '../../utils';
 
 const componentName = 'TextLink';
 const componentClassName = withGlobalPrefix(componentName);

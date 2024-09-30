@@ -6,18 +6,11 @@ import type { ButtonProps } from './Button.props';
 
 import { BaseButton } from '../BaseButton';
 
+import { classSelector, responsiveClassSelector, withBreakpoints } from '../../helpers';
 import { styled } from '../../theme';
 import { fontWeights, fonts } from '../../tokens';
 import type { PropsWithSx } from '../../types';
-import {
-  classSelector,
-  mediaQueries,
-  px,
-  pxToRem,
-  responsiveClassSelector,
-  withBreakpoints,
-  withGlobalPrefix,
-} from '../../utils';
+import { mediaQueries, px, pxToRem, withGlobalPrefix } from '../../utils';
 
 const componentName = 'Button';
 const componentClassName = withGlobalPrefix(componentName);
