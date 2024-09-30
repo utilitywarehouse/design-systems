@@ -16,7 +16,7 @@ const StyledElement = styled('legend')({
   fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.semibold,
   fontSize: pxToRem(16),
-  lineHeight: pxToRem(24),
+  lineHeight: 1.5,
   '--fieldset-legend-color': colors.grey1000,
   '--fieldset-legend-color-disabled': colors.grey400,
   color: 'var(--fieldset-legend-color)',

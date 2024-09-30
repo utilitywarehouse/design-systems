@@ -36,7 +36,7 @@ const StyledElement = styled('span')({
   fontFamily: fonts.secondary,
   fontWeight: fontWeights.secondary.regular,
   fontSize: pxToRem(16),
-  lineHeight: pxToRem(24),
+  lineHeight: 1.5,
   gap: spacing(1),
   alignItems: 'center',
   '--helper-text-color': colors.grey700,
