@@ -19,7 +19,7 @@ env:
 jobs:
   build-for-android:
     name: Build for Android
-    runs-on: macos-13-large
+    runs-on: macos-13
     concurrency:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
@@ -152,7 +152,7 @@ jobs:
 
   build-for-ios:
     name: Build for iOS
-    runs-on: macos-13-xlarge
+    runs-on: macos-13
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
