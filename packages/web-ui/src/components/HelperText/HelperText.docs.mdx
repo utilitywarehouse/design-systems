@@ -1,0 +1,19 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './HelperText.stories';
+
+import { DocsHeader } from '../../storybook-utils';
+
+<Meta of={Stories} />
+
+<DocsHeader
+  componentName="HelperText"
+  stories={Stories}
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=5275-23729"
+/>
+
+<Canvas of={Stories.Workshop} sourceState="none" />
+
+## Props
+
+<ArgTypes of={Stories} />

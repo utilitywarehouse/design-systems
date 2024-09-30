@@ -1,0 +1,184 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './TextLink.stories';
+
+import { Alert } from '../Alert';
+
+import { DocsHeader } from '../../storybook-utils';
+
+<Meta of={Stories} />
+
+<DocsHeader
+  componentName="TextLink"
+  stories={Stories}
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=6834-38146"
+/>
+
+<Canvas of={Stories.Workshop} sourceState="none" />
+
+- [Semantic HTML](#semantic-html)
+- [Guidelines](#guidelines)
+- [Size](#size)
+- [Colour](#colour)
+- [Icons](#icons)
+- [Usage with Next.js](#usage-with-nextjs)
+  - [Next.js v13](#nextjs-v13)
+  - [Next.js before v13](#nextjs-before-v13)
+- [Props](#props)
+
+## Semantic HTML
+
+> If it goes somewhere it's a link, if it does something it's a button.
+
+A semantic HTML `a` is rendered by default, however you can change the
+underlying HTML element by using the `asChild` prop.
+
+When `asChild` is set to true, we will not render a default DOM element,
+instead cloning the child and passing it the props and behaviour required to
+make it functional.
+
+Read more about this idea in the [Radix UI composition docs](https://www.radix-ui.com/primitives/docs/guides/composition).
+
+```tsx
+// You may need to disable this eslint warning:
+// eslint-disable-next-line jsx-a11y/anchor-is-valid
+<TextLink asChild>
+  <button type="button" onClick={onClick}>
+    View benefits
+    <ChevronRightMediumIcon />
+  </button>
+</TextLink>
+```
+
+<Canvas of={Stories.AsButton} />
+
+## Guidelines
+
+Try and avoid using `target=_blank` if possible: [When to use target="\_blank"](https://css-tricks.com/use-target_blank/).
+Though if you do use it, then be aware that [browsers now implicitly set rel=noopener for any target=\_blank link](https://mathiasbynens.github.io/rel-noopener/).
+
+## Size
+
+The `TextLink` component must be wrapped in a `Text` component, and will
+inherit it's styles, so it's size will be controlled by the containing
+`Text` variant.
+
+## Colour
+
+When nested inside a `Box` component that specifies a either a brand purple or
+brand midnight background, the `TextLink` colour will change in the same way
+the `Text` component does.
+
+```tsx
+<Box padding={2} background={colorsCommon.brandPrimaryPurple}>
+  <Text variant="body">
+    Text with a <TextLink>TextLink</TextLink> on brandPrimaryPurple background
+  </Text>
+</Box>
+<Box padding={2} background={colorsCommon.brandMidnight}>
+  <Text variant="body">
+    Text with a <TextLink>TextLink</TextLink> on brandMidnight background
+  </Text>
+</Box>
+```
+
+You can use the `color` prop to override the `TextLink` colours. This will set
+the `active` & `visited` states to the same colour as the default state. If you
+set it to `"inherit"` then the `TextLink` component will inherit the colour of
+the parent element.
+
+```tsx
+import { Box, Text, TextLink } from "@utilitywarehouse/web-ui";
+
+[...]
+
+<Box padding={2} background={colorsCommon.brandMidnight}>
+  <Text variant="body" color={colorsCommon.brandPink}>
+    Text with a{' '}
+    <TextLink {...args} color="inherit">
+      TextLink
+    </TextLink>{' '}
+    on brandMidnight background with custom color
+  </Text>
+</Box>
+<Box padding={2}>
+  <Text variant="body">
+    Text with a{' '}
+    <TextLink {...args} color={colors.green500}>
+      TextLink
+    </TextLink>{' '}
+    on brandWhite background with custom color
+  </Text>
+</Box>
+```
+
+> **NOTE:** While it is technically possible to use a custom, or inherited,
+> colour, it is not encouraged.
+
+<Canvas of={Stories.TextLinkColour} />
+
+## Usage with Next.js
+
+### Next.js v13
+
+The Next.js `Link` component behaviour has changed in v13, so that an `<a>` is
+no longer required as a child. You can render the Web UI `TextLink` component as a
+Next.js `Link` component using `asChild`:
+
+```tsx
+import NextLink from 'next/link';
+import { TextLink } from '@utilitywarehouse/web-ui';
+
+[...]
+
+{/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+<TextLink asChild>
+  <NextLink href={href} onClick={onClick}>
+    {title}
+  </NextLink>
+</TextLink>
+```
+
+You can also use the `legacyBehavior` prop directly on the Next.js Link component:
+
+```tsx
+import NextLink from 'next/link';
+import { TextLink } from '@utilitywarehouse/web-ui';
+
+[...]
+
+<NextLink href={href} passHref onClick={onClick} legacyBehavior>
+  {/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+  <TextLink>{title}</TextLink>
+</NextLink>
+```
+
+And if you want to set this behavior globally you can use the following Next.js
+configuration:
+
+```
+{
+  experimental: {
+    newNextLinkBehavior: false
+  }
+}
+```
+
+### Next.js before v13
+
+```tsx
+import NextLink from 'next/link';
+import { TextLink } from '@utilitywarehouse/web-ui';
+
+[...]
+
+<NextLink href={href} passHref onClick={onClick}>
+  {/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+  <TextLink>{title}</TextLink>
+</NextLink>
+```
+
+## Props
+
+<ArgTypes of={Stories} />
+```

@@ -1,0 +1,73 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Text.stories';
+
+import { DocsHeader } from '../../storybook-utils';
+
+<Meta of={Stories} />
+
+<DocsHeader
+  componentName="Text"
+  stories={Stories}
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=38-884"
+/>
+
+<Canvas of={Stories.KitchenSink} sourceState="none" />
+
+- [Alternatives](#alternatives)
+- [Variants](#variants)
+- [Colour](#colour)
+- [Inverted colours](#inverted-colours)
+- [Text wrapping](#text-wrapping)
+- [Styles](#styles)
+- [Props](#props)
+
+## Alternatives
+
+- [Heading](?path=/docs/components-heading--documentation) - For heading-level text
+- [Strong](?path=/docs/components-strong--documentation) - For strong importance
+- [Em](?path=/docs/components-em--documentation) - For emphasis
+- [Typography](?path=/docs/components-typography--documentation) - For custom typography
+
+## Variants
+
+<Canvas of={Stories.TextVariants} />
+
+## Colour
+
+You can pass any valid string color to the `Text` component. It is recommended
+you use the `@utilitywarehouse/colour-system` package, and pass colour values
+from that into the component. The default colour is `colorsCommon.brandMidnight`
+from this package.
+
+```tsx
+import { colorsCommon } from '@utilitywarehouse/colour-system'
+
+<Text color={colorsCommon.brandPrimaryPurple}>{...}</Text>
+```
+
+## Inverted colours
+
+When inside a `Box` component that specifies a `background` which is the value
+of either `colorsCommon.brandMidnight` or `colorsCommon.brandPrimaryPurple`,
+the `Text` component colours will be changed to an inverted colour set. This
+can also be achieved using the `inverted` prop.
+
+<Canvas of={Stories.TextColour} />
+
+## Text wrapping
+
+Use the `noWrap` prop to set the text to truncate, instead of wrapping, with a
+text overflow ellipsis. Note that text overflow can only happen with block or
+inline-block level elements (the element needs to have a width in order to
+overflow).
+
+## Styles
+
+The system props are not available on the Text component, if you need custom
+typography then you can use `sx`, `styled` or the
+[Box](?path=/docs/components-box--documentation) component.
+
+## Props
+
+<ArgTypes of={Stories} />

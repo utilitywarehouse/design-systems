@@ -1,0 +1,43 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Stack.stories';
+
+import { DocsHeader } from '../../storybook-utils';
+
+<Meta of={Stories} />
+
+<DocsHeader componentName="Stack" stories={Stories} />
+
+<Canvas of={Stories.Workshop} sourceState="none" />
+
+## Alternatives
+
+- [Flex](?path=/docs/components-flex--documentation) - Prefer `Flex` for stacked layouts.
+
+## Flex vs. Stack
+
+The `Stack` component was introduced before the flexbox `gap` property was
+widely available, and was intended as an intuitive way of building consistently
+spaced layouts. It did this by adding additional margin to child components,
+which could sometimes cause problems, such as margin collapse on the child
+components.
+
+It is now possible to achieve the same layouts using the native flexbox gap
+property, and this is our preferred way of achieving these common _stacked_
+layouts. The `Stack` component will be deprecated and removed in due course.
+
+## Accessibility
+
+The `Stack` component is an all purpose component. By default, it has no
+accessibility concerns. If you use the `Stack` as a custom element, it is up to
+you to manage the resulting accessibility implications.
+
+## Implementation
+
+By default `Stack` uses margins to create space between children. You can
+change this to use the flexbox gap property with the `useFlexGap` boolean
+prop.
+
+## Props
+
+<ArgTypes of={Stories} />

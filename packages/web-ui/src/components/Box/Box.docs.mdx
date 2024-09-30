@@ -1,0 +1,59 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Box.stories';
+
+import { DocsHeader } from '../../storybook-utils';
+
+<Meta of={Stories} />
+
+<DocsHeader componentName="Box" stories={Stories} />
+
+- [Semantic HTML](#semantic-html)
+- [Accessibility](#accessibility)
+- [Contextual background colours](#contextual-background-colours)
+- [Custom Components](#custom-components)
+- [Props](#props)
+
+## Semantic HTML
+
+By default Box renders a `div` element, this can be customised using the
+`component` prop.
+
+```tsx dark
+<Box component="span">...</Box>
+```
+
+## Accessibility
+
+The `Box` component is an all purpose component. By default, it has no
+accessibility concerns. If you use the `Box` as a custom element, it is up to
+you to manage the resulting accessibility implications.
+
+## Contextual background colours
+
+There are 2 background colour props; `bgcolor` & `background`. The `background`
+prop is significant in that, when used, it provides contextual information for
+child components. This information helps to distinguish when the 2 brand
+colours, `purple` and `midnight` are used as background colours, so that child
+components can render their foreground colour appropriately.
+
+## Custom Components
+
+Box can be used to build custom components.
+
+```tsx
+const CustomAnchor = ({ onClick, href, additionalProp, ...props }: Props) => {
+  const ref = useRef<HTMLAnchorElement>(null);
+  return (
+    <Box component="a" onClick={onClick} href={href} ref={ref} {...props}>
+      Additional Prop: {additionalProp}
+    </Box>
+  );
+};
+```
+
+<Canvas of={Stories.CustomComponent} />
+
+## Props
+
+<ArgTypes of={Stories} />
