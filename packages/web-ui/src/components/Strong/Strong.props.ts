@@ -1,4 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react';
+
 import { BoxProps } from '../Box';
 
 export interface StrongProps

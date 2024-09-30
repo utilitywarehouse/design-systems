@@ -1,7 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
+
 import Divider from '@mui/material/Divider';
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+
 import { Box } from '../Box';
 import { Stack } from '../Stack';
 import { Text } from '../Text';

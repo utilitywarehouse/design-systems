@@ -1,5 +1,7 @@
 import React from 'react';
+
 import figma from '@figma/code-connect';
+
 import { Link } from './Link';
 
 figma.connect(

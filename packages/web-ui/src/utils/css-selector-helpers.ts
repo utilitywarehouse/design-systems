@@ -1,5 +1,6 @@
-import { Breakpoints } from '../types';
 import { DATA_ATTRIBUTES } from './data-attributes';
+
+import { Breakpoints } from '../types';
 
 export function classSelector(className: string) {
   return `:where(.${className})`;

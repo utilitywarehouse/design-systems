@@ -1,7 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
-import { RadioTile } from '../RadioTile';
+
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { RadioGridGroup } from './RadioGridGroup';
+
+import { RadioTile } from '../RadioTile';
 
 const meta: Meta<typeof RadioGridGroup> = {
   title: 'Web UI / Components / Radio / RadioGridGroup',

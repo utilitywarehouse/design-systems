@@ -1,5 +1,6 @@
-import { Breakpoints, Responsive } from '../types';
 import { withGlobalPrefix } from './utils';
+
+import { Breakpoints, Responsive } from '../types';
 
 /** Translates a responsive object of boolean values to a responsive object of string values. To be used with `withBreakpoints`. */
 export const translateBooleanValues = (

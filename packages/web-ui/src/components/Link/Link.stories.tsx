@@ -1,15 +1,19 @@
+import * as React from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
+
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 import {
   ChevronLeftSmallIcon,
   ChevronRightSmallIcon,
   ChevronUpSmallIcon,
 } from '@utilitywarehouse/react-icons';
-import * as React from 'react';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
+
+import { Link } from './Link';
+
 import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Text } from '../Text';
-import { Link } from './Link';
 
 const meta: Meta<typeof Link> = {
   title: 'Web UI / Components / Links / Link',

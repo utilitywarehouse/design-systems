@@ -10,7 +10,7 @@ import { Badge } from './Badge';
 import { Box } from '../Box';
 import { Flex } from '../Flex';
 
-import { Backgrounds } from '../../storybook-utils';
+import { Backgrounds } from '../../storybook-components';
 
 const variants = ['soft', 'strong', 'outline'] as const;
 const colorSchemes = ['cyan', 'green', 'red', 'gold', 'grey'] as const;

@@ -1,9 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import * as React from 'react';
+
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+
+import { Heading } from './Heading';
+
 import { Box } from '../Box';
 import { Flex } from '../Flex';
-import { Heading } from './Heading';
 
 const meta: Meta<typeof Heading> = {
   title: 'Web UI / Typography / Heading',

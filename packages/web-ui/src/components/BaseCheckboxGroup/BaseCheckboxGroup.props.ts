@@ -1,6 +1,8 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { BoxProps } from '../Box';
+
 import { BaseCheckboxGroupContextValue } from './BaseCheckboxGroup.context';
+
+import { BoxProps } from '../Box';
 
 export interface BaseCheckboxGroupProps extends ComponentPropsWithoutRef<'fieldset'> {
   name?: string;

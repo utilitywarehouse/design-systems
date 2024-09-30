@@ -1,11 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ChevronRightMediumIcon, ChevronRightSmallIcon } from '@utilitywarehouse/react-icons';
 import * as React from 'react';
+
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { ChevronRightMediumIcon, ChevronRightSmallIcon } from '@utilitywarehouse/react-icons';
+
+import { IconButton } from './IconButton';
+
 import { Box } from '../Box';
 import { Flex } from '../Flex';
 import { Heading } from '../Heading';
-import { IconButton } from './IconButton';
 
 const sizes = ['medium', 'small', 'xsmall'] as const;
 const variants = ['solid', 'outline', 'ghost'] as const;
