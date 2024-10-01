@@ -1,12 +1,8 @@
 import * as React from 'react';
 
-import { Unstyled } from '@storybook/blocks';
-import { Description } from '@storybook/blocks';
+import { Unstyled, Description } from '@storybook/blocks';
 
-import { Alert } from '../Alert';
-import { Flex } from '../Flex';
-import { Heading } from '../Heading';
-import { Link } from '../Link';
+import { Alert, Flex, Heading, Link } from '../components';
 
 interface DocsHeaderProps {
   componentName: string;
