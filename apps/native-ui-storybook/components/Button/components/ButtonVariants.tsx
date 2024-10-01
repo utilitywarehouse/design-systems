@@ -11,6 +11,7 @@ import {
   ButtonText,
   useMedia,
   Heading,
+  useColorMode,
 } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 import { Button as GSButton } from '@gluestack-ui/themed';
@@ -32,6 +33,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
   inverted,
   _backgroundColor,
 }) => {
+  const colorMode = useColorMode();
   const validScheme = colorScheme === 'cyan' || colorScheme === 'red' || colorScheme === 'green';
   const capitalisedScheme =
     (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');
@@ -41,9 +43,11 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
   const isMobile: boolean = base || xs || sm || false;
 
   const textColor =
-    _backgroundColor === 'midnight' || _backgroundColor === 'purple'
-      ? colorsCommon.brandWhite
-      : colors.cyan1000;
+    colorMode === 'light'
+      ? _backgroundColor === 'midnight' || _backgroundColor === 'purple'
+        ? colorsCommon.brandWhite
+        : colors.cyan1000
+      : undefined;
 
   return (
     <VStack space="2xl">
@@ -56,7 +60,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               pointerEvents: 'none',
             })}
       >
-        <Heading $light-color={textColor}>Solid - {capitalisedScheme}</Heading>
+        <Heading color={textColor}>Solid - {capitalisedScheme}</Heading>
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
@@ -112,7 +116,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
         </ButtonGroup>
       </Box>
       <Box>
-        <Heading $light-color={textColor}>Outline - {capitalisedScheme}</Heading>
+        <Heading color={textColor}>Outline - {capitalisedScheme}</Heading>
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
@@ -168,7 +172,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
         </ButtonGroup>
       </Box>
       <Box pb="$4">
-        <Heading $light-color={textColor}>Ghost - {capitalisedScheme}</Heading>
+        <Heading color={textColor}>Ghost - {capitalisedScheme}</Heading>
 
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">

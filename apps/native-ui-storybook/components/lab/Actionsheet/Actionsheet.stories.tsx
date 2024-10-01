@@ -107,7 +107,7 @@ const KeyboardAvoidWithSnap: StoryFn = () => {
                   />
                 </Box>
                 <VStack flex={1}>
-                  <Text fontWeight="$bold">Mastercard</Text>
+                  <Text bold>Mastercard</Text>
                   <Text>Card ending in 2345</Text>
                 </VStack>
               </HStack>
@@ -142,15 +142,17 @@ const WithScrollView: StoryFn = () => {
               <ActionsheetDragIndicator />
             </ActionsheetDragIndicatorWrapper>
             <ActionsheetScrollView>
-              <Heading textAlign="center" mb="$4">
-                Out of range reading
-              </Heading>
-              <Text mb="$6">
-                The number that was entered was too high or too low for what we&apos;d expect based
-                on past readings and your typical energy usage. This normally suggests an error when
-                the reading was submitted. In some cases, the reading may still be used after
-                investigation.
-              </Text>
+              <Box mb="$4">
+                <Heading textAlign="center">Out of range reading</Heading>
+              </Box>
+              <Box mb="$6">
+                <Text>
+                  The number that was entered was too high or too low for what we&apos;d expect
+                  based on past readings and your typical energy usage. This normally suggests an
+                  error when the reading was submitted. In some cases, the reading may still be used
+                  after investigation.
+                </Text>
+              </Box>
               <Button onPress={handleClose}>
                 <ButtonText>Close</ButtonText>
               </Button>

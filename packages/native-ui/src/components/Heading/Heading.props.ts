@@ -1,17 +1,14 @@
-import type { TextProps as RNTextProps, TextStyle } from 'react-native';
+import type { TextProps, TextStyle } from 'react-native';
 import type { ColorValue } from '../../core/types';
 
-interface TextProps extends RNTextProps {
-  size?: 'xs' | 'sm' | 'md';
-  highlight?: boolean;
+interface HeadingProps extends TextProps {
+  size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   strikeThrough?: boolean;
   underline?: boolean;
   truncated?: boolean;
-  bold?: boolean;
-  italic?: boolean;
   color?: ColorValue;
   textTransform?: TextStyle['textTransform'];
   textAlign?: TextStyle['textAlign'];
 }
 
-export default TextProps;
+export default HeadingProps;

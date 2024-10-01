@@ -2,7 +2,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { VStack, IconButton, ButtonGroup, Box, Heading } from '@utilitywarehouse/native-ui';
+import {
+  VStack,
+  IconButton,
+  ButtonGroup,
+  Box,
+  Heading,
+  useColorMode,
+} from '@utilitywarehouse/native-ui';
 import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
 import React, { ComponentProps } from 'react';
 import { VariantTitle } from '../../../docs/components';
@@ -21,19 +28,22 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
   inverted,
   _backgroundColor,
 }) => {
+  const colorMode = useColorMode();
   const capitalisedScheme =
     (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');
   const textColor =
-    _backgroundColor === 'midnight' || _backgroundColor === 'purple'
-      ? colorsCommon.brandWhite
-      : colors.cyan1000;
+    colorMode === 'light'
+      ? _backgroundColor === 'midnight' || _backgroundColor === 'purple'
+        ? colorsCommon.brandWhite
+        : colors.cyan1000
+      : undefined;
 
   return (
     <VStack space="2xl">
       <Box>
-        <Heading $light-color={textColor} mb="$2">
-          Solid - {capitalisedScheme}
-        </Heading>
+        <Box mb="$2">
+          <Heading color={textColor}>Solid - {capitalisedScheme}</Heading>
+        </Box>
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <IconButton
@@ -78,9 +88,9 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
         </ButtonGroup>
       </Box>
       <Box>
-        <Heading $light-color={textColor} mb="$2">
-          Outline - {capitalisedScheme}
-        </Heading>
+        <Box mb="$2">
+          <Heading color={textColor}>Outline - {capitalisedScheme}</Heading>
+        </Box>
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <IconButton
@@ -125,9 +135,9 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
         </ButtonGroup>
       </Box>
       <Box>
-        <Heading $light-color={textColor} mb="$2">
-          Ghost - {capitalisedScheme}
-        </Heading>
+        <Box mb="$2">
+          <Heading color={textColor}>Ghost - {capitalisedScheme}</Heading>
+        </Box>
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <IconButton

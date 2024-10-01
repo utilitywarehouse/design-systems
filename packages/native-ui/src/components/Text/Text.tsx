@@ -23,6 +23,7 @@ const Text: React.FC<TextProps> = ({
   italic,
   highlight,
   textTransform,
+  textAlign,
   ...props
 }) => {
   const {
@@ -46,12 +47,14 @@ const Text: React.FC<TextProps> = ({
             ellipsizeMode: 'tail',
           }
         : {})}
-      style={[styles.text, styles.extraStyles(colorValue, textTransform), props.style]}
+      style={[styles.text, styles.extraStyles(colorValue, textTransform, textAlign), props.style]}
     >
       {children}
     </RNText>
   );
 };
+
+Text.displayName = 'Text';
 
 const stylesheet = createStyleSheet(
   ({ colors, fontSizes, fontWeights, fonts, letterSpacings, lineHeights }) => ({
@@ -103,9 +106,14 @@ const stylesheet = createStyleSheet(
         },
       },
     },
-    extraStyles: (color: TextProps['color'], textTransform: TextProps['textTransform']) => ({
+    extraStyles: (
+      color: TextProps['color'],
+      textTransform: TextProps['textTransform'],
+      textAlign: TextProps['textAlign']
+    ) => ({
       color,
       textTransform,
+      textAlign,
     }),
   })
 );

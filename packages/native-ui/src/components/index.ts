@@ -10,6 +10,7 @@ export * from './Badge';
 export * from './Checkbox';
 export * from './Radio';
 export * from './Text';
+export * from './Heading';
 
 // Gluestack UI
 export {
@@ -22,7 +23,6 @@ export {
 } from '@gluestack-ui/themed';
 
 export { BadgeIcon } from '@gluestack-ui/themed';
-export { Heading } from '@gluestack-ui/themed';
 export {
   /**
    * @deprecated
