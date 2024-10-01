@@ -33,7 +33,7 @@ const StyledElement = styled('a', {
     padding: 0,
   },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  textTransform: textTransform,
+  textTransform: textTransform as any,
   cursor: 'pointer',
   display: 'inline',
   ':has(svg, [data-icon])': {

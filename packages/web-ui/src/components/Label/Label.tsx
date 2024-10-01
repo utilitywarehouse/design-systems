@@ -46,7 +46,7 @@ export const Label = React.forwardRef<
   return (
     <StyledElement
       ref={ref}
-      component={component}
+      as={component}
       data-disabled={disabled ? '' : undefined}
       data-nested={nested ? '' : undefined}
       data-disable-user-select={disableUserSelect ? '' : undefined}

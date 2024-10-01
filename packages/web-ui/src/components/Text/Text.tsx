@@ -58,7 +58,7 @@ const StyledElement = styled('p', {
   return {
     fontFamily: fonts.secondary,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    textTransform: textTransform,
+    textTransform: textTransform as any,
     fontSize: 'var(--text-font-size)',
     lineHeight: 'var(--text-line-height)',
     fontWeight: 'var(--text-font-weight)',

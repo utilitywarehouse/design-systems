@@ -61,7 +61,7 @@ const StyledElement = styled('a', {
 
   return {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    textTransform: textTransform,
+    textTransform: textTransform as any,
     // unset button styles when asChild is used
     ':where(button)': {
       outline: 'transparent',

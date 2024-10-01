@@ -1,5 +1,7 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
+import type { TextProps } from '../Text';
+
 import type { Responsive } from '../../types';
 
 export interface LinkProps extends ComponentPropsWithoutRef<'a'> {
