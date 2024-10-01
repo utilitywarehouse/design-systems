@@ -17,7 +17,7 @@ export default defineConfig([
     entry: [
       './src/**/*.ts?(x)',
       '!src/**/*.stories.*',
-      '!src/storybook-utils',
+      '!src/storybook-components',
       '!src/**/*.figma.tsx',
     ],
     tsconfig: path.join(__dirname, './tsconfig.build.json'),

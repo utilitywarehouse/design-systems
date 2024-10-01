@@ -1,0 +1,15 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Fieldset.stories';
+
+import { DocsHeader } from '../../storybook-components';
+
+<Meta of={Stories} />
+
+<DocsHeader componentName="Fieldset" stories={Stories} />
+
+<Canvas of={Stories.Workshop} sourceState="none" />
+
+## Props
+
+<ArgTypes of={Stories} />

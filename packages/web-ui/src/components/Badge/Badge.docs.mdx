@@ -1,0 +1,90 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Badge.stories';
+
+import { DocsHeader } from '../../storybook-components';
+
+<Meta of={Stories} />
+
+<DocsHeader
+  componentName="Badge"
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=904-9379"
+  stories={Stories}
+/>
+
+<Canvas of={Stories.Workshop} sourceState="none" />
+
+- [Variants](#variants)
+- [Color schemes](#color-schemes)
+- [Compact](#compact)
+- [Bottom radius](#bottom-radius)
+- [Contextual colour](#contextual-colour)
+- [Props](#props)
+
+## Variants
+
+The variant prop controls the visual appearance of the Badge.
+
+<Canvas of={Stories.Variants} />
+
+```tsx
+<Badge variant="soft">Badge</Badge>
+<Badge variant="strong">Badge</Badge>
+<Badge variant="outline">Badge</Badge>
+```
+
+## Color schemes
+
+The `colorScheme` prop will change the Badge colours.
+
+<Canvas of={Stories.ColorSchemes} />
+
+## Compact
+
+This prop will render a more compact Badge.
+
+```tsx
+<Badge compact>Compact badge</Badge>
+```
+
+This prop is responsive, so you can set the value according to breakpoint values.
+
+```tsx
+<Badge compact={{ mobile: true, desktop: false }}>Responsive badge padding</Badge>
+```
+
+## Bottom radius
+
+The `bottomRadiusZero` will remove the `border-bottom-right-radius` and `border-bottom-left-radius`, for use when the badge is positioned on top of another element.
+
+```tsx
+<Badge bottomRadiusZero>Multi SIM offer</Badge>
+```
+
+<Canvas of={Stories.BottomRadiusZero} />
+
+## Contextual colour
+
+When an `outline` variant Badge is inside a `Box` component that specifies a
+`background` which is the value of either `colorsCommon.brandMidnight` or
+`colorsCommon.brandPrimaryPurple`, the `Badge` will render the colour scheme
+differently so as to be visible on the darker background. This can also be
+achieved using the `inverted` prop on the Badge component.
+
+> This only applies to the `outline` variant, and will have no effect on the other variants.
+
+```tsx
+<Box background={colors.brandMidnight}>
+  <Badge variant="outline">{...}</Badge>
+</Box>
+
+[...]
+
+<Badge inverted variant="outline">{...}</Badge>
+```
+
+<Canvas of={Stories.ContextualColour} />
+
+## Props
+
+<ArgTypes of={Stories} />

@@ -1,4 +1,5 @@
 import { createStyled } from '@mui/system';
+
 import { Theme, theme as defaultTheme } from './theme';
 
 /**
