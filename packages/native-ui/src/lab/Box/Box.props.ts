@@ -1,46 +1,11 @@
-import type { DimensionValue, ViewProps, ViewStyle, AnimatableNumericValue } from 'react-native';
-import { lightTheme } from '../../core/themes';
-
-type addPrefixToObject<T, P extends string> = {
-  [K in keyof T as K extends string | number ? `${P}${K}` : never]: T[K];
-};
-
-export type SpaceValue =
-  | keyof addPrefixToObject<(typeof lightTheme)['space'], '$'>
-  | DimensionValue
-  | undefined;
-
-type RGB = `rgb(${number}, ${number}, ${number})`;
-type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`;
-type HEX = `#${string}`;
-type HSLA = `hsla(${string})`;
-type HSL = `hsl(${string})`;
-
-export type ColorValue =
-  | 'currentColor'
-  | 'transparent'
-  | keyof addPrefixToObject<(typeof lightTheme)['colors'], '$'>
-  | HSLA
-  | HSL
-  | RGB
-  | RGBA
-  | HEX
-  | undefined;
-
-export type RadiiValue =
-  | keyof addPrefixToObject<(typeof lightTheme)['radii'], '$'>
-  | AnimatableNumericValue
-  | undefined;
-
-export type BordeWidthValue =
-  | keyof addPrefixToObject<(typeof lightTheme)['borderWidths'], '$'>
-  | number
-  | undefined;
-
-export type OpacityValue =
-  | keyof addPrefixToObject<(typeof lightTheme)['opacity'], '$'>
-  | AnimatableNumericValue
-  | undefined;
+import type { ViewProps, ViewStyle } from 'react-native';
+import type {
+  BordeWidthValue,
+  ColorValue,
+  OpacityValue,
+  RadiiValue,
+  SpaceValue,
+} from '../../core/types';
 
 interface BoxProps
   extends Omit<

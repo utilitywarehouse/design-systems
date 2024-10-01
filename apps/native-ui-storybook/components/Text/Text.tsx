@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text } from '@utilitywarehouse/native-ui';
-import { Meta, StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
+import { colors } from '@utilitywarehouse/colour-system';
+import { ColorValue } from '@utilitywarehouse/native-ui/core/types';
 
 const TextBasic: StoryFn<{
   size: 'xs' | 'sm' | 'md';
@@ -10,9 +12,10 @@ const TextBasic: StoryFn<{
   italic: boolean;
   underline: boolean;
   strikeThrough: boolean;
+  color: ColorValue;
 }> = ({ ...props }) => {
   return (
-    <Text {...props}>
+    <Text {...props} color={`$${props.color?.replace('$', '')}` as ColorValue}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
@@ -58,7 +61,12 @@ TextBasic.argTypes = {
     control: 'boolean',
     description: 'Strike through the text.',
   },
-} as Meta<typeof Text>['argTypes'];
+  color: {
+    options: [...Object.keys(colors)],
+    control: 'select',
+    description: 'Color of the text. Use the color name from the theme.',
+  },
+};
 
 TextBasic.args = {
   size: 'md',
@@ -68,6 +76,7 @@ TextBasic.args = {
   italic: false,
   underline: false,
   strikeThrough: false,
-} as Meta<typeof Text>['args'];
+  color: 'grey1000' as ColorValue,
+};
 
 export default TextBasic;
