@@ -104,9 +104,9 @@ const stylesheet = createStyleSheet(({ colors, fontSizes, fontWeights, fonts, li
     textTransform: HeadingProps['textTransform'],
     textAlign: HeadingProps['textAlign']
   ) => ({
-    color,
-    textTransform,
-    textAlign,
+    ...(color ? { color } : {}),
+    ...(textTransform ? { textTransform } : {}),
+    ...(textAlign ? { textAlign } : {}),
   }),
 }));
 

@@ -1,11 +1,12 @@
 import type { ViewStyle } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
+import type { ColorValue } from '../../core/types';
 
 interface IconProps extends SvgProps {
   height?: number | string;
   width?: number | string;
   fill?: string;
-  color?: string;
+  color?: ColorValue;
   size?: number | string;
   stroke?: string;
   as?: React.ElementType;

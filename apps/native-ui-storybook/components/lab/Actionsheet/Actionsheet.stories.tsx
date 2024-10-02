@@ -26,7 +26,7 @@ const ActionsheetBasic: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
-    <Box h={96 * 4} alignItems="center" justifyContent="center">
+    <Box h="$96" alignItems="center" justifyContent="center">
       <Button onPress={handleClose}>
         <ButtonText>Open</ButtonText>
       </Button>
@@ -70,7 +70,7 @@ const KeyboardAvoidWithSnap: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
-    <Box h={96 * 4} alignItems="center" justifyContent="center">
+    <Box h="$96" alignItems="center" justifyContent="center">
       <Button onPress={handleClose}>
         <ButtonText>Open</ButtonText>
       </Button>
@@ -123,7 +123,7 @@ const WithScrollView: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
-    <Box h={96 * 4} alignItems="center" justifyContent="center">
+    <Box h="$96" alignItems="center" justifyContent="center">
       <Button onPress={handleClose}>
         <ButtonText>Open</ButtonText>
       </Button>
