@@ -1,8 +1,10 @@
+import type { ComponentPropsWithoutRef } from 'react';
+
 export const ORIENTATIONS = ['horizontal', 'vertical'] as const;
 
 export type Orientation = (typeof ORIENTATIONS)[number];
 
-export interface DividerProps extends React.ComponentPropsWithoutRef<'hr'> {
+export interface DividerProps extends ComponentPropsWithoutRef<'hr'> {
   /**
    * @default horizontal
    */
