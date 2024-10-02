@@ -30,13 +30,15 @@ const options = program.opts();
 const templatesPath = '../templates';
 const componentTemplatePath = `${templatesPath}/component.tsx`;
 const propsTemplatePath = `${templatesPath}/props.ts`;
+const docsTemplatePath = `${templatesPath}/docs.mdx`;
+const storiesTemplatePath = `${templatesPath}/stories.tsx`;
 
-console.log('templates: ', templatesPath);
-console.log('component template: ', componentTemplatePath);
 // Get all of our file paths worked out, for the user's project.
 const componentDir = path.resolve(__dirname, '..', options.dir, componentName);
 const componentFilePath = `${componentDir}/${componentName}.tsx`;
 const propsFilePath = `${componentDir}/${componentName}.props.ts`;
+const docsFilePath = `${componentDir}/${componentName}.docs.mdx`;
+const storiesFilePath = `${componentDir}/${componentName}.stories.tsx`;
 const indexFilePath = `${componentDir}/index.ts`;
 
 // Our index template is super straightforward, so we'll just inline it for now.
@@ -83,10 +85,7 @@ mkDirPromise(componentDir)
     return template;
   })
   .then(() => readFilePromiseRelative(propsTemplatePath))
-  .then(template =>
-    // Replace our placeholders with real data (so far, just the component name)
-    template.replace(/COMPONENT_NAME/g, componentName)
-  )
+  .then(template => template.replace(/COMPONENT_NAME/g, componentName))
   .then(template => writeFilePromise(propsFilePath, template))
   .then(template => {
     logItemCompletion('Props file built and saved to disk.');
@@ -98,6 +97,20 @@ mkDirPromise(componentDir)
   )
   .then(template => {
     logItemCompletion('Index file built and saved to disk.');
+    return template;
+  })
+  .then(() => readFilePromiseRelative(docsTemplatePath))
+  .then(template => template.replace(/COMPONENT_NAME/g, componentName))
+  .then(template => writeFilePromise(docsFilePath, template))
+  .then(template => {
+    logItemCompletion('Docs file built and saved to disk.');
+    return template;
+  })
+  .then(() => readFilePromiseRelative(storiesTemplatePath))
+  .then(template => template.replace(/COMPONENT_NAME/g, componentName))
+  .then(template => writeFilePromise(storiesFilePath, template))
+  .then(template => {
+    logItemCompletion('Stories file built and saved to disk.');
     return template;
   })
   .then(() => {
