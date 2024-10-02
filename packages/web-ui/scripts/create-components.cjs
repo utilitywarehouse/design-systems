@@ -5,40 +5,20 @@ const path = require('path');
 const { program } = require('commander');
 
 const {
-  getConfig,
   createParentDirectoryIfNecessary,
   logIntro,
   logItemCompletion,
   logConclusion,
   logError,
 } = require('./helpers.cjs');
-const {
-  requireOptional,
-  mkDirPromise,
-  readFilePromiseRelative,
-  writeFilePromise,
-} = require('./utils.cjs');
-
-// Load our package.json, so that we can pass the version onto `commander`.
-const { version } = require('../package.json');
-
-// Get the default config for this component (looks for local/global overrides,
-// falls back to sensible defaults).
-const config = getConfig();
+const { mkDirPromise, readFilePromiseRelative, writeFilePromise } = require('./utils.cjs');
 
 program
-  .version(version)
   .arguments('<componentName>')
-  .option(
-    '-l, --lang <language>',
-    'Which language to use (default: "js")',
-    /^(js|ts)$/i,
-    config.lang
-  )
   .option(
     '-d, --dir <pathToDirectory>',
     'Path to the "components" directory (default: "src/components")',
-    config.dir
+    'src/components'
   )
   .parse(process.argv);
 
@@ -46,28 +26,26 @@ const [componentName] = program.args;
 
 const options = program.opts();
 
-const fileExtension = options.lang === 'js' ? 'js' : 'tsx';
-const indexExtension = options.lang === 'js' ? 'js' : 'ts';
-
 // Find the path to the selected template file.
-const templatePath = `../templates/${options.lang}.js`;
+const templatesPath = '../templates';
+const componentTemplatePath = `${templatesPath}/component.tsx`;
+const propsTemplatePath = `${templatesPath}/props.ts`;
 
+console.log('templates: ', templatesPath);
+console.log('component template: ', componentTemplatePath);
 // Get all of our file paths worked out, for the user's project.
-const componentDir = `${options.dir}/${componentName}`;
-const filePath = `${componentDir}/${componentName}.${fileExtension}`;
-const indexPath = `${componentDir}/index.${indexExtension}`;
+const componentDir = path.resolve(__dirname, '..', options.dir, componentName);
+const componentFilePath = `${componentDir}/${componentName}.tsx`;
+const propsFilePath = `${componentDir}/${componentName}.props.ts`;
+const indexFilePath = `${componentDir}/index.ts`;
 
 // Our index template is super straightforward, so we'll just inline it for now.
 const indexTemplate = `\
-export * from './${componentName}';
-export { default } from './${componentName}';
+export { ${componentName} } from './${componentName}';
+export type { ${componentName}Props } from './${componentName}.props';
 `;
 
-logIntro({
-  name: componentName,
-  dir: componentDir,
-  lang: options.lang,
-});
+logIntro({ name: componentName, dir: componentDir });
 
 // Check if componentName is provided
 if (!componentName) {
@@ -90,7 +68,7 @@ if (fs.existsSync(fullPathToComponentDir)) {
 
 // Start by creating the directory that our component lives in.
 mkDirPromise(componentDir)
-  .then(() => readFilePromiseRelative(templatePath))
+  .then(() => readFilePromiseRelative(componentTemplatePath))
   .then(template => {
     logItemCompletion('Directory created.');
     return template;
@@ -99,20 +77,30 @@ mkDirPromise(componentDir)
     // Replace our placeholders with real data (so far, just the component name)
     template.replace(/COMPONENT_NAME/g, componentName)
   )
-  .then(template => writeFilePromise(filePath, template))
+  .then(template => writeFilePromise(componentFilePath, template))
   .then(template => {
     logItemCompletion('Component built and saved to disk.');
     return template;
   })
+  .then(() => readFilePromiseRelative(propsTemplatePath))
   .then(template =>
+    // Replace our placeholders with real data (so far, just the component name)
+    template.replace(/COMPONENT_NAME/g, componentName)
+  )
+  .then(template => writeFilePromise(propsFilePath, template))
+  .then(template => {
+    logItemCompletion('Props file built and saved to disk.');
+    return template;
+  })
+  .then(() =>
     // We also need the `index.js` file, which allows easy importing.
-    writeFilePromise(indexPath, indexTemplate)
+    writeFilePromise(indexFilePath, indexTemplate)
   )
   .then(template => {
     logItemCompletion('Index file built and saved to disk.');
     return template;
   })
-  .then(template => {
+  .then(() => {
     logConclusion();
   })
   .catch(err => {
