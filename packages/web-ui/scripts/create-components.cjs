@@ -13,6 +13,12 @@ const {
 } = require('./helpers.cjs');
 const { mkDirPromise, readFilePromiseRelative, writeFilePromise } = require('./utils.cjs');
 
+/**
+ *
+ * This script has been copied from https://github.com/joshwcomeau/new-component and updated to suit our needs. Thankyou Josh!
+ *
+ */
+
 program
   .arguments('<componentName>')
   .option(
