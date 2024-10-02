@@ -555,9 +555,15 @@ importers:
       '@vercel/analytics':
         specifier: ^1.3.1
         version: 1.3.1(react@18.2.0)
+      chalk:
+        specifier: '4'
+        version: 4.1.2
       chromatic:
         specifier: ^11.3.5
         version: 11.3.5
+      commander:
+        specifier: '10'
+        version: 10.0.1
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
@@ -8057,10 +8063,10 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.4.0-alpha.2(storybook@7.6.20):
-    resolution: {integrity: sha512-TyvQBVBcvKOq/KOVAEGQVLf33kAB+TJuB7DpEp2R7IIoLxpVcMnOn8yVlWF4QYabLvYW6aqxLu8FIFPBqMFiKg==}
+  /@storybook/client-logger@8.4.0-alpha.3(storybook@7.6.20):
+    resolution: {integrity: sha512-MRJ5fxZlAUWETQ7ezr992MLvuqdlOhf0mekqS9osZyNbMPStuV4pozF5ri06D23s4JBAgj5Lr3aEbGglQsUUFg==}
     peerDependencies:
-      storybook: ^8.4.0-alpha.2
+      storybook: ^8.4.0-alpha.3
     dependencies:
       storybook: 7.6.20
     dev: true
@@ -8283,10 +8289,10 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.4.0-alpha.2(storybook@7.6.20):
-    resolution: {integrity: sha512-QTg6/2zZ26rkNKX1Sx3NhU41sCG1sH2ozgEMHB4sfG15/AMcuC0dbKJKvwkuu2rscK7FzHHqRE6ncoUjQMk+lA==}
+  /@storybook/instrumenter@8.4.0-alpha.3(storybook@7.6.20):
+    resolution: {integrity: sha512-lPpWGIzt0KqRqIU/tKroIKBuQufcHty8K8YVj5VhILQ981TULoTGRthXLchyRkjUZbR4sIxuOWt+sV7abvHb8Q==}
     peerDependencies:
-      storybook: ^8.4.0-alpha.2
+      storybook: ^8.4.0-alpha.3
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.1.1
@@ -8853,8 +8859,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1(storybook@7.6.20):
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.4.0-alpha.2(storybook@7.6.20)
-      '@storybook/instrumenter': 8.4.0-alpha.2(storybook@7.6.20)
+      '@storybook/client-logger': 8.4.0-alpha.3(storybook@7.6.20)
+      '@storybook/instrumenter': 8.4.0-alpha.3(storybook@7.6.20)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
