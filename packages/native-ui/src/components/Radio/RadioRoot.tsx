@@ -1,16 +1,39 @@
-import React from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import type { InterfaceRadio } from '@gluestack-ui/radio/src/types';
-import { Pressable, PressableProps } from 'react-native';
 
-const RadioRoot: React.FC<InterfaceRadio & PressableProps> = ({ children, style, ...props }) => {
+import { Pressable, ViewStyle } from 'react-native';
+import type RadioProps from './Radio.props';
+import { RadioContext } from './Radio.context';
+import { useRadioGroupContext } from './RadioGroup.context';
+import { PressableRef } from '../../types';
+
+const RadioRoot = forwardRef<
+  PressableRef,
+  RadioProps & { states?: { disabled?: boolean; checked?: boolean } }
+>(({ children, style, states, ...props }, ref) => {
   const { styles } = useStyles(stylesheet);
-  return (
-    <Pressable {...props} style={[styles.container, style]}>
-      {children}
-    </Pressable>
+  const { disabled, checked } = states ?? {};
+
+  const isDisabled = useRadioGroupContext()?.disabled ?? disabled;
+
+  const value = useMemo(
+    () => ({
+      disabled: isDisabled,
+      checked,
+    }),
+    [isDisabled, checked]
   );
-};
+
+  return (
+    <RadioContext.Provider value={value}>
+      <Pressable ref={ref} {...props} style={[styles.container, style as ViewStyle]}>
+        {children}
+      </Pressable>
+    </RadioContext.Provider>
+  );
+});
+
+RadioRoot.displayName = 'RadioRoot';
 
 const stylesheet = createStyleSheet(({ space }) => ({
   container: {

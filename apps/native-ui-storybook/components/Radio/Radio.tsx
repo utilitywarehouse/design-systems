@@ -3,9 +3,9 @@ import { RadioGroup, Radio, RadioIndicator, RadioLabel } from '@utilitywarehouse
 import { StoryFn } from '@storybook/react';
 
 const RadioBasic: StoryFn<{
-  isDisabled: boolean;
-  _RadioLabel: string;
-}> = ({ isDisabled, _RadioLabel: label }) => {
+  disabled: boolean;
+  label: string;
+}> = ({ disabled, label }) => {
   return (
     <>
       <RadioGroup>
@@ -16,33 +16,30 @@ const RadioBasic: StoryFn<{
             console.log(isChecked, '###');
           }}
           nativeID="Radio-1"
-          isDisabled={isDisabled}
-        >
-          <RadioIndicator />
-          {!!label && <RadioLabel>{label}</RadioLabel>}
-        </Radio>
+          disabled={disabled}
+          label={label}
+        />
       </RadioGroup>
     </>
   );
 };
 
 RadioBasic.argTypes = {
-  isDisabled: {
+  disabled: {
     type: 'boolean',
     control: 'boolean',
     description: 'To manually set disable to the Radio.',
   },
-  _RadioLabel: {
+  label: {
     type: 'string',
     control: 'text',
-    description:
-      'The label component for the Radio.\n _Note: this is not a prop of the `Radio` component, just a representation of the `RadioLabel` component for the Storybook playground._',
+    description: 'The label component for the Radio.',
   },
 };
 
 RadioBasic.args = {
-  isDisabled: false,
-  _RadioLabel: '',
+  disabled: false,
+  label: '',
 };
 
 export default RadioBasic;

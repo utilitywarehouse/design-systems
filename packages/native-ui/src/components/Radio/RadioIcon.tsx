@@ -1,27 +1,32 @@
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, forwardRef } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Icon } from '../Icon';
-import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
+import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { CircleIcon } from '../Icons';
+import { useRadioContext } from './Radio.context';
+import type { SvgRef } from '../../types';
 
-const RadioIcon: React.FC<
-  ComponentProps<typeof Icon> & {
-    disabled?: boolean;
-    style?: ComponentProps<typeof Icon>['style'] & { color?: ColorValue };
-  }
-> = ({ style, ...props }) => {
+const RadioIcon = forwardRef<SvgRef, ComponentProps<typeof Icon>>(({ style, ...props }, ref) => {
+  const { disabled } = useRadioContext();
   const { styles } = useStyles(stylesheet, {
-    disabled: props.disabled,
+    disabled,
   });
 
   return (
     <Icon
+      ref={ref}
       as={CircleIcon}
       {...props}
-      style={{ ...styles.container, ...(style ? Object(style) : {}) } as StyleProp<ViewStyle>}
+      style={
+        Platform.OS === 'web'
+          ? ({ ...styles.container, ...(style ? Object(style) : {}) } as StyleProp<ViewStyle>)
+          : [styles.container, style]
+      }
     />
   );
-};
+});
+
+RadioIcon.displayName = 'RadioIcon';
 
 const stylesheet = createStyleSheet(({ radii, colors, colorMode }) => ({
   container: {

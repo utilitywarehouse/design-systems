@@ -66,10 +66,8 @@ The Radio component presents users with predefined choices and enables them to s
             console.log(isSelected, '###');
           }}
           nativeID="Radio-1"
-        >
-          <RadioIndicator />
-          <RadioLabel>Option 1</RadioLabel>
-        </Radio>
+          label="Option 1"
+        />
         <Radio
           value="Label 2"
           aria-label="Label 2"
@@ -77,10 +75,8 @@ The Radio component presents users with predefined choices and enables them to s
             console.log(isSelected, '###');
           }}
           nativeID="Radio-2"
-        >
-          <RadioIndicator />
-          <RadioLabel>Option 2</RadioLabel>
-        </Radio>
+          label="Option 2"
+        />
       </RadioGroup>
     </Center>
   </NativeUIProvider>
@@ -100,10 +96,8 @@ const MyComponent = () => {
           console.log(isSelected, '###');
         }}
         nativeID="Radio-1"
-      >
-        <RadioIndicator />
-        <RadioLabel>Option 1</RadioLabel>
-      </Radio>
+        label="Option 1"
+      />
       <Radio
         value="Option 2"
         aria-label="Option 2"
@@ -111,10 +105,8 @@ const MyComponent = () => {
           console.log(isSelected, '###');
         }}
         nativeID="Radio-2"
-      >
-        <RadioIndicator />
-        <RadioLabel>Option 2</RadioLabel>
-      </Radio>
+        label="Option 2"
+      />
     </RadioGroup>
   );
 };
@@ -122,13 +114,11 @@ const MyComponent = () => {
 
 ## Props
 
-| Property        | Type     | Default | Description                                                                                          |
-| --------------- | -------- | ------- | ---------------------------------------------------------------------------------------------------- |
-| value           | string   | -       | The value to be used in the radio input. This is the value that will be returned on form submission. |
-| onChange        | function | -       | Function called when the state of the radio changes.                                                 |
-| isDisabled      | bool     | false   | To manually set disable to the radio.                                                                |
-| isHovered       | bool     | false   | To manually set hover to the radio.                                                                  |
-| isIndeterminate | bool     | false   | To manually set indeterminate to the radio.                                                          |
+| Property | Type     | Default | Description                                                                                          |
+| -------- | -------- | ------- | ---------------------------------------------------------------------------------------------------- |
+| value    | string   | -       | The value to be used in the radio input. This is the value that will be returned on form submission. |
+| onChange | function | -       | Function called when the state of the radio changes.                                                 |
+| disabled | bool     | false   | To manually set disable to the radio.                                                                |
 
 ## Components
 
@@ -152,11 +142,11 @@ Contains all Label related layout style props and actions. It inherits all the p
 
 Contains all Group related layout style props and actions. It inherits all the properties of React Native's View component.
 
-| Property   | Type     | Default | Description                                                         |
-| ---------- | -------- | ------- | ------------------------------------------------------------------- |
-| value      | string   | -       | The value of the radio group.                                       |
-| onChange   | function | -       | The callback fired when any children Radio is checked or unchecked. |
-| isReadOnly | bool     | false   | To manually set read-only to the radio group.                       |
+| Property | Type     | Default | Description                                                         |
+| -------- | -------- | ------- | ------------------------------------------------------------------- |
+| value    | string   | -       | The value of the radio group.                                       |
+| onChange | function | -       | The callback fired when any children Radio is checked or unchecked. |
+| disabled | bool     | -       | To manually set disable to the radio group.                         |
 
 ## Variants
 

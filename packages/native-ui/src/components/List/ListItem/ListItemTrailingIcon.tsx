@@ -4,10 +4,10 @@ import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { useListItemContext } from './ListItem.context';
 import { Icon } from '../../Icon';
-import type { SvfRef } from '../../../types';
+import type { SvgRef } from '../../../types';
 
 const ListItemTrailingIcon = forwardRef<
-  SvfRef,
+  SvgRef,
   ComponentProps<typeof Icon> & { as?: ComponentType }
 >(({ children, ...props }, ref) => {
   const { disabled, showPressed } = useListItemContext();

@@ -1,20 +1,23 @@
-import React from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { View, ViewProps } from 'react-native';
+import React, { forwardRef, useMemo } from 'react';
+import { RadioGroup as RadioGroupComponent } from './Radio';
+import RadioGroupProps from './RadioGroup.props';
+import { RadioGroupContext } from './RadioGroup.context';
+import { View } from 'react-native';
 
-const RadioGroup: React.FC<ViewProps> = ({ children, style, ...props }) => {
-  const { styles } = useStyles(stylesheet);
-  return (
-    <View {...props} style={[styles.container, style]}>
-      {children}
-    </View>
-  );
-};
+const RadioGroup = forwardRef<View, RadioGroupProps>(
+  ({ children, disabled, readonly, ...props }, ref) => {
+    const value = useMemo(() => ({ disabled }), [disabled]);
+    return (
+      <RadioGroupContext.Provider value={value}>
+        {/* @ts-expect-error - ref is not a valid prop for view */}
+        <RadioGroupComponent ref={ref} {...props} isDisabled={disabled} isReadOnly={readonly}>
+          {children}
+        </RadioGroupComponent>
+      </RadioGroupContext.Provider>
+    );
+  }
+);
 
-const stylesheet = createStyleSheet(({ space }) => ({
-  container: {
-    gap: space[2],
-  },
-}));
+RadioGroup.displayName = 'RadioGroup';
 
 export default RadioGroup;
