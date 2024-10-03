@@ -1,20 +1,5 @@
-import Svg from 'react-native-svg';
-import { breakpoints } from './breakpoints';
-import { darkTheme, lightTheme } from './themes';
-import type { DimensionValue, AnimatableNumericValue, Pressable } from 'react-native';
-import type { ElementRef } from 'react';
-
-export type AppBreakpoints = typeof breakpoints;
-
-export type AppThemes = {
-  light: typeof lightTheme;
-  dark: typeof darkTheme;
-};
-
-declare module 'react-native-unistyles' {
-  export interface UnistylesBreakpoints extends AppBreakpoints {}
-  export interface UnistylesThemes extends AppThemes {}
-}
+import { AnimatableNumericValue, DimensionValue } from 'react-native';
+import { lightTheme } from '../core/themes';
 
 export type addPrefixToObject<T, P extends string> = {
   [K in keyof T as K extends string | number ? `${P}${K}` : never]: T[K];
@@ -56,6 +41,3 @@ export type OpacityValue =
   | keyof addPrefixToObject<(typeof lightTheme)['opacity'], '$'>
   | AnimatableNumericValue
   | undefined;
-
-export type SvfRef = ElementRef<typeof Svg>;
-export type PressableRef = ElementRef<typeof Pressable>;

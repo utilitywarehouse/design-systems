@@ -5,7 +5,7 @@ import type {
   OpacityValue,
   RadiiValue,
   SpaceValue,
-} from '../../core/types';
+} from '../../types';
 
 interface BoxProps
   extends Omit<

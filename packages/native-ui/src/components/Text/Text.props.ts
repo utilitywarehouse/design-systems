@@ -1,5 +1,5 @@
 import type { TextProps as RNTextProps, TextStyle } from 'react-native';
-import type { ColorValue } from '../../core/types';
+import type { ColorValue } from '../../types';
 
 interface TextProps extends RNTextProps {
   size?: 'xs' | 'sm' | 'md';

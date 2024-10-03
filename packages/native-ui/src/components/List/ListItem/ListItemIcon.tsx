@@ -4,7 +4,7 @@ import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { useListItemContext } from './ListItem.context';
 import { Icon } from '../../Icon';
-import { SvfRef } from '../../../core/types';
+import type { SvfRef } from '../../../types';
 
 const ListItemIcon = forwardRef<SvfRef, ComponentProps<typeof Icon> & { as?: ComponentType }>(
   ({ children, ...props }, ref) => {

@@ -6,7 +6,7 @@ import { useListContext } from '../List.context';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Pressable, ViewStyle } from 'react-native';
 import { IListItemContext, ListItemContext } from './ListItem.context';
-import { PressableRef } from '../../../core/types';
+import type { PressableRef } from '../../../types';
 import ListItemContent from './ListItemContent';
 import ListItemLeadingContent from './ListItemLeadingContent';
 import ListItemText from './ListItemText';

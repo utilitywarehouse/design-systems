@@ -1,16 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo } from 'react';
 import { Text } from 'react-native';
 import type HeadingProps from './Heading.props';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { ColorValue } from '../../core';
-
-const getValue = (value: any, type: Record<string, any>) =>
-  typeof value === 'string' && value[0] === '$' ? type?.[value?.slice(1) ?? ''] : value;
+import type { ColorValue } from '../../types';
+import getStyleValue from '../../utils/getStyleValue';
 
 const Heading: React.FC<HeadingProps> = ({
   children,
@@ -31,7 +27,7 @@ const Heading: React.FC<HeadingProps> = ({
     underline,
     strikeThrough,
   });
-  const colorValue: ColorValue = useMemo(() => getValue(color, colors), [color, colorMode]);
+  const colorValue: ColorValue = useMemo(() => getStyleValue(color, colors), [color, colorMode]);
   return (
     <Text
       {...props}
