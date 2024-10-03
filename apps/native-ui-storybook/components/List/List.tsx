@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
-  Box,
   IconButton,
   List,
   ListItem,
   ListItemIcon,
   ListItemTrailingIcon,
+  useColorMode,
 } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const ListBasic: StoryFn<{
   container: 'full' | 'card';
@@ -38,6 +39,7 @@ const ListBasic: StoryFn<{
   loading,
   _numberOfItems,
 }) => {
+  const colorMode = useColorMode();
   // @ts-expect-error - This is a playground
   const icon = _icon === 'none' ? undefined : Icons[_icon];
   // @ts-expect-error - This is a playground
@@ -63,7 +65,11 @@ const ListBasic: StoryFn<{
       headingSupportingText={headingSupportingText}
     >
       {container === 'card' && (
-        <Box borderRadius="$xl" backgroundColor="$grey50" $dark-bg="$darkGrey50" overflow="hidden">
+        <Box
+          borderRadius="$xl"
+          backgroundColor={colorMode === 'light' ? '$grey50' : '$grey50'}
+          overflow="hidden"
+        >
           {listItems}
         </Box>
       )}

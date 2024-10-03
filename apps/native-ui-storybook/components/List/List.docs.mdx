@@ -32,8 +32,7 @@ import {
   ElectricityMediumIcon,
   GasMediumIcon,
 } from '@utilitywarehouse/react-native-icons';
-import { CheckboxList } from './components';
-import RadioList from './components/RadioList';
+import { CheckboxList, BadgeList, RadioList } from './components';
 
 <Meta of={Stories} />
 
@@ -114,6 +113,12 @@ const MyComponent = () => (
 | text           | string |         | The text to display in the heading of the list.            |
 | supportingText | string |         | The supporting text to display in the heading of the list. |
 
+#### `ListHeading` parts
+
+### `ListHeadingText`
+
+### `ListHeadingSupportingText`
+
 ### `ListItem`
 
 | Name            | Type       | Default | Description                                                     |
@@ -127,7 +132,7 @@ const MyComponent = () => (
 | loading         | boolean    | false   | Whether to show the list item in loading state.                 |
 | divider         | boolean    | false   | Whether to display a divider below the list item.               |
 
-#### List Item parts
+#### `ListItem` parts
 
 ### `ListItemLeadingContent`
 
@@ -302,48 +307,7 @@ parts like `ListItemLeadingContent`, `ListItemContent`, and `ListItemTrailingCon
 
 <Canvas>
   <NativeUIProvider>
-    <List>
-      <ListItem onPress={() => console.log('pressed')} divider>
-        <ListItemLeadingContent>
-          <Box padding="$3" borderRadius="$lg" bg="$apple50" $dark-bg="$darkApple800">
-            <ListItemIcon
-              as={ElectricityMediumIcon}
-              color="$apple800"
-              $dark-color="$darkApple200"
-            />
-          </Box>
-        </ListItemLeadingContent>
-        <ListItemContent>
-          <ListItemText>Electricity</ListItemText>
-          <Badge colorScheme="cyan" size="small">
-            <BadgeText>Text</BadgeText>
-          </Badge>
-          <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
-        </ListItemContent>
-        <ListItemTrailingContent>
-          <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
-        </ListItemTrailingContent>
-      </ListItem>
-      <ListItem onPress={() => console.log('pressed')} divider={false}>
-        <ListItemLeadingContent>
-          <Box padding="$3" borderRadius="$lg" bg="$apple50" $dark-bg="$darkApple800">
-            <ListItemIcon as={GasMediumIcon} color="$apple800" $dark-color="$darkApple200" />
-          </Box>
-        </ListItemLeadingContent>
-        <ListItemContent>
-          <HStack justifyContent="space-between">
-            <ListItemText>Electricity</ListItemText>
-            <Badge colorScheme="green" size="small">
-              <BadgeText>Smart meter</BadgeText>
-            </Badge>
-          </HStack>
-          <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
-        </ListItemContent>
-        <ListItemTrailingContent>
-          <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
-        </ListItemTrailingContent>
-      </ListItem>
-    </List>
+    <BadgeList />
   </NativeUIProvider>
 </Canvas>
 
@@ -360,51 +324,74 @@ import {
   ListItemContent,
   Badge,
   BadgeText,
-  Box,
   HStack,
+  useColorMode,
 } from '@utilitywarehouse/native-ui';
-import { ElectricityMediumIcon, GasMediumIcon } from '@utilitywarehouse/react-native-icons';
 
-const MyComponent = () => (
-  <List>
-    <ListItem onPress={() => console.log('pressed')} divider>
-      <ListItemLeadingContent>
-        <Box padding="$3" borderRadius="$lg" bg="$apple50" $dark-bg="$darkApple800">
-          <ListItemIcon as={ElectricityMediumIcon} color="$apple800" $dark-color="$darkApple200" />
-        </Box>
-      </ListItemLeadingContent>
-      <ListItemContent>
-        <ListItemText>Electricity</ListItemText>
-        <Badge colorScheme="cyan" size="small">
-          <BadgeText>Text</BadgeText>
-        </Badge>
-        <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
-      </ListItemContent>
-      <ListItemTrailingContent>
-        <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
-      </ListItemTrailingContent>
-    </ListItem>
-    <ListItem onPress={() => console.log('pressed')} divider={false}>
-      <ListItemLeadingContent>
-        <Box padding="$3" borderRadius="$lg" bg="$apple50" $dark-bg="$darkApple800">
-          <ListItemIcon as={GasMediumIcon} color="$apple800" $dark-color="$darkApple200" />
-        </Box>
-      </ListItemLeadingContent>
-      <ListItemContent>
-        <HStack justifyContent="space-between">
+import {
+  ChevronRight01MediumIcon,
+  ElectricityMediumIcon,
+  GasMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+import { Box } from '@utilitywarehouse/native-ui/lab';
+
+const BadgeList = () => {
+  const colorMode = useColorMode();
+  return (
+    <List>
+      <ListItem onPress={() => console.log('pressed')} divider>
+        <ListItemLeadingContent>
+          <Box
+            padding="$3"
+            borderRadius="$lg"
+            bg={colorMode === 'light' ? '$apple50' : '$apple800'}
+          >
+            <ListItemIcon
+              as={ElectricityMediumIcon}
+              color={colorMode === 'light' ? '$apple800' : '$apple200'}
+            />
+          </Box>
+        </ListItemLeadingContent>
+        <ListItemContent>
           <ListItemText>Electricity</ListItemText>
-          <Badge colorScheme="green" size="small">
-            <BadgeText>Smart meter</BadgeText>
+          <Badge colorScheme="cyan" size="small">
+            <BadgeText>Text</BadgeText>
           </Badge>
-        </HStack>
-        <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
-      </ListItemContent>
-      <ListItemTrailingContent>
-        <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
-      </ListItemTrailingContent>
-    </ListItem>
-  </List>
-);
+          <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
+        </ListItemContent>
+        <ListItemTrailingContent>
+          <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+        </ListItemTrailingContent>
+      </ListItem>
+      <ListItem onPress={() => console.log('pressed')} divider={false}>
+        <ListItemLeadingContent>
+          <Box
+            padding="$3"
+            borderRadius="$lg"
+            bg={colorMode === 'light' ? '$apple50' : '$apple800'}
+          >
+            <ListItemIcon
+              as={GasMediumIcon}
+              color={colorMode === 'light' ? '$apple800' : '$apple200'}
+            />
+          </Box>
+        </ListItemLeadingContent>
+        <ListItemContent>
+          <HStack justifyContent="space-between">
+            <ListItemText>Electricity</ListItemText>
+            <Badge colorScheme="green" size="small">
+              <BadgeText>Smart meter</BadgeText>
+            </Badge>
+          </HStack>
+          <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
+        </ListItemContent>
+        <ListItemTrailingContent>
+          <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
+        </ListItemTrailingContent>
+      </ListItem>
+    </List>
+  );
+};
 ```
 
 ### Checbox List
@@ -511,9 +498,11 @@ import {
   RadioGroup,
   RadioIndicator,
   Image,
-  Box,
   useColorMode,
 } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const RadioList = () => {
   const [value, setValue] = React.useState<string>();
@@ -522,75 +511,77 @@ const RadioList = () => {
   const handlePress = (item: string) => {
     setValue(item);
   };
+
   return (
-    <RadioGroup aria-label="Radio Group" nativeID="Radio-group" value={value}>
-      <List container="card">
-        <Box
-          borderRadius="$xl"
-          backgroundColor="$white"
-          $dark-backgroundColor="$darkGrey175"
-          overflow="hidden"
-        >
-          <ListItem
-            text="**** 5016"
-            supportingText="Expires 12/24"
-            divider
-            leadingContent={
-              <Image
-                source={{ uri: `/images/paymentMethods/visa/card${capitalize(colorMode)}.svg` }}
-                width={56}
-                height={42}
-              />
-            }
-            trailingContent={
-              <Radio value="option1" aria-label="Label 1">
-                <RadioIndicator />
-              </Radio>
-            }
-            onPress={() => handlePress('option1')}
-          />
-          <ListItem
-            text="**** 3786"
-            supportingText="Expires 04/27"
-            leadingContent={
-              <Image
-                source={{
-                  uri: `/images/paymentMethods/mastercard/card${capitalize(colorMode)}.svg`,
-                }}
-                width={56}
-                height={42}
-              />
-            }
-            divider
-            trailingContent={
-              <Radio value="option2" aria-label="Label 2">
-                <RadioIndicator />
-              </Radio>
-            }
-            onPress={() => handlePress('option2')}
-          />
-          <ListItem
-            text="**** 1234"
-            supportingText="Expires 06/25"
-            leadingContent={
-              <Image
-                source={{
-                  uri: `/images/paymentMethods/mastercard/card${capitalize(colorMode)}.svg`,
-                }}
-                width={56}
-                height={42}
-              />
-            }
-            trailingContent={
-              <Radio value="option3" aria-label="Label 3">
-                <RadioIndicator />
-              </Radio>
-            }
-            onPress={() => handlePress('option3')}
-          />
-        </Box>
-      </List>
-    </RadioGroup>
+    <Box p="$4" backgroundColor={colorMode === 'light' ? '#F2F2F2' : '$grey25'}>
+      <RadioGroup aria-label="Radio Group" nativeID="Radio-group" value={value}>
+        <List container="card">
+          <Box
+            borderRadius="$xl"
+            backgroundColor={colorMode === 'light' ? '$white' : '$grey175'}
+            overflow="hidden"
+          >
+            <ListItem
+              text="**** 5016"
+              supportingText="Expires 12/24"
+              divider
+              leadingContent={
+                <Image
+                  source={{ uri: `/images/paymentMethods/visa/card${capitalize(colorMode)}.svg` }}
+                  width={56}
+                  height={42}
+                />
+              }
+              trailingContent={
+                <Radio value="option1" aria-label="Label 1">
+                  <RadioIndicator />
+                </Radio>
+              }
+              onPress={() => handlePress('option1')}
+            />
+            <ListItem
+              text="**** 3786"
+              supportingText="Expires 04/27"
+              leadingContent={
+                <Image
+                  source={{
+                    uri: `/images/paymentMethods/mastercard/card${capitalize(colorMode)}.svg`,
+                  }}
+                  width={56}
+                  height={42}
+                />
+              }
+              divider
+              trailingContent={
+                <Radio value="option2" aria-label="Label 2">
+                  <RadioIndicator />
+                </Radio>
+              }
+              onPress={() => handlePress('option2')}
+            />
+            <ListItem
+              text="**** 1234"
+              supportingText="Expires 06/25"
+              leadingContent={
+                <Image
+                  source={{
+                    uri: `/images/paymentMethods/mastercard/card${capitalize(colorMode)}.svg`,
+                  }}
+                  width={56}
+                  height={42}
+                />
+              }
+              trailingContent={
+                <Radio value="option3" aria-label="Label 3">
+                  <RadioIndicator />
+                </Radio>
+              }
+              onPress={() => handlePress('option3')}
+            />
+          </Box>
+        </List>
+      </RadioGroup>
+    </Box>
   );
 };
 ```

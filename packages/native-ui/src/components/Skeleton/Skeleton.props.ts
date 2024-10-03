@@ -1,11 +1,10 @@
-import type { ComponentProps } from 'react';
-import type { Root } from './styled-components';
+import type { DimensionValue, ViewProps } from 'react-native';
+import type { ColorValue } from '../../types';
 
-type RootProps = ComponentProps<typeof Root>;
-
-interface SkeletonProps extends RootProps {
-  width: RootProps['width'];
-  height: RootProps['height'];
+interface SkeletonProps extends ViewProps {
+  width: DimensionValue;
+  height: DimensionValue;
+  backgroundColor?: ColorValue;
 }
 
 export default SkeletonProps;

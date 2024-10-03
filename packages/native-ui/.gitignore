@@ -3,5 +3,7 @@ build
 /lab/
 /core/
 /unstyled/
+/types/
+/utils/
 !/src/lab/
 !/src/components/unstyled/

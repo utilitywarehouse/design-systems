@@ -4,7 +4,6 @@ import { View, ViewProps } from 'react-native';
 
 const RadioGroup: React.FC<ViewProps> = ({ children, style, ...props }) => {
   const { styles } = useStyles(stylesheet);
-  console.log(props);
   return (
     <View {...props} style={[styles.container, style]}>
       {children}

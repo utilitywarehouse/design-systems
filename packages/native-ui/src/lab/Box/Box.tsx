@@ -1,15 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { memo, useMemo } from 'react';
 import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import type BoxProps from './Box.props';
-
-const getValue = (value: any, type: Record<string, any>) =>
-  typeof value === 'string' && value[0] === '$' ? type?.[value?.slice(1) ?? ''] : value;
+import getStyleValue from '../../utils/getStyleValue';
 
 const Box: React.FC<BoxProps> = ({
   alignContent,
@@ -134,31 +130,31 @@ const Box: React.FC<BoxProps> = ({
 
   const spaceValues = useMemo(
     () => ({
-      padding: getValue(padding || p, space),
-      paddingHorizontal: getValue(paddingHorizontal || px, space),
-      paddingVertical: getValue(paddingVertical || py, space),
-      paddingTop: getValue(paddingTop || pt, space),
-      paddingBottom: getValue(paddingBottom || pb, space),
-      paddingLeft: getValue(paddingLeft || pl, space),
-      paddingRight: getValue(paddingRight || pr, space),
-      paddingEnd: getValue(paddingEnd, space),
-      paddingStart: getValue(paddingStart, space),
-      margin: getValue(m || margin, space),
-      marginHorizontal: getValue(marginHorizontal || mx, space),
-      marginVertical: getValue(marginVertical || my, space),
-      marginTop: getValue(marginTop || mt, space),
-      marginBottom: getValue(marginBottom || mb, space),
-      marginLeft: getValue(marginLeft || ml, space),
-      marginRight: getValue(marginRight || mr, space),
-      marginEnd: getValue(marginEnd, space),
-      marginStart: getValue(marginStart, space),
-      columnGap: getValue(columnGap, space),
-      gap: getValue(gap, space),
-      rowGap: getValue(rowGap, space),
-      height: getValue(height || h, space),
-      width: getValue(width || w, space),
-      maxHeight: getValue(maxHeight, space),
-      maxWidth: getValue(maxWidth, space),
+      padding: getStyleValue(padding || p, space),
+      paddingHorizontal: getStyleValue(paddingHorizontal || px, space),
+      paddingVertical: getStyleValue(paddingVertical || py, space),
+      paddingTop: getStyleValue(paddingTop || pt, space),
+      paddingBottom: getStyleValue(paddingBottom || pb, space),
+      paddingLeft: getStyleValue(paddingLeft || pl, space),
+      paddingRight: getStyleValue(paddingRight || pr, space),
+      paddingEnd: getStyleValue(paddingEnd, space),
+      paddingStart: getStyleValue(paddingStart, space),
+      margin: getStyleValue(m || margin, space),
+      marginHorizontal: getStyleValue(marginHorizontal || mx, space),
+      marginVertical: getStyleValue(marginVertical || my, space),
+      marginTop: getStyleValue(marginTop || mt, space),
+      marginBottom: getStyleValue(marginBottom || mb, space),
+      marginLeft: getStyleValue(marginLeft || ml, space),
+      marginRight: getStyleValue(marginRight || mr, space),
+      marginEnd: getStyleValue(marginEnd, space),
+      marginStart: getStyleValue(marginStart, space),
+      columnGap: getStyleValue(columnGap, space),
+      gap: getStyleValue(gap, space),
+      rowGap: getStyleValue(rowGap, space),
+      height: getStyleValue(height || h, space),
+      width: getStyleValue(width || w, space),
+      maxHeight: getStyleValue(maxHeight, space),
+      maxWidth: getStyleValue(maxWidth, space),
     }),
     [
       padding,
@@ -201,23 +197,24 @@ const Box: React.FC<BoxProps> = ({
       width,
       w,
       maxHeight,
+      maxWidth,
     ]
   );
 
   const colorValues = useMemo(
     () => ({
-      backgroundColor: getValue(backgroundColor || bg || bgColor, colors),
-      borderColor: getValue(borderColor, colors),
-      borderBottomColor: getValue(borderBottomColor, colors),
-      borderLeftColor: getValue(borderLeftColor, colors),
-      borderRightColor: getValue(borderRightColor, colors),
-      borderTopColor: getValue(borderTopColor, colors),
-      borderBlockColor: getValue(borderBlockColor, colors),
-      borderBlockEndColor: getValue(borderBlockEndColor, colors),
-      borderBlockStartColor: getValue(borderBlockStartColor, colors),
-      borderEndColor: getValue(borderEndColor, colors),
-      borderStartColor: getValue(borderStartColor, colors),
-      shadowColor: getValue(shadowColor, colors),
+      backgroundColor: getStyleValue(backgroundColor || bg || bgColor, colors),
+      borderColor: getStyleValue(borderColor, colors),
+      borderBottomColor: getStyleValue(borderBottomColor, colors),
+      borderLeftColor: getStyleValue(borderLeftColor, colors),
+      borderRightColor: getStyleValue(borderRightColor, colors),
+      borderTopColor: getStyleValue(borderTopColor, colors),
+      borderBlockColor: getStyleValue(borderBlockColor, colors),
+      borderBlockEndColor: getStyleValue(borderBlockEndColor, colors),
+      borderBlockStartColor: getStyleValue(borderBlockStartColor, colors),
+      borderEndColor: getStyleValue(borderEndColor, colors),
+      borderStartColor: getStyleValue(borderStartColor, colors),
+      shadowColor: getStyleValue(shadowColor, colors),
     }),
     [
       backgroundColor,
@@ -239,19 +236,19 @@ const Box: React.FC<BoxProps> = ({
 
   const radiusValues = useMemo(
     () => ({
-      borderRadius: getValue(borderRadius || rounded, radii),
-      borderBottomEndRadius: getValue(borderBottomEndRadius, radii),
-      borderBottomLeftRadius: getValue(borderBottomLeftRadius, radii),
-      borderBottomRightRadius: getValue(borderBottomRightRadius, radii),
-      borderBottomStartRadius: getValue(borderBottomStartRadius, radii),
-      borderTopEndRadius: getValue(borderTopEndRadius, radii),
-      borderTopLeftRadius: getValue(borderTopLeftRadius, radii),
-      borderTopRightRadius: getValue(borderTopRightRadius, radii),
-      borderTopStartRadius: getValue(borderTopStartRadius, radii),
-      borderEndEndRadius: getValue(borderEndEndRadius, radii),
-      borderEndStartRadius: getValue(borderEndStartRadius, radii),
-      borderStartEndRadius: getValue(borderStartEndRadius, radii),
-      borderStartStartRadius: getValue(borderStartStartRadius, radii),
+      borderRadius: getStyleValue(borderRadius || rounded, radii),
+      borderBottomEndRadius: getStyleValue(borderBottomEndRadius, radii),
+      borderBottomLeftRadius: getStyleValue(borderBottomLeftRadius, radii),
+      borderBottomRightRadius: getStyleValue(borderBottomRightRadius, radii),
+      borderBottomStartRadius: getStyleValue(borderBottomStartRadius, radii),
+      borderTopEndRadius: getStyleValue(borderTopEndRadius, radii),
+      borderTopLeftRadius: getStyleValue(borderTopLeftRadius, radii),
+      borderTopRightRadius: getStyleValue(borderTopRightRadius, radii),
+      borderTopStartRadius: getStyleValue(borderTopStartRadius, radii),
+      borderEndEndRadius: getStyleValue(borderEndEndRadius, radii),
+      borderEndStartRadius: getStyleValue(borderEndStartRadius, radii),
+      borderStartEndRadius: getStyleValue(borderStartEndRadius, radii),
+      borderStartStartRadius: getStyleValue(borderStartStartRadius, radii),
     }),
     [
       borderRadius,
@@ -273,13 +270,13 @@ const Box: React.FC<BoxProps> = ({
 
   const borderValues = useMemo(
     () => ({
-      borderBottomWidth: getValue(borderBottomWidth, borderWidths),
-      borderEndWidth: getValue(borderEndWidth, borderWidths),
-      borderLeftWidth: getValue(borderLeftWidth, borderWidths),
-      borderRightWidth: getValue(borderRightWidth, borderWidths),
-      borderStartWidth: getValue(borderStartWidth, borderWidths),
-      borderTopWidth: getValue(borderTopWidth, borderWidths),
-      borderWidth: getValue(borderWidth, borderWidths),
+      borderBottomWidth: getStyleValue(borderBottomWidth, borderWidths),
+      borderEndWidth: getStyleValue(borderEndWidth, borderWidths),
+      borderLeftWidth: getStyleValue(borderLeftWidth, borderWidths),
+      borderRightWidth: getStyleValue(borderRightWidth, borderWidths),
+      borderStartWidth: getStyleValue(borderStartWidth, borderWidths),
+      borderTopWidth: getStyleValue(borderTopWidth, borderWidths),
+      borderWidth: getStyleValue(borderWidth, borderWidths),
     }),
     [
       borderBottomWidth,
@@ -292,7 +289,7 @@ const Box: React.FC<BoxProps> = ({
     ]
   );
 
-  const opacityValue = useMemo(() => getValue(opacity, themeOpacity), [opacity]);
+  const opacityValue = useMemo(() => getStyleValue(opacity, themeOpacity), [opacity]);
 
   const boxStyles = useMemo(
     () =>

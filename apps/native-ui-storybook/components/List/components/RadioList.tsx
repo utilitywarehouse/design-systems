@@ -6,9 +6,9 @@ import {
   RadioGroup,
   RadioIndicator,
   Image,
-  Box,
   useColorMode,
 } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -21,13 +21,12 @@ const RadioList = () => {
   };
 
   return (
-    <Box p="$4" backgroundColor="#F2F2F2" $dark-backgroundColor="$darkGrey25">
+    <Box p="$4" backgroundColor={colorMode === 'light' ? '#F2F2F2' : '$grey25'}>
       <RadioGroup aria-label="Radio Group" nativeID="Radio-group" value={value}>
         <List container="card">
           <Box
             borderRadius="$xl"
-            backgroundColor="$white"
-            $dark-backgroundColor="$darkGrey175"
+            backgroundColor={colorMode === 'light' ? '$white' : '$grey175'}
             overflow="hidden"
           >
             <ListItem

@@ -1,7 +1,6 @@
-import type { ComponentProps } from 'react';
-import type { Root } from './styled-components';
+import type { ViewProps } from 'react-native';
 
-interface ListProps extends ComponentProps<typeof Root> {
+interface ListProps extends ViewProps {
   container?: 'full' | 'card';
   headingText?: string;
   headingSupportingText?: string;

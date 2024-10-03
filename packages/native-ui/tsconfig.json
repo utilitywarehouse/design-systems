@@ -11,7 +11,7 @@
   "paths": {
     "react-native": [
       "node_modules/react-native/"
-    ]
+    ],
   },
   "compilerOptions": {
     "ignoreDeprecations": "5.0",
@@ -21,7 +21,6 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": true,
     "esModuleInterop": true,
-    "importsNotUsedAsValues": "error",
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "lib": [
