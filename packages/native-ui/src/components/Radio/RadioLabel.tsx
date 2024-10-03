@@ -13,7 +13,6 @@ const RadioLabel: React.FC<TextProps & { readonly dataSet?: States }> = ({
     checked: states?.checked,
     disabled: states?.disabled,
   });
-  console.log('label', props);
   return (
     <Text {...props} style={[styles.text, style]}>
       {children}

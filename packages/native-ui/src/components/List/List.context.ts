@@ -2,8 +2,8 @@ import { createContext, useContext } from 'react';
 import type ListProps from './List.props';
 
 export const ListContext = createContext<
-  Pick<ListProps, 'loading' | 'disabled' | 'divider' | 'container'>
->({});
+  Pick<ListProps, 'loading' | 'disabled' | 'divider' | 'container'> | undefined
+>(undefined);
 
 export const useListContext = () => {
   const context = useContext(ListContext);

@@ -8,8 +8,8 @@ import ListHeadingProps from './ListHeading.props';
 
 const ListHeading = forwardRef<View, ListHeadingProps>(
   ({ text, supportingText, children, style, ...props }, ref) => {
-    const { container } = useListContext();
-    const { styles } = useStyles(stylesheet, { container });
+    const listContext = useListContext();
+    const { styles } = useStyles(stylesheet, { container: listContext?.container });
 
     return (
       <View ref={ref} {...props} style={[styles.container, style]}>

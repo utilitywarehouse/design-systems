@@ -405,8 +405,8 @@ importers:
         specifier: workspace:^
         version: link:../colour-system
       '@utilitywarehouse/react-native-icons':
-        specifier: 1.6.0
-        version: 1.6.0(react-native-svg@14.1.0)(react-native@0.74.5)(react@18.2.0)
+        specifier: 1.10.0
+        version: 1.10.0(react-native-svg@14.1.0)(react-native@0.74.5)(react@18.2.0)
       react-dom:
         specifier: '>=16'
         version: 18.2.0(react@18.2.0)
@@ -414,8 +414,8 @@ importers:
         specifier: '>=13.4.0'
         version: 14.1.0(react-native@0.74.5)(react@18.2.0)
       react-native-unistyles:
-        specifier: ^2.9.2
-        version: 2.9.2(@react-native/normalize-colors@0.74.87)(react-native-web@0.19.12)(react-native@0.74.5)(react@18.2.0)
+        specifier: '>=2.9.0 <3.0.0'
+        version: 2.9.1(@react-native/normalize-colors@0.74.87)(react-native-web@0.19.12)(react-native@0.74.5)(react@18.2.0)
     devDependencies:
       '@babel/preset-env':
         specifier: ^7.24.8
@@ -11009,10 +11009,10 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.4.0-alpha.2(storybook@7.6.20):
-    resolution: {integrity: sha512-TyvQBVBcvKOq/KOVAEGQVLf33kAB+TJuB7DpEp2R7IIoLxpVcMnOn8yVlWF4QYabLvYW6aqxLu8FIFPBqMFiKg==}
+  /@storybook/client-logger@8.4.0-alpha.3(storybook@7.6.20):
+    resolution: {integrity: sha512-MRJ5fxZlAUWETQ7ezr992MLvuqdlOhf0mekqS9osZyNbMPStuV4pozF5ri06D23s4JBAgj5Lr3aEbGglQsUUFg==}
     peerDependencies:
-      storybook: ^8.4.0-alpha.2
+      storybook: ^8.4.0-alpha.3
     dependencies:
       storybook: 7.6.20
     dev: true
@@ -11325,10 +11325,10 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.4.0-alpha.2(storybook@7.6.20):
-    resolution: {integrity: sha512-QTg6/2zZ26rkNKX1Sx3NhU41sCG1sH2ozgEMHB4sfG15/AMcuC0dbKJKvwkuu2rscK7FzHHqRE6ncoUjQMk+lA==}
+  /@storybook/instrumenter@8.4.0-alpha.3(storybook@7.6.20):
+    resolution: {integrity: sha512-lPpWGIzt0KqRqIU/tKroIKBuQufcHty8K8YVj5VhILQ981TULoTGRthXLchyRkjUZbR4sIxuOWt+sV7abvHb8Q==}
     peerDependencies:
-      storybook: ^8.4.0-alpha.2
+      storybook: ^8.4.0-alpha.3
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.0.5
@@ -12107,8 +12107,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1(storybook@7.6.20):
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.4.0-alpha.2(storybook@7.6.20)
-      '@storybook/instrumenter': 8.4.0-alpha.2(storybook@7.6.20)
+      '@storybook/client-logger': 8.4.0-alpha.3(storybook@7.6.20)
+      '@storybook/instrumenter': 8.4.0-alpha.3(storybook@7.6.20)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
@@ -12995,8 +12995,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@utilitywarehouse/react-native-icons@1.6.0(react-native-svg@14.1.0)(react-native@0.74.5)(react@18.2.0):
-    resolution: {integrity: sha512-ot6oh/cjwON6hDPaKASdfXLKe31YLsPIV/zo1xfolDhx4siY+iWSPmd4hrUygZCMoR5xv/BQEaA5HCZM6riRFA==}
+  /@utilitywarehouse/react-native-icons@1.10.0(react-native-svg@14.1.0)(react-native@0.74.5)(react@18.2.0):
+    resolution: {integrity: sha512-ObwO2T471fj7gnjj/PUg8d/sFHB3H84uRFR6YeEzC+X1feLMo006942jk4fz5enSrifhhCaMzJ8r8nrjYY3EAQ==}
     peerDependencies:
       react: '>=18.1.0'
       react-native: '>=0.70.6'
@@ -21998,8 +21998,8 @@ packages:
       react-native-web: 0.19.11(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /react-native-unistyles@2.9.2(@react-native/normalize-colors@0.74.87)(react-native-web@0.19.12)(react-native@0.74.5)(react@18.2.0):
-    resolution: {integrity: sha512-eAK4akGbQj/5rd6co+XhPp817mX8MXvzHEkqs/nLP8jn+KvY4Z1V6ef0OJ9wUtn9YY/yiRuL1h7wvqP/RocV4A==}
+  /react-native-unistyles@2.9.1(@react-native/normalize-colors@0.74.87)(react-native-web@0.19.12)(react-native@0.74.5)(react@18.2.0):
+    resolution: {integrity: sha512-MG+yPPHEvDuGJgXWoIEm9NcA3BEo4hK2wigvN5W4tCN8CwWwQHv4JyBBGXvF0RCQZq8qwPcfGQBdfEkfjURamA==}
     engines: {node: '>= 18.0.0'}
     peerDependencies:
       '@react-native/normalize-colors': '*'
