@@ -6,10 +6,7 @@ import { createStyleSheet, type UnistylesValues, useStyles } from 'react-native-
 import type { BaseButtonProps } from './Button.props';
 import { Icon } from '../Icon';
 
-const ButtonIcon: FC<ComponentProps<typeof Icon> & { as?: ComponentType }> = ({
-  children,
-  ...props
-}) => {
+const ButtonIcon: FC<ComponentProps<typeof Icon>> = ({ children, ...props }) => {
   const { colorScheme, variant, inverted, disabled } = useButtonContext();
   const { styles } = useStyles(stylesheet);
   return (

@@ -1,5 +1,12 @@
 import React from 'react';
-import { Radio, RadioGroup, RadioIndicator, RadioLabel, VStack } from '@utilitywarehouse/native-ui';
+import {
+  Radio,
+  RadioGroup,
+  RadioIcon,
+  RadioIndicator,
+  RadioLabel,
+  VStack,
+} from '@utilitywarehouse/native-ui';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { VariantTitle } from '../../docs/components';
 
@@ -23,7 +30,9 @@ const RadioGroupBasic = () => {
             }}
             nativeID="Radio-1"
           >
-            <RadioIndicator />
+            <RadioIndicator>
+              <RadioIcon />
+            </RadioIndicator>
             <RadioLabel>Option 1</RadioLabel>
           </Radio>
           <Radio
@@ -34,7 +43,9 @@ const RadioGroupBasic = () => {
             }}
             nativeID="Radio-2"
           >
-            <RadioIndicator />
+            <RadioIndicator>
+              <RadioIcon />
+            </RadioIndicator>
             <RadioLabel>Option 2</RadioLabel>
           </Radio>
         </RadioGroup>
@@ -45,26 +56,28 @@ const RadioGroupBasic = () => {
           value={value}
           onChange={setValue}
           nativeID="Radio-group"
-          isDisabled
+          disabled
         >
           <Radio
             aria-label="Option 3"
             value="Option 1"
-            isDisabled
             onChange={(isChecked: boolean) => console.log(isChecked, '###')}
             nativeID="Radio-3"
           >
-            <RadioIndicator />
+            <RadioIndicator>
+              <RadioIcon />
+            </RadioIndicator>
             <RadioLabel>Option 1</RadioLabel>
           </Radio>
           <Radio
             aria-label="Option 4"
             value="Option 2"
-            isDisabled
             onChange={(isChecked: boolean) => console.log(isChecked, '###')}
             nativeID="Radio-4"
           >
-            <RadioIndicator />
+            <RadioIndicator>
+              <RadioIcon />
+            </RadioIndicator>
             <RadioLabel>Option 2</RadioLabel>
           </Radio>
         </RadioGroup>

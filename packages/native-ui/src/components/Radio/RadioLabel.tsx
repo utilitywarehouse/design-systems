@@ -1,24 +1,21 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Text, TextProps } from 'react-native';
-import { States } from '../../types';
 
-const RadioLabel: React.FC<TextProps & { readonly dataSet?: States }> = ({
-  children,
-  style,
-  dataSet: states,
-  ...props
-}) => {
+import { useRadioContext } from './Radio.context';
+
+const RadioLabel = forwardRef<Text, TextProps>(({ children, style, ...props }, ref) => {
+  const { checked, disabled } = useRadioContext();
   const { styles } = useStyles(stylesheet, {
-    checked: states?.checked,
-    disabled: states?.disabled,
+    checked,
+    disabled,
   });
   return (
-    <Text {...props} style={[styles.text, style]}>
+    <Text ref={ref} {...props} style={[styles.text, style]}>
       {children}
     </Text>
   );
-};
+});
 
 const stylesheet = createStyleSheet(({ lineHeights, fontSizes, fonts, fontWeights, colors }) => ({
   text: {

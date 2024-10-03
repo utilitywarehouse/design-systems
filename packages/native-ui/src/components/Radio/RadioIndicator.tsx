@@ -1,27 +1,23 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import AnimatedOutline from '../AnimatedOutline';
 import { useListContext } from '../List';
 import { View, ViewProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { RadioIcon } from './Radio';
-import { States } from '../../types';
+import { useRadioContext } from './Radio.context';
 
-const RadioIndicator: React.FC<
-  ViewProps & {
-    readonly states?: States;
-  }
-> = props => {
-  const { states } = props;
+const RadioIndicator = forwardRef<View, ViewProps>((props, ref) => {
   const [show, setShow] = React.useState(false);
   const isInList = Boolean(useListContext());
+  const { disabled, checked } = useRadioContext();
   const { styles } = useStyles(stylesheet, {
-    checked: states?.checked,
-    disabled: states?.disabled,
+    checked,
+    disabled,
   });
 
   return (
-    <AnimatedOutline show={isInList || states?.disabled ? false : show}>
+    <AnimatedOutline show={isInList || disabled ? false : show}>
       <View
+        ref={ref}
         {...props}
         onTouchStart={() => setShow(true)}
         onTouchEnd={() => setTimeout(() => setShow(false), 250)}
@@ -29,11 +25,11 @@ const RadioIndicator: React.FC<
         onPointerDown={() => setShow(true)}
         style={[styles.container, props.style]}
       >
-        {props.children ? props.children : <RadioIcon disabled={states?.disabled} />}
+        {props.children}
       </View>
     </AnimatedOutline>
   );
-};
+});
 
 const stylesheet = createStyleSheet(({ colors, colorMode, radii, borderWidths, space }) => ({
   container: {
