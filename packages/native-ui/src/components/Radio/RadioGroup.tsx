@@ -9,7 +9,7 @@ const RadioGroup = forwardRef<View, RadioGroupProps>(
     const value = useMemo(() => ({ disabled }), [disabled]);
     return (
       <RadioGroupContext.Provider value={value}>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - ref is not a valid prop for view */}
         <RadioGroupComponent ref={ref} {...props} isDisabled={disabled} isReadOnly={readonly}>
           {children}
         </RadioGroupComponent>
@@ -17,5 +17,7 @@ const RadioGroup = forwardRef<View, RadioGroupProps>(
     );
   }
 );
+
+RadioGroup.displayName = 'RadioGroup';
 
 export default RadioGroup;

@@ -26,6 +26,8 @@ const RadioIcon = forwardRef<SvgRef, ComponentProps<typeof Icon>>(({ style, ...p
   );
 });
 
+RadioIcon.displayName = 'RadioIcon';
+
 const stylesheet = createStyleSheet(({ radii, colors, colorMode }) => ({
   container: {
     width: 14,

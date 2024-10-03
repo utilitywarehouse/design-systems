@@ -33,6 +33,8 @@ const RadioRoot = forwardRef<
   );
 });
 
+RadioRoot.displayName = 'RadioRoot';
+
 const stylesheet = createStyleSheet(({ space }) => ({
   container: {
     flexDirection: 'row',

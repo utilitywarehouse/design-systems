@@ -17,6 +17,8 @@ const RadioLabel = forwardRef<Text, TextProps>(({ children, style, ...props }, r
   );
 });
 
+RadioLabel.displayName = 'RadioLabel';
+
 const stylesheet = createStyleSheet(({ lineHeights, fontSizes, fonts, fontWeights, colors }) => ({
   text: {
     color: colors.grey1000,

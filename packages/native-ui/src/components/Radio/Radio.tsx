@@ -30,7 +30,7 @@ RadioLabel.displayName = 'RadioLabel';
 const Radio = forwardRef<ElementRef<typeof Pressable>, RadioProps>(
   ({ children, label, disabled, ...props }, ref) => {
     return (
-      // @ts-ignore
+      // @ts-expect-error - ref is not a valid prop for Pressable
       <RadioComponent ref={ref} {...props} isDisabled={disabled}>
         {children ? (
           children

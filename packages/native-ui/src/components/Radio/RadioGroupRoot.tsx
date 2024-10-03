@@ -3,17 +3,17 @@ import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { View } from 'react-native';
 import RadioGroupProps from './RadioGroup.props';
 
-const RadioGroup = forwardRef<View, RadioGroupProps>(
-  ({ children, disabled, style, ...props }, ref) => {
-    const { styles } = useStyles(stylesheet);
+const RadioGroup = forwardRef<View, RadioGroupProps>(({ children, style, ...props }, ref) => {
+  const { styles } = useStyles(stylesheet);
 
-    return (
-      <View ref={ref} {...props} style={[styles.container, style]}>
-        {children}
-      </View>
-    );
-  }
-);
+  return (
+    <View ref={ref} {...props} style={[styles.container, style]}>
+      {children}
+    </View>
+  );
+});
+
+RadioGroup.displayName = 'RadioGroup';
 
 const stylesheet = createStyleSheet(({ space }) => ({
   container: {
