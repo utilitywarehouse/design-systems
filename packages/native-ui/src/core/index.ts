@@ -33,4 +33,4 @@ export { createStyleSheet, useStyles, useInitialTheme } from 'react-native-unist
 
 export { default as NativeUIProvider } from './NativeUIProvider';
 
-export type * from './types';
+export type * from '../types/unistyles';

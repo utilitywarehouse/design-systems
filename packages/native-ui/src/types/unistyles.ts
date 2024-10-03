@@ -1,5 +1,5 @@
-import { breakpoints } from './breakpoints';
-import { darkTheme, lightTheme } from './themes';
+import { breakpoints } from '../core/breakpoints';
+import { darkTheme, lightTheme } from '../core/themes';
 
 export type AppBreakpoints = typeof breakpoints;
 

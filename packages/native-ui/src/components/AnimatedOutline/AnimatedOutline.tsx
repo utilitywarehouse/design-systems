@@ -1,44 +1,82 @@
-import { Box, styled } from '@gluestack-ui/themed';
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
+import { View } from 'react-native';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
-import { AnimatePresence, AnimatedView } from '@gluestack-style/animation-resolver';
+interface AnimatedCircleProps {
+  visible: boolean;
+}
 
-const AnimatedCircle = styled(AnimatedView, {
-  position: 'absolute',
-  top: -8,
-  left: -8,
-  borderRadius: 20,
-  zIndex: -1,
-  width: 40,
-  height: 40,
-  transformOrigin: 'center',
-  bg: '$cyan50',
-  _dark: {
-    bg: '$darkCyan300',
-  },
-  ':initial': {
-    opacity: 0.4,
-    scale: 0.8,
-  },
-  ':animate': {
-    opacity: 1,
-    scale: 1,
-  },
-  ':exit': {
-    opacity: 0,
-    scale: 0.4,
-  },
-});
+const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ visible }) => {
+  const opacity = useSharedValue(0.4);
+  const scale = useSharedValue(0.8);
+
+  const { styles } = useStyles(stylesheet);
+
+  useEffect(() => {
+    if (visible) {
+      opacity.value = withTiming(1, { duration: 300 });
+      scale.value = withTiming(1, { duration: 300 });
+    } else {
+      opacity.value = withTiming(0, { duration: 300 });
+      scale.value = withTiming(0.4, { duration: 300 });
+    }
+  }, [visible, opacity, scale]);
+
+  const animatedStyles = useAnimatedStyle(
+    () => ({
+      opacity: opacity.value,
+      transform: [{ scale: scale.value }],
+    }),
+    [scale, opacity]
+  );
+
+  return <Animated.View style={[styles.circle, animatedStyles]} />;
+};
 
 interface Props {
   show: boolean;
 }
 
-const AnimatedOutline: React.FC<PropsWithChildren<Props>> = ({ children, show }) => (
-  <Box position="relative">
-    {children}
-    <AnimatePresence>{show ? <AnimatedCircle /> : null}</AnimatePresence>
-  </Box>
-);
+const AnimatedOutline: React.FC<PropsWithChildren<Props>> = ({ children, show }) => {
+  const [visible, setVisible] = useState(show);
+
+  const { styles } = useStyles(stylesheet);
+
+  useEffect(() => {
+    if (show) {
+      setVisible(true);
+      return;
+    } else {
+      const timeout = setTimeout(() => {
+        setVisible(false);
+      }, 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [show]);
+
+  return (
+    <View style={styles.container}>
+      {visible && <AnimatedCircle visible={show} />}
+      {children}
+    </View>
+  );
+};
+
+const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
+  container: {
+    position: 'relative',
+  },
+  circle: {
+    position: 'absolute',
+    top: -8,
+    left: -8,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    zIndex: -1,
+    backgroundColor: colorMode === 'light' ? colors.cyan50 : colors.cyan300,
+  },
+}));
 
 export default AnimatedOutline;
