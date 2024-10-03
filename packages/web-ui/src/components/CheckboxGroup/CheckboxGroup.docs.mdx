@@ -1,0 +1,113 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './CheckboxGroup.stories';
+
+import { Box } from '../Box';
+import { Divider } from '../Divider';
+import { Stack } from '../Stack';
+import { Text } from '../Text';
+
+import { DocsHeader } from '../../storybook-components';
+
+<Meta of={Stories} />
+
+<DocsHeader
+  componentName="CheckboxGroup"
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=910-9379"
+  stories={Stories}
+/>
+
+<Canvas of={Stories.Workshop} sourceState="none" />
+
+- [Alternatives](#alternatives)
+- [Accessibility](#accessibility)
+- [Helper text](#helper-text)
+- [Error message](#error-message)
+- [Content width](#content-width)
+- [Controlled](#controlled)
+- [Props](#props)
+
+## Alternatives
+
+- [CheckboxGridGroup](?path=/docs/components-checkboxgridgroup--documentation) - For presenting checkboxes in columns or a grid layout.
+- [RadioGroup](?path=/docs/components-radiogroup--documentation) - For single-select
+- [RadioGridGroup](?path=/docs/components-radiogridgroup--documentation) - For single-select in columns or a grid layout.
+
+## Accessibility
+
+The necessary aria props, such as `aria-labelledby`, `aria-describedby` and
+`aria-errormessage` are handled internally, however you can pass these and
+other aria props, such as `aria-label`, to the `CheckboxGroup`, `Checkbox` &
+`CheckboxTile` components yourself if you need to.
+
+### Keyboard interactions
+
+<Stack spacing={1} divider={<Divider />}>
+  <Box display="flex" alignItems="baseline">
+    <Box width={300}>
+      <Text component="span" variant="legalNote">
+        {'Key'}
+      </Text>
+    </Box>
+    <Text component="span" variant="legalNote">
+      {'Description'}
+    </Text>
+  </Box>
+  {[
+    { key: 'Tab', description: 'Moves keyboard focus to the checkbox.' },
+    { key: 'Space', description: 'Toggles checkbox between checked and unchecked states.' },
+  ].map(kbi => (
+    <Box display="flex" alignItems="baseline">
+      <Box width={300}>
+        <kbd>{kbi.key}</kbd>
+      </Box>
+      <Text component="span" variant="body">
+        {kbi.description}
+      </Text>
+    </Box>
+  ))}
+</Stack>
+
+## Helper text
+
+The Checkbox group can display a secondary message as a helper text. This can be
+either above or below the group's checkbox items. While the checkbox items can also
+display a helper text, these will not be displayed if the checkbox group has a
+helper text.
+
+<Canvas of={Stories.CheckboxHelperText} />
+
+## Error message
+
+You can display an error using the `error` & `errorMessage` props.
+
+<Canvas of={Stories.ShowingError} />
+
+## Content width
+
+The width of the `CheckboxGroup` should be set by the parent layout, however it is
+possible to independently set the width of the children using `contentWidth`
+prop. This property is most useful when using the `CheckboxGroup` with the
+`CheckboxTile` component.
+
+By default it will set the width of the children to fit their content, however
+you can set it to a specific width, or to `100%` to take up the full width of
+the `CheckboxGroup`.
+
+This is a responsive property, so you are able to set different widths for
+different breakpoints.
+
+<Canvas of={Stories.ContentWidth} />
+
+## Controlled
+
+A controlled value can be provided using the value prop, which accepts a string
+array, corresponding to the value props of each child `Checkbox`. The
+`onValueChange` event is fired when the user selects or deselects a `Checkbox`
+child of the group.
+
+<Canvas of={Stories.Controlled} />
+
+## Props
+
+<ArgTypes of={Stories} />

@@ -1,0 +1,17 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './COMPONENT_NAME.stories';
+
+import { DocsHeader } from '../../storybook-components';
+
+<Meta of={Stories} />
+
+<DocsHeader componentName="COMPONENT_NAME" figmaLink="" stories={Stories} />
+
+<Canvas of={Stories.Workshop} sourceState="none" />
+
+- [Props](#props)
+
+## Props
+
+<ArgTypes of={Stories} />

@@ -1,4 +1,5 @@
 import { useMediaQuery as useMuiMediaQuery } from '@mui/system';
+
 import { Theme, theme } from '../theme';
 
 // https://github.com/mui/material-ui/issues/16859#issuecomment-832560383

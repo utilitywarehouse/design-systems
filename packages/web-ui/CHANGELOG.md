@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 1.0.3
+
+### Patch Changes
+
+- [#527](https://github.com/utilitywarehouse/design-systems/pull/527) [`f8a010e3`](https://github.com/utilitywarehouse/design-systems/commit/f8a010e3491798505327abc869201017c46b1a45) Thanks [@robphoenix](https://github.com/robphoenix)! - Use unitless line-height values
+
 ## 1.0.2
 
 ### Patch Changes

@@ -1,0 +1,65 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './Flex.stories';
+
+import { DocsHeader } from '../../storybook-components';
+
+<Meta of={Stories} />
+
+<DocsHeader componentName="Flex" stories={Stories} />
+
+<Canvas of={Stories.Workshop} sourceState="none" />
+
+- [Semantic HTML](#semantic-html)
+- [Accessibility](#accessibility)
+- [Shorthand props](#shorthand-props)
+- [Flex vs. Stack](#flex-vs.-stack)
+- [Props](#props)
+
+## Shorthand props
+
+As well as the same style props as the `Box` component, it supports a set of
+shorthand, flexbox specific props.
+
+- `direction` is `flexDirection`
+- `wrap` is `flexWrap`
+- `basis` is `flexBasis`
+- `grow` is `flexGrow`
+- `shrink` is `flexShrink`
+- `align` is `alignItems`
+- `justify` is `justifyContent`
+
+## Semantic HTML
+
+By default Flex renders a `div` element, this can be customised using the
+`component` prop.
+
+```tsx dark
+<Flex component="ul" role="list">
+  ...
+</Flex>
+```
+
+## Accessibility
+
+The `Flex` component is an all purpose component. By default, it has no
+accessibility concerns. If you use the `Flex` as a custom element, it is up to
+you to manage the resulting accessibility implications.
+
+## Flex vs. Stack
+
+The `Stack` component was introduced before the flexbox `gap` property was
+widely available, and was intended as an intuitive way of building consistently
+spaced layouts. It did this by adding additional margin to child components,
+which could sometimes cause problems, such as margin collapse on the child
+components.
+
+It is now possible to achieve the same layouts using the native flexbox gap
+property, and this is our preferred way of achieving these common _stacked_
+layouts. The `Stack` component will be deprecated and removed in due course.
+
+<Canvas of={Stories.Stack} />
+
+## Props
+
+<ArgTypes of={Stories} />

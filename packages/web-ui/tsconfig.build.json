@@ -7,6 +7,6 @@
     "storybook-static",
     "src/**/*.stories.tsx",
     "src/**/*.figma.tsx",
-    "src/storybook-utils"
+    "src/storybook-components"
   ]
 }
