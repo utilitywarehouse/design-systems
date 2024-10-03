@@ -9,8 +9,8 @@ figma.connect(
   'https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=5771-26816&m=dev',
   {
     props: {
+      iconLeft: figma.instance('Icon Left'),
       iconRight: figma.instance('Icon Right'),
-      iconLeft: figma.boolean('Icon Left?'),
       children: figma.string('Text'),
       size: figma.enum('size', {
         'medium - 48': 'medium',
