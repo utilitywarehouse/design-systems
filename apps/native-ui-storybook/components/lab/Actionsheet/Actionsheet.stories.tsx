@@ -6,8 +6,10 @@ import {
   Heading,
   Image,
   KeyboardAvoidingView,
+  ScrollView,
   Text,
   VStack,
+  View,
 } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 import {
@@ -20,7 +22,33 @@ import {
   ActionsheetItemText,
   ActionsheetScrollView,
 } from '@utilitywarehouse/native-ui/lab';
+import { Actionsheet as TestActionsheet } from '@utilitywarehouse/native-ui';
 import React from 'react';
+
+const ActionsheetText: StoryFn = () => {
+  const [visible, setVisible] = React.useState(false);
+  const handleClose = () => {
+    setVisible(false);
+  };
+  return (
+    <Box h="$96" alignItems="center" justifyContent="center">
+      <Button onPress={() => setVisible(true)}>Open Action Sheet</Button>
+      <TestActionsheet visible={visible} onClose={handleClose}>
+        <ScrollView
+          style={{ flex: 1, padding: 20 }}
+          contentContainerStyle={{ justifyContent: 'space-between', flex: 1 }}
+        >
+          <View style={{ flex: 1 }}>
+            <Text>Hello, this is the Action Sheet!</Text>
+            <Text>Hello, this is the Action Sheet!</Text>
+            <Text>Hello, this is the Action Sheet!</Text>
+          </View>
+          <Button onPress={handleClose}>Close</Button>
+        </ScrollView>
+      </TestActionsheet>
+    </Box>
+  );
+};
 
 const ActionsheetBasic: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
@@ -166,4 +194,4 @@ const WithScrollView: StoryFn = () => {
 
 export default ActionsheetMeta;
 
-export { ActionsheetBasic as Basic, KeyboardAvoidWithSnap, WithScrollView };
+export { ActionsheetBasic as Basic, KeyboardAvoidWithSnap, WithScrollView, ActionsheetText };
