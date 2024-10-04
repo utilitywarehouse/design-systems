@@ -14,8 +14,6 @@ const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
     disabled,
   });
 
-  console.log('CheckboxIndicator', { checked, disabled });
-
   return (
     <AnimatedOutline show={isInList || disabled ? false : show}>
       <View
