@@ -1,4 +1,3 @@
-// ActionsheetDragIndicator.tsx
 import React from 'react';
 import { View } from 'react-native';
 import { useStyles, createStyleSheet } from 'react-native-unistyles';
@@ -9,12 +8,12 @@ const ActionsheetDragIndicator: React.FC = () => {
   return <View style={styles.indicator} />;
 };
 
-const stylesheet = createStyleSheet(() => ({
+const stylesheet = createStyleSheet(({ space, colors, radii }) => ({
   indicator: {
-    width: 40,
-    height: 5,
-    borderRadius: 2.5,
-    backgroundColor: '#ccc',
+    width: space['16'],
+    height: space['1'],
+    borderRadius: radii.full,
+    backgroundColor: colors.grey500,
   },
 }));
 

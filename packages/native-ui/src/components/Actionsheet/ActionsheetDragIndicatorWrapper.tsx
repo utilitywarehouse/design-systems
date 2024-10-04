@@ -1,4 +1,3 @@
-// ActionsheetDragIndicatorWrapper.tsx
 import React from 'react';
 import { View } from 'react-native';
 import ActionsheetDragIndicator from './ActionsheetDragIndicator';
@@ -14,10 +13,12 @@ const ActionsheetDragIndicatorWrapper: React.FC = () => {
   );
 };
 
-const stylesheet = createStyleSheet(() => ({
+const stylesheet = createStyleSheet(({ space }) => ({
   wrapper: {
+    paddingVertical: space['1'],
+    marginBottom: space['3'],
+    width: space.full,
     alignItems: 'center',
-    paddingVertical: 8,
   },
 }));
 

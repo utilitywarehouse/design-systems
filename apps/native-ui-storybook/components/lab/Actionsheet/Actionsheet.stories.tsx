@@ -35,10 +35,12 @@ const ActionsheetTest: StoryFn = () => {
     <Box h="$96" alignItems="center" justifyContent="center">
       <Button onPress={() => setVisible(true)}>Open Action Sheet</Button>
       <TestActionsheet visible={visible} onClose={handleClose}>
-        <Text>Hello, this is the Action Sheet!</Text>
+        <View style={{ gap: 12 }}>
+          <Text>Hello, this is the Action Sheet!</Text>
 
-        <TextInput style={{ padding: 5, borderColor: 'red', borderWidth: 1, height: 48 }} />
-        <Button onPress={handleClose}>Close</Button>
+          <TextInput style={{ padding: 5, borderColor: 'red', borderWidth: 1, height: 48 }} />
+          <Button onPress={handleClose}>Close</Button>
+        </View>
       </TestActionsheet>
     </Box>
   );

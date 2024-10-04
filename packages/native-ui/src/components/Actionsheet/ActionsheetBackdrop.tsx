@@ -1,6 +1,5 @@
-// ActionsheetBackdrop.tsx
 import React from 'react';
-import { ViewStyle, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { TapGestureHandler, gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, SharedValue } from 'react-native-reanimated';
 import { useStyles, createStyleSheet } from 'react-native-unistyles';
@@ -30,12 +29,11 @@ const ActionsheetBackdropComponent: React.FC<ActionsheetBackdropProps> = ({
   );
 };
 
-// Wrap with gestureHandlerRootHOC
 export default gestureHandlerRootHOC(ActionsheetBackdropComponent);
 
-const stylesheet = createStyleSheet(() => ({
+const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: '#000000', // Use solid black; opacity is controlled via animation
+    backgroundColor: colorMode === 'light' ? colors.grey1000 : colors.grey25,
   },
 }));

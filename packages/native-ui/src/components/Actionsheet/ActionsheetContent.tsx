@@ -1,4 +1,3 @@
-// ActionsheetContent.tsx
 import React from 'react';
 import { Dimensions, SafeAreaView } from 'react-native';
 import { GestureDetector, Gesture, gestureHandlerRootHOC } from 'react-native-gesture-handler';
@@ -70,13 +69,28 @@ const ActionsheetContentComponent: React.FC<ActionsheetContentProps> = ({
 
 export default gestureHandlerRootHOC(ActionsheetContentComponent);
 
-const stylesheet = createStyleSheet(({}, rt) => ({
+const stylesheet = createStyleSheet(({ space, colorMode, colors, radii }) => ({
   content: {
-    backgroundColor: '#fff',
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
+    backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
+    borderTopLeftRadius: radii['2xl'],
+    borderTopRightRadius: radii['2xl'],
+    paddingHorizontal: space['5'],
+    paddingBottom: space['5'],
+    paddingTop: space['2'],
     maxHeight: SCREEN_HEIGHT * 0.8,
-    minHeight: SCREEN_HEIGHT * 0.3,
+    // minHeight: SCREEN_HEIGHT * 0.3,
     overflow: 'hidden',
+    ...(colorMode === 'light'
+      ? {
+          shadowColor: colors.green900,
+          shadowOffset: {
+            width: 0,
+            height: 3,
+          },
+          shadowRadius: 8,
+          shadowOpacity: 0.2,
+          elevation: 10,
+        }
+      : {}),
   },
 }));

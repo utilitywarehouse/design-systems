@@ -1,4 +1,3 @@
-// Actionsheet.tsx
 import React, { useEffect, useState } from 'react';
 import { Modal, Dimensions, Keyboard, KeyboardEvent } from 'react-native';
 import Animated, {
@@ -6,7 +5,6 @@ import Animated, {
   withTiming,
   useAnimatedStyle,
   runOnJS,
-  SharedValue,
 } from 'react-native-reanimated';
 import ActionsheetBackdrop from './ActionsheetBackdrop';
 import ActionsheetContent from './ActionsheetContent';
