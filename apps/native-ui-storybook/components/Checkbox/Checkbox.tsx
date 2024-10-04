@@ -1,55 +1,52 @@
 import React from 'react';
-import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/native-ui';
+import { Checkbox } from '@utilitywarehouse/native-ui';
 import { useArgs } from '@storybook/preview-api';
 import { StoryFn } from '@storybook/react';
 
 const CheckboxBasic: StoryFn<{
-  isChecked: boolean;
-  isDisabled: boolean;
-  _CheckboxLabel: string;
-}> = ({ isDisabled, _CheckboxLabel: label }) => {
+  checked: boolean;
+  disabled: boolean;
+  label: string;
+}> = ({ disabled, label: label }) => {
   const [args, updateArgs] = useArgs();
 
   return (
     <Checkbox
       value="Label 1"
       aria-label="Label 1"
-      onChange={(isChecked: boolean) => {
-        updateArgs({ isChecked });
+      onChange={(checked: boolean) => {
+        updateArgs({ checked });
       }}
       nativeID="checkbox-1"
-      isChecked={args.isChecked as boolean}
-      isDisabled={isDisabled}
-    >
-      <CheckboxIndicator />
-      {!!label && <CheckboxLabel>{label}</CheckboxLabel>}
-    </Checkbox>
+      checked={args.checked as boolean}
+      disabled={disabled}
+      label={label}
+    />
   );
 };
 
 CheckboxBasic.argTypes = {
-  isChecked: {
+  checked: {
     type: 'boolean',
     control: 'boolean',
     description: 'When true, the checkbox will be checked.',
   },
-  isDisabled: {
+  disabled: {
     type: 'boolean',
     control: 'boolean',
     description: 'To manually set disable to the checkbox.',
   },
-  _CheckboxLabel: {
+  label: {
     type: 'string',
     control: 'text',
-    description:
-      'The label component for the checkbox.\n _Note: this is not a prop of the `Checkbox` component, just a representation of the `CheckboxLabel` component for the Storybook playground._',
+    description: 'The label component for the checkbox.',
   },
 };
 
 CheckboxBasic.args = {
-  isChecked: false,
-  isDisabled: false,
-  _CheckboxLabel: '',
+  checked: false,
+  disabled: false,
+  label: '',
 };
 
 export default CheckboxBasic;

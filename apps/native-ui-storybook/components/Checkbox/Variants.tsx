@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Checkbox,
   CheckboxGroup,
+  CheckboxIcon,
   CheckboxIndicator,
   CheckboxLabel,
 } from '@utilitywarehouse/native-ui';
@@ -17,30 +18,34 @@ const CheckboxGroupBasic = () => {
       value={values}
       onChange={setValues}
       nativeID="checkbox-group"
-      gap="$4"
+      style={{ gap: 16 }}
     >
       <VariantTitle title="Checkbox">
         <Checkbox
           value="Label 1"
           aria-label="Label 1"
-          onChange={(isChecked: boolean) => {
-            console.log(isChecked, '###');
+          onChange={(checked: boolean) => {
+            console.log(checked, '###');
           }}
           nativeID="checkbox-1"
         >
-          <CheckboxIndicator />
+          <CheckboxIndicator>
+            <CheckboxIcon />
+          </CheckboxIndicator>
         </Checkbox>
       </VariantTitle>
       <VariantTitle title="Checkbox with label">
         <Checkbox
           value="Label 2"
           aria-label="Label 2"
-          onChange={(isChecked: boolean) => {
-            console.log(isChecked, '###');
+          onChange={(checked: boolean) => {
+            console.log(checked, '###');
           }}
           nativeID="checkbox-2"
         >
-          <CheckboxIndicator />
+          <CheckboxIndicator>
+            <CheckboxIcon />
+          </CheckboxIndicator>
           <CheckboxLabel>Label 1</CheckboxLabel>
         </Checkbox>
       </VariantTitle>
@@ -48,23 +53,27 @@ const CheckboxGroupBasic = () => {
         <Checkbox
           aria-label="Label 3"
           value="Label 3"
-          isDisabled
-          isChecked
-          onChange={(isChecked: boolean) => console.log(isChecked, '###')}
+          disabled
+          checked
+          onChange={(checked: boolean) => console.log(checked, '###')}
           nativeID="checkbox-3"
         >
-          <CheckboxIndicator />
+          <CheckboxIndicator>
+            <CheckboxIcon />
+          </CheckboxIndicator>
         </Checkbox>
       </VariantTitle>
       <VariantTitle title="Checkbox disabled with label">
         <Checkbox
           aria-label="Label 4"
           value="Label 4"
-          isDisabled
-          onChange={(isChecked: boolean) => console.log(isChecked, '###')}
+          disabled
+          onChange={(checked: boolean) => console.log(checked, '###')}
           nativeID="checkbox-4"
         >
-          <CheckboxIndicator />
+          <CheckboxIndicator>
+            <CheckboxIcon />
+          </CheckboxIndicator>
           <CheckboxLabel>Label 2</CheckboxLabel>
         </Checkbox>
       </VariantTitle>

@@ -25,8 +25,8 @@ const RadioGroupBasic = () => {
           <Radio
             value="Option 1"
             aria-label="Option 1"
-            onChange={(isChecked: boolean) => {
-              console.log(isChecked, '###');
+            onChange={(checked: boolean) => {
+              console.log(checked, '###');
             }}
             nativeID="Radio-1"
           >
@@ -38,8 +38,8 @@ const RadioGroupBasic = () => {
           <Radio
             value="Option 2"
             aria-label="Option 2"
-            onChange={(isChecked: boolean) => {
-              console.log(isChecked, '###');
+            onChange={(checked: boolean) => {
+              console.log(checked, '###');
             }}
             nativeID="Radio-2"
           >
@@ -61,7 +61,7 @@ const RadioGroupBasic = () => {
           <Radio
             aria-label="Option 3"
             value="Option 1"
-            onChange={(isChecked: boolean) => console.log(isChecked, '###')}
+            onChange={(checked: boolean) => console.log(checked, '###')}
             nativeID="Radio-3"
           >
             <RadioIndicator>
@@ -72,7 +72,7 @@ const RadioGroupBasic = () => {
           <Radio
             aria-label="Option 4"
             value="Option 2"
-            onChange={(isChecked: boolean) => console.log(isChecked, '###')}
+            onChange={(checked: boolean) => console.log(checked, '###')}
             nativeID="Radio-4"
           >
             <RadioIndicator>
