@@ -1,7 +1,8 @@
-import React, { ComponentProps, forwardRef } from 'react';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment  */
+import React, { forwardRef } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Icon } from '../Icon';
-import { ColorValue, Platform, type StyleProp, type ViewStyle } from 'react-native';
+import { Platform } from 'react-native';
 import { CircleIcon } from '../Icons';
 import { useRadioContext } from './Radio.context';
 import type { SvgRef } from '../../types';

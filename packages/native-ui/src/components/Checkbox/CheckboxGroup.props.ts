@@ -2,8 +2,8 @@ import { ViewProps } from 'react-native';
 
 interface CheckboxGroupProps extends ViewProps {
   disabled?: boolean;
-  value?: string[];
-  onChange?: (value: string[]) => void;
+  value?: Array<string>;
+  onChange?: (value: Array<string>) => void;
   readonly?: boolean;
 }
 
