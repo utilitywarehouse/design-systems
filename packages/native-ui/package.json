@@ -25,6 +25,7 @@
     "@gluestack-style/react": "1.0.57",
     "@gluestack-ui/alert": "^0.1.15",
     "@gluestack-ui/button": "^1.0.7",
+    "@gluestack-ui/checkbox": "^0.1.32",
     "@gluestack-ui/icon": "^0.1.22",
     "@gluestack-ui/radio": "^0.1.33",
     "@gluestack-ui/spinner": "^0.1.14",
@@ -37,16 +38,11 @@
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
     "@types/react": "^18.2.75",
-    "file-loader": "^6.2.0",
     "react": "^18.2.0",
     "react-native": "^0.74.3",
     "react-native-reanimated": "3.10.1",
     "react-native-web": "^0.19.12",
-    "ts-loader": "^9.4.4",
-    "typescript": "^5.5.3",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4"
+    "typescript": "^5.5.3"
   },
   "peerDependencies": {
     "react": ">=16",

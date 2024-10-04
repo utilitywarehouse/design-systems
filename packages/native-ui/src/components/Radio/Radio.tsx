@@ -39,7 +39,7 @@ const Radio = forwardRef<ElementRef<typeof Pressable>, RadioProps>(
             <RadioIndicator>
               <RadioIcon />
             </RadioIndicator>
-            <RadioLabel>{label}</RadioLabel>
+            {!!label && <RadioLabel>{label}</RadioLabel>}
           </>
         )}
       </RadioComponent>

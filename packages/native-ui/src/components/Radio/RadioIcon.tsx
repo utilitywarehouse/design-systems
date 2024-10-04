@@ -1,12 +1,14 @@
-import React, { ComponentProps, forwardRef } from 'react';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment  */
+import React, { forwardRef } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Icon } from '../Icon';
-import { Platform, type StyleProp, type ViewStyle } from 'react-native';
+import { Platform } from 'react-native';
 import { CircleIcon } from '../Icons';
 import { useRadioContext } from './Radio.context';
 import type { SvgRef } from '../../types';
+import IconProps from '../Icon/Icon.props';
 
-const RadioIcon = forwardRef<SvgRef, ComponentProps<typeof Icon>>(({ style, ...props }, ref) => {
+const RadioIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
   const { disabled } = useRadioContext();
   const { styles } = useStyles(stylesheet, {
     disabled,
@@ -19,7 +21,7 @@ const RadioIcon = forwardRef<SvgRef, ComponentProps<typeof Icon>>(({ style, ...p
       {...props}
       style={
         Platform.OS === 'web'
-          ? ({ ...styles.container, ...(style ? Object(style) : {}) } as StyleProp<ViewStyle>)
+          ? { ...styles.container, ...(style ? Object(style) : {}) }
           : [styles.container, style]
       }
     />

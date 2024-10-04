@@ -2,10 +2,10 @@ import React, { forwardRef } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Text, TextProps } from 'react-native';
 
-import { useRadioContext } from './Radio.context';
+import { useCheckboxContext } from './Checkbox.context';
 
-const RadioLabel = forwardRef<Text, TextProps>(({ children, style, ...props }, ref) => {
-  const { checked, disabled } = useRadioContext();
+const CheckboxLabel = forwardRef<Text, TextProps>(({ children, style, ...props }, ref) => {
+  const { checked, disabled } = useCheckboxContext();
   const { styles } = useStyles(stylesheet, {
     checked,
     disabled,
@@ -17,7 +17,7 @@ const RadioLabel = forwardRef<Text, TextProps>(({ children, style, ...props }, r
   );
 });
 
-RadioLabel.displayName = 'RadioLabel';
+CheckboxLabel.displayName = 'CheckboxLabel';
 
 const stylesheet = createStyleSheet(({ lineHeights, fontSizes, fonts, fontWeights, colors }) => ({
   text: {
@@ -41,4 +41,4 @@ const stylesheet = createStyleSheet(({ lineHeights, fontSizes, fonts, fontWeight
   },
 }));
 
-export default RadioLabel;
+export default CheckboxLabel;

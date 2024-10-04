@@ -8,12 +8,13 @@ import {
   RadioIndicator,
   Text,
   useStyles,
+  type RadioProps as NativeUIRadioProps,
 } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 import React from 'react';
 
-interface RadioProps extends React.ComponentProps<typeof Radio> {
+interface RadioProps {
   currentValue: string;
 }
 
@@ -24,7 +25,7 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, borderWidths, s
     borderRadius: radii.xl,
     padding: space[4],
     variants: {
-      isChecked: {
+      checked: {
         true: {
           borderColor: colorMode === 'light' ? colors.green500 : colors.green700,
         },
@@ -33,7 +34,7 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, borderWidths, s
   },
   indicator: {
     variants: {
-      isChecked: {
+      checked: {
         true: {
           backgroundColor: colorMode === 'light' ? colors.green500 : colors.green700,
           borderColor: colorMode === 'light' ? colors.green500 : colors.green700,
@@ -53,8 +54,12 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, borderWidths, s
   },
 }));
 
-const CustomRadio: React.FC<RadioProps> = ({ children, currentValue, ...props }) => {
-  const { styles } = useStyles(stylesheet, { isChecked: currentValue === props.value });
+const CustomRadio: React.FC<RadioProps & Omit<NativeUIRadioProps, 'label'>> = ({
+  children,
+  currentValue,
+  ...props
+}) => {
+  const { styles } = useStyles(stylesheet, { checked: currentValue === props.value });
   return (
     <Radio style={styles.radio} {...props}>
       <Box flexDirection="row" flex={1}>
