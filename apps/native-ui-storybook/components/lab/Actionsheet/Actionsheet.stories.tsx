@@ -6,7 +6,6 @@ import {
   Heading,
   Image,
   KeyboardAvoidingView,
-  ScrollView,
   Text,
   VStack,
   View,
@@ -22,10 +21,30 @@ import {
   ActionsheetItemText,
   ActionsheetScrollView,
 } from '@utilitywarehouse/native-ui/lab';
+import { TextInput } from 'react-native';
 import { Actionsheet as TestActionsheet } from '@utilitywarehouse/native-ui';
 import React from 'react';
+import { ScrollView } from 'react-native-gesture-handler';
 
-const ActionsheetText: StoryFn = () => {
+const ActionsheetTest: StoryFn = () => {
+  const [visible, setVisible] = React.useState(false);
+  const handleClose = () => {
+    setVisible(false);
+  };
+  return (
+    <Box h="$96" alignItems="center" justifyContent="center">
+      <Button onPress={() => setVisible(true)}>Open Action Sheet</Button>
+      <TestActionsheet visible={visible} onClose={handleClose}>
+        <Text>Hello, this is the Action Sheet!</Text>
+
+        <TextInput style={{ padding: 5, borderColor: 'red', borderWidth: 1, height: 48 }} />
+        <Button onPress={handleClose}>Close</Button>
+      </TestActionsheet>
+    </Box>
+  );
+};
+
+export const ActionsheetTestWithScrollView: StoryFn = () => {
   const [visible, setVisible] = React.useState(false);
   const handleClose = () => {
     setVisible(false);
@@ -38,11 +57,9 @@ const ActionsheetText: StoryFn = () => {
           style={{ flex: 1, padding: 20 }}
           contentContainerStyle={{ justifyContent: 'space-between', flex: 1 }}
         >
-          <View style={{ flex: 1 }}>
-            <Text>Hello, this is the Action Sheet!</Text>
-            <Text>Hello, this is the Action Sheet!</Text>
-            <Text>Hello, this is the Action Sheet!</Text>
-          </View>
+          <Text>Hello, this is the Action Sheet!</Text>
+
+          <TextInput style={{ padding: 5, borderColor: 'red', borderWidth: 1, height: 48 }} />
           <Button onPress={handleClose}>Close</Button>
         </ScrollView>
       </TestActionsheet>
@@ -194,4 +211,4 @@ const WithScrollView: StoryFn = () => {
 
 export default ActionsheetMeta;
 
-export { ActionsheetBasic as Basic, KeyboardAvoidWithSnap, WithScrollView, ActionsheetText };
+export { ActionsheetBasic as Basic, KeyboardAvoidWithSnap, WithScrollView, ActionsheetTest };

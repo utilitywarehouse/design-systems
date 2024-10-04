@@ -1,15 +1,21 @@
 // ActionsheetBackdrop.tsx
 import React from 'react';
-import { StyleSheet, ViewStyle } from 'react-native';
-import { TapGestureHandler } from 'react-native-gesture-handler';
-import Animated, { SharedValue, useAnimatedStyle } from 'react-native-reanimated';
+import { ViewStyle, StyleSheet } from 'react-native';
+import { TapGestureHandler, gestureHandlerRootHOC } from 'react-native-gesture-handler';
+import Animated, { useAnimatedStyle, SharedValue } from 'react-native-reanimated';
+import { useStyles, createStyleSheet } from 'react-native-unistyles';
 
 interface ActionsheetBackdropProps {
   onPress: () => void;
   animatedOpacity: SharedValue<number>;
 }
 
-const ActionsheetBackdrop: React.FC<ActionsheetBackdropProps> = ({ onPress, animatedOpacity }) => {
+const ActionsheetBackdropComponent: React.FC<ActionsheetBackdropProps> = ({
+  onPress,
+  animatedOpacity,
+}) => {
+  const { styles } = useStyles(stylesheet);
+
   const animatedStyle = useAnimatedStyle(
     () => ({
       opacity: animatedOpacity.value,
@@ -24,11 +30,12 @@ const ActionsheetBackdrop: React.FC<ActionsheetBackdropProps> = ({ onPress, anim
   );
 };
 
-const styles = StyleSheet.create({
+// Wrap with gestureHandlerRootHOC
+export default gestureHandlerRootHOC(ActionsheetBackdropComponent);
+
+const stylesheet = createStyleSheet(() => ({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: '#000000', // Use solid black; opacity is controlled via animation
-  } as ViewStyle,
-});
-
-export default ActionsheetBackdrop;
+  },
+}));

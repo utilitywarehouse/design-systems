@@ -1,19 +1,24 @@
 // ActionsheetDragIndicatorWrapper.tsx
 import React from 'react';
-import { View, StyleSheet, ViewStyle } from 'react-native';
+import { View } from 'react-native';
 import ActionsheetDragIndicator from './ActionsheetDragIndicator';
+import { useStyles, createStyleSheet } from 'react-native-unistyles';
 
-const ActionsheetDragIndicatorWrapper: React.FC = () => (
-  <View style={styles.wrapper}>
-    <ActionsheetDragIndicator />
-  </View>
-);
+const ActionsheetDragIndicatorWrapper: React.FC = () => {
+  const { styles } = useStyles(stylesheet);
 
-const styles = StyleSheet.create({
+  return (
+    <View style={styles.wrapper}>
+      <ActionsheetDragIndicator />
+    </View>
+  );
+};
+
+const stylesheet = createStyleSheet(() => ({
   wrapper: {
     alignItems: 'center',
     paddingVertical: 8,
-  } as ViewStyle,
-});
+  },
+}));
 
 export default ActionsheetDragIndicatorWrapper;
