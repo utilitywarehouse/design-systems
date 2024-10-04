@@ -39,7 +39,7 @@ for (const file in files) {
   );
 
   fs.copyFile(sourcePath, targetPath, err => {
+    // console.log(`Copied ${file} to ${targetPath}`);
     if (err) throw err;
-    console.log(`Copied ${file} to ${targetPath}`);
   });
 }
