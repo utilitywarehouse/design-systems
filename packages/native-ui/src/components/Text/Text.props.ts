@@ -12,6 +12,10 @@ interface TextProps extends RNTextProps {
   color?: ColorValue;
   textTransform?: TextStyle['textTransform'];
   textAlign?: TextStyle['textAlign'];
+  textDecorationLine?: TextStyle['textDecorationLine'];
+  textDecorationStyle?: TextStyle['textDecorationStyle'];
+  textDecorationColor?: ColorValue;
+  userSelect?: TextStyle['userSelect'];
 }
 
 export default TextProps;
