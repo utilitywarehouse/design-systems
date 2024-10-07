@@ -1,5 +1,12 @@
 # @utilitywarehouse/native-ui
 
+## 0.5.1
+
+### Patch Changes
+
+- Updated dependencies [[`235ba670`](https://github.com/utilitywarehouse/design-systems/commit/235ba67081593d9fc5e28fc0e4bbb3aea941d077)]:
+  - @utilitywarehouse/colour-system@0.5.0
+
 ## 0.5.0
 
 ### Minor Changes
