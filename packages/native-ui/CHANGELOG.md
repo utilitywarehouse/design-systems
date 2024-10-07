@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.5.2
+
+### Patch Changes
+
+- [#546](https://github.com/utilitywarehouse/design-systems/pull/546) [`85558391`](https://github.com/utilitywarehouse/design-systems/commit/8555839179d410f310ac5e824b7873f289c120c6) Thanks [@jordmccord](https://github.com/jordmccord)! - Exposes text decoration utility style props to `Text` component
+
 ## 0.5.1
 
 ### Patch Changes
