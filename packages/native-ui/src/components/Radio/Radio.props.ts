@@ -13,7 +13,7 @@ interface RadioWithChildrenProps extends RadioBaseProps {
 
 interface RadioWithoutChildrenProps extends RadioBaseProps {
   children?: never;
-  label: string;
+  label?: string;
 }
 
 type RadioProps = RadioWithChildrenProps | RadioWithoutChildrenProps;

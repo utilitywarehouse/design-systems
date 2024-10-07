@@ -1,4 +1,4 @@
-/* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON 8/1/2024. */
+/* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON 10/3/2024. */
 
 :root {
   /* brand */
@@ -12,19 +12,6 @@
   --color-service-insurance: #f25192;
   --color-service-mobile: #ffd76f;
   --color-service-landline: #a66de8;
-  /* purple */
-  --color-purple50: #fbf6fd;
-  --color-purple75: #f5eef9;
-  --color-purple100: #ede0f2;
-  --color-purple200: #e2c7eb;
-  --color-purple300: #d69ddd;
-  --color-purple400: #c777df;
-  --color-purple500: #af4dd5;
-  --color-purple600: #931cce;
-  --color-purple700: #7209ae;
-  --color-purple800: #550091;
-  --color-purple900: #400066;
-  --color-purple1000: #1c0128;
   /* red */
   --color-red50: #ffebeb;
   --color-red100: #ffd8d9;
@@ -121,4 +108,17 @@
   --color-rose700: #c8185c;
   --color-rose800: #9f1446;
   --color-rose900: #4a1125;
+  /* purple */
+  --color-purple50: #f8f5fe;
+  --color-purple75: #f1ebfe;
+  --color-purple100: #e5d7fe;
+  --color-purple200: #cfadff;
+  --color-purple300: #c08dfc;
+  --color-purple400: #b46ef7;
+  --color-purple500: #9d38f0;
+  --color-purple600: #8f23e7;
+  --color-purple700: #7415c1;
+  --color-purple800: #550091;
+  --color-purple900: #48007a;
+  --color-purple1000: #35005c;
 }
