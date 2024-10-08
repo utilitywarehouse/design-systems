@@ -13,6 +13,7 @@ figma.connect(
   {
     props: {
       icon: figma.instance('Icon'),
+      iconXSmall: figma.instance('_Icon X-Small'),
       size: figma.enum('size', {
         'medium - 48': 'medium',
         'small - 32': 'small',
@@ -25,9 +26,10 @@ figma.connect(
       }),
       inverted: figma.boolean('Inverted'),
     },
-    example: ({ icon, size, colorScheme }) => (
+    example: ({ icon, iconXSmall, size, colorScheme }) => (
       <IconButton label="Please add a label" variant="ghost" size={size} colorScheme={colorScheme}>
         {icon}
+        {iconXSmall}
       </IconButton>
     ),
   }
@@ -42,6 +44,7 @@ figma.connect(
   {
     props: {
       icon: figma.instance('Icon'),
+      iconXSmall: figma.instance('_Icon X-Small'),
       size: figma.enum('size', {
         'medium - 48': 'medium',
         'small - 32': 'small',
@@ -54,7 +57,7 @@ figma.connect(
       }),
       inverted: figma.boolean('Inverted'),
     },
-    example: ({ icon, size, colorScheme }) => (
+    example: ({ icon, iconXSmall, size, colorScheme }) => (
       <IconButton
         label="Please add a label"
         variant="outline"
@@ -62,6 +65,7 @@ figma.connect(
         colorScheme={colorScheme}
       >
         {icon}
+        {iconXSmall}
       </IconButton>
     ),
   }
@@ -76,6 +80,7 @@ figma.connect(
   {
     props: {
       icon: figma.instance('Icon'),
+      iconXSmall: figma.instance('_Icon X-Small'),
       size: figma.enum('size', {
         'medium - 48': 'medium',
         'small - 32': 'small',
@@ -88,9 +93,10 @@ figma.connect(
       }),
       inverted: figma.boolean('Inverted'),
     },
-    example: ({ icon, size, colorScheme }) => (
+    example: ({ icon, iconXSmall, size, colorScheme }) => (
       <IconButton label="Please add a label" variant="solid" size={size} colorScheme={colorScheme}>
         {icon}
+        {iconXSmall}
       </IconButton>
     ),
   }
