@@ -69,6 +69,14 @@ interface BoxProps
       | 'width'
       | 'maxWidth'
       | 'maxHeight'
+      | 'minWidth'
+      | 'minHeight'
+      | 'top'
+      | 'bottom'
+      | 'left'
+      | 'right'
+      | 'start'
+      | 'end'
     >,
     ViewProps {
   bg?: ColorValue;
@@ -90,6 +98,10 @@ interface BoxProps
   mr?: SpaceValue;
   ml?: SpaceValue;
   rounded?: RadiiValue;
+  top?: SpaceValue;
+  bottom?: SpaceValue;
+  left?: SpaceValue;
+  right?: SpaceValue;
   padding?: SpaceValue;
   paddingHorizontal?: SpaceValue;
   paddingVertical?: SpaceValue;
@@ -146,8 +158,12 @@ interface BoxProps
   borderWidth?: BordeWidthValue;
   height?: SpaceValue;
   width?: SpaceValue;
+  minHeight?: SpaceValue;
+  minWidth?: SpaceValue;
   maxWidth?: SpaceValue;
   maxHeight?: SpaceValue;
+  start?: SpaceValue;
+  end?: SpaceValue;
 }
 
 export default BoxProps;
