@@ -3,32 +3,6 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 // HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
-/** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds. */
-const purple50$1 = '#fbf6fd';
-/** This color replaces the use cases of lightTint. Use it for text that goes on top of  Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
-const purple75$1 = '#f5eef9';
-/** This color replaces the use cases of lightTint. Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
-const purple100$1 = '#ede0f2';
-/** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
-const purple200$1 = '#e2c7eb';
-/** Use it only as a foreground against Purple 800, Purple 900, and Purple 1000. */
-const purple300$1 = '#d69ddd';
-/** Use it for borders or large text against Purple 800, Purple 900, and Purple 1000.  For any other foreground elements, use it only against Purple 900 and Purple 1000. */
-const purple400$1 = '#c777df';
-/** Use it for borders, icons, and large text against white, Purple 50, Purple 100, Grey 25,  Grey 50, Grey 75, and Grey 100. Use it as a background color with white as the foreground color. */
-const purple500$1 = '#af4dd5';
-/** Use it as a foreground against white and Purple 50, Purple 100,  Grey 25, Grey 50, Grey 75 and Grey 100. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150. Use it as a background color combined with a white foreground.  */
-const purple600$1 = '#931cce';
-/** Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 200 Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150 and Grey 200. Use it as a background color combined with a white foreground.  */
-const purple700$1 = '#7209ae';
-/** This is Brand Purple - 550091. Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground.  */
-const purple800$1 = '#550091';
-/** Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200,  Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground.  */
-const purple900$1 = '#400066';
-/** Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200,  Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300, Grey 400 and Grey 500. Use it as a background color combined with a white foreground. */
-const purple1000$1 = '#1c0128';
-
-// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
 /** Use it for backgrounds.  */
 const red50$1 = '#ffebeb';
 /** Use it for backgrounds.  */
@@ -221,21 +195,35 @@ const rose800$1 = '#9f1446';
 const rose900 = '#4a1125';
 
 // HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
+/** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds. */
+const purple50$1 = '#f8f5fe';
+/** Use it for text that goes on top of  Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
+const purple75$1 = '#f1ebfe';
+/** Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
+const purple100$1 = '#e5d7fe';
+/** Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
+const purple200$1 = '#cfadff';
+/** Use it only as a foreground against Purple 800, Purple 900, and Purple 1000. */
+const purple300$1 = '#c08dfc';
+/** Use it for large text against Purple 800, Purple 900, and Purple 1000.  For any other foreground elements, use it only against Purple 900 and Purple 1000. */
+const purple400$1 = '#b46ef7';
+/**  */
+const purple500$1 = '#9d38f0';
+/** Use it as a foreground against white and Purple 50, Purple 100,  Grey 25, Grey 50, Grey 75 and Grey 100. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150. Use it as a background color combined with a white foreground.  */
+const purple600$1 = '#8f23e7';
+/** Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 200 Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150 and Grey 200. Use it as a background color combined with a white foreground.  */
+const purple700$1 = '#7415c1';
+/** This is Brand Purple - 550091. Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground.  */
+const purple800$1 = '#550091';
+/** Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200,  Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground.  */
+const purple900$1 = '#48007a';
+/** Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200,  Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300, Grey 400 and Grey 500. Use it as a background color combined with a white foreground. */
+const purple1000$1 = '#35005c';
+
+// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
 
 var index$2 = /*#__PURE__*/Object.freeze({
 	__proto__: null,
-	purple50: purple50$1,
-	purple75: purple75$1,
-	purple100: purple100$1,
-	purple200: purple200$1,
-	purple300: purple300$1,
-	purple400: purple400$1,
-	purple500: purple500$1,
-	purple600: purple600$1,
-	purple700: purple700$1,
-	purple800: purple800$1,
-	purple900: purple900$1,
-	purple1000: purple1000$1,
 	red50: red50$1,
 	red100: red100$1,
 	red200: red200$1,
@@ -322,34 +310,20 @@ var index$2 = /*#__PURE__*/Object.freeze({
 	rose500: rose500$1,
 	rose700: rose700$1,
 	rose800: rose800$1,
-	rose900: rose900
+	rose900: rose900,
+	purple50: purple50$1,
+	purple75: purple75$1,
+	purple100: purple100$1,
+	purple200: purple200$1,
+	purple300: purple300$1,
+	purple400: purple400$1,
+	purple500: purple500$1,
+	purple600: purple600$1,
+	purple700: purple700$1,
+	purple800: purple800$1,
+	purple900: purple900$1,
+	purple1000: purple1000$1
 });
-
-// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
-/** Use it for backgrounds.  Use it for text that goes on top of Purple 500,  Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds. */
-const purple50 = '#140218';
-/** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds. */
-const purple75 = '#1c0128';
-/** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds. */
-const purple100 = '#26013c';
-/** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
-const purple200 = '#400066';
-/** This is Brand Purple. Background colour Use it only as a foreground against Purple 800, Purple 900, and Purple 1000. */
-const purple300 = '#550091';
-/**  */
-const purple400 = '#982ed6';
-/** Use it for borders, icons, and large text against Purple 50, Purple 75, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. */
-const purple500 = '#af4dd5';
-/** Use it as a foreground against  Purple 50, Purple 100, Grey 25, Grey 50, Grey 75 and Grey 100. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150. */
-const purple600 = '#c777df';
-/** Use it as a foreground against  Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 200. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150 and Grey 200.  */
-const purple700 = '#d192d9';
-/** Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against  Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300 and Grey 400. */
-const purple800 = '#ddbde7';
-/** Use it as a foreground against Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200, Grey 300, and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. */
-const purple900 = '#ede0f2';
-/**  */
-const purple1000 = '#f5eef9';
 
 // HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
 /** For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900. */
@@ -542,21 +516,35 @@ const rose800 = '#f9b6d0';
 const rose950 = '#fde2ec';
 
 // HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
+/** Use it for backgrounds.  Use it for text that goes on top of Purple 500,  Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds. */
+const purple50 = '#2f0052';
+/** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds. */
+const purple75 = '#35005c';
+/** Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds. */
+const purple100 = '#48007a';
+/** This is Brand Purple. Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000. */
+const purple200 = '#550091';
+/** Background colour Use it only as a foreground against Purple 800, Purple 900, and Purple 1000. */
+const purple300 = '#7415c1';
+/**  */
+const purple400 = '#8f23e7';
+/** Use it for large text against Purple 50, Purple 75, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. */
+const purple500 = '#9d38f0';
+/** Use it as a foreground against  Purple 50, Purple 100, Grey 25, Grey 50, Grey 75 and Grey 100. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150. */
+const purple600 = '#b46ef7';
+/** Use it as a foreground against  Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 200. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150 and Grey 200.  */
+const purple700 = '#c08dfc';
+/** Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against  Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300 and Grey 400. */
+const purple800 = '#cfadff';
+/** Use it as a foreground against Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200, Grey 300, and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. */
+const purple900 = '#e5d7fe';
+/**  */
+const purple1000 = '#f1ebfe';
+
+// HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
 
 var index$1 = /*#__PURE__*/Object.freeze({
 	__proto__: null,
-	purple50: purple50,
-	purple75: purple75,
-	purple100: purple100,
-	purple200: purple200,
-	purple300: purple300,
-	purple400: purple400,
-	purple500: purple500,
-	purple600: purple600,
-	purple700: purple700,
-	purple800: purple800,
-	purple900: purple900,
-	purple1000: purple1000,
 	gold50: gold50,
 	gold75: gold75,
 	gold100: gold100,
@@ -642,7 +630,19 @@ var index$1 = /*#__PURE__*/Object.freeze({
 	rose600: rose600,
 	rose700: rose700,
 	rose800: rose800,
-	rose950: rose950
+	rose950: rose950,
+	purple50: purple50,
+	purple75: purple75,
+	purple100: purple100,
+	purple200: purple200,
+	purple300: purple300,
+	purple400: purple400,
+	purple500: purple500,
+	purple600: purple600,
+	purple700: purple700,
+	purple800: purple800,
+	purple900: purple900,
+	purple1000: purple1000
 });
 
 // HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
