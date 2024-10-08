@@ -2,89 +2,60 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
+import { colors } from '@utilitywarehouse/colour-system';
+
 import { InputProps } from './Input.props';
 
-import {
-  COLORSCHEME_SELECTORS,
-  classSelector,
-  responsiveClassSelector,
-  withBreakpoints,
-} from '../../helpers';
 import { styled } from '../../theme';
+import { fontWeights, fonts } from '../../tokens';
 import { PropsWithSx } from '../../types';
-import { mediaQueries, withGlobalPrefix } from '../../utils';
+import { px, withGlobalPrefix } from '../../utils';
 
 const componentName = 'Input';
 const componentClassName = withGlobalPrefix(componentName);
 
-const classNames = {
-  size: {
-    small: withGlobalPrefix('size-small'),
-    medium: withGlobalPrefix('size-medium'),
+const StyledElement = styled('div')(() => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: px(16),
+  height: px(56),
+  borderTopLeftRadius: px(16),
+  borderTopRightRadius: px(16),
+  borderBottomLeftRadius: 0,
+  borderBottomRightRadius: 0,
+  borderWidth: px(2),
+  borderStyle: 'solid',
+  borderColor: colors.grey500,
+  ['&:where(:focus-within)']: {
+    borderColor: colors.cyan500,
   },
-};
+}));
 
-const classSelectors = {
-  size: {
-    small: classSelector(classNames.size.small),
-    medium: classSelector(classNames.size.medium),
-    tablet: {
-      small: responsiveClassSelector(classNames.size.small, 'tablet'),
-      medium: responsiveClassSelector(classNames.size.medium, 'tablet'),
-    },
-    desktop: {
-      small: responsiveClassSelector(classNames.size.small, 'desktop'),
-      medium: responsiveClassSelector(classNames.size.medium, 'desktop'),
-    },
-    wide: {
-      small: responsiveClassSelector(classNames.size.small, 'wide'),
-      medium: responsiveClassSelector(classNames.size.medium, 'wide'),
-    },
-  },
-};
-
-const StyledElement = styled('span')(() => {
-  const sizeStyles = {
-    small: {},
-    medium: {},
-  };
-  return {
-    [classSelectors.size.small]: { ...sizeStyles.small },
-    [classSelectors.size.medium]: { ...sizeStyles.medium },
-    [mediaQueries.tablet]: {
-      [classSelectors.size.tablet.small]: { ...sizeStyles.small },
-      [classSelectors.size.tablet.medium]: { ...sizeStyles.medium },
-    },
-    [mediaQueries.desktop]: {
-      [classSelectors.size.desktop.small]: { ...sizeStyles.small },
-      [classSelectors.size.desktop.medium]: { ...sizeStyles.medium },
-    },
-    [mediaQueries.wide]: {
-      [classSelectors.size.wide.small]: { ...sizeStyles.small },
-      [classSelectors.size.wide.medium]: { ...sizeStyles.medium },
-    },
-    [COLORSCHEME_SELECTORS.cyan]: {},
-    [COLORSCHEME_SELECTORS.green]: {},
-    [COLORSCHEME_SELECTORS.red]: {},
-    [COLORSCHEME_SELECTORS.gold]: {},
-    [COLORSCHEME_SELECTORS.grey]: {},
-  };
-});
+const StyledInput = styled('input')(() => ({
+  all: 'unset',
+  display: 'flex',
+  width: '100%',
+  '-webkit-tap-highlight-color': 'transparent',
+  cursor: 'text',
+  whiteSpace: 'pre-wrap',
+  fontSize: px(16),
+  lineHeight: 1.5,
+  fontFamily: fonts.secondary,
+  fontWeight: fontWeights.secondary.regular,
+}));
 
 /**
  * TODO: Document the Input component.
  */
-export const Input = React.forwardRef<
-  React.ElementRef<'span'>,
-  React.PropsWithChildren<PropsWithSx<InputProps>>
->(({ size = 'medium', className, ...props }, ref) => {
-  return (
-    <StyledElement
-      ref={ref}
-      className={clsx(componentClassName, className, withBreakpoints(size, 'size'))}
-      {...props}
-    />
-  );
-});
+export const Input = React.forwardRef<React.ElementRef<'input'>, PropsWithSx<InputProps>>(
+  ({ className, sx, ...props }, ref) => {
+    return (
+      <StyledElement sx={sx}>
+        <StyledInput ref={ref} className={clsx(componentClassName, className)} {...props} />
+      </StyledElement>
+    );
+  }
+);
 
 Input.displayName = componentName;
