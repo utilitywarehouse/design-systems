@@ -1,12 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { forwardRef, memo } from 'react';
 import { View, ViewStyle } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import type BoxProps from './Box.props';
 import getStyleValue from '../../utils/getStyleValue';
 
-const Box = forwardRef<View, BoxProps>(
+const BoxComponent = forwardRef<View, BoxProps>(
   (
     {
       padding,
@@ -131,12 +129,14 @@ const Box = forwardRef<View, BoxProps>(
     } = useStyles();
 
     const styles: ViewStyle = {};
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const assignStyle = (
       stylePropName: keyof ViewStyle,
-      propValue: any,
-      themeMapping?: Record<string, any>
+      propValue: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+      themeMapping?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
     ) => {
       if (propValue !== undefined) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         styles[stylePropName] = themeMapping ? getStyleValue(propValue, themeMapping) : propValue;
       }
     };
@@ -258,6 +258,9 @@ const Box = forwardRef<View, BoxProps>(
   }
 );
 
+BoxComponent.displayName = 'Box';
+
+const Box = memo(BoxComponent);
 Box.displayName = 'Box';
 
-export default memo(Box);
+export default Box;
