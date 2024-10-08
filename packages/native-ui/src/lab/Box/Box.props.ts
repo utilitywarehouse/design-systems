@@ -7,80 +7,121 @@ import type {
   SpaceValue,
 } from '../../types';
 
-interface BoxProps
-  extends Omit<
-      ViewStyle,
-      | 'padding'
-      | 'paddingHorizontal'
-      | 'paddingVertical'
-      | 'paddingTop'
-      | 'paddingBottom'
-      | 'paddingLeft'
-      | 'paddingRight'
-      | 'paddingEnd'
-      | 'paddingStart'
-      | 'margin'
-      | 'marginHorizontal'
-      | 'marginVertical'
-      | 'marginTop'
-      | 'marginBottom'
-      | 'marginLeft'
-      | 'marginRight'
-      | 'marginEnd'
-      | 'marginStart'
-      | 'columnGap'
-      | 'gap'
-      | 'rowGap'
-      | 'backgroundColor'
-      | 'borderColor'
-      | 'borderBottomColor'
-      | 'borderLeftColor'
-      | 'borderRightColor'
-      | 'borderTopColor'
-      | 'borderBlockColor'
-      | 'borderBlockEndColor'
-      | 'borderBlockStartColor'
-      | 'borderEndColor'
-      | 'borderStartColor'
-      | 'shadowColor'
-      | 'borderRadius'
-      | 'rounded'
-      | 'borderBottomEndRadius'
-      | 'borderBottomLeftRadius'
-      | 'borderBottomRightRadius'
-      | 'borderBottomStartRadius'
-      | 'borderTopEndRadius'
-      | 'borderTopLeftRadius'
-      | 'borderTopRightRadius'
-      | 'borderTopStartRadius'
-      | 'borderEndEndRadius'
-      | 'borderEndStartRadius'
-      | 'borderStartEndRadius'
-      | 'borderStartStartRadius'
-      | 'opacity'
-      | 'borderBottomWidth'
-      | 'borderEndWidth'
-      | 'borderLeftWidth'
-      | 'borderRightWidth'
-      | 'borderStartWidth'
-      | 'borderTopWidth'
-      | 'borderWidth'
-      | 'height'
-      | 'width'
-      | 'maxWidth'
-      | 'maxHeight'
-      | 'minWidth'
-      | 'minHeight'
-      | 'top'
-      | 'bottom'
-      | 'left'
-      | 'right'
-      | 'start'
-      | 'end'
-    >,
-    ViewProps {
+type OmittedStyles = Omit<
+  ViewStyle,
+  | 'padding'
+  | 'paddingHorizontal'
+  | 'paddingVertical'
+  | 'paddingTop'
+  | 'paddingBottom'
+  | 'paddingLeft'
+  | 'paddingRight'
+  | 'paddingEnd'
+  | 'paddingStart'
+  | 'margin'
+  | 'marginHorizontal'
+  | 'marginVertical'
+  | 'marginTop'
+  | 'marginBottom'
+  | 'marginLeft'
+  | 'marginRight'
+  | 'marginEnd'
+  | 'marginStart'
+  | 'columnGap'
+  | 'gap'
+  | 'rowGap'
+  | 'backgroundColor'
+  | 'borderColor'
+  | 'borderBottomColor'
+  | 'borderLeftColor'
+  | 'borderRightColor'
+  | 'borderTopColor'
+  | 'borderBlockColor'
+  | 'borderBlockEndColor'
+  | 'borderBlockStartColor'
+  | 'borderEndColor'
+  | 'borderStartColor'
+  | 'shadowColor'
+  | 'borderRadius'
+  | 'rounded'
+  | 'borderBottomEndRadius'
+  | 'borderBottomLeftRadius'
+  | 'borderBottomRightRadius'
+  | 'borderBottomStartRadius'
+  | 'borderTopEndRadius'
+  | 'borderTopLeftRadius'
+  | 'borderTopRightRadius'
+  | 'borderTopStartRadius'
+  | 'borderEndEndRadius'
+  | 'borderEndStartRadius'
+  | 'borderStartEndRadius'
+  | 'borderStartStartRadius'
+  | 'opacity'
+  | 'borderBottomWidth'
+  | 'borderEndWidth'
+  | 'borderLeftWidth'
+  | 'borderRightWidth'
+  | 'borderStartWidth'
+  | 'borderTopWidth'
+  | 'borderWidth'
+  | 'height'
+  | 'width'
+  | 'maxWidth'
+  | 'maxHeight'
+  | 'minWidth'
+  | 'minHeight'
+  | 'top'
+  | 'bottom'
+  | 'left'
+  | 'right'
+  | 'start'
+  | 'end'
+  // deprecated
+  | 'rotation'
+  | 'scaleX'
+  | 'scaleY'
+  | 'transformMatrix'
+  | 'translateX'
+  | 'translateY'
+>;
+
+export type OtherBoxViewStyles = Pick<
+  OmittedStyles,
+  | 'alignContent'
+  | 'alignItems'
+  | 'alignSelf'
+  | 'aspectRatio'
+  | 'backfaceVisibility'
+  | 'borderCurve'
+  | 'borderStyle'
+  | 'cursor'
+  | 'direction'
+  | 'display'
+  | 'elevation'
+  | 'flex'
+  | 'flexBasis'
+  | 'flexDirection'
+  | 'flexGrow'
+  | 'flexShrink'
+  | 'flexWrap'
+  | 'justifyContent'
+  | 'overflow'
+  | 'pointerEvents'
+  | 'position'
+  | 'shadowOffset'
+  | 'shadowOpacity'
+  | 'shadowRadius'
+  | 'transform'
+  | 'transformOrigin'
+  | 'zIndex'
+>;
+
+interface BoxProps extends OmittedStyles, ViewProps {
+  // Style Mapping
+  // - Colors
   bg?: ColorValue;
   bgColor?: ColorValue;
+  // - Space
   h?: SpaceValue;
   w?: SpaceValue;
   p?: SpaceValue;
@@ -97,7 +138,10 @@ interface BoxProps
   mb?: SpaceValue;
   mr?: SpaceValue;
   ml?: SpaceValue;
+  // - Radii
   rounded?: RadiiValue;
+  // Theme Mapping
+  // - Space
   top?: SpaceValue;
   bottom?: SpaceValue;
   left?: SpaceValue;
@@ -123,6 +167,15 @@ interface BoxProps
   columnGap?: SpaceValue;
   gap?: SpaceValue;
   rowGap?: SpaceValue;
+  height?: SpaceValue;
+  width?: SpaceValue;
+  minHeight?: SpaceValue;
+  minWidth?: SpaceValue;
+  maxWidth?: SpaceValue;
+  maxHeight?: SpaceValue;
+  start?: SpaceValue;
+  end?: SpaceValue;
+  // - Colors
   backgroundColor?: ColorValue;
   borderColor?: ColorValue;
   borderBottomColor?: ColorValue;
@@ -135,6 +188,7 @@ interface BoxProps
   borderEndColor?: ColorValue;
   borderStartColor?: ColorValue;
   shadowColor?: ColorValue;
+  // - Radii
   borderRadius?: RadiiValue;
   borderBottomEndRadius?: RadiiValue;
   borderBottomLeftRadius?: RadiiValue;
@@ -148,7 +202,9 @@ interface BoxProps
   borderEndStartRadius?: RadiiValue;
   borderStartEndRadius?: RadiiValue;
   borderStartStartRadius?: RadiiValue;
+  // - Opacity
   opacity?: OpacityValue;
+  // - Border Width
   borderBottomWidth?: BordeWidthValue;
   borderEndWidth?: BordeWidthValue;
   borderLeftWidth?: BordeWidthValue;
@@ -156,14 +212,6 @@ interface BoxProps
   borderStartWidth?: BordeWidthValue;
   borderTopWidth?: BordeWidthValue;
   borderWidth?: BordeWidthValue;
-  height?: SpaceValue;
-  width?: SpaceValue;
-  minHeight?: SpaceValue;
-  minWidth?: SpaceValue;
-  maxWidth?: SpaceValue;
-  maxHeight?: SpaceValue;
-  start?: SpaceValue;
-  end?: SpaceValue;
 }
 
 export default BoxProps;

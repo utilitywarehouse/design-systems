@@ -1,266 +1,310 @@
-import React, { forwardRef, memo } from 'react';
-import { View, ViewStyle } from 'react-native';
-import { useStyles } from 'react-native-unistyles';
+import React, { memo } from 'react';
+import { View, ViewProps, ViewStyle } from 'react-native';
+import { useStyles, UnistylesTheme } from 'react-native-unistyles';
 import type BoxProps from './Box.props';
-import getStyleValue from '../../utils/getStyleValue';
 
-const BoxComponent = forwardRef<View, BoxProps>(
-  (
-    {
-      padding,
-      p,
-      paddingHorizontal,
-      px,
-      paddingVertical,
-      py,
-      paddingTop,
-      pt,
-      paddingBottom,
-      pb,
-      paddingLeft,
-      pl,
-      paddingRight,
-      pr,
-      paddingEnd,
-      paddingStart,
-      margin,
-      m,
-      marginHorizontal,
-      mx,
-      marginVertical,
-      my,
-      marginTop,
-      mt,
-      marginBottom,
-      mb,
-      marginLeft,
-      ml,
-      marginRight,
-      mr,
-      marginEnd,
-      marginStart,
-      height,
-      h,
-      width,
-      w,
-      maxHeight,
-      maxWidth,
-      minHeight,
-      minWidth,
-      backgroundColor,
-      bg,
-      bgColor,
-      borderColor,
-      borderTopColor,
-      borderBottomColor,
-      borderLeftColor,
-      borderRightColor,
-      borderBlockColor,
-      borderBlockEndColor,
-      borderBlockStartColor,
-      borderEndColor,
-      borderStartColor,
-      borderRadius,
-      rounded,
-      borderTopLeftRadius,
-      borderTopRightRadius,
-      borderBottomLeftRadius,
-      borderBottomRightRadius,
-      borderBottomEndRadius,
-      borderBottomStartRadius,
-      borderTopEndRadius,
-      borderTopStartRadius,
-      borderEndEndRadius,
-      borderEndStartRadius,
-      borderStartEndRadius,
-      borderStartStartRadius,
-      borderWidth,
-      borderTopWidth,
-      borderBottomWidth,
-      borderLeftWidth,
-      borderRightWidth,
-      borderEndWidth,
-      borderStartWidth,
-      opacity,
-      shadowColor,
-      alignContent,
-      alignItems,
-      alignSelf,
-      aspectRatio,
-      bottom,
-      display,
-      end,
-      flex,
-      flexBasis,
-      flexDirection,
-      flexGrow,
-      flexShrink,
-      flexWrap,
-      justifyContent,
-      left,
-      overflow,
-      position,
-      right,
-      start,
-      top,
-      zIndex,
-      direction,
-      backfaceVisibility,
-      borderStyle,
-      elevation,
-      shadowOffset,
-      shadowOpacity,
-      shadowRadius,
-      transform,
-      transformOrigin,
-      gap,
-      rowGap,
-      columnGap,
-      pointerEvents,
-      cursor,
-      style,
-      children,
-      ...restProps
-    },
-    ref
-  ) => {
-    const {
-      theme: { space, colors, radii, borderWidths, opacity: themeOpacity },
-    } = useStyles();
+const propStyleMapping: { [key: string]: keyof ViewStyle } = {
+  p: 'padding',
+  px: 'paddingHorizontal',
+  py: 'paddingVertical',
+  pt: 'paddingTop',
+  pb: 'paddingBottom',
+  pl: 'paddingLeft',
+  pr: 'paddingRight',
+  m: 'margin',
+  mx: 'marginHorizontal',
+  my: 'marginVertical',
+  mt: 'marginTop',
+  mb: 'marginBottom',
+  ml: 'marginLeft',
+  mr: 'marginRight',
+  bg: 'backgroundColor',
+  bgColor: 'backgroundColor',
+  h: 'height',
+  w: 'width',
+  rounded: 'borderRadius',
+};
 
-    const styles: ViewStyle = {};
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const assignStyle = (
-      stylePropName: keyof ViewStyle,
-      propValue: any, // eslint-disable-line @typescript-eslint/no-explicit-any
-      themeMapping?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
-    ) => {
-      if (propValue !== undefined) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        styles[stylePropName] = themeMapping ? getStyleValue(propValue, themeMapping) : propValue;
-      }
-    };
+const themeStyleMapping: { [key in keyof ViewStyle]?: keyof UnistylesTheme } = {
+  top: 'space',
+  bottom: 'space',
+  left: 'space',
+  right: 'space',
+  padding: 'space',
+  paddingHorizontal: 'space',
+  paddingVertical: 'space',
+  paddingTop: 'space',
+  paddingBottom: 'space',
+  paddingLeft: 'space',
+  paddingRight: 'space',
+  paddingEnd: 'space',
+  paddingStart: 'space',
+  margin: 'space',
+  marginHorizontal: 'space',
+  marginVertical: 'space',
+  marginTop: 'space',
+  marginBottom: 'space',
+  marginLeft: 'space',
+  marginRight: 'space',
+  marginEnd: 'space',
+  marginStart: 'space',
+  columnGap: 'space',
+  gap: 'space',
+  rowGap: 'space',
+  height: 'space',
+  width: 'space',
+  minHeight: 'space',
+  minWidth: 'space',
+  maxWidth: 'space',
+  maxHeight: 'space',
+  start: 'space',
+  end: 'space',
+  backgroundColor: 'colors',
+  borderColor: 'colors',
+  borderBottomColor: 'colors',
+  borderLeftColor: 'colors',
+  borderRightColor: 'colors',
+  borderTopColor: 'colors',
+  borderBlockColor: 'colors',
+  borderBlockEndColor: 'colors',
+  borderBlockStartColor: 'colors',
+  borderEndColor: 'colors',
+  borderStartColor: 'colors',
+  shadowColor: 'colors',
+  borderRadius: 'radii',
+  borderBottomEndRadius: 'radii',
+  borderBottomLeftRadius: 'radii',
+  borderBottomRightRadius: 'radii',
+  borderBottomStartRadius: 'radii',
+  borderTopEndRadius: 'radii',
+  borderTopLeftRadius: 'radii',
+  borderTopRightRadius: 'radii',
+  borderTopStartRadius: 'radii',
+  borderEndEndRadius: 'radii',
+  borderEndStartRadius: 'radii',
+  borderStartEndRadius: 'radii',
+  borderStartStartRadius: 'radii',
+  opacity: 'opacity',
+  borderBottomWidth: 'borderWidths',
+  borderEndWidth: 'borderWidths',
+  borderLeftWidth: 'borderWidths',
+  borderRightWidth: 'borderWidths',
+  borderStartWidth: 'borderWidths',
+  borderTopWidth: 'borderWidths',
+  borderWidth: 'borderWidths',
+};
 
-    // Spacing props
-    assignStyle('padding', padding ?? p, space);
-    assignStyle('paddingHorizontal', paddingHorizontal ?? px, space);
-    assignStyle('paddingVertical', paddingVertical ?? py, space);
-    assignStyle('paddingTop', paddingTop ?? pt, space);
-    assignStyle('paddingBottom', paddingBottom ?? pb, space);
-    assignStyle('paddingLeft', paddingLeft ?? pl, space);
-    assignStyle('paddingRight', paddingRight ?? pr, space);
-    assignStyle('paddingEnd', paddingEnd, space);
-    assignStyle('paddingStart', paddingStart, space);
-
-    assignStyle('margin', margin ?? m, space);
-    assignStyle('marginHorizontal', marginHorizontal ?? mx, space);
-    assignStyle('marginVertical', marginVertical ?? my, space);
-    assignStyle('marginTop', marginTop ?? mt, space);
-    assignStyle('marginBottom', marginBottom ?? mb, space);
-    assignStyle('marginLeft', marginLeft ?? ml, space);
-    assignStyle('marginRight', marginRight ?? mr, space);
-    assignStyle('marginEnd', marginEnd, space);
-    assignStyle('marginStart', marginStart, space);
-
-    assignStyle('gap', gap, space);
-    assignStyle('rowGap', rowGap, space);
-    assignStyle('columnGap', columnGap, space);
-
-    assignStyle('bottom', bottom, space);
-    assignStyle('end', end, space);
-    assignStyle('left', left, space);
-    assignStyle('right', right, space);
-    assignStyle('start', start, space);
-    assignStyle('top', top, space);
-
-    // Size props
-    assignStyle('height', height ?? h, space);
-    assignStyle('width', width ?? w, space);
-    assignStyle('maxHeight', maxHeight, space);
-    assignStyle('maxWidth', maxWidth, space);
-    assignStyle('minHeight', minHeight, space);
-    assignStyle('minWidth', minWidth, space);
-
-    // Color props
-    assignStyle('backgroundColor', backgroundColor ?? bg ?? bgColor, colors);
-    assignStyle('borderColor', borderColor, colors);
-    assignStyle('borderTopColor', borderTopColor, colors);
-    assignStyle('borderBottomColor', borderBottomColor, colors);
-    assignStyle('borderLeftColor', borderLeftColor, colors);
-    assignStyle('borderRightColor', borderRightColor, colors);
-    assignStyle('borderBlockColor', borderBlockColor, colors);
-    assignStyle('borderBlockEndColor', borderBlockEndColor, colors);
-    assignStyle('borderBlockStartColor', borderBlockStartColor, colors);
-    assignStyle('borderEndColor', borderEndColor, colors);
-    assignStyle('borderStartColor', borderStartColor, colors);
-    assignStyle('shadowColor', shadowColor, colors);
-
-    // Border radius props
-    assignStyle('borderRadius', borderRadius ?? rounded, radii);
-    assignStyle('borderTopLeftRadius', borderTopLeftRadius, radii);
-    assignStyle('borderTopRightRadius', borderTopRightRadius, radii);
-    assignStyle('borderBottomLeftRadius', borderBottomLeftRadius, radii);
-    assignStyle('borderBottomRightRadius', borderBottomRightRadius, radii);
-    assignStyle('borderBottomEndRadius', borderBottomEndRadius, radii);
-    assignStyle('borderBottomStartRadius', borderBottomStartRadius, radii);
-    assignStyle('borderTopEndRadius', borderTopEndRadius, radii);
-    assignStyle('borderTopStartRadius', borderTopStartRadius, radii);
-    assignStyle('borderEndEndRadius', borderEndEndRadius, radii);
-    assignStyle('borderEndStartRadius', borderEndStartRadius, radii);
-    assignStyle('borderStartEndRadius', borderStartEndRadius, radii);
-    assignStyle('borderStartStartRadius', borderStartStartRadius, radii);
-
-    // Border width props
-    assignStyle('borderWidth', borderWidth, borderWidths);
-    assignStyle('borderTopWidth', borderTopWidth, borderWidths);
-    assignStyle('borderBottomWidth', borderBottomWidth, borderWidths);
-    assignStyle('borderLeftWidth', borderLeftWidth, borderWidths);
-    assignStyle('borderRightWidth', borderRightWidth, borderWidths);
-    assignStyle('borderEndWidth', borderEndWidth, borderWidths);
-    assignStyle('borderStartWidth', borderStartWidth, borderWidths);
-
-    // Opacity
-    assignStyle('opacity', opacity, themeOpacity);
-
-    // Other style-related props
-    assignStyle('alignContent', alignContent);
-    assignStyle('alignItems', alignItems);
-    assignStyle('alignSelf', alignSelf);
-    assignStyle('aspectRatio', aspectRatio);
-    assignStyle('display', display);
-    assignStyle('flex', flex);
-    assignStyle('flexBasis', flexBasis);
-    assignStyle('flexDirection', flexDirection);
-    assignStyle('flexGrow', flexGrow);
-    assignStyle('flexShrink', flexShrink);
-    assignStyle('flexWrap', flexWrap);
-    assignStyle('justifyContent', justifyContent);
-    assignStyle('overflow', overflow);
-    assignStyle('position', position);
-    assignStyle('zIndex', zIndex);
-    assignStyle('direction', direction);
-    assignStyle('backfaceVisibility', backfaceVisibility);
-    assignStyle('borderStyle', borderStyle);
-    assignStyle('elevation', elevation);
-    assignStyle('shadowOffset', shadowOffset);
-    assignStyle('shadowOpacity', shadowOpacity);
-    assignStyle('shadowRadius', shadowRadius);
-    assignStyle('transform', transform);
-    assignStyle('transformOrigin', transformOrigin);
-    assignStyle('pointerEvents', pointerEvents);
-    assignStyle('cursor', cursor);
-
-    return (
-      <View ref={ref} {...restProps} style={[styles, style]}>
-        {children}
-      </View>
-    );
+const resolveThemeValue = (value: any, themeMapping: any): any => {
+  if (
+    typeof value === 'string' &&
+    value.startsWith('$') &&
+    themeMapping &&
+    typeof themeMapping === 'object'
+  ) {
+    const key = value.slice(1);
+    if (themeMapping[key] !== undefined) {
+      return themeMapping[key];
+    }
   }
-);
+  return value;
+};
 
-BoxComponent.displayName = 'Box';
+const viewStyleProps = new Set<keyof ViewStyle>([
+  'alignContent',
+  'alignItems',
+  'alignSelf',
+  'aspectRatio',
+  'backfaceVisibility',
+  'backgroundColor',
+  'borderBottomColor',
+  'borderBottomEndRadius',
+  'borderBottomLeftRadius',
+  'borderBottomRightRadius',
+  'borderBottomStartRadius',
+  'borderBottomWidth',
+  'borderColor',
+  'borderEndColor',
+  'borderEndWidth',
+  'borderLeftColor',
+  'borderLeftWidth',
+  'borderRadius',
+  'borderRightColor',
+  'borderRightWidth',
+  'borderStartColor',
+  'borderStartWidth',
+  'borderStyle',
+  'borderTopColor',
+  'borderTopEndRadius',
+  'borderTopLeftRadius',
+  'borderTopRightRadius',
+  'borderTopStartRadius',
+  'borderTopWidth',
+  'borderWidth',
+  'bottom',
+  'direction',
+  'display',
+  'elevation',
+  'end',
+  'flex',
+  'flexBasis',
+  'flexDirection',
+  'flexGrow',
+  'flexShrink',
+  'flexWrap',
+  'height',
+  'justifyContent',
+  'left',
+  'margin',
+  'marginBottom',
+  'marginEnd',
+  'marginHorizontal',
+  'marginLeft',
+  'marginRight',
+  'marginStart',
+  'marginTop',
+  'marginVertical',
+  'maxHeight',
+  'maxWidth',
+  'minHeight',
+  'minWidth',
+  'opacity',
+  'overflow',
+  'padding',
+  'paddingBottom',
+  'paddingEnd',
+  'paddingHorizontal',
+  'paddingLeft',
+  'paddingRight',
+  'paddingStart',
+  'paddingTop',
+  'paddingVertical',
+  'position',
+  'right',
+  'shadowColor',
+  'shadowOffset',
+  'shadowOpacity',
+  'shadowRadius',
+  'start',
+  'top',
+  'transform',
+  'transformOrigin',
+  'width',
+  'zIndex',
+]);
 
-const Box = memo(BoxComponent);
-Box.displayName = 'Box';
+const directStyleProps: Array<keyof ViewStyle> = [
+  'alignContent',
+  'alignItems',
+  'alignSelf',
+  'aspectRatio',
+  'backfaceVisibility',
+  'borderCurve',
+  'borderStyle',
+  'cursor',
+  'direction',
+  'display',
+  'elevation',
+  'flex',
+  'flexBasis',
+  'flexDirection',
+  'flexGrow',
+  'flexShrink',
+  'flexWrap',
+  'justifyContent',
+  'overflow',
+  'pointerEvents',
+  'position',
+  'rotation',
+  'scaleX',
+  'scaleY',
+  'shadowOffset',
+  'shadowOpacity',
+  'shadowRadius',
+  'transform',
+  'transformMatrix',
+  'transformOrigin',
+  'translateX',
+  'translateY',
+  'zIndex',
+];
 
-export default Box;
+function isViewStyleProp(propName: string): propName is keyof ViewStyle {
+  return viewStyleProps.has(propName as keyof ViewStyle);
+}
+
+const Box: React.FC<BoxProps> = ({ style, children, ...props }) => {
+  const { theme } = useStyles();
+
+  const styles: ViewStyle = {};
+  const viewProps: ViewProps = {};
+
+  for (const prop in propStyleMapping) {
+    const stylePropName = propStyleMapping[prop];
+    const propValue = props[prop as keyof Omit<BoxProps, 'children' | 'style'>];
+
+    if (propValue !== undefined) {
+      const themeKey = themeStyleMapping[stylePropName];
+      if (themeKey) {
+        const themeMapping = theme[themeKey as keyof UnistylesTheme];
+        if (themeMapping && typeof themeMapping === 'object') {
+          (styles as any)[stylePropName] = resolveThemeValue(propValue, themeMapping);
+        } else {
+          (styles as any)[stylePropName] = propValue;
+        }
+      } else {
+        (styles as any)[stylePropName] = propValue;
+      }
+    }
+  }
+
+  // Second loop: directStyleProps
+  directStyleProps.forEach(stylePropName => {
+    const propValue = props[stylePropName as keyof Omit<BoxProps, 'children' | 'style'>];
+    if (propValue !== undefined) {
+      (styles as any)[stylePropName] = propValue;
+    }
+  });
+
+  // Third loop: Remaining style props
+  for (const propName in props) {
+    // Skip if already handled
+    if (
+      propStyleMapping.hasOwnProperty(propName) ||
+      directStyleProps.includes(propName as keyof ViewStyle) ||
+      styles.hasOwnProperty(propName)
+    ) {
+      continue;
+    }
+
+    // Check if propName is a valid style property
+    if (isViewStyleProp(propName)) {
+      const stylePropName = propName as keyof ViewStyle;
+      const propValue = props[propName as keyof Omit<BoxProps, 'children' | 'style'>];
+
+      if (propValue !== undefined) {
+        const themeKey = themeStyleMapping[stylePropName];
+        if (themeKey) {
+          const themeMapping = theme[themeKey as keyof UnistylesTheme];
+          if (themeMapping && typeof themeMapping === 'object') {
+            (styles as any)[stylePropName] = resolveThemeValue(propValue, themeMapping);
+          } else {
+            (styles as any)[stylePropName] = propValue;
+          }
+        } else {
+          (styles as any)[stylePropName] = propValue;
+        }
+      }
+    } else {
+      // Non-style props, add to viewProps
+      (viewProps as any)[propName] = props[propName as keyof Omit<BoxProps, 'children' | 'style'>];
+    }
+  }
+
+  return (
+    <View {...viewProps} style={[styles, style]}>
+      {children}
+    </View>
+  );
+};
+
+export default memo(Box);
