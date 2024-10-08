@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { forwardRef, memo } from 'react';
 import { View, ViewStyle } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
@@ -255,5 +257,7 @@ const Box = forwardRef<View, BoxProps>(
     );
   }
 );
+
+Box.displayName = 'Box';
 
 export default memo(Box);
