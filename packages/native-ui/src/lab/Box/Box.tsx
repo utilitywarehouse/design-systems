@@ -1,4 +1,7 @@
-import React, { memo } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import React, { forwardRef, memo } from 'react';
 import { View, ViewProps, ViewStyle } from 'react-native';
 import { useStyles, UnistylesTheme } from 'react-native-unistyles';
 import type BoxProps from './Box.props';
@@ -214,17 +217,11 @@ const directStyleProps: Array<keyof ViewStyle> = [
   'overflow',
   'pointerEvents',
   'position',
-  'rotation',
-  'scaleX',
-  'scaleY',
   'shadowOffset',
   'shadowOpacity',
   'shadowRadius',
   'transform',
-  'transformMatrix',
   'transformOrigin',
-  'translateX',
-  'translateY',
   'zIndex',
 ];
 
@@ -232,12 +229,13 @@ function isViewStyleProp(propName: string): propName is keyof ViewStyle {
   return viewStyleProps.has(propName as keyof ViewStyle);
 }
 
-const Box: React.FC<BoxProps> = ({ style, children, ...props }) => {
+const BoxComponent = ({ style, children, ...props }: BoxProps, ref: React.Ref<View>) => {
   const { theme } = useStyles();
 
-  const styles: ViewStyle = {};
-  const viewProps: ViewProps = {};
+  const styles: Partial<ViewStyle> = {};
+  const viewProps: Partial<ViewProps> = {};
 
+  // propStyleMapping
   for (const prop in propStyleMapping) {
     const stylePropName = propStyleMapping[prop];
     const propValue = props[prop as keyof Omit<BoxProps, 'children' | 'style'>];
@@ -257,7 +255,7 @@ const Box: React.FC<BoxProps> = ({ style, children, ...props }) => {
     }
   }
 
-  // Second loop: directStyleProps
+  // directStyleProps
   directStyleProps.forEach(stylePropName => {
     const propValue = props[stylePropName as keyof Omit<BoxProps, 'children' | 'style'>];
     if (propValue !== undefined) {
@@ -265,13 +263,13 @@ const Box: React.FC<BoxProps> = ({ style, children, ...props }) => {
     }
   });
 
-  // Third loop: Remaining style props
+  // Remaining style props
   for (const propName in props) {
     // Skip if already handled
     if (
-      propStyleMapping.hasOwnProperty(propName) ||
+      Object.prototype.hasOwnProperty.call(propStyleMapping, propName) ||
       directStyleProps.includes(propName as keyof ViewStyle) ||
-      styles.hasOwnProperty(propName)
+      Object.prototype.hasOwnProperty.call(styles, propName)
     ) {
       continue;
     }
@@ -301,10 +299,14 @@ const Box: React.FC<BoxProps> = ({ style, children, ...props }) => {
   }
 
   return (
-    <View {...viewProps} style={[styles, style]}>
+    <View ref={ref} style={[styles, style]} {...viewProps}>
       {children}
     </View>
   );
 };
 
-export default memo(Box);
+const ForwardedBox = forwardRef<View, BoxProps>(BoxComponent);
+
+ForwardedBox.displayName = 'Box';
+
+export default memo(ForwardedBox);

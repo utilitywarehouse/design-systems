@@ -7,7 +7,7 @@ import type {
   SpaceValue,
 } from '../../types';
 
-type OmittedStyles = Omit<
+export type OmittedStyles = Omit<
   ViewStyle,
   | 'padding'
   | 'paddingHorizontal'
@@ -116,31 +116,7 @@ export type OtherBoxViewStyles = Pick<
   | 'zIndex'
 >;
 
-interface BoxProps extends OmittedStyles, ViewProps {
-  // Style Mapping
-  // - Colors
-  bg?: ColorValue;
-  bgColor?: ColorValue;
-  // - Space
-  h?: SpaceValue;
-  w?: SpaceValue;
-  p?: SpaceValue;
-  px?: SpaceValue;
-  py?: SpaceValue;
-  pt?: SpaceValue;
-  pb?: SpaceValue;
-  pr?: SpaceValue;
-  pl?: SpaceValue;
-  m?: SpaceValue;
-  mx?: SpaceValue;
-  my?: SpaceValue;
-  mt?: SpaceValue;
-  mb?: SpaceValue;
-  mr?: SpaceValue;
-  ml?: SpaceValue;
-  // - Radii
-  rounded?: RadiiValue;
-  // Theme Mapping
+export interface ThemedBoxViewStyleProps {
   // - Space
   top?: SpaceValue;
   bottom?: SpaceValue;
@@ -213,5 +189,37 @@ interface BoxProps extends OmittedStyles, ViewProps {
   borderTopWidth?: BordeWidthValue;
   borderWidth?: BordeWidthValue;
 }
+
+export interface BoxStyleMappingValues {
+  // Style Mapping
+  // - Colors
+  bg?: ColorValue;
+  bgColor?: ColorValue;
+  // - Space
+  h?: SpaceValue;
+  w?: SpaceValue;
+  p?: SpaceValue;
+  px?: SpaceValue;
+  py?: SpaceValue;
+  pt?: SpaceValue;
+  pb?: SpaceValue;
+  pr?: SpaceValue;
+  pl?: SpaceValue;
+  m?: SpaceValue;
+  mx?: SpaceValue;
+  my?: SpaceValue;
+  mt?: SpaceValue;
+  mb?: SpaceValue;
+  mr?: SpaceValue;
+  ml?: SpaceValue;
+  // - Radii
+  rounded?: RadiiValue;
+}
+
+export interface BoxProps
+  extends BoxStyleMappingValues,
+    ThemedBoxViewStyleProps,
+    OtherBoxViewStyles,
+    ViewProps {}
 
 export default BoxProps;
