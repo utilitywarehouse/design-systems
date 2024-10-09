@@ -43,7 +43,7 @@ const classSelectors = {
   },
 };
 
-const StyledElement = styled('span')(() => {
+const StyledElement = styled('div')(() => {
   const sizeStyles = {
     small: {},
     medium: {},
@@ -75,7 +75,7 @@ const StyledElement = styled('span')(() => {
  * TODO: Document the COMPONENT_NAME component.
  */
 export const COMPONENT_NAME = React.forwardRef<
-  React.ElementRef<'span'>,
+  React.ElementRef<'div'>,
   React.PropsWithChildren<PropsWithSx<COMPONENT_NAMEProps>>
 >(({ size = 'medium', className, ...props }, ref) => {
   return (
