@@ -23,9 +23,7 @@ const BoxBasic: StoryFn<{
         justifyContent="center"
         alignItems="center"
       >
-        <Text color="white" fontWeight="$bold">
-          BOX
-        </Text>
+        <Text color="$white">BOX</Text>
       </Box>
     </>
   );

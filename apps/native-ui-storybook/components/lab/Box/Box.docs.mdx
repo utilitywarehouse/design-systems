@@ -22,7 +22,8 @@ If you're looking for a flexible component to help with low-level layout needs, 
 
 ## Usage
 
-> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+> The `Box` component comes witha slight performance overhead compared to using a `View` component directly.
+> It should be used sparingly and for more complex layouts use the `createStyleSheet` function and `useStyles` hook.
 
 <Canvas>
   <NativeUIProvider>
