@@ -4,6 +4,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { RadioTile } from './RadioTile';
 
+import { Flex } from '../Flex';
+import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup';
 import { Stack } from '../Stack';
 
@@ -53,6 +55,23 @@ export const RadioTileStoryWithOneLongLabel: Story = {
         <RadioTile value="2" label="Twit Twoooooooooooooo" />
         <RadioTile value="3" label="Three" />
       </RadioGroup>
+    );
+  },
+};
+
+export const RadioTileWidth: Story = {
+  render: () => {
+    return (
+      <Flex width={300}>
+        <RadioGroup
+          label="Would you like to keepan existing mobile number for this SIM?"
+          direction="row"
+          contentWidth="100%"
+        >
+          <RadioTile value="yes" label="Yes" />
+          <RadioTile value="no" label="No" />
+        </RadioGroup>
+      </Flex>
     );
   },
 };
