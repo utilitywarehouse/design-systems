@@ -1,40 +1,34 @@
 import React from 'react';
-import { Dimensions, SafeAreaView } from 'react-native';
+import { Dimensions, SafeAreaView, ViewProps } from 'react-native';
 import { GestureDetector, Gesture, gestureHandlerRootHOC } from 'react-native-gesture-handler';
-import Animated, {
-  useSharedValue,
-  withSpring,
-  withTiming,
-  runOnJS,
-  SharedValue,
-} from 'react-native-reanimated';
+import Animated, { useSharedValue, withSpring, withTiming, runOnJS } from 'react-native-reanimated';
 import ActionsheetDragIndicatorWrapper from './ActionsheetDragIndicatorWrapper';
 import { useStyles, createStyleSheet } from 'react-native-unistyles';
+import { useActionsheetContext } from './Actionsheet.context';
+import ActionsheetDragIndicator from './ActionsheetDragIndicator';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-const CLOSE_THRESHOLD = 80;
-
-interface ActionsheetContentProps {
-  translateY: SharedValue<number>;
-  backdropOpacity: SharedValue<number>;
-  keyboardHeight: SharedValue<number>;
-  onClose: () => void;
-  children: React.ReactNode;
-}
-
-const ActionsheetContentComponent: React.FC<ActionsheetContentProps> = ({
-  translateY,
-  backdropOpacity,
-  onClose,
-  children,
-}) => {
+const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...props }) => {
+  const {
+    translateY,
+    backdropOpacity,
+    onClose,
+    dragCloseThreshold,
+    maxHeight,
+    minHeight,
+    includeDragIndicator,
+    dragOnIndicatorOnly,
+    showIndicator,
+  } = useActionsheetContext();
   const { styles } = useStyles(stylesheet);
   const context = useSharedValue<{ y: number }>({ y: 0 });
+  const [dragging, setDragging] = React.useState(false);
 
   const gesture = Gesture.Pan()
     .onStart(() => {
       context.value.y = translateY.value;
+      runOnJS(setDragging)(true);
     })
     .onUpdate(event => {
       translateY.value = context.value.y + event.translationY;
@@ -44,24 +38,51 @@ const ActionsheetContentComponent: React.FC<ActionsheetContentProps> = ({
       backdropOpacity.value = opacity;
     })
     .onEnd(() => {
-      if (translateY.value > CLOSE_THRESHOLD) {
+      if (translateY.value > dragCloseThreshold) {
         translateY.value = withTiming(SCREEN_HEIGHT, { duration: 300 }, (isFinished?: boolean) => {
           if (isFinished) {
             runOnJS(onClose)();
+            runOnJS(setDragging)(false);
           }
         });
         backdropOpacity.value = withTiming(0, { duration: 300 });
       } else {
         translateY.value = withSpring(0, { damping: 50 });
         backdropOpacity.value = withTiming(0.6, { duration: 300 });
+        runOnJS(setDragging)(false);
       }
     });
 
-  return (
+  return dragOnIndicatorOnly && showIndicator ? (
+    <Animated.View
+      style={[styles.content, styles.extraStyles(maxHeight, minHeight), style]}
+      {...props}
+    >
+      <SafeAreaView>
+        {includeDragIndicator ? (
+          <GestureDetector gesture={gesture}>
+            <ActionsheetDragIndicatorWrapper>
+              <ActionsheetDragIndicator dragging={dragging} />
+            </ActionsheetDragIndicatorWrapper>
+          </GestureDetector>
+        ) : null}
+        {children}
+      </SafeAreaView>
+    </Animated.View>
+  ) : (
     <GestureDetector gesture={gesture}>
-      <Animated.View style={styles.content}>
-        <ActionsheetDragIndicatorWrapper />
-        <SafeAreaView>{children}</SafeAreaView>
+      <Animated.View
+        style={[styles.content, styles.extraStyles(maxHeight, minHeight), style]}
+        {...props}
+      >
+        <SafeAreaView>
+          {includeDragIndicator && showIndicator ? (
+            <ActionsheetDragIndicatorWrapper>
+              <ActionsheetDragIndicator dragging={dragging} />
+            </ActionsheetDragIndicatorWrapper>
+          ) : null}
+          {children}
+        </SafeAreaView>
       </Animated.View>
     </GestureDetector>
   );
@@ -77,20 +98,10 @@ const stylesheet = createStyleSheet(({ space, colorMode, colors, radii }) => ({
     paddingHorizontal: space['5'],
     paddingBottom: space['5'],
     paddingTop: space['2'],
-    maxHeight: SCREEN_HEIGHT * 0.8,
-    // minHeight: SCREEN_HEIGHT * 0.3,
     overflow: 'hidden',
-    ...(colorMode === 'light'
-      ? {
-          shadowColor: colors.green900,
-          shadowOffset: {
-            width: 0,
-            height: 3,
-          },
-          shadowRadius: 8,
-          shadowOpacity: 0.2,
-          elevation: 10,
-        }
-      : {}),
   },
+  extraStyles: (maxHeight: number, minHeight: number) => ({
+    maxHeight,
+    minHeight,
+  }),
 }));

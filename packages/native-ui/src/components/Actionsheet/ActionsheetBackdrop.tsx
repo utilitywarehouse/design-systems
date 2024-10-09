@@ -1,19 +1,20 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewProps } from 'react-native';
 import { TapGestureHandler, gestureHandlerRootHOC } from 'react-native-gesture-handler';
-import Animated, { useAnimatedStyle, SharedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { useStyles, createStyleSheet } from 'react-native-unistyles';
+import { useActionsheetContext } from './Actionsheet.context';
 
-interface ActionsheetBackdropProps {
-  onPress: () => void;
-  animatedOpacity: SharedValue<number>;
-}
-
-const ActionsheetBackdropComponent: React.FC<ActionsheetBackdropProps> = ({
-  onPress,
-  animatedOpacity,
+const ActionsheetBackdropComponent: React.FC<Omit<ViewProps, 'children'>> = ({
+  style,
+  ...props
 }) => {
   const { styles } = useStyles(stylesheet);
+  const {
+    onClose,
+    closeOnBackdropPress,
+    backdropOpacity: animatedOpacity,
+  } = useActionsheetContext();
 
   const animatedStyle = useAnimatedStyle(
     () => ({
@@ -23,8 +24,8 @@ const ActionsheetBackdropComponent: React.FC<ActionsheetBackdropProps> = ({
   );
 
   return (
-    <TapGestureHandler onEnded={onPress}>
-      <Animated.View style={[styles.backdrop, animatedStyle]} />
+    <TapGestureHandler onEnded={closeOnBackdropPress ? onClose : undefined}>
+      <Animated.View style={[styles.backdrop, animatedStyle, style]} {...props} />
     </TapGestureHandler>
   );
 };

@@ -1,14 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
-import ActionsheetDragIndicator from './ActionsheetDragIndicator';
+import { View, ViewProps } from 'react-native';
 import { useStyles, createStyleSheet } from 'react-native-unistyles';
 
-const ActionsheetDragIndicatorWrapper: React.FC = () => {
+const ActionsheetDragIndicatorWrapper: React.FC<ViewProps> = ({ children, style, ...props }) => {
   const { styles } = useStyles(stylesheet);
 
   return (
-    <View style={styles.wrapper}>
-      <ActionsheetDragIndicator />
+    <View style={[styles.wrapper, style]} {...props}>
+      {children}
     </View>
   );
 };
@@ -16,7 +15,6 @@ const ActionsheetDragIndicatorWrapper: React.FC = () => {
 const stylesheet = createStyleSheet(({ space }) => ({
   wrapper: {
     paddingVertical: space['1'],
-    marginBottom: space['3'],
     width: space.full,
     alignItems: 'center',
   },

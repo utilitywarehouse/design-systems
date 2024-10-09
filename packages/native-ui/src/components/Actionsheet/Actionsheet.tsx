@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Modal, Dimensions, Keyboard, KeyboardEvent } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -9,16 +9,26 @@ import Animated, {
 import ActionsheetBackdrop from './ActionsheetBackdrop';
 import ActionsheetContent from './ActionsheetContent';
 import { useStyles, createStyleSheet } from 'react-native-unistyles';
+import type ActionsheetProps from './Actionsheet.props';
+import ActionsheetContext from './Actionsheet.context';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-interface ActionsheetProps {
-  visible: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-}
-
-const Actionsheet: React.FC<ActionsheetProps> = ({ visible, onClose, children }) => {
+const Actionsheet: React.FC<ActionsheetProps> = ({
+  visible,
+  onClose,
+  keyboardAvoiding = true,
+  closeOnBackdropPress = true,
+  dragCloseThreshold = 80,
+  dragOnIndicatorOnly = false,
+  maxHeight = SCREEN_HEIGHT * 0.8,
+  minHeight = 0,
+  showBackdrop = true,
+  showIndicator = true,
+  includeContent = true,
+  includeDragIndicator = true,
+  children,
+}) => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(visible);
   const translateY = useSharedValue<number>(SCREEN_HEIGHT);
   const backdropOpacity = useSharedValue<number>(0);
@@ -26,7 +36,51 @@ const Actionsheet: React.FC<ActionsheetProps> = ({ visible, onClose, children })
 
   const { styles } = useStyles(stylesheet);
 
+  const handleClose = useCallback(() => {
+    if (onClose) {
+      onClose();
+    }
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      translateY,
+      backdropOpacity,
+      keyboardHeight,
+      onClose: handleClose,
+      visible,
+      closeOnBackdropPress,
+      dragCloseThreshold,
+      dragOnIndicatorOnly,
+      maxHeight,
+      minHeight,
+      showBackdrop,
+      showIndicator,
+      includeContent,
+      includeDragIndicator,
+    }),
+    [
+      translateY,
+      backdropOpacity,
+      keyboardHeight,
+      handleClose,
+      visible,
+      closeOnBackdropPress,
+      dragCloseThreshold,
+      dragOnIndicatorOnly,
+      maxHeight,
+      minHeight,
+      showBackdrop,
+      showIndicator,
+      includeContent,
+      includeDragIndicator,
+    ]
+  );
+
   useEffect(() => {
+    if (!keyboardAvoiding) {
+      return;
+    }
     const keyboardShow = Keyboard.addListener('keyboardWillShow', (event: KeyboardEvent) => {
       keyboardHeight.value = event.endCoordinates.height;
     });
@@ -39,7 +93,7 @@ const Actionsheet: React.FC<ActionsheetProps> = ({ visible, onClose, children })
       keyboardShow.remove();
       keyboardHide.remove();
     };
-  }, [keyboardHeight]);
+  }, [keyboardHeight, keyboardAvoiding]);
 
   useEffect(() => {
     if (visible) {
@@ -65,38 +119,39 @@ const Actionsheet: React.FC<ActionsheetProps> = ({ visible, onClose, children })
     [translateY, keyboardHeight]
   );
 
-  const handleClose = () => {
-    if (onClose) {
-      onClose();
-    }
-  };
-
   if (!isModalVisible) {
     return null;
   }
 
   return (
     <Modal transparent visible={isModalVisible} animationType="none">
-      <ActionsheetBackdrop onPress={handleClose} animatedOpacity={backdropOpacity} />
-      <Animated.View style={[styles.sheetContainer, animatedStyle]}>
-        <ActionsheetContent
-          translateY={translateY}
-          backdropOpacity={backdropOpacity}
-          keyboardHeight={keyboardHeight}
-          onClose={handleClose}
-        >
-          {children}
-        </ActionsheetContent>
-      </Animated.View>
+      <ActionsheetContext.Provider value={value}>
+        {showBackdrop ? <ActionsheetBackdrop /> : null}
+        <Animated.View style={[styles.sheetContainer, animatedStyle]}>
+          {includeContent ? <ActionsheetContent>{children}</ActionsheetContent> : children}
+        </Animated.View>
+      </ActionsheetContext.Provider>
     </Modal>
   );
 };
 
-const stylesheet = createStyleSheet(() => ({
+const stylesheet = createStyleSheet(({ colorMode, colors }) => ({
   sheetContainer: {
     position: 'absolute',
     bottom: 0,
     width: '100%',
+    ...(colorMode === 'light'
+      ? {
+          shadowColor: colors.grey900,
+          shadowOffset: {
+            width: 0,
+            height: 3,
+          },
+          shadowRadius: 8,
+          shadowOpacity: 0.2,
+          elevation: 10,
+        }
+      : {}),
   },
 }));
 

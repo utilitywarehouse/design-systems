@@ -22,7 +22,13 @@ import {
   ActionsheetScrollView,
 } from '@utilitywarehouse/native-ui/lab';
 import { TextInput } from 'react-native';
-import { Actionsheet as TestActionsheet } from '@utilitywarehouse/native-ui';
+import {
+  Actionsheet as TestActionsheet,
+  ActionsheetContent as TestActionsheetContent,
+  ActionsheetDragIndicator as TestActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper as TestActionsheetDragIndicatorWrapper,
+  ActionsheetBackdrop as TestActionsheetBackdrop,
+} from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -33,14 +39,15 @@ const ActionsheetTest: StoryFn = () => {
   };
   return (
     <Box h="$96" alignItems="center" justifyContent="center">
-      <Button onPress={() => setVisible(true)}>Open Action Sheet</Button>
-      <TestActionsheet visible={visible} onClose={handleClose}>
-        <View style={{ gap: 12 }}>
-          <Text>Hello, this is the Action Sheet!</Text>
-
-          <TextInput style={{ padding: 5, borderColor: 'red', borderWidth: 1, height: 48 }} />
-          <Button onPress={handleClose}>Close</Button>
-        </View>
+      <Button onPress={() => setVisible(true)}>Open</Button>
+      <TestActionsheet visible={visible} onClose={handleClose} includeContent={false}>
+        <TestActionsheetContent>
+          <View style={{ gap: 12 }}>
+            <Text>Hello, this is the Actionsheet!</Text>
+            <TextInput style={{ padding: 5, borderColor: 'red', borderWidth: 1, height: 48 }} />
+            <Button onPress={handleClose}>Close</Button>
+          </View>
+        </TestActionsheetContent>
       </TestActionsheet>
     </Box>
   );
@@ -53,13 +60,13 @@ export const ActionsheetTestWithScrollView: StoryFn = () => {
   };
   return (
     <Box h="$96" alignItems="center" justifyContent="center">
-      <Button onPress={() => setVisible(true)}>Open Action Sheet</Button>
+      <Button onPress={() => setVisible(true)}>Open</Button>
       <TestActionsheet visible={visible} onClose={handleClose}>
         <ScrollView
           style={{ flex: 1, padding: 20 }}
-          contentContainerStyle={{ justifyContent: 'space-between', flex: 1 }}
+          contentContainerStyle={{ justifyContent: 'space-between', flex: 1, gap: 12 }}
         >
-          <Text>Hello, this is the Action Sheet!</Text>
+          <Text>Hello, this is the Actionsheet!</Text>
 
           <TextInput style={{ padding: 5, borderColor: 'red', borderWidth: 1, height: 48 }} />
           <Button onPress={handleClose}>Close</Button>
@@ -83,6 +90,7 @@ const ActionsheetBasic: StoryFn = () => {
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator />
           </ActionsheetDragIndicatorWrapper>
+          <TextInput style={{ padding: 5, borderColor: 'red', borderWidth: 1, height: 48 }} />
           <ActionsheetItem onPress={handleClose}>
             <ActionsheetItemText>Delete</ActionsheetItemText>
           </ActionsheetItem>
