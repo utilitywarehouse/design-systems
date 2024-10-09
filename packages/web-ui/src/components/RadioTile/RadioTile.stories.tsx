@@ -5,7 +5,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { RadioTile } from './RadioTile';
 
 import { Flex } from '../Flex';
-import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup';
 import { Stack } from '../Stack';
 
