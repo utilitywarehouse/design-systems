@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.5.3
+
+### Patch Changes
+
+- [#549](https://github.com/utilitywarehouse/design-systems/pull/549) [`ea331aaa`](https://github.com/utilitywarehouse/design-systems/commit/ea331aaa707112338c29c82b34ed7e455b75b2e3) Thanks [@jordmccord](https://github.com/jordmccord)! - Simplifies lab `Box` component implementation
+
 ## 0.5.2
 
 ### Patch Changes
