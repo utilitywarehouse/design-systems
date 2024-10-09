@@ -11,7 +11,6 @@ export * from './Checkbox';
 export * from './Radio';
 export * from './Text';
 export * from './Heading';
-export * from './Actionsheet';
 
 // Gluestack UI
 export {

@@ -1,4 +1,3 @@
-// Actionsheet.tsx
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Modal, Dimensions, Keyboard, KeyboardEvent } from 'react-native';
 import Animated, {
@@ -17,8 +16,9 @@ import ActionsheetContext from './Actionsheet.context';
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 const Actionsheet: React.FC<ActionsheetProps> = ({
-  visible,
+  isOpen,
   onClose,
+  onOpen,
   keyboardAvoiding = true,
   closeOnBackdropPress = true,
   dragCloseThreshold = 80,
@@ -29,9 +29,10 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
   showIndicator = true,
   includeContent = true,
   includeDragIndicator = true,
+  contentSafeArea = true,
   children,
 }) => {
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(visible);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(isOpen);
   const translateY = useSharedValue<number>(SCREEN_HEIGHT);
   const backdropOpacity = useSharedValue<number>(0);
   const keyboardHeight = useSharedValue<number>(0);
@@ -50,7 +51,7 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
       backdropOpacity,
       keyboardHeight,
       onClose: handleClose,
-      visible,
+      isOpen,
       closeOnBackdropPress,
       dragCloseThreshold,
       dragOnIndicatorOnly,
@@ -60,13 +61,14 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
       showIndicator,
       includeContent,
       includeDragIndicator,
+      contentSafeArea,
     }),
     [
       translateY,
       backdropOpacity,
       keyboardHeight,
       handleClose,
-      visible,
+      isOpen,
       closeOnBackdropPress,
       dragCloseThreshold,
       dragOnIndicatorOnly,
@@ -76,6 +78,7 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
       showIndicator,
       includeContent,
       includeDragIndicator,
+      contentSafeArea,
     ]
   );
 
@@ -103,9 +106,10 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
   }, [keyboardHeight, keyboardAvoiding]);
 
   useEffect(() => {
-    if (visible) {
+    if (isOpen) {
       // Mount the modal and animate in
       setIsModalVisible(true);
+      onOpen && onOpen();
       translateY.value = withTiming(0, { duration: 300 });
       backdropOpacity.value = withTiming(0.6, { duration: 300 });
     } else {
@@ -117,7 +121,7 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
       });
       backdropOpacity.value = withTiming(0, { duration: 300 });
     }
-  }, [visible, translateY, backdropOpacity]);
+  }, [isOpen, translateY, backdropOpacity]);
 
   const animatedStyle = useAnimatedStyle(
     () => ({

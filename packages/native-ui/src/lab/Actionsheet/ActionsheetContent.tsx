@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, SafeAreaView, ViewProps } from 'react-native';
+import { Dimensions, DimensionValue, SafeAreaView, ViewProps } from 'react-native';
 import { GestureDetector, Gesture, gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import Animated, { useSharedValue, withSpring, withTiming, runOnJS } from 'react-native-reanimated';
 import ActionsheetDragIndicatorWrapper from './ActionsheetDragIndicatorWrapper';
@@ -20,6 +20,7 @@ const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...
     includeDragIndicator,
     dragOnIndicatorOnly,
     showIndicator,
+    contentSafeArea,
   } = useActionsheetContext();
   const { styles } = useStyles(stylesheet);
   const context = useSharedValue<{ y: number }>({ y: 0 });
@@ -53,39 +54,50 @@ const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...
       }
     });
 
-  return dragOnIndicatorOnly && showIndicator ? (
+  const dragIndicator =
+    showIndicator && includeDragIndicator ? (
+      <ActionsheetDragIndicatorWrapper>
+        <ActionsheetDragIndicator dragging={dragging} />
+      </ActionsheetDragIndicatorWrapper>
+    ) : null;
+
+  const dragOnIndicator =
+    dragOnIndicatorOnly && showIndicator ? (
+      <GestureDetector gesture={gesture}>{dragIndicator}</GestureDetector>
+    ) : (
+      dragIndicator
+    );
+
+  const content = (
+    <>
+      {dragOnIndicator}
+      {children}
+    </>
+  );
+
+  const safeAreaContent = contentSafeArea ? (
+    <SafeAreaView style={styles.safeAreaView}>{content}</SafeAreaView>
+  ) : (
+    content
+  );
+
+  const animatedView = (
     <Animated.View
-      style={[styles.content, styles.extraStyles(maxHeight, minHeight), style]}
+      style={[styles.content, styles.extraStyles(maxHeight, minHeight, showIndicator), style]}
       {...props}
     >
-      <SafeAreaView>
-        {includeDragIndicator ? (
-          <GestureDetector gesture={gesture}>
-            <ActionsheetDragIndicatorWrapper>
-              <ActionsheetDragIndicator dragging={dragging} />
-            </ActionsheetDragIndicatorWrapper>
-          </GestureDetector>
-        ) : null}
-        {children}
-      </SafeAreaView>
+      {safeAreaContent}
     </Animated.View>
-  ) : (
-    <GestureDetector gesture={gesture}>
-      <Animated.View
-        style={[styles.content, styles.extraStyles(maxHeight, minHeight), style]}
-        {...props}
-      >
-        <SafeAreaView>
-          {includeDragIndicator && showIndicator ? (
-            <ActionsheetDragIndicatorWrapper>
-              <ActionsheetDragIndicator dragging={dragging} />
-            </ActionsheetDragIndicatorWrapper>
-          ) : null}
-          {children}
-        </SafeAreaView>
-      </Animated.View>
-    </GestureDetector>
   );
+
+  const wrappedContent =
+    dragOnIndicatorOnly && showIndicator ? (
+      animatedView
+    ) : (
+      <GestureDetector gesture={gesture}>{animatedView}</GestureDetector>
+    );
+
+  return wrappedContent;
 };
 
 export default gestureHandlerRootHOC(ActionsheetContentComponent);
@@ -97,11 +109,12 @@ const stylesheet = createStyleSheet(({ space, colorMode, colors, radii }) => ({
     borderTopRightRadius: radii['2xl'],
     paddingHorizontal: space['5'],
     paddingBottom: space['5'],
-    paddingTop: space['2'],
     overflow: 'hidden',
   },
-  extraStyles: (maxHeight: number, minHeight: number) => ({
+  safeAreaView: { flex: 1 },
+  extraStyles: (maxHeight: DimensionValue, minHeight: DimensionValue, showIndicator?: boolean) => ({
     maxHeight,
     minHeight,
+    paddingTop: showIndicator ? space['2'] : space['5'],
   }),
 }));

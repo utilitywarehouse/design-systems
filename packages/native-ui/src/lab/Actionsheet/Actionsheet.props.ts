@@ -1,19 +1,22 @@
+import { DimensionValue } from 'react-native';
 import type { SharedValue } from 'react-native-reanimated';
 
 interface ActionsheetProps {
-  visible: boolean;
+  isOpen: boolean;
   children: React.ReactNode;
   onClose?: () => void;
+  onOpen?: () => void;
   showBackdrop?: boolean;
   closeOnBackdropPress?: boolean;
   showIndicator?: boolean;
   keyboardAvoiding?: boolean;
-  minHeight?: number;
-  maxHeight?: number;
+  minHeight?: DimensionValue;
+  maxHeight?: DimensionValue;
   dragOnIndicatorOnly?: boolean;
   dragCloseThreshold?: number;
   includeContent?: boolean;
   includeDragIndicator?: boolean;
+  contentSafeArea?: boolean;
 }
 
 export interface ActionsheetContextValue extends Omit<ActionsheetProps, 'children'> {
@@ -21,8 +24,8 @@ export interface ActionsheetContextValue extends Omit<ActionsheetProps, 'childre
   backdropOpacity: SharedValue<number>;
   keyboardHeight: SharedValue<number>;
   dragCloseThreshold: number;
-  maxHeight: number;
-  minHeight: number;
+  maxHeight: DimensionValue;
+  minHeight: DimensionValue;
   onClose: () => void;
 }
 
