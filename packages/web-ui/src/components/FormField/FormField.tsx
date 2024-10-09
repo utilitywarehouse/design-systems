@@ -4,87 +4,110 @@ import clsx from 'clsx';
 
 import { FormFieldProps } from './FormField.props';
 
-import {
-  COLORSCHEME_SELECTORS,
-  classSelector,
-  responsiveClassSelector,
-  withBreakpoints,
-} from '../../helpers';
-import { styled } from '../../theme';
+import { Fieldset } from '../Fieldset';
+import { FieldsetLegend } from '../FieldsetLegend';
+import { Flex } from '../Flex';
+import { HelperText } from '../HelperText';
+
+import { mergeIds } from '../../helpers';
+import { useIds } from '../../hooks';
 import { PropsWithSx } from '../../types';
-import { mediaQueries, withGlobalPrefix } from '../../utils';
+import { withGlobalPrefix } from '../../utils';
 
 const componentName = 'FormField';
 const componentClassName = withGlobalPrefix(componentName);
-
-const classNames = {
-  size: {
-    small: withGlobalPrefix('size-small'),
-    medium: withGlobalPrefix('size-medium'),
-  },
-};
-
-const classSelectors = {
-  size: {
-    small: classSelector(classNames.size.small),
-    medium: classSelector(classNames.size.medium),
-    tablet: {
-      small: responsiveClassSelector(classNames.size.small, 'tablet'),
-      medium: responsiveClassSelector(classNames.size.medium, 'tablet'),
-    },
-    desktop: {
-      small: responsiveClassSelector(classNames.size.small, 'desktop'),
-      medium: responsiveClassSelector(classNames.size.medium, 'desktop'),
-    },
-    wide: {
-      small: responsiveClassSelector(classNames.size.small, 'wide'),
-      medium: responsiveClassSelector(classNames.size.medium, 'wide'),
-    },
-  },
-};
-
-const StyledElement = styled('span')(() => {
-  const sizeStyles = {
-    small: {},
-    medium: {},
-  };
-  return {
-    [classSelectors.size.small]: { ...sizeStyles.small },
-    [classSelectors.size.medium]: { ...sizeStyles.medium },
-    [mediaQueries.tablet]: {
-      [classSelectors.size.tablet.small]: { ...sizeStyles.small },
-      [classSelectors.size.tablet.medium]: { ...sizeStyles.medium },
-    },
-    [mediaQueries.desktop]: {
-      [classSelectors.size.desktop.small]: { ...sizeStyles.small },
-      [classSelectors.size.desktop.medium]: { ...sizeStyles.medium },
-    },
-    [mediaQueries.wide]: {
-      [classSelectors.size.wide.small]: { ...sizeStyles.small },
-      [classSelectors.size.wide.medium]: { ...sizeStyles.medium },
-    },
-    [COLORSCHEME_SELECTORS.cyan]: {},
-    [COLORSCHEME_SELECTORS.green]: {},
-    [COLORSCHEME_SELECTORS.red]: {},
-    [COLORSCHEME_SELECTORS.gold]: {},
-    [COLORSCHEME_SELECTORS.grey]: {},
-  };
-});
 
 /**
  * TODO: Document the FormField component.
  */
 export const FormField = React.forwardRef<
-  React.ElementRef<'span'>,
+  React.ElementRef<'fieldset'>,
   React.PropsWithChildren<PropsWithSx<FormFieldProps>>
->(({ size = 'medium', className, ...props }, ref) => {
-  return (
-    <StyledElement
-      ref={ref}
-      className={clsx(componentClassName, className, withBreakpoints(size, 'size'))}
-      {...props}
-    />
-  );
-});
+>(
+  (
+    {
+      className,
+      children,
+      id: providedId,
+      label,
+      helperText,
+      helperTextPosition = 'top',
+      showHelperTextIcon,
+      error,
+      errorMessage,
+      showErrorMessageIcon,
+      disabled,
+      'aria-labelledby': ariaLabelledby,
+      'aria-describedby': ariaDescribedby,
+      'aria-errormessage': ariaErrorMessage,
+      ...props
+    },
+    ref
+  ) => {
+    const { id, labelId, helperTextId, errorMessageId } = useIds({
+      providedId,
+      componentPrefix: 'formfield',
+    });
+
+    const showErrorMessage = Boolean(error && errorMessage);
+    const showTopHelperText = helperText && helperTextPosition === 'top';
+    const showBottomHelperText = helperText && helperTextPosition === 'bottom';
+
+    const ariaDescribedbyValue = mergeIds(
+      ariaDescribedby || !!helperText ? helperTextId : undefined,
+      ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
+    );
+
+    return (
+      <Fieldset
+        ref={ref}
+        className={clsx(componentClassName, className)}
+        disabled={disabled}
+        id={id}
+        data-disabled={disabled ? '' : undefined}
+        aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
+        aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
+        aria-invalid={showErrorMessage}
+        aria-describedby={ariaDescribedbyValue}
+        {...props}
+      >
+        {label || showTopHelperText ? (
+          <Flex direction="column" gap={0.5}>
+            {label ? (
+              <FieldsetLegend id={labelId} disabled={disabled}>
+                {label}
+              </FieldsetLegend>
+            ) : null}
+            {showTopHelperText ? (
+              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                {helperText}
+              </HelperText>
+            ) : null}
+          </Flex>
+        ) : null}
+        {children}
+
+        {showBottomHelperText || showErrorMessage ? (
+          <Flex direction="column" gap={1}>
+            {showBottomHelperText ? (
+              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
+                {helperText}
+              </HelperText>
+            ) : null}
+            {showErrorMessage ? (
+              <HelperText
+                validationStatus="invalid"
+                showIcon={showErrorMessageIcon}
+                id={errorMessageId}
+              >
+                {errorMessage}
+              </HelperText>
+            ) : null}
+          </Flex>
+        ) : null}
+      </Fieldset>
+    );
+  }
+);
 
 FormField.displayName = componentName;

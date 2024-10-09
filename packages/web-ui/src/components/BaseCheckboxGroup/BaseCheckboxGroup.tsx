@@ -5,10 +5,7 @@ import { useControllableState } from '@radix-ui/react-use-controllable-state';
 import { BaseCheckboxGroupProvider } from './BaseCheckboxGroup.context';
 import { BaseCheckboxGroupProps } from './BaseCheckboxGroup.props';
 
-import { Fieldset } from '../Fieldset';
-import { FieldsetLegend } from '../FieldsetLegend';
-import { Flex } from '../Flex';
-import { HelperText } from '../HelperText';
+import { FormField } from '../FormField';
 
 import { mergeIds } from '../../helpers';
 import { useIds } from '../../hooks';
@@ -22,9 +19,7 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
       defaultValue,
       value: valueProp,
       required = false,
-      disabled = false,
       onValueChange,
-      id: providedId,
       label,
       helperText,
       helperTextPosition = 'top',
@@ -32,10 +27,12 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
       error,
       errorMessage,
       showErrorMessageIcon,
+      id: providedId,
       'aria-labelledby': ariaLabelledby,
       'aria-describedby': ariaDescribedby,
       'aria-errormessage': ariaErrorMessage,
       children,
+      disabled = false,
       ...props
     },
     ref
@@ -44,9 +41,6 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
       providedId,
       componentPrefix: 'checkboxgroup',
     });
-    const showErrorMessage = Boolean(error && errorMessage);
-    const showTopHelperText = helperText && helperTextPosition === 'top';
-    const showBottomHelperText = helperText && helperTextPosition === 'bottom';
 
     // useControllableState will handle whether controlled or uncontrolled
     const [value = [], setValue] = useControllableState({
@@ -66,10 +60,14 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
       [setValue]
     );
 
+    const showErrorMessage = Boolean(error && errorMessage);
+
     const ariaDescribedbyValue = mergeIds(
       ariaDescribedby || !!helperText ? helperTextId : undefined,
       ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
     );
+
+    // TODO: move these context items into a `useFormField` context/hook?
     const providerValue = {
       name,
       required,
@@ -82,53 +80,21 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
     };
 
     return (
-      <Fieldset
+      <FormField
         ref={ref}
         {...props}
         disabled={disabled}
         id={id}
         data-disabled={disabled ? '' : undefined}
-        aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
-        aria-invalid={showErrorMessage}
-        aria-describedby={ariaDescribedbyValue}
+        label={label}
+        helperText={helperText}
+        helperTextPosition={helperTextPosition}
+        showErrorMessageIcon={showErrorMessageIcon}
+        showHelperTextIcon={showHelperTextIcon}
       >
-        {label || showTopHelperText ? (
-          <Flex direction="column" gap={0.5}>
-            {label ? (
-              <FieldsetLegend id={labelId} disabled={disabled}>
-                {label}
-              </FieldsetLegend>
-            ) : null}
-            {showTopHelperText ? (
-              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
-                {helperText}
-              </HelperText>
-            ) : null}
-          </Flex>
-        ) : null}
-
         <BaseCheckboxGroupProvider value={providerValue}>{children}</BaseCheckboxGroupProvider>
-
-        {showBottomHelperText || showErrorMessage ? (
-          <Flex direction="column" gap={1}>
-            {showBottomHelperText ? (
-              <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
-                {helperText}
-              </HelperText>
-            ) : null}
-            {showErrorMessage ? (
-              <HelperText
-                validationStatus="invalid"
-                showIcon={showErrorMessageIcon}
-                id={errorMessageId}
-              >
-                {errorMessage}
-              </HelperText>
-            ) : null}
-          </Flex>
-        ) : null}
-      </Fieldset>
+      </FormField>
     );
   }
 );

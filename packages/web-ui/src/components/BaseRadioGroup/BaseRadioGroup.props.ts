@@ -1,6 +1,6 @@
-import { type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import { type RadioGroupProps as RadixRadioGroupProps } from '@radix-ui/react-radio-group';
+import type { RadioGroupProps as RadixRadioGroupProps } from '@radix-ui/react-radio-group';
 
 import { BoxProps } from '../Box';
 

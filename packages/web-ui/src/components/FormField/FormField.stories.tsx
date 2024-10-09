@@ -8,12 +8,14 @@ const meta: Meta<typeof FormField> = {
   title: 'Web UI / Components / FormField',
   component: FormField,
   argTypes: {
-    children: { control: { type: 'text' } },
-    size: { options: ['small', 'medium'], control: { type: 'radio' } },
+    helperTextPosition: { control: { type: 'radio' }, options: ['top', 'bottom'] },
+    showHelperTextIcon: { control: { type: 'boolean' } },
   },
   args: {
-    children: 'FormField',
-    size: 'medium',
+    label: 'Label',
+    helperText: 'Helper text',
+    helperTextPosition: 'top',
+    showHelperTextIcon: true,
   },
 };
 
@@ -21,3 +23,13 @@ export default meta;
 type Story = StoryObj<typeof FormField>;
 
 export const Workshop: Story = {};
+
+export const WithInput: Story = {
+  render: args => {
+    return (
+      <FormField {...args}>
+        <input />
+      </FormField>
+    );
+  },
+};
