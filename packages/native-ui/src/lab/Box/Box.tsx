@@ -229,11 +229,14 @@ function isViewStyleProp(propName: string): propName is keyof ViewStyle {
   return viewStyleProps.has(propName as keyof ViewStyle);
 }
 
-const BoxComponent = ({ style, children, ...props }: BoxProps, ref: React.Ref<View>) => {
+const BoxComponent = <T extends React.ElementType = typeof View>(
+  { as, style, children, ...props }: BoxProps<T>,
+  ref: React.Ref<any>
+) => {
   const { theme } = useStyles();
 
   const styles: Partial<ViewStyle> = {};
-  const viewProps: Partial<ViewProps> = {};
+  const componentProps: Record<string, any> = {};
 
   // propStyleMapping
   for (const prop in propStyleMapping) {
@@ -293,15 +296,18 @@ const BoxComponent = ({ style, children, ...props }: BoxProps, ref: React.Ref<Vi
         }
       }
     } else {
-      // Non-style props, add to viewProps
-      (viewProps as any)[propName] = props[propName as keyof Omit<BoxProps, 'children' | 'style'>];
+      // Non-style props, add to componentProps
+      (componentProps as any)[propName] =
+        props[propName as keyof Omit<BoxProps, 'children' | 'style'>];
     }
   }
 
+  const Component = as || View;
+
   return (
-    <View ref={ref} style={[styles, style]} {...viewProps}>
+    <Component ref={ref} style={[styles, style]} {...componentProps}>
       {children}
-    </View>
+    </Component>
   );
 };
 
