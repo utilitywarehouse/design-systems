@@ -1,3 +1,4 @@
+// Actionsheet.tsx
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Modal, Dimensions, Keyboard, KeyboardEvent } from 'react-native';
 import Animated, {
@@ -5,6 +6,7 @@ import Animated, {
   withTiming,
   useAnimatedStyle,
   runOnJS,
+  Easing,
 } from 'react-native-reanimated';
 import ActionsheetBackdrop from './ActionsheetBackdrop';
 import ActionsheetContent from './ActionsheetContent';
@@ -40,7 +42,7 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
     if (onClose) {
       onClose();
     }
-  }, []);
+  }, [onClose]);
 
   const value = useMemo(
     () => ({
@@ -82,11 +84,16 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
       return;
     }
     const keyboardShow = Keyboard.addListener('keyboardWillShow', (event: KeyboardEvent) => {
-      keyboardHeight.value = event.endCoordinates.height;
+      // Animate keyboardHeight.value using withTiming
+      keyboardHeight.value = withTiming(event.endCoordinates.height, {
+        duration: 300,
+        easing: Easing.out(Easing.ease),
+      });
     });
 
     const keyboardHide = Keyboard.addListener('keyboardWillHide', () => {
-      keyboardHeight.value = 0;
+      // Animate keyboardHeight.value back to 0 using withTiming
+      keyboardHeight.value = withTiming(0, { duration: 200 });
     });
 
     return () => {
