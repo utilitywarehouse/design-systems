@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { forwardRef, memo } from 'react';
-import { View, ViewProps, ViewStyle } from 'react-native';
+import { View, ViewStyle } from 'react-native';
 import { useStyles, UnistylesTheme } from 'react-native-unistyles';
 import type BoxProps from './Box.props';
 
