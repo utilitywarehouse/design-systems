@@ -1,5 +1,13 @@
 # @utilitywarehouse/native-ui
 
+## 0.5.4
+
+### Patch Changes
+
+- [#556](https://github.com/utilitywarehouse/design-systems/pull/556) [`2fb24423`](https://github.com/utilitywarehouse/design-systems/commit/2fb24423cbd3aa8907ce6cec33ad72dfde492164) Thanks [@jordmccord](https://github.com/jordmccord)! - Fix `ListItemText` font size
+
+- [#552](https://github.com/utilitywarehouse/design-systems/pull/552) [`ad59004b`](https://github.com/utilitywarehouse/design-systems/commit/ad59004b0915d43f9a59dc3f13130867ed4e928f) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds the `as` prop to the lab `Box` component
+
 ## 0.5.3
 
 ### Patch Changes
