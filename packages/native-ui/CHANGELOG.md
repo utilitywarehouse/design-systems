@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.5.5
+
+### Patch Changes
+
+- [`085fdcac`](https://github.com/utilitywarehouse/design-systems/commit/085fdcac446b9f5901c4c7ddd5bcccdf0a7dd601) Thanks [@jordmccord](https://github.com/jordmccord)! - Add missing `Box` style props
+
 ## 0.5.4
 
 ### Patch Changes
