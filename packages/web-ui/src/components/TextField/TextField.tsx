@@ -181,7 +181,8 @@ export interface TextFieldProps
   helperText?: React.ReactNode;
   /** If true, a TextareaAutosize element is rendered. */
   multiline?: boolean;
-  legacy?: boolean;
+  /** If true, the extra gutterBottom space, reserved for error messages, will be removed **/
+  removeGutterBottom?: boolean;
 }
 
 const IconContainer = styled(Box)({ display: 'flex', marginLeft: spacing(0.5) });
@@ -241,7 +242,7 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
  * TextField enables users to enter text into a UI. They typically appear in forms and dialogs.
  */
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfield(
-  { label, labelId, helperText, 'aria-label': ariaLabel, legacy, ...props },
+  { label, labelId, helperText, 'aria-label': ariaLabel, removeGutterBottom, ...props },
   ref
 ) {
   const { status = 'neutral', disabled } = props;
@@ -270,7 +271,17 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(func
         />
       </FormControl>
 
-      {legacy ? (
+      {removeGutterBottom ? (
+        !!helperText ? (
+          <HelperText
+            id={ariaDescribedBy}
+            disabled={disabled}
+            validationStatus={isErrorStatus(status) ? 'invalid' : undefined}
+          >
+            {helperText}
+          </HelperText>
+        ) : null
+      ) : (
         <HelperText
           id={ariaDescribedBy}
           disabled={disabled}
@@ -278,15 +289,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(func
         >
           {helperText || '\u00A0'}
         </HelperText>
-      ) : !!helperText ? (
-        <HelperText
-          id={ariaDescribedBy}
-          disabled={disabled}
-          validationStatus={isErrorStatus(status) ? 'invalid' : undefined}
-        >
-          {helperText}
-        </HelperText>
-      ) : null}
+      )}
     </Box>
   );
 });
