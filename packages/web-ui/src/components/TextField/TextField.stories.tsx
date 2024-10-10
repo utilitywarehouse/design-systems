@@ -6,7 +6,6 @@ import { TextField } from './TextField';
 
 import { Button } from '../Button';
 import { Flex } from '../Flex';
-import { Text } from '../Text';
 
 const meta: Meta<typeof TextField> = {
   title: 'Web UI / Components / TextField',
