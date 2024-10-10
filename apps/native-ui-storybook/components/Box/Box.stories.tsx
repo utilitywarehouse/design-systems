@@ -5,7 +5,6 @@ import type { Meta } from '@storybook/react';
 const BoxMeta: Meta<typeof Box> = {
   title: 'Native UI / Components /Box',
   component: Box,
-  args: { bg: 'red500', w: 100, h: 100 },
 };
 
 export default BoxMeta;

@@ -1,4 +1,4 @@
-import type { ViewProps, ViewStyle } from 'react-native';
+import type { ViewStyle, StyleProp, View } from 'react-native';
 import type {
   BordeWidthValue,
   ColorValue,
@@ -6,9 +6,13 @@ import type {
   RadiiValue,
   SpaceValue,
 } from '../../types';
+import React from 'react';
+
+type ComponentPropsWithRef<T extends React.ElementType> = React.ComponentPropsWithRef<T>;
 
 export type OmittedStyles = Omit<
   ViewStyle,
+  // List of styles to omit (same as your original list)
   | 'padding'
   | 'paddingHorizontal'
   | 'paddingVertical'
@@ -43,7 +47,6 @@ export type OmittedStyles = Omit<
   | 'borderStartColor'
   | 'shadowColor'
   | 'borderRadius'
-  | 'rounded'
   | 'borderBottomEndRadius'
   | 'borderBottomLeftRadius'
   | 'borderBottomRightRadius'
@@ -87,6 +90,7 @@ export type OmittedStyles = Omit<
 
 export type OtherBoxViewStyles = Pick<
   OmittedStyles,
+  // List of other styles to include
   | 'alignContent'
   | 'alignItems'
   | 'alignSelf'
@@ -115,6 +119,32 @@ export type OtherBoxViewStyles = Pick<
   | 'transformOrigin'
   | 'zIndex'
 >;
+
+export interface BoxStyleMappingValues {
+  // Style Mapping
+  // - Colors
+  bg?: ColorValue;
+  bgColor?: ColorValue;
+  // - Space
+  h?: SpaceValue;
+  w?: SpaceValue;
+  p?: SpaceValue;
+  px?: SpaceValue;
+  py?: SpaceValue;
+  pt?: SpaceValue;
+  pb?: SpaceValue;
+  pr?: SpaceValue;
+  pl?: SpaceValue;
+  m?: SpaceValue;
+  mx?: SpaceValue;
+  my?: SpaceValue;
+  mt?: SpaceValue;
+  mb?: SpaceValue;
+  mr?: SpaceValue;
+  ml?: SpaceValue;
+  // - Radii
+  rounded?: RadiiValue;
+}
 
 export interface ThemedBoxViewStyleProps {
   // - Space
@@ -190,36 +220,16 @@ export interface ThemedBoxViewStyleProps {
   borderWidth?: BordeWidthValue;
 }
 
-export interface BoxStyleMappingValues {
-  // Style Mapping
-  // - Colors
-  bg?: ColorValue;
-  bgColor?: ColorValue;
-  // - Space
-  h?: SpaceValue;
-  w?: SpaceValue;
-  p?: SpaceValue;
-  px?: SpaceValue;
-  py?: SpaceValue;
-  pt?: SpaceValue;
-  pb?: SpaceValue;
-  pr?: SpaceValue;
-  pl?: SpaceValue;
-  m?: SpaceValue;
-  mx?: SpaceValue;
-  my?: SpaceValue;
-  mt?: SpaceValue;
-  mb?: SpaceValue;
-  mr?: SpaceValue;
-  ml?: SpaceValue;
-  // - Radii
-  rounded?: RadiiValue;
-}
-
-export interface BoxProps
+export interface BoxOwnProps
   extends BoxStyleMappingValues,
     ThemedBoxViewStyleProps,
-    OtherBoxViewStyles,
-    ViewProps {}
+    OtherBoxViewStyles {
+  as?: React.ElementType;
+  children?: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
+}
+
+export type BoxProps<T extends React.ElementType = typeof View> = BoxOwnProps &
+  Omit<ComponentPropsWithRef<T>, keyof BoxOwnProps>;
 
 export default BoxProps;
