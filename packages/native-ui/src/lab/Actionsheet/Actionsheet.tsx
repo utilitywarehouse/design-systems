@@ -109,7 +109,7 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
     if (isOpen) {
       // Mount the modal and animate in
       setIsModalVisible(true);
-      onOpen && onOpen();
+
       translateY.value = withTiming(0, { duration: 300 });
       backdropOpacity.value = withTiming(0.6, { duration: 300 });
     } else {
@@ -122,6 +122,14 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
       backdropOpacity.value = withTiming(0, { duration: 300 });
     }
   }, [isOpen, translateY, backdropOpacity]);
+
+  useEffect(() => {
+    if (isOpen) {
+      if (onOpen) {
+        onOpen();
+      }
+    }
+  }, [isOpen, onOpen]);
 
   const animatedStyle = useAnimatedStyle(
     () => ({
