@@ -1,5 +1,13 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { Button, ButtonText, Heading, Text, View } from '@utilitywarehouse/native-ui';
+import {
+  Button,
+  ButtonText,
+  createStyleSheet,
+  Heading,
+  Text,
+  useStyles,
+  View,
+} from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 import { Actionsheet, ActionsheetContent } from '@utilitywarehouse/native-ui/lab';
 import { TextInput } from 'react-native';
@@ -7,15 +15,15 @@ import { TextInput } from 'react-native';
 import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 
-const ActionsheetBasic: StoryFn = () => {
+const ActionsheetBasic: StoryFn = props => {
   const [isOpen, setVisible] = React.useState(false);
   const handleClose = () => {
     setVisible(false);
   };
   return (
-    <Box h="$96" alignItems="center" justifyContent="center">
+    <Box alignItems="center" justifyContent="center">
       <Button onPress={() => setVisible(true)}>Open</Button>
-      <Actionsheet isOpen={isOpen} onClose={handleClose} includeContent={false}>
+      <Actionsheet isOpen={isOpen} onClose={handleClose} includeContent={false} {...props}>
         <ActionsheetContent>
           <View style={{ gap: 12 }}>
             <Text>Hello, this is the Actionsheet!</Text>
@@ -28,6 +36,57 @@ const ActionsheetBasic: StoryFn = () => {
   );
 };
 
+ActionsheetBasic.argTypes = {
+  showBackdrop: {
+    control: 'boolean',
+    description: 'If true, the Actionsheet will show a backdrop.',
+  },
+  showIndicator: {
+    control: 'boolean',
+    description: 'If true, the Actionsheet will show a drag indicator.',
+  },
+  closeOnBackdropPress: {
+    control: 'boolean',
+    description: 'If true, the Actionsheet will close when the backdrop is pressed.',
+  },
+  dragCloseThreshold: {
+    control: 'number',
+    description: 'The threshold for dragging the Actionsheet to close.',
+  },
+  dragOnIndicatorOnly: {
+    control: 'boolean',
+    description: 'If true, the Actionsheet will only be draggable from the drag indicator.',
+  },
+  maxHeight: {
+    control: 'number',
+    description: 'The maximum height of the Actionsheet.',
+  },
+  minHeight: {
+    control: 'number',
+    description: 'The minimum height of the Actionsheet.',
+  },
+  keyboardAvoiding: {
+    control: 'boolean',
+    description: 'If true, the Actionsheet will avoid the keyboard.',
+  },
+  contentSafeArea: {
+    control: 'boolean',
+    description: 'If true, the Actionsheet will wrap the content in a `SafeAreaView`',
+  },
+};
+
+ActionsheetBasic.args = {
+  showBackdrop: true,
+  showIndicator: true,
+  closeOnBackdropPress: true,
+  dragCloseThreshold: 80,
+  dragOnIndicatorOnly: false,
+  maxHeight: 400,
+  minHeight: 0,
+  keyboardAvoiding: true,
+  contentSafeArea: true,
+};
+
 ActionsheetBasic.storyName = 'Basic';
 
 const ActionsheetMeta: Meta<typeof ActionsheetBasic> = {
@@ -37,11 +96,23 @@ const ActionsheetMeta: Meta<typeof ActionsheetBasic> = {
   args: {},
 };
 
+const stylesheet = createStyleSheet(({ space }) => ({
+  content: {
+    paddingBottom: space['0'],
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContainer: {
+    paddingBottom: space['4'],
+  },
+}));
 const WithScrollView: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
+  const { styles } = useStyles(stylesheet);
   return (
-    <Box h="$96" alignItems="center" justifyContent="center">
+    <Box alignItems="center" justifyContent="center">
       <Button onPress={handleClose}>
         <ButtonText>Open</ButtonText>
       </Button>
@@ -49,12 +120,11 @@ const WithScrollView: StoryFn = () => {
         isOpen={showActionsheet}
         onClose={handleClose}
         minHeight={300}
-        dragOnIndicatorOnly
         includeContent={false}
         contentSafeArea={false}
       >
-        <ActionsheetContent style={{ paddingBottom: 0 }}>
-          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 16 }}>
+        <ActionsheetContent style={styles.content}>
+          <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContainer}>
             <Box mb="$4">
               <Heading textAlign="center">Out of range reading</Heading>
             </Box>
@@ -66,10 +136,12 @@ const WithScrollView: StoryFn = () => {
                 investigation.
               </Text>
               <Text>
-                The number that was entered was too high or too low for what we&apos;d expect based
-                on past readings and your typical energy usage. This normally suggests an error when
-                the reading was submitted. In some cases, the reading may still be used after
-                investigation.
+                If you&apos;re sure the reading is correct, please submit it again. If you&apos;re
+                unsure, please contact us.
+              </Text>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc
+                ultricies tincidunt. Nullam nec purus nec nunc ultricies tincidunt.
               </Text>
             </Box>
             <Button onPress={handleClose}>
@@ -84,4 +156,4 @@ const WithScrollView: StoryFn = () => {
 
 export default ActionsheetMeta;
 
-export { ActionsheetBasic as Basic, WithScrollView };
+export { ActionsheetBasic as Playground, WithScrollView };

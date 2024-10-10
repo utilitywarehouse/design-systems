@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from '@storybook/blocks';
+import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
 import * as Stories from './Actionsheet.stories';
 import { Center, Text, NativeUIProvider, Alert } from '@utilitywarehouse/native-ui';
 import {
@@ -40,12 +40,15 @@ The Actionsheet component presents a set of options to the user, overlaid on top
   - [ActionsheetContent](#actionsheetcontent)
   - [ActionsheetDragIndicatorWrapper](#actionsheetdragindicatorwrapper)
   - [ActionsheetDragIndicator](#actionsheetdragindicator)
+- [Advanced usage](#advanced-usage)
 - [Examples](#examples)
   - [With ScrollView](#with-scrollview)
 
 ## Usage
 
-<Canvas of={Stories.Basic} />
+<Primary />
+
+<Controls />
 
 ```tsx
 import { Button, Text } from '@utilitywarehouse/native-ui/lab';
@@ -179,11 +182,24 @@ export default AdvancedActionsheet;
 ```tsx
 import { Actionsheet, ActionsheetContent } from '@utilitywarehouse/native-ui/lab';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Heading, Text, Button } from '@utilitywarehouse/native-ui';
+import { Heading, Text, Button, createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
+
+const stylesheet = createStyleSheet(({ space }) => ({
+  content: {
+    paddingBottom: space['0'],
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContainer: {
+    paddingBottom: space['4'],
+  },
+}));
 
 const MyComponent = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
+  const { styles } = useStyles(stylesheet);
   return (
     <Box h="$96" alignItems="center" justifyContent="center">
       <Button onPress={handleClose}>
@@ -196,8 +212,8 @@ const MyComponent = () => {
         includeContent={false}
         contentSafeArea={false}
       >
-        <ActionsheetContent style={{ paddingBottom: 0 }}>
-          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 16 }}>
+        <ActionsheetContent style={styles.content}>
+          <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContainer}>
             <Box mb="$4">
               <Heading textAlign="center">Out of range reading</Heading>
             </Box>
@@ -209,10 +225,12 @@ const MyComponent = () => {
                 investigation.
               </Text>
               <Text>
-                The number that was entered was too high or too low for what we&apos;d expect based
-                on past readings and your typical energy usage. This normally suggests an error when
-                the reading was submitted. In some cases, the reading may still be used after
-                investigation.
+                If you&apos;re sure the reading is correct, please submit it again. If you&apos;re
+                unsure, please contact us.
+              </Text>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc
+                ultricies tincidunt. Nullam nec purus nec nunc ultricies tincidunt.
               </Text>
             </Box>
             <Button onPress={handleClose}>

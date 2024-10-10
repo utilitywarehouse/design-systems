@@ -146,11 +146,13 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ colorMode, colors }) => ({
+const stylesheet = createStyleSheet(({ colorMode, colors, radii }) => ({
   sheetContainer: {
     position: 'absolute',
     bottom: 0,
     width: '100%',
+    borderTopLeftRadius: radii['2xl'],
+    borderTopRightRadius: radii['2xl'],
     ...(colorMode === 'light'
       ? {
           shadowColor: colors.grey900,
