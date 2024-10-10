@@ -1,6 +1,6 @@
 import React from 'react';
 import figma from '@figma/code-connect';
-import { Radio, RadioGroup, RadioIndicator, RadioLabel } from '@utilitywarehouse/native-ui';
+import { Radio, RadioGroup } from './';
 
 const value = 'someValue';
 const setValue = (value: string) => console.log(value);
@@ -19,10 +19,7 @@ figma.connect(
     ],
     example: ({ disabled }) => (
       <RadioGroup value={value} onChange={setValue}>
-        <Radio value="someValue" isDisabled={disabled}>
-          <RadioIndicator />
-          <RadioLabel>Label</RadioLabel>
-        </Radio>
+        <Radio value="someValue" disabled={disabled} label="Label" />
       </RadioGroup>
     ),
   }

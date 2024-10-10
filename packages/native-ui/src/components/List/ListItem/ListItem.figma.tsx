@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem } from '@utilitywarehouse/native-ui';
+import { ListItem } from './';
 import figma from '@figma/code-connect';
 
 const props = {

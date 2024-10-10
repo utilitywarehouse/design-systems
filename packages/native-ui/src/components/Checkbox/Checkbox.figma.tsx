@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, CheckboxIndicator, CheckboxLabel } from '@utilitywarehouse/native-ui';
+import { Checkbox } from './';
 import figma from '@figma/code-connect';
 
 const props = {
@@ -20,11 +20,9 @@ figma.connect(
       <Checkbox
         value="someValue"
         onChange={(isChecked: boolean) => console.log(isChecked)}
-        isDisabled={isDisabled}
-      >
-        <CheckboxIndicator />
-        <CheckboxLabel>Label</CheckboxLabel>
-      </Checkbox>
+        disabled={isDisabled}
+        label="Label"
+      />
     ),
   }
 );
