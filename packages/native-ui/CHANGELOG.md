@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.5.6
+
+### Patch Changes
+
+- [#561](https://github.com/utilitywarehouse/design-systems/pull/561) [`2de73551`](https://github.com/utilitywarehouse/design-systems/commit/2de73551b6260d715a7044e8b47a63eaca32cecf) Thanks [@jordmccord](https://github.com/jordmccord)! - Expose `textAlignVertical` prop on `Heading` and `Text` components
+
 ## 0.5.5
 
 ### Patch Changes
