@@ -1,8 +1,8 @@
 import React from 'react';
 import figma from '@figma/code-connect';
-import { Radio, RadioGroup, RadioIndicator, RadioLabel } from '@utilitywarehouse/native-ui';
+import { Radio, RadioGroup } from './';
 
-const value = 'someValue';
+const value = 'some-value';
 const setValue = (value: string) => console.log(value);
 
 figma.connect(
@@ -13,16 +13,13 @@ figma.connect(
       helperText: figma.boolean('Helper Text?'),
       disabled: figma.boolean('disabled'),
       invalid: figma.boolean('invalid'),
+      label: figma.nestedProps('Label', {
+        text: figma.string('Label Text'),
+      }),
     },
-    imports: [
-      'import { RadioGroup, Radio, RadioIndicator, RadioLabel } from "@utilitywarehouse/native-ui";',
-    ],
-    example: ({ disabled }) => (
+    example: ({ disabled, label }) => (
       <RadioGroup value={value} onChange={setValue}>
-        <Radio value="someValue" isDisabled={disabled}>
-          <RadioIndicator />
-          <RadioLabel>Label</RadioLabel>
-        </Radio>
+        <Radio value="someValue" disabled={disabled} label={label.text} />
       </RadioGroup>
     ),
   }

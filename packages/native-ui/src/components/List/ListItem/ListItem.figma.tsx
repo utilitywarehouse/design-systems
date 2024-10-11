@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-no-undef */
 import React from 'react';
-import { ListItem } from '@utilitywarehouse/native-ui';
+import { ListItem } from './';
 import figma from '@figma/code-connect';
 
 const props = {
@@ -17,16 +18,6 @@ const props = {
     supportingText: figma.string('Supporting Text'),
   }),
 };
-
-// trailingIcon: figma.boolean("Trailing Icon?"),
-// leadingIcon: figma.boolean("Leading Icon?"),
-// content: figma.enum('_content', {
-//   default: 'default',
-//   toggle: 'toggle',
-//   radio: 'radio',
-//   checkbox: 'checkbox',
-//   custom: 'custom',
-// }),
 
 figma.connect(
   ListItem,
@@ -49,6 +40,28 @@ figma.connect(
   ListItem,
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4283-3401&m=dev',
   {
+    variant: {
+      'Trailing Icon?': true,
+      'Trailing Icon': 'Chevron Right-01 - 24',
+    },
+    props,
+    example: ({ disabled, divider, loading, text }) => (
+      <ListItem
+        text={text.text}
+        supportingText={text.supportingText}
+        disabled={disabled}
+        divider={divider}
+        loading={loading}
+        onPress={() => console.log('list item pressed')}
+      />
+    ),
+  }
+);
+
+figma.connect(
+  ListItem,
+  'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4283-3401&m=dev',
+  {
     props: props,
     variant: {
       'Trailing Icon?': true,
@@ -61,6 +74,30 @@ figma.connect(
         divider={divider}
         loading={loading}
         trailingContent={trailingIcon}
+      />
+    ),
+  }
+);
+
+figma.connect(
+  ListItem,
+  'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4283-3401&m=dev',
+  {
+    props: props,
+    variant: {
+      'Trailing Icon?': true,
+      'Leading Icon?': true,
+      'Trailing Icon': 'Chevron Right-01 - 24',
+    },
+    example: ({ disabled, divider, loading, text, leadingIcon }) => (
+      <ListItem
+        text={text.text}
+        supportingText={text.supportingText}
+        disabled={disabled}
+        divider={divider}
+        loading={loading}
+        leadingContent={leadingIcon}
+        onPress={() => console.log('list item pressed')}
       />
     ),
   }

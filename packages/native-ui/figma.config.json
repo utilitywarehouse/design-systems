@@ -1,0 +1,11 @@
+{
+  "codeConnect": {
+    "include": ["src/**"],
+    "parser": "react",
+    "exclude": [],
+    "label": "React Native",
+    "importPaths": {
+      "packages/native-ui/src/*": "@utilitywarehouse/native-ui"
+    }
+  }
+}

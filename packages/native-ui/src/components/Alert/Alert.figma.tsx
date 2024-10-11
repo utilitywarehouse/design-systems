@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from '@utilitywarehouse/native-ui';
+import { Alert } from './';
 import figma from '@figma/code-connect';
 
 figma.connect(
@@ -40,7 +40,7 @@ figma.connect(
         text={text}
         onClose={close}
         onPressIconButton={iconButton}
-        linkText={linkText}
+        link={linkText}
         onPressLink={showLink}
       />
     ),

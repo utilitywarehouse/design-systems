@@ -5,7 +5,8 @@
   "exclude": [
     "node_modules",
     "example",
-    "./src/components/unstyled"
+    "./src/components/unstyled",
+    "./src/**/*.figma.tsx",
   ],
   "baseUrl": ".", // This must be specified if "paths" is.
   "paths": {

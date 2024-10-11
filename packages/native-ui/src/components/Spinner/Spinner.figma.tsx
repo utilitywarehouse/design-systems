@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spinner } from '@utilitywarehouse/native-ui';
+import { Spinner } from './';
 import figma from '@figma/code-connect';
 import { colors } from '@utilitywarehouse/colour-system';
 
