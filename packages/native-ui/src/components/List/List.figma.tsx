@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import React from 'react';
 import { List, ListItem } from './';
 import figma from '@figma/code-connect';
@@ -9,24 +10,12 @@ const props = {
   }),
 };
 
-// heading: figma.boolean("Heading?"),
-// container: figma.enum("_container", {
-//   full: "full",
-//   card: "card",
-// }),
-
 figma.connect(
   List,
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4643-17907&m=dev',
   {
     props,
-    example: () => (
-      <List>
-        <ListItem text="List Item 1" onPress={() => console.log('item pressed')} />
-        <ListItem text="List Item 2" onPress={() => console.log('item pressed')} />
-        <ListItem text="List Item 3" onPress={() => console.log('item pressed')} />
-      </List>
-    ),
+    example: () => <List>{children}</List>,
   }
 );
 
@@ -40,9 +29,7 @@ figma.connect(
     },
     example: ({ heading }) => (
       <List headingText={heading.text} headingSupportingText={heading.supportingText}>
-        <ListItem text="List Item 1" onPress={() => console.log('item pressed')} />
-        <ListItem text="List Item 2" onPress={() => console.log('item pressed')} />
-        <ListItem text="List Item 3" onPress={() => console.log('item pressed')} />
+        {children}
       </List>
     ),
   }
@@ -54,7 +41,7 @@ figma.connect(
   {
     props,
     variant: {
-      _container: 'card',
+      container: 'card',
       'Heading?': true,
     },
     example: ({ heading }) => (
@@ -63,11 +50,7 @@ figma.connect(
         headingText={heading.text}
         headingSupportingText={heading.supportingText}
       >
-        <Card>
-          <ListItem text="List Item 1" onPress={() => console.log('item pressed')} />
-          <ListItem text="List Item 2" onPress={() => console.log('item pressed')} />
-          <ListItem text="List Item 3" onPress={() => console.log('item pressed')} />
-        </Card>
+        <Card>{children}</Card>
       </List>
     ),
   }
@@ -79,17 +62,41 @@ figma.connect(
   {
     props,
     variant: {
-      _container: 'card',
+      container: 'card',
       'Heading?': false,
     },
     example: () => (
       <List container="card">
-        <Card>
-          <ListItem text="List Item 1" onPress={() => console.log('item pressed')} />
-          <ListItem text="List Item 2" onPress={() => console.log('item pressed')} />
-          <ListItem text="List Item 3" onPress={() => console.log('item pressed')} />
-        </Card>
+        <Card>{children}</Card>
       </List>
+    ),
+  }
+);
+
+const list = [
+  {
+    id: '1',
+    text: 'List item 1',
+    supportingText: 'List item 1 supporting text',
+  },
+];
+
+figma.connect(
+  List,
+  'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4623-14698&m=dev',
+  {
+    props,
+    example: () => (
+      <>
+        {list.map(listItem => (
+          <ListItem
+            key={listItem.id}
+            {...listItem}
+            text={listItem.text}
+            supportingText={listItem.supportingText}
+          />
+        ))}
+      </>
     ),
   }
 );

@@ -6,6 +6,9 @@ const props = {
   helperText: figma.boolean('Helper Text?'),
   isDisabled: figma.boolean('isDisabled'),
   invalid: figma.boolean('invalid'),
+  label: figma.nestedProps('Label', {
+    text: figma.string('Label Text'),
+  }),
 };
 
 figma.connect(
@@ -13,15 +16,12 @@ figma.connect(
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=5623-561&m=dev',
   {
     props,
-    imports: [
-      'import { Checkbox, CheckboxIndicator, CheckboxLabel } from "@utilitywarehouse/native-ui";',
-    ],
-    example: ({ isDisabled }) => (
+    example: ({ isDisabled, label }) => (
       <Checkbox
-        value="someValue"
+        value="some-value"
         onChange={(isChecked: boolean) => console.log(isChecked)}
         disabled={isDisabled}
-        label="Label"
+        label={label.text}
       />
     ),
   }
