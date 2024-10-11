@@ -9,6 +9,7 @@ import { CheckboxTileProps } from './CheckboxTile.props';
 import { BaseCheckbox } from '../BaseCheckbox';
 import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Flex } from '../Flex';
+import { useFormField } from '../FormField/FormField.context';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
 
@@ -72,9 +73,10 @@ export const CheckboxTile = React.forwardRef<HTMLButtonElement, PropsWithSx<Chec
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: componentName });
-    const context = useBaseCheckboxGroup();
+    const context = useFormField();
     const ariaDescribedby = context ? context['aria-describedby'] : '';
-    const showHelperText = !context?.hasGroupHelperText && !!helperText;
+    const hasGroupHelperText = Boolean(context?.helperText);
+    const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
     return (
       <StyledTile data-disabled={disabled ? '' : undefined}>

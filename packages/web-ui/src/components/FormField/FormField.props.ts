@@ -4,18 +4,11 @@ import type { FieldsetProps } from '../Fieldset';
 
 export interface FormFieldProps extends FieldsetProps {
   /**
-   * The label for the radio group. This should contain the question being
-   * answered by the radio group.
-   *
-   * If you don't include a label you need to ensure you use the `aria-label`
-   * or `aria-labelledby` prop to properly associate a label with the radio
-   * group.
+   * The label for the FormField.
    */
   label?: ReactNode;
   /**
-   * Helper text for the radio group. Provides a hint such as specific
-   * requirements for what to choose. When displayed, child `Radio` or
-   * `RadioTile` components will not display `helperText`.
+   * Helper text for the FormField.
    */
   helperText?: ReactNode;
   /**

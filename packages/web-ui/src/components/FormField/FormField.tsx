@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
+import { FormFieldContextValue, FormFieldProvider } from './FormField.context';
 import { FormFieldProps } from './FormField.props';
 
 import { Fieldset } from '../Fieldset';
@@ -26,6 +27,7 @@ export const FormField = React.forwardRef<
 >(
   (
     {
+      name,
       className,
       children,
       id: providedId,
@@ -44,10 +46,8 @@ export const FormField = React.forwardRef<
     },
     ref
   ) => {
-    const { id, labelId, helperTextId, errorMessageId } = useIds({
-      providedId,
-      componentPrefix: 'formfield',
-    });
+    const componentPrefix = name ? `${name}-formfield` : 'formfield';
+    const { id, labelId, helperTextId, errorMessageId } = useIds({ providedId, componentPrefix });
 
     const showErrorMessage = Boolean(error && errorMessage);
     const showTopHelperText = helperText && helperTextPosition === 'top';
@@ -57,6 +57,13 @@ export const FormField = React.forwardRef<
       ariaDescribedby || !!helperText ? helperTextId : undefined,
       ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
     );
+
+    const providerValue: FormFieldContextValue = {
+      name,
+      disabled,
+      helperText,
+      'aria-describedby': ariaDescribedbyValue,
+    };
 
     return (
       <Fieldset
@@ -85,7 +92,8 @@ export const FormField = React.forwardRef<
             ) : null}
           </Flex>
         ) : null}
-        {children}
+
+        <FormFieldProvider value={providerValue}>{children}</FormFieldProvider>
 
         {showBottomHelperText || showErrorMessage ? (
           <Flex direction="column" gap={1}>

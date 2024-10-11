@@ -8,6 +8,7 @@ import { TickMediumIcon } from '@utilitywarehouse/react-icons';
 import { BaseCheckboxProps } from './BaseCheckbox.props';
 
 import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
+import { useFormField } from '../FormField/FormField.context';
 
 import { styled } from '../../theme';
 import { px } from '../../utils';
@@ -88,24 +89,25 @@ const StyledCheckboxRoot = styled(RadixCheckbox.Root)({
 
 export const BaseCheckbox = React.forwardRef<HTMLButtonElement, BaseCheckboxProps>(
   ({ onCheckedChange, value = 'on', ...props }, ref) => {
-    const context = useBaseCheckboxGroup();
-    const checked = context?.value?.includes(value);
+    const checkboxGroupContext = useBaseCheckboxGroup();
+    const FormFieldContext = useFormField();
+    const checked = checkboxGroupContext?.value?.includes(value);
 
     return (
       <StyledCheckboxRoot
         ref={ref}
-        name={context?.name}
-        disabled={context?.disabled}
-        required={context?.required}
+        name={FormFieldContext?.name}
+        disabled={FormFieldContext?.disabled}
+        required={checkboxGroupContext?.required}
         checked={checked}
         value={value}
         {...props}
         onCheckedChange={(checked: boolean) => {
-          if (context) {
+          if (checkboxGroupContext) {
             if (checked) {
-              context?.onItemCheck(value);
+              checkboxGroupContext?.onItemCheck(value);
             } else {
-              context?.onItemUncheck(value);
+              checkboxGroupContext?.onItemUncheck(value);
             }
           }
           if (onCheckedChange) {
