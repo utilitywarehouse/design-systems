@@ -1,19 +1,17 @@
 import React from 'react';
-import { Badge, BadgeText, BadgeIcon } from '@utilitywarehouse/native-ui';
+import { Badge, BadgeText } from '@utilitywarehouse/native-ui';
 import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 
 const BadgeBasic: StoryFn<{
   text: string;
-  icon: boolean;
   colorScheme: 'cyan' | 'red' | 'green' | 'gold' | 'grey';
   borderless: boolean;
   strong: boolean;
   size: 'large' | 'small';
-}> = ({ text = 'NEW FEATURE', icon = false, ...props }) => {
+}> = ({ text = 'NEW FEATURE', ...props }) => {
   return (
     <Badge {...props}>
-      {icon && <BadgeIcon as={AddSmallIcon} />}
       <BadgeText>{text}</BadgeText>
     </Badge>
   );
