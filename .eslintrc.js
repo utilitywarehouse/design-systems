@@ -50,5 +50,6 @@ module.exports = {
       version: 'detect',
     },
   },
+  ignorePatterns: ['packages/native-ui/src/**/*.figma.tsx'],
   root: true,
 };

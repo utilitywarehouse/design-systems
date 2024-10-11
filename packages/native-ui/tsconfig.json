@@ -7,7 +7,6 @@
     "example",
     "./src/components/unstyled",
     "./src/**/*.figma.tsx",
-    "./lab/**/*.figma.tsx"
   ],
   "baseUrl": ".", // This must be specified if "paths" is.
   "paths": {
