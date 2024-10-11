@@ -8,7 +8,7 @@ const HStackReversed: StoryFn<{
   reversed: boolean;
 }> = ({ space, ...props }) => {
   return (
-    <HStack space={space} mt="$5" {...props} reversed>
+    <HStack space={space} {...props} reversed>
       <Box w={100} h={100} bg="$cyan300" />
       <Box w={100} h={100} bg="$cyan400" />
       <Box w={100} h={100} bg="$cyan500" />

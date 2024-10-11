@@ -12,6 +12,8 @@ export * from './Radio';
 export * from './Text';
 export * from './Heading';
 export * from './Center';
+export * from './HStack';
+export * from './VStack';
 
 // Gluestack UI
 export {
@@ -31,8 +33,6 @@ export {
    */
   Box,
 } from '@gluestack-ui/themed';
-
-export { HStack, VStack } from '@gluestack-ui/themed';
 
 export { Link, LinkText } from '@gluestack-ui/themed';
 export { Pressable } from '@gluestack-ui/themed';
