@@ -17,6 +17,7 @@ const Heading: React.FC<HeadingProps> = ({
   strikeThrough,
   textTransform,
   textAlign,
+  textAlignVertical,
   ...props
 }) => {
   const {
@@ -37,7 +38,11 @@ const Heading: React.FC<HeadingProps> = ({
             ellipsizeMode: 'tail',
           }
         : {})}
-      style={[styles.text, styles.extraStyles(colorValue, textTransform, textAlign), props.style]}
+      style={[
+        styles.text,
+        styles.extraStyles(colorValue, textTransform, textAlign, textAlignVertical),
+        props.style,
+      ]}
     >
       {children}
     </Text>
@@ -52,7 +57,6 @@ const stylesheet = createStyleSheet(({ colors, fontSizes, fontWeights, fonts, li
     fontWeight: fontWeights.bold,
     fontFamily: fonts.heading,
     marginVertical: 0,
-    textAlignVertical: 'center',
     fontStyle: 'normal',
     variants: {
       size: {
@@ -98,11 +102,13 @@ const stylesheet = createStyleSheet(({ colors, fontSizes, fontWeights, fonts, li
   extraStyles: (
     color: HeadingProps['color'],
     textTransform: HeadingProps['textTransform'],
-    textAlign: HeadingProps['textAlign']
+    textAlign: HeadingProps['textAlign'],
+    textAlignVertical: HeadingProps['textAlignVertical']
   ) => ({
     ...(color ? { color } : {}),
     ...(textTransform ? { textTransform } : {}),
     ...(textAlign ? { textAlign } : {}),
+    ...(textAlignVertical ? { textAlignVertical } : {}),
   }),
 }));
 

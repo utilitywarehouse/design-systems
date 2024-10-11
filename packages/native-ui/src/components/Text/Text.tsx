@@ -22,6 +22,7 @@ const Text = forwardRef<RNText, TextProps>(
       highlight,
       textTransform,
       textAlign,
+      textAlignVertical,
       textDecorationColor,
       textDecorationLine,
       textDecorationStyle,
@@ -65,7 +66,8 @@ const Text = forwardRef<RNText, TextProps>(
             decorationColor,
             textDecorationLine,
             textDecorationStyle,
-            userSelect
+            userSelect,
+            textAlignVertical
           ),
           props.style,
         ]}
@@ -135,7 +137,8 @@ const stylesheet = createStyleSheet(
       textDecorationColor: TextProps['textDecorationColor'],
       textDecorationLine: TextProps['textDecorationLine'],
       textDecorationStyle: TextProps['textDecorationStyle'],
-      userSelect: TextProps['userSelect']
+      userSelect: TextProps['userSelect'],
+      textAlignVertical: TextProps['textAlignVertical']
     ) => ({
       ...(color && { color }),
       ...(textTransform && { textTransform }),
@@ -144,6 +147,7 @@ const stylesheet = createStyleSheet(
       ...(textDecorationLine && { textDecorationLine }),
       ...(textDecorationStyle && { textDecorationStyle }),
       ...(userSelect && { userSelect }),
+      ...(textAlignVertical && { textAlignVertical }),
     }),
   })
 );

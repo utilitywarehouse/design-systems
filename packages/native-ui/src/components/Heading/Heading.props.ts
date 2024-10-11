@@ -9,6 +9,7 @@ interface HeadingProps extends TextProps {
   color?: ColorValue;
   textTransform?: TextStyle['textTransform'];
   textAlign?: TextStyle['textAlign'];
+  textAlignVertical?: TextStyle['textAlignVertical'];
 }
 
 export default HeadingProps;
