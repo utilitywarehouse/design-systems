@@ -24,9 +24,9 @@ figma.connect(
       'import { Actionsheet, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicator, ActionsheetDragIndicatorWrapper } from "@utilitywarehouse/native-ui/lab";',
     ],
     example: ({ content }) => (
-      <Actionsheet isOpen={showActionsheet} onClose={handleClose} zIndex={999}>
+      <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
         <ActionsheetBackdrop />
-        <ActionsheetContent h="$64" zIndex={999}>
+        <ActionsheetContent>
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator />
           </ActionsheetDragIndicatorWrapper>
