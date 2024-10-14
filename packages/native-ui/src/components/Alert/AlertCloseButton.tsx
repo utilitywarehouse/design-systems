@@ -1,17 +1,18 @@
-import React, { ComponentProps } from 'react';
+import React, { ComponentProps, forwardRef } from 'react';
 import { Pressable, type PressableProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { CloseSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { useAlertContext } from './Alert.context';
+import { PressableRef } from '../../types';
 
-const AlertCloseButton: React.FC<PressableProps> = ({ children, ...props }) => {
+const AlertCloseButton = forwardRef<PressableRef, PressableProps>(({ children, ...props }, ref) => {
   const { styles } = useStyles(stylesheet);
   return (
-    <Pressable {...props} style={[styles.container]}>
+    <Pressable ref={ref} {...props} style={[styles.container]}>
       {children}
     </Pressable>
   );
-};
+});
 
 export const AlertCloseButtonIcon: React.FC<ComponentProps<typeof CloseSmallIcon>> = ({
   ...props
