@@ -10,10 +10,7 @@ import { FormField } from '../FormField';
 const componentName = 'BaseCheckboxGroup';
 
 const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGroupProps>(
-  (
-    { defaultValue, value: valueProp, required = false, onValueChange, children, ...props },
-    ref
-  ) => {
+  ({ defaultValue, value: valueProp, onValueChange, children, ...props }, ref) => {
     // useControllableState will handle whether controlled or uncontrolled
     const [value = [], setValue] = useControllableState({
       prop: valueProp,
@@ -33,7 +30,6 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
     );
 
     const providerValue = {
-      required,
       value,
       onItemCheck: handleItemCheck,
       onItemUncheck: handleItemUncheck,

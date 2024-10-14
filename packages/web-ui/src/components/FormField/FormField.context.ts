@@ -3,6 +3,7 @@ import { createContext, useContext } from 'react';
 import type { FormFieldProps } from './FormField.props';
 
 export type FormFieldContextValue = {
+  required?: FormFieldProps['required'];
   name?: FormFieldProps['name'];
   disabled?: FormFieldProps['disabled'];
   helperText?: FormFieldProps['helperText'];

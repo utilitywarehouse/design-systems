@@ -90,15 +90,15 @@ const StyledCheckboxRoot = styled(RadixCheckbox.Root)({
 export const BaseCheckbox = React.forwardRef<HTMLButtonElement, BaseCheckboxProps>(
   ({ onCheckedChange, value = 'on', ...props }, ref) => {
     const checkboxGroupContext = useBaseCheckboxGroup();
-    const FormFieldContext = useFormField();
+    const formFieldContext = useFormField();
     const checked = checkboxGroupContext?.value?.includes(value);
 
     return (
       <StyledCheckboxRoot
         ref={ref}
-        name={FormFieldContext?.name}
-        disabled={FormFieldContext?.disabled}
-        required={checkboxGroupContext?.required}
+        name={formFieldContext?.name}
+        disabled={formFieldContext?.disabled}
+        required={formFieldContext?.required}
         checked={checked}
         value={value}
         {...props}

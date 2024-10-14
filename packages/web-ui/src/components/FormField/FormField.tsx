@@ -39,6 +39,7 @@ export const FormField = React.forwardRef<
       errorMessage,
       showErrorMessageIcon,
       disabled,
+      required = false,
       'aria-labelledby': ariaLabelledby,
       'aria-describedby': ariaDescribedby,
       'aria-errormessage': ariaErrorMessage,
@@ -59,12 +60,12 @@ export const FormField = React.forwardRef<
     );
 
     const providerValue: FormFieldContextValue = {
+      required,
       name,
       disabled,
       helperText,
       'aria-describedby': ariaDescribedbyValue,
     };
-
     return (
       <Fieldset
         ref={ref}

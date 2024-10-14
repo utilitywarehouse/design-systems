@@ -28,4 +28,5 @@ export interface FormFieldProps extends FieldsetProps {
    * Set whether to display the error message icon.
    */
   showErrorMessageIcon?: boolean;
+  required?: boolean;
 }
