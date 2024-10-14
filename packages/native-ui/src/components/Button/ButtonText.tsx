@@ -1,15 +1,16 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
-import React, { FC } from 'react';
+import React, { forwardRef } from 'react';
 import { type StyleProp, Text, type TextStyle, type TextProps } from 'react-native';
 import { useButtonContext } from './Button.context';
 import { createStyleSheet, type UnistylesValues, useStyles } from 'react-native-unistyles';
 import type { BaseButtonProps } from './Button.props';
 
-const ButtonText: FC<TextProps> = ({ children, ...props }) => {
+const ButtonText = forwardRef<Text, TextProps>(({ children, ...props }, ref) => {
   const { colorScheme, variant, inverted, disabled } = useButtonContext();
   const { styles } = useStyles(stylesheet);
   return (
     <Text
+      ref={ref}
       {...props}
       style={[
         styles.text,
@@ -20,7 +21,9 @@ const ButtonText: FC<TextProps> = ({ children, ...props }) => {
       {children}
     </Text>
   );
-};
+});
+
+ButtonText.displayName = 'ButtonText';
 
 const stylesheet = createStyleSheet(
   ({ colorMode, colors, lineHeights, fontSizes, fonts, fontWeights }) => ({

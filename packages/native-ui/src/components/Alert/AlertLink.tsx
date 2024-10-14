@@ -1,27 +1,30 @@
-import React, { ComponentProps } from 'react';
-import { Pressable, type PressableProps, type TextProps } from 'react-native';
+import React, { ComponentProps, forwardRef, ElementRef } from 'react';
+import { Pressable, Text, type PressableProps, type TextProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import AlertText from './AlertText';
 import { ChevronRightSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { useAlertContext } from './Alert.context';
+import { PressableRef } from '../../types';
 
-const AlertLink: React.FC<PressableProps> = ({ children, ...props }) => {
+const AlertLink = forwardRef<PressableRef, PressableProps>(({ children, ...props }, ref) => {
   const { styles } = useStyles(stylesheet);
   return (
-    <Pressable {...props} style={[styles.container]}>
+    <Pressable ref={ref} {...props} style={[styles.container]}>
       {children}
     </Pressable>
   );
-};
+});
 
-export const AlertLinkText: React.FC<TextProps> = ({ children, ...props }) => {
-  const { styles } = useStyles(stylesheet);
-  return (
-    <AlertText {...props} style={[styles.text, props.style]}>
-      {children}
-    </AlertText>
-  );
-};
+export const AlertLinkText = forwardRef<ElementRef<typeof Text>, TextProps>(
+  ({ children, ...props }, ref) => {
+    const { styles } = useStyles(stylesheet);
+    return (
+      <AlertText ref={ref} {...props} style={[styles.text, props.style]}>
+        {children}
+      </AlertText>
+    );
+  }
+);
 
 export const AlertLinkChevron: React.FC<ComponentProps<typeof ChevronRightSmallIcon>> = ({
   ...props

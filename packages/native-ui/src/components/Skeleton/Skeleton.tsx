@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { FC, useMemo } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -17,47 +17,52 @@ import getStyleValue from '../../utils/getStyleValue';
 
 const AnimatedView = Animated.createAnimatedComponent(View);
 
-const Skeleton: FC<SkeletonProps> = ({ width, height, backgroundColor, style, ...props }) => {
-  const opacity = useSharedValue(1);
+const Skeleton = forwardRef<View, SkeletonProps>(
+  ({ width, height, backgroundColor, style, ...props }, ref) => {
+    const opacity = useSharedValue(1);
 
-  const {
-    styles,
-    theme: { colors, colorMode },
-  } = useStyles(stylesheet);
-  const backgroundColorValue: ColorValue = useMemo(
-    () => getStyleValue(backgroundColor, colors),
-    [backgroundColor, colorMode]
-  );
-
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      opacity: opacity.value,
-    };
-  }, [opacity]);
-
-  React.useEffect(() => {
-    opacity.value = withRepeat(
-      withTiming(0.5, {
-        duration: 1000,
-        easing: Easing.inOut(Easing.ease),
-      }),
-      -1,
-      true
+    const {
+      styles,
+      theme: { colors, colorMode },
+    } = useStyles(stylesheet);
+    const backgroundColorValue: ColorValue = useMemo(
+      () => getStyleValue(backgroundColor, colors),
+      [backgroundColor, colorMode]
     );
-  }, [opacity]);
 
-  return (
-    <AnimatedView
-      {...props}
-      style={[
-        styles.skeleton,
-        styles.size(width, height, backgroundColorValue),
-        style,
-        animatedStyle,
-      ]}
-    />
-  );
-};
+    const animatedStyle = useAnimatedStyle(() => {
+      return {
+        opacity: opacity.value,
+      };
+    }, [opacity]);
+
+    React.useEffect(() => {
+      opacity.value = withRepeat(
+        withTiming(0.5, {
+          duration: 1000,
+          easing: Easing.inOut(Easing.ease),
+        }),
+        -1,
+        true
+      );
+    }, [opacity]);
+
+    return (
+      <AnimatedView
+        ref={ref}
+        {...props}
+        style={[
+          styles.skeleton,
+          styles.size(width, height, backgroundColorValue),
+          style,
+          animatedStyle,
+        ]}
+      />
+    );
+  }
+);
+
+Skeleton.displayName = 'Skeleton';
 
 const stylesheet = createStyleSheet(({ colorMode, colors, radii }) => ({
   skeleton: {

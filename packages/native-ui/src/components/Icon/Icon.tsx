@@ -6,10 +6,10 @@ import React, { useMemo } from 'react';
 import { Svg } from 'react-native-svg';
 import type IconProps from './Icon.props';
 import { useStyles } from 'react-native-unistyles';
-import type { ColorValue } from '../../types';
+import type { ColorValue, SvgRef } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
 
-const PrimitiveIcon = React.forwardRef<React.ElementRef<typeof Svg>, IconProps>(
+const PrimitiveIcon = React.forwardRef<SvgRef, IconProps>(
   ({ height, width, fill, color, size, stroke, as: AsComp, ...props }, ref) => {
     const sizeProps = useMemo(() => {
       if (size) return { size };
