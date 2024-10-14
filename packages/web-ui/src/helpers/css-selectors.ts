@@ -29,4 +29,5 @@ export const DATA_ATTRIBUTE_SELECTORS = {
   inverted: `:where([${DATA_ATTRIBUTES.inverted}])`,
   customColor: `:where([${DATA_ATTRIBUTES.customColor}])`,
   disableUserSelect: `:where([${DATA_ATTRIBUTES.disableUserSelect}])`,
+  placement: `:where([${DATA_ATTRIBUTES.placement}])`,
 };

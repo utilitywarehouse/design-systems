@@ -6,6 +6,9 @@ import { colors } from '@utilitywarehouse/colour-system';
 
 import { InputProps } from './Input.props';
 
+import { Box } from '../Box';
+
+import { DATA_ATTRIBUTES } from '../../helpers';
 import { styled } from '../../theme';
 import { fontWeights, fonts } from '../../tokens';
 import { PropsWithSx } from '../../types';
@@ -14,7 +17,7 @@ import { px, withGlobalPrefix } from '../../utils';
 const componentName = 'Input';
 const componentClassName = withGlobalPrefix(componentName);
 
-const StyledElement = styled('div')(() => ({
+const StyledElement = styled(Box)(() => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -27,8 +30,16 @@ const StyledElement = styled('div')(() => ({
   borderWidth: px(2),
   borderStyle: 'solid',
   borderColor: colors.grey500,
+  color: colors.grey700,
   ['&:where(:focus-within)']: {
     borderColor: colors.cyan500,
+  },
+  [`& :where([${DATA_ATTRIBUTES.placement}="prefix"]), & :where(:not([${DATA_ATTRIBUTES.placement}="suffix"]))`]:
+    {
+      order: -1,
+    },
+  [`& :where([${DATA_ATTRIBUTES.placement}="suffix"])`]: {
+    order: 1,
   },
 }));
 
@@ -49,9 +60,10 @@ const StyledInput = styled('input')(() => ({
  * TODO: Document the Input component.
  */
 export const Input = React.forwardRef<React.ElementRef<'input'>, PropsWithSx<InputProps>>(
-  ({ className, sx, ...props }, ref) => {
+  ({ className, sx, children, ...props }, ref) => {
     return (
       <StyledElement sx={sx}>
+        {children}
         <StyledInput ref={ref} className={clsx(componentClassName, className)} {...props} />
       </StyledElement>
     );
