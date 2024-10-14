@@ -4,6 +4,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { FormField } from './FormField';
 
+import { Placeholder } from '../../storybook-components';
+
 const meta: Meta<typeof FormField> = {
   title: 'Web UI / Components / FormField',
   component: FormField,
@@ -28,7 +30,7 @@ export const WithInput: Story = {
   render: args => {
     return (
       <FormField {...args}>
-        <input />
+        <Placeholder height={100} width={300} />
       </FormField>
     );
   },
