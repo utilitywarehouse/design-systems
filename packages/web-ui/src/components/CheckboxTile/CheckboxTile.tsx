@@ -7,7 +7,6 @@ import { colors } from '@utilitywarehouse/colour-system';
 import { CheckboxTileProps } from './CheckboxTile.props';
 
 import { BaseCheckbox } from '../BaseCheckbox';
-import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Flex } from '../Flex';
 import { useFormField } from '../FormField/FormField.context';
 import { HelperText } from '../HelperText';
