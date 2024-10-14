@@ -1,4 +1,5 @@
-# index.js temporarily included for testing
-# index.mjs temporarily included for testing
+index.js
+index.mjs
 /types/
 .env
+
