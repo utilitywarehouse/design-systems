@@ -1,6 +1,5 @@
 import React from 'react';
 import { Badge, BadgeText } from '@utilitywarehouse/native-ui';
-import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 
 const BadgeBasic: StoryFn<{
