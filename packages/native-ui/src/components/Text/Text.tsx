@@ -22,6 +22,11 @@ const Text = forwardRef<RNText, TextProps>(
       highlight,
       textTransform,
       textAlign,
+      textAlignVertical,
+      textDecorationColor,
+      textDecorationLine,
+      textDecorationStyle,
+      userSelect,
       ...props
     },
     ref
@@ -38,6 +43,10 @@ const Text = forwardRef<RNText, TextProps>(
       highlight,
     });
     const colorValue: ColorValue = useMemo(() => getStyleValue(color, colors), [color, colorMode]);
+    const decorationColor: ColorValue = useMemo(
+      () => getStyleValue(textDecorationColor, colors),
+      [textDecorationColor, colorMode]
+    );
     return (
       <RNText
         ref={ref}
@@ -48,7 +57,20 @@ const Text = forwardRef<RNText, TextProps>(
               ellipsizeMode: 'tail',
             }
           : {})}
-        style={[styles.text, styles.extraStyles(colorValue, textTransform, textAlign), props.style]}
+        style={[
+          styles.text,
+          styles.extraStyles(
+            colorValue,
+            textTransform,
+            textAlign,
+            decorationColor,
+            textDecorationLine,
+            textDecorationStyle,
+            userSelect,
+            textAlignVertical
+          ),
+          props.style,
+        ]}
       >
         {children}
       </RNText>
@@ -111,11 +133,21 @@ const stylesheet = createStyleSheet(
     extraStyles: (
       color: TextProps['color'],
       textTransform: TextProps['textTransform'],
-      textAlign: TextProps['textAlign']
+      textAlign: TextProps['textAlign'],
+      textDecorationColor: TextProps['textDecorationColor'],
+      textDecorationLine: TextProps['textDecorationLine'],
+      textDecorationStyle: TextProps['textDecorationStyle'],
+      userSelect: TextProps['userSelect'],
+      textAlignVertical: TextProps['textAlignVertical']
     ) => ({
       ...(color && { color }),
       ...(textTransform && { textTransform }),
       ...(textAlign && { textAlign }),
+      ...(textDecorationColor && { textDecorationColor }),
+      ...(textDecorationLine && { textDecorationLine }),
+      ...(textDecorationStyle && { textDecorationStyle }),
+      ...(userSelect && { userSelect }),
+      ...(textAlignVertical && { textAlignVertical }),
     }),
   })
 );

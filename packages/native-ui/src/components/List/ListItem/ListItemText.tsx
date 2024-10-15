@@ -8,7 +8,7 @@ const ListItemText = forwardRef<RNText, ViewProps>(({ children, ...props }, ref)
   const { disabled } = useListItemContext();
   const { styles } = useStyles(stylesheet);
   return (
-    <Text ref={ref} {...props} style={[styles.extraStyles(disabled), props.style]}>
+    <Text ref={ref} {...props} style={[styles.text, styles.extraStyles(disabled), props.style]}>
       {children}
     </Text>
   );
@@ -16,7 +16,11 @@ const ListItemText = forwardRef<RNText, ViewProps>(({ children, ...props }, ref)
 
 ListItemText.displayName = 'ListItemText';
 
-const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
+const stylesheet = createStyleSheet(({ colors, colorMode, fontSizes, lineHeights }) => ({
+  text: {
+    fontSize: fontSizes.lg,
+    lineHeight: lineHeights.lg,
+  },
   extraStyles: (disabled?: boolean) => {
     if (disabled) {
       return {

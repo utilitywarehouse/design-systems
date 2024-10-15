@@ -41,7 +41,7 @@ figma.connect(
   {
     props: {
       iconRight: figma.instance('Icon Right'),
-      iconLeft: figma.boolean('Icon Left?'),
+      iconLeft: figma.instance('Icon Left'),
       children: figma.string('Text'),
       size: figma.enum('size', {
         'medium - 48': 'medium',
@@ -72,7 +72,7 @@ figma.connect(
   {
     props: {
       iconRight: figma.instance('Icon Right'),
-      iconLeft: figma.boolean('Icon Left?'),
+      iconLeft: figma.instance('Icon Left'),
       children: figma.string('Text'),
       size: figma.enum('size', {
         'medium - 48': 'medium',

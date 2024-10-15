@@ -1,4 +1,4 @@
-import type { ViewProps, ViewStyle } from 'react-native';
+import type { ViewStyle, StyleProp, View } from 'react-native';
 import type {
   BordeWidthValue,
   ColorValue,
@@ -6,73 +6,126 @@ import type {
   RadiiValue,
   SpaceValue,
 } from '../../types';
+import React from 'react';
 
-interface BoxProps
-  extends Omit<
-      ViewStyle,
-      | 'padding'
-      | 'paddingHorizontal'
-      | 'paddingVertical'
-      | 'paddingTop'
-      | 'paddingBottom'
-      | 'paddingLeft'
-      | 'paddingRight'
-      | 'paddingEnd'
-      | 'paddingStart'
-      | 'margin'
-      | 'marginHorizontal'
-      | 'marginVertical'
-      | 'marginTop'
-      | 'marginBottom'
-      | 'marginLeft'
-      | 'marginRight'
-      | 'marginEnd'
-      | 'marginStart'
-      | 'columnGap'
-      | 'gap'
-      | 'rowGap'
-      | 'backgroundColor'
-      | 'borderColor'
-      | 'borderBottomColor'
-      | 'borderLeftColor'
-      | 'borderRightColor'
-      | 'borderTopColor'
-      | 'borderBlockColor'
-      | 'borderBlockEndColor'
-      | 'borderBlockStartColor'
-      | 'borderEndColor'
-      | 'borderStartColor'
-      | 'shadowColor'
-      | 'borderRadius'
-      | 'rounded'
-      | 'borderBottomEndRadius'
-      | 'borderBottomLeftRadius'
-      | 'borderBottomRightRadius'
-      | 'borderBottomStartRadius'
-      | 'borderTopEndRadius'
-      | 'borderTopLeftRadius'
-      | 'borderTopRightRadius'
-      | 'borderTopStartRadius'
-      | 'borderEndEndRadius'
-      | 'borderEndStartRadius'
-      | 'borderStartEndRadius'
-      | 'borderStartStartRadius'
-      | 'opacity'
-      | 'borderBottomWidth'
-      | 'borderEndWidth'
-      | 'borderLeftWidth'
-      | 'borderRightWidth'
-      | 'borderStartWidth'
-      | 'borderTopWidth'
-      | 'borderWidth'
-      | 'height'
-      | 'width'
-      | 'maxWidth'
-      | 'maxHeight'
-    >,
-    ViewProps {
+type ComponentPropsWithRef<T extends React.ElementType> = React.ComponentPropsWithRef<T>;
+
+export type OmittedStyles = Omit<
+  ViewStyle,
+  // List of styles to omit (same as your original list)
+  | 'backgroundColor'
+  | 'borderBlockColor'
+  | 'borderBlockEndColor'
+  | 'borderBlockStartColor'
+  | 'borderBottomColor'
+  | 'borderBottomEndRadius'
+  | 'borderBottomLeftRadius'
+  | 'borderBottomRightRadius'
+  | 'borderBottomStartRadius'
+  | 'borderBottomWidth'
+  | 'borderColor'
+  | 'borderEndColor'
+  | 'borderEndEndRadius'
+  | 'borderEndStartRadius'
+  | 'borderEndWidth'
+  | 'borderLeftColor'
+  | 'borderLeftWidth'
+  | 'borderRadius'
+  | 'borderRightColor'
+  | 'borderRightWidth'
+  | 'borderStartColor'
+  | 'borderStartEndRadius'
+  | 'borderStartStartRadius'
+  | 'borderStartWidth'
+  | 'borderTopColor'
+  | 'borderTopEndRadius'
+  | 'borderTopLeftRadius'
+  | 'borderTopRightRadius'
+  | 'borderTopStartRadius'
+  | 'borderTopWidth'
+  | 'borderWidth'
+  | 'bottom'
+  | 'columnGap'
+  | 'end'
+  | 'gap'
+  | 'height'
+  | 'left'
+  | 'margin'
+  | 'marginBottom'
+  | 'marginEnd'
+  | 'marginHorizontal'
+  | 'marginLeft'
+  | 'marginRight'
+  | 'marginStart'
+  | 'marginTop'
+  | 'marginVertical'
+  | 'maxHeight'
+  | 'maxWidth'
+  | 'minHeight'
+  | 'minWidth'
+  | 'opacity'
+  | 'padding'
+  | 'paddingBottom'
+  | 'paddingEnd'
+  | 'paddingHorizontal'
+  | 'paddingLeft'
+  | 'paddingRight'
+  | 'paddingStart'
+  | 'paddingTop'
+  | 'paddingVertical'
+  | 'right'
+  | 'rowGap'
+  | 'shadowColor'
+  | 'start'
+  | 'top'
+  | 'width'
+  // deprecated
+  | 'rotation'
+  | 'scaleX'
+  | 'scaleY'
+  | 'transformMatrix'
+  | 'translateX'
+  | 'translateY'
+>;
+
+export type OtherBoxViewStyles = Pick<
+  OmittedStyles,
+  // List of other styles to include
+  | 'alignContent'
+  | 'alignItems'
+  | 'alignSelf'
+  | 'aspectRatio'
+  | 'backfaceVisibility'
+  | 'borderCurve'
+  | 'borderStyle'
+  | 'cursor'
+  | 'direction'
+  | 'display'
+  | 'elevation'
+  | 'flex'
+  | 'flexBasis'
+  | 'flexDirection'
+  | 'flexGrow'
+  | 'flexShrink'
+  | 'flexWrap'
+  | 'justifyContent'
+  | 'overflow'
+  | 'pointerEvents'
+  | 'position'
+  | 'shadowOffset'
+  | 'shadowOpacity'
+  | 'shadowRadius'
+  | 'transform'
+  | 'transformOrigin'
+  | 'zIndex'
+>;
+
+export interface BoxStyleMappingValues {
+  // Style Mapping
+  // - Colors
   bg?: ColorValue;
   bgColor?: ColorValue;
+  // - Space
   h?: SpaceValue;
   w?: SpaceValue;
   p?: SpaceValue;
@@ -89,7 +142,16 @@ interface BoxProps
   mb?: SpaceValue;
   mr?: SpaceValue;
   ml?: SpaceValue;
+  // - Radii
   rounded?: RadiiValue;
+}
+
+export interface ThemedBoxViewStyleProps {
+  // - Space
+  top?: SpaceValue;
+  bottom?: SpaceValue;
+  left?: SpaceValue;
+  right?: SpaceValue;
   padding?: SpaceValue;
   paddingHorizontal?: SpaceValue;
   paddingVertical?: SpaceValue;
@@ -111,6 +173,15 @@ interface BoxProps
   columnGap?: SpaceValue;
   gap?: SpaceValue;
   rowGap?: SpaceValue;
+  height?: SpaceValue;
+  width?: SpaceValue;
+  minHeight?: SpaceValue;
+  minWidth?: SpaceValue;
+  maxWidth?: SpaceValue;
+  maxHeight?: SpaceValue;
+  start?: SpaceValue;
+  end?: SpaceValue;
+  // - Colors
   backgroundColor?: ColorValue;
   borderColor?: ColorValue;
   borderBottomColor?: ColorValue;
@@ -123,6 +194,7 @@ interface BoxProps
   borderEndColor?: ColorValue;
   borderStartColor?: ColorValue;
   shadowColor?: ColorValue;
+  // - Radii
   borderRadius?: RadiiValue;
   borderBottomEndRadius?: RadiiValue;
   borderBottomLeftRadius?: RadiiValue;
@@ -136,7 +208,9 @@ interface BoxProps
   borderEndStartRadius?: RadiiValue;
   borderStartEndRadius?: RadiiValue;
   borderStartStartRadius?: RadiiValue;
+  // - Opacity
   opacity?: OpacityValue;
+  // - Border Width
   borderBottomWidth?: BordeWidthValue;
   borderEndWidth?: BordeWidthValue;
   borderLeftWidth?: BordeWidthValue;
@@ -144,10 +218,18 @@ interface BoxProps
   borderStartWidth?: BordeWidthValue;
   borderTopWidth?: BordeWidthValue;
   borderWidth?: BordeWidthValue;
-  height?: SpaceValue;
-  width?: SpaceValue;
-  maxWidth?: SpaceValue;
-  maxHeight?: SpaceValue;
 }
+
+export interface BoxOwnProps
+  extends BoxStyleMappingValues,
+    ThemedBoxViewStyleProps,
+    OtherBoxViewStyles {
+  as?: React.ElementType;
+  children?: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
+}
+
+export type BoxProps<T extends React.ElementType = typeof View> = BoxOwnProps &
+  Omit<ComponentPropsWithRef<T>, keyof BoxOwnProps>;
 
 export default BoxProps;

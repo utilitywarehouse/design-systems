@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListHeading } from '@utilitywarehouse/native-ui';
+import { ListHeading } from './';
 import figma from '@figma/code-connect';
 
 figma.connect(

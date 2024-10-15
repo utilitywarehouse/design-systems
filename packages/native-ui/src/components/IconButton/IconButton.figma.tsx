@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton } from '@utilitywarehouse/native-ui';
+import { IconButton } from './';
 import figma from '@figma/code-connect';
 
 const props = {
@@ -26,18 +26,13 @@ const props = {
   inverted: figma.boolean('inverted'),
 };
 
-const imports = [
-  'import { IconButton } from "@utilitywarehouse/native-ui";',
-  'import { YourIcon } from "@utilitywarehouse/react-native-icons";',
-];
-
 // Solid Button
 figma.connect(
   IconButton,
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=6678-6454&m=dev',
   {
     props,
-    imports,
+
     example: ({ inverted, icon, colorScheme, size, disabled, loading }) => (
       <IconButton
         variant="solid"
@@ -58,7 +53,6 @@ figma.connect(
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=6678-6454&m=dev',
   {
     props,
-    imports,
     variant: {
       size: 'x-small - 24',
     },
@@ -84,7 +78,6 @@ figma.connect(
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=6679-7713&m=dev',
   {
     props,
-    imports,
     example: ({ inverted, icon, colorScheme, size, disabled, loading }) => (
       <IconButton
         variant="outline"
@@ -105,7 +98,6 @@ figma.connect(
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=6679-7713&m=dev',
   {
     props,
-    imports,
     variant: {
       size: 'x-small - 24',
     },
@@ -130,7 +122,6 @@ figma.connect(
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=6682-8623&m=dev',
   {
     props,
-    imports,
     example: ({ inverted, icon, colorScheme, size, disabled, loading }) => (
       <IconButton
         variant="ghost"
@@ -151,7 +142,6 @@ figma.connect(
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=6682-8623&m=dev',
   {
     props,
-    imports,
     variant: {
       size: 'x-small - 24',
     },

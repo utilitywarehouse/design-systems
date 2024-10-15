@@ -10,23 +10,35 @@ import Animated, {
   Easing,
 } from 'react-native-reanimated';
 import type SkeletonProps from './Skeleton.props';
-import { type DimensionValue, View } from 'react-native';
+import { AnimatableNumericValue, type DimensionValue, View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
 
 const AnimatedView = Animated.createAnimatedComponent(View);
 
-const Skeleton: FC<SkeletonProps> = ({ width, height, backgroundColor, style, ...props }) => {
+const Skeleton: FC<SkeletonProps> = ({
+  width,
+  height,
+  backgroundColor,
+  borderRadius,
+  style,
+  ...props
+}) => {
   const opacity = useSharedValue(1);
 
   const {
     styles,
-    theme: { colors, colorMode },
+    theme: { colors, colorMode, radii },
   } = useStyles(stylesheet);
   const backgroundColorValue: ColorValue = useMemo(
     () => getStyleValue(backgroundColor, colors),
     [backgroundColor, colorMode]
+  );
+
+  const borderRadiusValue: AnimatableNumericValue = useMemo(
+    () => getStyleValue(borderRadius, radii),
+    [borderRadius]
   );
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -51,7 +63,7 @@ const Skeleton: FC<SkeletonProps> = ({ width, height, backgroundColor, style, ..
       {...props}
       style={[
         styles.skeleton,
-        styles.size(width, height, backgroundColorValue),
+        styles.size(width, height, backgroundColorValue, borderRadiusValue),
         style,
         animatedStyle,
       ]}
@@ -64,10 +76,16 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii }) => ({
     backgroundColor: colorMode === 'light' ? colors.grey75 : colors.grey300,
     borderRadius: radii.sm,
   },
-  size: (width?: DimensionValue, height?: DimensionValue, backgroundColor?: ColorValue) => ({
+  size: (
+    width?: DimensionValue,
+    height?: DimensionValue,
+    backgroundColor?: ColorValue,
+    borderRadius?: AnimatableNumericValue
+  ) => ({
     width,
     height,
     ...(backgroundColor ? { backgroundColor } : {}),
+    ...(borderRadius ? { borderRadius } : {}),
   }),
 }));
 

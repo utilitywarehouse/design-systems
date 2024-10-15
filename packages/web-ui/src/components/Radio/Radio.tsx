@@ -29,6 +29,7 @@ const componentClassName = withGlobalPrefix(componentName);
 const StyledFlex = styled(Flex)({
   cursor: 'pointer',
   '*': { cursor: 'pointer' },
+  flex: 1,
 });
 
 const StyledRadioItem = styled(Item)({

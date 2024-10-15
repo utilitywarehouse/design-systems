@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge } from '@utilitywarehouse/native-ui';
+import { Badge } from './';
 import figma from '@figma/code-connect';
 
 figma.connect(

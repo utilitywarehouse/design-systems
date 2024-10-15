@@ -1,457 +1,331 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { memo, useMemo } from 'react';
-import { View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import React, { forwardRef, memo } from 'react';
+import { View, ViewStyle } from 'react-native';
+import { useStyles, UnistylesTheme } from 'react-native-unistyles';
 import type BoxProps from './Box.props';
-import getStyleValue from '../../utils/getStyleValue';
 
-const Box: React.FC<BoxProps> = ({
-  alignContent,
-  alignItems,
-  alignSelf,
-  aspectRatio,
-  borderBottomWidth,
-  borderEndWidth,
-  borderLeftWidth,
-  borderRightWidth,
-  borderStartWidth,
-  borderTopWidth,
-  borderWidth,
-  bottom,
-  display,
-  end,
-  flex,
-  flexBasis,
-  flexDirection,
-  rowGap,
-  gap,
-  columnGap,
-  flexGrow,
-  flexShrink,
-  flexWrap,
-  height,
-  justifyContent,
-  left,
-  margin,
-  marginBottom,
-  marginEnd,
-  marginHorizontal,
-  marginLeft,
-  marginRight,
-  marginStart,
-  marginTop,
-  marginVertical,
-  maxHeight,
-  maxWidth,
-  minHeight,
-  minWidth,
-  overflow,
-  padding,
-  paddingBottom,
-  paddingEnd,
-  paddingHorizontal,
-  paddingLeft,
-  paddingRight,
-  paddingStart,
-  paddingTop,
-  paddingVertical,
-  position,
-  right,
-  start,
-  top,
-  width,
-  zIndex,
-  direction,
-  backfaceVisibility,
-  backgroundColor,
-  borderBlockColor,
-  borderBlockEndColor,
-  borderBlockStartColor,
-  borderBottomColor,
-  borderBottomEndRadius,
-  borderBottomLeftRadius,
-  borderBottomRightRadius,
-  borderBottomStartRadius,
-  borderColor,
-  borderCurve,
-  borderEndColor,
-  borderEndEndRadius,
-  borderEndStartRadius,
-  borderLeftColor,
-  borderRadius,
-  borderRightColor,
-  borderStartColor,
-  borderStartEndRadius,
-  borderStartStartRadius,
-  borderStyle,
-  borderTopColor,
-  borderTopEndRadius,
-  borderTopLeftRadius,
-  borderTopRightRadius,
-  borderTopStartRadius,
-  opacity,
-  elevation,
-  pointerEvents,
-  cursor,
-  shadowColor,
-  shadowOffset,
-  shadowOpacity,
-  shadowRadius,
-  transform,
-  transformOrigin,
-  bg,
-  bgColor,
-  h,
-  w,
-  p,
-  px,
-  py,
-  pt,
-  pb,
-  pr,
-  pl,
-  m,
-  mx,
-  my,
-  mt,
-  mb,
-  mr,
-  ml,
-  rounded,
-  style,
-  ...props
-}) => {
-  const {
-    styles,
-    theme: { space, colors, radii, borderWidths, opacity: themeOpacity },
-  } = useStyles(stylesheet);
-
-  const spaceValues = useMemo(
-    () => ({
-      padding: getStyleValue(padding || p, space),
-      paddingHorizontal: getStyleValue(paddingHorizontal || px, space),
-      paddingVertical: getStyleValue(paddingVertical || py, space),
-      paddingTop: getStyleValue(paddingTop || pt, space),
-      paddingBottom: getStyleValue(paddingBottom || pb, space),
-      paddingLeft: getStyleValue(paddingLeft || pl, space),
-      paddingRight: getStyleValue(paddingRight || pr, space),
-      paddingEnd: getStyleValue(paddingEnd, space),
-      paddingStart: getStyleValue(paddingStart, space),
-      margin: getStyleValue(m || margin, space),
-      marginHorizontal: getStyleValue(marginHorizontal || mx, space),
-      marginVertical: getStyleValue(marginVertical || my, space),
-      marginTop: getStyleValue(marginTop || mt, space),
-      marginBottom: getStyleValue(marginBottom || mb, space),
-      marginLeft: getStyleValue(marginLeft || ml, space),
-      marginRight: getStyleValue(marginRight || mr, space),
-      marginEnd: getStyleValue(marginEnd, space),
-      marginStart: getStyleValue(marginStart, space),
-      columnGap: getStyleValue(columnGap, space),
-      gap: getStyleValue(gap, space),
-      rowGap: getStyleValue(rowGap, space),
-      height: getStyleValue(height || h, space),
-      width: getStyleValue(width || w, space),
-      maxHeight: getStyleValue(maxHeight, space),
-      maxWidth: getStyleValue(maxWidth, space),
-    }),
-    [
-      padding,
-      p,
-      paddingHorizontal,
-      px,
-      paddingVertical,
-      py,
-      paddingTop,
-      pt,
-      paddingBottom,
-      pb,
-      paddingLeft,
-      pl,
-      paddingRight,
-      pr,
-      paddingEnd,
-      paddingStart,
-      margin,
-      m,
-      marginHorizontal,
-      mx,
-      marginVertical,
-      my,
-      marginTop,
-      mt,
-      marginBottom,
-      mb,
-      marginLeft,
-      ml,
-      marginRight,
-      mr,
-      gap,
-      rowGap,
-      columnGap,
-      marginEnd,
-      marginStart,
-      height,
-      h,
-      width,
-      w,
-      maxHeight,
-      maxWidth,
-    ]
-  );
-
-  const colorValues = useMemo(
-    () => ({
-      backgroundColor: getStyleValue(backgroundColor || bg || bgColor, colors),
-      borderColor: getStyleValue(borderColor, colors),
-      borderBottomColor: getStyleValue(borderBottomColor, colors),
-      borderLeftColor: getStyleValue(borderLeftColor, colors),
-      borderRightColor: getStyleValue(borderRightColor, colors),
-      borderTopColor: getStyleValue(borderTopColor, colors),
-      borderBlockColor: getStyleValue(borderBlockColor, colors),
-      borderBlockEndColor: getStyleValue(borderBlockEndColor, colors),
-      borderBlockStartColor: getStyleValue(borderBlockStartColor, colors),
-      borderEndColor: getStyleValue(borderEndColor, colors),
-      borderStartColor: getStyleValue(borderStartColor, colors),
-      shadowColor: getStyleValue(shadowColor, colors),
-    }),
-    [
-      backgroundColor,
-      bg,
-      bgColor,
-      borderColor,
-      borderBottomColor,
-      borderLeftColor,
-      borderRightColor,
-      borderTopColor,
-      borderBlockColor,
-      borderBlockEndColor,
-      borderBlockStartColor,
-      borderEndColor,
-      borderStartColor,
-      shadowColor,
-    ]
-  );
-
-  const radiusValues = useMemo(
-    () => ({
-      borderRadius: getStyleValue(borderRadius || rounded, radii),
-      borderBottomEndRadius: getStyleValue(borderBottomEndRadius, radii),
-      borderBottomLeftRadius: getStyleValue(borderBottomLeftRadius, radii),
-      borderBottomRightRadius: getStyleValue(borderBottomRightRadius, radii),
-      borderBottomStartRadius: getStyleValue(borderBottomStartRadius, radii),
-      borderTopEndRadius: getStyleValue(borderTopEndRadius, radii),
-      borderTopLeftRadius: getStyleValue(borderTopLeftRadius, radii),
-      borderTopRightRadius: getStyleValue(borderTopRightRadius, radii),
-      borderTopStartRadius: getStyleValue(borderTopStartRadius, radii),
-      borderEndEndRadius: getStyleValue(borderEndEndRadius, radii),
-      borderEndStartRadius: getStyleValue(borderEndStartRadius, radii),
-      borderStartEndRadius: getStyleValue(borderStartEndRadius, radii),
-      borderStartStartRadius: getStyleValue(borderStartStartRadius, radii),
-    }),
-    [
-      borderRadius,
-      rounded,
-      borderBottomEndRadius,
-      borderBottomLeftRadius,
-      borderBottomRightRadius,
-      borderBottomStartRadius,
-      borderTopEndRadius,
-      borderTopLeftRadius,
-      borderTopRightRadius,
-      borderTopStartRadius,
-      borderEndEndRadius,
-      borderEndStartRadius,
-      borderStartEndRadius,
-      borderStartStartRadius,
-    ]
-  );
-
-  const borderValues = useMemo(
-    () => ({
-      borderBottomWidth: getStyleValue(borderBottomWidth, borderWidths),
-      borderEndWidth: getStyleValue(borderEndWidth, borderWidths),
-      borderLeftWidth: getStyleValue(borderLeftWidth, borderWidths),
-      borderRightWidth: getStyleValue(borderRightWidth, borderWidths),
-      borderStartWidth: getStyleValue(borderStartWidth, borderWidths),
-      borderTopWidth: getStyleValue(borderTopWidth, borderWidths),
-      borderWidth: getStyleValue(borderWidth, borderWidths),
-    }),
-    [
-      borderBottomWidth,
-      borderEndWidth,
-      borderLeftWidth,
-      borderRightWidth,
-      borderStartWidth,
-      borderTopWidth,
-      borderWidth,
-    ]
-  );
-
-  const opacityValue = useMemo(() => getStyleValue(opacity, themeOpacity), [opacity]);
-
-  const boxStyles = useMemo(
-    () =>
-      styles.box({
-        alignContent,
-        alignItems,
-        alignSelf,
-        aspectRatio,
-        bottom,
-        display,
-        end,
-        flex,
-        flexBasis,
-        flexDirection,
-        flexGrow,
-        flexShrink,
-        flexWrap,
-        justifyContent,
-        left,
-        minHeight,
-        minWidth,
-        overflow,
-        position,
-        right,
-        start,
-        top,
-        zIndex,
-        direction,
-        backfaceVisibility,
-        borderCurve,
-        borderStyle,
-        elevation,
-        pointerEvents,
-        cursor,
-        shadowOffset,
-        shadowOpacity,
-        shadowRadius,
-        transform,
-        transformOrigin,
-        ...borderValues,
-        ...colorValues,
-        ...radiusValues,
-        ...spaceValues,
-        opacity: opacityValue,
-      }),
-    [
-      alignContent,
-      alignItems,
-      alignSelf,
-      aspectRatio,
-      borderBottomWidth,
-      borderEndWidth,
-      borderLeftWidth,
-      borderRightWidth,
-      borderStartWidth,
-      borderTopWidth,
-      borderWidth,
-      bottom,
-      display,
-      end,
-      flex,
-      flexBasis,
-      flexDirection,
-      rowGap,
-      gap,
-      columnGap,
-      flexGrow,
-      flexShrink,
-      flexWrap,
-      height,
-      h,
-      justifyContent,
-      left,
-      spaceValues.margin,
-      spaceValues.marginBottom,
-      marginEnd,
-      marginHorizontal,
-      mx,
-      marginLeft,
-      ml,
-      marginRight,
-      mr,
-      marginStart,
-      marginTop,
-      mt,
-      marginVertical,
-      my,
-      maxHeight,
-      maxWidth,
-      minHeight,
-      minWidth,
-      overflow,
-      spaceValues.padding,
-      paddingBottom,
-      paddingEnd,
-      paddingHorizontal,
-      px,
-      paddingLeft,
-      pl,
-      paddingRight,
-      pr,
-      paddingStart,
-      paddingTop,
-      pt,
-      paddingVertical,
-      py,
-      position,
-      right,
-      start,
-      top,
-      width,
-      w,
-      zIndex,
-      direction,
-      backfaceVisibility,
-      backgroundColor,
-      bg,
-      bgColor,
-      borderBlockColor,
-      borderBlockEndColor,
-      borderBlockStartColor,
-      borderBottomColor,
-      borderBottomEndRadius,
-      borderBottomLeftRadius,
-      borderBottomRightRadius,
-      borderBottomStartRadius,
-      borderColor,
-      borderCurve,
-      borderEndColor,
-      borderEndEndRadius,
-      borderEndStartRadius,
-      borderLeftColor,
-      borderRadius,
-      rounded,
-      borderRightColor,
-      borderStartColor,
-      borderStartEndRadius,
-      borderStartStartRadius,
-      borderStyle,
-      borderTopColor,
-      borderTopEndRadius,
-      borderTopLeftRadius,
-      borderTopRightRadius,
-      borderTopStartRadius,
-      opacity,
-      elevation,
-      pointerEvents,
-      cursor,
-      shadowColor,
-      shadowOffset,
-      shadowOpacity,
-      shadowRadius,
-      transform,
-      transformOrigin,
-    ]
-  );
-
-  return <View {...props} style={[styles.box(boxStyles), style]} />;
+const propStyleMapping: { [key: string]: keyof ViewStyle } = {
+  p: 'padding',
+  px: 'paddingHorizontal',
+  py: 'paddingVertical',
+  pt: 'paddingTop',
+  pb: 'paddingBottom',
+  pl: 'paddingLeft',
+  pr: 'paddingRight',
+  m: 'margin',
+  mx: 'marginHorizontal',
+  my: 'marginVertical',
+  mt: 'marginTop',
+  mb: 'marginBottom',
+  ml: 'marginLeft',
+  mr: 'marginRight',
+  bg: 'backgroundColor',
+  bgColor: 'backgroundColor',
+  h: 'height',
+  w: 'width',
+  rounded: 'borderRadius',
 };
 
-const stylesheet = createStyleSheet(() => ({
-  box: styles => ({ ...styles }),
-}));
+const themeStyleMapping: { [key in keyof ViewStyle]?: keyof UnistylesTheme } = {
+  top: 'space',
+  bottom: 'space',
+  left: 'space',
+  right: 'space',
+  padding: 'space',
+  paddingHorizontal: 'space',
+  paddingVertical: 'space',
+  paddingTop: 'space',
+  paddingBottom: 'space',
+  paddingLeft: 'space',
+  paddingRight: 'space',
+  paddingEnd: 'space',
+  paddingStart: 'space',
+  margin: 'space',
+  marginHorizontal: 'space',
+  marginVertical: 'space',
+  marginTop: 'space',
+  marginBottom: 'space',
+  marginLeft: 'space',
+  marginRight: 'space',
+  marginEnd: 'space',
+  marginStart: 'space',
+  columnGap: 'space',
+  gap: 'space',
+  rowGap: 'space',
+  height: 'space',
+  width: 'space',
+  minHeight: 'space',
+  minWidth: 'space',
+  maxWidth: 'space',
+  maxHeight: 'space',
+  start: 'space',
+  end: 'space',
+  backgroundColor: 'colors',
+  borderColor: 'colors',
+  borderBottomColor: 'colors',
+  borderLeftColor: 'colors',
+  borderRightColor: 'colors',
+  borderTopColor: 'colors',
+  borderBlockColor: 'colors',
+  borderBlockEndColor: 'colors',
+  borderBlockStartColor: 'colors',
+  borderEndColor: 'colors',
+  borderStartColor: 'colors',
+  shadowColor: 'colors',
+  borderRadius: 'radii',
+  borderBottomEndRadius: 'radii',
+  borderBottomLeftRadius: 'radii',
+  borderBottomRightRadius: 'radii',
+  borderBottomStartRadius: 'radii',
+  borderTopEndRadius: 'radii',
+  borderTopLeftRadius: 'radii',
+  borderTopRightRadius: 'radii',
+  borderTopStartRadius: 'radii',
+  borderEndEndRadius: 'radii',
+  borderEndStartRadius: 'radii',
+  borderStartEndRadius: 'radii',
+  borderStartStartRadius: 'radii',
+  opacity: 'opacity',
+  borderBottomWidth: 'borderWidths',
+  borderEndWidth: 'borderWidths',
+  borderLeftWidth: 'borderWidths',
+  borderRightWidth: 'borderWidths',
+  borderStartWidth: 'borderWidths',
+  borderTopWidth: 'borderWidths',
+  borderWidth: 'borderWidths',
+};
 
-export default memo(Box);
+const resolveThemeValue = (value: any, themeMapping: any): any => {
+  if (
+    typeof value === 'string' &&
+    value.startsWith('$') &&
+    themeMapping &&
+    typeof themeMapping === 'object'
+  ) {
+    const key = value.slice(1);
+    if (themeMapping[key] !== undefined) {
+      return themeMapping[key];
+    }
+  }
+  return value;
+};
+
+const viewStyleProps = new Set<keyof ViewStyle>([
+  'alignContent',
+  'alignItems',
+  'alignSelf',
+  'aspectRatio',
+  'backfaceVisibility',
+  'backgroundColor',
+  'borderBlockColor',
+  'borderBlockEndColor',
+  'borderBlockStartColor',
+  'borderBottomColor',
+  'borderBottomEndRadius',
+  'borderBottomLeftRadius',
+  'borderBottomRightRadius',
+  'borderBottomStartRadius',
+  'borderBottomWidth',
+  'borderColor',
+  'borderCurve',
+  'borderEndColor',
+  'borderEndEndRadius',
+  'borderEndStartRadius',
+  'borderEndWidth',
+  'borderLeftColor',
+  'borderLeftWidth',
+  'borderRadius',
+  'borderRightColor',
+  'borderRightWidth',
+  'borderStartColor',
+  'borderStartEndRadius',
+  'borderStartStartRadius',
+  'borderStartWidth',
+  'borderStyle',
+  'borderTopColor',
+  'borderTopEndRadius',
+  'borderTopLeftRadius',
+  'borderTopRightRadius',
+  'borderTopStartRadius',
+  'borderTopWidth',
+  'borderWidth',
+  'bottom',
+  'columnGap',
+  'cursor',
+  'direction',
+  'display',
+  'elevation',
+  'end',
+  'flex',
+  'flexBasis',
+  'flexDirection',
+  'flexGrow',
+  'flexShrink',
+  'flexWrap',
+  'gap',
+  'height',
+  'justifyContent',
+  'left',
+  'margin',
+  'marginBottom',
+  'marginEnd',
+  'marginHorizontal',
+  'marginLeft',
+  'marginRight',
+  'marginStart',
+  'marginTop',
+  'marginVertical',
+  'maxHeight',
+  'maxWidth',
+  'minHeight',
+  'minWidth',
+  'opacity',
+  'overflow',
+  'padding',
+  'paddingBottom',
+  'paddingEnd',
+  'paddingHorizontal',
+  'paddingLeft',
+  'paddingRight',
+  'paddingStart',
+  'paddingTop',
+  'paddingVertical',
+  'pointerEvents',
+  'position',
+  'right',
+  'rowGap',
+  'shadowColor',
+  'shadowOffset',
+  'shadowOpacity',
+  'shadowRadius',
+  'start',
+  'top',
+  'transform',
+  'transformOrigin',
+  'width',
+  'zIndex',
+]);
+
+const directStyleProps: Array<keyof ViewStyle> = [
+  'alignContent',
+  'alignItems',
+  'alignSelf',
+  'aspectRatio',
+  'backfaceVisibility',
+  'borderCurve',
+  'borderStyle',
+  'cursor',
+  'direction',
+  'display',
+  'elevation',
+  'flex',
+  'flexBasis',
+  'flexDirection',
+  'flexGrow',
+  'flexShrink',
+  'flexWrap',
+  'justifyContent',
+  'overflow',
+  'pointerEvents',
+  'position',
+  'shadowOffset',
+  'shadowOpacity',
+  'shadowRadius',
+  'transform',
+  'transformOrigin',
+  'zIndex',
+];
+
+function isViewStyleProp(propName: string): propName is keyof ViewStyle {
+  return viewStyleProps.has(propName as keyof ViewStyle);
+}
+
+const BoxComponent = <T extends React.ElementType = typeof View>(
+  { as, style, children, ...props }: BoxProps<T>,
+  ref: React.Ref<any>
+) => {
+  const { theme } = useStyles();
+
+  const styles: Partial<ViewStyle> = {};
+  const componentProps: Record<string, any> = {};
+
+  // propStyleMapping
+  for (const prop in propStyleMapping) {
+    const stylePropName = propStyleMapping[prop];
+    const propValue = props[prop as keyof Omit<BoxProps, 'children' | 'style'>];
+
+    if (propValue !== undefined) {
+      const themeKey = themeStyleMapping[stylePropName];
+      if (themeKey) {
+        const themeMapping = theme[themeKey as keyof UnistylesTheme];
+        if (themeMapping && typeof themeMapping === 'object') {
+          (styles as any)[stylePropName] = resolveThemeValue(propValue, themeMapping);
+        } else {
+          (styles as any)[stylePropName] = propValue;
+        }
+      } else {
+        (styles as any)[stylePropName] = propValue;
+      }
+    }
+  }
+
+  // directStyleProps
+  directStyleProps.forEach(stylePropName => {
+    const propValue = props[stylePropName as keyof Omit<BoxProps, 'children' | 'style'>];
+    if (propValue !== undefined) {
+      (styles as any)[stylePropName] = propValue;
+    }
+  });
+
+  // Remaining style props
+  for (const propName in props) {
+    // Skip if already handled
+    if (
+      Object.prototype.hasOwnProperty.call(propStyleMapping, propName) ||
+      directStyleProps.includes(propName as keyof ViewStyle) ||
+      Object.prototype.hasOwnProperty.call(styles, propName)
+    ) {
+      continue;
+    }
+
+    // Check if propName is a valid style property
+    if (isViewStyleProp(propName)) {
+      const stylePropName = propName as keyof ViewStyle;
+      const propValue = props[propName as keyof Omit<BoxProps, 'children' | 'style'>];
+
+      if (propValue !== undefined) {
+        const themeKey = themeStyleMapping[stylePropName];
+        if (themeKey) {
+          const themeMapping = theme[themeKey as keyof UnistylesTheme];
+          if (themeMapping && typeof themeMapping === 'object') {
+            (styles as any)[stylePropName] = resolveThemeValue(propValue, themeMapping);
+          } else {
+            (styles as any)[stylePropName] = propValue;
+          }
+        } else {
+          (styles as any)[stylePropName] = propValue;
+        }
+      }
+    } else {
+      // Non-style props, add to componentProps
+      (componentProps as any)[propName] =
+        props[propName as keyof Omit<BoxProps, 'children' | 'style'>];
+    }
+  }
+
+  const Component = as || View;
+
+  return (
+    <Component ref={ref} style={[styles, style]} {...componentProps}>
+      {children}
+    </Component>
+  );
+};
+
+const ForwardedBox = forwardRef<View, BoxProps>(BoxComponent);
+
+ForwardedBox.displayName = 'Box';
+
+export default memo(ForwardedBox);

@@ -1,5 +1,26 @@
 # @utilitywarehouse/web-ui
 
+## 1.0.6
+
+### Patch Changes
+
+- [#566](https://github.com/utilitywarehouse/design-systems/pull/566) [`374e534b`](https://github.com/utilitywarehouse/design-systems/commit/374e534ba2786030848c6205c2eb20b76fd9143b) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix `@mui` deps
+
+## 1.0.5
+
+### Patch Changes
+
+- [#554](https://github.com/utilitywarehouse/design-systems/pull/554) [`69bc8ca9`](https://github.com/utilitywarehouse/design-systems/commit/69bc8ca9c6896d11bc8d99a4076ade031d8fb702) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `removeGutterBottom` prop to TextField
+
+- [#553](https://github.com/utilitywarehouse/design-systems/pull/553) [`a1e58f1f`](https://github.com/utilitywarehouse/design-systems/commit/a1e58f1fa7b863b816ee43ab567d1a7db5741d23) Thanks [@robphoenix](https://github.com/robphoenix)! - `Radio` & `RadioTile` will now stretch to fit the content width of the `RadioGroup` container
+
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies [[`235ba670`](https://github.com/utilitywarehouse/design-systems/commit/235ba67081593d9fc5e28fc0e4bbb3aea941d077)]:
+  - @utilitywarehouse/colour-system@0.5.0
+
 ## 1.0.3
 
 ### Patch Changes

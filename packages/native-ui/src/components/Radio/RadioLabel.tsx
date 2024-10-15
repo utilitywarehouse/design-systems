@@ -34,7 +34,7 @@ const stylesheet = createStyleSheet(({ lineHeights, fontSizes, fonts, fontWeight
       },
       disabled: {
         true: {
-          color: colors.grey500,
+          color: colors.grey400,
         },
       },
     },

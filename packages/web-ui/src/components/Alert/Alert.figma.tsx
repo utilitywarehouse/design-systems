@@ -8,6 +8,13 @@ figma.connect(
   Alert,
   'https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=5448-21854&m=dev',
   {
+    // https://github.com/figma/code-connect/issues/12
+    links: [
+      {
+        name: 'Documentation',
+        url: 'https://uw-web-ui.vercel.app/?path=/docs/web-ui-components-alert--documentation',
+      },
+    ],
     props: {
       title: figma.string('title'),
       link: figma.string('link'),

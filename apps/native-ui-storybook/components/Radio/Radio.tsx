@@ -12,8 +12,8 @@ const RadioBasic: StoryFn<{
         <Radio
           value="Label 1"
           aria-label="Label 1"
-          onChange={(isChecked: boolean) => {
-            console.log(isChecked, '###');
+          onChange={(checked: boolean) => {
+            console.log(checked, '###');
           }}
           nativeID="Radio-1"
           disabled={disabled}

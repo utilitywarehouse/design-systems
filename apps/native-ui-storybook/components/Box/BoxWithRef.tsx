@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Box } from '@utilitywarehouse/native-ui';
+import { Box, Text } from '@utilitywarehouse/native-ui';
 import React from 'react';
+import { Platform } from 'react-native';
 
 const BoxWithRef = ({ ...props }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,12 +12,22 @@ const BoxWithRef = ({ ...props }) => {
       borderWidth: 8,
       borderRadius: 4,
       borderColor: '#22D3EE',
+      height: 100,
+      width: 100,
     };
 
     myRef?.current?.setNativeProps?.({
       style: styleObj,
     });
   }, [myRef]);
+
+  if (Platform.OS === 'web') {
+    return (
+      <Box {...props} ref={myRef}>
+        <Text>This is a Box component with styling using ref (see in app view).</Text>
+      </Box>
+    );
+  }
 
   return <Box {...props} ref={myRef} />;
 };

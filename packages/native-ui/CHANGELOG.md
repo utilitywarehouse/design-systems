@@ -1,5 +1,74 @@
 # @utilitywarehouse/native-ui
 
+## 0.5.6
+
+### Patch Changes
+
+- [#561](https://github.com/utilitywarehouse/design-systems/pull/561) [`2de73551`](https://github.com/utilitywarehouse/design-systems/commit/2de73551b6260d715a7044e8b47a63eaca32cecf) Thanks [@jordmccord](https://github.com/jordmccord)! - Expose `textAlignVertical` prop on `Heading` and `Text` components
+
+## 0.5.5
+
+### Patch Changes
+
+- [`085fdcac`](https://github.com/utilitywarehouse/design-systems/commit/085fdcac446b9f5901c4c7ddd5bcccdf0a7dd601) Thanks [@jordmccord](https://github.com/jordmccord)! - Add missing `Box` style props
+
+## 0.5.4
+
+### Patch Changes
+
+- [#556](https://github.com/utilitywarehouse/design-systems/pull/556) [`2fb24423`](https://github.com/utilitywarehouse/design-systems/commit/2fb24423cbd3aa8907ce6cec33ad72dfde492164) Thanks [@jordmccord](https://github.com/jordmccord)! - Fix `ListItemText` font size
+
+- [#552](https://github.com/utilitywarehouse/design-systems/pull/552) [`ad59004b`](https://github.com/utilitywarehouse/design-systems/commit/ad59004b0915d43f9a59dc3f13130867ed4e928f) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds the `as` prop to the lab `Box` component
+
+## 0.5.3
+
+### Patch Changes
+
+- [#549](https://github.com/utilitywarehouse/design-systems/pull/549) [`ea331aaa`](https://github.com/utilitywarehouse/design-systems/commit/ea331aaa707112338c29c82b34ed7e455b75b2e3) Thanks [@jordmccord](https://github.com/jordmccord)! - Simplifies lab `Box` component implementation
+
+## 0.5.2
+
+### Patch Changes
+
+- [#546](https://github.com/utilitywarehouse/design-systems/pull/546) [`85558391`](https://github.com/utilitywarehouse/design-systems/commit/8555839179d410f310ac5e824b7873f289c120c6) Thanks [@jordmccord](https://github.com/jordmccord)! - Exposes text decoration utility style props to `Text` component
+
+## 0.5.1
+
+### Patch Changes
+
+- Updated dependencies [[`235ba670`](https://github.com/utilitywarehouse/design-systems/commit/235ba67081593d9fc5e28fc0e4bbb3aea941d077)]:
+  - @utilitywarehouse/colour-system@0.5.0
+
+## 0.5.0
+
+### Minor Changes
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `Button` component's style library
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Simplified `Radio` component API
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `Spinner` component's style library
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `Radio` component's style library
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `IconButton` component's style library
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `Text` component's style library
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Simplified `Checkbox` component API
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `Heading` component's style library
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `List` component's style library
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `Icon` component's style library
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `Skeleton` component's style library
+
+### Patch Changes
+
+- [#542](https://github.com/utilitywarehouse/design-systems/pull/542) [`ece8a2fd`](https://github.com/utilitywarehouse/design-systems/commit/ece8a2fda5bf35fa7ce06395ec7c77ec6efbef82) Thanks [@jordmccord](https://github.com/jordmccord)! - Disable adaptive themes
+
 ## 0.4.1
 
 ### Patch Changes

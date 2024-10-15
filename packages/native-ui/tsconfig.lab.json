@@ -6,6 +6,7 @@
   "exclude": [
     "node_modules",
     "example",
+    "./src/lab/**/*.figma.tsx"
   ],
   "compilerOptions": {
     "outDir": "./"
