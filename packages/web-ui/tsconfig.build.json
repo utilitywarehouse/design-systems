@@ -6,6 +6,7 @@
     "node_modules",
     "storybook-static",
     "src/**/*.stories.tsx",
-    "src/storybook-utils"
+    "src/**/*.figma.tsx",
+    "src/storybook-components"
   ]
 }

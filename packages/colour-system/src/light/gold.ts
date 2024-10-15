@@ -18,5 +18,7 @@ export const gold500 = '#c77800';
 export const gold600 = '#ac6406';
 /** Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200 and Gold 300  */
 export const gold700 = '#894e16';
+/** Used for active state background colour on inverted on Web */
+export const gold800 = '#6e3311';
 /** Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200,  Gold 300 and Gold 500 */
 export const gold900 = '#52210c';

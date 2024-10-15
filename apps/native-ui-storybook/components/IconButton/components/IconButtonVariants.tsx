@@ -1,5 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { VStack, IconButton, ButtonGroup, Box, Heading } from '@utilitywarehouse/native-ui';
+import {
+  VStack,
+  IconButton,
+  ButtonGroup,
+  Box,
+  Heading,
+  useColorMode,
+} from '@utilitywarehouse/native-ui';
 import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
 import React, { ComponentProps } from 'react';
 import { VariantTitle } from '../../../docs/components';
@@ -18,19 +28,22 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
   inverted,
   _backgroundColor,
 }) => {
+  const colorMode = useColorMode();
   const capitalisedScheme =
     (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');
   const textColor =
-    _backgroundColor === 'midnight' || _backgroundColor === 'purple'
-      ? colorsCommon.brandWhite
-      : colors.cyan1000;
+    colorMode === 'light'
+      ? _backgroundColor === 'midnight' || _backgroundColor === 'purple'
+        ? colorsCommon.brandWhite
+        : colors.cyan1000
+      : undefined;
 
   return (
     <VStack space="2xl">
       <Box>
-        <Heading $light-color={textColor} mb="$2">
-          Solid - {capitalisedScheme}
-        </Heading>
+        <Box mb="$2">
+          <Heading color={textColor}>Solid - {capitalisedScheme}</Heading>
+        </Box>
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <IconButton
@@ -46,7 +59,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="solid"
               colorScheme={colorScheme}
-              isPressed={true}
+              pressed={true}
               size={size}
               inverted={inverted}
             />
@@ -59,7 +72,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               size={size}
               inverted={inverted}
               loading={true}
-              isDisabled={true}
+              disabled={true}
             />
           </VariantTitle>
           <VariantTitle title="Disabled">
@@ -67,7 +80,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="solid"
               colorScheme={colorScheme}
-              isDisabled={true}
+              disabled={true}
               size={size}
               inverted={inverted}
             />
@@ -75,9 +88,9 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
         </ButtonGroup>
       </Box>
       <Box>
-        <Heading $light-color={textColor} mb="$2">
-          Outline - {capitalisedScheme}
-        </Heading>
+        <Box mb="$2">
+          <Heading color={textColor}>Outline - {capitalisedScheme}</Heading>
+        </Box>
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <IconButton
@@ -93,7 +106,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="outline"
               colorScheme={colorScheme}
-              isPressed={true}
+              pressed={true}
               size={size}
               inverted={inverted}
             />
@@ -104,7 +117,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               variant="outline"
               colorScheme={colorScheme}
               size={size}
-              isDisabled={true}
+              disabled={true}
               inverted={inverted}
               loading={true}
             />
@@ -114,7 +127,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="outline"
               colorScheme={colorScheme}
-              isDisabled={true}
+              disabled={true}
               size={size}
               inverted={inverted}
             />
@@ -122,9 +135,9 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
         </ButtonGroup>
       </Box>
       <Box>
-        <Heading $light-color={textColor} mb="$2">
-          Ghost - {capitalisedScheme}
-        </Heading>
+        <Box mb="$2">
+          <Heading color={textColor}>Ghost - {capitalisedScheme}</Heading>
+        </Box>
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <IconButton
@@ -140,7 +153,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="ghost"
               colorScheme={colorScheme}
-              isPressed={true}
+              pressed={true}
               size={size}
               inverted={inverted}
             />
@@ -153,7 +166,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               size={size}
               inverted={inverted}
               loading={true}
-              isDisabled={true}
+              disabled={true}
             />
           </VariantTitle>
           <VariantTitle title="Disabled">
@@ -161,7 +174,7 @@ const ButtonVariants: React.FC<IconButtonVariantsProps> = ({
               icon={ChevronRightMediumIcon}
               variant="ghost"
               colorScheme={colorScheme}
-              isDisabled={true}
+              disabled={true}
               size={size}
               inverted={inverted}
             />

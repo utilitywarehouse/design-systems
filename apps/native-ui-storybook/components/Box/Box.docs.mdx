@@ -1,10 +1,22 @@
 import { Meta, Canvas, Story } from '@storybook/blocks';
 import * as BoxStories from './Box.stories';
-import { Box, Text, NativeUIProvider, Center } from '@utilitywarehouse/native-ui';
+import { Text, NativeUIProvider, Center, Alert } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 
 <Meta of={BoxStories} />
 
 # Box
+
+<NativeUIProvider>
+  <Box mt="$6" mb="4">
+    <Alert
+      colorScheme="gold"
+      text="This Box component is deprecated, use the Box from @utilitywarehouse/native-ui/lab"
+    />
+  </Box>
+</NativeUIProvider>
+
+> Click here to go to the [new Box component](/docs/native-ui-components-lab-box--docs).
 
 If you're looking for a flexible component to help with low-level layout needs, the Box component might be just what you need. With its customizable styles and props, it can be used to create a wide range of UI elements, from simple containers to complex layout structures.
 
@@ -15,15 +27,8 @@ If you're looking for a flexible component to help with low-level layout needs, 
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Box
-        sx={{
-          padding: 20,
-          margin: 15,
-          backgroundColor: '$grey100',
-          borderRadius: 8,
-        }}
-      >
-        <Text color="$grey900">Hello, world!</Text>
+      <Box p="$5" m="$4" bg="$grey100" borderRadius="$lg">
+        <Text>Hello, world!</Text>
       </Box>
     </Center>
   </NativeUIProvider>
@@ -33,17 +38,8 @@ If you're looking for a flexible component to help with low-level layout needs, 
 import { Box, Text } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => (
-  <Box
-    sx={{
-      padding: 20,
-      margin: 15,
-      backgroundColor: '$grey100',
-      borderRadius: 8,
-    }}
-  >
-    <Text color="$grey900">Hello, world!</Text>
+  <Box p="$5" m="$4" bg="$grey100" borderRadius="$lg">
+    <Text>Hello, world!</Text>
   </Box>
 );
 ```
-
-For more information, see the [Gluestack Box component documentation](https://gluestack.io/ui/docs/components/layout/box).

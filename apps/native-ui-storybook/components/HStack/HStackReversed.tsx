@@ -1,18 +1,20 @@
-import { HStack, Box } from '@utilitywarehouse/native-ui';
-import React from 'react';
+import { StoryFn } from '@storybook/react';
+import { HStack } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
+import React, { ComponentProps } from 'react';
 
-const HStackReversed = ({ space, ...props }: any) => {
+const HStackReversed: StoryFn<{
+  space: ComponentProps<typeof HStack>['space'];
+  reversed: boolean;
+}> = ({ space, ...props }) => {
   return (
     <HStack space={space} mt="$5" {...props} reversed>
-      <Box sx={{ w: 100, h: 100, bg: '$cyan300' }} />
-      <Box sx={{ w: 100, h: 100, bg: '$cyan400' }} />
-      <Box sx={{ w: 100, h: 100, bg: '$cyan500' }} />
-      <Box sx={{ w: 100, h: 100, bg: '$cyan600' }} />
+      <Box w={100} h={100} bg="$cyan300" />
+      <Box w={100} h={100} bg="$cyan400" />
+      <Box w={100} h={100} bg="$cyan500" />
+      <Box w={100} h={100} bg="$cyan600" />
     </HStack>
   );
 };
-
-HStackReversed.description =
-  'This is a basic HStack component example. HStack is a primitive component to layout its children horizontally.';
 
 export default HStackReversed;

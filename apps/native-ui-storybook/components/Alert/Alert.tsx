@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react';
 import { Alert, AlertIcon, AlertText, VStack, Icon } from '@utilitywarehouse/native-ui';
-import { Meta, StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
 
-const AlertBasic: StoryFn = ({ link, onPressIconButton, onClose, ...props }: any) => {
+const AlertBasic: StoryFn<{
+  link?: string;
+  onPressIconButton?: boolean;
+  onClose?: boolean;
+  colorScheme: 'cyan' | 'green' | 'gold' | 'red';
+  title?: string;
+  text: string;
+}> = ({ link, onPressIconButton, onClose, ...props }) => {
   const [args, setArgs] = useArgs();
   const handlePressLink = () => {
     alert('Link Pressed!');
@@ -21,7 +28,7 @@ const AlertBasic: StoryFn = ({ link, onPressIconButton, onClose, ...props }: any
     if (onPressIconButton && link) {
       setArgs({ ...args, link: undefined });
     }
-  }, [link, onPressIconButton]);
+  }, [link, onPressIconButton, args, setArgs]);
 
   return (
     <Alert
@@ -62,16 +69,16 @@ AlertBasic.argTypes = {
     control: 'boolean',
     description: 'Use this handle Icon Button press. (Use a function to handle the event.)',
   },
-} as Meta<typeof Alert>['argTypes'];
+};
 
 AlertBasic.args = {
   colorScheme: 'cyan',
   title: 'Information',
   text: 'Unlock the power of knowledge with the following information.',
   link: 'Learn more',
-  onClose: true as () => void,
+  onClose: true,
   onPressIconButton: false,
-} as Meta<typeof Alert>['args'];
+};
 
 export default AlertBasic;
 

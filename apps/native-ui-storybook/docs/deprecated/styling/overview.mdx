@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/blocks';
+import { Center, NativeUIProvider, Box, Alert } from '@utilitywarehouse/native-ui';
+
+<NativeUIProvider>
+  <Box mb="$4">
+    <Alert
+      colorScheme="gold"
+      title="Warning"
+      text="This document is now deprecated and will be removed in the next major release."
+    />
+  </Box>
+</NativeUIProvider>
+
+## Styling Overview
+
+Styling is provided by our styling engine [`@gluestack-style/react`](https://gluestack.io/style/docs/overview/introduction) it is configured by passing config file from [`@gluestack-ui/config`](https://github.com/gluestack/gluestack-ui/tree/main/packages/config).
+The config file exports an object which is passed into the `@utilitywarehouse/native-ui` `NativeUIProvider` (a Wrapper component that applies the theme and styling to all the children).
+
+```tsx
+import { NativeUIProvider } from '@utilitywarehouse/native-ui';
+
+function App({ children }) {
+  return <NativeUIProvider>{children}</NativeUIProvider>;
+}
+```
+
+Our `NativeUIProvider` is a wrapper around the `@gluestack/themed` UI Provider. For more information on how to use the `@gluestack/themed` provider, please refer to the [documentation](https://gluestack.io/ui/docs/styling/overview).

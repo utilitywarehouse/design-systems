@@ -1,15 +1,5 @@
 import { Meta, Canvas } from '@storybook/blocks';
-import RNExample from './components/RNExample';
-import GSExample from './components/GSExample';
-import BackToTopButton from '../../../components/BackToTopButton';
-import {
-  Center,
-  NativeUIProvider,
-  Button,
-  ButtonText,
-  Box,
-  Text,
-} from '@utilitywarehouse/native-ui';
+import { BackToTopButton } from '../../../components';
 
 <Meta title="Native UI / Guides / Styling / Color Mode" />
 
@@ -17,36 +7,67 @@ import {
 
 # Color Mode
 
-We can apply different styles based on different color mode by defining `_dark` and `_light` property in `sx` prop.
+We can apply different styles based on different color mode by setting the `colorMode` prop on the `NativeUIProvider` component.
 
-In the below example we are defining styles to be applied in dark mode in `_dark` object and for light mode in `_light` object.
+In the below example we are defining styles to be applied in dark mode, you can access the color mode using the `colorMode` theme token
+prop for example:
 
-<Canvas>
-  <NativeUIProvider>
-    <Center>
-      <Button $dark-bg="$darkCyan600" $light-bg="$red600" p="$2">
-        <ButtonText color="$white">Hello world</ButtonText>
-      </Button>
-    </Center>
-  </NativeUIProvider>
-</Canvas>
+#### Using the `colorMode` prop on `createStyleSheet`
 
 ```tsx
-<Button $dark-bg="$cyan600" $light-bg="$red600" p="$2">
-  <ButtonText>Hello world</ButtonText>
-</Button>
+import { useStyles, createStyleSheet } from '@utilitywarehouse/native-ui';
 
-// or
+const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
+  container: {
+    backgroundColor: colorMode === 'dark' ? colors.cyan600 : colors.red600,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+}));
 
-<Button sx={{ backgroundColor: '$red600', p: "$2", _dark: { backgroundColor: '$darkCyan600' }, }}>
-  <ButtonText>Hello world</ButtonText>
-</Button>
+const MyComponent = () => {
+  const { styles } = useStyles(stylesheet);
 
-// or
+  return (
+    <View style={styles.container}>
+      <Text>Hello world</Text>
+    </View>
+  );
+};
+```
 
-const StyledButton = styled(Button, {
-  backgroundColor: '$red600',
-  p: "$2",
-  _dark: { backgroundColor: '$darkCyan600' },
-});
+#### Using the `colorMode` prop on `useStyles` prop
+
+```tsx
+import { useStyles } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const {
+    theme: { colorMode },
+  } = useStyles(stylesheet);
+
+  return (
+    <View style={styles.container}>
+      <Text>{colorMode === 'dark' ? 'Dark mode' : 'Light mode'}</Text>
+    </View>
+  );
+};
+```
+
+#### Using the `useColorMode` hook
+
+```tsx
+import { useColorMode } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
+
+const MyComponent = () => {
+  const colorMode = useColorMode();
+
+  return (
+    <Box bg={colorMode === 'dark' ? '$grey100' : '$grey600'}>
+      <Text>{colorMode === 'dark' ? 'Dark mode' : 'Light mode'}</Text>
+    </Box>
+  );
+};
 ```

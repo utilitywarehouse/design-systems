@@ -31,7 +31,7 @@ import { Unstyled } from '@storybook/blocks';
 - [Installation](#installation)
 - [Additional packages](#additional-packages)
 - [Theming](#theming)
-- [The `lab` submodule](#the-lab-submodule)
+- [Usage with MUI Material](#usage-with-mui-material)
 - [ES modules](#es-modules)
 - [Dark Mode](#dark-mode)
 
@@ -69,18 +69,13 @@ import '@utilitywarehouse/fontsource';
 ## Theming
 
 Newer components do not need to be wrapped in a `ThemeProvider` component.
-Individual component documentation will indicate when a component requires the
-`ThemeProvider`. Only the following components should be wrapped in the
-`ThemeProvider`:
 
-- `Grid`
-- `Menu` (& `MenuItem`)
-- `TextField`
-- `Link` & `TextLink` (deprecated)
-- `Stack`
-- `ToggleButtonGroup` (& `ToggleButton`)
+You only need to use the `ThemeProvider` component in your app if you are using
+the deprecated `Grid` component.
 
-Wrap your application with the `ThemeProvider` component.
+All other components can be used without being wrapped in a `ThemeProvider`,
+and will not be affected if wrapped in a `ThemeProvider` from another
+component library, including the deprecated `customer-ui-material` library.
 
 ```tsx
 import * as React from 'react';
@@ -94,45 +89,13 @@ const App: React.FC = () => (
 );
 ```
 
-Or if necessary wrap only specific components with the `ThemeProvider`.
+## Usage with MUI Material
 
-```tsx
-import * as React from 'react';
-import { ThemeProvider, TextField } from '@utilitywarehouse/web-ui';
-import App from './App';
+If you are already using the `@mui/material` package in your app, then it's
+likely you can't also use Web UI. We override the default MUI theme and types
+and this can cause conflicts with your existing setup.
 
-const CustomInput: React.FC = () => (
-  <ThemeProvider>
-    <TextField />
-  </ThemeProvider>
-);
-```
-
-All other components can be used without being wrapped in a `ThemeProvider`,
-and will not be affected if wrapped in a `ThemeProvider` from another
-component library, including the deprecated `customer-ui-material`.
-
-## The `lab` submodule
-
-In an effort to avoid blocking the UX team, at the same time as avoiding
-forcing breaking changes on dev teams, we use the `lab` submodule to add
-component updates when necessary. For instance, if significant design updates,
-required by product, also incur breaking api changes, or a complete refactor,
-we can introduce them via the `lab` import path, alongside the existing
-component. Components introduced in this way can then replace the existing
-component in the next major release.
-
-After being released, components within `lab` will still be subject to semantic
-releasing, so any breaking changes will be considered as just that and will
-require a major release.
-
-```tsx
-import { Button } from '@utilitywarehouse/web-ui/dist/lab';
-
-[...]
-
-<Button>New button</Button>
-```
+This should hopefully be resolved in `v2`.
 
 ## ES modules
 
@@ -168,3 +131,11 @@ If you are using Next.js this won't happen to you as it is handled by the framew
 ## Dark Mode
 
 It should be noted that there is no intention to support dark mode for web.
+
+## End of Life
+
+These are the current support timelines for major version releases. Only until
+these dates will we continue to provide bug fixes and support.
+
+- `v1`: Current version
+- `v0`: EOL 01/04/2025

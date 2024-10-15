@@ -1,0 +1,11 @@
+{
+  "codeConnect": {
+    "include": ["src/**"],
+    "parser": "react",
+    "exclude": [],
+    "label": "Web UI",
+    "importPaths": {
+      "packages/web-ui/src/*": "@utilitywarehouse/web-ui"
+    }
+  }
+}

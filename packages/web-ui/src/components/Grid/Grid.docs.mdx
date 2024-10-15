@@ -1,0 +1,78 @@
+import { Divider } from '@mui/material';
+import { Meta, Canvas, ArgTypes, Description } from '@storybook/blocks';
+
+import { DEFAULT_COLUMNS, DEFAULT_SPACING } from './Grid';
+import * as Stories from './Grid.stories';
+
+import { Box } from '../Box';
+import { Stack } from '../Stack';
+import { Text } from '../Text';
+
+import { DocsHeader } from '../../storybook-components';
+import { spacingBase, breakpoints } from '../../tokens';
+
+<Meta of={Stories} />
+
+<DocsHeader componentName="Grid" stories={Stories} themeProviderRequired />
+
+<Canvas of={Stories.GridStory} sourceState="none" />
+
+- [Accessibility](#accessibility)
+- [Breakpoint Props](#breakpoint-props)
+- [Default Columns](#default-columns)
+- [Default Spacing](#default-spacing)
+- [Guidelines](#guidelines)
+- [Props](#props)
+
+## Accessibility
+
+The `Grid` component is an all purpose component. By default, it has no
+accessibility concerns. If you use the `Grid` as a custom element, it is up to
+you to manage the resulting accessibility implications.
+
+## Breakpoint Props
+
+Instead of the stock MUI breakpoint prop names, the Web UI grid has props which
+reflect our custom breakpoint names: {Object.keys(breakpoints).join(', ')}
+
+## Default Columns
+
+<Stack spacing={1} component="ul" padding={0} margin={0} width={200} divider={<Divider />}>
+  {Object.keys(DEFAULT_COLUMNS).map(c => (
+    <Box component="li" display="flex" justifyContent="space-between">
+      <Text variant="body" component="span">
+        {c}
+      </Text>
+      <Text variant="body" component="span">
+        {DEFAULT_COLUMNS[c]}
+      </Text>
+    </Box>
+  ))}
+</Stack>
+
+## Default Spacing
+
+<Stack spacing={1} component="ul" padding={0} margin={0} width={200} divider={<Divider />}>
+  {Object.keys(DEFAULT_SPACING).map(s => (
+    <Box component="li" display="flex" justifyContent="space-between">
+      <Text variant="body" component="span">
+        {s}
+      </Text>
+      <Text variant="body" component="span">
+        {DEFAULT_SPACING[s] * spacingBase}px
+      </Text>
+    </Box>
+  ))}
+</Stack>
+
+## Guidelines
+
+The `Grid` component should be used for [macro layouts](https://web.dev/learn/design/macro-layouts/),
+and shouldn't be used inside other layout components. Due to the current implementation of the
+`Stack` component, using the [lobotomized owl selector](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/),
+you may find that rendering a `Grid` as a child of `Stack` breaks the layout.
+Please avoid this.
+
+## Props
+
+<ArgTypes of={Stories} />

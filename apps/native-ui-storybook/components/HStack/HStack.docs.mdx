@@ -1,6 +1,7 @@
 import { Meta, Canvas, Story } from '@storybook/blocks';
 import * as Stories from './HStack.stories';
-import { HStack, Center, Box, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { HStack, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 
 <Meta of={Stories} />
 
@@ -16,24 +17,25 @@ HStack arranges its child elements horizontally, making it a suitable layout com
   <NativeUIProvider>
     <Center>
       <HStack space="sm">
-        <Box sx={{ w: 100, h: 100, bg: '$cyan300' }} />
-        <Box sx={{ w: 100, h: 100, bg: '$cyan400' }} />
-        <Box sx={{ w: 100, h: 100, bg: '$cyan500' }} />
-        <Box sx={{ w: 100, h: 100, bg: '$cyan600' }} />
+        <Box w={100} h={100} bg="$cyan300" />
+        <Box w={100} h={100} bg="$cyan400" />
+        <Box w={100} h={100} bg="$cyan500" />
+        <Box w={100} h={100} bg="$cyan600" />
       </HStack>
     </Center>
   </NativeUIProvider>
 </Canvas>
 
 ```jsx
-import { HStack, Text } from '@utilitywarehouse/native-ui';
+import { HStack } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const MyComponent = () => (
   <HStack space="sm">
-    <Box sx={{ w: 100, h: 100, bg: '$cyan300' }} />
-    <Box sx={{ w: 100, h: 100, bg: '$cyan400' }} />
-    <Box sx={{ w: 100, h: 100, bg: '$cyan500' }} />
-    <Box sx={{ w: 100, h: 100, bg: '$cyan600' }} />
+    <Box w={100} h={100} bg="$cyan300" />
+    <Box w={100} h={100} bg="$cyan400" />
+    <Box w={100} h={100} bg="$cyan500" />
+    <Box w={100} h={100} bg="$cyan600" />
   </HStack>
 );
 ```
@@ -44,5 +46,3 @@ const MyComponent = () => (
 | -------- | ------- | ----------------------------------------------------------- | ------- |
 | space    | string  | It sets the space between children.                         | -       |
 | reversed | boolean | When true, it places the HStack items in reverse direction. | -       |
-
-For more information, see the [Gluestack HStack component documentation](https://gluestack.io/ui/docs/components/layout/hstack).

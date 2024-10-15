@@ -24,12 +24,23 @@ module.exports = {
       },
     },
   ],
+  staticDirs: ['../assets'],
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
     options: { builder: { useSWC: true } },
   },
   docs: {
     autodocs: false,
+  },
+  refs: {
+    // icons: {
+    //   title: 'Icons',
+    //   url: 'https://uw-icons.vercel.app/',
+    // },
+    // 'web-ui': {
+    //   title: 'Web UI',
+    //   url: 'https://uw-web-ui.vercel.app/',
+    // },
   },
   typescript: {
     reactDocgen: 'react-docgen',

@@ -183,7 +183,7 @@ async function generateColoursFiles(colours) {
 
     // generate colour scales
     colorModes.forEach(async colourScale => {
-      const colorScalesTemplateSrc = await fs.readFileSync(
+      const colorScalesTemplateSrc = fs.readFileSync(
         path.resolve(__dirname, '../templates', 'color-scale.ts.ejs'),
         { encoding: 'utf8' }
       );
@@ -205,7 +205,7 @@ async function generateVariablesFiles(colours) {
   let scssResult = '';
   // Add a note that this is auto generated
   const note = `
-  /* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED ON ${new Date().toLocaleDateString()}. */
+  /* HEY, DON'T EDIT THIS FILE DIRECTLY, IT WAS MAGICALLY GENERATED. */
 
     `;
   cssResult += `${note}

@@ -13,3 +13,4 @@ export {
   ActionsheetSectionList,
   ActionsheetVirtualizedList,
 } from '@gluestack-ui/themed';
+export { Box } from './Box';

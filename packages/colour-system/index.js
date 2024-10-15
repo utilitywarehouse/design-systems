@@ -34,7 +34,7 @@ const red50$1 = '#ffebeb';
 /** Use it for backgrounds.  */
 const red100$1 = '#ffd8d9';
 /** Use it for backgrounds.  */
-const red200 = '#ffb3b4';
+const red200$1 = '#ffb3b4';
 /**  */
 const red300$1 = '#f58e92';
 /**  */
@@ -45,6 +45,8 @@ const red500$1 = '#df2a38';
 const red600$1 = '#c31d2a';
 /**  */
 const red700$1 = '#891e27';
+/** Used for active state background colour on inverted on Web */
+const red800$1 = '#611a20';
 /**  */
 const red900$1 = '#3b1216';
 
@@ -142,11 +144,11 @@ const cyan1000$1 = '#001333';
 /** For backgrounds of interactive and semantic components like Alert. This color is not meant to be used in the tone-by-tone Service Color. */
 const gold50$1 = '#fef9e6';
 /** This color is part of the service colours' tone-by-tone pairing. It should be used as a background for service colours but not for interactive components */
-const gold75 = '#fef6dc';
+const gold75$1 = '#fef6dc';
 /** For backgrounds */
 const gold100$1 = '#fff1d1';
 /** It can be used as a background  It passes AA against Gold 700 and Gold 900 */
-const gold200 = '#ffe6a8';
+const gold200$1 = '#ffe6a8';
 /** This is Brand Gold.  It should be used as a foreground color with a purple 800 background. This color is not recommended for interactive components due to its limited contrast capabilities. */
 const gold300$1 = '#ffd76f';
 /** This color is intended to be used as the foreground color for non-interactive icons within the service colour palette.  It's not recommended to use this colour in interactive elements. */
@@ -157,6 +159,8 @@ const gold500$1 = '#c77800';
 const gold600$1 = '#ac6406';
 /** Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200 and Gold 300  */
 const gold700$1 = '#894e16';
+/** Used for active state background colour on inverted on Web */
+const gold800$1 = '#6e3311';
 /** Use it for foregrounds (Icon and text) and borders against white, Gold 50, Gold 100, and Gold 200. Use it for large text, icons and borders against white, Gold 50, Gold 100,  Gold 200,  Gold 300 and Gold 500 */
 const gold900$1 = '#52210c';
 
@@ -166,7 +170,7 @@ const green50$1 = '#eefcf3';
 /** For backgrounds */
 const green100$1 = '#e0f5e8';
 /** Background */
-const green200 = '#bdead0';
+const green200$1 = '#bdead0';
 /**  */
 const green300$1 = '#a3e1bf';
 /**  */
@@ -177,6 +181,8 @@ const green500$1 = '#1c874d';
 const green600$1 = '#297f50';
 /** For text, icons and border against white Green 50 and Green 100 For text, icons and border against white Green 50, Green 100 and Green 200, Grey 25, Grey 50 */
 const green700$1 = '#21693f';
+/** Used for active state background colour on inverted on Web */
+const green800$1 = '#0a522c';
 /** For foreground against white, Green 50, Grey 50, Grey 100, Green 100, Green 200 and Green 300 For text, icons and border against Green 50, Green 100, Green 200 and Green 300 */
 const green900$1 = '#003d1e';
 
@@ -232,12 +238,13 @@ var index$2 = /*#__PURE__*/Object.freeze({
 	purple1000: purple1000$1,
 	red50: red50$1,
 	red100: red100$1,
-	red200: red200,
+	red200: red200$1,
 	red300: red300$1,
 	red400: red400$1,
 	red500: red500$1,
 	red600: red600$1,
 	red700: red700$1,
+	red800: red800$1,
 	red900: red900$1,
 	pink50: pink50$1,
 	pink100: pink100$1,
@@ -281,23 +288,25 @@ var index$2 = /*#__PURE__*/Object.freeze({
 	cyan900: cyan900$1,
 	cyan1000: cyan1000$1,
 	gold50: gold50$1,
-	gold75: gold75,
+	gold75: gold75$1,
 	gold100: gold100$1,
-	gold200: gold200,
+	gold200: gold200$1,
 	gold300: gold300$1,
 	gold400: gold400$1,
 	gold500: gold500$1,
 	gold600: gold600$1,
 	gold700: gold700$1,
+	gold800: gold800$1,
 	gold900: gold900$1,
 	green50: green50$1,
 	green100: green100$1,
-	green200: green200,
+	green200: green200$1,
 	green300: green300$1,
 	green400: green400$1,
 	green500: green500$1,
 	green600: green600$1,
 	green700: green700$1,
+	green800: green800$1,
 	green900: green900$1,
 	grape50: grape50,
 	grape100: grape100$1,
@@ -345,8 +354,12 @@ const purple1000 = '#f5eef9';
 // HEY, DON'T EDIT THIS FILE DIRECTLY, IT'S BEEN MAGICALLY GENERATED.
 /** For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900. */
 const gold50 = '#2e1103';
+/**  */
+const gold75 = '#411907';
 /** For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900. It passes AA with large text, borders and icons against combined with Gold 400. */
 const gold100 = '#52210c';
+/**  */
+const gold200 = '#743711';
 /** Use it as a background It passes AA against Gold 900 It passes AA on large text and icons against Gold 700 */
 const gold300 = '#925317';
 /** Use it as a background It passes AA as a foreground against Gold 50. It passes AA with large text, borders and icons against Gold 100. */
@@ -442,6 +455,8 @@ const red50 = '#3b1216';
 /**  */
 const red100 = '#581a20';
 /**  */
+const red200 = '#721d25';
+/**  */
 const red300 = '#891e27';
 /**  */
 const red400 = '#bd1f2c';
@@ -461,6 +476,8 @@ const red900 = '#ffebeb';
 const green50 = '#133922';
 /** backgrounds */
 const green100 = '#164429';
+/**  */
+const green200 = '#1b5533';
 /**  */
 const green300 = '#21693f';
 /** For borders, icons and outlines against Green 50. Not suitable for small text. */
@@ -541,7 +558,9 @@ var index$1 = /*#__PURE__*/Object.freeze({
 	purple900: purple900,
 	purple1000: purple1000,
 	gold50: gold50,
+	gold75: gold75,
 	gold100: gold100,
+	gold200: gold200,
 	gold300: gold300,
 	gold400: gold400,
 	gold500: gold500,
@@ -585,6 +604,7 @@ var index$1 = /*#__PURE__*/Object.freeze({
 	cyan1000: cyan1000,
 	red50: red50,
 	red100: red100,
+	red200: red200,
 	red300: red300,
 	red400: red400,
 	red500: red500,
@@ -594,6 +614,7 @@ var index$1 = /*#__PURE__*/Object.freeze({
 	red900: red900,
 	green50: green50,
 	green100: green100,
+	green200: green200,
 	green300: green300,
 	green400: green400,
 	green500: green500,

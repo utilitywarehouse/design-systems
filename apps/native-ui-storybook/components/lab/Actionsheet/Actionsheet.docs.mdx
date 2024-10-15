@@ -1,6 +1,7 @@
 import { Meta, Canvas, Story } from '@storybook/blocks';
 import * as Stories from './Actionsheet.stories';
-import { Center, Text, NativeUIProvider, Alert, Box } from '@utilitywarehouse/native-ui';
+import { Center, Text, NativeUIProvider, Alert } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 import {
   Actionsheet,
   ActionsheetBackdrop,
@@ -21,11 +22,10 @@ import { ViewFigmaButton, BackToTopButton } from '../../../docs/components';
 # Actionsheet
 
 <NativeUIProvider>
-  <Box mt="$6">
+  <Box mt="$6" mb="4">
     <Alert
-      colorScheme="warning"
+      colorScheme="gold"
       text="These components may potentially change their API and/or design and will be replaced in minor release versions, eventually being integrated into the main library code. Use at your own discretion."
-      mb="$4"
     />
   </Box>
 </NativeUIProvider>
@@ -128,14 +128,6 @@ It is React Native's Pressable component, created using @legendapp/motion's crea
 
 It inherits all the properties of @legendapp/motion's Motion.View component. With this Actionsheet component, you have the flexibility to use any declarative animation library that suits your needs.
 
-#### Descendants Styling Props
-
-Props to style child components.
-
-| Sx Prop              | Description                                          |
-| -------------------- | ---------------------------------------------------- |
-| `_sectionHeaderText` | Prop to style ActionsheetSectionHeaderText Component |
-
 ### `ActionsheetDragIndicatorWrapper`
 
 It inherits all the properties of React Native's View component.
@@ -147,15 +139,6 @@ It inherits all the properties of React Native's View component.
 ### `ActionsheetItem`
 
 It inherits all the properties of React Native's Pressable component.
-
-#### Descendants Styling Props
-
-Props to style child components.
-
-| Sx Prop | Description                                 |
-| ------- | ------------------------------------------- |
-| `_text` | Prop to style ActionsheetItemText Component |
-| `_icon` | Prop to style ActionsheetIcon Component     |
 
 ### `ActionsheetItemText`
 

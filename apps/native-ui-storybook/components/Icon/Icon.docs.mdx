@@ -10,6 +10,7 @@ import {
   InsuranceMediumIcon,
 } from '@utilitywarehouse/react-native-icons';
 import { BackToTopButton } from '../../docs/components';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 <BackToTopButton />
 
@@ -31,18 +32,18 @@ Icons are often used to enhance the usability and accessibility of digital produ
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <HStack gap={10}>
-        <Icon as={ElectricityMediumIcon} sx={{ color: '$serviceElectricity' }} />
-        <Icon as={MobileMediumIcon} sx={{ color: '$serviceMobile' }} />
-        <Icon as={BroadbandMediumIcon} sx={{ color: '$serviceLandline' }} />
-        <Icon as={InsuranceMediumIcon} sx={{ color: '$serviceInsurance' }} />
+      <HStack space="lg">
+        <ElectricityMediumIcon color={colorsCommon.serviceElectricity} />
+        <MobileMediumIcon color={colorsCommon.serviceMobile} />
+        <BroadbandMediumIcon color={colorsCommon.serviceLandline} />
+        <InsuranceMediumIcon color={colorsCommon.serviceInsurance} />
       </HStack>
     </Center>
   </NativeUIProvider>
 </Canvas>
 
 ```jsx
-import { Pressable, Text } from '@utilitywarehouse/native-ui';
+import { HStack, Icon, color } from '@utilitywarehouse/native-ui';
 import {
   ElectricityMediumIcon,
   MobileMediumIcon,
@@ -50,14 +51,45 @@ import {
   InsuranceMediumIcon,
 } from '@utilitywarehouse/react-native-icons';
 
-const MyComponent = () => (
-  <HStack gap={10}>
-    <Icon as={ElectricityMediumIcon} sx={{ color: '$serviceElectricity' }} />
-    <Icon as={MobileMediumIcon} sx={{ color: '$serviceMobile' }} />
-    <Icon as={BroadbandMediumIcon} sx={{ color: '$serviceLandline' }} />
-    <Icon as={InsuranceMediumIcon} sx={{ color: '$serviceInsurance' }} />
-  </HStack>
-);
+const MyComponent = () => {
+  const {
+    theme: { colors },
+  } = useStyles();
+  return (
+    <HStack space="lg">
+      <ElectricityMediumIcon color={colors.serviceElectricity} />
+      <MobileMediumIcon color={colors.serviceMobile} />
+      <BroadbandMediumIcon color={colors.serviceLandline} />
+      <InsuranceMediumIcon color={colors.serviceInsurance} />
+    </HStack>
+  );
+};
+```
+
+Or you can use the `Icon` component to render the icons.
+
+```jsx
+import { HStack, Icon, color } from '@utilitywarehouse/native-ui';
+import {
+  ElectricityMediumIcon,
+  MobileMediumIcon,
+  BroadbandMediumIcon,
+  InsuranceMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => {
+  const {
+    theme: { colors },
+  } = useStyles();
+  return (
+    <HStack space="lg">
+      <Icon as={ElectricityMediumIcon} color="$serviceElectricity" />
+      <Icon as={MobileMediumIcon} color="$serviceMobile" />
+      <Icon as={BroadbandMediumIcon} color="$serviceLandline" />
+      <Icon as={InsuranceMediumIcon} color="$serviceInsurance" />
+    </HStack>
+  );
+};
 ```
 
 ## Props
@@ -65,8 +97,6 @@ const MyComponent = () => (
 | Name | Type                  | Description                   | Default |
 | ---- | --------------------- | ----------------------------- | ------- |
 | `as` | `React.ComponentType` | The icon component to render. | -       |
-
-For more information, see the [Gluestack Icon component documentation](https://gluestack.io/ui/docs/components/media-and-icons/icon).
 
 ## SVG & Custom Icons
 

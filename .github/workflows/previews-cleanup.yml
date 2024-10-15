@@ -15,54 +15,55 @@ jobs:
     continue-on-error: true
     if: ${{ github.event.before && github.head_commit.author.username != 'github-actions[bot]'}}
     steps:
-      - name: 🏗 Setup repo
+      - name: 🔧 Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 8
 
-      - name: 🏗 Checkout
-        uses: actions/checkout@v4
+      - name: 📂 Checkout code
+        uses: actions/checkout@v3
 
-      - name: 🏗 Setup Node
+      - name: 🔧 Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
 
-      - name: 📦 Install dependencies
-        run: pnpm install --frozen-lockfile
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: 🏗 Restore .env for Android
+      - name: 🔄 Restore .env for Android
         id: android_env
         working-directory: ./apps/native-ui-storybook
         run: |
-          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.before }}-env-android node ./scripts/getArtifacts.js
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.before }}-env-android node ./scripts/getArtifacts.js || echo "No Android .env file found"
 
-      - name: 🏗 Load Android .env file
-        uses: xom9ikk/dotenv@v2
-        with:
-          path: ./apps/native-ui-storybook
-          mode: 'android'
-
-      - name: 🧽 Cleanup Android preview
+      - name: 🧽 Load Android .env file and Cleanup Preview
         run: |
-          curl -X DELETE https://${{ secrets.APPETIZE_API_TOKEN }}@api.appetize.io/v1/apps/${{env.ANDROID_API_KEY}}
+          if [ -f "./apps/native-ui-storybook/.env.android" ]; then
+            # Load .env file
+            echo "Loading Android .env file..."
+            # Assuming you have a script or command to load the .env file
+            source ./apps/native-ui-storybook/.env.android
+            # Cleanup Android preview
+            curl -X DELETE https://${{ secrets.APPETIZE_API_TOKEN }}@api.appetize.io/v1/apps/${ANDROID_API_KEY}
+          else
+            echo "No Android .env file found, skipping cleanup."
+          fi
 
-      - name: 🏗 Restore .env for iOS
+      - name: 🔄 Restore .env for iOS
         id: ios_env
         working-directory: ./apps/native-ui-storybook
         run: |
-          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.before }}-env-ios node ./scripts/getArtifacts.js
+          GITHUB_PAT_TOKEN=${{ secrets.DS_ACTION_READ_PAT }} ARTIFACT_NAME=${{ github.event.before }}-env-ios node ./scripts/getArtifacts.js || echo "No iOS .env file found"
 
-      - name: 🏗 Load iOS .env file
-        uses: xom9ikk/dotenv@v2
-        with:
-          path: ./apps/native-ui-storybook
-          mode: 'ios'
-
-      - name: 🧽 Cleanup iOS preview
+      - name: 🧽 Load iOS .env file and Cleanup Preview
         run: |
-          curl -X DELETE https://${{ secrets.APPETIZE_API_TOKEN }}@api.appetize.io/v1/apps/${{env.IOS_API_KEY}}
+          if [ -f "./apps/native-ui-storybook/.env.ios" ]; then
+            # Load .env file
+            echo "Loading iOS .env file..."
+            # Assuming you have a script or command to load the .env file
+            source ./apps/native-ui-storybook/.env.ios
+            # Cleanup iOS preview
+            curl -X DELETE https://${{ secrets.APPETIZE_API_TOKEN }}@api.appetize.io/v1/apps/${IOS_API_KEY}
+          else
+            echo "No iOS .env file found, skipping cleanup."
+          fi

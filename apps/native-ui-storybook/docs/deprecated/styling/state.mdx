@@ -1,0 +1,79 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import RNExample from './components/RNExample';
+import GSExample from './components/GSExample';
+import BackToTopButton from '../../components/BackToTopButton';
+import {
+  Center,
+  NativeUIProvider,
+  Button,
+  ButtonText,
+  Box,
+  Text,
+  Alert,
+} from '@utilitywarehouse/native-ui';
+
+<NativeUIProvider>
+  <Box mb="$4">
+    <Alert
+      colorScheme="gold"
+      title="Warning"
+      text="This document is now deprecated and will be removed in the next major release."
+    />
+  </Box>
+</NativeUIProvider>
+
+<BackToTopButton />
+
+# States
+
+Styling of `native-ui` components is achieved through the utilisation of `@gluestack-style/react`, a resource that provides a range of capabilities for effectively controlling states like hover, active, focused, and others.
+We will delve into how `gluestack-style` simplifies the management of these states and their associated styles.
+
+The asiest way to change styling of states would be using `sx` prop which enables state management.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Button
+        sx={{
+          backgroundColor: '$cyan400',
+          ':hover': {
+            backgroundColor: '$red500',
+          },
+        }}
+      >
+        <ButtonText>Hello world</ButtonText>
+      </Button>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+<Button
+  sx={{
+    backgroundColor: '$cyan400',
+    ':hover': {
+      backgroundColor: '$red500',
+    },
+  }}
+>
+  <ButtonText>Hello world</ButtonText>
+</Button>
+```
+
+We can define styles that can be applied on different states and pass them as an object in sx prop. For more details, checkout [Glustack's State Based Styles](https://gluestack.io/style/docs/api/state-bases-styles) documentation.
+
+Supported States are the following on basis of the component:
+
+- indeterminate
+- checked
+- readOnly
+- required
+- invalid
+- focus
+- focusVisible
+- hover
+- pressed
+- active
+- loading
+- disabled
