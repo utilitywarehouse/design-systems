@@ -35,12 +35,8 @@ const StyledElement = styled(Box)(() => ({
     borderColor: colors.cyan500,
   },
   [`& :where([${DATA_ATTRIBUTES.placement}="prefix"]), & :where(:not([${DATA_ATTRIBUTES.placement}="suffix"]))`]:
-    {
-      order: -1,
-    },
-  [`& :where([${DATA_ATTRIBUTES.placement}="suffix"])`]: {
-    order: 1,
-  },
+    { order: -1 },
+  [`& :where([${DATA_ATTRIBUTES.placement}="suffix"])`]: { order: 1 },
 }));
 
 const StyledInput = styled('input')(() => ({

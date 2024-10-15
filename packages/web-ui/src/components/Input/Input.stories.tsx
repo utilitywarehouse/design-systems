@@ -22,7 +22,7 @@ export const Workshop: Story = {};
 export const WithIcons: Story = {
   render: () => (
     <Input>
-      <InputSlot placement="suffix">
+      <InputSlot placement="prefix">
         <EmailMediumIcon />
       </InputSlot>
     </Input>

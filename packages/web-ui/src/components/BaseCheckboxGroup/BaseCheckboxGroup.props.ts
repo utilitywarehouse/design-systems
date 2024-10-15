@@ -4,6 +4,7 @@ import { BaseCheckboxGroupContextValue } from './BaseCheckboxGroup.context';
 
 import { BoxProps } from '../Box';
 
+// TODO: should probably extend formfield props
 export interface BaseCheckboxGroupProps extends ComponentPropsWithoutRef<'fieldset'> {
   name?: string;
   required?: boolean;
