@@ -93,7 +93,7 @@ const InputVariants: StoryFn = () => {
           </Input>
         </VariantTitle>
         <VariantTitle title="Disabled">
-          <Input isDisabled>
+          <Input disabled>
             <InputSlot>
               <InputIcon as={EmailMediumIcon} />
             </InputSlot>
@@ -101,7 +101,7 @@ const InputVariants: StoryFn = () => {
           </Input>
         </VariantTitle>
         <VariantTitle title="Readonly">
-          <Input isReadOnly>
+          <Input readonly>
             <InputSlot>
               <InputIcon as={EmailMediumIcon} />
             </InputSlot>

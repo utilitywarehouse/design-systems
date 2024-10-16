@@ -1,7 +1,6 @@
-import type { Input } from '@gluestack-ui/themed';
-import type { ComponentProps } from 'react';
+import type { ViewProps } from 'react-native';
 
-export interface InputComponentProps extends ComponentProps<typeof Input> {}
+export interface InputComponentProps extends ViewProps {}
 
 /**
  * Props for the Input component.
@@ -26,7 +25,7 @@ interface InputProps extends Omit<InputComponentProps, 'isInvalid'> {
    * <Input disabled={true} />
    * ```
    */
-  disabled?: InputComponentProps['isDisabled'];
+  disabled?: boolean;
   /**
    * The validation status of the Input component.
    *
@@ -37,6 +36,11 @@ interface InputProps extends Omit<InputComponentProps, 'isInvalid'> {
    * ```
    */
   validationStatus?: 'initial' | 'valid' | 'invalid';
+  readonly?: boolean;
+  focused?: boolean;
 }
+
+export interface InputContextValue
+  extends Pick<InputProps, 'validationStatus' | 'showValidationIcon' | 'disabled' | 'readonly'> {}
 
 export default InputProps;

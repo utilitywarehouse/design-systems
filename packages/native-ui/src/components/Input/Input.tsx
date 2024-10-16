@@ -1,77 +1,55 @@
 import React from 'react';
 import { createInput } from '@gluestack-ui/input';
-import { Icon, Slot, Root, StyledInput } from './styled-components';
+import { Icon, Slot, StyledInput } from './styled-components';
 import type InputProps from './Input.props';
 import {
   WarningMediumContainedIcon,
   TickMediumContainedIcon,
 } from '@utilitywarehouse/react-native-icons';
 import { InputValidationIcon } from './styled-components';
+import InputRoot from './InputRoot';
+import InputSlotComponent from './InputSlot';
 
-// TODO: remove once upgraded to typescript 5.5
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const AccessibleInput: any = createInput({
+export const InputComponent = createInput({
   Icon,
-  // TODO: remove once upgraded to typescript 5.5
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  Slot,
-  Root,
+  Slot: InputSlotComponent,
+  Root: InputRoot,
   Input: StyledInput,
 });
+
+export const InputSlot = InputComponent.Slot;
 
 const Input: React.FC<InputProps> = ({
   validationStatus,
   showValidationIcon = true,
   children,
   disabled,
-  isReadOnly,
-  isDisabled,
+  focused,
+  readonly,
   ...props
 }) => {
   return (
-    <AccessibleInput
+    <InputComponent
       {...props}
       validationStatus={validationStatus}
       isInvalid={validationStatus === 'invalid'}
-      isReadOnly={isReadOnly}
-      isDisabled={disabled || isDisabled}
-      // TODO: remove once Gluestack bug is fixed - https://github.com/gluestack/gluestack-ui/issues/2214
-      sx={
-        isReadOnly
-          ? {
-              px: 0,
-              borderWidth: 0,
-              py: 2,
-              backgroundColor: 'transparent',
-            }
-          : {
-              px: '$4',
-              borderWidth: 2,
-              backgroundColor: '$white',
-              ':disabled': {
-                backgroundColor: '$grey50',
-              },
-              _dark: {
-                backgroundColor: '$darkGrey25',
-                ':disabled': {
-                  backgroundColor: '$darkGrey50',
-                },
-              },
-            }
-      }
+      isReadOnly={readonly}
+      isDisabled={disabled}
+      isFocused={focused}
+      states={{}}
     >
       {children}
       {showValidationIcon && validationStatus === 'invalid' && (
-        <AccessibleInput.Slot>
+        <InputSlot>
           <InputValidationIcon as={WarningMediumContainedIcon} />
-        </AccessibleInput.Slot>
+        </InputSlot>
       )}
       {showValidationIcon && validationStatus === 'valid' && (
-        <AccessibleInput.Slot>
+        <InputSlot>
           <InputValidationIcon as={TickMediumContainedIcon} />
-        </AccessibleInput.Slot>
+        </InputSlot>
       )}
-    </AccessibleInput>
+    </InputComponent>
   );
 };
 

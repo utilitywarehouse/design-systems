@@ -51,12 +51,12 @@ InputBasic.argTypes = {
     description: 'Show the validation icon',
     defaultValue: true,
   },
-  isDisabled: {
+  disabled: {
     control: 'boolean',
     description: 'Disable the Input component',
     defaultValue: false,
   },
-  isReadOnly: {
+  readonly: {
     control: 'boolean',
     description: 'Read only the Input component',
     defaultValue: false,
@@ -83,8 +83,8 @@ InputBasic.args = {
   validationStatus: 'initial',
   showValidationIcon: true,
   type: 'text',
-  isDisabled: false,
-  isReadOnly: false,
+  disabled: false,
+  readonly: false,
   isFocused: false,
   _showIconLeft: false,
   _showIconRight: false,
