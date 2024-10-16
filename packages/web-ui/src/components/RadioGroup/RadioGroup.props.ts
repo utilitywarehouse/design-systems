@@ -1,5 +1,6 @@
-import { FormFieldGroupProps } from './FormFieldGroup.props';
 import { RadioGroupRootProps } from './RadioGroupRoot.props';
+
+import { FormFieldGroupProps } from '../FormFieldGroup';
 
 export interface RadioGroupProps
   extends Pick<

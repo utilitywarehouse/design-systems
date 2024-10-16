@@ -11,6 +11,7 @@ export * from './Em';
 export * from './Fieldset';
 export * from './FieldsetLegend';
 export * from './Flex';
+export * from './FormFieldGroup';
 export * from './Grid';
 export * from './Heading';
 export * from './HelperText';
