@@ -1,10 +1,8 @@
 import { type ReactNode } from 'react';
 
-import { type RadioGroupProps as RadixRadioGroupProps } from '@radix-ui/react-radio-group';
+import { FieldsetProps } from '../Fieldset';
 
-import { BoxProps } from '../Box';
-
-export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
+export interface FormFieldGroupProps extends FieldsetProps {
   /**
    * The label for the radio group. This should contain the question being
    * answered by the radio group.
@@ -37,9 +35,4 @@ export interface BaseRadioGroupProps extends Omit<RadixRadioGroupProps, 'dir'> {
    * Set whether to display the error message icon.
    */
   showErrorMessageIcon?: boolean;
-  /**
-   * Set the width of the RadioGroup children, separate to the width of the
-   * entire RadioGroup.
-   */
-  contentWidth?: BoxProps['width'];
 }
