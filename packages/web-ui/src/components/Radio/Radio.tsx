@@ -14,9 +14,9 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { RadioProps } from './Radio.props';
 
 import { Flex } from '../Flex';
+import { useFormFieldGroup } from '../FormFieldGroup';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
-import { useFormFieldGroup } from '../RadioGroup/FormFieldGroup.context';
 
 import { useIds } from '../../hooks';
 import { styled } from '../../theme';

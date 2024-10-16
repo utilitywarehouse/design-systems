@@ -2,9 +2,10 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
-import { FormFieldGroup } from './FormFieldGroup';
 import type { RadioGroupProps } from './RadioGroup.props';
 import { RadioGroupRoot } from './RadioGroupRoot';
+
+import { FormFieldGroup } from '../FormFieldGroup';
 
 import { PropsWithSx } from '../../types';
 import { withGlobalPrefix } from '../../utils';
