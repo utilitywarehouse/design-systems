@@ -2,28 +2,15 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
+import { FormFieldGroup } from './FormFieldGroup';
 import type { RadioGroupProps } from './RadioGroup.props';
+import { RadioGroupRoot } from './RadioGroupRoot';
 
-import { BaseRadioGroup } from '../BaseRadioGroup';
-import { Flex } from '../Flex';
-
-import { styled } from '../../theme';
 import { PropsWithSx } from '../../types';
 import { withGlobalPrefix } from '../../utils';
 
 const componentName = 'RadioGroup';
 const componentClassName = withGlobalPrefix(componentName);
-
-const StyledElement = styled(Flex)({
-  minWidth: 'fit-content',
-  flexWrap: 'wrap',
-  ':where([data-orientation="horizontal"] &)': {
-    flexDirection: 'row',
-  },
-  ':where([data-orientation="vertical"] &)': {
-    flexDirection: 'column',
-  },
-});
 
 /**
  * The `RadioGroup` provides an accessible way to group and control a set of
@@ -34,19 +21,66 @@ const StyledElement = styled(Flex)({
  * [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) for radio
  * groups not contained in a toolbar.
  */
-export const RadioGroup = React.forwardRef<HTMLDivElement, PropsWithSx<RadioGroupProps>>(
-  ({ children, contentWidth = 'fit-content', direction = 'column', className, ...props }, ref) => {
+export const RadioGroup = React.forwardRef<
+  HTMLFieldSetElement,
+  React.PropsWithChildren<PropsWithSx<RadioGroupProps>>
+>(
+  (
+    {
+      children,
+      contentWidth = 'fit-content',
+      direction = 'column',
+      className,
+      label,
+      helperText,
+      helperTextPosition,
+      showHelperTextIcon,
+      error,
+      errorMessage,
+      showErrorMessageIcon,
+      required,
+      disabled,
+      loop,
+      defaultValue,
+      value,
+      onValueChange,
+      name,
+      ...props
+    },
+    ref
+  ) => {
+    const formFieldGroupProps = {
+      ...props,
+      disabled,
+      required,
+      label,
+      helperText,
+      helperTextPosition,
+      showHelperTextIcon,
+      error,
+      errorMessage,
+      showErrorMessageIcon,
+    };
+    const radioGroupRootProps = {
+      width: contentWidth,
+      direction,
+      name,
+      required,
+      disabled,
+      loop,
+      defaultValue,
+      value,
+      onValueChange,
+    };
+
     return (
-      <BaseRadioGroup
+      <FormFieldGroup
         ref={ref}
         className={clsx(componentClassName, className)}
-        {...props}
-        orientation={direction === 'column' ? 'vertical' : 'horizontal'}
+        {...formFieldGroupProps}
       >
-        <StyledElement width={contentWidth} gap={2}>
-          {children}
-        </StyledElement>
-      </BaseRadioGroup>
+        <RadioGroupRoot {...radioGroupRootProps}>{children}</RadioGroupRoot>
+      </FormFieldGroup>
     );
   }
 );
