@@ -13,8 +13,8 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 import { RadioProps } from './Radio.props';
 
-import { useBaseRadioGroup } from '../BaseRadioGroup';
 import { Flex } from '../Flex';
+import { useFormFieldGroup } from '../FormFieldGroup';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
 
@@ -134,7 +134,8 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radio' });
-    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } = useBaseRadioGroup();
+    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } = useFormFieldGroup();
+
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
 

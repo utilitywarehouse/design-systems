@@ -1,7 +1,28 @@
-import { BaseRadioGroupProps } from '../BaseRadioGroup';
-import { StackProps } from '../Stack';
+import { RadioGridGroupRootProps } from './RadioGridGroupRoot.props';
 
-export interface RadioGridGroupProps extends Omit<BaseRadioGroupProps, 'direction'> {
-  /** Sets the number of columns to display the contents in. */
-  columns?: StackProps['spacing'];
+import { FormFieldGroupProps } from '../FormFieldGroup';
+
+export interface RadioGridGroupProps
+  extends Pick<
+      RadioGridGroupRootProps,
+      'columns' | 'loop' | 'defaultValue' | 'value' | 'onValueChange' | 'required'
+    >,
+    Pick<
+      FormFieldGroupProps,
+      | 'className'
+      | 'name'
+      | 'disabled'
+      | 'label'
+      | 'helperText'
+      | 'helperTextPosition'
+      | 'showHelperTextIcon'
+      | 'error'
+      | 'errorMessage'
+      | 'showErrorMessageIcon'
+    > {
+  /**
+   * Set the container width of the RadioGroup children, independent to the width of the
+   * parent RadioGroup.
+   */
+  contentWidth?: RadioGridGroupRootProps['width'];
 }
