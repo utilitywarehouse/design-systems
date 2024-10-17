@@ -4,7 +4,7 @@ import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { useInputContext } from './Input.context';
 import { Icon } from '../Icon';
-import type { SvgRef } from '../../../types';
+import type { SvgRef } from '../../types';
 import {
   WarningMediumContainedIcon,
   TickMediumContainedIcon,
