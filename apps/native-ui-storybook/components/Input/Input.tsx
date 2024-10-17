@@ -1,30 +1,31 @@
 import React from 'react';
-import { Input, InputField, InputIcon, InputSlot } from '@utilitywarehouse/native-ui';
-import { EmailMediumIcon, EyeMediumIcon } from '@utilitywarehouse/react-native-icons';
-import { Meta, StoryFn } from '@storybook/react';
+import { Input } from '@utilitywarehouse/native-ui';
+import { StoryFn } from '@storybook/react';
+
+import * as Icons from '@utilitywarehouse/react-native-icons';
 
 const InputBasic: StoryFn = ({
   placeholder,
   validationStatus,
   type,
-  _showIconLeft,
-  _showIconRight,
+  leadingIcon: leading,
+  trailingIcon: trailing,
   ...props
 }: any) => {
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+  // @ts-expect-error - This is a playground
+  const leadingIcon: ComponentType | undefined = leading === 'none' ? undefined : Icons[leading];
+  // @ts-expect-error - This is a playground
+  const trailingIcon: ComponentType | undefined = trailing === 'none' ? undefined : Icons[trailing];
   return (
-    <Input {...props} validationStatus={validationStatus}>
-      {_showIconLeft && (
-        <InputSlot>
-          <InputIcon as={EmailMediumIcon} />
-        </InputSlot>
-      )}
-      <InputField placeholder={placeholder} type={type} />
-      {_showIconRight && (
-        <InputSlot>
-          <InputIcon as={EyeMediumIcon} />
-        </InputSlot>
-      )}
-    </Input>
+    <Input
+      {...props}
+      placeholder={placeholder}
+      type={type}
+      validationStatus={validationStatus}
+      leadingIcon={leadingIcon}
+      trailingIcon={trailingIcon}
+    />
   );
 };
 
@@ -66,17 +67,17 @@ InputBasic.argTypes = {
     description: 'Focus the Input component',
     defaultValue: false,
   },
-  _showIconLeft: {
-    control: 'boolean',
-    description:
-      'Show icon left. \n _Note: this is not a prop of the `Input` component, just a representation of the `InputSlot` and `InputIcon` component for the Storybook playground._',
+  leadingIcon: {
+    options: ['none', ...Object.keys(Icons).filter(icon => icon.includes('Medium'))],
+    control: 'select',
+    description: 'The leading icon component for the Input component',
   },
-  _showIconRight: {
-    control: 'boolean',
-    description:
-      'Show icon right. \n _Note: this is not a prop of the `Input` component, just a representation of the `InputSlot` and `InputIcon` component for the Storybook playground._',
+  trailingIcon: {
+    options: ['none', ...Object.keys(Icons).filter(icon => icon.includes('Medium'))],
+    control: 'select',
+    description: 'The trailing icon component for the Input component',
   },
-} as Meta<typeof Input>['argTypes'];
+};
 
 InputBasic.args = {
   placeholder: 'Input placeholder',
@@ -86,8 +87,8 @@ InputBasic.args = {
   disabled: false,
   readonly: false,
   focused: false,
-  _showIconLeft: false,
-  _showIconRight: false,
-} as Meta<typeof Input>['args'];
+  leadingIcon: 'none',
+  trailingIcon: 'none',
+};
 
 export default InputBasic;
