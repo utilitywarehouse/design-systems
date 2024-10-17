@@ -41,6 +41,9 @@ interface InputProps extends Omit<InputComponentProps, 'isInvalid'> {
 }
 
 export interface InputContextValue
-  extends Pick<InputProps, 'validationStatus' | 'showValidationIcon' | 'disabled' | 'readonly'> {}
+  extends Pick<
+    InputProps,
+    'validationStatus' | 'showValidationIcon' | 'disabled' | 'readonly' | 'focused'
+  > {}
 
 export default InputProps;

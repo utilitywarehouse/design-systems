@@ -1,26 +1,26 @@
 import React from 'react';
 import { createInput } from '@gluestack-ui/input';
-import { Icon, Slot, StyledInput } from './styled-components';
 import type InputProps from './Input.props';
-import {
-  WarningMediumContainedIcon,
-  TickMediumContainedIcon,
-} from '@utilitywarehouse/react-native-icons';
-import { InputValidationIcon } from './styled-components';
+
 import InputRoot from './InputRoot';
 import InputSlotComponent from './InputSlot';
+import InputIconComponent from './InputIcon';
+import InputFieldComponent from './InputField';
+import InputValidationIcon from './InputValidationIcon';
 
 export const InputComponent = createInput({
-  Icon,
+  Icon: InputIconComponent,
   Slot: InputSlotComponent,
   Root: InputRoot,
-  Input: StyledInput,
+  Input: InputFieldComponent,
 });
 
 export const InputSlot = InputComponent.Slot;
+export const InputField = InputComponent.Input;
+export const InputIcon = InputComponent.Icon;
 
 const Input: React.FC<InputProps> = ({
-  validationStatus,
+  validationStatus = 'initial',
   showValidationIcon = true,
   children,
   disabled,
@@ -36,17 +36,11 @@ const Input: React.FC<InputProps> = ({
       isReadOnly={readonly}
       isDisabled={disabled}
       isFocused={focused}
-      states={{}}
     >
       {children}
-      {showValidationIcon && validationStatus === 'invalid' && (
+      {showValidationIcon && validationStatus !== 'initial' && (
         <InputSlot>
-          <InputValidationIcon as={WarningMediumContainedIcon} />
-        </InputSlot>
-      )}
-      {showValidationIcon && validationStatus === 'valid' && (
-        <InputSlot>
-          <InputValidationIcon as={TickMediumContainedIcon} />
+          <InputValidationIcon />
         </InputSlot>
       )}
     </InputComponent>

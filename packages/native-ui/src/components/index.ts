@@ -42,5 +42,3 @@ export { Pressable } from '@gluestack-ui/themed';
 export { Image } from '@gluestack-ui/themed';
 
 export { Icon, createIcon } from '@gluestack-ui/themed';
-
-export { InputField, InputIcon, InputSlot } from '@gluestack-ui/themed';

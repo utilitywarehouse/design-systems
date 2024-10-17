@@ -6,7 +6,7 @@ import { InputContext } from './Input.context';
 
 const InputRoot = forwardRef<
   View,
-  InputProps & { states: { focus?: boolean; disabled?: boolean; readonly?: boolean } }
+  InputProps & { states?: { focus?: boolean; disabled?: boolean; readonly?: boolean } }
 >(({ children, style, states, validationStatus, showValidationIcon, ...props }, ref) => {
   const { focus = false, disabled = false, readonly = false } = states || {};
   const { styles } = useStyles(stylesheet, {
@@ -56,7 +56,7 @@ const stylesheet = createStyleSheet(({ space, colors, radii, colorMode, borderWi
     overflow: 'hidden',
     alignContent: 'center',
     paddingHorizontal: space['4'],
-    backgroundColor: colorMode === 'light' ? colors.white : colors.grey25,
+    backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
     gap: space['2'],
     variants: {
       focus: {
@@ -92,6 +92,7 @@ const stylesheet = createStyleSheet(({ space, colors, radii, colorMode, borderWi
           borderRightColor: 'transparent',
           borderBottomColor: 'transparent',
           paddingHorizontal: 0,
+          backgroundColor: 'transparent',
         },
       },
     },

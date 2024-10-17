@@ -45,7 +45,7 @@ const InputVariants: StoryFn = () => {
           </Input>
         </VariantTitle>
         <VariantTitle title="Focused">
-          <Input isFocused>
+          <Input focused>
             <InputSlot>
               <InputIcon as={EmailMediumIcon} />
             </InputSlot>
@@ -69,7 +69,7 @@ const InputVariants: StoryFn = () => {
           </Input>
         </VariantTitle>
         <VariantTitle title="Valid focused">
-          <Input validationStatus="valid" isFocused>
+          <Input validationStatus="valid" focused>
             <InputSlot>
               <InputIcon as={EmailMediumIcon} />
             </InputSlot>
@@ -85,7 +85,7 @@ const InputVariants: StoryFn = () => {
           </Input>
         </VariantTitle>
         <VariantTitle title="Invalid focused">
-          <Input validationStatus="invalid" isFocused>
+          <Input validationStatus="invalid" focused>
             <InputSlot>
               <InputIcon as={EmailMediumIcon} />
             </InputSlot>

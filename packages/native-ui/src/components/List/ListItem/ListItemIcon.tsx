@@ -9,7 +9,7 @@ import type { SvgRef } from '../../../types';
 const ListItemIcon = forwardRef<SvgRef, ComponentProps<typeof Icon> & { as?: ComponentType }>(
   ({ children, ...props }, ref) => {
     const { disabled } = useListItemContext();
-    const { styles } = useStyles(stylesheet);
+    const { styles } = useStyles(stylesheet, { disabled });
     return (
       <Icon
         ref={ref}
@@ -18,14 +18,9 @@ const ListItemIcon = forwardRef<SvgRef, ComponentProps<typeof Icon> & { as?: Com
           Platform.OS === 'web'
             ? {
                 ...styles.icon,
-                ...styles.extraStyles(disabled),
                 ...(props.style as ViewStyle),
               }
-            : [
-                styles.icon as StyleProp<ViewStyle>,
-                styles.extraStyles(disabled) as StyleProp<ViewStyle>,
-                props.style,
-              ]
+            : [styles.icon as StyleProp<ViewStyle>, props.style]
         }
       >
         {children}
@@ -41,14 +36,13 @@ const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
     color: colors.grey800,
     width: 24,
     height: 24,
-  },
-  extraStyles: disabled => {
-    if (disabled) {
-      return {
-        color: colorMode === 'light' ? colors.grey400 : colors.grey500,
-      };
-    }
-    return {};
+    variants: {
+      disabled: {
+        true: {
+          color: colorMode === 'light' ? colors.grey400 : colors.grey500,
+        },
+      },
+    },
   },
 }));
 

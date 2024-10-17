@@ -61,7 +61,7 @@ InputBasic.argTypes = {
     description: 'Read only the Input component',
     defaultValue: false,
   },
-  isFocused: {
+  focused: {
     control: 'boolean',
     description: 'Focus the Input component',
     defaultValue: false,
@@ -85,7 +85,7 @@ InputBasic.args = {
   type: 'text',
   disabled: false,
   readonly: false,
-  isFocused: false,
+  focused: false,
   _showIconLeft: false,
   _showIconRight: false,
 } as Meta<typeof Input>['args'];
