@@ -1,1195 +1,5 @@
 {
-  "dark": {
-    "purple": {
-      "purple50": {
-        "id": "169:961",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "50",
-        "name": "purple50",
-        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 500,  Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
-        "created_at": "2023-04-17T16:15:24.490Z",
-        "updated_at": "2023-04-18T15:03:52.418Z",
-        "value": "#140218"
-      },
-      "purple75": {
-        "id": "169:962",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "75",
-        "name": "purple75",
-        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
-        "created_at": "2023-04-17T16:15:24.444Z",
-        "updated_at": "2023-04-18T15:03:52.408Z",
-        "value": "#1c0128"
-      },
-      "purple100": {
-        "id": "169:963",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "100",
-        "name": "purple100",
-        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
-        "created_at": "2023-04-17T16:15:24.461Z",
-        "updated_at": "2023-04-18T15:03:52.435Z",
-        "value": "#26013c"
-      },
-      "purple200": {
-        "id": "169:964",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "200",
-        "name": "purple200",
-        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
-        "created_at": "2023-04-17T16:15:24.455Z",
-        "updated_at": "2023-04-18T15:03:52.473Z",
-        "value": "#400066"
-      },
-      "purple300": {
-        "id": "169:965",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "300",
-        "name": "purple300",
-        "description": "This is Brand Purple. Background colour Use it only as a foreground against Purple 800, Purple 900, and Purple 1000.",
-        "created_at": "2023-04-17T16:15:24.478Z",
-        "updated_at": "2023-04-26T15:41:26.066Z",
-        "value": "#550091"
-      },
-      "purple400": {
-        "id": "169:966",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "400",
-        "name": "purple400",
-        "description": "",
-        "created_at": "2023-04-17T16:15:24.432Z",
-        "updated_at": "2023-04-18T15:03:52.396Z",
-        "value": "#982ed6"
-      },
-      "purple500": {
-        "id": "169:967",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "500",
-        "name": "purple500",
-        "description": "Use it for borders, icons, and large text against Purple 50, Purple 75, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300.",
-        "created_at": "2023-04-17T16:15:24.439Z",
-        "updated_at": "2023-04-27T17:38:50.025Z",
-        "value": "#af4dd5"
-      },
-      "purple600": {
-        "id": "169:968",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "600",
-        "name": "purple600",
-        "description": "Use it as a foreground against  Purple 50, Purple 100, Grey 25, Grey 50, Grey 75 and Grey 100. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150.",
-        "created_at": "2023-04-17T16:15:24.450Z",
-        "updated_at": "2023-04-27T17:38:50.018Z",
-        "value": "#c777df"
-      },
-      "purple700": {
-        "id": "169:969",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "700",
-        "name": "purple700",
-        "description": "Use it as a foreground against  Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 200. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150 and Grey 200. ",
-        "created_at": "2023-04-17T16:15:24.484Z",
-        "updated_at": "2023-04-27T17:38:49.836Z",
-        "value": "#d192d9"
-      },
-      "purple800": {
-        "id": "169:970",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "800",
-        "name": "purple800",
-        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against  Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300 and Grey 400.",
-        "created_at": "2023-04-17T16:15:24.466Z",
-        "updated_at": "2023-04-27T17:38:50.012Z",
-        "value": "#ddbde7"
-      },
-      "purple900": {
-        "id": "169:971",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "900",
-        "name": "purple900",
-        "description": "Use it as a foreground against Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200, Grey 300, and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400.",
-        "created_at": "2023-04-17T16:15:24.497Z",
-        "updated_at": "2023-04-27T17:38:50.069Z",
-        "value": "#ede0f2"
-      },
-      "purple1000": {
-        "id": "169:972",
-        "mode": "dark",
-        "scale": "purple",
-        "step": "1000",
-        "name": "purple1000",
-        "description": "",
-        "created_at": "2023-04-17T16:15:24.472Z",
-        "updated_at": "2023-04-17T16:15:24.472Z",
-        "value": "#f5eef9"
-      }
-    },
-    "gold": {
-      "gold50": {
-        "id": "64:429",
-        "mode": "dark",
-        "scale": "gold",
-        "step": "50",
-        "name": "gold50",
-        "description": "For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900.",
-        "created_at": "2023-03-30T17:02:23.452Z",
-        "updated_at": "2023-04-04T11:57:39.777Z",
-        "value": "#2e1103"
-      },
-      "gold100": {
-        "id": "64:430",
-        "mode": "dark",
-        "scale": "gold",
-        "step": "100",
-        "name": "gold100",
-        "description": "For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900. It passes AA with large text, borders and icons against combined with Gold 400.",
-        "created_at": "2023-03-30T17:02:23.516Z",
-        "updated_at": "2023-04-04T11:57:39.799Z",
-        "value": "#52210c"
-      },
-      "gold300": {
-        "id": "64:431",
-        "mode": "dark",
-        "scale": "gold",
-        "step": "300",
-        "name": "gold300",
-        "description": "Use it as a background It passes AA against Gold 900 It passes AA on large text and icons against Gold 700",
-        "created_at": "2023-03-30T17:02:23.465Z",
-        "updated_at": "2023-04-04T11:57:39.805Z",
-        "value": "#925317"
-      },
-      "gold400": {
-        "id": "64:432",
-        "mode": "dark",
-        "scale": "gold",
-        "step": "400",
-        "name": "gold400",
-        "description": "Use it as a background It passes AA as a foreground against Gold 50. It passes AA with large text, borders and icons against Gold 100.",
-        "created_at": "2023-03-30T17:02:23.493Z",
-        "updated_at": "2023-04-27T17:38:49.904Z",
-        "value": "#cd7d04"
-      },
-      "gold500": {
-        "id": "64:433",
-        "mode": "dark",
-        "scale": "gold",
-        "step": "500",
-        "name": "gold500",
-        "description": "It passes AA as a foreground against Gold 50, Gold 100, Grey 50, Grey 75, Grey 100 and Grey 150, Grey 200 and Grey 300. Use it for borders, icons, and large text against Gold 50, Gold 100, Gold 300, Grey 25, Grey 50, Grey 75, Grey 100 and Grey 150.",
-        "created_at": "2023-03-30T17:02:23.510Z",
-        "updated_at": "2023-04-27T17:38:49.816Z",
-        "value": "#f7b51d"
-      },
-      "gold600": {
-        "id": "1463:241",
-        "mode": "dark",
-        "scale": "gold",
-        "step": "600",
-        "name": "gold600",
-        "description": "This colour is used on Helper Text in form components. This colour can be used against grey.50 and up to grey.175 and over gold.50",
-        "created_at": "2024-01-11T11:46:15.045Z",
-        "updated_at": "2024-01-11T11:46:15.045Z",
-        "value": "#fbc64b"
-      },
-      "gold700": {
-        "id": "64:434",
-        "mode": "dark",
-        "scale": "gold",
-        "step": "700",
-        "name": "gold700",
-        "description": "This is Brand Gold.  For any foreground, it passes AA against Gold 50, Gold 100, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300, and Grey 400.  Use it for borders, icons, and large text against Gold 50, Gold 100, Gold 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 300, Grey 400, and Grey 500.",
-        "created_at": "2023-03-30T17:02:23.521Z",
-        "updated_at": "2023-04-27T17:38:49.801Z",
-        "value": "#ffd76f"
-      },
-      "gold800": {
-        "id": "395:1255",
-        "mode": "dark",
-        "scale": "gold",
-        "step": "800",
-        "name": "gold800",
-        "description": "",
-        "created_at": "2023-05-09T16:08:41.025Z",
-        "updated_at": "2023-05-09T16:08:41.025Z",
-        "value": "#ffe6a8"
-      },
-      "gold900": {
-        "id": "64:435",
-        "mode": "dark",
-        "scale": "gold",
-        "step": "900",
-        "name": "gold900",
-        "description": "For any foreground, it passes AA against Gold 50, Gold 100, Gold 300, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300, and Grey 400. ",
-        "created_at": "2023-03-30T17:02:23.528Z",
-        "updated_at": "2023-04-27T17:38:49.935Z",
-        "value": "#fff6e0"
-      }
-    },
-    "pink": {
-      "pink50": {
-        "id": "263:720",
-        "mode": "dark",
-        "scale": "pink",
-        "step": "50",
-        "name": "pink50",
-        "description": "Use it for backgrounds.  Use it for text that goes on top of Pink 700 and up to Grey 300.",
-        "created_at": "2023-04-26T16:20:00.997Z",
-        "updated_at": "2023-04-27T17:38:49.966Z",
-        "value": "#2c0a2e"
-      },
-      "pink100": {
-        "id": "263:721",
-        "mode": "dark",
-        "scale": "pink",
-        "step": "100",
-        "name": "pink100",
-        "description": "Use it for backgrounds.  Use it for text that goes on top of Pink 700, Pink 900 and Pink 950.",
-        "created_at": "2023-04-26T16:20:00.990Z",
-        "updated_at": "2023-04-26T16:20:00.990Z",
-        "value": "#48104b"
-      },
-      "pink300": {
-        "id": "263:722",
-        "mode": "dark",
-        "scale": "pink",
-        "step": "300",
-        "name": "pink300",
-        "description": "",
-        "created_at": "2023-04-26T16:20:01.003Z",
-        "updated_at": "2023-04-26T16:20:01.003Z",
-        "value": "#8f248f"
-      },
-      "pink500": {
-        "id": "263:723",
-        "mode": "dark",
-        "scale": "pink",
-        "step": "500",
-        "name": "pink500",
-        "description": "Use it for borders, icons, and large text against Pink 50, Pink 100, Grey 25, Grey 50, Grey 75, Grey 100 and Grey 150. Use it as a background color with white as the foreground color.",
-        "created_at": "2023-04-26T16:20:00.976Z",
-        "updated_at": "2023-04-27T17:38:49.851Z",
-        "value": "#c933d1"
-      },
-      "pink700": {
-        "id": "263:724",
-        "mode": "dark",
-        "scale": "pink",
-        "step": "700",
-        "name": "pink700",
-        "description": "AKA Brand Pink Use it as a foreground against Pink 50, Pink 100, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150. Use it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150 and Grey 200.",
-        "created_at": "2023-04-26T16:20:00.984Z",
-        "updated_at": "2023-04-27T17:38:49.910Z",
-        "value": "#f495f9"
-      },
-      "pink900": {
-        "id": "263:725",
-        "mode": "dark",
-        "scale": "pink",
-        "step": "900",
-        "name": "pink900",
-        "description": "Use it as a foreground against Pink 50, Pink 100, Pink 300, Grey 25, Grey 50, Grey 75, Grey 00, Grey 200, and Grey 300. Use it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 200, Pink 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300 and Grey 400.",
-        "created_at": "2023-04-26T16:20:01.016Z",
-        "updated_at": "2023-04-27T17:38:50.000Z",
-        "value": "#fccff9"
-      },
-      "pink950": {
-        "id": "263:728",
-        "mode": "dark",
-        "scale": "pink",
-        "step": "950",
-        "name": "pink950",
-        "description": "Use it as a foreground against Pink 50, Pink 100, Pink 300 Grey 25, Grey 50, Grey 75, Grey 100, Grey 200, and Grey 300. Use it for large text, borders, and graphic elements against Pink 50, Pink 100, Pink 200, Pink 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400.",
-        "created_at": "2023-04-26T16:20:01.010Z",
-        "updated_at": "2023-04-27T17:38:50.111Z",
-        "value": "#fde6fb"
-      }
-    },
-    "grey": {
-      "grey25": {
-        "id": "39:945",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "25",
-        "name": "grey25",
-        "description": "This is to use instead of using pure black.",
-        "created_at": "2023-03-30T09:06:40.995Z",
-        "updated_at": "2023-04-27T13:23:42.986Z",
-        "value": "#050505"
-      },
-      "grey50": {
-        "id": "6:262",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "50",
-        "name": "grey50",
-        "description": "This is to use instead of using pure black.",
-        "created_at": "2023-03-27T16:21:22.324Z",
-        "updated_at": "2023-04-27T13:23:42.874Z",
-        "value": "#0b0b0b"
-      },
-      "grey75": {
-        "id": "6:263",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "75",
-        "name": "grey75",
-        "description": "This colour is to be used instead of 111111 - Background-00",
-        "created_at": "2023-03-27T16:21:22.336Z",
-        "updated_at": "2023-04-27T13:23:42.956Z",
-        "value": "#121212"
-      },
-      "grey100": {
-        "id": "8:264",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "100",
-        "name": "grey100",
-        "description": "To use instead of Background-01",
-        "created_at": "2023-03-27T16:21:22.331Z",
-        "updated_at": "2023-04-27T13:23:43.000Z",
-        "value": "#1d1d1d"
-      },
-      "grey150": {
-        "id": "8:265",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "150",
-        "name": "grey150",
-        "description": "To be used instead of Background-03",
-        "created_at": "2023-03-27T16:21:22.341Z",
-        "updated_at": "2023-04-27T13:23:42.840Z",
-        "value": "#242424"
-      },
-      "grey175": {
-        "id": "9:266",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "175",
-        "name": "grey175",
-        "description": "to replace Background-06 2B2B2B",
-        "created_at": "2023-03-27T17:50:59.521Z",
-        "updated_at": "2023-04-27T13:23:42.968Z",
-        "value": "#2c2c2c"
-      },
-      "grey200": {
-        "id": "9:267",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "200",
-        "name": "grey200",
-        "description": "To use in the context of Background-12",
-        "created_at": "2023-03-27T17:50:59.396Z",
-        "updated_at": "2023-04-27T13:23:42.897Z",
-        "value": "#323232"
-      },
-      "grey300": {
-        "id": "9:268",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "300",
-        "name": "grey300",
-        "description": "AKA as 16",
-        "created_at": "2023-03-27T17:50:59.346Z",
-        "updated_at": "2023-04-27T13:23:42.880Z",
-        "value": "#414141"
-      },
-      "grey400": {
-        "id": "9:269",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "400",
-        "name": "grey400",
-        "description": "",
-        "created_at": "2023-03-27T17:50:59.415Z",
-        "updated_at": "2023-04-27T13:23:42.892Z",
-        "value": "#585858"
-      },
-      "grey500": {
-        "id": "9:270",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "500",
-        "name": "grey500",
-        "description": "",
-        "created_at": "2023-03-27T17:50:59.423Z",
-        "updated_at": "2023-04-27T13:23:42.943Z",
-        "value": "#707070"
-      },
-      "grey600": {
-        "id": "9:271",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "600",
-        "name": "grey600",
-        "description": "AKA subdued text",
-        "created_at": "2023-03-27T17:50:59.538Z",
-        "updated_at": "2023-04-27T13:23:42.855Z",
-        "value": "#b8b8b8"
-      },
-      "grey700": {
-        "id": "9:272",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "700",
-        "name": "grey700",
-        "description": "AKA placeholder text",
-        "created_at": "2023-03-27T17:50:59.377Z",
-        "updated_at": "2023-04-27T13:23:42.868Z",
-        "value": "#c1c1c1"
-      },
-      "grey800": {
-        "id": "9:273",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "800",
-        "name": "grey800",
-        "description": "Replaces E7E7E7. AKA regular text",
-        "created_at": "2023-03-27T17:50:59.504Z",
-        "updated_at": "2023-04-27T13:23:43.013Z",
-        "value": "#e3e3e3"
-      },
-      "grey900": {
-        "id": "9:274",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "900",
-        "name": "grey900",
-        "description": "To replace F7F7F7",
-        "created_at": "2023-03-27T17:50:59.443Z",
-        "updated_at": "2023-04-27T13:23:42.962Z",
-        "value": "#f0f0f0"
-      },
-      "grey1000": {
-        "id": "9:275",
-        "mode": "dark",
-        "scale": "grey",
-        "step": "1000",
-        "name": "grey1000",
-        "description": "Can be used for: Headings",
-        "created_at": "2023-03-27T17:50:59.433Z",
-        "updated_at": "2023-06-28T10:00:43.038Z",
-        "value": "#fafafa"
-      }
-    },
-    "cyan": {
-      "cyan50": {
-        "id": "73:497",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "50",
-        "name": "cyan50",
-        "description": "Backgrounds",
-        "created_at": "2023-03-31T14:58:46.942Z",
-        "updated_at": "2023-03-31T14:58:46.942Z",
-        "value": "#010a19"
-      },
-      "cyan75": {
-        "id": "73:498",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "75",
-        "name": "cyan75",
-        "description": "Backgrounds",
-        "created_at": "2023-03-31T14:58:46.928Z",
-        "updated_at": "2023-03-31T14:58:46.928Z",
-        "value": "#001333"
-      },
-      "cyan100": {
-        "id": "73:499",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "100",
-        "name": "cyan100",
-        "description": "Backgrounds",
-        "created_at": "2023-03-31T14:58:46.947Z",
-        "updated_at": "2023-03-31T14:58:46.947Z",
-        "value": "#011537"
-      },
-      "cyan200": {
-        "id": "73:500",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "200",
-        "name": "cyan200",
-        "description": "",
-        "created_at": "2023-03-31T14:58:46.952Z",
-        "updated_at": "2023-03-31T14:58:46.952Z",
-        "value": "#00225c"
-      },
-      "cyan300": {
-        "id": "73:501",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "300",
-        "name": "cyan300",
-        "description": "Backgrounds",
-        "created_at": "2023-03-31T14:58:46.933Z",
-        "updated_at": "2023-03-31T14:58:46.933Z",
-        "value": "#002d80"
-      },
-      "cyan400": {
-        "id": "73:502",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "400",
-        "name": "cyan400",
-        "description": "Backgrounds",
-        "created_at": "2023-03-31T14:58:46.916Z",
-        "updated_at": "2023-03-31T14:58:46.916Z",
-        "value": "#013992"
-      },
-      "cyan500": {
-        "id": "73:504",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "500",
-        "name": "cyan500",
-        "description": "Use it for large text, borders, and graphic elements against Cyan 50, Grey 25, Grey 50 and Grey 75.  Also, use it as a background color with white borders or graphic foreground elements.",
-        "created_at": "2023-03-31T14:58:46.957Z",
-        "updated_at": "2023-04-27T17:38:49.878Z",
-        "value": "#0658e5"
-      },
-      "cyan600": {
-        "id": "73:507",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "600",
-        "name": "cyan600",
-        "description": "Use it for any foreground against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Grey 25, Grey 50,  Grey 75, Grey 100, Grey 150, and Grey 175.  Use it for large text, borders, and graphic elements against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Cyan 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175 and Grey 200.  Additionally, use it as a background color with white borders or graphic foreground elements.",
-        "created_at": "2023-03-31T14:58:46.962Z",
-        "updated_at": "2023-04-27T17:38:49.985Z",
-        "value": "#5692fb"
-      },
-      "cyan700": {
-        "id": "73:508",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "700",
-        "name": "cyan700",
-        "description": "It passes AA as a foreground against cyan 50, Cyan 75, Cyan 100, Cyan 200, and Cyan 300. It passes AA when used in border, icons and large text against Cyan 400.",
-        "created_at": "2023-03-31T14:58:46.922Z",
-        "updated_at": "2023-04-27T17:38:50.090Z",
-        "value": "#75a7fd"
-      },
-      "cyan800": {
-        "id": "73:509",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "800",
-        "name": "cyan800",
-        "description": "It passes AA as a foreground against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Cyan 300, and Cyan 400. It passes AA when used in border, icons and large text against Cyan 500.",
-        "created_at": "2023-03-31T14:58:46.966Z",
-        "updated_at": "2023-04-27T17:38:49.859Z",
-        "value": "#a6c8fc"
-      },
-      "cyan900": {
-        "id": "73:510",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "900",
-        "name": "cyan900",
-        "description": "It passes AA as a foreground against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Cyan 300, Cyan 400, and Cyan 500. ",
-        "created_at": "2023-03-31T14:58:46.971Z",
-        "updated_at": "2023-04-27T17:38:49.892Z",
-        "value": "#dbeaff"
-      },
-      "cyan1000": {
-        "id": "73:511",
-        "mode": "dark",
-        "scale": "cyan",
-        "step": "1000",
-        "name": "cyan1000",
-        "description": "It passes AA as a foreground against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Cyan 300, Cyan 400, and Cyan 500. ",
-        "created_at": "2023-03-31T14:58:46.937Z",
-        "updated_at": "2023-04-27T17:38:49.916Z",
-        "value": "#ecf4fe"
-      }
-    },
-    "red": {
-      "red50": {
-        "id": "20:471",
-        "mode": "dark",
-        "scale": "red",
-        "step": "50",
-        "name": "red50",
-        "description": "Use it as a background colour ",
-        "created_at": "2023-03-28T09:59:05.769Z",
-        "updated_at": "2023-04-04T11:57:39.793Z",
-        "value": "#3b1216"
-      },
-      "red100": {
-        "id": "20:472",
-        "mode": "dark",
-        "scale": "red",
-        "step": "100",
-        "name": "red100",
-        "description": "",
-        "created_at": "2023-03-28T09:59:05.786Z",
-        "updated_at": "2023-03-28T09:59:05.786Z",
-        "value": "#581a20"
-      },
-      "red300": {
-        "id": "20:473",
-        "mode": "dark",
-        "scale": "red",
-        "step": "300",
-        "name": "red300",
-        "description": "",
-        "created_at": "2023-03-28T09:59:05.816Z",
-        "updated_at": "2023-03-28T09:59:05.816Z",
-        "value": "#891e27"
-      },
-      "red400": {
-        "id": "20:474",
-        "mode": "dark",
-        "scale": "red",
-        "step": "400",
-        "name": "red400",
-        "description": "",
-        "created_at": "2023-03-28T09:59:05.810Z",
-        "updated_at": "2023-03-28T09:59:05.810Z",
-        "value": "#bd1f2c"
-      },
-      "red500": {
-        "id": "20:475",
-        "mode": "dark",
-        "scale": "red",
-        "step": "500",
-        "name": "red500",
-        "description": "Use it for borders, icons, and large text against Red 50, Red 100, Grey 25, Grey 50, Grey 75, Grey 100 and Grey 150. Use it as any type of foreground with Grey 25, Grey 50, Grey 75 and 100.",
-        "created_at": "2023-03-28T09:59:05.775Z",
-        "updated_at": "2023-04-27T17:38:49.947Z",
-        "value": "#f24550"
-      },
-      "red600": {
-        "id": "1461:617",
-        "mode": "dark",
-        "scale": "red",
-        "step": "600",
-        "name": "red600",
-        "description": "This colour is used on Helper Text in form components. This colour can be used against grey.50 and up to grey.175 and over red.50",
-        "created_at": "2024-01-11T11:46:15.053Z",
-        "updated_at": "2024-01-11T11:46:15.053Z",
-        "value": "#f2636a"
-      },
-      "red700": {
-        "id": "20:476",
-        "mode": "dark",
-        "scale": "red",
-        "step": "700",
-        "name": "red700",
-        "description": "Use it for borders, icons, and large text against Red 50, Red 100, Grey 25, Grey 50, Grey 75, Grey 100 and Grey 150. Use it as any type of foreground combined with Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175 and Grey 200.",
-        "created_at": "2023-03-28T09:59:05.822Z",
-        "updated_at": "2023-04-27T17:38:49.978Z",
-        "value": "#f58e92"
-      },
-      "red800": {
-        "id": "130:399",
-        "mode": "dark",
-        "scale": "red",
-        "step": "800",
-        "name": "red800",
-        "description": "For text",
-        "created_at": "2023-04-12T14:45:01.517Z",
-        "updated_at": "2023-04-12T14:45:01.517Z",
-        "value": "#f9aeb3"
-      },
-      "red900": {
-        "id": "20:477",
-        "mode": "dark",
-        "scale": "red",
-        "step": "900",
-        "name": "red900",
-        "description": "Use it as any type of foreground combined with Red 50, Red 100,  Red 300, Red 400, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175 and Grey 200.",
-        "created_at": "2023-03-28T09:59:05.781Z",
-        "updated_at": "2023-04-27T17:38:49.993Z",
-        "value": "#ffebeb"
-      }
-    },
-    "green": {
-      "green50": {
-        "id": "33:919",
-        "mode": "dark",
-        "scale": "green",
-        "step": "50",
-        "name": "green50",
-        "description": "backgrounds only",
-        "created_at": "2023-03-29T16:17:22.798Z",
-        "updated_at": "2023-03-29T16:17:22.798Z",
-        "value": "#133922"
-      },
-      "green100": {
-        "id": "33:920",
-        "mode": "dark",
-        "scale": "green",
-        "step": "100",
-        "name": "green100",
-        "description": "backgrounds",
-        "created_at": "2023-03-29T16:17:22.812Z",
-        "updated_at": "2023-03-29T16:17:22.812Z",
-        "value": "#164429"
-      },
-      "green300": {
-        "id": "33:921",
-        "mode": "dark",
-        "scale": "green",
-        "step": "300",
-        "name": "green300",
-        "description": "",
-        "created_at": "2023-03-29T16:17:22.787Z",
-        "updated_at": "2023-03-29T16:17:22.787Z",
-        "value": "#21693f"
-      },
-      "green400": {
-        "id": "34:922",
-        "mode": "dark",
-        "scale": "green",
-        "step": "400",
-        "name": "green400",
-        "description": "For borders, icons and outlines against Green 50. Not suitable for small text.",
-        "created_at": "2023-03-29T16:17:22.783Z",
-        "updated_at": "2023-04-27T17:38:50.104Z",
-        "value": "#34a868"
-      },
-      "green500": {
-        "id": "34:923",
-        "mode": "dark",
-        "scale": "green",
-        "step": "500",
-        "name": "green500",
-        "description": "Use it for any foreground against Green 50, Green 100, Grey 25, Grey 50,  Grey 75, Grey 100, Grey 150, and Grey 175.  Use it for large text, borders, and graphic elements against Green 50, Green 100, Green 300, Grey 25, Grey 50,  Grey 75, Grey 100, Grey 150, Grey 175 and Grey 200.  Additionally, use it as a background color with white borders or graphic foreground elements.",
-        "created_at": "2023-03-29T16:17:22.778Z",
-        "updated_at": "2023-04-27T17:38:49.972Z",
-        "value": "#55ce8b"
-      },
-      "green600": {
-        "id": "1463:156",
-        "mode": "dark",
-        "scale": "green",
-        "step": "600",
-        "name": "green600",
-        "description": "This colour is used on Helper Text in form components. This colour can be used against grey.50 and up to grey.175 and over green.50",
-        "created_at": "2024-01-11T11:46:15.017Z",
-        "updated_at": "2024-01-11T11:46:15.017Z",
-        "value": "#76d5a1"
-      },
-      "green700": {
-        "id": "34:924",
-        "mode": "dark",
-        "scale": "green",
-        "step": "700",
-        "name": "green700",
-        "description": "For text and borders",
-        "created_at": "2023-03-29T16:17:22.769Z",
-        "updated_at": "2023-03-29T16:17:22.769Z",
-        "value": "#90dab2"
-      },
-      "green800": {
-        "id": "391:1242",
-        "mode": "dark",
-        "scale": "green",
-        "step": "800",
-        "name": "green800",
-        "description": "",
-        "created_at": "2023-05-09T12:58:22.194Z",
-        "updated_at": "2023-05-09T12:58:22.194Z",
-        "value": "#bae8cf"
-      },
-      "green900": {
-        "id": "34:925",
-        "mode": "dark",
-        "scale": "green",
-        "step": "900",
-        "name": "green900",
-        "description": "For text",
-        "created_at": "2023-03-29T16:17:22.764Z",
-        "updated_at": "2023-03-29T16:17:22.764Z",
-        "value": "#e3faeb"
-      }
-    },
-    "apple": {
-      "apple100": {
-        "id": "309:881",
-        "mode": "dark",
-        "scale": "apple",
-        "step": "100",
-        "name": "apple100",
-        "description": "Use it for backgrounds.  Use it for text that goes on top of Apple 800 and the lighter shades of Grey. ",
-        "created_at": "2023-04-28T13:12:22.761Z",
-        "updated_at": "2023-04-28T13:12:22.761Z",
-        "value": "#03361b"
-      },
-      "apple200": {
-        "id": "309:882",
-        "mode": "dark",
-        "scale": "apple",
-        "step": "200",
-        "name": "apple200",
-        "description": "",
-        "created_at": "2023-04-28T13:12:22.767Z",
-        "updated_at": "2023-04-28T13:12:22.767Z",
-        "value": "#087a3c"
-      },
-      "apple300": {
-        "id": "309:883",
-        "mode": "dark",
-        "scale": "apple",
-        "step": "300",
-        "name": "apple300",
-        "description": "",
-        "created_at": "2023-04-28T13:12:22.773Z",
-        "updated_at": "2023-04-28T13:12:22.773Z",
-        "value": "#10b259"
-      },
-      "apple600": {
-        "id": "309:884",
-        "mode": "dark",
-        "scale": "apple",
-        "step": "600",
-        "name": "apple600",
-        "description": "This is Brand Apple You can use it as a foreground colour for Non-interactive design elements only.",
-        "created_at": "2023-04-28T13:12:22.754Z",
-        "updated_at": "2023-04-28T13:12:22.754Z",
-        "value": "#62dd99"
-      },
-      "apple700": {
-        "id": "309:885",
-        "mode": "dark",
-        "scale": "apple",
-        "step": "700",
-        "name": "apple700",
-        "description": "Use if for any foreground Apple 100, Grey 25, Grey  50, Grey 75, Grey 100 and Grey 150. Use it for large text, borders, and graphic elements against Apple 100, Apple  200, Grey 25, Grey  50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400.",
-        "created_at": "2023-04-28T13:12:22.779Z",
-        "updated_at": "2023-05-02T15:36:02.664Z",
-        "value": "#96e6b7"
-      },
-      "apple800": {
-        "id": "309:887",
-        "mode": "dark",
-        "scale": "apple",
-        "step": "800",
-        "name": "apple800",
-        "description": "Use it as a foreground against white and Apple 100, Apple 200,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Apple 100, Apple 200,  Grey  25, Grey  50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400.",
-        "created_at": "2023-04-28T13:12:22.792Z",
-        "updated_at": "2023-05-02T15:36:02.647Z",
-        "value": "#c1f0d3"
-      },
-      "apple950": {
-        "id": "309:888",
-        "mode": "dark",
-        "scale": "apple",
-        "step": "950",
-        "name": "apple950",
-        "description": "Use it as a foreground against white and Apple 50, Apple 200,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300, Grey 400 and Grey 500. Use it for large text, borders, and graphic elements against white and Apple 50, Apple 200,  Grey  25, Grey  50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400.",
-        "created_at": "2023-04-28T13:12:22.785Z",
-        "updated_at": "2023-05-02T15:36:02.656Z",
-        "value": "#e5f9ed"
-      }
-    },
-    "grape": {
-      "grape100": {
-        "id": "338:1049",
-        "mode": "dark",
-        "scale": "grape",
-        "step": "100",
-        "name": "grape100",
-        "description": "For backgrounds mostly. Foregrounds that can be used against this color range from Grape 700 and up. It passes AA with large text, borders and icons against combined with Grape 500.",
-        "created_at": "2023-05-02T15:36:02.527Z",
-        "updated_at": "2023-05-02T15:36:02.527Z",
-        "value": "#240444"
-      },
-      "grape200": {
-        "id": "338:1050",
-        "mode": "dark",
-        "scale": "grape",
-        "step": "200",
-        "name": "grape200",
-        "description": "For backgrounds mostly. Foregrounds that can be used against this color range from Grape 700 and up. It passes AA with large text, borders and icons against combined with Grape 500.",
-        "created_at": "2023-05-02T15:36:02.570Z",
-        "updated_at": "2023-05-02T15:36:02.570Z",
-        "value": "#2d025e"
-      },
-      "grape500": {
-        "id": "338:1052",
-        "mode": "dark",
-        "scale": "grape",
-        "step": "500",
-        "name": "grape500",
-        "description": "Use this color only for borders, large text, and icons against a background of Grape 100, Grape 200, or any Grey shade in the range of 50 to 150.",
-        "created_at": "2023-05-02T15:36:02.545Z",
-        "updated_at": "2023-05-02T15:36:02.545Z",
-        "value": "#7b39c6"
-      },
-      "grape600": {
-        "id": "338:1053",
-        "mode": "dark",
-        "scale": "grape",
-        "step": "600",
-        "name": "grape600",
-        "description": "Brand Grape. Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 100. Use this color only for borders, large text, and icons against a background of Grape 100, Grape 200, or any Grey shade in the range of 50 to 150.",
-        "created_at": "2023-05-02T15:36:02.577Z",
-        "updated_at": "2023-05-02T15:36:02.577Z",
-        "value": "#a66de8"
-      },
-      "grape700": {
-        "id": "338:1054",
-        "mode": "dark",
-        "scale": "grape",
-        "step": "700",
-        "name": "grape700",
-        "description": "Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 200.",
-        "created_at": "2023-05-02T15:36:02.593Z",
-        "updated_at": "2023-05-02T15:36:02.593Z",
-        "value": "#bc92ed"
-      },
-      "grape800": {
-        "id": "338:1055",
-        "mode": "dark",
-        "scale": "grape",
-        "step": "800",
-        "name": "grape800",
-        "description": "Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 300.",
-        "created_at": "2023-05-02T15:36:02.608Z",
-        "updated_at": "2023-05-02T15:36:02.608Z",
-        "value": "#d4baf3"
-      },
-      "grape950": {
-        "id": "338:1056",
-        "mode": "dark",
-        "scale": "grape",
-        "step": "950",
-        "name": "grape950",
-        "description": "Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 300.",
-        "created_at": "2023-05-02T15:36:02.601Z",
-        "updated_at": "2023-05-02T15:36:02.601Z",
-        "value": "#f1e6fb"
-      }
-    },
-    "rose": {
-      "rose100": {
-        "id": "352:1140",
-        "mode": "dark",
-        "scale": "rose",
-        "step": "100",
-        "name": "rose100",
-        "description": "Use it for backgrounds.  Use it for text that goes on Rose 600, Rose 700, Rose 800, Rose 950, and the lighter shades of Grey. ",
-        "created_at": "2023-05-03T15:52:13.613Z",
-        "updated_at": "2023-05-03T15:52:13.613Z",
-        "value": "#45081e"
-      },
-      "rose200": {
-        "id": "352:1141",
-        "mode": "dark",
-        "scale": "rose",
-        "step": "200",
-        "name": "rose200",
-        "description": "Use it for backgrounds.  Use it for text that goes on Rose 700, Rose 800, Rose 950, and the lighter shades of Grey. ",
-        "created_at": "2023-05-03T15:52:13.694Z",
-        "updated_at": "2023-05-03T15:52:13.694Z",
-        "value": "#710e32"
-      },
-      "rose500": {
-        "id": "352:1142",
-        "mode": "dark",
-        "scale": "rose",
-        "step": "500",
-        "name": "rose500",
-        "description": "Use it for borders, icons, and large text against Rose 100, Rose 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150.",
-        "created_at": "2023-05-03T15:52:13.680Z",
-        "updated_at": "2023-05-03T15:52:13.680Z",
-        "value": "#e34584"
-      },
-      "rose600": {
-        "id": "352:1143",
-        "mode": "dark",
-        "scale": "rose",
-        "step": "600",
-        "name": "rose600",
-        "description": "This is Brand Rose - F25192 Use it for borders, icons, and large text against Rose 100, Rose 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150.",
-        "created_at": "2023-05-03T15:52:13.620Z",
-        "updated_at": "2023-05-03T15:52:13.620Z",
-        "value": "#f25192"
-      },
-      "rose700": {
-        "id": "352:1144",
-        "mode": "dark",
-        "scale": "rose",
-        "step": "700",
-        "name": "rose700",
-        "description": "Replaces Rose-200.",
-        "created_at": "2023-05-03T15:52:13.626Z",
-        "updated_at": "2023-05-03T15:52:13.626Z",
-        "value": "#f586b1"
-      },
-      "rose800": {
-        "id": "352:1146",
-        "mode": "dark",
-        "scale": "rose",
-        "step": "800",
-        "name": "rose800",
-        "description": "Replaces Rose-100.",
-        "created_at": "2023-05-03T15:52:13.666Z",
-        "updated_at": "2023-05-03T15:52:13.666Z",
-        "value": "#f9b6d0"
-      },
-      "rose950": {
-        "id": "352:1147",
-        "mode": "dark",
-        "scale": "rose",
-        "step": "950",
-        "name": "rose950",
-        "description": "It replaces Rose-50",
-        "created_at": "2023-05-03T15:52:13.598Z",
-        "updated_at": "2023-05-04T13:32:56.202Z",
-        "value": "#fde2ec"
-      }
-    }
-  },
   "light": {
-    "purple": {
-      "purple50": {
-        "id": "159:670",
-        "mode": "light",
-        "scale": "purple",
-        "step": "50",
-        "name": "purple50",
-        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
-        "created_at": "2023-04-17T15:29:55.283Z",
-        "updated_at": "2023-04-18T15:03:52.484Z",
-        "value": "#fbf6fd"
-      },
-      "purple75": {
-        "id": "159:671",
-        "mode": "light",
-        "scale": "purple",
-        "step": "75",
-        "name": "purple75",
-        "description": "This color replaces the use cases of lightTint. Use it for text that goes on top of  Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
-        "created_at": "2023-04-17T15:29:55.278Z",
-        "updated_at": "2023-06-08T08:59:03.525Z",
-        "value": "#f5eef9"
-      },
-      "purple100": {
-        "id": "159:672",
-        "mode": "light",
-        "scale": "purple",
-        "step": "100",
-        "name": "purple100",
-        "description": "This color replaces the use cases of lightTint. Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
-        "created_at": "2023-04-17T15:29:55.273Z",
-        "updated_at": "2023-06-08T08:59:03.536Z",
-        "value": "#ede0f2"
-      },
-      "purple200": {
-        "id": "159:673",
-        "mode": "light",
-        "scale": "purple",
-        "step": "200",
-        "name": "purple200",
-        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
-        "created_at": "2023-04-17T15:29:55.269Z",
-        "updated_at": "2023-04-18T15:03:52.430Z",
-        "value": "#e2c7eb"
-      },
-      "purple300": {
-        "id": "165:674",
-        "mode": "light",
-        "scale": "purple",
-        "step": "300",
-        "name": "purple300",
-        "description": "Use it only as a foreground against Purple 800, Purple 900, and Purple 1000.",
-        "created_at": "2023-04-17T15:29:55.264Z",
-        "updated_at": "2023-04-18T15:03:52.462Z",
-        "value": "#d69ddd"
-      },
-      "purple400": {
-        "id": "166:675",
-        "mode": "light",
-        "scale": "purple",
-        "step": "400",
-        "name": "purple400",
-        "description": "Use it for borders or large text against Purple 800, Purple 900, and Purple 1000.  For any other foreground elements, use it only against Purple 900 and Purple 1000.",
-        "created_at": "2023-04-17T15:29:55.302Z",
-        "updated_at": "2023-04-18T15:03:52.446Z",
-        "value": "#c777df"
-      },
-      "purple500": {
-        "id": "166:677",
-        "mode": "light",
-        "scale": "purple",
-        "step": "500",
-        "name": "purple500",
-        "description": "Use it for borders, icons, and large text against white, Purple 50, Purple 100, Grey 25,  Grey 50, Grey 75, and Grey 100. Use it as a background color with white as the foreground color.",
-        "created_at": "2023-04-17T15:29:55.258Z",
-        "updated_at": "2023-04-27T17:38:49.844Z",
-        "value": "#af4dd5"
-      },
-      "purple600": {
-        "id": "166:678",
-        "mode": "light",
-        "scale": "purple",
-        "step": "600",
-        "name": "purple600",
-        "description": "Use it as a foreground against white and Purple 50, Purple 100,  Grey 25, Grey 50, Grey 75 and Grey 100. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150. Use it as a background color combined with a white foreground. ",
-        "created_at": "2023-04-17T15:29:55.308Z",
-        "updated_at": "2023-04-27T17:38:49.823Z",
-        "value": "#931cce"
-      },
-      "purple700": {
-        "id": "168:679",
-        "mode": "light",
-        "scale": "purple",
-        "step": "700",
-        "name": "purple700",
-        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 200 Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150 and Grey 200. Use it as a background color combined with a white foreground. ",
-        "created_at": "2023-04-17T15:29:55.288Z",
-        "updated_at": "2023-04-27T17:38:49.793Z",
-        "value": "#7209ae"
-      },
-      "purple800": {
-        "id": "168:681",
-        "mode": "light",
-        "scale": "purple",
-        "step": "800",
-        "name": "purple800",
-        "description": "This is Brand Purple - 550091. Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground. ",
-        "created_at": "2023-04-17T15:29:55.297Z",
-        "updated_at": "2023-05-03T15:52:13.753Z",
-        "value": "#550091"
-      },
-      "purple900": {
-        "id": "168:682",
-        "mode": "light",
-        "scale": "purple",
-        "step": "900",
-        "name": "purple900",
-        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200,  Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground. ",
-        "created_at": "2023-04-17T15:29:55.292Z",
-        "updated_at": "2023-04-27T17:38:49.959Z",
-        "value": "#400066"
-      },
-      "purple1000": {
-        "id": "168:683",
-        "mode": "light",
-        "scale": "purple",
-        "step": "1000",
-        "name": "purple1000",
-        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200,  Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300, Grey 400 and Grey 500. Use it as a background color combined with a white foreground.",
-        "created_at": "2023-04-17T15:29:55.313Z",
-        "updated_at": "2023-04-27T17:38:49.898Z",
-        "value": "#1c0128"
-      }
-    },
     "red": {
       "red50": {
         "id": "20:478",
@@ -1278,6 +88,17 @@
         "created_at": "2023-03-28T09:59:05.763Z",
         "updated_at": "2023-03-30T12:22:01.448Z",
         "value": "#891e27"
+      },
+      "red800": {
+        "id": "3626:221",
+        "mode": "light",
+        "scale": "red",
+        "step": "800",
+        "name": "red800",
+        "description": "Used for active state background colour on inverted on Web",
+        "created_at": "2024-07-31T15:51:21.815Z",
+        "updated_at": "2024-07-31T15:51:21.815Z",
+        "value": "#611a20"
       },
       "red900": {
         "id": "20:484",
@@ -1850,6 +671,17 @@
         "updated_at": "2023-05-09T13:25:07.340Z",
         "value": "#894e16"
       },
+      "gold800": {
+        "id": "3626:335",
+        "mode": "light",
+        "scale": "gold",
+        "step": "800",
+        "name": "gold800",
+        "description": "Used for active state background colour on inverted on Web",
+        "created_at": "2024-07-31T15:51:21.792Z",
+        "updated_at": "2024-07-31T15:51:21.792Z",
+        "value": "#6e3311"
+      },
       "gold900": {
         "id": "64:428",
         "mode": "light",
@@ -1950,6 +782,17 @@
         "created_at": "2023-03-29T16:17:22.817Z",
         "updated_at": "2023-04-27T17:38:49.885Z",
         "value": "#21693f"
+      },
+      "green800": {
+        "id": "3626:115",
+        "mode": "light",
+        "scale": "green",
+        "step": "800",
+        "name": "green800",
+        "description": "Used for active state background colour on inverted on Web",
+        "created_at": "2024-07-31T15:51:21.821Z",
+        "updated_at": "2024-07-31T15:51:21.821Z",
+        "value": "#0a522c"
       },
       "green900": {
         "id": "34:934",
@@ -2130,6 +973,1240 @@
         "created_at": "2023-05-03T15:52:13.606Z",
         "updated_at": "2023-06-30T15:39:48.164Z",
         "value": "#4a1125"
+      }
+    },
+    "purple": {
+      "purple50": {
+        "id": "159:670",
+        "mode": "light",
+        "scale": "purple",
+        "step": "50",
+        "name": "purple50",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
+        "created_at": "2023-04-17T15:29:55.283Z",
+        "updated_at": "2024-10-02T15:09:54.946Z",
+        "value": "#f8f5fe"
+      },
+      "purple75": {
+        "id": "159:671",
+        "mode": "light",
+        "scale": "purple",
+        "step": "75",
+        "name": "purple75",
+        "description": "Use it for text that goes on top of  Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
+        "created_at": "2023-04-17T15:29:55.278Z",
+        "updated_at": "2024-10-02T15:09:54.840Z",
+        "value": "#f1ebfe"
+      },
+      "purple100": {
+        "id": "159:672",
+        "mode": "light",
+        "scale": "purple",
+        "step": "100",
+        "name": "purple100",
+        "description": "Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
+        "created_at": "2023-04-17T15:29:55.273Z",
+        "updated_at": "2024-10-02T15:09:54.941Z",
+        "value": "#e5d7fe"
+      },
+      "purple200": {
+        "id": "159:673",
+        "mode": "light",
+        "scale": "purple",
+        "step": "200",
+        "name": "purple200",
+        "description": "Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
+        "created_at": "2023-04-17T15:29:55.269Z",
+        "updated_at": "2024-10-02T15:09:54.884Z",
+        "value": "#cfadff"
+      },
+      "purple300": {
+        "id": "165:674",
+        "mode": "light",
+        "scale": "purple",
+        "step": "300",
+        "name": "purple300",
+        "description": "Use it only as a foreground against Purple 800, Purple 900, and Purple 1000.",
+        "created_at": "2023-04-17T15:29:55.264Z",
+        "updated_at": "2024-10-02T15:09:54.925Z",
+        "value": "#c08dfc"
+      },
+      "purple400": {
+        "id": "166:675",
+        "mode": "light",
+        "scale": "purple",
+        "step": "400",
+        "name": "purple400",
+        "description": "Use it for large text against Purple 800, Purple 900, and Purple 1000.  For any other foreground elements, use it only against Purple 900 and Purple 1000.",
+        "created_at": "2023-04-17T15:29:55.302Z",
+        "updated_at": "2024-10-02T15:09:54.910Z",
+        "value": "#b46ef7"
+      },
+      "purple500": {
+        "id": "166:677",
+        "mode": "light",
+        "scale": "purple",
+        "step": "500",
+        "name": "purple500",
+        "description": "",
+        "created_at": "2023-04-17T15:29:55.258Z",
+        "updated_at": "2024-10-02T15:09:54.863Z",
+        "value": "#9d38f0"
+      },
+      "purple600": {
+        "id": "166:678",
+        "mode": "light",
+        "scale": "purple",
+        "step": "600",
+        "name": "purple600",
+        "description": "Use it as a foreground against white and Purple 50, Purple 100,  Grey 25, Grey 50, Grey 75 and Grey 100. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150. Use it as a background color combined with a white foreground. ",
+        "created_at": "2023-04-17T15:29:55.308Z",
+        "updated_at": "2024-10-02T15:09:54.852Z",
+        "value": "#8f23e7"
+      },
+      "purple700": {
+        "id": "168:679",
+        "mode": "light",
+        "scale": "purple",
+        "step": "700",
+        "name": "purple700",
+        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 200 Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150 and Grey 200. Use it as a background color combined with a white foreground. ",
+        "created_at": "2023-04-17T15:29:55.288Z",
+        "updated_at": "2024-10-02T15:09:54.832Z",
+        "value": "#7415c1"
+      },
+      "purple800": {
+        "id": "168:681",
+        "mode": "light",
+        "scale": "purple",
+        "step": "800",
+        "name": "purple800",
+        "description": "This is Brand Purple - 550091. Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground. ",
+        "created_at": "2023-04-17T15:29:55.297Z",
+        "updated_at": "2023-05-03T15:52:13.753Z",
+        "value": "#550091"
+      },
+      "purple900": {
+        "id": "168:682",
+        "mode": "light",
+        "scale": "purple",
+        "step": "900",
+        "name": "purple900",
+        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200,  Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400. Use it as a background color combined with a white foreground. ",
+        "created_at": "2023-04-17T15:29:55.292Z",
+        "updated_at": "2024-10-02T15:09:54.895Z",
+        "value": "#48007a"
+      },
+      "purple1000": {
+        "id": "168:683",
+        "mode": "light",
+        "scale": "purple",
+        "step": "1000",
+        "name": "purple1000",
+        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200,  Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300, Grey 400 and Grey 500. Use it as a background color combined with a white foreground.",
+        "created_at": "2023-04-17T15:29:55.313Z",
+        "updated_at": "2024-10-02T15:09:54.873Z",
+        "value": "#35005c"
+      }
+    }
+  },
+  "dark": {
+    "gold": {
+      "gold50": {
+        "id": "64:429",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "50",
+        "name": "gold50",
+        "description": "For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900.",
+        "created_at": "2023-03-30T17:02:23.452Z",
+        "updated_at": "2023-04-04T11:57:39.777Z",
+        "value": "#2e1103"
+      },
+      "gold75": {
+        "id": "3626:337",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "75",
+        "name": "gold75",
+        "description": "",
+        "created_at": "2024-07-31T15:51:21.785Z",
+        "updated_at": "2024-07-31T15:51:21.785Z",
+        "value": "#411907"
+      },
+      "gold100": {
+        "id": "64:430",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "100",
+        "name": "gold100",
+        "description": "For backgrounds mostly. Use as a background with any foreground using Gold 500, Gold 700 and Gold 900. It passes AA with large text, borders and icons against combined with Gold 400.",
+        "created_at": "2023-03-30T17:02:23.516Z",
+        "updated_at": "2023-04-04T11:57:39.799Z",
+        "value": "#52210c"
+      },
+      "gold200": {
+        "id": "3626:336",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "200",
+        "name": "gold200",
+        "description": "",
+        "created_at": "2024-07-31T15:51:21.804Z",
+        "updated_at": "2024-07-31T15:51:21.804Z",
+        "value": "#743711"
+      },
+      "gold300": {
+        "id": "64:431",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "300",
+        "name": "gold300",
+        "description": "Use it as a background It passes AA against Gold 900 It passes AA on large text and icons against Gold 700",
+        "created_at": "2023-03-30T17:02:23.465Z",
+        "updated_at": "2023-04-04T11:57:39.805Z",
+        "value": "#925317"
+      },
+      "gold400": {
+        "id": "64:432",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "400",
+        "name": "gold400",
+        "description": "Use it as a background It passes AA as a foreground against Gold 50. It passes AA with large text, borders and icons against Gold 100.",
+        "created_at": "2023-03-30T17:02:23.493Z",
+        "updated_at": "2023-04-27T17:38:49.904Z",
+        "value": "#cd7d04"
+      },
+      "gold500": {
+        "id": "64:433",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "500",
+        "name": "gold500",
+        "description": "It passes AA as a foreground against Gold 50, Gold 100, Grey 50, Grey 75, Grey 100 and Grey 150, Grey 200 and Grey 300. Use it for borders, icons, and large text against Gold 50, Gold 100, Gold 300, Grey 25, Grey 50, Grey 75, Grey 100 and Grey 150.",
+        "created_at": "2023-03-30T17:02:23.510Z",
+        "updated_at": "2023-04-27T17:38:49.816Z",
+        "value": "#f7b51d"
+      },
+      "gold600": {
+        "id": "1463:241",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "600",
+        "name": "gold600",
+        "description": "This colour is used on Helper Text in form components. This colour can be used against grey.50 and up to grey.175 and over gold.50",
+        "created_at": "2024-01-11T11:46:15.045Z",
+        "updated_at": "2024-01-11T11:46:15.045Z",
+        "value": "#fbc64b"
+      },
+      "gold700": {
+        "id": "64:434",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "700",
+        "name": "gold700",
+        "description": "This is Brand Gold.  For any foreground, it passes AA against Gold 50, Gold 100, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300, and Grey 400.  Use it for borders, icons, and large text against Gold 50, Gold 100, Gold 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 300, Grey 400, and Grey 500.",
+        "created_at": "2023-03-30T17:02:23.521Z",
+        "updated_at": "2023-04-27T17:38:49.801Z",
+        "value": "#ffd76f"
+      },
+      "gold800": {
+        "id": "395:1255",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "800",
+        "name": "gold800",
+        "description": "",
+        "created_at": "2023-05-09T16:08:41.025Z",
+        "updated_at": "2023-05-09T16:08:41.025Z",
+        "value": "#ffe6a8"
+      },
+      "gold900": {
+        "id": "64:435",
+        "mode": "dark",
+        "scale": "gold",
+        "step": "900",
+        "name": "gold900",
+        "description": "For any foreground, it passes AA against Gold 50, Gold 100, Gold 300, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300, and Grey 400. ",
+        "created_at": "2023-03-30T17:02:23.528Z",
+        "updated_at": "2023-04-27T17:38:49.935Z",
+        "value": "#fff6e0"
+      }
+    },
+    "pink": {
+      "pink50": {
+        "id": "263:720",
+        "mode": "dark",
+        "scale": "pink",
+        "step": "50",
+        "name": "pink50",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Pink 700 and up to Grey 300.",
+        "created_at": "2023-04-26T16:20:00.997Z",
+        "updated_at": "2023-04-27T17:38:49.966Z",
+        "value": "#2c0a2e"
+      },
+      "pink100": {
+        "id": "263:721",
+        "mode": "dark",
+        "scale": "pink",
+        "step": "100",
+        "name": "pink100",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Pink 700, Pink 900 and Pink 950.",
+        "created_at": "2023-04-26T16:20:00.990Z",
+        "updated_at": "2023-04-26T16:20:00.990Z",
+        "value": "#48104b"
+      },
+      "pink300": {
+        "id": "263:722",
+        "mode": "dark",
+        "scale": "pink",
+        "step": "300",
+        "name": "pink300",
+        "description": "",
+        "created_at": "2023-04-26T16:20:01.003Z",
+        "updated_at": "2023-04-26T16:20:01.003Z",
+        "value": "#8f248f"
+      },
+      "pink500": {
+        "id": "263:723",
+        "mode": "dark",
+        "scale": "pink",
+        "step": "500",
+        "name": "pink500",
+        "description": "Use it for borders, icons, and large text against Pink 50, Pink 100, Grey 25, Grey 50, Grey 75, Grey 100 and Grey 150. Use it as a background color with white as the foreground color.",
+        "created_at": "2023-04-26T16:20:00.976Z",
+        "updated_at": "2023-04-27T17:38:49.851Z",
+        "value": "#c933d1"
+      },
+      "pink700": {
+        "id": "263:724",
+        "mode": "dark",
+        "scale": "pink",
+        "step": "700",
+        "name": "pink700",
+        "description": "AKA Brand Pink Use it as a foreground against Pink 50, Pink 100, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150. Use it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150 and Grey 200.",
+        "created_at": "2023-04-26T16:20:00.984Z",
+        "updated_at": "2023-04-27T17:38:49.910Z",
+        "value": "#f495f9"
+      },
+      "pink900": {
+        "id": "263:725",
+        "mode": "dark",
+        "scale": "pink",
+        "step": "900",
+        "name": "pink900",
+        "description": "Use it as a foreground against Pink 50, Pink 100, Pink 300, Grey 25, Grey 50, Grey 75, Grey 00, Grey 200, and Grey 300. Use it for large text, borders, and graphic elements against white and Pink 50, Pink 100, Pink 200, Pink 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300 and Grey 400.",
+        "created_at": "2023-04-26T16:20:01.016Z",
+        "updated_at": "2023-04-27T17:38:50.000Z",
+        "value": "#fccff9"
+      },
+      "pink950": {
+        "id": "263:728",
+        "mode": "dark",
+        "scale": "pink",
+        "step": "950",
+        "name": "pink950",
+        "description": "Use it as a foreground against Pink 50, Pink 100, Pink 300 Grey 25, Grey 50, Grey 75, Grey 100, Grey 200, and Grey 300. Use it for large text, borders, and graphic elements against Pink 50, Pink 100, Pink 200, Pink 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400.",
+        "created_at": "2023-04-26T16:20:01.010Z",
+        "updated_at": "2023-04-27T17:38:50.111Z",
+        "value": "#fde6fb"
+      }
+    },
+    "grey": {
+      "grey25": {
+        "id": "39:945",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "25",
+        "name": "grey25",
+        "description": "This is to use instead of using pure black.",
+        "created_at": "2023-03-30T09:06:40.995Z",
+        "updated_at": "2023-04-27T13:23:42.986Z",
+        "value": "#050505"
+      },
+      "grey50": {
+        "id": "6:262",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "50",
+        "name": "grey50",
+        "description": "This is to use instead of using pure black.",
+        "created_at": "2023-03-27T16:21:22.324Z",
+        "updated_at": "2023-04-27T13:23:42.874Z",
+        "value": "#0b0b0b"
+      },
+      "grey75": {
+        "id": "6:263",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "75",
+        "name": "grey75",
+        "description": "This colour is to be used instead of 111111 - Background-00",
+        "created_at": "2023-03-27T16:21:22.336Z",
+        "updated_at": "2023-04-27T13:23:42.956Z",
+        "value": "#121212"
+      },
+      "grey100": {
+        "id": "8:264",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "100",
+        "name": "grey100",
+        "description": "To use instead of Background-01",
+        "created_at": "2023-03-27T16:21:22.331Z",
+        "updated_at": "2023-04-27T13:23:43.000Z",
+        "value": "#1d1d1d"
+      },
+      "grey150": {
+        "id": "8:265",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "150",
+        "name": "grey150",
+        "description": "To be used instead of Background-03",
+        "created_at": "2023-03-27T16:21:22.341Z",
+        "updated_at": "2023-04-27T13:23:42.840Z",
+        "value": "#242424"
+      },
+      "grey175": {
+        "id": "9:266",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "175",
+        "name": "grey175",
+        "description": "to replace Background-06 2B2B2B",
+        "created_at": "2023-03-27T17:50:59.521Z",
+        "updated_at": "2023-04-27T13:23:42.968Z",
+        "value": "#2c2c2c"
+      },
+      "grey200": {
+        "id": "9:267",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "200",
+        "name": "grey200",
+        "description": "To use in the context of Background-12",
+        "created_at": "2023-03-27T17:50:59.396Z",
+        "updated_at": "2023-04-27T13:23:42.897Z",
+        "value": "#323232"
+      },
+      "grey300": {
+        "id": "9:268",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "300",
+        "name": "grey300",
+        "description": "AKA as 16",
+        "created_at": "2023-03-27T17:50:59.346Z",
+        "updated_at": "2023-04-27T13:23:42.880Z",
+        "value": "#414141"
+      },
+      "grey400": {
+        "id": "9:269",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "400",
+        "name": "grey400",
+        "description": "",
+        "created_at": "2023-03-27T17:50:59.415Z",
+        "updated_at": "2023-04-27T13:23:42.892Z",
+        "value": "#585858"
+      },
+      "grey500": {
+        "id": "9:270",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "500",
+        "name": "grey500",
+        "description": "",
+        "created_at": "2023-03-27T17:50:59.423Z",
+        "updated_at": "2023-04-27T13:23:42.943Z",
+        "value": "#707070"
+      },
+      "grey600": {
+        "id": "9:271",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "600",
+        "name": "grey600",
+        "description": "AKA subdued text",
+        "created_at": "2023-03-27T17:50:59.538Z",
+        "updated_at": "2023-04-27T13:23:42.855Z",
+        "value": "#b8b8b8"
+      },
+      "grey700": {
+        "id": "9:272",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "700",
+        "name": "grey700",
+        "description": "AKA placeholder text",
+        "created_at": "2023-03-27T17:50:59.377Z",
+        "updated_at": "2023-04-27T13:23:42.868Z",
+        "value": "#c1c1c1"
+      },
+      "grey800": {
+        "id": "9:273",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "800",
+        "name": "grey800",
+        "description": "Replaces E7E7E7. AKA regular text",
+        "created_at": "2023-03-27T17:50:59.504Z",
+        "updated_at": "2023-04-27T13:23:43.013Z",
+        "value": "#e3e3e3"
+      },
+      "grey900": {
+        "id": "9:274",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "900",
+        "name": "grey900",
+        "description": "To replace F7F7F7",
+        "created_at": "2023-03-27T17:50:59.443Z",
+        "updated_at": "2023-04-27T13:23:42.962Z",
+        "value": "#f0f0f0"
+      },
+      "grey1000": {
+        "id": "9:275",
+        "mode": "dark",
+        "scale": "grey",
+        "step": "1000",
+        "name": "grey1000",
+        "description": "Can be used for: Headings",
+        "created_at": "2023-03-27T17:50:59.433Z",
+        "updated_at": "2023-06-28T10:00:43.038Z",
+        "value": "#fafafa"
+      }
+    },
+    "cyan": {
+      "cyan50": {
+        "id": "73:497",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "50",
+        "name": "cyan50",
+        "description": "Backgrounds",
+        "created_at": "2023-03-31T14:58:46.942Z",
+        "updated_at": "2023-03-31T14:58:46.942Z",
+        "value": "#010a19"
+      },
+      "cyan75": {
+        "id": "73:498",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "75",
+        "name": "cyan75",
+        "description": "Backgrounds",
+        "created_at": "2023-03-31T14:58:46.928Z",
+        "updated_at": "2023-03-31T14:58:46.928Z",
+        "value": "#001333"
+      },
+      "cyan100": {
+        "id": "73:499",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "100",
+        "name": "cyan100",
+        "description": "Backgrounds",
+        "created_at": "2023-03-31T14:58:46.947Z",
+        "updated_at": "2023-03-31T14:58:46.947Z",
+        "value": "#011537"
+      },
+      "cyan200": {
+        "id": "73:500",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "200",
+        "name": "cyan200",
+        "description": "",
+        "created_at": "2023-03-31T14:58:46.952Z",
+        "updated_at": "2023-03-31T14:58:46.952Z",
+        "value": "#00225c"
+      },
+      "cyan300": {
+        "id": "73:501",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "300",
+        "name": "cyan300",
+        "description": "Backgrounds",
+        "created_at": "2023-03-31T14:58:46.933Z",
+        "updated_at": "2023-03-31T14:58:46.933Z",
+        "value": "#002d80"
+      },
+      "cyan400": {
+        "id": "73:502",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "400",
+        "name": "cyan400",
+        "description": "Backgrounds",
+        "created_at": "2023-03-31T14:58:46.916Z",
+        "updated_at": "2023-03-31T14:58:46.916Z",
+        "value": "#013992"
+      },
+      "cyan500": {
+        "id": "73:504",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "500",
+        "name": "cyan500",
+        "description": "Use it for large text, borders, and graphic elements against Cyan 50, Grey 25, Grey 50 and Grey 75.  Also, use it as a background color with white borders or graphic foreground elements.",
+        "created_at": "2023-03-31T14:58:46.957Z",
+        "updated_at": "2023-04-27T17:38:49.878Z",
+        "value": "#0658e5"
+      },
+      "cyan600": {
+        "id": "73:507",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "600",
+        "name": "cyan600",
+        "description": "Use it for any foreground against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Grey 25, Grey 50,  Grey 75, Grey 100, Grey 150, and Grey 175.  Use it for large text, borders, and graphic elements against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Cyan 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175 and Grey 200.  Additionally, use it as a background color with white borders or graphic foreground elements.",
+        "created_at": "2023-03-31T14:58:46.962Z",
+        "updated_at": "2023-04-27T17:38:49.985Z",
+        "value": "#5692fb"
+      },
+      "cyan700": {
+        "id": "73:508",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "700",
+        "name": "cyan700",
+        "description": "It passes AA as a foreground against cyan 50, Cyan 75, Cyan 100, Cyan 200, and Cyan 300. It passes AA when used in border, icons and large text against Cyan 400.",
+        "created_at": "2023-03-31T14:58:46.922Z",
+        "updated_at": "2023-04-27T17:38:50.090Z",
+        "value": "#75a7fd"
+      },
+      "cyan800": {
+        "id": "73:509",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "800",
+        "name": "cyan800",
+        "description": "It passes AA as a foreground against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Cyan 300, and Cyan 400. It passes AA when used in border, icons and large text against Cyan 500.",
+        "created_at": "2023-03-31T14:58:46.966Z",
+        "updated_at": "2023-04-27T17:38:49.859Z",
+        "value": "#a6c8fc"
+      },
+      "cyan900": {
+        "id": "73:510",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "900",
+        "name": "cyan900",
+        "description": "It passes AA as a foreground against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Cyan 300, Cyan 400, and Cyan 500. ",
+        "created_at": "2023-03-31T14:58:46.971Z",
+        "updated_at": "2023-04-27T17:38:49.892Z",
+        "value": "#dbeaff"
+      },
+      "cyan1000": {
+        "id": "73:511",
+        "mode": "dark",
+        "scale": "cyan",
+        "step": "1000",
+        "name": "cyan1000",
+        "description": "It passes AA as a foreground against Cyan 50, Cyan 75, Cyan 100, Cyan 200, Cyan 300, Cyan 400, and Cyan 500. ",
+        "created_at": "2023-03-31T14:58:46.937Z",
+        "updated_at": "2023-04-27T17:38:49.916Z",
+        "value": "#ecf4fe"
+      }
+    },
+    "red": {
+      "red50": {
+        "id": "20:471",
+        "mode": "dark",
+        "scale": "red",
+        "step": "50",
+        "name": "red50",
+        "description": "Use it as a background colour ",
+        "created_at": "2023-03-28T09:59:05.769Z",
+        "updated_at": "2023-04-04T11:57:39.793Z",
+        "value": "#3b1216"
+      },
+      "red100": {
+        "id": "20:472",
+        "mode": "dark",
+        "scale": "red",
+        "step": "100",
+        "name": "red100",
+        "description": "",
+        "created_at": "2023-03-28T09:59:05.786Z",
+        "updated_at": "2023-03-28T09:59:05.786Z",
+        "value": "#581a20"
+      },
+      "red200": {
+        "id": "3626:222",
+        "mode": "dark",
+        "scale": "red",
+        "step": "200",
+        "name": "red200",
+        "description": "",
+        "created_at": "2024-07-31T15:51:21.797Z",
+        "updated_at": "2024-07-31T15:51:21.797Z",
+        "value": "#721d25"
+      },
+      "red300": {
+        "id": "20:473",
+        "mode": "dark",
+        "scale": "red",
+        "step": "300",
+        "name": "red300",
+        "description": "",
+        "created_at": "2023-03-28T09:59:05.816Z",
+        "updated_at": "2023-03-28T09:59:05.816Z",
+        "value": "#891e27"
+      },
+      "red400": {
+        "id": "20:474",
+        "mode": "dark",
+        "scale": "red",
+        "step": "400",
+        "name": "red400",
+        "description": "",
+        "created_at": "2023-03-28T09:59:05.810Z",
+        "updated_at": "2023-03-28T09:59:05.810Z",
+        "value": "#bd1f2c"
+      },
+      "red500": {
+        "id": "20:475",
+        "mode": "dark",
+        "scale": "red",
+        "step": "500",
+        "name": "red500",
+        "description": "Use it for borders, icons, and large text against Red 50, Red 100, Grey 25, Grey 50, Grey 75, Grey 100 and Grey 150. Use it as any type of foreground with Grey 25, Grey 50, Grey 75 and 100.",
+        "created_at": "2023-03-28T09:59:05.775Z",
+        "updated_at": "2023-04-27T17:38:49.947Z",
+        "value": "#f24550"
+      },
+      "red600": {
+        "id": "1461:617",
+        "mode": "dark",
+        "scale": "red",
+        "step": "600",
+        "name": "red600",
+        "description": "This colour is used on Helper Text in form components. This colour can be used against grey.50 and up to grey.175 and over red.50",
+        "created_at": "2024-01-11T11:46:15.053Z",
+        "updated_at": "2024-01-11T11:46:15.053Z",
+        "value": "#f2636a"
+      },
+      "red700": {
+        "id": "20:476",
+        "mode": "dark",
+        "scale": "red",
+        "step": "700",
+        "name": "red700",
+        "description": "Use it for borders, icons, and large text against Red 50, Red 100, Grey 25, Grey 50, Grey 75, Grey 100 and Grey 150. Use it as any type of foreground combined with Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175 and Grey 200.",
+        "created_at": "2023-03-28T09:59:05.822Z",
+        "updated_at": "2023-04-27T17:38:49.978Z",
+        "value": "#f58e92"
+      },
+      "red800": {
+        "id": "130:399",
+        "mode": "dark",
+        "scale": "red",
+        "step": "800",
+        "name": "red800",
+        "description": "For text",
+        "created_at": "2023-04-12T14:45:01.517Z",
+        "updated_at": "2023-04-12T14:45:01.517Z",
+        "value": "#f9aeb3"
+      },
+      "red900": {
+        "id": "20:477",
+        "mode": "dark",
+        "scale": "red",
+        "step": "900",
+        "name": "red900",
+        "description": "Use it as any type of foreground combined with Red 50, Red 100,  Red 300, Red 400, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175 and Grey 200.",
+        "created_at": "2023-03-28T09:59:05.781Z",
+        "updated_at": "2023-04-27T17:38:49.993Z",
+        "value": "#ffebeb"
+      }
+    },
+    "green": {
+      "green50": {
+        "id": "33:919",
+        "mode": "dark",
+        "scale": "green",
+        "step": "50",
+        "name": "green50",
+        "description": "backgrounds only",
+        "created_at": "2023-03-29T16:17:22.798Z",
+        "updated_at": "2023-03-29T16:17:22.798Z",
+        "value": "#133922"
+      },
+      "green100": {
+        "id": "33:920",
+        "mode": "dark",
+        "scale": "green",
+        "step": "100",
+        "name": "green100",
+        "description": "backgrounds",
+        "created_at": "2023-03-29T16:17:22.812Z",
+        "updated_at": "2023-03-29T16:17:22.812Z",
+        "value": "#164429"
+      },
+      "green200": {
+        "id": "3626:116",
+        "mode": "dark",
+        "scale": "green",
+        "step": "200",
+        "name": "green200",
+        "description": "",
+        "created_at": "2024-07-31T15:51:21.809Z",
+        "updated_at": "2024-07-31T15:51:21.809Z",
+        "value": "#1b5533"
+      },
+      "green300": {
+        "id": "33:921",
+        "mode": "dark",
+        "scale": "green",
+        "step": "300",
+        "name": "green300",
+        "description": "",
+        "created_at": "2023-03-29T16:17:22.787Z",
+        "updated_at": "2023-03-29T16:17:22.787Z",
+        "value": "#21693f"
+      },
+      "green400": {
+        "id": "34:922",
+        "mode": "dark",
+        "scale": "green",
+        "step": "400",
+        "name": "green400",
+        "description": "For borders, icons and outlines against Green 50. Not suitable for small text.",
+        "created_at": "2023-03-29T16:17:22.783Z",
+        "updated_at": "2023-04-27T17:38:50.104Z",
+        "value": "#34a868"
+      },
+      "green500": {
+        "id": "34:923",
+        "mode": "dark",
+        "scale": "green",
+        "step": "500",
+        "name": "green500",
+        "description": "Use it for any foreground against Green 50, Green 100, Grey 25, Grey 50,  Grey 75, Grey 100, Grey 150, and Grey 175.  Use it for large text, borders, and graphic elements against Green 50, Green 100, Green 300, Grey 25, Grey 50,  Grey 75, Grey 100, Grey 150, Grey 175 and Grey 200.  Additionally, use it as a background color with white borders or graphic foreground elements.",
+        "created_at": "2023-03-29T16:17:22.778Z",
+        "updated_at": "2023-04-27T17:38:49.972Z",
+        "value": "#55ce8b"
+      },
+      "green600": {
+        "id": "1463:156",
+        "mode": "dark",
+        "scale": "green",
+        "step": "600",
+        "name": "green600",
+        "description": "This colour is used on Helper Text in form components. This colour can be used against grey.50 and up to grey.175 and over green.50",
+        "created_at": "2024-01-11T11:46:15.017Z",
+        "updated_at": "2024-01-11T11:46:15.017Z",
+        "value": "#76d5a1"
+      },
+      "green700": {
+        "id": "34:924",
+        "mode": "dark",
+        "scale": "green",
+        "step": "700",
+        "name": "green700",
+        "description": "For text and borders",
+        "created_at": "2023-03-29T16:17:22.769Z",
+        "updated_at": "2023-03-29T16:17:22.769Z",
+        "value": "#90dab2"
+      },
+      "green800": {
+        "id": "391:1242",
+        "mode": "dark",
+        "scale": "green",
+        "step": "800",
+        "name": "green800",
+        "description": "",
+        "created_at": "2023-05-09T12:58:22.194Z",
+        "updated_at": "2023-05-09T12:58:22.194Z",
+        "value": "#bae8cf"
+      },
+      "green900": {
+        "id": "34:925",
+        "mode": "dark",
+        "scale": "green",
+        "step": "900",
+        "name": "green900",
+        "description": "For text",
+        "created_at": "2023-03-29T16:17:22.764Z",
+        "updated_at": "2023-03-29T16:17:22.764Z",
+        "value": "#e3faeb"
+      }
+    },
+    "apple": {
+      "apple100": {
+        "id": "309:881",
+        "mode": "dark",
+        "scale": "apple",
+        "step": "100",
+        "name": "apple100",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Apple 800 and the lighter shades of Grey. ",
+        "created_at": "2023-04-28T13:12:22.761Z",
+        "updated_at": "2023-04-28T13:12:22.761Z",
+        "value": "#03361b"
+      },
+      "apple200": {
+        "id": "309:882",
+        "mode": "dark",
+        "scale": "apple",
+        "step": "200",
+        "name": "apple200",
+        "description": "",
+        "created_at": "2023-04-28T13:12:22.767Z",
+        "updated_at": "2023-04-28T13:12:22.767Z",
+        "value": "#087a3c"
+      },
+      "apple300": {
+        "id": "309:883",
+        "mode": "dark",
+        "scale": "apple",
+        "step": "300",
+        "name": "apple300",
+        "description": "",
+        "created_at": "2023-04-28T13:12:22.773Z",
+        "updated_at": "2023-04-28T13:12:22.773Z",
+        "value": "#10b259"
+      },
+      "apple600": {
+        "id": "309:884",
+        "mode": "dark",
+        "scale": "apple",
+        "step": "600",
+        "name": "apple600",
+        "description": "This is Brand Apple You can use it as a foreground colour for Non-interactive design elements only.",
+        "created_at": "2023-04-28T13:12:22.754Z",
+        "updated_at": "2023-04-28T13:12:22.754Z",
+        "value": "#62dd99"
+      },
+      "apple700": {
+        "id": "309:885",
+        "mode": "dark",
+        "scale": "apple",
+        "step": "700",
+        "name": "apple700",
+        "description": "Use if for any foreground Apple 100, Grey 25, Grey  50, Grey 75, Grey 100 and Grey 150. Use it for large text, borders, and graphic elements against Apple 100, Apple  200, Grey 25, Grey  50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400.",
+        "created_at": "2023-04-28T13:12:22.779Z",
+        "updated_at": "2023-05-02T15:36:02.664Z",
+        "value": "#96e6b7"
+      },
+      "apple800": {
+        "id": "309:887",
+        "mode": "dark",
+        "scale": "apple",
+        "step": "800",
+        "name": "apple800",
+        "description": "Use it as a foreground against white and Apple 100, Apple 200,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400. Use it for large text, borders, and graphic elements against white and Apple 100, Apple 200,  Grey  25, Grey  50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400.",
+        "created_at": "2023-04-28T13:12:22.792Z",
+        "updated_at": "2023-05-02T15:36:02.647Z",
+        "value": "#c1f0d3"
+      },
+      "apple950": {
+        "id": "309:888",
+        "mode": "dark",
+        "scale": "apple",
+        "step": "950",
+        "name": "apple950",
+        "description": "Use it as a foreground against white and Apple 50, Apple 200,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300, Grey 400 and Grey 500. Use it for large text, borders, and graphic elements against white and Apple 50, Apple 200,  Grey  25, Grey  50, Grey 75, Grey 100, Grey 150, Grey 175, Grey 200, Grey 300 and Grey 400.",
+        "created_at": "2023-04-28T13:12:22.785Z",
+        "updated_at": "2023-05-02T15:36:02.656Z",
+        "value": "#e5f9ed"
+      }
+    },
+    "grape": {
+      "grape100": {
+        "id": "338:1049",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "100",
+        "name": "grape100",
+        "description": "For backgrounds mostly. Foregrounds that can be used against this color range from Grape 700 and up. It passes AA with large text, borders and icons against combined with Grape 500.",
+        "created_at": "2023-05-02T15:36:02.527Z",
+        "updated_at": "2023-05-02T15:36:02.527Z",
+        "value": "#240444"
+      },
+      "grape200": {
+        "id": "338:1050",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "200",
+        "name": "grape200",
+        "description": "For backgrounds mostly. Foregrounds that can be used against this color range from Grape 700 and up. It passes AA with large text, borders and icons against combined with Grape 500.",
+        "created_at": "2023-05-02T15:36:02.570Z",
+        "updated_at": "2023-05-02T15:36:02.570Z",
+        "value": "#2d025e"
+      },
+      "grape500": {
+        "id": "338:1052",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "500",
+        "name": "grape500",
+        "description": "Use this color only for borders, large text, and icons against a background of Grape 100, Grape 200, or any Grey shade in the range of 50 to 150.",
+        "created_at": "2023-05-02T15:36:02.545Z",
+        "updated_at": "2023-05-02T15:36:02.545Z",
+        "value": "#7b39c6"
+      },
+      "grape600": {
+        "id": "338:1053",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "600",
+        "name": "grape600",
+        "description": "Brand Grape. Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 100. Use this color only for borders, large text, and icons against a background of Grape 100, Grape 200, or any Grey shade in the range of 50 to 150.",
+        "created_at": "2023-05-02T15:36:02.577Z",
+        "updated_at": "2023-05-02T15:36:02.577Z",
+        "value": "#a66de8"
+      },
+      "grape700": {
+        "id": "338:1054",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "700",
+        "name": "grape700",
+        "description": "Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 200.",
+        "created_at": "2023-05-02T15:36:02.593Z",
+        "updated_at": "2023-05-02T15:36:02.593Z",
+        "value": "#bc92ed"
+      },
+      "grape800": {
+        "id": "338:1055",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "800",
+        "name": "grape800",
+        "description": "Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 300.",
+        "created_at": "2023-05-02T15:36:02.608Z",
+        "updated_at": "2023-05-02T15:36:02.608Z",
+        "value": "#d4baf3"
+      },
+      "grape950": {
+        "id": "1639:267",
+        "mode": "dark",
+        "scale": "grape",
+        "step": "950",
+        "name": "grape950",
+        "description": "Use is as any foreground against Grape 100, Grape 200 or any Grey shade in the range of 50 to 300.",
+        "created_at": "2024-04-18T13:56:58.936Z",
+        "updated_at": "2024-04-18T13:56:58.936Z",
+        "value": "#f1e6fb"
+      }
+    },
+    "rose": {
+      "rose100": {
+        "id": "352:1140",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "100",
+        "name": "rose100",
+        "description": "Use it for backgrounds.  Use it for text that goes on Rose 600, Rose 700, Rose 800, Rose 950, and the lighter shades of Grey. ",
+        "created_at": "2023-05-03T15:52:13.613Z",
+        "updated_at": "2023-05-03T15:52:13.613Z",
+        "value": "#45081e"
+      },
+      "rose200": {
+        "id": "352:1141",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "200",
+        "name": "rose200",
+        "description": "Use it for backgrounds.  Use it for text that goes on Rose 700, Rose 800, Rose 950, and the lighter shades of Grey. ",
+        "created_at": "2023-05-03T15:52:13.694Z",
+        "updated_at": "2023-05-03T15:52:13.694Z",
+        "value": "#710e32"
+      },
+      "rose500": {
+        "id": "352:1142",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "500",
+        "name": "rose500",
+        "description": "Use it for borders, icons, and large text against Rose 100, Rose 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150.",
+        "created_at": "2023-05-03T15:52:13.680Z",
+        "updated_at": "2023-05-03T15:52:13.680Z",
+        "value": "#e34584"
+      },
+      "rose600": {
+        "id": "352:1143",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "600",
+        "name": "rose600",
+        "description": "This is Brand Rose - F25192 Use it for borders, icons, and large text against Rose 100, Rose 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150.",
+        "created_at": "2023-05-03T15:52:13.620Z",
+        "updated_at": "2023-05-03T15:52:13.620Z",
+        "value": "#f25192"
+      },
+      "rose700": {
+        "id": "352:1144",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "700",
+        "name": "rose700",
+        "description": "Replaces Rose-200.",
+        "created_at": "2023-05-03T15:52:13.626Z",
+        "updated_at": "2023-05-03T15:52:13.626Z",
+        "value": "#f586b1"
+      },
+      "rose800": {
+        "id": "352:1146",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "800",
+        "name": "rose800",
+        "description": "Replaces Rose-100.",
+        "created_at": "2023-05-03T15:52:13.666Z",
+        "updated_at": "2023-05-03T15:52:13.666Z",
+        "value": "#f9b6d0"
+      },
+      "rose950": {
+        "id": "352:1147",
+        "mode": "dark",
+        "scale": "rose",
+        "step": "950",
+        "name": "rose950",
+        "description": "It replaces Rose-50",
+        "created_at": "2023-05-03T15:52:13.598Z",
+        "updated_at": "2023-05-04T13:32:56.202Z",
+        "value": "#fde2ec"
+      }
+    },
+    "purple": {
+      "purple50": {
+        "id": "169:961",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "50",
+        "name": "purple50",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 500,  Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
+        "created_at": "2023-04-17T16:15:24.490Z",
+        "updated_at": "2024-10-02T15:09:54.868Z",
+        "value": "#2f0052"
+      },
+      "purple75": {
+        "id": "169:962",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "75",
+        "name": "purple75",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
+        "created_at": "2023-04-17T16:15:24.444Z",
+        "updated_at": "2024-10-02T15:09:54.846Z",
+        "value": "#35005c"
+      },
+      "purple100": {
+        "id": "169:963",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "100",
+        "name": "purple100",
+        "description": "Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900, and Purple 1000 backgrounds.",
+        "created_at": "2023-04-17T16:15:24.461Z",
+        "updated_at": "2024-10-02T15:09:54.900Z",
+        "value": "#48007a"
+      },
+      "purple200": {
+        "id": "169:964",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "200",
+        "name": "purple200",
+        "description": "This is Brand Purple. Use it for backgrounds.  Use it for text that goes on top of Purple 600, Purple 700, Purple 800, Purple 900 and Purple 1000.",
+        "created_at": "2023-04-17T16:15:24.455Z",
+        "updated_at": "2024-10-02T15:09:54.935Z",
+        "value": "#550091"
+      },
+      "purple300": {
+        "id": "169:965",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "300",
+        "name": "purple300",
+        "description": "Background colour Use it only as a foreground against Purple 800, Purple 900, and Purple 1000.",
+        "created_at": "2023-04-17T16:15:24.478Z",
+        "updated_at": "2024-10-02T15:09:54.878Z",
+        "value": "#7415c1"
+      },
+      "purple400": {
+        "id": "169:966",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "400",
+        "name": "purple400",
+        "description": "",
+        "created_at": "2023-04-17T16:15:24.432Z",
+        "updated_at": "2024-10-02T15:09:54.818Z",
+        "value": "#8f23e7"
+      },
+      "purple500": {
+        "id": "169:967",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "500",
+        "name": "purple500",
+        "description": "Use it for large text against Purple 50, Purple 75, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300.",
+        "created_at": "2023-04-17T16:15:24.439Z",
+        "updated_at": "2024-10-02T15:09:54.920Z",
+        "value": "#9d38f0"
+      },
+      "purple600": {
+        "id": "169:968",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "600",
+        "name": "purple600",
+        "description": "Use it as a foreground against  Purple 50, Purple 100, Grey 25, Grey 50, Grey 75 and Grey 100. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 150.",
+        "created_at": "2023-04-17T16:15:24.450Z",
+        "updated_at": "2024-10-02T15:09:54.915Z",
+        "value": "#b46ef7"
+      },
+      "purple700": {
+        "id": "169:969",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "700",
+        "name": "purple700",
+        "description": "Use it as a foreground against  Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, and Grey 200. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150 and Grey 200. ",
+        "created_at": "2023-04-17T16:15:24.484Z",
+        "updated_at": "2024-10-02T15:09:54.857Z",
+        "value": "#c08dfc"
+      },
+      "purple800": {
+        "id": "169:970",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "800",
+        "name": "purple800",
+        "description": "Use it as a foreground against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 200 and Grey 300. Use it for large text, borders, and graphic elements against  Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey 50, Grey 75, Grey 100, Grey 150, Grey 200, Grey 300 and Grey 400.",
+        "created_at": "2023-04-17T16:15:24.466Z",
+        "updated_at": "2024-10-02T15:09:54.905Z",
+        "value": "#cfadff"
+      },
+      "purple900": {
+        "id": "169:971",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "900",
+        "name": "purple900",
+        "description": "Use it as a foreground against Purple 50, Purple 100, Purple 200, Purple 300, Purple 200, Purple 400,  Grey 25, Grey 50, Grey 75, Grey 100, Grey 200, Grey 300, and Grey 400. Use it for large text, borders, and graphic elements against white and Purple 50, Purple 100, Purple 200, Purple 300, Grey 25, Grey50, Grey 75, Grey 100, Grey 150  Grey 200, Grey 300 and Grey 400.",
+        "created_at": "2023-04-17T16:15:24.497Z",
+        "updated_at": "2024-10-02T15:09:54.930Z",
+        "value": "#e5d7fe"
+      },
+      "purple1000": {
+        "id": "169:972",
+        "mode": "dark",
+        "scale": "purple",
+        "step": "1000",
+        "name": "purple1000",
+        "description": "",
+        "created_at": "2023-04-17T16:15:24.472Z",
+        "updated_at": "2024-10-02T15:09:54.827Z",
+        "value": "#f1ebfe"
       }
     }
   }

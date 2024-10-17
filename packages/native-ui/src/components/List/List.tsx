@@ -1,0 +1,37 @@
+import React, { forwardRef, useMemo } from 'react';
+import type ListProps from './List.props';
+import { ListHeading } from './ListHeading';
+import { ListContext } from './List.context';
+import { View } from 'react-native';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
+
+const List = forwardRef<View, ListProps>(
+  ({ children, headingText, headingSupportingText, ...props }, ref) => {
+    const { loading, disabled, divider, container = 'full' } = props;
+    const value = useMemo(
+      () => ({ loading, disabled, divider, container }),
+      [loading, disabled, divider, container]
+    );
+    const { styles } = useStyles(stylesheet);
+    return (
+      <ListContext.Provider value={value}>
+        <View ref={ref} {...props} style={[styles.container, props.style]}>
+          {headingText ? (
+            <ListHeading text={headingText} supportingText={headingSupportingText} />
+          ) : null}
+          {children}
+        </View>
+      </ListContext.Provider>
+    );
+  }
+);
+
+List.displayName = 'List';
+
+const stylesheet = createStyleSheet(({ space }) => ({
+  container: {
+    width: space.full,
+  },
+}));
+
+export default List;

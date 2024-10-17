@@ -1,12 +1,21 @@
-import type { Button } from '@gluestack-ui/themed';
-import type { ComponentProps, ReactNode, ComponentType, ReactElement } from 'react';
+import type { ReactNode, ComponentType, ReactElement } from 'react';
+import type { PressableProps } from 'react-native';
 
-interface BaseButtonProps extends Omit<ComponentProps<typeof Button>, 'children'> {
+export interface BaseButtonProps extends Omit<PressableProps, 'children'> {
   /*
    * If `true`, the button will be disabled.
    * @default  false
    */
   disabled?: boolean;
+  /*
+   * @deprecated Use `disabled` instead.
+   */
+  isDisabled?: boolean;
+  colorScheme?: 'cyan' | 'red' | 'green' | 'grey' | 'gold';
+  size?: 'small' | 'medium' | 'large';
+  inverted?: boolean;
+  variant?: 'solid' | 'outline' | 'ghost';
+  pressed?: boolean;
 }
 
 export interface ButtonWithStringChildrenProps extends BaseButtonProps {

@@ -16,5 +16,7 @@ export const red500 = '#df2a38';
 export const red600 = '#c31d2a';
 /**  */
 export const red700 = '#891e27';
+/** Used for active state background colour on inverted on Web */
+export const red800 = '#611a20';
 /**  */
 export const red900 = '#3b1216';

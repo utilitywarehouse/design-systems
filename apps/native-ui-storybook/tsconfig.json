@@ -1,6 +1,7 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "module": "Node16",
     "strict": true,
     "moduleResolution": "node16"
   }

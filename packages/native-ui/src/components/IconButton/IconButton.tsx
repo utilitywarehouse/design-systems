@@ -1,35 +1,30 @@
 import React, { FC } from 'react';
-import { Root, Icon } from './styled-components';
 import { createButton } from '@gluestack-ui/button';
-import { Spinner } from '../Spinner';
+import { IconButtonProps } from './IconButton.props';
+import IconButtonRootComponent from './IconButtonRoot';
+import IconButtonIconComponent from './IconButtonIcon';
+import IconButtonSpinerComponent from './IconButtonSpinner';
+import { useButtonGroupContext } from '../Button/ButtonGroup.context';
 
-const AccessbileButton = createButton({
-  Root,
-  Icon,
+const IconButtonComponent = createButton({
+  Root: IconButtonRootComponent,
+  Icon: IconButtonIconComponent,
   Group: () => null,
   Text: () => null,
-  Spinner,
+  Spinner: IconButtonSpinerComponent,
 });
 
-export interface IconButtonProps extends React.ComponentProps<typeof AccessbileButton> {
-  /*
-   * The icon to display on the button.
-   * @default undefined
-   */
-  icon: React.ElementType;
-  /*
-   * If `true`, the button will show a spinner.
-   * @default  false
-   */
-  loading?: boolean;
-  /*
-   * If `true`, the button will be disabled.
-   * @default  false
-   */
-  disabled?: boolean;
-}
+const IconButtonSpinner = IconButtonComponent.Spinner;
+const IconButtonIcon = IconButtonComponent.Icon;
 
-const IconButton: FC<IconButtonProps> = ({ loading, icon, disabled, isDisabled, ...props }) => {
+IconButtonSpinner.displayName = 'IconButtonSpinner';
+IconButtonIcon.displayName = 'IconButtonIcon';
+
+const IconButton: FC<IconButtonProps> = ({ icon, disabled, pressed, ...props }) => {
+  const { disabled: groupDisabled, loading: groupLoading } = useButtonGroupContext();
+  const { loading } = props;
+  const isLoading = loading ?? groupLoading;
+  const buttonDisabled = isLoading || (disabled ?? groupDisabled);
   const getSize = (size: IconButtonProps['size']) => {
     switch (size) {
       case 'x-small':
@@ -41,13 +36,13 @@ const IconButton: FC<IconButtonProps> = ({ loading, icon, disabled, isDisabled, 
     }
   };
   return (
-    <AccessbileButton {...props} isDisabled={disabled ?? isDisabled}>
+    <IconButtonComponent {...props} isDisabled={buttonDisabled} isPressed={pressed}>
       {loading ? (
-        <AccessbileButton.Spinner size={getSize(props.size)} color="" />
+        <IconButtonSpinner size={getSize(props.size)} color="" />
       ) : (
-        <AccessbileButton.Icon as={icon} />
+        <IconButtonIcon as={icon} />
       )}
-    </AccessbileButton>
+    </IconButtonComponent>
   );
 };
 

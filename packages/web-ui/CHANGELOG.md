@@ -1,5 +1,168 @@
 # @utilitywarehouse/web-ui
 
+## 1.0.6
+
+### Patch Changes
+
+- [#566](https://github.com/utilitywarehouse/design-systems/pull/566) [`374e534b`](https://github.com/utilitywarehouse/design-systems/commit/374e534ba2786030848c6205c2eb20b76fd9143b) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix `@mui` deps
+
+## 1.0.5
+
+### Patch Changes
+
+- [#554](https://github.com/utilitywarehouse/design-systems/pull/554) [`69bc8ca9`](https://github.com/utilitywarehouse/design-systems/commit/69bc8ca9c6896d11bc8d99a4076ade031d8fb702) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `removeGutterBottom` prop to TextField
+
+- [#553](https://github.com/utilitywarehouse/design-systems/pull/553) [`a1e58f1f`](https://github.com/utilitywarehouse/design-systems/commit/a1e58f1fa7b863b816ee43ab567d1a7db5741d23) Thanks [@robphoenix](https://github.com/robphoenix)! - `Radio` & `RadioTile` will now stretch to fit the content width of the `RadioGroup` container
+
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies [[`235ba670`](https://github.com/utilitywarehouse/design-systems/commit/235ba67081593d9fc5e28fc0e4bbb3aea941d077)]:
+  - @utilitywarehouse/colour-system@0.5.0
+
+## 1.0.3
+
+### Patch Changes
+
+- [#527](https://github.com/utilitywarehouse/design-systems/pull/527) [`f8a010e3`](https://github.com/utilitywarehouse/design-systems/commit/f8a010e3491798505327abc869201017c46b1a45) Thanks [@robphoenix](https://github.com/robphoenix)! - Use unitless line-height values
+
+## 1.0.2
+
+### Patch Changes
+
+- [#497](https://github.com/utilitywarehouse/design-systems/pull/497) [`f5eda34a`](https://github.com/utilitywarehouse/design-systems/commit/f5eda34a84faddd0e7c7faea569eeafce3825dd6) Thanks [@robphoenix](https://github.com/robphoenix)! - Visual updates to `Link` component
+
+- [#494](https://github.com/utilitywarehouse/design-systems/pull/494) [`e810891a`](https://github.com/utilitywarehouse/design-systems/commit/e810891a82b38192caa1cfedecd822bc9ed7f736) Thanks [@robphoenix](https://github.com/robphoenix)! - Add medium fontWeight token & `fontWeight` prop to `Text` component
+
+- [#492](https://github.com/utilitywarehouse/design-systems/pull/492) [`80a89a57`](https://github.com/utilitywarehouse/design-systems/commit/80a89a57e154989131c8174bbe4e35663b444a65) Thanks [@robphoenix](https://github.com/robphoenix)! - Implement `TextLink` visual updates
+
+- [#502](https://github.com/utilitywarehouse/design-systems/pull/502) [`9c3597b7`](https://github.com/utilitywarehouse/design-systems/commit/9c3597b7225c53a3c6adf7524d90c3af62e7e7fc) Thanks [@robphoenix](https://github.com/robphoenix)! - `Button` & `IconButton` visual updates
+
+## 1.0.1
+
+### Patch Changes
+
+- [#485](https://github.com/utilitywarehouse/design-systems/pull/485) [`715b53de`](https://github.com/utilitywarehouse/design-systems/commit/715b53de4f97863051defc6f48d07d452059e83e) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `asChild` prop to `Text` component.
+
+- [#487](https://github.com/utilitywarehouse/design-systems/pull/487) [`497a95a5`](https://github.com/utilitywarehouse/design-systems/commit/497a95a59a74a3dba19c8ffedbcf01a2fbe450e3) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `useMediaQueries` hook, and deprecate `useMediaQuery` hook.
+
+## 1.0.0
+
+### Major Changes
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Refactor typography overrides
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Rename the `large` IconButton size to `medium`.
+
+  ```diff
+  - <IconButton size='large'></IconButton>
+  + <IconButton size='medium'></IconButton>
+    <IconButton
+      size={{
+        mobile: 'small',
+  -     desktop: 'large',
+  +     desktop: 'medium',
+      }}
+    ></IconButton>
+  ```
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Rename the `large` Button size to `medium`.
+
+  ```diff
+  - <Button size='large'></Button>
+  + <Button size='medium'></Button>
+    <Button
+      size={{
+        mobile: 'small',
+  -     desktop: 'large',
+  +     desktop: 'medium',
+      }}
+    ></Button>
+  ```
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove `isBrandBackground` from `Box` context, please use `isInvertedBackground`
+  instead.
+
+  ```diff
+  - const { isBrandBackground } = useBackground();
+  - const bg = isBrandBackground ? colorsCommon.brandWhite : colorsCommon.brandPrimaryPurple;
+  + const { isInvertedBackground } = useBackground();
+  + const bg = isInvertedBackground ? colorsCommon.brandWhite : colorsCommon.brandPrimaryPurple;
+  ```
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Replace Button component
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Replace `Link` and `TextLink` components with lab components
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove custom MUI typography theme.
+
+  You will no longer be able to do the following:
+
+  ```
+  sx={{ ...theme.typography.body }}
+  ```
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove deprecated `Typography` component. Consumers should use the `Text` &
+  `Heading` components instead. Please see the [migration documentation](https://uw-web-ui.vercel.app/?path=/docs/web-ui-guides-migration-v1--documentation) for further
+  details.
+
+### Minor Changes
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Implement `textTransform` for `Link` & `TextLink` components
+
+### Patch Changes
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Link component asChild
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix Links text-wrapping issue
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Deprecate `Stack`. Please use the `Flex` component instead.
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Deprecate `Grid` component
+
+- [#422](https://github.com/utilitywarehouse/design-systems/pull/422) [`6f02b24c`](https://github.com/utilitywarehouse/design-systems/commit/6f02b24cccc3534ca8239d38a553b2b12a98c336) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove `justify-content: center` from link components.
+
+## 0.9.7
+
+### Patch Changes
+
+- [#460](https://github.com/utilitywarehouse/design-systems/pull/460) [`dec10935`](https://github.com/utilitywarehouse/design-systems/commit/dec10935eee8cd3b2f88a40bb1be71a8c0333224) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove `TextField` deprecation. Add it back in when we are ready to release replacement `Input` component.
+
+- [#461](https://github.com/utilitywarehouse/design-systems/pull/461) [`d3f68753`](https://github.com/utilitywarehouse/design-systems/commit/d3f68753019ec14181ca35c0151738176d05d92c) Thanks [@robphoenix](https://github.com/robphoenix)! - Remove stray export
+
+## 0.9.6
+
+### Patch Changes
+
+- Updated dependencies [[`9063c8dd`](https://github.com/utilitywarehouse/design-systems/commit/9063c8dd6a47ba1b6b75f666e591c7f537ff112e)]:
+  - @utilitywarehouse/colour-system@0.4.1
+
+## 0.9.5
+
+### Patch Changes
+
+- Updated dependencies [[`abd6c1d`](https://github.com/utilitywarehouse/design-systems/commit/abd6c1d6fd45056b05e09e082043d8d922e5b5bb)]:
+  - @utilitywarehouse/colour-system@0.4.0
+
+## 0.9.4
+
+### Patch Changes
+
+- [#429](https://github.com/utilitywarehouse/design-systems/pull/429) [`df14d3e`](https://github.com/utilitywarehouse/design-systems/commit/df14d3ef442b73857695dade8fde8fa7d9230498) Thanks [@robphoenix](https://github.com/robphoenix)! - Updated ToggleButton
+  - add inverted prop
+  - updated internally data-attributes
+
+## 0.9.3
+
+### Patch Changes
+
+- [#427](https://github.com/utilitywarehouse/design-systems/pull/427) [`9932218`](https://github.com/utilitywarehouse/design-systems/commit/9932218cd16ec82f263c99e936c222b78b4ef680) Thanks [@robphoenix](https://github.com/robphoenix)! - Update `ThemeProvider` usage & docs for the following components:
+  - `Menu`
+  - `TextField`
+  - `Stack`
+  - `ToggleButtonGroup`
+
 ## 0.9.2
 
 ### Patch Changes

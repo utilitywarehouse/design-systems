@@ -1,5 +1,5 @@
-import { Meta } from '@storybook/blocks';
 import { Analytics } from '@vercel/analytics/react';
+import { Meta } from '@storybook/blocks';
 
 <Analytics />
 
@@ -21,7 +21,7 @@ The `sx` prop is great for applying one-off styles. It is based on the
 [emotion `css` prop](https://emotion.sh/docs/css-prop)
 and [Theme UI's own `sx` prop](https://theme-ui.com/sx-prop/).
 It utilises a superset of CSS, so you can use the full breadth of
-regular CSS, as well as responsive values and _theme-aware_ properties.
+regular CSS, and take advantage of responsive values.
 
 The `sx` prop also helps to maintain the separation of concerns between CSS
 utilities and component business logic. It is used as an _escape-hatch_ on all
@@ -31,15 +31,25 @@ styling if necessary.
 ```tsx
 <Box
   sx={{
-    boxShadow: 1, // theme.shadows[1]
-    color: 'colors.apple400', // theme.palette.colors.apple400
-    margin: 1, // margin: theme.spacing(1)
-    paddingX: 2, // paddingLeft: theme.spacing(2) & paddingRight: theme.spacing(2)
-    zIndex: 'tooltip', // theme.zIndex.tooltip
-    borderRadius: 2, // theme.shape.borderRadius * 2
+    color: colors.apple400,
+    margin: 1, // margin: spacing(1)
+    paddingX: 2, // paddingLeft: spacing(2) & paddingRight: spacing(2)
+    paddingTop: {{ // responsive styles, the padding value will change on the specified breakpoints.
+      mobile: 1,
+      tablet: 2,
+      desktop: 3,
+      wide: 4
+    }}
   }}
 >
 ```
+
+### Gotchas
+
+- Using responsive values for `padding` & `margin` will override any more
+  specific padding or margin values, such as `paddingLeft`, or `marginTop`. For
+  instance, the following will result in the `paddingTop` value being overriden,
+  and so having no effect: `sx={{ padding: { mobile: 3, desktop: 4 }, paddingTop: '8px' }}`.
 
 ## System properties
 

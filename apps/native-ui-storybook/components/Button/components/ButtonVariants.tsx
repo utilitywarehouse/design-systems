@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import {
   VStack,
@@ -6,10 +9,11 @@ import {
   ButtonGroup,
   ButtonSpinner,
   ButtonText,
-  Box,
   useMedia,
   Heading,
+  useColorMode,
 } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 import { Button as GSButton } from '@gluestack-ui/themed';
 import { AddSmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-native-icons';
 import React, { ComponentProps } from 'react';
@@ -29,33 +33,34 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
   inverted,
   _backgroundColor,
 }) => {
+  const colorMode = useColorMode();
   const validScheme = colorScheme === 'cyan' || colorScheme === 'red' || colorScheme === 'green';
   const capitalisedScheme =
     (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');
-  const { sm, xs, base } = useMedia();
-  const isMobile = base || xs || sm;
+  const media = useMedia();
+  // @ts-expect-error - gluestack issue reported
+  const { base, xs, sm } = media;
+  const isMobile: boolean = base || xs || sm || false;
 
   const textColor =
-    _backgroundColor === 'midnight' || _backgroundColor === 'purple'
-      ? colorsCommon.brandWhite
-      : colors.cyan1000;
+    colorMode === 'light'
+      ? _backgroundColor === 'midnight' || _backgroundColor === 'purple'
+        ? colorsCommon.brandWhite
+        : colors.cyan1000
+      : undefined;
 
   return (
     <VStack space="2xl">
       <Box
-        sx={
-          validScheme
-            ? undefined
-            : {
-                opacity: 0,
-                display: isMobile ? 'none' : 'flex',
-                _web: {
-                  pointerEvents: 'none',
-                },
-              }
-        }
+        {...(validScheme
+          ? {}
+          : {
+              opacity: 0,
+              display: isMobile ? 'none' : 'flex',
+              pointerEvents: 'none',
+            })}
       >
-        <Heading $light-color={textColor}>Solid - {capitalisedScheme}</Heading>
+        <Heading color={textColor}>Solid - {capitalisedScheme}</Heading>
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <Button variant="solid" colorScheme={colorScheme} size={size} inverted={inverted}>
@@ -68,7 +73,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isPressed
+              pressed
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -79,7 +84,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isDisabled
+              disabled
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -99,7 +104,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           <VariantTitle title="Loading">
             <Button
               variant="solid"
-              isDisabled
+              disabled
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
@@ -111,7 +116,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
         </ButtonGroup>
       </Box>
       <Box>
-        <Heading $light-color={textColor}>Outline - {capitalisedScheme}</Heading>
+        <Heading color={textColor}>Outline - {capitalisedScheme}</Heading>
         <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <Button variant="outline" colorScheme={colorScheme} size={size} inverted={inverted}>
@@ -124,7 +129,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isPressed
+              pressed
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -135,7 +140,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isDisabled
+              disabled
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -155,7 +160,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           <VariantTitle title="Loading">
             <Button
               variant="outline"
-              isDisabled
+              disabled
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
@@ -166,9 +171,10 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           </VariantTitle>
         </ButtonGroup>
       </Box>
-      <Box>
-        <Heading $light-color={textColor}>Ghost - {capitalisedScheme}</Heading>
-        <ButtonGroup flexDirection="column" space="md" sx={{ mb: '$4' }}>
+      <Box pb="$4">
+        <Heading color={textColor}>Ghost - {capitalisedScheme}</Heading>
+
+        <ButtonGroup flexDirection="column" space="md">
           <VariantTitle title="Default">
             <Button variant="ghost" colorScheme={colorScheme} size={size} inverted={inverted}>
               <ButtonText>Example</ButtonText>
@@ -180,7 +186,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isPressed
+              pressed
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -191,7 +197,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}
-              isDisabled
+              disabled
             >
               <ButtonText>Example</ButtonText>
             </Button>
@@ -211,7 +217,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           <VariantTitle title="Loading">
             <Button
               variant="ghost"
-              isDisabled
+              disabled
               colorScheme={colorScheme}
               size={size}
               inverted={inverted}

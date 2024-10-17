@@ -7,6 +7,7 @@ import {
 } from '@utilitywarehouse/native-ui';
 import { ChevronRightSmallIcon } from '@utilitywarehouse/react-native-icons';
 import React from 'react';
+import { Platform } from 'react-native';
 import { Path } from 'react-native-svg';
 
 interface Props {
@@ -24,15 +25,14 @@ const ViewFigmaButton: React.FC<Props> = ({ url }) => (
   <NativeUIProvider>
     <Button
       variant="ghost"
-      sx={{
+      style={{
         zIndex: 1,
-        mt: -4,
-        ':hover': {
-          backgroundColor: '$grey100',
-        },
-        _web: {
-          float: 'right',
-        },
+        marginTop: -4,
+        ...(Platform.OS === 'web'
+          ? {
+              float: 'right',
+            }
+          : {}),
       }}
       onPress={() => window.open(url)}
     >

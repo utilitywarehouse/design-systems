@@ -3,7 +3,17 @@
     "babel-preset-expo"
   ],
   "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@utilitywarehouse/native-ui": "../../packages/native-ui/src",
+          "@utilitywarehouse/native-ui/lab": "../../packages/native-ui/src/lab",
+          "@utilitywarehouse/native-ui/unstyled": "../../packages/native-ui/src/components/unstyled"
+        }
+      }
+    ],
     "@babel/plugin-proposal-export-namespace-from",
-    "react-native-reanimated/plugin"
+    "react-native-reanimated/plugin",
   ]
 }

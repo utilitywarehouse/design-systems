@@ -9,6 +9,7 @@ import {
   Center,
   NativeUIProvider,
 } from '@utilitywarehouse/native-ui';
+import Box from '@utilitywarehouse/native-ui/lab';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 import AdvancedRadioExample from './components/AdvancedRadioExample';
 import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
@@ -65,10 +66,8 @@ The Radio component presents users with predefined choices and enables them to s
             console.log(isSelected, '###');
           }}
           nativeID="Radio-1"
-        >
-          <RadioIndicator />
-          <RadioLabel>Option 1</RadioLabel>
-        </Radio>
+          label="Option 1"
+        />
         <Radio
           value="Label 2"
           aria-label="Label 2"
@@ -76,10 +75,8 @@ The Radio component presents users with predefined choices and enables them to s
             console.log(isSelected, '###');
           }}
           nativeID="Radio-2"
-        >
-          <RadioIndicator />
-          <RadioLabel>Option 2</RadioLabel>
-        </Radio>
+          label="Option 2"
+        />
       </RadioGroup>
     </Center>
   </NativeUIProvider>
@@ -99,10 +96,8 @@ const MyComponent = () => {
           console.log(isSelected, '###');
         }}
         nativeID="Radio-1"
-      >
-        <RadioIndicator />
-        <RadioLabel>Option 1</RadioLabel>
-      </Radio>
+        label="Option 1"
+      />
       <Radio
         value="Option 2"
         aria-label="Option 2"
@@ -110,10 +105,8 @@ const MyComponent = () => {
           console.log(isSelected, '###');
         }}
         nativeID="Radio-2"
-      >
-        <RadioIndicator />
-        <RadioLabel>Option 2</RadioLabel>
-      </Radio>
+        label="Option 2"
+      />
     </RadioGroup>
   );
 };
@@ -121,25 +114,11 @@ const MyComponent = () => {
 
 ## Props
 
-| Property        | Type     | Default | Description                                                                                          |
-| --------------- | -------- | ------- | ---------------------------------------------------------------------------------------------------- |
-| value           | string   | -       | The value to be used in the radio input. This is the value that will be returned on form submission. |
-| onChange        | function | -       | Function called when the state of the radio changes.                                                 |
-| isDisabled      | bool     | false   | To manually set disable to the radio.                                                                |
-| isHovered       | bool     | false   | To manually set hover to the radio.                                                                  |
-| isIndeterminate | bool     | false   | To manually set indeterminate to the radio.                                                          |
-
-#### Descendants Styling Props
-
-Props to style child components.
-
-| Sx Prop     | Description                  |
-| ----------- | ---------------------------- |
-| \_text      | Prop to style RadioLabel     |
-| \_icon      | Prop to style RadioIcon      |
-| \_indicator | Prop to style RadioIndicator |
-
-For more information, see the [Gluestack Radio component documentation](https://gluestack.io/ui/docs/components/forms/Radio).
+| Property | Type     | Default | Description                                                                                          |
+| -------- | -------- | ------- | ---------------------------------------------------------------------------------------------------- |
+| value    | string   | -       | The value to be used in the radio input. This is the value that will be returned on form submission. |
+| onChange | function | -       | Function called when the state of the radio changes.                                                 |
+| disabled | bool     | false   | To manually set disable to the radio.                                                                |
 
 ## Components
 
@@ -153,7 +132,7 @@ Contains all Indicator related layout style props and actions. It inherits all t
 
 ### `RadioIcon`
 
-Contains all Icon related layout style props and actions. It inherits all the properties of gluestack Style's `AsForwarder` component.
+Contains all Icon related layout style props and actions.
 
 ### `RadioLabel`
 
@@ -163,19 +142,11 @@ Contains all Label related layout style props and actions. It inherits all the p
 
 Contains all Group related layout style props and actions. It inherits all the properties of React Native's View component.
 
-| Property   | Type     | Default | Description                                                         |
-| ---------- | -------- | ------- | ------------------------------------------------------------------- |
-| value      | string   | -       | The value of the radio group.                                       |
-| onChange   | function | -       | The callback fired when any children Radio is checked or unchecked. |
-| isReadOnly | bool     | false   | To manually set read-only to the radio group.                       |
-
-#### Descendants Styling Props
-
-Props to style child components.
-
-| Sx Prop | Description                   |
-| ------- | ----------------------------- |
-| \_radio | Prop to style Radio Component |
+| Property | Type     | Default | Description                                                         |
+| -------- | -------- | ------- | ------------------------------------------------------------------- |
+| value    | string   | -       | The value of the radio group.                                       |
+| onChange | function | -       | The callback fired when any children Radio is checked or unchecked. |
+| disabled | bool     | -       | To manually set disable to the radio group.                         |
 
 ## Variants
 
@@ -195,70 +166,81 @@ In this example, we will create a custom Radio component with a badge and bullet
 </Canvas>
 
 ```tsx
+import React from 'react';
 import {
   Badge,
-  BadgeText,
-  Box,
+  createStyleSheet,
+  Heading,
   Radio,
   RadioGroup,
   RadioIcon,
   RadioIndicator,
   Text,
+  useStyles,
+  type RadioProps as NativeUIRadioProps,
 } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
-import React from 'react';
 
-interface RadioProps extends React.ComponentProps<typeof Radio> {}
+interface RadioProps {
+  currentValue: string;
+}
 
-const CustomRadio: React.FC<RadioProps> = ({ children, ...props }) => (
-  <Radio
-    sx={{
-      borderWidth: 2,
-      borderColor: '$grey500',
-      borderRadius: '$xl',
-      p: '$4',
-      ':checked': {
-        borderColor: '$green500',
-      },
-      _dark: {
-        borderColor: '$grey700',
-        ':checked': {
-          borderColor: '$darkGreen700',
+const stylesheet = createStyleSheet(({ colorMode, colors, radii, borderWidths, space }) => ({
+  radio: {
+    borderWidth: borderWidths[2],
+    borderColor: colorMode === 'light' ? colors.grey500 : colors.grey700,
+    borderRadius: radii.xl,
+    padding: space[4],
+    variants: {
+      checked: {
+        true: {
+          borderColor: colorMode === 'light' ? colors.green500 : colors.green700,
         },
       },
-    }}
-    {...props}
-  >
-    <Box
-      sx={{
-        flexDirection: 'row',
-        flex: 1,
-      }}
-    >
-      <Box sx={{ pr: '$4', flex: 1 }}>{children}</Box>
-      <RadioIndicator
-        sx={{
-          ':checked': {
-            backgroundColor: '$green500',
-            borderColor: '$green500',
-          },
+    },
+  },
+  indicator: {
+    variants: {
+      checked: {
+        true: {
+          backgroundColor: colorMode === 'light' ? colors.green500 : colors.green700,
+          borderColor: colorMode === 'light' ? colors.green500 : colors.green700,
+        },
+      },
+    },
+  },
+  icon: {
+    color: colorMode === 'light' ? colors.brandWhite : colors.grey50,
+  },
+  heading: {
+    marginBottom: space[2],
+  },
+  badge: {
+    marginRight: space[2],
+    alignSelf: 'flex-end',
+  },
+}));
 
-          _dark: {
-            ':checked': {
-              backgroundColor: '$darkGreen700',
-              borderColor: '$darkGreen700',
-            },
-          },
-        }}
-      >
-        <RadioIcon
-          as={TickSmallIcon}
-          sx={{ color: '$brandWhite', _dark: { color: '$darkGrey50' } }}
-        />
-      </RadioIndicator>
-    </Box>
-  </Radio>
-);
+const CustomRadio: React.FC<RadioProps & Omit<NativeUIRadioProps, 'label'>> = ({
+  children,
+  currentValue,
+  ...props
+}) => {
+  const { styles } = useStyles(stylesheet, { checked: currentValue === props.value });
+  return (
+    <Radio style={styles.radio} {...props}>
+      <Box flexDirection="row" flex={1}>
+        <Box pr="$4" flex={1}>
+          {children}
+        </Box>
+        <RadioIndicator style={styles.indicator}>
+          <RadioIcon as={TickSmallIcon} style={styles.icon} />
+        </RadioIndicator>
+      </Box>
+    </Radio>
+  );
+};
 
 const BulletListItem = ({ children }: { children: React.ReactNode }) => (
   <Text>
@@ -267,13 +249,17 @@ const BulletListItem = ({ children }: { children: React.ReactNode }) => (
 );
 
 const BulletList = ({ children }: { children: React.ReactNode }) => (
-  <Box sx={{ pl: '$2', gap: '$2' }}>{children}</Box>
+  <Box pl="$2" gap="$2">
+    {children}
+  </Box>
 );
 
 const AdvancedRadioExample: React.FC = () => {
   const [value, setValue] = React.useState('Option 1');
 
   const handleChange = (val: string) => setValue(val);
+
+  const { styles } = useStyles(stylesheet);
 
   return (
     <RadioGroup onChange={handleChange} value={value}>
@@ -282,14 +268,14 @@ const AdvancedRadioExample: React.FC = () => {
           colorScheme={value === 'Option 1' ? 'green' : 'grey'}
           strong
           borderless
-          sx={{ mr: '$2', alignSelf: 'flex-end' }}
+          style={styles.badge}
         >
-          <BadgeText>Recommended</BadgeText>
+          Recommended
         </Badge>
-        <CustomRadio value="Option 1">
-          <Text sx={{ fontFamily: '$heading', fontWeight: '$bold', mb: '$2' }}>
+        <CustomRadio value="Option 1" currentValue={value}>
+          <Heading size="h4" style={styles.heading}>
             Instant bank transfer
-          </Text>
+          </Heading>
           <BulletList>
             <BulletListItem>Receive your money instantly</BulletListItem>
             <BulletListItem>No fees</BulletListItem>
@@ -297,10 +283,10 @@ const AdvancedRadioExample: React.FC = () => {
           </BulletList>
         </CustomRadio>
       </Box>
-      <CustomRadio value="Option 2">
-        <Text sx={{ fontFamily: '$heading', fontWeight: '$bold', mb: '$2' }}>
+      <CustomRadio value="Option 2" currentValue={value}>
+        <Heading size="h4" style={styles.heading}>
           Debit card payment
-        </Text>
+        </Heading>
         <BulletList>
           <BulletListItem>£0.35 fee</BulletListItem>
           <BulletListItem>Available 24/7</BulletListItem>

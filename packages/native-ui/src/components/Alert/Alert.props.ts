@@ -1,10 +1,9 @@
-import type { Alert } from '@gluestack-ui/themed';
-import type { ComponentProps, PropsWithChildren } from 'react';
+import type { ViewProps } from 'react-native';
 
 /**
  * Props for the Alert component.
  */
-interface AlertWithoutChildrenProps {
+interface AlertWithoutChildrenProps extends ViewProps {
   /**
    * The text content of the alert.
    */
@@ -41,12 +40,18 @@ interface AlertWithoutChildrenProps {
    * Callback function for when the alert is closed.
    */
   onClose?: () => void;
+  children?: never;
 }
 
 interface AlertWithChildrenProps
-  extends PropsWithChildren<Omit<AlertWithoutChildrenProps, 'text'>> {
-  text?: string;
+  extends ViewProps,
+    Omit<AlertWithoutChildrenProps, 'text' | 'children'> {
+  text?: never;
+  onPressLink?: never;
+  onPressIconButton?: never;
+  onClose?: never;
+  link?: never;
+  title?: never;
 }
 
-export type AlertProps = (AlertWithChildrenProps | AlertWithoutChildrenProps) &
-  ComponentProps<typeof Alert>;
+export type AlertProps = AlertWithChildrenProps | AlertWithoutChildrenProps;

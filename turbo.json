@@ -1,6 +1,6 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "pipeline": {
+  "tasks": {
     "build": {
       "outputs": ["dist/**", "storybook-static/**"],
       "dependsOn": ["^build"]
@@ -10,8 +10,7 @@
       "dependsOn": ["^build"]
     },
     "checks": {
-      "outputs": ["dist/**"],
-      "dependsOn": ["^format", "^build", "^lint"]
+      "outputs": ["dist/**"]
     },
     "format": {
       "outputs": ["src/**", "raw/**"]
@@ -20,7 +19,8 @@
       "outputs": []
     },
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "dependsOn": ["^build"]
     },
     "lint:fix": {
       "outputs": []

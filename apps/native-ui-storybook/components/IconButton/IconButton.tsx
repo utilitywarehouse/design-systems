@@ -1,21 +1,31 @@
 import { Box, IconButton } from '@utilitywarehouse/native-ui';
-import React from 'react';
+import React, { ComponentType } from 'react';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 import { ScrollWrap } from '../../docs/components';
 
-const IconButtonBasic: StoryFn = ({
+const IconButtonBasic: StoryFn<{
+  variant: 'solid' | 'outline' | 'ghost';
+  colorScheme: 'cyan' | 'red' | 'green' | 'grey' | 'gold';
+  disabled: boolean;
+  icon: string;
+  size: 'x-small' | 'small' | 'medium';
+  loading: boolean;
+  inverted: boolean;
+  _backgroundColor: 'default' | 'midnight' | 'purple';
+}> = ({
   variant,
   colorScheme,
-  isDisabled,
+  disabled,
   icon: _icon,
   size,
   loading,
   inverted,
   _backgroundColor,
-}: any) => {
+}) => {
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
   // @ts-expect-error - This is a playground
-  const icon = _icon === 'none' ? undefined : Icons[_icon];
+  const icon: ComponentType = _icon === 'none' ? undefined : Icons[_icon];
   return (
     <Box height={48} width="100%">
       <ScrollWrap backgroundColor={_backgroundColor}>
@@ -23,7 +33,7 @@ const IconButtonBasic: StoryFn = ({
           icon={icon}
           variant={variant}
           colorScheme={colorScheme}
-          isDisabled={isDisabled}
+          disabled={disabled}
           loading={loading}
           size={size}
           inverted={inverted}
@@ -59,7 +69,7 @@ IconButtonBasic.argTypes = {
     control: 'select',
     description: 'The color scheme of the button.',
   },
-  isDisabled: {
+  disabled: {
     type: 'boolean',
     control: 'boolean',
     description: 'To manually set disable to the button.',
@@ -84,11 +94,9 @@ IconButtonBasic.args = {
   colorScheme: 'cyan',
   icon: 'AddMediumIcon',
   loading: false,
-  isDisabled: false,
+  disabled: false,
   inverted: false,
   _backgroundColor: 'default',
 };
 
 export default IconButtonBasic;
-
-export { IconButton };

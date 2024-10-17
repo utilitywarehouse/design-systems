@@ -6,17 +6,8 @@ export const RadioIndicator = createStyle({
   bg: 'transparent',
   borderColor: '$grey500',
   borderWidth: 2,
-  borderRadius: 999,
-  _web: {
-    ':focusVisible': {
-      outlineWidth: 2,
-      outlineColor: '$cyan700',
-      outlineStyle: 'solid',
-      _dark: {
-        outlineColor: '$darkCyan500',
-      },
-    },
-  },
+  borderRadius: '$full',
+
   ':checked': {
     borderColor: '$cyan500',
     bg: 'transparent',

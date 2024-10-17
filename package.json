@@ -17,7 +17,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "patch-package": "^8.0.0",
     "prettier": "^3.2.5",
-    "turbo": "^1.9.3",
+    "turbo": "^2.0.12",
     "typescript": "^5"
   },
   "scripts": {
@@ -28,15 +28,15 @@
     "preinstall": "npx only-allow pnpm",
     "format": "turbo run format",
     "format:ci": "turbo run format:ci",
-    "lint": "turbo run lint",
-    "lint:fix": "turbo run lint:fix",
+    "lint": "turbo run lint --filter='./packages/*'",
+    "lint:fix": "turbo run lint:fix --filter='./packages/*'",
     "clean": "pnpm -r --stream clean && rm -rf node_modules",
     "dev": "turbo run dev --no-cache --parallel --continue --filter='./packages/*'",
     "changeset": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
     "ci:publish": "NODE_OPTIONS=\"--max_old_space_size=4096\" pnpm run build && changeset publish",
-    "checks": "turbo run format lint:fix build",
-    "checks:ci": "turbo run format:ci lint build",
+    "checks": "turbo run format lint:fix build --filter='./packages/*'",
+    "checks:ci": "turbo run format:ci lint build --filter='./packages/*'",
     "postinstall": "patch-package"
   },
   "workspaces": [
@@ -49,9 +49,11 @@
   "resolutions": {
     "react-docgen-typescript": "2.2.2"
   },
+  "packageManager": "pnpm@8.6.3",
   "pnpm": {
     "overrides": {
-      "react-docgen-typescript": "2.2.2"
+      "react-docgen-typescript": "2.2.2",
+      "react": "18.2.0"
     },
     "peerDependencyRules": {
       "ignoreMissing": [

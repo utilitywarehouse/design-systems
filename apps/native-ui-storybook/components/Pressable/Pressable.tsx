@@ -1,30 +1,23 @@
 import React from 'react';
-import { Center, Pressable, Text } from '@utilitywarehouse/native-ui';
+import { Center, Pressable, Text, useStyles } from '@utilitywarehouse/native-ui';
 
-const PressableBasic = ({ ...props }: any) => {
+const PressableBasic = () => {
+  const {
+    theme: { colors },
+  } = useStyles();
   return (
-    <Pressable
-      // eslint-disable-next-line no-console
-      onPress={() => console.log('Hello')}
-      {...props}
-      sx={{ h: 100, w: 200 }}
-    >
+    <Pressable onPress={() => console.log('Hello')} style={{ height: 100, width: 200 }}>
       <Center
-        sx={{
-          h: '100%',
-          w: '100%',
-          bg: '$cyan500',
+        style={{
+          height: '100%',
+          width: '100%',
+          backgroundColor: colors.cyan500,
         }}
       >
-        <Text sx={{ color: '$white' }}>PRESSABLE</Text>
+        <Text style={{ color: colors.brandWhite }}>PRESSABLE</Text>
       </Center>
     </Pressable>
   );
 };
 
-PressableBasic.description =
-  'This is a basic Pressable component example. Pressable components are used to show a loading state of a component or page.';
-
 export default PressableBasic;
-
-export { Pressable, Center };

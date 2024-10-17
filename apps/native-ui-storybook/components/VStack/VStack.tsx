@@ -1,26 +1,25 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
-import { VStack, Box } from '@utilitywarehouse/native-ui';
+import { VStack } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
+import { StoryFn } from '@storybook/react';
 
-const VStackBasic = ({ space, reversed, ...props }: any) => {
+const VStackBasic: StoryFn<{
+  space: ComponentProps<typeof VStack>['space'];
+  reversed: boolean;
+}> = ({ space, reversed, ...props }) => {
   return (
     <VStack
       space={space}
-      sx={{ justifyContent: 'center', alignItems: 'center' }}
+      style={{ justifyContent: 'center', alignItems: 'center' }}
       reversed={reversed}
       {...props}
     >
-      <Box sx={{ w: 100, h: 100, rounded: '$sm', bg: '$cyan300' }} />
-      <Box sx={{ w: 100, h: 100, rounded: '$sm', bg: '$cyan400' }} />
-      <Box sx={{ w: 100, h: 100, rounded: '$sm', bg: '$cyan500' }} />
-      <Box sx={{ w: 100, h: 100, rounded: '$sm', bg: '$cyan600' }} />
+      <Box w={100} h={100} bg="$cyan300" />
+      <Box w={100} h={100} bg="$cyan400" />
+      <Box w={100} h={100} bg="$cyan500" />
+      <Box w={100} h={100} bg="$cyan600" />
     </VStack>
   );
 };
-
-VStackBasic.description =
-  'This is a basic VStack component example. VStack is a primitive component to layout its children vertically.';
-
 export default VStackBasic;
-
-export { Box, VStack };

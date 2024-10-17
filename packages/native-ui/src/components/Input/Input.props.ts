@@ -1,12 +1,7 @@
-import type { Input } from '@gluestack-ui/themed';
-import type { ComponentProps } from 'react';
+import type { ComponentType } from 'react';
+import type { TextInputProps, ViewProps } from 'react-native';
 
-export interface InputComponentProps extends ComponentProps<typeof Input> {}
-
-/**
- * Props for the Input component.
- */
-interface InputProps extends Omit<InputComponentProps, 'isInvalid'> {
+export interface InputBaseProps {
   /**
    * The show validation icon when validationStatus is 'valid' or 'invalid'.
    * @default true
@@ -26,7 +21,7 @@ interface InputProps extends Omit<InputComponentProps, 'isInvalid'> {
    * <Input disabled={true} />
    * ```
    */
-  disabled?: InputComponentProps['isDisabled'];
+  disabled?: boolean;
   /**
    * The validation status of the Input component.
    *
@@ -37,6 +32,27 @@ interface InputProps extends Omit<InputComponentProps, 'isInvalid'> {
    * ```
    */
   validationStatus?: 'initial' | 'valid' | 'invalid';
+  readonly?: boolean;
+  focused?: boolean;
 }
+
+export interface InputWithChildrenProps extends InputBaseProps, ViewProps {
+  children: React.ReactNode;
+  leadingIcon?: never;
+  trailingIcon?: never;
+}
+
+interface InputWithoutChildrenProps extends InputBaseProps, TextInputProps {
+  children?: never;
+  leadingIcon?: ComponentType;
+  trailingIcon?: ComponentType;
+}
+
+/**
+ * Props for the Input component.
+ */
+type InputProps = InputWithChildrenProps | InputWithoutChildrenProps;
+
+export interface InputContextValue extends InputBaseProps {}
 
 export default InputProps;

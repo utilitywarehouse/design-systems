@@ -1,17 +1,13 @@
-import { createTheme, Theme as MuiTheme } from '@mui/material/styles';
-import { baseTypographyTheme, legacyTypographyThemeOverrides } from '../Typography';
-import { htmlFontSize, pxToRem, spacing } from '../utils';
-import { breakpoints, fonts, fontWeights } from '../tokens';
+import { Theme as MuiTheme, createTheme } from '@mui/material/styles';
+
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+
+import { breakpoints, fontWeights, fonts } from '../tokens';
+import { htmlFontSize, pxToRem, spacing } from '../utils';
 
 const theme: MuiTheme = createTheme({
   breakpoints: { values: breakpoints },
   spacing,
-  components: {
-    MuiTypography: {
-      styleOverrides: legacyTypographyThemeOverrides,
-    },
-  },
 });
 
 theme.typography = {
@@ -20,20 +16,14 @@ theme.typography = {
   htmlFontSize,
   fontFamily: fonts,
   fontWeights,
-  ...baseTypographyTheme,
 };
 
 export const customPalette = {
   colorsCommon,
   colors,
-  text: {
-    primary: colorsCommon.brandMidnight, // TODO: remove when refactor Button
-  },
 };
 
 theme.palette = {
-  // TODO: we have to do this because the mui/material Button component relies on certain palette properties.
-  // I'm guessing we can remove this when we refactor to use the unstyled mui/base Button
   ...theme.palette,
   ...customPalette,
 };

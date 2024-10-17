@@ -1,6 +1,8 @@
 import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
 import * as BadgeStories from './Badge.stories';
-import { Badge, BadgeText, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { Badge, BadgeText, BadgeIcon, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
+
 import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
 
 <BackToTopButton />
@@ -17,6 +19,7 @@ Use the `Badge` component to draw attention to another interface element or to p
 - [Usage](#usage)
 - [Props](#props)
 - [Variants](#variants)
+- [Advanced Usage](#advanced-usage)
 
 ## Playground
 
@@ -37,23 +40,15 @@ Badge is a stateless component, e.g. it has no Pressed, Disabled, Active states.
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Badge colorScheme="green">
-        <BadgeText>Ready</BadgeText>
-      </Badge>
+      <Badge colorScheme="green">Ready</Badge>
     </Center>
   </NativeUIProvider>
 </Canvas>
 
 ```tsx
-import { Badge, BadgeText, Center } from '@utilitywarehouse/native-ui';
+import { Badge } from '@utilitywarehouse/native-ui';
 
-const MyComponent = () => (
-  <Center>
-    <Badge colorScheme="green">
-      <BadgeText>Ready</BadgeText>
-    </Badge>
-  </Center>
-);
+const MyComponent = () => <Badge colorScheme="green">Ready</Badge>;
 ```
 
 ## Props
@@ -65,10 +60,35 @@ const MyComponent = () => (
 | `borderless`  | `boolean`            | Whether to remove the bottom border radius from the badge. | `false` |
 | `size`        | `'small' \| 'large'` | The size of the badge.                                     | `md`    |
 
-For more information, see the [Gluestack Badge component documentation](https://gluestack.io/ui/docs/components/data-display/badge).
-
 ## Variants
 
 The `Badge` component has different variants to style the badge.
 
 <Canvas of={BadgeStories.Variants} />
+
+## Advanced Usage
+
+Although not recommended, the `Badge` component can be used to create more complex UI with the internal parts of the badge.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Badge colorScheme="cyan">
+        <BadgeIcon as={AddSmallIcon} />
+        <BadgeText>Add</BadgeText>
+      </Badge>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Badge, BadgeIcon, BadgeText } from '@utilitywarehouse/native-ui';
+import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => (
+  <Badge colorScheme="cyan">
+    <BadgeIcon as={AddSmallIcon} />
+    <BadgeText>Add</BadgeText>
+  </Badge>
+);
+```

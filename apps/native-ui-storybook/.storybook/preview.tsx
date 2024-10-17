@@ -1,6 +1,7 @@
 import type { Preview, Decorator } from '@storybook/react';
 import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
-import { Box, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 import { PlatformContextProvider } from '../contexts/PlatformContext';
 import { useStoryContext, useArgs, useGlobals, getQueryParams } from '@storybook/preview-api';
 import '../assets/style.css';
@@ -11,9 +12,10 @@ import { UPDATE_GLOBALS } from '@storybook/core-events';
 import { DocsContainer as BaseContainer, DocsContainerProps } from '@storybook/blocks';
 import { themeDark, themeLight } from './themes';
 import { Analytics } from '@vercel/analytics/react';
+import { Platform } from 'react-native';
 
-const lightColour: string = '#fff';
-const darkColour: string = '#1d1d1d';
+const lightColour = '#fff';
+const darkColour = '#1d1d1d';
 
 export const decorators: Decorator[] = [
   Story => {
@@ -33,19 +35,20 @@ export const decorators: Decorator[] = [
           colourMode={colorScheme}
           platform={globals.device}
         >
+          {/* @ts-expect-error */}
           <Box
-            sx={{
-              bg: colorScheme === 'light' ? lightColour : darkColour,
-              p: device !== 'web' ? 0 : 20,
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              _web: {
-                width: '100vw',
-                height: '100vh',
-                zIndex: device !== 'web' ? -1 : 0,
-              },
-            }}
+            bg={colorScheme === 'light' ? lightColour : darkColour}
+            p={device !== 'web' ? 0 : 20}
+            position={'absolute'}
+            top={0}
+            left={0}
+            {...(Platform.OS === 'web'
+              ? {
+                  width: '100vw',
+                  height: '100vh',
+                  zIndex: device !== 'web' ? -1 : 0,
+                }
+              : {})}
           >
             <Center>
               <StoryWrap>
@@ -134,12 +137,11 @@ const preview: Preview = {
               'Styling',
               [
                 'Overview',
-                'Utility and SX props',
-                'State',
+                'Theme Tokens',
+                'createStyleSheet',
+                'useStyles',
+                'Dynamic Functions',
                 'Color Mode',
-                'Responsive',
-                'Descendants',
-                'Platform Specific',
                 'Fonts',
               ],
             ],
@@ -157,13 +159,14 @@ const preview: Preview = {
               'Icons',
               'Input',
               'IconButton',
+              'List',
               'Pressable',
               'Radio',
+              'Skeleton',
               'Spinner',
               'Text',
               'VStack',
               'Lab',
-              'unstyled',
             ],
           ],
           'Colour System',

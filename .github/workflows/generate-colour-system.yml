@@ -40,9 +40,10 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Generate colour system
+        working-directory: ./packages/colour-system
         env:
           FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
-        run: pnpm generate
+        run: pnpm run generate && pnpm run format
 
       - name: Add changeset
         run: |

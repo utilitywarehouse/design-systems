@@ -1,6 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import {
-  Box,
   Button,
   ButtonText,
   HStack,
@@ -10,6 +9,7 @@ import {
   Text,
   VStack,
 } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 import {
   Actionsheet,
   ActionsheetBackdrop,
@@ -22,7 +22,7 @@ import {
 } from '@utilitywarehouse/native-ui/lab';
 import React from 'react';
 
-const ActionsheetBasic: StoryFn = ({ ...props }: any) => {
+const ActionsheetBasic: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
@@ -66,7 +66,7 @@ const ActionsheetMeta: Meta<typeof ActionsheetBasic> = {
   args: {},
 };
 
-const KeyboardAvoidWithSnap: StoryFn = ({ ...props }: any) => {
+const KeyboardAvoidWithSnap: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
@@ -74,10 +74,11 @@ const KeyboardAvoidWithSnap: StoryFn = ({ ...props }: any) => {
       <Button onPress={handleClose}>
         <ButtonText>Open</ButtonText>
       </Button>
+
       <Actionsheet isOpen={showActionsheet} onClose={handleClose} snapPoints={[50]}>
         <KeyboardAvoidingView
           behavior="position"
-          sx={{
+          style={{
             position: 'relative',
             flex: 1,
             justifyContent: 'flex-end',
@@ -92,7 +93,7 @@ const KeyboardAvoidWithSnap: StoryFn = ({ ...props }: any) => {
               <HStack justifyContent="center" alignItems="center" space="md">
                 <Box
                   w={50}
-                  h="$full"
+                  h="100%"
                   px="$2"
                   borderWidth={1}
                   borderStyle="solid"
@@ -106,7 +107,7 @@ const KeyboardAvoidWithSnap: StoryFn = ({ ...props }: any) => {
                   />
                 </Box>
                 <VStack flex={1}>
-                  <Text fontWeight="$bold">Mastercard</Text>
+                  <Text bold>Mastercard</Text>
                   <Text>Card ending in 2345</Text>
                 </VStack>
               </HStack>
@@ -118,7 +119,7 @@ const KeyboardAvoidWithSnap: StoryFn = ({ ...props }: any) => {
   );
 };
 
-const WithScrollView: StoryFn = ({ ...props }: any) => {
+const WithScrollView: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
@@ -129,7 +130,7 @@ const WithScrollView: StoryFn = ({ ...props }: any) => {
       <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
         <KeyboardAvoidingView
           behavior="position"
-          sx={{
+          style={{
             position: 'relative',
             flex: 1,
             justifyContent: 'flex-end',
@@ -141,15 +142,17 @@ const WithScrollView: StoryFn = ({ ...props }: any) => {
               <ActionsheetDragIndicator />
             </ActionsheetDragIndicatorWrapper>
             <ActionsheetScrollView>
-              <Heading textAlign="center" mb="$4">
-                Out of range reading
-              </Heading>
-              <Text mb="$6">
-                The number that was entered was too high or too low for what we'd expect based on
-                past readings and your typical energy usage. This normally suggests an error when
-                the reading was submitted. In some cases, the reading may still be used after
-                investigation.
-              </Text>
+              <Box mb="$4">
+                <Heading textAlign="center">Out of range reading</Heading>
+              </Box>
+              <Box mb="$6">
+                <Text>
+                  The number that was entered was too high or too low for what we&apos;d expect
+                  based on past readings and your typical energy usage. This normally suggests an
+                  error when the reading was submitted. In some cases, the reading may still be used
+                  after investigation.
+                </Text>
+              </Box>
               <Button onPress={handleClose}>
                 <ButtonText>Close</ButtonText>
               </Button>
