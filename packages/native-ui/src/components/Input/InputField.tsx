@@ -9,7 +9,7 @@ const InputField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
     const {
       styles,
       theme: { colors },
-    } = useStyles(stylesheet, { focused });
+    } = useStyles(stylesheet, { focused, disabled });
 
     return (
       <TextInput
@@ -42,6 +42,11 @@ const stylesheet = createStyleSheet(({ radii, fontSizes, colors, fontWeights, fo
       focused: {
         true: {
           borderWidth: 0,
+        },
+      },
+      disabled: {
+        true: {
+          color: colors.grey400,
         },
       },
     },
