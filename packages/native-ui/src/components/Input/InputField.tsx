@@ -4,7 +4,7 @@ import { TextInputProps, TextInput } from 'react-native';
 import { useInputContext } from './Input.context';
 
 const InputField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
-  ({ children, style, ...props }, ref) => {
+  ({ style, ...props }, ref) => {
     const { disabled, focused = false } = useInputContext();
     const {
       styles,
