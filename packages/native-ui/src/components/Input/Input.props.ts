@@ -1,11 +1,7 @@
-import type { ViewProps } from 'react-native';
+import type { ComponentType } from 'react';
+import type { TextInputProps, ViewProps } from 'react-native';
 
-export interface InputComponentProps extends ViewProps {}
-
-/**
- * Props for the Input component.
- */
-interface InputProps extends Omit<InputComponentProps, 'isInvalid'> {
+export interface InputBaseProps {
   /**
    * The show validation icon when validationStatus is 'valid' or 'invalid'.
    * @default true
@@ -40,10 +36,23 @@ interface InputProps extends Omit<InputComponentProps, 'isInvalid'> {
   focused?: boolean;
 }
 
-export interface InputContextValue
-  extends Pick<
-    InputProps,
-    'validationStatus' | 'showValidationIcon' | 'disabled' | 'readonly' | 'focused'
-  > {}
+export interface InputWithChildrenProps extends InputBaseProps, ViewProps {
+  children: React.ReactNode;
+  leadingIcon?: never;
+  trailingIcon?: never;
+}
+
+interface InputWithoutChildrenProps extends InputBaseProps, TextInputProps {
+  children?: never;
+  leadingIcon?: ComponentType;
+  trailingIcon?: ComponentType;
+}
+
+/**
+ * Props for the Input component.
+ */
+type InputProps = InputWithChildrenProps | InputWithoutChildrenProps;
+
+export interface InputContextValue extends InputBaseProps {}
 
 export default InputProps;

@@ -26,18 +26,36 @@ const Input: React.FC<InputProps> = ({
   disabled,
   focused,
   readonly,
+  leadingIcon,
+  trailingIcon,
   ...props
 }) => {
   return (
     <InputComponent
-      {...props}
+      {...(children ? props : {})}
       validationStatus={validationStatus}
       isInvalid={validationStatus === 'invalid'}
       isReadOnly={readonly}
       isDisabled={disabled}
       isFocused={focused}
     >
-      {children}
+      {children ? (
+        children
+      ) : (
+        <>
+          {leadingIcon && (
+            <InputSlot>
+              <InputIcon as={leadingIcon} />
+            </InputSlot>
+          )}
+          <InputField {...props} />
+          {trailingIcon && (
+            <InputSlot>
+              <InputIcon as={trailingIcon} />
+            </InputSlot>
+          )}
+        </>
+      )}
       {showValidationIcon && validationStatus !== 'initial' && (
         <InputSlot>
           <InputValidationIcon />

@@ -7,9 +7,11 @@ import {
   InputSlot,
   Center,
   NativeUIProvider,
+  Pressable,
 } from '@utilitywarehouse/native-ui';
 import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
+import { AdvancedExample } from './components';
 
 <Meta of={Stories} />
 
@@ -28,6 +30,7 @@ The input component is a text field that allows users to enter text, numbers, or
   - [`InputField`](#inputfield)
   - [`InputIcon`](#inputicon)
   - [`InputSlot`](#inputslot)
+- [Advanced Usage](#advanced-usage)
 - [Variants](#variants)
 - [Accessibility](#accessibility)
 
@@ -39,23 +42,21 @@ The input component is a text field that allows users to enter text, numbers, or
 
 ## Usage
 
-> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
-
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Input onChange={() => console.log('###')}>
+      <Input>
         <InputSlot>
           <InputIcon as={EmailMediumIcon} />
         </InputSlot>
-        <InputField placeholder="Placeholder" />
+        <InputField placeholder="Placeholder" onChange={() => console.log('###')} />
       </Input>
     </Center>
   </NativeUIProvider>
 </Canvas>
 
 ```tsx
-import { Input, InputField, InputIcon, InputSlot } from '@utilitywarehouse/native-ui';
+import { Input } from '@utilitywarehouse/native-ui';
 import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
 
 const MyComponent = () => {
@@ -64,12 +65,12 @@ const MyComponent = () => {
     setValue(e.target.value);
   };
   return (
-    <Input onChange={handleChange} value={value}>
-      <InputSlot>
-        <InputIcon as={EmailMediumIcon} />
-      </InputSlot>
-      <InputField placeholder="Placeholder" />
-    </Input>
+    <Input
+      onChange={handleChange}
+      value={value}
+      placeholder="Placeholder"
+      leadingIcon={EmailMediumIcon}
+    />
   );
 };
 ```
@@ -78,33 +79,39 @@ const MyComponent = () => {
 
 ### `Input`
 
-| Prop               | Type                               | Default     | Description                          |
-| ------------------ | ---------------------------------- | ----------- | ------------------------------------ |
-| validationStatus   | `'initial' \| 'valid' \| 'invalid` | `'initial'` | The validation status of the input.  |
-| showValidationIcon | boolean                            | false       | Whether to show the validation icon. |
-| disabled           | boolean                            | false       | Disables the input.                  |
-| readonly           | boolean                            | false       | Makes the input read-only.           |
-| focused            | boolean                            | false       | Sets focus on the input.             |
+When using the component with basic usage the `Input` inherits all of the React Native [`TextInput` props](https://reactnative.dev/docs/textinput).
+Otherwise when used with children including the `InputField`, `InputSlot` and `InputIcon` components, the `Input` component inherits
+all of the React Native [`View` props](https://reactnative.dev/docs/view).
 
-#### Descendants Styling Props
+| Prop               | Type                               | Default     | Description                                                                                                                                                             |
+| ------------------ | ---------------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| validationStatus   | `'initial' \| 'valid' \| 'invalid` | `'initial'` | The validation status of the input.                                                                                                                                     |
+| showValidationIcon | boolean                            | `false`     | Whether to show the validation icon.                                                                                                                                    |
+| disabled           | boolean                            | `false`     | Disables the input.                                                                                                                                                     |
+| readonly           | boolean                            | `false`     | Makes the input read-only.                                                                                                                                              |
+| focused            | boolean                            | `false`     | Sets focus on the input.                                                                                                                                                |
+| leadingIcon        | React.ComponentType                | `-`         | The leading icon of the input. **(Only to be used if the input has no children)**                                                                                       |
+| trailingIcon       | React.ComponentType                | `-`         | The trailing icon of the input. **(Only to be used if the input has no children)**                                                                                      |
+| value              | string                             | `-`         | The value of the input. **(Only to be used if the input has no children)**                                                                                              |
+| onChange           | function                           | `-`         | Callback function that is triggered when the input value changes. **(Only to be used if the input has no children)** **(Only to be used if the input has no children)** |
+| onBlur             | function                           | `-`         | Callback function that is triggered when the input loses focus. **(Only to be used if the input has no children)**                                                      |
+| onFocus            | function                           | `-`         | Callback function that is triggered when the input gains focus. **(Only to be used if the input has no children)**                                                      |
+| placeholder        | string                             | `-`         | The placeholder text for the input. **(Only to be used if the input has no children)**                                                                                  |
+| type               | `'text' \| 'password'`             | `'text'`    | The type of the input. **(Only to be used if the input has no children)**                                                                                               |
 
-Props to style child components.
-
-| Sx Prop          | Description                       |
-| ---------------- | --------------------------------- |
-| \_input          | Prop to style Input               |
-| \_icon           | Prop to style InputIcon           |
-| \_validationIcon | Prop to style InputValidationIcon |
+If the `leadingIcon` or `trailingIcon` props are used, the `Input` component should not have any children.
 
 ### `InputField`
 
+The `InputField` inherits all of the React Native [`TextInput` props](https://reactnative.dev/docs/textinput).
+
 | Prop        | Type                   | Default  | Description                                                       |
 | ----------- | ---------------------- | -------- | ----------------------------------------------------------------- |
-| value       | string                 |          | The value of the input.                                           |
-| onChange    | function               |          | Callback function that is triggered when the input value changes. |
-| onBlur      | function               |          | Callback function that is triggered when the input loses focus.   |
-| onFocus     | function               |          | Callback function that is triggered when the input gains focus.   |
-| placeholder | string                 |          | The placeholder text for the input.                               |
+| value       | string                 | `-`      | The value of the input.                                           |
+| onChange    | function               | `-`      | Callback function that is triggered when the input value changes. |
+| onBlur      | function               | `-`      | Callback function that is triggered when the input loses focus.   |
+| onFocus     | function               | `-`      | Callback function that is triggered when the input gains focus.   |
+| placeholder | string                 | `-`      | The placeholder text for the input.                               |
 | type        | `'text' \| 'password'` | `'text'` | The type of the input.                                            |
 
 ### `InputIcon`
@@ -118,6 +125,58 @@ Props to style child components.
 | Prop | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | -    | -    | -       | -           |
+
+## Advanced Usage
+
+The `Input` component can be used with the `InputField`, `InputSlot` and `InputIcon` components to create a custom input field.
+
+<Canvas>
+  <Center>
+    <AdvancedExample />
+  </Center>
+</Canvas>
+
+```tsx
+import { Input, InputField, InputIcon, InputSlot, Pressable } from '@utilitywarehouse/native-ui';
+import {
+  EmailMediumIcon,
+  EyeMediumIcon,
+  EyeOffMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+import { useState } from 'react';
+import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
+
+const AdvancedExample = () => {
+  const [value, setValue] = useState<string>('');
+  const [fieldType, setFieldType] = useState<'password' | 'text'>('password');
+  const handleChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
+    setValue(e.nativeEvent.text);
+  };
+  const handleToggleFieldType = () => {
+    setFieldType(fieldType === 'password' ? 'text' : 'password');
+  };
+  return (
+    <Input>
+      <InputSlot>
+        <InputIcon as={EmailMediumIcon} />
+      </InputSlot>
+      <InputField
+        onChange={handleChange}
+        type={fieldType}
+        value={value}
+        placeholder="Secret email address"
+      />
+      <InputSlot>
+        <Pressable onPress={handleToggleFieldType}>
+          <InputIcon as={fieldType === 'password' ? EyeMediumIcon : EyeOffMediumIcon} />
+        </Pressable>
+      </InputSlot>
+    </Input>
+  );
+};
+
+export default AdvancedExample;
+```
 
 ## Variants
 

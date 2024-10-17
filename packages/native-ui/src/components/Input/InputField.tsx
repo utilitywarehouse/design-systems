@@ -1,6 +1,6 @@
 import React, { ElementRef, forwardRef } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { TextInputProps, TextInput, Platform } from 'react-native';
+import { TextInputProps, TextInput } from 'react-native';
 import { useInputContext } from './Input.context';
 
 const InputField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
@@ -38,7 +38,6 @@ const stylesheet = createStyleSheet(({ radii, fontSizes, colors, fontWeights, fo
     fontSize: fontSizes.lg,
     fontFamily: fonts.body,
     fontWeight: fontWeights.normal,
-    outline: 'none',
     variants: {
       focused: {
         true: {
