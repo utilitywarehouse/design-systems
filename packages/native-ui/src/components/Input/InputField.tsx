@@ -14,7 +14,7 @@ const InputField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
     return (
       <TextInput
         ref={ref}
-        placeholderTextColor={colors.grey600}
+        placeholderTextColor={disabled ? colors.grey200 : colors.grey600}
         selectionColor={colors.cyan500}
         cursorColor={colors.cyan500}
         aria-disabled={disabled}
