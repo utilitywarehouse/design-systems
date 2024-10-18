@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 1.0.7
+
+### Patch Changes
+
+- [#573](https://github.com/utilitywarehouse/design-systems/pull/573) [`82bc6010`](https://github.com/utilitywarehouse/design-systems/commit/82bc6010baed3667eb4476d33b008621cc622685) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix outline Button heights
+
 ## 1.0.6
 
 ### Patch Changes
