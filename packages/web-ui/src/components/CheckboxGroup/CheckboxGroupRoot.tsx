@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { CheckboxGroupRootProps } from './CheckboxGroupRoot.props';
 
-import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
+import { CheckboxGroupBase } from '../CheckboxGroupBase';
 import { Flex } from '../Flex';
 
 import { styled } from '../../theme';
@@ -43,7 +43,7 @@ export const CheckboxGroupRoot = React.forwardRef<HTMLDivElement, CheckboxGroupR
     },
     ref
   ) => {
-    const baseCheckboxGroupProps = { name, value, defaultValue, onValueChange, children };
+    const checkboxGroupBaseProps = { name, value, defaultValue, onValueChange, children };
     return (
       <StyledFlex
         ref={ref}
@@ -54,7 +54,7 @@ export const CheckboxGroupRoot = React.forwardRef<HTMLDivElement, CheckboxGroupR
         width={width}
         gap={2}
       >
-        <BaseCheckboxGroup {...baseCheckboxGroupProps} />
+        <CheckboxGroupBase {...checkboxGroupBaseProps} />
       </StyledFlex>
     );
   }
