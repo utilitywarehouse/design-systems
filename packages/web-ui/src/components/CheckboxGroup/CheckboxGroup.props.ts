@@ -1,6 +1,28 @@
-import { BaseCheckboxGroupProps } from '../BaseCheckboxGroup';
+import { CheckboxGroupRootProps } from './CheckboxGroupRoot.props';
 
-export interface CheckboxGroupProps extends BaseCheckboxGroupProps {
-  /** The direction of the radios, will also set the aria-orientation value. */
-  direction?: 'column' | 'row';
+import { FormFieldGroupProps } from '../FormFieldGroup';
+
+export interface CheckboxGroupProps
+  extends Pick<
+      CheckboxGroupRootProps,
+      'direction' | 'defaultValue' | 'value' | 'onValueChange' | 'required'
+    >,
+    Pick<
+      FormFieldGroupProps,
+      | 'className'
+      | 'name'
+      | 'disabled'
+      | 'label'
+      | 'helperText'
+      | 'helperTextPosition'
+      | 'showHelperTextIcon'
+      | 'error'
+      | 'errorMessage'
+      | 'showErrorMessageIcon'
+    > {
+  /**
+   * Set the container width of the RadioGroup children, independent to the width of the
+   * parent RadioGroup.
+   */
+  contentWidth?: CheckboxGroupRootProps['width'];
 }

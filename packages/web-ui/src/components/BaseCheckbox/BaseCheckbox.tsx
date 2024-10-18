@@ -8,6 +8,8 @@ import { TickMediumIcon } from '@utilitywarehouse/react-icons';
 import { BaseCheckboxProps } from './BaseCheckbox.props';
 
 import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
+import { useCheckboxGroupRoot } from '../CheckboxGroup/CheckboxGroupRoot.context';
+import { useFormFieldGroup } from '../FormFieldGroup';
 
 import { styled } from '../../theme';
 import { px } from '../../utils';
@@ -88,15 +90,13 @@ const StyledCheckboxRoot = styled(RadixCheckbox.Root)({
 
 export const BaseCheckbox = React.forwardRef<HTMLButtonElement, BaseCheckboxProps>(
   ({ onCheckedChange, value = 'on', ...props }, ref) => {
-    const context = useBaseCheckboxGroup();
+    const context = useCheckboxGroupRoot();
     const checked = context?.value?.includes(value);
 
     return (
       <StyledCheckboxRoot
         ref={ref}
         name={context?.name}
-        disabled={context?.disabled}
-        required={context?.required}
         checked={checked}
         value={value}
         {...props}

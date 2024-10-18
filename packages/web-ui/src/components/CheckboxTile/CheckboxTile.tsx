@@ -7,8 +7,8 @@ import { colors } from '@utilitywarehouse/colour-system';
 import { CheckboxTileProps } from './CheckboxTile.props';
 
 import { BaseCheckbox } from '../BaseCheckbox';
-import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Flex } from '../Flex';
+import { useFormFieldGroup } from '../FormFieldGroup';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
 
@@ -72,7 +72,7 @@ export const CheckboxTile = React.forwardRef<HTMLButtonElement, PropsWithSx<Chec
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: componentName });
-    const context = useBaseCheckboxGroup();
+    const context = useFormFieldGroup();
     const ariaDescribedby = context ? context['aria-describedby'] : '';
     const showHelperText = !context?.hasGroupHelperText && !!helperText;
     const showLabel = !!label;

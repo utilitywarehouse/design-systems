@@ -3,11 +3,13 @@ import * as React from 'react';
 import clsx from 'clsx';
 
 import { CheckboxGroupProps } from './CheckboxGroup.props';
+import { CheckboxGroupRoot } from './CheckboxGroupRoot';
 
-import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Flex } from '../Flex';
+import { FormFieldGroup } from '../FormFieldGroup';
 
 import { styled } from '../../theme';
+import { PropsWithSx } from '../../types';
 import { withGlobalPrefix } from '../../utils';
 
 const componentName = 'CheckboxGroup';
@@ -31,19 +33,74 @@ const StyledContentContainer = styled(Flex)({
  * error state, error message, and disabled state, as well as determining the
  * presentation and selection of the items in the list.
  */
-export const CheckboxGroup = React.forwardRef<HTMLFieldSetElement, CheckboxGroupProps>(
-  ({ contentWidth = 'fit-content', direction = 'column', children, className, ...props }, ref) => {
+export const CheckboxGroup = React.forwardRef<
+  HTMLFieldSetElement,
+  React.PropsWithChildren<PropsWithSx<CheckboxGroupProps>>
+>(
+  (
+    {
+      contentWidth = 'fit-content',
+      disabled,
+      required,
+      label,
+      helperText,
+      helperTextPosition,
+      showHelperTextIcon,
+      error,
+      errorMessage,
+      showErrorMessageIcon,
+      direction = 'column',
+      value,
+      defaultValue,
+      onValueChange,
+      children,
+      className,
+      name,
+      ...props
+    },
+    ref
+  ) => {
+    const formFieldGroupProps = {
+      ...props,
+      disabled,
+      required,
+      label,
+      helperText,
+      helperTextPosition,
+      showHelperTextIcon,
+      error,
+      errorMessage,
+      showErrorMessageIcon,
+    };
+    const radioGroupRootProps = {
+      width: contentWidth,
+      direction,
+      name,
+      required,
+      disabled,
+      defaultValue,
+      value,
+      onValueChange,
+    };
     return (
-      <BaseCheckboxGroup
+      <FormFieldGroup
         ref={ref}
         className={clsx(componentClassName, className)}
-        data-orientation={direction === 'column' ? 'vertical' : 'horizontal'}
-        {...props}
+        {...formFieldGroupProps}
       >
-        <StyledContentContainer width={contentWidth} gap={2}>
-          {children}
-        </StyledContentContainer>
-      </BaseCheckboxGroup>
+        <CheckboxGroupRoot {...radioGroupRootProps}>{children}</CheckboxGroupRoot>
+      </FormFieldGroup>
+
+      // <BaseCheckboxGroup
+      //   ref={ref}
+      //   className={clsx(componentClassName, className)}
+      //   data-orientation={direction === 'column' ? 'vertical' : 'horizontal'}
+      //   {...props}
+      // >
+      //   <StyledContentContainer width={contentWidth} gap={2}>
+      //     {children}
+      //   </StyledContentContainer>
+      // </BaseCheckboxGroup>
     );
   }
 );

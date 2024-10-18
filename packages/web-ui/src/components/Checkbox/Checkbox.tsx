@@ -6,7 +6,9 @@ import type { CheckboxProps } from './Checkbox.props';
 
 import { BaseCheckbox } from '../BaseCheckbox';
 import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
+import { useCheckboxGroupRoot } from '../CheckboxGroup/CheckboxGroupRoot.context';
 import { Flex } from '../Flex';
+import { useFormFieldGroup } from '../FormFieldGroup';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
 
@@ -64,11 +66,12 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<Checkbox
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'checkbox' });
-    const context = useBaseCheckboxGroup();
+    const context = useFormFieldGroup();
     const hasGroupHelperText = context?.hasGroupHelperText;
     const ariaDescribedby = context ? context['aria-describedby'] : '';
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
+
     return (
       <StyledFlex data-disabled={disabled ? '' : undefined} gap={1}>
         <StyledBaseCheckbox
