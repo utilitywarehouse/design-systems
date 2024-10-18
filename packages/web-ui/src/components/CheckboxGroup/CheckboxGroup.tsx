@@ -5,26 +5,13 @@ import clsx from 'clsx';
 import { CheckboxGroupProps } from './CheckboxGroup.props';
 import { CheckboxGroupRoot } from './CheckboxGroupRoot';
 
-import { Flex } from '../Flex';
 import { FormFieldGroup } from '../FormFieldGroup';
 
-import { styled } from '../../theme';
 import { PropsWithSx } from '../../types';
 import { withGlobalPrefix } from '../../utils';
 
 const componentName = 'CheckboxGroup';
 const componentClassName = withGlobalPrefix(componentName);
-
-const StyledContentContainer = styled(Flex)({
-  minWidth: 'fit-content',
-  flexWrap: 'wrap',
-  ':where([data-orientation="horizontal"] &)': {
-    flexDirection: 'row',
-  },
-  ':where([data-orientation="vertical"] &)': {
-    flexDirection: 'column',
-  },
-});
 
 /**
  * Set of interactive buttons where multiple options can be selected at a time.
@@ -81,6 +68,7 @@ export const CheckboxGroup = React.forwardRef<
       defaultValue,
       value,
       onValueChange,
+      children,
     };
     return (
       <FormFieldGroup
@@ -88,19 +76,8 @@ export const CheckboxGroup = React.forwardRef<
         className={clsx(componentClassName, className)}
         {...formFieldGroupProps}
       >
-        <CheckboxGroupRoot {...radioGroupRootProps}>{children}</CheckboxGroupRoot>
+        <CheckboxGroupRoot {...radioGroupRootProps} />
       </FormFieldGroup>
-
-      // <BaseCheckboxGroup
-      //   ref={ref}
-      //   className={clsx(componentClassName, className)}
-      //   data-orientation={direction === 'column' ? 'vertical' : 'horizontal'}
-      //   {...props}
-      // >
-      //   <StyledContentContainer width={contentWidth} gap={2}>
-      //     {children}
-      //   </StyledContentContainer>
-      // </BaseCheckboxGroup>
     );
   }
 );

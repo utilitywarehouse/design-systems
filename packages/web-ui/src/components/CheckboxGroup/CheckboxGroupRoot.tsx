@@ -2,17 +2,15 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
-import { useControllableState } from '@radix-ui/react-use-controllable-state';
-
-import { CheckboxGroupRootProvider } from './CheckboxGroupRoot.context';
 import { CheckboxGroupRootProps } from './CheckboxGroupRoot.props';
 
+import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Flex } from '../Flex';
 
 import { styled } from '../../theme';
 import { withGlobalPrefix } from '../../utils';
 
-const componentName = 'CheckboxGroup';
+const componentName = 'CheckboxGroupRoot';
 const componentClassName = withGlobalPrefix(componentName);
 
 const StyledFlex = styled(Flex)({
@@ -34,7 +32,7 @@ export const CheckboxGroupRoot = React.forwardRef<HTMLDivElement, CheckboxGroupR
     {
       name,
       disabled,
-      value: providedValue,
+      value,
       defaultValue,
       onValueChange,
       width = 'fit-content',
@@ -45,31 +43,7 @@ export const CheckboxGroupRoot = React.forwardRef<HTMLDivElement, CheckboxGroupR
     },
     ref
   ) => {
-    // useControllableState will handle whether controlled or uncontrolled
-    const [value = [], setValue] = useControllableState({
-      prop: providedValue,
-      defaultProp: defaultValue,
-      onChange: onValueChange,
-    });
-
-    const handleItemCheck = React.useCallback(
-      (itemValue: string) => setValue((prevValue = []) => [...prevValue, itemValue]),
-      [setValue]
-    );
-
-    const handleItemUncheck = React.useCallback(
-      (itemValue: string) =>
-        setValue((prevValue = []) => prevValue.filter(value => value !== itemValue)),
-      [setValue]
-    );
-
-    const providerValue = {
-      name,
-      value,
-      onItemCheck: handleItemCheck,
-      onItemUncheck: handleItemUncheck,
-    };
-
+    const baseCheckboxGroupProps = { name, value, defaultValue, onValueChange, children };
     return (
       <StyledFlex
         ref={ref}
@@ -80,7 +54,7 @@ export const CheckboxGroupRoot = React.forwardRef<HTMLDivElement, CheckboxGroupR
         width={width}
         gap={2}
       >
-        <CheckboxGroupRootProvider value={providerValue}>{children}</CheckboxGroupRootProvider>
+        <BaseCheckboxGroup {...baseCheckboxGroupProps} />
       </StyledFlex>
     );
   }

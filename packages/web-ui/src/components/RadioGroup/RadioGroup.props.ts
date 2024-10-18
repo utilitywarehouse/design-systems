@@ -1,25 +1,21 @@
 import { RadioGroupRootProps } from './RadioGroupRoot.props';
 
-import { FormFieldGroupProps } from '../FormFieldGroup';
+import { FormFieldGroupOwnProps } from '../FormFieldGroup/FormFieldGroup.props';
 
 export interface RadioGroupProps
   extends Pick<
       RadioGroupRootProps,
-      'direction' | 'loop' | 'defaultValue' | 'value' | 'onValueChange' | 'required'
-    >,
-    Pick<
-      FormFieldGroupProps,
       | 'className'
       | 'name'
+      | 'direction'
+      | 'loop'
+      | 'defaultValue'
+      | 'value'
+      | 'onValueChange'
+      | 'required'
       | 'disabled'
-      | 'label'
-      | 'helperText'
-      | 'helperTextPosition'
-      | 'showHelperTextIcon'
-      | 'error'
-      | 'errorMessage'
-      | 'showErrorMessageIcon'
-    > {
+    >,
+    FormFieldGroupOwnProps {
   /**
    * Set the container width of the RadioGroup children, independent to the width of the
    * parent RadioGroup.

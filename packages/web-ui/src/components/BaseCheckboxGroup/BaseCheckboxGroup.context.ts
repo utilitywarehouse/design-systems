@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
 
 export type BaseCheckboxGroupContextValue = {
+  name?: string;
   value?: Array<string>;
   onItemCheck(value: string): void;
   onItemUncheck(value: string): void;

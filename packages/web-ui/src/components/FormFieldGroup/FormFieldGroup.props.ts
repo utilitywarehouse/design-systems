@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 
 import { FieldsetProps } from '../Fieldset';
 
-export interface FormFieldGroupProps extends FieldsetProps {
+export interface FormFieldGroupOwnProps {
   /**
    * The label for the radio group. This should contain the question being
    * answered by the radio group.
@@ -36,3 +36,5 @@ export interface FormFieldGroupProps extends FieldsetProps {
    */
   showErrorMessageIcon?: boolean;
 }
+
+export interface FormFieldGroupProps extends FormFieldGroupOwnProps, FieldsetProps {}

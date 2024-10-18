@@ -5,8 +5,6 @@ import clsx from 'clsx';
 import type { CheckboxProps } from './Checkbox.props';
 
 import { BaseCheckbox } from '../BaseCheckbox';
-import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
-import { useCheckboxGroupRoot } from '../CheckboxGroup/CheckboxGroupRoot.context';
 import { Flex } from '../Flex';
 import { useFormFieldGroup } from '../FormFieldGroup';
 import { HelperText } from '../HelperText';
