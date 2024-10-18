@@ -4,8 +4,8 @@ import clsx from 'clsx';
 
 import { CheckboxGridGroupRootProps } from './CheckboxGridGroupRoot.props';
 
-import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
 import { Box } from '../Box';
+import { CheckboxGroupBase } from '../CheckboxGroupBase';
 import { RadioGridGroupRootProps } from '../RadioGridGroup';
 
 import { getColumns } from '../../helpers';
@@ -44,7 +44,7 @@ export const CheckboxGridGroupRoot = React.forwardRef<HTMLDivElement, CheckboxGr
     },
     ref
   ) => {
-    const baseCheckboxGroupProps = { name, value, defaultValue, onValueChange, children };
+    const checkboxGroupBaseProps = { name, value, defaultValue, onValueChange, children };
     return (
       <StyledBox
         ref={ref}
@@ -54,7 +54,7 @@ export const CheckboxGridGroupRoot = React.forwardRef<HTMLDivElement, CheckboxGr
         columns={columns}
         width={width}
       >
-        <BaseCheckboxGroup {...baseCheckboxGroupProps} />
+        <CheckboxGroupBase {...checkboxGroupBaseProps} />
       </StyledBox>
     );
   }
