@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import type { CheckboxProps as RadixCheckboxProps } from '@radix-ui/react-checkbox';
 
-export interface BaseCheckboxProps
+export interface CheckboxBaseProps
   extends Omit<
     RadixCheckboxProps,
     'asChild' | 'value' | 'onCheckedChange' | 'defaultChecked' | 'defaultValue'
