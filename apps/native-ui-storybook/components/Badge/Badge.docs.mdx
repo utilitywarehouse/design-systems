@@ -1,6 +1,6 @@
 import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
 import * as BadgeStories from './Badge.stories';
-import { Badge, BadgeText, BadgeIcon, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { Badge, BadgeText, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
 import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
 
 import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
@@ -74,7 +74,6 @@ Although not recommended, the `Badge` component can be used to create more compl
   <NativeUIProvider>
     <Center>
       <Badge colorScheme="cyan">
-        <BadgeIcon as={AddSmallIcon} />
         <BadgeText>Add</BadgeText>
       </Badge>
     </Center>
@@ -82,12 +81,10 @@ Although not recommended, the `Badge` component can be used to create more compl
 </Canvas>
 
 ```tsx
-import { Badge, BadgeIcon, BadgeText } from '@utilitywarehouse/native-ui';
-import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
+import { Badge, BadgeText } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => (
   <Badge colorScheme="cyan">
-    <BadgeIcon as={AddSmallIcon} />
     <BadgeText>Add</BadgeText>
   </Badge>
 );

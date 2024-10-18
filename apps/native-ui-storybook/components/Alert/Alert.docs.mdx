@@ -103,7 +103,7 @@ If you need to use the Alert component in a more advanced way, you can use the p
   <NativeUIProvider>
     <Alert colorScheme="cyan">
       <AlertIcon />
-      <VStack flex={1} gap={4}>
+      <VStack space="lg" style={{flex: 1}}>
         <AlertTitle>Information</AlertTitle>
         <AlertText>Unlock the power of knowledge with the following information.</AlertText>
         <AlertLink onPress={() => console.log('Link clicked')}>
@@ -142,7 +142,7 @@ const MyComponent = () => {
   return (
     <Alert colorScheme="cyan">
       <AlertIcon as={InformationMediumContainedIcon} />
-      <VStack flex={1} gap={4}>
+      <VStack space="lg" style={{ flex: 1 }}>
         <AlertTitle>Information</AlertTitle>
         <AlertText>Unlock the power of knowledge with the following information.</AlertText>
 
