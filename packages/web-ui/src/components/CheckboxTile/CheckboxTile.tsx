@@ -6,7 +6,7 @@ import { colors } from '@utilitywarehouse/colour-system';
 
 import { CheckboxTileProps } from './CheckboxTile.props';
 
-import { BaseCheckbox } from '../BaseCheckbox';
+import { CheckboxBase } from '../CheckboxBase';
 import { Flex } from '../Flex';
 import { useFormFieldGroup } from '../FormFieldGroup';
 import { HelperText } from '../HelperText';
@@ -78,7 +78,7 @@ export const CheckboxTile = React.forwardRef<HTMLButtonElement, PropsWithSx<Chec
     const showLabel = !!label;
     return (
       <StyledTile data-disabled={disabled ? '' : undefined}>
-        <BaseCheckbox
+        <CheckboxBase
           {...props}
           ref={ref}
           className={clsx(componentClassName, className)}

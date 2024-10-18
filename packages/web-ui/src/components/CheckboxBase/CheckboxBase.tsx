@@ -5,14 +5,14 @@ import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { TickMediumIcon } from '@utilitywarehouse/react-icons';
 
-import { BaseCheckboxProps } from './BaseCheckbox.props';
+import { CheckboxBaseProps } from './CheckboxBase.props';
 
-import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
+import { useCheckboxGroupBase } from '../CheckboxGroupBase';
 
 import { styled } from '../../theme';
 import { px } from '../../utils';
 
-const componentName = 'BaseCheckbox';
+const componentName = 'CheckboxBase';
 
 export const StyledIndicator = styled(RadixCheckbox.Indicator)({
   position: 'absolute',
@@ -86,9 +86,9 @@ const StyledCheckboxRoot = styled(RadixCheckbox.Root)({
   },
 });
 
-export const BaseCheckbox = React.forwardRef<HTMLButtonElement, BaseCheckboxProps>(
+export const CheckboxBase = React.forwardRef<HTMLButtonElement, CheckboxBaseProps>(
   ({ onCheckedChange, value = 'on', ...props }, ref) => {
-    const context = useBaseCheckboxGroup();
+    const context = useCheckboxGroupBase();
     const checked = context?.value?.includes(value);
 
     return (
@@ -119,4 +119,4 @@ export const BaseCheckbox = React.forwardRef<HTMLButtonElement, BaseCheckboxProp
   }
 );
 
-BaseCheckbox.displayName = componentName;
+CheckboxBase.displayName = componentName;

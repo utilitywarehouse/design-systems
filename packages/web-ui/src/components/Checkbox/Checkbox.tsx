@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import type { CheckboxProps } from './Checkbox.props';
 
-import { BaseCheckbox } from '../BaseCheckbox';
+import { CheckboxBase } from '../CheckboxBase';
 import { Flex } from '../Flex';
 import { useFormFieldGroup } from '../FormFieldGroup';
 import { HelperText } from '../HelperText';
@@ -23,7 +23,7 @@ const StyledFlex = styled(Flex)({
   '*': { cursor: 'pointer' },
 });
 
-const StyledBaseCheckbox = styled(BaseCheckbox)({
+const StyledCheckboxBase = styled(CheckboxBase)({
   ':where(:focus-visible)': {
     '--checkbox-outline-color': 'var(--checkbox-outline-color-focus)',
   },
@@ -72,7 +72,7 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<Checkbox
 
     return (
       <StyledFlex data-disabled={disabled ? '' : undefined} gap={1}>
-        <StyledBaseCheckbox
+        <StyledCheckboxBase
           ref={ref}
           {...props}
           id={id}

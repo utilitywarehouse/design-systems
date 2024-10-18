@@ -2,12 +2,12 @@ import * as React from 'react';
 
 import { useControllableState } from '@radix-ui/react-use-controllable-state';
 
-import { BaseCheckboxGroupProvider } from './BaseCheckboxGroup.context';
-import { BaseCheckboxGroupProps } from './BaseCheckboxGroup.props';
+import { CheckboxGroupBaseProvider } from './CheckboxGroupBase.context';
+import { CheckboxGroupBaseProps } from './CheckboxGroupBase.props';
 
-const componentName = 'BaseCheckboxGroup';
+const componentName = 'CheckboxGroupBase';
 
-export const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGroupProps>(
+export const CheckboxGroupBase = React.forwardRef<HTMLFieldSetElement, CheckboxGroupBaseProps>(
   ({ name, defaultValue, value: valueProp, onValueChange, children }) => {
     // useControllableState will handle whether controlled or uncontrolled
     const [value = [], setValue] = useControllableState({
@@ -34,8 +34,8 @@ export const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheck
       onItemUncheck: handleItemUncheck,
     };
 
-    return <BaseCheckboxGroupProvider value={providerValue}>{children}</BaseCheckboxGroupProvider>;
+    return <CheckboxGroupBaseProvider value={providerValue}>{children}</CheckboxGroupBaseProvider>;
   }
 );
 
-BaseCheckboxGroup.displayName = componentName;
+CheckboxGroupBase.displayName = componentName;
