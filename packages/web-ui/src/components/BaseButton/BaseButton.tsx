@@ -259,7 +259,7 @@ const StyledElement = styled(UnstyledButton)<BaseButtonProps>(() => {
         'var(--base-button-ghost-foreground-color-disabled)',
     },
     [classSelectors.variant.outline]: {
-      border: `${px(2)} solid var(--base-button-outline-border-color)`,
+      boxShadow: `inset 0 0 0 ${px(2)} var(--base-button-outline-border-color)`,
       '--base-button-background-color': 'transparent',
       '--base-button-background-color-disabled': 'transparent',
       '--base-button-foreground-color': 'var(--base-button-outline-foreground-color)',
