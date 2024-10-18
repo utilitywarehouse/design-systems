@@ -2,13 +2,13 @@
 import React, { ComponentProps, ComponentType, forwardRef } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { useListItemContext } from './ListItem.context';
-import { Icon } from '../../Icon';
-import type { SvgRef } from '../../../types';
+import { useInputContext } from './Input.context';
+import { Icon } from '../Icon';
+import type { SvgRef } from '../../types';
 
-const ListItemIcon = forwardRef<SvgRef, ComponentProps<typeof Icon> & { as?: ComponentType }>(
+const InputIcon = forwardRef<SvgRef, ComponentProps<typeof Icon> & { as?: ComponentType }>(
   ({ children, ...props }, ref) => {
-    const { disabled } = useListItemContext();
+    const { disabled } = useInputContext();
     const { styles } = useStyles(stylesheet, { disabled });
     return (
       <Icon
@@ -29,21 +29,21 @@ const ListItemIcon = forwardRef<SvgRef, ComponentProps<typeof Icon> & { as?: Com
   }
 );
 
-ListItemIcon.displayName = 'ListItemIcon';
+InputIcon.displayName = 'InputIcon';
 
-const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
+const stylesheet = createStyleSheet(({ colors }) => ({
   icon: {
-    color: colors.grey800,
+    color: colors.grey700,
     width: 24,
     height: 24,
     variants: {
       disabled: {
         true: {
-          color: colorMode === 'light' ? colors.grey400 : colors.grey500,
+          color: colors.grey400,
         },
       },
     },
   },
 }));
 
-export default ListItemIcon;
+export default InputIcon;

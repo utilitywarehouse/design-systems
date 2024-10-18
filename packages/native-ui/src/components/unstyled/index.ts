@@ -1,19 +1,6 @@
 export { Divider } from '@gluestack-ui/themed';
 
 export {
-  FormControl,
-  FormControlError,
-  FormControlErrorIcon,
-  FormControlErrorText,
-  FormControlHelper,
-  FormControlHelperText,
-  FormControlLabel,
-  FormControlLabelText,
-} from '@gluestack-ui/themed';
-
-export { Input, InputField, InputIcon, InputSlot } from '@gluestack-ui/themed';
-
-export {
   Select,
   SelectBackdrop,
   SelectContent,
