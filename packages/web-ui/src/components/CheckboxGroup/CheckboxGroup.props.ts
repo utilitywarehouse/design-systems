@@ -1,6 +1,6 @@
 import { CheckboxGroupRootProps } from './CheckboxGroupRoot.props';
 
-import { BaseCheckboxGroupProps } from '../BaseCheckboxGroup';
+import { CheckboxGroupBaseProps } from '../CheckboxGroupBase';
 import { FormFieldGroupOwnProps } from '../FormFieldGroup/FormFieldGroup.props';
 
 export interface CheckboxGroupProps
@@ -14,7 +14,7 @@ export interface CheckboxGroupProps
       | 'onValueChange'
       | 'required'
     >,
-    BaseCheckboxGroupProps,
+    CheckboxGroupBaseProps,
     FormFieldGroupOwnProps {
   /**
    * Set the container width of the RadioGroup children, independent to the width of the

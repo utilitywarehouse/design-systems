@@ -1,6 +1,6 @@
 import { CheckboxGridGroupRootProps } from './CheckboxGridGroupRoot.props';
 
-import { BaseCheckboxGroupProps } from '../BaseCheckboxGroup';
+import { CheckboxGroupBaseProps } from '../CheckboxGroupBase';
 import { FormFieldGroupOwnProps } from '../FormFieldGroup/FormFieldGroup.props';
 import type { StackProps } from '../Stack';
 
@@ -15,7 +15,7 @@ export interface CheckboxGridGroupProps
       | 'onValueChange'
       | 'required'
     >,
-    BaseCheckboxGroupProps,
+    CheckboxGroupBaseProps,
     FormFieldGroupOwnProps {
   /** Sets the number of columns to display the contents in. */
   columns?: StackProps['spacing'];

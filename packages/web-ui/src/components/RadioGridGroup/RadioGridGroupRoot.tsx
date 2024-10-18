@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { Root } from '@radix-ui/react-radio-group';
 
-import type { RadioGridGroupProps } from './RadioGridGroup.props';
+import { RadioGridGroupRootProps } from './RadioGridGroupRoot.props';
 
 import { Box } from '../Box';
 
@@ -26,7 +26,7 @@ const componentClassName = withGlobalPrefix(componentName);
  */
 export const RadioGridGroupRoot = React.forwardRef<
   HTMLDivElement,
-  PropsWithSx<RadioGridGroupProps>
+  PropsWithSx<RadioGridGroupRootProps>
 >(({ id, disabled, children, width, columns = 2, className, ...props }, ref) => {
   return (
     <Root
