@@ -13,7 +13,8 @@ import { DocsHeader } from '../../storybook-components';
 - [Semantic HTML](#semantic-html)
 - [Accessibility](#accessibility)
 - [Shorthand props](#shorthand-props)
-- [Flex vs. Stack](#flex-vs.-stack)
+- [Usage with Divider](#usage-with-divider)
+- [Flex vs. Stack](#flex-vs-stack)
 - [Props](#props)
 
 ## Shorthand props
@@ -45,6 +46,47 @@ By default Flex renders a `div` element, this can be customised using the
 The `Flex` component is an all purpose component. By default, it has no
 accessibility concerns. If you use the `Flex` as a custom element, it is up to
 you to manage the resulting accessibility implications.
+
+## Usage with Divider
+
+You can insert a `Divider` component in between `Flex` children in the following way.
+
+```tsx
+<Flex direction="column">
+  {meters.map((meter, index) => (
+    <>
+      <EnergyMeter
+        key={meter.meterId ? meter.meterId : `${meter.__typename}-${index}`}
+        meter={meter}
+      />
+        <Divider />
+      </>
+  ))}
+</Flex>
+
+
+<Flex direction="column">
+  {[
+    { px: 2, py: 4 },
+    { px: 6, py: 8 },
+    { px: 12, py: 16 },
+  ].map((padding, i) => (
+    <>
+      <Box
+        px={padding.px}
+        py={padding.py}
+        background={colorsCommon.brandPrimaryPurple}
+        borderRadius="8px"
+      >
+        <Text component="span" variant="body">
+          Item {i + 1}
+        </Text>
+      </Box>
+      {i < 2 ? <Divider /> : null}
+    </>
+  ))}
+</Flex>
+```
 
 ## Flex vs. Stack
 

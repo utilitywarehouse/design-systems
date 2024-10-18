@@ -46,7 +46,7 @@ make it functional.
 Read more about this idea in the [Radix UI composition docs](https://www.radix-ui.com/primitives/docs/guides/composition).
 
 ```tsx
-// You may need to disable this eslint warning:
+// You will probably need to disable this eslint warning:
 // eslint-disable-next-line jsx-a11y/anchor-is-valid
 <Link asChild>
   <button type="button" onClick={onClick}>
@@ -54,6 +54,18 @@ Read more about this idea in the [Radix UI composition docs](https://www.radix-u
     <OpenSmallIcon />
   </button>
 </Link>
+
+// or when nested in other components
+
+<Box>
+  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+  <Link asChild>
+    <button type="button" onClick={onClick}>
+      View UW services
+      <OpenSmallIcon />
+    </button>
+  </Link>
+</Box>
 ```
 
 <Canvas of={Stories.AsButton} />
