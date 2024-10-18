@@ -1,4 +1,5 @@
 import StorybookUIRoot from './.ondevice';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import React, { useEffect } from 'react';
 import { useFonts } from 'expo-font';
@@ -25,7 +26,11 @@ const App = () => {
   }, []);
 
   if (!loaded) return null;
-  return <StorybookUIRoot />;
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <StorybookUIRoot />
+    </GestureHandlerRootView>
+  );
 };
 
 export default App;

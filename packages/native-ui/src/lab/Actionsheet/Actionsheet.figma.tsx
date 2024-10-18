@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Actionsheet,
-  ActionsheetBackdrop,
-  ActionsheetContent,
-  ActionsheetDragIndicator,
-  ActionsheetDragIndicatorWrapper,
-} from '../../lab';
+import { Actionsheet } from '../../lab';
 import figma from '@figma/code-connect';
 
 const showActionsheet = true;
@@ -20,18 +14,9 @@ figma.connect(
         custom: '{content goes here}',
       }),
     },
-    imports: [
-      'import { Actionsheet, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicator, ActionsheetDragIndicatorWrapper } from "@utilitywarehouse/native-ui/lab";',
-    ],
     example: ({ content }) => (
       <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
-        <ActionsheetBackdrop />
-        <ActionsheetContent>
-          <ActionsheetDragIndicatorWrapper>
-            <ActionsheetDragIndicator />
-          </ActionsheetDragIndicatorWrapper>
-          {content}
-        </ActionsheetContent>
+        {content}
       </Actionsheet>
     ),
   }
