@@ -7,6 +7,7 @@ import InputSlotComponent from './InputSlot';
 import InputIconComponent from './InputIcon';
 import InputFieldComponent from './InputField';
 import InputValidationIcon from './InputValidationIcon';
+import { useFormFieldContext } from '../FormField';
 
 export const InputComponent = createInput({
   Icon: InputIconComponent,
@@ -30,6 +31,8 @@ const Input: React.FC<InputProps> = ({
   trailingIcon,
   ...props
 }) => {
+  const formFieldContext = useFormFieldContext();
+  const validationStatusFromContext = formFieldContext?.validationStatus;
   return (
     <InputComponent
       {...(children ? props : {})}

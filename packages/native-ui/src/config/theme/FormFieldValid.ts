@@ -1,8 +1,8 @@
 import { createStyle } from '@gluestack-style/react';
 
-export const FormControlHelper = createStyle({
+export const FormFieldValid = createStyle({
   flexDirection: 'row',
   justifyContent: 'flex-start',
   alignItems: 'center',
-  mt: '$1',
+  gap: '$2',
 });
