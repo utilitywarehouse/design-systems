@@ -1,9 +1,8 @@
 import { ComponentProps } from 'react';
 import { StoryFn } from '@storybook/react';
-import { ScrollView, Text, useStyles } from '@utilitywarehouse/native-ui';
+import { Text, useStyles } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 import React from 'react';
-import { SafeAreaView } from 'react-native';
 import { colors } from '@utilitywarehouse/colour-system';
 
 const BoxBasic: StoryFn<{
