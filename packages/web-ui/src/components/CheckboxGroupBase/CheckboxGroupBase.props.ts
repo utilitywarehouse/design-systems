@@ -1,8 +1,6 @@
-import { ComponentPropsWithoutRef } from 'react';
-
 import { CheckboxGroupBaseContextValue } from './CheckboxGroupBase.context';
 
-export interface CheckboxGroupBaseProps extends ComponentPropsWithoutRef<'fieldset'> {
+export interface CheckboxGroupBaseProps {
   name?: string;
   defaultValue?: Array<string>;
   value?: CheckboxGroupBaseContextValue['value'];

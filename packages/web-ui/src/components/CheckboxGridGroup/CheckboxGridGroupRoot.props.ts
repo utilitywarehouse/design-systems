@@ -1,21 +1,7 @@
-import { ComponentPropsWithoutRef } from 'react';
-
-import { BoxProps } from '../Box';
+import { CheckboxGroupRootProps } from '../CheckboxGroup/CheckboxGroupRoot.props';
 import { StackProps } from '../Stack';
 
-export interface CheckboxGridGroupRootProps extends ComponentPropsWithoutRef<'div'> {
-  name?: string;
-  required?: boolean;
-  disabled?: boolean;
-  defaultValue?: Array<string>;
-  value?: Array<string>;
-  onValueChange?: (value: Array<string>) => void;
-  /** The direction of the checkboxes, will also set the aria-orientation value. */
-  direction?: 'column' | 'row';
-  /**
-   * Set the width of the RadioGroup.
-   */
-  width?: BoxProps['width'];
+export interface CheckboxGridGroupRootProps extends Omit<CheckboxGroupRootProps, 'direction'> {
   /** Sets the number of columns to display the contents in. */
   columns?: StackProps['spacing'];
 }

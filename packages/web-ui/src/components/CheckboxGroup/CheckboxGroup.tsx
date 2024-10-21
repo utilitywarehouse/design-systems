@@ -16,9 +16,9 @@ const componentClassName = withGlobalPrefix(componentName);
 /**
  * Set of interactive buttons where multiple options can be selected at a time.
  * The `CheckboxGroup` uses a fieldset to group related `Checkbox` controls.
- * The `CheckboxGroup` is responsible for handling the value, helper text,
- * error state, error message, and disabled state, as well as determining the
- * presentation and selection of the items in the list.
+ * The `CheckboxGroup` is responsible for handling the value, label, helper
+ * text, error state, error message, and disabled state, as well as determining
+ * the presentation and selection of the items in the list.
  */
 export const CheckboxGroup = React.forwardRef<
   HTMLFieldSetElement,
@@ -26,7 +26,7 @@ export const CheckboxGroup = React.forwardRef<
 >(
   (
     {
-      contentWidth = 'fit-content',
+      contentWidth,
       disabled,
       required,
       label,
@@ -36,7 +36,7 @@ export const CheckboxGroup = React.forwardRef<
       error,
       errorMessage,
       showErrorMessageIcon,
-      direction = 'column',
+      direction,
       value,
       defaultValue,
       onValueChange,
@@ -59,7 +59,7 @@ export const CheckboxGroup = React.forwardRef<
       errorMessage,
       showErrorMessageIcon,
     };
-    const radioGroupRootProps = {
+    const checkboxGroupRootProps = {
       width: contentWidth,
       direction,
       name,
@@ -76,7 +76,7 @@ export const CheckboxGroup = React.forwardRef<
         className={clsx(componentClassName, className)}
         {...formFieldGroupProps}
       >
-        <CheckboxGroupRoot {...radioGroupRootProps} />
+        <CheckboxGroupRoot {...checkboxGroupRootProps} />
       </FormFieldGroup>
     );
   }

@@ -15,6 +15,11 @@ import { PropsWithSx } from '../../types';
 
 const componentName = 'FormFieldGroup';
 
+/**
+ * The `FormFieldGroup` component should be used to group related form inputs.
+ * It renders an HTML `fieldset` and is responsible for handling the value,
+ * label, helper text, error state, error message, and disabled state.
+ */
 export const FormFieldGroup = forwardRef<HTMLFieldSetElement, PropsWithSx<FormFieldGroupProps>>(
   (
     {

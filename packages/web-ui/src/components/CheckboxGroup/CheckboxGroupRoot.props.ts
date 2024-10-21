@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef } from 'react';
 
 import { BoxProps } from '../Box';
 
-export interface CheckboxGroupRootProps extends ComponentPropsWithoutRef<'div'> {
+export interface CheckboxGroupRootOwnProps {
   name?: string;
   required?: boolean;
   disabled?: boolean;
@@ -16,3 +16,7 @@ export interface CheckboxGroupRootProps extends ComponentPropsWithoutRef<'div'> 
    */
   width?: BoxProps['width'];
 }
+
+export interface CheckboxGroupRootProps
+  extends CheckboxGroupRootOwnProps,
+    Omit<ComponentPropsWithoutRef<'div'>, keyof CheckboxGroupRootOwnProps> {}
