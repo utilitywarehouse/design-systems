@@ -1,7 +1,13 @@
-import { FormField } from './FormField';
-export { FormFieldProvider as FormField, useFormFieldContext } from './FormField';
+export {
+  default as FormField,
+  FormFieldHelper,
+  FormFieldHelperText,
+  FormFieldLabel,
+  FormFieldLabelText,
+} from './FormField';
 export { default as FormFieldValid } from './FormFieldValid';
 export { default as FormFieldInvalid } from './FormFieldInvalid';
+export { useFormFieldContext } from './FormField.context';
 export {
   HelperIcon as FormFieldHelperIcon,
   ValidIcon as FormFieldValidIcon,
@@ -9,11 +15,3 @@ export {
   InvalidIcon as FormFieldInvalidIcon,
   InvalidText as FormFieldInvalidText,
 } from './styled-components';
-
-export const FormFieldError = FormField.Error;
-export const FormFieldErrorText = FormField.Error.Text;
-export const FormFieldErrorIcon = FormField.Error.Icon;
-export const FormFieldLabel = FormField.Label;
-export const FormFieldLabelText = FormField.Label.Text;
-export const FormFieldHelper = FormField.Helper;
-export const FormFieldHelperText = FormField.Helper.Text;

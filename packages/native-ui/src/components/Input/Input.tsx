@@ -32,18 +32,25 @@ const Input: React.FC<InputProps> = ({
   ...props
 }) => {
   const formFieldContext = useFormFieldContext();
-  const validationStatusFromContext = formFieldContext?.validationStatus;
+  const validationStatusFromContext = formFieldContext?.validationStatus ?? validationStatus;
   return (
     <InputComponent
       {...(children ? props : {})}
-      validationStatus={validationStatus}
-      isInvalid={validationStatus === 'invalid'}
+      validationStatus={validationStatusFromContext}
+      isInvalid={validationStatusFromContext === 'invalid'}
       isReadOnly={readonly}
       isDisabled={disabled}
       isFocused={focused}
     >
       {children ? (
-        children
+        <>
+          {children}
+          {showValidationIcon && validationStatusFromContext !== 'initial' && (
+            <InputSlot>
+              <InputValidationIcon />
+            </InputSlot>
+          )}
+        </>
       ) : (
         <>
           {leadingIcon && (
@@ -52,17 +59,17 @@ const Input: React.FC<InputProps> = ({
             </InputSlot>
           )}
           <InputField {...props} />
+          {showValidationIcon && validationStatusFromContext !== 'initial' && (
+            <InputSlot>
+              <InputValidationIcon />
+            </InputSlot>
+          )}
           {trailingIcon && (
             <InputSlot>
               <InputIcon as={trailingIcon} />
             </InputSlot>
           )}
         </>
-      )}
-      {showValidationIcon && validationStatus !== 'initial' && (
-        <InputSlot>
-          <InputValidationIcon />
-        </InputSlot>
       )}
     </InputComponent>
   );

@@ -64,9 +64,7 @@ The `FormField` component is a container for form elements such as input fields.
         <FormFieldLabel>
           <FormFieldLabelText>Label</FormFieldLabelText>
         </FormFieldLabel>
-        <Input onChange={() => console.log('###')}>
-          <InputField placeholder="Placeholder" />
-        </Input>
+        <Input onChange={() => console.log('###')} />
         <FormFieldHelper>
           <FormFieldHelperText>Helper text</FormFieldHelperText>
         </FormFieldHelper>
@@ -180,7 +178,7 @@ const MyComponent = () => {
 | Name               | Type                               | Default     | Description                         |
 | ------------------ | ---------------------------------- | ----------- | ----------------------------------- |
 | `validationStatus` | `'initial' \| 'valid' \| 'invalid` | `'initial'` | The validation status of the field. |
-| `isDisabled`       | `boolean`                          | `false`     | Whether the field is disabled.      |
+| `disabled`         | `boolean`                          | `false`     | Whether the field is disabled.      |
 
 #### Descendants Styling Props
 

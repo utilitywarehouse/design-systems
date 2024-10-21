@@ -1,52 +1,56 @@
-import React, { createContext, useContext, FC, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 import { createFormControl } from '@gluestack-ui/form-control';
-import {
-  Root,
-  Error,
-  ErrorText,
-  ErrorIcon,
-  Label,
-  LabelText,
-  LabelAstrick,
-  Helper,
-  HelperText,
-} from './styled-components';
+import { FormFieldContext } from './FormField.context';
+import FormFieldProps from './FormField.props';
+import FormFieldRoot from './FormFieldRoot';
+import FormFieldInvalidComponent from './FormFieldInvalid';
+import FormFieldHelperComponent from './FormFieldHelper';
+import FormFieldLabelComponent from './FormFieldLabel';
+import { HelperIcon, HelperText } from '../Helper';
+import { View } from 'react-native';
 
-export const FormField = createFormControl({
-  Root,
-  Error,
-  ErrorText,
-  ErrorIcon,
-  Label,
-  LabelText,
-  LabelAstrick,
-  Helper,
-  HelperText,
+export const FormFieldComponent = createFormControl({
+  Root: FormFieldRoot,
+  Error: FormFieldInvalidComponent,
+  ErrorText: HelperText,
+  ErrorIcon: HelperIcon,
+  Label: View,
+  LabelText: FormFieldLabelComponent,
+  LabelAstrick: View,
+  Helper: FormFieldHelperComponent,
+  HelperText: HelperText,
 });
 
-export type FormFieldProps = React.ComponentProps<typeof FormField>;
+export const FormFieldLabel = FormFieldComponent.Label;
+export const FormFieldLabelText = FormFieldComponent.Label.Text;
+export const FormFieldHelper = FormFieldComponent.Helper;
+export const FormFieldHelperText = FormFieldComponent.Helper.Text;
 
-interface FormFieldContextType {
-  validationStatus: 'valid' | 'invalid' | 'initial';
-}
-
-const FormFieldContext = createContext<FormFieldContextType | undefined>(undefined);
-
-const FormFieldProvider: FC<FormFieldProps> = ({ children, ...props }) => {
+const FormField: FC<FormFieldProps> = ({
+  children,
+  disabled,
+  validationStatus = 'initial',
+  readonly,
+  showValidationIcon = false,
+  ...props
+}) => {
   const value = useMemo(
     () => ({
-      validationStatus: props.validationStatus || 'initial',
+      validationStatus,
+      disabled,
+      readonly,
+      showValidationIcon,
     }),
-    [props.validationStatus]
+    [validationStatus, disabled, readonly, showValidationIcon]
   );
 
   return (
     <FormFieldContext.Provider value={value}>
-      <FormField {...props}>{children}</FormField>
+      <FormFieldComponent {...props} isDisabled={disabled} isReadOnly={readonly}>
+        {children}
+      </FormFieldComponent>
     </FormFieldContext.Provider>
   );
 };
 
-const useFormFieldContext = (): FormFieldContextType | undefined => useContext(FormFieldContext);
-
-export { FormFieldProvider, useFormFieldContext };
+export default FormField;

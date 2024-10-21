@@ -94,7 +94,7 @@ const InputVariants: StoryFn = () => {
           </FormField>
         </VariantTitle>
         <VariantTitle title="Disabled">
-          <FormField isDisabled>
+          <FormField disabled>
             <FormFieldLabel>
               <FormFieldLabelText>Label</FormFieldLabelText>
             </FormFieldLabel>
