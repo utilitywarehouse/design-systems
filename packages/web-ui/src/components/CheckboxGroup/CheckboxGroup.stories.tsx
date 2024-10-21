@@ -164,7 +164,7 @@ export const Wrap: Story = {
 export const CheckboxGroupRootStory: StoryObj<typeof CheckboxGroupRoot> = {
   name: 'CheckboxGroupRoot',
   render: args => (
-    <Flex component="form" gap={8}>
+    <Flex component="form" direction="column" gap={8} width="fit-content">
       <CheckboxGroupRoot {...args} name="checkbox-story">
         <Checkbox value="1" label="One" />
         <Checkbox value="2" label="Two" />
