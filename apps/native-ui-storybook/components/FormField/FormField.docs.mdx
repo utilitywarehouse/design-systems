@@ -22,6 +22,7 @@ import {
   RadioLabel,
   Checkbox,
   CheckboxIndicator,
+  CheckboxIcon,
   CheckboxLabel,
   VStack,
 } from '@utilitywarehouse/native-ui';
@@ -42,10 +43,12 @@ The `FormField` component is a container for form elements such as input fields.
 - [Usage](#usage)
   - [Validation Helper Text](#validation-helper-text)
 - [Props](#props)
+- [Components](#components)
 - [Variants](#variants)
+- [Advanced Usage](#advanced-usage)
 - [Examples](#examples)
-  - [With RadioGroup](#with-radiogroup)
-  - [With Checkbox](#with-checkbox)
+  - [With `RadioGroup`](#with-radiogroup)
+  - [With `Checkbox`](#with-checkbox)
 
 ## Playground
 
@@ -60,42 +63,20 @@ The `FormField` component is a container for form elements such as input fields.
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <FormField>
-        <FormFieldLabel>
-          <FormFieldLabelText>Label</FormFieldLabelText>
-        </FormFieldLabel>
-        <Input onChange={() => console.log('###')} />
-        <FormFieldHelper>
-          <FormFieldHelperText>Helper text</FormFieldHelperText>
-        </FormFieldHelper>
+      <FormField label="Label" helperText="Helper text" helperPosition="bottom">
+        <Input onChange={() => console.log('###')} placeholder="Placeholder" />
       </FormField>
     </Center>
   </NativeUIProvider>
 </Canvas>
 
 ```tsx
-import {
-  Input,
-  InputField,
-  FormField,
-  FormFieldHelper,
-  FormFieldHelperText,
-  FormFieldLabel,
-  FormFieldLabelText,
-} from '@utilitywarehouse/native-ui';
+import { Input, FormField } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
   return (
-    <FormField>
-      <FormFieldLabel>
-        <FormFieldLabelText>Label</FormFieldLabelText>
-      </FormFieldLabel>
-      <Input onChange={() => console.log('###')}>
-        <InputField placeholder="Placeholder" />
-      </Input>
-      <FormFieldHelper>
-        <FormFieldHelperText>Helper text</FormFieldHelperText>
-      </FormFieldHelper>
+    <FormField label="Label" helperText="Helper text" helperPosition="bottom">
+      <Input onChange={() => console.log('###')} placeholder="Placeholder" />
     </FormField>
   );
 };
@@ -108,13 +89,83 @@ The `FormField` component can display helper text to provide additional context 
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <FormField validationStatus="invalid">
+      <FormField
+        validationStatus="invalid"
+        label="Label"
+        helperText="Helper text"
+        validText="Valid form field text"
+        invalidText="Invalid form field text"
+      >
+        <Input onChange={() => console.log('###')} placeholder="Placeholder" />
+      </FormField>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Input, FormField } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <FormField
+      validationStatus="invalid"
+      label="Label"
+      helperText="Helper text"
+      validText="Valid form field text"
+      invalidText="Invalid form field text"
+    >
+      <Input onChange={() => console.log('###')} placeholder="Placeholder" />
+    </FormField>
+  );
+};
+```
+
+## Props
+
+| Name                 | Type                               | Default     | Description                                                      |
+| -------------------- | ---------------------------------- | ----------- | ---------------------------------------------------------------- |
+| `validationStatus`   | `'initial' \| 'valid' \| 'invalid` | `'initial'` | The validation status of the field.                              |
+| `disabled`           | `boolean`                          | `false`     | Whether the field is disabled.                                   |
+| `readonly`           | `boolean`                          | `false`     | Whether the field is readonly.                                   |
+| `label`              | `string`                           | `-`         | The label for the field.                                         |
+| `helperText`         | `string`                           | `-`         | The helper text for the field.                                   |
+| `helperIcon`         | `React.ComponentType`              | `-`         | The icon for the helper text.                                    |
+| `helperPosition`     | `'top' \| 'bottom'`                | `'top'`     | The position of the helper text.                                 |
+| `validText`          | `string`                           | `-`         | The valid text for the field.                                    |
+| `invalidText`        | `string`                           | `-`         | The invalid text for the field.                                  |
+| `showValidationIcon` | `boolean`                          | `false`     | Whether to show the validation icon next to the validation text. |
+
+## Components
+
+The `FormField` component is composed of the following components:
+
+- `FormFieldLabel`
+- `FormFieldLabelText`
+- `FormFieldHelper`
+- `FormFieldHelperText`
+- `FormFieldInvalid`
+- `FormFieldInvalidIcon`
+- `FormFieldInvalidText`
+- `FormFieldValid`
+- `FormFieldValidIcon`
+- `FormFieldValidText`
+
+## Variants
+
+<Canvas of={Stories.Variants} />
+
+## Advanced Usage
+
+The `FormField` component can be broken down into smaller components to provide more control over the layout and styling of the form field.
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <FormField validationStatus="invalid" showValidationIcon={false}>
         <FormFieldLabel>
           <FormFieldLabelText>Label</FormFieldLabelText>
         </FormFieldLabel>
-        <Input onChange={() => console.log('###')}>
-          <InputField placeholder="Placeholder" />
-        </Input>
+        <Input onChange={() => console.log('###')} placeholder="Placeholder" />
         <FormFieldHelper>
           <FormFieldHelperText>Helper text</FormFieldHelperText>
         </FormFieldHelper>
@@ -134,12 +185,11 @@ The `FormField` component can display helper text to provide additional context 
 ```tsx
 import {
   Input,
-  InputField,
   FormField,
-  FormFieldHelper,
-  FormFieldHelperText,
   FormFieldLabel,
   FormFieldLabelText,
+  FormFieldHelper,
+  FormFieldHelperText,
   FormFieldInvalidIcon,
   FormFieldInvalid,
   FormFieldInvalidText,
@@ -150,13 +200,11 @@ import {
 
 const MyComponent = () => {
   return (
-    <FormField validationStatus="invalid">
+    <FormField validationStatus="invalid" showValidationIcon={false}>
       <FormFieldLabel>
         <FormFieldLabelText>Label</FormFieldLabelText>
       </FormFieldLabel>
-      <Input onChange={() => console.log('###')}>
-        <InputField placeholder="Placeholder" />
-      </Input>
+      <Input onChange={() => console.log('###')} placeholder="Placeholder" />
       <FormFieldHelper>
         <FormFieldHelperText>Helper text</FormFieldHelperText>
       </FormFieldHelper>
@@ -173,110 +221,53 @@ const MyComponent = () => {
 };
 ```
 
-## Props
-
-| Name               | Type                               | Default     | Description                         |
-| ------------------ | ---------------------------------- | ----------- | ----------------------------------- |
-| `validationStatus` | `'initial' \| 'valid' \| 'invalid` | `'initial'` | The validation status of the field. |
-| `disabled`         | `boolean`                          | `false`     | Whether the field is disabled.      |
-
-#### Descendants Styling Props
-
-Props to style child components.
-
-| Sx Prop        | Description                        |
-| -------------- | ---------------------------------- |
-| `_labelText`   | Prop to style FormFieldLabel       |
-| `_helperText`  | Prop to style FormFieldHelperText  |
-| `_helperIcon`  | Prop to style FormFieldHelperIcon  |
-| `_errorText`   | Prop to style FormFieldErrorText   |
-| `_invalidText` | Prop to style FormFieldInvalidText |
-| `_validText`   | Prop to style FormFieldValidText   |
-| `_invalidIcon` | Prop to style FormFieldInvalidIcon |
-| `_validIcon`   | Prop to style FormFieldValidIcon   |
-| `_input`       | Prop to style Input                |
-
-## Variants
-
-<Canvas of={Stories.Variants} />
-
 ## Examples
 
-### With RadioGroup
+### With `RadioGroup`
 
 The `FormField` component can be used to wrap a `RadioGroup` component to provide additional context to the user.
 
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <FormField>
-        <FormFieldLabel>
-          <FormFieldLabelText>Favourite fruit</FormFieldLabelText>
-        </FormFieldLabel>
+      <FormField
+        label="What is your favourite fruit?"
+        helperText="Choose the fruit you like the most"
+        helperPosition="bottom"
+      >
         <RadioGroup aria-label="Radio Group">
-          <Radio value="mango">
-            <RadioIndicator />
-            <RadioLabel>Mango</RadioLabel>
-          </Radio>
-          <Radio value="apple">
-            <RadioIndicator />
-            <RadioLabel>Apple</RadioLabel>
-          </Radio>
-          <Radio value="orange">
-            <RadioIndicator />
-            <RadioLabel>Orange</RadioLabel>
-          </Radio>
+          <Radio value="mango" label="Mango" />
+          <Radio value="apple" label="Apple" />
+          <Radio value="orange" label="Orange" />
+          <Radio value="banana" label="Banana" />
         </RadioGroup>
-        <FormFieldHelper>
-          <FormFieldHelperText>Choose the fruit you like the most</FormFieldHelperText>
-        </FormFieldHelper>
       </FormField>
     </Center>
   </NativeUIProvider>
 </Canvas>
 
 ```tsx
-import {
-  RadioGroup,
-  Radio,
-  RadioIndicator,
-  RadioLabel,
-  FormField,
-  FormFieldHelper,
-  FormFieldHelperText,
-  FormFieldLabel,
-  FormFieldLabelText,
-} from '@utilitywarehouse/native-ui';
+import { RadioGroup, Radio, FormField } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
   return (
-    <FormField>
-      <FormFieldLabel>
-        <FormFieldLabelText>Favourite fruit</FormFieldLabelText>
-      </FormFieldLabel>
+    <FormField
+      label="What is your favourite fruit?"
+      helperText="Choose the fruit you like the most"
+      helperPosition="bottom"
+    >
       <RadioGroup aria-label="Radio Group">
-        <Radio value="mango">
-          <RadioIndicator />
-          <RadioLabel>Mango</RadioLabel>
-        </Radio>
-        <Radio value="apple">
-          <RadioIndicator />
-          <RadioLabel>Apple</RadioLabel>
-        </Radio>
-        <Radio value="orange">
-          <RadioIndicator />
-          <RadioLabel>Orange</RadioLabel>
-        </Radio>
+        <Radio value="mango" label="Mango" />
+        <Radio value="apple" label="Apple" />
+        <Radio value="orange" label="Orange" />
+        <Radio value="banana" label="Banana" />
       </RadioGroup>
-      <FormFieldHelper>
-        <FormFieldHelperText>Choose the fruit you like the most</FormFieldHelperText>
-      </FormFieldHelper>
     </FormField>
   );
 };
 ```
 
-### With Checkbox
+### With `Checkbox`
 
 The `FormField` component can be used to wrap a `Checkbox` component to provide additional context to the user.
 
@@ -285,7 +276,9 @@ The `FormField` component can be used to wrap a `Checkbox` component to provide 
     <Center>
       <FormField validationStatus="invalid">
         <Checkbox alignItems="flex-start">
-          <CheckboxIndicator />
+          <CheckboxIndicator>
+<CheckboxIcon />
+          </CheckboxIndicator>
           <VStack gap="$1">
             <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
             <FormFieldHelper>
@@ -299,6 +292,7 @@ The `FormField` component can be used to wrap a `Checkbox` component to provide 
         </Checkbox>
       </FormField>
     </Center>
+
   </NativeUIProvider>
 </Canvas>
 

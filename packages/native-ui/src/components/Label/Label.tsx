@@ -5,7 +5,7 @@ import { Text as RNText } from 'react-native';
 
 import LabelProps from './Label.props';
 
-const Label: React.FC<LabelProps> = forwardRef<RNText, LabelProps>(
+const Label = forwardRef<RNText, LabelProps>(
   ({ children, nested, style, disabled, ...props }, ref) => {
     const { styles } = useStyles(stylesheet, { nested, disabled });
 

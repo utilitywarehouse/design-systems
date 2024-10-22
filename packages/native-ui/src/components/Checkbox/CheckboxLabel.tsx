@@ -1,31 +1,28 @@
 import React, { forwardRef } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { Text, TextProps } from 'react-native';
+import { Text } from 'react-native';
 
 import { useCheckboxContext } from './Checkbox.context';
+import { Label } from '../Label';
+import LabelProps from '../Label/Label.props';
 
-const CheckboxLabel = forwardRef<Text, TextProps>(({ children, style, ...props }, ref) => {
+const CheckboxLabel = forwardRef<Text, LabelProps>(({ children, style, ...props }, ref) => {
   const { checked, disabled } = useCheckboxContext();
   const { styles } = useStyles(stylesheet, {
     checked,
     disabled,
   });
   return (
-    <Text ref={ref} {...props} style={[styles.text, style]}>
+    <Label ref={ref} {...props} style={[styles.text, style]}>
       {children}
-    </Text>
+    </Label>
   );
 });
 
 CheckboxLabel.displayName = 'CheckboxLabel';
 
-const stylesheet = createStyleSheet(({ lineHeights, fontSizes, fonts, fontWeights, colors }) => ({
+const stylesheet = createStyleSheet(({ colors }) => ({
   text: {
-    color: colors.grey1000,
-    lineHeight: lineHeights.lg,
-    fontSize: fontSizes.md,
-    fontFamily: fonts.body,
-    fontWeight: fontWeights.normal,
     variants: {
       checked: {
         true: {

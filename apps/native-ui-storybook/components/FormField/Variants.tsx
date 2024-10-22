@@ -71,7 +71,6 @@ const InputVariants: StoryFn = () => {
               <InputField />
             </Input>
             <FormFieldValid>
-              <FormFieldValidIcon />
               <FormFieldValidText>Valid form field text</FormFieldValidText>
             </FormFieldValid>
           </FormField>
@@ -88,7 +87,6 @@ const InputVariants: StoryFn = () => {
               <InputField />
             </Input>
             <FormFieldInvalid>
-              <FormFieldInvalidIcon />
               <FormFieldInvalidText>Invalid form field text</FormFieldInvalidText>
             </FormFieldInvalid>
           </FormField>

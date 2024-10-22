@@ -21,8 +21,6 @@ const Helper = forwardRef<View, HelperProps>(
       HelperIcon = WarningMediumContainedIcon;
     }
 
-    console.log(HelperIcon);
-
     const value = useMemo(() => ({ validationStatus, disabled }), [validationStatus, disabled]);
 
     return (
