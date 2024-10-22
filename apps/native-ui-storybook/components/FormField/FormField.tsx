@@ -1,41 +1,15 @@
 import React from 'react';
-import {
-  Input,
-  InputField,
-  FormField,
-  FormFieldHelper,
-  FormFieldHelperText,
-  FormFieldLabel,
-  FormFieldLabelText,
-  FormFieldInvalidIcon,
-  FormFieldInvalid,
-  FormFieldInvalidText,
-  FormFieldValidIcon,
-  FormFieldValid,
-  FormFieldValidText,
-} from '@utilitywarehouse/native-ui';
+import { Input, FormField } from '@utilitywarehouse/native-ui';
+import * as Icons from '@utilitywarehouse/react-native-icons';
 import { Meta, StoryFn } from '@storybook/react';
 
-const FormFieldBasic: StoryFn = ({ validationStatus, showValidationIcon, ...props }: any) => {
+const FormFieldBasic: StoryFn = ({ validationStatus, helperIcon: icon, ...props }: any) => {
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+  // @ts-expect-error - This is a playground
+  const helperIcon: ComponentType | undefined = icon === 'none' ? undefined : Icons[icon];
   return (
-    <FormField validationStatus={validationStatus} {...props}>
-      <FormFieldLabel>
-        <FormFieldLabelText>Label</FormFieldLabelText>
-      </FormFieldLabel>
-      <Input>
-        <InputField />
-      </Input>
-      <FormFieldHelper>
-        <FormFieldHelperText>Helper text</FormFieldHelperText>
-      </FormFieldHelper>
-      <FormFieldInvalid>
-        {showValidationIcon && <FormFieldInvalidIcon />}
-        <FormFieldInvalidText>Invalid form field text</FormFieldInvalidText>
-      </FormFieldInvalid>
-      <FormFieldValid>
-        {showValidationIcon && <FormFieldValidIcon />}
-        <FormFieldValidText>Valid form field text</FormFieldValidText>
-      </FormFieldValid>
+    <FormField validationStatus={validationStatus} helperIcon={helperIcon} {...props}>
+      <Input />
     </FormField>
   );
 };
@@ -57,12 +31,50 @@ FormFieldBasic.argTypes = {
     description: 'Disable the Input component',
     defaultValue: false,
   },
+  label: {
+    control: 'text',
+    description: 'The label of the Input component',
+    defaultValue: 'Label',
+  },
+  helperText: {
+    control: 'text',
+    description: 'The helper text of the Input component',
+    defaultValue: 'Helper text',
+  },
+  helperIcon: {
+    control: 'select',
+    options: ['none', ...Object.keys(Icons).filter(icon => icon.includes('Medium'))],
+    description: 'The helper text icon of the Input component',
+    defaultValue: 'Helper text icon',
+  },
+  helperPosition: {
+    control: 'select',
+    options: ['top', 'bottom'],
+    description: 'The helper text position of the Input component',
+    defaultValue: 'bottom',
+  },
+  validText: {
+    control: 'text',
+    description: 'The valid text of the Input component',
+    defaultValue: 'Valid text',
+  },
+  invalidText: {
+    control: 'text',
+    description: 'The invalid text of the Input component',
+    defaultValue: 'Invalid text',
+  },
 } as Meta<typeof Input>['argTypes'];
 
 FormFieldBasic.args = {
   validationStatus: 'initial',
   disabled: false,
   showValidationIcon: false,
+  label: 'Label',
+  helperText: 'Helper text',
+  helperIcon: 'none',
+  helperPosition: 'top',
+  validText: 'Valid text',
+  invalidText: 'Invalid error text',
 } as Meta<typeof Input>['args'];
 
 export default FormFieldBasic;

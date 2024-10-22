@@ -10,7 +10,7 @@ import {
 import HelperProps from './Helper.props';
 import { HelperContext } from './HelperContext';
 
-const Helper: React.FC<HelperProps> = forwardRef<View, HelperProps>(
+const Helper = forwardRef<View, HelperProps>(
   ({ children, validationStatus, showIcon, style, disabled, icon, text, ...props }, ref) => {
     const { styles } = useStyles(stylesheet, { validationStatus, disabled });
     let HelperIcon = icon;
@@ -20,6 +20,8 @@ const Helper: React.FC<HelperProps> = forwardRef<View, HelperProps>(
     if (validationStatus === 'invalid' && !icon) {
       HelperIcon = WarningMediumContainedIcon;
     }
+
+    console.log(HelperIcon);
 
     const value = useMemo(() => ({ validationStatus, disabled }), [validationStatus, disabled]);
 

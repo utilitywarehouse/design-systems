@@ -1,20 +1,30 @@
 import React, { forwardRef } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-
 import { Icon } from '../Icon';
-
-import HelperIconProps from './Helper.props';
 import { SvgRef } from '../../types';
 import IconProps from '../Icon/Icon.props';
 import { useHelperContext } from './HelperContext';
+import { Platform, StyleProp, ViewStyle } from 'react-native';
 
-const HelperIcon: React.FC<HelperIconProps> = forwardRef<SvgRef, IconProps>(
-  ({ style, ...props }, ref) => {
-    const { validationStatus, disabled } = useHelperContext();
-    const { styles } = useStyles(stylesheet, { validationStatus, disabled });
-    return <Icon ref={ref} style={[styles.icon, style]} {...props} />;
-  }
-);
+const HelperIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
+  const { validationStatus, disabled } = useHelperContext();
+  const { styles } = useStyles(stylesheet, { validationStatus, disabled });
+
+  return (
+    <Icon
+      ref={ref}
+      style={
+        Platform.OS === 'web'
+          ? {
+              ...styles.icon,
+              ...(style as ViewStyle),
+            }
+          : [styles.icon as StyleProp<ViewStyle>, style]
+      }
+      {...props}
+    />
+  );
+});
 
 HelperIcon.displayName = 'HelperIcon';
 

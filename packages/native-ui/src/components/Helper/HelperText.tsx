@@ -2,23 +2,19 @@ import React, { forwardRef } from 'react';
 import { Text } from '../Text';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Text as RNText } from 'react-native';
-
-import HelperTextProps from './Helper.props';
 import TextProps from '../Text/Text.props';
 import { useHelperContext } from './HelperContext';
 
-const HelperText: React.FC<HelperTextProps> = forwardRef<RNText, TextProps>(
-  ({ children, style, ...props }, ref) => {
-    const { validationStatus, disabled } = useHelperContext();
-    const { styles } = useStyles(stylesheet, { validationStatus, disabled });
+const HelperText = forwardRef<RNText, TextProps>(({ children, style, ...props }, ref) => {
+  const { validationStatus, disabled } = useHelperContext();
+  const { styles } = useStyles(stylesheet, { validationStatus, disabled });
 
-    return (
-      <Text ref={ref} style={[styles.text, style]} {...props}>
-        {children}
-      </Text>
-    );
-  }
-);
+  return (
+    <Text ref={ref} style={[styles.text, style]} {...props}>
+      {children}
+    </Text>
+  );
+});
 
 HelperText.displayName = 'HelperText';
 

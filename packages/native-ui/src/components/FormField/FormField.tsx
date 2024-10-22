@@ -8,6 +8,7 @@ import FormFieldHelperComponent from './FormFieldHelper';
 import FormFieldLabelComponent from './FormFieldLabel';
 import { HelperIcon, HelperText } from '../Helper';
 import { View } from 'react-native';
+import FormFieldValid from './FormFieldValid';
 
 export const FormFieldComponent = createFormControl({
   Root: FormFieldRoot,
@@ -25,6 +26,9 @@ export const FormFieldLabel = FormFieldComponent.Label;
 export const FormFieldLabelText = FormFieldComponent.Label.Text;
 export const FormFieldHelper = FormFieldComponent.Helper;
 export const FormFieldHelperText = FormFieldComponent.Helper.Text;
+export const FormFieldHelperIcon = HelperIcon;
+export const FormFieldValidText = HelperText;
+export const FormFieldInvalidText = HelperText;
 
 const FormField: FC<FormFieldProps> = ({
   children,
@@ -32,6 +36,12 @@ const FormField: FC<FormFieldProps> = ({
   validationStatus = 'initial',
   readonly,
   showValidationIcon = false,
+  label,
+  helperText,
+  helperIcon,
+  helperPosition,
+  validText,
+  invalidText,
   ...props
 }) => {
   const value = useMemo(
@@ -47,7 +57,18 @@ const FormField: FC<FormFieldProps> = ({
   return (
     <FormFieldContext.Provider value={value}>
       <FormFieldComponent {...props} isDisabled={disabled} isReadOnly={readonly}>
+        {label ? <FormFieldLabelText>{label}</FormFieldLabelText> : null}
+        {!!helperText && helperPosition === 'top' && (
+          <FormFieldHelper text={helperText} icon={helperIcon} showIcon={!!helperIcon} />
+        )}
         {children}
+        {!!helperText && helperPosition === 'bottom' && (
+          <FormFieldHelper text={helperText} icon={helperIcon} />
+        )}
+        {!!validText && <FormFieldValid text={validText} showIcon={showValidationIcon} />}
+        {!!invalidText && (
+          <FormFieldInvalidComponent text={invalidText} showIcon={showValidationIcon} />
+        )}
       </FormFieldComponent>
     </FormFieldContext.Provider>
   );
