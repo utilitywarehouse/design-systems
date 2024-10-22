@@ -28,11 +28,11 @@ The Radio component presents users with predefined choices and enables them to s
 - [Usage](#usage)
 - [Props](#props)
 - [Components](#components)
-  - [Radio](#radio)
-  - [RadioIndicator](#radioindicator)
-  - [RadioIcon](#radioicon)
-  - [RadioLabel](#radiolabel)
-  - [RadioGroup](#radiogroup)
+  - [`Radio`](#radio)
+  - [`RadioIndicator`](#radioindicator)
+  - [`RadioIcon`](#radioicon)
+  - [`RadioLabel`](#radiolabel)
+  - [`RadioGroup`](#radiogroup)
 - [Variants](#variants)
 - [Advanced Usage](#advanced-usage)
 
@@ -114,11 +114,19 @@ const MyComponent = () => {
 
 ## Props
 
-| Property | Type     | Default | Description                                                                                          |
-| -------- | -------- | ------- | ---------------------------------------------------------------------------------------------------- |
-| value    | string   | -       | The value to be used in the radio input. This is the value that will be returned on form submission. |
-| onChange | function | -       | Function called when the state of the radio changes.                                                 |
-| disabled | bool     | false   | To manually set disable to the radio.                                                                |
+| Property             | Type                                | Default | Description                                                                                          |
+| -------------------- | ----------------------------------- | ------- | ---------------------------------------------------------------------------------------------------- |
+| `value`              | string                              | -       | The value to be used in the radio input. This is the value that will be returned on form submission. |
+| `onChange`           | function                            | -       | Function called when the state of the radio changes.                                                 |
+| `disabled`           | bool                                | false   | To manually set disable to the radio.                                                                |
+| `validationStatus`   | `'valid' \| 'invalid' \| 'initial'` | -       | The validation status of the radio.                                                                  |
+| `disabled`           | `bool`                              | `false` | To manually set disable to the radio.                                                                |
+| `label`              | `string`                            | -       | The label to be displayed next to the radio.                                                         |
+| `helperText`         | `string`                            | -       | The helper text to be displayed below the radio.                                                     |
+| `helperIcon`         | `React.ComponentType`               | -       | The icon to be displayed next to the helper text.                                                    |
+| `invalidText`        | `string`                            | -       | The invalid text to be displayed below the radio.                                                    |
+| `validText`          | `string`                            | -       | The valid text to be displayed below the radio.                                                      |
+| `showValidationIcon` | `boolean`                           | `true`  | Whether to show the validation icon.                                                                 |
 
 ## Components
 
@@ -142,11 +150,12 @@ Contains all Label related layout style props and actions. It inherits all the p
 
 Contains all Group related layout style props and actions. It inherits all the properties of React Native's View component.
 
-| Property | Type     | Default | Description                                                         |
-| -------- | -------- | ------- | ------------------------------------------------------------------- |
-| value    | string   | -       | The value of the radio group.                                       |
-| onChange | function | -       | The callback fired when any children Radio is checked or unchecked. |
-| disabled | bool     | -       | To manually set disable to the radio group.                         |
+| Property           | Type                                | Default | Description                                                         |
+| ------------------ | ----------------------------------- | ------- | ------------------------------------------------------------------- |
+| `value`            | string                              | -       | The value of the radio group.                                       |
+| `onChange`         | function                            | -       | The callback fired when any children Radio is checked or unchecked. |
+| `disabled`         | bool                                | -       | To manually set disable to the radio group.                         |
+| `validationStatus` | `'valid' \| 'invalid' \| 'initial'` | -       | The validation status of the checkbox group.                        |
 
 ## Variants
 

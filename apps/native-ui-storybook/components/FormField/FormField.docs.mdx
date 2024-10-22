@@ -122,18 +122,18 @@ const MyComponent = () => {
 
 ## Props
 
-| Name                 | Type                               | Default     | Description                                                      |
-| -------------------- | ---------------------------------- | ----------- | ---------------------------------------------------------------- |
-| `validationStatus`   | `'initial' \| 'valid' \| 'invalid` | `'initial'` | The validation status of the field.                              |
-| `disabled`           | `boolean`                          | `false`     | Whether the field is disabled.                                   |
-| `readonly`           | `boolean`                          | `false`     | Whether the field is readonly.                                   |
-| `label`              | `string`                           | `-`         | The label for the field.                                         |
-| `helperText`         | `string`                           | `-`         | The helper text for the field.                                   |
-| `helperIcon`         | `React.ComponentType`              | `-`         | The icon for the helper text.                                    |
-| `helperPosition`     | `'top' \| 'bottom'`                | `'top'`     | The position of the helper text.                                 |
-| `validText`          | `string`                           | `-`         | The valid text for the field.                                    |
-| `invalidText`        | `string`                           | `-`         | The invalid text for the field.                                  |
-| `showValidationIcon` | `boolean`                          | `false`     | Whether to show the validation icon next to the validation text. |
+| Name                 | Type                                | Default     | Description                                                      |
+| -------------------- | ----------------------------------- | ----------- | ---------------------------------------------------------------- |
+| `validationStatus`   | `'initial' \| 'valid' \| 'invalid'` | `'initial'` | The validation status of the field.                              |
+| `disabled`           | `boolean`                           | `false`     | Whether the field is disabled.                                   |
+| `readonly`           | `boolean`                           | `false`     | Whether the field is readonly.                                   |
+| `label`              | `string`                            | `-`         | The label for the field.                                         |
+| `helperText`         | `string`                            | `-`         | The helper text for the field.                                   |
+| `helperIcon`         | `React.ComponentType`               | `-`         | The icon for the helper text.                                    |
+| `helperPosition`     | `'top' \| 'bottom'`                 | `'top'`     | The position of the helper text.                                 |
+| `validText`          | `string`                            | `-`         | The valid text for the field.                                    |
+| `invalidText`        | `string`                            | `-`         | The invalid text for the field.                                  |
+| `showValidationIcon` | `boolean`                           | `false`     | Whether to show the validation icon next to the validation text. |
 
 ## Components
 
@@ -277,10 +277,10 @@ The `FormField` component can be used to wrap a `Checkbox` component to provide 
       <FormField validationStatus="invalid">
         <Checkbox alignItems="flex-start">
           <CheckboxIndicator>
-<CheckboxIcon />
+            <CheckboxIcon />
           </CheckboxIndicator>
-          <VStack gap="$1">
-            <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
+          <VStack space="xs">
+            <CheckboxLabel nested={false}>I accept the terms and conditions</CheckboxLabel>
             <FormFieldHelper>
               <FormFieldHelperText>Read and accept the terms and conditions</FormFieldHelperText>
             </FormFieldHelper>
@@ -315,8 +315,8 @@ const MyComponent = () => {
     <FormField validationStatus="invalid">
       <Checkbox alignItems="flex-start">
         <CheckboxIndicator />
-        <VStack gap="$1">
-          <CheckboxLabel>I accept the terms and conditions</CheckboxLabel>
+        <VStack space="xs">
+          <CheckboxLabel nested={false}>I accept the terms and conditions</CheckboxLabel>
           <FormFieldHelper>
             <FormFieldHelperText>Read and accept the terms and conditions</FormFieldHelperText>
           </FormFieldHelper>

@@ -5,6 +5,7 @@ import { Text } from 'react-native';
 import { useCheckboxContext } from './Checkbox.context';
 import { Label } from '../Label';
 import LabelProps from '../Label/Label.props';
+import { useFormFieldContext } from '../FormField';
 
 const CheckboxLabel = forwardRef<Text, LabelProps>(({ children, style, ...props }, ref) => {
   const { checked, disabled } = useCheckboxContext();
@@ -12,8 +13,10 @@ const CheckboxLabel = forwardRef<Text, LabelProps>(({ children, style, ...props 
     checked,
     disabled,
   });
+  const { validationStatus } = useFormFieldContext();
+  const isNested = !!validationStatus;
   return (
-    <Label ref={ref} {...props} style={[styles.text, style]}>
+    <Label ref={ref} nested={isNested} {...props} style={[styles.text, style]}>
       {children}
     </Label>
   );
