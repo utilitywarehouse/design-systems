@@ -5,6 +5,7 @@ interface CheckboxGroupProps extends ViewProps {
   value?: Array<string>;
   onChange?: (value: Array<string>) => void;
   readonly?: boolean;
+  validationStatus?: 'valid' | 'invalid' | 'initial';
 }
 
 export default CheckboxGroupProps;

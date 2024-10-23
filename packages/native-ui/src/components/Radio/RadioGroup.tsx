@@ -5,8 +5,8 @@ import { RadioGroupContext } from './RadioGroup.context';
 import { View } from 'react-native';
 
 const RadioGroup = forwardRef<View, RadioGroupProps>(
-  ({ children, disabled, readonly, ...props }, ref) => {
-    const value = useMemo(() => ({ disabled }), [disabled]);
+  ({ children, disabled, readonly, validationStatus, ...props }, ref) => {
+    const value = useMemo(() => ({ disabled, validationStatus }), [disabled, validationStatus]);
     return (
       <RadioGroupContext.Provider value={value}>
         {/* @ts-expect-error - ref is not a valid prop for view */}

@@ -5,8 +5,8 @@ import { CheckboxGroupContext } from './CheckboxGroup.context';
 import { View } from 'react-native';
 
 const CheckboxGroup = forwardRef<View, CheckboxGroupProps>(
-  ({ children, disabled, readonly, ...props }, ref) => {
-    const value = useMemo(() => ({ disabled }), [disabled]);
+  ({ children, disabled, readonly, validationStatus, ...props }, ref) => {
+    const value = useMemo(() => ({ disabled, validationStatus }), [disabled, validationStatus]);
     return (
       <CheckboxGroupContext.Provider value={value}>
         {/* @ts-expect-error - ref is not a valid prop for view */}

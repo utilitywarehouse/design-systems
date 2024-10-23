@@ -5,6 +5,7 @@ interface RadioGroupProps extends ViewProps {
   value?: string;
   onChange?: (value: string) => void;
   readonly?: boolean;
+  validationStatus?: 'valid' | 'invalid' | 'initial';
 }
 
 export default RadioGroupProps;
