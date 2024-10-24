@@ -11,6 +11,7 @@ import { BoxProps } from './Box.props';
 import { Text } from '../Text';
 
 import { fonts } from '../../tokens';
+import { mediaQueries } from '../../utils';
 
 const meta: Meta<typeof Box> = {
   title: 'Web UI / Layout / Box',
@@ -83,3 +84,35 @@ export const CustomComponent = {
     additionalProp: 'I am the additional prop :)',
   },
 };
+
+// export const MediaQueriesExample: Story = {
+//   render: () => (
+//     <Box
+//       sx={{
+//         background: {
+//           mobile: 'red',
+//           tablet: 'blue',
+//           desktop: 'green',
+//           wide: 'yellow',
+//         },
+//         [mediaQueries.only('mobile')]: {
+//           color: 'red',
+//         },
+//
+//         [mediaQueries.only('tablet')]: {
+//           color: 'blue',
+//         },
+//
+//         [mediaQueries.only('desktop')]: {
+//           color: 'green',
+//         },
+//
+//         [mediaQueries.only('wide')]: {
+//           color: 'yellow',
+//         },
+//       }}
+//     >
+//       This text should not be visible.
+//     </Box>
+//   ),
+// };
