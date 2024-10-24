@@ -6,7 +6,8 @@ import { breakpoints } from '../tokens';
 
 const unit = 'px';
 const step = 5;
-const mq = (breakpoint: string) => `@media (min-width:${breakpoint})`;
+// we include `screen and` here to differentiate our media queries from any created by MUI, so they don't override any responsive props declared on the same component.
+const mq = (breakpoint: string) => `@media screen and (min-width:${breakpoint})`;
 const keys = Object.keys(breakpoints);
 
 type Breakpoint = keyof typeof breakpoints;
