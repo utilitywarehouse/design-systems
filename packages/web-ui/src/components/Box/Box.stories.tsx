@@ -11,7 +11,6 @@ import { BoxProps } from './Box.props';
 import { Text } from '../Text';
 
 import { fonts } from '../../tokens';
-import { mediaQueries } from '../../utils';
 
 const meta: Meta<typeof Box> = {
   title: 'Web UI / Layout / Box',
