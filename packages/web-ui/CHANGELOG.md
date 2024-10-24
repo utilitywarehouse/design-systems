@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 1.0.8
+
+### Patch Changes
+
+- [#585](https://github.com/utilitywarehouse/design-systems/pull/585) [`51fd6f86`](https://github.com/utilitywarehouse/design-systems/commit/51fd6f86e317b968de3ce21877fcc2aa7263f517) Thanks [@robphoenix](https://github.com/robphoenix)! - Pass in the default mui typography theme for use by mui components
+
 ## 1.0.7
 
 ### Patch Changes
