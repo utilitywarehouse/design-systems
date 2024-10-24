@@ -8,8 +8,8 @@ import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 
 import { RadioTileProps } from './RadioTile.props';
 
-import { useBaseRadioGroup } from '../BaseRadioGroup';
 import { Flex } from '../Flex';
+import { useFormFieldGroup } from '../FormFieldGroup';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
 import { StyledRadioIndicator } from '../Radio/Radio';
@@ -108,7 +108,7 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'radiotile' });
-    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } = useBaseRadioGroup();
+    const { hasGroupHelperText, 'aria-describedby': ariaDescribedby } = useFormFieldGroup();
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
 

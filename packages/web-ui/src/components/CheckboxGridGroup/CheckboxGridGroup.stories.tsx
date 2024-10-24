@@ -3,6 +3,7 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { CheckboxGridGroup } from './CheckboxGridGroup';
+import { CheckboxGridGroupRoot } from './CheckboxGridGroupRoot';
 
 import { CheckboxTile } from '../CheckboxTile';
 import { Flex } from '../Flex';
@@ -112,5 +113,35 @@ export const CheckboxGridGroupResponsiveColumns: Story = {
   args: {
     helperText: 'CheckboxGridGroup with Responsive Columns',
     columns: { mobile: 1, tablet: 2, desktop: 3, wide: 6 },
+  },
+};
+
+export const CheckboxGridGroupRootStory: StoryObj<typeof CheckboxGridGroupRoot> = {
+  name: 'CheckboxGridGroupRoot',
+  render: args => (
+    <Flex component="form" gap={8}>
+      <CheckboxGridGroupRoot {...args} name="checkbox-tiles-story">
+        <CheckboxTile value="1" label="One" />
+        <CheckboxTile value="2" label="Two" />
+        <CheckboxTile value="3" label="Three" />
+        <CheckboxTile value="4" label="Four" />
+        <CheckboxTile value="5" label="Five" />
+        <CheckboxTile value="6" label="Six" />
+      </CheckboxGridGroupRoot>
+    </Flex>
+  ),
+  parameters: {
+    controls: {
+      exclude: [
+        'helperText',
+        'label',
+        'helperTextPosition',
+        'showHelperTextIcon',
+        'error',
+        'errorMessage',
+        'showErrorMessageIcon',
+        'contentWidth',
+      ],
+    },
   },
 };

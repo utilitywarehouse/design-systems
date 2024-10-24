@@ -25,11 +25,13 @@ import { DocsHeader } from '../../storybook-components';
 - [Error message](#error-message)
 - [Content width](#content-width)
 - [Controlled](#controlled)
+- [Advanced Usage](#advanced-usage)
 - [Props](#props)
 
 ## Alternatives
 
 - [CheckboxGridGroup](?path=/docs/components-checkboxgridgroup--documentation) - For presenting checkboxes in columns or a grid layout.
+- [CheckboxGroupRoot](?path=/story/web-ui-components-checkbox-checkboxgroup--checkbox-group-root-story) - For presenting checkboxes, outside of a fieldset, without label, helper text, or error message.
 - [RadioGroup](?path=/docs/components-radiogroup--documentation) - For single-select
 - [RadioGridGroup](?path=/docs/components-radiogridgroup--documentation) - For single-select in columns or a grid layout.
 
@@ -107,6 +109,36 @@ array, corresponding to the value props of each child `Checkbox`. The
 child of the group.
 
 <Canvas of={Stories.Controlled} />
+
+## Advanced Usage
+
+For advanced usage you can compose the `CheckboxGroupRoot` component.
+
+If you choose to do this, please make sure you properly label your components for accessibility. See [MagentaA11y](https://www.magentaa11y.com/checklist-web/checkbox/) for more info.
+
+```tsx
+<FormFieldGroup label="Label">
+  <CheckboxGroupRoot>
+    <Checkbox value="1" label="One" />
+    <Checkbox value="2" label="Two" />
+    <Checkbox value="3" label="Three" />
+  </CheckboxGroupRoot>
+</FormFieldGroup>
+
+
+<Fieldset>
+  <FieldsetLegend>
+    <Heading variant="h1">Label</Heading>
+  </FieldsetLegend>
+  <CheckboxGroupRoot>
+    <Checkbox value="1" label="One" />
+    <Checkbox value="2" label="Two" />
+    <Checkbox value="3" label="Three" />
+  </CheckboxGroupRoot>
+</Fieldset>
+```
+
+<Canvas of={Stories.CheckboxGroupRootStory} />
 
 ## Props
 

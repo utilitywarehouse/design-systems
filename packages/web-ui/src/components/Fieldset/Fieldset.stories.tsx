@@ -2,13 +2,11 @@ import * as React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { colors } from '@utilitywarehouse/colour-system';
-
 import { Fieldset } from './Fieldset';
 
-import { Box } from '../Box';
 import { FieldsetLegend } from '../FieldsetLegend';
-import { Text } from '../Text';
+
+import { Placeholder } from '../../storybook-components';
 
 const meta: Meta<typeof Fieldset> = {
   title: 'Web UI / Components / Fieldset',
@@ -23,11 +21,7 @@ export const Workshop: Story = {
     return (
       <Fieldset {...args}>
         <FieldsetLegend>Fieldset legend</FieldsetLegend>
-        <Box bgcolor={colors.grey75} padding={6}>
-          <Text component="p" variant="body">
-            A form input, such as a RadioGroup
-          </Text>
-        </Box>
+        <Placeholder height={100} width={300} />
       </Fieldset>
     );
   },

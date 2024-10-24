@@ -6,8 +6,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { colors } from '@utilitywarehouse/colour-system';
 
 import { RadioGroup } from './RadioGroup';
+import { RadioGroupRoot } from './RadioGroupRoot';
 
 import { Box } from '../Box';
+import { Flex } from '../Flex';
 import { Radio } from '../Radio';
 import { RadioTile } from '../RadioTile';
 
@@ -31,10 +33,10 @@ const meta: Meta<typeof RadioGroup> = {
     contentWidth: { control: { type: 'text' } },
   },
   args: {
-    defaultValue: '1',
-    label: 'Label',
+    defaultValue: 'wales',
+    label: 'Where do you live?',
     disabled: false,
-    helperText: 'Helper text',
+    helperText: '',
     showHelperTextIcon: false,
     error: false,
     errorMessage: 'There is an error',
@@ -51,15 +53,17 @@ export const Workshop: Story = {
     return (
       <Box display="flex" gap={10}>
         <RadioGroup {...args} name="with-radio">
-          <Radio value="1" label="One" />
-          <Radio value="2" label="Two" />
-          <Radio value="3" label="Three" />
+          <Radio value="england" label="England" />
+          <Radio value="wales" label="Wales" />
+          <Radio value="scotland" label="Scotland" />
+          <Radio value="northern-ireland" label="Northern Ireland" />
         </RadioGroup>
 
         <RadioGroup {...args} name="with-radio-tile">
-          <RadioTile value="1" label="One" />
-          <RadioTile value="2" label="Two" />
-          <RadioTile value="3" label="Three" />
+          <RadioTile value="england" label="England" />
+          <RadioTile value="wales" label="Wales" />
+          <RadioTile value="scotland" label="Scotland" />
+          <RadioTile value="northern-ireland" label="Northern Ireland" />
         </RadioGroup>
       </Box>
     );
@@ -154,5 +158,37 @@ export const Wrap: Story = {
         </RadioGroup>
       </Box>
     );
+  },
+};
+
+export const RadioGroupRootStory: StoryObj<typeof RadioGroupRoot> = {
+  name: 'RadioGroupRoot',
+  render: args => (
+    <Flex component="form" direction="column" gap={8} width="fit-content">
+      <RadioGroupRoot {...args} name="radio-story">
+        <Radio value="1" label="One" />
+        <Radio value="2" label="Two" />
+        <Radio value="3" label="Three" />
+      </RadioGroupRoot>
+      <RadioGroupRoot {...args} name="radio-tiles-story">
+        <RadioTile value="1" label="One" />
+        <RadioTile value="2" label="Two" />
+        <RadioTile value="3" label="Three" />
+      </RadioGroupRoot>
+    </Flex>
+  ),
+  parameters: {
+    controls: {
+      exclude: [
+        'helperText',
+        'label',
+        'helperTextPosition',
+        'showHelperTextIcon',
+        'error',
+        'errorMessage',
+        'showErrorMessageIcon',
+        'contentWidth',
+      ],
+    },
   },
 };

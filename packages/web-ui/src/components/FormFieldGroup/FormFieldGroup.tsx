@@ -1,9 +1,8 @@
 import * as React from 'react';
+import { forwardRef } from 'react';
 
-import { useControllableState } from '@radix-ui/react-use-controllable-state';
-
-import { BaseCheckboxGroupProvider } from './BaseCheckboxGroup.context';
-import { BaseCheckboxGroupProps } from './BaseCheckboxGroup.props';
+import { FormFieldGroupProvider } from './FormFieldGroup.context';
+import { FormFieldGroupProps } from './FormFieldGroup.props';
 
 import { Fieldset } from '../Fieldset';
 import { FieldsetLegend } from '../FieldsetLegend';
@@ -12,19 +11,20 @@ import { HelperText } from '../HelperText';
 
 import { mergeIds } from '../../helpers';
 import { useIds } from '../../hooks';
+import { PropsWithSx } from '../../types';
 
-const componentName = 'BaseCheckboxGroup';
+const componentName = 'FormFieldGroup';
 
-const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGroupProps>(
+/**
+ * The `FormFieldGroup` component should be used to group related form inputs.
+ * It renders an HTML `fieldset` and is responsible for handling the value,
+ * label, helper text, error state, error message, and disabled state.
+ */
+export const FormFieldGroup = forwardRef<HTMLFieldSetElement, PropsWithSx<FormFieldGroupProps>>(
   (
     {
-      name,
-      defaultValue,
-      value: valueProp,
-      required = false,
-      disabled = false,
-      onValueChange,
       id: providedId,
+      children,
       label,
       helperText,
       helperTextPosition = 'top',
@@ -32,51 +32,27 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
       error,
       errorMessage,
       showErrorMessageIcon,
+      disabled,
       'aria-labelledby': ariaLabelledby,
       'aria-describedby': ariaDescribedby,
       'aria-errormessage': ariaErrorMessage,
-      children,
       ...props
     },
     ref
   ) => {
     const { id, labelId, helperTextId, errorMessageId } = useIds({
       providedId,
-      componentPrefix: 'checkboxgroup',
+      componentPrefix: 'radiogroup',
     });
     const showErrorMessage = Boolean(error && errorMessage);
     const showTopHelperText = helperText && helperTextPosition === 'top';
     const showBottomHelperText = helperText && helperTextPosition === 'bottom';
 
-    // useControllableState will handle whether controlled or uncontrolled
-    const [value = [], setValue] = useControllableState({
-      prop: valueProp,
-      defaultProp: defaultValue,
-      onChange: onValueChange,
-    });
-
-    const handleItemCheck = React.useCallback(
-      (itemValue: string) => setValue((prevValue = []) => [...prevValue, itemValue]),
-      [setValue]
-    );
-
-    const handleItemUncheck = React.useCallback(
-      (itemValue: string) =>
-        setValue((prevValue = []) => prevValue.filter(value => value !== itemValue)),
-      [setValue]
-    );
-
     const ariaDescribedbyValue = mergeIds(
       ariaDescribedby || !!helperText ? helperTextId : undefined,
       ariaErrorMessage || showErrorMessage ? errorMessageId : undefined
     );
-    const providerValue = {
-      name,
-      required,
-      disabled,
-      value,
-      onItemCheck: handleItemCheck,
-      onItemUncheck: handleItemUncheck,
+    const value = {
       hasGroupHelperText: !!helperText,
       'aria-describedby': ariaDescribedbyValue,
     };
@@ -87,7 +63,6 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
         {...props}
         disabled={disabled}
         id={id}
-        data-disabled={disabled ? '' : undefined}
         aria-errormessage={ariaErrorMessage || showErrorMessage ? errorMessageId : undefined}
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
         aria-invalid={showErrorMessage}
@@ -108,7 +83,7 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
           </Flex>
         ) : null}
 
-        <BaseCheckboxGroupProvider value={providerValue}>{children}</BaseCheckboxGroupProvider>
+        <FormFieldGroupProvider value={value}>{children}</FormFieldGroupProvider>
 
         {showBottomHelperText || showErrorMessage ? (
           <Flex direction="column" gap={1}>
@@ -133,6 +108,4 @@ const BaseCheckboxGroup = React.forwardRef<HTMLFieldSetElement, BaseCheckboxGrou
   }
 );
 
-BaseCheckboxGroup.displayName = componentName;
-
-export { BaseCheckboxGroup };
+FormFieldGroup.displayName = componentName;
