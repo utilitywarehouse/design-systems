@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, DimensionValue, SafeAreaView, View, ViewProps } from 'react-native';
+import { Dimensions, DimensionValue, SafeAreaView, ViewProps } from 'react-native';
 import { GestureDetector, Gesture, gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
