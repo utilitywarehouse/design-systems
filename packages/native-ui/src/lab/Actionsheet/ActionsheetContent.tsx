@@ -1,7 +1,13 @@
 import React from 'react';
-import { Dimensions, DimensionValue, SafeAreaView, ViewProps } from 'react-native';
+import { Dimensions, DimensionValue, SafeAreaView, View, ViewProps } from 'react-native';
 import { GestureDetector, Gesture, gestureHandlerRootHOC } from 'react-native-gesture-handler';
-import Animated, { useSharedValue, withSpring, withTiming, runOnJS } from 'react-native-reanimated';
+import Animated, {
+  useSharedValue,
+  withSpring,
+  withTiming,
+  runOnJS,
+  enableLayoutAnimations,
+} from 'react-native-reanimated';
 import ActionsheetDragIndicatorWrapper from './ActionsheetDragIndicatorWrapper';
 import { useStyles, createStyleSheet } from 'react-native-unistyles';
 import { useActionsheetContext } from './Actionsheet.context';
@@ -9,13 +15,15 @@ import ActionsheetDragIndicator from './ActionsheetDragIndicator';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
+enableLayoutAnimations(true);
+
 const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...props }) => {
   const {
     translateY,
+    dragging,
     backdropOpacity,
     onClose,
     dragCloseThreshold,
-    maxHeight,
     minHeight,
     includeDragIndicator,
     dragOnIndicatorOnly,
@@ -24,12 +32,11 @@ const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...
   } = useActionsheetContext();
   const { styles } = useStyles(stylesheet);
   const context = useSharedValue<{ y: number }>({ y: 0 });
-  const [dragging, setDragging] = React.useState(false);
 
   const gesture = Gesture.Pan()
     .onStart(() => {
       context.value.y = translateY.value;
-      runOnJS(setDragging)(true);
+      dragging.value = true;
     })
     .onUpdate(event => {
       translateY.value = context.value.y + event.translationY;
@@ -43,21 +50,21 @@ const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...
         translateY.value = withTiming(SCREEN_HEIGHT, { duration: 300 }, (isFinished?: boolean) => {
           if (isFinished) {
             runOnJS(onClose)();
-            runOnJS(setDragging)(false);
+            dragging.value = false;
           }
         });
         backdropOpacity.value = withTiming(0, { duration: 300 });
       } else {
         translateY.value = withSpring(0, { damping: 50 });
         backdropOpacity.value = withTiming(0.6, { duration: 300 });
-        runOnJS(setDragging)(false);
+        dragging.value = false;
       }
     });
 
   const dragIndicator =
     showIndicator && includeDragIndicator ? (
       <ActionsheetDragIndicatorWrapper>
-        <ActionsheetDragIndicator dragging={dragging} />
+        <ActionsheetDragIndicator />
       </ActionsheetDragIndicatorWrapper>
     ) : null;
 
@@ -83,7 +90,7 @@ const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...
 
   const animatedView = (
     <Animated.View
-      style={[styles.content, styles.extraStyles(maxHeight, minHeight, showIndicator), style]}
+      style={[styles.content, styles.extraStyles(minHeight, showIndicator), style]}
       {...props}
     >
       {safeAreaContent}
@@ -110,11 +117,29 @@ const stylesheet = createStyleSheet(({ space, colorMode, colors, radii }) => ({
     paddingHorizontal: space['5'],
     paddingBottom: space['5'],
     overflow: 'hidden',
+    alignSelf: 'stretch',
+    flexGrow: 0,
+    flexShrink: 0,
+    ...(colorMode === 'light'
+      ? {
+          shadowColor: colors.grey900,
+          shadowOffset: {
+            width: 0,
+            height: 3,
+          },
+          shadowRadius: 8,
+          shadowOpacity: 0.2,
+          elevation: 10,
+        }
+      : {}),
   },
-  safeAreaView: { flex: 1 },
-  extraStyles: (maxHeight: DimensionValue, minHeight: DimensionValue, showIndicator?: boolean) => ({
-    maxHeight,
-    minHeight,
-    paddingTop: showIndicator ? space['2'] : space['5'],
-  }),
+  safeAreaView: {},
+  extraStyles: (minHeight: DimensionValue, showIndicator?: boolean) => {
+    const paddingTop = showIndicator ? space['2'] : space['5'];
+    return {
+      minHeight,
+      paddingTop,
+      ...(minHeight === undefined && { minHeight: undefined }),
+    };
+  },
 }));

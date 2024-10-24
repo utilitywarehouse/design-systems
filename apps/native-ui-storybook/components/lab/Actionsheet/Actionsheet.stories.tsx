@@ -101,7 +101,7 @@ const stylesheet = createStyleSheet(({ space }) => ({
     paddingBottom: space['0'],
   },
   scrollView: {
-    flex: 1,
+    maxHeight: 300 - 52,
   },
   scrollContainer: {
     paddingBottom: space['4'],
@@ -119,7 +119,7 @@ const WithScrollView: StoryFn = () => {
       <Actionsheet
         isOpen={showActionsheet}
         onClose={handleClose}
-        minHeight={300}
+        maxHeight={300}
         includeContent={false}
         contentSafeArea={false}
       >

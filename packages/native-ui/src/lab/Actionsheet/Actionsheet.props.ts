@@ -23,6 +23,7 @@ export interface ActionsheetContextValue extends Omit<ActionsheetProps, 'childre
   translateY: SharedValue<number>;
   backdropOpacity: SharedValue<number>;
   keyboardHeight: SharedValue<number>;
+  dragging: SharedValue<boolean>;
   dragCloseThreshold: number;
   maxHeight: DimensionValue;
   minHeight: DimensionValue;

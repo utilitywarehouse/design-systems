@@ -1,22 +1,26 @@
 import React from 'react';
-import { View, ViewProps } from 'react-native';
+import { ViewProps } from 'react-native';
 import { useStyles, createStyleSheet } from 'react-native-unistyles';
 import { useActionsheetContext } from './Actionsheet.context';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
-const ActionsheetDragIndicator: React.FC<ViewProps & { dragging?: boolean }> = ({
-  dragging,
-  style,
-  ...props
-}) => {
-  const { styles } = useStyles(stylesheet);
+const ActionsheetDragIndicator: React.FC<ViewProps> = ({ style, ...props }) => {
+  const {
+    styles,
+    theme: { colors, space },
+  } = useStyles(stylesheet);
   const { showIndicator } = useActionsheetContext();
+  const { dragging } = useActionsheetContext();
 
-  return (
-    <View
-      style={[styles.indicator, styles.extraStyles(dragging, showIndicator), style]}
-      {...props}
-    />
+  const animatedStyle = useAnimatedStyle(
+    () => ({
+      backgroundColor: dragging.value ? colors.grey400 : colors.grey500,
+      marginBottom: showIndicator ? space['3'] : 0,
+    }),
+    [showIndicator, dragging]
   );
+
+  return <Animated.View style={[styles.indicator, animatedStyle, style]} {...props} />;
 };
 
 const stylesheet = createStyleSheet(({ space, colors, radii }) => ({
@@ -26,10 +30,6 @@ const stylesheet = createStyleSheet(({ space, colors, radii }) => ({
     borderRadius: radii.full,
     backgroundColor: colors.grey500,
   },
-  extraStyles: (dragging?: boolean, showIndicator?: boolean) => ({
-    backgroundColor: dragging ? colors.grey400 : colors.grey500,
-    marginBottom: showIndicator ? space['3'] : 0,
-  }),
 }));
 
 export default ActionsheetDragIndicator;
