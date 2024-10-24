@@ -5,8 +5,8 @@ import { VariantTitle } from '../../docs/components';
 
 const BadgeVariants: StoryFn = () => {
   return (
-    <HStack gap="$2">
-      <VStack gap="$2">
+    <HStack space="sm">
+      <VStack space="sm">
         <VariantTitle title="cyan">
           <Badge colorScheme="cyan">Cyan</Badge>
         </VariantTitle>
@@ -23,7 +23,7 @@ const BadgeVariants: StoryFn = () => {
           <Badge colorScheme="red">Red</Badge>
         </VariantTitle>
       </VStack>
-      <VStack gap="$2">
+      <VStack space="sm">
         <VariantTitle title="cyan strong">
           <Badge colorScheme="cyan" strong>
             Cyan Strong
