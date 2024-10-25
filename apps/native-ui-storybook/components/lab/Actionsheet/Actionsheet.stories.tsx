@@ -23,7 +23,7 @@ const ActionsheetBasic: StoryFn = props => {
   return (
     <Box alignItems="center" justifyContent="center">
       <Button onPress={() => setVisible(true)}>Open</Button>
-      <Actionsheet isOpen={isOpen} onClose={handleClose} includeContent={false} {...props}>
+      <Actionsheet isOpen={isOpen} onClose={handleClose} {...props} includeContent={false}>
         <ActionsheetContent>
           <View style={{ gap: 12 }}>
             <Text>Hello, this is the Actionsheet!</Text>

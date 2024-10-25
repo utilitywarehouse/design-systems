@@ -120,18 +120,6 @@ const stylesheet = createStyleSheet(({ space, colorMode, colors, radii }) => ({
     alignSelf: 'stretch',
     flexGrow: 0,
     flexShrink: 0,
-    ...(colorMode === 'light'
-      ? {
-          shadowColor: colors.grey900,
-          shadowOffset: {
-            width: 0,
-            height: 3,
-          },
-          shadowRadius: 8,
-          shadowOpacity: 0.2,
-          elevation: 10,
-        }
-      : {}),
   },
   safeAreaView: {},
   extraStyles: (minHeight: DimensionValue, showIndicator?: boolean) => {
