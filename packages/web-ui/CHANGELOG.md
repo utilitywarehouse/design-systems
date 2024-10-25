@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 1.0.9
+
+### Patch Changes
+
+- [#587](https://github.com/utilitywarehouse/design-systems/pull/587) [`96575626`](https://github.com/utilitywarehouse/design-systems/commit/96575626092511ee30dd2e78455973d04ea24c2a) Thanks [@robphoenix](https://github.com/robphoenix)! - Update media queries to differentiate from MUI
+
 ## 1.0.8
 
 ### Patch Changes
