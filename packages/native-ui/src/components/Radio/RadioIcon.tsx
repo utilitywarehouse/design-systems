@@ -21,7 +21,7 @@ const RadioIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
       {...props}
       style={
         Platform.OS === 'web'
-          ? { ...styles.container, ...(style ? Object(style) : {}) }
+          ? { ...Object(styles.container), ...(style ? Object(style) : {}) }
           : [styles.container, style]
       }
     />
