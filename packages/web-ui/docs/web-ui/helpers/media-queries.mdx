@@ -1,7 +1,8 @@
 import { Meta } from '@storybook/blocks';
-import { mediaQueries } from '../../../src/utils';
-import { Text, Flex, Divider } from '../../../src';
 import { Analytics } from '@vercel/analytics/react';
+
+import { Text, Flex, Divider } from '../../../src';
+import { mediaQueries } from '../../../src/utils';
 
 <Analytics />
 
@@ -96,9 +97,9 @@ We recommend you use it with the `mediaQueries` object, however you can pass in 
 ```tsx
 import { useMediaQueries, mediaQueries } from '@utilitywarehouse/web-ui';
 
-const isMobileOrTablet = useMediaQuery(mediaQueries.below('desktop'));
-const isDesktop = useMediaQuery(mediaQueries.above('desktop'));
-const isTablet = useMediaQuery(mediaQueries.between('tablet', 'desktop'));
+const isMobileOrTablet = useMediaQueries(mediaQueries.below('desktop'));
+const isDesktop = useMediaQueries(mediaQueries.above('desktop'));
+const isTablet = useMediaQueries(mediaQueries.between('tablet', 'desktop'));
 ```
 
 ## useMediaQuery hook

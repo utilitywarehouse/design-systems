@@ -160,6 +160,7 @@ const preview: Preview = {
               'List',
               'Pressable',
               'Radio',
+              'Skeleton',
               'Spinner',
               'Text',
               'VStack',

@@ -3,7 +3,7 @@
     "include": ["src/**"],
     "parser": "react",
     "exclude": [],
-    "label": "Web UI",
+    "label": "React",
     "importPaths": {
       "packages/web-ui/src/*": "@utilitywarehouse/web-ui"
     }
