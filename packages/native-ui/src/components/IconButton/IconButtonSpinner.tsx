@@ -1,12 +1,13 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable  react-hooks/exhaustive-deps */
-import React, { useMemo } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import { Spinner } from '../Spinner';
 import type { SpinnerProps } from '../Spinner';
 import { useStyles } from 'react-native-unistyles';
 import { useIconButtonContext } from './IconButton.context';
+import { View } from 'react-native';
 
-const IconButtonSpinner: React.FC<SpinnerProps> = ({ color = '', ...props }) => {
+const IconButtonSpinner = forwardRef<View, SpinnerProps>(({ color = '', ...props }, ref) => {
   const { colorScheme, variant, disabled, inverted } = useIconButtonContext();
   const {
     theme: { colors, colorMode },
@@ -61,7 +62,9 @@ const IconButtonSpinner: React.FC<SpinnerProps> = ({ color = '', ...props }) => 
     return colorProp;
   }, [color, colorMode, variant, disabled, inverted, colorScheme]);
 
-  return <Spinner {...props} size="xs" color={colorProp} />;
-};
+  return <Spinner ref={ref} {...props} size="xs" color={colorProp} />;
+});
+
+IconButtonSpinner.displayName = 'IconButtonSpinner';
 
 export default IconButtonSpinner;

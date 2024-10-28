@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import type BadgeProps from './Badge.props';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { View } from 'react-native';
 import { BadgeContext } from './Badge.context';
 import BadgeText from './BadgeText';
 
-const Badge: React.FC<BadgeProps> = ({ children, ...props }) => {
+const Badge = forwardRef<View, BadgeProps>(({ children, ...props }, ref) => {
   const {
     colorScheme = 'cyan',
     size = 'large',
@@ -26,12 +26,16 @@ const Badge: React.FC<BadgeProps> = ({ children, ...props }) => {
 
   return (
     <BadgeContext.Provider value={value}>
-      <View {...rest} style={[styles.container, styles.extraStyles(colorScheme, strong), style]}>
+      <View
+        ref={ref}
+        {...rest}
+        style={[styles.container, styles.extraStyles(colorScheme, strong), style]}
+      >
         {childIsText ? <BadgeText>{children}</BadgeText> : children}
       </View>
     </BadgeContext.Provider>
   );
-};
+});
 
 Badge.displayName = 'Badge';
 
