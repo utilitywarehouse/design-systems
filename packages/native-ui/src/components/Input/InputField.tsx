@@ -1,6 +1,6 @@
 import React, { ElementRef, forwardRef } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { TextInputProps, TextInput } from 'react-native';
+import { TextInputProps, TextInput, Platform } from 'react-native';
 import { useInputContext } from './Input.context';
 
 const InputField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
@@ -30,6 +30,7 @@ InputField.displayName = 'InputField';
 const stylesheet = createStyleSheet(({ radii, fontSizes, colors, fontWeights, fonts }) => ({
   input: {
     flex: 1,
+    width: Platform.OS === 'web' ? '100%' : 'auto',
     borderTopLeftRadius: radii['2xl'],
     borderTopRightRadius: radii['2xl'],
     borderBottomLeftRadius: radii.none,

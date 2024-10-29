@@ -1,23 +1,40 @@
 import React from 'react';
 
 import { Icon, createIcon, HStack } from '@utilitywarehouse/native-ui';
-import {
-  ElectricityMediumIcon,
-  MobileMediumIcon,
-  BroadbandMediumIcon,
-  InsuranceMediumIcon,
-} from '@utilitywarehouse/react-native-icons';
+import * as Icons from '@utilitywarehouse/react-native-icons';
 import { Path, Rect } from 'react-native-svg';
+import { colors } from '@utilitywarehouse/colour-system';
+import { StoryFn } from '@storybook/react';
 
-const IconBasic = () => {
+const IconBasic: StoryFn<{ as: string; color: string }> = ({ as: icon, color }) => {
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+  // @ts-expect-error - This is a playground
+  const as: ComponentType | undefined = icon === 'none' ? undefined : Icons[icon];
   return (
     <HStack space="lg">
-      <Icon as={ElectricityMediumIcon} color="$serviceElectricity" />
-      <Icon as={MobileMediumIcon} color="$serviceMobile" />
-      <Icon as={BroadbandMediumIcon} color="$serviceLandline" />
-      <Icon as={InsuranceMediumIcon} color="$serviceInsurance" />
+      {/* @ts-expect-error - This is a playground */}
+      <Icon as={as} color={colors[color]} />
     </HStack>
   );
+};
+
+IconBasic.argTypes = {
+  as: {
+    control: 'select',
+    options: [...Object.keys(Icons)],
+    description: 'The Icon that should render in as the component',
+    defaultValue: 'Helper text icon',
+  },
+  color: {
+    options: [...Object.keys(colors)],
+    control: 'select',
+    description: 'Background color of the Icon. Use the color name from the theme.',
+  },
+};
+
+IconBasic.args = {
+  as: Object.keys(Icons)[0],
+  color: 'grey1000',
 };
 
 export const GluestackIcon = createIcon({

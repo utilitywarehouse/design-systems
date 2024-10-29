@@ -114,6 +114,8 @@ const stylesheet = createStyleSheet(({ space, colorMode, colors, radii }) => ({
     backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
     borderTopLeftRadius: radii['2xl'],
     borderTopRightRadius: radii['2xl'],
+    borderBottomLeftRadius: radii.none,
+    borderBottomRightRadius: radii.none,
     paddingHorizontal: space['5'],
     paddingBottom: space['5'],
     overflow: 'hidden',

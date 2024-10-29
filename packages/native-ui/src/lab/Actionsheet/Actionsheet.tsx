@@ -166,6 +166,8 @@ const stylesheet = createStyleSheet(({ radii, colorMode, colors }) => ({
     width: '100%',
     borderTopLeftRadius: radii['2xl'],
     borderTopRightRadius: radii['2xl'],
+    borderBottomLeftRadius: radii.none,
+    borderBottomRightRadius: radii.none,
     backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
     ...(colorMode === 'light'
       ? {

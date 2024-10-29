@@ -147,6 +147,7 @@ const preview: Preview = {
             ],
             'Components',
             [
+              'All',
               'Alert',
               'Badge',
               'Box',
