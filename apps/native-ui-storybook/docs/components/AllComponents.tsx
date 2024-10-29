@@ -23,6 +23,7 @@ import {
   Skeleton,
   VStack,
   Spinner,
+  Divider,
 } from '@utilitywarehouse/native-ui';
 import { Actionsheet, Box } from '@utilitywarehouse/native-ui/lab';
 import { useDarkMode } from 'storybook-dark-mode';
@@ -114,6 +115,13 @@ const AllComponents: React.FC = () => {
           <ComponentWrapper name="Checkbox" link="/?path=/docs/native-ui-components-checkbox--docs">
             <Center flex={1}>
               <Checkbox label="I'm a Checkbox" value="" />
+            </Center>
+          </ComponentWrapper>
+          <ComponentWrapper name="Divider" link="/?path=/docs/native-ui-components-divider--docs">
+            <Center flex={1}>
+              <Text>This text is divided</Text>
+              <Divider space="sm" />
+              <Text>From this text</Text>
             </Center>
           </ComponentWrapper>
           <ComponentWrapper
