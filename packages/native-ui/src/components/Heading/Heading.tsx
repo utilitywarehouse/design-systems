@@ -1,53 +1,59 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useMemo } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import { Text } from 'react-native';
 import type HeadingProps from './Heading.props';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
 
-const Heading: React.FC<HeadingProps> = ({
-  children,
-  color,
-  size = 'h4',
-  truncated,
-  underline,
-  strikeThrough,
-  textTransform,
-  textAlign,
-  textAlignVertical,
-  ...props
-}) => {
-  const {
-    styles,
-    theme: { colors, colorMode },
-  } = useStyles(stylesheet, {
-    size,
-    underline,
-    strikeThrough,
-  });
-  const colorValue: ColorValue = useMemo(() => getStyleValue(color, colors), [color, colorMode]);
-  return (
-    <Text
-      {...props}
-      {...(truncated
-        ? {
-            numberOfLines: 1,
-            ellipsizeMode: 'tail',
-          }
-        : {})}
-      style={[
-        styles.text,
-        styles.extraStyles(colorValue, textTransform, textAlign, textAlignVertical),
-        props.style,
-      ]}
-    >
-      {children}
-    </Text>
-  );
-};
+const Heading = forwardRef<Text, HeadingProps>(
+  (
+    {
+      children,
+      color,
+      size = 'h4',
+      truncated,
+      underline,
+      strikeThrough,
+      textTransform,
+      textAlign,
+      textAlignVertical,
+      ...props
+    },
+    ref
+  ) => {
+    const {
+      styles,
+      theme: { colors, colorMode },
+    } = useStyles(stylesheet, {
+      size,
+      underline,
+      strikeThrough,
+    });
+    const colorValue: ColorValue = useMemo(() => getStyleValue(color, colors), [color, colorMode]);
+    return (
+      <Text
+        ref={ref}
+        {...props}
+        {...(truncated
+          ? {
+              numberOfLines: 1,
+              ellipsizeMode: 'tail',
+            }
+          : {})}
+        style={[
+          styles.text,
+          styles.extraStyles(colorValue, textTransform, textAlign, textAlignVertical),
+          props.style,
+        ]}
+      >
+        {children}
+      </Text>
+    );
+  }
+);
 
 Heading.displayName = 'Heading';
 

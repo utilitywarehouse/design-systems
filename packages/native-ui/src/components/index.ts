@@ -13,8 +13,11 @@ export * from './Radio';
 export * from './Text';
 export * from './Heading';
 export * from './Input';
+export * from './Center';
+export * from './HStack';
+export * from './VStack';
+export * from './Icon';
 
-// Gluestack UI
 export {
   FlatList,
   ScrollView,
@@ -22,9 +25,9 @@ export {
   StatusBar,
   View,
   SectionList,
-} from '@gluestack-ui/themed';
+  Image,
+} from 'react-native';
 
-export { BadgeIcon } from '@gluestack-ui/themed';
 export {
   /**
    * @deprecated
@@ -33,13 +36,6 @@ export {
   Box,
 } from '@gluestack-ui/themed';
 
-export { Center } from '@gluestack-ui/themed';
+export { Pressable } from 'react-native';
 
-export { HStack, VStack } from '@gluestack-ui/themed';
-
-export { Link, LinkText } from '@gluestack-ui/themed';
-export { Pressable } from '@gluestack-ui/themed';
-
-export { Image } from '@gluestack-ui/themed';
-
-export { Icon, createIcon } from '@gluestack-ui/themed';
+export { createIcon } from '@gluestack-ui/themed';
