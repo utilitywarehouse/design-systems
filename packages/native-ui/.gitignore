@@ -2,6 +2,7 @@ build
 /unstyled/*
 /lab/
 /core/
+/components/
 /unstyled/
 /types/
 /utils/
