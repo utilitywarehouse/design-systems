@@ -17,6 +17,7 @@ export * from './Center';
 export * from './HStack';
 export * from './VStack';
 export * from './Icon';
+export * from './Divider';
 
 export {
   FlatList,

@@ -1,0 +1,55 @@
+import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
+import { colors } from '@utilitywarehouse/colour-system';
+import * as Stories from './Divider.stories';
+import { Spinner, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
+
+<Meta of={Stories} />
+
+<BackToTopButton />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=2367-3815" />
+
+# Divider
+
+Using a Spinner is a common method for indicating that an asynchronous process is ongoing. Additionally, it informs users that they should refrain from clicking or tapping the UI until the loading state has been resolved.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+## Usage
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Text>This text is dividing</Text>
+      <Divider size="sm" color="$cyan400" />
+      <Text>This text</Text>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Spinner, Center } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => (
+  <Center>
+    <Text>This text is dividing</Text>
+    <Divider size="sm" color="$cyan400" />
+    <Text>This text</Text>
+  </Center>
+);
+```
+
+## Props
+
+| Property | Type     | Description               | Default |
+| -------- | -------- | ------------------------- | ------- |
+| `color`  | `string` | The color of the spinner. |         |
