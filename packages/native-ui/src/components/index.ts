@@ -11,6 +11,7 @@ export * from './Checkbox';
 export * from './Radio';
 export * from './Text';
 export * from './Heading';
+export * from './Input';
 export * from './Center';
 export * from './HStack';
 export * from './VStack';
