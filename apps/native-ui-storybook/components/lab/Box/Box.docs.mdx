@@ -16,8 +16,14 @@ If you're looking for a flexible component to help with low-level layout needs, 
 - [Usage](#usage)
 - [Props](#props)
 
-<Box mb="$6">
+<Box mb="$4">
   <Alert text="This component is in the lab until we fully deprecate the current Gluestack Box in version 1.0.0" />
+</Box>
+<Box mb="$6">
+  <Alert
+    colorScheme="gold"
+    text="This component should only be used for simple layouts, for more complex needs use the createStyleSheet function and useStyles hook. You can also use components like the HStack, VStack and Spacer."
+  />
 </Box>
 
 ## Usage

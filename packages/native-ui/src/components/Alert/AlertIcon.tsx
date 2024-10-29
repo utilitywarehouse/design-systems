@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import {
   WarningMediumContainedIcon,
@@ -8,8 +8,9 @@ import {
 import { useAlertContext } from './Alert.context';
 import { Icon } from '../Icon';
 import type IconProps from '../Icon/Icon.props';
+import { IconRef } from '../../types';
 
-const AlertIcon: React.FC<IconProps> = ({ ...props }) => {
+const AlertIcon = forwardRef<IconRef, IconProps>(({ ...props }, ref) => {
   const { colorScheme } = useAlertContext();
   const { styles } = useStyles(stylesheet, { colorScheme });
   const asProp = useMemo(() => {
@@ -21,8 +22,8 @@ const AlertIcon: React.FC<IconProps> = ({ ...props }) => {
     }
     return InformationMediumContainedIcon;
   }, [colorScheme]);
-  return <Icon {...props} as={props.as ?? asProp} style={styles.icon} />;
-};
+  return <Icon ref={ref} {...props} as={props.as ?? asProp} style={styles.icon} />;
+});
 
 AlertIcon.displayName = 'AlertIcon';
 

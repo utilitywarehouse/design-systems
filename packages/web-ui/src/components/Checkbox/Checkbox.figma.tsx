@@ -8,14 +8,17 @@ figma.connect(
   Checkbox,
   'https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=5300-21339&m=dev',
   {
-    example: () => (
-      <Checkbox
-        helperText="Helper Text"
-        label="Label"
-        value="1"
-        checked={false}
-        onCheckedChange={(checked: boolean) => console.log(checked)}
-      />
+    props: {
+      disabled: figma.boolean('disabled'),
+      label: figma.nestedProps('Label', {
+        text: figma.string('Label Text'),
+      }),
+      helperText: figma.nestedProps('Helper Text', {
+        text: figma.string('Text'),
+      }),
+    },
+    example: ({ label, helperText, disabled }) => (
+      <Checkbox label={label.text} helperText={helperText.text} disabled={disabled} />
     ),
   }
 );

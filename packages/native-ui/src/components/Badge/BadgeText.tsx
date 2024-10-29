@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { Text } from 'react-native';
 import type { TextProps } from 'react-native';
@@ -6,17 +6,21 @@ import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { useBadgeContext } from './Badge.context';
 import type BadgeProps from './Badge.props';
 
-const BadgeText: React.FC<TextProps> = ({ children, style, ...props }) => {
+const BadgeText = forwardRef<Text, TextProps>(({ children, style, ...props }, ref) => {
   const { colorScheme, strong } = useBadgeContext();
   const { styles } = useStyles(stylesheet, {
     colorScheme,
   });
   return (
-    <Text {...props} style={[styles.text, styles.extraStyles(colorScheme, strong), style]}>
+    <Text
+      ref={ref}
+      {...props}
+      style={[styles.text, styles.extraStyles(colorScheme, strong), style]}
+    >
       {children}
     </Text>
   );
-};
+});
 
 BadgeText.displayName = 'BadgeText';
 

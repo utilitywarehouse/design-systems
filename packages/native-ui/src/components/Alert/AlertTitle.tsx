@@ -1,16 +1,16 @@
-import React from 'react';
-import type { TextProps } from 'react-native';
+import React, { forwardRef } from 'react';
+import type { Text, TextProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import AlertText from './AlertText';
 
-const AlertTitle: React.FC<TextProps> = ({ children, ...props }) => {
+const AlertTitle = forwardRef<Text, TextProps>(({ children, ...props }, ref) => {
   const { styles } = useStyles(stylesheet);
   return (
-    <AlertText {...props} style={[styles.text, props.style]}>
+    <AlertText ref={ref} {...props} style={[styles.text, props.style]}>
       {children}
     </AlertText>
   );
-};
+});
 
 AlertTitle.displayName = 'AlertTitle';
 
