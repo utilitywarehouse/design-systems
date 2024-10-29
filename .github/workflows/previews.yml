@@ -200,7 +200,7 @@ jobs:
         uses: expo/expo-github-action@v8
         if: steps.check_skip.outputs.skip == 'false'
         with:
-          eas-version: '9.2.0'
+          eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies

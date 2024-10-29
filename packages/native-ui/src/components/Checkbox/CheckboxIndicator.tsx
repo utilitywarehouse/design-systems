@@ -15,7 +15,7 @@ const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
   });
 
   return (
-    <AnimatedOutline show={isInList || disabled ? false : show}>
+    <AnimatedOutline show={isInList || disabled ? false : show} style={styles.outline}>
       <View
         ref={ref}
         {...props}
@@ -32,6 +32,9 @@ const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
 });
 
 const stylesheet = createStyleSheet(({ colors, colorMode, radii, borderWidths, space }) => ({
+  outline: {
+    alignSelf: 'flex-start',
+  },
   container: {
     justifyContent: 'center',
     alignItems: 'center',

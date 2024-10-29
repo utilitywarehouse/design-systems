@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-undef */
 import React from 'react';
-import { List, ListItem } from './';
+import { List } from './';
 import figma from '@figma/code-connect';
 
 const props = {
@@ -8,6 +8,8 @@ const props = {
     text: figma.string('heading'),
     supportingText: figma.string('Supporting text'),
   }),
+  listItem: figma.children('List Item'),
+  listItems: figma.children('List Items'),
 };
 
 figma.connect(
@@ -15,7 +17,7 @@ figma.connect(
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4643-17907&m=dev',
   {
     props,
-    example: () => <List>{children}</List>,
+    example: ({ listItems }) => <List>{listItems}</List>,
   }
 );
 
@@ -27,9 +29,9 @@ figma.connect(
     variant: {
       'Heading?': true,
     },
-    example: ({ heading }) => (
+    example: ({ heading, listItems }) => (
       <List headingText={heading.text} headingSupportingText={heading.supportingText}>
-        {children}
+        {listItems}
       </List>
     ),
   }
@@ -44,13 +46,13 @@ figma.connect(
       container: 'card',
       'Heading?': true,
     },
-    example: ({ heading }) => (
+    example: ({ heading, listItems }) => (
       <List
         container="card"
         headingText={heading.text}
         headingSupportingText={heading.supportingText}
       >
-        <Card>{children}</Card>
+        <Card>{listItems}</Card>
       </List>
     ),
   }
@@ -65,38 +67,20 @@ figma.connect(
       container: 'card',
       'Heading?': false,
     },
-    example: () => (
+    example: ({ listItems }) => (
       <List container="card">
-        <Card>{children}</Card>
+        <Card>{listItems}</Card>
       </List>
     ),
   }
 );
-
-const list = [
-  {
-    id: '1',
-    text: 'List item 1',
-    supportingText: 'List item 1 supporting text',
-  },
-];
 
 figma.connect(
   List,
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4623-14698&m=dev',
   {
     props,
-    example: () => (
-      <>
-        {list.map(listItem => (
-          <ListItem
-            key={listItem.id}
-            {...listItem}
-            text={listItem.text}
-            supportingText={listItem.supportingText}
-          />
-        ))}
-      </>
-    ),
+    imports: [],
+    example: ({ listItem }) => <>{listItem}</>,
   }
 );

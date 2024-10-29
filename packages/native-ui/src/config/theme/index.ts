@@ -54,14 +54,7 @@ export * from './CheckboxLabel';
 // export * from './FabIcon';
 // export * from './FabLabel';
 // export * from './FlatList';
-// export * from './FormControl';
-// export * from './FormControlError';
-// export * from './FormControlErrorIcon';
-// export * from './FormControlErrorText';
-// export * from './FormControlHelper';
-// export * from './FormControlHelperText';
-// export * from './FormControlLabel';
-// export * from './FormControlLabelText';
+
 export * from './HStack';
 export * from './Heading';
 export * from './Icon';

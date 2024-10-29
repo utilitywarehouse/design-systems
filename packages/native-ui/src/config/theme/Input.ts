@@ -30,7 +30,9 @@ export const Input = createStyle({
   },
 
   ':disabled': {
-    borderColor: '$grey400',
+    borderTopColor: '$grey400',
+    borderLeftColor: '$grey400',
+    borderRightColor: '$grey400',
     borderBottomColor: '$grey600',
     backgroundColor: '$grey50',
 
@@ -40,6 +42,11 @@ export const Input = createStyle({
 
     _input: {
       color: '$grey400',
+
+      _validationIcon: {
+        color: '$grey400',
+      },
+
       props: {
         placeholderTextColor: '$grey400',
       },
@@ -59,7 +66,9 @@ export const Input = createStyle({
   },
 
   _dark: {
-    borderColor: '$darkGrey500',
+    borderTopColor: '$darkGrey500',
+    borderLeftColor: '$darkGrey500',
+    borderRightColor: '$darkGrey500',
     borderBottomColor: '$darkGrey900',
     backgroundColor: '$darkGrey25',
 
@@ -69,7 +78,9 @@ export const Input = createStyle({
     },
 
     ':disabled': {
-      borderColor: '$darkGrey400',
+      borderTopColor: '$darkGrey400',
+      borderLeftColor: '$darkGrey400',
+      borderRightColor: '$darkGrey400',
       borderBottomColor: '$darkGrey600',
       backgroundColor: '$darkGrey50',
 
@@ -105,6 +116,17 @@ export const Input = createStyle({
           borderBottomColor: '$green500',
         },
 
+        ':disabled': {
+          borderTopColor: '$grey400',
+          borderLeftColor: '$grey400',
+          borderRightColor: '$grey400',
+          borderBottomColor: '$grey600',
+
+          _validationIcon: {
+            color: '$grey400',
+          },
+        },
+
         _dark: {
           borderBottomColor: '$darkGreen700',
 
@@ -115,6 +137,17 @@ export const Input = createStyle({
           ':focus': {
             borderColor: '$darkGreen700',
             borderBottomColor: '$darkGreen700',
+          },
+
+          ':disabled': {
+            borderTopColor: '$darkGrey400',
+            borderLeftColor: '$darkGrey400',
+            borderRightColor: '$darkGrey400',
+            borderBottomColor: '$darkGrey600',
+
+            _validationIcon: {
+              color: '$darkGrey400',
+            },
           },
         },
       },
@@ -130,6 +163,17 @@ export const Input = createStyle({
           borderBottomColor: '$red500',
         },
 
+        ':disabled': {
+          borderTopColor: '$grey400',
+          borderLeftColor: '$grey400',
+          borderRightColor: '$grey400',
+          borderBottomColor: '$grey600',
+
+          _validationIcon: {
+            color: '$grey400',
+          },
+        },
+
         _dark: {
           borderBottomColor: '$darkRed700',
 
@@ -140,6 +184,17 @@ export const Input = createStyle({
           ':focus': {
             borderColor: '$darkRed700',
             borderBottomColor: '$darkRed700',
+          },
+
+          ':disabled': {
+            borderTopColor: '$darkGrey400',
+            borderLeftColor: '$darkGrey400',
+            borderRightColor: '$darkGrey400',
+            borderBottomColor: '$darkGrey600',
+
+            _validationIcon: {
+              color: '$darkGrey400',
+            },
           },
         },
       },
