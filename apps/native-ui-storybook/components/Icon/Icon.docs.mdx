@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from '@storybook/blocks';
+import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
 import * as IconStories from './Icon.stories';
 import { GluestackIcon } from './Icon';
 import { Center, Pressable, Text, NativeUIProvider } from '@utilitywarehouse/native-ui';
@@ -20,14 +20,19 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 Icons are often used to enhance the usability and accessibility of digital products by providing users with clear and intuitive visual cues. It serves as an intuitive and easily recognizable way to communicate with users.
 
+- [Playground](#playground)
 - [Usage](#usage)
 - [Props](#props)
 - [SVG & Custom Icons](#svg--custom-icons)
 - [All Icons](#all-icons)
 
-## Usage
+## Playground
 
-> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+<Primary />
+
+<Controls />
+
+## Usage
 
 <Canvas>
   <NativeUIProvider>
@@ -78,9 +83,6 @@ import {
 } from '@utilitywarehouse/react-native-icons';
 
 const MyComponent = () => {
-  const {
-    theme: { colors },
-  } = useStyles();
   return (
     <HStack space="lg">
       <Icon as={ElectricityMediumIcon} color="$serviceElectricity" />
@@ -94,9 +96,10 @@ const MyComponent = () => {
 
 ## Props
 
-| Name | Type                  | Description                   | Default |
-| ---- | --------------------- | ----------------------------- | ------- |
-| `as` | `React.ComponentType` | The icon component to render. | -       |
+| Name    | Type                  | Description                   | Default |
+| ------- | --------------------- | ----------------------------- | ------- |
+| `as`    | `React.ComponentType` | The icon component to render. | -       |
+| `color` | `string`              | The color of the icon.        | -       |
 
 ## SVG & Custom Icons
 
