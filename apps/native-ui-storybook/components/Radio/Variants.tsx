@@ -14,7 +14,7 @@ const RadioGroupBasic = () => {
   const [value, setValue] = React.useState('Option 1');
 
   return (
-    <VStack gap="$4">
+    <VStack space="lg">
       <VariantTitle title="Default">
         <RadioGroup
           aria-label="Radio Group"

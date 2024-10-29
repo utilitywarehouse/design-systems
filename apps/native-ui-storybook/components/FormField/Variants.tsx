@@ -7,10 +7,8 @@ import {
   FormFieldHelperText,
   FormFieldLabel,
   FormFieldLabelText,
-  FormFieldInvalidIcon,
   FormFieldInvalid,
   FormFieldInvalidText,
-  FormFieldValidIcon,
   FormFieldValid,
   FormFieldValidText,
   ScrollView,
@@ -22,7 +20,7 @@ import { VariantTitle } from '../../docs/components';
 const InputVariants: StoryFn = () => {
   return (
     <ScrollView>
-      <VStack gap="$4">
+      <VStack space="lg">
         <VariantTitle title="Default">
           <FormField>
             <FormFieldLabel>
