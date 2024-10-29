@@ -13,6 +13,7 @@ import ListItemText from './ListItemText';
 import ListItemSupportingText from './ListItemSupportingText';
 import ListItemTrailingContent from './ListItemTrailingContent';
 import ListItemTrailingIcon from './ListItemTrailingIcon';
+import { Divider } from '../../Divider';
 
 const ListItemRoot = forwardRef<
   PressableRef,
@@ -26,6 +27,7 @@ const ListItemRoot = forwardRef<
       trailingContent,
       disabled,
       divider,
+      dividerColor,
       loading,
       children,
       states,
@@ -41,8 +43,9 @@ const ListItemRoot = forwardRef<
     const showPressed = isLoading ? false : !!onPress;
     const showDivider = listContext?.divider ?? divider;
     const isDisabled = disabled || listContext?.disabled || false;
+    const dividerColorValue = dividerColor ?? listContext?.dividerColor;
 
-    const { styles } = useStyles(stylesheet, { divider: showDivider });
+    const { styles } = useStyles(stylesheet);
 
     const value: IListItemContext = useMemo(() => {
       return {
@@ -116,6 +119,7 @@ const ListItemRoot = forwardRef<
             </>
           )}
         </Pressable>
+        {showDivider && <Divider color={dividerColorValue} />}
       </ListItemContext.Provider>
     );
   }
@@ -128,14 +132,6 @@ const stylesheet = createStyleSheet(({ space, colorMode, colors }) => ({
     padding: space[4],
     flexDirection: 'row',
     gap: space[3],
-    variants: {
-      divider: {
-        true: {
-          borderBottomWidth: 1,
-          borderBottomColor: colorMode === 'light' ? colors.grey75 : colors.grey200,
-        },
-      },
-    },
   },
   extraStyles: (showPressed?: boolean, active?: boolean, disabled?: boolean) => {
     if (!showPressed || disabled) {
