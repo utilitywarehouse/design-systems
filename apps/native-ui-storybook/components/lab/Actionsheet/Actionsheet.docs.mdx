@@ -11,7 +11,7 @@ import {
   ActionsheetItemText,
   Box,
 } from '@utilitywarehouse/native-ui/lab';
-import { ViewFigmaButton, BackToTopButton } from '../../../docs/components';
+import { ViewFigmaButton, BackToTopButton, DocComponentWrap } from '../../../docs/components';
 import { AdvancedActionsheet } from './components';
 
 <Meta of={Stories} />
@@ -22,14 +22,14 @@ import { AdvancedActionsheet } from './components';
 
 # Actionsheet
 
-<NativeUIProvider>
+<DocComponentWrap>
   <Box mt="$6" mb="4">
     <Alert
       colorScheme="gold"
       text="These components may potentially change their API and/or design and will be replaced in minor release versions, eventually being integrated into the main library code. Use at your own discretion."
     />
   </Box>
-</NativeUIProvider>
+</DocComponentWrap>
 
 The Actionsheet component presents a set of options to the user, overlaid on top of the app's content, allowing them to take quick actions without leaving the current page or view.
 

@@ -25,7 +25,7 @@ const ScrollButton = () => {
   window.addEventListener('scroll', toggleVisible);
 
   return (
-    <NativeUIProvider>
+    <div className="sb-unstyled">
       <Button
         onPress={scrollToTop}
         variant="ghost"
@@ -49,7 +49,7 @@ const ScrollButton = () => {
         <ButtonIcon as={ChevronUpSmallIcon} />
         <ButtonText>Back to top</ButtonText>
       </Button>
-    </NativeUIProvider>
+    </div>
   );
 };
 

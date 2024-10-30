@@ -9,7 +9,6 @@ import {
   Heading,
   Pressable,
   Alert,
-  NativeUIProvider,
   Center,
   Checkbox,
   FormField,
@@ -24,9 +23,9 @@ import {
   VStack,
   Spinner,
   Divider,
+  useColorMode,
 } from '@utilitywarehouse/native-ui';
 import { Actionsheet, Box } from '@utilitywarehouse/native-ui/lab';
-import { useDarkMode } from 'storybook-dark-mode';
 import {
   ElectricityMediumIcon,
   MobileMediumIcon,
@@ -62,10 +61,10 @@ const AllComponents: React.FC = () => {
   const { styles } = useStyles(stylesheet);
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const toggleActionsheet = () => setShowActionsheet(!showActionsheet);
-  const colorScheme = useDarkMode() ? 'dark' : 'light';
-  const isDark = colorScheme === 'dark';
+  const colorMode = useColorMode();
+  const isDark = colorMode === 'dark';
   return (
-    <NativeUIProvider colorMode={colorScheme}>
+    <div className="sb-unstyled">
       <ScrollView contentContainerStyle={styles.container}>
         <HStack wrap space="md">
           <ComponentWrapper
@@ -222,7 +221,7 @@ const AllComponents: React.FC = () => {
           </ComponentWrapper>
         </HStack>
       </ScrollView>
-    </NativeUIProvider>
+    </div>
   );
 };
 

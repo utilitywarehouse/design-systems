@@ -90,6 +90,7 @@ setupBackgroundListener();
 
 export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({ children, context }) => {
   const [isDark, setDark] = useState(false);
+  const colorScheme = useDarkMode() ? 'dark' : 'light';
 
   useEffect(() => {
     channel.on(DARK_MODE_EVENT_NAME, setDark);
@@ -97,10 +98,12 @@ export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({ child
   }, [channel]);
 
   return (
-    <BaseContainer theme={isDark ? themeDark : themeLight} context={context}>
-      <Analytics endpoint={window.top?.location?.href} />
-      {children}
-    </BaseContainer>
+    <NativeUIProvider colorMode={colorScheme}>
+      <BaseContainer theme={isDark ? themeDark : themeLight} context={context}>
+        <Analytics endpoint={window.top?.location?.href} />
+        {children}
+      </BaseContainer>
+    </NativeUIProvider>
   );
 };
 

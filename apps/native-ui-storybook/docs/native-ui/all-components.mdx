@@ -1,6 +1,5 @@
 import { Meta, Canvas } from '@storybook/blocks';
-import { AllComponents } from '../components';
-import { NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { AllComponents, BackToTopButton } from '../components';
 
 <Meta title="Native UI / Components / All" />
 
@@ -8,8 +7,5 @@ import { NativeUIProvider } from '@utilitywarehouse/native-ui';
 
 This page showcases all the components available in the Native UI library.
 
-<Canvas>
-  <NativeUIProvider>
-    <AllComponents />
-  </NativeUIProvider>
-</Canvas>
+<BackToTopButton />
+<AllComponents />

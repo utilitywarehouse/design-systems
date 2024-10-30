@@ -2,19 +2,20 @@ import { Meta, Canvas, Story } from '@storybook/blocks';
 import * as BoxStories from './Box.stories';
 import { Text, NativeUIProvider, Center, Alert } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
+import { DocComponentWrap } from '../../docs/components';
 
 <Meta of={BoxStories} />
 
 # Box
 
-<NativeUIProvider>
+<DocComponentWrap>
   <Box mt="$6" mb="4">
     <Alert
       colorScheme="gold"
       text="This Box component is deprecated, use the Box from @utilitywarehouse/native-ui/lab"
     />
   </Box>
-</NativeUIProvider>
+</DocComponentWrap>
 
 > Click here to go to the [new Box component](/docs/native-ui-components-lab-box--docs).
 
