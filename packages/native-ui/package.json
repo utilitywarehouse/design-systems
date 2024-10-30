@@ -40,7 +40,7 @@
     "@babel/preset-env": "^7.24.8",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
-    "@figma/code-connect": "^1.2.0",
+    "@figma/code-connect": "^1.2.1",
     "@types/react": "^18.2.75",
     "react": "^18.2.0",
     "react-native": "^0.74.3",

@@ -154,6 +154,7 @@ const preview: Preview = {
               'Button',
               'Center',
               'Checkbox',
+              'Divider',
               'Form Field',
               'Heading',
               'HStack',

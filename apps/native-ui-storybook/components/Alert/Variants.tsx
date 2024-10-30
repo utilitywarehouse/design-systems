@@ -5,7 +5,7 @@ import { VariantTitle } from '../../docs/components';
 
 const AlertVariants = () => {
   return (
-    <VStack gap={8}>
+    <VStack space="sm">
       <VariantTitle title="Info - Cyan">
         <Alert
           colorScheme="cyan"

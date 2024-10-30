@@ -11,11 +11,14 @@ import React from 'react';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { StoryFn } from '@storybook/react';
 import { Box } from '@utilitywarehouse/native-ui/lab';
+import { ColorValue } from '@utilitywarehouse/native-ui/types';
+import { colors } from '@utilitywarehouse/colour-system';
 
 const ListBasic: StoryFn<{
   container: 'full' | 'card';
   headingText: string;
   headingSupportingText: string;
+  dividerColor: ColorValue;
   _listItemText: string;
   _listItemSupportingText: string;
   _listItemLeadingContent: string;
@@ -36,6 +39,7 @@ const ListBasic: StoryFn<{
   divider,
   _listItemOnPress,
   disabled,
+  dividerColor,
   loading,
   _numberOfItems,
 }) => {
@@ -63,6 +67,7 @@ const ListBasic: StoryFn<{
       loading={loading}
       headingText={headingText}
       headingSupportingText={headingSupportingText}
+      dividerColor={dividerColor ? (`$${dividerColor}` as ColorValue) : undefined}
     >
       {container === 'card' && (
         <Box
@@ -125,6 +130,11 @@ ListBasic.argTypes = {
   divider: {
     control: 'boolean',
     description: 'Whether to display a divider below the list item.',
+  },
+  dividerColor: {
+    options: [...Object.keys(colors)],
+    control: 'select',
+    description: 'Color of the divider',
   },
   disabled: {
     control: 'boolean',

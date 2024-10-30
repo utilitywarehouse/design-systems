@@ -7,10 +7,10 @@ import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 const List = forwardRef<View, ListProps>(
   ({ children, headingText, headingSupportingText, ...props }, ref) => {
-    const { loading, disabled, divider, container = 'full' } = props;
+    const { loading, disabled, divider, container = 'full', dividerColor } = props;
     const value = useMemo(
-      () => ({ loading, disabled, divider, container }),
-      [loading, disabled, divider, container]
+      () => ({ loading, disabled, divider, container, dividerColor }),
+      [loading, disabled, divider, container, dividerColor]
     );
     const { styles } = useStyles(stylesheet);
     return (

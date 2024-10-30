@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from '@utilitywarehouse/native-ui';
 import { StoryFn } from '@storybook/react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { ColorValue } from '@utilitywarehouse/native-ui/core/types';
+import { ColorValue } from '@utilitywarehouse/native-ui/types';
 
 const TextBasic: StoryFn<{
   size: 'xs' | 'sm' | 'md';
@@ -15,6 +15,7 @@ const TextBasic: StoryFn<{
   color: ColorValue;
 }> = ({ ...props }) => {
   return (
+    // @ts-expect-error - TS doesn't like the dynamic key here
     <Text {...props} color={`$${props.color?.replace('$', '')}` as ColorValue}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
