@@ -28,12 +28,12 @@ ButtonSpinner.displayName = 'ButtonSpinner';
 ButtonIcon.displayName = 'ButtonIcon';
 
 const Button = forwardRef<PressableRef, ButtonProps>(
-  ({ children, disabled, isDisabled, pressed, ...props }, ref) => {
+  ({ children, disabled, isDisabled, pressed, text, ...props }, ref) => {
     const { disabled: groupDisabled, loading: groupLoading } = useButtonGroupContext();
     const { loading } = props;
     const isLoading = loading ?? groupLoading;
     const buttonDisabled = isLoading || (disabled ?? groupDisabled ?? isDisabled);
-    if (typeof children === 'string' || typeof children === 'number') {
+    if (typeof children === 'string' || typeof children === 'number' || !children) {
       const { icon, iconPosition = 'left' } = props as ButtonWithStringChildrenProps;
       return (
         <ButtonComponent
@@ -45,7 +45,7 @@ const Button = forwardRef<PressableRef, ButtonProps>(
         >
           {!!icon && !isLoading && iconPosition === 'left' ? <ButtonIcon as={icon} /> : null}
           {isLoading ? <ButtonSpinner /> : null}
-          <ButtonText>{children}</ButtonText>
+          <ButtonText>{children ?? text}</ButtonText>
           {!!icon && !isLoading && iconPosition === 'right' ? <ButtonIcon as={icon} /> : null}
         </ButtonComponent>
       );
