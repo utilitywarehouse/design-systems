@@ -15,7 +15,6 @@ const TextBasic: StoryFn<{
   color: ColorValue;
 }> = ({ ...props }) => {
   return (
-    // @ts-expect-error - TS doesn't like the dynamic key here
     <Text {...props} color={`$${props.color?.replace('$', '')}` as ColorValue}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco

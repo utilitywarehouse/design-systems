@@ -118,7 +118,6 @@ const preview: Preview = {
     },
     layout: 'fullscreen',
     darkMode: {
-      current: 'light',
       stylePreview: true,
       dark: {
         ...themeDark,
