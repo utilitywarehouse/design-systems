@@ -37,7 +37,7 @@ const ScrollButton = () => {
             ? {
                 position: 'fixed',
                 width: '100%',
-                left: '80%',
+                right: 10,
                 bottom: 40,
                 height: 20,
                 zIndex: 1,
