@@ -4,3 +4,4 @@ export { default as ScrollWrap } from './ScrollWrap';
 export { default as VariantTitle } from './VariantTitle';
 export { default as AllComponents } from './AllComponents';
 export { default as DocComponentWrap } from './DocComponentWrap';
+export { default as DynamicImage } from './DynamicImage';

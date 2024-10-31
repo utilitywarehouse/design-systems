@@ -1,14 +1,27 @@
 import { Meta } from '@storybook/blocks';
 import { version } from '../../../../packages/native-ui/package.json';
-import img from './gardening.png';
+import img from './phone-light.png';
+import imgDark from './phone-dark.png';
+import { DynamicImage } from '../components';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 
 <Meta title="Native UI / Introduction" />
 
-<img src={img} alt="UW Design Systems Gardeners" title="UW Design Systems Gardeners" width="600" />
+<Box alignItems='center'>
+<DynamicImage
+  width={500}
+  height="auto"
+  alt="UW Design Systems - Native UI"
+  title="UW - Native UI"
+  darkSrc={imgDark}
+  lightSrc={img}
+/>
 
 # UW - Native UI
 
-React component library for building Native UIs at UW.
+React Native component library for building UIs at UW.
+
+</Box>
 
 Current version: v{version}
 
