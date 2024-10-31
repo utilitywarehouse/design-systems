@@ -130,10 +130,9 @@ const AllComponents: React.FC = () => {
             <Center flex={1}>
               <FormField
                 validationStatus="invalid"
-                label="Label"
-                helperText="Helper text"
+                label="This is a form field"
                 validText="Valid form field text"
-                invalidText="Invalid form field text"
+                invalidText="And an invalid error message"
               >
                 <Input onChange={() => console.log('###')} placeholder="" />
               </FormField>
@@ -154,6 +153,14 @@ const AllComponents: React.FC = () => {
               </HStack>
             </Center>
           </ComponentWrapper>
+          <ComponentWrapper
+            name="Icon Button"
+            link="/?path=/docs/native-ui-components-iconbutton--docs"
+          >
+            <Center flex={1}>
+              <IconButton icon={ChevronRightMediumIcon} size="large" onPress={() => null} />
+            </Center>
+          </ComponentWrapper>
           <ComponentWrapper name="Icons" link="/?path=/docs/native-ui-components-icons--docs">
             <Center flex={1}>
               <HStack space="lg">
@@ -164,12 +171,9 @@ const AllComponents: React.FC = () => {
               </HStack>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper
-            name="Icon Button"
-            link="/?path=/docs/native-ui-components-iconbutton--docs"
-          >
+          <ComponentWrapper name="Input" link="/?path=/docs/native-ui-components-input--docs">
             <Center flex={1}>
-              <IconButton icon={ChevronRightMediumIcon} size="large" onPress={() => null} />
+              <Input placeholder="This is an input" />
             </Center>
           </ComponentWrapper>
           <ComponentWrapper name="List" link="/?path=/docs/native-ui-components-list--docs">
