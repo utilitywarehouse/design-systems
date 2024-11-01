@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { exec } = require('child_process');
 
 const files = {
   'Aeonik-Bold':
@@ -43,3 +44,12 @@ for (const file in files) {
     if (err) throw err;
   });
 }
+
+exec(`cd ${__dirname} && npx turbo build`, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`exec error: ${error}`);
+    return;
+  }
+  console.log(stdout);
+  console.error(stderr);
+});

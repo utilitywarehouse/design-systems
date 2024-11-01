@@ -13,6 +13,7 @@ module.exports = {
     getAbsolutePath('@storybook/addon-mdx-gfm'),
     getAbsolutePath('storybook-dark-mode'),
     getAbsolutePath('@a110/storybook-expand-all'),
+    getAbsolutePath('@storybook/addon-a11y'),
     {
       name: '@storybook/addon-react-native-web',
       options: {
