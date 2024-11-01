@@ -24,7 +24,7 @@
     "storybook": "cross-env STORYBOOK_ENABLED='true' expo start",
     "storybook:ios": "cross-env STORYBOOK_ENABLED='true' expo start --ios",
     "storybook:android": "cross-env STORYBOOK_ENABLED='true' expo start --android",
-    "postinstall": "node ./scripts/postinstall.js && turbo build"
+    "postinstall": "node ./scripts/postinstall.js"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
@@ -64,6 +64,7 @@
     "@a110/storybook-expand-all": "^1.1.1",
     "@babel/core": "^7.25.2",
     "@expo/metro-runtime": "^3.2.3",
+    "@storybook/addon-a11y": "^7.6.20",
     "@storybook/addon-actions": "^7.6.20",
     "@storybook/addon-controls": "^7.6.20",
     "@storybook/addon-essentials": "^7.6.20",
