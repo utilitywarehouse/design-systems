@@ -168,6 +168,7 @@ const preview: Preview = {
               'Radio',
               'Skeleton',
               'Spinner',
+              'Switch',
               'Text',
               'VStack',
               'Lab',

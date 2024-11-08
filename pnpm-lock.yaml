@@ -64,6 +64,9 @@ importers:
       '@gluestack-ui/pressable':
         specifier: ^0.1.16
         version: 0.1.16(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/themed':
+        specifier: 1.1.53
+        version: 1.1.53(@gluestack-style/react@1.0.57)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@15.2.0)(react-native-web@0.19.11)(react-native@0.74.5)(react@18.2.0)
       '@react-native-async-storage/async-storage':
         specifier: 1.23.1
         version: 1.23.1(react-native@0.74.5)
@@ -404,6 +407,9 @@ importers:
       '@gluestack-ui/spinner':
         specifier: ^0.1.14
         version: 0.1.14(react-dom@18.2.0)(react@18.2.0)
+      '@gluestack-ui/switch':
+        specifier: ^0.1.22
+        version: 0.1.22(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
       '@gluestack-ui/themed':
         specifier: 1.1.53
         version: 1.1.53(@gluestack-style/react@1.0.57)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@14.1.0)(react-native-web@0.19.12)(react-native@0.74.5)(react@18.2.0)
@@ -7301,7 +7307,7 @@ packages:
       '@gluestack-ui/overlay': 0.1.15(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
       '@gluestack-ui/utils': 0.1.13(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
       '@react-aria/menu': 3.15.3(react-dom@18.2.0)(react@18.2.0)
-      '@react-aria/overlays': 3.21.1(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/overlays': 3.23.2(react-dom@18.2.0)(react@18.2.0)
       '@react-native-aria/focus': 0.2.9(react-native@0.74.5)(react@18.2.0)
       '@react-native-aria/interactions': 0.2.13(react-native@0.74.5)(react@18.2.0)
       '@react-native-aria/menu': 0.2.12(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
@@ -7467,7 +7473,7 @@ packages:
       '@gluestack-ui/form-control': 0.1.18(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
       '@gluestack-ui/hooks': 0.1.11(react-dom@18.2.0)(react@18.2.0)
       '@gluestack-ui/utils': 0.1.13(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
-      '@react-aria/visually-hidden': 3.8.10(react@18.2.0)
+      '@react-aria/visually-hidden': 3.8.15(react@18.2.0)
       '@react-native-aria/interactions': 0.2.13(react-native@0.74.5)(react@18.2.0)
       '@react-native-aria/slider': 0.2.11(react-native@0.74.5)(react@18.2.0)
       '@react-stately/slider': 3.5.2(react@18.2.0)
@@ -7586,6 +7592,62 @@ packages:
       react-native: 0.74.5(@babel/preset-env@7.24.8)(@types/react@18.2.79)(react@18.2.0)
       react-native-svg: 14.1.0(react-native@0.74.5)(react@18.2.0)
       react-native-web: 0.19.12(react-dom@18.2.0)(react@18.2.0)
+    transitivePeerDependencies:
+      - nativewind
+    dev: false
+
+  /@gluestack-ui/themed@1.1.53(@gluestack-style/react@1.0.57)(@types/react-native@0.73.0)(nativewind@2.0.11)(react-dom@18.2.0)(react-native-svg@15.2.0)(react-native-web@0.19.11)(react-native@0.74.5)(react@18.2.0):
+    resolution: {integrity: sha512-I4nxxjQ/KIlKa/egGnXuLsl7jzeIOIxH9AyI0hZ/ZGcBBSGm/bSqp0el4xcDOfAekgRcM2YpJR7PTqdPz39TgA==}
+    peerDependencies:
+      '@gluestack-style/react': '>=1.0.57'
+      '@types/react-native': '>=0.72'
+      react: '>=16'
+      react-dom: '>=16'
+      react-native: '>=0.72'
+      react-native-svg: '>=13.4.0'
+      react-native-web: '>=0.19'
+    dependencies:
+      '@expo/html-elements': 0.10.1
+      '@gluestack-style/animation-resolver': 1.0.4(@gluestack-style/react@1.0.57)
+      '@gluestack-style/legend-motion-animation-driver': 1.0.3(@gluestack-style/react@1.0.57)(@legendapp/motion@2.4.0)
+      '@gluestack-style/react': 1.0.57
+      '@gluestack-ui/accordion': 1.0.7(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/actionsheet': 0.2.45(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/alert': 0.1.15(react-dom@18.2.0)(react@18.2.0)
+      '@gluestack-ui/alert-dialog': 0.1.30(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/avatar': 0.1.17(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/button': 1.0.7(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/checkbox': 0.1.32(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/divider': 0.1.9(react-dom@18.2.0)(react@18.2.0)
+      '@gluestack-ui/fab': 0.1.21(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/form-control': 0.1.18(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/icon': 0.1.22(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/image': 0.1.10(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/input': 0.1.31(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/link': 0.1.22(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/menu': 0.2.36(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/modal': 0.1.34(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/overlay': 0.1.15(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/popover': 0.1.37(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/pressable': 0.1.16(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/progress': 0.1.17(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/provider': 0.1.12(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/radio': 0.1.33(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/select': 0.1.29(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/slider': 0.1.25(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/spinner': 0.1.14(react-dom@18.2.0)(react@18.2.0)
+      '@gluestack-ui/switch': 0.1.22(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/tabs': 0.1.17(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/textarea': 0.1.23(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/toast': 1.0.7(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@gluestack-ui/tooltip': 0.1.33(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
+      '@legendapp/motion': 2.4.0(nativewind@2.0.11)(react-native@0.74.5)(react@18.2.0)
+      '@types/react-native': 0.73.0(@babel/core@7.25.2)(@types/react@18.2.79)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-native: 0.74.5(@babel/core@7.25.2)(@types/react@18.2.79)(react@18.2.0)
+      react-native-svg: 15.2.0(react-native@0.74.5)(react@18.2.0)
+      react-native-web: 0.19.11(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - nativewind
     dev: false
@@ -7734,23 +7796,10 @@ packages:
     deprecated: Use @eslint/object-schema instead
     dev: true
 
-  /@internationalized/date@3.5.2:
-    resolution: {integrity: sha512-vo1yOMUt2hzp63IutEaTUxROdvQg1qlMRsbCvbay2AK2Gai7wIgCyK5weEX3nHkiLgo4qCXHijFNC/ILhlRpOQ==}
-    dependencies:
-      '@swc/helpers': 0.5.10
-    dev: false
-
   /@internationalized/date@3.5.5:
     resolution: {integrity: sha512-H+CfYvOZ0LTJeeLOqm19E3uj/4YjrmOFtBufDHPfvtI80hFAMqtrp7oCACpe4Cil5l8S0Qu/9dYfZc/5lY8WQQ==}
     dependencies:
       '@swc/helpers': 0.5.10
-    dev: false
-
-  /@internationalized/message@3.1.2:
-    resolution: {integrity: sha512-MHAWsZWz8jf6jFPZqpTudcCM361YMtPIRu9CXkYmKjJ/0R3pQRScV5C0zS+Qi50O5UAm8ecKhkXx6mWDDcF6/g==}
-    dependencies:
-      '@swc/helpers': 0.5.10
-      intl-messageformat: 10.5.11
     dev: false
 
   /@internationalized/message@3.1.4:
@@ -7760,20 +7809,8 @@ packages:
       intl-messageformat: 10.5.11
     dev: false
 
-  /@internationalized/number@3.5.1:
-    resolution: {integrity: sha512-N0fPU/nz15SwR9IbfJ5xaS9Ss/O5h1sVXMZf43vc9mxEG48ovglvvzBjF53aHlq20uoR6c+88CrIXipU/LSzwg==}
-    dependencies:
-      '@swc/helpers': 0.5.10
-    dev: false
-
   /@internationalized/number@3.5.3:
     resolution: {integrity: sha512-rd1wA3ebzlp0Mehj5YTuTI50AQEx80gWFyHcQu+u91/5NgdwBecO8BH6ipPfE+lmQ9d63vpB3H9SHoIUiupllw==}
-    dependencies:
-      '@swc/helpers': 0.5.10
-    dev: false
-
-  /@internationalized/string@3.2.1:
-    resolution: {integrity: sha512-vWQOvRIauvFMzOO+h7QrdsJmtN1AXAFVcaLWP9AseRN2o7iHceZ6bIXhBD4teZl8i91A3gxKnWBlGgjCwU6MFQ==}
     dependencies:
       '@swc/helpers': 0.5.10
     dev: false
@@ -8091,7 +8128,7 @@ packages:
       '@legendapp/tools': 2.0.1(react@18.2.0)
       nativewind: 2.0.11(react@18.2.0)(tailwindcss@3.4.3)
       react: 18.2.0
-      react-native: 0.74.5(@babel/preset-env@7.24.8)(@types/react@18.2.79)(react@18.2.0)
+      react-native: 0.74.5(@babel/core@7.25.2)(@types/react@18.2.79)(react@18.2.0)
     dev: false
 
   /@legendapp/tools@2.0.1(react@18.2.0):
@@ -9496,7 +9533,7 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
       '@react-aria/focus': 3.18.2(react@18.2.0)
-      '@react-aria/overlays': 3.21.1(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/overlays': 3.23.2(react-dom@18.2.0)(react@18.2.0)
       '@react-aria/utils': 3.25.2(react@18.2.0)
       '@react-types/dialog': 3.5.8(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
@@ -9536,10 +9573,10 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@internationalized/date': 3.5.2
-      '@internationalized/message': 3.1.2
-      '@internationalized/number': 3.5.1
-      '@internationalized/string': 3.2.1
+      '@internationalized/date': 3.5.5
+      '@internationalized/message': 3.1.4
+      '@internationalized/number': 3.5.3
+      '@internationalized/string': 3.2.3
       '@react-aria/ssr': 3.9.5(react@18.2.0)
       '@react-aria/utils': 3.25.2(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
@@ -9609,27 +9646,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@react-aria/overlays@3.21.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-djEBDF+TbIIOHWWNpdm19+z8xtY8U+T+wKVQg/UZ6oWnclSqSWeGl70vu73Cg4HVBJ4hKf1SRx4Z/RN6VvH4Yw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-aria/focus': 3.18.2(react@18.2.0)
-      '@react-aria/i18n': 3.10.2(react@18.2.0)
-      '@react-aria/interactions': 3.22.2(react@18.2.0)
-      '@react-aria/ssr': 3.9.5(react@18.2.0)
-      '@react-aria/utils': 3.25.2(react@18.2.0)
-      '@react-aria/visually-hidden': 3.8.15(react@18.2.0)
-      '@react-stately/overlays': 3.6.5(react@18.2.0)
-      '@react-types/button': 3.9.2(react@18.2.0)
-      '@react-types/overlays': 3.8.5(react@18.2.0)
-      '@react-types/shared': 3.24.1(react@18.2.0)
-      '@swc/helpers': 0.5.10
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@react-aria/overlays@3.23.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-vjlplr953YAuJfHiP4O+CyrTlr6OaFgXAGrzWq4MVMjnpV/PT5VRJWYFHR0sUGlHTPqeKS4NZbi/xCSgl/3pGQ==}
     peerDependencies:
@@ -9669,23 +9685,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-aria/selection@3.17.5(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-gO5jBUkc7WdkiFMlWt3x9pTSuj3Yeegsxfo44qU5NPlKrnGtPRZDWrlACNgkDHu645RNNPhlyoX0C+G8mUg1xA==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-aria/focus': 3.18.2(react@18.2.0)
-      '@react-aria/i18n': 3.10.2(react@18.2.0)
-      '@react-aria/interactions': 3.22.2(react@18.2.0)
-      '@react-aria/utils': 3.25.2(react@18.2.0)
-      '@react-stately/selection': 3.14.3(react@18.2.0)
-      '@react-types/shared': 3.24.1(react@18.2.0)
-      '@swc/helpers': 0.5.10
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@react-aria/selection@3.19.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-GYoObXCXlmGK08hp7Qfl6Bk0U+bKP5YDWSsX+MzNjJsqzQSLm4S06tRB9ACM7gIo9dDCvL4IRxdSYTJAlJc6bw==}
     peerDependencies:
@@ -9709,7 +9708,7 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
       '@react-aria/focus': 3.18.2(react@18.2.0)
-      '@react-aria/i18n': 3.10.2(react@18.2.0)
+      '@react-aria/i18n': 3.12.2(react@18.2.0)
       '@react-aria/interactions': 3.22.2(react@18.2.0)
       '@react-aria/label': 3.7.6(react@18.2.0)
       '@react-aria/utils': 3.25.2(react@18.2.0)
@@ -9812,7 +9811,7 @@ packages:
       react-native: '*'
     dependencies:
       react: 18.2.0
-      react-native: 0.74.5(@babel/preset-env@7.24.8)(@types/react@18.2.79)(react@18.2.0)
+      react-native: 0.74.5(@babel/core@7.25.2)(@types/react@18.2.79)(react@18.2.0)
     dev: false
 
   /@react-native-aria/checkbox@0.2.9(react-native@0.74.5)(react@18.2.0):
@@ -9841,7 +9840,7 @@ packages:
       '@react-types/dialog': 3.5.8(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
       react: 18.2.0
-      react-native: 0.74.5(@babel/preset-env@7.24.8)(@types/react@18.2.79)(react@18.2.0)
+      react-native: 0.74.5(@babel/core@7.25.2)(@types/react@18.2.79)(react@18.2.0)
     transitivePeerDependencies:
       - react-dom
     dev: false
@@ -9867,7 +9866,7 @@ packages:
       '@react-aria/utils': 3.25.2(react@18.2.0)
       '@react-native-aria/utils': 0.2.11(react-native@0.74.5)(react@18.2.0)
       react: 18.2.0
-      react-native: 0.74.5(@babel/core@7.25.2)(@types/react@18.2.79)(react@18.2.0)
+      react-native: 0.74.5(@babel/preset-env@7.24.8)(@types/react@18.2.79)(react@18.2.0)
     dev: false
 
   /@react-native-aria/menu@0.2.12(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0):
@@ -9878,17 +9877,17 @@ packages:
     dependencies:
       '@react-aria/interactions': 3.22.2(react@18.2.0)
       '@react-aria/menu': 3.15.3(react-dom@18.2.0)(react@18.2.0)
-      '@react-aria/selection': 3.17.5(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/selection': 3.19.3(react-dom@18.2.0)(react@18.2.0)
       '@react-aria/utils': 3.25.2(react@18.2.0)
       '@react-native-aria/interactions': 0.2.13(react-native@0.74.5)(react@18.2.0)
       '@react-native-aria/overlays': 0.3.14(react-dom@18.2.0)(react-native@0.74.5)(react@18.2.0)
       '@react-native-aria/utils': 0.2.11(react-native@0.74.5)(react@18.2.0)
-      '@react-stately/collections': 3.10.5(react@18.2.0)
-      '@react-stately/menu': 3.6.1(react@18.2.0)
-      '@react-stately/tree': 3.7.6(react@18.2.0)
-      '@react-types/menu': 3.9.7(react@18.2.0)
+      '@react-stately/collections': 3.10.9(react@18.2.0)
+      '@react-stately/menu': 3.8.2(react@18.2.0)
+      '@react-stately/tree': 3.8.4(react@18.2.0)
+      '@react-types/menu': 3.9.11(react@18.2.0)
       react: 18.2.0
-      react-native: 0.74.5(@babel/preset-env@7.24.8)(@types/react@18.2.79)(react@18.2.0)
+      react-native: 0.74.5(@babel/core@7.25.2)(@types/react@18.2.79)(react@18.2.0)
     transitivePeerDependencies:
       - react-dom
     dev: false
@@ -9901,14 +9900,14 @@ packages:
       react-native: '*'
     dependencies:
       '@react-aria/interactions': 3.22.2(react@18.2.0)
-      '@react-aria/overlays': 3.21.1(react-dom@18.2.0)(react@18.2.0)
+      '@react-aria/overlays': 3.23.2(react-dom@18.2.0)(react@18.2.0)
       '@react-native-aria/utils': 0.2.11(react-native@0.74.5)(react@18.2.0)
-      '@react-stately/overlays': 3.6.5(react@18.2.0)
+      '@react-stately/overlays': 3.6.10(react@18.2.0)
       '@react-types/overlays': 3.8.5(react@18.2.0)
       dom-helpers: 5.2.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      react-native: 0.74.5(@babel/preset-env@7.24.8)(@types/react@18.2.79)(react@18.2.0)
+      react-native: 0.74.5(@babel/core@7.25.2)(@types/react@18.2.79)(react@18.2.0)
     dev: false
 
   /@react-native-aria/radio@0.2.10(react-native@0.74.5)(react@18.2.0):
@@ -9941,7 +9940,7 @@ packages:
       '@react-native-aria/utils': 0.2.11(react-native@0.74.5)(react@18.2.0)
       '@react-stately/slider': 3.5.2(react@18.2.0)
       react: 18.2.0
-      react-native: 0.74.5(@babel/preset-env@7.24.8)(@types/react@18.2.79)(react@18.2.0)
+      react-native: 0.74.5(@babel/core@7.25.2)(@types/react@18.2.79)(react@18.2.0)
     dev: false
 
   /@react-native-aria/toggle@0.2.8(react-native@0.74.5)(react@18.2.0):
@@ -10484,7 +10483,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@internationalized/date': 3.5.2
+      '@internationalized/date': 3.5.5
       '@react-stately/utils': 3.10.3(react@18.2.0)
       '@react-types/calendar': 3.4.4(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
@@ -10505,16 +10504,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-stately/collections@3.10.5(react@18.2.0):
-    resolution: {integrity: sha512-k8Q29Nnvb7iAia1QvTanZsrWP2aqVNBy/1SlE6kLL6vDqtKZC+Esd1SDLHRmIcYIp5aTdfwIGd0NuiRQA7a81Q==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-types/shared': 3.24.1(react@18.2.0)
-      '@swc/helpers': 0.5.10
-      react: 18.2.0
-    dev: false
-
   /@react-stately/collections@3.10.9(react@18.2.0):
     resolution: {integrity: sha512-plyrng6hOQMG8LrjArMA6ts/DgWyXln3g90/hFNbqe/hdVYF53sDVsj8Jb+5LtoYTpiAlV6eOvy1XR0vPZUf8w==}
     peerDependencies:
@@ -10530,10 +10519,10 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@react-stately/collections': 3.10.5(react@18.2.0)
+      '@react-stately/collections': 3.10.9(react@18.2.0)
       '@react-stately/form': 3.0.1(react@18.2.0)
       '@react-stately/list': 3.10.3(react@18.2.0)
-      '@react-stately/overlays': 3.6.5(react@18.2.0)
+      '@react-stately/overlays': 3.6.10(react@18.2.0)
       '@react-stately/select': 3.6.2(react@18.2.0)
       '@react-stately/utils': 3.10.3(react@18.2.0)
       '@react-types/combobox': 3.10.1(react@18.2.0)
@@ -10557,10 +10546,10 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@internationalized/date': 3.5.2
-      '@internationalized/string': 3.2.1
+      '@internationalized/date': 3.5.5
+      '@internationalized/string': 3.2.3
       '@react-stately/form': 3.0.1(react@18.2.0)
-      '@react-stately/overlays': 3.6.5(react@18.2.0)
+      '@react-stately/overlays': 3.6.10(react@18.2.0)
       '@react-stately/utils': 3.10.3(react@18.2.0)
       '@react-types/datepicker': 3.7.2(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
@@ -10573,7 +10562,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@react-stately/selection': 3.14.3(react@18.2.0)
+      '@react-stately/selection': 3.16.2(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
       '@swc/helpers': 0.5.10
       react: 18.2.0
@@ -10600,8 +10589,8 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@react-stately/collections': 3.10.5(react@18.2.0)
-      '@react-stately/selection': 3.14.3(react@18.2.0)
+      '@react-stately/collections': 3.10.9(react@18.2.0)
+      '@react-stately/selection': 3.16.2(react@18.2.0)
       '@react-types/grid': 3.2.4(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
       '@swc/helpers': 0.5.10
@@ -10613,21 +10602,9 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@react-stately/collections': 3.10.5(react@18.2.0)
-      '@react-stately/selection': 3.14.3(react@18.2.0)
+      '@react-stately/collections': 3.10.9(react@18.2.0)
+      '@react-stately/selection': 3.16.2(react@18.2.0)
       '@react-stately/utils': 3.10.3(react@18.2.0)
-      '@react-types/shared': 3.24.1(react@18.2.0)
-      '@swc/helpers': 0.5.10
-      react: 18.2.0
-    dev: false
-
-  /@react-stately/menu@3.6.1(react@18.2.0):
-    resolution: {integrity: sha512-3v0vkTm/kInuuG8jG7jbxXDBnMQcoDZKWvYsBQq7+POt0LmijbLdbdZPBoz9TkZ3eo/OoP194LLHOaFTQyHhlw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-stately/overlays': 3.6.5(react@18.2.0)
-      '@react-types/menu': 3.9.7(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
       '@swc/helpers': 0.5.10
       react: 18.2.0
@@ -10650,7 +10627,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@internationalized/number': 3.5.1
+      '@internationalized/number': 3.5.3
       '@react-stately/form': 3.0.1(react@18.2.0)
       '@react-stately/utils': 3.10.3(react@18.2.0)
       '@react-types/numberfield': 3.8.1(react@18.2.0)
@@ -10665,17 +10642,6 @@ packages:
     dependencies:
       '@react-stately/utils': 3.10.3(react@18.2.0)
       '@react-types/overlays': 3.8.9(react@18.2.0)
-      '@swc/helpers': 0.5.10
-      react: 18.2.0
-    dev: false
-
-  /@react-stately/overlays@3.6.5(react@18.2.0):
-    resolution: {integrity: sha512-U4rCFj6TPJPXLUvYXAcvh+yP/CO2W+7f0IuqP7ZZGE+Osk9qFkT+zRK5/6ayhBDFpmueNfjIEAzT9gYPQwNHFw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-stately/utils': 3.10.3(react@18.2.0)
-      '@react-types/overlays': 3.8.5(react@18.2.0)
       '@swc/helpers': 0.5.10
       react: 18.2.0
     dev: false
@@ -10711,20 +10677,8 @@ packages:
     dependencies:
       '@react-stately/form': 3.0.1(react@18.2.0)
       '@react-stately/list': 3.10.3(react@18.2.0)
-      '@react-stately/overlays': 3.6.5(react@18.2.0)
+      '@react-stately/overlays': 3.6.10(react@18.2.0)
       '@react-types/select': 3.9.2(react@18.2.0)
-      '@react-types/shared': 3.24.1(react@18.2.0)
-      '@swc/helpers': 0.5.10
-      react: 18.2.0
-    dev: false
-
-  /@react-stately/selection@3.14.3(react@18.2.0):
-    resolution: {integrity: sha512-d/t0rIWieqQ7wjLoMoWnuHEUSMoVXxkPBFuSlJF3F16289FiQ+b8aeKFDzFTYN7fFD8rkZTnpuE4Tcxg3TmA+w==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-stately/collections': 3.10.5(react@18.2.0)
-      '@react-stately/utils': 3.10.3(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
       '@swc/helpers': 0.5.10
       react: 18.2.0
@@ -10759,10 +10713,10 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@react-stately/collections': 3.10.5(react@18.2.0)
+      '@react-stately/collections': 3.10.9(react@18.2.0)
       '@react-stately/flags': 3.0.1
       '@react-stately/grid': 3.8.5(react@18.2.0)
-      '@react-stately/selection': 3.14.3(react@18.2.0)
+      '@react-stately/selection': 3.16.2(react@18.2.0)
       '@react-stately/utils': 3.10.3(react@18.2.0)
       '@react-types/grid': 3.2.4(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
@@ -10799,21 +10753,8 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@react-stately/overlays': 3.6.5(react@18.2.0)
+      '@react-stately/overlays': 3.6.10(react@18.2.0)
       '@react-types/tooltip': 3.4.7(react@18.2.0)
-      '@swc/helpers': 0.5.10
-      react: 18.2.0
-    dev: false
-
-  /@react-stately/tree@3.7.6(react@18.2.0):
-    resolution: {integrity: sha512-y8KvEoZX6+YvqjNCVGS3zA/BKw4D3XrUtUKIDme3gu5Mn6z97u+hUXKdXVCniZR7yvV3fHAIXwE5V2K8Oit4aw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-stately/collections': 3.10.5(react@18.2.0)
-      '@react-stately/selection': 3.14.3(react@18.2.0)
-      '@react-stately/utils': 3.10.3(react@18.2.0)
-      '@react-types/shared': 3.24.1(react@18.2.0)
       '@swc/helpers': 0.5.10
       react: 18.2.0
     dev: false
@@ -10840,15 +10781,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-types/button@3.9.2(react@18.2.0):
-    resolution: {integrity: sha512-EnPTkGHZRtiwAoJy5q9lDjoG30bEzA/qnvKG29VVXKYAGeqY2IlFs1ypmU+z1X/CpJgPcG3I5cakM7yTVm3pSg==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-types/shared': 3.24.1(react@18.2.0)
-      react: 18.2.0
-    dev: false
-
   /@react-types/button@3.9.6(react@18.2.0):
     resolution: {integrity: sha512-8lA+D5JLbNyQikf8M/cPP2cji91aVTcqjrGpDqI7sQnaLFikM8eFR6l1ZWGtZS5MCcbfooko77ha35SYplSQvw==}
     peerDependencies:
@@ -10863,7 +10795,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@internationalized/date': 3.5.2
+      '@internationalized/date': 3.5.5
       '@react-types/shared': 3.24.1(react@18.2.0)
       react: 18.2.0
     dev: false
@@ -10891,9 +10823,9 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@internationalized/date': 3.5.2
+      '@internationalized/date': 3.5.5
       '@react-types/calendar': 3.4.4(react@18.2.0)
-      '@react-types/overlays': 3.8.5(react@18.2.0)
+      '@react-types/overlays': 3.8.9(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
       react: 18.2.0
     dev: false
@@ -10903,7 +10835,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@react-types/overlays': 3.8.5(react@18.2.0)
+      '@react-types/overlays': 3.8.9(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
       react: 18.2.0
     dev: false
@@ -10923,16 +10855,6 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0
     dependencies:
       '@react-types/overlays': 3.8.9(react@18.2.0)
-      '@react-types/shared': 3.24.1(react@18.2.0)
-      react: 18.2.0
-    dev: false
-
-  /@react-types/menu@3.9.7(react@18.2.0):
-    resolution: {integrity: sha512-K6KhloJVoGsqwkdeez72fkNI9dfrmLI/sNrB4XuOKo2crDQ/eyZYWyJmzz8giz/tHME9w774k487rVoefoFh5w==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-    dependencies:
-      '@react-types/overlays': 3.8.5(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
       react: 18.2.0
     dev: false
@@ -11042,7 +10964,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@react-types/overlays': 3.8.5(react@18.2.0)
+      '@react-types/overlays': 3.8.9(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
       react: 18.2.0
     dev: false
@@ -11929,8 +11851,8 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.5.0-alpha.1(storybook@7.6.20):
-    resolution: {integrity: sha512-wChHki2XNUbL3mKzqxW+YfNZNKk0WogzLbGEXXNsQAhcJLk0ftY9f2hl0x8+gCRZGprpP3ySQPHGpCFbH29yMg==}
+  /@storybook/client-logger@8.5.0-alpha.3(storybook@7.6.20):
+    resolution: {integrity: sha512-alrY6cRGyWtLEO+bkmpDGUsGsBXTTyWivHnpj3I+Hieu2AcxX4Y5egdHPSSPCIWf7isANxgjAXflSKJwQM5FgA==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
@@ -12229,10 +12151,10 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.5.0-alpha.1(storybook@7.6.20):
-    resolution: {integrity: sha512-y/O6Avn0AxuBcNbdE4M17z10yLlWu55gdfE0OqcpUe40sAeShXs++vSnJqEx793nS2fZcuulxBsxm51eUnz8xw==}
+  /@storybook/instrumenter@8.5.0-alpha.3(storybook@7.6.20):
+    resolution: {integrity: sha512-pnmzNpELuDlpGPMYPgpBMoHPyOnY1U76gDnXL9U+OCgX45oT2d1gBF4VAXHitBsAv0PLtxogjgyBxjueglVOzQ==}
     peerDependencies:
-      storybook: ^8.5.0-alpha.1
+      storybook: ^8.5.0-alpha.3
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.1.4
@@ -13010,8 +12932,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1(storybook@7.6.20):
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.5.0-alpha.1(storybook@7.6.20)
-      '@storybook/instrumenter': 8.5.0-alpha.1(storybook@7.6.20)
+      '@storybook/client-logger': 8.5.0-alpha.3(storybook@7.6.20)
+      '@storybook/instrumenter': 8.5.0-alpha.3(storybook@7.6.20)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
@@ -13570,6 +13492,22 @@ packages:
     dependencies:
       '@types/react': 18.3.9
     dev: true
+
+  /@types/react-native@0.73.0(@babel/core@7.25.2)(@types/react@18.2.79)(react@18.2.0):
+    resolution: {integrity: sha512-6ZRPQrYM72qYKGWidEttRe6M5DZBEV5F+MHMHqd4TTYx0tfkcdrUFGdef6CCxY0jXU7wldvd/zA/b0A/kTeJmA==}
+    deprecated: This is a stub types definition. react-native provides its own type definitions, so you do not need this installed.
+    dependencies:
+      react-native: 0.74.5(@babel/core@7.25.2)(@types/react@18.2.79)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@babel/preset-env'
+      - '@types/react'
+      - bufferutil
+      - encoding
+      - react
+      - supports-color
+      - utf-8-validate
+    dev: false
 
   /@types/react-native@0.73.0(@babel/preset-env@7.24.8)(@types/react@18.2.79)(react@18.2.0):
     resolution: {integrity: sha512-6ZRPQrYM72qYKGWidEttRe6M5DZBEV5F+MHMHqd4TTYx0tfkcdrUFGdef6CCxY0jXU7wldvd/zA/b0A/kTeJmA==}
@@ -23241,26 +23179,26 @@ packages:
     dependencies:
       '@react-stately/calendar': 3.4.4(react@18.2.0)
       '@react-stately/checkbox': 3.6.3(react@18.2.0)
-      '@react-stately/collections': 3.10.5(react@18.2.0)
+      '@react-stately/collections': 3.10.9(react@18.2.0)
       '@react-stately/combobox': 3.8.2(react@18.2.0)
       '@react-stately/data': 3.11.2(react@18.2.0)
       '@react-stately/datepicker': 3.9.2(react@18.2.0)
       '@react-stately/dnd': 3.2.8(react@18.2.0)
       '@react-stately/form': 3.0.1(react@18.2.0)
       '@react-stately/list': 3.10.3(react@18.2.0)
-      '@react-stately/menu': 3.6.1(react@18.2.0)
+      '@react-stately/menu': 3.8.2(react@18.2.0)
       '@react-stately/numberfield': 3.9.1(react@18.2.0)
-      '@react-stately/overlays': 3.6.5(react@18.2.0)
+      '@react-stately/overlays': 3.6.10(react@18.2.0)
       '@react-stately/radio': 3.10.2(react@18.2.0)
       '@react-stately/searchfield': 3.5.1(react@18.2.0)
       '@react-stately/select': 3.6.2(react@18.2.0)
-      '@react-stately/selection': 3.14.3(react@18.2.0)
+      '@react-stately/selection': 3.16.2(react@18.2.0)
       '@react-stately/slider': 3.5.2(react@18.2.0)
       '@react-stately/table': 3.11.6(react@18.2.0)
       '@react-stately/tabs': 3.6.4(react@18.2.0)
       '@react-stately/toggle': 3.7.2(react@18.2.0)
       '@react-stately/tooltip': 3.4.7(react@18.2.0)
-      '@react-stately/tree': 3.7.6(react@18.2.0)
+      '@react-stately/tree': 3.8.4(react@18.2.0)
       '@react-types/shared': 3.24.1(react@18.2.0)
       react: 18.2.0
     dev: false
