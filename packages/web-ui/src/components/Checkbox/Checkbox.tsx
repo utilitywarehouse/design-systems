@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import clsx from 'clsx';
+
 import type { CheckboxProps } from './Checkbox.props';
 
 import { BaseCheckbox } from '../BaseCheckbox';
@@ -67,14 +69,17 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<Checkbox
     const ariaDescribedby = context ? context['aria-describedby'] : '';
     const showHelperText = !hasGroupHelperText && !!helperText;
     const showLabel = !!label;
-    
+
     return (
-      <StyledFlex className={className} data-disabled={disabled ? '' : undefined} gap={1}>
+      <StyledFlex
+        className={clsx(componentClassName, className)}
+        data-disabled={disabled ? '' : undefined}
+        gap={1}
+      >
         <StyledBaseCheckbox
           ref={ref}
           {...props}
           id={id}
-          className={componentClassName}
           disabled={disabled}
           aria-describedby={showHelperText ? helperTextId : ariaDescribedby}
           aria-labelledby={ariaLabelledby || showLabel ? labelId : undefined}
