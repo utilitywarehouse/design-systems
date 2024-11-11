@@ -24,6 +24,7 @@ import {
   Spinner,
   Divider,
   useColorMode,
+  Card,
 } from '@utilitywarehouse/native-ui';
 import { Actionsheet, Box } from '@utilitywarehouse/native-ui/lab';
 import {
@@ -100,6 +101,14 @@ const AllComponents: React.FC = () => {
           <ComponentWrapper name="Button" link="/?path=/docs/native-ui-components-button--docs">
             <Center flex={1}>
               <Button variant="outline">Press me</Button>
+            </Center>
+          </ComponentWrapper>
+          <ComponentWrapper name="Card" link="/?path=/docs/native-ui-components-card--docs">
+            <Center flex={1}>
+              <Card padding="large" colorScheme="grey" variant="outline">
+                <Heading>I am a card</Heading>
+                <Text>And do card stuff.</Text>
+              </Card>
             </Center>
           </ComponentWrapper>
           <ComponentWrapper name="Center" link="/?path=/docs/native-ui-components-center--docs">
