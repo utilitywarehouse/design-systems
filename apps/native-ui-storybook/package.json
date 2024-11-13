@@ -84,6 +84,7 @@
     "babel-plugin-react-native-web": "^0.19.11",
     "cross-env": "^7.0.3",
     "entities": "2.0.3",
+    "node-fetch": "^3.3.2",
     "patch-package": "^8.0.0",
     "storybook": "^7.6.20",
     "tocbot": "^4.27.20",
