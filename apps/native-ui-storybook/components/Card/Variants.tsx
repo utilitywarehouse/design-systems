@@ -1,12 +1,13 @@
-import { Text, Card, VStack } from '@utilitywarehouse/native-ui';
+import { Text, Card, VStack, useColorMode } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { ScrollWrap, VariantTitle } from '../../docs/components';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const CardVaraiants = ({ ...props }) => {
+  const colorMode = useColorMode();
   return (
     <Box height={1000} w="100%">
-      <ScrollWrap backgroundColor={props.surface}>
+      <ScrollWrap backgroundColor={colorMode === 'light' ? props.surface : ''}>
         <VStack space="lg">
           <VariantTitle title="Dashed - Base">
             <Card {...props} variant="dashed">

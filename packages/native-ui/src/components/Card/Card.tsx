@@ -120,14 +120,28 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
       }
     }
     if (surface === 'purple') {
-      styles.borderColor = colors.purple600;
-      styles.backgroundColor = colorMode === 'light' ? colors.purple800 : colors.purple100;
-      if (variant === 'outline' && colorScheme === 'purple') {
-        styles.borderColor = colors.purple700;
-        styles.backgroundColor = colors.purple900;
+      if (colorMode === 'light') {
+        styles.borderColor = colors.purple600;
+        styles.backgroundColor = colors.purple800;
       }
-      if (variant === 'filled' && colorScheme === 'purple') {
-        styles.backgroundColor = colors.purple1000;
+      if (variant === 'outline' || variant === 'elevated' || variant === 'dashed') {
+        if (colorScheme === 'base') {
+          styles.borderColor = colorMode === 'light' ? colors.purple600 : colors.grey300;
+          styles.backgroundColor = colorMode === 'light' ? colors.purple800 : colors.grey100;
+        }
+        if (colorScheme === 'purple') {
+          styles.borderColor = colorMode === 'light' ? colors.purple700 : colors.purple300;
+          styles.backgroundColor = colorMode === 'light' ? colors.purple900 : colors.purple50;
+        }
+        if (colorScheme === 'grey') {
+          styles.borderColor = colorMode === 'light' ? colors.purple700 : colors.grey300;
+          styles.backgroundColor = colorMode === 'light' ? colors.purple800 : colors.grey75;
+        }
+      }
+      if (variant === 'filled') {
+        if (colorScheme === 'purple') {
+          styles.backgroundColor = colorMode === 'light' ? colors.purple1000 : colors.purple100;
+        }
       }
     }
     return styles;

@@ -1,12 +1,13 @@
-import { Text, Card } from '@utilitywarehouse/native-ui';
+import { Text, Card, useColorMode } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { ScrollWrap } from '../../docs/components';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const CardBasic = ({ ...props }) => {
+  const colorMode = useColorMode();
   return (
     <Box height={60} w="100%">
-      <ScrollWrap backgroundColor={props.surface}>
+      <ScrollWrap backgroundColor={colorMode === 'light' ? props.surface : ''}>
         <Card {...props}>
           <Text color={props.surface === 'base' ? '$grey1000' : '$white'}>This is a card.</Text>
         </Card>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { List } from './';
 import figma from '@figma/code-connect';
+import { Card } from '../Card';
 
 const props = {
   heading: figma.nestedProps('List Heading', {
@@ -10,6 +11,29 @@ const props = {
   }),
   listItem: figma.children('List Item'),
   listItems: figma.children('List Items'),
+  cardProps: figma.nestedProps('Card', {
+    variant: figma.enum('variant', {
+      dashed: 'dashed',
+      elevated: 'elevated',
+      outline: 'outline',
+      filled: 'filled',
+    }),
+    padding: figma.enum('padding', {
+      large: 'large',
+      medium: 'medium',
+      small: 'small',
+      none: 'none',
+    }),
+    colorScheme: figma.enum('colorScheme', {
+      base: 'base',
+      grey: 'grey',
+      purple: 'purple',
+    }),
+    surface: figma.enum('surface', {
+      base: 'base',
+      purple: 'purple',
+    }),
+  }),
 };
 
 figma.connect(
@@ -46,13 +70,13 @@ figma.connect(
       container: 'card',
       'Heading?': true,
     },
-    example: ({ heading, listItems }) => (
+    example: ({ heading, listItems, cardProps }) => (
       <List
         container="card"
         headingText={heading.text}
         headingSupportingText={heading.supportingText}
       >
-        <Card>{listItems}</Card>
+        <Card {...cardProps}>{listItems}</Card>
       </List>
     ),
   }
@@ -67,9 +91,9 @@ figma.connect(
       container: 'card',
       'Heading?': false,
     },
-    example: ({ listItems }) => (
+    example: ({ listItems, cardProps }) => (
       <List container="card">
-        <Card>{listItems}</Card>
+        <Card {...cardProps}>{listItems}</Card>
       </List>
     ),
   }
