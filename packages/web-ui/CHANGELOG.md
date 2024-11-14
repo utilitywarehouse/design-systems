@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 1.0.10
+
+### Patch Changes
+
+- [#581](https://github.com/utilitywarehouse/design-systems/pull/581) [`e88e0e16`](https://github.com/utilitywarehouse/design-systems/commit/e88e0e162afb61f6ac3b7033032209b856d0e6ef) Thanks [@archieewald](https://github.com/archieewald)! - Move Checkbox className to outer element
+
 ## 1.0.9
 
 ### Patch Changes
