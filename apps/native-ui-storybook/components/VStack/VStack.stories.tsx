@@ -1,5 +1,4 @@
 import VStack from './VStack';
-import VStackReversedExample from './VStackReversed';
 import type { Meta } from '@storybook/react';
 
 const VStackMeta: Meta<typeof VStack> = {
@@ -22,5 +21,4 @@ const VStackMeta: Meta<typeof VStack> = {
 
 export default VStackMeta;
 
-export { VStack };
-export { VStackReversedExample };
+export { VStack as Playground };

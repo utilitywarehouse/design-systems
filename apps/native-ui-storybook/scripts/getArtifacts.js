@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { pipeline } = require('stream'); // Import pipeline
 const unzipper = require('unzipper');
 
 async function getArtifacts() {
@@ -28,11 +29,15 @@ async function getArtifacts() {
     },
   });
   const dest = fs.createWriteStream('./artifact.zip');
-  archive.body.pipe(dest);
 
-  dest.on('finish', function () {
-    fs.createReadStream('./artifact.zip').pipe(unzipper.Extract({ path: './' }));
-    console.error(`Unzipped ${process.env.ARTIFACT_NAME}`);
+  // Use pipeline to pipe the response body to the destination file
+  pipeline(archive.body, dest, err => {
+    if (err) {
+      console.error('Pipeline failed.', err);
+    } else {
+      fs.createReadStream('./artifact.zip').pipe(unzipper.Extract({ path: './' }));
+      console.error(`Unzipped ${process.env.ARTIFACT_NAME}`);
+    }
   });
 }
 

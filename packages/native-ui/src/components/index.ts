@@ -18,6 +18,7 @@ export * from './HStack';
 export * from './VStack';
 export * from './Icon';
 export * from './Divider';
+export * from './Card';
 
 export {
   FlatList,

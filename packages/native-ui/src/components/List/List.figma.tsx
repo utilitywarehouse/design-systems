@@ -2,6 +2,7 @@
 import React from 'react';
 import { List } from './';
 import figma from '@figma/code-connect';
+import { Card } from '../Card';
 
 const props = {
   heading: figma.nestedProps('List Heading', {
@@ -10,6 +11,29 @@ const props = {
   }),
   listItem: figma.children('List Item'),
   listItems: figma.children('List Items'),
+  cardProps: figma.nestedProps('Card', {
+    variant: figma.enum('variant', {
+      dashed: 'dashed',
+      elevated: 'elevated',
+      outline: 'outline',
+      filled: 'filled',
+    }),
+    padding: figma.enum('padding', {
+      large: 'large',
+      medium: 'medium',
+      small: 'small',
+      none: 'none',
+    }),
+    colorScheme: figma.enum('colorScheme', {
+      base: 'base',
+      grey: 'grey',
+      purple: 'purple',
+    }),
+    surface: figma.enum('surface', {
+      base: 'base',
+      purple: 'purple',
+    }),
+  }),
 };
 
 figma.connect(
@@ -43,16 +67,16 @@ figma.connect(
   {
     props,
     variant: {
-      container: 'card',
+      container: 'card new',
       'Heading?': true,
     },
-    example: ({ heading, listItems }) => (
+    example: ({ heading, listItems, cardProps }) => (
       <List
         container="card"
         headingText={heading.text}
         headingSupportingText={heading.supportingText}
       >
-        <Card>{listItems}</Card>
+        <Card {...cardProps}>{listItems}</Card>
       </List>
     ),
   }
@@ -64,12 +88,50 @@ figma.connect(
   {
     props,
     variant: {
-      container: 'card',
+      container: 'card ☠️ - legacy',
+      'Heading?': true,
+    },
+    example: ({ heading, listItems, cardProps }) => (
+      <List
+        container="card"
+        headingText={heading.text}
+        headingSupportingText={heading.supportingText}
+      >
+        <Card {...cardProps}>{listItems}</Card>
+      </List>
+    ),
+  }
+);
+
+figma.connect(
+  List,
+  'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4643-17907&m=dev',
+  {
+    props,
+    variant: {
+      container: 'card new',
       'Heading?': false,
     },
-    example: ({ listItems }) => (
+    example: ({ listItems, cardProps }) => (
       <List container="card">
-        <Card>{listItems}</Card>
+        <Card {...cardProps}>{listItems}</Card>
+      </List>
+    ),
+  }
+);
+
+figma.connect(
+  List,
+  'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4643-17907&m=dev',
+  {
+    props,
+    variant: {
+      container: 'card ☠️ - legacy',
+      'Heading?': false,
+    },
+    example: ({ listItems, cardProps }) => (
+      <List container="card">
+        <Card {...cardProps}>{listItems}</Card>
       </List>
     ),
   }

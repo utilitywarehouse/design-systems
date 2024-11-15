@@ -8,4 +8,4 @@ const SkeletonMeta: Meta<typeof Skeleton> = {
 
 export default SkeletonMeta;
 
-export { Skeleton };
+export { Skeleton as Playground };
