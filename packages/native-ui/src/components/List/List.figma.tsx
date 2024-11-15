@@ -67,7 +67,7 @@ figma.connect(
   {
     props,
     variant: {
-      container: 'card new',
+      container: 'card',
       'Heading?': true,
     },
     example: ({ heading, listItems, cardProps }) => (
@@ -88,45 +88,7 @@ figma.connect(
   {
     props,
     variant: {
-      container: 'card ☠️ - legacy',
-      'Heading?': true,
-    },
-    example: ({ heading, listItems, cardProps }) => (
-      <List
-        container="card"
-        headingText={heading.text}
-        headingSupportingText={heading.supportingText}
-      >
-        <Card {...cardProps}>{listItems}</Card>
-      </List>
-    ),
-  }
-);
-
-figma.connect(
-  List,
-  'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4643-17907&m=dev',
-  {
-    props,
-    variant: {
-      container: 'card new',
-      'Heading?': false,
-    },
-    example: ({ listItems, cardProps }) => (
-      <List container="card">
-        <Card {...cardProps}>{listItems}</Card>
-      </List>
-    ),
-  }
-);
-
-figma.connect(
-  List,
-  'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4643-17907&m=dev',
-  {
-    props,
-    variant: {
-      container: 'card ☠️ - legacy',
+      container: 'card',
       'Heading?': false,
     },
     example: ({ listItems, cardProps }) => (
