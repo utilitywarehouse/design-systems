@@ -41,6 +41,7 @@ Card.displayName = 'Card';
 const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
   card: {
     borderRadius: radii['xl'],
+    overflow: 'hidden',
     variants: {
       variant: {
         dashed: {
