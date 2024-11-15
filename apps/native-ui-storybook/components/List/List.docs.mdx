@@ -21,6 +21,7 @@ import {
   CheckboxGroup,
   CheckboxIndicator,
   FlatList,
+  Card,
   Image,
 } from '@utilitywarehouse/native-ui';
 import {
@@ -55,6 +56,7 @@ List item is the main building block of list. Each item has its own set of prope
 - [Advanced Usage](#advanced-usage)
 - [Variants](#variants)
 - [Examples](#examples)
+  - [List Item with Card](#list-item-with-card)
   - [List Item with Badge](#list-item-with-badge)
   - [Checbox List](#checbox-list)
   - [Radio List](#radio-list)
@@ -298,6 +300,67 @@ The `List` component has different ways to display the list.
 
 ## Examples
 
+### List Item with Card
+
+You can use the `Card` component to wrap the list items and setting the `container` prop to `card`.
+
+<Canvas>
+  <List container="card">
+    <Card variant="outline">
+      <ListItem
+        leadingContent={<BillMediumIcon />}
+        text="Bills"
+        divider
+        onPress={() => console.log('item pressed')}
+      />
+      <ListItem
+        leadingContent={<PaymentMediumIcon />}
+        text="Payments"
+        divider
+        onPress={() => console.log('item pressed')}
+      />
+      <ListItem
+        leadingContent={<HomeMediumIcon />}
+        text="Moving Home"
+        onPress={() => console.log('item pressed')}
+      />
+    </Card>
+  </List>
+</Canvas>
+
+```tsx
+import { List, ListItem, Card } from '@utilitywarehouse/native-ui';
+import {
+  BillMediumIcon,
+  PaymentMediumIcon,
+  HomeMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => (
+  <List container="card">
+    <Card variant="outline">
+      <ListItem
+        leadingContent={<BillMediumIcon />}
+        text="Bills"
+        divider
+        onPress={() => console.log('item pressed')}
+      />
+      <ListItem
+        leadingContent={<PaymentMediumIcon />}
+        text="Payments"
+        divider
+        onPress={() => console.log('item pressed')}
+      />
+      <ListItem
+        leadingContent={<HomeMediumIcon />}
+        text="Moving Home"
+        onPress={() => console.log('item pressed')}
+      />
+    </Card>
+  </List>
+);
+```
+
 ### List Item with Badge
 
 You can use the `Badge` component to display additional information in the list item. You can achieve this by using the List Item's
@@ -403,14 +466,7 @@ You can also use the list to display a list of checkboxes. You can achieve this 
 </Canvas>
 
 ```tsx
-import {
-  List,
-  ListItem,
-  ListItemIcon,
-  Checkbox,
-  CheckboxGroup,
-  CheckboxIndicator,
-} from '@utilitywarehouse/native-ui';
+import { List, ListItem, ListItemIcon, Checkbox, CheckboxGroup } from '@utilitywarehouse/native-ui';
 import { UserMediumIcon } from '@utilitywarehouse/react-native-icons';
 
 const CheckboxList = () => {
@@ -423,51 +479,45 @@ const CheckboxList = () => {
       setValues([...values, item]);
     }
   };
+
+  const handleChange = (values: Array<string>) => {
+    setValues(values);
+  };
+
   return (
-    <CheckboxGroup aria-label="Checkbox Group" nativeID="checkbox-group" value={values}>
+    <CheckboxGroup
+      aria-label="Checkbox Group"
+      nativeID="checkbox-group"
+      onChange={handleChange}
+      value={values}
+    >
       <List>
         <ListItem
           text="Joe Blogs"
           supportingText="12 Somewhere Street"
           leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option1" aria-label="Label 1">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
+          trailingContent={<Checkbox value="option1" aria-label="Label 1" />}
           onPress={() => handlePress('option1')}
         />
         <ListItem
           text="Mary Poppins"
           supportingText="45 Somewhere Street"
           leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option2" aria-label="Label 2">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
+          trailingContent={<Checkbox value="option2" aria-label="Label 2" />}
           onPress={() => handlePress('option2')}
         />
         <ListItem
           text="Charlie Brown"
           supportingText="78 Somewhere Street"
           leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option3" aria-label="Label 3">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
+          trailingContent={<Checkbox value="option3" aria-label="Label 3" />}
           onPress={() => handlePress('option3')}
         />
         <ListItem
           text="Jane Doe"
           supportingText="90 Somewhere Street"
           leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option4" aria-label="Label 4">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
+          trailingContent={<Checkbox value="option4" aria-label="Label 4" />}
           onPress={() => handlePress('option4')}
         />
       </List>
@@ -492,9 +542,9 @@ You can also use the list to display a list of radio buttons. You can achieve th
 import {
   List,
   ListItem,
+  Card,
   Radio,
   RadioGroup,
-  RadioIndicator,
   Image,
   useColorMode,
 } from '@utilitywarehouse/native-ui';
@@ -510,15 +560,20 @@ const RadioList = () => {
     setValue(item);
   };
 
+  const handleChange = (value: string) => {
+    setValue(value);
+  };
+
   return (
     <Box p="$4" backgroundColor={colorMode === 'light' ? '#F2F2F2' : '$grey25'}>
-      <RadioGroup aria-label="Radio Group" nativeID="Radio-group" value={value}>
+      <RadioGroup
+        aria-label="Radio Group"
+        nativeID="Radio-group"
+        onChange={handleChange}
+        value={value}
+      >
         <List container="card">
-          <Box
-            borderRadius="$xl"
-            backgroundColor={colorMode === 'light' ? '$white' : '$grey175'}
-            overflow="hidden"
-          >
+          <Card variant="filled">
             <ListItem
               text="**** 5016"
               supportingText="Expires 12/24"
@@ -530,11 +585,7 @@ const RadioList = () => {
                   height={42}
                 />
               }
-              trailingContent={
-                <Radio value="option1" aria-label="Label 1">
-                  <RadioIndicator />
-                </Radio>
-              }
+              trailingContent={<Radio value="option1" aria-label="Label 1" />}
               onPress={() => handlePress('option1')}
             />
             <ListItem
@@ -550,11 +601,7 @@ const RadioList = () => {
                 />
               }
               divider
-              trailingContent={
-                <Radio value="option2" aria-label="Label 2">
-                  <RadioIndicator />
-                </Radio>
-              }
+              trailingContent={<Radio value="option2" aria-label="Label 2" />}
               onPress={() => handlePress('option2')}
             />
             <ListItem
@@ -569,14 +616,10 @@ const RadioList = () => {
                   height={42}
                 />
               }
-              trailingContent={
-                <Radio value="option3" aria-label="Label 3">
-                  <RadioIndicator />
-                </Radio>
-              }
+              trailingContent={<Radio value="option3" aria-label="Label 3" />}
               onPress={() => handlePress('option3')}
             />
-          </Box>
+          </Card>
         </List>
       </RadioGroup>
     </Box>
