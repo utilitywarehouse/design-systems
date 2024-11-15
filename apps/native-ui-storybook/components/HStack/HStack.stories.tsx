@@ -1,5 +1,4 @@
 import HStack from './HStack';
-import HStackReversed from './HStackReversed';
 import type { Meta } from '@storybook/react';
 
 const HStackMeta: Meta<typeof HStack> = {
@@ -22,6 +21,4 @@ const HStackMeta: Meta<typeof HStack> = {
 
 export default HStackMeta;
 
-export { HStack };
-
-export { HStackReversed };
+export { HStack as Playground };
