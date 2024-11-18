@@ -10,15 +10,26 @@ import BackToTopButton from '../../components/BackToTopButton';
 The following hooks are available in the Native UI library:
 
 - [React Native Aria](#react-native-aria)
+- [`useStyles`](#useStyles)
 - [`useToken`](#useToken)
 - [`useBreakpointValue`](#useBreakpointValue)
 - [`useMedia`](#useMedia)
 - [`useColorMode`](#useColorMode)
-- [`useStyled`](#useStyled)
 
 ## React Native Aria
 
 [React Native Aria](https://react-native-aria.geekyants.com/) brings the support of React Aria to React Native (Web, Android & iOS).
+
+## `useStyles`
+
+`useStyles` is a hook to resolve values from the theme, the current breakpoint value and the styles to pass to components.
+[Read more here](/?path=/docs/native-ui-guides-styling-usestyles--docs)
+
+```tsx
+import { useStyles } from '@utilitywarehouse/native-ui';
+
+const { theme, breakpoint } = useStyles();
+```
 
 ## `useToken`
 
@@ -143,32 +154,4 @@ function Example() {
     />
   );
 }
-```
-
-## `useStyled`
-
-`useStyled` is a custom hook that returns a configuration object encompassing aliases, components, global styles, plugins, and tokens. This configuration facilitates easy access to essential styling elements and global functionalities for components.
-
-```tsx
-import { useStyled } from '@utilitywarehouse/native-ui';
-```
-
-Let's use our `useStyled` value to give background color to `View` from `react-native`.
-
-```tsx
-import { View } from 'react-native';
-import { useStyled } from '@utilitywarehouse/native-ui';
-
-const Example = () => {
-  const styled = useStyled();
-  return (
-    <View
-      style={{
-        width: 100,
-        height: 100,
-        backgroundColor: styled.config.tokens.colors.primary500,
-      }}
-    />
-  );
-};
 ```
