@@ -1,0 +1,1540 @@
+[
+  {
+    "id"%3A "VariableID%3A4492%3A70"%2C
+    "name"%3A "Toggle%2FToggle Switch Large Width"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 56%2C
+        "rawValue"%3A 56
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A4492%3A71"%2C
+    "name"%3A "Toggle%2FToggle Switch Large Height"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 28%2C
+        "rawValue"%3A 28
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A4550%3A3215"%2C
+    "name"%3A "List%2FList Item Min Height"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 52%2C
+        "rawValue"%3A 52
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A4550%3A3218"%2C
+    "name"%3A "List%2FList Item Gap"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 12%2C
+        "rawValue"%3A 12
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A4550%3A3219"%2C
+    "name"%3A "List%2FList Item Padding"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 16%2C
+        "rawValue"%3A 16
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A4600%3A5944"%2C
+    "name"%3A "List%2FList Heading Padding"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 16%2C
+        "rawValue"%3A 16
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A4738%3A15996"%2C
+    "name"%3A "List%2FList Gap"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 12%2C
+        "rawValue"%3A 12
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A4846%3A2292"%2C
+    "name"%3A "Toggle%2FToggle Switch Medium Width"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 48%2C
+        "rawValue"%3A 48
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A4846%3A2293"%2C
+    "name"%3A "Toggle%2FToggle Switch Medium Height"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 24%2C
+        "rawValue"%3A 24
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A4848%3A2684"%2C
+    "name"%3A "Toggle%2FToggle Switch Padding"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 4%2C
+        "rawValue"%3A 4
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6257%3A1531"%2C
+    "name"%3A "0%2C5"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 2%2C
+        "rawValue"%3A 2
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A638"%2C
+    "name"%3A "0"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 0%2C
+        "rawValue"%3A 0
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A639"%2C
+    "name"%3A "1"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 4%2C
+        "rawValue"%3A 4
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A640"%2C
+    "name"%3A "1%2C5"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 6%2C
+        "rawValue"%3A 6
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A641"%2C
+    "name"%3A "2"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 8%2C
+        "rawValue"%3A 8
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A642"%2C
+    "name"%3A "2%2C5"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 10%2C
+        "rawValue"%3A 10
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A643"%2C
+    "name"%3A "3"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 12%2C
+        "rawValue"%3A 12
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A644"%2C
+    "name"%3A "3%2C5"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 14%2C
+        "rawValue"%3A 14
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A645"%2C
+    "name"%3A "4"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 16%2C
+        "rawValue"%3A 16
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A646"%2C
+    "name"%3A "4%2C5"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 18%2C
+        "rawValue"%3A 18
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A647"%2C
+    "name"%3A "5"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 20%2C
+        "rawValue"%3A 20
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A648"%2C
+    "name"%3A "6"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 24%2C
+        "rawValue"%3A 24
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A649"%2C
+    "name"%3A "7"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 28%2C
+        "rawValue"%3A 28
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A650"%2C
+    "name"%3A "8"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 32%2C
+        "rawValue"%3A 32
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A651"%2C
+    "name"%3A "9"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 36%2C
+        "rawValue"%3A 36
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A652"%2C
+    "name"%3A "10"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 40%2C
+        "rawValue"%3A 40
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6385%3A653"%2C
+    "name"%3A "11"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 44%2C
+        "rawValue"%3A 44
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A654"%2C
+    "name"%3A "12"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 48%2C
+        "rawValue"%3A 48
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A655"%2C
+    "name"%3A "16"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 64%2C
+        "rawValue"%3A 64
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A656"%2C
+    "name"%3A "20"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 80%2C
+        "rawValue"%3A 80
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A657"%2C
+    "name"%3A "24"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 96%2C
+        "rawValue"%3A 96
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A658"%2C
+    "name"%3A "32"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 128%2C
+        "rawValue"%3A 128
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A659"%2C
+    "name"%3A "40"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 160%2C
+        "rawValue"%3A 160
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A661"%2C
+    "name"%3A "48"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 192%2C
+        "rawValue"%3A 192
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A662"%2C
+    "name"%3A "56"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 224%2C
+        "rawValue"%3A 224
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A663"%2C
+    "name"%3A "64"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 256%2C
+        "rawValue"%3A 256
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A664"%2C
+    "name"%3A "72"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 288%2C
+        "rawValue"%3A 288
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A665"%2C
+    "name"%3A "80"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 320%2C
+        "rawValue"%3A 320
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6386%3A666"%2C
+    "name"%3A "96"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A6257%3A1530"%2C
+      "name"%3A "space"
+    }%2C
+    "valuesByMode"%3A {
+      "6257%3A0"%3A {
+        "modeId"%3A "6257%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 384%2C
+        "rawValue"%3A 384
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6556%3A5586"%2C
+    "name"%3A "Button%2FlargeButtonGap"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 8%2C
+        "rawValue"%3A 8
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6556%3A5587"%2C
+    "name"%3A "Button%2FlargeButtonPaddingX"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 24%2C
+        "rawValue"%3A 24
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A6556%3A5588"%2C
+    "name"%3A "Button%2FlargeButtonPaddingY"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A4492%3A69"%2C
+      "name"%3A "Local Variables"
+    }%2C
+    "valuesByMode"%3A {
+      "4492%3A0"%3A {
+        "modeId"%3A "4492%3A0"%2C
+        "modeName"%3A "Mode 1"%2C
+        "value"%3A 16%2C
+        "rawValue"%3A 16
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9357%3A2257"%2C
+    "name"%3A "card%2Fborder-width"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 1%2C
+        "rawValue"%3A 1
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A 1%2C
+        "rawValue"%3A 1
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9358%3A2258"%2C
+    "name"%3A "card%2Fnested%2Fborder-radius"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 8%2C
+        "rawValue"%3A 8
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A 8%2C
+        "rawValue"%3A 8
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9358%3A2260"%2C
+    "name"%3A "card%2Fborder-radius"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 12%2C
+        "rawValue"%3A 12
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A 12%2C
+        "rawValue"%3A 12
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9358%3A2261"%2C
+    "name"%3A "card%2Fdashed%2Fborder-style"%2C
+    "description"%3A "These are the styles of a dashed card"%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A "dashed"%2C
+        "rawValue"%3A "dashed"
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A "dashed"%2C
+        "rawValue"%3A "dashed"
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9358%3A2262"%2C
+    "name"%3A "card%2Fborder-style"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A "solid"%2C
+        "rawValue"%3A "solid"
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A "solid"%2C
+        "rawValue"%3A "solid"
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9360%3A2264"%2C
+    "name"%3A "card%2Fpadding%2Fpadding-large"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 16%2C
+        "rawValue"%3A 16
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A 16%2C
+        "rawValue"%3A 16
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9360%3A2265"%2C
+    "name"%3A "card%2Fsurface%2Fbase%2Fbackground-color"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A2f2c7d71c4b91e7af41d7421288abdc52b51c949%2F109%3A417"
+        }
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A59c6a4d745c03615def2f077f40184cfa476d142%2F109%3A303"
+        }
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9360%3A2275"%2C
+    "name"%3A "card%2Fdashed%2Fborder-width"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 2%2C
+        "rawValue"%3A 2
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A 2%2C
+        "rawValue"%3A 2
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9360%3A2276"%2C
+    "name"%3A "card%2Fsurface%2Fbase%2Fborder-color"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A5dd240680c4e41bf4f7a37fca1d09733cf66bdb6%2F109%3A429"
+        }
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A7df38b93318ec00176cc4047bbfec78812d1a4b3%2F109%3A430"
+        }
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9360%3A2282"%2C
+    "name"%3A "card%2Fmin-height"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 72%2C
+        "rawValue"%3A 72
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A 72%2C
+        "rawValue"%3A 72
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9363%3A2289"%2C
+    "name"%3A "shadows%2Fraised%2Foffset-x"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9363%3A2288"%2C
+      "name"%3A "Primitive Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9363%3A1"%3A {
+        "modeId"%3A "9363%3A1"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 1%2C
+        "rawValue"%3A 1
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9371%3A9073"%2C
+    "name"%3A "card%2Fpadding%2Fpadding-medium"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 12%2C
+        "rawValue"%3A 12
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A 12%2C
+        "rawValue"%3A 12
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9371%3A9074"%2C
+    "name"%3A "card%2Fpadding%2Fpadding-small"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 8%2C
+        "rawValue"%3A 8
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A 8%2C
+        "rawValue"%3A 8
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9372%3A9076"%2C
+    "name"%3A "card%2Fpadding%2Fpadding-none"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 0%2C
+        "rawValue"%3A 0
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A 0%2C
+        "rawValue"%3A 0
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9378%3A9080"%2C
+    "name"%3A "shadows%2Fraised%2Foffset-y"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9363%3A2288"%2C
+      "name"%3A "Primitive Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9363%3A1"%3A {
+        "modeId"%3A "9363%3A1"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 2%2C
+        "rawValue"%3A 2
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9378%3A9081"%2C
+    "name"%3A "shadows%2Fraised%2Fspread-radius"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9363%3A2288"%2C
+      "name"%3A "Primitive Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9363%3A1"%3A {
+        "modeId"%3A "9363%3A1"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 0%2C
+        "rawValue"%3A 0
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9378%3A9082"%2C
+    "name"%3A "shadows%2Fraised%2Fblur-radius"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9363%3A2288"%2C
+      "name"%3A "Primitive Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9363%3A1"%3A {
+        "modeId"%3A "9363%3A1"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 4%2C
+        "rawValue"%3A 4
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9378%3A9084"%2C
+    "name"%3A "shadows%2Foverlay%2Foffset-x"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9363%3A2288"%2C
+      "name"%3A "Primitive Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9363%3A1"%3A {
+        "modeId"%3A "9363%3A1"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 0%2C
+        "rawValue"%3A 0
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9378%3A9085"%2C
+    "name"%3A "shadows%2Foverlay%2Foffset-y"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9363%3A2288"%2C
+      "name"%3A "Primitive Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9363%3A1"%3A {
+        "modeId"%3A "9363%3A1"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 0%2C
+        "rawValue"%3A 0
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9378%3A9086"%2C
+    "name"%3A "shadows%2Foverlay%2Fspread-radius"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9363%3A2288"%2C
+      "name"%3A "Primitive Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9363%3A1"%3A {
+        "modeId"%3A "9363%3A1"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 0%2C
+        "rawValue"%3A 0
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9378%3A9087"%2C
+    "name"%3A "shadows%2Foverlay%2Fblur-radius"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9363%3A2288"%2C
+      "name"%3A "Primitive Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9363%3A1"%3A {
+        "modeId"%3A "9363%3A1"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A 12%2C
+        "rawValue"%3A 12
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9378%3A9167"%2C
+    "name"%3A "card%2Fsurface%2Fbase%2Foutline%2Fgrey%2Fbackground-color"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3Abe0bbf449a727a6ac98a56ba25249e60941c682a%2F109%3A450"
+        }
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A328a177a33644ba115d8d3efd8b702554393a92e%2F109%3A312"
+        }
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9385%3A953"%2C
+    "name"%3A "card%2Fsurface%2Fbase%2Foutline%2Fpurple%2Fbackground-color"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3Ae8055bfa27a094c58d4f1c5216b95ba2b278e064%2F184%3A13"
+        }
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3Ae9aed5041ceaccefe1d6c8fa3ddebb761d413006%2F183%3A0"
+        }
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9385%3A954"%2C
+    "name"%3A "card%2Fsurface%2Fbase%2Foutline%2Fpurple%2Fborder-color"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A1c72ae179250d8df21d14c2f67c307e82dfe32f1%2F184%3A14"
+        }
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A11b370a5d32e8afbcaf1da431910f07907bf0e9b%2F183%3A4"
+        }
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9385%3A956"%2C
+    "name"%3A "card%2Fsurface%2Fbase%2Ffilled%2Fpurple%2Fbackground-color"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3Ac443b1df7f9476ce4ff40b132de4754277f52a22%2F109%3A262"
+        }
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A3762748bed89a2c38743ea73f7a40958c58001ae%2F183%3A2"
+        }
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9385%3A961"%2C
+    "name"%3A "card%2Fsurface%2Fpurple%2Fborder-color"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A09ac22c42151487ba6df85700aa369ee0a4f0a9d%2F184%3A19"
+        }
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A7df38b93318ec00176cc4047bbfec78812d1a4b3%2F109%3A430"
+        }
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9385%3A962"%2C
+    "name"%3A "card%2Fsurface%2Fpurple%2Fbackground-color"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3Ac443b1df7f9476ce4ff40b132de4754277f52a22%2F109%3A262"
+        }
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A59c6a4d745c03615def2f077f40184cfa476d142%2F109%3A303"
+        }
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9385%3A965"%2C
+    "name"%3A "card%2Fsurface%2Fpurple%2Ffilled%2Fpurple%2Fbackground-color"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3Aa4f988bc31c51e49bafa4790551ac63c6abde9f0%2F184%3A22"
+        }
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A3762748bed89a2c38743ea73f7a40958c58001ae%2F183%3A2"
+        }
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9385%3A968"%2C
+    "name"%3A "card%2Fsurface%2Fpurple%2Foutline%2Fpurple%2Fbackground-color"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3Aa3026acb6088cf8b40268b763bab7b38c62dff9e%2F184%3A21"
+        }
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3Ae9aed5041ceaccefe1d6c8fa3ddebb761d413006%2F183%3A0"
+        }
+      }
+    }%2C
+    "remote"%3A false
+  }%2C
+  {
+    "id"%3A "VariableID%3A9385%3A969"%2C
+    "name"%3A "card%2Fsurface%2Fpurple%2Foutline%2Fpurple%2Fborder-color"%2C
+    "description"%3A ""%2C
+    "collection"%3A {
+      "id"%3A "VariableCollectionId%3A9356%3A2256"%2C
+      "name"%3A "Component Tokens"
+    }%2C
+    "valuesByMode"%3A {
+      "9356%3A0"%3A {
+        "modeId"%3A "9356%3A0"%2C
+        "modeName"%3A "light"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A8675af556931420844b9d485e87520cbdffd9d9f%2F184%3A20"
+        }
+      }%2C
+      "9385%3A0"%3A {
+        "modeId"%3A "9385%3A0"%2C
+        "modeName"%3A "dark"%2C
+        "value"%3A {
+          "error"%3A "Alias variable not found"
+        }%2C
+        "rawValue"%3A {
+          "type"%3A "VARIABLE_ALIAS"%2C
+          "id"%3A "VariableID%3A11b370a5d32e8afbcaf1da431910f07907bf0e9b%2F183%3A4"
+        }
+      }
+    }%2C
+    "remote"%3A false
+  }
+]
