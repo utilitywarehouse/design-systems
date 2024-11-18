@@ -1,5 +1,13 @@
 # @utilitywarehouse/native-ui
 
+## 0.7.0
+
+### Minor Changes
+
+- [#594](https://github.com/utilitywarehouse/design-systems/pull/594) [`c186bdc4`](https://github.com/utilitywarehouse/design-systems/commit/c186bdc4851d20738a4622e39d4cc4f2dd5d61c4) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Card` component
+
+- [#597](https://github.com/utilitywarehouse/design-systems/pull/597) [`09259641`](https://github.com/utilitywarehouse/design-systems/commit/09259641967101f3a6ad356042d6460b9cb4b818) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrates hooks away from gluestack
+
 ## 0.6.1
 
 ### Patch Changes
