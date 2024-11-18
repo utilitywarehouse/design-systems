@@ -306,7 +306,7 @@ You can use the `Card` component to wrap the list items and setting the `contain
 
 <Canvas>
   <List container="card">
-    <Card variant="outline">
+    <Card variant="outline" padding="none">
       <ListItem
         leadingContent={<BillMediumIcon />}
         text="Bills"
@@ -338,7 +338,7 @@ import {
 
 const MyComponent = () => (
   <List container="card">
-    <Card variant="outline">
+    <Card variant="outline" padding="none">
       <ListItem
         leadingContent={<BillMediumIcon />}
         text="Bills"
@@ -573,7 +573,7 @@ const RadioList = () => {
         value={value}
       >
         <List container="card">
-          <Card variant="filled">
+          <Card variant="filled" padding="none">
             <ListItem
               text="**** 5016"
               supportingText="Expires 12/24"

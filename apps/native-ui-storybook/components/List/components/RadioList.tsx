@@ -33,7 +33,7 @@ const RadioList = () => {
         value={value}
       >
         <List container="card">
-          <Card variant="filled">
+          <Card variant="filled" padding="none">
             <ListItem
               text="**** 5016"
               supportingText="Expires 12/24"

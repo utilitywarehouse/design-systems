@@ -105,7 +105,7 @@ const AllComponents: React.FC = () => {
           </ComponentWrapper>
           <ComponentWrapper name="Card" link="/?path=/docs/native-ui-components-card--docs">
             <Center flex={1}>
-              <Card padding="large" colorScheme="grey" variant="outline">
+              <Card colorScheme="grey" variant="outline">
                 <Heading>I am a card</Heading>
                 <Text>And do card stuff.</Text>
               </Card>

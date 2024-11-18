@@ -11,7 +11,7 @@ const Card = forwardRef<View, CardProps>(
       surface = 'base',
       nested,
       colorScheme = 'base',
-      padding = 'none',
+      padding = 'large',
       style,
       ...props
     },
