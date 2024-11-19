@@ -82,15 +82,6 @@ StyleDictionary.registerFormat({
   },
 });
 
-// Register custom format for index.ts files
-StyleDictionary.registerFormat({
-  name: 'typescript/index',
-  format: ({ file }) => {
-    const modeName = file.options.modeName;
-    return `export * from './tokens-${modeName}';\n`;
-  },
-});
-
 // Helper function to transform tokens
 function transformTokens(tokens) {
   if (Array.isArray(tokens)) {
@@ -126,16 +117,9 @@ function createPlatformConfig(modeName) {
     buildPath: `build/${modeName}/`,
     files: [
       {
-        destination: `tokens-${modeName}.ts`,
+        destination: `tokens-${modeName}.js`,
         format: 'javascript/es6/nested',
         filter: token => token.attributes.mode === modeName,
-      },
-      {
-        destination: 'index.ts',
-        format: 'typescript/index',
-        options: {
-          modeName: modeName,
-        },
       },
     ],
   };
@@ -159,21 +143,31 @@ const sd = new StyleDictionary({
   }, // We'll set up platforms next
 });
 
-let rootExports = '';
-
 // Set up platforms for each mode
-modes.forEach(modeName => {
+modes.forEach(async modeName => {
   sd.platforms[modeName] = createPlatformConfig(modeName);
-  rootExports += `export * as ${modeName} from './${modeName}';\n`;
 });
+
+// Add index for each mode
+async function buildIndexFiles() {
+  let rootExports = '';
+  await modes.forEach(async modeName => {
+    const indexPath = `build/${modeName}/index.js`;
+    rootExports += `export * as ${modeName} from './${modeName}';\n`;
+    await fs.promises.writeFile(indexPath, `export * from './tokens-${modeName}';\n`, 'utf-8');
+  });
+  const indexPath = 'build/index.js';
+  await fs.promises.writeFile(indexPath, rootExports, 'utf-8');
+}
 
 // Build all platforms
 (async () => {
   try {
     await sd.buildAllPlatforms();
-    // Build index.ts file
-    const indexPath = 'build/index.ts';
-    await fs.promises.writeFile(indexPath, rootExports, 'utf-8');
+    modes;
+    // Build index.js file
+
+    await buildIndexFiles();
     console.log('Tokens built successfully!');
   } catch (error) {
     console.error('Error building tokens:', error);

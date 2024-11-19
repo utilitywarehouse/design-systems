@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue Nov 19 2024 14:29:15 GMT+0000 (Greenwich Mean Time)
+ * Generated on Tue Nov 19 2024 14:45:37 GMT+0000 (Greenwich Mean Time)
  */
 
 export const tokens = {
@@ -169,10 +169,10 @@ export const tokens = {
       "backgroundColor": "#ffffff",
       "borderRadius": 100,
       "small": {
-        "size": 24
+        "size": 20
       },
       "medium": {
-        "size": 32
+        "size": 28
       }
     },
     "padding": 2,
@@ -186,16 +186,16 @@ export const tokens = {
     },
     "borderRadius": 56,
     "checked": {
-      "backgroundColor": "#0658e5",
+      "backgroundColor": "#75a7fd",
       "backgroundColorHover": "#5692fb",
-      "iconColor": "#75a7fd"
+      "iconColor": "#0658e5"
     },
     "backgroundColorDisabled": "#323232",
-    "iconColorDisabled": "#ffffff",
+    "iconColorDisabled": "#414141",
     "unChecked": {
-      "backgroundColor": "#0658e5",
-      "iconColor": "#ffffff",
-      "backgroundColorHover": "#5692fb"
+      "backgroundColor": "#707070",
+      "iconColor": "#585858",
+      "backgroundColorHover": "#585858"
     }
   },
   "radio": {
@@ -231,7 +231,8 @@ export const tokens = {
       "borderColor": "#b8b8b8",
       "borderColorDisabled": "#585858",
       "borderColorHover": "#b8b8b8",
-      "borderColorFocus": "#b8b8b8"
+      "borderColorFocus": "#b8b8b8",
+      "borderColorPressed": "#ffffff"
     },
     "checked": {
       "borderColor": "#75a7fd",
@@ -241,7 +242,7 @@ export const tokens = {
       "iconColorDisabled": "#707070"
     },
     "backgroundColor": "#1d1d1d",
-    "borderRadius": 3
+    "borderRadius": 4
   },
   "card": {
     "borderWidth": 1,
