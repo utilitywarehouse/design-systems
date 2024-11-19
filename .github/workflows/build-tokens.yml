@@ -44,6 +44,9 @@ jobs:
         working-directory: ./packages/design-tokens
         run: pnpm build
 
+      - name: 🔍 Run Checks
+        run: pnpm checks
+
       - name: 📝 Commit Built Files
         run: |
           git config --global user.name 'UW Design Systems Bot'
@@ -61,6 +64,3 @@ jobs:
           git pull origin ${{ github.event.pull_request.head.ref }}
           # Push your changes back to the PR's head branch
           git push origin HEAD:${{ github.event.pull_request.head.ref }}
-
-      - name: 🔍 Run Checks
-        run: pnpm checks
