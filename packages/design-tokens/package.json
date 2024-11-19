@@ -1,5 +1,5 @@
 {
-  "name": "design-tokens",
+  "name": "@utilitywarehouse/design-tokens",
   "version": "0.1.0",
   "description": "",
   "main": "build/index.js",

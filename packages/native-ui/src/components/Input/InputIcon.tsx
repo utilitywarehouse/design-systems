@@ -31,9 +31,9 @@ const InputIcon = forwardRef<SvgRef, ComponentProps<typeof Icon> & { as?: Compon
 
 InputIcon.displayName = 'InputIcon';
 
-const stylesheet = createStyleSheet(({ colors }) => ({
+const stylesheet = createStyleSheet(({ colors, tokens }) => ({
   icon: {
-    color: colors.grey700,
+    color: tokens.input.iconColor,
     width: 24,
     height: 24,
     variants: {

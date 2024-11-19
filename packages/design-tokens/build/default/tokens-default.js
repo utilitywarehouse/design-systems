@@ -1,61 +1,9 @@
 /**
  * Do not edit directly
- * Generated on Tue Nov 19 2024 14:45:37 GMT+0000 (Greenwich Mean Time)
+ * Generated on Tue Nov 19 2024 16:12:28 GMT+0000 (Greenwich Mean Time)
  */
 
 export const tokens = {
-  "spacing": {
-    "0": 0,
-    "1": 4,
-    "2": 8,
-    "3": 12,
-    "4": 16,
-    "5": 20,
-    "6": 24,
-    "7": 28,
-    "8": 32,
-    "9": 36,
-    "10": 40,
-    "0.5": 2,
-    "1.5": 6,
-    "2.5": 10,
-    "3.5": 14,
-    "4.5": 18
-  },
-  "borderWidths": {
-    "0": 0,
-    "1": 1,
-    "2": 2,
-    "4": 4,
-    "8": 8
-  },
-  "radii": {
-    "none": 0,
-    "xs": 2,
-    "sm": 4,
-    "md": 6,
-    "lg": 8,
-    "xl": 12,
-    "2xl": 16,
-    "3xl": 24,
-    "4xl": 32,
-    "full": 9999
-  },
-  "fontWeights": {
-    "thin": 100,
-    "extralight": 200,
-    "light": 300,
-    "normal": 400,
-    "medium": 500,
-    "semibold": 600,
-    "bold": 700,
-    "extrabold": 800,
-    "black": 900
-  },
-  "fonts": {
-    "body": "Work Sans",
-    "heading": "Aeonik"
-  },
   "colors": {
     "light": {
       "midnight": "#1e0a46",
@@ -318,5 +266,57 @@ export const tokens = {
         "950": "#fde2ec"
       }
     }
+  },
+  "spacing": {
+    "0": 0,
+    "1": 4,
+    "2": 8,
+    "3": 12,
+    "4": 16,
+    "5": 20,
+    "6": 24,
+    "7": 28,
+    "8": 32,
+    "9": 36,
+    "10": 40,
+    "0.5": 2,
+    "1.5": 6,
+    "2.5": 10,
+    "3.5": 14,
+    "4.5": 18
+  },
+  "borderWidths": {
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "4": 4,
+    "8": 8
+  },
+  "radii": {
+    "none": 0,
+    "xs": 2,
+    "sm": 4,
+    "md": 6,
+    "lg": 8,
+    "xl": 12,
+    "2xl": 16,
+    "3xl": 24,
+    "4xl": 32,
+    "full": 9999
+  },
+  "fontWeights": {
+    "thin": 100,
+    "extralight": 200,
+    "light": 300,
+    "normal": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+    "extrabold": 800,
+    "black": 900
+  },
+  "fonts": {
+    "body": "Work Sans",
+    "heading": "Aeonik"
   }
 };

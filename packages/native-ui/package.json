@@ -34,6 +34,7 @@
     "@gluestack-ui/spinner": "^0.1.14",
     "@gluestack-ui/themed": "1.1.53",
     "@utilitywarehouse/colour-system": "workspace:^",
+    "@utilitywarehouse/design-tokens": "workspace:^",
     "@utilitywarehouse/react-native-icons": "1.10.0"
   },
   "devDependencies": {

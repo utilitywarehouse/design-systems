@@ -6,22 +6,21 @@ StyleDictionary.registerParser({
   name: 'customJsonParser',
   pattern: /\.json$/,
   parser: ({ contents, filePath }) => {
-    console.log(`Parsing file: ${filePath} with customJsonParser`);
     const data = JSON.parse(contents);
-    let tokens = {};
+    const tokens = {};
 
     // Iterate over modes
     Object.keys(data).forEach(modeName => {
       const modeTokens = data[modeName];
       const processedTokens = processTokens(modeTokens, [], modeName);
-      tokens = deepMerge(tokens, processedTokens);
+      tokens[modeName] = processedTokens; // Store tokens under mode name
     });
 
     return tokens;
   },
 });
 
-// Helper function to process tokens and build nested structure
+// Helper function to process tokens
 function processTokens(obj, path, modeName) {
   const result = {};
 
@@ -50,27 +49,15 @@ function processTokens(obj, path, modeName) {
   return result;
 }
 
-// Helper function to deep merge objects
-function deepMerge(target, source) {
-  Object.keys(source).forEach(key => {
-    if (source[key] instanceof Object && key in target) {
-      target[key] = deepMerge(target[key], source[key]);
-    } else {
-      target[key] = source[key];
-    }
-  });
-
-  return target;
-}
-
 // Define modes
-const modes = ['light', 'dark', 'default']; // Add other modes if necessary
+const modes = ['light', 'dark', 'default'];
 
-// Register custom format to output nested JavaScript tokens
+// Register custom format
 StyleDictionary.registerFormat({
   name: 'javascript/es6/nested',
-  format: ({ dictionary }) => {
-    const tokens = transformTokens(dictionary.tokens);
+  format: ({ dictionary, file }) => {
+    const modeName = file.options.modeName;
+    const tokens = transformTokens(dictionary.tokens[modeName]);
     return [
       '/**',
       ' * Do not edit directly',
@@ -119,16 +106,21 @@ function createPlatformConfig(modeName) {
       {
         destination: `tokens-${modeName}.js`,
         format: 'javascript/es6/nested',
-        filter: token => token.attributes.mode === modeName,
+        options: {
+          modeName: modeName,
+        },
+        filter: token => {
+          return token.attributes.mode === modeName;
+        },
       },
     ],
   };
 }
 
-// Create a new Style Dictionary instance with your configuration
+// Create a new Style Dictionary instance
 const sd = new StyleDictionary({
   source: ['./tokens/**/*.json'],
-  parsers: ['customJsonParser'], // Include your custom parser here
+  parsers: ['customJsonParser'],
   platforms: {
     css: {
       transformGroup: 'css',
@@ -140,19 +132,22 @@ const sd = new StyleDictionary({
         },
       ],
     },
-  }, // We'll set up platforms next
+  },
 });
 
 // Set up platforms for each mode
-modes.forEach(async modeName => {
+modes.forEach(modeName => {
   sd.platforms[modeName] = createPlatformConfig(modeName);
 });
 
-// Add index for each mode
 async function buildIndexFiles() {
   let rootExports = '';
   await modes.forEach(async modeName => {
-    const indexPath = `build/${modeName}/index.js`;
+    const dirname = `./build/${modeName}`;
+    if (!fs.existsSync(dirname)) {
+      fs.mkdirSync(dirname);
+    }
+    const indexPath = `${dirname}/index.js`;
     rootExports += `export * as ${modeName} from './${modeName}';\n`;
     await fs.promises.writeFile(indexPath, `export * from './tokens-${modeName}';\n`, 'utf-8');
   });
@@ -164,9 +159,7 @@ async function buildIndexFiles() {
 (async () => {
   try {
     await sd.buildAllPlatforms();
-    modes;
-    // Build index.js file
-
+    // Add index for each mode
     await buildIndexFiles();
     console.log('Tokens built successfully!');
   } catch (error) {
