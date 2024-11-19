@@ -46,8 +46,8 @@ jobs:
 
       - name: 📝 Commit Built Files
         run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
+          git config --global user.name 'UW Design Systems Bot'
+          git config --global user.email 'design-systems@uw.co.uk'
           git add -A
           if git diff-index --quiet HEAD --; then
             echo "No changes to commit"

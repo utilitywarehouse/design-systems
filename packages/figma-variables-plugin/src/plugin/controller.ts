@@ -15,13 +15,13 @@ async function exportVariables() {
 
   interface ResolvedVariable {
     name: string;
-    path: string[]; // Array of name segments
+    path: Array<string>; // Array of name segments
     values: Record<string, any>; // Mode name to value mapping
   }
 
   async function resolveVariable(
     variable: Variable,
-    collections: VariableCollection[],
+    collections: Array<VariableCollection>,
     visitedVariables = new Set<string>()
   ): Promise<ResolvedVariable> {
     const resolvedValues: Record<string, any> = {};
@@ -96,9 +96,9 @@ async function exportVariables() {
   // Helper function to get the collections that include a variable
   async function getVariableCollectionsForVariable(
     variable: Variable
-  ): Promise<VariableCollection[]> {
+  ): Promise<Array<VariableCollection>> {
     // Attempt to get the collections that include this variable
-    const collections: VariableCollection[] = [];
+    const collections: Array<VariableCollection> = [];
 
     // Check local collections
     const localCollections = await figma.variables.getLocalVariableCollectionsAsync();
@@ -123,9 +123,10 @@ async function exportVariables() {
   }
 
   // Helper function to get the value for a matching mode
+  /* eslint-disable-next-line @typescript-eslint/require-await */
   async function getValueForMatchingMode(
     variable: Variable,
-    collections: VariableCollection[],
+    collections: Array<VariableCollection>,
     targetModeName: string
   ): Promise<VariableValue | undefined> {
     for (const collection of collections) {
@@ -179,7 +180,7 @@ async function exportVariables() {
   }
 
   // Function to nest tokens based on path
-  function nestTokens(tokens: Record<string, any>, path: string[], value: any): void {
+  function nestTokens(tokens: Record<string, any>, path: Array<string>, value: any): void {
     let currentLevel = tokens;
     for (let i = 0; i < path.length; i++) {
       const segment = path[i].replaceAll(' ', '-');
@@ -231,8 +232,9 @@ async function exportVariables() {
   }
 
   if (figma.root.name === 'Design Tokens [Global]') {
-    const { white, transparent, midnight, light, dark, spacing, ...rest } =
-      styleDictionaryTokens?.['Mode 1'];
+    const { white, transparent, midnight, light, dark, spacing, ...rest } = styleDictionaryTokens?.[
+      'Mode 1'
+    ] ?? { white: {}, transparent: {}, midnight: {}, light: {}, dark: {}, spacing: {} };
     const spacingKeys = Object.keys(spacing);
     const newSpacing = {};
     spacingKeys.forEach(key => {

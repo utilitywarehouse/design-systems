@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React from 'react';
 import logo from '../assets/logo.svg';
 import '../styles/ui.css';
