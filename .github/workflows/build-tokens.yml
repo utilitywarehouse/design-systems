@@ -14,18 +14,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🏗 Checkout
-        uses: actions/checkout@v4
-        with:
-          # Check out the PR's head branch with full history
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          fetch-depth: 0 # Fetch all history for accurate merging
-
-      - name: 🏗 Setup pnpm
+      - name: 🏗 Setup repo
         uses: pnpm/action-setup@v4
         with:
           version: 8
+
+      - name: 🏗 Checkout
+        uses: actions/checkout@v4
+         # Check out the PR's head branch with full history
+         ref: ${{ github.event.pull_request.head.ref }}
+         repository: ${{ github.event.pull_request.head.repo.full_name }}
+         fetch-depth: 0 # Fetch all history for accurate merging
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v4
