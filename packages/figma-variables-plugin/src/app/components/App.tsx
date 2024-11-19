@@ -10,7 +10,7 @@ function App() {
   const repoOwner = 'utilitywarehouse';
   const repoName = 'design-systems';
   const branchName = 'main';
-  const filePath = `packages/design-tokens/raw/${filename}.json`;
+  const filePath = `packages/design-tokens/tokens/${filename}.json`;
 
   React.useEffect(() => {
     // Load saved GitHub token from clientStorage
@@ -26,7 +26,6 @@ function App() {
       setGithubToken((pluginMessage?.token as string) || '');
       setStatusMessage('GitHub token loaded.');
     } else if (pluginMessage.type === 'variables-exported') {
-      setExporting(true);
       const variablesData = pluginMessage.data;
       setStatusMessage('Variables exported. Creating PR...');
       await createPullRequest(variablesData);
@@ -45,7 +44,7 @@ function App() {
 
   // Export variables and initiate PR creation
   const exportVariables = () => {
-    console.log('exportVariables');
+    setExporting(true);
     parent.postMessage({ pluginMessage: { type: 'export-variables' } }, '*');
   };
 
@@ -84,8 +83,6 @@ function App() {
 
       // Prepare the file content
       const content = btoa(decodeURIComponent(encodeURIComponent(variablesData)));
-
-      console.log(variablesData);
 
       // Create or update the file in the new branch
       const fileResponse = await fetch(

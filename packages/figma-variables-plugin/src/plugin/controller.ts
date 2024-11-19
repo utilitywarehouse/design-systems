@@ -230,6 +230,39 @@ async function exportVariables() {
     return hex.length == 1 ? '0' + hex : hex;
   }
 
+  if (figma.root.name === 'Design Tokens [Global]') {
+    const { white, transparent, midnight, light, dark, spacing, ...rest } =
+      styleDictionaryTokens?.['Mode 1'];
+    const spacingKeys = Object.keys(spacing);
+    const newSpacing = {};
+    spacingKeys.forEach(key => {
+      const newKey = key.replace('-', '.');
+      newSpacing[newKey] = spacing[key];
+    });
+
+    styleDictionaryTokens['default'] = {
+      ...styleDictionaryTokens['default'],
+      spacing: newSpacing,
+      colors: {
+        light: {
+          midnight,
+          white,
+          transparent,
+          ...styleDictionaryTokens['default']?.colors?.light,
+          ...light,
+        },
+        dark: {
+          midnight,
+          white,
+          transparent,
+          ...styleDictionaryTokens['default']?.colors?.dark,
+          ...dark,
+        },
+      },
+      ...rest,
+    };
+  }
+
   // Convert the tokens object to JSON
   const tokensJson = JSON.stringify(styleDictionaryTokens, null, 2);
 
