@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   build_and_commit:
+    name: Build and Commit
     runs-on: ubuntu-latest
 
     steps:
@@ -21,10 +22,11 @@ jobs:
 
       - name: 🏗 Checkout
         uses: actions/checkout@v4
-         # Check out the PR's head branch with full history
-         ref: ${{ github.event.pull_request.head.ref }}
-         repository: ${{ github.event.pull_request.head.repo.full_name }}
-         fetch-depth: 0 # Fetch all history for accurate merging
+        with:
+          # Check out the PR's head branch with full history
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          fetch-depth: 0 # Fetch all history for accurate merging
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v4
