@@ -5,14 +5,17 @@ import '../styles/ui.css';
 function App() {
   const [githubToken, setGithubToken] = React.useState('');
   const [statusMessage, setStatusMessage] = React.useState('');
+  const [filename, setFilename] = React.useState('');
+  const [exporting, setExporting] = React.useState(false);
   const repoOwner = 'utilitywarehouse';
   const repoName = 'design-systems';
   const branchName = 'main';
-  const filePath = 'packages/design-tokens/raw/raw.json';
+  const filePath = `packages/design-tokens/raw/${filename}.json`;
 
   React.useEffect(() => {
     // Load saved GitHub token from clientStorage
     parent.postMessage({ pluginMessage: { type: 'load-token' } }, '*');
+    parent.postMessage({ pluginMessage: { type: 'get-filename' } }, '*');
   }, []);
 
   // Handle messages from the plugin code
@@ -23,9 +26,14 @@ function App() {
       setGithubToken((pluginMessage?.token as string) || '');
       setStatusMessage('GitHub token loaded.');
     } else if (pluginMessage.type === 'variables-exported') {
+      setExporting(true);
       const variablesData = pluginMessage.data;
       setStatusMessage('Variables exported. Creating PR...');
       await createPullRequest(variablesData);
+      setExporting(false);
+    }
+    if (pluginMessage.type === 'filename') {
+      setFilename(pluginMessage.data);
     }
   };
 
@@ -75,7 +83,9 @@ function App() {
       if (!refResponse.ok) throw new Error('Failed to create new branch.');
 
       // Prepare the file content
-      const content = btoa(unescape(encodeURIComponent(JSON.stringify(variablesData, null, 2))));
+      const content = btoa(decodeURIComponent(encodeURIComponent(variablesData)));
+
+      console.log(variablesData);
 
       // Create or update the file in the new branch
       const fileResponse = await fetch(
@@ -100,7 +110,7 @@ function App() {
           title: 'Export Figma Variables',
           head: newBranchName,
           base: branchName,
-          body: 'This PR contains exported Figma variables.',
+          body: `This PR contains exported Figma variables. It includes the following changes:\n\n- Exported variables to ${filename}.json`,
         }),
       });
       if (!prResponse.ok) throw new Error('Failed to create pull request.');
@@ -121,8 +131,8 @@ function App() {
         <input type="password" value={githubToken} onChange={e => setGithubToken(e.target.value)} />
         <button onClick={saveToken}>Save Token</button>
       </div>
-      <button onClick={exportVariables} className="export">
-        Export Variables & Create PR
+      <button onClick={exportVariables} disabled={exporting} className="export">
+        {exporting ? 'Exporting...' : 'Export Variables & Create PR'}
       </button>
       <p>{statusMessage}</p>
     </div>
