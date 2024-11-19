@@ -2,7 +2,7 @@ name: Build and Commit Design Tokens Changes
 
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, synchronize]
     paths:
       - 'packages/design-tokens/**'
 
@@ -14,13 +14,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🏗 Setup repo
-        uses: pnpm/action-setup@v4
-        with:
-          version: 8
-
       - name: 🏗 Checkout
         uses: actions/checkout@v4
+        with:
+          # Check out the PR's head branch with full history
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          fetch-depth: 0 # Fetch all history for accurate merging
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v4
@@ -28,6 +28,11 @@ jobs:
           node-version: 18
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
+
+      - name: 🏗 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
 
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
@@ -40,8 +45,8 @@ jobs:
 
       - name: 📝 Commit Built Files
         run: |
-          git config user.name 'GitHub Actions'
-          git config user.email 'actions@github.com'
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
           git add -A
           if git diff-index --quiet HEAD --; then
             echo "No changes to commit"
@@ -51,7 +56,10 @@ jobs:
 
       - name: 🚀 Push Changes
         run: |
-          git push origin HEAD:${{ github.head_ref }}
+          # Pull latest changes from the remote branch
+          git pull origin ${{ github.event.pull_request.head.ref }}
+          # Push your changes back to the PR's head branch
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
 
       - name: 🔍 Run Checks
         run: pnpm checks
