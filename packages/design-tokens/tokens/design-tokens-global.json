@@ -2108,15 +2108,9 @@
         },
         "border-color-focus": {
           "value": "#4789fa"
-        },
-        "border-color-pressed": {
-          "value": "#888888"
         }
       },
       "checked": {
-        "border-color": {
-          "value": "#4789fa"
-        },
         "background-color": {
           "value": "#4789fa"
         },
@@ -2134,6 +2128,9 @@
         "value": "#ffffff"
       },
       "border-radius": {
+        "value": 4
+      },
+      "padding": {
         "value": 4
       }
     }
@@ -2646,15 +2643,9 @@
         },
         "border-color-focus": {
           "value": "#b8b8b8"
-        },
-        "border-color-pressed": {
-          "value": "#ffffff"
         }
       },
       "checked": {
-        "border-color": {
-          "value": "#75a7fd"
-        },
         "background-color": {
           "value": "#75a7fd"
         },
@@ -2672,6 +2663,9 @@
         "value": "#1d1d1d"
       },
       "border-radius": {
+        "value": 4
+      },
+      "padding": {
         "value": 4
       }
     }
