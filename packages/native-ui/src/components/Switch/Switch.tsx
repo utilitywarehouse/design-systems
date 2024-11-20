@@ -161,6 +161,11 @@ const stylesheet = createStyleSheet(({ tokens }) => ({
           borderRadius: tokens.switch.borderRadius,
         },
       },
+      disabled: {
+        true: {
+          backgroundColor: tokens.switch.circle.backgroundColorDisabled,
+        },
+      },
     },
   },
   iconWrap: {
