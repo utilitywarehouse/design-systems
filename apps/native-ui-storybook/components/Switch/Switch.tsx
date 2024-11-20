@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Switch } from '@utilitywarehouse/native-ui';
 import { StoryFn } from '@storybook/react';
+import { useArgs } from '@storybook/preview-api';
 
 const SwitchBasic: StoryFn<{
   value: boolean;
   disabled?: boolean;
   size?: '32' | '24';
 }> = ({ ...props }) => {
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [args, updateArgs] = useArgs();
 
-  return <Switch {...props} onValueChange={setIsEnabled} accessibilityLabel="Toggle Switch" />;
+  return (
+    <Switch
+      {...props}
+      value={args.value}
+      onValueChange={value => updateArgs({ value })}
+      accessibilityLabel="Toggle Switch"
+    />
+  );
 };
 
 SwitchBasic.argTypes = {

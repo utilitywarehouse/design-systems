@@ -96,6 +96,7 @@ const CustomSwitch: React.FC<SwitchProps> = ({
       onPressIn={onPressIn}
       onPressOut={onPressOut}
       disabled={disabled}
+      aria-checked={value}
       accessibilityRole="switch"
       accessibilityState={{ checked: value, disabled }}
       accessibilityLabel={accessibilityProps.accessibilityLabel}
@@ -118,54 +119,54 @@ const CustomSwitch: React.FC<SwitchProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
+const stylesheet = createStyleSheet(({ tokens }) => ({
   switch: {
     justifyContent: 'center',
     variants: {
       size: {
         '32': {
-          width: 60,
-          height: 32,
-          borderRadius: 16,
-          padding: 2,
+          width: tokens.switch.medium.width,
+          height: tokens.switch.medium.height,
+          borderRadius: tokens.switch.borderRadius,
+          padding: tokens.switch.padding,
         },
         '24': {
-          width: 44,
-          height: 24,
-          borderRadius: 12,
-          padding: 2,
+          width: tokens.switch.small.width,
+          height: tokens.switch.small.height,
+          borderRadius: tokens.switch.borderRadius,
+          padding: tokens.switch.padding,
         },
       },
       value: {
         true: {
-          backgroundColor: colors.cyan500,
+          backgroundColor: tokens.switch.checked.backgroundColor,
         },
         false: {
-          backgroundColor: colors.grey500,
+          backgroundColor: tokens.switch.unChecked.backgroundColor,
         },
       },
       disabled: {
         true: {
-          backgroundColor: colors.grey200,
+          backgroundColor: tokens.switch.backgroundColorDisabled,
         },
       },
     },
   },
   thumb: {
-    backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
+    backgroundColor: tokens.switch.circle.backgroundColor,
     alignItems: 'center',
     justifyContent: 'center',
     variants: {
       size: {
         '32': {
-          width: 28,
-          height: 28,
-          borderRadius: 14,
+          width: tokens.switch.circle.medium.size,
+          height: tokens.switch.circle.medium.size,
+          borderRadius: tokens.switch.borderRadius,
         },
         '24': {
-          width: 20,
-          height: 20,
-          borderRadius: 10,
+          width: tokens.switch.circle.small.size,
+          height: tokens.switch.circle.small.size,
+          borderRadius: tokens.switch.borderRadius,
         },
       },
     },
@@ -177,15 +178,15 @@ const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
     variants: {
       value: {
         true: {
-          color: colors.cyan700,
+          color: tokens.switch.checked.iconColor,
         },
         false: {
-          color: colors.grey700,
+          color: tokens.switch.unChecked.iconColor,
         },
       },
       disabled: {
         true: {
-          color: colors.grey200,
+          color: tokens.switch.iconColorDisabled,
         },
       },
     },
