@@ -82,20 +82,45 @@ function App() {
       });
       if (!refResponse.ok) throw new Error('Failed to create new branch.');
 
+      // Get the SHA of the existing file (if it exists)
+      let fileSha;
+      const getFileResponse = await fetch(
+        `${apiBase}/repos/${repoOwner}/${repoName}/contents/${filePath}?ref=${newBranchName}`,
+        {
+          headers,
+        }
+      );
+      if (getFileResponse.ok) {
+        const fileData = await getFileResponse.json();
+        fileSha = fileData.sha;
+      } else if (getFileResponse.status !== 404) {
+        throw new Error('Failed to get file information.');
+      }
+
       // Prepare the file content
       const content = btoa(decodeURIComponent(encodeURIComponent(variablesData)));
 
       // Create or update the file in the new branch
+      const fileBody: {
+        message: string;
+        content: string;
+        branch: string;
+        sha?: string;
+      } = {
+        message: 'Export Figma variables',
+        content: content,
+        branch: newBranchName,
+      };
+      if (fileSha) {
+        fileBody.sha = fileSha;
+      }
+
       const fileResponse = await fetch(
         `${apiBase}/repos/${repoOwner}/${repoName}/contents/${filePath}`,
         {
           method: 'PUT',
           headers,
-          body: JSON.stringify({
-            message: 'Export Figma variables',
-            content: content,
-            branch: newBranchName,
-          }),
+          body: JSON.stringify(fileBody),
         }
       );
       if (!fileResponse.ok) throw new Error('Failed to create or update the file.');
