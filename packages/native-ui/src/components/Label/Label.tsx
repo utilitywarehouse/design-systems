@@ -7,7 +7,6 @@ import LabelProps from './Label.props';
 const Label = forwardRef<RNText, LabelProps>(
   ({ children, nested, style, disabled, ...props }, ref) => {
     const { styles } = useStyles(stylesheet, { nested, disabled });
-
     return (
       <Text ref={ref} style={[styles.text, style]} {...props}>
         {children}
