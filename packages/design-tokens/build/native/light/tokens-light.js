@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed Nov 20 2024 14:30:01 GMT+0000 (Coordinated Universal Time)
+ * Generated on Wed Nov 20 2024 15:43:52 GMT+0000 (Coordinated Universal Time)
  */
 
 export const tokens = {
@@ -173,7 +173,8 @@ export const tokens = {
       },
       "medium": {
         "size": 28
-      }
+      },
+      "backgroundColorDisabled": "#e3e3e3"
     },
     "padding": 2,
     "small": {
