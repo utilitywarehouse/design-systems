@@ -2023,7 +2023,7 @@
       "icon-color-disabled": {
         "value": "#b8b8b8"
       },
-      "un-checked": {
+      "unchecked": {
         "background-color": {
           "value": "#888888"
         },
@@ -2069,7 +2069,7 @@
       "border-width": {
         "value": 2
       },
-      "un-checked": {
+      "unchecked": {
         "border-color": {
           "value": "#888888"
         },
@@ -2096,7 +2096,7 @@
           "value": 8
         }
       },
-      "un-checked": {
+      "unchecked": {
         "border-color": {
           "value": "#888888"
         },
@@ -2108,15 +2108,9 @@
         },
         "border-color-focus": {
           "value": "#4789fa"
-        },
-        "border-color-pressed": {
-          "value": "#888888"
         }
       },
       "checked": {
-        "border-color": {
-          "value": "#4789fa"
-        },
         "background-color": {
           "value": "#4789fa"
         },
@@ -2134,6 +2128,9 @@
         "value": "#ffffff"
       },
       "border-radius": {
+        "value": 4
+      },
+      "padding": {
         "value": 4
       }
     }
@@ -2561,7 +2558,7 @@
       "icon-color-disabled": {
         "value": "#414141"
       },
-      "un-checked": {
+      "unchecked": {
         "background-color": {
           "value": "#707070"
         },
@@ -2607,7 +2604,7 @@
       "border-width": {
         "value": 2
       },
-      "un-checked": {
+      "unchecked": {
         "border-color": {
           "value": "#b8b8b8"
         },
@@ -2634,7 +2631,7 @@
           "value": 8
         }
       },
-      "un-checked": {
+      "unchecked": {
         "border-color": {
           "value": "#b8b8b8"
         },
@@ -2646,15 +2643,9 @@
         },
         "border-color-focus": {
           "value": "#b8b8b8"
-        },
-        "border-color-pressed": {
-          "value": "#ffffff"
         }
       },
       "checked": {
-        "border-color": {
-          "value": "#75a7fd"
-        },
         "background-color": {
           "value": "#75a7fd"
         },
@@ -2672,6 +2663,9 @@
         "value": "#1d1d1d"
       },
       "border-radius": {
+        "value": 4
+      },
+      "padding": {
         "value": 4
       }
     }
