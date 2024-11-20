@@ -20,13 +20,52 @@ StyleDictionary.registerParser({
   },
 });
 
+// Example parser for web tokens - refactor to match
+// this logic should be handled when the data is exported from Figma
+StyleDictionary.registerParser({
+  name: 'customWebJsonParser',
+  pattern: /\.json$/,
+  parser: ({ contents, filePath }) => {
+    const data = JSON.parse(contents);
+    const tokens = {};
+
+    // Iterate over modes
+    Object.keys(data).forEach(modeName => {
+      const modeTokens = data[modeName];
+      const processedTokens = processTokens(modeTokens, [], modeName, true);
+      tokens[modeName] = processedTokens; // Store tokens under mode name
+    });
+
+    if (tokens['Mode 1']) {
+      const { dark, light, white, midnight, ...rest } = tokens['Mode 1'] || {};
+      tokens['Mode 1'] = {
+        ...rest,
+      };
+    }
+    if (tokens.default) {
+      const { colors, ...rest } = tokens['default'] || {};
+      tokens.default = {
+        ...rest,
+        ...colors.light,
+      };
+      delete tokens.default['border-widths'];
+      delete tokens.default['font-weights'];
+      delete tokens.default.spacing;
+      delete tokens.default.fonts;
+      delete tokens.default.radii;
+    }
+
+    return tokens;
+  },
+});
+
 // Helper function to process tokens
-function processTokens(obj, path, modeName) {
+function processTokens(obj, path, modeName, isWeb) {
   const result = {};
 
   Object.keys(obj).forEach(key => {
     const value = obj[key];
-    const newPath = path.concat([key]);
+    let newPath = path.concat([key]);
 
     if (value && typeof value === 'object' && 'value' in value) {
       result[key] = {
@@ -118,8 +157,13 @@ function createPlatformConfig(modeName) {
 }
 
 const sdWeb = new StyleDictionary({
-  source: ['./tokens/design-tokens-global.json'],
-  parsers: ['customJsonParser'],
+  source: ['./tokens/design-tokens-global.json', './tokens/uw-web-ui.json'],
+  parsers: ['customWebJsonParser'],
+  transforms: {
+    myTransform: {
+      type: 'name',
+    },
+  },
   platforms: {
     css: {
       transformGroup: 'css',
@@ -154,11 +198,13 @@ async function buildIndexFiles() {
       fs.mkdirSync(dirname);
     }
     const indexPath = `${dirname}/index.js`;
-    rootExports += `export * as ${modeName} from './${modeName}';\n`;
+    rootExports += `export * as ${modeName === 'default' ? 'tokens' : modeName} from './${modeName}';\n`;
     await fs.promises.writeFile(indexPath, `export * from './tokens-${modeName}';\n`, 'utf-8');
   });
   const indexPath = 'build/index.js';
-  await fs.promises.writeFile(indexPath, rootExports, 'utf-8');
+  const nativeIndexPath = 'build/native/index.js';
+  await fs.promises.writeFile(nativeIndexPath, rootExports, 'utf-8');
+  await fs.promises.writeFile(indexPath, `export * from './native';\n`, 'utf-8');
 }
 
 // Build all platforms
