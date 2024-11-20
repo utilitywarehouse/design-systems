@@ -1982,6 +1982,9 @@
           "size": {
             "value": 28
           }
+        },
+        "background-color-disabled": {
+          "value": "#e3e3e3"
         }
       },
       "padding": {
@@ -2517,6 +2520,9 @@
           "size": {
             "value": 28
           }
+        },
+        "background-color-disabled": {
+          "value": "#585858"
         }
       },
       "padding": {
@@ -2556,7 +2562,7 @@
         "value": "#323232"
       },
       "icon-color-disabled": {
-        "value": "#414141"
+        "value": "#323232"
       },
       "unchecked": {
         "background-color": {
