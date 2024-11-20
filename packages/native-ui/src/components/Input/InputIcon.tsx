@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { ComponentProps, ComponentType, forwardRef } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
@@ -31,9 +32,9 @@ const InputIcon = forwardRef<SvgRef, ComponentProps<typeof Icon> & { as?: Compon
 
 InputIcon.displayName = 'InputIcon';
 
-const stylesheet = createStyleSheet(({ colors }) => ({
+const stylesheet = createStyleSheet(({ colors, tokens }) => ({
   icon: {
-    color: colors.grey700,
+    color: tokens.input.iconColor,
     width: 24,
     height: 24,
     variants: {
