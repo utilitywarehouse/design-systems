@@ -504,6 +504,7 @@
   --switch-circle-border-radius: 100;
   --switch-circle-small-size: 20;
   --switch-circle-medium-size: 28;
+  --switch-circle-background-color-disabled: #e3e3e3;
   --switch-padding: 2;
   --switch-small-height: 24;
   --switch-small-width: 44;
@@ -651,6 +652,7 @@
   --switch-circle-border-radius: 100;
   --switch-circle-small-size: 20;
   --switch-circle-medium-size: 28;
+  --switch-circle-background-color-disabled: #585858;
   --switch-padding: 2;
   --switch-small-height: 24;
   --switch-small-width: 44;
@@ -661,7 +663,7 @@
   --switch-checked-background-color-hover: #5692fb;
   --switch-checked-icon-color: #0658e5;
   --switch-background-color-disabled: #323232;
-  --switch-icon-color-disabled: #414141;
+  --switch-icon-color-disabled: #323232;
   --switch-unchecked-background-color: #707070;
   --switch-unchecked-icon-color: #585858;
   --switch-unchecked-background-color-hover: #585858;
