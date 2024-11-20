@@ -1,7 +1,5 @@
-// CustomSwitch.tsx
-
 import React from 'react';
-import { StyleSheet, AccessibilityProps, Pressable, PressableProps } from 'react-native';
+import { Pressable } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -11,23 +9,17 @@ import Animated, {
 import { CloseSmallIcon, TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Icon } from '../Icon';
-
-interface SwitchProps extends PressableProps, AccessibilityProps {
-  value: boolean;
-  onValueChange?: (value: boolean) => void;
-  disabled?: boolean;
-  size?: '32' | '24';
-}
+import SwitchProps from './Switch.props';
 
 const CustomSwitch: React.FC<SwitchProps> = ({
-  value,
+  value = false,
   onValueChange,
   disabled = false,
-  size = '32',
+  size = 'medium',
   ...accessibilityProps
 }) => {
-  const SWITCH_WIDTH = size === '32' ? 60 : 44;
-  const THUMB_SIZE = size === '32' ? 28 : 20;
+  const SWITCH_WIDTH = size === 'medium' ? 60 : 44;
+  const THUMB_SIZE = size === 'medium' ? 28 : 20;
   const PADDING = 2;
 
   const { styles } = useStyles(stylesheet, { size, disabled, value });
@@ -124,13 +116,13 @@ const stylesheet = createStyleSheet(({ tokens }) => ({
     justifyContent: 'center',
     variants: {
       size: {
-        '32': {
+        medium: {
           width: tokens.switch.medium.width,
           height: tokens.switch.medium.height,
           borderRadius: tokens.switch.borderRadius,
           padding: tokens.switch.padding,
         },
-        '24': {
+        small: {
           width: tokens.switch.small.width,
           height: tokens.switch.small.height,
           borderRadius: tokens.switch.borderRadius,
@@ -142,7 +134,7 @@ const stylesheet = createStyleSheet(({ tokens }) => ({
           backgroundColor: tokens.switch.checked.backgroundColor,
         },
         false: {
-          backgroundColor: tokens.switch.unChecked.backgroundColor,
+          backgroundColor: tokens.switch.unchecked.backgroundColor,
         },
       },
       disabled: {
@@ -158,12 +150,12 @@ const stylesheet = createStyleSheet(({ tokens }) => ({
     justifyContent: 'center',
     variants: {
       size: {
-        '32': {
+        medium: {
           width: tokens.switch.circle.medium.size,
           height: tokens.switch.circle.medium.size,
           borderRadius: tokens.switch.borderRadius,
         },
-        '24': {
+        small: {
           width: tokens.switch.circle.small.size,
           height: tokens.switch.circle.small.size,
           borderRadius: tokens.switch.borderRadius,
@@ -181,7 +173,7 @@ const stylesheet = createStyleSheet(({ tokens }) => ({
           color: tokens.switch.checked.iconColor,
         },
         false: {
-          color: tokens.switch.unChecked.iconColor,
+          color: tokens.switch.unchecked.iconColor,
         },
       },
       disabled: {

@@ -6,29 +6,29 @@ import { VariantTitle } from '../../docs/components';
 const SwitchVariants = () => {
   return (
     <VStack space="sm">
-      <VariantTitle title="Off - 32">
+      <VariantTitle title="Off - medium">
         <Switch value={false} />
       </VariantTitle>
-      <VariantTitle title="On - 32">
+      <VariantTitle title="On - medium">
         <Switch value={true} />
       </VariantTitle>
-      <VariantTitle title="Off - 32 - Disabled">
+      <VariantTitle title="Off - medium - Disabled">
         <Switch value={false} disabled />
       </VariantTitle>
-      <VariantTitle title="On - 32 - Disabled">
+      <VariantTitle title="On - medium - Disabled">
         <Switch value={true} disabled />
       </VariantTitle>
-      <VariantTitle title="Off - 24">
-        <Switch value={false} size="24" />
+      <VariantTitle title="Off - small">
+        <Switch value={false} size="small" />
       </VariantTitle>
-      <VariantTitle title="On - 24">
-        <Switch value={true} size="24" />
+      <VariantTitle title="On - small">
+        <Switch value={true} size="small" />
       </VariantTitle>
-      <VariantTitle title="Off - 24 - Disabled">
-        <Switch value={false} size="24" disabled />
+      <VariantTitle title="Off - small - Disabled">
+        <Switch value={false} size="small" disabled />
       </VariantTitle>
-      <VariantTitle title="On - 24 - Disabled">
-        <Switch value={true} size="24" disabled />
+      <VariantTitle title="On - small - Disabled">
+        <Switch value={true} size="small" disabled />
       </VariantTitle>
     </VStack>
   );

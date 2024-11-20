@@ -33,7 +33,7 @@ import {
   ElectricityMediumIcon,
   GasMediumIcon,
 } from '@utilitywarehouse/react-native-icons';
-import { CheckboxList, BadgeList, RadioList } from './components';
+import { CheckboxList, BadgeList, RadioList, SwitchList } from './components';
 
 <Meta of={Stories} />
 
@@ -553,7 +553,7 @@ import { Box } from '@utilitywarehouse/native-ui/lab';
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const RadioList = () => {
-  const [value, setValue] = React.useState<string>();
+  const [value, setValue] = useState<string>();
   const colorMode = useColorMode();
 
   const handlePress = (item: string) => {
@@ -633,7 +633,70 @@ For more information on the `Checbox` component, see the [`Checkbox` component d
 
 You can also use the list to display a list of switches. You can achieve this by using the `Switch` component as the `trailingContent` of the `ListItem`.
 
-> The switch component isn't built yet. Example coming soon.
+<Canvas>
+  <NativeUIProvider>
+    <SwitchList />
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import React, { useState } from 'react';
+import { Card, List, ListItem, ListItemIcon, Switch } from '@utilitywarehouse/native-ui';
+import {
+  BellMediumIcon,
+  LockMediumIcon,
+  LocationMediumIcon,
+  EyeMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+
+const SwitchList = () => {
+  const [notifications, setNotifications] = useState(false);
+  const [secureId, setSecureId] = useState(false);
+  const [location, setLocation] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  return (
+    <List>
+      <Card padding="none">
+        <ListItem
+          text="Notifications"
+          supportingText="Allow notifications"
+          divider
+          leadingContent={<ListItemIcon as={BellMediumIcon} />}
+          trailingContent={<Switch value={notifications} onValueChange={setNotifications} />}
+          onPress={() => setNotifications(!notifications)}
+        />
+        <ListItem
+          text="Secure ID"
+          supportingText="Use secure ID"
+          divider
+          leadingContent={<ListItemIcon as={LockMediumIcon} />}
+          trailingContent={<Switch value={secureId} onValueChange={setSecureId} />}
+          onPress={() => setSecureId(!secureId)}
+        />
+        <ListItem
+          text="Location"
+          supportingText="Allow location"
+          divider
+          leadingContent={<ListItemIcon as={LocationMediumIcon} />}
+          trailingContent={<Switch value={location} onValueChange={setLocation} />}
+          onPress={() => setLocation(!location)}
+        />
+        <ListItem
+          text="Dark mode"
+          supportingText="Enable dark mode"
+          divider
+          leadingContent={<ListItemIcon as={EyeMediumIcon} />}
+          trailingContent={<Switch value={darkMode} onValueChange={setDarkMode} />}
+          onPress={() => setDarkMode(!darkMode)}
+        />
+      </Card>
+    </List>
+  );
+};
+
+export default SwitchList;
+```
 
 ### List with FlatList
 

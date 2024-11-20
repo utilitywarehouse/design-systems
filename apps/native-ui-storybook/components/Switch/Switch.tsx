@@ -6,7 +6,7 @@ import { useArgs } from '@storybook/preview-api';
 const SwitchBasic: StoryFn<{
   value: boolean;
   disabled?: boolean;
-  size?: '32' | '24';
+  size?: 'medium' | 'small';
 }> = ({ ...props }) => {
   const [args, updateArgs] = useArgs();
 
@@ -27,7 +27,7 @@ SwitchBasic.argTypes = {
   },
   size: {
     control: 'select',
-    options: ['32', '24'],
+    options: ['medium', 'small'],
     description: 'Use this value to set the Switch size.',
   },
   disabled: {
@@ -38,7 +38,7 @@ SwitchBasic.argTypes = {
 
 SwitchBasic.args = {
   value: false,
-  size: '32',
+  size: 'medium',
   disabled: false,
 };
 

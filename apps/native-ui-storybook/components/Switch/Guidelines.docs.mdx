@@ -1,0 +1,54 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import * as Stories from './Switch.stories';
+import {
+  Button,
+  Center,
+  NativeUIProvider,
+  HStack,
+  VStack,
+  Card,
+  Heading,
+  Text,
+  List,
+  ListItem,
+  Icon,
+  Image,
+} from '@utilitywarehouse/native-ui';
+import { SettingsMediumIcon, TrashSmallIcon } from '@utilitywarehouse/react-native-icons';
+import { Box } from '@utilitywarehouse/native-ui/lab';
+import {
+  ViewFigmaButton,
+  BackToTopButton,
+  DocComponentWrap,
+  DynamicImage,
+  ColorModeToggleIcons,
+  HideInDarkMode,
+} from '../../docs/components';
+
+<Meta of={Stories} />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=850-1596" />
+
+<BackToTopButton />
+
+# Switch Design Guidelines
+
+The Switch component is used to indicate switching between two opposing options. Switches allow users
+to turn an individual option on or off. They are usually used to activate or deactivate a specific setting.
+
+## Usage
+
+### When to use Switch
+
+✅ Use when presenting users with a binary choice. Such as yes/no or on/off<br />
+✅ Use to enable users to change a single setting<br />
+✅ Use for changes that have an instant response and take immediate effect<br />
+✅ Use for changing system-level settings, preferences, or other functions
+
+### When not to use Switch
+
+❌ Do not use Switch when presenting multiple options.<br />
+❌ Do not use it for selections that require validation, such as error messages. Use
+[Checkbox](/?path=/docs/native-ui-components-checkbox--docs) instead.
+
+## Properties & Attributes
