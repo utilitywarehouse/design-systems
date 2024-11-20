@@ -538,14 +538,13 @@
   --checkbox-un-checked-border-color-disabled: #b8b8b8;
   --checkbox-un-checked-border-color-hover: #4789fa;
   --checkbox-un-checked-border-color-focus: #4789fa;
-  --checkbox-un-checked-border-color-pressed: #888888;
-  --checkbox-checked-border-color: #4789fa;
   --checkbox-checked-background-color: #4789fa;
   --checkbox-checked-background-color-disabled: #d8d8d8;
   --checkbox-checked-icon-color: #ffffff;
   --checkbox-checked-icon-color-disabled: #a0a0a0;
   --checkbox-background-color: #ffffff;
   --checkbox-border-radius: 4;
+  --checkbox-padding: 4;
   --input-border-color: #707070;
   --input-border-width: 2;
   --input-border-width-focus: 2;
@@ -686,12 +685,11 @@
   --checkbox-un-checked-border-color-disabled: #585858;
   --checkbox-un-checked-border-color-hover: #b8b8b8;
   --checkbox-un-checked-border-color-focus: #b8b8b8;
-  --checkbox-un-checked-border-color-pressed: #ffffff;
-  --checkbox-checked-border-color: #75a7fd;
   --checkbox-checked-background-color: #75a7fd;
   --checkbox-checked-background-color-disabled: #c1c1c1;
   --checkbox-checked-icon-color: #010a19;
   --checkbox-checked-icon-color-disabled: #707070;
   --checkbox-background-color: #1d1d1d;
   --checkbox-border-radius: 4;
+  --checkbox-padding: 4;
 }

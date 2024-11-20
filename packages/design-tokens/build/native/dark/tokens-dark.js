@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed Nov 20 2024 11:29:04 GMT+0000 (Coordinated Universal Time)
+ * Generated on Wed Nov 20 2024 11:55:32 GMT+0000 (Coordinated Universal Time)
  */
 
 export const tokens = {
@@ -231,18 +231,17 @@ export const tokens = {
       "borderColor": "#b8b8b8",
       "borderColorDisabled": "#585858",
       "borderColorHover": "#b8b8b8",
-      "borderColorFocus": "#b8b8b8",
-      "borderColorPressed": "#ffffff"
+      "borderColorFocus": "#b8b8b8"
     },
     "checked": {
-      "borderColor": "#75a7fd",
       "backgroundColor": "#75a7fd",
       "backgroundColorDisabled": "#c1c1c1",
       "iconColor": "#010a19",
       "iconColorDisabled": "#707070"
     },
     "backgroundColor": "#1d1d1d",
-    "borderRadius": 4
+    "borderRadius": 4,
+    "padding": 4
   },
   "card": {
     "borderWidth": 1,
