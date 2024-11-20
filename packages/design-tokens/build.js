@@ -101,7 +101,7 @@ function toCamelCase(str) {
 function createPlatformConfig(modeName) {
   return {
     transformGroup: 'js',
-    buildPath: `build/${modeName}/`,
+    buildPath: `build/native/${modeName}/`,
     files: [
       {
         destination: `tokens-${modeName}.js`,
@@ -117,14 +117,13 @@ function createPlatformConfig(modeName) {
   };
 }
 
-// Create a new Style Dictionary instance
-const sd = new StyleDictionary({
-  source: ['./tokens/**/*.json'],
+const sdWeb = new StyleDictionary({
+  source: ['./tokens/design-tokens-global.json'],
   parsers: ['customJsonParser'],
   platforms: {
     css: {
       transformGroup: 'css',
-      buildPath: 'build/css/',
+      buildPath: 'build/web/css/',
       files: [
         {
           destination: '_variables.css',
@@ -135,15 +134,22 @@ const sd = new StyleDictionary({
   },
 });
 
+// Create a new Style Dictionary instance
+const sdNative = new StyleDictionary({
+  source: ['./tokens/design-tokens-global.json', './tokens/uw-app-ui.json'],
+  parsers: ['customJsonParser'],
+  platforms: {},
+});
+
 // Set up platforms for each mode
 modes.forEach(modeName => {
-  sd.platforms[modeName] = createPlatformConfig(modeName);
+  sdNative.platforms[modeName] = createPlatformConfig(modeName);
 });
 
 async function buildIndexFiles() {
   let rootExports = '';
   await modes.forEach(async modeName => {
-    const dirname = `./build/${modeName}`;
+    const dirname = `./build/native/${modeName}`;
     if (!fs.existsSync(dirname)) {
       fs.mkdirSync(dirname);
     }
@@ -158,7 +164,8 @@ async function buildIndexFiles() {
 // Build all platforms
 (async () => {
   try {
-    await sd.buildAllPlatforms();
+    await sdNative.buildAllPlatforms();
+    await sdWeb.buildAllPlatforms();
     // Add index for each mode
     await buildIndexFiles();
     console.log('Tokens built successfully!');
