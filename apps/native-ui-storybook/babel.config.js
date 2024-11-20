@@ -9,6 +9,10 @@ module.exports = function (api) {
         {
           alias: {
             '@utilitywarehouse/native-ui': path.join(__dirname, '../../packages/native-ui/src'),
+            '@utilitywarehouse/design-tokens': path.join(
+              __dirname,
+              '../../packages/design-tokens/build'
+            ),
             '@utilitywarehouse/native-ui/lab': path.join(
               __dirname,
               '../../packages/native-ui/src/lab'

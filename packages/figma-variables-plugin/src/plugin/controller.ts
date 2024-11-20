@@ -1,157 +1,291 @@
 figma.showUI(__html__, { width: 400, height: 260 });
 
-const debugMode = false;
+const debugMode = true;
 const consoleLog = debugMode
   ? console
   : { log: () => {}, warn: () => {}, error: () => {}, clear: () => {} };
 consoleLog.clear();
 
-/* eslint-disable @typescript-eslint/no-misused-promises */
-figma.ui.onmessage = async msg => {
-  if (msg.type === 'export-variables') {
-    // Fetch all local variables
-    const variables = await figma.variables.getLocalVariablesAsync();
+async function exportVariables() {
+  // Asynchronously get all local variables in the current file
+  const localVariables = await figma.variables.getLocalVariablesAsync();
 
-    // Fetch all local variable collections
-    const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  // Asynchronously get all local variable collections in the current file
+  const localCollections = await figma.variables.getLocalVariableCollectionsAsync();
 
-    // Create maps for quick access
-    const collectionsMap = new Map<string, VariableCollection>();
-    collections.forEach(collection => {
-      collectionsMap.set(collection.id, collection);
-    });
+  interface ResolvedVariable {
+    name: string;
+    path: Array<string>; // Array of name segments
+    values: Record<string, any>; // Mode name to value mapping
+  }
 
-    const variablesMap = new Map<string, Variable>();
-    variables.forEach(variable => {
-      variablesMap.set(variable.id, variable);
-    });
+  async function resolveVariable(
+    variable: Variable,
+    collections: Array<VariableCollection>,
+    visitedVariables = new Set<string>()
+  ): Promise<ResolvedVariable> {
+    const resolvedValues: Record<string, any> = {};
 
-    // Function to resolve variable aliases recursively
-    const resolveVariableValue = (
-      value: VariableValue | undefined,
-      currentModeId: string,
-      visitedVariables: Set<string>
-      /* eslint-disable @typescript-eslint/no-explicit-any */
-    ): any => {
-      try {
-        if (value === undefined) {
-          consoleLog.warn(`Value is undefined for mode ID: ${currentModeId}`);
-          return { error: 'Value is undefined' };
-        }
+    // Find collections that include this variable
+    const variableCollections = collections.filter(collection =>
+      collection.variableIds.includes(variable.id)
+    );
 
-        if (
-          typeof value === 'object' &&
-          value !== null &&
-          'type' in value &&
-          value.type === 'VARIABLE_ALIAS'
-        ) {
-          consoleLog.log(`Resolving alias variable with ID: ${value.id} in mode: ${currentModeId}`);
+    // For each collection, resolve values for each mode
+    for (const collection of variableCollections) {
+      for (const mode of collection.modes) {
+        const modeId = mode.modeId;
+        const modeName = mode.name;
+        let value = variable.valuesByMode[modeId];
 
-          if (visitedVariables.has(value.id)) {
-            consoleLog.warn(`Circular reference detected for variable ID: ${value.id}`);
-            return { error: 'Circular reference detected' };
+        // Resolve aliases recursively
+        const visited = new Set<string>(visitedVariables);
+        // @ts-expect-error - TS doesn't recognize the type of value
+        while (value && value.type === 'VARIABLE_ALIAS') {
+          // @ts-expect-error - TS doesn't recognize the type of value
+          if (visited.has(value.id)) {
+            consoleLog.warn(`Circular reference detected for variable ${variable.name}`);
+            break;
           }
-          visitedVariables.add(value.id);
+          // @ts-expect-error - TS doesn't recognize the type of value
+          visited.add(value.id);
 
-          const aliasVariable = variablesMap.get(value.id);
-          if (aliasVariable) {
-            // Attempt to find a matching mode in the alias variable
-            let aliasModeId = currentModeId;
+          // Fetch the alias variable, possibly from external libraries
+          // @ts-expect-error - TS doesn't recognize the type of value
+          const aliasVariable = await figma.variables.getVariableByIdAsync(value.id);
+          if (aliasVariable && aliasVariable !== variable) {
+            // Map modes between the current collection and the alias variable's collection
+            const aliasCollections = await getVariableCollectionsForVariable(aliasVariable);
 
-            // Check if the alias variable has the current mode
-            if (!Object.prototype.hasOwnProperty.call(aliasVariable.valuesByMode, aliasModeId)) {
-              // If not, use the default mode of the alias variable's collection
-              const aliasCollection = collectionsMap.get(aliasVariable.variableCollectionId);
-              aliasModeId = aliasCollection ? aliasCollection.defaultModeId : null;
-
-              if (
-                !aliasModeId ||
-                !Object.prototype.hasOwnProperty.call(aliasVariable.valuesByMode, aliasModeId)
-              ) {
-                consoleLog.warn(
-                  `No matching mode found for alias variable ID ${value.id}. Cannot resolve value.`
-                );
-                return { error: 'No matching mode for alias variable' };
-              }
-            }
-
-            const aliasValue = aliasVariable.valuesByMode[aliasModeId];
-
-            consoleLog.log(
-              `Alias variable value for ID ${value.id} in mode ${aliasModeId}:`,
-              aliasValue
+            // Attempt to find a matching mode in the alias variable's collections
+            const aliasValue = await getValueForMatchingMode(
+              aliasVariable,
+              aliasCollections,
+              modeName
             );
 
-            // Handle undefined aliasValue
-            if (aliasValue === undefined) {
+            if (aliasValue !== undefined) {
+              value = aliasValue;
+            } else {
+              // If no matching mode, use a default value or break
               consoleLog.warn(
-                `No value found for alias variable ID ${value.id} in mode ${aliasModeId}`
+                `No matching mode found for variable ${aliasVariable.name} in mode ${modeName}`
               );
-              return { error: 'No value for alias variable in mode' };
+              value = undefined;
+              break;
             }
-
-            return resolveVariableValue(aliasValue, aliasModeId, visitedVariables);
           } else {
-            consoleLog.error(`Alias variable not found for ID: ${value.id}`);
-            return { error: 'Alias variable not found' };
+            break;
           }
-        } else {
-          // For non-alias values, return the value directly
+        }
+
+        resolvedValues[modeName] = value;
+      }
+    }
+
+    // Split the variable name into path segments based on '/'
+    const path = variable.name.split('/').map(segment => segment.trim());
+
+    return {
+      name: variable.name,
+      path,
+      values: resolvedValues,
+    };
+  }
+
+  // Helper function to get the collections that include a variable
+  async function getVariableCollectionsForVariable(
+    variable: Variable
+  ): Promise<Array<VariableCollection>> {
+    // Attempt to get the collections that include this variable
+    const collections: Array<VariableCollection> = [];
+
+    // Check local collections
+    const localCollections = await figma.variables.getLocalVariableCollectionsAsync();
+    for (const collection of localCollections) {
+      if (collection.variableIds.includes(variable.id)) {
+        collections.push(collection);
+      }
+    }
+
+    // For variables from external libraries, we may not have access to their collections directly
+    // So we can try to get the collection by the variable's collectionId
+    if (variable.variableCollectionId) {
+      const collection = await figma.variables.getVariableCollectionByIdAsync(
+        variable.variableCollectionId
+      );
+      if (collection) {
+        collections.push(collection);
+      }
+    }
+
+    return collections;
+  }
+
+  // Helper function to get the value for a matching mode
+  /* eslint-disable-next-line @typescript-eslint/require-await */
+  async function getValueForMatchingMode(
+    variable: Variable,
+    collections: Array<VariableCollection>,
+    targetModeName: string
+  ): Promise<VariableValue | undefined> {
+    for (const collection of collections) {
+      // Find the mode in the alias variable's collection that matches the target mode name
+      const matchingMode = collection.modes.find(mode => mode.name === targetModeName);
+
+      if (matchingMode) {
+        const value = variable.valuesByMode[matchingMode.modeId];
+        if (value !== undefined) {
           return value;
         }
-      } catch (error) {
-        consoleLog.error('Error resolving variable value:', error);
-        return { error: 'Error resolving variable value' };
       }
-    };
+    }
 
-    // Transform variables into a serializable format
-    const variableData = variables.map(variable => {
-      const collection = collectionsMap.get(variable.variableCollectionId);
-      const collectionInfo = collection
-        ? {
-            id: collection.id,
-            name: collection.name,
-          }
-        : null;
+    // If no matching mode, return a default value if available
+    // You might choose to return the value from the first available mode
+    const defaultModeId = Object.keys(variable.valuesByMode)[0];
+    return variable.valuesByMode[defaultModeId];
+  }
 
-      // Get modes from the collection
-      const modes = collection ? collection.modes : [];
+  // Process all variables
+  const allVariables = localVariables;
+  const allCollections = localCollections;
 
-      // Build valuesByMode with mode names and resolved values
-      const valuesByMode = {};
-      for (const modeId of Object.keys(variable.valuesByMode)) {
-        const mode = modes.find(m => m.modeId === modeId);
-        const modeName = mode ? mode.name : 'Unknown Mode';
+  // Resolve all variables
+  const resolvedVariablesPromises = allVariables.map(variable =>
+    resolveVariable(variable, allCollections)
+  );
+  const resolvedVariables = await Promise.all(resolvedVariablesPromises);
 
-        consoleLog.log(
-          `Resolving variable '${variable.name}' (${variable.id}) for mode '${modeName}' (${modeId})`
-        );
+  // Initialize the tokens object with modes at the top level
+  const styleDictionaryTokens: Record<string, any> = {};
 
-        const rawValue = variable.valuesByMode[modeId];
-
-        const resolvedValue = resolveVariableValue(rawValue, modeId, new Set([variable.id]));
-
-        valuesByMode[modeId] = {
-          modeId: modeId,
-          modeName: modeName,
-          value: resolvedValue,
-          rawValue,
+  for (const variable of resolvedVariables) {
+    for (const [modeName, value] of Object.entries(variable.values)) {
+      if (value !== undefined) {
+        const tokenValue = {
+          value: formatValue(value),
+          // Optionally add type or other attributes
         };
-      }
 
-      return {
-        id: variable.id,
-        name: variable.name,
-        description: variable.description,
-        collection: collectionInfo,
-        valuesByMode: valuesByMode,
-        remote: variable.remote,
-      };
+        // Ensure the mode object exists
+        if (!styleDictionaryTokens[modeName]) {
+          styleDictionaryTokens[modeName] = {};
+        }
+
+        // Nest the token under its path in the mode object
+        nestTokens(styleDictionaryTokens[modeName], variable.path, tokenValue);
+      }
+    }
+  }
+
+  // Function to nest tokens based on path
+  function nestTokens(tokens: Record<string, any>, path: Array<string>, value: any): void {
+    let currentLevel = tokens;
+    for (let i = 0; i < path.length; i++) {
+      const segment = path[i].replaceAll(' ', '-');
+      if (i === path.length - 1) {
+        // Last segment, assign the value
+        currentLevel[segment] = value;
+      } else {
+        // Intermediate segment, create object if it doesn't exist
+        if (!currentLevel[segment]) {
+          currentLevel[segment] = {};
+        }
+        currentLevel = currentLevel[segment];
+      }
+    }
+  }
+
+  function formatValue(value: any): any {
+    // Convert Figma types to plain values suitable for Style Dictionary
+    if (value && value.r !== undefined && value.g !== undefined && value.b !== undefined) {
+      return figmaColorToHex(value);
+    } else if (typeof value === 'number') {
+      return value;
+    } else if (typeof value === 'string') {
+      return value;
+    }
+    // Handle other types as needed
+    return value;
+  }
+
+  // Helper function to convert Figma color to HEX
+  function figmaColorToHex(color: RGBA): string {
+    const r = Math.round(color.r * 255);
+    const g = Math.round(color.g * 255);
+    const b = Math.round(color.b * 255);
+    const a = color.a !== undefined ? Math.round(color.a * 255) : 255;
+
+    if (a < 255) {
+      // Return RGBA hex
+      return `#${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}${componentToHex(a)}`;
+    } else {
+      // Return RGB hex
+      return `#${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}`;
+    }
+  }
+
+  function componentToHex(c: number): string {
+    const hex = c.toString(16);
+    return hex.length == 1 ? '0' + hex : hex;
+  }
+
+  if (figma.root.name === 'Design Tokens [Global]') {
+    const { white, transparent, midnight, light, dark, spacing, ...rest } = styleDictionaryTokens?.[
+      'Mode 1'
+    ] ?? { white: {}, transparent: {}, midnight: {}, light: {}, dark: {}, spacing: {} };
+    const spacingKeys = Object.keys(spacing);
+    const newSpacing = {};
+    spacingKeys.forEach(key => {
+      const newKey = key.replace('-', '.');
+      newSpacing[newKey] = spacing[key];
     });
 
-    // Send the data back to the UI
-    figma.ui.postMessage({ type: 'variables-exported', data: variableData });
+    styleDictionaryTokens['default'] = {
+      ...styleDictionaryTokens['default'],
+      spacing: newSpacing,
+      colors: {
+        light: {
+          midnight,
+          white,
+          transparent,
+          ...styleDictionaryTokens['default']?.colors?.light,
+          ...light,
+        },
+        dark: {
+          midnight,
+          white,
+          transparent,
+          ...styleDictionaryTokens['default']?.colors?.dark,
+          ...dark,
+        },
+      },
+      ...rest,
+    };
+  }
+
+  // Convert the tokens object to JSON
+  const tokensJson = JSON.stringify(styleDictionaryTokens, null, 2);
+
+  // Send the data back to the UI
+  figma.ui.postMessage({ type: 'variables-exported', data: tokensJson });
+}
+
+/* eslint-disable @typescript-eslint/no-misused-promises */
+figma.ui.onmessage = async msg => {
+  if (msg.type === 'get-filename') {
+    // Get the current file name
+    const fileName = figma.root.name;
+    // Filename to kebab case and remove special characters
+    const fileNameKebab = fileName
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    figma.ui.postMessage({ type: 'filename', data: fileNameKebab });
+  }
+  if (msg.type === 'export-variables') {
+    await exportVariables();
   } else if (msg.type === 'save-token') {
     // Save the GitHub token
     await figma.clientStorage.setAsync('githubToken', msg.token);

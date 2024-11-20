@@ -1,5 +1,7 @@
 import { colorsDark, colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { Platform } from 'react-native';
+import { breakpoints } from './breakpoints';
+import { dark, light, tokens } from '@utilitywarehouse/design-tokens';
 
 const shared = {
   platform: Platform.OS,
@@ -71,13 +73,7 @@ const shared = {
     '4xl': 32,
     full: 9999,
   },
-  breakpoints: {
-    base: 0,
-    sm: 480,
-    md: 768,
-    lg: 992,
-    xl: 1280,
-  },
+  breakpoints,
   letterSpacings: {
     xs: -0.4,
     sm: -0.2,
@@ -276,6 +272,10 @@ export const lightTheme = {
     white: '#ffffff',
     black: '#000000',
   },
+  tokens: {
+    ...light.tokens,
+    ...tokens.tokens,
+  },
   ...shared,
 } as const;
 
@@ -286,6 +286,10 @@ export const darkTheme = {
     ...colorsCommon,
     white: '#ffffff',
     black: '#000000',
+  },
+  tokens: {
+    ...dark.tokens,
+    ...tokens.tokens,
   },
   ...shared,
 } as const;

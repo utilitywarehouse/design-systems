@@ -6,6 +6,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     name: 'Native UI',
     slug: 'native-ui',
     scheme: 'native-ui',
+    owner: 'utilitywarehouse',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',
@@ -43,6 +44,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       storybookEnabled: 'true',
       eas: {
         projectId: '5d5d04e2-5607-4d40-84a9-4d1bdf331ae3',
+        owner: 'utilitywarehouse',
       },
     },
     splash: {

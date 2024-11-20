@@ -154,6 +154,7 @@ const preview: Preview = {
               'Badge',
               'Box',
               'Button',
+              'Card',
               'Center',
               'Checkbox',
               'Divider',

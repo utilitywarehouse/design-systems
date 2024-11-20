@@ -1,5 +1,23 @@
 # @utilitywarehouse/native-ui
 
+## 0.7.0
+
+### Minor Changes
+
+- [#594](https://github.com/utilitywarehouse/design-systems/pull/594) [`c186bdc4`](https://github.com/utilitywarehouse/design-systems/commit/c186bdc4851d20738a4622e39d4cc4f2dd5d61c4) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Card` component
+
+- [#597](https://github.com/utilitywarehouse/design-systems/pull/597) [`09259641`](https://github.com/utilitywarehouse/design-systems/commit/09259641967101f3a6ad356042d6460b9cb4b818) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrates hooks away from gluestack
+
+## 0.6.1
+
+### Patch Changes
+
+- [`2c312563`](https://github.com/utilitywarehouse/design-systems/commit/2c3125631927f19301e095bc6c5ef43a9495aef0) Thanks [@jordmccord](https://github.com/jordmccord)! - Removes useless color mode check from Provider
+
+- [`93bf0b3f`](https://github.com/utilitywarehouse/design-systems/commit/93bf0b3f0aac0e8c9b61389713c11feddd76accd) Thanks [@jordmccord](https://github.com/jordmccord)! - Allows childless `Button` with `text` prop
+
+- [#595](https://github.com/utilitywarehouse/design-systems/pull/595) [`62a05cfe`](https://github.com/utilitywarehouse/design-systems/commit/62a05cfe51cc1c1f25e1e1337588f62f13993155) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixes small `Button` horizontal padding
+
 ## 0.6.0
 
 ### Minor Changes

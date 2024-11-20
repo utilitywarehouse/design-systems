@@ -4,9 +4,9 @@ import {
   ListItem,
   Radio,
   RadioGroup,
-  RadioIndicator,
   Image,
   useColorMode,
+  Card,
 } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 
@@ -20,15 +20,20 @@ const RadioList = () => {
     setValue(item);
   };
 
+  const handleChange = (value: string) => {
+    setValue(value);
+  };
+
   return (
     <Box p="$4" backgroundColor={colorMode === 'light' ? '#F2F2F2' : '$grey25'}>
-      <RadioGroup aria-label="Radio Group" nativeID="Radio-group" value={value}>
+      <RadioGroup
+        aria-label="Radio Group"
+        nativeID="Radio-group"
+        onChange={handleChange}
+        value={value}
+      >
         <List container="card">
-          <Box
-            borderRadius="$xl"
-            backgroundColor={colorMode === 'light' ? '$white' : '$grey175'}
-            overflow="hidden"
-          >
+          <Card variant="filled" padding="none">
             <ListItem
               text="**** 5016"
               supportingText="Expires 12/24"
@@ -40,11 +45,7 @@ const RadioList = () => {
                   height={42}
                 />
               }
-              trailingContent={
-                <Radio value="option1" aria-label="Label 1">
-                  <RadioIndicator />
-                </Radio>
-              }
+              trailingContent={<Radio value="option1" aria-label="Label 1" />}
               onPress={() => handlePress('option1')}
             />
             <ListItem
@@ -60,11 +61,7 @@ const RadioList = () => {
                 />
               }
               divider
-              trailingContent={
-                <Radio value="option2" aria-label="Label 2">
-                  <RadioIndicator />
-                </Radio>
-              }
+              trailingContent={<Radio value="option2" aria-label="Label 2" />}
               onPress={() => handlePress('option2')}
             />
             <ListItem
@@ -79,14 +76,10 @@ const RadioList = () => {
                   height={42}
                 />
               }
-              trailingContent={
-                <Radio value="option3" aria-label="Label 3">
-                  <RadioIndicator />
-                </Radio>
-              }
+              trailingContent={<Radio value="option3" aria-label="Label 3" />}
               onPress={() => handlePress('option3')}
             />
-          </Box>
+          </Card>
         </List>
       </RadioGroup>
     </Box>

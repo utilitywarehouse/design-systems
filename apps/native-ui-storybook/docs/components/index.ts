@@ -5,3 +5,5 @@ export { default as VariantTitle } from './VariantTitle';
 export { default as AllComponents } from './AllComponents';
 export { default as DocComponentWrap } from './DocComponentWrap';
 export { default as DynamicImage } from './DynamicImage';
+export { default as ColorModeToggleIcons } from './ColorModeToggleIcons';
+export { default as HideInDarkMode } from './HideInDarkMode';

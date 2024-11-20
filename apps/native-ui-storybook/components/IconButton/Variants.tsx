@@ -12,9 +12,7 @@ const IconButtonVariants: StoryFn<{
   _backgroundColor: 'default' | 'midnight' | 'purple';
 }> = ({ size, inverted, _backgroundColor }) => {
   const media = useMedia();
-  // @ts-expect-error - Reported to Gluestack error
   const { base, xs, sm } = media;
-  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
   const isMobile: boolean = base || xs || sm || false;
 
   const variants = (

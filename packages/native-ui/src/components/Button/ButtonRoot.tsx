@@ -55,6 +55,7 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
     justifyContent: 'center',
     alignItems: 'center',
     gap: space[2],
+    paddingHorizontal: space[6],
     variants: {
       variant: {
         solid: {},
@@ -70,17 +71,14 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
       size: {
         small: {
           paddingVertical: space[2],
-          paddingHorizontal: space[3],
           minHeight: 32,
         },
         medium: {
           paddingVertical: space[4],
-          paddingHorizontal: space[6],
           minHeight: 48,
         },
         large: {
           paddingVertical: space[5],
-          paddingHorizontal: space[6],
           minHeight: 56,
         },
       },

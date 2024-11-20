@@ -19,6 +19,7 @@ export * from './VStack';
 export * from './Icon';
 export * from './Divider';
 export * from './Switch';
+export * from './Card';
 
 export {
   FlatList,
