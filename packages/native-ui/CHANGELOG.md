@@ -1,5 +1,15 @@
 # @utilitywarehouse/native-ui
 
+## 0.8.0
+
+### Minor Changes
+
+- [#608](https://github.com/utilitywarehouse/design-systems/pull/608) [`8fc73d01`](https://github.com/utilitywarehouse/design-systems/commit/8fc73d0173eacaa13912ac7cdd977aae9a277635) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Switch` component
+
+### Patch Changes
+
+- [`f785f405`](https://github.com/utilitywarehouse/design-systems/commit/f785f4058c4a65f2ce3cf3a78a4d49862836ffb3) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `isDark` and `isLight` boolean to theme values
+
 ## 0.7.0
 
 ### Minor Changes
