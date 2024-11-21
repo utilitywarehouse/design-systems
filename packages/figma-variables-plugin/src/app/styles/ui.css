@@ -16,6 +16,19 @@ button {
   margin: 0 5px;
   border: 1px solid #ccc;
   outline: none;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #f0f0f0;
+}
+.edit-token-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+h2 {
+  margin: 15px 0;
 }
 .export {
   border-radius: 9999px;
@@ -34,6 +47,7 @@ button {
   border-width: 0px;
   outline: none;
   margin-top: 8px;
+  cursor: pointer;
 }
 input {
   border: none;
@@ -51,4 +65,73 @@ button:focus {
 }
 input:focus {
   box-shadow: inset 0 0 0 2px #18a0fb;
+}
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #18a0fb;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.status-success {
+  color: #297f50;
+  margin-top: 10px;
+}
+
+.status-error {
+  color: #c31d2a;
+  margin-top: 10px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.checkbox-group input {
+  margin-right: 10px;
+}
+
+.top-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.top-content input {
+  margin-right: 10px;
+}
+
+.token-wrap {
+  margin-bottom: 15px;
+}
+
+.token-message {
+  margin-bottom: 10px;
+}
+
+.status-message {
+  margin-top: 10px;
 }
