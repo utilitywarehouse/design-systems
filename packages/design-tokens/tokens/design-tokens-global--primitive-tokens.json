@@ -1,0 +1,138 @@
+{
+  "font-weights": {
+    "thin": {
+      "value": 100
+    },
+    "extrabold": {
+      "value": 800
+    },
+    "bold": {
+      "value": 700
+    },
+    "black": {
+      "value": 900
+    },
+    "light": {
+      "value": 300
+    },
+    "normal": {
+      "value": 400
+    },
+    "medium": {
+      "value": 500
+    },
+    "semibold": {
+      "value": 600
+    },
+    "extralight": {
+      "value": 200
+    }
+  },
+  "radii": {
+    "xs": {
+      "value": 2
+    },
+    "full": {
+      "value": 9999
+    },
+    "none": {
+      "value": 0
+    },
+    "3xl": {
+      "value": 24
+    },
+    "4xl": {
+      "value": 32
+    },
+    "xl": {
+      "value": 12
+    },
+    "2xl": {
+      "value": 16
+    },
+    "lg": {
+      "value": 8
+    },
+    "md": {
+      "value": 6
+    },
+    "sm": {
+      "value": 4
+    }
+  },
+  "fonts": {
+    "body": {
+      "value": "Work Sans"
+    },
+    "heading": {
+      "value": "Aeonik"
+    }
+  },
+  "border-widths": {
+    "0": {
+      "value": 0
+    },
+    "1": {
+      "value": 1
+    },
+    "2": {
+      "value": 2
+    },
+    "4": {
+      "value": 4
+    },
+    "8": {
+      "value": 8
+    }
+  },
+  "spacing": {
+    "0": {
+      "value": 0
+    },
+    "1": {
+      "value": 4
+    },
+    "2": {
+      "value": 8
+    },
+    "3": {
+      "value": 12
+    },
+    "4": {
+      "value": 16
+    },
+    "5": {
+      "value": 20
+    },
+    "6": {
+      "value": 24
+    },
+    "7": {
+      "value": 28
+    },
+    "8": {
+      "value": 32
+    },
+    "9": {
+      "value": 36
+    },
+    "10": {
+      "value": 40
+    },
+    "3-5": {
+      "value": 14
+    },
+    "2-5": {
+      "value": 10
+    },
+    "4-5": {
+      "value": 18
+    },
+    "1-5": {
+      "value": 6
+    },
+    "0-5": {
+      "value": 2
+    }
+  }
+}
