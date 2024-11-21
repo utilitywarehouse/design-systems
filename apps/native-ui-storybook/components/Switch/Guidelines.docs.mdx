@@ -28,6 +28,7 @@ import {
   ColorModeToggleIcons,
   HideInDarkMode,
 } from '../../docs/components';
+import { SwitchExample } from './components';
 
 <Meta of={Stories} />
 
@@ -79,7 +80,7 @@ Typically, a Switch is used within a [List Item](/?path=/docs/native-ui-componen
         text="Notifications"
         supportingText="Get all notifications messages"
         divider
-        trailingContent={<Switch value={true} size="small" />}
+        trailingContent={<SwitchExample value={true} size="small" />}
       />
     </List>
     <List>
@@ -87,7 +88,7 @@ Typically, a Switch is used within a [List Item](/?path=/docs/native-ui-componen
         text="Notifications"
         supportingText="Get all notifications messages"
         divider
-        trailingContent={<Switch value={false} size="small" />}
+        trailingContent={<SwitchExample value={false} size="small" />}
       />
     </List>
     <List disabled>
@@ -95,7 +96,7 @@ Typically, a Switch is used within a [List Item](/?path=/docs/native-ui-componen
         text="Notifications"
         supportingText="Get all notifications messages"
         divider
-        trailingContent={<Switch value={true} disabled size="small" />}
+        trailingContent={<SwitchExample value={true} disabled size="small" />}
       />
     </List>
   </VStack>
@@ -107,7 +108,7 @@ When the Switch is not placed in a List Item, you should use the Label component
   <VStack space="lg">
     <FormField>
       <HStack space="md" style={{ alignItems: 'center' }}>
-        <Switch size="small" value={true} />
+        <SwitchExample size="small" value={true} />
         <FormFieldLabel>
           <FormFieldLabelText nested>
             A Switch needs a Label when is not in a List Item
@@ -117,7 +118,7 @@ When the Switch is not placed in a List Item, you should use the Label component
     </FormField>
     <FormField>
       <HStack space="md" style={{ alignItems: 'center' }}>
-        <Switch size="medium" value={false} />
+        <SwitchExample size="medium" value={false} />
         <FormFieldLabel>
           <FormFieldLabelText nested>Monthly payment</FormFieldLabelText>
         </FormFieldLabel>
@@ -128,7 +129,7 @@ When the Switch is not placed in a List Item, you should use the Label component
         <FormFieldLabel>
           <FormFieldLabelText nested={true}>Year</FormFieldLabelText>
         </FormFieldLabel>
-        <Switch size="medium" value={true} />
+        <SwitchExample size="medium" value={true} />
       </HStack>
     </FormField>
   </VStack>
@@ -144,12 +145,12 @@ the checked property toggles between true and false.
 There is no visual indication of a pressed state other than this property switching.
 
 <DocComponentWrap>
-  <Switch value={true} />
+  <SwitchExample value={true} />
 </DocComponentWrap>
 _Pressing will switch to checked false_
 
 <DocComponentWrap>
-  <Switch value={false} />
+  <SwitchExample value={false} />
 </DocComponentWrap>
 _Pressing will switch to checked true_
 
@@ -168,20 +169,20 @@ The disabled attribute prevents user interaction with the Switch.
 <DocComponentWrap>
   <VStack space="lg">
     <HStack space="lg">
-      <Switch value={true} disabled size="small" />
-      <Switch value={false} disabled />
+      <SwitchExample value={true} disabled size="small" />
+      <SwitchExample value={false} disabled />
     </HStack>
     <List>
       <ListItem
         text="A disabled List item"
         supportingText="Get all notifications messages"
         divider
-        trailingContent={<Switch value={true} disabled size="small" />}
+        trailingContent={<SwitchExample value={true} disabled size="small" />}
       />
     </List>
     <FormField disabled>
       <HStack space="md" style={{ alignItems: 'center' }}>
-        <Switch disabled />
+        <SwitchExample disabled />
         <FormFieldLabel>
           <FormFieldLabelText>Enable notifications</FormFieldLabelText>
         </FormFieldLabel>
@@ -197,8 +198,8 @@ Typically, we will use the small size (24) for the List as it is the default siz
 
 <DocComponentWrap>
   <HStack space="lg">
-    <Switch value={true} size="small" />
-    <Switch value={true} size="medium" />
+    <SwitchExample value={true} size="small" />
+    <SwitchExample value={true} size="medium" />
   </HStack>
 </DocComponentWrap>
 
@@ -214,16 +215,16 @@ Using the light theme
   <Box p="$5" backgroundColor="$grey50">
     <VStack space="lg">
       <HStack space="lg">
-        <Switch value={true} size="small" />
-        <Switch value={false} size="small" />
-        <Switch value={true} size="small" disabled />
-        <Switch value={false} size="small" disabled />
+        <SwitchExample value={true} size="small" />
+        <SwitchExample value={false} size="small" />
+        <SwitchExample value={true} size="small" disabled />
+        <SwitchExample value={false} size="small" disabled />
       </HStack>
       <HStack space="lg">
-        <Switch value={true} size="medium" />
-        <Switch value={false} size="medium" />
-        <Switch value={true} size="medium" disabled />
-        <Switch value={false} size="medium" disabled />
+        <SwitchExample value={true} size="medium" />
+        <SwitchExample value={false} size="medium" />
+        <SwitchExample value={true} size="medium" disabled />
+        <SwitchExample value={false} size="medium" disabled />
       </HStack>
     </VStack>
   </Box>

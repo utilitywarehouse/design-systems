@@ -15,6 +15,7 @@ import {
 
 import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
 import { SwitchList } from '../List/components';
+import { SwitchExample } from './components';
 
 <Meta of={Stories} />
 
@@ -46,7 +47,7 @@ to turn an individual option on or off. They are usually used to activate or dea
 <Canvas>
   <NativeUIProvider>
     <Center>
-      <Switch />
+      <SwitchExample />
     </Center>
   </NativeUIProvider>
 </Canvas>
@@ -86,7 +87,7 @@ the [`FormField` docs](/?path=/docs/native-ui-components-form-field--docs) for m
 <Canvas>
   <FormField>
     <HStack space="md" style={{ alignItems: 'center' }}>
-      <Switch />
+      <SwitchExample />
       <FormFieldLabel>
         <FormFieldLabelText>Enable notifications</FormFieldLabelText>
       </FormFieldLabel>
