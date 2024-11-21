@@ -39,8 +39,8 @@ import {
 
 - [Definition](#definition)
 - [Usage](#usage)
-  - [When to use Switch](#when-to-use-switch)
   - [When not to use Switch](#when-not-to-use-switch)
+  - [When to use Switch](#when-to-use-switch)
 - [Properties & Attributes](#properties--attributes)
   - [state](#state)
   - [checked](#checked)
@@ -48,7 +48,6 @@ import {
   - [size](#size)
 - [Theme](#theme)
   - [light / dark](#light--dark)
-- [Usage](#usage-1)
 - [Accessibility considerations](#accessibility-considerations)
 
 ## Definition
@@ -58,6 +57,12 @@ to turn an individual option on or off. They are usually used to activate or dea
 
 ## Usage
 
+### When not to use Switch
+
+❌ Do not use Switch when presenting multiple options.<br />
+❌ Do not use it for selections that require validation, such as error messages. Use
+[Checkbox](/?path=/docs/native-ui-components-checkbox--docs) instead.
+
 ### When to use Switch
 
 ✅ Use when presenting users with a binary choice. Such as yes/no or on/off<br />
@@ -65,11 +70,69 @@ to turn an individual option on or off. They are usually used to activate or dea
 ✅ Use for changes that have an instant response and take immediate effect<br />
 ✅ Use for changing system-level settings, preferences, or other functions
 
-### When not to use Switch
+Typically, a Switch is used within a [List Item](/?path=/docs/native-ui-components-list--docs) that serves as a label for it.
 
-❌ Do not use Switch when presenting multiple options.<br />
-❌ Do not use it for selections that require validation, such as error messages. Use
-[Checkbox](/?path=/docs/native-ui-components-checkbox--docs) instead.
+<DocComponentWrap>
+  <VStack space="lg">
+    <List>
+      <ListItem
+        text="Notifications"
+        supportingText="Get all notifications messages"
+        divider
+        trailingContent={<Switch value={true} size="small" />}
+      />
+    </List>
+    <List>
+      <ListItem
+        text="Notifications"
+        supportingText="Get all notifications messages"
+        divider
+        trailingContent={<Switch value={false} size="small" />}
+      />
+    </List>
+    <List disabled>
+      <ListItem
+        text="Notifications"
+        supportingText="Get all notifications messages"
+        divider
+        trailingContent={<Switch value={true} disabled size="small" />}
+      />
+    </List>
+  </VStack>
+</DocComponentWrap>
+
+When the Switch is not placed in a List Item, you should use the Label component next to it.
+
+<DocComponentWrap>
+  <VStack space="lg">
+    <FormField>
+      <HStack space="md" style={{ alignItems: 'center' }}>
+        <Switch size="small" value={true} />
+        <FormFieldLabel>
+          <FormFieldLabelText nested>
+            A Switch needs a Label when is not in a List Item
+          </FormFieldLabelText>
+        </FormFieldLabel>
+      </HStack>
+    </FormField>
+    <FormField>
+      <HStack space="md" style={{ alignItems: 'center' }}>
+        <Switch size="medium" value={false} />
+        <FormFieldLabel>
+          <FormFieldLabelText nested>Monthly payment</FormFieldLabelText>
+        </FormFieldLabel>
+      </HStack>
+    </FormField>
+    <FormField>
+      <HStack space="md" style={{ alignItems: 'center' }}>
+        <FormFieldLabel>
+          <FormFieldLabelText nested={true}>Year</FormFieldLabelText>
+        </FormFieldLabel>
+        <Switch size="medium" value={true} />
+      </HStack>
+    </FormField>
+  </VStack>
+</DocComponentWrap>
 
 ## Properties & Attributes
 
@@ -172,72 +235,6 @@ Using the light theme
   </div>
   <Text italic>Toggle the theme to see the colorScheme change</Text>
 </div>
-
-## Usage
-
-Typically, a Switch is used within a [List Item](/?path=/docs/native-ui-components-list--docs) that serves as a label for it.
-
-<DocComponentWrap>
-  <VStack space="lg">
-    <List>
-      <ListItem
-        text="Notifications"
-        supportingText="Get all notifications messages"
-        divider
-        trailingContent={<Switch value={true} size="small" />}
-      />
-    </List>
-    <List>
-      <ListItem
-        text="Notifications"
-        supportingText="Get all notifications messages"
-        divider
-        trailingContent={<Switch value={false} size="small" />}
-      />
-    </List>
-    <List disabled>
-      <ListItem
-        text="Notifications"
-        supportingText="Get all notifications messages"
-        divider
-        trailingContent={<Switch value={true} disabled size="small" />}
-      />
-    </List>
-  </VStack>
-</DocComponentWrap>
-
-When the Switch is not placed in a List Item, you should use the Label component next to it.
-
-<DocComponentWrap>
-  <VStack space="lg">
-    <FormField>
-      <HStack space="md" style={{ alignItems: 'center' }}>
-        <Switch size="small" value={true} />
-        <FormFieldLabel>
-          <FormFieldLabelText nested>
-            A Switch needs a Label when is not in a List Item
-          </FormFieldLabelText>
-        </FormFieldLabel>
-      </HStack>
-    </FormField>
-    <FormField>
-      <HStack space="md" style={{ alignItems: 'center' }}>
-        <Switch size="medium" value={false} />
-        <FormFieldLabel>
-          <FormFieldLabelText nested>Monthly payment</FormFieldLabelText>
-        </FormFieldLabel>
-      </HStack>
-    </FormField>
-    <FormField>
-      <HStack space="md" style={{ alignItems: 'center' }}>
-        <FormFieldLabel>
-          <FormFieldLabelText nested={true}>Year</FormFieldLabelText>
-        </FormFieldLabel>
-        <Switch size="medium" value={true} />
-      </HStack>
-    </FormField>
-  </VStack>
-</DocComponentWrap>
 
 ## Accessibility considerations
 
