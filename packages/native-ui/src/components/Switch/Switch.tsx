@@ -6,6 +6,8 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
   withSpring,
+  interpolateColor,
+  Easing,
 } from 'react-native-reanimated';
 import { CloseSmallIcon, TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
@@ -23,8 +25,12 @@ const CustomSwitch: React.FC<SwitchProps> = ({
   const THUMB_SIZE = size === 'medium' ? 28 : 20;
   const PADDING = 2;
 
-  const { styles } = useStyles(stylesheet, { size, disabled, value });
+  const {
+    styles,
+    theme: { tokens, colorMode },
+  } = useStyles(stylesheet, { size, disabled, value });
   const offset = useSharedValue(value ? SWITCH_WIDTH - THUMB_SIZE - PADDING * 2 : 0);
+  const progress = useSharedValue(value ? 1 : 0);
 
   const animatedThumbStyle = useAnimatedStyle(
     () => ({
@@ -32,6 +38,18 @@ const CustomSwitch: React.FC<SwitchProps> = ({
     }),
     [offset]
   );
+
+  const animatedSwitchBackgroundStyle = useAnimatedStyle(() => {
+    if (disabled) {
+      return { backgroundColor: tokens.switch.backgroundColorDisabled };
+    }
+    const backgroundColor = interpolateColor(
+      progress.value,
+      [0, 1],
+      [tokens.switch.unchecked.backgroundColor, tokens.switch.checked.backgroundColor]
+    );
+    return { backgroundColor };
+  }, [progress, disabled, colorMode]);
 
   // Icon animations
   const tickScale = useSharedValue(value ? 1 : 0);
@@ -68,7 +86,13 @@ const CustomSwitch: React.FC<SwitchProps> = ({
     // Animate the icons
     tickScale.value = withTiming(value ? 1 : 0);
     crossScale.value = withTiming(value ? 0 : 1);
-  }, [value]);
+
+    // Animate the background color with ease-in-out easing
+    progress.value = withTiming(value ? 1 : 0, {
+      duration: 300,
+      easing: Easing.inOut(Easing.ease),
+    });
+  }, [value, disabled]);
 
   const toggleSwitch = () => {
     if (disabled) return;
@@ -97,7 +121,12 @@ const CustomSwitch: React.FC<SwitchProps> = ({
       {...accessibilityProps}
     >
       <Animated.View
-        style={[styles.switch, disabled && styles.disabledSwitch, animatedSwitchStyle]}
+        style={[
+          styles.switch,
+          disabled && styles.disabledSwitch,
+          animatedSwitchStyle,
+          animatedSwitchBackgroundStyle,
+        ]}
       >
         <Animated.View style={[styles.thumb, animatedThumbStyle]}>
           <Animated.View style={[styles.iconWrap, animatedTickStyle]}>
@@ -128,14 +157,6 @@ const stylesheet = createStyleSheet(({ tokens }) => ({
           height: tokens.switch.small.height,
           borderRadius: tokens.switch.borderRadius,
           padding: tokens.switch.padding,
-        },
-      },
-      value: {
-        true: {
-          backgroundColor: tokens.switch.checked.backgroundColor,
-        },
-        false: {
-          backgroundColor: tokens.switch.unchecked.backgroundColor,
         },
       },
       disabled: {
