@@ -1,0 +1,202 @@
+{
+  "light": {
+    "card": {
+      "surface": {
+        "purple": {
+          "outline": {
+            "purple": {
+              "border-color": {
+                "value": "#7415c1"
+              },
+              "background-color": {
+                "value": "#48007a"
+              }
+            }
+          },
+          "filled": {
+            "purple": {
+              "background-color": {
+                "value": "#35005c"
+              }
+            }
+          },
+          "border-color": {
+            "value": "#8f23e7"
+          },
+          "background-color": {
+            "value": "#550091"
+          }
+        },
+        "base": {
+          "outline": {
+            "purple": {
+              "border-color": {
+                "value": "#e5d7fe"
+              },
+              "background-color": {
+                "value": "#f1ebfe"
+              }
+            },
+            "grey": {
+              "background-color": {
+                "value": "#fafafa"
+              }
+            }
+          },
+          "filled": {
+            "purple": {
+              "background-color": {
+                "value": "#550091"
+              }
+            }
+          },
+          "border-color": {
+            "value": "#e3e3e3"
+          },
+          "background-color": {
+            "value": "#ffffff"
+          }
+        }
+      },
+      "padding": {
+        "padding-small": {
+          "value": 8
+        },
+        "padding-medium": {
+          "value": 12
+        },
+        "padding-none": {
+          "value": 0
+        },
+        "padding-large": {
+          "value": 16
+        }
+      },
+      "min-height": {
+        "value": 72
+      },
+      "border-style": {
+        "value": "solid"
+      },
+      "dashed": {
+        "border-width": {
+          "value": 2
+        },
+        "border-style": {
+          "value": "dashed"
+        }
+      },
+      "border-width": {
+        "value": 1
+      },
+      "border-radius": {
+        "value": 12
+      },
+      "nested": {
+        "border-radius": {
+          "value": 8
+        }
+      }
+    }
+  },
+  "dark": {
+    "card": {
+      "surface": {
+        "purple": {
+          "outline": {
+            "purple": {
+              "border-color": {
+                "value": "#7415c1"
+              },
+              "background-color": {
+                "value": "#2f0052"
+              }
+            }
+          },
+          "filled": {
+            "purple": {
+              "background-color": {
+                "value": "#48007a"
+              }
+            }
+          },
+          "border-color": {
+            "value": "#414141"
+          },
+          "background-color": {
+            "value": "#1d1d1d"
+          }
+        },
+        "base": {
+          "outline": {
+            "purple": {
+              "border-color": {
+                "value": "#7415c1"
+              },
+              "background-color": {
+                "value": "#2f0052"
+              }
+            },
+            "grey": {
+              "background-color": {
+                "value": "#121212"
+              }
+            }
+          },
+          "filled": {
+            "purple": {
+              "background-color": {
+                "value": "#48007a"
+              }
+            }
+          },
+          "border-color": {
+            "value": "#414141"
+          },
+          "background-color": {
+            "value": "#1d1d1d"
+          }
+        }
+      },
+      "padding": {
+        "padding-small": {
+          "value": 8
+        },
+        "padding-medium": {
+          "value": 12
+        },
+        "padding-none": {
+          "value": 0
+        },
+        "padding-large": {
+          "value": 16
+        }
+      },
+      "min-height": {
+        "value": 72
+      },
+      "border-style": {
+        "value": "solid"
+      },
+      "dashed": {
+        "border-width": {
+          "value": 2
+        },
+        "border-style": {
+          "value": "dashed"
+        }
+      },
+      "border-width": {
+        "value": 1
+      },
+      "border-radius": {
+        "value": 12
+      },
+      "nested": {
+        "border-radius": {
+          "value": 8
+        }
+      }
+    }
+  }
+}
