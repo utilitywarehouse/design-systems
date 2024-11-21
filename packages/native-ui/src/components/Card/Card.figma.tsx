@@ -62,9 +62,12 @@ figma.connect(
         base: 'base',
         purple: 'purple',
       }),
-      nested: figma.boolean('nested'),
       children: figma.instance('content'),
     },
-    example: ({ children, ...props }) => <Card {...props}>{children}</Card>,
+    example: ({ children, ...props }) => (
+      <Card {...props} nested>
+        {children}
+      </Card>
+    ),
   }
 );

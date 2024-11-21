@@ -25,6 +25,7 @@ import {
   Divider,
   useColorMode,
   Card,
+  Switch,
 } from '@utilitywarehouse/native-ui';
 import { Actionsheet, Box } from '@utilitywarehouse/native-ui/lab';
 import {
@@ -62,6 +63,8 @@ const AllComponents: React.FC = () => {
   const { styles } = useStyles(stylesheet);
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const toggleActionsheet = () => setShowActionsheet(!showActionsheet);
+  const [switchEnabled, setSwitchEnabled] = React.useState(false);
+  const toggleSwitch = () => setSwitchEnabled(!switchEnabled);
   const colorMode = useColorMode();
   const isDark = colorMode === 'dark';
   return (
@@ -215,6 +218,11 @@ const AllComponents: React.FC = () => {
           <ComponentWrapper name="Spinner" link="/?path=/docs/native-ui-components-spinner--docs">
             <Center flex={1}>
               <Spinner size="lg" />
+            </Center>
+          </ComponentWrapper>
+          <ComponentWrapper name="Switch" link="/?path=/docs/native-ui-components-switch--docs">
+            <Center flex={1}>
+              <Switch value={switchEnabled} onValueChange={toggleSwitch} />
             </Center>
           </ComponentWrapper>
           <ComponentWrapper name="Text" link="/?path=/docs/native-ui-components-text--docs">

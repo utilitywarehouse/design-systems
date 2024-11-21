@@ -89,6 +89,7 @@
     "entities": "2.0.3",
     "patch-package": "^8.0.0",
     "storybook": "^7.6.20",
+    "style-dictionary": "^4.2.0",
     "tocbot": "^4.27.20",
     "typescript": "^5.3.3",
     "unzipper": "^0.11.6"
