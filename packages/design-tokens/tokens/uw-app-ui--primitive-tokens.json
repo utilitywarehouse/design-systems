@@ -1,0 +1,32 @@
+{
+  "shadows": {
+    "overlay": {
+      "blur-radius": {
+        "value": 12
+      },
+      "offset-x": {
+        "value": 0
+      },
+      "spread-radius": {
+        "value": 0
+      },
+      "offset-y": {
+        "value": 0
+      }
+    },
+    "raised": {
+      "spread-radius": {
+        "value": 0
+      },
+      "blur-radius": {
+        "value": 4
+      },
+      "offset-y": {
+        "value": 2
+      },
+      "offset-x": {
+        "value": 1
+      }
+    }
+  }
+}
