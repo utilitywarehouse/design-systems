@@ -266,6 +266,8 @@ const shared = {
 
 export const lightTheme = {
   colorMode: 'light',
+  isLight: true,
+  isDark: false,
   colors: {
     ...colors,
     ...colorsCommon,
@@ -281,6 +283,8 @@ export const lightTheme = {
 
 export const darkTheme = {
   colorMode: 'dark',
+  isLight: false,
+  isDark: true,
   colors: {
     ...colorsDark,
     ...colorsCommon,

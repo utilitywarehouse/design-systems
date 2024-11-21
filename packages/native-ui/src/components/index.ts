@@ -5,6 +5,7 @@ export { default as AnimatedOutline } from './AnimatedOutline';
 export * from './Button';
 export * from './Spinner';
 export * from './FormField';
+export * from './Label';
 export * from './List';
 export * from './Skeleton';
 export * from './Badge';
@@ -18,6 +19,7 @@ export * from './HStack';
 export * from './VStack';
 export * from './Icon';
 export * from './Divider';
+export * from './Switch';
 export * from './Card';
 
 export {
