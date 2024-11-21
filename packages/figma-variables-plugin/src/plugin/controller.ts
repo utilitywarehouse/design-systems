@@ -1,4 +1,4 @@
-figma.showUI(__html__, { width: 400, height: 260 });
+figma.showUI(__html__, { width: 400, height: 420 });
 
 const debugMode = true;
 const consoleLog = debugMode
@@ -12,6 +12,48 @@ async function exportVariables() {
 
   // Asynchronously get all local variable collections in the current file
   const localCollections = await figma.variables.getLocalVariableCollectionsAsync();
+
+  const collectionIds = [
+    'VariableCollectionId:53:2',
+    'VariableCollectionId:54:2',
+    'VariableCollectionId:54:38',
+    'VariableCollectionId:250:3',
+    'VariableCollectionId:9356:2256',
+    'VariableCollectionId:6920:38721',
+  ];
+
+  const libraryCollections = await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync();
+
+  let variables = [];
+
+  console.log(libraryCollections);
+
+  for (const collection of libraryCollections) {
+    console.log(collection);
+    const libraryCollection = await figma.teamLibrary.getVariablesInLibraryCollectionAsync(
+      collection.key
+    );
+
+    const importedVariable = await figma.variables.importVariableByKeyAsync(
+      libraryCollection[0].key
+    );
+    console.log(importedVariable);
+    // console.log(libraryCollection);
+    // for (const variable of libraryCollection) {
+    //   const importedVariable = await figma.variables.importVariableByKeyAsync(variable.key);
+    //   variables.push(importedVariable);
+    // }
+  }
+
+  console.log(variables);
+
+  // for (const collectionId of collectionIds) {
+  //   const collection = await figma.variables.getVariableCollectionByIdAsync(collectionId);
+  //   console.log(collection);
+  //   if (collection) {
+  //     localCollections.push(collection);
+  //   }
+  // }
 
   interface ResolvedVariable {
     name: string;
@@ -269,7 +311,7 @@ async function exportVariables() {
   const tokensJson = JSON.stringify(styleDictionaryTokens, null, 2);
 
   // Send the data back to the UI
-  figma.ui.postMessage({ type: 'variables-exported', data: tokensJson });
+  // figma.ui.postMessage({ type: 'variables-exported', data: tokensJson });
 }
 
 /* eslint-disable @typescript-eslint/no-misused-promises */
