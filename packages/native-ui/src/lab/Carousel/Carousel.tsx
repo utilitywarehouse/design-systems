@@ -7,11 +7,7 @@ import React, {
   useCallback,
   useState,
 } from 'react';
-import {
-  FlatList,
-  ListRenderItem,
-  ViewStyle,
-} from 'react-native';
+import { FlatList, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 import { Box } from '../Box';
@@ -33,21 +29,17 @@ function carouselForwardRef<T, P = {}>(
 }
 
 export const Carousel = carouselForwardRef(function Carousel<T>(
-  // The following props are set as the desired default carousel behaviour, but can be overwritten
   {
-    bounces = false, // Prevents bouncing at the start and end of carousel scrolling (iOS only)
     children,
     data,
-    decelerationRate = 'fast', // Sets the speed at which the carousel snaps an item into place
     inactiveItemOpacity = 1,
     itemStyle,
     itemWidth,
     onSnapToItem,
-    overScrollMode = 'never', // Prevents stretching of first and last items when reaching each end of the carousel (Android only)
-    removeClippedSubviews = false, // Prevents items outside of the carousl being removed from the tree
+    removeClippedSubviews = false,
     renderItem,
-    scrollEnabled = true, // Allows the carousel to be disabled
-    showOverflow, // Enables items outside of the carousl to be visible
+    scrollEnabled = true,
+    showOverflow = false,
     style,
     width,
     ...props
@@ -80,9 +72,9 @@ export const Carousel = carouselForwardRef(function Carousel<T>(
     <CarouselProvider activeIndex={activeIndex} numItems={data?.length || 0}>
       <Box style={styles.root}>
         <FlatList
-          bounces={bounces}
+          bounces={false} // Prevents bouncing at the start and end of carousel scrolling (iOS only)
           data={data}
-          decelerationRate={decelerationRate}
+          decelerationRate="fast"
           getItemLayout={(_, index) => ({
             length: itemWidth || width,
             offset: (itemWidth || width) * index,
@@ -91,7 +83,7 @@ export const Carousel = carouselForwardRef(function Carousel<T>(
           horizontal
           pagingEnabled
           onViewableItemsChanged={handleViewableItemsChanged}
-          overScrollMode={overScrollMode}
+          overScrollMode="never" // Prevents stretching of first and last items when reaching each end of the carousel (Android only)
           ref={ref}
           removeClippedSubviews={removeClippedSubviews}
           renderItem={({ index, ...more }) => (

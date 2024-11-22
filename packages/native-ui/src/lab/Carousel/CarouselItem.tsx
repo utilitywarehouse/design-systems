@@ -18,7 +18,7 @@ export const CarouselItem = <T,>({
   const animatedStyles = useAnimatedStyle(() => ({
     opacity: opacity.value,
     width,
-  }));
+  }), [opacity, width]);
 
   useEffect(() => {
     opacity.value = withTiming(active ? 1 : inactiveItemOpacity, { duration: 200 });

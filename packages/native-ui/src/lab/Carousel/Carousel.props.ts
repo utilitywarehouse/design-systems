@@ -15,7 +15,7 @@ export interface CarouselContextValue {
   numItems: number;
 }
 
-export interface CarouselProps<T> extends FlatListProps<T> {
+export interface CarouselProps<T> extends Pick<FlatListProps<T>, 'children' | 'data' | 'removeClippedSubviews' | 'renderItem' | 'scrollEnabled' | 'style'> {
   inactiveItemOpacity?: number;
   itemStyle?: StyleProp<ViewStyle>;
   itemWidth?: number;

@@ -1,8 +1,7 @@
 import { Meta } from '@storybook/react';
 import { Carousel } from '@utilitywarehouse/native-ui/lab';
 
-import CarouselBasic from './Carousel';
-import CarouselVariants from './Variants';
+import Playground from './Carousel';
 
 const CarouselMeta: Meta<typeof Carousel> = {
   title: 'Native UI / Components / Lab / Carousel',
@@ -11,4 +10,4 @@ const CarouselMeta: Meta<typeof Carousel> = {
 
 export default CarouselMeta;
 
-export { CarouselBasic, CarouselVariants };
+export { Playground };

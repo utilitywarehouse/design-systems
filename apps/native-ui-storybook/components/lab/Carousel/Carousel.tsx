@@ -1,36 +1,31 @@
 import { StoryFn } from '@storybook/react';
-import { Box, Carousel } from '@utilitywarehouse/native-ui/lab';
-import { useRef, useState } from 'react';
-import { LayoutChangeEvent } from 'react-native';
+import { Box, Carousel, CarouselProps } from '@utilitywarehouse/native-ui/lab';
+import { StyleProp, ViewStyle } from 'react-native';
 
 import CarouselItemCard from './CarouselItemCard'
 import { data } from './Carousel.constants'
 import { CarouselItem } from './Carousel.props'
 
-export const CarouselBasic: StoryFn<{
-  data: CarouselItem[]
-}> = ({ data }) => {
-  const [width, setWidth] = useState(0);
-  const ref = useRef(null);
+export const Playground: StoryFn<CarouselProps<CarouselItem>> = (props) => (
+  <Box>
+    <Carousel
+      {...props}
+      renderItem={({ item }) => <CarouselItemCard {...item} />}
+    />
+  </Box>
+);
 
-  const handleLayout = ({ nativeEvent }: LayoutChangeEvent) => {
-    setWidth(nativeEvent.layout.width);
-  };
-  
-  return (
-    <Box onLayout={handleLayout}>
-      <Carousel
-        data={data}
-        ref={ref}
-        renderItem={({ item }) => <CarouselItemCard {...item} />}
-        width={width}
-      />
-    </Box>
-  );
-};
-
-CarouselBasic.args = {
+Playground.args = {
   data,
+  inactiveItemOpacity: 1,
+  itemStyle: {},
+  itemWidth: undefined,
+  onSnapToItem: undefined,
+  removeClippedSubviews: false,
+  scrollEnabled: true,
+  showOverflow: false,
+  style: {},
+  width: 300,
 };
 
-export default CarouselBasic;
+export default Playground;

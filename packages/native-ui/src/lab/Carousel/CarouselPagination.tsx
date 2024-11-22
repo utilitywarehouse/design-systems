@@ -64,8 +64,6 @@ export const CarouselPagination: FC<CarouselPaginationProps> = ({
     return null;
   }
 
-  console.log({ context, keys, numItems });
-
   return (
     <Box style={[styles.root, style]} testID={testID} {...props}>
       {keys.map((_, index) => (
