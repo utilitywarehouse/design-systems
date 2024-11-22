@@ -1,219 +1,242 @@
 import StyleDictionary from 'style-dictionary';
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// Register your custom parser
-StyleDictionary.registerParser({
-  name: 'customJsonParser',
-  pattern: /\.json$/,
-  parser: ({ contents, filePath }) => {
-    const data = JSON.parse(contents);
-    const tokens = {};
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-    // Iterate over modes
-    Object.keys(data).forEach(modeName => {
-      const modeTokens = data[modeName];
-      const processedTokens = processTokens(modeTokens, [], modeName);
-      tokens[modeName] = processedTokens; // Store tokens under mode name
-    });
+// Register custom transforms
 
-    return tokens;
+// Transform to convert size values from px to rem
+StyleDictionary.registerTransform({
+  name: 'size/rem',
+  type: 'value',
+  filter: token => token.attributes.category === 'size',
+  transform: token => {
+    const baseFontSize = 16; // Base font size in px
+    return `${token.value / baseFontSize}rem`;
   },
 });
 
-// Example parser for web tokens - refactor to match
-// this logic should be handled when the data is exported from Figma
-StyleDictionary.registerParser({
-  name: 'customWebJsonParser',
-  pattern: /\.json$/,
-  parser: ({ contents, filePath }) => {
-    const data = JSON.parse(contents);
-    const tokens = {};
-
-    // Iterate over modes
-    Object.keys(data).forEach(modeName => {
-      const modeTokens = data[modeName];
-      const processedTokens = processTokens(modeTokens, [], modeName, true);
-      tokens[modeName] = processedTokens; // Store tokens under mode name
-    });
-
-    if (tokens['Mode 1']) {
-      const { dark, light, white, midnight, ...rest } = tokens['Mode 1'] || {};
-      tokens['Mode 1'] = {
-        ...rest,
-      };
-    }
-    if (tokens.default) {
-      const { colors, ...rest } = tokens['default'] || {};
-      tokens.default = {
-        ...rest,
-        ...colors.light,
-      };
-      delete tokens.default['border-widths'];
-      delete tokens.default['font-weights'];
-      delete tokens.default.spacing;
-      delete tokens.default.fonts;
-      delete tokens.default.radii;
-    }
-
-    return tokens;
+// Transform to format color values for CSS (ensuring hexadecimal format)
+StyleDictionary.registerTransform({
+  name: 'color/css',
+  type: 'value',
+  filter: token => token.attributes.category === 'color',
+  transform: token => {
+    // You can enhance this transformer to handle different color formats if needed
+    return token.value;
   },
 });
 
-// Helper function to process tokens
-function processTokens(obj, path, modeName, isWeb) {
-  const result = {};
-
-  Object.keys(obj).forEach(key => {
-    const value = obj[key];
-    let newPath = path.concat([key]);
-
-    if (value && typeof value === 'object' && 'value' in value) {
-      result[key] = {
-        ...value,
-        name: newPath.join('.'),
-        path: newPath,
-        attributes: {
-          mode: modeName,
-        },
-        original: {
-          ...value,
-          mode: modeName,
-        },
-      };
-    } else {
-      result[key] = processTokens(value, newPath, modeName);
-    }
-  });
-
-  return result;
-}
-
-// Define modes
-const modes = ['light', 'dark', 'default'];
-
-// Register custom format
+// Register custom format for components
 StyleDictionary.registerFormat({
-  name: 'javascript/es6/nested',
-  format: ({ dictionary, file }) => {
-    const modeName = file.options.modeName;
-    const tokens = transformTokens(dictionary.tokens[modeName]);
-    return [
-      '/**',
-      ' * Do not edit directly',
-      ' * Generated on ' + new Date(),
-      ' */',
-      '',
-      'export const tokens = ' + JSON.stringify(tokens, null, 2) + ';',
-    ].join('\n');
+  name: 'javascript/custom-es6',
+  format: ({ dictionary, options }) => {
+    const tokens = {};
+    dictionary.allTokens.forEach(token => {
+      const path = options?.slice ? token.path.slice(1) : token.path; // Omit the first path element ('light' or 'dark')
+      let current = tokens;
+
+      path.forEach((part, index) => {
+        // Replace hyphens with camelCase or keep as is based on your preference
+        const key = part.includes('-') ? part.replace(/-([a-z])/g, g => g[1].toUpperCase()) : part;
+
+        if (!current[key]) {
+          current[key] = index === path.length - 1 ? token.value : {};
+        }
+        current = current[key];
+      });
+    });
+
+    return `export default ${JSON.stringify(tokens, null, 2)};`;
   },
 });
 
-// Helper function to transform tokens
-function transformTokens(tokens) {
-  if (Array.isArray(tokens)) {
-    return tokens.map(transformTokens);
-  } else if (typeof tokens === 'object') {
-    const transformed = {};
-    Object.keys(tokens).forEach(key => {
-      const value = tokens[key];
-      // Convert key to camelCase
-      const camelCaseKey = toCamelCase(key);
-      if (value && typeof value === 'object' && 'value' in value) {
-        // Include only the 'value'
-        transformed[camelCaseKey] = value.value;
-      } else {
-        // Recursively transform nested tokens
-        transformed[camelCaseKey] = transformTokens(value);
+// Define your custom transform group using built-in and custom transforms
+const customTransformGroup = {
+  transforms: ['attribute/cti', 'name/kebab', 'size/rem', 'color/css'],
+};
+
+// Register the custom transform group
+StyleDictionary.registerTransformGroup({
+  name: 'custom',
+  transforms: customTransformGroup.transforms,
+});
+
+// Register the custom transform group
+StyleDictionary.registerTransformGroup({
+  name: 'native',
+  transforms: ['attribute/cti', 'name/camel', 'size/rem', 'color/hex'],
+});
+
+// Function to generate index.ts in a directory
+function generateIndexFile(dir, defaultVal = false) {
+  const items = fs.readdirSync(dir);
+  const exportStatements = items
+    .map(item => {
+      const fullPath = path.join(dir, item);
+      if (fs.statSync(fullPath).isDirectory() && defaultVal) {
+        return `export { default as ${item} } from './${item}';`;
       }
-    });
-    return transformed;
-  }
-  return tokens;
+      if (fs.statSync(fullPath).isDirectory() && !defaultVal) {
+        return `export * as ${item} from './${item}';`;
+      }
+    })
+    .filter(statement => statement !== '')
+    .join('\n');
+
+  fs.writeFileSync(path.join(dir, 'index.ts'), exportStatements);
 }
 
-// Helper function to convert string to camelCase
-function toCamelCase(str) {
-  return str.replace(/[-_](\w)/g, (_, c) => c.toUpperCase());
-}
-
-// Create platform configuration
-function createPlatformConfig(modeName) {
-  return {
-    transformGroup: 'js',
-    buildPath: `build/native/${modeName}/`,
-    files: [
-      {
-        destination: `tokens-${modeName}.js`,
-        format: 'javascript/es6/nested',
-        options: {
-          modeName: modeName,
-        },
-        filter: token => {
-          return token.attributes.mode === modeName;
+// Build function for native platform
+async function buildNative() {
+  const dictionaries = [
+    new StyleDictionary({
+      source: ['./tokens/design-tokens-global--primitive-colors.json'],
+      platforms: {
+        native: {
+          transformGroup: 'native',
+          buildPath: './build/native/',
+          files: [
+            // Light mode colors
+            {
+              destination: 'colors/light/index.ts',
+              format: 'javascript/custom-es6',
+              options: { exportType: 'colors', slice: true },
+              filter: token => token.attributes.category === 'light',
+            },
+            // Dark mode colors
+            {
+              destination: 'colors/dark/index.ts',
+              format: 'javascript/custom-es6',
+              options: { exportType: 'colors', slice: true },
+              filter: token => token.attributes.category === 'dark',
+            },
+          ],
         },
       },
-    ],
-  };
+    }),
+    new StyleDictionary({
+      source: [
+        './tokens/design-tokens-global--primitive-tokens.json',
+        './tokens/uw-app-ui--primitive-tokens.json',
+      ],
+      platforms: {
+        native: {
+          transformGroup: 'native',
+          buildPath: './build/native/',
+          files: [
+            // Primitive tokens
+            {
+              destination: 'primitive/index.ts',
+              format: 'javascript/custom-es6',
+              options: { exportType: 'primitive' },
+            },
+          ],
+        },
+      },
+    }),
+    new StyleDictionary({
+      source: ['./tokens/design-tokens-global--semantic-tokens.json'],
+      platforms: {
+        native: {
+          transformGroup: 'native',
+          buildPath: './build/native/',
+          files: [
+            // Semantic tokens
+            {
+              destination: 'semantic/index.ts',
+              format: 'javascript/custom-es6',
+              options: { exportType: 'semantic' },
+            },
+          ],
+        },
+      },
+    }),
+    new StyleDictionary({
+      source: [
+        './tokens/design-tokens-global--component-tokens.json',
+        './tokens/uw-app-ui--component-tokens.json',
+      ],
+      platforms: {
+        native: {
+          transformGroup: 'native',
+          buildPath: './build/native/',
+          files: [
+            // Light mode components
+            {
+              destination: 'components/light/index.ts',
+              format: 'javascript/custom-es6',
+              options: { exportType: 'components', slice: true },
+              filter: token => token.attributes.category === 'light',
+            },
+            // Dark mode components
+            {
+              destination: 'components/dark/index.ts',
+              format: 'javascript/custom-es6',
+              options: { exportType: 'components', slice: true },
+              filter: token => token.attributes.category === 'dark',
+            },
+          ],
+        },
+      },
+    }),
+  ];
+
+  // Build the native platform
+  await Promise.all(dictionaries.map(dictionary => dictionary.buildAllPlatforms()));
+
+  // Generate index.ts files in each subdirectory
+  const buildPath = path.resolve(__dirname, '../');
+  ['build', 'build/native'].forEach(subDir => {
+    const fullPath = path.join(buildPath, subDir);
+    generateIndexFile(fullPath, false);
+  });
+  ['build/native/colors', 'build/native/components'].forEach(subDir => {
+    const otherPath = path.join(buildPath, subDir);
+    generateIndexFile(otherPath, true);
+  });
 }
 
-const sdWeb = new StyleDictionary({
-  source: ['./tokens/design-tokens-global.json', './tokens/uw-web-ui.json'],
-  parsers: ['customWebJsonParser'],
-  transforms: {
-    myTransform: {
-      type: 'name',
+// Build function for web platform
+async function buildWeb() {
+  const sdWeb = new StyleDictionary({
+    source: ['./tokens/**/*.json'],
+    platforms: {
+      web: {
+        transformGroup: 'css',
+        buildPath: './build/web/',
+        files: [
+          {
+            destination: '_components.css',
+            format: 'css/variables',
+            options: { outputReferences: true },
+          },
+          {
+            destination: '_colors.css',
+            format: 'css/variables',
+            options: { outputReferences: true },
+          },
+          {
+            destination: '_primitive.css',
+            format: 'css/variables',
+            options: { outputReferences: true },
+          },
+        ],
+      },
     },
-  },
-  platforms: {
-    css: {
-      transformGroup: 'css',
-      buildPath: 'build/web/css/',
-      files: [
-        {
-          destination: '_variables.css',
-          format: 'css/variables',
-        },
-      ],
-    },
-  },
-});
-
-// Create a new Style Dictionary instance
-const sdNative = new StyleDictionary({
-  source: ['./tokens/design-tokens-global.json', './tokens/uw-app-ui.json'],
-  parsers: ['customJsonParser'],
-  platforms: {},
-});
-
-// Set up platforms for each mode
-modes.forEach(modeName => {
-  sdNative.platforms[modeName] = createPlatformConfig(modeName);
-});
-
-async function buildIndexFiles() {
-  let rootExports = '';
-  await modes.forEach(async modeName => {
-    const dirname = `./build/native/${modeName}`;
-    if (!fs.existsSync(dirname)) {
-      fs.mkdirSync(dirname);
-    }
-    const indexPath = `${dirname}/index.js`;
-    rootExports += `export * as ${modeName === 'default' ? 'tokens' : modeName} from './${modeName}';\n`;
-    await fs.promises.writeFile(indexPath, `export * from './tokens-${modeName}';\n`, 'utf-8');
   });
-  const indexPath = 'build/index.js';
-  const nativeIndexPath = 'build/native/index.js';
-  await fs.promises.writeFile(nativeIndexPath, rootExports, 'utf-8');
-  await fs.promises.writeFile(indexPath, `export * from './native';\n`, 'utf-8');
+
+  sdWeb.buildAllPlatforms();
 }
 
 // Build all platforms
 (async () => {
   try {
-    await sdNative.buildAllPlatforms();
-    await sdWeb.buildAllPlatforms();
-    // Add index for each mode
-    await buildIndexFiles();
+    await buildNative();
+    await buildWeb();
     console.log('Tokens built successfully!');
   } catch (error) {
     console.error('Error building tokens:', error);
