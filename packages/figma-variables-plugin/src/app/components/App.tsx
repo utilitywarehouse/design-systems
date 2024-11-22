@@ -322,7 +322,7 @@ function App() {
             disabled={exporting || loadingImport}
             className="export"
           >
-            {exporting ? 'Exporting...' : 'Export Variables & Create PRs'}
+            {exporting ? 'Exporting...' : 'Export Variables'}
           </button>
         </div>
       )}
