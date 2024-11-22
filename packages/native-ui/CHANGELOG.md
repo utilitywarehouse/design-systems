@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.8.1
+
+### Patch Changes
+
+- [`c60651dd`](https://github.com/utilitywarehouse/design-systems/commit/c60651dd7426b6cfbea5a49b11e6fbd5cb7b3438) Thanks [@jordmccord](https://github.com/jordmccord)! - Fix design tokens package pre-release version
+
 ## 0.8.0
 
 ### Minor Changes
