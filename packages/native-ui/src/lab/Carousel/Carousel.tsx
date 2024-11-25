@@ -7,7 +7,7 @@ import React, {
   useCallback,
   useState,
 } from 'react';
-import { AccessibilityActionEvent, FlatList, ViewStyle } from 'react-native';
+import { AccessibilityActionEvent, FlatList, ListRenderItemInfo, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 import { Box } from '../Box';
@@ -60,7 +60,7 @@ export const Carousel = carouselForwardRef(function Carousel<P>(
     width,
   };
 
-  const handleViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: any }) => {
+  const handleViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: ListRenderItemInfo<P>[] }) => {
     if (!viewableItems.length) {
       return;
     }
