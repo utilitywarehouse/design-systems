@@ -7,7 +7,7 @@ import React, {
   useCallback,
   useState,
 } from 'react';
-import { FlatList, ViewStyle } from 'react-native';
+import { AccessibilityActionEvent, FlatList, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 import { Box } from '../Box';
@@ -22,13 +22,16 @@ const stylesheet = createStyleSheet(() => ({
 }));
 
 // Provides corrects typings for renderItem prop items
-function carouselForwardRef<T, P = {}>(
-  render: (props: P, ref: Ref<T>) => ReactNode
-): (props: P & RefAttributes<T>) => ReactNode {
+function carouselForwardRef<R, P = {}>(
+  render: (props: P, ref: Ref<R>) => ReactNode
+): (props: P & RefAttributes<R>) => ReactNode {
   return forwardRef(render) as any;
 }
 
-export const Carousel = carouselForwardRef(function Carousel<T>(
+const clampToRange = (number: number, min: number, max: number) =>
+  Math.max(min, Math.min(number, max));
+
+export const Carousel = carouselForwardRef(function Carousel<P>(
   {
     children,
     data,
@@ -43,14 +46,14 @@ export const Carousel = carouselForwardRef(function Carousel<T>(
     style,
     width,
     ...props
-  }: CarouselProps<T>,
-  ref: ForwardedRef<CarouselRef>
+  }: CarouselProps<P>,
+  ref?: ForwardedRef<CarouselRef> | null
 ) {
   const { styles } = useStyles(stylesheet);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const hasData = (data || []).length > 1;
-  const innerMargin = (width - (itemWidth || width)) / 2;
+  const hasData: boolean = (data || []).length > 1;
+  const innerMargin: number = (width - (itemWidth || width)) / 2;
   const carouselStyles: ViewStyle = {
     marginHorizontal: innerMargin,
     overflow: showOverflow ? 'visible' : 'hidden',
@@ -62,16 +65,29 @@ export const Carousel = carouselForwardRef(function Carousel<T>(
       return;
     }
 
-    const active = viewableItems[viewableItems.length - 1].index;
+    const index = viewableItems[viewableItems.length - 1].index;
 
-    setActiveIndex?.(active);
-    onSnapToItem?.(active);
+    setActiveIndex?.(index);
+    onSnapToItem?.(index);
   }, []);
+
+  const handleAccessibilityAction = ({ nativeEvent }: AccessibilityActionEvent) => {
+    const value = nativeEvent.actionName === 'increment' ? 1 : -1;
+    const index = clampToRange(activeIndex + value, 0, data && data.length ? data.length - 1 : 0);
+
+    if (ref && typeof ref !== 'function' && ref?.current) {
+      ref.current.scrollToIndex({ index });
+    }
+  };
 
   return (
     <CarouselProvider activeIndex={activeIndex} numItems={data?.length || 0}>
       <Box style={styles.root}>
         <FlatList
+          accessibilityActions={[{ name: 'increment' }, { name: 'decrement' }]}
+          accessibilityLabel="Carousel"
+          accessibilityRole="adjustable"
+          accessible={true}
           bounces={false} // Prevents bouncing at the start and end of carousel scrolling (iOS only)
           data={data}
           decelerationRate="fast"
@@ -82,12 +98,13 @@ export const Carousel = carouselForwardRef(function Carousel<T>(
           })}
           horizontal
           pagingEnabled
+          onAccessibilityAction={handleAccessibilityAction}
           onViewableItemsChanged={handleViewableItemsChanged}
           overScrollMode="never" // Prevents stretching of first and last items when reaching each end of the carousel (Android only)
           ref={ref}
           removeClippedSubviews={removeClippedSubviews}
           renderItem={({ index, ...more }) => (
-            <CarouselItem<T>
+            <CarouselItem<P>
               active={index === activeIndex}
               inactiveItemOpacity={inactiveItemOpacity}
               index={index}

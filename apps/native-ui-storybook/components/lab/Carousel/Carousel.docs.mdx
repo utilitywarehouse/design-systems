@@ -80,19 +80,19 @@ const MyComponent = () => {
 
 The Carousel component accepts some props from the React Native `FlatList` component, while other props are predfined and cannot be modified. There are also some additional carousel specific props.
 
-| Name                   | Type                          | Default | Description                                                                                                                    |
-| ---------------------- | ----------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| children?              | React.ReactNode               | -       | Display any content within the carousel context. This may include `CarouselPagination`.                                        |
-| data                   | any[]                         | -       | Array of data items to be passed for rendering in the carousel                                                                 |
-| inactiveItemOpacity?   | number                        | 1       | Fade items outside of the active carousel viewport (use in conjunction with `showOverflow`)                                    |
-| itemStyle?             | StyleProp                     | -       | Style applied to the container of each item in the carousel                                                                    |
-| itemWidth?             | number                        | -       | Specify the width of carousel items if different from `width`. Useful for revealing the previous/next item within the viewport |
-| onSnapToItem?          | () => void                    | -       | Callback each time a new item is focused in the carousel viewport                                                              |
-| removeClippedSubviews? | boolean                       | false   | Prevent items outside of the carousl being removed from the tree by default                                                    |
-| renderItem             | (info) => React.ReactNode     | -       | Method used to render each item in the carousel                                                                                |
-| scrollEnabled?         | boolean                       | true    | Enable or disable the carousel                                                                                                 |
-| showOverflow           | boolean                       | false   | Visually reveal the items outside of the carousel viewport                                                                     |
-| style?                 | StyleProp                     | -       | Style applied to the carousel container                                                                                        |
-| width                  | number                        | -       | Carousel viewport width                                                                                                        |
+| Name                   | Type                                    | Default | Description                                                                                                                    |
+| ---------------------- | --------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| children?              | ReactNode                               | -       | Display any content within the carousel context. This may include `CarouselPagination`.                                        |
+| data                   | any[]                                   | -       | Array of data items to be passed for rendering in the carousel                                                                 |
+| inactiveItemOpacity?   | number                                  | 1       | Fade items outside of the active carousel viewport (use in conjunction with `showOverflow`)                                    |
+| itemStyle?             | StyleProp                               | -       | Style applied to the container of each item in the carousel                                                                    |
+| itemWidth?             | number                                  | -       | Specify the width of carousel items if different from `width`. Useful for revealing the previous/next item within the viewport |
+| onSnapToItem?          | () => void                              | -       | Callback each time a new item is focused in the carousel viewport                                                              |
+| removeClippedSubviews? | boolean                                 | false   | Prevent items outside of the carousl being removed from the tree by default                                                    |
+| renderItem             | (info: ListRenderItemInfo) => ReactNode | -       | Method used to render each item in the carousel                                                                                |
+| scrollEnabled?         | boolean                                 | true    | Enable or disable the carousel                                                                                                 |
+| showOverflow           | boolean                                 | false   | Visually reveal the items outside of the carousel viewport                                                                     |
+| style?                 | StyleProp                               | -       | Style applied to the carousel container                                                                                        |
+| width                  | number                                  | -       | Carousel viewport width                                                                                                        |
 
 For more information about any of the above props from the `FlatList` component, see the React Native FlatList [documentation](https://reactnative.dev/docs/flatlist).
