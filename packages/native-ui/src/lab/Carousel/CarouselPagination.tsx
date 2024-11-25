@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid/non-secure'
 import React, { FC, useContext, useEffect, useMemo } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
@@ -55,7 +56,7 @@ export const CarouselPagination: FC<CarouselPaginationProps> = ({
 
       return Array(numItems)
         .fill(null)
-        .map(() => Math.random());
+        .map(() => nanoid());
     },
     [numItems]
   );

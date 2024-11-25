@@ -1,5 +1,5 @@
 import { StoryFn } from '@storybook/react';
-import { Box, Carousel, CarouselProps } from '@utilitywarehouse/native-ui/lab';
+import { Box, Carousel, CarouselPagination, CarouselProps } from '@utilitywarehouse/native-ui/lab';
 
 import CarouselItemCard from './CarouselItemCard'
 import { data } from './Carousel.constants'
@@ -10,7 +10,9 @@ export const Playground: StoryFn<CarouselProps<CarouselItem>> = (props) => (
     <Carousel
       {...props}
       renderItem={({ item }) => <CarouselItemCard {...item} />}
-    />
+    >
+      <CarouselPagination style={{ marginVertical: 16 }} />
+    </Carousel>
   </Box>
 );
 

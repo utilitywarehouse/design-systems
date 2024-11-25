@@ -431,6 +431,9 @@ importers:
       '@utilitywarehouse/react-native-icons':
         specifier: 1.10.0
         version: 1.10.0(react-native-svg@14.1.0)(react-native@0.74.5)(react@18.2.0)
+      nanoid:
+        specifier: ^5.0.8
+        version: 5.0.8
       react-dom:
         specifier: '>=16'
         version: 18.2.0(react@18.2.0)
@@ -12021,8 +12024,8 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.5.0-alpha.9(storybook@7.6.20):
-    resolution: {integrity: sha512-fKtH/ZZ6H5qBCGlHjScTxSyEc6XkTKfomlVOzbr4X5oczafX5IdCJGlnJLzCZ9rDB+FtXfs/D89uJ7GjIL395g==}
+  /@storybook/client-logger@8.5.0-alpha.10(storybook@7.6.20):
+    resolution: {integrity: sha512-92EVhn8c5wFgDWl7rmlvKdGvXMNsfF5dtcAV34Kq11kr9YjyNMrzECBnzZiEgIygSNIiOdaVY7nsnDA5PSjvcA==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
@@ -12321,10 +12324,10 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.5.0-alpha.9(storybook@7.6.20):
-    resolution: {integrity: sha512-gAjlgzD/79L0ovAns9YWbqQ04osVgXgIAuT/oNV85Rm3s0DJRcq3EK69r1L5b1otBb8paPA8MxaFAcoClJt4uQ==}
+  /@storybook/instrumenter@8.5.0-alpha.10(storybook@7.6.20):
+    resolution: {integrity: sha512-REzYWyMVs3NcglPCdLdjjnDhI0L4EHasrMLUCxRdG+nOMpx0vrTpF8xlOORcWcv/F9q8Yi0byc1RI3lItZn8iQ==}
     peerDependencies:
-      storybook: ^8.5.0-alpha.9
+      storybook: ^8.5.0-alpha.10
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.1.4
@@ -13102,8 +13105,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1(storybook@7.6.20):
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.5.0-alpha.9(storybook@7.6.20)
-      '@storybook/instrumenter': 8.5.0-alpha.9(storybook@7.6.20)
+      '@storybook/client-logger': 8.5.0-alpha.10(storybook@7.6.20)
+      '@storybook/instrumenter': 8.5.0-alpha.10(storybook@7.6.20)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
@@ -19758,7 +19761,7 @@ packages:
       chalk: 4.1.2
       flow-parser: 0.235.1
       graceful-fs: 4.2.11
-      micromatch: 4.0.5
+      micromatch: 4.0.8
       neo-async: 2.6.2
       node-dir: 0.1.17
       recast: 0.23.6
@@ -21046,6 +21049,7 @@ packages:
     dependencies:
       braces: 3.0.3
       picomatch: 2.3.1
+    dev: false
 
   /micromatch@4.0.8:
     resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
@@ -21260,6 +21264,12 @@ packages:
     resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+
+  /nanoid@5.0.8:
+    resolution: {integrity: sha512-TcJPw+9RV9dibz1hHUzlLVy8N4X9TnwirAjrU08Juo6BNKggzVfP2ZJ/3ZUSq15Xl5i85i+Z89XBO90pB2PghQ==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+    dev: false
 
   /nativewind@2.0.11(react@18.2.0)(tailwindcss@3.4.3):
     resolution: {integrity: sha512-qCEXUwKW21RYJ33KRAJl3zXq2bCq82WoI564fI21D/TiqhfmstZOqPN53RF8qK1NDK6PGl56b2xaTxgObEePEg==}
