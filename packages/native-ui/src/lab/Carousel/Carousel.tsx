@@ -60,7 +60,7 @@ export const Carousel = carouselForwardRef(function Carousel<P>(
     width,
   };
 
-  const handleViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: ViewToken<P>[] }) => {
+  const handleViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: Array<ViewToken<P>> }) => {
     if (!viewableItems.length) {
       return;
     }
