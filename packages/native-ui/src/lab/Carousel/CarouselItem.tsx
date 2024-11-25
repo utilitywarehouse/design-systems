@@ -22,7 +22,7 @@ export const CarouselItem = <T,>({
 
   useEffect(() => {
     opacity.value = withTiming(active ? 1 : inactiveItemOpacity, { duration: 200 });
-  }, [active, inactiveItemOpacity]);
+  }, [active, inactiveItemOpacity, opacity]);
 
   return (
     <Animated.View style={[style, animatedStyles]} {...props}>
