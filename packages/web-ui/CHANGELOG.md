@@ -1,5 +1,11 @@
 # @utilitywarehouse/web-ui
 
+## 1.1.0
+
+### Minor Changes
+
+- [#570](https://github.com/utilitywarehouse/design-systems/pull/570) [`e3c0f469`](https://github.com/utilitywarehouse/design-systems/commit/e3c0f469b1902dc4ba41f697f674e19921b87112) Thanks [@robphoenix](https://github.com/robphoenix)! - Add `FormFieldGroup` component and refactor `RadioGroup`, `CheckboxGroup`, `RadioGridGroup` & `CheckboxGridGroup`
+
 ## 1.0.10
 
 ### Patch Changes
