@@ -1,7 +1,82 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/blocks';
+
+import * as Stories from './Button.stories';
 
 import { Heading } from '../Heading';
 
 <Meta title="Web UI / Design Guidelines / Button" />
 
 <Heading variant="h1">Button Design Guidelines</Heading>
+
+The Button component is highly flexible, and features various style variants,
+colorSchemes, and other configurations to adapt to a wide range of design use
+cases and compositions.
+
+- [Accessibility](#accessibility)
+- [Variants](#variants)
+- [Best Practices](#best-practices)
+
+## Accessibility
+
+- **If it does something it's a button, if it goes somewhere it's a link.**
+- If you need help deciding which component works best for your content, please refer to the [global usage guidelines](https://wiki.uw.systems/posts/buttons-links-and-icon-buttons-guidelines-fs09gshh).
+- All buttons, except solid cyan, meet WCAG AA colour contrast standards on a white background.
+- Text within a button is also crucial for [accessibility and usability](https://wiki.uw.systems/posts/buttons-links-and-icon-buttons-guidelines-fs09gshh).
+
+## Variants
+
+Buttons, like many other components, come in pre-designed variants. For more
+information on style variant concepts, refer to the [naming convention doc](https://wiki.uw.systems/posts/naming-conventions-and-stack-mirroring-z1olqysr#hco7u-variants).
+
+The Button component offers a set of variants to address a wide variety of use
+cases. Each variant provides control over its appearance, including elements
+like borders, background colour, and foreground colours.
+
+The choice of Button variant depends on several factors:
+
+- Where does the button appear in the user flow?
+- The importance of the action within that context
+- How does the button interact with other elements on the screen?
+
+### Solid
+
+Solid Buttons are ideal for primary actions in screens or compositions that
+require high visual emphasis. Their appearance creates a strong presence,
+making them perfect for highlighting the main action especially when combined
+with other Button variants to create a clear visual hierarchy within a
+composition.
+
+Solid buttons are ideal for submitting data in forms, such as
+submitting an application or finalising a purchase.
+
+<Canvas of={Stories.SolidVariantDesignExample} sourceState="none" />
+
+### Outline
+
+Outline Buttons offer a moderate level of emphasis, making them suitable for
+secondary or non-critical actions like "Cancel" or "Edit." To enhance the
+meaning and purpose of the action further, these buttons can be combined with
+any colorScheme from our design system.
+
+<Canvas of={Stories.OutlineVariantDesignExample} sourceState="none" />
+
+### Ghost
+
+Ghost buttons are a subtle button variant designed to have a low visual presence compared to other Button variants.
+
+Ghost buttons start out with a transparent look, only becoming fully visible when a user interacts with them.
+Typical use cases of the ghost variant are:
+
+- Suitable for actions that are less important than the primary one on a screen:
+- Ghost buttons excel at complementing solid and outlined Buttons by providing additional actions without overwhelming users.
+- Their simple design makes them ideal as building blocks for other UI components that require user interaction, such as Input, Tiles, Calendar, etc.
+
+To enhance the meaning and purpose of the action further, these buttons can be combined with any colorScheme from our design system.
+
+<Canvas of={Stories.GhostVariantDesignExample} sourceState="none" />
+
+## Best Practices
+
+- For clarity, use clear and concise Button text that accurately reflects the action it triggers.
+- Provide visual hierarchy; use button sizes, colours, and variants according to importance and meaning.
+- Avoid overwhelming users with too many buttons, this can lead to confusion and decision fatigue.
