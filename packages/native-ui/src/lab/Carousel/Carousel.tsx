@@ -69,7 +69,7 @@ export const Carousel = carouselForwardRef(function Carousel<P>(
 
     setActiveIndex?.(index);
     onSnapToItem?.(index);
-  }, []);
+  }, [onSnapToItem]);
 
   const handleAccessibilityAction = ({ nativeEvent }: AccessibilityActionEvent) => {
     const value = nativeEvent.actionName === 'increment' ? 1 : -1;
