@@ -1,6 +1,5 @@
 import { StoryFn } from '@storybook/react';
 import { Box, Carousel, CarouselProps } from '@utilitywarehouse/native-ui/lab';
-import { StyleProp, ViewStyle } from 'react-native';
 
 import CarouselItemCard from './CarouselItemCard'
 import { data } from './Carousel.constants'

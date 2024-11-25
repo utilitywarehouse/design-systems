@@ -25,7 +25,7 @@ const stylesheet = createStyleSheet(() => ({
 function carouselForwardRef<R, P = {}>(
   render: (props: P, ref: Ref<R>) => ReactNode
 ): (props: P & RefAttributes<R>) => ReactNode {
-  return forwardRef(render) as any;
+  return forwardRef(render) as (props: P & RefAttributes<R>) => ReactNode;
 }
 
 const clampToRange = (number: number, min: number, max: number) =>
