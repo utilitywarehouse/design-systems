@@ -7,7 +7,7 @@ import React, {
   useCallback,
   useState,
 } from 'react';
-import { AccessibilityActionEvent, FlatList, ListRenderItemInfo, ViewStyle } from 'react-native';
+import { AccessibilityActionEvent, FlatList, ViewToken, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 import { Box } from '../Box';
@@ -29,7 +29,7 @@ function carouselForwardRef<R, P = {}>(
 }
 
 const clampToRange = (number: number, min: number, max: number) =>
-  Math.max(min, Math.min(number, max));
+  Math.min(Math.max(number, min), max);
 
 export const Carousel = carouselForwardRef(function Carousel<P>(
   {
@@ -60,12 +60,12 @@ export const Carousel = carouselForwardRef(function Carousel<P>(
     width,
   };
 
-  const handleViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: ListRenderItemInfo<P>[] }) => {
+  const handleViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: ViewToken<P>[] }) => {
     if (!viewableItems.length) {
       return;
     }
 
-    const index = viewableItems[viewableItems.length - 1].index;
+    const index = viewableItems[viewableItems.length - 1].index || 0;
 
     setActiveIndex?.(index);
     onSnapToItem?.(index);
