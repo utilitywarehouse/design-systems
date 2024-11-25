@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { Unstyled, Description } from '@storybook/blocks';
 
+import { BackToTop } from './BackToTop';
+
 import { Alert, Flex, Heading, Link } from '../components';
 
 interface DocsHeaderProps {
@@ -39,5 +41,6 @@ export const DocsHeader = ({
         />
       ) : null}
     </Flex>
+    <BackToTop />
   </Unstyled>
 );
