@@ -22,7 +22,7 @@ const stylesheet = createStyleSheet(() => ({
 }));
 
 // Provides corrects typings for renderItem prop items
-function carouselForwardRef<R, P = {}>(
+function carouselForwardRef<R, P>(
   render: (props: P, ref: Ref<R>) => ReactNode
 ): (props: P & RefAttributes<R>) => ReactNode {
   return forwardRef(render) as (props: P & RefAttributes<R>) => ReactNode;
