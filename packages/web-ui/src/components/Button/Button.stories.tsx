@@ -3,7 +3,11 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-import { ChevronLeft01SmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
+import {
+  ChevronLeft01SmallIcon,
+  ChevronRight01SmallIcon,
+  EditSmallIcon,
+} from '@utilitywarehouse/react-icons';
 
 import { Button } from './Button';
 
@@ -379,4 +383,41 @@ export const FullWidth: Story = {
     </Flex>
   ),
   args: { children: 'Full width button with icon' },
+};
+
+export const SolidVariantDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="center">
+      <Button variant="solid">Submit feedback</Button>
+      <Button variant="solid">Buy now</Button>
+      <Button variant="solid" colorScheme="red">
+        Delete account
+      </Button>
+    </Flex>
+  ),
+};
+
+export const OutlineVariantDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="center">
+      <Button variant="outline">Sign up</Button>
+      <Button variant="outline" colorScheme="grey">
+        <EditSmallIcon />
+        Edit
+      </Button>
+      <Button variant="outline" colorScheme="red">
+        Cancel
+      </Button>
+    </Flex>
+  ),
+};
+
+export const GhostVariantDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} direction="column" align="stretch" width={500}>
+      <Button variant="solid">This is the main action</Button>
+      <Button variant="outline">This is a less important action</Button>
+      <Button variant="ghost">This is the least important action</Button>
+    </Flex>
+  ),
 };
