@@ -1,11 +1,13 @@
-import '@utilitywarehouse/fontsource';
-import '@utilitywarehouse/css-reset';
-import { breakpoints, Box } from '../src';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { SyntaxHighlighter } from '@storybook/components';
-import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 import { Analytics } from '@vercel/analytics/react';
+
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import '@utilitywarehouse/css-reset';
+import '@utilitywarehouse/fontsource';
+
+import { breakpoints, Box } from '../src';
+import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 
 SyntaxHighlighter.registerLanguage('diff', diff);
 
@@ -47,7 +49,7 @@ const preview = {
       storySort: {
         order: [
           'Web UI',
-          ['Introduction', 'Guides', 'Helpers', 'Layout', 'Typography', 'Components', 'Lab'],
+          ['Introduction', 'Guides', 'Documentation', 'Design Guidelines', 'Stories'],
           'CSS Reset',
           'Colour System',
           ['Introduction', 'Common', 'Colors'],

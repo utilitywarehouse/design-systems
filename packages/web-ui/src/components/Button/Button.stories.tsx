@@ -18,7 +18,7 @@ const solidColorSchemes = ['cyan', 'red', 'green'] as const;
 const colorSchemes = [...solidColorSchemes, 'grey', 'gold'] as const;
 
 const meta: Meta<typeof Button> = {
-  title: 'Web UI / Components / Button',
+  title: 'Web UI / Stories / Button',
   component: Button,
   argTypes: {
     children: { control: { type: 'text' } },

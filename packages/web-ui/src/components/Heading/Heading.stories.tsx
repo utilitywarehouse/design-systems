@@ -10,7 +10,7 @@ import { Box } from '../Box';
 import { Flex } from '../Flex';
 
 const meta: Meta<typeof Heading> = {
-  title: 'Web UI / Typography / Heading',
+  title: 'Web UI / Stories / Heading',
   component: Heading,
 };
 

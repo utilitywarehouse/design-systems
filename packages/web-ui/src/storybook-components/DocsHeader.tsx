@@ -24,12 +24,13 @@ export const DocsHeader = ({
       <Flex width="100%" align="center" justify="space-between">
         <Heading variant="h1">{componentName}</Heading>
         <Flex gap={3}>
+          <Link href={`/?path=/story/web-ui-stories-${componentName}`}>Stories</Link>
           <Link
-            href={`https://github.com/utilitywarehouse/design-systems/blob/main/packages/web-ui/src/${componentName}.tsx`}
+            href={`https://github.com/utilitywarehouse/design-systems/blob/main/packages/web-ui/src/components/${componentName}`}
           >
-            View on GitHub
+            Source
           </Link>
-          {figmaLink ? <Link href={figmaLink}>View on Figma</Link> : null}
+          {figmaLink ? <Link href={figmaLink}>Design</Link> : null}
         </Flex>
       </Flex>
       <Description of={stories} />

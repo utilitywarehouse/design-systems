@@ -15,7 +15,7 @@ import { Flex } from '../Flex';
 import { Text } from '../Text';
 
 const meta: Meta<typeof CheckboxGroup> = {
-  title: 'Web UI / Components / Checkbox / CheckboxGroup',
+  title: 'Web UI / Stories / CheckboxGroup',
   component: CheckboxGroup,
   argTypes: {
     direction: {

@@ -10,7 +10,7 @@ import { Stack } from '../Stack';
 import { Text } from '../Text';
 
 const meta: Meta<typeof Stack> = {
-  title: 'Web UI / Layout / Stack',
+  title: 'Web UI / Stories / Stack',
   component: Stack,
 };
 

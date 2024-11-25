@@ -13,7 +13,7 @@ import { Strong } from '../Strong';
 import { Text } from '../Text';
 
 const meta: Meta<typeof Divider> = {
-  title: 'Web UI / Components / Divider',
+  title: 'Web UI / Stories / Divider',
   component: Divider,
 };
 

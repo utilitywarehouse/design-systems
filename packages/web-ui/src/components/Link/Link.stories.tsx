@@ -16,7 +16,7 @@ import { Flex } from '../Flex';
 import { Text } from '../Text';
 
 const meta: Meta<typeof Link> = {
-  title: 'Web UI / Components / Links / Link',
+  title: 'Web UI / Stories / Link',
   component: Link,
   args: { href: '#', size: 'small' },
   argTypes: {
