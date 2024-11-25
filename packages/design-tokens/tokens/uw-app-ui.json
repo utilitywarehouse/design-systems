@@ -1,0 +1,232 @@
+{
+  "light": {
+    "card": {
+      "border-width": {
+        "value": 1
+      },
+      "nested": {
+        "border-radius": {
+          "value": 8
+        }
+      },
+      "border-radius": {
+        "value": 12
+      },
+      "dashed": {
+        "border-style": {
+          "value": "dashed"
+        },
+        "border-width": {
+          "value": 2
+        }
+      },
+      "border-style": {
+        "value": "solid"
+      },
+      "padding": {
+        "padding-large": {
+          "value": 16
+        },
+        "padding-medium": {
+          "value": 12
+        },
+        "padding-small": {
+          "value": 8
+        },
+        "padding-none": {
+          "value": 0
+        }
+      },
+      "surface": {
+        "base": {
+          "background-color": {
+            "value": "#ffffff"
+          },
+          "border-color": {
+            "value": "#e3e3e3"
+          },
+          "outline": {
+            "grey": {
+              "background-color": {
+                "value": "#fafafa"
+              }
+            },
+            "purple": {
+              "background-color": {
+                "value": "#f1ebfe"
+              },
+              "border-color": {
+                "value": "#e5d7fe"
+              }
+            }
+          },
+          "filled": {
+            "purple": {
+              "background-color": {
+                "value": "#550091"
+              }
+            }
+          }
+        },
+        "purple": {
+          "border-color": {
+            "value": "#8f23e7"
+          },
+          "background-color": {
+            "value": "#550091"
+          },
+          "filled": {
+            "purple": {
+              "background-color": {
+                "value": "#35005c"
+              }
+            }
+          },
+          "outline": {
+            "purple": {
+              "background-color": {
+                "value": "#48007a"
+              },
+              "border-color": {
+                "value": "#7415c1"
+              }
+            }
+          }
+        }
+      },
+      "min-height": {
+        "value": 72
+      }
+    },
+    "shadows": {
+      "raised": {
+        "offset-x": {
+          "value": 1
+        },
+        "offset-y": {
+          "value": 2
+        },
+        "spread-radius": {
+          "value": 0
+        },
+        "blur-radius": {
+          "value": 4
+        }
+      },
+      "overlay": {
+        "offset-x": {
+          "value": 0
+        },
+        "offset-y": {
+          "value": 0
+        },
+        "spread-radius": {
+          "value": 0
+        },
+        "blur-radius": {
+          "value": 12
+        }
+      }
+    }
+  },
+  "dark": {
+    "card": {
+      "border-width": {
+        "value": 1
+      },
+      "nested": {
+        "border-radius": {
+          "value": 8
+        }
+      },
+      "border-radius": {
+        "value": 12
+      },
+      "dashed": {
+        "border-style": {
+          "value": "dashed"
+        },
+        "border-width": {
+          "value": 2
+        }
+      },
+      "border-style": {
+        "value": "solid"
+      },
+      "padding": {
+        "padding-large": {
+          "value": 16
+        },
+        "padding-medium": {
+          "value": 12
+        },
+        "padding-small": {
+          "value": 8
+        },
+        "padding-none": {
+          "value": 0
+        }
+      },
+      "surface": {
+        "base": {
+          "background-color": {
+            "value": "#1d1d1d"
+          },
+          "border-color": {
+            "value": "#414141"
+          },
+          "outline": {
+            "grey": {
+              "background-color": {
+                "value": "#121212"
+              }
+            },
+            "purple": {
+              "background-color": {
+                "value": "#2f0052"
+              },
+              "border-color": {
+                "value": "#7415c1"
+              }
+            }
+          },
+          "filled": {
+            "purple": {
+              "background-color": {
+                "value": "#48007a"
+              }
+            }
+          }
+        },
+        "purple": {
+          "border-color": {
+            "value": "#414141"
+          },
+          "background-color": {
+            "value": "#1d1d1d"
+          },
+          "filled": {
+            "purple": {
+              "background-color": {
+                "value": "#48007a"
+              }
+            }
+          },
+          "outline": {
+            "purple": {
+              "background-color": {
+                "value": "#2f0052"
+              },
+              "border-color": {
+                "value": "#7415c1"
+              }
+            }
+          }
+        }
+      },
+      "min-height": {
+        "value": 72
+      }
+    }
+  }
+}

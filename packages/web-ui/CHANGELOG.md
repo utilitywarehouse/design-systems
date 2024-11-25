@@ -1,5 +1,23 @@
 # @utilitywarehouse/web-ui
 
+## 1.0.10
+
+### Patch Changes
+
+- [#581](https://github.com/utilitywarehouse/design-systems/pull/581) [`e88e0e16`](https://github.com/utilitywarehouse/design-systems/commit/e88e0e162afb61f6ac3b7033032209b856d0e6ef) Thanks [@archieewald](https://github.com/archieewald)! - Move Checkbox className to outer element
+
+## 1.0.9
+
+### Patch Changes
+
+- [#587](https://github.com/utilitywarehouse/design-systems/pull/587) [`96575626`](https://github.com/utilitywarehouse/design-systems/commit/96575626092511ee30dd2e78455973d04ea24c2a) Thanks [@robphoenix](https://github.com/robphoenix)! - Update media queries to differentiate from MUI
+
+## 1.0.8
+
+### Patch Changes
+
+- [#585](https://github.com/utilitywarehouse/design-systems/pull/585) [`51fd6f86`](https://github.com/utilitywarehouse/design-systems/commit/51fd6f86e317b968de3ce21877fcc2aa7263f517) Thanks [@robphoenix](https://github.com/robphoenix)! - Pass in the default mui typography theme for use by mui components
+
 ## 1.0.7
 
 ### Patch Changes

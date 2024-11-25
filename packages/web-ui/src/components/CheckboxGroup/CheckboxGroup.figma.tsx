@@ -14,17 +14,21 @@ figma.connect(
         column: 'column',
       }),
       error: figma.boolean('error'),
-      hintPosition: figma.enum('hint position', {
-        bottom: 'bottom',
-        top: 'top',
+      helperTextPosition: figma.enum('helper text', {
+        Individual: undefined,
+        global: figma.enum('hint position', {
+          bottom: 'bottom',
+          top: 'top',
+        }),
+        none: undefined,
       }),
       content: figma.enum('_content', {
-        Checkbox: 'Checkbox',
-        'Checkbox Tile': 'CheckboxTile',
+        Checkbox: figma.children('Checkbox'),
+        'Checkbox Tile': figma.children('Checkbox Tile'),
       }),
     },
-    example: ({ hintPosition, content, ...props }) => (
-      <CheckboxGroup {...props} helperTextPosition={hintPosition}>
+    example: ({ helperTextPosition, content, ...props }) => (
+      <CheckboxGroup helperTextPosition={helperTextPosition} {...props}>
         {content}
       </CheckboxGroup>
     ),

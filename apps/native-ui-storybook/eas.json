@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 5.9.2"
+    "version": ">= 5.9.2",
+    "appVersionSource": "remote"
   },
   "build": {
     "development-simulator": {
@@ -13,13 +14,6 @@
     "development": {
       "developmentClient": true,
       "distribution": "internal"
-    },
-    "development-simulator": {
-      "developmentClient": true,
-      "distribution": "internal",
-      "ios": {
-        "simulator": true
-      }
     },
     "preview": {
       "cache": {
@@ -35,7 +29,9 @@
         "buildType": "apk"
       }
     },
-    "production": {}
+    "production": {
+      "autoIncrement": true
+    }
   },
   "submit": {
     "production": {}

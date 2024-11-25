@@ -8,6 +8,7 @@ import {
   Center,
   Box,
   Text,
+  FormField,
   NativeUIProvider,
 } from '@utilitywarehouse/native-ui';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
@@ -27,11 +28,11 @@ Whether you're building a simple form or a complex data collection system, the C
 - [Usage](#usage)
 - [Props](#props)
 - [Components](#components)
-  - [Checkbox](#checkbox)
-  - [CheckboxIndicator](#checkboxindicator)
-  - [CheckboxIcon](#checkboxicon)
-  - [CheckboxLabel](#checkboxlabel)
-  - [CheckboxGroup](#checkboxgroup)
+  - [`Checkbox`](#checkbox)
+  - [`CheckboxIndicator`](#checkboxindicator)
+  - [`CheckboxIcon`](#checkboxicon)
+  - [`CheckboxLabel`](#checkboxlabel)
+  - [`CheckboxGroup`](#checkboxgroup)
 - [Variants](#variants)
 - [Advanced Usage](#advanced-usage)
 
@@ -74,13 +75,20 @@ const MyComponent = () => {
 
 ## Props
 
-| Property         | Type                       | Default | Description                                                                                                          |
-| ---------------- | -------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
-| `value`          | `string`                   | -       | The value to be used in the checkbox input. This is the value that will be returned on form submission.              |
-| `onChange`       | `(value: boolean) => void` | -       | Function called when the state of the checkbox changes.                                                              |
-| `defaultchecked` | `bool`                     | `false` | If true, the checkbox will be initially checked.                                                                     |
-| `checked`        | `bool`                     | `false` | When true, the checkbox will be checked. You'll need to pass onChange update it's value (since it's now controlled). |
-| `disabled`       | `bool`                     | `false` | To manually set disable to the checkbox.                                                                             |
+| Property             | Type                                | Default | Description                                                                                                          |
+| -------------------- | ----------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------- |
+| `value`              | `string`                            | -       | The value to be used in the checkbox input. This is the value that will be returned on form submission.              |
+| `onChange`           | `(value: boolean) => void`          | -       | Function called when the state of the checkbox changes.                                                              |
+| `defaultchecked`     | `bool`                              | `false` | If true, the checkbox will be initially checked.                                                                     |
+| `checked`            | `bool`                              | `false` | When true, the checkbox will be checked. You'll need to pass onChange update it's value (since it's now controlled). |
+| `validationStatus`   | `'valid' \| 'invalid' \| 'initial'` | -       | The validation status of the checkbox.                                                                               |
+| `disabled`           | `bool`                              | `false` | To manually set disable to the checkbox.                                                                             |
+| `label`              | `string`                            | -       | The label to be displayed next to the checkbox.                                                                      |
+| `helperText`         | `string`                            | -       | The helper text to be displayed below the checkbox.                                                                  |
+| `helperIcon`         | `React.ComponentType`               | -       | The icon to be displayed next to the helper text.                                                                    |
+| `invalidText`        | `string`                            | -       | The invalid text to be displayed below the checkbox.                                                                 |
+| `validText`          | `string`                            | -       | The valid text to be displayed below the checkbox.                                                                   |
+| `showValidationIcon` | `boolean`                           | `true`  | Whether to show the validation icon.                                                                                 |
 
 ## Components
 
@@ -197,13 +205,12 @@ const MyComponent = () => {
 };
 ```
 
-| Property     | Type                              | Default | Description                                                            |
-| ------------ | --------------------------------- | ------- | ---------------------------------------------------------------------- |
-| `value`      | `string[]`                        | -       | The value of the checkbox group.                                       |
-| `onChange`   | `(values: Array<string>) => void` | -       | The callback fired when any children Checkbox is checked or unchecked. |
-| `disabled`   | `bool`                            | `false` | To manually set disable to the checkbox.                               |
-| `isInvalid`  | `bool`                            | `false` | To manually set invalid to the checkbox.                               |
-| `isReadOnly` | `bool`                            | `false` | To manually set read-only to the checkbox.                             |
+| Property           | Type                                | Default | Description                                                            |
+| ------------------ | ----------------------------------- | ------- | ---------------------------------------------------------------------- |
+| `value`            | `string[]`                          | -       | The value of the checkbox group.                                       |
+| `onChange`         | `(values: Array<string>) => void`   | -       | The callback fired when any children Checkbox is checked or unchecked. |
+| `disabled`         | `bool`                              | `false` | To manually set disable to the checkbox.                               |
+| `validationStatus` | `'valid' \| 'invalid' \| 'initial'` | -       | The validation status of the checkbox group.                           |
 
 ## Variants
 
@@ -216,8 +223,7 @@ You can create a custom checkbox by using the `CheckboxIndicator`, `CheckboxIcon
 <Canvas>
   <NativeUIProvider>
     <Center>
-    <Box gap="$2">
-      <Text>Which fruit do you enjoy?</Text>
+    <FormField label="Which fruit do you enjoy?">
       <CheckboxGroup>
         <Checkbox
           value="Apple"
@@ -252,7 +258,7 @@ You can create a custom checkbox by using the `CheckboxIndicator`, `CheckboxIcon
           label='Grapes'
           />
       </CheckboxGroup>
-      </Box>
+      </FormField>
     </Center>
 
   </NativeUIProvider>
@@ -264,15 +270,14 @@ import {
   Checkbox,
   CheckboxIndicator,
   CheckboxLabel,
+  FormField,
   Text,
 } from '@utilitywarehouse/native-ui';
-import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const MyComponent = () => {
   const [values, setValues] = React.useState([]);
   return (
-    <Box gap="$2">
-      <Text>Which fruit do you enjoy?</Text>
+    <FormField label="Which fruit do you enjoy?">
       <CheckboxGroup
         aria-label="Checkbox Group"
         value={values}
@@ -304,7 +309,7 @@ const MyComponent = () => {
           <CheckboxLabel>Grapes</CheckboxLabel>
         </Checkbox>
       </CheckboxGroup>
-    </Box>
+    </FormField>
   );
 };
 ```

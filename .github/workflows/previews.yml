@@ -162,7 +162,7 @@ jobs:
         run: |
           SKIP=false
           if [ "${{ github.event_name }}" == "push" ]; then
-            if [[ "${{ github.event.head_commit.message }}" == *"[skip-ios]"* ]] || [[ "${{ github.event.head_commit.message }}" == *"[skip-native]"* ]] || [[ "${{ github.event.head_commit.message }}" == *"[Version Packages]"* ]]; then
+            if [[ "${{ github.event.head_commit.message }}" == *"[skip-ios]"* ]] || [[ "${{ github.event.head_commit.message }}" == *"[skip-native]"* ]] || [[ "${{ github.event.head_commit.message }}" == *"Version Packages"* ]]; then
               SKIP=true
             fi
           elif [ "${{ github.event_name }}" == "pull_request" ]; then
@@ -200,7 +200,7 @@ jobs:
         uses: expo/expo-github-action@v8
         if: steps.check_skip.outputs.skip == 'false'
         with:
-          eas-version: '9.2.0'
+          eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies

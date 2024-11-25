@@ -8,8 +8,8 @@ const shared: Partial<Omit<ThemeVars, 'base'>> = {
   brandTitle: `UW Native UI v${version}`,
   brandUrl: 'http://www.uw.co.uk',
   brandImage: img,
-  appBorderRadius: 8,
-  fontBase: '"Inter", "Open Sans", sans-serif',
+  appBorderRadius: 0,
+  fontBase: '"Work Sans", "Open Sans", sans-serif',
 };
 
 export const themeLight = create({

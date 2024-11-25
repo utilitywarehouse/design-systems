@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from '@utilitywarehouse/native-ui';
 import { StoryFn } from '@storybook/react';
 import { colors } from '@utilitywarehouse/colour-system';
-import { ColorValue } from '@utilitywarehouse/native-ui/core/types';
+import { ColorValue } from '@utilitywarehouse/native-ui/types';
 
 const TextBasic: StoryFn<{
   size: 'xs' | 'sm' | 'md';

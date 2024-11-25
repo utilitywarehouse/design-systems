@@ -64,7 +64,7 @@ const BadgeList = () => {
           </Box>
         </ListItemLeadingContent>
         <ListItemContent>
-          <HStack justifyContent="space-between">
+          <HStack style={{ justifyContent: 'space-between' }}>
             <ListItemText>Electricity</ListItemText>
             <Badge colorScheme="green" size="small">
               <BadgeText>Smart meter</BadgeText>

@@ -4,7 +4,7 @@ import { VariantTitle } from '../../docs/components';
 
 const HeadingBasic = () => {
   return (
-    <VStack gap="$6">
+    <VStack space="2xl">
       <VariantTitle title="Heading 1">
         <Heading size="h1">Aeonik - Bold (700), 32px Size / 40px Line height / 0px Letter</Heading>
       </VariantTitle>

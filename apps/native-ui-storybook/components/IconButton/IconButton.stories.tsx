@@ -4,7 +4,7 @@ import PlaygroundVariants from './PlaygroundVariants';
 import Variants from './Variants';
 
 const IconButtonMeta: Meta<typeof IconButton> = {
-  title: 'Native UI / Components / IconButton',
+  title: 'Native UI / Components / Icon Button',
   component: IconButton,
 };
 

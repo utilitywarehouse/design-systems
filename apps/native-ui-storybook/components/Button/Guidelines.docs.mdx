@@ -7,16 +7,20 @@ import {
   ButtonSpinner,
   ButtonText,
   Alert,
-  Box,
   Center,
   NativeUIProvider,
+  HStack,
+  VStack,
 } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
 import {
   AddSmallIcon,
   ChevronLeft01SmallIcon,
   ChevronRight01SmallIcon,
+  PhoneSmallIcon,
+  EditSmallIcon,
 } from '@utilitywarehouse/react-native-icons';
-import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
+import { ViewFigmaButton, BackToTopButton, DocComponentWrap } from '../../docs/components';
 import solid from './assets/solid.png';
 import outline from './assets/outline.png';
 import outlineExample from './assets/outline-example.png';
@@ -85,7 +89,7 @@ import overrides from './assets/overrides.png';
 The Button component is highly flexible, and features various style variants, colorSchemes, and other configurations
 to adapt to a wide range of design use cases and compositions.
 
-<NativeUIProvider>
+<DocComponentWrap>
   <Box mt="$6" mb="$4">
     <Alert
       colorScheme="gold"
@@ -98,7 +102,7 @@ to adapt to a wide range of design use cases and compositions.
       }
     />
   </Box>
-</NativeUIProvider>
+</DocComponentWrap>
 
 ## variants
 
@@ -122,7 +126,13 @@ especially when combined with other Button variants to create a clear visual hie
 
 Solid buttons are ideal for submitting data in forms, such as submitting an application or finalising a purchase.
 
-<img src={solid} />
+<DocComponentWrap>
+  <HStack space="lg">
+    <Button>Submit feedback</Button>
+    <Button>Buy now</Button>
+    <Button colorScheme="red">Delete account</Button>
+  </HStack>
+</DocComponentWrap>
 
 ### outline
 
@@ -130,9 +140,23 @@ Outline Buttons offer a moderate level of emphasis, making them suitable for sec
 To enhance the meaning and purpose of the action further, these buttons can be combined with any colorScheme from our design system
 (see Color Schemes section for details).
 
-<img src={outline} />
-<br />
-<br />
+<DocComponentWrap>
+  <NativeUIProvider>
+    <Box mb="$4">
+      <HStack space="lg">
+        <Button variant="outline" icon={PhoneSmallIcon}>
+          <ButtonIcon as={PhoneSmallIcon} />
+          <ButtonText>Call 0800 184703</ButtonText>
+        </Button>
+        <Button variant="outline" colorScheme="grey">
+          <ButtonIcon as={EditSmallIcon} />
+          <ButtonText>Edit</ButtonText>
+        </Button>
+      </HStack>
+    </Box>
+  </NativeUIProvider>
+</DocComponentWrap>
+
 <img src={outlineExample} />
 
 ### ghost

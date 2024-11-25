@@ -19,7 +19,7 @@ const ListVariants: StoryFn = () => {
     { text: 'List Item 3', supportingText: 'Supporting Text 3' },
   ];
   const variants = (
-    <VStack gap={8} width="100%">
+    <VStack space="sm" style={{ width: '100%' }}>
       <VariantTitle title="List with title and supporting text">
         <List headingText="List Heading" headingSupportingText="Supporting Text">
           {list.map((item, index) => (

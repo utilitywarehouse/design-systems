@@ -18,7 +18,7 @@ const ListHeading = forwardRef<View, ListHeadingProps>(
         ) : (
           <>
             <ListHeadingTitle>{text}</ListHeadingTitle>
-            {supportingText && (
+            {!!supportingText && (
               <ListHeadingSupportingText>{supportingText}</ListHeadingSupportingText>
             )}
           </>

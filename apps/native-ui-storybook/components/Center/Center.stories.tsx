@@ -10,4 +10,4 @@ const CenterMeta: Meta<typeof Center> = {
 
 export default CenterMeta;
 
-export { Center };
+export { Center as Playground };

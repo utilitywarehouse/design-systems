@@ -1,7 +1,9 @@
 import type { PressableProps } from 'react-native';
+import type { ColorValue } from '../../../types';
 
 interface ListItemBaseProps extends Omit<PressableProps, 'children'> {
   divider?: boolean;
+  dividerColor?: ColorValue;
   loading?: boolean;
   disabled?: boolean;
 }

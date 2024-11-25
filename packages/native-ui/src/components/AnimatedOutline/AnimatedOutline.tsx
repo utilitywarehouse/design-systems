@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { View, ViewProps } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
@@ -38,7 +38,12 @@ interface Props {
   show: boolean;
 }
 
-const AnimatedOutline: React.FC<PropsWithChildren<Props>> = ({ children, show }) => {
+const AnimatedOutline: React.FC<PropsWithChildren<Props> & ViewProps> = ({
+  children,
+  style,
+  show,
+  ...props
+}) => {
   const [visible, setVisible] = useState(show);
 
   const { styles } = useStyles(stylesheet);
@@ -56,7 +61,7 @@ const AnimatedOutline: React.FC<PropsWithChildren<Props>> = ({ children, show })
   }, [show]);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]} {...props}>
       {visible && <AnimatedCircle visible={show} />}
       {children}
     </View>

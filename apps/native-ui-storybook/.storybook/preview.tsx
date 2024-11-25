@@ -90,6 +90,7 @@ setupBackgroundListener();
 
 export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({ children, context }) => {
   const [isDark, setDark] = useState(false);
+  const colorScheme = useDarkMode() ? 'dark' : 'light';
 
   useEffect(() => {
     channel.on(DARK_MODE_EVENT_NAME, setDark);
@@ -97,10 +98,12 @@ export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({ child
   }, [channel]);
 
   return (
-    <BaseContainer theme={isDark ? themeDark : themeLight} context={context}>
-      <Analytics endpoint={window.top?.location?.href} />
-      {children}
-    </BaseContainer>
+    <NativeUIProvider colorMode={colorScheme}>
+      <BaseContainer theme={isDark ? themeDark : themeLight} context={context}>
+        <Analytics endpoint={window.top?.location?.href} />
+        {children}
+      </BaseContainer>
+    </NativeUIProvider>
   );
 };
 
@@ -115,7 +118,6 @@ const preview: Preview = {
     },
     layout: 'fullscreen',
     darkMode: {
-      current: 'light',
       stylePreview: true,
       dark: {
         ...themeDark,
@@ -147,21 +149,27 @@ const preview: Preview = {
             ],
             'Components',
             [
+              'All',
               'Alert',
               'Badge',
               'Box',
               'Button',
+              'Card',
               'Center',
               'Checkbox',
+              'Divider',
+              'Form Field',
               'Heading',
               'HStack',
+              'Icon Button',
               'Icons',
-              'IconButton',
+              'Input',
               'List',
               'Pressable',
               'Radio',
               'Skeleton',
               'Spinner',
+              'Switch',
               'Text',
               'VStack',
               'Lab',

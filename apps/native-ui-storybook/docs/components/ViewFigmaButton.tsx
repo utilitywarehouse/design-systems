@@ -1,10 +1,4 @@
-import {
-  Button,
-  ButtonIcon,
-  ButtonText,
-  NativeUIProvider,
-  createIcon,
-} from '@utilitywarehouse/native-ui';
+import { Button, ButtonIcon, ButtonText, createIcon } from '@utilitywarehouse/native-ui';
 import { ChevronRightSmallIcon } from '@utilitywarehouse/react-native-icons';
 import React from 'react';
 import { Platform } from 'react-native';
@@ -22,7 +16,7 @@ const FigmaIcon = createIcon({
 });
 
 const ViewFigmaButton: React.FC<Props> = ({ url }) => (
-  <NativeUIProvider>
+  <div className="sb-unstyled">
     <Button
       variant="ghost"
       style={{
@@ -40,7 +34,7 @@ const ViewFigmaButton: React.FC<Props> = ({ url }) => (
       <ButtonText>View in Figma</ButtonText>
       <ButtonIcon as={ChevronRightSmallIcon} />
     </Button>
-  </NativeUIProvider>
+  </div>
 );
 
 export default ViewFigmaButton;

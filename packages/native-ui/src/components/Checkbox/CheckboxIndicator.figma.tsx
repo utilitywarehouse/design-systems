@@ -11,7 +11,7 @@ figma.connect(
   {
     props: {
       checked: figma.boolean('checked'),
-      disabled: figma.boolean('isDisabled'),
+      disabled: figma.boolean('disabled'),
     },
     example: ({ disabled, checked }) => (
       <Checkbox value={value} onChange={setValue} disabled={disabled} checked={checked} />

@@ -70,7 +70,13 @@ const SpinnerRoot: React.FC<SpinnerProps> = ({ size = 'md', color, ...props }) =
   const defaultColor = color || colors.purple800;
 
   return (
-    <View {...props} style={[styles.container, props.style]}>
+    <View
+      {...props}
+      style={[styles.container, props.style]}
+      aria-busy
+      aria-live="polite"
+      role="status"
+    >
       <AnimatedSvg
         width={width}
         height={width}

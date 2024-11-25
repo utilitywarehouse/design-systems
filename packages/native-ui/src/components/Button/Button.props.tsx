@@ -18,6 +18,26 @@ export interface BaseButtonProps extends Omit<PressableProps, 'children'> {
   pressed?: boolean;
 }
 
+export interface ButtonWithoutChildrenProps extends BaseButtonProps {
+  children?: never;
+  text?: string;
+  /*
+   * The icon to display on the button.
+   * @default undefined
+   */
+  icon?: ComponentType;
+  /*
+   * The position of the icon.
+   * @default  'left'
+   */
+  iconPosition?: 'left' | 'right';
+  /*
+   * If `true`, the button will show a spinner.
+   * @default  false
+   */
+  loading?: boolean;
+}
+
 export interface ButtonWithStringChildrenProps extends BaseButtonProps {
   /*
    * The content of the button.
@@ -38,6 +58,7 @@ export interface ButtonWithStringChildrenProps extends BaseButtonProps {
    * @default  false
    */
   loading?: boolean;
+  text?: never;
 }
 
 type ReactNodeWithoutStringOrNumber = Exclude<ReactNode, string | number | Iterable<ReactNode>>;
@@ -51,6 +72,10 @@ interface ButtonWithOtherChildernProps extends BaseButtonProps {
   icon?: never;
   iconPosition?: never;
   loading?: never;
+  text?: never;
 }
 
-export type ButtonProps = ButtonWithStringChildrenProps | ButtonWithOtherChildernProps;
+export type ButtonProps =
+  | ButtonWithStringChildrenProps
+  | ButtonWithOtherChildernProps
+  | ButtonWithoutChildrenProps;

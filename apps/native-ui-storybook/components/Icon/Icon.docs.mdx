@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from '@storybook/blocks';
+import { Meta, Canvas, Story, Primary, Controls } from '@storybook/blocks';
 import * as IconStories from './Icon.stories';
 import { GluestackIcon } from './Icon';
 import { Center, Pressable, Text, NativeUIProvider } from '@utilitywarehouse/native-ui';
@@ -16,18 +16,29 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 
 <Meta of={IconStories} />
 
-# Icon
+# Icons
 
 Icons are often used to enhance the usability and accessibility of digital products by providing users with clear and intuitive visual cues. It serves as an intuitive and easily recognizable way to communicate with users.
 
+- [Playground](#playground)
 - [Usage](#usage)
 - [Props](#props)
-- [SVG & Custom Icons](#svg--custom-icons)
 - [All Icons](#all-icons)
+
+## Playground
+
+<Primary />
+
+<Controls />
 
 ## Usage
 
-> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+You can either use the React Native components directy from our `@utilitywarehouse/react-native-icons` package or use the `Icon`
+component from our `@utilitywarehouse/native-ui` package to render the icons with utility props such as `color`.
+
+The following example shows how to use the icons directly from the `@utilitywarehouse/react-native-icons` package.
+
+````jsx
 
 <Canvas>
   <NativeUIProvider>
@@ -52,19 +63,16 @@ import {
 } from '@utilitywarehouse/react-native-icons';
 
 const MyComponent = () => {
-  const {
-    theme: { colors },
-  } = useStyles();
   return (
     <HStack space="lg">
-      <ElectricityMediumIcon color={colors.serviceElectricity} />
-      <MobileMediumIcon color={colors.serviceMobile} />
-      <BroadbandMediumIcon color={colors.serviceLandline} />
-      <InsuranceMediumIcon color={colors.serviceInsurance} />
+      <ElectricityMediumIcon color="$serviceElectricity" />
+      <MobileMediumIcon color="$serviceMobile" />
+      <BroadbandMediumIcon color="$serviceLandline" />
+      <InsuranceMediumIcon color="$serviceInsurance" />
     </HStack>
   );
 };
-```
+````
 
 Or you can use the `Icon` component to render the icons.
 
@@ -78,9 +86,6 @@ import {
 } from '@utilitywarehouse/react-native-icons';
 
 const MyComponent = () => {
-  const {
-    theme: { colors },
-  } = useStyles();
   return (
     <HStack space="lg">
       <Icon as={ElectricityMediumIcon} color="$serviceElectricity" />
@@ -94,58 +99,10 @@ const MyComponent = () => {
 
 ## Props
 
-| Name | Type                  | Description                   | Default |
-| ---- | --------------------- | ----------------------------- | ------- |
-| `as` | `React.ComponentType` | The icon component to render. | -       |
-
-## SVG & Custom Icons
-
-We can directly create Icon using createIcon function exported from @utilitywarehouse/native-ui and use it by passing it in as prop in Icon component.
-CreateIcon function takes viewBox, d, path etc as parameters.
-
-**Notes to remember while using createIcon function**
-
-- Pass svg props such as viewBox in createIcon directly.
-- Copy the svg code without the SVG tag directly into the function argument Path or D or whichever prop justifies your svg.
-- Replace HTML SVG tags (e.g., `<path>`, `<rect>` etc) with the corresponding React Native SVG components (e.g., `<Path>`, `<Rect>` etc).
-- For any color property (i.e. fill, stroke etc), if you want to override that color, pass "currentColor" instead of a colorCode.
-
-Before:
-`<path fill="#FF0000" d="M10 10L20 20" /> `
-
-After:
-`<Path fill="currentColor" d="M10 10L20 20" /> `
-
-<Canvas>
-  <NativeUIProvider>
-    <Center>
-      <HStack gap={10}>
-        <Icon as={GluestackIcon} color="$grey800" />
-      </HStack>
-    </Center>
-  </NativeUIProvider>
-</Canvas>
-
-```tsx
-const GluestackIcon = createIcon({
-  // createIcon function is imported from '@utilitywarehouse/native-ui'
-  viewBox: '0 0 32 32',
-  path: (
-    <>
-      {/* Rect, Path is imported from 'react-native-svg' */}
-      <Rect width="32" height="32" rx="2" fill="currentColor" />
-      <Path d="M9.5 14.6642L15.9999 9.87633V12.1358L9.5 16.9236V14.6642Z" fill="white" />
-      <Path d="M22.5 14.6642L16.0001 9.87639V12.1359L22.5 16.9237V14.6642Z" fill="white" />
-      <Path d="M9.5 19.8641L15.9999 15.0763V17.3358L9.5 22.1236V19.8641Z" fill="white" />
-      <Path d="M22.5 19.8642L16.0001 15.0764V17.3358L22.5 22.1237V19.8642Z" fill="white" />
-    </>
-  ),
-});
-
-function App() {
-  return <Icon as={GluestackIcon} color="$grey800" />;
-}
-```
+| Name    | Type                  | Description                   | Default |
+| ------- | --------------------- | ----------------------------- | ------- |
+| `as`    | `React.ComponentType` | The icon component to render. | -       |
+| `color` | `string`              | The color of the icon.        | -       |
 
 ## All Icons
 

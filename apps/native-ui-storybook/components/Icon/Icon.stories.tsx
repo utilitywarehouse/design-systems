@@ -10,4 +10,4 @@ const IconMeta: Meta<typeof Icon> = {
 };
 
 export default IconMeta;
-export { Icon };
+export { Icon as Playground };

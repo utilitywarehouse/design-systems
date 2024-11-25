@@ -1,5 +1,67 @@
 # @utilitywarehouse/native-ui
 
+## 0.8.1
+
+### Patch Changes
+
+- [`c60651dd`](https://github.com/utilitywarehouse/design-systems/commit/c60651dd7426b6cfbea5a49b11e6fbd5cb7b3438) Thanks [@jordmccord](https://github.com/jordmccord)! - Fix design tokens package pre-release version
+
+## 0.8.0
+
+### Minor Changes
+
+- [#608](https://github.com/utilitywarehouse/design-systems/pull/608) [`8fc73d01`](https://github.com/utilitywarehouse/design-systems/commit/8fc73d0173eacaa13912ac7cdd977aae9a277635) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Switch` component
+
+### Patch Changes
+
+- [`f785f405`](https://github.com/utilitywarehouse/design-systems/commit/f785f4058c4a65f2ce3cf3a78a4d49862836ffb3) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `isDark` and `isLight` boolean to theme values
+
+## 0.7.0
+
+### Minor Changes
+
+- [#594](https://github.com/utilitywarehouse/design-systems/pull/594) [`c186bdc4`](https://github.com/utilitywarehouse/design-systems/commit/c186bdc4851d20738a4622e39d4cc4f2dd5d61c4) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Card` component
+
+- [#597](https://github.com/utilitywarehouse/design-systems/pull/597) [`09259641`](https://github.com/utilitywarehouse/design-systems/commit/09259641967101f3a6ad356042d6460b9cb4b818) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrates hooks away from gluestack
+
+## 0.6.1
+
+### Patch Changes
+
+- [`2c312563`](https://github.com/utilitywarehouse/design-systems/commit/2c3125631927f19301e095bc6c5ef43a9495aef0) Thanks [@jordmccord](https://github.com/jordmccord)! - Removes useless color mode check from Provider
+
+- [`93bf0b3f`](https://github.com/utilitywarehouse/design-systems/commit/93bf0b3f0aac0e8c9b61389713c11feddd76accd) Thanks [@jordmccord](https://github.com/jordmccord)! - Allows childless `Button` with `text` prop
+
+- [#595](https://github.com/utilitywarehouse/design-systems/pull/595) [`62a05cfe`](https://github.com/utilitywarehouse/design-systems/commit/62a05cfe51cc1c1f25e1e1337588f62f13993155) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixes small `Button` horizontal padding
+
+## 0.6.0
+
+### Minor Changes
+
+- [#565](https://github.com/utilitywarehouse/design-systems/pull/565) [`96b06df5`](https://github.com/utilitywarehouse/design-systems/commit/96b06df5058719e6e81c60587a48e331de3b49b3) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `HStack` and `VStack` component's style library
+
+- [#372](https://github.com/utilitywarehouse/design-systems/pull/372) [`19cb88ee`](https://github.com/utilitywarehouse/design-systems/commit/19cb88ee89a12c76a9ebe06168d504f971129590) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Helper` and `Label` components
+
+- [#372](https://github.com/utilitywarehouse/design-systems/pull/372) [`19cb88ee`](https://github.com/utilitywarehouse/design-systems/commit/19cb88ee89a12c76a9ebe06168d504f971129590) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `FormField` component
+
+- [#372](https://github.com/utilitywarehouse/design-systems/pull/372) [`19cb88ee`](https://github.com/utilitywarehouse/design-systems/commit/19cb88ee89a12c76a9ebe06168d504f971129590) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Helper` and validation helpers to `Checkbox` and `Radio` components and groups
+
+- [#361](https://github.com/utilitywarehouse/design-systems/pull/361) [`174e8546`](https://github.com/utilitywarehouse/design-systems/commit/174e8546325f6e45be4d732a2d4df2482e0eaaa8) Thanks [@jordmccord](https://github.com/jordmccord)! - feat: add `Input` component
+
+- [#591](https://github.com/utilitywarehouse/design-systems/pull/591) [`b84ae3bc`](https://github.com/utilitywarehouse/design-systems/commit/b84ae3bc92d43c3289eea7c81f60a8386ec2a010) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Divider` component
+
+- [#555](https://github.com/utilitywarehouse/design-systems/pull/555) [`35ed210c`](https://github.com/utilitywarehouse/design-systems/commit/35ed210cb90f477f902b7067714ceb5cb00b6af8) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `Actionsheet` component's style library and update API
+
+- [#565](https://github.com/utilitywarehouse/design-systems/pull/565) [`96b06df5`](https://github.com/utilitywarehouse/design-systems/commit/96b06df5058719e6e81c60587a48e331de3b49b3) Thanks [@jordmccord](https://github.com/jordmccord)! - Migrate `Center` component's style library
+
+### Patch Changes
+
+- [#569](https://github.com/utilitywarehouse/design-systems/pull/569) [`773c275c`](https://github.com/utilitywarehouse/design-systems/commit/773c275c2b97a5071fbcf103aeae7f36df2e711e) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `forwardRef` to components
+
+- [#372](https://github.com/utilitywarehouse/design-systems/pull/372) [`19cb88ee`](https://github.com/utilitywarehouse/design-systems/commit/19cb88ee89a12c76a9ebe06168d504f971129590) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixes `Checbox` and `Radio` label font weight
+
+- [#591](https://github.com/utilitywarehouse/design-systems/pull/591) [`b84ae3bc`](https://github.com/utilitywarehouse/design-systems/commit/b84ae3bc92d43c3289eea7c81f60a8386ec2a010) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `dividerColor` prop to `List` and `ListItem` components
+
 ## 0.5.6
 
 ### Patch Changes

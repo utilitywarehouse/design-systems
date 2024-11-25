@@ -1,12 +1,38 @@
 /* eslint-disable react/jsx-no-undef */
 import React from 'react';
-import { List, ListItem } from './';
+import { List } from './';
 import figma from '@figma/code-connect';
+import { Card } from '../Card';
 
 const props = {
   heading: figma.nestedProps('List Heading', {
     text: figma.string('heading'),
     supportingText: figma.string('Supporting text'),
+  }),
+  listItem: figma.children('List Item'),
+  listItems: figma.children('List Items'),
+  cardProps: figma.nestedProps('Card', {
+    variant: figma.enum('variant', {
+      dashed: 'dashed',
+      elevated: 'elevated',
+      outline: 'outline',
+      filled: 'filled',
+    }),
+    padding: figma.enum('padding', {
+      large: 'large',
+      medium: 'medium',
+      small: 'small',
+      none: 'none',
+    }),
+    colorScheme: figma.enum('colorScheme', {
+      base: 'base',
+      grey: 'grey',
+      purple: 'purple',
+    }),
+    surface: figma.enum('surface', {
+      base: 'base',
+      purple: 'purple',
+    }),
   }),
 };
 
@@ -15,7 +41,7 @@ figma.connect(
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4643-17907&m=dev',
   {
     props,
-    example: () => <List>{children}</List>,
+    example: ({ listItems }) => <List>{listItems}</List>,
   }
 );
 
@@ -27,9 +53,9 @@ figma.connect(
     variant: {
       'Heading?': true,
     },
-    example: ({ heading }) => (
+    example: ({ heading, listItems }) => (
       <List headingText={heading.text} headingSupportingText={heading.supportingText}>
-        {children}
+        {listItems}
       </List>
     ),
   }
@@ -44,13 +70,13 @@ figma.connect(
       container: 'card',
       'Heading?': true,
     },
-    example: ({ heading }) => (
+    example: ({ heading, listItems, cardProps }) => (
       <List
         container="card"
         headingText={heading.text}
         headingSupportingText={heading.supportingText}
       >
-        <Card>{children}</Card>
+        <Card {...cardProps}>{listItems}</Card>
       </List>
     ),
   }
@@ -65,38 +91,20 @@ figma.connect(
       container: 'card',
       'Heading?': false,
     },
-    example: () => (
+    example: ({ listItems, cardProps }) => (
       <List container="card">
-        <Card>{children}</Card>
+        <Card {...cardProps}>{listItems}</Card>
       </List>
     ),
   }
 );
-
-const list = [
-  {
-    id: '1',
-    text: 'List item 1',
-    supportingText: 'List item 1 supporting text',
-  },
-];
 
 figma.connect(
   List,
   'https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=4623-14698&m=dev',
   {
     props,
-    example: () => (
-      <>
-        {list.map(listItem => (
-          <ListItem
-            key={listItem.id}
-            {...listItem}
-            text={listItem.text}
-            supportingText={listItem.supportingText}
-          />
-        ))}
-      </>
-    ),
+    imports: [],
+    example: ({ listItem }) => <>{listItem}</>,
   }
 );

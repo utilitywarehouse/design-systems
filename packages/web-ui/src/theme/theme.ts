@@ -11,6 +11,7 @@ const theme: MuiTheme = createTheme({
 });
 
 theme.typography = {
+  ...theme.typography,
   pxToRem,
   fontSize: htmlFontSize,
   htmlFontSize,

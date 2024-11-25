@@ -1,42 +1,52 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
-import React, { FC, PropsWithChildren, useMemo } from 'react';
+import React, { forwardRef, PropsWithChildren, useMemo } from 'react';
 import type { BaseButtonProps, ButtonProps } from './Button.props';
 import { Pressable, ViewStyle } from 'react-native';
 import { createStyleSheet, UnistylesValues, useStyles } from 'react-native-unistyles';
 import { ButtonContext } from './Button.context';
+import { PressableRef } from '../../types';
 
-const ButtonRoot: FC<
+const ButtonRoot = forwardRef<
+  PressableRef,
   PropsWithChildren<BaseButtonProps & { states?: { active?: boolean; disabled?: boolean } }>
-> = ({
-  children,
-  colorScheme = 'cyan',
-  variant = 'solid',
-  size = 'medium',
-  inverted = false,
-  states,
-  ...props
-}) => {
-  const { active, disabled } = states || {};
-  const { styles } = useStyles(stylesheet, { variant, size });
-  const value = useMemo(
-    () => ({ colorScheme, variant, size, inverted, disabled, active }),
-    [colorScheme, variant, size, inverted, disabled, active]
-  );
-  return (
-    <ButtonContext.Provider value={value}>
-      <Pressable
-        {...props}
-        style={[
-          styles.container,
-          styles.extraStyles(colorScheme, variant, size, inverted, disabled, active) as ViewStyle,
-          props.style as ViewStyle,
-        ]}
-      >
-        {children}
-      </Pressable>
-    </ButtonContext.Provider>
-  );
-};
+>(
+  (
+    {
+      children,
+      colorScheme = 'cyan',
+      variant = 'solid',
+      size = 'medium',
+      inverted = false,
+      states,
+      ...props
+    },
+    ref
+  ) => {
+    const { active, disabled } = states || {};
+    const { styles } = useStyles(stylesheet, { variant, size });
+    const value = useMemo(
+      () => ({ colorScheme, variant, size, inverted, disabled, active }),
+      [colorScheme, variant, size, inverted, disabled, active]
+    );
+    return (
+      <ButtonContext.Provider value={value}>
+        <Pressable
+          ref={ref}
+          {...props}
+          style={[
+            styles.container,
+            styles.extraStyles(colorScheme, variant, size, inverted, disabled, active) as ViewStyle,
+            props.style as ViewStyle,
+          ]}
+        >
+          {children}
+        </Pressable>
+      </ButtonContext.Provider>
+    );
+  }
+);
+
+ButtonRoot.displayName = 'ButtonRoot';
 
 const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
   container: {
@@ -45,6 +55,7 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
     justifyContent: 'center',
     alignItems: 'center',
     gap: space[2],
+    paddingHorizontal: space[6],
     variants: {
       variant: {
         solid: {},
@@ -60,17 +71,14 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
       size: {
         small: {
           paddingVertical: space[2],
-          paddingHorizontal: space[3],
           minHeight: 32,
         },
         medium: {
           paddingVertical: space[4],
-          paddingHorizontal: space[6],
           minHeight: 48,
         },
         large: {
           paddingVertical: space[5],
-          paddingHorizontal: space[6],
           minHeight: 56,
         },
       },

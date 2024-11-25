@@ -21,6 +21,7 @@ import {
   CheckboxGroup,
   CheckboxIndicator,
   FlatList,
+  Card,
   Image,
 } from '@utilitywarehouse/native-ui';
 import {
@@ -32,7 +33,7 @@ import {
   ElectricityMediumIcon,
   GasMediumIcon,
 } from '@utilitywarehouse/react-native-icons';
-import { CheckboxList, BadgeList, RadioList } from './components';
+import { CheckboxList, BadgeList, RadioList, SwitchList } from './components';
 
 <Meta of={Stories} />
 
@@ -55,6 +56,7 @@ List item is the main building block of list. Each item has its own set of prope
 - [Advanced Usage](#advanced-usage)
 - [Variants](#variants)
 - [Examples](#examples)
+  - [List Item with Card](#list-item-with-card)
   - [List Item with Badge](#list-item-with-badge)
   - [Checbox List](#checbox-list)
   - [Radio List](#radio-list)
@@ -103,6 +105,7 @@ const MyComponent = () => (
 | headingText           | string              |          | The text to display in the heading of the list.            |
 | headingSupportingText | string              |          | The supporting text to display in the heading of the list. |
 | divider               | boolean             | false    | Whether to display a divider below the list items.         |
+| dividerColor          | string              |          | The color of the divider.                                  |
 | loading               | boolean             | false    | Whether to show the list items in loading state.           |
 | disabled              | boolean             | false    | Whether to disable the list.                               |
 
@@ -129,6 +132,7 @@ const MyComponent = () => (
 | disabled        | boolean    | false   | Whether to disable the list item.                               |
 | loading         | boolean    | false   | Whether to show the list item in loading state.                 |
 | divider         | boolean    | false   | Whether to display a divider below the list item.               |
+| dividerColor    | string     |         | The color of the divider.                                       |
 
 #### - `ListItemLeadingContent`
 
@@ -296,6 +300,67 @@ The `List` component has different ways to display the list.
 
 ## Examples
 
+### List Item with Card
+
+You can use the `Card` component to wrap the list items and setting the `container` prop to `card`.
+
+<Canvas>
+  <List container="card">
+    <Card variant="outline" padding="none">
+      <ListItem
+        leadingContent={<BillMediumIcon />}
+        text="Bills"
+        divider
+        onPress={() => console.log('item pressed')}
+      />
+      <ListItem
+        leadingContent={<PaymentMediumIcon />}
+        text="Payments"
+        divider
+        onPress={() => console.log('item pressed')}
+      />
+      <ListItem
+        leadingContent={<HomeMediumIcon />}
+        text="Moving Home"
+        onPress={() => console.log('item pressed')}
+      />
+    </Card>
+  </List>
+</Canvas>
+
+```tsx
+import { List, ListItem, Card } from '@utilitywarehouse/native-ui';
+import {
+  BillMediumIcon,
+  PaymentMediumIcon,
+  HomeMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => (
+  <List container="card">
+    <Card variant="outline" padding="none">
+      <ListItem
+        leadingContent={<BillMediumIcon />}
+        text="Bills"
+        divider
+        onPress={() => console.log('item pressed')}
+      />
+      <ListItem
+        leadingContent={<PaymentMediumIcon />}
+        text="Payments"
+        divider
+        onPress={() => console.log('item pressed')}
+      />
+      <ListItem
+        leadingContent={<HomeMediumIcon />}
+        text="Moving Home"
+        onPress={() => console.log('item pressed')}
+      />
+    </Card>
+  </List>
+);
+```
+
 ### List Item with Badge
 
 You can use the `Badge` component to display additional information in the list item. You can achieve this by using the List Item's
@@ -373,7 +438,7 @@ const BadgeList = () => {
           </Box>
         </ListItemLeadingContent>
         <ListItemContent>
-          <HStack justifyContent="space-between">
+          <HStack style={{ justifyContent: 'space-between' }}>
             <ListItemText>Electricity</ListItemText>
             <Badge colorScheme="green" size="small">
               <BadgeText>Smart meter</BadgeText>
@@ -401,14 +466,7 @@ You can also use the list to display a list of checkboxes. You can achieve this 
 </Canvas>
 
 ```tsx
-import {
-  List,
-  ListItem,
-  ListItemIcon,
-  Checkbox,
-  CheckboxGroup,
-  CheckboxIndicator,
-} from '@utilitywarehouse/native-ui';
+import { List, ListItem, ListItemIcon, Checkbox, CheckboxGroup } from '@utilitywarehouse/native-ui';
 import { UserMediumIcon } from '@utilitywarehouse/react-native-icons';
 
 const CheckboxList = () => {
@@ -421,51 +479,45 @@ const CheckboxList = () => {
       setValues([...values, item]);
     }
   };
+
+  const handleChange = (values: Array<string>) => {
+    setValues(values);
+  };
+
   return (
-    <CheckboxGroup aria-label="Checkbox Group" nativeID="checkbox-group" value={values}>
+    <CheckboxGroup
+      aria-label="Checkbox Group"
+      nativeID="checkbox-group"
+      onChange={handleChange}
+      value={values}
+    >
       <List>
         <ListItem
           text="Joe Blogs"
           supportingText="12 Somewhere Street"
           leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option1" aria-label="Label 1">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
+          trailingContent={<Checkbox value="option1" aria-label="Label 1" />}
           onPress={() => handlePress('option1')}
         />
         <ListItem
           text="Mary Poppins"
           supportingText="45 Somewhere Street"
           leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option2" aria-label="Label 2">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
+          trailingContent={<Checkbox value="option2" aria-label="Label 2" />}
           onPress={() => handlePress('option2')}
         />
         <ListItem
           text="Charlie Brown"
           supportingText="78 Somewhere Street"
           leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option3" aria-label="Label 3">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
+          trailingContent={<Checkbox value="option3" aria-label="Label 3" />}
           onPress={() => handlePress('option3')}
         />
         <ListItem
           text="Jane Doe"
           supportingText="90 Somewhere Street"
           leadingContent={<ListItemIcon as={UserMediumIcon} />}
-          trailingContent={
-            <Checkbox value="option4" aria-label="Label 4">
-              <CheckboxIndicator />
-            </Checkbox>
-          }
+          trailingContent={<Checkbox value="option4" aria-label="Label 4" />}
           onPress={() => handlePress('option4')}
         />
       </List>
@@ -490,9 +542,9 @@ You can also use the list to display a list of radio buttons. You can achieve th
 import {
   List,
   ListItem,
+  Card,
   Radio,
   RadioGroup,
-  RadioIndicator,
   Image,
   useColorMode,
 } from '@utilitywarehouse/native-ui';
@@ -501,22 +553,27 @@ import { Box } from '@utilitywarehouse/native-ui/lab';
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const RadioList = () => {
-  const [value, setValue] = React.useState<string>();
+  const [value, setValue] = useState<string>();
   const colorMode = useColorMode();
 
   const handlePress = (item: string) => {
     setValue(item);
   };
 
+  const handleChange = (value: string) => {
+    setValue(value);
+  };
+
   return (
     <Box p="$4" backgroundColor={colorMode === 'light' ? '#F2F2F2' : '$grey25'}>
-      <RadioGroup aria-label="Radio Group" nativeID="Radio-group" value={value}>
+      <RadioGroup
+        aria-label="Radio Group"
+        nativeID="Radio-group"
+        onChange={handleChange}
+        value={value}
+      >
         <List container="card">
-          <Box
-            borderRadius="$xl"
-            backgroundColor={colorMode === 'light' ? '$white' : '$grey175'}
-            overflow="hidden"
-          >
+          <Card variant="filled" padding="none">
             <ListItem
               text="**** 5016"
               supportingText="Expires 12/24"
@@ -528,11 +585,7 @@ const RadioList = () => {
                   height={42}
                 />
               }
-              trailingContent={
-                <Radio value="option1" aria-label="Label 1">
-                  <RadioIndicator />
-                </Radio>
-              }
+              trailingContent={<Radio value="option1" aria-label="Label 1" />}
               onPress={() => handlePress('option1')}
             />
             <ListItem
@@ -548,11 +601,7 @@ const RadioList = () => {
                 />
               }
               divider
-              trailingContent={
-                <Radio value="option2" aria-label="Label 2">
-                  <RadioIndicator />
-                </Radio>
-              }
+              trailingContent={<Radio value="option2" aria-label="Label 2" />}
               onPress={() => handlePress('option2')}
             />
             <ListItem
@@ -567,14 +616,10 @@ const RadioList = () => {
                   height={42}
                 />
               }
-              trailingContent={
-                <Radio value="option3" aria-label="Label 3">
-                  <RadioIndicator />
-                </Radio>
-              }
+              trailingContent={<Radio value="option3" aria-label="Label 3" />}
               onPress={() => handlePress('option3')}
             />
-          </Box>
+          </Card>
         </List>
       </RadioGroup>
     </Box>
@@ -588,7 +633,72 @@ For more information on the `Checbox` component, see the [`Checkbox` component d
 
 You can also use the list to display a list of switches. You can achieve this by using the `Switch` component as the `trailingContent` of the `ListItem`.
 
-> The switch component isn't built yet. Example coming soon.
+<Canvas>
+  <NativeUIProvider>
+    <SwitchList />
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import React, { useState } from 'react';
+import { Card, List, ListItem, ListItemIcon, Switch } from '@utilitywarehouse/native-ui';
+import {
+  BellMediumIcon,
+  LockMediumIcon,
+  LocationMediumIcon,
+  EyeMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+
+const SwitchList = () => {
+  const [notifications, setNotifications] = useState(false);
+  const [secureId, setSecureId] = useState(false);
+  const [location, setLocation] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  return (
+    <List>
+      <Card padding="none">
+        <ListItem
+          text="Notifications"
+          supportingText="Allow notifications"
+          divider
+          leadingContent={<ListItemIcon as={BellMediumIcon} />}
+          trailingContent={
+            <Switch value={notifications} onValueChange={setNotifications} size="small" />
+          }
+          onPress={() => setNotifications(!notifications)}
+        />
+        <ListItem
+          text="Secure ID"
+          supportingText="Use secure ID"
+          divider
+          leadingContent={<ListItemIcon as={LockMediumIcon} />}
+          trailingContent={<Switch value={secureId} onValueChange={setSecureId} size="small" />}
+          onPress={() => setSecureId(!secureId)}
+        />
+        <ListItem
+          text="Location"
+          supportingText="Allow location"
+          divider
+          leadingContent={<ListItemIcon as={LocationMediumIcon} />}
+          trailingContent={<Switch value={location} onValueChange={setLocation} size="small" />}
+          onPress={() => setLocation(!location)}
+        />
+        <ListItem
+          text="Dark mode"
+          supportingText="Enable dark mode"
+          divider
+          leadingContent={<ListItemIcon as={EyeMediumIcon} />}
+          trailingContent={<Switch value={darkMode} onValueChange={setDarkMode} size="small" />}
+          onPress={() => setDarkMode(!darkMode)}
+        />
+      </Card>
+    </List>
+  );
+};
+
+export default SwitchList;
+```
 
 ### List with FlatList
 

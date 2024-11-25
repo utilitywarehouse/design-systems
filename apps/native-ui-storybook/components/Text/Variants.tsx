@@ -4,7 +4,7 @@ import { VariantTitle } from '../../docs/components';
 
 const TextBasic = () => {
   return (
-    <VStack gap="$6">
+    <VStack space="2xl">
       <VariantTitle title="Default - Body / Medium">
         <Text>Work Sans - Regular (400), 16px Size / 24px Line height / 0px Letter</Text>
       </VariantTitle>

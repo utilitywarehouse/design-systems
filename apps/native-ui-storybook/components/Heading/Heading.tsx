@@ -2,9 +2,9 @@ import React from 'react';
 import { Heading } from '@utilitywarehouse/native-ui';
 import { Meta } from '@storybook/react';
 
-const HeadingBasic = () => {
+const HeadingBasic = ({ ...props }) => {
   return (
-    <Heading>
+    <Heading {...props}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       labore et dolore magna aliqua.
     </Heading>
