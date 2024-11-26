@@ -14,7 +14,11 @@ cases and compositions.
 
 - [Accessibility](#accessibility)
 - [Variants](#variants)
+- [Colour Schemes](#colour-schemes)
 - [Best Practices](#best-practices)
+- [Inverted](#inverted)
+- [Size](#size)
+- [State](#state)
 
 ## Accessibility
 
@@ -128,8 +132,136 @@ used for a less impactful one.
 
 <Canvas of={Stories.RedColorSchemeDesignExample} sourceState="none" />
 
+### Green
+
+**Green is a great choice when you want to signal positive or affirmative actions.**
+
+Green effectively draws attention to actions that confirm or approve something
+in your design. However, consider using different button variants depending on
+the context. These variants can emphasise or reduce the importance of the
+positive action and help highlight the most crucial action for the user.
+
+<Canvas of={Stories.GreenColorSchemeDesignExample} sourceState="none" />
+
+### Gold
+
+**Gold buttons are often used for actions that require user attention or careful
+consideration. They serve as a visual cue for users to proceed with caution.**
+
+However, gold buttons don't convey the same level of urgency or potential
+consequences as red buttons. Since their primary function is to complement
+other UI elements, they typically don't have a solid variant like other button
+types used for primary actions. You could also see them in the context of a
+form.
+
+<Canvas of={Stories.GoldColorSchemeDesignExample} sourceState="none" />
+
+### Grey
+
+**Grey buttons excel at providing subtle calls to action when you want the button
+to blend in with the background and not compete for attention with other design
+elements.**
+
+This approach is particularly useful in colour-heavy designs or when
+you want to emphasise other elements or actions in your design. For example,
+grey buttons can be used for secondary actions or as building blocks within
+other UI components.
+
+<Canvas of={Stories.GreyColorSchemeDesignExample} sourceState="none" />
+
+## Inverted
+
+The inverted property is a boolean value. Setting it to true triggers an
+inversion of the original colorScheme of the Button. In essence, if the
+original colour scheme was optimised for a light background, the inverted
+property will adjust the button's colours to function effectively on a darker
+background.
+
+To learn more about inverted colour schemes in components please refer to the
+[naming conventions document](https://wiki.uw.systems/posts/naming-conventions-and-stack-mirroring-z1olqysr#hz3pw-color-schemes).
+
+<Canvas of={Stories.InvertedColour} sourceState="none" />
+
+## Size
+
+The size prop helps you create a clear hierarchy and guide users towards the
+most important actions in your design layout. All button variants and colour
+schemes can be used with various sizes, giving you maximum flexibility.
+
+<Canvas of={Stories.Sizes} sourceState="none" />
+
+### Small
+
+Small buttons are perfect for subtle interactions, allowing you to offer
+additional functionality without overwhelming users with prominent calls to
+action.
+
+### Medium
+
+Medium buttons are best for emphasising crucial actions. They
+effectively grab user attention, making them ideal for situations where a
+specific action is the core function of a page or a large section. As the
+default size, medium buttons strike a perfect balance between prominence,
+usability, and provide a comfortable target area for touch interactions.
+
+## State
+
+Buttons have different states to provide visual feedback to users and indicate interaction possibilities.
+
+- In Figma, properties represent different states of a component (e.g., hover, focus).
+- In code, interactive components have built-in states that can be styled (e.g., active, disabled).
+
+| State    | Description                                                                                                                                                                                                                                                               |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Default  | This is the button's resting state when the user isn't interacting with it.                                                                                                                                                                                               |
+| Hover    | When the user hovers their mouse cursor over the button, it enters the hover state.                                                                                                                                                                                       |
+| Active   | The active state is triggered when the user activates the button. When using a mouse, "activation" typically starts when the user presses down the primary mouse button. This state visually indicates that the button is being pressed and an action is about to happen. |
+| Focus    | This state applies when the user navigates to the button using the keyboard's Tab key, and it becomes the currently focused element.                                                                                                                                      |
+| Disabled | This state is used when a button action is unavailable or not applicable in the current context. Disabled buttons do not respond to hover or click states, but are still focusable via the keyboard.                                                                      |
+
+## Icons
+
+Icons can sometimes serve as visual shortcuts, supporting the button text and
+helping users to identify the button's function and the anticipated result of
+clicking it.
+
+Each icon prop (iconLeft and iconRight) offers customization options for the
+button's appearance. It is important to note that due to design limitations,
+you can only choose to have an icon positioned either to the left or right of
+the button text, not both.
+
+**If you have to use a button with only an icon, please use the Icon Button component.**
+
+<Canvas of={Stories.WithIcons} sourceState="none" />
+
+## Autolayout config (Figma only)
+
+Buttons in Figma have built-in auto-layout capabilities that allow you to
+easily adjust their size to fit your design needs.
+
+**Hug Content** - By default, buttons use the "Hug Content" layout, where the
+button width automatically adapts to the width of its text content.
+
+**Full-Width Buttons** - You can create full-width buttons, typically
+recommended for large sizes. To achieve this:
+
+- Select the button frame.
+- In the Properties panel (right-hand side), locate the "Layout" section.
+- Under "Sizing," change the option from "Hug Content" to "Fill Container".
+- Ensure the button is placed within a container frame set to either "Fixed" or "Hug Content" layout/container.
+
 ## Best Practices
 
 - For clarity, use clear and concise Button text that accurately reflects the action it triggers.
 - Provide visual hierarchy; use button sizes, colours, and variants according to importance and meaning.
 - Avoid overwhelming users with too many buttons, this can lead to confusion and decision fatigue.
+
+## Customisation and overrides
+
+The buttons offer a diverse range of sizes, variants, and colour schemes,
+catering to a multitude of design scenarios. **It's important to remember that
+these options address core functionalities, and may not encompass every unique
+design need or context.** Since the button designs dictate properties like
+colour usage, **local overrides are generally discouraged**. If you encounter
+design limitations or believe a new button variant or size is necessary, please
+don't hesitate to share your feedback with the Design Systems team.
