@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { Unstyled } from '@storybook/blocks';
-
 import { ChevronUpSmallIcon } from '@utilitywarehouse/react-icons';
 
 import { Button } from '../components';
