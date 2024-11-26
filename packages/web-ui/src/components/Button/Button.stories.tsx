@@ -23,8 +23,12 @@ import {
   ChevronLeft01SmallIcon,
   ChevronRight01SmallIcon,
   CloseSmallIcon,
+  CopySmallIcon,
+  DownloadSmallIcon,
   EditSmallIcon,
+  FullscreenSmallIcon,
   LogoutSmallIcon,
+  TickSmallIcon,
   TrashSmallIcon,
 } from '@utilitywarehouse/react-icons';
 >>>>>>> 7884c5d4 (add Button design guidelines)
@@ -447,6 +451,7 @@ export const RedColorSchemeDesignExample: Story = {
     </Flex>
   ),
 };
+<<<<<<< HEAD
 
 export const GreenColorSchemeDesignExample: Story = {
   render: () => (
@@ -568,3 +573,49 @@ export const RedColorSchemeDesignExample: Story = {
   ),
 };
 >>>>>>> 726bc3fa (continue)
+||||||| parent of f57c1423 (update button design guidelines)
+=======
+
+export const GreenColorSchemeDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="stretch" width={500}>
+      <Button variant="solid" colorScheme="green">
+        <TickSmallIcon />
+        Selected plan
+      </Button>
+      <Button variant="outline" colorScheme="green">
+        Accept
+      </Button>
+    </Flex>
+  ),
+};
+
+export const GoldColorSchemeDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="stretch" width={500}>
+      <Button variant="outline" colorScheme="gold">
+        Review plan
+      </Button>
+      <Button variant="ghost" colorScheme="gold">
+        <DownloadSmallIcon />
+        Save as draft
+      </Button>
+    </Flex>
+  ),
+};
+
+export const GreyColorSchemeDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="stretch" width={500}>
+      <Button variant="outline" colorScheme="grey">
+        <CopySmallIcon />
+        Copy link
+      </Button>
+      <Button variant="ghost" colorScheme="grey">
+        <FullscreenSmallIcon />
+        Expand
+      </Button>
+    </Flex>
+  ),
+};
+>>>>>>> f57c1423 (update button design guidelines)
