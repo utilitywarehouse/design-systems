@@ -75,6 +75,59 @@ To enhance the meaning and purpose of the action further, these buttons can be c
 
 <Canvas of={Stories.GhostVariantDesignExample} sourceState="none" />
 
+## Colour Schemes
+
+The `colorScheme` prop determines the colours applied to the Button component.
+These colour schemes are visually defined within the design system, and not all
+Button variants support every available colour scheme as they are tailored to
+specific use cases.
+
+Choosing a colour scheme that aligns with the intended meaning of the user
+action (e.g. success, warning) can enhance the user experience. If no
+colour scheme is specified, the default scheme is cyan.
+
+The choice of colour scheme and button variant depends on several factors:
+
+- The context in which the button is used.
+- How critical is the action triggered by the button.
+- The importance of the action within that context.
+- The relationship between the Button and other elements in the composition.
+
+To learn more about the colour schemes please refer to the
+[naming conventions document](https://wiki.uw.systems/posts/naming-conventions-and-stack-mirroring-z1olqysr#hz3pw-color-schemes).
+
+### Cyan
+
+**By default, cyan is used for primary actions to signify their importance.**
+
+However, it's important to remember that different visual weight and hierarchy
+in a composition can be achieved using button variants. Depending on
+the hierarchy of the action within the context of your design, you may want to
+consider using a different button variant to either emphasise or de-emphasise
+the importance of an action.
+
+<Canvas of={Stories.CyanColorSchemeDesignExample} sourceState="none" />
+
+### Red
+
+**Red is the most suitable button colour scheme for destructive actions.**
+
+These actions can result in data loss, are irreversible, or have significant
+negative consequences for the user. The red colour serves as a strong visual
+warning, prompting users to carefully consider such actions due to their
+potential impact.
+
+**The importance and potential consequences of a destructive action can be
+further emphasised, or reduced, depending on the impact and context of your
+design.**
+
+This can be achieved by using different button variants in relation to other
+actions. For instance, a solid red button might be used for a highly
+destructive action, while a red ghost Button, or a red outline Button could be
+used for a less impactful one.
+
+<Canvas of={Stories.RedColorSchemeDesignExample} sourceState="none" />
+
 ## Best Practices
 
 - For clarity, use clear and concise Button text that accurately reflects the action it triggers.
