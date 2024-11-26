@@ -385,7 +385,7 @@ importers:
     dependencies:
       '@expo/html-elements':
         specifier: latest
-        version: 0.10.1
+        version: 0.11.0
       '@gluestack-style/animation-resolver':
         specifier: ^1.0.4
         version: 1.0.4(@gluestack-style/react@1.0.57)
@@ -6777,10 +6777,6 @@ packages:
       getenv: 1.0.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@expo/html-elements@0.10.1:
-    resolution: {integrity: sha512-3PTmtkV15D7+lykXVtvkH1jQ5Y6JE+e3zCaoMMux7z2cSLGQUNwDEUwG37gew3OEB1/E4/SEWgjvg8m7E6/e2Q==}
     dev: false
 
   /@expo/html-elements@0.11.0:
