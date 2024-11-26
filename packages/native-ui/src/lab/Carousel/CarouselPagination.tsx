@@ -5,7 +5,7 @@ import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Text } from '../../components/Text';
 import { Box } from '../Box';
 import { CarouselPaginationProps, CarouselPaginationItemProps } from './Carousel.props';
-import CarouselContext from './CarouselContext';
+import CarouselContext from './Carousel.context';
 
 const stylesheet = createStyleSheet(({ colorMode, colors, space }) => ({
   active: {

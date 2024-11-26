@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-import CarouselContext from './CarouselContext';
+import CarouselContext from './Carousel.context';
 import { CarouselContextValue } from './Carousel.props';
 
 export const CarouselProvider: FC<PropsWithChildren<CarouselContextValue>> = ({
