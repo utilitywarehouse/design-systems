@@ -239,6 +239,115 @@ declare const _default: {
         backgroundColor: string;
         padding: number;
     };
+    badge: {
+        outline: {
+            grey: {
+                borderColor: string;
+                foregroundColor: string;
+                inverted: {
+                    foregroundColor: string;
+                    borderColor: string;
+                };
+            };
+            green: {
+                inverted: {
+                    borderColor: string;
+                    foregroundColor: string;
+                };
+                borderColor: string;
+                foregroundColor: string;
+            };
+            gold: {
+                foregroundColor: string;
+                inverted: {
+                    borderColor: string;
+                    foregroundColor: string;
+                };
+                borderColor: string;
+            };
+            borderWidth: number;
+            cyan: {
+                foregroundColor: string;
+                inverted: {
+                    foregroundColor: string;
+                    borderColor: string;
+                };
+                borderColor: string;
+            };
+            red: {
+                inverted: {
+                    borderColor: string;
+                    foregroundColor: string;
+                };
+                borderColor: string;
+                foregroundColor: string;
+            };
+            backgroundColor: string;
+        };
+        strong: {
+            green: {
+                foregroundColor: string;
+                backgroundColor: string;
+            };
+            cyan: {
+                backgroundColor: string;
+                foregroundColor: string;
+            };
+            grey: {
+                backgroundColor: string;
+                foregroundColor: string;
+            };
+            gold: {
+                foregroundColor: string;
+                backgroundColor: string;
+            };
+            red: {
+                backgroundColor: string;
+                foregroundColor: string;
+            };
+        };
+        gap: number;
+        soft: {
+            green: {
+                foregroundColor: string;
+                backgroundColor: string;
+            };
+            grey: {
+                backgroundColor: string;
+                foregroundColor: string;
+            };
+            red: {
+                backgroundColor: string;
+                foregroundColor: string;
+            };
+            cyan: {
+                backgroundColor: string;
+                foregroundColor: string;
+            };
+            gold: {
+                foregroundColor: string;
+                backgroundColor: string;
+            };
+        };
+        web: {
+            medium: {
+                paddingInline: number;
+            };
+        };
+        fontFamily: string;
+        paddingInline: number;
+        app: {
+            small: {
+                paddingBlock: number;
+            };
+        };
+        fontSize: number;
+        borderRadiusBottom: number;
+        paddingBlock: number;
+        lineHeight: number;
+        borderRadius: number;
+        fontWeight: number;
+    };
     card: {
         surface: {
             purple: {

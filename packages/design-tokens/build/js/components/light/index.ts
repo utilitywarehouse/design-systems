@@ -239,6 +239,115 @@ export default {
     "backgroundColor": "#ffffff",
     "padding": 4
   },
+  "badge": {
+    "outline": {
+      "grey": {
+        "borderColor": "#888888",
+        "foregroundColor": "#242424",
+        "inverted": {
+          "foregroundColor": "#f5f5f5",
+          "borderColor": "#b8b8b8"
+        }
+      },
+      "green": {
+        "inverted": {
+          "borderColor": "#2fb66d",
+          "foregroundColor": "#eefcf3"
+        },
+        "borderColor": "#297f50",
+        "foregroundColor": "#003d1e"
+      },
+      "gold": {
+        "foregroundColor": "#52210c",
+        "inverted": {
+          "borderColor": "#f7b51d",
+          "foregroundColor": "#fef9e6"
+        },
+        "borderColor": "#c77800"
+      },
+      "borderWidth": 2,
+      "cyan": {
+        "foregroundColor": "#001e52",
+        "inverted": {
+          "foregroundColor": "#ecf4fe",
+          "borderColor": "#4789fa"
+        },
+        "borderColor": "#0550d1"
+      },
+      "red": {
+        "inverted": {
+          "borderColor": "#df2a38",
+          "foregroundColor": "#ffebeb"
+        },
+        "borderColor": "#c31d2a",
+        "foregroundColor": "#3b1216"
+      },
+      "backgroundColor": "#aaaaaa00"
+    },
+    "strong": {
+      "green": {
+        "foregroundColor": "#eefcf3",
+        "backgroundColor": "#297f50"
+      },
+      "cyan": {
+        "backgroundColor": "#0550d1",
+        "foregroundColor": "#ecf4fe"
+      },
+      "grey": {
+        "backgroundColor": "#c1c1c1",
+        "foregroundColor": "#242424"
+      },
+      "gold": {
+        "foregroundColor": "#52210c",
+        "backgroundColor": "#ffd76f"
+      },
+      "red": {
+        "backgroundColor": "#c31d2a",
+        "foregroundColor": "#ffebeb"
+      }
+    },
+    "gap": 4,
+    "soft": {
+      "green": {
+        "foregroundColor": "#003d1e",
+        "backgroundColor": "#bdead0"
+      },
+      "grey": {
+        "backgroundColor": "#e3e3e3",
+        "foregroundColor": "#242424"
+      },
+      "red": {
+        "backgroundColor": "#ffb3b4",
+        "foregroundColor": "#3b1216"
+      },
+      "cyan": {
+        "backgroundColor": "#a6c8fc",
+        "foregroundColor": "#001e52"
+      },
+      "gold": {
+        "foregroundColor": "#52210c",
+        "backgroundColor": "#ffe6a8"
+      }
+    },
+    "web": {
+      "medium": {
+        "paddingInline": 16
+      }
+    },
+    "fontFamily": "Work Sans",
+    "paddingInline": 8,
+    "app": {
+      "small": {
+        "paddingBlock": 2
+      }
+    },
+    "fontSize": 14,
+    "borderRadiusBottom": 0,
+    "paddingBlock": 4,
+    "lineHeight": 16,
+    "borderRadius": 4,
+    "fontWeight": 400
+  },
   "card": {
     "surface": {
       "purple": {
