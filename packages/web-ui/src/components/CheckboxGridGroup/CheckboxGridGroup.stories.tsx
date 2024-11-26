@@ -10,7 +10,7 @@ import { Flex } from '../Flex';
 import { Text } from '../Text';
 
 const meta: Meta<typeof CheckboxGridGroup> = {
-  title: 'Web UI / Components / Checkbox / CheckboxGridGroup',
+  title: 'Web UI / Stories / CheckboxGridGroup',
   component: CheckboxGridGroup,
   argTypes: {
     helperText: { control: { type: 'text' } },

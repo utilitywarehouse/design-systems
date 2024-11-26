@@ -12,7 +12,7 @@ import { Flex } from '../Flex';
 const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
 const meta: Meta<typeof Text> = {
-  title: 'Web UI / Typography / Text',
+  title: 'Web UI / Stories / Text',
   component: Text,
 };
 

@@ -6,7 +6,7 @@
       "dependsOn": ["^build"]
     },
     "@utilitywarehouse/colour-system#build": {
-      "outputs": ["types/**", "index.js", "index.mjs"],
+      "outputs": ["dist/**"],
       "dependsOn": ["^build"]
     },
     "checks": {

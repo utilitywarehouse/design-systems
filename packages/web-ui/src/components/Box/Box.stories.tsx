@@ -13,7 +13,7 @@ import { Text } from '../Text';
 import { fonts } from '../../tokens';
 
 const meta: Meta<typeof Box> = {
-  title: 'Web UI / Layout / Box',
+  title: 'Web UI / Stories / Box',
   component: Box,
 };
 

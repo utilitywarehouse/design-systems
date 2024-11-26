@@ -6,14 +6,16 @@ import { mediaQueries } from '../../../src/utils';
 
 <Analytics />
 
-<Meta title="Web UI / Helpers / Media Queries" />
+<Meta title="Web UI / Documentation / Media Queries" />
+
+# Media Queries
 
 - [Base media queries](#base-media-queries)
-- [Media query helpers](#media-query-helpers)
+- [Media queries helpers](#media-queries-helpers)
 - [useMediaQueries hook](#usemediaqueries-hook)
 - [useMediaQuery hook](#usemediaquery-hook)
 
-# Media Queries
+## Base media queries
 
 While you should be able to do most things using the responsive style props, if
 you need to you can use the `mediaQueries` object to help create responsive
@@ -35,8 +37,6 @@ import { mediaQueries } from '@utilitywarehouse/web-ui';
   {...}
 </Box>
 ```
-
-## Base media queries
 
 <Flex direction="column" gap={1} width={500}>
   <Flex justify="space-between" align="center">
@@ -76,7 +76,7 @@ import { mediaQueries } from '@utilitywarehouse/web-ui';
   </Flex>
 </Flex>
 
-## Media query helpers
+## Media queries helpers
 
 There are also some media query helper functions available for more specific media queries. These helpers all take only the breakpoint values as arguments (`mobile`, `tablet`, `desktop`, `wide`).
 

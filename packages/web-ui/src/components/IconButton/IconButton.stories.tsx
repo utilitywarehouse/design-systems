@@ -20,7 +20,7 @@ const colorSchemes = {
 };
 
 const meta: Meta<typeof IconButton> = {
-  title: 'Web UI / Components / IconButton',
+  title: 'Web UI / Stories / IconButton',
   component: IconButton,
   argTypes: {
     children: { control: { type: 'text' } },
