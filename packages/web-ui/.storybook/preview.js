@@ -16,7 +16,7 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 import '@utilitywarehouse/css-reset';
 import '@utilitywarehouse/fontsource';
 
-import { breakpoints, Box } from '../src';
+import { breakpoints, Box, Text, Strong, TextLink, Heading } from '../src';
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 
 >>>>>>> e510583c (update storybook structure)

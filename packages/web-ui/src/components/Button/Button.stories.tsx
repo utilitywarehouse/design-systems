@@ -22,7 +22,10 @@ import { ChevronLeft01SmallIcon, ChevronRight01SmallIcon } from '@utilitywarehou
 import {
   ChevronLeft01SmallIcon,
   ChevronRight01SmallIcon,
+  CloseSmallIcon,
   EditSmallIcon,
+  LogoutSmallIcon,
+  TrashSmallIcon,
 } from '@utilitywarehouse/react-icons';
 >>>>>>> 7884c5d4 (add Button design guidelines)
 
@@ -408,6 +411,7 @@ export const GhostVariantDesignExample: Story = {
     </Flex>
   ),
 };
+<<<<<<< HEAD
 
 export const CyanColorSchemeDesignExample: Story = {
   render: () => (
@@ -526,3 +530,41 @@ export const GhostVariantDesignExample: Story = {
   ),
 };
 >>>>>>> 7884c5d4 (add Button design guidelines)
+||||||| parent of 726bc3fa (continue)
+=======
+
+export const CyanColorSchemeDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="stretch" width={500}>
+      <Button variant="outline">
+        <ChevronLeft01SmallIcon />
+        Back
+      </Button>
+      <Button variant="solid">
+        Continue
+        <ChevronRight01SmallIcon />
+      </Button>
+      <Button variant="ghost">View help</Button>
+    </Flex>
+  ),
+};
+
+export const RedColorSchemeDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="stretch" width={500}>
+      <Button variant="solid" colorScheme="red">
+        <TrashSmallIcon />
+        Delete account
+      </Button>
+      <Button variant="outline" colorScheme="red">
+        <LogoutSmallIcon />
+        Log out
+      </Button>
+      <Button variant="ghost" colorScheme="red">
+        <CloseSmallIcon />
+        Clear
+      </Button>
+    </Flex>
+  ),
+};
+>>>>>>> 726bc3fa (continue)
