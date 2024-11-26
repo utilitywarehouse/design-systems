@@ -7,8 +7,12 @@ import {
   ChevronLeft01SmallIcon,
   ChevronRight01SmallIcon,
   CloseSmallIcon,
+  CopySmallIcon,
+  DownloadSmallIcon,
   EditSmallIcon,
+  FullscreenSmallIcon,
   LogoutSmallIcon,
+  TickSmallIcon,
   TrashSmallIcon,
 } from '@utilitywarehouse/react-icons';
 
@@ -148,88 +152,56 @@ export const AsLink: Story = {
 export const WithIcons: Story = {
   render: () => {
     return (
-      <Flex direction="column" gap={6}>
-        <Flex gap={2} direction="column">
-          <Heading variant="h2" textTransform="capitalize">
-            solid
-          </Heading>
-          <Flex gap={3} direction="column">
-            <Flex gap={2} align="center">
-              {solidColorSchemes.map(colorScheme => (
-                <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="medium">
-                  <ChevronLeft01SmallIcon /> Button
-                </Button>
-              ))}
-              {solidColorSchemes.map(colorScheme => (
-                <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="small">
-                  <ChevronLeft01SmallIcon /> Button
-                </Button>
-              ))}
-            </Flex>
-            <Flex gap={2} align="center">
-              {solidColorSchemes.map(colorScheme => (
-                <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="medium">
-                  Button <ChevronRight01SmallIcon />
-                </Button>
-              ))}
-              {solidColorSchemes.map(colorScheme => (
-                <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="small">
-                  Button <ChevronRight01SmallIcon />
-                </Button>
-              ))}
-            </Flex>
-          </Flex>
+      <Flex gap={2} direction="column">
+        <Flex gap={2} align="center">
+          {solidColorSchemes.map(colorScheme => (
+            <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="medium">
+              <ChevronLeft01SmallIcon /> Button
+            </Button>
+          ))}
+          {solidColorSchemes.map(colorScheme => (
+            <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="small">
+              <ChevronLeft01SmallIcon /> Button
+            </Button>
+          ))}
+        </Flex>
+        <Flex gap={2} align="center">
+          {solidColorSchemes.map(colorScheme => (
+            <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="medium">
+              Button <ChevronRight01SmallIcon />
+            </Button>
+          ))}
+          {solidColorSchemes.map(colorScheme => (
+            <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size="small">
+              Button <ChevronRight01SmallIcon />
+            </Button>
+          ))}
         </Flex>
         {(['outline', 'ghost'] as const).map(variant => (
           <Flex key={variant} gap={2} direction="column">
-            <Heading variant="h2" textTransform="capitalize">
-              {variant}
-            </Heading>
-            <Flex gap={3} direction="column">
-              <Flex gap={2} align="center">
-                {colorSchemes.map(colorScheme => (
-                  <Button
-                    key={colorScheme}
-                    variant={variant}
-                    colorScheme={colorScheme}
-                    size="medium"
-                  >
-                    <ChevronLeft01SmallIcon /> Button
-                  </Button>
-                ))}
-                {colorSchemes.map(colorScheme => (
-                  <Button
-                    key={colorScheme}
-                    variant={variant}
-                    colorScheme={colorScheme}
-                    size="small"
-                  >
-                    <ChevronLeft01SmallIcon /> Button
-                  </Button>
-                ))}
-              </Flex>
-              <Flex gap={2} align="center">
-                {colorSchemes.map(colorScheme => (
-                  <Button
-                    key={colorScheme}
-                    variant={variant}
-                    colorScheme={colorScheme}
-                    size="medium"
-                  >
-                    Button <ChevronRight01SmallIcon />
-                  </Button>
-                ))}
-                {colorSchemes.map(colorScheme => (
-                  <Button
-                    key={colorScheme}
-                    variant={variant}
-                    colorScheme={colorScheme}
-                    size="small"
-                  >
-                    Button <ChevronRight01SmallIcon />
-                  </Button>
-                ))}
-              </Flex>
+            <Flex gap={2} align="center">
+              {colorSchemes.map(colorScheme => (
+                <Button key={colorScheme} variant={variant} colorScheme={colorScheme} size="medium">
+                  <ChevronLeft01SmallIcon /> Button
+                </Button>
+              ))}
+              {colorSchemes.map(colorScheme => (
+                <Button key={colorScheme} variant={variant} colorScheme={colorScheme} size="small">
+                  <ChevronLeft01SmallIcon /> Button
+                </Button>
+              ))}
+            </Flex>
+            <Flex gap={2} align="center">
+              {colorSchemes.map(colorScheme => (
+                <Button key={colorScheme} variant={variant} colorScheme={colorScheme} size="medium">
+                  Button <ChevronRight01SmallIcon />
+                </Button>
+              ))}
+              {colorSchemes.map(colorScheme => (
+                <Button key={colorScheme} variant={variant} colorScheme={colorScheme} size="small">
+                  Button <ChevronRight01SmallIcon />
+                </Button>
+              ))}
             </Flex>
           </Flex>
         ))}
@@ -456,6 +428,49 @@ export const RedColorSchemeDesignExample: Story = {
       <Button variant="ghost" colorScheme="red">
         <CloseSmallIcon />
         Clear
+      </Button>
+    </Flex>
+  ),
+};
+
+export const GreenColorSchemeDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="stretch" width={500}>
+      <Button variant="solid" colorScheme="green">
+        <TickSmallIcon />
+        Selected plan
+      </Button>
+      <Button variant="outline" colorScheme="green">
+        Accept
+      </Button>
+    </Flex>
+  ),
+};
+
+export const GoldColorSchemeDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="stretch" width={500}>
+      <Button variant="outline" colorScheme="gold">
+        Review plan
+      </Button>
+      <Button variant="ghost" colorScheme="gold">
+        <DownloadSmallIcon />
+        Save as draft
+      </Button>
+    </Flex>
+  ),
+};
+
+export const GreyColorSchemeDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="stretch" width={500}>
+      <Button variant="outline" colorScheme="grey">
+        <CopySmallIcon />
+        Copy link
+      </Button>
+      <Button variant="ghost" colorScheme="grey">
+        <FullscreenSmallIcon />
+        Expand
       </Button>
     </Flex>
   ),
