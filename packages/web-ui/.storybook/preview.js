@@ -2,7 +2,6 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { SyntaxHighlighter } from '@storybook/components';
 import { Analytics } from '@vercel/analytics/react';
 
-<<<<<<< HEAD
 import { colorsCommon } from '@utilitywarehouse/colour-system';
 import '@utilitywarehouse/css-reset';
 import '@utilitywarehouse/fontsource';
@@ -10,16 +9,6 @@ import '@utilitywarehouse/fontsource';
 import { breakpoints, Box, Text, Strong, TextLink, Heading } from '../src';
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 
-||||||| parent of e510583c (update storybook structure)
-=======
-import { colorsCommon } from '@utilitywarehouse/colour-system';
-import '@utilitywarehouse/css-reset';
-import '@utilitywarehouse/fontsource';
-
-import { breakpoints, Box, Text, Strong, TextLink, Heading } from '../src';
-import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
-
->>>>>>> e510583c (update storybook structure)
 SyntaxHighlighter.registerLanguage('diff', diff);
 
 const customerUiViewports = {
