@@ -25,6 +25,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "build:storybook": "turbo run --no-cache build:storybook",
+    "build:colour-system": "pnpm build --filter \"@utilitywarehouse/colour-system\"",
     "generate": "turbo run generate && turbo run format",
     "preinstall": "npx only-allow pnpm",
     "format": "turbo run format",
@@ -38,7 +39,7 @@
     "ci:publish": "NODE_OPTIONS=\"--max_old_space_size=4096\" pnpm run build && changeset publish",
     "checks": "turbo run format lint:fix build --filter='./packages/*'",
     "checks:ci": "turbo run format:ci lint build --filter='./packages/*'",
-    "postinstall": "patch-package && pnpm build --filter \"@utilitywarehouse/colour-system\""
+    "postinstall": "patch-package && pnpm build:colour-system"
   },
   "workspaces": [
     "packages/*",
