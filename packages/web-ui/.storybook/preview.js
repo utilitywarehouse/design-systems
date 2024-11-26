@@ -6,7 +6,7 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 import '@utilitywarehouse/css-reset';
 import '@utilitywarehouse/fontsource';
 
-import { breakpoints, Box } from '../src';
+import { breakpoints, Box, Text, Strong, TextLink, Heading } from '../src';
 import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
 
 SyntaxHighlighter.registerLanguage('diff', diff);
@@ -45,6 +45,18 @@ const customerUiViewports = {
 
 const preview = {
   parameters: {
+    docs: {
+      components: {
+        p: props => <Text {...props} />,
+        strong: props => <Strong {...props} />,
+        li: props => <Text component="li" {...props} />,
+        a: props => <TextLink {...props} />,
+        h1: props => <Heading variant="h1" {...props} />,
+        h2: props => <Heading variant="h2" {...props} />,
+        h3: props => <Heading variant="h3" {...props} />,
+        h4: props => <Heading variant="h4" {...props} />,
+      },
+    },
     options: {
       storySort: {
         order: [

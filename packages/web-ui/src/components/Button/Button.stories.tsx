@@ -6,7 +6,10 @@ import { colorsCommon } from '@utilitywarehouse/colour-system';
 import {
   ChevronLeft01SmallIcon,
   ChevronRight01SmallIcon,
+  CloseSmallIcon,
   EditSmallIcon,
+  LogoutSmallIcon,
+  TrashSmallIcon,
 } from '@utilitywarehouse/react-icons';
 
 import { Button } from './Button';
@@ -40,6 +43,7 @@ const meta: Meta<typeof Button> = {
     disabled: false,
     inverted: false,
   },
+  tags: ['dev'],
 };
 
 export default meta;
@@ -418,6 +422,41 @@ export const GhostVariantDesignExample: Story = {
       <Button variant="solid">This is the main action</Button>
       <Button variant="outline">This is a less important action</Button>
       <Button variant="ghost">This is the least important action</Button>
+    </Flex>
+  ),
+};
+
+export const CyanColorSchemeDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="stretch" width={500}>
+      <Button variant="outline">
+        <ChevronLeft01SmallIcon />
+        Back
+      </Button>
+      <Button variant="solid">
+        Continue
+        <ChevronRight01SmallIcon />
+      </Button>
+      <Button variant="ghost">View help</Button>
+    </Flex>
+  ),
+};
+
+export const RedColorSchemeDesignExample: Story = {
+  render: () => (
+    <Flex gap={2} align="stretch" width={500}>
+      <Button variant="solid" colorScheme="red">
+        <TrashSmallIcon />
+        Delete account
+      </Button>
+      <Button variant="outline" colorScheme="red">
+        <LogoutSmallIcon />
+        Log out
+      </Button>
+      <Button variant="ghost" colorScheme="red">
+        <CloseSmallIcon />
+        Clear
+      </Button>
     </Flex>
   ),
 };

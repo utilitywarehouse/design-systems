@@ -38,7 +38,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-use-controllable-state": "^1.0.1",
     "@utilitywarehouse/colour-system": "workspace:^",
-    "@utilitywarehouse/react-icons": "^1.1.1",
+    "@utilitywarehouse/react-icons": "^1.11.0",
     "clsx": "^2.0.0"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon Nov 25 2024 16:04:12 GMT+0000 (Greenwich Mean Time)
+ * Generated on Tue Nov 26 2024 10:16:14 GMT+0000 (Greenwich Mean Time)
  */
 
 export const tokens = {

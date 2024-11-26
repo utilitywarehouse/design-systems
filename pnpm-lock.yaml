@@ -385,7 +385,7 @@ importers:
     dependencies:
       '@expo/html-elements':
         specifier: latest
-        version: 0.11.0
+        version: 0.10.1
       '@gluestack-style/animation-resolver':
         specifier: ^1.0.4
         version: 1.0.4(@gluestack-style/react@1.0.57)
@@ -510,8 +510,8 @@ importers:
         specifier: workspace:^
         version: link:../colour-system
       '@utilitywarehouse/react-icons':
-        specifier: ^1.1.1
-        version: 1.1.1(react@18.2.0)
+        specifier: ^1.11.0
+        version: 1.11.0(react@18.2.0)
       clsx:
         specifier: ^2.0.0
         version: 2.0.0
@@ -6779,6 +6779,10 @@ packages:
       - supports-color
     dev: false
 
+  /@expo/html-elements@0.10.1:
+    resolution: {integrity: sha512-3PTmtkV15D7+lykXVtvkH1jQ5Y6JE+e3zCaoMMux7z2cSLGQUNwDEUwG37gew3OEB1/E4/SEWgjvg8m7E6/e2Q==}
+    dev: false
+
   /@expo/html-elements@0.11.0:
     resolution: {integrity: sha512-VYqpWme9oucgQ0fE3H2PR/YYGLIi95nBIuWJiv4tct1+9WHZq8IIz3BauND5fWp2zBtGzX7ZYUf+w4qXUb7BZw==}
     dev: false
@@ -12021,8 +12025,8 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.5.0-alpha.9(storybook@7.6.20):
-    resolution: {integrity: sha512-fKtH/ZZ6H5qBCGlHjScTxSyEc6XkTKfomlVOzbr4X5oczafX5IdCJGlnJLzCZ9rDB+FtXfs/D89uJ7GjIL395g==}
+  /@storybook/client-logger@8.5.0-alpha.10(storybook@7.6.20):
+    resolution: {integrity: sha512-92EVhn8c5wFgDWl7rmlvKdGvXMNsfF5dtcAV34Kq11kr9YjyNMrzECBnzZiEgIygSNIiOdaVY7nsnDA5PSjvcA==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
@@ -12321,10 +12325,10 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.5.0-alpha.9(storybook@7.6.20):
-    resolution: {integrity: sha512-gAjlgzD/79L0ovAns9YWbqQ04osVgXgIAuT/oNV85Rm3s0DJRcq3EK69r1L5b1otBb8paPA8MxaFAcoClJt4uQ==}
+  /@storybook/instrumenter@8.5.0-alpha.10(storybook@7.6.20):
+    resolution: {integrity: sha512-REzYWyMVs3NcglPCdLdjjnDhI0L4EHasrMLUCxRdG+nOMpx0vrTpF8xlOORcWcv/F9q8Yi0byc1RI3lItZn8iQ==}
     peerDependencies:
-      storybook: ^8.5.0-alpha.9
+      storybook: ^8.5.0-alpha.10
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.1.4
@@ -13102,8 +13106,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1(storybook@7.6.20):
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.5.0-alpha.9(storybook@7.6.20)
-      '@storybook/instrumenter': 8.5.0-alpha.9(storybook@7.6.20)
+      '@storybook/client-logger': 8.5.0-alpha.10(storybook@7.6.20)
+      '@storybook/instrumenter': 8.5.0-alpha.10(storybook@7.6.20)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
@@ -13979,8 +13983,8 @@ packages:
     resolution: {integrity: sha512-/qsvnWAJdtRHpwt2rhn0HClXVL3m8SwERLvBDk+uN0xbAxXiS4Ae8dkoi8wGypyFX4Y9WIMZBB7MD+NywIXfHg==}
     dev: true
 
-  /@utilitywarehouse/react-icons@1.1.1(react@18.2.0):
-    resolution: {integrity: sha512-h4YpnpujEW2hnj9Aiil9DRgCtcDdYANp0eSNfzKPNMI7/lsSLxFgXOwuOACKhtge38vc5wTkdZIk5TsEAR4GOA==}
+  /@utilitywarehouse/react-icons@1.11.0(react@18.2.0):
+    resolution: {integrity: sha512-BLEVvjr3/AGdh5KQNcgwvNAf9RL2LQ44FMvIfVGdjjKABAX2JK3SZ+Dy8STt6zPDsfepS3KWdqGIkGOE3s38KQ==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
