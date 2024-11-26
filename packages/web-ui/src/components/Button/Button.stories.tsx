@@ -3,7 +3,6 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { colorsCommon } from '@utilitywarehouse/colour-system';
-<<<<<<< HEAD
 import {
   ChevronLeft01SmallIcon,
   ChevronRight01SmallIcon,
@@ -16,22 +15,6 @@ import {
   TickSmallIcon,
   TrashSmallIcon,
 } from '@utilitywarehouse/react-icons';
-||||||| parent of 7884c5d4 (add Button design guidelines)
-import { ChevronLeft01SmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-icons';
-=======
-import {
-  ChevronLeft01SmallIcon,
-  ChevronRight01SmallIcon,
-  CloseSmallIcon,
-  CopySmallIcon,
-  DownloadSmallIcon,
-  EditSmallIcon,
-  FullscreenSmallIcon,
-  LogoutSmallIcon,
-  TickSmallIcon,
-  TrashSmallIcon,
-} from '@utilitywarehouse/react-icons';
->>>>>>> 7884c5d4 (add Button design guidelines)
 
 import { Button } from './Button';
 
@@ -377,7 +360,6 @@ export const FullWidth: Story = {
   ),
   args: { children: 'Full width button with icon' },
 };
-<<<<<<< HEAD
 
 export const SolidVariantDesignExample: Story = {
   render: () => (
@@ -415,7 +397,6 @@ export const GhostVariantDesignExample: Story = {
     </Flex>
   ),
 };
-<<<<<<< HEAD
 
 export const CyanColorSchemeDesignExample: Story = {
   render: () => (
@@ -451,7 +432,6 @@ export const RedColorSchemeDesignExample: Story = {
     </Flex>
   ),
 };
-<<<<<<< HEAD
 
 export const GreenColorSchemeDesignExample: Story = {
   render: () => (
@@ -495,127 +475,3 @@ export const GreyColorSchemeDesignExample: Story = {
     </Flex>
   ),
 };
-||||||| parent of 7884c5d4 (add Button design guidelines)
-=======
-
-export const SolidVariantDesignExample: Story = {
-  render: () => (
-    <Flex gap={2} align="center">
-      <Button variant="solid">Submit feedback</Button>
-      <Button variant="solid">Buy now</Button>
-      <Button variant="solid" colorScheme="red">
-        Delete account
-      </Button>
-    </Flex>
-  ),
-};
-
-export const OutlineVariantDesignExample: Story = {
-  render: () => (
-    <Flex gap={2} align="center">
-      <Button variant="outline">Sign up</Button>
-      <Button variant="outline" colorScheme="grey">
-        <EditSmallIcon />
-        Edit
-      </Button>
-      <Button variant="outline" colorScheme="red">
-        Cancel
-      </Button>
-    </Flex>
-  ),
-};
-
-export const GhostVariantDesignExample: Story = {
-  render: () => (
-    <Flex gap={2} direction="column" align="stretch" width={500}>
-      <Button variant="solid">This is the main action</Button>
-      <Button variant="outline">This is a less important action</Button>
-      <Button variant="ghost">This is the least important action</Button>
-    </Flex>
-  ),
-};
->>>>>>> 7884c5d4 (add Button design guidelines)
-||||||| parent of 726bc3fa (continue)
-=======
-
-export const CyanColorSchemeDesignExample: Story = {
-  render: () => (
-    <Flex gap={2} align="stretch" width={500}>
-      <Button variant="outline">
-        <ChevronLeft01SmallIcon />
-        Back
-      </Button>
-      <Button variant="solid">
-        Continue
-        <ChevronRight01SmallIcon />
-      </Button>
-      <Button variant="ghost">View help</Button>
-    </Flex>
-  ),
-};
-
-export const RedColorSchemeDesignExample: Story = {
-  render: () => (
-    <Flex gap={2} align="stretch" width={500}>
-      <Button variant="solid" colorScheme="red">
-        <TrashSmallIcon />
-        Delete account
-      </Button>
-      <Button variant="outline" colorScheme="red">
-        <LogoutSmallIcon />
-        Log out
-      </Button>
-      <Button variant="ghost" colorScheme="red">
-        <CloseSmallIcon />
-        Clear
-      </Button>
-    </Flex>
-  ),
-};
->>>>>>> 726bc3fa (continue)
-||||||| parent of f57c1423 (update button design guidelines)
-=======
-
-export const GreenColorSchemeDesignExample: Story = {
-  render: () => (
-    <Flex gap={2} align="stretch" width={500}>
-      <Button variant="solid" colorScheme="green">
-        <TickSmallIcon />
-        Selected plan
-      </Button>
-      <Button variant="outline" colorScheme="green">
-        Accept
-      </Button>
-    </Flex>
-  ),
-};
-
-export const GoldColorSchemeDesignExample: Story = {
-  render: () => (
-    <Flex gap={2} align="stretch" width={500}>
-      <Button variant="outline" colorScheme="gold">
-        Review plan
-      </Button>
-      <Button variant="ghost" colorScheme="gold">
-        <DownloadSmallIcon />
-        Save as draft
-      </Button>
-    </Flex>
-  ),
-};
-
-export const GreyColorSchemeDesignExample: Story = {
-  render: () => (
-    <Flex gap={2} align="stretch" width={500}>
-      <Button variant="outline" colorScheme="grey">
-        <CopySmallIcon />
-        Copy link
-      </Button>
-      <Button variant="ghost" colorScheme="grey">
-        <FullscreenSmallIcon />
-        Expand
-      </Button>
-    </Flex>
-  ),
-};
->>>>>>> f57c1423 (update button design guidelines)
