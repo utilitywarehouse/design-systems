@@ -9,7 +9,7 @@ const consoleLog = debugMode
 consoleLog.clear();
 
 // Update the exportVariables function to conditionally rename modes
-async function exportVariables(selectedCollectionKeys: string[]) {
+async function exportVariables(selectedCollectionKeys: Array<string>) {
   consoleLog.log('Selected Collection Keys:', selectedCollectionKeys);
   try {
     figma.ui.postMessage({ type: 'show-loading' });
@@ -86,14 +86,13 @@ async function exportVariables(selectedCollectionKeys: string[]) {
 }
 
 // Modify the renameModes function to handle 'light' and 'dark' renaming
-function renameModes(tokens: Record<string, any>, customNames: string[]): Record<string, any> {
+function renameModes(tokens: Record<string, any>, customNames: Array<string>): Record<string, any> {
   const renamedTokens: Record<string, any> = {};
   const modeKeys = Object.keys(tokens);
   modeKeys.sort(); // Ensure consistent order if necessary
 
   modeKeys.forEach((modeKey, index) => {
-    let newModeName: string;
-    newModeName = customNames[index];
+    const newModeName = customNames[index];
     renamedTokens[newModeName] = tokens[modeKey];
   });
 
@@ -101,7 +100,7 @@ function renameModes(tokens: Record<string, any>, customNames: string[]): Record
 }
 
 // Update the processVariables function to handle named modes
-async function processVariables(variables: Variable[]): Promise<Record<string, any>> {
+async function processVariables(variables: Array<Variable>): Promise<Record<string, any>> {
   // Map to store resolved variables
   const resolvedVariablesPromises = variables.map(variable => resolveVariable(variable));
   const resolvedVariables = await Promise.all(resolvedVariablesPromises);

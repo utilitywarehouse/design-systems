@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable  @typescript-eslint/no-unsafe-return */
+/* eslint-disable  @typescript-eslint/no-unsafe-call */
 import React from 'react';
 import logo from '../assets/logo.svg';
 import '@utilitywarehouse/css-reset';
