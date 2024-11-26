@@ -1,0 +1,10 @@
+:root {
+  --label-font-weight-nested: 400;
+  --label-font-weight: 600;
+  --label-color: #121212;
+  --label-letter-spacing: 0;
+  --label-line-height: 24;
+  --label-color-disabled: #a0a0a0;
+  --label-font-family: Work Sans;
+  --label-font-size: 16;
+}

@@ -2,7 +2,7 @@
   "name": "@utilitywarehouse/design-tokens",
   "version": "0.1.0",
   "description": "",
-  "main": "build/index.js",
+  "main": "build/js/index.js",
   "type": "module",
   "scripts": {
     "build": "node ./scripts/build.js && tsc"

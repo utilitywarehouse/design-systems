@@ -1,0 +1,29 @@
+:root {
+  --input-border-radius-top: 16;
+  --input-border-width: 2;
+  --input-value-color-disabled: #585858;
+  --input-height: 56;
+  --input-font-family: Work Sans;
+  --input-valid-border-color: #90dab2;
+  --input-valid-icon-color: #90dab2;
+  --input-border-radius-bottom: 0;
+  --input-border-color-focus: #75a7fd;
+  --input-border-color-disabled: #585858;
+  --input-padding: 16;
+  --input-placeholder-color: #b8b8b8;
+  --input-background-color: #1d1d1d;
+  --input-value-color: #fafafa;
+  --input-gap: 8;
+  --input-line-height: 24;
+  --input-background-color-disabled: #050505;
+  --input-font-size: 18;
+  --input-invalid-border-color: #f58e92;
+  --input-invalid-icon-color: #f58e92;
+  --input-border-color: #707070;
+  --input-icon-color: #c1c1c1;
+  --input-border-width-focus: 2;
+  --input-border-bottom-color: #f0f0f0;
+  --input-font-weight: 400;
+  --input-border-bottom-color-disabled: #b8b8b8;
+  --input-icon-color-disabled: #585858;
+}

@@ -1,0 +1,8 @@
+:root {
+  --fieldset-legend-font-family: Work Sans;
+  --fieldset-legend-font-weight: 600;
+  --fieldset-legend-color-disabled: #585858;
+  --fieldset-legend-color: #fafafa;
+  --fieldset-legend-line-height: 24;
+  --fieldset-legend-font-size: 16;
+}

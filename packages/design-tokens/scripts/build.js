@@ -8,25 +8,18 @@ const __dirname = path.dirname(__filename);
 
 // Register custom transforms
 
-// Transform to convert size values from px to rem
+// Add a custom transform to rename spacing tokens from "X-5" to "X.5"
 StyleDictionary.registerTransform({
-  name: 'size/rem',
-  type: 'value',
-  filter: token => token.attributes.category === 'size',
+  name: 'spacing/rename',
+  type: 'name',
+  transitive: false,
+  filter: token =>
+    token.path[0] === 'spacing' &&
+    typeof token.path[1] === 'string' &&
+    token.path[1].includes('-5'),
   transform: token => {
-    const baseFontSize = 16; // Base font size in px
-    return `${token.value / baseFontSize}rem`;
-  },
-});
-
-// Transform to format color values for CSS (ensuring hexadecimal format)
-StyleDictionary.registerTransform({
-  name: 'color/css',
-  type: 'value',
-  filter: token => token.attributes.category === 'color',
-  transform: token => {
-    // You can enhance this transformer to handle different color formats if needed
-    return token.value;
+    token.path[1] = token.path[1].replace('-5', '.5');
+    return token;
   },
 });
 
@@ -54,21 +47,27 @@ StyleDictionary.registerFormat({
   },
 });
 
-// Define your custom transform group using built-in and custom transforms
-const customTransformGroup = {
-  transforms: ['attribute/cti', 'name/kebab', 'size/rem', 'color/css'],
-};
-
-// Register the custom transform group
-StyleDictionary.registerTransformGroup({
-  name: 'custom',
-  transforms: customTransformGroup.transforms,
+// Register custom CSS format without theme prefix
+StyleDictionary.registerFormat({
+  name: 'css/no-theme-variables',
+  format: ({ dictionary, options }) => {
+    return (
+      `${options.prefix ? options.prefix : ':root'} {\n` +
+      dictionary.allTokens
+        .map(token => {
+          const name = token.path.slice(1).join('-');
+          return `  --${name}: ${token.value};`;
+        })
+        .join('\n') +
+      '\n}'
+    );
+  },
 });
 
-// Register the custom transform group
+// Register the JS transform group with the added 'spacing/rename' transform
 StyleDictionary.registerTransformGroup({
-  name: 'native',
-  transforms: ['attribute/cti', 'name/camel', 'size/rem', 'color/hex'],
+  name: 'js-custom',
+  transforms: ['attribute/cti', 'name/camel', 'spacing/rename', 'size/rem', 'color/hex'],
 });
 
 // Function to generate index.ts in a directory
@@ -90,15 +89,15 @@ function generateIndexFile(dir, defaultVal = false) {
   fs.writeFileSync(path.join(dir, 'index.ts'), exportStatements);
 }
 
-// Build function for native platform
-async function buildNative() {
+// Build function for js platform
+async function buildStyles() {
   const dictionaries = [
     new StyleDictionary({
       source: ['./tokens/design-tokens-global--primitive-colors.json'],
       platforms: {
-        native: {
-          transformGroup: 'native',
-          buildPath: './build/native/',
+        js: {
+          transformGroup: 'js-custom',
+          buildPath: './build/js/',
           files: [
             // Light mode colors
             {
@@ -116,19 +115,38 @@ async function buildNative() {
             },
           ],
         },
+        css: {
+          transformGroup: 'css',
+          buildPath: './build/css/',
+          files: [
+            // Consolidated CSS variable files for colors
+            {
+              destination: 'colors/light.css',
+              format: 'css/no-theme-variables',
+              options: { prefix: ':root' },
+              filter: token => token.path[0] === 'light',
+            },
+            {
+              destination: 'colors/dark.css',
+              format: 'css/no-theme-variables',
+              options: { prefix: ':root' },
+              filter: token => token.path[0] === 'dark',
+            },
+          ],
+        },
       },
     }),
+    // Primitive tokens native
     new StyleDictionary({
       source: [
         './tokens/design-tokens-global--primitive-tokens.json',
         './tokens/uw-app-ui--primitive-tokens.json',
       ],
       platforms: {
-        native: {
-          transformGroup: 'native',
-          buildPath: './build/native/',
+        js: {
+          transformGroup: 'js-custom',
+          buildPath: './build/js/',
           files: [
-            // Primitive tokens
             {
               destination: 'primitive/index.ts',
               format: 'javascript/custom-es6',
@@ -141,9 +159,9 @@ async function buildNative() {
     new StyleDictionary({
       source: ['./tokens/design-tokens-global--semantic-tokens.json'],
       platforms: {
-        native: {
-          transformGroup: 'native',
-          buildPath: './build/native/',
+        js: {
+          transformGroup: 'js-custom',
+          buildPath: './build/js/',
           files: [
             // Semantic tokens
             {
@@ -161,9 +179,9 @@ async function buildNative() {
         './tokens/uw-app-ui--component-tokens.json',
       ],
       platforms: {
-        native: {
-          transformGroup: 'native',
-          buildPath: './build/native/',
+        js: {
+          transformGroup: 'js-custom',
+          buildPath: './build/js/',
           files: [
             // Light mode components
             {
@@ -183,60 +201,97 @@ async function buildNative() {
         },
       },
     }),
+    new StyleDictionary({
+      source: ['./tokens/design-tokens-global--component-tokens.json'],
+      platforms: {
+        css: {
+          transformGroup: 'css',
+          buildPath: './build/css/',
+          files: [...getComponentFiles()],
+        },
+      },
+    }),
+    new StyleDictionary({
+      source: ['./tokens/design-tokens-global--primitive-tokens.json'],
+      platforms: {
+        css: {
+          transformGroup: 'css',
+          buildPath: './build/css/',
+          files: [
+            {
+              destination: 'primitive.css',
+              format: 'css/variables',
+              options: { outputReferences: true },
+            },
+          ],
+        },
+      },
+    }),
+    new StyleDictionary({
+      source: ['./tokens/design-tokens-global--semantic-tokens.json'],
+      platforms: {
+        css: {
+          transformGroup: 'css',
+          buildPath: './build/css/',
+          files: [
+            {
+              destination: 'semantic.css',
+              format: 'css/variables',
+              options: { outputReferences: true },
+            },
+          ],
+        },
+      },
+    }),
   ];
 
-  // Build the native platform
+  // Build the all platform
   await Promise.all(dictionaries.map(dictionary => dictionary.buildAllPlatforms()));
 
   // Generate index.ts files in each subdirectory
   const buildPath = path.resolve(__dirname, '../');
-  ['build', 'build/native'].forEach(subDir => {
+  ['/build/js'].forEach(subDir => {
     const fullPath = path.join(buildPath, subDir);
     generateIndexFile(fullPath, false);
   });
-  ['build/native/colors', 'build/native/components'].forEach(subDir => {
+  ['/build/js/colors', '/build/js/components'].forEach(subDir => {
     const otherPath = path.join(buildPath, subDir);
     generateIndexFile(otherPath, true);
   });
 }
 
-// Build function for web platform
-async function buildWeb() {
-  const sdWeb = new StyleDictionary({
-    source: ['./tokens/**/*.json'],
-    platforms: {
-      web: {
-        transformGroup: 'css',
-        buildPath: './build/web/',
-        files: [
-          {
-            destination: '_components.css',
-            format: 'css/variables',
-            options: { outputReferences: true },
-          },
-          {
-            destination: '_colors.css',
-            format: 'css/variables',
-            options: { outputReferences: true },
-          },
-          {
-            destination: '_primitive.css',
-            format: 'css/variables',
-            options: { outputReferences: true },
-          },
-        ],
-      },
-    },
-  });
+// Add helper function to retrieve component keys from the tokens file
+function getComponentNames() {
+  const tokensPath = path.resolve(
+    __dirname,
+    '../tokens/design-tokens-global--component-tokens.json'
+  );
+  const tokens = JSON.parse(fs.readFileSync(tokensPath, 'utf8'));
+  return Object.keys(tokens.light);
+}
 
-  sdWeb.buildAllPlatforms();
+// Modify getComponentFiles to exclude color-related tokens
+function getComponentFiles() {
+  const components = getComponentNames();
+  const themes = ['light', 'dark'];
+
+  return themes.flatMap(theme =>
+    components.map(component => ({
+      destination: `components/${theme}/${component}.css`,
+      format: 'css/no-theme-variables', // Use the new format
+      options: { outputReferences: true },
+      filter: token =>
+        token.path[0] === theme &&
+        token.path.includes(component) &&
+        token.attributes.category !== 'color', // Exclude color tokens
+    }))
+  );
 }
 
 // Build all platforms
 (async () => {
   try {
-    await buildNative();
-    await buildWeb();
+    await buildStyles();
     console.log('Tokens built successfully!');
   } catch (error) {
     console.error('Error building tokens:', error);

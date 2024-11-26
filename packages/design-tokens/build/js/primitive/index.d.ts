@@ -45,11 +45,11 @@ declare const _default: {
         "8": number;
         "9": number;
         "10": number;
-        "3-5": number;
-        "2-5": number;
-        "4-5": number;
-        "1-5": number;
-        "0-5": number;
+        "3.5": number;
+        "2.5": number;
+        "4.5": number;
+        "1.5": number;
+        "0.5": number;
     };
     shadows: {
         overlay: {

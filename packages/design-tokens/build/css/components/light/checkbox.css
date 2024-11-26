@@ -1,0 +1,17 @@
+:root {
+  --checkbox-checked-icon-color: #ffffff;
+  --checkbox-checked-background-color-disabled: #d8d8d8;
+  --checkbox-checked-background-color: #4789fa;
+  --checkbox-checked-icon-color-disabled: #a0a0a0;
+  --checkbox-unchecked-border-color-disabled: #b8b8b8;
+  --checkbox-unchecked-border-color: #888888;
+  --checkbox-unchecked-border-color-hover: #4789fa;
+  --checkbox-unchecked-border-color-focus: #4789fa;
+  --checkbox-border-radius: 4;
+  --checkbox-halo-width: 8;
+  --checkbox-halo-color: #ecf4fe;
+  --checkbox-border-width: 2;
+  --checkbox-size: 24;
+  --checkbox-background-color: #ffffff;
+  --checkbox-padding: 4;
+}
