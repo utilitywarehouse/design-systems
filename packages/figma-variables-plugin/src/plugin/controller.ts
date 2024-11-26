@@ -238,7 +238,7 @@ function formatValue(value: any): any {
     return value;
   }
   // Handle other types as needed
-  consoleLog.warn(`Unrecognized value type: ${JSON.stringify(value)}`);
+  consoleLog.warn(`Unrecognised value type: ${JSON.stringify(value)}`);
   return value;
 }
 
