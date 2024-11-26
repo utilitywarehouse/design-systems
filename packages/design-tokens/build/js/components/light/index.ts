@@ -1,4 +1,3 @@
-<<<<<<< HEAD:packages/design-tokens/build/js/components/light/index.ts
 export default {
   "label": {
     "fontWeightNested": 400,
@@ -10,27 +9,6 @@ export default {
     "fontFamily": "Work Sans",
     "fontSize": 16
   },
-||||||| parent of 109b9428 (update button design guidelines):packages/design-tokens/build/native/light/tokens-light.js
-/**
- * Do not edit directly
-<<<<<<< HEAD
- * Generated on Tue Nov 26 2024 16:11:13 GMT+0000 (Greenwich Mean Time)
-||||||| parent of 726bc3fa (continue)
- * Generated on Mon Nov 25 2024 16:04:12 GMT+0000 (Greenwich Mean Time)
-=======
- * Generated on Tue Nov 26 2024 10:16:14 GMT+0000 (Greenwich Mean Time)
->>>>>>> 726bc3fa (continue)
- */
-
-export const tokens = {
-=======
-/**
- * Do not edit directly
- * Generated on Tue Nov 26 2024 16:14:23 GMT+0000 (Greenwich Mean Time)
- */
-
-export const tokens = {
->>>>>>> 109b9428 (update button design guidelines):packages/design-tokens/build/native/light/tokens-light.js
   "input": {
     "borderRadiusTop": 16,
     "borderWidth": 2,
