@@ -27,6 +27,7 @@ import { DocsHeader } from '../../storybook-components';
 - [Error message](#error-message)
 - [Content Width](#content-width)
 - [Controlled](#controlled)
+- [Advanced Usage](#advanced-usage)
 - [RadioGroup props](#radiogroup-props)
 - [Radio & RadioTile](#radio-&-radiotile)
   - [Accessibility](#accessibility)
@@ -35,6 +36,7 @@ import { DocsHeader } from '../../storybook-components';
 ## Alternatives
 
 - [RadioGridGroup](?path=/docs/components-radiogridgroup--documentation) - For presenting radios in columns or a grid layout.
+- [RadioGroupRoot](?path=/story/web-ui-components-radio-radiogroup--radio-group-root-story) - For presenting radios, outside of a fieldset, without label, helper text, or error message.
 - [CheckboxGroup](?path=/docs/components-checkboxgroup--documentation) - For multi-select.
 - [CheckboxGridGroup](?path=/docs/components-checkboxgridgroup--documentation) - For multi-select in columns or grid layout.
 
@@ -133,6 +135,36 @@ corresponding with the value prop of each `Radio`. The onChange event is fired
 when the user selects a `Radio`.
 
 <Canvas of={RadioGroupStories.Controlled} />
+
+## Advanced Usage
+
+For advanced usage you can compose the `RadioGroupRoot` component.
+
+If you choose to do this, please make sure you properly label your components for accessibility. See [MagentaA11y](https://www.magentaa11y.com/checklist-web/radio/) for more info.
+
+```tsx
+<FormFieldGroup label="Label">
+  <RadioGroupRoot>
+    <Radio value="1" label="One" />
+    <Radio value="2" label="Two" />
+    <Radio value="3" label="Three" />
+  </RadioGroupRoot>
+</FormFieldGroup>
+
+
+<Fieldset>
+  <FieldsetLegend>
+    <Heading variant="h1">Label</Heading>
+  </FieldsetLegend>
+  <RadioGroupRoot>
+    <Radio value="1" label="One" />
+    <Radio value="2" label="Two" />
+    <Radio value="3" label="Three" />
+  </RadioGroupRoot>
+</Fieldset>
+```
+
+<Canvas of={RadioGroupStories.RadioGroupRootStory} />
 
 ## RadioGroup props
 

@@ -31,9 +31,11 @@ import { DocsHeader } from '../../storybook-components';
 
 Uses a native `<button>` element under the hood, with support for the <kbd>Space</kbd> and <kbd>Enter</kbd> keys.
 
-Disabled buttons use `aria-disabled` so that they are still focusable when
-using the keyboard. This means that screen readers are still able to find the
-button, however the `onClick` handler will be disabled.
+Disabled buttons use `aria-disabled`, rather than `disabled`, so that they are
+still focusable when using the keyboard. This means that screen readers are
+still able to find the button, with the insight that it is disabled and that
+there is perhaps an action which needs to be taken, rather than not knowing
+there is a button there at all. The `onClick` handler will still be disabled.
 
 ### Known issues
 

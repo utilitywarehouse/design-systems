@@ -4,9 +4,9 @@ import clsx from 'clsx';
 
 import type { CheckboxProps } from './Checkbox.props';
 
-import { BaseCheckbox } from '../BaseCheckbox';
-import { useBaseCheckboxGroup } from '../BaseCheckboxGroup';
+import { CheckboxBase } from '../CheckboxBase';
 import { Flex } from '../Flex';
+import { useFormFieldGroup } from '../FormFieldGroup';
 import { HelperText } from '../HelperText';
 import { Label } from '../Label';
 
@@ -23,7 +23,7 @@ const StyledFlex = styled(Flex)({
   '*': { cursor: 'pointer' },
 });
 
-const StyledBaseCheckbox = styled(BaseCheckbox)({
+const StyledCheckboxBase = styled(CheckboxBase)({
   ':where(:focus-visible)': {
     '--checkbox-outline-color': 'var(--checkbox-outline-color-focus)',
   },
@@ -64,7 +64,7 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<Checkbox
     ref
   ) => {
     const { id, labelId, helperTextId } = useIds({ providedId, componentPrefix: 'checkbox' });
-    const context = useBaseCheckboxGroup();
+    const context = useFormFieldGroup();
     const hasGroupHelperText = context?.hasGroupHelperText;
     const ariaDescribedby = context ? context['aria-describedby'] : '';
     const showHelperText = !hasGroupHelperText && !!helperText;
@@ -76,7 +76,7 @@ export const Checkbox = React.forwardRef<HTMLButtonElement, PropsWithSx<Checkbox
         data-disabled={disabled ? '' : undefined}
         gap={1}
       >
-        <StyledBaseCheckbox
+        <StyledCheckboxBase
           ref={ref}
           {...props}
           id={id}

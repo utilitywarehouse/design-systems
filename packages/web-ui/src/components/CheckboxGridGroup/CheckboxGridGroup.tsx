@@ -3,11 +3,10 @@ import * as React from 'react';
 import clsx from 'clsx';
 
 import type { CheckboxGridGroupProps } from './CheckboxGridGroup.props';
+import { CheckboxGridGroupRoot } from './CheckboxGridGroupRoot';
 
-import { BaseCheckboxGroup } from '../BaseCheckboxGroup';
-import { Box } from '../Box';
+import { FormFieldGroup } from '../FormFieldGroup';
 
-import { getColumns } from '../../helpers';
 import { withGlobalPrefix } from '../../utils';
 
 const componentName = 'CheckboxGridGroup';
@@ -23,20 +22,60 @@ const componentClassName = withGlobalPrefix(componentName);
  * the items in the list.
  */
 export const CheckboxGridGroup = React.forwardRef<HTMLFieldSetElement, CheckboxGridGroupProps>(
-  ({ children, contentWidth = 'fit-content', columns = 2, className, ...props }, ref) => {
-    console.log('columns', getColumns(columns));
+  (
+    {
+      disabled,
+      required,
+      label,
+      helperText,
+      helperTextPosition,
+      showHelperTextIcon,
+      error,
+      errorMessage,
+      showErrorMessageIcon,
+      value,
+      defaultValue,
+      onValueChange,
+      name,
+      children,
+      contentWidth = 'fit-content',
+      columns = 2,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    const formFieldGroupProps = {
+      ...props,
+      disabled,
+      required,
+      label,
+      helperText,
+      helperTextPosition,
+      showHelperTextIcon,
+      error,
+      errorMessage,
+      showErrorMessageIcon,
+    };
+    const checkboxGridGroupRootProps = {
+      width: contentWidth,
+      columns,
+      name,
+      required,
+      disabled,
+      defaultValue,
+      value,
+      onValueChange,
+      children,
+    };
     return (
-      <BaseCheckboxGroup ref={ref} className={clsx(componentClassName, className)} {...props}>
-        <Box
-          display="grid"
-          gap={2}
-          gridTemplateColumns={getColumns(columns)}
-          minWidth="fit-content"
-          width={contentWidth}
-        >
-          {children}
-        </Box>
-      </BaseCheckboxGroup>
+      <FormFieldGroup
+        ref={ref}
+        className={clsx(componentClassName, className)}
+        {...formFieldGroupProps}
+      >
+        <CheckboxGridGroupRoot {...checkboxGridGroupRootProps} />
+      </FormFieldGroup>
     );
   }
 );

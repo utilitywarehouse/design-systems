@@ -6,6 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { colors } from '@utilitywarehouse/colour-system';
 
 import { CheckboxGroup } from './CheckboxGroup';
+import { CheckboxGroupRoot } from './CheckboxGroupRoot';
 
 import { Box } from '../Box';
 import { Checkbox } from '../Checkbox';
@@ -32,11 +33,11 @@ const meta: Meta<typeof CheckboxGroup> = {
     contentWidth: { control: { type: 'text' } },
   },
   args: {
-    label: 'Label',
+    label: 'Which services do you currently have with UW?',
     defaultValue: ['1', '2'],
     direction: 'column',
     disabled: false,
-    helperText: 'Helper text',
+    helperText: 'Select all that apply',
     helperTextPosition: 'top',
     showHelperTextIcon: false,
     error: false,
@@ -50,18 +51,19 @@ export default meta;
 type Story = StoryObj<typeof CheckboxGroup>;
 
 export const Workshop: Story = {
-  name: 'CheckboxGroup',
   render: args => (
     <Flex component="form" gap={8}>
       <CheckboxGroup {...args} name="checkbox-story">
-        <Checkbox value="1" label="One" />
-        <Checkbox value="2" label="Two" />
-        <Checkbox value="3" label="Three" />
+        <Checkbox value="1" label="Energy" />
+        <Checkbox value="2" label="Broadband" />
+        <Checkbox value="3" label="Mobile" />
+        <Checkbox value="4" label="Insurance" />
       </CheckboxGroup>
       <CheckboxGroup {...args} name="checkbox-tiles-story">
-        <CheckboxTile value="1" label="One" />
-        <CheckboxTile value="2" label="Two" />
-        <CheckboxTile value="3" label="Three" />
+        <CheckboxTile value="1" label="Energy" />
+        <CheckboxTile value="2" label="Broadband" />
+        <CheckboxTile value="3" label="Mobile" />
+        <CheckboxTile value="4" label="Insurance" />
       </CheckboxGroup>
     </Flex>
   ),
@@ -156,5 +158,37 @@ export const Wrap: Story = {
         </CheckboxGroup>
       </Box>
     );
+  },
+};
+
+export const CheckboxGroupRootStory: StoryObj<typeof CheckboxGroupRoot> = {
+  name: 'CheckboxGroupRoot',
+  render: args => (
+    <Flex component="form" direction="column" gap={8} width="fit-content">
+      <CheckboxGroupRoot {...args} name="checkbox-story">
+        <Checkbox value="1" label="One" />
+        <Checkbox value="2" label="Two" />
+        <Checkbox value="3" label="Three" />
+      </CheckboxGroupRoot>
+      <CheckboxGroupRoot {...args} name="checkbox-tiles-story">
+        <CheckboxTile value="1" label="One" />
+        <CheckboxTile value="2" label="Two" />
+        <CheckboxTile value="3" label="Three" />
+      </CheckboxGroupRoot>
+    </Flex>
+  ),
+  parameters: {
+    controls: {
+      exclude: [
+        'helperText',
+        'label',
+        'helperTextPosition',
+        'showHelperTextIcon',
+        'error',
+        'errorMessage',
+        'showErrorMessageIcon',
+        'contentWidth',
+      ],
+    },
   },
 };

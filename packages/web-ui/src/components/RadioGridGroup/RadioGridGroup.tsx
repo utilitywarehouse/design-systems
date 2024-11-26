@@ -3,11 +3,10 @@ import * as React from 'react';
 import clsx from 'clsx';
 
 import type { RadioGridGroupProps } from './RadioGridGroup.props';
+import { RadioGridGroupRoot } from './RadioGridGroupRoot';
 
-import { BaseRadioGroup } from '../BaseRadioGroup';
-import { Box } from '../Box';
+import { FormFieldGroup } from '../FormFieldGroup';
 
-import { getColumns } from '../../helpers';
 import type { PropsWithSx } from '../../types';
 import { withGlobalPrefix } from '../../utils';
 
@@ -23,20 +22,65 @@ const componentClassName = withGlobalPrefix(componentName);
  * and disabled state, as well as determining the presentation and selection of
  * the items in the list. Follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) for radio groups not contained in a toolbar.
  */
-export const RadioGridGroup = React.forwardRef<HTMLDivElement, PropsWithSx<RadioGridGroupProps>>(
-  ({ children, contentWidth = 'fit-content', columns = 2, className, ...props }, ref) => {
+export const RadioGridGroup = React.forwardRef<
+  HTMLFieldSetElement,
+  React.PropsWithChildren<PropsWithSx<RadioGridGroupProps>>
+>(
+  (
+    {
+      children,
+      contentWidth = 'fit-content',
+      className,
+      label,
+      helperText,
+      helperTextPosition,
+      showHelperTextIcon,
+      error,
+      errorMessage,
+      showErrorMessageIcon,
+      required,
+      disabled,
+      loop,
+      defaultValue,
+      value,
+      onValueChange,
+      name,
+      columns,
+      ...props
+    },
+    ref
+  ) => {
+    const formFieldGroupProps = {
+      ...props,
+      disabled,
+      required,
+      label,
+      helperText,
+      helperTextPosition,
+      showHelperTextIcon,
+      error,
+      errorMessage,
+      showErrorMessageIcon,
+    };
+    const radioGridGroupRootProps = {
+      width: contentWidth,
+      name,
+      required,
+      disabled,
+      loop,
+      defaultValue,
+      value,
+      onValueChange,
+      columns,
+    };
     return (
-      <BaseRadioGroup ref={ref} className={clsx(componentClassName, className)} {...props}>
-        <Box
-          display="grid"
-          gap={2}
-          gridTemplateColumns={getColumns(columns)}
-          minWidth="fit-content"
-          width={contentWidth}
-        >
-          {children}
-        </Box>
-      </BaseRadioGroup>
+      <FormFieldGroup
+        ref={ref}
+        className={clsx(componentClassName, className)}
+        {...formFieldGroupProps}
+      >
+        <RadioGridGroupRoot {...radioGridGroupRootProps}>{children}</RadioGridGroupRoot>
+      </FormFieldGroup>
     );
   }
 );
