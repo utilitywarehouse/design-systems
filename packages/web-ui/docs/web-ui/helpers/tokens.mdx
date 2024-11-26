@@ -1,13 +1,16 @@
 import { Meta } from '@storybook/blocks';
-import { breakpoints, fonts, fontWeights } from '../../../src/tokens';
-import { Text, Flex, Divider } from '../../../src';
 import { Analytics } from '@vercel/analytics/react';
+
+import { Text, Flex, Divider } from '../../../src';
+import { breakpoints, fonts, fontWeights } from '../../../src/tokens';
 
 <Analytics />
 
-<Meta title="Web UI / Helpers / Tokens" />
+<Meta title="Web UI / Documentation / Tokens" />
 
-# Breakpoints (px)
+# Tokens
+
+## Breakpoints (px)
 
 <Flex direction="column" gap={1} width={400}>
   {Object.keys(breakpoints).map((bp, i) => (
@@ -25,7 +28,7 @@ import { Analytics } from '@vercel/analytics/react';
   ))}
 </Flex>
 
-# Font families
+## Font families
 
 <Flex direction="column" gap={1} width={400}>
   {Object.keys(fonts).map((font, i) => (
@@ -43,7 +46,7 @@ import { Analytics } from '@vercel/analytics/react';
   ))}
 </Flex>
 
-# Font weights
+## Font weights
 
 <Flex direction="column" gap={1} width={400}>
   <Flex justify="space-between" align="center">

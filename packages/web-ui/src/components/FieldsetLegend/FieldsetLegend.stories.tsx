@@ -7,7 +7,7 @@ import { FieldsetLegend } from './FieldsetLegend';
 import { Box } from '../Box';
 
 const meta: Meta<typeof FieldsetLegend> = {
-  title: 'Web UI / Typography / FieldsetLegend',
+  title: 'Web UI / Stories / FieldsetLegend',
   component: FieldsetLegend,
 };
 

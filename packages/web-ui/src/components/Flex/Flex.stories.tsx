@@ -11,7 +11,7 @@ import { Divider } from '../Divider';
 import { Text } from '../Text';
 
 const meta: Meta<typeof Flex> = {
-  title: 'Web UI / Layout / Flex',
+  title: 'Web UI / Stories / Flex',
   component: Flex,
   argTypes: {
     gap: { control: { type: 'number' } },

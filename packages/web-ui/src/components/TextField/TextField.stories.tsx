@@ -8,7 +8,7 @@ import { Button } from '../Button';
 import { Flex } from '../Flex';
 
 const meta: Meta<typeof TextField> = {
-  title: 'Web UI / Components / TextField',
+  title: 'Web UI / Stories / TextField',
   component: TextField,
   argTypes: {
     status: {

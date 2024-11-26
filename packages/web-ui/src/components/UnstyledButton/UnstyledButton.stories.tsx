@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { UnstyledButton } from './UnstyledButton';
 
 const meta: Meta<typeof UnstyledButton> = {
-  title: 'Web UI / Components / UnstyledButton',
+  title: 'Web UI / Stories / UnstyledButton',
   component: UnstyledButton,
   argTypes: { children: { control: { type: 'text' } } },
   args: { children: 'UnstyledButton' },

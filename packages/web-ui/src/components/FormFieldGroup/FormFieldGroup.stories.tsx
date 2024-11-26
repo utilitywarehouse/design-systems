@@ -7,7 +7,7 @@ import { FormFieldGroup } from './FormFieldGroup';
 import { Placeholder } from '../../storybook-components';
 
 const meta: Meta<typeof FormFieldGroup> = {
-  title: 'Web UI / Components / FormFieldGroup',
+  title: 'Web UI / Stories / FormFieldGroup',
   component: FormFieldGroup,
   argTypes: {
     helperText: { control: { type: 'text' } },

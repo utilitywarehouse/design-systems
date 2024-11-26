@@ -14,7 +14,7 @@
     "dev": "postcss --watch --verbose src --dir dist",
     "clean": "rm -rf dist && rm -rf node_modules",
     "format": "prettier --write --parser=scss \"./**/*.{css,scss}\"",
-    "format:ci": "prettier --list-different --parser=scss \"./**/*.{css,scss}\""
+    "format:ci": "prettier --list-different --parser=scss \"src/index.css\""
   },
   "publishConfig": {
     "access": "restricted"

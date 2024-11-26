@@ -10,7 +10,7 @@ import { Text } from '../Text';
 const textVariants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
 const meta: Meta<typeof Em> = {
-  title: 'Web UI / Typography / Em',
+  title: 'Web UI / Stories / Em',
   component: Em,
 };
 

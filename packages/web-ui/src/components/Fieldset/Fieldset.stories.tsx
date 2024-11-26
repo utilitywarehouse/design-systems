@@ -9,7 +9,7 @@ import { FieldsetLegend } from '../FieldsetLegend';
 import { Placeholder } from '../../storybook-components';
 
 const meta: Meta<typeof Fieldset> = {
-  title: 'Web UI / Components / Fieldset',
+  title: 'Web UI / Stories / Fieldset',
   component: Fieldset,
 };
 

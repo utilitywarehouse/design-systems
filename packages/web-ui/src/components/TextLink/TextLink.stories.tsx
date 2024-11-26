@@ -12,7 +12,7 @@ import { Flex } from '../Flex';
 import { Text } from '../Text';
 
 const meta: Meta<typeof TextLink> = {
-  title: 'Web UI / Components / Links / TextLink',
+  title: 'Web UI / Stories / TextLink',
   component: TextLink,
   argTypes: {
     children: { control: { type: 'text' } },

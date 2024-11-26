@@ -513,8 +513,8 @@ importers:
         specifier: workspace:^
         version: link:../colour-system
       '@utilitywarehouse/react-icons':
-        specifier: ^1.1.1
-        version: 1.1.1(react@18.2.0)
+        specifier: ^1.11.0
+        version: 1.11.0(react@18.2.0)
       clsx:
         specifier: ^2.0.0
         version: 2.0.0
@@ -8480,7 +8480,7 @@ packages:
       react-refresh: 0.14.2
       schema-utils: 3.3.0
       source-map: 0.7.4
-      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.18.20)
+      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.23.1)
     dev: true
 
   /@popperjs/core@2.11.8:
@@ -13982,8 +13982,8 @@ packages:
     resolution: {integrity: sha512-/qsvnWAJdtRHpwt2rhn0HClXVL3m8SwERLvBDk+uN0xbAxXiS4Ae8dkoi8wGypyFX4Y9WIMZBB7MD+NywIXfHg==}
     dev: true
 
-  /@utilitywarehouse/react-icons@1.1.1(react@18.2.0):
-    resolution: {integrity: sha512-h4YpnpujEW2hnj9Aiil9DRgCtcDdYANp0eSNfzKPNMI7/lsSLxFgXOwuOACKhtge38vc5wTkdZIk5TsEAR4GOA==}
+  /@utilitywarehouse/react-icons@1.11.0(react@18.2.0):
+    resolution: {integrity: sha512-BLEVvjr3/AGdh5KQNcgwvNAf9RL2LQ44FMvIfVGdjjKABAX2JK3SZ+Dy8STt6zPDsfepS3KWdqGIkGOE3s38KQ==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -14728,7 +14728,7 @@ packages:
       '@babel/core': 7.25.8
       find-cache-dir: 4.0.0
       schema-utils: 4.2.0
-      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.18.20)
+      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.23.1)
     dev: true
 
   /babel-plugin-add-react-displayname@0.0.5:
@@ -24741,7 +24741,7 @@ packages:
     dependencies:
       '@swc/core': 1.5.0
       '@swc/counter': 0.1.3
-      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.18.20)
+      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.23.1)
     dev: true
 
   /symbol-tree@3.2.4:
@@ -25979,7 +25979,7 @@ packages:
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.2.0
-      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.18.20)
+      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.23.1)
     dev: true
 
   /webpack-hot-middleware@2.26.1:

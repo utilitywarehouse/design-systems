@@ -16,7 +16,7 @@ const variants = ['soft', 'strong', 'outline'] as const;
 const colorSchemes = ['cyan', 'green', 'red', 'gold', 'grey'] as const;
 
 const meta: Meta<typeof Badge> = {
-  title: 'Web UI / Components / Badge',
+  title: 'Web UI / Stories / Badge',
   component: Badge,
   argTypes: {
     children: { control: { type: 'text' } },

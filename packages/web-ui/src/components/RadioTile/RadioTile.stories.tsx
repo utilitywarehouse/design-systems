@@ -9,7 +9,7 @@ import { RadioGroup } from '../RadioGroup';
 import { Stack } from '../Stack';
 
 const meta: Meta<typeof RadioTile> = {
-  title: 'Web UI / Components / Radio / RadioTile',
+  title: 'Web UI / Stories / RadioTile',
   component: RadioTile,
 };
 

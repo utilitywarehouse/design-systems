@@ -9,7 +9,7 @@ import { Spacer } from './Spacer';
 import { Box } from '../Box';
 
 const meta: Meta<typeof Spacer> = {
-  title: 'Web UI / Layout / Spacer',
+  title: 'Web UI / Stories / Spacer',
   component: Spacer,
 };
 
