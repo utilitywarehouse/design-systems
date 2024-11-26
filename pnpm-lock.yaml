@@ -8477,7 +8477,7 @@ packages:
       react-refresh: 0.14.2
       schema-utils: 3.3.0
       source-map: 0.7.4
-      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.18.20)
+      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.23.1)
     dev: true
 
   /@popperjs/core@2.11.8:
@@ -14725,7 +14725,7 @@ packages:
       '@babel/core': 7.25.8
       find-cache-dir: 4.0.0
       schema-utils: 4.2.0
-      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.18.20)
+      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.23.1)
     dev: true
 
   /babel-plugin-add-react-displayname@0.0.5:
@@ -24731,7 +24731,7 @@ packages:
     dependencies:
       '@swc/core': 1.5.0
       '@swc/counter': 0.1.3
-      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.18.20)
+      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.23.1)
     dev: true
 
   /symbol-tree@3.2.4:
@@ -25969,7 +25969,7 @@ packages:
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.2.0
-      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.18.20)
+      webpack: 5.95.0(@swc/core@1.5.0)(esbuild@0.23.1)
     dev: true
 
   /webpack-hot-middleware@2.26.1:

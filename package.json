@@ -38,7 +38,7 @@
     "ci:publish": "NODE_OPTIONS=\"--max_old_space_size=4096\" pnpm run build && changeset publish",
     "checks": "turbo run format lint:fix build --filter='./packages/*'",
     "checks:ci": "turbo run format:ci lint build --filter='./packages/*'",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package && pnpm build --filter \"@utilitywarehouse/colour-system\""
   },
   "workspaces": [
     "packages/*",
