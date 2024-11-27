@@ -10,7 +10,7 @@ import { Box } from '../Box';
 import { Button } from '../Button';
 
 const meta: Meta<typeof Menu> = {
-  title: 'Web UI / Components / Menu',
+  title: 'Web UI / Stories / Menu',
   component: Menu,
 };
 

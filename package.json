@@ -23,7 +23,9 @@
   "scripts": {
     "setup": "corepack enable && corepack prepare pnpm@8.6.3 --activate",
     "build": "turbo run build",
+    "dev": "turbo run dev",
     "build:storybook": "turbo run --no-cache build:storybook",
+    "build:colour-system": "pnpm build --filter \"@utilitywarehouse/colour-system\"",
     "generate": "turbo run generate && turbo run format",
     "preinstall": "npx only-allow pnpm",
     "format": "turbo run format",
@@ -31,13 +33,13 @@
     "lint": "turbo run lint --filter='./packages/*'",
     "lint:fix": "turbo run lint:fix --filter='./packages/*'",
     "clean": "pnpm -r --stream clean && rm -rf node_modules",
-    "dev": "turbo run dev --no-cache --parallel --continue --filter='./packages/*'",
+    "dev:web": "pnpm run build --filter \"@utilitywarehouse/css-reset\" && pnpm run dev --filter \"@utilitywarehouse/web-ui\"",
     "changeset": "changeset",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
     "ci:publish": "NODE_OPTIONS=\"--max_old_space_size=4096\" pnpm run build && changeset publish",
     "checks": "turbo run format lint:fix build --filter='./packages/*'",
     "checks:ci": "turbo run format:ci lint build --filter='./packages/*'",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package && pnpm build:colour-system"
   },
   "workspaces": [
     "packages/*",

@@ -14,7 +14,7 @@ import { Radio } from '../Radio';
 import { RadioTile } from '../RadioTile';
 
 const meta: Meta<typeof RadioGroup> = {
-  title: 'Web UI / Components / Radio / RadioGroup',
+  title: 'Web UI / Stories / RadioGroup',
   component: RadioGroup,
   argTypes: {
     direction: {

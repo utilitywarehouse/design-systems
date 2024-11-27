@@ -7,6 +7,7 @@ import '@utilitywarehouse/css-reset';
 // import '@utilitywarehouse/fontsource';
 import '../styles/ui.css';
 import { encodeContent, kebabCase } from '../utils';
+import { Heading } from '@utilitywarehouse/web-ui';
 
 const LoadingSpinner = () => (
   <div className="spinner-container">

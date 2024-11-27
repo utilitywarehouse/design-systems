@@ -325,21 +325,9 @@ importers:
 
   packages/figma-variables-plugin:
     dependencies:
-      '@emotion/react':
-        specifier: ^11.10.6
-        version: 11.10.6(@types/react@18.3.9)(react@18.2.0)
-      '@emotion/styled':
-        specifier: ^11.10.6
-        version: 11.10.6(@emotion/react@11.10.6)(@types/react@18.3.9)(react@18.2.0)
       '@mui/material':
         specifier: 5.14.15
-        version: 5.14.15(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.3.9)(react-dom@18.2.0)(react@18.2.0)
-      '@utilitywarehouse/css-reset':
-        specifier: workspace:^
-        version: link:../css-reset
-      '@utilitywarehouse/fontsource':
-        specifier: ^0.1.0
-        version: 0.1.0
+        version: 5.14.15(@types/react@18.3.9)(react-dom@18.2.0)(react@18.2.0)
       '@utilitywarehouse/web-ui':
         specifier: workspace:^
         version: link:../web-ui
@@ -528,8 +516,8 @@ importers:
         specifier: workspace:^
         version: link:../colour-system
       '@utilitywarehouse/react-icons':
-        specifier: ^1.1.1
-        version: 1.1.1(react@18.2.0)
+        specifier: ^1.11.0
+        version: 1.11.0(react@18.2.0)
       clsx:
         specifier: ^2.0.0
         version: 2.0.0
@@ -1388,7 +1376,6 @@ packages:
   /@babel/helper-validator-option@7.24.7:
     resolution: {integrity: sha512-yy1/KvjhV/ZCL+SM7hBrvnZJ3ZuT9OuZgIJAGpPEToANvc3iM6iDvBnRjtElWibHU6n8/LPR/EjX9EtIEYO3pw==}
     engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-validator-option@7.24.8:
     resolution: {integrity: sha512-xb8t9tD1MHLungh/AIoWYN+gVHaB9kwlu8gffXGSt3FFEIT7RjS+xWbc2vUD1UTZdIpKj/ab3rdqJ7ufngyi2Q==}
@@ -5441,7 +5428,7 @@ packages:
     dependencies:
       '@babel/core': 7.25.2
       '@babel/helper-plugin-utils': 7.24.8
-      '@babel/helper-validator-option': 7.25.9
+      '@babel/helper-validator-option': 7.24.7
       '@babel/plugin-transform-react-display-name': 7.24.7(@babel/core@7.25.2)
       '@babel/plugin-transform-react-jsx': 7.25.2(@babel/core@7.25.2)
       '@babel/plugin-transform-react-jsx-development': 7.24.7(@babel/core@7.25.2)
@@ -6060,26 +6047,6 @@ packages:
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
 
-  /@emotion/react@11.10.6(@types/react@18.3.9)(react@18.2.0):
-    resolution: {integrity: sha512-6HT8jBmcSkfzO7mc+N1L9uwvOnlcGoix8Zn7srt+9ga0MjREo6lRpuVX0kzo6Jp6oTqDhREOFsygN6Ew4fEQbw==}
-    peerDependencies:
-      '@types/react': '*'
-      react: '>=16.8.0'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.25.7
-      '@emotion/babel-plugin': 11.11.0
-      '@emotion/cache': 11.13.1
-      '@emotion/serialize': 1.1.4
-      '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
-      '@emotion/utils': 1.4.1
-      '@emotion/weak-memoize': 0.3.1
-      '@types/react': 18.3.9
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-
   /@emotion/serialize@1.1.4:
     resolution: {integrity: sha512-RIN04MBT8g+FnDwgvIUi8czvr1LU1alUMI05LekWB5DGyTm8cCBMCRpq3GqaiyEDRptEXOyXnvZ58GZYu4kBxQ==}
     dependencies:
@@ -6110,26 +6077,6 @@ packages:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
       '@emotion/utils': 1.2.1
       '@types/react': 18.2.79
-      react: 18.2.0
-
-  /@emotion/styled@11.10.6(@emotion/react@11.10.6)(@types/react@18.3.9)(react@18.2.0):
-    resolution: {integrity: sha512-OXtBzOmDSJo5Q0AFemHCfl+bUueT8BIcPSxu0EGTpGk6DmI5dnhSzQANm1e1ze0YZL7TDyAyy6s/b/zmGOS3Og==}
-    peerDependencies:
-      '@emotion/react': ^11.0.0-rc.0
-      '@types/react': '*'
-      react: '>=16.8.0'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.25.7
-      '@emotion/babel-plugin': 11.11.0
-      '@emotion/is-prop-valid': 1.2.1
-      '@emotion/react': 11.10.6(@types/react@18.3.9)(react@18.2.0)
-      '@emotion/serialize': 1.1.4
-      '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
-      '@emotion/utils': 1.4.1
-      '@types/react': 18.3.9
       react: 18.2.0
 
   /@emotion/unitless@0.8.1:
@@ -8351,7 +8298,7 @@ packages:
       react-transition-group: 4.4.5(react-dom@18.2.0)(react@18.2.0)
     dev: true
 
-  /@mui/material@5.14.15(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.3.9)(react-dom@18.2.0)(react@18.2.0):
+  /@mui/material@5.14.15(@types/react@18.3.9)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Gq65rHjvLzkxmhG8bvag851Oqsmru7qkUb/cCI2xu7dQzmY345f9xJRJi72sRGjhaqHXWeRKw/yIwp/7oQoeXg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -8369,11 +8316,9 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.25.7
-      '@emotion/react': 11.10.6(@types/react@18.3.9)(react@18.2.0)
-      '@emotion/styled': 11.10.6(@emotion/react@11.10.6)(@types/react@18.3.9)(react@18.2.0)
       '@mui/base': 5.0.0-beta.21(@types/react@18.3.9)(react-dom@18.2.0)(react@18.2.0)
       '@mui/core-downloads-tracker': 5.15.15
-      '@mui/system': 5.16.0(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.3.9)(react@18.2.0)
+      '@mui/system': 5.16.0(@types/react@18.3.9)(react@18.2.0)
       '@mui/types': 7.2.17(@types/react@18.3.9)
       '@mui/utils': 5.16.6(@types/react@18.3.9)(react@18.2.0)
       '@types/react': 18.3.9
@@ -8435,8 +8380,8 @@ packages:
     dependencies:
       '@babel/runtime': 7.25.7
       '@emotion/cache': 11.13.1
-      '@emotion/react': 11.10.6(@types/react@18.3.9)(react@18.2.0)
-      '@emotion/styled': 11.10.6(@emotion/react@11.10.6)(@types/react@18.3.9)(react@18.2.0)
+      '@emotion/react': 11.10.6(@types/react@18.2.79)(react@18.2.0)
+      '@emotion/styled': 11.10.6(@emotion/react@11.10.6)(@types/react@18.2.79)(react@18.2.0)
       csstype: 3.1.3
       prop-types: 15.8.1
       react: 18.2.0
@@ -8470,7 +8415,7 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
 
-  /@mui/system@5.16.0(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.3.9)(react@18.2.0):
+  /@mui/system@5.16.0(@types/react@18.3.9)(react@18.2.0):
     resolution: {integrity: sha512-9YbkC2m3+pNumAvubYv+ijLtog6puJ0fJ6rYfzfLCM47pWrw3m+30nXNM8zMgDaKL6vpfWJcCXm+LPaWBpy7sw==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -8487,8 +8432,6 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.25.7
-      '@emotion/react': 11.10.6(@types/react@18.3.9)(react@18.2.0)
-      '@emotion/styled': 11.10.6(@emotion/react@11.10.6)(@types/react@18.3.9)(react@18.2.0)
       '@mui/private-theming': 5.16.6(@types/react@18.3.9)(react@18.2.0)
       '@mui/styled-engine': 5.15.14(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(react@18.2.0)
       '@mui/types': 7.2.17(@types/react@18.3.9)
@@ -12196,8 +12139,8 @@ packages:
     dependencies:
       '@storybook/global': 5.0.0
 
-  /@storybook/client-logger@8.5.0-alpha.9(storybook@7.6.20):
-    resolution: {integrity: sha512-fKtH/ZZ6H5qBCGlHjScTxSyEc6XkTKfomlVOzbr4X5oczafX5IdCJGlnJLzCZ9rDB+FtXfs/D89uJ7GjIL395g==}
+  /@storybook/client-logger@8.5.0-alpha.10(storybook@7.6.20):
+    resolution: {integrity: sha512-92EVhn8c5wFgDWl7rmlvKdGvXMNsfF5dtcAV34Kq11kr9YjyNMrzECBnzZiEgIygSNIiOdaVY7nsnDA5PSjvcA==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     dependencies:
@@ -12496,10 +12439,10 @@ packages:
   /@storybook/global@5.0.0:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
 
-  /@storybook/instrumenter@8.5.0-alpha.9(storybook@7.6.20):
-    resolution: {integrity: sha512-gAjlgzD/79L0ovAns9YWbqQ04osVgXgIAuT/oNV85Rm3s0DJRcq3EK69r1L5b1otBb8paPA8MxaFAcoClJt4uQ==}
+  /@storybook/instrumenter@8.5.0-alpha.10(storybook@7.6.20):
+    resolution: {integrity: sha512-REzYWyMVs3NcglPCdLdjjnDhI0L4EHasrMLUCxRdG+nOMpx0vrTpF8xlOORcWcv/F9q8Yi0byc1RI3lItZn8iQ==}
     peerDependencies:
-      storybook: ^8.5.0-alpha.9
+      storybook: ^8.5.0-alpha.10
     dependencies:
       '@storybook/global': 5.0.0
       '@vitest/utils': 2.1.4
@@ -13277,8 +13220,8 @@ packages:
   /@storybook/testing-library@0.0.14-next.1(storybook@7.6.20):
     resolution: {integrity: sha512-1CAl40IKIhcPaCC4pYCG0b9IiYNymktfV/jTrX7ctquRY3akaN7f4A1SippVHosksft0M+rQTFE0ccfWW581fw==}
     dependencies:
-      '@storybook/client-logger': 8.5.0-alpha.9(storybook@7.6.20)
-      '@storybook/instrumenter': 8.5.0-alpha.9(storybook@7.6.20)
+      '@storybook/client-logger': 8.5.0-alpha.10(storybook@7.6.20)
+      '@storybook/instrumenter': 8.5.0-alpha.10(storybook@7.6.20)
       '@testing-library/dom': 8.20.1
       '@testing-library/user-event': 13.5.0(@testing-library/dom@8.20.1)
       ts-dedent: 2.2.0
@@ -14151,9 +14094,10 @@ packages:
 
   /@utilitywarehouse/fontsource@0.1.0:
     resolution: {integrity: sha512-/qsvnWAJdtRHpwt2rhn0HClXVL3m8SwERLvBDk+uN0xbAxXiS4Ae8dkoi8wGypyFX4Y9WIMZBB7MD+NywIXfHg==}
+    dev: true
 
-  /@utilitywarehouse/react-icons@1.1.1(react@18.2.0):
-    resolution: {integrity: sha512-h4YpnpujEW2hnj9Aiil9DRgCtcDdYANp0eSNfzKPNMI7/lsSLxFgXOwuOACKhtge38vc5wTkdZIk5TsEAR4GOA==}
+  /@utilitywarehouse/react-icons@1.11.0(react@18.2.0):
+    resolution: {integrity: sha512-BLEVvjr3/AGdh5KQNcgwvNAf9RL2LQ44FMvIfVGdjjKABAX2JK3SZ+Dy8STt6zPDsfepS3KWdqGIkGOE3s38KQ==}
     peerDependencies:
       react: ^18.2.0
     dependencies:

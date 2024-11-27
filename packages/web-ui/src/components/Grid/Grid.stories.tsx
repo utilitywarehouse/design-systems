@@ -11,7 +11,7 @@ import { Text } from '../Text';
 import { ThemeProvider } from '../ThemeProvider';
 
 const meta: Meta<typeof Grid> = {
-  title: 'Web UI / Layout / Grid',
+  title: 'Web UI / Stories / Grid',
   component: Grid,
   decorators: [
     Story => (

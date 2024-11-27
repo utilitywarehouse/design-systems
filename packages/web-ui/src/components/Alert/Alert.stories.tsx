@@ -10,7 +10,7 @@ import { Flex } from '../Flex';
 const colorSchemes = ['cyan', 'red', 'green', 'gold'] as const;
 
 const meta: Meta<typeof Alert> = {
-  title: 'Web UI / Components / Alert',
+  title: 'Web UI / Stories / Alert',
   component: Alert,
   argTypes: {
     children: { control: { type: 'text' } },

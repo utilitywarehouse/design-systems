@@ -9,7 +9,7 @@ import { ToggleButtonGroup } from './ToggleButtonGroup';
 import { Backgrounds } from '../../storybook-components';
 
 const meta: Meta<typeof ToggleButtonGroup> = {
-  title: 'Web UI / Components / ToggleButtonGroup',
+  title: 'Web UI / Stories / ToggleButtonGroup',
   component: ToggleButtonGroup,
 };
 

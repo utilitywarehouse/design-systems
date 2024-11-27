@@ -15,6 +15,8 @@ module.exports = (env, argv) => ({
 
   module: {
     rules: [
+      { test: /\.m?js/, resolve: { fullySpecified: false } },
+
       // Converts TypeScript code to JavaScript
       { test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/ },
 

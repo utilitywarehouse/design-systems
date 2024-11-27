@@ -13,11 +13,7 @@
     "prettier:format": "prettier --write '**/*.{js,jsx,ts,tsx,css,json}' "
   },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
     "@mui/material": "5.14.15",
-    "@utilitywarehouse/css-reset": "workspace:^",
-    "@utilitywarehouse/fontsource": "^0.1.0",
     "@utilitywarehouse/web-ui": "workspace:^",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

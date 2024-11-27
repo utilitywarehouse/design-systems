@@ -10,7 +10,7 @@ import { Text } from '../Text';
 const textVariants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 
 const meta: Meta<typeof Strong> = {
-  title: 'Web UI / Typography / Strong',
+  title: 'Web UI / Stories / Strong',
   component: Strong,
 };
 
