@@ -15,7 +15,6 @@ import {
   Flex,
   Alert,
   TextField,
-  Text,
 } from '@utilitywarehouse/web-ui';
 
 const LoadingSpinner = () => (
