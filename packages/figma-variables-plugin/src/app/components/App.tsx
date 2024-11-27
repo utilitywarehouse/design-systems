@@ -15,6 +15,7 @@ import {
   Flex,
   Alert,
   TextField,
+  Text,
 } from '@utilitywarehouse/web-ui';
 
 const LoadingSpinner = () => (
@@ -325,7 +326,12 @@ function App() {
       {githubToken && (
         <Box sx={{ padding: 3, backgroundColor: '#fff', borderRadius: '14px' }}>
           <Box mb={2}>
-            <CheckboxGroup direction="column" label="Select Collections to Export:" sx={{ mb: 3 }}>
+            <CheckboxGroup
+              direction="column"
+              label="Select Collections to Export:"
+              helperText="Published library collections in this file"
+              sx={{ mb: 3 }}
+            >
               <Checkbox
                 id="select-all"
                 value="select-all"
