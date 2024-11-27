@@ -1,0 +1,274 @@
+{
+  "button": {
+    "border": {
+      "value": 2
+    },
+    "border-radius": {
+      "value": 32
+    },
+    "font-family": {
+      "value": "Work Sans"
+    },
+    "font-weight": {
+      "value": "medium"
+    },
+    "medium": {
+      "line-height": {
+        "value": 24
+      }
+    },
+    "letter-spacing": {
+      "value": 0
+    },
+    "font-size": {
+      "value": 16
+    },
+    "small": {
+      "line-height": {
+        "value": 16
+      }
+    }
+  },
+  "divider": {
+    "color": {
+      "value": "#cccccc"
+    },
+    "size": {
+      "value": 1
+    }
+  },
+  "link": {
+    "small": {
+      "letter-spacing": {
+        "value": 0.1599999964237213
+      },
+      "font-size": {
+        "value": 16
+      },
+      "line-height": {
+        "value": 16
+      }
+    },
+    "inverted": {
+      "underline-color": {
+        "value": "#75a7fd"
+      },
+      "color-disabled": {
+        "value": "#0550d1"
+      },
+      "color": {
+        "value": "#8fbaff"
+      },
+      "underline-color-active": {
+        "value": "#a6c8fc"
+      },
+      "underline-color-hover": {
+        "value": "#8fbaff"
+      }
+    },
+    "font-weight": {
+      "value": 500
+    },
+    "large": {
+      "line-height": {
+        "value": 18
+      },
+      "letter-spacing": {
+        "value": 0.18000000715255737
+      },
+      "font-size": {
+        "value": 18
+      }
+    },
+    "underline-color-hover": {
+      "value": "#4789fa"
+    },
+    "underline-color-active": {
+      "value": "#0550d1"
+    },
+    "font-family": {
+      "value": "Work Sans"
+    },
+    "color-disabled": {
+      "value": "#8fbaff"
+    },
+    "gap": {
+      "value": 4
+    },
+    "underline-color": {
+      "value": "#75a7fd"
+    },
+    "color": {
+      "value": "#003a9e"
+    }
+  },
+  "text-link": {
+    "color": {
+      "value": "#0550d1"
+    },
+    "color-active": {
+      "value": "#002b75"
+    },
+    "color-visited": {
+      "value": "#7415c1"
+    },
+    "inverted": {
+      "color-active": {
+        "value": "#a6c8fc"
+      },
+      "color": {
+        "value": "#75a7fd"
+      },
+      "color-visited": {
+        "value": "#c08dfc"
+      }
+    }
+  },
+  "breadcrums": {
+    "max-width": {
+      "value": 360
+    },
+    "column-gap": {
+      "value": 8
+    },
+    "breadcrum": {
+      "gap": {
+        "value": 8
+      },
+      "current-page": {
+        "font-weight": {
+          "value": "SemiBold"
+        },
+        "color": {
+          "value": "#121212"
+        }
+      },
+      "font-family": {
+        "value": "Work Sans"
+      },
+      "font-weight": {
+        "value": "Medium"
+      },
+      "underline-color": {
+        "value": "#b8b8b8"
+      },
+      "color-disabled": {
+        "value": "#b8b8b8"
+      },
+      "letter-spacing": {
+        "value": 0.1599999964237213
+      },
+      "line-height": {
+        "value": 16
+      },
+      "font-size": {
+        "value": 16
+      },
+      "underline-hover": {
+        "value": "#888888"
+      },
+      "color": {
+        "value": "#414141"
+      }
+    },
+    "row-gap": {
+      "value": 16
+    }
+  },
+  "menu": {
+    "list": {
+      "border-width": {
+        "value": 1
+      },
+      "padding-y": {
+        "value": 8
+      },
+      "padding-x": {
+        "value": 8
+      },
+      "min-width": {
+        "value": 136
+      },
+      "max-width": {
+        "value": 504
+      },
+      "background-color": {
+        "value": "#ffffff"
+      },
+      "border-color": {
+        "value": "#e3e3e3"
+      }
+    },
+    "item": {
+      "grey": {
+        "color": {
+          "value": "#121212"
+        },
+        "background-color-hover": {
+          "value": "#f5f5f5"
+        },
+        "icon-color": {
+          "value": "#414141"
+        },
+        "foreground-color-disabled": {
+          "value": "#b8b8b8"
+        },
+        "icon-color-hover": {
+          "value": "#121212"
+        }
+      },
+      "red": {
+        "color": {
+          "value": "#3b1216"
+        },
+        "icon-color-hover": {
+          "value": "#3b1216"
+        },
+        "background-color-hover": {
+          "value": "#ffebeb"
+        },
+        "icon-color": {
+          "value": "#c31d2a"
+        },
+        "foreground-color-disabled": {
+          "value": "#f58e92"
+        }
+      },
+      "background-color": {
+        "value": "#aaaaaa00"
+      },
+      "border-radius": {
+        "value": 8
+      },
+      "font-weight": {
+        "value": "Regular"
+      },
+      "line-height": {
+        "value": 24
+      },
+      "font-size": {
+        "value": 18
+      },
+      "padding-y": {
+        "value": 12
+      },
+      "font-family": {
+        "value": "Work Sans"
+      },
+      "padding-x": {
+        "value": 16
+      },
+      "gap": {
+        "value": 8
+      }
+    },
+    "gap": {
+      "value": 4
+    }
+  },
+  "spinner": {
+    "color": {
+      "value": "#0550d1"
+    }
+  }
+}

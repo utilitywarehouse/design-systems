@@ -1,0 +1,98 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as Stories from './Carousel.stories';
+import { Alert, Center, NativeUIProvider, Text } from '@utilitywarehouse/native-ui';
+import { Box, Carousel, CarouselPagination } from '@utilitywarehouse/native-ui/lab';
+import { colors } from '@utilitywarehouse/colour-system';
+import { BackToTopButton, DocComponentWrap } from '../../../docs/components';
+
+<Meta of={Stories} />
+
+<BackToTopButton />
+
+# Carousel
+
+The carousel is a component for presenting information in a manner for customers to scroll through. This is typically when you have multiple banners, or CTA's, etc, although there are many other functional use cases.
+
+- [Usage](#usage)
+- [Props](#props)
+
+<DocComponentWrap>
+  <Box mb="$4">
+    <Alert text="This component is in the lab until it has been more widely implemented and any implementations standardised." />
+  </Box>
+  <Box mb="$6">
+    <Alert
+      colorScheme="gold"
+      text="The carousel is a specific implementation of FlatList. Some props cannot be modified. This is to ensure standardised behaviour and presentation."
+    />
+  </Box>
+</DocComponentWrap>
+
+## Usage
+
+> The `Carousel` component is to be used for presenting scrollable data
+
+> The carousel scrolls horizontally only
+
+> Most carousel behaviour is predefined for a standardised behaviour and experience across apps
+
+> Some props can be modified to offer customised behaviour
+
+A basic carousel implementation:
+
+```jsx
+import { Text } from '@utilitywarehouse/native-ui';
+import { Box, Carousel } from '@utilitywarehouse/native-ui/lab';
+
+const MyComponent = () => {
+  const {
+    theme: { colors, radii, space },
+  } = useStyles();
+
+  return (
+    <Carousel
+      data={[
+        {
+          key: 1,
+          title: 'Carousel item 1',
+        },
+        {
+          key: 2,
+          title: 'Carousel item 2',
+        },
+        {
+          key: 3,
+          title: 'Carousel item 3',
+        },
+      ]}
+      renderItem={({ item }) => (
+        <Box style={{ aspectRatio: 1.6, backgroundColor: 'purple' }}>
+          <Text>{item.title}</Text>
+        </Box>
+        )}
+      width={300}
+    />
+  );
+};
+```
+
+## Props
+
+The Carousel component accepts some props from the React Native `FlatList` component, while other props are predfined and cannot be modified. There are also some additional carousel specific props.
+
+| Name                   | Type                                    | Default | Description                                                                                                                    |
+| ---------------------- | --------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| children?              | ReactNode                               | -       | Display any content within the carousel context. This may include `CarouselPagination`.                                        |
+| data                   | any[]                                   | -       | Array of data items to be passed for rendering in the carousel                                                                 |
+| inactiveItemOpacity?   | number                                  | 1       | Fade items outside of the active carousel viewport (use in conjunction with `showOverflow`)                                    |
+| itemStyle?             | StyleProp                               | -       | Style applied to the container of each item in the carousel                                                                    |
+| itemWidth?             | number                                  | -       | Specify the width of carousel items if different from `width`. Useful for revealing the previous/next item within the viewport |
+| onSnapToItem?          | () => void                              | -       | Callback each time a new item is focused in the carousel viewport                                                              |
+| removeClippedSubviews? | boolean                                 | false   | Prevent items outside of the carousl being removed from the tree by default                                                    |
+| renderItem             | (info: ListRenderItemInfo) => ReactNode | -       | Method used to render each item in the carousel                                                                                |
+| scrollEnabled?         | boolean                                 | true    | Enable or disable the carousel                                                                                                 |
+| showOverflow           | boolean                                 | false   | Visually reveal the items outside of the carousel viewport                                                                     |
+| style?                 | StyleProp                               | -       | Style applied to the carousel container                                                                                        |
+| width                  | number                                  | -       | Carousel viewport width                                                                                                        |
+
+For more information about any of the above props from the `FlatList` component, see the React Native FlatList [documentation](https://reactnative.dev/docs/flatlist).
