@@ -13,7 +13,8 @@
     "prettier:format": "prettier --write '**/*.{js,jsx,ts,tsx,css,json}' "
   },
   "dependencies": {
-    "@utilitywarehouse/web-ui": "^1.0.1",
+    "@mui/material": "5.14.15",
+    "@utilitywarehouse/web-ui": "workspace:^",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
