@@ -11,15 +11,14 @@ const __dirname = path.dirname(__filename);
 // Add a custom transform to rename spacing tokens from "X-5" to "X.5"
 StyleDictionary.registerTransform({
   name: 'spacing/rename',
-  type: 'name',
-  transitive: false,
+  type: 'attribute',
   filter: token =>
     token.path[0] === 'spacing' &&
     typeof token.path[1] === 'string' &&
     token.path[1].includes('-5'),
   transform: token => {
     token.path[1] = token.path[1].replace('-5', '.5');
-    return token;
+    token.attributes.type = token.attributes.type.replace('-5', '.5');
   },
 });
 
@@ -104,14 +103,14 @@ async function buildStyles() {
             {
               destination: 'colors/light/index.ts',
               format: 'javascript/custom-es6',
-              options: { exportType: 'colors', slice: true },
+              options: { slice: true },
               filter: token => token.attributes.category === 'light',
             },
             // Dark mode colors
             {
               destination: 'colors/dark/index.ts',
               format: 'javascript/custom-es6',
-              options: { exportType: 'colors', slice: true },
+              options: { slice: true },
               filter: token => token.attributes.category === 'dark',
             },
           ],
@@ -151,7 +150,6 @@ async function buildStyles() {
             {
               destination: 'primitive/index.ts',
               format: 'javascript/custom-es6',
-              options: { exportType: 'primitive' },
             },
           ],
         },
@@ -169,7 +167,6 @@ async function buildStyles() {
             {
               destination: 'semantic/index.ts',
               format: 'javascript/custom-es6',
-              options: { exportType: 'semantic' },
             },
           ],
         },
@@ -190,14 +187,14 @@ async function buildStyles() {
             {
               destination: 'components/light/index.ts',
               format: 'javascript/custom-es6',
-              options: { exportType: 'components', slice: true },
+              options: { slice: true },
               filter: token => token.attributes.category === 'light',
             },
             // Dark mode components
             {
               destination: 'components/dark/index.ts',
               format: 'javascript/custom-es6',
-              options: { exportType: 'components', slice: true },
+              options: { slice: true },
               filter: token => token.attributes.category === 'dark',
             },
           ],
@@ -222,7 +219,7 @@ async function buildStyles() {
     new StyleDictionary({
       source: [
         './tokens/design-tokens-global--primitive-tokens.json',
-        './tokens/uw-app-ui--primitive-tokens.json',
+        './tokens/uw-web-ui--primitive-tokens.json',
       ],
       platforms: {
         css: {
@@ -242,7 +239,7 @@ async function buildStyles() {
     new StyleDictionary({
       source: [
         './tokens/design-tokens-global--semantic-tokens.json',
-        './tokens/uw-app-ui--semantic-tokens.json',
+        './tokens/uw-web-ui--semantic-tokens.json',
       ],
       platforms: {
         css: {
@@ -261,18 +258,26 @@ async function buildStyles() {
   ];
 
   // Build the all platform
-  await Promise.all(dictionaries.map(dictionary => dictionary.buildAllPlatforms()));
+  try {
+    await Promise.allSettled(dictionaries.map(dictionary => dictionary.buildAllPlatforms()));
+  } catch (error) {
+    console.error('Error building tokens:', error);
+  }
 
-  // Generate index.ts files in each subdirectory
-  const buildPath = path.resolve(__dirname, '../');
-  ['/build/js'].forEach(subDir => {
-    const fullPath = path.join(buildPath, subDir);
-    generateIndexFile(fullPath, false);
-  });
-  ['/build/js/colors', '/build/js/components'].forEach(subDir => {
-    const otherPath = path.join(buildPath, subDir);
-    generateIndexFile(otherPath, true);
-  });
+  try {
+    // Generate index.ts files in each subdirectory
+    const buildPath = path.resolve(__dirname, '../');
+    ['/build/js'].forEach(subDir => {
+      const fullPath = path.join(buildPath, subDir);
+      generateIndexFile(fullPath, false);
+    });
+    ['/build/js/colors', '/build/js/components'].forEach(subDir => {
+      const otherPath = path.join(buildPath, subDir);
+      generateIndexFile(otherPath, true);
+    });
+  } catch (error) {
+    console.error('Error generating index files:', error);
+  }
 }
 
 // Add helper function to retrieve component keys from the tokens file

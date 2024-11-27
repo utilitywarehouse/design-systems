@@ -47,12 +47,4 @@
   --spacing-4-5: 18;
   --spacing-1-5: 6;
   --spacing-0-5: 2;
-  --shadows-overlay-blur-radius: 12;
-  --shadows-overlay-offset-x: 0;
-  --shadows-overlay-spread-radius: 0;
-  --shadows-overlay-offset-y: 0;
-  --shadows-raised-spread-radius: 0;
-  --shadows-raised-blur-radius: 4;
-  --shadows-raised-offset-y: 2;
-  --shadows-raised-offset-x: 1;
 }

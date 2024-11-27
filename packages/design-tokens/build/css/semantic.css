@@ -9,4 +9,15 @@
   --colors-light-base-background-color-2: #f5f5f5;
   --colors-light-invalid-color: #c31d2a;
   --colors-light-valid-color: #297f50;
+  --focus-outline-grey-inverted-outline-color: #b8b8b8;
+  --focus-outline-grey-outline-color: #585858;
+  --focus-outline-green-inverted-outline-color: #a3e1bf;
+  --focus-outline-green-outline-color: #21693f;
+  --focus-outline-cyan-inverted-outline-color: #8fbaff;
+  --focus-outline-cyan-outline-color: #003a9e;
+  --focus-outline-gold-inverted-outline-color: #ffd76f;
+  --focus-outline-gold-outline-color: #894e16;
+  --focus-outline-red-outline-color: #891e27;
+  --focus-outline-red-inverted-outline-color: #f58e92;
+  --focus-outline-outline-width: 2;
 }

@@ -45,6 +45,8 @@ declare const _default: {
         "8": number;
         "9": number;
         "10": number;
+        "11": number;
+        "12": number;
         "3.5": number;
         "2.5": number;
         "4.5": number;
