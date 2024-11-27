@@ -312,6 +312,7 @@ function App() {
       {((tokenLoaded && showTokenInput) || !tokenLoaded) && (
         <Box sx={{ padding: 3, backgroundColor: '#fff', borderRadius: '14px', mb: 3 }}>
           <TextField
+            id="github-token"
             type="password"
             label="GitHub Token"
             value={githubToken}
@@ -335,7 +336,6 @@ function App() {
             </CheckboxGroup>
             <CheckboxGroup
               direction="row"
-              wrap="wrap"
               value={selectedCollections}
               onValueChange={val => setSelectedCollections(val)}
             >
@@ -352,7 +352,7 @@ function App() {
           </Box>
 
           <Flex direction="column" align={{ mobile: 'stretch', desktop: 'start' }}>
-            <Button onClick={exportVariables} disabled={exporting || loadingImport} fullWidth>
+            <Button onClick={exportVariables} disabled={exporting || loadingImport}>
               {exporting ? 'Exporting...' : 'Export Variables'}
             </Button>
           </Flex>
