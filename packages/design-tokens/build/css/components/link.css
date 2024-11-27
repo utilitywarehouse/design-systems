@@ -1,0 +1,21 @@
+:root {
+  --small-letter-spacing: 0.1599999964237213;
+  --small-font-size: 16;
+  --small-line-height: 16;
+  --inverted-underline-color: #75a7fd;
+  --inverted-color-disabled: #0550d1;
+  --inverted-color: #8fbaff;
+  --inverted-underline-color-active: #a6c8fc;
+  --inverted-underline-color-hover: #8fbaff;
+  --font-weight: 500;
+  --large-line-height: 18;
+  --large-letter-spacing: 0.18000000715255737;
+  --large-font-size: 18;
+  --underline-color-hover: #4789fa;
+  --underline-color-active: #0550d1;
+  --font-family: Work Sans;
+  --color-disabled: #8fbaff;
+  --gap: 4;
+  --underline-color: #75a7fd;
+  --color: #003a9e;
+}

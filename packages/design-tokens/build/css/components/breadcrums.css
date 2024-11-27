@@ -1,0 +1,17 @@
+:root {
+  --max-width: 360;
+  --column-gap: 8;
+  --breadcrum-gap: 8;
+  --breadcrum-current-page-font-weight: SemiBold;
+  --breadcrum-current-page-color: #121212;
+  --breadcrum-font-family: Work Sans;
+  --breadcrum-font-weight: Medium;
+  --breadcrum-underline-color: #b8b8b8;
+  --breadcrum-color-disabled: #b8b8b8;
+  --breadcrum-letter-spacing: 0.1599999964237213;
+  --breadcrum-line-height: 16;
+  --breadcrum-font-size: 16;
+  --breadcrum-underline-hover: #888888;
+  --breadcrum-color: #414141;
+  --row-gap: 16;
+}

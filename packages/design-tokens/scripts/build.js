@@ -92,6 +92,7 @@ function generateIndexFile(dir, defaultVal = false) {
 // Build function for js platform
 async function buildStyles() {
   const dictionaries = [
+    // JS and CSS colors
     new StyleDictionary({
       source: ['./tokens/design-tokens-global--primitive-colors.json'],
       platforms: {
@@ -136,7 +137,7 @@ async function buildStyles() {
         },
       },
     }),
-    // Primitive tokens native
+    // Primitive tokens JS
     new StyleDictionary({
       source: [
         './tokens/design-tokens-global--primitive-tokens.json',
@@ -156,6 +157,7 @@ async function buildStyles() {
         },
       },
     }),
+    // Semantic tokens JS
     new StyleDictionary({
       source: ['./tokens/design-tokens-global--semantic-tokens.json'],
       platforms: {
@@ -173,6 +175,7 @@ async function buildStyles() {
         },
       },
     }),
+    // Component tokens JS
     new StyleDictionary({
       source: [
         './tokens/design-tokens-global--component-tokens.json',
@@ -201,8 +204,12 @@ async function buildStyles() {
         },
       },
     }),
+    // Component tokens CSS
     new StyleDictionary({
-      source: ['./tokens/design-tokens-global--component-tokens.json'],
+      source: [
+        './tokens/design-tokens-global--component-tokens.json',
+        './tokens/uw-web-ui--component-tokens.json',
+      ],
       platforms: {
         css: {
           transformGroup: 'css',
@@ -211,8 +218,12 @@ async function buildStyles() {
         },
       },
     }),
+    // Primitive tokens CSS
     new StyleDictionary({
-      source: ['./tokens/design-tokens-global--primitive-tokens.json'],
+      source: [
+        './tokens/design-tokens-global--primitive-tokens.json',
+        './tokens/uw-app-ui--primitive-tokens.json',
+      ],
       platforms: {
         css: {
           transformGroup: 'css',
@@ -227,8 +238,12 @@ async function buildStyles() {
         },
       },
     }),
+    // Semantic tokens CSS
     new StyleDictionary({
-      source: ['./tokens/design-tokens-global--semantic-tokens.json'],
+      source: [
+        './tokens/design-tokens-global--semantic-tokens.json',
+        './tokens/uw-app-ui--semantic-tokens.json',
+      ],
       platforms: {
         css: {
           transformGroup: 'css',
@@ -261,30 +276,40 @@ async function buildStyles() {
 }
 
 // Add helper function to retrieve component keys from the tokens file
-function getComponentNames() {
-  const tokensPath = path.resolve(
-    __dirname,
-    '../tokens/design-tokens-global--component-tokens.json'
-  );
+function getComponentNames(tokenPath, key) {
+  const tokensPath = path.resolve(__dirname, tokenPath);
   const tokens = JSON.parse(fs.readFileSync(tokensPath, 'utf8'));
-  return Object.keys(tokens.light);
+  return Object.keys(key ? tokens[key] : tokens);
 }
 
 // Modify getComponentFiles to exclude color-related tokens
 function getComponentFiles() {
-  const components = getComponentNames();
+  const themedComponents = getComponentNames(
+    '../tokens/design-tokens-global--component-tokens.json',
+    'light'
+  );
+  const components = getComponentNames('../tokens/uw-web-ui--component-tokens.json');
   const themes = ['light', 'dark'];
 
   return themes.flatMap(theme =>
-    components.map(component => ({
-      destination: `components/${theme}/${component}.css`,
-      format: 'css/no-theme-variables', // Use the new format
-      options: { outputReferences: true },
-      filter: token =>
-        token.path[0] === theme &&
-        token.path.includes(component) &&
-        token.attributes.category !== 'color', // Exclude color tokens
-    }))
+    themedComponents
+      .map(component => ({
+        destination: `components/${theme}/${component}.css`,
+        format: 'css/no-theme-variables', // Use the new format
+        options: { outputReferences: true },
+        filter: token =>
+          token.path[0] === theme &&
+          token.path.includes(component) &&
+          token.attributes.category !== 'color', // Exclude color tokens
+      }))
+      .concat(
+        components.map(component => ({
+          destination: `components/${component}.css`,
+          format: 'css/no-theme-variables', // Use the new format
+          options: { outputReferences: true },
+          filter: token => token.path.includes(component) && token.attributes.category !== 'color', // Exclude color tokens
+        }))
+      )
   );
 }
 
