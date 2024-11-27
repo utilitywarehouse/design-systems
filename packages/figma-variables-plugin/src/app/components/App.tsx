@@ -2,6 +2,7 @@
 import React from 'react';
 import logo from '../assets/logo.svg';
 import '../styles/ui.css';
+import { Heading } from '@utilitywarehouse/web-ui';
 
 function App() {
   const [githubToken, setGithubToken] = React.useState('');
@@ -148,7 +149,7 @@ function App() {
   return (
     <div>
       <img src={logo} />
-      <h2>Export Figma Variables</h2>
+      <Heading variant="h2">Export Figma Variables</Heading>
       <div>
         <label>GitHub Token:</label>
         <input type="password" value={githubToken} onChange={e => setGithubToken(e.target.value)} />
