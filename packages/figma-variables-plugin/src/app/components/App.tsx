@@ -1,13 +1,21 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable  @typescript-eslint/no-unsafe-return */
 /* eslint-disable  @typescript-eslint/no-unsafe-call */
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from '../assets/logo.svg';
 import '@utilitywarehouse/css-reset';
-// import '@utilitywarehouse/fontsource';
 import '../styles/ui.css';
 import { encodeContent, kebabCase } from '../utils';
-import { Heading } from '@utilitywarehouse/web-ui';
+import {
+  Heading,
+  Button,
+  CheckboxGroup,
+  Checkbox,
+  Box,
+  Flex,
+  Alert,
+  TextField,
+} from '@utilitywarehouse/web-ui';
 
 const LoadingSpinner = () => (
   <div className="spinner-container">
@@ -28,7 +36,7 @@ function App() {
   const repoName = 'design-systems';
   const branchName = 'main';
   const [selectAll, setSelectAll] = React.useState(false);
-  const [statusType, setStatusType] = React.useState<'success' | 'error' | ''>('');
+  const [statusType, setStatusType] = React.useState<'green' | 'red' | 'cyan'>('cyan');
 
   React.useEffect(() => {
     // Load saved GitHub token from clientStorage
@@ -38,6 +46,15 @@ function App() {
     parent.postMessage({ pluginMessage: { type: 'get-collections' } }, '*');
   }, []);
 
+  useEffect(() => {
+    if (statusMessage) {
+      const timeout = setTimeout(() => {
+        setStatusMessage('');
+      }, 5000);
+      return () => clearTimeout(timeout);
+    }
+  }, [statusMessage]);
+
   // Handle messages from the plugin code
   window.onmessage = async event => {
     const { pluginMessage } = event.data;
@@ -46,11 +63,12 @@ function App() {
       if (pluginMessage?.token) {
         setTokenLoaded(true);
         setStatusMessage('GitHub token loaded.');
+        setStatusType('green');
       }
     } else if (pluginMessage.type === 'variables-exported') {
       const tokensData = pluginMessage.data;
       setStatusMessage('Variables exported. Creating PRs...');
-      setStatusType('success');
+      setStatusType('cyan');
       await createPullRequests(tokensData);
       setExporting(false);
     }
@@ -68,8 +86,11 @@ function App() {
   const saveToken = () => {
     parent.postMessage({ pluginMessage: { type: 'save-token', token: githubToken } }, '*');
     setShowTokenInput(false);
+    if (githubToken) {
+      setTokenLoaded(true);
+    }
     setStatusMessage('GitHub token saved.');
-    setStatusType('success');
+    setStatusType('green');
   };
 
   const handleSelectAll = () => {
@@ -82,22 +103,10 @@ function App() {
     setSelectAll(!selectAll);
   };
 
-  const handleCollectionSelection = (collectionKey: string) => {
-    setSelectedCollections(prevSelected => {
-      let updatedSelected;
-      if (prevSelected.includes(collectionKey)) {
-        updatedSelected = prevSelected.filter(key => key !== collectionKey);
-      } else {
-        updatedSelected = [...prevSelected, collectionKey];
-      }
-      setSelectAll(updatedSelected.length === collections.length);
-      return updatedSelected;
-    });
-  };
-
   // Export variables and initiate PR creation
   const exportVariables = () => {
     setExporting(true);
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
     console.log('Exporting with selectedCollections:', selectedCollections);
     parent.postMessage(
       {
@@ -252,11 +261,11 @@ function App() {
       if (!prResponse.ok) throw new Error('Failed to create pull request.');
 
       setStatusMessage('Pull request created successfully.');
-      setStatusType('success');
+      setStatusType('green');
     } catch (error) {
       console.error(error);
       setStatusMessage(`Error: ${error.message}`);
-      setStatusType('error');
+      setStatusType('red');
     } finally {
       setExporting(false);
     }
@@ -266,73 +275,111 @@ function App() {
     setShowTokenInput(true);
   };
 
+  function resizeWindow(e) {
+    const size = {
+      w: Math.max(50, Math.floor(e.clientX + 5)),
+      h: Math.max(50, Math.floor(e.clientY + 5)),
+    };
+    parent.postMessage({ pluginMessage: { type: 'resize', size: size } }, '*');
+  }
+
   return (
     <div>
       {tokenLoaded && !showTokenInput && (
-        <button onClick={editToken} className="edit-token-button">
+        <Button
+          onClick={editToken}
+          className="edit-token-button"
+          size="small"
+          sx={{ position: 'absolute', top: 16, right: 16 }}
+        >
           Edit Token
-        </button>
+        </Button>
       )}
       <img src={logo} />
-      <h2>Export Figma Variables</h2>
+      <Heading variant="h3" sx={{ my: 2 }}>
+        Export Figma Variables
+      </Heading>
       {!githubToken && (
-        <p className="token-message">Enter your GitHub token to export variables and create PRs.</p>
+        <Alert
+          colorScheme="cyan"
+          text="Enter your GitHub token to be able to export the variables and create a PR."
+          sx={{ mb: 3 }}
+        />
+      )}
+      {loadingImport && (
+        <Alert colorScheme="cyan" text="Importing variables, please wait..." sx={{ mb: 3 }} />
       )}
       {((tokenLoaded && showTokenInput) || !tokenLoaded) && (
-        <div className="token-wrap">
-          <label>GitHub Token:</label>
-          <input
+        <Box sx={{ padding: 3, backgroundColor: '#fff', borderRadius: '14px', mb: 3 }}>
+          <TextField
             type="password"
+            label="GitHub Token"
             value={githubToken}
             onChange={e => setGithubToken(e.target.value)}
           />
-          <button onClick={saveToken}>Save Token</button>
-        </div>
+          <Button onClick={saveToken}>Save Token</Button>
+        </Box>
       )}
+      {statusMessage && <Alert colorScheme={statusType} text={statusMessage} sx={{ mb: 3 }} />}
       {githubToken && (
-        <div>
-          <div>
-            <div className="top-content">
-              <h3>Select Collections to Export:</h3>
-              <div>
-                <input
-                  type="checkbox"
-                  checked={selectAll}
-                  onChange={handleSelectAll}
-                  id="select-all"
-                />
-                <label htmlFor="select-all">Select All</label>
-              </div>
-            </div>
-            {collections.map(collection => (
-              <div key={collection.key} className="checkbox-group">
-                <input
-                  type="checkbox"
+        <Box sx={{ padding: 3, backgroundColor: '#fff', borderRadius: '14px' }}>
+          <Box mb={2}>
+            <CheckboxGroup direction="column" label="Select Collections to Export:" sx={{ mb: 3 }}>
+              <Checkbox
+                id="select-all"
+                value="select-all"
+                label="Select All"
+                checked={selectAll}
+                onCheckedChange={handleSelectAll}
+              />
+            </CheckboxGroup>
+            <CheckboxGroup
+              direction="row"
+              wrap="wrap"
+              value={selectedCollections}
+              onValueChange={val => setSelectedCollections(val)}
+            >
+              {collections.map(collection => (
+                <Checkbox
+                  key={collection.key}
                   id={`checkbox-${collection.key}`}
                   value={collection.key}
-                  checked={selectedCollections.includes(collection.key)}
-                  onChange={() => handleCollectionSelection(collection.key)}
+                  label={collection.name}
+                  helperText={collection.libraryName}
                 />
-                <label htmlFor={`checkbox-${collection.key}`}>
-                  {collection.libraryName} - {collection.name}
-                </label>
-              </div>
-            ))}
-          </div>
-          {loadingImport && <p>Importing variables, please wait...</p>}
-          <button
-            onClick={exportVariables}
-            disabled={exporting || loadingImport}
-            className="export"
-          >
-            {exporting ? 'Exporting...' : 'Export Variables'}
-          </button>
-        </div>
+              ))}
+            </CheckboxGroup>
+          </Box>
+
+          <Flex direction="column" align={{ mobile: 'stretch', desktop: 'start' }}>
+            <Button onClick={exportVariables} disabled={exporting || loadingImport} fullWidth>
+              {exporting ? 'Exporting...' : 'Export Variables'}
+            </Button>
+          </Flex>
+        </Box>
       )}
       {(exporting || loadingImport) && <LoadingSpinner />}
-      <p className={statusType ? `status-${statusType}` : '' + ' status-message'}>
-        {statusMessage}
-      </p>
+
+      <svg
+        id="corner"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        onPointerDown={e => {
+          e.currentTarget.onpointermove = resizeWindow;
+          e.currentTarget.setPointerCapture(e.pointerId);
+        }}
+        onPointerUp={e => {
+          e.currentTarget.onpointermove = null;
+          e.currentTarget.releasePointerCapture(e.pointerId);
+        }}
+      >
+        <path d="M16 0V16H0L16 0Z" fill="white" />
+        <path d="M6.22577 16H3L16 3V6.22576L6.22577 16Z" fill="#8C8C8C" />
+        <path d="M11.8602 16H8.63441L16 8.63441V11.8602L11.8602 16Z" fill="#8C8C8C" />
+      </svg>
     </div>
   );
 }

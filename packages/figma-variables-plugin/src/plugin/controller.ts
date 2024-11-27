@@ -1,12 +1,21 @@
 import { figmaColorToHex } from '../app/utils';
 
-figma.showUI(__html__, { width: 400, height: 480 });
+figma.showUI(__html__, { width: 400, height: 600 });
 
-const debugMode = false;
+const debugMode = true;
 const consoleLog = debugMode
   ? console
   : { log: () => {}, warn: () => {}, error: () => {}, clear: () => {} };
 consoleLog.clear();
+
+figma.clientStorage
+  .getAsync('size')
+  .then(size => {
+    if (size) figma.ui.resize(size.w, size.h);
+  })
+  .catch(err => {
+    consoleLog.error(err);
+  });
 
 // Update the exportVariables function to conditionally rename modes
 async function exportVariables(selectedCollectionKeys: Array<string>) {
@@ -128,7 +137,11 @@ async function processVariables(variables: Array<Variable>): Promise<Record<stri
 async function resolveVariable(
   variable: Variable,
   visitedVariables = new Set<string>()
-): Promise<Variable> {
+): Promise<{
+  name: string;
+  path: Array<string>;
+  values: Record<string, VariableValue>;
+}> {
   const resolvedValues: Record<string, any> = {};
 
   consoleLog.log(`Resolving variable: ${variable.name}`);
@@ -273,5 +286,10 @@ figma.ui.onmessage = async msg => {
     // Load the GitHub token
     const token = await figma.clientStorage.getAsync('githubToken');
     figma.ui.postMessage({ type: 'token-loaded', token });
+  } else if (msg.type === 'resize') {
+    figma.ui.resize(msg.size.w, msg.size.h);
+    figma.clientStorage.setAsync('size', msg.size).catch(err => {
+      consoleLog.error(err);
+    });
   }
 };
