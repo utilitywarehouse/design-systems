@@ -1,0 +1,57 @@
+{
+  "focus-outline": {
+    "grey": {
+      "inverted": {
+        "outline-color": {
+          "value": "#b8b8b8"
+        }
+      },
+      "outline-color": {
+        "value": "#585858"
+      }
+    },
+    "green": {
+      "inverted": {
+        "outline-color": {
+          "value": "#a3e1bf"
+        }
+      },
+      "outline-color": {
+        "value": "#21693f"
+      }
+    },
+    "cyan": {
+      "inverted": {
+        "outline-color": {
+          "value": "#8fbaff"
+        }
+      },
+      "outline-color": {
+        "value": "#003a9e"
+      }
+    },
+    "gold": {
+      "inverted": {
+        "outline-color": {
+          "value": "#ffd76f"
+        }
+      },
+      "outline-color": {
+        "value": "#894e16"
+      }
+    },
+    "red": {
+      "outline-color": {
+        "value": "#891e27"
+      },
+      "inverted": {
+        "outline-color": {
+          "value": "#f58e92"
+        }
+      }
+    },
+    "outline-width": {
+      "value": 2
+    }
+  }
+}
