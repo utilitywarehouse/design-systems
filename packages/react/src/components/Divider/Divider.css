@@ -1,0 +1,17 @@
+.uwp-Divider {
+  all: unset;
+  display: block; /* explicitly set this so horizontal dividers show inside block elements */
+  align-self: stretch;
+  flex-shrink: 0;
+  background-color: var(--divider-color, var(--color-grey175));
+
+  &:where([data-orientation='horizontal']) {
+    height: 1px;
+    width: auto;
+  }
+
+  &:where([data-orientation='vertical']) {
+    height: auto;
+    width: 1px;
+  }
+}

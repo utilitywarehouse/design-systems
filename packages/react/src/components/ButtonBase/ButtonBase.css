@@ -1,0 +1,196 @@
+.uwp-ButtonBase {
+  all: unset;
+  outline: transparent;
+  appearance: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: 0;
+  user-select: none; /* make inner text unselectable */
+  vertical-align: top;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation; /* make clicks not need to wait and observe a potential double click, making the buttons feel faster */
+  border: none;
+  transition-duration: 0.2s;
+  transition-property: color, background-color, border-color;
+  border-radius: 9999px;
+  color: var(--button-base-foreground-color);
+  background-color: var(--button-base-background-color);
+
+  &:where([data-colorscheme='cyan']) {
+    --focus-outline-color: var(--color-cyan700);
+
+    /* solid */
+    --solid-background-color: var(--color-cyan400);
+    --solid-background-color-active: var(--color-cyan300);
+    --solid-background-color-disabled: var(--color-cyan100);
+    --solid-background-color-hover: var(--color-cyan500);
+    --solid-foreground-color: var(--color-cyan1000);
+    --solid-foreground-color-disabled: var(--color-cyan300);
+
+    /* outline */
+    --outline-background-color-active: var(--color-cyan100);
+    --outline-background-color-hover: var(--color-cyan50);
+    --outline-border-color: var(--color-cyan400);
+    --outline-border-color-disabled: var(--color-cyan300);
+    --outline-foreground-color: var(--color-cyan1000);
+    --outline-foreground-color-disabled: var(--color-cyan300);
+
+    /* ghost */
+    --ghost-background-color-hover: var(--color-cyan50);
+    --ghost-background-color-active: var(--color-cyan100);
+    --ghost-foreground-color: var(--color-cyan700);
+    --ghost-foreground-color-disabled: var(--color-cyan300);
+  }
+
+  &:where([data-colorscheme='green']) {
+    --focus-outline-color: var(--color-green700);
+
+    /* solid */
+    --solid-background-color: var(--color-green500);
+    --solid-background-color-active: var(--color-green700);
+    --solid-background-color-disabled: var(--color-green100);
+    --solid-background-color-hover: var(--color-green600);
+    --solid-foreground-color: white;
+    --solid-foreground-color-disabled: var(--color-green300);
+
+    /* outline */
+    --outline-background-color-active: var(--color-green100);
+    --outline-background-color-hover: var(--color-green50);
+    --outline-border-color: var(--color-green500);
+    --outline-border-color-disabled: var(--color-green300);
+    --outline-foreground-color: var(--color-green900);
+    --outline-foreground-color-disabled: var(--color-green300);
+
+    /* ghost */
+    --ghost-background-color-hover: var(--color-green50);
+    --ghost-background-color-active: var(--color-green100);
+    --ghost-foreground-color: var(--color-green700);
+    --ghost-foreground-color-disabled: var(--color-green300);
+  }
+
+  &:where([data-colorscheme='red']) {
+    --focus-outline-color: var(--color-red700);
+
+    /* solid */
+    --solid-background-color: var(--color-red500);
+    --solid-background-color-active: var(--color-red700);
+    --solid-background-color-disabled: var(--color-red100);
+    --solid-background-color-hover: var(--color-red600);
+    --solid-foreground-color: white;
+    --solid-foreground-color-disabled: var(--color-red300);
+
+    /* outline */
+    --outline-background-color-active: var(--color-red100);
+    --outline-background-color-hover: var(--color-red50);
+    --outline-border-color: var(--color-red500);
+    --outline-border-color-disabled: var(--color-red300);
+    --outline-foreground-color: var(--color-red900);
+    --outline-foreground-color-disabled: var(--color-red300);
+
+    /* ghost */
+    --ghost-background-color-hover: var(--color-red50);
+    --ghost-background-color-active: var(--color-red100);
+    --ghost-foreground-color: var(--color-red700);
+    --ghost-foreground-color-disabled: var(--color-red300);
+  }
+
+  &:where([data-colorscheme='gold']) {
+    --focus-outline-color: var(--color-gold700);
+
+    /* outline */
+    --outline-background-color-active: var(--color-gold100);
+    --outline-background-color-hover: var(--color-gold50);
+    --outline-border-color: var(--color-gold500);
+    --outline-border-color-disabled: var(--color-gold300);
+    --outline-foreground-color: var(--color-gold900);
+    --outline-foreground-color-disabled: var(--color-gold300);
+
+    /* ghost */
+    --ghost-background-color-hover: var(--color-gold50);
+    --ghost-background-color-active: var(--color-gold100);
+    --ghost-foreground-color: var(--color-gold700);
+    --ghost-foreground-color-disabled: var(--color-gold300);
+  }
+
+  &:where([data-colorscheme='grey']) {
+    --focus-outline-color: var(--color-grey700);
+
+    /* outline */
+    --outline-background-color-active: var(--color-grey100);
+    --outline-background-color-hover: var(--color-grey50);
+    --outline-border-color: var(--color-grey500);
+    --outline-border-color-disabled: var(--color-grey300);
+    --outline-foreground-color: var(--color-grey900);
+    --outline-foreground-color-disabled: var(--color-grey300);
+
+    /* ghost */
+    --ghost-background-color-hover: var(--color-grey50);
+    --ghost-background-color-active: var(--color-grey100);
+    --ghost-foreground-color: var(--color-grey700);
+    --ghost-foreground-color-disabled: var(--color-grey300);
+  }
+
+  &:where(.uwp-variant-solid) {
+    --button-base-foreground-color: var(--solid-foreground-color);
+    --button-base-background-color: var(--solid-background-color);
+    --button-base-background-color-hover: var(--solid-background-color-hover);
+    --button-base-background-color-active: var(--solid-background-color-active);
+    --button-base-foreground-color-disabled: var(--solid-foreground-color-disabled);
+    --button-base-background-color-disabled: var(--solid-background-color-disabled);
+  }
+
+  &:where(.uwp-variant-ghost) {
+    --button-base-background-color: transparent;
+    --button-base-background-color-disabled: transparent;
+    --button-base-foreground-color: var(--ghost-foreground-color);
+    --button-base-background-color-hover: var(--ghost-background-color-hover);
+    --button-base-background-color-active: var(--ghost-background-color-active);
+    --button-base-foreground-color-disabled: var(--ghost-foreground-color-disabled);
+  }
+
+  &:where(.uwp-variant-outline) {
+    box-shadow: inset 0 0 0 2px var(--outline-border-color);
+
+    --button-base-background-color: transparent;
+    --button-base-background-color-disabled: transparent;
+    --button-base-foreground-color: var(--outline-foreground-color);
+    --button-base-background-color-hover: var(--outline-background-color-hover);
+    --button-base-background-color-active: var(--outline-background-color-active);
+    --button-base-foreground-color-disabled: var(--outline-foreground-color-disabled);
+    --button-base-border-color-disabled: var(--outline-border-color-disabled);
+  }
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 2px;
+  }
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      --button-base-background-color: var(--button-base-background-color-hover);
+    }
+  }
+
+  &:where(:active) {
+    transition-duration: 0s;
+
+    --button-base-background-color: var(--button-base-background-color-active);
+  }
+
+  &:where([aria-disabled]) {
+    cursor: not-allowed;
+
+    --button-base-foreground-color: var(--button-base-foreground-color-disabled);
+    --button-base-background-color: var(--button-base-background-color-disabled);
+    --button-base-border-color: var(--button-base-border-color-disabled);
+
+    &:where(.uwp-variant-outline) {
+      --outline-border-color: var(--outline-border-color-disabled);
+    }
+  }
+}

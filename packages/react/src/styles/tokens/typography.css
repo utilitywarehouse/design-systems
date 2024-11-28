@@ -1,0 +1,32 @@
+& {
+  /** font-family **/
+  --font-family-body: 'Work Sans', arial, sans-serif;
+  --font-family-heading: aeonik, arial, sans-serif;
+
+  /** font-sizes **/
+  --font-size-body-xs: 0.75rem;
+  --font-size-body-sm: 0.875rem;
+  --font-size-body-md: 1rem;
+  --font-size-body-lg: 1.125rem;
+  --font-size-body-xl: 1.25rem;
+  --font-size-heading-xs: 1.125rem;
+  --font-size-heading-sm: 1.25rem;
+  --font-size-heading-md: 1.375rem;
+  --font-size-heading-lg: 1.5rem;
+  --font-size-heading-xl: 1.75rem;
+  --font-size-heading-2xl: 2rem;
+  --font-size-heading-3xl: 2.625rem;
+  --font-size-heading-4xl: 4rem;
+
+  /** font-weights **/
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /** line-heights **/
+  --line-height-sm: 1;
+  --line-height-md: 1.2;
+  --line-height-lg: 1.5;
+  --line-height-xl: 2;
+}

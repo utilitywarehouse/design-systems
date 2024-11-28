@@ -1,0 +1,6 @@
+.uwp-sb-Placeholder {
+  border: 1px solid var(--color-grey100);
+  background-color: var(--color-grey75);
+  border-width: 2px;
+  border-radius: 4px;
+}

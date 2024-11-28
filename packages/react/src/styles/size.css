@@ -1,0 +1,11 @@
+@breakpoints {
+  .uwp-r-width {
+    width: var(--r-width);
+  }
+}
+
+@breakpoints {
+  .uwp-r-height {
+    height: var(--r-height);
+  }
+}

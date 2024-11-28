@@ -1,0 +1,33 @@
+@breakpoints {
+  .uwp-r-display-block {
+    display: block;
+  }
+
+  .uwp-r-display-inline {
+    display: inline;
+  }
+
+  .uwp-r-display-inline-block {
+    display: inline-block;
+  }
+
+  .uwp-r-display-flex {
+    display: flex;
+  }
+
+  .uwp-r-display-inline-flex {
+    display: inline-flex;
+  }
+
+  .uwp-r-display-grid {
+    display: grid;
+  }
+
+  .uwp-r-display-inline-grid {
+    display: inline-grid;
+  }
+
+  .uwp-r-display-none {
+    display: none;
+  }
+}

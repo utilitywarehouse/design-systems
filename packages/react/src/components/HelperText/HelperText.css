@@ -1,0 +1,27 @@
+.uwp-HelperText {
+  --helper-text-color: var(--color-grey700);
+  --helper-text-color-disabled: var(--color-grey400);
+  --helper-text-color-valid: var(--color-green600);
+  --helper-text-color-invalid: var(--color-red600);
+
+  display: inline-flex;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-lg);
+  color: var(--helper-text-color);
+  gap: 8px;
+  align-items: center;
+
+  &:where([data-disabled], [data-disabled] &) {
+    color: var(--helper-text-color-disabled);
+  }
+
+  &:where([data-validation='valid']) {
+    color: var(--helper-text-color-valid);
+  }
+
+  &:where([data-validation='invalid']) {
+    color: var(--helper-text-color-invalid);
+  }
+}

@@ -1,0 +1,61 @@
+import { Meta, Canvas } from '@storybook/blocks';
+
+import * as Stories from './Divider.stories';
+
+import { DocsHeader } from '../../storybook/DocsHeader';
+
+<Meta title="Documentation / Divider" />
+
+<DocsHeader
+  componentName="Divider"
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=8185-13154"
+  stories={Stories}
+/>
+
+<Canvas of={Stories.KitchenSink} sourceState="none" />
+
+- [Accessibility](#accessibility)
+- [Custom colour](#custom-colour)
+- [API](#api)
+
+## Accessibility
+
+Follows the [Separator role requirements](https://www.w3.org/TR/wai-aria-1.2/#separator).
+
+By default the `Divider` component renders an `hr` which has a role of
+`separator` by default. This is a semantically meaningful division between
+elements, and should be used considerately.
+
+If you need a purely visual separation you can use the `decorative` prop, which
+will remove the element from the accessibility tree. Alternatively you could
+use CSS styling, such as `border-color`, instead of this component.
+
+```tsx
+<Divider decorative />
+```
+
+## Custom colour
+
+If necessary you can override the default colour using the `color` prop. We
+recommend you use the `@utilitywarehouse/colour-system` library for this.
+
+```tsx
+import { Divider } from "@utilitywarehouse/web-ui";
+import { colors } from "@utilitywarehouse/colour-system";
+
+[...]
+
+<Divider color={colors.pink500} />
+```
+
+<Canvas of={Stories.CustomColor} />
+
+## API
+
+This component is based on the `hr` element.
+
+| Prop          | Type                         | Description                                                                                                                                                                          | Default           |
+| ------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------- |
+| `orientation` | `"horizontal" \| "vertical"` |                                                                                                                                                                                      | `'horizontal'`    |
+| `decorative`  | `boolean`                    | Whether or not the component is purely decorative. When true, accessibility-related attributes are updated so that that the rendered element is removed from the accessibility tree. | `false`           |
+| `color`       | `string`                     | Override the default Divider colour.                                                                                                                                                 | `--color-grey175` |

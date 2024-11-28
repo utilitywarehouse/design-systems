@@ -1,0 +1,13 @@
+.uwp-RadioGridGroup {
+  .uwp-RadioGridGroupContent {
+    display: grid;
+    gap: 16px;
+    min-width: fit-content;
+  }
+}
+
+@breakpoints {
+  .uwp-r-columns {
+    grid-template-columns: repeat(var(--columns), minmax(10px, 1fr));
+  }
+}

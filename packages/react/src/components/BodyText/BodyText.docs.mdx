@@ -1,0 +1,68 @@
+import { Meta, Canvas, ArgTypes } from '@storybook/blocks';
+
+import * as Stories from './BodyText.stories';
+
+import { DocsHeader } from '../../storybook/DocsHeader';
+
+<Meta title="Documentation / BodyText" />
+
+<DocsHeader
+  componentName="BodyText"
+  stories={Stories}
+  figmaLink="https://www.figma.com/design/4FFYTLWJ2hQpj36JplQQUw/UW-Web-UI?node-id=38-884"
+/>
+
+<Canvas of={Stories.KitchenSink} sourceState="none" />
+
+- [Alternatives](#alternatives)
+- [Variants](#variants)
+- [Colour](#colour)
+- [Text truncate](#text-truncate)
+- [Styles](#styles)
+- [API](#api)
+
+## Alternatives
+
+- [Heading](?path=/docs/components-heading--documentation) - For heading-level text
+- [Strong](?path=/docs/components-strong--documentation) - For strong importance
+- [Em](?path=/docs/components-em--documentation) - For emphasis
+
+## Variants
+
+<Canvas of={Stories.TextVariants} />
+
+## Colour
+
+You can pass any valid string color to the `Text` component. It is recommended
+you use the `@utilitywarehouse/colour-system` package, and pass colour values
+from that into the component. The default colour is `colorsCommon.brandMidnight`
+from this package.
+
+```tsx
+import { colorsCommon } from '@utilitywarehouse/colour-system'
+
+<Text color={colorsCommon.brandPrimaryPurple}>{...}</Text>
+```
+
+## Text truncate
+
+Use the `truncate` prop to set the text to truncate, instead of wrapping, with a
+text overflow ellipsis. Note that text overflow can only happen with block or
+inline-block level elements (the element needs to have a width in order to
+overflow).
+
+<Canvas of={Stories.TextTruncate} />
+
+## API
+
+This component is based on the `p` element.
+
+| Prop       | Type                                               | Description                                                                                                                                                                                                                           | Default                 |
+| ---------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| `as`       | `"p" \| "div" \| "span"`                           | Shorthand for changing the default rendered element into a semantically appropriate alternative. Cannot be used in combination with `asChild`.                                                                                        | `"p"`                   |
+| `asChild`  | `boolean`                                          | Change the default rendered element for the one passed as a child, merging their props and behavior.                                                                                                                                  | `false`                 |
+| `variant`  | `"body" \| "subtitle" \| "legalNote" \| "caption"` | Applies the text font styles.                                                                                                                                                                                                         | `"body"`                |
+| `weight`   | `Responsive<"regular" \| "medium" \| "semibold">`  | Set the font-weight.                                                                                                                                                                                                                  | `"regular"`             |
+| `align`    | `Responsive<"left" \| "center" \| "right">`        | Set the text-align.                                                                                                                                                                                                                   |                         |
+| `truncate` | `boolean`                                          | If true, the text will not wrap, but instead will truncate with a text overflow ellipsis. Note that text overflow can only happen with block or inline-block level elements (the element needs to have a width in order to overflow). |                         |
+| `color`    | `string`                                           | Sets the text colour. It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.                                                                                                                        | `--color-brandMidnight` |
