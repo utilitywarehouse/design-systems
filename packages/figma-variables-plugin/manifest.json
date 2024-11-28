@@ -8,6 +8,7 @@
   "enableProposedApi": false,
   "documentAccess": "dynamic-page",
   "editorType": ["figma"],
+  "permissions": ["teamlibrary"],
   "networkAccess": {
     "allowedDomains": [
       "https://api.github.com",

@@ -1,0 +1,14 @@
+:root {
+  --radio-border-width: 2;
+  --radio-checked-inner-circle-background-color-disabled: #585858;
+  --radio-checked-inner-circle-size: 14;
+  --radio-checked-inner-circle-background-color: #75a7fd;
+  --radio-checked-border-color: #75a7fd;
+  --radio-halo-color: #002d80;
+  --radio-halo-width: 8;
+  --radio-unchecked-border-color: #b8b8b8;
+  --radio-unchecked-border-color-hover: #75a7fd;
+  --radio-size: 24;
+  --radio-background-color: #1d1d1d;
+  --radio-border-color-disabled: #585858;
+}

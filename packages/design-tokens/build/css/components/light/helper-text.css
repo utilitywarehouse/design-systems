@@ -1,0 +1,12 @@
+:root {
+  --helper-text-font-size: 16;
+  --helper-text-font-family: Work Sans;
+  --helper-text-color-disabled: #a0a0a0;
+  --helper-text-color: #414141;
+  --helper-text-font-weight: 400;
+  --helper-text-gap: 8;
+  --helper-text-valid-color: #297f50;
+  --helper-text-line-height: 24;
+  --helper-text-letter-spacing: 0;
+  --helper-text-invalid-color: #c31d2a;
+}

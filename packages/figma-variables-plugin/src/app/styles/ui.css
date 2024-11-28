@@ -1,54 +1,45 @@
+:root {
+  --rem: 16;
+}
+
 body {
-  font-size: 12px;
   font-family: 'Work Sans', sans-serif;
-  text-align: center;
   margin: 20px;
+  font-size: 16px;
+  background-color: #f4f3f6;
 }
 img {
   height: 50px;
 }
-button {
-  border-radius: 5px;
-  background: white;
-  color: black;
-  border: none;
-  padding: 8px 15px;
-  margin: 0 5px;
-  border: 1px solid #ccc;
-  outline: none;
+
+#corner {
+  position: fixed;
+  right: 1px;
+  bottom: 2px;
+  cursor: nwse-resize;
 }
-.export {
-  border-radius: 9999px;
-  flex-direction: row;
+
+.spinner-container {
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  padding: 16px 24px;
-  min-height: 48px;
-  background-color: rgb(117, 167, 253);
-  font-size: 16px;
-  line-height: 16px;
-  font-family: 'Work Sans';
-  font-weight: 500;
-  color: rgb(0, 19, 51);
-  border-width: 0px;
-  outline: none;
-  margin-top: 8px;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
 }
-input {
-  border: none;
-  outline: none;
-  padding: 8px;
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #18a0fb;
+  animation: spin 1s linear infinite;
 }
-input:hover {
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-}
-button:focus {
-  box-shadow: inset 0 0 0 2px #18a0fb;
-}
-#create:focus {
-  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.3);
-}
-input:focus {
-  box-shadow: inset 0 0 0 2px #18a0fb;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -1,0 +1,50 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --font-weights-thin: 100;
+  --font-weights-extrabold: 800;
+  --font-weights-bold: 700;
+  --font-weights-black: 900;
+  --font-weights-light: 300;
+  --font-weights-normal: 400;
+  --font-weights-medium: 500;
+  --font-weights-semibold: 600;
+  --font-weights-extralight: 200;
+  --radii-xs: 2;
+  --radii-full: 9999;
+  --radii-none: 0;
+  --radii-3xl: 24;
+  --radii-4xl: 32;
+  --radii-xl: 12;
+  --radii-2xl: 16;
+  --radii-lg: 8;
+  --radii-md: 6;
+  --radii-sm: 4;
+  --fonts-body: Work Sans;
+  --fonts-heading: Aeonik;
+  --border-widths-0: 0;
+  --border-widths-1: 1;
+  --border-widths-2: 2;
+  --border-widths-4: 4;
+  --border-widths-8: 8;
+  --spacing-0: 0;
+  --spacing-1: 4;
+  --spacing-2: 8;
+  --spacing-3: 12;
+  --spacing-4: 16;
+  --spacing-5: 20;
+  --spacing-6: 24;
+  --spacing-7: 28;
+  --spacing-8: 32;
+  --spacing-9: 36;
+  --spacing-10: 40;
+  --spacing-11: 44;
+  --spacing-12: 48;
+  --spacing-3-5: 14;
+  --spacing-2-5: 10;
+  --spacing-4-5: 18;
+  --spacing-1-5: 6;
+  --spacing-0-5: 2;
+}

@@ -1,0 +1,21 @@
+:root {
+  --switch-circle-medium-size: 28;
+  --switch-circle-background-color: #ffffff;
+  --switch-circle-small-size: 20;
+  --switch-circle-border-radius: 100;
+  --switch-circle-background-color-disabled: #585858;
+  --switch-border-radius: 56;
+  --switch-medium-height: 32;
+  --switch-medium-width: 60;
+  --switch-small-width: 44;
+  --switch-small-height: 24;
+  --switch-padding: 2;
+  --switch-checked-background-color: #75a7fd;
+  --switch-checked-background-color-hover: #5692fb;
+  --switch-checked-icon-color: #0658e5;
+  --switch-icon-color-disabled: #323232;
+  --switch-background-color-disabled: #323232;
+  --switch-unchecked-background-color-hover: #585858;
+  --switch-unchecked-icon-color: #585858;
+  --switch-unchecked-background-color: #707070;
+}

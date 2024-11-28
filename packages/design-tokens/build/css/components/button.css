@@ -1,0 +1,10 @@
+:root {
+  --border: 2;
+  --border-radius: 32;
+  --font-family: Work Sans;
+  --font-weight: medium;
+  --medium-line-height: 24;
+  --letter-spacing: 0;
+  --font-size: 16;
+  --small-line-height: 16;
+}
