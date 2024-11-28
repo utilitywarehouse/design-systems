@@ -14,6 +14,8 @@ import { BackToTopButton, DocComponentWrap } from '../../../docs/components';
 The carousel is a component for presenting information in a manner for customers to scroll through. This is typically when you have multiple banners, or CTA's, etc, although there are many other functional use cases.
 
 - [Usage](#usage)
+  - [Basic Usage](#basic-usage)
+  - [Carousel with Pagination](#carousel-with-pagination)
 - [Props](#props)
 
 <DocComponentWrap>
@@ -30,15 +32,39 @@ The carousel is a component for presenting information in a manner for customers
 
 ## Usage
 
-> The `Carousel` component is to be used for presenting scrollable data
+- The `Carousel` component is to be used for presenting scrollable data
+- The `Carousel` scrolls horizontally only
+- Most `Carousel` behaviour is predefined for a standardised behaviour and experience across apps
+- Some props can be modified to offer customised behaviour
 
-> The carousel scrolls horizontally only
+## Basic Usage
 
-> Most carousel behaviour is predefined for a standardised behaviour and experience across apps
-
-> Some props can be modified to offer customised behaviour
-
-A basic carousel implementation:
+<Canvas>
+  <Center flex={1}>
+    <Carousel
+      data={[
+        {
+          key: 1,
+          title: "I'm a Carousel item",
+        },
+        {
+          key: 2,
+          title: "I'm another Carousel item",
+        },
+        {
+          key: 3,
+          title: "I'm a third Carousel item",
+        },
+      ]}
+      renderItem={({ item }) => (
+        <Box p="$2" aspectRatio={1.6} backgroundColor="$purple500">
+          <Text color="$white">{item.title}</Text>
+        </Box>
+      )}
+      width={300}
+    />
+  </Center>
+</Canvas>
 
 ```jsx
 import { Text } from '@utilitywarehouse/native-ui';
@@ -49,6 +75,71 @@ const MyComponent = () => {
     theme: { colors, radii, space },
   } = useStyles();
 
+  return (
+    <Carousel
+      data={[
+        {
+          key: 1,
+          title: "I'm a Carousel item",
+        },
+        {
+          key: 2,
+          title: "I'm another Carousel item",
+        },
+        {
+          key: 3,
+          title: "I'm a third Carousel item",
+        },
+      ]}
+      renderItem={({ item }) => (
+        <Box p="$2" aspectRatio={1.6} backgroundColor="$purple500">
+          <Text color="$white">{item.title}</Text>
+        </Box>
+      )}
+      width={300}
+    />
+  );
+};
+```
+
+### Carousel with Pagination
+
+The `CarouselPagination` component is to be used in conjunction with the `Carousel` component
+
+<Canvas>
+  <Center flex={1}>
+    <Carousel
+      data={[
+        {
+          key: 1,
+          title: "I'm a Carousel item",
+        },
+        {
+          key: 2,
+          title: "I'm another Carousel item",
+        },
+        {
+          key: 3,
+          title: "I'm a third Carousel item",
+        },
+      ]}
+      renderItem={({ item }) => (
+        <Center p="$2" aspectRatio={1.6} backgroundColor="$cyan500">
+          <Text color="$white">{item.title}</Text>
+        </Center>
+      )}
+      width={300}
+    >
+      <CarouselPagination style={{ marginVertical: 16 }} />
+    </Carousel>
+  </Center>
+</Canvas>
+
+```tsx
+import { Text } from '@utilitywarehouse/native-ui';
+import { Box, Carousel, CarouselPagination } from '@utilitywarehouse/native-ui/lab';
+
+const MyComponent = () => {
   return (
     <Carousel
       data={[
@@ -66,12 +157,14 @@ const MyComponent = () => {
         },
       ]}
       renderItem={({ item }) => (
-        <Box style={{ aspectRatio: 1.6, backgroundColor: 'purple' }}>
+        <Center p="$2" aspectRatio={1.6} backgroundColor="$cyan500">
           <Text>{item.title}</Text>
-        </Box>
-        )}
+        </Center>
+      )}
       width={300}
-    />
+    >
+      <CarouselPagination style={{ marginVertical: 16 }} />
+    </Carousel>
   );
 };
 ```

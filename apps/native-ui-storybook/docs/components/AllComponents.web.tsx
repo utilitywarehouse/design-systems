@@ -27,7 +27,7 @@ import {
   Card,
   Switch,
 } from '@utilitywarehouse/native-ui';
-import { Actionsheet, Box } from '@utilitywarehouse/native-ui/lab';
+import { Actionsheet, Box, Carousel, CarouselPagination } from '@utilitywarehouse/native-ui/lab';
 import {
   ElectricityMediumIcon,
   MobileMediumIcon,
@@ -112,6 +112,37 @@ const AllComponents: React.FC = () => {
                 <Heading>I am a card</Heading>
                 <Text>And do card stuff.</Text>
               </Card>
+            </Center>
+          </ComponentWrapper>
+          <ComponentWrapper
+            name="Carousel (Lab)"
+            link="/?path=/docs/native-ui-components-card--docs"
+          >
+            <Center flex={1}>
+              <Carousel
+                data={[
+                  {
+                    key: 1,
+                    title: "I'm a Carousel item",
+                  },
+                  {
+                    key: 2,
+                    title: "I'm another Carousel item",
+                  },
+                  {
+                    key: 3,
+                    title: "I'm a third Carousel item",
+                  },
+                ]}
+                renderItem={({ item }) => (
+                  <Box p="$2" aspectRatio={1.6} backgroundColor="$purple500">
+                    <Text color="$white">{item.title}</Text>
+                  </Box>
+                )}
+                width={150}
+              >
+                <CarouselPagination style={{ marginTop: 16 }} />
+              </Carousel>
             </Center>
           </ComponentWrapper>
           <ComponentWrapper name="Center" link="/?path=/docs/native-ui-components-center--docs">
