@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.9.0
+
+### Minor Changes
+
+- [#610](https://github.com/utilitywarehouse/design-systems/pull/610) [`94fe93d7`](https://github.com/utilitywarehouse/design-systems/commit/94fe93d7d46e443d91c1a51c9c669728f9638baf) Thanks [@mickeyhead7](https://github.com/mickeyhead7)! - Adds lab Carousel component
+
 ## 0.8.1
 
 ### Patch Changes
