@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { breakpoints } from '../core/breakpoints';
 import { darkTheme, lightTheme } from '../core/themes';
 
@@ -9,6 +10,6 @@ export type AppThemes = {
 };
 
 declare module 'react-native-unistyles' {
-  export type UnistylesBreakpoints = AppBreakpoints;
-  export type UnistylesThemes = AppThemes;
+  export interface UnistylesBreakpoints extends AppBreakpoints {}
+  export interface UnistylesThemes extends AppThemes {}
 }
