@@ -8,14 +8,18 @@ import {
   ViewStyle,
 } from 'react-native';
 
-export interface CarouselRef extends FlatList {}
+export type CarouselRef = FlatList;
 
 export interface CarouselContextValue {
   activeIndex: number;
   numItems: number;
 }
 
-export interface CarouselProps<T> extends Pick<FlatListProps<T>, 'children' | 'data' | 'removeClippedSubviews' | 'renderItem' | 'scrollEnabled' | 'style'> {
+export interface CarouselProps<T>
+  extends Pick<
+    FlatListProps<T>,
+    'children' | 'data' | 'removeClippedSubviews' | 'renderItem' | 'scrollEnabled' | 'style'
+  > {
   inactiveItemOpacity?: number;
   itemStyle?: StyleProp<ViewStyle>;
   itemWidth?: number;
@@ -33,7 +37,7 @@ export interface CarouselItemProps<T> extends ListRenderItemInfo<T>, ViewProps {
   width: number;
 }
 
-export interface CarouselPaginationProps extends ViewProps {}
+export type CarouselPaginationProps = ViewProps;
 
 export interface CarouselPaginationItemProps extends ViewProps {
   active: boolean;

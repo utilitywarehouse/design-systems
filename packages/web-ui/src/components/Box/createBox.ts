@@ -22,14 +22,12 @@ type Options = {
  */
 export function createBox<
   RootComponent extends React.ElementType = MuiBoxTypeMap['defaultComponent'],
->(
-  /* eslint-disable @typescript-eslint/ban-types */
-  options: Options = {}
-) {
+>(options: Options = {}) {
   const { componentName = 'Box' } = options;
   const BaseBox = createMuiBox<Theme>({
     defaultTheme: theme,
     defaultClassName: withGlobalPrefix(componentName),
   });
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   return BaseBox as OverridableComponent<MuiBoxTypeMap<{}, RootComponent, Theme>>;
 }

@@ -259,7 +259,7 @@ const BoxComponent = <T extends React.ElementType = typeof View>(
     if (propValue !== undefined) {
       const themeKey = themeStyleMapping[stylePropName];
       if (themeKey) {
-        const themeMapping = theme[themeKey as keyof UnistylesTheme];
+        const themeMapping = theme[themeKey];
         if (themeMapping && typeof themeMapping === 'object') {
           (styles as any)[stylePropName] = resolveThemeValue(propValue, themeMapping);
         } else {
@@ -292,13 +292,13 @@ const BoxComponent = <T extends React.ElementType = typeof View>(
 
     // Check if propName is a valid style property
     if (isViewStyleProp(propName)) {
-      const stylePropName = propName as keyof ViewStyle;
+      const stylePropName = propName;
       const propValue = props[propName as keyof Omit<BoxProps, 'children' | 'style'>];
 
       if (propValue !== undefined) {
         const themeKey = themeStyleMapping[stylePropName];
         if (themeKey) {
-          const themeMapping = theme[themeKey as keyof UnistylesTheme];
+          const themeMapping = theme[themeKey];
           if (themeMapping && typeof themeMapping === 'object') {
             (styles as any)[stylePropName] = resolveThemeValue(propValue, themeMapping);
           } else {

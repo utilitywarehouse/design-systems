@@ -1,4 +1,4 @@
-import { UnistylesBreakpoints, useStyles } from 'react-native-unistyles';
+import { useStyles } from 'react-native-unistyles';
 
 const useMedia = (): Partial<Record<keyof typeof breakpoints, boolean>> => {
   const {
@@ -10,14 +10,15 @@ const useMedia = (): Partial<Record<keyof typeof breakpoints, boolean>> => {
   const mediaBreakpoints: Partial<Record<BreakPointKeys, boolean>> = {};
 
   // Type guard function to check if 'breakpoint' is a key of 'breakpoints'
-  function isBreakpointKey(
-    value: keyof UnistylesBreakpoints,
-    breakpointsObj: typeof breakpoints
-  ): value is BreakPointKeys {
-    return value in breakpointsObj;
-  }
+  // function isBreakpointKey(
+  //   value: keyof UnistylesBreakpoints,
+  //   breakpointsObj: typeof breakpoints
+  // ): value is BreakPointKeys {
+  //   return value in breakpointsObj;
+  // }
 
-  if (isBreakpointKey(breakpoint, breakpoints)) {
+  // if (isBreakpointKey(breakpoint, breakpoints)) {
+  if (breakpoint in breakpoints) {
     (Object.keys(breakpoints) as Array<BreakPointKeys>).forEach(currentBreakPoint => {
       mediaBreakpoints[currentBreakPoint] =
         breakpoints[currentBreakPoint] === breakpoints[breakpoint];

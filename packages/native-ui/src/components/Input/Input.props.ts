@@ -53,6 +53,6 @@ interface InputWithoutChildrenProps extends InputBaseProps, TextInputProps {
  */
 type InputProps = InputWithChildrenProps | InputWithoutChildrenProps;
 
-export interface InputContextValue extends InputBaseProps {}
+export type InputContextValue = InputBaseProps;
 
 export default InputProps;
