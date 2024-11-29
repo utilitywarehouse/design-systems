@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.9.2
+
+### Patch Changes
+
+- [`afc5e8a1`](https://github.com/utilitywarehouse/design-systems/commit/afc5e8a19e5fd03d259a1a930a9429cde08799a2) Thanks [@jordmccord](https://github.com/jordmccord)! - Bump design-tokens package version
+
 ## 0.9.1
 
 ### Patch Changes
