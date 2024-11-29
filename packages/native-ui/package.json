@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/native-ui",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Utility Warehouse React Native UI library",
   "main": "build/index.js",
   "types": "build/index.d.ts",
