@@ -72,20 +72,27 @@ StyleDictionary.registerTransformGroup({
 // Function to generate index.ts in a directory
 function generateIndexFile(dir, defaultVal = false) {
   const items = fs.readdirSync(dir);
+  let isDirectory = false;
+  let exportAll = 'export {';
   const exportStatements = items
-    .map(item => {
+    .map((item, i) => {
       const fullPath = path.join(dir, item);
       if (fs.statSync(fullPath).isDirectory() && defaultVal) {
         return `export { default as ${item} } from './${item}';`;
       }
       if (fs.statSync(fullPath).isDirectory() && !defaultVal) {
-        return `export * as ${item} from './${item}';`;
+        isDirectory = true;
+        exportAll += `\n${item}${i === items.length - 1 ? '' : ','}`;
+        return `import * as ${item} from './${item}';`;
       }
     })
     .filter(statement => statement !== '')
     .join('\n');
-
-  fs.writeFileSync(path.join(dir, 'index.ts'), exportStatements);
+  exportAll += '\n};';
+  fs.writeFileSync(
+    path.join(dir, 'index.ts'),
+    exportStatements + '\n' + (isDirectory ? exportAll : '')
+  );
 }
 
 // Build function for js platform
