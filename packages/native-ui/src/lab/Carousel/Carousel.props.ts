@@ -8,7 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-export type CarouselRef = FlatList;
+export interface CarouselRef extends FlatList {}
 
 export interface CarouselContextValue {
   activeIndex: number;
@@ -37,7 +37,7 @@ export interface CarouselItemProps<T> extends ListRenderItemInfo<T>, ViewProps {
   width: number;
 }
 
-export type CarouselPaginationProps = ViewProps;
+export interface CarouselPaginationProps extends ViewProps {}
 
 export interface CarouselPaginationItemProps extends ViewProps {
   active: boolean;

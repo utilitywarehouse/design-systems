@@ -54,6 +54,12 @@ module.exports = {
         '@typescript-eslint/no-unsafe-argument': 'off',
       },
     },
+    {
+      files: ['./packages/native-ui/src/**/*.ts'],
+      rules: {
+        '@typescript-eslint/no-empty-object-type': 'off',
+      },
+    },
   ],
   settings: {
     react: {
