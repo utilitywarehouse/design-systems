@@ -16,9 +16,24 @@ export interface CarouselContextValue {
 }
 
 export interface CarouselProps<T>
-  extends Pick<
+  extends Omit<
     FlatListProps<T>,
-    'children' | 'data' | 'removeClippedSubviews' | 'renderItem' | 'scrollEnabled' | 'style'
+    | 'accessibilityActions'
+    | 'accessibilityLabel'
+    | 'accessibilityRole'
+    | 'accessible'
+    | 'bounces'
+    | 'decelerationRate'
+    | 'getItemLayout'
+    | 'horizontal'
+    | 'pagingEnabled'
+    | 'onAccessibilityAction'
+    | 'onViewableItemsChanged'
+    | 'overScrollMode'
+    | 'showsHorizontalScrollIndicator'
+    | 'snapToInterval'
+    | 'snapToAlignment'
+    | 'viewabilityConfig'
   > {
   inactiveItemOpacity?: number;
   itemStyle?: StyleProp<ViewStyle>;

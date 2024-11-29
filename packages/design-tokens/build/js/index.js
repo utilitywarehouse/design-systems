@@ -1,4 +1,5 @@
-export * as colors from './colors';
-export * as components from './components';
-export * as primitive from './primitive';
-export * as semantic from './semantic';
+import * as colors from './colors';
+import * as components from './components';
+import * as primitive from './primitive';
+import * as semantic from './semantic';
+export { colors, components, primitive, semantic };
