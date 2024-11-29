@@ -1,13 +1,13 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable  react-hooks/exhaustive-deps */
-import React, { forwardRef, useMemo, ForwardedRef } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import { Spinner } from '../Spinner';
 import type { SpinnerProps } from '../Spinner';
 import { useStyles } from 'react-native-unistyles';
 import { useButtonContext } from './Button.context';
 import { View } from 'react-native';
 
-const ButtonSpinner = forwardRef<SpinnerProps, Omit<SpinnerProps, 'size'>>(
+const ButtonSpinner = forwardRef<View, Omit<SpinnerProps, 'size'>>(
   ({ color = '', ...props }, ref) => {
     const { colorScheme, variant, disabled, inverted } = useButtonContext();
     const {
@@ -63,7 +63,7 @@ const ButtonSpinner = forwardRef<SpinnerProps, Omit<SpinnerProps, 'size'>>(
       return colorProp;
     }, [color, colorMode, variant, disabled, inverted, colorScheme]);
 
-    return <Spinner ref={ref as ForwardedRef<View>} {...props} size="xs" color={colorProp} />;
+    return <Spinner ref={ref} {...props} size="xs" color={colorProp} />;
   }
 );
 

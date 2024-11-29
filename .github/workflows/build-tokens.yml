@@ -18,7 +18,7 @@ jobs:
       - name: 🏗 Setup repo
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: 🏗 Checkout
         uses: actions/checkout@v4

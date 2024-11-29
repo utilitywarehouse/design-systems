@@ -43,7 +43,7 @@ jobs:
         if: steps.check_skip.outputs.skip == 'false'
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: 📂 Checkout code
         if: steps.check_skip.outputs.skip == 'false'
@@ -176,7 +176,7 @@ jobs:
         uses: pnpm/action-setup@v4
         if: steps.check_skip.outputs.skip == 'false'
         with:
-          version: 8
+          version: 9
 
       - name: 📂 Checkout code
         uses: actions/checkout@v3
@@ -301,7 +301,7 @@ jobs:
       - name: 🔧 Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: 📂 Checkout code
         uses: actions/checkout@v4
