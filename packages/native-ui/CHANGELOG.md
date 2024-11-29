@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.9.1
+
+### Patch Changes
+
+- [#636](https://github.com/utilitywarehouse/design-systems/pull/636) [`650c67fa`](https://github.com/utilitywarehouse/design-systems/commit/650c67fa6c6e2a785a64ad7c79810d9fe054935b) Thanks [@mickeyhead7](https://github.com/mickeyhead7)! - Corrects Carousel props
+
 ## 0.9.0
 
 ### Minor Changes
