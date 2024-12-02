@@ -15,25 +15,26 @@ export interface CarouselContextValue {
   numItems: number;
 }
 
-export interface CarouselProps<T> extends Omit<
-  FlatListProps<T>, 
-  'accessibilityActions' |
-  'accessibilityLabel' |
-  'accessibilityRole' |
-  'accessible' |
-  'bounces' |
-  'decelerationRate' |
-  'getItemLayout' |
-  'horizontal' |
-  'pagingEnabled' |
-  'onAccessibilityAction' |
-  'onViewableItemsChanged' |
-  'overScrollMode' |
-  'showsHorizontalScrollIndicator' |
-  'snapToInterval' |
-  'snapToAlignment' |
-  'viewabilityConfig'
-> {
+export interface CarouselProps<T>
+  extends Omit<
+    FlatListProps<T>,
+    | 'accessibilityActions'
+    | 'accessibilityLabel'
+    | 'accessibilityRole'
+    | 'accessible'
+    | 'bounces'
+    | 'decelerationRate'
+    | 'getItemLayout'
+    | 'horizontal'
+    | 'pagingEnabled'
+    | 'onAccessibilityAction'
+    | 'onViewableItemsChanged'
+    | 'overScrollMode'
+    | 'showsHorizontalScrollIndicator'
+    | 'snapToInterval'
+    | 'snapToAlignment'
+    | 'viewabilityConfig'
+  > {
   inactiveItemOpacity?: number;
   itemStyle?: StyleProp<ViewStyle>;
   itemWidth?: number;

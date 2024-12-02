@@ -47,11 +47,17 @@ module.exports = {
       },
     },
     {
-      files: ['./packages/figma-variables-plugin/src/**/*.ts'],
+      files: ['./packages/figma-variables-plugin/src/**/*.{ts,tsx}'],
       rules: {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-argument': 'off',
+      },
+    },
+    {
+      files: ['./packages/native-ui/src/**/*.{ts,tsx}'],
+      rules: {
+        '@typescript-eslint/no-empty-object-type': 'off',
       },
     },
   ],

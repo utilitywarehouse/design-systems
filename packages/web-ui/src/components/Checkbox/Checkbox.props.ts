@@ -1,3 +1,3 @@
 import { CheckboxBaseProps } from '../CheckboxBase';
 
-export interface CheckboxProps extends CheckboxBaseProps {}
+export type CheckboxProps = CheckboxBaseProps;

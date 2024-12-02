@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { breakpoints } from '../core/breakpoints';
 import { darkTheme, lightTheme } from '../core/themes';
 

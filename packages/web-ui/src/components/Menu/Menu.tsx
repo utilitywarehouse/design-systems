@@ -8,7 +8,7 @@ import { colors } from '@utilitywarehouse/colour-system';
 
 import { spacing } from '../../utils';
 
-export interface MenuProps extends Omit<MuiMenuProps, 'ref'> {}
+export type MenuProps = Omit<MuiMenuProps, 'ref'>;
 
 const StyledMenu = styled(MuiMenu)({
   '& .MuiPaper-root': {

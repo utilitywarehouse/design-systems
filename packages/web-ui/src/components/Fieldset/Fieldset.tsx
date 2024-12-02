@@ -23,7 +23,10 @@ const StyledElement = styled('fieldset')({
  * The `Fieldset` component should be used to group related form inputs, and
  * should be used with the `FieldsetLegend` component
  */
-export const Fieldset = React.forwardRef<
+export const Fieldset: React.ForwardRefExoticComponent<
+  React.PropsWithChildren<PropsWithSx<FieldsetProps>> &
+    React.RefAttributes<React.ElementRef<'fieldset'>>
+> = React.forwardRef<
   React.ElementRef<'fieldset'>,
   React.PropsWithChildren<PropsWithSx<FieldsetProps>>
 >(({ children, className, ...props }, ref) => {
