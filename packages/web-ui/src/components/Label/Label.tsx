@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { colors } from '@utilitywarehouse/colour-system';
+import { components as componentTokens } from '@utilitywarehouse/design-tokens';
 
 import type { LabelProps } from './Label.props';
 
@@ -8,33 +8,111 @@ import { createBox } from '../Box';
 
 import { DATA_ATTRIBUTE_SELECTORS } from '../../helpers';
 import { styled } from '../../theme';
-import { fontWeights, fonts } from '../../tokens';
 import type { PropsWithSx } from '../../types';
-import { pxToRem } from '../../utils';
 
 const componentName = 'Label';
 const BaseBox = createBox<'label'>({ componentName });
 
+// const {
+//   light: {
+//     label: { fontFamily, fontSize, fontWeight, fontWeightNested, lineHeight, color, colorDisabled },
+//   },
+// } = componentTokens;
+
+// const StyledElement = styled(BaseBox)({
+//   fontFamily,
+//   fontSize,
+//   lineHeight,
+//   color,
+//   fontWeight,
+//   ':where([data-disabled],[data-disabled] &)': {
+//     color: colorDisabled,
+//   },
+//   ':where([data-nested])': {
+//     fontWeight: fontWeightNested,
+//   },
+//   [DATA_ATTRIBUTE_SELECTORS.disableUserSelect]: {
+//     userSelect: 'none',
+//   },
+// });
+
+const {
+  light: { label },
+} = componentTokens;
+
 const StyledElement = styled(BaseBox)({
-  fontFamily: fonts.secondary,
-  fontSize: pxToRem(16),
-  lineHeight: 1.5,
-  '--label-color': colors.grey1000,
-  '--label-color-disabled': colors.grey400,
-  '--label-font-weight': fontWeights.secondary.semibold,
-  '--label-font-weight-nested': fontWeights.secondary.regular,
-  color: 'var(--label-color)',
-  fontWeight: 'var(--label-font-weight)',
+  fontFamily: label.fontFamily,
+  fontSize: label.fontSize,
+  fontWeight: label.fontWeight,
+  // fontWeight: label.fontWeight.default,
+  lineHeight: label.lineHeight,
+  color: label.color,
+  // color: label.color.default,
   ':where([data-disabled],[data-disabled] &)': {
-    '--label-color': 'var(--label-color-disabled)',
+    color: label.colorDisabled,
+    // color: label.color.disabled,
+    // color: label.disabled.color,
   },
   ':where([data-nested])': {
-    '--label-font-weight': 'var(--label-font-weight-nested)',
+    fontWeight: label.fontWeightNested,
+    // fontWeight: label.fontWeight.nested,
+    // fontWeight: label.nested.fontWeight,
   },
   [DATA_ATTRIBUTE_SELECTORS.disableUserSelect]: {
     userSelect: 'none',
   },
 });
+
+// const tokens = {
+//   fontWeightSemibold: 600,
+//   labelFontFamily: fontFamily,
+//   labelFontSize: fontSize,
+//   labelFontWeight: fontWeight,
+// };
+//
+// const StyledElement = styled(BaseBox)({
+//   fontFamily: tokens.labelFontFamily,
+//   fontSize: tokens.labelFontSize,
+//   fontWeight: tokens.labelFontWeight,
+//   lineHeight,
+//   color,
+//   ':where([data-disabled],[data-disabled] &)': {
+//     color: colorDisabled,
+//   },
+//   ':where([data-nested])': {
+//     fontWeight: fontWeightNested,
+//   },
+//   [DATA_ATTRIBUTE_SELECTORS.disableUserSelect]: {
+//     userSelect: 'none',
+//   },
+// });
+
+// const labelTokens = {
+//   'label-font-weight-nested': 400,
+//   'label-font-weight': 600,
+//   'label-color': '#121212',
+//   'label-letter-spacing': 0,
+//   'label-line-height': 1.5,
+//   'label-color-disabled': '#a0a0a0',
+//   'label-font-family': "'Work Sans', Arial, sans-serif",
+//   'label-font-size': '1rem',
+// };
+// const StyledElement = styled(BaseBox)({
+//   fontFamily: labelTokens['label-font-family'],
+//   fontSize:labelTokens['label-font-size'],
+//   lineHeight,
+//   color,
+//   fontWeight,
+//   ':where([data-disabled],[data-disabled] &)': {
+//     color: colorDisabled,
+//   },
+//   ':where([data-nested])': {
+//     fontWeight: fontWeightNested,
+//   },
+//   [DATA_ATTRIBUTE_SELECTORS.disableUserSelect]: {
+//     userSelect: 'none',
+//   },
+// });
 
 /**
  * The Label component is used for labelling form elements, such as radio inputs.

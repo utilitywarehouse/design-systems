@@ -5,13 +5,10 @@ import clsx from 'clsx';
 
 import { LabelProps } from './Label.props';
 import { Slot } from '@radix-ui/react-slot';
+import { withGlobalPrefix } from '../../helpers/with-global-prefix';
 
 const componentName = 'Label';
-const componentClassName = 'uwp-' + componentName;
-
-const classNames = {
-  nested: 'uwp-nested',
-};
+const componentClassName = withGlobalPrefix(componentName);
 
 type LabelElement = ElementRef<'label'>;
 
@@ -32,8 +29,9 @@ export const Label = React.forwardRef<LabelElement, LabelProps>(
     return (
       <Slot
         ref={ref}
-        className={clsx(componentClassName, { [classNames.nested]: nested }, className)}
+        className={clsx(componentClassName, className)}
         data-disabled={disabled ? '' : undefined}
+        data-nested={nested ? '' : undefined}
         data-disable-user-select={disableUserSelect ? '' : undefined}
         {...props}
       >

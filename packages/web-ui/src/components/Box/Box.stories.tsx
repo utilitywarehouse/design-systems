@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { primitive, semantic } from '@utilitywarehouse/design-tokens';
 
 import { Box } from './Box';
 import { BoxProps } from './Box.props';
@@ -115,3 +116,28 @@ export const CustomComponent = {
 //     </Box>
 //   ),
 // };
+//
+
+const { default: typography } = primitive;
+
+export const TokensExploration: Story = {
+  render: ({ children, ...args }) => {
+    return (
+      <Box
+        {...args}
+        sx={{
+          // fontWeight: primitive.default.fontWeights.semibold,
+          fontWeight: typography.fontWeights.semibold,
+        }}
+      >
+        <Text>{children}</Text>
+      </Box>
+    );
+  },
+  args: {
+    component: 'div',
+    children: 'Tokens Exploration',
+    padding: '32px',
+    border: '2px solid rebeccapurple',
+  },
+};
