@@ -1,0 +1,45 @@
+@breakpoints {
+  .uwp-r-padding {
+    padding: var(--r-padding);
+  }
+
+  .uwp-r-padding-25 {
+    padding: var(--space-25);
+  }
+}
+
+@breakpoints {
+  .uwp-r-padding-inline {
+    padding-inline: var(--r-padding-inline);
+  }
+}
+
+@breakpoints {
+  .uwp-r-padding-block {
+    padding-block: var(--r-padding-block);
+  }
+}
+
+@breakpoints {
+  .uwp-r-padding-top {
+    padding-top: var(--r-padding-top);
+  }
+}
+
+@breakpoints {
+  .uwp-r-padding-right {
+    padding-right: var(--r-padding-right);
+  }
+}
+
+@breakpoints {
+  .uwp-r-padding-bottom {
+    padding-bottom: var(--r-padding-bottom);
+  }
+}
+
+@breakpoints {
+  .uwp-r-padding-left {
+    padding-left: var(--r-padding-left);
+  }
+}

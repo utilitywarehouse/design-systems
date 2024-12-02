@@ -1,0 +1,49 @@
+.uwp-Link {
+  --link-color: var(--color-cyan700);
+  --link-underline-color: var(--color-cyan400);
+  --link-underline-color-hover: var(--color-cyan500);
+  --link-underline-color-active: var(--color-cyan600);
+  --focus-outline-color: var(--color-cyan700);
+
+  /*  unset button styles when asChild is used */
+  &:where(button) {
+    outline: transparent;
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+
+  cursor: pointer;
+  display: inline;
+  font-family: var(--font-family-body);
+  line-height: var(--line-height-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--link-color);
+  text-decoration: solid var(--link-underline-color) underline 2px;
+  text-underline-position: under;
+  border-radius: 4px;
+
+  @media (hover: hover) {
+    &:where(:hover) {
+      --link-underline-color: var(--link-underline-color-hover);
+    }
+  }
+
+  @breakpoints {
+    &:where(.uwp-r-size-large) {
+      font-size: var(--font-size-body-lg);
+    }
+
+    &:where(.uwp-r-size-small) {
+      font-size: var(--font-size-body-md);
+    }
+  }
+
+  &:has(svg, [data-icon]) {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 4px;
+  }
+}

@@ -1,0 +1,7 @@
+.uwp-color {
+  color: var(--color);
+}
+
+.uwp-background-color {
+  background-color: var(--background-color);
+}

@@ -1,0 +1,35 @@
+.uwp-BodyText {
+  font-family: var(--font-family-body);
+  color: var(--body-text-color, var(--color-brand-midnight));
+
+  &:where(.uwp-truncate) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /** variants **/
+  &:where(.uwp-variant-subtitle) {
+    font-size: var(--font-size-body-lg);
+    line-height: var(--line-height-lg);
+
+    @media (--desktop) {
+      font-size: var(--font-size-body-xl);
+    }
+  }
+
+  &:where(.uwp-variant-body) {
+    font-size: var(--font-size-body-md);
+    line-height: var(--line-height-lg);
+  }
+
+  &:where(.uwp-variant-legalNote) {
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-lg);
+  }
+
+  &:where(.uwp-variant-caption) {
+    font-size: var(--font-size-body-xs);
+    line-height: var(--line-height-xl);
+  }
+}
