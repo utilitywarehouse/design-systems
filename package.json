@@ -24,7 +24,7 @@
     "setup": "corepack enable && corepack prepare pnpm@9 --activate",
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "build:storybook": "turbo run --no-cache build:storybook",
+    "build:storybook": "turbo run build:storybook",
     "build:colour-system": "pnpm build --filter \"@utilitywarehouse/colour-system\"",
     "generate": "turbo run generate && turbo run format",
     "preinstall": "npx only-allow pnpm",
