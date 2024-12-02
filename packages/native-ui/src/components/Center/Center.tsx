@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { createStyleSheet } from 'react-native-unistyles';
 import { Box } from '../../lab';
 
-type CenterProps = Omit<ComponentProps<typeof Box>, 'style'>;
+interface CenterProps extends Omit<ComponentProps<typeof Box>, 'style'> {}
 
 const stylesheet = createStyleSheet({
   container: {
