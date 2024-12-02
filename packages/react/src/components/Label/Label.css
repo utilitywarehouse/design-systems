@@ -1,20 +1,15 @@
 .uwp-Label {
-  --label-color: var(--color-grey1000);
-  --label-color-disabled: var(--color-grey400);
-  --label-font-weight: var(--font-weight-semibold);
-  --label-font-weight-nested: var(--font-weight-regular);
-
-  font-family: var(--font-family-body);
-  font-size: var(--font-size-body-md);
+  font-family: var(--label-font-family);
+  font-size: var(--label-font-size);
   font-weight: var(--label-font-weight);
-  line-height: var(--line-height-lg);
+  line-height: var(--label-line-height);
   color: var(--label-color);
 
   &:where([data-disabled], [data-disabled] &) {
     color: var(--label-color-disabled);
   }
 
-  &:where(.uwp-nested) {
+  &:where([data-nested]) {
     font-weight: var(--label-font-weight-nested);
   }
 }

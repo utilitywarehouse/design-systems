@@ -41,6 +41,7 @@
   "dependencies": {
     "@radix-ui/react-radio-group": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "@utilitywarehouse/design-tokens": "0.0.1-alpha.2",
     "@utilitywarehouse/react-icons": "^1.11.0",
     "clsx": "^2.1.1"
   },
