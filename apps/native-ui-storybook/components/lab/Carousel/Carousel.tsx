@@ -51,7 +51,7 @@ export const Playground: StoryFn<CarouselItemsProps> = props => (
 Playground.args = {
   enabled: true,
   inactiveItemOpacity: 1,
-  itemWidth: 200,
+  itemWidth: 300,
   showOverflow: false,
   style: {},
   width: 300,
