@@ -3,12 +3,14 @@ import { createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 import { FC } from 'react';
 
-import { CarouselItem } from './Carousel.props';
+interface CarouselItemProps {
+  backgroundColor: string,
+  title: string;
+}
 
 const stylesheet = createStyleSheet(({ colors, radii, space }) => ({
   carouselItem: {
     aspectRatio: 1.6,
-    backgroundColor: colors.purple800,
     borderRadius: radii.lg,
     justifyContent: 'center',
     marginHorizontal: space[2],
@@ -19,11 +21,11 @@ const stylesheet = createStyleSheet(({ colors, radii, space }) => ({
   },
 }));
 
-export const CarouselItemCard: FC<CarouselItem> = ({ title }) => {
+export const CarouselItemCard: FC<CarouselItemProps> = ({ backgroundColor, title }) => {
   const { styles } = useStyles(stylesheet);
 
   return (
-    <Box style={styles.carouselItem}>
+    <Box style={[styles.carouselItem, { backgroundColor }]}>
       <Text style={styles.carouselItemTitle}>{title}</Text>
     </Box>
   );
