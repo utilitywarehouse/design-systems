@@ -6,6 +6,53 @@
   .uwp-r-padding-25 {
     padding: var(--space-25);
   }
+
+  .uwp-r-padding-50 {
+    padding: var(--space-50);
+  }
+
+  .uwp-r-padding-75 {
+    padding: var(--space-75);
+  }
+  .uwp-r-padding-100 {
+    padding: var(--space-100);
+  }
+  .uwp-r-padding-150 {
+    padding: var(--space-150);
+  }
+  .uwp-r-padding-200 {
+    padding: var(--space-200);
+  }
+  .uwp-r-padding-250 {
+    padding: var(--space-250);
+  }
+  .uwp-r-padding-300 {
+    padding: var(--space-300);
+  }
+  .uwp-r-padding-350 {
+    padding: var(--space-350);
+  }
+  .uwp-r-padding-400 {
+    padding: var(--space-400);
+  }
+  .uwp-r-padding-500 {
+    padding: var(--space-500);
+  }
+  .uwp-r-padding-600 {
+    padding: var(--space-600);
+  }
+  .uwp-r-padding-700 {
+    padding: var(--space-700);
+  }
+  .uwp-r-padding-800 {
+    padding: var(--space-800);
+  }
+  .uwp-r-padding-900 {
+    padding: var(--space-900);
+  }
+  .uwp-r-padding-1000 {
+    padding: var(--space-1000);
+  }
 }
 
 @breakpoints {

@@ -27,7 +27,7 @@ const meta: Meta<typeof Box> = {
     backgroundColor: { control: { type: 'text' } },
   },
   args: {
-    children: 'Pollen Box',
+    children: 'Box',
   },
 } satisfies Meta<typeof Box>;
 
@@ -35,7 +35,8 @@ export default meta;
 type Story = StoryObj<typeof Box>;
 
 export const Workshop: Story = {
-  render: args => <Box {...args} />,
+  // render: args => <Box {...args} padding="100px" />,
+  render: args => <Box {...args} padding={{ mobile: '50', tablet: '100', desktop: '200' }} />,
 };
 
 export const ResponsivePadding: Story = {

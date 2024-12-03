@@ -6,6 +6,9 @@ import type { BoxProps } from './Box.props';
 import type { ElementRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { withBreakpointStyles } from '../../helpers/with-breakpoint-styles';
+import { withBreakpoints } from '../../helpers/with-breakpoints';
+import { extractProps } from '../../helpers/extract-props';
+import { paddingPropsMeta, paddingValues } from '../../props/padding.props';
 
 const componentName = 'Box';
 const componentClassName = 'uwp-' + componentName;
@@ -26,7 +29,6 @@ export const Box = React.forwardRef<BoxElement, BoxProps>(
       height,
       maxHeight,
       minHeight,
-      padding,
       paddingTop,
       paddingLeft,
       paddingBlock,
@@ -47,13 +49,15 @@ export const Box = React.forwardRef<BoxElement, BoxProps>(
     const maxHeightProps = withBreakpointStyles(maxHeight, 'max-height');
     const minHeightProps = withBreakpointStyles(minHeight, 'min-height');
 
-    const paddingProps = withBreakpointStyles(padding, 'padding');
+    // const paddingProps = withBreakpointStyles(padding, 'padding');
     const paddingTopProps = withBreakpointStyles(paddingTop, 'padding-top');
     const paddingRightProps = withBreakpointStyles(paddingRight, 'padding-right');
     const paddingBottomProps = withBreakpointStyles(paddingBottom, 'padding-bottom');
     const paddingLeftProps = withBreakpointStyles(paddingLeft, 'padding-left');
     const paddingInlineProps = withBreakpointStyles(paddingInline, 'padding-inline');
     const paddingBlockProps = withBreakpointStyles(paddingBlock, 'padding-block');
+
+    const { className: extractedClassName } = extractProps(props, paddingPropsMeta);
 
     const colorClassNames = {
       'uwp-color': !!color,
@@ -72,7 +76,7 @@ export const Box = React.forwardRef<BoxElement, BoxProps>(
       ...heightProps?.style,
       ...maxHeightProps?.style,
       ...minHeightProps?.style,
-      ...paddingProps?.style,
+      // ...paddingProps?.style,
       ...paddingTopProps?.style,
       ...paddingRightProps?.style,
       ...paddingBottomProps?.style,
@@ -94,7 +98,7 @@ export const Box = React.forwardRef<BoxElement, BoxProps>(
           heightProps?.className,
           maxHeightProps?.className,
           minHeightProps?.className,
-          paddingProps?.className,
+          // paddingProps?.className,
           paddingInlineProps?.className,
           paddingBlockProps?.className,
           paddingTopProps?.className,
