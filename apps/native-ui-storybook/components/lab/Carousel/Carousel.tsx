@@ -1,29 +1,57 @@
 import { StoryFn } from '@storybook/react';
-import { Box, Carousel, CarouselPagination, CarouselProps } from '@utilitywarehouse/native-ui/lab';
+import {
+  Box,
+  Carousel,
+  CarouselItem,
+  CarouselItems,
+  CarouselPagination,
+  CarouselItemsProps,
+} from '@utilitywarehouse/native-ui/lab';
+import { colors } from '@utilitywarehouse/colour-system';
 
-import CarouselItemCard from './CarouselItemCard'
-import { data } from './Carousel.constants'
-import { CarouselItem } from './Carousel.props'
+import CarouselItemCard from './CarouselItemCard';
 
-export const Playground: StoryFn<CarouselProps<CarouselItem>> = (props) => (
+const items = [
+  {
+    color: colors.purple800,
+    key: 1,
+    title: '1111',
+  },
+  {
+    color: colors.red800,
+    key: 2,
+    title: '2222',
+  },
+  {
+    color: colors.green800,
+    key: 3,
+    title: '3333',
+  },
+];
+
+export const Playground: StoryFn<CarouselItemsProps> = props => (
   <Box>
-    <Carousel
-      {...props}
-      renderItem={({ item }) => <CarouselItemCard {...item} />}
-    >
+    <Carousel>
+      <CarouselItems {...props}>
+        {items.map(({ color, key, title }) => (
+          <CarouselItem key={key}>
+            <CarouselItemCard
+              backgroundColor={color}
+              key={key}
+              title={`•••• •••• •••• ${title}`}
+            />
+          </CarouselItem>
+        ))}
+      </CarouselItems>
       <CarouselPagination style={{ marginVertical: 16 }} />
     </Carousel>
   </Box>
 );
 
 Playground.args = {
-  data,
+  enabled: true,
   inactiveItemOpacity: 1,
-  itemStyle: {},
-  itemWidth: undefined,
-  onSnapToItem: undefined,
-  removeClippedSubviews: false,
-  scrollEnabled: true,
+  itemWidth: 200,
   showOverflow: false,
   style: {},
   width: 300,
