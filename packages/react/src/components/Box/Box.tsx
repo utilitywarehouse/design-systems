@@ -29,7 +29,6 @@ export const Box = React.forwardRef<BoxElement, BoxProps>(
       height,
       maxHeight,
       minHeight,
-      paddingTop,
       paddingLeft,
       paddingBlock,
       paddingRight,
@@ -50,14 +49,15 @@ export const Box = React.forwardRef<BoxElement, BoxProps>(
     const minHeightProps = withBreakpointStyles(minHeight, 'min-height');
 
     // const paddingProps = withBreakpointStyles(padding, 'padding');
-    const paddingTopProps = withBreakpointStyles(paddingTop, 'padding-top');
+    // const paddingTopProps = withBreakpointStyles(paddingTop, 'padding-top');
     const paddingRightProps = withBreakpointStyles(paddingRight, 'padding-right');
     const paddingBottomProps = withBreakpointStyles(paddingBottom, 'padding-bottom');
     const paddingLeftProps = withBreakpointStyles(paddingLeft, 'padding-left');
     const paddingInlineProps = withBreakpointStyles(paddingInline, 'padding-inline');
     const paddingBlockProps = withBreakpointStyles(paddingBlock, 'padding-block');
 
-    const { className: extractedClassName } = extractProps(props, paddingPropsMeta);
+    const extracted = extractProps(props, paddingPropsMeta);
+    console.log({ extracted });
 
     const colorClassNames = {
       'uwp-color': !!color,
@@ -77,7 +77,7 @@ export const Box = React.forwardRef<BoxElement, BoxProps>(
       ...maxHeightProps?.style,
       ...minHeightProps?.style,
       // ...paddingProps?.style,
-      ...paddingTopProps?.style,
+      // ...paddingTopProps?.style,
       ...paddingRightProps?.style,
       ...paddingBottomProps?.style,
       ...paddingLeftProps?.style,
@@ -101,7 +101,7 @@ export const Box = React.forwardRef<BoxElement, BoxProps>(
           // paddingProps?.className,
           paddingInlineProps?.className,
           paddingBlockProps?.className,
-          paddingTopProps?.className,
+          // paddingTopProps?.className,
           paddingRightProps?.className,
           paddingBottomProps?.className,
           paddingLeftProps?.className,

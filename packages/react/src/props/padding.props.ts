@@ -1,6 +1,6 @@
 import { Responsive, Union } from '../types/responsive';
 
-const paddingValues = [
+const paddingTokens = [
   '25',
   '50',
   '75',
@@ -21,22 +21,33 @@ const paddingValues = [
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type PropsMeta<T = any> = {
-  values: ReadonlyArray<T>;
-  responsive: boolean;
+  values: ReadonlyArray<T>; // rename tokens?
+  className: string;
+  responsive: boolean; // ???
+  hasTokens: boolean; // ???
 };
 
 const paddingPropsMeta = {
   padding: {
-    values: paddingValues,
+    className: 'padding',
+    values: paddingTokens,
     responsive: true,
+    hasTokens: true,
+  },
+  paddingTop: {
+    className: 'padding-top',
+    values: paddingTokens,
+    responsive: true,
+    hasTokens: true,
   },
 } satisfies {
-  padding: PropsMeta<(typeof paddingValues)[number]>;
+  padding: PropsMeta<(typeof paddingTokens)[number]>;
+  paddingTop: PropsMeta<(typeof paddingTokens)[number]>;
 };
 
 interface PaddingProps {
-  padding?: Responsive<Union<string, (typeof paddingValues)[number]>>;
-  paddingTop?: Responsive<string>;
+  padding?: Responsive<Union<string, (typeof paddingTokens)[number]>>;
+  paddingTop?: Responsive<Union<string, (typeof paddingTokens)[number]>>;
   paddingRight?: Responsive<string>;
   paddingBottom?: Responsive<string>;
   paddingLeft?: Responsive<string>;

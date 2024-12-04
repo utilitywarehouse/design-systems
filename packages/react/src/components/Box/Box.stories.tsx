@@ -36,7 +36,9 @@ type Story = StoryObj<typeof Box>;
 
 export const Workshop: Story = {
   // render: args => <Box {...args} padding="100px" />,
-  render: args => <Box {...args} padding={{ mobile: '50', tablet: '100', desktop: '200' }} />,
+  render: args => (
+    <Box {...args} padding={{ mobile: '50', tablet: '100', desktop: '200' }} paddingTop="24px" />
+  ),
 };
 
 export const ResponsivePadding: Story = {

@@ -69,7 +69,7 @@
 
 @breakpoints {
   .uwp-r-padding-top {
-    padding-top: var(--r-padding-top);
+    padding-top: var(--padding-top);
   }
 }
 
