@@ -1,6 +1,6 @@
 @breakpoints {
   .uwp-r-padding {
-    padding: var(--r-padding);
+    padding: var(--padding);
   }
 
   .uwp-r-padding-25 {
@@ -57,13 +57,13 @@
 
 @breakpoints {
   .uwp-r-padding-inline {
-    padding-inline: var(--r-padding-inline);
+    padding-inline: var(--padding-inline);
   }
 }
 
 @breakpoints {
   .uwp-r-padding-block {
-    padding-block: var(--r-padding-block);
+    padding-block: var(--padding-block);
   }
 }
 
@@ -75,18 +75,18 @@
 
 @breakpoints {
   .uwp-r-padding-right {
-    padding-right: var(--r-padding-right);
+    padding-right: var(--padding-right);
   }
 }
 
 @breakpoints {
   .uwp-r-padding-bottom {
-    padding-bottom: var(--r-padding-bottom);
+    padding-bottom: var(--padding-bottom);
   }
 }
 
 @breakpoints {
   .uwp-r-padding-left {
-    padding-left: var(--r-padding-left);
+    padding-left: var(--padding-left);
   }
 }

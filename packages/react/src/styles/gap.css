@@ -1,5 +1,5 @@
 @breakpoints {
   .uwp-r-gap {
-    gap: var(--r-gap);
+    gap: var(--gap);
   }
 }

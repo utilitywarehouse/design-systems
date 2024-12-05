@@ -8,7 +8,7 @@ export const withBreakpointStyles = (
     return undefined;
   }
   if (typeof value === 'string' || typeof value === 'number') {
-    return { className: `uwp-r-${prefix}`, style: { [`--r-${prefix}`]: value } };
+    return { className: `uwp-r-${prefix}`, style: { [`--${prefix}`]: value } };
   }
 
   if (typeof value === 'object') {
@@ -25,7 +25,7 @@ export const withBreakpointStyles = (
       (acc: { [key: string]: string | number }, bp: Breakpoints) => {
         const breakpointValue = value[bp];
         if (breakpointValue !== undefined) {
-          const baseStyleName = `--r-${prefix}`;
+          const baseStyleName = `--${prefix}`;
           const styleName = bp === initialBreakpoint ? baseStyleName : `${baseStyleName}-${bp}`;
           acc[styleName] = breakpointValue;
           return acc;

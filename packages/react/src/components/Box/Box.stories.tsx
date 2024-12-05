@@ -50,5 +50,11 @@ export const ResponsivePadding: Story = {
       desktop: '16px',
       wide: '32px',
     },
+    paddingInline: {
+      mobile: '4px',
+      tablet: '8px',
+      desktop: '16px',
+      wide: '32px',
+    },
   },
 };
