@@ -2,4 +2,55 @@
   .uwp-r-gap {
     gap: var(--r-gap);
   }
+  .uwp-r-gap-0 {
+    gap: 0;
+  }
+  .uwp-r-gap-25 {
+    gap: var(--space-25);
+  }
+  .uwp-r-gap-50 {
+    gap: var(--space-50);
+  }
+  .uwp-r-gap-75 {
+    gap: var(--space-75);
+  }
+  .uwp-r-gap-100 {
+    gap: var(--space-100);
+  }
+  .uwp-r-gap-150 {
+    gap: var(--space-150);
+  }
+  .uwp-r-gap-200 {
+    gap: var(--space-200);
+  }
+  .uwp-r-gap-250 {
+    gap: var(--space-250);
+  }
+  .uwp-r-gap-300 {
+    gap: var(--space-300);
+  }
+  .uwp-r-gap-350 {
+    gap: var(--space-350);
+  }
+  .uwp-r-gap-400 {
+    gap: var(--space-400);
+  }
+  .uwp-r-gap-500 {
+    gap: var(--space-500);
+  }
+  .uwp-r-gap-600 {
+    gap: var(--space-600);
+  }
+  .uwp-r-gap-700 {
+    gap: var(--space-700);
+  }
+  .uwp-r-gap-800 {
+    gap: var(--space-800);
+  }
+  .uwp-r-gap-900 {
+    gap: var(--space-900);
+  }
+  .uwp-r-gap-1000 {
+    gap: var(--space-1000);
+  }
 }

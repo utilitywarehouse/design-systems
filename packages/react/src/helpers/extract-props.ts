@@ -7,23 +7,23 @@ import { PropDef } from '../props/prop-def';
 export function extractProps<
   P extends { className?: string; style?: React.CSSProperties; [key: string]: any },
   T extends Array<Record<string, PropDef>>,
->(props: P, ...propsMeta: T) {
-  const allPropsMeta: Record<string, PropDef> = Object.assign({}, ...propsMeta);
+>(props: P, ...propDefs: T) {
+  const allPropDefs: Record<string, PropDef> = Object.assign({}, ...propDefs);
   const extractedProps = { ...props };
   let className: string | undefined;
   let style: ReturnType<typeof mergeStyles>;
 
-  for (const key in allPropsMeta) {
+  for (const key in allPropDefs) {
     const value = extractedProps[key];
     delete extractedProps[key];
-    const tokens = allPropsMeta[key]?.tokens;
-    const prefix = allPropsMeta[key]?.className;
-    const isResponsive = allPropsMeta[key]?.responsive;
+    const tokens = allPropDefs[key]?.tokens;
+    const prefix = allPropDefs[key]?.className;
     const { className: propClassName, style: propStyle } = getClassNameStyles({
       value,
       prefix,
+      defaultValue: allPropDefs[key]?.default,
       tokens,
-      isResponsive,
+      isResponsive: Boolean(allPropDefs[key]?.responsive),
     });
     className = clsx(className, propClassName);
     style = mergeStyles(style, propStyle);

@@ -1,6 +1,6 @@
 import { breakpoints, type Breakpoint, type Responsive } from '../types/responsive';
 
-export function isResponsiveObject<Value extends string>(
+export function isResponsiveObject<Value extends string | number>(
   obj: Responsive<Value | Omit<string, Value>> | undefined
 ): obj is Record<Breakpoint, string> {
   return (

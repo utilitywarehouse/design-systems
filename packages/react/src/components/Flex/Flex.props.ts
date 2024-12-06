@@ -1,37 +1,59 @@
 import { ColorProps } from '../../props/color.props';
+import { GapProps } from '../../props/gap.props';
 import type { PaddingProps } from '../../props/padding.props';
+import { PropDef } from '../../props/prop-def';
 import type { SizeProps } from '../../props/size.props';
 import type { ComponentPropsWithout, RemovedProps } from '../../types/component-props';
-import type { Responsive } from '../../types/responsive';
+import type { Responsive, Union } from '../../types/responsive';
 
-interface CommonFlexProps extends ColorProps, PaddingProps, SizeProps {
+const displayValues = ['none', 'inline-flex', 'flex'] as const;
+const directionValues = ['row', 'column', 'row-reverse', 'column-reverse'] as const;
+const alignValues = [
+  'start',
+  'center',
+  'end',
+  'baseline',
+  'stretch',
+  'space-between',
+  'space-around',
+  'space-evenly',
+] as const;
+const justifyValues = [
+  'start',
+  'center',
+  'end',
+  'between',
+  'space-between',
+  'space-around',
+  'space-evenly',
+] as const;
+const wrapValues = ['nowrap', 'wrap', 'wrap-reverse'] as const;
+
+export const flexPropDefs = {
+  display: { className: 'display', tokens: displayValues, responsive: true },
+  direction: { className: 'flex-direction', tokens: directionValues, responsive: true },
+  align: { className: 'align-items', tokens: alignValues, responsive: true },
+  justify: { className: 'justify-content', tokens: justifyValues, responsive: true },
+  wrap: { className: 'flex-wrap', tokens: wrapValues, responsive: true },
+} satisfies {
+  display: PropDef<(typeof displayValues)[number]>;
+  direction: PropDef<(typeof directionValues)[number]>;
+  align: PropDef<(typeof alignValues)[number]>;
+  justify: PropDef<(typeof justifyValues)[number]>;
+  wrap: PropDef<(typeof wrapValues)[number]>;
+};
+
+interface CommonFlexProps extends ColorProps, PaddingProps, SizeProps, GapProps {
   as?: 'div' | 'span';
   /** Change the default rendered element for the one passed as a child, merging their props and behavior. */
   asChild?: boolean;
-  display?: Responsive<'none' | 'flex' | 'inline-flex'>;
-  direction?: Responsive<'row' | 'column' | 'row-reverse' | 'column-reverse'>;
-  gap?: Responsive<string>;
-  align?: Responsive<
-    | 'start'
-    | 'center'
-    | 'end'
-    | 'baseline'
-    | 'stretch'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly'
-  >;
-  justify?: Responsive<
-    | 'start'
-    | 'center'
-    | 'end'
-    | 'baseline'
-    | 'stretch'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly'
-  >;
+  display?: Responsive<Union<string, (typeof displayValues)[number]>>;
+  direction?: Responsive<Union<string, (typeof directionValues)[number]>>;
+  align?: Responsive<Union<string, (typeof alignValues)[number]>>;
+  justify?: Responsive<Union<string, (typeof justifyValues)[number]>>;
+  wrap?: Responsive<Union<string, (typeof wrapValues)[number]>>;
 }
 type FlexDivProps = { as?: 'div' } & ComponentPropsWithout<'div', RemovedProps>;
 type FlexSpanProps = { as: 'span' } & ComponentPropsWithout<'span', RemovedProps>;
 export type FlexProps = CommonFlexProps & (FlexSpanProps | FlexDivProps);
+export { displayValues, directionValues, alignValues, justifyValues, wrapValues };

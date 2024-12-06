@@ -2,10 +2,11 @@ import type { Breakpoints, Responsive } from '../types/responsive';
 import { isResponsiveObject } from './is-responsive-object';
 
 type GetClassNameStylesOptions = {
-  value: Responsive<string> | undefined;
+  value: Responsive<string | number> | undefined;
   prefix: string | undefined;
-  tokens: ReadonlyArray<string> | undefined;
+  tokens: ReadonlyArray<string | number> | undefined;
   isResponsive: boolean;
+  defaultValue?: string | number;
 };
 
 export const getClassNameStyles = ({
@@ -13,21 +14,24 @@ export const getClassNameStyles = ({
   prefix,
   tokens,
   isResponsive,
+  defaultValue,
 }: GetClassNameStylesOptions) => {
   const responsivePrefix = isResponsive ? '-r' : '';
-  if (typeof value === 'string') {
+
+  if (typeof value === 'string' || typeof value === 'number') {
     const isTokenValue = tokens?.includes(value);
     if (isTokenValue) {
       return { className: `uwp${responsivePrefix}-${prefix}-${value}` };
     }
     return {
       className: `uwp${responsivePrefix}-${prefix}`,
-      style: { [`-${responsivePrefix}-${prefix}`]: value },
+      style: { [`-${responsivePrefix}-${prefix}`]: value || defaultValue },
     };
   }
 
   if (isResponsiveObject(value)) {
     const initialBreakpoint = 'mobile';
+
     const classes = (Object.keys(value) as Array<Breakpoints>).map(bp => {
       const breakpointValue = value[bp];
       if (breakpointValue !== undefined) {
@@ -42,6 +46,7 @@ export const getClassNameStyles = ({
         return className;
       }
     });
+
     const styles = (Object.keys(value) as Array<Breakpoints>).reduce(
       (acc: { [key: string]: string | number }, bp: Breakpoints) => {
         const breakpointValue = value[bp];

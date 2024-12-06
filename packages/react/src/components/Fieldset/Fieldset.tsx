@@ -20,7 +20,7 @@ export const Fieldset = React.forwardRef<FieldsetElement, FieldsetProps>(
   ({ children, className, ...props }, ref) => {
     return (
       <fieldset className={clsx(componentClassName, className)} ref={ref} {...props}>
-        <Flex direction="column" gap="16px">
+        <Flex direction="column" gap="200">
           {children}
         </Flex>
       </fieldset>

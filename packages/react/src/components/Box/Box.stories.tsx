@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Box } from './Box';
-import React from 'react';
 import { paddingTokens } from '../../props/padding.props';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
