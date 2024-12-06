@@ -1,3 +1,4 @@
+import { BackgroundColorProps } from '../../props/background-color.props';
 import { ColorProps } from '../../props/color.props';
 import { GapProps } from '../../props/gap.props';
 import type { PaddingProps } from '../../props/padding.props';
@@ -43,15 +44,20 @@ export const flexPropDefs = {
   wrap: PropDef<(typeof wrapValues)[number]>;
 };
 
-interface CommonFlexProps extends ColorProps, PaddingProps, SizeProps, GapProps {
+interface CommonFlexProps
+  extends ColorProps,
+    BackgroundColorProps,
+    PaddingProps,
+    SizeProps,
+    GapProps {
   as?: 'div' | 'span';
   /** Change the default rendered element for the one passed as a child, merging their props and behavior. */
   asChild?: boolean;
-  display?: Responsive<Union<string, (typeof displayValues)[number]>>;
-  direction?: Responsive<Union<string, (typeof directionValues)[number]>>;
-  align?: Responsive<Union<string, (typeof alignValues)[number]>>;
-  justify?: Responsive<Union<string, (typeof justifyValues)[number]>>;
-  wrap?: Responsive<Union<string, (typeof wrapValues)[number]>>;
+  display?: Responsive<(typeof displayValues)[number]>;
+  direction?: Responsive<(typeof directionValues)[number]>;
+  align?: Responsive<(typeof alignValues)[number]>;
+  justify?: Responsive<(typeof justifyValues)[number]>;
+  wrap?: Responsive<(typeof wrapValues)[number]>;
 }
 type FlexDivProps = { as?: 'div' } & ComponentPropsWithout<'div', RemovedProps>;
 type FlexSpanProps = { as: 'span' } & ComponentPropsWithout<'span', RemovedProps>;
