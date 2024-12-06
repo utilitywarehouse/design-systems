@@ -68,7 +68,7 @@ export const FormFieldGroup = React.forwardRef<FormFieldGroupElement, FormFieldG
         aria-describedby={ariaDescribedbyValue}
       >
         {label || showTopHelperText ? (
-          <Flex direction="column" gap="4px">
+          <Flex direction="column" gap="50">
             {label ? (
               <FieldsetLegend id={labelId} disabled={disabled}>
                 {label}
@@ -85,7 +85,7 @@ export const FormFieldGroup = React.forwardRef<FormFieldGroupElement, FormFieldG
         <FormFieldGroupProvider value={value}>{children}</FormFieldGroupProvider>
 
         {showBottomHelperText || showErrorMessage ? (
-          <Flex direction="column" gap="8px">
+          <Flex direction="column" gap="100">
             {showBottomHelperText ? (
               <HelperText id={helperTextId} disabled={disabled} showIcon={showHelperTextIcon}>
                 {helperText}

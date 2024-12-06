@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Flex } from './Flex';
 import React from 'react';
 import { Box } from '../Box/Box';
+import { paddingTokens } from '../../props/padding.props';
+import { gapTokens } from '../../props/gap.props';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof Flex> = {
@@ -12,13 +14,14 @@ const meta: Meta<typeof Flex> = {
     children: { control: { type: 'text' } },
     as: { options: ['div', 'span'], control: { type: 'radio' } },
     display: { options: ['none', 'flex', 'inline-flex'], control: { type: 'radio' } },
-    padding: { control: { type: 'text' } },
-    paddingInline: { control: { type: 'text' } },
-    paddingBlock: { control: { type: 'text' } },
-    paddingTop: { control: { type: 'text' } },
-    paddingRight: { control: { type: 'text' } },
-    paddingBottom: { control: { type: 'text' } },
-    paddingLeft: { control: { type: 'text' } },
+    padding: { options: paddingTokens, control: { type: 'select' } },
+    paddingInline: { options: paddingTokens, control: { type: 'select' } },
+    paddingBlock: { options: paddingTokens, control: { type: 'select' } },
+    paddingTop: { options: paddingTokens, control: { type: 'select' } },
+    paddingRight: { options: paddingTokens, control: { type: 'select' } },
+    paddingBottom: { options: paddingTokens, control: { type: 'select' } },
+    paddingLeft: { options: paddingTokens, control: { type: 'select' } },
+    gap: { options: gapTokens, control: { type: 'select' } },
     width: { control: { type: 'text' } },
     minWidth: { control: { type: 'text' } },
     maxWidth: { control: { type: 'text' } },
@@ -29,12 +32,8 @@ const meta: Meta<typeof Flex> = {
     backgroundColor: { control: { type: 'text' } },
   },
   args: {
-    children: 'Pollen Flex',
-    display: 'flex',
-    direction: 'column',
-    backgroundColor: 'transparent',
-    color: 'inherit',
-    padding: '32px',
+    children: 'Flex',
+    style: { border: '1px solid rebeccapurple' },
   },
 } satisfies Meta<typeof Flex>;
 
@@ -53,10 +52,13 @@ export const ResponsiveGap: Story = {
   ),
   args: {
     gap: {
-      mobile: '4px',
-      tablet: '8px',
-      desktop: '16px',
-      wide: '32px',
+      mobile: '50',
+      tablet: '100',
+      desktop: '200',
+      wide: '400',
     },
+    children: '',
+    style: { border: 'none' },
+    direction: 'column',
   },
 };

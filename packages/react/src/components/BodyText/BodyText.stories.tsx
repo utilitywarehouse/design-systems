@@ -36,7 +36,7 @@ export const KitchenSink: Story = {
   parameters: { controls: { hideNoControlsWarning: true } },
   render: () => {
     return (
-      <Flex direction="column" gap="8px">
+      <Flex direction="column" gap="100">
         {variants.map(variant => (
           <BodyText key={variant} variant={variant}>
             Hamburgefons
@@ -50,9 +50,10 @@ export const KitchenSink: Story = {
 export const Workshop: Story = {
   render: ({ color = undefined, ...args }) => {
     return (
-      <Flex padding="32px" backgroundColor={colors.grey50} align="center" justify="center">
+      <Flex padding="400" backgroundColor={colors.grey50} align="center" justify="center">
         <BodyText
           // @ts-expect-error story
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
           {...args}
         />
@@ -74,7 +75,7 @@ export const TextVariants: Story = {
   name: 'Variants',
   render: () => {
     return (
-      <Flex direction="column" gap="8px">
+      <Flex direction="column" gap="100">
         {variants.map(variant => (
           <BodyText key={variant} variant={variant}>
             {variant}
@@ -89,7 +90,7 @@ export const TextTruncate: Story = {
   name: 'Truncate',
   render: args => {
     return (
-      <Flex direction="column" gap="8px" width="200px">
+      <Flex direction="column" gap="100" width="200px">
         {variants.map(variant => (
           <BodyText key={variant} {...args} variant={variant}>
             the quick brown fox jumped over the lazy dog.
@@ -100,5 +101,6 @@ export const TextTruncate: Story = {
   },
   args: {
     truncate: true,
+    weight: 'regular',
   },
 };

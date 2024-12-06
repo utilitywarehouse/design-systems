@@ -1,7 +1,21 @@
+import { ColorProps } from '../../props/color.props';
+import { PropDef } from '../../props/prop-def';
+import { TextAlignProps } from '../../props/text-align.props';
 import type { ComponentPropsWithout, RemovedProps } from '../../types/component-props';
 import type { Responsive } from '../../types/responsive';
 
-interface CommonBodyTextProps {
+const weights = ['regular', 'medium', 'semibold'] as const;
+const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
+
+export const bodyTextPropDefs = {
+  weight: { className: 'weight', tokens: weights, responsive: true, default: 'regular' },
+  variant: { className: 'variant', tokens: variants, responsive: false, default: 'body' },
+} satisfies {
+  weight: PropDef<(typeof weights)[number]>;
+  variant: PropDef<(typeof variants)[number]>;
+};
+
+interface CommonBodyTextProps extends TextAlignProps, ColorProps {
   /**
    * @default p
    */
@@ -12,28 +26,17 @@ interface CommonBodyTextProps {
    * Applies the text font styles.
    * @default body
    */
-  variant?: 'subtitle' | 'body' | 'legalNote' | 'caption';
+  variant?: Responsive<(typeof variants)[number]>;
   /**
    * Set the font-weight
    * @default regular
    */
-  weight?: Responsive<'regular' | 'medium' | 'semibold'>;
-  /**
-   * Set the text-align on the component.
-   */
-  align?: Responsive<'left' | 'center' | 'right'>;
+  weight?: Responsive<(typeof weights)[number]>;
   /**
    * If true, the text will not wrap, but instead will truncate with a text overflow ellipsis.
    * Note that text overflow can only happen with block or inline-block level elements (the element needs to have a width in order to overflow).
    */
   truncate?: boolean | undefined;
-  /**
-   * Sets the text colour.
-   * It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
-   *
-   * @default colorsCommon.brandMidnight
-   */
-  color?: string;
 }
 type BodyTextDivProps = { as: 'div' } & ComponentPropsWithout<'div', RemovedProps>;
 type BodyTextSpanProps = { as: 'span' } & ComponentPropsWithout<'span', RemovedProps>;
