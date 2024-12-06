@@ -119,7 +119,13 @@ function updateClass(node, prefix) {
 
 function addPropertySuffixes(propertyNode, suffix) {
   propertyNode.nodes.map(node => {
-    const propertyNameRegexp = /(--[a-z0-9-]+)/g;
+    /**
+     * Should match custom properties with responsive --r prefix:
+     * ```
+     * --r-padding
+     * ```
+     */
+    const propertyNameRegexp = /(--r-[a-z0-9-]+)/g;
     if (propertyNameRegexp.test(node.value)) {
       node.value = node.value.replace(propertyNameRegexp, `$1-${suffix}`);
     }
