@@ -18,7 +18,7 @@ export const getClassNameStyles = ({
 }: GetClassNameStylesOptions) => {
   const responsivePrefix = isResponsive ? '-r' : '';
 
-  if (value === undefined) {
+  if (value === undefined && defaultValue) {
     return { className: `uwp${responsivePrefix}-${prefix}-${defaultValue}` };
   }
 
