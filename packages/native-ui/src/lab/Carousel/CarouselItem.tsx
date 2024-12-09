@@ -3,30 +3,27 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-na
 
 import { CarouselItemProps } from './Carousel.props';
 
-export const CarouselItem = <T,>({
+export const CarouselItem = ({
   active,
-  inactiveItemOpacity,
-  index,
-  item,
-  renderItem,
-  separators,
+  children,
+  inactiveOpacity = 1,
   style,
   width,
   ...props
-}: CarouselItemProps<T>) => {
-  const opacity = useSharedValue<number>(inactiveItemOpacity);
+}: CarouselItemProps) => {
+  const opacity = useSharedValue<number>(inactiveOpacity);
   const animatedStyles = useAnimatedStyle(() => ({
     opacity: opacity.value,
     width,
   }), [opacity, width]);
 
   useEffect(() => {
-    opacity.value = withTiming(active ? 1 : inactiveItemOpacity, { duration: 200 });
-  }, [active, inactiveItemOpacity, opacity]);
+    opacity.value = withTiming(active ? 1 : inactiveOpacity, { duration: 200 });
+  }, [active, inactiveOpacity, opacity]);
 
   return (
     <Animated.View style={[style, animatedStyles]} {...props}>
-      {renderItem?.({ item, index, separators })}
+      {children}
     </Animated.View>
   );
 };

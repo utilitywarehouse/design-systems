@@ -1,20 +1,26 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren, useState } from 'react';
 
 import CarouselContext from './Carousel.context';
-import { CarouselContextValue } from './Carousel.props';
+import { CarouselProviderProps } from './Carousel.props';
 
-export const CarouselProvider: FC<PropsWithChildren<CarouselContextValue>> = ({
+export const CarouselProvider: FC<PropsWithChildren<CarouselProviderProps>> = ({
+  initialActiveIndex = 0,
   children,
-  activeIndex,
-  numItems,
-}) => (
-  <CarouselContext.Provider
-    value={{
-      activeIndex,
-      numItems,
-    }}>
-    {children}
-  </CarouselContext.Provider>
-);
+}) => {
+  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+  const [numItems, setNumItems] = useState(0);
+  
+  return (
+    <CarouselContext.Provider
+      value={{
+        activeIndex,
+        numItems,
+        setActiveIndex,
+        setNumItems,
+      }}>
+      {children}
+    </CarouselContext.Provider>
+  );
+};
 
 export default CarouselProvider;
