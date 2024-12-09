@@ -1,5 +1,14 @@
+import { PropDef } from '../../props/prop-def';
 import { Responsive } from '../../types/responsive';
 import { ButtonBaseProps } from '../ButtonBase/ButtonBase.props';
+
+const sizes = ['xsmall', 'small', 'medium'] as const;
+
+export const iconButtonPropDefs = {
+  size: { className: 'size', tokens: sizes, responsive: true, default: 'medium' },
+} satisfies {
+  size: PropDef<(typeof sizes)[number]>;
+};
 
 export type IconButtonProps = ButtonBaseProps & {
   /**
@@ -11,5 +20,5 @@ export type IconButtonProps = ButtonBaseProps & {
    * Sets the button height.
    * @default medium
    */
-  size?: Responsive<'medium' | 'small' | 'xsmall'>;
+  size?: Responsive<(typeof sizes)[number]>;
 };

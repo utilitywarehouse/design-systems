@@ -11,6 +11,7 @@ import { paddingPropDefs } from '../../props/padding.props';
 import { colorPropDefs } from '../../props/color.props';
 import { sizePropDefs } from '../../props/size.props';
 import { gapPropDefs } from '../../props/gap.props';
+import { backgroundColorPropDefs } from '../../props/background-color.props';
 
 const componentName = 'Flex';
 const componentClassName = withGlobalPrefix(componentName);
@@ -23,7 +24,15 @@ export const Flex = React.forwardRef<FlexElement, FlexProps>((props, ref) => {
     asChild,
     as: Tag = 'div',
     ...flexProps
-  } = extractProps(props, flexPropDefs, paddingPropDefs, colorPropDefs, sizePropDefs, gapPropDefs);
+  } = extractProps(
+    props,
+    flexPropDefs,
+    paddingPropDefs,
+    colorPropDefs,
+    backgroundColorPropDefs,
+    sizePropDefs,
+    gapPropDefs
+  );
 
   const Component = asChild ? Slot : Tag;
 

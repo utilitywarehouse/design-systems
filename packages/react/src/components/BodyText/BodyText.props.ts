@@ -26,7 +26,7 @@ interface CommonBodyTextProps extends TextAlignProps, ColorProps {
    * Applies the text font styles.
    * @default body
    */
-  variant?: Responsive<(typeof variants)[number]>;
+  variant?: (typeof variants)[number];
   /**
    * Set the font-weight
    * @default regular

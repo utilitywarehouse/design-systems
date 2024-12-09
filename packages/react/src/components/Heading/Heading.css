@@ -1,6 +1,7 @@
 .uwp-Heading {
   font-family: var(--font-family-heading);
-  color: var(--heading-color, var(--color-brand-primaryPurple));
+  /* the default text colour, this will be overwritten by the color class */
+  color: var(--color-brand-primaryPurple);
 
   /** variants **/
   &:where(.uwp-variant-displayHeading) {

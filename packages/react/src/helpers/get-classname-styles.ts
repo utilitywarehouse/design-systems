@@ -18,6 +18,10 @@ export const getClassNameStyles = ({
 }: GetClassNameStylesOptions) => {
   const responsivePrefix = isResponsive ? '-r' : '';
 
+  if (value === undefined) {
+    return { className: `uwp${responsivePrefix}-${prefix}-${defaultValue}` };
+  }
+
   if (typeof value === 'string' || typeof value === 'number') {
     const isTokenValue = tokens?.includes(value);
     if (isTokenValue) {

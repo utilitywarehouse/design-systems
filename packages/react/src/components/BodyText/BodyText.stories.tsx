@@ -25,7 +25,7 @@ const meta: Meta<typeof BodyText> = {
     weight: { mobile: 'regular', tablet: 'medium', desktop: 'semibold' },
     align: { mobile: 'left', tablet: 'center', desktop: 'right' },
     truncate: false,
-    color: '',
+    // color: '',
   },
 };
 
@@ -50,14 +50,12 @@ export const KitchenSink: Story = {
 export const Workshop: Story = {
   render: ({ color = undefined, ...args }) => {
     return (
-      <Flex padding="400" backgroundColor={colors.grey50} align="center" justify="center">
-        <BodyText
-          // @ts-expect-error story
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-          color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
-          {...args}
-        />
-      </Flex>
+      <BodyText
+        // @ts-expect-error story
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        color={Object.keys(colorsCommon).includes(color) ? colorsCommon[color] : colors[color]}
+        {...args}
+      />
     );
   },
   argTypes: {

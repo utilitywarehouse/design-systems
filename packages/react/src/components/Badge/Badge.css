@@ -1,6 +1,6 @@
 .uwp-Badge {
   display: inline-flex;
-  gap: 4px;
+  gap: var(--space-50);
   align-items: center;
   white-space: nowrap;
   font-size: var(--font-size-body-sm);
@@ -16,19 +16,19 @@
   border-radius: 4px;
   color: var(--badge-color);
   background-color: var(--badge-background-color);
-  padding-block: 4px;
+  padding-block: var(--space-50);
 
   @breakpoints {
     &:where(.uwp-r-size-medium) {
-      padding-inline: 16px;
+      padding-inline: var(--space-200);
     }
 
     &:where(.uwp-r-size-small) {
-      padding-inline: 8px;
+      padding-inline: var(--space-100);
     }
   }
 
-  &:where(.uwp-bottom-radius-zero) {
+  &:where([data-bottom-radius-zero]) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
