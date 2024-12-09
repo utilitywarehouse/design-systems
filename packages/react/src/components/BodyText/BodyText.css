@@ -1,9 +1,10 @@
 .uwp-BodyText {
   font-family: var(--font-family-body);
+
   /* the default text colour, this will be overwritten by the color class */
   color: var(--color-brand-midnight);
 
-  &:where(.uwp-truncate) {
+  &:where([data-truncate]) {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

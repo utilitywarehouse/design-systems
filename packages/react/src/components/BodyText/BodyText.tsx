@@ -13,10 +13,6 @@ import { withGlobalPrefix } from '../../helpers/with-global-prefix';
 const componentName = 'BodyText';
 const componentClassName = withGlobalPrefix(componentName);
 
-const classNames = {
-  truncate: withGlobalPrefix('truncate'),
-};
-
 type BodyTextElement = ElementRef<'p'>;
 
 /**
@@ -35,7 +31,8 @@ export const BodyText = React.forwardRef<BodyTextElement, BodyTextProps>((props,
   return (
     <Slot
       ref={ref}
-      className={clsx(componentClassName, { [classNames.truncate]: truncate }, className)}
+      className={clsx(componentClassName, className)}
+      data-truncate={truncate ? '' : undefined}
       {...bodyTextProps}
     >
       {asChild ? children : <Tag>{children}</Tag>}

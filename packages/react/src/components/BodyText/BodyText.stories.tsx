@@ -25,7 +25,6 @@ const meta: Meta<typeof BodyText> = {
     weight: { mobile: 'regular', tablet: 'medium', desktop: 'semibold' },
     align: { mobile: 'left', tablet: 'center', desktop: 'right' },
     truncate: false,
-    // color: '',
   },
 };
 
