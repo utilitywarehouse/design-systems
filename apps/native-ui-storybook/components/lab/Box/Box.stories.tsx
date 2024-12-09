@@ -1,4 +1,5 @@
 import Box from './Box';
+import BoxPerfTest from './BoxPerfTest';
 import type { Meta } from '@storybook/react';
 
 const BoxMeta: Meta<typeof Box> = {
@@ -8,4 +9,4 @@ const BoxMeta: Meta<typeof Box> = {
 
 export default BoxMeta;
 
-export { Box as Playground };
+export { Box as Playground, BoxPerfTest };
