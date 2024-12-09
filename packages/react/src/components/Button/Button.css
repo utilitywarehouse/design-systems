@@ -4,7 +4,7 @@
   font-weight: var(--font-weight-medium);
   line-height: var(--button-line-height);
   min-width: var(--button-min-width);
-  gap: 8px;
+  gap: var(--space-100);
   padding-block: var(--button-padding-block);
   padding-inline: var(--button-padding-inline);
 
@@ -12,15 +12,15 @@
     &:where(.uwp-r-size-medium) {
       --button-line-height: 1.5;
       --button-min-width: 136px;
-      --button-padding-inline: 24px;
-      --button-padding-block: 12px;
+      --button-padding-inline: var(--space-300);
+      --button-padding-block: var(--space-200);
     }
 
     &:where(.uwp-r-size-small) {
       --button-line-height: 1;
       --button-min-width: 120px;
-      --button-padding-inline: 16px;
-      --button-padding-block: 8px;
+      --button-padding-inline: var(--space-200);
+      --button-padding-block: var(--space-100);
     }
   }
 }

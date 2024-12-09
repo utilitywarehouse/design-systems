@@ -3,22 +3,13 @@ import type { ElementRef } from 'react';
 
 import clsx from 'clsx';
 
-import { BadgeProps } from './Badge.props';
+import { badgePropDefs, BadgeProps } from './Badge.props';
 import { withGlobalPrefix } from '../../helpers/with-global-prefix';
 import { DATA_ATTRIBUTES } from '../../helpers/data-attributes';
-import { withBreakpoints } from '../../helpers/with-breakpoints';
+import { extractProps } from '../../helpers/extract-props';
 
 const componentName = 'Badge';
 const componentClassName = withGlobalPrefix(componentName);
-
-const classNames = {
-  variant: {
-    soft: withGlobalPrefix('variant-soft'),
-    strong: withGlobalPrefix('variant-strong'),
-    outline: withGlobalPrefix('variant-outline'),
-  },
-  bottomRadiusZero: withGlobalPrefix('bottom-radius-zero'),
-};
 
 type BadgeElement = ElementRef<'span'>;
 
@@ -26,35 +17,25 @@ type BadgeElement = ElementRef<'span'>;
  * Provide additional context (such as status), or to draw attention to another
  * interface element.
  */
-export const Badge = React.forwardRef<BadgeElement, BadgeProps>(
-  (
-    {
-      className,
-      colorScheme = 'cyan',
-      variant = 'soft',
-      size = 'medium',
-      bottomRadiusZero,
-      ...props
-    },
-    ref
-  ) => {
-    const sizeClassName = withBreakpoints(size, 'size');
-    const dataAttributeProps = { [DATA_ATTRIBUTES.colorscheme]: colorScheme };
-    return (
-      <span
-        ref={ref}
-        className={clsx(
-          componentClassName,
-          classNames.variant[variant],
-          sizeClassName,
-          { [classNames.bottomRadiusZero]: bottomRadiusZero },
-          className
-        )}
-        {...dataAttributeProps}
-        {...props}
-      />
-    );
-  }
-);
+export const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, ref) => {
+  const {
+    className,
+    colorScheme = 'cyan',
+    bottomRadiusZero,
+    ...badgeProps
+  } = extractProps(props, badgePropDefs);
+  const dataAttributeProps = {
+    [DATA_ATTRIBUTES.colorscheme]: colorScheme,
+    'data-bottom-radius-zero': bottomRadiusZero ? '' : undefined,
+  };
+  return (
+    <span
+      ref={ref}
+      className={clsx(componentClassName, className)}
+      {...dataAttributeProps}
+      {...badgeProps}
+    />
+  );
+});
 
 Badge.displayName = componentName;

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Box } from './Box';
-import React from 'react';
+import { paddingTokens } from '../../props/padding.props';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof Box> = {
@@ -10,13 +10,13 @@ const meta: Meta<typeof Box> = {
   argTypes: {
     children: { control: { type: 'text' } },
     as: { options: ['div', 'span'], control: { type: 'radio' } },
-    padding: { control: { type: 'text' } },
-    paddingInline: { control: { type: 'text' } },
-    paddingBlock: { control: { type: 'text' } },
-    paddingTop: { control: { type: 'text' } },
-    paddingRight: { control: { type: 'text' } },
-    paddingBottom: { control: { type: 'text' } },
-    paddingLeft: { control: { type: 'text' } },
+    padding: { options: paddingTokens, control: { type: 'select' } },
+    paddingInline: { options: paddingTokens, control: { type: 'select' } },
+    paddingBlock: { options: paddingTokens, control: { type: 'select' } },
+    paddingTop: { options: paddingTokens, control: { type: 'select' } },
+    paddingRight: { options: paddingTokens, control: { type: 'select' } },
+    paddingBottom: { options: paddingTokens, control: { type: 'select' } },
+    paddingLeft: { options: paddingTokens, control: { type: 'select' } },
     width: { control: { type: 'text' } },
     minWidth: { control: { type: 'text' } },
     maxWidth: { control: { type: 'text' } },
@@ -27,25 +27,30 @@ const meta: Meta<typeof Box> = {
     backgroundColor: { control: { type: 'text' } },
   },
   args: {
-    children: 'Pollen Box',
+    children: 'Box',
+    style: { border: '1px solid rebeccapurple' },
   },
 } satisfies Meta<typeof Box>;
 
 export default meta;
 type Story = StoryObj<typeof Box>;
 
-export const Workshop: Story = {
-  render: args => <Box {...args} />,
-};
+export const Workshop: Story = {};
 
-export const ResponsivePadding: Story = {
+export const ResponsiveProps: Story = {
   args: {
-    children: 'Responsive padding',
+    children: 'Responsive props',
     padding: {
       mobile: '4px',
-      tablet: '8px',
+      tablet: '200',
       desktop: '16px',
-      wide: '32px',
+      wide: '0',
+    },
+    width: {
+      mobile: '100px',
+      tablet: '200px',
+      desktop: '300px',
+      wide: '400px',
     },
   },
 };

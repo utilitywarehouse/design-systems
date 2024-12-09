@@ -23,7 +23,7 @@ const meta: Meta<typeof Button> = {
     disabled: { control: { type: 'boolean' } },
   },
   args: {
-    children: 'Pollen Button',
+    children: 'Button',
     onClick: fn(),
     variant: 'solid',
     colorScheme: 'cyan',

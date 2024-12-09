@@ -2,43 +2,34 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
-import { HeadingProps } from './Heading.props';
-import { withBreakpoints } from '../../helpers/with-breakpoints';
+import { headingPropDefs, HeadingProps } from './Heading.props';
 import type { ElementRef } from 'react';
+import { extractProps } from '../../helpers/extract-props';
+import { textAlignPropDefs } from '../../props/text-align.props';
+import { colorPropDefs } from '../../props/color.props';
+import { Slot } from '@radix-ui/react-slot';
+import { withGlobalPrefix } from '../../helpers/with-global-prefix';
 
 const componentName = 'Heading';
-const componentClassName = 'uwp-' + componentName;
-
-const classNames = {
-  variant: {
-    displayHeading: 'uwp-variant-displayHeading',
-    h1: 'uwp-variant-h1',
-    h2: 'uwp-variant-h2',
-    h3: 'uwp-variant-h3',
-    h4: 'uwp-variant-h4',
-  },
-};
+const componentClassName = withGlobalPrefix(componentName);
 
 type HeadingElement = ElementRef<'h2'>;
 
 export const Heading = React.forwardRef<HeadingElement, HeadingProps>(
-  ({ variant = 'h2', weight = 'bold', align, color, className, style, ...props }, ref) => {
-    const fontWeightClassName = withBreakpoints(weight, 'weight');
-    const textAlignClassName = withBreakpoints(align, 'text-align');
-    const styleProps = { '--heading-color': color, ...style };
+  ({ variant, ...props }, ref) => {
+    const { className, as, asChild, children, ...headingProps } = extractProps(
+      { variant, ...props },
+      headingPropDefs,
+      textAlignPropDefs,
+      colorPropDefs
+    );
+    const defaultElement = 'h2';
+    const variantElement = variant === 'displayHeading' ? 'h1' : variant || defaultElement;
+    const Tag = as ? as : variant ? variantElement : defaultElement;
     return (
-      <h2
-        ref={ref}
-        className={clsx(
-          componentClassName,
-          classNames.variant[variant],
-          fontWeightClassName,
-          textAlignClassName,
-          className
-        )}
-        style={styleProps}
-        {...props}
-      />
+      <Slot ref={ref} className={clsx(componentClassName, className)} {...headingProps}>
+        {asChild ? children : <Tag>{children}</Tag>}
+      </Slot>
     );
   }
 );
