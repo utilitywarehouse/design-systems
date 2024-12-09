@@ -5,7 +5,7 @@ import type { PaddingProps } from '../../props/padding.props';
 import { PropDef } from '../../props/prop-def';
 import type { SizeProps } from '../../props/size.props';
 import type { ComponentPropsWithout, RemovedProps } from '../../types/component-props';
-import type { Responsive, Union } from '../../types/responsive';
+import type { Responsive } from '../../types/responsive';
 
 const displayValues = ['none', 'inline-flex', 'flex'] as const;
 const directionValues = ['row', 'column', 'row-reverse', 'column-reverse'] as const;
