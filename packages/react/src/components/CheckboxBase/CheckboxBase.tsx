@@ -8,6 +8,7 @@ import type { CheckboxBaseProps } from './CheckboxBase.props';
 import { withGlobalPrefix } from '../../helpers/with-global-prefix';
 import clsx from 'clsx';
 import type { ElementRef } from 'react';
+import { useCheckboxGroupBase } from '../CheckboxGroupBase/CheckboxGroupBase.context';
 
 const componentName = 'CheckboxBase';
 const componentClassName = withGlobalPrefix(componentName);
@@ -16,29 +17,29 @@ export type CheckboxBaseElement = ElementRef<'button'>;
 
 export const CheckboxBase = React.forwardRef<CheckboxBaseElement, CheckboxBaseProps>(
   ({ onCheckedChange, value = 'on', className, ...props }, ref) => {
-    // const context = useCheckboxGroupBase();
-    // const checked = context?.value?.includes(value);
+    const context = useCheckboxGroupBase();
+    const checked = context?.value?.includes(value);
 
     return (
       <RadixCheckbox.Root
         ref={ref}
         className={clsx(componentClassName, className)}
-        // name={context?.name}
-        // checked={checked}
+        name={context?.name}
+        checked={checked}
         value={value}
         {...props}
-        // onCheckedChange={(checked: boolean) => {
-        //   if (context) {
-        //     if (checked) {
-        //       context?.onItemCheck(value);
-        //     } else {
-        //       context?.onItemUncheck(value);
-        //     }
-        //   }
-        //   if (onCheckedChange) {
-        //     onCheckedChange(checked);
-        //   }
-        // }}
+        onCheckedChange={(checked: boolean) => {
+          if (context) {
+            if (checked) {
+              context?.onItemCheck(value);
+            } else {
+              context?.onItemUncheck(value);
+            }
+          }
+          if (onCheckedChange) {
+            onCheckedChange(checked);
+          }
+        }}
       >
         <RadixCheckbox.Indicator asChild className="uw-CheckboxBaseIndicator">
           <TickMediumIcon />
