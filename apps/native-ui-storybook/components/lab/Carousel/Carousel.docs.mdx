@@ -1,7 +1,7 @@
 import { Meta, Canvas, Story } from '@storybook/blocks';
 import * as Stories from './Carousel.stories';
 import { Alert, Center, NativeUIProvider, Text } from '@utilitywarehouse/native-ui';
-import { Box, Carousel, CarouselPagination } from '@utilitywarehouse/native-ui/lab';
+import { Box, Carousel, CarouselItem, CarouselItems, CarouselPagination } from '@utilitywarehouse/native-ui/lab';
 import { colors } from '@utilitywarehouse/colour-system';
 import { BackToTopButton, DocComponentWrap } from '../../../docs/components';
 
@@ -25,7 +25,7 @@ The carousel is a component for presenting information in a manner for customers
   <Box mb="$6">
     <Alert
       colorScheme="gold"
-      text="The carousel is a specific implementation of FlatList. Some props cannot be modified. This is to ensure standardised behaviour and presentation."
+      text="The carousel implements a FlatList. Some props cannot be modified. This is to ensure standardised behaviour and presentation."
     />
   </Box>
 </DocComponentWrap>
@@ -41,151 +41,125 @@ The carousel is a component for presenting information in a manner for customers
 
 <Canvas>
   <Center flex={1}>
-    <Carousel
-      data={[
-        {
-          key: 1,
-          title: "I'm a Carousel item",
-        },
-        {
-          key: 2,
-          title: "I'm another Carousel item",
-        },
-        {
-          key: 3,
-          title: "I'm a third Carousel item",
-        },
-      ]}
-      renderItem={({ item }) => (
-        <Box p="$2" aspectRatio={1.6} backgroundColor="$purple500">
-          <Text color="$white">{item.title}</Text>
-        </Box>
-      )}
-      width={300}
-    />
+    <Carousel>
+      <CarouselItems width={300}>
+        <CarouselItem>
+          <Box p="$2" aspectRatio={1.6} backgroundColor="$purple800">
+            <Text color="$white">I'm a Carousel item!</Text>
+          </Box>
+        </CarouselItem>
+        <CarouselItem>
+          <Box p="$2" aspectRatio={1.6} backgroundColor="$red800">
+            <Text color="$white">I'm another Carousel item!</Text>
+          </Box>
+        </CarouselItem>
+      </CarouselItems>
+    </Carousel>
   </Center>
 </Canvas>
 
 ```jsx
 import { Text } from '@utilitywarehouse/native-ui';
-import { Box, Carousel } from '@utilitywarehouse/native-ui/lab';
+import { Box, Carousel, CarouselItem, CarouselItems } from '@utilitywarehouse/native-ui/lab';
 
-const MyComponent = () => {
-  const {
-    theme: { colors, radii, space },
-  } = useStyles();
-
-  return (
-    <Carousel
-      data={[
-        {
-          key: 1,
-          title: "I'm a Carousel item",
-        },
-        {
-          key: 2,
-          title: "I'm another Carousel item",
-        },
-        {
-          key: 3,
-          title: "I'm a third Carousel item",
-        },
-      ]}
-      renderItem={({ item }) => (
-        <Box p="$2" aspectRatio={1.6} backgroundColor="$purple500">
-          <Text color="$white">{item.title}</Text>
+const MyComponent = () => (
+  <Carousel>
+    <CarouselItems width={300}>
+      <CarouselItem>
+        <Box p="$2" aspectRatio={1.6} backgroundColor="$purple800">
+          <Text color="$white">I'm a Carousel item!</Text>
         </Box>
-      )}
-      width={300}
-    />
-  );
-};
+      </CarouselItem>
+      <CarouselItem>
+        <Box p="$2" aspectRatio={1.6} backgroundColor="$red800">
+          <Text color="$white">I'm another Carousel item!</Text>
+        </Box>
+      </CarouselItem>
+    </CarouselItems>
+  </Carousel>
+);
 ```
 
 ### Carousel with Pagination
 
-The `CarouselPagination` component is to be used in conjunction with the `Carousel` component
+The `CarouselPagination` component is to be used in conjunction with the `Carousel` component. This component requires no props and automatically utilises the carousel context.
 
 <Canvas>
   <Center flex={1}>
-    <Carousel
-      data={[
-        {
-          key: 1,
-          title: "I'm a Carousel item",
-        },
-        {
-          key: 2,
-          title: "I'm another Carousel item",
-        },
-        {
-          key: 3,
-          title: "I'm a third Carousel item",
-        },
-      ]}
-      renderItem={({ item }) => (
-        <Center p="$2" aspectRatio={1.6} backgroundColor="$cyan500">
-          <Text color="$white">{item.title}</Text>
-        </Center>
-      )}
-      width={300}
-    >
-      <CarouselPagination style={{ marginVertical: 16 }} />
+    <Carousel>
+      <CarouselItems width={300}>
+        <CarouselItem>
+          <Box p="$2" aspectRatio={1.6} backgroundColor="$purple800">
+            <Text color="$white">I'm a Carousel item!</Text>
+          </Box>
+        </CarouselItem>
+        <CarouselItem>
+          <Box p="$2" aspectRatio={1.6} backgroundColor="$red800">
+            <Text color="$white">I'm another Carousel item!</Text>
+          </Box>
+        </CarouselItem>
+      </CarouselItems>
+      <CarouselPagination style={{ marginTop: 16 }} />
     </Carousel>
   </Center>
 </Canvas>
 
-```tsx
+```jsx
 import { Text } from '@utilitywarehouse/native-ui';
 import { Box, Carousel, CarouselPagination } from '@utilitywarehouse/native-ui/lab';
 
-const MyComponent = () => {
-  return (
-    <Carousel
-      data={[
-        {
-          key: 1,
-          title: 'Carousel item 1',
-        },
-        {
-          key: 2,
-          title: 'Carousel item 2',
-        },
-        {
-          key: 3,
-          title: 'Carousel item 3',
-        },
-      ]}
-      renderItem={({ item }) => (
-        <Center p="$2" aspectRatio={1.6} backgroundColor="$cyan500">
-          <Text>{item.title}</Text>
-        </Center>
-      )}
-      width={300}
-    >
-      <CarouselPagination style={{ marginVertical: 16 }} />
-    </Carousel>
-  );
-};
+const MyComponent = () => (
+  <Carousel>
+    <CarouselItems width={300}>
+      <CarouselItem>
+        <Box p="$2" aspectRatio={1.6} backgroundColor="$purple800">
+          <Text color="$white">I'm a Carousel item!</Text>
+        </Box>
+      </CarouselItem>
+      <CarouselItem>
+        <Box p="$2" aspectRatio={1.6} backgroundColor="$red800">
+          <Text color="$white">I'm another Carousel item!</Text>
+        </Box>
+      </CarouselItem>
+    </CarouselItems>
+    <CarouselPagination style={{ marginTop: 16 }} />
+  </Carousel>
+);
 ```
 
 ## Props
 
-The Carousel component accepts some props from the React Native `FlatList` component, while other props are predfined and cannot be modified. There are also some additional carousel specific props.
+### `Carousel`
 
-| Name                   | Type                                    | Default | Description                                                                                                                    |
-| ---------------------- | --------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| children?              | ReactNode                               | -       | Display any content within the carousel context. This may include `CarouselPagination`.                                        |
-| data                   | any[]                                   | -       | Array of data items to be passed for rendering in the carousel                                                                 |
-| inactiveItemOpacity?   | number                                  | 1       | Fade items outside of the active carousel viewport (use in conjunction with `showOverflow`)                                    |
-| itemStyle?             | StyleProp                               | -       | Style applied to the container of each item in the carousel                                                                    |
-| itemWidth?             | number                                  | -       | Specify the width of carousel items if different from `width`. Useful for revealing the previous/next item within the viewport |
-| onSnapToItem?          | () => void                              | -       | Callback each time a new item is focused in the carousel viewport                                                              |
-| removeClippedSubviews? | boolean                                 | false   | Prevent items outside of the carousl being removed from the tree by default                                                    |
-| renderItem             | (info: ListRenderItemInfo) => ReactNode | -       | Method used to render each item in the carousel                                                                                |
-| scrollEnabled?         | boolean                                 | true    | Enable or disable the carousel                                                                                                 |
-| showOverflow           | boolean                                 | false   | Visually reveal the items outside of the carousel viewport                                                                     |
-| style?                 | StyleProp                               | -       | Style applied to the carousel container                                                                                        |
-| width                  | number                                  | -       | Carousel viewport width                                                                                                        |
+This wraps a carousel in dynamic context context, automatically providing all functionality for `CarouselItems`, `CarouselItem`, and `CarouselPagination`.
+
+| Name      | Type         | Default | Description                                                                                                |
+| --------- | ------------ | ------- | ---------------------------------------------------------------------------------------------------------- |
+| children? | ReactElement | -       | Display any content within the carousel context. This may include `CarouselItem` and `CarouselPagination`. |
+
+### `CarouselItems`
+
+The `CarouselItems` component automatically updates the carousel context when interacted with.
+
+The `CarouselItems` component accepts most props from the React Native `FlatList` component, while other props are predfined and cannot be modified. There are also some additional carousel specific props:
+
+| Name                   | Type           | Default | Description                                                                                                                    |
+| ---------------------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| children?              | ReactElement[] | -       | Accepts React elements to render as carousel items. To function correctly, these should be `CarouselItem` comppnents.          |
+| enabled?               | boolean        | true    | Enable or disable the carousel                                                                                                 |
+| inactiveItemOpacity?   | number         | 1       | Fade items outside of the active carousel viewport (use in conjunction with `showOverflow`)                                    |
+| itemWidth?             | number         | -       | Specify the width of carousel items if different from `width`. Useful for revealing the previous/next item within the viewport |
+| onSnapToItem?          | () => void     | -       | Callback each time a new item is focused in the carousel viewport                                                              |
+| showOverflow?          | boolean        | false   | Visually reveal the items outside of the carousel viewport                                                                     |
+| width                  | number         | -       | Carousel viewport width                                                                                                        |
 
 For more information about any of the above props from the `FlatList` component, see the React Native FlatList [documentation](https://reactnative.dev/docs/flatlist).
+
+### `CarouselItem`
+
+The `CarouselItem` component automatically receives props from the parent `CarouselItems` component. Please ensure that you always wrap each of your carousel items in `CarouselItem`.
+
+| Name      | Type          | Default | Description                                                                                                                       |
+| --------- | ------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| children? | ReactElement  | -       | Display any content within each carousel item.                                                                                    |
+| key?      | number/string | -       | Provides a unique render key for each carousel item. If no `key` is provided then it will fall back to the `id`, then array index |
