@@ -10,9 +10,10 @@ import { paddingPropDefs } from '../../props/padding.props';
 import { colorPropDefs } from '../../props/color.props';
 import { sizePropDefs } from '../../props/size.props';
 import { backgroundColorPropDefs } from '../../props/background-color.props';
+import { withGlobalPrefix } from '../../helpers/with-global-prefix';
 
 const componentName = 'Box';
-const componentClassName = 'uwp-' + componentName;
+const componentClassName = withGlobalPrefix(componentName);
 
 type BoxElement = ElementRef<'div'>;
 

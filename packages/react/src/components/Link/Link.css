@@ -1,4 +1,4 @@
-.uwp-Link {
+.uw-Link {
   --link-color: var(--color-cyan700);
   --link-underline-color: var(--color-cyan400);
   --link-underline-color-hover: var(--color-cyan500);
@@ -31,11 +31,11 @@
   }
 
   @breakpoints {
-    &:where(.uwp-r-size-large) {
+    &:where(.uw-r-size-large) {
       font-size: var(--font-size-body-lg);
     }
 
-    &:where(.uwp-r-size-small) {
+    &:where(.uw-r-size-small) {
       font-size: var(--font-size-body-md);
     }
   }

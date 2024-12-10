@@ -39,12 +39,12 @@ export const KitchenSink: Story = {
   parameters: { controls: { hideNoControlsWarning: true } },
   render: () => {
     return (
-      <Flex direction="column" gap="48px">
+      <Flex direction="column" gap="600">
         <Flex gap="16px" direction="column">
           <Heading variant="h2">Solid</Heading>
-          <Flex gap="32px" align="center">
+          <Flex gap="400" align="center">
             {sizes.map(size => (
-              <Flex key={size} gap="8px">
+              <Flex key={size} gap="100">
                 {solidColorSchemes.map(colorScheme => (
                   <Button key={colorScheme} variant="solid" colorScheme={colorScheme} size={size}>
                     Button
@@ -53,9 +53,9 @@ export const KitchenSink: Story = {
               </Flex>
             ))}
           </Flex>
-          <Flex gap="32px" align="center">
+          <Flex gap="400" align="center">
             {sizes.map(size => (
-              <Flex key={size} gap="8px">
+              <Flex key={size} gap="100">
                 {solidColorSchemes.map(colorScheme => (
                   <Button
                     disabled
@@ -72,13 +72,13 @@ export const KitchenSink: Story = {
           </Flex>
         </Flex>
         {(['outline', 'ghost'] as const).map(variant => (
-          <Flex key={variant} gap="16px" direction="column">
+          <Flex key={variant} gap="200" direction="column">
             <Heading variant="h2" style={{ textTransform: 'capitalize' }}>
               {variant}
             </Heading>
-            <Flex gap="32px" align="center">
+            <Flex gap="400" align="center">
               {sizes.map(size => (
-                <Flex key={size} gap="8px">
+                <Flex key={size} gap="100">
                   {colorSchemes.map(colorScheme => (
                     <Button
                       key={colorScheme}
@@ -92,9 +92,9 @@ export const KitchenSink: Story = {
                 </Flex>
               ))}
             </Flex>
-            <Flex gap="32px" align="center">
+            <Flex gap="400" align="center">
               {sizes.map(size => (
-                <Flex key={size} gap="8px">
+                <Flex key={size} gap="100">
                   {colorSchemes.map(colorScheme => (
                     <Button
                       disabled

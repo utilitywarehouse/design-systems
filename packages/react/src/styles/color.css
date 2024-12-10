@@ -1,7 +1,7 @@
-.uwp-color {
+.uw-color {
   color: var(--color);
 }
 
-.uwp-background-color {
+.uw-background-color {
   background-color: var(--background-color);
 }

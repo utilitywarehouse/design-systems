@@ -1,4 +1,4 @@
-.uwp-Badge {
+.uw-Badge {
   display: inline-flex;
   gap: var(--space-50);
   align-items: center;
@@ -19,11 +19,11 @@
   padding-block: var(--space-50);
 
   @breakpoints {
-    &:where(.uwp-r-size-medium) {
+    &:where(.uw-r-size-medium) {
       padding-inline: var(--space-200);
     }
 
-    &:where(.uwp-r-size-small) {
+    &:where(.uw-r-size-small) {
       padding-inline: var(--space-100);
     }
   }
@@ -33,17 +33,17 @@
     border-bottom-right-radius: 0;
   }
 
-  &:where(.uwp-variant-soft) {
+  &:where(.uw-variant-soft) {
     --badge-color: var(--badge-soft-color);
     --badge-background-color: var(--badge-soft-background-color);
   }
 
-  &:where(.uwp-variant-strong) {
+  &:where(.uw-variant-strong) {
     --badge-color: var(--badge-strong-color);
     --badge-background-color: var(--badge-strong-background-color);
   }
 
-  &:where(.uwp-variant-outline) {
+  &:where(.uw-variant-outline) {
     --badge-color: var(--badge-outline-color);
     --badge-background-color: transparent;
     --badge-border-color: var(--badge-outline-border-color);

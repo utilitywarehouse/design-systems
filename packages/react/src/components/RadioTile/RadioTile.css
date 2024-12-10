@@ -1,4 +1,4 @@
-.uwp-RadioTile {
+.uw-RadioTile {
   --radio-item-background-color: white;
   --radio-item-background-color-focus: var(--color-cyan100);
   --radio-item-background-color-hover: var(--color-cyan75);
@@ -47,7 +47,7 @@
     cursor: pointer;
   }
 
-  .uwp-RadioTileRadio {
+  .uw-RadioTileRadio {
     height: 24px;
     width: 24px;
     flex-shrink: 0;

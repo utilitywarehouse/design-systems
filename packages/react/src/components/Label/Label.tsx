@@ -7,10 +7,10 @@ import { LabelProps } from './Label.props';
 import { Slot } from '@radix-ui/react-slot';
 
 const componentName = 'Label';
-const componentClassName = 'uwp-' + componentName;
+const componentClassName = 'uw-' + componentName;
 
 const classNames = {
-  nested: 'uwp-nested',
+  nested: 'uw-nested',
 };
 
 type LabelElement = ElementRef<'label'>;

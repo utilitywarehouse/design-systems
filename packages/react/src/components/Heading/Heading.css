@@ -1,11 +1,11 @@
-.uwp-Heading {
+.uw-Heading {
   font-family: var(--font-family-heading);
 
   /* the default text colour, this will be overwritten by the color class */
   color: var(--color-brand-primaryPurple);
 
   /** variants **/
-  &:where(.uwp-variant-displayHeading) {
+  &:where(.uw-variant-displayHeading) {
     font-size: var(--font-size-heading-3xl);
     line-height: var(--line-height-md);
 
@@ -14,7 +14,7 @@
     }
   }
 
-  &:where(.uwp-variant-h1) {
+  &:where(.uw-variant-h1) {
     font-size: var(--font-size-heading-2xl);
     line-height: var(--line-height-md);
 
@@ -23,7 +23,7 @@
     }
   }
 
-  &:where(.uwp-variant-h2) {
+  &:where(.uw-variant-h2) {
     font-size: var(--font-size-heading-xl);
     line-height: var(--line-height-md);
 
@@ -33,7 +33,7 @@
     }
   }
 
-  &:where(.uwp-variant-h3) {
+  &:where(.uw-variant-h3) {
     font-size: var(--font-size-heading-md);
     line-height: var(--line-height-lg);
 
@@ -42,7 +42,7 @@
     }
   }
 
-  &:where(.uwp-variant-h4) {
+  &:where(.uw-variant-h4) {
     font-size: var(--font-size-heading-xs);
     line-height: var(--line-height-lg);
 

@@ -1,44 +1,38 @@
 import * as React from 'react';
 
 import clsx from 'clsx';
-import { ButtonBaseProps } from './ButtonBase.props';
+import { buttonBasePropDefs, ButtonBaseProps } from './ButtonBase.props';
 import { DATA_ATTRIBUTES } from '../../helpers/data-attributes';
 import type { ElementRef } from 'react';
+import { withGlobalPrefix } from '../../helpers/with-global-prefix';
+import { extractProps } from '../../helpers/extract-props';
 
 const componentName = 'ButtonBase';
-const componentClassName = 'uwp-' + componentName;
-
-const classNames = {
-  variant: {
-    solid: 'uwp-variant-solid',
-    outline: 'uwp-variant-outline',
-    ghost: 'uwp-variant-ghost',
-  },
-};
+const componentClassName = withGlobalPrefix(componentName);
 
 export type ButtonBaseElement = ElementRef<'button'>;
 
-export const ButtonBase = React.forwardRef<ButtonBaseElement, ButtonBaseProps>(
-  (
-    { variant = 'solid', colorScheme = 'cyan', className, disabled, onClick, ...props },
-    forwardedRef
-  ) => {
-    const dataAttributeProps = {
-      [DATA_ATTRIBUTES.colorscheme]: colorScheme,
-    };
-    return (
-      <button
-        ref={forwardedRef}
-        aria-disabled={disabled || undefined}
-        className={clsx(componentClassName, classNames.variant[variant], className)}
-        // as we're using aria-disabled instead of disabled then we need to
-        // disable the onClick event
-        onClick={disabled ? undefined : onClick}
-        {...dataAttributeProps}
-        {...props}
-      />
-    );
-  }
-);
+export const ButtonBase = React.forwardRef<ButtonBaseElement, ButtonBaseProps>((props, ref) => {
+  const {
+    colorScheme = 'cyan',
+    className,
+    disabled,
+    onClick,
+    ...buttonBaseProps
+  } = extractProps(props, buttonBasePropDefs);
+  const dataAttributeProps = { [DATA_ATTRIBUTES.colorscheme]: colorScheme };
+  return (
+    <button
+      ref={ref}
+      aria-disabled={disabled || undefined}
+      className={clsx(componentClassName, className)}
+      // as we're using aria-disabled instead of disabled then we need to
+      // disable the onClick event
+      onClick={disabled ? undefined : onClick}
+      {...dataAttributeProps}
+      {...buttonBaseProps}
+    />
+  );
+});
 
 ButtonBase.displayName = componentName;

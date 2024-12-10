@@ -1,4 +1,4 @@
-.uwp-Button {
+.uw-Button {
   font-family: var(--font-family-body);
   font-size: var(--font-size-body-md);
   font-weight: var(--font-weight-medium);
@@ -9,14 +9,14 @@
   padding-inline: var(--button-padding-inline);
 
   @breakpoints {
-    &:where(.uwp-r-size-medium) {
+    &:where(.uw-r-size-medium) {
       --button-line-height: 1.5;
       --button-min-width: 136px;
       --button-padding-inline: var(--space-300);
       --button-padding-block: var(--space-200);
     }
 
-    &:where(.uwp-r-size-small) {
+    &:where(.uw-r-size-small) {
       --button-line-height: 1;
       --button-min-width: 120px;
       --button-padding-inline: var(--space-200);

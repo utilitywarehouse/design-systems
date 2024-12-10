@@ -1,5 +1,6 @@
 import type { Breakpoints, Responsive } from '../types/responsive';
 import { isResponsiveObject } from './is-responsive-object';
+import { GLOBAL_PREFIX } from './with-global-prefix';
 
 type GetClassNameStylesOptions = {
   value: Responsive<string | number> | undefined;
@@ -19,16 +20,16 @@ export const getClassNameStyles = ({
   const responsivePrefix = isResponsive ? '-r' : '';
 
   if (value === undefined && defaultValue) {
-    return { className: `uwp${responsivePrefix}-${prefix}-${defaultValue}` };
+    return { className: `${GLOBAL_PREFIX}${responsivePrefix}-${prefix}-${defaultValue}` };
   }
 
   if (typeof value === 'string' || typeof value === 'number') {
     const isTokenValue = tokens?.includes(value);
     if (isTokenValue) {
-      return { className: `uwp${responsivePrefix}-${prefix}-${value}` };
+      return { className: `${GLOBAL_PREFIX}${responsivePrefix}-${prefix}-${value}` };
     }
     return {
-      className: `uwp${responsivePrefix}-${prefix}`,
+      className: `${GLOBAL_PREFIX}${responsivePrefix}-${prefix}`,
       style: { [`-${responsivePrefix}-${prefix}`]: value || defaultValue },
     };
   }
@@ -42,9 +43,9 @@ export const getClassNameStyles = ({
         const isTokenValue = tokens?.includes(breakpointValue);
         let baseClassName: string;
         if (isTokenValue) {
-          baseClassName = `uwp${responsivePrefix}-${prefix}-${breakpointValue}`;
+          baseClassName = `${GLOBAL_PREFIX}${responsivePrefix}-${prefix}-${breakpointValue}`;
         } else {
-          baseClassName = `uwp${responsivePrefix}-${prefix}`;
+          baseClassName = `${GLOBAL_PREFIX}${responsivePrefix}-${prefix}`;
         }
         const className = bp === initialBreakpoint ? baseClassName : `${bp}:${baseClassName}`;
         return className;

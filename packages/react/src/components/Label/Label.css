@@ -1,4 +1,4 @@
-.uwp-Label {
+.uw-Label {
   --label-color: var(--color-grey1000);
   --label-color-disabled: var(--color-grey400);
   --label-font-weight: var(--font-weight-semibold);
@@ -14,7 +14,7 @@
     color: var(--label-color-disabled);
   }
 
-  &:where(.uwp-nested) {
+  &:where(.uw-nested) {
     font-weight: var(--label-font-weight-nested);
   }
 }

@@ -58,7 +58,7 @@ export const Radio = React.forwardRef<RadioElement, RadioProps>(
         className={clsx(componentClassName, className)}
         data-disabled={disabled ? '' : undefined}
       >
-        <Flex align="center" justify="center" className="uwp-RadioContainer">
+        <Flex align="center" justify="center" className="uw-RadioContainer">
           <RadixRadioItem
             ref={ref}
             {...props}
@@ -66,14 +66,14 @@ export const Radio = React.forwardRef<RadioElement, RadioProps>(
             disabled={disabled}
             aria-describedby={showHelperText ? helperTextId : ariaDescribedby}
             aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
-            className="uwp-RadioItem"
+            className="uw-RadioItem"
           >
-            <RadixRadioIndicator className="uwp-RadioIndicator" />
+            <RadixRadioIndicator className="uw-RadioIndicator" />
           </RadixRadioItem>
         </Flex>
         {showLabel ? (
           <Flex direction="column" gap="4px">
-            <Label id={labelId} htmlFor={id} nested disableUserSelect className="uwp-RadioLabel">
+            <Label id={labelId} htmlFor={id} nested disableUserSelect className="uw-RadioLabel">
               {label}
             </Label>
             {showHelperText ? (
