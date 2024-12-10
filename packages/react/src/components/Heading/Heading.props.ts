@@ -1,4 +1,3 @@
-import { ColorProps } from '../../props/color.props';
 import { PropDef } from '../../props/prop-def';
 import { TextAlignProps } from '../../props/text-align.props';
 import type { ComponentPropsWithout, RemovedProps } from '../../types/component-props';
@@ -10,15 +9,14 @@ const variants = ['displayHeading', 'h1', 'h2', 'h3', 'h4'] as const;
 export const headingPropDefs = {
   weight: { className: 'weight', tokens: weights, responsive: true, default: 'bold' },
   variant: { className: 'variant', tokens: variants, responsive: false, default: 'h2' },
+  color: { className: 'heading-color', responsive: false },
 } satisfies {
   weight: PropDef<(typeof weights)[number]>;
   variant: PropDef<(typeof variants)[number]>;
+  color: PropDef<string>;
 };
 
-export interface HeadingProps
-  extends TextAlignProps,
-    ColorProps,
-    ComponentPropsWithout<'h2', RemovedProps> {
+export interface HeadingProps extends TextAlignProps, ComponentPropsWithout<'h2', RemovedProps> {
   /**
    * @default h2
    */
@@ -30,6 +28,11 @@ export interface HeadingProps
    * @default h2
    */
   variant?: (typeof variants)[number];
+  /**
+   * Set the text color
+   * It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
+   */
+  color?: string;
   /**
    * Set the font-weight
    * @default 'bold'
