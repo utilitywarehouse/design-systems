@@ -37,8 +37,8 @@ type Story = StoryObj<typeof IconButton>;
 
 export const Workshop: Story = {
   render: args => (
-    <Flex gap="16px">
-      <IconButton onClick={() => alert('Hello world!')} {...args}>
+    <Flex gap="200">
+      <IconButton {...args}>
         <ChevronRightMediumIcon />
       </IconButton>
     </Flex>
@@ -137,6 +137,18 @@ export const KitchenSink: Story = {
           </Flex>
         ))}
       </Flex>
+    );
+  },
+};
+
+export const AsLink: Story = {
+  render: args => {
+    return (
+      <IconButton {...args} asChild>
+        <a href={args.disabled ? undefined : 'https://uw.co.uk/services'}>
+          <ChevronRightMediumIcon />
+        </a>
+      </IconButton>
     );
   },
 };

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Slot } from '@radix-ui/react-slot';
 
 import clsx from 'clsx';
 import { buttonBasePropDefs, ButtonBaseProps } from './ButtonBase.props';
@@ -18,11 +19,15 @@ export const ButtonBase = React.forwardRef<ButtonBaseElement, ButtonBaseProps>((
     className,
     disabled,
     onClick,
+    asChild,
     ...buttonBaseProps
   } = extractProps(props, buttonBasePropDefs);
   const dataAttributeProps = { [DATA_ATTRIBUTES.colorscheme]: colorScheme };
+
+  const Component = asChild ? Slot : 'button';
+
   return (
-    <button
+    <Component
       ref={ref}
       aria-disabled={disabled || undefined}
       className={clsx(componentClassName, className)}

@@ -4,7 +4,7 @@ import { ComponentPropsWithout, RemovedProps } from '../../types/component-props
 const variants = ['solid', 'outline', 'ghost'] as const;
 
 export const buttonBasePropDefs = {
-  variant: { className: 'variant', tokens: variants, responsive: false, default: 'medium' },
+  variant: { className: 'variant', tokens: variants, responsive: false, default: 'solid' },
 } satisfies {
   variant: PropDef<(typeof variants)[number]>;
 };
@@ -27,4 +27,9 @@ export type ButtonBaseProps = ComponentPropsWithout<'button', RemovedProps> &
         variant?: 'outline' | 'ghost';
         colorScheme?: 'cyan' | 'red' | 'green' | 'gold' | 'grey';
       }
-  );
+  ) & {
+    /**
+     * Change the default rendered element for the one passed as a child, merging their props and behavior.
+     */
+    asChild?: boolean;
+  };
