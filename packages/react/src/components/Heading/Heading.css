@@ -1,10 +1,11 @@
 .uw-Heading {
   font-family: var(--font-family-heading);
-
-  /* the default text colour, this will be overwritten by the color class */
   color: var(--color-brand-primaryPurple);
 
-  /** variants **/
+  &:where(.uw-heading-color) {
+    color: var(--heading-color);
+  }
+
   &:where(.uw-variant-displayHeading) {
     font-size: var(--font-size-heading-3xl);
     line-height: var(--line-height-md);

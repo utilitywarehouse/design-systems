@@ -6,7 +6,6 @@ import { headingPropDefs, HeadingProps } from './Heading.props';
 import type { ElementRef } from 'react';
 import { extractProps } from '../../helpers/extract-props';
 import { textAlignPropDefs } from '../../props/text-align.props';
-import { colorPropDefs } from '../../props/color.props';
 import { Slot } from '@radix-ui/react-slot';
 import { withGlobalPrefix } from '../../helpers/with-global-prefix';
 
@@ -20,8 +19,7 @@ export const Heading = React.forwardRef<HeadingElement, HeadingProps>(
     const { className, as, asChild, children, ...headingProps } = extractProps(
       { variant, ...props },
       headingPropDefs,
-      textAlignPropDefs,
-      colorPropDefs
+      textAlignPropDefs
     );
     const defaultElement = 'h2';
     const variantElement = variant === 'displayHeading' ? 'h1' : variant || defaultElement;

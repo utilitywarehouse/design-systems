@@ -1,4 +1,3 @@
-import { ColorProps } from '../../props/color.props';
 import { PropDef } from '../../props/prop-def';
 import { TextAlignProps } from '../../props/text-align.props';
 import type { ComponentPropsWithout, RemovedProps } from '../../types/component-props';
@@ -10,12 +9,14 @@ const variants = ['subtitle', 'body', 'legalNote', 'caption'] as const;
 export const bodyTextPropDefs = {
   weight: { className: 'weight', tokens: weights, responsive: true, default: 'regular' },
   variant: { className: 'variant', tokens: variants, responsive: false, default: 'body' },
+  color: { className: 'body-text-color', responsive: false },
 } satisfies {
   weight: PropDef<(typeof weights)[number]>;
   variant: PropDef<(typeof variants)[number]>;
+  color: PropDef<string>;
 };
 
-interface CommonBodyTextProps extends TextAlignProps, ColorProps {
+interface CommonBodyTextProps extends TextAlignProps {
   /**
    * @default p
    */
@@ -27,6 +28,11 @@ interface CommonBodyTextProps extends TextAlignProps, ColorProps {
    * @default body
    */
   variant?: (typeof variants)[number];
+  /**
+   * Set the text color
+   * It is recommended to use the colours from the `@utilitywarehouse/colour-system` package.
+   */
+  color?: string;
   /**
    * Set the font-weight
    * @default regular

@@ -1,8 +1,10 @@
 .uw-BodyText {
   font-family: var(--font-family-body);
-
-  /* the default text colour, this will be overwritten by the color class */
   color: var(--color-brand-midnight);
+
+  &:where(.uw-body-text-color) {
+    color: var(--body-text-color);
+  }
 
   &:where([data-truncate]) {
     overflow: hidden;
