@@ -11,7 +11,7 @@ import {
 } from '@utilitywarehouse/react-icons';
 
 const componentName = 'HelperText';
-const componentClassName = 'uwp-' + componentName;
+const componentClassName = 'uw-' + componentName;
 
 type HelperTextElement = ElementRef<'span'>;
 

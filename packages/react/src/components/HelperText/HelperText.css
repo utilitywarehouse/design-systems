@@ -1,4 +1,4 @@
-.uwp-HelperText {
+.uw-HelperText {
   --helper-text-color: var(--color-grey700);
   --helper-text-color-disabled: var(--color-grey400);
   --helper-text-color-valid: var(--color-green600);

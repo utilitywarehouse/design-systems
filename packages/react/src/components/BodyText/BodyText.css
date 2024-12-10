@@ -1,4 +1,4 @@
-.uwp-BodyText {
+.uw-BodyText {
   font-family: var(--font-family-body);
 
   /* the default text colour, this will be overwritten by the color class */
@@ -11,7 +11,7 @@
   }
 
   /** variants **/
-  &:where(.uwp-variant-subtitle) {
+  &:where(.uw-variant-subtitle) {
     font-size: var(--font-size-body-lg);
     line-height: var(--line-height-lg);
 
@@ -20,17 +20,17 @@
     }
   }
 
-  &:where(.uwp-variant-body) {
+  &:where(.uw-variant-body) {
     font-size: var(--font-size-body-md);
     line-height: var(--line-height-lg);
   }
 
-  &:where(.uwp-variant-legalNote) {
+  &:where(.uw-variant-legalNote) {
     font-size: var(--font-size-body-sm);
     line-height: var(--line-height-lg);
   }
 
-  &:where(.uwp-variant-caption) {
+  &:where(.uw-variant-caption) {
     font-size: var(--font-size-body-xs);
     line-height: var(--line-height-xl);
   }

@@ -45,9 +45,9 @@ export const Workshop: Story = {};
 export const ResponsiveGap: Story = {
   render: args => (
     <Flex {...args}>
-      <Box className="uwp-sb-Placeholder" width="400px" height="100px" />
-      <Box className="uwp-sb-Placeholder" width="400px" height="100px" />
-      <Box className="uwp-sb-Placeholder" width="400px" height="100px" />
+      <Box className="uw-sb-Placeholder" width="400px" height="100px" />
+      <Box className="uw-sb-Placeholder" width="400px" height="100px" />
+      <Box className="uw-sb-Placeholder" width="400px" height="100px" />
     </Flex>
   ),
   args: {

@@ -19,7 +19,7 @@ export const Workshop: Story = {
     return (
       <Fieldset {...args}>
         <FieldsetLegend>Fieldset legend</FieldsetLegend>
-        <Box className="uwp-sb-Placeholder" height="100px" width="300px" />
+        <Box className="uw-sb-Placeholder" height="100px" width="300px" />
       </Fieldset>
     );
   },

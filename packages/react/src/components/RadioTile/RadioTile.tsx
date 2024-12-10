@@ -60,8 +60,8 @@ export const RadioTile = React.forwardRef<RadioTileElement, RadioTileProps>(
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
       >
         <Flex as="span" gap="8px">
-          <div className="uwp-RadioTileRadio">
-            <RadixRadioIndicator className="uwp-RadioIndicator" />
+          <div className="uw-RadioTileRadio">
+            <RadixRadioIndicator className="uw-RadioIndicator" />
           </div>
           {showLabel ? (
             <Flex direction="column" gap="4px">

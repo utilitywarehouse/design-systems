@@ -1,13 +1,13 @@
 @breakpoints {
-  :where(.uwp-r-text-align-left) {
+  :where(.uw-r-text-align-left) {
     text-align: left;
   }
 
-  :where(.uwp-r-text-align-center) {
+  :where(.uw-r-text-align-center) {
     text-align: center;
   }
 
-  :where(.uwp-r-text-align-right) {
+  :where(.uw-r-text-align-right) {
     text-align: right;
   }
 }

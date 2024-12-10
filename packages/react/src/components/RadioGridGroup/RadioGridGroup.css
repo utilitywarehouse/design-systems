@@ -1,5 +1,5 @@
-.uwp-RadioGridGroup {
-  .uwp-RadioGridGroupRoot {
+.uw-RadioGridGroup {
+  .uw-RadioGridGroupRoot {
     display: grid;
     gap: 16px;
     min-width: fit-content;
@@ -7,7 +7,7 @@
 }
 
 @breakpoints {
-  .uwp-r-columns {
+  .uw-r-columns {
     grid-template-columns: repeat(var(--r-columns), minmax(10px, 1fr));
   }
 }
