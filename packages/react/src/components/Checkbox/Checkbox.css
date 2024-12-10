@@ -1,0 +1,22 @@
+.uw-Checkbox {
+  cursor: pointer;
+  * {
+    cursor: pointer;
+  }
+  .uw-Checkbox-CheckboxBase {
+    &:where(:focus-visible) {
+      --checkbox-outline-color: var(--checkbox-outline-color-focus);
+    }
+  }
+  /* we do this so that the gap between the checkbox & label is clickable */
+  .uw-Checkbox-Label {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: -8px;
+    }
+  }
+}
