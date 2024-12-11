@@ -110,12 +110,12 @@ const stylesheet = createStyleSheet(
         },
         underline: {
           true: {
-            textDecorationLine: 'underline',
+            textDecorationLine: 'underline' as TextProps['textDecorationLine'],
           },
         },
         strikeThrough: {
           true: {
-            textDecorationLine: 'line-through',
+            textDecorationLine: 'line-through' as TextProps['textDecorationLine'],
           },
         },
         italic: {

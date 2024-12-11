@@ -17,6 +17,7 @@ function useBreakpointValue<T>(values: BreakpointValues<T>): T | undefined {
   const {
     theme: { breakpoints },
     breakpoint: currentBreakpointName,
+    // eslint-disable-next-line react-hooks/rules-of-hooks
   } = useStyles();
 
   // Convert breakpoints to an array sorted by their pixel values
@@ -35,7 +36,7 @@ function useBreakpointValue<T>(values: BreakpointValues<T>): T | undefined {
   // Map input values to breakpoint indices
   const inputValuesWithIndices: Array<InputValueWithIndex<T>> = Object.entries(values).map(
     ([name, value]) => {
-      const index = name === 'default' ? -1 : breakpointIndices[name] ?? -1;
+      const index = name === 'default' ? -1 : (breakpointIndices[name] ?? -1);
       return { name, value, index };
     }
   );

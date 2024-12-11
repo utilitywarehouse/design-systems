@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { forwardRef, useMemo } from 'react';
-import { Text } from 'react-native';
+import { Text, TextStyle } from 'react-native';
 import type HeadingProps from './Heading.props';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import type { ColorValue } from '../../types';
@@ -95,12 +95,12 @@ const stylesheet = createStyleSheet(({ colors, fontSizes, fontWeights, fonts, li
       },
       underline: {
         true: {
-          textDecorationLine: 'underline',
+          textDecorationLine: 'underline' as TextStyle['textDecorationLine'],
         },
       },
       strikeThrough: {
         true: {
-          textDecorationLine: 'line-through',
+          textDecorationLine: 'line-through' as TextStyle['textDecorationLine'],
         },
       },
     },

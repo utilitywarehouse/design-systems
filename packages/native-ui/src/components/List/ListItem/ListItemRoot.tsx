@@ -97,7 +97,7 @@ const ListItemRoot = forwardRef<
           disabled={isDisabled}
         >
           {children ? (
-            <>{children}</>
+            children
           ) : (
             <>
               {leadingContent ? (

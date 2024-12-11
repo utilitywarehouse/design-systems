@@ -20,7 +20,10 @@ const BaseBox = createBox();
  * for building any styled element.
  */
 export const Box = React.forwardRef(function Box({ background, bgcolor, ...props }, ref) {
-  const invertedBackgrounds = [colorsCommon.brandMidnight, colorsCommon.brandPrimaryPurple];
+  const invertedBackgrounds = [
+    colorsCommon.brandMidnight as string,
+    colorsCommon.brandPrimaryPurple as string,
+  ];
   const isInvertedBackground = !!background && invertedBackgrounds.includes(background);
   const backgroundColor = bgcolor || background;
 
