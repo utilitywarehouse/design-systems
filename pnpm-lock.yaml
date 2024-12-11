@@ -405,28 +405,28 @@ importers:
         specifier: 1.0.57
         version: 1.0.57
       '@gluestack-ui/alert':
-        specifier: ^0.1.15
+        specifier: ^0.1.16
         version: 0.1.16(react-dom@18.3.1)(react@18.2.0)
       '@gluestack-ui/button':
-        specifier: ^1.0.7
+        specifier: ^1.0.8
         version: 1.0.8(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/checkbox':
-        specifier: ^0.1.32
+        specifier: ^0.1.33
         version: 0.1.33(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/icon':
-        specifier: ^0.1.22
+        specifier: ^0.1.25
         version: 0.1.25(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/input':
-        specifier: ^0.1.31
+        specifier: ^0.1.32
         version: 0.1.32(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/radio':
-        specifier: ^0.1.33
+        specifier: ^0.1.34
         version: 0.1.34(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/spinner':
-        specifier: ^0.1.14
+        specifier: ^0.1.15
         version: 0.1.15(react-dom@18.3.1)(react@18.2.0)
       '@gluestack-ui/switch':
-        specifier: ^0.1.22
+        specifier: ^0.1.23
         version: 0.1.23(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/themed':
         specifier: 1.1.53
@@ -438,8 +438,8 @@ importers:
         specifier: workspace:^
         version: link:../design-tokens
       '@utilitywarehouse/react-native-icons':
-        specifier: 1.10.0
-        version: 1.10.0(react-native-svg@15.10.1)(react-native@0.74.6)(react@18.2.0)
+        specifier: 1.12.0
+        version: 1.12.0(react-native-svg@15.10.1)(react-native@0.74.6)(react@18.2.0)
       nanoid:
         specifier: ^5.0.8
         version: 5.0.9
@@ -454,16 +454,16 @@ importers:
         version: 2.20.0(@react-native/normalize-colors@0.76.5)(react-native-web@0.19.13)(react-native@0.74.6)(react@18.2.0)
     devDependencies:
       '@babel/preset-env':
-        specifier: ^7.24.8
+        specifier: ^7.26.0
         version: 7.26.0(@babel/core@7.26.0)
       '@babel/preset-react':
-        specifier: ^7.24.7
+        specifier: ^7.26.3
         version: 7.26.3(@babel/core@7.26.0)
       '@babel/preset-typescript':
-        specifier: ^7.24.7
+        specifier: ^7.26.0
         version: 7.26.0(@babel/core@7.26.0)
       '@figma/code-connect':
-        specifier: ^1.2.1
+        specifier: ^1.2.4
         version: 1.2.4
       '@types/react':
         specifier: ^18.2.75
@@ -802,7 +802,7 @@ packages:
     resolution: {integrity: sha512-oLcVCTeIFadUoArDTwpluncplrYBmTCCZZgXCbgNGvOBBiSDDK3eWO4b/+eOTli5tKv1lg+a5/NAXg+nTcei1w==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.26.3
       jsesc: 2.5.2
       source-map: 0.5.7
     dev: true
@@ -812,10 +812,11 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/parser': 7.26.3
-      '@babel/types': 7.26.0
+      '@babel/types': 7.26.3
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
       jsesc: 3.0.2
+    dev: true
 
   /@babel/generator@7.26.3:
     resolution: {integrity: sha512-6FF/urZvD0sTeO7k6/B15pMLC4CHUv1426lzr3N01aHJTl046uCAh9LXW/fzeXXjPNCJ6iABW5XaWOsIZB93aQ==}
@@ -1050,7 +1051,8 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.26.0
+      '@babel/types': 7.26.3
+    dev: true
 
   /@babel/parser@7.26.3:
     resolution: {integrity: sha512-WJ/CvmY8Mea8iDXo6a7RK2wbmJITT5fN3BEkRuFlxVyNx8jOKIIhmC4fSkTcPcf8JyavbBwIe6OpiCOBXt/IcA==}
@@ -2601,6 +2603,7 @@ packages:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+    dev: true
 
   /@babel/types@7.26.3:
     resolution: {integrity: sha512-vN5p+1kl59GVKMvTHt55NzzmYVxprfJD+ql7U9NFIfKCBkYE55LYtS+WtPlaYOyzydrKI8Nezd+aZextrd+FMA==}
@@ -4100,7 +4103,7 @@ packages:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@gluestack-ui/form-control': 0.1.18(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
+      '@gluestack-ui/form-control': 0.1.19(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/utils': 0.1.14(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@react-aria/visually-hidden': 3.8.18(react@18.2.0)
       '@react-native-aria/checkbox': 0.2.9(react-native@0.74.6)(react@18.2.0)
@@ -4203,7 +4206,7 @@ packages:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@gluestack-ui/provider': 0.1.12(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
+      '@gluestack-ui/provider': 0.1.13(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/utils': 0.1.14(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@react-native-aria/focus': 0.2.9(react-native@0.74.6)(react@18.2.0)
       react: 18.2.0
@@ -4248,7 +4251,7 @@ packages:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@gluestack-ui/form-control': 0.1.18(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
+      '@gluestack-ui/form-control': 0.1.19(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/utils': 0.1.14(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@react-native-aria/focus': 0.2.9(react-native@0.74.6)(react@18.2.0)
       '@react-native-aria/interactions': 0.2.13(react-native@0.74.6)(react@18.2.0)
@@ -4459,7 +4462,7 @@ packages:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@gluestack-ui/form-control': 0.1.18(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
+      '@gluestack-ui/form-control': 0.1.19(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/utils': 0.1.14(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@react-aria/visually-hidden': 3.8.18(react@18.2.0)
       '@react-native-aria/focus': 0.2.9(react-native@0.74.6)(react@18.2.0)
@@ -4510,7 +4513,7 @@ packages:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@gluestack-ui/form-control': 0.1.18(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
+      '@gluestack-ui/form-control': 0.1.19(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/hooks': 0.1.11(react-dom@18.3.1)(react@18.2.0)
       '@gluestack-ui/utils': 0.1.14(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@react-native-aria/focus': 0.2.9(react-native@0.74.6)(react@18.2.0)
@@ -4526,7 +4529,7 @@ packages:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@gluestack-ui/form-control': 0.1.18(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
+      '@gluestack-ui/form-control': 0.1.19(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/hooks': 0.1.11(react-dom@18.3.1)(react@18.2.0)
       '@gluestack-ui/utils': 0.1.14(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@react-aria/visually-hidden': 3.8.18(react@18.2.0)
@@ -4565,7 +4568,7 @@ packages:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@gluestack-ui/form-control': 0.1.18(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
+      '@gluestack-ui/form-control': 0.1.19(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/utils': 0.1.14(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@react-native-aria/focus': 0.2.9(react-native@0.74.6)(react@18.2.0)
       '@react-native-aria/interactions': 0.2.13(react-native@0.74.6)(react@18.2.0)
@@ -4614,7 +4617,7 @@ packages:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@gluestack-ui/form-control': 0.1.18(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
+      '@gluestack-ui/form-control': 0.1.19(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@gluestack-ui/utils': 0.1.14(react-dom@18.3.1)(react-native@0.74.6)(react@18.2.0)
       '@react-native-aria/focus': 0.2.9(react-native@0.74.6)(react@18.2.0)
       react: 18.2.0
@@ -9087,10 +9090,10 @@ packages:
   /@storybook/csf-tools@7.6.20:
     resolution: {integrity: sha512-rwcwzCsAYh/m/WYcxBiEtLpIW5OH1ingxNdF/rK9mtGWhJxXRDV8acPkFrF8rtFWIVKoOCXu5USJYmc3f2gdYQ==}
     dependencies:
-      '@babel/generator': 7.26.2
-      '@babel/parser': 7.26.0
+      '@babel/generator': 7.26.3
+      '@babel/parser': 7.26.3
       '@babel/traverse': 7.26.4
-      '@babel/types': 7.26.0
+      '@babel/types': 7.26.3
       '@storybook/csf': 0.1.12
       '@storybook/types': 7.6.20
       fs-extra: 11.2.0
@@ -10138,12 +10141,12 @@ packages:
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 18.19.67
+      '@types/node': 22.10.1
 
   /@types/connect@3.4.38:
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
     dependencies:
-      '@types/node': 18.19.67
+      '@types/node': 22.10.1
 
   /@types/cross-spawn@6.0.6:
     resolution: {integrity: sha512-fXRhhUkG4H3TQk5dBhQ7m/JDdSNHKwR2BBia62lhwEIq9xGiQKLxd6LymNhn47SjXhsUEPmxi+PKw2OkW4LLjA==}
@@ -10204,7 +10207,7 @@ packages:
   /@types/express-serve-static-core@4.19.6:
     resolution: {integrity: sha512-N4LZ2xG7DatVqhCZzOGb1Yi5lMbXSZcmdLDe9EzSndPV2HpWYWzRbaerl2n27irrm94EPpprqa8KpskPT085+A==}
     dependencies:
-      '@types/node': 18.19.67
+      '@types/node': 22.10.1
       '@types/qs': 6.9.17
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -10306,7 +10309,7 @@ packages:
   /@types/node-fetch@2.6.12:
     resolution: {integrity: sha512-8nneRWKCg3rMtF69nLQJnOYUcbafYeFSjqkw3jCRLsqkWFlHaoQrr5mXmofFGOx3DKn7UfmBMyov8ySvLRVldA==}
     dependencies:
-      '@types/node': 18.19.67
+      '@types/node': 22.10.1
       form-data: 4.0.1
 
   /@types/node-forge@1.3.11:
@@ -10409,13 +10412,13 @@ packages:
     resolution: {integrity: sha512-x2EM6TJOybec7c52BX0ZspPodMsQUd5L6PRwOunVyVUhXiBSKf3AezDL8Dgvgt5o0UfKNfuA0eMLr2wLT4AiBA==}
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 18.19.67
+      '@types/node': 22.10.1
 
   /@types/serve-static@1.15.7:
     resolution: {integrity: sha512-W8Ym+h8nhuRwaKPaDw34QUkwsGi6Rc4yYqvKFo5rm2FUEhCFbzVWrxXUxuKK8TASjWsysJY0nsmNCGhCOIsrOw==}
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 18.19.67
+      '@types/node': 22.10.1
       '@types/send': 0.17.4
 
   /@types/stack-utils@2.0.3:
@@ -10682,18 +10685,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@utilitywarehouse/react-native-icons@1.10.0(react-native-svg@15.10.1)(react-native@0.74.6)(react@18.2.0):
-    resolution: {integrity: sha512-ObwO2T471fj7gnjj/PUg8d/sFHB3H84uRFR6YeEzC+X1feLMo006942jk4fz5enSrifhhCaMzJ8r8nrjYY3EAQ==}
-    peerDependencies:
-      react: '>=18.1.0'
-      react-native: '>=0.70.6'
-      react-native-svg: '>=12.3.0'
-    dependencies:
-      react: 18.2.0
-      react-native: 0.74.6(@babel/preset-env@7.26.0)(@types/react@18.3.14)(react@18.2.0)
-      react-native-svg: 15.10.1(react-native@0.74.6)(react@18.2.0)
-    dev: false
-
   /@utilitywarehouse/react-native-icons@1.10.0(react-native-svg@15.10.1)(react-native@0.76.3)(react@18.2.0):
     resolution: {integrity: sha512-ObwO2T471fj7gnjj/PUg8d/sFHB3H84uRFR6YeEzC+X1feLMo006942jk4fz5enSrifhhCaMzJ8r8nrjYY3EAQ==}
     peerDependencies:
@@ -10704,6 +10695,18 @@ packages:
       react: 18.2.0
       react-native: 0.76.3(@babel/core@7.26.0)(@types/react@18.3.14)(react@18.2.0)
       react-native-svg: 15.10.1(react-native@0.76.3)(react@18.2.0)
+    dev: false
+
+  /@utilitywarehouse/react-native-icons@1.12.0(react-native-svg@15.10.1)(react-native@0.74.6)(react@18.2.0):
+    resolution: {integrity: sha512-Mhqk8nSVUhMSb0r6DHbLb7I7VvK++P2c9joo//5yUrMqJ9mp65xifOnKv2wOdn61c7p1cECQOM8VTTklbxrtFw==}
+    peerDependencies:
+      react: '>=18.1.0'
+      react-native: '>=0.70.6'
+      react-native-svg: '>=12.3.0'
+    dependencies:
+      react: 18.2.0
+      react-native: 0.74.6(@babel/preset-env@7.26.0)(@types/react@18.3.14)(react@18.2.0)
+      react-native-svg: 15.10.1(react-native@0.74.6)(react@18.2.0)
     dev: false
 
   /@vercel/analytics@1.4.1(react@18.2.0):
