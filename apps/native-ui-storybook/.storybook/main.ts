@@ -34,14 +34,7 @@ module.exports = {
     autodocs: false,
   },
   refs: {
-    // icons: {
-    //   title: 'Icons',
-    //   url: 'https://uw-icons.vercel.app/',
-    // },
-    // 'web-ui': {
-    //   title: 'Web UI',
-    //   url: 'https://uw-web-ui.vercel.app/',
-    // },
+    // Add any external Storybook refs if needed
   },
   typescript: {
     reactDocgen: 'react-docgen',
@@ -51,6 +44,40 @@ module.exports = {
       ...config.resolve.alias,
       '@utilitywarehouse/react-native-icons': '@utilitywarehouse/react-icons',
     };
+
+    // Remove the previous rule that excludes `node_modules` entirely
+    // and replace it with a rule that allows @gluestack-ui transpilation.
+    config.module.rules.push({
+      test: /\.(js|jsx)$/,
+      // Transpile files in node_modules only if they are from @gluestack-ui
+      exclude: /node_modules\/(?!(@gluestack-ui)\/)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            ['@babel/preset-env', { loose: true }], // Ensure loose: true is consistent
+            '@babel/preset-react',
+          ],
+          plugins: [
+            ['@babel/plugin-transform-private-property-in-object', { loose: true }],
+            ['@babel/plugin-transform-private-methods', { loose: true }],
+            ['@babel/plugin-proposal-class-properties', { loose: true }],
+          ],
+        },
+      },
+    });
+
+    // If you need TypeScript handling:
+    // config.module.rules.push({
+    //   test: /\.(ts|tsx)$/,
+    //   exclude: /node_modules/,
+    //   use: [
+    //     {
+    //       loader: require.resolve('ts-loader'),
+    //     },
+    //   ],
+    // });
+    // config.resolve.extensions.push('.ts', '.tsx');
 
     return config;
   },
