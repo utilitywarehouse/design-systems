@@ -2,4 +2,4 @@
 '@utilitywarehouse/native-ui': minor
 ---
 
-Update dependencies
+Update dependencies and use `UnsitylesProvider`

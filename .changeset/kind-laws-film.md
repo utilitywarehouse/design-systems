@@ -2,4 +2,4 @@
 '@utilitywarehouse/native-ui': minor
 ---
 
-Refactors Carousel API
+Refactors `Carousel` API
