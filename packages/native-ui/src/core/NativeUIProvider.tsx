@@ -8,6 +8,7 @@ import {
   UnistylesRuntime,
   UnistylesThemes,
   useInitialTheme,
+  UnistylesProvider,
 } from 'react-native-unistyles';
 
 UnistylesRegistry.addBreakpoints(breakpoints)
@@ -27,9 +28,11 @@ const NativeUIProvider: React.FC<
     UnistylesRuntime.setTheme(colorMode === 'dark' ? 'dark' : 'light');
   }, [colorMode]);
   return (
-    <GluestackUIProvider config={config} colorMode={colorMode} {...props}>
-      {children}
-    </GluestackUIProvider>
+    <UnistylesProvider>
+      <GluestackUIProvider config={config} colorMode={colorMode} {...props}>
+        {children}
+      </GluestackUIProvider>
+    </UnistylesProvider>
   );
 };
 
