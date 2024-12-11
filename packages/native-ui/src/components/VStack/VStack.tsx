@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { View, ViewProps } from 'react-native';
+import { View, ViewProps, ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 interface VStackProps extends ViewProps {
@@ -45,7 +45,7 @@ const stylesheet = createStyleSheet(({ space }) => ({
       },
       wrap: {
         true: {
-          flexWrap: 'wrap',
+          flexWrap: 'wrap' as ViewStyle['flexWrap'],
         },
       },
     },

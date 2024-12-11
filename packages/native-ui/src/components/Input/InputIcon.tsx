@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React, { ComponentProps, ComponentType, forwardRef } from 'react';
+import React, { ComponentType, forwardRef } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { useInputContext } from './Input.context';
-import { Icon } from '../Icon';
+import { Icon, IconProps } from '../Icon';
 import type { SvgRef } from '../../types';
 
-const InputIcon = forwardRef<SvgRef, ComponentProps<typeof Icon> & { as?: ComponentType }>(
+const InputIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
   ({ children, ...props }, ref) => {
     const { disabled } = useInputContext();
     const { styles } = useStyles(stylesheet, { disabled });
