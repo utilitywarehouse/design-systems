@@ -8,6 +8,9 @@ import { CheckboxGroupRoot } from './CheckboxGroupRoot';
 import { Flex } from '../Flex/Flex';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { BodyText } from '../BodyText/BodyText';
+import { CheckboxTile } from '../CheckboxTile/CheckboxTile';
+import { Box } from '../Box/Box';
+import { colors } from '@utilitywarehouse/colour-system';
 
 const meta: Meta<typeof CheckboxGroup> = {
   title: 'Stories / CheckboxGroup',
@@ -55,14 +58,12 @@ export const Workshop: Story = {
           <Checkbox value="3" label="Mobile" />
           <Checkbox value="4" label="Insurance" />
         </CheckboxGroup>
-        {
-          // <CheckboxGroup {...args} name="checkbox-tiles-story">
-          //   <CheckboxTile value="1" label="Energy" />
-          //   <CheckboxTile value="2" label="Broadband" />
-          //   <CheckboxTile value="3" label="Mobile" />
-          //   <CheckboxTile value="4" label="Insurance" />
-          // </CheckboxGroup>
-        }
+        <CheckboxGroup {...args} name="checkbox-tiles-story">
+          <CheckboxTile value="1" label="Energy" />
+          <CheckboxTile value="2" label="Broadband" />
+          <CheckboxTile value="3" label="Mobile" />
+          <CheckboxTile value="4" label="Insurance" />
+        </CheckboxGroup>
       </form>
     </Flex>
   ),
@@ -129,39 +130,39 @@ export const ShowingError: Story = {
   },
 };
 
-// export const ContentWidth: Story = {
-//   render: args => {
-//     return (
-//       <CheckboxGroup {...args} helperText="Setting the width of the children elements">
-//         <CheckboxTile value="1" label="One" />
-//         <CheckboxTile value="2" label="Two" />
-//         <CheckboxTile value="3" label="Three" />
-//       </CheckboxGroup>
-//     );
-//   },
-//   args: { contentWidth: '200px' },
-// };
+export const ContentWidth: Story = {
+  render: args => {
+    return (
+      <CheckboxGroup {...args} helperText="Setting the width of the children elements">
+        <CheckboxTile value="1" label="One" />
+        <CheckboxTile value="2" label="Two" />
+        <CheckboxTile value="3" label="Three" />
+      </CheckboxGroup>
+    );
+  },
+  args: { contentWidth: '200px' },
+};
 
-// export const Wrap: Story = {
-//   render: args => {
-//     return (
-//       <Box
-//         height="800px"
-//         width="400px"
-//         padding="200"
-//         style={{ border: '2px solid', borderColor: colors.grey500 }}
-//       >
-//         <CheckboxGroup {...args} direction="row" helperText="Child elements will wrap by default">
-//           <CheckboxTile value="1" label="One" />
-//           <CheckboxTile value="2" label="Two" />
-//           <CheckboxTile value="3" label="Three" />
-//           <CheckboxTile value="4" label="Four" />
-//           <CheckboxTile value="5" label="Five" />
-//         </CheckboxGroup>
-//       </Box>
-//     );
-//   },
-// };
+export const Wrap: Story = {
+  render: args => {
+    return (
+      <Box
+        height="800px"
+        width="400px"
+        padding="200"
+        style={{ border: '2px solid', borderColor: colors.grey500 }}
+      >
+        <CheckboxGroup {...args} direction="row" helperText="Child elements will wrap by default">
+          <CheckboxTile value="1" label="One" />
+          <CheckboxTile value="2" label="Two" />
+          <CheckboxTile value="3" label="Three" />
+          <CheckboxTile value="4" label="Four" />
+          <CheckboxTile value="5" label="Five" />
+        </CheckboxGroup>
+      </Box>
+    );
+  },
+};
 
 export const CheckboxGroupRootStory: StoryObj<typeof CheckboxGroupRoot> = {
   name: 'CheckboxGroupRoot',
@@ -173,13 +174,11 @@ export const CheckboxGroupRootStory: StoryObj<typeof CheckboxGroupRoot> = {
           <Checkbox value="2" label="Two" />
           <Checkbox value="3" label="Three" />
         </CheckboxGroupRoot>
-        {
-          // <CheckboxGroupRoot {...args} name="checkbox-tiles-story">
-          //     <CheckboxTile value="1" label="One" />
-          //     <CheckboxTile value="2" label="Two" />
-          //     <CheckboxTile value="3" label="Three" />
-          // </CheckboxGroupRoot>
-        }
+        <CheckboxGroupRoot {...args} name="checkbox-tiles-story">
+          <CheckboxTile value="1" label="One" />
+          <CheckboxTile value="2" label="Two" />
+          <CheckboxTile value="3" label="Three" />
+        </CheckboxGroupRoot>
       </form>
     </Flex>
   ),
