@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
-import { CheckboxGroupRootProps } from './CheckboxGroupRoot.props';
 import { withGlobalPrefix } from '../../helpers/with-global-prefix';
 import { Flex } from '../Flex/Flex';
 import { CheckboxGroupBase } from '../CheckboxGroupBase/CheckboxGroupBase';
 import type { ElementRef } from 'react';
+import { CheckboxGroupRootProps } from './CheckboxGroup.props';
 
 const componentName = 'CheckboxGroupRoot';
 const componentClassName = withGlobalPrefix(componentName);
