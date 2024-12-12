@@ -1,5 +1,15 @@
 # @utilitywarehouse/native-ui
 
+## 0.10.0
+
+### Minor Changes
+
+- [#640](https://github.com/utilitywarehouse/design-systems/pull/640) [`d231314`](https://github.com/utilitywarehouse/design-systems/commit/d231314850a0c570ce78a442cce2e7c373829f00) Thanks [@mickeyhead7](https://github.com/mickeyhead7)! - Refactors `Carousel` API
+
+- [#650](https://github.com/utilitywarehouse/design-systems/pull/650) [`6f8377d`](https://github.com/utilitywarehouse/design-systems/commit/6f8377df4ce9edc1db96dd6b17633376aadd9ccc) Thanks [@jordmccord](https://github.com/jordmccord)! - Move `Box` out of lab
+
+- [#649](https://github.com/utilitywarehouse/design-systems/pull/649) [`d0d8312`](https://github.com/utilitywarehouse/design-systems/commit/d0d831277103c31d6f3beca6c272c9db5ed6d2e7) Thanks [@jordmccord](https://github.com/jordmccord)! - Update dependencies and use `UnsitylesProvider`
+
 ## 0.9.2
 
 ### Patch Changes
