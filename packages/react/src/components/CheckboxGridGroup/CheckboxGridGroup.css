@@ -1,5 +1,5 @@
-.uw-RadioGridGroup {
-  .uw-RadioGridGroupRoot {
+.uw-CheckboxGridGroup {
+  .uw-CheckboxGridGroupRoot {
     display: grid;
     gap: 16px;
     min-width: fit-content;

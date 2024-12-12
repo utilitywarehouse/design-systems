@@ -2,32 +2,31 @@ import * as React from 'react';
 
 import clsx from 'clsx';
 
+import type { CheckboxGridGroupProps } from './CheckboxGridGroup.props';
+import { CheckboxGridGroupRoot } from './CheckboxGridGroupRoot';
 import { withGlobalPrefix } from '../../helpers/with-global-prefix';
 import type { ElementRef } from 'react';
-import type { RadioGridGroupProps } from './RadioGridGroup.props';
 import { FormFieldGroup } from '../FormFieldGroup/FormFieldGroup';
-import { RadioGridGroupRoot } from './RadioGridGroupRoot';
 
-const componentName = 'RadioGridGroup';
+const componentName = 'CheckboxGridGroup';
 const componentClassName = withGlobalPrefix(componentName);
 
-type RadioGridGroupElement = ElementRef<'fieldset'>;
+type CheckboxGridGroupElement = ElementRef<'fieldset'>;
 
 /**
- * The `RadioGridGroup` provides an accessible way to group and control a set
- * of `Radio` or `RadioTile` components, displayed in a grid layout, allowing
- * the user to select one option from a set. For displaying radios in a column
- * or row, please use the `RadioGroup` component. The `RadioGridGroup` is
+ * Set of interactive buttons where multiple options can be selected at a time,
+ * displayed in a grid layout. The `CheckboxGridGroup` uses a fieldset to group
+ * related `Checkbox` controls. For displaying checkboxes in a column or row,
+ * please use the `CheckboxGroup` component. The `CheckboxGridGroup` is
  * responsible for handling the value, helper text, error state, error message,
  * and disabled state, as well as determining the presentation and selection of
- * the items in the list. Follows the [WAI-ARIA Radio Group Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) for radio groups not contained in a toolbar.
+ * the items in the list.
  */
-export const RadioGridGroup = React.forwardRef<RadioGridGroupElement, RadioGridGroupProps>(
+export const CheckboxGridGroup = React.forwardRef<CheckboxGridGroupElement, CheckboxGridGroupProps>(
   (
     {
-      children,
-      contentWidth = 'fit-content',
-      className,
+      disabled,
+      required,
       label,
       helperText,
       helperTextPosition,
@@ -35,14 +34,14 @@ export const RadioGridGroup = React.forwardRef<RadioGridGroupElement, RadioGridG
       error,
       errorMessage,
       showErrorMessageIcon,
-      required,
-      disabled,
-      loop,
-      defaultValue,
       value,
+      defaultValue,
       onValueChange,
       name,
-      columns,
+      children,
+      contentWidth = 'fit-content',
+      columns = 2,
+      className,
       ...props
     },
     ref
@@ -59,16 +58,16 @@ export const RadioGridGroup = React.forwardRef<RadioGridGroupElement, RadioGridG
       errorMessage,
       showErrorMessageIcon,
     };
-    const radioGridGroupRootProps = {
+    const checkboxGridGroupRootProps = {
       width: contentWidth,
+      columns,
       name,
       required,
       disabled,
-      loop,
       defaultValue,
       value,
       onValueChange,
-      columns,
+      children,
     };
     return (
       <FormFieldGroup
@@ -76,10 +75,10 @@ export const RadioGridGroup = React.forwardRef<RadioGridGroupElement, RadioGridG
         className={clsx(componentClassName, className)}
         {...formFieldGroupProps}
       >
-        <RadioGridGroupRoot {...radioGridGroupRootProps}>{children}</RadioGridGroupRoot>
+        <CheckboxGridGroupRoot {...checkboxGridGroupRootProps} />
       </FormFieldGroup>
     );
   }
 );
 
-RadioGridGroup.displayName = componentName;
+CheckboxGridGroup.displayName = componentName;
