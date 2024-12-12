@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.10.1
+
+### Patch Changes
+
+- [`406f9db`](https://github.com/utilitywarehouse/design-systems/commit/406f9dbb793dcaa4df2d3c5a8e49d90e5495e2a6) Thanks [@jordmccord](https://github.com/jordmccord)! - Revert gluestack-ui changes
+
 ## 0.10.0
 
 ### Minor Changes
