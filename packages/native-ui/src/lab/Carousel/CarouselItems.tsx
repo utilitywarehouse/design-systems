@@ -11,7 +11,7 @@ import React, {
 } from 'react';
 import { AccessibilityActionEvent, FlatList, ViewToken, ViewStyle } from 'react-native';
 
-import { Box } from '../Box';
+import { Box } from '../';
 import CarouselContext from './Carousel.context';
 import { CarouselItemProps, CarouselItemsProps, CarouselRef } from './Carousel.props';
 
@@ -35,9 +35,12 @@ export const CarouselItems = forwardRef(function CarouselItems(
   const { activeIndex = 0, setActiveIndex, setNumItems } = useContext(CarouselContext);
 
   // Ensure children is always converted to an array
-  const items: Array<ReactElement<CarouselItemProps>> = useMemo(() => Children.map(children, child => child) || [], [children]);
+  const items: Array<ReactElement<CarouselItemProps>> = useMemo(
+    () => Children.map(children, child => child) || [],
+    [children]
+  );
 
-  const innerMargin: number = (width - (itemWidth || width));
+  const innerMargin: number = width - (itemWidth || width);
   const containerStyles: ViewStyle = {
     width,
   };
@@ -50,20 +53,27 @@ export const CarouselItems = forwardRef(function CarouselItems(
     setNumItems((items || []).length);
   }, [items, setNumItems]);
 
-  const handleViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: Array<ViewToken> }) => {
-    if (!viewableItems.length) {
-      return;
-    }
+  const handleViewableItemsChanged = useCallback(
+    ({ viewableItems }: { viewableItems: Array<ViewToken> }) => {
+      if (!viewableItems.length) {
+        return;
+      }
 
-    const index = viewableItems[viewableItems.length - 1].index || 0;
+      const index = viewableItems[viewableItems.length - 1].index || 0;
 
-    setActiveIndex?.(index);
-    onSnapToItem?.(index);
-  }, [onSnapToItem, setActiveIndex]);
+      setActiveIndex?.(index);
+      onSnapToItem?.(index);
+    },
+    [onSnapToItem, setActiveIndex]
+  );
 
   const handleAccessibilityAction = ({ nativeEvent }: AccessibilityActionEvent) => {
     const value = nativeEvent.actionName === 'increment' ? 1 : -1;
-    const index = clampToRange(activeIndex + value, 0, items && items.length ? items.length - 1 : 0);
+    const index = clampToRange(
+      activeIndex + value,
+      0,
+      items && items.length ? items.length - 1 : 0
+    );
 
     if (ref && typeof ref !== 'function' && ref?.current) {
       ref.current.scrollToIndex({ index });
@@ -93,12 +103,14 @@ export const CarouselItems = forwardRef(function CarouselItems(
         overScrollMode="never" // Prevents stretching of first and last items when reaching each end of the carousel (Android only)
         ref={ref}
         removeClippedSubviews={!showOverflow}
-        renderItem={({ index, item }) => cloneElement((item), {
-          active: index === activeIndex,
-          inactiveOpacity: inactiveItemOpacity,
-          key: item?.key || item.props?.id || index,
-          width: itemWidth || width,
-        })}
+        renderItem={({ index, item }) =>
+          cloneElement(item, {
+            active: index === activeIndex,
+            inactiveOpacity: inactiveItemOpacity,
+            key: item?.key || item.props?.id || index,
+            width: itemWidth || width,
+          })
+        }
         scrollEnabled={enabled}
         showsHorizontalScrollIndicator={false}
         snapToInterval={itemWidth || width}
