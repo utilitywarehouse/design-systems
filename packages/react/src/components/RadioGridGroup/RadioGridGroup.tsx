@@ -6,6 +6,7 @@ import { withGlobalPrefix } from '../../helpers/with-global-prefix';
 import type { ElementRef } from 'react';
 import type { RadioGridGroupProps } from './RadioGridGroup.props';
 import { FormFieldGroup } from '../FormFieldGroup/FormFieldGroup';
+import { RadioGridGroupRoot } from './RadioGridGroupRoot';
 
 const componentName = 'RadioGridGroup';
 const componentClassName = withGlobalPrefix(componentName);
