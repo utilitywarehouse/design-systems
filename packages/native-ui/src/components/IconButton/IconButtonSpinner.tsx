@@ -61,8 +61,8 @@ const IconButtonSpinner = forwardRef<View, SpinnerProps>(({ color = '', ...props
     }
     return colorProp;
   }, [color, colorMode, variant, disabled, inverted, colorScheme]);
-
-  // @ts-expect-error - TS doesn't like the ref type here
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return <Spinner ref={ref} {...props} size="xs" color={colorProp} />;
 });
 
