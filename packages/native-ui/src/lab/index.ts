@@ -1,3 +1,3 @@
 export * from './Actionsheet';
 export * from './Carousel';
-export * from './Box';
+export * from '../components/Box';

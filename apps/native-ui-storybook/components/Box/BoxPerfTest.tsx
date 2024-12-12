@@ -11,9 +11,9 @@ import {
 } from '@utilitywarehouse/native-ui';
 import { Box as LabBox } from '@utilitywarehouse/native-ui/lab';
 import React, { useState } from 'react';
-import TimedRender from '../../TimedRender';
+import TimedRender from '../TimedRender';
 import { StyleSheet } from 'react-native';
-import StoryWrap from '../../../docs/components/StoryWrap';
+import StoryWrap from '../../docs/components/StoryWrap';
 import { colors } from '@utilitywarehouse/colour-system';
 
 const COUNT = 250;

@@ -21,6 +21,7 @@ export * from './Icon';
 export * from './Divider';
 export * from './Switch';
 export * from './Card';
+export * from './Box';
 
 export {
   FlatList,
@@ -31,14 +32,6 @@ export {
   SectionList,
   Image,
 } from 'react-native';
-
-export {
-  /**
-   * @deprecated
-   * Use `Box` from `@utilitywarehouse/native-ui/Lab` instead
-   */
-  Box,
-} from '@gluestack-ui/themed';
 
 export { Pressable } from 'react-native';
 

@@ -3,7 +3,7 @@ import BoxPerfTest from './BoxPerfTest';
 import type { Meta } from '@storybook/react';
 
 const BoxMeta: Meta<typeof Box> = {
-  title: 'Native UI / Components / Lab / Box',
+  title: 'Native UI / Components / Box',
   component: Box,
 };
 
