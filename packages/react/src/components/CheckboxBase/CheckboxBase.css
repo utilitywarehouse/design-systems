@@ -1,17 +1,5 @@
 .uw-CheckboxBase {
-  --checkbox-color-disabled: var(--color-grey400);
-  --checkbox-background-color-unchecked: white;
-  --checkbox-background-color-checked: var(--color-cyan500);
-  --checkbox-background-color-checked-disabled: var(--color-grey150);
-  --checkbox-border-width: 2px;
-  --checkbox-border-color-unchecked: var(--color-grey500);
-  --checkbox-border-color-unchecked-disabled: var(--color-grey300);
-  --checkbox-border-color-checked: var(--color-cyan500);
-  --checkbox-border-color-checked-disabled: var(--color-grey150);
-  --checkbox-border-color-hover: var(--color-cyan500);
-  --checkbox-border-color-focus: var(--color-cyan500);
-  --checkbox-outline-color: transparent;
-  --checkbox-outline-color-focus: var(--color-cyan700);
+  --checkbox-box-shadow-color: var(--color-grey500);
 
   position: relative;
   display: inline-flex;
@@ -25,8 +13,8 @@
   border: none;
   border-radius: 50%;
   color: var(--color-cyan1000);
-  background-color: var(--checkbox-background-color);
-  outline: 'none';
+  background-color: white;
+  outline: none;
 
   &::before {
     content: '';
@@ -35,40 +23,40 @@
     width: 24px;
     border-radius: 3px;
     background-color: inherit;
-    box-shadow: inset 0 0 0 var(--checkbox-border-width) var(--checkbox-border-color);
-    outline: 2px solid var(--checkbox-outline-color);
+    box-shadow: inset 0 0 0 2px var(--checkbox-box-shadow-color);
+    outline: 2px solid transparent;
   }
 
   &:where([data-state='unchecked']) {
-    background-color: var(--checkbox-background-color-unchecked);
-    --checkbox-border-color: var(--checkbox-border-color-unchecked);
-    &:where([data-disabled], [data-disabled] &) {
-      --checkbox-border-color: var(--checkbox-border-color-unchecked-disabled);
-    }
+    background-color: white;
+
+    --checkbox-box-shadow-color-disabled: var(--color-grey300);
   }
 
   &:where([data-state='checked']) {
-    background-color: var(--checkbox-background-color-checked);
-    --checkbox-border-color: var(--checkbox-border-color-checked);
-    &:where([data-disabled], [data-disabled] &) {
-      --checkbox-border-color: var(--checkbox-border-color-checked-disabled);
-      background-color: var(--checkbox-background-color-checked-disabled);
-    }
+    background-color: var(--color-cyan500);
+
+    --checkbox-box-shadow-color: var(--color-cyan500);
+    --checkbox-box-shadow-color-disabled: var(--color-grey150);
+    --checkbox-background-color-disabled: var(--color-grey150);
   }
 
   @media (hover: hover) {
     &:where(:hover:enabled) {
-      border-color: var(--checkbox-border-color-hover);
+      border-color: var(--color-cyan500);
       box-shadow: 0 0 0 8px var(--color-cyan75);
     }
   }
 
   &:where([data-disabled], [data-disabled] &) {
-    color: var(--checkbox-color-disabled);
+    --checkbox-box-shadow-color: var(--checkbox-box-shadow-color-disabled);
+
+    color: var(--color-grey400);
+    background-color: var(--checkbox-background-color-disabled);
   }
 
   &:where(:focus-visible) {
-    border-color: var(--checkbox-border-color-focus);
+    border-color: var(--color-cyan500);
   }
 
   .uw-CheckboxBaseIndicator {

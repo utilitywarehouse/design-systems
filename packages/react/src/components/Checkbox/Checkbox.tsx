@@ -54,7 +54,6 @@ export const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>(
       >
         <CheckboxBase
           ref={ref}
-          className="uw-Checkbox-CheckboxBase"
           {...props}
           id={id}
           disabled={disabled}
@@ -63,7 +62,7 @@ export const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>(
         />
         {showLabel ? (
           <Flex direction="column" gap="50">
-            <Label id={labelId} htmlFor={id} className="uw-Checkbox-Label" nested disableUserSelect>
+            <Label id={labelId} htmlFor={id} nested disableUserSelect>
               {label}
             </Label>
             {showHelperText ? (
