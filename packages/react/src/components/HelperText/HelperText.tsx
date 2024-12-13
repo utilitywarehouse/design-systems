@@ -9,6 +9,7 @@ import {
   TickMediumContainedIcon,
   WarningMediumContainedIcon,
 } from '@utilitywarehouse/react-icons';
+import { DATA_ATTRIBUTES } from '../../helpers/data-attributes';
 
 const componentName = 'HelperText';
 const componentClassName = 'uw-' + componentName;
@@ -27,13 +28,17 @@ export const HelperText = React.forwardRef<HelperTextElement, HelperTextProps>(
     const Icon = validationStatus
       ? (icons[validationStatus] as JSX.ElementType)
       : (InformationMediumContainedIcon as JSX.ElementType);
+
+    const dataAttributeProps = {
+      [DATA_ATTRIBUTES.disableUserSelect]: disableUserSelect ? '' : undefined,
+      'data-disabled': disabled ? '' : undefined,
+      'data-validation': validationStatus ? validationStatus : undefined,
+    };
     return (
       <span
         ref={ref}
         className={clsx(componentClassName, className)}
-        data-disabled={disabled ? '' : undefined}
-        data-disable-user-select={disableUserSelect ? '' : undefined}
-        data-validation={validationStatus ? validationStatus : undefined}
+        {...dataAttributeProps}
         {...props}
       >
         {showIcon ? <Icon /> : null}

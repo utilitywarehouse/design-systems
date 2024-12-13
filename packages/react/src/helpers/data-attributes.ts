@@ -5,4 +5,5 @@ function withDataPrefix(name: string) {
 /* a set of data-attributes used for styling */
 export const DATA_ATTRIBUTES = {
   colorscheme: withDataPrefix('colorscheme'),
+  disableUserSelect: withDataPrefix('disable-user-select'),
 };

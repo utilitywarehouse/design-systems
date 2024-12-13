@@ -14,7 +14,7 @@
     color: var(--label-color-disabled);
   }
 
-  &:where(.uw-nested) {
+  &:where([data-nested]) {
     font-weight: var(--label-font-weight-nested);
   }
 }
