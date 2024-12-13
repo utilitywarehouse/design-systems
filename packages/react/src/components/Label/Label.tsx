@@ -5,13 +5,11 @@ import clsx from 'clsx';
 
 import { LabelProps } from './Label.props';
 import { Slot } from '@radix-ui/react-slot';
+import { withGlobalPrefix } from '../../helpers/with-global-prefix';
+import { DATA_ATTRIBUTES } from '../../helpers/data-attributes';
 
 const componentName = 'Label';
-const componentClassName = 'uw-' + componentName;
-
-const classNames = {
-  nested: 'uw-nested',
-};
+const componentClassName = withGlobalPrefix(componentName);
 
 type LabelElement = ElementRef<'label'>;
 
@@ -29,12 +27,16 @@ export const Label = React.forwardRef<LabelElement, LabelProps>(
     },
     ref
   ) => {
+    const dataAttributeProps = {
+      [DATA_ATTRIBUTES.disableUserSelect]: disableUserSelect ? '' : undefined,
+      'data-disabled': disabled ? '' : undefined,
+      'data-nested': nested ? '' : undefined,
+    };
     return (
       <Slot
         ref={ref}
-        className={clsx(componentClassName, { [classNames.nested]: nested }, className)}
-        data-disabled={disabled ? '' : undefined}
-        data-disable-user-select={disableUserSelect ? '' : undefined}
+        className={clsx(componentClassName, className)}
+        {...dataAttributeProps}
         {...props}
       >
         {asChild ? children : <Tag>{children}</Tag>}
