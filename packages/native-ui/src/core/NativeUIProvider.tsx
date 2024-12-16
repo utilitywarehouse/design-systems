@@ -1,6 +1,4 @@
-import React, { ComponentProps, useEffect } from 'react';
-import { GluestackUIProvider } from '@gluestack-ui/themed';
-import { config } from '../config';
+import React, { PropsWithChildren, useEffect } from 'react';
 import { breakpoints } from './breakpoints';
 import { darkTheme, lightTheme } from './themes';
 import {
@@ -20,20 +18,15 @@ UnistylesRegistry.addBreakpoints(breakpoints)
     adaptiveThemes: false,
   });
 
-const NativeUIProvider: React.FC<
-  Omit<ComponentProps<typeof GluestackUIProvider>, 'config'> & { colorMode?: keyof UnistylesThemes }
-> = ({ children, colorMode = 'light', ...props }) => {
+const NativeUIProvider: React.FC<PropsWithChildren<{ colorMode?: keyof UnistylesThemes }>> = ({
+  children,
+  colorMode = 'light',
+}) => {
   useInitialTheme(colorMode);
   useEffect(() => {
     UnistylesRuntime.setTheme(colorMode === 'dark' ? 'dark' : 'light');
   }, [colorMode]);
-  return (
-    <UnistylesProvider>
-      <GluestackUIProvider config={config} colorMode={colorMode} {...props}>
-        {children}
-      </GluestackUIProvider>
-    </UnistylesProvider>
-  );
+  return <UnistylesProvider>{children}</UnistylesProvider>;
 };
 
 export default NativeUIProvider;

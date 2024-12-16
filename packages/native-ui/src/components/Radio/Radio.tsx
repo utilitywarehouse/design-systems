@@ -11,7 +11,7 @@ import { Pressable } from 'react-native';
 import { Helper } from '../Helper';
 import { useRadioGroupContext } from './RadioGroup.context';
 import { useFormFieldContext } from '../FormField';
-import { VStack } from '@gluestack-ui/themed';
+import { VStack } from '../VStack';
 
 const RadioComponent = createRadio({
   Root: StyledRadio,

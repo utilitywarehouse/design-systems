@@ -35,4 +35,4 @@ export {
 
 export { Pressable } from 'react-native';
 
-export { createIcon } from '@gluestack-ui/themed';
+export { createIcon } from '@gluestack-ui/icon';

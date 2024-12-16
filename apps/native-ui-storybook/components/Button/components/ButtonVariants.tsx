@@ -12,14 +12,13 @@ import {
   useMedia,
   Heading,
   useColorMode,
+  ButtonProps,
 } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
-import { Button as GSButton } from '@gluestack-ui/themed';
 import { AddSmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-native-icons';
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { VariantTitle } from '../../../docs/components';
 
-interface ButtonProps extends ComponentProps<typeof GSButton> {}
 interface ButtonVariantsProps {
   colorScheme: ButtonProps['colorScheme'];
   size: ButtonProps['size'];
