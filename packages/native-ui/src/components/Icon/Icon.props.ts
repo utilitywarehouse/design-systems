@@ -1,4 +1,4 @@
-import type { ViewStyle, ColorValue as RNColorValue, StyleProp } from 'react-native';
+import type { ColorValue as RNColorValue } from 'react-native';
 import type { SvgProps } from 'react-native-svg';
 import type { ColorValue } from '../../types';
 
@@ -10,7 +10,7 @@ interface IconProps extends SvgProps {
   size?: number | string;
   stroke?: string;
   as?: React.ElementType;
-  style?: StyleProp<ViewStyle & { color?: RNColorValue }>;
+  style?: SvgProps['style'] & { color?: RNColorValue };
 }
 
 export default IconProps;
