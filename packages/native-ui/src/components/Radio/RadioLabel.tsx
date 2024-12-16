@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { Text } from 'react-native';
 
 import { useRadioContext } from './Radio.context';
@@ -9,7 +9,7 @@ import { useFormFieldContext } from '../FormField';
 
 const RadioLabel = forwardRef<Text, LabelProps>(({ children, style, ...props }, ref) => {
   const { checked, disabled } = useRadioContext();
-  const { styles } = useStyles(stylesheet, {
+  styles.useVariants({
     checked,
     disabled,
   });
@@ -24,7 +24,7 @@ const RadioLabel = forwardRef<Text, LabelProps>(({ children, style, ...props }, 
 
 RadioLabel.displayName = 'RadioLabel';
 
-const stylesheet = createStyleSheet(({ colors }) => ({
+const styles = StyleSheet.create(({ colors }) => ({
   text: {
     variants: {
       checked: {

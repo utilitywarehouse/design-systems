@@ -2,17 +2,14 @@ import React, { forwardRef } from 'react';
 import AnimatedOutline from '../AnimatedOutline';
 import { useListContext } from '../List';
 import { View, ViewProps } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { useCheckboxContext } from './Checkbox.context';
 
 const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
   const [show, setShow] = React.useState(false);
   const isInList = Boolean(useListContext());
   const { disabled, checked } = useCheckboxContext();
-  const { styles } = useStyles(stylesheet, {
-    checked,
-    disabled,
-  });
+  styles.useVariants({ checked, disabled });
 
   return (
     <AnimatedOutline show={isInList || disabled ? false : show} style={styles.outline}>
@@ -23,7 +20,7 @@ const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
         onTouchEnd={() => setTimeout(() => setShow(false), 250)}
         onPointerUp={() => setTimeout(() => setShow(false), 250)}
         onPointerDown={() => setShow(true)}
-        style={[styles.container, styles.extraStyles(checked, disabled), props.style]}
+        style={[styles.container, props.style]}
       >
         {props.children}
       </View>
@@ -31,7 +28,7 @@ const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
   );
 });
 
-const stylesheet = createStyleSheet(({ colors, colorMode, radii, borderWidths, space }) => ({
+const styles = StyleSheet.create(({ colors, isDark, radii, borderWidths, space }) => ({
   outline: {
     alignSelf: 'flex-start',
   },
@@ -39,7 +36,7 @@ const stylesheet = createStyleSheet(({ colors, colorMode, radii, borderWidths, s
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    borderColor: colorMode === 'dark' ? colors.grey600 : colors.grey500,
+    borderColor: isDark ? colors.grey600 : colors.grey500,
     borderWidth: borderWidths[2],
     borderRadius: radii['sm'],
     width: space[6],
@@ -47,8 +44,8 @@ const stylesheet = createStyleSheet(({ colors, colorMode, radii, borderWidths, s
     variants: {
       checked: {
         true: {
-          borderColor: colorMode === 'dark' ? colors.cyan700 : colors.cyan500,
-          backgroundColor: colorMode === 'dark' ? colors.cyan700 : colors.cyan500,
+          borderColor: isDark ? colors.cyan700 : colors.cyan500,
+          backgroundColor: isDark ? colors.cyan700 : colors.cyan500,
         },
       },
       disabled: {
@@ -57,16 +54,16 @@ const stylesheet = createStyleSheet(({ colors, colorMode, radii, borderWidths, s
         },
       },
     },
-  },
-  extraStyles: (checked?: boolean, disabled?: boolean) => {
-    if (checked && disabled) {
-      return {
-        borderColor: colorMode === 'dark' ? colors.grey700 : colors.grey150,
-        backgroundColor: colorMode === 'dark' ? colors.grey700 : colors.grey150,
-      };
-    }
-
-    return {};
+    compoundVariants: [
+      {
+        checked: true,
+        disabled: true,
+        styles: {
+          borderColor: isDark ? colors.grey700 : colors.grey150,
+          backgroundColor: isDark ? colors.grey700 : colors.grey150,
+        },
+      },
+    ],
   },
 }));
 

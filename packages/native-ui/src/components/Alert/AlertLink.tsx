@@ -1,13 +1,12 @@
 import React, { ComponentProps, forwardRef, ElementRef } from 'react';
 import { Pressable, Text, type PressableProps, type TextProps } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import AlertText from './AlertText';
 import { ChevronRightSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { useAlertContext } from './Alert.context';
 import { PressableRef } from '../../types';
 
 const AlertLink = forwardRef<PressableRef, PressableProps>(({ children, ...props }, ref) => {
-  const { styles } = useStyles(stylesheet);
   return (
     <Pressable ref={ref} {...props} style={[styles.container]}>
       {children}
@@ -17,7 +16,6 @@ const AlertLink = forwardRef<PressableRef, PressableProps>(({ children, ...props
 
 export const AlertLinkText = forwardRef<ElementRef<typeof Text>, TextProps>(
   ({ children, ...props }, ref) => {
-    const { styles } = useStyles(stylesheet);
     return (
       <AlertText ref={ref} {...props} style={[styles.text, props.style]}>
         {children}
@@ -30,7 +28,7 @@ export const AlertLinkChevron: React.FC<ComponentProps<typeof ChevronRightSmallI
   ...props
 }) => {
   const { colorScheme } = useAlertContext();
-  const { styles } = useStyles(stylesheet, { colorScheme });
+  styles.useVariants({ colorScheme });
   return <ChevronRightSmallIcon {...props} style={styles.icon} />;
 };
 
@@ -38,15 +36,15 @@ AlertLink.displayName = 'AlertLink';
 AlertLinkText.displayName = 'AlertLinkText';
 AlertLinkChevron.displayName = 'AlertLinkChevron';
 
-const stylesheet = createStyleSheet(({ fontWeights, colors, space }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'row',
-    gap: space[1],
+    gap: theme.space[1],
   },
   text: {
-    fontWeight: fontWeights.semibold,
+    fontWeight: theme.fontWeights.semibold,
   },
   icon: {
     width: 16,
@@ -55,16 +53,16 @@ const stylesheet = createStyleSheet(({ fontWeights, colors, space }) => ({
     variants: {
       colorScheme: {
         cyan: {
-          color: colors.cyan700,
+          color: theme.colors.cyan700,
         },
         red: {
-          color: colors.red700,
+          color: theme.colors.red700,
         },
         green: {
-          color: colors.green700,
+          color: theme.colors.green700,
         },
         gold: {
-          color: colors.gold700,
+          color: theme.colors.gold700,
         },
       },
     },

@@ -2,7 +2,7 @@
 import React, { forwardRef } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { useIconButtonContext } from './IconButton.context';
-import { createStyleSheet, type UnistylesValues, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import type { IconButtonProps } from './IconButton.props';
 import { Icon } from '../Icon';
 import { IconRef } from '../../types';
@@ -10,7 +10,7 @@ import IconProps from '../Icon/Icon.props';
 
 const IconButtonIcon = forwardRef<IconRef, IconProps>(({ children, ...props }, ref) => {
   const { colorScheme, variant, inverted, disabled, size } = useIconButtonContext();
-  const { styles } = useStyles(stylesheet);
+
   return (
     <Icon
       ref={ref}
@@ -43,7 +43,7 @@ const IconButtonIcon = forwardRef<IconRef, IconProps>(({ children, ...props }, r
 
 IconButtonIcon.displayName = 'IconButtonIcon';
 
-const stylesheet = createStyleSheet(({ colorMode, colors }) => ({
+const styles = StyleSheet.create(({ colorMode, colors }) => ({
   extraStyles: (
     colorScheme: IconButtonProps['colorScheme'],
     variant: IconButtonProps['variant'],
@@ -51,7 +51,7 @@ const stylesheet = createStyleSheet(({ colorMode, colors }) => ({
     disabled: IconButtonProps['disabled'],
     size: IconButtonProps['size']
   ) => {
-    const extraStyles: UnistylesValues = {};
+    const extraStyles: { width?: number; height?: number; color?: string } = {};
     const light = colorMode === 'light';
     if (!colorScheme) return extraStyles;
 

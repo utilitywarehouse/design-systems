@@ -3,7 +3,7 @@ import type ListProps from './List.props';
 import { ListHeading } from './ListHeading';
 import { ListContext } from './List.context';
 import { View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
 const List = forwardRef<View, ListProps>(
   ({ children, headingText, headingSupportingText, ...props }, ref) => {
@@ -12,7 +12,7 @@ const List = forwardRef<View, ListProps>(
       () => ({ loading, disabled, divider, container, dividerColor }),
       [loading, disabled, divider, container, dividerColor]
     );
-    const { styles } = useStyles(stylesheet);
+
     return (
       <ListContext.Provider value={value}>
         <View ref={ref} {...props} style={[styles.container, props.style]}>
@@ -28,7 +28,7 @@ const List = forwardRef<View, ListProps>(
 
 List.displayName = 'List';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(({ space }) => ({
   container: {
     width: space.full,
   },

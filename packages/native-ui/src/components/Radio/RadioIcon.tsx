@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  */
 import React, { forwardRef } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { Icon } from '../Icon';
 import { Platform } from 'react-native';
 import { CircleIcon } from '../Icons';
@@ -10,9 +10,7 @@ import IconProps from '../Icon/Icon.props';
 
 const RadioIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
   const { disabled } = useRadioContext();
-  const { styles } = useStyles(stylesheet, {
-    disabled,
-  });
+  styles.useVariants({ disabled });
 
   return (
     <Icon
@@ -30,7 +28,7 @@ const RadioIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
 
 RadioIcon.displayName = 'RadioIcon';
 
-const stylesheet = createStyleSheet(({ radii, colors, colorMode }) => ({
+const styles = StyleSheet.create(({ radii, colors, colorMode }) => ({
   container: {
     width: 14,
     height: 14,

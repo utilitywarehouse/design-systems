@@ -5,7 +5,7 @@ import AlertIconButton, { AlertIconButtonChevron } from './AlertIconButton';
 import AlertCloseButton, { AlertCloseButtonIcon } from './AlertCloseButton';
 import type { AlertProps } from './Alert.props';
 import { AlertContext } from './Alert.context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { View } from 'react-native';
 import AlertText from './AlertText';
 import AlertIcon from './AlertIcon';
@@ -38,7 +38,7 @@ const Alert = forwardRef<View, AlertProps>(
 
     const value = useMemo(() => ({ colorScheme }), [colorScheme]);
 
-    const { styles } = useStyles(stylesheet, { colorScheme });
+    styles.useVariants({ colorScheme });
 
     return (
       <AlertContext.Provider value={value}>
@@ -78,38 +78,38 @@ const Alert = forwardRef<View, AlertProps>(
 
 Alert.displayName = 'Alert';
 
-const stylesheet = createStyleSheet(({ colors, space, borderWidths, radii }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     alignItems: 'center',
-    padding: space[3],
+    padding: theme.space[3],
     flexDirection: 'row',
-    borderRadius: radii.lg,
-    gap: space[2],
-    borderWidth: borderWidths[1],
+    borderRadius: theme.radii.lg,
+    gap: theme.space[2],
+    borderWidth: theme.borderWidths[1],
     variants: {
       colorScheme: {
         cyan: {
-          borderColor: colors.cyan500,
-          backgroundColor: colors.cyan50,
+          borderColor: theme.colors.cyan500,
+          backgroundColor: theme.colors.cyan50,
         },
         green: {
-          borderColor: colors.green500,
-          backgroundColor: colors.green50,
+          borderColor: theme.colors.green500,
+          backgroundColor: theme.colors.green50,
         },
         gold: {
-          borderColor: colors.gold500,
-          backgroundColor: colors.gold50,
+          borderColor: theme.colors.gold500,
+          backgroundColor: theme.colors.gold50,
         },
         red: {
-          borderColor: colors.red500,
-          backgroundColor: colors.red50,
+          borderColor: theme.colors.red500,
+          backgroundColor: theme.colors.red50,
         },
       },
     },
   },
   content: {
     flex: 1,
-    gap: space[1],
+    gap: theme.space[1],
   },
 }));
 

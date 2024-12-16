@@ -1,11 +1,9 @@
 import React, { forwardRef } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { View } from 'react-native';
 import CheckboxGroupProps from './CheckboxGroup.props';
 
 const CheckboxGroup = forwardRef<View, CheckboxGroupProps>(({ children, style, ...props }, ref) => {
-  const { styles } = useStyles(stylesheet);
-
   return (
     <View ref={ref} {...props} style={[styles.container, style]}>
       {children}
@@ -15,7 +13,7 @@ const CheckboxGroup = forwardRef<View, CheckboxGroupProps>(({ children, style, .
 
 CheckboxGroup.displayName = 'CheckboxGroup';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(({ space }) => ({
   container: {
     gap: space[2],
   },

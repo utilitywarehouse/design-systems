@@ -1,12 +1,12 @@
 import React, { forwardRef } from 'react';
 import { Text } from '../Text';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { Text as RNText } from 'react-native';
 import LabelProps from './Label.props';
 
 const Label = forwardRef<RNText, LabelProps>(
   ({ children, nested, style, disabled, ...props }, ref) => {
-    const { styles } = useStyles(stylesheet, { nested, disabled });
+    styles.useVariants({ nested, disabled });
     return (
       <Text ref={ref} style={[styles.text, style]} {...props}>
         {children}
@@ -17,7 +17,7 @@ const Label = forwardRef<RNText, LabelProps>(
 
 Label.displayName = 'Label';
 
-const stylesheet = createStyleSheet(({ colors, fontWeights, lineHeights }) => ({
+const styles = StyleSheet.create(({ colors, fontWeights, lineHeights }) => ({
   text: {
     fontWeight: fontWeights.semibold,
     lineHeight: lineHeights['lg'],

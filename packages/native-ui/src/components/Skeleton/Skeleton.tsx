@@ -11,9 +11,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import type SkeletonProps from './Skeleton.props';
 import { AnimatableNumericValue, type DimensionValue, View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
+import { useTheme } from '../../hooks';
 
 const AnimatedView = Animated.createAnimatedComponent(View);
 
@@ -21,10 +22,7 @@ const Skeleton = forwardRef<View, SkeletonProps>(
   ({ width, height, backgroundColor, borderRadius, style, ...props }, ref) => {
     const opacity = useSharedValue(1);
 
-    const {
-      styles,
-      theme: { colors, colorMode, radii },
-    } = useStyles(stylesheet);
+    const { colors, colorMode, radii } = useTheme();
     const backgroundColorValue: ColorValue = useMemo(
       () => getStyleValue(backgroundColor, colors),
       [backgroundColor, colorMode]
@@ -69,7 +67,7 @@ const Skeleton = forwardRef<View, SkeletonProps>(
 
 Skeleton.displayName = 'Skeleton';
 
-const stylesheet = createStyleSheet(({ colorMode, colors, radii }) => ({
+const styles = StyleSheet.create(({ colorMode, colors, radii }) => ({
   skeleton: {
     backgroundColor: colorMode === 'light' ? colors.grey75 : colors.grey300,
     borderRadius: radii.sm,

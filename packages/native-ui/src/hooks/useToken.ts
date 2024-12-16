@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { UnistylesTheme, useStyles } from 'react-native-unistyles';
+import { UnistylesThemes } from 'react-native-unistyles';
+import useTheme from './useTheme';
 
-type UnistylesTokens<T> = T extends keyof UnistylesTheme ? keyof UnistylesTheme[T] : string;
+type UnistylesTokens<T> = T extends keyof UnistylesThemes ? keyof UnistylesThemes[T] : string;
 
 export type GenericKey = string | number | symbol;
 
@@ -30,7 +31,7 @@ export interface Tokens {
  * @returns
  */
 const useToken = <T extends keyof Tokens>(tokenScale: T, token: UnistylesTokens<T>) => {
-  const { theme } = useStyles();
+  const theme = useTheme();
 
   // @ts-expect-error - This is a valid check
   return theme?.[tokenScale]?.[token] ?? token;

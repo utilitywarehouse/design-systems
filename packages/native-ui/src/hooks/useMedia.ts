@@ -1,7 +1,7 @@
-import { useStyles, UnistylesRuntime } from 'react-native-unistyles';
+import { UnistylesRuntime } from 'react-native-unistyles';
 
 const useMedia = (): Partial<Record<keyof typeof breakpoints, boolean>> => {
-  const { breakpoint } = useStyles();
+  const breakpoint = UnistylesRuntime.breakpoint ?? 'xs';
   const breakpoints = UnistylesRuntime.breakpoints;
 
   type BreakPointKeys = keyof typeof breakpoints;

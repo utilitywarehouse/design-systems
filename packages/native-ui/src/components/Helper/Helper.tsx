@@ -1,6 +1,6 @@
 import React, { forwardRef, useMemo } from 'react';
 import { Text } from '../Text';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { View } from 'react-native';
 import { Icon } from '../Icon';
 import {
@@ -12,7 +12,7 @@ import { HelperContext } from './HelperContext';
 
 const Helper = forwardRef<View, HelperProps>(
   ({ children, validationStatus, showIcon, style, disabled, icon, text, ...props }, ref) => {
-    const { styles } = useStyles(stylesheet, { validationStatus, disabled });
+    styles.useVariants({ validationStatus, disabled });
     let HelperIcon = icon;
     if (validationStatus === 'valid' && !icon) {
       HelperIcon = TickMediumContainedIcon;
@@ -44,7 +44,7 @@ const Helper = forwardRef<View, HelperProps>(
 
 Helper.displayName = 'Helper';
 
-const stylesheet = createStyleSheet(({ colors, space, lineHeights }) => ({
+const styles = StyleSheet.create(({ colors, space, lineHeights }) => ({
   container: {
     flexDirection: 'row',
     gap: space['1'],

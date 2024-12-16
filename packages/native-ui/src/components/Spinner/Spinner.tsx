@@ -12,8 +12,9 @@ import { Circle, G, Svg } from 'react-native-svg';
 import type SpinnerProps from './Spinner.props';
 import { getStrokeWidth, getWidth } from './Spinner.utils';
 import { createSpinner } from '@gluestack-ui/spinner';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { View } from 'react-native';
+import { useTheme } from '../../hooks';
 
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
@@ -27,10 +28,8 @@ const SpinnerRoot: React.FC<SpinnerProps> = forwardRef<View, SpinnerProps>(
     const HALF_CIRCLE = R + STROKE_WIDTH;
     const DIAMETER = 2 * HALF_CIRCLE;
 
-    const {
-      styles,
-      theme: { colors },
-    } = useStyles(stylesheet, {
+    const { colors } = useTheme();
+    styles.useVariants({
       size,
     });
 
@@ -113,7 +112,7 @@ const SpinnerRoot: React.FC<SpinnerProps> = forwardRef<View, SpinnerProps>(
 
 SpinnerRoot.displayName = 'Spinner';
 
-const stylesheet = createStyleSheet(() => ({
+const styles = StyleSheet.create(() => ({
   container: {
     display: 'flex',
     justifyContent: 'center',

@@ -4,9 +4,10 @@
 import React, { forwardRef, useMemo } from 'react';
 import { Text, TextStyle } from 'react-native';
 import type HeadingProps from './Heading.props';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
+import { useTheme } from '../../hooks';
 
 const Heading = forwardRef<Text, HeadingProps>(
   (
@@ -24,14 +25,12 @@ const Heading = forwardRef<Text, HeadingProps>(
     },
     ref
   ) => {
-    const {
-      styles,
-      theme: { colors, colorMode },
-    } = useStyles(stylesheet, {
+    styles.useVariants({
       size,
       underline,
       strikeThrough,
     });
+    const { colors, colorMode } = useTheme();
     const colorValue: ColorValue = useMemo(() => getStyleValue(color, colors), [color, colorMode]);
     return (
       <Text
@@ -57,7 +56,7 @@ const Heading = forwardRef<Text, HeadingProps>(
 
 Heading.displayName = 'Heading';
 
-const stylesheet = createStyleSheet(({ colors, fontSizes, fontWeights, fonts, lineHeights }) => ({
+const styles = StyleSheet.create(({ colors, fontSizes, fontWeights, fonts, lineHeights }) => ({
   text: {
     color: colors.grey1000,
     fontWeight: fontWeights.bold,

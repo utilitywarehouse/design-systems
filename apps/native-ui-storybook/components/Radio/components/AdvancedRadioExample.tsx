@@ -1,13 +1,12 @@
 import {
   Badge,
-  createStyleSheet,
+  StyleSheet,
   Heading,
   Radio,
   RadioGroup,
   RadioIcon,
   RadioIndicator,
   Text,
-  useStyles,
   type RadioProps as NativeUIRadioProps,
 } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
@@ -18,16 +17,16 @@ interface RadioProps {
   currentValue: string;
 }
 
-const stylesheet = createStyleSheet(({ colorMode, colors, radii, borderWidths, space }) => ({
+const styles = StyleSheet.create(theme => ({
   radio: {
-    borderWidth: borderWidths[2],
-    borderColor: colorMode === 'light' ? colors.grey500 : colors.grey700,
-    borderRadius: radii.xl,
-    padding: space[4],
+    borderWidth: theme.borderWidths[2],
+    borderColor: theme.colorMode === 'light' ? theme.colors.grey500 : theme.colors.grey700,
+    borderRadius: theme.radii.xl,
+    padding: theme.space[4],
     variants: {
       checked: {
         true: {
-          borderColor: colorMode === 'light' ? colors.green500 : colors.green700,
+          borderColor: theme.colorMode === 'light' ? theme.colors.green500 : theme.colors.green700,
         },
       },
     },
@@ -36,20 +35,21 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, borderWidths, s
     variants: {
       checked: {
         true: {
-          backgroundColor: colorMode === 'light' ? colors.green500 : colors.green700,
-          borderColor: colorMode === 'light' ? colors.green500 : colors.green700,
+          backgroundColor:
+            theme.colorMode === 'light' ? theme.colors.green500 : theme.colors.green700,
+          borderColor: theme.colorMode === 'light' ? theme.colors.green500 : theme.colors.green700,
         },
       },
     },
   },
   icon: {
-    color: colorMode === 'light' ? colors.brandWhite : colors.grey50,
+    color: theme.colorMode === 'light' ? theme.colors.brandWhite : theme.colors.grey50,
   },
   heading: {
-    marginBottom: space[2],
+    marginBottom: theme.space[2],
   },
   badge: {
-    marginRight: space[2],
+    marginRight: theme.space[2],
     alignSelf: 'flex-end',
   },
 }));
@@ -59,7 +59,7 @@ const CustomRadio: React.FC<RadioProps & Omit<NativeUIRadioProps, 'label'>> = ({
   currentValue,
   ...props
 }) => {
-  const { styles } = useStyles(stylesheet, { checked: currentValue === props.value });
+  styles.useVariants({ checked: currentValue === props.value });
   return (
     <Radio style={styles.radio} {...props}>
       <Box flexDirection="row" flex={1}>
@@ -90,8 +90,6 @@ const AdvancedRadioExample: React.FC = () => {
   const [value, setValue] = React.useState('Option 1');
 
   const handleChange = (val: string) => setValue(val);
-
-  const { styles } = useStyles(stylesheet);
 
   return (
     <RadioGroup onChange={handleChange} value={value}>

@@ -3,7 +3,7 @@ import type ListItemProps from './ListItem.props';
 import { ChevronRight01MediumIcon } from '@utilitywarehouse/react-native-icons';
 import { Skeleton } from '../../Skeleton';
 import { useListContext } from '../List.context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { Pressable, ViewStyle } from 'react-native';
 import { IListItemContext, ListItemContext } from './ListItem.context';
 import type { PressableRef } from '../../../types';
@@ -44,8 +44,6 @@ const ListItemRoot = forwardRef<
     const showDivider = listContext?.divider ?? divider;
     const isDisabled = disabled || listContext?.disabled || false;
     const dividerColorValue = dividerColor ?? listContext?.dividerColor;
-
-    const { styles } = useStyles(stylesheet);
 
     const value: IListItemContext = useMemo(() => {
       return {
@@ -127,7 +125,7 @@ const ListItemRoot = forwardRef<
 
 ListItemRoot.displayName = 'ListItemRoot';
 
-const stylesheet = createStyleSheet(({ space, colorMode, colors }) => ({
+const styles = StyleSheet.create(({ space, colorMode, colors }) => ({
   container: {
     padding: space[4],
     flexDirection: 'row',

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import type BadgeProps from './Badge.props';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { View } from 'react-native';
 import { BadgeContext } from './Badge.context';
 import BadgeText from './BadgeText';
@@ -20,7 +20,7 @@ const Badge = forwardRef<View, BadgeProps>(({ children, ...props }, ref) => {
     [colorScheme, size, borderless, strong]
   );
 
-  const { styles } = useStyles(stylesheet, { colorScheme, strong, size, borderless });
+  styles.useVariants({ colorScheme, strong, size, borderless });
 
   const childIsText = typeof children === 'string' || typeof children === 'number';
 
@@ -39,31 +39,31 @@ const Badge = forwardRef<View, BadgeProps>(({ children, ...props }, ref) => {
 
 Badge.displayName = 'Badge';
 
-const stylesheet = createStyleSheet(({ colorMode, colors, space, radii }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: space[2],
-    borderRadius: radii.sm,
-    paddingVertical: space[1],
+    paddingHorizontal: theme.space[2],
+    borderRadius: theme.radii.sm,
+    paddingVertical: theme.space[1],
     alignSelf: 'flex-start',
-    gap: space[1],
+    gap: theme.space[1],
     variants: {
       colorScheme: {
         cyan: {
-          backgroundColor: colorMode === 'dark' ? colors.cyan700 : colors.cyan200,
+          backgroundColor: theme.isDark ? theme.colors.cyan700 : theme.colors.cyan200,
         },
         red: {
-          backgroundColor: colorMode === 'dark' ? colors.red700 : colors.red200,
+          backgroundColor: theme.isDark ? theme.colors.red700 : theme.colors.red200,
         },
         green: {
-          backgroundColor: colorMode === 'dark' ? colors.green700 : colors.green200,
+          backgroundColor: theme.isDark ? theme.colors.green700 : theme.colors.green200,
         },
         gold: {
-          backgroundColor: colorMode === 'dark' ? colors.gold700 : colors.gold200,
+          backgroundColor: theme.isDark ? theme.colors.gold700 : theme.colors.gold200,
         },
         grey: {
-          backgroundColor: colorMode === 'dark' ? colors.grey700 : colors.grey200,
+          backgroundColor: theme.isDark ? theme.colors.grey700 : theme.colors.grey200,
         },
       },
       borderless: {
@@ -79,10 +79,10 @@ const stylesheet = createStyleSheet(({ colorMode, colors, space, radii }) => ({
       },
       size: {
         small: {
-          paddingVertical: space[0.5],
+          paddingVertical: theme.space[0.5],
         },
         large: {
-          paddingVertical: space[1],
+          paddingVertical: theme.space[1],
         },
       },
     },
@@ -90,27 +90,27 @@ const stylesheet = createStyleSheet(({ colorMode, colors, space, radii }) => ({
   extraStyles: (colorScheme: BadgeProps['colorScheme'], strong: BadgeProps['strong']) => {
     if (colorScheme === 'cyan' && strong) {
       return {
-        backgroundColor: colorMode === 'dark' ? colors.cyan700 : colors.cyan600,
+        backgroundColor: theme.isDark ? theme.colors.cyan700 : theme.colors.cyan600,
       };
     }
     if (colorScheme === 'red' && strong) {
       return {
-        backgroundColor: colorMode === 'dark' ? colors.red700 : colors.red600,
+        backgroundColor: theme.isDark ? theme.colors.red700 : theme.colors.red600,
       };
     }
     if (colorScheme === 'green' && strong) {
       return {
-        backgroundColor: colorMode === 'dark' ? colors.green700 : colors.green600,
+        backgroundColor: theme.isDark ? theme.colors.green700 : theme.colors.green600,
       };
     }
     if (colorScheme === 'gold' && strong) {
       return {
-        backgroundColor: colorMode === 'dark' ? colors.gold700 : colors.gold300,
+        backgroundColor: theme.isDark ? theme.colors.gold700 : theme.colors.gold300,
       };
     }
     if (colorScheme === 'grey' && strong) {
       return {
-        backgroundColor: colorMode === 'dark' ? colors.grey700 : colors.grey600,
+        backgroundColor: theme.isDark ? theme.colors.grey700 : theme.colors.grey600,
       };
     }
     return {};

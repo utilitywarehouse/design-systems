@@ -1,14 +1,12 @@
 import React from 'react';
 import { ViewProps } from 'react-native';
-import { useStyles, createStyleSheet } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { useActionsheetContext } from './Actionsheet.context';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
+import { useTheme } from '../../hooks';
 
 const ActionsheetDragIndicator: React.FC<ViewProps> = ({ style, ...props }) => {
-  const {
-    styles,
-    theme: { colors, space },
-  } = useStyles(stylesheet);
+  const { colors, space } = useTheme();
   const { showIndicator } = useActionsheetContext();
   const { dragging } = useActionsheetContext();
 
@@ -23,7 +21,7 @@ const ActionsheetDragIndicator: React.FC<ViewProps> = ({ style, ...props }) => {
   return <Animated.View style={[styles.indicator, animatedStyle, style]} {...props} />;
 };
 
-const stylesheet = createStyleSheet(({ space, colors, radii }) => ({
+const styles = StyleSheet.create(({ space, colors, radii }) => ({
   indicator: {
     width: space['16'],
     height: space['1'],

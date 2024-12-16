@@ -1,15 +1,14 @@
 import React, { ElementRef, forwardRef } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { TextInputProps, TextInput, Platform } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
+import { TextInputProps, TextInput } from 'react-native';
 import { useInputContext } from './Input.context';
+import { useTheme } from '../../hooks';
 
 const InputField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
   ({ style, ...props }, ref) => {
     const { disabled, focused = false } = useInputContext();
-    const {
-      styles,
-      theme: { colors },
-    } = useStyles(stylesheet, { focused, disabled });
+    styles.useVariants({ focused, disabled });
+    const { colors } = useTheme();
 
     return (
       <TextInput
@@ -27,10 +26,10 @@ const InputField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
 
 InputField.displayName = 'InputField';
 
-const stylesheet = createStyleSheet(({ radii, fontSizes, colors, fontWeights, fonts }) => ({
+const styles = StyleSheet.create(({ radii, fontSizes, colors, fontWeights, fonts }) => ({
   input: {
     flex: 1,
-    width: Platform.OS === 'web' ? '100%' : 'auto',
+    width: 'auto',
     borderTopLeftRadius: radii['2xl'],
     borderTopRightRadius: radii['2xl'],
     borderBottomLeftRadius: radii.none,
@@ -50,6 +49,9 @@ const stylesheet = createStyleSheet(({ radii, fontSizes, colors, fontWeights, fo
           color: colors.grey400,
         },
       },
+    },
+    _web: {
+      width: '100%',
     },
   },
 }));

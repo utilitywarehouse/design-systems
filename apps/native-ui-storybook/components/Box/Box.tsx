@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 import { StoryFn } from '@storybook/react';
-import { Text, useStyles } from '@utilitywarehouse/native-ui';
+import { Text, useTheme } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 import React from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
@@ -10,9 +10,7 @@ const BoxBasic: StoryFn<{
   w: ComponentProps<typeof Box>['w'];
   h: ComponentProps<typeof Box>['h'];
 }> = ({ bg = 'red500', w = '100', h = '100', ...props }) => {
-  const {
-    theme: { colors },
-  } = useStyles();
+  const { colors } = useTheme();
   return (
     <>
       <Box

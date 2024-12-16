@@ -9,7 +9,7 @@ import FormFieldLabelComponent from './FormFieldLabel';
 import { HelperIcon, HelperText } from '../Helper';
 import { View } from 'react-native';
 import FormFieldValid from './FormFieldValid';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
 export const FormFieldComponent = createFormControl({
   Root: FormFieldRoot,
@@ -54,7 +54,6 @@ const FormField: FC<FormFieldProps> = ({
     }),
     [validationStatus, disabled, readonly, showValidationIcon]
   );
-  const { styles } = useStyles(stylesheet);
 
   return (
     <FormFieldContext.Provider value={value}>
@@ -78,7 +77,7 @@ const FormField: FC<FormFieldProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(({ space }) => ({
   labelWrapper: {
     gap: space['1'],
   },

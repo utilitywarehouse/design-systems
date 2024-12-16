@@ -17,15 +17,12 @@ module.exports = function (api) {
               __dirname,
               '../../packages/native-ui/src/lab'
             ),
-            '@utilitywarehouse/native-ui/unstyled': path.join(
-              __dirname,
-              '../../packages/native-ui/src/components/unstyled'
-            ),
           },
         },
       ],
+      'react-native-unistyles/plugin',
       '@babel/plugin-proposal-export-namespace-from',
-      'react-native-reanimated/plugin',
+      ['react-native-reanimated/plugin'],
     ],
     presets: ['babel-preset-expo'],
   };

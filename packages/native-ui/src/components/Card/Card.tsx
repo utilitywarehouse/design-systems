@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { View, ViewStyle } from 'react-native';
-import { createStyleSheet, UnistylesValues, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import CardProps from './Card.props';
 
 const Card = forwardRef<View, CardProps>(
@@ -17,7 +17,7 @@ const Card = forwardRef<View, CardProps>(
     },
     ref
   ) => {
-    const { styles } = useStyles(stylesheet, {
+    styles.useVariants({
       variant,
       surface,
       nested,
@@ -38,7 +38,7 @@ const Card = forwardRef<View, CardProps>(
 
 Card.displayName = 'Card';
 
-const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
+const styles = StyleSheet.create(({ colorMode, colors, radii, space }) => ({
   card: {
     borderRadius: radii['xl'],
     overflow: 'hidden',
@@ -110,7 +110,7 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
     surface: CardProps['surface'],
     colorScheme: CardProps['colorScheme']
   ) => {
-    const styles: UnistylesValues = {};
+    const styles: { borderColor?: string; backgroundColor?: string } = {};
     if (surface === 'base') {
       if (variant === 'outline' && colorScheme === 'purple') {
         styles.borderColor = colorMode === 'light' ? colors.purple100 : colors.purple300;

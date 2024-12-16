@@ -1,11 +1,11 @@
 import React, { ComponentProps, forwardRef } from 'react';
 import { View } from 'react-native';
-import { createStyleSheet } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { Box } from '../../lab';
 
 interface CenterProps extends Omit<ComponentProps<typeof Box>, 'style'> {}
 
-const stylesheet = createStyleSheet({
+const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -13,7 +13,7 @@ const stylesheet = createStyleSheet({
 });
 
 const Center = forwardRef<View, CenterProps>(({ children, ...props }, ref) => (
-  <Box ref={ref} style={stylesheet.container} {...props}>
+  <Box ref={ref} style={styles.container} {...props}>
     {children}
   </Box>
 ));

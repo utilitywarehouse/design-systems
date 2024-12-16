@@ -2,15 +2,13 @@ import React, { forwardRef } from 'react';
 
 import { Text } from 'react-native';
 import type { TextProps } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { useBadgeContext } from './Badge.context';
 import type BadgeProps from './Badge.props';
 
 const BadgeText = forwardRef<Text, TextProps>(({ children, style, ...props }, ref) => {
   const { colorScheme, strong } = useBadgeContext();
-  const { styles } = useStyles(stylesheet, {
-    colorScheme,
-  });
+  styles.useVariants({ colorScheme });
   return (
     <Text
       ref={ref}
@@ -24,48 +22,46 @@ const BadgeText = forwardRef<Text, TextProps>(({ children, style, ...props }, re
 
 BadgeText.displayName = 'BadgeText';
 
-const stylesheet = createStyleSheet(
-  ({ colors, colorMode, fontSizes, fontWeights, fonts, lineHeights }) => ({
-    text: {
-      fontSize: fontSizes.sm,
-      fontWeight: fontWeights.normal,
-      lineHeight: lineHeights['2xs'],
-      fontFamily: fonts.body,
-      variants: {
-        colorScheme: {
-          cyan: {
-            color: colorMode === 'dark' ? colors.cyan50 : colors.cyan900,
-          },
-          red: {
-            color: colorMode === 'dark' ? colors.red50 : colors.red900,
-          },
-          green: {
-            color: colorMode === 'dark' ? colors.green50 : colors.green900,
-          },
-          gold: {
-            color: colorMode === 'dark' ? colors.gold50 : colors.gold900,
-          },
-          grey: {
-            color: colorMode === 'dark' ? colors.grey50 : colors.grey900,
-          },
+const styles = StyleSheet.create(theme => ({
+  text: {
+    fontSize: theme.fontSizes.sm,
+    fontWeight: theme.fontWeights.normal,
+    lineHeight: theme.lineHeights['2xs'],
+    fontFamily: theme.fonts.body,
+    variants: {
+      colorScheme: {
+        cyan: {
+          color: theme.isDark ? theme.colors.cyan50 : theme.colors.cyan900,
+        },
+        red: {
+          color: theme.isDark ? theme.colors.red50 : theme.colors.red900,
+        },
+        green: {
+          color: theme.isDark ? theme.colors.green50 : theme.colors.green900,
+        },
+        gold: {
+          color: theme.isDark ? theme.colors.gold50 : theme.colors.gold900,
+        },
+        grey: {
+          color: theme.isDark ? theme.colors.grey50 : theme.colors.grey900,
         },
       },
     },
-    extraStyles: (colorScheme: BadgeProps['colorScheme'], strong: BadgeProps['strong']) => {
-      if (colorScheme === 'gold' && strong) {
-        return {
-          color: colorMode === 'dark' ? colors.gold50 : colors.gold900,
-        };
-      }
-      if (colorScheme && strong) {
-        return {
-          color: colors[`${colorScheme}50`],
-        };
-      }
+  },
+  extraStyles: (colorScheme: BadgeProps['colorScheme'], strong: BadgeProps['strong']) => {
+    if (colorScheme === 'gold' && strong) {
+      return {
+        color: theme.isDark ? theme.colors.gold50 : theme.colors.gold900,
+      };
+    }
+    if (colorScheme && strong) {
+      return {
+        color: theme.colors[`${colorScheme}50`],
+      };
+    }
 
-      return {};
-    },
-  })
-);
+    return {};
+  },
+}));
 
 export default BadgeText;

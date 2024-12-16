@@ -1,5 +1,5 @@
 import { colorsDark, colors, colorsCommon } from '@utilitywarehouse/colour-system';
-import { Platform } from 'react-native';
+import { DimensionValue, Platform, TextStyle } from 'react-native';
 import { breakpoints } from './breakpoints';
 import { components } from '@utilitywarehouse/design-tokens';
 
@@ -52,7 +52,7 @@ const shared = {
     '3/6': '50%',
     '4/6': '66.666%',
     '5/6': '83.333%',
-    full: '100%',
+    full: '100%' as DimensionValue,
   },
   borderWidths: {
     '0': 0,
@@ -97,15 +97,15 @@ const shared = {
     '7xl': 90,
   },
   fontWeights: {
-    thin: '100',
-    extralight: '200',
-    light: '300',
-    normal: '400',
-    medium: '500',
-    semibold: '600',
-    bold: '700',
-    extrabold: '800',
-    black: '900',
+    thin: '100' as TextStyle['fontWeight'],
+    extralight: '200' as TextStyle['fontWeight'],
+    light: '300' as TextStyle['fontWeight'],
+    normal: '400' as TextStyle['fontWeight'],
+    medium: '500' as TextStyle['fontWeight'],
+    semibold: '600' as TextStyle['fontWeight'],
+    bold: '700' as TextStyle['fontWeight'],
+    extrabold: '800' as TextStyle['fontWeight'],
+    black: '900' as TextStyle['fontWeight'],
   },
   fonts: {
     heading: 'Aeonik',
@@ -262,7 +262,7 @@ const shared = {
       },
     },
   },
-} as const;
+};
 
 export const lightTheme = {
   colorMode: 'light',
@@ -278,7 +278,7 @@ export const lightTheme = {
     ...components.light,
   },
   ...shared,
-} as const;
+};
 
 export const darkTheme = {
   colorMode: 'dark',
@@ -294,4 +294,9 @@ export const darkTheme = {
     ...components.dark,
   },
   ...shared,
-} as const;
+};
+
+export const appThemes = {
+  light: lightTheme,
+  dark: darkTheme,
+};

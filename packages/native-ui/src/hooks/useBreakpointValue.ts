@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { UnistylesBreakpoints, useStyles } from 'react-native-unistyles';
+import { UnistylesBreakpoints, UnistylesRuntime } from 'react-native-unistyles';
 
 interface InputValueWithIndex<T> {
   name: string;
@@ -14,11 +14,8 @@ type PartialRecord<K extends keyof any, T> = {
 type BreakpointValues<T> = { default?: T } & PartialRecord<keyof UnistylesBreakpoints, T>;
 
 function useBreakpointValue<T>(values: BreakpointValues<T>): T | undefined {
-  const {
-    theme: { breakpoints },
-    breakpoint: currentBreakpointName,
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-  } = useStyles();
+  const currentBreakpointName = UnistylesRuntime.breakpoint ?? 'base';
+  const breakpoints = UnistylesRuntime.breakpoints;
 
   // Convert breakpoints to an array sorted by their pixel values
   const sortedBreakpoints = Object.entries(breakpoints).sort((a, b) => a[1] - b[1]);

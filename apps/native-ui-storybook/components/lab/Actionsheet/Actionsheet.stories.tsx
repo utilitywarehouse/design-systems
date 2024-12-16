@@ -1,13 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import {
-  Button,
-  ButtonText,
-  createStyleSheet,
-  Heading,
-  Text,
-  useStyles,
-  View,
-} from '@utilitywarehouse/native-ui';
+import { Button, ButtonText, Heading, StyleSheet, Text, View } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 import { Actionsheet, ActionsheetContent } from '@utilitywarehouse/native-ui/lab';
 import { TextInput } from 'react-native';
@@ -96,21 +88,20 @@ const ActionsheetMeta: Meta<typeof ActionsheetBasic> = {
   args: {},
 };
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   content: {
-    paddingBottom: space['0'],
+    paddingBottom: theme.space['0'],
   },
   scrollView: {
     maxHeight: 300 - 52,
   },
   scrollContainer: {
-    paddingBottom: space['4'],
+    paddingBottom: theme.space['4'],
   },
 }));
 const WithScrollView: StoryFn = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
-  const { styles } = useStyles(stylesheet);
   return (
     <Box alignItems="center" justifyContent="center">
       <Button onPress={handleClose}>

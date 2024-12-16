@@ -4,9 +4,10 @@
 import React, { forwardRef, useMemo } from 'react';
 import { Text as RNText } from 'react-native';
 import type TextProps from './Text.props';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
+import { useTheme } from '../../hooks';
 
 const Text = forwardRef<RNText, TextProps>(
   (
@@ -31,10 +32,8 @@ const Text = forwardRef<RNText, TextProps>(
     },
     ref
   ) => {
-    const {
-      styles,
-      theme: { colors, colorMode },
-    } = useStyles(stylesheet, {
+    const { colors, colorMode } = useTheme();
+    styles.useVariants({
       size,
       bold,
       underline,
@@ -80,7 +79,7 @@ const Text = forwardRef<RNText, TextProps>(
 
 Text.displayName = 'Text';
 
-const stylesheet = createStyleSheet(
+const styles = StyleSheet.create(
   ({ colors, fontSizes, fontWeights, fonts, letterSpacings, lineHeights }) => ({
     text: {
       color: colors.grey1000,

@@ -2,10 +2,9 @@ import React, { PropsWithChildren } from 'react';
 import { ScrollView, View } from 'react-native';
 import {
   Button,
-  createStyleSheet,
+  StyleSheet,
   HStack,
   Text,
-  useStyles,
   Heading,
   Pressable,
   Alert,
@@ -48,7 +47,6 @@ const ComponentWrapper: React.FC<PropsWithChildren<{ name: string; link: string 
   link,
   children,
 }) => {
-  const { styles } = useStyles(stylesheet);
   const navigate = () => {
     if (window.top) {
       window.top.location.href = link;
@@ -67,7 +65,6 @@ const ComponentWrapper: React.FC<PropsWithChildren<{ name: string; link: string 
 };
 
 const AllComponents: React.FC = () => {
-  const { styles } = useStyles(stylesheet);
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const toggleActionsheet = () => setShowActionsheet(!showActionsheet);
   const [switchEnabled, setSwitchEnabled] = React.useState(false);
@@ -285,14 +282,14 @@ const AllComponents: React.FC = () => {
   );
 };
 
-const stylesheet = createStyleSheet(({ radii, colorMode, colors, space, borderWidths }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
-    gap: space['2'],
+    gap: theme.space['2'],
   },
   component: {
-    borderColor: colorMode === 'light' ? colors.grey100 : colors.grey400,
-    borderWidth: borderWidths['1'],
-    borderRadius: radii['lg'],
+    borderColor: theme.colorMode === 'light' ? theme.colors.grey100 : theme.colors.grey400,
+    borderWidth: theme.borderWidths['1'],
+    borderRadius: theme.radii['lg'],
     overflow: 'hidden',
     glexGrow: 1,
     height: 200,
@@ -302,16 +299,16 @@ const stylesheet = createStyleSheet(({ radii, colorMode, colors, space, borderWi
     },
   },
   componentWrap: {
-    padding: space['4'],
+    padding: theme.space['4'],
     flexGrow: 1,
   },
   text: {},
   textWrap: {
-    borderTopColor: colorMode === 'light' ? colors.grey100 : colors.grey400,
-    borderTopWidth: borderWidths['1'],
-    paddingHorizontal: space['4'],
-    paddingVertical: space['2'],
-    backgroundColor: colors.grey25,
+    borderTopColor: theme.colorMode === 'light' ? theme.colors.grey100 : theme.colors.grey400,
+    borderTopWidth: theme.borderWidths['1'],
+    paddingHorizontal: theme.space['4'],
+    paddingVertical: theme.space['2'],
+    backgroundColor: theme.colors.grey25,
   },
 }));
 

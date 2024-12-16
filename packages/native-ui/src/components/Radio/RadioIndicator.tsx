@@ -2,14 +2,14 @@ import React, { forwardRef } from 'react';
 import AnimatedOutline from '../AnimatedOutline';
 import { useListContext } from '../List';
 import { View, ViewProps } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { useRadioContext } from './Radio.context';
 
 const RadioIndicator = forwardRef<View, ViewProps>((props, ref) => {
   const [show, setShow] = React.useState(false);
   const isInList = Boolean(useListContext());
   const { disabled, checked } = useRadioContext();
-  const { styles } = useStyles(stylesheet, {
+  styles.useVariants({
     checked,
     disabled,
   });
@@ -31,7 +31,7 @@ const RadioIndicator = forwardRef<View, ViewProps>((props, ref) => {
   );
 });
 
-const stylesheet = createStyleSheet(({ colors, colorMode, radii, borderWidths, space }) => ({
+const styles = StyleSheet.create(({ colors, colorMode, radii, borderWidths, space }) => ({
   outline: {
     alignSelf: 'flex-start',
   },

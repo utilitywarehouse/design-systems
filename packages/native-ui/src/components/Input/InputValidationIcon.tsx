@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { ComponentType, forwardRef } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { useInputContext } from './Input.context';
 import { Icon, IconProps } from '../Icon';
 import type { SvgRef } from '../../types';
@@ -13,7 +13,7 @@ import {
 const InputIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
   ({ as, ...props }, ref) => {
     const { disabled, validationStatus } = useInputContext();
-    const { styles } = useStyles(stylesheet, { disabled, validationStatus });
+    styles.useVariants({ disabled, validationStatus });
     const ValidationIcon =
       validationStatus === 'invalid' ? WarningMediumContainedIcon : TickMediumContainedIcon;
     return (
@@ -36,7 +36,7 @@ const InputIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
 
 InputIcon.displayName = 'InputIcon';
 
-const stylesheet = createStyleSheet(({ colors, space, colorMode }) => ({
+const styles = StyleSheet.create(({ colors, space, colorMode }) => ({
   icon: {
     color: colors.grey700,
     width: 24,

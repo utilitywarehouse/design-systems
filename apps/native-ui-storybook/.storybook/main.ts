@@ -17,10 +17,11 @@ module.exports = {
     {
       name: '@storybook/addon-react-native-web',
       options: {
-        modulesToTranspile: ['react-native-reanimated'],
+        modulesToTranspile: ['react-native-reanimated', 'react-native-unistyles'],
         babelPlugins: [
           '@babel/plugin-proposal-export-namespace-from',
           'react-native-reanimated/plugin',
+          ['react-native-unistyles/plugin'],
         ],
       },
     },

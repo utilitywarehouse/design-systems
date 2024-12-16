@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { type StyleProp, type ViewStyle, type ViewProps, View } from 'react-native';
-import { createStyleSheet, type UnistylesValues, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
 const ButtonGroupRoot = forwardRef<
   View,
@@ -22,7 +22,7 @@ const ButtonGroupRoot = forwardRef<
       if (flexDirection === 'row-reverse') direction = 'row';
       if (flexDirection === 'column-reverse') direction = 'column';
     }
-    const { styles } = useStyles(stylesheet, {
+    styles.useVariants({
       attached,
       space,
     });
@@ -40,33 +40,33 @@ const ButtonGroupRoot = forwardRef<
 
 ButtonGroupRoot.displayName = 'ButtonGroupRoot';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   text: {
     variants: {
       space: {
         xs: {
-          gap: space['1'],
+          gap: theme.space['1'],
         },
         sm: {
-          gap: space['2'],
+          gap: theme.space['2'],
         },
         md: {
-          gap: space['3'],
+          gap: theme.space['3'],
         },
         lg: {
-          gap: space['4'],
+          gap: theme.space['4'],
         },
         xl: {
-          gap: space['5'],
+          gap: theme.space['5'],
         },
         '2xl': {
-          gap: space['6'],
+          gap: theme.space['6'],
         },
         '3xl': {
-          gap: space['7'],
+          gap: theme.space['7'],
         },
         '4xl': {
-          gap: space['8'],
+          gap: theme.space['8'],
         },
       },
       attached: {
@@ -76,13 +76,13 @@ const stylesheet = createStyleSheet(({ space }) => ({
       },
     },
   },
-  extraStyles: (flexDirection: ViewStyle['flexDirection']) => {
-    const extraStyles: UnistylesValues = {
-      flexDirection,
-    };
+  // extraStyles: (flexDirection: ViewStyle['flexDirection']) => {
+  //   const extraStyles = {
+  //     flexDirection,
+  //   };
 
-    return extraStyles;
-  },
+  //   return extraStyles;
+  // },
 }));
 
 export default ButtonGroupRoot;

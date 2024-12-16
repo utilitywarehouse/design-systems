@@ -3,15 +3,13 @@
 import React, { forwardRef, useMemo } from 'react';
 import { Spinner } from '../Spinner';
 import type { SpinnerProps } from '../Spinner';
-import { useStyles } from 'react-native-unistyles';
 import { useIconButtonContext } from './IconButton.context';
 import { View } from 'react-native';
+import { useTheme } from '../../hooks';
 
 const IconButtonSpinner = forwardRef<View, SpinnerProps>(({ color = '', ...props }, ref) => {
   const { colorScheme, variant, disabled, inverted } = useIconButtonContext();
-  const {
-    theme: { colors, colorMode },
-  } = useStyles();
+  const { colors, colorMode } = useTheme();
 
   const colorProp = useMemo(() => {
     let colorProp = '';

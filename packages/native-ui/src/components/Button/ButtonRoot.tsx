@@ -1,8 +1,8 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
 import React, { forwardRef, PropsWithChildren, useMemo } from 'react';
 import type { BaseButtonProps, ButtonProps } from './Button.props';
-import { Pressable, ViewStyle } from 'react-native';
-import { createStyleSheet, UnistylesValues, useStyles } from 'react-native-unistyles';
+import { DimensionValue, Pressable, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { ButtonContext } from './Button.context';
 import { PressableRef } from '../../types';
 
@@ -23,7 +23,7 @@ const ButtonRoot = forwardRef<
     ref
   ) => {
     const { active, disabled } = states || {};
-    const { styles } = useStyles(stylesheet, { variant, size });
+    styles.useVariants({ variant, size });
     const value = useMemo(
       () => ({ colorScheme, variant, size, inverted, disabled, active }),
       [colorScheme, variant, size, inverted, disabled, active]
@@ -48,14 +48,14 @@ const ButtonRoot = forwardRef<
 
 ButtonRoot.displayName = 'ButtonRoot';
 
-const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
-    borderRadius: radii.full,
+    borderRadius: theme.radii.full,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: space[2],
-    paddingHorizontal: space[6],
+    gap: theme.space[2],
+    paddingHorizontal: theme.space[6],
     variants: {
       variant: {
         solid: {},
@@ -70,15 +70,15 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
       },
       size: {
         small: {
-          paddingVertical: space[2],
+          paddingVertical: theme.space[2],
           minHeight: 32,
         },
         medium: {
-          paddingVertical: space[4],
+          paddingVertical: theme.space[4],
           minHeight: 48,
         },
         large: {
-          paddingVertical: space[5],
+          paddingVertical: theme.space[5],
           minHeight: 56,
         },
       },
@@ -92,66 +92,73 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
     disabled: BaseButtonProps['disabled'],
     active?: boolean
   ) => {
-    const extraStyles: UnistylesValues = {};
-    const light = colorMode === 'light';
+    const extraStyles: {
+      borderColor?: string;
+      backgroundColor?: string;
+      paddingVertical?: DimensionValue;
+    } = {};
+    const light = theme.isLight;
 
     if (!colorScheme) return extraStyles;
     const baseColor = light
-      ? colors[`${colorScheme}${colorScheme === 'cyan' ? '400' : '500'}`]
-      : colors[`${colorScheme}700`];
+      ? theme.colors[`${colorScheme}${colorScheme === 'cyan' ? '400' : '500'}`]
+      : theme.colors[`${colorScheme}700`];
     if (variant === 'solid') {
       extraStyles.backgroundColor = baseColor;
       if (active) {
         extraStyles.backgroundColor = light
-          ? colors[`${colorScheme}${colorScheme === 'cyan' ? '500' : '600'}`]
-          : colors[`${colorScheme}800`];
+          ? theme.colors[`${colorScheme}${colorScheme === 'cyan' ? '500' : '600'}`]
+          : theme.colors[`${colorScheme}800`];
       }
       if (disabled) {
-        extraStyles.backgroundColor = light ? colors[`${colorScheme}100`] : colors.grey175;
+        extraStyles.backgroundColor = light
+          ? theme.colors[`${colorScheme}100`]
+          : theme.colors.grey175;
       }
       if (disabled && inverted && light) {
-        extraStyles.backgroundColor = colors[`${colorScheme}300`];
+        extraStyles.backgroundColor = theme.colors[`${colorScheme}300`];
       }
     }
     if (variant === 'outline') {
       extraStyles.borderColor = baseColor;
       if (size === 'small') {
-        extraStyles.paddingVertical = space[1];
+        extraStyles.paddingVertical = theme.space[1];
       }
       if (size === 'medium') {
-        extraStyles.paddingVertical = space[3];
+        extraStyles.paddingVertical = theme.space[3];
       }
       if (size === 'large') {
-        extraStyles.paddingVertical = space[4];
+        extraStyles.paddingVertical = theme.space[4];
       }
       if (inverted && light) {
-        extraStyles.borderColor = colors[`${colorScheme}400`];
+        extraStyles.borderColor = theme.colors[`${colorScheme}400`];
       }
       if (active) {
         extraStyles.backgroundColor = light
-          ? colors[`${colorScheme}${colorScheme === 'grey' ? '100' : '50'}`]
+          ? theme.colors[`${colorScheme}${colorScheme === 'grey' ? '100' : '50'}`]
           : // @ts-expect-error - Cyan value exists
             colors[`${colorScheme}${colorScheme === 'cyan' ? '75' : '50'}`];
       }
       if (inverted && light && active) {
-        extraStyles.backgroundColor = colors[`${colorScheme}900`];
-        extraStyles.borderColor = colors[`${colorScheme}${colorScheme === 'cyan' ? '400' : '500'}`];
+        extraStyles.backgroundColor = theme.colors[`${colorScheme}900`];
+        extraStyles.borderColor =
+          theme.colors[`${colorScheme}${colorScheme === 'cyan' ? '400' : '500'}`];
       }
       if (disabled) {
-        extraStyles.borderColor = light ? colors[`${colorScheme}300`] : colors.grey175;
+        extraStyles.borderColor = light ? theme.colors[`${colorScheme}300`] : theme.colors.grey175;
         extraStyles.backgroundColor = 'transparent';
       }
       if (disabled && inverted && light) {
-        extraStyles.borderColor = colors[`${colorScheme}600`];
+        extraStyles.borderColor = theme.colors[`${colorScheme}600`];
       }
     }
 
     if (variant === 'ghost') {
       if (active) {
-        extraStyles.backgroundColor = light ? colors.grey100 : colors.grey175;
+        extraStyles.backgroundColor = light ? theme.colors.grey100 : theme.colors.grey175;
       }
       if (active && inverted && light) {
-        extraStyles.backgroundColor = colors.grey900;
+        extraStyles.backgroundColor = theme.colors.grey900;
       }
       if (disabled) {
         extraStyles.backgroundColor = 'transparent';

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { View, ViewProps, ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
 interface VStackProps extends ViewProps {
   space?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
@@ -8,7 +8,7 @@ interface VStackProps extends ViewProps {
   reversed?: boolean;
 }
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(({ space }) => ({
   container: {
     flexDirection: 'column',
     variants: {
@@ -54,7 +54,7 @@ const stylesheet = createStyleSheet(({ space }) => ({
 
 const VStack = forwardRef<View, VStackProps>(
   ({ children, style, space, reversed, wrap, ...props }, ref) => {
-    const { styles } = useStyles(stylesheet, {
+    styles.useVariants({
       space,
       reversed,
       wrap,

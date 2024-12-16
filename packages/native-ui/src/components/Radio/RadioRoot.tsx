@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Pressable, ViewStyle } from 'react-native';
 import type RadioProps from './Radio.props';
@@ -11,7 +11,6 @@ const RadioRoot = forwardRef<
   PressableRef,
   RadioProps & { states?: { disabled?: boolean; checked?: boolean } }
 >(({ children, style, states, ...props }, ref) => {
-  const { styles } = useStyles(stylesheet);
   const { disabled, checked } = states ?? {};
 
   const isDisabled = useRadioGroupContext()?.disabled ?? disabled;
@@ -35,7 +34,7 @@ const RadioRoot = forwardRef<
 
 RadioRoot.displayName = 'RadioRoot';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(({ space }) => ({
   container: {
     flexDirection: 'row',
     justifyContent: 'flex-start',

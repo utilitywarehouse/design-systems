@@ -5,27 +5,26 @@ import {
   ActionsheetDragIndicatorWrapper,
   Box,
 } from '@utilitywarehouse/native-ui/lab';
-import { Button, createStyleSheet, Text, useStyles } from '@utilitywarehouse/native-ui';
+import { Button, StyleSheet, Text } from '@utilitywarehouse/native-ui';
 import React, { useState } from 'react';
 
-const stylesheet = createStyleSheet(({ space, colors, radii }) => ({
+const styles = StyleSheet.create(theme => ({
   indicator: {
-    width: space['16'],
-    height: space['3'],
-    borderRadius: radii.full,
-    backgroundColor: colors.green600,
+    width: theme.space['16'],
+    height: theme.space['3'],
+    borderRadius: theme.radii.full,
+    backgroundColor: theme.colors.green600,
   },
   content: {
-    paddingHorizontal: space['6'],
+    paddingHorizontal: theme.space['6'],
     height: 260,
-    backgroundColor: colors.green100,
+    backgroundColor: theme.colors.green100,
   },
 }));
 
 const AdvancedActionsheet = () => {
   const [showActionsheet, setShowActionsheet] = useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
-  const { styles } = useStyles(stylesheet);
   return (
     <Box>
       <Button onPress={handleClose}>Open</Button>

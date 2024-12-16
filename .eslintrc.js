@@ -55,9 +55,10 @@ module.exports = {
       },
     },
     {
-      files: ['./packages/native-ui/src/**/*.{ts,tsx}'],
+      files: ['./packages/native-ui/src/**/*.{ts,tsx}', './apps/native-ui-storybook/**/*.{ts,tsx}'],
       rules: {
         '@typescript-eslint/no-empty-object-type': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
       },
     },
   ],

@@ -1,8 +1,8 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
 import React, { forwardRef, PropsWithChildren, useMemo } from 'react';
 import type { IconButtonProps } from './IconButton.props';
-import { Pressable, ViewStyle } from 'react-native';
-import { createStyleSheet, UnistylesValues, useStyles } from 'react-native-unistyles';
+import { DimensionValue, Pressable, ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { IconButtonContext } from './IconButton.context';
 import { PressableRef } from '../../types';
 
@@ -23,7 +23,7 @@ const IconButtonRoot = forwardRef<
     ref
   ) => {
     const { active, disabled } = states || {};
-    const { styles } = useStyles(stylesheet, { variant, size });
+    styles.useVariants({ variant, size });
     const value = useMemo(
       () => ({ colorScheme, variant, size, inverted, disabled, active }),
       [colorScheme, variant, size, inverted, disabled, active]
@@ -48,7 +48,7 @@ const IconButtonRoot = forwardRef<
 
 IconButtonRoot.displayName = 'IconButtonRoot';
 
-const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
+const styles = StyleSheet.create(({ colorMode, colors, radii, space }) => ({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -93,7 +93,11 @@ const stylesheet = createStyleSheet(({ colorMode, colors, radii, space }) => ({
     disabled: IconButtonProps['disabled'],
     active?: boolean
   ) => {
-    const extraStyles: UnistylesValues = {};
+    const extraStyles: {
+      backgroundColor?: string;
+      borderColor?: string;
+      paddingVertical?: DimensionValue;
+    } = {};
     const light = colorMode === 'light';
 
     if (!colorScheme) return extraStyles;

@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { View, ViewProps } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
 interface AnimatedCircleProps {
   visible: boolean;
@@ -10,8 +10,6 @@ interface AnimatedCircleProps {
 const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ visible }) => {
   const opacity = useSharedValue(0.4);
   const scale = useSharedValue(0.8);
-
-  const { styles } = useStyles(stylesheet);
 
   useEffect(() => {
     if (visible) {
@@ -46,8 +44,6 @@ const AnimatedOutline: React.FC<PropsWithChildren<Props> & ViewProps> = ({
 }) => {
   const [visible, setVisible] = useState(show);
 
-  const { styles } = useStyles(stylesheet);
-
   useEffect(() => {
     if (show) {
       setVisible(true);
@@ -68,7 +64,7 @@ const AnimatedOutline: React.FC<PropsWithChildren<Props> & ViewProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     position: 'relative',
   },
@@ -80,7 +76,7 @@ const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
     height: 40,
     borderRadius: 20,
     zIndex: -1,
-    backgroundColor: colorMode === 'light' ? colors.cyan50 : colors.cyan300,
+    backgroundColor: theme.isLight ? theme.colors.cyan50 : theme.colors.cyan300,
   },
 }));
 

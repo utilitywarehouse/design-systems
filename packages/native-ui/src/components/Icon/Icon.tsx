@@ -5,9 +5,9 @@ import { createIcon } from '@gluestack-ui/icon';
 import React, { useMemo } from 'react';
 import { Svg } from 'react-native-svg';
 import type IconProps from './Icon.props';
-import { useStyles } from 'react-native-unistyles';
 import type { ColorValue, SvgRef } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
+import { useTheme } from '../../hooks';
 
 const PrimitiveIcon = React.forwardRef<SvgRef, IconProps>(
   ({ height, width, fill, color, size, stroke, as: AsComp, ...props }, ref) => {
@@ -19,9 +19,7 @@ const PrimitiveIcon = React.forwardRef<SvgRef, IconProps>(
       return {};
     }, [size, height, width]);
 
-    const {
-      theme: { colors, colorMode },
-    } = useStyles();
+    const { colors, colorMode } = useTheme();
     const colorValue: ColorValue = useMemo(() => getStyleValue(color, colors), [color, colorMode]);
 
     let colorProps = {};

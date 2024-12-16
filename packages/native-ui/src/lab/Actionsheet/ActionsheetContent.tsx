@@ -9,7 +9,7 @@ import Animated, {
   enableLayoutAnimations,
 } from 'react-native-reanimated';
 import ActionsheetDragIndicatorWrapper from './ActionsheetDragIndicatorWrapper';
-import { useStyles, createStyleSheet } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { useActionsheetContext } from './Actionsheet.context';
 import ActionsheetDragIndicator from './ActionsheetDragIndicator';
 
@@ -30,7 +30,6 @@ const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...
     showIndicator,
     contentSafeArea,
   } = useActionsheetContext();
-  const { styles } = useStyles(stylesheet);
   const context = useSharedValue<{ y: number }>({ y: 0 });
 
   const gesture = Gesture.Pan()
@@ -109,7 +108,7 @@ const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...
 
 export default gestureHandlerRootHOC(ActionsheetContentComponent);
 
-const stylesheet = createStyleSheet(({ space, colorMode, colors, radii }) => ({
+const styles = StyleSheet.create(({ space, colorMode, colors, radii }) => ({
   content: {
     backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
     borderTopLeftRadius: radii['2xl'],

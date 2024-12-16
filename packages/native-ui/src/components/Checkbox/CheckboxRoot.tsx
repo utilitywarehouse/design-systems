@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
 import { Pressable, ViewStyle } from 'react-native';
 import type CheckboxProps from './Checkbox.props';
@@ -11,7 +11,6 @@ const CheckboxRoot = forwardRef<
   PressableRef,
   CheckboxProps & { states?: { disabled?: boolean; checked?: boolean } }
 >(({ children, style, states, ...props }, ref) => {
-  const { styles } = useStyles(stylesheet);
   const { disabled, checked } = states ?? {};
 
   const isDisabled = useCheckboxGroupContext()?.disabled ?? disabled;
@@ -35,7 +34,7 @@ const CheckboxRoot = forwardRef<
 
 CheckboxRoot.displayName = 'CheckboxRoot';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(({ space }) => ({
   container: {
     flexDirection: 'row',
     justifyContent: 'flex-start',

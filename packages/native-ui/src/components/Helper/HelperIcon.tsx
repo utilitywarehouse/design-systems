@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { Icon } from '../Icon';
 import { SvgRef } from '../../types';
 import IconProps from '../Icon/Icon.props';
@@ -8,7 +8,7 @@ import { Platform, StyleProp, ViewStyle } from 'react-native';
 
 const HelperIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
   const { validationStatus, disabled } = useHelperContext();
-  const { styles } = useStyles(stylesheet, { validationStatus, disabled });
+  styles.useVariants({ validationStatus, disabled });
 
   return (
     <Icon
@@ -28,7 +28,7 @@ const HelperIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
 
 HelperIcon.displayName = 'HelperIcon';
 
-const stylesheet = createStyleSheet(({ colors }) => ({
+const styles = StyleSheet.create(({ colors }) => ({
   icon: {
     color: colors.grey800,
     variants: {

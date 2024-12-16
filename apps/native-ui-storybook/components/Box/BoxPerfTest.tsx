@@ -6,8 +6,7 @@ import {
   View,
   Box,
   ButtonGroup,
-  createStyleSheet,
-  useStyles,
+  StyleSheet as createStyleSheet,
 } from '@utilitywarehouse/native-ui';
 import { Box as LabBox } from '@utilitywarehouse/native-ui/lab';
 import React, { useState } from 'react';
@@ -52,7 +51,6 @@ const GluestackBox = () => (
 );
 
 const UnsistylesBox = () => {
-  const { styles: styless } = useStyles(stylesheet);
   return (
     <View style={styles.boxContainer}>
       {new Array(COUNT).fill(0).map((_, i) => (
@@ -133,7 +131,7 @@ const BoxPerfTest: StoryFn = () => {
   );
 };
 
-const stylesheet = createStyleSheet(({ colors }) => ({
+const styless = createStyleSheet.create(theme => ({
   styledView: {
     borderColor: 'rgb(255, 0, 0)',
     borderWidth: 2,
@@ -142,10 +140,10 @@ const stylesheet = createStyleSheet(({ colors }) => ({
     alignItems: 'center',
   },
   blueBackground: {
-    backgroundColor: colors.cyan500,
+    backgroundColor: theme.colors.cyan500,
   },
   grayBackground: {
-    backgroundColor: colors.grey500,
+    backgroundColor: theme.colors.grey500,
   },
 }));
 

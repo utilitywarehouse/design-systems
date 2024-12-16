@@ -10,9 +10,10 @@ import Animated, {
   Easing,
 } from 'react-native-reanimated';
 import { CloseSmallIcon, TickSmallIcon } from '@utilitywarehouse/react-native-icons';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { Icon } from '../Icon';
 import SwitchProps from './Switch.props';
+import { useTheme } from '../../hooks';
 
 const CustomSwitch: React.FC<SwitchProps> = ({
   value = false,
@@ -25,10 +26,9 @@ const CustomSwitch: React.FC<SwitchProps> = ({
   const THUMB_SIZE = size === 'medium' ? 28 : 20;
   const PADDING = 2;
 
-  const {
-    styles,
-    theme: { tokens, colorMode },
-  } = useStyles(stylesheet, { size, disabled, value });
+  const { tokens, colorMode } = useTheme();
+  styles.useVariants({ size, disabled, value });
+
   const offset = useSharedValue(value ? SWITCH_WIDTH - THUMB_SIZE - PADDING * 2 : 0);
   const progress = useSharedValue(value ? 1 : 0);
 
@@ -141,7 +141,7 @@ const CustomSwitch: React.FC<SwitchProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ tokens }) => ({
+const styles = StyleSheet.create(({ tokens }) => ({
   switch: {
     justifyContent: 'center',
     variants: {

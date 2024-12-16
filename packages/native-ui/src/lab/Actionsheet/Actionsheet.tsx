@@ -9,7 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import ActionsheetBackdrop from './ActionsheetBackdrop';
 import ActionsheetContent from './ActionsheetContent';
-import { useStyles, createStyleSheet } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import type ActionsheetProps from './Actionsheet.props';
 import ActionsheetContext from './Actionsheet.context';
 
@@ -37,8 +37,6 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
   const backdropOpacity = useSharedValue<number>(0);
   const keyboardHeight = useSharedValue<number>(0);
   const dragging = useSharedValue(false);
-
-  const { styles } = useStyles(stylesheet);
 
   const handleClose = useCallback(() => {
     if (onClose) {
@@ -159,7 +157,7 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ radii, colorMode, colors }) => ({
+const styles = StyleSheet.create(({ radii, colorMode, colors }) => ({
   sheetContainer: {
     position: 'absolute',
     bottom: 0,
