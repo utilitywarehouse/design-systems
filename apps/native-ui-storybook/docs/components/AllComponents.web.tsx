@@ -27,7 +27,14 @@ import {
   Card,
   Switch,
 } from '@utilitywarehouse/native-ui';
-import { Actionsheet, Box, Carousel, CarouselPagination } from '@utilitywarehouse/native-ui/lab';
+import {
+  Actionsheet,
+  Box,
+  Carousel,
+  CarouselItem,
+  CarouselItems,
+  CarouselPagination,
+} from '@utilitywarehouse/native-ui/lab';
 import {
   ElectricityMediumIcon,
   MobileMediumIcon,
@@ -92,7 +99,7 @@ const AllComponents: React.FC = () => {
               <Alert text="This is an alert" />
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Box (Lab)" link="/?path=/docs/native-ui-components-lab-box--docs">
+          <ComponentWrapper name="Box" link="/?path=/docs/native-ui-components-box--docs">
             <Center flex={1}>
               <Box backgroundColor="$grey900" padding="$4" width={200} height={100}>
                 <Text color={isDark ? '$grey100' : '$white'} highlight>
@@ -119,28 +126,29 @@ const AllComponents: React.FC = () => {
             link="/?path=/docs/native-ui-components-card--docs"
           >
             <Center flex={1}>
-              <Carousel
-                data={[
-                  {
-                    key: 1,
-                    title: "I'm a Carousel item",
-                  },
-                  {
-                    key: 2,
-                    title: "I'm another Carousel item",
-                  },
-                  {
-                    key: 3,
-                    title: "I'm a third Carousel item",
-                  },
-                ]}
-                renderItem={({ item }) => (
-                  <Box p="$2" aspectRatio={1.6} backgroundColor="$purple500">
-                    <Text color="$white">{item.title}</Text>
-                  </Box>
-                )}
-                width={150}
-              >
+              <Carousel>
+                <CarouselItems width={150}>
+                  {[
+                    {
+                      key: 1,
+                      title: "I'm a Carousel item",
+                    },
+                    {
+                      key: 2,
+                      title: "I'm another Carousel item",
+                    },
+                    {
+                      key: 3,
+                      title: "I'm a third Carousel item",
+                    },
+                  ].map(item => (
+                    <CarouselItem key={item.key}>
+                      <Box p="$2" aspectRatio={1.6} backgroundColor="$purple500">
+                        <Text color="$white">{item.title}</Text>
+                      </Box>
+                    </CarouselItem>
+                  ))}
+                </CarouselItems>
                 <CarouselPagination style={{ marginTop: 16 }} />
               </Carousel>
             </Center>
