@@ -6,11 +6,11 @@ To use native-ui components, all you need to do is install the
 `@utilitywarehouse/native-ui` package:
 
 ```sh
-$ yarn add @utilitywarehouse/native-ui @gluestack-ui/themed @gluestack-style/react react-native-svg@13.4.0
+$ yarn add @utilitywarehouse/native-ui react-native-svg@13.4.0
 
 # or
 
-$ npm i @utilitywarehouse/native-ui @gluestack-ui/themed @gluestack-style/react react-native-svg@13.4.0
+$ npm i @utilitywarehouse/native-ui react-native-svg@13.4.0
 ```
 
 ## Usage

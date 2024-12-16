@@ -8,10 +8,10 @@ import StyledCheckboxGroup from './CheckboxGroupRoot';
 import { forwardRef } from 'react';
 import CheckboxProps from './Checkbox.props';
 import { Pressable } from 'react-native';
-import { VStack } from '@gluestack-ui/themed';
 import { Helper } from '../Helper';
 import { useCheckboxGroupContext } from './CheckboxGroup.context';
 import { useFormFieldContext } from '../FormField';
+import { VStack } from '../VStack';
 
 const CheckboxComponent = createCheckbox({
   Root: StyledCheckbox,
