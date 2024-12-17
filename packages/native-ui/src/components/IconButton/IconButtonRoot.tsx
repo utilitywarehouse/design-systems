@@ -30,7 +30,7 @@ const IconButtonRoot = forwardRef<
     );
     return (
       <IconButtonContext.Provider value={value}>
-        <Pressable ref={ref} {...props} style={[props.style as ViewStyle]}>
+        <Pressable ref={ref} {...props} style={[styles.container, props.style as ViewStyle]}>
           {children}
         </Pressable>
       </IconButtonContext.Provider>
@@ -114,7 +114,6 @@ const styles = StyleSheet.create(theme => ({
           paddingVertical: theme.space[4],
         },
       },
-      // Cyan
       {
         colorScheme: 'cyan',
         variant: 'solid',
@@ -223,7 +222,6 @@ const styles = StyleSheet.create(theme => ({
           backgroundColor: 'transparent',
         },
       },
-      // red
       {
         colorScheme: 'red',
         variant: 'solid',
@@ -332,7 +330,6 @@ const styles = StyleSheet.create(theme => ({
           backgroundColor: 'transparent',
         },
       },
-      // green
       {
         colorScheme: 'green',
         variant: 'solid',
@@ -441,7 +438,6 @@ const styles = StyleSheet.create(theme => ({
           backgroundColor: 'transparent',
         },
       },
-      // gold
       {
         colorScheme: 'gold',
         variant: 'solid',
@@ -550,7 +546,6 @@ const styles = StyleSheet.create(theme => ({
           backgroundColor: 'transparent',
         },
       },
-      // grey
       {
         colorScheme: 'grey',
         variant: 'solid',
