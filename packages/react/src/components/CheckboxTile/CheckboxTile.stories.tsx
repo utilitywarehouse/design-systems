@@ -7,7 +7,7 @@ import { Flex } from '../Flex/Flex';
 import { BodyText } from '../BodyText/BodyText';
 
 const meta: Meta<typeof CheckboxTile> = {
-  title: 'Web UI / Stories / CheckboxTile',
+  title: 'Stories / CheckboxTile',
   component: CheckboxTile,
   argTypes: {
     helperText: { control: { type: 'text' } },
