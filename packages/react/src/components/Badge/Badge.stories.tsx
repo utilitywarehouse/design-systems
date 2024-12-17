@@ -106,6 +106,14 @@ export const ColorSchemes: Story = {
   ),
 };
 
+export const ResponsiveSize: Story = {
+  render: args => (
+    <Badge {...args} size={{ mobile: 'small', desktop: 'medium' }}>
+      Responsive badge size
+    </Badge>
+  ),
+};
+
 export const BottomRadiusZero: Story = {
   render: () => {
     return (
@@ -124,13 +132,4 @@ export const BottomRadiusZero: Story = {
       </Box>
     );
   },
-};
-
-export const Compact: Story = {
-  name: 'Responsive size',
-  render: args => (
-    <Badge {...args} size={{ mobile: 'small', tablet: 'medium' }}>
-      Responsive badge size
-    </Badge>
-  ),
 };
