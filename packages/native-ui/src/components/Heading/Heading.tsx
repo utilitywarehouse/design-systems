@@ -44,7 +44,12 @@ const Heading = forwardRef<Text, HeadingProps>(
           : {})}
         style={[
           styles.text,
-          styles.extraStyles(colorValue, textTransform, textAlign, textAlignVertical),
+          {
+            ...(colorValue ? { color: colorValue } : {}),
+            ...(textTransform ? { textTransform } : {}),
+            ...(textAlign ? { textAlign } : {}),
+            ...(textAlignVertical ? { textAlignVertical } : {}),
+          },
           props.style,
         ]}
       >
@@ -56,40 +61,40 @@ const Heading = forwardRef<Text, HeadingProps>(
 
 Heading.displayName = 'Heading';
 
-const styles = StyleSheet.create(({ colors, fontSizes, fontWeights, fonts, lineHeights }) => ({
+const styles = StyleSheet.create(theme => ({
   text: {
-    color: colors.grey1000,
-    fontWeight: fontWeights.bold,
-    fontFamily: fonts.heading,
+    color: theme.colors.grey1000,
+    fontWeight: theme.fontWeights.bold,
+    fontFamily: theme.fonts.heading,
     marginVertical: 0,
     fontStyle: 'normal',
     variants: {
       size: {
         h1: {
-          fontSize: fontSizes['4xl'],
-          lineHeight: lineHeights['3xl'],
+          fontSize: theme.fontSizes['4xl'],
+          lineHeight: theme.lineHeights['3xl'],
         },
         h2: {
-          fontSize: fontSizes['3xl'],
-          lineHeight: lineHeights['2xl'],
+          fontSize: theme.fontSizes['3xl'],
+          lineHeight: theme.lineHeights['2xl'],
         },
         h3: {
-          fontSize: fontSizes['2xl'],
-          lineHeight: lineHeights['2xl'],
+          fontSize: theme.fontSizes['2xl'],
+          lineHeight: theme.lineHeights['2xl'],
         },
         h4: {
-          fontSize: fontSizes.lg,
-          lineHeight: lineHeights.lg,
+          fontSize: theme.fontSizes.lg,
+          lineHeight: theme.lineHeights.lg,
         },
         h5: {
-          fontSize: fontSizes.md,
-          lineHeight: lineHeights.sm,
+          fontSize: theme.fontSizes.md,
+          lineHeight: theme.lineHeights.sm,
         },
         h6: {
-          fontSize: fontSizes.md,
-          lineHeight: lineHeights.lg,
-          fontFamily: fonts.body,
-          fontWeight: fontWeights.normal,
+          fontSize: theme.fontSizes.md,
+          lineHeight: theme.lineHeights.lg,
+          fontFamily: theme.fonts.body,
+          fontWeight: theme.fontWeights.normal,
         },
       },
       underline: {
@@ -104,17 +109,6 @@ const styles = StyleSheet.create(({ colors, fontSizes, fontWeights, fonts, lineH
       },
     },
   },
-  extraStyles: (
-    color: HeadingProps['color'],
-    textTransform: HeadingProps['textTransform'],
-    textAlign: HeadingProps['textAlign'],
-    textAlignVertical: HeadingProps['textAlignVertical']
-  ) => ({
-    ...(color ? { color } : {}),
-    ...(textTransform ? { textTransform } : {}),
-    ...(textAlign ? { textAlign } : {}),
-    ...(textAlignVertical ? { textAlignVertical } : {}),
-  }),
 }));
 
 export default Heading;

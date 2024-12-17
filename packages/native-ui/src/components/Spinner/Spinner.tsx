@@ -112,7 +112,7 @@ const SpinnerRoot: React.FC<SpinnerProps> = forwardRef<View, SpinnerProps>(
 
 SpinnerRoot.displayName = 'Spinner';
 
-const styles = StyleSheet.create(() => ({
+const styles = StyleSheet.create({
   container: {
     display: 'flex',
     justifyContent: 'center',
@@ -138,7 +138,7 @@ const styles = StyleSheet.create(() => ({
       },
     },
   },
-}));
+});
 
 const Spinner = createSpinner({ Root: SpinnerRoot });
 

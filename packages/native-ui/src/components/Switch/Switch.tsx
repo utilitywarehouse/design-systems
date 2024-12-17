@@ -141,51 +141,51 @@ const CustomSwitch: React.FC<SwitchProps> = ({
   );
 };
 
-const styles = StyleSheet.create(({ tokens }) => ({
+const styles = StyleSheet.create(theme => ({
   switch: {
     justifyContent: 'center',
     variants: {
       size: {
         medium: {
-          width: tokens.switch.medium.width,
-          height: tokens.switch.medium.height,
-          borderRadius: tokens.switch.borderRadius,
-          padding: tokens.switch.padding,
+          width: theme.tokens.switch.medium.width,
+          height: theme.tokens.switch.medium.height,
+          borderRadius: theme.tokens.switch.borderRadius,
+          padding: theme.tokens.switch.padding,
         },
         small: {
-          width: tokens.switch.small.width,
-          height: tokens.switch.small.height,
-          borderRadius: tokens.switch.borderRadius,
-          padding: tokens.switch.padding,
+          width: theme.tokens.switch.small.width,
+          height: theme.tokens.switch.small.height,
+          borderRadius: theme.tokens.switch.borderRadius,
+          padding: theme.tokens.switch.padding,
         },
       },
       disabled: {
         true: {
-          backgroundColor: tokens.switch.backgroundColorDisabled,
+          backgroundColor: theme.tokens.switch.backgroundColorDisabled,
         },
       },
     },
   },
   thumb: {
-    backgroundColor: tokens.switch.circle.backgroundColor,
+    backgroundColor: theme.tokens.switch.circle.backgroundColor,
     alignItems: 'center',
     justifyContent: 'center',
     variants: {
       size: {
         medium: {
-          width: tokens.switch.circle.medium.size,
-          height: tokens.switch.circle.medium.size,
-          borderRadius: tokens.switch.borderRadius,
+          width: theme.tokens.switch.circle.medium.size,
+          height: theme.tokens.switch.circle.medium.size,
+          borderRadius: theme.tokens.switch.borderRadius,
         },
         small: {
-          width: tokens.switch.circle.small.size,
-          height: tokens.switch.circle.small.size,
-          borderRadius: tokens.switch.borderRadius,
+          width: theme.tokens.switch.circle.small.size,
+          height: theme.tokens.switch.circle.small.size,
+          borderRadius: theme.tokens.switch.borderRadius,
         },
       },
       disabled: {
         true: {
-          backgroundColor: tokens.switch.circle.backgroundColorDisabled,
+          backgroundColor: theme.tokens.switch.circle.backgroundColorDisabled,
         },
       },
     },
@@ -197,15 +197,15 @@ const styles = StyleSheet.create(({ tokens }) => ({
     variants: {
       value: {
         true: {
-          color: tokens.switch.checked.iconColor,
+          color: theme.tokens.switch.checked.iconColor,
         },
         false: {
-          color: tokens.switch.unchecked.iconColor,
+          color: theme.tokens.switch.unchecked.iconColor,
         },
       },
       disabled: {
         true: {
-          color: tokens.switch.iconColorDisabled,
+          color: theme.tokens.switch.iconColorDisabled,
         },
       },
     },

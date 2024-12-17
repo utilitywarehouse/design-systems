@@ -10,10 +10,10 @@ const ActionsheetDragIndicatorWrapper: React.FC<ViewProps> = ({ children, style,
   );
 };
 
-const styles = StyleSheet.create(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   wrapper: {
-    paddingVertical: space['1'],
-    width: space.full,
+    paddingVertical: theme.space['1'],
+    width: theme.space.full,
     alignItems: 'center',
   },
 }));

@@ -12,9 +12,9 @@ const ListItemContent = forwardRef<View, ViewProps>(({ children, ...props }, ref
 
 ListItemContent.displayName = 'ListItemContent';
 
-const styles = StyleSheet.create(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
-    gap: space[1],
+    gap: theme.space[1],
     flex: 1,
   },
 }));

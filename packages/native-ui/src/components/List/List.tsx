@@ -28,9 +28,9 @@ const List = forwardRef<View, ListProps>(
 
 List.displayName = 'List';
 
-const styles = StyleSheet.create(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
-    width: space.full,
+    width: theme.space.full,
   },
 }));
 

@@ -31,9 +31,9 @@ const ActionsheetBackdropComponent: React.FC<Omit<ViewProps, 'children'>> = ({
 
 export default gestureHandlerRootHOC(ActionsheetBackdropComponent);
 
-const styles = StyleSheet.create(({ colors, colorMode }) => ({
+const styles = StyleSheet.create(theme => ({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: colorMode === 'light' ? colors.grey1000 : colors.grey25,
+    backgroundColor: theme.colorMode === 'light' ? theme.colors.grey1000 : theme.colors.grey25,
   },
 }));

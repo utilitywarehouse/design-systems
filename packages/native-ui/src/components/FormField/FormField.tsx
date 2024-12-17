@@ -77,9 +77,9 @@ const FormField: FC<FormFieldProps> = ({
   );
 };
 
-const styles = StyleSheet.create(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   labelWrapper: {
-    gap: space['1'],
+    gap: theme.space['1'],
   },
 }));
 

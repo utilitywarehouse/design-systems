@@ -28,7 +28,7 @@ const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
   );
 });
 
-const styles = StyleSheet.create(({ colors, isDark, radii, borderWidths, space }) => ({
+const styles = StyleSheet.create(theme => ({
   outline: {
     alignSelf: 'flex-start',
   },
@@ -36,21 +36,21 @@ const styles = StyleSheet.create(({ colors, isDark, radii, borderWidths, space }
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    borderColor: isDark ? colors.grey600 : colors.grey500,
-    borderWidth: borderWidths[2],
-    borderRadius: radii['sm'],
-    width: space[6],
-    height: space[6],
+    borderColor: theme.isDark ? theme.colors.grey600 : theme.colors.grey500,
+    borderWidth: theme.borderWidths[2],
+    borderRadius: theme.radii['sm'],
+    width: theme.space[6],
+    height: theme.space[6],
     variants: {
       checked: {
         true: {
-          borderColor: isDark ? colors.cyan700 : colors.cyan500,
-          backgroundColor: isDark ? colors.cyan700 : colors.cyan500,
+          borderColor: theme.isDark ? theme.colors.cyan700 : theme.colors.cyan500,
+          backgroundColor: theme.isDark ? theme.colors.cyan700 : theme.colors.cyan500,
         },
       },
       disabled: {
         true: {
-          borderColor: colors.grey400,
+          borderColor: theme.colors.grey400,
         },
       },
     },
@@ -59,8 +59,8 @@ const styles = StyleSheet.create(({ colors, isDark, radii, borderWidths, space }
         checked: true,
         disabled: true,
         styles: {
-          borderColor: isDark ? colors.grey700 : colors.grey150,
-          backgroundColor: isDark ? colors.grey700 : colors.grey150,
+          borderColor: theme.isDark ? theme.colors.grey700 : theme.colors.grey150,
+          backgroundColor: theme.isDark ? theme.colors.grey700 : theme.colors.grey150,
         },
       },
     ],

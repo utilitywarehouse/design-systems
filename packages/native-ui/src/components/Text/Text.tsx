@@ -58,16 +58,16 @@ const Text = forwardRef<RNText, TextProps>(
           : {})}
         style={[
           styles.text,
-          styles.extraStyles(
-            colorValue,
-            textTransform,
-            textAlign,
-            decorationColor,
-            textDecorationLine,
-            textDecorationStyle,
-            userSelect,
-            textAlignVertical
-          ),
+          {
+            ...(colorValue && { color: colorValue }),
+            ...(textTransform && { textTransform }),
+            ...(textAlign && { textAlign }),
+            ...(decorationColor && { textDecorationColor: decorationColor }),
+            ...(textDecorationLine && { textDecorationLine }),
+            ...(textDecorationStyle && { textDecorationStyle }),
+            ...(userSelect && { userSelect }),
+            ...(textAlignVertical && { textAlignVertical }),
+          },
           props.style,
         ]}
       >
@@ -79,76 +79,55 @@ const Text = forwardRef<RNText, TextProps>(
 
 Text.displayName = 'Text';
 
-const styles = StyleSheet.create(
-  ({ colors, fontSizes, fontWeights, fonts, letterSpacings, lineHeights }) => ({
-    text: {
-      color: colors.grey1000,
-      fontWeight: fontWeights.normal,
-      letterSpacing: letterSpacings.md,
-      fontFamily: fonts.body,
-      fontStyle: 'normal',
-      variants: {
-        size: {
-          xs: {
-            fontSize: fontSizes.xs,
-            lineHeight: lineHeights['2xs'],
-          },
-          sm: {
-            fontSize: fontSizes.sm,
-            lineHeight: lineHeights['2xs'],
-          },
-          md: {
-            fontSize: fontSizes.md,
-            lineHeight: lineHeights['lg'],
-          },
+const styles = StyleSheet.create(theme => ({
+  text: {
+    color: theme.colors.grey1000,
+    fontWeight: theme.fontWeights.normal,
+    letterSpacing: theme.letterSpacings.md,
+    fontFamily: theme.fonts.body,
+    fontStyle: 'normal',
+    variants: {
+      size: {
+        xs: {
+          fontSize: theme.fontSizes.xs,
+          lineHeight: theme.lineHeights['2xs'],
         },
-        bold: {
-          true: {
-            fontWeight: fontWeights.bold,
-          },
+        sm: {
+          fontSize: theme.fontSizes.sm,
+          lineHeight: theme.lineHeights['2xs'],
         },
-        underline: {
-          true: {
-            textDecorationLine: 'underline' as TextProps['textDecorationLine'],
-          },
+        md: {
+          fontSize: theme.fontSizes.md,
+          lineHeight: theme.lineHeights['lg'],
         },
-        strikeThrough: {
-          true: {
-            textDecorationLine: 'line-through' as TextProps['textDecorationLine'],
-          },
+      },
+      bold: {
+        true: {
+          fontWeight: theme.fontWeights.bold,
         },
-        italic: {
-          true: {
-            fontStyle: 'italic',
-          },
+      },
+      underline: {
+        true: {
+          textDecorationLine: 'underline' as TextProps['textDecorationLine'],
         },
-        highlight: {
-          true: {
-            fontWeight: fontWeights.semibold,
-          },
+      },
+      strikeThrough: {
+        true: {
+          textDecorationLine: 'line-through' as TextProps['textDecorationLine'],
+        },
+      },
+      italic: {
+        true: {
+          fontStyle: 'italic',
+        },
+      },
+      highlight: {
+        true: {
+          fontWeight: theme.fontWeights.semibold,
         },
       },
     },
-    extraStyles: (
-      color: TextProps['color'],
-      textTransform: TextProps['textTransform'],
-      textAlign: TextProps['textAlign'],
-      textDecorationColor: TextProps['textDecorationColor'],
-      textDecorationLine: TextProps['textDecorationLine'],
-      textDecorationStyle: TextProps['textDecorationStyle'],
-      userSelect: TextProps['userSelect'],
-      textAlignVertical: TextProps['textAlignVertical']
-    ) => ({
-      ...(color && { color }),
-      ...(textTransform && { textTransform }),
-      ...(textAlign && { textAlign }),
-      ...(textDecorationColor && { textDecorationColor }),
-      ...(textDecorationLine && { textDecorationLine }),
-      ...(textDecorationStyle && { textDecorationStyle }),
-      ...(userSelect && { userSelect }),
-      ...(textAlignVertical && { textAlignVertical }),
-    }),
-  })
-);
+  },
+}));
 
 export default Text;

@@ -21,7 +21,7 @@ module.exports = {
         babelPlugins: [
           '@babel/plugin-proposal-export-namespace-from',
           'react-native-reanimated/plugin',
-          ['react-native-unistyles/plugin'],
+          'react-native-unistyles/plugin',
         ],
       },
     },

@@ -15,10 +15,10 @@ const ListHeadingSupportingText = forwardRef<RNText, TextProps>(({ children, ...
 
 ListHeadingSupportingText.displayName = 'ListHeadingSupportingText';
 
-const styles = StyleSheet.create(({ colors, lineHeights }) => ({
+const styles = StyleSheet.create(theme => ({
   supportingText: {
-    color: colors.grey700,
-    lineHeight: lineHeights.sm,
+    color: theme.colors.grey700,
+    lineHeight: theme.lineHeights.sm,
   },
 }));
 

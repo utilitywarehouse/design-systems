@@ -12,10 +12,10 @@ const FormFieldRoot = forwardRef<View, ViewProps>(({ children, style, ...props }
 
 FormFieldRoot.displayName = 'FormFieldRoot';
 
-const styles = StyleSheet.create(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     flexDirection: 'column',
-    gap: space[2],
+    gap: theme.space[2],
   },
 }));
 

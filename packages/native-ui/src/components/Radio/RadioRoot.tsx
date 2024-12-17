@@ -34,12 +34,12 @@ const RadioRoot = forwardRef<
 
 RadioRoot.displayName = 'RadioRoot';
 
-const styles = StyleSheet.create(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    gap: space[2],
+    gap: theme.space[2],
   },
 }));
 

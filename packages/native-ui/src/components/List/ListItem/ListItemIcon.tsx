@@ -31,15 +31,15 @@ const ListItemIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
 
 ListItemIcon.displayName = 'ListItemIcon';
 
-const styles = StyleSheet.create(({ colors, colorMode }) => ({
+const styles = StyleSheet.create(theme => ({
   icon: {
-    color: colors.grey800,
+    color: theme.colors.grey800,
     width: 24,
     height: 24,
     variants: {
       disabled: {
         true: {
-          color: colorMode === 'light' ? colors.grey400 : colors.grey500,
+          color: theme.colorMode === 'light' ? theme.colors.grey400 : theme.colors.grey500,
         },
       },
     },

@@ -30,17 +30,17 @@ const ListHeading = forwardRef<View, ListHeadingProps>(
 
 ListHeading.displayName = 'ListHeading';
 
-const styles = StyleSheet.create(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
-    gap: space[1],
-    paddingHorizontal: space[4],
-    paddingTop: space[4],
-    paddingBottom: space[3],
+    gap: theme.space[1],
+    paddingHorizontal: theme.space[4],
+    paddingTop: theme.space[4],
+    paddingBottom: theme.space[3],
     variants: {
       container: {
         full: {},
         card: {
-          paddingLeft: space[0],
+          paddingLeft: theme.space[0],
         },
       },
     },

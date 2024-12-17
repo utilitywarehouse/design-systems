@@ -44,28 +44,28 @@ const Helper = forwardRef<View, HelperProps>(
 
 Helper.displayName = 'Helper';
 
-const styles = StyleSheet.create(({ colors, space, lineHeights }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     flexDirection: 'row',
-    gap: space['1'],
+    gap: theme.space['1'],
     alignItems: 'center',
   },
   text: {
-    color: colors.grey800,
-    lineHeight: lineHeights['lg'],
+    color: theme.colors.grey800,
+    lineHeight: theme.lineHeights['lg'],
     variants: {
       validationStatus: {
         valid: {
-          color: colors.green600,
+          color: theme.colors.green600,
         },
         invalid: {
-          color: colors.red600,
+          color: theme.colors.red600,
         },
         initial: {},
       },
       disabled: {
         true: {
-          color: colors.grey400,
+          color: theme.colors.grey400,
         },
       },
     },

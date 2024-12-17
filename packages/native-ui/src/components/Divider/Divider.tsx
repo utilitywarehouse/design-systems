@@ -25,10 +25,10 @@ const Divider = forwardRef<View, DividerProps>(({ children, color, space, ...pro
 
 Divider.displayName = 'Divider';
 
-const styles = StyleSheet.create(({ colors, colorMode, space }) => ({
+const styles = StyleSheet.create(theme => ({
   divider: {
-    width: space.full,
-    backgroundColor: colorMode === 'light' ? colors.grey100 : colors.grey300,
+    width: theme.space.full,
+    backgroundColor: theme.isLight ? theme.colors.grey100 : theme.colors.grey300,
     height: 1,
     variants: {
       space: {
@@ -36,28 +36,28 @@ const styles = StyleSheet.create(({ colors, colorMode, space }) => ({
           marginVertical: 0,
         },
         xs: {
-          marginVertical: space['1'],
+          marginVertical: theme.space['1'],
         },
         sm: {
-          marginVertical: space['2'],
+          marginVertical: theme.space['2'],
         },
         md: {
-          marginVertical: space['3'],
+          marginVertical: theme.space['3'],
         },
         lg: {
-          marginVertical: space['4'],
+          marginVertical: theme.space['4'],
         },
         xl: {
-          marginVertical: space['5'],
+          marginVertical: theme.space['5'],
         },
         '2xl': {
-          marginVertical: space['6'],
+          marginVertical: theme.space['6'],
         },
         '3xl': {
-          marginVertical: space['7'],
+          marginVertical: theme.space['7'],
         },
         '4xl': {
-          marginVertical: space['8'],
+          marginVertical: theme.space['8'],
         },
       },
     },

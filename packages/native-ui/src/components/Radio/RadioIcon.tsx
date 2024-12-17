@@ -28,16 +28,16 @@ const RadioIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
 
 RadioIcon.displayName = 'RadioIcon';
 
-const styles = StyleSheet.create(({ radii, colors, colorMode }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     width: 14,
     height: 14,
-    borderRadius: radii.full,
-    color: colorMode === 'dark' ? colors.cyan700 : colors.cyan500,
+    borderRadius: theme.radii.full,
+    color: theme.colorMode === 'dark' ? theme.colors.cyan700 : theme.colors.cyan500,
     variants: {
       disabled: {
         true: {
-          color: colorMode === 'dark' ? colors.grey400 : colors.grey400,
+          color: theme.colorMode === 'dark' ? theme.colors.grey400 : theme.colors.grey400,
         },
       },
     },

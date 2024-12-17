@@ -108,15 +108,15 @@ const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...
 
 export default gestureHandlerRootHOC(ActionsheetContentComponent);
 
-const styles = StyleSheet.create(({ space, colorMode, colors, radii }) => ({
+const styles = StyleSheet.create(theme => ({
   content: {
-    backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
-    borderTopLeftRadius: radii['2xl'],
-    borderTopRightRadius: radii['2xl'],
-    borderBottomLeftRadius: radii.none,
-    borderBottomRightRadius: radii.none,
-    paddingHorizontal: space['5'],
-    paddingBottom: space['5'],
+    backgroundColor: theme.colorMode === 'light' ? theme.colors.white : theme.colors.grey100,
+    borderTopLeftRadius: theme.radii['2xl'],
+    borderTopRightRadius: theme.radii['2xl'],
+    borderBottomLeftRadius: theme.radii.none,
+    borderBottomRightRadius: theme.radii.none,
+    paddingHorizontal: theme.space['5'],
+    paddingBottom: theme.space['5'],
     overflow: 'hidden',
     alignSelf: 'stretch',
     flexGrow: 0,
@@ -124,7 +124,7 @@ const styles = StyleSheet.create(({ space, colorMode, colors, radii }) => ({
   },
   safeAreaView: {},
   extraStyles: (minHeight: DimensionValue, showIndicator?: boolean) => {
-    const paddingTop = showIndicator ? space['2'] : space['5'];
+    const paddingTop = showIndicator ? theme.space['2'] : theme.space['5'];
     return {
       minHeight,
       paddingTop,

@@ -101,7 +101,7 @@ const SpinnerRoot: React.FC<SpinnerProps> = ({ size = 'md', color, ...props }) =
   );
 };
 
-const styles = StyleSheet.create(() => ({
+const styles = StyleSheet.create({
   container: {
     display: 'flex',
     justifyContent: 'center',
@@ -127,7 +127,7 @@ const styles = StyleSheet.create(() => ({
       },
     },
   },
-}));
+});
 
 const Spinner = createSpinner({ Root: SpinnerRoot });
 

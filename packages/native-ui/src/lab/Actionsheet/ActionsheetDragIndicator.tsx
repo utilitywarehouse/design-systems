@@ -21,12 +21,12 @@ const ActionsheetDragIndicator: React.FC<ViewProps> = ({ style, ...props }) => {
   return <Animated.View style={[styles.indicator, animatedStyle, style]} {...props} />;
 };
 
-const styles = StyleSheet.create(({ space, colors, radii }) => ({
+const styles = StyleSheet.create(theme => ({
   indicator: {
-    width: space['16'],
-    height: space['1'],
-    borderRadius: radii.full,
-    backgroundColor: colors.grey500,
+    width: theme.space['16'],
+    height: theme.space['1'],
+    borderRadius: theme.radii.full,
+    backgroundColor: theme.colors.grey500,
   },
 }));
 

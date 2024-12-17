@@ -26,18 +26,18 @@ const InputField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
 
 InputField.displayName = 'InputField';
 
-const styles = StyleSheet.create(({ radii, fontSizes, colors, fontWeights, fonts }) => ({
+const styles = StyleSheet.create(theme => ({
   input: {
     flex: 1,
     width: 'auto',
-    borderTopLeftRadius: radii['2xl'],
-    borderTopRightRadius: radii['2xl'],
-    borderBottomLeftRadius: radii.none,
-    borderBottomRightRadius: radii.none,
-    color: colors.grey1000,
-    fontSize: fontSizes.lg,
-    fontFamily: fonts.body,
-    fontWeight: fontWeights.normal,
+    borderTopLeftRadius: theme.radii['2xl'],
+    borderTopRightRadius: theme.radii['2xl'],
+    borderBottomLeftRadius: theme.radii.none,
+    borderBottomRightRadius: theme.radii.none,
+    color: theme.colors.grey1000,
+    fontSize: theme.fontSizes.lg,
+    fontFamily: theme.fonts.body,
+    fontWeight: theme.fontWeights.normal,
     variants: {
       focused: {
         true: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create(({ radii, fontSizes, colors, fontWeights, fonts
       },
       disabled: {
         true: {
-          color: colors.grey400,
+          color: theme.colors.grey400,
         },
       },
     },

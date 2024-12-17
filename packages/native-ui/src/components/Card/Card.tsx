@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { View, ViewStyle } from 'react-native';
+import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import CardProps from './Card.props';
 
@@ -25,11 +25,7 @@ const Card = forwardRef<View, CardProps>(
       padding,
     });
     return (
-      <View
-        ref={ref}
-        style={[styles.card, styles.combined(variant, surface, colorScheme) as ViewStyle, style]}
-        {...props}
-      >
+      <View ref={ref} style={[styles.card, style]} {...props}>
         {children}
       </View>
     );
@@ -38,9 +34,9 @@ const Card = forwardRef<View, CardProps>(
 
 Card.displayName = 'Card';
 
-const styles = StyleSheet.create(({ colorMode, colors, radii, space }) => ({
+const styles = StyleSheet.create(theme => ({
   card: {
-    borderRadius: radii['xl'],
+    borderRadius: theme.radii['xl'],
     overflow: 'hidden',
     variants: {
       variant: {
@@ -65,87 +61,152 @@ const styles = StyleSheet.create(({ colorMode, colors, radii, space }) => ({
       },
       surface: {
         base: {
-          backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
-          borderColor: colorMode === 'light' ? colors.grey100 : colors.grey300,
+          backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey100,
+          borderColor: theme.isLight ? theme.colors.grey100 : theme.colors.grey300,
         },
         purple: {
-          backgroundColor: colorMode === 'light' ? colors.purple800 : colors.purple100,
-          borderColor: colors.purple700,
+          backgroundColor: theme.isLight ? theme.colors.purple800 : theme.colors.purple100,
+          borderColor: theme.colors.purple700,
         },
       },
       nested: {
         true: {
-          borderRadius: radii['lg'],
+          borderRadius: theme.radii['lg'],
         },
       },
       colorScheme: {
         base: {
-          backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
+          backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey100,
         },
         grey: {
-          backgroundColor: colorMode === 'light' ? colors.grey25 : colors.grey75,
+          backgroundColor: theme.isLight ? theme.colors.grey25 : theme.colors.grey75,
         },
         purple: {
-          backgroundColor: colorMode === 'light' ? colors.purple800 : colors.purple100,
+          backgroundColor: theme.isLight ? theme.colors.purple800 : theme.colors.purple100,
         },
       },
       padding: {
         large: {
-          padding: space['4'],
+          padding: theme.space['4'],
         },
         medium: {
-          padding: space['3'],
+          padding: theme.space['3'],
         },
         small: {
-          padding: space['2'],
+          padding: theme.space['2'],
         },
         none: {
-          padding: space['0'],
+          padding: theme.space['0'],
         },
       },
     },
-  },
-  combined: (
-    variant: CardProps['variant'],
-    surface: CardProps['surface'],
-    colorScheme: CardProps['colorScheme']
-  ) => {
-    const styles: { borderColor?: string; backgroundColor?: string } = {};
-    if (surface === 'base') {
-      if (variant === 'outline' && colorScheme === 'purple') {
-        styles.borderColor = colorMode === 'light' ? colors.purple100 : colors.purple300;
-        styles.backgroundColor = colorMode === 'light' ? colors.purple75 : colors.purple50;
-      }
-      if (variant === 'dashed') {
-        styles.backgroundColor = colorMode === 'light' ? colors.white : colors.grey100;
-      }
-    }
-    if (surface === 'purple') {
-      if (colorMode === 'light') {
-        styles.borderColor = colors.purple600;
-        styles.backgroundColor = colors.purple800;
-      }
-      if (variant === 'outline' || variant === 'elevated' || variant === 'dashed') {
-        if (colorScheme === 'base') {
-          styles.borderColor = colorMode === 'light' ? colors.purple600 : colors.grey300;
-          styles.backgroundColor = colorMode === 'light' ? colors.purple800 : colors.grey100;
-        }
-        if (colorScheme === 'purple') {
-          styles.borderColor = colorMode === 'light' ? colors.purple700 : colors.purple300;
-          styles.backgroundColor = colorMode === 'light' ? colors.purple900 : colors.purple50;
-        }
-        if (colorScheme === 'grey') {
-          styles.borderColor = colorMode === 'light' ? colors.purple700 : colors.grey300;
-          styles.backgroundColor = colorMode === 'light' ? colors.purple800 : colors.grey75;
-        }
-      }
-      if (variant === 'filled') {
-        if (colorScheme === 'purple') {
-          styles.backgroundColor = colorMode === 'light' ? colors.purple1000 : colors.purple100;
-        }
-      }
-    }
-    return styles;
+    compoundVariants: [
+      {
+        surface: 'base',
+        variant: 'outline',
+        colorScheme: 'purple',
+        styles: {
+          borderColor: theme.isLight ? theme.colors.purple100 : theme.colors.purple300,
+          backgroundColor: theme.isLight ? theme.colors.purple75 : theme.colors.purple50,
+        },
+      },
+      {
+        surface: 'base',
+        variant: 'dashed',
+        styles: {
+          backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey100,
+        },
+      },
+      {
+        surface: 'purple',
+        variant: 'outline',
+        colorscheme: 'base',
+        styles: {
+          borderColor: theme.isLight ? theme.colors.purple600 : theme.colors.grey300,
+          backgroundColor: theme.isLight ? theme.colors.purple800 : theme.colors.grey100,
+        },
+      },
+      {
+        surface: 'purple',
+        variant: 'outline',
+        colorscheme: 'purple',
+        styles: {
+          borderColor: theme.isLight ? theme.colors.purple700 : theme.colors.purple300,
+          backgroundColor: theme.isLight ? theme.colors.purple900 : theme.colors.purple50,
+        },
+      },
+      {
+        surface: 'purple',
+        variant: 'outline',
+        colorscheme: 'grey',
+        styles: {
+          borderColor: theme.isLight ? theme.colors.purple700 : theme.colors.grey300,
+          backgroundColor: theme.isLight ? theme.colors.purple800 : theme.colors.grey75,
+        },
+      },
+      {
+        surface: 'purple',
+        variant: 'elevated',
+        colorscheme: 'base',
+        styles: {
+          borderColor: theme.isLight ? theme.colors.purple600 : theme.colors.grey300,
+          backgroundColor: theme.isLight ? theme.colors.purple800 : theme.colors.grey100,
+        },
+      },
+      {
+        surface: 'purple',
+        variant: 'elevated',
+        colorscheme: 'purple',
+        styles: {
+          borderColor: theme.isLight ? theme.colors.purple700 : theme.colors.purple300,
+          backgroundColor: theme.isLight ? theme.colors.purple900 : theme.colors.purple50,
+        },
+      },
+      {
+        surface: 'purple',
+        variant: 'elevated',
+        colorscheme: 'grey',
+        styles: {
+          borderColor: theme.isLight ? theme.colors.purple700 : theme.colors.grey300,
+          backgroundColor: theme.isLight ? theme.colors.purple800 : theme.colors.grey75,
+        },
+      },
+      {
+        surface: 'purple',
+        variant: 'dashed',
+        colorscheme: 'base',
+        styles: {
+          borderColor: theme.isLight ? theme.colors.purple600 : theme.colors.grey300,
+          backgroundColor: theme.isLight ? theme.colors.purple800 : theme.colors.grey100,
+        },
+      },
+      {
+        surface: 'purple',
+        variant: 'dashed',
+        colorscheme: 'purple',
+        styles: {
+          borderColor: theme.isLight ? theme.colors.purple700 : theme.colors.purple300,
+          backgroundColor: theme.isLight ? theme.colors.purple900 : theme.colors.purple50,
+        },
+      },
+      {
+        surface: 'purple',
+        variant: 'dashed',
+        colorscheme: 'grey',
+        styles: {
+          borderColor: theme.isLight ? theme.colors.purple700 : theme.colors.grey300,
+          backgroundColor: theme.isLight ? theme.colors.purple800 : theme.colors.grey75,
+        },
+      },
+      {
+        surface: 'purple',
+        variant: 'filled',
+        colorscheme: 'purple',
+        styles: {
+          backgroundColor: theme.isLight ? theme.colors.purple1000 : theme.colors.purple100,
+        },
+      },
+    ],
   },
 }));
 

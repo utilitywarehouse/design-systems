@@ -24,17 +24,17 @@ const CheckboxLabel = forwardRef<Text, LabelProps>(({ children, style, ...props 
 
 CheckboxLabel.displayName = 'CheckboxLabel';
 
-const styles = StyleSheet.create(({ colors }) => ({
+const styles = StyleSheet.create(theme => ({
   text: {
     variants: {
       checked: {
         true: {
-          color: colors.grey1000,
+          color: theme.colors.grey1000,
         },
       },
       disabled: {
         true: {
-          color: colors.grey400,
+          color: theme.colors.grey400,
         },
       },
     },

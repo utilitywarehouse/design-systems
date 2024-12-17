@@ -17,19 +17,19 @@ const Label = forwardRef<RNText, LabelProps>(
 
 Label.displayName = 'Label';
 
-const styles = StyleSheet.create(({ colors, fontWeights, lineHeights }) => ({
+const styles = StyleSheet.create(theme => ({
   text: {
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights['lg'],
+    fontWeight: theme.fontWeights.semibold,
+    lineHeight: theme.lineHeights['lg'],
     variants: {
       nested: {
         true: {
-          fontWeight: fontWeights.normal,
+          fontWeight: theme.fontWeights.normal,
         },
       },
       disabled: {
         true: {
-          color: colors.grey400,
+          color: theme.colors.grey400,
         },
       },
     },

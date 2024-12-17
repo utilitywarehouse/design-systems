@@ -31,7 +31,7 @@ const RadioIndicator = forwardRef<View, ViewProps>((props, ref) => {
   );
 });
 
-const styles = StyleSheet.create(({ colors, colorMode, radii, borderWidths, space }) => ({
+const styles = StyleSheet.create(theme => ({
   outline: {
     alignSelf: 'flex-start',
   },
@@ -39,21 +39,21 @@ const styles = StyleSheet.create(({ colors, colorMode, radii, borderWidths, spac
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    borderColor: colorMode === 'dark' ? colors.grey600 : colors.grey500,
-    borderWidth: borderWidths[2],
-    borderRadius: radii.full,
-    width: space[6],
-    height: space[6],
+    borderColor: theme.colorMode === 'dark' ? theme.colors.grey600 : theme.colors.grey500,
+    borderWidth: theme.borderWidths[2],
+    borderRadius: theme.radii.full,
+    width: theme.space[6],
+    height: theme.space[6],
     variants: {
       checked: {
         true: {
-          borderColor: colorMode === 'dark' ? colors.cyan700 : colors.cyan500,
+          borderColor: theme.colorMode === 'dark' ? theme.colors.cyan700 : theme.colors.cyan500,
           backgroundColor: 'transparent',
         },
       },
       disabled: {
         true: {
-          borderColor: colors.grey400,
+          borderColor: theme.colors.grey400,
         },
       },
     },

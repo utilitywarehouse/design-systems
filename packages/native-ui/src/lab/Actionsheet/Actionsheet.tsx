@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Modal, Dimensions, Keyboard, KeyboardEvent, DimensionValue } from 'react-native';
+import { Modal, Dimensions, Keyboard, KeyboardEvent } from 'react-native';
 import Animated, {
   useSharedValue,
   withTiming,
@@ -147,9 +147,7 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
     <Modal transparent visible={isModalVisible} animationType="none">
       <ActionsheetContext.Provider value={value}>
         {showBackdrop ? <ActionsheetBackdrop /> : null}
-        <Animated.View
-          style={[styles.sheetContainer, animatedStyle, styles.extraStyles(maxHeight)]}
-        >
+        <Animated.View style={[styles.sheetContainer, animatedStyle, { maxHeight }]}>
           {includeContent ? <ActionsheetContent>{children}</ActionsheetContent> : children}
         </Animated.View>
       </ActionsheetContext.Provider>
@@ -157,19 +155,19 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
   );
 };
 
-const styles = StyleSheet.create(({ radii, colorMode, colors }) => ({
+const styles = StyleSheet.create(theme => ({
   sheetContainer: {
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    borderTopLeftRadius: radii['2xl'],
-    borderTopRightRadius: radii['2xl'],
-    borderBottomLeftRadius: radii.none,
-    borderBottomRightRadius: radii.none,
-    backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
-    ...(colorMode === 'light'
+    borderTopLeftRadius: theme.radii['2xl'],
+    borderTopRightRadius: theme.radii['2xl'],
+    borderBottomLeftRadius: theme.radii.none,
+    borderBottomRightRadius: theme.radii.none,
+    backgroundColor: theme.colorMode === 'light' ? theme.colors.white : theme.colors.grey100,
+    ...(theme.colorMode === 'light'
       ? {
-          shadowColor: colors.grey900,
+          shadowColor: theme.colors.grey900,
           shadowOffset: {
             width: 0,
             height: 3,
@@ -180,9 +178,6 @@ const styles = StyleSheet.create(({ radii, colorMode, colors }) => ({
         }
       : {}),
   },
-  extraStyles: (maxHeight: DimensionValue) => ({
-    maxHeight,
-  }),
 }));
 
 export default Actionsheet;

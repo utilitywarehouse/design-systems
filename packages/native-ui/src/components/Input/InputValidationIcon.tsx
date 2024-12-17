@@ -36,25 +36,25 @@ const InputIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
 
 InputIcon.displayName = 'InputIcon';
 
-const styles = StyleSheet.create(({ colors, space, colorMode }) => ({
+const styles = StyleSheet.create(theme => ({
   icon: {
-    color: colors.grey700,
+    color: theme.colors.grey700,
     width: 24,
     height: 24,
-    paddingLeft: space[2],
+    paddingLeft: theme.space[2],
     variants: {
       validationStatus: {
         invalid: {
-          color: colorMode === 'light' ? colors.red500 : colors.red700,
+          color: theme.colorMode === 'light' ? theme.colors.red500 : theme.colors.red700,
         },
         valid: {
-          color: colorMode === 'light' ? colors.green500 : colors.green700,
+          color: theme.colorMode === 'light' ? theme.colors.green500 : theme.colors.green700,
         },
         initial: {},
       },
       disabled: {
         true: {
-          color: colors.grey400,
+          color: theme.colors.grey400,
         },
       },
     },

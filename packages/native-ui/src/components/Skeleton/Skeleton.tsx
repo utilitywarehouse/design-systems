@@ -10,7 +10,7 @@ import Animated, {
   Easing,
 } from 'react-native-reanimated';
 import type SkeletonProps from './Skeleton.props';
-import { AnimatableNumericValue, type DimensionValue, View } from 'react-native';
+import { AnimatableNumericValue, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
@@ -56,7 +56,12 @@ const Skeleton = forwardRef<View, SkeletonProps>(
         {...props}
         style={[
           styles.skeleton,
-          styles.size(width, height, backgroundColorValue, borderRadiusValue),
+          {
+            width,
+            height,
+            ...(backgroundColorValue ? { backgroundColor: backgroundColorValue } : {}),
+            ...(borderRadiusValue ? { borderRadius: borderRadiusValue } : {}),
+          },
           style,
           animatedStyle,
         ]}
@@ -67,22 +72,11 @@ const Skeleton = forwardRef<View, SkeletonProps>(
 
 Skeleton.displayName = 'Skeleton';
 
-const styles = StyleSheet.create(({ colorMode, colors, radii }) => ({
+const styles = StyleSheet.create(theme => ({
   skeleton: {
-    backgroundColor: colorMode === 'light' ? colors.grey75 : colors.grey300,
-    borderRadius: radii.sm,
+    backgroundColor: theme.colorMode === 'light' ? theme.colors.grey75 : theme.colors.grey300,
+    borderRadius: theme.radii.sm,
   },
-  size: (
-    width?: DimensionValue,
-    height?: DimensionValue,
-    backgroundColor?: ColorValue,
-    borderRadius?: AnimatableNumericValue
-  ) => ({
-    width,
-    height,
-    ...(backgroundColor ? { backgroundColor } : {}),
-    ...(borderRadius ? { borderRadius } : {}),
-  }),
 }));
 
 export default Skeleton;

@@ -125,11 +125,11 @@ const ListItemRoot = forwardRef<
 
 ListItemRoot.displayName = 'ListItemRoot';
 
-const styles = StyleSheet.create(({ space, colorMode, colors }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
-    padding: space[4],
+    padding: theme.space[4],
     flexDirection: 'row',
-    gap: space[3],
+    gap: theme.space[3],
   },
   extraStyles: (showPressed?: boolean, active?: boolean, disabled?: boolean) => {
     if (!showPressed || disabled) {
@@ -139,7 +139,7 @@ const styles = StyleSheet.create(({ space, colorMode, colors }) => ({
     }
     if (showPressed && active) {
       return {
-        backgroundColor: colorMode === 'light' ? colors.grey75 : colors.grey150,
+        backgroundColor: theme.colorMode === 'light' ? theme.colors.grey75 : theme.colors.grey150,
       };
     }
     return {};

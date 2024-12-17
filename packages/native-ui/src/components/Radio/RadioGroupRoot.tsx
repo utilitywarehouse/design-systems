@@ -13,9 +13,9 @@ const RadioGroup = forwardRef<View, RadioGroupProps>(({ children, style, ...prop
 
 RadioGroup.displayName = 'RadioGroup';
 
-const styles = StyleSheet.create(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
-    gap: space[2],
+    gap: theme.space[2],
   },
 }));
 

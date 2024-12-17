@@ -76,13 +76,7 @@ const styles = StyleSheet.create(theme => ({
       },
     },
   },
-  // extraStyles: (flexDirection: ViewStyle['flexDirection']) => {
-  //   const extraStyles = {
-  //     flexDirection,
-  //   };
-
-  //   return extraStyles;
-  // },
+  extraStyles: (flexDirection: ViewStyle['flexDirection']) => ({ flexDirection }),
 }));
 
 export default ButtonGroupRoot;
