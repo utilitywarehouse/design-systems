@@ -30,7 +30,7 @@ export interface BadgeProps extends ComponentPropsWithout<'span', RemovedProps> 
    */
   bottomRadiusZero?: boolean;
   /**
-   * Sets a more compact padding
+   * Set the size of the Badge
    * @default medium
    */
   size?: Responsive<(typeof sizes)[number]>;
