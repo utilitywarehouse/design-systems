@@ -7,6 +7,7 @@ StyleSheet.configure({
   breakpoints,
   themes: appThemes,
   settings: {
+    initialTheme: 'light',
     adaptiveThemes: false,
   },
 });

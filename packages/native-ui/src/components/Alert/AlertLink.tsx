@@ -17,7 +17,7 @@ const AlertLink = forwardRef<PressableRef, PressableProps>(({ children, ...props
 export const AlertLinkText = forwardRef<ElementRef<typeof Text>, TextProps>(
   ({ children, ...props }, ref) => {
     return (
-      <AlertText ref={ref} {...props} style={[styles.text, props.style]}>
+      <AlertText ref={ref} {...props} semibold>
         {children}
       </AlertText>
     );
@@ -42,9 +42,6 @@ const styles = StyleSheet.create(theme => ({
     alignItems: 'center',
     flexDirection: 'row',
     gap: theme.space[1],
-  },
-  text: {
-    fontWeight: theme.fontWeights.semibold,
   },
   icon: {
     width: 16,

@@ -41,7 +41,7 @@ const styles = StyleSheet.create(theme => ({
     variants: {
       variant: {
         dashed: {
-          borderWidth: 2,
+          borderWidth: theme.borderWidths[2],
           borderStyle: 'dashed',
         },
         elevated: {

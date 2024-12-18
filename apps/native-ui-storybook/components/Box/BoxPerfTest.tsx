@@ -6,12 +6,11 @@ import {
   View,
   Box,
   ButtonGroup,
-  StyleSheet as createStyleSheet,
+  StyleSheet,
 } from '@utilitywarehouse/native-ui';
 import { Box as LabBox } from '@utilitywarehouse/native-ui/lab';
 import React, { useState } from 'react';
 import TimedRender from '../TimedRender';
-import { StyleSheet } from 'react-native';
 import StoryWrap from '../../docs/components/StoryWrap';
 import { colors } from '@utilitywarehouse/colour-system';
 
@@ -131,7 +130,7 @@ const BoxPerfTest: StoryFn = () => {
   );
 };
 
-const styless = createStyleSheet.create(theme => ({
+const styless = StyleSheet.create(theme => ({
   styledView: {
     borderColor: 'rgb(255, 0, 0)',
     borderWidth: 2,
