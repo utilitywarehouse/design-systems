@@ -1,5 +1,13 @@
 # @utilitywarehouse/native-ui
 
+## 0.11.0
+
+### Minor Changes
+
+- [#654](https://github.com/utilitywarehouse/design-systems/pull/654) [`de2fe90`](https://github.com/utilitywarehouse/design-systems/commit/de2fe9082e78eb354511af7df9da3e682536daeb) Thanks [@jordmccord](https://github.com/jordmccord)! - Removes `gluestack-style` dependency
+
+- [#654](https://github.com/utilitywarehouse/design-systems/pull/654) [`de2fe90`](https://github.com/utilitywarehouse/design-systems/commit/de2fe9082e78eb354511af7df9da3e682536daeb) Thanks [@jordmccord](https://github.com/jordmccord)! - Removes unstyled components
+
 ## 0.10.1
 
 ### Patch Changes
