@@ -3,9 +3,8 @@ import {
   ActionsheetContent,
   ActionsheetDragIndicator,
   ActionsheetDragIndicatorWrapper,
-  Box,
 } from '@utilitywarehouse/native-ui/lab';
-import { Button, StyleSheet, Text } from '@utilitywarehouse/native-ui';
+import { Button, StyleSheet, Text, Box } from '@utilitywarehouse/native-ui';
 import React, { useState } from 'react';
 
 const styles = StyleSheet.create(theme => ({

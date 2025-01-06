@@ -1,6 +1,5 @@
 import { Text } from '@utilitywarehouse/native-ui';
-import { StyleSheet } from '@utilitywarehouse/native-ui';
-import { Box } from '@utilitywarehouse/native-ui/lab';
+import { StyleSheet, Box } from '@utilitywarehouse/native-ui';
 import React, { FC } from 'react';
 
 interface CarouselItemProps {

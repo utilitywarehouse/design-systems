@@ -1,7 +1,6 @@
 import { ComponentProps } from 'react';
 import { StoryFn } from '@storybook/react';
-import { Text, useTheme } from '@utilitywarehouse/native-ui';
-import { Box } from '@utilitywarehouse/native-ui/lab';
+import { Text, useTheme, Box } from '@utilitywarehouse/native-ui';
 import React from 'react';
 import { colors } from '@utilitywarehouse/colour-system';
 
@@ -15,7 +14,6 @@ const BoxBasic: StoryFn<{
     <>
       <Box
         {...props}
-        // @ts-expect-error - This is a playground
         bg={colors[bg]}
         h={Number(h)}
         w={Number(w)}

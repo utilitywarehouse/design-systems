@@ -1,6 +1,7 @@
+import React from 'react';
 import { StoryFn } from '@storybook/react';
+import { Box } from '@utilitywarehouse/native-ui';
 import {
-  Box,
   Carousel,
   CarouselItem,
   CarouselItems,
@@ -35,11 +36,7 @@ export const Playground: StoryFn<CarouselItemsProps> = props => (
       <CarouselItems {...props}>
         {items.map(({ color, key, title }) => (
           <CarouselItem key={key}>
-            <CarouselItemCard
-              backgroundColor={color}
-              key={key}
-              title={`•••• •••• •••• ${title}`}
-            />
+            <CarouselItemCard backgroundColor={color} key={key} title={`•••• •••• •••• ${title}`} />
           </CarouselItem>
         ))}
       </CarouselItems>

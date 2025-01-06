@@ -1,7 +1,7 @@
 import React, { ComponentProps, forwardRef } from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { Box } from '../../lab';
+import { Box } from '../Box';
 
 interface CenterProps extends Omit<ComponentProps<typeof Box>, 'style'> {}
 

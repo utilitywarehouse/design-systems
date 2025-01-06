@@ -89,7 +89,7 @@ const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...
 
   const animatedView = (
     <Animated.View
-      style={[styles.content, styles.extraStyles(minHeight, showIndicator), style]}
+      style={[styles.content, styles.extraStyles(minHeight, showIndicator), style as false]}
       {...props}
     >
       {safeAreaContent}

@@ -12,17 +12,20 @@ export const CarouselItem = ({
   ...props
 }: CarouselItemProps) => {
   const opacity = useSharedValue<number>(inactiveOpacity);
-  const animatedStyles = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-    width,
-  }), [opacity, width]);
+  const animatedStyles = useAnimatedStyle(
+    () => ({
+      opacity: opacity.value,
+      width,
+    }),
+    [opacity, width]
+  );
 
   useEffect(() => {
     opacity.value = withTiming(active ? 1 : inactiveOpacity, { duration: 200 });
   }, [active, inactiveOpacity, opacity]);
 
   return (
-    <Animated.View style={[style, animatedStyles]} {...props}>
+    <Animated.View style={[style as false, animatedStyles]} {...props}>
       {children}
     </Animated.View>
   );

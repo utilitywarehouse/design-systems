@@ -24,7 +24,7 @@ const ActionsheetBackdropComponent: React.FC<Omit<ViewProps, 'children'>> = ({
 
   return (
     <TapGestureHandler onEnded={closeOnBackdropPress ? onClose : undefined}>
-      <Animated.View style={[styles.backdrop, animatedStyle, style]} {...props} />
+      <Animated.View style={[styles.backdrop, animatedStyle, style as false]} {...props} />
     </TapGestureHandler>
   );
 };

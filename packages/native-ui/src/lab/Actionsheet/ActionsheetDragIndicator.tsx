@@ -18,7 +18,7 @@ const ActionsheetDragIndicator: React.FC<ViewProps> = ({ style, ...props }) => {
     [showIndicator, dragging]
   );
 
-  return <Animated.View style={[styles.indicator, animatedStyle, style]} {...props} />;
+  return <Animated.View style={[styles.indicator, animatedStyle, style as false]} {...props} />;
 };
 
 const styles = StyleSheet.create(theme => ({

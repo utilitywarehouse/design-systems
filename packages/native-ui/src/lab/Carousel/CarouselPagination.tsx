@@ -3,7 +3,7 @@ import React, { FC, useContext, useEffect, useMemo } from 'react';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { Text } from '../../components/Text';
-import { Box } from '../';
+import { Box } from '../../';
 import { CarouselPaginationProps, CarouselPaginationItemProps } from './Carousel.props';
 import CarouselContext from './Carousel.context';
 
