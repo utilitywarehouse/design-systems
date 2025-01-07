@@ -1,5 +1,0 @@
-@breakpoints {
-  .uw-r-columns {
-    grid-template-columns: repeat(var(--r-columns), minmax(10px, 1fr));
-  }
-}

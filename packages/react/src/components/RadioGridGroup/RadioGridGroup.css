@@ -1,7 +1,0 @@
-.uw-RadioGridGroup {
-  .uw-RadioGridGroupRoot {
-    display: grid;
-    gap: 16px;
-    min-width: fit-content;
-  }
-}
