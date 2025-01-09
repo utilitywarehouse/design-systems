@@ -4,17 +4,12 @@ import { Text } from 'react-native';
 import type { TextProps } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { useBadgeContext } from './Badge.context';
-import type BadgeProps from './Badge.props';
 
 const BadgeText = forwardRef<Text, TextProps>(({ children, style, ...props }, ref) => {
   const { colorScheme, strong } = useBadgeContext();
-  styles.useVariants({ colorScheme });
+  styles.useVariants({ colorScheme, strong });
   return (
-    <Text
-      ref={ref}
-      {...props}
-      style={[styles.text, styles.extraStyles(colorScheme, strong), style]}
-    >
+    <Text ref={ref} {...props} style={[styles.text, style]}>
       {children}
     </Text>
   );
@@ -46,21 +41,37 @@ const styles = StyleSheet.create(theme => ({
           color: theme.isDark ? theme.colors.grey50 : theme.colors.grey900,
         },
       },
+      strong: {
+        true: {},
+      },
     },
-  },
-  extraStyles: (colorScheme: BadgeProps['colorScheme'], strong: BadgeProps['strong']) => {
-    if (colorScheme === 'gold' && strong) {
-      return {
-        color: theme.isDark ? theme.colors.gold50 : theme.colors.gold900,
-      };
-    }
-    if (colorScheme && strong) {
-      return {
-        color: theme.colors[`${colorScheme}50`],
-      };
-    }
-
-    return {};
+    compoundVariants: [
+      {
+        colorScheme: 'cyan',
+        strong: true,
+        styles: { color: theme.colors.cyan50 },
+      },
+      {
+        colorScheme: 'red',
+        strong: true,
+        styles: { color: theme.colors.red50 },
+      },
+      {
+        colorScheme: 'green',
+        strong: true,
+        styles: { color: theme.colors.green50 },
+      },
+      {
+        colorScheme: 'gold',
+        strong: true,
+        styles: { color: theme.isDark ? theme.colors.gold50 : theme.colors.gold900 },
+      },
+      {
+        colorScheme: 'grey',
+        strong: true,
+        styles: { color: theme.colors.grey50 },
+      },
+    ],
   },
 }));
 

@@ -26,11 +26,7 @@ const Badge = forwardRef<View, BadgeProps>(({ children, ...props }, ref) => {
 
   return (
     <BadgeContext.Provider value={value}>
-      <View
-        ref={ref}
-        {...rest}
-        style={[styles.container, styles.extraStyles(colorScheme, strong), style]}
-      >
+      <View ref={ref} {...rest} style={[styles.container, style]}>
         {childIsText ? <BadgeText>{children}</BadgeText> : children}
       </View>
     </BadgeContext.Provider>
@@ -86,34 +82,33 @@ const styles = StyleSheet.create(theme => ({
         },
       },
     },
-  },
-  extraStyles: (colorScheme: BadgeProps['colorScheme'], strong: BadgeProps['strong']) => {
-    if (colorScheme === 'cyan' && strong) {
-      return {
-        backgroundColor: theme.isDark ? theme.colors.cyan700 : theme.colors.cyan600,
-      };
-    }
-    if (colorScheme === 'red' && strong) {
-      return {
-        backgroundColor: theme.isDark ? theme.colors.red700 : theme.colors.red600,
-      };
-    }
-    if (colorScheme === 'green' && strong) {
-      return {
-        backgroundColor: theme.isDark ? theme.colors.green700 : theme.colors.green600,
-      };
-    }
-    if (colorScheme === 'gold' && strong) {
-      return {
-        backgroundColor: theme.isDark ? theme.colors.gold700 : theme.colors.gold300,
-      };
-    }
-    if (colorScheme === 'grey' && strong) {
-      return {
-        backgroundColor: theme.isDark ? theme.colors.grey700 : theme.colors.grey600,
-      };
-    }
-    return {};
+    compoundVariants: [
+      {
+        colorScheme: 'cyan',
+        strong: true,
+        styles: { backgroundColor: theme.isDark ? theme.colors.cyan700 : theme.colors.cyan600 },
+      },
+      {
+        colorScheme: 'red',
+        strong: true,
+        styles: { backgroundColor: theme.isDark ? theme.colors.red700 : theme.colors.red600 },
+      },
+      {
+        colorScheme: 'green',
+        strong: true,
+        styles: { backgroundColor: theme.isDark ? theme.colors.green700 : theme.colors.green600 },
+      },
+      {
+        colorScheme: 'gold',
+        strong: true,
+        styles: { backgroundColor: theme.isDark ? theme.colors.gold700 : theme.colors.gold300 },
+      },
+      {
+        colorScheme: 'grey',
+        strong: true,
+        styles: { backgroundColor: theme.isDark ? theme.colors.grey700 : theme.colors.grey600 },
+      },
+    ],
   },
 }));
 
