@@ -23,7 +23,12 @@ module.exports = {
           '@utilitywarehouse/native-ui',
         ],
         babelPlugins: [
-          'react-native-unistyles/plugin',
+          [
+            'react-native-unistyles/plugin',
+            {
+              autoProcessImports: ['@utilitywarehouse/native-ui'],
+            },
+          ],
           '@babel/plugin-proposal-export-namespace-from',
           'react-native-reanimated/plugin',
         ],

@@ -9,6 +9,7 @@ StyleSheet.configure({
   settings: {
     initialTheme: 'light',
     adaptiveThemes: false,
+    CSSVars: false,
   },
 });
 

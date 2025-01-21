@@ -111,7 +111,9 @@ const preview: Preview = {
   globals: {
     device: 'web',
   },
-
+  globalTypes: {
+    theme: { type: 'string' },
+  },
   parameters: {
     docs: {
       container: DocsContainer,

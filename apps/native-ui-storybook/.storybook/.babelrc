@@ -4,16 +4,20 @@
   ],
   "plugins": [
     [
-      "module-resolver",
+      "react-native-unistyles/plugin",
       {
-        "alias": {
-          "@utilitywarehouse/native-ui": "../../packages/native-ui/src",
-          "@utilitywarehouse/native-ui/lab": "../../packages/native-ui/src/lab"
-        }
+        "autoProcessImports": [
+          "@utilitywarehouse/native-ui",
+          "../../packages/native-ui"
+        ],
+        "autoProcessPaths": [
+          "@utilitywarehouse/native-ui",
+          "../../packages/native-ui"
+        ],
+        "debug": true
       }
     ],
     "@babel/plugin-proposal-export-namespace-from",
-    "react-native-reanimated/plugin",
-    "react-native-unistyles/plugin"
+    "react-native-reanimated/plugin"
   ]
 }
