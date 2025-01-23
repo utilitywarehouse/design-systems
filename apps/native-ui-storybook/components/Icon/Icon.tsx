@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 
 import { Icon, createIcon, HStack } from '@utilitywarehouse/native-ui';
 import * as Icons from '@utilitywarehouse/react-native-icons';
-import { Path, Rect } from 'react-native-svg';
+import Svg, { Path, Rect } from 'react-native-svg';
 import { colors } from '@utilitywarehouse/colour-system';
 import { StoryFn } from '@storybook/react';
 
@@ -38,6 +38,7 @@ IconBasic.args = {
 };
 
 export const GluestackIcon = createIcon({
+  Root: Svg,
   viewBox: '0 0 32 32',
   path: (
     <>

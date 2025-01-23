@@ -11,7 +11,7 @@ import React, {
 } from 'react';
 import { AccessibilityActionEvent, FlatList, ViewToken, ViewStyle } from 'react-native';
 
-import { Box } from '../';
+import { Box } from '../../components';
 import CarouselContext from './Carousel.context';
 import { CarouselItemProps, CarouselItemsProps, CarouselRef } from './Carousel.props';
 

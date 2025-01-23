@@ -1,9 +1,9 @@
-import type { ViewProps } from 'react-native';
+import type { PressableProps } from 'react-native';
 
 /**
  * Props for the Alert component.
  */
-interface AlertWithoutChildrenProps extends ViewProps {
+interface AlertWithoutChildrenProps extends PressableProps {
   /**
    * The text content of the alert.
    */
@@ -18,6 +18,16 @@ interface AlertWithoutChildrenProps extends ViewProps {
    * The text for the link in the alert.
    */
   link?: string;
+
+  /**
+   * The test ID for the link.
+   */
+  linkTestID?: string;
+
+  /**
+   * The test ID for the icon button.
+   */
+  iconButtonTestID?: string;
 
   /**
    * The color scheme of the alert.
@@ -44,7 +54,7 @@ interface AlertWithoutChildrenProps extends ViewProps {
 }
 
 interface AlertWithChildrenProps
-  extends ViewProps,
+  extends PressableProps,
     Omit<AlertWithoutChildrenProps, 'text' | 'children'> {
   text?: never;
   onPressLink?: never;
