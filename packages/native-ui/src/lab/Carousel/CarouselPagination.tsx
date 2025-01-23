@@ -1,9 +1,7 @@
 import { nanoid } from 'nanoid/non-secure';
 import React, { FC, useContext, useEffect, useMemo } from 'react';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-
-import { Text } from '../../components/Text';
-import { Box } from '../';
+import { Box, Text } from '../../components';
 import { CarouselPaginationProps, CarouselPaginationItemProps } from './Carousel.props';
 import CarouselContext from './Carousel.context';
 

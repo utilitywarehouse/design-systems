@@ -1,4 +1,4 @@
-import { Button, ButtonIcon, ButtonText, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { Button, ButtonIcon, ButtonText } from '@utilitywarehouse/native-ui';
 import { ChevronUpSmallIcon } from '@utilitywarehouse/react-native-icons';
 import React, { useState } from 'react';
 import { Platform } from 'react-native';
