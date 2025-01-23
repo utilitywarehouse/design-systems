@@ -1,5 +1,15 @@
 # @utilitywarehouse/native-ui
 
+## 0.11.0
+
+### Minor Changes
+
+- [#665](https://github.com/utilitywarehouse/design-systems/pull/665) [`e46c3b0`](https://github.com/utilitywarehouse/design-systems/commit/e46c3b0b80316c3411b89eea4a651d547513ee1f) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `onPress` prop to `Alert`
+
+- [#654](https://github.com/utilitywarehouse/design-systems/pull/654) [`de2fe90`](https://github.com/utilitywarehouse/design-systems/commit/de2fe9082e78eb354511af7df9da3e682536daeb) Thanks [@jordmccord](https://github.com/jordmccord)! - Removes `gluestack-style` dependency
+
+- [#654](https://github.com/utilitywarehouse/design-systems/pull/654) [`de2fe90`](https://github.com/utilitywarehouse/design-systems/commit/de2fe9082e78eb354511af7df9da3e682536daeb) Thanks [@jordmccord](https://github.com/jordmccord)! - Removes unstyled components
+
 ## 0.10.1
 
 ### Patch Changes
