@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.11.1
+
+### Patch Changes
+
+- [`143fb91`](https://github.com/utilitywarehouse/design-systems/commit/143fb9119e91ea8a8aade3b2aa9e743c0c00503c) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixes `ListItemSupportingText`, `ListHeadingSupportingText` and `ListItemText` component types
+
 ## 0.11.0
 
 ### Minor Changes
