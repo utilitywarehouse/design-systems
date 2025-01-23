@@ -79,15 +79,18 @@ const MyComponent = () => {
 
 ## Props
 
-| Property            | Type                                   | Description                                                        | Default |
-| ------------------- | -------------------------------------- | ------------------------------------------------------------------ | ------- |
-| `colorScheme`       | `'cyan' \| 'green' \| 'gold' \| 'red'` | The colour scheme of the alert. Mapped to an icon.                 | 'info'  |
-| `title`             | `string`                               | The title of the alert.                                            |         |
-| `text`              | `string`                               | The text of the alert.                                             |         |
-| `link`              | `string`                               | The text of the link.                                              |         |
-| `onPressLink`       | `() => void`                           | A callback function to be called when the link is clicked.         |         |
-| `onPressIconButton` | `() => void`                           | A callback function to be called when the icon button is clicked.  |         |
-| `onClose`           | `() => void`                           | A callback function to be called when the close button is clicked. |         |
+| Property            | Type                                   | Description                                                       | Default |
+| ------------------- | -------------------------------------- | ----------------------------------------------------------------- | ------- |
+| `colorScheme`       | `'cyan' \| 'green' \| 'gold' \| 'red'` | The colour scheme of the alert. Mapped to an icon.                | 'info'  |
+| `title`             | `string`                               | The title of the alert.                                           |         |
+| `text`              | `string`                               | The text of the alert.                                            |         |
+| `link`              | `string`                               | The text of the link.                                             |         |
+| `linkTestID`        | `string`                               | The testID of the link.                                           |         |
+| `iconButtonTestID`  | `string`                               | The testID of the icon button.                                    |         |
+| `onPress`           | `() => void`                           | A callback function to be called when the alert is tapped.        |         |
+| `onPressLink`       | `() => void`                           | A callback function to be called when the link is tapped.         |         |
+| `onPressIconButton` | `() => void`                           | A callback function to be called when the icon button is tapped.  |         |
+| `onClose`           | `() => void`                           | A callback function to be called when the close button is tapped. |         |
 
 ## Variants
 
@@ -106,15 +109,15 @@ If you need to use the Alert component in a more advanced way, you can use the p
       <VStack space="lg" style={{flex: 1}}>
         <AlertTitle>Information</AlertTitle>
         <AlertText>Unlock the power of knowledge with the following information.</AlertText>
-        <AlertLink onPress={() => console.log('Link clicked')}>
+        <AlertLink onPress={() => console.log('Link tapped')}>
           <AlertLinkText>Learn more</AlertLinkText>
           <AlertLinkChevron />
         </AlertLink>
       </VStack>
-      <AlertIconButton onPress={() => console.log('Icon button clicked')}>
+      <AlertIconButton onPress={() => console.log('Icon button tapped')}>
         <AlertIconButtonChevron />
       </AlertIconButton>
-      <AlertCloseButton onClose={() => console.log('Close button clicked')}>
+      <AlertCloseButton onClose={() => console.log('Close button tapped')}>
         <AlertCloseButtonIcon />
       </AlertCloseButton>
     </Alert>
@@ -146,17 +149,17 @@ const MyComponent = () => {
         <AlertTitle>Information</AlertTitle>
         <AlertText>Unlock the power of knowledge with the following information.</AlertText>
 
-        <AlertLink onPress={() => console.log('Link clicked')}>
+        <AlertLink onPress={() => console.log('Link tapped')}>
           <AlertLinkText>Learn more</AlertLinkText>
           <AlertLinkChevron />
         </AlertLink>
       </VStack>
       {/* Note: AlertIconButton should not be used with the AlertLink component */}
-      <AlertIconButton onPress={() => console.log('Icon button clicked')}>
+      <AlertIconButton onPress={() => console.log('Icon button tapped')}>
         <AlertIconButtonChevron />
       </AlertIconButton>
 
-      <AlertCloseButton onClose={() => console.log('Close button clicked')}>
+      <AlertCloseButton onClose={() => console.log('Close button tapped')}>
         <AlertCloseButtonIcon />
       </AlertCloseButton>
     </Alert>
