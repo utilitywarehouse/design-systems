@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Text } from '../../Text';
-import TextProps from '../../Text/Text.props';
+import type TextProps from '../../Text/Text.props';
 import { Text as RNText } from 'react-native';
 
 const ListHeadingSupportingText = forwardRef<RNText, TextProps>(({ children, ...props }, ref) => {
