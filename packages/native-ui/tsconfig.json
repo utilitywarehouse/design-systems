@@ -8,13 +8,13 @@
     "./src/components/unstyled",
     "./src/**/*.figma.tsx",
   ],
-  "baseUrl": ".", // This must be specified if "paths" is.
-  "paths": {
-    "react-native": [
-      "node_modules/react-native/"
-    ],
-  },
   "compilerOptions": {
+    "baseUrl": ".", // This must be specified if "paths" is.
+    "paths": {
+      "react-native": [
+        "node_modules/react-native/"
+      ],
+    },
     "ignoreDeprecations": "5.0",
     "noEmit": false,
     "declaration": true,

@@ -8,3 +8,5 @@ build
 /utils/
 !/src/lab/
 !/src/components/unstyled/
+
+*storybook.log
