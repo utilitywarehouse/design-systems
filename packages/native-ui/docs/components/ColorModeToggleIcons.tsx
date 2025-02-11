@@ -29,7 +29,7 @@ const ColorModeToggleIcons: FC = () => {
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         viewBox="0 0 129 129"
-        enable-background="new 0 0 129 129"
+        enableBackground="new 0 0 129 129"
         color={colorMode === 'light' ? 'black' : 'white'}
         style={{ fill: 'currentcolor', height: '15px' }}
       >

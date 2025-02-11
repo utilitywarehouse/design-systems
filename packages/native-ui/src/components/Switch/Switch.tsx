@@ -166,6 +166,14 @@ const styles = StyleSheet.create(theme => ({
           backgroundColor: theme.tokens.switch.backgroundColorDisabled,
         },
       },
+      value: {
+        true: {
+          backgroundColor: theme.tokens.switch.checked.backgroundColor,
+        },
+        false: {
+          backgroundColor: theme.tokens.switch.unchecked.backgroundColor,
+        },
+      },
     },
   },
   thumb: {

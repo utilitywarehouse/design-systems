@@ -1,13 +1,12 @@
-import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
+import { Meta, Controls, Story, Canvas } from '@storybook/blocks';
 import * as BadgeStories from './Badge.stories';
-import { Badge, BadgeText, Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { Badge, BadgeText, Center } from '../../';
 import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
-
-import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
+import { ViewFigmaButton, BackToTopButton, UsageWrap } from '../../../docs/components';
 
 <BackToTopButton />
 
-<Meta of={BadgeStories} />
+<Meta title="Components / Badge" />
 
 <ViewFigmaButton url="https://www.figma.com/file/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?type=design&node-id=2960-3929&mode=dev" />
 
@@ -23,11 +22,13 @@ Use the `Badge` component to draw attention to another interface element or to p
 
 ## Playground
 
-<Primary />
+<Canvas of={BadgeStories.Playground} />
 
-<Controls />
+<Controls of={BadgeStories.Playground} />
 
 ## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
 
 Badge is a stateless component, e.g. it has no Pressed, Disabled, Active states. Badges should not be used as a mechanism for:
 
@@ -35,13 +36,11 @@ Badge is a stateless component, e.g. it has no Pressed, Disabled, Active states.
 - Assigning a piece of content to a group (tagging)
 - Performing an action
 
-<Canvas>
-  <NativeUIProvider>
-    <Center>
-      <Badge colorScheme="green">Ready</Badge>
-    </Center>
-  </NativeUIProvider>
-</Canvas>
+<UsageWrap>
+  <Center>
+    <Badge colorScheme="green">Ready</Badge>
+  </Center>
+</UsageWrap>
 
 ```tsx
 import { Badge } from '@utilitywarehouse/native-ui';
@@ -68,15 +67,13 @@ The `Badge` component has different variants to style the badge.
 
 Although not recommended, the `Badge` component can be used to create more complex UI with the internal parts of the badge.
 
-<Canvas>
-  <NativeUIProvider>
-    <Center>
-      <Badge colorScheme="cyan">
-        <BadgeText>Add</BadgeText>
-      </Badge>
-    </Center>
-  </NativeUIProvider>
-</Canvas>
+<UsageWrap>
+  <Center>
+    <Badge colorScheme="cyan">
+      <BadgeText>Add</BadgeText>
+    </Badge>
+  </Center>
+</UsageWrap>
 
 ```tsx
 import { Badge, BadgeText } from '@utilitywarehouse/native-ui';

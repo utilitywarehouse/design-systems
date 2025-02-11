@@ -1,2 +1,2 @@
-declare const useColorMode: () => string;
+declare const useColorMode: () => "light" | "dark";
 export default useColorMode;
