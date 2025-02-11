@@ -50,7 +50,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     splash: {
       image: './assets/splash.png',
       resizeMode: 'contain',
-      backgroundColor: '#7A42C8',
+      backgroundColor: '#ffffff',
     },
     updates: {
       fallbackToCacheTimeout: 0,
@@ -67,7 +67,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       package: 'com.utilitywarehouse.nativeui',
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
-        backgroundColor: '#FFFBE8',
+        backgroundColor: '#FFFFFF',
       },
     },
     web: {
