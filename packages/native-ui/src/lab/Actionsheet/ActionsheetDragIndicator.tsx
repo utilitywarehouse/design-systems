@@ -1,9 +1,11 @@
 import React from 'react';
-import { ViewProps } from 'react-native';
+import { View, ViewProps } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { useActionsheetContext } from './Actionsheet.context';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { useTheme } from '../../hooks';
+
+const AnimatedView = Animated.createAnimatedComponent(View);
 
 const ActionsheetDragIndicator: React.FC<ViewProps> = ({ style, ...props }) => {
   const { colors, space } = useTheme();
@@ -18,7 +20,7 @@ const ActionsheetDragIndicator: React.FC<ViewProps> = ({ style, ...props }) => {
     [showIndicator, dragging]
   );
 
-  return <Animated.View style={[styles.indicator, animatedStyle, style as false]} {...props} />;
+  return <AnimatedView style={[styles.indicator, animatedStyle, style as false]} {...props} />;
 };
 
 const styles = StyleSheet.create(theme => ({

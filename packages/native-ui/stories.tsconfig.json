@@ -1,21 +1,16 @@
 {
-  "include": [
-    "./src",
-  ],
+  "include": ["./src"],
   "exclude": [
     "node_modules",
     "example",
     "./src/components/unstyled",
     "./src/**/*.figma.tsx",
-    "./src/**/*.stories.tsx",
-    "./src/**/*.docs.mdx",
+    "./src/**/*.docs.mdx"
   ],
   "compilerOptions": {
-    "baseUrl": ".", // This must be specified if "paths" is.
+    "baseUrl": ".",
     "paths": {
-      "react-native": [
-        "node_modules/react-native/"
-      ],
+      "react-native": ["node_modules/react-native/"]
     },
     "ignoreDeprecations": "5.0",
     "noEmit": false,
@@ -26,10 +21,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,

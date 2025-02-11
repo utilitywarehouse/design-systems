@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import StorybookUIRoot from './.ondevice';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 

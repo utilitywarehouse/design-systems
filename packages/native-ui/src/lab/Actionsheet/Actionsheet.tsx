@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Modal, Dimensions, Keyboard, KeyboardEvent } from 'react-native';
+import { Modal, Dimensions, Keyboard, KeyboardEvent, View } from 'react-native';
 import Animated, {
   useSharedValue,
   withTiming,
@@ -12,6 +12,8 @@ import ActionsheetContent from './ActionsheetContent';
 import { StyleSheet } from 'react-native-unistyles';
 import type ActionsheetProps from './Actionsheet.props';
 import ActionsheetContext from './Actionsheet.context';
+
+const AnimatedView = Animated.createAnimatedComponent(View);
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -147,9 +149,9 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
     <Modal transparent visible={isModalVisible} animationType="none">
       <ActionsheetContext.Provider value={value}>
         {showBackdrop ? <ActionsheetBackdrop /> : null}
-        <Animated.View style={[styles.sheetContainer, animatedStyle, { maxHeight }]}>
+        <AnimatedView style={[styles.sheetContainer, animatedStyle, { maxHeight }]}>
           {includeContent ? <ActionsheetContent>{children}</ActionsheetContent> : children}
-        </Animated.View>
+        </AnimatedView>
       </ActionsheetContext.Provider>
     </Modal>
   );

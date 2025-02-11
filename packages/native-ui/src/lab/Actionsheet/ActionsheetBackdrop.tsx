@@ -1,9 +1,11 @@
 import React from 'react';
-import { ViewProps } from 'react-native';
+import { View, ViewProps } from 'react-native';
 import { TapGestureHandler, gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
 import { useActionsheetContext } from './Actionsheet.context';
+
+const AnimatedView = Animated.createAnimatedComponent(View);
 
 const ActionsheetBackdropComponent: React.FC<Omit<ViewProps, 'children'>> = ({
   style,
@@ -24,7 +26,7 @@ const ActionsheetBackdropComponent: React.FC<Omit<ViewProps, 'children'>> = ({
 
   return (
     <TapGestureHandler onEnded={closeOnBackdropPress ? onClose : undefined}>
-      <Animated.View style={[styles.backdrop, animatedStyle, style as false]} {...props} />
+      <AnimatedView style={[styles.backdrop, animatedStyle, style as false]} {...props} />
     </TapGestureHandler>
   );
 };

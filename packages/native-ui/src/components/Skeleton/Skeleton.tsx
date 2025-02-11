@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React, { forwardRef, useMemo } from 'react';
 import Animated, {
   useSharedValue,
@@ -36,6 +37,10 @@ const Skeleton = forwardRef<View, SkeletonProps>(
     const animatedStyle = useAnimatedStyle(() => {
       return {
         opacity: opacity.value,
+        width,
+        height,
+        ...(backgroundColorValue ? { backgroundColor: backgroundColorValue } : {}),
+        ...(borderRadiusValue ? { borderRadius: borderRadiusValue } : {}),
       };
     }, [opacity]);
 
@@ -50,23 +55,7 @@ const Skeleton = forwardRef<View, SkeletonProps>(
       );
     }, [opacity]);
 
-    return (
-      <AnimatedView
-        ref={ref}
-        {...props}
-        style={[
-          styles.skeleton,
-          {
-            width,
-            height,
-            ...(backgroundColorValue ? { backgroundColor: backgroundColorValue } : {}),
-            ...(borderRadiusValue ? { borderRadius: borderRadiusValue } : {}),
-          },
-          style,
-          animatedStyle,
-        ]}
-      />
-    );
+    return <AnimatedView ref={ref} {...props} style={[styles.skeleton, style, animatedStyle]} />;
   }
 );
 
