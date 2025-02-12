@@ -1,18 +1,22 @@
 import { Text, Card, useColorMode } from '@utilitywarehouse/native-ui';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ScrollWrap } from '../../docs/components';
+import { useArgs } from '@storybook/preview-api';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const CardBasic = ({ ...props }) => {
   const colorMode = useColorMode();
+  const [args, setArgs] = useArgs();
+  useEffect(() => {
+    setArgs({
+      ...args,
+      surfaceColor: colorMode === 'light' ? props.surface : 'base',
+    });
+  }, [props.surface]);
   return (
-    <Box height={60} w="100%">
-      <ScrollWrap backgroundColor={colorMode === 'light' ? props.surface : ''}>
-        <Card {...props}>
-          <Text color={props.surface === 'base' ? '$grey1000' : '$white'}>This is a card.</Text>
-        </Card>
-      </ScrollWrap>
-    </Box>
+    <Card {...props}>
+      <Text color={props.surface === 'base' ? '$grey1000' : '$white'}>This is a card.</Text>
+    </Card>
   );
 };
 

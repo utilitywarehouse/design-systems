@@ -40,18 +40,23 @@ const annotations = [
   require('@storybook/addon-ondevice-actions/preview'),
 ];
 
+// @ts-ignore
 global.STORIES = normalizedStories;
 
 // @ts-ignore
 module?.hot?.accept?.();
 
+// @ts-ignore
 if (!global.view) {
+  // @ts-ignore
   global.view = start({
     annotations,
     storyEntries: normalizedStories,
   });
 } else {
+  // @ts-ignore
   updateView(global.view, annotations, normalizedStories);
 }
 
+// @ts-ignore
 export const view = global.view;
