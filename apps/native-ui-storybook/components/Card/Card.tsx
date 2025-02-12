@@ -1,8 +1,6 @@
 import { Text, Card, useColorMode } from '@utilitywarehouse/native-ui';
 import React, { useEffect } from 'react';
-import { ScrollWrap } from '../../docs/components';
 import { useArgs } from '@storybook/preview-api';
-import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const CardBasic = ({ ...props }) => {
   const colorMode = useColorMode();

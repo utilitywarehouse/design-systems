@@ -31,22 +31,18 @@ const ButtonBasic: StoryFn<{
   // @ts-expect-error - This is a playground
   const icon: ComponentType | undefined = _icon === 'none' ? undefined : Icons[_icon];
   return (
-    <Box height={68} width="100%">
-      <ScrollWrap backgroundColor={_backgroundColor}>
-        <Button
-          size={size}
-          variant={variant}
-          colorScheme={colorScheme}
-          disabled={disabled}
-          inverted={inverted}
-          iconPosition={iconPosition}
-          icon={icon}
-          loading={loading}
-        >
-          {_ButtonText}
-        </Button>
-      </ScrollWrap>
-    </Box>
+    <Button
+      size={size}
+      variant={variant}
+      colorScheme={colorScheme}
+      disabled={disabled}
+      inverted={inverted}
+      iconPosition={iconPosition}
+      icon={icon}
+      loading={loading}
+    >
+      {_ButtonText}
+    </Button>
   );
 };
 

@@ -5,15 +5,12 @@ import { fn } from '@storybook/test';
 import { VStack } from '../VStack';
 import { VariantTitle } from '../../../docs/components';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: 'Stories / Alert',
   component: Alert,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     colorScheme: {
       control: 'select',
@@ -43,7 +40,6 @@ const meta = {
       description: 'Use this handle Icon Button press. (Use a function to handle the event.)',
     },
   },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: {
     colorScheme: 'cyan',
     title: 'Information',

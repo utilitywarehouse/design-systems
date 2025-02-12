@@ -1,5 +1,6 @@
 import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
 import type { Decorator, Preview } from '@storybook/react';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
 import { themes, breakpoints, StyleSheet } from '../src/core';
 import '@utilitywarehouse/fontsource';
 import { themeDark, themeLight } from './themes';
@@ -70,8 +71,19 @@ export const decorators: Decorator[] = [
       return () => channel.removeListener(DARK_MODE_EVENT_NAME, storyListener);
     }, [colorScheme]);
 
+    const bg = (() => {
+      switch (args.surfaceColor) {
+        case 'midnight':
+          return colorsCommon.brandMidnight;
+        case 'purple':
+          return colorsCommon.brandPrimaryPurple;
+        default:
+          return !args.darkMode ? lightColour : darkColour;
+      }
+    })();
+
     return viewMode === 'story' ? (
-      <Box backgroundColor={!args.darkMode ? lightColour : darkColour}>
+      <Box backgroundColor={bg}>
         {globals.device !== 'web' ? (
           <EmulatorRenderer
             platform={globals.device}
@@ -85,7 +97,7 @@ export const decorators: Decorator[] = [
         )}
       </Box>
     ) : (
-      <Box backgroundColor={!args.darkMode ? lightColour : darkColour}>
+      <Box backgroundColor={bg}>
         <Story />
       </Box>
     );

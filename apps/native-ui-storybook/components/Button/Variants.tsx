@@ -3,7 +3,6 @@ import React from 'react';
 import { StoryFn } from '@storybook/react';
 
 import ButtonVariants from './components/ButtonVariants';
-import ScrollWrap from '../../docs/components/ScrollWrap';
 
 const ButtonPlaygroundVariants: StoryFn<{
   size: 'small' | 'medium' | 'large';
@@ -50,7 +49,7 @@ const ButtonPlaygroundVariants: StoryFn<{
   );
 
   return (
-    <ScrollWrap backgroundColor={_backgroundColor}>
+    <>
       {isMobile ? (
         <VStack space="md">{variants}</VStack>
       ) : (
@@ -58,7 +57,7 @@ const ButtonPlaygroundVariants: StoryFn<{
           <HStack space="md">{variants}</HStack>
         </Center>
       )}
-    </ScrollWrap>
+    </>
   );
 };
 

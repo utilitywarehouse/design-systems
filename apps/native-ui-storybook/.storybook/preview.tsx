@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box } from '@utilitywarehouse/native-ui';
-import { useColorScheme } from 'react-native';
+import { ScrollView, useColorScheme } from 'react-native';
 import { useArgs } from '@storybook/preview-api';
 import { Linking } from 'react-native';
 import { navigate } from './utils';
@@ -66,9 +65,9 @@ const preview = {
       })();
 
       return (
-        <Box flex={1} padding="$2" backgroundColor={bg}>
+        <ScrollView style={{ flex: 1, backgroundColor: bg }} contentContainerStyle={{ padding: 8 }}>
           <Story />
-        </Box>
+        </ScrollView>
       );
     },
   ],
