@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
-import { useArgs } from '@storybook/preview-api';
+import React from 'react';
 import { Card } from '.';
 import { Meta, StoryObj } from '@storybook/react';
 import { VariantTitle } from '../../../docs/components';
 import { Text } from '../Text';
 import { VStack } from '../VStack';
-import { useColorMode } from '../../hooks';
 
 const meta = {
   title: 'Stories / Card',
@@ -54,17 +52,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
   render: ({ children, ...props }) => {
-    const colorMode = useColorMode();
-    const [args, setArgs] = useArgs();
-    useEffect(() => {
-      setArgs({
-        ...args,
-        surfaceColor: colorMode === 'light' ? props.surface : 'base',
-      });
-    }, [props.surface]);
     return (
       <Card {...props}>
-        <Text>{children}</Text>
+        <Text color={props.surface === 'base' ? '$grey1000' : '$white'}>{children}</Text>
       </Card>
     );
   },
@@ -75,14 +65,6 @@ export const Variants: Story = {
     controls: { exclude: ['variant', 'colorScheme'] },
   },
   render: ({ children, ...props }) => {
-    const colorMode = useColorMode();
-    const [args, setArgs] = useArgs();
-    useEffect(() => {
-      setArgs({
-        ...args,
-        surfaceColor: colorMode === 'light' ? props.surface : 'base',
-      });
-    }, [props.surface]);
     return (
       <VStack space="lg">
         <VariantTitle title="Dashed - Base">

@@ -55,12 +55,20 @@ export const decorators: Decorator[] = [
       UnistylesRuntime.setTheme(darkModeValue === '!true' ? 'dark' : 'light');
     }, []);
 
+    console.log('args', args);
+
     useEffect(() => {
       const storybookContainer = document.getElementsByTagName('body')[0];
       if (storybookContainer) {
-        storybookContainer.style.backgroundColor = !args.darkMode ? lightColour : darkColour;
+        if (args.surface === 'midnight' || args.inverted) {
+          storybookContainer.style.backgroundColor = colorsCommon.brandMidnight;
+        } else if (args.surface === 'purple') {
+          storybookContainer.style.backgroundColor = colorsCommon.brandPrimaryPurple;
+        } else {
+          storybookContainer.style.backgroundColor = !args.darkMode ? lightColour : darkColour;
+        }
       }
-    }, [args.darkMode]);
+    }, [args.darkMode, args.surface, args.inverted]);
 
     useEffect(() => {
       channel.addListener(DARK_MODE_EVENT_NAME, storyListener);
@@ -71,19 +79,8 @@ export const decorators: Decorator[] = [
       return () => channel.removeListener(DARK_MODE_EVENT_NAME, storyListener);
     }, [colorScheme]);
 
-    const bg = (() => {
-      switch (args.surfaceColor) {
-        case 'midnight':
-          return colorsCommon.brandMidnight;
-        case 'purple':
-          return colorsCommon.brandPrimaryPurple;
-        default:
-          return !args.darkMode ? lightColour : darkColour;
-      }
-    })();
-
     return viewMode === 'story' ? (
-      <Box backgroundColor={bg}>
+      <Box>
         {globals.device !== 'web' ? (
           <EmulatorRenderer
             platform={globals.device}
@@ -97,7 +94,7 @@ export const decorators: Decorator[] = [
         )}
       </Box>
     ) : (
-      <Box backgroundColor={bg}>
+      <Box>
         <Story />
       </Box>
     );
