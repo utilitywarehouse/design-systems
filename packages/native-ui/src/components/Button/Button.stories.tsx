@@ -1,8 +1,13 @@
-import React, { ComponentType } from 'react';
-import { Button, ButtonGroup } from '.';
+import React from 'react';
+import { Button, ButtonGroup, ButtonProps } from '.';
 import { Meta, StoryObj } from '@storybook/react';
 import { VariantTitle } from '../../../docs/components';
 import * as Icons from '@utilitywarehouse/react-native-icons';
+import { HStack } from '../HStack';
+import { VStack } from '../VStack';
+import { Heading } from '../Heading';
+import { Box } from '../Box';
+import { AddSmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-native-icons';
 
 const meta = {
   title: 'Stories / Button',
@@ -11,6 +16,11 @@ const meta = {
     layout: 'centered',
   },
   argTypes: {
+    text: {
+      type: 'string',
+      control: 'text',
+      description: 'The text of the button.',
+    },
     size: {
       options: ['small', 'medium', 'large'],
       control: 'select',
@@ -54,7 +64,7 @@ const meta = {
     },
   },
   args: {
-    children: 'Press me',
+    text: 'Press me',
     size: 'medium',
     variant: 'solid',
     colorScheme: 'cyan',
@@ -70,15 +80,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
-  render: ({ icon: _icon, children = '', ...args }) => {
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+  render: ({ icon: _icon, children: _, ...args }) => {
     // @ts-expect-error - This is a playground
-    const icon: ComponentType | undefined = _icon === 'none' ? undefined : Icons[_icon];
-    return (
-      // @ts-expect-error - This is a playground
-      <Button {...args} icon={icon}>
-        {children}
-      </Button>
-    );
+    const icon = _icon === 'none' ? undefined : Icons[_icon];
+    return <Button {...args} icon={icon} />;
   },
 };
 
@@ -86,26 +92,80 @@ export const Variants: Story = {
   parameters: {
     controls: { exclude: ['variant'] },
   },
-  render: ({ children, ...args }) => (
-    <ButtonGroup flexDirection="column" space="md">
-      <VariantTitle title="Solid">
-        {/* @ts-expect-error - This is a playground */}
-        <Button {...args} variant="solid">
-          {children}
-        </Button>
-      </VariantTitle>
-      <VariantTitle title="Outline">
-        {/* @ts-expect-error - This is a playground */}
-        <Button {...args} variant="outline">
-          {children}
-        </Button>
-      </VariantTitle>
-      <VariantTitle title="Ghost">
-        {/* @ts-expect-error - This is a playground */}
-        <Button {...args} variant="ghost">
-          {children}
-        </Button>
-      </VariantTitle>
-    </ButtonGroup>
-  ),
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+  render: ({ icon: _icon, children: _, ...args }) => {
+    // @ts-expect-error - This is a playground
+    const icon = _icon === 'none' ? undefined : Icons[_icon];
+    return (
+      <ButtonGroup flexDirection="column" space="md">
+        <VariantTitle title="Solid">
+          <Button {...args} variant="solid" icon={icon} />
+        </VariantTitle>
+        <VariantTitle title="Outline">
+          <Button {...args} variant="outline" icon={icon} />
+        </VariantTitle>
+        <VariantTitle title="Ghost">
+          <Button {...args} variant="ghost" icon={icon} />
+        </VariantTitle>
+      </ButtonGroup>
+    );
+  },
+};
+
+export const KitchenSink: Story = {
+  parameters: {
+    controls: { include: ['text'] },
+  },
+  render: ({ text }) => {
+    const schemes: Array<ButtonProps['colorScheme']> = ['cyan', 'red', 'green', 'grey', 'gold'];
+    const variants: Array<ButtonProps['variant']> = ['solid', 'outline', 'ghost'];
+    return (
+      <HStack space="lg" wrap>
+        {schemes.map(scheme => (
+          <VStack space="lg" key={scheme}>
+            {variants.map(variant => (
+              <Box key={variant} mb="$2">
+                <Box mb="$2">
+                  <Heading>
+                    {scheme} - {variant}
+                  </Heading>
+                </Box>
+                <VStack space="lg">
+                  <VariantTitle title="Default">
+                    <Button text={text} variant={variant} colorScheme={scheme} />
+                  </VariantTitle>
+                  <VariantTitle title="Pressed">
+                    <Button text={text} pressed variant={variant} colorScheme={scheme} />
+                  </VariantTitle>
+                  <VariantTitle title="Disabled">
+                    <Button text={text} disabled variant={variant} colorScheme={scheme} />
+                  </VariantTitle>
+                  <VariantTitle title="Icon Left">
+                    <Button
+                      text={text}
+                      icon={AddSmallIcon}
+                      variant={variant}
+                      colorScheme={scheme}
+                    />
+                  </VariantTitle>
+                  <VariantTitle title="Icon Left">
+                    <Button
+                      text={text}
+                      icon={ChevronRight01SmallIcon}
+                      iconPosition="right"
+                      variant={variant}
+                      colorScheme={scheme}
+                    />
+                  </VariantTitle>
+                  <VariantTitle title="Loading">
+                    <Button text={text} loading variant={variant} colorScheme={scheme} disabled />
+                  </VariantTitle>
+                </VStack>
+              </Box>
+            ))}
+          </VStack>
+        ))}
+      </HStack>
+    );
+  },
 };

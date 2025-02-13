@@ -16,9 +16,8 @@ const preview = {
       },
     },
   },
-
   decorators: [
-    (Story, { parameters }) => {
+    Story => {
       const theme = useColorScheme() === 'dark' ? 'dark' : 'light';
       const [args, updateArgs] = useArgs();
       const [themeColourMode, setColourMode] = useState<'dark' | 'light'>(theme);

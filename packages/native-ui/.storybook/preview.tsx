@@ -55,8 +55,6 @@ export const decorators: Decorator[] = [
       UnistylesRuntime.setTheme(darkModeValue === '!true' ? 'dark' : 'light');
     }, []);
 
-    console.log('args', args);
-
     useEffect(() => {
       const storybookContainer = document.getElementsByTagName('body')[0];
       if (storybookContainer) {
