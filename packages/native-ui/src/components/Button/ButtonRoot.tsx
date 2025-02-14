@@ -22,7 +22,7 @@ const ButtonRoot = forwardRef<
     },
     ref
   ) => {
-    const { active, disabled } = states || {};
+    const { active, disabled = false } = states || {};
     styles.useVariants({ variant, size, colorScheme, disabled, inverted, active });
     const value = useMemo(
       () => ({ colorScheme, variant, size, inverted, disabled, active }),

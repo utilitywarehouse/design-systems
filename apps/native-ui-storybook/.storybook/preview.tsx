@@ -53,7 +53,7 @@ const preview = {
       }, [theme]);
 
       const bg = (() => {
-        switch (args.surfaceColor) {
+        switch (args.surface) {
           case 'midnight':
             return colorsCommon.brandMidnight;
           case 'purple':

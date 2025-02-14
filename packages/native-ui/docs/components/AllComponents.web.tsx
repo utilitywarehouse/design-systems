@@ -77,7 +77,7 @@ const AllComponents: React.FC = () => {
         <HStack wrap space="md">
           <ComponentWrapper
             name="Actionsheet (Lab)"
-            link="/?path=/docs/native-ui-components-lab-actionsheet--docs"
+            link="/?path=/docs/components-actionsheet-lab--docs"
           >
             <Center flex={1}>
               <Actionsheet isOpen={showActionsheet} onClose={toggleActionsheet}>
@@ -91,12 +91,12 @@ const AllComponents: React.FC = () => {
               <Button onPress={toggleActionsheet}>Show Actionsheet</Button>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Alert" link="/?path=/docs/native-ui-components-alert--docs">
+          <ComponentWrapper name="Alert" link="/?path=/docs/components-alert--docs">
             <Center flex={1}>
               <Alert text="This is an alert" />
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Box" link="/?path=/docs/native-ui-components-box--docs">
+          <ComponentWrapper name="Box" link="/?path=/docs/components-box--docs">
             <Center flex={1}>
               <Box backgroundColor="$grey900" padding="$4" width={200} height={100}>
                 <Text color={isDark ? '$grey100' : '$white'} highlight>
@@ -105,12 +105,12 @@ const AllComponents: React.FC = () => {
               </Box>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Button" link="/?path=/docs/native-ui-components-button--docs">
+          <ComponentWrapper name="Button" link="/?path=/docs/components-button--docs">
             <Center flex={1}>
               <Button variant="outline">Press me</Button>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Card" link="/?path=/docs/native-ui-components-card--docs">
+          <ComponentWrapper name="Card" link="/?path=/docs/components-card--docs">
             <Center flex={1}>
               <Card colorScheme="grey" variant="outline">
                 <Heading>I am a card</Heading>
@@ -118,10 +118,7 @@ const AllComponents: React.FC = () => {
               </Card>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper
-            name="Carousel (Lab)"
-            link="/?path=/docs/native-ui-components-card--docs"
-          >
+          <ComponentWrapper name="Carousel (Lab)" link="/?path=/docs/components-carousel-lab--docs">
             <Center flex={1}>
               <Carousel>
                 <CarouselItems width={150}>
@@ -150,7 +147,7 @@ const AllComponents: React.FC = () => {
               </Carousel>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Center" link="/?path=/docs/native-ui-components-center--docs">
+          <ComponentWrapper name="Center" link="/?path=/docs/components-center--docs">
             <Center flex={1}>
               <Center backgroundColor="$grey900" padding="$4" width={200} height={100}>
                 <Text color={isDark ? '$grey100' : '$white'} highlight>
@@ -159,22 +156,19 @@ const AllComponents: React.FC = () => {
               </Center>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Checkbox" link="/?path=/docs/native-ui-components-checkbox--docs">
+          <ComponentWrapper name="Checkbox" link="/?path=/docs/components-checkbox--docs">
             <Center flex={1}>
               <Checkbox label="I'm a Checkbox" value="" />
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Divider" link="/?path=/docs/native-ui-components-divider--docs">
+          <ComponentWrapper name="Divider" link="/?path=/docs/components-divider--docs">
             <Center flex={1}>
               <Text>This text is divided</Text>
               <Divider space="sm" />
               <Text>From this text</Text>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper
-            name="Form Field"
-            link="/?path=/docs/native-ui-components-form-field--docs"
-          >
+          <ComponentWrapper name="Form Field" link="/?path=/docs/components-form-field--docs">
             <Center flex={1}>
               <FormField
                 validationStatus="invalid"
@@ -186,12 +180,12 @@ const AllComponents: React.FC = () => {
               </FormField>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Heading" link="/?path=/docs/native-ui-components-heading--docs">
+          <ComponentWrapper name="Heading" link="/?path=/docs/components-heading--docs">
             <Center flex={1}>
               <Heading>This is a Heading</Heading>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="HStack" link="/?path=/docs/native-ui-components-hstack--docs">
+          <ComponentWrapper name="HStack" link="/?path=/docs/components-hstack--docs">
             <Center flex={1}>
               <HStack space="md">
                 <Box w={40} h={40} bg="$cyan300" />
@@ -201,15 +195,12 @@ const AllComponents: React.FC = () => {
               </HStack>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper
-            name="Icon Button"
-            link="/?path=/docs/native-ui-components-iconbutton--docs"
-          >
+          <ComponentWrapper name="Icon Button" link="/?path=/docs/components-iconbutton--docs">
             <Center flex={1}>
               <IconButton icon={ChevronRightMediumIcon} size="large" onPress={() => null} />
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Icons" link="/?path=/docs/native-ui-components-icons--docs">
+          <ComponentWrapper name="Icons" link="/?path=/docs/components-icons--docs">
             <Center flex={1}>
               <HStack space="lg">
                 <Icon as={ElectricityMediumIcon} color="$serviceElectricity" />
@@ -219,12 +210,12 @@ const AllComponents: React.FC = () => {
               </HStack>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Input" link="/?path=/docs/native-ui-components-input--docs">
+          <ComponentWrapper name="Input" link="/?path=/docs/components-input--docs">
             <Center flex={1}>
               <Input placeholder="This is an input" />
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="List" link="/?path=/docs/native-ui-components-list--docs">
+          <ComponentWrapper name="List" link="/?path=/docs/components-list--docs">
             <Center flex={1}>
               <List>
                 <ListItem text="List Item 1" divider onPress={() => console.log('item pressed')} />
@@ -232,7 +223,7 @@ const AllComponents: React.FC = () => {
               </List>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Radio" link="/?path=/docs/native-ui-components-radio--docs">
+          <ComponentWrapper name="Radio" link="/?path=/docs/components-radio--docs">
             <Center flex={1}>
               <RadioGroup>
                 <Radio label="I'm a Radio" value="1" />
@@ -240,7 +231,7 @@ const AllComponents: React.FC = () => {
               </RadioGroup>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Skeleton" link="/?path=/docs/native-ui-components-skeleton--docs">
+          <ComponentWrapper name="Skeleton" link="/?path=/docs/components-skeleton--docs">
             <Center flex={1}>
               <HStack space="sm">
                 <Skeleton width={30} height={30} />
@@ -251,22 +242,22 @@ const AllComponents: React.FC = () => {
               </HStack>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Spinner" link="/?path=/docs/native-ui-components-spinner--docs">
+          <ComponentWrapper name="Spinner" link="/?path=/docs/components-spinner--docs">
             <Center flex={1}>
               <Spinner size="lg" />
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Switch" link="/?path=/docs/native-ui-components-switch--docs">
+          <ComponentWrapper name="Switch" link="/?path=/docs/components-switch--docs">
             <Center flex={1}>
               <Switch value={switchEnabled} onValueChange={toggleSwitch} />
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Text" link="/?path=/docs/native-ui-components-text--docs">
+          <ComponentWrapper name="Text" link="/?path=/docs/components-text--docs">
             <Center flex={1}>
               <Text>This is some Text</Text>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="VStack" link="/?path=/docs/native-ui-components-vstack--docs">
+          <ComponentWrapper name="VStack" link="/?path=/docs/components-vstack--docs">
             <Center flex={1}>
               <VStack space="md">
                 <Box w={20} h={20} bg="$cyan300" />
