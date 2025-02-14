@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/blocks';
+import { version } from '../../package.json';
+import img from './phone-light.png';
+import imgDark from './phone-dark.png';
+import { DynamicImage, BackToTopButton } from '../components';
+import { Box } from '../../src';
+
+<Meta title="Getting Started" />
+<BackToTopButton />
+
+# Getting Started
+
+Wrap your application with the `NativeUIProvider` component.
+
+```tsx
+import React from 'react';
+import { NativeUIProvider } from '../../';
+import App from './App';
+
+const RootApp: React.FC = () => (
+  <NativeUIProvider>
+    <App />
+  </NativeUIProviderr>
+);
+```
+
+### Dark Mode
+
+By default the light colour mode is enabled. If you want to enable dark mode, you can pass the `colorMode` prop to the `NativeUIProvider` component. The two options for `colorMode` are `light` and `dark`.
+
+```tsx
+import React from 'react';
+import { ColorSchemeName, useColorScheme } from 'react-native';
+import { NativeUIProvider } from '../../';
+import App from './App';
+
+const RootApp: React.FC = () => {
+  const colorScheme = useColorScheme();
+
+  return (
+    <NativeUIProvider colorMode={colorScheme as ColorSchemeName}>
+      <App />
+    </NativeUIProvider>
+  );
+};
+```
