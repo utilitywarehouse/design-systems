@@ -29,6 +29,7 @@ const Input: React.FC<InputProps> = ({
   readonly,
   leadingIcon,
   trailingIcon,
+  type,
   ...props
 }) => {
   const formFieldContext = useFormFieldContext();
@@ -58,7 +59,7 @@ const Input: React.FC<InputProps> = ({
               <InputIcon as={leadingIcon} />
             </InputSlot>
           )}
-          <InputField {...props} />
+          <InputField type={type} {...props} />
           {showValidationIcon && validationStatusFromContext !== 'initial' && (
             <InputSlot>
               <InputValidationIcon />

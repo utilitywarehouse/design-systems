@@ -49,9 +49,10 @@ const meta = {
     },
   },
   args: {
+    value: 'Check, 1, 2',
     checked: false,
     disabled: false,
-    label: 'Check, one, two',
+    label: 'Check, 1, 2',
     helperText: '',
     validationStatus: 'initial',
     showValidationIcon: true,

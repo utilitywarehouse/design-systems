@@ -4,7 +4,7 @@
 import React, { forwardRef, useMemo } from 'react';
 import { Text } from 'react-native';
 import type TextProps from './Text.props';
-import { StyleSheet, withUnistyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
 import { useTheme } from '../../hooks';
@@ -130,4 +130,4 @@ const styles = StyleSheet.create(theme => ({
   },
 }));
 
-export default withUnistyles(TextComp);
+export default TextComp;

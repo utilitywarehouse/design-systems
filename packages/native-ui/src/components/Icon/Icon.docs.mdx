@@ -1,0 +1,103 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
+import * as Stories from './Icon.stories';
+import { Icon, createIcon, HStack, Center, Pressable, Text } from '../../';
+import {
+  ElectricityMediumIcon,
+  MobileMediumIcon,
+  BroadbandMediumIcon,
+  InsuranceMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+import { BackToTopButton, UsageWrap } from '../../../docs/components';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+
+<BackToTopButton />
+
+<Meta title="Components / Icon" />
+
+# Icons
+
+Icons are often used to enhance the usability and accessibility of digital products by providing users with clear and intuitive visual cues. It serves as an intuitive and easily recognizable way to communicate with users.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [All Icons](#all-icons)
+
+## Playground
+
+<Canvas of={Stories.Playground} />
+
+<Controls of={Stories.Playground} />
+
+## Usage
+
+You can either use the React Native components directy from our `@utilitywarehouse/react-native-icons` package or use the `Icon`
+component from our `@utilitywarehouse/native-ui` package to render the icons with utility props such as `color`.
+
+The following example shows how to use the icons directly from the `@utilitywarehouse/react-native-icons` package.
+
+<UsageWrap>
+  <Center>
+    <HStack space="lg">
+      <ElectricityMediumIcon color={colorsCommon.serviceElectricity} />
+      <MobileMediumIcon color={colorsCommon.serviceMobile} />
+      <BroadbandMediumIcon color={colorsCommon.serviceLandline} />
+      <InsuranceMediumIcon color={colorsCommon.serviceInsurance} />
+    </HStack>
+  </Center>
+</UsageWrap>
+
+```jsx
+import { HStack, Icon, color } from '@utilitywarehouse/native-ui';
+import {
+  ElectricityMediumIcon,
+  MobileMediumIcon,
+  BroadbandMediumIcon,
+  InsuranceMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => {
+  return (
+    <HStack space="lg">
+      <ElectricityMediumIcon color="$serviceElectricity" />
+      <MobileMediumIcon color="$serviceMobile" />
+      <BroadbandMediumIcon color="$serviceLandline" />
+      <InsuranceMediumIcon color="$serviceInsurance" />
+    </HStack>
+  );
+};
+```
+
+Or you can use the `Icon` component to render the icons.
+
+```jsx
+import { HStack, Icon, color } from '@utilitywarehouse/native-ui';
+import {
+  ElectricityMediumIcon,
+  MobileMediumIcon,
+  BroadbandMediumIcon,
+  InsuranceMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => {
+  return (
+    <HStack space="lg">
+      <Icon as={ElectricityMediumIcon} color="$serviceElectricity" />
+      <Icon as={MobileMediumIcon} color="$serviceMobile" />
+      <Icon as={BroadbandMediumIcon} color="$serviceLandline" />
+      <Icon as={InsuranceMediumIcon} color="$serviceInsurance" />
+    </HStack>
+  );
+};
+```
+
+## Props
+
+| Name    | Type                  | Description                   | Default |
+| ------- | --------------------- | ----------------------------- | ------- |
+| `as`    | `React.ComponentType` | The icon component to render. | -       |
+| `color` | `string`              | The color of the icon.        | -       |
+
+## All Icons
+
+To view all the icons available in the library, please refer to the [Utility Warehouse React Native Icons](https://uw-icons.vercel.app/) documentation.

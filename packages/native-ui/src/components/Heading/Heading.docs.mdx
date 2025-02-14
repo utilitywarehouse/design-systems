@@ -1,0 +1,54 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
+import * as Stories from './Heading.stories';
+import { Center, Pressable, Text, Heading } from '../../';
+import { ViewFigmaButton, BackToTopButton, UsageWrap } from '../../../docs/components';
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=552-926" />
+
+<BackToTopButton />
+
+<Meta title="Components / Heading" />
+
+# Heading
+
+The `Heading` component gives you the ability to create headings for your screen with different sizes and semantics from h1 to h6.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Variants](#variants)
+
+## Playground
+
+<Canvas of={Stories.Playground} />
+
+<Controls of={Stories.Playground} />
+
+## Usage
+
+<UsageWrap>
+  <Center>
+    <Heading size="h4">Welcome to Utility Warehouse</Heading>
+  </Center>
+</UsageWrap>
+
+```jsx
+import { Heading } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => <Heading size="h4">Welcome to Utility Warehouse</Heading>;
+```
+
+## Props
+
+| Property        | Type                                           | Description                         | Default |
+| --------------- | ---------------------------------------------- | ----------------------------------- | ------- |
+| `size`          | `'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'` | The size of the heading.            | 'h4'    |
+| `truncated`     | `boolean`                                      | Truncate the text with an ellipsis. | `false` |
+| `underline`     | `boolean`                                      | Underline the text.                 | `false` |
+| `strikeThrough` | `boolean`                                      | Strike through the text.            | `false` |
+
+## Variants
+
+The `Heading` component has different variants to style the text.
+
+<Canvas of={Stories.Variants} />

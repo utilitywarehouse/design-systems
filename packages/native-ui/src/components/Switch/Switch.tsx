@@ -161,17 +161,17 @@ const styles = StyleSheet.create(theme => ({
           padding: theme.tokens.switch.padding,
         },
       },
-      disabled: {
-        true: {
-          backgroundColor: theme.tokens.switch.backgroundColorDisabled,
-        },
-      },
       value: {
         true: {
           backgroundColor: theme.tokens.switch.checked.backgroundColor,
         },
         false: {
           backgroundColor: theme.tokens.switch.unchecked.backgroundColor,
+        },
+      },
+      disabled: {
+        true: {
+          backgroundColor: theme.tokens.switch.backgroundColorDisabled,
         },
       },
     },
