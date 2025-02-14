@@ -24,6 +24,7 @@ const styles = StyleSheet.create(theme => ({
     fontWeight: theme.fontWeights.semibold,
     lineHeight: theme.lineHeights['lg'],
     fontSize: theme.fontSizes.md,
+    color: theme.colors.grey1000,
     variants: {
       nested: {
         true: {

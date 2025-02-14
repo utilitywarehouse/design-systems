@@ -52,10 +52,6 @@ export const decorators: Decorator[] = [
     };
 
     useEffect(() => {
-      UnistylesRuntime.setTheme(darkModeValue === '!true' ? 'dark' : 'light');
-    }, []);
-
-    useEffect(() => {
       const storybookContainer = document.getElementsByTagName('body')[0];
       if (storybookContainer) {
         if (args.surface === 'midnight' || args.inverted) {
@@ -69,6 +65,7 @@ export const decorators: Decorator[] = [
     }, [args.darkMode, args.surface, args.inverted]);
 
     useEffect(() => {
+      UnistylesRuntime.setTheme(colorScheme);
       channel.addListener(DARK_MODE_EVENT_NAME, storyListener);
       setArgs({
         ...args,

@@ -50,6 +50,7 @@ const preview = {
 
       useEffect(() => {
         setColourMode(theme);
+        UnistylesRuntime.setTheme(theme);
       }, [theme]);
 
       const bg = (() => {
