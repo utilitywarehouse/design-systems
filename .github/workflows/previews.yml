@@ -19,7 +19,7 @@ env:
 jobs:
   build-for-android:
     name: Build for Android
-    runs-on: macos-13-large
+    runs-on: macos-14-large
     concurrency:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
@@ -194,7 +194,7 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         if: steps.check_skip.outputs.skip == 'false'
         with:
-          xcode-version: '15.2.0'
+          xcode-version: '16.2.0'
 
       - name: 🔧 Setup EAS
         uses: expo/expo-github-action@v8
