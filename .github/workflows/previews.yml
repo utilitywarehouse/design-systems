@@ -152,7 +152,7 @@ jobs:
 
   build-for-ios:
     name: Build for iOS
-    runs-on: macos-13-xlarge
+    runs-on: macos-14-xlarge
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
