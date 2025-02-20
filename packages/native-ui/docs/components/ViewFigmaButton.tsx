@@ -20,6 +20,7 @@ const ViewFigmaButton: React.FC<Props> = ({ url }) => (
   <div className="sb-unstyled">
     <Button
       variant="ghost"
+      size="small"
       style={{
         zIndex: 1,
         marginTop: -4,

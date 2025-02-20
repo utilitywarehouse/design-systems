@@ -64,7 +64,22 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Playground: Story = {};
+export const Playground: Story = {
+  render: () => {
+    const [checked, setChecked] = React.useState(false);
+    return (
+      <Checkbox
+        value="Check, 1, 2"
+        checked={checked}
+        onChange={val => {
+          console.log('-----');
+          setChecked(val);
+        }}
+        label="Test"
+      />
+    );
+  },
+};
 
 export const Variants: Story = {
   render: () => {

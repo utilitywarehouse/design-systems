@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import AnimatedOutline from '../AnimatedOutline';
 import { useListContext } from '../List';
 import { View, ViewProps } from 'react-native';
-import { StyleSheet } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 import { useCheckboxContext } from './Checkbox.context';
 
 const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
@@ -10,6 +10,7 @@ const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
   const isInList = Boolean(useListContext());
   const { disabled, checked } = useCheckboxContext();
   styles.useVariants({ checked, disabled });
+  const { theme } = useUnistyles();
 
   return (
     <AnimatedOutline show={isInList || disabled ? false : show} style={styles.outline}>
@@ -20,7 +21,22 @@ const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
         onTouchEnd={() => setTimeout(() => setShow(false), 250)}
         onPointerUp={() => setTimeout(() => setShow(false), 250)}
         onPointerDown={() => setShow(true)}
-        style={[styles.container, props.style]}
+        style={[
+          styles.container,
+          checked
+            ? {
+                borderColor: theme.isDark ? theme.colors.cyan700 : theme.colors.cyan500,
+                backgroundColor: theme.isDark ? theme.colors.cyan700 : theme.colors.cyan500,
+              }
+            : {},
+          checked && disabled
+            ? {
+                borderColor: theme.isDark ? theme.colors.grey700 : theme.colors.grey150,
+                backgroundColor: theme.isDark ? theme.colors.grey700 : theme.colors.grey150,
+              }
+            : {},
+          props.style,
+        ]}
       >
         {props.children}
       </View>
