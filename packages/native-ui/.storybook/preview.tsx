@@ -43,7 +43,10 @@ export const decorators: Decorator[] = [
     const { id, viewMode } = useStoryContext();
 
     const storyListener = darkMode => {
-      UnistylesRuntime.setTheme(darkMode ? 'dark' : 'light');
+      const theme = darkMode ? 'dark' : 'light';
+      if (UnistylesRuntime.themeName !== theme) {
+        UnistylesRuntime.setTheme(theme);
+      }
 
       setArgs({
         ...args,
@@ -65,7 +68,9 @@ export const decorators: Decorator[] = [
     }, [args.darkMode, args.surface, args.inverted]);
 
     useEffect(() => {
-      UnistylesRuntime.setTheme(colorScheme);
+      if (UnistylesRuntime.themeName !== colorScheme) {
+        UnistylesRuntime.setTheme(colorScheme);
+      }
       channel.addListener(DARK_MODE_EVENT_NAME, storyListener);
       setArgs({
         ...args,
@@ -101,7 +106,10 @@ export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({ child
 
   const updateDark = dark => {
     setDark(dark);
-    UnistylesRuntime.setTheme(dark ? 'dark' : 'light');
+    const theme = dark ? 'dark' : 'light';
+    if (UnistylesRuntime.themeName !== theme) {
+      UnistylesRuntime.setTheme(theme);
+    }
   };
 
   useEffect(() => {

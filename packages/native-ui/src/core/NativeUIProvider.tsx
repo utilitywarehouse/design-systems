@@ -6,7 +6,9 @@ const NativeUIProvider: React.FC<PropsWithChildren<{ colorMode?: keyof Unistyles
   colorMode = 'light',
 }) => {
   useEffect(() => {
-    UnistylesRuntime.setTheme(colorMode === 'dark' ? 'dark' : 'light');
+    if (UnistylesRuntime.themeName !== colorMode) {
+      UnistylesRuntime.setTheme(colorMode === 'dark' ? 'dark' : 'light');
+    }
   }, [colorMode]);
   return children;
 };

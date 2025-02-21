@@ -60,7 +60,7 @@
     "react-native-reanimated": "~3.16.7",
     "react-native-safe-area-context": "5.1.0",
     "react-native-svg": "15.8.0",
-    "react-native-unistyles": "3.0.0-beta.7",
+    "react-native-unistyles": "3.0.0-nightly-20250220",
     "react-native-web": "^0.19.10"
   },
   "devDependencies": {

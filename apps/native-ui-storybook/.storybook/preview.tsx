@@ -42,7 +42,9 @@ const preview = {
           });
           if (colourMode) {
             setColourMode(colourMode as 'dark' | 'light');
-            UnistylesRuntime.setTheme(colourMode as 'dark' | 'light');
+            if (UnistylesRuntime.themeName !== colourMode) {
+              UnistylesRuntime.setTheme(colourMode as 'dark' | 'light');
+            }
           }
         });
         return () => Linking.removeAllListeners('url');
@@ -50,7 +52,9 @@ const preview = {
 
       useEffect(() => {
         setColourMode(theme);
-        UnistylesRuntime.setTheme(theme);
+        if (UnistylesRuntime.themeName !== theme) {
+          UnistylesRuntime.setTheme(theme);
+        }
       }, [theme]);
 
       const bg = (() => {
