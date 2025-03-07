@@ -1,0 +1,84 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Guides / Contributing" />
+
+# Contributing
+
+Thank you for your interest in contributing to UW Native UI!
+This project is made possible by contributors like you, and we welcome any
+contributions to the codebase and documentation.
+
+- [Getting Started](#getting-started)
+- [Linting](#linting)
+- [Making Changes](#making-changes)
+- [Documentation Contributions](#documentation-contributions)
+- [Changesets](#changesets)
+
+## Getting Started
+
+Run setup in the root of the repo. This will install [pnpm](https://pnpm.io/),
+which we use to manage this monorepo.
+
+**Make sure you're using node v18+ before running the below commands**
+
+```
+npm run setup
+```
+
+Next, install install dependencies across all packages, and build the local
+packages.
+
+```
+pnpm install
+pnpm build
+```
+
+## Linting
+
+This will run ESLint & prettier across all packages, and take advantage of turborepo's caching.
+
+```
+pnpm lint
+```
+
+To fix linting & formatting issues, run:
+
+```
+pnpm lint:fix
+```
+
+To run lint & build with turborepo:
+
+```
+pnpm run checks
+```
+
+## Making Changes
+
+Pull requests are encouraged. If you want to add a feature or fix a bug:
+
+1. Clone this repository
+1. [Create a separate branch](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/managing-branches)
+   for your changes
+1. Make your changes, and ensure they are formatted by
+   [Prettier](https://prettier.io), a pre-commit hook will ensure linting &
+   formatting checks pass
+1. Create a changeset by running `pnpm changeset`. [More info](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md).
+1. Push your branch and open a PR 🚀
+
+## Documentation Contributions
+
+There are a number of ways you can add documentation for components and for more general information.
+
+## Changesets
+
+UW Native UI uses [changesets](https://github.com/changesets/changesets) for
+versioning, publishing and automating changelogs. This means that you need to
+add a changeset by running `pnpm changeset`, you will then be prompted to select
+which package(s) to include in the changeset, and then a bump type from `major`,
+`minor` or `patch`, and finally you will need to add a message to be included in
+the next release and associated changelog.
+
+Not all changes require changesets, so Pull Requests are not blocked if missing
+a changeset, however you may be asked to add one, or one may be added for your
+change.

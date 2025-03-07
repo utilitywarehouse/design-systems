@@ -1,0 +1,478 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import {
+  Button,
+  Center,
+  NativeUIProvider,
+  HStack,
+  VStack,
+  Card,
+  Heading,
+  Text,
+  List,
+  ListItem,
+  Icon,
+  Image,
+  Box,
+} from '../../src';
+import { SettingsMediumIcon, TrashSmallIcon } from '@utilitywarehouse/react-native-icons';
+import {
+  ViewFigmaButton,
+  BackToTopButton,
+  DocComponentWrap,
+  DynamicImage,
+  ColorModeToggleIcons,
+  HideInDarkMode,
+} from '../../docs/components';
+import catAsleep from './assets/card/kitten-sleeping-on-sofa.jpg';
+
+<Meta title="Design Guidelines / Card" />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=9344-2255&t=mJTJZaLNKo4fj5Wm-4" />
+
+<BackToTopButton />
+
+# Card Design Guidelines
+
+- [What is a Card?](#what-is-a-card)
+- [Card style variants](#card-style-variants)
+  - [dashed](#dashed)
+  - [outline](#outline)
+  - [elevated](#elevated)
+  - [filled](#filled)
+- [colorScheme](#colorscheme)
+- [Surface](#surface)
+- [Nested Card](#nested-card)
+- [Padding](#padding)
+- [Customisation and overrides](#customisation-and-overrides)
+
+## What is a Card?
+
+A Card is a self-contained unit of information or content. It serves as a container and includes various design presets.
+
+A card can contain various elements such as text, images, buttons, and other user interface components like lists. It
+is typically used to display related information in a visually consistent and organised way.
+
+While the general structure and style of a card are often defined by the design system, the specific content within each
+card can vary. There are no predefined design elements for the Card's content, except for instances where a card is nested
+within another Card.
+
+The Card doesn't have an inherent state but can contain elements with state-like Buttons or Icon Buttons.
+
+## Card style variants
+
+To clarify what a variant is, [please consult the documentation](https://wiki.uw.systems/posts/design-systems-glossary-ama05dma#hxsg1-component-variants).
+
+Cards come in a variety of style variants for different content and contexts.
+
+### dashed
+
+A card with a dashed border and a background color.
+
+<DocComponentWrap>
+  <Card variant="dashed" padding="large">
+    <HStack space="lg">
+      <Box w={75} h={75} borderRadius={8} backgroundColor="$cyan100" />
+      <VStack space="sm">
+        <Heading>Dashed Card</Heading>
+        <Text
+          children={[
+            'This is the body of a card; it serves as an example. A card can contain any type of content.',
+          ]}
+        />
+      </VStack>
+    </HStack>
+  </Card>
+</DocComponentWrap>
+
+### outline
+
+A card with a solid border and a background color.
+
+<DocComponentWrap>
+  <Box width="100%">
+    <HStack space="2xl" style={{ alignItems: 'flex-start' }}>
+      <Card variant="outline" padding="large" style={{ flexBasis: '45%' }}>
+        <HStack space="lg">
+          <Box w={75} h={75} borderRadius={8} backgroundColor="$cyan100" />
+          <VStack space="sm" style={{ flex: 1 }}>
+            <Heading>Outline Card</Heading>
+            <Text
+              style={{ flex: 1, flexWrap: 'wrap', display: 'flex' }}
+              children={[
+                'This is the body of a card; it serves as an example. A card can contain any type of content.',
+              ]}
+            />
+          </VStack>
+        </HStack>
+      </Card>
+      <Card variant="outline" padding="large" colorScheme="grey" style={{ flexBasis: '45%' }}>
+        <HStack space="lg">
+          <VStack space="sm" style={{ flex: 1 }}>
+            <Heading>Outline Card</Heading>
+            <Text
+              style={{ flex: 1, flexWrap: 'wrap', display: 'flex' }}
+              children={[
+                'This is the body of a card; it serves as an example. A card can contain any type of content.',
+              ]}
+            />
+            <Button text="Just a Button" variant="ghost" />
+          </VStack>
+        </HStack>
+      </Card>
+    </HStack>
+  </Box>
+</DocComponentWrap>
+*A card can have any content*
+
+<DocComponentWrap>
+  <Box px="$4" pb="$4" bg="$grey50">
+    <List
+      headingText="This is the list heading"
+      headingSupportingText="Supporting text"
+      container="card"
+    >
+      <Card padding="none">
+        <ListItem
+          leadingContent={<Icon color="$grey1000" as={SettingsMediumIcon} />}
+          text="List item text"
+          supportingText="Supporting text"
+          onPress={() => alert('Item Pressed!')}
+          divider
+        />
+        <ListItem
+          leadingContent={<Icon color="$grey1000" as={SettingsMediumIcon} />}
+          text="List item text"
+          supportingText="Supporting text"
+          onPress={() => alert('Item Pressed!')}
+          divider
+        />
+        <ListItem
+          leadingContent={<Icon color="$grey1000" as={SettingsMediumIcon} />}
+          text="List item text"
+          supportingText="Supporting text"
+          onPress={() => alert('Item Pressed!')}
+          divider={false}
+        />
+      </Card>
+    </List>
+  </Box>
+</DocComponentWrap>
+
+_The list is wrapped in an **outline** card_
+
+### elevated
+
+A card featuring a subtle shadow and border looks raised.
+
+<DocComponentWrap>
+  <Box width="100%">
+    <HStack space="2xl" style={{ alignItems: 'flex-start' }}>
+      <Card variant="elevated" padding="large" colorScheme="grey" style={{ flexBasis: '45%' }}>
+        <HStack space="lg">
+          <VStack space="sm" style={{ flex: 1 }}>
+            <Heading>Elevated Card</Heading>
+            <Text
+              style={{ flex: 1, flexWrap: 'wrap', display: 'flex' }}
+              children={[
+                'This is the body of a card; it serves as an example. A card can contain any type of content.',
+              ]}
+            />
+            <Button text="Just a ghost Button" variant="ghost" />
+          </VStack>
+        </HStack>
+      </Card>
+      <Card variant="elevated" padding="large" style={{ flexBasis: '45%' }}>
+        <HStack space="lg">
+          <VStack space="sm" style={{ flex: 1 }}>
+            <Heading>Elevated Card</Heading>
+            <Text
+              style={{ flex: 1, flexWrap: 'wrap', display: 'flex' }}
+              children={[
+                'This is the body of a card; it serves as an example. A card can contain any type of content.',
+              ]}
+            />
+            <Button
+              text="Another ghost Button"
+              variant="ghost"
+              colorScheme="red"
+              icon={TrashSmallIcon}
+            />
+          </VStack>
+        </HStack>
+      </Card>
+    </HStack>
+  </Box>
+</DocComponentWrap>
+
+### filled
+
+When there are no borders, it is only the background.
+
+Filled is the default card style used in the [List](/?path=/docs/native-ui-components-list--docs) component.
+
+<DocComponentWrap>
+  <Box px="$4" pb="$4" bg="$grey50">
+    <List
+      headingText="This is the list heading"
+      headingSupportingText="Supporting text"
+      container="card"
+    >
+      <Card variant="filled" padding="none">
+        <ListItem
+          leadingContent={<SettingsMediumIcon />}
+          text="List item text"
+          supportingText="Supporting text"
+          onPress={() => alert('Item Pressed!')}
+          divider
+        />
+        <ListItem
+          leadingContent={<SettingsMediumIcon />}
+          text="List item text"
+          supportingText="Supporting text"
+          onPress={() => alert('Item Pressed!')}
+          divider
+        />
+        <ListItem
+          leadingContent={<SettingsMediumIcon />}
+          text="List item text"
+          supportingText="Supporting text"
+          onPress={() => alert('Item Pressed!')}
+          divider={false}
+        />
+      </Card>
+    </List>
+  </Box>
+</DocComponentWrap>
+
+_The list is wrapped in an **filled** card_
+
+## colorScheme
+
+To clarify what a colorScheme is, [please consult the documentation](https://wiki.uw.systems/posts/naming-conventions-and-stack-mirroring-z1olqysr).
+
+The Card colorScheme determines the background and border colour of the Cards, not its content.
+
+Cards come in a variety of colour schemes that can be combined with variants, padding, etc.
+
+**base** uses white in light mode and dark grey in dark mode.
+
+**Example for maintenance:** If a design requires a different background and border colour for the Card component (and is not an exception), a new ColorScheme should be added.
+
+<DocComponentWrap>
+  <HStack>
+    <Box bg="$grey50" width="100%" padding="$4" mb="$5">
+      <VStack space="lg">
+        <Card colorScheme="base" variant="dashed" padding="large">
+          <Text mb="$2">base colorScheme</Text>
+        </Card>
+        <Card colorScheme="base" variant="outline" padding="large">
+          <Text mb="$2">base colorScheme</Text>
+        </Card>
+        <Card colorScheme="base" variant="elevated" padding="large">
+          <Text mb="$2">base colorScheme</Text>
+        </Card>
+        <Card colorScheme="grey" variant="outline" padding="large">
+          <Text mb="$2">grey colorScheme</Text>
+        </Card>
+        <Card colorScheme="grey" variant="eleveted" padding="large">
+          <Text mb="$2">grey colorScheme</Text>
+        </Card>
+        <Card colorScheme="purple" variant="outline" padding="large">
+          <Text mb="$2">purple colorScheme</Text>
+        </Card>
+        <Card colorScheme="purple" variant="filled" padding="large">
+          <Text mb="$2" color="$white" children={['purple colorScheme']} />
+        </Card>
+      </VStack>
+    </Box>
+  </HStack>
+</DocComponentWrap>
+
+<div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+  <div>
+    <ColorModeToggleIcons />
+  </div>
+  <Text italic>Toggle the theme to see the colorScheme change</Text>
+</div>
+
+## Surface
+
+The surface colour refers to the background colour of a specific element or area within UI.
+A Card can have different variants of colour schemes in addition to the surface colour.
+
+By selecting the right surface colour and card type, you can improve the overall content
+hierarchy of your composition
+
+**Technical considerations:**
+
+- purple surface should be used only on light mode, in dark mode it looks the same as base.
+- base is the default surface.
+
+**Theming:** The Card uses Figma modes to manage dark and light themes. [Please refer to the
+Figma documentation for more details on this functionality](https://help.figma.com/hc/en-us/articles/15343816063383-Modes-for-variables). Light is the default mode.
+
+**Example for maintenance:** If a design requires a different surface color for any Card component,
+a new surface should be added for both themes.
+
+<DocComponentWrap>
+  <Box bg="$grey50" width="100%" padding="$4">
+    <Heading size="h3" style={{ marginBottom: 16 }} children={['Base Surface']} />
+    <VStack space="lg">
+      <Card colorScheme="base" variant="dashed" padding="large">
+        <Text mb="$2">base colorScheme on base surface</Text>
+      </Card>
+      <Card colorScheme="base" variant="outline" padding="large">
+        <Text mb="$2">base colorScheme on base surface</Text>
+      </Card>
+      <Card colorScheme="base" variant="elevated" padding="large">
+        <Text mb="$2">base colorScheme on base surface</Text>
+      </Card>
+      <Card colorScheme="grey" variant="outline" padding="large">
+        <Text mb="$2">grey colorScheme on base surface</Text>
+      </Card>
+      <Card colorScheme="grey" variant="eleveted" padding="large">
+        <Text mb="$2">grey colorScheme on base surface</Text>
+      </Card>
+      <Card colorScheme="purple" variant="outline" padding="large">
+        <Text mb="$2">purple colorScheme on base surface</Text>
+      </Card>
+      <Card colorScheme="purple" variant="filled" padding="large">
+        <Text mb="$2" color="$white" children={['purple colorScheme on base surface']} />
+      </Card>
+    </VStack>
+  </Box>
+  <HideInDarkMode>
+    <Box width="100%" padding="$4" mb="$5" backgroundColor="$purple800">
+      <Heading size="h3" style={{ marginBottom: 16 }} color="white" children={['Purple Surface']} />
+      <VStack space="lg">
+        <Card colorScheme="base" variant="dashed" padding="large" surface="purple">
+          <Text mb="$2" color="$white">
+            base colorScheme on purple surface
+          </Text>
+        </Card>
+        <Card colorScheme="base" variant="outline" padding="large" surface="purple">
+          <Text mb="$2" color="$white">
+            base colorScheme on purple surface
+          </Text>
+        </Card>
+        <Card colorScheme="base" variant="elevated" padding="large" surface="purple">
+          <Text mb="$2" color="$white">
+            base colorScheme on purple surface
+          </Text>
+        </Card>
+        <Card colorScheme="purple" variant="outline" padding="large" surface="purple">
+          <Text mb="$2" color="$white">
+            purple colorScheme on purple surface
+          </Text>
+        </Card>
+        <Card colorScheme="purple" variant="filled" padding="large" surface="purple">
+          <Text mb="$2" color="$white" children={['purple colorScheme on purple surface']} />
+        </Card>
+      </VStack>
+    </Box>
+  </HideInDarkMode>
+</DocComponentWrap>
+
+<div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+  <div>
+    <ColorModeToggleIcons />
+  </div>
+  <Text italic>Toggle the theme to see the colorScheme change</Text>
+</div>
+
+## Nested Card
+
+When cards are placed within one another, we modify the border radius of the inner card
+to enhance the visual appeal and create a cohesive layout. This can be accomplished by
+using the nested Card within Card.
+
+The nested Card has the same properties as Card.
+
+<DocComponentWrap>
+  <VStack space="xl">
+    <Card padding="large">
+      <HStack space="lg">
+        <Card padding="large" variant="outline" style={{ flex: 1 }} nested>
+          <Text style={{ marginBottom: 16 }}>Nested Card</Text>
+        </Card>
+        <Card padding="large" variant="outline" colorScheme="grey" style={{ flex: 1 }} nested>
+          <Text style={{ marginBottom: 16 }}>Nested Card</Text>
+        </Card>
+        <Card padding="large" variant="outline" colorScheme="purple" style={{ flex: 1 }} nested>
+          <Text style={{ marginBottom: 16 }}>Nested Card</Text>
+        </Card>
+      </HStack>
+    </Card>
+    <Card padding="large">
+      <HStack space="lg">
+        <Card padding="large" variant="outline" nested>
+          <Center p="$5">
+            <Text>Nested Card</Text>
+          </Center>
+        </Card>
+      </HStack>
+    </Card>
+    <Card padding="large">
+      <HStack space="lg">
+        <Card
+          padding="large"
+          variant="outline"
+          colorScheme="purple"
+          style={{ width: '100%' }}
+          nested
+        >
+          <Center p="$5">
+            <Text>Nested Card</Text>
+          </Center>
+        </Card>
+      </HStack>
+    </Card>
+  </VStack>
+</DocComponentWrap>
+
+## Padding
+
+Padding is a property that adjusts the card's padding from 16 to 0, maintaining consistent usage.
+
+**Use the props to adjust the padding and not overrides.**
+
+<DocComponentWrap>
+  <Card padding="medium">
+    <HStack space="lg">
+      <Card padding="large" variant="outline" nested>
+        <Text style={{ marginBottom: 16 }}>Nested Card</Text>
+      </Card>
+      <Card padding="large" variant="outline" colorScheme="grey" nested>
+        <Text style={{ marginBottom: 16 }}>Nested Card</Text>
+      </Card>
+      <Card padding="large" variant="outline" colorScheme="purple" nested>
+        <Text style={{ marginBottom: 16 }}>Nested Card</Text>
+      </Card>
+    </HStack>
+  </Card>
+</DocComponentWrap>
+
+_The padding is set to medium_
+
+<DocComponentWrap>
+  <Card padding="none" style={{ maxWidth: 300 }}>
+    <img src={catAsleep} width="100%" height="auto" />
+    <Card padding="large" variant="filled">
+      <Heading>This is Card heading</Heading>
+      <Text
+        children={[
+          'This is the body of a card; it serves as an example. A card can contain any type of content.',
+        ]}
+      />
+    </Card>
+  </Card>
+</DocComponentWrap>
+
+_The padding is set to none and the **inner Card** has padding set to large_
+
+## Customisation and overrides
+
+- Avoid overriding Card design presets
+- Consistency: Overriding presets can create UI inconsistencies.
+- Maintainability: Using the design system component simplifies updates during redesign.
+- For new card styles that existing options don't cover, consult the design system team.

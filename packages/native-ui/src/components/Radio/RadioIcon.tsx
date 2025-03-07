@@ -2,7 +2,6 @@
 import React, { forwardRef } from 'react';
 import { StyleSheet } from 'react-native-unistyles';
 import { Icon } from '../Icon';
-import { Platform } from 'react-native';
 import { CircleIcon } from '../Icons';
 import { useRadioContext } from './Radio.context';
 import type { SvgRef } from '../../types';
@@ -12,18 +11,7 @@ const RadioIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
   const { disabled } = useRadioContext();
   styles.useVariants({ disabled });
 
-  return (
-    <Icon
-      ref={ref}
-      as={CircleIcon}
-      {...props}
-      style={
-        Platform.OS === 'web'
-          ? { ...Object(styles.container), ...(style ? Object(style) : {}) }
-          : [styles.container, style]
-      }
-    />
-  );
+  return <Icon ref={ref} as={CircleIcon} {...props} style={[styles.container, style]} />;
 });
 
 RadioIcon.displayName = 'RadioIcon';

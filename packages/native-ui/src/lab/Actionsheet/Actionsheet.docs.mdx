@@ -1,0 +1,246 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
+import * as Stories from './Actionsheet.stories';
+import { Center, Text, Box, Alert } from '../../';
+import {
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper,
+} from './';
+import {
+  ViewFigmaButton,
+  BackToTopButton,
+  DocComponentWrap,
+  UsageWrap,
+  AdvancedActionsheet,
+} from '../../../docs/components';
+
+<Meta title="Lab Components / Actionsheet (Lab)" />
+
+<BackToTopButton />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=1746-4235" />
+
+# Actionsheet
+
+<DocComponentWrap>
+  <Box mt="$6" mb="4">
+    <Alert
+      colorScheme="gold"
+      text="These components may potentially change their API and/or design and will be replaced in minor release versions, eventually being integrated into the main library code. Use at your own discretion."
+    />
+  </Box>
+</DocComponentWrap>
+
+The Actionsheet component presents a set of options to the user, overlaid on top of the app's content, allowing them to take quick actions without leaving the current page or view.
+
+- [Usage](#usage)
+- [Props](#props)
+- [Components](#components)
+  - [Actionsheet](#actionsheet)
+  - [ActionsheetContent](#actionsheetcontent)
+  - [ActionsheetDragIndicatorWrapper](#actionsheetdragindicatorwrapper)
+  - [ActionsheetDragIndicator](#actionsheetdragindicator)
+- [Advanced usage](#advanced-usage)
+- [Examples](#examples)
+  - [With ScrollView](#with-scrollview)
+
+## Usage
+
+<Canvas of={Stories.Playground} />
+
+<Controls of={Stories.Playground} />
+
+```tsx
+import { Button, Text } from '@utilitywarehouse/native-ui/lab';
+import { Actionsheet, Box } from '@utilitywarehouse/native-ui/lab';
+
+const MyComponent = () => {
+  const [showActionsheet, setShowActionsheet] = React.useState(false);
+  const handleClose = () => setShowActionsheet(!showActionsheet);
+  return (
+    <Box>
+      <Button onPress={handleClose}>
+        <ButtonText>Open</ButtonText>
+      </Button>
+      <Actionsheet isOpen={isOpen} onClose={handleClose}>
+        <Box gap="$3">
+          <Text>Hello, this is the Actionsheet!</Text>
+          <Button onPress={handleClose}>Close</Button>
+        </Box>
+      </Actionsheet>
+    </Box>
+  );
+};
+```
+
+## Props
+
+| Property               | Type             | Description                                                                                                                                           | Default               |
+| ---------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| `isOpen`               | `boolean`        | If true, the Actionsheet will open. Useful for controllable state behavior.                                                                           | -                     |
+| `onClose`              | `() => any`      | Callback invoked when the Actionsheet is closed.                                                                                                      | -                     |
+| `onOpen`               | `() => any`      | Callback invoked when the Actionsheet is opened.                                                                                                      | -                     |
+| `showBackdrop`         | `boolean`        | If true, the Actionsheet will show a backdrop.                                                                                                        | `true`                |
+| `closeOnBackdropPress` | `boolean`        | If true, the Actionsheet will close when the backdrop is pressed.                                                                                     | `true`                |
+| `showIndicator`        | `boolean`        | If true, the Actionsheet will show a drag indicator.                                                                                                  | `true`                |
+| `keyboardAvoiding`     | `boolean`        | If true, the Actionsheet will avoid the keyboard.                                                                                                     | `true`                |
+| `minHeight`            | `DimensionValue` | The minimum height of the Actionsheet.                                                                                                                | `0`                   |
+| `maxHeight`            | `DimensionValue` | The maximum height of the Actionsheet.                                                                                                                | `SCREEN_HEIGHT * 0.8` |
+| `dragOnIndicatorOnly`  | `boolean`        | If true, the Actionsheet will only be draggable when the drag indicator is dragged.                                                                   | `false`               |
+| `dragCloseThreshold`   | `number`         | The threshold in pixels to close the Actionsheet when dragging.                                                                                       | `80`                  |
+| `includeContent`       | `boolean`        | If true, the Actionsheet will include the content (set to `false` for advanced usage [see below](#advanced-usage) to customise the content).          | `true`                |
+| `includeDragIndicator` | `boolean`        | If true, the Actionsheet will include the drag indicator (set to `false` for advanced usage [see below](#advanced-usage) to customise the indicator). | `true`                |
+| `contentSafeArea`      | `boolean`        | If true, the Actionsheet will wrap the content in a `SafeAreaView`.                                                                                   | `true`                |
+
+## Components
+
+### `Actionsheet`
+
+All props are [listed above](#props).
+
+### `ActionsheetContent`
+
+It inherits all the properties of React Native's View component.
+
+### `ActionsheetDragIndicatorWrapper`
+
+It inherits all the properties of React Native's View component.
+
+### `ActionsheetDragIndicator`
+
+It inherits all the properties of React Native's View component.
+
+## Advanced usage
+
+To customise the content or drag indicator, set `includeContent` or `includeDragIndicator` to `false` respectively. This will allow you to customise the content or drag indicator as needed.
+
+<UsageWrap>
+  <AdvancedActionsheet />
+</UsageWrap>
+
+```tsx
+import {
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper,
+  Box,
+} from '@utilitywarehouse/native-ui/lab';
+import { Button, createStyleSheet, Text, useStyles } from '@utilitywarehouse/native-ui';
+import React, { useState } from 'react';
+
+const stylesheet = createStyleSheet(({ space, colors, radii }) => ({
+  indicator: {
+    width: space['16'],
+    height: space['3'],
+    borderRadius: radii.full,
+    backgroundColor: colors.green600,
+  },
+  content: {
+    paddingHorizontal: space['6'],
+    height: 260,
+    backgroundColor: colors.green100,
+  },
+}));
+
+const AdvancedActionsheet = () => {
+  const [showActionsheet, setShowActionsheet] = useState(false);
+  const handleClose = () => setShowActionsheet(!showActionsheet);
+  const { styles } = useStyles(stylesheet);
+  return (
+    <Box>
+      <Button onPress={handleClose}>Open</Button>
+      <Actionsheet
+        isOpen={showActionsheet}
+        onClose={handleClose}
+        includeContent={false}
+        includeDragIndicator={false}
+      >
+        <ActionsheetContent style={styles.content}>
+          <ActionsheetDragIndicatorWrapper>
+            <ActionsheetDragIndicator style={styles.indicator} />
+          </ActionsheetDragIndicatorWrapper>
+          <Box gap="$3">
+            <Text>Hello, this is the green Actionsheet!</Text>
+            <Text>What lovely colours!</Text>
+          </Box>
+        </ActionsheetContent>
+      </Actionsheet>
+    </Box>
+  );
+};
+
+export default AdvancedActionsheet;
+```
+
+## Examples
+
+### With `ScrollView`
+
+<Canvas of={Stories.WithScrollView} />
+
+```tsx
+import { Actionsheet, ActionsheetContent } from '@utilitywarehouse/native-ui/lab';
+import { ScrollView } from 'react-native-gesture-handler';
+import { Heading, Text, Button, createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
+
+const stylesheet = createStyleSheet(({ space }) => ({
+  content: {
+    paddingBottom: space['0'],
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContainer: {
+    paddingBottom: space['4'],
+  },
+}));
+
+const MyComponent = () => {
+  const [showActionsheet, setShowActionsheet] = React.useState(false);
+  const handleClose = () => setShowActionsheet(!showActionsheet);
+  const { styles } = useStyles(stylesheet);
+  return (
+    <Box h="$96" alignItems="center" justifyContent="center">
+      <Button onPress={handleClose}>
+        <ButtonText>Open</ButtonText>
+      </Button>
+      <Actionsheet
+        isOpen={showActionsheet}
+        onClose={handleClose}
+        minHeight={300}
+        includeContent={false}
+        contentSafeArea={false}
+      >
+        <ActionsheetContent style={styles.content}>
+          <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContainer}>
+            <Box mb="$4">
+              <Heading textAlign="center">Out of range reading</Heading>
+            </Box>
+            <Box mb="$6" gap="$2">
+              <Text>
+                The number that was entered was too high or too low for what we&apos;d expect based
+                on past readings and your typical energy usage. This normally suggests an error when
+                the reading was submitted. In some cases, the reading may still be used after
+                investigation.
+              </Text>
+              <Text>
+                If you&apos;re sure the reading is correct, please submit it again. If you&apos;re
+                unsure, please contact us.
+              </Text>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc
+                ultricies tincidunt. Nullam nec purus nec nunc ultricies tincidunt.
+              </Text>
+            </Box>
+            <Button onPress={handleClose}>
+              <ButtonText>Close</ButtonText>
+            </Button>
+          </ScrollView>
+        </ActionsheetContent>
+      </Actionsheet>
+    </Box>
+  );
+};
+```

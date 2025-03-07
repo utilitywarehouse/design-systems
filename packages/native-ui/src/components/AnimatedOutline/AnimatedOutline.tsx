@@ -2,10 +2,11 @@ import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { View, ViewProps } from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
-
 interface AnimatedCircleProps {
   visible: boolean;
 }
+
+const AnimatedView = Animated.createAnimatedComponent(View);
 
 const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ visible }) => {
   const opacity = useSharedValue(0.4);
@@ -29,7 +30,7 @@ const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ visible }) => {
     [scale, opacity]
   );
 
-  return <Animated.View style={[styles.circle, animatedStyles]} />;
+  return <AnimatedView style={[styles.circle, animatedStyles]} />;
 };
 
 interface Props {

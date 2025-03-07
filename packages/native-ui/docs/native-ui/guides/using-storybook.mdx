@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/blocks';
+import playground from './assets/playgrounds.mp4';
+import darkMode from './assets/darkmode.mp4';
+import deviceMode from './assets/devices.mp4';
+import { BackToTopButton } from '../../components';
+
+<BackToTopButton />
+
+<Meta title="Guides / Using Storybook" />
+
+# Using Storybook
+
+This Storybook is for the Native UI library. It is a tool for developing UI components in isolation for React Native which we use to share and document our components.
+
+- [Playgrounds](#playgrounds)
+- [Dark mode](#dark-mode)
+- [Device Selection](#device-selection)
+
+## Playgrounds
+
+Most components have a playground where you can interact with the component and see how it behaves with different props. You can change the props in the controls on the right side of the screen and see the component update in real time.
+
+<video width="100%" height="auto" autoplay="autoplay" loop controls>
+  <source src={playground} type="video/mp4" />
+</video>
+
+## Dark mode
+
+Storybook has a dark mode. You can enable it by clicking the moon icon in the top right corner of the screen. If the styles of the component don't change you can refresh the page and try again.
+
+<video width="100%" height="auto" autoplay="autoplay" loop controls>
+  <source src={darkMode} type="video/mp4" />
+</video>
+
+## Device Selection
+
+You can change the device you are viewing the component on by clicking the device icon in the top right corner of the screen. This will allow you to see how the component looks on different devices such as Web, iOS or Android. You can then update the component with the controls and change the device colour mode.
+
+<video width="100%" height="auto" autoplay="autoplay" loop controls>
+  <source src={deviceMode} type="video/mp4" />
+</video>

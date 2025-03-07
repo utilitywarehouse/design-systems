@@ -1,0 +1,27 @@
+import { Meta, ColorItem, ColorPalette } from '@storybook/blocks';
+
+import common from '../../../../packages/colour-system/lib/common.json';
+
+<Meta title="Guides / Colour System / Common" />
+
+# Common Colours
+
+<ColorPalette>
+  <ColorItem
+    title="Brand"
+    subtitle={`common.brand`}
+    colors={common['brand'].reduce((acc, key) => {
+      acc[key.name] = key.value;
+      return acc;
+    }, {})}
+  />
+  <ColorItem
+    title="Service"
+    subtitle={`common.service`}
+    colors={common['service'].reduce((acc, key) => {
+      acc[key.name] = key.value;
+      return acc;
+    }, {})}
+  />
+
+</ColorPalette>

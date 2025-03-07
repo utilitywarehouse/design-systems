@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, DimensionValue, SafeAreaView, ViewProps } from 'react-native';
+import { Dimensions, DimensionValue, SafeAreaView, View, ViewProps } from 'react-native';
 import { GestureDetector, Gesture, gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
@@ -12,6 +12,8 @@ import ActionsheetDragIndicatorWrapper from './ActionsheetDragIndicatorWrapper';
 import { StyleSheet } from 'react-native-unistyles';
 import { useActionsheetContext } from './Actionsheet.context';
 import ActionsheetDragIndicator from './ActionsheetDragIndicator';
+
+const AnimatedView = Animated.createAnimatedComponent(View);
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -88,12 +90,12 @@ const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...
   );
 
   const animatedView = (
-    <Animated.View
+    <AnimatedView
       style={[styles.content, styles.extraStyles(minHeight, showIndicator), style as false]}
       {...props}
     >
       {safeAreaContent}
-    </Animated.View>
+    </AnimatedView>
   );
 
   const wrappedContent =

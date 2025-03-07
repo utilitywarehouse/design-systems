@@ -2,9 +2,12 @@ build
 /unstyled/*
 /lab/
 /core/
+/hooks/
 /components/
 /unstyled/
 /types/
 /utils/
 !/src/lab/
 !/src/components/unstyled/
+
+*storybook.log

@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
 import { StyleSheet } from 'react-native-unistyles';
 import { Text } from 'react-native';
-
 import { useCheckboxContext } from './Checkbox.context';
 import { Label } from '../Label';
 import LabelProps from '../Label/Label.props';

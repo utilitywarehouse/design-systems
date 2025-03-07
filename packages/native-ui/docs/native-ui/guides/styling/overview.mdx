@@ -1,0 +1,20 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Guides / Styling / Overview" />
+
+# Styling Overview
+
+Styling is provided by our styling library [`react-native-unistyles`](https://www.unistyl.es/start/introduction/) it is configured by passing theme files to
+the `react-native-unistyles` runtime instanciated by the `@utilitywarehouse/native-ui` `NativeUIProvider` (a Wrapper component that applies the theme and
+styling to all the children).
+
+```tsx
+import { NativeUIProvider } from '../../';
+
+function App({ children }) {
+  return <NativeUIProvider>{children}</NativeUIProvider>;
+}
+```
+
+Our `NativeUIProvider` handles changes in color modes along with the `react-native-unistyles` runtime. For more information on how to use the `react-native-unistyles`
+runtime, please refer to the [documentation](https://www.unistyl.es/start/introduction).

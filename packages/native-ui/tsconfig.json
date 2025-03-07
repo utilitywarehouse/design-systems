@@ -7,14 +7,16 @@
     "example",
     "./src/components/unstyled",
     "./src/**/*.figma.tsx",
+    "./src/**/*.stories.tsx",
+    "./src/**/*.docs.mdx",
   ],
-  "baseUrl": ".", // This must be specified if "paths" is.
-  "paths": {
-    "react-native": [
-      "node_modules/react-native/"
-    ],
-  },
   "compilerOptions": {
+    "baseUrl": ".", // This must be specified if "paths" is.
+    "paths": {
+      "react-native": [
+        "node_modules/react-native/"
+      ],
+    },
     "ignoreDeprecations": "5.0",
     "noEmit": false,
     "declaration": true,

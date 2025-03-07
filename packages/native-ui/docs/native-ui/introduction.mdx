@@ -1,0 +1,158 @@
+import { Meta } from '@storybook/blocks';
+import { version } from '../../package.json';
+import img from './phone-light.png';
+import imgDark from './phone-dark.png';
+import { DynamicImage, BackToTopButton } from '../components';
+import { Box } from '../../src';
+
+<Meta title="Introduction" />
+<BackToTopButton />
+<Box alignItems='center'>
+<DynamicImage
+  width={500}
+  height="auto"
+  alt="UW Design Systems - Native UI"
+  title="UW - Native UI"
+  darkSrc={imgDark}
+  lightSrc={img}
+/>
+
+# UW - Native UI
+
+React Native component library for building UIs at UW.
+
+</Box>
+
+Current version: v{version}
+
+- [Installation](#installation)
+- [Additional packages](#additional-packages)
+  - [Linking the fonts to be used in your project](#linking-the-fonts-to-be-used-in-your-project)
+  - [Using Expo](#using-expo)
+- [Getting Started](#getting-started)
+  - [Dark Mode](#dark-mode)
+
+## Installation
+
+Assuming you already have React Native installed and your project set up, to get started install the library and it's peer dependencies.
+
+```console
+npm install @utilitywarehouse/native-ui
+```
+
+To install the peer dependencies, you can run the following command:
+
+```console
+npm install react-native-unistyles react-native-nitro-module@0.22.1 react-native-svg react-native-reanimated react-native-gesture-handler
+```
+
+For more information on how to install and configure `react-native-svg`, `react-native-gesture-handler` and `react-native-reanimated`, please refer to the [react-native-svg](https://github.com/software-mansion/react-native-svg?tab=readme-ov-file#installation),
+[react-native-gesture-handler](https://docs.swmansion.com/react-native-gesture-handler/docs/) and [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started) documentation.
+
+## Additional packages
+
+The `@utilitywarehouse/native-ui` library uses two packages under the hood for colours and icons, feel free to install them if you need to use them in your project.
+
+```console
+npm install @utilitywarehouse/colour-system @utilitywarehouse/react-native-icons
+```
+
+You will need to include the **Aeonik** and **Work Sans** fonts.
+The easiest way to do this is to use the `@utilitywarehouse/fontsource` package.
+
+```console
+npm install @utilitywarehouse/fontsource
+```
+
+Next, create or update your `react-native.config.js` file in the root directory and paste the code below inside it:
+
+```js
+module.exports = {
+  project: {
+    ios: {},
+    android: {},
+  },
+  assets: [
+    './node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans',
+    './node_modules/@utilitywarehouse/fontsource/files/truetype/Aeonik',
+  ],
+};
+```
+
+### Linking the fonts to be used in your project
+
+Now we need to link them so we'll be able to use them in any files inside the project. To do that, run the following command:
+
+```console
+npx react-native-asset
+```
+
+### Using Expo
+
+If you are using Expo, you can use the `expo-font` and [`expo-xml-font`](https://github.com/Armster15/expo-xml-font) packages to load the fonts.
+Here is an example of how to load the fonts in your `App.tsx` file:
+
+```tsx
+import React from 'react';
+import { useFonts } from 'expo-font';
+import App from './src/App';
+
+export default () => {
+  const [loaded] = useFonts({
+    'Aeonik-Regular': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/Aeonik/Aeonik-Regular.otf'),
+    'Aeonik-Bold': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/Aeonik/Aeonik-Bold.otf'),
+    'WorkSans-Thin': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Thin.ttf'),
+    'WorkSans-ExtraLight': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-ExtraLight.ttf'),
+    'WorkSans-Light': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Light.ttf'),
+    'WorkSans-Regular': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Regular.ttf'),
+    'WorkSans-SemiBold': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-SemiBold.ttf'),
+    'WorkSans-Medium': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Medium.ttf'),
+    'WorkSans-Bold': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Bold.ttf'),
+    'WorkSans-ExtraBold': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-ExtraBold.ttf'),
+    'WorkSans-Black': require('./node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Black.ttf'),
+  });
+
+  if (!loaded) return null;
+
+  return <App />;
+};
+```
+
+Follow the [expo-xml-font](https://github.com/Armster15/expo-xml-font) documentation to learn how to use the `expo-xml-font` package.
+
+## Getting Started
+
+Wrap your application with the `NativeUIProvider` component.
+
+```tsx
+import React from 'react';
+import { NativeUIProvider } from '../../';
+import App from './App';
+
+const RootApp: React.FC = () => (
+  <NativeUIProvider>
+    <App />
+  </NativeUIProviderr>
+);
+```
+
+### Dark Mode
+
+By default the light colour mode is enabled. If you want to enable dark mode, you can pass the `colorMode` prop to the `NativeUIProvider` component. The two options for `colorMode` are `light` and `dark`.
+
+```tsx
+import React from 'react';
+import { ColorSchemeName, useColorScheme } from 'react-native';
+import { NativeUIProvider } from '../../';
+import App from './App';
+
+const RootApp: React.FC = () => {
+  const colorScheme = useColorScheme();
+
+  return (
+    <NativeUIProvider colorMode={colorScheme as ColorSchemeName}>
+      <App />
+    </NativeUIProvider>
+  );
+};
+```

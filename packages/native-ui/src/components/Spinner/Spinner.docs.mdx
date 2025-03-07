@@ -1,0 +1,61 @@
+import { Meta, Controls, Story, Canvas } from '@storybook/blocks';
+import { colors } from '@utilitywarehouse/colour-system';
+import * as Stories from './Spinner.stories';
+import { Spinner, Center } from '../../';
+import { ViewFigmaButton, BackToTopButton, UsageWrap } from '../../../docs/components';
+
+<Meta title="Components / Spinner" />
+
+<BackToTopButton />
+
+<ViewFigmaButton url="https://www.figma.com/file/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?type=design&node-id=5627-1530&mode=dev" />
+
+# Spinner
+
+Using a Spinner is a common method for indicating that an asynchronous process is ongoing. Additionally, it informs users that they should refrain from clicking or tapping the UI until the loading state has been resolved.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Variants](#variants)
+
+## Playground
+
+<Canvas of={Stories.Playground} />
+
+<Controls of={Stories.Playground} />
+
+## Usage
+
+The Spinner can be used independently (it's a self-contained component) or in conjunction with other components,
+such as in the loading state of a `Button` or `Input` Search retrieving data. It can also be used inside a `Dialog`
+with text, or directly in a container on the screen when we want the user to wait and avoid performing any actions.
+
+<UsageWrap>
+  <Center>
+    <Spinner size="sm" color={colors.cyan400} />
+  </Center>
+</UsageWrap>
+
+```tsx
+import { Spinner, Center } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => (
+  <Center>
+    <Spinner size="sm" color={colors.cyan400} />
+  </Center>
+);
+```
+
+## Props
+
+| Property | Type                          | Description               | Default |
+| -------- | ----------------------------- | ------------------------- | ------- |
+| `size`   | `'xs' \|'sm' \| 'md' \| 'lg'` | The size of the spinner.  | `md`    |
+| `color`  | `string`                      | The color of the spinner. |         |
+
+## Variants
+
+The `Spinner` component has different variants to style the spinner.
+
+<Canvas of={Stories.Variants} />

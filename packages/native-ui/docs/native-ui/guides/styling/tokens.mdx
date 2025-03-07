@@ -1,0 +1,838 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { NativeUIProvider, Box, Text, HStack, Heading, Center, VStack } from '../../../../src';
+import { dark, light } from '../../../../../../packages/colour-system/raw/colours.json';
+import common from '../../../../../../packages/colour-system/lib/common.json';
+import { BackToTopButton, VariantTitle, UsageWrap } from '../../../components';
+
+<Meta title="Guides / Styling / Theme Tokens" />
+
+<BackToTopButton />
+
+# Theme Tokens
+
+`native-ui` uses a design token system to provide a consistent and scalable way to manage design properties.
+
+`native-ui` ships with default tokens that provide access to theme values and lets you build and customise your own themed components.
+It has colors, typography, size, opacity, shadows, breakpoints and more.
+
+- [How to Use Tokens](#how-to-use-tokens)
+- [Colours](#colours)
+- [Typography](#typography)
+  - [Fonts](#fonts)
+  - [Font Sizes](#font-sizes)
+  - [Font Weights](#font-weights)
+  - [Letter Spacing](#letter-spacing)
+  - [Line Heights](#line-heights)
+- [Spacing](#spacing)
+- [Opacity](#opacity)
+- [Shadows](#shadows)
+- [Breakpoints](#breakpoints)
+- [Borders](#borders)
+  - [Border Widths](#border-widths)
+  - [Radii](#radii)
+
+## How to Use Tokens
+
+To use the theme tokens in your components, you can use the `useStyles` hook to access the theme values or pass a function
+to `createStyleSheet` to access the theme values. You can also use the `Box` component and the `$` prefix to access the theme values.
+
+```tsx
+import { Text, useStyles } from '../../';
+import { Box } from '@utilitywarehouse/native-ui/lab';
+
+const MyComponent = () => {
+  const {
+    styles,
+    // You can access the theme values via the useStyles hook
+    theme: { colors, radii, space },
+  } = useStyles();
+
+  return (
+    <Box
+      // You can use the theme values from the useStyles hook
+      p={space[3]}
+      // Or the built in typed values by using the '$' prefix
+      m="$4"
+      bg={colors.grey50}
+      borderColor="$green700"
+      borderWidth={2}
+      borderRadius={radii['lg']}
+    >
+      <Text style={styles.text}>Hello, world!</Text>
+    </Box>
+  );
+};
+
+const stylesheet = createStyleSheet(theme => ({
+  text: {
+    // You can access the theme values via the theme argument
+    fontFamily: theme.fonts.body,
+    fontSize: theme.fontSizes.md,
+    color: theme.colors.grey900,
+  },
+}));
+```
+
+## Colours
+
+The colour system is based on the `colour-system` package which provides a set of tokens for both light and dark themes.
+To use the colours tokens in your components, you can use the colours below for example `color: colors.cyan400;`.
+
+### Light Colours
+
+These colours should be used in the default light `colorMode` and theme.
+
+<ColorPalette>
+  {Object.keys(light).map(key => (
+    <>
+      <ColorItem
+        title={`${key}`}
+        subtitle="Light Theme"
+        colors={Object.keys(light[key])
+          .slice(0, 6)
+          .reduce((acc, subKey) => {
+            acc[subKey] = light[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+      <ColorItem
+        title={`${key}`}
+        subtitle="Light Theme"
+        colors={Object.keys(light[key])
+          .slice(6, 12)
+          .reduce((acc, subKey) => {
+            acc[subKey] = light[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+      {Object.keys(light[key]).length > 12 && (
+        <ColorItem
+          title={`${key}`}
+          subtitle="Light Theme"
+          colors={Object.keys(light[key])
+            .slice(12, 18)
+            .reduce((acc, subKey) => {
+              acc[subKey] = light[key][subKey].value;
+              return acc;
+            }, {})}
+        />
+      )}
+    </>
+  ))}
+</ColorPalette>
+### Dark Theme
+
+These colours should be used in the dark `colorMode` and theme.
+
+<ColorPalette>
+  {Object.keys(dark).map(key => (
+    <>
+      <ColorItem
+        title={key}
+        subtitle="Dark Theme"
+        colors={Object.keys(dark[key])
+
+          .slice(0, 6)
+          .reduce((acc, subKey) => {
+            acc[subKey] = dark[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+      <ColorItem
+        title={key}
+        subtitle="Dark Theme"
+        colors={Object.keys(dark[key])
+
+          .slice(6, 12)
+          .reduce((acc, subKey) => {
+            acc[subKey] = dark[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+      {Object.keys(dark[key]).length > 12 && (
+        <ColorItem
+          title={key}
+          subtitle="Dark Theme"
+          colors={Object.keys(dark[key])
+
+            .slice(12, 18)
+            .reduce((acc, subKey) => {
+              acc[subKey] = dark[key][subKey].value;
+              return acc;
+            }, {})}
+        />
+      )}
+    </>
+
+))}
+
+</ColorPalette>
+### Common Brand and Service Colours
+<ColorPalette>
+  <ColorItem
+    title="Brand"
+    subtitle={`Common Brand`}
+    colors={common['brand'].reduce((acc, key) => {
+      acc[`$brand${key.name.charAt(0).toUpperCase() + key.name.slice(1)}`] = key.value;
+      return acc;
+    }, {})}
+  />
+  <ColorItem
+    title="Service"
+    subtitle={`Common Service`}
+    colors={common['service'].reduce((acc, key) => {
+      acc[`$service${key.name.charAt(0).toUpperCase() + key.name.slice(1)}`] = key.value;
+      return acc;
+    }, {})}
+  />
+</ColorPalette>
+
+## Typography
+
+To manage Typography options, the tokens object supports the following keys:
+
+- [fonts (font families)](#fonts)
+- [fontSizes](#font-sizes)
+- [fontWeights](#font-weights)
+- [lineHeights](#line-heights)
+- [letterSpacings](#letter-spacings)
+
+### Fonts
+
+| Key        | Theme Key       | Value       |
+| ---------- | --------------- | ----------- |
+| `$heading` | `fonts.heading` | `Aeonik`    |
+| `$body`    | `fonts.body`    | `Work Sans` |
+
+<UsageWrap>
+  <NativeUIProvider>
+    <Center>
+      <HStack space="lg">
+        <Center>
+          <Heading>Aeonik</Heading>
+          <Text size="sm">$heading</Text>
+        </Center>
+        <Center>
+          <Text>Work Sans</Text>
+          <Text size="sm">$body</Text>
+        </Center>
+      </HStack>
+    </Center>
+  </NativeUIProvider>
+</UsageWrap>
+
+### Font Sizes
+
+<UsageWrap>
+  <NativeUIProvider>
+    <Center>
+      <HStack space="lg" flexWrap="wrap">
+        <Center>
+          <Text fontSize="$2xs">2xs</Text>
+          <Text size="sm">$2xs</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$xs">xs</Text>
+          <Text size="sm">$xs</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$sm">sm</Text>
+          <Text size="sm">$sm</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$md">md</Text>
+          <Text size="sm">$md</Text>
+        </Center>
+        <Center>
+          <Text size="$lg">lg</Text>
+          <Text size="sm">$lg</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$xl">xl</Text>
+          <Text size="sm">$xl</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$2xl">2xl</Text>
+          <Text size="sm">$2xl</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$3xl">3xl</Text>
+          <Text size="sm">$3xl</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$4xl">4xl</Text>
+          <Text size="sm">$4xl</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$5xl">5xl</Text>
+          <Text size="sm">$5xl</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$6xl">6xl</Text>
+          <Text size="sm">$6xl</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$7xl">7xl</Text>
+          <Text size="sm">$7xl</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$8xl">8xl</Text>
+          <Text size="sm">$8xl</Text>
+        </Center>
+        <Center>
+          <Text fontSize="$9xl">9xl</Text>
+          <Text size="sm">$9xl</Text>
+        </Center>
+      </HStack>
+    </Center>
+  </NativeUIProvider>
+</UsageWrap>
+
+| Key    | Theme Value     | Value |
+| ------ | --------------- | ----- |
+| `$2xs` | `fontSizes.2xs` | 10    |
+| `$xs`  | `fontSizes.xs`  | 12    |
+| `$sm`  | `fontSizes.sm`  | 14    |
+| `$md`  | `fontSizes.md`  | 16    |
+| `$lg`  | `fontSizes.lg`  | 18    |
+| `$xl`  | `fontSizes.xl`  | 20    |
+| `$2xl` | `fontSizes.2xl` | 24    |
+| `$3xl` | `fontSizes.3xl` | 30    |
+| `$4xl` | `fontSizes.4xl` | 36    |
+| `$5xl` | `fontSizes.5xl` | 48    |
+| `$6xl` | `fontSizes.6xl` | 60    |
+| `$7xl` | `fontSizes.7xl` | 72    |
+| `$8xl` | `fontSizes.8xl` | 96    |
+| `$9xl` | `fontSizes.9xl` | 128   |
+
+### Font Weights
+
+<UsageWrap>
+  <NativeUIProvider>
+    <Center>
+      <HStack space="xl" flexWrap="wrap">
+        <Center>
+          <Text fontWeight="$thin">Thin</Text>
+          <Text size="sm">$thin</Text>
+        </Center>
+        <Center>
+          <Text fontWeight="$extralight">Extra Light</Text>
+          <Text size="sm">$extralight</Text>
+        </Center>
+        <Center>
+          <Text fontWeight="$light">Light</Text>
+          <Text size="sm">$light</Text>
+        </Center>
+        <Center>
+          <Text fontWeight="$normal">Normal</Text>
+          <Text size="sm">$normal</Text>
+        </Center>
+        <Center>
+          <Text fontWeight="$medium">Medium</Text>
+          <Text size="sm">$medium</Text>
+        </Center>
+        <Center>
+          <Text fontWeight="$semibold">Semibold</Text>
+          <Text size="sm">$semibold</Text>
+        </Center>
+        <Center>
+          <Text fontWeight="$bold">Bold</Text>
+          <Text size="sm">$bold</Text>
+        </Center>
+        <Center>
+          <Text fontWeight="$extrabold">Extra Bold</Text>
+          <Text size="sm">$extrabold</Text>
+        </Center>
+        <Center>
+          <Text fontWeight="$black">Black</Text>
+          <Text size="sm">$black</Text>
+        </Center>
+      </HStack>
+    </Center>
+  </NativeUIProvider>
+</UsageWrap>
+
+| Key           | Theme Key                | Value |
+| ------------- | ------------------------ | ----- |
+| `$thin`       | `fontWeights.thin`       | 100   |
+| `$extralight` | `fontWeights.extralight` | 200   |
+| `$light`      | `fontWeights.light`      | 300   |
+| `$normal`     | `fontWeights.normal`     | 400   |
+| `$medium`     | `fontWeights.medium`     | 500   |
+| `$semibold`   | `fontWeights.semibold`   | 600   |
+| `$bold`       | `fontWeights.bold`       | 700   |
+| `$extrabold`  | `fontWeights.extrabold`  | 800   |
+| `$black`      | `fontWeights.black`      | 900   |
+
+### Letter Spacing
+
+| Key    | Theme Key           | Value |
+| ------ | ------------------- | ----- |
+| `$xs`  | `letterSpacing.xs`  | -0.4  |
+| `$sm`  | `letterSpacing.sm`  | -0.2  |
+| `$md`  | `letterSpacing.md`  | 0     |
+| `$lg`  | `letterSpacing.lg`  | 0.2   |
+| `$xl`  | `letterSpacing.xl`  | 0.4   |
+| `$2xl` | `letterSpacing.2xl` | 1.6   |
+
+### Line Heights
+
+| Key    | Theme Key         | Value |
+| ------ | ----------------- | ----- |
+| `$2xs` | `lineHeights.2xs` | 16    |
+| `$xs`  | `lineHeights.xs`  | 18    |
+| `$sm`  | `lineHeights.sm`  | 20    |
+| `$md`  | `lineHeights.md`  | 22    |
+| `$lg`  | `lineHeights.lg`  | 24    |
+| `$xl`  | `lineHeights.xl`  | 28    |
+| `$2xl` | `lineHeights.2xl` | 32    |
+| `$3xl` | `lineHeights.3xl` | 40    |
+| `$4xl` | `lineHeights.4xl` | 48    |
+| `$5xl` | `lineHeights.5xl` | 56    |
+| `$6xl` | `lineHeights.6xl` | 72    |
+| `$7xl` | `lineHeights.7xl` | 90    |
+
+## Spacing
+
+The space key allows you to customise the global spacing and sizing scale for your project.
+By default these spacing value can be referenced by the padding, margin, and top, left, right, bottom, props.
+
+| Key    | Theme Key      | Value   |
+| ------ | -------------- | ------- |
+| `$0`   | `space['0']`   | 0       |
+| `$0.5` | `space['0.5']` | 2       |
+| `$1`   | `space['1']`   | 4       |
+| `$1.5` | `space['1.5']` | 6       |
+| `$2`   | `space['2']`   | 8       |
+| `$2.5` | `space['2.5']` | 10      |
+| `$3`   | `space['3']`   | 12      |
+| `$3.5` | `space['3.5']` | 14      |
+| `$4`   | `space['4']`   | 16      |
+| `$4.5` | `space['4.5']` | 18      |
+| `$5`   | `space['5']`   | 20      |
+| `$6`   | `space['6']`   | 24      |
+| `$7`   | `space['7']`   | 28      |
+| `$8`   | `space['8']`   | 32      |
+| `$9`   | `space['9']`   | 36      |
+| `$10`  | `space['10']`  | 40      |
+| `$11`  | `space['11']`  | 44      |
+| `$12`  | `space['12']`  | 48      |
+| `$14`  | `space['14']`  | 56      |
+| `$16`  | `space['16']`  | 64      |
+| `$20`  | `space['20']`  | 80      |
+| `$24`  | `space['24']`  | 96      |
+| `$32`  | `space['32']`  | 128     |
+| `$40`  | `space['40']`  | 160     |
+| `$48`  | `space['48']`  | 192     |
+| `$56`  | `space['56']`  | 224     |
+| `$64`  | `space['64']`  | 256     |
+| `$72`  | `space['72']`  | 288     |
+| `$80`  | `space['80']`  | 320     |
+| `$96`  | `space['96']`  | 384     |
+| `$1/2` | `space['1/2']` | 50%     |
+| `$1/3` | `space['1/3']` | 33.333% |
+| `$2/3` | `space['2/3']` | 66.666% |
+| `$1/4` | `space['1/4']` | 25%     |
+| `$2/4` | `space['2/4']` | 50%     |
+| `$3/4` | `space['3/4']` | 75%     |
+| `$1/5` | `space['1/5']` | 20%     |
+| `$2/5` | `space['2/5']` | 40%     |
+| `$3/5` | `space['3/5']` | 60%     |
+| `$4/5` | `space['4/5']` | 80%     |
+| `$1/6` | `space['1/6']` | 16.666% |
+| `$2/6` | `space['2/6']` | 33.333% |
+| `$3/6` | `space['3/6']` | 50%     |
+| `$4/6` | `space['4/6']` | 66.666% |
+| `$5/6` | `space['5/6']` | 83.333% |
+| `full` | `space.full`   | 100%    |
+
+## Opacity
+
+The opacity key allows you to customise the global opacity scale for your project.
+
+<UsageWrap>
+  <NativeUIProvider>
+    <Center>
+      <HStack space="sm" flexWrap="wrap">
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$0"
+          />
+          <Text size="sm">0</Text>
+          <Text size="sm">$0</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$5"
+          />
+          <Text size="sm">0.05</Text>
+          <Text size="sm">$5</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$10"
+          />
+          <Text size="sm">0.1</Text>
+          <Text size="sm">$10</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$20"
+          />
+          <Text size="sm">0.2</Text>
+          <Text size="sm">$20</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$25"
+          />
+          <Text size="sm">0.25</Text>
+          <Text size="sm">$25</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$30"
+          />
+          <Text size="sm">0.3</Text>
+          <Text size="sm">$30</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$40"
+          />
+          <Text size="sm">0.4</Text>
+          <Text size="sm">$40</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$50"
+          />
+          <Text size="sm">0.5</Text>
+          <Text size="sm">$50</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$60"
+          />
+          <Text size="sm">0.6</Text>
+          <Text size="sm">$60</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$70"
+          />
+          <Text size="sm">0.7</Text>
+          <Text size="sm">$70</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$75"
+          />
+          <Text size="sm">0.75</Text>
+          <Text size="sm">$75</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$80"
+          />
+          <Text size="sm">0.8</Text>
+          <Text size="sm">$80</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$90"
+          />
+          <Text size="sm">0.9</Text>
+          <Text size="sm">$90</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$95"
+          />
+          <Text size="sm">0.95</Text>
+          <Text size="sm">$95</Text>
+        </Center>
+        <Center width={50} height={50}>
+          <Box
+            position="absolute"
+            top="0"
+            left="0"
+            width="100%"
+            height="100%"
+            bg="$cyan500"
+            opacity="$100"
+          />
+          <Text size="sm">1</Text>
+          <Text size="sm">$100</Text>
+        </Center>
+      </HStack>
+    </Center>
+  </NativeUIProvider>
+</UsageWrap>
+
+| Key    | Theme Key        | Value |
+| ------ | ---------------- | ----- |
+| `$0`   | `opacity['0']`   | 0     |
+| `$5`   | `opacity['5']`   | 0.05  |
+| `$10`  | `opacity['10']`  | 0.1   |
+| `$20`  | `opacity['20']`  | 0.2   |
+| `$25`  | `opacity['25']`  | 0.25  |
+| `$30`  | `opacity['30']`  | 0.3   |
+| `$40`  | `opacity['40']`  | 0.4   |
+| `$50`  | `opacity['50']`  | 0.5   |
+| `$60`  | `opacity['60']`  | 0.6   |
+| `$70`  | `opacity['70']`  | 0.7   |
+| `$75`  | `opacity['75']`  | 0.75  |
+| `$80`  | `opacity['80']`  | 0.8   |
+| `$90`  | `opacity['90']`  | 0.9   |
+| `$95`  | `opacity['95']`  | 0.95  |
+| `$100` | `opacity['100']` | 1     |
+
+## Shadows
+
+The shadows key allows you to customise the global shadow scale for your project.
+
+> _Note:_ In the context of dark mode design, it's important to recognize that elevation serves as the primary tool for expressing hierarchy. Unlike in light mode, where shadows are used for this purpose, dark themes prioritize surface illumination. The higher the elevation, the lighter the surfaces become, ultimately improving visibility and clarity.
+
+<UsageWrap>
+  <NativeUIProvider>
+    <Center>
+      <VStack space="lg">
+        <VariantTitle title="hardShadow='x'" upperCase={false}>
+          <HStack space="lg">
+            <Center width="100px" height="100px" bg="$white" borderRadius="$lg" hardShadow="1">
+              <Text size="sm">1</Text>
+            </Center>
+            <Center width="100px" height="100px" bg="$white" borderRadius="$lg" hardShadow="2">
+              <Text size="sm">2</Text>
+            </Center>
+            <Center width="100px" height="100px" bg="$white" borderRadius="$lg" hardShadow="3">
+              <Text size="sm">3</Text>
+            </Center>
+            <Center width="100px" height="100px" bg="$white" borderRadius="$lg" hardShadow="4">
+              <Text size="sm">4</Text>
+            </Center>
+            <Center width="100px" height="100px" bg="$white" borderRadius="$lg" hardShadow="5">
+              <Text size="sm">5</Text>
+            </Center>
+          </HStack>
+        </VariantTitle>
+        <VariantTitle title="softShadow='x'" upperCase={false}>
+          <HStack space="lg">
+            <Center width="100px" height="100px" bg="$white" borderRadius="$lg" softShadow="1">
+              <Text size="sm">1</Text>
+            </Center>
+            <Center width="100px" height="100px" bg="$white" borderRadius="$lg" softShadow="2">
+              <Text size="sm">2</Text>
+            </Center>
+            <Center width="100px" height="100px" bg="$white" borderRadius="$lg" softShadow="3">
+              <Text size="sm">3</Text>
+            </Center>
+            <Center width="100px" height="100px" bg="$white" borderRadius="$lg" softShadow="4">
+              <Text size="sm">4</Text>
+            </Center>
+          </HStack>
+        </VariantTitle>
+      </VStack>
+    </Center>
+  </NativeUIProvider>
+</UsageWrap>
+
+| Key              | Value                                                                                                                     |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `hardShadow="1"` | `{ shadowColor: '$grey900', shadowOffset: { width: -2, height: 2 }, shadowRadius: 8, shadowOpacity: 0.5, elevation: 10 }` |
+| `hardShadow="2"` | `{ shadowColor: '$grey900', shadowOffset: { width: 0, height: 3 }, shadowRadius: 8, shadowOpacity: 0.5, elevation: 10 }`  |
+| `hardShadow="3"` | `{ shadowColor: '$grey900', shadowOffset: { width: 2, height: 2 }, shadowRadius: 8, shadowOpacity: 0.5, elevation: 10 }`  |
+| `hardShadow="4"` | `{ shadowColor: '$grey900', shadowOffset: { width: 0, height: -3 }, shadowRadius: 8, shadowOpacity: 0.5, elevation: 10 }` |
+| `hardShadow="5"` | `{ shadowColor: '$grey900', shadowOffset: { width: 0, height: 3 }, shadowRadius: 8, shadowOpacity: 0.2, elevation: 10 }`  |
+| `softShadow="1"` | `{ shadowColor: '$grey900', shadowOffset: { width: 0, height: 0 }, shadowRadius: 10, shadowOpacity: 0.1, elevation: 5 }`  |
+| `softShadow="2"` | `{ shadowColor: '$grey900', shadowOffset: { width: 0, height: 0 }, shadowRadius: 20, shadowOpacity: 0.1, elevation: 10 }` |
+| `softShadow="3"` | `{ shadowColor: '$grey900', shadowOffset: { width: 0, height: 0 }, shadowRadius: 30, shadowOpacity: 0.1, elevation: 15 }` |
+| `softShadow="4"` | `{ shadowColor: '$grey900', shadowOffset: { width: 0, height: 0 }, shadowRadius: 40, shadowOpacity: 0.1, elevation: 20 }` |
+
+## Breakpoints
+
+The breakpoints key allows you to customise the global breakpoints for your project.
+
+| Key    | Value                                                          |
+| ------ | -------------------------------------------------------------- |
+| `base` | `@media screen and (min-width: 0px) and (max-wdith: 399px)`    |
+| `xs`   | `@media screen and (min-width: 400px) and (max-width: 479px)`  |
+| `sm`   | `@media screen and (min-width: 480px) and (max-width: 767px)`  |
+| `md`   | `@media screen and (min-width: 768px) and (max-width: 991px)`  |
+| `lg`   | `@media screen and (min-width: 992px) and (max-width: 1279px)` |
+| `xl`   | `@media screen and (min-width: 1280px)`                        |
+
+## Borders
+
+### Border widths
+
+<UsageWrap>
+  <NativeUIProvider>
+    <Center>
+      <HStack space="lg" wrap>
+        <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="$0">
+          <Text size="sm">0</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="$1">
+          <Text size="sm">1</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="$2">
+          <Text size="sm">2</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="$4">
+          <Text size="sm">4</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="$8">
+          <Text size="sm">8</Text>
+        </Center>
+      </HStack>
+    </Center>
+  </NativeUIProvider>
+</UsageWrap>
+
+| Key  | Theme Key           | Value |
+| ---- | ------------------- | ----- |
+| `$0` | `borderWidths['0']` | 0     |
+| `$1` | `borderWidths['1']` | 1     |
+| `$2` | `borderWidths['2']` | 2     |
+| `$4` | `borderWidths['4']` | 4     |
+| `$8` | `borderWidths['8']` | 8     |
+
+### Radii
+
+<UsageWrap>
+  <NativeUIProvider>
+    <Center>
+      <HStack space="lg" wrap>
+        <Center width="80px" height="80px" bg="$cyan500" borderRadius="$none">
+          <Text size="sm">none</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderRadius="$xs">
+          <Text size="sm">xs</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderRadius="$sm">
+          <Text size="sm">sm</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderRadius="$md">
+          <Text size="sm">md</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderRadius="$lg">
+          <Text size="sm">lg</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderRadius="$xl">
+          <Text size="sm">xl</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderRadius="$2xl">
+          <Text size="sm">2xl</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderRadius="$3xl">
+          <Text size="sm">3xl</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderRadius="$4xl">
+          <Text size="sm">4xl</Text>
+        </Center>
+        <Center width="80px" height="80px" bg="$cyan500" borderRadius="$full">
+          <Text size="sm">full</Text>
+        </Center>
+      </HStack>
+    </Center>
+  </NativeUIProvider>
+</UsageWrap>
+
+| Key    | Theme Key    | Value |
+| ------ | ------------ | ----- |
+| `none` | `radii.none` | 0     |
+| `xs`   | `radii.xs`   | 2     |
+| `sm`   | `radii.sm`   | 4     |
+| `md`   | `radii.md`   | 6     |
+| `lg`   | `radii.lg`   | 8     |
+| `xl`   | `radii.xl`   | 12    |
+| `2xl`  | `radii.2xl`  | 16    |
+| `3xl`  | `radii.3xl`  | 24    |
+| `4xl`  | `radii.4xl`  | 32    |
+| `full` | `radii.full` | 9999  |

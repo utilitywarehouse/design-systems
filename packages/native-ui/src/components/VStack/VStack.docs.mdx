@@ -1,0 +1,45 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as VStackStories from './VStack.stories';
+import { VStack, Center, Box } from '../../';
+import { UsageWrap } from '../../../docs/components';
+
+<Meta title="Components / VStack" />
+
+# VStack
+
+VStack organizes items vertically in a layout. Alternatively, you can use Column as an alias for VStack to achieve the same layout.
+
+## Usage
+
+<UsageWrap>
+  <Center>
+    <VStack space="sm">
+      <Box w={100} h={100} bg="$cyan300" />
+      <Box w={100} h={100} bg="$cyan400" />
+      <Box w={100} h={100} bg="$cyan500" />
+      <Box w={100} h={100} bg="$cyan600" />
+    </VStack>
+  </Center>
+</UsageWrap>
+
+```jsx
+import { VStack } from '@utilitywarehouse/native-ui';
+import { Box } from '@utilitywarehouse/native-ui/lab';
+
+const MyComponent = () => (
+  <VStack space="sm">
+    <Box w={100} h={100} bg="$cyan300" />
+    <Box w={100} h={100} bg="$cyan400" />
+    <Box w={100} h={100} bg="$cyan500" />
+    <Box w={100} h={100} bg="$cyan600" />
+  </VStack>
+);
+```
+
+## Props
+
+| Property | Type                                                     | Description                                                 | Default |
+| -------- | -------------------------------------------------------- | ----------------------------------------------------------- | ------- |
+| space    | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' \| '3xl'` | The space between the VStack items.                         | -       |
+| reversed | `boolean`                                                | When true, it places the VStack items in reverse direction. | -       |
+| wrap     | `boolean`                                                | When true, it wraps the children to the next line.          | -       |

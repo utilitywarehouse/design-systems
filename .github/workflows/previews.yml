@@ -19,7 +19,7 @@ env:
 jobs:
   build-for-android:
     name: Build for Android
-    runs-on: macos-13-large
+    runs-on: macos-14-large
     concurrency:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
@@ -152,7 +152,7 @@ jobs:
 
   build-for-ios:
     name: Build for iOS
-    runs-on: macos-13-xlarge
+    runs-on: macos-14-xlarge
     concurrency:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
@@ -194,7 +194,7 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         if: steps.check_skip.outputs.skip == 'false'
         with:
-          xcode-version: '15.2.0'
+          xcode-version: '16.1.0'
 
       - name: 🔧 Setup EAS
         uses: expo/expo-github-action@v8
@@ -354,7 +354,7 @@ jobs:
       - name: 🔐 Create local .env and add Android key
         if: |
           (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-android]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-android]') && !contains(github.event.pull_request.body, '[skip-native]'))
-        working-directory: ./apps/native-ui-storybook
+        working-directory: ./packages/native-ui
         run: |
           echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
 
@@ -377,7 +377,7 @@ jobs:
       - name: 🔐 Create local .env and add iOS key
         if: |
           (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-ios]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-ios]') && !contains(github.event.pull_request.body, '[skip-native]'))
-        working-directory: ./apps/native-ui-storybook
+        working-directory: ./packages/native-ui
         run: |
           echo "IOS_API_KEY=${{ env.IOS_API_KEY }}" >> .env
 
@@ -389,7 +389,7 @@ jobs:
             contains(github.event.pull_request.title, '[skip-ios]') || contains(github.event.pull_request.body, '[skip-ios]') ||
             contains(github.event.pull_request.title, '[skip-native]') || contains(github.event.pull_request.body, '[skip-native]')
           ))
-        working-directory: ./apps/native-ui-storybook
+        working-directory: ./packages/native-ui
         run: |
           title='${{ github.event.pull_request.title }}'
           body='${{ github.event.pull_request.body }}'

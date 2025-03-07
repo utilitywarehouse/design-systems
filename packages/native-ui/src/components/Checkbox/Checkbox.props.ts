@@ -1,15 +1,23 @@
 import type { ComponentType } from 'react';
 import type { PressableProps } from 'react-native';
 
-interface CheckboxBaseProps extends Omit<PressableProps, 'children'> {
-  value: string;
+type CheckboxBaseProps = {
   onChange?: (isSelected: boolean) => void;
   disabled?: boolean;
-  checked?: boolean;
   validationStatus?: 'valid' | 'invalid' | 'initial';
-}
+} & (
+  | {
+      value?: string | number | boolean;
+      checked: boolean;
+    }
+  | {
+      value: string | number | boolean;
+      checked?: boolean;
+    }
+) &
+  Omit<PressableProps, 'children'>;
 
-interface CheckboxWithChildrenProps extends CheckboxBaseProps {
+type CheckboxWithChildrenProps = {
   children: React.ReactNode;
   label?: never;
   helperText?: never;
@@ -17,9 +25,9 @@ interface CheckboxWithChildrenProps extends CheckboxBaseProps {
   invalidText?: never;
   validText?: never;
   showValidationIcon?: never;
-}
+} & CheckboxBaseProps;
 
-interface CheckboxWithoutChildrenProps extends CheckboxBaseProps {
+type CheckboxWithoutChildrenProps = {
   children?: never;
   label?: string;
   helperText?: string;
@@ -27,7 +35,7 @@ interface CheckboxWithoutChildrenProps extends CheckboxBaseProps {
   invalidText?: string;
   validText?: string;
   showValidationIcon?: boolean;
-}
+} & CheckboxBaseProps;
 
 type CheckboxProps = CheckboxWithChildrenProps | CheckboxWithoutChildrenProps;
 

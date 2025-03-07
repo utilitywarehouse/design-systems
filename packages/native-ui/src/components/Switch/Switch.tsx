@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, View } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -14,6 +14,8 @@ import { StyleSheet } from 'react-native-unistyles';
 import { Icon } from '../Icon';
 import SwitchProps from './Switch.props';
 import { useTheme } from '../../hooks';
+
+const AnimatedView = Animated.createAnimatedComponent(View);
 
 const CustomSwitch: React.FC<SwitchProps> = ({
   value = false,
@@ -120,7 +122,7 @@ const CustomSwitch: React.FC<SwitchProps> = ({
       accessibilityHint={accessibilityProps.accessibilityHint}
       {...accessibilityProps}
     >
-      <Animated.View
+      <AnimatedView
         style={[
           styles.switch,
           disabled && styles.disabledSwitch,
@@ -128,15 +130,15 @@ const CustomSwitch: React.FC<SwitchProps> = ({
           animatedSwitchBackgroundStyle,
         ]}
       >
-        <Animated.View style={[styles.thumb, animatedThumbStyle]}>
-          <Animated.View style={[styles.iconWrap, animatedTickStyle]}>
+        <AnimatedView style={[styles.thumb, animatedThumbStyle]}>
+          <AnimatedView style={[styles.iconWrap, animatedTickStyle]}>
             <Icon as={TickSmallIcon} style={styles.icon} />
-          </Animated.View>
-          <Animated.View style={[styles.iconWrap, animatedCrossStyle]}>
+          </AnimatedView>
+          <AnimatedView style={[styles.iconWrap, animatedCrossStyle]}>
             <Icon as={CloseSmallIcon} style={styles.icon} />
-          </Animated.View>
-        </Animated.View>
-      </Animated.View>
+          </AnimatedView>
+        </AnimatedView>
+      </AnimatedView>
     </Pressable>
   );
 };
@@ -157,6 +159,14 @@ const styles = StyleSheet.create(theme => ({
           height: theme.tokens.switch.small.height,
           borderRadius: theme.tokens.switch.borderRadius,
           padding: theme.tokens.switch.padding,
+        },
+      },
+      value: {
+        true: {
+          backgroundColor: theme.tokens.switch.checked.backgroundColor,
+        },
+        false: {
+          backgroundColor: theme.tokens.switch.unchecked.backgroundColor,
         },
       },
       disabled: {
