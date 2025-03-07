@@ -1,7 +1,13 @@
 import { Meta, Canvas, Story } from '@storybook/blocks';
 import * as Stories from './Carousel.stories';
 import { Alert, Center, NativeUIProvider, Text } from '@utilitywarehouse/native-ui';
-import { Box, Carousel, CarouselItem, CarouselItems, CarouselPagination } from '@utilitywarehouse/native-ui/lab';
+import {
+  Box,
+  Carousel,
+  CarouselItem,
+  CarouselItems,
+  CarouselPagination,
+} from '@utilitywarehouse/native-ui/lab';
 import { colors } from '@utilitywarehouse/colour-system';
 import { BackToTopButton, DocComponentWrap } from '../../../docs/components';
 
@@ -143,15 +149,15 @@ The `CarouselItems` component automatically updates the carousel context when in
 
 The `CarouselItems` component accepts most props from the React Native `FlatList` component, while other props are predfined and cannot be modified. There are also some additional carousel specific props:
 
-| Name                   | Type           | Default | Description                                                                                                                    |
-| ---------------------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| children?              | ReactElement[] | -       | Accepts React elements to render as carousel items. To function correctly, these should be `CarouselItem` comppnents.          |
-| enabled?               | boolean        | true    | Enable or disable the carousel                                                                                                 |
-| inactiveItemOpacity?   | number         | 1       | Fade items outside of the active carousel viewport (use in conjunction with `showOverflow`)                                    |
-| itemWidth?             | number         | -       | Specify the width of carousel items if different from `width`. Useful for revealing the previous/next item within the viewport |
-| onSnapToItem?          | () => void     | -       | Callback each time a new item is focused in the carousel viewport                                                              |
-| showOverflow?          | boolean        | false   | Visually reveal the items outside of the carousel viewport                                                                     |
-| width                  | number         | -       | Carousel viewport width                                                                                                        |
+| Name                 | Type           | Default | Description                                                                                                                    |
+| -------------------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| children?            | ReactElement[] | -       | Accepts React elements to render as carousel items. To function correctly, these should be `CarouselItem` comppnents.          |
+| enabled?             | boolean        | true    | Enable or disable the carousel                                                                                                 |
+| inactiveItemOpacity? | number         | 1       | Fade items outside of the active carousel viewport (use in conjunction with `showOverflow`)                                    |
+| itemWidth?           | number         | -       | Specify the width of carousel items if different from `width`. Useful for revealing the previous/next item within the viewport |
+| onSnapToItem?        | () => void     | -       | Callback each time a new item is focused in the carousel viewport                                                              |
+| showOverflow?        | boolean        | false   | Visually reveal the items outside of the carousel viewport                                                                     |
+| width                | number         | -       | Carousel viewport width                                                                                                        |
 
 For more information about any of the above props from the `FlatList` component, see the React Native FlatList [documentation](https://reactnative.dev/docs/flatlist).
 
@@ -163,3 +169,13 @@ The `CarouselItem` component automatically receives props from the parent `Carou
 | --------- | ------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | children? | ReactElement  | -       | Display any content within each carousel item.                                                                                    |
 | key?      | number/string | -       | Provides a unique render key for each carousel item. If no `key` is provided then it will fall back to the `id`, then array index |
+
+### `CarouselPagination`
+
+The `CarouselPagination` component automatically receives props from the parent `Carousel` component. Please ensure that you always wrap the `CarouselPagination` component within the `Carousel` component.
+
+| Name             | Type      | Default | Description                      |
+| ---------------- | --------- | ------- | -------------------------------- |
+| style?           | ViewStyle | -       | Style the pagination component   |
+| ?                | ViewStyle | -       | Style the pagination item        |
+| activeItemStyle? | ViewStyle | -       | Style the active pagination item |
