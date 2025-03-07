@@ -1,0 +1,86 @@
+import { Meta, Controls, Story, Canvas } from '@storybook/blocks';
+import * as BadgeStories from './Badge.stories';
+import { Badge, BadgeText, Center } from '../../';
+import { AddSmallIcon } from '@utilitywarehouse/react-native-icons';
+import { ViewFigmaButton, BackToTopButton, UsageWrap } from '../../../docs/components';
+
+<BackToTopButton />
+
+<Meta title="Components / Badge" />
+
+<ViewFigmaButton url="https://www.figma.com/file/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?type=design&node-id=2960-3929&mode=dev" />
+
+# Badge
+
+Use the `Badge` component to draw attention to another interface element or to provide additional context (such as status).
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Variants](#variants)
+- [Advanced Usage](#advanced-usage)
+
+## Playground
+
+<Canvas of={BadgeStories.Playground} />
+
+<Controls of={BadgeStories.Playground} />
+
+## Usage
+
+> This component should be wrapped in a `NativeUIProvider` component to ensure that the correct theme is applied.
+
+Badge is a stateless component, e.g. it has no Pressed, Disabled, Active states. Badges should not be used as a mechanism for:
+
+- Filtering content
+- Assigning a piece of content to a group (tagging)
+- Performing an action
+
+<UsageWrap>
+  <Center>
+    <Badge colorScheme="green">Ready</Badge>
+  </Center>
+</UsageWrap>
+
+```tsx
+import { Badge } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => <Badge colorScheme="green">Ready</Badge>;
+```
+
+## Props
+
+| Property      | Type                 | Description                                                | Default |
+| ------------- | -------------------- | ---------------------------------------------------------- | ------- |
+| `colorScheme` | `string`             | The color scheme to use for the badge.                     | `cyan`  |
+| `strong`      | `boolean`            | Whether to use a strong color scheme.                      | `false` |
+| `borderless`  | `boolean`            | Whether to remove the bottom border radius from the badge. | `false` |
+| `size`        | `'small' \| 'large'` | The size of the badge.                                     | `md`    |
+
+## Variants
+
+The `Badge` component has different variants to style the badge.
+
+<Canvas of={BadgeStories.Variants} />
+
+## Advanced Usage
+
+Although not recommended, the `Badge` component can be used to create more complex UI with the internal parts of the badge.
+
+<UsageWrap>
+  <Center>
+    <Badge colorScheme="cyan">
+      <BadgeText>Add</BadgeText>
+    </Badge>
+  </Center>
+</UsageWrap>
+
+```tsx
+import { Badge, BadgeText } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => (
+  <Badge colorScheme="cyan">
+    <BadgeText>Add</BadgeText>
+  </Badge>
+);
+```

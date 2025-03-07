@@ -1,198 +1,80 @@
-import type { Preview, Decorator } from '@storybook/react';
-import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
-import { Center, NativeUIProvider } from '@utilitywarehouse/native-ui';
-import { Box } from '@utilitywarehouse/native-ui/lab';
-import { PlatformContextProvider } from '../contexts/PlatformContext';
-import { useStoryContext, useArgs, useGlobals, getQueryParams } from '@storybook/preview-api';
-import '../assets/style.css';
-import StoryWrap from '../docs/components/StoryWrap';
-import { useDarkMode, DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
-import { addons } from '@storybook/addons';
-import { UPDATE_GLOBALS } from '@storybook/core-events';
-import { DocsContainer as BaseContainer, DocsContainerProps } from '@storybook/blocks';
-import { themeDark, themeLight } from './themes';
-import { Analytics } from '@vercel/analytics/react';
-import { Platform } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, useColorScheme } from 'react-native';
+import { useArgs } from '@storybook/preview-api';
+import { Linking } from 'react-native';
+import { navigate } from './utils';
+import { colorsCommon } from '@utilitywarehouse/colour-system';
+import { UnistylesRuntime } from 'react-native-unistyles';
 
-const lightColour = '#fff';
-const darkColour = '#1d1d1d';
-
-export const decorators: Decorator[] = [
-  Story => {
-    const [globals] = useGlobals();
-    const [args] = useArgs();
-    const colorScheme = useDarkMode() ? 'dark' : 'light';
-    const { id, viewMode } = useStoryContext();
-    const device = globals.device;
-
-    return viewMode === 'story' ? (
-      <NativeUIProvider colorMode={colorScheme}>
-        <Analytics endpoint={window.top?.location?.href} />
-        <PlatformContextProvider
-          args={args}
-          id={id}
-          viewMode={viewMode}
-          colourMode={colorScheme}
-          platform={globals.device}
-        >
-          {/* @ts-expect-error */}
-          <Box
-            bg={colorScheme === 'light' ? lightColour : darkColour}
-            p={device !== 'web' ? 0 : 20}
-            position={'absolute'}
-            top={0}
-            left={0}
-            {...(Platform.OS === 'web'
-              ? {
-                  width: '100vw',
-                  height: '100vh',
-                  zIndex: device !== 'web' ? -1 : 0,
-                }
-              : {})}
-          >
-            <Center>
-              <StoryWrap>
-                <Story />
-              </StoryWrap>
-            </Center>
-          </Box>
-        </PlatformContextProvider>
-      </NativeUIProvider>
-    ) : (
-      <NativeUIProvider colorMode={colorScheme}>
-        <Center padding={20} bg={colorScheme === 'light' ? lightColour : darkColour}>
-          <Story />
-        </Center>
-      </NativeUIProvider>
-    );
-  },
-];
-
-let channel = addons.getChannel();
-
-const storyListener = darkMode => {
-  const { viewMode } = getQueryParams();
-  if (viewMode === 'story') {
-    channel.emit(UPDATE_GLOBALS, {
-      globals: {
-        theme: darkMode ? 'dark' : 'light',
-      },
-    });
-  }
-};
-
-function setupBackgroundListener() {
-  channel.removeListener(DARK_MODE_EVENT_NAME, storyListener);
-  channel.addListener(DARK_MODE_EVENT_NAME, storyListener);
-}
-
-setupBackgroundListener();
-
-export const DocsContainer: FC<PropsWithChildren<DocsContainerProps>> = ({ children, context }) => {
-  const [isDark, setDark] = useState(false);
-  const colorScheme = useDarkMode() ? 'dark' : 'light';
-
-  useEffect(() => {
-    channel.on(DARK_MODE_EVENT_NAME, setDark);
-    return () => channel.off(DARK_MODE_EVENT_NAME, setDark);
-  }, [channel]);
-
-  return (
-    <NativeUIProvider colorMode={colorScheme}>
-      <BaseContainer theme={isDark ? themeDark : themeLight} context={context}>
-        <Analytics endpoint={window.top?.location?.href} />
-        {children}
-      </BaseContainer>
-    </NativeUIProvider>
-  );
-};
-
-const preview: Preview = {
-  globals: {
-    device: 'web',
-  },
-  globalTypes: {
-    theme: { type: 'string' },
-  },
+/** @type{import("@storybook/react").Preview} */
+const preview = {
   parameters: {
-    docs: {
-      container: DocsContainer,
-    },
-    layout: 'fullscreen',
-    darkMode: {
-      stylePreview: true,
-      dark: {
-        ...themeDark,
-      },
-      light: {
-        ...themeLight,
-      },
-    },
-    options: {
-      storySort: {
-        order: [
-          'Native UI',
-          [
-            'Introduction',
-            'Guides',
-            [
-              'Using Storybook',
-              'Tokens',
-              'Styling',
-              [
-                'Overview',
-                'Theme Tokens',
-                'createStyleSheet',
-                'useStyles',
-                'Dynamic Functions',
-                'Color Mode',
-                'Fonts',
-              ],
-            ],
-            'Components',
-            [
-              'All',
-              'Alert',
-              'Badge',
-              'Box',
-              'Button',
-              'Card',
-              'Center',
-              'Checkbox',
-              'Divider',
-              'Form Field',
-              'Heading',
-              'HStack',
-              'Icon Button',
-              'Icons',
-              'Input',
-              'List',
-              'Pressable',
-              'Radio',
-              'Skeleton',
-              'Spinner',
-              'Switch',
-              'Text',
-              'VStack',
-              'Lab',
-            ],
-          ],
-          'Colour System',
-          ['Introduction', 'Common', 'Colors Light'],
-        ],
-      },
-    },
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
       },
     },
-    backgrounds: {
-      disable: true,
-    },
   },
+  decorators: [
+    Story => {
+      const theme = useColorScheme() === 'dark' ? 'dark' : 'light';
+      const [args, updateArgs] = useArgs();
+      const [themeColourMode, setColourMode] = useState<'dark' | 'light'>(theme);
+      useEffect(() => {
+        Linking.addEventListener('url', event => {
+          const url = new URL(event.url ?? '');
+          const params = new URLSearchParams(url.search);
+          const { colourMode, storyId, ...rest } = Object.fromEntries(params.entries());
+
+          // Convert "true" and "false" strings in args to boolean values
+          const convertedArgs = Object.fromEntries(
+            Object.entries(rest).map(([key, value]) => [
+              key,
+              value === 'true' ? true : value === 'false' ? false : value,
+            ])
+          );
+
+          navigate({ storyId });
+          updateArgs({
+            ...args,
+            ...convertedArgs,
+          });
+          if (colourMode) {
+            setColourMode(colourMode as 'dark' | 'light');
+            if (UnistylesRuntime.themeName !== colourMode) {
+              UnistylesRuntime.setTheme(colourMode as 'dark' | 'light');
+            }
+          }
+        });
+        return () => Linking.removeAllListeners('url');
+      }, []);
+
+      useEffect(() => {
+        setColourMode(theme);
+        if (UnistylesRuntime.themeName !== theme) {
+          UnistylesRuntime.setTheme(theme);
+        }
+      }, [theme]);
+
+      const bg = (() => {
+        switch (args.surface) {
+          case 'midnight':
+            return colorsCommon.brandMidnight;
+          case 'purple':
+            return colorsCommon.brandPrimaryPurple;
+          default:
+            return themeColourMode === 'dark' ? '#1D1D1D' : '$brandWhite';
+        }
+      })();
+
+      return (
+        <ScrollView style={{ flex: 1, backgroundColor: bg }} contentContainerStyle={{ padding: 8 }}>
+          <Story />
+        </ScrollView>
+      );
+    },
+  ],
 };
 
 export default preview;

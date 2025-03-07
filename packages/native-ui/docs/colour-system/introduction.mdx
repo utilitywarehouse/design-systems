@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/blocks';
+import { version } from '../../../../packages/colour-system/package.json';
+
+<Meta title="Guides / Colour System / Introduction" />
+
+# UW Colour System
+
+Colour scales for building UW Native UIs.
+
+Current version: v{version}
+
+## Installation
+
+```console
+yarn add @utilitywarehouse/colour-system
+```
+
+## Usage
+
+The colour system package exports 3 _color_ objects, `colors` is the default
+colour scales for light mode, and `colorsDark` is colour scales for dark mode,
+used in native mobile applications. The `colorsCommon` object includes semantic
+brand & service colours used across both light & dark modes.
+
+```tsx
+import { colors, colorsDark, colorsCommon } from '@utilitywarehouse/colour-system'
+
+[...]
+
+<Box color={isDarkMode ? colors.grey500 : colorsDark.grey500} />
+
+[...]
+
+<Box bgcolor={colorsCommon.serviceBroadband} />
+<Box bgcolor={colorsCommon.brandPrimaryPurple} />
+```
+
+## Semantic naming
+
+The long term intention is to abstract meanings/semantic names for the colour
+scales. The Colour System is shared over many projects and so we need to be
+mindful of the flexibility of usage. Therefore, for now, we are using
+presentational naming conventions and not aliases or semantic tokens. When the
+Colour System has more maturity, and we can see repeated patterns of colour
+usage, then we can begin to define some default and semantic colours for usage
+such as backgrounds, text, borders, intention etc.

@@ -2,14 +2,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { forwardRef, useMemo } from 'react';
-import { Text as RNText } from 'react-native';
+import { Text } from 'react-native';
 import type TextProps from './Text.props';
 import { StyleSheet } from 'react-native-unistyles';
 import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
 import { useTheme } from '../../hooks';
 
-const Text = forwardRef<RNText, TextProps>(
+const TextComp = forwardRef<Text, TextProps>(
   (
     {
       children,
@@ -47,7 +47,7 @@ const Text = forwardRef<RNText, TextProps>(
       [textDecorationColor, colorMode]
     );
     return (
-      <RNText
+      <Text
         ref={ref}
         {...props}
         {...(truncated
@@ -72,12 +72,12 @@ const Text = forwardRef<RNText, TextProps>(
         ]}
       >
         {children}
-      </RNText>
+      </Text>
     );
   }
 );
 
-Text.displayName = 'Text';
+TextComp.displayName = 'Text';
 
 const styles = StyleSheet.create(theme => ({
   text: {
@@ -130,4 +130,4 @@ const styles = StyleSheet.create(theme => ({
   },
 }));
 
-export default Text;
+export default TextComp;

@@ -1,0 +1,80 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
+import * as Stories from './IconButton.stories';
+import { Button, ButtonText, ButtonIcon, IconButton, Center, Box, Alert } from '../../';
+import {
+  AddSmallIcon,
+  ChevronRightSmallIcon,
+  ChevronLeft01SmallIcon,
+  ChevronRight01SmallIcon,
+  ChevronRightMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+import { ViewFigmaButton, BackToTopButton, UsageWrap } from '../../../docs/components';
+
+<Meta title="Components / Icon Button" />
+
+<BackToTopButton />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=1746-4235" />
+
+# Icon Button
+
+The `IconButton` component is used to trigger an action or event, such as opening a dialog, canceling an action, or performing a delete operation.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Variants](#variants)
+
+## Playground
+
+<Canvas of={Stories.Playground} />
+
+<Controls of={Stories.Playground} />
+
+## Usage
+
+<UsageWrap>
+  <Center>
+    <IconButton
+      icon={ChevronRightMediumIcon}
+      size="small"
+      onPress={() => console.log('Button pressed')}
+      colorScheme="green"
+    />
+  </Center>
+</UsageWrap>
+
+```tsx
+import { IconButton } from '@utilitywarehouse/native-ui';
+import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => {
+  const handlePress = () => {
+    console.log('Button pressed');
+  };
+  return (
+    <IconButton
+      icon={ChevronRightMediumIcon}
+      size="small"
+      onPress={handlePress}
+      colorScheme="green"
+    />
+  );
+};
+```
+
+## Props
+
+| Property      | Type                                             | Description                                                | Default  |
+| ------------- | ------------------------------------------------ | ---------------------------------------------------------- | -------- |
+| `onPress`     | `() => void`                                     | Callback function to be called when the button is pressed. | -        |
+| `variant`     | `'solid' \| 'outline' \| 'ghost'`                | The variant of the button.                                 | 'solid'  |
+| `size`        | `'x-small' \| 'small' \| 'medium'`               | The size of the button.                                    | 'medium' |
+| `colorScheme` | `'cyan' \| 'green' \| 'red' \| 'grey' \| 'gold'` | The colour scheme of the button.                           | 'cyan'   |
+| `loading`     | `boolean`                                        | Changes the button to a loading state.                     | `false`  |
+| `disabled`    | `boolean`                                        | Disables the button.                                       | `false`  |
+| `pressed`     | `boolean`                                        | Changes the button to a pressed state.                     | `false`  |
+
+## Variants
+
+<Canvas of={Stories.Variants} />

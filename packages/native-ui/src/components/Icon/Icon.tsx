@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { createIcon } from '@gluestack-ui/icon';
 import React, { useMemo } from 'react';
 import { Svg } from 'react-native-svg';
 import type IconProps from './Icon.props';
 import type { ColorValue, SvgRef } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
+import { withUnistyles } from 'react-native-unistyles';
 import { useTheme } from '../../hooks';
 
 const PrimitiveIcon = React.forwardRef<SvgRef, IconProps>(
@@ -44,7 +46,7 @@ const PrimitiveIcon = React.forwardRef<SvgRef, IconProps>(
 PrimitiveIcon.displayName = 'PrimitiveIcon';
 
 export const Icon = createIcon({
-  Root: PrimitiveIcon,
+  Root: withUnistyles(PrimitiveIcon),
 });
 
 export default Icon;

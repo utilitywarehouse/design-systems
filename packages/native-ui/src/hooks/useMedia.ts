@@ -16,7 +16,7 @@ const useMedia = (): Partial<Record<keyof typeof breakpoints, boolean>> => {
   }
 
   if (isBreakpointKey(breakpoint, breakpoints)) {
-    (Object.keys(breakpoints) as Array<BreakPointKeys>).forEach(currentBreakPoint => {
+    (Object.keys(breakpoints)).forEach(currentBreakPoint => {
       mediaBreakpoints[currentBreakPoint] =
         breakpoints[currentBreakPoint] === breakpoints[breakpoint];
     });

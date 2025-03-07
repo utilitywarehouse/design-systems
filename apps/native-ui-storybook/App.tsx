@@ -1,9 +1,19 @@
-import StorybookUIRoot from './.ondevice';
+/* eslint-disable @typescript-eslint/no-require-imports */
+import StorybookUIRoot from './.storybook';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useFonts } from 'expo-font';
-import { UnistylesRuntime } from 'react-native-unistyles';
+import { breakpoints, themes, StyleSheet } from '@utilitywarehouse/native-ui';
+
+StyleSheet.configure({
+  breakpoints,
+  themes,
+  settings: {
+    initialTheme: 'light',
+    adaptiveThemes: false,
+  },
+});
 
 const App = () => {
   const [loaded] = useFonts({
@@ -20,10 +30,6 @@ const App = () => {
     'WorkSans-SemiBold': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-SemiBold.ttf'),
     'WorkSans-Thin': require('../../node_modules/@utilitywarehouse/fontsource/files/truetype/WorkSans/WorkSans-Thin.ttf'),
   });
-
-  useEffect(() => {
-    console.log('theme', UnistylesRuntime.themeName);
-  }, []);
 
   if (!loaded) return null;
   return (

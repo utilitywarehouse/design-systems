@@ -1,8 +1,11 @@
-import useTheme from './useTheme';
+import { useUnistyles } from 'react-native-unistyles';
 
-const useColorMode = () => {
-  const { colorMode } = useTheme();
-  return colorMode;
+const useColorMode = (): 'light' | 'dark' => {
+  const {
+    theme: { colorMode },
+  } = useUnistyles();
+
+  return colorMode as 'light' | 'dark';
 };
 
 export default useColorMode;

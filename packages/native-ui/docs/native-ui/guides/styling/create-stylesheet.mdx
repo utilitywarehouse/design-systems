@@ -1,0 +1,69 @@
+import { Meta } from '@storybook/blocks';
+import { Center, NativeUIProvider } from '../../../../src';
+
+<Meta title="Guides / Styling / createStyleSheet" />
+
+# createStyleSheet
+
+Utility for building your StyleSheets with superpowers. It can be imported from the `@utilitywarehouse/native-ui` package:
+
+```tsx
+import { createStyleSheet } from '../../';
+```
+
+This tool is interchangeable with React Native's `StyleSheet.create`.
+
+`crateStyleSheet` accepts both `object` or `function`.
+
+## Basic usage (object)
+
+If you pass an object to the `createStyleSheet` it will work the same like with `StyleSheet.create`.
+With this tool you can now use variants, breakpoints and media queries.
+
+```tsx
+const stylesheet = createStyleSheet({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+```
+
+## Basic usage (function)
+
+When you pass a function to `createStyleSheet` it automatically injects a theme as the first argument for you.
+
+The values on the theme include `colorMode`, `platform` and the [design tokens](/docs/native-ui-guides-styling-theme-tokens--docs)
+which include `colors`, `radii`, `space`, `fontSizes`, `fontWeights`, `letterSpacings`, `lineHeights`, `fonts`,
+`shadows`, `breakpoints`, `borders`, `borderWidths`.
+
+```tsx
+const stylesheet = createStyleSheet(theme => ({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.colors.grey100,
+  },
+}));
+```
+
+In addition to the theme argument, you can also accept the runtime argument when passing a function. This can be useful
+for accessing [UnistylesRuntime](https://www.unistyl.es/reference/unistyles-runtime/) and its properties (such as screen
+orientation, dimensions, insets, and more) without having to import this class directly.
+
+```tsx
+const stylesheet = createStyleSheet((theme, runtime) => ({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: runtime.insets.top,
+    backgroundColor:
+      runtime.orientation === 'portrait' ? theme.colors.cyan100 : theme.colors.red100,
+  },
+}));
+```
+
+Importantly, you'll receive the same TypeScript hints as with `StyleSheet.create`!

@@ -1,0 +1,30 @@
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import * as CenterStories from './Center.stories';
+import { Center, Text } from '../../';
+import { BackToTopButton, UsageWrap } from '../../../docs/components';
+
+<Meta title="Components / Center" />
+
+# Center
+
+When you need to center-align content, the Center component comes in handy. It is a layout component that can be used with other components to create complex layouts and positioning.
+
+## Usage
+
+<UsageWrap>
+  <Center>
+    <Center bg="$cyan500" h={200} w={300}>
+      <Text color="$white">This is the center.</Text>
+    </Center>
+  </Center>
+</UsageWrap>
+
+```jsx
+import { Center, Text } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => (
+  <Center bg="$cyan500" h={200} w={300}>
+    <Text color="$white">This is the center.</Text>
+  </Center>
+);
+```

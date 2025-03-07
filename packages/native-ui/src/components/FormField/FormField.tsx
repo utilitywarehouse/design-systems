@@ -58,12 +58,14 @@ const FormField: FC<FormFieldProps> = ({
   return (
     <FormFieldContext.Provider value={value}>
       <FormFieldComponent {...props} isDisabled={disabled} isReadOnly={readonly}>
-        <View style={styles.labelWrapper}>
-          {!!label && <FormFieldLabelText>{label}</FormFieldLabelText>}
-          {!!helperText && helperPosition === 'top' && (
-            <FormFieldHelper text={helperText} icon={helperIcon} showIcon={!!helperIcon} />
-          )}
-        </View>
+        {(!!label || !!helperText) && (
+          <View style={styles.labelWrapper}>
+            {!!label && <FormFieldLabelText>{label}</FormFieldLabelText>}
+            {!!helperText && helperPosition === 'top' && (
+              <FormFieldHelper text={helperText} icon={helperIcon} showIcon={!!helperIcon} />
+            )}
+          </View>
+        )}
         {children}
         {!!helperText && helperPosition === 'bottom' && (
           <FormFieldHelper text={helperText} icon={helperIcon} />

@@ -1,0 +1,133 @@
+import { Meta } from '@storybook/blocks';
+import { BackToTopButton, UsageWrap } from '../../../components';
+import { Center, NativeUIProvider, Text } from '../../../../src';
+
+<Meta title="Guides / Styling / Fonts" />
+
+<BackToTopButton />
+
+# Fonts
+
+`native-ui` uses two fonts, one for headings and one for body text. The heading font is `Aeonik` and the body font is `Work Sans`.
+To use these fonts with `native-ui`, unlike just using the `fontFamily` in React Native stylesheets, you can use styles similar to web CSS.
+
+For example to use the `Work Sans` regular font, you can see the following example using a normal React Native stylesheet:
+
+```tsx
+import { View, Text, StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  text: {
+    fontFamily: 'WorkSans-Regular',
+    fontSize: 16,
+  },
+});
+
+const MyComponent = () => (
+  <View>
+    <Text style={styles.text}>Hello World</Text>
+  </View>
+);
+```
+
+<UsageWrap>
+  <NativeUIProvider>
+    <Center>
+      <Text
+        style={{
+          fontFamily: 'Work Sans',
+          fontWeight: '400',
+          fontSize: 16,
+        }}
+      >
+        Hello World
+      </Text>
+    </Center>
+  </NativeUIProvider>
+</UsageWrap>
+
+Whereas with `native-ui`, you can use the following:
+
+```tsx
+import { Text, Box } from '../../';
+
+const MyComponent = () => (
+  <Box>
+    <Text
+      style={{
+        fontFamily: 'Work Sans',
+        fontWeight: '400',
+        fontSize: 16,
+      }}
+    >
+      Hello World
+    </Text>
+  </Box>
+);
+```
+
+<UsageWrap>
+  <NativeUIProvider>
+    <Center>
+      <Text
+        style={{
+          fontFamily: 'Work Sans',
+          fontWeight: '400',
+          fontSize: 16,
+        }}
+      >
+        Hello World
+      </Text>
+    </Center>
+  </NativeUIProvider>
+</UsageWrap>
+
+This is because `native-ui` uses a custom font loader to load the fonts into the app, and then uses the font names as they are in the font files.
+
+## Font Weights and Aliases
+
+To make it easier to use the font weights, we have added aliases for the font weights. To use the aliases you need to use the `fontWeights` property. For example:
+
+```tsx
+import { Text, Box, useStyles } from '../../';
+
+const MyComponent = () => {
+  const {
+    theme: { fontWeights, fontFamily, fontSizes },
+  } = useStyles();
+  return (
+    <Box>
+      <Text
+        style={{
+          fontFamily: fontFamily.body,
+          fontWeight: fontWeights.regular,
+          fontSize: fontSizes.md,
+        }}
+      >
+        Hello World
+      </Text>
+    </Box>
+  );
+};
+```
+
+The `Work Sans` font has the following weights available:
+
+| Weight      | Value | Alias                    |
+| ----------- | ----- | ------------------------ |
+| Thin        | 100   | `fontWeights.thin`       |
+| Extra Light | 200   | `fontWeights.extralight` |
+| Light       | 300   | `fontWeights.light`      |
+| Regular     | 400   | `fontWeights.regular`    |
+| Medium      | 500   | `fontWeights.medium`     |
+| Semi Bold   | 600   | `fontWeights.semibold`   |
+| Bold        | 700   | `fontWeights.bold`       |
+| Extra Bold  | 800   | `fontWeights.extrabold`  |
+| Black       | 900   | `fontWeights.black`      |
+
+The `Aeonik` font has the following weights available:
+
+| Weight  | Value | Alias                 |
+| ------- | ----- | --------------------- |
+| Regular | 400   | `fontWeights.regular` |
+| Bold    | 700   | `fontWeights.bold`    |

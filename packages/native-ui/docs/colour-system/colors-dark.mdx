@@ -1,0 +1,45 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { dark } from '../../../../packages/colour-system/raw/colours.json';
+
+<Meta title="Guides / Colour System / Colors Dark" />
+
+# Colors for Dark Mode
+
+<ColorPalette>
+  {Object.keys(dark).map(key => (
+    <>
+      <ColorItem
+        title={`${key}`}
+        subtitle={`dark.${key}`}
+        colors={Object.keys(dark[key])
+          .slice(0, 6)
+          .reduce((acc, subKey) => {
+            acc[subKey] = dark[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+      <ColorItem
+        title={`${key}`}
+        subtitle={`dark.${key}`}
+        colors={Object.keys(dark[key])
+          .slice(6, 12)
+          .reduce((acc, subKey) => {
+            acc[subKey] = dark[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+      {Object.keys(dark[key]).length > 12 && (
+        <ColorItem
+          title={`${key}`}
+          subtitle={`dark.${key}`}
+          colors={Object.keys(dark[key])
+            .slice(12, 18)
+            .reduce((acc, subKey) => {
+              acc[subKey] = dark[key][subKey].value;
+              return acc;
+            }, {})}
+        />
+      )}
+    </>
+  ))}
+</ColorPalette>

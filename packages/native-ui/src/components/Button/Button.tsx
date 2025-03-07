@@ -28,7 +28,7 @@ ButtonSpinner.displayName = 'ButtonSpinner';
 ButtonIcon.displayName = 'ButtonIcon';
 
 const Button = forwardRef<PressableRef, ButtonProps>(
-  ({ children, disabled, isDisabled, pressed, text, ...props }, ref) => {
+  ({ children, disabled = false, isDisabled, pressed, text, ...props }, ref) => {
     const { disabled: groupDisabled, loading: groupLoading } = useButtonGroupContext();
     const { loading } = props;
     const isLoading = loading ?? groupLoading;

@@ -296,7 +296,7 @@ export const darkTheme = {
   ...shared,
 };
 
-export const appThemes = {
+export const themes = {
   light: lightTheme,
   dark: darkTheme,
 };

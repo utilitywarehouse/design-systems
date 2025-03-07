@@ -1,0 +1,93 @@
+import { Meta } from '@storybook/blocks';
+import { Center, NativeUIProvider } from '../../../../src';
+
+<Meta title="Guides / Styling / useStyles" />
+
+# useStyles
+
+Hook that ties everything together and handles the heavy lifting.
+
+Without useStyles, you can't utilise features like:
+
+- breakpoints
+- media queries
+- themes
+- variants
+
+It can be imported from the `@utilitywarehouse/native-ui` package:
+
+```tsx
+import { useStyles } from '../../';
+```
+
+useStyles accepts two optional arguments: stylesheet and variants.
+
+To learn more about variants [follow this guide](https://www.unistyl.es/reference/variants/).
+
+## Basic usage (no arguments)
+
+If you need to access your `theme` or the current `breakpoint` in your component you can call useStyles without any arguments:
+
+```tsx
+const { theme, breakpoint } = useStyles();
+```
+
+## Basic usage (stylesheet)
+
+For more advanced usage, pass your stylesheet generated with `createStyleSheet`:
+
+```tsx
+// you can still access theme and current breakpoint
+const { styles, theme, breakpoint } = useStyles(stylesheet);
+```
+
+> Note:
+> The styles object is compatible with any React Native component and satisfy the TypeScript type requirements. It also means that you can mix styles with other libraries like Reanimated.
+
+## Basic usage (breakpoint)
+
+The `breakpoint` will be defined string as `base`, `xs`, `sm`, `md`, `lg` or `xl`.
+
+With `breakpoint` you can manipulate the JSX to hide or show some components:
+
+```tsx
+export const Example = () => {
+  const { styles, breakpoint } = useStyles(stylesheet)
+
+  return (
+    <View style={styles.container}>
+        <Hidden
+            from="xs"
+            to="md"
+            breakpoint={breakpoint}
+        >
+          <MobileSidebar />
+        </Hidden>
+        <Visible
+          from="md"
+          breakpoint={breakpoint}
+        >
+          <WebSidebar />
+        </Hidden>
+    </View>
+  )
+}
+```
+
+### Basic usage (theme)
+
+Sometimes, you may need to access your `theme` values outside of the stylesheet. An example of this could be when working with a built-in React Native Button component.
+
+The values of `theme` come from the [theme tokens](/docs/native-ui-guides-styling-theme-tokens--docs).
+
+```tsx
+import React from 'react';
+import { Button } from 'react-native';
+import { useStyles } from '../../';
+
+export const Example = () => {
+  const { theme } = useStyles();
+
+  return <Button color={theme.colors.cyan100} title="Click me" onPress={() => {}} />;
+};
+```

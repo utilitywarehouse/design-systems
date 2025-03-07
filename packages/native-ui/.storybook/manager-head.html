@@ -1,0 +1,30 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :where(.sidebar-item a),
+  :where(.sidebar-item) {
+    font-size: 14px !important;
+    padding-block: 1px;
+  }
+
+  div:where([role='main']) > div {
+    box-shadow: none !important;
+    border-left: 1px solid #f0f0f0;
+  }
+  .dark div:where([role='main']) > div {
+    box-shadow: none !important;
+    border-left: 1px solid #323232;
+  }
+
+  button[title='Change theme to light mode'] {
+    padding: 0 5px;
+  }
+
+  button[title='Change theme to light mode'] svg {
+    width: 17px;
+  }
+</style>
