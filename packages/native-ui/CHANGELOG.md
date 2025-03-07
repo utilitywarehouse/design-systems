@@ -1,5 +1,13 @@
 # @utilitywarehouse/native-ui
 
+## 0.11.2
+
+### Patch Changes
+
+- [#670](https://github.com/utilitywarehouse/design-systems/pull/670) [`0216721`](https://github.com/utilitywarehouse/design-systems/commit/0216721505e02ec1f396dcca659486b03ea53a92) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `itemStyle` and `activeItemStyle` to lab `Carousel` component
+
+- [#671](https://github.com/utilitywarehouse/design-systems/pull/671) [`fd31c61`](https://github.com/utilitywarehouse/design-systems/commit/fd31c617130be7af46a525b6ceb49d98c5e6ea87) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixes controlled `Checkbox` types
+
 ## 0.11.1
 
 ### Patch Changes
