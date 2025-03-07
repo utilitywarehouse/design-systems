@@ -30,6 +30,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       bundleIdentifier: 'com.utilitywarehouse.native-ui',
       infoPlist: {
         LSApplicationQueriesSchemes: ['native-ui'],
+        ITSAppUsesNonExemptEncryption: false,
       },
     },
     android: {
