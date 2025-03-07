@@ -18,7 +18,8 @@
     "figma:publish": "figma connect publish",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook:build": "set NODE_ENV=production & storybook build",
+    "storybook:generate": "sb-rn-get-stories --config-path .ondevice"
   },
   "author": "",
   "license": "ISC",

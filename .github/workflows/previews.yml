@@ -354,7 +354,7 @@ jobs:
       - name: 🔐 Create local .env and add Android key
         if: |
           (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-android]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-android]') && !contains(github.event.pull_request.body, '[skip-native]'))
-        working-directory: ./apps/native-ui-storybook
+        working-directory: ./packages/native-ui
         run: |
           echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
 
@@ -377,7 +377,7 @@ jobs:
       - name: 🔐 Create local .env and add iOS key
         if: |
           (github.event_name != 'push' && !contains(github.event.pull_request.title, '[skip-ios]') && !contains(github.event.pull_request.title, '[skip-native]') && !contains(github.event.pull_request.body, '[skip-ios]') && !contains(github.event.pull_request.body, '[skip-native]'))
-        working-directory: ./apps/native-ui-storybook
+        working-directory: ./packages/native-ui
         run: |
           echo "IOS_API_KEY=${{ env.IOS_API_KEY }}" >> .env
 
@@ -389,7 +389,7 @@ jobs:
             contains(github.event.pull_request.title, '[skip-ios]') || contains(github.event.pull_request.body, '[skip-ios]') ||
             contains(github.event.pull_request.title, '[skip-native]') || contains(github.event.pull_request.body, '[skip-native]')
           ))
-        working-directory: ./apps/native-ui-storybook
+        working-directory: ./packages/native-ui
         run: |
           title='${{ github.event.pull_request.title }}'
           body='${{ github.event.pull_request.body }}'
