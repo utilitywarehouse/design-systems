@@ -15,6 +15,8 @@ The following hooks are available in the Native UI library:
 - [`useBreakpointValue`](#useBreakpointValue)
 - [`useMedia`](#useMedia)
 - [`useColorMode`](#useColorMode)
+- [`useLightDark`](#useLightDark)
+- [`useTheme`](#useTheme)
 
 ## React Native Aria
 
@@ -150,6 +152,64 @@ function Example() {
         width: 100,
         height: 100,
         backgroundColor: colorMode === 'light' ? 'white' : 'black',
+      }}
+    />
+  );
+}
+```
+
+## `useLightDark`
+
+`useLightDark` is a custom hook which return current color mode as `light` or `dark`.
+
+```tsx
+import { useLightDark } from '@utilitywarehouse/native-ui';
+```
+
+Let's use our `useLightDark` value to give background color to `View` from `react-native` based on light and dark mode.
+
+If the current color mode is `light`, then the background color will be `white`, otherwise `black`.
+
+```tsx
+import { View } from 'react-native';
+import { useLightDark } from '@utilitywarehouse/native-ui';
+
+function Example() {
+  const viewBg = useLightDark('white', 'black');
+  return (
+    <View
+      style={{
+        width: 100,
+        height: 100,
+        backgroundColor: viewBg,
+      }}
+    />
+  );
+}
+```
+
+## `useTheme`
+
+`useTheme` is a custom hook which return the current theme.
+
+```tsx
+import { useTheme } from '@utilitywarehouse/native-ui';
+```
+
+Let's use our `useTheme` value to give background color to `View` from `react-native`.
+
+```tsx
+import { View } from 'react-native';
+import { useTheme } from '@utilitywarehouse/native-ui';
+
+function Example() {
+  const theme = useTheme();
+  return (
+    <View
+      style={{
+        width: 100,
+        height: 100,
+        backgroundColor: theme.colors.green500,
       }}
     />
   );
