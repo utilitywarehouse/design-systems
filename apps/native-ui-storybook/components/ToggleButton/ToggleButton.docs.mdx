@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from '@storybook/blocks';
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
 import * as Stories from './ToggleButton.stories';
 import {
   ToggleButton,
@@ -28,7 +28,9 @@ The `ToggleButton` component provides an interactive selection control where use
 
 ## Playground
 
-<Canvas of={Stories.Basic} />
+<Canvas of={Stories.Playground} />
+
+<Controls of={Stories.Playground} />
 
 ## Usage
 
@@ -77,13 +79,14 @@ const MyComponent = () => {
 
 ### ToggleButtonGroup Props
 
-| Property   | Type                   | Description                              | Default |
-| ---------- | ---------------------- | ---------------------------------------- | ------- |
-| `value`    | `any`                  | The currently selected value (required)  | -       |
-| `onChange` | `(value: any) => void` | Callback function when selection changes | -       |
-| `style`    | `ViewStyle`            | Additional styles for the container      | -       |
-| `children` | `ReactNode`            | The toggle button elements               | -       |
-| `disabled` | `boolean`              | Whether the group is disabled            | `false` |
+| Property   | Type                   | Description                              | Default   |
+| ---------- | ---------------------- | ---------------------------------------- | --------- |
+| `value`    | `any`                  | The currently selected value (required)  | -         |
+| `onChange` | `(value: any) => void` | Callback function when selection changes | -         |
+| `style`    | `ViewStyle`            | Additional styles for the container      | -         |
+| `children` | `ReactNode`            | The toggle button elements               | -         |
+| `disabled` | `boolean`              | Whether the group is disabled            | `false`   |
+| `size`     | `'small' \| 'base'`    | The size of the toggle button            | `'small'` |
 
 ### ToggleButtonIcon Props
 

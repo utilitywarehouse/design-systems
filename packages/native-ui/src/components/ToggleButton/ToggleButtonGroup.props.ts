@@ -12,4 +12,5 @@ export interface ToggleButtonGroupProps<T = string | number | boolean>
    */
   onChange?: (value: T) => void;
   disabled?: boolean;
+  size?: 'small' | 'base';
 }

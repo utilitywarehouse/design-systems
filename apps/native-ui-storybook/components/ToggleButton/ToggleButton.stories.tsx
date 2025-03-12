@@ -14,13 +14,13 @@ export default {
   title: 'Native UI / Components / ToggleButton',
 };
 
-export const Basic: StoryFn = () => {
+export const Playground: StoryFn = ({ size, disabled }) => {
   const [value, setValue] = useState('day');
 
   return (
     <VStack space="lg">
       <Box width="100%" maxWidth={400}>
-        <ToggleButtonGroup value={value} onChange={setValue}>
+        <ToggleButtonGroup value={value} onChange={setValue} size={size} disabled={disabled}>
           <ToggleButton value="day">Day</ToggleButton>
           <ToggleButton value="week">Week</ToggleButton>
           <ToggleButton value="month">Month</ToggleButton>
@@ -30,6 +30,23 @@ export const Basic: StoryFn = () => {
       <Text>Active selection: {value}</Text>
     </VStack>
   );
+};
+
+Playground.argTypes = {
+  size: {
+    options: ['small', 'base'],
+    control: 'select',
+    description: 'The size of the Toggle Buttons.',
+  },
+  disabled: {
+    control: 'boolean',
+    description: 'Disable the Toggle Buttons.',
+  },
+};
+
+Playground.args = {
+  size: 'small',
+  disabled: false,
 };
 
 export const Disabled: StoryFn = () => {

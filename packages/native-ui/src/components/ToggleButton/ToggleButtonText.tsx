@@ -6,11 +6,11 @@ import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { useToggleButtonGroupContext } from './ToggleButtonGroup.context';
 
 const ToggleButtonText = forwardRef<Text, TextProps>(({ children, ...props }, ref) => {
-  const { value: contextVal, disabled: contextDisabled } = useToggleButtonGroupContext();
+  const { value: contextVal, disabled: contextDisabled, size } = useToggleButtonGroupContext();
   const { value, disabled } = useToggleButtonContext();
   const isDisabled = disabled || contextDisabled;
   const isActive = value === contextVal;
-  const { styles } = useStyles(stylesheet, { disabled: isDisabled, active: isActive });
+  const { styles } = useStyles(stylesheet, { disabled: isDisabled, active: isActive, size });
   return (
     <Text
       ref={ref}
@@ -28,13 +28,20 @@ const stylesheet = createStyleSheet(({ isLight, colors, fontWeights, fonts, font
   text: {
     fontWeight: fontWeights.medium,
     fontFamily: fonts.body,
-    fontSize: fontSizes.md,
     textAlign: 'center',
     color: isLight ? colors.grey1000 : colors.grey800,
     variants: {
       disabled: {
         true: {
           color: colors.grey400,
+        },
+      },
+      size: {
+        small: {
+          fontSize: fontSizes.sm,
+        },
+        base: {
+          fontSize: fontSizes.md,
         },
       },
       active: {

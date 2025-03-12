@@ -9,10 +9,12 @@ import {
 } from './ToggleButtonGroup.context';
 import { ToggleButtonGroupProps } from './ToggleButtonGroup.props';
 
-// Define an interface for button layouts
+// Update interface for button layout to include y and height
 interface ButtonLayout {
   x: number;
+  y: number; // new property
   width: number;
+  height: number; // new property
 }
 
 export const ToggleButtonGroup = <T extends string | number | boolean>({
@@ -21,42 +23,43 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
   style,
   value,
   disabled,
+  size = 'small',
   ...props
 }: React.PropsWithChildren<ToggleButtonGroupProps<T>>) => {
-  const { styles } = useStyles(stylesheet, { disabled });
+  const { styles } = useStyles(stylesheet, { disabled, size });
   const moveAnim = useRef(new Animated.Value(0)).current;
   const widthAnim = useRef(new Animated.Value(0)).current;
+  const yAnim = useRef(new Animated.Value(0)).current; // new animated value for y
+  const heightAnim = useRef(new Animated.Value(0)).current; // new animated value for height
   const [buttonLayouts, setButtonLayouts] = useState<Record<string, ButtonLayout>>({});
   const [contextValue, setContextValue] = useState<T>(value);
-  // Add a ref to track initial render
   const isInitialRender = useRef(true);
 
-  // Handle button layout measurements
+  // Update layout handler to capture x, y, width, and height
   const handleButtonLayout = (buttonValue: T, event: LayoutChangeEvent) => {
-    const { x, width } = event.nativeEvent.layout;
-
+    const { x, y, width, height } = event.nativeEvent.layout;
     setButtonLayouts(prev => ({
       ...prev,
-      [String(buttonValue)]: { x, width },
+      [String(buttonValue)]: { x, y, width, height },
     }));
   };
 
-  // Animate the indicator when active button changes, but not on initial render
+  // Animate indicator for x, y, width and height changes
   useEffect(() => {
     if (contextValue !== undefined && buttonLayouts[String(contextValue)]) {
-      const { x, width } = buttonLayouts[String(contextValue)];
+      const { x, y, width, height } = buttonLayouts[String(contextValue)];
 
       if (isInitialRender.current) {
-        // Set position without animation on initial render
-        moveAnim.setValue(x);
+        moveAnim.setValue(x - (size === 'base' ? 1 : 0));
         widthAnim.setValue(width);
+        yAnim.setValue(y - (size === 'base' ? 1 : 0));
+        heightAnim.setValue(height);
         isInitialRender.current = false;
       } else {
-        // Animate on subsequent updates
         Animated.parallel([
           Animated.timing(moveAnim, {
             duration: 150,
-            toValue: x,
+            toValue: x - (size === 'base' ? 1 : 0),
             useNativeDriver: false,
           }),
           Animated.timing(widthAnim, {
@@ -64,10 +67,20 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
             toValue: width,
             useNativeDriver: false,
           }),
+          Animated.timing(yAnim, {
+            duration: 150,
+            toValue: y - (size === 'base' ? 1 : 0),
+            useNativeDriver: false,
+          }),
+          Animated.timing(heightAnim, {
+            duration: 150,
+            toValue: height,
+            useNativeDriver: false,
+          }),
         ]).start();
       }
     }
-  }, [contextValue, buttonLayouts, moveAnim, widthAnim]);
+  }, [contextValue, buttonLayouts, moveAnim, widthAnim, yAnim, heightAnim, size]);
 
   const handleChange = useCallback(
     (selected: T) => {
@@ -112,8 +125,9 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
       value: contextValue,
       onChange: handleChange,
       disabled,
+      size,
     }),
-    [contextValue, handleChange, disabled]
+    [contextValue, handleChange, disabled, size]
   );
 
   return (
@@ -136,6 +150,8 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
               {
                 transform: [{ translateX: moveAnim }],
                 width: widthAnim,
+                top: yAnim,
+                height: heightAnim,
               },
             ]}
           />
@@ -146,7 +162,7 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, isLight, radii }) => ({
+const stylesheet = createStyleSheet(({ colors, isLight, radii, space }) => ({
   indicator: {
     backgroundColor: isLight ? colors.cyan400 : colors.cyan700,
     borderRadius: radii.full,
@@ -163,11 +179,25 @@ const stylesheet = createStyleSheet(({ colors, isLight, radii }) => ({
     },
   },
   root: {
-    backgroundColor: isLight ? colors.grey150 : colors.grey300,
     borderRadius: radii.full,
     flexDirection: 'row',
+    alignItems: 'center',
     position: 'relative',
     overflow: 'hidden',
+    variants: {
+      size: {
+        small: {
+          height: 28,
+          backgroundColor: isLight ? colors.grey150 : colors.grey300,
+        },
+        base: {
+          height: 44,
+          borderWidth: 1,
+          paddingHorizontal: space[1],
+          borderColor: isLight ? colors.grey100 : colors.grey500,
+        },
+      },
+    },
   },
 }));
 
