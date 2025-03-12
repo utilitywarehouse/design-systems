@@ -8,13 +8,11 @@ import {
   ToggleButtonGroupContextValue,
 } from './ToggleButtonGroup.context';
 import { ToggleButtonGroupProps } from './ToggleButtonGroup.props';
-
-// Update interface for button layout to include y and height
 interface ButtonLayout {
   x: number;
-  y: number; // new property
+  y: number;
   width: number;
-  height: number; // new property
+  height: number;
 }
 
 export const ToggleButtonGroup = <T extends string | number | boolean>({
@@ -29,13 +27,12 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
   const { styles } = useStyles(stylesheet, { disabled, size });
   const moveAnim = useRef(new Animated.Value(0)).current;
   const widthAnim = useRef(new Animated.Value(0)).current;
-  const yAnim = useRef(new Animated.Value(0)).current; // new animated value for y
-  const heightAnim = useRef(new Animated.Value(0)).current; // new animated value for height
+  const yAnim = useRef(new Animated.Value(0)).current;
+  const heightAnim = useRef(new Animated.Value(0)).current;
   const [buttonLayouts, setButtonLayouts] = useState<Record<string, ButtonLayout>>({});
   const [contextValue, setContextValue] = useState<T>(value);
   const isInitialRender = useRef(true);
 
-  // Update layout handler to capture x, y, width, and height
   const handleButtonLayout = (buttonValue: T, event: LayoutChangeEvent) => {
     const { x, y, width, height } = event.nativeEvent.layout;
     setButtonLayouts(prev => ({
@@ -44,7 +41,6 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
     }));
   };
 
-  // Animate indicator for x, y, width and height changes
   useEffect(() => {
     if (contextValue !== undefined && buttonLayouts[String(contextValue)]) {
       const { x, y, width, height } = buttonLayouts[String(contextValue)];
@@ -90,12 +86,10 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
     [onChange]
   );
 
-  // Update internal state when prop value changes
   useEffect(() => {
     setContextValue(value);
   }, [value]);
 
-  // Create wrapped children with layout handlers
   const wrappedChildren = React.Children.map(children, child => {
     if (React.isValidElement(child)) {
       const childProps = child.props as {
@@ -105,11 +99,9 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
 
       const buttonValue = childProps.value;
 
-      // Fixed type casting
       return React.cloneElement<any>(child, {
         onLayout: (event: LayoutChangeEvent) => {
           handleButtonLayout(buttonValue, event);
-          // Call the original onLayout if it exists
           if (childProps.onLayout) {
             childProps.onLayout(event);
           }
@@ -119,7 +111,6 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
     return child;
   });
 
-  // Avoids updating on every render
   const memoizedContextValue: ToggleButtonGroupContextValue<T> = useMemo(
     () => ({
       value: contextValue,
