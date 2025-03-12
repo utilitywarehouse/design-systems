@@ -8,7 +8,7 @@ import {
   VStack,
   ToggleButtonIcon,
 } from '@utilitywarehouse/native-ui';
-import { EnvironmentMediumIcon, StarMediumIcon } from '@utilitywarehouse/react-native-icons';
+import { MoonSmallIcon, SunSmallIcon } from '@utilitywarehouse/react-native-icons';
 
 export default {
   title: 'Native UI / Components / ToggleButton',
@@ -36,7 +36,7 @@ export const Disabled: StoryFn = () => {
   const [value, setValue] = useState('dark');
 
   return (
-    <Box width="100%" maxWidth={300}>
+    <Box width="100%" maxWidth={200}>
       <ToggleButtonGroup value={value} onChange={setValue} disabled>
         <ToggleButton value="light">Light</ToggleButton>
         <ToggleButton value="dark">Dark</ToggleButton>
@@ -52,10 +52,10 @@ export const Icons: StoryFn = () => {
     <Box width="100%" maxWidth={300}>
       <ToggleButtonGroup value={value} onChange={setValue}>
         <ToggleButton value="light">
-          <ToggleButtonIcon as={EnvironmentMediumIcon} />
+          <ToggleButtonIcon as={SunSmallIcon} />
         </ToggleButton>
         <ToggleButton value="dark">
-          <ToggleButtonIcon as={StarMediumIcon} />
+          <ToggleButtonIcon as={MoonSmallIcon} />
         </ToggleButton>
       </ToggleButtonGroup>
     </Box>

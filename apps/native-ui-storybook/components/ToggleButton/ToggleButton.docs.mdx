@@ -10,7 +10,7 @@ import {
   NativeUIProvider,
 } from '@utilitywarehouse/native-ui';
 import { BackToTopButton } from '../../docs/components';
-import { EnvironmentMediumIcon, StarMediumIcon } from '@utilitywarehouse/react-native-icons';
+import { MoonSmallIcon, SunSmallIcon, StarSmallIcon } from '@utilitywarehouse/react-native-icons';
 
 <Meta of={Stories} />
 
@@ -106,18 +106,18 @@ Although we do not recommend, you can use the `ToggleButton` component with icon
   <NativeUIProvider>
     <Center>
       <Box width="100%" maxWidth={400}>
-        <ToggleButtonGroup value="option1">
-          <ToggleButton value="option1">
-            <ToggleButtonIcon as={EnvironmentMediumIcon} />
-            <ToggleButtonText style={{ color: 'red' }}>Option 1</ToggleButtonText>
+        <ToggleButtonGroup value="sun">
+          <ToggleButton value="sun">
+            <ToggleButtonIcon as={SunSmallIcon} />
+            <ToggleButtonText style={{ color: 'yellow' }}>Sun</ToggleButtonText>
           </ToggleButton>
-          <ToggleButton value="option2">
-            <ToggleButtonIcon as={StarMediumIcon} />
-            <ToggleButtonText style={{ color: 'blue' }}>Option 2</ToggleButtonText>
+          <ToggleButton value="star">
+            <ToggleButtonIcon as={StarSmallIcon} />
+            <ToggleButtonText style={{ color: 'orange' }}>Star</ToggleButtonText>
           </ToggleButton>
-          <ToggleButton value="option3">
-            <ToggleButtonIcon as={EnvironmentMediumIcon} />
-            <ToggleButtonText style={{ color: 'green' }}>Option 3</ToggleButtonText>
+          <ToggleButton value="moon">
+            <ToggleButtonIcon as={MoonSmallIcon} />
+            <ToggleButtonText style={{ color: 'white' }}>Moon</ToggleButtonText>
           </ToggleButton>
         </ToggleButtonGroup>
       </Box>
@@ -132,24 +132,24 @@ import {
   ToggleButtonIcon,
   ToggleButtonText,
 } from '@utilitywarehouse/native-ui';
-import { EnvironmentMediumIcon, StarMediumIcon } from '@utilitywarehouse/react-native-icons';
+import { MoonSmallIcon, SunSmallIcon, StarSmallIcon } from '@utilitywarehouse/react-native-icons';
 
 const MyComponent = () => {
-  const [value, setValue] = useState('option1');
+  const [value, setValue] = useState('sun');
 
   return (
     <ToggleButtonGroup value={value} onChange={setValue}>
-      <ToggleButton value="option1">
-        <ToggleButtonIcon as={EnvironmentMediumIcon} />
-        <ToggleButtonText style={{ color: 'red' }}>Option 1</ToggleButtonText>
+      <ToggleButton value="sun">
+        <ToggleButtonIcon as={SunSmallIcon} />
+        <ToggleButtonText style={{ color: 'yellow' }}>Sun</ToggleButtonText>
       </ToggleButton>
-      <ToggleButton value="option2">
-        <ToggleButtonIcon as={StarMediumIcon} />
-        <ToggleButtonText style={{ color: 'blue' }}>Option 2</ToggleButtonText>
+      <ToggleButton value="star">
+        <ToggleButtonIcon as={StarSmallIcon} />
+        <ToggleButtonText style={{ color: 'orange' }}>Star</ToggleButtonText>
       </ToggleButton>
-      <ToggleButton value="option3">
-        <ToggleButtonIcon as={EnvironmentMediumIcon} />
-        <ToggleButtonText style={{ color: 'green' }}>Option 3</ToggleButtonText>
+      <ToggleButton value="moon">
+        <ToggleButtonIcon as={MoonSmallIcon} />
+        <ToggleButtonText style={{ color: 'white' }}>Moon</ToggleButtonText>
       </ToggleButton>
     </ToggleButtonGroup>
   );
@@ -193,7 +193,7 @@ const MyComponent = () => {
   const [value, setValue] = useState('light');
 
   return (
-    <Box width="100%" maxWidth={300}>
+    <Box width="100%" maxWidth={200}>
       <ToggleButtonGroup value={value} onChange={setValue}>
         <ToggleButton value="light">
           <ToggleButtonIcon as={EnvironmentMediumIcon} />
