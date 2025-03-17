@@ -5,12 +5,6 @@ export interface ToggleButtonContextProps {
   disabled?: boolean;
 }
 
-export const ToggleButtonContext = createContext<ToggleButtonContextProps | undefined>(undefined);
+export const ToggleButtonContext = createContext<ToggleButtonContextProps>({});
 
-export function useToggleButtonContext(): ToggleButtonContextProps {
-  const context = useContext(ToggleButtonContext);
-  if (context === undefined) {
-    throw new Error('useToggleButtonContext must be used within a ToggleButtonContext.Provider');
-  }
-  return context;
-}
+export const useToggleButtonContext = () => useContext(ToggleButtonContext);

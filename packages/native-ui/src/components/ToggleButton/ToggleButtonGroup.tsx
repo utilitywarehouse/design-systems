@@ -174,18 +174,18 @@ const stylesheet = createStyleSheet(({ colors, isLight, radii, space }) => ({
     flexDirection: 'row',
     alignItems: 'center',
     position: 'relative',
-    overflow: 'hidden',
     variants: {
       size: {
         small: {
           height: 28,
-          backgroundColor: isLight ? colors.grey150 : colors.grey300,
+          backgroundColor: isLight ? colors.grey150 : colors.grey175,
         },
         base: {
           height: 44,
           borderWidth: 1,
           paddingHorizontal: space[1],
-          borderColor: isLight ? colors.grey100 : colors.grey500,
+          backgroundColor: isLight ? colors.white : colors.grey100,
+          borderColor: isLight ? colors.grey100 : colors.grey300,
         },
       },
     },

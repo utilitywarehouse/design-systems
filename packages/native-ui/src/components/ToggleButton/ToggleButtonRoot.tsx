@@ -12,6 +12,7 @@ const ToggleButtonRoot = forwardRef<PressableRef, PropsWithChildren<ToggleButton
     const { styles } = useStyles(stylesheet, { size });
 
     const contextValue = useMemo(() => ({ value, disabled }), [value, disabled]);
+    const slopArea = size === 'small' ? 6 : 2;
 
     return (
       <ToggleButtonContext.Provider value={contextValue}>
@@ -19,6 +20,7 @@ const ToggleButtonRoot = forwardRef<PressableRef, PropsWithChildren<ToggleButton
           ref={ref}
           {...props}
           disabled={disabled}
+          hitSlop={{ top: slopArea, bottom: slopArea, left: 0, right: 0 }}
           style={[styles.container, props.style as ViewStyle]}
         >
           {children}

@@ -1,4 +1,5 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import React, { forwardRef } from 'react';
 import { Text, type TextProps } from 'react-native';
 import { useToggleButtonContext } from './ToggleButton.context';
