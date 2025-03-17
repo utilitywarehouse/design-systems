@@ -26,6 +26,8 @@ import {
   useColorMode,
   Card,
   Switch,
+  ToggleButton,
+  ToggleButtonGroup,
 } from '@utilitywarehouse/native-ui';
 import {
   Actionsheet,
@@ -72,6 +74,7 @@ const AllComponents: React.FC = () => {
   const toggleActionsheet = () => setShowActionsheet(!showActionsheet);
   const [switchEnabled, setSwitchEnabled] = React.useState(false);
   const toggleSwitch = () => setSwitchEnabled(!switchEnabled);
+  const [toggleButtonValue, setToggleButtonValue] = React.useState('day');
   const colorMode = useColorMode();
   const isDark = colorMode === 'dark';
   return (
@@ -267,6 +270,18 @@ const AllComponents: React.FC = () => {
           <ComponentWrapper name="Text" link="/?path=/docs/native-ui-components-text--docs">
             <Center flex={1}>
               <Text>This is some Text</Text>
+            </Center>
+          </ComponentWrapper>
+          <ComponentWrapper
+            name="Toggle Button"
+            link="/?path=/docs/native-ui-components-togglebutton--docs"
+          >
+            <Center flex={1}>
+              <ToggleButtonGroup value={toggleButtonValue} onChange={setToggleButtonValue}>
+                <ToggleButton value="day">Day</ToggleButton>
+                <ToggleButton value="week">Week</ToggleButton>
+                <ToggleButton value="month">Month</ToggleButton>
+              </ToggleButtonGroup>
             </Center>
           </ComponentWrapper>
           <ComponentWrapper name="VStack" link="/?path=/docs/native-ui-components-vstack--docs">

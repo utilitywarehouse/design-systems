@@ -22,6 +22,7 @@ export * from './Divider';
 export * from './Switch';
 export * from './Card';
 export * from './Box';
+export * from './ToggleButton';
 
 export {
   FlatList,
