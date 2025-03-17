@@ -164,7 +164,7 @@ const stylesheet = createStyleSheet(({ colors, isLight, radii, space }) => ({
     variants: {
       disabled: {
         true: {
-          backgroundColor: isLight ? colors.cyan100 : colors.grey175,
+          backgroundColor: isLight ? colors.cyan100 : colors.grey150,
         },
       },
     },
