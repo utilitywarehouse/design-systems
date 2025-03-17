@@ -22,6 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "@expo/html-elements": "latest",
+    "@gluestack-ui/accordion": "1.0.7",
     "@gluestack-ui/alert": "0.1.15",
     "@gluestack-ui/button": "1.0.7",
     "@gluestack-ui/checkbox": "0.1.32",
