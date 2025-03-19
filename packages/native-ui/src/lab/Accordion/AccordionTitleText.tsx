@@ -5,14 +5,19 @@ import { useAccordionContext } from './Accordion.context';
 import { useAccordionItemContext } from './AccordionItem.context';
 import { StyleSheet } from 'react-native-unistyles';
 
-export const AccordionTitleText = forwardRef<Text, TextProps>(({ children, ...props }) => {
+export const AccordionTitleText = forwardRef<Text, TextProps>(({ children, ...props }, ref) => {
   const { disabled: contextDisabled } = useAccordionContext();
   const { disabled } = useAccordionItemContext();
   const disabledValue = disabled ?? contextDisabled;
   styles.useVariants({ disabled: disabledValue });
 
   return (
-    <Text style={styles.titleText} {...props}>
+    <Text
+      // @ts-expect-error - ref
+      ref={ref}
+      style={styles.titleText}
+      {...props}
+    >
       {children}
     </Text>
   );

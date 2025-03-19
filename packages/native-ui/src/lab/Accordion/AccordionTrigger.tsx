@@ -6,14 +6,14 @@ import { useAccordionItemContext } from './AccordionItem.context';
 import { StyleSheet } from 'react-native-unistyles';
 
 export const AccordionTrigger = forwardRef<PressableRef, PressableProps>(
-  ({ children, ...props }) => {
+  ({ children, ...props }, ref) => {
     const { noPadding: contextMoPadding } = useAccordionContext();
     const { noPadding } = useAccordionItemContext();
     const noPaddingValue = noPadding ?? contextMoPadding;
     styles.useVariants({ noPadding: noPaddingValue });
 
     return (
-      <Pressable style={styles.trigger} {...props}>
+      <Pressable ref={ref} style={styles.trigger} {...props}>
         {children}
       </Pressable>
     );
