@@ -5,14 +5,19 @@ import { Text } from '../../components';
 import { useAccordionContext } from './Accordion.context';
 import { useAccordionItemContext } from './AccordionItem.context';
 
-export const AccordionTitleText = forwardRef<Text, TextProps>(({ children, ...props }) => {
+export const AccordionTitleText = forwardRef<Text, TextProps>(({ children, ...props }, ref) => {
   const { disabled: contextDisabled } = useAccordionContext();
   const { disabled } = useAccordionItemContext();
   const disabledValue = disabled ?? contextDisabled;
   const { styles } = useStyles(stylesheet, { disabled: disabledValue });
 
   return (
-    <Text style={styles.titleText} {...props}>
+    <Text
+      // @ts-expect-error - ref
+      ref={ref}
+      style={styles.titleText}
+      {...props}
+    >
       {children}
     </Text>
   );

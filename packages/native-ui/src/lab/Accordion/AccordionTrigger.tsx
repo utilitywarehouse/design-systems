@@ -6,14 +6,14 @@ import { useAccordionContext } from './Accordion.context';
 import { useAccordionItemContext } from './AccordionItem.context';
 
 export const AccordionTrigger = forwardRef<PressableRef, PressableProps>(
-  ({ children, ...props }) => {
+  ({ children, ...props }, ref) => {
     const { noPadding: contextMoPadding } = useAccordionContext();
     const { noPadding } = useAccordionItemContext();
     const noPaddingValue = noPadding ?? contextMoPadding;
     const { styles } = useStyles(stylesheet, { noPadding: noPaddingValue });
 
     return (
-      <Pressable style={styles.trigger} {...props}>
+      <Pressable ref={ref} style={styles.trigger} {...props}>
         {children}
       </Pressable>
     );
