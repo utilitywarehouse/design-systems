@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, LayoutChangeEvent, View } from 'react-native';
+import { Animated, LayoutChangeEvent, Platform, View } from 'react-native';
 
 import {
   ToggleButtonGroupContext,
@@ -139,8 +139,9 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
             style={[
               styles.indicator,
               {
-                left: moveAnim,
-                // transform: [{ translateX: moveAnim }],
+                ...(Platform.OS === 'web'
+                  ? { left: moveAnim }
+                  : { transform: [{ translateX: moveAnim }] }),
                 width: widthAnim,
                 top: yAnim,
                 height: heightAnim,
