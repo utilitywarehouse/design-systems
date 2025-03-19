@@ -3,7 +3,7 @@
 import { UnistylesRuntime } from 'react-native-unistyles';
 
 const useLightDark = (light: any, dark: any) => {
-  return UnistylesRuntime.getTheme() === 'light' ? light : dark;
+  return UnistylesRuntime.themeName === 'light' ? light : dark;
 };
 
 export default useLightDark;
