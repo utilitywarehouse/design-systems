@@ -163,3 +163,13 @@ The `CarouselItem` component automatically receives props from the parent `Carou
 | --------- | ------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | children? | ReactElement  | -       | Display any content within each carousel item.                                                                                    |
 | key?      | number/string | -       | Provides a unique render key for each carousel item. If no `key` is provided then it will fall back to the `id`, then array index |
+
+### `CarouselPagination`
+
+The `CarouselPagination` component automatically receives props from the parent `Carousel` component. Please ensure that you always wrap the `CarouselPagination` component within the `Carousel` component.
+
+| Name             | Type      | Default | Description                      |
+| ---------------- | --------- | ------- | -------------------------------- |
+| style?           | ViewStyle | -       | Style the pagination component   |
+| itemStyle?       | ViewStyle | -       | Style the pagination item        |
+| activeItemStyle? | ViewStyle | -       | Style the active pagination item |

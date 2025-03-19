@@ -6,7 +6,7 @@ import AlertCloseButton, { AlertCloseButtonIcon } from './AlertCloseButton';
 import type { AlertProps } from './Alert.props';
 import { AlertContext } from './Alert.context';
 import { StyleSheet } from 'react-native-unistyles';
-import { View } from 'react-native';
+import { View, Pressable } from 'react-native';
 import AlertText from './AlertText';
 import AlertIcon from './AlertIcon';
 
@@ -21,6 +21,9 @@ const Alert = forwardRef<View, AlertProps>(
       onPressIconButton,
       onClose,
       children,
+      onPress,
+      iconButtonTestID,
+      linkTestID,
       style,
       ...props
     },
@@ -42,7 +45,13 @@ const Alert = forwardRef<View, AlertProps>(
 
     return (
       <AlertContext.Provider value={value}>
-        <View ref={ref} {...props} style={[styles.container, style]}>
+        <Pressable
+          ref={ref}
+          {...props}
+          style={[styles.container, style as ViewStyle]}
+          onPress={onPress}
+          disabled={!onPress}
+        >
           {children ? (
             children
           ) : (
@@ -52,14 +61,14 @@ const Alert = forwardRef<View, AlertProps>(
                 {!!title && <AlertTitle>{title}</AlertTitle>}
                 <AlertText>{text}</AlertText>
                 {!!link && (
-                  <AlertLink onPress={onPressLink}>
+                  <AlertLink onPress={onPressLink} testID={linkTestID}>
                     <AlertLinkText>{link}</AlertLinkText>
                     <AlertLinkChevron />
                   </AlertLink>
                 )}
               </View>
-              {!!onPressIconButton && !link && (
-                <AlertIconButton onPress={onPressIconButton}>
+              {(!!onPressIconButton || !!onPress) && !link && (
+                <AlertIconButton onPress={onPressIconButton || onPress} testID={iconButtonTestID}>
                   <AlertIconButtonChevron />
                 </AlertIconButton>
               )}
@@ -70,7 +79,7 @@ const Alert = forwardRef<View, AlertProps>(
               )}
             </>
           )}
-        </View>
+        </Pressable>
       </AlertContext.Provider>
     );
   }

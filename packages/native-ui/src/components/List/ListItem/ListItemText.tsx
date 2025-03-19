@@ -1,10 +1,11 @@
 import React, { forwardRef } from 'react';
-import { Text as RNText, type ViewProps } from 'react-native';
+import { Text as RNText } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { Text } from '../../Text';
 import { useListItemContext } from './ListItem.context';
+import type TextProps from '../../Text/Text.props';
 
-const ListItemText = forwardRef<RNText, ViewProps>(({ children, ...props }, ref) => {
+const ListItemText = forwardRef<RNText, TextProps>(({ children, ...props }, ref) => {
   const { disabled } = useListItemContext();
   styles.useVariants({ disabled });
   return (

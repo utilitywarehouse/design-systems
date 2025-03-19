@@ -26,9 +26,14 @@ const styles = StyleSheet.create(theme => ({
   },
 }));
 
-export const CarouselPaginationItem: FC<CarouselPaginationItemProps> = ({ active, index }) => {
+export const CarouselPaginationItem: FC<CarouselPaginationItemProps> = ({
+  active,
+  style,
+  index,
+  activeStyle,
+}) => {
   return (
-    <Box style={[styles.page, active && styles.active]}>
+    <Box style={[styles.page, style, active && styles.active, active && activeStyle]}>
       <Text>{index}</Text>
     </Box>
   );
@@ -37,6 +42,8 @@ export const CarouselPaginationItem: FC<CarouselPaginationItemProps> = ({ active
 export const CarouselPagination: FC<CarouselPaginationProps> = ({
   testID = 'pagination',
   style,
+  itemStyle,
+  activeItemStyle,
   ...props
 }) => {
   const context = useContext(CarouselContext);
@@ -63,7 +70,13 @@ export const CarouselPagination: FC<CarouselPaginationProps> = ({
   return (
     <Box style={[styles.root, style]} testID={testID} {...props}>
       {keys.map((_, index) => (
-        <CarouselPaginationItem active={index === activeIndex} index={index} key={keys[index]} />
+        <CarouselPaginationItem
+          active={index === activeIndex}
+          index={index}
+          key={keys[index]}
+          style={itemStyle}
+          activeStyle={activeItemStyle}
+        />
       ))}
     </Box>
   );
