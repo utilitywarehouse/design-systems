@@ -5,11 +5,11 @@ import AccordionContext from './Accordion.context';
 import { AccordionProps } from './Accordion.props';
 
 export const AccordionRoot = forwardRef<View, AccordionProps>(
-  ({ children, noPadding, disabled, divider, ...props }, ref) => {
+  ({ children, noPadding, disabled, divider, contentNoPadding, ...props }, ref) => {
     const { styles } = useStyles(stylesheet);
     const context = useMemo(
-      () => ({ noPadding, disabled, divider }),
-      [noPadding, disabled, divider]
+      () => ({ noPadding, disabled, divider, contentNoPadding }),
+      [noPadding, disabled, divider, contentNoPadding]
     );
     return (
       <AccordionContext.Provider value={context}>

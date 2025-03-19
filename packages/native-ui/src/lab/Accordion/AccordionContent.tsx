@@ -6,10 +6,10 @@ import { useAccordionItemContext } from './AccordionItem.context';
 
 export const AccordionContent = forwardRef<View, ViewProps>(
   ({ children, style, ...props }, ref) => {
-    const { noPadding: contextMoPadding } = useAccordionContext();
+    const { noPadding: contextMoPadding, contentNoPadding } = useAccordionContext();
     const { noPadding } = useAccordionItemContext();
     const noPaddingValue = noPadding ?? contextMoPadding;
-    const { styles } = useStyles(stylesheet, { noPadding: noPaddingValue });
+    const { styles } = useStyles(stylesheet, { noPadding: noPaddingValue, contentNoPadding });
 
     return (
       <View ref={ref} style={[styles.content, style]} {...props}>
@@ -30,6 +30,13 @@ const stylesheet = createStyleSheet(({ space }) => ({
       noPadding: {
         true: {
           paddingHorizontal: 0,
+        },
+      },
+      contentNoPadding: {
+        true: {
+          paddingTop: 0,
+          paddingHorizontal: 0,
+          paddingBottom: 0,
         },
       },
     },

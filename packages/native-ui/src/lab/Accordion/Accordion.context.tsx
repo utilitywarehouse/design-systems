@@ -4,6 +4,7 @@ const AccordionContext = createContext<{
   noPadding?: boolean;
   disabled?: boolean;
   divider?: boolean;
+  contentNoPadding?: boolean;
 }>({});
 
 export const useAccordionContext = () => useContext(AccordionContext);

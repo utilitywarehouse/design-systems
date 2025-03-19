@@ -3,10 +3,12 @@ import { ViewProps } from 'react-native';
 export interface AccordionProps extends ViewProps {
   /**
    * When type is "single" or "multiple", allows closing content when clicking trigger for an open item.
+   * @default true
    */
   collapsible?: boolean;
   /**
    * When true, prevents the user from interacting with the accordion and all its items.
+   * @default false
    */
   disabled?: boolean;
   /**
@@ -36,4 +38,9 @@ export interface AccordionProps extends ViewProps {
    * @default true
    */
   divider?: boolean;
+  /**
+   * Sets the padding of the accordion item content.
+   * @default false
+   */
+  contentNoPadding?: boolean;
 }

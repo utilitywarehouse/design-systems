@@ -42,6 +42,7 @@ const Accordion = forwardRef<View, AccordionProps>(
         isCollapsible={collapsible}
         type={type}
         divider={divider}
+        contentNoPadding={props.contentNoPadding}
         {...props}
       >
         {children}

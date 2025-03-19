@@ -36,6 +36,8 @@ import {
   CarouselItem,
   CarouselItems,
   CarouselPagination,
+  Accordion,
+  AccordionItem,
 } from '@utilitywarehouse/native-ui/lab';
 import {
   ElectricityMediumIcon,
@@ -81,6 +83,21 @@ const AllComponents: React.FC = () => {
     <div className="sb-unstyled">
       <ScrollView contentContainerStyle={styles.container}>
         <HStack wrap space="md">
+          <ComponentWrapper
+            name="Accordion (Lab)"
+            link="/?path=/docs/native-ui-components-lab-accordion--docs"
+          >
+            <Center flex={1}>
+              <Accordion type="single">
+                <AccordionItem title="Accordion Item 1">
+                  <Text>Accordion Item 1 Content</Text>
+                </AccordionItem>
+                <AccordionItem title="Accordion Item 2">
+                  <Text>Accordion Item 2 Content</Text>
+                </AccordionItem>
+              </Accordion>
+            </Center>
+          </ComponentWrapper>
           <ComponentWrapper
             name="Actionsheet (Lab)"
             link="/?path=/docs/native-ui-components-lab-actionsheet--docs"
