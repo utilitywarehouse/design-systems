@@ -6,7 +6,7 @@ import AlertCloseButton, { AlertCloseButtonIcon } from './AlertCloseButton';
 import type { AlertProps } from './Alert.props';
 import { AlertContext } from './Alert.context';
 import { StyleSheet } from 'react-native-unistyles';
-import { View, Pressable } from 'react-native';
+import { View, Pressable, ViewProps } from 'react-native';
 import AlertText from './AlertText';
 import AlertIcon from './AlertIcon';
 
@@ -48,7 +48,7 @@ const Alert = forwardRef<View, AlertProps>(
         <Pressable
           ref={ref}
           {...props}
-          style={[styles.container, style as ViewStyle]}
+          style={[styles.container, style as ViewProps['style']]}
           onPress={onPress}
           disabled={!onPress}
         >

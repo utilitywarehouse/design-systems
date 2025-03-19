@@ -1,15 +1,15 @@
 import React, { forwardRef, useMemo } from 'react';
 import { View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { AccordionItemProps } from './AccordionItem.props';
 import AccordionItemContext from './AccordionItem.context';
 import { useAccordionContext } from './Accordion.context';
+import { StyleSheet } from 'react-native-unistyles';
 
 export const AccordionItem = forwardRef<View, AccordionItemProps>(
   ({ children, style, noPadding, disabled, divider, ...props }, ref) => {
     const { divider: contextDivider } = useAccordionContext();
     const showDivider = divider ?? contextDivider;
-    const { styles } = useStyles(stylesheet, { divider: showDivider });
+    styles.useVariants({ divider: showDivider });
     const context = useMemo(
       () => ({ noPadding, disabled, divider }),
       [noPadding, disabled, divider]
@@ -26,7 +26,7 @@ export const AccordionItem = forwardRef<View, AccordionItemProps>(
 
 AccordionItem.displayName = 'AccordionItemRoot';
 
-const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
+const styles = StyleSheet.create(({ colors, colorMode }) => ({
   item: {
     variants: {
       divider: {

@@ -26,7 +26,7 @@ import {
   Switch,
   ToggleButton,
   ToggleButtonGroup,
-} from '@utilitywarehouse/native-ui';
+} from '../../';
 import {
   Actionsheet,
   Box,
@@ -36,7 +36,7 @@ import {
   CarouselPagination,
   Accordion,
   AccordionItem,
-} from '@utilitywarehouse/native-ui/lab';
+} from '../../src/lab';
 import {
   ElectricityMediumIcon,
   MobileMediumIcon,
@@ -44,6 +44,7 @@ import {
   InsuranceMediumIcon,
   ChevronRightMediumIcon,
 } from '@utilitywarehouse/react-native-icons';
+import { StyleSheet } from 'react-native-unistyles';
 
 const ComponentWrapper: React.FC<PropsWithChildren<{ name: string; link: string }>> = ({
   name,

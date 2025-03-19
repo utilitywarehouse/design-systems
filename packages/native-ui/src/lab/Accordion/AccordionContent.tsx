@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { View, ViewProps } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { useAccordionContext } from './Accordion.context';
 import { useAccordionItemContext } from './AccordionItem.context';
 
@@ -9,7 +9,7 @@ export const AccordionContent = forwardRef<View, ViewProps>(
     const { noPadding: contextMoPadding, contentNoPadding } = useAccordionContext();
     const { noPadding } = useAccordionItemContext();
     const noPaddingValue = noPadding ?? contextMoPadding;
-    const { styles } = useStyles(stylesheet, { noPadding: noPaddingValue, contentNoPadding });
+    styles.useVariants({ noPadding: noPaddingValue, contentNoPadding });
 
     return (
       <View ref={ref} style={[styles.content, style]} {...props}>
@@ -21,7 +21,7 @@ export const AccordionContent = forwardRef<View, ViewProps>(
 
 AccordionContent.displayName = 'AccordionContent';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(({ space }) => ({
   content: {
     paddingTop: 0,
     paddingHorizontal: space[4],

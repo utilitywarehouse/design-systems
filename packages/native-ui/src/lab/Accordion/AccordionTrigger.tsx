@@ -1,16 +1,16 @@
 import React, { forwardRef } from 'react';
 import { Pressable, PressableProps } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { PressableRef } from '../../types';
 import { useAccordionContext } from './Accordion.context';
 import { useAccordionItemContext } from './AccordionItem.context';
+import { StyleSheet } from 'react-native-unistyles';
 
 export const AccordionTrigger = forwardRef<PressableRef, PressableProps>(
   ({ children, ...props }) => {
     const { noPadding: contextMoPadding } = useAccordionContext();
     const { noPadding } = useAccordionItemContext();
     const noPaddingValue = noPadding ?? contextMoPadding;
-    const { styles } = useStyles(stylesheet, { noPadding: noPaddingValue });
+    styles.useVariants({ noPadding: noPaddingValue });
 
     return (
       <Pressable style={styles.trigger} {...props}>
@@ -22,7 +22,7 @@ export const AccordionTrigger = forwardRef<PressableRef, PressableProps>(
 
 AccordionTrigger.displayName = 'AccordionTrigger';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(({ space }) => ({
   trigger: {
     flexDirection: 'row',
     justifyContent: 'space-between',

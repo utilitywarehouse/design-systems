@@ -1,36 +1,23 @@
 import React, { forwardRef } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { Icon, IconProps } from '../../components/Icon';
 import { IconRef } from '../../types';
-import { Platform, StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, ViewStyle } from 'react-native';
 import { useAccordionContext } from './Accordion.context';
 import { useAccordionItemContext } from './AccordionItem.context';
+import { StyleSheet } from 'react-native-unistyles';
 
 export const AccordionIcon = forwardRef<IconRef, IconProps>(({ as, style, ...props }, ref) => {
   const { disabled: contextDisabled } = useAccordionContext();
   const { disabled } = useAccordionItemContext();
   const disabledValue = disabled ?? contextDisabled;
-  const { styles } = useStyles(stylesheet, { disabled: disabledValue });
+  styles.useVariants({ disabled: disabledValue });
 
-  return (
-    <Icon
-      ref={ref}
-      as={as}
-      style={
-        Platform.OS === 'web'
-          ? ({
-              ...styles.icon,
-            } as StyleProp<ViewStyle>)
-          : [styles.icon as StyleProp<ViewStyle>, style]
-      }
-      {...props}
-    />
-  );
+  return <Icon ref={ref} as={as} style={[styles.icon as StyleProp<ViewStyle>, style]} {...props} />;
 });
 
 AccordionIcon.displayName = 'AccordionIcon';
 
-const stylesheet = createStyleSheet(({ space, colors, colorMode }) => ({
+const styles = StyleSheet.create(({ space, colors, colorMode }) => ({
   iconWrapper: {
     marginLeft: space[2],
   },
