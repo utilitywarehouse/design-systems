@@ -8,6 +8,10 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
+*.apk
+*.aab
+*.ipa
+*.tar.gz
 web-build/
 build
 eas-build
