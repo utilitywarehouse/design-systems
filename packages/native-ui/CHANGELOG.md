@@ -1,5 +1,15 @@
 # @utilitywarehouse/native-ui
 
+## 0.12.0
+
+### Minor Changes
+
+- [`bd34a70`](https://github.com/utilitywarehouse/design-systems/commit/bd34a70cd60e4c1bed84b2faf6afc844c74e2a10) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `useLightDark` hook
+
+- [#675](https://github.com/utilitywarehouse/design-systems/pull/675) [`7c3133f`](https://github.com/utilitywarehouse/design-systems/commit/7c3133f3e1b3ff2f9c601ff844f8a7c3b397d471) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Accordion` lab component
+
+- [#674](https://github.com/utilitywarehouse/design-systems/pull/674) [`5a378a8`](https://github.com/utilitywarehouse/design-systems/commit/5a378a8d1f8015618c9fad9339f2b4998dd79ca7) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `ToggleButton` component
+
 ## 0.11.2
 
 ### Patch Changes
