@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.12.1
+
+### Patch Changes
+
+- [#676](https://github.com/utilitywarehouse/design-systems/pull/676) [`9d9f103`](https://github.com/utilitywarehouse/design-systems/commit/9d9f10372e61794b940e55e037a3d3ce07d2d910) Thanks [@jordmccord](https://github.com/jordmccord)! - Fix `useLightDark` theme name check
+
 ## 0.12.0
 
 ### Minor Changes
