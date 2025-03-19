@@ -146,8 +146,8 @@ importers:
         specifier: ^15.8.0
         version: 15.10.1(react-native@0.76.3(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
       react-native-unistyles:
-        specifier: ^2.20.0
-        version: 2.20.0(@react-native/normalize-colors@0.76.5)(react-native-web@0.19.13(react-dom@18.3.1(react@18.2.0))(react@18.2.0))(react-native@0.76.3(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
+        specifier: ^2.31.0
+        version: 2.31.0(@react-native/normalize-colors@0.76.5)(react-native-web@0.19.13(react-dom@18.3.1(react@18.2.0))(react@18.2.0))(react-native@0.76.3(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
       react-native-web:
         specifier: ~0.19.13
         version: 0.19.13(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
@@ -392,6 +392,9 @@ importers:
       '@expo/html-elements':
         specifier: latest
         version: 0.11.2
+      '@gluestack-ui/accordion':
+        specifier: 1.0.7
+        version: 1.0.7(react-dom@18.3.1(react@18.2.0))(react-native@0.74.6(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
       '@gluestack-ui/alert':
         specifier: 0.1.15
         version: 0.1.15(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
@@ -2074,6 +2077,12 @@ packages:
       '@fortawesome/fontawesome-svg-core': ~1 || ~6
       react: 18.2.0
 
+  '@gluestack-ui/accordion@1.0.7':
+    resolution: {integrity: sha512-pvEjAL343p/npQfmNFmKDy+p/POUua0/hog8weFRZ7E0CzI00VHDxIsbmkBEREjhzekRXry/wg8se6lGlKOpCA==}
+    peerDependencies:
+      react: 18.2.0
+      react-dom: '>=16'
+
   '@gluestack-ui/alert@0.1.15':
     resolution: {integrity: sha512-Jlaz8awVHznQixVfc1WmO9C1Em7DuF23N44PVOiGe2fCotOOB68ru2cGggaqGlHDzqhPRVpP5Fls+gn8CRDf0Q==}
     peerDependencies:
@@ -3014,6 +3023,12 @@ packages:
 
   '@react-google-maps/marker-clusterer@2.20.0':
     resolution: {integrity: sha512-tieX9Va5w1yP88vMgfH1pHTacDQ9TgDTjox3tLlisKDXRQWdjw+QeVVghhf5XqqIxXHgPdcGwBvKY6UP+SIvLw==}
+
+  '@react-native-aria/accordion@0.0.2':
+    resolution: {integrity: sha512-2Wa/YDBc2aCunTLpqwxTfCwn1t63KSAIoXd0hqrUGJJF+N2bEs2Hqs9ZgyKJ/hzFxCknVPMqo0fEVE1H23Z5+g==}
+    peerDependencies:
+      react: 18.2.0
+      react-native: '*'
 
   '@react-native-aria/checkbox@0.2.9':
     resolution: {integrity: sha512-REycBw1DKbw2r9LbynrB+egWOnJXo1YPoMkAQOv6wiKgIzRZ69l4GpmAwkwqUmKit+DJM9Van6/cGl9kOKTAeA==}
@@ -8942,6 +8957,24 @@ packages:
       react-native-windows:
         optional: true
 
+  react-native-unistyles@2.31.0:
+    resolution: {integrity: sha512-ZFmT4xpFWZ5ivb7IM7EOPWkK1Qjqjfa1MvPl1kXAR/8GjVEUW8QmRRPnYI9JlLk7DGTAx79OdYXS6Ah2ogrAbQ==}
+    engines: {node: '>= 18.0.0'}
+    peerDependencies:
+      '@react-native/normalize-colors': '*'
+      react: 18.2.0
+      react-native: '*'
+      react-native-macos: '*'
+      react-native-web: '*'
+      react-native-windows: '*'
+    peerDependenciesMeta:
+      react-native-macos:
+        optional: true
+      react-native-web:
+        optional: true
+      react-native-windows:
+        optional: true
+
   react-native-web@0.19.13:
     resolution: {integrity: sha512-etv3bN8rJglrRCp/uL4p7l8QvUNUC++QwDbdZ8CB7BvZiMvsxfFIRM1j04vxNldG3uo2puRd6OSWR3ibtmc29A==}
     peerDependencies:
@@ -12578,6 +12611,17 @@ snapshots:
       prop-types: 15.8.1
       react: 18.2.0
 
+  '@gluestack-ui/accordion@1.0.7(react-dom@18.3.1(react@18.2.0))(react-native@0.74.6(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@gluestack-ui/utils': 0.1.14(react-dom@18.3.1(react@18.2.0))(react-native@0.74.6(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
+      '@react-native-aria/accordion': 0.0.2(react-native@0.74.6(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
+      '@react-native-aria/focus': 0.2.9(react-native@0.74.6(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
+      '@react-native-aria/interactions': 0.2.13(react-native@0.74.6(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.3.1(react@18.2.0)
+    transitivePeerDependencies:
+      - react-native
+
   '@gluestack-ui/alert@0.1.15(react-dom@18.3.1(react@18.2.0))(react@18.2.0)':
     dependencies:
       react: 18.2.0
@@ -13712,6 +13756,11 @@ snapshots:
   '@react-google-maps/infobox@2.20.0': {}
 
   '@react-google-maps/marker-clusterer@2.20.0': {}
+
+  '@react-native-aria/accordion@0.0.2(react-native@0.74.6(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      react: 18.2.0
+      react-native: 0.74.6(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.14)(react@18.2.0)
 
   '@react-native-aria/checkbox@0.2.9(react-native@0.74.6(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)':
     dependencies:
@@ -21960,7 +22009,7 @@ snapshots:
     optionalDependencies:
       react-native-web: 0.19.13(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
 
-  react-native-unistyles@2.20.0(@react-native/normalize-colors@0.76.5)(react-native-web@0.19.13(react-dom@18.3.1(react@18.2.0))(react@18.2.0))(react-native@0.76.3(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0):
+  react-native-unistyles@2.31.0(@react-native/normalize-colors@0.76.5)(react-native-web@0.19.13(react-dom@18.3.1(react@18.2.0))(react@18.2.0))(react-native@0.76.3(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0):
     dependencies:
       '@react-native/normalize-colors': 0.76.5
       react: 18.2.0

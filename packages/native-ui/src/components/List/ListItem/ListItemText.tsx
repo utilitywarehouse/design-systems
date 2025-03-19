@@ -7,9 +7,9 @@ import type TextProps from '../../Text/Text.props';
 
 const ListItemText = forwardRef<RNText, TextProps>(({ children, ...props }, ref) => {
   const { disabled } = useListItemContext();
-  const { styles } = useStyles(stylesheet);
+  const { styles } = useStyles(stylesheet, { disabled });
   return (
-    <Text ref={ref} {...props} style={[styles.text, styles.extraStyles(disabled), props.style]}>
+    <Text ref={ref} {...props} style={[styles.text, props.style]}>
       {children}
     </Text>
   );
@@ -21,14 +21,13 @@ const stylesheet = createStyleSheet(({ colors, colorMode, fontSizes, lineHeights
   text: {
     fontSize: fontSizes.lg,
     lineHeight: lineHeights.lg,
-  },
-  extraStyles: (disabled?: boolean) => {
-    if (disabled) {
-      return {
-        color: colorMode === 'light' ? colors.grey400 : colors.grey500,
-      };
-    }
-    return {};
+    variants: {
+      disabled: {
+        true: {
+          color: colorMode === 'light' ? colors.grey400 : colors.grey500,
+        },
+      },
+    },
   },
 }));
 
