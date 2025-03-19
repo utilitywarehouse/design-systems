@@ -1,17 +1,18 @@
-import React, { FC } from 'react';
-import { View } from 'react-native';
+import React, { forwardRef } from 'react';
+import { View, ViewProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { AccordionHeaderProps } from './types';
 
-export const AccordionHeader: FC<AccordionHeaderProps> = ({ children, ...props }) => {
+export const AccordionHeader = forwardRef<View, ViewProps>(({ children, style, ...props }, ref) => {
   const { styles } = useStyles(stylesheet);
 
   return (
-    <View style={styles.header} {...props}>
+    <View ref={ref} style={[styles.header, style]} {...props}>
       {children}
     </View>
   );
-};
+});
+
+AccordionHeader.displayName = 'AccordionHeader';
 
 const stylesheet = createStyleSheet(() => ({
   header: {

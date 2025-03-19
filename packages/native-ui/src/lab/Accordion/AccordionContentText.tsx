@@ -1,23 +1,24 @@
-import React, { FC } from 'react';
-import { Text } from 'react-native';
+import React, { forwardRef } from 'react';
+import { Text as RNText, TextProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { AccordionContentTextProps } from './types';
+import { Text } from '../../components';
 
-export const AccordionContentText: FC<AccordionContentTextProps> = ({ children, ...props }) => {
-  const { styles } = useStyles(stylesheet);
+export const AccordionContentText = forwardRef<RNText, TextProps>(
+  ({ children, style, ...props }, ref) => {
+    const { styles } = useStyles(stylesheet);
 
-  return (
-    <Text style={styles.contentText} {...props}>
-      {children}
-    </Text>
-  );
-};
+    return (
+      <Text ref={ref} style={[styles.contentText, style]} {...props}>
+        {children}
+      </Text>
+    );
+  }
+);
 
-const stylesheet = createStyleSheet(({ fontSizes, colors, colorMode }) => ({
-  contentText: {
-    fontSize: fontSizes.sm,
-    color: colorMode === 'light' ? colors.grey700 : colors.grey300,
-  },
+AccordionContentText.displayName = 'AccordionContentText';
+
+const stylesheet = createStyleSheet(() => ({
+  contentText: {},
 }));
 
 export default AccordionContentText;

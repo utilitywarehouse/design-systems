@@ -9,4 +9,7 @@ export interface AccordionItemProps extends ViewProps {
    * Event handler called when the trigger is pressed.
    */
   toggleItem?: () => void;
+  children?: JSX.Element | Array<JSX.Element>;
+  divider?: boolean;
+  noPadding?: boolean;
 }

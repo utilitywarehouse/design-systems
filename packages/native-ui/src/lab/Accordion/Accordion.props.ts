@@ -11,6 +11,7 @@ export interface AccordionProps extends ViewProps {
   disabled?: boolean;
   /**
    * Determines whether one or multiple items can be opened at the same time.
+   * @default 'multiple'
    */
   type?: 'single' | 'multiple';
   /**
@@ -25,4 +26,14 @@ export interface AccordionProps extends ViewProps {
    * Event handler called when the expanded state of an item changes and type is "single" or "multiple".
    */
   onValueChange?: (value: Array<string>) => void;
+  /**
+   * Sets the padding of the accordion item header.
+   * @default false
+   */
+  noPadding?: boolean;
+  /**
+   * Sets the divider of the accordion item header.
+   * @default true
+   */
+  divider?: boolean;
 }

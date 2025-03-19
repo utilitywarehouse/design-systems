@@ -1,24 +1,37 @@
-import React, { FC } from 'react';
-import { Text } from 'react-native';
+import React, { forwardRef } from 'react';
+import { TextProps } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { AccordionTitleTextProps } from './types';
+import { Text } from '../../components';
+import { useAccordionContext } from './Accordion.context';
+import { useAccordionItemContext } from './AccordionItem.context';
 
-export const AccordionTitleText: FC<AccordionTitleTextProps> = ({ children, ...props }) => {
-  const { styles } = useStyles(stylesheet);
+export const AccordionTitleText = forwardRef<Text, TextProps>(({ children, ...props }) => {
+  const { disabled: contextDisabled } = useAccordionContext();
+  const { disabled } = useAccordionItemContext();
+  const disabledValue = disabled ?? contextDisabled;
+  const { styles } = useStyles(stylesheet, { disabled: disabledValue });
 
   return (
     <Text style={styles.titleText} {...props}>
       {children}
     </Text>
   );
-};
+});
 
-const stylesheet = createStyleSheet(({ fontSizes, colors, colorMode }) => ({
+AccordionTitleText.displayName = 'AccordionTitleText';
+
+const stylesheet = createStyleSheet(({ isLight, colors, fontSizes, lineHeights }) => ({
   titleText: {
-    fontSize: fontSizes.md,
-    color: colorMode === 'light' ? colors.grey900 : colors.white,
-    fontWeight: '500',
+    fontSize: fontSizes.lg,
+    lineHeight: lineHeights.lg,
     flex: 1,
+    variants: {
+      disabled: {
+        true: {
+          color: isLight ? colors.grey400 : colors.grey500,
+        },
+      },
+    },
   },
 }));
 

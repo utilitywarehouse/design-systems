@@ -33,9 +33,17 @@ export const AccordionIcon = AccordionComponent.Icon;
 export const AccordionTitleText = AccordionComponent.TitleText;
 
 const Accordion = forwardRef<View, AccordionProps>(
-  ({ children, disabled, collapsible, type }, ref) => {
+  ({ children, collapsible, type = 'multiple', divider = true, ...props }, ref) => {
     return (
-      <AccordionComponent ref={ref} isDisabled={disabled} isCollapsible={collapsible} type={type}>
+      <AccordionComponent
+        // @ts-expect-error - ref
+        ref={ref}
+        isDisabled={props.disabled}
+        isCollapsible={collapsible}
+        type={type}
+        divider={divider}
+        {...props}
+      >
         {children}
       </AccordionComponent>
     );
@@ -43,31 +51,49 @@ const Accordion = forwardRef<View, AccordionProps>(
 );
 
 export const AccordionItem = forwardRef<View, AccordionItemProps>(
-  ({ children, value, title, expanded }, ref) => {
+  ({ children, value, title, expanded, ...props }, ref) => {
+    if (!children) {
+      return null;
+    }
+
+    const processedChildren = React.Children.toArray(children);
+    const hasContentComponent = processedChildren.some(
+      // @ts-expect-error - type
+      child => React.isValidElement(child) && child.type.displayName === 'AccordionContent'
+    );
+
     return (
       <AccordionItemComponent
         // @ts-expect-error - ref
         ref={ref}
         value={value ?? Math.random().toString()}
         title={title}
+        isDisabled={props.disabled}
+        {...props}
       >
-        <AccordionHeader>
-          <AccordionTrigger isExpanded={expanded}>
-            {({ isExpanded }: { isExpanded: boolean }) => {
-              return (
-                <>
-                  <AccordionTitleText>{title}</AccordionTitleText>
-                  {isExpanded ? (
-                    <AccordionIcon as={ChevronUpMediumIcon} />
-                  ) : (
-                    <AccordionIcon as={ChevronDownMediumIcon} />
-                  )}
-                </>
-              );
-            }}
-          </AccordionTrigger>
-        </AccordionHeader>
-        <AccordionContent>{children}</AccordionContent>
+        {hasContentComponent ? (
+          children
+        ) : (
+          <>
+            <AccordionHeader>
+              <AccordionTrigger isExpanded={expanded}>
+                {({ isExpanded }: { isExpanded: boolean }) => {
+                  return (
+                    <>
+                      <AccordionTitleText>{title}</AccordionTitleText>
+                      {isExpanded ? (
+                        <AccordionIcon as={ChevronUpMediumIcon} />
+                      ) : (
+                        <AccordionIcon as={ChevronDownMediumIcon} />
+                      )}
+                    </>
+                  );
+                }}
+              </AccordionTrigger>
+            </AccordionHeader>
+            <AccordionContent>{children}</AccordionContent>
+          </>
+        )}
       </AccordionItemComponent>
     );
   }

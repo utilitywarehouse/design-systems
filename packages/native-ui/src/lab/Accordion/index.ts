@@ -8,6 +8,3 @@ export {
   AccordionIcon,
   AccordionTitleText,
 } from './Accordion';
-
-// Export types
-export * from './types';
