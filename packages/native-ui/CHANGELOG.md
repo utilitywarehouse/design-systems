@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.12.2
+
+### Patch Changes
+
+- [`9da80df`](https://github.com/utilitywarehouse/design-systems/commit/9da80df874e7baa3c7e9f0f4aa71ff4b8abce30e) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixes missing ref on `Accordion` trigger
+
 ## 0.12.1
 
 ### Patch Changes
