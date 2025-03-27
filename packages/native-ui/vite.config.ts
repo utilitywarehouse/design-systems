@@ -11,6 +11,11 @@ const unistylesPluginOptions = {
 
 // https://vite.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@utilitywarehouse/react-native-icons': '@utilitywarehouse/react-icons',
+    },
+  },
   plugins: [
     reactNativeWeb(),
     react({

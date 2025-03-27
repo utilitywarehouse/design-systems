@@ -262,7 +262,7 @@ const shared = {
       },
     },
   },
-};
+} as const;
 
 export const lightTheme = {
   colorMode: 'light',
@@ -278,7 +278,7 @@ export const lightTheme = {
     ...components.light,
   },
   ...shared,
-};
+} as const;
 
 export const darkTheme = {
   colorMode: 'dark',
@@ -294,9 +294,9 @@ export const darkTheme = {
     ...components.dark,
   },
   ...shared,
-};
+} as const;
 
 export const themes = {
   light: lightTheme,
   dark: darkTheme,
-};
+} as const;
