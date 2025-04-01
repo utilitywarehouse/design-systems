@@ -27,6 +27,7 @@ migrate to Native UI as UW Native UI is deprecated.
     - [`Switch`](#switch)
     - [`TextInput` -> `Input`](#textinput--input)
     - [`ToggleButton`](#togglebutton)
+    - [`Typography` -> `Text` & `Heading`](#typography--text--heading)
   - [Styles](#styles)
     - [`StyleSheet`](#stylesheet)
     - [Dark Mode](#dark-mode)
@@ -712,6 +713,68 @@ For `ToggleButton`:
 
 For more info see the [ToggleButton](/docs/native-ui-components-togglebutton--docs) documentation.
 
+#### `Typography` -> `Text` & `Heading`
+
+Replace all `Typography` components from `@utilitywarehouse/uw-native-ui` with `Text` and `Heading` from `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Typography } from '@utilitywarehouse/uw-native-ui';
++ import { Text, Heading } from '@utilitywarehouse/native-ui';
+import { colors } from '@utilitywarehouse/colour-system';
+
+...
+// Before - basic typography
+- <Typography variant="h1" textAlign="center" gutterBottom={2} style={{ color: colors.red500 }}>
+-   Hello World
+- </Typography>
+
+// After - basic typography
++ <Heading size="h1" textAlign="center" style={{ marginBottom: 16, color: colors.red500 }}>
++   Hello World
++ </Heading>
+
+// Before - body text
+- <Typography variant="body" textAlign="left" gutterBottom={2} style={{ color: colors.blue500 }}>
+-   This is a body text
+- </Typography>
+// After - body text
++ <Text size="md" textAlign="left" style={{ marginBottom: 16, color: colors.blue500 }}>
++   This is a body text
++ </Text>
+```
+
+| Typography Variant | Text/Heading Component + Props |
+| ------------------ | ------------------------------ |
+| `h1`               | `<Heading size="h1">`          |
+| `h2`               | `<Heading size="h2">`          |
+| `h3`               | `<Heading size="h3">`          |
+| `h4`               | `<Heading size="h4">`          |
+| `h5`               | `<Heading size="h5">`          |
+| -                  | `<Heading size="h6">`          |
+| `body`             | `<Text size="md">`             |
+| `bodyHighlight`    | `<Text size="md" highlight>`   |
+| `small`            | `<Text size="sm">`             |
+| `smallHighlight`   | `<Text size="sm" highlight>`   |
+| `xSmall`           | `<Text size="xs">`             |
+
+| Typography Props | Text/Heading Props                      |
+| ---------------- | --------------------------------------- |
+| `variant`        | Use appropriate component + `size` prop |
+| `style`          | `style`                                 |
+| `gutterBottom`   | `style={{ marginBottom: value }}`       |
+| `textAlign`      | `textAlign`                             |
+| -                | `color`                                 |
+| -                | `bold/highlight`                        |
+| -                | `italic`                                |
+| -                | `truncated`                             |
+| -                | `underline`                             |
+| -                | `strikeThrough`                         |
+| -                | `textTransform`                         |
+| -                | `textDecorationLine`                    |
+| -                | `textTransform`                         |
+
+For more info see the [Text](/docs/native-ui-components-text--docs) and [Heading](/docs/native-ui-components-heading--docs) documentation.
+
 ### Styles
 
 `@utilitywarehouse/uw-native-ui` uses `StyleSheet` from `react-native` for styling, whereas `@utilitywarehouse/native-ui` uses
@@ -722,27 +785,31 @@ utility props for styling. See out [Styling](/docs/native-ui-guides-styling-over
 #### `StyleSheet`
 
 ```tsx
-- import { StyleSheet } from 'react-native';
-- import { View } from '@utilitywarehouse/uw-native-ui';
+- import { StyleSheet, View } from 'react-native';
+- import { makeStyles } from '@utilitywarehouse/uw-native-ui';
 + import { Box } from '@utilitywarehouse/native-ui';
 // or
-+ import { styled } from '@utilitywarehouse/native-ui';
++ import { createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
 
-- const styles = StyleSheet.create({
+- const useStyles = makeStyles(theme => ({
 -   container: {
--     backgroundColor: 'red',
+-     backgroundColor: theme.colors.surface,
 -   },
-- });
+- }));
 
-- <View style={styles.container}>
++ const stylesheet = createStyleSheet(theme => ({
++   container: {
++   backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey75,
++  },
++ }));
 
-+ <Box bg="red" />
+...
 
-// or
-
-+ const StyledBox = styled(Box, {
-+   backgroundColor: 'red',
-+ });
+- const styles = useStyles();
++ const styles = useStyles(sttylesheet);
+  return (
+    <View style={styles.container}>
+...
 ```
 
 #### Dark Mode
@@ -766,42 +833,154 @@ const App: React.FC = () => {
 You can also use the `useColorMode` hook to get the current colour mode of the device.
 
 ```tsx
-- import { useDarkMode } from '@utilitywarehouse/uw-native-ui';
 + import { useColorMode } from '@utilitywarehouse/native-ui';
+```
+
+#### `useDynamicValue` -> `useLightDark`
+
+The `useDynamicValue` hook has been replaced with `useLightDark`. The `useLightDark` hook returns the light or dark value based on the current
+colour mode of the device.
+
+```tsx
+- import { useDynamicStyles } from '@utilitywarehouse/uw-native-ui';
++ import { useLightDark } from '@utilitywarehouse/native-ui';
+
+...
+
+- const dynamicValue = useDynamicValue('lightValue', 'darkValue');
++ const dynamicValue = useLightDark('lightValue', 'darkValue');
 ```
 
 Dark mode is also baked into the styling so you no longer need to use the `DynamicValue` for the colour scheme.
 
 ```tsx
 - import { DynamicValue, makeDynamicStyles, Typography } from '@utilitywarehouse/uw-native-ui';
-+ import { Box, Text } from '@utilitywarehouse/native-ui';
++ import { Box, Text, useStyles, createStyleSheet } from '@utilitywarehouse/native-ui';
 
 - const useDynamicStyles = makeDynamicStyles(theme => ({
 -   root: {
 -     backgroundColor: new DynamicValue('white', 'black');
 -     margin: 20,
 -   },
-- }));
++ const stylesheet = createStyleSheet(theme => ({
++   root: {
++     backgroundColor: theme.isLight ? theme.colors.white : theme.colors.black,
++     margin: 20,
++   },
++ }));
 
 const MyComponent = () => {
 - const styles = useDynamicStyles();
-+ const { colorMode } = useColorMode();
++ const styles = useStyles(stylesheet);
 
   return (
--    <View style={styles.root}>
-+    <Box
-+      backgroundColor={colorMode === 'light' ? 'white' : 'black'}
-+      margin={20},
-+    >
-}
-
+    <View style={styles.root}>
 -      <Typography>{title}</Typography>
 +      <Text>{title}</Text>
--    </View>
-+    </Box>
+    </View>
   );
 }
 ```
+
+### Theme Mapping
+
+The theme system in `@utilitywarehouse/native-ui` has been completely redesigned. The new theme system is more comprehensive and
+provides better TypeScript support. Here's a mapping of common theme properties from the old to the new system.
+
+#### Theme Structure
+
+The old `@utilitywarehouse/uw-native-ui` theme was structured with component-specific properties at the root level:
+
+```tsx
+// Legacy
+const { spacing, colors, button, input } = theme;
+```
+
+The new `@utilitywarehouse/native-ui` theme separates core theme values from component tokens:
+
+```tsx
+// New
+const { colors, space, fonts, tokens } = theme;
+```
+
+#### Common Theme Properties
+
+Below is a mapping table for common theme properties:
+
+| Property in UW Native UI         | Property in Native UI             | Notes                                                     |
+| -------------------------------- | --------------------------------- | --------------------------------------------------------- |
+| `theme.spacing(1)`               | `theme.space[4]`                  | New spacing is in absolute values, 4 is equivalent to 8px |
+| `theme.roundness`                | `theme.radii.md`                  | Various radius sizes available (xs, sm, md, lg, etc.)     |
+| `theme.colors.primary`           | `theme.colors.brandPrimaryPurple` | Brand colors now use descriptive names                    |
+| `theme.colors.accent`            | `theme.colors.cyan500`            | Most accent colors map to a token in the 500 range        |
+| `theme.colors.background`        | `theme.colors.grey25`             | In light mode; in dark mode use `theme.colors.grey75`     |
+| `theme.colors.surface`           | `theme.colors.white`              | In light mode; in dark mode use `theme.colors.grey100`    |
+| `theme.colors.text`              | `theme.colors.grey1000`           | In light mode; in dark mode use `theme.colors.grey1000`   |
+| `theme.colors.disabled`          | `theme.colors.grey600`            | Varies by component, check component tokens               |
+| `theme.fonts.regular.fontFamily` | `theme.fonts.body`                | Now uses 'Work Sans' as the base name                     |
+| `theme.fonts.medium.fontFamily`  | `theme.fonts.body` + fontWeight   | Set fontWeight separately                                 |
+| `palette.transparent`            | `'transparent'`                   | Use the string value directly                             |
+| `palette.primaryPurple`          | `theme.colors.brandPrimaryPurple` | Now part of the theme colors                              |
+| `palette.cyan`                   | `theme.colors.cyan400`            | Color tones have numeric scales                           |
+| `palette.pink`                   | `theme.colors.pink300`            | Most colors have various tones (50-950)                   |
+| `palette.midnight`               | `theme.colors.brandMidnight`      | Now a brand color                                         |
+| `palette.codGray`                | `theme.colors.grey900`            | Grey scale now goes from 25-1000                          |
+
+#### Accessing Theme Values
+
+When using the styling API, the theme is automatically injected:
+
+```tsx
+// Old
+const useStyles = makeStyles(theme => ({
+  container: {
+    backgroundColor: theme.colors.background,
+    borderRadius: theme.roundness,
+    padding: theme.spacing(2),
+  },
+}));
+
+// New
+const stylesheet = createStyleSheet(theme => ({
+  container: {
+    backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey75,
+    borderRadius: theme.radii.md,
+    padding: theme.space[4],
+  },
+}));
+```
+
+For conditional theming based on light/dark mode:
+
+```tsx
+// Old
+const useDynamicStyles = makeDynamicStyles(theme => ({
+  text: {
+    color: new DynamicValue(palette.midnight, palette.white),
+  },
+}));
+
+// New
+const stylesheet = createStyleSheet(theme => ({
+  text: {
+    color: theme.isLight ? theme.colors.brandMidnight : theme.colors.white,
+  },
+}));
+```
+
+The new theme also includes boolean properties for easily checking the current theme mode:
+
+```tsx
+const stylesheet = createStyleSheet(theme => ({
+  card: {
+    // Use theme.isLight or theme.isDark for conditional styling
+    backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey100,
+    borderColor: theme.isLight ? theme.colors.grey100 : theme.colors.grey300,
+  },
+}));
+```
+
+For more information about the theme system, see the [Theming Tokens](/docs/native-ui-guides-styling-theme-tokens--docs) documentation.
 
 ### Fonts
 
