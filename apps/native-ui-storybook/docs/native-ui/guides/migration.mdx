@@ -274,49 +274,225 @@ import { AddMediumIcon } from '@utilitywarehouse/react-native-icons';
 
 ...
 
-- <IconButton icon={() => <AddMediumIcon />} color="red" onPress={handleClick} />
-+ <IconButton colorScheme="red" icon={AddMediumIcon} onPress={handleClick} />
+- <IconButton icon={() => <AddMediumIcon/>} size="small" color="red" pressedColor="darkred" onPress={handleClick} />
++ <IconButton icon={AddMediumIcon} size="small" colorScheme="red" onPress={handleClick} />
 ```
 
-| Prop Before | Prop After    | Values |
-| ----------- | ------------- | ------ |
-| `color`     | `colorScheme` |        |
+| Prop Before    | Prop After    | Values                                                                           |
+| -------------- | ------------- | -------------------------------------------------------------------------------- |
+| `icon`         | `icon`        | Now accepts the component itself, not a function component instance              |
+| `size`         | `size`        | `'small'` -> `'small'` or `'x-small'`, `'large'` -> `'medium'`                   |
+| `color`        | `colorScheme` | Use `'cyan'`, `'red'`, `'green'`, `'grey'`, or `'gold'` instead of custom colors |
+| `pressedColor` | `pressed`     | Use `pressed` boolean prop instead. Press state is automatically handled         |
+| `style`        | `style`       | Same behavior                                                                    |
+| -              | `variant`     | `'solid'`, `'outline'`, or `'ghost'`                                             |
+| -              | `loading`     | Shows a loading spinner instead of the icon                                      |
+| -              | `disabled`    | Disables the button                                                              |
+| -              | `inverted`    | For use on dark backgrounds                                                      |
 
 For more info see the [IconButton](/docs/native-ui-components-iconbutton--docs) documentation.
 
-#### `Typography`
+#### `Loader` -> `Spinner`
 
-The `Typography` component doesn't map 1:1 with `@utilitywarehouse/uw-native-ui`. You can use the `Text` and `Heading` components
-from `@utilitywarehouse/native-ui` instead.
+Replace all `Loader` components from `@utilitywarehouse/uw-native-ui` with `Spinner` from `@utilitywarehouse/native-ui`.
 
 ```tsx
-- import { Typography } from '@utilitywarehouse/uw-native-ui';
-+ import { Text, Heading } from '@utilitywarehouse/native-ui';
+- import { Loader } from '@utilitywarehouse/uw-native-ui';
++ import { Spinner } from '@utilitywarehouse/native-ui';
++ import { colors } from '@utilitywarehouse/colour-system';
 
 ...
 
-- <Typography variant="h1">Heading 1</Typography>
-+ <Heading size="h1">Heading 1</Heading>
-
-- <Typography variant="body">Body text</Typography>
-+ <Text>Body text</Text>
+- <Loader size="small" color="blue" />
++ <Spinner size="sm" color={colors.blue500} />
 ```
 
-For more info see the [Text](/docs/native-ui-components-text--docs) and [Heading](/docs/native-ui-components-heading--docs) documentation.
+| Prop Before | Prop After | Values                                                                                                     |
+| ----------- | ---------- | ---------------------------------------------------------------------------------------------------------- |
+| `size`      | `size`     | `'small'` -> `'sm'` <br/> `'large'` -> `'md'` <br/> Custom number -> Use `'xs'`, `'sm'`, `'md'`, or `'lg'` |
+| `color`     | `color`    | Now accepts color string values like `$cyan400` from color system                                          |
+| `style`     | `style`    | Same behavior                                                                                              |
 
-#### `ThemeProvider`
+For more info see the [Spinner](/docs/native-ui-components-spinner--docs) documentation.
+
+#### `Modal`
+
+There is currently no direct replacement for the `Modal` component from `@utilitywarehouse/uw-native-ui`.
+
+#### `Pill`
+
+Replace all `Pill` components from `@utilitywarehouse/uw-native-ui` with `Button` from `@utilitywarehouse/native-ui`.
 
 ```tsx
-- import { ThemeProvider } from '@utilitywarehouse/uw-native-ui';
-+ import { NativeUIProvider } from '@utilitywarehouse/native-ui';
+- import { Pill } from '@utilitywarehouse/uw-native-ui';
++ import { Button, ButtonText, ButtonIcon } from '@utilitywarehouse/native-ui';
+import { FilterIcon } from '@utilitywarehouse/react-native-icons';
+
+...
+
+- <Pill
+-   active={isActive}
+-   icon={<FilterIcon />}
+-   label="Filter"
+-   onPress={handlePress}
+-   style={styles.pill}
+- />
++ <Button
++   size="small"
++   variant={isActive ? "solid" : "outline"}
++   colorScheme="cyan"
++   onPress={handlePress}
++   style={styles.pill}
++   icon={FilterIcon}
++ >
++   Filter
++ </Button>
 ```
+
+| Prop Before | Prop After | Values                                                                        |
+| ----------- | ---------- | ----------------------------------------------------------------------------- |
+| `active`    | `variant`  | `active: true` -> `variant: "solid"`, `active: false` -> `variant: "outline"` |
+| `icon`      | `icon`     | Now accepts the component itself, not a function component instance           |
+| `label`     | `children` | The text is now passed as children                                            |
+| `onPress`   | `onPress`  | Same behavior                                                                 |
+| `style`     | `style`    | Same behavior                                                                 |
+
+For more advanced customisation, you can use component composition:
 
 ```tsx
-- <ThemeProvider theme={theme} variant={colorMode}>
-+ <NativeUIProvider theme={theme} colorMode={colorMode}>
+<Button
+  size="small"
+  variant={isActive ? 'solid' : 'outline'}
+  colorScheme="cyan"
+  onPress={handlePress}
+  style={styles.pill}
+  icon={FilterIcon}
+>
+  <ButtonIcon as={FilterIcon} />
+  <ButtonText>Filter</ButtonText>
+</Button>
 ```
 
-More info can be found in the [Getting Started](/docs/native-ui-introduction--docs#dark-mode) documentation.
+For more info see the [Button](/docs/native-ui-components-button--docs) documentation.
+
+#### `RadioButton` -> `Radio`
+
+Replace all `RadioButton` components from `@utilitywarehouse/uw-native-ui` with `Radio` from `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { RadioButton } from '@utilitywarehouse/uw-native-ui';
++ import { Radio, RadioGroup } from '@utilitywarehouse/native-ui';
+
+...
+
+// Before - single radio button
+- <RadioButton
+-   value="option1"
+-   status={checked === 'option1' ? 'checked' : 'unchecked'}
+-   onPress={() => setChecked('option1')}
+-   label="Option 1"
+-   disabled={false}
+- />
+
+// After - single radio button
++ <Radio
++   value="option1"
++   onChange={() => setChecked('option1')}
++   disabled={false}
++   label="Option 1"
++ />
+
+// Before - group of radio buttons
+- <View>
+-   <RadioButton
+-     value="option1"
+-     status={checked === 'option1' ? 'checked' : 'unchecked'}
+-     onPress={() => setChecked('option1')}
+-     label="Option 1"
+-   />
+-   <RadioButton
+-     value="option2"
+-     status={checked === 'option2' ? 'checked' : 'unchecked'}
+-     onPress={() => setChecked('option2')}
+-     label="Option 2"
+-   />
+- </View>
+
+// After - group of radio buttons
++ <RadioGroup value={checked} onChange={setChecked}>
++   <Radio value="option1" label="Option 1" />
++   <Radio value="option2" label="Option 2" />
++ </RadioGroup>
+```
+
+| Prop Before | Prop After         | Values                                                                                            |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------------- |
+| `value`     | `value`            | Same behavior                                                                                     |
+| `status`    | no longer needed   | RadioGroup and value prop handle the checked state                                                |
+| `onPress`   | `onChange`         | For individual Radio, it returns the selected state; in RadioGroup, use the RadioGroup's onChange |
+| `label`     | `label`            | Same behavior                                                                                     |
+| `disabled`  | `disabled`         | Same behavior                                                                                     |
+| -           | `validationStatus` | `'valid'`, `'invalid'`, or `'initial'`                                                            |
+| -           | `helperText`       | Optional descriptive text for the radio                                                           |
+| -           | `invalidText`      | Text to show when validation status is invalid                                                    |
+| -           | `validText`        | Text to show when validation status is valid                                                      |
+
+For advanced customisation, the Radio component supports composition with subcomponents:
+
+```tsx
+import {
+  Radio,
+  RadioGroup,
+  RadioIndicator,
+  RadioIcon,
+  RadioLabel,
+} from '@utilitywarehouse/native-ui';
+
+<RadioGroup onChange={setValue} value={value}>
+  <Radio value="customOption">
+    <RadioIndicator>
+      <RadioIcon />
+    </RadioIndicator>
+    <RadioLabel>Custom Radio Option</RadioLabel>
+  </Radio>
+</RadioGroup>;
+```
+
+For more info see the [Radio](/docs/native-ui-components-radio--docs) documentation.
+
+#### `Switch`
+
+Replace all `Switch` components from `@utilitywarehouse/uw-native-ui` with `Switch` from `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Switch } from '@utilitywarehouse/uw-native-ui';
++ import { Switch } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Switch
+-   isChecked={isEnabled}
+-   onToggle={setIsEnabled}
+-   disabled={false}
+-   style={styles.switch}
+- />
++ <Switch
++   value={isEnabled}
++   onValueChange={setIsEnabled}
++   disabled={false}
++   size="medium"
++ />
+```
+
+| Prop Before | Prop After      | Values                                                   |
+| ----------- | --------------- | -------------------------------------------------------- |
+| `isChecked` | `value`         | Same behavior - boolean value for on/off state           |
+| `onToggle`  | `onValueChange` | Similar behavior - both receive the new state as a param |
+| `disabled`  | `disabled`      | Same behavior                                            |
+| `style`     | `style`         | Same behavior                                            |
+| -           | `size`          | `'small'` or `'medium'` (default is `'medium'`)          |
+
+For more info see the [Switch](/docs/native-ui-components-switch--docs) documentation.
 
 ### Styles
 
