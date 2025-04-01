@@ -613,6 +613,97 @@ import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
 
 For more info see the [Input](/docs/native-ui-components-input--docs) documentation.
 
+#### `ToggleButton`
+
+Replace all `ToggleButton` and `ToggleButtonGroup` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { ToggleButton, ToggleButtonGroup } from '@utilitywarehouse/uw-native-ui';
++ import { ToggleButton, ToggleButtonGroup } from '@utilitywarehouse/native-ui';
+
+...
+
+// Before - basic toggle button group
+- <ToggleButtonGroup
+-   value={selectedOption}
+-   onChange={setSelectedOption}
+-   gutterBottom={2}
+-   toggleGroupStyle={styles.toggleGroup}
+- >
+-   <ToggleButton value="option1">Option 1</ToggleButton>
+-   <ToggleButton value="option2">Option 2</ToggleButton>
+-   <ToggleButton value="option3">Option 3</ToggleButton>
+- </ToggleButtonGroup>
+
+// After - basic toggle button group
++ <ToggleButtonGroup
++   value={selectedOption}
++   onChange={setSelectedOption}
++   style={{ marginBottom: 16 }}
++ >
++   <ToggleButton value="option1">Option 1</ToggleButton>
++   <ToggleButton value="option2">Option 2</ToggleButton>
++   <ToggleButton value="option3">Option 3</ToggleButton>
++ </ToggleButtonGroup>
+
+// Before - with custom styling
+- <ToggleButtonGroup
+-   value={selectedSize}
+-   onChange={handleSizeChange}
+-   toggleGroupStyle={styles.sizeToggle}
+-   toggleGroupItemStyle={styles.sizeToggleItem}
+- >
+-   <ToggleButton
+-     value="small"
+-     labelStyle={styles.sizeLabel}
+-   >
+-     Small
+-   </ToggleButton>
+-   <ToggleButton
+-     value="medium"
+-     labelStyle={styles.sizeLabel}
+-   >
+-     Medium
+-   </ToggleButton>
+- </ToggleButtonGroup>
+
+// After - with custom styling
++ <ToggleButtonGroup
++   value={selectedSize}
++   onChange={handleSizeChange}
++   style={styles.sizeToggle}
++ >
++   <ToggleButton value="small">
++     <ToggleButtonText style={styles.sizeLabel}>Small</ToggleButtonText>
++   </ToggleButton>
++   <ToggleButton value="medium">
++     <ToggleButtonText style={styles.sizeLabel}>Medium</ToggleButtonText>
++   </ToggleButton>
++ </ToggleButtonGroup>
+```
+
+| Prop Before            | Prop After | Values                                                 |
+| ---------------------- | ---------- | ------------------------------------------------------ |
+| `gutterBottom`         | `style`    | Use `style={{ marginBottom: 16 }}` for spacing         |
+| `toggleGroupStyle`     | `style`    | Apply styles directly to the `style` prop              |
+| `toggleGroupItemStyle` | -          | No direct equivalent, style individual buttons instead |
+| `value`                | `value`    | Same behavior                                          |
+| `onChange`             | `onChange` | Same behavior                                          |
+| -                      | `size`     | `'small'` (default) or `'base'` for different sizes    |
+| -                      | `disabled` | Disables the entire button group                       |
+
+For `ToggleButton`:
+
+| Prop Before         | Prop After | Values                                                |
+| ------------------- | ---------- | ----------------------------------------------------- |
+| `value`             | `value`    | Same behavior                                         |
+| `isActive`          | -          | No longer needed, handled by the group based on value |
+| `labelStyle`        | -          | Use `<ToggleButtonText style={...}>` for styling text |
+| `toggleButtonStyle` | `style`    | Apply styles directly to the `style` prop             |
+| -                   | `disabled` | Disables an individual button                         |
+
+For more info see the [ToggleButton](/docs/native-ui-components-togglebutton--docs) documentation.
+
 ### Styles
 
 `@utilitywarehouse/uw-native-ui` uses `StyleSheet` from `react-native` for styling, whereas `@utilitywarehouse/native-ui` uses
