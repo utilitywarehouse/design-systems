@@ -35,15 +35,85 @@ migrate to Native UI as UW Native UI is deprecated.
 - `@utilitywarehouse/native-ui` is the new library and will receive updates and new features.
 - `@utilitywarehouse/native-ui` is a complete rewrite of `@utilitywarehouse/uw-native-ui` and has a different API.
 - `@utilitywarehouse/uw-native-ui` uses `react-native-paper` under the hood.
-- `@utilitywarehouse/native-ui` uses `gluestack-ui` under the hood.
+- `@utilitywarehouse/native-ui` uses `gluestack-ui` under the hood for some component logic.
 - `@utilitywarehouse/native-ui` uses `react-native-unistyles` for styling.
 
 ## Migration Steps
 
 ### Components
 
-Not all components from `@utilitywarehouse/uw-native-ui` are available in `@utilitywarehouse/native-ui` yet and
-not all components have a 1:1 mapping. Below are the steps to replace the components.
+Not all components from `@utilitywarehouse/uw-native-ui` have a 1:1 mapping to `@utilitywarehouse/native-ui`.
+Below are the steps to replace the components.
+
+#### `Alert`
+
+Replace all `Alert` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Alert, Typography } from '@utilitywarehouse/uw-native-ui';
+- import InfoIcon from '@utilitywarehouse/partner-ui-icons/lib/InfoOutlined.svg';
++ import { Alert } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Alert variant="error" icon={() => <InfoIcon style={styles.icon} />}>
+-   <Typography style={styles.text} variant="bodyHighlight">Title</Typography>
+-   <Typography style={styles.text} variant="body">Message</Typography>
+- </Alert>
++ <Alert
++   colorScheme="red"
++   title="Title"
++   text="Message"
++ />
+```
+
+| Prop Before | Prop After                 | Values                                                                                       |
+| ----------- | -------------------------- | -------------------------------------------------------------------------------------------- |
+| `variant`   | `colorSchene`              | `error` -> `red` <br/> `warning` -> `gold` <br/> `info` -> `blue` <br/> `success` -> `green` |
+| `onPress`   | `onPressIconButton`        | -                                                                                            |
+| `icon`      | - (handled by colorScheme) | -                                                                                            |
+| -           | `title`                    | -                                                                                            |
+| -           | `text`                     | -                                                                                            |
+
+For more info see the [Alert](/docs/native-ui-components-alert--docs) documentation.
+
+#### `Badge`
+
+Replace all `Badge` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Badge } from '@utilitywarehouse/uw-native-ui';
++ import { Badge } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Badge colourScheme="red" text="Error" strong={true} size="small" bottomBorderless={true} />
++ <Badge colorScheme="red" strong size="small" borderless>Error</Badge>
+```
+
+| Prop Before               | Prop After    | Values                                                                                                       |
+| ------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------ |
+| `colourScheme`            | `colorScheme` | `red` -> `red` <br/> `cyan` -> `cyan` <br/> `gold` -> `gold` <br/> `grey` -> `grey` <br/> `green` -> `green` |
+| `text`                    | `children`    | The text is now passed as children                                                                           |
+| `bottomBorderless`        | `borderless`  | `true` \| `false`                                                                                            |
+| `textColorOverride`       | n/a           | Use the styling API for custom text styling                                                                  |
+| `backgroundColorOverride` | n/a           | Use the styling API for custom background styling                                                            |
+
+For more advanced customisation of the `Badge` text, you can use the component parts:
+
+```tsx
+- import { Badge, Typography } from '@utilitywarehouse/uw-native-ui';
++ import { Badge, BadgeText } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Badge colourScheme="red" text="Error" />
++ <Badge colorScheme="red" style={styles.badge}>
++   <BadgeText style={styles.badgeText}>Error</BadgeText>
++ </Badge>
+```
+
+For more info see the [Badge](/docs/native-ui-components-badge--docs) documentation.
 
 #### `Button`
 
@@ -51,25 +121,147 @@ Replace all `Button` components from `@utilitywarehouse/uw-native-ui` with `@uti
 
 ```tsx
 - import { Button } from '@utilitywarehouse/uw-native-ui';
-+ import { Button} from '@utilitywarehouse/native-ui';
++ import { Button } from '@utilitywarehouse/native-ui';
 
 ...
 
-- <Button onPress={handleClick} >Click me</Button>
+- <Button onPress={handleClick}>Click me</Button>
 + <Button onPress={handleClick}>Click me</Button>
 ```
 
-| Prop Before | Prop After | Values                                                                 |
-| ----------- | ---------- | ---------------------------------------------------------------------- |
-| `mode`      | `variant`  | `contained` -> `solid` \| `outlined` -> `outline` \| `text` -> `ghost` |
-| `size`      | `size`     | `small` -> `small` \| `normal` -> `medium` \| n/a -> `large`           |
-| `uppercase` | n/a        | `true` \| `false`                                                      |
+| Prop Before            | Prop After     | Values                                                                       |
+| ---------------------- | -------------- | ---------------------------------------------------------------------------- |
+| `mode`                 | `variant`      | `contained` -> `solid` <br/> `outlined` -> `outline` <br/> `text` -> `ghost` |
+| `size`                 | `size`         | `small` -> `small` <br/> `normal` -> `medium` <br/> `large` -> `large`       |
+| `icon`                 | `icon`         | Now accepts a component, not an element (`AddIcon` instead of `<AddIcon/>`)  |
+| -                      | `iconPosition` | `'left'` or `'right'`                                                        |
+| `uppercase`            | -              | No longer supported                                                          |
+| `loading`              | `loading`      | Same behavior                                                                |
+| `disabled`             | `disabled`     | Same behavior                                                                |
+| `labelStyleOverride`   | -              | Use styling API instead (see advanced styling)                               |
+| `contentStyleOverride` | -              | Use styling API instead (see advanced styling)                               |
+| -                      | `colorScheme`  | `'cyan'`, `'red'`, `'green'`, `'grey'`, or `'gold'`                          |
+| -                      | `inverted`     | For use on dark backgrounds                                                  |
 
-For the `labelStyleOverride` and `contentStyleOverride` props see the [Styling](/docs/native-ui-guides-styling-overview--docs)
-documentation and the `Button` [descendants styling props](/docs/native-ui-components-button--docs#descendants-styling-props)
-and [advanced usage](/docs/native-ui-components-button--docs#advanced-usage) docs.
+For custom styling and layouts, the new Button component supports a more component-based approach:
+
+```tsx
+// Before - custom styling
+import { Button } from '@utilitywarehouse/uw-native-ui';
+import { ArrowIcon } from './icons';
+
+<Button
+  mode="outlined"
+  icon={<ArrowIcon />}
+  labelStyleOverride={styles.buttonLabel}
+  contentStyleOverride={styles.buttonContent}
+  onPress={handleClick}
+>
+  Click me
+</Button>;
+
+// After - component composition
+import { Button, ButtonText, ButtonIcon } from '@utilitywarehouse/native-ui';
+import { ArrowIcon } from '@utilitywarehouse/react-native-icons';
+
+<Button variant="outline" onPress={handleClick}>
+  <ButtonIcon as={ArrowIcon} />
+  <ButtonText style={styles.buttonText}>Click me</ButtonText>
+</Button>;
+```
 
 For more info see the [Button](/docs/native-ui-components-button--docs) documentation.
+
+#### `Card`
+
+Replace all `Card` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Card, Typography } from '@utilitywarehouse/uw-native-ui';
++ import { Card, Text } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Card color="#f5f5f5" gutterBottom={2} onPress={handlePress}>
+-   <Typography>Card content</Typography>
+- </Card>
++ <Card colorScheme="grey" padding="large" variant="outline" style={{ marginBottom: 16 }} onPress={handlePress}>
++   <Text>Card content</Text>
++ </Card>
+```
+
+| Prop Before    | Prop After    | Values                                                         |
+| -------------- | ------------- | -------------------------------------------------------------- |
+| `color`        | `colorScheme` | Use `'base'`, `'grey'`, or `'purple'` instead of custom colors |
+| `gutterBottom` | `style`       | Use `style={{ marginBottom: 16 }}` for spacing                 |
+| `onPress`      | `onPress`     | Same behavior                                                  |
+| -              | `variant`     | `'outline'`, `'filled'`, `'elevated'`, or `'dashed'`           |
+| -              | `padding`     | `'large'`, `'medium'`, `'small'`, or `'none'`                  |
+| -              | `surface`     | `'base'` or `'purple'`                                         |
+| -              | `nested`      | `true` or `false`                                              |
+
+For more info see the [Card](/docs/native-ui-components-card--docs) documentation.
+
+#### `Checkbox`
+
+Replace all `Checkbox` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Checkbox, Typography } from '@utilitywarehouse/uw-native-ui';
++ import { Checkbox, CheckboxGroup } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Checkbox
+-   checked={isChecked}
+-   label="Accept terms and conditions"
+-   onPress={() => setIsChecked(!isChecked)}
+-   gutterBottom={2}
+- />
++ <Checkbox
++   value="terms"
++   checked={isChecked}
++   onChange={setIsChecked}
++   label="Accept terms and conditions"
++   style={{ marginBottom: 16 }}
++ />
+```
+
+| Prop Before    | Prop After    | Values                                               |
+| -------------- | ------------- | ---------------------------------------------------- |
+| `label`        | `label`       | Same behavior                                        |
+| `checked`      | `checked`     | Same behavior                                        |
+| `onPress`      | `onChange`    | Now receives the new state as a parameter            |
+| `gutterBottom` | `style`       | Use `style={{ marginBottom: 16 }}` for spacing       |
+| `disabled`     | `disabled`    | Same behavior                                        |
+| `align`        | -             | No longer supported; use custom styling              |
+| `reverse`      | -             | No longer supported; use component composition       |
+| `mode`         | -             | No longer supported; use `Card` for button-like mode |
+| -              | `value`       | Required prop for form submissions                   |
+| -              | `helperText`  | Optional descriptive text for the checkbox           |
+| -              | `invalidText` | Text to show when validation status is invalid       |
+| -              | `validText`   | Text to show when validation status is valid         |
+
+For multiple checkboxes, use `CheckboxGroup`:
+
+```tsx
+...
+
+- <View>
+-   <Checkbox checked={fruit.apple} label="Apple" onPress={() => toggleFruit('apple')} />
+-   <Checkbox checked={fruit.banana} label="Banana" onPress={() => toggleFruit('banana')} />
+-   <Checkbox checked={fruit.orange} label="Orange" onPress={() => toggleFruit('orange')} />-{' '}
+- </View>
++ <CheckboxGroup value={selectedFruits} onChange={setSelectedFruits}>
++   <Checkbox value="apple" label="Apple" />
++   <Checkbox value="banana" label="Banana" />
++   <Checkbox value="orange" label="Orange" />+{' '}
++ </CheckboxGroup>
+
+...
+```
+
+For more info see the [Checkbox](/docs/native-ui-components-checkbox--docs) documentation.
 
 #### `IconButton`
 
@@ -83,8 +275,12 @@ import { AddMediumIcon } from '@utilitywarehouse/react-native-icons';
 ...
 
 - <IconButton icon={() => <AddMediumIcon />} color="red" onPress={handleClick} />
-+ <IconButton colorScheme="red" icon={<AddMediumIcon />} onPress={handleClick} />
++ <IconButton colorScheme="red" icon={AddMediumIcon} onPress={handleClick} />
 ```
+
+| Prop Before | Prop After    | Values |
+| ----------- | ------------- | ------ |
+| `color`     | `colorScheme` |        |
 
 For more info see the [IconButton](/docs/native-ui-components-iconbutton--docs) documentation.
 
