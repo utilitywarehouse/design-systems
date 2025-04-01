@@ -14,16 +14,24 @@ migrate to Native UI as UW Native UI is deprecated.
 - [Key Info](#key-info)
 - [Migration Steps](#migration-steps)
   - [Components](#components)
+    - [`Alert`](#alert)
+    - [`Badge`](#badge)
     - [`Button`](#button)
-    - [`Typography`](#typography)
-    - [`ThemeProvider`](#themeprovider)
+    - [`Card`](#card)
+    - [`Checkbox`](#checkbox)
+    - [`IconButton`](#iconbutton)
+    - [`Loader` -> `Spinner`](#loader--spinner)
+    - [`Modal`](#modal)
+    - [`Pill`](#pill)
+    - [`RadioButton` -> `Radio`](#radiobutton--radio)
+    - [`Switch`](#switch)
+    - [`TextInput` -> `Input`](#textinput--input)
+    - [`ToggleButton`](#togglebutton)
   - [Styles](#styles)
     - [`StyleSheet`](#stylesheet)
     - [Dark Mode](#dark-mode)
   - [Fonts](#fonts)
   - [Colours](#colours)
-- [Known Issues](#known-issues)
-  - [`TypeError: Cannot read property 'x' of undefined`](#typeerror-cannot-read-property-x-of-undefined)
 - [Support](#support)
 
 ## Key Info
@@ -825,21 +833,6 @@ For more info see the [Fonts](/docs/native-ui-guides-styling-fonts--docs) docume
 ### Colours
 
 Please see the colour system [migration docs](/docs/colour-system-migration--docs) for more info on how to migrate your colours.
-
-## Known Issues
-
-### `TypeError: Cannot read property 'x' of undefined`
-
-For the most part both libraries should work together but there may be some issues with the `gluestack-ui` and `react-native-paper`
-and their respective themes. When using both libraries together, specifically using `uw-native-ui` components inside of `native-ui` components
-you may encounter the following error:
-
-```console
-TypeError: Cannot read property 'x' of undefined
-```
-
-If you encounter this issue, you can try to use the `ThemeProvider` from `@utilitywarehouse/uw-native-ui` and wrap the `uw-native-ui`
-component with it. This should fix the issue.
 
 ## Support
 
