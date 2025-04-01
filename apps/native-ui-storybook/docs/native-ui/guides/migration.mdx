@@ -494,6 +494,125 @@ Replace all `Switch` components from `@utilitywarehouse/uw-native-ui` with `Swit
 
 For more info see the [Switch](/docs/native-ui-components-switch--docs) documentation.
 
+#### `TextInput` -> `Input`
+
+Replace all `TextInput` components from `@utilitywarehouse/uw-native-ui` with `Input` from `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { TextInput } from '@utilitywarehouse/uw-native-ui';
++ import { Input, FormField } from '@utilitywarehouse/native-ui';
+import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
+
+...
+
+// Before - basic input with label and error
+- <TextInput
+-   label="Email"
+-   placeholder="Enter your email"
+-   value={email}
+-   onChangeText={setEmail}
+-   error="Please enter a valid email"
+-   left={<EmailIcon color="#000" width={24} height={24} />}
+-   gutterBottom={2}
+- />
+
+// After - basic input with label and error
++ <FormField
++    style={{ marginBottom: 16 }}
++    validationStatus="invalid"
++    label="Email"
++    errorText="Please enter a valid email"
++ >
++   <Input
++     leadingIcon={EmailMediumIcon}
++     placeholder="Enter your email"
++     value={email}
++     onChange={e => setEmail(e.nativeEvent.text)}
++   />
++ </FormField>
+
+// Before - input with success state
+- <TextInput
+-   label="Username"
+-   value={username}
+-   onChangeText={setUsername}
+-   success="Username is available"
+- />
+
+// After - input with success state
++ <FormField validationStatus="valid" label="Username" validText="Username is available">
++   <Input
++     showValidationIcon
++     value={username}
++     onChange={e => setUsername(e.nativeEvent.text)}
++   />
++ </FormField>
+
+// Before - input with hint
+- <TextInput
+-   label="Password"
+-   placeholder="Create a password"
+-   value={password}
+-   onChangeText={setPassword}
+-   hint="Password must be at least 8 characters"
+-   secureTextEntry
+- />
+
+// After - input with hint
++ <FormField label="Password" helperText="Password must be at least 8 characters">
++   <Input
++     placeholder="Create a password"
++     type="password"
++     value={password}
++     onChange={e => setPassword(e.nativeEvent.text)}>
++   </Input>
++ </FormField>
+
+// Before - disabled input
+- <TextInput
+-   label="Address"
+-   value="123 Main St"
+-   disabled
+- />
+
+// After - disabled input
++ <FormField label="Address" disabled>
++   <Input value="123 Main St" />
++ </FormField>
+
+// Before - using the simpler alternative
+- <TextInput
+-   value={text}
+-   onChangeText={setText}
+-   placeholder="Search"
+- />
+
+// After - using the simpler alternative
++ <Input
++   value={text}
++   onChange={e => setText(e.nativeEvent.text)}
++   placeholder="Search"
++ />
+```
+
+| Prop Before       | Prop After / Component                   | Values                                                                                                    |
+| ----------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `label`           | `<FormFieldLabel>`                       | Wrap the Input with FormField and use FormFieldLabel                                                      |
+| `error`           | `validationStatus` & `<FormFieldError>`  | Use `validationStatus="invalid"` on FormField and FormFieldError component                                |
+| `success`         | `validationStatus` & `<FormFieldHelper>` | Use `validationStatus="valid"` on FormField and FormFieldHelper component                                 |
+| `hint`            | `<FormFieldHelper>`                      | Use FormFieldHelper component for hint text                                                               |
+| `onChangeText`    | `onChange`                               | New API uses `onChange` that receives an event object                                                     |
+| `left`            | `leadingIcon` or `<InputSlot>`           | Use `leadingIcon={IconComponent}` for simple icons or `InputSlot` + `InputIcon` for custom left content   |
+| `right`           | `trailingIcon` or `<InputSlot>`          | Use `trailingIcon={IconComponent}` for simple icons or `InputSlot` + `InputIcon` for custom right content |
+| `secureTextEntry` | `type="password"`                        | Use `type="password"` on Input                                                                            |
+| `gutterBottom`    | `style`                                  | Use `style={{ marginBottom: 16 }}` for spacing                                                            |
+| `disabled`        | `disabled`                               | Same behavior                                                                                             |
+| `outlined`        | -                                        | No longer supported; the new Input has a consistent style                                                 |
+| `accented`        | -                                        | No longer supported; use `focused` prop or custom styling                                                 |
+| `multiline`       | `<TextArea>`                             | Use textarea                                                                                              |
+
+For more info see the [Input](/docs/native-ui-components-input--docs) documentation.
+
 ### Styles
 
 `@utilitywarehouse/uw-native-ui` uses `StyleSheet` from `react-native` for styling, whereas `@utilitywarehouse/native-ui` uses
