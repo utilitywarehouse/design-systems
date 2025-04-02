@@ -6,5 +6,6 @@ build
 /unstyled/
 /types/
 /utils/
+/hooks/
 !/src/lab/
 !/src/components/unstyled/
