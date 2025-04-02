@@ -1013,6 +1013,76 @@ For more info see the [Fonts](/docs/native-ui-guides-styling-fonts--docs) docume
 
 Please see the colour system [migration docs](/docs/colour-system-migration--docs) for more info on how to migrate your colours.
 
+Below is a mapping table for the legacy palette to the new Native UI theme colors:
+
+| Legacy Palette  | Light Theme            | Dark Theme             |
+| --------------- | ---------------------- | ---------------------- |
+| `transparent`   | `'transparent'`        | `'transparent'`        |
+| `primaryPurple` | `colors.purple800`     | `colors.purple200`     |
+| `cyan`          | `colors.cyan400`       | `colors.cyan700`       |
+| `jordyBlue`     | `colors.cyan300`       | `colors.cyan700`       |
+| `pink`          | `colors.pink300`       | `colors.pink700`       |
+| `midnight`      | `colors.brandMidnight` | `colors.brandMidnight` |
+| `rose`          | `colors.rose400`       | `colors.rose600`       |
+| `apple`         | `colors.apple400`      | `colors.apple600`      |
+| `gold`          | `colors.gold300`       | `colors.gold700`       |
+| `grape`         | `colors.grape400`      | `colors.grape600`      |
+| `lightTint`     | `colors.purple50`      | `colors.purple1000`    |
+| `white`         | `colors.white`         | `colors.white`         |
+| `maroonFlush`   | `colors.rose500`       | `colors.rose500`       |
+| `jewel`         | `colors.green500`      | `colors.green500`      |
+| `blueRibbon`    | `colors.cyan500`       | `colors.cyan500`       |
+| `brandeisBlue`  | `colors.cyan600`       | `colors.cyan600`       |
+| `codGray`       | `colors.grey900`       | `colors.grey100`       |
+| `whiteOwl`      | `colors.grey75`        | `colors.grey175`       |
+| `codGray10`     | `colors.grey100`       | `colors.grey150`       |
+| `codGray20`     | `colors.grey150`       | `colors.grey175`       |
+| `codGray30`     | `colors.grey200`       | `colors.grey200`       |
+| `codGray40`     | `colors.grey400`       | `colors.grey400`       |
+| `codGray50`     | `colors.grey500`       | `colors.grey500`       |
+| `codGray60`     | `colors.grey600`       | `colors.grey600`       |
+| `codGray70`     | `colors.grey700`       | `colors.grey400`       |
+| `codGray80`     | `colors.grey800`       | `colors.grey300`       |
+| `codGray90`     | `colors.grey900`       | `colors.grey150`       |
+| `grayOwl`       | `colors.grey150`       | `colors.grey175`       |
+
+For text and surface colors, it's recommended to use theme-based variables:
+
+| Legacy Theme Use Case | Light Theme                       | Dark Theme               |
+| --------------------- | --------------------------------- | ------------------------ |
+| Text - Primary        | `theme.colors.grey900`            | `theme.colors.grey100`   |
+| Text - Secondary      | `theme.colors.grey700`            | `theme.colors.grey400`   |
+| Text - Disabled       | `theme.colors.grey600`            | `theme.colors.grey600`   |
+| Background - App      | `theme.colors.grey25`             | `theme.colors.grey75`    |
+| Surface               | `theme.colors.white`              | `theme.colors.grey100`   |
+| Border                | `theme.colors.grey100`            | `theme.colors.grey300`   |
+| Action/Brand          | `theme.colors.brandPrimaryPurple` | `theme.colors.purple700` |
+| Primary               | `theme.colors.cyan400`            | `theme.colors.cyan700`   |
+
+For dynamic color values that adapt to light/dark mode:
+
+```tsx
+import { useLightDark, createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
+
+// For single values
+const textColor = useLightDark(theme.colors.grey900, theme.colors.grey100);
+
+// For style objects
+const stylesheet = createStyleSheet(theme => ({
+  text: {
+    color: theme.isLight ? theme.colors.grey900 : theme.colors.grey100,
+  },
+  container: {
+    backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey100,
+    borderColor: theme.isLight ? theme.colors.grey100 : theme.colors.grey300,
+  },
+}));
+
+const styles = useStyles(stylesheet);
+```
+
+For more info on the new color system, see the [Colors](/docs/native-ui-guides-styling-colors--docs) documentation.
+
 ## Support
 
 If you notice any other issues, or have any questions please raise an issue on the respective GitHub repository, contact the Design Systems team on Slack
