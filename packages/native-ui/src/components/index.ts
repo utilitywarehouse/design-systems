@@ -23,6 +23,7 @@ export * from './Switch';
 export * from './Card';
 export * from './Box';
 export * from './ToggleButton';
+export * from './Textarea';
 
 export {
   FlatList,
