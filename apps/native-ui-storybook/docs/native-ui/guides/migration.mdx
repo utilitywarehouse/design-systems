@@ -708,6 +708,29 @@ import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
 + />
 ```
 
+For multiline inputs, use the `TextArea` component:
+
+```tsx
+- import { TextInput } from '@utilitywarehouse/uw-native-ui';
++ import { TextArea } from '@utilitywarehouse/native-ui';
+
+...
+- <TextInput
+-   label="Description"
+-   value={description}
+-   onChangeText={setDescription}
+-   multiline
+-   numberOfLines={4}
+-   style={styles.textArea}
+- />
++ <TextArea
++   label="Description"
++   value={description}
++   onChange={e => setDescription(e.nativeEvent.text)}
++   style={styles.textArea}
++ />
+```
+
 | Prop Before       | Prop After / Component                   | Values                                                                                                    |
 | ----------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `label`           | `<FormFieldLabel>`                       | Wrap the Input with FormField and use FormFieldLabel                                                      |
@@ -722,7 +745,7 @@ import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
 | `disabled`        | `disabled`                               | Same behavior                                                                                             |
 | `outlined`        | -                                        | No longer supported; the new Input has a consistent style                                                 |
 | `accented`        | -                                        | No longer supported; use `focused` prop or custom styling                                                 |
-| `multiline`       | `<TextArea>`                             | Use textarea                                                                                              |
+| `multiline`       | `<TextArea />`                           | Use textarea                                                                                              |
 
 For more info see the [Input](/docs/native-ui-components-input--docs) documentation.
 
