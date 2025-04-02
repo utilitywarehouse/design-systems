@@ -1,0 +1,204 @@
+import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
+import * as Stories from './Textarea.stories';
+import {
+  Textarea,
+  TextareaField,
+  TextareaIcon,
+  TextareaSlot,
+  Center,
+  NativeUIProvider,
+  Pressable,
+} from '@utilitywarehouse/native-ui';
+import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
+import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
+
+<Meta of={Stories} />
+
+<BackToTopButton />
+
+<ViewFigmaButton url="https://www.figma.com/design/3RY3OvLA88yZksRjOfjQJm/UW-App-UI?node-id=6988-2603&m=dev" />
+
+# Textarea
+
+The textarea component is a text field that allows users to enter multiline text.
+It is commonly used for inputting longer text, such as comments, messages, or descriptions.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+  - [`Textarea`](#textarea)
+  - [`TextareaField`](#textareafield)
+  - [`TextareaIcon`](#textareaicon)
+  - [`TextareaSlot`](#textareaslot)
+- [Advanced Usage](#advanced-usage)
+- [Variants](#variants)
+- [Accessibility](#accessibility)
+
+## Playground
+
+<Primary />
+
+<Controls />
+
+## Usage
+
+<Canvas>
+  <NativeUIProvider>
+    <Center>
+      <Textarea>
+        <TextareaSlot>
+          <TextareaIcon as={EmailMediumIcon} />
+        </TextareaSlot>
+        <TextareaField placeholder="Placeholder" onChange={() => console.log('###')} />
+      </Textarea>
+    </Center>
+  </NativeUIProvider>
+</Canvas>
+
+```tsx
+import { Textarea } from '@utilitywarehouse/native-ui';
+import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => {
+  const [value, setValue] = useState('');
+  const handleChange = e => {
+    setValue(e.target.value);
+  };
+  return (
+    <Textarea
+      onChange={handleChange}
+      value={value}
+      placeholder="Placeholder"
+      leadingIcon={EmailMediumIcon}
+    />
+  );
+};
+```
+
+## Props
+
+### `Textarea`
+
+When using the component with basic usage the `Textarea` inherits all of the React Native [`TextTextarea` props](https://reactnative.dev/docs/texttextarea).
+Otherwise when used with children including the `TextareaField`, `TextareaSlot` and `TextareaIcon` components, the `Textarea` component inherits
+all of the React Native [`View` props](https://reactnative.dev/docs/view).
+
+| Prop               | Type                               | Default     | Description                                                                                                                                                                      |
+| ------------------ | ---------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| validationStatus   | `'initial' \| 'valid' \| 'invalid` | `'initial'` | The validation status of the textarea.                                                                                                                                           |
+| showValidationIcon | boolean                            | `false`     | Whether to show the validation icon.                                                                                                                                             |
+| disabled           | boolean                            | `false`     | Disables the textarea.                                                                                                                                                           |
+| readonly           | boolean                            | `false`     | Makes the textarea read-only.                                                                                                                                                    |
+| focused            | boolean                            | `false`     | Sets focus on the textarea.                                                                                                                                                      |
+| leadingIcon        | React.ComponentType                | `-`         | The leading icon of the textarea. **(Only to be used if the textarea has no children)**                                                                                          |
+| trailingIcon       | React.ComponentType                | `-`         | The trailing icon of the textarea. **(Only to be used if the textarea has no children)**                                                                                         |
+| value              | string                             | `-`         | The value of the textarea. **(Only to be used if the textarea has no children)**                                                                                                 |
+| onChange           | function                           | `-`         | Callback function that is triggered when the textarea value changes. **(Only to be used if the textarea has no children)** **(Only to be used if the textarea has no children)** |
+| onBlur             | function                           | `-`         | Callback function that is triggered when the textarea loses focus. **(Only to be used if the textarea has no children)**                                                         |
+| onFocus            | function                           | `-`         | Callback function that is triggered when the textarea gains focus. **(Only to be used if the textarea has no children)**                                                         |
+| placeholder        | string                             | `-`         | The placeholder text for the textarea. **(Only to be used if the textarea has no children)**                                                                                     |
+
+If the `leadingIcon` or `trailingIcon` props are used, the `Textarea` component should not have any children.
+
+### `TextareaField`
+
+The `TextareaField` inherits all of the React Native [`TextTextarea` props](https://reactnative.dev/docs/texttextarea).
+
+| Prop        | Type     | Default | Description                                                          |
+| ----------- | -------- | ------- | -------------------------------------------------------------------- |
+| value       | string   | `-`     | The value of the textarea.                                           |
+| onChange    | function | `-`     | Callback function that is triggered when the textarea value changes. |
+| onBlur      | function | `-`     | Callback function that is triggered when the textarea loses focus.   |
+| onFocus     | function | `-`     | Callback function that is triggered when the textarea gains focus.   |
+| placeholder | string   | `-`     | The placeholder text for the textarea.                               |
+
+### `TextareaIcon`
+
+| Prop | Type   | Default | Description         |
+| ---- | ------ | ------- | ------------------- |
+| as   | string |         | The icon component. |
+
+### `TextareaSlot`
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| -    | -    | -       | -           |
+
+## Advanced Usage
+
+The `Textarea` component can be used with the `TextareaField`, `TextareaSlot` and `TextareaIcon` components to create a custom textarea field.
+
+<Canvas>
+  <Center>
+    <Textarea>
+      <TextareaSlot>
+        <TextareaIcon as={EmailMediumIcon} />
+      </TextareaSlot>
+      <TextareaField placeholder="Message" />
+    </Textarea>
+  </Center>
+</Canvas>
+
+```tsx
+import {
+  Textarea,
+  TextareaField,
+  TextareaIcon,
+  TextareaSlot,
+  Pressable,
+} from '@utilitywarehouse/native-ui';
+import {
+  EmailMediumIcon,
+  EyeMediumIcon,
+  EyeOffMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+import { useState } from 'react';
+import { NativeSyntheticEvent, TextTextareaChangeEventData } from 'react-native';
+
+const AdvancedExample = () => {
+  const [value, setValue] = useState<string>('');
+  const handleChange = (e: NativeSyntheticEvent<TextTextareaChangeEventData>) => {
+    setValue(e.nativeEvent.text);
+  };
+  return (
+    <Textarea>
+      <TextareaSlot>
+        <TextareaIcon as={EmailMediumIcon} />
+      </TextareaSlot>
+      <TextareaField onChange={handleChange} value={value} placeholder="Message" />
+    </Textarea>
+  );
+};
+
+export default AdvancedExample;
+```
+
+## Variants
+
+The `Textarea` component has the following variants:
+
+<Canvas of={Stories.Variants} />
+
+## Accessibility
+
+We have outlined the various features that ensure the Textarea component is accessible to all users, including those with disabilities. These features help ensure that your application is inclusive and meets accessibility standards.Adheres to the [WAI-ARIA design pattern](https://www.w3.org/TR/wai-aria-1.2/#textbox).
+
+### Keyboard
+
+- Setting the aria-label and aria-hint to help users understand the purpose and function of the Textarea
+
+### Screen Reader
+
+- Compatible with screen readers such as VoiceOver and Talk-back.
+- The accessible and aria-label props to provide descriptive information about the Textarea
+- Setting aria-traits and aria-hint to provide contextual information about the various states of the Textarea, such as "double tap to edit".
+
+### Focus Management
+
+- The onFocus and onBlur props to manage focus states and provide visual cues to users. This is especially important for users who rely on keyboard navigation.
+
+### States
+
+- In error state, aria-invalid will be passed to indicate that the Textarea has an error, and providing support for an aria-errormessage to describe the error in more detail.
+- In disabled state, aria-hidden will be passed to make textarea not focusable.
+- In required state, aria-required will be passed to indicate that the Textarea is required.
