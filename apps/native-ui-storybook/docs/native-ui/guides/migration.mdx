@@ -12,27 +12,28 @@ to Native UI (`@utilitywarehouse/native-ui`). Although you can use both librarie
 migrate to Native UI as UW Native UI is deprecated.
 
 - [Key Info](#key-info)
-- [Migration Steps](#migration-steps)
-  - [Components](#components)
-    - [`Alert`](#alert)
-    - [`Badge`](#badge)
-    - [`Button`](#button)
-    - [`Card`](#card)
-    - [`Checkbox`](#checkbox)
-    - [`IconButton`](#iconbutton)
-    - [`Loader` -> `Spinner`](#loader--spinner)
-    - [`Modal`](#modal)
-    - [`Pill`](#pill)
-    - [`RadioButton` -> `Radio`](#radiobutton--radio)
-    - [`Switch`](#switch)
-    - [`TextInput` -> `Input`](#textinput--input)
-    - [`ToggleButton`](#togglebutton)
-    - [`Typography` -> `Text` & `Heading`](#typography--text--heading)
-  - [Styles](#styles)
-    - [`StyleSheet`](#stylesheet)
-    - [Dark Mode](#dark-mode)
-  - [Fonts](#fonts)
-  - [Colours](#colours)
+- [Components](#components)
+  - [`Alert`](#alert)
+  - [`Badge`](#badge)
+  - [`Button`](#button)
+  - [`Card`](#card)
+  - [`Checkbox`](#checkbox)
+  - [`IconButton`](#iconbutton)
+  - [`Loader` -> `Spinner`](#loader---spinner)
+  - [`Modal` -> `Actionsheet`](#modal---actionsheet)
+  - [`Pill`](#pill)
+  - [`RadioButton` -> `Radio`](#radiobutton---radio)
+  - [`Switch`](#switch)
+  - [`TextInput` -> `Input`](#textinput---input)
+  - [`ToggleButton`](#togglebutton)
+  - [`Typography` -> `Text` & `Heading`](#typography---text--heading)
+- [Styles](#styles)
+  - [`StyleSheet`](#stylesheet)
+  - [Dark Mode](#dark-mode)
+  - [`useDynamicValue` -> `useLightDark`](#usedynamicvalue---uselightdark)
+- [Theme Mapping](#theme-mapping)
+- [Fonts](#fonts)
+- [Colours](#colours)
 - [Support](#support)
 
 ## Key Info
@@ -47,14 +48,12 @@ migrate to Native UI as UW Native UI is deprecated.
 - `@utilitywarehouse/native-ui` uses `gluestack-ui` under the hood for some component logic.
 - `@utilitywarehouse/native-ui` uses `react-native-unistyles` for styling.
 
-## Migration Steps
-
-### Components
+## Components
 
 Not all components from `@utilitywarehouse/uw-native-ui` have a 1:1 mapping to `@utilitywarehouse/native-ui`.
 Below are the steps to replace the components.
 
-#### `Alert`
+### `Alert`
 
 Replace all `Alert` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
 
@@ -86,7 +85,7 @@ Replace all `Alert` components from `@utilitywarehouse/uw-native-ui` with `@util
 
 For more info see the [Alert](/docs/native-ui-components-alert--docs) documentation.
 
-#### `Badge`
+### `Badge`
 
 Replace all `Badge` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
 
@@ -124,7 +123,7 @@ For more advanced customisation of the `Badge` text, you can use the component p
 
 For more info see the [Badge](/docs/native-ui-components-badge--docs) documentation.
 
-#### `Button`
+### `Button`
 
 Replace all `Button` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
 
@@ -181,7 +180,7 @@ import { ArrowIcon } from '@utilitywarehouse/react-native-icons';
 
 For more info see the [Button](/docs/native-ui-components-button--docs) documentation.
 
-#### `Card`
+### `Card`
 
 Replace all `Card` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
 
@@ -211,7 +210,7 @@ Replace all `Card` components from `@utilitywarehouse/uw-native-ui` with `@utili
 
 For more info see the [Card](/docs/native-ui-components-card--docs) documentation.
 
-#### `Checkbox`
+### `Checkbox`
 
 Replace all `Checkbox` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
 
@@ -272,7 +271,7 @@ For multiple checkboxes, use `CheckboxGroup`:
 
 For more info see the [Checkbox](/docs/native-ui-components-checkbox--docs) documentation.
 
-#### `IconButton`
+### `IconButton`
 
 Replace all `IconButton` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
 
@@ -301,7 +300,7 @@ import { AddMediumIcon } from '@utilitywarehouse/react-native-icons';
 
 For more info see the [IconButton](/docs/native-ui-components-iconbutton--docs) documentation.
 
-#### `Loader` -> `Spinner`
+### `Loader` -> `Spinner`
 
 Replace all `Loader` components from `@utilitywarehouse/uw-native-ui` with `Spinner` from `@utilitywarehouse/native-ui`.
 
@@ -324,11 +323,116 @@ Replace all `Loader` components from `@utilitywarehouse/uw-native-ui` with `Spin
 
 For more info see the [Spinner](/docs/native-ui-components-spinner--docs) documentation.
 
-#### `Modal`
+### `Modal` -> `Actionsheet`
 
-There is currently no direct replacement for the `Modal` component from `@utilitywarehouse/uw-native-ui`.
+The `Modal` component from `@utilitywarehouse/uw-native-ui` does not have a direct 1:1 replacement in `@utilitywarehouse/native-ui`.
+However, for many use cases, the new `Actionsheet` component from the lab module should be used as an alternative that provides a
+more modern user experience and is recommended for most use cases.
 
-#### `Pill`
+```tsx
+- import { Modal, Typography } from '@utilitywarehouse/uw-native-ui';
++ import { Text, Box } from '@utilitywarehouse/native-ui';
++ import { Actionsheet } from '@utilitywarehouse/native-ui/lab';
+
+...
+
+// Before - basic modal
+- <Modal
+-   visible={isVisible}
+-   onDismiss={handleClose}
+-   style={styles.modal}
+-   contentStyles={styles.modalContent}
+- >
+-   <Typography variant="h3" gutterBottom={2}>Modal Title</Typography>
+-   <Typography variant="body">This is the modal content.</Typography>
+-   <Button onPress={handleClose}>Close</Button>
+- </Modal>
+
+// After - using Actionsheet
++ <Actionsheet
++   isOpen={isVisible}
++   onClose={handleClose}
++   closeOnBackdropPress
++ >
++   <Box p="$4" gap="$4">
++     <Heading size="h3">Modal Title</Heading>
++     <Text>This is the modal content.</Text>
++     <Button onPress={handleClose}>Close</Button>
++   </Box>
++ </Actionsheet>
+```
+
+| `Modal` Prop       | `Actionsheet` Prop/Approach                           | Notes                                                            |
+| ------------------ | ----------------------------------------------------- | ---------------------------------------------------------------- |
+| `visible`          | `isOpen`                                              | Same behavior - boolean to control visibility                    |
+| `onDismiss`        | `onClose`                                             | Similar behavior - function called when modal/sheet is dismissed |
+| `backgroundStyles` | -                                                     | Actionsheet has a standard background overlay                    |
+| `contentStyles`    | Use `includeContent={false}` and `ActionsheetContent` | For custom styling of content                                    |
+| `style`            | Custom styling requires component composition         | See advanced usage below                                         |
+| `children`         | `children`                                            | Same behavior                                                    |
+| -                  | `closeOnBackdropPress`                                | `true` by default, allows closing when clicking outside          |
+| -                  | `showIndicator`                                       | `true` by default, shows a drag indicator                        |
+| -                  | `dragCloseThreshold`                                  | User can drag down to close                                      |
+
+For more advanced customisation, the `Actionsheet` supports a component-based approach:
+
+```tsx
+import {
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper,
+} from '@utilitywarehouse/native-ui/lab';
+import { Box, Text, Button, createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
+
+const stylesheet = createStyleSheet(({ space, colors, radii }) => ({
+  content: {
+    padding: space['4'],
+    backgroundColor: colors.white,
+  },
+  indicator: {
+    backgroundColor: colors.grey300,
+  },
+}));
+
+const MyComponent = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const handleClose = () => setIsVisible(false);
+  const handleOpen = () => setIsVisible(true);
+  const { styles } = useStyles(stylesheet);
+
+  return (
+    <Box>
+      <Button onPress={handleOpen}>Open Modal</Button>
+
+      <Actionsheet
+        isOpen={isVisible}
+        onClose={handleClose}
+        includeContent={false}
+        includeDragIndicator={false}
+      >
+        <ActionsheetContent style={styles.content}>
+          <ActionsheetDragIndicatorWrapper>
+            <ActionsheetDragIndicator style={styles.indicator} />
+          </ActionsheetDragIndicatorWrapper>
+
+          <Box gap="$4">
+            <Heading size="h3">Custom Modal</Heading>
+            <Text>This is a customized modal using Actionsheet.</Text>
+            <Button onPress={handleClose}>Close</Button>
+          </Box>
+        </ActionsheetContent>
+      </Actionsheet>
+    </Box>
+  );
+};
+```
+
+For full-screen modals or modals that need to be displayed in the center of the screen, you may want to consider using React Navigations `presentation="modal"` screen option along with Native UI components for the content.
+
+For more information, see the [Actionsheet](/docs/native-ui-components-lab-actionsheet--docs) documentation.
+
+### `Pill`
 
 Replace all `Pill` components from `@utilitywarehouse/uw-native-ui` with `Button` from `@utilitywarehouse/native-ui`.
 
@@ -384,7 +488,7 @@ For more advanced customisation, you can use component composition:
 
 For more info see the [Button](/docs/native-ui-components-button--docs) documentation.
 
-#### `RadioButton` -> `Radio`
+### `RadioButton` -> `Radio`
 
 Replace all `RadioButton` components from `@utilitywarehouse/uw-native-ui` with `Radio` from `@utilitywarehouse/native-ui`.
 
@@ -469,7 +573,7 @@ import {
 
 For more info see the [Radio](/docs/native-ui-components-radio--docs) documentation.
 
-#### `Switch`
+### `Switch`
 
 Replace all `Switch` components from `@utilitywarehouse/uw-native-ui` with `Switch` from `@utilitywarehouse/native-ui`.
 
@@ -503,7 +607,7 @@ Replace all `Switch` components from `@utilitywarehouse/uw-native-ui` with `Swit
 
 For more info see the [Switch](/docs/native-ui-components-switch--docs) documentation.
 
-#### `TextInput` -> `Input`
+### `TextInput` -> `Input`
 
 Replace all `TextInput` components from `@utilitywarehouse/uw-native-ui` with `Input` from `@utilitywarehouse/native-ui`.
 
@@ -622,7 +726,7 @@ import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
 
 For more info see the [Input](/docs/native-ui-components-input--docs) documentation.
 
-#### `ToggleButton`
+### `ToggleButton`
 
 Replace all `ToggleButton` and `ToggleButtonGroup` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
 
@@ -713,7 +817,7 @@ For `ToggleButton`:
 
 For more info see the [ToggleButton](/docs/native-ui-components-togglebutton--docs) documentation.
 
-#### `Typography` -> `Text` & `Heading`
+### `Typography` -> `Text` & `Heading`
 
 Replace all `Typography` components from `@utilitywarehouse/uw-native-ui` with `Text` and `Heading` from `@utilitywarehouse/native-ui`.
 
@@ -775,14 +879,14 @@ import { colors } from '@utilitywarehouse/colour-system';
 
 For more info see the [Text](/docs/native-ui-components-text--docs) and [Heading](/docs/native-ui-components-heading--docs) documentation.
 
-### Styles
+## Styles
 
 `@utilitywarehouse/uw-native-ui` uses `StyleSheet` from `react-native` for styling, whereas `@utilitywarehouse/native-ui` uses
 `react-native-unitstyles` for styles. You can still use the `StyleSheet` from `react-native` with `@utilitywarehouse/native-ui` but
 it is recommended to use the `createStyleSheet` method and `useStyles` hook for styling. With the `Box` component you can use
 utility props for styling. See out [Styling](/docs/native-ui-guides-styling-overview--docs) documentation for more info.
 
-#### `StyleSheet`
+### `StyleSheet`
 
 ```tsx
 - import { StyleSheet, View } from 'react-native';
@@ -806,13 +910,13 @@ utility props for styling. See out [Styling](/docs/native-ui-guides-styling-over
 ...
 
 - const styles = useStyles();
-+ const styles = useStyles(sttylesheet);
++ const styles = useStyles(stylesheet);
   return (
     <View style={styles.container}>
 ...
 ```
 
-#### Dark Mode
+### Dark Mode
 
 lt the light colour mode is enabled. If you want to enable dark mode, you can pass the `colorMode` prop to the `NativeUIProvider` component. The two options for `colorMode` are `light` and `dark`.
 
@@ -830,13 +934,13 @@ const App: React.FC = () => {
 };
 ```
 
-You can also use the `useColorMode` hook to get the current colour mode of the device.
+You can also use the `useColorMode` hook to get the current active theme `light` or `dark`.
 
 ```tsx
 + import { useColorMode } from '@utilitywarehouse/native-ui';
 ```
 
-#### `useDynamicValue` -> `useLightDark`
+### `useDynamicValue` -> `useLightDark`
 
 The `useDynamicValue` hook has been replaced with `useLightDark`. The `useLightDark` hook returns the light or dark value based on the current
 colour mode of the device.
@@ -882,51 +986,35 @@ const MyComponent = () => {
 }
 ```
 
-### Theme Mapping
+## Theme Mapping
 
 The theme system in `@utilitywarehouse/native-ui` has been completely redesigned. The new theme system is more comprehensive and
 provides better TypeScript support. Here's a mapping of common theme properties from the old to the new system.
 
-#### Theme Structure
-
-The old `@utilitywarehouse/uw-native-ui` theme was structured with component-specific properties at the root level:
-
-```tsx
-// Legacy
-const { spacing, colors, button, input } = theme;
-```
-
-The new `@utilitywarehouse/native-ui` theme separates core theme values from component tokens:
-
-```tsx
-// New
-const { colors, space, fonts, tokens } = theme;
-```
-
-#### Common Theme Properties
+### Common Theme Properties
 
 Below is a mapping table for common theme properties:
 
-| Property in UW Native UI         | Property in Native UI             | Notes                                                     |
-| -------------------------------- | --------------------------------- | --------------------------------------------------------- |
-| `theme.spacing(1)`               | `theme.space[4]`                  | New spacing is in absolute values, 4 is equivalent to 8px |
-| `theme.roundness`                | `theme.radii.md`                  | Various radius sizes available (xs, sm, md, lg, etc.)     |
-| `theme.colors.primary`           | `theme.colors.brandPrimaryPurple` | Brand colors now use descriptive names                    |
-| `theme.colors.accent`            | `theme.colors.cyan500`            | Most accent colors map to a token in the 500 range        |
-| `theme.colors.background`        | `theme.colors.grey25`             | In light mode; in dark mode use `theme.colors.grey75`     |
-| `theme.colors.surface`           | `theme.colors.white`              | In light mode; in dark mode use `theme.colors.grey100`    |
-| `theme.colors.text`              | `theme.colors.grey1000`           | In light mode; in dark mode use `theme.colors.grey1000`   |
-| `theme.colors.disabled`          | `theme.colors.grey600`            | Varies by component, check component tokens               |
-| `theme.fonts.regular.fontFamily` | `theme.fonts.body`                | Now uses 'Work Sans' as the base name                     |
-| `theme.fonts.medium.fontFamily`  | `theme.fonts.body` + fontWeight   | Set fontWeight separately                                 |
-| `palette.transparent`            | `'transparent'`                   | Use the string value directly                             |
-| `palette.primaryPurple`          | `theme.colors.brandPrimaryPurple` | Now part of the theme colors                              |
-| `palette.cyan`                   | `theme.colors.cyan400`            | Color tones have numeric scales                           |
-| `palette.pink`                   | `theme.colors.pink300`            | Most colors have various tones (50-950)                   |
-| `palette.midnight`               | `theme.colors.brandMidnight`      | Now a brand color                                         |
-| `palette.codGray`                | `theme.colors.grey900`            | Grey scale now goes from 25-1000                          |
+| Property in UW Native UI         | Property in Native UI             | Notes                                                                                     |
+| -------------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------- |
+| `theme.spacing(1)`               | `theme.space[2]`                  | New spacing is in a 4px grid instead of 8px, 2 is now the equivalent to 8px instead of 1. |
+| `theme.roundness`                | `theme.radii.md`                  | Various radius sizes available (xs, sm, md, lg, etc.)                                     |
+| `theme.colors.primary`           | `theme.colors.brandPrimaryPurple` | Brand colors now use descriptive names                                                    |
+| `theme.colors.accent`            | `theme.colors.cyan500`            | Most accent colors map to a token in the 500 range                                        |
+| `theme.colors.background`        | `theme.colors.grey25`             | In light mode; in dark mode use `theme.colors.grey75`                                     |
+| `theme.colors.surface`           | `theme.colors.white`              | In light mode; in dark mode use `theme.colors.grey100`                                    |
+| `theme.colors.text`              | `theme.colors.grey1000`           | In light mode; in dark mode use `theme.colors.grey1000`                                   |
+| `theme.colors.disabled`          | `theme.colors.grey600`            | Varies by component, check component tokens                                               |
+| `theme.fonts.regular.fontFamily` | `theme.fonts.body`                | Now uses 'Work Sans' as the base name                                                     |
+| `theme.fonts.medium.fontFamily`  | `theme.fonts.body` + `fontWeight` | Set fontWeight separately                                                                 |
+| `palette.transparent`            | `'transparent'`                   | Use the string value directly                                                             |
+| `palette.primaryPurple`          | `theme.colors.brandPrimaryPurple` | Now part of the theme colors                                                              |
+| `palette.cyan`                   | `theme.colors.cyan400`            | Color tones have numeric scales                                                           |
+| `palette.pink`                   | `theme.colors.pink300`            | Most colors have various tones (50-950)                                                   |
+| `palette.midnight`               | `theme.colors.brandMidnight`      | Now a brand color                                                                         |
+| `palette.codGray`                | `theme.colors.grey900`            | Grey scale now goes from 25-1000                                                          |
 
-#### Accessing Theme Values
+### Accessing Theme Values
 
 When using the styling API, the theme is automatically injected:
 
@@ -982,7 +1070,17 @@ const stylesheet = createStyleSheet(theme => ({
 
 For more information about the theme system, see the [Theming Tokens](/docs/native-ui-guides-styling-theme-tokens--docs) documentation.
 
-### Fonts
+### `useTheme` -> `useTheme`
+
+The `useTheme` hook has been replaced with the same name but with a different API. The new `useTheme` hook returns the theme object
+with the new theme system. You can use it to access the theme values directly.
+
+```tsx
+- import { useTheme } from '@utilitywarehouse/uw-native-ui';
++ import { useTheme } from '@utilitywarehouse/native-ui';
+```
+
+## Fonts
 
 If you have followed the [getting started steps](/docs/native-ui-introduction--docs#additional-packages) and are using either
 `npx react-native-asset` or `expo-font` with `expo-xml-font` then you can use the `fontFamily` property like you would on the web
@@ -1009,7 +1107,7 @@ const styles = StyleSheet.create({
 
 For more info see the [Fonts](/docs/native-ui-guides-styling-fonts--docs) documentation.
 
-### Colours
+## Colours
 
 Please see the colour system [migration docs](/docs/colour-system-migration--docs) for more info on how to migrate your colours.
 
