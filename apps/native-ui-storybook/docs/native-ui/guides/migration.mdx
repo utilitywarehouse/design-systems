@@ -12,18 +12,28 @@ to Native UI (`@utilitywarehouse/native-ui`). Although you can use both librarie
 migrate to Native UI as UW Native UI is deprecated.
 
 - [Key Info](#key-info)
-- [Migration Steps](#migration-steps)
-  - [Components](#components)
-    - [`Button`](#button)
-    - [`Typography`](#typography)
-    - [`ThemeProvider`](#themeprovider)
-  - [Styles](#styles)
-    - [`StyleSheet`](#stylesheet)
-    - [Dark Mode](#dark-mode)
-  - [Fonts](#fonts)
-  - [Colours](#colours)
-- [Known Issues](#known-issues)
-  - [`TypeError: Cannot read property 'x' of undefined`](#typeerror-cannot-read-property-x-of-undefined)
+- [Components](#components)
+  - [`Alert`](#alert)
+  - [`Badge`](#badge)
+  - [`Button`](#button)
+  - [`Card`](#card)
+  - [`Checkbox`](#checkbox)
+  - [`IconButton`](#iconbutton)
+  - [`Loader` -> `Spinner`](#loader---spinner)
+  - [`Modal` -> `Actionsheet`](#modal---actionsheet)
+  - [`Pill`](#pill)
+  - [`RadioButton` -> `Radio`](#radiobutton---radio)
+  - [`Switch`](#switch)
+  - [`TextInput` -> `Input`](#textinput---input)
+  - [`ToggleButton`](#togglebutton)
+  - [`Typography` -> `Text` & `Heading`](#typography---text--heading)
+- [Styles](#styles)
+  - [`StyleSheet`](#stylesheet)
+  - [Dark Mode](#dark-mode)
+  - [`useDynamicValue` -> `useLightDark`](#usedynamicvalue---uselightdark)
+- [Theme Mapping](#theme-mapping)
+- [Fonts](#fonts)
+- [Colours](#colours)
 - [Support](#support)
 
 ## Key Info
@@ -35,43 +45,233 @@ migrate to Native UI as UW Native UI is deprecated.
 - `@utilitywarehouse/native-ui` is the new library and will receive updates and new features.
 - `@utilitywarehouse/native-ui` is a complete rewrite of `@utilitywarehouse/uw-native-ui` and has a different API.
 - `@utilitywarehouse/uw-native-ui` uses `react-native-paper` under the hood.
-- `@utilitywarehouse/native-ui` uses `gluestack-ui` under the hood.
+- `@utilitywarehouse/native-ui` uses `gluestack-ui` under the hood for some component logic.
 - `@utilitywarehouse/native-ui` uses `react-native-unistyles` for styling.
 
-## Migration Steps
+## Components
 
-### Components
+Not all components from `@utilitywarehouse/uw-native-ui` have a 1:1 mapping to `@utilitywarehouse/native-ui`.
+Below are the steps to replace the components.
 
-Not all components from `@utilitywarehouse/uw-native-ui` are available in `@utilitywarehouse/native-ui` yet and
-not all components have a 1:1 mapping. Below are the steps to replace the components.
+### `Alert`
 
-#### `Button`
+Replace all `Alert` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Alert, Typography } from '@utilitywarehouse/uw-native-ui';
+- import InfoIcon from '@utilitywarehouse/partner-ui-icons/lib/InfoOutlined.svg';
++ import { Alert } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Alert variant="error" icon={() => <InfoIcon style={styles.icon} />}>
+-   <Typography style={styles.text} variant="bodyHighlight">Title</Typography>
+-   <Typography style={styles.text} variant="body">Message</Typography>
+- </Alert>
++ <Alert
++   colorScheme="red"
++   title="Title"
++   text="Message"
++ />
+```
+
+| Prop Before | Prop After                 | Values                                                                                       |
+| ----------- | -------------------------- | -------------------------------------------------------------------------------------------- |
+| `variant`   | `colorSchene`              | `error` -> `red` <br/> `warning` -> `gold` <br/> `info` -> `blue` <br/> `success` -> `green` |
+| `onPress`   | `onPressIconButton`        | -                                                                                            |
+| `icon`      | - (handled by colorScheme) | -                                                                                            |
+| -           | `title`                    | -                                                                                            |
+| -           | `text`                     | -                                                                                            |
+
+For more info see the [Alert](/docs/native-ui-components-alert--docs) documentation.
+
+### `Badge`
+
+Replace all `Badge` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Badge } from '@utilitywarehouse/uw-native-ui';
++ import { Badge } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Badge colourScheme="red" text="Error" strong={true} size="small" bottomBorderless={true} />
++ <Badge colorScheme="red" strong size="small" borderless>Error</Badge>
+```
+
+| Prop Before               | Prop After    | Values                                                                                                       |
+| ------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------ |
+| `colourScheme`            | `colorScheme` | `red` -> `red` <br/> `cyan` -> `cyan` <br/> `gold` -> `gold` <br/> `grey` -> `grey` <br/> `green` -> `green` |
+| `text`                    | `children`    | The text is now passed as children                                                                           |
+| `bottomBorderless`        | `borderless`  | `true` \| `false`                                                                                            |
+| `textColorOverride`       | n/a           | Use the styling API for custom text styling                                                                  |
+| `backgroundColorOverride` | n/a           | Use the styling API for custom background styling                                                            |
+
+For more advanced customisation of the `Badge` text, you can use the component parts:
+
+```tsx
+- import { Badge, Typography } from '@utilitywarehouse/uw-native-ui';
++ import { Badge, BadgeText } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Badge colourScheme="red" text="Error" />
++ <Badge colorScheme="red" style={styles.badge}>
++   <BadgeText style={styles.badgeText}>Error</BadgeText>
++ </Badge>
+```
+
+For more info see the [Badge](/docs/native-ui-components-badge--docs) documentation.
+
+### `Button`
 
 Replace all `Button` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
 
 ```tsx
 - import { Button } from '@utilitywarehouse/uw-native-ui';
-+ import { Button} from '@utilitywarehouse/native-ui';
++ import { Button } from '@utilitywarehouse/native-ui';
 
 ...
 
-- <Button onPress={handleClick} >Click me</Button>
+- <Button onPress={handleClick}>Click me</Button>
 + <Button onPress={handleClick}>Click me</Button>
 ```
 
-| Prop Before | Prop After | Values                                                                 |
-| ----------- | ---------- | ---------------------------------------------------------------------- |
-| `mode`      | `variant`  | `contained` -> `solid` \| `outlined` -> `outline` \| `text` -> `ghost` |
-| `size`      | `size`     | `small` -> `small` \| `normal` -> `medium` \| n/a -> `large`           |
-| `uppercase` | n/a        | `true` \| `false`                                                      |
+| Prop Before            | Prop After     | Values                                                                       |
+| ---------------------- | -------------- | ---------------------------------------------------------------------------- |
+| `mode`                 | `variant`      | `contained` -> `solid` <br/> `outlined` -> `outline` <br/> `text` -> `ghost` |
+| `size`                 | `size`         | `small` -> `small` <br/> `normal` -> `medium` <br/> `large` -> `large`       |
+| `icon`                 | `icon`         | Now accepts a component, not an element (`AddIcon` instead of `<AddIcon/>`)  |
+| -                      | `iconPosition` | `'left'` or `'right'`                                                        |
+| `uppercase`            | -              | No longer supported                                                          |
+| `loading`              | `loading`      | Same behavior                                                                |
+| `disabled`             | `disabled`     | Same behavior                                                                |
+| `labelStyleOverride`   | -              | Use styling API instead (see advanced styling)                               |
+| `contentStyleOverride` | -              | Use styling API instead (see advanced styling)                               |
+| -                      | `colorScheme`  | `'cyan'`, `'red'`, `'green'`, `'grey'`, or `'gold'`                          |
+| -                      | `inverted`     | For use on dark backgrounds                                                  |
 
-For the `labelStyleOverride` and `contentStyleOverride` props see the [Styling](/docs/native-ui-guides-styling-overview--docs)
-documentation and the `Button` [descendants styling props](/docs/native-ui-components-button--docs#descendants-styling-props)
-and [advanced usage](/docs/native-ui-components-button--docs#advanced-usage) docs.
+For custom styling and layouts, the new Button component supports a more component-based approach:
+
+```tsx
+// Before - custom styling
+import { Button } from '@utilitywarehouse/uw-native-ui';
+import { ArrowIcon } from './icons';
+
+<Button
+  mode="outlined"
+  icon={<ArrowIcon />}
+  labelStyleOverride={styles.buttonLabel}
+  contentStyleOverride={styles.buttonContent}
+  onPress={handleClick}
+>
+  Click me
+</Button>;
+
+// After - component composition
+import { Button, ButtonText, ButtonIcon } from '@utilitywarehouse/native-ui';
+import { ArrowIcon } from '@utilitywarehouse/react-native-icons';
+
+<Button variant="outline" onPress={handleClick}>
+  <ButtonIcon as={ArrowIcon} />
+  <ButtonText style={styles.buttonText}>Click me</ButtonText>
+</Button>;
+```
 
 For more info see the [Button](/docs/native-ui-components-button--docs) documentation.
 
-#### `IconButton`
+### `Card`
+
+Replace all `Card` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Card, Typography } from '@utilitywarehouse/uw-native-ui';
++ import { Card, Text } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Card color="#f5f5f5" gutterBottom={2} onPress={handlePress}>
+-   <Typography>Card content</Typography>
+- </Card>
++ <Card colorScheme="grey" padding="large" variant="outline" style={{ marginBottom: 16 }} onPress={handlePress}>
++   <Text>Card content</Text>
++ </Card>
+```
+
+| Prop Before    | Prop After    | Values                                                         |
+| -------------- | ------------- | -------------------------------------------------------------- |
+| `color`        | `colorScheme` | Use `'base'`, `'grey'`, or `'purple'` instead of custom colors |
+| `gutterBottom` | `style`       | Use `style={{ marginBottom: 16 }}` for spacing                 |
+| `onPress`      | `onPress`     | Same behavior                                                  |
+| -              | `variant`     | `'outline'`, `'filled'`, `'elevated'`, or `'dashed'`           |
+| -              | `padding`     | `'large'`, `'medium'`, `'small'`, or `'none'`                  |
+| -              | `surface`     | `'base'` or `'purple'`                                         |
+| -              | `nested`      | `true` or `false`                                              |
+
+For more info see the [Card](/docs/native-ui-components-card--docs) documentation.
+
+### `Checkbox`
+
+Replace all `Checkbox` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Checkbox, Typography } from '@utilitywarehouse/uw-native-ui';
++ import { Checkbox, CheckboxGroup } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Checkbox
+-   checked={isChecked}
+-   label="Accept terms and conditions"
+-   onPress={() => setIsChecked(!isChecked)}
+-   gutterBottom={2}
+- />
++ <Checkbox
++   value="terms"
++   checked={isChecked}
++   onChange={setIsChecked}
++   label="Accept terms and conditions"
++   style={{ marginBottom: 16 }}
++ />
+```
+
+| Prop Before    | Prop After    | Values                                               |
+| -------------- | ------------- | ---------------------------------------------------- |
+| `label`        | `label`       | Same behavior                                        |
+| `checked`      | `checked`     | Same behavior                                        |
+| `onPress`      | `onChange`    | Now receives the new state as a parameter            |
+| `gutterBottom` | `style`       | Use `style={{ marginBottom: 16 }}` for spacing       |
+| `disabled`     | `disabled`    | Same behavior                                        |
+| `align`        | -             | No longer supported; use custom styling              |
+| `reverse`      | -             | No longer supported; use component composition       |
+| `mode`         | -             | No longer supported; use `Card` for button-like mode |
+| -              | `value`       | Required prop for form submissions                   |
+| -              | `helperText`  | Optional descriptive text for the checkbox           |
+| -              | `invalidText` | Text to show when validation status is invalid       |
+| -              | `validText`   | Text to show when validation status is valid         |
+
+For multiple checkboxes, use `CheckboxGroup`:
+
+```tsx
+...
+
+- <View>
+-   <Checkbox checked={fruit.apple} label="Apple" onPress={() => toggleFruit('apple')} />
+-   <Checkbox checked={fruit.banana} label="Banana" onPress={() => toggleFruit('banana')} />
+-   <Checkbox checked={fruit.orange} label="Orange" onPress={() => toggleFruit('orange')} />-{' '}
+- </View>
++ <CheckboxGroup value={selectedFruits} onChange={setSelectedFruits}>
++   <Checkbox value="apple" label="Apple" />
++   <Checkbox value="banana" label="Banana" />
++   <Checkbox value="orange" label="Orange" />+{' '}
++ </CheckboxGroup>
+
+...
+```
+
+For more info see the [Checkbox](/docs/native-ui-components-checkbox--docs) documentation.
+
+### `IconButton`
 
 Replace all `IconButton` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
 
@@ -82,80 +282,641 @@ import { AddMediumIcon } from '@utilitywarehouse/react-native-icons';
 
 ...
 
-- <IconButton icon={() => <AddMediumIcon />} color="red" onPress={handleClick} />
-+ <IconButton colorScheme="red" icon={<AddMediumIcon />} onPress={handleClick} />
+- <IconButton icon={() => <AddMediumIcon/>} size="small" color="red" pressedColor="darkred" onPress={handleClick} />
++ <IconButton icon={AddMediumIcon} size="small" colorScheme="red" onPress={handleClick} />
 ```
+
+| Prop Before    | Prop After    | Values                                                                           |
+| -------------- | ------------- | -------------------------------------------------------------------------------- |
+| `icon`         | `icon`        | Now accepts the component itself, not a function component instance              |
+| `size`         | `size`        | `'small'` -> `'small'` or `'x-small'`, `'large'` -> `'medium'`                   |
+| `color`        | `colorScheme` | Use `'cyan'`, `'red'`, `'green'`, `'grey'`, or `'gold'` instead of custom colors |
+| `pressedColor` | `pressed`     | Use `pressed` boolean prop instead. Press state is automatically handled         |
+| `style`        | `style`       | Same behavior                                                                    |
+| -              | `variant`     | `'solid'`, `'outline'`, or `'ghost'`                                             |
+| -              | `loading`     | Shows a loading spinner instead of the icon                                      |
+| -              | `disabled`    | Disables the button                                                              |
+| -              | `inverted`    | For use on dark backgrounds                                                      |
 
 For more info see the [IconButton](/docs/native-ui-components-iconbutton--docs) documentation.
 
-#### `Typography`
+### `Loader` -> `Spinner`
 
-The `Typography` component doesn't map 1:1 with `@utilitywarehouse/uw-native-ui`. You can use the `Text` and `Heading` components
-from `@utilitywarehouse/native-ui` instead.
+Replace all `Loader` components from `@utilitywarehouse/uw-native-ui` with `Spinner` from `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Loader } from '@utilitywarehouse/uw-native-ui';
++ import { Spinner } from '@utilitywarehouse/native-ui';
++ import { colors } from '@utilitywarehouse/colour-system';
+
+...
+
+- <Loader size="small" color="blue" />
++ <Spinner size="sm" color={colors.blue500} />
+```
+
+| Prop Before | Prop After | Values                                                                                                     |
+| ----------- | ---------- | ---------------------------------------------------------------------------------------------------------- |
+| `size`      | `size`     | `'small'` -> `'sm'` <br/> `'large'` -> `'md'` <br/> Custom number -> Use `'xs'`, `'sm'`, `'md'`, or `'lg'` |
+| `color`     | `color`    | Now accepts color string values like `$cyan400` from color system                                          |
+| `style`     | `style`    | Same behavior                                                                                              |
+
+For more info see the [Spinner](/docs/native-ui-components-spinner--docs) documentation.
+
+### `Modal` -> `Actionsheet`
+
+The `Modal` component from `@utilitywarehouse/uw-native-ui` does not have a direct 1:1 replacement in `@utilitywarehouse/native-ui`.
+However, for many use cases, the new `Actionsheet` component from the lab module should be used as an alternative that provides a
+more modern user experience and is recommended for most use cases.
+
+```tsx
+- import { Modal, Typography } from '@utilitywarehouse/uw-native-ui';
++ import { Text, Box } from '@utilitywarehouse/native-ui';
++ import { Actionsheet } from '@utilitywarehouse/native-ui/lab';
+
+...
+
+// Before - basic modal
+- <Modal
+-   visible={isVisible}
+-   onDismiss={handleClose}
+-   style={styles.modal}
+-   contentStyles={styles.modalContent}
+- >
+-   <Typography variant="h3" gutterBottom={2}>Modal Title</Typography>
+-   <Typography variant="body">This is the modal content.</Typography>
+-   <Button onPress={handleClose}>Close</Button>
+- </Modal>
+
+// After - using Actionsheet
++ <Actionsheet
++   isOpen={isVisible}
++   onClose={handleClose}
++   closeOnBackdropPress
++ >
++   <Box p="$4" gap="$4">
++     <Heading size="h3">Modal Title</Heading>
++     <Text>This is the modal content.</Text>
++     <Button onPress={handleClose}>Close</Button>
++   </Box>
++ </Actionsheet>
+```
+
+| `Modal` Prop       | `Actionsheet` Prop/Approach                           | Notes                                                            |
+| ------------------ | ----------------------------------------------------- | ---------------------------------------------------------------- |
+| `visible`          | `isOpen`                                              | Same behavior - boolean to control visibility                    |
+| `onDismiss`        | `onClose`                                             | Similar behavior - function called when modal/sheet is dismissed |
+| `backgroundStyles` | -                                                     | Actionsheet has a standard background overlay                    |
+| `contentStyles`    | Use `includeContent={false}` and `ActionsheetContent` | For custom styling of content                                    |
+| `style`            | Custom styling requires component composition         | See advanced usage below                                         |
+| `children`         | `children`                                            | Same behavior                                                    |
+| -                  | `closeOnBackdropPress`                                | `true` by default, allows closing when clicking outside          |
+| -                  | `showIndicator`                                       | `true` by default, shows a drag indicator                        |
+| -                  | `dragCloseThreshold`                                  | User can drag down to close                                      |
+
+For more advanced customisation, the `Actionsheet` supports a component-based approach:
+
+```tsx
+import {
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper,
+} from '@utilitywarehouse/native-ui/lab';
+import { Box, Text, Button, createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
+
+const stylesheet = createStyleSheet(({ space, colors, radii }) => ({
+  content: {
+    padding: space['4'],
+    backgroundColor: colors.white,
+  },
+  indicator: {
+    backgroundColor: colors.grey300,
+  },
+}));
+
+const MyComponent = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const handleClose = () => setIsVisible(false);
+  const handleOpen = () => setIsVisible(true);
+  const { styles } = useStyles(stylesheet);
+
+  return (
+    <Box>
+      <Button onPress={handleOpen}>Open Modal</Button>
+
+      <Actionsheet
+        isOpen={isVisible}
+        onClose={handleClose}
+        includeContent={false}
+        includeDragIndicator={false}
+      >
+        <ActionsheetContent style={styles.content}>
+          <ActionsheetDragIndicatorWrapper>
+            <ActionsheetDragIndicator style={styles.indicator} />
+          </ActionsheetDragIndicatorWrapper>
+
+          <Box gap="$4">
+            <Heading size="h3">Custom Modal</Heading>
+            <Text>This is a customized modal using Actionsheet.</Text>
+            <Button onPress={handleClose}>Close</Button>
+          </Box>
+        </ActionsheetContent>
+      </Actionsheet>
+    </Box>
+  );
+};
+```
+
+For full-screen modals or modals that need to be displayed in the center of the screen, you may want to consider using React Navigations `presentation="modal"` screen option along with Native UI components for the content.
+
+For more information, see the [Actionsheet](/docs/native-ui-components-lab-actionsheet--docs) documentation.
+
+### `Pill`
+
+Replace all `Pill` components from `@utilitywarehouse/uw-native-ui` with `Button` from `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Pill } from '@utilitywarehouse/uw-native-ui';
++ import { Button, ButtonText, ButtonIcon } from '@utilitywarehouse/native-ui';
+import { FilterIcon } from '@utilitywarehouse/react-native-icons';
+
+...
+
+- <Pill
+-   active={isActive}
+-   icon={<FilterIcon />}
+-   label="Filter"
+-   onPress={handlePress}
+-   style={styles.pill}
+- />
++ <Button
++   size="small"
++   variant={isActive ? "solid" : "outline"}
++   colorScheme="cyan"
++   onPress={handlePress}
++   style={styles.pill}
++   icon={FilterIcon}
++ >
++   Filter
++ </Button>
+```
+
+| Prop Before | Prop After | Values                                                                        |
+| ----------- | ---------- | ----------------------------------------------------------------------------- |
+| `active`    | `variant`  | `active: true` -> `variant: "solid"`, `active: false` -> `variant: "outline"` |
+| `icon`      | `icon`     | Now accepts the component itself, not a function component instance           |
+| `label`     | `children` | The text is now passed as children                                            |
+| `onPress`   | `onPress`  | Same behavior                                                                 |
+| `style`     | `style`    | Same behavior                                                                 |
+
+For more advanced customisation, you can use component composition:
+
+```tsx
+<Button
+  size="small"
+  variant={isActive ? 'solid' : 'outline'}
+  colorScheme="cyan"
+  onPress={handlePress}
+  style={styles.pill}
+  icon={FilterIcon}
+>
+  <ButtonIcon as={FilterIcon} />
+  <ButtonText>Filter</ButtonText>
+</Button>
+```
+
+For more info see the [Button](/docs/native-ui-components-button--docs) documentation.
+
+### `RadioButton` -> `Radio`
+
+Replace all `RadioButton` components from `@utilitywarehouse/uw-native-ui` with `Radio` from `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { RadioButton } from '@utilitywarehouse/uw-native-ui';
++ import { Radio, RadioGroup } from '@utilitywarehouse/native-ui';
+
+...
+
+// Before - single radio button
+- <RadioButton
+-   value="option1"
+-   status={checked === 'option1' ? 'checked' : 'unchecked'}
+-   onPress={() => setChecked('option1')}
+-   label="Option 1"
+-   disabled={false}
+- />
+
+// After - single radio button
++ <Radio
++   value="option1"
++   onChange={() => setChecked('option1')}
++   disabled={false}
++   label="Option 1"
++ />
+
+// Before - group of radio buttons
+- <View>
+-   <RadioButton
+-     value="option1"
+-     status={checked === 'option1' ? 'checked' : 'unchecked'}
+-     onPress={() => setChecked('option1')}
+-     label="Option 1"
+-   />
+-   <RadioButton
+-     value="option2"
+-     status={checked === 'option2' ? 'checked' : 'unchecked'}
+-     onPress={() => setChecked('option2')}
+-     label="Option 2"
+-   />
+- </View>
+
+// After - group of radio buttons
++ <RadioGroup value={checked} onChange={setChecked}>
++   <Radio value="option1" label="Option 1" />
++   <Radio value="option2" label="Option 2" />
++ </RadioGroup>
+```
+
+| Prop Before | Prop After         | Values                                                                                            |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------------- |
+| `value`     | `value`            | Same behavior                                                                                     |
+| `status`    | no longer needed   | RadioGroup and value prop handle the checked state                                                |
+| `onPress`   | `onChange`         | For individual Radio, it returns the selected state; in RadioGroup, use the RadioGroup's onChange |
+| `label`     | `label`            | Same behavior                                                                                     |
+| `disabled`  | `disabled`         | Same behavior                                                                                     |
+| -           | `validationStatus` | `'valid'`, `'invalid'`, or `'initial'`                                                            |
+| -           | `helperText`       | Optional descriptive text for the radio                                                           |
+| -           | `invalidText`      | Text to show when validation status is invalid                                                    |
+| -           | `validText`        | Text to show when validation status is valid                                                      |
+
+For advanced customisation, the Radio component supports composition with subcomponents:
+
+```tsx
+import {
+  Radio,
+  RadioGroup,
+  RadioIndicator,
+  RadioIcon,
+  RadioLabel,
+} from '@utilitywarehouse/native-ui';
+
+<RadioGroup onChange={setValue} value={value}>
+  <Radio value="customOption">
+    <RadioIndicator>
+      <RadioIcon />
+    </RadioIndicator>
+    <RadioLabel>Custom Radio Option</RadioLabel>
+  </Radio>
+</RadioGroup>;
+```
+
+For more info see the [Radio](/docs/native-ui-components-radio--docs) documentation.
+
+### `Switch`
+
+Replace all `Switch` components from `@utilitywarehouse/uw-native-ui` with `Switch` from `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { Switch } from '@utilitywarehouse/uw-native-ui';
++ import { Switch } from '@utilitywarehouse/native-ui';
+
+...
+
+- <Switch
+-   isChecked={isEnabled}
+-   onToggle={setIsEnabled}
+-   disabled={false}
+-   style={styles.switch}
+- />
++ <Switch
++   value={isEnabled}
++   onValueChange={setIsEnabled}
++   disabled={false}
++   size="medium"
++ />
+```
+
+| Prop Before | Prop After      | Values                                                   |
+| ----------- | --------------- | -------------------------------------------------------- |
+| `isChecked` | `value`         | Same behavior - boolean value for on/off state           |
+| `onToggle`  | `onValueChange` | Similar behavior - both receive the new state as a param |
+| `disabled`  | `disabled`      | Same behavior                                            |
+| `style`     | `style`         | Same behavior                                            |
+| -           | `size`          | `'small'` or `'medium'` (default is `'medium'`)          |
+
+For more info see the [Switch](/docs/native-ui-components-switch--docs) documentation.
+
+### `TextInput` -> `Input`
+
+Replace all `TextInput` components from `@utilitywarehouse/uw-native-ui` with `Input` from `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { TextInput } from '@utilitywarehouse/uw-native-ui';
++ import { Input, FormField } from '@utilitywarehouse/native-ui';
+import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
+
+...
+
+// Before - basic input with label and error
+- <TextInput
+-   label="Email"
+-   placeholder="Enter your email"
+-   value={email}
+-   onChangeText={setEmail}
+-   error="Please enter a valid email"
+-   left={<EmailIcon color="#000" width={24} height={24} />}
+-   gutterBottom={2}
+- />
+
+// After - basic input with label and error
++ <FormField
++    style={{ marginBottom: 16 }}
++    validationStatus="invalid"
++    label="Email"
++    errorText="Please enter a valid email"
++ >
++   <Input
++     leadingIcon={EmailMediumIcon}
++     placeholder="Enter your email"
++     value={email}
++     onChange={e => setEmail(e.nativeEvent.text)}
++   />
++ </FormField>
+
+// Before - input with success state
+- <TextInput
+-   label="Username"
+-   value={username}
+-   onChangeText={setUsername}
+-   success="Username is available"
+- />
+
+// After - input with success state
++ <FormField validationStatus="valid" label="Username" validText="Username is available">
++   <Input
++     showValidationIcon
++     value={username}
++     onChange={e => setUsername(e.nativeEvent.text)}
++   />
++ </FormField>
+
+// Before - input with hint
+- <TextInput
+-   label="Password"
+-   placeholder="Create a password"
+-   value={password}
+-   onChangeText={setPassword}
+-   hint="Password must be at least 8 characters"
+-   secureTextEntry
+- />
+
+// After - input with hint
++ <FormField label="Password" helperText="Password must be at least 8 characters">
++   <Input
++     placeholder="Create a password"
++     type="password"
++     value={password}
++     onChange={e => setPassword(e.nativeEvent.text)}>
++   </Input>
++ </FormField>
+
+// Before - disabled input
+- <TextInput
+-   label="Address"
+-   value="123 Main St"
+-   disabled
+- />
+
+// After - disabled input
++ <FormField label="Address" disabled>
++   <Input value="123 Main St" />
++ </FormField>
+
+// Before - using the simpler alternative
+- <TextInput
+-   value={text}
+-   onChangeText={setText}
+-   placeholder="Search"
+- />
+
+// After - using the simpler alternative
++ <Input
++   value={text}
++   onChange={e => setText(e.nativeEvent.text)}
++   placeholder="Search"
++ />
+```
+
+| Prop Before       | Prop After / Component                   | Values                                                                                                    |
+| ----------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `label`           | `<FormFieldLabel>`                       | Wrap the Input with FormField and use FormFieldLabel                                                      |
+| `error`           | `validationStatus` & `<FormFieldError>`  | Use `validationStatus="invalid"` on FormField and FormFieldError component                                |
+| `success`         | `validationStatus` & `<FormFieldHelper>` | Use `validationStatus="valid"` on FormField and FormFieldHelper component                                 |
+| `hint`            | `<FormFieldHelper>`                      | Use FormFieldHelper component for hint text                                                               |
+| `onChangeText`    | `onChange`                               | New API uses `onChange` that receives an event object                                                     |
+| `left`            | `leadingIcon` or `<InputSlot>`           | Use `leadingIcon={IconComponent}` for simple icons or `InputSlot` + `InputIcon` for custom left content   |
+| `right`           | `trailingIcon` or `<InputSlot>`          | Use `trailingIcon={IconComponent}` for simple icons or `InputSlot` + `InputIcon` for custom right content |
+| `secureTextEntry` | `type="password"`                        | Use `type="password"` on Input                                                                            |
+| `gutterBottom`    | `style`                                  | Use `style={{ marginBottom: 16 }}` for spacing                                                            |
+| `disabled`        | `disabled`                               | Same behavior                                                                                             |
+| `outlined`        | -                                        | No longer supported; the new Input has a consistent style                                                 |
+| `accented`        | -                                        | No longer supported; use `focused` prop or custom styling                                                 |
+| `multiline`       | `<TextArea>`                             | Use textarea                                                                                              |
+
+For more info see the [Input](/docs/native-ui-components-input--docs) documentation.
+
+### `ToggleButton`
+
+Replace all `ToggleButton` and `ToggleButtonGroup` components from `@utilitywarehouse/uw-native-ui` with `@utilitywarehouse/native-ui`.
+
+```tsx
+- import { ToggleButton, ToggleButtonGroup } from '@utilitywarehouse/uw-native-ui';
++ import { ToggleButton, ToggleButtonGroup } from '@utilitywarehouse/native-ui';
+
+...
+
+// Before - basic toggle button group
+- <ToggleButtonGroup
+-   value={selectedOption}
+-   onChange={setSelectedOption}
+-   gutterBottom={2}
+-   toggleGroupStyle={styles.toggleGroup}
+- >
+-   <ToggleButton value="option1">Option 1</ToggleButton>
+-   <ToggleButton value="option2">Option 2</ToggleButton>
+-   <ToggleButton value="option3">Option 3</ToggleButton>
+- </ToggleButtonGroup>
+
+// After - basic toggle button group
++ <ToggleButtonGroup
++   value={selectedOption}
++   onChange={setSelectedOption}
++   style={{ marginBottom: 16 }}
++ >
++   <ToggleButton value="option1">Option 1</ToggleButton>
++   <ToggleButton value="option2">Option 2</ToggleButton>
++   <ToggleButton value="option3">Option 3</ToggleButton>
++ </ToggleButtonGroup>
+
+// Before - with custom styling
+- <ToggleButtonGroup
+-   value={selectedSize}
+-   onChange={handleSizeChange}
+-   toggleGroupStyle={styles.sizeToggle}
+-   toggleGroupItemStyle={styles.sizeToggleItem}
+- >
+-   <ToggleButton
+-     value="small"
+-     labelStyle={styles.sizeLabel}
+-   >
+-     Small
+-   </ToggleButton>
+-   <ToggleButton
+-     value="medium"
+-     labelStyle={styles.sizeLabel}
+-   >
+-     Medium
+-   </ToggleButton>
+- </ToggleButtonGroup>
+
+// After - with custom styling
++ <ToggleButtonGroup
++   value={selectedSize}
++   onChange={handleSizeChange}
++   style={styles.sizeToggle}
++ >
++   <ToggleButton value="small">
++     <ToggleButtonText style={styles.sizeLabel}>Small</ToggleButtonText>
++   </ToggleButton>
++   <ToggleButton value="medium">
++     <ToggleButtonText style={styles.sizeLabel}>Medium</ToggleButtonText>
++   </ToggleButton>
++ </ToggleButtonGroup>
+```
+
+| Prop Before            | Prop After | Values                                                 |
+| ---------------------- | ---------- | ------------------------------------------------------ |
+| `gutterBottom`         | `style`    | Use `style={{ marginBottom: 16 }}` for spacing         |
+| `toggleGroupStyle`     | `style`    | Apply styles directly to the `style` prop              |
+| `toggleGroupItemStyle` | -          | No direct equivalent, style individual buttons instead |
+| `value`                | `value`    | Same behavior                                          |
+| `onChange`             | `onChange` | Same behavior                                          |
+| -                      | `size`     | `'small'` (default) or `'base'` for different sizes    |
+| -                      | `disabled` | Disables the entire button group                       |
+
+For `ToggleButton`:
+
+| Prop Before         | Prop After | Values                                                |
+| ------------------- | ---------- | ----------------------------------------------------- |
+| `value`             | `value`    | Same behavior                                         |
+| `isActive`          | -          | No longer needed, handled by the group based on value |
+| `labelStyle`        | -          | Use `<ToggleButtonText style={...}>` for styling text |
+| `toggleButtonStyle` | `style`    | Apply styles directly to the `style` prop             |
+| -                   | `disabled` | Disables an individual button                         |
+
+For more info see the [ToggleButton](/docs/native-ui-components-togglebutton--docs) documentation.
+
+### `Typography` -> `Text` & `Heading`
+
+Replace all `Typography` components from `@utilitywarehouse/uw-native-ui` with `Text` and `Heading` from `@utilitywarehouse/native-ui`.
 
 ```tsx
 - import { Typography } from '@utilitywarehouse/uw-native-ui';
 + import { Text, Heading } from '@utilitywarehouse/native-ui';
+import { colors } from '@utilitywarehouse/colour-system';
 
 ...
+// Before - basic typography
+- <Typography variant="h1" textAlign="center" gutterBottom={2} style={{ color: colors.red500 }}>
+-   Hello World
+- </Typography>
 
-- <Typography variant="h1">Heading 1</Typography>
-+ <Heading size="h1">Heading 1</Heading>
+// After - basic typography
++ <Heading size="h1" textAlign="center" style={{ marginBottom: 16, color: colors.red500 }}>
++   Hello World
++ </Heading>
 
-- <Typography variant="body">Body text</Typography>
-+ <Text>Body text</Text>
+// Before - body text
+- <Typography variant="body" textAlign="left" gutterBottom={2} style={{ color: colors.blue500 }}>
+-   This is a body text
+- </Typography>
+// After - body text
++ <Text size="md" textAlign="left" style={{ marginBottom: 16, color: colors.blue500 }}>
++   This is a body text
++ </Text>
 ```
+
+| Typography Variant | Text/Heading Component + Props |
+| ------------------ | ------------------------------ |
+| `h1`               | `<Heading size="h1">`          |
+| `h2`               | `<Heading size="h2">`          |
+| `h3`               | `<Heading size="h3">`          |
+| `h4`               | `<Heading size="h4">`          |
+| `h5`               | `<Heading size="h5">`          |
+| -                  | `<Heading size="h6">`          |
+| `body`             | `<Text size="md">`             |
+| `bodyHighlight`    | `<Text size="md" highlight>`   |
+| `small`            | `<Text size="sm">`             |
+| `smallHighlight`   | `<Text size="sm" highlight>`   |
+| `xSmall`           | `<Text size="xs">`             |
+
+| Typography Props | Text/Heading Props                      |
+| ---------------- | --------------------------------------- |
+| `variant`        | Use appropriate component + `size` prop |
+| `style`          | `style`                                 |
+| `gutterBottom`   | `style={{ marginBottom: value }}`       |
+| `textAlign`      | `textAlign`                             |
+| -                | `color`                                 |
+| -                | `bold/highlight`                        |
+| -                | `italic`                                |
+| -                | `truncated`                             |
+| -                | `underline`                             |
+| -                | `strikeThrough`                         |
+| -                | `textTransform`                         |
+| -                | `textDecorationLine`                    |
+| -                | `textTransform`                         |
 
 For more info see the [Text](/docs/native-ui-components-text--docs) and [Heading](/docs/native-ui-components-heading--docs) documentation.
 
-#### `ThemeProvider`
-
-```tsx
-- import { ThemeProvider } from '@utilitywarehouse/uw-native-ui';
-+ import { NativeUIProvider } from '@utilitywarehouse/native-ui';
-```
-
-```tsx
-- <ThemeProvider theme={theme} variant={colorMode}>
-+ <NativeUIProvider theme={theme} colorMode={colorMode}>
-```
-
-More info can be found in the [Getting Started](/docs/native-ui-introduction--docs#dark-mode) documentation.
-
-### Styles
+## Styles
 
 `@utilitywarehouse/uw-native-ui` uses `StyleSheet` from `react-native` for styling, whereas `@utilitywarehouse/native-ui` uses
 `react-native-unitstyles` for styles. You can still use the `StyleSheet` from `react-native` with `@utilitywarehouse/native-ui` but
 it is recommended to use the `createStyleSheet` method and `useStyles` hook for styling. With the `Box` component you can use
 utility props for styling. See out [Styling](/docs/native-ui-guides-styling-overview--docs) documentation for more info.
 
-#### `StyleSheet`
+### `StyleSheet`
 
 ```tsx
-- import { StyleSheet } from 'react-native';
-- import { View } from '@utilitywarehouse/uw-native-ui';
+- import { StyleSheet, View } from 'react-native';
+- import { makeStyles } from '@utilitywarehouse/uw-native-ui';
 + import { Box } from '@utilitywarehouse/native-ui';
 // or
-+ import { styled } from '@utilitywarehouse/native-ui';
++ import { createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
 
-- const styles = StyleSheet.create({
+- const useStyles = makeStyles(theme => ({
 -   container: {
--     backgroundColor: 'red',
+-     backgroundColor: theme.colors.surface,
 -   },
-- });
+- }));
 
-- <View style={styles.container}>
++ const stylesheet = createStyleSheet(theme => ({
++   container: {
++   backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey75,
++  },
++ }));
 
-+ <Box bg="red" />
+...
 
-// or
-
-+ const StyledBox = styled(Box, {
-+   backgroundColor: 'red',
-+ });
+- const styles = useStyles();
++ const styles = useStyles(stylesheet);
+  return (
+    <View style={styles.container}>
+...
 ```
 
-#### Dark Mode
+### Dark Mode
 
 lt the light colour mode is enabled. If you want to enable dark mode, you can pass the `colorMode` prop to the `NativeUIProvider` component. The two options for `colorMode` are `light` and `dark`.
 
@@ -173,47 +934,153 @@ const App: React.FC = () => {
 };
 ```
 
-You can also use the `useColorMode` hook to get the current colour mode of the device.
+You can also use the `useColorMode` hook to get the current active theme `light` or `dark`.
 
 ```tsx
-- import { useDarkMode } from '@utilitywarehouse/uw-native-ui';
 + import { useColorMode } from '@utilitywarehouse/native-ui';
+```
+
+### `useDynamicValue` -> `useLightDark`
+
+The `useDynamicValue` hook has been replaced with `useLightDark`. The `useLightDark` hook returns the light or dark value based on the current
+colour mode of the device.
+
+```tsx
+- import { useDynamicStyles } from '@utilitywarehouse/uw-native-ui';
++ import { useLightDark } from '@utilitywarehouse/native-ui';
+
+...
+
+- const dynamicValue = useDynamicValue('lightValue', 'darkValue');
++ const dynamicValue = useLightDark('lightValue', 'darkValue');
 ```
 
 Dark mode is also baked into the styling so you no longer need to use the `DynamicValue` for the colour scheme.
 
 ```tsx
 - import { DynamicValue, makeDynamicStyles, Typography } from '@utilitywarehouse/uw-native-ui';
-+ import { Box, Text } from '@utilitywarehouse/native-ui';
++ import { Box, Text, useStyles, createStyleSheet } from '@utilitywarehouse/native-ui';
 
 - const useDynamicStyles = makeDynamicStyles(theme => ({
 -   root: {
 -     backgroundColor: new DynamicValue('white', 'black');
 -     margin: 20,
 -   },
-- }));
++ const stylesheet = createStyleSheet(theme => ({
++   root: {
++     backgroundColor: theme.isLight ? theme.colors.white : theme.colors.black,
++     margin: 20,
++   },
++ }));
 
 const MyComponent = () => {
 - const styles = useDynamicStyles();
-+ const { colorMode } = useColorMode();
++ const styles = useStyles(stylesheet);
 
   return (
--    <View style={styles.root}>
-+    <Box
-+      backgroundColor={colorMode === 'light' ? 'white' : 'black'}
-+      margin={20},
-+    >
-}
-
+    <View style={styles.root}>
 -      <Typography>{title}</Typography>
 +      <Text>{title}</Text>
--    </View>
-+    </Box>
+    </View>
   );
 }
 ```
 
-### Fonts
+## Theme Mapping
+
+The theme system in `@utilitywarehouse/native-ui` has been completely redesigned. The new theme system is more comprehensive and
+provides better TypeScript support. Here's a mapping of common theme properties from the old to the new system.
+
+### Common Theme Properties
+
+Below is a mapping table for common theme properties:
+
+| Property in UW Native UI         | Property in Native UI             | Notes                                                                                     |
+| -------------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------- |
+| `theme.spacing(1)`               | `theme.space[2]`                  | New spacing is in a 4px grid instead of 8px, 2 is now the equivalent to 8px instead of 1. |
+| `theme.roundness`                | `theme.radii.md`                  | Various radius sizes available (xs, sm, md, lg, etc.)                                     |
+| `theme.colors.primary`           | `theme.colors.brandPrimaryPurple` | Brand colors now use descriptive names                                                    |
+| `theme.colors.accent`            | `theme.colors.cyan500`            | Most accent colors map to a token in the 500 range                                        |
+| `theme.colors.background`        | `theme.colors.grey25`             | In light mode; in dark mode use `theme.colors.grey75`                                     |
+| `theme.colors.surface`           | `theme.colors.white`              | In light mode; in dark mode use `theme.colors.grey100`                                    |
+| `theme.colors.text`              | `theme.colors.grey1000`           | In light mode; in dark mode use `theme.colors.grey1000`                                   |
+| `theme.colors.disabled`          | `theme.colors.grey600`            | Varies by component, check component tokens                                               |
+| `theme.fonts.regular.fontFamily` | `theme.fonts.body`                | Now uses 'Work Sans' as the base name                                                     |
+| `theme.fonts.medium.fontFamily`  | `theme.fonts.body` + `fontWeight` | Set fontWeight separately                                                                 |
+| `palette.transparent`            | `'transparent'`                   | Use the string value directly                                                             |
+| `palette.primaryPurple`          | `theme.colors.brandPrimaryPurple` | Now part of the theme colors                                                              |
+| `palette.cyan`                   | `theme.colors.cyan400`            | Color tones have numeric scales                                                           |
+| `palette.pink`                   | `theme.colors.pink300`            | Most colors have various tones (50-950)                                                   |
+| `palette.midnight`               | `theme.colors.brandMidnight`      | Now a brand color                                                                         |
+| `palette.codGray`                | `theme.colors.grey900`            | Grey scale now goes from 25-1000                                                          |
+
+### Accessing Theme Values
+
+When using the styling API, the theme is automatically injected:
+
+```tsx
+// Old
+const useStyles = makeStyles(theme => ({
+  container: {
+    backgroundColor: theme.colors.background,
+    borderRadius: theme.roundness,
+    padding: theme.spacing(2),
+  },
+}));
+
+// New
+const stylesheet = createStyleSheet(theme => ({
+  container: {
+    backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey75,
+    borderRadius: theme.radii.md,
+    padding: theme.space[4],
+  },
+}));
+```
+
+For conditional theming based on light/dark mode:
+
+```tsx
+// Old
+const useDynamicStyles = makeDynamicStyles(theme => ({
+  text: {
+    color: new DynamicValue(palette.midnight, palette.white),
+  },
+}));
+
+// New
+const stylesheet = createStyleSheet(theme => ({
+  text: {
+    color: theme.isLight ? theme.colors.brandMidnight : theme.colors.white,
+  },
+}));
+```
+
+The new theme also includes boolean properties for easily checking the current theme mode:
+
+```tsx
+const stylesheet = createStyleSheet(theme => ({
+  card: {
+    // Use theme.isLight or theme.isDark for conditional styling
+    backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey100,
+    borderColor: theme.isLight ? theme.colors.grey100 : theme.colors.grey300,
+  },
+}));
+```
+
+For more information about the theme system, see the [Theming Tokens](/docs/native-ui-guides-styling-theme-tokens--docs) documentation.
+
+### `useTheme` -> `useTheme`
+
+The `useTheme` hook has been replaced with the same name but with a different API. The new `useTheme` hook returns the theme object
+with the new theme system. You can use it to access the theme values directly.
+
+```tsx
+- import { useTheme } from '@utilitywarehouse/uw-native-ui';
++ import { useTheme } from '@utilitywarehouse/native-ui';
+```
+
+## Fonts
 
 If you have followed the [getting started steps](/docs/native-ui-introduction--docs#additional-packages) and are using either
 `npx react-native-asset` or `expo-font` with `expo-xml-font` then you can use the `fontFamily` property like you would on the web
@@ -240,24 +1107,79 @@ const styles = StyleSheet.create({
 
 For more info see the [Fonts](/docs/native-ui-guides-styling-fonts--docs) documentation.
 
-### Colours
+## Colours
 
 Please see the colour system [migration docs](/docs/colour-system-migration--docs) for more info on how to migrate your colours.
 
-## Known Issues
+Below is a mapping table for the legacy palette to the new Native UI theme colors:
 
-### `TypeError: Cannot read property 'x' of undefined`
+| Legacy Palette  | Light Theme            | Dark Theme             |
+| --------------- | ---------------------- | ---------------------- |
+| `transparent`   | `'transparent'`        | `'transparent'`        |
+| `primaryPurple` | `colors.purple800`     | `colors.purple200`     |
+| `cyan`          | `colors.cyan400`       | `colors.cyan700`       |
+| `jordyBlue`     | `colors.cyan300`       | `colors.cyan700`       |
+| `pink`          | `colors.pink300`       | `colors.pink700`       |
+| `midnight`      | `colors.brandMidnight` | `colors.brandMidnight` |
+| `rose`          | `colors.rose400`       | `colors.rose600`       |
+| `apple`         | `colors.apple400`      | `colors.apple600`      |
+| `gold`          | `colors.gold300`       | `colors.gold700`       |
+| `grape`         | `colors.grape400`      | `colors.grape600`      |
+| `lightTint`     | `colors.purple50`      | `colors.purple1000`    |
+| `white`         | `colors.white`         | `colors.white`         |
+| `maroonFlush`   | `colors.rose500`       | `colors.rose500`       |
+| `jewel`         | `colors.green500`      | `colors.green500`      |
+| `blueRibbon`    | `colors.cyan500`       | `colors.cyan500`       |
+| `brandeisBlue`  | `colors.cyan600`       | `colors.cyan600`       |
+| `codGray`       | `colors.grey900`       | `colors.grey100`       |
+| `whiteOwl`      | `colors.grey75`        | `colors.grey175`       |
+| `codGray10`     | `colors.grey100`       | `colors.grey150`       |
+| `codGray20`     | `colors.grey150`       | `colors.grey175`       |
+| `codGray30`     | `colors.grey200`       | `colors.grey200`       |
+| `codGray40`     | `colors.grey400`       | `colors.grey400`       |
+| `codGray50`     | `colors.grey500`       | `colors.grey500`       |
+| `codGray60`     | `colors.grey600`       | `colors.grey600`       |
+| `codGray70`     | `colors.grey700`       | `colors.grey400`       |
+| `codGray80`     | `colors.grey800`       | `colors.grey300`       |
+| `codGray90`     | `colors.grey900`       | `colors.grey150`       |
+| `grayOwl`       | `colors.grey150`       | `colors.grey175`       |
 
-For the most part both libraries should work together but there may be some issues with the `gluestack-ui` and `react-native-paper`
-and their respective themes. When using both libraries together, specifically using `uw-native-ui` components inside of `native-ui` components
-you may encounter the following error:
+For text and surface colors, it's recommended to use theme-based variables:
 
-```console
-TypeError: Cannot read property 'x' of undefined
+| Legacy Theme Use Case | Light Theme                       | Dark Theme               |
+| --------------------- | --------------------------------- | ------------------------ |
+| Text - Primary        | `theme.colors.grey900`            | `theme.colors.grey100`   |
+| Text - Secondary      | `theme.colors.grey700`            | `theme.colors.grey400`   |
+| Text - Disabled       | `theme.colors.grey600`            | `theme.colors.grey600`   |
+| Background - App      | `theme.colors.grey25`             | `theme.colors.grey75`    |
+| Surface               | `theme.colors.white`              | `theme.colors.grey100`   |
+| Border                | `theme.colors.grey100`            | `theme.colors.grey300`   |
+| Action/Brand          | `theme.colors.brandPrimaryPurple` | `theme.colors.purple700` |
+| Primary               | `theme.colors.cyan400`            | `theme.colors.cyan700`   |
+
+For dynamic color values that adapt to light/dark mode:
+
+```tsx
+import { useLightDark, createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
+
+// For single values
+const textColor = useLightDark(theme.colors.grey900, theme.colors.grey100);
+
+// For style objects
+const stylesheet = createStyleSheet(theme => ({
+  text: {
+    color: theme.isLight ? theme.colors.grey900 : theme.colors.grey100,
+  },
+  container: {
+    backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey100,
+    borderColor: theme.isLight ? theme.colors.grey100 : theme.colors.grey300,
+  },
+}));
+
+const styles = useStyles(stylesheet);
 ```
 
-If you encounter this issue, you can try to use the `ThemeProvider` from `@utilitywarehouse/uw-native-ui` and wrap the `uw-native-ui`
-component with it. This should fix the issue.
+For more info on the new color system, see the [Colors](/docs/native-ui-guides-styling-colors--docs) documentation.
 
 ## Support
 
