@@ -171,6 +171,7 @@ const preview: Preview = {
               'Spinner',
               'Switch',
               'Text',
+              'Textarea',
               'ToggleButton',
               'VStack',
               'Lab',
