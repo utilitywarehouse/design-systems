@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 0.13.0
+
+### Minor Changes
+
+- [#680](https://github.com/utilitywarehouse/design-systems/pull/680) [`c5efb3d`](https://github.com/utilitywarehouse/design-systems/commit/c5efb3d7df02c02c444d9f1374f047ae933dce23) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Textarea` component
+
 ## 0.12.2
 
 ### Patch Changes
