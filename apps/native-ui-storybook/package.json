@@ -85,6 +85,7 @@
     "babel-plugin-react-docgen-typescript": "^1.5.1",
     "babel-plugin-react-native-web": "^0.19.11",
     "cross-env": "^7.0.3",
+    "eas-cli": "^16.2.1",
     "entities": "2.0.3",
     "patch-package": "^8.0.0",
     "storybook": "^7.6.20",
