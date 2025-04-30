@@ -50,7 +50,8 @@ const cwuiElements = [
   'InteractiveCardProps',
 ];
 
-function transformer(file, api) {
+function transformer(file, api, { packageName }) {
+  console.log({ packageName });
   const j = api.jscodeshift;
 
   const root = j(file.source);
@@ -89,7 +90,7 @@ function transformer(file, api) {
       }
       if (webUiSpecifiers.length > 0) {
         j(path).replaceWith(
-          j.importDeclaration(webUiSpecifiers, j.literal('@utilitywarehouse/web-ui'))
+          j.importDeclaration(webUiSpecifiers, j.literal(`@utilitywarehouse/${packageName}`))
         );
       }
     });

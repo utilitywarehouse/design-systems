@@ -11,7 +11,7 @@ const deprecatedPropName = 'backgroundColor';
 const newComponentName = 'Box';
 const newPropName = 'background';
 
-function transformer(file, api) {
+function transformer(file, api, { packageName }) {
   const j = api.jscodeshift;
   const root = j(file.source);
 
@@ -27,7 +27,7 @@ function transformer(file, api) {
     .insertAfter(
       j.importDeclaration(
         [j.importSpecifier(j.identifier(newComponentName))],
-        j.stringLiteral('@utilitywarehouse/web-ui')
+        j.stringLiteral(`@utilitywarehouse/${packageName}`)
       )
     )
     // remove the Background import
