@@ -83,6 +83,9 @@ async function runJscodeshiftTransform(transform, files, flags, codemodFlags) {
   if (flags.jscodeshift) {
     args.push(flags.jscodeshift);
   }
+  if (flags.packageName) {
+    args.push(`--packageName=${flags.packageName}`);
+  }
 
   args.push(...files);
 
@@ -134,6 +137,12 @@ yargs
           description: 'print transformed files to stdout, useful for development',
           default: false,
           type: 'boolean',
+        })
+        .option('packageName', {
+          description:
+            'Specify the new Web UI package name, useful for when multiple versions are in use',
+          default: 'web-ui',
+          type: 'string',
         });
     },
     handler: run,
