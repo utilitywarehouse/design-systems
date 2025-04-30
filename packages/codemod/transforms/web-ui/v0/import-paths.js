@@ -51,7 +51,6 @@ const cwuiElements = [
 ];
 
 function transformer(file, api, { packageName }) {
-  console.log({ packageName });
   const j = api.jscodeshift;
 
   const root = j(file.source);
