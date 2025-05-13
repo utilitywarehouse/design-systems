@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native-unistyles';
 import { CloseSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { useAlertContext } from './Alert.context';
 import { PressableRef } from '../../types';
+import { Icon } from '../Icon';
 
 const AlertCloseButton = forwardRef<PressableRef, PressableProps>(({ children, ...props }, ref) => {
   return (
@@ -18,7 +19,7 @@ export const AlertCloseButtonIcon: React.FC<ComponentProps<typeof CloseSmallIcon
 }) => {
   const { colorScheme } = useAlertContext();
   styles.useVariants({ colorScheme });
-  return <CloseSmallIcon {...props} style={styles.icon} />;
+  return <Icon as={CloseSmallIcon} {...props} style={styles.icon} />;
 };
 
 AlertCloseButton.displayName = 'AlertCloseButton';

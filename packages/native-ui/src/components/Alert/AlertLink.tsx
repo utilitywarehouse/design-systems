@@ -5,6 +5,7 @@ import AlertText from './AlertText';
 import { ChevronRightSmallIcon } from '@utilitywarehouse/react-native-icons';
 import { useAlertContext } from './Alert.context';
 import { PressableRef } from '../../types';
+import { Icon } from '../Icon';
 
 const AlertLink = forwardRef<PressableRef, PressableProps>(({ children, ...props }, ref) => {
   return (
@@ -29,7 +30,7 @@ export const AlertLinkChevron: React.FC<ComponentProps<typeof ChevronRightSmallI
 }) => {
   const { colorScheme } = useAlertContext();
   styles.useVariants({ colorScheme });
-  return <ChevronRightSmallIcon {...props} style={styles.icon} />;
+  return <Icon as={ChevronRightSmallIcon} {...props} style={styles.icon} />;
 };
 
 AlertLink.displayName = 'AlertLink';

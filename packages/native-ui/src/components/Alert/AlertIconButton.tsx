@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native-unistyles';
 import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { useAlertContext } from './Alert.context';
 import { PressableRef } from '../../types';
+import { Icon } from '../Icon';
 
 const AlertIconButton = forwardRef<PressableRef, PressableProps>(({ children, ...props }, ref) => {
   return (
@@ -18,7 +19,7 @@ export const AlertIconButtonChevron: React.FC<ComponentProps<typeof ChevronRight
 }) => {
   const { colorScheme } = useAlertContext();
   styles.useVariants({ colorScheme });
-  return <ChevronRightMediumIcon {...props} style={styles.icon} />;
+  return <Icon as={ChevronRightMediumIcon} {...props} style={styles.icon} />;
 };
 
 AlertIconButton.displayName = 'AlertIconButton';

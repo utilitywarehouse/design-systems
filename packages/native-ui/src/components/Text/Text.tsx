@@ -58,16 +58,16 @@ const TextComp = forwardRef<Text, TextProps>(
           : {})}
         style={[
           styles.text,
-          {
-            ...(colorValue && { color: colorValue }),
-            ...(textTransform && { textTransform }),
-            ...(textAlign && { textAlign }),
-            ...(decorationColor && { textDecorationColor: decorationColor }),
-            ...(textDecorationLine && { textDecorationLine }),
-            ...(textDecorationStyle && { textDecorationStyle }),
-            ...(userSelect && { userSelect }),
-            ...(textAlignVertical && { textAlignVertical }),
-          },
+          styles.extra(
+            colorValue,
+            textTransform,
+            textAlign,
+            decorationColor,
+            textDecorationLine,
+            textDecorationStyle,
+            userSelect,
+            textAlignVertical
+          ),
           props.style,
         ]}
       >
@@ -128,6 +128,25 @@ const styles = StyleSheet.create(theme => ({
       },
     },
   },
+  extra: (
+    colorValue,
+    textTransform,
+    textAlign,
+    decorationColor,
+    textDecorationLine,
+    textDecorationStyle,
+    userSelect,
+    textAlignVertical
+  ) => ({
+    ...(colorValue && { color: colorValue }),
+    ...(textTransform && { textTransform }),
+    ...(textAlign && { textAlign }),
+    ...(decorationColor && { textDecorationColor: decorationColor }),
+    ...(textDecorationLine && { textDecorationLine }),
+    ...(textDecorationStyle && { textDecorationStyle }),
+    ...(userSelect && { userSelect }),
+    ...(textAlignVertical && { textAlignVertical }),
+  }),
 }));
 
 export default TextComp;
