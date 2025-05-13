@@ -49,7 +49,7 @@ const MyComponent = () => (
 Whereas with `native-ui`, you can use the following:
 
 ```tsx
-import { Text, Box } from '../../';
+import { Text, Box } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => (
   <Box>
@@ -89,12 +89,10 @@ This is because `native-ui` uses a custom font loader to load the fonts into the
 To make it easier to use the font weights, we have added aliases for the font weights. To use the aliases you need to use the `fontWeights` property. For example:
 
 ```tsx
-import { Text, Box, useStyles } from '../../';
+import { Text, Box, useTheme } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
-  const {
-    theme: { fontWeights, fontFamily, fontSizes },
-  } = useStyles();
+  const { fontWeights, fontFamily, fontSizes } = useTheme();
   return (
     <Box>
       <Text

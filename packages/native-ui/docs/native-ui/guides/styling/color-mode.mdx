@@ -9,21 +9,21 @@ import { BackToTopButton } from '../../../components';
 
 We can apply different styles based on different color mode by setting the `colorMode` prop on the `NativeUIProvider` component.
 
-- [Using the `isDark` or `isLight` prop on `createStyleSheet`](#using-the-isdark-or-islight-prop-on-createstylesheet)
-- [Using the `colorMode` prop on `createStyleSheet`](#using-the-colormode-prop-on-createstylesheet)
-- [Using the `isDark` or `isLight` prop on `useStyles` prop](#using-the-isdark-or-islight-prop-on-usestyles-prop)
-- [Using the `colorMode` prop on `useStyles` prop](#using-the-colormode-prop-on-usestyles-prop)
+- [Using the `isDark` or `isLight` prop on `StyleSheet`](#using-the-isdark-or-islight-prop-on-stylesheet)
+- [Using the `colorMode` prop on `StyleSheet`](#using-the-colormode-prop-on-stylesheet)
+- [Using the `isDark` or `isLight` prop on `useTheme` hook](#using-the-isdark-or-islight-prop-on-usetheme-hook)
+- [Using the `colorMode` prop on `useTheme` hook](#using-the-colormode-prop-on-usetheme-hook)
 - [Using the `useColorMode` hook](#using-the-usecolormode-hook)
 
 In the below example we are defining styles to be applied in dark mode, you can access the color mode using the `colorMode` theme token
 prop for example:
 
-#### Using the `isDark` or `isLight` prop on `createStyleSheet`
+#### Using the `isDark` or `isLight` prop on `StyleSheet`
 
 ```tsx
-import { useStyles, createStyleSheet } from '../../';
+import { StyleSheet } from '@utilitywarehouse/native-ui';
 
-const stylesheet = createStyleSheet(({ colors, isDark, isLight }) => ({
+const styles = StyleSheet.create(({ colors, isDark, isLight }) => ({
   container: {
     backgroundColor: isLight ? colors.cyan600 : colors.red600,
     flex: 1,
@@ -36,8 +36,6 @@ const stylesheet = createStyleSheet(({ colors, isDark, isLight }) => ({
 }));
 
 const MyComponent = () => {
-  const { styles } = useStyles(stylesheet);
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hello world</Text>
@@ -46,12 +44,12 @@ const MyComponent = () => {
 };
 ```
 
-#### Using the `colorMode` prop on `createStyleSheet`
+#### Using the `colorMode` prop on `StyleSheet`
 
 ```tsx
-import { useStyles, createStyleSheet } from '../../';
+import { StyleSheet } from '@utilitywarehouse/native-ui';
 
-const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
+const styles = StyleSheet.create(({ colors, colorMode }) => ({
   container: {
     backgroundColor: colorMode === 'dark' ? colors.cyan600 : colors.red600,
     flex: 1,
@@ -61,8 +59,6 @@ const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
 }));
 
 const MyComponent = () => {
-  const { styles } = useStyles(stylesheet);
-
   return (
     <View style={styles.container}>
       <Text>Hello world</Text>
@@ -71,15 +67,13 @@ const MyComponent = () => {
 };
 ```
 
-#### Using the `isDark` or `isLight` prop on `useStyles` prop
+#### Using the `isDark` or `isLight` prop on `useTheme` hook
 
 ```tsx
-import { useStyles } from '../../';
+import { useTheme } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
-  const {
-    theme: { isDark, isLight },
-  } = useStyles(stylesheet);
+  const { isDark, isLight } = useTheme();
 
   return (
     <View style={styles.container}>
@@ -90,15 +84,13 @@ const MyComponent = () => {
 };
 ```
 
-#### Using the `colorMode` prop on `useStyles` prop
+#### Using the `colorMode` prop on `useTheme` hook
 
 ```tsx
-import { useStyles } from '../../';
+import { useTheme } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
-  const {
-    theme: { colorMode },
-  } = useStyles(stylesheet);
+  const { colorMode } = useTheme();
 
   return (
     <View style={styles.container}>
@@ -111,7 +103,7 @@ const MyComponent = () => {
 #### Using the `useColorMode` hook
 
 ```tsx
-import { useColorMode } from '../../';
+import { useColorMode } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const MyComponent = () => {

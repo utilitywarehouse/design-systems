@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { View } from 'react-native';
 import TextareaProps from './Textarea.props';
 import { TextareaContext } from './Textarea.context';
@@ -9,7 +9,7 @@ const TextareaRoot = forwardRef<
   TextareaProps & { states?: { focus?: boolean; disabled?: boolean; readonly?: boolean } }
 >(({ children, style, states, validationStatus, showValidationIcon, ...props }, ref) => {
   const { focus = false, disabled = false, readonly = false } = states || {};
-  const { styles } = useStyles(stylesheet, {
+  styles.useVariants({
     focus,
     disabled,
     readonly,
@@ -40,7 +40,7 @@ const TextareaRoot = forwardRef<
 
 TextareaRoot.displayName = 'TextareaRoot';
 
-const stylesheet = createStyleSheet(({ space, colors, radii, colorMode, borderWidths }) => ({
+const styles = StyleSheet.create(({ space, colors, radii, colorMode, borderWidths }) => ({
   container: {
     borderWidth: borderWidths[2],
     borderTopColor: colors.grey500,

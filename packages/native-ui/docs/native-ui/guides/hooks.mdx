@@ -10,7 +10,6 @@ import BackToTopButton from '../../components/BackToTopButton';
 The following hooks are available in the Native UI library:
 
 - [React Native Aria](#react-native-aria)
-- [`useStyles`](#useStyles)
 - [`useToken`](#useToken)
 - [`useBreakpointValue`](#useBreakpointValue)
 - [`useMedia`](#useMedia)
@@ -22,30 +21,49 @@ The following hooks are available in the Native UI library:
 
 [React Native Aria](https://react-native-aria.geekyants.com/) brings the support of React Aria to React Native (Web, Android & iOS).
 
-## `useStyles`
+## `useTheme`
 
-`useStyles` is a hook to resolve values from the theme, the current breakpoint value and the styles to pass to components.
-[Read more here](/?path=/docs/native-ui-guides-styling-usestyles--docs)
+`useTheme` is a custom hook which return the current theme.
 
 ```tsx
-import { useStyles } from '../../';
-
-const { theme, breakpoint } = useStyles();
+import { useTheme } from '@utilitywarehouse/native-ui';
 ```
+
+Let's use our `useTheme` value to give background color to `View` from `react-native`.
+
+```tsx
+import { View } from 'react-native';
+import { useTheme } from '@utilitywarehouse/native-ui';
+
+function Example() {
+  const theme = useTheme();
+  return (
+    <View
+      style={{
+        width: 100,
+        height: 100,
+        backgroundColor: theme.colors.green500,
+      }}
+    />
+  );
+}
+```
+
+````
 
 ## `useToken`
 
 `useToken` is a custom hook to resolves design tokens from the theme.
 
 ```tsx
-import { useToken } from '../../';
-```
+import { useToken } from '@utilitywarehouse/native-ui';
+````
 
 Let's use our `useToken` value to give background color to `View` from `react-native`.
 
 ```tsx
 import { View } from 'react-native';
-import { useToken } from '../../';
+import { useToken } from '@utilitywarehouse/native-ui';
 
 function Example() {
   const resolvedGreen = useToken('colors', 'green500');
@@ -66,7 +84,7 @@ function Example() {
 `useBreakpointValue` is a custom hook to returns the value for the current breakpoint based on the provided responsive values object. It is also responsive to window resizing and returning the appropriate value according to the new window size.
 
 ```tsx
-import { useBreakpointValue } from '../../';
+import { useBreakpointValue } from '@utilitywarehouse/native-ui';
 ```
 
 ```tsx
@@ -102,7 +120,7 @@ const BreakPointValue = () => {
 `useMedia` is a custom hook that returns the breakpoints object with boolean value if your current screen size is a particular breakpoint or not. It is also responsive to window resizing and returning the appropriate value according to the new window size.
 
 ```tsx
-import { useMedia } from '../../';
+import { useMedia } from '@utilitywarehouse/native-ui';
 ```
 
 ```tsx
@@ -135,14 +153,14 @@ const MediaExample = () => {
 `useColorMode` is a custom hook which return current color mode.
 
 ```tsx
-import { useColorMode } from '../../';
+import { useColorMode } from '@utilitywarehouse/native-ui';
 ```
 
 Let's use our `useColorMode` value to give background color to `View` from `react-native`.
 
 ```tsx
 import { View } from 'react-native';
-import { useColorMode } from '../../';
+import { useColorMode } from '@utilitywarehouse/native-ui';
 
 function Example() {
   const colorMode = useColorMode();
@@ -182,34 +200,6 @@ function Example() {
         width: 100,
         height: 100,
         backgroundColor: viewBg,
-      }}
-    />
-  );
-}
-```
-
-## `useTheme`
-
-`useTheme` is a custom hook which return the current theme.
-
-```tsx
-import { useTheme } from '@utilitywarehouse/native-ui';
-```
-
-Let's use our `useTheme` value to give background color to `View` from `react-native`.
-
-```tsx
-import { View } from 'react-native';
-import { useTheme } from '@utilitywarehouse/native-ui';
-
-function Example() {
-  const theme = useTheme();
-  return (
-    <View
-      style={{
-        width: 100,
-        height: 100,
-        backgroundColor: theme.colors.green500,
       }}
     />
   );

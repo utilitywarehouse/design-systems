@@ -127,10 +127,10 @@ import {
   ActionsheetDragIndicatorWrapper,
   Box,
 } from '@utilitywarehouse/native-ui/lab';
-import { Button, createStyleSheet, Text, useStyles } from '@utilitywarehouse/native-ui';
+import { Button, StyleSheet, Text } from '@utilitywarehouse/native-ui';
 import React, { useState } from 'react';
 
-const stylesheet = createStyleSheet(({ space, colors, radii }) => ({
+const styles = StyleSheet.create(({ space, colors, radii }) => ({
   indicator: {
     width: space['16'],
     height: space['3'],
@@ -147,7 +147,6 @@ const stylesheet = createStyleSheet(({ space, colors, radii }) => ({
 const AdvancedActionsheet = () => {
   const [showActionsheet, setShowActionsheet] = useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
-  const { styles } = useStyles(stylesheet);
   return (
     <Box>
       <Button onPress={handleClose}>Open</Button>
@@ -183,9 +182,9 @@ export default AdvancedActionsheet;
 ```tsx
 import { Actionsheet, ActionsheetContent } from '@utilitywarehouse/native-ui/lab';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Heading, Text, Button, createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
+import { Heading, Text, Button, StyleSheet, useTheme } from '@utilitywarehouse/native-ui';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(({ space }) => ({
   content: {
     paddingBottom: space['0'],
   },
@@ -200,7 +199,6 @@ const stylesheet = createStyleSheet(({ space }) => ({
 const MyComponent = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
-  const { styles } = useStyles(stylesheet);
   return (
     <Box h="$96" alignItems="center" justifyContent="center">
       <Button onPress={handleClose}>

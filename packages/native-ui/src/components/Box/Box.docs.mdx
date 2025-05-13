@@ -17,9 +17,6 @@ If you're looking for a flexible component to help with low-level layout needs, 
 
 ## Usage
 
-> The `Box` component comes witha slight performance overhead compared to using a `View` component directly.
-> It should be used sparingly and for more complex layouts use the `createStyleSheet` function and `useStyles` hook.
-
 <UsageWrap>
   <Center>
     <Box
@@ -38,17 +35,17 @@ If you're looking for a flexible component to help with low-level layout needs, 
 </UsageWrap>
 
 ```jsx
-import { Text, useStyles } from '@utilitywarehouse/native-ui';
+import { Text, useTheme } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const MyComponent = () => {
   const {
-    theme: { colors, radii, space },
-  } = useStyles();
+    colors, radii, space }
+  } = useTheme();
 
   return (
     <Box
-      // You can use the theme values from the useStyles hook
+      // You can use the theme values from the useTheme hook
       p={space[3]}
       // Or the built in typed values by using the '$' prefix
       m="$4"

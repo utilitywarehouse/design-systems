@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { ComponentType, forwardRef } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { useTextareaContext } from './Textarea.context';
 import { Icon, IconProps } from '../Icon';
 import type { SvgRef } from '../../types';
@@ -10,7 +10,7 @@ import type { SvgRef } from '../../types';
 const TextareaIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
   ({ children, ...props }, ref) => {
     const { disabled } = useTextareaContext();
-    const { styles } = useStyles(stylesheet, { disabled });
+    styles.useVariants({ disabled });
     return (
       <Icon
         ref={ref}
@@ -32,7 +32,7 @@ const TextareaIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
 
 TextareaIcon.displayName = 'TextareaIcon';
 
-const stylesheet = createStyleSheet(({ colors, tokens }) => ({
+const styles = StyleSheet.create(({ colors, tokens }) => ({
   icon: {
     color: tokens.input.iconColor,
     width: 24,

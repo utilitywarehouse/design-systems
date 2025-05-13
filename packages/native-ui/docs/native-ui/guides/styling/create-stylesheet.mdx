@@ -1,69 +1,122 @@
 import { Meta } from '@storybook/blocks';
 import { Center, NativeUIProvider } from '../../../../src';
 
-<Meta title="Guides / Styling / createStyleSheet" />
+<Meta title="Guides / Styling / StyleSheet" />
 
-# createStyleSheet
+# StyleSheet
 
 Utility for building your StyleSheets with superpowers. It can be imported from the `@utilitywarehouse/native-ui` package:
 
+The StyleSheet is built on top of [React Native Unistyles](https://www.unistyl.es/v3/start/introduction), which
+is a cross-platform library that enables you to share up to 100% of your styles across all platforms.
+It combines the simplicity of StyleSheet with the performance of C++.
+
+## create
+
+The create function supports all styles that React Native's StyleSheet does, and it also enables some superpowers 🦸🏼‍♂️. It can parse your variants, compoundVariants or dynamic functions (even if you haven’t configured Unistyles yet!).
+
+Once you register your themes and breakpoints, it unlocks even more features, like injecting the current theme or miniRuntime into your stylesheet. It also assists you with TypeScript autocompletion for your styles.
+
+#### Example usage:
+
 ```tsx
-import { createStyleSheet } from '../../';
+const styles = StyleSheet.create((theme, rt) => ({
+    container: {
+        backgroundColor: theme.colors.background,
+        variants: {
+            size: {
+                small: {
+                    width: 100,
+                    height: 100
+                },
+                medium: {
+                    width: 200,
+                    height: 200
+                },
+                large: {
+                    width: 300,
+                    height: 300
+                }
+            },
+            isPrimary: {
+                true: {
+                    color: theme.colors.primary
+                },
+                default: {
+                    color: theme.colors.secondary
+                },
+                special: {
+                    color: theme.colors.special
+                }
+            }
+        }
+    },
+    text: {
+        fontSize: rt.fontScale * 20,
+        color: {
+            sm: theme.colors.text,
+            md: theme.colors.textSecondary
+        }
+    })
+}))
 ```
 
-This tool is interchangeable with React Native's `StyleSheet.create`.
-
-`crateStyleSheet` accepts both `object` or `function`.
-
-## Basic usage (object)
-
-If you pass an object to the `createStyleSheet` it will work the same like with `StyleSheet.create`.
-With this tool you can now use variants, breakpoints and media queries.
+Will be eg. parsed to:
 
 ```tsx
-const stylesheet = createStyleSheet({
+{
+    container: {
+        backgroundColor: '#000',
+        width: 200,
+        height: 200,
+        color: '#ff33aa'
+    },
+    text: {
+        fontSize: 32,
+        color: 'gold'
+    }
+}
+```
+
+Unistyles StyleSheet will automatically react and re-calculate your styles if any of your dependencies change. Learn more about it here.
+
+`StyleSheet.create` supports 3 ways of defining your stylesheets:
+
+## Static StyleSheet
+
+```tsx
+import { StyleSheet } from 'react-native-unistyles';
+
+const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: 'red',
   },
 });
 ```
 
-## Basic usage (function)
-
-When you pass a function to `createStyleSheet` it automatically injects a theme as the first argument for you.
-
-The values on the theme include `colorMode`, `platform` and the [design tokens](/docs/native-ui-guides-styling-theme-tokens--docs)
-which include `colors`, `radii`, `space`, `fontSizes`, `fontWeights`, `letterSpacings`, `lineHeights`, `fonts`,
-`shadows`, `breakpoints`, `borders`, `borderWidths`.
+## Themable StyleSheet
 
 ```tsx
-const stylesheet = createStyleSheet(theme => ({
+import { StyleSheet } from 'react-native-unistyles';
+
+const styles = StyleSheet.create(theme => ({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: theme.colors.grey100,
+    backgroundColor: theme.colors.background,
   },
 }));
 ```
 
-In addition to the theme argument, you can also accept the runtime argument when passing a function. This can be useful
-for accessing [UnistylesRuntime](https://www.unistyl.es/reference/unistyles-runtime/) and its properties (such as screen
-orientation, dimensions, insets, and more) without having to import this class directly.
+## Themable StyleSheet with miniRuntime
 
 ```tsx
-const stylesheet = createStyleSheet((theme, runtime) => ({
+import { StyleSheet } from 'react-native-unistyles';
+
+const styles = StyleSheet.create((theme, rt) => ({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: runtime.insets.top,
-    backgroundColor:
-      runtime.orientation === 'portrait' ? theme.colors.cyan100 : theme.colors.red100,
+    backgroundColor: theme.colors.background,
+    paddingTop: rt.insets.top,
   },
 }));
 ```
 
-Importantly, you'll receive the same TypeScript hints as with `StyleSheet.create`!
+Learn more about miniRuntime [here](https://www.unistyl.es/v3/references/mini-runtime/).

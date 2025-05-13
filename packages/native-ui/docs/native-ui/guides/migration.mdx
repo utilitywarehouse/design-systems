@@ -277,7 +277,7 @@ Replace all `IconButton` components from `@utilitywarehouse/uw-native-ui` with `
 
 ```tsx
 - import { IconButton } from '@utilitywarehouse/uw-native-ui';
-+ import { IconButton } from '../../';
++ import { IconButton } from '@utilitywarehouse/native-ui';
 import { AddMediumIcon } from '@utilitywarehouse/react-native-icons';
 
 ...
@@ -383,9 +383,9 @@ import {
   ActionsheetDragIndicator,
   ActionsheetDragIndicatorWrapper,
 } from '@utilitywarehouse/native-ui/lab';
-import { Box, Text, Button, createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
+import { Box, Text, Button, StyleSheet } from '@utilitywarehouse/native-ui';
 
-const stylesheet = createStyleSheet(({ space, colors, radii }) => ({
+const styles = StyleSheet.create(({ space, colors, radii }) => ({
   content: {
     padding: space['4'],
     backgroundColor: colors.white,
@@ -399,7 +399,6 @@ const MyComponent = () => {
   const [isVisible, setIsVisible] = useState(false);
   const handleClose = () => setIsVisible(false);
   const handleOpen = () => setIsVisible(true);
-  const { styles } = useStyles(stylesheet);
 
   return (
     <Box>
@@ -906,7 +905,7 @@ For more info see the [Text](/docs/native-ui-components-text--docs) and [Heading
 
 `@utilitywarehouse/uw-native-ui` uses `StyleSheet` from `react-native` for styling, whereas `@utilitywarehouse/native-ui` uses
 `react-native-unitstyles` for styles. You can still use the `StyleSheet` from `react-native` with `@utilitywarehouse/native-ui` but
-it is recommended to use the `createStyleSheet` method and `useStyles` hook for styling. With the `Box` component you can use
+it is recommended to use the `StyleSheet.create` method from `native-ui` for styling. With the `Box` component you can use
 utility props for styling. See out [Styling](/docs/native-ui-guides-styling-overview--docs) documentation for more info.
 
 ### `StyleSheet`
@@ -916,7 +915,7 @@ utility props for styling. See out [Styling](/docs/native-ui-guides-styling-over
 - import { makeStyles } from '@utilitywarehouse/uw-native-ui';
 + import { Box } from '@utilitywarehouse/native-ui';
 // or
-+ import { createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
++ import { StyleSheet } from '@utilitywarehouse/native-ui';
 
 - const useStyles = makeStyles(theme => ({
 -   container: {
@@ -924,7 +923,7 @@ utility props for styling. See out [Styling](/docs/native-ui-guides-styling-over
 -   },
 - }));
 
-+ const stylesheet = createStyleSheet(theme => ({
++ const styles = StyleSheet.create(theme => ({
 +   container: {
 +   backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey75,
 +  },
@@ -933,7 +932,6 @@ utility props for styling. See out [Styling](/docs/native-ui-guides-styling-over
 ...
 
 - const styles = useStyles();
-+ const styles = useStyles(stylesheet);
   return (
     <View style={styles.container}>
 ...
@@ -982,14 +980,14 @@ Dark mode is also baked into the styling so you no longer need to use the `Dynam
 
 ```tsx
 - import { DynamicValue, makeDynamicStyles, Typography } from '@utilitywarehouse/uw-native-ui';
-+ import { Box, Text, useStyles, createStyleSheet } from '@utilitywarehouse/native-ui';
++ import { Box, Text, StyleSheet } from '@utilitywarehouse/native-ui';
 
 - const useDynamicStyles = makeDynamicStyles(theme => ({
 -   root: {
 -     backgroundColor: new DynamicValue('white', 'black');
 -     margin: 20,
 -   },
-+ const stylesheet = createStyleSheet(theme => ({
++ const styles = StyleSheet.create(theme => ({
 +   root: {
 +     backgroundColor: theme.isLight ? theme.colors.white : theme.colors.black,
 +     margin: 20,
@@ -998,7 +996,6 @@ Dark mode is also baked into the styling so you no longer need to use the `Dynam
 
 const MyComponent = () => {
 - const styles = useDynamicStyles();
-+ const styles = useStyles(stylesheet);
 
   return (
     <View style={styles.root}>
@@ -1052,7 +1049,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // New
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey75,
     borderRadius: theme.radii.md,
@@ -1072,7 +1069,7 @@ const useDynamicStyles = makeDynamicStyles(theme => ({
 }));
 
 // New
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
   text: {
     color: theme.isLight ? theme.colors.brandMidnight : theme.colors.white,
   },
@@ -1082,7 +1079,7 @@ const stylesheet = createStyleSheet(theme => ({
 The new theme also includes boolean properties for easily checking the current theme mode:
 
 ```tsx
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
   card: {
     // Use theme.isLight or theme.isDark for conditional styling
     backgroundColor: theme.isLight ? theme.colors.white : theme.colors.grey100,
@@ -1183,13 +1180,13 @@ For text and surface colors, it's recommended to use theme-based variables:
 For dynamic color values that adapt to light/dark mode:
 
 ```tsx
-import { useLightDark, createStyleSheet, useStyles } from '@utilitywarehouse/native-ui';
+import { useLightDark, StyleSheet } from '@utilitywarehouse/native-ui';
 
 // For single values
 const textColor = useLightDark(theme.colors.grey900, theme.colors.grey100);
 
 // For style objects
-const stylesheet = createStyleSheet(theme => ({
+const stylesheet = StyleSheet.create(theme => ({
   text: {
     color: theme.isLight ? theme.colors.grey900 : theme.colors.grey100,
   },

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { ComponentType, forwardRef } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { useTextareaContext } from './Textarea.context';
 import { Icon, IconProps } from '../Icon';
 import type { SvgRef } from '../../types';
@@ -13,7 +13,7 @@ import {
 const TextareaIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
   ({ as, ...props }, ref) => {
     const { disabled, validationStatus } = useTextareaContext();
-    const { styles } = useStyles(stylesheet, { disabled, validationStatus });
+    styles.useVariants({ disabled, validationStatus });
     const ValidationIcon =
       validationStatus === 'invalid' ? WarningMediumContainedIcon : TickMediumContainedIcon;
     return (
@@ -36,7 +36,7 @@ const TextareaIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
 
 TextareaIcon.displayName = 'TextareaIcon';
 
-const stylesheet = createStyleSheet(({ colors, space, colorMode }) => ({
+const styles = StyleSheet.create(({ colors, space, colorMode }) => ({
   icon: {
     color: colors.grey700,
     width: 24,

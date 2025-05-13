@@ -33,23 +33,23 @@ It has colors, typography, size, opacity, shadows, breakpoints and more.
 
 ## How to Use Tokens
 
-To use the theme tokens in your components, you can use the `useStyles` hook to access the theme values or pass a function
-to `createStyleSheet` to access the theme values. You can also use the `Box` component and the `$` prefix to access the theme values.
+To use the theme tokens in your components, you can use the `useTheme` hook to access the theme values or pass a function
+to `StyleSheet.create` to access the theme values. You can also use the `Box` component and the `$` prefix to access the theme values.
 
 ```tsx
-import { Text, useStyles } from '../../';
-import { Box } from '@utilitywarehouse/native-ui/lab';
+import { Text, Box, useTheme } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
   const {
-    styles,
-    // You can access the theme values via the useStyles hook
-    theme: { colors, radii, space },
-  } = useStyles();
+    // You can access the theme values via the useTheme hook
+    colors,
+    radii,
+    space,
+  } = useTheme();
 
   return (
     <Box
-      // You can use the theme values from the useStyles hook
+      // You can use the theme values from the useTheme hook
       p={space[3]}
       // Or the built in typed values by using the '$' prefix
       m="$4"
@@ -63,7 +63,7 @@ const MyComponent = () => {
   );
 };
 
-const stylesheet = createStyleSheet(theme => ({
+const styles = StyleSheet.create(theme => ({
   text: {
     // You can access the theme values via the theme argument
     fontFamily: theme.fonts.body,
