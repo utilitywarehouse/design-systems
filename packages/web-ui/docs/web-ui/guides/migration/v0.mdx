@@ -843,6 +843,17 @@ Included codemods:
 Please make sure you fix any linting or formatting issues before continuing to
 run any further codemods.
 
+### Package name
+
+If you have used NPM aliasing because you have multiple major versions of Web
+UI in your app, for instance you have Web UI v0 imported in your app as
+`@utilitywarehouse/web-ui-v0`, then you can use the `packageName` flag to
+ensure the codemod updates import paths as needed.
+
+```console
+npx @utilitywarehouse/ds-codemod web-ui/v0/migration <path> --packageName=web-ui-v0
+```
+
 ### Required
 
 #### Import Paths

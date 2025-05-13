@@ -1,6 +1,7 @@
 {
   "include": [
     "./src",
+    "src/components/Textarea/Textarea.tsx",
   ],
   "exclude": [
     "node_modules",

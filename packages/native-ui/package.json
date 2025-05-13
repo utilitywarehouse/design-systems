@@ -1,6 +1,6 @@
 {
   "name": "@utilitywarehouse/native-ui",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "description": "Utility Warehouse React Native UI library",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -35,6 +35,7 @@
     "@gluestack-ui/radio": "0.1.33",
     "@gluestack-ui/spinner": "0.1.14",
     "@gluestack-ui/switch": "0.1.22",
+    "@gluestack-ui/textarea": "0.1.23",
     "@utilitywarehouse/colour-system": "workspace:^",
     "@utilitywarehouse/design-tokens": "workspace:^",
     "@utilitywarehouse/react-native-icons": "1.14.0",

@@ -1,5 +1,17 @@
 # @utilitywarehouse/native-ui
 
+## 0.13.0
+
+### Minor Changes
+
+- [#680](https://github.com/utilitywarehouse/design-systems/pull/680) [`c5efb3d`](https://github.com/utilitywarehouse/design-systems/commit/c5efb3d7df02c02c444d9f1374f047ae933dce23) Thanks [@jordmccord](https://github.com/jordmccord)! - Adds `Textarea` component
+
+## 0.12.2
+
+### Patch Changes
+
+- [`9da80df`](https://github.com/utilitywarehouse/design-systems/commit/9da80df874e7baa3c7e9f0f4aa71ff4b8abce30e) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixes missing ref on `Accordion` trigger
+
 ## 0.12.1
 
 ### Patch Changes

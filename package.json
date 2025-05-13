@@ -24,6 +24,7 @@
     "setup": "corepack enable && corepack prepare pnpm@9 --activate",
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "build:web-ui": "turbo run @utilitywarehouse/web-ui#build @utilitywarehouse/web-ui#build:storybook",
     "build:storybook": "turbo run build:storybook",
     "build:colour-system": "pnpm build --filter \"@utilitywarehouse/colour-system\"",
     "generate": "turbo run generate && turbo run format",
