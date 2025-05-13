@@ -161,7 +161,7 @@ const preview: Preview = {
             [
               'Overview',
               'Theme Tokens',
-              'createStyleSheet',
+              'StyleSheet',
               'useStyles',
               'Dynamic Functions',
               'Color Mode',

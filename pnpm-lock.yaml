@@ -152,8 +152,8 @@ importers:
         specifier: ^15.8.0
         version: 15.8.0(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
       react-native-unistyles:
-        specifier: 3.0.0-beta.8
-        version: 3.0.0-beta.8(@react-native/normalize-colors@0.77.0)(react-native-edge-to-edge@1.4.3(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native-nitro-modules@0.24.1(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
+        specifier: 3.0.0-rc.4
+        version: 3.0.0-rc.4(@react-native/normalize-colors@0.77.0)(react-native-edge-to-edge@1.4.3(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native-nitro-modules@0.24.1(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native-reanimated@3.16.7(@babel/core@7.26.7)(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
       react-native-web:
         specifier: ~0.19.13
         version: 0.19.13(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
@@ -325,7 +325,7 @@ importers:
     dependencies:
       '@expo/html-elements':
         specifier: latest
-        version: 0.11.2
+        version: 0.12.5
       '@gluestack-ui/accordion':
         specifier: 1.0.7
         version: 1.0.7(react-dom@18.3.1(react@18.2.0))(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
@@ -463,8 +463,8 @@ importers:
         specifier: ~3.16.5
         version: 3.16.7(@babel/core@7.26.7)(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
       react-native-unistyles:
-        specifier: 3.0.0-beta.8
-        version: 3.0.0-beta.8(@react-native/normalize-colors@0.77.0)(react-native-edge-to-edge@1.4.3(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native-nitro-modules@0.24.1(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
+        specifier: 3.0.0-rc.4
+        version: 3.0.0-rc.4(@react-native/normalize-colors@0.77.0)(react-native-edge-to-edge@1.4.3(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native-nitro-modules@0.24.1(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native-reanimated@3.16.7(@babel/core@7.26.7)(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
       react-native-web:
         specifier: ^0.19.13
         version: 0.19.13(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
@@ -2117,8 +2117,8 @@ packages:
     resolution: {integrity: sha512-gNyn1KnAOpEa8gSNsYqXMTcq0fSwqU/vit6fP5863vLSKxHm/dNt/gm/uZJxrRZxKq71KUJWF6I7d3z8qIfq5g==}
     hasBin: true
 
-  '@expo/html-elements@0.11.2':
-    resolution: {integrity: sha512-OC98eZ4mMzpFQq/KF9t+CGC4Vcg4RnoOxWAzSmNVd3VZ2dFFi64QCoHlT719wDmuccemn1VPXu1/rFvOGmJgOg==}
+  '@expo/html-elements@0.12.5':
+    resolution: {integrity: sha512-28KWO88YKykKU7ke5sEQs5TivFRMs1Aktz13xxgqAf5rTgb+lka0VKVt3W2fG7ksbUQ407rtUqz7SEAq298NvQ==}
 
   '@expo/image-utils@0.6.5':
     resolution: {integrity: sha512-RsS/1CwJYzccvlprYktD42KjyfWZECH6PPIEowvoSmXfGLfdViwcUEI4RvBfKX5Jli6P67H+6YmHvPTbGOboew==}
@@ -9360,8 +9360,8 @@ packages:
       react: 18.2.0
       react-native: '*'
 
-  react-native-unistyles@3.0.0-beta.8:
-    resolution: {integrity: sha512-fMUYTC7+zrXhpyfJ9Z5xmVGHTV2VRsNExQwomjnTWO74M/O/PEg+2jKLJ9MnGyHb/70cFV0mjL7Hl/7Olb1T3w==}
+  react-native-unistyles@3.0.0-rc.4:
+    resolution: {integrity: sha512-YpVd1ylkYkycIRs1lEamOAlWe/PTKzEGyAhqsuRyftxeXBr/rqT1A9xlrLF+s26TG820QNeITpqS8HEwK/UXuw==}
     engines: {node: '>= 18.0.0'}
     peerDependencies:
       '@react-native/normalize-colors': '*'
@@ -9369,6 +9369,10 @@ packages:
       react-native: '>=0.76.0'
       react-native-edge-to-edge: '*'
       react-native-nitro-modules: '*'
+      react-native-reanimated: '*'
+    peerDependenciesMeta:
+      react-native-reanimated:
+        optional: true
 
   react-native-url-polyfill@2.0.0:
     resolution: {integrity: sha512-My330Do7/DvKnEvwQc0WdcBnFPploYKp9CYlefDXzIdEaA+PAhDYllkvGeEroEzvc4Kzzj2O4yVdz8v6fjRvhA==}
@@ -13558,7 +13562,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@expo/html-elements@0.11.2': {}
+  '@expo/html-elements@0.12.5': {}
 
   '@expo/image-utils@0.6.5':
     dependencies:
@@ -23251,13 +23255,15 @@ snapshots:
       react-native: 0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0)
       warn-once: 0.1.1
 
-  react-native-unistyles@3.0.0-beta.8(@react-native/normalize-colors@0.77.0)(react-native-edge-to-edge@1.4.3(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native-nitro-modules@0.24.1(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0):
+  react-native-unistyles@3.0.0-rc.4(@react-native/normalize-colors@0.77.0)(react-native-edge-to-edge@1.4.3(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native-nitro-modules@0.24.1(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native-reanimated@3.16.7(@babel/core@7.26.7)(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0))(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0):
     dependencies:
       '@react-native/normalize-colors': 0.77.0
       react: 18.2.0
       react-native: 0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0)
       react-native-edge-to-edge: 1.4.3(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
       react-native-nitro-modules: 0.24.1(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
+    optionalDependencies:
+      react-native-reanimated: 3.16.7(@babel/core@7.26.7)(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0))(react@18.2.0)
 
   react-native-url-polyfill@2.0.0(react-native@0.77.0(@babel/core@7.26.7)(@babel/preset-env@7.26.0(@babel/core@7.26.7))(@react-native-community/cli-server-api@13.6.9)(@types/react@18.3.14)(react@18.2.0)):
     dependencies:
