@@ -382,6 +382,7 @@ import {
   ListItemTrailingContent,
   ListItemTrailingIcon,
   ListItemContent,
+  Box,
   Badge,
   BadgeText,
   HStack,
@@ -393,7 +394,6 @@ import {
   ElectricityMediumIcon,
   GasMediumIcon,
 } from '@utilitywarehouse/react-native-icons';
-import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const BadgeList = () => {
   const colorMode = useColorMode();
@@ -535,6 +535,7 @@ You can also use the list to display a list of radio buttons. You can achieve th
 
 ```tsx
 import {
+  Box,
   List,
   ListItem,
   Card,
@@ -543,7 +544,6 @@ import {
   Image,
   useColorMode,
 } from '@utilitywarehouse/native-ui';
-import { Box } from '@utilitywarehouse/native-ui/lab';
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 

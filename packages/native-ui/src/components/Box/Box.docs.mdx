@@ -35,13 +35,10 @@ If you're looking for a flexible component to help with low-level layout needs, 
 </UsageWrap>
 
 ```jsx
-import { Text, useTheme } from '@utilitywarehouse/native-ui';
-import { Box } from '@utilitywarehouse/native-ui/lab';
+import { Box, Text, useTheme } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
-  const {
-    colors, radii, space }
-  } = useTheme();
+  const { colors, radii, space } = useTheme();
 
   return (
     <Box

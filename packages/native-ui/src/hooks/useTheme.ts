@@ -1,7 +1,7 @@
-import { useUnistyles } from 'react-native-unistyles';
+import { UnistylesRuntime } from 'react-native-unistyles';
 
 const useTheme = () => {
-  const { theme } = useUnistyles();
+  const theme = UnistylesRuntime.getTheme();
   return theme;
 };
 
