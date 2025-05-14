@@ -17,6 +17,7 @@ export * from './Input';
 export * from './Center';
 export * from './HStack';
 export * from './VStack';
+export * from './Flex';
 export * from './Icon';
 export * from './Divider';
 export * from './Switch';
