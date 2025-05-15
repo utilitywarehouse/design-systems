@@ -41,7 +41,7 @@ const meta = {
       description: 'The justify of the flex container.',
     },
     space: {
-      options: ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'],
+      options: ['none', 'xs', 'sm', 'md', 'lg', 'xl'],
       control: 'radio',
       description: 'The space of the flex container.',
     },
@@ -65,12 +65,13 @@ export const Playground: Story = {
       {Array.from({ length: 4 }).map((_, index) => (
         <Box
           key={index}
-          bg={`$grey${index + 1}00`}
+          // @ts-expect-error - Box does not support dynamic bg colors yet
+          bg={`$grey${index + 2}00`}
           w={100 + index * 10}
           h={100 + index * 10}
           borderColor="$grey800"
-          borderWidth="2"
           borderRadius="md"
+          borderWidth="2"
         />
       ))}
     </Flex>

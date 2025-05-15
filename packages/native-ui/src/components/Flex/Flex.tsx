@@ -40,33 +40,7 @@ const styles = StyleSheet.create(theme => ({
   flex: {
     display: 'flex',
     variants: {
-      space: {
-        none: {},
-        xs: {
-          gap: theme.space['1'],
-        },
-        sm: {
-          gap: theme.space['2'],
-        },
-        md: {
-          gap: theme.space['3'],
-        },
-        lg: {
-          gap: theme.space['4'],
-        },
-        xl: {
-          gap: theme.space['5'],
-        },
-        '2xl': {
-          gap: theme.space['6'],
-        },
-        '3xl': {
-          gap: theme.space['7'],
-        },
-        '4xl': {
-          gap: theme.space['8'],
-        },
-      },
+      space: theme.globalStyle.variants.space,
     },
   },
 }));

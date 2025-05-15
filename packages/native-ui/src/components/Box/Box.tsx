@@ -117,7 +117,66 @@ const themeStyleMapping: { [key in keyof ViewStyle]?: string } = {
   borderWidth: 'borderWidths',
 };
 
-const resolveThemeValue = (value: any, themeMapping: any): any => {
+export const themeStyleMappingNew: { [key in keyof ViewStyle]?: string } = {
+  // Space related
+  top: 'space',
+  bottom: 'space',
+  left: 'space',
+  right: 'space',
+  padding: 'space',
+  paddingHorizontal: 'space',
+  paddingVertical: 'space',
+  paddingTop: 'space',
+  paddingBottom: 'space',
+  paddingLeft: 'space',
+  paddingRight: 'space',
+  paddingEnd: 'space',
+  paddingStart: 'space',
+  margin: 'space',
+  marginHorizontal: 'space',
+  marginVertical: 'space',
+  marginTop: 'space',
+  marginBottom: 'space',
+  marginLeft: 'space',
+  marginRight: 'space',
+  marginEnd: 'space',
+  marginStart: 'space',
+  columnGap: 'space',
+  gap: 'space',
+  rowGap: 'space',
+  height: 'space',
+  width: 'space',
+  minHeight: 'space',
+  minWidth: 'space',
+  maxWidth: 'space',
+  maxHeight: 'space',
+  start: 'space',
+  end: 'space',
+  // Border radii
+  borderRadius: 'borderRadius',
+  borderBottomEndRadius: 'borderRadius',
+  borderBottomLeftRadius: 'borderRadius',
+  borderBottomRightRadius: 'borderRadius',
+  borderBottomStartRadius: 'borderRadius',
+  borderTopEndRadius: 'borderRadius',
+  borderTopLeftRadius: 'borderRadius',
+  borderTopRightRadius: 'borderRadius',
+  borderTopStartRadius: 'borderRadius',
+  borderEndEndRadius: 'borderRadius',
+  borderEndStartRadius: 'borderRadius',
+  borderStartEndRadius: 'borderRadius',
+  borderStartStartRadius: 'borderRadius',
+  // Border widths
+  borderBottomWidth: 'borderWidth',
+  borderEndWidth: 'borderWidth',
+  borderLeftWidth: 'borderWidth',
+  borderRightWidth: 'borderWidth',
+  borderStartWidth: 'borderWidth',
+  borderTopWidth: 'borderWidth',
+  borderWidth: 'borderWidth',
+};
+
+const resolveThemeValue = (value: any, themeMapping: any, newThemeMapping: any): any => {
   if (
     typeof value === 'string' &&
     value.startsWith('$') &&
@@ -128,6 +187,14 @@ const resolveThemeValue = (value: any, themeMapping: any): any => {
     if (themeMapping[key] !== undefined) {
       return themeMapping[key];
     }
+    return value;
+  } else if (
+    typeof value === 'string' &&
+    newThemeMapping &&
+    typeof newThemeMapping === 'object' &&
+    newThemeMapping[value] !== undefined
+  ) {
+    return newThemeMapping[value];
   }
   return value;
 };
@@ -302,9 +369,14 @@ const styles = StyleSheet.create(theme => ({
 
       // Resolve theme value if needed
       const themeKey = themeStyleMapping[stylePropName] as keyof typeof theme;
+      const newThemeKey = themeStyleMappingNew[stylePropName] as keyof typeof theme;
 
       if (themeKey && theme[themeKey]) {
-        computedStyles[stylePropName] = resolveThemeValue(propValue, theme[themeKey]);
+        computedStyles[stylePropName] = resolveThemeValue(
+          propValue,
+          theme[themeKey],
+          theme[newThemeKey]
+        );
       } else {
         computedStyles[stylePropName] = propValue;
       }
@@ -318,7 +390,8 @@ type BoxComponentType = <T extends React.ElementType = typeof View>(
   props: PolymorphicComponentProps<T, BoxProps<T>> & { ref?: PolymorphicRef<T> }
 ) => React.ReactElement | null;
 
-const Box = memo(forwardRef(BoxComponent as any) as BoxComponentType & { displayName?: string });
+// @ts-expect-error - TypeScript doesn't infer the type correctly here
+const Box = memo(forwardRef(BoxComponent)) as BoxComponentType & { displayName?: string };
 
 Box.displayName = 'Box';
 

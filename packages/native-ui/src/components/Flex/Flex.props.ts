@@ -5,7 +5,7 @@ interface FlexProps extends ViewProps {
   align?: FlexAlignType;
   justify?: ViewStyle['justifyContent'];
   wrap?: ViewStyle['flexWrap'];
-  space?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+  space?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
 export default FlexProps;
