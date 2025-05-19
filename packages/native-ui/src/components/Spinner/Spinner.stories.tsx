@@ -25,7 +25,7 @@ const meta = {
   },
   args: {
     size: 'md',
-    color: '$purple800',
+    color: undefined,
   },
 } satisfies Meta<typeof Spinner>;
 

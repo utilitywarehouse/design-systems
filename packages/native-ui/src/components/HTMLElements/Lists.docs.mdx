@@ -1,0 +1,104 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/blocks';
+import { UL, OL, LI, Center, Text } from '../..';
+import { ViewFigmaButton, BackToTopButton, UsageWrap } from '../../../docs/components';
+
+<Meta title="Utility Components / UL & OL (Lists)" />
+
+<BackToTopButton />
+
+# UL & OL (Lists)
+
+The `UL` (Unordered List) and `OL` (Ordered List) components are used to display lists of items. `UL` displays a bulleted list, and `OL` displays a numbered list. The `LI` (List Item) component is used to define each item within these lists.
+
+- [Usage](#usage)
+- [Components](#components)
+
+## Usage
+
+### Unordered List (UL)
+
+<UsageWrap>
+  <Center>
+    <UL>
+      <LI>First item</LI>
+      <LI>Second item</LI>
+      <LI>
+        <Text>Third item with </Text>
+        <Text weight="bold">bold text</Text>
+      </LI>
+    </UL>
+  </Center>
+</UsageWrap>
+
+```tsx
+import { UL, LI } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <UL>
+      <LI>First item</LI>
+      <LI>Second item</LI>
+      <LI>Third item</LI>
+    </UL>
+  );
+};
+```
+
+### Ordered List (OL)
+
+<UsageWrap>
+  <Center>
+    <OL>
+      <LI>First step</LI>
+      <LI>Second step</LI>
+      <LI>
+        <Text>Third item with </Text>
+        <Text weight="bold">bold text</Text>
+      </LI>
+    </OL>
+  </Center>
+</UsageWrap>
+
+```tsx
+import { OL, LI } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <OL>
+      <LI>First step</LI>
+      <LI>Second step</LI>
+      <LI>Third step</LI>
+    </OL>
+  );
+};
+```
+
+## Components
+
+### `UL`
+
+The `UL` component is a container for unordered list items. It inherits all the properties of React Native's [`View` component](https://reactnative.dev/docs/view).
+
+| Property      | Type              | Default | Description                                         |
+| ------------- | ----------------- | ------- | --------------------------------------------------- |
+| `gap`         | `SpaceValue`      | `'100'` | The gap between the list items.                     |
+| `bulletStyle` | `ViewStyle`       | -       | Custom style for the bullet points.                 |
+| `children`    | `React.ReactNode` | -       | The `LI` components to be rendered within the list. |
+
+### `OL`
+
+The `OL` component is a container for ordered list items. It inherits all the properties of React Native's [`View` component](https://reactnative.dev/docs/view).
+
+| Property      | Type              | Default | Description                                         |
+| ------------- | ----------------- | ------- | --------------------------------------------------- |
+| `gap`         | `SpaceValue`      | `'100'` | The gap between the list items.                     |
+| `bulletStyle` | `ViewStyle`       | -       | Custom style for the numbers.                       |
+| `children`    | `React.ReactNode` | -       | The `LI` components to be rendered within the list. |
+
+### `LI`
+
+The `LI` component represents an item in a list. It wraps its children in a `Text` component if the children are a string. It inherits all the properties of React Native's [`View` component](https://reactnative.dev/docs/view).
+
+| Property   | Type              | Default | Description                                       |
+| ---------- | ----------------- | ------- | ------------------------------------------------- |
+| `children` | `React.ReactNode` | -       | The content to be displayed inside the list item. |

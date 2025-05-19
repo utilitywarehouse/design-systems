@@ -1,4 +1,4 @@
-import { Meta, Primary, Controls, Story, Canvas } from '@storybook/blocks';
+import { Meta, Controls, Story, Canvas } from '@storybook/blocks';
 import * as Stories from './Textarea.stories';
 import {
   Textarea,
@@ -8,11 +8,11 @@ import {
   Center,
   NativeUIProvider,
   Pressable,
-} from '@utilitywarehouse/native-ui';
+} from '../../';
 import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
-import { ViewFigmaButton, BackToTopButton } from '../../docs/components';
+import { ViewFigmaButton, BackToTopButton, UsageWrap } from '../../../docs/components';
 
-<Meta of={Stories} />
+<Meta title="Components / Textarea" />
 
 <BackToTopButton />
 
@@ -36,24 +36,22 @@ It is commonly used for inputting longer text, such as comments, messages, or de
 
 ## Playground
 
-<Primary />
+<Canvas of={Stories.Playground} />
 
-<Controls />
+<Controls of={Stories.Playground} />
 
 ## Usage
 
-<Canvas>
-  <NativeUIProvider>
-    <Center>
-      <Textarea>
-        <TextareaSlot>
-          <TextareaIcon as={EmailMediumIcon} />
-        </TextareaSlot>
-        <TextareaField placeholder="Placeholder" onChange={() => console.log('###')} />
-      </Textarea>
-    </Center>
-  </NativeUIProvider>
-</Canvas>
+<UsageWrap>
+  <Center>
+    <Textarea>
+      <TextareaSlot>
+        <TextareaIcon as={EmailMediumIcon} />
+      </TextareaSlot>
+      <TextareaField placeholder="Placeholder" onChange={() => console.log('###')} />
+    </Textarea>
+  </Center>
+</UsageWrap>
 
 ```tsx
 import { Textarea } from '@utilitywarehouse/native-ui';
@@ -128,7 +126,7 @@ The `TextareaField` inherits all of the React Native [`TextTextarea` props](http
 
 The `Textarea` component can be used with the `TextareaField`, `TextareaSlot` and `TextareaIcon` components to create a custom textarea field.
 
-<Canvas>
+<UsageWrap>
   <Center>
     <Textarea>
       <TextareaSlot>
@@ -137,7 +135,7 @@ The `Textarea` component can be used with the `TextareaField`, `TextareaSlot` an
       <TextareaField placeholder="Message" />
     </Textarea>
   </Center>
-</Canvas>
+</UsageWrap>
 
 ```tsx
 import {

@@ -52,6 +52,9 @@ const styles = StyleSheet.create(theme => ({
   },
 }));
 
+/**
+ * @deprecated Use `Flex` instead.
+ */
 const VStack = forwardRef<View, VStackProps>(
   ({ children, style, space, reversed, wrap, ...props }, ref) => {
     styles.useVariants({

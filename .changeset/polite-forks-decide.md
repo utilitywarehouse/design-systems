@@ -2,4 +2,10 @@
 '@utilitywarehouse/native-ui': major
 ---
 
-Updates `react-native-unistyles` to version 3
+- [BREAKING] Updates `react-native-unistyles` to version 3
+- Adds `Flex` component
+- Adds `Grid` component
+- Deprecates `VStack` and `HStack` components
+- Updates tokens to align with Hearth React Native
+- Deprecates previous tokens
+- Adds utility `OL`, `UL` and `LI` components

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { Icon, IconProps } from '../../components/Icon';
 import { IconRef } from '../../types';
-import { StyleProp, ViewStyle } from 'react-native';
+import { Platform, StyleProp, ViewStyle } from 'react-native';
 import { useAccordionContext } from './Accordion.context';
 import { useAccordionItemContext } from './AccordionItem.context';
 import { StyleSheet } from 'react-native-unistyles';
@@ -12,7 +12,18 @@ export const AccordionIcon = forwardRef<IconRef, IconProps>(({ as, style, ...pro
   const disabledValue = disabled ?? contextDisabled;
   styles.useVariants({ disabled: disabledValue });
 
-  return <Icon ref={ref} as={as} style={[styles.icon as StyleProp<ViewStyle>, style]} {...props} />;
+  return (
+    <Icon
+      ref={ref}
+      as={as}
+      style={
+        Platform.OS === 'web'
+          ? (styles.icon as StyleProp<ViewStyle>)
+          : [styles.icon as StyleProp<ViewStyle>, style]
+      }
+      {...props}
+    />
+  );
 });
 
 AccordionIcon.displayName = 'AccordionIcon';

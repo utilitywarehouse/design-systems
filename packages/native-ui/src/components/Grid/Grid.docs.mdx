@@ -1,0 +1,194 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/blocks';
+import * as Stories from './Grid.stories';
+import { Center, Grid, Box, Text } from '../..';
+import { UsageWrap, BackToTopButton, ViewFigmaButton } from '../../../docs/components';
+
+<Meta title="Primitives / Grid" />
+
+<BackToTopButton />
+
+# Grid
+
+The Grid component helps you create responsive grid layouts with configurable columns and spacing. It's perfect for creating photo galleries, card layouts, and other grid-based UI elements.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+
+## Playground
+
+<Canvas of={Stories.Playground} />
+
+<Controls of={Stories.Playground} />
+
+## Usage
+
+<UsageWrap>
+  <Center>
+    <Grid columns={2} space="md" width={300}>
+      <Box backgroundColor="$green400" height={100} padding="200">
+        <Text color="white">Item 1</Text>
+      </Box>
+      <Box backgroundColor="$cyan400" height={100} padding="200">
+        <Text color="white">Item 2</Text>
+      </Box>
+      <Box backgroundColor="$red400" height={100} padding="200">
+        <Text color="white">Item 3</Text>
+      </Box>
+      <Box backgroundColor="$gold400" height={100} padding="200">
+        <Text color="white">Item 4</Text>
+      </Box>
+    </Grid>
+  </Center>
+</UsageWrap>
+
+```jsx
+import { Grid, Box, Text } from '@utilitywarehouse/hearth-react-native';
+
+const MyComponent = () => (
+  <Grid columns={2} space="md" width={300}>
+    <Box backgroundColor="$green400" height={100} padding="200">
+      <Text color="white">Item 1</Text>
+    </Box>
+    <Box backgroundColor="$cyan400" height={100} padding="200">
+      <Text color="white">Item 2</Text>
+    </Box>
+    <Box backgroundColor="$red400" height={100} padding="200">
+      <Text color="white">Item 3</Text>
+    </Box>
+    <Box backgroundColor="$gold400" height={100} padding="200">
+      <Text color="white">Item 4</Text>
+    </Box>
+  </Grid>
+);
+```
+
+### Responsive Columns
+
+The Grid component supports responsive column layouts based on screen size breakpoints:
+
+<UsageWrap>
+  <Center>
+    <Grid
+      columns={{
+        xs: 1,
+        sm: 2,
+        md: 3,
+        lg: 4,
+      }}
+      space="md"
+      width="100%"
+    >
+      <Box backgroundColor="$green400" height={100} padding="200">
+        <Text color="white">Item 1</Text>
+      </Box>
+      <Box backgroundColor="$cyan400" height={100} padding="200">
+        <Text color="white">Item 2</Text>
+      </Box>
+      <Box backgroundColor="$red400" height={100} padding="200">
+        <Text color="white">Item 3</Text>
+      </Box>
+      <Box backgroundColor="$gold400" height={100} padding="200">
+        <Text color="white">Item 4</Text>
+      </Box>
+    </Grid>
+  </Center>
+</UsageWrap>
+
+```jsx
+import { Grid, Box, Text } from '@utilitywarehouse/hearth-react-native';
+
+const MyComponent = () => (
+  <Grid
+    columns={{
+      xs: 1,
+      sm: 2,
+      md: 3,
+      lg: 4,
+    }}
+    space="md"
+    width="100%"
+  >
+    <Box backgroundColor="$green400" height={100} padding="200">
+      <Text color="white">Item 1</Text>
+    </Box>
+    <Box backgroundColor="$cyan400" height={100} padding="200">
+      <Text color="white">Item 2</Text>
+    </Box>
+    <Box backgroundColor="$red400" height={100} padding="200">
+      <Text color="white">Item 3</Text>
+    </Box>
+    <Box backgroundColor="$gold400" height={100} padding="200">
+      <Text color="white">Item 4</Text>
+    </Box>
+  </Grid>
+);
+```
+
+### Custom Gaps
+
+You can specify different horizontal and vertical spacing:
+
+<UsageWrap>
+  <Center>
+    <Grid columns={2} columnGap={24} rowGap={16}>
+      <Box backgroundColor="$green400" height={100} padding="200">
+        <Text color="white">Item 1</Text>
+      </Box>
+      <Box backgroundColor="$cyan400" height={100} padding="200">
+        <Text color="white">Item 2</Text>
+      </Box>
+      <Box backgroundColor="$red400" height={100} padding="200">
+        <Text color="white">Item 3</Text>
+      </Box>
+      <Box backgroundColor="$gold400" height={100} padding="200">
+        <Text color="white">Item 4</Text>
+      </Box>
+    </Grid>
+  </Center>
+</UsageWrap>
+
+```jsx
+import { Grid, Box } from '@utilitywarehouse/hearth-react-native';
+
+const MyComponent = () => (
+  <Grid columns={2} columnGap={24} rowGap={8}>
+    <Box backgroundColor="$green400" height={100} padding="200">
+      <Text color="white">Item 1</Text>
+    </Box>
+    <Box backgroundColor="$cyan400" height={100} padding="200">
+      <Text color="white">Item 2</Text>
+    </Box>
+    <Box backgroundColor="$red400" height={100} padding="200">
+      <Text color="white">Item 3</Text>
+    </Box>
+    <Box backgroundColor="$gold400" height={100} padding="200">
+      <Text color="white">Item 4</Text>
+    </Box>
+  </Grid>
+);
+```
+
+## Props
+
+The Grid component extends all the props from the [View component](https://reactnative.dev/docs/view), and adds the following:
+
+| Name             | Type                                             | Default | Description                                                   |
+| ---------------- | ------------------------------------------------ | ------- | ------------------------------------------------------------- |
+| `columns`        | `number` or `GridColumns`                        | 2       | Number of columns or responsive object with breakpoint values |
+| `space`          | `'none' \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | -       | Spacing between grid items (both rows and columns)            |
+| `columnGap`      | `number`                                         | -       | Gap between columns (overrides spacing if provided)           |
+| `rowGap`         | `number`                                         | -       | Gap between rows (overrides spacing if provided)              |
+| `containerStyle` | `StyleProp\<ViewStyle\>`                         | -       | Style for the grid container                                  |
+| `itemStyle`      | `StyleProp\<ViewStyle\>`                         | -       | Style applied to each grid item                               |
+| `rowStyle`       | `StyleProp\<ViewStyle\>`                         | -       | Style applied to each row                                     |
+
+Where `GridColumns` is defined as:
+
+```tsx
+type GridColumns = {
+  [key in keyof UnistylesBreakpoints]?: number;
+};
+```
+
+With breakpoint keys typically being: `xs`, `sm`, `md`, `lg`, `xl`.

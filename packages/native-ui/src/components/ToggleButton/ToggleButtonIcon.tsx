@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import React, { forwardRef } from 'react';
-import { type StyleProp, type ViewStyle } from 'react-native';
+import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { useToggleButtonContext } from './ToggleButton.context';
 import { Icon } from '../Icon';
 import { IconRef } from '../../types';
@@ -16,7 +16,15 @@ const ToggleButtonIcon = forwardRef<IconRef, IconProps>(({ children, ...props },
   const isActive = value === contextVal;
   styles.useVariants({ disabled: isDisabled, active: isActive });
   return (
-    <Icon ref={ref} {...props} style={[styles.icon as StyleProp<ViewStyle>, props.style]}>
+    <Icon
+      ref={ref}
+      {...props}
+      style={
+        Platform.OS === 'web'
+          ? (styles.icon as StyleProp<ViewStyle>)
+          : [styles.icon as StyleProp<ViewStyle>, props.style]
+      }
+    >
       {children}
     </Icon>
   );

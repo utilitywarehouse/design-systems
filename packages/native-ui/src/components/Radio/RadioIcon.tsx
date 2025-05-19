@@ -6,12 +6,20 @@ import { CircleIcon } from '../Icons';
 import { useRadioContext } from './Radio.context';
 import type { SvgRef } from '../../types';
 import IconProps from '../Icon/Icon.props';
+import { Platform } from 'react-native';
 
 const RadioIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
   const { disabled } = useRadioContext();
   styles.useVariants({ disabled });
 
-  return <Icon ref={ref} as={CircleIcon} {...props} style={[styles.container, style]} />;
+  return (
+    <Icon
+      ref={ref}
+      as={CircleIcon}
+      {...props}
+      style={Platform.OS === 'web' ? styles.container : [styles.container, style]}
+    />
+  );
 });
 
 RadioIcon.displayName = 'RadioIcon';
