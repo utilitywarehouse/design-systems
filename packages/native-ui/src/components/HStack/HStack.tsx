@@ -52,6 +52,9 @@ const styles = StyleSheet.create(({ space }) => ({
   },
 }));
 
+/**
+ * @deprecated Use `Flex` instead.
+ */
 const HStack = forwardRef<View, HStackProps>(
   ({ children, style, space, reversed, wrap, ...props }, ref) => {
     styles.useVariants({

@@ -40,24 +40,23 @@ const TextareaRoot = forwardRef<
 
 TextareaRoot.displayName = 'TextareaRoot';
 
-const styles = StyleSheet.create(({ space, colors, radii, colorMode, borderWidths }) => ({
+const styles = StyleSheet.create(({ space, colors, borderRadius, colorMode, borderWidth }) => ({
   container: {
-    borderWidth: borderWidths[2],
+    borderWidth: borderWidth[2],
     borderTopColor: colors.grey500,
     borderLeftColor: colors.grey500,
     borderRightColor: colors.grey500,
     borderBottomColor: colors.grey900,
-    height: 160,
-    borderTopLeftRadius: radii['2xl'],
-    borderTopRightRadius: radii['2xl'],
-    borderBottomLeftRadius: radii.none,
-    borderBottomRightRadius: radii.none,
+    borderTopLeftRadius: borderRadius['xl'],
+    borderTopRightRadius: borderRadius['xl'],
+    borderBottomLeftRadius: borderRadius.none,
+    borderBottomRightRadius: borderRadius.none,
     flexDirection: 'row',
     overflow: 'hidden',
     alignContent: 'flex-start',
-    padding: space['4'],
+    padding: space['200'],
     backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
-    gap: space['2'],
+    gap: space['100'],
     variants: {
       focus: {
         true: {

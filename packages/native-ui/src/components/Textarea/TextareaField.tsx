@@ -5,7 +5,7 @@ import { useTextareaContext } from './Textarea.context';
 import { useTheme } from '../../hooks';
 
 const TextareaField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
-  ({ style, ...props }, ref) => {
+  ({ style, numberOfLines = 4, ...props }, ref) => {
     const { disabled, focused = false } = useTextareaContext();
     const { colors } = useTheme();
     styles.useVariants({ focused, disabled });
@@ -17,6 +17,7 @@ const TextareaField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
         selectionColor={colors.cyan500}
         cursorColor={colors.cyan500}
         aria-disabled={disabled}
+        numberOfLines={numberOfLines}
         {...props}
         style={[styles.input, style]}
       />

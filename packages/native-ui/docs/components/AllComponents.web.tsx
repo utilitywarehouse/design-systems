@@ -3,7 +3,6 @@ import React, { PropsWithChildren } from 'react';
 import { ScrollView, View, Pressable } from 'react-native';
 import {
   Button,
-  HStack,
   Text,
   Heading,
   Alert,
@@ -18,7 +17,6 @@ import {
   RadioGroup,
   Radio,
   Skeleton,
-  VStack,
   Spinner,
   Divider,
   useColorMode,
@@ -26,6 +24,12 @@ import {
   Switch,
   ToggleButton,
   ToggleButtonGroup,
+  Flex,
+  Grid,
+  Textarea,
+  UL,
+  LI,
+  OL,
 } from '../../';
 import {
   Actionsheet,
@@ -79,10 +83,10 @@ const AllComponents: React.FC = () => {
   return (
     <div className="sb-unstyled">
       <ScrollView contentContainerStyle={styles.container}>
-        <HStack wrap space="md">
+        <Flex direction="row" wrap="wrap" space="md">
           <ComponentWrapper
             name="Accordion (Lab)"
-            link="/?path=/docs/native-ui-components-lab-accordion--docs"
+            link="/?path=/docs/lab-components-accordion--docs"
           >
             <Center flex={1}>
               <Accordion type="single">
@@ -97,7 +101,7 @@ const AllComponents: React.FC = () => {
           </ComponentWrapper>
           <ComponentWrapper
             name="Actionsheet (Lab)"
-            link="/?path=/docs/components-actionsheet-lab--docs"
+            link="/?path=/docs/lab-components-actionsheet--docs"
           >
             <Center flex={1}>
               <Actionsheet isOpen={showActionsheet} onClose={toggleActionsheet}>
@@ -116,7 +120,7 @@ const AllComponents: React.FC = () => {
               <Alert text="This is an alert" />
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Box" link="/?path=/docs/components-box--docs">
+          <ComponentWrapper name="Box" link="/?path=/docs/primitives-box--docs">
             <Center flex={1}>
               <Box backgroundColor="$grey900" padding="$4" width={200} height={100}>
                 <Text color={isDark ? '$grey100' : '$white'} highlight>
@@ -138,7 +142,7 @@ const AllComponents: React.FC = () => {
               </Card>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Carousel (Lab)" link="/?path=/docs/components-carousel-lab--docs">
+          <ComponentWrapper name="Carousel (Lab)" link="/?path=/docs/lab-components-carousel--docs">
             <Center flex={1}>
               <Carousel>
                 <CarouselItems width={150}>
@@ -167,7 +171,7 @@ const AllComponents: React.FC = () => {
               </Carousel>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Center" link="/?path=/docs/components-center--docs">
+          <ComponentWrapper name="Center" link="/?path=/docs/primitives-center--docs">
             <Center flex={1}>
               <Center backgroundColor="$grey900" padding="$4" width={200} height={100}>
                 <Text color={isDark ? '$grey100' : '$white'} highlight>
@@ -176,7 +180,7 @@ const AllComponents: React.FC = () => {
               </Center>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Checkbox" link="/?path=/docs/components-checkbox--docs">
+          <ComponentWrapper name="Checkbox" link="/?path=/docs/forms-checkbox--docs">
             <Center flex={1}>
               <Checkbox label="I'm a Checkbox" value="" />
             </Center>
@@ -188,7 +192,7 @@ const AllComponents: React.FC = () => {
               <Text>From this text</Text>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Form Field" link="/?path=/docs/components-form-field--docs">
+          <ComponentWrapper name="Form Field" link="/?path=/docs/forms-form-field--docs">
             <Center flex={1}>
               <FormField
                 validationStatus="invalid"
@@ -200,19 +204,31 @@ const AllComponents: React.FC = () => {
               </FormField>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Heading" link="/?path=/docs/components-heading--docs">
+          <ComponentWrapper name="Flex" link="/?path=/docs/primitives-flex--docs">
             <Center flex={1}>
-              <Heading>This is a Heading</Heading>
-            </Center>
-          </ComponentWrapper>
-          <ComponentWrapper name="HStack" link="/?path=/docs/components-hstack--docs">
-            <Center flex={1}>
-              <HStack space="md">
+              <Flex direction="row" space="md">
                 <Box w={40} h={40} bg="$cyan300" />
                 <Box w={40} h={40} bg="$cyan400" />
                 <Box w={40} h={40} bg="$cyan500" />
                 <Box w={40} h={40} bg="$cyan600" />
-              </HStack>
+              </Flex>
+            </Center>
+          </ComponentWrapper>
+          <ComponentWrapper name="Grid" link="/?path=/docs/primitives-grid--docs">
+            <Center flex={1}>
+              <Box width={100}>
+                <Grid columns={2} space="md">
+                  <Box w={40} h={40} bg="$cyan300" />
+                  <Box w={40} h={40} bg="$cyan400" />
+                  <Box w={40} h={40} bg="$cyan500" />
+                  <Box w={40} h={40} bg="$cyan600" />
+                </Grid>
+              </Box>
+            </Center>
+          </ComponentWrapper>
+          <ComponentWrapper name="Heading" link="/?path=/docs/typography-heading--docs">
+            <Center flex={1}>
+              <Heading>This is a Heading</Heading>
             </Center>
           </ComponentWrapper>
           <ComponentWrapper name="Icon Button" link="/?path=/docs/components-iconbutton--docs">
@@ -222,15 +238,15 @@ const AllComponents: React.FC = () => {
           </ComponentWrapper>
           <ComponentWrapper name="Icons" link="/?path=/docs/components-icons--docs">
             <Center flex={1}>
-              <HStack space="lg">
+              <Flex direction="row" space="lg">
                 <Icon as={ElectricityMediumIcon} color="$serviceElectricity" />
                 <Icon as={MobileMediumIcon} color="$serviceMobile" />
                 <Icon as={BroadbandMediumIcon} color="$serviceLandline" />
                 <Icon as={InsuranceMediumIcon} color="$serviceInsurance" />
-              </HStack>
+              </Flex>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Input" link="/?path=/docs/components-input--docs">
+          <ComponentWrapper name="Input" link="/?path=/docs/forms-input--docs">
             <Center flex={1}>
               <Input placeholder="This is an input" />
             </Center>
@@ -243,7 +259,22 @@ const AllComponents: React.FC = () => {
               </List>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Radio" link="/?path=/docs/components-radio--docs">
+          <ComponentWrapper
+            name="Ordered List"
+            link="/?path=/docs/utility-components-ul-ol-lists--docs"
+          >
+            <Center flex={1}>
+              <OL>
+                <LI>
+                  <Text>List Item 1</Text>
+                </LI>
+                <LI>
+                  <Text>List Item 2</Text>
+                </LI>
+              </OL>
+            </Center>
+          </ComponentWrapper>
+          <ComponentWrapper name="Radio" link="/?path=/docs/forms-radio--docs">
             <Center flex={1}>
               <RadioGroup>
                 <Radio label="I'm a Radio" value="1" />
@@ -253,13 +284,13 @@ const AllComponents: React.FC = () => {
           </ComponentWrapper>
           <ComponentWrapper name="Skeleton" link="/?path=/docs/components-skeleton--docs">
             <Center flex={1}>
-              <HStack space="sm">
+              <Flex direction="row" space="sm">
                 <Skeleton width={30} height={30} />
-                <VStack space="sm">
+                <Flex space="sm">
                   <Skeleton width={120} height={15} />
                   <Skeleton width={100} height={15} />
-                </VStack>
-              </HStack>
+                </Flex>
+              </Flex>
             </Center>
           </ComponentWrapper>
           <ComponentWrapper name="Spinner" link="/?path=/docs/components-spinner--docs">
@@ -272,15 +303,17 @@ const AllComponents: React.FC = () => {
               <Switch value={switchEnabled} onValueChange={toggleSwitch} />
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="Text" link="/?path=/docs/components-text--docs">
+          <ComponentWrapper name="Text" link="/?path=/docs/typography-text--docs">
             <Center flex={1}>
               <Text>This is some Text</Text>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper
-            name="Toggle Button"
-            link="/?path=/docs/native-ui-components-togglebutton--docs"
-          >
+          <ComponentWrapper name="Textarea" link="/?path=/docs/forms-textarea--docs">
+            <Center flex={1}>
+              <Textarea numberOfLines={3} placeholder="This is a textarea" />
+            </Center>
+          </ComponentWrapper>
+          <ComponentWrapper name="Toggle Button" link="/?path=/docs/components-toggle-button--docs">
             <Center flex={1}>
               <ToggleButtonGroup value={toggleButtonValue} onChange={setToggleButtonValue}>
                 <ToggleButton value="day">Day</ToggleButton>
@@ -289,17 +322,22 @@ const AllComponents: React.FC = () => {
               </ToggleButtonGroup>
             </Center>
           </ComponentWrapper>
-          <ComponentWrapper name="VStack" link="/?path=/docs/native-ui-components-vstack--docs">
+          <ComponentWrapper
+            name="Unorderd List"
+            link="/?path=/docs/utility-components-ul-ol-lists--docs"
+          >
             <Center flex={1}>
-              <VStack space="md">
-                <Box w={20} h={20} bg="$cyan300" />
-                <Box w={20} h={20} bg="$cyan400" />
-                <Box w={20} h={20} bg="$cyan500" />
-                <Box w={20} h={20} bg="$cyan600" />
-              </VStack>
+              <UL>
+                <LI>
+                  <Text>List Item 1</Text>
+                </LI>
+                <LI>
+                  <Text>List Item 2</Text>
+                </LI>
+              </UL>
             </Center>
           </ComponentWrapper>
-        </HStack>
+        </Flex>
       </ScrollView>
     </div>
   );
