@@ -5,6 +5,7 @@ build
 /hooks/
 /components/
 /unstyled/
+/tokens/
 /types/
 /utils/
 /hooks/
