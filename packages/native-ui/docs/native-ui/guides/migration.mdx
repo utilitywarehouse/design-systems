@@ -1186,7 +1186,7 @@ import { useLightDark, StyleSheet } from '@utilitywarehouse/native-ui';
 const textColor = useLightDark(theme.colors.grey900, theme.colors.grey100);
 
 // For style objects
-const stylesheet = StyleSheet.create(theme => ({
+const styles = StyleSheet.create(theme => ({
   text: {
     color: theme.isLight ? theme.colors.grey900 : theme.colors.grey100,
   },
@@ -1195,8 +1195,6 @@ const stylesheet = StyleSheet.create(theme => ({
     borderColor: theme.isLight ? theme.colors.grey100 : theme.colors.grey300,
   },
 }));
-
-const styles = useStyles(stylesheet);
 ```
 
 For more info on the new color system, see the [Colors](/docs/native-ui-guides-styling-colors--docs) documentation.

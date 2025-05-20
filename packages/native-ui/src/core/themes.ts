@@ -344,15 +344,15 @@ const shared = {
     black: '900' as TextStyle['fontWeight'],
   },
   /**
-   * @deprecated Use `font` instead.
+   * @deprecated Use `fontFamily` instead.
    */
   fonts: {
     /**
-     * @deprecated Use `font.heading` instead.
+     * @deprecated Use `fontFamily.heading` instead.
      */
     heading: 'Aeonik',
     /**
-     * @deprecated Use `font.body` instead.
+     * @deprecated Use `fontFamily.body` instead.
      */
     body: 'Work Sans',
     /**

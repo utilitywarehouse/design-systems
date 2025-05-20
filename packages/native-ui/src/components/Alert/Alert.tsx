@@ -90,11 +90,11 @@ Alert.displayName = 'Alert';
 const styles = StyleSheet.create(theme => ({
   container: {
     alignItems: 'center',
-    padding: theme.space[3],
+    padding: theme.space['150'],
     flexDirection: 'row',
-    borderRadius: theme.radii.lg,
-    gap: theme.space[2],
-    borderWidth: theme.borderWidths[1],
+    borderRadius: theme.borderRadius.md,
+    gap: theme.space['100'],
+    borderWidth: theme.borderWidth[1],
     variants: {
       colorScheme: {
         cyan: {
@@ -118,7 +118,7 @@ const styles = StyleSheet.create(theme => ({
   },
   content: {
     flex: 1,
-    gap: theme.space[1],
+    gap: theme.space['50'],
   },
 }));
 

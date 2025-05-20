@@ -42,7 +42,7 @@ const styles = StyleSheet.create(theme => ({
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'row',
-    gap: theme.space[1],
+    gap: theme.space['50'],
   },
   icon: {
     width: 16,

@@ -19,10 +19,10 @@ AlertText.displayName = 'AlertText';
 
 const styles = StyleSheet.create(theme => ({
   text: {
-    fontFamily: theme.fonts.body,
-    fontWeight: theme.fontWeights.normal,
-    fontSize: theme.fontSizes.md,
-    lineHeight: theme.lineHeights.lg,
+    fontFamily: theme.fontFamily.body,
+    fontWeight: theme.fontWeight.regular,
+    fontSize: theme.fontSize['100'],
+    lineHeight: theme.lineHeight['500'],
     flexShrink: 1,
     variants: {
       semibold: {
