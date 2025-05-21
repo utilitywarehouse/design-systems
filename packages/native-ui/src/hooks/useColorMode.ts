@@ -5,7 +5,7 @@ const useColorMode = (): 'light' | 'dark' => {
     theme: { colorMode },
   } = useUnistyles();
 
-  return colorMode as 'light' | 'dark';
+  return colorMode;
 };
 
 export default useColorMode;
