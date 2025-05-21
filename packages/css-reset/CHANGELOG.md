@@ -1,5 +1,11 @@
 # @utilitywarehouse/css-reset
 
+## 0.1.1
+
+### Patch Changes
+
+- [#690](https://github.com/utilitywarehouse/design-systems/pull/690) [`d65046a`](https://github.com/utilitywarehouse/design-systems/commit/d65046a6923897426564b4913066e224d8e64a66) Thanks [@robphoenix](https://github.com/robphoenix)! - Fix chrome autofill styles
+
 ## 0.1.0
 
 ### Minor Changes
