@@ -91,6 +91,7 @@ h6 {
   overflow-wrap: break-word;
 }
 
+/* remove default styling for autofilled forms */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
