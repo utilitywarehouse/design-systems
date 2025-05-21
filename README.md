@@ -8,6 +8,12 @@ Shared tools and libraries for building UW applications.
 
 ### Web UI
 
+> This package is now in **Maintenance mode**, meaning there will be no new
+> features or breaking changes. New releases will only be made to support critical
+> bug fixes or security maintenance updates.
+>
+> We are currently prioritising work on the new Hearth Design Systems libraries.
+
 A set of React components for building UW branded UIs, built in collaboration
 with the UX design team.
 
