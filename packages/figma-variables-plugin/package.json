@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "UW Figma variables plugin",
   "license": "ISC",
+  "private": "true",
   "scripts": {
     "build": "webpack --mode=production",
     "build:watch": "webpack --mode=development --watch",
