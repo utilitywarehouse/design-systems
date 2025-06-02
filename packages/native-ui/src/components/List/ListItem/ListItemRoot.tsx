@@ -45,6 +45,8 @@ const ListItemRoot = forwardRef<
     const isDisabled = disabled || listContext?.disabled || false;
     const dividerColorValue = dividerColor ?? listContext?.dividerColor;
 
+    styles.useVariants({ showPressed, active, disabled: isDisabled || isLoading });
+
     const value: IListItemContext = useMemo(() => {
       return {
         showPressed,
@@ -60,11 +62,7 @@ const ListItemRoot = forwardRef<
         <Pressable
           ref={ref}
           {...props}
-          style={[
-            styles.container,
-            styles.extraStyles(showPressed, active, isDisabled || isLoading),
-            props.style as ViewStyle,
-          ]}
+          style={[styles.container, props.style as ViewStyle]}
           disabled={isDisabled}
         >
           {leadingContent ? <Skeleton width={24} height={24} /> : null}
@@ -87,11 +85,7 @@ const ListItemRoot = forwardRef<
         <Pressable
           ref={ref}
           {...props}
-          style={[
-            styles.container,
-            styles.extraStyles(showPressed, active, isDisabled || isLoading),
-            props.style as ViewStyle,
-          ]}
+          style={[styles.container, props.style as ViewStyle]}
           disabled={isDisabled}
         >
           {children ? (
@@ -130,19 +124,33 @@ const styles = StyleSheet.create(theme => ({
     padding: theme.space[4],
     flexDirection: 'row',
     gap: theme.space[3],
-  },
-  extraStyles: (showPressed?: boolean, active?: boolean, disabled?: boolean) => {
-    if (!showPressed || disabled) {
-      return {
-        cursor: 'auto',
-      };
-    }
-    if (showPressed && active) {
-      return {
-        backgroundColor: theme.colorMode === 'light' ? theme.colors.grey75 : theme.colors.grey150,
-      };
-    }
-    return {};
+    variants: {
+      showPressed: {
+        true: {},
+        false: {
+          cursor: 'auto',
+        },
+      },
+      active: {
+        true: {},
+        false: {},
+      },
+      disabled: {
+        true: {
+          cursor: 'auto',
+        },
+        false: {},
+      },
+    },
+    compoundVariants: [
+      {
+        showPressed: true,
+        active: true,
+        styles: {
+          backgroundColor: theme.colorMode === 'light' ? theme.colors.grey75 : theme.colors.grey150,
+        },
+      },
+    ],
   },
 }));
 

@@ -4,16 +4,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import React from 'react';
 import { useFonts } from 'expo-font';
-import { breakpoints, themes, StyleSheet } from '@utilitywarehouse/native-ui';
-
-StyleSheet.configure({
-  breakpoints,
-  themes,
-  settings: {
-    initialTheme: 'light',
-    adaptiveThemes: false,
-  },
-});
+import { NativeUIProvider } from '@utilitywarehouse/native-ui';
 
 const App = () => {
   const [loaded] = useFonts({
@@ -33,9 +24,11 @@ const App = () => {
 
   if (!loaded) return null;
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <StorybookUIRoot />
-    </GestureHandlerRootView>
+    <NativeUIProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <StorybookUIRoot />
+      </GestureHandlerRootView>
+    </NativeUIProvider>
   );
 };
 

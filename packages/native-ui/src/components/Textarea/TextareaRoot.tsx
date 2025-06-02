@@ -23,15 +23,7 @@ const TextareaRoot = forwardRef<
 
   return (
     <TextareaContext.Provider value={value}>
-      <View
-        ref={ref}
-        {...props}
-        style={[
-          styles.container,
-          styles.extraStyles(validationStatus, focus, disabled, readonly),
-          style,
-        ]}
-      >
+      <View ref={ref} {...props} style={[styles.container, style]}>
         {children}
       </View>
     </TextareaContext.Provider>
@@ -95,33 +87,28 @@ const styles = StyleSheet.create(({ space, colors, borderRadius, colorMode, bord
         },
       },
     },
-  },
-  extraStyles: (
-    validationStatus: TextareaProps['validationStatus'],
-    focus: boolean,
-    disabled: boolean,
-    readonly: boolean
-  ) => {
-    if (disabled || readonly) {
-      return {};
-    }
-    if (validationStatus === 'invalid' && focus) {
-      return {
-        borderTopColor: colorMode === 'light' ? colors.red500 : colors.red700,
-        borderLeftColor: colorMode === 'light' ? colors.red500 : colors.red700,
-        borderRightColor: colorMode === 'light' ? colors.red500 : colors.red700,
-        borderBottomColor: colorMode === 'light' ? colors.red500 : colors.red700,
-      };
-    }
-    if (validationStatus === 'valid' && focus) {
-      return {
-        borderTopColor: colorMode === 'light' ? colors.green500 : colors.green700,
-        borderLeftColor: colorMode === 'light' ? colors.green500 : colors.green700,
-        borderRightColor: colorMode === 'light' ? colors.green500 : colors.green700,
-        borderBottomColor: colorMode === 'light' ? colors.green500 : colors.green700,
-      };
-    }
-    return {};
+    compoundVariants: [
+      {
+        focus: true,
+        validationStatus: 'invalid',
+        styles: {
+          borderTopColor: colorMode === 'light' ? colors.red500 : colors.red700,
+          borderLeftColor: colorMode === 'light' ? colors.red500 : colors.red700,
+          borderRightColor: colorMode === 'light' ? colors.red500 : colors.red700,
+          borderBottomColor: colorMode === 'light' ? colors.red500 : colors.red700,
+        },
+      },
+      {
+        focus: true,
+        validationStatus: 'valid',
+        styles: {
+          borderTopColor: colorMode === 'light' ? colors.green500 : colors.green700,
+          borderLeftColor: colorMode === 'light' ? colors.green500 : colors.green700,
+          borderRightColor: colorMode === 'light' ? colors.green500 : colors.green700,
+          borderBottomColor: colorMode === 'light' ? colors.green500 : colors.green700,
+        },
+      },
+    ],
   },
 }));
 

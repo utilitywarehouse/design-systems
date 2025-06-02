@@ -52,7 +52,7 @@ const Accordion = forwardRef<View, AccordionProps>(
 );
 
 export const AccordionItem = forwardRef<View, AccordionItemProps>(
-  ({ children, value, title, expanded, ...props }, ref) => {
+  ({ children, value, title, expanded, testID, ...props }, ref) => {
     if (!children) {
       return null;
     }
@@ -77,7 +77,7 @@ export const AccordionItem = forwardRef<View, AccordionItemProps>(
         ) : (
           <>
             <AccordionHeader>
-              <AccordionTrigger isExpanded={expanded}>
+              <AccordionTrigger isExpanded={expanded} testID={testID}>
                 {({ isExpanded }: { isExpanded: boolean }) => {
                   return (
                     <>
