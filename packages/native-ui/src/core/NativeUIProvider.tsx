@@ -1,17 +1,5 @@
 import React, { PropsWithChildren, useEffect } from 'react';
-import { StyleSheet, UnistylesRuntime, UnistylesThemes } from 'react-native-unistyles';
-import { breakpoints } from './breakpoints';
-import { themes } from './themes';
-
-StyleSheet.configure({
-  breakpoints,
-  themes: themes,
-  settings: {
-    initialTheme: 'light',
-    adaptiveThemes: false,
-    CSSVars: false,
-  },
-});
+import { UnistylesRuntime, UnistylesThemes } from 'react-native-unistyles';
 
 const NativeUIProvider: React.FC<PropsWithChildren<{ colorMode?: keyof UnistylesThemes }>> = ({
   children,
