@@ -37,6 +37,7 @@ Card.displayName = 'Card';
 const styles = StyleSheet.create(theme => ({
   card: {
     borderRadius: theme.radii['xl'],
+    overflow: 'hidden',
     variants: {
       variant: {
         dashed: {

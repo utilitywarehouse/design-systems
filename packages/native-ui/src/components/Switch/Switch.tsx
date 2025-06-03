@@ -122,14 +122,7 @@ const CustomSwitch: React.FC<SwitchProps> = ({
       accessibilityHint={accessibilityProps.accessibilityHint}
       {...accessibilityProps}
     >
-      <AnimatedView
-        style={[
-          styles.switch,
-          disabled && styles.disabledSwitch,
-          animatedSwitchStyle,
-          animatedSwitchBackgroundStyle,
-        ]}
-      >
+      <AnimatedView style={[styles.switch, animatedSwitchStyle, animatedSwitchBackgroundStyle]}>
         <AnimatedView style={[styles.thumb, animatedThumbStyle]}>
           <AnimatedView style={[styles.iconWrap, animatedTickStyle]}>
             <Icon as={TickSmallIcon} style={styles.icon} />
@@ -219,9 +212,6 @@ const styles = StyleSheet.create(theme => ({
         },
       },
     },
-  },
-  disabledSwitch: {
-    opacity: 0.5,
   },
 }));
 

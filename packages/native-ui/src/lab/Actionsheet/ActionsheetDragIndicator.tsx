@@ -14,10 +14,10 @@ const ActionsheetDragIndicator: React.FC<ViewProps> = ({ style, ...props }) => {
 
   const animatedStyle = useAnimatedStyle(
     () => ({
-      backgroundColor: dragging.value ? colors.grey400 : colors.grey500,
-      marginBottom: showIndicator ? space['3'] : 0,
+      backgroundColor: dragging.value ? colors?.grey400 : colors?.grey500,
+      marginBottom: showIndicator ? space?.['3'] : 0,
     }),
-    [showIndicator, dragging]
+    [showIndicator, dragging, colors?.grey400, colors?.grey500, space?.['3']]
   );
 
   return <AnimatedView style={[styles.indicator, animatedStyle, style as false]} {...props} />;
