@@ -441,6 +441,7 @@ const shared = {
   borderRadius,
   letterSpacing,
   lineHeight,
+  font,
   fontWeight: font.weight,
   fontFamily: font.family,
   fontSize: font.size,
