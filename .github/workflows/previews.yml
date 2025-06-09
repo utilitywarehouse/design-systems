@@ -391,17 +391,18 @@ jobs:
           ))
         working-directory: ./packages/native-ui
         run: |
-          title='${{ github.event.pull_request.title }}'
-          body='${{ github.event.pull_request.body }}'
+          title="${{ github.event.pull_request.title }}"
+          body="${{ github.event.pull_request.body }}"
+
           if [ "${{ github.event_name }}" == "push" ]; then
             echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env
             echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
-          elif [[ "$title" == *"[skip-native]"* || "$body" == *"[skip-native]"* ]]; then
+          elif [[ "$title" == *"[skip-native]"* ]] || [[ "$body" == *"[skip-native]"* ]]; then
             echo "ANDROID_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_ANDROID }}" >> .env
             echo "IOS_API_KEY=${{ secrets.APPETIZE_PUBLIC_KEY_IOS }}" >> .env
-          elif [[ "$title" == *"[skip-ios]"* || "$body" == *"[skip-ios]"* ]]; then
+          elif [[ "$title" == *"[skip-ios]"* ]] || [[ "$body" == *"[skip-ios]"* ]]; then
             echo "ANDROID_API_KEY=${{ env.ANDROID_API_KEY }}" >> .env
-          elif [[ "$title" == *"[skip-android]"* || "$body" == *"[skip-android]"* ]]; then
+          elif [[ "$title" == *"[skip-android]"* ]] || [[ "$body" == *"[skip-android]"* ]]; then
             echo "IOS_API_KEY=${{ env.IOS_API_KEY }}" >> .env
           else
             echo "No public key found"
