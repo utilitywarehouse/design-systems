@@ -54,6 +54,7 @@ const Grid = forwardRef<View, GridProps>(
 
       // Default to 2 columns
       return 2;
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [columns, width]);
 
     const computedColumnGap = columnGap ?? gap;

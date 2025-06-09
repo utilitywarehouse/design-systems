@@ -163,7 +163,7 @@ import { View } from 'react-native';
 import { useColorMode } from '@utilitywarehouse/native-ui';
 
 function Example() {
-  const colorMode = useColorMode();
+  const [colorMode, setColorMode] = useColorMode();
   return (
     <View
       style={{

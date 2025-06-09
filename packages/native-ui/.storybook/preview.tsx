@@ -152,6 +152,7 @@ const preview: Preview = {
         order: [
           'Introduction',
           'Getting Started',
+          "What's New",
           'All components',
           'Guides',
           [
