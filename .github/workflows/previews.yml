@@ -417,6 +417,7 @@ jobs:
           fi
 
       - name: 🏗 Build Project Artifacts
+        working-directory: ./packages/native-ui
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             vercel build --token=${{ secrets.VERCEL_TOKEN }}
@@ -425,6 +426,7 @@ jobs:
           fi
 
       - name: 🚀 Deploy Project Artifacts to Vercel
+        working-directory: ./packages/native-ui
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --meta githubCommitRef=${{ github.head_ref }} --meta githubCommitSha=${{ github.sha }} > ./vercel-deploy.log
