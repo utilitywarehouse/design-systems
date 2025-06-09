@@ -9,3 +9,4 @@
 - Updates tokens to align with Hearth React Native
 - Deprecates previous tokens
 - Adds utility `OL`, `UL` and `LI` components
+- Updates `useColorMode` hook to return `colorMode` and `setColorMode`

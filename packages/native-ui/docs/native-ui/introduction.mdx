@@ -28,7 +28,9 @@ Current version: v{version}
 - [Installation](#installation)
 - [Additional packages](#additional-packages)
   - [Linking the fonts to be used in your project](#linking-the-fonts-to-be-used-in-your-project)
-  - [Using Expo](#using-expo)
+    - [Using Expo](#using-expo)
+- [Babel configuration](#babel-configuration)
+- [Jest configuration](#jest-configuration)
 
 ## Installation
 
@@ -97,7 +99,7 @@ Now we need to link them so we'll be able to use them in any files inside the pr
 npx react-native-asset
 ```
 
-### Using Expo
+#### Using Expo
 
 If you are using Expo, you can use the `expo-font` and [`expo-xml-font`](https://github.com/Armster15/expo-xml-font) packages to load the fonts.
 Here is an example of how to load the fonts in your `App.tsx` file:
@@ -129,3 +131,50 @@ export default () => {
 ```
 
 Follow the [expo-xml-font](https://github.com/Armster15/expo-xml-font) documentation to learn how to use the `expo-xml-font` package.
+
+## Babel configuration
+
+You will need to add the following Babel plugin to your `babel.config.js` file:
+
+```js
+const unistylesPluginOptions = {
+  autoProcessImports: ['@utilitywarehouse/native-ui'],
+  autoProcessPaths: ['@utilitywarehouse/native-ui'],
+  autoProcessRoot: 'src', // Adjust this to your project's structure
+  debug: false, // Set to true for debugging purposes
+};
+
+module.exports = {
+  presets: ['module:metro-react-native-babel-preset'],
+  plugins: [
+    // other plugins...
+    'react-native-reanimated/plugin',
+    ['react-native-unistyles/plugin', unistylesPluginOptions],
+  ],
+};
+```
+
+## Jest configuration
+
+If you are using Jest for testing, you will need to add the following configuration to your `jest.config.js` file:
+
+```js
+module.exports = {
+  // other Jest configurations...
+  setupFiles: ['react-native-unistyles/mocks'],
+  // other Jest configurations...
+};
+```
+
+You'll also need to add the following to your `jest.setup.js` file:
+
+```js
+import { StyleSheet, themes, breakpoints } from '@utilitywarehouse/native-ui';
+
+StyleSheet.configure({
+  themes,
+  breakpoints,
+});
+
+// rest of your setup...
+```
