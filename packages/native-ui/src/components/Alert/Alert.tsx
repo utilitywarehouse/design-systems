@@ -1,14 +1,14 @@
-import React, { forwardRef, useEffect, useMemo } from 'react';
-import AlertTitle from './AlertTitle';
-import AlertLink, { AlertLinkChevron, AlertLinkText } from './AlertLink';
-import AlertIconButton, { AlertIconButtonChevron } from './AlertIconButton';
-import AlertCloseButton, { AlertCloseButtonIcon } from './AlertCloseButton';
-import type { AlertProps } from './Alert.props';
-import { AlertContext } from './Alert.context';
+import { forwardRef, useMemo } from 'react';
+import { Pressable, View, ViewProps } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { View, Pressable, ViewProps } from 'react-native';
-import AlertText from './AlertText';
+import { AlertContext } from './Alert.context';
+import type { AlertProps } from './Alert.props';
+import AlertCloseButton, { AlertCloseButtonIcon } from './AlertCloseButton';
 import AlertIcon from './AlertIcon';
+import AlertIconButton, { AlertIconButtonChevron } from './AlertIconButton';
+import AlertLink, { AlertLinkChevron, AlertLinkText } from './AlertLink';
+import AlertText from './AlertText';
+import AlertTitle from './AlertTitle';
 
 const Alert = forwardRef<View, AlertProps>(
   (
@@ -29,16 +29,6 @@ const Alert = forwardRef<View, AlertProps>(
     },
     ref
   ) => {
-    useEffect(() => {
-      if (__DEV__) {
-        if (onPressIconButton && link) {
-          console.warn(
-            'You cannot use both onPressIconButton and link props at the same time. Please choose one or the other.'
-          );
-        }
-      }
-    }, [onPressIconButton, link]);
-
     const value = useMemo(() => ({ colorScheme }), [colorScheme]);
 
     styles.useVariants({ colorScheme });

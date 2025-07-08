@@ -52,9 +52,6 @@ const preview = {
         return scheme === 'dark' ? 'dark' : 'light';
       });
 
-      console.log('Color mode:', colorMode);
-      console.log('Appearance:', Appearance.getColorScheme());
-
       useEffect(() => {
         const colorScheme = Appearance.getColorScheme();
         const theme = colorScheme === 'dark' ? 'dark' : 'light';
@@ -62,7 +59,6 @@ const preview = {
         setColorMode(theme);
 
         const listener = Appearance.addChangeListener(({ colorScheme: newColorScheme }) => {
-          console.log('Color scheme changed:', newColorScheme);
           const newTheme = newColorScheme === 'dark' ? 'dark' : 'light';
           UnistylesRuntime.setTheme(newTheme);
           setColorMode(newTheme);
@@ -81,10 +77,6 @@ const preview = {
         }
         return colorMode === 'dark' ? colorsDark.grey100 : colorsCommon.brandWhite;
       })();
-
-      console.log(bg);
-
-      // console.log(colorMode)
 
       return parameters.noScroll ? (
         <View

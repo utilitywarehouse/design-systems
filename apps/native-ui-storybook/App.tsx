@@ -4,7 +4,6 @@ import StorybookUIRoot from './.rnstorybook';
 
 import React from 'react';
 
-import { NativeUIProvider } from '@utilitywarehouse/native-ui';
 import { useFonts } from 'expo-font';
 
 const App = () => {
@@ -25,11 +24,9 @@ const App = () => {
 
   if (!loaded) return null;
   return (
-    <NativeUIProvider>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <StorybookUIRoot />
-      </GestureHandlerRootView>
-    </NativeUIProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <StorybookUIRoot />
+    </GestureHandlerRootView>
   );
 };
 
