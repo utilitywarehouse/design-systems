@@ -1,5 +1,5 @@
 import { addons } from '@storybook/addons';
-import { create } from '@storybook/theming';
+import { create } from 'storybook/theming';
 import { version } from '../package.json';
 
 const theme = create({

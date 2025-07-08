@@ -1,6 +1,6 @@
 import React from 'react';
 import { Spinner } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { VStack } from '../VStack';
 import { VariantTitle } from '../../../docs/components';
 import { colors } from '@utilitywarehouse/colour-system';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Center } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Text } from '../Text';
 import { colors } from '@utilitywarehouse/colour-system';
 

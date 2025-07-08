@@ -1,6 +1,6 @@
 import React, { ElementType } from 'react';
 import { Icon } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { colors } from '@utilitywarehouse/colour-system';
 import { ColorValue } from '../../types';

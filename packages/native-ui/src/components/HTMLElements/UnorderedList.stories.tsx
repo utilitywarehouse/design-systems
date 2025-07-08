@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import UnorderedList from './UnorderedList';
 import ListItem from './ListItem';
 import { space } from '../../tokens';

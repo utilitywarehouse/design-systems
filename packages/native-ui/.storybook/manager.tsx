@@ -1,6 +1,6 @@
-import { addons } from '@storybook/addons';
+import { addons } from 'storybook/manager-api';
 
-import './addons/devices/register';
+// import './addons/devices/register';
 import { themeLight } from './themes';
 
 addons.setConfig({

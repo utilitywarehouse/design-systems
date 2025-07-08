@@ -1,6 +1,6 @@
 import React from 'react';
 import { Actionsheet, ActionsheetContent } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Box, Button, Heading, Text, View } from '../../components';
 import { ScrollView, TextInput, StyleSheet } from 'react-native';
 

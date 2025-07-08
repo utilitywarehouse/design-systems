@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import { ChevronRightMediumIcon, OpenMediumIcon } from '@utilitywarehouse/react-icons';

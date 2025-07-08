@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Carousel, CarouselItem, CarouselItems, CarouselPagination } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Box, Text } from '../../components';
 import { colors } from '@utilitywarehouse/colour-system';
 import { StyleSheet } from 'react-native-unistyles';

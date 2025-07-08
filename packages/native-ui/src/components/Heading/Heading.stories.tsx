@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { VStack } from '../VStack';
 import { VariantTitle } from '../../../docs/components';
 

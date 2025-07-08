@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { VariantTitle } from '../../../docs/components';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { VStack } from '../VStack';

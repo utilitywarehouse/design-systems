@@ -1,4 +1,4 @@
-import { create, ThemeVars } from '@storybook/theming';
+import { create, ThemeVars } from 'storybook/theming';
 import { version } from '../package.json';
 //  @ts-ignore
 import img from './static/monogram.svg';

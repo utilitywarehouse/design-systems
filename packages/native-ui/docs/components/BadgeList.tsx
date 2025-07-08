@@ -1,19 +1,18 @@
-import React from 'react';
 import {
+  Badge,
+  BadgeText,
+  Box,
+  HStack,
   List,
   ListItem,
+  ListItemContent,
   ListItemIcon,
   ListItemLeadingContent,
   ListItemSupportingText,
   ListItemText,
   ListItemTrailingContent,
   ListItemTrailingIcon,
-  ListItemContent,
-  Badge,
-  BadgeText,
-  HStack,
   useColorMode,
-  Box,
 } from '../../src';
 
 import {
@@ -23,7 +22,7 @@ import {
 } from '@utilitywarehouse/react-native-icons';
 
 const BadgeList = () => {
-  const colorMode = useColorMode();
+  const [colorMode] = useColorMode();
   return (
     <List>
       <ListItem onPress={() => console.log('pressed')} divider>

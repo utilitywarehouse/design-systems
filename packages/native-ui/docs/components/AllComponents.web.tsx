@@ -1,54 +1,54 @@
 import React, { PropsWithChildren } from 'react';
 
-import { ScrollView, View, Pressable } from 'react-native';
 import {
-  Button,
-  Text,
-  Heading,
+  BroadbandMediumIcon,
+  ChevronRightMediumIcon,
+  ElectricityMediumIcon,
+  InsuranceMediumIcon,
+  MobileMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+import { Pressable, ScrollView, View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
+import {
   Alert,
+  Button,
+  Card,
   Center,
   Checkbox,
+  Divider,
+  Flex,
   FormField,
-  Input,
+  Grid,
+  Heading,
   Icon,
   IconButton,
+  Input,
+  LI,
   List,
   ListItem,
-  RadioGroup,
+  OL,
   Radio,
+  RadioGroup,
   Skeleton,
   Spinner,
-  Divider,
-  useColorMode,
-  Card,
   Switch,
+  Text,
+  Textarea,
   ToggleButton,
   ToggleButtonGroup,
-  Flex,
-  Grid,
-  Textarea,
   UL,
-  LI,
-  OL,
+  useColorMode,
 } from '../../';
 import {
+  Accordion,
+  AccordionItem,
   Actionsheet,
   Box,
   Carousel,
   CarouselItem,
   CarouselItems,
   CarouselPagination,
-  Accordion,
-  AccordionItem,
 } from '../../src/lab';
-import {
-  ElectricityMediumIcon,
-  MobileMediumIcon,
-  BroadbandMediumIcon,
-  InsuranceMediumIcon,
-  ChevronRightMediumIcon,
-} from '@utilitywarehouse/react-native-icons';
-import { StyleSheet } from 'react-native-unistyles';
 
 const ComponentWrapper: React.FC<PropsWithChildren<{ name: string; link: string }>> = ({
   name,
@@ -78,7 +78,7 @@ const AllComponents: React.FC = () => {
   const [switchEnabled, setSwitchEnabled] = React.useState(false);
   const toggleSwitch = () => setSwitchEnabled(!switchEnabled);
   const [toggleButtonValue, setToggleButtonValue] = React.useState('day');
-  const colorMode = useColorMode();
+  const [colorMode] = useColorMode();
   const isDark = colorMode === 'dark';
   return (
     <div className="sb-unstyled">

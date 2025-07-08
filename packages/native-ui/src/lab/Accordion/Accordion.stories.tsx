@@ -9,7 +9,7 @@ import {
   AccordionContent,
   AccordionContentText,
 } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Text } from '../../components';
 import { ChevronDownMediumIcon, ChevronUpMediumIcon } from '@utilitywarehouse/react-native-icons';
 

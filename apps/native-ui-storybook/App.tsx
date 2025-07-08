@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import StorybookUIRoot from './.storybook';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import StorybookUIRoot from './.rnstorybook';
 
 import React from 'react';
-import { useFonts } from 'expo-font';
+
 import { NativeUIProvider } from '@utilitywarehouse/native-ui';
+import { useFonts } from 'expo-font';
 
 const App = () => {
   const [loaded] = useFonts({

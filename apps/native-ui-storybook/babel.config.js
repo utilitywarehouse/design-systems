@@ -1,7 +1,8 @@
 /** @type {import('react-native-unistyles/plugin').UnistylesPluginOptions} */
 const unistylesPluginOptions = {
   autoProcessImports: ['@utilitywarehouse/native-ui'],
-  // autoProcessPaths: ['external-library/components'],
+  autoProcessPaths: ['@utilitywarehouse/native-ui'],
+  root: './',
   debug: false,
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { List, ListItem, ListItemIcon, ListItemTrailingIcon } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { VariantTitle } from '../../../docs/components';
 import { VStack } from '../VStack';
 import { SettingsMediumIcon } from '@utilitywarehouse/react-native-icons';

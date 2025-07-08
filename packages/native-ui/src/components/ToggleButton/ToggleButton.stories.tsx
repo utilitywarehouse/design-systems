@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ToggleButton, ToggleButtonGroup } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { VStack } from '../VStack';
 import { Box } from '../Box';
 import { Text } from '../Text';
