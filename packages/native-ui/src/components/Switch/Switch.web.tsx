@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { CloseSmallIcon, TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, View } from 'react-native';
 import Animated, {
   Easing,
   interpolateColor,
@@ -14,6 +14,9 @@ import { StyleSheet } from 'react-native-unistyles';
 import { useTheme } from '../../hooks';
 import { Icon } from '../Icon';
 import SwitchProps from './Switch.props';
+
+// @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package
+const AnimatedView = Animated.createAnimatedComponent(View);
 
 const CustomSwitch: React.FC<SwitchProps> = ({
   value = false,
@@ -120,16 +123,20 @@ const CustomSwitch: React.FC<SwitchProps> = ({
       accessibilityHint={accessibilityProps.accessibilityHint}
       {...accessibilityProps}
     >
-      <Animated.View style={[styles.switch, animatedSwitchStyle, animatedSwitchBackgroundStyle]}>
-        <Animated.View style={[styles.thumb, animatedThumbStyle]}>
-          <Animated.View style={[styles.iconWrap, animatedTickStyle]}>
+      {/* @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package */}
+      <AnimatedView style={[styles.switch, animatedSwitchStyle, animatedSwitchBackgroundStyle]}>
+        {/* @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package */}
+        <AnimatedView style={[styles.thumb, animatedThumbStyle]}>
+          {/* @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package */}
+          <AnimatedView style={[styles.iconWrap, animatedTickStyle]}>
             <Icon as={TickSmallIcon} style={styles.icon} />
-          </Animated.View>
-          <Animated.View style={[styles.iconWrap, animatedCrossStyle]}>
+          </AnimatedView>
+          {/* @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package */}
+          <AnimatedView style={[styles.iconWrap, animatedCrossStyle]}>
             <Icon as={CloseSmallIcon} style={styles.icon} />
-          </Animated.View>
-        </Animated.View>
-      </Animated.View>
+          </AnimatedView>
+        </AnimatedView>
+      </AnimatedView>
     </Pressable>
   );
 };

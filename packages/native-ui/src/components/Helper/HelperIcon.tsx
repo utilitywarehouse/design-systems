@@ -1,18 +1,15 @@
-import React, { forwardRef } from 'react';
+import { Platform, StyleProp, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { Icon } from '../Icon';
-import { SvgRef } from '../../types';
 import IconProps from '../Icon/Icon.props';
 import { useHelperContext } from './HelperContext';
-import { Platform, StyleProp, ViewStyle } from 'react-native';
 
-const HelperIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
+const HelperIcon = ({ style, ...props }: IconProps) => {
   const { validationStatus, disabled } = useHelperContext();
   styles.useVariants({ validationStatus, disabled });
 
   return (
     <Icon
-      ref={ref}
       style={
         Platform.OS === 'web'
           ? {
@@ -24,7 +21,7 @@ const HelperIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
       {...props}
     />
   );
-});
+};
 
 HelperIcon.displayName = 'HelperIcon';
 

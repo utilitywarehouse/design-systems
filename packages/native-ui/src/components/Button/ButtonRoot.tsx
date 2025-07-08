@@ -1,42 +1,33 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
-import React, { forwardRef, PropsWithChildren, useMemo } from 'react';
-import type { BaseButtonProps } from './Button.props';
+import { useMemo } from 'react';
 import { Pressable, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { ButtonContext } from './Button.context';
-import { PressableRef } from '../../types';
+import type { BaseButtonProps } from './Button.props';
 
-const ButtonRoot = forwardRef<
-  PressableRef,
-  PropsWithChildren<BaseButtonProps & { states?: { active?: boolean; disabled?: boolean } }>
->(
-  (
-    {
-      children,
-      colorScheme = 'cyan',
-      variant = 'solid',
-      size = 'medium',
-      inverted = false,
-      states,
-      ...props
-    },
-    ref
-  ) => {
-    const { active, disabled = false } = states || {};
-    styles.useVariants({ variant, size, colorScheme, disabled, inverted, active });
-    const value = useMemo(
-      () => ({ colorScheme, variant, size, inverted, disabled, active }),
-      [colorScheme, variant, size, inverted, disabled, active]
-    );
-    return (
-      <ButtonContext.Provider value={value}>
-        <Pressable ref={ref} {...props} style={[styles.container, props.style as ViewStyle]}>
-          {children}
-        </Pressable>
-      </ButtonContext.Provider>
-    );
-  }
-);
+const ButtonRoot = ({
+  children,
+  colorScheme = 'cyan',
+  variant = 'solid',
+  size = 'medium',
+  inverted = false,
+  states,
+  ...props
+}: BaseButtonProps & { states?: { active?: boolean; disabled?: boolean } }) => {
+  const { active, disabled = false } = states || {};
+  styles.useVariants({ variant, size, colorScheme, disabled, inverted, active });
+  const value = useMemo(
+    () => ({ colorScheme, variant, size, inverted, disabled, active }),
+    [colorScheme, variant, size, inverted, disabled, active]
+  );
+  return (
+    <ButtonContext.Provider value={value}>
+      <Pressable {...props} style={[styles.container, props.style as ViewStyle]}>
+        {children}
+      </Pressable>
+    </ButtonContext.Provider>
+  );
+};
 
 ButtonRoot.displayName = 'ButtonRoot';
 

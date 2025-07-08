@@ -6,7 +6,8 @@ interface AnimatedCircleProps {
   visible: boolean;
 }
 
-// const AnimatedView = Animated.createAnimatedComponent(View);
+// @ts-expect-error - This is a workaround for the Animated.createAnimatedComponent type issue
+const AnimatedView = Animated.createAnimatedComponent(View);
 
 const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ visible }) => {
   const opacity = useSharedValue(0.4);
@@ -30,7 +31,8 @@ const AnimatedCircle: React.FC<AnimatedCircleProps> = ({ visible }) => {
     [scale, opacity]
   );
 
-  return <Animated.View style={[styles.circle, animatedStyles]} />;
+  // @ts-expect-error - This is a workaround for the Animated.createAnimatedComponent type issue
+  return <AnimatedView style={[styles.circle, animatedStyles]} />;
 };
 
 interface Props {

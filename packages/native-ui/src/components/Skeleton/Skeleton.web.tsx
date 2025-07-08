@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React, { useMemo } from 'react';
-import { AnimatableNumericValue } from 'react-native';
+import { AnimatableNumericValue, View } from 'react-native';
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -16,6 +16,9 @@ import { useTheme } from '../../hooks';
 import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
 import type SkeletonProps from './Skeleton.props';
+
+// @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package
+const AnimatedView = Animated.createAnimatedComponent(View);
 
 const Skeleton = ({
   width,
@@ -59,7 +62,8 @@ const Skeleton = ({
     );
   }, [opacity]);
 
-  return <Animated.View {...props} style={[styles.skeleton, style, animatedStyle]} />;
+  // @ts-expect-error - ref is not typed correctly in the reanimated package
+  return <AnimatedView {...props} style={[styles.skeleton, style, animatedStyle]} />;
 };
 
 Skeleton.displayName = 'Skeleton';

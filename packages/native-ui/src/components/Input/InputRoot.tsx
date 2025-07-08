@@ -1,13 +1,17 @@
-import React, { forwardRef, useMemo } from 'react';
-import { StyleSheet } from 'react-native-unistyles';
+import { useMemo } from 'react';
 import { View } from 'react-native';
-import InputProps from './Input.props';
+import { StyleSheet } from 'react-native-unistyles';
 import { InputContext } from './Input.context';
+import InputProps from './Input.props';
 
-const InputRoot = forwardRef<
-  View,
-  InputProps & { states?: { focus?: boolean; disabled?: boolean; readonly?: boolean } }
->(({ children, style, states, validationStatus, showValidationIcon, ...props }, ref) => {
+const InputRoot = ({
+  children,
+  style,
+  states,
+  validationStatus,
+  showValidationIcon,
+  ...props
+}: InputProps & { states?: { focus?: boolean; disabled?: boolean; readonly?: boolean } }) => {
   const { focus = false, disabled = false, readonly = false } = states || {};
   styles.useVariants({ validationStatus, focus, disabled, readonly });
 
@@ -18,12 +22,12 @@ const InputRoot = forwardRef<
 
   return (
     <InputContext.Provider value={value}>
-      <View ref={ref} {...props} style={[styles.container, style]}>
+      <View {...props} style={[styles.container, style]}>
         {children}
       </View>
     </InputContext.Provider>
   );
-});
+};
 
 InputRoot.displayName = 'InputRoot';
 

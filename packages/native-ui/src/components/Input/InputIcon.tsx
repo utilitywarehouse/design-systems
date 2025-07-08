@@ -1,34 +1,30 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React, { ComponentType, forwardRef } from 'react';
+import { ComponentType } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { useInputContext } from './Input.context';
 import { Icon, IconProps } from '../Icon';
-import type { SvgRef } from '../../types';
+import { useInputContext } from './Input.context';
 
-const InputIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
-  ({ children, ...props }, ref) => {
-    const { disabled } = useInputContext();
-    styles.useVariants({ disabled });
-    return (
-      <Icon
-        ref={ref}
-        {...props}
-        style={
-          Platform.OS === 'web'
-            ? {
-                ...styles.icon,
-                ...(props.style as ViewStyle),
-              }
-            : [styles.icon as StyleProp<ViewStyle>, props.style]
-        }
-      >
-        {children}
-      </Icon>
-    );
-  }
-);
+const InputIcon = ({ children, ...props }: IconProps & { as?: ComponentType }) => {
+  const { disabled } = useInputContext();
+  styles.useVariants({ disabled });
+  return (
+    <Icon
+      {...props}
+      style={
+        Platform.OS === 'web'
+          ? {
+              ...styles.icon,
+              ...(props.style as ViewStyle),
+            }
+          : [styles.icon as StyleProp<ViewStyle>, props.style]
+      }
+    >
+      {children}
+    </Icon>
+  );
+};
 
 InputIcon.displayName = 'InputIcon';
 

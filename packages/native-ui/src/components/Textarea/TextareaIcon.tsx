@@ -1,34 +1,30 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React, { ComponentType, forwardRef } from 'react';
+import { ComponentType } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { useTextareaContext } from './Textarea.context';
 import { Icon, IconProps } from '../Icon';
-import type { SvgRef } from '../../types';
+import { useTextareaContext } from './Textarea.context';
 
-const TextareaIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
-  ({ children, ...props }, ref) => {
-    const { disabled } = useTextareaContext();
-    styles.useVariants({ disabled });
-    return (
-      <Icon
-        ref={ref}
-        {...props}
-        style={
-          Platform.OS === 'web'
-            ? {
-                ...styles.icon,
-                ...(props.style as ViewStyle),
-              }
-            : [styles.icon as StyleProp<ViewStyle>, props.style]
-        }
-      >
-        {children}
-      </Icon>
-    );
-  }
-);
+const TextareaIcon = ({ children, ...props }: IconProps & { as?: ComponentType }) => {
+  const { disabled } = useTextareaContext();
+  styles.useVariants({ disabled });
+  return (
+    <Icon
+      {...props}
+      style={
+        Platform.OS === 'web'
+          ? {
+              ...styles.icon,
+              ...(props.style as ViewStyle),
+            }
+          : [styles.icon as StyleProp<ViewStyle>, props.style]
+      }
+    >
+      {children}
+    </Icon>
+  );
+};
 
 TextareaIcon.displayName = 'TextareaIcon';
 
