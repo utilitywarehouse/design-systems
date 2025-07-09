@@ -96,7 +96,7 @@ export const Alert = React.forwardRef<
     const AlertIcon = icons[colorScheme];
     const dataAttributeProps = { [DATA_ATTRIBUTES.colorscheme]: colorScheme };
     return (
-      /* @ts-ignore */
+      /* @ts-expect-error - upgrade issue */
       <StyledElement
         gap={1}
         direction="row"
