@@ -1,6 +1,6 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
 import { useMemo } from 'react';
-import { Pressable, ViewStyle } from 'react-native';
+import { Pressable, ViewProps, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { ButtonContext } from './Button.context';
 import type { BaseButtonProps } from './Button.props';
@@ -13,7 +13,10 @@ const ButtonRoot = ({
   inverted = false,
   states,
   ...props
-}: BaseButtonProps & { states?: { active?: boolean; disabled?: boolean } }) => {
+}: BaseButtonProps & {
+  states?: { active?: boolean; disabled?: boolean };
+  children: ViewProps['children'];
+}) => {
   const { active, disabled = false } = states || {};
   styles.useVariants({ variant, size, colorScheme, disabled, inverted, active });
   const value = useMemo(

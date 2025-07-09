@@ -1,4 +1,4 @@
-import React, {
+import {
   Children,
   cloneElement,
   ForwardedRef,
@@ -9,7 +9,7 @@ import React, {
   useEffect,
   useMemo,
 } from 'react';
-import { AccessibilityActionEvent, FlatList, ViewToken, ViewStyle } from 'react-native';
+import { AccessibilityActionEvent, FlatList, ViewStyle, ViewToken } from 'react-native';
 
 import { Box } from '../../';
 import CarouselContext from './Carousel.context';
@@ -103,6 +103,7 @@ export const CarouselItems = forwardRef(function CarouselItems(
         overScrollMode="never" // Prevents stretching of first and last items when reaching each end of the carousel (Android only)
         ref={ref}
         removeClippedSubviews={!showOverflow}
+        // @ts-expect-error - View type issue
         renderItem={({ index, item }) =>
           cloneElement(item, {
             active: index === activeIndex,

@@ -26,7 +26,6 @@ export const CarouselItem = ({
 
   return (
     <Animated.View style={[style as false, animatedStyles]} {...props}>
-      {/* @ts-expect-error - children types */}
       {children}
     </Animated.View>
   );

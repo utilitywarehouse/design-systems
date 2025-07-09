@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { View, StyleSheet, ViewProps, ViewStyle } from 'react-native';
-import { Text } from '../Text';
-import { SpaceValue } from '../../types';
+import { StyleSheet, View, ViewProps, ViewStyle } from 'react-native';
 import { useStyleProps } from '../../hooks';
+import { SpaceValue } from '../../types';
+import { Text } from '../Text';
 
 export interface OrderedListProps extends ViewProps {
-  children: React.ReactNode;
+  children: ViewProps['children'];
   gap?: SpaceValue;
   bulletStyle?: ViewStyle;
 }
@@ -22,7 +22,8 @@ const OrderedList: React.FC<OrderedListProps> = ({ children, gap = '100', style,
           return (
             <View style={styles.listItemContainer}>
               <Text style={styles.number}>{`${itemNumber}.`}</Text>
-              {React.cloneElement(child as React.ReactElement<any>, {})}
+              {/* @ts-expect-error - child typing */}
+              {React.cloneElement(child as React.ComponentType, {})}
             </View>
           );
         }

@@ -1,4 +1,5 @@
-import type { ViewStyle, StyleProp, View } from 'react-native';
+import React from 'react';
+import type { StyleProp, View, ViewProps, ViewStyle } from 'react-native';
 import type {
   BordeWidthValue,
   ColorValue,
@@ -6,9 +7,6 @@ import type {
   RadiiValue,
   SpaceValue,
 } from '../../types';
-import React from 'react';
-
-type ComponentPropsWithRef<T extends React.ElementType> = React.ComponentPropsWithRef<T>;
 
 export type OmittedStyles = Omit<
   ViewStyle,
@@ -225,11 +223,12 @@ export interface BoxOwnProps
     ThemedBoxViewStyleProps,
     OtherBoxViewStyles {
   as?: React.ElementType;
-  children?: React.ReactNode;
+  children?: ViewProps['children'];
   style?: StyleProp<ViewStyle>;
 }
 
-export type BoxProps<T extends React.ElementType = typeof View> = BoxOwnProps &
-  Omit<ComponentPropsWithRef<T>, keyof BoxOwnProps>;
+// @ts-expect-error - View type issue
+export type BoxProps<T extends React.ComponentType = typeof View> = BoxOwnProps &
+  Omit<React.ComponentPropsWithoutRef<T>, keyof BoxOwnProps>;
 
 export default BoxProps;

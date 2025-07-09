@@ -1,5 +1,5 @@
 import type { ComponentType, ReactElement, ReactNode } from 'react';
-import type { PressableProps, ViewProps } from 'react-native';
+import type { PressableProps } from 'react-native';
 
 export interface BaseButtonProps extends Omit<PressableProps, 'children'> {
   /*
@@ -16,7 +16,7 @@ export interface BaseButtonProps extends Omit<PressableProps, 'children'> {
   inverted?: boolean;
   variant?: 'solid' | 'outline' | 'ghost';
   pressed?: boolean;
-  children?: ViewProps['children'];
+  // children?: ViewProps['children'];
 }
 
 export interface ButtonWithoutChildrenProps extends BaseButtonProps {

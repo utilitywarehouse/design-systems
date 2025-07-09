@@ -41,7 +41,6 @@ export const ToggleButton = ({ children, style, value, disabled, ...props }: Tog
       style={style}
       value={value}
     >
-      {/* @ts-expect-error - Children types */}
       {typeof children === 'string' ? <ToggleButtonText>{label}</ToggleButtonText> : children}
     </ToggleButtonComponent>
   );

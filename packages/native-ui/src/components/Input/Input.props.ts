@@ -37,7 +37,7 @@ export interface InputBaseProps {
 }
 
 export interface InputWithChildrenProps extends InputBaseProps, ViewProps {
-  children: React.ReactNode;
+  children: ViewProps['children'];
   leadingIcon?: never;
   trailingIcon?: never;
   type?: never;

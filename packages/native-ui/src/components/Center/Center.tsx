@@ -1,5 +1,4 @@
-import { ComponentProps, forwardRef } from 'react';
-import { View } from 'react-native';
+import { ComponentProps } from 'react';
 import { StyleSheet } from 'react-native-unistyles';
 import { Box } from '../Box';
 
@@ -12,11 +11,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const Center = forwardRef<View, CenterProps>(({ children, ...props }, ref) => (
-  <Box ref={ref} style={styles.container} {...props}>
+const Center = ({ children, ...props }: CenterProps) => (
+  <Box style={styles.container} {...props}>
     {children}
   </Box>
-));
+);
 
 Center.displayName = 'Center';
 

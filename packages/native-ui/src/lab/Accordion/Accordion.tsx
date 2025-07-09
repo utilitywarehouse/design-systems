@@ -46,7 +46,6 @@ const Accordion = ({
     contentNoPadding={props.contentNoPadding}
     {...props}
   >
-    {/* @ts-expect-error - children types */}
     {children}
   </AccordionComponent>
 );

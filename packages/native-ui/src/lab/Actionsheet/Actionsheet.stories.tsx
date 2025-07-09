@@ -1,8 +1,8 @@
-import React from 'react';
-import { Actionsheet, ActionsheetContent } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
+import React from 'react';
+import { ScrollView, StyleSheet, TextInput } from 'react-native';
+import { Actionsheet, ActionsheetContent } from '.';
 import { Box, Button, Heading, Text, View } from '../../components';
-import { ScrollView, TextInput, StyleSheet } from 'react-native';
 
 const meta = {
   title: 'Stories / Actionsheet',
@@ -78,7 +78,7 @@ export const Playground: Story = {
         <Actionsheet isOpen={isOpen} onClose={handleClose} {...args} includeContent={false}>
           <ActionsheetContent>
             <View style={{ gap: 12 }}>
-              <Text>{children}</Text>
+              <Text>{children as string}</Text>
               <TextInput style={{ padding: 5, borderColor: 'red', borderWidth: 1, height: 48 }} />
               <Button onPress={handleClose}>Close</Button>
             </View>

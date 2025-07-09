@@ -1,12 +1,7 @@
-import React from 'react';
-import { View, StyleSheet, ViewProps } from 'react-native';
+import { StyleSheet, View, ViewProps } from 'react-native';
 import { Text } from '../Text';
 
-export interface ListItemProps extends ViewProps {
-  children: React.ReactNode;
-}
-
-const ListItem: React.FC<ListItemProps> = ({ children, style, ...rest }) => {
+const ListItem = ({ children, style, ...rest }: ViewProps) => {
   return (
     <View style={[styles.item, style]} {...rest}>
       {typeof children === 'string' ? <Text>{children}</Text> : children}

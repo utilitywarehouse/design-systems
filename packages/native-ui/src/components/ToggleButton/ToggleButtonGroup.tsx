@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, LayoutChangeEvent, Platform, View } from 'react-native';
+import { Animated, LayoutChangeEvent, Platform, View, ViewProps } from 'react-native';
 
+import { StyleSheet } from 'react-native-unistyles';
 import {
   ToggleButtonGroupContext,
   ToggleButtonGroupContextValue,
 } from './ToggleButtonGroup.context';
 import { ToggleButtonGroupProps } from './ToggleButtonGroup.props';
-import { StyleSheet } from 'react-native-unistyles';
 interface ButtonLayout {
   x: number;
   y: number;
@@ -149,7 +149,7 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
             ]}
           />
         )}
-        {wrappedChildren}
+        {wrappedChildren as ViewProps['children']}
       </View>
     </ToggleButtonGroupContext.Provider>
   );

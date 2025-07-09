@@ -1,24 +1,24 @@
-import React, { FC, useMemo } from 'react';
 import { createFormControl } from '@gluestack-ui/form-control';
+import { FC, useMemo } from 'react';
+import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
+import { HelperIcon, HelperText } from '../Helper';
 import { FormFieldContext } from './FormField.context';
 import FormFieldProps from './FormField.props';
-import FormFieldRoot from './FormFieldRoot';
-import FormFieldInvalidComponent from './FormFieldInvalid';
 import FormFieldHelperComponent from './FormFieldHelper';
+import FormFieldInvalidComponent from './FormFieldInvalid';
 import FormFieldLabelComponent from './FormFieldLabel';
-import { HelperIcon, HelperText } from '../Helper';
-import { View } from 'react-native';
+import FormFieldRoot from './FormFieldRoot';
 import FormFieldValid from './FormFieldValid';
-import { StyleSheet } from 'react-native-unistyles';
 
 export const FormFieldComponent = createFormControl({
   Root: FormFieldRoot,
   Error: FormFieldInvalidComponent,
   ErrorText: HelperText,
   ErrorIcon: HelperIcon,
-  Label: View,
+  Label: () => null,
   LabelText: FormFieldLabelComponent,
-  LabelAstrick: View,
+  LabelAstrick: () => null,
   Helper: FormFieldHelperComponent,
   HelperText: HelperText,
 });
