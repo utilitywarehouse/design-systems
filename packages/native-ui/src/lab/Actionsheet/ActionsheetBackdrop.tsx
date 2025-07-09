@@ -27,11 +27,11 @@ const ActionsheetBackdropComponent = ({ style, ...props }: Omit<ViewProps, 'chil
   );
 };
 
-export default gestureHandlerRootHOC(ActionsheetBackdropComponent);
-
 const styles = StyleSheet.create(theme => ({
   backdrop: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: theme.colorMode === 'light' ? theme.colors.grey1000 : theme.colors.grey25,
   },
 }));
+
+export default gestureHandlerRootHOC(ActionsheetBackdropComponent);

@@ -1,11 +1,10 @@
-import React, { ElementRef } from 'react';
+import React, { ElementRef , forwardRef } from 'react';
 import { createRadio } from '@gluestack-ui/radio';
 import StyledRadio from './RadioRoot';
 import StyledRadioIndicator from './RadioIndicator';
 import StyledRadioIcon from './RadioIcon';
 import StyledRadioLabel from './RadioLabel';
 import StyledRadioGroup from './RadioGroupRoot';
-import { forwardRef } from 'react';
 import RadioProps from './Radio.props';
 import { Pressable } from 'react-native';
 import { Helper } from '../Helper';

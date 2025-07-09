@@ -108,7 +108,7 @@ const ListItemRoot = forwardRef<
               </ListItemContent>
               {trailingContent ? (
                 <ListItemTrailingContent>{trailingContent}</ListItemTrailingContent>
-              ) : !!onPress ? (
+              ) : onPress ? (
                 <ListItemTrailingContent>
                   <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
                 </ListItemTrailingContent>
