@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React, { useMemo } from 'react';
 import { View, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
@@ -9,7 +7,7 @@ import {
   themeStyleMapping,
   themeStyleMappingNew,
   viewStyleProps,
-} from 'src/utils/styleUtils';
+} from '../../utils/styleUtils';
 import type BoxProps from './Box.props';
 
 const Box = ({ as, style, children, ...props }: BoxProps) => {
