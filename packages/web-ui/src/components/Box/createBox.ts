@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { BoxTypeMap as MuiBoxTypeMap, createBox as createMuiBox } from '@mui/system';
+// eslint-disable-next-line  import/no-unresolved
 import { OverridableComponent } from '@mui/types';
 
 import { type Theme, theme } from '../../theme';

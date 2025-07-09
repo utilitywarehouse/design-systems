@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
+// eslint-disable-next-line  import/no-unresolved
 import { OverridableComponent } from '@mui/types';
 
 import { colorsCommon } from '@utilitywarehouse/colour-system';

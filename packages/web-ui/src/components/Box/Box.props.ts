@@ -1,6 +1,7 @@
 import { ElementType } from 'react';
 
 import { BoxTypeMap as MuiBoxTypeMap } from '@mui/system';
+// eslint-disable-next-line  import/no-unresolved
 import { OverrideProps } from '@mui/types';
 
 import { Theme } from '../../theme';

@@ -7,7 +7,16 @@ module.exports = {
   globals: {
     module: 'readonly',
   },
-  extends: ['plugin:import/recommended', 'plugin:import/typescript', 'eslint:recommended', 'plugin:react/recommended', 'plugin:react-hooks/recommended', 'plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-type-checked', 'plugin:storybook/recommended'],
+  extends: [
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-type-checked',
+    'plugin:storybook/recommended',
+  ],
   plugins: ['react', '@typescript-eslint', 'jsx-a11y', 'react-hooks'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -30,6 +39,8 @@ module.exports = {
     'react/prop-types': 'off',
     '@typescript-eslint/array-type': ['error', { default: 'generic' }],
     '@typescript-eslint/unbound-method': 'off',
+    'import/no-named-as-default': 'off',
+    'storybook/no-redundant-story-name': 'off',
   },
   overrides: [
     {
