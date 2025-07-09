@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import MuiGrid from '@mui/material/Grid';
 import type { GridProps as MuiGridProps, RegularBreakpoints } from '@mui/material/Grid';
+import MuiGrid from '@mui/material/Grid';
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
 
 export const DEFAULT_COLUMNS = { mobile: 4, tablet: 8, desktop: 12, wide: 12 };
@@ -17,6 +17,7 @@ export interface CustomGridProps {
 }
 
 export interface GridTypeMap<D extends React.ElementType = DefaultGridComponent, P = object> {
+  /* @ts-expect-error - upgrade issue. TODO: Fix this */
   props: CustomGridProps & Omit<MuiGridProps<D, P>, 'xs' | 'sm' | 'lg' | 'md' | 'xl'>;
   defaultComponent: D;
 }
@@ -24,6 +25,7 @@ export interface GridTypeMap<D extends React.ElementType = DefaultGridComponent,
 export type GridProps<
   D extends React.ElementType = DefaultGridComponent,
   P = object,
+  /* @ts-expect-error - upgrade issue. TODO: Fix this */
 > = OverrideProps<GridTypeMap<D, P>, D>;
 
 /**

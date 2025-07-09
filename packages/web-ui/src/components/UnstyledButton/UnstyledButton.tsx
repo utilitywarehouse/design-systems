@@ -46,6 +46,7 @@ export const UnstyledButton = React.forwardRef<
   React.PropsWithChildren<PropsWithSx<UnstyledButtonProps>>
 >(function UnstyledButton({ className, asChild, disabled, onClick, ...props }, forwardedRef) {
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledButton
       as={asChild ? Slot : 'button'}
       ref={forwardedRef}

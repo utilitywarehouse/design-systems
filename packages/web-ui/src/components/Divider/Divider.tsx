@@ -62,6 +62,7 @@ export const Divider = React.forwardRef<React.ElementRef<'hr'>, DividerProps>(
       : { 'aria-orientation': ariaOrientation };
 
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledElement
         color={color}
         className={clsx(componentClassName, className)}

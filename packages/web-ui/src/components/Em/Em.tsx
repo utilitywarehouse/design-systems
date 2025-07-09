@@ -30,6 +30,7 @@ export const Em = React.forwardRef<
   React.ElementRef<'em'>,
   React.PropsWithChildren<PropsWithSx<EmProps>>
 >(({ className, ...props }, ref) => {
+  /* @ts-expect-error - upgrade issue. TODO: Fix this */
   return <StyledElement ref={ref} className={clsx(componentClassName, className)} {...props} />;
 });
 

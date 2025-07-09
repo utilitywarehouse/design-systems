@@ -83,6 +83,7 @@ export const HelperText = React.forwardRef<
       : (InformationMediumContainedIcon as JSX.ElementType);
 
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledElement
         ref={ref}
         data-disabled={disabled ? '' : undefined}

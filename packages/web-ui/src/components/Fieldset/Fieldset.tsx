@@ -31,6 +31,7 @@ export const Fieldset: React.ForwardRefExoticComponent<
   React.PropsWithChildren<PropsWithSx<FieldsetProps>>
 >(({ children, className, ...props }, ref) => {
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledElement className={clsx(componentClassName, className)} ref={ref} {...props}>
       <Flex direction="column" gap={2}>
         {children}

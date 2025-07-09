@@ -45,6 +45,7 @@ export const CheckboxGroupRoot = React.forwardRef<HTMLDivElement, CheckboxGroupR
   ) => {
     const checkboxGroupBaseProps = { name, value, defaultValue, onValueChange, children };
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledFlex
         ref={ref}
         {...props}

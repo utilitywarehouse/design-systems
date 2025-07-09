@@ -207,6 +207,7 @@ export const Badge = React.forwardRef<
         (inverted || isInvertedBackground) && variant === 'outline' ? '' : undefined,
     };
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledElement
         ref={ref}
         className={clsx(

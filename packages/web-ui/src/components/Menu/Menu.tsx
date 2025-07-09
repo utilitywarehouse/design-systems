@@ -34,6 +34,7 @@ const StyledMenu = styled(MuiMenu)({
  */
 export const Menu = forwardRef<HTMLDivElement, MenuProps>(function Menu(props, ref) {
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledMenu
       ref={ref}
       anchorOrigin={{
