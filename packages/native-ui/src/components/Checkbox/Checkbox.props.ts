@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import type { PressableProps } from 'react-native';
+import type { PressableProps, ViewProps } from 'react-native';
 
 type CheckboxBaseProps = {
   onChange?: (isSelected: boolean) => void;
@@ -18,7 +18,7 @@ type CheckboxBaseProps = {
   Omit<PressableProps, 'children'>;
 
 type CheckboxWithChildrenProps = {
-  children: React.ReactNode;
+  children: ViewProps['children'];
   label?: never;
   helperText?: never;
   helperIcon?: never;

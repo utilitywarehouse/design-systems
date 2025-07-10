@@ -1,14 +1,13 @@
-import React, { forwardRef } from 'react';
-import { StyleSheet } from 'react-native-unistyles';
 import { View, ViewProps } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
-const InputSlot = forwardRef<View, ViewProps>(({ children, style, ...props }, ref) => {
+const InputSlot = ({ children, style, ...props }: ViewProps) => {
   return (
-    <View ref={ref} {...props} style={[styles.container, style]}>
+    <View {...props} style={[styles.container, style]}>
       {children}
     </View>
   );
-});
+};
 
 InputSlot.displayName = 'InputSlot';
 

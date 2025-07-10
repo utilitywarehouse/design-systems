@@ -1,23 +1,22 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import React, { forwardRef } from 'react';
 import { Text, type TextProps } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { useToggleButtonContext } from './ToggleButton.context';
 import { useToggleButtonGroupContext } from './ToggleButtonGroup.context';
-import { StyleSheet } from 'react-native-unistyles';
 
-const ToggleButtonText = forwardRef<Text, TextProps>(({ children, ...props }, ref) => {
+const ToggleButtonText = ({ children, ...props }: TextProps) => {
   const { value: contextVal, disabled: contextDisabled, size } = useToggleButtonGroupContext();
   const { value, disabled } = useToggleButtonContext();
   const isDisabled = disabled || contextDisabled;
   const isActive = value === contextVal;
   styles.useVariants({ disabled: isDisabled, active: isActive, size });
   return (
-    <Text ref={ref} {...props} style={[styles.text, props.style]}>
+    <Text {...props} style={[styles.text, props.style]}>
       {children}
     </Text>
   );
-});
+};
 
 ToggleButtonText.displayName = 'ToggleButtonText';
 

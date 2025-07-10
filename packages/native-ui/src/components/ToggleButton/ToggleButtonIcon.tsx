@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import React, { forwardRef } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
-import { useToggleButtonContext } from './ToggleButton.context';
-import { Icon } from '../Icon';
-import { IconRef } from '../../types';
-import IconProps from '../Icon/Icon.props';
-import { useToggleButtonGroupContext } from './ToggleButtonGroup.context';
 import { StyleSheet } from 'react-native-unistyles';
+import { Icon } from '../Icon';
+import IconProps from '../Icon/Icon.props';
+import { useToggleButtonContext } from './ToggleButton.context';
+import { useToggleButtonGroupContext } from './ToggleButtonGroup.context';
 
-const ToggleButtonIcon = forwardRef<IconRef, IconProps>(({ children, ...props }, ref) => {
+const ToggleButtonIcon = ({ children, ...props }: IconProps) => {
   const { value: contextVal, disabled: contextDisabled } = useToggleButtonGroupContext();
   const { value, disabled } = useToggleButtonContext();
   const isDisabled = disabled || contextDisabled;
@@ -17,7 +15,6 @@ const ToggleButtonIcon = forwardRef<IconRef, IconProps>(({ children, ...props },
   styles.useVariants({ disabled: isDisabled, active: isActive });
   return (
     <Icon
-      ref={ref}
       {...props}
       style={
         Platform.OS === 'web'
@@ -28,7 +25,7 @@ const ToggleButtonIcon = forwardRef<IconRef, IconProps>(({ children, ...props },
       {children}
     </Icon>
   );
-});
+};
 
 ToggleButtonIcon.displayName = 'ToggleButtonIcon';
 

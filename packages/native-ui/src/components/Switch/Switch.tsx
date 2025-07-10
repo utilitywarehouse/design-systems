@@ -1,21 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
-import { Pressable, View } from 'react-native';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  withSpring,
-  interpolateColor,
-  Easing,
-} from 'react-native-reanimated';
 import { CloseSmallIcon, TickSmallIcon } from '@utilitywarehouse/react-native-icons';
+import React from 'react';
+import { Pressable } from 'react-native';
+import Animated, {
+  Easing,
+  interpolateColor,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  withTiming,
+} from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
+import { useTheme } from '../../hooks';
 import { Icon } from '../Icon';
 import SwitchProps from './Switch.props';
-import { useTheme } from '../../hooks';
-
-const AnimatedView = Animated.createAnimatedComponent(View);
 
 const CustomSwitch: React.FC<SwitchProps> = ({
   value = false,
@@ -122,16 +120,16 @@ const CustomSwitch: React.FC<SwitchProps> = ({
       accessibilityHint={accessibilityProps.accessibilityHint}
       {...accessibilityProps}
     >
-      <AnimatedView style={[styles.switch, animatedSwitchStyle, animatedSwitchBackgroundStyle]}>
-        <AnimatedView style={[styles.thumb, animatedThumbStyle]}>
-          <AnimatedView style={[styles.iconWrap, animatedTickStyle]}>
+      <Animated.View style={[styles.switch, animatedSwitchStyle, animatedSwitchBackgroundStyle]}>
+        <Animated.View style={[styles.thumb, animatedThumbStyle]}>
+          <Animated.View style={[styles.iconWrap, animatedTickStyle]}>
             <Icon as={TickSmallIcon} style={styles.icon} />
-          </AnimatedView>
-          <AnimatedView style={[styles.iconWrap, animatedCrossStyle]}>
+          </Animated.View>
+          <Animated.View style={[styles.iconWrap, animatedCrossStyle]}>
             <Icon as={CloseSmallIcon} style={styles.icon} />
-          </AnimatedView>
-        </AnimatedView>
-      </AnimatedView>
+          </Animated.View>
+        </Animated.View>
+      </Animated.View>
     </Pressable>
   );
 };

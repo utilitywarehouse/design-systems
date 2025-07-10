@@ -1,6 +1,6 @@
 import React, { ComponentType } from 'react';
 import { IconButton, IconButtonProps } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { VariantTitle } from '../../../docs/components';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { HStack } from '../HStack';

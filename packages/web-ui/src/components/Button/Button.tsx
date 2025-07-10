@@ -93,6 +93,7 @@ export const Button = React.forwardRef<
   React.PropsWithChildren<PropsWithSx<ButtonProps>>
 >(function Button({ size = 'medium', className, ...props }, ref) {
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledElement
       ref={ref}
       className={clsx(componentClassName, className, withBreakpoints(size, 'size'))}

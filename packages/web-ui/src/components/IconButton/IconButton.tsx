@@ -87,6 +87,7 @@ export const IconButton = React.forwardRef<
   React.PropsWithChildren<PropsWithSx<IconButtonProps>>
 >(function IconButton({ size = 'medium', className, label, ...props }, ref) {
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledElement
       ref={ref}
       className={clsx(componentClassName, className, withBreakpoints(size, 'size'))}

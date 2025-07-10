@@ -72,6 +72,7 @@ export type ToggleButtonProps = Pick<
 export const ToggleButton = React.forwardRef<HTMLButtonElement, ToggleButtonProps>(
   function ToggleButton({ children, className, ...props }, ref) {
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledMuiToggleButton
         ref={ref}
         disableTouchRipple

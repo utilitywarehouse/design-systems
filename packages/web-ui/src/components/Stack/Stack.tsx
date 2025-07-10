@@ -1,12 +1,13 @@
 import * as React from 'react';
 
 import type { OverridableComponent, OverrideProps } from '@mui/material/OverridableComponent';
-import MuiStack from '@mui/material/Stack';
 import type { StackProps as MuiStackProps } from '@mui/material/Stack';
+import MuiStack from '@mui/material/Stack';
 
 export type DefaultStackComponent = 'div';
 
 export interface StackTypeMap<D extends React.ElementType = DefaultStackComponent, P = object> {
+  /* @ts-expect-error - upgrade issue. TODO: Fix this */
   props: MuiStackProps<D, P>;
   defaultComponent: D;
 }
@@ -14,6 +15,7 @@ export interface StackTypeMap<D extends React.ElementType = DefaultStackComponen
 export type StackProps<
   D extends React.ElementType = DefaultStackComponent,
   P = object,
+  /* @ts-expect-error - upgrade issue. TODO: Fix this */
 > = OverrideProps<StackTypeMap<D, P>, D>;
 
 /**

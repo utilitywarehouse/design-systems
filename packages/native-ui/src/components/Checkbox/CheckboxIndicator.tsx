@@ -1,11 +1,11 @@
-import React, { forwardRef } from 'react';
-import AnimatedOutline from '../AnimatedOutline';
-import { useListContext } from '../List';
+import React from 'react';
 import { View, ViewProps } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
+import AnimatedOutline from '../AnimatedOutline';
+import { useListContext } from '../List';
 import { useCheckboxContext } from './Checkbox.context';
 
-const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
+const CheckboxIndicator = (props: ViewProps) => {
   const [show, setShow] = React.useState(false);
   const isInList = Boolean(useListContext());
   const { disabled, checked } = useCheckboxContext();
@@ -14,7 +14,6 @@ const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
   return (
     <AnimatedOutline show={isInList || disabled ? false : show} style={styles.outline}>
       <View
-        ref={ref}
         {...props}
         onTouchStart={() => setShow(true)}
         onTouchEnd={() => setTimeout(() => setShow(false), 250)}
@@ -26,7 +25,7 @@ const CheckboxIndicator = forwardRef<View, ViewProps>((props, ref) => {
       </View>
     </AnimatedOutline>
   );
-});
+};
 
 const styles = StyleSheet.create(theme => ({
   outline: {

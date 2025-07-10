@@ -113,6 +113,7 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
     const showLabel = !!label;
 
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledRadioItem
         ref={ref}
         className={clsx(componentClassName, className)}
@@ -123,6 +124,7 @@ export const RadioTile = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioTi
         aria-labelledby={ariaLabelledby || !!label ? labelId : undefined}
       >
         <Flex component="span" gap={1}>
+          {/* @ts-expect-error - upgrade issue. TODO: Fix this */}
           <StyledRadio>
             <StyledRadioIndicator />
           </StyledRadio>

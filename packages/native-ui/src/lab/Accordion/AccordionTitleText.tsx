@@ -1,27 +1,21 @@
-import React, { forwardRef } from 'react';
 import { TextProps } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { Text } from '../../components';
 import { useAccordionContext } from './Accordion.context';
 import { useAccordionItemContext } from './AccordionItem.context';
-import { StyleSheet } from 'react-native-unistyles';
 
-export const AccordionTitleText = forwardRef<Text, TextProps>(({ children, ...props }, ref) => {
+export const AccordionTitleText = ({ children, ...props }: TextProps) => {
   const { disabled: contextDisabled } = useAccordionContext();
   const { disabled } = useAccordionItemContext();
   const disabledValue = disabled ?? contextDisabled;
   styles.useVariants({ disabled: disabledValue });
 
   return (
-    <Text
-      // @ts-expect-error - ref
-      ref={ref}
-      style={styles.titleText}
-      {...props}
-    >
+    <Text style={styles.titleText} {...props}>
       {children}
     </Text>
   );
-});
+};
 
 AccordionTitleText.displayName = 'AccordionTitleText';
 

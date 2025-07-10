@@ -18,6 +18,6 @@ defaultConfig.resolver.disableHierarchicalLookup = true;
 
 module.exports = withStorybook(defaultConfig, {
   enabled: true,
-  configPath: path.resolve(__dirname, './.storybook'),
+  configPath: path.resolve(__dirname, './.rnstorybook'),
   useJs: true,
 });

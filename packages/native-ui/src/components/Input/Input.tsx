@@ -1,13 +1,13 @@
-import React from 'react';
 import { createInput } from '@gluestack-ui/input';
+import React from 'react';
 import type InputProps from './Input.props';
 
+import { useFormFieldContext } from '../FormField';
+import InputFieldComponent from './InputField';
+import InputIconComponent from './InputIcon';
 import InputRoot from './InputRoot';
 import InputSlotComponent from './InputSlot';
-import InputIconComponent from './InputIcon';
-import InputFieldComponent from './InputField';
 import InputValidationIcon from './InputValidationIcon';
-import { useFormFieldContext } from '../FormField';
 
 export const InputComponent = createInput({
   Icon: InputIconComponent,

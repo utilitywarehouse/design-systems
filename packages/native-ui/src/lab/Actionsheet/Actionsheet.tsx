@@ -1,23 +1,21 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Modal, Dimensions, Keyboard, KeyboardEvent, View } from 'react-native';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Dimensions, Keyboard, KeyboardEvent, Modal } from 'react-native';
 import Animated, {
+  Easing,
+  runOnJS,
+  useAnimatedStyle,
   useSharedValue,
   withTiming,
-  useAnimatedStyle,
-  runOnJS,
-  Easing,
 } from 'react-native-reanimated';
+import { StyleSheet } from 'react-native-unistyles';
+import ActionsheetContext from './Actionsheet.context';
+import type ActionsheetProps from './Actionsheet.props';
 import ActionsheetBackdrop from './ActionsheetBackdrop';
 import ActionsheetContent from './ActionsheetContent';
-import { StyleSheet } from 'react-native-unistyles';
-import type ActionsheetProps from './Actionsheet.props';
-import ActionsheetContext from './Actionsheet.context';
-
-const AnimatedView = Animated.createAnimatedComponent(View);
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-const Actionsheet: React.FC<ActionsheetProps> = ({
+const Actionsheet = ({
   isOpen,
   onClose,
   onOpen,
@@ -33,7 +31,7 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
   includeDragIndicator = true,
   contentSafeArea = true,
   children,
-}) => {
+}: ActionsheetProps) => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(isOpen);
   const translateY = useSharedValue<number>(SCREEN_HEIGHT);
   const backdropOpacity = useSharedValue<number>(0);
@@ -149,9 +147,10 @@ const Actionsheet: React.FC<ActionsheetProps> = ({
     <Modal transparent visible={isModalVisible} animationType="none">
       <ActionsheetContext.Provider value={value}>
         {showBackdrop ? <ActionsheetBackdrop /> : null}
-        <AnimatedView style={[styles.sheetContainer, animatedStyle, { maxHeight }]}>
+        <Animated.View style={[styles.sheetContainer, animatedStyle, { maxHeight }]}>
+          {/* @ts-expect-error - children types */}
           {includeContent ? <ActionsheetContent>{children}</ActionsheetContent> : children}
-        </AnimatedView>
+        </Animated.View>
       </ActionsheetContext.Provider>
     </Modal>
   );

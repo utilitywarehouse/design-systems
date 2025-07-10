@@ -1,25 +1,22 @@
-import React from 'react';
-import { Dimensions, DimensionValue, SafeAreaView, View, ViewProps } from 'react-native';
-import { GestureDetector, Gesture, gestureHandlerRootHOC } from 'react-native-gesture-handler';
+import { Dimensions, DimensionValue, SafeAreaView, ViewProps } from 'react-native';
+import { Gesture, GestureDetector, gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import Animated, {
+  enableLayoutAnimations,
+  runOnJS,
   useSharedValue,
   withSpring,
   withTiming,
-  runOnJS,
-  enableLayoutAnimations,
 } from 'react-native-reanimated';
-import ActionsheetDragIndicatorWrapper from './ActionsheetDragIndicatorWrapper';
 import { StyleSheet } from 'react-native-unistyles';
 import { useActionsheetContext } from './Actionsheet.context';
 import ActionsheetDragIndicator from './ActionsheetDragIndicator';
-
-const AnimatedView = Animated.createAnimatedComponent(View);
+import ActionsheetDragIndicatorWrapper from './ActionsheetDragIndicatorWrapper';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 enableLayoutAnimations(true);
 
-const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...props }) => {
+const ActionsheetContentComponent = ({ children, style, ...props }: ViewProps) => {
   const {
     translateY,
     dragging,
@@ -90,12 +87,12 @@ const ActionsheetContentComponent: React.FC<ViewProps> = ({ children, style, ...
   );
 
   const animatedView = (
-    <AnimatedView
+    <Animated.View
       style={[styles.content, styles.extraStyles(minHeight, showIndicator), style as false]}
       {...props}
     >
       {safeAreaContent}
-    </AnimatedView>
+    </Animated.View>
   );
 
   const wrappedContent =

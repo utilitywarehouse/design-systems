@@ -1,28 +1,24 @@
-import React, { ElementRef, forwardRef } from 'react';
+import { TextInput, TextInputProps } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { TextInputProps, TextInput } from 'react-native';
-import { useInputContext } from './Input.context';
 import { useTheme } from '../../hooks';
+import { useInputContext } from './Input.context';
 
-const InputField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
-  ({ style, ...props }, ref) => {
-    const { disabled, focused = false } = useInputContext();
-    styles.useVariants({ focused, disabled });
-    const { colors } = useTheme();
+const InputField = ({ style, ...props }: TextInputProps) => {
+  const { disabled, focused = false } = useInputContext();
+  styles.useVariants({ focused, disabled });
+  const { colors } = useTheme();
 
-    return (
-      <TextInput
-        ref={ref}
-        placeholderTextColor={disabled ? colors.grey200 : colors.grey600}
-        selectionColor={colors.cyan500}
-        cursorColor={colors.cyan500}
-        aria-disabled={disabled}
-        {...props}
-        style={[styles.input, style]}
-      />
-    );
-  }
-);
+  return (
+    <TextInput
+      placeholderTextColor={disabled ? colors.grey200 : colors.grey600}
+      selectionColor={colors.cyan500}
+      cursorColor={colors.cyan500}
+      aria-disabled={disabled}
+      {...props}
+      style={[styles.input, style]}
+    />
+  );
+};
 
 InputField.displayName = 'InputField';
 

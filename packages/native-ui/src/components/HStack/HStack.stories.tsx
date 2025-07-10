@@ -1,6 +1,6 @@
 import React from 'react';
 import { HStack } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Box } from '../Box';
 
 const meta = {

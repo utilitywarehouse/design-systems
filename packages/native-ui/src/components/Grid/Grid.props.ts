@@ -52,5 +52,5 @@ export interface GridProps extends ViewProps {
   /**
    * Grid items
    */
-  children?: React.ReactNode;
+  children?: ViewProps['children'];
 }

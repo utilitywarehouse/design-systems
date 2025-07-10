@@ -1,10 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { CarouselItemProps } from './Carousel.props';
-import { View } from 'react-native';
-
-const AnimatedView = Animated.createAnimatedComponent(View);
 
 export const CarouselItem = ({
   active,
@@ -28,9 +25,9 @@ export const CarouselItem = ({
   }, [active, inactiveOpacity, opacity]);
 
   return (
-    <AnimatedView style={[style as false, animatedStyles]} {...props}>
+    <Animated.View style={[style as false, animatedStyles]} {...props}>
       {children}
-    </AnimatedView>
+    </Animated.View>
   );
 };
 

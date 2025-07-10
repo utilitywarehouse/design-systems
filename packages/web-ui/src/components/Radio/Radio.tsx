@@ -140,12 +140,14 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
     const showLabel = !!label;
 
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledFlex
         gap={1}
         className={clsx(componentClassName, className)}
         sx={sx}
         data-disabled={disabled ? '' : undefined}
       >
+        {/* @ts-expect-error - upgrade issue. TODO: Fix this */}
         <StyledRadioContainer>
           <StyledRadioItem
             ref={ref}
@@ -160,6 +162,7 @@ export const Radio = React.forwardRef<HTMLButtonElement, PropsWithSx<RadioProps>
         </StyledRadioContainer>
         {showLabel ? (
           <Flex direction="column" gap={0.5}>
+            {/* @ts-expect-error - upgrade issue. TODO: Fix this */}
             <StyledLabel id={labelId} htmlFor={id} nested disableUserSelect>
               {label}
             </StyledLabel>

@@ -1,19 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { forwardRef } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
-import { useButtonContext } from './Button.context';
 import { StyleSheet } from 'react-native-unistyles';
 import { Icon } from '../Icon';
-import { IconRef } from '../../types';
 import IconProps from '../Icon/Icon.props';
+import { useButtonContext } from './Button.context';
 
-const ButtonIcon = forwardRef<IconRef, IconProps>(({ children, ...props }, ref) => {
+const ButtonIcon = ({ children, ...props }: IconProps) => {
   const { colorScheme, variant, inverted, disabled } = useButtonContext();
   styles.useVariants({ colorScheme, variant, inverted, disabled });
 
   return (
     <Icon
-      ref={ref}
       {...props}
       style={
         Platform.OS === 'web'
@@ -24,7 +21,7 @@ const ButtonIcon = forwardRef<IconRef, IconProps>(({ children, ...props }, ref) 
       {children}
     </Icon>
   );
-});
+};
 
 ButtonIcon.displayName = 'ButtonIcon';
 

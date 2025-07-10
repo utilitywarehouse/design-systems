@@ -1,8 +1,8 @@
-import React, { useMemo, forwardRef } from 'react';
-import { useWindowDimensions, View } from 'react-native';
+import React, { forwardRef, useMemo } from 'react';
+import { useWindowDimensions, View, ViewProps } from 'react-native';
 import { StyleSheet, UnistylesRuntime } from 'react-native-unistyles';
+import { useStyleProps, useTheme } from '../../hooks';
 import type { GridProps } from './Grid.props';
-import { useTheme, useStyleProps } from '../../hooks';
 
 const Grid = forwardRef<View, GridProps>(
   ({ columns = 2, containerStyle, itemStyle, rowStyle, space, children, ...props }, ref) => {
@@ -99,7 +99,7 @@ const Grid = forwardRef<View, GridProps>(
               {rowItems.map((child, colIndex) => {
                 return (
                   <View key={`item-${rowIndex}-${colIndex}`} style={[styles.item, itemStyle]}>
-                    {child}
+                    {child as ViewProps['children']}
                   </View>
                 );
               })}

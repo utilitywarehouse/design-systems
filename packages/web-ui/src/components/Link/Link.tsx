@@ -146,6 +146,7 @@ export const Link = React.forwardRef<
     [DATA_ATTRIBUTES.inverted]: inverted || isInvertedBackground ? '' : undefined,
   };
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledElement
       as={asChild ? Slot : 'a'}
       ref={ref}

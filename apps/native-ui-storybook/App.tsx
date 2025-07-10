@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import StorybookUIRoot from './.storybook';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import StorybookUIRoot from './.rnstorybook';
 
 import React from 'react';
+
 import { useFonts } from 'expo-font';
-import { NativeUIProvider } from '@utilitywarehouse/native-ui';
 
 const App = () => {
   const [loaded] = useFonts({
@@ -24,11 +24,9 @@ const App = () => {
 
   if (!loaded) return null;
   return (
-    <NativeUIProvider>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <StorybookUIRoot />
-      </GestureHandlerRootView>
-    </NativeUIProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <StorybookUIRoot />
+    </GestureHandlerRootView>
   );
 };
 

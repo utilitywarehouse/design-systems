@@ -1,16 +1,10 @@
-import React from 'react';
-import { View, ViewProps } from 'react-native';
-import { TapGestureHandler, gestureHandlerRootHOC } from 'react-native-gesture-handler';
+import { ViewProps } from 'react-native';
+import { Gesture, GestureDetector, gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native-unistyles';
 import { useActionsheetContext } from './Actionsheet.context';
 
-const AnimatedView = Animated.createAnimatedComponent(View);
-
-const ActionsheetBackdropComponent: React.FC<Omit<ViewProps, 'children'>> = ({
-  style,
-  ...props
-}) => {
+const ActionsheetBackdropComponent = ({ style, ...props }: Omit<ViewProps, 'children'>) => {
   const {
     onClose,
     closeOnBackdropPress,
@@ -24,14 +18,14 @@ const ActionsheetBackdropComponent: React.FC<Omit<ViewProps, 'children'>> = ({
     [animatedOpacity]
   );
 
+  const gesture = Gesture.Tap().onEnd(closeOnBackdropPress ? onClose : () => null);
+
   return (
-    <TapGestureHandler onEnded={closeOnBackdropPress ? onClose : undefined}>
-      <AnimatedView style={[styles.backdrop, animatedStyle, style as false]} {...props} />
-    </TapGestureHandler>
+    <GestureDetector gesture={gesture}>
+      <Animated.View style={[styles.backdrop, animatedStyle, style as false]} {...props} />
+    </GestureDetector>
   );
 };
-
-export default gestureHandlerRootHOC(ActionsheetBackdropComponent);
 
 const styles = StyleSheet.create(theme => ({
   backdrop: {
@@ -39,3 +33,5 @@ const styles = StyleSheet.create(theme => ({
     backgroundColor: theme.colorMode === 'light' ? theme.colors.grey1000 : theme.colors.grey25,
   },
 }));
+
+export default gestureHandlerRootHOC(ActionsheetBackdropComponent);

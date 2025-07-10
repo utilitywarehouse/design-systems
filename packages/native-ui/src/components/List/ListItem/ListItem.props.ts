@@ -1,4 +1,5 @@
 import type { PressableProps } from 'react-native';
+import { ViewProps } from 'react-native-svg/lib/typescript/fabric/utils';
 import type { ColorValue } from '../../../types';
 
 interface ListItemBaseProps extends Omit<PressableProps, 'children'> {
@@ -20,8 +21,8 @@ export interface ListItemWithoutChildren extends ListItemBaseProps {
   children?: never;
   text: string;
   supportingText?: string;
-  leadingContent?: React.ReactNode;
-  trailingContent?: React.ReactNode;
+  leadingContent?: ViewProps['children'];
+  trailingContent?: ViewProps['children'];
 }
 
 type ListItemProps = ListItemWithChildren | ListItemWithoutChildren;

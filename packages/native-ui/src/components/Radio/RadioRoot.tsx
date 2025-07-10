@@ -1,16 +1,17 @@
-import React, { forwardRef, useMemo } from 'react';
+import { useMemo } from 'react';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { Pressable, ViewStyle } from 'react-native';
-import type RadioProps from './Radio.props';
 import { RadioContext } from './Radio.context';
+import type RadioProps from './Radio.props';
 import { useRadioGroupContext } from './RadioGroup.context';
-import { PressableRef } from '../../types';
 
-const RadioRoot = forwardRef<
-  PressableRef,
-  RadioProps & { states?: { disabled?: boolean; checked?: boolean } }
->(({ children, style, states, ...props }, ref) => {
+const RadioRoot = ({
+  children,
+  style,
+  states,
+  ...props
+}: RadioProps & { states?: { disabled?: boolean; checked?: boolean } }) => {
   const { disabled, checked } = states ?? {};
 
   const isDisabled = useRadioGroupContext()?.disabled ?? disabled;
@@ -25,12 +26,12 @@ const RadioRoot = forwardRef<
 
   return (
     <RadioContext.Provider value={value}>
-      <Pressable ref={ref} {...props} style={[styles.container, style as ViewStyle]}>
+      <Pressable {...props} style={[styles.container, style as ViewStyle]}>
         {children}
       </Pressable>
     </RadioContext.Provider>
   );
-});
+};
 
 RadioRoot.displayName = 'RadioRoot';
 

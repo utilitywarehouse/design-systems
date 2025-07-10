@@ -1,26 +1,23 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment  */
-import React, { forwardRef } from 'react';
+import { Platform } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { Icon } from '../Icon';
+import IconProps from '../Icon/Icon.props';
 import { CircleIcon } from '../Icons';
 import { useRadioContext } from './Radio.context';
-import type { SvgRef } from '../../types';
-import IconProps from '../Icon/Icon.props';
-import { Platform } from 'react-native';
 
-const RadioIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
+const RadioIcon = ({ style, ...props }: IconProps) => {
   const { disabled } = useRadioContext();
   styles.useVariants({ disabled });
 
   return (
     <Icon
-      ref={ref}
       as={CircleIcon}
       {...props}
       style={Platform.OS === 'web' ? styles.container : [styles.container, style]}
     />
   );
-});
+};
 
 RadioIcon.displayName = 'RadioIcon';
 

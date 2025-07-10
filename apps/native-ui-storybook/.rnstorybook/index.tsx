@@ -6,6 +6,9 @@ const StorybookUIRoot = view.getStorybookUI({
     getItem: AsyncStorage.getItem,
     setItem: AsyncStorage.setItem,
   },
+  theme: {
+    ...view.getStorybookUI().theme,
+  },
 });
 
 export default StorybookUIRoot;

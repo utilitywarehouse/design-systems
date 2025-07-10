@@ -1,42 +1,39 @@
-import React, { forwardRef } from 'react';
-import { type StyleProp, type ViewStyle, type ViewProps, View } from 'react-native';
+import { type StyleProp, type ViewProps, type ViewStyle, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
-const ButtonGroupRoot = forwardRef<
-  View,
-  ViewProps & {
-    flexDirection?: ViewStyle['flexDirection'];
-    reversed?: boolean;
-    attached?: boolean;
-    space?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+const ButtonGroupRoot = ({
+  children,
+  attached = false,
+  flexDirection = 'row',
+  reversed = false,
+  space = 'md',
+  ...props
+}: ViewProps & {
+  flexDirection?: ViewStyle['flexDirection'];
+  reversed?: boolean;
+  attached?: boolean;
+  space?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+}) => {
+  let direction = flexDirection;
+  if (reversed) {
+    if (flexDirection === 'row') direction = 'row-reverse';
+    if (flexDirection === 'column') direction = 'column-reverse';
+    if (flexDirection === 'row-reverse') direction = 'row';
+    if (flexDirection === 'column-reverse') direction = 'column';
   }
->(
-  (
-    { children, attached = false, flexDirection = 'row', reversed = false, space = 'md', ...props },
-    ref
-  ) => {
-    let direction = flexDirection;
-    if (reversed) {
-      if (flexDirection === 'row') direction = 'row-reverse';
-      if (flexDirection === 'column') direction = 'column-reverse';
-      if (flexDirection === 'row-reverse') direction = 'row';
-      if (flexDirection === 'column-reverse') direction = 'column';
-    }
-    styles.useVariants({
-      attached,
-      space,
-    });
-    return (
-      <View
-        ref={ref}
-        {...props}
-        style={[styles.text, styles.extraStyles(direction) as StyleProp<ViewStyle>, props.style]}
-      >
-        {children}
-      </View>
-    );
-  }
-);
+  styles.useVariants({
+    attached,
+    space,
+  });
+  return (
+    <View
+      {...props}
+      style={[styles.text, styles.extraStyles(direction) as StyleProp<ViewStyle>, props.style]}
+    >
+      {children}
+    </View>
+  );
+};
 
 ButtonGroupRoot.displayName = 'ButtonGroupRoot';
 

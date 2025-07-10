@@ -1,8 +1,9 @@
-import { addons } from '@storybook/addons';
-import { create } from '@storybook/theming';
 import { version } from '../package.json';
+import { addons } from 'storybook/manager-api';
+import { create, themes } from 'storybook/theming';
 
 const theme = create({
+  ...themes.light,
   brandTitle: `UW Web UI v${version}`,
   brandImage: 'monogram.svg',
 });

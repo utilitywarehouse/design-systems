@@ -1,28 +1,30 @@
-import React, { forwardRef, useMemo } from 'react';
+import { useMemo } from 'react';
 import { View } from 'react-native';
-import { AccordionItemProps } from './AccordionItem.props';
-import AccordionItemContext from './AccordionItem.context';
-import { useAccordionContext } from './Accordion.context';
 import { StyleSheet } from 'react-native-unistyles';
+import { useAccordionContext } from './Accordion.context';
+import AccordionItemContext from './AccordionItem.context';
+import { AccordionItemProps } from './AccordionItem.props';
 
-export const AccordionItem = forwardRef<View, AccordionItemProps>(
-  ({ children, style, noPadding, disabled, divider, ...props }, ref) => {
-    const { divider: contextDivider } = useAccordionContext();
-    const showDivider = divider ?? contextDivider;
-    styles.useVariants({ divider: showDivider });
-    const context = useMemo(
-      () => ({ noPadding, disabled, divider }),
-      [noPadding, disabled, divider]
-    );
-    return (
-      <AccordionItemContext.Provider value={context}>
-        <View ref={ref} style={[styles.item, style]} {...props}>
-          {children}
-        </View>
-      </AccordionItemContext.Provider>
-    );
-  }
-);
+export const AccordionItem = ({
+  children,
+  style,
+  noPadding,
+  disabled,
+  divider,
+  ...props
+}: AccordionItemProps) => {
+  const { divider: contextDivider } = useAccordionContext();
+  const showDivider = divider ?? contextDivider;
+  styles.useVariants({ divider: showDivider });
+  const context = useMemo(() => ({ noPadding, disabled, divider }), [noPadding, disabled, divider]);
+  return (
+    <AccordionItemContext.Provider value={context}>
+      <View style={[styles.item, style]} {...props}>
+        {children}
+      </View>
+    </AccordionItemContext.Provider>
+  );
+};
 
 AccordionItem.displayName = 'AccordionItemRoot';
 

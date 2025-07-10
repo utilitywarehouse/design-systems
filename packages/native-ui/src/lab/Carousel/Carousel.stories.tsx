@@ -1,17 +1,19 @@
-import React, { FC } from 'react';
-import { Carousel, CarouselItem, CarouselItems, CarouselPagination } from '.';
-import { Meta, StoryObj } from '@storybook/react';
-import { Box, Text } from '../../components';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { colors } from '@utilitywarehouse/colour-system';
+import { FC } from 'react';
 import { StyleSheet } from 'react-native-unistyles';
+import { Carousel, CarouselItem, CarouselItems, CarouselPagination } from '.';
+import { Box, Text } from '../../components';
 
 const meta = {
   title: 'Stories / Carousel',
+  // @ts-expect-error - Meta type mismatch
   component: CarouselItems,
   parameters: {
     layout: 'centered',
   },
   argTypes: {
+    // @ts-expect-error - Meta type mismatch
     enabled: {
       control: 'boolean',
       description: 'Enable or disable the carousel',
@@ -38,6 +40,7 @@ const meta = {
     },
   },
   args: {
+    // @ts-expect-error - Meta type mismatch
     enabled: true,
     inactiveItemOpacity: 1,
     itemWidth: 300,
@@ -98,6 +101,7 @@ export const Playground: Story = {
   render: args => (
     <Box>
       <Carousel>
+        {/* @ts-expect-error - Meta type mismatch */}
         <CarouselItems {...args}>
           {items.map(({ color, key, title }) => (
             <CarouselItem key={key}>

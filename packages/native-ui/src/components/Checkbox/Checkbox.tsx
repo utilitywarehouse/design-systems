@@ -1,11 +1,10 @@
-import React, { ElementRef } from 'react';
+import React, { ElementRef , forwardRef } from 'react';
 import { createCheckbox } from '@gluestack-ui/checkbox';
 import StyledCheckbox from './CheckboxRoot';
 import StyledCheckboxIndicator from './CheckboxIndicator';
 import StyledCheckboxIcon from './CheckboxIcon';
 import StyledCheckboxLabel from './CheckboxLabel';
 import StyledCheckboxGroup from './CheckboxGroupRoot';
-import { forwardRef } from 'react';
 import CheckboxProps from './Checkbox.props';
 import { Pressable } from 'react-native';
 import { Helper } from '../Helper';

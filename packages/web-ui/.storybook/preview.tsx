@@ -1,5 +1,5 @@
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { SyntaxHighlighter } from '@storybook/components';
+import { INITIAL_VIEWPORTS } from 'storybook/viewport';
+import { SyntaxHighlighter } from 'storybook/internal/components';
 import { Analytics } from '@vercel/analytics/react';
 
 import { colorsCommon } from '@utilitywarehouse/colour-system';

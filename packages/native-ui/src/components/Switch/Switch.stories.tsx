@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { VStack } from '../VStack';
 import { VariantTitle } from '../../../docs/components';
 

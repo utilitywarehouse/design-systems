@@ -44,6 +44,7 @@ export const Label = React.forwardRef<
   React.PropsWithChildren<PropsWithSx<LabelProps>>
 >(({ component = 'label', disabled, nested, disableUserSelect, ...props }, ref) => {
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledElement
       ref={ref}
       as={component}

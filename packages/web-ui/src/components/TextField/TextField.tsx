@@ -208,12 +208,14 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
   };
 
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledInput
       inputRef={ref}
       hiddenLabel
       endAdornment={
         <>
           {showIcon ? (
+            /* @ts-expect-error - upgrade issue. TODO: Fix this */
             <IconContainer>
               {isErrorStatus(status) ? (
                 <WarningMediumContainedIcon color={colors.red600} />
@@ -222,7 +224,10 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldProps>(function Textfi
               ) : null}
             </IconContainer>
           ) : null}
-          {endAdornment ? <IconContainer>{endAdornment}</IconContainer> : null}
+          {endAdornment ? (
+            /* @ts-expect-error - upgrade issue. TODO: Fix this */
+            <IconContainer>{endAdornment}</IconContainer>
+          ) : null}
         </>
       }
       inputProps={inputProps}

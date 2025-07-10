@@ -8,7 +8,7 @@ import {
   FormFieldValid,
   FormFieldValidText,
 } from '.';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { VariantTitle } from '../../../docs/components';
 import { Input } from '../Input';

@@ -1,4 +1,12 @@
-import { StyleSheet, Display, Hide, mq, useUnistyles, withUnistyles } from 'react-native-unistyles';
+import {
+  Display,
+  Hide,
+  mq,
+  StyleSheet,
+  UnistylesRuntime,
+  useUnistyles,
+  withUnistyles,
+} from 'react-native-unistyles';
 import { breakpoints } from './breakpoints';
 import { themes } from './themes';
 
@@ -14,6 +22,16 @@ StyleSheet.configure({
 
 export { default as NativeUIProvider } from './NativeUIProvider';
 
-export { StyleSheet, breakpoints, themes, Display, Hide, mq, useUnistyles, withUnistyles };
+export {
+  breakpoints,
+  Display,
+  Hide,
+  mq,
+  StyleSheet,
+  themes,
+  UnistylesRuntime,
+  useUnistyles,
+  withUnistyles,
+};
 
 export type * from '../types/unistyles';

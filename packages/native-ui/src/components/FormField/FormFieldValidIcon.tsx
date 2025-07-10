@@ -1,12 +1,10 @@
-import React, { forwardRef } from 'react';
+import { TickMediumContainedIcon } from '@utilitywarehouse/react-native-icons';
 import { HelperIcon } from '../Helper';
 import IconProps from '../Icon/Icon.props';
-import { SvgRef } from '../../types';
-import { TickMediumContainedIcon } from '@utilitywarehouse/react-native-icons';
 
-const FormFieldValidIcon = forwardRef<SvgRef, Omit<IconProps, 'as'>>((props, ref) => {
-  return <HelperIcon ref={ref} as={TickMediumContainedIcon} {...props} />;
-});
+const FormFieldValidIcon = (props: Omit<IconProps, 'as'>) => {
+  return <HelperIcon as={TickMediumContainedIcon} {...props} />;
+};
 
 FormFieldValidIcon.displayName = 'FormFieldValidIcon';
 
