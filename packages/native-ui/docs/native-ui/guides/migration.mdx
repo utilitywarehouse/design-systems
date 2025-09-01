@@ -939,18 +939,22 @@ utility props for styling. See out [Styling](/docs/native-ui-guides-styling-over
 
 ### Dark Mode
 
-lt the light colour mode is enabled. If you want to enable dark mode, you can pass the `colorMode` prop to the `NativeUIProvider` component. The two options for `colorMode` are `light` and `dark`.
+If the light colour mode is enabled. If you want to enable dark mode, you can pass the `colorMode` prop to the `useColorMode` hook.
+The two options for `colorMode` are `light` and `dark`.
 
 ```tsx
-import { ColorSchemeName, useColorScheme } from 'react-native';
+import { View } from 'react-native';
+import { useColorMode, Button } from '@utilitywarehouse/native-ui';
 
 const App: React.FC = () => {
-  const colorScheme = useColorScheme();
+  const [colorScheme, setColorMode] = useColorMode();
 
   return (
-    <NativeUIProvider colorMode={colorScheme as ColorSchemeName}>
-      <App />
-    </NativeUIProvider>
+    <View>
+      <Button onPress={() => setColorMode(colorScheme === 'light' ? 'dark' : 'light')}>
+        Toggle Dark Mode
+      </Button>
+    </View>
   );
 };
 ```

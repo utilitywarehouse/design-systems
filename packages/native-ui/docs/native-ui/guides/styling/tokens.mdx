@@ -1,18 +1,18 @@
-import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import { ColorItem, ColorPalette, Meta } from '@storybook/addon-docs/blocks';
+import common from '../../../../../../packages/colour-system/lib/common.json';
+import { dark, light } from '../../../../../../packages/colour-system/raw/colours.json';
 import {
-  NativeUIProvider,
   Box,
-  Text,
+  Center,
+  Flex,
   HStack,
   Heading,
-  Center,
+  NativeUIProvider,
+  Text,
   VStack,
-  Flex,
 } from '../../../../src';
-import { dark, light } from '../../../../../../packages/colour-system/raw/colours.json';
-import common from '../../../../../../packages/colour-system/lib/common.json';
-import { BackToTopButton, VariantTitle, UsageWrap } from '../../../components';
 import { font } from '../../../../src/tokens';
+import { BackToTopButton, UsageWrap, VariantTitle } from '../../../components';
 
 <Meta title="Guides / Styling / Theme Tokens" />
 
@@ -228,91 +228,87 @@ _New_
 | `body`    | `fontFamily.body`    | `Work Sans` |
 
 <UsageWrap>
-  <NativeUIProvider>
-    <Center>
-      <HStack space="lg">
-        <Center>
-          <Heading>Aeonik</Heading>
-          <Text size="sm">heading</Text>
-        </Center>
-        <Center>
-          <Text>Work Sans</Text>
-          <Text size="sm">body</Text>
-        </Center>
-      </HStack>
-    </Center>
-  </NativeUIProvider>
+  <Center>
+    <HStack space="lg">
+      <Center>
+        <Heading>Aeonik</Heading>
+        <Text size="sm">heading</Text>
+      </Center>
+      <Center>
+        <Text>Work Sans</Text>
+        <Text size="sm">body</Text>
+      </Center>
+    </HStack>
+  </Center>
 </UsageWrap>
 
 ### Font Size
 
 <UsageWrap>
-  <NativeUIProvider>
-    <Center>
-      <Flex direction="row" space="lg" wrap="wrap">
-        <Center>
-          <Text style={{ fontSize: font.size['50'], lineHeight: font.size['50'] }}>50</Text>
-          <Text size="sm">10px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['75'], lineHeight: font.size['75'] }}>75</Text>
-          <Text size="sm">12px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['90'], lineHeight: font.size['90'] }}>90</Text>
-          <Text size="sm">14px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['100'], lineHeight: font.size['100'] }}>100</Text>
-          <Text size="sm">16px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['150'], lineHeight: font.size['150'] }}>150</Text>
-          <Text size="sm">18px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['200'], lineHeight: font.size['200'] }}>200</Text>
-          <Text size="sm">20px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['300'], lineHeight: font.size['300'] }}>300</Text>
-          <Text size="sm">24px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['400'], lineHeight: font.size['400'] }}>400</Text>
-          <Text size="sm">30px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['500'], lineHeight: font.size['500'] }}>500</Text>
-          <Text size="sm">36px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['550'], lineHeight: font.size['550'] }}>550</Text>
-          <Text size="sm">40px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['600'], lineHeight: font.size['600'] }}>600</Text>
-          <Text size="sm">48px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['700'], lineHeight: font.size['700'] }}>700</Text>
-          <Text size="sm">60px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['800'], lineHeight: font.size['800'] }}>800</Text>
-          <Text size="sm">72px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['900'], lineHeight: font.size['900'] }}>900</Text>
-          <Text size="sm">96px</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontSize: font.size['1000'], lineHeight: font.size['1000'] }}>1000</Text>
-          <Text size="sm">128px</Text>
-        </Center>
-      </Flex>
-    </Center>
-  </NativeUIProvider>
+  <Center>
+    <Flex direction="row" space="lg" wrap="wrap">
+      <Center>
+        <Text style={{ fontSize: font.size['50'], lineHeight: font.size['50'] }}>50</Text>
+        <Text size="sm">10px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['75'], lineHeight: font.size['75'] }}>75</Text>
+        <Text size="sm">12px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['90'], lineHeight: font.size['90'] }}>90</Text>
+        <Text size="sm">14px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['100'], lineHeight: font.size['100'] }}>100</Text>
+        <Text size="sm">16px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['150'], lineHeight: font.size['150'] }}>150</Text>
+        <Text size="sm">18px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['200'], lineHeight: font.size['200'] }}>200</Text>
+        <Text size="sm">20px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['300'], lineHeight: font.size['300'] }}>300</Text>
+        <Text size="sm">24px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['400'], lineHeight: font.size['400'] }}>400</Text>
+        <Text size="sm">30px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['500'], lineHeight: font.size['500'] }}>500</Text>
+        <Text size="sm">36px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['550'], lineHeight: font.size['550'] }}>550</Text>
+        <Text size="sm">40px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['600'], lineHeight: font.size['600'] }}>600</Text>
+        <Text size="sm">48px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['700'], lineHeight: font.size['700'] }}>700</Text>
+        <Text size="sm">60px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['800'], lineHeight: font.size['800'] }}>800</Text>
+        <Text size="sm">72px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['900'], lineHeight: font.size['900'] }}>900</Text>
+        <Text size="sm">96px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['1000'], lineHeight: font.size['1000'] }}>1000</Text>
+        <Text size="sm">128px</Text>
+      </Center>
+    </Flex>
+  </Center>
 </UsageWrap>
 
 _Deprecated_ as of v1
@@ -357,32 +353,30 @@ _New_
 ### Font Weight
 
 <UsageWrap>
-  <NativeUIProvider>
-    <Center>
-      <Flex direction="row" space="xl" wrap="wrap">
-        <Center>
-          <Text style={{ fontWeight: font.weight.regular }}>Regular</Text>
-          <Text size="sm">400</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontWeight: font.weight.medium }}>Medium</Text>
-          <Text size="sm">500</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontWeight: font.weight.semibold }}>Semibold</Text>
-          <Text size="sm">600</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontWeight: font.weight.bold }}>Bold</Text>
-          <Text size="sm">700</Text>
-        </Center>
-        <Center>
-          <Text style={{ fontWeight: font.weight.heavy }}>Heavy</Text>
-          <Text size="sm">900</Text>
-        </Center>
-      </Flex>
-    </Center>
-  </NativeUIProvider>
+  <Center>
+    <Flex direction="row" space="xl" wrap="wrap">
+      <Center>
+        <Text style={{ fontWeight: font.weight.regular }}>Regular</Text>
+        <Text size="sm">400</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontWeight: font.weight.medium }}>Medium</Text>
+        <Text size="sm">500</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontWeight: font.weight.semibold }}>Semibold</Text>
+        <Text size="sm">600</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontWeight: font.weight.bold }}>Bold</Text>
+        <Text size="sm">700</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontWeight: font.weight.heavy }}>Heavy</Text>
+        <Text size="sm">900</Text>
+      </Center>
+    </Flex>
+  </Center>
 </UsageWrap>
 
 _Deprecated_ as of v1
@@ -547,207 +541,205 @@ _New_
 The opacity key allows you to customise the global opacity scale for your project.
 
 <UsageWrap>
-  <NativeUIProvider>
-    <Center>
-      <HStack space="sm" flexWrap="wrap">
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$0"
-          />
-          <Text size="sm">0</Text>
-          <Text size="sm">$0</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$5"
-          />
-          <Text size="sm">0.05</Text>
-          <Text size="sm">$5</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$10"
-          />
-          <Text size="sm">0.1</Text>
-          <Text size="sm">$10</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$20"
-          />
-          <Text size="sm">0.2</Text>
-          <Text size="sm">$20</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$25"
-          />
-          <Text size="sm">0.25</Text>
-          <Text size="sm">$25</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$30"
-          />
-          <Text size="sm">0.3</Text>
-          <Text size="sm">$30</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$40"
-          />
-          <Text size="sm">0.4</Text>
-          <Text size="sm">$40</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$50"
-          />
-          <Text size="sm">0.5</Text>
-          <Text size="sm">$50</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$60"
-          />
-          <Text size="sm">0.6</Text>
-          <Text size="sm">$60</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$70"
-          />
-          <Text size="sm">0.7</Text>
-          <Text size="sm">$70</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$75"
-          />
-          <Text size="sm">0.75</Text>
-          <Text size="sm">$75</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$80"
-          />
-          <Text size="sm">0.8</Text>
-          <Text size="sm">$80</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$90"
-          />
-          <Text size="sm">0.9</Text>
-          <Text size="sm">$90</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$95"
-          />
-          <Text size="sm">0.95</Text>
-          <Text size="sm">$95</Text>
-        </Center>
-        <Center width={50} height={50}>
-          <Box
-            position="absolute"
-            top="0"
-            left="0"
-            width="100%"
-            height="100%"
-            bg="$cyan500"
-            opacity="$100"
-          />
-          <Text size="sm">1</Text>
-          <Text size="sm">$100</Text>
-        </Center>
-      </HStack>
-    </Center>
-  </NativeUIProvider>
+  <Center>
+    <HStack space="sm" flexWrap="wrap">
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$0"
+        />
+        <Text size="sm">0</Text>
+        <Text size="sm">$0</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$5"
+        />
+        <Text size="sm">0.05</Text>
+        <Text size="sm">$5</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$10"
+        />
+        <Text size="sm">0.1</Text>
+        <Text size="sm">$10</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$20"
+        />
+        <Text size="sm">0.2</Text>
+        <Text size="sm">$20</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$25"
+        />
+        <Text size="sm">0.25</Text>
+        <Text size="sm">$25</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$30"
+        />
+        <Text size="sm">0.3</Text>
+        <Text size="sm">$30</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$40"
+        />
+        <Text size="sm">0.4</Text>
+        <Text size="sm">$40</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$50"
+        />
+        <Text size="sm">0.5</Text>
+        <Text size="sm">$50</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$60"
+        />
+        <Text size="sm">0.6</Text>
+        <Text size="sm">$60</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$70"
+        />
+        <Text size="sm">0.7</Text>
+        <Text size="sm">$70</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$75"
+        />
+        <Text size="sm">0.75</Text>
+        <Text size="sm">$75</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$80"
+        />
+        <Text size="sm">0.8</Text>
+        <Text size="sm">$80</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$90"
+        />
+        <Text size="sm">0.9</Text>
+        <Text size="sm">$90</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$95"
+        />
+        <Text size="sm">0.95</Text>
+        <Text size="sm">$95</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$100"
+        />
+        <Text size="sm">1</Text>
+        <Text size="sm">$100</Text>
+      </Center>
+    </HStack>
+  </Center>
 </UsageWrap>
 
 | Key    | Theme Key        | Value |
@@ -788,18 +780,16 @@ The breakpoints key allows you to customise the global breakpoints for your proj
 ### Border width
 
 <UsageWrap>
-  <NativeUIProvider>
-    <Center>
-      <HStack space="lg" wrap>
-        <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="1">
-          <Text size="sm">1</Text>
-        </Center>
-        <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="2">
-          <Text size="sm">2</Text>
-        </Center>
-      </HStack>
-    </Center>
-  </NativeUIProvider>
+  <Center>
+    <HStack space="lg" wrap>
+      <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="1">
+        <Text size="sm">1</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="2">
+        <Text size="sm">2</Text>
+      </Center>
+    </HStack>
+  </Center>
 </UsageWrap>
 
 _Deprecated_ as of v1
@@ -822,33 +812,31 @@ _New_
 ### Border Radius
 
 <UsageWrap>
-  <NativeUIProvider>
-    <Center>
-      <HStack space="lg" wrap>
-        <Center width="80px" height="80px" bg="$cyan500" borderRadius="none">
-          <Text size="sm">none</Text>
-        </Center>
-        <Center width="80px" height="80px" bg="$cyan500" borderRadius="xs">
-          <Text size="sm">xs</Text>
-        </Center>
-        <Center width="80px" height="80px" bg="$cyan500" borderRadius="sm">
-          <Text size="sm">sm</Text>
-        </Center>
-        <Center width="80px" height="80px" bg="$cyan500" borderRadius="md">
-          <Text size="sm">md</Text>
-        </Center>
-        <Center width="80px" height="80px" bg="$cyan500" borderRadius="lg">
-          <Text size="sm">lg</Text>
-        </Center>
-        <Center width="80px" height="80px" bg="$cyan500" borderRadius="xl">
-          <Text size="sm">xl</Text>
-        </Center>
-        <Center width="80px" height="80px" bg="$cyan500" borderRadius="full">
-          <Text size="sm">full</Text>
-        </Center>
-      </HStack>
-    </Center>
-  </NativeUIProvider>
+  <Center>
+    <HStack space="lg" wrap>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="none">
+        <Text size="sm">none</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="xs">
+        <Text size="sm">xs</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="sm">
+        <Text size="sm">sm</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="md">
+        <Text size="sm">md</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="lg">
+        <Text size="sm">lg</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="xl">
+        <Text size="sm">xl</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="full">
+        <Text size="sm">full</Text>
+      </Center>
+    </HStack>
+  </Center>
 </UsageWrap>
 
 _Deprecated_ as of v1

@@ -1,50 +1,50 @@
-import { Meta, Canvas, Story, Primary, Controls } from '@storybook/addon-docs/blocks';
-import {
-  ButtonGroup,
-  Button,
-  ButtonIcon,
-  ButtonSpinner,
-  ButtonText,
-  Alert,
-  Center,
-  NativeUIProvider,
-  HStack,
-  VStack,
-  Box,
-} from '../../src';
+import { Canvas, Controls, Meta, Primary, Story } from '@storybook/addon-docs/blocks';
 import {
   AddSmallIcon,
   ChevronLeft01SmallIcon,
   ChevronRight01SmallIcon,
-  PhoneSmallIcon,
   EditSmallIcon,
+  PhoneSmallIcon,
 } from '@utilitywarehouse/react-native-icons';
-import { ViewFigmaButton, BackToTopButton, DocComponentWrap } from '../components';
-import solid from './assets/button/solid.png';
-import outline from './assets/button/outline.png';
-import outlineExample from './assets/button/outline-example.png';
+import {
+  Alert,
+  Box,
+  Button,
+  ButtonGroup,
+  ButtonIcon,
+  ButtonSpinner,
+  ButtonText,
+  Center,
+  HStack,
+  NativeUIProvider,
+  VStack,
+} from '../../src';
+import { BackToTopButton, DocComponentWrap, ViewFigmaButton } from '../components';
+import cyan from './assets/button/cyan.png';
+import default1 from './assets/button/default.png';
+import disabled from './assets/button/disabled.png';
+import figmaDefaults from './assets/button/figma-defaults.png';
 import ghostExample1 from './assets/button/ghost-example-1.png';
 import ghostExample2 from './assets/button/ghost-example-2.png';
-import cyan from './assets/button/cyan.png';
-import red from './assets/button/red.png';
-import green from './assets/button/green.png';
 import gold from './assets/button/gold.png';
+import green from './assets/button/green.png';
 import grey from './assets/button/grey.png';
+import icons from './assets/button/icons.png';
 import invertedFalse from './assets/button/inverted-false.png';
 import invertedTrue1 from './assets/button/inverted-true-1.png';
 import invertedTrueExample from './assets/button/inverted-true-example.png';
-import themeExample from './assets/button/theme-example.png';
-import small from './assets/button/small.png';
-import medium from './assets/button/medium.png';
 import large from './assets/button/large.png';
-import default1 from './assets/button/default.png';
-import disabled from './assets/button/disabled.png';
 import loading from './assets/button/loading.png';
-import pressed from './assets/button/pressed.png';
-import icons from './assets/button/icons.png';
-import figmaDefaults from './assets/button/figma-defaults.png';
-import sizeSpacing from './assets/button/size-spacing.png';
+import medium from './assets/button/medium.png';
+import outlineExample from './assets/button/outline-example.png';
+import outline from './assets/button/outline.png';
 import overrides from './assets/button/overrides.png';
+import pressed from './assets/button/pressed.png';
+import red from './assets/button/red.png';
+import sizeSpacing from './assets/button/size-spacing.png';
+import small from './assets/button/small.png';
+import solid from './assets/button/solid.png';
+import themeExample from './assets/button/theme-example.png';
 
 <Meta title="Design Guidelines / Button" />
 
@@ -140,7 +140,7 @@ To enhance the meaning and purpose of the action further, these buttons can be c
 (see Color Schemes section for details).
 
 <DocComponentWrap>
-  <NativeUIProvider>
+
     <Box mb="$4">
       <HStack space="lg">
         <Button variant="outline" icon={PhoneSmallIcon}>
@@ -153,7 +153,7 @@ To enhance the meaning and purpose of the action further, these buttons can be c
         </Button>
       </HStack>
     </Box>
-  </NativeUIProvider>
+
 </DocComponentWrap>
 
 <img src={outlineExample} />
