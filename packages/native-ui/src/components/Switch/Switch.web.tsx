@@ -15,7 +15,6 @@ import { useTheme } from '../../hooks';
 import { Icon } from '../Icon';
 import SwitchProps from './Switch.props';
 
-// @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package
 const AnimatedView = Animated.createAnimatedComponent(View);
 
 const CustomSwitch: React.FC<SwitchProps> = ({
@@ -123,15 +122,11 @@ const CustomSwitch: React.FC<SwitchProps> = ({
       accessibilityHint={accessibilityProps.accessibilityHint}
       {...accessibilityProps}
     >
-      {/* @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package */}
       <AnimatedView style={[styles.switch, animatedSwitchStyle, animatedSwitchBackgroundStyle]}>
-        {/* @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package */}
         <AnimatedView style={[styles.thumb, animatedThumbStyle]}>
-          {/* @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package */}
           <AnimatedView style={[styles.iconWrap, animatedTickStyle]}>
             <Icon as={TickSmallIcon} style={styles.icon} />
           </AnimatedView>
-          {/* @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package */}
           <AnimatedView style={[styles.iconWrap, animatedCrossStyle]}>
             <Icon as={CloseSmallIcon} style={styles.icon} />
           </AnimatedView>

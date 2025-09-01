@@ -227,7 +227,6 @@ export interface BoxOwnProps
   style?: StyleProp<ViewStyle>;
 }
 
-// @ts-expect-error - View type issue
 export type BoxProps<T extends React.ComponentType = typeof View> = BoxOwnProps &
   Omit<React.ComponentPropsWithoutRef<T>, keyof BoxOwnProps>;
 

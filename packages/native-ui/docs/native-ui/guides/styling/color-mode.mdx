@@ -1,4 +1,4 @@
-import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
 import { BackToTopButton } from '../../../components';
 
 <Meta title="Guides / Styling / Color Mode" />
@@ -106,7 +106,7 @@ const MyComponent = () => {
 import { useColorMode, Box } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
-  const colorMode = useColorMode();
+  const [colorMode] = useColorMode();
 
   return (
     <Box bg={colorMode === 'dark' ? '$grey100' : '$grey600'}>

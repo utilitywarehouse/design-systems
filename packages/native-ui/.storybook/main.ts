@@ -39,9 +39,6 @@ const config = {
       },
     },
   },
-  features: {
-    experimentalRSC: false,
-  },
   viteFinal: config => {
     return {
       ...config,

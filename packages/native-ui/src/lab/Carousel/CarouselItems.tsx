@@ -103,7 +103,6 @@ export const CarouselItems = forwardRef(function CarouselItems(
         overScrollMode="never" // Prevents stretching of first and last items when reaching each end of the carousel (Android only)
         ref={ref}
         removeClippedSubviews={!showOverflow}
-        // @ts-expect-error - View type issue
         renderItem={({ index, item }) =>
           cloneElement(item, {
             active: index === activeIndex,

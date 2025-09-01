@@ -59,6 +59,7 @@ const Input: React.FC<InputProps> = ({
               <InputIcon as={leadingIcon} />
             </InputSlot>
           )}
+          {/* @ts-expect-error - onBlur doesn't match */}
           <InputField type={type} {...props} />
           {showValidationIcon && validationStatusFromContext !== 'initial' && (
             <InputSlot>

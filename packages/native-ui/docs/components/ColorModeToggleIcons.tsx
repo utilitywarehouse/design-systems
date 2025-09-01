@@ -1,8 +1,8 @@
+import { FC } from 'react';
 import { useColorMode } from '../../src';
-import React, { FC } from 'react';
 
 const ColorModeToggleIcons: FC = () => {
-  const colorMode = useColorMode();
+  const [colorMode] = useColorMode();
 
   return (
     <>

@@ -1,5 +1,5 @@
-import { useColorMode } from '../../src';
 import React, { FC } from 'react';
+import { useColorMode } from '../../src';
 
 interface DynamicImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   lightSrc: React.ImgHTMLAttributes<HTMLImageElement>['src'];
@@ -7,7 +7,7 @@ interface DynamicImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 }
 
 const DynamicImage: FC<DynamicImageProps> = ({ lightSrc, darkSrc, ...props }) => {
-  const colorMode = useColorMode();
+  const [colorMode] = useColorMode();
 
   return <img src={colorMode === 'light' ? lightSrc : darkSrc} {...props} />;
 };

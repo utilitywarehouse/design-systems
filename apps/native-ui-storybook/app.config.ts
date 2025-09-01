@@ -8,6 +8,7 @@ export default ({ config }) => ({
   orientation: 'portrait',
   icon: './assets/icon.png',
   plugins: [
+    'expo-font',
     [
       'expo-xml-font',
       [

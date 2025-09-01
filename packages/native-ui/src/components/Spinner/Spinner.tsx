@@ -1,22 +1,24 @@
+import { createSpinner } from '@gluestack-ui/spinner';
 import React, { forwardRef, useCallback, useEffect } from 'react';
+import { View } from 'react-native';
 import Animated, {
-  useSharedValue,
-  withTiming,
+  Easing,
   useAnimatedProps,
   useAnimatedStyle,
-  Easing,
-  withSequence,
+  useSharedValue,
   withRepeat,
+  withSequence,
+  withTiming,
 } from 'react-native-reanimated';
 import { Circle, G, Svg } from 'react-native-svg';
+import { StyleSheet } from 'react-native-unistyles';
+import { useTheme } from '../../hooks';
 import type SpinnerProps from './Spinner.props';
 import { getStrokeWidth, getWidth } from './Spinner.utils';
-import { createSpinner } from '@gluestack-ui/spinner';
-import { StyleSheet } from 'react-native-unistyles';
-import { View } from 'react-native';
-import { useTheme } from '../../hooks';
 
+// @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
+// @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 const SpinnerRoot: React.FC<SpinnerProps> = forwardRef<View, SpinnerProps>(
@@ -84,6 +86,7 @@ const SpinnerRoot: React.FC<SpinnerProps> = forwardRef<View, SpinnerProps>(
         aria-live="polite"
         role="status"
       >
+        {/* @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package */}
         <AnimatedSvg
           width={width}
           height={width}
@@ -100,6 +103,7 @@ const SpinnerRoot: React.FC<SpinnerProps> = forwardRef<View, SpinnerProps>(
               cy="50%"
               r={R}
               strokeLinecap="round"
+              // @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package
               animatedProps={animatedCircleProps}
               strokeDasharray={CIRCUMFERENCE}
             />

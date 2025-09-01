@@ -1,13 +1,13 @@
-import React from 'react';
 import { createTextarea } from '@gluestack-ui/textarea';
+import React from 'react';
 import type TextareaProps from './Textarea.props';
 
+import { useFormFieldContext } from '../FormField';
+import TextareaFieldComponent from './TextareaField';
+import TextareaIcon from './TextareaIcon';
 import TextareaRoot from './TextareaRoot';
 import TextareaSlot from './TextareaSlot';
-import TextareaIcon from './TextareaIcon';
-import TextareaFieldComponent from './TextareaField';
 import TextareaValidationIcon from './TextareaValidationIcon';
-import { useFormFieldContext } from '../FormField';
 
 export const TextareaComponent = createTextarea({
   Root: TextareaRoot,
@@ -54,6 +54,7 @@ const Textarea: React.FC<TextareaProps> = ({
               <TextareaIcon as={leadingIcon} />
             </TextareaSlot>
           )}
+          {/* @ts-expect-error - onBlur doesn't match */}
           <TextareaField {...props} />
           {showValidationIcon && validationStatusFromContext !== 'initial' && (
             <TextareaSlot>

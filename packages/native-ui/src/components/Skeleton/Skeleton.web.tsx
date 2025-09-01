@@ -17,7 +17,6 @@ import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
 import type SkeletonProps from './Skeleton.props';
 
-// @ts-expect-error - Animated.createAnimatedComponent is not typed correctly in the reanimated package
 const AnimatedView = Animated.createAnimatedComponent(View);
 
 const Skeleton = ({
@@ -62,7 +61,6 @@ const Skeleton = ({
     );
   }, [opacity]);
 
-  // @ts-expect-error - ref is not typed correctly in the reanimated package
   return <AnimatedView {...props} style={[styles.skeleton, style, animatedStyle]} />;
 };
 

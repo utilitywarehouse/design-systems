@@ -148,7 +148,6 @@ const Actionsheet = ({
       <ActionsheetContext.Provider value={value}>
         {showBackdrop ? <ActionsheetBackdrop /> : null}
         <Animated.View style={[styles.sheetContainer, animatedStyle, { maxHeight }]}>
-          {/* @ts-expect-error - children types */}
           {includeContent ? <ActionsheetContent>{children}</ActionsheetContent> : children}
         </Animated.View>
       </ActionsheetContext.Provider>

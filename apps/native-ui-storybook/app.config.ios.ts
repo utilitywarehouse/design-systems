@@ -19,6 +19,7 @@ export default ({ config }) => ({
     resizeMode: 'contain',
     backgroundColor: '#ffffff',
   },
+  plugins: ['expo-font'],
   updates: {
     fallbackToCacheTimeout: 0,
   },

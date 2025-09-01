@@ -1,11 +1,11 @@
 import React from 'react';
-import { List, ListItem, Radio, RadioGroup, Image, useColorMode, Card, Box } from '../../src';
+import { Box, Card, Image, List, ListItem, Radio, RadioGroup, useColorMode } from '../../src';
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const RadioList = () => {
   const [value, setValue] = React.useState<string>();
-  const colorMode = useColorMode();
+  const [colorMode] = useColorMode();
 
   const handlePress = (item: string) => {
     setValue(item);

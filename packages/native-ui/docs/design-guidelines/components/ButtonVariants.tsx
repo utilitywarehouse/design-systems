@@ -3,16 +3,16 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
 import {
-  VStack,
   Button,
-  ButtonIcon,
   ButtonGroup,
+  ButtonIcon,
+  ButtonProps,
   ButtonSpinner,
   ButtonText,
-  useMedia,
   Heading,
   useColorMode,
-  ButtonProps,
+  useMedia,
+  VStack,
 } from '@utilitywarehouse/native-ui';
 import { Box } from '@utilitywarehouse/native-ui/lab';
 import { AddSmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-native-icons';
@@ -32,7 +32,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
   inverted,
   _backgroundColor,
 }) => {
-  const colorMode = useColorMode();
+  const [colorMode] = useColorMode();
   const validScheme = colorScheme === 'cyan' || colorScheme === 'red' || colorScheme === 'green';
   const capitalisedScheme =
     (colorScheme?.charAt(0).toUpperCase() ?? '') + (colorScheme?.slice(1) ?? '');

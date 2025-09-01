@@ -1,46 +1,46 @@
-import { Meta, Canvas, Story, Controls } from '@storybook/addon-docs/blocks';
-import * as Stories from './List.stories';
+import { Canvas, Controls, Meta, Story } from '@storybook/addon-docs/blocks';
 import {
-  ViewFigmaButton,
-  BackToTopButton,
-  UsageWrap,
-  CheckboxList,
-  BadgeList,
-  RadioList,
-  SwitchList,
-} from '../../../docs/components';
+  BillMediumIcon,
+  ChevronRight01MediumIcon,
+  ElectricityMediumIcon,
+  GasMediumIcon,
+  HomeMediumIcon,
+  PaymentMediumIcon,
+  UserMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
 import {
-  NativeUIProvider,
+  Badge,
+  BadgeText,
+  Box,
+  Card,
+  Checkbox,
+  CheckboxGroup,
+  CheckboxIndicator,
+  FlatList,
+  HStack,
+  Image,
   List,
   ListHeading,
   ListItem,
+  ListItemContent,
   ListItemIcon,
   ListItemLeadingContent,
   ListItemSupportingText,
   ListItemText,
   ListItemTrailingContent,
   ListItemTrailingIcon,
-  ListItemContent,
-  Box,
-  Badge,
-  BadgeText,
-  HStack,
-  Checkbox,
-  CheckboxGroup,
-  CheckboxIndicator,
-  FlatList,
-  Card,
-  Image,
+  NativeUIProvider,
 } from '../../';
 import {
-  BillMediumIcon,
-  ChevronRight01MediumIcon,
-  PaymentMediumIcon,
-  HomeMediumIcon,
-  UserMediumIcon,
-  ElectricityMediumIcon,
-  GasMediumIcon,
-} from '@utilitywarehouse/react-native-icons';
+  BackToTopButton,
+  BadgeList,
+  CheckboxList,
+  RadioList,
+  SwitchList,
+  UsageWrap,
+  ViewFigmaButton,
+} from '../../../docs/components';
+import * as Stories from './List.stories';
 
 <Meta title="Components / List" />
 
@@ -396,7 +396,7 @@ import {
 } from '@utilitywarehouse/react-native-icons';
 
 const BadgeList = () => {
-  const colorMode = useColorMode();
+  const [colorMode] = useColorMode();
   return (
     <List>
       <ListItem onPress={() => console.log('pressed')} divider>
@@ -549,7 +549,7 @@ const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const RadioList = () => {
   const [value, setValue] = useState<string>();
-  const colorMode = useColorMode();
+  const [colorMode] = useColorMode();
 
   const handlePress = (item: string) => {
     setValue(item);

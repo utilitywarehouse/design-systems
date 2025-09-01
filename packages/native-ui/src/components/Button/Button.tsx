@@ -50,7 +50,6 @@ const Button = ({
   }
   return (
     <ButtonComponent {...props} isDisabled={buttonDisabled}>
-      {/* @ts-expect-error - children types */}
       {children}
     </ButtonComponent>
   );

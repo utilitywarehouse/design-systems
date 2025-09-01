@@ -11,6 +11,7 @@ import { Pressable, ScrollView, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import {
   Alert,
+  Badge,
   Button,
   Card,
   Center,
@@ -118,6 +119,13 @@ const AllComponents: React.FC = () => {
           <ComponentWrapper name="Alert" link="/?path=/docs/components-alert--docs">
             <Center flex={1}>
               <Alert text="This is an alert" />
+            </Center>
+          </ComponentWrapper>
+          <ComponentWrapper name="Badge" link="/?path=/docs/components-badge--docs">
+            <Center flex={1}>
+              <View>
+                <Badge colorScheme="green">Green Badge</Badge>
+              </View>
             </Center>
           </ComponentWrapper>
           <ComponentWrapper name="Box" link="/?path=/docs/primitives-box--docs">

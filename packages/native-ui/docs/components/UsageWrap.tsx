@@ -1,8 +1,8 @@
-import React, { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { Box, useColorMode } from '../../src';
 
 const UsageWrap: FC<PropsWithChildren> = ({ children }) => {
-  const colorMode = useColorMode();
+  const [colorMode] = useColorMode();
   return (
     <div className="sb-unstyled">
       <Box
