@@ -1,90 +1,74 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { forwardRef, useMemo } from 'react';
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+import React, { useMemo } from 'react';
+import { AnimatableNumericValue } from 'react-native';
 import Animated, {
-  useSharedValue,
+  Easing,
   useAnimatedStyle,
+  useSharedValue,
   withRepeat,
   withTiming,
-  Easing,
 } from 'react-native-reanimated';
-import type SkeletonProps from './Skeleton.props';
-import { AnimatableNumericValue, type DimensionValue, View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
+import { useTheme } from '../../hooks';
 import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
+import type SkeletonProps from './Skeleton.props';
 
-const AnimatedView = Animated.createAnimatedComponent(View);
+const Skeleton = ({
+  width,
+  height,
+  backgroundColor,
+  borderRadius,
+  style,
+  ...props
+}: SkeletonProps) => {
+  const opacity = useSharedValue(1);
 
-const Skeleton = forwardRef<View, SkeletonProps>(
-  ({ width, height, backgroundColor, borderRadius, style, ...props }, ref) => {
-    const opacity = useSharedValue(1);
+  const { colors, colorMode, radii } = useTheme();
+  const backgroundColorValue: ColorValue = useMemo(
+    () => getStyleValue(backgroundColor, colors),
+    [backgroundColor, colorMode]
+  );
 
-    const {
-      styles,
-      theme: { colors, colorMode, radii },
-    } = useStyles(stylesheet);
-    const backgroundColorValue: ColorValue = useMemo(
-      () => getStyleValue(backgroundColor, colors),
-      [backgroundColor, colorMode]
+  const borderRadiusValue: AnimatableNumericValue = useMemo(
+    () => getStyleValue(borderRadius, radii),
+    [borderRadius]
+  );
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      opacity: opacity.value,
+      width,
+      height,
+      ...(backgroundColorValue ? { backgroundColor: backgroundColorValue } : {}),
+      ...(borderRadiusValue ? { borderRadius: borderRadiusValue } : {}),
+    };
+  }, [opacity]);
+
+  React.useEffect(() => {
+    opacity.value = withRepeat(
+      withTiming(0.5, {
+        duration: 1000,
+        easing: Easing.inOut(Easing.ease),
+      }),
+      -1,
+      true
     );
+  }, [opacity]);
 
-    const borderRadiusValue: AnimatableNumericValue = useMemo(
-      () => getStyleValue(borderRadius, radii),
-      [borderRadius]
-    );
-
-    const animatedStyle = useAnimatedStyle(() => {
-      return {
-        opacity: opacity.value,
-      };
-    }, [opacity]);
-
-    React.useEffect(() => {
-      opacity.value = withRepeat(
-        withTiming(0.5, {
-          duration: 1000,
-          easing: Easing.inOut(Easing.ease),
-        }),
-        -1,
-        true
-      );
-    }, [opacity]);
-
-    return (
-      <AnimatedView
-        ref={ref}
-        {...props}
-        style={[
-          styles.skeleton,
-          styles.size(width, height, backgroundColorValue, borderRadiusValue),
-          style,
-          animatedStyle,
-        ]}
-      />
-    );
-  }
-);
+  return <Animated.View {...props} style={[styles.skeleton, style, animatedStyle]} />;
+};
 
 Skeleton.displayName = 'Skeleton';
 
-const stylesheet = createStyleSheet(({ colorMode, colors, radii }) => ({
+const styles = StyleSheet.create(theme => ({
   skeleton: {
-    backgroundColor: colorMode === 'light' ? colors.grey75 : colors.grey300,
-    borderRadius: radii.sm,
+    backgroundColor: theme.colorMode === 'light' ? theme.colors.grey75 : theme.colors.grey300,
+    borderRadius: theme.radii.sm,
   },
-  size: (
-    width?: DimensionValue,
-    height?: DimensionValue,
-    backgroundColor?: ColorValue,
-    borderRadius?: AnimatableNumericValue
-  ) => ({
-    width,
-    height,
-    ...(backgroundColor ? { backgroundColor } : {}),
-    ...(borderRadius ? { borderRadius } : {}),
-  }),
 }));
 
 export default Skeleton;

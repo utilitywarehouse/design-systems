@@ -4,3 +4,4 @@ export { default as useTheme } from './useTheme';
 export { default as useMedia } from './useMedia';
 export { default as useToken } from './useToken';
 export { default as useLightDark } from './useLightDark';
+export { useStyleProps } from './useStyleProps';

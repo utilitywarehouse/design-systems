@@ -1,32 +1,18 @@
-const path = require('path');
+/** @type {import('react-native-unistyles/plugin').UnistylesPluginOptions} */
+const unistylesPluginOptions = {
+  autoProcessImports: ['@utilitywarehouse/native-ui'],
+  autoProcessPaths: ['@utilitywarehouse/native-ui'],
+  root: './',
+  debug: false,
+};
 
 module.exports = function (api) {
   api.cache(true);
   return {
-    plugins: [
-      [
-        'module-resolver',
-        {
-          alias: {
-            '@utilitywarehouse/native-ui': path.join(__dirname, '../../packages/native-ui/src'),
-            '@utilitywarehouse/design-tokens': path.join(
-              __dirname,
-              '../../packages/design-tokens/build/js'
-            ),
-            '@utilitywarehouse/native-ui/lab': path.join(
-              __dirname,
-              '../../packages/native-ui/src/lab'
-            ),
-            '@utilitywarehouse/native-ui/unstyled': path.join(
-              __dirname,
-              '../../packages/native-ui/src/components/unstyled'
-            ),
-          },
-        },
-      ],
-      '@babel/plugin-proposal-export-namespace-from',
-      'react-native-reanimated/plugin',
-    ],
     presets: ['babel-preset-expo'],
+    plugins: [
+      ['react-native-unistyles/plugin', unistylesPluginOptions],
+      'react-native-worklets/plugin',
+    ],
   };
 };

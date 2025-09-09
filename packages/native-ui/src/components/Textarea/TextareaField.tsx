@@ -1,15 +1,14 @@
 import React, { ElementRef, forwardRef } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { TextInputProps, TextInput, Platform } from 'react-native';
 import { useTextareaContext } from './Textarea.context';
+import { useTheme } from '../../hooks';
 
 const TextareaField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
-  ({ style, ...props }, ref) => {
+  ({ style, numberOfLines = 4, ...props }, ref) => {
     const { disabled, focused = false } = useTextareaContext();
-    const {
-      styles,
-      theme: { colors },
-    } = useStyles(stylesheet, { focused, disabled });
+    const { colors } = useTheme();
+    styles.useVariants({ focused, disabled });
 
     return (
       <TextInput
@@ -18,6 +17,7 @@ const TextareaField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
         selectionColor={colors.cyan500}
         cursorColor={colors.cyan500}
         aria-disabled={disabled}
+        numberOfLines={numberOfLines}
         {...props}
         style={[styles.input, style]}
       />
@@ -27,7 +27,7 @@ const TextareaField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
 
 TextareaField.displayName = 'TextareaField';
 
-const stylesheet = createStyleSheet(({ radii, fontSizes, colors, fontWeights, fonts }) => ({
+const styles = StyleSheet.create(({ radii, fontSizes, colors, fontWeights, fonts }) => ({
   input: {
     textAlignVertical: 'top',
     flex: 1,

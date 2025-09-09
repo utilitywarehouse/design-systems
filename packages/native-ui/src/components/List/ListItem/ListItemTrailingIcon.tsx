@@ -1,60 +1,49 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { ComponentType, forwardRef } from 'react';
+import { ComponentType } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { useListItemContext } from './ListItem.context';
+import { StyleSheet } from 'react-native-unistyles';
 import { Icon, IconProps } from '../../Icon';
-import type { SvgRef } from '../../../types';
+import { useListItemContext } from './ListItem.context';
 
-const ListItemTrailingIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
-  ({ children, ...props }, ref) => {
-    const { disabled, showPressed } = useListItemContext();
-    const { styles } = useStyles(stylesheet);
-    return (
-      <Icon
-        ref={ref}
-        {...props}
-        style={
-          Platform.OS === 'web'
-            ? {
-                ...styles.icon,
-                ...styles.extraStyles(disabled, showPressed),
-                ...(props.style as ViewStyle),
-              }
-            : [
-                styles.icon as StyleProp<ViewStyle>,
-                styles.extraStyles(disabled, showPressed) as StyleProp<ViewStyle>,
-                props.style,
-              ]
-        }
-      >
-        {children}
-      </Icon>
-    );
-  }
-);
+const ListItemTrailingIcon = ({ children, ...props }: IconProps & { as?: ComponentType }) => {
+  const { disabled, showPressed } = useListItemContext();
+  styles.useVariants({ disabled, showPressed });
+  return (
+    <Icon
+      {...props}
+      style={
+        Platform.OS === 'web'
+          ? {
+              ...styles.icon,
+              ...(props.style as ViewStyle),
+            }
+          : [styles.icon as StyleProp<ViewStyle>, props.style]
+      }
+    >
+      {children}
+    </Icon>
+  );
+};
 
 ListItemTrailingIcon.displayName = 'ListItemTrailingIcon';
 
-const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
+const styles = StyleSheet.create(theme => ({
   icon: {
-    color: colors.grey800,
+    color: theme.colors.grey800,
     width: 24,
     height: 24,
-  },
-  extraStyles: (disabled?: boolean, showPressed?: boolean) => {
-    if (disabled) {
-      return {
-        color: colorMode === 'light' ? colors.grey400 : colors.grey500,
-      };
-    }
-    if (showPressed) {
-      return {
-        color: colorMode === 'light' ? colors.cyan600 : colors.cyan700,
-      };
-    }
-
-    return {};
+    variants: {
+      disabled: {
+        true: {
+          color: theme.colorMode === 'light' ? theme.colors.grey400 : theme.colors.grey500,
+        },
+      },
+      showPressed: {
+        true: {
+          color: theme.colorMode === 'light' ? theme.colors.cyan600 : theme.colors.cyan700,
+        },
+      },
+    },
   },
 }));
 

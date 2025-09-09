@@ -1,0 +1,221 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { BackToTopButton } from '../components';
+
+<Meta title="What's New" />
+<BackToTopButton />
+
+# What's new in Native UI
+
+## v1.0.0
+
+This is the first stable release of Native UI, which includes a set of components and utilities for building user interfaces in React Native applications at UW.
+It provides a consistent design language and a set of reusable components that can be used across different projects.
+
+This release includes the following changes:
+
+- [`react-native-unistyles` v3](#react-native-unistyles-v3)
+- [New Components](#new-components)
+- [Deprecated Components](#deprecated-components)
+- [Updated Design Tokens](#updated-design-tokens)
+- [Updated `useColorMode` hook](#updated-usecolormode-hook)
+- [Removal of `NativeUIProvider`](#removal-of-nativeuiprovider)
+
+### `react-native-unistyles` v3
+
+This release includes a major update to the `react-native-unistyles` library, which is the core styling engine used by Native UI.
+
+To read more about the changes in this release, please refer to the [react-native-unistyles new features](https://www.unistyl.es/v3/start/new-features) documentation.
+
+This is a breaking change, so you will need to update your code to use the new API.
+
+Some notable changes include:
+
+#### New `StyleSheet` API
+
+You can now mix Unistyles `StyleSheet` with React Native `StyleSheet` and enable superpowers 🦸🏼‍♂️ on selected screens without additional configuration.
+
+This replaces the previous `createStyleSheet` and `useStyles` API, which is now deprecated.
+
+```tsx
+- import { createStyleSheet, useStyles } from '@utilitywarehouse/native-ui'
++ import { StyleSheet } from '@utilitywarehouse/native-ui';
+
+- const stylesheet = createStyleSheet(theme => ({
++ const styles = StyleSheet.create(theme => ({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    color: theme.colors.grey1000,
+    fontSize: 20,
+  },
+}));
+
+- const { styles } = useStyles(stylesheet)
+```
+
+Read more in the [migration guide](https://www.unistyl.es/v3/start/migration-guide).
+
+#### No re-renders
+
+Unistyles is primarily written in C++ with a thin JS layer for both iOS and Android. The key feature of this version is that it
+doesn't trigger re-renders—there are no hooks, no context, just pure JSI bindings managing your StyleSheet styles. Unistyles is
+integrated with Fabric and the Shadow Tree, directly updating your views from C++.
+
+#### Selective updates
+
+Unistyles includes a special algorithm that only recalculates styles dependent on the change. For example, if the app user switches
+to a dark color scheme, Unistyles will only recalculate and update the styles affected by the change.
+
+#### Compound variants
+
+Unistyles extends the variants feature by allowing you to define compound variants. These are additional styles that are applied
+when certain conditions are met. For instance, you can define a compound variant to change the text color when the text is bold
+and uses the primary color.
+
+### New Components
+
+We have added several new components primitive and utility components to the Native UI library, these components align with the
+new and upcoming Hearth React Native library.
+
+- `Box`: A primitive component that provides a flexible container for layout and styling. This component has been optimised
+  for performance in this release and with the new `react-native-unistyles` library can be now used with minimal performance impact.
+  Read more about it in the [Box documentation](/docs/primitives-box--docs).
+- `Flex`: A component that provides a flexible layout container that can be used to create complex layouts with ease.
+  Read more about it in the [Flex documentation](/docs/primitives-flex--docs).
+- `Grid`: A component that provides a grid layout container that can be used to create responsive layouts with ease.
+  Read more about it in the [Grid documentation](/docs/primitives-grid--docs).
+- `UL`: A component that provides an unordered list layout container that can be used to create lists with ease combined with the `LI` component
+  to easily create bullet lists.
+  Read more about it in the [UL documentation](/docs/utility-components-ul-ol-lists--docs).
+- `OL`: A component that provides an ordered list layout container that can be used to create lists with ease combined with the `LI` component
+  to easily create numbered lists.
+  Read more about it in the [OL documentation](/docs/utility-components-ul-ol-lists--docs).
+- `LI`: A component that provides a list item layout container that can be used to create lists with ease combined with the `UL` and `OL` components.
+  Read more about it in the [LI documentation](/docs/utility-components-ul-ol-lists--docs).
+
+### Deprecated Components
+
+- `VStack`: This component has been deprecated in favour of the new `Flex` component, which provides a more flexible and powerful layout system.
+- `HStack`: This component has been deprecated in favour of the new `Flex` component, which provides a more flexible and powerful layout system.
+
+```tsx
+import { Box, Flex } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <Flex direction="column" align="center" justify="center">
+      <Box bg="$cyan500" p="200" borderRadius="sm">
+        <Text fontSize="lg" fontWeight="bold">
+          Hello
+        </Text>
+      </Box>
+    </Flex>
+  );
+};
+```
+
+### Updated Design Tokens
+
+We have updated the design tokens to align with the new design system. This includes changes to the border, typography, and spacing tokens.
+
+**What's changed?**
+
+- **Token names and structure:** Many token keys have changed to align with the new design system.
+  For example, spacing tokens are part of a hundred scale 8px (e.g., `100`, `200`, `300`, etc.) instead of the previous `4`, `8`, `12` 4px scale.
+- **Deprecated values:** Old keys are now deprecated and will be removed in a future release. These will be striked out in your
+  IDE to indicate they are no longer recommended for use with a code suggestion to update to the new keys.
+- **API Changes:** All tokens are now accessed via the theme object or with component props, the `$` prefix is now only used for colours.
+
+**Example migration:**
+
+```tsx
+// Before (deprecated)
+<Box p="$4" bg="$cyan500" borderRadius="sm">
+  <Text fontSize="lg" fontWeight="bold">Hello</Text>
+</Box>
+
+// After (v1+)
+<Box p="200" bg="$cyan500" borderRadius="sm">
+  <Text fontSize="lg" fontWeight="bold">Hello</Text>
+</Box>
+
+// Before (deprecated)
+const styles = StyleSheet.create(({ colors, space, radii }) => ({
+  container: {
+    padding: space[4], // Use numeric scale for spacing
+    backgroundColor: colors.cyan500,
+    borderRadius: radii.sm, // Still use semantic names for certain properties
+  },
+}));
+
+// After (v1+)
+const styles = StyleSheet.create(({ colors, space, borderRadius }) => ({
+  container: {
+    padding: space['200'], // Use new numeric scale for spacing
+    backgroundColor: colors.cyan500,
+    borderRadius: borderRadius.sm, // Still use semantic names for certain properties
+  },
+}));
+```
+
+**Where to learn more?**
+
+- See the [Theme Tokens documentation](/docs/guides-styling-theme-tokens--docs) for a full list of tokens, migration tables, and usage examples.
+
+If you have existing code using the old tokens, you should update your usage to the new keys as soon as possible to ensure compatibility with future releases
+and for rebrand readiness.
+
+### Updated `useColorMode` hook
+
+We have updated the `useColorMode` hook to to allow you to change the color mode directly without
+needing to wrap your application in a provider.
+
+```tsx
+import { useColorMode } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
++  const [colorMode, setColorMode] = useColorMode();
+-  const colorMode = useColorMode();
+
++  const toggleColorMode = () => {
++    setColorMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
++  };
+
+  return (
+    <View>
+      <Text>Current color mode: {colorMode}</Text>
+ +     <Button onPress={toggleColorMode}>Toggle Color Mode</Button>
+    </View>
+  );
+};
+```
+
+### Removal of `NativeUIProvider`
+
+In this release, we have removed the need for the `NativeUIProvider` component. This means you can now use the components
+directly without wrapping your application in a provider.
+
+To change the color mode, you can now use the `useColorMode` hook directly in your components.
+
+```tsx
+import { useColorMode } from '@utilitywarehouse/native-ui';
+import { View, Text } from 'react-native';
+
+const MyComponent = () => {
+  const [colorMode, setColorMode] = useColorMode();
+
+  const toggleColorMode = () => {
+    setColorMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
+  };
+
+  return (
+    <View>
+      <Text>Current color mode: {colorMode}</Text>
+      <Button onPress={toggleColorMode}>Toggle Color Mode</Button>
+    </View>
+  );
+};
+```

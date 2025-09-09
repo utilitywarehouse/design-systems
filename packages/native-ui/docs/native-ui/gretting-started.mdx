@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { version } from '../../package.json';
+import img from './phone-light.png';
+import imgDark from './phone-dark.png';
+import { DynamicImage, BackToTopButton } from '../components';
+import { Box } from '../../src';
+
+<Meta title="Getting Started" />
+<BackToTopButton />
+
+# Getting Started
+
+You can just start using the components from the `@utilitywarehouse/native-ui` package.
+
+```tsx
+import React from 'react';
+import { Box, Alert, Text } from '@utilitywarehouse/native-ui';
+
+const App: React.FC = () => (
+  <Box>
+    <Alert variant="info" text="Welcome to Native UI!" />
+    <Text>Start building your app with Native UI components.</Text>
+  </Box>
+);
+```
+
+### Dark Mode
+
+By default the light colour mode is enabled. If you want to enable dark mode, you can
+use the `useColorMode` hook to toggle between light and dark modes.
+
+```tsx
+import React from 'react';
+import { useColorMode, Box, Alert, Text, Button } from '@utilitywarehouse/native-ui';
+
+const App: React.FC = () => {
+  const [colorMode, setColorMode] = useColorMode();
+
+  return (
+    <Box>
+      <Alert variant="info" text="Welcome to Native UI!" />
+      <Text>Start building your app with Native UI components.</Text>
+      <Button onPress={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')}>
+        Toggle Color Mode
+      </Button>
+    </Box>
+  );
+};
+```

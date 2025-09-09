@@ -3,7 +3,7 @@ import type ListItemProps from './ListItem.props';
 import { ChevronRight01MediumIcon } from '@utilitywarehouse/react-native-icons';
 import { Skeleton } from '../../Skeleton';
 import { useListContext } from '../List.context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { Pressable, ViewStyle } from 'react-native';
 import { IListItemContext, ListItemContext } from './ListItem.context';
 import type { PressableRef } from '../../../types';
@@ -45,7 +45,10 @@ const ListItemRoot = forwardRef<
     const isDisabled = disabled || listContext?.disabled || false;
     const dividerColorValue = dividerColor ?? listContext?.dividerColor;
 
-    const { styles } = useStyles(stylesheet);
+    const testID = props.testID || 'list-item';
+    const loadingTestID = isLoading ? `${testID}-loading` : testID;
+
+    styles.useVariants({ showPressed, active, disabled: isDisabled || isLoading });
 
     const value: IListItemContext = useMemo(() => {
       return {
@@ -62,11 +65,8 @@ const ListItemRoot = forwardRef<
         <Pressable
           ref={ref}
           {...props}
-          style={[
-            styles.container,
-            styles.extraStyles(showPressed, active, isDisabled || isLoading),
-            props.style as ViewStyle,
-          ]}
+          testID={loadingTestID}
+          style={[styles.container, props.style as ViewStyle]}
           disabled={isDisabled}
         >
           {leadingContent ? <Skeleton width={24} height={24} /> : null}
@@ -89,11 +89,8 @@ const ListItemRoot = forwardRef<
         <Pressable
           ref={ref}
           {...props}
-          style={[
-            styles.container,
-            styles.extraStyles(showPressed, active, isDisabled || isLoading),
-            props.style as ViewStyle,
-          ]}
+          testID={testID}
+          style={[styles.container, props.style as ViewStyle]}
           disabled={isDisabled}
         >
           {children ? (
@@ -111,7 +108,7 @@ const ListItemRoot = forwardRef<
               </ListItemContent>
               {trailingContent ? (
                 <ListItemTrailingContent>{trailingContent}</ListItemTrailingContent>
-              ) : !!onPress ? (
+              ) : onPress ? (
                 <ListItemTrailingContent>
                   <ListItemTrailingIcon as={ChevronRight01MediumIcon} />
                 </ListItemTrailingContent>
@@ -127,24 +124,38 @@ const ListItemRoot = forwardRef<
 
 ListItemRoot.displayName = 'ListItemRoot';
 
-const stylesheet = createStyleSheet(({ space, colorMode, colors }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
-    padding: space[4],
+    padding: theme.space[4],
     flexDirection: 'row',
-    gap: space[3],
-  },
-  extraStyles: (showPressed?: boolean, active?: boolean, disabled?: boolean) => {
-    if (!showPressed || disabled) {
-      return {
-        cursor: 'auto',
-      };
-    }
-    if (showPressed && active) {
-      return {
-        backgroundColor: colorMode === 'light' ? colors.grey75 : colors.grey150,
-      };
-    }
-    return {};
+    gap: theme.space[3],
+    variants: {
+      showPressed: {
+        true: {},
+        false: {
+          cursor: 'auto',
+        },
+      },
+      active: {
+        true: {},
+        false: {},
+      },
+      disabled: {
+        true: {
+          cursor: 'auto',
+        },
+        false: {},
+      },
+    },
+    compoundVariants: [
+      {
+        showPressed: true,
+        active: true,
+        styles: {
+          backgroundColor: theme.colorMode === 'light' ? theme.colors.grey75 : theme.colors.grey150,
+        },
+      },
+    ],
   },
 }));
 

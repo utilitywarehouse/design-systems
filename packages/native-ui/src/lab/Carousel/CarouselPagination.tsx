@@ -1,26 +1,28 @@
 import { nanoid } from 'nanoid/non-secure';
 import React, { FC, useContext, useEffect, useMemo } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { Box, Text } from '../../components';
+import { StyleSheet } from 'react-native-unistyles';
+
+import { Text } from '../../components/Text';
+import { Box } from '../../';
 import { CarouselPaginationProps, CarouselPaginationItemProps } from './Carousel.props';
 import CarouselContext from './Carousel.context';
 
-const stylesheet = createStyleSheet(({ colorMode, colors, space }) => ({
+const styles = StyleSheet.create(theme => ({
   active: {
-    backgroundColor: colorMode === 'light' ? colors.cyan400 : colors.cyan700,
+    backgroundColor: theme.colorMode === 'light' ? theme.colors.cyan400 : theme.colors.cyan700,
   },
   page: {
-    width: space[2],
-    height: space[2],
-    borderRadius: space[2],
-    backgroundColor: colorMode === 'light' ? colors.grey175 : colors.grey300,
-    paddingTop: space[2],
+    width: theme.space[2],
+    height: theme.space[2],
+    borderRadius: theme.space[2],
+    backgroundColor: theme.colorMode === 'light' ? theme.colors.grey175 : theme.colors.grey300,
+    paddingTop: theme.space[2],
     overflow: 'hidden',
   },
   root: {
     alignSelf: 'center',
     flexDirection: 'row',
-    columnGap: space[2],
+    columnGap: theme.space[2],
   },
 }));
 
@@ -30,8 +32,6 @@ export const CarouselPaginationItem: FC<CarouselPaginationItemProps> = ({
   index,
   activeStyle,
 }) => {
-  const { styles } = useStyles(stylesheet);
-
   return (
     <Box style={[styles.page, style, active && styles.active, active && activeStyle]}>
       <Text>{index}</Text>
@@ -46,7 +46,6 @@ export const CarouselPagination: FC<CarouselPaginationProps> = ({
   activeItemStyle,
   ...props
 }) => {
-  const { styles } = useStyles(stylesheet);
   const context = useContext(CarouselContext);
   const { activeIndex = 0, numItems = 0 } = context;
 

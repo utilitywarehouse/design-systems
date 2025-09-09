@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { View, ViewProps, ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 
 interface VStackProps extends ViewProps {
   space?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
@@ -8,34 +8,34 @@ interface VStackProps extends ViewProps {
   reversed?: boolean;
 }
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     flexDirection: 'column',
     variants: {
       space: {
         xs: {
-          gap: space['1'],
+          gap: theme.space['1'],
         },
         sm: {
-          gap: space['2'],
+          gap: theme.space['2'],
         },
         md: {
-          gap: space['3'],
+          gap: theme.space['3'],
         },
         lg: {
-          gap: space['4'],
+          gap: theme.space['4'],
         },
         xl: {
-          gap: space['5'],
+          gap: theme.space['5'],
         },
         '2xl': {
-          gap: space['6'],
+          gap: theme.space['6'],
         },
         '3xl': {
-          gap: space['7'],
+          gap: theme.space['7'],
         },
         '4xl': {
-          gap: space['8'],
+          gap: theme.space['8'],
         },
       },
       reversed: {
@@ -52,9 +52,12 @@ const stylesheet = createStyleSheet(({ space }) => ({
   },
 }));
 
+/**
+ * @deprecated Use `Flex` instead.
+ */
 const VStack = forwardRef<View, VStackProps>(
   ({ children, style, space, reversed, wrap, ...props }, ref) => {
-    const { styles } = useStyles(stylesheet, {
+    styles.useVariants({
       space,
       reversed,
       wrap,

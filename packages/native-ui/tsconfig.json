@@ -1,21 +1,15 @@
 {
   "include": [
     "./src",
-    "src/components/Textarea/Textarea.tsx",
   ],
   "exclude": [
     "node_modules",
-    "example",
-    "./src/components/unstyled",
+    "./src/stories",
     "./src/**/*.figma.tsx",
+    "./src/**/*.stories.tsx",
   ],
-  "baseUrl": ".", // This must be specified if "paths" is.
-  "paths": {
-    "react-native": [
-      "node_modules/react-native/"
-    ],
-  },
   "compilerOptions": {
+    "baseUrl": ".",
     "ignoreDeprecations": "5.0",
     "noEmit": false,
     "declaration": true,
@@ -24,13 +18,14 @@
     "allowUnusedLabels": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "lib": [
       "esnext",
       "dom"
     ],
     "module": "esnext",
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
@@ -41,6 +36,6 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "outDir": "./build"
+    "outDir": "./build",
   }
 }

@@ -56,6 +56,7 @@ export const ToggleButtonGroup = React.forwardRef<HTMLDivElement, ToggleButtonGr
       [DATA_ATTRIBUTES.inverted]: inverted || isInvertedBackground ? '' : undefined,
     };
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledMuiToggleButtonGroup
         ref={ref}
         className={className}

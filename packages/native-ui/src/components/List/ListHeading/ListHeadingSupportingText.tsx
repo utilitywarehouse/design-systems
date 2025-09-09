@@ -1,12 +1,11 @@
 import React, { forwardRef } from 'react';
 
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { Text } from '../../Text';
 import type TextProps from '../../Text/Text.props';
 import { Text as RNText } from 'react-native';
 
 const ListHeadingSupportingText = forwardRef<RNText, TextProps>(({ children, ...props }, ref) => {
-  const { styles } = useStyles(stylesheet);
   return (
     <Text ref={ref} {...props} style={[styles.supportingText, props.style]}>
       {children}
@@ -16,10 +15,10 @@ const ListHeadingSupportingText = forwardRef<RNText, TextProps>(({ children, ...
 
 ListHeadingSupportingText.displayName = 'ListHeadingSupportingText';
 
-const stylesheet = createStyleSheet(({ colors, lineHeights }) => ({
+const styles = StyleSheet.create(theme => ({
   supportingText: {
-    color: colors.grey700,
-    lineHeight: lineHeights.sm,
+    color: theme.colors.grey700,
+    lineHeight: theme.lineHeights.sm,
   },
 }));
 

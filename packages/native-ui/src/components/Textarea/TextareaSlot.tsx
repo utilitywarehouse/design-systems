@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
-import { createStyleSheet } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { View, ViewProps } from 'react-native';
 
 const TextareaSlot = forwardRef<View, ViewProps>(({ children, style, ...props }, ref) => {
   return (
-    <View ref={ref} {...props} style={[stylesheet.container, style]}>
+    <View ref={ref} {...props} style={[styles.container, style]}>
       {children}
     </View>
   );
@@ -12,7 +12,7 @@ const TextareaSlot = forwardRef<View, ViewProps>(({ children, style, ...props },
 
 TextareaSlot.displayName = 'TextareaSlot';
 
-const stylesheet = createStyleSheet({
+const styles = StyleSheet.create({
   container: {
     justifyContent: 'flex-start',
     alignItems: 'center',

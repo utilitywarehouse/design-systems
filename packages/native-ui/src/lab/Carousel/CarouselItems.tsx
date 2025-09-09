@@ -1,4 +1,4 @@
-import React, {
+import {
   Children,
   cloneElement,
   ForwardedRef,
@@ -9,9 +9,9 @@ import React, {
   useEffect,
   useMemo,
 } from 'react';
-import { AccessibilityActionEvent, FlatList, ViewToken, ViewStyle } from 'react-native';
+import { AccessibilityActionEvent, FlatList, ViewStyle, ViewToken } from 'react-native';
 
-import { Box } from '../../components';
+import { Box } from '../../';
 import CarouselContext from './Carousel.context';
 import { CarouselItemProps, CarouselItemsProps, CarouselRef } from './Carousel.props';
 

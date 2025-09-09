@@ -8,7 +8,7 @@ export interface HelperBaseProps extends ViewProps {
 }
 
 interface HelperWithChildrenProps extends HelperBaseProps {
-  children: React.ReactNode;
+  children: ViewProps['children'];
   icon?: never;
   text?: never;
 }

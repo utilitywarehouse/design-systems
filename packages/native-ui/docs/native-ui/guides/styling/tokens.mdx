@@ -1,0 +1,867 @@
+import { ColorItem, ColorPalette, Meta } from '@storybook/addon-docs/blocks';
+import common from '../../../../../../packages/colour-system/lib/common.json';
+import { dark, light } from '../../../../../../packages/colour-system/raw/colours.json';
+import {
+  Box,
+  Center,
+  Flex,
+  HStack,
+  Heading,
+  NativeUIProvider,
+  Text,
+  VStack,
+} from '../../../../src';
+import { font } from '../../../../src/tokens';
+import { BackToTopButton, UsageWrap, VariantTitle } from '../../../components';
+
+<Meta title="Guides / Styling / Theme Tokens" />
+
+<BackToTopButton />
+
+> **Note:** The design tokens system has recently been updated to align with the new design system and to provide a more consistent and scalable API.  
+> Some keys and naming conventions have changed, and deprecated values are now replaced with a new, more granular scale.  
+> See the [What's New](/docs/what-s-new--docs) page for an overview.
+
+# Theme Tokens
+
+`native-ui` uses a design token system to provide a consistent and scalable way to manage design properties.
+
+`native-ui` ships with default tokens that provide access to theme values and lets you build and customise your own themed components.
+It has colors, typography, size, opacity, shadows, breakpoints and more.
+
+- [How to Use Tokens](#how-to-use-tokens)
+- [Colours](#colours)
+- [Typography](#typography)
+  - [Font Family](#font-family)
+  - [Font Size](#font-size)
+  - [Font Weight](#font-weight)
+  - [Letter Spacing](#letter-spacing)
+  - [Line Height](#line-height)
+- [Space](#space)
+- [Opacity](#opacity)
+- [Breakpoints](#breakpoints)
+- [Border](#border)
+  - [Border Width](#border-width)
+  - [Border Radius](#border-radius)
+
+## How to Use Tokens
+
+To use the theme tokens in your components, you can use the `useTheme` hook to access the theme values or pass a function
+to `StyleSheet.create` to access the theme values. You can also use the `Box` component and the `$` prefix to access the theme values.
+
+```tsx
+import { Text, Box, useTheme } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  const {
+    // You can access the theme values via the useTheme hook
+    colors,
+    borderRadius,
+    space,
+  } = useTheme();
+
+  return (
+    <Box
+      // You can use the theme values from the useTheme hook
+      p={space['150']}
+      // Or the built in typed values
+      m="200"
+      bg={colors.grey50}
+      // You can use the $ prefix for colours
+      borderColor="$green700"
+      borderWidth={2}
+      borderRadius={borderRadius['lg']}
+    >
+      <Text style={styles.text}>Hello, world!</Text>
+    </Box>
+  );
+};
+
+const styles = StyleSheet.create(theme => ({
+  text: {
+    // You can access the theme values via the theme argument
+    fontFamily: theme.font.body,
+    fontSize: theme.fontSize['200'],
+    color: theme.colors.grey900,
+  },
+}));
+```
+
+## Colours
+
+The colour system is based on the `colour-system` package which provides a set of tokens for both light and dark themes.
+To use the colours tokens in your components, you can use the colours below for example `color: colors.cyan400;`.
+
+### Light Colours
+
+These colours should be used in the default light `colorMode` and theme.
+
+<ColorPalette>
+  {Object.keys(light).map(key => (
+    <>
+      <ColorItem
+        title={`${key}`}
+        subtitle="Light Theme"
+        colors={Object.keys(light[key])
+          .slice(0, 6)
+          .reduce((acc, subKey) => {
+            acc[subKey] = light[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+      <ColorItem
+        title={`${key}`}
+        subtitle="Light Theme"
+        colors={Object.keys(light[key])
+          .slice(6, 12)
+          .reduce((acc, subKey) => {
+            acc[subKey] = light[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+      {Object.keys(light[key]).length > 12 && (
+        <ColorItem
+          title={`${key}`}
+          subtitle="Light Theme"
+          colors={Object.keys(light[key])
+            .slice(12, 18)
+            .reduce((acc, subKey) => {
+              acc[subKey] = light[key][subKey].value;
+              return acc;
+            }, {})}
+        />
+      )}
+    </>
+  ))}
+</ColorPalette>
+### Dark Theme
+
+These colours should be used in the dark `colorMode` and theme.
+
+<ColorPalette>
+  {Object.keys(dark).map(key => (
+    <>
+      <ColorItem
+        title={key}
+        subtitle="Dark Theme"
+        colors={Object.keys(dark[key])
+
+          .slice(0, 6)
+          .reduce((acc, subKey) => {
+            acc[subKey] = dark[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+      <ColorItem
+        title={key}
+        subtitle="Dark Theme"
+        colors={Object.keys(dark[key])
+
+          .slice(6, 12)
+          .reduce((acc, subKey) => {
+            acc[subKey] = dark[key][subKey].value;
+            return acc;
+          }, {})}
+      />
+      {Object.keys(dark[key]).length > 12 && (
+        <ColorItem
+          title={key}
+          subtitle="Dark Theme"
+          colors={Object.keys(dark[key])
+
+            .slice(12, 18)
+            .reduce((acc, subKey) => {
+              acc[subKey] = dark[key][subKey].value;
+              return acc;
+            }, {})}
+        />
+      )}
+    </>
+
+))}
+
+</ColorPalette>
+### Common Brand and Service Colours
+<ColorPalette>
+  <ColorItem
+    title="Brand"
+    subtitle={`Common Brand`}
+    colors={common['brand'].reduce((acc, key) => {
+      acc[`$brand${key.name.charAt(0).toUpperCase() + key.name.slice(1)}`] = key.value;
+      return acc;
+    }, {})}
+  />
+  <ColorItem
+    title="Service"
+    subtitle={`Common Service`}
+    colors={common['service'].reduce((acc, key) => {
+      acc[`$service${key.name.charAt(0).toUpperCase() + key.name.slice(1)}`] = key.value;
+      return acc;
+    }, {})}
+  />
+</ColorPalette>
+
+## Typography
+
+To manage Typography options, the tokens object supports the following keys:
+
+- [fonts (font families)](#fonts)
+- [fontSizes](#font-sizes)
+- [fontWeights](#font-weights)
+- [lineHeights](#line-heights)
+- [letterSpacings](#letter-spacings)
+
+### Font Family
+
+_Deprecated_ as of v1
+
+| Key        | Theme Key       | Value       |
+| ---------- | --------------- | ----------- |
+| ~$heading~ | ~fonts.heading~ | `Aeonik`    |
+| ~$body~    | ~fonts.body~    | `Work Sans` |
+
+_New_
+
+| Key       | Theme Key            | Value       |
+| --------- | -------------------- | ----------- |
+| `heading` | `fontFamily.heading` | `Aeonik`    |
+| `body`    | `fontFamily.body`    | `Work Sans` |
+
+<UsageWrap>
+  <Center>
+    <HStack space="lg">
+      <Center>
+        <Heading>Aeonik</Heading>
+        <Text size="sm">heading</Text>
+      </Center>
+      <Center>
+        <Text>Work Sans</Text>
+        <Text size="sm">body</Text>
+      </Center>
+    </HStack>
+  </Center>
+</UsageWrap>
+
+### Font Size
+
+<UsageWrap>
+  <Center>
+    <Flex direction="row" space="lg" wrap="wrap">
+      <Center>
+        <Text style={{ fontSize: font.size['50'], lineHeight: font.size['50'] }}>50</Text>
+        <Text size="sm">10px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['75'], lineHeight: font.size['75'] }}>75</Text>
+        <Text size="sm">12px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['90'], lineHeight: font.size['90'] }}>90</Text>
+        <Text size="sm">14px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['100'], lineHeight: font.size['100'] }}>100</Text>
+        <Text size="sm">16px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['150'], lineHeight: font.size['150'] }}>150</Text>
+        <Text size="sm">18px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['200'], lineHeight: font.size['200'] }}>200</Text>
+        <Text size="sm">20px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['300'], lineHeight: font.size['300'] }}>300</Text>
+        <Text size="sm">24px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['400'], lineHeight: font.size['400'] }}>400</Text>
+        <Text size="sm">30px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['500'], lineHeight: font.size['500'] }}>500</Text>
+        <Text size="sm">36px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['550'], lineHeight: font.size['550'] }}>550</Text>
+        <Text size="sm">40px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['600'], lineHeight: font.size['600'] }}>600</Text>
+        <Text size="sm">48px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['700'], lineHeight: font.size['700'] }}>700</Text>
+        <Text size="sm">60px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['800'], lineHeight: font.size['800'] }}>800</Text>
+        <Text size="sm">72px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['900'], lineHeight: font.size['900'] }}>900</Text>
+        <Text size="sm">96px</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontSize: font.size['1000'], lineHeight: font.size['1000'] }}>1000</Text>
+        <Text size="sm">128px</Text>
+      </Center>
+    </Flex>
+  </Center>
+</UsageWrap>
+
+_Deprecated_ as of v1
+
+| Key    | Theme Value     | Value |
+| ------ | --------------- | ----- |
+| ~$2xs~ | ~fontSizes.2xs~ | 10    |
+| ~$xs~  | ~fontSizes.xs~  | 12    |
+| ~$sm~  | ~fontSizes.sm~  | 14    |
+| ~$md~  | ~fontSizes.md~  | 16    |
+| ~$lg~  | ~fontSizes.lg~  | 18    |
+| ~$xl~  | ~fontSizes.xl~  | 20    |
+| ~$2xl~ | ~fontSizes.2xl~ | 24    |
+| ~$3xl~ | ~fontSizes.3xl~ | 30    |
+| ~$4xl~ | ~fontSizes.4xl~ | 36    |
+| ~$5xl~ | ~fontSizes.5xl~ | 48    |
+| ~$6xl~ | ~fontSizes.6xl~ | 60    |
+| ~$7xl~ | ~fontSizes.7xl~ | 72    |
+| ~$8xl~ | ~fontSizes.8xl~ | 96    |
+| ~$9xl~ | ~fontSizes.9xl~ | 128   |
+
+_New_
+
+| Key    | Theme Key       | Value |
+| ------ | --------------- | ----- |
+| `50`   | `fontSize.50`   | 10    |
+| `75`   | `fontSize.75`   | 12    |
+| `90`   | `fontSize.90`   | 14    |
+| `100`  | `fontSize.100`  | 16    |
+| `150`  | `fontSize.150`  | 18    |
+| `200`  | `fontSize.200`  | 20    |
+| `300`  | `fontSize.300`  | 24    |
+| `400`  | `fontSize.400`  | 30    |
+| `500`  | `fontSize.500`  | 36    |
+| `550`  | `fontSize.550`  | 40    |
+| `600`  | `fontSize.600`  | 48    |
+| `700`  | `fontSize.700`  | 60    |
+| `800`  | `fontSize.800`  | 72    |
+| `900`  | `fontSize.900`  | 96    |
+| `1000` | `fontSize.1000` | 128   |
+
+### Font Weight
+
+<UsageWrap>
+  <Center>
+    <Flex direction="row" space="xl" wrap="wrap">
+      <Center>
+        <Text style={{ fontWeight: font.weight.regular }}>Regular</Text>
+        <Text size="sm">400</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontWeight: font.weight.medium }}>Medium</Text>
+        <Text size="sm">500</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontWeight: font.weight.semibold }}>Semibold</Text>
+        <Text size="sm">600</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontWeight: font.weight.bold }}>Bold</Text>
+        <Text size="sm">700</Text>
+      </Center>
+      <Center>
+        <Text style={{ fontWeight: font.weight.heavy }}>Heavy</Text>
+        <Text size="sm">900</Text>
+      </Center>
+    </Flex>
+  </Center>
+</UsageWrap>
+
+_Deprecated_ as of v1
+
+| Key           | Theme Key                | Value |
+| ------------- | ------------------------ | ----- |
+| ~$thin~       | ~fontWeights.thin~       | 100   |
+| ~$extralight~ | ~fontWeights.extralight~ | 200   |
+| ~$light~      | ~fontWeights.light~      | 300   |
+| ~$normal~     | ~fontWeights.normal~     | 400   |
+| ~$medium~     | ~fontWeights.medium~     | 500   |
+| ~$semibold~   | ~fontWeights.semibold~   | 600   |
+| ~$bold~       | ~fontWeights.bold~       | 700   |
+| ~$extrabold~  | ~fontWeights.extrabold~  | 800   |
+| ~$black~      | ~fontWeights.black~      | 900   |
+
+_New_
+
+| Key      | Theme Key             | Value |
+| -------- | --------------------- | ----- |
+| regular  | `fontWeight.regular`  | 400   |
+| medium   | `fontWeight.medium`   | 500   |
+| semibold | `fontWeight.semibold` | 600   |
+| bold     | `fontWeight.bold`     | 700   |
+| heavy    | `fontWeight.heavy`    | 900   |
+
+### Line Height
+
+_Deprecated_ as of v1
+
+| Key    | Theme Key         | Value |
+| ------ | ----------------- | ----- |
+| ~$2xs~ | ~lineHeights.2xs~ | 16    |
+| ~$xs~  | ~lineHeights.xs~  | 18    |
+| ~$sm~  | ~lineHeights.sm~  | 20    |
+| ~$md~  | ~lineHeights.md~  | 22    |
+| ~$lg~  | ~lineHeights.lg~  | 24    |
+| ~$xl~  | ~lineHeights.xl~  | 28    |
+| ~$2xl~ | ~lineHeights.2xl~ | 32    |
+| ~$3xl~ | ~lineHeights.3xl~ | 40    |
+| ~$4xl~ | ~lineHeights.4xl~ | 48    |
+| ~$5xl~ | ~lineHeights.5xl~ | 56    |
+| ~$6xl~ | ~lineHeights.6xl~ | 72    |
+| ~$7xl~ | ~lineHeights.7xl~ | 90    |
+
+_New_
+
+| Key    | Theme Key            | Value |
+| ------ | -------------------- | ----- |
+| `50`   | `lineHeight['50']`   | 12    |
+| `75`   | `lineHeight['75']`   | 14    |
+| `100`  | `lineHeight['100']`  | 16    |
+| `200`  | `lineHeight['200']`  | 18    |
+| `300`  | `lineHeight['300']`  | 20    |
+| `400`  | `lineHeight['400']`  | 22    |
+| `500`  | `lineHeight['500']`  | 24    |
+| `600`  | `lineHeight['600']`  | 28    |
+| `700`  | `lineHeight['700']`  | 32    |
+| `800`  | `lineHeight['800']`  | 36    |
+| `900`  | `lineHeight['900']`  | 40    |
+| `1000` | `lineHeight['1000']` | 48    |
+| `1100` | `lineHeight['1100']` | 56    |
+| `1200` | `lineHeight['1200']` | 64    |
+
+## Space
+
+The space key allows you to customise the global spacing and sizing scale for your project.
+By default these spacing value can be referenced by the padding, margin, and top, left, right, bottom, props.
+
+_Deprecated_ as of v1
+
+| Key     | Theme Key      | Value   |
+| ------- | -------------- | ------- |
+| ~$0~    | ~space['0']~   | 0       |
+| ~$0.5~  | ~space['0.5']~ | 2       |
+| ~$1~    | ~space['1']~   | 4       |
+| ~$1.5~  | ~space['1.5']~ | 6       |
+| ~$2~    | ~space['2']~   | 8       |
+| ~$2.5~  | ~space['2.5']~ | 10      |
+| ~$3~    | ~space['3']~   | 12      |
+| ~$3.5~  | ~space['3.5']~ | 14      |
+| ~$4~    | ~space['4']~   | 16      |
+| ~$4.5~  | ~space['4.5']~ | 18      |
+| ~$5~    | ~space['5']~   | 20      |
+| ~$6~    | ~space['6']~   | 24      |
+| ~$7~    | ~space['7']~   | 28      |
+| ~$8~    | ~space['8']~   | 32      |
+| ~$9~    | ~space['9']~   | 36      |
+| ~$10~   | ~space['10']~  | 40      |
+| ~$11~   | ~space['11']~  | 44      |
+| ~$12~   | ~space['12']~  | 48      |
+| ~$14~   | ~space['14']~  | 56      |
+| ~$16~   | ~space['16']~  | 64      |
+| ~$20~   | ~space['20']~  | 80      |
+| ~$24~   | ~space['24']~  | 96      |
+| ~$32~   | ~space['32']~  | 128     |
+| ~$40~   | ~space['40']~  | 160     |
+| ~$48~   | ~space['48']~  | 192     |
+| ~$56~   | ~space['56']~  | 224     |
+| ~$64~   | ~space['64']~  | 256     |
+| ~$72~   | ~space['72']~  | 288     |
+| ~$80~   | ~space['80']~  | 320     |
+| ~$96~   | ~space['96']~  | 384     |
+| ~$1/2~  | ~space['1/2']~ | 50%     |
+| ~$1/3~  | ~space['1/3']~ | 33.333% |
+| ~$2/3~  | ~space['2/3']~ | 66.666% |
+| ~$1/4~  | ~space['1/4']~ | 25%     |
+| ~$2/4~  | ~space['2/4']~ | 50%     |
+| ~$3/4~  | ~space['3/4']~ | 75%     |
+| ~$1/5~  | ~space['1/5']~ | 20%     |
+| ~$2/5~  | ~space['2/5']~ | 40%     |
+| ~$3/5~  | ~space['3/5']~ | 60%     |
+| ~$4/5~  | ~space['4/5']~ | 80%     |
+| ~$1/6~  | ~space['1/6']~ | 16.666% |
+| ~$2/6~  | ~space['2/6']~ | 33.333% |
+| ~$3/6~  | ~space['3/6']~ | 50%     |
+| ~$4/6~  | ~space['4/6']~ | 66.666% |
+| ~$5/6~  | ~space['5/6']~ | 83.333% |
+| ~$full~ | ~space.full~   | 100%    |
+
+_New_
+
+| Key    | Theme Key       | Value   |
+| ------ | --------------- | ------- |
+| `0`    | `space['0']`    | 0       |
+| `25`   | `space['25']`   | 2       |
+| `50`   | `space['50']`   | 4       |
+| `75`   | `space['75']`   | 6       |
+| `100`  | `space['100']`  | 8       |
+| `150`  | `space['150']`  | 12      |
+| `175`  | `space['175']`  | 14      |
+| `200`  | `space['200']`  | 16      |
+| `250`  | `space['250']`  | 20      |
+| `300`  | `space['300']`  | 24      |
+| `350`  | `space['350']`  | 28      |
+| `400`  | `space['400']`  | 32      |
+| `500`  | `space['500']`  | 40      |
+| `600`  | `space['600']`  | 48      |
+| `700`  | `space['700']`  | 56      |
+| `800`  | `space['800']`  | 64      |
+| `900`  | `space['900']`  | 72      |
+| `1000` | `space['1000']` | 80      |
+| `1/2`  | `space['1/2']`  | 50%     |
+| `1/3`  | `space['1/3']`  | 33.333% |
+| `2/3`  | `space['2/3']`  | 66.666% |
+| `1/4`  | `space['1/4']`  | 25%     |
+| `2/4`  | `space['2/4']`  | 50%     |
+| `3/4`  | `space['3/4']`  | 75%     |
+| `1/5`  | `space['1/5']`  | 20%     |
+| `2/5`  | `space['2/5']`  | 40%     |
+| `3/5`  | `space['3/5']`  | 60%     |
+| `4/5`  | `space['4/5']`  | 80%     |
+| `1/6`  | `space['1/6']`  | 16.666% |
+| `2/6`  | `space['2/6']`  | 33.333% |
+| `3/6`  | `space['3/6']`  | 50%     |
+| `4/6`  | `space['4/6']`  | 66.666% |
+| `5/6`  | `space['5/6']`  | 83.333% |
+| `full` | `space.full`    | 100%    |
+
+## Opacity
+
+The opacity key allows you to customise the global opacity scale for your project.
+
+<UsageWrap>
+  <Center>
+    <HStack space="sm" flexWrap="wrap">
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$0"
+        />
+        <Text size="sm">0</Text>
+        <Text size="sm">$0</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$5"
+        />
+        <Text size="sm">0.05</Text>
+        <Text size="sm">$5</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$10"
+        />
+        <Text size="sm">0.1</Text>
+        <Text size="sm">$10</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$20"
+        />
+        <Text size="sm">0.2</Text>
+        <Text size="sm">$20</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$25"
+        />
+        <Text size="sm">0.25</Text>
+        <Text size="sm">$25</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$30"
+        />
+        <Text size="sm">0.3</Text>
+        <Text size="sm">$30</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$40"
+        />
+        <Text size="sm">0.4</Text>
+        <Text size="sm">$40</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$50"
+        />
+        <Text size="sm">0.5</Text>
+        <Text size="sm">$50</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$60"
+        />
+        <Text size="sm">0.6</Text>
+        <Text size="sm">$60</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$70"
+        />
+        <Text size="sm">0.7</Text>
+        <Text size="sm">$70</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$75"
+        />
+        <Text size="sm">0.75</Text>
+        <Text size="sm">$75</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$80"
+        />
+        <Text size="sm">0.8</Text>
+        <Text size="sm">$80</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$90"
+        />
+        <Text size="sm">0.9</Text>
+        <Text size="sm">$90</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$95"
+        />
+        <Text size="sm">0.95</Text>
+        <Text size="sm">$95</Text>
+      </Center>
+      <Center width={50} height={50}>
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="100%"
+          height="100%"
+          bg="$cyan500"
+          opacity="$100"
+        />
+        <Text size="sm">1</Text>
+        <Text size="sm">$100</Text>
+      </Center>
+    </HStack>
+  </Center>
+</UsageWrap>
+
+| Key    | Theme Key        | Value |
+| ------ | ---------------- | ----- |
+| `$0`   | `opacity['0']`   | 0     |
+| `$5`   | `opacity['5']`   | 0.05  |
+| `$10`  | `opacity['10']`  | 0.1   |
+| `$20`  | `opacity['20']`  | 0.2   |
+| `$25`  | `opacity['25']`  | 0.25  |
+| `$30`  | `opacity['30']`  | 0.3   |
+| `$40`  | `opacity['40']`  | 0.4   |
+| `$50`  | `opacity['50']`  | 0.5   |
+| `$60`  | `opacity['60']`  | 0.6   |
+| `$70`  | `opacity['70']`  | 0.7   |
+| `$75`  | `opacity['75']`  | 0.75  |
+| `$80`  | `opacity['80']`  | 0.8   |
+| `$90`  | `opacity['90']`  | 0.9   |
+| `$95`  | `opacity['95']`  | 0.95  |
+| `$100` | `opacity['100']` | 1     |
+
+## Breakpoints
+
+The breakpoints key allows you to customise the global breakpoints for your project.
+
+| Key          | Value  |
+| ------------ | ------ |
+| `base`       | `0`    |
+| `xs`         | `320`  |
+| `sm`         | `399`  |
+| `md`         | `768`  |
+| `lg`         | `992`  |
+| `xl`         | `1280` |
+| `superLarge` | `2000` |
+| `tvLike`     | `4000` |
+
+## Border
+
+### Border width
+
+<UsageWrap>
+  <Center>
+    <HStack space="lg" wrap>
+      <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="1">
+        <Text size="sm">1</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="2">
+        <Text size="sm">2</Text>
+      </Center>
+    </HStack>
+  </Center>
+</UsageWrap>
+
+_Deprecated_ as of v1
+
+| Key  | Theme Key           | Value |
+| ---- | ------------------- | ----- |
+| ~$0~ | ~borderWidths['0']~ | 0     |
+| ~$1~ | ~borderWidths['1']~ | 1     |
+| ~$2~ | ~borderWidths['2']~ | 2     |
+| ~$4~ | ~borderWidths['4']~ | 4     |
+| ~$8~ | ~borderWidths['8']~ | 8     |
+
+_New_
+
+| Key | Theme Key          | Value |
+| --- | ------------------ | ----- |
+| `1` | `borderWidth['1']` | 1     |
+| `2` | `borderWidth['2']` | 2     |
+
+### Border Radius
+
+<UsageWrap>
+  <Center>
+    <HStack space="lg" wrap>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="none">
+        <Text size="sm">none</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="xs">
+        <Text size="sm">xs</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="sm">
+        <Text size="sm">sm</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="md">
+        <Text size="sm">md</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="lg">
+        <Text size="sm">lg</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="xl">
+        <Text size="sm">xl</Text>
+      </Center>
+      <Center width="80px" height="80px" bg="$cyan500" borderRadius="full">
+        <Text size="sm">full</Text>
+      </Center>
+    </HStack>
+  </Center>
+</UsageWrap>
+
+_Deprecated_ as of v1
+
+| Key    | Theme Key    | Value |
+| ------ | ------------ | ----- |
+| ~none~ | ~radii.none~ | 0     |
+| ~xs~   | ~radii.xs~   | 2     |
+| ~sm~   | ~radii.sm~   | 4     |
+| ~md~   | ~radii.md~   | 6     |
+| ~lg~   | ~radii.lg~   | 8     |
+| ~xl~   | ~radii.xl~   | 12    |
+| ~2xl~  | ~radii.2xl~  | 16    |
+| ~3xl~  | ~radii.3xl~  | 24    |
+| ~4xl~  | ~radii.4xl~  | 32    |
+| ~full~ | ~radii.full~ | 9999  |
+
+_New_
+
+| Key    | Theme Key           | Value |
+| ------ | ------------------- | ----- |
+| `none` | `borderRadius.none` | 0     |
+| `xs`   | `borderRadius.xs`   | 4     |
+| `sm`   | `borderRadius.sm`   | 6     |
+| `md`   | `borderRadius.md`   | 8     |
+| `lg`   | `borderRadius.lg`   | 12    |
+| `xl`   | `borderRadius.xl`   | 16    |
+| `full` | `borderRadius.full` | 9999  |

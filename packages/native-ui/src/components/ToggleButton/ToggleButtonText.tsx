@@ -1,31 +1,26 @@
 /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import React, { forwardRef } from 'react';
 import { Text, type TextProps } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { useToggleButtonContext } from './ToggleButton.context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { useToggleButtonGroupContext } from './ToggleButtonGroup.context';
 
-const ToggleButtonText = forwardRef<Text, TextProps>(({ children, ...props }, ref) => {
+const ToggleButtonText = ({ children, ...props }: TextProps) => {
   const { value: contextVal, disabled: contextDisabled, size } = useToggleButtonGroupContext();
   const { value, disabled } = useToggleButtonContext();
   const isDisabled = disabled || contextDisabled;
   const isActive = value === contextVal;
-  const { styles } = useStyles(stylesheet, { disabled: isDisabled, active: isActive, size });
+  styles.useVariants({ disabled: isDisabled, active: isActive, size });
   return (
-    <Text
-      ref={ref}
-      {...props}
-      style={[styles.text, styles.extraStyles(isDisabled, isActive), props.style]}
-    >
+    <Text {...props} style={[styles.text, props.style]}>
       {children}
     </Text>
   );
-});
+};
 
 ToggleButtonText.displayName = 'ToggleButtonText';
 
-const stylesheet = createStyleSheet(({ isLight, colors, fontWeights, fonts, fontSizes }) => ({
+const styles = StyleSheet.create(({ isLight, colors, fontWeights, fonts, fontSizes }) => ({
   text: {
     fontWeight: fontWeights.medium,
     fontFamily: fonts.body,
@@ -51,13 +46,16 @@ const stylesheet = createStyleSheet(({ isLight, colors, fontWeights, fonts, font
         },
       },
     },
-  },
-  extraStyles: (disabled, active) =>
-    disabled && active
-      ? {
+    compoundVariants: [
+      {
+        disabled: true,
+        active: true,
+        styles: {
           color: isLight ? colors.cyan300 : colors.grey400,
-        }
-      : {},
+        },
+      },
+    ],
+  },
 }));
 
 export default ToggleButtonText;

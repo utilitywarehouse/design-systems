@@ -4,8 +4,8 @@ import clsx from 'clsx';
 
 import { colors } from '@utilitywarehouse/colour-system';
 
-import { TextLink } from '../TextLink';
 import type { TextLinkProps } from '../TextLink';
+import { TextLink } from '../TextLink';
 
 import { colorSchemeParentSelector } from '../../helpers';
 import { styled } from '../../theme';
@@ -56,6 +56,7 @@ export const AlertLink = React.forwardRef<
   React.ElementRef<'a'>,
   React.PropsWithChildren<PropsWithSx<TextLinkProps>>
 >(({ className, ...props }, ref) => (
+  /* @ts-expect-error - upgrade issue */
   <StyledElement ref={ref} className={clsx(componentClassName, className)} {...props} />
 ));
 

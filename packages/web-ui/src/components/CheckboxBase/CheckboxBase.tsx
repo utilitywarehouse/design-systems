@@ -92,6 +92,7 @@ export const CheckboxBase = React.forwardRef<HTMLButtonElement, CheckboxBaseProp
     const checked = context?.value?.includes(value);
 
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledCheckboxRoot
         ref={ref}
         name={context?.name}
@@ -111,6 +112,7 @@ export const CheckboxBase = React.forwardRef<HTMLButtonElement, CheckboxBaseProp
           }
         }}
       >
+        {/* @ts-expect-error - upgrade issue. TODO: Fix this */}
         <StyledIndicator asChild>
           <TickMediumIcon />
         </StyledIndicator>

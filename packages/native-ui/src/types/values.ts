@@ -6,7 +6,47 @@ export type addPrefixToObject<T, P extends string> = {
 };
 
 export type SpaceValue =
-  | keyof addPrefixToObject<(typeof lightTheme)['space'], '$'>
+  | keyof addPrefixToObject<
+      Omit<
+        (typeof lightTheme)['space'],
+        | '0.5'
+        | '1'
+        | '1.5'
+        | '2'
+        | '2.5'
+        | '3'
+        | '3.5'
+        | '4'
+        | '4.5'
+        | '5'
+        | '6'
+        | '7'
+        | '8'
+        | '9'
+        | '10'
+        | '11'
+        | '12'
+        | '14'
+        | '16'
+        | '20'
+        | '24'
+        | '32'
+        | '40'
+        | '48'
+        | '56'
+        | '64'
+        | '72'
+        | '80'
+      >,
+      ''
+    >
+  | keyof addPrefixToObject<
+      Omit<
+        (typeof lightTheme)['space'],
+        '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '1000'
+      >,
+      '$'
+    >
   | DimensionValue
   | undefined;
 
@@ -28,11 +68,13 @@ export type ColorValue =
   | undefined;
 
 export type RadiiValue =
+  | keyof addPrefixToObject<(typeof lightTheme)['borderRadius'], ''>
   | keyof addPrefixToObject<(typeof lightTheme)['radii'], '$'>
   | AnimatableNumericValue
   | undefined;
 
 export type BordeWidthValue =
+  | keyof addPrefixToObject<(typeof lightTheme)['borderWidth'], ''>
   | keyof addPrefixToObject<(typeof lightTheme)['borderWidths'], '$'>
   | number
   | undefined;

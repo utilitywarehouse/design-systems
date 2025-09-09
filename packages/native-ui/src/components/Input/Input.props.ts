@@ -37,15 +37,17 @@ export interface InputBaseProps {
 }
 
 export interface InputWithChildrenProps extends InputBaseProps, ViewProps {
-  children: React.ReactNode;
+  children: ViewProps['children'];
   leadingIcon?: never;
   trailingIcon?: never;
+  type?: never;
 }
 
 interface InputWithoutChildrenProps extends InputBaseProps, TextInputProps {
   children?: never;
   leadingIcon?: ComponentType;
   trailingIcon?: ComponentType;
+  type?: 'text' | 'password';
 }
 
 /**

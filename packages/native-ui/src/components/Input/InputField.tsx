@@ -1,44 +1,39 @@
-import React, { ElementRef, forwardRef } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { TextInputProps, TextInput, Platform } from 'react-native';
+import { TextInput, TextInputProps } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
+import { useTheme } from '../../hooks';
 import { useInputContext } from './Input.context';
 
-const InputField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
-  ({ style, ...props }, ref) => {
-    const { disabled, focused = false } = useInputContext();
-    const {
-      styles,
-      theme: { colors },
-    } = useStyles(stylesheet, { focused, disabled });
+const InputField = ({ style, ...props }: TextInputProps) => {
+  const { disabled, focused = false } = useInputContext();
+  styles.useVariants({ focused, disabled });
+  const { colors } = useTheme();
 
-    return (
-      <TextInput
-        ref={ref}
-        placeholderTextColor={disabled ? colors.grey200 : colors.grey600}
-        selectionColor={colors.cyan500}
-        cursorColor={colors.cyan500}
-        aria-disabled={disabled}
-        {...props}
-        style={[styles.input, style]}
-      />
-    );
-  }
-);
+  return (
+    <TextInput
+      placeholderTextColor={disabled ? colors.grey200 : colors.grey600}
+      selectionColor={colors.cyan500}
+      cursorColor={colors.cyan500}
+      aria-disabled={disabled}
+      {...props}
+      style={[styles.input, style]}
+    />
+  );
+};
 
 InputField.displayName = 'InputField';
 
-const stylesheet = createStyleSheet(({ radii, fontSizes, colors, fontWeights, fonts }) => ({
+const styles = StyleSheet.create(theme => ({
   input: {
     flex: 1,
-    width: Platform.OS === 'web' ? '100%' : 'auto',
-    borderTopLeftRadius: radii['2xl'],
-    borderTopRightRadius: radii['2xl'],
-    borderBottomLeftRadius: radii.none,
-    borderBottomRightRadius: radii.none,
-    color: colors.grey1000,
-    fontSize: fontSizes.lg,
-    fontFamily: fonts.body,
-    fontWeight: fontWeights.normal,
+    width: 'auto',
+    borderTopLeftRadius: theme.radii['2xl'],
+    borderTopRightRadius: theme.radii['2xl'],
+    borderBottomLeftRadius: theme.radii.none,
+    borderBottomRightRadius: theme.radii.none,
+    color: theme.colors.grey1000,
+    fontSize: theme.fontSizes.lg,
+    fontFamily: theme.fonts.body,
+    fontWeight: theme.fontWeights.normal,
     variants: {
       focused: {
         true: {
@@ -47,9 +42,12 @@ const stylesheet = createStyleSheet(({ radii, fontSizes, colors, fontWeights, fo
       },
       disabled: {
         true: {
-          color: colors.grey400,
+          color: theme.colors.grey400,
         },
       },
+    },
+    _web: {
+      width: '100%',
     },
   },
 }));

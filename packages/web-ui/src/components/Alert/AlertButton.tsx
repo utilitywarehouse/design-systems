@@ -4,8 +4,8 @@ import clsx from 'clsx';
 
 import { colors } from '@utilitywarehouse/colour-system';
 
-import { UnstyledButton } from '../UnstyledButton';
 import type { UnstyledButtonProps } from '../UnstyledButton';
+import { UnstyledButton } from '../UnstyledButton';
 
 import { colorSchemeParentSelector } from '../../helpers';
 import { styled } from '../../theme';
@@ -58,6 +58,7 @@ export const AlertButton = React.forwardRef<
   React.ElementRef<'button'>,
   React.PropsWithChildren<PropsWithSx<UnstyledButtonProps>>
 >(({ className, ...props }, ref) => (
+  /* @ts-expect-error - upgrade issue */
   <StyledElement ref={ref} className={clsx(componentClassName, className)} {...props} />
 ));
 

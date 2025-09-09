@@ -37,7 +37,7 @@ export interface TextareaBaseProps {
 }
 
 export interface TextareaWithChildrenProps extends TextareaBaseProps, ViewProps {
-  children: React.ReactNode;
+  children: ViewProps['children'];
   leadingIcon?: never;
   trailingIcon?: never;
 }

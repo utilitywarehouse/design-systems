@@ -1,45 +1,35 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import React, { forwardRef } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
-import { useToggleButtonContext } from './ToggleButton.context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { Icon } from '../Icon';
-import { IconRef } from '../../types';
 import IconProps from '../Icon/Icon.props';
+import { useToggleButtonContext } from './ToggleButton.context';
 import { useToggleButtonGroupContext } from './ToggleButtonGroup.context';
 
-const ToggleButtonIcon = forwardRef<IconRef, IconProps>(({ children, ...props }, ref) => {
+const ToggleButtonIcon = ({ children, ...props }: IconProps) => {
   const { value: contextVal, disabled: contextDisabled } = useToggleButtonGroupContext();
   const { value, disabled } = useToggleButtonContext();
   const isDisabled = disabled || contextDisabled;
   const isActive = value === contextVal;
-  const { styles } = useStyles(stylesheet, { disabled: isDisabled, active: isActive });
+  styles.useVariants({ disabled: isDisabled, active: isActive });
   return (
     <Icon
-      ref={ref}
       {...props}
       style={
         Platform.OS === 'web'
-          ? ({
-              ...styles.icon,
-              ...styles.extraStyles(isDisabled, isActive),
-            } as StyleProp<ViewStyle>)
-          : [
-              styles.icon as StyleProp<ViewStyle>,
-              styles.extraStyles(isDisabled, isActive) as StyleProp<ViewStyle>,
-              props.style,
-            ]
+          ? (styles.icon as StyleProp<ViewStyle>)
+          : [styles.icon as StyleProp<ViewStyle>, props.style]
       }
     >
       {children}
     </Icon>
   );
-});
+};
 
 ToggleButtonIcon.displayName = 'ToggleButtonIcon';
 
-const stylesheet = createStyleSheet(({ isLight, colors }) => ({
+const styles = StyleSheet.create(({ isLight, colors }) => ({
   icon: {
     color: isLight ? colors.grey1000 : colors.grey800,
     variants: {
@@ -54,13 +44,16 @@ const stylesheet = createStyleSheet(({ isLight, colors }) => ({
         },
       },
     },
-  },
-  extraStyles: (disabled, active) =>
-    disabled && active
-      ? {
+    compoundVariants: [
+      {
+        disabled: true,
+        active: true,
+        styles: {
           color: isLight ? colors.cyan300 : colors.grey400,
-        }
-      : {},
+        },
+      },
+    ],
+  },
 }));
 
 export default ToggleButtonIcon;

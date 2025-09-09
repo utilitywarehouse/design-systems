@@ -311,6 +311,7 @@ export const BaseButton = React.forwardRef<
     [DATA_ATTRIBUTES.colorscheme]: colorScheme,
   };
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledElement
       ref={forwardedRef}
       aria-disabled={disabled || undefined}

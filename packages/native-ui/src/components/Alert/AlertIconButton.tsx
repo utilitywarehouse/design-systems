@@ -1,12 +1,12 @@
 import React, { ComponentProps, forwardRef } from 'react';
 import { Pressable, type PressableProps } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { ChevronRightMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { useAlertContext } from './Alert.context';
 import { PressableRef } from '../../types';
+import { Icon } from '../Icon';
 
 const AlertIconButton = forwardRef<PressableRef, PressableProps>(({ children, ...props }, ref) => {
-  const { styles } = useStyles(stylesheet);
   return (
     <Pressable ref={ref} {...props} style={[styles.container]}>
       {children}
@@ -18,14 +18,14 @@ export const AlertIconButtonChevron: React.FC<ComponentProps<typeof ChevronRight
   ...props
 }) => {
   const { colorScheme } = useAlertContext();
-  const { styles } = useStyles(stylesheet, { colorScheme });
-  return <ChevronRightMediumIcon {...props} style={styles.icon} />;
+  styles.useVariants({ colorScheme });
+  return <Icon as={ChevronRightMediumIcon} {...props} style={styles.icon} />;
 };
 
 AlertIconButton.displayName = 'AlertIconButton';
 AlertIconButtonChevron.displayName = 'AlertIconButtonChevron';
 
-const stylesheet = createStyleSheet(({ colors }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     width: 24,
     height: 24,
@@ -45,16 +45,16 @@ const stylesheet = createStyleSheet(({ colors }) => ({
     variants: {
       colorScheme: {
         cyan: {
-          color: colors.cyan700,
+          color: theme.colors.cyan700,
         },
         red: {
-          color: colors.red700,
+          color: theme.colors.red700,
         },
         green: {
-          color: colors.green700,
+          color: theme.colors.green700,
         },
         gold: {
-          color: colors.gold700,
+          color: theme.colors.gold700,
         },
       },
     },

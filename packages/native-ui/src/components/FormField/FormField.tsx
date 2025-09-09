@@ -1,24 +1,24 @@
-import React, { FC, useMemo } from 'react';
 import { createFormControl } from '@gluestack-ui/form-control';
+import { FC, useMemo } from 'react';
+import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
+import { HelperIcon, HelperText } from '../Helper';
 import { FormFieldContext } from './FormField.context';
 import FormFieldProps from './FormField.props';
-import FormFieldRoot from './FormFieldRoot';
-import FormFieldInvalidComponent from './FormFieldInvalid';
 import FormFieldHelperComponent from './FormFieldHelper';
+import FormFieldInvalidComponent from './FormFieldInvalid';
 import FormFieldLabelComponent from './FormFieldLabel';
-import { HelperIcon, HelperText } from '../Helper';
-import { View } from 'react-native';
+import FormFieldRoot from './FormFieldRoot';
 import FormFieldValid from './FormFieldValid';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 export const FormFieldComponent = createFormControl({
   Root: FormFieldRoot,
   Error: FormFieldInvalidComponent,
   ErrorText: HelperText,
   ErrorIcon: HelperIcon,
-  Label: View,
+  Label: () => null,
   LabelText: FormFieldLabelComponent,
-  LabelAstrick: View,
+  LabelAstrick: () => null,
   Helper: FormFieldHelperComponent,
   HelperText: HelperText,
 });
@@ -54,17 +54,18 @@ const FormField: FC<FormFieldProps> = ({
     }),
     [validationStatus, disabled, readonly, showValidationIcon]
   );
-  const { styles } = useStyles(stylesheet);
 
   return (
     <FormFieldContext.Provider value={value}>
       <FormFieldComponent {...props} isDisabled={disabled} isReadOnly={readonly}>
-        <View style={styles.labelWrapper}>
-          {!!label && <FormFieldLabelText>{label}</FormFieldLabelText>}
-          {!!helperText && helperPosition === 'top' && (
-            <FormFieldHelper text={helperText} icon={helperIcon} showIcon={!!helperIcon} />
-          )}
-        </View>
+        {(!!label || !!helperText) && (
+          <View style={styles.labelWrapper}>
+            {!!label && <FormFieldLabelText>{label}</FormFieldLabelText>}
+            {!!helperText && helperPosition === 'top' && (
+              <FormFieldHelper text={helperText} icon={helperIcon} showIcon={!!helperIcon} />
+            )}
+          </View>
+        )}
         {children}
         {!!helperText && helperPosition === 'bottom' && (
           <FormFieldHelper text={helperText} icon={helperIcon} />
@@ -78,9 +79,9 @@ const FormField: FC<FormFieldProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   labelWrapper: {
-    gap: space['1'],
+    gap: theme.space['1'],
   },
 }));
 

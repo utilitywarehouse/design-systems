@@ -1,10 +1,8 @@
 import React, { forwardRef } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { View, ViewProps } from 'react-native';
 
 const FormFieldRoot = forwardRef<View, ViewProps>(({ children, style, ...props }, ref) => {
-  const { styles } = useStyles(stylesheet);
-
   return (
     <View ref={ref} {...props} style={[styles.container, style]}>
       {children}
@@ -14,10 +12,10 @@ const FormFieldRoot = forwardRef<View, ViewProps>(({ children, style, ...props }
 
 FormFieldRoot.displayName = 'FormFieldRoot';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     flexDirection: 'column',
-    gap: space[2],
+    gap: theme.space[2],
   },
 }));
 

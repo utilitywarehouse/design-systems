@@ -1,0 +1,406 @@
+import { Meta, Canvas, Story, Controls } from '@storybook/addon-docs/blocks';
+import * as Stories from './Accordion.stories';
+import { Center, Text, Alert, Box, Card, List, ListItem, VStack } from '../../';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionContentText,
+  AccordionHeader,
+  AccordionIcon,
+  AccordionItem,
+  AccordionTitleText,
+  AccordionTrigger,
+  Actionsheet,
+  ActionsheetContent,
+} from '../';
+import { ViewFigmaButton, BackToTopButton, UsageWrap } from '../../../docs/components';
+
+<Meta title="Lab Components / Accordion" />
+
+<BackToTopButton />
+
+# Accordion
+
+The Accordion component is a vertically stacked set of interactive headers that each reveal a section of content.
+It is commonly used to condense large amounts of information into a more manageable format.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+- [Advanced Usage](#advanced-usage)
+- [Examples](#examples)
+  - [Accordion inside a Card](#accordion-inside-a-card)
+  - [List inside Accordion](#list-inside-accordion)
+  - [Accordion with List inside Card](#accordion-with-list-inside-card)
+
+## Playground
+
+<Canvas of={Stories.Playground} />
+
+<Controls of={Stories.Playground} />
+
+# Usage
+
+<UsageWrap>
+  <Center>
+    <Accordion>
+      <AccordionItem title="Item 1">
+        <Text>Content for Item 1</Text>
+      </AccordionItem>
+      <AccordionItem title="Item 2">
+        <Text>Content for Item 2</Text>
+      </AccordionItem>
+      <AccordionItem title="Item 3">
+        <Text>Content for Item 3</Text>
+      </AccordionItem>
+    </Accordion>
+  </Center>
+</UsageWrap>
+
+```tsx
+import { Text } from '@utilitywarehouse/native-ui';
+import { Accordion, AccordionItem } from '@utilitywarehouse/native-ui/lab';
+
+const MyComponent = () => {
+  return (
+    <Accordion>
+      <AccordionItem title="Item 1">
+        <Text>Content for Item 1</Text>
+      </AccordionItem>
+      <AccordionItem title="Item 2">
+        <Text>Content for Item 2</Text>
+      </AccordionItem>
+      <AccordionItem title="Item 3">
+        <Text>Content for Item 3</Text>
+      </AccordionItem>
+    </Accordion>
+  );
+};
+```
+
+## Props
+
+| Property           | Type                        | Description                                                                                                                                                | Default    |
+| ------------------ | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `defaultValue`     | `Array<string>`             | The default value of the accordion.                                                                                                                        | `-`        |
+| `value`            | `Array<string>`             | The controlled value of the accordion.                                                                                                                     | `-`        |
+| `onValueChange`    | `(value: string[]) => void` | Callback function that is called when the value of the accordion changes.                                                                                  | `-`        |
+| `type`             | `'single' \| 'multiple'`    | The type of accordion. If set to 'single', only one item can be expanded at a time. If set to 'multiple', multiple items can be expanded at the same time. | `'single'` |
+| `collapsible`      | `boolean`                   | If true, the accordion can be collapsed.                                                                                                                   | `false`    |
+| `disabled`         | `boolean`                   | If true, the accordion is disabled.                                                                                                                        | `false`    |
+| `divider`          | `boolean`                   | If true, a divider is shown between the accordion items.                                                                                                   | `true`     |
+| `noPadding`        | `boolean`                   | If true, no horizontal padding is applied to the accordion items.                                                                                          | `false`    |
+| `contentNoPadding` | `boolean`                   | If true, no horizontal padding is applied to the accordion content.                                                                                        | `false`    |
+
+### `AccordionItem`
+
+| Property     | Type         | Description                                                          | Default |
+| ------------ | ------------ | -------------------------------------------------------------------- | ------- |
+| `title`      | `string`     | The title of the accordion item.                                     | `-`     |
+| `value`      | `string`     | The value of the accordion item.                                     | `-`     |
+| `disabled`   | `boolean`    | If true, the accordion item is disabled.                             | `-`     |
+| `expanded`   | `boolean`    | If true, the accordion item is expanded.                             | `-`     |
+| `toggleItem` | `() => void` | Callback function that is called when the accordion item is toggled. | `-`     |
+| `divider`    | `boolean`    | If true, a divider is shown between the accordion items.             | `-`     |
+| `noPadding`  | `boolean`    | If true, no horizontal padding is applied to the accordion items.    | `-`     |
+
+## Advanced Usage
+
+The Accordion component can be used in more complex scenarios, such as when you need to control the expanded
+state of the items or when you want to customise the header and content.
+
+<UsageWrap>
+  <Center>
+    <Accordion type="multiple" defaultValue={['item-1']}>
+      <AccordionItem title="How do I place an order?" value="item-1">
+        <Text> Lorem ipsum dolor sit amet consectetur, adipisicing elit.</Text>
+      </AccordionItem>
+      <AccordionItem title="What payment methods do you accept?" value="item-2">
+        <Text>We accept all major credit cards, PayPal, and bank transfers.</Text>
+      </AccordionItem>
+    </Accordion>
+  </Center>
+</UsageWrap>
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionContentText,
+  AccordionHeader,
+  AccordionIcon,
+  AccordionItem,
+  AccordionTitleText,
+  AccordionTrigger,
+  Actionsheet,
+  ActionsheetContent,
+} from '@utilitywarehouse/native-ui/lab';
+import { ChevronDownMediumIcon, ChevronUpMediumIcon } from '@utilitywarehouse/react-native-icons';
+
+const MyComponent = () => {
+  return (
+    <Accordion type="multiple" defaultValue={['item-1']}>
+      <AccordionItem value="a">
+        <AccordionHeader>
+          <AccordionTrigger>
+            {({ isExpanded }: { isExpanded: boolean }) => {
+              return (
+                <>
+                  <AccordionTitleText>How do I place an order?</AccordionTitleText>
+                  {isExpanded ? (
+                    <AccordionIcon as={ChevronUpMediumIcon} />
+                  ) : (
+                    <AccordionIcon as={ChevronDownMediumIcon} />
+                  )}
+                </>
+              );
+            }}
+          </AccordionTrigger>
+        </AccordionHeader>
+        <AccordionContent>
+          <AccordionContentText>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          </AccordionContentText>
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value="b">
+        <AccordionHeader>
+          <AccordionTrigger>
+            {({ isExpanded }: { isExpanded: boolean }) => {
+              return (
+                <>
+                  <AccordionTitleText>What payment methods do you accept?</AccordionTitleText>
+                  {isExpanded ? (
+                    <AccordionIcon as={ChevronUpMediumIcon} />
+                  ) : (
+                    <AccordionIcon as={ChevronDownMediumIcon} />
+                  )}
+                </>
+              );
+            }}
+          </AccordionTrigger>
+        </AccordionHeader>
+        <AccordionContent>
+          <AccordionContentText>
+            We accept all major credit cards, PayPal, and bank transfers.
+          </AccordionContentText>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+};
+```
+
+## Examples
+
+### `Accordion` inside a `Card`
+
+<UsageWrap>
+  <Center style={{ minWidth: '300px' }}>
+    <Card padding="none">
+      <Accordion>
+        <AccordionItem title="Item 1">
+          <Text>Content for Item 1</Text>
+        </AccordionItem>
+        <AccordionItem title="Item 2">
+          <Text>Content for Item 2</Text>
+        </AccordionItem>
+        <AccordionItem title="Item 3" divider={false}>
+          <Text>Content for Item 3</Text>
+        </AccordionItem>
+      </Accordion>
+    </Card>
+  </Center>
+</UsageWrap>
+
+```tsx
+import { Text, Card } from '@utilitywarehouse/native-ui';
+import { Accordion, AccordionItem } from '@utilitywarehouse/native-ui/lab';
+
+const MyComponent = () => {
+  return (
+    <Card padding="none">
+      <Accordion>
+        <AccordionItem title="Item 1">
+          <Text>Content for Item 1</Text>
+        </AccordionItem>
+        <AccordionItem title="Item 2">
+          <Text>Content for Item 2</Text>
+        </AccordionItem>
+        <AccordionItem title="Item 3" divider={false}>
+          <Text>Content for Item 3</Text>
+        </AccordionItem>
+      </Accordion>
+    </Card>
+  );
+};
+```
+
+### `List` inside `Accordion`
+
+<UsageWrap>
+  <Center style={{ minWidth: '300px' }}>
+    <Accordion contentNoPadding>
+      <AccordionItem title="Item 1">
+        <List container="card">
+          <ListItem text="List Item 1" onPress={() => console.log('item pressed')} divider />
+          <ListItem text="List Item 2" onPress={() => console.log('item pressed')} divider />
+          <ListItem
+            text="List Item 3"
+            onPress={() => console.log('item pressed')}
+            divider={false}
+          />
+        </List>
+      </AccordionItem>
+      <AccordionItem title="Item 2">
+        <List container="card">
+          <ListItem text="List Item 1" onPress={() => console.log('item pressed')} divider />
+          <ListItem text="List Item 2" onPress={() => console.log('item pressed')} divider />
+          <ListItem
+            text="List Item 3"
+            onPress={() => console.log('item pressed')}
+            divider={false}
+          />
+        </List>
+      </AccordionItem>
+    </Accordion>
+  </Center>
+</UsageWrap>
+
+```tsx
+import { Accordion, AccordionItem } from '@utilitywarehouse/native-ui/lab';
+import { List, ListItem } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <Accordion contentNoPadding>
+      <AccordionItem title="Item 1">
+        <List container="card">
+          <ListItem text="List Item 1" onPress={() => console.log('item pressed')} divider />
+          <ListItem text="List Item 2" onPress={() => console.log('item pressed')} divider />
+          <ListItem
+            text="List Item 3"
+            onPress={() => console.log('item pressed')}
+            divider={false}
+          />
+        </List>
+      </AccordionItem>
+      <AccordionItem title="Item 2">
+        <List container="card">
+          <ListItem text="List Item 1" onPress={() => console.log('item pressed')} divider />
+          <ListItem text="List Item 2" onPress={() => console.log('item pressed')} divider />
+          <ListItem
+            text="List Item 3"
+            onPress={() => console.log('item pressed')}
+            divider={false}
+          />
+        </List>
+      </AccordionItem>
+    </Accordion>
+  );
+};
+```
+
+### `Accordion` with `List` inside `Card`
+
+<UsageWrap>
+  <Center style={{ minWidth: '300px' }}>
+    <Accordion contentNoPadding divider={false}>
+      <VStack space="lg">
+        <Card padding="none">
+          <AccordionItem title="Item 1">
+            <List container="card">
+              <ListItem text="List Item 1" onPress={() => console.log('item pressed')} divider />
+              <ListItem text="List Item 2" onPress={() => console.log('item pressed')} divider />
+              <ListItem
+                text="List Item 3"
+                onPress={() => console.log('item pressed')}
+                divider={false}
+              />
+            </List>
+          </AccordionItem>
+        </Card>
+        <Card padding="none">
+          <AccordionItem title="Item 2">
+            <List container="card">
+              <ListItem text="List Item 1" onPress={() => console.log('item pressed')} divider />
+              <ListItem text="List Item 2" onPress={() => console.log('item pressed')} divider />
+              <ListItem
+                text="List Item 3"
+                onPress={() => console.log('item pressed')}
+                divider={false}
+              />
+            </List>
+          </AccordionItem>
+        </Card>
+        <Card padding="none">
+          <AccordionItem title="Item 3">
+            <List container="card">
+              <ListItem text="List Item 1" onPress={() => console.log('item pressed')} divider />
+              <ListItem text="List Item 2" onPress={() => console.log('item pressed')} divider />
+              <ListItem
+                text="List Item 3"
+                onPress={() => console.log('item pressed')}
+                divider={false}
+              />
+            </List>
+          </AccordionItem>
+        </Card>
+      </VStack>
+    </Accordion>
+  </Center>
+</UsageWrap>
+
+```tsx
+import { Accordion, AccordionItem } from '@utilitywarehouse/native-ui/lab';
+import { List, ListItem, Card, VStack } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
+    <Accordion contentNoPadding divider={false}>
+      <VStack space="lg">
+        <Card padding="none">
+          <AccordionItem title="Item 1">
+            <List container="card">
+              <ListItem text="List Item 1" onPress={() => console.log('item pressed')} divider />
+              <ListItem text="List Item 2" onPress={() => console.log('item pressed')} divider />
+              <ListItem
+                text="List Item 3"
+                onPress={() => console.log('item pressed')}
+                divider={false}
+              />
+            </List>
+          </AccordionItem>
+        </Card>
+        <Card padding="none">
+          <AccordionItem title="Item 2">
+            <List container="card">
+              <ListItem text="List Item 1" onPress={() => console.log('item pressed')} divider />
+              <ListItem text="List Item 2" onPress={() => console.log('item pressed')} divider />
+              <ListItem
+                text="List Item 3"
+                onPress={() => console.log('item pressed')}
+                divider={false}
+              />
+            </List>
+          </AccordionItem>
+        </Card>
+        <Card padding="none">
+          <AccordionItem title="Item 3">
+            <List container="card">
+              <ListItem text="List Item 1" onPress={() => console.log('item pressed')} divider />
+              <ListItem text="List Item 2" onPress={() => console.log('item pressed')} divider />
+              <ListItem
+                text="List Item 3"
+                onPress={() => console.log('item pressed')}
+                divider={false}
+              />
+            </List>
+          </AccordionItem>
+        </Card>
+      </VStack>
+    </Accordion>
+  );
+};
+```

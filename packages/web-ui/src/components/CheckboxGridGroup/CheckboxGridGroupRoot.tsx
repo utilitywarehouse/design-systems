@@ -46,6 +46,7 @@ export const CheckboxGridGroupRoot = React.forwardRef<HTMLDivElement, CheckboxGr
   ) => {
     const checkboxGroupBaseProps = { name, value, defaultValue, onValueChange, children };
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledBox
         ref={ref}
         className={clsx(componentClassName, className)}

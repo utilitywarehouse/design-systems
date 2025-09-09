@@ -1,0 +1,71 @@
+import { Meta, Canvas, Story, Controls, Primary } from '@storybook/addon-docs/blocks';
+import * as Stories from './Flex.stories';
+import { Center, Pressable, Flex, Text } from '../..';
+import { UsageWrap, BackToTopButton, ViewFigmaButton } from '../../../docs/components';
+
+<Meta title="Primitives / Flex" />
+
+<BackToTopButton />
+
+# Flex
+
+When you need to center-align content, the Center component comes in handy. It is a layout component that can be used with other components to create complex layouts and positioning.
+
+- [Playground](#playground)
+- [Usage](#usage)
+- [Props](#props)
+
+## Playground
+
+<Canvas of={Stories.Playground} />
+
+<Controls of={Stories.Playground} />
+
+## Usage
+
+<UsageWrap>
+  <Center>
+    <Flex space="lg">
+      <Text>Spaced out text</Text>
+      <Text>Spaced out text</Text>
+      <Text>Flexed</Text>
+      <Text>Spaced out text</Text>
+      <Text>Spaced out text</Text>
+    </Flex>
+  </Center>
+</UsageWrap>
+
+```jsx
+import { Flex, Text } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => (
+  <Flex space="lg">
+    <Text>Spaced out text</Text>
+    <Text>Spaced out text</Text>
+    <Text>Flexed</Text>
+    <Text>Spaced out text</Text>
+    <Text>Spaced out text</Text>
+  </Flex>
+);
+```
+
+## Props
+
+| Name        | Type                                                                                                     | Default      | Description                                |
+| ----------- | -------------------------------------------------------------------------------------------------------- | ------------ | ------------------------------------------ |
+| `direction` | `'row' \| 'column' \| 'row-reverse' \| 'column-reverse'`                                                 | `column`     | The direction of the flex container.       |
+| `wrap`      | `'wrap' \| 'nowrap' \| 'wrap-reverse'`                                                                   | `nowrap`     | The wrap of the flex container.            |
+| `justify`   | `'flex-start' \| 'flex-end' \| 'center' \| `<br />` 'space-between' \| 'space-around' \| 'space-evenly'` | `flex-start` | The justify content of the flex container. |
+| `align`     | `'flex-start' \| 'flex-end' \| 'center' \| `<br />` 'stretch' \| 'baseline'`                             | `flex-start` | The align items of the flex container.     |
+| `space`     | `'none' \| 'xs' \| 'sm' \| 'md' \| 'lg' `<br />`\| 'xl'`                                                 | `md`         | The space between the content.             |
+
+#### Space Mappings
+
+| Space | Value |
+| ----- | ----- |
+| none  | 0     |
+| xs    | 8     |
+| sm    | 12    |
+| md    | 16    |
+| lg    | 20    |
+| xl    | 28    |

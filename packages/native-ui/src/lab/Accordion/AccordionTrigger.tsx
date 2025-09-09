@@ -1,28 +1,24 @@
-import React, { forwardRef } from 'react';
 import { Pressable, PressableProps } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { PressableRef } from '../../types';
+import { StyleSheet } from 'react-native-unistyles';
 import { useAccordionContext } from './Accordion.context';
 import { useAccordionItemContext } from './AccordionItem.context';
 
-export const AccordionTrigger = forwardRef<PressableRef, PressableProps>(
-  ({ children, ...props }, ref) => {
-    const { noPadding: contextMoPadding } = useAccordionContext();
-    const { noPadding } = useAccordionItemContext();
-    const noPaddingValue = noPadding ?? contextMoPadding;
-    const { styles } = useStyles(stylesheet, { noPadding: noPaddingValue });
+export const AccordionTrigger = ({ children, ...props }: PressableProps) => {
+  const { noPadding: contextMoPadding } = useAccordionContext();
+  const { noPadding } = useAccordionItemContext();
+  const noPaddingValue = noPadding ?? contextMoPadding;
+  styles.useVariants({ noPadding: noPaddingValue });
 
-    return (
-      <Pressable ref={ref} style={styles.trigger} {...props}>
-        {children}
-      </Pressable>
-    );
-  }
-);
+  return (
+    <Pressable style={styles.trigger} {...props}>
+      {children}
+    </Pressable>
+  );
+};
 
 AccordionTrigger.displayName = 'AccordionTrigger';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(({ space }) => ({
   trigger: {
     flexDirection: 'row',
     justifyContent: 'space-between',

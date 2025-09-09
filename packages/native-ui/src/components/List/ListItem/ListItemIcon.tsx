@@ -1,45 +1,41 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { ComponentType, forwardRef } from 'react';
+import { ComponentType } from 'react';
 import { Platform, type StyleProp, type ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { useListItemContext } from './ListItem.context';
+import { StyleSheet } from 'react-native-unistyles';
 import { Icon, IconProps } from '../../Icon';
-import type { SvgRef } from '../../../types';
+import { useListItemContext } from './ListItem.context';
 
-const ListItemIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
-  ({ children, ...props }, ref) => {
-    const { disabled } = useListItemContext();
-    const { styles } = useStyles(stylesheet, { disabled });
-    return (
-      <Icon
-        ref={ref}
-        {...props}
-        style={
-          Platform.OS === 'web'
-            ? {
-                ...styles.icon,
-                ...(props.style as ViewStyle),
-              }
-            : [styles.icon as StyleProp<ViewStyle>, props.style]
-        }
-      >
-        {children}
-      </Icon>
-    );
-  }
-);
+const ListItemIcon = ({ children, ...props }: IconProps & { as?: ComponentType }) => {
+  const { disabled } = useListItemContext();
+  styles.useVariants({ disabled });
+  return (
+    <Icon
+      {...props}
+      style={
+        Platform.OS === 'web'
+          ? {
+              ...styles.icon,
+              ...(props.style as ViewStyle),
+            }
+          : [styles.icon as StyleProp<ViewStyle>, props.style]
+      }
+    >
+      {children}
+    </Icon>
+  );
+};
 
 ListItemIcon.displayName = 'ListItemIcon';
 
-const stylesheet = createStyleSheet(({ colors, colorMode }) => ({
+const styles = StyleSheet.create(theme => ({
   icon: {
-    color: colors.grey800,
+    color: theme.colors.grey800,
     width: 24,
     height: 24,
     variants: {
       disabled: {
         true: {
-          color: colorMode === 'light' ? colors.grey400 : colors.grey500,
+          color: theme.colorMode === 'light' ? theme.colors.grey400 : theme.colors.grey500,
         },
       },
     },

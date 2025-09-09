@@ -1,18 +1,17 @@
-import React, { forwardRef } from 'react';
-import { createStyleSheet } from 'react-native-unistyles';
 import { View, ViewProps } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
-const InputSlot = forwardRef<View, ViewProps>(({ children, style, ...props }, ref) => {
+const InputSlot = ({ children, style, ...props }: ViewProps) => {
   return (
-    <View ref={ref} {...props} style={[stylesheet.container, style]}>
+    <View {...props} style={[styles.container, style]}>
       {children}
     </View>
   );
-});
+};
 
 InputSlot.displayName = 'InputSlot';
 
-const stylesheet = createStyleSheet({
+const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',

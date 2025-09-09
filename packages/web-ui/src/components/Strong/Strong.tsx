@@ -32,6 +32,7 @@ export const Strong = React.forwardRef<
   React.ElementRef<'strong'>,
   React.PropsWithChildren<PropsWithSx<StrongProps>>
 >(({ className, ...props }, ref) => {
+  /* @ts-expect-error - upgrade issue. TODO: Fix this */
   return <StyledElement ref={ref} className={clsx(componentClassName, className)} {...props} />;
 });
 

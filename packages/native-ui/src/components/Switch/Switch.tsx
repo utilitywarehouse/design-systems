@@ -1,16 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { CloseSmallIcon, TickSmallIcon } from '@utilitywarehouse/react-native-icons';
 import React from 'react';
 import { Pressable } from 'react-native';
 import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  withSpring,
-  interpolateColor,
   Easing,
+  interpolateColor,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  withTiming,
 } from 'react-native-reanimated';
-import { CloseSmallIcon, TickSmallIcon } from '@utilitywarehouse/react-native-icons';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
+import { useTheme } from '../../hooks';
 import { Icon } from '../Icon';
 import SwitchProps from './Switch.props';
 
@@ -25,10 +26,9 @@ const CustomSwitch: React.FC<SwitchProps> = ({
   const THUMB_SIZE = size === 'medium' ? 28 : 20;
   const PADDING = 2;
 
-  const {
-    styles,
-    theme: { tokens, colorMode },
-  } = useStyles(stylesheet, { size, disabled, value });
+  const { tokens, colorMode } = useTheme();
+  styles.useVariants({ size, disabled, value });
+
   const offset = useSharedValue(value ? SWITCH_WIDTH - THUMB_SIZE - PADDING * 2 : 0);
   const progress = useSharedValue(value ? 1 : 0);
 
@@ -120,14 +120,7 @@ const CustomSwitch: React.FC<SwitchProps> = ({
       accessibilityHint={accessibilityProps.accessibilityHint}
       {...accessibilityProps}
     >
-      <Animated.View
-        style={[
-          styles.switch,
-          disabled && styles.disabledSwitch,
-          animatedSwitchStyle,
-          animatedSwitchBackgroundStyle,
-        ]}
-      >
+      <Animated.View style={[styles.switch, animatedSwitchStyle, animatedSwitchBackgroundStyle]}>
         <Animated.View style={[styles.thumb, animatedThumbStyle]}>
           <Animated.View style={[styles.iconWrap, animatedTickStyle]}>
             <Icon as={TickSmallIcon} style={styles.icon} />
@@ -141,51 +134,59 @@ const CustomSwitch: React.FC<SwitchProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet(({ tokens }) => ({
+const styles = StyleSheet.create(theme => ({
   switch: {
     justifyContent: 'center',
     variants: {
       size: {
         medium: {
-          width: tokens.switch.medium.width,
-          height: tokens.switch.medium.height,
-          borderRadius: tokens.switch.borderRadius,
-          padding: tokens.switch.padding,
+          width: theme.tokens.switch.medium.width,
+          height: theme.tokens.switch.medium.height,
+          borderRadius: theme.tokens.switch.borderRadius,
+          padding: theme.tokens.switch.padding,
         },
         small: {
-          width: tokens.switch.small.width,
-          height: tokens.switch.small.height,
-          borderRadius: tokens.switch.borderRadius,
-          padding: tokens.switch.padding,
+          width: theme.tokens.switch.small.width,
+          height: theme.tokens.switch.small.height,
+          borderRadius: theme.tokens.switch.borderRadius,
+          padding: theme.tokens.switch.padding,
+        },
+      },
+      value: {
+        true: {
+          backgroundColor: theme.tokens.switch.checked.backgroundColor,
+        },
+        false: {
+          backgroundColor: theme.tokens.switch.unchecked.backgroundColor,
         },
       },
       disabled: {
         true: {
-          backgroundColor: tokens.switch.backgroundColorDisabled,
+          backgroundColor: theme.tokens.switch.backgroundColorDisabled,
         },
       },
     },
   },
   thumb: {
-    backgroundColor: tokens.switch.circle.backgroundColor,
+    backgroundColor: theme.tokens.switch.circle.backgroundColor,
     alignItems: 'center',
     justifyContent: 'center',
     variants: {
       size: {
         medium: {
-          width: tokens.switch.circle.medium.size,
-          height: tokens.switch.circle.medium.size,
-          borderRadius: tokens.switch.borderRadius,
+          width: theme.tokens.switch.circle.medium.size,
+          height: theme.tokens.switch.circle.medium.size,
+          borderRadius: theme.tokens.switch.borderRadius,
         },
         small: {
-          width: tokens.switch.circle.small.size,
-          height: tokens.switch.circle.small.size,
-          borderRadius: tokens.switch.borderRadius,
+          width: theme.tokens.switch.circle.small.size,
+          height: theme.tokens.switch.circle.small.size,
+          borderRadius: theme.tokens.switch.borderRadius,
         },
       },
       disabled: {
         true: {
-          backgroundColor: tokens.switch.circle.backgroundColorDisabled,
+          backgroundColor: theme.tokens.switch.circle.backgroundColorDisabled,
         },
       },
     },
@@ -197,21 +198,18 @@ const stylesheet = createStyleSheet(({ tokens }) => ({
     variants: {
       value: {
         true: {
-          color: tokens.switch.checked.iconColor,
+          color: theme.tokens.switch.checked.iconColor,
         },
         false: {
-          color: tokens.switch.unchecked.iconColor,
+          color: theme.tokens.switch.unchecked.iconColor,
         },
       },
       disabled: {
         true: {
-          color: tokens.switch.iconColorDisabled,
+          color: theme.tokens.switch.iconColorDisabled,
         },
       },
     },
-  },
-  disabledSwitch: {
-    opacity: 0.5,
   },
 }));
 

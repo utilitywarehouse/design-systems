@@ -1,42 +1,38 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { ComponentType, forwardRef } from 'react';
-import { Platform, type StyleProp, type ViewStyle } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { useTextareaContext } from './Textarea.context';
-import { Icon, IconProps } from '../Icon';
-import type { SvgRef } from '../../types';
 import {
-  WarningMediumContainedIcon,
   TickMediumContainedIcon,
+  WarningMediumContainedIcon,
 } from '@utilitywarehouse/react-native-icons';
+import { ComponentType } from 'react';
+import { Platform, type StyleProp, type ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
+import { Icon, IconProps } from '../Icon';
+import { useTextareaContext } from './Textarea.context';
 
-const TextareaIcon = forwardRef<SvgRef, IconProps & { as?: ComponentType }>(
-  ({ as, ...props }, ref) => {
-    const { disabled, validationStatus } = useTextareaContext();
-    const { styles } = useStyles(stylesheet, { disabled, validationStatus });
-    const ValidationIcon =
-      validationStatus === 'invalid' ? WarningMediumContainedIcon : TickMediumContainedIcon;
-    return (
-      <Icon
-        ref={ref}
-        {...props}
-        as={as ?? ValidationIcon}
-        style={
-          Platform.OS === 'web'
-            ? {
-                ...styles.icon,
-                ...(props.style as ViewStyle),
-              }
-            : [styles.icon as StyleProp<ViewStyle>, props.style]
-        }
-      />
-    );
-  }
-);
+const TextareaIcon = ({ as, ...props }: IconProps & { as?: ComponentType }) => {
+  const { disabled, validationStatus } = useTextareaContext();
+  styles.useVariants({ disabled, validationStatus });
+  const ValidationIcon =
+    validationStatus === 'invalid' ? WarningMediumContainedIcon : TickMediumContainedIcon;
+  return (
+    <Icon
+      {...props}
+      as={as ?? ValidationIcon}
+      style={
+        Platform.OS === 'web'
+          ? {
+              ...styles.icon,
+              ...(props.style as ViewStyle),
+            }
+          : [styles.icon as StyleProp<ViewStyle>, props.style]
+      }
+    />
+  );
+};
 
 TextareaIcon.displayName = 'TextareaIcon';
 
-const stylesheet = createStyleSheet(({ colors, space, colorMode }) => ({
+const styles = StyleSheet.create(({ colors, space, colorMode }) => ({
   icon: {
     color: colors.grey700,
     width: 24,

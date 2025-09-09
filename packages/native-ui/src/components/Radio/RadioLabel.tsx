@@ -1,40 +1,38 @@
-import React, { forwardRef } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { Text } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
-import { useRadioContext } from './Radio.context';
+import { useFormFieldContext } from '../FormField';
 import { Label } from '../Label';
 import LabelProps from '../Label/Label.props';
-import { useFormFieldContext } from '../FormField';
+import { useRadioContext } from './Radio.context';
 
-const RadioLabel = forwardRef<Text, LabelProps>(({ children, style, ...props }, ref) => {
+const RadioLabel = ({ children, style, ...props }: LabelProps) => {
   const { checked, disabled } = useRadioContext();
-  const { styles } = useStyles(stylesheet, {
+  styles.useVariants({
     checked,
     disabled,
   });
   const { validationStatus } = useFormFieldContext();
   const isNested = !!validationStatus;
   return (
-    <Label ref={ref} nested={isNested} {...props} style={[styles.text, style]}>
+    <Label nested={isNested} {...props} style={[styles.text, style]}>
       {children}
     </Label>
   );
-});
+};
 
 RadioLabel.displayName = 'RadioLabel';
 
-const stylesheet = createStyleSheet(({ colors }) => ({
+const styles = StyleSheet.create(theme => ({
   text: {
     variants: {
       checked: {
         true: {
-          color: colors.grey1000,
+          color: theme.colors.grey1000,
         },
       },
       disabled: {
         true: {
-          color: colors.grey400,
+          color: theme.colors.grey400,
         },
       },
     },

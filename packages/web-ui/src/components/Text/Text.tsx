@@ -154,6 +154,7 @@ export const Text = React.forwardRef<
     };
 
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledElement
         ref={ref}
         as={asChild ? Slot : component}

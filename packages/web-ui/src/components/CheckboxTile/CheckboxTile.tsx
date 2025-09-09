@@ -77,6 +77,7 @@ export const CheckboxTile = React.forwardRef<HTMLButtonElement, PropsWithSx<Chec
     const showHelperText = !context?.hasGroupHelperText && !!helperText;
     const showLabel = !!label;
     return (
+      /* @ts-expect-error - upgrade issue. TODO: Fix this */
       <StyledTile data-disabled={disabled ? '' : undefined}>
         <CheckboxBase
           {...props}

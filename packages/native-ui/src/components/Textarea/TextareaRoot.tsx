@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { View } from 'react-native';
 import TextareaProps from './Textarea.props';
 import { TextareaContext } from './Textarea.context';
@@ -9,7 +9,7 @@ const TextareaRoot = forwardRef<
   TextareaProps & { states?: { focus?: boolean; disabled?: boolean; readonly?: boolean } }
 >(({ children, style, states, validationStatus, showValidationIcon, ...props }, ref) => {
   const { focus = false, disabled = false, readonly = false } = states || {};
-  const { styles } = useStyles(stylesheet, {
+  styles.useVariants({
     focus,
     disabled,
     readonly,
@@ -23,15 +23,7 @@ const TextareaRoot = forwardRef<
 
   return (
     <TextareaContext.Provider value={value}>
-      <View
-        ref={ref}
-        {...props}
-        style={[
-          styles.container,
-          styles.extraStyles(validationStatus, focus, disabled, readonly),
-          style,
-        ]}
-      >
+      <View ref={ref} {...props} style={[styles.container, style]}>
         {children}
       </View>
     </TextareaContext.Provider>
@@ -40,24 +32,23 @@ const TextareaRoot = forwardRef<
 
 TextareaRoot.displayName = 'TextareaRoot';
 
-const stylesheet = createStyleSheet(({ space, colors, radii, colorMode, borderWidths }) => ({
+const styles = StyleSheet.create(({ space, colors, borderRadius, colorMode, borderWidth }) => ({
   container: {
-    borderWidth: borderWidths[2],
+    borderWidth: borderWidth[2],
     borderTopColor: colors.grey500,
     borderLeftColor: colors.grey500,
     borderRightColor: colors.grey500,
     borderBottomColor: colors.grey900,
-    height: 160,
-    borderTopLeftRadius: radii['2xl'],
-    borderTopRightRadius: radii['2xl'],
-    borderBottomLeftRadius: radii.none,
-    borderBottomRightRadius: radii.none,
+    borderTopLeftRadius: borderRadius['xl'],
+    borderTopRightRadius: borderRadius['xl'],
+    borderBottomLeftRadius: borderRadius.none,
+    borderBottomRightRadius: borderRadius.none,
     flexDirection: 'row',
     overflow: 'hidden',
     alignContent: 'flex-start',
-    padding: space['4'],
+    padding: space['200'],
     backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
-    gap: space['2'],
+    gap: space['100'],
     variants: {
       focus: {
         true: {
@@ -96,33 +87,28 @@ const stylesheet = createStyleSheet(({ space, colors, radii, colorMode, borderWi
         },
       },
     },
-  },
-  extraStyles: (
-    validationStatus: TextareaProps['validationStatus'],
-    focus: boolean,
-    disabled: boolean,
-    readonly: boolean
-  ) => {
-    if (disabled || readonly) {
-      return {};
-    }
-    if (validationStatus === 'invalid' && focus) {
-      return {
-        borderTopColor: colorMode === 'light' ? colors.red500 : colors.red700,
-        borderLeftColor: colorMode === 'light' ? colors.red500 : colors.red700,
-        borderRightColor: colorMode === 'light' ? colors.red500 : colors.red700,
-        borderBottomColor: colorMode === 'light' ? colors.red500 : colors.red700,
-      };
-    }
-    if (validationStatus === 'valid' && focus) {
-      return {
-        borderTopColor: colorMode === 'light' ? colors.green500 : colors.green700,
-        borderLeftColor: colorMode === 'light' ? colors.green500 : colors.green700,
-        borderRightColor: colorMode === 'light' ? colors.green500 : colors.green700,
-        borderBottomColor: colorMode === 'light' ? colors.green500 : colors.green700,
-      };
-    }
-    return {};
+    compoundVariants: [
+      {
+        focus: true,
+        validationStatus: 'invalid',
+        styles: {
+          borderTopColor: colorMode === 'light' ? colors.red500 : colors.red700,
+          borderLeftColor: colorMode === 'light' ? colors.red500 : colors.red700,
+          borderRightColor: colorMode === 'light' ? colors.red500 : colors.red700,
+          borderBottomColor: colorMode === 'light' ? colors.red500 : colors.red700,
+        },
+      },
+      {
+        focus: true,
+        validationStatus: 'valid',
+        styles: {
+          borderTopColor: colorMode === 'light' ? colors.green500 : colors.green700,
+          borderLeftColor: colorMode === 'light' ? colors.green500 : colors.green700,
+          borderRightColor: colorMode === 'light' ? colors.green500 : colors.green700,
+          borderBottomColor: colorMode === 'light' ? colors.green500 : colors.green700,
+        },
+      },
+    ],
   },
 }));
 

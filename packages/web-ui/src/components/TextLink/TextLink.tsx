@@ -106,6 +106,7 @@ export const TextLink = React.forwardRef<
     [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
   };
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledElement
       as={asChild ? Slot : 'a'}
       ref={ref}

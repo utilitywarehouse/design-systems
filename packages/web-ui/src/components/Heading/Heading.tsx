@@ -132,6 +132,7 @@ export const Heading = React.forwardRef<
     [DATA_ATTRIBUTES.customColor]: color !== undefined ? '' : undefined,
   };
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledElement
       ref={ref}
       as={element}

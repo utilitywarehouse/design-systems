@@ -6,11 +6,11 @@ To use native-ui components, all you need to do is install the
 `@utilitywarehouse/native-ui` package:
 
 ```sh
-$ yarn add @utilitywarehouse/native-ui react-native-svg@13.4.0
+$ yarn add @utilitywarehouse/native-ui 
 
 # or
 
-$ npm i @utilitywarehouse/native-ui react-native-svg@13.4.0
+$ npm i @utilitywarehouse/native-ui
 ```
 
 ## Usage
@@ -18,17 +18,13 @@ $ npm i @utilitywarehouse/native-ui react-native-svg@13.4.0
 A button component is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website. Here's an example:
 
 ```jsx
-import { Button, NativeUIProvider } from '@@utilitywarehouse/native-ui';
+import { Button,  } from '@@utilitywarehouse/native-ui';
 
 export default function App () {
  return (
-    <NativeUIProvider>
-     <Button>
-      <ButtonText>
-        Hello world!
-      </ButtonText>
-     <Button>
-    </NativeUIProvider>
+    <Button>
+      Hello world!
+    </Button>
   )
 }
 ```

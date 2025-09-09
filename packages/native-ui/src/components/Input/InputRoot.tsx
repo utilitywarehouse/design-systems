@@ -1,20 +1,19 @@
-import React, { forwardRef, useMemo } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { useMemo } from 'react';
 import { View } from 'react-native';
-import InputProps from './Input.props';
+import { StyleSheet } from 'react-native-unistyles';
 import { InputContext } from './Input.context';
+import InputProps from './Input.props';
 
-const InputRoot = forwardRef<
-  View,
-  InputProps & { states?: { focus?: boolean; disabled?: boolean; readonly?: boolean } }
->(({ children, style, states, validationStatus, showValidationIcon, ...props }, ref) => {
+const InputRoot = ({
+  children,
+  style,
+  states,
+  validationStatus,
+  showValidationIcon,
+  ...props
+}: InputProps & { states?: { focus?: boolean; disabled?: boolean; readonly?: boolean } }) => {
   const { focus = false, disabled = false, readonly = false } = states || {};
-  const { styles } = useStyles(stylesheet, {
-    focus,
-    disabled,
-    readonly,
-    validationStatus,
-  });
+  styles.useVariants({ validationStatus, focus, disabled, readonly });
 
   const value = useMemo(
     () => ({ focused: focus, disabled, readonly, validationStatus, showValidationIcon }),
@@ -23,66 +22,63 @@ const InputRoot = forwardRef<
 
   return (
     <InputContext.Provider value={value}>
-      <View
-        ref={ref}
-        {...props}
-        style={[
-          styles.container,
-          styles.extraStyles(validationStatus, focus, disabled, readonly),
-          style,
-        ]}
-      >
+      <View {...props} style={[styles.container, style]}>
         {children}
       </View>
     </InputContext.Provider>
   );
-});
+};
 
 InputRoot.displayName = 'InputRoot';
 
-const stylesheet = createStyleSheet(({ space, colors, radii, colorMode, borderWidths }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
-    borderWidth: borderWidths[2],
-    borderTopColor: colors.grey500,
-    borderLeftColor: colors.grey500,
-    borderRightColor: colors.grey500,
-    borderBottomColor: colors.grey900,
-    height: space['14'],
-    borderTopLeftRadius: radii['2xl'],
-    borderTopRightRadius: radii['2xl'],
-    borderBottomLeftRadius: radii.none,
-    borderBottomRightRadius: radii.none,
+    borderWidth: theme.borderWidths[2],
+    borderTopColor: theme.colors.grey500,
+    borderLeftColor: theme.colors.grey500,
+    borderRightColor: theme.colors.grey500,
+    borderBottomColor: theme.colors.grey900,
+    height: theme.space['14'],
+    borderTopLeftRadius: theme.radii['2xl'],
+    borderTopRightRadius: theme.radii['2xl'],
+    borderBottomLeftRadius: theme.radii.none,
+    borderBottomRightRadius: theme.radii.none,
     flexDirection: 'row',
     overflow: 'hidden',
     alignContent: 'center',
-    paddingHorizontal: space['4'],
-    backgroundColor: colorMode === 'light' ? colors.white : colors.grey100,
-    gap: space['2'],
+    paddingHorizontal: theme.space['4'],
+    backgroundColor: theme.colorMode === 'light' ? theme.colors.white : theme.colors.grey100,
+    gap: theme.space['2'],
     variants: {
       focus: {
         true: {
-          borderTopColor: colorMode === 'light' ? colors.cyan500 : colors.cyan700,
-          borderLeftColor: colorMode === 'light' ? colors.cyan500 : colors.cyan700,
-          borderRightColor: colorMode === 'light' ? colors.cyan500 : colors.cyan700,
-          borderBottomColor: colorMode === 'light' ? colors.cyan500 : colors.cyan700,
+          borderTopColor: theme.colorMode === 'light' ? theme.colors.cyan500 : theme.colors.cyan700,
+          borderLeftColor:
+            theme.colorMode === 'light' ? theme.colors.cyan500 : theme.colors.cyan700,
+          borderRightColor:
+            theme.colorMode === 'light' ? theme.colors.cyan500 : theme.colors.cyan700,
+          borderBottomColor:
+            theme.colorMode === 'light' ? theme.colors.cyan500 : theme.colors.cyan700,
         },
       },
       validationStatus: {
         invalid: {
-          borderBottomColor: colorMode === 'light' ? colors.red500 : colors.red700,
+          borderBottomColor:
+            theme.colorMode === 'light' ? theme.colors.red500 : theme.colors.red700,
         },
         valid: {
-          borderBottomColor: colorMode === 'light' ? colors.green500 : colors.green700,
+          borderBottomColor:
+            theme.colorMode === 'light' ? theme.colors.green500 : theme.colors.green700,
         },
         initial: {},
       },
       disabled: {
         true: {
-          borderTopColor: colors.grey400,
-          borderLeftColor: colors.grey400,
-          borderRightColor: colors.grey400,
-          borderBottomColor: colors.grey600,
-          backgroundColor: colors.grey50,
+          borderTopColor: theme.colors.grey400,
+          borderLeftColor: theme.colors.grey400,
+          borderRightColor: theme.colors.grey400,
+          borderBottomColor: theme.colors.grey600,
+          backgroundColor: theme.colors.grey50,
         },
       },
       readonly: {
@@ -96,33 +92,33 @@ const stylesheet = createStyleSheet(({ space, colors, radii, colorMode, borderWi
         },
       },
     },
-  },
-  extraStyles: (
-    validationStatus: InputProps['validationStatus'],
-    focus: boolean,
-    disabled: boolean,
-    readonly: boolean
-  ) => {
-    if (disabled || readonly) {
-      return {};
-    }
-    if (validationStatus === 'invalid' && focus) {
-      return {
-        borderTopColor: colorMode === 'light' ? colors.red500 : colors.red700,
-        borderLeftColor: colorMode === 'light' ? colors.red500 : colors.red700,
-        borderRightColor: colorMode === 'light' ? colors.red500 : colors.red700,
-        borderBottomColor: colorMode === 'light' ? colors.red500 : colors.red700,
-      };
-    }
-    if (validationStatus === 'valid' && focus) {
-      return {
-        borderTopColor: colorMode === 'light' ? colors.green500 : colors.green700,
-        borderLeftColor: colorMode === 'light' ? colors.green500 : colors.green700,
-        borderRightColor: colorMode === 'light' ? colors.green500 : colors.green700,
-        borderBottomColor: colorMode === 'light' ? colors.green500 : colors.green700,
-      };
-    }
-    return {};
+    compoundVariants: [
+      {
+        validationStatus: 'invalid',
+        focus: true,
+        styles: {
+          borderTopColor: theme.colorMode === 'light' ? theme.colors.red500 : theme.colors.red700,
+          borderLeftColor: theme.colorMode === 'light' ? theme.colors.red500 : theme.colors.red700,
+          borderRightColor: theme.colorMode === 'light' ? theme.colors.red500 : theme.colors.red700,
+          borderBottomColor:
+            theme.colorMode === 'light' ? theme.colors.red500 : theme.colors.red700,
+        },
+      },
+      {
+        validationStatus: 'valid',
+        focus: true,
+        styles: {
+          borderTopColor:
+            theme.colorMode === 'light' ? theme.colors.green500 : theme.colors.green700,
+          borderLeftColor:
+            theme.colorMode === 'light' ? theme.colors.green500 : theme.colors.green700,
+          borderRightColor:
+            theme.colorMode === 'light' ? theme.colors.green500 : theme.colors.green700,
+          borderBottomColor:
+            theme.colorMode === 'light' ? theme.colors.green500 : theme.colors.green700,
+        },
+      },
+    ],
   },
 }));
 

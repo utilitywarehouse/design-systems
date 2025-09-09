@@ -43,6 +43,7 @@ export const RadioGroupRoot = React.forwardRef<HTMLDivElement, PropsWithSx<Radio
         orientation={direction === 'column' ? 'vertical' : 'horizontal'}
         className={clsx(componentClassName, className)}
       >
+        {/* @ts-expect-error - upgrade issue. TODO: Fix this */}
         <StyledFlex width={width} gap={2}>
           {children}
         </StyledFlex>

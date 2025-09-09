@@ -1,6 +1,6 @@
 import React, { forwardRef, useMemo } from 'react';
 import { Text } from '../Text';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { StyleSheet } from 'react-native-unistyles';
 import { View } from 'react-native';
 import { Icon } from '../Icon';
 import {
@@ -12,7 +12,7 @@ import { HelperContext } from './HelperContext';
 
 const Helper = forwardRef<View, HelperProps>(
   ({ children, validationStatus, showIcon, style, disabled, icon, text, ...props }, ref) => {
-    const { styles } = useStyles(stylesheet, { validationStatus, disabled });
+    styles.useVariants({ validationStatus, disabled });
     let HelperIcon = icon;
     if (validationStatus === 'valid' && !icon) {
       HelperIcon = TickMediumContainedIcon;
@@ -44,28 +44,28 @@ const Helper = forwardRef<View, HelperProps>(
 
 Helper.displayName = 'Helper';
 
-const stylesheet = createStyleSheet(({ colors, space, lineHeights }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     flexDirection: 'row',
-    gap: space['1'],
+    gap: theme.space['1'],
     alignItems: 'center',
   },
   text: {
-    color: colors.grey800,
-    lineHeight: lineHeights['lg'],
+    color: theme.colors.grey800,
+    lineHeight: theme.lineHeights['lg'],
     variants: {
       validationStatus: {
         valid: {
-          color: colors.green600,
+          color: theme.colors.green600,
         },
         invalid: {
-          color: colors.red600,
+          color: theme.colors.red600,
         },
         initial: {},
       },
       disabled: {
         true: {
-          color: colors.grey400,
+          color: theme.colors.grey400,
         },
       },
     },

@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Unstyled, Description } from '@storybook/blocks';
+// eslint-disable-next-line import/no-unresolved
+import { Description, Unstyled } from '@storybook/addon-docs/blocks';
 
 import { BackToTop } from './BackToTop';
 

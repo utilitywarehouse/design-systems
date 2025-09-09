@@ -1,23 +1,20 @@
-import React, { forwardRef } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import RadioGroupProps from './RadioGroup.props';
 
-const RadioGroup = forwardRef<View, RadioGroupProps>(({ children, style, ...props }, ref) => {
-  const { styles } = useStyles(stylesheet);
-
+const RadioGroup = ({ children, style, ...props }: RadioGroupProps) => {
   return (
-    <View ref={ref} {...props} style={[styles.container, style]}>
+    <View {...props} style={[styles.container, style]}>
       {children}
     </View>
   );
-});
+};
 
 RadioGroup.displayName = 'RadioGroup';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
-    gap: space[2],
+    gap: theme.space[2],
   },
 }));
 

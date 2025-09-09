@@ -1,72 +1,69 @@
-import React, { forwardRef } from 'react';
-import { type StyleProp, type ViewStyle, type ViewProps, View } from 'react-native';
-import { createStyleSheet, type UnistylesValues, useStyles } from 'react-native-unistyles';
+import { type StyleProp, type ViewProps, type ViewStyle, View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
-const ButtonGroupRoot = forwardRef<
-  View,
-  ViewProps & {
-    flexDirection?: ViewStyle['flexDirection'];
-    reversed?: boolean;
-    attached?: boolean;
-    space?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+const ButtonGroupRoot = ({
+  children,
+  attached = false,
+  flexDirection = 'row',
+  reversed = false,
+  space = 'md',
+  ...props
+}: ViewProps & {
+  flexDirection?: ViewStyle['flexDirection'];
+  reversed?: boolean;
+  attached?: boolean;
+  space?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+}) => {
+  let direction = flexDirection;
+  if (reversed) {
+    if (flexDirection === 'row') direction = 'row-reverse';
+    if (flexDirection === 'column') direction = 'column-reverse';
+    if (flexDirection === 'row-reverse') direction = 'row';
+    if (flexDirection === 'column-reverse') direction = 'column';
   }
->(
-  (
-    { children, attached = false, flexDirection = 'row', reversed = false, space = 'md', ...props },
-    ref
-  ) => {
-    let direction = flexDirection;
-    if (reversed) {
-      if (flexDirection === 'row') direction = 'row-reverse';
-      if (flexDirection === 'column') direction = 'column-reverse';
-      if (flexDirection === 'row-reverse') direction = 'row';
-      if (flexDirection === 'column-reverse') direction = 'column';
-    }
-    const { styles } = useStyles(stylesheet, {
-      attached,
-      space,
-    });
-    return (
-      <View
-        ref={ref}
-        {...props}
-        style={[styles.text, styles.extraStyles(direction) as StyleProp<ViewStyle>, props.style]}
-      >
-        {children}
-      </View>
-    );
-  }
-);
+  styles.useVariants({
+    attached,
+    space,
+  });
+  return (
+    <View
+      {...props}
+      style={[styles.text, styles.extraStyles(direction) as StyleProp<ViewStyle>, props.style]}
+    >
+      {children}
+    </View>
+  );
+};
 
 ButtonGroupRoot.displayName = 'ButtonGroupRoot';
 
-const stylesheet = createStyleSheet(({ space }) => ({
+const styles = StyleSheet.create(theme => ({
   text: {
     variants: {
       space: {
         xs: {
-          gap: space['1'],
+          gap: theme.space['1'],
         },
         sm: {
-          gap: space['2'],
+          gap: theme.space['2'],
         },
         md: {
-          gap: space['3'],
+          gap: theme.space['3'],
         },
         lg: {
-          gap: space['4'],
+          gap: theme.space['4'],
         },
         xl: {
-          gap: space['5'],
+          gap: theme.space['5'],
         },
         '2xl': {
-          gap: space['6'],
+          gap: theme.space['6'],
         },
         '3xl': {
-          gap: space['7'],
+          gap: theme.space['7'],
         },
         '4xl': {
-          gap: space['8'],
+          gap: theme.space['8'],
         },
       },
       attached: {
@@ -76,13 +73,7 @@ const stylesheet = createStyleSheet(({ space }) => ({
       },
     },
   },
-  extraStyles: (flexDirection: ViewStyle['flexDirection']) => {
-    const extraStyles: UnistylesValues = {
-      flexDirection,
-    };
-
-    return extraStyles;
-  },
+  extraStyles: (flexDirection: ViewStyle['flexDirection']) => ({ flexDirection }),
 }));
 
 export default ButtonGroupRoot;

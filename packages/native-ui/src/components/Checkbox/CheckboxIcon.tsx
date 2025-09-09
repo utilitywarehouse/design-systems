@@ -1,25 +1,20 @@
-import React, { forwardRef } from 'react';
-import { useStyles } from 'react-native-unistyles';
-import { Icon } from '../Icon';
-import type { SvgRef } from '../../types';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
+import { useTheme } from '../../hooks';
+import { Icon } from '../Icon';
 import IconProps from '../Icon/Icon.props';
 
-const CheckboxIcon = forwardRef<SvgRef, IconProps>(({ style, ...props }, ref) => {
-  const {
-    theme: { colorMode },
-  } = useStyles();
+const CheckboxIcon = ({ style, ...props }: IconProps) => {
+  const { colorMode } = useTheme();
 
   return (
     <Icon
-      ref={ref}
       as={TickSmallIcon}
       {...props}
       color={colorMode === 'light' ? '$white' : '$cyan50'}
       style={style}
     />
   );
-});
+};
 
 CheckboxIcon.displayName = 'CheckboxIcon';
 

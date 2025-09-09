@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, LayoutChangeEvent, StyleSheet, View } from 'react-native';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { Animated, LayoutChangeEvent, Platform, View, ViewProps } from 'react-native';
 
+import { StyleSheet } from 'react-native-unistyles';
 import {
   ToggleButtonGroupContext,
   ToggleButtonGroupContextValue,
@@ -24,7 +24,7 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
   size = 'small',
   ...props
 }: React.PropsWithChildren<ToggleButtonGroupProps<T>>) => {
-  const { styles } = useStyles(stylesheet, { disabled, size });
+  styles.useVariants({ disabled, size });
   const moveAnim = useRef(new Animated.Value(0)).current;
   const widthAnim = useRef(new Animated.Value(0)).current;
   const yAnim = useRef(new Animated.Value(0)).current;
@@ -46,7 +46,7 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
       const { x, y, width, height } = buttonLayouts[String(contextValue)];
 
       if (isInitialRender.current) {
-        moveAnim.setValue(x - (size === 'base' ? 1 : 0));
+        moveAnim.setValue(x);
         widthAnim.setValue(width);
         yAnim.setValue(y - (size === 'base' ? 1 : 0));
         heightAnim.setValue(height);
@@ -55,7 +55,7 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
         Animated.parallel([
           Animated.timing(moveAnim, {
             duration: 150,
-            toValue: x - (size === 'base' ? 1 : 0),
+            toValue: x,
             useNativeDriver: false,
           }),
           Animated.timing(widthAnim, {
@@ -131,7 +131,7 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
         accessible
         accessibilityRole="radiogroup"
         accessibilityValue={{ text: String(contextValue) }}
-        style={StyleSheet.flatten([styles.root, style])}
+        style={[styles.root, style]}
         {...props}
       >
         {contextValue !== undefined && (
@@ -139,7 +139,9 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
             style={[
               styles.indicator,
               {
-                transform: [{ translateX: moveAnim }],
+                ...(Platform.OS === 'web'
+                  ? { left: moveAnim }
+                  : { transform: [{ translateX: moveAnim }] }),
                 width: widthAnim,
                 top: yAnim,
                 height: heightAnim,
@@ -147,13 +149,13 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
             ]}
           />
         )}
-        {wrappedChildren}
+        {wrappedChildren as ViewProps['children']}
       </View>
     </ToggleButtonGroupContext.Provider>
   );
 };
 
-const stylesheet = createStyleSheet(({ colors, isLight, radii, space }) => ({
+const styles = StyleSheet.create(({ colors, isLight, radii, space }) => ({
   indicator: {
     backgroundColor: isLight ? colors.cyan400 : colors.cyan700,
     borderRadius: radii.full,
@@ -183,9 +185,19 @@ const stylesheet = createStyleSheet(({ colors, isLight, radii, space }) => ({
         base: {
           height: 44,
           borderWidth: 1,
-          paddingHorizontal: space[1],
+          paddingHorizontal: space[1] - 1,
           backgroundColor: isLight ? colors.white : colors.grey100,
           borderColor: isLight ? colors.grey100 : colors.grey300,
+          shadowColor: 'rgba(18, 18, 18, 0.06)',
+          shadowOffset: {
+            width: 1,
+            height: 2,
+          },
+          shadowRadius: 4,
+          dropShadow: {
+            offsetX: 1,
+            offsetY: 2,
+          },
         },
       },
     },

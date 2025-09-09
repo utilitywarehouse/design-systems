@@ -1,14 +1,14 @@
-import React, { forwardRef, useEffect, useMemo } from 'react';
-import AlertTitle from './AlertTitle';
-import AlertLink, { AlertLinkChevron, AlertLinkText } from './AlertLink';
-import AlertIconButton, { AlertIconButtonChevron } from './AlertIconButton';
-import AlertCloseButton, { AlertCloseButtonIcon } from './AlertCloseButton';
-import type { AlertProps } from './Alert.props';
+import { forwardRef, useMemo } from 'react';
+import { Pressable, View, ViewProps } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { AlertContext } from './Alert.context';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
-import { View, Pressable, ViewStyle } from 'react-native';
-import AlertText from './AlertText';
+import type { AlertProps } from './Alert.props';
+import AlertCloseButton, { AlertCloseButtonIcon } from './AlertCloseButton';
 import AlertIcon from './AlertIcon';
+import AlertIconButton, { AlertIconButtonChevron } from './AlertIconButton';
+import AlertLink, { AlertLinkChevron, AlertLinkText } from './AlertLink';
+import AlertText from './AlertText';
+import AlertTitle from './AlertTitle';
 
 const Alert = forwardRef<View, AlertProps>(
   (
@@ -29,26 +29,16 @@ const Alert = forwardRef<View, AlertProps>(
     },
     ref
   ) => {
-    useEffect(() => {
-      if (__DEV__) {
-        if (onPressIconButton && link) {
-          console.warn(
-            'You cannot use both onPressIconButton and link props at the same time. Please choose one or the other.'
-          );
-        }
-      }
-    }, [onPressIconButton, link]);
-
     const value = useMemo(() => ({ colorScheme }), [colorScheme]);
 
-    const { styles } = useStyles(stylesheet, { colorScheme });
+    styles.useVariants({ colorScheme });
 
     return (
       <AlertContext.Provider value={value}>
         <Pressable
           ref={ref}
           {...props}
-          style={[styles.container, style as ViewStyle]}
+          style={[styles.container, style as ViewProps['style']]}
           onPress={onPress}
           disabled={!onPress}
         >
@@ -87,38 +77,38 @@ const Alert = forwardRef<View, AlertProps>(
 
 Alert.displayName = 'Alert';
 
-const stylesheet = createStyleSheet(({ colors, space, borderWidths, radii }) => ({
+const styles = StyleSheet.create(theme => ({
   container: {
     alignItems: 'center',
-    padding: space[3],
+    padding: theme.space['150'],
     flexDirection: 'row',
-    borderRadius: radii.lg,
-    gap: space[2],
-    borderWidth: borderWidths[1],
+    borderRadius: theme.borderRadius.md,
+    gap: theme.space['100'],
+    borderWidth: theme.borderWidth[1],
     variants: {
       colorScheme: {
         cyan: {
-          borderColor: colors.cyan500,
-          backgroundColor: colors.cyan50,
+          borderColor: theme.colors.cyan500,
+          backgroundColor: theme.colors.cyan50,
         },
         green: {
-          borderColor: colors.green500,
-          backgroundColor: colors.green50,
+          borderColor: theme.colors.green500,
+          backgroundColor: theme.colors.green50,
         },
         gold: {
-          borderColor: colors.gold500,
-          backgroundColor: colors.gold50,
+          borderColor: theme.colors.gold500,
+          backgroundColor: theme.colors.gold50,
         },
         red: {
-          borderColor: colors.red500,
-          backgroundColor: colors.red50,
+          borderColor: theme.colors.red500,
+          backgroundColor: theme.colors.red50,
         },
       },
     },
   },
   content: {
     flex: 1,
-    gap: space[1],
+    gap: theme.space['50'],
   },
 }));
 

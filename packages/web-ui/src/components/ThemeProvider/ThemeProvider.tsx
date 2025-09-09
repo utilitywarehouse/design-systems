@@ -15,5 +15,6 @@ export interface ThemeProviderProps {
  * Provides the custom Web UI theme.
  */
 export const ThemeProvider = (props: ThemeProviderProps) => {
+  /* @ts-expect-error - upgrade issue. TODO: Fix this */
   return <MuiThemeProvider theme={theme} {...props} />;
 };

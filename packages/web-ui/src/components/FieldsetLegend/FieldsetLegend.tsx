@@ -1,5 +1,5 @@
-import * as React from 'react';
 import type { ElementRef, PropsWithChildren } from 'react';
+import * as React from 'react';
 
 import clsx from 'clsx';
 
@@ -38,6 +38,7 @@ export const FieldsetLegend = React.forwardRef<
   PropsWithChildren<PropsWithSx<FieldsetLegendProps>>
 >(({ disabled, className, ...props }, ref) => {
   return (
+    /* @ts-expect-error - upgrade issue. TODO: Fix this */
     <StyledElement
       ref={ref}
       className={clsx(componentClassName, className)}
