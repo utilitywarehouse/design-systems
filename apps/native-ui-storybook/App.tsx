@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
+import 'react-native-reanimated';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import StorybookUIRoot from './.rnstorybook';
 

@@ -12,7 +12,7 @@ module.exports = function (api) {
     presets: ['babel-preset-expo'],
     plugins: [
       ['react-native-unistyles/plugin', unistylesPluginOptions],
-      'react-native-reanimated/plugin',
+      'react-native-worklets/plugin',
     ],
   };
 };
