@@ -1,3 +1,5 @@
+> **NOTE:** This package now lives in the [js-mono](https://github.com/utilitywarehouse/js-mono) repo.
+
 # UW Prettier config
 
 This is the standard Prettier config for UW projects.

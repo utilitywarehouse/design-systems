@@ -59,3 +59,17 @@ export const LayoutShift: Story = {
     );
   },
 };
+
+export const Autofill: Story = {
+  render: args => {
+    return (
+      <form action="" method="post" onSubmit={event => console.log({ event })} noValidate>
+        <Flex direction="column" gap={2} width={400}>
+          <TextField {...args} id="first-name" label="First name" />
+          <TextField {...args} id="last-name" label="Last name" />
+        </Flex>
+      </form>
+    );
+  },
+  args: { helperText: undefined },
+};
