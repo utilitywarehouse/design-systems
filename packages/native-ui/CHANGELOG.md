@@ -1,5 +1,18 @@
 # @utilitywarehouse/native-ui
 
+## 1.0.0
+
+### Major Changes
+
+- [#696](https://github.com/utilitywarehouse/design-systems/pull/696) [`96cf917`](https://github.com/utilitywarehouse/design-systems/commit/96cf917555761443290266fa6260927f1efce8d4) Thanks [@jordmccord](https://github.com/jordmccord)! - - [BREAKING] Updates `react-native-unistyles` to version 3
+  - Adds `Flex` component
+  - Adds `Grid` component
+  - Deprecates `VStack` and `HStack` components
+  - Updates tokens to align with Hearth React Native
+  - Deprecates previous tokens
+  - Adds utility `OL`, `UL` and `LI` components
+  - Updates `useColorMode` hook to return `colorMode` and `setColorMode`
+
 ## 0.13.0
 
 ### Minor Changes
