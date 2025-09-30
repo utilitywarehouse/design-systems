@@ -28,7 +28,7 @@ const CustomSwitch: React.FC<SwitchProps> = ({
   const THUMB_SIZE = size === 'medium' ? 28 : 20;
   const PADDING = 2;
 
-  const { tokens, colorMode } = useTheme();
+  const { colors, colorMode } = useTheme();
   styles.useVariants({ size, disabled, value });
 
   const offset = useSharedValue(value ? SWITCH_WIDTH - THUMB_SIZE - PADDING * 2 : 0);
@@ -43,12 +43,12 @@ const CustomSwitch: React.FC<SwitchProps> = ({
 
   const animatedSwitchBackgroundStyle = useAnimatedStyle(() => {
     if (disabled) {
-      return { backgroundColor: tokens.switch.backgroundColorDisabled };
+      return { backgroundColor: colorMode === 'light' ? colors.grey300 : colors.grey200 };
     }
     const backgroundColor = interpolateColor(
       progress.value,
       [0, 1],
-      [tokens.switch.unchecked.backgroundColor, tokens.switch.checked.backgroundColor]
+      [colors.grey500, colorMode === 'light' ? colors.cyan500 : colors.cyan700]
     );
     return { backgroundColor };
   }, [progress, disabled, colorMode]);
@@ -142,53 +142,53 @@ const styles = StyleSheet.create(theme => ({
     variants: {
       size: {
         medium: {
-          width: theme.tokens.switch.medium.width,
-          height: theme.tokens.switch.medium.height,
-          borderRadius: theme.tokens.switch.borderRadius,
-          padding: theme.tokens.switch.padding,
+          width: 60,
+          height: 32,
+          borderRadius: theme.borderRadius.full,
+          padding: theme.space['25'],
         },
         small: {
-          width: theme.tokens.switch.small.width,
-          height: theme.tokens.switch.small.height,
-          borderRadius: theme.tokens.switch.borderRadius,
-          padding: theme.tokens.switch.padding,
+          width: 44,
+          height: 24,
+          borderRadius: theme.borderRadius.full,
+          padding: theme.space['25'],
         },
       },
       value: {
         true: {
-          backgroundColor: theme.tokens.switch.checked.backgroundColor,
+          backgroundColor: theme.isLight ? theme.colors.cyan500 : theme.colors.cyan700,
         },
         false: {
-          backgroundColor: theme.tokens.switch.unchecked.backgroundColor,
+          backgroundColor: theme.colors.grey500,
         },
       },
       disabled: {
         true: {
-          backgroundColor: theme.tokens.switch.backgroundColorDisabled,
+          backgroundColor: theme.isLight ? theme.colors.grey300 : theme.colors.grey200,
         },
       },
     },
   },
   thumb: {
-    backgroundColor: theme.tokens.switch.circle.backgroundColor,
+    backgroundColor: theme.colors.white,
     alignItems: 'center',
     justifyContent: 'center',
     variants: {
       size: {
         medium: {
-          width: theme.tokens.switch.circle.medium.size,
-          height: theme.tokens.switch.circle.medium.size,
-          borderRadius: theme.tokens.switch.borderRadius,
+          width: 28,
+          height: 28,
+          borderRadius: theme.borderRadius.full,
         },
         small: {
-          width: theme.tokens.switch.circle.small.size,
-          height: theme.tokens.switch.circle.small.size,
-          borderRadius: theme.tokens.switch.borderRadius,
+          width: 20,
+          height: 20,
+          borderRadius: theme.borderRadius.full,
         },
       },
       disabled: {
         true: {
-          backgroundColor: theme.tokens.switch.circle.backgroundColorDisabled,
+          backgroundColor: theme.isLight ? theme.colors.grey100 : theme.colors.grey400,
         },
       },
     },
@@ -200,15 +200,15 @@ const styles = StyleSheet.create(theme => ({
     variants: {
       value: {
         true: {
-          color: theme.tokens.switch.checked.iconColor,
+          color: theme.isLight ? theme.colors.cyan500 : theme.colors.cyan700,
         },
         false: {
-          color: theme.tokens.switch.unchecked.iconColor,
+          color: theme.isLight ? theme.colors.grey700 : theme.colors.grey400,
         },
       },
       disabled: {
         true: {
-          color: theme.tokens.switch.iconColorDisabled,
+          color: theme.isLight ? theme.colors.grey300 : theme.colors.grey200,
         },
       },
     },

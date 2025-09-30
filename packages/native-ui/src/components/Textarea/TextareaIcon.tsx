@@ -28,9 +28,9 @@ const TextareaIcon = ({ children, ...props }: IconProps & { as?: ComponentType }
 
 TextareaIcon.displayName = 'TextareaIcon';
 
-const styles = StyleSheet.create(({ colors, tokens }) => ({
+const styles = StyleSheet.create(({ colors }) => ({
   icon: {
-    color: tokens.input.iconColor,
+    color: colors.grey700,
     width: 24,
     height: 24,
     variants: {

@@ -402,4 +402,4 @@ export default {
       "borderRadius": 8
     }
   }
-};
+} as const;

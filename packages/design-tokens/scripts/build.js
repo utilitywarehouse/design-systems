@@ -1,6 +1,6 @@
-import StyleDictionary from 'style-dictionary';
 import fs from 'fs';
 import path from 'path';
+import StyleDictionary from 'style-dictionary';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -42,7 +42,7 @@ StyleDictionary.registerFormat({
       });
     });
 
-    return `export default ${JSON.stringify(tokens, null, 2)};`;
+    return `export default ${JSON.stringify(tokens, null, 2)} as const;`;
   },
 });
 
