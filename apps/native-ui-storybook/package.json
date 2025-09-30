@@ -6,10 +6,11 @@
   "scripts": {
     "clean": "rm -rf node_modules &&  rm -rf .expo",
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "eject": "expo eject",
+    "prebuild": "expo prebuild",
     "lint:fix": "TIMING=1 eslint --fix --max-warnings 0 --ext ts,tsx",
     "lint": "TIMING=1 eslint --max-warnings 0 --ext ts,tsx ./",
     "build:preview:android": "eas build --profile preview -p android --local --output './build/native-ui.apk'",

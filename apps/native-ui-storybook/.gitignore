@@ -16,6 +16,9 @@ web-build/
 build
 eas-build
 
+ios/
+android/
+
 # dependencies
 /node_modules
 /.pnp
