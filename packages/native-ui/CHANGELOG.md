@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 1.0.1
+
+### Patch Changes
+
+- [#698](https://github.com/utilitywarehouse/design-systems/pull/698) [`944f062`](https://github.com/utilitywarehouse/design-systems/commit/944f062d5a59c9b16522710790d9a9a154033d13) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixes `Invalid prop 'fill' supplied to 'React.Fragment'` issue
+
 ## 1.0.0
 
 ### Major Changes
