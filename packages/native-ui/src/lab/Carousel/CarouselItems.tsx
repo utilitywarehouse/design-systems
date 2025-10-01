@@ -11,13 +11,12 @@ import {
 } from 'react';
 import { FlatList, ViewStyle, ViewToken } from 'react-native';
 
-import { Box } from '../../';
 import CarouselContext from './Carousel.context';
 import { CarouselItemProps, CarouselItemsProps, CarouselRef } from './Carousel.props';
 
 export const CarouselItems = forwardRef(function CarouselItems(
   {
-    alignItems = 'flex-start',
+    centered = false,
     children,
     enabled = true,
     inactiveItemOpacity = 1,
@@ -41,16 +40,11 @@ export const CarouselItems = forwardRef(function CarouselItems(
     () => Children.map(children, child => child) || [],
     [children]
   );
-
+  
   const innerMargin: number = width - (itemWidth || width);
-  const containerStyles: ViewStyle = {
-    paddingHorizontal: alignItems === 'center' ? innerMargin / 2 : 0,
-  };
-  const carouselStyles: ViewStyle = {
+  const styles: ViewStyle = {
+    marginHorizontal: centered ? innerMargin / 2 : 0,
     overflow: showOverflow ? 'visible' : 'hidden',
-  };
-  const itemStyles: ViewStyle = {
-    alignItems,
   };
 
   useEffect(() => {
@@ -72,41 +66,38 @@ export const CarouselItems = forwardRef(function CarouselItems(
   );
 
   return (
-    <Box style={containerStyles}>
-      <FlatList<ReactElement<CarouselItemProps>>
-        bounces={false} // Prevents bouncing at the start and end of carousel scrolling (iOS only)
-        data={items}
-        decelerationRate="fast"
-        getItemLayout={(_, index) => ({
-          length: itemWidth || width,
-          offset: (itemWidth || width) * index,
-          index,
-        })}
-        horizontal
-        initialScrollIndex={activeIndex}
-        pagingEnabled
-        onViewableItemsChanged={handleViewableItemsChanged}
-        overScrollMode="never" // Prevents stretching of first and last items when reaching each end of the carousel (Android only)
-        ref={ref}
-        removeClippedSubviews={!showOverflow}
-        renderItem={({ index, item }) =>
-          cloneElement(item, {
-            active: index === activeIndex,
-            inactiveOpacity: inactiveItemOpacity,
-            key: item?.key || item.props?.id || index,
-            width: itemWidth || width,
-          })
-        }
-        scrollEnabled={enabled}
-        showsHorizontalScrollIndicator={false}
-        snapToInterval={itemWidth || width}
-        snapToAlignment="center"
-        contentContainerStyle={[itemStyles, style]}
-        style={carouselStyles}
-        viewabilityConfig={{ itemVisiblePercentThreshold: 51 }}
-        {...props}
-      />
-    </Box>
+    <FlatList<ReactElement<CarouselItemProps>>
+      bounces={false} // Prevents bouncing at the start and end of carousel scrolling (iOS only)
+      data={items}
+      decelerationRate="fast"
+      getItemLayout={(_, index) => ({
+        length: itemWidth || width,
+        offset: (itemWidth || width) * index,
+        index,
+      })}
+      horizontal
+      initialScrollIndex={activeIndex}
+      pagingEnabled
+      onViewableItemsChanged={handleViewableItemsChanged}
+      overScrollMode="never" // Prevents stretching of first and last items when reaching each end of the carousel (Android only)
+      ref={ref}
+      removeClippedSubviews={!showOverflow}
+      renderItem={({ index, item }) =>
+        cloneElement(item, {
+          active: index === activeIndex,
+          inactiveOpacity: inactiveItemOpacity,
+          key: item?.key || item.props?.id || index,
+          width: itemWidth || width,
+        })
+      }
+      scrollEnabled={enabled}
+      showsHorizontalScrollIndicator={false}
+      snapToInterval={itemWidth || width}
+      snapToAlignment="center"
+      style={[styles, style]}
+      viewabilityConfig={{ itemVisiblePercentThreshold: 51 }}
+      {...props}
+    />
   );
 });
 

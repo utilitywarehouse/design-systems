@@ -40,7 +40,7 @@ export interface CarouselItemsProps
     | 'snapToAlignment'
     | 'viewabilityConfig'
   > {
-  alignItems?: ViewStyle['alignItems'],
+  centered?: boolean;
   children?: ReactElement<CarouselItemProps> | Array<ReactElement<CarouselItemProps>>;
   enabled?: boolean;
   inactiveItemOpacity?: number;

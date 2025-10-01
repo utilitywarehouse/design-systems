@@ -70,7 +70,6 @@ interface CarouselExampleProps extends CarouselItemsProps {
 const styles = StyleSheet.create(theme => ({
   carousel: {
     marginBottom: theme.space[4],
-    marginHorizontal: -theme.space[2],
   },
   carouselItem: {
     aspectRatio: 1.6,
@@ -111,13 +110,23 @@ const items = [
     key: 3,
     title: '3333',
   },
+  {
+    color: colors.cyan800,
+    key: 4,
+    title: '4444',
+  },
+  {
+    color: colors.pink700,
+    key: 5,
+    title: '5555',
+  },
 ];
 
-const CarouselExample = ({ items, title, ...args }: CarouselExampleProps) => (
+const CarouselExample = ({ items, title, ...props }: CarouselExampleProps) => (
   <Box>
     <Heading style={styles.title} size="h4">{title}</Heading>
     <Carousel style={styles.carousel}>
-      <CarouselItems {...args}>
+      <CarouselItems {...props}>
         {items.map(({ color, key, title }) => (
           <CarouselItem key={key}>
             <CarouselItemCard
@@ -146,29 +155,27 @@ export const Playground: Story = {
     return (
       <Box onLayout={handleLayout}>
         <CarouselExample
+          {...args}
           items={items}
-          showOverflow
           title="Full-width"
           width={width}
-          {...args}
         />
         <CarouselExample
-          alignItems="center"
+          {...args}
+          centered
           items={items}
           itemWidth={itemWidth}
           showOverflow
           title="Fixed-width, centered"
           width={width}
-          {...args}
         />
         <CarouselExample
-          alignItems="flex-start"
+          {...args}
           items={items}
           itemWidth={itemWidth}
           showOverflow
           title="Fixed-width, flex-start"
           width={width}
-          {...args}
         />
       </Box>
     );
