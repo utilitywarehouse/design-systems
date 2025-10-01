@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { colors } from '@utilitywarehouse/colour-system';
-import { ForwardedRef, forwardRef, useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { LayoutChangeEvent } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import {
@@ -9,10 +9,8 @@ import {
   CarouselItemsProps,
   CarouselItems,
   CarouselPagination,
-  CarouselRef,
 } from '.';
 import { Box, Heading, Text } from '../../components';
-import { useCarouselAccessibilityProps } from './useCarouselAccessibilityProps';
 
 const meta = {
   title: 'Stories / Carousel',
@@ -115,32 +113,25 @@ const items = [
   },
 ];
 
-const CarouselExample = forwardRef(function CarouselExample(
-  { items, title, ...args }: CarouselExampleProps,
-  ref: ForwardedRef<CarouselRef>
-) {
-  const accessibilityProps = useCarouselAccessibilityProps({ ref });
-  
-  return (
-    <Box>
-      <Heading style={styles.title} size="h4">{title}</Heading>
-      <Carousel style={styles.carousel}>
-        <CarouselItems {...args} {...accessibilityProps}>
-          {items.map(({ color, key, title }) => (
-            <CarouselItem key={key}>
-              <CarouselItemCard
-                backgroundColor={color}
-                key={key}
-                title={`•••• •••• •••• ${title}`}
-              />
-            </CarouselItem>
-          ))}
-        </CarouselItems>
-        <CarouselPagination style={{ marginVertical: 16 }} />
-      </Carousel>
-    </Box>
-  );
-});
+const CarouselExample = forwardRef(({ items, title, ...args }: CarouselExampleProps) => (
+  <Box>
+    <Heading style={styles.title} size="h4">{title}</Heading>
+    <Carousel style={styles.carousel}>
+      <CarouselItems {...args}>
+        {items.map(({ color, key, title }) => (
+          <CarouselItem key={key}>
+            <CarouselItemCard
+              backgroundColor={color}
+              key={key}
+              title={`•••• •••• •••• ${title}`}
+            />
+          </CarouselItem>
+        ))}
+      </CarouselItems>
+      <CarouselPagination style={{ marginVertical: 16 }} />
+    </Carousel>
+  </Box>
+);
 
 export const Playground: Story = {
   render: args => {

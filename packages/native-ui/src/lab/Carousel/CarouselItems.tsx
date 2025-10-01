@@ -30,7 +30,12 @@ export const CarouselItems = forwardRef(function CarouselItems(
   }: CarouselItemsProps,
   ref?: ForwardedRef<CarouselRef> | null
 ) {
-  const { activeIndex = 0, setActiveIndex, setNumItems } = useContext(CarouselContext);
+  const {
+    activeIndex = 0,
+    numItems = 0,
+    setActiveIndex,
+    setNumItems,
+  } = useContext(CarouselContext);
 
   // Ensure children is always converted to an array
   const items: Array<ReactElement<CarouselItemProps>> = useMemo(
