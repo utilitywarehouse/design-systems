@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { colors } from '@utilitywarehouse/colour-system';
-import { forwardRef, useState } from 'react';
+import { useState } from 'react';
 import { LayoutChangeEvent } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import {

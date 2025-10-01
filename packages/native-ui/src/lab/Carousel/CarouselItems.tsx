@@ -32,7 +32,6 @@ export const CarouselItems = forwardRef(function CarouselItems(
 ) {
   const {
     activeIndex = 0,
-    numItems = 0,
     setActiveIndex,
     setNumItems,
   } = useContext(CarouselContext);
