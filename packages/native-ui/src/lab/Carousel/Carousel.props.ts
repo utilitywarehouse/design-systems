@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { FlatList, FlatListProps, ViewProps, ViewStyle } from 'react-native';
+import { FlatList, FlatListProps, ViewProps } from 'react-native';
 
 export interface CarouselRef extends FlatList {}
 
