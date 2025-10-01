@@ -113,7 +113,7 @@ const items = [
   },
 ];
 
-const CarouselExample = forwardRef(({ items, title, ...args }: CarouselExampleProps) => (
+const CarouselExample = ({ items, title, ...args }: CarouselExampleProps) => (
   <Box>
     <Heading style={styles.title} size="h4">{title}</Heading>
     <Carousel style={styles.carousel}>
