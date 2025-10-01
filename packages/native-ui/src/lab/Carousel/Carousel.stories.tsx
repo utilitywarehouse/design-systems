@@ -1,9 +1,18 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { colors } from '@utilitywarehouse/colour-system';
-import { FC } from 'react';
+import { ForwardedRef, forwardRef, useState } from 'react';
+import { LayoutChangeEvent } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { Carousel, CarouselItem, CarouselItems, CarouselPagination } from '.';
-import { Box, Text } from '../../components';
+import {
+  Carousel,
+  CarouselItem,
+  CarouselItemsProps,
+  CarouselItems,
+  CarouselPagination,
+  CarouselRef,
+} from '.';
+import { Box, Heading, Text } from '../../components';
+import { useCarouselAccessibilityProps } from './useCarouselAccessibilityProps';
 
 const meta = {
   title: 'Stories / Carousel',
@@ -43,22 +52,28 @@ const meta = {
     // @ts-expect-error - Meta type mismatch
     enabled: true,
     inactiveItemOpacity: 1,
-    itemWidth: 300,
     showOverflow: false,
-    style: {},
-    width: 300,
   },
 } satisfies Meta<typeof CarouselItems>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-interface CarouselItemProps {
+interface CarouselItemCardProps {
   backgroundColor: string;
   title: string;
 }
 
+interface CarouselExampleProps extends CarouselItemsProps {
+  items: Array<any>;
+  title: string;
+}
+
 const styles = StyleSheet.create(theme => ({
+  carousel: {
+    marginBottom: theme.space[4],
+    marginHorizontal: -theme.space[2],
+  },
   carouselItem: {
     aspectRatio: 1.6,
     borderRadius: theme.radii.lg,
@@ -69,9 +84,12 @@ const styles = StyleSheet.create(theme => ({
   carouselItemTitle: {
     color: theme.colors.white,
   },
+  title: {
+    marginBottom: theme.space[2],
+  },
 }));
 
-const CarouselItemCard: FC<CarouselItemProps> = ({ backgroundColor, title }) => {
+const CarouselItemCard = ({ backgroundColor, title }: CarouselItemCardProps ) => {
   return (
     <Box style={[styles.carouselItem, { backgroundColor }]}>
       <Text style={styles.carouselItemTitle}>{title}</Text>
@@ -97,12 +115,17 @@ const items = [
   },
 ];
 
-export const Playground: Story = {
-  render: args => (
+const CarouselExample = forwardRef(function CarouselExample(
+  { items, title, ...args }: CarouselExampleProps,
+  ref: ForwardedRef<CarouselRef>
+) {
+  const accessibilityProps = useCarouselAccessibilityProps({ ref });
+  
+  return (
     <Box>
-      <Carousel>
-        {/* @ts-expect-error - Meta type mismatch */}
-        <CarouselItems {...args}>
+      <Heading style={styles.title} size="h4">{title}</Heading>
+      <Carousel style={styles.carousel}>
+        <CarouselItems {...args} {...accessibilityProps}>
           {items.map(({ color, key, title }) => (
             <CarouselItem key={key}>
               <CarouselItemCard
@@ -116,5 +139,47 @@ export const Playground: Story = {
         <CarouselPagination style={{ marginVertical: 16 }} />
       </Carousel>
     </Box>
-  ),
+  );
+});
+
+export const Playground: Story = {
+  render: args => {
+    const [width, setWidth] = useState(0);
+
+    const handleLayout = ({ nativeEvent }: LayoutChangeEvent) => {
+      setWidth(nativeEvent.layout.width);
+    };
+
+    const itemWidth = width * 0.8 + 16;
+    
+    return (
+      <Box onLayout={handleLayout}>
+        <CarouselExample
+          items={items}
+          showOverflow
+          title="Full-width"
+          width={width}
+          {...args}
+        />
+        <CarouselExample
+          alignItems="center"
+          items={items}
+          itemWidth={itemWidth}
+          showOverflow
+          title="Fixed-width, centered"
+          width={width}
+          {...args}
+        />
+        <CarouselExample
+          alignItems="flex-start"
+          items={items}
+          itemWidth={itemWidth}
+          showOverflow
+          title="Fixed-width, flex-start"
+          width={width}
+          {...args}
+        />
+      </Box>
+    );
+  }
 };

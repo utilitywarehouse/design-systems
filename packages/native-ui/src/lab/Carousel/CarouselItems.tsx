@@ -9,17 +9,15 @@ import {
   useEffect,
   useMemo,
 } from 'react';
-import { AccessibilityActionEvent, FlatList, ViewStyle, ViewToken } from 'react-native';
+import { FlatList, ViewStyle, ViewToken } from 'react-native';
 
 import { Box } from '../../';
 import CarouselContext from './Carousel.context';
 import { CarouselItemProps, CarouselItemsProps, CarouselRef } from './Carousel.props';
 
-const clampToRange = (number: number, min: number, max: number) =>
-  Math.min(Math.max(number, min), max);
-
 export const CarouselItems = forwardRef(function CarouselItems(
   {
+    alignItems = 'flex-start',
     children,
     enabled = true,
     inactiveItemOpacity = 1,
@@ -42,11 +40,13 @@ export const CarouselItems = forwardRef(function CarouselItems(
 
   const innerMargin: number = width - (itemWidth || width);
   const containerStyles: ViewStyle = {
-    width,
+    paddingHorizontal: alignItems === 'center' ? innerMargin / 2 : 0,
   };
   const carouselStyles: ViewStyle = {
-    marginHorizontal: innerMargin / 2,
     overflow: showOverflow ? 'visible' : 'hidden',
+  };
+  const itemStyles: ViewStyle = {
+    alignItems,
   };
 
   useEffect(() => {
@@ -67,26 +67,9 @@ export const CarouselItems = forwardRef(function CarouselItems(
     [onSnapToItem, setActiveIndex]
   );
 
-  const handleAccessibilityAction = ({ nativeEvent }: AccessibilityActionEvent) => {
-    const value = nativeEvent.actionName === 'increment' ? 1 : -1;
-    const index = clampToRange(
-      activeIndex + value,
-      0,
-      items && items.length ? items.length - 1 : 0
-    );
-
-    if (ref && typeof ref !== 'function' && ref?.current) {
-      ref.current.scrollToIndex({ index });
-    }
-  };
-
   return (
-    <Box style={[containerStyles, style]}>
+    <Box style={containerStyles}>
       <FlatList<ReactElement<CarouselItemProps>>
-        accessibilityActions={[{ name: 'increment' }, { name: 'decrement' }]}
-        accessibilityLabel="Carousel"
-        accessibilityRole="adjustable"
-        accessible={true}
         bounces={false} // Prevents bouncing at the start and end of carousel scrolling (iOS only)
         data={items}
         decelerationRate="fast"
@@ -98,7 +81,6 @@ export const CarouselItems = forwardRef(function CarouselItems(
         horizontal
         initialScrollIndex={activeIndex}
         pagingEnabled
-        onAccessibilityAction={handleAccessibilityAction}
         onViewableItemsChanged={handleViewableItemsChanged}
         overScrollMode="never" // Prevents stretching of first and last items when reaching each end of the carousel (Android only)
         ref={ref}
@@ -115,6 +97,7 @@ export const CarouselItems = forwardRef(function CarouselItems(
         showsHorizontalScrollIndicator={false}
         snapToInterval={itemWidth || width}
         snapToAlignment="center"
+        contentContainerStyle={[itemStyles, style]}
         style={carouselStyles}
         viewabilityConfig={{ itemVisiblePercentThreshold: 51 }}
         {...props}

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { FlatList, FlatListProps, ViewProps } from 'react-native';
+import { FlatList, FlatListProps, ViewProps, ViewStyle } from 'react-native';
 
 export interface CarouselRef extends FlatList {}
 
@@ -40,6 +40,7 @@ export interface CarouselItemsProps
     | 'snapToAlignment'
     | 'viewabilityConfig'
   > {
+  alignItems?: ViewStyle['alignItems'],
   children?: ReactElement<CarouselItemProps> | Array<ReactElement<CarouselItemProps>>;
   enabled?: boolean;
   inactiveItemOpacity?: number;
