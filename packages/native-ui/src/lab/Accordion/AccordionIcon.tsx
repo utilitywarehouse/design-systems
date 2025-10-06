@@ -27,7 +27,7 @@ AccordionIcon.displayName = 'AccordionIcon';
 
 const styles = StyleSheet.create(({ space, colors, colorMode }) => ({
   iconWrapper: {
-    marginLeft: space[2],
+    marginLeft: space['100'],
   },
   icon: {
     color: colorMode === 'light' ? colors.cyan600 : colors.cyan700,

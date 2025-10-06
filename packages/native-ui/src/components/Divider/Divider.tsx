@@ -36,28 +36,28 @@ const styles = StyleSheet.create(theme => ({
           marginVertical: 0,
         },
         xs: {
-          marginVertical: theme.space['1'],
+          marginVertical: theme.space['50'],
         },
         sm: {
-          marginVertical: theme.space['2'],
+          marginVertical: theme.space['100'],
         },
         md: {
-          marginVertical: theme.space['3'],
+          marginVertical: theme.space['150'],
         },
         lg: {
-          marginVertical: theme.space['4'],
+          marginVertical: theme.space['200'],
         },
         xl: {
-          marginVertical: theme.space['5'],
+          marginVertical: theme.space['250'],
         },
         '2xl': {
-          marginVertical: theme.space['6'],
+          marginVertical: theme.space['300'],
         },
         '3xl': {
-          marginVertical: theme.space['7'],
+          marginVertical: theme.space['350'],
         },
         '4xl': {
-          marginVertical: theme.space['8'],
+          marginVertical: theme.space['400'],
         },
       },
     },

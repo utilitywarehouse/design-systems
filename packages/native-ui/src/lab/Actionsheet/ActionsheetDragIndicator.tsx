@@ -12,9 +12,9 @@ const ActionsheetDragIndicator = ({ style, ...props }: Omit<ViewProps, 'children
   const animatedStyle = useAnimatedStyle(
     () => ({
       backgroundColor: dragging.value ? colors?.grey400 : colors?.grey500,
-      marginBottom: showIndicator ? space?.['3'] : 0,
+      marginBottom: showIndicator ? space?.['150'] : 0,
     }),
-    [showIndicator, dragging, colors?.grey400, colors?.grey500, space?.['3']]
+    [showIndicator, dragging, colors?.grey400, colors?.grey500, space?.['150']]
   );
 
   return <Animated.View style={[styles.indicator, animatedStyle, style as false]} {...props} />;
@@ -22,9 +22,9 @@ const ActionsheetDragIndicator = ({ style, ...props }: Omit<ViewProps, 'children
 
 const styles = StyleSheet.create(theme => ({
   indicator: {
-    width: theme.space['16'],
-    height: theme.space['1'],
-    borderRadius: theme.radii.full,
+    width: theme.space['800'],
+    height: theme.space['50'],
+    borderRadius: theme.borderRadius.full,
     backgroundColor: theme.colors.grey500,
   },
 }));

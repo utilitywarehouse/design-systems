@@ -117,10 +117,10 @@ export const WithScrollView: Story = {
         >
           <ActionsheetContent style={styles.content}>
             <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContainer}>
-              <Box mb="$4">
+              <Box mb="200">
                 <Heading textAlign="center">Out of range reading</Heading>
               </Box>
-              <Box mb="$6" gap="$2">
+              <Box mb="300" gap="100">
                 <Text>
                   The number that was entered was too high or too low for what we&apos;d expect
                   based on past readings and your typical energy usage. This normally suggests an

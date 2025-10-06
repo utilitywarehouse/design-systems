@@ -126,9 +126,9 @@ ListItemRoot.displayName = 'ListItemRoot';
 
 const styles = StyleSheet.create(theme => ({
   container: {
-    padding: theme.space[4],
+    padding: theme.space['200'],
     flexDirection: 'row',
-    gap: theme.space[3],
+    gap: theme.space['150'],
     variants: {
       showPressed: {
         true: {},

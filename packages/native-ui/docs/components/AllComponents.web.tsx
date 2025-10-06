@@ -130,7 +130,7 @@ const AllComponents: React.FC = () => {
           </ComponentWrapper>
           <ComponentWrapper name="Box" link="/?path=/docs/primitives-box--docs">
             <Center flex={1}>
-              <Box backgroundColor="$grey900" padding="$4" width={200} height={100}>
+              <Box backgroundColor="$grey900" padding="200" width={200} height={100}>
                 <Text color={isDark ? '$grey100' : '$white'} highlight>
                   This is a Box
                 </Text>
@@ -169,7 +169,7 @@ const AllComponents: React.FC = () => {
                     },
                   ].map(item => (
                     <CarouselItem key={item.key}>
-                      <Box p="$2" aspectRatio={1.6} backgroundColor="$purple500">
+                      <Box p="100" aspectRatio={1.6} backgroundColor="$purple500">
                         <Text color="$white">{item.title}</Text>
                       </Box>
                     </CarouselItem>
@@ -181,7 +181,7 @@ const AllComponents: React.FC = () => {
           </ComponentWrapper>
           <ComponentWrapper name="Center" link="/?path=/docs/primitives-center--docs">
             <Center flex={1}>
-              <Center backgroundColor="$grey900" padding="$4" width={200} height={100}>
+              <Center backgroundColor="$grey900" padding="200" width={200} height={100}>
                 <Text color={isDark ? '$grey100' : '$white'} highlight>
                   I am in the Center
                 </Text>
@@ -353,12 +353,12 @@ const AllComponents: React.FC = () => {
 
 const styles = StyleSheet.create(theme => ({
   container: {
-    gap: theme.space['2'],
+    gap: theme.space['100'],
   },
   component: {
     borderColor: theme.colorMode === 'light' ? theme.colors.grey100 : theme.colors.grey400,
-    borderWidth: theme.borderWidths['1'],
-    borderRadius: theme.radii['lg'],
+    borderWidth: theme.borderWidth['1'],
+    borderRadius: theme.borderRadius.md,
     overflow: 'hidden',
     glexGrow: 1,
     height: 200,
@@ -368,15 +368,15 @@ const styles = StyleSheet.create(theme => ({
     },
   },
   componentWrap: {
-    padding: theme.space['4'],
+    padding: theme.space['200'],
     flexGrow: 1,
   },
   text: {},
   textWrap: {
     borderTopColor: theme.colorMode === 'light' ? theme.colors.grey100 : theme.colors.grey400,
-    borderTopWidth: theme.borderWidths['1'],
-    paddingHorizontal: theme.space['4'],
-    paddingVertical: theme.space['2'],
+    borderTopWidth: theme.borderWidth['1'],
+    paddingHorizontal: theme.space['200'],
+    paddingVertical: theme.space['100'],
     backgroundColor: theme.colors.grey25,
   },
 }));

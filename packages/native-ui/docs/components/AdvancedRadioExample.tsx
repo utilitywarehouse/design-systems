@@ -1,28 +1,28 @@
+import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
+import React from 'react';
+import { StyleSheet } from 'react-native-unistyles';
 import {
   Badge,
+  Box,
   Heading,
   Radio,
   RadioGroup,
   RadioIcon,
   RadioIndicator,
   Text,
-  Box,
   type RadioProps as NativeUIRadioProps,
 } from '../../src';
-import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
-import React from 'react';
-import { StyleSheet } from 'react-native-unistyles';
 
 interface RadioProps {
   currentValue: string;
 }
 
-const styles = StyleSheet.create(({ colorMode, colors, radii, borderWidths, space }) => ({
+const styles = StyleSheet.create(({ colorMode, colors, borderRadius, borderWidth, space }) => ({
   radio: {
-    borderWidth: borderWidths[2],
+    borderWidth: borderWidth[2],
     borderColor: colorMode === 'light' ? colors.grey500 : colors.grey700,
-    borderRadius: radii.xl,
-    padding: space[4],
+    borderRadius: borderRadius.md,
+    padding: space['200'],
     variants: {
       checked: {
         true: {
@@ -45,10 +45,10 @@ const styles = StyleSheet.create(({ colorMode, colors, radii, borderWidths, spac
     color: colorMode === 'light' ? colors.brandWhite : colors.grey50,
   },
   heading: {
-    marginBottom: space[2],
+    marginBottom: space['100'],
   },
   badge: {
-    marginRight: space[2],
+    marginRight: space['100'],
     alignSelf: 'flex-end',
   },
 }));
@@ -64,7 +64,7 @@ const CustomRadio: React.FC<
   return (
     <Radio style={styles.radio} {...props}>
       <Box flexDirection="row" flex={1}>
-        <Box pr="$4" flex={1}>
+        <Box pr="200" flex={1}>
           {children}
         </Box>
         <RadioIndicator style={styles.indicator}>
@@ -82,7 +82,7 @@ const BulletListItem = ({ children }: { children: React.ReactNode }) => (
 );
 
 const BulletList = ({ children }: { children: React.ReactNode }) => (
-  <Box pl="$2" gap="$2">
+  <Box pl="100" gap="100">
     {children}
   </Box>
 );

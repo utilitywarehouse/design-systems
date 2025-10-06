@@ -16,7 +16,7 @@ const RadioList = () => {
   };
 
   return (
-    <Box p="$4" backgroundColor={colorMode === 'light' ? '#F2F2F2' : '$grey25'}>
+    <Box p="200" backgroundColor={colorMode === 'light' ? '#F2F2F2' : '$grey25'}>
       <RadioGroup
         aria-label="Radio Group"
         nativeID="Radio-group"

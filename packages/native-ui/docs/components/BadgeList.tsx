@@ -28,8 +28,8 @@ const BadgeList = () => {
       <ListItem onPress={() => console.log('pressed')} divider>
         <ListItemLeadingContent>
           <Box
-            padding="$3"
-            borderRadius="$lg"
+            padding="150"
+            borderRadius="md"
             bg={colorMode === 'light' ? '$apple50' : '$apple800'}
           >
             <ListItemIcon
@@ -52,8 +52,8 @@ const BadgeList = () => {
       <ListItem onPress={() => console.log('pressed')} divider={false}>
         <ListItemLeadingContent>
           <Box
-            padding="$3"
-            borderRadius="$lg"
+            padding="150"
+            borderRadius="md"
             bg={colorMode === 'light' ? '$apple50' : '$apple800'}
           >
             <ListItemIcon

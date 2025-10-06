@@ -1,13 +1,13 @@
-import { Meta, Canvas, Story, Controls } from '@storybook/addon-docs/blocks';
-import * as Stories from './Radio.stories';
-import { Radio, RadioGroup, RadioIndicator, RadioIcon, RadioLabel, Center, Box } from '../../';
+import { Canvas, Controls, Meta, Story } from '@storybook/addon-docs/blocks';
 import { TickSmallIcon } from '@utilitywarehouse/react-native-icons';
+import { Box, Center, Radio, RadioGroup, RadioIcon, RadioIndicator, RadioLabel } from '../../';
 import {
-  ViewFigmaButton,
-  BackToTopButton,
   AdvancedRadioExample,
+  BackToTopButton,
   UsageWrap,
+  ViewFigmaButton,
 } from '../../../docs/components';
+import * as Stories from './Radio.stories';
 
 <Meta title="Forms / Radio" />
 
@@ -185,12 +185,12 @@ interface RadioProps {
   currentValue: string;
 }
 
-const styles = StyleSheet.create(({ colorMode, colors, radii, borderWidths, space }) => ({
+const styles = StyleSheet.create(({ colorMode, colors, borderRadius, borderWidth, space }) => ({
   radio: {
-    borderWidth: borderWidths[2],
+    borderWidth: borderWidth[2],
     borderColor: colorMode === 'light' ? colors.grey500 : colors.grey700,
-    borderRadius: radii.xl,
-    padding: space[4],
+    borderRadius: borderRadius.lg,
+    padding: space['200'],
     variants: {
       checked: {
         true: {
@@ -213,10 +213,10 @@ const styles = StyleSheet.create(({ colorMode, colors, radii, borderWidths, spac
     color: colorMode === 'light' ? colors.brandWhite : colors.grey50,
   },
   heading: {
-    marginBottom: space[2],
+    marginBottom: space['100'],
   },
   badge: {
-    marginRight: space[2],
+    marginRight: space['100'],
     alignSelf: 'flex-end',
   },
 }));

@@ -47,12 +47,12 @@ Helper.displayName = 'Helper';
 const styles = StyleSheet.create(theme => ({
   container: {
     flexDirection: 'row',
-    gap: theme.space['1'],
+    gap: theme.space['50'],
     alignItems: 'center',
   },
   text: {
     color: theme.colors.grey800,
-    lineHeight: theme.lineHeights['lg'],
+    lineHeight: theme.lineHeight['500'],
     variants: {
       validationStatus: {
         valid: {

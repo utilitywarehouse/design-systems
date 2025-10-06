@@ -19,10 +19,10 @@ export const AccordionTitleText = ({ children, ...props }: TextProps) => {
 
 AccordionTitleText.displayName = 'AccordionTitleText';
 
-const styles = StyleSheet.create(({ isLight, colors, fontSizes, lineHeights }) => ({
+const styles = StyleSheet.create(({ isLight, colors, fontSize, lineHeight }) => ({
   titleText: {
-    fontSize: fontSizes.lg,
-    lineHeight: lineHeights.lg,
+    fontSize: fontSize['150'],
+    lineHeight: lineHeight['500'],
     flex: 1,
     variants: {
       disabled: {

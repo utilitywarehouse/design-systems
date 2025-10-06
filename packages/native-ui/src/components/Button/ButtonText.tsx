@@ -17,16 +17,16 @@ ButtonText.displayName = 'ButtonText';
 
 const styles = StyleSheet.create(theme => ({
   text: {
-    fontSize: theme.fontSizes.md,
-    lineHeight: theme.lineHeights['2xs'],
-    fontFamily: theme.fonts.body,
-    fontWeight: theme.fontWeights.medium,
+    fontSize: theme.fontSize['100'],
+    lineHeight: theme.lineHeight['100'],
+    fontFamily: theme.fontFamily.body,
+    fontWeight: theme.fontWeight.medium,
     variants: {
       variant: {
         solid: {},
         outline: {},
         ghost: {
-          fontWeight: theme.fontWeights.semibold,
+          fontWeight: theme.fontWeight.semibold,
         },
       },
       colorScheme: {

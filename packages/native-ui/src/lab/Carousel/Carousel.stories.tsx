@@ -69,20 +69,20 @@ interface CarouselExampleProps extends CarouselItemsProps {
 
 const styles = StyleSheet.create(theme => ({
   carousel: {
-    marginBottom: theme.space[4],
+    marginBottom: theme.space['200'],
   },
   carouselItem: {
     aspectRatio: 1.6,
-    borderRadius: theme.radii.lg,
+    borderRadius: theme.borderRadius.sm,
     justifyContent: 'center',
-    marginHorizontal: theme.space[2],
-    padding: theme.space[4],
+    marginHorizontal: theme.space['100'],
+    padding: theme.space['200'],
   },
   carouselItemTitle: {
     color: theme.colors.white,
   },
   title: {
-    marginBottom: theme.space[2],
+    marginBottom: theme.space['100'],
   },
 }));
 

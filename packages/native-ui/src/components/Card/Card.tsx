@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import CardProps from './Card.props';
@@ -36,12 +36,12 @@ Card.displayName = 'Card';
 
 const styles = StyleSheet.create(theme => ({
   card: {
-    borderRadius: theme.radii['xl'],
+    borderRadius: theme.borderRadius.lg,
     overflow: 'hidden',
     variants: {
       variant: {
         dashed: {
-          borderWidth: theme.borderWidths[2],
+          borderWidth: theme.borderWidth[2],
           borderStyle: 'dashed',
         },
         elevated: {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create(theme => ({
       },
       nested: {
         true: {
-          borderRadius: theme.radii['lg'],
+          borderRadius: theme.borderRadius.md,
         },
       },
       colorScheme: {
@@ -83,13 +83,13 @@ const styles = StyleSheet.create(theme => ({
       },
       padding: {
         large: {
-          padding: theme.space['4'],
+          padding: theme.space['200'],
         },
         medium: {
-          padding: theme.space['3'],
+          padding: theme.space['150'],
         },
         small: {
-          padding: theme.space['2'],
+          padding: theme.space['100'],
         },
         none: {
           padding: theme.space['0'],

@@ -14,28 +14,28 @@ const styles = StyleSheet.create(({ space }) => ({
     variants: {
       space: {
         xs: {
-          gap: space['1'],
+          gap: space['50'],
         },
         sm: {
-          gap: space['2'],
+          gap: space['100'],
         },
         md: {
-          gap: space['3'],
+          gap: space['150'],
         },
         lg: {
-          gap: space['4'],
+          gap: space['200'],
         },
         xl: {
-          gap: space['5'],
+          gap: space['250'],
         },
         '2xl': {
-          gap: space['6'],
+          gap: space['300'],
         },
         '3xl': {
-          gap: space['7'],
+          gap: space['350'],
         },
         '4xl': {
-          gap: space['8'],
+          gap: space['400'],
         },
       },
       reversed: {

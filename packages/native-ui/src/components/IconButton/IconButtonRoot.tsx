@@ -38,7 +38,7 @@ const styles = StyleSheet.create(theme => ({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: theme.radii.full,
+    borderRadius: theme.borderRadius.full,
     variants: {
       colorScheme: {
         cyan: {},
@@ -91,21 +91,21 @@ const styles = StyleSheet.create(theme => ({
         variant: 'outline',
         size: 'small',
         styles: {
-          paddingVertical: theme.space[1],
+          paddingVertical: theme.space['50'],
         },
       },
       {
         vaiant: 'outline',
         size: 'medium',
         styles: {
-          paddingVertical: theme.space[3],
+          paddingVertical: theme.space['150'],
         },
       },
       {
         variant: 'outline',
         size: 'large',
         styles: {
-          paddingVertical: theme.space[4],
+          paddingVertical: theme.space['200'],
         },
       },
       {

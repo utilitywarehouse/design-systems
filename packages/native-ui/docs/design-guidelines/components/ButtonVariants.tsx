@@ -2,22 +2,22 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { colors, colorsCommon } from '@utilitywarehouse/colour-system';
+import { AddSmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-native-icons';
+import React from 'react';
+import { VariantTitle } from '../../../docs/components';
 import {
+  Box,
   Button,
   ButtonGroup,
   ButtonIcon,
   ButtonProps,
   ButtonSpinner,
   ButtonText,
+  Flex,
   Heading,
   useColorMode,
   useMedia,
-  VStack,
-} from '@utilitywarehouse/native-ui';
-import { Box } from '@utilitywarehouse/native-ui/lab';
-import { AddSmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-native-icons';
-import React from 'react';
-import { VariantTitle } from '../../../docs/components';
+} from '../../../src';
 
 interface ButtonVariantsProps {
   colorScheme: ButtonProps['colorScheme'];
@@ -48,7 +48,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
       : undefined;
 
   return (
-    <VStack space="2xl">
+    <Flex direction="column" space="xl">
       <Box
         {...(validScheme
           ? {}
@@ -169,7 +169,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           </VariantTitle>
         </ButtonGroup>
       </Box>
-      <Box pb="$4">
+      <Box pb="200">
         <Heading color={textColor}>Ghost - {capitalisedScheme}</Heading>
 
         <ButtonGroup flexDirection="column" space="md">
@@ -226,7 +226,7 @@ const ButtonVariants: React.FC<ButtonVariantsProps> = ({
           </VariantTitle>
         </ButtonGroup>
       </Box>
-    </VStack>
+    </Flex>
   );
 };
 

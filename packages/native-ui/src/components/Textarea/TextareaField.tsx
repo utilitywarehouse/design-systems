@@ -27,16 +27,16 @@ const TextareaField = forwardRef<ElementRef<typeof TextInput>, TextInputProps>(
 
 TextareaField.displayName = 'TextareaField';
 
-const styles = StyleSheet.create(({ radii, fontSizes, colors, fontWeights, fonts }) => ({
+const styles = StyleSheet.create(({ borderRadius, fontSize, colors, fontWeight, fontFamily }) => ({
   input: {
     textAlignVertical: 'top',
     flex: 1,
     width: Platform.OS === 'web' ? '100%' : 'auto',
-    borderRadius: radii.none,
+    borderRadius: borderRadius.none,
     color: colors.grey1000,
-    fontSize: fontSizes.lg,
-    fontFamily: fonts.body,
-    fontWeight: fontWeights.normal,
+    fontSize: fontSize['150'],
+    fontFamily: fontFamily.body,
+    fontWeight: fontWeight.regular,
     marginTop: Platform.OS === 'ios' ? -4 : 0,
     variants: {
       focused: {

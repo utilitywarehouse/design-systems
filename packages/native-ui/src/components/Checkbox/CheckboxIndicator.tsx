@@ -36,10 +36,10 @@ const styles = StyleSheet.create(theme => ({
     alignItems: 'center',
     backgroundColor: 'transparent',
     borderColor: theme.isDark ? theme.colors.grey600 : theme.colors.grey500,
-    borderWidth: theme.borderWidths[2],
-    borderRadius: theme.radii['sm'],
-    width: theme.space[6],
-    height: theme.space[6],
+    borderWidth: theme.borderWidth[2],
+    borderRadius: theme.borderRadius.xs,
+    width: theme.space['300'],
+    height: theme.space['300'],
     variants: {
       checked: {
         true: {

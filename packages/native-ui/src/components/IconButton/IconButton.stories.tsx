@@ -1,13 +1,12 @@
-import React, { ComponentType } from 'react';
-import { IconButton, IconButtonProps } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { VariantTitle } from '../../../docs/components';
 import * as Icons from '@utilitywarehouse/react-native-icons';
-import { HStack } from '../HStack';
-import { VStack } from '../VStack';
-import { Heading } from '../Heading';
+import { Flex } from 'build';
+import { ComponentType } from 'react';
+import { IconButton, IconButtonProps } from '.';
+import { VariantTitle } from '../../../docs/components';
 import { Box } from '../Box';
 import { ButtonGroup } from '../Button';
+import { Heading } from '../Heading';
 
 const meta = {
   title: 'Stories / IconButton',
@@ -108,17 +107,17 @@ export const KitchenSink: Story = {
     const schemes: Array<IconButtonProps['colorScheme']> = ['cyan', 'red', 'green', 'grey', 'gold'];
     const variants: Array<IconButtonProps['variant']> = ['solid', 'outline', 'ghost'];
     return (
-      <HStack space="lg" wrap>
+      <Flex direction="row" space="lg" wrap="wrap">
         {schemes.map(scheme => (
-          <VStack space="lg" key={scheme}>
+          <Flex direction="column" space="lg" key={scheme}>
             {variants.map(variant => (
-              <Box key={variant} mb="$2">
-                <Box mb="$2">
+              <Box key={variant} mb="100">
+                <Box mb="100">
                   <Heading>
                     {scheme} - {variant}
                   </Heading>
                 </Box>
-                <VStack space="lg">
+                <Flex direction="column" space="lg">
                   <VariantTitle title="Default">
                     <IconButton icon={icon} variant={variant} colorScheme={scheme} />
                   </VariantTitle>
@@ -137,12 +136,12 @@ export const KitchenSink: Story = {
                       disabled
                     />
                   </VariantTitle>
-                </VStack>
+                </Flex>
               </Box>
             ))}
-          </VStack>
+          </Flex>
         ))}
-      </HStack>
+      </Flex>
     );
   },
 };

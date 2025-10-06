@@ -19,10 +19,10 @@ BadgeText.displayName = 'BadgeText';
 
 const styles = StyleSheet.create(theme => ({
   text: {
-    fontSize: theme.fontSizes.sm,
-    fontWeight: theme.fontWeights.normal,
-    lineHeight: theme.lineHeights['2xs'],
-    fontFamily: theme.fonts.body,
+    fontSize: theme.fontSize['90'],
+    fontWeight: theme.fontWeight.regular,
+    lineHeight: theme.lineHeight['100'],
+    fontFamily: theme.fontFamily.body,
     variants: {
       colorScheme: {
         cyan: {

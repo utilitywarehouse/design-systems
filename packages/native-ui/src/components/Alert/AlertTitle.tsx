@@ -15,7 +15,7 @@ AlertTitle.displayName = 'AlertTitle';
 
 const styles = StyleSheet.create(theme => ({
   text: {
-    fontWeight: theme.fontWeights.semibold,
+    fontWeight: theme.fontWeight.semibold,
   },
 }));
 

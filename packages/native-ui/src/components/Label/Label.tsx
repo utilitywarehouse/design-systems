@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react';
-import { StyleSheet } from 'react-native-unistyles';
+import { forwardRef } from 'react';
 import { Text } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import LabelProps from './Label.props';
 
 const Label = forwardRef<Text, LabelProps>(
@@ -18,17 +18,17 @@ Label.displayName = 'Label';
 
 const styles = StyleSheet.create(theme => ({
   text: {
-    letterSpacing: theme.letterSpacings.md,
-    fontFamily: theme.fonts.body,
+    letterSpacing: 0,
+    fontFamily: theme.fontFamily.body,
     fontStyle: 'normal',
-    fontWeight: theme.fontWeights.semibold,
-    lineHeight: theme.lineHeights['lg'],
-    fontSize: theme.fontSizes.md,
+    fontWeight: theme.fontWeight.semibold,
+    lineHeight: theme.lineHeight['500'],
+    fontSize: theme.fontSize['100'],
     color: theme.colors.grey1000,
     variants: {
       nested: {
         true: {
-          fontWeight: theme.fontWeights.normal,
+          fontWeight: theme.fontWeight.regular,
         },
       },
       disabled: {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { Flex } from '.';
 import { Box } from '../Box';
@@ -70,7 +69,7 @@ export const Playground: Story = {
           w={100 + index * 10}
           h={100 + index * 10}
           borderColor="$grey800"
-          borderRadius="md"
+          borderRadius="sm"
           borderWidth="2"
         />
       ))}

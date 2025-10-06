@@ -155,10 +155,10 @@ export const ToggleButtonGroup = <T extends string | number | boolean>({
   );
 };
 
-const styles = StyleSheet.create(({ colors, isLight, radii, space }) => ({
+const styles = StyleSheet.create(({ colors, isLight, borderRadius, space }) => ({
   indicator: {
     backgroundColor: isLight ? colors.cyan400 : colors.cyan700,
-    borderRadius: radii.full,
+    borderRadius: borderRadius.full,
     bottom: 0,
     left: 0,
     position: 'absolute',
@@ -172,7 +172,7 @@ const styles = StyleSheet.create(({ colors, isLight, radii, space }) => ({
     },
   },
   root: {
-    borderRadius: radii.full,
+    borderRadius: borderRadius.full,
     flexDirection: 'row',
     alignItems: 'center',
     position: 'relative',
@@ -185,7 +185,7 @@ const styles = StyleSheet.create(({ colors, isLight, radii, space }) => ({
         base: {
           height: 44,
           borderWidth: 1,
-          paddingHorizontal: space[1] - 1,
+          paddingHorizontal: space['50'] - 1,
           backgroundColor: isLight ? colors.white : colors.grey100,
           borderColor: isLight ? colors.grey100 : colors.grey300,
           shadowColor: 'rgba(18, 18, 18, 0.06)',

@@ -39,11 +39,11 @@ const styles = StyleSheet.create(theme => ({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: theme.space[2],
-    borderRadius: theme.radii.sm,
-    paddingVertical: theme.space[1],
+    paddingHorizontal: theme.space['100'],
+    borderRadius: theme.borderRadius.xs,
+    paddingVertical: theme.space['50'],
     alignSelf: 'flex-start',
-    gap: theme.space[1],
+    gap: theme.space['50'],
     variants: {
       colorScheme: {
         cyan: {
@@ -75,10 +75,10 @@ const styles = StyleSheet.create(theme => ({
       },
       size: {
         small: {
-          paddingVertical: theme.space[0.5],
+          paddingVertical: theme.space['25'],
         },
         large: {
-          paddingVertical: theme.space[1],
+          paddingVertical: theme.space['50'],
         },
       },
     },

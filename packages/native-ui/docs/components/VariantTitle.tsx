@@ -8,7 +8,7 @@ const VariantTitle: FC<
     upperCase?: boolean;
   }>
 > = ({ title, upperCase = true, children }) => (
-  <Box gap="$2">
+  <Box gap='100'>
     <Text textTransform={upperCase ? 'uppercase' : 'none'} size="xs" highlight color="$grey600">
       {title}
     </Text>
