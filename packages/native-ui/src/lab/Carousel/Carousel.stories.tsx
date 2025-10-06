@@ -1,9 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { colors } from '@utilitywarehouse/colour-system';
-import { FC } from 'react';
+import { useState } from 'react';
+import { LayoutChangeEvent } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
-import { Carousel, CarouselItem, CarouselItems, CarouselPagination } from '.';
-import { Box, Text } from '../../components';
+import {
+  Carousel,
+  CarouselItem,
+  CarouselItemsProps,
+  CarouselItems,
+  CarouselPagination,
+} from '.';
+import { Box, Heading, Text } from '../../components';
 
 const meta = {
   title: 'Stories / Carousel',
@@ -43,22 +50,27 @@ const meta = {
     // @ts-expect-error - Meta type mismatch
     enabled: true,
     inactiveItemOpacity: 1,
-    itemWidth: 300,
     showOverflow: false,
-    style: {},
-    width: 300,
   },
 } satisfies Meta<typeof CarouselItems>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-interface CarouselItemProps {
+interface CarouselItemCardProps {
   backgroundColor: string;
   title: string;
 }
 
+interface CarouselExampleProps extends CarouselItemsProps {
+  items: Array<any>;
+  title: string;
+}
+
 const styles = StyleSheet.create(theme => ({
+  carousel: {
+    marginBottom: theme.space[4],
+  },
   carouselItem: {
     aspectRatio: 1.6,
     borderRadius: theme.radii.lg,
@@ -69,9 +81,12 @@ const styles = StyleSheet.create(theme => ({
   carouselItemTitle: {
     color: theme.colors.white,
   },
+  title: {
+    marginBottom: theme.space[2],
+  },
 }));
 
-const CarouselItemCard: FC<CarouselItemProps> = ({ backgroundColor, title }) => {
+const CarouselItemCard = ({ backgroundColor, title }: CarouselItemCardProps ) => {
   return (
     <Box style={[styles.carouselItem, { backgroundColor }]}>
       <Text style={styles.carouselItemTitle}>{title}</Text>
@@ -95,26 +110,74 @@ const items = [
     key: 3,
     title: '3333',
   },
+  {
+    color: colors.cyan800,
+    key: 4,
+    title: '4444',
+  },
+  {
+    color: colors.pink700,
+    key: 5,
+    title: '5555',
+  },
 ];
 
+const CarouselExample = ({ items, title, ...props }: CarouselExampleProps) => (
+  <Box>
+    <Heading style={styles.title} size="h4">{title}</Heading>
+    <Carousel style={styles.carousel}>
+      <CarouselItems {...props}>
+        {items.map(({ color, key, title }) => (
+          <CarouselItem key={key}>
+            <CarouselItemCard
+              backgroundColor={color}
+              key={key}
+              title={`•••• •••• •••• ${title}`}
+            />
+          </CarouselItem>
+        ))}
+      </CarouselItems>
+      <CarouselPagination style={{ marginVertical: 16 }} />
+    </Carousel>
+  </Box>
+);
+
 export const Playground: Story = {
-  render: args => (
-    <Box>
-      <Carousel>
-        {/* @ts-expect-error - Meta type mismatch */}
-        <CarouselItems {...args}>
-          {items.map(({ color, key, title }) => (
-            <CarouselItem key={key}>
-              <CarouselItemCard
-                backgroundColor={color}
-                key={key}
-                title={`•••• •••• •••• ${title}`}
-              />
-            </CarouselItem>
-          ))}
-        </CarouselItems>
-        <CarouselPagination style={{ marginVertical: 16 }} />
-      </Carousel>
-    </Box>
-  ),
+  render: args => {
+    const [width, setWidth] = useState(0);
+
+    const handleLayout = ({ nativeEvent }: LayoutChangeEvent) => {
+      setWidth(nativeEvent.layout.width);
+    };
+
+    const itemWidth = width * 0.8 + 16;
+    
+    return (
+      <Box onLayout={handleLayout}>
+        <CarouselExample
+          {...args}
+          items={items}
+          title="Full-width"
+          width={width}
+        />
+        <CarouselExample
+          {...args}
+          centered
+          items={items}
+          itemWidth={itemWidth}
+          showOverflow
+          title="Fixed-width, centered"
+          width={width}
+        />
+        <CarouselExample
+          {...args}
+          items={items}
+          itemWidth={itemWidth}
+          showOverflow
+          title="Fixed-width, flex-start"
+          width={width}
+        />
+      </Box>
+    );
+  }
 };
