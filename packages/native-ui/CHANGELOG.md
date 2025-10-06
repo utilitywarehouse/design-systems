@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 1.0.2
+
+### Patch Changes
+
+- [#701](https://github.com/utilitywarehouse/design-systems/pull/701) [`db2d297`](https://github.com/utilitywarehouse/design-systems/commit/db2d297146865782966113982fed303c49429803) Thanks [@mickeyhead7](https://github.com/mickeyhead7)! - Adds layouts to Carousel component and fixes accessibility issues
+
 ## 1.0.1
 
 ### Patch Changes
