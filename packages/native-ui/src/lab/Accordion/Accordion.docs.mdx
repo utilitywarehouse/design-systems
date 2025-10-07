@@ -1,6 +1,4 @@
-import { Meta, Canvas, Story, Controls } from '@storybook/addon-docs/blocks';
-import * as Stories from './Accordion.stories';
-import { Center, Text, Alert, Box, Card, List, ListItem, VStack } from '../../';
+import { Canvas, Controls, Meta, Story } from '@storybook/addon-docs/blocks';
 import {
   Accordion,
   AccordionContent,
@@ -13,7 +11,9 @@ import {
   Actionsheet,
   ActionsheetContent,
 } from '../';
-import { ViewFigmaButton, BackToTopButton, UsageWrap } from '../../../docs/components';
+import { Alert, Box, Card, Center, Flex, List, ListItem, Text } from '../../';
+import { BackToTopButton, UsageWrap, ViewFigmaButton } from '../../../docs/components';
+import * as Stories from './Accordion.stories';
 
 <Meta title="Lab Components / Accordion" />
 
@@ -307,7 +307,7 @@ const MyComponent = () => {
 <UsageWrap>
   <Center style={{ minWidth: '300px' }}>
     <Accordion contentNoPadding divider={false}>
-      <VStack space="lg">
+      <Flex direction="column" space="xl">
         <Card padding="none">
           <AccordionItem title="Item 1">
             <List container="card">
@@ -347,19 +347,19 @@ const MyComponent = () => {
             </List>
           </AccordionItem>
         </Card>
-      </VStack>
+      </Flex>
     </Accordion>
   </Center>
 </UsageWrap>
 
 ```tsx
 import { Accordion, AccordionItem } from '@utilitywarehouse/native-ui/lab';
-import { List, ListItem, Card, VStack } from '@utilitywarehouse/native-ui';
+import { List, ListItem, Card, Flex } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
   return (
     <Accordion contentNoPadding divider={false}>
-      <VStack space="lg">
+      <Flex direction="column" space="xl">
         <Card padding="none">
           <AccordionItem title="Item 1">
             <List container="card">
@@ -399,7 +399,7 @@ const MyComponent = () => {
             </List>
           </AccordionItem>
         </Card>
-      </VStack>
+      </Flex>
     </Accordion>
   );
 };

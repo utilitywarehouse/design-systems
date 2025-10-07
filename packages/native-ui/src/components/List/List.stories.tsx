@@ -1,12 +1,11 @@
-import React from 'react';
-import { List, ListItem, ListItemIcon, ListItemTrailingIcon } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { VariantTitle } from '../../../docs/components';
-import { VStack } from '../VStack';
-import { SettingsMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { colors } from '@utilitywarehouse/colour-system';
+import { SettingsMediumIcon } from '@utilitywarehouse/react-native-icons';
+import { List, ListItem, ListItemIcon, ListItemTrailingIcon } from '.';
+import { VariantTitle } from '../../../docs/components';
 import { ColorValue } from '../../types';
 import { Card } from '../Card';
+import { Flex } from '../Flex';
 
 const meta = {
   title: 'Stories / List',
@@ -96,7 +95,7 @@ export const Variants: Story = {
       { text: 'List Item 3', supportingText: 'Supporting Text 3' },
     ];
     return (
-      <VStack space="sm" style={{ width: '100%' }}>
+      <Flex direction="column" space="md" style={{ width: '100%' }}>
         <VariantTitle title="List with title and supporting text">
           <List headingText="List Heading" headingSupportingText="Supporting Text">
             {list.map((item, index) => (
@@ -176,7 +175,7 @@ export const Variants: Story = {
             ))}
           </List>
         </VariantTitle>
-      </VStack>
+      </Flex>
     );
   },
 };

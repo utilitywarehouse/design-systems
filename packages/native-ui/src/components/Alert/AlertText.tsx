@@ -27,7 +27,7 @@ const styles = StyleSheet.create(theme => ({
     variants: {
       semibold: {
         true: {
-          fontWeight: theme.fontWeights.semibold,
+          fontWeight: theme.fontWeight.semibold,
         },
       },
       colorScheme: {

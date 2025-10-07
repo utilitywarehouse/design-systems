@@ -6,10 +6,10 @@ const UsageWrap: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="sb-unstyled">
       <Box
-        mt="$4"
-        p="$6"
+        mt="200"
+        p="300"
         bg={colorMode === 'light' ? '$white' : '$grey100'}
-        borderWidth="$1"
+        borderWidth="1"
         borderColor={colorMode === 'light' ? '#f0f0f0' : '#323232'}
         width="100%"
         style={{

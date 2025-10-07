@@ -1,9 +1,8 @@
-import React from 'react';
-import { Card } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
+import { Card } from '.';
 import { VariantTitle } from '../../../docs/components';
+import { Flex } from '../Flex';
 import { Text } from '../Text';
-import { VStack } from '../VStack';
 
 const meta = {
   title: 'Stories / Card',
@@ -66,7 +65,7 @@ export const Variants: Story = {
   },
   render: ({ children, ...props }) => {
     return (
-      <VStack space="lg">
+      <Flex direction="column" space="xl">
         <VariantTitle title="Dashed - Base">
           <Card {...props} variant="dashed">
             <Text color={props.surface === 'base' ? '$grey1000' : '$white'}>{children}</Text>
@@ -117,7 +116,7 @@ export const Variants: Story = {
             <Text color="$white">{children}</Text>
           </Card>
         </VariantTitle>
-      </VStack>
+      </Flex>
     );
   },
 };

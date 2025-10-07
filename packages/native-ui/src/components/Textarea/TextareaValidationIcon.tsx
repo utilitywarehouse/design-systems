@@ -37,7 +37,7 @@ const styles = StyleSheet.create(({ colors, space, colorMode }) => ({
     color: colors.grey700,
     width: 24,
     height: 24,
-    paddingLeft: space[2],
+    paddingLeft: space['100'],
     variants: {
       validationStatus: {
         invalid: {

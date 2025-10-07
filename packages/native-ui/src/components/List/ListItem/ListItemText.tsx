@@ -19,8 +19,8 @@ ListItemText.displayName = 'ListItemText';
 
 const styles = StyleSheet.create(theme => ({
   text: {
-    fontSize: theme.fontSizes.lg,
-    lineHeight: theme.lineHeights.lg,
+    fontSize: theme.fontSize['150'],
+    lineHeight: theme.lineHeight['500'],
     variants: {
       disabled: {
         true: {

@@ -2,7 +2,7 @@ import {
   Badge,
   BadgeText,
   Box,
-  HStack,
+  Flex,
   List,
   ListItem,
   ListItemContent,
@@ -28,8 +28,8 @@ const BadgeList = () => {
       <ListItem onPress={() => console.log('pressed')} divider>
         <ListItemLeadingContent>
           <Box
-            padding="$3"
-            borderRadius="$lg"
+            padding="150"
+            borderRadius="md"
             bg={colorMode === 'light' ? '$apple50' : '$apple800'}
           >
             <ListItemIcon
@@ -52,8 +52,8 @@ const BadgeList = () => {
       <ListItem onPress={() => console.log('pressed')} divider={false}>
         <ListItemLeadingContent>
           <Box
-            padding="$3"
-            borderRadius="$lg"
+            padding="150"
+            borderRadius="md"
             bg={colorMode === 'light' ? '$apple50' : '$apple800'}
           >
             <ListItemIcon
@@ -63,12 +63,12 @@ const BadgeList = () => {
           </Box>
         </ListItemLeadingContent>
         <ListItemContent>
-          <HStack style={{ justifyContent: 'space-between' }}>
+          <Flex direction="row" style={{ justifyContent: 'space-between' }}>
             <ListItemText>Electricity</ListItemText>
             <Badge colorScheme="green" size="small">
               <BadgeText>Smart meter</BadgeText>
             </Badge>
-          </HStack>
+          </Flex>
           <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
         </ListItemContent>
         <ListItemTrailingContent>

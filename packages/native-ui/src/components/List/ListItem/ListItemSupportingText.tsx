@@ -20,7 +20,7 @@ ListItemSupportingText.displayName = 'ListItemSupportingText';
 const styles = StyleSheet.create(theme => ({
   text: {
     color: theme.colors.grey600,
-    lineHeight: theme.lineHeights.sm,
+    lineHeight: theme.lineHeight['300'],
     variants: {
       disabled: {
         true: {

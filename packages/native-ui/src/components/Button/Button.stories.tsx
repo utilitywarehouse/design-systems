@@ -1,13 +1,11 @@
-import React from 'react';
-import { Button, ButtonGroup, ButtonProps } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { VariantTitle } from '../../../docs/components';
 import * as Icons from '@utilitywarehouse/react-native-icons';
-import { HStack } from '../HStack';
-import { VStack } from '../VStack';
-import { Heading } from '../Heading';
-import { Box } from '../Box';
 import { AddSmallIcon, ChevronRight01SmallIcon } from '@utilitywarehouse/react-native-icons';
+import { Button, ButtonGroup, ButtonProps } from '.';
+import { VariantTitle } from '../../../docs/components';
+import { Box } from '../Box';
+import { Flex } from '../Flex';
+import { Heading } from '../Heading';
 
 const meta = {
   title: 'Stories / Button',
@@ -120,17 +118,17 @@ export const KitchenSink: Story = {
     const schemes: Array<ButtonProps['colorScheme']> = ['cyan', 'red', 'green', 'grey', 'gold'];
     const variants: Array<ButtonProps['variant']> = ['solid', 'outline', 'ghost'];
     return (
-      <HStack space="lg" wrap>
+      <Flex direction="row" space="lg" wrap="wrap">
         {schemes.map(scheme => (
-          <VStack space="lg" key={scheme}>
+          <Flex direction="column" space="lg" key={scheme}>
             {variants.map(variant => (
-              <Box key={variant} mb="$2">
-                <Box mb="$2">
+              <Box key={variant} mb="100">
+                <Box mb="100">
                   <Heading>
                     {scheme} - {variant}
                   </Heading>
                 </Box>
-                <VStack space="lg">
+                <Flex space="lg" direction="column">
                   <VariantTitle title="Default">
                     <Button text={text} variant={variant} colorScheme={scheme} />
                   </VariantTitle>
@@ -160,12 +158,12 @@ export const KitchenSink: Story = {
                   <VariantTitle title="Loading">
                     <Button text={text} loading variant={variant} colorScheme={scheme} disabled />
                   </VariantTitle>
-                </VStack>
+                </Flex>
               </Box>
             ))}
-          </VStack>
+          </Flex>
         ))}
-      </HStack>
+      </Flex>
     );
   },
 };

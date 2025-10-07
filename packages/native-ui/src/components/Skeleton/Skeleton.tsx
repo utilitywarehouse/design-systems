@@ -21,21 +21,21 @@ const Skeleton = ({
   width,
   height,
   backgroundColor,
-  borderRadius,
+  borderRadius: br,
   style,
   ...props
 }: SkeletonProps) => {
   const opacity = useSharedValue(1);
 
-  const { colors, colorMode, radii } = useTheme();
+  const { colors, colorMode, borderRadius } = useTheme();
   const backgroundColorValue: ColorValue = useMemo(
     () => getStyleValue(backgroundColor, colors),
     [backgroundColor, colorMode]
   );
 
   const borderRadiusValue: AnimatableNumericValue = useMemo(
-    () => getStyleValue(borderRadius, radii),
-    [borderRadius]
+    () => getStyleValue(br, borderRadius),
+    [br]
   );
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -67,7 +67,7 @@ Skeleton.displayName = 'Skeleton';
 const styles = StyleSheet.create(theme => ({
   skeleton: {
     backgroundColor: theme.colorMode === 'light' ? theme.colors.grey75 : theme.colors.grey300,
-    borderRadius: theme.radii.sm,
+    borderRadius: theme.borderRadius.xs,
   },
 }));
 

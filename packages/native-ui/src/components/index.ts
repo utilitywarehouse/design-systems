@@ -1,6 +1,6 @@
 // Custom
-export { default as AnimatedOutline } from './AnimatedOutline';
 export * from './Alert';
+export { default as AnimatedOutline } from './AnimatedOutline';
 export * from './Badge';
 export * from './Box';
 export * from './Button';
@@ -12,10 +12,6 @@ export * from './Flex';
 export * from './FormField';
 export * from './Grid';
 export * from './Heading';
-/**
- * @deprecated Use `Flex` instead.
- */
-export * from './HStack';
 export * from './HTMLElements';
 export * from './Icon';
 export * from './IconButton';
@@ -29,19 +25,15 @@ export * from './Switch';
 export * from './Text';
 export * from './Textarea';
 export * from './ToggleButton';
-/**
- * @deprecated Use `Flex` instead.
- */
-export * from './VStack';
 
 export {
   FlatList,
-  ScrollView,
+  Image,
   KeyboardAvoidingView,
+  ScrollView,
+  SectionList,
   StatusBar,
   View,
-  SectionList,
-  Image,
 } from 'react-native';
 
 export { Pressable } from 'react-native';

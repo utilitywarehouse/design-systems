@@ -33,22 +33,22 @@ InputRoot.displayName = 'InputRoot';
 
 const styles = StyleSheet.create(theme => ({
   container: {
-    borderWidth: theme.borderWidths[2],
+    borderWidth: theme.borderWidth[2],
     borderTopColor: theme.colors.grey500,
     borderLeftColor: theme.colors.grey500,
     borderRightColor: theme.colors.grey500,
     borderBottomColor: theme.colors.grey900,
-    height: theme.space['14'],
-    borderTopLeftRadius: theme.radii['2xl'],
-    borderTopRightRadius: theme.radii['2xl'],
-    borderBottomLeftRadius: theme.radii.none,
-    borderBottomRightRadius: theme.radii.none,
+    height: theme.space['700'],
+    borderTopLeftRadius: theme.borderRadius.xl,
+    borderTopRightRadius: theme.borderRadius.xl,
+    borderBottomLeftRadius: theme.borderRadius.none,
+    borderBottomRightRadius: theme.borderRadius.none,
     flexDirection: 'row',
     overflow: 'hidden',
     alignContent: 'center',
-    paddingHorizontal: theme.space['4'],
+    paddingHorizontal: theme.space['200'],
     backgroundColor: theme.colorMode === 'light' ? theme.colors.white : theme.colors.grey100,
-    gap: theme.space['2'],
+    gap: theme.space['100'],
     variants: {
       focus: {
         true: {

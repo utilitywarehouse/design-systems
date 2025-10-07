@@ -32,10 +32,10 @@ ListHeading.displayName = 'ListHeading';
 
 const styles = StyleSheet.create(theme => ({
   container: {
-    gap: theme.space[1],
-    paddingHorizontal: theme.space[4],
-    paddingTop: theme.space[4],
-    paddingBottom: theme.space[3],
+    gap: theme.space['50'],
+    paddingHorizontal: theme.space['200'],
+    paddingTop: theme.space['200'],
+    paddingBottom: theme.space['150'],
     variants: {
       container: {
         full: {},

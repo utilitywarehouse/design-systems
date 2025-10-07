@@ -20,10 +20,10 @@ const ToggleButtonText = ({ children, ...props }: TextProps) => {
 
 ToggleButtonText.displayName = 'ToggleButtonText';
 
-const styles = StyleSheet.create(({ isLight, colors, fontWeights, fonts, fontSizes }) => ({
+const styles = StyleSheet.create(({ isLight, colors, fontWeight, fontFamily, fontSize }) => ({
   text: {
-    fontWeight: fontWeights.medium,
-    fontFamily: fonts.body,
+    fontWeight: fontWeight.medium,
+    fontFamily: fontFamily.body,
     textAlign: 'center',
     color: isLight ? colors.grey1000 : colors.grey800,
     variants: {
@@ -34,10 +34,10 @@ const styles = StyleSheet.create(({ isLight, colors, fontWeights, fonts, fontSiz
       },
       size: {
         small: {
-          fontSize: fontSizes.sm,
+          fontSize: fontSize['90'],
         },
         base: {
-          fontSize: fontSizes.md,
+          fontSize: fontSize['100'],
         },
       },
       active: {

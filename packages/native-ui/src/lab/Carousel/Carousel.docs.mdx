@@ -1,9 +1,9 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
-import * as Stories from './Carousel.stories';
-import { Alert, Center, Text, Box } from '../../';
-import { Carousel, CarouselItem, CarouselItems, CarouselPagination } from './';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { colors } from '@utilitywarehouse/colour-system';
+import { Alert, Box, Center, Text } from '../../';
 import { BackToTopButton, DocComponentWrap, UsageWrap } from '../../../docs/components';
+import { Carousel, CarouselItem, CarouselItems, CarouselPagination } from './';
+import * as Stories from './Carousel.stories';
 
 <Meta title="Lab Components / Carousel" />
 
@@ -19,10 +19,10 @@ The carousel is a component for presenting information in a manner for customers
 - [Props](#props)
 
 <DocComponentWrap>
-  <Box mb="$4">
+  <Box mb="200">
     <Alert text="This component is in the lab until it has been more widely implemented and any implementations standardised." />
   </Box>
-  <Box mb="$6">
+  <Box mb="300">
     <Alert
       colorScheme="gold"
       text="The carousel implements a FlatList. Some props cannot be modified. This is to ensure standardised behaviour and presentation."
@@ -44,12 +44,12 @@ The carousel is a component for presenting information in a manner for customers
     <Carousel>
       <CarouselItems width={300}>
         <CarouselItem>
-          <Box p="$2" aspectRatio={1.6} backgroundColor="$purple800">
+          <Box p="100" aspectRatio={1.6} backgroundColor="$purple800">
             <Text color="$white">I'm a Carousel item!</Text>
           </Box>
         </CarouselItem>
         <CarouselItem>
-          <Box p="$2" aspectRatio={1.6} backgroundColor="$red800">
+          <Box p="100" aspectRatio={1.6} backgroundColor="$red800">
             <Text color="$white">I'm another Carousel item!</Text>
           </Box>
         </CarouselItem>
@@ -66,12 +66,12 @@ const MyComponent = () => (
   <Carousel>
     <CarouselItems width={300}>
       <CarouselItem>
-        <Box p="$2" aspectRatio={1.6} backgroundColor="$purple800">
+        <Box p="100" aspectRatio={1.6} backgroundColor="$purple800">
           <Text color="$white">I'm a Carousel item!</Text>
         </Box>
       </CarouselItem>
       <CarouselItem>
-        <Box p="$2" aspectRatio={1.6} backgroundColor="$red800">
+        <Box p="100" aspectRatio={1.6} backgroundColor="$red800">
           <Text color="$white">I'm another Carousel item!</Text>
         </Box>
       </CarouselItem>
@@ -89,12 +89,12 @@ The `CarouselPagination` component is to be used in conjunction with the `Carous
     <Carousel>
       <CarouselItems width={300}>
         <CarouselItem>
-          <Box p="$2" aspectRatio={1.6} backgroundColor="$purple800">
+          <Box p="100" aspectRatio={1.6} backgroundColor="$purple800">
             <Text color="$white">I'm a Carousel item!</Text>
           </Box>
         </CarouselItem>
         <CarouselItem>
-          <Box p="$2" aspectRatio={1.6} backgroundColor="$red800">
+          <Box p="100" aspectRatio={1.6} backgroundColor="$red800">
             <Text color="$white">I'm another Carousel item!</Text>
           </Box>
         </CarouselItem>
@@ -112,12 +112,12 @@ const MyComponent = () => (
   <Carousel>
     <CarouselItems width={300}>
       <CarouselItem>
-        <Box p="$2" aspectRatio={1.6} backgroundColor="$purple800">
+        <Box p="100" aspectRatio={1.6} backgroundColor="$purple800">
           <Text color="$white">I'm a Carousel item!</Text>
         </Box>
       </CarouselItem>
       <CarouselItem>
-        <Box p="$2" aspectRatio={1.6} backgroundColor="$red800">
+        <Box p="100" aspectRatio={1.6} backgroundColor="$red800">
           <Text color="$white">I'm another Carousel item!</Text>
         </Box>
       </CarouselItem>

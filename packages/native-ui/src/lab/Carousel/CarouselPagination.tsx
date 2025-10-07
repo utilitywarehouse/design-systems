@@ -12,17 +12,17 @@ const styles = StyleSheet.create(theme => ({
     backgroundColor: theme.colorMode === 'light' ? theme.colors.cyan400 : theme.colors.cyan700,
   },
   page: {
-    width: theme.space[2],
-    height: theme.space[2],
-    borderRadius: theme.space[2],
+    width: theme.space['100'],
+    height: theme.space['100'],
+    borderRadius: theme.space['100'],
     backgroundColor: theme.colorMode === 'light' ? theme.colors.grey175 : theme.colors.grey300,
-    paddingTop: theme.space[2],
+    paddingTop: theme.space['100'],
     overflow: 'hidden',
   },
   root: {
     alignSelf: 'center',
     flexDirection: 'row',
-    columnGap: theme.space[2],
+    columnGap: theme.space['100'],
   },
 }));
 

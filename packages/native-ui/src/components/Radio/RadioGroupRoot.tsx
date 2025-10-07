@@ -14,7 +14,7 @@ RadioGroup.displayName = 'RadioGroup';
 
 const styles = StyleSheet.create(theme => ({
   container: {
-    gap: theme.space[2],
+    gap: theme.space['100'],
   },
 }));
 

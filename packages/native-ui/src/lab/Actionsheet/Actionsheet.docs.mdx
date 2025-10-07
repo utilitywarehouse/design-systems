@@ -1,19 +1,19 @@
-import { Meta, Canvas, Story, Controls } from '@storybook/addon-docs/blocks';
-import * as Stories from './Actionsheet.stories';
-import { Center, Text, Box, Alert } from '../../';
+import { Canvas, Controls, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Alert, Box, Center, Text } from '../../';
+import {
+  AdvancedActionsheet,
+  BackToTopButton,
+  DocComponentWrap,
+  UsageWrap,
+  ViewFigmaButton,
+} from '../../../docs/components';
 import {
   Actionsheet,
   ActionsheetContent,
   ActionsheetDragIndicator,
   ActionsheetDragIndicatorWrapper,
 } from './';
-import {
-  ViewFigmaButton,
-  BackToTopButton,
-  DocComponentWrap,
-  UsageWrap,
-  AdvancedActionsheet,
-} from '../../../docs/components';
+import * as Stories from './Actionsheet.stories';
 
 <Meta title="Lab Components / Actionsheet" />
 
@@ -24,7 +24,7 @@ import {
 # Actionsheet
 
 <DocComponentWrap>
-  <Box mt="$6" mb="4">
+  <Box mt="300" mb="4">
     <Alert
       colorScheme="gold"
       text="These components may potentially change their API and/or design and will be replaced in minor release versions, eventually being integrated into the main library code. Use at your own discretion."
@@ -64,7 +64,7 @@ const MyComponent = () => {
         <ButtonText>Open</ButtonText>
       </Button>
       <Actionsheet isOpen={isOpen} onClose={handleClose}>
-        <Box gap="$3">
+        <Box gap="150">
           <Text>Hello, this is the Actionsheet!</Text>
           <Button onPress={handleClose}>Close</Button>
         </Box>
@@ -130,15 +130,15 @@ import {
 import { Button, StyleSheet, Text } from '@utilitywarehouse/native-ui';
 import React, { useState } from 'react';
 
-const styles = StyleSheet.create(({ space, colors, radii }) => ({
+const styles = StyleSheet.create(({ space, colors, borderRadius }) => ({
   indicator: {
-    width: space['16'],
-    height: space['3'],
-    borderRadius: radii.full,
+    width: space['800'],
+    height: space['150'],
+    borderRadius: borderRadius.full,
     backgroundColor: colors.green600,
   },
   content: {
-    paddingHorizontal: space['6'],
+    paddingHorizontal: space['300'],
     height: 260,
     backgroundColor: colors.green100,
   },
@@ -160,7 +160,7 @@ const AdvancedActionsheet = () => {
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator style={styles.indicator} />
           </ActionsheetDragIndicatorWrapper>
-          <Box gap="$3">
+          <Box gap="150">
             <Text>Hello, this is the green Actionsheet!</Text>
             <Text>What lovely colours!</Text>
           </Box>
@@ -192,7 +192,7 @@ const styles = StyleSheet.create(({ space }) => ({
     flex: 1,
   },
   scrollContainer: {
-    paddingBottom: space['4'],
+    paddingBottom: space['200'],
   },
 }));
 
@@ -200,7 +200,7 @@ const MyComponent = () => {
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   return (
-    <Box h="$96" alignItems="center" justifyContent="center">
+    <Box h={394} alignItems="center" justifyContent="center">
       <Button onPress={handleClose}>
         <ButtonText>Open</ButtonText>
       </Button>
@@ -213,10 +213,10 @@ const MyComponent = () => {
       >
         <ActionsheetContent style={styles.content}>
           <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollContainer}>
-            <Box mb="$4">
+            <Box mb="200">
               <Heading textAlign="center">Out of range reading</Heading>
             </Box>
-            <Box mb="$6" gap="$2">
+            <Box mb="300" gap="100">
               <Text>
                 The number that was entered was too high or too low for what we&apos;d expect based
                 on past readings and your typical energy usage. This normally suggests an error when

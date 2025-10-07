@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { forwardRef, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 import { Text } from 'react-native';
-import type TextProps from './Text.props';
 import { StyleSheet } from 'react-native-unistyles';
+import { useTheme } from '../../hooks';
 import type { ColorValue } from '../../types';
 import getStyleValue from '../../utils/getStyleValue';
-import { useTheme } from '../../hooks';
+import type TextProps from './Text.props';
 
 const TextComp = forwardRef<Text, TextProps>(
   (
@@ -82,28 +82,28 @@ TextComp.displayName = 'Text';
 const styles = StyleSheet.create(theme => ({
   text: {
     color: theme.colors.grey1000,
-    fontWeight: theme.fontWeights.normal,
-    letterSpacing: theme.letterSpacings.md,
-    fontFamily: theme.fonts.body,
+    fontWeight: theme.fontWeight.regular,
+    letterSpacing: 0,
+    fontFamily: theme.fontFamily.body,
     fontStyle: 'normal',
     variants: {
       size: {
         xs: {
-          fontSize: theme.fontSizes.xs,
-          lineHeight: theme.lineHeights['2xs'],
+          fontSize: theme.fontSize['75'],
+          lineHeight: theme.lineHeight['100'],
         },
         sm: {
-          fontSize: theme.fontSizes.sm,
-          lineHeight: theme.lineHeights['2xs'],
+          fontSize: theme.fontSize['90'],
+          lineHeight: theme.lineHeight['100'],
         },
         md: {
-          fontSize: theme.fontSizes.md,
-          lineHeight: theme.lineHeights['lg'],
+          fontSize: theme.fontSize['100'],
+          lineHeight: theme.lineHeight['500'],
         },
       },
       bold: {
         true: {
-          fontWeight: theme.fontWeights.bold,
+          fontWeight: theme.fontWeight.bold,
         },
       },
       underline: {
@@ -123,7 +123,7 @@ const styles = StyleSheet.create(theme => ({
       },
       highlight: {
         true: {
-          fontWeight: theme.fontWeights.semibold,
+          fontWeight: theme.fontWeight.semibold,
         },
       },
     },

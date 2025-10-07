@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { ToggleButton, ToggleButtonGroup } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { VStack } from '../VStack';
+import { MoonSmallIcon, SunSmallIcon } from '@utilitywarehouse/react-native-icons';
+import { useState } from 'react';
+import { ToggleButton, ToggleButtonGroup } from '.';
 import { Box } from '../Box';
+import { Flex } from '../Flex';
 import { Text } from '../Text';
 import ToggleButtonIcon from './ToggleButtonIcon';
-import { MoonSmallIcon, SunSmallIcon } from '@utilitywarehouse/react-native-icons';
 
 const meta = {
   title: 'Stories / ToggleButton',
@@ -41,7 +41,7 @@ export const Playground: Story = {
     const [value, setValue] = useState(val);
 
     return (
-      <VStack space="lg">
+      <Flex direction="column" space="xl">
         <Box width="100%" maxWidth={400}>
           <ToggleButtonGroup
             value={value}
@@ -56,7 +56,7 @@ export const Playground: Story = {
         </Box>
 
         <Text>Active selection: {value}</Text>
-      </VStack>
+      </Flex>
     );
   },
 };

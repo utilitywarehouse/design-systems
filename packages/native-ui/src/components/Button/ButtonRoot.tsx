@@ -36,12 +36,12 @@ ButtonRoot.displayName = 'ButtonRoot';
 
 const styles = StyleSheet.create(theme => ({
   container: {
-    borderRadius: theme.radii.full,
+    borderRadius: theme.borderRadius.full,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: theme.space[2],
-    paddingHorizontal: theme.space[6],
+    gap: theme.space['100'],
+    paddingHorizontal: theme.space['300'],
     variants: {
       colorScheme: {
         cyan: {},
@@ -72,15 +72,15 @@ const styles = StyleSheet.create(theme => ({
       },
       size: {
         small: {
-          paddingVertical: theme.space[2],
+          paddingVertical: theme.space['100'],
           minHeight: 32,
         },
         medium: {
-          paddingVertical: theme.space[4],
+          paddingVertical: theme.space['200'],
           minHeight: 48,
         },
         large: {
-          paddingVertical: theme.space[5],
+          paddingVertical: theme.space['250'],
           minHeight: 56,
         },
       },
@@ -90,21 +90,21 @@ const styles = StyleSheet.create(theme => ({
         variant: 'outline',
         size: 'small',
         styles: {
-          paddingVertical: theme.space[1],
+          paddingVertical: theme.space['50'],
         },
       },
       {
         vaiant: 'outline',
         size: 'medium',
         styles: {
-          paddingVertical: theme.space[3],
+          paddingVertical: theme.space['150'],
         },
       },
       {
         variant: 'outline',
         size: 'large',
         styles: {
-          paddingVertical: theme.space[4],
+          paddingVertical: theme.space['200'],
         },
       },
       // Cyan

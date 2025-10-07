@@ -1,9 +1,8 @@
-import React from 'react';
-import { Alert } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
-import { VStack } from '../VStack';
+import { Alert } from '.';
 import { VariantTitle } from '../../../docs/components';
+import { Flex } from '../Flex';
 
 const meta = {
   title: 'Stories / Alert',
@@ -57,7 +56,7 @@ export const Playground: Story = {};
 
 export const Variants: Story = {
   render: () => (
-    <VStack space="sm">
+    <Flex direction="row" space="md">
       <VariantTitle title="Info - Cyan">
         <Alert
           colorScheme="cyan"
@@ -83,6 +82,6 @@ export const Variants: Story = {
           text="Warning: Reading the following content may cause spontaneous outbursts of 'aha!' moments"
         />
       </VariantTitle>
-    </VStack>
+    </Flex>
   ),
 };

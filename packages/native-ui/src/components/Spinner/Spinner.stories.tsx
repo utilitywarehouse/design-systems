@@ -1,9 +1,8 @@
-import React from 'react';
-import { Spinner } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { VStack } from '../VStack';
-import { VariantTitle } from '../../../docs/components';
 import { colors } from '@utilitywarehouse/colour-system';
+import { Spinner } from '.';
+import { VariantTitle } from '../../../docs/components';
+import { Flex } from '../Flex';
 
 const meta = {
   title: 'Stories / Spinner',
@@ -36,7 +35,7 @@ export const Playground: Story = {};
 
 export const Variants: Story = {
   render: args => (
-    <VStack space="md">
+    <Flex direction="column" space="lg">
       <VariantTitle title="x-small - xs">
         <Spinner {...args} size="xs" />
       </VariantTitle>
@@ -49,6 +48,6 @@ export const Variants: Story = {
       <VariantTitle title="large - lg">
         <Spinner {...args} size="lg" />
       </VariantTitle>
-    </VStack>
+    </Flex>
   ),
 };

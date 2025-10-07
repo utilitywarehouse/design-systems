@@ -1,4 +1,5 @@
-import React from 'react';
+import { Meta, StoryObj } from '@storybook/react-vite';
+import * as Icons from '@utilitywarehouse/react-native-icons';
 import {
   FormField,
   FormFieldHelperText,
@@ -8,13 +9,11 @@ import {
   FormFieldValid,
   FormFieldValidText,
 } from '.';
-import { Meta, StoryObj } from '@storybook/react-vite';
-import * as Icons from '@utilitywarehouse/react-native-icons';
 import { VariantTitle } from '../../../docs/components';
+import { Flex } from '../Flex';
 import { Input } from '../Input';
-import { VStack } from '../VStack';
-import FormFieldLabel from './FormFieldLabel';
 import FormFieldHelper from './FormFieldHelper';
+import FormFieldLabel from './FormFieldLabel';
 
 const meta = {
   title: 'Stories / FormField',
@@ -103,7 +102,7 @@ export const Playground: Story = {
 export const Variants: Story = {
   render: () => {
     return (
-      <VStack space="lg">
+      <Flex direction="column" space="xl">
         <VariantTitle title="Default">
           <FormField>
             <FormFieldLabel>
@@ -173,7 +172,7 @@ export const Variants: Story = {
             </FormFieldHelper>
           </FormField>
         </VariantTitle>
-      </VStack>
+      </Flex>
     );
   },
 };

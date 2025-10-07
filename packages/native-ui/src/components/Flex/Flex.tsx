@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { View, ViewStyle } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import FlexProps from './Flex.props';
@@ -12,7 +12,7 @@ const Flex = forwardRef<View, FlexProps>(
       align = 'flex-start',
       justify = 'flex-start',
       wrap = 'nowrap',
-      space = 'md',
+      space = 'sm',
       ...rest
     },
     ref

@@ -1,22 +1,22 @@
+import { useState } from 'react';
+import { StyleSheet } from 'react-native-unistyles';
 import {
   Actionsheet,
   ActionsheetContent,
   ActionsheetDragIndicator,
   ActionsheetDragIndicatorWrapper,
 } from '../../lab';
-import { Button, Text, Box } from '../../src';
-import { StyleSheet } from 'react-native-unistyles';
-import React, { useState } from 'react';
+import { Box, Button, Text } from '../../src';
 
 const styles = StyleSheet.create(theme => ({
   indicator: {
-    width: theme.space['16'],
-    height: theme.space['3'],
-    borderRadius: theme.radii.full,
+    width: theme.space['800'],
+    height: theme.space['150'],
+    borderRadius: theme.borderRadius.full,
     backgroundColor: theme.colors.green600,
   },
   content: {
-    paddingHorizontal: theme.space['6'],
+    paddingHorizontal: theme.space['300'],
     height: 260,
     backgroundColor: theme.colors.green100,
   },
@@ -38,7 +38,7 @@ const AdvancedActionsheet = () => {
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator style={styles.indicator} />
           </ActionsheetDragIndicatorWrapper>
-          <Box gap="$3">
+          <Box gap="150">
             <Text>Hello, this is the green Actionsheet!</Text>
             <Text>What lovely colours!</Text>
           </Box>

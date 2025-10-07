@@ -117,4 +117,4 @@ export default {
     "900": "#f0f0f0",
     "1000": "#fafafa"
   }
-};
+} as const;

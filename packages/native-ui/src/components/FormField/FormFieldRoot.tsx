@@ -15,7 +15,7 @@ FormFieldRoot.displayName = 'FormFieldRoot';
 const styles = StyleSheet.create(theme => ({
   container: {
     flexDirection: 'column',
-    gap: theme.space[2],
+    gap: theme.space['100'],
   },
 }));
 

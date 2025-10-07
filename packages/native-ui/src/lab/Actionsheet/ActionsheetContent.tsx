@@ -110,12 +110,12 @@ export default gestureHandlerRootHOC(ActionsheetContentComponent);
 const styles = StyleSheet.create(theme => ({
   content: {
     backgroundColor: theme.colorMode === 'light' ? theme.colors.white : theme.colors.grey100,
-    borderTopLeftRadius: theme.radii['2xl'],
-    borderTopRightRadius: theme.radii['2xl'],
-    borderBottomLeftRadius: theme.radii.none,
-    borderBottomRightRadius: theme.radii.none,
-    paddingHorizontal: theme.space['5'],
-    paddingBottom: theme.space['5'],
+    borderTopLeftRadius: theme.borderRadius.xl,
+    borderTopRightRadius: theme.borderRadius.xl,
+    borderBottomLeftRadius: theme.borderRadius.none,
+    borderBottomRightRadius: theme.borderRadius.none,
+    paddingHorizontal: theme.space['250'],
+    paddingBottom: theme.space['250'],
     overflow: 'hidden',
     alignSelf: 'stretch',
     flexGrow: 0,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create(theme => ({
   },
   safeAreaView: {},
   extraStyles: (minHeight: DimensionValue, showIndicator?: boolean) => {
-    const paddingTop = showIndicator ? theme.space['2'] : theme.space['5'];
+    const paddingTop = showIndicator ? theme.space['100'] : theme.space['250'];
     return {
       minHeight,
       paddingTop,

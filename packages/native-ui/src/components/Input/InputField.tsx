@@ -26,14 +26,14 @@ const styles = StyleSheet.create(theme => ({
   input: {
     flex: 1,
     width: 'auto',
-    borderTopLeftRadius: theme.radii['2xl'],
-    borderTopRightRadius: theme.radii['2xl'],
-    borderBottomLeftRadius: theme.radii.none,
-    borderBottomRightRadius: theme.radii.none,
+    borderTopLeftRadius: theme.borderRadius.xl,
+    borderTopRightRadius: theme.borderRadius.xl,
+    borderBottomLeftRadius: theme.borderRadius.none,
+    borderBottomRightRadius: theme.borderRadius.none,
     color: theme.colors.grey1000,
-    fontSize: theme.fontSizes.lg,
-    fontFamily: theme.fonts.body,
-    fontWeight: theme.fontWeights.normal,
+    fontSize: theme.fontSize['150'],
+    fontFamily: theme.fontFamily.body,
+    fontWeight: theme.fontWeight.regular,
     variants: {
       focused: {
         true: {

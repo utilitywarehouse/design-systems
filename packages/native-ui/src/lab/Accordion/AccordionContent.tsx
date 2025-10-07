@@ -21,8 +21,8 @@ AccordionContent.displayName = 'AccordionContent';
 const styles = StyleSheet.create(({ space }) => ({
   content: {
     paddingTop: 0,
-    paddingHorizontal: space[4],
-    paddingBottom: space[4],
+    paddingHorizontal: space['200'],
+    paddingBottom: space['200'],
     variants: {
       noPadding: {
         true: {

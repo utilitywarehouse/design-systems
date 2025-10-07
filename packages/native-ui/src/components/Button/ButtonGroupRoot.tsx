@@ -42,28 +42,28 @@ const styles = StyleSheet.create(theme => ({
     variants: {
       space: {
         xs: {
-          gap: theme.space['1'],
+          gap: theme.space['50'],
         },
         sm: {
-          gap: theme.space['2'],
+          gap: theme.space['100'],
         },
         md: {
-          gap: theme.space['3'],
+          gap: theme.space['150'],
         },
         lg: {
-          gap: theme.space['4'],
+          gap: theme.space['200'],
         },
         xl: {
-          gap: theme.space['5'],
+          gap: theme.space['250'],
         },
         '2xl': {
-          gap: theme.space['6'],
+          gap: theme.space['300'],
         },
         '3xl': {
-          gap: theme.space['7'],
+          gap: theme.space['350'],
         },
         '4xl': {
-          gap: theme.space['8'],
+          gap: theme.space['400'],
         },
       },
       attached: {

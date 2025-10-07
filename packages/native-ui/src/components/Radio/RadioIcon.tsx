@@ -25,7 +25,7 @@ const styles = StyleSheet.create(theme => ({
   container: {
     width: 14,
     height: 14,
-    borderRadius: theme.radii.full,
+    borderRadius: theme.borderRadius.full,
     color: theme.colorMode === 'dark' ? theme.colors.cyan700 : theme.colors.cyan500,
     variants: {
       disabled: {

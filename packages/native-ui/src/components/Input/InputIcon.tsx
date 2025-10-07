@@ -30,7 +30,7 @@ InputIcon.displayName = 'InputIcon';
 
 const styles = StyleSheet.create(theme => ({
   icon: {
-    color: theme.tokens.input.iconColor,
+    color: theme.colors.grey700,
     width: 24,
     height: 24,
     variants: {

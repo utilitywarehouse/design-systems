@@ -82,7 +82,7 @@ const styles = StyleSheet.create(theme => ({
     alignItems: 'center',
     padding: theme.space['150'],
     flexDirection: 'row',
-    borderRadius: theme.borderRadius.md,
+    borderRadius: theme.borderRadius.sm,
     gap: theme.space['100'],
     borderWidth: theme.borderWidth[1],
     variants: {

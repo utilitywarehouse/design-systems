@@ -18,7 +18,7 @@ ListHeadingSupportingText.displayName = 'ListHeadingSupportingText';
 const styles = StyleSheet.create(theme => ({
   supportingText: {
     color: theme.colors.grey700,
-    lineHeight: theme.lineHeights.sm,
+    lineHeight: theme.lineHeight['300'],
   },
 }));
 

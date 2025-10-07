@@ -1,27 +1,27 @@
-import { Meta, Primary, Controls, Story, Canvas } from '@storybook/addon-docs/blocks';
-import * as Stories from './Alert.stories';
+import { Canvas, Controls, Meta, Primary, Story } from '@storybook/addon-docs/blocks';
 import {
-  Alert,
-  Center,
-  AlertIcon,
-  AlertText,
-  AlertTitle,
-  AlertLink,
-  AlertLinkChevron,
-  AlertLinkText,
-  AlertIconButton,
-  AlertIconButtonChevron,
-  AlertCloseButton,
-  AlertCloseButtonIcon,
-  VStack,
-} from '../../';
-import {
-  InformationMediumContainedIcon,
   ChevronRightMediumIcon,
   ChevronRightSmallIcon,
   CloseSmallIcon,
+  InformationMediumContainedIcon,
 } from '@utilitywarehouse/react-native-icons';
-import { ViewFigmaButton, BackToTopButton, UsageWrap } from '../../../docs/components';
+import {
+  Alert,
+  AlertCloseButton,
+  AlertCloseButtonIcon,
+  AlertIcon,
+  AlertIconButton,
+  AlertIconButtonChevron,
+  AlertLink,
+  AlertLinkChevron,
+  AlertLinkText,
+  AlertText,
+  AlertTitle,
+  Center,
+  Flex,
+} from '../../';
+import { BackToTopButton, UsageWrap, ViewFigmaButton } from '../../../docs/components';
+import * as Stories from './Alert.stories';
 
 <Meta title="Components / Alert" />
 
@@ -99,14 +99,14 @@ If you need to use the Alert component in a more advanced way, you can use the p
 <UsageWrap>
   <Alert colorScheme="cyan">
     <AlertIcon />
-    <VStack space="sm" style={{ flex: 1 }}>
+    <Flex space="md" style={{ flex: 1 }}>
       <AlertTitle>Information</AlertTitle>
       <AlertText>Unlock the power of knowledge with the following information.</AlertText>
       <AlertLink onPress={() => console.log('Link clicked')}>
         <AlertLinkText>Learn more</AlertLinkText>
         <AlertLinkChevron />
       </AlertLink>
-    </VStack>
+    </Flex>
     <AlertIconButton onPress={() => console.log('Icon button clicked')}>
       <AlertIconButtonChevron />
     </AlertIconButton>
@@ -136,7 +136,7 @@ const MyComponent = () => {
   return (
     <Alert colorScheme="cyan">
       <AlertIcon as={InformationMediumContainedIcon} />
-      <VStack space="sm" style={{ flex: 1 }}>
+      <Flex space="md" style={{ flex: 1 }}>
         <AlertTitle>Information</AlertTitle>
         <AlertText>Unlock the power of knowledge with the following information.</AlertText>
 
@@ -144,7 +144,7 @@ const MyComponent = () => {
           <AlertLinkText>Learn more</AlertLinkText>
           <AlertLinkChevron />
         </AlertLink>
-      </VStack>
+      </Flex>
       {/* Note: AlertIconButton should not be used with the AlertLink component */}
       <AlertIconButton onPress={() => console.log('Icon button tapped')}>
         <AlertIconButtonChevron />

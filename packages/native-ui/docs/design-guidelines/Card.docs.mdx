@@ -1,28 +1,26 @@
-import { Meta, Canvas } from '@storybook/addon-docs/blocks';
-import {
-  Button,
-  Center,
-  NativeUIProvider,
-  HStack,
-  VStack,
-  Card,
-  Heading,
-  Text,
-  List,
-  ListItem,
-  Icon,
-  Image,
-  Box,
-} from '../../src';
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
 import { SettingsMediumIcon, TrashSmallIcon } from '@utilitywarehouse/react-native-icons';
 import {
-  ViewFigmaButton,
   BackToTopButton,
+  ColorModeToggleIcons,
   DocComponentWrap,
   DynamicImage,
-  ColorModeToggleIcons,
   HideInDarkMode,
+  ViewFigmaButton,
 } from '../../docs/components';
+import {
+  Box,
+  Button,
+  Card,
+  Center,
+  Heading,
+  Icon,
+  Image,
+  List,
+  ListItem,
+  NativeUIProvider,
+  Text,
+} from '../../src';
 import catAsleep from './assets/card/kitten-sleeping-on-sofa.jpg';
 
 <Meta title="Design Guidelines / Card" />
@@ -70,17 +68,17 @@ A card with a dashed border and a background color.
 
 <DocComponentWrap>
   <Card variant="dashed" padding="large">
-    <HStack space="lg">
+    <Flex direction="row" space="xl">
       <Box w={75} h={75} borderRadius={8} backgroundColor="$cyan100" />
-      <VStack space="sm">
+      <Flex direction="column" space="md">
         <Heading>Dashed Card</Heading>
         <Text
           children={[
             'This is the body of a card; it serves as an example. A card can contain any type of content.',
           ]}
         />
-      </VStack>
-    </HStack>
+      </Flex>
+    </Flex>
   </Card>
 </DocComponentWrap>
 
@@ -90,11 +88,11 @@ A card with a solid border and a background color.
 
 <DocComponentWrap>
   <Box width="100%">
-    <HStack space="2xl" style={{ alignItems: 'flex-start' }}>
+    <Flex direction="row" space="2xl" style={{ alignItems: 'flex-start' }}>
       <Card variant="outline" padding="large" style={{ flexBasis: '45%' }}>
-        <HStack space="lg">
+        <Flex direction="row" space="xl">
           <Box w={75} h={75} borderRadius={8} backgroundColor="$cyan100" />
-          <VStack space="sm" style={{ flex: 1 }}>
+          <Flex direction="column" space="md" style={{ flex: 1 }}>
             <Heading>Outline Card</Heading>
             <Text
               style={{ flex: 1, flexWrap: 'wrap', display: 'flex' }}
@@ -102,12 +100,12 @@ A card with a solid border and a background color.
                 'This is the body of a card; it serves as an example. A card can contain any type of content.',
               ]}
             />
-          </VStack>
-        </HStack>
+          </Flex>
+        </Flex>
       </Card>
       <Card variant="outline" padding="large" colorScheme="grey" style={{ flexBasis: '45%' }}>
-        <HStack space="lg">
-          <VStack space="sm" style={{ flex: 1 }}>
+        <Flex direction="row" space="xl">
+          <Flex direction="column" space="md" style={{ flex: 1 }}>
             <Heading>Outline Card</Heading>
             <Text
               style={{ flex: 1, flexWrap: 'wrap', display: 'flex' }}
@@ -116,16 +114,16 @@ A card with a solid border and a background color.
               ]}
             />
             <Button text="Just a Button" variant="ghost" />
-          </VStack>
-        </HStack>
+          </Flex>
+        </Flex>
       </Card>
-    </HStack>
+    </Flex>
   </Box>
 </DocComponentWrap>
 *A card can have any content*
 
 <DocComponentWrap>
-  <Box px="$4" pb="$4" bg="$grey50">
+  <Box px="200" pb="200" bg="$grey50">
     <List
       headingText="This is the list heading"
       headingSupportingText="Supporting text"
@@ -166,10 +164,10 @@ A card featuring a subtle shadow and border looks raised.
 
 <DocComponentWrap>
   <Box width="100%">
-    <HStack space="2xl" style={{ alignItems: 'flex-start' }}>
+    <Flex direction="row" space="2xl" style={{ alignItems: 'flex-start' }}>
       <Card variant="elevated" padding="large" colorScheme="grey" style={{ flexBasis: '45%' }}>
-        <HStack space="lg">
-          <VStack space="sm" style={{ flex: 1 }}>
+        <Flex direction="row" space="xl">
+          <Flex direction="column" space="md" style={{ flex: 1 }}>
             <Heading>Elevated Card</Heading>
             <Text
               style={{ flex: 1, flexWrap: 'wrap', display: 'flex' }}
@@ -178,12 +176,12 @@ A card featuring a subtle shadow and border looks raised.
               ]}
             />
             <Button text="Just a ghost Button" variant="ghost" />
-          </VStack>
-        </HStack>
+          </Flex>
+        </Flex>
       </Card>
       <Card variant="elevated" padding="large" style={{ flexBasis: '45%' }}>
-        <HStack space="lg">
-          <VStack space="sm" style={{ flex: 1 }}>
+        <Flex direction="row" space="xl">
+          <Flex direction="column" space="md" style={{ flex: 1 }}>
             <Heading>Elevated Card</Heading>
             <Text
               style={{ flex: 1, flexWrap: 'wrap', display: 'flex' }}
@@ -197,10 +195,10 @@ A card featuring a subtle shadow and border looks raised.
               colorScheme="red"
               icon={TrashSmallIcon}
             />
-          </VStack>
-        </HStack>
+          </Flex>
+        </Flex>
       </Card>
-    </HStack>
+    </Flex>
   </Box>
 </DocComponentWrap>
 
@@ -211,7 +209,7 @@ When there are no borders, it is only the background.
 Filled is the default card style used in the [List](/?path=/docs/native-ui-components-list--docs) component.
 
 <DocComponentWrap>
-  <Box px="$4" pb="$4" bg="$grey50">
+  <Box px="200" pb="200" bg="$grey50">
     <List
       headingText="This is the list heading"
       headingSupportingText="Supporting text"
@@ -259,33 +257,33 @@ Cards come in a variety of colour schemes that can be combined with variants, pa
 **Example for maintenance:** If a design requires a different background and border colour for the Card component (and is not an exception), a new ColorScheme should be added.
 
 <DocComponentWrap>
-  <HStack>
-    <Box bg="$grey50" width="100%" padding="$4" mb="$5">
-      <VStack space="lg">
+  <Flex direction="row">
+    <Box bg="$grey50" width="100%" padding="200" mb="250">
+      <Flex direction="column" space="xl">
         <Card colorScheme="base" variant="dashed" padding="large">
-          <Text mb="$2">base colorScheme</Text>
+          <Text mb="100">base colorScheme</Text>
         </Card>
         <Card colorScheme="base" variant="outline" padding="large">
-          <Text mb="$2">base colorScheme</Text>
+          <Text mb="100">base colorScheme</Text>
         </Card>
         <Card colorScheme="base" variant="elevated" padding="large">
-          <Text mb="$2">base colorScheme</Text>
+          <Text mb="100">base colorScheme</Text>
         </Card>
         <Card colorScheme="grey" variant="outline" padding="large">
-          <Text mb="$2">grey colorScheme</Text>
+          <Text mb="100">grey colorScheme</Text>
         </Card>
         <Card colorScheme="grey" variant="eleveted" padding="large">
-          <Text mb="$2">grey colorScheme</Text>
+          <Text mb="100">grey colorScheme</Text>
         </Card>
         <Card colorScheme="purple" variant="outline" padding="large">
-          <Text mb="$2">purple colorScheme</Text>
+          <Text mb="100">purple colorScheme</Text>
         </Card>
         <Card colorScheme="purple" variant="filled" padding="large">
-          <Text mb="$2" color="$white" children={['purple colorScheme']} />
+          <Text mb="100" color="$white" children={['purple colorScheme']} />
         </Card>
-      </VStack>
+      </Flex>
     </Box>
-  </HStack>
+  </Flex>
 </DocComponentWrap>
 
 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -315,60 +313,60 @@ Figma documentation for more details on this functionality](https://help.figma.c
 a new surface should be added for both themes.
 
 <DocComponentWrap>
-  <Box bg="$grey50" width="100%" padding="$4">
+  <Box bg="$grey50" width="100%" padding="200">
     <Heading size="h3" style={{ marginBottom: 16 }} children={['Base Surface']} />
-    <VStack space="lg">
+    <Flex direction="column" space="xl">
       <Card colorScheme="base" variant="dashed" padding="large">
-        <Text mb="$2">base colorScheme on base surface</Text>
+        <Text mb="100">base colorScheme on base surface</Text>
       </Card>
       <Card colorScheme="base" variant="outline" padding="large">
-        <Text mb="$2">base colorScheme on base surface</Text>
+        <Text mb="100">base colorScheme on base surface</Text>
       </Card>
       <Card colorScheme="base" variant="elevated" padding="large">
-        <Text mb="$2">base colorScheme on base surface</Text>
+        <Text mb="100">base colorScheme on base surface</Text>
       </Card>
       <Card colorScheme="grey" variant="outline" padding="large">
-        <Text mb="$2">grey colorScheme on base surface</Text>
+        <Text mb="100">grey colorScheme on base surface</Text>
       </Card>
       <Card colorScheme="grey" variant="eleveted" padding="large">
-        <Text mb="$2">grey colorScheme on base surface</Text>
+        <Text mb="100">grey colorScheme on base surface</Text>
       </Card>
       <Card colorScheme="purple" variant="outline" padding="large">
-        <Text mb="$2">purple colorScheme on base surface</Text>
+        <Text mb="100">purple colorScheme on base surface</Text>
       </Card>
       <Card colorScheme="purple" variant="filled" padding="large">
-        <Text mb="$2" color="$white" children={['purple colorScheme on base surface']} />
+        <Text mb="100" color="$white" children={['purple colorScheme on base surface']} />
       </Card>
-    </VStack>
+    </Flex>
   </Box>
   <HideInDarkMode>
-    <Box width="100%" padding="$4" mb="$5" backgroundColor="$purple800">
+    <Box width="100%" padding="200" mb="250" backgroundColor="$purple800">
       <Heading size="h3" style={{ marginBottom: 16 }} color="white" children={['Purple Surface']} />
-      <VStack space="lg">
+      <Flex direction="column" space="xl">
         <Card colorScheme="base" variant="dashed" padding="large" surface="purple">
-          <Text mb="$2" color="$white">
+          <Text mb="100" color="$white">
             base colorScheme on purple surface
           </Text>
         </Card>
         <Card colorScheme="base" variant="outline" padding="large" surface="purple">
-          <Text mb="$2" color="$white">
+          <Text mb="100" color="$white">
             base colorScheme on purple surface
           </Text>
         </Card>
         <Card colorScheme="base" variant="elevated" padding="large" surface="purple">
-          <Text mb="$2" color="$white">
+          <Text mb="100" color="$white">
             base colorScheme on purple surface
           </Text>
         </Card>
         <Card colorScheme="purple" variant="outline" padding="large" surface="purple">
-          <Text mb="$2" color="$white">
+          <Text mb="100" color="$white">
             purple colorScheme on purple surface
           </Text>
         </Card>
         <Card colorScheme="purple" variant="filled" padding="large" surface="purple">
-          <Text mb="$2" color="$white" children={['purple colorScheme on purple surface']} />
+          <Text mb="100" color="$white" children={['purple colorScheme on purple surface']} />
         </Card>
-      </VStack>
+      </Flex>
     </Box>
   </HideInDarkMode>
 </DocComponentWrap>
@@ -389,9 +387,9 @@ using the nested Card within Card.
 The nested Card has the same properties as Card.
 
 <DocComponentWrap>
-  <VStack space="xl">
+  <Flex direction="column" space="xl">
     <Card padding="large">
-      <HStack space="lg">
+      <Flex direction="row" space="xl">
         <Card padding="large" variant="outline" style={{ flex: 1 }} nested>
           <Text style={{ marginBottom: 16 }}>Nested Card</Text>
         </Card>
@@ -401,19 +399,19 @@ The nested Card has the same properties as Card.
         <Card padding="large" variant="outline" colorScheme="purple" style={{ flex: 1 }} nested>
           <Text style={{ marginBottom: 16 }}>Nested Card</Text>
         </Card>
-      </HStack>
+      </Flex>
     </Card>
     <Card padding="large">
-      <HStack space="lg">
+      <Flex direction="row" space="xl">
         <Card padding="large" variant="outline" nested>
-          <Center p="$5">
+          <Center p="250">
             <Text>Nested Card</Text>
           </Center>
         </Card>
-      </HStack>
+      </Flex>
     </Card>
     <Card padding="large">
-      <HStack space="lg">
+      <Flex direction="row" space="xl">
         <Card
           padding="large"
           variant="outline"
@@ -421,13 +419,13 @@ The nested Card has the same properties as Card.
           style={{ width: '100%' }}
           nested
         >
-          <Center p="$5">
+          <Center p="250">
             <Text>Nested Card</Text>
           </Center>
         </Card>
-      </HStack>
+      </Flex>
     </Card>
-  </VStack>
+  </Flex>
 </DocComponentWrap>
 
 ## Padding
@@ -438,7 +436,7 @@ Padding is a property that adjusts the card's padding from 16 to 0, maintaining 
 
 <DocComponentWrap>
   <Card padding="medium">
-    <HStack space="lg">
+    <Flex direction="row" space="xl">
       <Card padding="large" variant="outline" nested>
         <Text style={{ marginBottom: 16 }}>Nested Card</Text>
       </Card>
@@ -448,7 +446,7 @@ Padding is a property that adjusts the card's padding from 16 to 0, maintaining 
       <Card padding="large" variant="outline" colorScheme="purple" nested>
         <Text style={{ marginBottom: 16 }}>Nested Card</Text>
       </Card>
-    </HStack>
+    </Flex>
   </Card>
 </DocComponentWrap>
 

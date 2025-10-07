@@ -23,9 +23,9 @@ const styles = StyleSheet.create(({ space }) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: space[4],
-    paddingVertical: space[4],
-    gap: space[3],
+    paddingHorizontal: space['200'],
+    paddingVertical: space['200'],
+    gap: space['150'],
     width: '100%',
     variants: {
       noPadding: {

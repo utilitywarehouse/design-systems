@@ -160,10 +160,10 @@ const styles = StyleSheet.create(theme => ({
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    borderTopLeftRadius: theme.radii['2xl'],
-    borderTopRightRadius: theme.radii['2xl'],
-    borderBottomLeftRadius: theme.radii.none,
-    borderBottomRightRadius: theme.radii.none,
+    borderTopLeftRadius: theme.borderRadius.xl,
+    borderTopRightRadius: theme.borderRadius.xl,
+    borderBottomLeftRadius: theme.borderRadius.none,
+    borderBottomRightRadius: theme.borderRadius.none,
     backgroundColor: theme.colorMode === 'light' ? theme.colors.white : theme.colors.grey100,
     ...(theme.colorMode === 'light'
       ? {

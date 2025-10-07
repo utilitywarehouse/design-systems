@@ -1,9 +1,8 @@
-import React from 'react';
-import { Text } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { VStack } from '../VStack';
-import { VariantTitle } from '../../../docs/components';
 import { colors } from '@utilitywarehouse/colour-system';
+import { Text } from '.';
+import { VariantTitle } from '../../../docs/components';
+import { Flex } from '../Flex';
 
 const meta = {
   title: 'Stories / Text',
@@ -80,7 +79,7 @@ export const Playground: Story = {};
 export const Variants: Story = {
   render: () => {
     return (
-      <VStack space="2xl">
+      <Flex direction="column" space="2xl">
         <VariantTitle title="Default - Body / Medium">
           <Text>Work Sans - Regular (400), 16px Size / 24px Line height / 0px Letter</Text>
         </VariantTitle>
@@ -109,7 +108,7 @@ export const Variants: Story = {
             Work Sans - Regular (400), 12px Size / 16px Line height / 0px Letter
           </Text>
         </VariantTitle>
-      </VStack>
+      </Flex>
     );
   },
 };

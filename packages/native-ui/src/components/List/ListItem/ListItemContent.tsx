@@ -14,7 +14,7 @@ ListItemContent.displayName = 'ListItemContent';
 
 const styles = StyleSheet.create(theme => ({
   container: {
-    gap: theme.space[1],
+    gap: theme.space['50'],
     flex: 1,
   },
 }));

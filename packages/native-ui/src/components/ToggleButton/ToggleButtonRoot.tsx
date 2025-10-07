@@ -33,25 +33,25 @@ const ToggleButtonRoot = ({
 
 ToggleButtonRoot.displayName = 'ToggleButtonRoot';
 
-const styles = StyleSheet.create(({ radii, space }) => ({
+const styles = StyleSheet.create(({ borderRadius, space }) => ({
   container: {
-    borderRadius: radii.full,
+    borderRadius: borderRadius.full,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: space[2],
-    paddingHorizontal: space[4],
+    gap: space['100'],
+    paddingHorizontal: space['200'],
     flexGrow: 1,
     backgroundColor: 'transparent',
     zIndex: 1,
     variants: {
       size: {
         small: {
-          gap: space[1],
+          gap: space['50'],
           height: 28,
         },
         base: {
-          gap: space[2],
+          gap: space['100'],
           height: 36,
         },
       },

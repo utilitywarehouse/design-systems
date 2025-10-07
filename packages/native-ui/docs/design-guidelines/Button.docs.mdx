@@ -15,9 +15,7 @@ import {
   ButtonSpinner,
   ButtonText,
   Center,
-  HStack,
   NativeUIProvider,
-  VStack,
 } from '../../src';
 import { BackToTopButton, DocComponentWrap, ViewFigmaButton } from '../components';
 import cyan from './assets/button/cyan.png';
@@ -89,7 +87,7 @@ The Button component is highly flexible, and features various style variants, co
 to adapt to a wide range of design use cases and compositions.
 
 <DocComponentWrap>
-  <Box mt="$6" mb="$4">
+  <Box mt="300" mb="200">
     <Alert
       colorScheme="gold"
       text="This guideline is designed to assist designers in using the Button Figma component. If you need help deciding which component works best for your content, whether it's a button or a link, please refer to the guidelines"
@@ -126,11 +124,11 @@ especially when combined with other Button variants to create a clear visual hie
 Solid buttons are ideal for submitting data in forms, such as submitting an application or finalising a purchase.
 
 <DocComponentWrap>
-  <HStack space="lg">
+  <Flex space="md" direction="row">
     <Button>Submit feedback</Button>
     <Button>Buy now</Button>
     <Button colorScheme="red">Delete account</Button>
-  </HStack>
+  </Flex>
 </DocComponentWrap>
 
 ### outline
@@ -141,8 +139,8 @@ To enhance the meaning and purpose of the action further, these buttons can be c
 
 <DocComponentWrap>
 
-    <Box mb="$4">
-      <HStack space="lg">
+    <Box mb="200">
+      <Flex direction="row" space="lg">
         <Button variant="outline" icon={PhoneSmallIcon}>
           <ButtonIcon as={PhoneSmallIcon} />
           <ButtonText>Call 0800 184703</ButtonText>
@@ -151,7 +149,7 @@ To enhance the meaning and purpose of the action further, these buttons can be c
           <ButtonIcon as={EditSmallIcon} />
           <ButtonText>Edit</ButtonText>
         </Button>
-      </HStack>
+      </Flex>
     </Box>
 
 </DocComponentWrap>

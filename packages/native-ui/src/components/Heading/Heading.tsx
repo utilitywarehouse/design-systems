@@ -64,37 +64,37 @@ Heading.displayName = 'Heading';
 const styles = StyleSheet.create(theme => ({
   text: {
     color: theme.colors.grey1000,
-    fontWeight: theme.fontWeights.bold,
-    fontFamily: theme.fonts.heading,
+    fontWeight: theme.fontWeight.bold,
+    fontFamily: theme.fontFamily.heading,
     marginVertical: 0,
     fontStyle: 'normal',
     variants: {
       size: {
         h1: {
-          fontSize: theme.fontSizes['4xl'],
-          lineHeight: theme.lineHeights['3xl'],
+          fontSize: theme.fontSize['500'],
+          lineHeight: theme.lineHeight['900'],
         },
         h2: {
-          fontSize: theme.fontSizes['3xl'],
-          lineHeight: theme.lineHeights['2xl'],
+          fontSize: theme.fontSize['400'],
+          lineHeight: theme.lineHeight['700'],
         },
         h3: {
-          fontSize: theme.fontSizes['2xl'],
-          lineHeight: theme.lineHeights['2xl'],
+          fontSize: theme.fontSize['300'],
+          lineHeight: theme.lineHeight['700'],
         },
         h4: {
-          fontSize: theme.fontSizes.lg,
-          lineHeight: theme.lineHeights.lg,
+          fontSize: theme.fontSize['150'],
+          lineHeight: theme.lineHeight['500'],
         },
         h5: {
-          fontSize: theme.fontSizes.md,
-          lineHeight: theme.lineHeights.sm,
+          fontSize: theme.fontSize['100'],
+          lineHeight: theme.lineHeight['300'],
         },
         h6: {
-          fontSize: theme.fontSizes.md,
-          lineHeight: theme.lineHeights.lg,
-          fontFamily: theme.fonts.body,
-          fontWeight: theme.fontWeights.normal,
+          fontSize: theme.fontSize['100'],
+          lineHeight: theme.lineHeight['500'],
+          fontFamily: theme.fontFamily.body,
+          fontWeight: theme.fontWeight.regular,
         },
       },
       underline: {
