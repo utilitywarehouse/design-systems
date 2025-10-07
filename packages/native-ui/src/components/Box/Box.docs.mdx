@@ -1,8 +1,8 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
-import * as Stories from './Box.stories';
-import { Text, NativeUIProvider, Center, Alert, Box } from '../../';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 import { colors } from '@utilitywarehouse/colour-system';
+import { Alert, Box, Center, NativeUIProvider, Text } from '../../';
 import { BackToTopButton, UsageWrap } from '../../../docs/components';
+import * as Stories from './Box.stories';
 
 <Meta title="Primitives / Box" />
 
@@ -20,8 +20,8 @@ If you're looking for a flexible component to help with low-level layout needs, 
 <UsageWrap>
   <Center>
     <Box
-      p="$3"
-      m="$4"
+      p="150"
+      m="200"
       bg={colors.grey50}
       borderColor="$green700"
       borderRadius={8}
@@ -45,7 +45,7 @@ const MyComponent = () => {
       // You can use the theme values from the useTheme hook
       p={space[3]}
       // Or the built in typed values by using the '$' prefix
-      m="$4"
+      m="200"
       bg={colors.grey50}
       borderColor="$green700"
       borderWidth={2}

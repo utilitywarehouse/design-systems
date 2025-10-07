@@ -1,14 +1,14 @@
-import { Meta, Canvas, Story, Controls } from '@storybook/addon-docs/blocks';
-import * as Stories from './Icon.stories';
-import { Icon, createIcon, HStack, Center, Pressable, Text } from '../../';
-import {
-  ElectricityMediumIcon,
-  MobileMediumIcon,
-  BroadbandMediumIcon,
-  InsuranceMediumIcon,
-} from '@utilitywarehouse/react-native-icons';
-import { BackToTopButton, UsageWrap } from '../../../docs/components';
+import { Canvas, Controls, Meta, Story } from '@storybook/addon-docs/blocks';
 import { colorsCommon } from '@utilitywarehouse/colour-system';
+import {
+  BroadbandMediumIcon,
+  ElectricityMediumIcon,
+  InsuranceMediumIcon,
+  MobileMediumIcon,
+} from '@utilitywarehouse/react-native-icons';
+import { Center, createIcon, Flex, Icon, Pressable, Text } from '../../';
+import { BackToTopButton, UsageWrap } from '../../../docs/components';
+import * as Stories from './Icon.stories';
 
 <BackToTopButton />
 
@@ -38,17 +38,17 @@ The following example shows how to use the icons directly from the `@utilityware
 
 <UsageWrap>
   <Center>
-    <HStack space="lg">
+    <Flex direction="row" space="xl">
       <ElectricityMediumIcon color={colorsCommon.serviceElectricity} />
       <MobileMediumIcon color={colorsCommon.serviceMobile} />
       <BroadbandMediumIcon color={colorsCommon.serviceLandline} />
       <InsuranceMediumIcon color={colorsCommon.serviceInsurance} />
-    </HStack>
+    </Flex>
   </Center>
 </UsageWrap>
 
 ```jsx
-import { HStack, Icon, color } from '@utilitywarehouse/native-ui';
+import { Flex, Icon, color } from '@utilitywarehouse/native-ui';
 import {
   ElectricityMediumIcon,
   MobileMediumIcon,
@@ -58,12 +58,12 @@ import {
 
 const MyComponent = () => {
   return (
-    <HStack space="lg">
+    <Flex space="xl">
       <ElectricityMediumIcon color="$serviceElectricity" />
       <MobileMediumIcon color="$serviceMobile" />
       <BroadbandMediumIcon color="$serviceLandline" />
       <InsuranceMediumIcon color="$serviceInsurance" />
-    </HStack>
+    </Flex>
   );
 };
 ```
@@ -71,7 +71,7 @@ const MyComponent = () => {
 Or you can use the `Icon` component to render the icons.
 
 ```jsx
-import { HStack, Icon, color } from '@utilitywarehouse/native-ui';
+import { Flex, Icon, color } from '@utilitywarehouse/native-ui';
 import {
   ElectricityMediumIcon,
   MobileMediumIcon,
@@ -81,12 +81,12 @@ import {
 
 const MyComponent = () => {
   return (
-    <HStack space="lg">
+    <Flex space="xl">
       <Icon as={ElectricityMediumIcon} color="$serviceElectricity" />
       <Icon as={MobileMediumIcon} color="$serviceMobile" />
       <Icon as={BroadbandMediumIcon} color="$serviceLandline" />
       <Icon as={InsuranceMediumIcon} color="$serviceInsurance" />
-    </HStack>
+    </Flex>
   );
 };
 ```

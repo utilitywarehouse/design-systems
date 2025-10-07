@@ -1,32 +1,30 @@
-import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import { SettingsMediumIcon, TrashSmallIcon } from '@utilitywarehouse/react-native-icons';
 import {
+  BackToTopButton,
+  ColorModeToggleIcons,
+  DocComponentWrap,
+  DynamicImage,
+  HideInDarkMode,
+  SwitchExample,
+  ViewFigmaButton,
+} from '../../docs/components';
+import {
+  Box,
   Button,
-  Center,
-  HStack,
-  VStack,
   Card,
-  Heading,
-  Text,
-  List,
-  ListItem,
-  Icon,
-  Image,
-  Switch,
+  Center,
   FormField,
   FormFieldLabel,
   FormFieldLabelText,
-  Box,
+  Heading,
+  Icon,
+  Image,
+  List,
+  ListItem,
+  Switch,
+  Text,
 } from '../../src';
-import { SettingsMediumIcon, TrashSmallIcon } from '@utilitywarehouse/react-native-icons';
-import {
-  ViewFigmaButton,
-  BackToTopButton,
-  DocComponentWrap,
-  DynamicImage,
-  ColorModeToggleIcons,
-  HideInDarkMode,
-  SwitchExample,
-} from '../../docs/components';
 
 <Meta title="Design Guidelines / Switch" />
 
@@ -72,7 +70,7 @@ to turn an individual option on or off. They are usually used to activate or dea
 Typically, a Switch is used within a [List Item](/?path=/docs/native-ui-components-list--docs) that serves as a label for it.
 
 <DocComponentWrap>
-  <VStack space="lg">
+  <Flex direction="column" space="xl">
     <List>
       <ListItem
         text="Notifications"
@@ -97,40 +95,40 @@ Typically, a Switch is used within a [List Item](/?path=/docs/native-ui-componen
         trailingContent={<SwitchExample value={true} disabled size="small" />}
       />
     </List>
-  </VStack>
+  </Flex>
 </DocComponentWrap>
 
 When the Switch is not placed in a List Item, you should use the Label component next to it.
 
 <DocComponentWrap>
-  <VStack space="lg">
+  <Flex direction="column" space="xl">
     <FormField>
-      <HStack space="md" style={{ alignItems: 'center' }}>
+      <Flex direction="row" space="lg" style={{ alignItems: 'center' }}>
         <SwitchExample size="small" value={true} />
         <FormFieldLabel>
           <FormFieldLabelText nested>
             A Switch needs a Label when is not in a List Item
           </FormFieldLabelText>
         </FormFieldLabel>
-      </HStack>
+      </Flex>
     </FormField>
     <FormField>
-      <HStack space="md" style={{ alignItems: 'center' }}>
+      <Flex direction="row" space="lg" style={{ alignItems: 'center' }}>
         <SwitchExample size="medium" value={false} />
         <FormFieldLabel>
           <FormFieldLabelText nested>Monthly payment</FormFieldLabelText>
         </FormFieldLabel>
-      </HStack>
+      </Flex>
     </FormField>
     <FormField>
-      <HStack space="md" style={{ alignItems: 'center' }}>
+      <Flex direction="row" space="lg" style={{ alignItems: 'center' }}>
         <FormFieldLabel>
           <FormFieldLabelText nested={true}>Year</FormFieldLabelText>
         </FormFieldLabel>
         <SwitchExample size="medium" value={true} />
-      </HStack>
+      </Flex>
     </FormField>
-  </VStack>
+  </Flex>
 </DocComponentWrap>
 
 ## Properties & Attributes
@@ -165,11 +163,11 @@ of "checked" and "unchecked."
 The disabled attribute prevents user interaction with the Switch.
 
 <DocComponentWrap>
-  <VStack space="lg">
-    <HStack space="lg">
+  <Flex direction="column" space="lg">
+    <Flex direction="row" space="lg">
       <SwitchExample value={true} disabled size="small" />
       <SwitchExample value={false} disabled />
-    </HStack>
+    </Flex>
     <List>
       <ListItem
         text="A disabled List item"
@@ -179,14 +177,14 @@ The disabled attribute prevents user interaction with the Switch.
       />
     </List>
     <FormField disabled>
-      <HStack space="md" style={{ alignItems: 'center' }}>
+      <Flex direction="row" space="lg" style={{ alignItems: 'center' }}>
         <SwitchExample disabled />
         <FormFieldLabel>
           <FormFieldLabelText>Enable notifications</FormFieldLabelText>
         </FormFieldLabel>
-      </HStack>
+      </Flex>
     </FormField>
-  </VStack>
+  </Flex>
 </DocComponentWrap>
 
 ### size
@@ -195,10 +193,10 @@ The sizes range from small to medium and can adapt to your design context.
 Typically, we will use the small size (24) for the List as it is the default size.
 
 <DocComponentWrap>
-  <HStack space="lg">
+  <Flex direction="row" space="lg">
     <SwitchExample value={true} size="small" />
     <SwitchExample value={true} size="medium" />
-  </HStack>
+  </Flex>
 </DocComponentWrap>
 
 ## Theme
@@ -210,21 +208,21 @@ The Switch component is available in light and dark themes using [Figma modes](h
 Using the light theme
 
 <DocComponentWrap>
-  <Box p="$5" backgroundColor="$grey50">
-    <VStack space="lg">
-      <HStack space="lg">
+  <Box p="250" backgroundColor="$grey50">
+    <Flex direction="column" space="xl">
+      <Flex direction="row" space="xl">
         <SwitchExample value={true} size="small" />
         <SwitchExample value={false} size="small" />
         <SwitchExample value={true} size="small" disabled />
         <SwitchExample value={false} size="small" disabled />
-      </HStack>
-      <HStack space="lg">
+      </Flex>
+      <Flex direction="row" space="xl">
         <SwitchExample value={true} size="medium" />
         <SwitchExample value={false} size="medium" />
         <SwitchExample value={true} size="medium" disabled />
         <SwitchExample value={false} size="medium" disabled />
-      </HStack>
-    </VStack>
+      </Flex>
+    </Flex>
   </Box>
 </DocComponentWrap>
 

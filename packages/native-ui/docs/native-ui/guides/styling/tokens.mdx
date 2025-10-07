@@ -1,16 +1,7 @@
 import { ColorItem, ColorPalette, Meta } from '@storybook/addon-docs/blocks';
 import common from '../../../../../../packages/colour-system/lib/common.json';
 import { dark, light } from '../../../../../../packages/colour-system/raw/colours.json';
-import {
-  Box,
-  Center,
-  Flex,
-  HStack,
-  Heading,
-  NativeUIProvider,
-  Text,
-  VStack,
-} from '../../../../src';
+import { Box, Center, Flex, Heading, NativeUIProvider, Text } from '../../../../src';
 import { font } from '../../../../src/tokens';
 import { BackToTopButton, UsageWrap, VariantTitle } from '../../../components';
 
@@ -213,15 +204,6 @@ To manage Typography options, the tokens object supports the following keys:
 
 ### Font Family
 
-_Deprecated_ as of v1
-
-| Key        | Theme Key       | Value       |
-| ---------- | --------------- | ----------- |
-| ~$heading~ | ~fonts.heading~ | `Aeonik`    |
-| ~$body~    | ~fonts.body~    | `Work Sans` |
-
-_New_
-
 | Key       | Theme Key            | Value       |
 | --------- | -------------------- | ----------- |
 | `heading` | `fontFamily.heading` | `Aeonik`    |
@@ -229,7 +211,7 @@ _New_
 
 <UsageWrap>
   <Center>
-    <HStack space="lg">
+    <Flex direction="row" space="md">
       <Center>
         <Heading>Aeonik</Heading>
         <Text size="sm">heading</Text>
@@ -238,7 +220,7 @@ _New_
         <Text>Work Sans</Text>
         <Text size="sm">body</Text>
       </Center>
-    </HStack>
+    </Flex>
   </Center>
 </UsageWrap>
 
@@ -311,27 +293,6 @@ _New_
   </Center>
 </UsageWrap>
 
-_Deprecated_ as of v1
-
-| Key    | Theme Value     | Value |
-| ------ | --------------- | ----- |
-| ~$2xs~ | ~fontSizes.2xs~ | 10    |
-| ~$xs~  | ~fontSizes.xs~  | 12    |
-| ~$sm~  | ~fontSizes.sm~  | 14    |
-| ~$md~  | ~fontSizes.md~  | 16    |
-| ~$lg~  | ~fontSizes.lg~  | 18    |
-| ~$xl~  | ~fontSizes.xl~  | 20    |
-| ~$2xl~ | ~fontSizes.2xl~ | 24    |
-| ~$3xl~ | ~fontSizes.3xl~ | 30    |
-| ~$4xl~ | ~fontSizes.4xl~ | 36    |
-| ~$5xl~ | ~fontSizes.5xl~ | 48    |
-| ~$6xl~ | ~fontSizes.6xl~ | 60    |
-| ~$7xl~ | ~fontSizes.7xl~ | 72    |
-| ~$8xl~ | ~fontSizes.8xl~ | 96    |
-| ~$9xl~ | ~fontSizes.9xl~ | 128   |
-
-_New_
-
 | Key    | Theme Key       | Value |
 | ------ | --------------- | ----- |
 | `50`   | `fontSize.50`   | 10    |
@@ -379,22 +340,6 @@ _New_
   </Center>
 </UsageWrap>
 
-_Deprecated_ as of v1
-
-| Key           | Theme Key                | Value |
-| ------------- | ------------------------ | ----- |
-| ~$thin~       | ~fontWeights.thin~       | 100   |
-| ~$extralight~ | ~fontWeights.extralight~ | 200   |
-| ~$light~      | ~fontWeights.light~      | 300   |
-| ~$normal~     | ~fontWeights.normal~     | 400   |
-| ~$medium~     | ~fontWeights.medium~     | 500   |
-| ~$semibold~   | ~fontWeights.semibold~   | 600   |
-| ~$bold~       | ~fontWeights.bold~       | 700   |
-| ~$extrabold~  | ~fontWeights.extrabold~  | 800   |
-| ~$black~      | ~fontWeights.black~      | 900   |
-
-_New_
-
 | Key      | Theme Key             | Value |
 | -------- | --------------------- | ----- |
 | regular  | `fontWeight.regular`  | 400   |
@@ -404,25 +349,6 @@ _New_
 | heavy    | `fontWeight.heavy`    | 900   |
 
 ### Line Height
-
-_Deprecated_ as of v1
-
-| Key    | Theme Key         | Value |
-| ------ | ----------------- | ----- |
-| ~$2xs~ | ~lineHeights.2xs~ | 16    |
-| ~$xs~  | ~lineHeights.xs~  | 18    |
-| ~$sm~  | ~lineHeights.sm~  | 20    |
-| ~$md~  | ~lineHeights.md~  | 22    |
-| ~$lg~  | ~lineHeights.lg~  | 24    |
-| ~$xl~  | ~lineHeights.xl~  | 28    |
-| ~$2xl~ | ~lineHeights.2xl~ | 32    |
-| ~$3xl~ | ~lineHeights.3xl~ | 40    |
-| ~$4xl~ | ~lineHeights.4xl~ | 48    |
-| ~$5xl~ | ~lineHeights.5xl~ | 56    |
-| ~$6xl~ | ~lineHeights.6xl~ | 72    |
-| ~$7xl~ | ~lineHeights.7xl~ | 90    |
-
-_New_
 
 | Key    | Theme Key            | Value |
 | ------ | -------------------- | ----- |
@@ -445,59 +371,6 @@ _New_
 
 The space key allows you to customise the global spacing and sizing scale for your project.
 By default these spacing value can be referenced by the padding, margin, and top, left, right, bottom, props.
-
-_Deprecated_ as of v1
-
-| Key     | Theme Key      | Value   |
-| ------- | -------------- | ------- |
-| ~$0~    | ~space['0']~   | 0       |
-| ~$0.5~  | ~space['0.5']~ | 2       |
-| ~$1~    | ~space['1']~   | 4       |
-| ~$1.5~  | ~space['1.5']~ | 6       |
-| ~$2~    | ~space['2']~   | 8       |
-| ~$2.5~  | ~space['2.5']~ | 10      |
-| ~$3~    | ~space['3']~   | 12      |
-| ~$3.5~  | ~space['3.5']~ | 14      |
-| ~$4~    | ~space['4']~   | 16      |
-| ~$4.5~  | ~space['4.5']~ | 18      |
-| ~$5~    | ~space['5']~   | 20      |
-| ~$6~    | ~space['6']~   | 24      |
-| ~$7~    | ~space['7']~   | 28      |
-| ~$8~    | ~space['8']~   | 32      |
-| ~$9~    | ~space['9']~   | 36      |
-| ~$10~   | ~space['10']~  | 40      |
-| ~$11~   | ~space['11']~  | 44      |
-| ~$12~   | ~space['12']~  | 48      |
-| ~$14~   | ~space['14']~  | 56      |
-| ~$16~   | ~space['16']~  | 64      |
-| ~$20~   | ~space['20']~  | 80      |
-| ~$24~   | ~space['24']~  | 96      |
-| ~$32~   | ~space['32']~  | 128     |
-| ~$40~   | ~space['40']~  | 160     |
-| ~$48~   | ~space['48']~  | 192     |
-| ~$56~   | ~space['56']~  | 224     |
-| ~$64~   | ~space['64']~  | 256     |
-| ~$72~   | ~space['72']~  | 288     |
-| ~$80~   | ~space['80']~  | 320     |
-| ~$96~   | ~space['96']~  | 384     |
-| ~$1/2~  | ~space['1/2']~ | 50%     |
-| ~$1/3~  | ~space['1/3']~ | 33.333% |
-| ~$2/3~  | ~space['2/3']~ | 66.666% |
-| ~$1/4~  | ~space['1/4']~ | 25%     |
-| ~$2/4~  | ~space['2/4']~ | 50%     |
-| ~$3/4~  | ~space['3/4']~ | 75%     |
-| ~$1/5~  | ~space['1/5']~ | 20%     |
-| ~$2/5~  | ~space['2/5']~ | 40%     |
-| ~$3/5~  | ~space['3/5']~ | 60%     |
-| ~$4/5~  | ~space['4/5']~ | 80%     |
-| ~$1/6~  | ~space['1/6']~ | 16.666% |
-| ~$2/6~  | ~space['2/6']~ | 33.333% |
-| ~$3/6~  | ~space['3/6']~ | 50%     |
-| ~$4/6~  | ~space['4/6']~ | 66.666% |
-| ~$5/6~  | ~space['5/6']~ | 83.333% |
-| ~$full~ | ~space.full~   | 100%    |
-
-_New_
 
 | Key    | Theme Key       | Value   |
 | ------ | --------------- | ------- |
@@ -536,230 +409,6 @@ _New_
 | `5/6`  | `space['5/6']`  | 83.333% |
 | `full` | `space.full`    | 100%    |
 
-## Opacity
-
-The opacity key allows you to customise the global opacity scale for your project.
-
-<UsageWrap>
-  <Center>
-    <HStack space="sm" flexWrap="wrap">
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$0"
-        />
-        <Text size="sm">0</Text>
-        <Text size="sm">$0</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$5"
-        />
-        <Text size="sm">0.05</Text>
-        <Text size="sm">$5</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$10"
-        />
-        <Text size="sm">0.1</Text>
-        <Text size="sm">$10</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$20"
-        />
-        <Text size="sm">0.2</Text>
-        <Text size="sm">$20</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$25"
-        />
-        <Text size="sm">0.25</Text>
-        <Text size="sm">$25</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$30"
-        />
-        <Text size="sm">0.3</Text>
-        <Text size="sm">$30</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$40"
-        />
-        <Text size="sm">0.4</Text>
-        <Text size="sm">$40</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$50"
-        />
-        <Text size="sm">0.5</Text>
-        <Text size="sm">$50</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$60"
-        />
-        <Text size="sm">0.6</Text>
-        <Text size="sm">$60</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$70"
-        />
-        <Text size="sm">0.7</Text>
-        <Text size="sm">$70</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$75"
-        />
-        <Text size="sm">0.75</Text>
-        <Text size="sm">$75</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$80"
-        />
-        <Text size="sm">0.8</Text>
-        <Text size="sm">$80</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$90"
-        />
-        <Text size="sm">0.9</Text>
-        <Text size="sm">$90</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$95"
-        />
-        <Text size="sm">0.95</Text>
-        <Text size="sm">$95</Text>
-      </Center>
-      <Center width={50} height={50}>
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          width="100%"
-          height="100%"
-          bg="$cyan500"
-          opacity="$100"
-        />
-        <Text size="sm">1</Text>
-        <Text size="sm">$100</Text>
-      </Center>
-    </HStack>
-  </Center>
-</UsageWrap>
-
-| Key    | Theme Key        | Value |
-| ------ | ---------------- | ----- |
-| `$0`   | `opacity['0']`   | 0     |
-| `$5`   | `opacity['5']`   | 0.05  |
-| `$10`  | `opacity['10']`  | 0.1   |
-| `$20`  | `opacity['20']`  | 0.2   |
-| `$25`  | `opacity['25']`  | 0.25  |
-| `$30`  | `opacity['30']`  | 0.3   |
-| `$40`  | `opacity['40']`  | 0.4   |
-| `$50`  | `opacity['50']`  | 0.5   |
-| `$60`  | `opacity['60']`  | 0.6   |
-| `$70`  | `opacity['70']`  | 0.7   |
-| `$75`  | `opacity['75']`  | 0.75  |
-| `$80`  | `opacity['80']`  | 0.8   |
-| `$90`  | `opacity['90']`  | 0.9   |
-| `$95`  | `opacity['95']`  | 0.95  |
-| `$100` | `opacity['100']` | 1     |
-
 ## Breakpoints
 
 The breakpoints key allows you to customise the global breakpoints for your project.
@@ -781,28 +430,16 @@ The breakpoints key allows you to customise the global breakpoints for your proj
 
 <UsageWrap>
   <Center>
-    <HStack space="lg" wrap>
+    <Flex space="md" wrap>
       <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="1">
         <Text size="sm">1</Text>
       </Center>
       <Center width="80px" height="80px" bg="$cyan500" borderColor="$purple500" borderWidth="2">
         <Text size="sm">2</Text>
       </Center>
-    </HStack>
+    </Flex>
   </Center>
 </UsageWrap>
-
-_Deprecated_ as of v1
-
-| Key  | Theme Key           | Value |
-| ---- | ------------------- | ----- |
-| ~$0~ | ~borderWidths['0']~ | 0     |
-| ~$1~ | ~borderWidths['1']~ | 1     |
-| ~$2~ | ~borderWidths['2']~ | 2     |
-| ~$4~ | ~borderWidths['4']~ | 4     |
-| ~$8~ | ~borderWidths['8']~ | 8     |
-
-_New_
 
 | Key | Theme Key          | Value |
 | --- | ------------------ | ----- |
@@ -813,7 +450,7 @@ _New_
 
 <UsageWrap>
   <Center>
-    <HStack space="lg" wrap>
+    <Flex direction="row" space="md" wrap>
       <Center width="80px" height="80px" bg="$cyan500" borderRadius="none">
         <Text size="sm">none</Text>
       </Center>
@@ -835,26 +472,9 @@ _New_
       <Center width="80px" height="80px" bg="$cyan500" borderRadius="full">
         <Text size="sm">full</Text>
       </Center>
-    </HStack>
+    </Flex>
   </Center>
 </UsageWrap>
-
-_Deprecated_ as of v1
-
-| Key    | Theme Key    | Value |
-| ------ | ------------ | ----- |
-| ~none~ | ~radii.none~ | 0     |
-| ~xs~   | ~radii.xs~   | 2     |
-| ~sm~   | ~radii.sm~   | 4     |
-| ~md~   | ~radii.md~   | 6     |
-| ~lg~   | ~radii.lg~   | 8     |
-| ~xl~   | ~radii.xl~   | 12    |
-| ~2xl~  | ~radii.2xl~  | 16    |
-| ~3xl~  | ~radii.3xl~  | 24    |
-| ~4xl~  | ~radii.4xl~  | 32    |
-| ~full~ | ~radii.full~ | 9999  |
-
-_New_
 
 | Key    | Theme Key           | Value |
 | ------ | ------------------- | ----- |

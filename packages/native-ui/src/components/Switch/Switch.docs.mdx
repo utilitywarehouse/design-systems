@@ -1,22 +1,13 @@
-import { Meta, Controls, Story, Canvas } from '@storybook/addon-docs/blocks';
-import * as Stories from './Switch.stories';
+import { Canvas, Controls, Meta, Story } from '@storybook/addon-docs/blocks';
+import { Center, Flex, FormField, FormFieldLabel, FormFieldLabelText, Label, Switch } from '../../';
 import {
-  Center,
-  Switch,
-  VStack,
-  HStack,
-  Label,
-  FormField,
-  FormFieldLabel,
-  FormFieldLabelText,
-} from '../../';
-import {
-  ViewFigmaButton,
   BackToTopButton,
-  UsageWrap,
-  SwitchList,
   SwitchExample,
+  SwitchList,
+  UsageWrap,
+  ViewFigmaButton,
 } from '../../../docs/components';
+import * as Stories from './Switch.stories';
 
 <Meta title="Components / Switch" />
 
@@ -85,12 +76,12 @@ the [`FormField` docs](/?path=/docs/native-ui-components-form-field--docs) for m
 
 <UsageWrap>
   <FormField>
-    <HStack space="md" style={{ alignItems: 'center' }}>
+    <Flex direction="row" space="lg" style={{ alignItems: 'center' }}>
       <SwitchExample />
       <FormFieldLabel>
         <FormFieldLabelText>Enable notifications</FormFieldLabelText>
       </FormFieldLabel>
-    </HStack>
+    </Flex>
   </FormField>
 </UsageWrap>
 
@@ -104,12 +95,12 @@ const MyComponent = () => {
 
   return (
     <FormField>
-      <HStack space="md" style={{ alignItems: 'center' }}>
+      <Flex space="lg" style={{ alignItems: 'center' }}>
         <Switch value={notifications} onValueChange={handleChange} />
         <FormFieldLabel>
           <FormFieldLabelText>Enable notifications</FormFieldLabelText>
         </FormFieldLabel>
-      </HStack>
+      </Flex>
     </FormField>
   );
 };

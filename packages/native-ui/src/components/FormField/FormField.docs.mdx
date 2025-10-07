@@ -1,32 +1,32 @@
-import { Meta, Controls, Story, Canvas } from '@storybook/addon-docs/blocks';
-import * as Stories from './FormField.stories';
+import { Canvas, Controls, Meta, Story } from '@storybook/addon-docs/blocks';
+import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
 import {
-  Input,
-  InputField,
+  Center,
+  Checkbox,
+  CheckboxIcon,
+  CheckboxIndicator,
+  CheckboxLabel,
+  Flex,
   FormField,
   FormFieldHelper,
   FormFieldHelperText,
+  FormFieldInvalid,
+  FormFieldInvalidIcon,
+  FormFieldInvalidText,
   FormFieldLabel,
   FormFieldLabelText,
-  FormFieldInvalidIcon,
-  FormFieldInvalid,
-  FormFieldInvalidText,
-  FormFieldValidIcon,
   FormFieldValid,
+  FormFieldValidIcon,
   FormFieldValidText,
-  Center,
-  RadioGroup,
+  Input,
+  InputField,
   Radio,
+  RadioGroup,
   RadioIndicator,
   RadioLabel,
-  Checkbox,
-  CheckboxIndicator,
-  CheckboxIcon,
-  CheckboxLabel,
-  VStack,
 } from '../../';
-import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
-import { ViewFigmaButton, BackToTopButton, UsageWrap } from '../../../docs/components';
+import { BackToTopButton, UsageWrap, ViewFigmaButton } from '../../../docs/components';
+import * as Stories from './FormField.stories';
 
 <Meta title="Forms / Form Field" />
 
@@ -267,7 +267,7 @@ The `FormField` component can be used to wrap a `Checkbox` component to provide 
         <CheckboxIndicator>
           <CheckboxIcon />
         </CheckboxIndicator>
-        <VStack space="xs">
+        <Flex direction="column" space="sm">
           <CheckboxLabel nested={false}>I accept the terms and conditions</CheckboxLabel>
           <FormFieldHelper>
             <FormFieldHelperText>Read and accept the terms and conditions</FormFieldHelperText>
@@ -276,7 +276,7 @@ The `FormField` component can be used to wrap a `Checkbox` component to provide 
             <FormFieldInvalidIcon />
             <FormFieldInvalidText>Please check the box above</FormFieldInvalidText>
           </FormFieldInvalid>
-        </VStack>
+        </Flex>
       </Checkbox>
     </FormField>
   </Center>
@@ -293,7 +293,7 @@ import {
   FormFieldInvalidIcon,
   FormFieldInvalid,
   FormFieldInvalidText,
-  VStack,
+  Flex,
 } from '@utilitywarehouse/native-ui';
 
 const MyComponent = () => {
@@ -301,7 +301,7 @@ const MyComponent = () => {
     <FormField validationStatus="invalid">
       <Checkbox alignItems="flex-start">
         <CheckboxIndicator />
-        <VStack space="xs">
+        <Flex direction="column" space="sm">
           <CheckboxLabel nested={false}>I accept the terms and conditions</CheckboxLabel>
           <FormFieldHelper>
             <FormFieldHelperText>Read and accept the terms and conditions</FormFieldHelperText>
@@ -310,7 +310,7 @@ const MyComponent = () => {
             <FormFieldInvalidIcon />
             <FormFieldInvalidText>Please check the box above</FormFieldInvalidText>
           </FormFieldInvalid>
-        </VStack>
+        </Flex>
       </Checkbox>
     </FormField>
   );
