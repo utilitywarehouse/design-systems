@@ -1,5 +1,5 @@
 import { createRadio } from '@gluestack-ui/radio';
-import { View } from 'react-native-reanimated/lib/typescript/Animated';
+import { View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { useFormFieldContext } from '../FormField';
 import { Helper } from '../Helper';
