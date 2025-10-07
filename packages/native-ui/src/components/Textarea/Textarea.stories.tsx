@@ -1,11 +1,10 @@
-import React from 'react';
-import { Textarea, TextareaField, TextareaIcon, TextareaSlot } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { VStack } from '../VStack';
-import { VariantTitle } from '../../../docs/components';
 import * as Icons from '@utilitywarehouse/react-native-icons';
 import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
 import { ScrollView } from 'react-native';
+import { Textarea, TextareaField, TextareaIcon, TextareaSlot } from '.';
+import { VariantTitle } from '../../../docs/components';
+import { Flex } from '../Flex';
 
 const meta = {
   title: 'Stories / Textarea',
@@ -86,7 +85,7 @@ export const Variants: Story = {
   render: () => {
     return (
       <ScrollView>
-        <VStack space="lg">
+        <Flex direction="column" space="xl">
           <VariantTitle title="Default">
             <Textarea>
               <TextareaField />
@@ -172,7 +171,7 @@ export const Variants: Story = {
               <TextareaField placeholder="Textarea placeholder" readOnly />
             </Textarea>
           </VariantTitle>
-        </VStack>
+        </Flex>
       </ScrollView>
     );
   },

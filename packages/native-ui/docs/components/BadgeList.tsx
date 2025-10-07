@@ -2,7 +2,7 @@ import {
   Badge,
   BadgeText,
   Box,
-  HStack,
+  Flex,
   List,
   ListItem,
   ListItemContent,
@@ -63,12 +63,12 @@ const BadgeList = () => {
           </Box>
         </ListItemLeadingContent>
         <ListItemContent>
-          <HStack style={{ justifyContent: 'space-between' }}>
+          <Flex direction="row" style={{ justifyContent: 'space-between' }}>
             <ListItemText>Electricity</ListItemText>
             <Badge colorScheme="green" size="small">
               <BadgeText>Smart meter</BadgeText>
             </Badge>
-          </HStack>
+          </Flex>
           <ListItemSupportingText>Last reading 23/03/24</ListItemSupportingText>
         </ListItemContent>
         <ListItemTrailingContent>

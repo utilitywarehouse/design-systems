@@ -1,10 +1,9 @@
-import React from 'react';
-import { Input } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { VariantTitle } from '../../../docs/components';
 import * as Icons from '@utilitywarehouse/react-native-icons';
-import { VStack } from '../VStack';
 import { EmailMediumIcon } from '@utilitywarehouse/react-native-icons';
+import { Input } from '.';
+import { VariantTitle } from '../../../docs/components';
+import { Flex } from '../Flex';
 
 const meta = {
   title: 'Stories / Input',
@@ -93,7 +92,7 @@ export const Variants: Story = {
   },
   render: () => {
     return (
-      <VStack space="lg">
+      <Flex direction="column" space="xl">
         <VariantTitle title="Default">
           <Input />
         </VariantTitle>
@@ -162,7 +161,7 @@ export const Variants: Story = {
         <VariantTitle title="Readonly">
           <Input readonly leadingIcon={EmailMediumIcon} placeholder="Input placeholder" readOnly />
         </VariantTitle>
-      </VStack>
+      </Flex>
     );
   },
 };

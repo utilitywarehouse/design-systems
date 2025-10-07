@@ -1,9 +1,7 @@
-import React from 'react';
-import { Badge } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { VStack } from '../VStack';
+import { Badge } from '.';
 import { VariantTitle } from '../../../docs/components';
-import { HStack } from '../HStack';
+import { Flex } from '../Flex';
 
 const meta = {
   title: 'Stories / Badge',
@@ -45,8 +43,8 @@ export const Playground: Story = {};
 
 export const Variants: Story = {
   render: () => (
-    <HStack space="sm">
-      <VStack space="sm">
+    <Flex direction="row" space="md">
+      <Flex direction="column" space="md">
         <VariantTitle title="cyan">
           <Badge colorScheme="cyan">Cyan</Badge>
         </VariantTitle>
@@ -62,8 +60,8 @@ export const Variants: Story = {
         <VariantTitle title="red">
           <Badge colorScheme="red">Red</Badge>
         </VariantTitle>
-      </VStack>
-      <VStack space="sm">
+      </Flex>
+      <Flex direction="column" space="md">
         <VariantTitle title="cyan strong">
           <Badge colorScheme="cyan" strong>
             Cyan Strong
@@ -89,7 +87,7 @@ export const Variants: Story = {
             Red Strong
           </Badge>
         </VariantTitle>
-      </VStack>
-    </HStack>
+      </Flex>
+    </Flex>
   ),
 };

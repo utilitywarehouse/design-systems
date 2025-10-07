@@ -1,8 +1,7 @@
-import React from 'react';
-import { Switch } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { VStack } from '../VStack';
+import { Switch } from '.';
 import { VariantTitle } from '../../../docs/components';
+import { Flex } from '../Flex';
 
 const meta = {
   title: 'Stories / Switch',
@@ -39,7 +38,7 @@ export const Playground: Story = {};
 
 export const Variants: Story = {
   render: () => (
-    <VStack space="sm">
+    <Flex direction="column" space="md">
       <VariantTitle title="Off - medium">
         <Switch value={false} />
       </VariantTitle>
@@ -64,6 +63,6 @@ export const Variants: Story = {
       <VariantTitle title="On - small - Disabled">
         <Switch value={true} size="small" disabled />
       </VariantTitle>
-    </VStack>
+    </Flex>
   ),
 };

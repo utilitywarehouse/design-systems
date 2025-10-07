@@ -1,8 +1,7 @@
-import React from 'react';
-import { Heading } from '.';
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { VStack } from '../VStack';
+import { Heading } from '.';
 import { VariantTitle } from '../../../docs/components';
+import { Flex } from '../Flex';
 
 const meta = {
   title: 'Stories / Heading',
@@ -55,7 +54,7 @@ export const Playground: Story = {};
 export const Variants: Story = {
   render: () => {
     return (
-      <VStack space="2xl">
+      <Flex direction="column" space="2xl">
         <VariantTitle title="Heading 1">
           <Heading size="h1">
             Aeonik - Bold (700), 32px Size / 40px Line height / 0px Letter
@@ -86,7 +85,7 @@ export const Variants: Story = {
             Work Sans - Regular (400), 16px Size / 24px Line height / 0px Letter
           </Heading>
         </VariantTitle>
-      </VStack>
+      </Flex>
     );
   },
 };

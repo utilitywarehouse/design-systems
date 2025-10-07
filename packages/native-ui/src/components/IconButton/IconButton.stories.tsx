@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 import * as Icons from '@utilitywarehouse/react-native-icons';
-import { Flex } from 'build';
 import { ComponentType } from 'react';
 import { IconButton, IconButtonProps } from '.';
 import { VariantTitle } from '../../../docs/components';
 import { Box } from '../Box';
 import { ButtonGroup } from '../Button';
+import { Flex } from '../Flex';
 import { Heading } from '../Heading';
 
 const meta = {

@@ -1,8 +1,8 @@
+import { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 import { Radio, RadioGroup } from '.';
-import { Meta, StoryObj } from '@storybook/react-vite';
 import { VariantTitle } from '../../../docs/components';
-import { VStack } from '../VStack';
+import { Flex } from '../Flex';
 
 const meta = {
   title: 'Stories / Radio',
@@ -83,7 +83,7 @@ export const Variants: Story = {
   render: () => {
     const [value, setValue] = React.useState('Option 1');
     return (
-      <VStack space="lg">
+      <Flex direction="column" space="xl">
         <VariantTitle title="Default">
           <RadioGroup
             aria-label="Radio Group"
@@ -135,7 +135,7 @@ export const Variants: Story = {
             />
           </RadioGroup>
         </VariantTitle>
-      </VStack>
+      </Flex>
     );
   },
 };
