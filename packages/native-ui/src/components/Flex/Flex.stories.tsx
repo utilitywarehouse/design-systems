@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-import { Flex } from '.';
 import { Box } from '../Box';
+import { Flex } from '../Flex';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -12,6 +12,11 @@ const meta = {
   },
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
+    space: {
+      options: ['none', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+      control: 'radio',
+      description: 'The space between the children of the flex container.',
+    },
     direction: {
       options: ['row', 'column', 'row-reverse', 'column-reverse'],
       control: 'select',
@@ -38,11 +43,6 @@ const meta = {
       ],
       control: 'select',
       description: 'The justify of the flex container.',
-    },
-    space: {
-      options: ['none', 'xs', 'sm', 'md', 'lg', 'xl'],
-      control: 'radio',
-      description: 'The space of the flex container.',
     },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
