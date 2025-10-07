@@ -1,7 +1,8 @@
 import { createRadio } from '@gluestack-ui/radio';
+import { View } from 'react-native-reanimated/lib/typescript/Animated';
+import { StyleSheet } from 'react-native-unistyles';
 import { useFormFieldContext } from '../FormField';
 import { Helper } from '../Helper';
-import { VStack } from '../VStack';
 import RadioProps from './Radio.props';
 import { useRadioGroupContext } from './RadioGroup.context';
 import StyledRadioGroup from './RadioGroupRoot';
@@ -53,7 +54,7 @@ const Radio = ({
           <RadioIndicator>
             <RadioIcon />
           </RadioIndicator>
-          <VStack space="xs">
+          <View style={styles.wrapper}>
             {!!label && <RadioLabel>{label}</RadioLabel>}
             {!!helperText && <Helper disabled={disabled} icon={helperIcon} text={helperText} />}
             {validationStatus === 'invalid' && !!invalidText && (
@@ -72,12 +73,19 @@ const Radio = ({
                 text={validText}
               />
             )}
-          </VStack>
+          </View>
         </>
       )}
     </RadioComponent>
   );
 };
+
+const styles = StyleSheet.create(theme => ({
+  wrapper: {
+    flexDirection: 'column',
+    gap: theme.space['50'],
+  },
+}));
 
 Radio.displayName = 'Radio';
 

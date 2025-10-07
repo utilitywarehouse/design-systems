@@ -1,16 +1,16 @@
-import React, { ElementRef , forwardRef } from 'react';
 import { createCheckbox } from '@gluestack-ui/checkbox';
-import StyledCheckbox from './CheckboxRoot';
-import StyledCheckboxIndicator from './CheckboxIndicator';
-import StyledCheckboxIcon from './CheckboxIcon';
-import StyledCheckboxLabel from './CheckboxLabel';
-import StyledCheckboxGroup from './CheckboxGroupRoot';
-import CheckboxProps from './Checkbox.props';
-import { Pressable } from 'react-native';
-import { Helper } from '../Helper';
-import { useCheckboxGroupContext } from './CheckboxGroup.context';
+import { ElementRef, forwardRef } from 'react';
+import { Pressable, View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 import { useFormFieldContext } from '../FormField';
-import { VStack } from '../VStack';
+import { Helper } from '../Helper';
+import CheckboxProps from './Checkbox.props';
+import { useCheckboxGroupContext } from './CheckboxGroup.context';
+import StyledCheckboxGroup from './CheckboxGroupRoot';
+import StyledCheckboxIcon from './CheckboxIcon';
+import StyledCheckboxIndicator from './CheckboxIndicator';
+import StyledCheckboxLabel from './CheckboxLabel';
+import StyledCheckbox from './CheckboxRoot';
 
 const CheckboxComponent = createCheckbox({
   Root: StyledCheckbox,
@@ -61,7 +61,7 @@ const Checkbox = forwardRef<ElementRef<typeof Pressable>, CheckboxProps>(
             <CheckboxIndicator>
               <CheckboxIcon />
             </CheckboxIndicator>
-            <VStack space="xs">
+            <View style={styles.wrapper}>
               {!!label && <CheckboxLabel>{label}</CheckboxLabel>}
               {!!helperText && <Helper disabled={disabled} icon={helperIcon} text={helperText} />}
               {validationStatus === 'invalid' && !!invalidText && (
@@ -80,7 +80,7 @@ const Checkbox = forwardRef<ElementRef<typeof Pressable>, CheckboxProps>(
                   text={validText}
                 />
               )}
-            </VStack>
+            </View>
           </>
         )}
       </CheckboxComponent>
@@ -90,6 +90,13 @@ const Checkbox = forwardRef<ElementRef<typeof Pressable>, CheckboxProps>(
 
 Checkbox.displayName = 'Checkbox';
 
-export { Checkbox, CheckboxGroup, CheckboxIndicator, CheckboxIcon, CheckboxLabel };
+const styles = StyleSheet.create(theme => ({
+  wrapper: {
+    flexDirection: 'column',
+    gap: theme.space['50'],
+  },
+}));
+
+export { Checkbox, CheckboxGroup, CheckboxIcon, CheckboxIndicator, CheckboxLabel };
 
 export default Checkbox;
