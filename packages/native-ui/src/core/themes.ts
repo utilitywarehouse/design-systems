@@ -1,16 +1,19 @@
 import { colors, colorsCommon, colorsDark } from '@utilitywarehouse/colour-system';
-import { components } from '@utilitywarehouse/design-tokens';
 import { DimensionValue, Platform } from 'react-native';
 import {
   borderRadius,
   borderWidth,
+  color,
   font,
   layout,
   letterSpacing,
   lineHeight,
+  shadow,
   space,
+  typography,
 } from '../tokens';
 import { breakpoints } from './breakpoints';
+const { light, dark, ...restOfColors } = color;
 
 const shared = {
   platform: Platform.OS,
@@ -32,19 +35,59 @@ const shared = {
     '4/6': '66.666%',
     '5/6': '83.333%',
     full: '100%' as DimensionValue,
-  },
-  breakpoints,
-  opacity: {
-    disabled: 0.5,
+    none: 0 as DimensionValue,
+    '2xs': {
+      base: layout.mobile.spacing['2xs'],
+      md: layout.tablet.spacing['2xs'],
+      lg: layout.desktop.spacing['2xs'],
+    },
+    xs: {
+      base: layout.mobile.spacing.xs,
+      md: layout.tablet.spacing.xs,
+      lg: layout.desktop.spacing.xs,
+    },
+    sm: {
+      base: layout.mobile.spacing.sm,
+      md: layout.tablet.spacing.sm,
+      lg: layout.desktop.spacing.sm,
+    },
+    md: {
+      base: layout.mobile.spacing.md,
+      md: layout.tablet.spacing.md,
+      lg: layout.desktop.spacing.md,
+    },
+    lg: {
+      base: layout.mobile.spacing.lg,
+      md: layout.tablet.spacing.lg,
+      lg: layout.desktop.spacing.lg,
+    },
+    xl: {
+      base: layout.mobile.spacing.xl,
+      md: layout.tablet.spacing.xl,
+      lg: layout.desktop.spacing.xl,
+    },
+    '2xl': {
+      base: layout.mobile.spacing['2xl'],
+      md: layout.tablet.spacing['2xl'],
+      lg: layout.desktop.spacing['2xl'],
+    },
   },
   borderWidth,
   borderRadius,
+  breakpoints,
   letterSpacing,
   lineHeight,
   font,
   fontWeight: font.weight,
   fontFamily: font.family,
   fontSize: font.size,
+  typography,
+  layout,
+  shadow,
+  opacity: {
+    disabled: 0.5,
+  },
+  helpers: {},
   globalStyle: {
     variants: {
       hardShadow: {
@@ -212,9 +255,12 @@ export const lightTheme = {
     white: '#ffffff',
     black: '#000000',
   },
-  tokens: {
-    ...components.light,
-  },
+  color: {
+    ...restOfColors,
+    ...light,
+    white: '#ffffff',
+    black: '#000000',
+  } as const,
   ...shared,
 } as const;
 
@@ -228,8 +274,11 @@ export const darkTheme = {
     white: '#ffffff',
     black: '#000000',
   },
-  tokens: {
-    ...components.dark,
+  color: {
+    ...restOfColors,
+    ...dark,
+    white: '#ffffff',
+    black: '#000000',
   },
   ...shared,
 } as const;

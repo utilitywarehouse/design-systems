@@ -21,11 +21,14 @@ export const mobile = {
     margin: 16,
   },
   spacing: {
-    lg: 20,
-    md: 16,
-    sm: 12,
-    xl: 28,
-    xs: 8,
+    '2xl': 28,
+    '2xs': 2,
+    lg: 16,
+    md: 12,
+    none: 0,
+    sm: 8,
+    xl: 20,
+    xs: 4,
   },
 } as const;
 
@@ -48,11 +51,14 @@ export const tablet = {
     margin: 32,
   },
   spacing: {
-    lg: 24,
-    md: 16,
-    sm: 12,
-    xl: 28,
-    xs: 8,
+    '2xl': 28,
+    '2xs': 2,
+    lg: 16,
+    md: 12,
+    none: 0,
+    sm: 8,
+    xl: 24,
+    xs: 4,
   },
 } as const;
 
@@ -75,11 +81,14 @@ export const desktop = {
     margin: 32,
   },
   spacing: {
-    lg: 24,
-    md: 16,
-    sm: 12,
-    xl: 40,
-    xs: 8,
+    '2xl': 40,
+    '2xs': 2,
+    lg: 16,
+    md: 12,
+    none: 0,
+    sm: 8,
+    xl: 24,
+    xs: 4,
   },
 } as const;
 
