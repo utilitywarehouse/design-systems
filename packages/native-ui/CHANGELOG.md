@@ -1,5 +1,15 @@
 # @utilitywarehouse/native-ui
 
+## 1.1.0
+
+### Minor Changes
+
+- [#703](https://github.com/utilitywarehouse/design-systems/pull/703) [`148430e`](https://github.com/utilitywarehouse/design-systems/commit/148430ef03e1128cf416520fa8bf6767788d3ee7) Thanks [@jordmccord](https://github.com/jordmccord)! - - Updates `Flex` component space values to align with Hearth React Native.
+  - Adds new tokens from Hearth React Native for enhanced design consistency.
+  - Removes deprecated tokens to streamline the codebase.
+  - Removes deprecated `VStack` and `HStack` components in favor of using the more versatile `Flex` component.
+  - Fixes `useTheme` hook so type is correctly inferred when destructuring the returned theme object.
+
 ## 1.0.2
 
 ### Patch Changes
