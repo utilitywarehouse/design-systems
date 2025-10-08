@@ -6,6 +6,73 @@ import { BackToTopButton } from '../components';
 
 # What's new in Native UI
 
+## v1.1.0
+
+This release removes some of the previously deprecated components and design tokens and includes some minor improvements and bug fixes.
+
+### Removed Deprecated Components
+
+`VStack` and `HStack`: These components have been fully removed in favour of the new `Flex` component.
+Please update any existing code to use `Flex` instead.
+
+The `Flex` `space` prop values have now been update to align with the upcoming Hearth React Native library.
+
+```diff
++ import { Flex, Box, Text } from '@utilitywarehouse/native-ui';
+- import { VStack, Box, Text } from '@utilitywarehouse/native-ui';
+
+const MyComponent = () => {
+  return (
++   <Flex direction="column" align="center" justify="center" space="lg">
+-   <VStack align="center" justify="center" space="md">
+      <Box bg="$cyan500" p="200" borderRadius="sm">
+        <Text fontSize="lg" fontWeight="bold">
+          Hello
+        </Text>
+      </Box>
+      <Box bg="$green500" p="200" borderRadius="sm">
+        <Text fontSize="lg" fontWeight="bold">
+          World
+        </Text>
+      </Box>
++   </Flex>
+-   </VStack>
+  );
+};
+```
+
+#### Updated `space` prop values
+
+| Space Prop | New Value | Old Space Prop |
+| ---------- | --------- | -------------- |
+| `2xs`      | 2         | n/a            |
+| `xs`       | 4         | n/a            |
+| `sm`       | 8         | `xs`           |
+| `md`       | 12        | `sm`           |
+| `lg`       | 16        | `md`           |
+| `xl`       | 20        | `lg`           |
+| `2xl`      | 28        | `xl`           |
+
+### Removed Deprecated Design Tokens
+
+The following design tokens have been fully removed in this release. Please update any existing code to use the new tokens.
+
+| Removed Token               | Replacement Token              |
+| --------------------------- | ------------------------------ |
+| `space[2]` (4px scale)      | `space['100']` (8px 100 scale) |
+| `fontWeights` (all keys)    | `fontWeight` (same keys)       |
+| `lineHeights` (all keys)    | `lineHeight` (same keys)       |
+| `letterSpacings` (all keys) | `letterSpacing` (same keys)    |
+| `radii` (all keys)          | `borderRadius` (same keys)     |
+| `borderWidths` (all keys)   | `borderWidth` (same keys)      |
+| `fonts` (all keys)          | `fontFamily` (same keys)       |
+| `fontSizes` (all keys)      | `fontSize` (same keys)         |
+
+### Minor Improvements and Bug Fixes
+
+- Fixed `useTheme` hook to ensure it always returns the current theme typed correctly.
+- Added tokens from `@utilitieswarehouse/hearth-react-native` ready for rebrand and package alignment.
+
 ## v1.0.0
 
 This is the first stable release of Native UI, which includes a set of components and utilities for building user interfaces in React Native applications at UW.
