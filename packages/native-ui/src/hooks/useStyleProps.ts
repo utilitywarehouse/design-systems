@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMemo } from 'react';
 import { ViewStyle } from 'react-native';
-import useTheme from './useTheme';
 import {
   propStyleMapping,
   resolveThemeValue,
   themeStyleMapping,
-  themeStyleMappingNew,
   viewStyleProps,
 } from '../utils/styleUtils';
+import useTheme from './useTheme';
 
 /**
  * Type for the return value from useStyleProps
@@ -37,7 +36,6 @@ export const useStyleProps = (props: Record<string, any>): StylePropsResult => {
 
       let stylePropName: keyof ViewStyle | undefined;
       let themeKey: keyof typeof theme | undefined;
-      let newThemeKey: keyof typeof theme | undefined;
 
       // Handle shorthand props
       if (propStyleMapping[propName]) {
@@ -51,14 +49,9 @@ export const useStyleProps = (props: Record<string, any>): StylePropsResult => {
       if (stylePropName) {
         // Resolve theme value if needed
         themeKey = themeStyleMapping[stylePropName] as keyof typeof theme;
-        newThemeKey = themeStyleMappingNew[stylePropName] as keyof typeof theme;
 
         if (themeKey && theme[themeKey]) {
-          computedStyles[stylePropName] = resolveThemeValue(
-            propValue,
-            theme[themeKey],
-            theme[newThemeKey]
-          );
+          computedStyles[stylePropName] = resolveThemeValue(propValue, theme[themeKey]);
         } else {
           computedStyles[stylePropName] = propValue;
         }

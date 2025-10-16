@@ -66,80 +66,6 @@ export const themeStyleMapping: { [key in keyof ViewStyle]?: string } = {
   maxHeight: 'space',
   start: 'space',
   end: 'space',
-  // Colors
-  backgroundColor: 'colors',
-  borderColor: 'colors',
-  borderBottomColor: 'colors',
-  borderLeftColor: 'colors',
-  borderRightColor: 'colors',
-  borderTopColor: 'colors',
-  borderBlockColor: 'colors',
-  borderBlockEndColor: 'colors',
-  borderBlockStartColor: 'colors',
-  borderEndColor: 'colors',
-  borderStartColor: 'colors',
-  shadowColor: 'colors',
-  // Border radii
-  borderRadius: 'radii',
-  borderBottomEndRadius: 'radii',
-  borderBottomLeftRadius: 'radii',
-  borderBottomRightRadius: 'radii',
-  borderBottomStartRadius: 'radii',
-  borderTopEndRadius: 'radii',
-  borderTopLeftRadius: 'radii',
-  borderTopRightRadius: 'radii',
-  borderTopStartRadius: 'radii',
-  borderEndEndRadius: 'radii',
-  borderEndStartRadius: 'radii',
-  borderStartEndRadius: 'radii',
-  borderStartStartRadius: 'radii',
-  // Opacity
-  opacity: 'opacity',
-  // Border widths
-  borderBottomWidth: 'borderWidths',
-  borderEndWidth: 'borderWidths',
-  borderLeftWidth: 'borderWidths',
-  borderRightWidth: 'borderWidths',
-  borderStartWidth: 'borderWidths',
-  borderTopWidth: 'borderWidths',
-  borderWidth: 'borderWidths',
-};
-
-export const themeStyleMappingNew: { [key in keyof ViewStyle]?: string } = {
-  // Space related
-  top: 'space',
-  bottom: 'space',
-  left: 'space',
-  right: 'space',
-  padding: 'space',
-  paddingHorizontal: 'space',
-  paddingVertical: 'space',
-  paddingTop: 'space',
-  paddingBottom: 'space',
-  paddingLeft: 'space',
-  paddingRight: 'space',
-  paddingEnd: 'space',
-  paddingStart: 'space',
-  margin: 'space',
-  marginHorizontal: 'space',
-  marginVertical: 'space',
-  marginTop: 'space',
-  marginBottom: 'space',
-  marginLeft: 'space',
-  marginRight: 'space',
-  marginEnd: 'space',
-  marginStart: 'space',
-  columnGap: 'space',
-  gap: 'space',
-  rowGap: 'space',
-  height: 'space',
-  width: 'space',
-  minHeight: 'space',
-  minWidth: 'space',
-  maxWidth: 'space',
-  maxHeight: 'space',
-  start: 'space',
-  end: 'space',
   // Border radii
   borderRadius: 'borderRadius',
   borderBottomEndRadius: 'borderRadius',
@@ -164,7 +90,7 @@ export const themeStyleMappingNew: { [key in keyof ViewStyle]?: string } = {
   borderWidth: 'borderWidth',
 };
 
-export const resolveThemeValue = (value: any, themeMapping: any, newThemeMapping: any): any => {
+export const resolveThemeValue = (value: any, themeMapping: any): any => {
   if (
     typeof value === 'string' &&
     value.startsWith('$') &&
@@ -176,13 +102,6 @@ export const resolveThemeValue = (value: any, themeMapping: any, newThemeMapping
       return themeMapping[key];
     }
     return value;
-  } else if (
-    typeof value === 'string' &&
-    newThemeMapping &&
-    typeof newThemeMapping === 'object' &&
-    newThemeMapping[value] !== undefined
-  ) {
-    return newThemeMapping[value];
   }
   return value;
 };
