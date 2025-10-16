@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 1.1.2
+
+### Patch Changes
+
+- [#707](https://github.com/utilitywarehouse/design-systems/pull/707) [`5017978`](https://github.com/utilitywarehouse/design-systems/commit/5017978e95abe064a798136d5441db99748732eb) Thanks [@jordmccord](https://github.com/jordmccord)! - Fixes style resolution issue
+
 ## 1.1.1
 
 ### Patch Changes
