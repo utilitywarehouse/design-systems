@@ -1,5 +1,11 @@
 # @utilitywarehouse/native-ui
 
+## 1.1.1
+
+### Patch Changes
+
+- [#705](https://github.com/utilitywarehouse/design-systems/pull/705) [`baa7656`](https://github.com/utilitywarehouse/design-systems/commit/baa7656c672fd239e84ac2cc461d2cd2463b7fb6) Thanks [@jordmccord](https://github.com/jordmccord)! - Removes legacy theme mapping values
+
 ## 1.1.0
 
 ### Minor Changes
