@@ -102,6 +102,13 @@ export const resolveThemeValue = (value: any, themeMapping: any): any => {
       return themeMapping[key];
     }
     return value;
+  } else if (
+    typeof value === 'string' &&
+    themeMapping &&
+    typeof themeMapping === 'object' &&
+    value in themeMapping
+  ) {
+    return themeMapping[value];
   }
   return value;
 };
