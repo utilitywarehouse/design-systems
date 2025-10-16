@@ -5,7 +5,6 @@ import {
   propStyleMapping,
   resolveThemeValue,
   themeStyleMapping,
-  themeStyleMappingNew,
   viewStyleProps,
 } from '../../utils/styleUtils';
 import type BoxProps from './Box.props';
@@ -58,14 +57,9 @@ const styles = StyleSheet.create(theme => ({
 
       // Resolve theme value if needed
       const themeKey = themeStyleMapping[stylePropName] as keyof typeof theme;
-      const newThemeKey = themeStyleMappingNew[stylePropName] as keyof typeof theme;
 
       if (themeKey && theme[themeKey]) {
-        computedStyles[stylePropName] = resolveThemeValue(
-          propValue,
-          theme[themeKey],
-          theme[newThemeKey]
-        );
+        computedStyles[stylePropName] = resolveThemeValue(propValue, theme[themeKey]);
       } else {
         computedStyles[stylePropName] = propValue;
       }
