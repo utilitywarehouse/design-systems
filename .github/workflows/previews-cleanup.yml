@@ -8,6 +8,9 @@ on:
       - 'packages/native-ui/**'
       - 'apps/native-ui-storybook/**'
 
+permissions:
+  contents: read
+
 jobs:
   cleanup:
     name: Cleanup Previews
@@ -15,6 +18,11 @@ jobs:
     continue-on-error: true
     if: ${{ github.event.before && github.head_commit.author.username != 'github-actions[bot]'}}
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - name: 🔧 Setup pnpm
         uses: pnpm/action-setup@v4
         with:

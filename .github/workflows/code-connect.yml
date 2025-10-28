@@ -7,11 +7,19 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   code-connect:
     name: Code Connect
     runs-on: ubuntu-latest
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - name: 🏗 Setup repo
         uses: pnpm/action-setup@v4
         with:

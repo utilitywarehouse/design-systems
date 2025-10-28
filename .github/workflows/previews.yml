@@ -24,6 +24,11 @@ jobs:
       group: preview-android-${{ github.ref }}
       cancel-in-progress: true
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - name: 🔍 Check if Android build should run
         id: check_build
         run: |
@@ -157,6 +162,11 @@ jobs:
       group: preview-ios-${{ github.ref }}
       cancel-in-progress: true
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - name: 🔍 Check if iOS build should run
         id: check_build
         run: |
@@ -294,6 +304,11 @@ jobs:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - name: 📝 Echo needs
         run: |
           echo "Needs: ${{ toJson(needs) }}"
