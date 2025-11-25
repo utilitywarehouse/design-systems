@@ -4,7 +4,13 @@
 
 Shared tools and libraries for building UW applications.
 
-## Active Packages
+## Dormant Packages
+
+> These packages are now in **Maintenance mode**, meaning there will be no new
+> features or breaking changes. New releases will only be made to support critical
+> bug fixes or security maintenance updates.
+>
+> We are currently prioritising work on the new Hearth Design Systems libraries.
 
 ### Native UI
 
@@ -13,14 +19,6 @@ with the UX design team.
 
 Please have a look at [the documentation](https://uw-native-ui.vercel.app/?path=/docs/native-ui-introduction--docs) for how to get started using these
 components.
-
-## Dormant Packages
-
-> These packages are now in **Maintenance mode**, meaning there will be no new
-> features or breaking changes. New releases will only be made to support critical
-> bug fixes or security maintenance updates.
->
-> We are currently prioritising work on the new Hearth Design Systems libraries.
 
 ### Web UI
 
