@@ -1,3 +1,8 @@
+> **This package is deprecated.** 
+> Please use [Hearth](https://hearth.prod.uw.systems/)
+
+---
+
 # UW Design Systems
 
 [![Code Checks](https://github.com/utilitywarehouse/design-systems/actions/workflows/checks.yml/badge.svg)](https://github.com/utilitywarehouse/design-systems/actions/workflows/checks.yml) [![Release](https://github.com/utilitywarehouse/design-systems/actions/workflows/release.yml/badge.svg)](https://github.com/utilitywarehouse/design-systems/actions/workflows/release.yml)
